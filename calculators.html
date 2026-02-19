@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mortgage Calculators | Payment & Affordability | Mortgage Solutions</title>
+  <meta name="description" content="Use our free mortgage calculators to estimate your monthly payment, determine how much house you can afford, and analyze refinance scenarios.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Mortgage Calculators | Payment & Affordability">
+  <meta property="og:description" content="Use our free mortgage calculators to estimate your monthly payment and determine how much house you can afford.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thestyerteam.com/calculators.html">
+  <meta property="og:image" content="https://thestyerteam.com/assets/og-image.jpg">
+  <meta property="og:site_name" content="Mortgage Solutions - The Styer Team">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Mortgage Calculators | Payment & Affordability">
+  <meta name="twitter:description" content="Use our free mortgage calculators to estimate your monthly payment and determine how much house you can afford.">
+  <meta name="twitter:image" content="https://thestyerteam.com/assets/og-image.jpg">
+
+  <link rel="canonical" href="https://thestyerteam.com/calculators.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mortgage Calculators",
+    "description": "Free mortgage calculators for payments, affordability, and refinancing",
+    "url": "https://thestyerteam.com/calculators.html",
+    "applicationCategory": "FinanceApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is my monthly mortgage payment calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your monthly mortgage payment includes principal, interest, property taxes, and homeowners insurance (PITI). Use our calculator to estimate your total monthly cost based on loan amount, interest rate, and term."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much house can I afford?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most lenders recommend your total monthly debt payments stay below 43% of your gross monthly income. Our affordability calculator factors in your income, debts, down payment, and current interest rates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is refinancing worth it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Refinancing makes sense if you can save money over time. Generally, if the new rate is at least 1% lower and you plan to keep the home 2+ years, refinancing is worth considering."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER & NAVIGATION -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.png" alt="Mortgage Solutions" class="nav-logo-img" width="180" height="40">
+        </a>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="products.html">Loan Programs</a></li>
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="about.html">About Adam</a></li>
+          <li><a href="realtors.html">For Realtors</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://mslp.my1003app.com/513013/register" class="nav-cta">Get Pre-Approved</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Mortgage Calculators</h1>
+          <p class="hero-subtitle">
+            Know your numbers before you apply. Use our free calculators to estimate payments, determine affordability, and analyze refinancing options.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATORS -->
+    <section>
+      <div class="container">
+        <div data-tabs class="tabs-wrapper">
+          <!-- TAB BUTTONS -->
+          <div class="tabs">
+            <button class="tab-button" data-tab="payment">Monthly Payment</button>
+            <button class="tab-button" data-tab="affordability">Home Affordability</button>
+            <button class="tab-button" data-tab="refinance">Refinance Analysis</button>
+          </div>
+
+          <!-- TAB 1: MONTHLY PAYMENT CALCULATOR -->
+          <div class="tab-content" data-tab-content="payment">
+            <div class="calc-layout">
+              <!-- INPUTS -->
+              <div id="monthly-payment-calc">
+                <h3 style="margin-bottom: 1.5rem;">Calculate Your Monthly Payment</h3>
+
+                <div class="form-group">
+                  <label for="loan-amount">Loan Amount</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="loan-amount" name="loan-amount" min="50000" max="10000000" value="300000" placeholder="300000">
+                    <div class="input-unit">$</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="interest-rate">Interest Rate (%)</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="interest-rate" name="interest-rate" min="0" max="12" step="0.01" value="6.5" placeholder="6.5">
+                    <div class="input-unit">%</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="loan-term">Loan Term (Years)</label>
+                  <div class="input-with-unit">
+                    <select id="loan-term" name="loan-term">
+                      <option value="10">10 years</option>
+                      <option value="15">15 years</option>
+                      <option value="20">20 years</option>
+                      <option selected value="30">30 years</option>
+                    </select>
+                  </div>
+                </div>
+
+                <hr class="separator">
+
+                <div class="form-group">
+                  <label for="property-tax">Annual Property Tax</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="property-tax" name="property-tax" min="0" value="0" placeholder="0">
+                    <div class="input-unit">$</div>
+                  </div>
+                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Optional. Average Austin: ~0.8% of home value annually</p>
+                </div>
+
+                <div class="form-group">
+                  <label for="homeowners-insurance">Annual Homeowners Insurance</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="homeowners-insurance" name="homeowners-insurance" min="0" value="0" placeholder="0">
+                    <div class="input-unit">$</div>
+                  </div>
+                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Optional. Average Austin: $900-1,200/year</p>
+                </div>
+
+                <div class="form-group">
+                  <label for="pmi">Monthly PMI (if applicable)</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="pmi" name="pmi" min="0" value="0" placeholder="0" step="0.01">
+                    <div class="input-unit">$</div>
+                  </div>
+                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Mortgage insurance, if down payment &lt; 20%</p>
+                </div>
+              </div>
+
+              <!-- OUTPUT -->
+              <div data-output="payment" aria-live="polite" style="position: sticky; top: 100px;">
+                <p style="color: #6B7280; margin-bottom: 1rem;">Your results will appear here...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: AFFORDABILITY CALCULATOR -->
+          <div class="tab-content" data-tab-content="affordability">
+            <div class="calc-layout">
+              <!-- INPUTS -->
+              <div id="affordability-calc">
+                <h3 style="margin-bottom: 1.5rem;">How Much House Can You Afford?</h3>
+
+                <div class="form-group">
+                  <label for="annual-income">Annual Household Income</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="annual-income" name="annual-income" min="0" value="100000" placeholder="100000">
+                    <div class="input-unit">$</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="monthly-debts">Total Monthly Debts</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="monthly-debts" name="monthly-debts" min="0" value="0" placeholder="0">
+                    <div class="input-unit">$</div>
+                  </div>
+                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Car loans, credit cards, student loans, etc.</p>
+                </div>
+
+                <div class="form-group">
+                  <label for="down-payment">Available Down Payment</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="down-payment" name="down-payment" min="0" value="50000" placeholder="50000">
+                    <div class="input-unit">$</div>
+                  </div>
+                </div>
+
+                <hr class="separator">
+
+                <div class="form-group">
+                  <label for="interest-rate-afford">Current Interest Rate (%)</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="interest-rate-afford" name="interest-rate" min="0" max="12" step="0.01" value="6.5" placeholder="6.5">
+                    <div class="input-unit">%</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="loan-term-afford">Loan Term (Years)</label>
+                  <div class="input-with-unit">
+                    <select id="loan-term-afford" name="loan-term">
+                      <option value="15">15 years</option>
+                      <option selected value="30">30 years</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- OUTPUT -->
+              <div data-output="affordability" aria-live="polite" style="position: sticky; top: 100px;">
+                <p style="color: #6B7280; margin-bottom: 1rem;">Your results will appear here...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: REFINANCE CALCULATOR -->
+          <div class="tab-content" data-tab-content="refinance">
+            <div class="calc-layout">
+              <!-- INPUTS -->
+              <div id="refinance-calc">
+                <h3 style="margin-bottom: 1.5rem;">Should You Refinance?</h3>
+
+                <h4 style="margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1rem;">Current Loan</h4>
+
+                <div class="form-group">
+                  <label for="current-balance">Current Loan Balance</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="current-balance" name="current-balance" min="0" value="250000" placeholder="250000">
+                    <div class="input-unit">$</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="current-rate">Current Interest Rate (%)</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="current-rate" name="current-rate" min="0" max="12" step="0.01" value="7.0" placeholder="7.0">
+                    <div class="input-unit">%</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="current-payment">Current Monthly Payment (P&I)</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="current-payment" name="current-payment" min="0" value="1663" placeholder="1663">
+                    <div class="input-unit">$</div>
+                  </div>
+                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Principal and interest only</p>
+                </div>
+
+                <hr class="separator">
+
+                <h4 style="margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1rem;">New Loan</h4>
+
+                <div class="form-group">
+                  <label for="new-rate">New Interest Rate (%)</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="new-rate" name="new-rate" min="0" max="12" step="0.01" value="5.5" placeholder="5.5">
+                    <div class="input-unit">%</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="new-term">New Loan Term (Years)</label>
+                  <div class="input-with-unit">
+                    <select id="new-term" name="new-term">
+                      <option value="10">10 years</option>
+                      <option value="15">15 years</option>
+                      <option value="20">20 years</option>
+                      <option selected value="30">30 years</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="closing-costs">Estimated Closing Costs</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="closing-costs" name="closing-costs" min="0" value="3000" placeholder="3000">
+                    <div class="input-unit">$</div>
+                  </div>
+                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Usually 2-5% of loan amount</p>
+                </div>
+              </div>
+
+              <!-- OUTPUT -->
+              <div data-output="refinance" aria-live="polite" style="position: sticky; top: 100px;">
+                <p style="color: #6B7280; margin-bottom: 1rem;">Your results will appear here...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="bg-light">
+      <div class="container text-center">
+        <h2 style="margin-bottom: 1rem;">Want Exact Numbers?</h2>
+        <p style="font-size: 1.125rem; color: #6B7280; max-width: 600px; margin: 0 auto 2rem;">
+          These calculators provide estimates. Get a free pre-approval in 24 hours for exact rates and terms based on your situation.
+        </p>
+        <a href="https://mslp.my1003app.com/513013/register" class="btn btn-primary btn-lg">Get Pre-Approved in 24 Hours</a>
+      </div>
+    </section>
+
+    <!-- INFO SECTION -->
+    <section>
+      <div class="container">
+        <h2 class="text-center mb-3xl">Calculator Tips & Information</h2>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Monthly Payment Calculator</h3>
+            <p>
+              This calculator estimates your monthly mortgage payment based on loan amount, interest rate, and term. It includes property taxes, homeowners insurance, and PMI if applicable. Remember: this is an estimate. Your actual payment depends on your specific loan terms and insurance costs.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>How Much Can I Afford?</h3>
+            <p>
+              This calculator uses the standard lending ratios (28% front-end, 36% back-end) to estimate maximum home price. It assumes standard mortgage terms. Your actual qualification depends on credit score, employment history, assets, and other factors. Get pre-approved for accurate numbers.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Refinance Analysis</h3>
+            <p>
+              This tool compares your current payment to a new refinanced payment. It accounts for closing costs and shows your breakeven point and total savings. However, it doesn't factor in rate locks, prepayment penalties, or other situational factors. Call Adam for a detailed analysis.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Current Austin Market Rates</h3>
+            <p>
+              Interest rates change daily based on market conditions. The rates shown in our examples are for illustration only. For current Austin mortgage rates, call Adam at (512) 956-6010. Pre-approval rate quotes are accurate for 30-60 days depending on the rate lock option.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="bg-light">
+      <div class="container">
+        <h2 class="text-center mb-3xl">Frequently Asked Questions</h2>
+
+        <div class="content-narrow">
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-button">
+                <span>What's included in my monthly payment?</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>
+                    Your monthly payment typically includes: (1) Principal & Interest - the loan payment itself, (2) Property Tax - your local tax based on assessed value, (3) Homeowners Insurance - required protection on the home, (4) PMI - mortgage insurance if your down payment is less than 20%, and sometimes (5) HOA fees in some neighborhoods. This is often referred to as PITI + PMI.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-button">
+                <span>What's a good interest rate in Austin?</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>
+                    Interest rates change daily based on economic factors, Federal Reserve policy, and market conditions. A "good" rate depends on your credit score, loan type, loan term, and down payment. Someone with a 780 credit score will get a better rate than someone with a 650 score. Call Adam at (512) 956-6010 for current Austin rates based on your profile.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-button">
+                <span>How much down payment do I need?</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>
+                    Down payment options vary by loan type: Conventional (3-20%), FHA (3.5%), VA (0%), USDA (0%), Jumbo (15-20%). Lower down payments require PMI. If you can't afford 20% down, FHA or USDA might be better options. The key is balancing your down payment with your monthly budget and long-term goals.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-button">
+                <span>Is refinancing worth it?</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>
+                    Refinancing makes sense if you can save money over time. Use our refinance calculator to see your breakeven point. Generally, if the new rate is at least 1% lower and you plan to keep the home 2+ years, refinancing is worth considering. However, factors like credit score, equity, and closing costs affect the decision. Adam can provide detailed refinance analysis.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-button">
+                <span>What's PMI and how long do I pay it?</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>
+                    PMI (Private Mortgage Insurance) protects the lender if you default. It's required when your down payment is less than 20%. Cost varies by credit score and down payment amount (typically 0.55-1.86% annually). PMI ends when you have 20% equity. With a conventional loan, you can request PMI removal once you reach 20% equity through appreciation or principal reduction.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section>
+      <div class="container text-center">
+        <h2 style="margin-bottom: 1rem;">Ready to Move Forward?</h2>
+        <p style="font-size: 1.125rem; color: #6B7280; max-width: 600px; margin: 0 auto 2rem;">
+          Start your pre-approval today. Get exact numbers, personalized rate quotes, and expert guidance from Adam.
+        </p>
+        <div class="cta-group">
+          <a href="https://mslp.my1003app.com/513013/register" class="btn btn-primary btn-lg">Get Pre-Approved</a>
+          <a href="tel:+15129566010" class="btn btn-outline btn-lg">Call (512) 956-6010</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Loan Programs</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="about.html">About Adam</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="realtors.html">For Realtors</a></li>
+            <li><a href="https://mslp.my1003app.com/513013/register">Apply Now</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="products.html">Mortgage Guides</a></li>
+            <li><a href="products.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>
+            <strong>The Styer Team</strong><br>
+            Mortgage Solutions, LP
+          </p>
+          <p>
+            <a href="tel:+15129566010">(512) 956-6010</a><br>
+            <a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a><br>
+            7000 N Mopac Expy Suite 200<br>
+            Austin, TX 78731
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Awards & Recognition</h4>
+          <p>
+            ⭐ 5.0 Stars · 91 Google Reviews<br>
+            ⭐ 4.98 Stars · 45 Zillow Reviews
+          </p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/styerteam/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/styerteam/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+            <a href="https://www.linkedin.com/in/adamstyerloans/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener" aria-label="Zillow">Z</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div>
+          <p>&copy; 2025 Mortgage Solutions, LP. All rights reserved.</p>
+          <div class="footer-nmls">
+            <strong>NMLS#:</strong> 2526130 (Company) | 513013 (Adam Styer)<br>
+            Mortgage Solutions, LP is a Licensed Mortgage Broker in Texas. Calculations are for educational purposes only and not guaranteed.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
