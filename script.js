@@ -630,6 +630,216 @@ function initRefinanceCalculator() {
 }
 
 // ========================================================================
+// TESTIMONIAL FILTER
+// ========================================================================
+
+function initTestimonialFilter() {
+  const filterContainer = document.querySelector('.testimonial-filter');
+  if (!filterContainer) return;
+
+  const testimonials = document.querySelectorAll('.testimonials-grid .testimonial');
+  if (!testimonials.length) return;
+
+  filterContainer.addEventListener('click', (e) => {
+    const btn = e.target.closest('.testimonial-filter-btn');
+    if (!btn) return;
+
+    // Update active button
+    filterContainer.querySelectorAll('.testimonial-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+
+    testimonials.forEach(t => {
+      const categories = t.dataset.category || '';
+      if (filter === 'all' || categories.includes(filter)) {
+        t.classList.remove('hidden');
+        t.style.animation = 'fadeIn 300ms ease-in-out';
+      } else {
+        t.classList.add('hidden');
+      }
+    });
+  });
+
+  // Keyboard support for filter buttons
+  filterContainer.addEventListener('keydown', (e) => {
+    const btn = e.target.closest('.testimonial-filter-btn');
+    if (!btn) return;
+    const buttons = [...filterContainer.querySelectorAll('.testimonial-filter-btn')];
+    const index = buttons.indexOf(btn);
+
+    if (e.key === 'ArrowRight' && index < buttons.length - 1) {
+      e.preventDefault();
+      buttons[index + 1].focus();
+    } else if (e.key === 'ArrowLeft' && index > 0) {
+      e.preventDefault();
+      buttons[index - 1].focus();
+    }
+  });
+}
+
+
+// ========================================================================
+// PRE-QUALIFICATION MULTI-STEP FORM
+// ========================================================================
+
+function initPrequalForm() {
+  const form = document.getElementById('prequal-form');
+  if (!form) return;
+
+  const fieldsets = form.querySelectorAll('.prequal-fieldset');
+  const steps = document.querySelectorAll('.prequal-step');
+  const progressFill = document.querySelector('.prequal-progress-fill');
+  const progressBar = document.querySelector('.prequal-progress');
+  let currentStep = 1;
+  const totalSteps = fieldsets.length;
+
+  function showStep(step) {
+    fieldsets.forEach((fs, i) => {
+      fs.classList.toggle('hidden', i + 1 !== step);
+    });
+
+    steps.forEach((s, i) => {
+      s.classList.remove('active', 'completed');
+      if (i + 1 < step) s.classList.add('completed');
+      if (i + 1 === step) s.classList.add('active');
+    });
+
+    if (progressFill) {
+      progressFill.style.width = `${(step / totalSteps) * 100}%`;
+    }
+    if (progressBar) {
+      progressBar.setAttribute('aria-valuenow', step);
+    }
+
+    // Focus the first input in the current step
+    const currentFieldset = form.querySelector(`.prequal-fieldset[data-step="${step}"]`);
+    if (currentFieldset) {
+      const firstInput = currentFieldset.querySelector('input, select, textarea');
+      if (firstInput) {
+        setTimeout(() => firstInput.focus(), 100);
+      }
+    }
+  }
+
+  function validateStep(step) {
+    const currentFieldset = form.querySelector(`.prequal-fieldset[data-step="${step}"]`);
+    if (!currentFieldset) return true;
+
+    const requiredFields = currentFieldset.querySelectorAll('[required]');
+    let valid = true;
+
+    requiredFields.forEach(field => {
+      // Clear previous errors
+      field.classList.remove('form-error');
+      field.removeAttribute('aria-invalid');
+      const existingError = field.parentElement.querySelector('.error-message');
+      if (existingError) existingError.remove();
+
+      if (!field.value.trim()) {
+        valid = false;
+        field.classList.add('form-error');
+        field.setAttribute('aria-invalid', 'true');
+        const error = document.createElement('span');
+        error.className = 'error-message';
+        error.setAttribute('role', 'alert');
+        error.textContent = 'This field is required';
+        field.parentElement.appendChild(error);
+      }
+
+      // Email validation
+      if (field.type === 'email' && field.value.trim()) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(field.value.trim())) {
+          valid = false;
+          field.classList.add('form-error');
+          field.setAttribute('aria-invalid', 'true');
+          const error = document.createElement('span');
+          error.className = 'error-message';
+          error.setAttribute('role', 'alert');
+          error.textContent = 'Please enter a valid email address';
+          field.parentElement.appendChild(error);
+        }
+      }
+
+      // Phone validation
+      if (field.type === 'tel' && field.value.trim()) {
+        const phoneRegex = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+        if (!phoneRegex.test(field.value.trim())) {
+          valid = false;
+          field.classList.add('form-error');
+          field.setAttribute('aria-invalid', 'true');
+          const error = document.createElement('span');
+          error.className = 'error-message';
+          error.setAttribute('role', 'alert');
+          error.textContent = 'Please enter a valid phone number';
+          field.parentElement.appendChild(error);
+        }
+      }
+    });
+
+    return valid;
+  }
+
+  // Event delegation for Next/Prev buttons
+  form.addEventListener('click', (e) => {
+    if (e.target.closest('.prequal-next')) {
+      e.preventDefault();
+      if (validateStep(currentStep) && currentStep < totalSteps) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+
+    if (e.target.closest('.prequal-prev')) {
+      e.preventDefault();
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+  });
+
+  // Form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!validateStep(currentStep)) return;
+
+    // Show success message
+    const formCard = form.closest('.card') || form.parentElement;
+    const success = document.createElement('div');
+    success.className = 'alert alert-success';
+    success.setAttribute('role', 'status');
+    success.innerHTML = '';
+
+    const heading = document.createElement('h3');
+    heading.textContent = 'Pre-Qualification Submitted!';
+    success.appendChild(heading);
+
+    const msg = document.createElement('p');
+    msg.textContent = 'Thank you! Adam will review your information and reach out within 24 hours to discuss your options.';
+    success.appendChild(msg);
+
+    form.style.display = 'none';
+    const progress = document.querySelector('.prequal-progress');
+    if (progress) progress.style.display = 'none';
+    formCard.appendChild(success);
+  });
+
+  // Clear errors on input
+  form.addEventListener('input', (e) => {
+    const field = e.target;
+    if (field.classList.contains('form-error')) {
+      field.classList.remove('form-error');
+      field.removeAttribute('aria-invalid');
+      const error = field.parentElement.querySelector('.error-message');
+      if (error) error.remove();
+    }
+  });
+}
+
+
+// ========================================================================
 // INIT - Single DOMContentLoaded entry point
 // ========================================================================
 
@@ -642,4 +852,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMonthlyPaymentCalculator();
   initAffordabilityCalculator();
   initRefinanceCalculator();
+  initTestimonialFilter();
+  initPrequalForm();
 });
