@@ -845,9 +845,10 @@ textarea {
   content: '✓';
   position: absolute;
   left: 0;
-  top: 0;
+  top: var(--spacing-md);
   color: var(--color-gold);
   font-weight: var(--font-weight-bold);
+  font-size: 1.25rem;
 }
 
 .feature-list.text-white li::before {
