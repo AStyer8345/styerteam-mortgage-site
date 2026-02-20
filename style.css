@@ -412,6 +412,12 @@ footer {
   color: var(--color-navy);
 }
 
+.social-links a svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
 /* ========================================================================
    6. BUTTONS & CTAs
    ======================================================================== */
@@ -1107,8 +1113,75 @@ img {
 
 .text-muted { color: var(--color-gray); }
 .text-sm { font-size: var(--font-size-sm); }
-.text-base { font-size: 1.125rem; }
-.text-center { text-align: center; }
+.text-base { font-size: var(--font-size-base); }
+.text-lg { font-size: var(--font-size-lg); color: var(--color-gray); line-height: var(--line-height-relaxed); }
+.text-white { color: var(--color-white); }
+.text-white-90 { color: rgba(255, 255, 255, 0.9); }
+
+/* Card with gold top border */
+.card-gold-top { border-top: 4px solid var(--color-gold); }
+
+/* Calculator card centering */
+.card-centered { text-align: center; padding: var(--spacing-2xl); }
+.card-icon-lg { font-size: 3rem; margin-bottom: var(--spacing-md); }
+
+/* Disclosure / licensing boxes */
+.info-box {
+  background-color: var(--color-light-gray);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.info-box h4 { margin-bottom: var(--spacing-md); color: var(--color-navy); }
+
+/* Quick jump grid for products */
+.quick-jump-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .quick-jump-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Two-column content grid */
+.grid-2-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+  .grid-2-content { grid-template-columns: 1fr; }
+}
+
+/* Product description paragraphs */
+.product-desc {
+  font-size: var(--font-size-lg);
+  color: var(--color-gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+.product-subtitle {
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Contact sidebar small text */
+.contact-detail {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: var(--spacing-xs);
+}
+
+/* Section with constrained width for readability */
+.content-readable { max-width: 900px; margin-inline: auto; }
+
+/* Overflow hidden for image containers */
+.overflow-hidden { overflow: hidden; }
 
 .section-intro {
   text-align: center;

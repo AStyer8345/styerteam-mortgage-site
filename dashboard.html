@@ -34,7 +34,7 @@
         <div class="hero-content">
           <h1 style="font-size: clamp(1.5rem, 3vw, 2.25rem);">Content Dashboard</h1>
           <p class="hero-subtitle" style="font-size: 1.125rem;">
-            Fill out a form below, copy the generated prompt, and paste it into Claude to create your content.
+            Fill out the newsletter form and hit send. AI generates the content, publishes the page, and emails your lists automatically.
           </p>
         </div>
       </div>
@@ -167,22 +167,53 @@
 
               <!-- GENERATE BUTTON -->
               <div class="dash-actions">
-                <button type="submit" class="btn btn-primary btn-lg">Generate Newsletter Prompt</button>
+                <button type="submit" class="btn btn-primary btn-lg" id="nl-submit-btn">
+                  Generate &amp; Send Newsletter
+                </button>
               </div>
             </form>
 
-            <!-- OUTPUT AREA -->
-            <div id="newsletter-output" class="dash-output hidden">
-              <div class="dash-output-header">
-                <h3>Your Claude Prompt</h3>
-                <button class="btn btn-secondary dash-copy-btn" data-target="newsletter-prompt-text">
-                  Copy to Clipboard
-                </button>
+            <!-- PROGRESS AREA -->
+            <div id="newsletter-progress" class="dash-output hidden">
+              <div class="dash-progress-steps">
+                <div class="dash-progress-step" data-step="generate">
+                  <div class="dash-progress-icon">1</div>
+                  <div class="dash-progress-label">Generating Content</div>
+                </div>
+                <div class="dash-progress-step" data-step="publish">
+                  <div class="dash-progress-icon">2</div>
+                  <div class="dash-progress-label">Publishing Page</div>
+                </div>
+                <div class="dash-progress-step" data-step="send">
+                  <div class="dash-progress-icon">3</div>
+                  <div class="dash-progress-label">Sending Emails</div>
+                </div>
+                <div class="dash-progress-step" data-step="done">
+                  <div class="dash-progress-icon">&#10003;</div>
+                  <div class="dash-progress-label">Done</div>
+                </div>
               </div>
-              <pre id="newsletter-prompt-text" class="dash-prompt-box"></pre>
-              <p class="dash-output-instructions">
-                <strong>Next step:</strong> Open Claude, paste this prompt, and Claude will generate both newsletter versions using your weekly-newsletter skill.
-              </p>
+              <div id="newsletter-status" class="dash-status-msg"></div>
+            </div>
+
+            <!-- SUCCESS RESULT -->
+            <div id="newsletter-result" class="dash-output hidden">
+              <div class="dash-result-card">
+                <h3 style="color: var(--color-success); margin-bottom: 1rem;">Newsletter Sent Successfully</h3>
+                <div class="dash-result-details">
+                  <p><strong>Web Page:</strong> <a id="result-page-url" href="#" target="_blank" rel="noopener"></a></p>
+                  <div id="result-campaigns"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ERROR AREA -->
+            <div id="newsletter-error" class="dash-output hidden">
+              <div class="dash-error-card">
+                <h3 style="color: var(--color-error); margin-bottom: 0.5rem;">Something Went Wrong</h3>
+                <p id="newsletter-error-msg"></p>
+                <button class="btn btn-secondary" id="nl-retry-btn">Try Again</button>
+              </div>
             </div>
           </div>
         </div>

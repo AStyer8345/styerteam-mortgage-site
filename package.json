@@ -1,0 +1,10 @@
+{
+  "name": "styerteam-mortgage-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Styer Team - Mortgage Solutions website with newsletter automation",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@mailchimp/mailchimp_marketing": "^3.0.80"
+  }
+}

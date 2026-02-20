@@ -1,10 +1,10 @@
 /* ==========================================================================
-   Dashboard - Prompt Builder for Newsletter & Rate Update
+   Dashboard - Newsletter Automation + Rate Update Prompt Builder
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   initDashTabs();
-  initNewsletterBuilder();
+  initNewsletterAutomation();
   initRateBuilder();
   initCopyButtons();
 });
@@ -33,80 +33,164 @@ function initDashTabs() {
 }
 
 // ========================================================================
-// NEWSLETTER PROMPT BUILDER
+// NEWSLETTER AUTOMATION (calls Netlify function)
 // ========================================================================
 
-function initNewsletterBuilder() {
+function initNewsletterAutomation() {
   const form = document.getElementById('newsletter-builder');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  const submitBtn = document.getElementById('nl-submit-btn');
+  const progressEl = document.getElementById('newsletter-progress');
+  const resultEl = document.getElementById('newsletter-result');
+  const errorEl = document.getElementById('newsletter-error');
+  const statusEl = document.getElementById('newsletter-status');
+  const retryBtn = document.getElementById('nl-retry-btn');
+
+  if (retryBtn) {
+    retryBtn.addEventListener('click', () => {
+      errorEl.classList.add('hidden');
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+    });
+  }
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Gather values
+    // Validate topic
     const topic = form.querySelector('#nl-topic').value.trim();
     if (!topic) {
       form.querySelector('#nl-topic').focus();
       return;
     }
 
+    // Gather audiences
     const audiences = [];
     form.querySelectorAll('input[name="audience"]:checked').forEach(cb => {
-      audiences.push(cb.value === 'borrower' ? 'Borrowers / Past Clients' : 'Realtors / Partners');
+      audiences.push(cb.value);
     });
 
-    const rates = buildRateString('nl');
-    const articles = form.querySelector('#nl-articles').value.trim();
-    const story = form.querySelector('#nl-story').value.trim();
-    const photo = form.querySelector('#nl-photo').value.trim();
-    const aiTool = form.querySelector('#nl-ai-tool').value.trim();
-    const notes = form.querySelector('#nl-notes').value.trim();
-
-    // Build the prompt
-    let prompt = `/weekly-newsletter\n\n`;
-    prompt += `Topic: ${topic}\n\n`;
-
-    if (audiences.length) {
-      prompt += `Audience: ${audiences.join(' + ')}\n\n`;
+    if (!audiences.length) {
+      alert('Please select at least one audience (Borrowers or Realtors).');
+      return;
     }
 
-    if (rates) {
-      prompt += `Current Rates:\n${rates}\n\n`;
+    // Gather form data
+    const formData = {
+      topic,
+      audiences,
+      rates: buildRateString('nl'),
+      articles: form.querySelector('#nl-articles').value.trim(),
+      story: form.querySelector('#nl-story').value.trim(),
+      photo: form.querySelector('#nl-photo').value.trim(),
+      aiTool: form.querySelector('#nl-ai-tool').value.trim(),
+      notes: form.querySelector('#nl-notes').value.trim(),
+    };
+
+    // Reset UI
+    progressEl.classList.remove('hidden');
+    resultEl.classList.add('hidden');
+    errorEl.classList.add('hidden');
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+
+    // Scroll to progress
+    progressEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Set initial step
+    setProgressStep('generate');
+    setStatus('Generating content with AI... this takes about 30 seconds.');
+
+    try {
+      const response = await fetch('/.netlify/functions/generate-newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Server error');
+      }
+
+      // Show completion steps
+      setProgressStep('publish');
+      setStatus('Page published at ' + data.pageUrl);
+
+      await sleep(500);
+
+      if (data.campaigns && data.campaigns.length > 0) {
+        setProgressStep('send');
+        setStatus('Emails sent to ' + data.campaigns.map(c => c.audience).join(' and ') + '.');
+        await sleep(500);
+      }
+
+      setProgressStep('done');
+      setStatus('All done!');
+
+      // Show results
+      await sleep(300);
+      progressEl.classList.add('hidden');
+      resultEl.classList.remove('hidden');
+
+      const pageUrlEl = document.getElementById('result-page-url');
+      pageUrlEl.href = data.pageUrl;
+      pageUrlEl.textContent = data.pageUrl;
+
+      const campaignsEl = document.getElementById('result-campaigns');
+      campaignsEl.innerHTML = '';
+      if (data.campaigns && data.campaigns.length > 0) {
+        data.campaigns.forEach(c => {
+          const p = document.createElement('p');
+          p.innerHTML = '<strong>' + capitalize(c.audience) + ' Email:</strong> ' +
+            escapeHtml(c.subject) + ' <span style="color: var(--color-success);">(Sent)</span>';
+          campaignsEl.appendChild(p);
+        });
+      }
+
+      resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    } catch (err) {
+      console.error('Newsletter automation error:', err);
+      progressEl.classList.add('hidden');
+      errorEl.classList.remove('hidden');
+      document.getElementById('newsletter-error-msg').textContent = err.message;
+      errorEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } finally {
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
     }
-
-    if (articles) {
-      prompt += `Articles / References:\n${articles}\n\n`;
-    }
-
-    if (story) {
-      prompt += `Personal Story / Anecdote:\n${story}\n\n`;
-    }
-
-    if (photo) {
-      prompt += `Photo URL for personal note section: ${photo}\n\n`;
-    }
-
-    if (aiTool) {
-      prompt += `AI Tool Tip for Realtor Version:\n${aiTool}\n\n`;
-    }
-
-    if (notes) {
-      prompt += `Additional Notes:\n${notes}\n\n`;
-    }
-
-    prompt += `Generate both the borrower and realtor newsletter versions. Push to Jungo when done.`;
-
-    // Show output
-    const output = document.getElementById('newsletter-output');
-    const promptBox = document.getElementById('newsletter-prompt-text');
-    promptBox.textContent = prompt;
-    output.classList.remove('hidden');
-    output.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 }
 
+// Progress step helper
+function setProgressStep(activeStep) {
+  const steps = document.querySelectorAll('.dash-progress-step');
+  const order = ['generate', 'publish', 'send', 'done'];
+  const activeIndex = order.indexOf(activeStep);
+
+  steps.forEach((step, i) => {
+    const stepName = step.dataset.step;
+    const stepIndex = order.indexOf(stepName);
+
+    step.classList.remove('active', 'completed');
+    if (stepIndex < activeIndex) {
+      step.classList.add('completed');
+    } else if (stepIndex === activeIndex) {
+      step.classList.add('active');
+    }
+  });
+}
+
+function setStatus(msg) {
+  const el = document.getElementById('newsletter-status');
+  if (el) el.textContent = msg;
+}
+
 // ========================================================================
-// RATE UPDATE TEXT PROMPT BUILDER
+// RATE UPDATE TEXT PROMPT BUILDER (stays as copy-paste)
 // ========================================================================
 
 function initRateBuilder() {
@@ -116,7 +200,6 @@ function initRateBuilder() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Check at least the primary rate is filled
     const primaryRate = form.querySelector('#rt-conv30-rate').value.trim();
     if (!primaryRate) {
       form.querySelector('#rt-conv30-rate').focus();
@@ -133,10 +216,8 @@ function initRateBuilder() {
       audiences.push(cb.value === 'borrower' ? 'Borrowers / Past Clients' : 'Realtors / Partners');
     });
 
-    // Build the prompt
-    let prompt = `Write a weekly rate update text message blast for Adam Styer (NMLS #513013, Mortgage Solutions, Austin TX).\n\n`;
-
-    prompt += `Current Rates:\n${rates}\n\n`;
+    let prompt = 'Write a weekly rate update text message blast for Adam Styer (NMLS #513013, Mortgage Solutions, Austin TX).\n\n';
+    prompt += 'Current Rates:\n' + rates + '\n\n';
 
     if (direction) {
       const dirLabels = {
@@ -145,34 +226,33 @@ function initRateBuilder() {
         'flat': 'Rates are flat / unchanged',
         'volatile': 'Rates have been volatile / mixed'
       };
-      prompt += `Direction: ${dirLabels[direction] || direction}\n\n`;
+      prompt += 'Direction: ' + (dirLabels[direction] || direction) + '\n\n';
     }
 
     if (audiences.length) {
-      prompt += `Audience: ${audiences.join(' + ')}\n\n`;
+      prompt += 'Audience: ' + audiences.join(' + ') + '\n\n';
     }
 
     if (blurb) {
-      prompt += `Talking Points / Blurb Ideas:\n${blurb}\n\n`;
+      prompt += 'Talking Points / Blurb Ideas:\n' + blurb + '\n\n';
     }
 
     if (notes) {
-      prompt += `Additional Notes:\n${notes}\n\n`;
+      prompt += 'Additional Notes:\n' + notes + '\n\n';
     }
 
-    prompt += `Guidelines:\n`;
-    prompt += `- Keep each text under 300 characters (SMS-friendly)\n`;
-    prompt += `- Sound like Adam: direct, warm, confident, not salesy\n`;
-    prompt += `- Include the key rate(s) in the message\n`;
-    prompt += `- End with a soft CTA (call, text back, link to apply)\n`;
-    prompt += `- Adam's phone: (512) 956-6010\n`;
+    prompt += 'Guidelines:\n';
+    prompt += '- Keep each text under 300 characters (SMS-friendly)\n';
+    prompt += '- Sound like Adam: direct, warm, confident, not salesy\n';
+    prompt += '- Include the key rate(s) in the message\n';
+    prompt += '- End with a soft CTA (call, text back, link to apply)\n';
+    prompt += "- Adam's phone: (512) 956-6010\n";
     if (audiences.length > 1) {
-      prompt += `- Generate separate versions for borrowers and realtors\n`;
-      prompt += `- Borrower version: educational, what it means for them\n`;
-      prompt += `- Realtor version: peer-to-peer, how to use this with clients\n`;
+      prompt += '- Generate separate versions for borrowers and realtors\n';
+      prompt += '- Borrower version: educational, what it means for them\n';
+      prompt += '- Realtor version: peer-to-peer, how to use this with clients\n';
     }
 
-    // Show output
     const output = document.getElementById('rate-output');
     const promptBox = document.getElementById('rate-prompt-text');
     promptBox.textContent = prompt;
@@ -185,18 +265,14 @@ function initRateBuilder() {
 // HELPERS
 // ========================================================================
 
-/**
- * Build a formatted rate string from the rate table inputs.
- * prefix: 'nl' for newsletter, 'rt' for rate update
- */
 function buildRateString(prefix) {
   const products = [
-    { rate: `${prefix}-conv30-rate`, apr: `${prefix}-conv30-apr`, label: '30-Yr Fixed (Primary)' },
-    { rate: `${prefix}-conv15-rate`, apr: `${prefix}-conv15-apr`, label: '15-Yr Fixed' },
-    { rate: `${prefix}-jumbo-rate`,  apr: `${prefix}-jumbo-apr`,  label: '30-Yr Jumbo' },
-    { rate: `${prefix}-va-rate`,     apr: `${prefix}-va-apr`,     label: 'VA 30-Yr' },
-    { rate: `${prefix}-fha30-rate`,  apr: `${prefix}-fha30-apr`,  label: 'FHA 30-Yr' },
-    { rate: `${prefix}-fha-arm-rate`,apr: `${prefix}-fha-arm-apr`,label: 'FHA 5-Yr ARM' }
+    { rate: prefix + '-conv30-rate', apr: prefix + '-conv30-apr', label: '30-Yr Fixed (Primary)' },
+    { rate: prefix + '-conv15-rate', apr: prefix + '-conv15-apr', label: '15-Yr Fixed' },
+    { rate: prefix + '-jumbo-rate',  apr: prefix + '-jumbo-apr',  label: '30-Yr Jumbo' },
+    { rate: prefix + '-va-rate',     apr: prefix + '-va-apr',     label: 'VA 30-Yr' },
+    { rate: prefix + '-fha30-rate',  apr: prefix + '-fha30-apr',  label: 'FHA 30-Yr' },
+    { rate: prefix + '-fha-arm-rate',apr: prefix + '-fha-arm-apr',label: 'FHA 5-Yr ARM' }
   ];
 
   const lines = [];
@@ -207,13 +283,27 @@ function buildRateString(prefix) {
     const apr = aprEl ? aprEl.value.trim() : '';
 
     if (rate) {
-      let line = `  ${p.label}: ${rate}`;
-      if (apr) line += ` | APR: ${apr}`;
+      let line = '  ' + p.label + ': ' + rate;
+      if (apr) line += ' | APR: ' + apr;
       lines.push(line);
     }
   });
 
   return lines.join('\n');
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
 }
 
 // ========================================================================
@@ -241,7 +331,6 @@ function initCopyButtons() {
         btn.classList.remove('copied');
       }, 2000);
     }).catch(() => {
-      // Fallback: select the text
       const range = document.createRange();
       range.selectNodeContents(target);
       const sel = window.getSelection();
