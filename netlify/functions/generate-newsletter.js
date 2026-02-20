@@ -67,6 +67,23 @@ exports.handler = async (event) => {
       };
     }
 
+    // Inject photo into content if provided (don't rely on AI to do it)
+    if (formData.photo) {
+      const webImg = `<img src="${formData.photo}" alt="Adam Styer" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;">`;
+      const emailImg = `<img src="${formData.photo}" alt="Adam Styer" width="300" style="max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 16px auto;">`;
+
+      // Insert photo after first </p> or </h2> in web content
+      parsed.webContent = injectAfterFirstBlock(parsed.webContent, webImg);
+
+      // Insert photo into emails
+      if (parsed.borrowerEmail) {
+        parsed.borrowerEmail = injectAfterFirstBlock(parsed.borrowerEmail, emailImg);
+      }
+      if (parsed.realtorEmail) {
+        parsed.realtorEmail = injectAfterFirstBlock(parsed.realtorEmail, emailImg);
+      }
+    }
+
     // ----------------------------------------------------------------
     // STEP 2: Build page data (always) / Publish (only if live)
     // ----------------------------------------------------------------
@@ -293,4 +310,20 @@ async function createAndSendCampaign({ listId, subject, preheader, html, fromNam
 
 function injectPageLink(html, pageUrl) {
   return html.replace(/\[PAGE_URL\]/g, pageUrl);
+}
+
+// ====================================================================
+// HELPER: Inject an element after the first block-level closing tag
+// ====================================================================
+
+function injectAfterFirstBlock(html, imgTag) {
+  // Try to insert after the first </p>, </h2>, </h3>, or </td>
+  const blockClose = /<\/(p|h[1-3]|td)>/i;
+  const match = html.match(blockClose);
+  if (match) {
+    const idx = match.index + match[0].length;
+    return html.slice(0, idx) + "\n" + imgTag + "\n" + html.slice(idx);
+  }
+  // Fallback: prepend
+  return imgTag + "\n" + html;
 }
