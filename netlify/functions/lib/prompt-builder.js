@@ -63,11 +63,9 @@ ${story}
 
   if (photo) {
     prompt += `
-## PHOTO URL
-${photo}
-IMPORTANT: You MUST include this photo in your outputs. Use an <img> tag with this exact URL.
-- In the WEB PAGE CONTENT: Add the image near the top of the article or in the personal note section. Use: <img src="${photo}" alt="Adam Styer" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;">
-- In the EMAIL HTML: Include the image in the email body. Use: <img src="${photo}" alt="Adam Styer" width="300" style="max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 16px auto;">
+## PHOTO — MUST include this image in web content and emails
+Web: <img src="${photo}" alt="Adam Styer" style="max-width:100%;border-radius:8px;margin:1rem 0">
+Email: <img src="${photo}" alt="Adam Styer" width="300" style="max-width:100%;height:auto;border-radius:8px;display:block;margin:16px auto">
 `;
   }
 
@@ -111,14 +109,12 @@ ${wantsRealtor ? `### REALTOR EMAIL
 - CTA: "Read the Full Update" linking to [PAGE_URL]` : ""}
 
 ## WEB PAGE CONTENT
-The full article content for the web page. This is the meat - the detailed, valuable content that the email teases.
-- 600-1000 words
-- Use HTML tags: <h2>, <p>, <ul>, <ol>, <li>, <strong>, <a>, <hr>
-- Include internal links where relevant to: products.html (loan programs), calculators.html (calculators), prequal.html (pre-qualification), contact.html (contact)
-- All internal links should use relative paths with "../" prefix (e.g., ../products.html)
-${rates ? "- Include a rate summary section if rates were provided" : ""}
-- End with Adam's sign-off: "Talk soon,\\nAdam Styer\\nThe Styer Team | Mortgage Solutions, LP\\nNMLS# 513013 | (512) 956-6010"
-- Write with SEO in mind but keep it natural
+Full article for the web page — the valuable content the email teases.
+- 400-700 words (be concise, no filler)
+- HTML tags: <h2>, <p>, <ul>, <ol>, <li>, <strong>, <a>, <hr>
+- Internal links use "../" prefix (../products.html, ../calculators.html, ../prequal.html, ../contact.html)
+${rates ? "- Include a rate summary section" : ""}
+- End with: "Talk soon,\\nAdam Styer\\nThe Styer Team | Mortgage Solutions, LP\\nNMLS# 513013 | (512) 956-6010"
 
 ## OUTPUT FORMAT
 You MUST use these exact delimiters to separate your outputs. Do not deviate.

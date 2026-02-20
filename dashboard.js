@@ -167,6 +167,12 @@ function initNewsletterAutomation() {
         body: JSON.stringify(formData),
       });
 
+      // Handle non-JSON responses (e.g. timeout HTML pages)
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error('The server took too long to respond. Please try again — it usually works on the second attempt.');
+      }
+
       const data = await response.json();
 
       if (!response.ok) {
