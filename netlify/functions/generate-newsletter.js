@@ -219,7 +219,7 @@ function parseAIResponse(text) {
   const webMatch = text.match(
     /---WEB_CONTENT_START---([\s\S]*?)---WEB_CONTENT_END---/
   );
-  if (webMatch) result.webContent = webMatch[1].trim();
+  if (webMatch) result.webContent = stripNestedHtmlDocument(webMatch[1].trim());
 
   // Extract metadata
   const subjectBMatch = text.match(/BORROWER_SUBJECT:\s*(.+)/);
@@ -368,4 +368,33 @@ function injectPhotoIntoPersonalSection(html, photoUrl) {
   }
 
   return html;
+}
+
+// ====================================================================
+// HELPER: Strip nested HTML document tags (AI sometimes generates full pages)
+// ====================================================================
+
+function stripNestedHtmlDocument(html) {
+  let cleaned = html;
+
+  // Remove <!DOCTYPE ...>
+  cleaned = cleaned.replace(/<!DOCTYPE[^>]*>/gi, "");
+
+  // Remove <html> and </html>
+  cleaned = cleaned.replace(/<\/?html[^>]*>/gi, "");
+
+  // Remove entire <head>...</head> block (includes <style>, <meta>, <title>)
+  cleaned = cleaned.replace(/<head[\s\S]*?<\/head>/gi, "");
+
+  // Remove <body> and </body>
+  cleaned = cleaned.replace(/<\/?body[^>]*>/gi, "");
+
+  // Remove any leftover <style>...</style> blocks
+  cleaned = cleaned.replace(/<style[\s\S]*?<\/style>/gi, "");
+
+  // Remove wrapper <div class="container"> that AI adds (keep inner content)
+  cleaned = cleaned.replace(/^[\s\n]*<div class="container">\s*/i, "");
+  cleaned = cleaned.replace(/\s*<\/div>[\s\n]*$/i, "");
+
+  return cleaned.trim();
 }

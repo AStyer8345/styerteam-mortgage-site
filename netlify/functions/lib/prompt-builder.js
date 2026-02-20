@@ -89,11 +89,13 @@ ${wantsRealtor ? `### REALTOR EMAIL
 ${aiTool ? "- Include a brief 'AI Edge' section" : ""}` : ""}
 
 ## WEB ARTICLE STRUCTURE
-The full article both emails link to. 400-600 words total. Two sections:
+The full article both emails link to. 400-600 words total. Two sections.
+CRITICAL: Output ONLY article body HTML fragments — just <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>, <hr>, <img> tags.
+DO NOT output <!DOCTYPE>, <html>, <head>, <body>, <style>, <title>, or <meta> tags. DO NOT wrap content in a <div class="container">. The article body gets inserted into an existing page template.
 
 ### Section 1: The Market Update
 Cover the topic with real substance. Use Adam's voice.
-- HTML: <h2>, <p>, <ul>, <li>, <strong>, <a>
+- HTML: <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>
 - Links use "../" prefix (../products.html, ../calculators.html, ../prequal.html, ../contact.html)
 ${rates ? "- Include a rate snapshot" : ""}
 
