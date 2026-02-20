@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Dashboard | The Styer Team</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.png" alt="Mortgage Solutions" class="nav-logo-img" width="180" height="40">
+        </a>
+        <span class="dash-badge">Content Dashboard</span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" style="padding: 2.5rem 0;">
+      <div class="container">
+        <div class="hero-content">
+          <h1 style="font-size: clamp(1.5rem, 3vw, 2.25rem);">Content Dashboard</h1>
+          <p class="hero-subtitle" style="font-size: 1.125rem;">
+            Fill out a form below, copy the generated prompt, and paste it into Claude to create your content.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB NAVIGATION -->
+    <section style="padding-top: 1rem;">
+      <div class="container">
+        <div class="dash-tabs">
+          <button class="dash-tab active" data-target="newsletter-form">
+            <span class="dash-tab-icon">&#9993;</span>
+            Weekly Newsletter
+          </button>
+          <button class="dash-tab" data-target="rate-form">
+            <span class="dash-tab-icon">&#128200;</span>
+            Rate Update Text
+          </button>
+        </div>
+
+        <!-- ============================================
+             NEWSLETTER FORM
+             ============================================ -->
+        <div id="newsletter-form" class="dash-panel active">
+          <div class="card" style="max-width: 800px; margin: 0 auto;">
+            <h2 style="margin-bottom: 0.5rem;">Weekly Newsletter</h2>
+            <p style="color: #6B7280; margin-bottom: 2rem;">
+              Fill in the details below. The more you give, the better the output.
+              Leave anything blank if you don't have it this week.
+            </p>
+
+            <form id="newsletter-builder" autocomplete="off">
+              <!-- AUDIENCE -->
+              <div class="form-group">
+                <label>Who is this for?</label>
+                <div class="dash-toggle-group">
+                  <label class="dash-toggle">
+                    <input type="checkbox" name="audience" value="borrower" checked>
+                    <span class="dash-toggle-label">Borrowers / Past Clients</span>
+                  </label>
+                  <label class="dash-toggle">
+                    <input type="checkbox" name="audience" value="realtor" checked>
+                    <span class="dash-toggle-label">Realtors / Partners</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- TOPIC -->
+              <div class="form-group">
+                <label for="nl-topic">This Week's Topic / Theme <span class="required-star">*</span></label>
+                <input type="text" id="nl-topic" name="topic" placeholder="e.g. Rates dropped this week, spring market heating up, new FHA changes..." required>
+                <span class="form-helper">What's the main thing you want to talk about?</span>
+              </div>
+
+              <!-- RATES -->
+              <div class="form-group">
+                <label>Current Rates</label>
+                <div class="dash-rate-table">
+                  <div class="dash-rate-table-header">
+                    <span class="dash-rate-table-product">Product</span>
+                    <span class="dash-rate-table-col">Rate</span>
+                    <span class="dash-rate-table-col">APR</span>
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">30-Yr Fixed (Primary)</span>
+                    <input type="text" id="nl-conv30-rate" name="conv30Rate" placeholder="5.875%">
+                    <input type="text" id="nl-conv30-apr" name="conv30APR" placeholder="5.910%">
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">15-Yr Fixed</span>
+                    <input type="text" id="nl-conv15-rate" name="conv15Rate" placeholder="5.25%">
+                    <input type="text" id="nl-conv15-apr" name="conv15APR" placeholder="5.357%">
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">30-Yr Jumbo</span>
+                    <input type="text" id="nl-jumbo-rate" name="jumboRate" placeholder="6.375%">
+                    <input type="text" id="nl-jumbo-apr" name="jumboAPR" placeholder="6.423%">
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">VA 30-Yr</span>
+                    <input type="text" id="nl-va-rate" name="vaRate" placeholder="5.375%">
+                    <input type="text" id="nl-va-apr" name="vaAPR" placeholder="5.522%">
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">FHA 30-Yr</span>
+                    <input type="text" id="nl-fha30-rate" name="fha30Rate" placeholder="5.375%">
+                    <input type="text" id="nl-fha30-apr" name="fha30APR" placeholder="5.946%">
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">FHA 5-Yr ARM</span>
+                    <input type="text" id="nl-fha-arm-rate" name="fhaArmRate" placeholder="4.875%">
+                    <input type="text" id="nl-fha-arm-apr" name="fhaArmAPR" placeholder="5.947%">
+                  </div>
+                </div>
+                <span class="form-helper">Fill in whichever rates you have this week.</span>
+              </div>
+
+              <!-- ARTICLES -->
+              <div class="form-group">
+                <label for="nl-articles">Articles / Links to Reference</label>
+                <textarea id="nl-articles" name="articles" rows="4" placeholder="Paste URLs or article text you want summarized or referenced in the newsletter..."></textarea>
+                <span class="form-helper">News articles, market data, anything you want included or summarized.</span>
+              </div>
+
+              <!-- STORY / PERSONAL ANGLE -->
+              <div class="form-group">
+                <label for="nl-story">Personal Story / Anecdote</label>
+                <textarea id="nl-story" name="story" rows="4" placeholder="e.g. Had a client close this week who almost gave up. Bullet points are fine:&#10;- Client was nervous about rates&#10;- Locked at the right time&#10;- Saved $200/mo vs waiting"></textarea>
+                <span class="form-helper">A story, client win, or personal touch. Bullet points work great.</span>
+              </div>
+
+              <!-- PHOTO URL -->
+              <div class="form-group">
+                <label for="nl-photo">Photo URL (optional)</label>
+                <input type="url" id="nl-photo" name="photo" placeholder="https://lh3.googleusercontent.com/d/...">
+                <span class="form-helper">Google Drive image link for the personal note section. Leave blank for no photo.</span>
+              </div>
+
+              <!-- AI TOOLS (REALTOR ONLY) -->
+              <div class="form-group">
+                <label for="nl-ai-tool">AI Tool Tip for Realtors (optional)</label>
+                <textarea id="nl-ai-tool" name="aiTool" rows="3" placeholder="e.g. Show realtors how to use ChatGPT to write property descriptions, or a prompt they can use for follow-up emails..."></textarea>
+                <span class="form-helper">An AI prompt or tool tip for the realtor version's "AI Edge" section.</span>
+              </div>
+
+              <!-- EXTRA NOTES -->
+              <div class="form-group">
+                <label for="nl-notes">Anything Else</label>
+                <textarea id="nl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid, CTA ideas..."></textarea>
+              </div>
+
+              <!-- GENERATE BUTTON -->
+              <div class="dash-actions">
+                <button type="submit" class="btn btn-primary btn-lg">Generate Newsletter Prompt</button>
+              </div>
+            </form>
+
+            <!-- OUTPUT AREA -->
+            <div id="newsletter-output" class="dash-output hidden">
+              <div class="dash-output-header">
+                <h3>Your Claude Prompt</h3>
+                <button class="btn btn-secondary dash-copy-btn" data-target="newsletter-prompt-text">
+                  Copy to Clipboard
+                </button>
+              </div>
+              <pre id="newsletter-prompt-text" class="dash-prompt-box"></pre>
+              <p class="dash-output-instructions">
+                <strong>Next step:</strong> Open Claude, paste this prompt, and Claude will generate both newsletter versions using your weekly-newsletter skill.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================
+             RATE UPDATE TEXT FORM
+             ============================================ -->
+        <div id="rate-form" class="dash-panel">
+          <div class="card" style="max-width: 800px; margin: 0 auto;">
+            <h2 style="margin-bottom: 0.5rem;">Rate Update Text</h2>
+            <p style="color: #6B7280; margin-bottom: 2rem;">
+              Quick rate update for text/SMS blasts. Fill in rates and a short blurb idea.
+            </p>
+
+            <form id="rate-builder" autocomplete="off">
+              <!-- RATES TABLE -->
+              <div class="form-group">
+                <label>Current Rates <span class="required-star">*</span></label>
+                <div class="dash-rate-table">
+                  <div class="dash-rate-table-header">
+                    <span class="dash-rate-table-product">Product</span>
+                    <span class="dash-rate-table-col">Rate</span>
+                    <span class="dash-rate-table-col">APR</span>
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">30-Yr Fixed (Primary)</span>
+                    <input type="text" id="rt-conv30-rate" name="conv30Rate" placeholder="5.875%" required>
+                    <input type="text" id="rt-conv30-apr" name="conv30APR" placeholder="5.910%">
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">15-Yr Fixed</span>
+                    <input type="text" id="rt-conv15-rate" name="conv15Rate" placeholder="5.25%">
+                    <input type="text" id="rt-conv15-apr" name="conv15APR" placeholder="5.357%">
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">30-Yr Jumbo</span>
+                    <input type="text" id="rt-jumbo-rate" name="jumboRate" placeholder="6.375%">
+                    <input type="text" id="rt-jumbo-apr" name="jumboAPR" placeholder="6.423%">
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">VA 30-Yr</span>
+                    <input type="text" id="rt-va-rate" name="vaRate" placeholder="5.375%">
+                    <input type="text" id="rt-va-apr" name="vaAPR" placeholder="5.522%">
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">FHA 30-Yr</span>
+                    <input type="text" id="rt-fha30-rate" name="fha30Rate" placeholder="5.375%">
+                    <input type="text" id="rt-fha30-apr" name="fha30APR" placeholder="5.946%">
+                  </div>
+                  <div class="dash-rate-table-row">
+                    <span class="dash-rate-table-product">FHA 5-Yr ARM</span>
+                    <input type="text" id="rt-fha-arm-rate" name="fhaArmRate" placeholder="4.875%">
+                    <input type="text" id="rt-fha-arm-apr" name="fhaArmAPR" placeholder="5.947%">
+                  </div>
+                </div>
+              </div>
+
+              <!-- RATE DIRECTION -->
+              <div class="form-group">
+                <label for="rt-direction">Rate Direction</label>
+                <select id="rt-direction" name="direction">
+                  <option value="">-- Select --</option>
+                  <option value="down">Rates dropped</option>
+                  <option value="up">Rates went up</option>
+                  <option value="flat">Rates flat / unchanged</option>
+                  <option value="volatile">Rates volatile / mixed</option>
+                </select>
+              </div>
+
+              <!-- BLURB IDEA -->
+              <div class="form-group">
+                <label for="rt-blurb">Blurb / Talking Points</label>
+                <textarea id="rt-blurb" name="blurb" rows="4" placeholder="e.g. Rates dipped after Fed meeting. Good time to lock. Spring inventory picking up in Austin..."></textarea>
+                <span class="form-helper">Short ideas for what the text message should say. Claude will polish it.</span>
+              </div>
+
+              <!-- AUDIENCE -->
+              <div class="form-group">
+                <label>Who gets this text?</label>
+                <div class="dash-toggle-group">
+                  <label class="dash-toggle">
+                    <input type="checkbox" name="rt-audience" value="borrower" checked>
+                    <span class="dash-toggle-label">Borrowers / Past Clients</span>
+                  </label>
+                  <label class="dash-toggle">
+                    <input type="checkbox" name="rt-audience" value="realtor" checked>
+                    <span class="dash-toggle-label">Realtors / Partners</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- EXTRA NOTES -->
+              <div class="form-group">
+                <label for="rt-notes">Anything Else</label>
+                <textarea id="rt-notes" name="notes" rows="2" placeholder="Special offers, events coming up, anything to mention..."></textarea>
+              </div>
+
+              <!-- GENERATE BUTTON -->
+              <div class="dash-actions">
+                <button type="submit" class="btn btn-primary btn-lg">Generate Rate Text Prompt</button>
+              </div>
+            </form>
+
+            <!-- OUTPUT AREA -->
+            <div id="rate-output" class="dash-output hidden">
+              <div class="dash-output-header">
+                <h3>Your Claude Prompt</h3>
+                <button class="btn btn-secondary dash-copy-btn" data-target="rate-prompt-text">
+                  Copy to Clipboard
+                </button>
+              </div>
+              <pre id="rate-prompt-text" class="dash-prompt-box"></pre>
+              <p class="dash-output-instructions">
+                <strong>Next step:</strong> Open Claude, paste this prompt, and Claude will generate your rate update text messages.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (simplified) -->
+  <footer style="margin-top: 3rem;">
+    <div class="container">
+      <div class="footer-bottom" style="padding: 2rem 0;">
+        <div>
+          <p>&copy; 2025 Mortgage Solutions, LP. Internal use only.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="dashboard.js" defer></script>
+</body>
+</html>
