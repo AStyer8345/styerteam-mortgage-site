@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mortgage Calculators | Payment & Affordability | Mortgage Solutions</title>
-  <meta name="description" content="Use our free mortgage calculators to estimate your monthly payment, determine how much house you can afford, and analyze refinance scenarios.">
+  <meta name="description" content="Use our free mortgage calculators to estimate your monthly payment with amortization and analyze refinance scenarios. Powered by HousingBrief.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Free Mortgage Calculators | Payment & Affordability">
@@ -120,219 +120,25 @@
     <!-- CALCULATORS -->
     <section>
       <div class="container">
-        <div data-tabs class="tabs-wrapper">
-          <!-- TAB BUTTONS -->
-          <div class="tabs">
-            <button class="tab-button" data-tab="payment">Monthly Payment</button>
-            <button class="tab-button" data-tab="affordability">Home Affordability</button>
-            <button class="tab-button" data-tab="refinance">Refinance Analysis</button>
+        <div class="grid grid-2" style="gap: 2rem; margin-bottom: 3rem;">
+          <!-- MORTGAGE PAYMENT CALCULATOR -->
+          <div class="card" style="text-align: center; padding: 2.5rem 2rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">&#128178;</div>
+            <h3 style="margin-bottom: 1rem;">Mortgage Payment Calculator</h3>
+            <p style="color: #6B7280; margin-bottom: 1.5rem;">
+              Calculate your monthly mortgage payment with a full amortization schedule. Adjust home price, loan amount, interest rate, and loan term to see your breakdown.
+            </p>
+            <a href="https://housingbrief.com/mortgage-calculator/580507b0becf1e0f7001dcfc" class="btn btn-primary" target="_blank" rel="noopener">Open Payment Calculator</a>
           </div>
 
-          <!-- TAB 1: MONTHLY PAYMENT CALCULATOR -->
-          <div class="tab-content" data-tab-content="payment">
-            <div class="calc-layout">
-              <!-- INPUTS -->
-              <div id="monthly-payment-calc">
-                <h3 style="margin-bottom: 1.5rem;">Calculate Your Monthly Payment</h3>
-
-                <div class="form-group">
-                  <label for="loan-amount">Loan Amount</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="loan-amount" name="loan-amount" min="50000" max="10000000" value="300000" placeholder="300000">
-                    <div class="input-unit">$</div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="interest-rate">Interest Rate (%)</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="interest-rate" name="interest-rate" min="0" max="12" step="0.01" value="6.5" placeholder="6.5">
-                    <div class="input-unit">%</div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="loan-term">Loan Term (Years)</label>
-                  <div class="input-with-unit">
-                    <select id="loan-term" name="loan-term">
-                      <option value="10">10 years</option>
-                      <option value="15">15 years</option>
-                      <option value="20">20 years</option>
-                      <option selected value="30">30 years</option>
-                    </select>
-                  </div>
-                </div>
-
-                <hr class="separator">
-
-                <div class="form-group">
-                  <label for="property-tax">Annual Property Tax</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="property-tax" name="property-tax" min="0" value="0" placeholder="0">
-                    <div class="input-unit">$</div>
-                  </div>
-                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Optional. Average Austin: ~0.8% of home value annually</p>
-                </div>
-
-                <div class="form-group">
-                  <label for="homeowners-insurance">Annual Homeowners Insurance</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="homeowners-insurance" name="homeowners-insurance" min="0" value="0" placeholder="0">
-                    <div class="input-unit">$</div>
-                  </div>
-                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Optional. Average Austin: $900-1,200/year</p>
-                </div>
-
-                <div class="form-group">
-                  <label for="pmi">Monthly PMI (if applicable)</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="pmi" name="pmi" min="0" value="0" placeholder="0" step="0.01">
-                    <div class="input-unit">$</div>
-                  </div>
-                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Mortgage insurance, if down payment &lt; 20%</p>
-                </div>
-              </div>
-
-              <!-- OUTPUT -->
-              <div data-output="payment" aria-live="polite" style="position: sticky; top: 100px;">
-                <p style="color: #6B7280; margin-bottom: 1rem;">Your results will appear here...</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- TAB 2: AFFORDABILITY CALCULATOR -->
-          <div class="tab-content" data-tab-content="affordability">
-            <div class="calc-layout">
-              <!-- INPUTS -->
-              <div id="affordability-calc">
-                <h3 style="margin-bottom: 1.5rem;">How Much House Can You Afford?</h3>
-
-                <div class="form-group">
-                  <label for="annual-income">Annual Household Income</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="annual-income" name="annual-income" min="0" value="100000" placeholder="100000">
-                    <div class="input-unit">$</div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="monthly-debts">Total Monthly Debts</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="monthly-debts" name="monthly-debts" min="0" value="0" placeholder="0">
-                    <div class="input-unit">$</div>
-                  </div>
-                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Car loans, credit cards, student loans, etc.</p>
-                </div>
-
-                <div class="form-group">
-                  <label for="down-payment">Available Down Payment</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="down-payment" name="down-payment" min="0" value="50000" placeholder="50000">
-                    <div class="input-unit">$</div>
-                  </div>
-                </div>
-
-                <hr class="separator">
-
-                <div class="form-group">
-                  <label for="interest-rate-afford">Current Interest Rate (%)</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="interest-rate-afford" name="interest-rate" min="0" max="12" step="0.01" value="6.5" placeholder="6.5">
-                    <div class="input-unit">%</div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="loan-term-afford">Loan Term (Years)</label>
-                  <div class="input-with-unit">
-                    <select id="loan-term-afford" name="loan-term">
-                      <option value="15">15 years</option>
-                      <option selected value="30">30 years</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <!-- OUTPUT -->
-              <div data-output="affordability" aria-live="polite" style="position: sticky; top: 100px;">
-                <p style="color: #6B7280; margin-bottom: 1rem;">Your results will appear here...</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- TAB 3: REFINANCE CALCULATOR -->
-          <div class="tab-content" data-tab-content="refinance">
-            <div class="calc-layout">
-              <!-- INPUTS -->
-              <div id="refinance-calc">
-                <h3 style="margin-bottom: 1.5rem;">Should You Refinance?</h3>
-
-                <h4 style="margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1rem;">Current Loan</h4>
-
-                <div class="form-group">
-                  <label for="current-balance">Current Loan Balance</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="current-balance" name="current-balance" min="0" value="250000" placeholder="250000">
-                    <div class="input-unit">$</div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="current-rate">Current Interest Rate (%)</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="current-rate" name="current-rate" min="0" max="12" step="0.01" value="7.0" placeholder="7.0">
-                    <div class="input-unit">%</div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="current-payment">Current Monthly Payment (P&I)</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="current-payment" name="current-payment" min="0" value="1663" placeholder="1663">
-                    <div class="input-unit">$</div>
-                  </div>
-                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Principal and interest only</p>
-                </div>
-
-                <hr class="separator">
-
-                <h4 style="margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1rem;">New Loan</h4>
-
-                <div class="form-group">
-                  <label for="new-rate">New Interest Rate (%)</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="new-rate" name="new-rate" min="0" max="12" step="0.01" value="5.5" placeholder="5.5">
-                    <div class="input-unit">%</div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="new-term">New Loan Term (Years)</label>
-                  <div class="input-with-unit">
-                    <select id="new-term" name="new-term">
-                      <option value="10">10 years</option>
-                      <option value="15">15 years</option>
-                      <option value="20">20 years</option>
-                      <option selected value="30">30 years</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="closing-costs">Estimated Closing Costs</label>
-                  <div class="input-with-unit">
-                    <input type="number" id="closing-costs" name="closing-costs" min="0" value="3000" placeholder="3000">
-                    <div class="input-unit">$</div>
-                  </div>
-                  <p style="font-size: 0.875rem; color: #6B7280; margin-top: 0.5rem;">Usually 2-5% of loan amount</p>
-                </div>
-              </div>
-
-              <!-- OUTPUT -->
-              <div data-output="refinance" aria-live="polite" style="position: sticky; top: 100px;">
-                <p style="color: #6B7280; margin-bottom: 1rem;">Your results will appear here...</p>
-              </div>
-            </div>
+          <!-- REFINANCE CALCULATOR -->
+          <div class="card" style="text-align: center; padding: 2.5rem 2rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">&#128200;</div>
+            <h3 style="margin-bottom: 1rem;">Should I Refinance?</h3>
+            <p style="color: #6B7280; margin-bottom: 1.5rem;">
+              Compare your current mortgage to a new loan. See monthly payment savings, total interest comparison, and your break-even point to decide if refinancing makes sense.
+            </p>
+            <a href="https://housingbrief.com/mortgage-calculator/should-i-refinance/580507b0becf1e0f7001dcfc" class="btn btn-primary" target="_blank" rel="noopener">Open Refinance Calculator</a>
           </div>
         </div>
       </div>
@@ -356,23 +162,16 @@
 
         <div class="grid grid-2">
           <div class="card">
-            <h3>Monthly Payment Calculator</h3>
+            <h3>Mortgage Payment Calculator</h3>
             <p>
-              This calculator estimates your monthly mortgage payment based on loan amount, interest rate, and term. It includes property taxes, homeowners insurance, and PMI if applicable. Remember: this is an estimate. Your actual payment depends on your specific loan terms and insurance costs.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>How Much Can I Afford?</h3>
-            <p>
-              This calculator uses the standard lending ratios (28% front-end, 36% back-end) to estimate maximum home price. It assumes standard mortgage terms. Your actual qualification depends on credit score, employment history, assets, and other factors. Get pre-approved for accurate numbers.
+              Enter your home price, down payment, interest rate, and loan term to see a detailed monthly payment breakdown including principal, interest, taxes, and insurance. Includes a full amortization schedule showing how your balance decreases over time.
             </p>
           </div>
 
           <div class="card">
             <h3>Refinance Analysis</h3>
             <p>
-              This tool compares your current payment to a new refinanced payment. It accounts for closing costs and shows your breakeven point and total savings. However, it doesn't factor in rate locks, prepayment penalties, or other situational factors. Call Adam for a detailed analysis.
+              Compare your current mortgage terms to a potential new loan. See side-by-side monthly payment comparison, total interest savings over the life of the loan, and your break-even point to decide if refinancing makes financial sense.
             </p>
           </div>
 
@@ -380,6 +179,13 @@
             <h3>Current Austin Market Rates</h3>
             <p>
               Interest rates change daily based on market conditions. The rates shown in our examples are for illustration only. For current Austin mortgage rates, call Adam at (512) 956-6010. Pre-approval rate quotes are accurate for 30-60 days depending on the rate lock option.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Need Personalized Help?</h3>
+            <p>
+              Every borrower's situation is unique. These calculators give you a starting point, but your actual rates and terms depend on credit score, employment history, assets, and loan type. Contact Adam for a free consultation and personalized analysis.
             </p>
           </div>
         </div>
