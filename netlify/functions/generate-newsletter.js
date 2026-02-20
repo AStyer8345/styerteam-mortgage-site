@@ -79,10 +79,13 @@ exports.handler = async (event) => {
     // ----------------------------------------------------------------
     const results = { pageUrl, filename, campaigns: [] };
 
-    if (process.env.MAILCHIMP_API_KEY && process.env.MAILCHIMP_SERVER_PREFIX) {
+    const mcApiKey = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key;
+    const mcServer = process.env.MAILCHIMP_SERVER_PREFIX || process.env.mailchimp_server_prefix;
+
+    if (mcApiKey && mcServer) {
       mailchimp.setConfig({
-        apiKey: process.env.MAILCHIMP_API_KEY,
-        server: process.env.MAILCHIMP_SERVER_PREFIX,
+        apiKey: mcApiKey,
+        server: mcServer,
       });
 
       const sendBorrower = audiences.includes("borrower") && process.env.MAILCHIMP_BORROWER_LIST_ID;
@@ -200,8 +203,8 @@ function parseAIResponse(text) {
 // ====================================================================
 
 async function createGitHubFile(filename, content) {
-  const token = process.env.GITHUB_TOKEN;
-  const repo = process.env.GITHUB_REPO || "AStyer8345/styerteam-mortgage-site";
+  const token = process.env.GITHUB_TOKEN || process.env.github_token;
+  const repo = process.env.GITHUB_REPO || process.env.Github_repo || "AStyer8345/styerteam-mortgage-site";
   const path = `updates/${filename}`;
   const url = `https://api.github.com/repos/${repo}/contents/${path}`;
 
