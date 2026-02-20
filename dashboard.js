@@ -47,6 +47,50 @@ function initNewsletterAutomation() {
   const statusEl = document.getElementById('newsletter-status');
   const retryBtn = document.getElementById('nl-retry-btn');
 
+  // Mode toggle handling
+  const modeOptions = form.querySelectorAll('.dash-mode-option');
+  modeOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      modeOptions.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      opt.querySelector('input[type="radio"]').checked = true;
+
+      const mode = opt.dataset.mode;
+      submitBtn.textContent = mode === 'live' ? '🚀 Generate & Send Newsletter' : '👁 Preview Newsletter';
+    });
+  });
+
+  // "Looks Good — Go Live" button in preview results
+  const goLiveBtn = document.getElementById('preview-go-live-btn');
+  if (goLiveBtn) {
+    goLiveBtn.addEventListener('click', () => {
+      // Switch to live mode
+      modeOptions.forEach(o => o.classList.remove('active'));
+      const liveOpt = form.querySelector('.dash-mode-option[data-mode="live"]');
+      if (liveOpt) {
+        liveOpt.classList.add('active');
+        liveOpt.querySelector('input[type="radio"]').checked = true;
+      }
+      submitBtn.textContent = '🚀 Generate & Send Newsletter';
+
+      // Hide preview result
+      resultEl.classList.add('hidden');
+
+      // Scroll to submit button and auto-submit
+      submitBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => submitBtn.click(), 400);
+    });
+  }
+
+  // "Edit & Regenerate" button
+  const editBtn = document.getElementById('preview-edit-btn');
+  if (editBtn) {
+    editBtn.addEventListener('click', () => {
+      resultEl.classList.add('hidden');
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
   if (retryBtn) {
     retryBtn.addEventListener('click', () => {
       errorEl.classList.add('hidden');
@@ -57,6 +101,10 @@ function initNewsletterAutomation() {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Get current mode
+    const modeRadio = form.querySelector('input[name="nl-mode"]:checked');
+    const mode = modeRadio ? modeRadio.value : 'preview';
 
     // Validate topic
     const topic = form.querySelector('#nl-topic').value.trim();
@@ -76,10 +124,19 @@ function initNewsletterAutomation() {
       return;
     }
 
+    // Confirm if live mode
+    if (mode === 'live') {
+      const msg = 'This will publish a page and send emails to your ' +
+        audiences.map(a => a === 'borrower' ? 'Borrower' : 'Realtor').join(' and ') +
+        ' list(s). Continue?';
+      if (!confirm(msg)) return;
+    }
+
     // Gather form data
     const formData = {
       topic,
       audiences,
+      mode,
       rates: buildRateString('nl'),
       articles: form.querySelector('#nl-articles').value.trim(),
       story: form.querySelector('#nl-story').value.trim(),
@@ -115,42 +172,96 @@ function initNewsletterAutomation() {
         throw new Error(data.error || 'Server error');
       }
 
-      // Show completion steps
-      setProgressStep('publish');
-      setStatus('Page published at ' + data.pageUrl);
+      if (data.mode === 'preview') {
+        // PREVIEW MODE — show content for review
+        setProgressStep('done');
+        setStatus('Preview ready!');
 
-      await sleep(500);
+        await sleep(300);
+        progressEl.classList.add('hidden');
+        resultEl.classList.remove('hidden');
 
-      if (data.campaigns && data.campaigns.length > 0) {
-        setProgressStep('send');
-        setStatus('Emails sent to ' + data.campaigns.map(c => c.audience).join(' and ') + '.');
+        // Hide live card, show preview card
+        document.getElementById('result-card-live').classList.add('hidden');
+        const previewCard = document.getElementById('result-card-preview');
+        previewCard.classList.remove('hidden');
+
+        // Fill in preview data
+        const p = data.preview;
+        setText('preview-page-title', p.pageTitle || formData.topic);
+        setText('preview-page-url', data.pageUrl);
+
+        // Web content
+        const webEl = document.getElementById('preview-web-content');
+        if (webEl && p.webContent) webEl.innerHTML = p.webContent;
+
+        // Borrower email
+        const borrowerSection = document.getElementById('preview-borrower-section');
+        if (p.borrowerEmailHtml) {
+          borrowerSection.classList.remove('hidden');
+          setText('preview-borrower-subject', p.borrowerSubject || '');
+          setText('preview-borrower-preheader', p.borrowerPreheader || '');
+          const bEl = document.getElementById('preview-borrower-html');
+          if (bEl) bEl.innerHTML = p.borrowerEmailHtml;
+        } else {
+          borrowerSection.classList.add('hidden');
+        }
+
+        // Realtor email
+        const realtorSection = document.getElementById('preview-realtor-section');
+        if (p.realtorEmailHtml) {
+          realtorSection.classList.remove('hidden');
+          setText('preview-realtor-subject', p.realtorSubject || '');
+          setText('preview-realtor-preheader', p.realtorPreheader || '');
+          const rEl = document.getElementById('preview-realtor-html');
+          if (rEl) rEl.innerHTML = p.realtorEmailHtml;
+        } else {
+          realtorSection.classList.add('hidden');
+        }
+
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      } else {
+        // LIVE MODE — show sent confirmation
+        setProgressStep('publish');
+        setStatus('Page published at ' + data.pageUrl);
+
         await sleep(500);
+
+        if (data.campaigns && data.campaigns.length > 0) {
+          setProgressStep('send');
+          setStatus('Emails sent to ' + data.campaigns.map(c => c.audience).join(' and ') + '.');
+          await sleep(500);
+        }
+
+        setProgressStep('done');
+        setStatus('All done!');
+
+        await sleep(300);
+        progressEl.classList.add('hidden');
+        resultEl.classList.remove('hidden');
+
+        // Show live card, hide preview card
+        document.getElementById('result-card-live').classList.remove('hidden');
+        document.getElementById('result-card-preview').classList.add('hidden');
+
+        const pageUrlEl = document.getElementById('result-page-url');
+        pageUrlEl.href = data.pageUrl;
+        pageUrlEl.textContent = data.pageUrl;
+
+        const campaignsEl = document.getElementById('result-campaigns');
+        campaignsEl.innerHTML = '';
+        if (data.campaigns && data.campaigns.length > 0) {
+          data.campaigns.forEach(c => {
+            const el = document.createElement('p');
+            el.innerHTML = '<strong>' + capitalize(c.audience) + ' Email:</strong> ' +
+              escapeHtml(c.subject) + ' <span style="color: var(--color-success);">(Sent)</span>';
+            campaignsEl.appendChild(el);
+          });
+        }
+
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-
-      setProgressStep('done');
-      setStatus('All done!');
-
-      // Show results
-      await sleep(300);
-      progressEl.classList.add('hidden');
-      resultEl.classList.remove('hidden');
-
-      const pageUrlEl = document.getElementById('result-page-url');
-      pageUrlEl.href = data.pageUrl;
-      pageUrlEl.textContent = data.pageUrl;
-
-      const campaignsEl = document.getElementById('result-campaigns');
-      campaignsEl.innerHTML = '';
-      if (data.campaigns && data.campaigns.length > 0) {
-        data.campaigns.forEach(c => {
-          const p = document.createElement('p');
-          p.innerHTML = '<strong>' + capitalize(c.audience) + ' Email:</strong> ' +
-            escapeHtml(c.subject) + ' <span style="color: var(--color-success);">(Sent)</span>';
-          campaignsEl.appendChild(p);
-        });
-      }
-
-      resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     } catch (err) {
       console.error('Newsletter automation error:', err);
@@ -163,6 +274,12 @@ function initNewsletterAutomation() {
       submitBtn.disabled = false;
     }
   });
+}
+
+// Helper: set text content by ID
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
 }
 
 // Progress step helper

@@ -165,10 +165,33 @@
                 <textarea id="nl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid, CTA ideas..."></textarea>
               </div>
 
+              <!-- MODE TOGGLE -->
+              <div class="form-group">
+                <label>Mode</label>
+                <div class="dash-mode-toggle">
+                  <label class="dash-mode-option active" data-mode="preview">
+                    <input type="radio" name="nl-mode" value="preview" checked>
+                    <span class="dash-mode-icon">&#128065;</span>
+                    <span>
+                      <strong>Preview Only</strong>
+                      <small>Generate content &amp; review it. Nothing gets published or sent.</small>
+                    </span>
+                  </label>
+                  <label class="dash-mode-option" data-mode="live">
+                    <input type="radio" name="nl-mode" value="live">
+                    <span class="dash-mode-icon">&#128640;</span>
+                    <span>
+                      <strong>Go Live</strong>
+                      <small>Generate, publish the page, and send emails to your lists.</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
               <!-- GENERATE BUTTON -->
               <div class="dash-actions">
                 <button type="submit" class="btn btn-primary btn-lg" id="nl-submit-btn">
-                  Generate &amp; Send Newsletter
+                  Preview Newsletter
                 </button>
               </div>
             </form>
@@ -198,11 +221,41 @@
 
             <!-- SUCCESS RESULT -->
             <div id="newsletter-result" class="dash-output hidden">
-              <div class="dash-result-card">
+              <div class="dash-result-card" id="result-card-live">
                 <h3 style="color: var(--color-success); margin-bottom: 1rem;">Newsletter Sent Successfully</h3>
                 <div class="dash-result-details">
                   <p><strong>Web Page:</strong> <a id="result-page-url" href="#" target="_blank" rel="noopener"></a></p>
                   <div id="result-campaigns"></div>
+                </div>
+              </div>
+              <div class="dash-preview-card hidden" id="result-card-preview">
+                <h3 style="margin-bottom: 0.25rem;">&#128065; Preview — Nothing Has Been Published or Sent</h3>
+                <p style="color: #6B7280; margin-bottom: 1.5rem; font-size: 0.9rem;">Review everything below. When you're happy, switch to <strong>Go Live</strong> and submit again.</p>
+
+                <div class="dash-preview-section">
+                  <h4>&#128196; Web Article</h4>
+                  <p class="dash-preview-meta"><strong>Title:</strong> <span id="preview-page-title"></span></p>
+                  <p class="dash-preview-meta"><strong>URL would be:</strong> <span id="preview-page-url"></span></p>
+                  <div class="dash-preview-body" id="preview-web-content"></div>
+                </div>
+
+                <div class="dash-preview-section" id="preview-borrower-section">
+                  <h4>&#128231; Borrower Email</h4>
+                  <p class="dash-preview-meta"><strong>Subject:</strong> <span id="preview-borrower-subject"></span></p>
+                  <p class="dash-preview-meta"><strong>Preheader:</strong> <span id="preview-borrower-preheader"></span></p>
+                  <div class="dash-preview-email" id="preview-borrower-html"></div>
+                </div>
+
+                <div class="dash-preview-section" id="preview-realtor-section">
+                  <h4>&#128231; Realtor Email</h4>
+                  <p class="dash-preview-meta"><strong>Subject:</strong> <span id="preview-realtor-subject"></span></p>
+                  <p class="dash-preview-meta"><strong>Preheader:</strong> <span id="preview-realtor-preheader"></span></p>
+                  <div class="dash-preview-email" id="preview-realtor-html"></div>
+                </div>
+
+                <div class="dash-preview-actions">
+                  <button class="btn btn-primary btn-lg" id="preview-go-live-btn">&#128640; Looks Good — Go Live</button>
+                  <button class="btn btn-secondary" id="preview-edit-btn">&#9998; Edit &amp; Regenerate</button>
                 </div>
               </div>
             </div>

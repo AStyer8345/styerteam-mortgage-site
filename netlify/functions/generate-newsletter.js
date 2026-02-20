@@ -20,7 +20,8 @@ exports.handler = async (event) => {
 
   try {
     const formData = JSON.parse(event.body);
-    const { topic, audiences } = formData;
+    const { topic, audiences, mode } = formData;
+    const isPreview = mode === "preview";
 
     if (!topic) {
       return { statusCode: 400, headers, body: JSON.stringify({ error: "Topic is required" }) };
@@ -52,7 +53,7 @@ exports.handler = async (event) => {
     }
 
     // ----------------------------------------------------------------
-    // STEP 2: Create web page via GitHub API
+    // STEP 2: Build page data (always) / Publish (only if live)
     // ----------------------------------------------------------------
     const today = new Date().toISOString().split("T")[0];
     const slug = topic
@@ -72,47 +73,52 @@ exports.handler = async (event) => {
       rates: formData.rates || null,
     });
 
-    await createGitHubFile(filename, fullPageHtml);
+    // In preview mode, skip publishing. In live mode, publish.
+    if (!isPreview) {
+      await createGitHubFile(filename, fullPageHtml);
+    }
 
     // ----------------------------------------------------------------
-    // STEP 3: Send Mailchimp campaigns
+    // STEP 3: Send Mailchimp campaigns (only if live)
     // ----------------------------------------------------------------
     const results = { pageUrl, filename, campaigns: [] };
 
-    const mcApiKey = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key;
-    const mcServer = process.env.MAILCHIMP_SERVER_PREFIX || process.env.mailchimp_server_prefix;
+    if (!isPreview) {
+      const mcApiKey = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key;
+      const mcServer = process.env.MAILCHIMP_SERVER_PREFIX || process.env.mailchimp_server_prefix;
 
-    if (mcApiKey && mcServer) {
-      mailchimp.setConfig({
-        apiKey: mcApiKey,
-        server: mcServer,
-      });
-
-      const sendBorrower = audiences.includes("borrower") && process.env.MAILCHIMP_BORROWER_LIST_ID;
-      const sendRealtor = audiences.includes("realtor") && process.env.MAILCHIMP_REALTOR_LIST_ID;
-
-      if (sendBorrower && parsed.borrowerEmail) {
-        const borrowerResult = await createAndSendCampaign({
-          listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
-          subject: parsed.borrowerSubject || `${topic} - The Styer Team`,
-          preheader: parsed.borrowerPreheader || "",
-          html: injectPageLink(parsed.borrowerEmail, pageUrl),
-          fromName: "Adam Styer",
-          replyTo: "adam@thestyerteam.com",
+      if (mcApiKey && mcServer) {
+        mailchimp.setConfig({
+          apiKey: mcApiKey,
+          server: mcServer,
         });
-        results.campaigns.push({ audience: "borrower", ...borrowerResult });
-      }
 
-      if (sendRealtor && parsed.realtorEmail) {
-        const realtorResult = await createAndSendCampaign({
-          listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
-          subject: parsed.realtorSubject || `${topic} - The Styer Team`,
-          preheader: parsed.realtorPreheader || "",
-          html: injectPageLink(parsed.realtorEmail, pageUrl),
-          fromName: "Adam Styer",
-          replyTo: "adam@thestyerteam.com",
-        });
-        results.campaigns.push({ audience: "realtor", ...realtorResult });
+        const sendBorrower = audiences.includes("borrower") && process.env.MAILCHIMP_BORROWER_LIST_ID;
+        const sendRealtor = audiences.includes("realtor") && process.env.MAILCHIMP_REALTOR_LIST_ID;
+
+        if (sendBorrower && parsed.borrowerEmail) {
+          const borrowerResult = await createAndSendCampaign({
+            listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
+            subject: parsed.borrowerSubject || `${topic} - The Styer Team`,
+            preheader: parsed.borrowerPreheader || "",
+            html: injectPageLink(parsed.borrowerEmail, pageUrl),
+            fromName: "Adam Styer",
+            replyTo: "adam@thestyerteam.com",
+          });
+          results.campaigns.push({ audience: "borrower", ...borrowerResult });
+        }
+
+        if (sendRealtor && parsed.realtorEmail) {
+          const realtorResult = await createAndSendCampaign({
+            listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
+            subject: parsed.realtorSubject || `${topic} - The Styer Team`,
+            preheader: parsed.realtorPreheader || "",
+            html: injectPageLink(parsed.realtorEmail, pageUrl),
+            fromName: "Adam Styer",
+            replyTo: "adam@thestyerteam.com",
+          });
+          results.campaigns.push({ audience: "realtor", ...realtorResult });
+        }
       }
     }
 
@@ -121,13 +127,20 @@ exports.handler = async (event) => {
       headers,
       body: JSON.stringify({
         success: true,
+        mode: isPreview ? "preview" : "live",
         pageUrl,
         filename,
         campaigns: results.campaigns,
         preview: {
           borrowerSubject: parsed.borrowerSubject,
+          borrowerPreheader: parsed.borrowerPreheader,
           realtorSubject: parsed.realtorSubject,
+          realtorPreheader: parsed.realtorPreheader,
           pageTitle: parsed.pageTitle,
+          pageDescription: parsed.pageDescription,
+          webContent: parsed.webContent,
+          borrowerEmailHtml: parsed.borrowerEmail ? injectPageLink(parsed.borrowerEmail, pageUrl) : null,
+          realtorEmailHtml: parsed.realtorEmail ? injectPageLink(parsed.realtorEmail, pageUrl) : null,
         },
       }),
     };
