@@ -1,8 +1,10 @@
 /**
  * Builds the Claude prompt from dashboard form data.
+ * @param {Object} formData - The form data from the dashboard
+ * @param {string} pageUrl - The full absolute URL for the article page
  */
 
-function buildPrompt(formData) {
+function buildPrompt(formData, pageUrl) {
   const {
     topic,
     audiences = [],
@@ -26,6 +28,10 @@ TONE: Casual, direct, like a text or quick email to someone you actually know.
 - NO buzzwords. NO marketing language. NO hype.
 - NEVER use: "leverage", "unlock", "dream home", "exciting", "thrilled", "navigate", "empower", "game-changer", "take advantage", "don't miss out", "act now", "incredible opportunity", "market conditions", "poised for", "seize the moment", "strategic advantage"
 - Sound like: "Here's the deal", "Real talk", "The short version", "Let me break it down"
+
+## ARTICLE URL
+The full article lives at this exact URL: ${pageUrl}
+All email CTA links MUST use this exact URL. Do not make up a different URL.
 
 ## TOPIC
 ${topic}
@@ -68,7 +74,7 @@ Emails should be SHORT teasers (100-150 words) that get them to click to the ful
 - Background: white. Text: dark gray (#333). Links: blue.
 - Open with something personal or a quick hook.${story ? " Reference the personal story briefly." : ""}
 - 2-3 bullet points previewing the article.
-- CTA: a simple text link or small button "Read the full update" linking to [PAGE_URL]
+- CTA link MUST use this exact URL: ${pageUrl}
 - Sign off: Adam Styer | The Styer Team | NMLS# 513013 | (512) 956-6010
 
 ${wantsBorrower ? `### BORROWER EMAIL
@@ -94,7 +100,7 @@ ${rates ? "- Include a rate snapshot" : ""}
 ### Section 2: Personal Corner
 A separate section with an <hr> divider and <h2> header.${story ? `
 - Header should be something like "Personal Corner" or "Off the Clock" or "This Week Outside of Work"
-- USE ADAM'S EXACT STORY provided above about: ${story.substring(0, 80)}...
+- USE ADAM'S EXACT STORY provided above about: ${story.substring(0, 100)}...
 - Write it in Adam's voice — casual, real, like he's sharing with a friend` : `
 - Header: "Personal Corner"
 - A brief personal note about faith, family, fitness, or finance`}
@@ -108,11 +114,11 @@ ${wantsBorrower ? "BORROWER_SUBJECT: [casual subject, not clickbait]\nBORROWER_P
 ${wantsRealtor ? "REALTOR_SUBJECT: [professional but casual subject]\nREALTOR_PREHEADER: [max 90 chars]" : ""}
 
 ${wantsBorrower ? `---BORROWER_EMAIL_START---
-[Plain-text-style HTML email for Mailchimp. No images. Keep it simple.]
+[Plain-text-style HTML email for Mailchimp. No images. CTA links to ${pageUrl}]
 ---BORROWER_EMAIL_END---` : ""}
 
 ${wantsRealtor ? `---REALTOR_EMAIL_START---
-[Plain-text-style HTML email for Mailchimp. No images. Keep it simple.]
+[Plain-text-style HTML email for Mailchimp. No images. CTA links to ${pageUrl}]
 ---REALTOR_EMAIL_END---` : ""}
 
 ---WEB_CONTENT_START---

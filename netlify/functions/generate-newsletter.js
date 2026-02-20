@@ -28,10 +28,23 @@ exports.handler = async (event) => {
     }
 
     // ----------------------------------------------------------------
+    // STEP 0: Compute the page URL FIRST so the AI can use it directly
+    // ----------------------------------------------------------------
+    const today = new Date().toISOString().split("T")[0];
+    const slug = topic
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .substring(0, 50)
+      .replace(/-+$/, "");
+    const filename = `${today}-${slug}.html`;
+    const pageUrl = `https://styermortgage.com/updates/${filename}`;
+
+    // ----------------------------------------------------------------
     // STEP 1: Generate content via Claude API
     // ----------------------------------------------------------------
     const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const prompt = buildPrompt(formData);
+    const prompt = buildPrompt(formData, pageUrl);
 
     // Retry up to 3 times on transient errors (429/529)
     let response;
@@ -72,18 +85,17 @@ exports.handler = async (event) => {
       parsed.webContent = injectPhotoIntoPersonalSection(parsed.webContent, formData.photo);
     }
 
+    // Force all email links to use absolute URL (safety net)
+    if (parsed.borrowerEmail) {
+      parsed.borrowerEmail = forceAbsoluteLinks(parsed.borrowerEmail, pageUrl);
+    }
+    if (parsed.realtorEmail) {
+      parsed.realtorEmail = forceAbsoluteLinks(parsed.realtorEmail, pageUrl);
+    }
+
     // ----------------------------------------------------------------
     // STEP 2: Build page data (always) / Publish (only if live)
     // ----------------------------------------------------------------
-    const today = new Date().toISOString().split("T")[0];
-    const slug = topic
-      .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, "")
-      .replace(/\s+/g, "-")
-      .substring(0, 50)
-      .replace(/-+$/, "");
-    const filename = `${today}-${slug}.html`;
-    const pageUrl = `https://styermortgage.com/updates/${filename}`;
 
     const fullPageHtml = buildWebPage({
       title: parsed.pageTitle || topic,
@@ -298,6 +310,31 @@ async function createAndSendCampaign({ listId, subject, preheader, html, fromNam
 
 function injectPageLink(html, pageUrl) {
   return html.replace(/\[PAGE_URL\]/g, pageUrl);
+}
+
+// ====================================================================
+// HELPER: Force all links to use absolute URL (catches AI-generated relative links)
+// ====================================================================
+
+function forceAbsoluteLinks(html, pageUrl) {
+  // First replace [PAGE_URL] placeholders
+  let result = html.replace(/\[PAGE_URL\]/g, pageUrl);
+
+  // Replace any relative .html links that look like newsletter pages
+  // e.g. href="spring-market.html" or href="2026-02-20-spring.html"
+  result = result.replace(
+    /href=["']([^"']*?\.html)["']/gi,
+    (match, href) => {
+      // Skip if already absolute
+      if (href.startsWith("http") || href.startsWith("../") || href.startsWith("/")) {
+        return match;
+      }
+      // Replace relative newsletter URL with the correct absolute URL
+      return `href="${pageUrl}"`;
+    }
+  );
+
+  return result;
 }
 
 // ====================================================================
