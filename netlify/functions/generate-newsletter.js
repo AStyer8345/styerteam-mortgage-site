@@ -33,11 +33,26 @@ exports.handler = async (event) => {
     const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const prompt = buildPrompt(formData);
 
-    const response = await anthropic.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 6000,
-      messages: [{ role: "user", content: prompt }],
-    });
+    // Retry up to 3 times on transient errors (429/529)
+    let response;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        response = await anthropic.messages.create({
+          model: "claude-haiku-4-5-20251001",
+          max_tokens: 6000,
+          messages: [{ role: "user", content: prompt }],
+        });
+        break;
+      } catch (apiErr) {
+        const status = apiErr.status || apiErr.statusCode;
+        if ((status === 429 || status === 529) && attempt < 3) {
+          console.log(`API returned ${status}, retrying (attempt ${attempt + 1}/3)...`);
+          await new Promise(r => setTimeout(r, 2000 * attempt));
+          continue;
+        }
+        throw apiErr;
+      }
+    }
 
     const aiText = response.content[0].text;
 
