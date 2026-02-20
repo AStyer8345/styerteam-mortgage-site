@@ -63,8 +63,11 @@ ${story}
 
   if (photo) {
     prompt += `
-## PHOTO URL (for personal note section)
+## PHOTO URL
 ${photo}
+IMPORTANT: You MUST include this photo in your outputs. Use an <img> tag with this exact URL.
+- In the WEB PAGE CONTENT: Add the image near the top of the article or in the personal note section. Use: <img src="${photo}" alt="Adam Styer" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;">
+- In the EMAIL HTML: Include the image in the email body. Use: <img src="${photo}" alt="Adam Styer" width="300" style="max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 16px auto;">
 `;
   }
 

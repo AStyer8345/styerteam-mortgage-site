@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNewsletterAutomation();
   initRateBuilder();
   initCopyButtons();
+  initFormPersistence();
 });
 
 // ========================================================================
@@ -455,4 +456,68 @@ function initCopyButtons() {
       sel.addRange(range);
     });
   });
+}
+
+// ========================================================================
+// FORM PERSISTENCE — auto-save/restore form data via sessionStorage
+// ========================================================================
+
+function initFormPersistence() {
+  const STORAGE_KEY = 'nl-form-data';
+
+  // All newsletter form field IDs to persist
+  const textFields = [
+    'nl-topic', 'nl-articles', 'nl-story', 'nl-photo', 'nl-ai-tool', 'nl-notes',
+    'nl-conv30-rate', 'nl-conv30-apr', 'nl-conv15-rate', 'nl-conv15-apr',
+    'nl-jumbo-rate', 'nl-jumbo-apr', 'nl-va-rate', 'nl-va-apr',
+    'nl-fha30-rate', 'nl-fha30-apr', 'nl-fha-arm-rate', 'nl-fha-arm-apr'
+  ];
+  const checkboxNames = ['audience'];
+
+  // Restore saved data on page load
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
+    if (saved) {
+      // Restore text/textarea/url fields
+      textFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && saved[id] !== undefined && saved[id] !== '') {
+          el.value = saved[id];
+        }
+      });
+
+      // Restore checkboxes
+      if (saved.audiences) {
+        document.querySelectorAll('input[name="audience"]').forEach(cb => {
+          cb.checked = saved.audiences.includes(cb.value);
+        });
+      }
+    }
+  } catch (e) { /* ignore parse errors */ }
+
+  // Save on every input change
+  function saveForm() {
+    const data = {};
+    textFields.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) data[id] = el.value;
+    });
+
+    // Save checkbox states
+    data.audiences = [];
+    document.querySelectorAll('input[name="audience"]:checked').forEach(cb => {
+      data.audiences.push(cb.value);
+    });
+
+    try {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) { /* storage full or unavailable */ }
+  }
+
+  // Listen to all inputs in the newsletter form
+  const form = document.getElementById('newsletter-builder');
+  if (form) {
+    form.addEventListener('input', saveForm);
+    form.addEventListener('change', saveForm);
+  }
 }
