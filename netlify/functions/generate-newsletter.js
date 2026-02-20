@@ -217,7 +217,7 @@ function parseAIResponse(text) {
 
 async function createGitHubFile(filename, content) {
   const token = process.env.GITHUB_TOKEN || process.env.github_token;
-  const repo = process.env.GITHUB_REPO || process.env.Github_repo || "AStyer8345/styerteam-mortgage-site";
+  const repo = process.env.GITHUB_REPO || process.env.Github_repo;
   const path = `updates/${filename}`;
   const url = `https://api.github.com/repos/${repo}/contents/${path}`;
 
