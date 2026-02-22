@@ -438,14 +438,16 @@ footer {
 }
 
 .btn-primary {
-  background-color: var(--color-gold);
-  color: var(--color-navy);
+  background-color: #F2C840;
+  color: #0D1F3C;
 }
 
 .btn-primary:hover {
-  background-color: #B8932B;
+  background-color: #0D1F3C;
+  color: #F2C840;
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
+  transition: all 0.2s ease;
 }
 
 .btn-secondary {

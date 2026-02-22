@@ -38,6 +38,10 @@ function buildWebPage({ title, description, date, content, rates }) {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../style.css">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -46,7 +50,7 @@ function buildWebPage({ title, description, date, content, rates }) {
     <div class="container">
       <nav>
         <a href="../index.html" class="nav-brand">
-          <img src="../assets/logo.png" alt="Mortgage Solutions" class="nav-logo-img" width="180" height="40">
+          <img src="../assets/logo.png" alt="Adam Styer | Mortgage Solutions LP" class="nav-logo-img" width="180" height="40">
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
