@@ -8,7 +8,7 @@ const CORRECTION_HTML = `
   <p>Sorry about that. Talk soon,</p>
   <p>
     Adam Styer<br>
-    The Styer Team | Mortgage Solutions, LP<br>
+    Adam Styer | Mortgage Solutions LP<br>
     NMLS# 513013 | (512) 956-6010
   </p>
 </div>

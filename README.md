@@ -1,7 +1,7 @@
 # Mortgage Solutions, LP - Complete Website
 
 ## Project Overview
-A professional, conversion-optimized mortgage lending website for Adam Styer and The Styer Team in Austin, TX. Built with vanilla HTML, CSS, and JavaScript—no heavy frameworks. Fast, responsive, and SEO-ready.
+A professional, conversion-optimized mortgage lending website for Adam Styer | Mortgage Solutions LP in Austin, TX. Built with vanilla HTML, CSS, and JavaScript—no heavy frameworks. Fast, responsive, and SEO-ready.
 
 ## File Structure
 
@@ -213,9 +213,9 @@ JavaScript features:
 **NMLS#:** 2526130 (company), 513013 (personal)
 
 **Contact:**
-- Phone: (737) 758-3303
+- Phone: (512) 956-6010
 - Email: adam@thestyerteam.com
-- Address: 7000 N Mopac Expy Suite 200, Austin, TX 78731
+- Address: 5718 Sam Houston Circle, Austin, TX 78731
 
 **Reviews:**
 - Google: 5.0 stars, 91 reviews

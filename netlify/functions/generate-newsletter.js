@@ -131,7 +131,7 @@ exports.handler = async (event) => {
         if (sendBorrower && parsed.borrowerEmail) {
           const borrowerResult = await createAndSendCampaign({
             listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
-            subject: parsed.borrowerSubject || `${topic} - The Styer Team`,
+            subject: parsed.borrowerSubject || `${topic} - Adam Styer | Mortgage Solutions LP`,
             preheader: parsed.borrowerPreheader || "",
             html: injectPageLink(parsed.borrowerEmail, pageUrl),
             fromName: "Adam Styer",
@@ -143,7 +143,7 @@ exports.handler = async (event) => {
         if (sendRealtor && parsed.realtorEmail) {
           const realtorResult = await createAndSendCampaign({
             listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
-            subject: parsed.realtorSubject || `${topic} - The Styer Team`,
+            subject: parsed.realtorSubject || `${topic} - Adam Styer | Mortgage Solutions LP`,
             preheader: parsed.realtorPreheader || "",
             html: injectPageLink(parsed.realtorEmail, pageUrl),
             fromName: "Adam Styer",

@@ -18,7 +18,7 @@ function buildWebPage({ title, description, date, content, rates }) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(title)} | The Styer Team</title>
+  <title>${escapeHtml(title)} | Adam Styer | Mortgage Solutions LP</title>
   <meta name="description" content="${escapeHtml(description)}">
 
   <meta name="robots" content="noindex, nofollow">
@@ -27,7 +27,7 @@ function buildWebPage({ title, description, date, content, rates }) {
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${pageUrl}">
-  <meta property="og:site_name" content="The Styer Team | Mortgage Solutions, LP">
+  <meta property="og:site_name" content="Adam Styer | Mortgage Solutions LP">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(title)}">
@@ -98,7 +98,7 @@ ${rateBox}
 
           <p>Have questions? Want to know what your options look like right now? Give me a call or shoot me a text. Happy to run the numbers for you.</p>
 
-          <p>Talk soon,<br><strong>Adam Styer</strong><br>The Styer Team | Mortgage Solutions, LP<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
+          <p>Talk soon,<br><strong>Adam Styer</strong><br>Adam Styer | Mortgage Solutions LP<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
 
         </div>
       </div>
@@ -107,7 +107,7 @@ ${rateBox}
     <section class="section bg-primary">
       <div class="container text-center">
         <h2 data-animate>Ready to Make a Move?</h2>
-        <p data-animate>Whether you're buying, refinancing, or just exploring your options, Adam Styer and The Styer Team are here to help.</p>
+        <p data-animate>Whether you're buying, refinancing, or just exploring your options, Adam Styer is here to help.</p>
         <div class="cta-buttons" data-animate>
           <a href="../prequal.html" class="btn btn-light">Get Pre-Qualified</a>
           <a href="../contact.html" class="btn btn-outline-light">Contact Adam</a>
@@ -146,7 +146,7 @@ ${rateBox}
         <div class="footer-section">
           <h4>Contact</h4>
           <p>
-            <strong>The Styer Team</strong><br>
+            <strong>Adam Styer | Mortgage Solutions LP</strong><br>
             Mortgage Solutions, LP
           </p>
           <p>

@@ -75,7 +75,7 @@ Emails should be SHORT teasers (100-150 words) that get them to click to the ful
 - Open with something personal or a quick hook.${story ? " Reference the personal story briefly." : ""}
 - 2-3 bullet points previewing the article.
 - CTA link MUST use this exact URL: ${pageUrl}
-- Sign off: Adam Styer | The Styer Team | NMLS# 513013 | (512) 956-6010
+- Sign off: Adam Styer | Mortgage Solutions LP | NMLS# 513013 | (512) 956-6010
 
 ${wantsBorrower ? `### BORROWER EMAIL
 - Write like Adam emailing a past client
@@ -107,7 +107,7 @@ A separate section with an <hr> divider and <h2> header.${story ? `
 - Header: "Personal Corner"
 - A brief personal note about faith, family, fitness, or finance`}
 
-End the article with: "Talk soon,<br>Adam Styer<br>The Styer Team | Mortgage Solutions, LP<br>NMLS# 513013 | (512) 956-6010"
+End the article with: "Talk soon,<br>Adam Styer<br>Adam Styer | Mortgage Solutions LP<br>NMLS# 513013 | (512) 956-6010"
 
 ## OUTPUT FORMAT — use these EXACT delimiters
 PAGE_TITLE: [max 70 chars]
