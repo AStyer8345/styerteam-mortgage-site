@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Cormorant+Garamond:wght@400;500&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- White background -->
+  <rect width="600" height="400" fill="white"/>
+
+  <!-- House roofline icon -->
+  <g transform="translate(300, 120)">
+    <polyline
+      points="-80,0 0,-45 80,0"
+      fill="none"
+      stroke="#C4A962"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- ADAM STYER - main name -->
+  <text
+    x="300"
+    y="195"
+    text-anchor="middle"
+    font-family="'Playfair Display', 'Georgia', serif"
+    font-weight="700"
+    font-size="62"
+    fill="#1B2A4A"
+    letter-spacing="6"
+  >ADAM STYER</text>
+
+  <!-- Gold divider line -->
+  <line
+    x1="160"
+    y1="218"
+    x2="440"
+    y2="218"
+    stroke="#C4A962"
+    stroke-width="1.5"
+  />
+
+  <!-- Mortgage Solutions LP -->
+  <text
+    x="300"
+    y="255"
+    text-anchor="middle"
+    font-family="'Cormorant Garamond', 'Georgia', serif"
+    font-weight="400"
+    font-size="24"
+    fill="#C4A962"
+    letter-spacing="3"
+  >Mortgage Solutions LP</text>
+</svg>
