@@ -246,7 +246,7 @@ nav {
 }
 
 .nav-logo-img {
-  height: 100px;
+  height: 200px;
   width: auto;
 }
 
@@ -1563,7 +1563,7 @@ img {
 
   /* Images */
   .nav-logo-img {
-    height: 65px;
+    height: 130px;
   }
 }
 
