@@ -366,12 +366,12 @@ ${rateTable}
 function buildRateTable(ratesString) {
   if (!ratesString || !ratesString.trim()) return "";
 
-  const lines = ratesString.split("\\n").filter((l) => l.trim());
+  const lines = ratesString.split("\n").filter((l) => l.trim());
   if (!lines.length) return "";
 
   let rows = "";
   for (const line of lines) {
-    const match = line.match(/^\\s*(.+?):\\s*(.+)/);
+    const match = line.match(/^\s*(.+?):\s*(.+)/);
     if (match) {
       const product = match[1].trim();
       const rateInfo = match[2].trim();
@@ -379,7 +379,7 @@ function buildRateTable(ratesString) {
       // Split rate and APR if pipe-separated
       const parts = rateInfo.split("|").map((s) => s.trim());
       const rate = parts[0] || "";
-      const apr = parts[1] ? parts[1].replace(/^APR:\\s*/i, "") : "";
+      const apr = parts[1] ? parts[1].replace(/^APR:\s*/i, "") : "";
 
       rows += `              <tr>
                 <td class="rate-product">${escapeHtml(product)}</td>
