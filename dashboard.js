@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Dashboard - Newsletter Automation + Rate Update Prompt Builder
+   Dashboard - Newsletter Automation + Rate Update Automation
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -289,13 +289,15 @@ function setText(id, text) {
   if (el) el.textContent = text;
 }
 
-// Progress step helper
-function setProgressStep(activeStep) {
-  const steps = document.querySelectorAll('.dash-progress-step');
+// Progress step helper (scoped to a container)
+function setProgressStep(activeStep, containerId) {
+  const container = document.getElementById(containerId || 'newsletter-progress');
+  if (!container) return;
+  const steps = container.querySelectorAll('.dash-progress-step');
   const order = ['generate', 'publish', 'send', 'done'];
   const activeIndex = order.indexOf(activeStep);
 
-  steps.forEach((step, i) => {
+  steps.forEach((step) => {
     const stepName = step.dataset.step;
     const stepIndex = order.indexOf(stepName);
 
@@ -308,80 +310,242 @@ function setProgressStep(activeStep) {
   });
 }
 
-function setStatus(msg) {
-  const el = document.getElementById('newsletter-status');
+function setStatus(msg, statusId) {
+  const el = document.getElementById(statusId || 'newsletter-status');
   if (el) el.textContent = msg;
 }
 
 // ========================================================================
-// RATE UPDATE TEXT PROMPT BUILDER (stays as copy-paste)
+// RATE UPDATE AUTOMATION (calls Netlify function)
 // ========================================================================
 
 function initRateBuilder() {
   const form = document.getElementById('rate-builder');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  const submitBtn = document.getElementById('rt-submit-btn');
+  const progressEl = document.getElementById('rate-progress');
+  const resultEl = document.getElementById('rate-result');
+  const errorEl = document.getElementById('rate-error');
+  const retryBtn = document.getElementById('rt-retry-btn');
+
+  // Mode toggle handling
+  const modeOptions = form.querySelectorAll('.dash-mode-option');
+  modeOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      modeOptions.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      opt.querySelector('input[type="radio"]').checked = true;
+
+      const mode = opt.dataset.mode;
+      submitBtn.textContent = mode === 'live' ? '\u{1F680} Generate & Send Rate Update' : '\u{1F441} Preview Rate Update';
+    });
+  });
+
+  // "Looks Good — Go Live" button in preview results
+  const goLiveBtn = document.getElementById('rt-preview-go-live-btn');
+  if (goLiveBtn) {
+    goLiveBtn.addEventListener('click', () => {
+      modeOptions.forEach(o => o.classList.remove('active'));
+      const liveOpt = form.querySelector('.dash-mode-option[data-mode="live"]');
+      if (liveOpt) {
+        liveOpt.classList.add('active');
+        liveOpt.querySelector('input[type="radio"]').checked = true;
+      }
+      submitBtn.textContent = '\u{1F680} Generate & Send Rate Update';
+
+      resultEl.classList.add('hidden');
+      submitBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => submitBtn.click(), 400);
+    });
+  }
+
+  // "Edit & Regenerate" button
+  const editBtn = document.getElementById('rt-preview-edit-btn');
+  if (editBtn) {
+    editBtn.addEventListener('click', () => {
+      resultEl.classList.add('hidden');
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  if (retryBtn) {
+    retryBtn.addEventListener('click', () => {
+      errorEl.classList.add('hidden');
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+    });
+  }
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const modeRadio = form.querySelector('input[name="rt-mode"]:checked');
+    const mode = modeRadio ? modeRadio.value : 'preview';
+
+    // Validate rates
     const primaryRate = form.querySelector('#rt-conv30-rate').value.trim();
     if (!primaryRate) {
       form.querySelector('#rt-conv30-rate').focus();
       return;
     }
 
-    const rates = buildRateString('rt');
-    const direction = form.querySelector('#rt-direction').value;
-    const blurb = form.querySelector('#rt-blurb').value.trim();
-    const notes = form.querySelector('#rt-notes').value.trim();
-
+    // Gather audiences
     const audiences = [];
     form.querySelectorAll('input[name="rt-audience"]:checked').forEach(cb => {
-      audiences.push(cb.value === 'borrower' ? 'Borrowers / Past Clients' : 'Realtors / Partners');
+      audiences.push(cb.value);
     });
 
-    let prompt = 'Write a weekly rate update text message blast for Adam Styer (NMLS #513013, Mortgage Solutions, Austin TX).\n\n';
-    prompt += 'Current Rates:\n' + rates + '\n\n';
-
-    if (direction) {
-      const dirLabels = {
-        'down': 'Rates dropped this week',
-        'up': 'Rates went up this week',
-        'flat': 'Rates are flat / unchanged',
-        'volatile': 'Rates have been volatile / mixed'
-      };
-      prompt += 'Direction: ' + (dirLabels[direction] || direction) + '\n\n';
+    if (!audiences.length) {
+      alert('Please select at least one audience (Borrowers or Realtors).');
+      return;
     }
 
-    if (audiences.length) {
-      prompt += 'Audience: ' + audiences.join(' + ') + '\n\n';
+    // Confirm if live mode
+    if (mode === 'live') {
+      const msg = 'This will publish a rate page and send emails to your ' +
+        audiences.map(a => a === 'borrower' ? 'Borrower' : 'Realtor').join(' and ') +
+        ' list(s). Continue?';
+      if (!confirm(msg)) return;
     }
 
-    if (blurb) {
-      prompt += 'Talking Points / Blurb Ideas:\n' + blurb + '\n\n';
-    }
+    // Gather form data
+    const formData = {
+      rates: buildRateString('rt'),
+      direction: form.querySelector('#rt-direction').value,
+      blurb: form.querySelector('#rt-blurb').value.trim(),
+      notes: form.querySelector('#rt-notes').value.trim(),
+      audiences,
+      mode,
+    };
 
-    if (notes) {
-      prompt += 'Additional Notes:\n' + notes + '\n\n';
-    }
+    // Reset UI
+    progressEl.classList.remove('hidden');
+    resultEl.classList.add('hidden');
+    errorEl.classList.add('hidden');
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
 
-    prompt += 'Guidelines:\n';
-    prompt += '- Keep each text under 300 characters (SMS-friendly)\n';
-    prompt += '- Sound like Adam: direct, warm, confident, not salesy\n';
-    prompt += '- Include the key rate(s) in the message\n';
-    prompt += '- End with a soft CTA (call, text back, link to apply)\n';
-    prompt += "- Adam's phone: (512) 956-6010\n";
-    if (audiences.length > 1) {
-      prompt += '- Generate separate versions for borrowers and realtors\n';
-      prompt += '- Borrower version: educational, what it means for them\n';
-      prompt += '- Realtor version: peer-to-peer, how to use this with clients\n';
-    }
+    progressEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    const output = document.getElementById('rate-output');
-    const promptBox = document.getElementById('rate-prompt-text');
-    promptBox.textContent = prompt;
-    output.classList.remove('hidden');
-    output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setProgressStep('generate', 'rate-progress');
+    setStatus('Generating rate update with AI... this takes about 20 seconds.', 'rate-status');
+
+    try {
+      const response = await fetch('/.netlify/functions/generate-rate-update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error('The server took too long to respond. Please try again.');
+      }
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Server error');
+      }
+
+      if (data.mode === 'preview') {
+        // PREVIEW MODE
+        setProgressStep('done', 'rate-progress');
+        setStatus('Preview ready!', 'rate-status');
+
+        await sleep(300);
+        progressEl.classList.add('hidden');
+        resultEl.classList.remove('hidden');
+
+        document.getElementById('rt-result-card-live').classList.add('hidden');
+        const previewCard = document.getElementById('rt-result-card-preview');
+        previewCard.classList.remove('hidden');
+
+        const p = data.preview;
+        setText('rt-preview-page-title', p.pageTitle || 'Weekly Rate Update');
+        setText('rt-preview-page-url', data.pageUrl);
+
+        const webEl = document.getElementById('rt-preview-web-content');
+        if (webEl && p.webContent) webEl.innerHTML = p.webContent;
+
+        // Borrower email
+        const borrowerSection = document.getElementById('rt-preview-borrower-section');
+        if (p.borrowerEmailHtml) {
+          borrowerSection.classList.remove('hidden');
+          setText('rt-preview-borrower-subject', p.borrowerSubject || '');
+          setText('rt-preview-borrower-preheader', p.borrowerPreheader || '');
+          const bEl = document.getElementById('rt-preview-borrower-html');
+          if (bEl) bEl.innerHTML = p.borrowerEmailHtml;
+        } else {
+          borrowerSection.classList.add('hidden');
+        }
+
+        // Realtor email
+        const realtorSection = document.getElementById('rt-preview-realtor-section');
+        if (p.realtorEmailHtml) {
+          realtorSection.classList.remove('hidden');
+          setText('rt-preview-realtor-subject', p.realtorSubject || '');
+          setText('rt-preview-realtor-preheader', p.realtorPreheader || '');
+          const rEl = document.getElementById('rt-preview-realtor-html');
+          if (rEl) rEl.innerHTML = p.realtorEmailHtml;
+        } else {
+          realtorSection.classList.add('hidden');
+        }
+
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      } else {
+        // LIVE MODE
+        setProgressStep('publish', 'rate-progress');
+        setStatus('Rate page published at ' + data.pageUrl, 'rate-status');
+
+        await sleep(500);
+
+        if (data.campaigns && data.campaigns.length > 0) {
+          setProgressStep('send', 'rate-progress');
+          setStatus('Emails sent to ' + data.campaigns.map(c => c.audience).join(' and ') + '.', 'rate-status');
+          await sleep(500);
+        }
+
+        setProgressStep('done', 'rate-progress');
+        setStatus('All done!', 'rate-status');
+
+        await sleep(300);
+        progressEl.classList.add('hidden');
+        resultEl.classList.remove('hidden');
+
+        document.getElementById('rt-result-card-live').classList.remove('hidden');
+        document.getElementById('rt-result-card-preview').classList.add('hidden');
+
+        const pageUrlEl = document.getElementById('rt-result-page-url');
+        pageUrlEl.href = data.pageUrl;
+        pageUrlEl.textContent = data.pageUrl;
+
+        const campaignsEl = document.getElementById('rt-result-campaigns');
+        campaignsEl.innerHTML = '';
+        if (data.campaigns && data.campaigns.length > 0) {
+          data.campaigns.forEach(c => {
+            const el = document.createElement('p');
+            el.innerHTML = '<strong>' + capitalize(c.audience) + ' Email:</strong> ' +
+              escapeHtml(c.subject) + ' <span style="color: var(--color-success);">(Sent)</span>';
+            campaignsEl.appendChild(el);
+          });
+        }
+
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+    } catch (err) {
+      console.error('Rate update automation error:', err);
+      progressEl.classList.add('hidden');
+      errorEl.classList.remove('hidden');
+      document.getElementById('rate-error-msg').textContent = err.message;
+      errorEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } finally {
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+    }
   });
 }
 
@@ -469,22 +633,44 @@ function initCopyButtons() {
 // ========================================================================
 
 function initFormPersistence() {
-  const STORAGE_KEY = 'nl-form-data';
+  // Newsletter form persistence
+  persistForm({
+    storageKey: 'nl-form-data',
+    formId: 'newsletter-builder',
+    textFields: [
+      'nl-topic', 'nl-articles', 'nl-story', 'nl-photo', 'nl-ai-tool', 'nl-notes',
+      'nl-conv30-rate', 'nl-conv30-apr', 'nl-conv15-rate', 'nl-conv15-apr',
+      'nl-jumbo-rate', 'nl-jumbo-apr', 'nl-va-rate', 'nl-va-apr',
+      'nl-fha30-rate', 'nl-fha30-apr', 'nl-fha-arm-rate', 'nl-fha-arm-apr'
+    ],
+    checkboxName: 'audience',
+    checkboxKey: 'audiences',
+  });
 
-  // All newsletter form field IDs to persist
-  const textFields = [
-    'nl-topic', 'nl-articles', 'nl-story', 'nl-photo', 'nl-ai-tool', 'nl-notes',
-    'nl-conv30-rate', 'nl-conv30-apr', 'nl-conv15-rate', 'nl-conv15-apr',
-    'nl-jumbo-rate', 'nl-jumbo-apr', 'nl-va-rate', 'nl-va-apr',
-    'nl-fha30-rate', 'nl-fha30-apr', 'nl-fha-arm-rate', 'nl-fha-arm-apr'
-  ];
-  const checkboxNames = ['audience'];
+  // Rate form persistence
+  persistForm({
+    storageKey: 'rt-form-data',
+    formId: 'rate-builder',
+    textFields: [
+      'rt-conv30-rate', 'rt-conv30-apr', 'rt-conv15-rate', 'rt-conv15-apr',
+      'rt-jumbo-rate', 'rt-jumbo-apr', 'rt-va-rate', 'rt-va-apr',
+      'rt-fha30-rate', 'rt-fha30-apr', 'rt-fha-arm-rate', 'rt-fha-arm-apr',
+      'rt-blurb', 'rt-notes'
+    ],
+    selectFields: ['rt-direction'],
+    checkboxName: 'rt-audience',
+    checkboxKey: 'rtAudiences',
+  });
+}
+
+function persistForm({ storageKey, formId, textFields, selectFields, checkboxName, checkboxKey }) {
+  const form = document.getElementById(formId);
+  if (!form) return;
 
   // Restore saved data on page load
   try {
-    const saved = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
+    const saved = JSON.parse(sessionStorage.getItem(storageKey));
     if (saved) {
-      // Restore text/textarea/url fields
       textFields.forEach(id => {
         const el = document.getElementById(id);
         if (el && saved[id] !== undefined && saved[id] !== '') {
@@ -492,10 +678,18 @@ function initFormPersistence() {
         }
       });
 
-      // Restore checkboxes
-      if (saved.audiences) {
-        document.querySelectorAll('input[name="audience"]').forEach(cb => {
-          cb.checked = saved.audiences.includes(cb.value);
+      if (selectFields) {
+        selectFields.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && saved[id] !== undefined) {
+            el.value = saved[id];
+          }
+        });
+      }
+
+      if (saved[checkboxKey]) {
+        document.querySelectorAll('input[name="' + checkboxName + '"]').forEach(cb => {
+          cb.checked = saved[checkboxKey].includes(cb.value);
         });
       }
     }
@@ -509,21 +703,23 @@ function initFormPersistence() {
       if (el) data[id] = el.value;
     });
 
-    // Save checkbox states
-    data.audiences = [];
-    document.querySelectorAll('input[name="audience"]:checked').forEach(cb => {
-      data.audiences.push(cb.value);
+    if (selectFields) {
+      selectFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) data[id] = el.value;
+      });
+    }
+
+    data[checkboxKey] = [];
+    document.querySelectorAll('input[name="' + checkboxName + '"]:checked').forEach(cb => {
+      data[checkboxKey].push(cb.value);
     });
 
     try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      sessionStorage.setItem(storageKey, JSON.stringify(data));
     } catch (e) { /* storage full or unavailable */ }
   }
 
-  // Listen to all inputs in the newsletter form
-  const form = document.getElementById('newsletter-builder');
-  if (form) {
-    form.addEventListener('input', saveForm);
-    form.addEventListener('change', saveForm);
-  }
+  form.addEventListener('input', saveForm);
+  form.addEventListener('change', saveForm);
 }
