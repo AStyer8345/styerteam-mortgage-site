@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
+  <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Refinance Closing Costs Quick Calculator</title>
@@ -362,6 +369,10 @@ body {
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
 <!-- ===== DISCLAIMER ===== -->
 <div class="disclaimer">
@@ -469,8 +480,8 @@ body {
     <div class="card-header">Lender Fees</div>
     <div class="card-body">
       <div class="fee-row"><label>Origination Fee</label><input type="number" class="lender-fee" data-name="Origination Fee" value="0" min="0" step="50"></div>
-      <div class="fee-row"><label>Underwriting Fee</label><input type="number" class="lender-fee" data-name="Underwriting Fee" value="900" min="0" step="50"></div>
-      <div class="fee-row"><label>Processing Fee</label><input type="number" class="lender-fee" data-name="Processing Fee" value="500" min="0" step="50"></div>
+      <div class="fee-row"><label>Underwriting Fee</label><input type="number" class="lender-fee" data-name="Underwriting Fee" value="1295" min="0" step="50"></div>
+      <div class="fee-row"><label>Processing Fee</label><input type="number" class="lender-fee" data-name="Processing Fee" value="995" min="0" step="50"></div>
       <div class="fee-row"><label>Application Fee</label><input type="number" class="lender-fee" data-name="Application Fee" value="0" min="0" step="50"></div>
       <div class="fee-row"><label>Admin Fee</label><input type="number" class="lender-fee" data-name="Admin Fee" value="0" min="0" step="50"></div>
       <hr style="border:none;border-top:1px solid #f1f5f9;margin:6px 0;">
@@ -492,13 +503,15 @@ body {
   <div class="card">
     <div class="card-header">Third-Party Fees</div>
     <div class="card-body">
-      <div class="fee-row"><label>Appraisal</label><input type="number" class="tp-fee" data-name="Appraisal" value="550" min="0" step="25"></div>
-      <div class="fee-row"><label>Credit Report</label><input type="number" class="tp-fee" data-name="Credit Report" value="65" min="0" step="5"></div>
-      <div class="fee-row"><label>Flood Certification</label><input type="number" class="tp-fee" data-name="Flood Certification" value="12" min="0" step="1"></div>
-      <div class="fee-row"><label>Tax Service Fee</label><input type="number" class="tp-fee" data-name="Tax Service Fee" value="75" min="0" step="5"></div>
-      <div class="fee-row"><label>Settlement / Closing Fee</label><input type="number" class="tp-fee" data-name="Settlement / Closing Fee" value="450" min="0" step="25"></div>
-      <div class="fee-row"><label>Recording Fee</label><input type="number" class="tp-fee" data-name="Recording Fee" value="150" min="0" step="10"></div>
-      <div class="fee-row"><label>Notary</label><input type="number" class="tp-fee" data-name="Notary" value="175" min="0" step="25"></div>
+      <div class="fee-row"><label>Appraisal</label><input type="number" class="tp-fee" data-name="Appraisal" value="795" min="0" step="25"></div>
+      <div class="fee-row"><label>Credit Report</label><input type="number" class="tp-fee" data-name="Credit Report" value="110" min="0" step="5"></div>
+      <div class="fee-row"><label>Doc Preparation Fee</label><input type="number" class="tp-fee" data-name="Doc Preparation Fee" value="495" min="0" step="25"></div>
+      <div class="fee-row"><label>Flood Certification</label><input type="number" class="tp-fee" data-name="Flood Certification" value="15" min="0" step="1"></div>
+      <div class="fee-row"><label>TX Attorney Fee</label><input type="number" class="tp-fee" data-name="TX Attorney Fee" value="125" min="0" step="25"></div>
+      <div class="fee-row"><label>Settlement Agent Fee</label><input type="number" class="tp-fee" data-name="Settlement Agent Fee" value="550" min="0" step="25"></div>
+      <div class="fee-row"><label>Title Search</label><input type="number" class="tp-fee" data-name="Title Search" value="125" min="0" step="25"></div>
+      <div class="fee-row"><label>Title Endorsements</label><input type="number" class="tp-fee" data-name="Title Endorsements" value="12" min="0" step="1"></div>
+      <div class="fee-row"><label>Recording Fee</label><input type="number" class="tp-fee" data-name="Recording Fee" value="200" min="0" step="10"></div>
     </div>
   </div>
 
@@ -508,7 +521,7 @@ body {
     <div class="card-body">
       <div class="field">
         <label for="lenders-title">Lender's Title Policy ($)</label>
-        <input type="number" id="lenders-title" placeholder="0" min="0" step="50">
+        <input type="number" id="lenders-title" value="2119" min="0" step="50">
         <div class="hint">Enter manually; rate-table lookup can be plugged in later</div>
       </div>
     </div>
@@ -1119,18 +1132,18 @@ function resetAll() {
   document.getElementById('collect-prepaid-anyway').checked = false;
   document.getElementById('points-pct').value = '';
   document.getElementById('points-dollar').value = '';
-  document.getElementById('lenders-title').value = '';
+  document.getElementById('lenders-title').value = '2119';
   document.getElementById('lender-credit').value = '';
   document.getElementById('seller-credit').value = '';
 
   // Reset lender fees to defaults
-  var lenderDefaults = [0, 900, 500, 0, 0];
+  var lenderDefaults = [0, 1295, 995, 0, 0];
   document.querySelectorAll('.lender-fee').forEach(function(el, i) {
     el.value = lenderDefaults[i] !== undefined ? lenderDefaults[i] : 0;
   });
 
   // Reset TP fees to defaults
-  var tpDefaults = [550, 65, 12, 75, 450, 150, 175];
+  var tpDefaults = [795, 110, 495, 15, 125, 550, 125, 12, 200];
   document.querySelectorAll('.tp-fee').forEach(function(el, i) {
     el.value = tpDefaults[i] !== undefined ? tpDefaults[i] : 0;
   });
