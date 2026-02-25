@@ -55,26 +55,29 @@ ${rates}
   }
 
   prompt += `
-## EMAIL RULES
-Emails should be SHORT teasers (80-120 words) that get them to click through to the rate page.
+## EMAIL RULES — GENERAL
 - Plain-text style. No images. No fancy formatting. Just text with minimal HTML.
 - Simple table layout for Mailchimp compatibility, but make it LOOK like a plain text email.
 - No hero images, no banners, no graphics.
 - Background: white. Text: dark gray (#333). Links: blue.
-- Open with a quick 1-line hook about where rates are this week.
-- Mention 1-2 key rates (30-yr fixed at minimum).
-- CTA: "See all rates and what it means for you" linking to ${pageUrl}
 - Sign off: Adam Styer | Mortgage Solutions LP | NMLS# 513013 | (512) 956-6010
 
-${wantsBorrower ? `### BORROWER EMAIL
-- Write like Adam texting a past client with a quick rate heads-up
-- Helpful, personal, not salesy
-- Focus: what these rates mean for buying or refinancing` : ""}
+${wantsBorrower ? `### BORROWER EMAIL — THIS IS A TEASER, NOT AN UPDATE
+The ENTIRE purpose of this email is to get them to click the link. That's it.
+- MAX 40-60 words before the CTA link. Shorter is better.
+- One punchy sentence about where rates are this week (DO NOT list specific rates in the email).
+- One sentence of context or what it means for them.
+- Then a bold, clear CTA: a link to ${pageUrl} with text like "See this week's rates →" or "Check the numbers →"
+- That's it. No rate tables. No details. No long paragraphs. The rate page has all the details — the email just gets the click.
+- Write like Adam texting a past client: "Hey, rates moved this week. Here's the rundown."` : ""}
 
 ${wantsRealtor ? `### REALTOR EMAIL
-- Write like Adam giving a realtor partner a quick market intel update
+- Slightly more detail than the borrower email, but still SHORT (80-100 words max).
+- Write like Adam giving a realtor partner a quick market intel update.
 - Professional but casual. Peer-to-peer.
-- Focus: what to tell buyers this week, how to use this info` : ""}
+- Mention 1-2 key rates (30-yr fixed at minimum) so realtors have talking points.
+- Focus: what to tell buyers this week, how to use this info.
+- CTA: "See all rates and details" linking to ${pageUrl}` : ""}
 
 ## WEB PAGE COMMENTARY
 Write a SHORT market commentary (100-150 words, 1-2 paragraphs) to appear below the rate table on the web page.

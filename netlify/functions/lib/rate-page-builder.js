@@ -197,6 +197,7 @@ function buildRateTable(ratesString) {
   if (!lines.length) return "";
 
   let rows = "";
+  let rowIndex = 0;
   for (const line of lines) {
     const match = line.match(/^\s*(.+?):\s*(.+)/);
     if (match) {
@@ -208,25 +209,29 @@ function buildRateTable(ratesString) {
       const rate = parts[0] || "";
       const apr = parts[1] ? parts[1].replace(/^APR:\s*/i, "") : "";
 
-      rows += `            <tr>
-              <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); font-weight: 500;">${escapeHtml(product)}</td>
-              <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); text-align: center; font-weight: 600; color: var(--color-navy);">${escapeHtml(rate)}</td>
-              <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); text-align: center; color: var(--color-gray);">${apr ? escapeHtml(apr) : "&mdash;"}</td>
+      const stripeBg = rowIndex % 2 === 1 ? "background: rgba(10, 31, 63, 0.03);" : "";
+      rows += `            <tr style="${stripeBg}">
+              <td style="padding: 1rem 1.25rem; font-weight: 500; color: #374151;">${escapeHtml(product)}</td>
+              <td style="padding: 1rem 1.25rem; text-align: center; font-size: 1.25rem; font-weight: 700; color: var(--color-navy);">${escapeHtml(rate)}</td>
+              <td style="padding: 1rem 1.25rem; text-align: center; font-size: 0.95rem; color: #6B7280;">${apr ? escapeHtml(apr) : "&mdash;"}</td>
             </tr>\n`;
+      rowIndex++;
     }
   }
 
   if (!rows) return "";
 
   return `
-          <div style="margin: 1.5rem 0 2rem; padding: 1.5rem; background: var(--color-light-gray); border-radius: var(--radius-lg); border-left: 4px solid var(--color-gold);">
-            <h2 style="margin-bottom: 1rem; color: var(--color-navy); font-size: 1.5rem;">This Week's Rates</h2>
-            <table style="width: 100%; border-collapse: collapse;">
+          <div style="margin: 2rem 0 2.5rem; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);">
+            <div style="background: var(--color-navy); padding: 1rem 1.25rem;">
+              <h2 style="margin: 0; color: #fff; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.01em;">This Week's Rates</h2>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; background: #fff;">
               <thead>
-                <tr>
-                  <th style="padding: 0.75rem 1rem; text-align: left; border-bottom: 2px solid var(--color-navy); color: var(--color-navy);">Product</th>
-                  <th style="padding: 0.75rem 1rem; text-align: center; border-bottom: 2px solid var(--color-navy); color: var(--color-navy);">Rate</th>
-                  <th style="padding: 0.75rem 1rem; text-align: center; border-bottom: 2px solid var(--color-navy); color: var(--color-navy);">APR</th>
+                <tr style="border-bottom: 2px solid var(--color-gold);">
+                  <th style="padding: 0.875rem 1.25rem; text-align: left; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280;">Product</th>
+                  <th style="padding: 0.875rem 1.25rem; text-align: center; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280;">Rate</th>
+                  <th style="padding: 0.875rem 1.25rem; text-align: center; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280;">APR</th>
                 </tr>
               </thead>
               <tbody>
