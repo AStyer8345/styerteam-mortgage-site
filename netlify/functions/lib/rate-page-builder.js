@@ -1,6 +1,7 @@
 /**
  * Builds a full HTML page for /rates/ from rate data + AI commentary.
- * Simpler than the newsletter page — rate table is the star.
+ * The rate table is the star — built server-side, not by the AI.
+ * Includes proper compliance disclaimers and rate assumptions.
  */
 
 function buildRatePage({ title, description, date, rates, direction, commentary }) {
@@ -36,6 +37,174 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+  <style>
+    /* ── Rate Page Specific Styles ── */
+    .rate-card {
+      margin: 2rem 0 0.75rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.04);
+      border: 1px solid var(--color-border);
+    }
+    .rate-card-header {
+      background: var(--color-navy);
+      padding: 1.125rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .rate-card-header h2 {
+      margin: 0;
+      color: #fff;
+      font-family: var(--font-primary);
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .rate-card-header .rate-date {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+    .rate-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+    .rate-table thead th {
+      padding: 0.875rem 1.5rem;
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-gray);
+      border-bottom: 2px solid var(--color-gold);
+    }
+    .rate-table thead th:not(:first-child) {
+      text-align: center;
+    }
+    .rate-table tbody tr {
+      transition: background var(--transition-fast);
+    }
+    .rate-table tbody tr:nth-child(even) {
+      background: rgba(10, 31, 63, 0.02);
+    }
+    .rate-table tbody tr:hover {
+      background: rgba(201, 168, 76, 0.06);
+    }
+    .rate-table tbody td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .rate-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .rate-product {
+      font-weight: 500;
+      color: var(--color-text);
+      font-size: 0.95rem;
+    }
+    .rate-value {
+      text-align: center;
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.01em;
+    }
+    .rate-apr {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--color-gray);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Assumptions box */
+    .rate-assumptions {
+      padding: 0.875rem 1.5rem;
+      background: var(--color-light-gray);
+      border-top: 1px solid var(--color-border);
+      font-size: 0.775rem;
+      line-height: 1.5;
+      color: var(--color-gray);
+    }
+
+    /* Direction badge */
+    .rate-direction-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.125rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+    .rate-direction-badge .badge-icon {
+      font-size: 1.1rem;
+    }
+
+    /* CTA card */
+    .rate-cta-card {
+      margin: 2rem 0;
+      padding: 1.75rem 2rem;
+      background: linear-gradient(135deg, rgba(10, 31, 63, 0.03) 0%, rgba(201, 168, 76, 0.06) 100%);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .rate-cta-card h3 {
+      margin: 0 0 0.5rem;
+      color: var(--color-navy);
+      font-size: 1.125rem;
+    }
+    .rate-cta-card p {
+      margin: 0 0 1.25rem;
+      color: var(--color-gray);
+      font-size: 0.95rem;
+    }
+    .rate-cta-buttons {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .rate-cta-buttons .btn {
+      padding: 0.75rem 1.75rem;
+      font-size: 0.9rem;
+    }
+
+    /* Compliance footer */
+    .rate-compliance {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+    }
+    .rate-compliance p {
+      font-size: 0.7rem;
+      line-height: 1.6;
+      color: var(--color-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .rate-table thead th,
+      .rate-table tbody td {
+        padding: 0.75rem 1rem;
+      }
+      .rate-value {
+        font-size: 1.125rem;
+      }
+      .rate-card-header {
+        padding: 1rem 1.25rem;
+      }
+      .rate-cta-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -94,23 +263,23 @@ ${rateTable}
 
           ${commentary || ""}
 
-          <hr style="margin: 2.5rem 0; border: none; border-top: 1px solid var(--color-border);">
-
-          <p style="font-size: 0.75rem; color: var(--color-gray);">Rates shown are for informational purposes only and are subject to change without notice. Actual rates depend on credit score, loan amount, property type, occupancy, and other factors. Contact Adam Styer for a personalized rate quote. Mortgage Solutions, LP NMLS# 2526130. Adam Styer NMLS# 513013.</p>
+          <div class="rate-cta-card">
+            <h3>Want to Know Your Rate?</h3>
+            <p>Every borrower is different. Let me run the numbers for your specific situation &mdash; no obligation, no pressure.</p>
+            <div class="rate-cta-buttons">
+              <a href="../prequal.html" class="btn btn-primary">Get Pre-Qualified</a>
+              <a href="../contact.html" class="btn btn-outline">Contact Adam</a>
+            </div>
+          </div>
 
           <p>Talk soon,<br><strong>Adam Styer</strong><br>Adam Styer | Mortgage Solutions LP<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
 
-        </div>
-      </div>
-    </section>
+          <div class="rate-compliance">
+            <p><strong>Rate Assumptions:</strong> Rates shown assume a 20% down payment, 740+ credit score, owner-occupied primary residence, single-family home, and are based on a 30-day lock period. Rates are subject to change without notice and may vary based on individual circumstances.</p>
+            <p><strong>Disclaimer:</strong> Rates shown are for informational purposes only and do not constitute a loan commitment or guarantee. Actual rates, terms, and availability depend on credit score, loan amount, loan-to-value ratio, property type, occupancy, and other underwriting factors. APR reflects the total cost of the loan including certain fees. Contact Adam Styer for a personalized rate quote and full disclosure of terms and costs.</p>
+            <p>Mortgage Solutions, LP &middot; NMLS# 2526130 &middot; Adam Styer NMLS# 513013 &middot; Texas Licensed Mortgage Broker &middot; <a href="../texas-complaint-notice.html">TX Consumer Complaint Notice</a></p>
+          </div>
 
-    <section class="section bg-primary">
-      <div class="container text-center">
-        <h2 data-animate>Want to Know Your Rate?</h2>
-        <p data-animate>Every borrower is different. Let Adam run the numbers for your specific situation — no obligation, no pressure.</p>
-        <div class="cta-buttons" data-animate>
-          <a href="../prequal.html" class="btn btn-light">Get Pre-Qualified</a>
-          <a href="../contact.html" class="btn btn-outline-light">Contact Adam</a>
         </div>
       </div>
     </section>
@@ -190,16 +359,19 @@ ${rateTable}
 </html>`;
 }
 
+// ══════════════════════════════════════════════════════════════
+// Rate Table Builder
+// ══════════════════════════════════════════════════════════════
+
 function buildRateTable(ratesString) {
   if (!ratesString || !ratesString.trim()) return "";
 
-  const lines = ratesString.split("\n").filter((l) => l.trim());
+  const lines = ratesString.split("\\n").filter((l) => l.trim());
   if (!lines.length) return "";
 
   let rows = "";
-  let rowIndex = 0;
   for (const line of lines) {
-    const match = line.match(/^\s*(.+?):\s*(.+)/);
+    const match = line.match(/^\\s*(.+?):\\s*(.+)/);
     if (match) {
       const product = match[1].trim();
       const rateInfo = match[2].trim();
@@ -207,60 +379,69 @@ function buildRateTable(ratesString) {
       // Split rate and APR if pipe-separated
       const parts = rateInfo.split("|").map((s) => s.trim());
       const rate = parts[0] || "";
-      const apr = parts[1] ? parts[1].replace(/^APR:\s*/i, "") : "";
+      const apr = parts[1] ? parts[1].replace(/^APR:\\s*/i, "") : "";
 
-      const stripeBg = rowIndex % 2 === 1 ? "background: rgba(10, 31, 63, 0.03);" : "";
-      rows += `            <tr style="${stripeBg}">
-              <td style="padding: 1rem 1.25rem; font-weight: 500; color: #374151;">${escapeHtml(product)}</td>
-              <td style="padding: 1rem 1.25rem; text-align: center; font-size: 1.25rem; font-weight: 700; color: var(--color-navy);">${escapeHtml(rate)}</td>
-              <td style="padding: 1rem 1.25rem; text-align: center; font-size: 0.95rem; color: #6B7280;">${apr ? escapeHtml(apr) : "&mdash;"}</td>
-            </tr>\n`;
-      rowIndex++;
+      rows += `              <tr>
+                <td class="rate-product">${escapeHtml(product)}</td>
+                <td class="rate-value">${escapeHtml(rate)}</td>
+                <td class="rate-apr">${apr ? escapeHtml(apr) : "&mdash;"}</td>
+              </tr>\n`;
     }
   }
 
   if (!rows) return "";
 
   return `
-          <div style="margin: 2rem 0 2.5rem; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);">
-            <div style="background: var(--color-navy); padding: 1rem 1.25rem;">
-              <h2 style="margin: 0; color: #fff; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.01em;">This Week's Rates</h2>
+          <div class="rate-card">
+            <div class="rate-card-header">
+              <h2>This Week&rsquo;s Rates</h2>
             </div>
-            <table style="width: 100%; border-collapse: collapse; background: #fff;">
+            <table class="rate-table">
               <thead>
-                <tr style="border-bottom: 2px solid var(--color-gold);">
-                  <th style="padding: 0.875rem 1.25rem; text-align: left; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280;">Product</th>
-                  <th style="padding: 0.875rem 1.25rem; text-align: center; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280;">Rate</th>
-                  <th style="padding: 0.875rem 1.25rem; text-align: center; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280;">APR</th>
+                <tr>
+                  <th>Product</th>
+                  <th>Rate</th>
+                  <th>APR</th>
                 </tr>
               </thead>
               <tbody>
 ${rows}
               </tbody>
             </table>
+            <div class="rate-assumptions">
+              <strong>Assumptions:</strong> 20% down payment &middot; 740+ credit score &middot; Owner-occupied primary residence &middot; Single-family home &middot; 30-day lock
+            </div>
           </div>
 `;
 }
+
+// ══════════════════════════════════════════════════════════════
+// Direction Badge
+// ══════════════════════════════════════════════════════════════
 
 function buildDirectionBadge(direction) {
   if (!direction) return "";
 
   const badges = {
-    down: { label: "Rates Dropped", color: "#059669", bg: "#ECFDF5", icon: "&#8595;" },
-    up: { label: "Rates Went Up", color: "#DC2626", bg: "#FEF2F2", icon: "&#8593;" },
-    flat: { label: "Rates Unchanged", color: "#6B7280", bg: "#F3F4F6", icon: "&#8596;" },
-    volatile: { label: "Rates Mixed", color: "#D97706", bg: "#FFFBEB", icon: "&#8597;" },
+    down:     { label: "Rates Dropped",   color: "#059669", bg: "#ECFDF5", icon: "&#8595;" },
+    up:       { label: "Rates Went Up",   color: "#DC2626", bg: "#FEF2F2", icon: "&#8593;" },
+    flat:     { label: "Rates Unchanged", color: "#6B7280", bg: "#F3F4F6", icon: "&#8596;" },
+    volatile: { label: "Rates Mixed",     color: "#D97706", bg: "#FFFBEB", icon: "&#8597;" },
   };
 
   const badge = badges[direction];
   if (!badge) return "";
 
   return `
-          <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 2rem; background: ${badge.bg}; color: ${badge.color}; font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">
-            <span style="font-size: 1.1rem;">${badge.icon}</span> ${badge.label} This Week
+          <div class="rate-direction-badge" style="background: ${badge.bg}; color: ${badge.color};">
+            <span class="badge-icon">${badge.icon}</span> ${badge.label} This Week
           </div>
 `;
 }
+
+// ══════════════════════════════════════════════════════════════
+// Helpers
+// ══════════════════════════════════════════════════════════════
 
 function formatDate(dateStr) {
   const d = new Date(dateStr + "T12:00:00");

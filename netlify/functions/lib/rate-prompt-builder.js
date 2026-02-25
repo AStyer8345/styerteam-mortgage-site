@@ -1,5 +1,8 @@
 /**
  * Builds the Claude prompt for a weekly rate update.
+ * Generates: teaser emails (no rates!) + brief web commentary.
+ * The rate TABLE is built server-side by rate-page-builder.js — NOT by the AI.
+ *
  * @param {Object} formData - The form data from the dashboard rate tab
  * @param {string} pageUrl  - The full absolute URL for the rate page
  */
@@ -37,9 +40,6 @@ TONE: Casual, direct, like a text or quick email to someone you actually know.
 ## RATE PAGE URL
 The full rate page lives at this exact URL: ${pageUrl}
 All email CTA links MUST use this exact URL. Do not make up a different URL.
-
-## CURRENT RATES
-${rates}
 `;
 
   if (direction && dirLabels[direction]) {
@@ -54,55 +54,86 @@ ${rates}
     prompt += `\n## ADDITIONAL NOTES\n${notes}\n`;
   }
 
+  // ──────────────────────────────────────────────
+  // EMAIL INSTRUCTIONS
+  // ──────────────────────────────────────────────
   prompt += `
-## EMAIL RULES — GENERAL
-- Plain-text style. No images. No fancy formatting. Just text with minimal HTML.
-- Simple table layout for Mailchimp compatibility, but make it LOOK like a plain text email.
-- No hero images, no banners, no graphics.
-- Background: white. Text: dark gray (#333). Links: blue.
-- Sign off: Adam Styer | Mortgage Solutions LP | NMLS# 513013 | (512) 956-6010
+## ⚠️  CRITICAL EMAIL RULES — READ BEFORE WRITING ANYTHING
 
-${wantsBorrower ? `### BORROWER EMAIL — THIS IS A TEASER, NOT AN UPDATE
-The ENTIRE purpose of this email is to get them to click the link. That's it.
-- MAX 40-60 words before the CTA link. Shorter is better.
-- One punchy sentence about where rates are this week (DO NOT list specific rates in the email).
-- One sentence of context or what it means for them.
-- Then a bold, clear CTA: a link to ${pageUrl} with text like "See this week's rates →" or "Check the numbers →"
-- That's it. No rate tables. No details. No long paragraphs. The rate page has all the details — the email just gets the click.
-- Write like Adam texting a past client: "Hey, rates moved this week. Here's the rundown."` : ""}
+The rate page already has a beautiful table with every rate, APR, assumptions, and disclaimers.
+The emails exist for ONE reason: get the reader to click the link and visit the rate page.
 
-${wantsRealtor ? `### REALTOR EMAIL
-- Slightly more detail than the borrower email, but still SHORT (80-100 words max).
-- Write like Adam giving a realtor partner a quick market intel update.
+ABSOLUTE RULES FOR ALL EMAILS:
+1. DO NOT include any specific rate numbers (no "6.875%", no "30-year fixed at X%")
+2. DO NOT include any rate tables, grids, or formatted rate data
+3. DO NOT list products (no "Conventional", "FHA", "VA" lists)
+4. DO NOT summarize the rates in any way — that's what the page is for
+5. Keep the email EXTREMELY short — 3-4 sentences max before the CTA link
+6. Plain-text style HTML for Mailchimp. White background, dark text (#333), blue links.
+7. No images, no banners, no hero sections, no graphics.
+8. Sign off: Adam Styer | Mortgage Solutions LP | NMLS# 513013 | (512) 956-6010
+
+The email structure is:
+- Line 1: Quick personal hook about rates this week (vague — "rates moved", "good news this week", "some shifts worth noting")
+- Line 2: One sentence of context or what it means (still no numbers)
+- CTA: Bold link to ${pageUrl} — text like "See this week's rates →" or "Check the numbers →"
+- Sign off
+
+That's it. Nothing else. If your email is longer than ~50 words before the CTA, it's too long.
+`;
+
+  if (wantsBorrower) {
+    prompt += `
+### BORROWER EMAIL
+- Write like Adam texting a friend: "Hey — rates shifted this week. Put together the latest numbers for you."
+- Warm, personal, helpful. NOT salesy.
+- The CTA is the star of the email. Everything else is just getting them to click it.
+- REMEMBER: zero rate numbers in this email. Zero.
+`;
+  }
+
+  if (wantsRealtor) {
+    prompt += `
+### REALTOR EMAIL
+- Write like Adam pinging a realtor partner: "Hey — updated rates for the week. Good info for any active buyers."
 - Professional but casual. Peer-to-peer.
-- Mention 1-2 key rates (30-yr fixed at minimum) so realtors have talking points.
-- Focus: what to tell buyers this week, how to use this info.
-- CTA: "See all rates and details" linking to ${pageUrl}` : ""}
+- Can mention the general direction ("rates came down" / "holding steady") but NO specific numbers.
+- The CTA is the star. Everything else just gets them to click.
+- REMEMBER: zero rate numbers in this email. Zero.
+`;
+  }
 
+  // ──────────────────────────────────────────────
+  // WEB COMMENTARY INSTRUCTIONS
+  // ──────────────────────────────────────────────
+  prompt += `
 ## WEB PAGE COMMENTARY
-Write a SHORT market commentary (100-150 words, 1-2 paragraphs) to appear below the rate table on the web page.
-- Use Adam's voice. Explain what the rates mean this week.
+Write a BRIEF commentary (60-90 words, 1-2 short paragraphs) that appears BELOW the rate table on the web page.
+The reader has ALREADY seen all the rates in the table above, so DO NOT repeat or list rates.
+- Use Adam's voice. What do these rates mean this week? What's the takeaway?
 - Reference the rate direction and any context from the talking points.
-- End with something like "Questions? Give me a call" or "Want to know your options? Let's talk."
-- Output ONLY HTML fragments: <p>, <strong>, <a> tags. NO <html>, <head>, <body>, <style>, <div> wrappers.
-- Links use "../" prefix (../products.html, ../calculators.html, ../prequal.html, ../contact.html)
+- Keep it conversational — this is Adam talking, not a market report.
+- End with something casual like "Give me a call if you want to talk numbers" or "Happy to run the numbers for you."
+- Output ONLY simple HTML: <p> and <strong> tags. Nothing else. No <div>, no <style>, no wrappers.
+- For any links use "../" prefix (../contact.html, ../prequal.html)
 
 ## OUTPUT FORMAT — use these EXACT delimiters
-PAGE_TITLE: [e.g. "Weekly Rate Update - February 24, 2026" — max 70 chars]
-PAGE_DESCRIPTION: [max 160 chars]
-${wantsBorrower ? "BORROWER_SUBJECT: [casual subject like \"Rates this week\" — not clickbait]\nBORROWER_PREHEADER: [max 90 chars]" : ""}
+
+PAGE_TITLE: [e.g. "Weekly Rate Update — February 24, 2026" — max 70 chars]
+PAGE_DESCRIPTION: [meta description, max 160 chars]
+${wantsBorrower ? "BORROWER_SUBJECT: [casual subject — \"Rates this week\", \"Quick rate update\" — NOT clickbait]\nBORROWER_PREHEADER: [max 90 chars, teaser text]" : ""}
 ${wantsRealtor ? "REALTOR_SUBJECT: [professional but casual subject]\nREALTOR_PREHEADER: [max 90 chars]" : ""}
 
 ${wantsBorrower ? `---BORROWER_EMAIL_START---
-[Plain-text-style HTML email for Mailchimp. No images. CTA links to ${pageUrl}]
+[Short teaser email. NO RATES. NO TABLES. Just hook + CTA link to ${pageUrl}. Mailchimp-compatible HTML.]
 ---BORROWER_EMAIL_END---` : ""}
 
 ${wantsRealtor ? `---REALTOR_EMAIL_START---
-[Plain-text-style HTML email for Mailchimp. No images. CTA links to ${pageUrl}]
+[Short teaser email. NO RATES. NO TABLES. Just hook + CTA link to ${pageUrl}. Mailchimp-compatible HTML.]
 ---REALTOR_EMAIL_END---` : ""}
 
 ---WEB_CONTENT_START---
-[1-2 paragraph market commentary as HTML fragments]
+[1-2 short paragraphs, 60-90 words. DO NOT list rates — the table is already above this on the page.]
 ---WEB_CONTENT_END---
 `;
 
