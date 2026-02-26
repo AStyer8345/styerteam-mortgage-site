@@ -2340,6 +2340,28 @@ textarea:focus {
   padding-top: var(--spacing-md);
 }
 
+/* Blog Filter Buttons */
+.blog-filter-btn {
+  padding: 0.375rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  border-radius: 2rem;
+  background: white;
+  color: var(--color-gray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.blog-filter-btn:hover {
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+}
+.blog-filter-btn.active {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: white;
+}
+
 /* Breadcrumb */
 .breadcrumb ol {
   display: flex;

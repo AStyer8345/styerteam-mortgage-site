@@ -1,20 +1,56 @@
 /**
- * Builds a full HTML page for /updates/ from AI-generated content.
- * These pages use noindex — the canonical SEO version lives at /blog/.
- * Matches the existing template structure (see updates/2026-02-19-austin-buyer-window.html).
+ * Builds a full SEO-optimized HTML page for /blog/ from AI-generated content.
+ * Unlike page-builder.js (used for /updates/), this version:
+ *   - Uses index, follow (Google CAN see it)
+ *   - Includes Article structured data (JSON-LD)
+ *   - Includes canonical URL
+ *   - Targets SEO keywords in the title/description
  */
 
-function buildWebPage({ title, description, date, content, rates }) {
+function buildBlogPage({ title, description, date, slug, content, rates, category }) {
   const formattedDate = formatDate(date);
-  const slug = slugify(title);
-  const pageUrl = `https://styermortgage.com/updates/${date}-${slug}.html`;
-  const canonicalUrl = `https://styermortgage.com/blog/${date}-${slug}.html`;
+  const isoDate = date; // Already YYYY-MM-DD
+  const pageUrl = `https://styermortgage.com/blog/${slug}.html`;
 
   // Build optional rate box
   let rateBox = "";
   if (rates) {
     rateBox = buildRateBox(rates);
   }
+
+  // Article structured data for Google rich results
+  const articleSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": pageUrl,
+    "datePublished": isoDate,
+    "dateModified": isoDate,
+    "author": {
+      "@type": "Person",
+      "name": "Adam Styer",
+      "url": "https://styermortgage.com/about.html",
+      "jobTitle": "Loan Originator",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Mortgage Solutions, LP"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mortgage Solutions, LP",
+      "url": "https://styermortgage.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://styermortgage.com/assets/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": pageUrl
+    }
+  }, null, 2);
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -28,11 +64,11 @@ function buildWebPage({ title, description, date, content, rates }) {
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(title)} | Adam Styer | Mortgage Solutions LP</title>
+  <title>${escapeHtml(title)} | Adam Styer | Austin Mortgage Broker</title>
   <meta name="description" content="${escapeHtml(description)}">
 
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="canonical" href="${canonicalUrl}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="${pageUrl}">
 
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
@@ -44,15 +80,19 @@ function buildWebPage({ title, description, date, content, rates }) {
   <meta name="twitter:title" content="${escapeHtml(title)}">
   <meta name="twitter:description" content="${escapeHtml(description)}">
 
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../style.css">
 
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+  <script type="application/ld+json">
+  ${articleSchema}
+  </script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -91,7 +131,7 @@ function buildWebPage({ title, description, date, content, rates }) {
   <main id="main">
     <section class="hero hero-short">
       <div class="container">
-        <div class="newsletter-issue-badge">${formattedDate}</div>
+        <div class="newsletter-issue-badge">${formattedDate}${category ? ` &middot; ${escapeHtml(category)}` : ""}</div>
         <h1 data-animate>${escapeHtml(title)}</h1>
         <p class="hero-subtitle" data-animate>${escapeHtml(description)}</p>
       </div>
@@ -119,6 +159,10 @@ ${rateBox}
 
           <p>Talk soon,<br><strong>Adam Styer</strong><br>Adam Styer | Mortgage Solutions LP<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
 
+        </div>
+
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
+          <a href="../blog.html" style="color: var(--color-blue); text-decoration: none; font-weight: 500;">&larr; Back to all articles</a>
         </div>
       </div>
     </section>
@@ -258,15 +302,6 @@ function formatDate(dateStr) {
   });
 }
 
-function slugify(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .substring(0, 50)
-    .replace(/-+$/, "");
-}
-
 function escapeHtml(str) {
   return str
     .replace(/&/g, "&amp;")
@@ -275,4 +310,4 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;");
 }
 
-module.exports = { buildWebPage };
+module.exports = { buildBlogPage };

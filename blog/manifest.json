@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "slug": "first-time-buyer-guide",
+      "title": "First-Time Home Buyer's Guide",
+      "description": "Everything you need to know about purchasing your first home in Austin, from pre-approval to closing day.",
+      "date": "2025-02-01",
+      "category": "Homebuying",
+      "url": "/first-time-buyer-guide.html"
+    },
+    {
+      "slug": "fixed-vs-adjustable",
+      "title": "Fixed vs. Adjustable Rate Mortgages",
+      "description": "Understanding the key differences between fixed-rate and adjustable-rate mortgages can save you thousands.",
+      "date": "2025-02-01",
+      "category": "Tips & Guides",
+      "url": "/fixed-vs-adjustable.html"
+    },
+    {
+      "slug": "improve-credit-score",
+      "title": "How to Improve Your Credit Score for a Mortgage",
+      "description": "Your credit score directly impacts your mortgage rate and buying power. Discover proven strategies to strengthen your score.",
+      "date": "2025-02-01",
+      "category": "Tips & Guides",
+      "url": "/improve-credit-score.html"
+    }
+  ]
+}

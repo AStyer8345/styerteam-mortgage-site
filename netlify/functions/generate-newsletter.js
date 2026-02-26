@@ -2,6 +2,7 @@ const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildPrompt } = require("./lib/prompt-builder");
 const { buildWebPage } = require("./lib/page-builder");
+const { buildBlogPage } = require("./lib/blog-page-builder");
 
 exports.handler = async (event) => {
   const headers = {
@@ -37,8 +38,9 @@ exports.handler = async (event) => {
       .replace(/\s+/g, "-")
       .substring(0, 50)
       .replace(/-+$/, "");
-    const filename = `${today}-${slug}.html`;
-    const pageUrl = `https://styermortgage.com/updates/${filename}`;
+    const blogSlug = `${today}-${slug}`;
+    const filename = `${blogSlug}.html`;
+    const pageUrl = `https://styermortgage.com/blog/${filename}`;
 
     // ----------------------------------------------------------------
     // STEP 1: Generate content via Claude API
@@ -97,7 +99,18 @@ exports.handler = async (event) => {
     // STEP 2: Build page data (always) / Publish (only if live)
     // ----------------------------------------------------------------
 
-    const fullPageHtml = buildWebPage({
+    const blogPageHtml = buildBlogPage({
+      title: parsed.pageTitle || topic,
+      description: parsed.pageDescription || `${topic} — Austin mortgage insights from Adam Styer`,
+      date: today,
+      slug: blogSlug,
+      content: parsed.webContent,
+      rates: formData.rates || null,
+      category: parsed.pageCategory || formData.category || "Market Update",
+    });
+
+    // Also build the old /updates/ page for backward compatibility
+    const updatesPageHtml = buildWebPage({
       title: parsed.pageTitle || topic,
       description: parsed.pageDescription || `Weekly update from Adam Styer - ${topic}`,
       date: today,
@@ -107,7 +120,20 @@ exports.handler = async (event) => {
 
     // In preview mode, skip publishing. In live mode, publish.
     if (!isPreview) {
-      await createGitHubFile(filename, fullPageHtml);
+      // Publish to /blog/ (SEO-optimized, indexed by Google)
+      await createGitHubFile(`blog/${filename}`, blogPageHtml);
+
+      // Also publish to /updates/ for backward compat with old email links
+      await createGitHubFile(`updates/${filename}`, updatesPageHtml);
+
+      // Update the blog manifest so blog.html can list this post
+      await updateBlogManifest({
+        slug: blogSlug,
+        title: parsed.pageTitle || topic,
+        description: parsed.pageDescription || `${topic} — Austin mortgage insights from Adam Styer`,
+        date: today,
+        category: parsed.pageCategory || formData.category || "Market Update",
+      });
     }
 
     // ----------------------------------------------------------------
@@ -170,6 +196,7 @@ exports.handler = async (event) => {
           realtorPreheader: parsed.realtorPreheader,
           pageTitle: parsed.pageTitle,
           pageDescription: parsed.pageDescription,
+          pageCategory: parsed.pageCategory,
           webContent: parsed.webContent,
           borrowerEmailHtml: parsed.borrowerEmail ? injectPageLink(parsed.borrowerEmail, pageUrl) : null,
           realtorEmailHtml: parsed.realtorEmail ? injectPageLink(parsed.realtorEmail, pageUrl) : null,
@@ -201,6 +228,7 @@ function parseAIResponse(text) {
     webContent: null,
     pageTitle: null,
     pageDescription: null,
+    pageCategory: null,
   };
 
   // Extract borrower email
@@ -240,6 +268,9 @@ function parseAIResponse(text) {
   const descMatch = text.match(/PAGE_DESCRIPTION:\s*(.+)/);
   if (descMatch) result.pageDescription = descMatch[1].trim();
 
+  const catMatch = text.match(/PAGE_CATEGORY:\s*(.+)/);
+  if (catMatch) result.pageCategory = catMatch[1].trim();
+
   return result;
 }
 
@@ -247,14 +278,13 @@ function parseAIResponse(text) {
 // GITHUB API: Create file in repo
 // ====================================================================
 
-async function createGitHubFile(filename, content) {
+async function createGitHubFile(filePath, content) {
   const token = process.env.GITHUB_TOKEN || process.env.github_token;
   const repo = process.env.GITHUB_REPO || process.env.Github_repo;
-  const path = `updates/${filename}`;
-  const url = `https://api.github.com/repos/${repo}/contents/${path}`;
+  const url = `https://api.github.com/repos/${repo}/contents/${filePath}`;
 
   const body = JSON.stringify({
-    message: `Add newsletter page: ${filename}`,
+    message: `Add blog post: ${filePath}`,
     content: Buffer.from(content).toString("base64"),
     branch: "main",
   });
@@ -276,6 +306,89 @@ async function createGitHubFile(filename, content) {
   }
 
   return res.json();
+}
+
+// ====================================================================
+// GITHUB API: Update blog manifest with new post
+// ====================================================================
+
+async function updateBlogManifest({ slug, title, description, date, category }) {
+  const token = process.env.GITHUB_TOKEN || process.env.github_token;
+  const repo = process.env.GITHUB_REPO || process.env.Github_repo;
+  const manifestPath = "blog/manifest.json";
+  const url = `https://api.github.com/repos/${repo}/contents/${manifestPath}`;
+
+  // Fetch existing manifest (if it exists)
+  let posts = [];
+  let existingSha = null;
+
+  try {
+    const getRes = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github.v3+json",
+        "User-Agent": "StyerTeam-Newsletter-Bot",
+      },
+    });
+
+    if (getRes.ok) {
+      const data = await getRes.json();
+      existingSha = data.sha;
+      const decoded = Buffer.from(data.content, "base64").toString("utf8");
+      const manifest = JSON.parse(decoded);
+      posts = manifest.posts || [];
+    }
+  } catch (e) {
+    console.log("No existing manifest found, creating new one");
+  }
+
+  // Add new post at the beginning (newest first)
+  posts.unshift({
+    slug,
+    title,
+    description,
+    date,
+    category,
+    url: `/blog/${slug}.html`,
+  });
+
+  // Remove duplicates by slug (in case of re-publish)
+  const seen = new Set();
+  posts = posts.filter((p) => {
+    if (seen.has(p.slug)) return false;
+    seen.add(p.slug);
+    return true;
+  });
+
+  const manifestContent = JSON.stringify({ posts }, null, 2);
+
+  const body = {
+    message: `Update blog manifest: add ${slug}`,
+    content: Buffer.from(manifestContent).toString("base64"),
+    branch: "main",
+  };
+
+  // Include sha if updating existing file
+  if (existingSha) {
+    body.sha = existingSha;
+  }
+
+  const putRes = await fetch(url, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github.v3+json",
+      "Content-Type": "application/json",
+      "User-Agent": "StyerTeam-Newsletter-Bot",
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!putRes.ok) {
+    const errBody = await putRes.text();
+    console.error(`Blog manifest update failed (${putRes.status}): ${errBody}`);
+    // Don't throw — the blog post was already published, manifest is non-critical
+  }
 }
 
 // ====================================================================
