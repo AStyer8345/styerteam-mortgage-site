@@ -49,16 +49,40 @@ function initNewsletterAutomation() {
   const statusEl = document.getElementById('newsletter-status');
   const retryBtn = document.getElementById('nl-retry-btn');
 
-  // Mode toggle handling
-  const modeOptions = form.querySelectorAll('.dash-mode-option');
+  // Helper: update submit button text based on source + mode
+  function updateNlButtonText() {
+    const src = form.querySelector('input[name="nl-source"]:checked')?.value || 'ai';
+    const m = form.querySelector('input[name="nl-mode"]:checked')?.value || 'preview';
+    if (src === 'paste') {
+      submitBtn.textContent = m === 'live' ? '🚀 Paste & Publish Newsletter' : '👁 Preview Paste Content';
+    } else {
+      submitBtn.textContent = m === 'live' ? '🚀 Generate & Send Newsletter' : '👁 Preview Newsletter';
+    }
+  }
+
+  // Mode toggle handling (Preview / Live)
+  const modeOptions = form.querySelectorAll('.dash-mode-option[data-mode]');
   modeOptions.forEach(opt => {
     opt.addEventListener('click', () => {
       modeOptions.forEach(o => o.classList.remove('active'));
       opt.classList.add('active');
       opt.querySelector('input[type="radio"]').checked = true;
+      updateNlButtonText();
+    });
+  });
 
-      const mode = opt.dataset.mode;
-      submitBtn.textContent = mode === 'live' ? '🚀 Generate & Send Newsletter' : '👁 Preview Newsletter';
+  // Source toggle handling (AI Generate / Paste & Publish)
+  const sourceOptions = form.querySelectorAll('.dash-mode-option[data-source]');
+  sourceOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      sourceOptions.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      opt.querySelector('input[type="radio"]').checked = true;
+
+      const source = opt.dataset.source;
+      document.getElementById('nl-ai-fields').classList.toggle('hidden', source === 'paste');
+      document.getElementById('nl-paste-fields').classList.toggle('hidden', source === 'ai');
+      updateNlButtonText();
     });
   });
 
@@ -108,11 +132,25 @@ function initNewsletterAutomation() {
     const modeRadio = form.querySelector('input[name="nl-mode"]:checked');
     const mode = modeRadio ? modeRadio.value : 'preview';
 
-    // Validate topic
-    const topic = form.querySelector('#nl-topic').value.trim();
-    if (!topic) {
-      form.querySelector('#nl-topic').focus();
-      return;
+    // Determine source mode
+    const source = form.querySelector('input[name="nl-source"]:checked')?.value || 'ai';
+    const isPaste = source === 'paste';
+
+    // Get schedule time (both modes)
+    const scheduleRaw = form.querySelector('#nl-schedule').value;
+    const scheduleTime = scheduleRaw ? new Date(scheduleRaw).toISOString() : null;
+
+    // Validate based on source
+    if (isPaste) {
+      const title = form.querySelector('#nl-paste-title').value.trim();
+      const emailHtml = form.querySelector('#nl-paste-email').value.trim();
+      const webContent = form.querySelector('#nl-paste-web').value.trim();
+      if (!title) { form.querySelector('#nl-paste-title').focus(); return; }
+      if (!emailHtml) { form.querySelector('#nl-paste-email').focus(); return; }
+      if (!webContent) { form.querySelector('#nl-paste-web').focus(); return; }
+    } else {
+      const topic = form.querySelector('#nl-topic').value.trim();
+      if (!topic) { form.querySelector('#nl-topic').focus(); return; }
     }
 
     // Gather audiences
@@ -128,24 +166,47 @@ function initNewsletterAutomation() {
 
     // Confirm if live mode
     if (mode === 'live') {
-      const msg = 'This will publish a page and send emails to your ' +
-        audiences.map(a => a === 'borrower' ? 'Borrower' : 'Realtor').join(' and ') +
-        ' list(s). Continue?';
+      const audienceLabel = audiences.map(a => a === 'borrower' ? 'Borrower' : 'Realtor').join(' and ');
+      let msg;
+      if (scheduleTime) {
+        const when = new Date(scheduleRaw).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+        msg = 'This will publish the page NOW and SCHEDULE emails to your ' + audienceLabel + ' list(s) for ' + when + '. Continue?';
+      } else {
+        msg = 'This will publish a page and send emails to your ' + audienceLabel + ' list(s). Continue?';
+      }
       if (!confirm(msg)) return;
     }
 
     // Gather form data
-    const formData = {
-      topic,
-      audiences,
-      mode,
-      rates: buildRateString('nl'),
-      articles: form.querySelector('#nl-articles').value.trim(),
-      story: form.querySelector('#nl-story').value.trim(),
-      photo: form.querySelector('#nl-photo').value.trim(),
-      aiTool: form.querySelector('#nl-ai-tool').value.trim(),
-      notes: form.querySelector('#nl-notes').value.trim(),
-    };
+    let formData;
+    if (isPaste) {
+      formData = {
+        source: 'paste',
+        title: form.querySelector('#nl-paste-title').value.trim(),
+        description: form.querySelector('#nl-paste-description').value.trim(),
+        subject: form.querySelector('#nl-paste-subject').value.trim(),
+        preheader: form.querySelector('#nl-paste-preheader').value.trim(),
+        photo: form.querySelector('#nl-paste-photo').value.trim(),
+        emailHtml: form.querySelector('#nl-paste-email').value.trim(),
+        webContent: form.querySelector('#nl-paste-web').value.trim(),
+        audiences,
+        mode,
+        scheduleTime,
+      };
+    } else {
+      formData = {
+        topic: form.querySelector('#nl-topic').value.trim(),
+        audiences,
+        mode,
+        rates: buildRateString('nl'),
+        articles: form.querySelector('#nl-articles').value.trim(),
+        story: form.querySelector('#nl-story').value.trim(),
+        photo: form.querySelector('#nl-photo').value.trim(),
+        aiTool: form.querySelector('#nl-ai-tool').value.trim(),
+        notes: form.querySelector('#nl-notes').value.trim(),
+        scheduleTime,
+      };
+    }
 
     // Reset UI
     progressEl.classList.remove('hidden');
@@ -158,8 +219,13 @@ function initNewsletterAutomation() {
     progressEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     // Set initial step
-    setProgressStep('generate');
-    setStatus('Generating content with AI... this takes about 30 seconds.');
+    if (isPaste) {
+      setProgressStep('publish');
+      setStatus('Publishing pasted content...');
+    } else {
+      setProgressStep('generate');
+      setStatus('Generating content with AI... this takes about 30 seconds.');
+    }
 
     try {
       const response = await fetch('/.netlify/functions/generate-newsletter', {
@@ -196,7 +262,7 @@ function initNewsletterAutomation() {
 
         // Fill in preview data
         const p = data.preview;
-        setText('preview-page-title', p.pageTitle || formData.topic);
+        setText('preview-page-title', p.pageTitle || formData.topic || formData.title);
         setText('preview-page-url', data.pageUrl);
 
         // Web content
@@ -238,7 +304,13 @@ function initNewsletterAutomation() {
 
         if (data.campaigns && data.campaigns.length > 0) {
           setProgressStep('send');
-          setStatus('Emails sent to ' + data.campaigns.map(c => c.audience).join(' and ') + '.');
+          const isScheduled = data.campaigns.some(c => c.status === 'scheduled');
+          if (isScheduled) {
+            const when = new Date(data.campaigns[0].scheduledFor).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+            setStatus('Emails scheduled for ' + when);
+          } else {
+            setStatus('Emails sent to ' + data.campaigns.map(c => c.audience).join(' and ') + '.');
+          }
           await sleep(500);
         }
 
@@ -262,8 +334,11 @@ function initNewsletterAutomation() {
         if (data.campaigns && data.campaigns.length > 0) {
           data.campaigns.forEach(c => {
             const el = document.createElement('p');
+            const statusBadge = c.status === 'scheduled'
+              ? '<span style="color: #d4a017;">(Scheduled for ' + new Date(c.scheduledFor).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + ')</span>'
+              : '<span style="color: var(--color-success);">(Sent)</span>';
             el.innerHTML = '<strong>' + capitalize(c.audience) + ' Email:</strong> ' +
-              escapeHtml(c.subject) + ' <span style="color: var(--color-success);">(Sent)</span>';
+              escapeHtml(c.subject) + ' ' + statusBadge;
             campaignsEl.appendChild(el);
           });
         }
@@ -564,16 +639,40 @@ function initRealtorBuilder() {
   const errorEl = document.getElementById('realtor-error');
   const retryBtn = document.getElementById('rl-retry-btn');
 
-  // Mode toggle handling
-  const modeOptions = form.querySelectorAll('.dash-mode-option');
+  // Helper: update submit button text based on source + mode
+  function updateRlButtonText() {
+    const src = form.querySelector('input[name="rl-source"]:checked')?.value || 'ai';
+    const m = form.querySelector('input[name="rl-mode"]:checked')?.value || 'preview';
+    if (src === 'paste') {
+      submitBtn.textContent = m === 'live' ? '\u{1F680} Paste & Publish Realtor Content' : '\u{1F441} Preview Paste Content';
+    } else {
+      submitBtn.textContent = m === 'live' ? '\u{1F680} Generate & Send Realtor Content' : '\u{1F441} Preview Realtor Content';
+    }
+  }
+
+  // Mode toggle handling (Preview / Live)
+  const modeOptions = form.querySelectorAll('.dash-mode-option[data-mode]');
   modeOptions.forEach(opt => {
     opt.addEventListener('click', () => {
       modeOptions.forEach(o => o.classList.remove('active'));
       opt.classList.add('active');
       opt.querySelector('input[type="radio"]').checked = true;
+      updateRlButtonText();
+    });
+  });
 
-      const mode = opt.dataset.mode;
-      submitBtn.textContent = mode === 'live' ? '\u{1F680} Generate & Send Realtor Content' : '\u{1F441} Preview Realtor Content';
+  // Source toggle handling (AI Generate / Paste & Publish)
+  const sourceOptions = form.querySelectorAll('.dash-mode-option[data-source]');
+  sourceOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      sourceOptions.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      opt.querySelector('input[type="radio"]').checked = true;
+
+      const source = opt.dataset.source;
+      document.getElementById('rl-ai-fields').classList.toggle('hidden', source === 'paste');
+      document.getElementById('rl-paste-fields').classList.toggle('hidden', source === 'ai');
+      updateRlButtonText();
     });
   });
 
@@ -587,7 +686,7 @@ function initRealtorBuilder() {
         liveOpt.classList.add('active');
         liveOpt.querySelector('input[type="radio"]').checked = true;
       }
-      submitBtn.textContent = '\u{1F680} Generate & Send Realtor Content';
+      updateRlButtonText();
 
       resultEl.classList.add('hidden');
       submitBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -618,28 +717,67 @@ function initRealtorBuilder() {
     const modeRadio = form.querySelector('input[name="rl-mode"]:checked');
     const mode = modeRadio ? modeRadio.value : 'preview';
 
-    // Validate topic
-    const topic = form.querySelector('#rl-topic').value.trim();
-    if (!topic) {
-      form.querySelector('#rl-topic').focus();
-      return;
+    // Determine source mode
+    const source = form.querySelector('input[name="rl-source"]:checked')?.value || 'ai';
+    const isPaste = source === 'paste';
+
+    // Get schedule time (both modes)
+    const scheduleRaw = form.querySelector('#rl-schedule').value;
+    const scheduleTime = scheduleRaw ? new Date(scheduleRaw).toISOString() : null;
+
+    // Validate based on source
+    if (isPaste) {
+      const title = form.querySelector('#rl-paste-title').value.trim();
+      const emailHtml = form.querySelector('#rl-paste-email').value.trim();
+      const webContent = form.querySelector('#rl-paste-web').value.trim();
+      if (!title) { form.querySelector('#rl-paste-title').focus(); return; }
+      if (!emailHtml) { form.querySelector('#rl-paste-email').focus(); return; }
+      if (!webContent) { form.querySelector('#rl-paste-web').focus(); return; }
+    } else {
+      const topic = form.querySelector('#rl-topic').value.trim();
+      if (!topic) { form.querySelector('#rl-topic').focus(); return; }
     }
 
     // Confirm if live mode
     if (mode === 'live') {
-      if (!confirm('This will publish an article and send an email to your Realtor list. Continue?')) return;
+      let msg;
+      if (scheduleTime) {
+        const when = new Date(scheduleRaw).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+        msg = 'This will publish the article NOW and SCHEDULE the email to your Realtor list for ' + when + '. Continue?';
+      } else {
+        msg = 'This will publish an article and send an email to your Realtor list. Continue?';
+      }
+      if (!confirm(msg)) return;
     }
 
     // Gather form data
-    const formData = {
-      topic,
-      category: form.querySelector('#rl-category').value,
-      articles: form.querySelector('#rl-articles').value.trim(),
-      story: form.querySelector('#rl-story').value.trim(),
-      aiTool: form.querySelector('#rl-ai-tool').value.trim(),
-      notes: form.querySelector('#rl-notes').value.trim(),
-      mode,
-    };
+    let formData;
+    if (isPaste) {
+      formData = {
+        source: 'paste',
+        title: form.querySelector('#rl-paste-title').value.trim(),
+        description: form.querySelector('#rl-paste-description').value.trim(),
+        category: form.querySelector('#rl-paste-category').value,
+        subject: form.querySelector('#rl-paste-subject').value.trim(),
+        preheader: form.querySelector('#rl-paste-preheader').value.trim(),
+        photo: form.querySelector('#rl-paste-photo').value.trim(),
+        emailHtml: form.querySelector('#rl-paste-email').value.trim(),
+        webContent: form.querySelector('#rl-paste-web').value.trim(),
+        mode,
+        scheduleTime,
+      };
+    } else {
+      formData = {
+        topic: form.querySelector('#rl-topic').value.trim(),
+        category: form.querySelector('#rl-category').value,
+        articles: form.querySelector('#rl-articles').value.trim(),
+        story: form.querySelector('#rl-story').value.trim(),
+        aiTool: form.querySelector('#rl-ai-tool').value.trim(),
+        notes: form.querySelector('#rl-notes').value.trim(),
+        mode,
+        scheduleTime,
+      };
+    }
 
     // Reset UI
     progressEl.classList.remove('hidden');
@@ -650,8 +788,13 @@ function initRealtorBuilder() {
 
     progressEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    setProgressStep('generate', 'realtor-progress');
-    setStatus('Generating realtor content with AI... this takes about 30 seconds.', 'realtor-status');
+    if (isPaste) {
+      setProgressStep('publish', 'realtor-progress');
+      setStatus('Publishing pasted content...', 'realtor-status');
+    } else {
+      setProgressStep('generate', 'realtor-progress');
+      setStatus('Generating realtor content with AI... this takes about 30 seconds.', 'realtor-status');
+    }
 
     try {
       const response = await fetch('/.netlify/functions/generate-realtor-content', {
@@ -685,7 +828,7 @@ function initRealtorBuilder() {
         previewCard.classList.remove('hidden');
 
         const p = data.preview;
-        setText('rl-preview-page-title', p.pageTitle || formData.topic);
+        setText('rl-preview-page-title', p.pageTitle || formData.topic || formData.title);
         setText('rl-preview-category', p.category || formData.category || '');
         setText('rl-preview-page-url', data.pageUrl);
 
@@ -716,7 +859,13 @@ function initRealtorBuilder() {
 
         if (data.campaigns && data.campaigns.length > 0) {
           setProgressStep('send', 'realtor-progress');
-          setStatus('Email sent to your Realtor list.', 'realtor-status');
+          const isScheduled = data.campaigns.some(c => c.status === 'scheduled');
+          if (isScheduled) {
+            const when = new Date(data.campaigns[0].scheduledFor).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+            setStatus('Email scheduled for ' + when, 'realtor-status');
+          } else {
+            setStatus('Email sent to your Realtor list.', 'realtor-status');
+          }
           await sleep(500);
         }
 
@@ -739,8 +888,11 @@ function initRealtorBuilder() {
         if (data.campaigns && data.campaigns.length > 0) {
           data.campaigns.forEach(c => {
             const el = document.createElement('p');
+            const statusBadge = c.status === 'scheduled'
+              ? '<span style="color: #d4a017;">(Scheduled for ' + new Date(c.scheduledFor).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + ')</span>'
+              : '<span style="color: var(--color-success);">(Sent)</span>';
             el.innerHTML = '<strong>Realtor Email:</strong> ' +
-              escapeHtml(c.subject) + ' <span style="color: var(--color-success);">(Sent)</span>';
+              escapeHtml(c.subject) + ' ' + statusBadge;
             campaignsEl.appendChild(el);
           });
         }
@@ -853,10 +1005,13 @@ function initFormPersistence() {
       'nl-topic', 'nl-articles', 'nl-story', 'nl-photo', 'nl-ai-tool', 'nl-notes',
       'nl-conv30-rate', 'nl-conv30-apr', 'nl-conv15-rate', 'nl-conv15-apr',
       'nl-jumbo-rate', 'nl-jumbo-apr', 'nl-va-rate', 'nl-va-apr',
-      'nl-fha30-rate', 'nl-fha30-apr', 'nl-fha-arm-rate', 'nl-fha-arm-apr'
+      'nl-fha30-rate', 'nl-fha30-apr', 'nl-fha-arm-rate', 'nl-fha-arm-apr',
+      'nl-paste-title', 'nl-paste-description', 'nl-paste-subject', 'nl-paste-preheader',
+      'nl-paste-photo', 'nl-paste-email', 'nl-paste-web', 'nl-schedule'
     ],
     checkboxName: 'audience',
     checkboxKey: 'audiences',
+    radioFields: [{ name: 'nl-source', key: 'nlSource' }],
   });
 
   // Rate form persistence
@@ -879,13 +1034,16 @@ function initFormPersistence() {
     storageKey: 'rl-form-data',
     formId: 'realtor-builder',
     textFields: [
-      'rl-topic', 'rl-articles', 'rl-story', 'rl-ai-tool', 'rl-notes'
+      'rl-topic', 'rl-articles', 'rl-story', 'rl-ai-tool', 'rl-notes',
+      'rl-paste-title', 'rl-paste-description', 'rl-paste-subject', 'rl-paste-preheader',
+      'rl-paste-photo', 'rl-paste-email', 'rl-paste-web', 'rl-schedule'
     ],
-    selectFields: ['rl-category'],
+    selectFields: ['rl-category', 'rl-paste-category'],
+    radioFields: [{ name: 'rl-source', key: 'rlSource' }],
   });
 }
 
-function persistForm({ storageKey, formId, textFields, selectFields, checkboxName, checkboxKey }) {
+function persistForm({ storageKey, formId, textFields, selectFields, checkboxName, checkboxKey, radioFields }) {
   const form = document.getElementById(formId);
   if (!form) return;
 
@@ -914,6 +1072,21 @@ function persistForm({ storageKey, formId, textFields, selectFields, checkboxNam
           cb.checked = saved[checkboxKey].includes(cb.value);
         });
       }
+
+      // Restore radio button groups and trigger UI update
+      if (radioFields) {
+        radioFields.forEach(({ name, key }) => {
+          if (saved[key]) {
+            const radio = form.querySelector('input[name="' + name + '"][value="' + saved[key] + '"]');
+            if (radio) {
+              radio.checked = true;
+              // Click the parent .dash-mode-option to trigger toggle UI (show/hide fields)
+              const parentOption = radio.closest('.dash-mode-option');
+              if (parentOption) parentOption.click();
+            }
+          }
+        });
+      }
     }
   } catch (e) { /* ignore parse errors */ }
 
@@ -932,10 +1105,20 @@ function persistForm({ storageKey, formId, textFields, selectFields, checkboxNam
       });
     }
 
-    data[checkboxKey] = [];
-    document.querySelectorAll('input[name="' + checkboxName + '"]:checked').forEach(cb => {
-      data[checkboxKey].push(cb.value);
-    });
+    if (checkboxName && checkboxKey) {
+      data[checkboxKey] = [];
+      document.querySelectorAll('input[name="' + checkboxName + '"]:checked').forEach(cb => {
+        data[checkboxKey].push(cb.value);
+      });
+    }
+
+    // Save radio button groups
+    if (radioFields) {
+      radioFields.forEach(({ name, key }) => {
+        const checked = form.querySelector('input[name="' + name + '"]:checked');
+        if (checked) data[key] = checked.value;
+      });
+    }
 
     try {
       sessionStorage.setItem(storageKey, JSON.stringify(data));

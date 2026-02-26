@@ -107,6 +107,118 @@
   to = "https://mslp.my1003app.com/513013/register"
   status = 301
 
+# ─── 301 Redirects: Old WordPress Loan Pages ───
+
+[[redirects]]
+  from = "/va-loans/"
+  to = "/loans/va.html"
+  status = 301
+
+[[redirects]]
+  from = "/va-loans"
+  to = "/loans/va.html"
+  status = 301
+
+[[redirects]]
+  from = "/va-home-loans/"
+  to = "/loans/va.html"
+  status = 301
+
+[[redirects]]
+  from = "/va-home-loans"
+  to = "/loans/va.html"
+  status = 301
+
+[[redirects]]
+  from = "/usda-loans/"
+  to = "/loans/usda.html"
+  status = 301
+
+[[redirects]]
+  from = "/usda-loans"
+  to = "/loans/usda.html"
+  status = 301
+
+[[redirects]]
+  from = "/usda-home-loans/"
+  to = "/loans/usda.html"
+  status = 301
+
+[[redirects]]
+  from = "/usda-home-loans"
+  to = "/loans/usda.html"
+  status = 301
+
+[[redirects]]
+  from = "/fha-loans/"
+  to = "/loans/fha.html"
+  status = 301
+
+[[redirects]]
+  from = "/fha-loans"
+  to = "/loans/fha.html"
+  status = 301
+
+[[redirects]]
+  from = "/fha-home-loans/"
+  to = "/loans/fha.html"
+  status = 301
+
+[[redirects]]
+  from = "/fha-home-loans"
+  to = "/loans/fha.html"
+  status = 301
+
+[[redirects]]
+  from = "/conventional-loans/"
+  to = "/loans/conventional.html"
+  status = 301
+
+[[redirects]]
+  from = "/conventional-loans"
+  to = "/loans/conventional.html"
+  status = 301
+
+[[redirects]]
+  from = "/jumbo-loans/"
+  to = "/loans/jumbo.html"
+  status = 301
+
+[[redirects]]
+  from = "/jumbo-loans"
+  to = "/loans/jumbo.html"
+  status = 301
+
+[[redirects]]
+  from = "/construction-loans/"
+  to = "/loans/construction.html"
+  status = 301
+
+[[redirects]]
+  from = "/construction-loans"
+  to = "/loans/construction.html"
+  status = 301
+
+[[redirects]]
+  from = "/investment-property-loans/"
+  to = "/loans/investment.html"
+  status = 301
+
+[[redirects]]
+  from = "/investment-property-loans"
+  to = "/loans/investment.html"
+  status = 301
+
+[[redirects]]
+  from = "/refinance/"
+  to = "/loans/refinance.html"
+  status = 301
+
+[[redirects]]
+  from = "/refinance"
+  to = "/loans/refinance.html"
+  status = 301
+
 # WordPress cruft — catch-all patterns
 [[redirects]]
   from = "/wp-content/*"

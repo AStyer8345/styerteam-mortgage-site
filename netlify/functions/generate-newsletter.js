@@ -21,18 +21,43 @@ exports.handler = async (event) => {
 
   try {
     const formData = JSON.parse(event.body);
-    const { topic, audiences, mode } = formData;
+    const { topic, audiences, mode, source, scheduleTime } = formData;
     const isPreview = mode === "preview";
+    const isPaste = source === "paste";
 
-    if (!topic) {
+    // Validate: AI mode needs topic, paste mode needs title + emailHtml + webContent
+    if (isPaste) {
+      if (!formData.title) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: "Title is required for paste mode" }) };
+      }
+      if (!formData.emailHtml) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: "Teaser Email HTML is required for paste mode" }) };
+      }
+      if (!formData.webContent) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: "Webpage Content HTML is required for paste mode" }) };
+      }
+    } else if (!topic) {
       return { statusCode: 400, headers, body: JSON.stringify({ error: "Topic is required" }) };
+    }
+
+    // Validate schedule time if provided (must be 15+ min in the future)
+    if (scheduleTime) {
+      const scheduled = new Date(scheduleTime);
+      const minTime = new Date(Date.now() + 15 * 60 * 1000);
+      if (isNaN(scheduled.getTime())) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: "Invalid schedule time" }) };
+      }
+      if (scheduled < minTime) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: "Schedule time must be at least 15 minutes in the future" }) };
+      }
     }
 
     // ----------------------------------------------------------------
     // STEP 0: Compute the page URL FIRST so the AI can use it directly
     // ----------------------------------------------------------------
     const today = new Date().toISOString().split("T")[0];
-    const slug = topic
+    const slugSource = isPaste ? (formData.title || "untitled") : topic;
+    const slug = slugSource
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, "")
       .replace(/\s+/g, "-")
@@ -43,43 +68,60 @@ exports.handler = async (event) => {
     const pageUrl = `https://styermortgage.com/blog/${filename}`;
 
     // ----------------------------------------------------------------
-    // STEP 1: Generate content via Claude API
+    // STEP 1: Generate or assemble content
     // ----------------------------------------------------------------
-    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const prompt = buildPrompt(formData, pageUrl);
+    let parsed;
 
-    // Retry up to 3 times on transient errors (429/529)
-    let response;
-    for (let attempt = 1; attempt <= 3; attempt++) {
-      try {
-        response = await anthropic.messages.create({
-          model: "claude-haiku-4-5-20251001",
-          max_tokens: 4000,
-          messages: [{ role: "user", content: prompt }],
-        });
-        break;
-      } catch (apiErr) {
-        const status = apiErr.status || apiErr.statusCode;
-        if ((status === 429 || status === 529) && attempt < 3) {
-          console.log(`API returned ${status}, retrying (attempt ${attempt + 1}/3)...`);
-          await new Promise(r => setTimeout(r, 2000 * attempt));
-          continue;
-        }
-        throw apiErr;
-      }
-    }
-
-    const aiText = response.content[0].text;
-
-    // Parse the AI response into sections
-    const parsed = parseAIResponse(aiText);
-
-    if (!parsed.webContent) {
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: "Failed to parse AI response", raw: aiText.substring(0, 500) }),
+    if (isPaste) {
+      // Paste mode: skip AI entirely, use provided HTML directly
+      parsed = {
+        borrowerEmail: formData.emailHtml,
+        borrowerSubject: formData.subject || formData.title,
+        borrowerPreheader: formData.preheader || "",
+        realtorEmail: null,
+        realtorSubject: null,
+        realtorPreheader: null,
+        webContent: formData.webContent,
+        pageTitle: formData.title,
+        pageDescription: formData.description || formData.title,
+        pageCategory: formData.category || "Market Update",
       };
+    } else {
+      // AI mode: generate content via Claude API
+      const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+      const prompt = buildPrompt(formData, pageUrl);
+
+      // Retry up to 3 times on transient errors (429/529)
+      let response;
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+          response = await anthropic.messages.create({
+            model: "claude-haiku-4-5-20251001",
+            max_tokens: 4000,
+            messages: [{ role: "user", content: prompt }],
+          });
+          break;
+        } catch (apiErr) {
+          const status = apiErr.status || apiErr.statusCode;
+          if ((status === 429 || status === 529) && attempt < 3) {
+            console.log(`API returned ${status}, retrying (attempt ${attempt + 1}/3)...`);
+            await new Promise(r => setTimeout(r, 2000 * attempt));
+            continue;
+          }
+          throw apiErr;
+        }
+      }
+
+      const aiText = response.content[0].text;
+      parsed = parseAIResponse(aiText);
+
+      if (!parsed.webContent) {
+        return {
+          statusCode: 500,
+          headers,
+          body: JSON.stringify({ error: "Failed to parse AI response", raw: aiText.substring(0, 500) }),
+        };
+      }
     }
 
     // Inject photo into the "Personal Corner" section of web content only (no photos in emails)
@@ -99,9 +141,11 @@ exports.handler = async (event) => {
     // STEP 2: Build page data (always) / Publish (only if live)
     // ----------------------------------------------------------------
 
+    const effectiveTitle = parsed.pageTitle || topic || formData.title || "Newsletter";
+
     const blogPageHtml = buildBlogPage({
-      title: parsed.pageTitle || topic,
-      description: parsed.pageDescription || `${topic} — Austin mortgage insights from Adam Styer`,
+      title: effectiveTitle,
+      description: parsed.pageDescription || `${effectiveTitle} — Austin mortgage insights from Adam Styer`,
       date: today,
       slug: blogSlug,
       content: parsed.webContent,
@@ -111,8 +155,8 @@ exports.handler = async (event) => {
 
     // Also build the old /updates/ page for backward compatibility
     const updatesPageHtml = buildWebPage({
-      title: parsed.pageTitle || topic,
-      description: parsed.pageDescription || `Weekly update from Adam Styer - ${topic}`,
+      title: effectiveTitle,
+      description: parsed.pageDescription || `Weekly update from Adam Styer - ${effectiveTitle}`,
       date: today,
       content: parsed.webContent,
       rates: formData.rates || null,
@@ -129,8 +173,8 @@ exports.handler = async (event) => {
       // Update the blog manifest so blog.html can list this post
       await updateBlogManifest({
         slug: blogSlug,
-        title: parsed.pageTitle || topic,
-        description: parsed.pageDescription || `${topic} — Austin mortgage insights from Adam Styer`,
+        title: effectiveTitle,
+        description: parsed.pageDescription || `${effectiveTitle} — Austin mortgage insights from Adam Styer`,
         date: today,
         category: parsed.pageCategory || formData.category || "Market Update",
       });
@@ -154,14 +198,17 @@ exports.handler = async (event) => {
         const sendBorrower = audiences.includes("borrower") && process.env.MAILCHIMP_BORROWER_LIST_ID;
         const sendRealtor = audiences.includes("realtor") && process.env.MAILCHIMP_REALTOR_LIST_ID;
 
+        const effectiveTopic = topic || formData.title || "Newsletter";
+
         if (sendBorrower && parsed.borrowerEmail) {
           const borrowerResult = await createAndSendCampaign({
             listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
-            subject: parsed.borrowerSubject || `${topic} - Adam Styer | Mortgage Solutions LP`,
+            subject: parsed.borrowerSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
             preheader: parsed.borrowerPreheader || "",
             html: injectPageLink(parsed.borrowerEmail, pageUrl),
             fromName: "Adam Styer",
             replyTo: "adam@thestyerteam.com",
+            scheduleTime: scheduleTime || null,
           });
           results.campaigns.push({ audience: "borrower", ...borrowerResult });
         }
@@ -169,11 +216,12 @@ exports.handler = async (event) => {
         if (sendRealtor && parsed.realtorEmail) {
           const realtorResult = await createAndSendCampaign({
             listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
-            subject: parsed.realtorSubject || `${topic} - Adam Styer | Mortgage Solutions LP`,
+            subject: parsed.realtorSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
             preheader: parsed.realtorPreheader || "",
             html: injectPageLink(parsed.realtorEmail, pageUrl),
             fromName: "Adam Styer",
             replyTo: "adam@thestyerteam.com",
+            scheduleTime: scheduleTime || null,
           });
           results.campaigns.push({ audience: "realtor", ...realtorResult });
         }
@@ -395,7 +443,7 @@ async function updateBlogManifest({ slug, title, description, date, category }) 
 // MAILCHIMP: Create campaign + send
 // ====================================================================
 
-async function createAndSendCampaign({ listId, subject, preheader, html, fromName, replyTo }) {
+async function createAndSendCampaign({ listId, subject, preheader, html, fromName, replyTo, scheduleTime }) {
   // Create campaign
   const campaign = await mailchimp.campaigns.create({
     type: "regular",
@@ -411,10 +459,14 @@ async function createAndSendCampaign({ listId, subject, preheader, html, fromNam
   // Set content
   await mailchimp.campaigns.setContent(campaign.id, { html });
 
-  // Send
-  await mailchimp.campaigns.send(campaign.id);
-
-  return { id: campaign.id, status: "sent", subject };
+  // Schedule or send immediately
+  if (scheduleTime) {
+    await mailchimp.campaigns.schedule(campaign.id, { schedule_time: scheduleTime });
+    return { id: campaign.id, status: "scheduled", subject, scheduledFor: scheduleTime };
+  } else {
+    await mailchimp.campaigns.send(campaign.id);
+    return { id: campaign.id, status: "sent", subject };
+  }
 }
 
 // ====================================================================

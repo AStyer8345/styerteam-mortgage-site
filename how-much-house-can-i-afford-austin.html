@@ -87,16 +87,105 @@
         <li><strong>Homestead exemption:</strong> Texas offers a homestead exemption that reduces your taxable value by $100,000 for school district taxes. This saves roughly $1,000-$1,500/year on property taxes for your primary residence.</li>
       </ul>
 
-      <h2>Quick Affordability Estimates by Income</h2>
-      <p>These rough estimates assume a 30-year fixed rate, 5% down, current rates, Travis County taxes, and standard insurance. Your actual numbers may vary based on credit score, debts, and specific location.</p>
-      <ul>
-        <li><strong>$75,000 household income:</strong> $250,000-$310,000 home price</li>
-        <li><strong>$100,000 household income:</strong> $340,000-$420,000 home price</li>
-        <li><strong>$125,000 household income:</strong> $430,000-$530,000 home price</li>
-        <li><strong>$150,000 household income:</strong> $520,000-$640,000 home price</li>
-        <li><strong>$200,000 household income:</strong> $700,000-$850,000 home price</li>
-      </ul>
-      <p>Run your own numbers with our <a href="/calculators.html">mortgage payment calculator</a> or <a href="/contact.html">contact Adam</a> for a personalized affordability analysis.</p>
+      <h2 id="calculator">How Much House Can You Afford? Calculator</h2>
+      <p>Enter your income and debts below to get a personalized estimate. This calculator uses Austin-specific property tax rates and insurance costs.</p>
+
+      <div class="calc-layout" style="margin: 2rem 0;">
+        <div class="calculator-input">
+          <div class="form-group">
+            <label for="afford-income">Annual Gross Income</label>
+            <input type="text" id="afford-income" value="100,000" inputmode="numeric">
+          </div>
+          <div class="form-group">
+            <label for="afford-debts">Monthly Debt Payments <span style="font-weight:400;color:var(--color-gray);font-size:0.85em;">(car, student loans, credit cards)</span></label>
+            <input type="text" id="afford-debts" value="500" inputmode="numeric">
+          </div>
+          <div class="form-group">
+            <label for="afford-down">Down Payment %</label>
+            <input type="number" id="afford-down" value="5" min="0" max="50" step="0.5">
+          </div>
+          <div class="form-group">
+            <label for="afford-rate">Interest Rate %</label>
+            <input type="number" id="afford-rate" value="6.75" min="1" max="15" step="0.125">
+          </div>
+          <div class="form-group">
+            <label for="afford-tax">Property Tax Rate % <span style="font-weight:400;color:var(--color-gray);font-size:0.85em;">(Travis County avg)</span></label>
+            <input type="number" id="afford-tax" value="1.80" min="0" max="5" step="0.05">
+          </div>
+          <div class="form-group">
+            <label for="afford-insurance">Annual Insurance $</label>
+            <input type="text" id="afford-insurance" value="2,400" inputmode="numeric">
+          </div>
+          <div class="form-group">
+            <label for="afford-dti">Target DTI % <span style="font-weight:400;color:var(--color-gray);font-size:0.85em;">(back-end)</span></label>
+            <select id="afford-dti">
+              <option value="36">36% — Conservative</option>
+              <option value="43" selected>43% — Conventional max</option>
+              <option value="45">45% — FHA standard</option>
+              <option value="50">50% — FHA stretch / VA</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" onclick="calcAfford()" style="width:100%;margin-top:0.5rem;">Calculate</button>
+        </div>
+
+        <div class="calculator-output">
+          <h3 style="margin-top:0;font-size:1.125rem;">Your Affordability Estimate</h3>
+          <div class="output-row output-row--total">
+            <span>Max Home Price</span>
+            <span id="afford-out-price">$0</span>
+          </div>
+          <div class="output-row">
+            <span>Max Loan Amount</span>
+            <span id="afford-out-loan">$0</span>
+          </div>
+          <div class="output-row">
+            <span>Down Payment</span>
+            <span id="afford-out-downpay">$0</span>
+          </div>
+          <hr style="margin:1rem 0;border:none;border-top:1px solid var(--color-border);">
+          <h4 style="margin:0 0 0.75rem;font-size:0.95rem;color:var(--color-navy);">Estimated Monthly Payment</h4>
+          <div class="output-row">
+            <span>Principal &amp; Interest</span>
+            <span id="afford-out-pi">$0</span>
+          </div>
+          <div class="output-row">
+            <span>Property Tax</span>
+            <span id="afford-out-tax">$0</span>
+          </div>
+          <div class="output-row">
+            <span>Insurance</span>
+            <span id="afford-out-ins">$0</span>
+          </div>
+          <div class="output-row output-row--total">
+            <span>Total Housing Payment</span>
+            <span id="afford-out-total">$0</span>
+          </div>
+          <div class="output-row">
+            <span>Housing Payment + Debts</span>
+            <span id="afford-out-alldebts">$0</span>
+          </div>
+          <div class="output-row" style="margin-top:0.75rem;">
+            <span>Back-end DTI Used</span>
+            <span id="afford-out-dti">0%</span>
+          </div>
+          <div id="afford-out-comfort" style="margin-top:1rem;padding:0.75rem 1rem;border-radius:8px;font-size:0.9rem;"></div>
+          <p style="font-size:0.8rem;color:var(--color-gray);margin-top:1rem;">Estimates only. Actual pre-approval amounts may differ based on credit, reserves, and loan program. <a href="/contact.html">Contact Adam</a> for exact numbers.</p>
+        </div>
+      </div>
+
+      <noscript>
+        <h3>Quick Affordability Estimates by Income</h3>
+        <p>These rough estimates assume a 30-year fixed rate, 5% down, current rates, Travis County taxes, and standard insurance.</p>
+        <ul>
+          <li><strong>$75,000 income:</strong> $250,000-$310,000</li>
+          <li><strong>$100,000 income:</strong> $340,000-$420,000</li>
+          <li><strong>$125,000 income:</strong> $430,000-$530,000</li>
+          <li><strong>$150,000 income:</strong> $520,000-$640,000</li>
+          <li><strong>$200,000 income:</strong> $700,000-$850,000</li>
+        </ul>
+      </noscript>
+
+      <p>Want a deeper look? Try our full <a href="/calculators.html">mortgage payment calculator</a> or <a href="/contact.html">contact Adam</a> for a personalized affordability analysis.</p>
 
       <div class="article-cta">
         <h3>Know Your Real Budget</h3>
@@ -158,5 +247,124 @@
     <div class="footer-bottom"><div><p>&copy; 2025 Mortgage Solutions, LP. All rights reserved.</p><div class="footer-nmls"><strong>NMLS#:</strong> 2526130 (Company) | 513013 (Adam Styer)<br>Mortgage Solutions, LP is a Licensed Mortgage Broker in Texas. This is not an offer to enter into an agreement. Not all customers will qualify. Information, rates and programs are subject to change without notice. All products are subject to credit and property approval.</div></div></div>
   </div></footer>
   <script src="/script.js" defer></script>
+  <script>
+  (function () {
+    function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+    function parseNum(id) {
+      var el = document.getElementById(id);
+      return parseFloat(el.value.replace(/[^0-9.\-]/g, '')) || 0;
+    }
+    function set(id, v) { document.getElementById(id).textContent = v; }
+
+    // Format currency inputs on blur
+    ['afford-income', 'afford-debts', 'afford-insurance'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('blur', function () {
+        var n = parseFloat(this.value.replace(/[^0-9.\-]/g, ''));
+        if (!isNaN(n) && n >= 0) this.value = Math.round(n).toLocaleString('en-US');
+      });
+    });
+
+    window.calcAfford = function () {
+      var annualIncome = parseNum('afford-income');
+      var monthlyDebts = parseNum('afford-debts');
+      var downPct      = parseFloat(document.getElementById('afford-down').value) / 100 || 0.05;
+      var annualRate   = parseFloat(document.getElementById('afford-rate').value) || 6.75;
+      var taxRate      = parseFloat(document.getElementById('afford-tax').value) / 100 || 0.018;
+      var annualIns    = parseNum('afford-insurance');
+      var targetDti    = parseFloat(document.getElementById('afford-dti').value) / 100 || 0.43;
+
+      var monthlyIncome = annualIncome / 12;
+      if (monthlyIncome <= 0) { set('afford-out-price', '$0'); return; }
+
+      // Max total housing + debts allowed
+      var maxTotalPayments = monthlyIncome * targetDti;
+      var maxHousingPayment = maxTotalPayments - monthlyDebts;
+      if (maxHousingPayment <= 0) {
+        set('afford-out-price', '$0');
+        set('afford-out-comfort', '');
+        document.getElementById('afford-out-comfort').style.background = '';
+        return;
+      }
+
+      // Solve for max home price algebraically:
+      // housingPayment = P&I(loan) + tax/mo + ins/mo
+      // loan = price * (1 - downPct)
+      // tax/mo = price * taxRate / 12
+      // ins/mo = annualIns / 12
+      // P&I(loan) = loan * [r*(1+r)^n] / [(1+r)^n - 1]  where r = monthlyRate, n = 360
+      //
+      // Let piRate = [r*(1+r)^n] / [(1+r)^n - 1]  (P&I per $1 of principal)
+      // maxHousing = price*(1-downPct)*piRate + price*taxRate/12 + annualIns/12
+      // maxHousing - annualIns/12 = price * [(1-downPct)*piRate + taxRate/12]
+      // price = (maxHousing - annualIns/12) / [(1-downPct)*piRate + taxRate/12]
+
+      var r = annualRate / 100 / 12;
+      var n = 360;
+      var piRate; // P&I payment per $1 of loan
+      if (r <= 0) {
+        piRate = 1 / n;
+      } else {
+        piRate = (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      }
+
+      var monthlyIns = annualIns / 12;
+      var availableForPriceItems = maxHousingPayment - monthlyIns;
+      if (availableForPriceItems <= 0) {
+        set('afford-out-price', '$0');
+        return;
+      }
+
+      var priceCoeff = (1 - downPct) * piRate + taxRate / 12;
+      var maxPrice = availableForPriceItems / priceCoeff;
+
+      // Clamp to reasonable range
+      if (maxPrice < 0) maxPrice = 0;
+      if (maxPrice > 5000000) maxPrice = 5000000;
+
+      // Round to nearest $1,000
+      maxPrice = Math.round(maxPrice / 1000) * 1000;
+
+      var loan = maxPrice * (1 - downPct);
+      var downPayment = maxPrice * downPct;
+      var monthlyPI = loan * piRate;
+      var monthlyTax = maxPrice * taxRate / 12;
+      var totalHousing = monthlyPI + monthlyTax + monthlyIns;
+      var totalWithDebts = totalHousing + monthlyDebts;
+      var actualDti = monthlyIncome > 0 ? (totalWithDebts / monthlyIncome * 100) : 0;
+      var housingRatio = monthlyIncome > 0 ? (totalHousing / monthlyIncome * 100) : 0;
+
+      set('afford-out-price', fmt(maxPrice));
+      set('afford-out-loan', fmt(loan));
+      set('afford-out-downpay', fmt(downPayment));
+      set('afford-out-pi', fmt(monthlyPI));
+      set('afford-out-tax', fmt(monthlyTax));
+      set('afford-out-ins', fmt(monthlyIns));
+      set('afford-out-total', fmt(totalHousing));
+      set('afford-out-alldebts', fmt(totalWithDebts));
+      set('afford-out-dti', actualDti.toFixed(1) + '%');
+
+      // Comfort indicator
+      var comfort = document.getElementById('afford-out-comfort');
+      if (housingRatio <= 28) {
+        comfort.style.background = '#e8f5e9';
+        comfort.style.color = '#2e7d32';
+        comfort.innerHTML = '<strong>Comfortable range.</strong> Your housing payment is ' + housingRatio.toFixed(0) + '% of gross income — well within the recommended 25-28% guideline.';
+      } else if (housingRatio <= 33) {
+        comfort.style.background = '#fff8e1';
+        comfort.style.color = '#f57f17';
+        comfort.innerHTML = '<strong>Moderate stretch.</strong> Housing at ' + housingRatio.toFixed(0) + '% of income. Workable, but leaves less room for savings. Consider a lower price point.';
+      } else {
+        comfort.style.background = '#fce4ec';
+        comfort.style.color = '#c62828';
+        comfort.innerHTML = '<strong>Maximum qualification.</strong> Housing at ' + housingRatio.toFixed(0) + '% of income is at or above the typical comfort zone. You may qualify, but budget carefully.';
+      }
+    };
+
+    // Auto-calculate on load
+    calcAfford();
+  })();
+  </script>
 </body>
 </html>

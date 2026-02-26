@@ -101,88 +101,156 @@
                 </div>
               </div>
 
-              <!-- TOPIC -->
+              <!-- CONTENT SOURCE TOGGLE -->
               <div class="form-group">
-                <label for="nl-topic">This Week's Topic / Theme <span class="required-star">*</span></label>
-                <input type="text" id="nl-topic" name="topic" placeholder="e.g. Rates dropped this week, spring market heating up, new FHA changes..." required>
-                <span class="form-helper">What's the main thing you want to talk about?</span>
-              </div>
-
-              <!-- RATES -->
-              <div class="form-group">
-                <label>Current Rates</label>
-                <div class="dash-rate-table">
-                  <div class="dash-rate-table-header">
-                    <span class="dash-rate-table-product">Product</span>
-                    <span class="dash-rate-table-col">Rate</span>
-                    <span class="dash-rate-table-col">APR</span>
-                  </div>
-                  <div class="dash-rate-table-row">
-                    <span class="dash-rate-table-product">30-Yr Fixed (Primary)</span>
-                    <input type="text" id="nl-conv30-rate" name="conv30Rate" placeholder="5.875%">
-                    <input type="text" id="nl-conv30-apr" name="conv30APR" placeholder="5.910%">
-                  </div>
-                  <div class="dash-rate-table-row">
-                    <span class="dash-rate-table-product">15-Yr Fixed</span>
-                    <input type="text" id="nl-conv15-rate" name="conv15Rate" placeholder="5.25%">
-                    <input type="text" id="nl-conv15-apr" name="conv15APR" placeholder="5.357%">
-                  </div>
-                  <div class="dash-rate-table-row">
-                    <span class="dash-rate-table-product">30-Yr Jumbo</span>
-                    <input type="text" id="nl-jumbo-rate" name="jumboRate" placeholder="6.375%">
-                    <input type="text" id="nl-jumbo-apr" name="jumboAPR" placeholder="6.423%">
-                  </div>
-                  <div class="dash-rate-table-row">
-                    <span class="dash-rate-table-product">VA 30-Yr</span>
-                    <input type="text" id="nl-va-rate" name="vaRate" placeholder="5.375%">
-                    <input type="text" id="nl-va-apr" name="vaAPR" placeholder="5.522%">
-                  </div>
-                  <div class="dash-rate-table-row">
-                    <span class="dash-rate-table-product">FHA 30-Yr</span>
-                    <input type="text" id="nl-fha30-rate" name="fha30Rate" placeholder="5.375%">
-                    <input type="text" id="nl-fha30-apr" name="fha30APR" placeholder="5.946%">
-                  </div>
-                  <div class="dash-rate-table-row">
-                    <span class="dash-rate-table-product">FHA 5-Yr ARM</span>
-                    <input type="text" id="nl-fha-arm-rate" name="fhaArmRate" placeholder="4.875%">
-                    <input type="text" id="nl-fha-arm-apr" name="fhaArmAPR" placeholder="5.947%">
-                  </div>
+                <label>Content Source</label>
+                <div class="dash-mode-toggle" id="nl-source-toggle">
+                  <label class="dash-mode-option active" data-source="ai">
+                    <input type="radio" name="nl-source" value="ai" checked>
+                    <span class="dash-mode-icon">&#129302;</span>
+                    <span>
+                      <strong>AI Generate</strong>
+                      <small>Enter topic &amp; notes — AI creates the content.</small>
+                    </span>
+                  </label>
+                  <label class="dash-mode-option" data-source="paste">
+                    <input type="radio" name="nl-source" value="paste">
+                    <span class="dash-mode-icon">&#128203;</span>
+                    <span>
+                      <strong>Paste &amp; Publish</strong>
+                      <small>Paste pre-written HTML — skip AI entirely.</small>
+                    </span>
+                  </label>
                 </div>
-                <span class="form-helper">Fill in whichever rates you have this week.</span>
               </div>
 
-              <!-- ARTICLES -->
-              <div class="form-group">
-                <label for="nl-articles">Articles / Links to Reference</label>
-                <textarea id="nl-articles" name="articles" rows="4" placeholder="Paste URLs or article text you want summarized or referenced in the newsletter..."></textarea>
-                <span class="form-helper">News articles, market data, anything you want included or summarized.</span>
+              <!-- ===== AI-MODE FIELDS ===== -->
+              <div id="nl-ai-fields">
+                <!-- TOPIC -->
+                <div class="form-group">
+                  <label for="nl-topic">This Week's Topic / Theme <span class="required-star">*</span></label>
+                  <input type="text" id="nl-topic" name="topic" placeholder="e.g. Rates dropped this week, spring market heating up, new FHA changes..." required>
+                  <span class="form-helper">What's the main thing you want to talk about?</span>
+                </div>
+
+                <!-- RATES -->
+                <div class="form-group">
+                  <label>Current Rates</label>
+                  <div class="dash-rate-table">
+                    <div class="dash-rate-table-header">
+                      <span class="dash-rate-table-product">Product</span>
+                      <span class="dash-rate-table-col">Rate</span>
+                      <span class="dash-rate-table-col">APR</span>
+                    </div>
+                    <div class="dash-rate-table-row">
+                      <span class="dash-rate-table-product">30-Yr Fixed (Primary)</span>
+                      <input type="text" id="nl-conv30-rate" name="conv30Rate" placeholder="5.875%">
+                      <input type="text" id="nl-conv30-apr" name="conv30APR" placeholder="5.910%">
+                    </div>
+                    <div class="dash-rate-table-row">
+                      <span class="dash-rate-table-product">15-Yr Fixed</span>
+                      <input type="text" id="nl-conv15-rate" name="conv15Rate" placeholder="5.25%">
+                      <input type="text" id="nl-conv15-apr" name="conv15APR" placeholder="5.357%">
+                    </div>
+                    <div class="dash-rate-table-row">
+                      <span class="dash-rate-table-product">30-Yr Jumbo</span>
+                      <input type="text" id="nl-jumbo-rate" name="jumboRate" placeholder="6.375%">
+                      <input type="text" id="nl-jumbo-apr" name="jumboAPR" placeholder="6.423%">
+                    </div>
+                    <div class="dash-rate-table-row">
+                      <span class="dash-rate-table-product">VA 30-Yr</span>
+                      <input type="text" id="nl-va-rate" name="vaRate" placeholder="5.375%">
+                      <input type="text" id="nl-va-apr" name="vaAPR" placeholder="5.522%">
+                    </div>
+                    <div class="dash-rate-table-row">
+                      <span class="dash-rate-table-product">FHA 30-Yr</span>
+                      <input type="text" id="nl-fha30-rate" name="fha30Rate" placeholder="5.375%">
+                      <input type="text" id="nl-fha30-apr" name="fha30APR" placeholder="5.946%">
+                    </div>
+                    <div class="dash-rate-table-row">
+                      <span class="dash-rate-table-product">FHA 5-Yr ARM</span>
+                      <input type="text" id="nl-fha-arm-rate" name="fhaArmRate" placeholder="4.875%">
+                      <input type="text" id="nl-fha-arm-apr" name="fhaArmAPR" placeholder="5.947%">
+                    </div>
+                  </div>
+                  <span class="form-helper">Fill in whichever rates you have this week.</span>
+                </div>
+
+                <!-- ARTICLES -->
+                <div class="form-group">
+                  <label for="nl-articles">Articles / Links to Reference</label>
+                  <textarea id="nl-articles" name="articles" rows="4" placeholder="Paste URLs or article text you want summarized or referenced in the newsletter..."></textarea>
+                  <span class="form-helper">News articles, market data, anything you want included or summarized.</span>
+                </div>
+
+                <!-- STORY / PERSONAL ANGLE -->
+                <div class="form-group">
+                  <label for="nl-story">Personal Story / Anecdote</label>
+                  <textarea id="nl-story" name="story" rows="4" placeholder="e.g. Had a client close this week who almost gave up. Bullet points are fine:&#10;- Client was nervous about rates&#10;- Locked at the right time&#10;- Saved $200/mo vs waiting"></textarea>
+                  <span class="form-helper">A story, client win, or personal touch. Bullet points work great.</span>
+                </div>
+
+                <!-- PHOTO URL -->
+                <div class="form-group">
+                  <label for="nl-photo">Photo URL (optional)</label>
+                  <input type="url" id="nl-photo" name="photo" placeholder="https://lh3.googleusercontent.com/d/...">
+                  <span class="form-helper">Google Drive image link for the personal note section. Leave blank for no photo.</span>
+                </div>
+
+                <!-- AI TOOLS (REALTOR ONLY) -->
+                <div class="form-group">
+                  <label for="nl-ai-tool">AI Tool Tip for Realtors (optional)</label>
+                  <textarea id="nl-ai-tool" name="aiTool" rows="3" placeholder="e.g. Show realtors how to use ChatGPT to write property descriptions, or a prompt they can use for follow-up emails..."></textarea>
+                  <span class="form-helper">An AI prompt or tool tip for the realtor version's "AI Edge" section.</span>
+                </div>
+
+                <!-- EXTRA NOTES -->
+                <div class="form-group">
+                  <label for="nl-notes">Anything Else</label>
+                  <textarea id="nl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid, CTA ideas..."></textarea>
+                </div>
               </div>
 
-              <!-- STORY / PERSONAL ANGLE -->
-              <div class="form-group">
-                <label for="nl-story">Personal Story / Anecdote</label>
-                <textarea id="nl-story" name="story" rows="4" placeholder="e.g. Had a client close this week who almost gave up. Bullet points are fine:&#10;- Client was nervous about rates&#10;- Locked at the right time&#10;- Saved $200/mo vs waiting"></textarea>
-                <span class="form-helper">A story, client win, or personal touch. Bullet points work great.</span>
+              <!-- ===== PASTE-MODE FIELDS ===== -->
+              <div id="nl-paste-fields" class="hidden">
+                <div class="form-group">
+                  <label for="nl-paste-title">Page Title <span class="required-star">*</span></label>
+                  <input type="text" id="nl-paste-title" name="pasteTitle" placeholder="e.g. Spring Market Update — Rates Holding Steady">
+                </div>
+                <div class="form-group">
+                  <label for="nl-paste-description">Page Description</label>
+                  <input type="text" id="nl-paste-description" name="pasteDescription" placeholder="Short description for SEO / social. Defaults to title if blank.">
+                </div>
+                <div class="form-group">
+                  <label for="nl-paste-subject">Email Subject</label>
+                  <input type="text" id="nl-paste-subject" name="pasteSubject" placeholder="Defaults to Page Title if blank.">
+                </div>
+                <div class="form-group">
+                  <label for="nl-paste-preheader">Email Preheader</label>
+                  <input type="text" id="nl-paste-preheader" name="pastePreheader" placeholder="Short preview text shown in inbox next to subject.">
+                </div>
+                <div class="form-group">
+                  <label for="nl-paste-photo">Photo URL (optional)</label>
+                  <input type="url" id="nl-paste-photo" name="pastePhoto" placeholder="https://lh3.googleusercontent.com/d/...">
+                  <span class="form-helper">Google Drive image link for the personal note section. Leave blank for no photo.</span>
+                </div>
+                <div class="form-group">
+                  <label for="nl-paste-email">Teaser Email HTML <span class="required-star">*</span></label>
+                  <textarea id="nl-paste-email" name="pasteEmail" rows="10" placeholder="Paste the full email HTML here..."></textarea>
+                  <span class="form-helper">The email body HTML that goes to your borrower list.</span>
+                </div>
+                <div class="form-group">
+                  <label for="nl-paste-web">Webpage Content HTML <span class="required-star">*</span></label>
+                  <textarea id="nl-paste-web" name="pasteWeb" rows="10" placeholder="Paste the full webpage content HTML here (body content only, no &lt;html&gt; or &lt;head&gt;)..."></textarea>
+                  <span class="form-helper">The article body that gets published on the website.</span>
+                </div>
               </div>
 
-              <!-- PHOTO URL -->
+              <!-- SCHEDULE SEND -->
               <div class="form-group">
-                <label for="nl-photo">Photo URL (optional)</label>
-                <input type="url" id="nl-photo" name="photo" placeholder="https://lh3.googleusercontent.com/d/...">
-                <span class="form-helper">Google Drive image link for the personal note section. Leave blank for no photo.</span>
-              </div>
-
-              <!-- AI TOOLS (REALTOR ONLY) -->
-              <div class="form-group">
-                <label for="nl-ai-tool">AI Tool Tip for Realtors (optional)</label>
-                <textarea id="nl-ai-tool" name="aiTool" rows="3" placeholder="e.g. Show realtors how to use ChatGPT to write property descriptions, or a prompt they can use for follow-up emails..."></textarea>
-                <span class="form-helper">An AI prompt or tool tip for the realtor version's "AI Edge" section.</span>
-              </div>
-
-              <!-- EXTRA NOTES -->
-              <div class="form-group">
-                <label for="nl-notes">Anything Else</label>
-                <textarea id="nl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid, CTA ideas..."></textarea>
+                <label for="nl-schedule">Schedule Send (optional)</label>
+                <input type="datetime-local" id="nl-schedule" name="scheduleTime" style="max-width: 320px;">
+                <span class="form-helper">Leave blank to send immediately. Must be at least 15 minutes in the future.</span>
               </div>
 
               <!-- MODE TOGGLE -->
@@ -501,52 +569,130 @@
             </p>
 
             <form id="realtor-builder" autocomplete="off">
-              <!-- TOPIC -->
+              <!-- CONTENT SOURCE TOGGLE -->
               <div class="form-group">
-                <label for="rl-topic">Topic / Theme <span class="required-star">*</span></label>
-                <input type="text" id="rl-topic" name="topic" placeholder="e.g. Spring market strategy, co-marketing flyer ideas, new FHA guideline change, AI tools for agents..." required>
-                <span class="form-helper">What do you want to talk to your realtor partners about this week?</span>
+                <label>Content Source</label>
+                <div class="dash-mode-toggle" id="rl-source-toggle">
+                  <label class="dash-mode-option active" data-source="ai">
+                    <input type="radio" name="rl-source" value="ai" checked>
+                    <span class="dash-mode-icon">&#129302;</span>
+                    <span>
+                      <strong>AI Generate</strong>
+                      <small>Enter topic &amp; notes — AI creates the content.</small>
+                    </span>
+                  </label>
+                  <label class="dash-mode-option" data-source="paste">
+                    <input type="radio" name="rl-source" value="paste">
+                    <span class="dash-mode-icon">&#128203;</span>
+                    <span>
+                      <strong>Paste &amp; Publish</strong>
+                      <small>Paste pre-written HTML — skip AI entirely.</small>
+                    </span>
+                  </label>
+                </div>
               </div>
 
-              <!-- CATEGORY -->
-              <div class="form-group">
-                <label for="rl-category">Category (optional)</label>
-                <select id="rl-category" name="category">
-                  <option value="">-- Let AI Choose --</option>
-                  <option value="Market Intel">Market Intel</option>
-                  <option value="Co-Marketing">Co-Marketing</option>
-                  <option value="Deal Flow">Deal Flow</option>
-                  <option value="Tech & Tools">Tech & Tools</option>
-                  <option value="Lending Insights">Lending Insights</option>
-                </select>
-                <span class="form-helper">Pick a category or let AI choose based on the topic.</span>
+              <!-- ===== AI-MODE FIELDS ===== -->
+              <div id="rl-ai-fields">
+                <!-- TOPIC -->
+                <div class="form-group">
+                  <label for="rl-topic">Topic / Theme <span class="required-star">*</span></label>
+                  <input type="text" id="rl-topic" name="topic" placeholder="e.g. Spring market strategy, co-marketing flyer ideas, new FHA guideline change, AI tools for agents..." required>
+                  <span class="form-helper">What do you want to talk to your realtor partners about this week?</span>
+                </div>
+
+                <!-- CATEGORY -->
+                <div class="form-group">
+                  <label for="rl-category">Category (optional)</label>
+                  <select id="rl-category" name="category">
+                    <option value="">-- Let AI Choose --</option>
+                    <option value="Market Intel">Market Intel</option>
+                    <option value="Co-Marketing">Co-Marketing</option>
+                    <option value="Deal Flow">Deal Flow</option>
+                    <option value="Tech & Tools">Tech & Tools</option>
+                    <option value="Lending Insights">Lending Insights</option>
+                  </select>
+                  <span class="form-helper">Pick a category or let AI choose based on the topic.</span>
+                </div>
+
+                <!-- ARTICLES -->
+                <div class="form-group">
+                  <label for="rl-articles">Articles / Links to Reference</label>
+                  <textarea id="rl-articles" name="articles" rows="4" placeholder="Paste URLs or article text you want summarized or referenced..."></textarea>
+                  <span class="form-helper">Market data, news articles, anything you want included.</span>
+                </div>
+
+                <!-- STORY / PERSONAL ANGLE -->
+                <div class="form-group">
+                  <label for="rl-story">Personal Story / Anecdote</label>
+                  <textarea id="rl-story" name="story" rows="4" placeholder="e.g. Helped an agent close a deal this week by structuring a creative loan. Bullet points work:&#10;- Agent's buyer was about to walk&#10;- We ran the numbers on a 2-1 buydown&#10;- Closed in 21 days"></textarea>
+                  <span class="form-helper">A deal win, partnership moment, or personal touch. Realtors love hearing about real closings.</span>
+                </div>
+
+                <!-- AI TOOL TIP -->
+                <div class="form-group">
+                  <label for="rl-ai-tool">AI Tool Tip for Realtors (optional)</label>
+                  <textarea id="rl-ai-tool" name="aiTool" rows="3" placeholder="e.g. Show agents how to use ChatGPT to write listing descriptions, or a prompt for follow-up emails..."></textarea>
+                  <span class="form-helper">An AI prompt, tool, or tech tip for the article's "Tech Edge" section.</span>
+                </div>
+
+                <!-- EXTRA NOTES -->
+                <div class="form-group">
+                  <label for="rl-notes">Anything Else</label>
+                  <textarea id="rl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid..."></textarea>
+                </div>
               </div>
 
-              <!-- ARTICLES -->
-              <div class="form-group">
-                <label for="rl-articles">Articles / Links to Reference</label>
-                <textarea id="rl-articles" name="articles" rows="4" placeholder="Paste URLs or article text you want summarized or referenced..."></textarea>
-                <span class="form-helper">Market data, news articles, anything you want included.</span>
+              <!-- ===== PASTE-MODE FIELDS ===== -->
+              <div id="rl-paste-fields" class="hidden">
+                <div class="form-group">
+                  <label for="rl-paste-title">Page Title <span class="required-star">*</span></label>
+                  <input type="text" id="rl-paste-title" name="pasteTitle" placeholder="e.g. Co-Marketing Strategies for Spring 2026">
+                </div>
+                <div class="form-group">
+                  <label for="rl-paste-description">Page Description</label>
+                  <input type="text" id="rl-paste-description" name="pasteDescription" placeholder="Short description for SEO / social. Defaults to title if blank.">
+                </div>
+                <div class="form-group">
+                  <label for="rl-paste-category">Category</label>
+                  <select id="rl-paste-category" name="pasteCategory">
+                    <option value="Market Intel">Market Intel</option>
+                    <option value="Co-Marketing">Co-Marketing</option>
+                    <option value="Deal Flow">Deal Flow</option>
+                    <option value="Tech & Tools">Tech & Tools</option>
+                    <option value="Lending Insights">Lending Insights</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="rl-paste-subject">Email Subject</label>
+                  <input type="text" id="rl-paste-subject" name="pasteSubject" placeholder="Defaults to Page Title if blank.">
+                </div>
+                <div class="form-group">
+                  <label for="rl-paste-preheader">Email Preheader</label>
+                  <input type="text" id="rl-paste-preheader" name="pastePreheader" placeholder="Short preview text shown in inbox next to subject.">
+                </div>
+                <div class="form-group">
+                  <label for="rl-paste-photo">Photo URL (optional)</label>
+                  <input type="url" id="rl-paste-photo" name="pastePhoto" placeholder="https://lh3.googleusercontent.com/d/...">
+                  <span class="form-helper">Google Drive image link for the personal note section. Leave blank for no photo.</span>
+                </div>
+                <div class="form-group">
+                  <label for="rl-paste-email">Teaser Email HTML <span class="required-star">*</span></label>
+                  <textarea id="rl-paste-email" name="pasteEmail" rows="10" placeholder="Paste the full email HTML here..."></textarea>
+                  <span class="form-helper">The email body HTML that goes to your realtor list.</span>
+                </div>
+                <div class="form-group">
+                  <label for="rl-paste-web">Webpage Content HTML <span class="required-star">*</span></label>
+                  <textarea id="rl-paste-web" name="pasteWeb" rows="10" placeholder="Paste the full webpage content HTML here (body content only, no &lt;html&gt; or &lt;head&gt;)..."></textarea>
+                  <span class="form-helper">The article body that gets published on the partner resources page.</span>
+                </div>
               </div>
 
-              <!-- STORY / PERSONAL ANGLE -->
+              <!-- SCHEDULE SEND -->
               <div class="form-group">
-                <label for="rl-story">Personal Story / Anecdote</label>
-                <textarea id="rl-story" name="story" rows="4" placeholder="e.g. Helped an agent close a deal this week by structuring a creative loan. Bullet points work:&#10;- Agent's buyer was about to walk&#10;- We ran the numbers on a 2-1 buydown&#10;- Closed in 21 days"></textarea>
-                <span class="form-helper">A deal win, partnership moment, or personal touch. Realtors love hearing about real closings.</span>
-              </div>
-
-              <!-- AI TOOL TIP -->
-              <div class="form-group">
-                <label for="rl-ai-tool">AI Tool Tip for Realtors (optional)</label>
-                <textarea id="rl-ai-tool" name="aiTool" rows="3" placeholder="e.g. Show agents how to use ChatGPT to write listing descriptions, or a prompt for follow-up emails..."></textarea>
-                <span class="form-helper">An AI prompt, tool, or tech tip for the article's "Tech Edge" section.</span>
-              </div>
-
-              <!-- EXTRA NOTES -->
-              <div class="form-group">
-                <label for="rl-notes">Anything Else</label>
-                <textarea id="rl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid..."></textarea>
+                <label for="rl-schedule">Schedule Send (optional)</label>
+                <input type="datetime-local" id="rl-schedule" name="scheduleTime" style="max-width: 320px;">
+                <span class="form-helper">Leave blank to send immediately. Must be at least 15 minutes in the future.</span>
               </div>
 
               <!-- MODE TOGGLE -->

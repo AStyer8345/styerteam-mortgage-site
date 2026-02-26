@@ -20,18 +20,43 @@ exports.handler = async (event) => {
 
   try {
     const formData = JSON.parse(event.body);
-    const { topic, mode } = formData;
+    const { topic, mode, source, scheduleTime } = formData;
     const isPreview = mode === "preview";
+    const isPaste = source === "paste";
 
-    if (!topic) {
+    // Validate: AI mode needs topic, paste mode needs title + emailHtml + webContent
+    if (isPaste) {
+      if (!formData.title) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: "Title is required for paste mode" }) };
+      }
+      if (!formData.emailHtml) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: "Teaser Email HTML is required for paste mode" }) };
+      }
+      if (!formData.webContent) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: "Webpage Content HTML is required for paste mode" }) };
+      }
+    } else if (!topic) {
       return { statusCode: 400, headers, body: JSON.stringify({ error: "Topic is required" }) };
+    }
+
+    // Validate schedule time if provided (must be 15+ min in the future)
+    if (scheduleTime) {
+      const scheduled = new Date(scheduleTime);
+      const minTime = new Date(Date.now() + 15 * 60 * 1000);
+      if (isNaN(scheduled.getTime())) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: "Invalid schedule time" }) };
+      }
+      if (scheduled < minTime) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: "Schedule time must be at least 15 minutes in the future" }) };
+      }
     }
 
     // ----------------------------------------------------------------
     // STEP 0: Compute the page URL FIRST so the AI can embed it
     // ----------------------------------------------------------------
     const today = new Date().toISOString().split("T")[0];
-    const slug = topic
+    const slugSource = isPaste ? (formData.title || "untitled") : topic;
+    const slug = slugSource
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, "")
       .replace(/\s+/g, "-")
@@ -42,43 +67,62 @@ exports.handler = async (event) => {
     const pageUrl = `https://styermortgage.com/realtor-updates/${filename}`;
 
     // ----------------------------------------------------------------
-    // STEP 1: Generate content via Claude API
+    // STEP 1: Generate or assemble content
     // ----------------------------------------------------------------
-    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const prompt = buildRealtorPrompt(formData, pageUrl);
+    let parsed;
 
-    // Retry up to 3 times on transient errors (429/529)
-    let response;
-    for (let attempt = 1; attempt <= 3; attempt++) {
-      try {
-        response = await anthropic.messages.create({
-          model: "claude-haiku-4-5-20251001",
-          max_tokens: 4000,
-          messages: [{ role: "user", content: prompt }],
-        });
-        break;
-      } catch (apiErr) {
-        const status = apiErr.status || apiErr.statusCode;
-        if ((status === 429 || status === 529) && attempt < 3) {
-          console.log(`API returned ${status}, retrying (attempt ${attempt + 1}/3)...`);
-          await new Promise((r) => setTimeout(r, 2000 * attempt));
-          continue;
+    if (isPaste) {
+      // Paste mode: skip AI, use provided HTML directly
+      parsed = {
+        realtorEmail: formData.emailHtml,
+        realtorSubject: formData.subject || formData.title,
+        realtorPreheader: formData.preheader || "",
+        webContent: formData.webContent,
+        pageTitle: formData.title,
+        pageDescription: formData.description || formData.title,
+        pageCategory: formData.category || "Market Intel",
+      };
+    } else {
+      // AI mode: generate content via Claude API
+      const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+      const prompt = buildRealtorPrompt(formData, pageUrl);
+
+      // Retry up to 3 times on transient errors (429/529)
+      let response;
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+          response = await anthropic.messages.create({
+            model: "claude-haiku-4-5-20251001",
+            max_tokens: 4000,
+            messages: [{ role: "user", content: prompt }],
+          });
+          break;
+        } catch (apiErr) {
+          const status = apiErr.status || apiErr.statusCode;
+          if ((status === 429 || status === 529) && attempt < 3) {
+            console.log(`API returned ${status}, retrying (attempt ${attempt + 1}/3)...`);
+            await new Promise((r) => setTimeout(r, 2000 * attempt));
+            continue;
+          }
+          throw apiErr;
         }
-        throw apiErr;
+      }
+
+      const aiText = response.content[0].text;
+      parsed = parseRealtorAIResponse(aiText);
+
+      if (!parsed.webContent) {
+        return {
+          statusCode: 500,
+          headers,
+          body: JSON.stringify({ error: "Failed to parse AI response", raw: aiText.substring(0, 500) }),
+        };
       }
     }
 
-    const aiText = response.content[0].text;
-
-    // Parse the AI response
-    const parsed = parseRealtorAIResponse(aiText);
-
-    if (!parsed.webContent) {
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: "Failed to parse AI response", raw: aiText.substring(0, 500) }),
-      };
+    // Inject photo into web content (works for both AI and paste modes)
+    if (formData.photo) {
+      parsed.webContent = injectPhotoIntoPersonalSection(parsed.webContent, formData.photo);
     }
 
     // Force all email links to use absolute URL (safety net)
@@ -90,9 +134,11 @@ exports.handler = async (event) => {
     // STEP 2: Build page HTML / Publish (only if live)
     // ----------------------------------------------------------------
 
+    const effectiveTitle = parsed.pageTitle || topic || formData.title || "Realtor Update";
+
     const realtorPageHtml = buildRealtorPage({
-      title: parsed.pageTitle || topic,
-      description: parsed.pageDescription || `${topic} — partner resources from Adam Styer`,
+      title: effectiveTitle,
+      description: parsed.pageDescription || `${effectiveTitle} — partner resources from Adam Styer`,
       date: today,
       slug: fullSlug,
       content: parsed.webContent,
@@ -106,8 +152,8 @@ exports.handler = async (event) => {
       // Update the realtor manifest
       await updateRealtorManifest({
         slug: fullSlug,
-        title: parsed.pageTitle || topic,
-        description: parsed.pageDescription || `${topic} — partner resources from Adam Styer`,
+        title: effectiveTitle,
+        description: parsed.pageDescription || `${effectiveTitle} — partner resources from Adam Styer`,
         date: today,
         category: parsed.pageCategory || formData.category || "Market Intel",
       });
@@ -123,6 +169,8 @@ exports.handler = async (event) => {
       const mcServer = process.env.MAILCHIMP_SERVER_PREFIX || process.env.mailchimp_server_prefix;
       const realtorListId = process.env.MAILCHIMP_REALTOR_LIST_ID;
 
+      const effectiveTopic = topic || formData.title || "Realtor Update";
+
       if (mcApiKey && mcServer && realtorListId && parsed.realtorEmail) {
         mailchimp.setConfig({
           apiKey: mcApiKey,
@@ -131,11 +179,12 @@ exports.handler = async (event) => {
 
         const campaignResult = await createAndSendCampaign({
           listId: realtorListId,
-          subject: parsed.realtorSubject || `${topic} - Adam Styer | Mortgage Solutions LP`,
+          subject: parsed.realtorSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
           preheader: parsed.realtorPreheader || "",
           html: injectPageLink(parsed.realtorEmail, pageUrl),
           fromName: "Adam Styer",
           replyTo: "adam@thestyerteam.com",
+          scheduleTime: scheduleTime || null,
         });
         results.campaigns.push({ audience: "realtor", ...campaignResult });
       }
@@ -337,7 +386,7 @@ async function updateRealtorManifest({ slug, title, description, date, category 
 // MAILCHIMP: Create campaign + send
 // ====================================================================
 
-async function createAndSendCampaign({ listId, subject, preheader, html, fromName, replyTo }) {
+async function createAndSendCampaign({ listId, subject, preheader, html, fromName, replyTo, scheduleTime }) {
   const campaign = await mailchimp.campaigns.create({
     type: "regular",
     recipients: { list_id: listId },
@@ -350,9 +399,15 @@ async function createAndSendCampaign({ listId, subject, preheader, html, fromNam
   });
 
   await mailchimp.campaigns.setContent(campaign.id, { html });
-  await mailchimp.campaigns.send(campaign.id);
 
-  return { id: campaign.id, status: "sent", subject };
+  // Schedule or send immediately
+  if (scheduleTime) {
+    await mailchimp.campaigns.schedule(campaign.id, { schedule_time: scheduleTime });
+    return { id: campaign.id, status: "scheduled", subject, scheduledFor: scheduleTime };
+  } else {
+    await mailchimp.campaigns.send(campaign.id);
+    return { id: campaign.id, status: "sent", subject };
+  }
 }
 
 // ====================================================================
@@ -381,6 +436,38 @@ function forceAbsoluteLinks(html, pageUrl) {
   );
 
   return result;
+}
+
+// ====================================================================
+// HELPER: Inject a small floated photo into the Personal Corner section
+// ====================================================================
+
+function injectPhotoIntoPersonalSection(html, photoUrl) {
+  const imgHtml = `<img src="${photoUrl}" alt="Adam Styer" style="float: left; width: 150px; height: auto; border-radius: 8px; margin: 0 1rem 0.5rem 0;">`;
+
+  // Look for the Personal Corner section header (generated by AI)
+  const personalMatch = html.match(/<h2[^>]*>.*?(Personal|Corner|Family|Faith|Fitness|Finance|Off the Clock|This Week|Life Update).*?<\/h2>/i);
+  if (personalMatch) {
+    const idx = personalMatch.index + personalMatch[0].length;
+    return html.slice(0, idx) + "\n" + imgHtml + "\n" + html.slice(idx);
+  }
+
+  // Fallback: look for an <hr> (section divider before the personal section)
+  const hrMatch = html.match(/<hr\s*\/?>/i);
+  if (hrMatch) {
+    const idx = hrMatch.index + hrMatch[0].length;
+    return html.slice(0, idx) + "\n" + imgHtml + "\n" + html.slice(idx);
+  }
+
+  // Last fallback: insert after the last <h2> in the content
+  const allH2 = [...html.matchAll(/<\/h2>/gi)];
+  if (allH2.length > 0) {
+    const lastH2 = allH2[allH2.length - 1];
+    const idx = lastH2.index + lastH2[0].length;
+    return html.slice(0, idx) + "\n" + imgHtml + "\n" + html.slice(idx);
+  }
+
+  return html;
 }
 
 // ====================================================================
