@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDashTabs();
   initNewsletterAutomation();
   initRateBuilder();
+  initRealtorBuilder();
   initCopyButtons();
   initFormPersistence();
 });
@@ -550,6 +551,217 @@ function initRateBuilder() {
 }
 
 // ========================================================================
+// REALTOR CONTENT AUTOMATION (calls generate-realtor-content)
+// ========================================================================
+
+function initRealtorBuilder() {
+  const form = document.getElementById('realtor-builder');
+  if (!form) return;
+
+  const submitBtn = document.getElementById('rl-submit-btn');
+  const progressEl = document.getElementById('realtor-progress');
+  const resultEl = document.getElementById('realtor-result');
+  const errorEl = document.getElementById('realtor-error');
+  const retryBtn = document.getElementById('rl-retry-btn');
+
+  // Mode toggle handling
+  const modeOptions = form.querySelectorAll('.dash-mode-option');
+  modeOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      modeOptions.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      opt.querySelector('input[type="radio"]').checked = true;
+
+      const mode = opt.dataset.mode;
+      submitBtn.textContent = mode === 'live' ? '\u{1F680} Generate & Send Realtor Content' : '\u{1F441} Preview Realtor Content';
+    });
+  });
+
+  // "Looks Good — Go Live" button in preview results
+  const goLiveBtn = document.getElementById('rl-preview-go-live-btn');
+  if (goLiveBtn) {
+    goLiveBtn.addEventListener('click', () => {
+      modeOptions.forEach(o => o.classList.remove('active'));
+      const liveOpt = form.querySelector('.dash-mode-option[data-mode="live"]');
+      if (liveOpt) {
+        liveOpt.classList.add('active');
+        liveOpt.querySelector('input[type="radio"]').checked = true;
+      }
+      submitBtn.textContent = '\u{1F680} Generate & Send Realtor Content';
+
+      resultEl.classList.add('hidden');
+      submitBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => submitBtn.click(), 400);
+    });
+  }
+
+  // "Edit & Regenerate" button
+  const editBtn = document.getElementById('rl-preview-edit-btn');
+  if (editBtn) {
+    editBtn.addEventListener('click', () => {
+      resultEl.classList.add('hidden');
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  if (retryBtn) {
+    retryBtn.addEventListener('click', () => {
+      errorEl.classList.add('hidden');
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+    });
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const modeRadio = form.querySelector('input[name="rl-mode"]:checked');
+    const mode = modeRadio ? modeRadio.value : 'preview';
+
+    // Validate topic
+    const topic = form.querySelector('#rl-topic').value.trim();
+    if (!topic) {
+      form.querySelector('#rl-topic').focus();
+      return;
+    }
+
+    // Confirm if live mode
+    if (mode === 'live') {
+      if (!confirm('This will publish an article and send an email to your Realtor list. Continue?')) return;
+    }
+
+    // Gather form data
+    const formData = {
+      topic,
+      category: form.querySelector('#rl-category').value,
+      articles: form.querySelector('#rl-articles').value.trim(),
+      story: form.querySelector('#rl-story').value.trim(),
+      aiTool: form.querySelector('#rl-ai-tool').value.trim(),
+      notes: form.querySelector('#rl-notes').value.trim(),
+      mode,
+    };
+
+    // Reset UI
+    progressEl.classList.remove('hidden');
+    resultEl.classList.add('hidden');
+    errorEl.classList.add('hidden');
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+
+    progressEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    setProgressStep('generate', 'realtor-progress');
+    setStatus('Generating realtor content with AI... this takes about 30 seconds.', 'realtor-status');
+
+    try {
+      const response = await fetch('/.netlify/functions/generate-realtor-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error('The server took too long to respond. Please try again — it usually works on the second attempt.');
+      }
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Server error');
+      }
+
+      if (data.mode === 'preview') {
+        // PREVIEW MODE
+        setProgressStep('done', 'realtor-progress');
+        setStatus('Preview ready!', 'realtor-status');
+
+        await sleep(300);
+        progressEl.classList.add('hidden');
+        resultEl.classList.remove('hidden');
+
+        document.getElementById('rl-result-card-live').classList.add('hidden');
+        const previewCard = document.getElementById('rl-result-card-preview');
+        previewCard.classList.remove('hidden');
+
+        const p = data.preview;
+        setText('rl-preview-page-title', p.pageTitle || formData.topic);
+        setText('rl-preview-category', p.category || formData.category || '');
+        setText('rl-preview-page-url', data.pageUrl);
+
+        // Web content
+        const webEl = document.getElementById('rl-preview-web-content');
+        if (webEl && p.webContent) webEl.innerHTML = p.webContent;
+
+        // Realtor email
+        const emailSection = document.getElementById('rl-preview-email-section');
+        if (p.realtorEmailHtml) {
+          emailSection.classList.remove('hidden');
+          setText('rl-preview-email-subject', p.realtorSubject || '');
+          setText('rl-preview-email-preheader', p.realtorPreheader || '');
+          const eEl = document.getElementById('rl-preview-email-html');
+          if (eEl) eEl.innerHTML = p.realtorEmailHtml;
+        } else {
+          emailSection.classList.add('hidden');
+        }
+
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      } else {
+        // LIVE MODE
+        setProgressStep('publish', 'realtor-progress');
+        setStatus('Article published at ' + data.pageUrl, 'realtor-status');
+
+        await sleep(500);
+
+        if (data.campaigns && data.campaigns.length > 0) {
+          setProgressStep('send', 'realtor-progress');
+          setStatus('Email sent to your Realtor list.', 'realtor-status');
+          await sleep(500);
+        }
+
+        setProgressStep('done', 'realtor-progress');
+        setStatus('All done!', 'realtor-status');
+
+        await sleep(300);
+        progressEl.classList.add('hidden');
+        resultEl.classList.remove('hidden');
+
+        document.getElementById('rl-result-card-live').classList.remove('hidden');
+        document.getElementById('rl-result-card-preview').classList.add('hidden');
+
+        const pageUrlEl = document.getElementById('rl-result-page-url');
+        pageUrlEl.href = data.pageUrl;
+        pageUrlEl.textContent = data.pageUrl;
+
+        const campaignsEl = document.getElementById('rl-result-campaigns');
+        campaignsEl.innerHTML = '';
+        if (data.campaigns && data.campaigns.length > 0) {
+          data.campaigns.forEach(c => {
+            const el = document.createElement('p');
+            el.innerHTML = '<strong>Realtor Email:</strong> ' +
+              escapeHtml(c.subject) + ' <span style="color: var(--color-success);">(Sent)</span>';
+            campaignsEl.appendChild(el);
+          });
+        }
+
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+    } catch (err) {
+      console.error('Realtor content automation error:', err);
+      progressEl.classList.add('hidden');
+      errorEl.classList.remove('hidden');
+      document.getElementById('realtor-error-msg').textContent = err.message;
+      errorEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } finally {
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+    }
+  });
+}
+
+// ========================================================================
 // HELPERS
 // ========================================================================
 
@@ -660,6 +872,16 @@ function initFormPersistence() {
     selectFields: ['rt-direction'],
     checkboxName: 'rt-audience',
     checkboxKey: 'rtAudiences',
+  });
+
+  // Realtor content form persistence
+  persistForm({
+    storageKey: 'rl-form-data',
+    formId: 'realtor-builder',
+    textFields: [
+      'rl-topic', 'rl-articles', 'rl-story', 'rl-ai-tool', 'rl-notes'
+    ],
+    selectFields: ['rl-category'],
   });
 }
 

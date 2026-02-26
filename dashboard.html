@@ -68,6 +68,10 @@
             <span class="dash-tab-icon">&#128200;</span>
             Rate Update
           </button>
+          <button class="dash-tab" data-target="realtor-form">
+            <span class="dash-tab-icon">&#129309;</span>
+            Realtor Content
+          </button>
         </div>
 
         <!-- ============================================
@@ -481,6 +485,165 @@
                 <h3 style="color: var(--color-error); margin-bottom: 0.5rem;">Something Went Wrong</h3>
                 <p id="rate-error-msg"></p>
                 <button class="btn btn-secondary" id="rt-retry-btn">Try Again</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================
+             REALTOR CONTENT FORM
+             ============================================ -->
+        <div id="realtor-form" class="dash-panel">
+          <div class="card" style="max-width: 800px; margin: 0 auto;">
+            <h2 style="margin-bottom: 0.5rem;">Realtor Content</h2>
+            <p style="color: #6B7280; margin-bottom: 2rem;">
+              Targeted content for your realtor partners. AI generates an article for your partner resources page and a teaser email for your realtor list.
+            </p>
+
+            <form id="realtor-builder" autocomplete="off">
+              <!-- TOPIC -->
+              <div class="form-group">
+                <label for="rl-topic">Topic / Theme <span class="required-star">*</span></label>
+                <input type="text" id="rl-topic" name="topic" placeholder="e.g. Spring market strategy, co-marketing flyer ideas, new FHA guideline change, AI tools for agents..." required>
+                <span class="form-helper">What do you want to talk to your realtor partners about this week?</span>
+              </div>
+
+              <!-- CATEGORY -->
+              <div class="form-group">
+                <label for="rl-category">Category (optional)</label>
+                <select id="rl-category" name="category">
+                  <option value="">-- Let AI Choose --</option>
+                  <option value="Market Intel">Market Intel</option>
+                  <option value="Co-Marketing">Co-Marketing</option>
+                  <option value="Deal Flow">Deal Flow</option>
+                  <option value="Tech & Tools">Tech & Tools</option>
+                  <option value="Lending Insights">Lending Insights</option>
+                </select>
+                <span class="form-helper">Pick a category or let AI choose based on the topic.</span>
+              </div>
+
+              <!-- ARTICLES -->
+              <div class="form-group">
+                <label for="rl-articles">Articles / Links to Reference</label>
+                <textarea id="rl-articles" name="articles" rows="4" placeholder="Paste URLs or article text you want summarized or referenced..."></textarea>
+                <span class="form-helper">Market data, news articles, anything you want included.</span>
+              </div>
+
+              <!-- STORY / PERSONAL ANGLE -->
+              <div class="form-group">
+                <label for="rl-story">Personal Story / Anecdote</label>
+                <textarea id="rl-story" name="story" rows="4" placeholder="e.g. Helped an agent close a deal this week by structuring a creative loan. Bullet points work:&#10;- Agent's buyer was about to walk&#10;- We ran the numbers on a 2-1 buydown&#10;- Closed in 21 days"></textarea>
+                <span class="form-helper">A deal win, partnership moment, or personal touch. Realtors love hearing about real closings.</span>
+              </div>
+
+              <!-- AI TOOL TIP -->
+              <div class="form-group">
+                <label for="rl-ai-tool">AI Tool Tip for Realtors (optional)</label>
+                <textarea id="rl-ai-tool" name="aiTool" rows="3" placeholder="e.g. Show agents how to use ChatGPT to write listing descriptions, or a prompt for follow-up emails..."></textarea>
+                <span class="form-helper">An AI prompt, tool, or tech tip for the article's "Tech Edge" section.</span>
+              </div>
+
+              <!-- EXTRA NOTES -->
+              <div class="form-group">
+                <label for="rl-notes">Anything Else</label>
+                <textarea id="rl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid..."></textarea>
+              </div>
+
+              <!-- MODE TOGGLE -->
+              <div class="form-group">
+                <label>Mode</label>
+                <div class="dash-mode-toggle">
+                  <label class="dash-mode-option active" data-mode="preview">
+                    <input type="radio" name="rl-mode" value="preview" checked>
+                    <span class="dash-mode-icon">&#128065;</span>
+                    <span>
+                      <strong>Preview Only</strong>
+                      <small>Generate content &amp; review it. Nothing gets published or sent.</small>
+                    </span>
+                  </label>
+                  <label class="dash-mode-option" data-mode="live">
+                    <input type="radio" name="rl-mode" value="live">
+                    <span class="dash-mode-icon">&#128640;</span>
+                    <span>
+                      <strong>Go Live</strong>
+                      <small>Generate, publish the article, and send email to your realtor list.</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- GENERATE BUTTON -->
+              <div class="dash-actions">
+                <button type="submit" class="btn btn-primary btn-lg" id="rl-submit-btn">
+                  Preview Realtor Content
+                </button>
+              </div>
+            </form>
+
+            <!-- PROGRESS AREA -->
+            <div id="realtor-progress" class="dash-output hidden">
+              <div class="dash-progress-steps">
+                <div class="dash-progress-step" data-step="generate">
+                  <div class="dash-progress-icon">1</div>
+                  <div class="dash-progress-label">Generating Content</div>
+                </div>
+                <div class="dash-progress-step" data-step="publish">
+                  <div class="dash-progress-icon">2</div>
+                  <div class="dash-progress-label">Publishing Article</div>
+                </div>
+                <div class="dash-progress-step" data-step="send">
+                  <div class="dash-progress-icon">3</div>
+                  <div class="dash-progress-label">Sending Email</div>
+                </div>
+                <div class="dash-progress-step" data-step="done">
+                  <div class="dash-progress-icon">&#10003;</div>
+                  <div class="dash-progress-label">Done</div>
+                </div>
+              </div>
+              <div id="realtor-status" class="dash-status-msg"></div>
+            </div>
+
+            <!-- SUCCESS RESULT -->
+            <div id="realtor-result" class="dash-output hidden">
+              <div class="dash-result-card hidden" id="rl-result-card-live">
+                <h3 style="color: var(--color-success); margin-bottom: 1rem;">Realtor Content Published &amp; Sent</h3>
+                <div class="dash-result-details">
+                  <p><strong>Article:</strong> <a id="rl-result-page-url" href="#" target="_blank" rel="noopener"></a></p>
+                  <div id="rl-result-campaigns"></div>
+                </div>
+              </div>
+              <div class="dash-preview-card hidden" id="rl-result-card-preview">
+                <h3 style="margin-bottom: 0.25rem;">&#128065; Preview — Nothing Has Been Published or Sent</h3>
+                <p style="color: #6B7280; margin-bottom: 1.5rem; font-size: 0.9rem;">Review everything below. When you're happy, switch to <strong>Go Live</strong> and submit again.</p>
+
+                <div class="dash-preview-section">
+                  <h4>&#128196; Realtor Article</h4>
+                  <p class="dash-preview-meta"><strong>Title:</strong> <span id="rl-preview-page-title"></span></p>
+                  <p class="dash-preview-meta"><strong>Category:</strong> <span id="rl-preview-category"></span></p>
+                  <p class="dash-preview-meta"><strong>URL would be:</strong> <span id="rl-preview-page-url"></span></p>
+                  <div class="dash-preview-body" id="rl-preview-web-content"></div>
+                </div>
+
+                <div class="dash-preview-section" id="rl-preview-email-section">
+                  <h4>&#128231; Realtor Email</h4>
+                  <p class="dash-preview-meta"><strong>Subject:</strong> <span id="rl-preview-email-subject"></span></p>
+                  <p class="dash-preview-meta"><strong>Preheader:</strong> <span id="rl-preview-email-preheader"></span></p>
+                  <div class="dash-preview-email" id="rl-preview-email-html"></div>
+                </div>
+
+                <div class="dash-preview-actions">
+                  <button class="btn btn-primary btn-lg" id="rl-preview-go-live-btn">&#128640; Looks Good — Go Live</button>
+                  <button class="btn btn-secondary" id="rl-preview-edit-btn">&#9998; Edit &amp; Regenerate</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ERROR AREA -->
+            <div id="realtor-error" class="dash-output hidden">
+              <div class="dash-error-card">
+                <h3 style="color: var(--color-error); margin-bottom: 0.5rem;">Something Went Wrong</h3>
+                <p id="realtor-error-msg"></p>
+                <button class="btn btn-secondary" id="rl-retry-btn">Try Again</button>
               </div>
             </div>
           </div>
