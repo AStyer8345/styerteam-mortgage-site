@@ -1339,6 +1339,45 @@ img {
 }
 
 /* ========================================================================
+   17b. PHOTO GALLERY (About Page)
+   ======================================================================== */
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.photo-gallery-item {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-light-gray);
+}
+
+.photo-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.photo-gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .photo-gallery {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
+
+/* ========================================================================
    18. RESPONSIVE BREAKPOINTS
    ======================================================================== */
 
