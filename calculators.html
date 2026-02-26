@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mortgage Calculators | Payment & Affordability | Mortgage Solutions</title>
-  <meta name="description" content="Free mortgage calculators: estimate monthly payments, analyze refinancing, compare rent vs. buy, and evaluate loan options side by side. Powered by HousingBrief.">
+  <title>Mortgage Calculator Austin | Home Affordability | Mortgage Solutions</title>
+  <meta name="description" content="Free mortgage calculator for Austin home buyers — estimate monthly payments, check home affordability, analyze refinancing, and compare loan options. Adam Styer, NMLS #513013.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Free Mortgage Calculators | Payment & Affordability">
-  <meta property="og:description" content="Use our free mortgage calculators to estimate your monthly payment and determine how much house you can afford.">
+  <meta property="og:title" content="Mortgage Calculator Austin | Home Affordability">
+  <meta property="og:description" content="Free mortgage calculator for Austin buyers — estimate payments, check affordability, and compare loan options.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://styermortgage.com/calculators.html">
   <meta property="og:image" content="https://styermortgage.com/assets/og-image.png">
@@ -16,8 +16,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Mortgage Calculators | Payment & Affordability">
-  <meta name="twitter:description" content="Use our free mortgage calculators to estimate your monthly payment and determine how much house you can afford.">
+  <meta name="twitter:title" content="Mortgage Calculator Austin | Home Affordability">
+  <meta name="twitter:description" content="Free mortgage calculator for Austin buyers — estimate payments, check affordability, and compare loan options.">
   <meta name="twitter:image" content="https://styermortgage.com/assets/og-image.png">
 
   <!-- Favicon -->
@@ -129,6 +129,11 @@
     <section class="hero">
       <div class="container">
         <div class="hero-content">
+          <div class="hero-badge">
+              <a href="https://www.google.com/maps/place/?q=place_id:ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener noreferrer">
+                <span>&#11088; <strong>5.0 Stars &middot; 91 Google Reviews</strong></span>
+              </a>
+            </div>
           <h1>Mortgage Calculators</h1>
           <p class="hero-subtitle">
             Know your numbers before you apply. Use our free calculators to estimate payments, determine affordability, and analyze refinancing options.
@@ -140,47 +145,378 @@
     <!-- CALCULATORS -->
     <section>
       <div class="container">
-        <div class="grid grid-2 gap-xl mb-3xl">
-          <!-- MORTGAGE PAYMENT CALCULATOR -->
-          <div class="card card-centered">
-            <div class="card-icon-lg">&#128178;</div>
-            <h3 class="mb-md">Mortgage Payment Calculator</h3>
-            <p class="text-lg">
-              Calculate your monthly mortgage payment with a full amortization schedule. Adjust home price, loan amount, interest rate, and loan term to see your breakdown.
-            </p>
-            <a href="https://housingbrief.com/mortgage-calculator/580507b0becf1e0f7001dcfc" class="btn btn-primary" target="_blank" rel="noopener">Open Payment Calculator</a>
-          </div>
+        <!-- Tab Navigation -->
+        <div class="calc-tabs" role="tablist" aria-label="Calculator selection">
+          <button class="calc-tab active" role="tab" aria-selected="true" aria-controls="panel-payment" data-panel="panel-payment">Mortgage Payment</button>
+          <button class="calc-tab" role="tab" aria-selected="false" aria-controls="panel-refinance" data-panel="panel-refinance">Should I Refinance?</button>
+          <button class="calc-tab" role="tab" aria-selected="false" aria-controls="panel-rentvsbuy" data-panel="panel-rentvsbuy">Rent vs. Buy</button>
+          <button class="calc-tab" role="tab" aria-selected="false" aria-controls="panel-compare" data-panel="panel-compare">Loan Comparison</button>
+        </div>
 
-          <!-- REFINANCE CALCULATOR -->
-          <div class="card card-centered">
-            <div class="card-icon-lg">&#128200;</div>
-            <h3 class="mb-md">Should I Refinance?</h3>
-            <p class="text-lg">
-              Compare your current mortgage to a new loan. See monthly payment savings, total interest comparison, and your break-even point to decide if refinancing makes sense.
-            </p>
-            <a href="https://housingbrief.com/mortgage-calculator/should-i-refinance/580507b0becf1e0f7001dcfc" class="btn btn-primary" target="_blank" rel="noopener">Open Refinance Calculator</a>
-          </div>
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- PANEL 1: MORTGAGE PAYMENT CALCULATOR        -->
+        <!-- ═══════════════════════════════════════════ -->
+        <div id="panel-payment" class="calc-panel active" role="tabpanel">
+          <div class="calc-layout">
+            <div class="calculator-input">
+              <h3>Mortgage Payment Calculator</h3>
+              <div class="form-group">
+                <label for="pay-price">Home Price ($)</label>
+                <input type="number" id="pay-price" value="450000" min="0" step="1000">
+              </div>
+              <div class="form-group">
+                <label for="pay-down">Down Payment ($)</label>
+                <input type="number" id="pay-down" value="90000" min="0" step="1000">
+              </div>
+              <div class="form-group">
+                <label for="pay-rate">Interest Rate (%)</label>
+                <input type="number" id="pay-rate" value="6.75" min="0" max="20" step="0.125">
+              </div>
+              <div class="form-group">
+                <label for="pay-term">Loan Term</label>
+                <select id="pay-term">
+                  <option value="30" selected>30 Years</option>
+                  <option value="20">20 Years</option>
+                  <option value="15">15 Years</option>
+                  <option value="10">10 Years</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="pay-tax">Annual Property Tax ($)</label>
+                <input type="number" id="pay-tax" value="8100" min="0" step="100">
+              </div>
+              <div class="form-group">
+                <label for="pay-insurance">Annual Insurance ($)</label>
+                <input type="number" id="pay-insurance" value="2400" min="0" step="100">
+              </div>
+              <div class="form-group">
+                <label for="pay-pmi">Monthly PMI ($)</label>
+                <input type="number" id="pay-pmi" value="0" min="0" step="10">
+              </div>
+            </div>
 
-          <!-- RENT VS. BUY CALCULATOR -->
-          <div class="card card-centered">
-            <div class="card-icon-lg">&#127968;</div>
-            <h3 class="mb-md">Rent vs. Buy Analysis</h3>
-            <p class="text-lg">
-              Should you keep renting or buy a home? Compare the true cost of renting versus buying over time, including appreciation, tax benefits, and your break-even year.
-            </p>
-            <a href="https://housingbrief.com/mortgage-calculator/rent-vs-buy/580507b0becf1e0f7001dcfc" class="btn btn-primary" target="_blank" rel="noopener">Open Rent vs. Buy Calculator</a>
-          </div>
-
-          <!-- LOAN COMPARISON CALCULATOR -->
-          <div class="card card-centered">
-            <div class="card-icon-lg">&#9878;</div>
-            <h3 class="mb-md">Loan Comparison</h3>
-            <p class="text-lg">
-              Compare two loan options side by side. See differences in monthly payments, total interest paid, and total cost to find the best loan for your situation.
-            </p>
-            <a href="https://housingbrief.com/mortgage-calculator/compare/580507b0becf1e0f7001dcfc" class="btn btn-primary" target="_blank" rel="noopener">Open Loan Comparison</a>
+            <div class="calculator-output">
+              <h4>Monthly Payment Breakdown</h4>
+              <div class="output-row">
+                <span class="output-label">Principal &amp; Interest</span>
+                <span class="output-value" id="pay-out-pi">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Property Tax</span>
+                <span class="output-value" id="pay-out-tax">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Insurance</span>
+                <span class="output-value" id="pay-out-ins">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">PMI</span>
+                <span class="output-value" id="pay-out-pmi">$0</span>
+              </div>
+              <div class="output-row output-row--total">
+                <span class="output-label output-label--bold">Total Monthly Payment</span>
+                <span class="output-value highlight" id="pay-out-total">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Loan Amount</span>
+                <span class="output-value" id="pay-out-loan">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Total Interest Paid</span>
+                <span class="output-value" id="pay-out-interest">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Total Cost of Loan</span>
+                <span class="output-value" id="pay-out-totalcost">$0</span>
+              </div>
+              <p class="calculator-disclaimer">
+                Estimates only. Actual rates &amp; payments depend on credit, loan type, and market conditions.
+                <a href="tel:+15129566010">Call Adam</a> for exact numbers.
+              </p>
+            </div>
           </div>
         </div>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- PANEL 2: REFINANCE BREAK-EVEN CALCULATOR    -->
+        <!-- ═══════════════════════════════════════════ -->
+        <div id="panel-refinance" class="calc-panel" role="tabpanel">
+          <div class="calc-layout">
+            <div class="calculator-input">
+              <h3>Should I Refinance?</h3>
+              <p class="mb-lg" style="color:var(--color-gray);font-size:var(--font-size-sm);">Compare your current loan to a new one and see your break-even point.</p>
+
+              <h4 style="margin-bottom:var(--spacing-md);color:var(--color-navy);">Current Loan</h4>
+              <div class="form-group">
+                <label for="refi-cur-balance">Current Balance ($)</label>
+                <input type="number" id="refi-cur-balance" value="350000" min="0" step="1000">
+              </div>
+              <div class="form-group">
+                <label for="refi-cur-rate">Current Rate (%)</label>
+                <input type="number" id="refi-cur-rate" value="7.25" min="0" max="20" step="0.125">
+              </div>
+              <div class="form-group">
+                <label for="refi-cur-remaining">Years Remaining</label>
+                <input type="number" id="refi-cur-remaining" value="27" min="1" max="30" step="1">
+              </div>
+
+              <h4 style="margin:var(--spacing-xl) 0 var(--spacing-md);color:var(--color-navy);">New Loan</h4>
+              <div class="form-group">
+                <label for="refi-new-rate">New Rate (%)</label>
+                <input type="number" id="refi-new-rate" value="6.25" min="0" max="20" step="0.125">
+              </div>
+              <div class="form-group">
+                <label for="refi-new-term">New Term</label>
+                <select id="refi-new-term">
+                  <option value="30" selected>30 Years</option>
+                  <option value="20">20 Years</option>
+                  <option value="15">15 Years</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="refi-closing">Estimated Closing Costs ($)</label>
+                <input type="number" id="refi-closing" value="6500" min="0" step="100">
+              </div>
+            </div>
+
+            <div class="calculator-output">
+              <h4>Refinance Analysis</h4>
+              <div class="output-row">
+                <span class="output-label">Current Monthly P&amp;I</span>
+                <span class="output-value" id="refi-out-curpmt">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">New Monthly P&amp;I</span>
+                <span class="output-value" id="refi-out-newpmt">$0</span>
+              </div>
+              <div class="output-row output-row--total">
+                <span class="output-label output-label--bold">Monthly Savings</span>
+                <span class="output-value highlight" id="refi-out-savings">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Break-Even Point</span>
+                <span class="output-value" id="refi-out-breakeven">—</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Current Total Interest Remaining</span>
+                <span class="output-value" id="refi-out-curint">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">New Total Interest</span>
+                <span class="output-value" id="refi-out-newint">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Lifetime Interest Savings</span>
+                <span class="output-value" id="refi-out-lifesave">$0</span>
+              </div>
+              <p class="calculator-disclaimer">
+                Estimates only. Does not include taxes, insurance, or PMI changes.
+                <a href="tel:+15129566010">Call Adam</a> for a full refinance analysis.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- PANEL 3: RENT VS. BUY CALCULATOR            -->
+        <!-- ═══════════════════════════════════════════ -->
+        <div id="panel-rentvsbuy" class="calc-panel" role="tabpanel">
+          <div class="calc-layout">
+            <div class="calculator-input">
+              <h3>Rent vs. Buy Analysis</h3>
+
+              <h4 style="margin-bottom:var(--spacing-md);color:var(--color-navy);">If You Buy</h4>
+              <div class="form-group">
+                <label for="rvb-price">Home Price ($)</label>
+                <input type="number" id="rvb-price" value="450000" min="0" step="1000">
+              </div>
+              <div class="form-group">
+                <label for="rvb-down">Down Payment ($)</label>
+                <input type="number" id="rvb-down" value="90000" min="0" step="1000">
+              </div>
+              <div class="form-group">
+                <label for="rvb-rate">Mortgage Rate (%)</label>
+                <input type="number" id="rvb-rate" value="6.75" min="0" max="20" step="0.125">
+              </div>
+              <div class="form-group">
+                <label for="rvb-appreciate">Annual Appreciation (%)</label>
+                <input type="number" id="rvb-appreciate" value="3" min="-5" max="20" step="0.5">
+              </div>
+
+              <h4 style="margin:var(--spacing-xl) 0 var(--spacing-md);color:var(--color-navy);">If You Rent</h4>
+              <div class="form-group">
+                <label for="rvb-rent">Monthly Rent ($)</label>
+                <input type="number" id="rvb-rent" value="2200" min="0" step="50">
+              </div>
+              <div class="form-group">
+                <label for="rvb-rentincrease">Annual Rent Increase (%)</label>
+                <input type="number" id="rvb-rentincrease" value="3" min="0" max="20" step="0.5">
+              </div>
+
+              <h4 style="margin:var(--spacing-xl) 0 var(--spacing-md);color:var(--color-navy);">Time Horizon</h4>
+              <div class="form-group">
+                <label for="rvb-years">Years to Compare</label>
+                <select id="rvb-years">
+                  <option value="5">5 Years</option>
+                  <option value="7" selected>7 Years</option>
+                  <option value="10">10 Years</option>
+                  <option value="15">15 Years</option>
+                  <option value="30">30 Years</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calculator-output">
+              <h4>Rent vs. Buy Comparison</h4>
+              <div class="output-row">
+                <span class="output-label">Monthly Mortgage (P&amp;I)</span>
+                <span class="output-value" id="rvb-out-mortgage">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Monthly Rent (Starting)</span>
+                <span class="output-value" id="rvb-out-rent">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Total Cost of Buying</span>
+                <span class="output-value" id="rvb-out-buycost">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Total Cost of Renting</span>
+                <span class="output-value" id="rvb-out-rentcost">$0</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Home Equity Built</span>
+                <span class="output-value" id="rvb-out-equity">$0</span>
+              </div>
+              <div class="output-row output-row--total">
+                <span class="output-label output-label--bold">Net Advantage</span>
+                <span class="output-value highlight" id="rvb-out-advantage">—</span>
+              </div>
+              <div class="output-row">
+                <span class="output-label">Break-Even Year</span>
+                <span class="output-value" id="rvb-out-breakeven">—</span>
+              </div>
+              <p class="calculator-disclaimer">
+                Simplified estimate. Does not account for investment returns on savings, maintenance costs, or tax benefits.
+                <a href="tel:+15129566010">Call Adam</a> for personalized advice.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- PANEL 4: LOAN COMPARISON CALCULATOR         -->
+        <!-- ═══════════════════════════════════════════ -->
+        <div id="panel-compare" class="calc-panel" role="tabpanel">
+          <h3 class="mb-lg">Loan Comparison — Side by Side</h3>
+          <div class="calc-compare">
+            <div class="calculator-input">
+              <h4>Loan A</h4>
+              <div class="form-group">
+                <label for="cmp-a-amount">Loan Amount ($)</label>
+                <input type="number" id="cmp-a-amount" value="360000" min="0" step="1000">
+              </div>
+              <div class="form-group">
+                <label for="cmp-a-rate">Interest Rate (%)</label>
+                <input type="number" id="cmp-a-rate" value="6.75" min="0" max="20" step="0.125">
+              </div>
+              <div class="form-group">
+                <label for="cmp-a-term">Term</label>
+                <select id="cmp-a-term">
+                  <option value="30" selected>30 Years</option>
+                  <option value="20">20 Years</option>
+                  <option value="15">15 Years</option>
+                  <option value="10">10 Years</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calculator-input">
+              <h4>Loan B</h4>
+              <div class="form-group">
+                <label for="cmp-b-amount">Loan Amount ($)</label>
+                <input type="number" id="cmp-b-amount" value="360000" min="0" step="1000">
+              </div>
+              <div class="form-group">
+                <label for="cmp-b-rate">Interest Rate (%)</label>
+                <input type="number" id="cmp-b-rate" value="6.25" min="0" max="20" step="0.125">
+              </div>
+              <div class="form-group">
+                <label for="cmp-b-term">Term</label>
+                <select id="cmp-b-term">
+                  <option value="30">30 Years</option>
+                  <option value="20">20 Years</option>
+                  <option value="15" selected>15 Years</option>
+                  <option value="10">10 Years</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="calculator-output" style="margin-top:var(--spacing-2xl);">
+            <h4>Comparison Results</h4>
+            <div style="display:grid;grid-template-columns:auto 1fr 1fr;gap:0;text-align:right;">
+              <div class="output-row" style="grid-column:1/-1;text-align:left;padding-bottom:var(--spacing-sm);border-bottom:2px solid var(--color-gold);">
+                <span class="output-label" style="flex:1;"></span>
+                <span class="output-label output-label--bold" style="flex:1;text-align:right;">Loan A</span>
+                <span class="output-label output-label--bold" style="flex:1;text-align:right;">Loan B</span>
+              </div>
+            </div>
+            <div class="output-row">
+              <span class="output-label" style="flex:1;">Monthly Payment</span>
+              <span class="output-value" id="cmp-out-a-pmt" style="flex:1;text-align:right;">$0</span>
+              <span class="output-value" id="cmp-out-b-pmt" style="flex:1;text-align:right;">$0</span>
+            </div>
+            <div class="output-row">
+              <span class="output-label" style="flex:1;">Total Interest</span>
+              <span class="output-value" id="cmp-out-a-int" style="flex:1;text-align:right;">$0</span>
+              <span class="output-value" id="cmp-out-b-int" style="flex:1;text-align:right;">$0</span>
+            </div>
+            <div class="output-row">
+              <span class="output-label" style="flex:1;">Total Cost</span>
+              <span class="output-value" id="cmp-out-a-cost" style="flex:1;text-align:right;">$0</span>
+              <span class="output-value" id="cmp-out-b-cost" style="flex:1;text-align:right;">$0</span>
+            </div>
+            <div class="output-row output-row--total">
+              <span class="output-label output-label--bold" style="flex:1;">Difference</span>
+              <span class="output-value highlight" id="cmp-out-diff-pmt" style="flex:1;text-align:right;">$0/mo</span>
+              <span class="output-value highlight" id="cmp-out-diff-int" style="flex:1;text-align:right;">$0 interest</span>
+            </div>
+            <p class="calculator-disclaimer">
+              Compares principal &amp; interest only. Does not include taxes, insurance, or PMI.
+              <a href="tel:+15129566010">Call Adam</a> for a full loan comparison.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HELPFUL RESOURCES -->
+    <section>
+      <div class="container">
+        <h2 class="text-center mb-3xl">Related Resources</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>How Much House Can I Afford?</h3>
+            <p>Use your income, debts, and down payment to estimate your Austin home buying budget.</p>
+            <a href="how-much-house-can-i-afford-austin.html">Read the Guide &rarr;</a>
+          </div>
+          <div class="card">
+            <h3>Fixed vs. Adjustable Rates</h3>
+            <p>Understand the differences between fixed-rate and ARM loans to pick the right mortgage.</p>
+            <a href="fixed-vs-adjustable.html">Compare Loan Types &rarr;</a>
+          </div>
+          <div class="card">
+            <h3>Closing Costs in Texas</h3>
+            <p>Learn what fees to expect at closing and how to budget for your home purchase.</p>
+            <a href="closing-costs-texas.html">See Closing Costs &rarr;</a>
+          </div>
+        </div>
+        <p class="text-center mt-xl">
+          <a href="blog.html">Browse all articles &rarr;</a> &nbsp;|&nbsp;
+          <a href="products.html">Explore loan programs &rarr;</a> &nbsp;|&nbsp;
+          <a href="loans/refinance.html">Refinance options &rarr;</a>
+        </p>
       </div>
     </section>
 
@@ -409,5 +745,244 @@
   </footer>
 
   <script src="script.js" defer></script>
+  <script>
+  (function() {
+    'use strict';
+
+    /* ── Utility ─────────────────────────────── */
+    function fmt(n) {
+      return '$' + Math.round(n).toLocaleString('en-US');
+    }
+    function monthlyPayment(principal, annualRate, years) {
+      if (principal <= 0) return 0;
+      if (annualRate <= 0) return principal / (years * 12);
+      var r = annualRate / 100 / 12;
+      var n = years * 12;
+      return principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    }
+    function totalInterest(principal, annualRate, years) {
+      var pmt = monthlyPayment(principal, annualRate, years);
+      return pmt * years * 12 - principal;
+    }
+    function val(id) { return parseFloat(document.getElementById(id).value) || 0; }
+    function set(id, v) { document.getElementById(id).textContent = v; }
+
+    /* ── Tab Navigation ──────────────────────── */
+    document.querySelectorAll('.calc-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.calc-tab').forEach(function(t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.calc-panel').forEach(function(p) {
+          p.classList.remove('active');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        document.getElementById(tab.dataset.panel).classList.add('active');
+      });
+    });
+
+    /* ── 1. MORTGAGE PAYMENT CALCULATOR ──────── */
+    function calcPayment() {
+      var price = val('pay-price');
+      var down = val('pay-down');
+      var loan = price - down;
+      var rate = val('pay-rate');
+      var term = val('pay-term');
+      var tax = val('pay-tax');
+      var ins = val('pay-insurance');
+      var pmi = val('pay-pmi');
+
+      if (loan <= 0) { loan = 0; }
+      var pi = monthlyPayment(loan, rate, term);
+      var monthlyTax = tax / 12;
+      var monthlyIns = ins / 12;
+      var total = pi + monthlyTax + monthlyIns + pmi;
+      var totalInt = totalInterest(loan, rate, term);
+
+      set('pay-out-pi', fmt(pi));
+      set('pay-out-tax', fmt(monthlyTax));
+      set('pay-out-ins', fmt(monthlyIns));
+      set('pay-out-pmi', fmt(pmi));
+      set('pay-out-total', fmt(total));
+      set('pay-out-loan', fmt(loan));
+      set('pay-out-interest', fmt(totalInt));
+      set('pay-out-totalcost', fmt(loan + totalInt));
+    }
+
+    ['pay-price','pay-down','pay-rate','pay-term','pay-tax','pay-insurance','pay-pmi'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', calcPayment);
+    });
+    calcPayment();
+
+    /* ── 2. REFINANCE BREAK-EVEN CALCULATOR ──── */
+    function calcRefinance() {
+      var balance = val('refi-cur-balance');
+      var curRate = val('refi-cur-rate');
+      var curRemaining = val('refi-cur-remaining');
+      var newRate = val('refi-new-rate');
+      var newTerm = val('refi-new-term');
+      var closing = val('refi-closing');
+
+      var curPmt = monthlyPayment(balance, curRate, curRemaining);
+      var newPmt = monthlyPayment(balance, newRate, newTerm);
+      var savings = curPmt - newPmt;
+
+      var curTotalInt = totalInterest(balance, curRate, curRemaining);
+      var newTotalInt = totalInterest(balance, newRate, newTerm);
+      var lifeSave = curTotalInt - newTotalInt - closing;
+
+      set('refi-out-curpmt', fmt(curPmt));
+      set('refi-out-newpmt', fmt(newPmt));
+      set('refi-out-savings', fmt(Math.abs(savings)) + '/mo');
+      set('refi-out-curint', fmt(curTotalInt));
+      set('refi-out-newint', fmt(newTotalInt));
+      set('refi-out-lifesave', fmt(lifeSave));
+
+      if (savings > 0) {
+        var months = Math.ceil(closing / savings);
+        var yrs = Math.floor(months / 12);
+        var mos = months % 12;
+        set('refi-out-breakeven', yrs > 0 ? yrs + ' yr ' + mos + ' mo' : mos + ' months');
+        document.getElementById('refi-out-savings').className = 'output-value highlight output-value--positive';
+        document.getElementById('refi-out-lifesave').className = 'output-value ' + (lifeSave >= 0 ? 'output-value--positive' : 'output-value--negative');
+      } else {
+        set('refi-out-breakeven', 'N/A — no savings');
+        document.getElementById('refi-out-savings').className = 'output-value highlight output-value--negative';
+        document.getElementById('refi-out-lifesave').className = 'output-value output-value--negative';
+      }
+    }
+
+    ['refi-cur-balance','refi-cur-rate','refi-cur-remaining','refi-new-rate','refi-new-term','refi-closing'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', calcRefinance);
+    });
+    calcRefinance();
+
+    /* ── 3. RENT VS. BUY CALCULATOR ─────────── */
+    function calcRentVsBuy() {
+      var price = val('rvb-price');
+      var down = val('rvb-down');
+      var loan = price - down;
+      var rate = val('rvb-rate');
+      var appreciation = val('rvb-appreciate') / 100;
+      var rent = val('rvb-rent');
+      var rentIncrease = val('rvb-rentincrease') / 100;
+      var years = val('rvb-years');
+
+      var pmt = monthlyPayment(loan, rate, 30);
+      set('rvb-out-mortgage', fmt(pmt));
+      set('rvb-out-rent', fmt(rent));
+
+      // Total rent cost over the period
+      var totalRent = 0;
+      var yearlyRent = rent;
+      for (var y = 0; y < years; y++) {
+        totalRent += yearlyRent * 12;
+        yearlyRent *= (1 + rentIncrease);
+      }
+
+      // Total buy cost: all mortgage payments over the period + down payment
+      var totalBuyPayments = pmt * Math.min(years, 30) * 12;
+      var totalBuyCost = down + totalBuyPayments;
+
+      // Equity: appreciation + principal paid
+      var homeValue = price * Math.pow(1 + appreciation, years);
+      var equity = homeValue - loan; // Simplified — ignores amortization for clarity
+      // Better: calculate remaining balance
+      var r = (rate / 100) / 12;
+      var n = 30 * 12;
+      var monthsHeld = Math.min(years * 12, n);
+      var remainingBalance = loan;
+      if (r > 0) {
+        remainingBalance = loan * (Math.pow(1 + r, n) - Math.pow(1 + r, monthsHeld)) / (Math.pow(1 + r, n) - 1);
+      } else {
+        remainingBalance = loan - (loan / n) * monthsHeld;
+      }
+      equity = homeValue - remainingBalance;
+
+      set('rvb-out-buycost', fmt(totalBuyCost));
+      set('rvb-out-rentcost', fmt(totalRent));
+      set('rvb-out-equity', fmt(equity));
+
+      // Net advantage: equity built + cost difference
+      var buyNet = equity - totalBuyCost;
+      var rentNet = -totalRent;
+      var advantage = buyNet - rentNet;
+      if (advantage > 0) {
+        set('rvb-out-advantage', 'Buying saves ' + fmt(advantage));
+        document.getElementById('rvb-out-advantage').className = 'output-value highlight output-value--positive';
+      } else {
+        set('rvb-out-advantage', 'Renting saves ' + fmt(Math.abs(advantage)));
+        document.getElementById('rvb-out-advantage').className = 'output-value highlight output-value--negative';
+      }
+
+      // Break-even year
+      var found = false;
+      for (var by = 1; by <= 30; by++) {
+        var rentCum = 0;
+        var yr = rent;
+        for (var m = 0; m < by; m++) { rentCum += yr * 12; yr *= (1 + rentIncrease); }
+        var hv = price * Math.pow(1 + appreciation, by);
+        var mo2 = Math.min(by * 12, n);
+        var rb2 = loan;
+        if (r > 0) {
+          rb2 = loan * (Math.pow(1 + r, n) - Math.pow(1 + r, mo2)) / (Math.pow(1 + r, n) - 1);
+        } else {
+          rb2 = loan - (loan / n) * mo2;
+        }
+        var eq = hv - rb2;
+        var buyCum = down + pmt * mo2;
+        var buyAdv = eq - buyCum + rentCum;
+        if (buyAdv > 0) {
+          set('rvb-out-breakeven', 'Year ' + by);
+          found = true;
+          break;
+        }
+      }
+      if (!found) set('rvb-out-breakeven', '30+ years');
+    }
+
+    ['rvb-price','rvb-down','rvb-rate','rvb-appreciate','rvb-rent','rvb-rentincrease','rvb-years'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', calcRentVsBuy);
+    });
+    calcRentVsBuy();
+
+    /* ── 4. LOAN COMPARISON CALCULATOR ──────── */
+    function calcCompare() {
+      var aAmt = val('cmp-a-amount');
+      var aRate = val('cmp-a-rate');
+      var aTerm = val('cmp-a-term');
+      var bAmt = val('cmp-b-amount');
+      var bRate = val('cmp-b-rate');
+      var bTerm = val('cmp-b-term');
+
+      var aPmt = monthlyPayment(aAmt, aRate, aTerm);
+      var bPmt = monthlyPayment(bAmt, bRate, bTerm);
+      var aInt = totalInterest(aAmt, aRate, aTerm);
+      var bInt = totalInterest(bAmt, bRate, bTerm);
+      var aCost = aAmt + aInt;
+      var bCost = bAmt + bInt;
+
+      set('cmp-out-a-pmt', fmt(aPmt));
+      set('cmp-out-b-pmt', fmt(bPmt));
+      set('cmp-out-a-int', fmt(aInt));
+      set('cmp-out-b-int', fmt(bInt));
+      set('cmp-out-a-cost', fmt(aCost));
+      set('cmp-out-b-cost', fmt(bCost));
+
+      var diffPmt = aPmt - bPmt;
+      var diffInt = aInt - bInt;
+      set('cmp-out-diff-pmt', (diffPmt >= 0 ? '+' : '-') + fmt(Math.abs(diffPmt)) + '/mo');
+      set('cmp-out-diff-int', (diffInt >= 0 ? '+' : '-') + fmt(Math.abs(diffInt)));
+    }
+
+    ['cmp-a-amount','cmp-a-rate','cmp-a-term','cmp-b-amount','cmp-b-rate','cmp-b-term'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', calcCompare);
+    });
+    calcCompare();
+
+  })();
+  </script>
 </body>
 </html>

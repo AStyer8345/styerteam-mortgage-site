@@ -14,3 +14,141 @@
   for = "/refinance-calculator.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# ─── 301 Redirects: Old WordPress URLs ───
+
+[[redirects]]
+  from = "/about-me/"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/about-me"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/loan-programs/"
+  to = "/products.html"
+  status = 301
+
+[[redirects]]
+  from = "/loan-programs"
+  to = "/products.html"
+  status = 301
+
+[[redirects]]
+  from = "/mortgage-calculators/"
+  to = "/calculators.html"
+  status = 301
+
+[[redirects]]
+  from = "/mortgage-calculators"
+  to = "/calculators.html"
+  status = 301
+
+[[redirects]]
+  from = "/testimonials-reviews/"
+  to = "/testimonials.html"
+  status = 301
+
+[[redirects]]
+  from = "/testimonials-reviews"
+  to = "/testimonials.html"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us/"
+  to = "/contact.html"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog/"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/resources/"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/resources"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/pre-qualification/"
+  to = "/prequal.html"
+  status = 301
+
+[[redirects]]
+  from = "/pre-qualification"
+  to = "/prequal.html"
+  status = 301
+
+[[redirects]]
+  from = "/apply-now/"
+  to = "https://mslp.my1003app.com/513013/register"
+  status = 301
+
+[[redirects]]
+  from = "/apply-now"
+  to = "https://mslp.my1003app.com/513013/register"
+  status = 301
+
+# WordPress cruft — catch-all patterns
+[[redirects]]
+  from = "/wp-content/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/wp-admin/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/category/*"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/tag/*"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/author/*"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/feed/"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/feed"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/xmlrpc.php"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/wp-login.php"
+  to = "/"
+  status = 301

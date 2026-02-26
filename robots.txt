@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /dashboard.html
+Disallow: /rates/
+Disallow: /updates/
+Disallow: /netlify/
+Disallow: /blog/manifest.json
+Disallow: /realtor-updates/manifest.json
+
+Sitemap: https://styermortgage.com/sitemap.xml

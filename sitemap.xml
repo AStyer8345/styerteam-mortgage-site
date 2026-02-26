@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core pages -->
+  <url><loc>https://styermortgage.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://styermortgage.com/products.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://styermortgage.com/calculators.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/realtors.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/testimonials.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/prequal.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/realtor-resources.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+
+  <url><loc>https://styermortgage.com/texas-complaint-notice.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- Loan program pages -->
+  <url><loc>https://styermortgage.com/loans/conventional.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/loans/fha.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/loans/va.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/loans/jumbo.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/loans/usda.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/loans/construction.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/loans/investment.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/loans/refinance.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Blog posts -->
+  <url><loc>https://styermortgage.com/first-time-buyer-guide.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/fixed-vs-adjustable.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/improve-credit-score.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/how-much-house-can-i-afford-austin.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/austin-down-payment-assistance.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/mortgage-pre-approval-austin.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/closing-costs-texas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/austin-housing-market-2025.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>
