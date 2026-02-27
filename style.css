@@ -252,7 +252,7 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
   list-style: none;
   align-items: center;
 }
@@ -1410,7 +1410,7 @@ img {
   }
 
   .nav-links {
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
   }
 
   .nav-links a {
