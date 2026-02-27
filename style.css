@@ -252,8 +252,9 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: var(--spacing-2xl);
+  gap: var(--spacing-lg);
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
@@ -1409,7 +1410,7 @@ img {
   }
 
   .nav-links {
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
   }
 
   .nav-links a {
