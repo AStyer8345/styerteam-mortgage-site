@@ -2,6 +2,7 @@ const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildRealtorPrompt } = require("./lib/realtor-prompt-builder");
 const { buildRealtorPage } = require("./lib/realtor-page-builder");
+const { generateAndPostSocial } = require("./lib/social-poster");
 
 exports.handler = async (event) => {
   const headers = {
@@ -188,6 +189,22 @@ exports.handler = async (event) => {
         });
         results.campaigns.push({ audience: "realtor", ...campaignResult });
       }
+
+      // ----------------------------------------------------------------
+      // STEP 4: Queue social media posts via Buffer (non-blocking)
+      // ----------------------------------------------------------------
+      try {
+        const socialTopic = topic || formData.title || "Realtor Update";
+        results.socialPosts = await generateAndPostSocial({
+          webContent: parsed.webContent,
+          pageUrl,
+          topic: socialTopic,
+        });
+        console.log("[social-poster] Result:", JSON.stringify(results.socialPosts));
+      } catch (socialErr) {
+        console.error("[social-poster] Failed (non-blocking):", socialErr.message);
+        results.socialPosts = { error: socialErr.message };
+      }
     }
 
     return {
@@ -199,6 +216,7 @@ exports.handler = async (event) => {
         pageUrl,
         filename,
         campaigns: results.campaigns,
+        socialPosts: results.socialPosts || null,
         preview: {
           realtorSubject: parsed.realtorSubject,
           realtorPreheader: parsed.realtorPreheader,
