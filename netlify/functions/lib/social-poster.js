@@ -1,17 +1,25 @@
 /**
- * Social Media Post Generator + Buffer Queue
+ * Social Media Post Generator — Direct LinkedIn + Facebook APIs
  *
  * Generates LinkedIn and Facebook posts from newsletter content using Claude,
- * then queues them via Buffer's Publish API.
+ * then publishes directly via LinkedIn Posts API and Facebook Graph API.
  *
  * Designed to be non-blocking: failures here should NEVER break the
  * newsletter publish + email pipeline. Callers should wrap in try/catch.
  *
  * Required env vars:
- *   ANTHROPIC_API_KEY          — already set (shared with newsletter generation)
- *   BUFFER_ACCESS_TOKEN        — Buffer API access token
- *   BUFFER_LINKEDIN_PROFILE_ID — Buffer profile ID for LinkedIn
- *   BUFFER_FACEBOOK_PROFILE_ID — Buffer profile ID for Facebook
+ *   ANTHROPIC_API_KEY          — shared with newsletter generation
+ *
+ * LinkedIn (personal profile):
+ *   LINKEDIN_ACCESS_TOKEN      — OAuth 2.0 access token (expires ~60 days)
+ *   LINKEDIN_REFRESH_TOKEN     — OAuth 2.0 refresh token (expires ~365 days)
+ *   LINKEDIN_CLIENT_ID         — App client ID (for token refresh)
+ *   LINKEDIN_CLIENT_SECRET     — App client secret (for token refresh)
+ *   LINKEDIN_PERSON_URN        — e.g. "urn:li:person:AbCdEf123"
+ *
+ * Facebook (business page):
+ *   FACEBOOK_PAGE_ACCESS_TOKEN — Long-lived page token (permanent)
+ *   FACEBOOK_PAGE_ID           — Numeric page ID
  */
 
 const Anthropic = require("@anthropic-ai/sdk");
@@ -21,27 +29,27 @@ const Anthropic = require("@anthropic-ai/sdk");
 // ====================================================================
 
 /**
- * Generate social posts from newsletter content and queue them in Buffer.
+ * Generate social posts from newsletter content and publish them.
  *
  * @param {Object} opts
- * @param {string} opts.webContent  — The HTML article content from the newsletter
+ * @param {string} opts.webContent  — The HTML article content
  * @param {string} opts.pageUrl     — The published URL of the article
  * @param {string} opts.topic       — The newsletter topic/title
  * @returns {Object} Results with linkedin and facebook post statuses
  */
 async function generateAndPostSocial({ webContent, pageUrl, topic }) {
-  const bufferToken = process.env.BUFFER_ACCESS_TOKEN;
-  const linkedinId = process.env.BUFFER_LINKEDIN_PROFILE_ID;
-  const facebookId = process.env.BUFFER_FACEBOOK_PROFILE_ID;
+  // ── Check credentials ───────────────────────────────────────────
+  const linkedinToken = process.env.LINKEDIN_ACCESS_TOKEN;
+  const linkedinUrn = process.env.LINKEDIN_PERSON_URN;
+  const fbPageToken = process.env.FACEBOOK_PAGE_ACCESS_TOKEN;
+  const fbPageId = process.env.FACEBOOK_PAGE_ID;
 
-  if (!bufferToken) {
-    console.log("[social-poster] Skipped: BUFFER_ACCESS_TOKEN not set");
-    return { skipped: true, reason: "Missing BUFFER_ACCESS_TOKEN" };
-  }
+  const hasLinkedIn = linkedinToken && linkedinUrn;
+  const hasFacebook = fbPageToken && fbPageId;
 
-  if (!linkedinId && !facebookId) {
-    console.log("[social-poster] Skipped: No Buffer profile IDs configured");
-    return { skipped: true, reason: "No Buffer profile IDs configured" };
+  if (!hasLinkedIn && !hasFacebook) {
+    console.log("[social-poster] Skipped: No LinkedIn or Facebook credentials configured");
+    return { skipped: true, reason: "No social media credentials configured" };
   }
 
   // Strip HTML tags to get plain text for the AI prompt
@@ -79,34 +87,219 @@ async function generateAndPostSocial({ webContent, pageUrl, topic }) {
     return { error: "Failed to parse AI response", raw: aiText.substring(0, 300) };
   }
 
-  // ── Step 2: Queue posts to Buffer ─────────────────────────────────
+  // ── Step 2: Publish posts directly ──────────────────────────────
   const results = {
     linkedin: null,
     facebook: null,
     timestamp: new Date().toISOString(),
   };
 
-  if (linkedinId && posts.linkedin) {
+  if (hasLinkedIn && posts.linkedin) {
     try {
-      results.linkedin = await postToBuffer(bufferToken, linkedinId, posts.linkedin);
-      console.log(`[social-poster] LinkedIn queued: ${results.linkedin.status}`);
+      results.linkedin = await postToLinkedIn(
+        linkedinToken,
+        linkedinUrn,
+        posts.linkedin,
+        pageUrl,
+        topic || "New Article"
+      );
+      console.log(`[social-poster] LinkedIn published: ${results.linkedin.status}`);
     } catch (err) {
-      console.error(`[social-poster] LinkedIn Buffer error: ${err.message}`);
-      results.linkedin = { error: err.message };
+      console.error(`[social-poster] LinkedIn error: ${err.message}`);
+
+      // If 401 (token expired), attempt one refresh + retry
+      if (err.message.includes("401") || err.message.includes("Unauthorized")) {
+        console.log("[social-poster] LinkedIn token may be expired, attempting refresh...");
+        try {
+          const newToken = await refreshLinkedInToken();
+          if (newToken) {
+            results.linkedin = await postToLinkedIn(
+              newToken,
+              linkedinUrn,
+              posts.linkedin,
+              pageUrl,
+              topic || "New Article"
+            );
+            console.log(`[social-poster] LinkedIn published after token refresh: ${results.linkedin.status}`);
+            results.linkedin.tokenRefreshed = true;
+            results.linkedin.newToken = newToken; // Log for manual env var update
+          }
+        } catch (refreshErr) {
+          console.error(`[social-poster] LinkedIn token refresh failed: ${refreshErr.message}`);
+          results.linkedin = {
+            error: "Token expired and refresh failed. Update LINKEDIN_ACCESS_TOKEN manually.",
+            refreshError: refreshErr.message,
+          };
+        }
+      } else {
+        results.linkedin = { error: err.message };
+      }
     }
   }
 
-  if (facebookId && posts.facebook) {
+  if (hasFacebook && posts.facebook) {
     try {
-      results.facebook = await postToBuffer(bufferToken, facebookId, posts.facebook);
-      console.log(`[social-poster] Facebook queued: ${results.facebook.status}`);
+      results.facebook = await postToFacebook(
+        fbPageToken,
+        fbPageId,
+        posts.facebook,
+        pageUrl
+      );
+      console.log(`[social-poster] Facebook published: ${results.facebook.status}`);
     } catch (err) {
-      console.error(`[social-poster] Facebook Buffer error: ${err.message}`);
+      console.error(`[social-poster] Facebook error: ${err.message}`);
       results.facebook = { error: err.message };
     }
   }
 
   return results;
+}
+
+// ====================================================================
+// LINKEDIN POSTS API
+// ====================================================================
+
+/**
+ * Publish a post to LinkedIn as a personal profile.
+ * Uses the new REST Posts API with article content for link previews.
+ */
+async function postToLinkedIn(accessToken, personUrn, text, articleUrl, articleTitle) {
+  const url = "https://api.linkedin.com/rest/posts";
+
+  const body = {
+    author: personUrn,
+    commentary: text,
+    visibility: "PUBLIC",
+    distribution: {
+      feedDistribution: "MAIN_FEED",
+      targetEntities: [],
+      thirdPartyDistributionChannels: [],
+    },
+    content: {
+      article: {
+        source: articleUrl,
+        title: articleTitle,
+      },
+    },
+    lifecycleState: "PUBLISHED",
+    isReshareDisabledByAuthor: false,
+  };
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+      "X-Restli-Protocol-Version": "2.0.0",
+      "LinkedIn-Version": "202501",
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const errorText = await res.text();
+    throw new Error(`LinkedIn API error (${res.status}): ${errorText.substring(0, 300)}`);
+  }
+
+  // LinkedIn returns 201 with post ID in the x-restli-id header
+  const postId = res.headers.get("x-restli-id") || null;
+
+  return {
+    status: "published",
+    postId,
+    platform: "linkedin",
+  };
+}
+
+// ====================================================================
+// LINKEDIN TOKEN REFRESH
+// ====================================================================
+
+/**
+ * Attempt to refresh the LinkedIn OAuth access token.
+ * Returns the new access token string, or null if refresh is not configured.
+ *
+ * NOTE: In a serverless environment, we cannot persist the new token.
+ * The new token is returned in the results so it can be logged and
+ * manually updated in Netlify env vars. A scheduled function could
+ * automate this in the future.
+ */
+async function refreshLinkedInToken() {
+  const refreshToken = process.env.LINKEDIN_REFRESH_TOKEN;
+  const clientId = process.env.LINKEDIN_CLIENT_ID;
+  const clientSecret = process.env.LINKEDIN_CLIENT_SECRET;
+
+  if (!refreshToken || !clientId || !clientSecret) {
+    console.log("[social-poster] Cannot refresh LinkedIn token: missing refresh credentials");
+    return null;
+  }
+
+  const body = new URLSearchParams();
+  body.append("grant_type", "refresh_token");
+  body.append("refresh_token", refreshToken);
+  body.append("client_id", clientId);
+  body.append("client_secret", clientSecret);
+
+  const res = await fetch("https://www.linkedin.com/oauth/v2/accessToken", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: body.toString(),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok || !data.access_token) {
+    throw new Error(
+      `LinkedIn token refresh failed (${res.status}): ${data.error_description || data.error || "Unknown error"}`
+    );
+  }
+
+  console.log(
+    `[social-poster] LinkedIn token refreshed successfully. ` +
+      `Expires in ${data.expires_in}s. ` +
+      `ACTION REQUIRED: Update LINKEDIN_ACCESS_TOKEN in Netlify env vars.`
+  );
+
+  return data.access_token;
+}
+
+// ====================================================================
+// FACEBOOK GRAPH API
+// ====================================================================
+
+/**
+ * Publish a post to a Facebook Business Page.
+ * Uses Graph API v19.0 with page access token.
+ */
+async function postToFacebook(pageAccessToken, pageId, text, link) {
+  const url = `https://graph.facebook.com/v19.0/${pageId}/feed`;
+
+  const body = new URLSearchParams();
+  body.append("access_token", pageAccessToken);
+  body.append("message", text);
+  if (link) {
+    body.append("link", link);
+  }
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: body.toString(),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok || data.error) {
+    const errMsg =
+      data.error?.message || data.error || `Facebook API error (${res.status})`;
+    throw new Error(errMsg);
+  }
+
+  return {
+    status: "published",
+    postId: data.id || null,
+    platform: "facebook",
+  };
 }
 
 // ====================================================================
@@ -180,39 +373,6 @@ function parseSocialResponse(text) {
 }
 
 // ====================================================================
-// BUFFER API: Queue a post
-// ====================================================================
-
-async function postToBuffer(accessToken, profileId, text) {
-  // Buffer Publish API v1 — create an update (queues to next slot)
-  const url = `https://api.bufferapp.com/1/updates/create.json`;
-
-  const body = new URLSearchParams();
-  body.append("access_token", accessToken);
-  body.append("text", text);
-  body.append("profile_ids[]", profileId);
-
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: body.toString(),
-  });
-
-  const data = await res.json();
-
-  if (!res.ok || !data.success) {
-    const errMsg = data.message || data.error || `Buffer API error (${res.status})`;
-    throw new Error(errMsg);
-  }
-
-  return {
-    status: "queued",
-    bufferId: data.updates?.[0]?.id || null,
-    scheduledAt: data.updates?.[0]?.scheduled_at || null,
-  };
-}
-
-// ====================================================================
 // HELPER: Strip HTML to plain text
 // ====================================================================
 
@@ -233,8 +393,8 @@ function stripHtml(html) {
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
-    .replace(/&mdash;/g, "—")
-    .replace(/&middot;/g, "·")
+    .replace(/&mdash;/g, "\u2014")
+    .replace(/&middot;/g, "\u00B7")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
