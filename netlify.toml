@@ -77,15 +77,8 @@
   to = "/blog.html"
   status = 301
 
-[[redirects]]
-  from = "/resources/"
-  to = "/blog.html"
-  status = 301
-
-[[redirects]]
-  from = "/resources"
-  to = "/blog.html"
-  status = 301
+# /resources/ now has its own index.html — no redirect needed
+# (Old redirect to /blog.html removed)
 
 [[redirects]]
   from = "/pre-qualification/"
