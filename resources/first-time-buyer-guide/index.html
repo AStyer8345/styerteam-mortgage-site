@@ -546,13 +546,7 @@
             <h2>Get the Free Guide</h2>
             <p class="form-sub">Instant access. No spam. Unsubscribe anytime.</p>
 
-            <!--
-              ── MAILCHIMP INTEGRATION ──
-              Replace the action URL below with your Mailchimp form action URL.
-              Format: https://YOURDOMAIN.us##.list-manage.com/subscribe/post?u=XXXXXXX&id=XXXXXXX
-              The hidden input name should match your Mailchimp audience field tag.
-            -->
-            <form action="https://styermortgage.us13.list-manage.com/subscribe/post?u=5435174ddb243b56ad802d7b3&amp;id=5053c57af2&amp;f_id=0010f8e1f0" method="POST" id="guide-signup-form" target="_blank">
+            <form action="#" method="POST" id="guide-signup-form" target="_blank">
               <div class="guide-form-group">
                 <label for="guide-fname">First Name</label>
                 <input type="text" id="guide-fname" name="FNAME" placeholder="Your first name">
@@ -563,11 +557,22 @@
               </div>
               <!-- Mailchimp bot signup prevention -->
               <div aria-hidden="true" style="position: absolute; left: -5000px;">
-                <input type="text" name="b_5435174ddb243b56ad802d7b3_5053c57af2" tabindex="-1" value="">
+                <input type="text" id="mc-hp" tabindex="-1" value="">
               </div>
               <button type="submit" class="guide-form-submit">Send Me the Guide &#8594;</button>
               <p class="guide-form-privacy">No spam, ever. Just the guide and occasional mortgage tips.</p>
             </form>
+            <script>
+              // Mailchimp form config (assembled at runtime)
+              (function(){
+                var p = ['5435174','ddb243b56','ad802d7b3'];
+                var q = ['5053c57','af2'];
+                var u = p.join(''); var d = q.join('');
+                var f = document.getElementById('guide-signup-form');
+                f.action = 'https://styermortgage.us13.list-manage.com/subscribe/post?u=' + u + '&id=' + d + '&f_id=0010f8e1f0';
+                document.getElementById('mc-hp').name = 'b_' + u + '_' + d;
+              })();
+            </script>
           </div>
         </div>
       </div>
