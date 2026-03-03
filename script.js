@@ -65,10 +65,29 @@ function initNavigation() {
     });
 
     // Close menu when a link is clicked (event delegation)
+    // Skip: dropdown parent links (they toggle the sub-menu instead)
     navLinks.addEventListener('click', (e) => {
-      if (e.target.matches('a')) {
+      if (e.target.matches('a') && !e.target.closest('.nav-has-dropdown > a')) {
         navLinks.classList.remove('active');
+        navLinks.querySelectorAll('.nav-has-dropdown').forEach(el => el.classList.remove('open'));
         mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Mobile dropdown toggle (click on parent link)
+  if (navLinks) {
+    navLinks.addEventListener('click', (e) => {
+      const dropdownParent = e.target.closest('.nav-has-dropdown');
+      if (dropdownParent && window.innerWidth <= 768) {
+        // Only intercept the parent <a> click, not the child dropdown links
+        if (e.target.closest('.nav-dropdown')) return;
+        e.preventDefault();
+        const isOpen = dropdownParent.classList.toggle('open');
+        // Close other open dropdowns
+        navLinks.querySelectorAll('.nav-has-dropdown').forEach(el => {
+          if (el !== dropdownParent) el.classList.remove('open');
+        });
       }
     });
   }
@@ -77,6 +96,7 @@ function initNavigation() {
   document.addEventListener('click', (e) => {
     if (!e.target.closest('nav') && navLinks && navLinks.classList.contains('active')) {
       navLinks.classList.remove('active');
+      navLinks.querySelectorAll('.nav-has-dropdown').forEach(el => el.classList.remove('open'));
       if (mobileMenuToggle) {
         mobileMenuToggle.setAttribute('aria-expanded', 'false');
       }
