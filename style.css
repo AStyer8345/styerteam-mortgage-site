@@ -329,7 +329,7 @@ nav {
 .nav-dropdown {
   display: none;
   position: absolute;
-  top: calc(100% + 10px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--color-white);
@@ -340,6 +340,16 @@ nav {
   min-width: 190px;
   z-index: var(--z-dropdown);
   padding: var(--spacing-xs) 0;
+}
+/* Invisible bridge fills the gap so hover isn't lost moving to the dropdown */
+.nav-has-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  display: block;
 }
 
 .nav-has-dropdown:hover .nav-dropdown,
