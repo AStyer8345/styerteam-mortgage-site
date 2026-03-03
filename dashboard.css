@@ -30,8 +30,9 @@
 
 .dash-tab {
   display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
   background: none;
   border: none;
   padding: var(--spacing-lg) var(--spacing-xl);
@@ -43,6 +44,7 @@
   transition: color var(--transition-fast);
   border-bottom: 3px solid transparent;
   margin-bottom: -2px;
+  text-align: left;
 }
 
 .dash-tab:hover {
@@ -54,8 +56,40 @@
   border-bottom-color: var(--color-gold);
 }
 
+.dash-tab-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
 .dash-tab-icon {
   font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.dash-tab-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+}
+
+.dash-tab-desc {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-gray);
+  opacity: 0.8;
+  line-height: 1.2;
+  padding-left: calc(1.25rem + var(--spacing-sm)); /* align under title, past icon */
+}
+
+.dash-tab.active .dash-tab-desc {
+  color: var(--color-gold);
+  opacity: 0.75;
+}
+
+.dash-tab:hover .dash-tab-desc {
+  color: var(--color-navy);
+  opacity: 0.75;
 }
 
 /* Panel show/hide */
