@@ -150,7 +150,6 @@ exports.handler = async (event) => {
       date: today,
       slug: blogSlug,
       content: parsed.webContent,
-      rates: formData.rates || null,
       category: parsed.pageCategory || formData.category || "Market Update",
     });
 
@@ -160,7 +159,6 @@ exports.handler = async (event) => {
       description: parsed.pageDescription || `Weekly update from Adam Styer - ${effectiveTitle}`,
       date: today,
       content: parsed.webContent,
-      rates: formData.rates || null,
     });
 
     // In preview mode, skip publishing. In live mode, publish.

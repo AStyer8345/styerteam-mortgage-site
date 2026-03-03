@@ -4,17 +4,11 @@
  * Matches the existing template structure (see updates/2026-02-19-austin-buyer-window.html).
  */
 
-function buildWebPage({ title, description, date, content, rates }) {
+function buildWebPage({ title, description, date, content }) {
   const formattedDate = formatDate(date);
   const slug = slugify(title);
   const pageUrl = `https://styermortgage.com/updates/${date}-${slug}.html`;
   const canonicalUrl = `https://styermortgage.com/blog/${date}-${slug}.html`;
-
-  // Build optional rate box
-  let rateBox = "";
-  if (rates) {
-    rateBox = buildRateBox(rates);
-  }
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -111,8 +105,6 @@ function buildWebPage({ title, description, date, content, rates }) {
 
           ${content}
 
-${rateBox}
-
           <hr style="margin: 2.5rem 0; border: none; border-top: 1px solid var(--color-border);">
 
           <p>Have questions? Want to know what your options look like right now? Give me a call or shoot me a text. Happy to run the numbers for you.</p>
@@ -207,46 +199,6 @@ ${rateBox}
   <script src="../script.js" defer></script>
 </body>
 </html>`;
-}
-
-function buildRateBox(ratesString) {
-  if (!ratesString || !ratesString.trim()) return "";
-
-  const lines = ratesString.split("\n").filter((l) => l.trim());
-  if (!lines.length) return "";
-
-  let rows = "";
-  for (const line of lines) {
-    const match = line.match(/^\s*(.+?):\s*(.+)/);
-    if (match) {
-      const product = match[1].trim();
-      const rateInfo = match[2].trim();
-      rows += `            <tr>
-              <td style="padding: 0.5rem 1rem; border-bottom: 1px solid var(--color-border); font-weight: 500;">${escapeHtml(product)}</td>
-              <td style="padding: 0.5rem 1rem; border-bottom: 1px solid var(--color-border); text-align: center;">${escapeHtml(rateInfo)}</td>
-            </tr>\n`;
-    }
-  }
-
-  if (!rows) return "";
-
-  return `
-          <div class="newsletter-rate-box" style="margin: 2rem 0; padding: 1.5rem; background: var(--color-light-gray); border-radius: var(--radius-lg); border-left: 4px solid var(--color-gold);">
-            <h3 style="margin-bottom: 1rem; color: var(--color-navy);">This Week's Rates</h3>
-            <table style="width: 100%; border-collapse: collapse;">
-              <thead>
-                <tr>
-                  <th style="padding: 0.5rem 1rem; text-align: left; border-bottom: 2px solid var(--color-navy); color: var(--color-navy);">Product</th>
-                  <th style="padding: 0.5rem 1rem; text-align: center; border-bottom: 2px solid var(--color-navy); color: var(--color-navy);">Rate | APR</th>
-                </tr>
-              </thead>
-              <tbody>
-${rows}
-              </tbody>
-            </table>
-            <p style="font-size: 0.75rem; color: var(--color-gray); margin-top: 0.75rem; margin-bottom: 0;">Rates are subject to change. Contact Adam for a personalized quote based on your situation.</p>
-          </div>
-`;
 }
 
 function formatDate(dateStr) {

@@ -198,7 +198,6 @@ function initNewsletterAutomation() {
         topic: form.querySelector('#nl-topic').value.trim(),
         audiences,
         mode,
-        rates: buildRateString('nl'),
         articles: form.querySelector('#nl-articles').value.trim(),
         story: form.querySelector('#nl-story').value.trim(),
         photo: form.querySelector('#nl-photo').value.trim(),
@@ -1005,9 +1004,6 @@ function initFormPersistence() {
     formId: 'newsletter-builder',
     textFields: [
       'nl-topic', 'nl-articles', 'nl-story', 'nl-photo', 'nl-ai-tool', 'nl-notes',
-      'nl-conv30-rate', 'nl-conv30-apr', 'nl-conv15-rate', 'nl-conv15-apr',
-      'nl-jumbo-rate', 'nl-jumbo-apr', 'nl-va-rate', 'nl-va-apr',
-      'nl-fha30-rate', 'nl-fha30-apr', 'nl-fha-arm-rate', 'nl-fha-arm-apr',
       'nl-paste-title', 'nl-paste-description', 'nl-paste-subject', 'nl-paste-preheader',
       'nl-paste-photo', 'nl-paste-email', 'nl-paste-web', 'nl-schedule'
     ],

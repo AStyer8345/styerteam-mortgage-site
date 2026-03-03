@@ -8,7 +8,6 @@ function buildPrompt(formData, pageUrl) {
   const {
     topic,
     audiences = [],
-    rates = "",
     articles = "",
     story = "",
     aiTool = "",
@@ -51,10 +50,6 @@ All email CTA links MUST use this exact URL. Do not make up a different URL.
 ## TOPIC
 ${topic}
 `;
-
-  if (rates) {
-    prompt += `\n## CURRENT RATES\n${rates}\n`;
-  }
 
   if (articles) {
     prompt += `\n## REFERENCE ARTICLES\n${articles}\n`;
@@ -116,7 +111,6 @@ Cover the topic with real substance and depth. Use Adam's voice.
 - Use 3-5 descriptive <h2> subheadings that break up the content
 - Include at least 3 internal links to other site pages where relevant
 - Write 600-900 words in this section — enough depth that Google considers it valuable
-${rates ? "- Include a rate snapshot" : ""}
 
 ### Section 2: Personal Corner
 A separate section with an <hr> divider and <h2> header.${story ? `
