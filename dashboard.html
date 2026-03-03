@@ -466,6 +466,27 @@
                 <textarea id="rt-notes" name="notes" rows="2" placeholder="Special offers, events coming up, anything to mention..."></textarea>
               </div>
 
+              <!-- CONTENT DEPTH -->
+              <div class="form-group">
+                <label for="rt-depth">Content Depth</label>
+                <select id="rt-depth" name="depth">
+                  <option value="short">Short &amp; Sweet — quick teaser, minimal commentary</option>
+                  <option value="standard" selected>Standard — normal length</option>
+                  <option value="indepth">In-Depth — more context, longer commentary</option>
+                </select>
+                <span class="form-helper">Controls how long the AI output is — both the email and the web commentary.</span>
+              </div>
+
+              <!-- FIRST NAME PERSONALIZATION -->
+              <div class="form-group">
+                <label>Email Personalization</label>
+                <label class="dash-checkbox-label">
+                  <input type="checkbox" id="rt-firstname" name="firstNamePersonalization" value="1">
+                  <span>Personalize emails with first name (<code>*|FNAME|*</code>)</span>
+                </label>
+                <span class="form-helper">Uses Mailchimp merge tag so each subscriber sees their name.</span>
+              </div>
+
               <!-- MODE TOGGLE -->
               <div class="form-group">
                 <label>Mode</label>

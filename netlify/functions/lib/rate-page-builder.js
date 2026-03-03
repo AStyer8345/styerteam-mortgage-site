@@ -374,6 +374,12 @@ ${rateTable}
 // Rate Table Builder
 // ══════════════════════════════════════════════════════════════
 
+function normalizeRateValue(val) {
+  const trimmed = val.trim();
+  if (!trimmed || trimmed === "—" || trimmed === "--") return trimmed;
+  return /[%]$/.test(trimmed) ? trimmed : trimmed + "%";
+}
+
 function buildRateTable(ratesString) {
   if (!ratesString || !ratesString.trim()) return "";
 
@@ -389,8 +395,8 @@ function buildRateTable(ratesString) {
 
       // Split rate and APR if pipe-separated
       const parts = rateInfo.split("|").map((s) => s.trim());
-      const rate = parts[0] || "";
-      const apr = parts[1] ? parts[1].replace(/^APR:\s*/i, "") : "";
+      const rate = normalizeRateValue(parts[0] || "");
+      const apr = parts[1] ? normalizeRateValue(parts[1].replace(/^APR:\s*/i, "")) : "";
 
       rows += `              <tr>
                 <td class="rate-product">${escapeHtml(product)}</td>

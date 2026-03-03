@@ -491,6 +491,8 @@ function initRateBuilder() {
       direction: form.querySelector('#rt-direction').value,
       blurb: form.querySelector('#rt-blurb').value.trim(),
       notes: form.querySelector('#rt-notes').value.trim(),
+      depth: form.querySelector('#rt-depth').value,
+      firstNamePersonalization: form.querySelector('#rt-firstname').checked,
       audiences,
       mode,
     };
@@ -1024,9 +1026,10 @@ function initFormPersistence() {
       'rt-fha30-rate', 'rt-fha30-apr', 'rt-fha-arm-rate', 'rt-fha-arm-apr',
       'rt-blurb', 'rt-notes'
     ],
-    selectFields: ['rt-direction'],
+    selectFields: ['rt-direction', 'rt-depth'],
     checkboxName: 'rt-audience',
     checkboxKey: 'rtAudiences',
+    singleCheckboxes: ['rt-firstname'],
   });
 
   // Realtor content form persistence
@@ -1043,7 +1046,7 @@ function initFormPersistence() {
   });
 }
 
-function persistForm({ storageKey, formId, textFields, selectFields, checkboxName, checkboxKey, radioFields }) {
+function persistForm({ storageKey, formId, textFields, selectFields, checkboxName, checkboxKey, radioFields, singleCheckboxes }) {
   const form = document.getElementById(formId);
   if (!form) return;
 
@@ -1057,6 +1060,13 @@ function persistForm({ storageKey, formId, textFields, selectFields, checkboxNam
           el.value = saved[id];
         }
       });
+
+      if (singleCheckboxes) {
+        singleCheckboxes.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && saved[id] !== undefined) el.checked = !!saved[id];
+        });
+      }
 
       if (selectFields) {
         selectFields.forEach(id => {
@@ -1109,6 +1119,13 @@ function persistForm({ storageKey, formId, textFields, selectFields, checkboxNam
       data[checkboxKey] = [];
       document.querySelectorAll('input[name="' + checkboxName + '"]:checked').forEach(cb => {
         data[checkboxKey].push(cb.value);
+      });
+    }
+
+    if (singleCheckboxes) {
+      singleCheckboxes.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) data[id] = el.checked;
       });
     }
 

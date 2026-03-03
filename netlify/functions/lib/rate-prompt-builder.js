@@ -14,7 +14,26 @@ function buildRatePrompt(formData, pageUrl) {
     blurb = "",
     notes = "",
     audiences = [],
+    depth = "standard",
+    firstNamePersonalization = false,
   } = formData;
+
+  // Depth-based length instructions
+  const depthConfig = {
+    short: {
+      emailLength: "1-2 sentences before the CTA. Under 30 words. Bare minimum.",
+      webLength: "30-50 words, 1 short paragraph.",
+    },
+    standard: {
+      emailLength: "3-4 sentences before the CTA. Around 50 words max.",
+      webLength: "60-90 words, 1-2 short paragraphs.",
+    },
+    indepth: {
+      emailLength: "4-6 sentences before the CTA. Up to 80 words. Give some real context — what's driving rates, what it means.",
+      webLength: "120-180 words, 2-3 paragraphs. Go deeper — market context, what's driving rates, what borrowers should consider.",
+    },
+  };
+  const d = depthConfig[depth] || depthConfig.standard;
 
   const wantsBorrower = audiences.includes("borrower");
   const wantsRealtor = audiences.includes("realtor");
@@ -68,18 +87,18 @@ ABSOLUTE RULES FOR ALL EMAILS:
 2. DO NOT include any rate tables, grids, or formatted rate data
 3. DO NOT list products (no "Conventional", "FHA", "VA" lists)
 4. DO NOT summarize the rates in any way — that's what the page is for
-5. Keep the email EXTREMELY short — 3-4 sentences max before the CTA link
+5. Length target: ${d.emailLength}
 6. Plain-text style HTML for Mailchimp. White background, dark text (#333), blue links.
 7. No images, no banners, no hero sections, no graphics.
 8. Sign off: Adam Styer | Mortgage Solutions LP | NMLS# 513013 | (512) 956-6010
+${firstNamePersonalization ? `9. Start the email with a personalized greeting using the Mailchimp merge tag: "Hey *|FNAME|*," — this personalizes to each subscriber's first name.` : ""}
 
 The email structure is:
-- Line 1: Quick personal hook about rates this week (vague — "rates moved", "good news this week", "some shifts worth noting")
-- Line 2: One sentence of context or what it means (still no numbers)
+${firstNamePersonalization ? `- Greeting: "Hey *|FNAME|*,"` : "- Line 1: Quick personal hook about rates this week"}
+- Hook: Quick line about rates this week (vague — "rates moved", "good news this week", "some shifts worth noting")
+${depth === "indepth" ? "- Context: 2-4 sentences of real context — what's moving rates, what it means for buyers/sellers" : "- Context: 1 sentence of what it means (still no numbers)"}
 - CTA: Bold link to ${pageUrl} — text like "See this week's rates →" or "Check the numbers →"
 - Sign off
-
-That's it. Nothing else. If your email is longer than ~50 words before the CTA, it's too long.
 `;
 
   if (wantsBorrower) {
@@ -108,11 +127,12 @@ That's it. Nothing else. If your email is longer than ~50 words before the CTA, 
   // ──────────────────────────────────────────────
   prompt += `
 ## WEB PAGE COMMENTARY
-Write a BRIEF commentary (60-90 words, 1-2 short paragraphs) that appears BELOW the rate table on the web page.
+Write commentary (${d.webLength}) that appears BELOW the rate table on the web page.
 The reader has ALREADY seen all the rates in the table above, so DO NOT repeat or list rates.
 - Use Adam's voice. What do these rates mean this week? What's the takeaway?
 - Reference the rate direction and any context from the talking points.
 - Keep it conversational — this is Adam talking, not a market report.
+${depth === "indepth" ? "- Go deeper: explain what's driving rates, what it means for buyers, sellers, and people on the fence about refinancing." : ""}
 - End with something casual like "Give me a call if you want to talk numbers" or "Happy to run the numbers for you."
 - Output ONLY simple HTML: <p> and <strong> tags. Nothing else. No <div>, no <style>, no wrappers.
 - For any links use "../" prefix (../contact.html, ../prequal.html)
@@ -133,7 +153,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---
 ---REALTOR_EMAIL_END---` : ""}
 
 ---WEB_CONTENT_START---
-[1-2 short paragraphs, 60-90 words. DO NOT list rates — the table is already above this on the page.]
+[Commentary per depth setting — DO NOT list rates — the table is already above this on the page.]
 ---WEB_CONTENT_END---
 `;
 
