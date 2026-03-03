@@ -6,52 +6,52 @@ const { buildBlogPage } = require("./lib/blog-page-builder");
 const { generateAndPostSocial } = require("./lib/social-poster");
 const { createGitHubFile, createAndSendCampaign, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument } = require("./lib/shared");
 
+// ====================================================================
+// HTTP HANDLER — thin wrapper around generateNewsletter()
+// ====================================================================
+
 exports.handler = async (event) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json",
   };
-
-  if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 204, headers, body: "" };
-  }
-
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, headers, body: JSON.stringify({ error: "Method not allowed" }) };
-  }
-
+  if (event.httpMethod === "OPTIONS") return { statusCode: 204, headers, body: "" };
+  if (event.httpMethod !== "POST") return { statusCode: 405, headers, body: JSON.stringify({ error: "Method not allowed" }) };
   try {
     const formData = JSON.parse(event.body);
+    const result = await generateNewsletter(formData);
+    return { statusCode: 200, headers, body: JSON.stringify(result) };
+  } catch (err) {
+    console.error("Newsletter generation error:", err);
+    return { statusCode: err.statusCode || 500, headers, body: JSON.stringify({ error: err.message || "Internal server error" }) };
+  }
+};
+
+// ====================================================================
+// CORE GENERATOR — callable directly (HTTP, cron, webhook, Zapier)
+// ====================================================================
+
+async function generateNewsletter(formData) {
     const { topic, audiences, mode, source, scheduleTime } = formData;
     const isPreview = mode === "preview";
     const isPaste = source === "paste";
 
-    // Validate: AI mode needs topic, paste mode needs title + emailHtml + webContent
+    // Validate
     if (isPaste) {
-      if (!formData.title) {
-        return { statusCode: 400, headers, body: JSON.stringify({ error: "Title is required for paste mode" }) };
-      }
-      if (!formData.emailHtml) {
-        return { statusCode: 400, headers, body: JSON.stringify({ error: "Teaser Email HTML is required for paste mode" }) };
-      }
-      if (!formData.webContent) {
-        return { statusCode: 400, headers, body: JSON.stringify({ error: "Webpage Content HTML is required for paste mode" }) };
-      }
+      if (!formData.title) throw Object.assign(new Error("Title is required for paste mode"), { statusCode: 400 });
+      if (!formData.emailHtml) throw Object.assign(new Error("Teaser Email HTML is required for paste mode"), { statusCode: 400 });
+      if (!formData.webContent) throw Object.assign(new Error("Webpage Content HTML is required for paste mode"), { statusCode: 400 });
     } else if (!topic) {
-      return { statusCode: 400, headers, body: JSON.stringify({ error: "Topic is required" }) };
+      throw Object.assign(new Error("Topic is required"), { statusCode: 400 });
     }
 
     // Validate schedule time if provided (must be 15+ min in the future)
     if (scheduleTime) {
       const scheduled = new Date(scheduleTime);
       const minTime = new Date(Date.now() + 15 * 60 * 1000);
-      if (isNaN(scheduled.getTime())) {
-        return { statusCode: 400, headers, body: JSON.stringify({ error: "Invalid schedule time" }) };
-      }
-      if (scheduled < minTime) {
-        return { statusCode: 400, headers, body: JSON.stringify({ error: "Schedule time must be at least 15 minutes in the future" }) };
-      }
+      if (isNaN(scheduled.getTime())) throw Object.assign(new Error("Invalid schedule time"), { statusCode: 400 });
+      if (scheduled < minTime) throw Object.assign(new Error("Schedule time must be at least 15 minutes in the future"), { statusCode: 400 });
     }
 
     // ----------------------------------------------------------------
@@ -118,11 +118,7 @@ exports.handler = async (event) => {
       parsed = parseAIResponse(aiText);
 
       if (!parsed.webContent) {
-        return {
-          statusCode: 500,
-          headers,
-          body: JSON.stringify({ error: "Failed to parse AI response", raw: aiText.substring(0, 500) }),
-        };
+        throw new Error(`Failed to parse AI response: ${aiText.substring(0, 200)}`);
       }
     }
 
@@ -245,38 +241,27 @@ exports.handler = async (event) => {
     }
 
     return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({
-        success: true,
-        mode: isPreview ? "preview" : "live",
-        pageUrl,
-        filename,
-        campaigns: results.campaigns,
-        socialPosts: results.socialPosts || null,
-        preview: {
-          borrowerSubject: parsed.borrowerSubject,
-          borrowerPreheader: parsed.borrowerPreheader,
-          realtorSubject: parsed.realtorSubject,
-          realtorPreheader: parsed.realtorPreheader,
-          pageTitle: parsed.pageTitle,
-          pageDescription: parsed.pageDescription,
-          pageCategory: parsed.pageCategory,
-          webContent: parsed.webContent,
-          borrowerEmailHtml: parsed.borrowerEmail ? injectPageLink(parsed.borrowerEmail, pageUrl) : null,
-          realtorEmailHtml: parsed.realtorEmail ? injectPageLink(parsed.realtorEmail, pageUrl) : null,
-        },
-      }),
+      success: true,
+      mode: isPreview ? "preview" : "live",
+      pageUrl,
+      filename,
+      campaigns: results.campaigns,
+      socialPosts: results.socialPosts || null,
+      preview: {
+        borrowerSubject: parsed.borrowerSubject,
+        borrowerPreheader: parsed.borrowerPreheader,
+        realtorSubject: parsed.realtorSubject,
+        realtorPreheader: parsed.realtorPreheader,
+        pageTitle: parsed.pageTitle,
+        pageDescription: parsed.pageDescription,
+        pageCategory: parsed.pageCategory,
+        webContent: parsed.webContent,
+        borrowerEmailHtml: parsed.borrowerEmail ? injectPageLink(parsed.borrowerEmail, pageUrl) : null,
+        realtorEmailHtml: parsed.realtorEmail ? injectPageLink(parsed.realtorEmail, pageUrl) : null,
+      },
     };
-  } catch (err) {
-    console.error("Newsletter generation error:", err);
-    return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({ error: err.message || "Internal server error" }),
-    };
-  }
-};
+}
+exports.generateNewsletter = generateNewsletter;
 
 // ====================================================================
 // PARSE AI RESPONSE

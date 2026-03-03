@@ -4,28 +4,38 @@ const { buildRatePrompt } = require("./lib/rate-prompt-builder");
 const { buildRatePage } = require("./lib/rate-page-builder");
 const { createGitHubFile, createAndSendCampaign, forceAbsoluteLinks, stripNestedHtmlDocument, formatDateForTitle } = require("./lib/shared");
 
+// ====================================================================
+// HTTP HANDLER — thin wrapper around generateRateUpdate()
+// ====================================================================
+
 exports.handler = async (event) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json",
   };
-
-  if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 204, headers, body: "" };
-  }
-
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, headers, body: JSON.stringify({ error: "Method not allowed" }) };
-  }
-
+  if (event.httpMethod === "OPTIONS") return { statusCode: 204, headers, body: "" };
+  if (event.httpMethod !== "POST") return { statusCode: 405, headers, body: JSON.stringify({ error: "Method not allowed" }) };
   try {
     const formData = JSON.parse(event.body);
+    const result = await generateRateUpdate(formData);
+    return { statusCode: 200, headers, body: JSON.stringify(result) };
+  } catch (err) {
+    console.error("Rate update generation error:", err);
+    return { statusCode: err.statusCode || 500, headers, body: JSON.stringify({ error: err.message || "Internal server error" }) };
+  }
+};
+
+// ====================================================================
+// CORE GENERATOR — callable directly (HTTP, cron, webhook, Zapier)
+// ====================================================================
+
+async function generateRateUpdate(formData) {
     const { rates, audiences = [], mode } = formData;
     const isPreview = mode === "preview";
 
     if (!rates || !rates.trim()) {
-      return { statusCode: 400, headers, body: JSON.stringify({ error: "Rates are required" }) };
+      throw Object.assign(new Error("Rates are required"), { statusCode: 400 });
     }
 
     // ----------------------------------------------------------------
@@ -65,11 +75,7 @@ exports.handler = async (event) => {
     const parsed = parseAIResponse(aiText);
 
     if (!parsed.webContent) {
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: "Failed to parse AI response", raw: aiText.substring(0, 500) }),
-      };
+      throw new Error(`Failed to parse AI response: ${aiText.substring(0, 200)}`);
     }
 
     // Force all email links to use absolute URL
@@ -141,36 +147,25 @@ exports.handler = async (event) => {
     }
 
     return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({
-        success: true,
-        mode: isPreview ? "preview" : "live",
-        pageUrl,
-        filename,
-        campaigns: results.campaigns,
-        preview: {
-          borrowerSubject: parsed.borrowerSubject,
-          borrowerPreheader: parsed.borrowerPreheader,
-          realtorSubject: parsed.realtorSubject,
-          realtorPreheader: parsed.realtorPreheader,
-          pageTitle: parsed.pageTitle,
-          pageDescription: parsed.pageDescription,
-          webContent: parsed.webContent,
-          borrowerEmailHtml: parsed.borrowerEmail || null,
-          realtorEmailHtml: parsed.realtorEmail || null,
-        },
-      }),
+      success: true,
+      mode: isPreview ? "preview" : "live",
+      pageUrl,
+      filename,
+      campaigns: results.campaigns,
+      preview: {
+        borrowerSubject: parsed.borrowerSubject,
+        borrowerPreheader: parsed.borrowerPreheader,
+        realtorSubject: parsed.realtorSubject,
+        realtorPreheader: parsed.realtorPreheader,
+        pageTitle: parsed.pageTitle,
+        pageDescription: parsed.pageDescription,
+        webContent: parsed.webContent,
+        borrowerEmailHtml: parsed.borrowerEmail || null,
+        realtorEmailHtml: parsed.realtorEmail || null,
+      },
     };
-  } catch (err) {
-    console.error("Rate update generation error:", err);
-    return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({ error: err.message || "Internal server error" }),
-    };
-  }
-};
+}
+exports.generateRateUpdate = generateRateUpdate;
 
 // ====================================================================
 // PARSE AI RESPONSE
