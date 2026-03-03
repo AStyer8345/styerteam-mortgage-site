@@ -5,6 +5,21 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+# ─── Scheduled Functions (cron) ───────────────────────────────────────────────
+# Uncomment one block and set the cron expression to enable automatic generation.
+# Cron syntax is UTC. "0 14 * * 4" = every Thursday at 14:00 UTC (9 AM CDT).
+#
+# The scheduled function must call dispatch.js or the core generator directly.
+# See: netlify/functions/scheduled-rate-update.js (example scaffold below)
+#
+# [[scheduled-functions]]
+#   name = "scheduled-rate-update"
+#   schedule = "0 14 * * 4"
+#
+# [[scheduled-functions]]
+#   name = "scheduled-newsletter"
+#   schedule = "0 14 * * 4"
+
 [[headers]]
   for = "/dashboard.html"
   [headers.values]
