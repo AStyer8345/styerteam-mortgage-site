@@ -380,6 +380,12 @@ function initFormValidation() {
   const form = document.querySelector('form');
   if (!form) return;
 
+  // Skip forms that submit to external services (e.g., Mailchimp)
+  try {
+    const formAction = new URL(form.action, window.location.href);
+    if (formAction.origin !== window.location.origin) return;
+  } catch (e) { /* proceed if URL parsing fails */ }
+
   form.addEventListener('blur', (e) => {
     if (e.target.matches('input, textarea, select')) {
       validateField(e.target);
