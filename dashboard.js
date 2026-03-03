@@ -42,34 +42,12 @@ function initNewsletterAutomation() {
   const form = document.getElementById('newsletter-builder');
   if (!form) return;
 
-  const submitBtn = document.getElementById('nl-submit-btn');
+  let activeBtn = null;
   const progressEl = document.getElementById('newsletter-progress');
   const resultEl = document.getElementById('newsletter-result');
   const errorEl = document.getElementById('newsletter-error');
   const statusEl = document.getElementById('newsletter-status');
   const retryBtn = document.getElementById('nl-retry-btn');
-
-  // Helper: update submit button text based on source + mode
-  function updateNlButtonText() {
-    const src = form.querySelector('input[name="nl-source"]:checked')?.value || 'ai';
-    const m = form.querySelector('input[name="nl-mode"]:checked')?.value || 'preview';
-    if (src === 'paste') {
-      submitBtn.textContent = m === 'live' ? '🚀 Paste & Publish Newsletter' : '👁 Preview Paste Content';
-    } else {
-      submitBtn.textContent = m === 'live' ? '🚀 Generate & Send Newsletter' : '👁 Preview Newsletter';
-    }
-  }
-
-  // Mode toggle handling (Preview / Live)
-  const modeOptions = form.querySelectorAll('.dash-mode-option[data-mode]');
-  modeOptions.forEach(opt => {
-    opt.addEventListener('click', () => {
-      modeOptions.forEach(o => o.classList.remove('active'));
-      opt.classList.add('active');
-      opt.querySelector('input[type="radio"]').checked = true;
-      updateNlButtonText();
-    });
-  });
 
   // Source toggle handling (AI Generate / Paste & Publish)
   const sourceOptions = form.querySelectorAll('.dash-mode-option[data-source]');
@@ -82,7 +60,6 @@ function initNewsletterAutomation() {
       const source = opt.dataset.source;
       document.getElementById('nl-ai-fields').classList.toggle('hidden', source === 'paste');
       document.getElementById('nl-paste-fields').classList.toggle('hidden', source === 'ai');
-      updateNlButtonText();
     });
   });
 
@@ -96,25 +73,53 @@ function initNewsletterAutomation() {
     });
   }
 
+  // Action buttons: Preview, Publish Now, Schedule, Confirm & Schedule
+  document.getElementById('nl-preview-btn').addEventListener('click', function() {
+    form.dataset.pendingMode = 'preview';
+    activeBtn = this;
+    form.requestSubmit();
+  });
+
+  document.getElementById('nl-publish-btn').addEventListener('click', function() {
+    const audiences = [];
+    form.querySelectorAll('input[name="audience"]:checked').forEach(cb => audiences.push(cb.value));
+    const audienceLabel = audiences.map(a => a === 'borrower' ? 'Borrower' : 'Realtor').join(' and ');
+    const msg = 'This will publish a page and send emails to your ' + audienceLabel + ' list(s). Continue?';
+    if (!confirm(msg)) return;
+    form.dataset.pendingMode = 'live';
+    activeBtn = this;
+    form.requestSubmit();
+  });
+
+  document.getElementById('nl-schedule-btn').addEventListener('click', () => {
+    const wrap = document.getElementById('nl-schedule-wrap');
+    wrap.classList.toggle('hidden');
+  });
+
+  document.getElementById('nl-schedule-submit-btn').addEventListener('click', function() {
+    const scheduleRaw = form.querySelector('#nl-schedule').value;
+    if (!scheduleRaw) { form.querySelector('#nl-schedule').focus(); return; }
+    const audiences = [];
+    form.querySelectorAll('input[name="audience"]:checked').forEach(cb => audiences.push(cb.value));
+    const audienceLabel = audiences.map(a => a === 'borrower' ? 'Borrower' : 'Realtor').join(' and ');
+    const when = new Date(scheduleRaw).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+    const msg = 'This will publish the page NOW and SCHEDULE emails to your ' + audienceLabel + ' list(s) for ' + when + '. Continue?';
+    if (!confirm(msg)) return;
+    form.dataset.pendingMode = 'live';
+    activeBtn = this;
+    form.requestSubmit();
+  });
+
   // "Looks Good — Go Live" button in preview results
   const goLiveBtn = document.getElementById('preview-go-live-btn');
   if (goLiveBtn) {
     goLiveBtn.addEventListener('click', () => {
-      // Switch to live mode
-      modeOptions.forEach(o => o.classList.remove('active'));
-      const liveOpt = form.querySelector('.dash-mode-option[data-mode="live"]');
-      if (liveOpt) {
-        liveOpt.classList.add('active');
-        liveOpt.querySelector('input[type="radio"]').checked = true;
-      }
-      submitBtn.textContent = '🚀 Generate & Send Newsletter';
-
-      // Hide preview result
       resultEl.classList.add('hidden');
-
-      // Scroll to submit button and auto-submit
-      submitBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => submitBtn.click(), 400);
+      const publishBtn = document.getElementById('nl-publish-btn');
+      if (publishBtn) {
+        publishBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => publishBtn.click(), 400);
+      }
     });
   }
 
@@ -130,8 +135,8 @@ function initNewsletterAutomation() {
   if (retryBtn) {
     retryBtn.addEventListener('click', () => {
       errorEl.classList.add('hidden');
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('loading');
+      if (activeBtn) { activeBtn.disabled = false; activeBtn.classList.remove('btn-publishing'); }
+      activeBtn = null;
     });
   }
 
@@ -139,8 +144,7 @@ function initNewsletterAutomation() {
     e.preventDefault();
 
     // Get current mode
-    const modeRadio = form.querySelector('input[name="nl-mode"]:checked');
-    const mode = modeRadio ? modeRadio.value : 'preview';
+    const mode = form.dataset.pendingMode || 'preview';
 
     // Determine source mode
     const source = form.querySelector('input[name="nl-source"]:checked')?.value || 'ai';
@@ -178,19 +182,6 @@ function initNewsletterAutomation() {
     if (!audiences.length) {
       alert('Please select at least one audience (Borrowers or Realtors).');
       return;
-    }
-
-    // Confirm if live mode
-    if (mode === 'live') {
-      const audienceLabel = audiences.map(a => a === 'borrower' ? 'Borrower' : 'Realtor').join(' and ');
-      let msg;
-      if (scheduleTime) {
-        const when = new Date(scheduleRaw).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-        msg = 'This will publish the page NOW and SCHEDULE emails to your ' + audienceLabel + ' list(s) for ' + when + '. Continue?';
-      } else {
-        msg = 'This will publish a page and send emails to your ' + audienceLabel + ' list(s). Continue?';
-      }
-      if (!confirm(msg)) return;
     }
 
     // Gather form data
@@ -237,8 +228,7 @@ function initNewsletterAutomation() {
     progressEl.classList.remove('hidden');
     resultEl.classList.add('hidden');
     errorEl.classList.add('hidden');
-    submitBtn.classList.add('loading');
-    submitBtn.disabled = true;
+    if (activeBtn) { activeBtn.classList.add('btn-publishing'); activeBtn.disabled = true; }
 
     // Scroll to progress
     progressEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -378,8 +368,8 @@ function initNewsletterAutomation() {
       document.getElementById('newsletter-error-msg').textContent = err.message;
       errorEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } finally {
-      submitBtn.classList.remove('loading');
-      submitBtn.disabled = false;
+      if (activeBtn) { activeBtn.classList.remove('btn-publishing'); activeBtn.disabled = false; }
+      activeBtn = null;
     }
   });
 }
@@ -424,40 +414,59 @@ function initRateBuilder() {
   const form = document.getElementById('rate-builder');
   if (!form) return;
 
-  const submitBtn = document.getElementById('rt-submit-btn');
+  let activeBtn = null;
   const progressEl = document.getElementById('rate-progress');
   const resultEl = document.getElementById('rate-result');
   const errorEl = document.getElementById('rate-error');
   const retryBtn = document.getElementById('rt-retry-btn');
 
-  // Mode toggle handling
-  const modeOptions = form.querySelectorAll('.dash-mode-option');
-  modeOptions.forEach(opt => {
-    opt.addEventListener('click', () => {
-      modeOptions.forEach(o => o.classList.remove('active'));
-      opt.classList.add('active');
-      opt.querySelector('input[type="radio"]').checked = true;
+  // Action buttons: Preview, Publish Now, Schedule, Confirm & Schedule
+  document.getElementById('rt-preview-btn').addEventListener('click', function() {
+    form.dataset.pendingMode = 'preview';
+    activeBtn = this;
+    form.requestSubmit();
+  });
 
-      const mode = opt.dataset.mode;
-      submitBtn.textContent = mode === 'live' ? '\u{1F680} Generate & Send Rate Update' : '\u{1F441} Preview Rate Update';
-    });
+  document.getElementById('rt-publish-btn').addEventListener('click', function() {
+    const audiences = [];
+    form.querySelectorAll('input[name="rt-audience"]:checked').forEach(cb => audiences.push(cb.value));
+    const audienceLabel = audiences.map(a => a === 'borrower' ? 'Borrower' : 'Realtor').join(' and ');
+    const msg = 'This will publish a rate page and send emails to your ' + audienceLabel + ' list(s). Continue?';
+    if (!confirm(msg)) return;
+    form.dataset.pendingMode = 'live';
+    activeBtn = this;
+    form.requestSubmit();
+  });
+
+  document.getElementById('rt-schedule-btn').addEventListener('click', () => {
+    const wrap = document.getElementById('rt-schedule-wrap');
+    wrap.classList.toggle('hidden');
+  });
+
+  document.getElementById('rt-schedule-submit-btn').addEventListener('click', function() {
+    const scheduleRaw = form.querySelector('#rt-schedule').value;
+    if (!scheduleRaw) { form.querySelector('#rt-schedule').focus(); return; }
+    const audiences = [];
+    form.querySelectorAll('input[name="rt-audience"]:checked').forEach(cb => audiences.push(cb.value));
+    const audienceLabel = audiences.map(a => a === 'borrower' ? 'Borrower' : 'Realtor').join(' and ');
+    const when = new Date(scheduleRaw).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+    const msg = 'This will publish the page NOW and SCHEDULE emails to your ' + audienceLabel + ' list(s) for ' + when + '. Continue?';
+    if (!confirm(msg)) return;
+    form.dataset.pendingMode = 'live';
+    activeBtn = this;
+    form.requestSubmit();
   });
 
   // "Looks Good — Go Live" button in preview results
   const goLiveBtn = document.getElementById('rt-preview-go-live-btn');
   if (goLiveBtn) {
     goLiveBtn.addEventListener('click', () => {
-      modeOptions.forEach(o => o.classList.remove('active'));
-      const liveOpt = form.querySelector('.dash-mode-option[data-mode="live"]');
-      if (liveOpt) {
-        liveOpt.classList.add('active');
-        liveOpt.querySelector('input[type="radio"]').checked = true;
-      }
-      submitBtn.textContent = '\u{1F680} Generate & Send Rate Update';
-
       resultEl.classList.add('hidden');
-      submitBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => submitBtn.click(), 400);
+      const publishBtn = document.getElementById('rt-publish-btn');
+      if (publishBtn) {
+        publishBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => publishBtn.click(), 400);
+      }
     });
   }
 
@@ -473,16 +482,15 @@ function initRateBuilder() {
   if (retryBtn) {
     retryBtn.addEventListener('click', () => {
       errorEl.classList.add('hidden');
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('loading');
+      if (activeBtn) { activeBtn.disabled = false; activeBtn.classList.remove('btn-publishing'); }
+      activeBtn = null;
     });
   }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const modeRadio = form.querySelector('input[name="rt-mode"]:checked');
-    const mode = modeRadio ? modeRadio.value : 'preview';
+    const mode = form.dataset.pendingMode || 'preview';
 
     // Validate rates
     const primaryRate = form.querySelector('#rt-conv30-rate').value.trim();
@@ -502,15 +510,9 @@ function initRateBuilder() {
       return;
     }
 
-    // Confirm if live mode
-    if (mode === 'live') {
-      const msg = 'This will publish a rate page and send emails to your ' +
-        audiences.map(a => a === 'borrower' ? 'Borrower' : 'Realtor').join(' and ') +
-        ' list(s). Continue?';
-      if (!confirm(msg)) return;
-    }
-
     // Gather form data
+    const scheduleRaw = form.querySelector('#rt-schedule').value;
+    const scheduleTime = scheduleRaw ? new Date(scheduleRaw).toISOString() : null;
     const formData = {
       rates: buildRateString('rt'),
       direction: form.querySelector('#rt-direction').value,
@@ -520,14 +522,14 @@ function initRateBuilder() {
       firstNamePersonalization: form.querySelector('#rt-firstname').checked,
       audiences,
       mode,
+      scheduleTime,
     };
 
     // Reset UI
     progressEl.classList.remove('hidden');
     resultEl.classList.add('hidden');
     errorEl.classList.add('hidden');
-    submitBtn.classList.add('loading');
-    submitBtn.disabled = true;
+    if (activeBtn) { activeBtn.classList.add('btn-publishing'); activeBtn.disabled = true; }
 
     progressEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
@@ -630,8 +632,11 @@ function initRateBuilder() {
         if (data.campaigns && data.campaigns.length > 0) {
           data.campaigns.forEach(c => {
             const el = document.createElement('p');
+            const statusBadge = c.status === 'scheduled'
+              ? '<span style="color: var(--color-primary);">(Scheduled for ' + escapeHtml(c.scheduledFor || '') + ')</span>'
+              : '<span style="color: var(--color-success);">(Sent)</span>';
             el.innerHTML = '<strong>' + capitalize(c.audience) + ' Email:</strong> ' +
-              escapeHtml(c.subject) + ' <span style="color: var(--color-success);">(Sent)</span>';
+              escapeHtml(c.subject) + ' ' + statusBadge;
             campaignsEl.appendChild(el);
           });
         }
@@ -646,8 +651,8 @@ function initRateBuilder() {
       document.getElementById('rate-error-msg').textContent = err.message;
       errorEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } finally {
-      submitBtn.classList.remove('loading');
-      submitBtn.disabled = false;
+      if (activeBtn) { activeBtn.classList.remove('btn-publishing'); activeBtn.disabled = false; }
+      activeBtn = null;
     }
   });
 }
@@ -660,33 +665,11 @@ function initRealtorBuilder() {
   const form = document.getElementById('realtor-builder');
   if (!form) return;
 
-  const submitBtn = document.getElementById('rl-submit-btn');
+  let activeBtn = null;
   const progressEl = document.getElementById('realtor-progress');
   const resultEl = document.getElementById('realtor-result');
   const errorEl = document.getElementById('realtor-error');
   const retryBtn = document.getElementById('rl-retry-btn');
-
-  // Helper: update submit button text based on source + mode
-  function updateRlButtonText() {
-    const src = form.querySelector('input[name="rl-source"]:checked')?.value || 'ai';
-    const m = form.querySelector('input[name="rl-mode"]:checked')?.value || 'preview';
-    if (src === 'paste') {
-      submitBtn.textContent = m === 'live' ? '\u{1F680} Paste & Publish Realtor Content' : '\u{1F441} Preview Paste Content';
-    } else {
-      submitBtn.textContent = m === 'live' ? '\u{1F680} Generate & Send Realtor Content' : '\u{1F441} Preview Realtor Content';
-    }
-  }
-
-  // Mode toggle handling (Preview / Live)
-  const modeOptions = form.querySelectorAll('.dash-mode-option[data-mode]');
-  modeOptions.forEach(opt => {
-    opt.addEventListener('click', () => {
-      modeOptions.forEach(o => o.classList.remove('active'));
-      opt.classList.add('active');
-      opt.querySelector('input[type="radio"]').checked = true;
-      updateRlButtonText();
-    });
-  });
 
   // Source toggle handling (AI Generate / Paste & Publish)
   const sourceOptions = form.querySelectorAll('.dash-mode-option[data-source]');
@@ -699,7 +682,6 @@ function initRealtorBuilder() {
       const source = opt.dataset.source;
       document.getElementById('rl-ai-fields').classList.toggle('hidden', source === 'paste');
       document.getElementById('rl-paste-fields').classList.toggle('hidden', source === 'ai');
-      updateRlButtonText();
     });
   });
 
@@ -713,21 +695,52 @@ function initRealtorBuilder() {
     });
   }
 
+  // Action buttons: Preview, Publish Now, Schedule, Confirm & Schedule
+  document.getElementById('rl-preview-btn').addEventListener('click', function() {
+    form.dataset.pendingMode = 'preview';
+    activeBtn = this;
+    form.requestSubmit();
+  });
+
+  document.getElementById('rl-publish-btn').addEventListener('click', function() {
+    const source = form.querySelector('input[name="rl-source"]:checked')?.value || 'ai';
+    const msg = source === 'paste'
+      ? 'This will publish the pasted realtor content and send an email to your Realtor list. Continue?'
+      : 'This will publish an article and send an email to your Realtor list. Continue?';
+    if (!confirm(msg)) return;
+    form.dataset.pendingMode = 'live';
+    activeBtn = this;
+    form.requestSubmit();
+  });
+
+  document.getElementById('rl-schedule-btn').addEventListener('click', () => {
+    const wrap = document.getElementById('rl-schedule-wrap');
+    wrap.classList.toggle('hidden');
+  });
+
+  document.getElementById('rl-schedule-submit-btn').addEventListener('click', function() {
+    const scheduleRaw = form.querySelector('#rl-schedule').value;
+    if (!scheduleRaw) { form.querySelector('#rl-schedule').focus(); return; }
+    const when = new Date(scheduleRaw).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+    const source = form.querySelector('input[name="rl-source"]:checked')?.value || 'ai';
+    const action = source === 'paste' ? 'publish the pasted content' : 'publish an article';
+    const msg = 'This will ' + action + ' NOW and SCHEDULE the email to your Realtor list for ' + when + '. Continue?';
+    if (!confirm(msg)) return;
+    form.dataset.pendingMode = 'live';
+    activeBtn = this;
+    form.requestSubmit();
+  });
+
   // "Looks Good — Go Live" button in preview results
   const goLiveBtn = document.getElementById('rl-preview-go-live-btn');
   if (goLiveBtn) {
     goLiveBtn.addEventListener('click', () => {
-      modeOptions.forEach(o => o.classList.remove('active'));
-      const liveOpt = form.querySelector('.dash-mode-option[data-mode="live"]');
-      if (liveOpt) {
-        liveOpt.classList.add('active');
-        liveOpt.querySelector('input[type="radio"]').checked = true;
-      }
-      updateRlButtonText();
-
       resultEl.classList.add('hidden');
-      submitBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => submitBtn.click(), 400);
+      const publishBtn = document.getElementById('rl-publish-btn');
+      if (publishBtn) {
+        publishBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => publishBtn.click(), 400);
+      }
     });
   }
 
@@ -743,16 +756,15 @@ function initRealtorBuilder() {
   if (retryBtn) {
     retryBtn.addEventListener('click', () => {
       errorEl.classList.add('hidden');
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('loading');
+      if (activeBtn) { activeBtn.disabled = false; activeBtn.classList.remove('btn-publishing'); }
+      activeBtn = null;
     });
   }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const modeRadio = form.querySelector('input[name="rl-mode"]:checked');
-    const mode = modeRadio ? modeRadio.value : 'preview';
+    const mode = form.dataset.pendingMode || 'preview';
 
     // Determine source mode
     const source = form.querySelector('input[name="rl-source"]:checked')?.value || 'ai';
@@ -779,18 +791,6 @@ function initRealtorBuilder() {
         const topic = form.querySelector('#rl-topic').value.trim();
         if (!topic) { form.querySelector('#rl-topic').focus(); return; }
       }
-    }
-
-    // Confirm if live mode
-    if (mode === 'live') {
-      let msg;
-      if (scheduleTime) {
-        const when = new Date(scheduleRaw).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-        msg = 'This will publish the article NOW and SCHEDULE the email to your Realtor list for ' + when + '. Continue?';
-      } else {
-        msg = 'This will publish an article and send an email to your Realtor list. Continue?';
-      }
-      if (!confirm(msg)) return;
     }
 
     // Gather form data
@@ -835,8 +835,7 @@ function initRealtorBuilder() {
     progressEl.classList.remove('hidden');
     resultEl.classList.add('hidden');
     errorEl.classList.add('hidden');
-    submitBtn.classList.add('loading');
-    submitBtn.disabled = true;
+    if (activeBtn) { activeBtn.classList.add('btn-publishing'); activeBtn.disabled = true; }
 
     progressEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
@@ -959,8 +958,8 @@ function initRealtorBuilder() {
       document.getElementById('realtor-error-msg').textContent = err.message;
       errorEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } finally {
-      submitBtn.classList.remove('loading');
-      submitBtn.disabled = false;
+      if (activeBtn) { activeBtn.classList.remove('btn-publishing'); activeBtn.disabled = false; }
+      activeBtn = null;
     }
   });
 }

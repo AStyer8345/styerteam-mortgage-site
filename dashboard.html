@@ -246,41 +246,21 @@
                 </div>
               </div>
 
-              <!-- SCHEDULE SEND -->
-              <div class="form-group">
-                <label for="nl-schedule">Schedule Send (optional)</label>
-                <input type="datetime-local" id="nl-schedule" name="scheduleTime" style="max-width: 320px;">
-                <span class="form-helper">Leave blank to send immediately. Must be at least 15 minutes in the future.</span>
+              <!-- PUBLISHING CONTROLS -->
+              <div class="dash-publish-btns">
+                <button type="button" class="btn btn-secondary btn-lg" id="nl-preview-btn">&#128065; Preview</button>
+                <button type="button" class="btn btn-primary btn-lg" id="nl-publish-btn">&#128640; Publish Now</button>
+                <button type="button" class="btn btn-secondary btn-lg" id="nl-schedule-btn">&#128197; Schedule</button>
               </div>
-
-              <!-- MODE TOGGLE -->
-              <div class="form-group">
-                <label>Mode</label>
-                <div class="dash-mode-toggle">
-                  <label class="dash-mode-option active" data-mode="preview">
-                    <input type="radio" name="nl-mode" value="preview" checked>
-                    <span class="dash-mode-icon">&#128065;</span>
-                    <span>
-                      <strong>Preview Only</strong>
-                      <small>Generate content &amp; review it. Nothing gets published or sent.</small>
-                    </span>
-                  </label>
-                  <label class="dash-mode-option" data-mode="live">
-                    <input type="radio" name="nl-mode" value="live">
-                    <span class="dash-mode-icon">&#128640;</span>
-                    <span>
-                      <strong>Go Live</strong>
-                      <small>Generate, publish the page, and send emails to your lists.</small>
-                    </span>
-                  </label>
+              <div class="dash-schedule-wrap hidden" id="nl-schedule-wrap">
+                <div class="form-group">
+                  <label for="nl-schedule">Schedule Date &amp; Time</label>
+                  <input type="datetime-local" id="nl-schedule" style="max-width: 320px;">
+                  <span class="form-helper">Must be at least 15 minutes in the future.</span>
                 </div>
-              </div>
-
-              <!-- GENERATE BUTTON -->
-              <div class="dash-actions">
-                <button type="submit" class="btn btn-primary btn-lg" id="nl-submit-btn">
-                  Preview Newsletter
-                </button>
+                <div class="dash-publish-btns">
+                  <button type="button" class="btn btn-primary btn-lg" id="nl-schedule-submit-btn">&#128197; Confirm &amp; Schedule</button>
+                </div>
               </div>
             </form>
 
@@ -473,34 +453,21 @@
                 <span class="form-helper">Uses Mailchimp merge tag so each subscriber sees their name.</span>
               </div>
 
-              <!-- MODE TOGGLE -->
-              <div class="form-group">
-                <label>Mode</label>
-                <div class="dash-mode-toggle">
-                  <label class="dash-mode-option active" data-mode="preview">
-                    <input type="radio" name="rt-mode" value="preview" checked>
-                    <span class="dash-mode-icon">&#128065;</span>
-                    <span>
-                      <strong>Preview Only</strong>
-                      <small>Generate content &amp; review it. Nothing gets published or sent.</small>
-                    </span>
-                  </label>
-                  <label class="dash-mode-option" data-mode="live">
-                    <input type="radio" name="rt-mode" value="live">
-                    <span class="dash-mode-icon">&#128640;</span>
-                    <span>
-                      <strong>Go Live</strong>
-                      <small>Generate, publish the rate page, and send emails to your lists.</small>
-                    </span>
-                  </label>
-                </div>
+              <!-- PUBLISHING CONTROLS -->
+              <div class="dash-publish-btns">
+                <button type="button" class="btn btn-secondary btn-lg" id="rt-preview-btn">&#128065; Preview</button>
+                <button type="button" class="btn btn-primary btn-lg" id="rt-publish-btn">&#128640; Publish Now</button>
+                <button type="button" class="btn btn-secondary btn-lg" id="rt-schedule-btn">&#128197; Schedule</button>
               </div>
-
-              <!-- GENERATE BUTTON -->
-              <div class="dash-actions">
-                <button type="submit" class="btn btn-primary btn-lg" id="rt-submit-btn">
-                  Preview Rate Update
-                </button>
+              <div class="dash-schedule-wrap hidden" id="rt-schedule-wrap">
+                <div class="form-group">
+                  <label for="rt-schedule">Schedule Date &amp; Time</label>
+                  <input type="datetime-local" id="rt-schedule" style="max-width: 320px;">
+                  <span class="form-helper">Must be at least 15 minutes in the future.</span>
+                </div>
+                <div class="dash-publish-btns">
+                  <button type="button" class="btn btn-primary btn-lg" id="rt-schedule-submit-btn">&#128197; Confirm &amp; Schedule</button>
+                </div>
               </div>
             </form>
 
@@ -729,41 +696,21 @@
                 </div>
               </div>
 
-              <!-- SCHEDULE SEND -->
-              <div class="form-group">
-                <label for="rl-schedule">Schedule Send (optional)</label>
-                <input type="datetime-local" id="rl-schedule" name="scheduleTime" style="max-width: 320px;">
-                <span class="form-helper">Leave blank to send immediately. Must be at least 15 minutes in the future.</span>
+              <!-- PUBLISHING CONTROLS -->
+              <div class="dash-publish-btns">
+                <button type="button" class="btn btn-secondary btn-lg" id="rl-preview-btn">&#128065; Preview</button>
+                <button type="button" class="btn btn-primary btn-lg" id="rl-publish-btn">&#128640; Publish Now</button>
+                <button type="button" class="btn btn-secondary btn-lg" id="rl-schedule-btn">&#128197; Schedule</button>
               </div>
-
-              <!-- MODE TOGGLE -->
-              <div class="form-group">
-                <label>Mode</label>
-                <div class="dash-mode-toggle">
-                  <label class="dash-mode-option active" data-mode="preview">
-                    <input type="radio" name="rl-mode" value="preview" checked>
-                    <span class="dash-mode-icon">&#128065;</span>
-                    <span>
-                      <strong>Preview Only</strong>
-                      <small>Generate content &amp; review it. Nothing gets published or sent.</small>
-                    </span>
-                  </label>
-                  <label class="dash-mode-option" data-mode="live">
-                    <input type="radio" name="rl-mode" value="live">
-                    <span class="dash-mode-icon">&#128640;</span>
-                    <span>
-                      <strong>Go Live</strong>
-                      <small>Generate, publish the article, and send email to your realtor list.</small>
-                    </span>
-                  </label>
+              <div class="dash-schedule-wrap hidden" id="rl-schedule-wrap">
+                <div class="form-group">
+                  <label for="rl-schedule">Schedule Date &amp; Time</label>
+                  <input type="datetime-local" id="rl-schedule" style="max-width: 320px;">
+                  <span class="form-helper">Must be at least 15 minutes in the future.</span>
                 </div>
-              </div>
-
-              <!-- GENERATE BUTTON -->
-              <div class="dash-actions">
-                <button type="submit" class="btn btn-primary btn-lg" id="rl-submit-btn">
-                  Preview Realtor Content
-                </button>
+                <div class="dash-publish-btns">
+                  <button type="button" class="btn btn-primary btn-lg" id="rl-schedule-submit-btn">&#128197; Confirm &amp; Schedule</button>
+                </div>
               </div>
             </form>
 
