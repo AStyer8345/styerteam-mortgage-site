@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temporary Rate Buydown Calculator | 2/1 &amp; 3/2/1 Buydown | Adam Styer Mortgage Austin</title>
+  <meta name="description" content="Calculate your temporary rate buydown savings. Compare 3/2/1, 2/1, 1/1, and 1/0 buydowns — see monthly payment, full amortization schedule, and total seller subsidy cost. Free tool by Adam Styer, NMLS #513013.">
+  <meta name="keywords" content="temporary rate buydown calculator, 2/1 buydown calculator, 3/2/1 buydown Austin TX, mortgage rate buydown, seller concession calculator, buydown cost calculator">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Temporary Rate Buydown Calculator | Adam Styer | Mortgage Solutions LP">
+  <meta property="og:description" content="Compare 3/2/1, 2/1, 1/1, and 1/0 buydowns. See exact monthly savings, full payment schedule, and total subsidy cost. Free mortgage tool.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://styermortgage.com/rate-buydown-calculator.html">
+  <meta property="og:image" content="https://styermortgage.com/img/og-card.jpg">
+  <meta property="og:site_name" content="Adam Styer | Mortgage Solutions LP">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Temporary Rate Buydown Calculator | Adam Styer Mortgage Austin">
+  <meta name="twitter:description" content="Compare 3/2/1, 2/1, 1/1, and 1/0 buydowns. See monthly savings and total subsidy cost instantly.">
+  <meta name="twitter:image" content="https://styermortgage.com/img/og-card.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://styermortgage.com/rate-buydown-calculator.html">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Temporary Rate Buydown Calculator",
+    "description": "Calculate how a 3/2/1, 2/1, 1/1, or 1/0 temporary rate buydown reduces your monthly mortgage payment. See the full payment schedule and total seller subsidy cost.",
+    "url": "https://styermortgage.com/rate-buydown-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "provider": {
+      "@type": "FinancialService",
+      "name": "Adam Styer | Mortgage Solutions LP",
+      "url": "https://styermortgage.com/"
+    }
+  }
+  </script>
+
+      <!-- Schema: FAQPage -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a temporary rate buydown?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A temporary rate buydown is a financing arrangement where the seller deposits a lump sum at closing that subsidizes the borrower's interest rate for the first 1–3 years. The loan is originated at the full note rate; the subsidy covers the payment difference each month." }
+          },
+          {
+            "@type": "Question",
+            "name": "Who pays for the buydown?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Typically the seller or builder pays for the buydown as a seller concession. The funds go into a custodial escrow account and are released monthly to cover the payment difference between the reduced rate and the full note rate." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between a 2/1 and a 3/2/1 buydown?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A 2/1 buydown reduces the rate by 2% in year 1 and 1% in year 2, then steps to the full note rate. A 3/2/1 reduces by 3% in year 1, 2% in year 2, 1% in year 3. The 3/2/1 provides more relief upfront but requires a larger seller deposit." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a buydown change my long-term interest rate?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. A temporary buydown does not change your note rate, loan amount, or long-term amortization. After the buydown period ends you pay the full note rate. The loan always amortizes at the note rate; the subsidy only covers the payment difference during the reduced years." }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens to leftover funds if I refinance or sell?",
+            "acceptedAnswer": { "@type": "Answer", "text": "If you refinance or sell before the buydown period ends, remaining escrow funds are typically applied as a principal reduction on your payoff. This makes buydowns attractive for buyers who plan to sell or refinance within a few years." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is a seller concession the same as a buydown?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A seller concession is any contribution the seller makes toward the buyer's closing costs. A buydown is one specific use of a concession. Conventional loans cap concessions at 2–9% of purchase price depending on LTV; VA and FHA have separate limits." }
+          }
+        ]
+      }
+      </script>
+
+      <style>
+        /* ── Page-scoped overrides ── */
+        .bd-hero { background: var(--color-navy); color: #fff; padding: 4rem 0 3rem; text-align: center; }
+        .bd-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem,4vw,2.75rem); margin-bottom: .75rem; color: #fff; }
+        .bd-hero .hero-sub { font-size: 1.05rem; opacity: .85; max-width: 600px; margin: 0 auto 1.5rem; }
+        .bd-hero .hero-badges { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+        .bd-hero .badge { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 99px; padding: .3rem .9rem; font-size: .8rem; color: #fff; }
+
+        /* ── Two-column calc layout ── */
+        .calc-layout-bd { display: grid; grid-template-columns: 360px 1fr; gap: 2rem; align-items: start; padding: 2.5rem 0 1rem; }
+        @media (max-width: 900px) { .calc-layout-bd { grid-template-columns: 1fr; } }
+        .bd-inputs-panel { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; position: sticky; top: 80px; }
+        .bd-inputs-panel h2 { font-size: 1rem; font-weight: 700; color: var(--color-navy); margin-bottom: 1.25rem; letter-spacing: .03em; text-transform: uppercase; }
+        .bd-outputs-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        /* ── Buydown type selector grid ── */
+        .type-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .5rem; margin-bottom: 1.25rem; }
+        .type-grid input[type=radio] { position: absolute; opacity: 0; width: 0; height: 0; }
+        .type-grid label { display: block; text-align: center; padding: .55rem .25rem; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: .88rem; color: var(--color-navy); transition: border-color .15s, background .15s; }
+        .type-grid input[type=radio]:checked + label { border-color: var(--color-gold); background: #fdf6e3; }
+        .type-grid label:hover { border-color: var(--color-gold); }
+
+        /* ── Form fields ── */
+        .bd-field { margin-bottom: 1rem; }
+        .bd-field label { display: block; font-size: .8rem; font-weight: 600; color: #475569; margin-bottom: .3rem; }
+        .bd-field input[type=number], .bd-field select { width: 100%; padding: .5rem .75rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .95rem; color: var(--color-navy); background: #fff; }
+        .bd-field input[type=number]:focus, .bd-field select:focus { outline: 2px solid var(--color-gold); border-color: var(--color-gold); }
+        .bd-slider-row { display: flex; align-items: center; gap: .5rem; margin-bottom: .35rem; }
+        .bd-slider-row input[type=range] { flex: 1; accent-color: var(--color-gold); }
+        .bd-slider-row input[type=number] { width: 100px; flex-shrink: 0; padding: .4rem .6rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .9rem; }
+        .freq-toggle { display: flex; gap: .25rem; margin-top: .3rem; }
+        .freq-toggle input[type=radio] { position: absolute; opacity: 0; width: 0; height: 0; }
+        .freq-toggle label { padding: .25rem .65rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: .78rem; font-weight: 600; cursor: pointer; color: #64748b; transition: all .15s; }
+        .freq-toggle input[type=radio]:checked + label { background: var(--color-navy); color: #fff; border-color: var(--color-navy); }
+        .bd-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+        .bd-divider { border: none; border-top: 1px solid #e2e8f0; margin: 1rem 0; }
+
+        /* ── Summary cards ── */
+        .bd-summary-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+        @media (max-width: 700px) { .bd-summary-cards { grid-template-columns: repeat(2,1fr); } }
+        .bd-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem 1rem; text-align: center; }
+        .bd-card .bd-card-label { font-size: .75rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .3rem; }
+        .bd-card .bd-card-val { font-size: 1.5rem; font-weight: 700; color: var(--color-navy); }
+        .bd-card .bd-card-sub { font-size: .78rem; color: #64748b; margin-top: .2rem; }
+        .bd-card.highlight { border-color: var(--color-gold); background: #fdf6e3; }
+        .bd-card.highlight .bd-card-val { color: #92650e; }
+
+        /* ── PI/PITI toggle ── */
+        .pi-toggle { display: flex; gap: .5rem; justify-content: flex-end; margin-bottom: .75rem; }
+        .pi-toggle button { padding: .3rem .9rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: .8rem; font-weight: 600; cursor: pointer; background: #fff; color: #64748b; transition: all .15s; }
+        .pi-toggle button.active { background: var(--color-navy); color: #fff; border-color: var(--color-navy); }
+
+        /* ── Year-by-year table ── */
+        .bd-year-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+        .bd-year-table th { background: var(--color-navy); color: #fff; padding: .55rem .75rem; text-align: right; font-weight: 600; font-size: .78rem; }
+        .bd-year-table th:first-child { text-align: left; }
+        .bd-year-table td { padding: .5rem .75rem; border-bottom: 1px solid #f1f5f9; text-align: right; }
+        .bd-year-table td:first-child { text-align: left; font-weight: 600; color: var(--color-navy); }
+        .bd-year-table tr:last-child td { border-bottom: none; }
+        .bd-year-table .savings-cell { color: #16a34a; font-weight: 600; }
+        .bd-year-table .note-row td { background: #f8fafc; color: #475569; font-style: italic; font-weight: 400; }
+
+        /* ── Alerts ── */
+        .bd-alert { padding: .85rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; display: none; margin-bottom: .75rem; }
+        .bd-alert.surplus { background: #dcfce7; border: 1px solid #86efac; color: #166534; }
+        .bd-alert.shortfall { background: #fef9c3; border: 1px solid #fde047; color: #713f12; }
+
+        /* ── Charts section ── */
+        .bd-charts-section { padding: 2rem 0 1rem; }
+        .bd-charts-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--color-navy); margin-bottom: 1.5rem; }
+        .bd-chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        @media (max-width: 700px) { .bd-chart-grid { grid-template-columns: 1fr; } }
+        .bd-chart-wrap { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; }
+        .bd-chart-wrap h3 { font-size: .85rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 1rem; }
+        .bd-chart-wrap canvas { width: 100% !important; }
+
+        /* ── Full schedule ── */
+        .bd-schedule-section { padding: 1.5rem 0 2rem; }
+        .bd-schedule-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--color-navy); margin-bottom: .25rem; }
+        .bd-schedule-section .section-sub { font-size: .88rem; color: #64748b; margin-bottom: 1.25rem; }
+        .schedule-table-wrap { overflow-x: auto; }
+        .bd-schedule-table { width: 100%; border-collapse: collapse; font-size: .82rem; min-width: 620px; }
+        .bd-schedule-table th { background: var(--color-navy); color: #fff; padding: .5rem .65rem; text-align: right; font-size: .76rem; font-weight: 600; position: sticky; top: 0; }
+        .bd-schedule-table th:first-child { text-align: left; }
+        .bd-schedule-table td { padding: .4rem .65rem; border-bottom: 1px solid #f1f5f9; text-align: right; }
+        .bd-schedule-table td:first-child { text-align: left; color: #475569; }
+        .bd-schedule-table .buydown-row td { background: #fdf6e3; }
+        .bd-schedule-table .buydown-row td:first-child { color: #92650e; font-weight: 600; }
+        .bd-show-full-wrap { text-align: center; margin-top: 1rem; }
+
+        /* ── Explainer grid ── */
+        .bd-explainer { padding: 3rem 0; background: var(--bg-light, #f8fafc); }
+        .bd-explainer h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--color-navy); text-align: center; margin-bottom: .5rem; }
+        .bd-explainer .section-sub { text-align: center; color: #64748b; margin-bottom: 2rem; }
+        .explainer-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+        @media (max-width: 700px) { .explainer-grid { grid-template-columns: 1fr; } }
+        .explainer-card { background: #fff; border-radius: 12px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+        .explainer-card .ex-icon { font-size: 2rem; margin-bottom: .75rem; }
+        .explainer-card h3 { font-size: 1rem; font-weight: 700; color: var(--color-navy); margin-bottom: .5rem; }
+        .explainer-card p { font-size: .88rem; color: #475569; line-height: 1.6; margin: 0; }
+
+        /* ── CTA section ── */
+        .bd-cta { background: var(--color-navy); color: #fff; padding: 3.5rem 0; text-align: center; }
+        .bd-cta h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #fff; margin-bottom: .75rem; }
+        .bd-cta p { opacity: .85; max-width: 520px; margin: 0 auto 1.75rem; }
+        .bd-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-gold { background: var(--color-gold); color: #fff; border: none; padding: .75rem 1.75rem; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block; transition: opacity .15s; }
+        .btn-gold:hover { opacity: .88; }
+        .btn-outline-light { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.55); padding: .75rem 1.75rem; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color .15s; }
+        .btn-outline-light:hover { border-color: #fff; }
+
+        /* ── Share / Print ── */
+        .bd-share-row { display: flex; gap: .75rem; flex-wrap: wrap; }
+        .bd-share-confirm { font-size: .82rem; color: #16a34a; font-weight: 600; display: none; }
+        #bd-print-summary { display: none; }
+
+        /* ── Print styles ── */
+        @media print {
+          header, .bd-hero, .bd-inputs-panel, .bd-charts-section,
+          .bd-explainer, .bd-cta, footer, .pi-toggle,
+          .bd-show-full-wrap, .bd-share-row, .bd-cta-btns { display: none !important; }
+          #bd-print-summary { display: block !important; }
+          .bd-outputs-panel, .bd-schedule-section { display: block !important; }
+          body { font-size: 11pt; color: #000; }
+          .bd-print-header { margin-bottom: 1rem; }
+          .bd-print-header h2 { font-size: 16pt; }
+        }
+      </style>
+    </head>
+    <body>
+      <a href="#calc-main" class="skip-link">Skip to calculator</a>
+
+      <!-- HEADER / NAV -->
+      <header>
+        <div class="container">
+          <nav>
+            <a href="index.html" class="nav-brand">
+              <img src="assets/logo.svg" alt="Adam Styer | Mortgage Solutions LP" class="nav-logo-img" width="180" height="40">
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+              <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+              <li><a href="products.html">Loan Programs</a></li>
+              <li><a href="calculators.html" aria-current="page">Calculators</a></li>
+              <li><a href="/resources/">Resources</a></li>
+              <li><a href="testimonials.html">Testimonials</a></li>
+              <li><a href="about.html">About Adam</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="realtors.html">For Realtors</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="https://mslp.my1003app.com/513013/register" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- HERO -->
+      <section class="bd-hero">
+        <div class="container">
+          <h1>Temporary Rate Buydown Calculator</h1>
+          <p class="hero-sub">See exactly how a 3/2/1, 2/1, 1/1, or 1/0 buydown lowers your payment — and what it costs the seller.</p>
+          <div class="hero-badges">
+            <span class="badge">3/2/1 &amp; 2/1 Buydowns</span>
+            <span class="badge">Full Amortization Schedule</span>
+            <span class="badge">Seller Credit Analysis</span>
+            <span class="badge">Shareable URL</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAIN CALCULATOR -->
+      <main id="calc-main">
+        <div class="container">
+          <div class="calc-layout-bd">
+
+            <!-- LEFT: Inputs -->
+            <aside class="bd-inputs-panel" aria-label="Calculator inputs">
+              <h2>Loan Details</h2>
+
+              <!-- Buydown type -->
+              <div class="bd-field">
+                <label>Buydown Type</label>
+                <div class="type-grid">
+                  <div><input type="radio" name="bd-type" id="type-21" value="2-1" checked><label for="type-21">2/1</label></div>
+                  <div><input type="radio" name="bd-type" id="type-321" value="3-2-1"><label for="type-321">3/2/1</label></div>
+                  <div><input type="radio" name="bd-type" id="type-11" value="1-1"><label for="type-11">1/1</label></div>
+                  <div><input type="radio" name="bd-type" id="type-10" value="1-0"><label for="type-10">1/0</label></div>
+                </div>
+              </div>
+
+              <!-- Loan amount -->
+              <div class="bd-field">
+                <label for="bd-loan-input">Loan Amount</label>
+                <div class="bd-slider-row">
+                  <input type="range" id="bd-loan-slider" min="50000" max="2000000" step="5000" value="400000" aria-label="Loan amount slider">
+                  <input type="number" id="bd-loan-input" min="50000" max="2000000" step="5000" value="400000" aria-label="Loan amount">
+                </div>
+              </div>
+
+              <!-- Interest rate -->
+              <div class="bd-field">
+                <label for="bd-rate-input">Note Rate (%)</label>
+                <div class="bd-slider-row">
+                  <input type="range" id="bd-rate-slider" min="2" max="12" step="0.125" value="7" aria-label="Interest rate slider">
+                  <input type="number" id="bd-rate-input" min="2" max="12" step="0.125" value="7" aria-label="Interest rate">
+                </div>
+              </div>
+
+              <!-- Term + start date -->
+              <div class="bd-field-row">
+                <div class="bd-field" style="margin-bottom:0">
+                  <label for="bd-term">Loan Term</label>
+                  <select id="bd-term">
+                    <option value="30" selected>30 Years</option>
+                    <option value="20">20 Years</option>
+                    <option value="15">15 Years</option>
+                    <option value="custom">Custom</option>
+                  </select>
+                </div>
+                <div class="bd-field" id="bd-term-custom-wrap" style="margin-bottom:0;display:none">
+                  <label for="bd-term-custom">Years</label>
+                  <input type="number" id="bd-term-custom" min="5" max="40" step="1" value="30" aria-label="Custom term in years">
+                </div>
+                <div class="bd-field" id="bd-start-date-wrap" style="margin-bottom:0">
+                  <label for="bd-start-date">First Payment</label>
+                  <input type="month" id="bd-start-date" aria-label="First payment month">
+                </div>
+              </div>
+
+              <hr class="bd-divider">
+              <p style="font-size:.78rem;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.75rem;">Escrow (Optional)</p>
+
+              <!-- Property taxes -->
+              <div class="bd-field">
+                <label for="bd-tax-input">Property Taxes</label>
+                <input type="number" id="bd-tax-input" min="0" step="1" value="0" placeholder="0" aria-label="Property taxes">
+                <div class="freq-toggle" role="radiogroup" aria-label="Tax frequency">
+                  <input type="radio" name="bd-tax-freq" id="bd-tax-mo" value="mo" checked><label for="bd-tax-mo">Mo</label>
+                  <input type="radio" name="bd-tax-freq" id="bd-tax-yr" value="yr"><label for="bd-tax-yr">Annual</label>
+                </div>
+              </div>
+
+              <!-- Homeowners insurance -->
+              <div class="bd-field">
+                <label for="bd-ins-input">Homeowners Insurance</label>
+                <input type="number" id="bd-ins-input" min="0" step="1" value="0" placeholder="0" aria-label="Homeowners insurance">
+                <div class="freq-toggle" role="radiogroup" aria-label="Insurance frequency">
+                  <input type="radio" name="bd-ins-freq" id="bd-ins-mo" value="mo" checked><label for="bd-ins-mo">Mo</label>
+                  <input type="radio" name="bd-ins-freq" id="bd-ins-yr" value="yr"><label for="bd-ins-yr">Annual</label>
+                </div>
+              </div>
+
+              <!-- HOA -->
+              <div class="bd-field">
+                <label for="bd-hoa">HOA (Monthly)</label>
+                <input type="number" id="bd-hoa" min="0" step="1" value="0" placeholder="0" aria-label="HOA monthly fee">
+              </div>
+
+              <hr class="bd-divider">
+
+              <!-- Seller credit -->
+              <div class="bd-field">
+                <label for="bd-seller-credit">Seller Credit ($)</label>
+                <input type="number" id="bd-seller-credit" min="0" step="100" value="0" placeholder="0" aria-label="Seller credit amount">
+              </div>
+
+              <!-- Share / Print row -->
+              <div class="bd-share-row">
+                <button id="bd-share-btn" class="btn btn-outline" style="flex:1;font-size:.85rem;padding:.5rem .75rem;">&#128279; Share</button>
+                <button id="bd-print-btn" class="btn btn-outline" style="flex:1;font-size:.85rem;padding:.5rem .75rem;">&#128438; Print</button>
+              </div>
+              <span class="bd-share-confirm" id="bd-share-confirm" aria-live="polite">Link copied!</span>
+            </aside>
+
+            <!-- RIGHT: Outputs -->
+            <section class="bd-outputs-panel" aria-label="Calculator results">
+
+              <!-- PI/PITI toggle -->
+              <div class="pi-toggle" role="group" aria-label="Payment display mode">
+                <button id="btn-show-pi" class="active" aria-pressed="true">P&amp;I Only</button>
+                <button id="btn-show-piti" aria-pressed="false">PITI</button>
+              </div>
+
+              <!-- Alerts -->
+              <div id="bd-alert-surplus" class="bd-alert surplus" role="alert"></div>
+              <div id="bd-alert-shortfall" class="bd-alert shortfall" role="alert"></div>
+
+              <!-- Summary cards -->
+              <div class="bd-summary-cards" aria-live="polite">
+                <div class="bd-card">
+                  <div class="bd-card-label">Full Note Rate</div>
+                  <div class="bd-card-val" id="bd-out-base-rate">—</div>
+                  <div class="bd-card-sub" id="bd-out-base-pmt">—/mo</div>
+                </div>
+                <div class="bd-card highlight">
+                  <div class="bd-card-label">Year 1 Rate</div>
+                  <div class="bd-card-val" id="bd-out-yr1-rate">—</div>
+                  <div class="bd-card-sub" id="bd-out-yr1-pmt">—/mo</div>
+                </div>
+                <div class="bd-card">
+                  <div class="bd-card-label">Mo. Savings Yr 1</div>
+                  <div class="bd-card-val" id="bd-out-mo-savings">—</div>
+                  <div class="bd-card-sub">vs. full payment</div>
+                </div>
+              </div>
+              <div class="bd-summary-cards" style="grid-template-columns:repeat(2,1fr)" aria-live="polite">
+                <div class="bd-card">
+                  <div class="bd-card-label">Total Subsidy Cost</div>
+                  <div class="bd-card-val" id="bd-out-total-subsidy">—</div>
+                  <div class="bd-card-sub">Required seller deposit</div>
+                </div>
+                <div class="bd-card">
+                  <div class="bd-card-label">Seller Credit Balance</div>
+                  <div class="bd-card-val" id="bd-out-credit-balance">—</div>
+                  <div class="bd-card-sub">After funding buydown</div>
+                </div>
+              </div>
+
+              <!-- Year-by-year breakdown -->
+              <div>
+                <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--color-navy);margin-bottom:1rem;">Year-by-Year Comparison</h2>
+                <div style="overflow-x:auto;">
+                  <table class="bd-year-table" aria-label="Year-by-year payment comparison">
+                    <thead>
+                      <tr>
+                        <th scope="col">Year</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Payment</th>
+                        <th scope="col">Mo. Savings</th>
+                        <th scope="col">Subsidy Used</th>
+                      </tr>
+                    </thead>
+                    <tbody id="bd-year-tbody">
+                      <tr><td colspan="5" style="text-align:center;color:#94a3b8;padding:1.5rem;">Enter loan details above.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section><!-- /.bd-outputs-panel -->
+          </div><!-- /.calc-layout-bd -->
+        </div><!-- /.container -->
+      </main>
+
+      <!-- CHARTS -->
+      <section class="bd-charts-section">
+        <div class="container">
+          <h2>Payment &amp; Subsidy Charts</h2>
+          <div class="bd-chart-grid">
+            <div class="bd-chart-wrap">
+              <h3>Monthly Payment Over Time (First 36 Months)</h3>
+              <canvas id="bd-chart-timeline" aria-label="Monthly payment over time chart" role="img"></canvas>
+            </div>
+            <div class="bd-chart-wrap">
+              <h3>Annual Subsidy by Year</h3>
+              <canvas id="bd-chart-subsidy" aria-label="Annual subsidy by year chart" role="img"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FULL SCHEDULE -->
+      <section class="bd-schedule-section">
+        <div class="container">
+          <h2>Full Amortization Schedule</h2>
+          <p class="section-sub">Shaded rows show buydown period. Subsidy column reflects monthly draw from seller escrow.</p>
+          <div class="schedule-table-wrap">
+            <table class="bd-schedule-table" aria-label="Full amortization schedule">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Rate</th>
+                  <th scope="col">Payment</th>
+                  <th scope="col">Principal</th>
+                  <th scope="col">Interest</th>
+                  <th scope="col">Subsidy</th>
+                  <th scope="col">Balance</th>
+                </tr>
+              </thead>
+              <tbody id="bd-schedule-tbody">
+                <tr><td colspan="8" style="text-align:center;color:#94a3b8;padding:1.5rem;">Enter loan details above.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="bd-show-full-wrap">
+            <button id="bd-show-full-btn" class="btn btn-outline" style="font-size:.88rem;">Show Full Schedule</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPLAINER -->
+      <section class="bd-explainer">
+        <div class="container">
+          <h2>How Temporary Buydowns Work</h2>
+          <p class="section-sub">The seller deposits a lump sum at closing. You pay less each month. Here's the mechanics.</p>
+          <div class="explainer-grid">
+            <div class="explainer-card">
+              <div class="ex-icon">&#128178;</div>
+              <h3>Seller Funds an Escrow at Closing</h3>
+              <p>The seller (or builder) deposits a lump sum into a custodial escrow account at closing. That deposit equals the total payment difference across all buydown years — calculated before you sign.</p>
+            </div>
+            <div class="explainer-card">
+              <div class="ex-icon">&#128200;</div>
+              <h3>You Pay the Reduced Rate Each Month</h3>
+              <p>During the buydown period you make a lower monthly payment. The escrow releases the difference to the lender every month to make up the full P&amp;I amount. Your loan still amortizes at the full note rate.</p>
+            </div>
+            <div class="explainer-card">
+              <div class="ex-icon">&#128197;</div>
+              <h3>Rate Steps Up on Schedule</h3>
+              <p>A 2/1 buydown: rate is 2% below note rate in Year 1, 1% below in Year 2, then full note rate from Year 3 forward. The schedule is fixed — no surprises, no adjustable-rate risk.</p>
+            </div>
+            <div class="explainer-card">
+              <div class="ex-icon">&#128260;</div>
+              <h3>Leftover Funds Reduce Your Principal</h3>
+              <p>If you sell or refinance before the buydown period ends, any remaining escrow balance is applied as a principal paydown at closing. This is a key advantage over simply taking a lower purchase price.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section style="padding:3rem 0;" class="bg-light">
+        <div class="container">
+          <h2 class="section-title" style="margin-bottom:1.5rem;">Buydown FAQs</h2>
+          <div class="accordion" id="bd-faq">
+
+            <div class="accordion-item">
+              <button class="accordion-button" aria-expanded="false">What is a temporary rate buydown?</button>
+              <div class="accordion-content" hidden>
+                <div class="accordion-body">
+                  <p>A temporary rate buydown is a financing arrangement where the seller deposits a lump sum at closing that subsidizes the borrower's interest rate for the first 1–3 years. The loan is originated at the full note rate; the subsidy covers the payment difference each month.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-button" aria-expanded="false">Who pays for the buydown?</button>
+              <div class="accordion-content" hidden>
+                <div class="accordion-body">
+                  <p>Typically the seller or builder pays for the buydown as a seller concession. The funds go into a custodial escrow account and are released monthly to cover the payment difference between the reduced rate and the full note rate.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-button" aria-expanded="false">What is the difference between a 2/1 and a 3/2/1 buydown?</button>
+              <div class="accordion-content" hidden>
+                <div class="accordion-body">
+                  <p>A 2/1 buydown reduces the rate by 2% in Year 1 and 1% in Year 2, then steps to the full note rate. A 3/2/1 reduces by 3% in Year 1, 2% in Year 2, 1% in Year 3. The 3/2/1 provides more relief upfront but requires a larger seller deposit.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-button" aria-expanded="false">Does a buydown change my long-term interest rate?</button>
+              <div class="accordion-content" hidden>
+                <div class="accordion-body">
+                  <p>No. A temporary buydown does not change your note rate, loan amount, or long-term amortization. After the buydown period ends you pay the full note rate. The loan always amortizes at the note rate; the subsidy only covers the payment difference during the reduced years.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-button" aria-expanded="false">What happens to leftover funds if I refinance or sell?</button>
+              <div class="accordion-content" hidden>
+                <div class="accordion-body">
+                  <p>If you refinance or sell before the buydown period ends, remaining escrow funds are typically applied as a principal reduction on your payoff. This makes buydowns attractive for buyers who plan to sell or refinance within a few years.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-button" aria-expanded="false">Is a seller concession the same as a buydown?</button>
+              <div class="accordion-content" hidden>
+                <div class="accordion-body">
+                  <p>A seller concession is any contribution the seller makes toward the buyer's closing costs. A buydown is one specific use of a concession. Conventional loans cap concessions at 2–9% of purchase price depending on LTV; VA and FHA have separate limits.</p>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.accordion -->
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="bd-cta">
+        <div class="container">
+          <h2>Ready to Run the Numbers on a Real Scenario?</h2>
+          <p>Share this calculator link with your client or realtor, then call me to lock in pricing. I'll show you exactly what the seller needs to deposit and whether a buydown beats a price reduction.</p>
+          <div class="bd-cta-btns">
+            <a href="https://mslp.my1003app.com/513013/register" class="btn-gold" target="_blank" rel="noopener">Apply Now</a>
+            <a href="contact.html" class="btn-outline-light">Talk to Adam</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRINT SUMMARY (hidden until print) -->
+      <div id="bd-print-summary" aria-hidden="true">
+        <div class="bd-print-header">
+          <h2>Temporary Rate Buydown Summary</h2>
+          <p id="bd-print-body"></p>
+          <p style="font-size:.8rem;color:#475569;">Prepared by Adam Styer | Mortgage Solutions LP | NMLS #513013 | styermortgage.com | <span id="bd-print-date"></span></p>
+          <p style="font-size:.75rem;color:#94a3b8;margin-top:.5rem;">This is an estimate for illustration purposes only. Actual rates and costs may vary. Not a commitment to lend.</p>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <h3>Adam Styer | Mortgage Solutions LP</h3>
+              <p>Independent mortgage broker in Austin, TX. Helping buyers and homeowners navigate the loan process since 2017.</p>
+              <div class="social-links">
+                <a href="https://www.facebook.com/AdamStyerMortgage" aria-label="Facebook" target="_blank" rel="noopener">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/adamstyer.mortgage/" aria-label="Instagram" target="_blank" rel="noopener">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/adamstyer/" aria-label="LinkedIn" target="_blank" rel="noopener">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://www.zillow.com/lender-profile/AStyer/" aria-label="Zillow" target="_blank" rel="noopener">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 9.5l1.5 1L12 5l8.5 5.5L22 9.5z"/><path d="M5 13v7h4v-4h6v4h4v-7l-7-4.5z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div>
+              <h3>Company</h3>
+              <ul>
+                <li><a href="about.html">About Adam</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="texas-complaint-notice.html">TX Complaint Notice</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Resources</h3>
+              <ul>
+                <li><a href="products.html">Loan Programs</a></li>
+                <li><a href="calculators.html">Calculators</a></li>
+                <li><a href="rate-buydown-calculator.html">Buydown Calculator</a></li>
+                <li><a href="realtors.html">For Realtors</a></li>
+                <li><a href="prequal.html">Get Pre-Qualified</a></li>
+                <li><a href="blog.html">Blog</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Contact</h3>
+              <ul>
+                <li><a href="tel:5126389522">(512) 638-9522</a></li>
+                <li><a href="mailto:adam@styermortgage.com">adam@styermortgage.com</a></li>
+                <li><a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Schedule a Call</a></li>
+                <li><a href="https://mslp.my1003app.com/513013/register" target="_blank" rel="noopener">Apply Online</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>NMLS#: 2526130 (Company) | 513013 (Adam Styer) | &copy; 2025 Mortgage Solutions, LP. | <a href="texas-complaint-notice.html">TX Complaint Notice</a></p>
+            <p style="font-size:.75rem;opacity:.7;margin-top:.35rem;">This calculator is for estimation purposes only and does not constitute a commitment to lend. Actual rates and terms subject to credit approval.</p>
+          </div>
+        </div>
+      </footer>
+
+      <script src="script.js" defer></script>
+      <script>
+      /* ── Buydown Calculator ── */
+      var BUYDOWN_TYPES = {
+        '2-1':   { reductions: [2, 1],    label: '2/1'   },
+        '3-2-1': { reductions: [3, 2, 1], label: '3/2/1' },
+        '1-1':   { reductions: [1, 1],    label: '1/1'   },
+        '1-0':   { reductions: [1],        label: '1/0'   }
+      };
+      var PI_MODE = 'pi';
+      var SHOW_MONTHS_DEFAULT = 36;
+      var showFullSchedule = false;
+      var chartTimeline = null;
+      var chartSubsidy  = null;
+
+      /* Standard fully-amortizing payment at note rate */
+      function pmt(principal, annualRatePct, years) {
+        if (annualRatePct <= 0) return principal / (years * 12);
+        var r = annualRatePct / 100 / 12;
+        var n = years * 12;
+        return principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      }
+
+      /* Format helpers */
+      function fmtDollar(n) {
+        return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+      function fmtDollarInt(n) {
+        return '$' + Math.round(n).toLocaleString();
+      }
+      function fmtPct(n) { return n.toFixed(3).replace(/\.?0+$/, '') + '%'; }
+
+      /* Build month-by-month schedule rows */
+      function buildSchedule(loanAmount, noteRate, termYears, reductions, startDate) {
+        var rows = [];
+        var balance = loanAmount;
+        var basePmt = pmt(loanAmount, noteRate, termYears);
+        var totalMonths = termYears * 12;
+        var r = noteRate / 100 / 12;
+        var date = startDate ? new Date(startDate + '-01') : null;
+
+        for (var m = 1; m <= totalMonths; m++) {
+          var yearIdx = Math.floor((m - 1) / 12); /* 0-based */
+          var reduction = (yearIdx < reductions.length) ? reductions[yearIdx] : 0;
+          var effectiveRate = noteRate - reduction;
+          var rMo = r; /* interest always at note rate */
+          var interest = balance * rMo;
+          var principal = basePmt - interest;
+          balance = Math.max(0, balance - principal);
+
+          var subsidy = 0;
+          if (reduction > 0) {
+            var discountedPmt = pmt(loanAmount, effectiveRate, termYears);
+            subsidy = basePmt - discountedPmt;
+          }
+
+          var rowDate = null;
+          if (date) {
+            rowDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+            date = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+          }
+
+          rows.push({
+            month: m, year: yearIdx + 1,
+            effectiveRate: effectiveRate, noteRate: noteRate,
+            basePmt: basePmt, subsidy: subsidy,
+            interest: interest, principal: principal,
+            balance: balance, date: rowDate,
+            isBuydown: reduction > 0
+          });
+        }
+        return rows;
+      }
+
+      /* Compute summary object from schedule */
+      function computeSummary(rows, noteRate, escrowMo, sellerCredit, bdConfig) {
+        var totalSubsidy = 0;
+        var yr1Pmt = 0, yr1Rate = 0;
+        var reductions = bdConfig.reductions;
+
+        for (var i = 0; i < rows.length; i++) {
+          totalSubsidy += rows[i].subsidy;
+        }
+
+        if (rows.length > 0) {
+          yr1Rate = rows[0].effectiveRate;
+          yr1Pmt  = rows[0].basePmt - rows[0].subsidy;
+        }
+
+        var basePmt    = rows.length > 0 ? rows[0].basePmt : 0;
+        var moSavings  = basePmt - yr1Pmt;
+        var creditLeft = sellerCredit - totalSubsidy;
+
+        return {
+          noteRate:     noteRate,
+          basePmt:      basePmt,
+          yr1Rate:      yr1Rate,
+          yr1Pmt:       yr1Pmt,
+          moSavings:    moSavings,
+          totalSubsidy: totalSubsidy,
+          creditLeft:   creditLeft,
+          escrowMo:     escrowMo
+        };
+      }
+
+      /* Render summary cards */
+      function renderSummaryCards(s, showPITI) {
+        var esc = s.escrowMo;
+        document.getElementById('bd-out-base-rate').textContent = fmtPct(s.noteRate);
+        document.getElementById('bd-out-base-pmt').textContent  = fmtDollarInt(showPITI ? s.basePmt + esc : s.basePmt) + '/mo';
+        document.getElementById('bd-out-yr1-rate').textContent  = fmtPct(s.yr1Rate);
+        document.getElementById('bd-out-yr1-pmt').textContent   = fmtDollarInt(showPITI ? s.yr1Pmt + esc : s.yr1Pmt) + '/mo';
+        document.getElementById('bd-out-mo-savings').textContent = fmtDollarInt(s.moSavings);
+        document.getElementById('bd-out-total-subsidy').textContent = fmtDollarInt(s.totalSubsidy);
+        var bal = s.creditLeft;
+        document.getElementById('bd-out-credit-balance').textContent = (bal === 0 && s.escrowMo === 0 && document.getElementById('bd-seller-credit').value == 0) ? '—' : fmtDollarInt(bal);
+      }
+
+      /* Render alerts for surplus / shortfall */
+      function renderAlerts(s) {
+        var surplus   = document.getElementById('bd-alert-surplus');
+        var shortfall = document.getElementById('bd-alert-shortfall');
+        surplus.style.display   = 'none';
+        shortfall.style.display = 'none';
+        var credit = parseFloat(document.getElementById('bd-seller-credit').value) || 0;
+        if (credit <= 0) return;
+        if (s.creditLeft >= 0) {
+          surplus.style.display = 'block';
+          surplus.textContent = 'Seller credit covers the buydown with ' + fmtDollarInt(s.creditLeft) + ' remaining for other closing costs.';
+        } else {
+          shortfall.style.display = 'block';
+          shortfall.textContent = 'Seller credit is ' + fmtDollarInt(-s.creditLeft) + ' short of the required buydown deposit (' + fmtDollarInt(s.totalSubsidy) + ' needed).';
+        }
+      }
+
+      /* Render year-by-year table */
+      function renderYearBreakdown(rows, bdConfig, showPITI, escrowMo) {
+        var tbody = document.getElementById('bd-year-tbody');
+        var years = {};
+        for (var i = 0; i < rows.length; i++) {
+          var r = rows[i];
+          if (!years[r.year]) years[r.year] = { subsidy: 0, pmt: r.basePmt - r.subsidy, rate: r.effectiveRate, isBuydown: r.isBuydown };
+          years[r.year].subsidy += r.subsidy;
+        }
+        var html = '';
+        var reductions = bdConfig.reductions;
+        var noteRate = rows.length > 0 ? rows[0].noteRate : 0;
+        var basePmt  = rows.length > 0 ? rows[0].basePmt  : 0;
+        for (var yr = 1; yr <= Object.keys(years).length; yr++) {
+          var y = years[yr];
+          var moSav = basePmt - y.pmt;
+          var pmtShow = showPITI ? y.pmt + escrowMo : y.pmt;
+          if (y.isBuydown) {
+            html += '<tr><td>Year ' + yr + '</td><td>' + fmtPct(y.rate) + '</td><td>' + fmtDollarInt(pmtShow) + '</td><td class="savings-cell">-' + fmtDollarInt(moSav) + '/mo</td><td>' + fmtDollarInt(y.subsidy) + '</td></tr>';
+          } else {
+            html += '<tr class="note-row"><td>Year ' + yr + '+</td><td>' + fmtPct(noteRate) + '</td><td>' + fmtDollarInt(showPITI ? basePmt + escrowMo : basePmt) + '</td><td>—</td><td>—</td></tr>';
+            break;
+          }
+        }
+        tbody.innerHTML = html;
+      }
+
+
+      /* Render full amortization schedule */
+      function renderSchedule(rows, showFull, showPITI, escrowMo) {
+        var tbody = document.getElementById('bd-schedule-tbody');
+        var limit = showFull ? rows.length : SHOW_MONTHS_DEFAULT;
+        var html = '';
+        for (var i = 0; i < Math.min(rows.length, limit); i++) {
+          var r = rows[i];
+          var pmtShow = showPITI ? (r.basePmt - r.subsidy) + escrowMo : (r.basePmt - r.subsidy);
+          var cls = r.isBuydown ? ' class="buydown-row"' : '';
+          html += '<tr' + cls + '>'
+            + '<td>' + r.month + '</td>'
+            + '<td>' + r.date + '</td>'
+            + '<td>' + fmtPct(r.effectiveRate) + '</td>'
+            + '<td>' + fmtDollarInt(pmtShow) + '</td>'
+            + '<td>' + fmtDollarInt(r.interest) + '</td>'
+            + '<td>' + fmtDollarInt(r.principal) + '</td>'
+            + '<td>' + (r.subsidy > 0 ? fmtDollarInt(r.subsidy) : '—') + '</td>'
+            + '<td>' + fmtDollarInt(r.balance) + '</td>'
+            + '</tr>';
+        }
+        tbody.innerHTML = html;
+        var btn = document.getElementById('bd-show-full-btn');
+        if (rows.length <= SHOW_MONTHS_DEFAULT) {
+          btn.style.display = 'none';
+        } else {
+          btn.style.display = showFull ? 'none' : 'block';
+          btn.textContent = 'Show all ' + rows.length + ' months';
+        }
+      }
+
+      /* Chart: payment timeline */
+      function renderChartTimeline(rows, showPITI, escrowMo) {
+        var ctx = document.getElementById('bd-chart-timeline').getContext('2d');
+        var labels = [], dataPI = [], dataPITI = [];
+        for (var i = 0; i < rows.length; i++) {
+          var r = rows[i];
+          var pi = r.basePmt - r.subsidy;
+          labels.push(r.month);
+          dataPI.push(pi.toFixed(2));
+          dataPITI.push((pi + escrowMo).toFixed(2));
+        }
+        var useData = showPITI ? dataPITI : dataPI;
+        if (chartTimeline) chartTimeline.destroy();
+        chartTimeline = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: showPITI ? 'Monthly PITI' : 'Monthly P&I',
+              data: useData,
+              borderColor: '#C9A84C',
+              backgroundColor: 'rgba(201,168,76,0.12)',
+              borderWidth: 2,
+              pointRadius: 0,
+              fill: true,
+              tension: 0
+            }]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { ticks: { maxTicksLimit: 12, callback: function(v,i){ return (i+1) % 12 === 0 ? 'Yr '+(Math.floor((i+1)/12)) : ''; } } },
+              y: { ticks: { callback: function(v){ return '$' + Math.round(v).toLocaleString(); } } }
+            }
+          }
+        });
+      }
+
+      /* Chart: subsidy breakdown by buydown year */
+      function renderChartSubsidy(rows, bdConfig) {
+        var ctx = document.getElementById('bd-chart-subsidy').getContext('2d');
+        var yearLabels = [], yearSubsidy = [];
+        var years = {};
+        for (var i = 0; i < rows.length; i++) {
+          var r = rows[i];
+          if (!r.isBuydown) continue;
+          if (!years[r.year]) years[r.year] = 0;
+          years[r.year] += r.subsidy;
+        }
+        for (var yr in years) {
+          yearLabels.push('Year ' + yr + ' (' + bdConfig.label.split('/')[parseInt(yr)-1] + '% off)');
+          yearSubsidy.push(years[yr].toFixed(2));
+        }
+        if (chartSubsidy) chartSubsidy.destroy();
+        chartSubsidy = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: yearLabels,
+            datasets: [{
+              label: 'Seller Subsidy',
+              data: yearSubsidy,
+              backgroundColor: '#0A1F3F',
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { ticks: { callback: function(v){ return '$' + Math.round(v).toLocaleString(); } } }
+            }
+          }
+        });
+      }
+
+      /* Render print summary */
+      function renderPrintSummary(s, rows, bdLabel) {
+        var div = document.getElementById('bd-print-body');
+        var loan = parseFloat(document.getElementById('bd-loan-input').value) || 0;
+        document.getElementById('bd-print-date').textContent = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+        div.innerHTML = '<p><strong>Buydown Type:</strong> ' + bdLabel + '</p>'
+          + '<p><strong>Loan Amount:</strong> ' + fmtDollar(loan) + '</p>'
+          + '<p><strong>Note Rate:</strong> ' + fmtPct(s.noteRate) + ' &nbsp;|&nbsp; <strong>Base P&amp;I:</strong> ' + fmtDollarInt(s.basePmt) + '/mo</p>'
+          + '<p><strong>Year 1 Rate:</strong> ' + fmtPct(s.yr1Rate) + ' &nbsp;|&nbsp; <strong>Year 1 Payment:</strong> ' + fmtDollarInt(s.yr1Pmt) + '/mo</p>'
+          + '<p><strong>Monthly Savings (Yr 1):</strong> ' + fmtDollarInt(s.moSavings) + '/mo</p>'
+          + '<p><strong>Total Buydown Deposit:</strong> ' + fmtDollarInt(s.totalSubsidy) + '</p>'
+          + (s.creditLeft !== null ? '<p><strong>Seller Credit Balance After Buydown:</strong> ' + fmtDollarInt(s.creditLeft) + '</p>' : '')
+          + '<hr style="margin:1rem 0">'
+          + '<table style="width:100%;border-collapse:collapse;font-size:.85rem">'
+          + '<thead><tr style="background:#0A1F3F;color:#fff"><th style="padding:.4rem .6rem;text-align:left">Mo</th><th>Rate</th><th>Payment</th><th>Interest</th><th>Principal</th><th>Subsidy</th><th>Balance</th></tr></thead>'
+          + '<tbody>'
+          + rows.map(function(r){
+              return '<tr style="' + (r.isBuydown ? 'background:#fdf6e3' : '') + '">'
+                + '<td style="padding:.3rem .6rem">' + r.month + '</td>'
+                + '<td>' + fmtPct(r.effectiveRate) + '</td>'
+                + '<td>' + fmtDollarInt(r.basePmt - r.subsidy) + '</td>'
+                + '<td>' + fmtDollarInt(r.interest) + '</td>'
+                + '<td>' + fmtDollarInt(r.principal) + '</td>'
+                + '<td>' + (r.subsidy > 0 ? fmtDollarInt(r.subsidy) : '—') + '</td>'
+                + '<td>' + fmtDollarInt(r.balance) + '</td>'
+                + '</tr>';
+            }).join('')
+          + '</tbody></table>';
+      }
+
+      /* Read all inputs and return a config object */
+      function getInputs() {
+        var bdType = document.querySelector('input[name="bd-type"]:checked');
+        var termSel = document.getElementById('bd-term').value;
+        var termYears = termSel === 'custom'
+          ? (parseInt(document.getElementById('bd-term-custom').value) || 30)
+          : parseInt(termSel);
+        var taxFreq = document.querySelector('input[name="bd-tax-freq"]:checked').value;
+        var insFreq = document.querySelector('input[name="bd-ins-freq"]:checked').value;
+        var taxRaw  = parseFloat(document.getElementById('bd-tax-input').value)  || 0;
+        var insRaw  = parseFloat(document.getElementById('bd-ins-input').value)  || 0;
+        var taxMo   = taxFreq === 'annual' ? taxRaw / 12 : taxRaw;
+        var insMo   = insFreq === 'annual' ? insRaw / 12 : insRaw;
+        var hoaMo   = parseFloat(document.getElementById('bd-hoa').value) || 0;
+        return {
+          bdType:      bdType ? bdType.value : '2-1',
+          loanAmount:  parseFloat(document.getElementById('bd-loan-input').value)  || 400000,
+          noteRate:    parseFloat(document.getElementById('bd-rate-input').value)  || 7.0,
+          termYears:   termYears,
+          startDate:   document.getElementById('bd-start-date').value || new Date().toISOString().slice(0,7),
+          escrowMo:    taxMo + insMo + hoaMo,
+          sellerCredit: parseFloat(document.getElementById('bd-seller-credit').value) || 0
+        };
+      }
+
+      /* Master compute + render */
+      function compute() {
+        var inp = getInputs();
+        var bdConfig = BUYDOWN_TYPES[inp.bdType];
+        var rows = buildSchedule(inp.loanAmount, inp.noteRate, inp.termYears, bdConfig.reductions, inp.startDate);
+        var s    = computeSummary(rows, inp.noteRate, inp.escrowMo, inp.sellerCredit, bdConfig);
+        var showPITI = PI_MODE === 'piti';
+        renderSummaryCards(s, showPITI);
+        renderAlerts(s);
+        renderYearBreakdown(rows, bdConfig, showPITI, inp.escrowMo);
+        renderSchedule(rows, showFullSchedule, showPITI, inp.escrowMo);
+        renderChartTimeline(rows, showPITI, inp.escrowMo);
+        renderChartSubsidy(rows, bdConfig);
+        renderPrintSummary(s, rows, bdConfig.label);
+      }
+
+      /* Build shareable URL with current inputs */
+      function buildShareURL() {
+        var inp = getInputs();
+        var p = new URLSearchParams({
+          type:   inp.bdType,
+          amt:    inp.loanAmount,
+          rate:   inp.noteRate,
+          term:   inp.termYears,
+          start:  inp.startDate,
+          escrow: inp.escrowMo.toFixed(2),
+          credit: inp.sellerCredit,
+          pimode: PI_MODE
+        });
+        return window.location.origin + window.location.pathname + '?' + p.toString();
+      }
+
+      /* Restore state from URL params on load */
+      function restoreFromURL() {
+        var p = new URLSearchParams(window.location.search);
+        if (!p.has('amt')) return;
+        var type = p.get('type') || '2-1';
+        var radio = document.querySelector('input[name="bd-type"][value="' + type + '"]');
+        if (radio) radio.checked = true;
+        var amt  = p.get('amt');   if (amt)  { document.getElementById('bd-loan-slider').value = amt;  document.getElementById('bd-loan-input').value = amt; }
+        var rate = p.get('rate');  if (rate) { document.getElementById('bd-rate-slider').value = rate; document.getElementById('bd-rate-input').value = rate; }
+        var term = p.get('term');  if (term) {
+          var sel = document.getElementById('bd-term');
+          var opt = sel.querySelector('option[value="' + term + '"]');
+          if (opt) { sel.value = term; }
+          else { sel.value = 'custom'; document.getElementById('bd-term-custom').value = term; document.getElementById('bd-term-custom').style.display = 'block'; }
+        }
+        var start = p.get('start'); if (start) document.getElementById('bd-start-date').value = start;
+        var pimode = p.get('pimode'); if (pimode === 'piti') {
+          PI_MODE = 'piti';
+          document.getElementById('btn-show-piti').classList.add('active');
+          document.getElementById('btn-show-pi').classList.remove('active');
+        }
+      }
+
+      /* Wire up all events */
+      function initEvents() {
+        /* Buydown type radios */
+        var typeInputs = document.querySelectorAll('input[name="bd-type"]');
+        for (var i = 0; i < typeInputs.length; i++) {
+          typeInputs[i].addEventListener('change', compute);
+        }
+
+        /* Loan amount slider + number sync */
+        var loanSlider = document.getElementById('bd-loan-slider');
+        var loanInput  = document.getElementById('bd-loan-input');
+        loanSlider.addEventListener('input', function(){ loanInput.value = loanSlider.value; compute(); });
+        loanInput.addEventListener('input',  function(){ loanSlider.value = loanInput.value; compute(); });
+
+        /* Rate slider + number sync */
+        var rateSlider = document.getElementById('bd-rate-slider');
+        var rateInput  = document.getElementById('bd-rate-input');
+        rateSlider.addEventListener('input', function(){ rateInput.value = parseFloat(rateSlider.value).toFixed(3); compute(); });
+        rateInput.addEventListener('input',  function(){ rateSlider.value = rateInput.value; compute(); });
+
+        /* Term select + custom field */
+        var termSel    = document.getElementById('bd-term');
+        var termCustom = document.getElementById('bd-term-custom');
+        termSel.addEventListener('change', function(){
+          termCustom.style.display = termSel.value === 'custom' ? 'block' : 'none';
+          compute();
+        });
+        termCustom.addEventListener('input', compute);
+
+        /* Start date */
+        document.getElementById('bd-start-date').addEventListener('change', compute);
+
+        /* Escrow / HOA inputs */
+        var escrowIds = ['bd-tax-input','bd-ins-input','bd-hoa','bd-seller-credit'];
+        for (var j = 0; j < escrowIds.length; j++) {
+          document.getElementById(escrowIds[j]).addEventListener('input', compute);
+        }
+
+        /* Frequency toggles */
+        var freqInputs = document.querySelectorAll('input[name="bd-tax-freq"], input[name="bd-ins-freq"]');
+        for (var k = 0; k < freqInputs.length; k++) {
+          freqInputs[k].addEventListener('change', compute);
+        }
+
+        /* PI / PITI toggle */
+        document.getElementById('btn-show-pi').addEventListener('click', function(){
+          PI_MODE = 'pi';
+          this.classList.add('active');
+          document.getElementById('btn-show-piti').classList.remove('active');
+          compute();
+        });
+        document.getElementById('btn-show-piti').addEventListener('click', function(){
+          PI_MODE = 'piti';
+          this.classList.add('active');
+          document.getElementById('btn-show-pi').classList.remove('active');
+          compute();
+        });
+
+        /* Show full schedule */
+        document.getElementById('bd-show-full-btn').addEventListener('click', function(){
+          showFullSchedule = true;
+          compute();
+        });
+
+        /* Share button */
+        document.getElementById('bd-share-btn').addEventListener('click', function(){
+          var url = buildShareURL();
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(function(){
+              document.getElementById('bd-share-confirm').style.display = 'inline';
+              setTimeout(function(){ document.getElementById('bd-share-confirm').style.display = 'none'; }, 2500);
+            });
+          } else {
+            prompt('Copy this link:', url);
+          }
+        });
+
+        /* Print button */
+        document.getElementById('bd-print-btn').addEventListener('click', function(){
+          window.print();
+        });
+      }
+
+      /* Init on DOM ready */
+      document.addEventListener('DOMContentLoaded', function(){
+        restoreFromURL();
+        initEvents();
+        compute();
+      });
+
+    </script>
+  </body>
+</html>
