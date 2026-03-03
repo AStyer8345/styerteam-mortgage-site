@@ -2,6 +2,7 @@ const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildRatePrompt } = require("./lib/rate-prompt-builder");
 const { buildRatePage } = require("./lib/rate-page-builder");
+const { createGitHubFile, createAndSendCampaign, forceAbsoluteLinks, stripNestedHtmlDocument, formatDateForTitle } = require("./lib/shared");
 
 exports.handler = async (event) => {
   const headers = {
@@ -92,7 +93,7 @@ exports.handler = async (event) => {
     });
 
     if (!isPreview) {
-      await createGitHubFile(filename, fullPageHtml);
+      await createGitHubFile(`rates/${filename}`, fullPageHtml, `Add rate update page: ${filename}`);
     }
 
     // ----------------------------------------------------------------
@@ -218,104 +219,3 @@ function parseAIResponse(text) {
   return result;
 }
 
-// ====================================================================
-// GITHUB API: Create file in repo
-// ====================================================================
-
-async function createGitHubFile(filename, content) {
-  const token = process.env.GITHUB_TOKEN || process.env.github_token;
-  const repo = process.env.GITHUB_REPO || process.env.Github_repo;
-  const path = `rates/${filename}`;
-  const url = `https://api.github.com/repos/${repo}/contents/${path}`;
-
-  const body = JSON.stringify({
-    message: `Add rate update page: ${filename}`,
-    content: Buffer.from(content).toString("base64"),
-    branch: "main",
-  });
-
-  const res = await fetch(url, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/vnd.github.v3+json",
-      "Content-Type": "application/json",
-      "User-Agent": "StyerTeam-RateUpdate-Bot",
-    },
-    body,
-  });
-
-  if (!res.ok) {
-    const errBody = await res.text();
-    throw new Error(`GitHub API error (${res.status}): ${errBody}`);
-  }
-
-  return res.json();
-}
-
-// ====================================================================
-// MAILCHIMP: Create campaign + send
-// ====================================================================
-
-async function createAndSendCampaign({ listId, subject, preheader, html, fromName, replyTo }) {
-  const campaign = await mailchimp.campaigns.create({
-    type: "regular",
-    recipients: { list_id: listId },
-    settings: {
-      subject_line: subject,
-      preview_text: preheader,
-      from_name: fromName,
-      reply_to: replyTo,
-    },
-  });
-
-  await mailchimp.campaigns.setContent(campaign.id, { html });
-  await mailchimp.campaigns.send(campaign.id);
-
-  return { id: campaign.id, status: "sent", subject };
-}
-
-// ====================================================================
-// HELPER: Force all links to use absolute URL
-// ====================================================================
-
-function forceAbsoluteLinks(html, pageUrl) {
-  let result = html.replace(/\[PAGE_URL\]/g, pageUrl);
-
-  result = result.replace(
-    /href=["']([^"']*?\.html)["']/gi,
-    (match, href) => {
-      if (href.startsWith("http") || href.startsWith("../") || href.startsWith("/")) {
-        return match;
-      }
-      return `href="${pageUrl}"`;
-    }
-  );
-
-  return result;
-}
-
-// ====================================================================
-// HELPER: Strip nested HTML document tags
-// ====================================================================
-
-function stripNestedHtmlDocument(html) {
-  let cleaned = html;
-  cleaned = cleaned.replace(/<!DOCTYPE[^>]*>/gi, "");
-  cleaned = cleaned.replace(/<\/?html[^>]*>/gi, "");
-  cleaned = cleaned.replace(/<head[\s\S]*?<\/head>/gi, "");
-  cleaned = cleaned.replace(/<\/?body[^>]*>/gi, "");
-  cleaned = cleaned.replace(/<style[\s\S]*?<\/style>/gi, "");
-  cleaned = cleaned.replace(/^[\s\n]*<div class="container">\s*/i, "");
-  cleaned = cleaned.replace(/\s*<\/div>[\s\n]*$/i, "");
-  return cleaned.trim();
-}
-
-// ====================================================================
-// HELPER: Format date for fallback titles
-// ====================================================================
-
-function formatDateForTitle(dateStr) {
-  const d = new Date(dateStr + "T12:00:00");
-  return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
-}
