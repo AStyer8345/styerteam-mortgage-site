@@ -86,6 +86,16 @@ function initNewsletterAutomation() {
     });
   });
 
+  // Custom prompt toggle
+  const nlCustomToggle = document.getElementById('nl-custom-prompt-toggle');
+  if (nlCustomToggle) {
+    nlCustomToggle.addEventListener('change', () => {
+      const isCustom = nlCustomToggle.checked;
+      document.getElementById('nl-structured-fields').classList.toggle('hidden', isCustom);
+      document.getElementById('nl-custom-prompt-fields').classList.toggle('hidden', !isCustom);
+    });
+  }
+
   // "Looks Good — Go Live" button in preview results
   const goLiveBtn = document.getElementById('preview-go-live-btn');
   if (goLiveBtn) {
@@ -149,8 +159,14 @@ function initNewsletterAutomation() {
       if (!emailHtml) { form.querySelector('#nl-paste-email').focus(); return; }
       if (!webContent) { form.querySelector('#nl-paste-web').focus(); return; }
     } else {
-      const topic = form.querySelector('#nl-topic').value.trim();
-      if (!topic) { form.querySelector('#nl-topic').focus(); return; }
+      const isCustom = form.querySelector('#nl-custom-prompt-toggle')?.checked;
+      if (isCustom) {
+        const cp = form.querySelector('#nl-custom-prompt').value.trim();
+        if (!cp) { form.querySelector('#nl-custom-prompt').focus(); return; }
+      } else {
+        const topic = form.querySelector('#nl-topic').value.trim();
+        if (!topic) { form.querySelector('#nl-topic').focus(); return; }
+      }
     }
 
     // Gather audiences
@@ -194,17 +210,27 @@ function initNewsletterAutomation() {
         scheduleTime,
       };
     } else {
-      formData = {
-        topic: form.querySelector('#nl-topic').value.trim(),
-        audiences,
-        mode,
-        articles: form.querySelector('#nl-articles').value.trim(),
-        story: form.querySelector('#nl-story').value.trim(),
-        photo: form.querySelector('#nl-photo').value.trim(),
-        aiTool: form.querySelector('#nl-ai-tool').value.trim(),
-        notes: form.querySelector('#nl-notes').value.trim(),
-        scheduleTime,
-      };
+      const isCustom = form.querySelector('#nl-custom-prompt-toggle')?.checked;
+      if (isCustom) {
+        formData = {
+          customPrompt: form.querySelector('#nl-custom-prompt').value.trim(),
+          audiences,
+          mode,
+          scheduleTime,
+        };
+      } else {
+        formData = {
+          topic: form.querySelector('#nl-topic').value.trim(),
+          audiences,
+          mode,
+          articles: form.querySelector('#nl-articles').value.trim(),
+          story: form.querySelector('#nl-story').value.trim(),
+          photo: form.querySelector('#nl-photo').value.trim(),
+          aiTool: form.querySelector('#nl-ai-tool').value.trim(),
+          notes: form.querySelector('#nl-notes').value.trim(),
+          scheduleTime,
+        };
+      }
     }
 
     // Reset UI
@@ -677,6 +703,16 @@ function initRealtorBuilder() {
     });
   });
 
+  // Custom prompt toggle
+  const rlCustomToggle = document.getElementById('rl-custom-prompt-toggle');
+  if (rlCustomToggle) {
+    rlCustomToggle.addEventListener('change', () => {
+      const isCustom = rlCustomToggle.checked;
+      document.getElementById('rl-structured-fields').classList.toggle('hidden', isCustom);
+      document.getElementById('rl-custom-prompt-fields').classList.toggle('hidden', !isCustom);
+    });
+  }
+
   // "Looks Good — Go Live" button in preview results
   const goLiveBtn = document.getElementById('rl-preview-go-live-btn');
   if (goLiveBtn) {
@@ -735,8 +771,14 @@ function initRealtorBuilder() {
       if (!emailHtml) { form.querySelector('#rl-paste-email').focus(); return; }
       if (!webContent) { form.querySelector('#rl-paste-web').focus(); return; }
     } else {
-      const topic = form.querySelector('#rl-topic').value.trim();
-      if (!topic) { form.querySelector('#rl-topic').focus(); return; }
+      const isCustom = form.querySelector('#rl-custom-prompt-toggle')?.checked;
+      if (isCustom) {
+        const cp = form.querySelector('#rl-custom-prompt').value.trim();
+        if (!cp) { form.querySelector('#rl-custom-prompt').focus(); return; }
+      } else {
+        const topic = form.querySelector('#rl-topic').value.trim();
+        if (!topic) { form.querySelector('#rl-topic').focus(); return; }
+      }
     }
 
     // Confirm if live mode
@@ -768,16 +810,25 @@ function initRealtorBuilder() {
         scheduleTime,
       };
     } else {
-      formData = {
-        topic: form.querySelector('#rl-topic').value.trim(),
-        category: form.querySelector('#rl-category').value,
-        articles: form.querySelector('#rl-articles').value.trim(),
-        story: form.querySelector('#rl-story').value.trim(),
-        aiTool: form.querySelector('#rl-ai-tool').value.trim(),
-        notes: form.querySelector('#rl-notes').value.trim(),
-        mode,
-        scheduleTime,
-      };
+      const isCustom = form.querySelector('#rl-custom-prompt-toggle')?.checked;
+      if (isCustom) {
+        formData = {
+          customPrompt: form.querySelector('#rl-custom-prompt').value.trim(),
+          mode,
+          scheduleTime,
+        };
+      } else {
+        formData = {
+          topic: form.querySelector('#rl-topic').value.trim(),
+          category: form.querySelector('#rl-category').value,
+          articles: form.querySelector('#rl-articles').value.trim(),
+          story: form.querySelector('#rl-story').value.trim(),
+          aiTool: form.querySelector('#rl-ai-tool').value.trim(),
+          notes: form.querySelector('#rl-notes').value.trim(),
+          mode,
+          scheduleTime,
+        };
+      }
     }
 
     // Reset UI
@@ -1005,11 +1056,12 @@ function initFormPersistence() {
     textFields: [
       'nl-topic', 'nl-articles', 'nl-story', 'nl-photo', 'nl-ai-tool', 'nl-notes',
       'nl-paste-title', 'nl-paste-description', 'nl-paste-subject', 'nl-paste-preheader',
-      'nl-paste-photo', 'nl-paste-email', 'nl-paste-web', 'nl-schedule'
+      'nl-paste-photo', 'nl-paste-email', 'nl-paste-web', 'nl-schedule', 'nl-custom-prompt'
     ],
     checkboxName: 'audience',
     checkboxKey: 'audiences',
     radioFields: [{ name: 'nl-source', key: 'nlSource' }],
+    singleCheckboxes: ['nl-custom-prompt-toggle'],
   });
 
   // Rate form persistence
@@ -1035,10 +1087,11 @@ function initFormPersistence() {
     textFields: [
       'rl-topic', 'rl-articles', 'rl-story', 'rl-ai-tool', 'rl-notes',
       'rl-paste-title', 'rl-paste-description', 'rl-paste-subject', 'rl-paste-preheader',
-      'rl-paste-photo', 'rl-paste-email', 'rl-paste-web', 'rl-schedule'
+      'rl-paste-photo', 'rl-paste-email', 'rl-paste-web', 'rl-schedule', 'rl-custom-prompt'
     ],
     selectFields: ['rl-category', 'rl-paste-category'],
     radioFields: [{ name: 'rl-source', key: 'rlSource' }],
+    singleCheckboxes: ['rl-custom-prompt-toggle'],
   });
 }
 
@@ -1060,7 +1113,10 @@ function persistForm({ storageKey, formId, textFields, selectFields, checkboxNam
       if (singleCheckboxes) {
         singleCheckboxes.forEach(id => {
           const el = document.getElementById(id);
-          if (el && saved[id] !== undefined) el.checked = !!saved[id];
+          if (el && saved[id] !== undefined) {
+            el.checked = !!saved[id];
+            el.dispatchEvent(new Event('change'));
+          }
         });
       }
 

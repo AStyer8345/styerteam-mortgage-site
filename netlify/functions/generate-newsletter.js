@@ -42,7 +42,7 @@ async function generateNewsletter(formData) {
       if (!formData.title) throw Object.assign(new Error("Title is required for paste mode"), { statusCode: 400 });
       if (!formData.emailHtml) throw Object.assign(new Error("Teaser Email HTML is required for paste mode"), { statusCode: 400 });
       if (!formData.webContent) throw Object.assign(new Error("Webpage Content HTML is required for paste mode"), { statusCode: 400 });
-    } else if (!topic) {
+    } else if (!topic && !formData.customPrompt) {
       throw Object.assign(new Error("Topic is required"), { statusCode: 400 });
     }
 
@@ -91,7 +91,7 @@ async function generateNewsletter(formData) {
     } else {
       // AI mode: generate content via Claude API
       const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      const prompt = buildPrompt(formData, pageUrl);
+      const prompt = formData.customPrompt || buildPrompt(formData, pageUrl);
 
       // Retry up to 3 times on transient errors (429/529)
       let response;

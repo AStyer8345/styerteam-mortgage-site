@@ -149,45 +149,65 @@
 
               <!-- ===== AI-MODE FIELDS ===== -->
               <div id="nl-ai-fields">
-                <!-- TOPIC -->
-                <div class="form-group">
-                  <label for="nl-topic">This Week's Topic / Theme <span class="required-star">*</span></label>
-                  <input type="text" id="nl-topic" name="topic" placeholder="e.g. Rates dropped this week, spring market heating up, new FHA changes..." required>
-                  <span class="form-helper">What's the main thing you want to talk about?</span>
+                <!-- STRUCTURED FIELDS (hidden when custom prompt is active) -->
+                <div id="nl-structured-fields">
+                  <!-- TOPIC -->
+                  <div class="form-group">
+                    <label for="nl-topic">This Week's Topic / Theme <span class="required-star">*</span></label>
+                    <input type="text" id="nl-topic" name="topic" placeholder="e.g. Rates dropped this week, spring market heating up, new FHA changes..." required>
+                    <span class="form-helper">What's the main thing you want to talk about?</span>
+                  </div>
+
+                  <!-- ARTICLES -->
+                  <div class="form-group">
+                    <label for="nl-articles">Articles / Links to Reference</label>
+                    <textarea id="nl-articles" name="articles" rows="4" placeholder="Paste URLs or article text you want summarized or referenced in the newsletter..."></textarea>
+                    <span class="form-helper">News articles, market data, anything you want included or summarized.</span>
+                  </div>
+
+                  <!-- STORY / PERSONAL ANGLE -->
+                  <div class="form-group">
+                    <label for="nl-story">Personal Story / Anecdote</label>
+                    <textarea id="nl-story" name="story" rows="4" placeholder="e.g. Had a client close this week who almost gave up. Bullet points are fine:&#10;- Client was nervous about rates&#10;- Locked at the right time&#10;- Saved $200/mo vs waiting"></textarea>
+                    <span class="form-helper">A story, client win, or personal touch. Bullet points work great.</span>
+                  </div>
+
+                  <!-- PHOTO URL -->
+                  <div class="form-group">
+                    <label for="nl-photo">Photo URL (optional)</label>
+                    <input type="url" id="nl-photo" name="photo" placeholder="https://lh3.googleusercontent.com/d/...">
+                    <span class="form-helper">Google Drive image link for the personal note section. Leave blank for no photo.</span>
+                  </div>
+
+                  <!-- AI TOOLS (REALTOR ONLY) -->
+                  <div class="form-group">
+                    <label for="nl-ai-tool">AI Tool Tip for Realtors (optional)</label>
+                    <textarea id="nl-ai-tool" name="aiTool" rows="3" placeholder="e.g. Show realtors how to use ChatGPT to write property descriptions, or a prompt they can use for follow-up emails..."></textarea>
+                    <span class="form-helper">An AI prompt or tool tip for the realtor version's "AI Edge" section.</span>
+                  </div>
+
+                  <!-- EXTRA NOTES -->
+                  <div class="form-group">
+                    <label for="nl-notes">Anything Else</label>
+                    <textarea id="nl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid, CTA ideas..."></textarea>
+                  </div>
                 </div>
 
-                <!-- ARTICLES -->
-                <div class="form-group">
-                  <label for="nl-articles">Articles / Links to Reference</label>
-                  <textarea id="nl-articles" name="articles" rows="4" placeholder="Paste URLs or article text you want summarized or referenced in the newsletter..."></textarea>
-                  <span class="form-helper">News articles, market data, anything you want included or summarized.</span>
+                <!-- CUSTOM PROMPT TOGGLE -->
+                <div class="form-group" style="margin-top: var(--spacing-lg);">
+                  <label class="dash-toggle" style="display:inline-flex;">
+                    <input type="checkbox" id="nl-custom-prompt-toggle">
+                    <span class="dash-toggle-label">Use custom prompt instead of structured fields</span>
+                  </label>
                 </div>
 
-                <!-- STORY / PERSONAL ANGLE -->
-                <div class="form-group">
-                  <label for="nl-story">Personal Story / Anecdote</label>
-                  <textarea id="nl-story" name="story" rows="4" placeholder="e.g. Had a client close this week who almost gave up. Bullet points are fine:&#10;- Client was nervous about rates&#10;- Locked at the right time&#10;- Saved $200/mo vs waiting"></textarea>
-                  <span class="form-helper">A story, client win, or personal touch. Bullet points work great.</span>
-                </div>
-
-                <!-- PHOTO URL -->
-                <div class="form-group">
-                  <label for="nl-photo">Photo URL (optional)</label>
-                  <input type="url" id="nl-photo" name="photo" placeholder="https://lh3.googleusercontent.com/d/...">
-                  <span class="form-helper">Google Drive image link for the personal note section. Leave blank for no photo.</span>
-                </div>
-
-                <!-- AI TOOLS (REALTOR ONLY) -->
-                <div class="form-group">
-                  <label for="nl-ai-tool">AI Tool Tip for Realtors (optional)</label>
-                  <textarea id="nl-ai-tool" name="aiTool" rows="3" placeholder="e.g. Show realtors how to use ChatGPT to write property descriptions, or a prompt they can use for follow-up emails..."></textarea>
-                  <span class="form-helper">An AI prompt or tool tip for the realtor version's "AI Edge" section.</span>
-                </div>
-
-                <!-- EXTRA NOTES -->
-                <div class="form-group">
-                  <label for="nl-notes">Anything Else</label>
-                  <textarea id="nl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid, CTA ideas..."></textarea>
+                <!-- CUSTOM PROMPT FIELDS (shown when toggle is checked) -->
+                <div id="nl-custom-prompt-fields" class="hidden">
+                  <div class="form-group">
+                    <label for="nl-custom-prompt">Custom Prompt <span class="required-star">*</span></label>
+                    <textarea id="nl-custom-prompt" name="customPrompt" rows="10" placeholder="Write your full prompt here. Be specific — include topic, tone, any stories or data points, what sections to include, audiences, etc.&#10;&#10;This replaces all structured fields above and is sent directly to Claude as the generation prompt."></textarea>
+                    <span class="form-helper">This is sent verbatim to Claude. Include everything the AI needs to generate the content.</span>
+                  </div>
                 </div>
               </div>
 
@@ -595,52 +615,72 @@
 
               <!-- ===== AI-MODE FIELDS ===== -->
               <div id="rl-ai-fields">
-                <!-- TOPIC -->
-                <div class="form-group">
-                  <label for="rl-topic">Topic / Theme <span class="required-star">*</span></label>
-                  <input type="text" id="rl-topic" name="topic" placeholder="e.g. Spring market strategy, co-marketing flyer ideas, new FHA guideline change, AI tools for agents..." required>
-                  <span class="form-helper">What do you want to talk to your realtor partners about this week?</span>
+                <!-- STRUCTURED FIELDS (hidden when custom prompt is active) -->
+                <div id="rl-structured-fields">
+                  <!-- TOPIC -->
+                  <div class="form-group">
+                    <label for="rl-topic">Topic / Theme <span class="required-star">*</span></label>
+                    <input type="text" id="rl-topic" name="topic" placeholder="e.g. Spring market strategy, co-marketing flyer ideas, new FHA guideline change, AI tools for agents..." required>
+                    <span class="form-helper">What do you want to talk to your realtor partners about this week?</span>
+                  </div>
+
+                  <!-- CATEGORY -->
+                  <div class="form-group">
+                    <label for="rl-category">Category (optional)</label>
+                    <select id="rl-category" name="category">
+                      <option value="">-- Let AI Choose --</option>
+                      <option value="Market Intel">Market Intel</option>
+                      <option value="Co-Marketing">Co-Marketing</option>
+                      <option value="Deal Flow">Deal Flow</option>
+                      <option value="Tech & Tools">Tech & Tools</option>
+                      <option value="Lending Insights">Lending Insights</option>
+                    </select>
+                    <span class="form-helper">Pick a category or let AI choose based on the topic.</span>
+                  </div>
+
+                  <!-- ARTICLES -->
+                  <div class="form-group">
+                    <label for="rl-articles">Articles / Links to Reference</label>
+                    <textarea id="rl-articles" name="articles" rows="4" placeholder="Paste URLs or article text you want summarized or referenced..."></textarea>
+                    <span class="form-helper">Market data, news articles, anything you want included.</span>
+                  </div>
+
+                  <!-- STORY / PERSONAL ANGLE -->
+                  <div class="form-group">
+                    <label for="rl-story">Personal Story / Anecdote</label>
+                    <textarea id="rl-story" name="story" rows="4" placeholder="e.g. Helped an agent close a deal this week by structuring a creative loan. Bullet points work:&#10;- Agent's buyer was about to walk&#10;- We ran the numbers on a 2-1 buydown&#10;- Closed in 21 days"></textarea>
+                    <span class="form-helper">A deal win, partnership moment, or personal touch. Realtors love hearing about real closings.</span>
+                  </div>
+
+                  <!-- AI TOOL TIP -->
+                  <div class="form-group">
+                    <label for="rl-ai-tool">AI Tool Tip for Realtors (optional)</label>
+                    <textarea id="rl-ai-tool" name="aiTool" rows="3" placeholder="e.g. Show agents how to use ChatGPT to write listing descriptions, or a prompt for follow-up emails..."></textarea>
+                    <span class="form-helper">An AI prompt, tool, or tech tip for the article's "Tech Edge" section.</span>
+                  </div>
+
+                  <!-- EXTRA NOTES -->
+                  <div class="form-group">
+                    <label for="rl-notes">Anything Else</label>
+                    <textarea id="rl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid..."></textarea>
+                  </div>
                 </div>
 
-                <!-- CATEGORY -->
-                <div class="form-group">
-                  <label for="rl-category">Category (optional)</label>
-                  <select id="rl-category" name="category">
-                    <option value="">-- Let AI Choose --</option>
-                    <option value="Market Intel">Market Intel</option>
-                    <option value="Co-Marketing">Co-Marketing</option>
-                    <option value="Deal Flow">Deal Flow</option>
-                    <option value="Tech & Tools">Tech & Tools</option>
-                    <option value="Lending Insights">Lending Insights</option>
-                  </select>
-                  <span class="form-helper">Pick a category or let AI choose based on the topic.</span>
+                <!-- CUSTOM PROMPT TOGGLE -->
+                <div class="form-group" style="margin-top: var(--spacing-lg);">
+                  <label class="dash-toggle" style="display:inline-flex;">
+                    <input type="checkbox" id="rl-custom-prompt-toggle">
+                    <span class="dash-toggle-label">Use custom prompt instead of structured fields</span>
+                  </label>
                 </div>
 
-                <!-- ARTICLES -->
-                <div class="form-group">
-                  <label for="rl-articles">Articles / Links to Reference</label>
-                  <textarea id="rl-articles" name="articles" rows="4" placeholder="Paste URLs or article text you want summarized or referenced..."></textarea>
-                  <span class="form-helper">Market data, news articles, anything you want included.</span>
-                </div>
-
-                <!-- STORY / PERSONAL ANGLE -->
-                <div class="form-group">
-                  <label for="rl-story">Personal Story / Anecdote</label>
-                  <textarea id="rl-story" name="story" rows="4" placeholder="e.g. Helped an agent close a deal this week by structuring a creative loan. Bullet points work:&#10;- Agent's buyer was about to walk&#10;- We ran the numbers on a 2-1 buydown&#10;- Closed in 21 days"></textarea>
-                  <span class="form-helper">A deal win, partnership moment, or personal touch. Realtors love hearing about real closings.</span>
-                </div>
-
-                <!-- AI TOOL TIP -->
-                <div class="form-group">
-                  <label for="rl-ai-tool">AI Tool Tip for Realtors (optional)</label>
-                  <textarea id="rl-ai-tool" name="aiTool" rows="3" placeholder="e.g. Show agents how to use ChatGPT to write listing descriptions, or a prompt for follow-up emails..."></textarea>
-                  <span class="form-helper">An AI prompt, tool, or tech tip for the article's "Tech Edge" section.</span>
-                </div>
-
-                <!-- EXTRA NOTES -->
-                <div class="form-group">
-                  <label for="rl-notes">Anything Else</label>
-                  <textarea id="rl-notes" name="notes" rows="3" placeholder="Tone preferences, specific things to mention or avoid..."></textarea>
+                <!-- CUSTOM PROMPT FIELDS (shown when toggle is checked) -->
+                <div id="rl-custom-prompt-fields" class="hidden">
+                  <div class="form-group">
+                    <label for="rl-custom-prompt">Custom Prompt <span class="required-star">*</span></label>
+                    <textarea id="rl-custom-prompt" name="customPrompt" rows="10" placeholder="Write your full prompt here. Be specific — include topic, category, tone, any stories or data points, what sections to include, etc.&#10;&#10;This replaces all structured fields above and is sent directly to Claude as the generation prompt."></textarea>
+                    <span class="form-helper">This is sent verbatim to Claude. Include everything the AI needs to generate the content.</span>
+                  </div>
                 </div>
               </div>
 
