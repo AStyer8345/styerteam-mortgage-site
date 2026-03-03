@@ -1,0 +1,164 @@
+============================================================
+FIRST-TIME HOMEBUYER GUIDE — 3-EMAIL DRIP SEQUENCE
+============================================================
+By Adam Styer, Senior Loan Officer | NMLS #513013
+Mortgage Solutions LP | Austin, TX
+
+Trigger: New subscriber opts in via the First-Time Buyer Guide landing page
+Platform: Mailchimp (or any ESP with automation)
+Merge Tags: *|FNAME|* = First name
+
+============================================================
+EMAIL 1 — SEND IMMEDIATELY AFTER OPT-IN
+============================================================
+
+SUBJECT: Your guide is ready, *|FNAME|* — here's the one thing most buyers get wrong
+
+PREVIEW TEXT: It's not your credit score. It's not your income. It's this.
+
+---
+
+Hey *|FNAME|*,
+
+Thanks for grabbing the First-Time Homebuyer Guide. Here's your copy:
+
+[DOWNLOAD THE GUIDE]
+https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9
+
+I wrote this guide because I got tired of watching first-time buyers in Austin get bad advice — or no advice at all. Everything in there is the same conversation I have with every buyer who sits across from me. No fluff, no sales pitch.
+
+If you only read one section, make it Section 1: "You Don't Need 20% Down."
+
+Most people think they need $70,000 saved to buy a $350,000 home. The real number? As low as $10,500. And here's the part nobody talks about — PMI works in tiers, and if your down payment lands between those tiers, you're overpaying for nothing.
+
+That one insight saves my clients thousands.
+
+The rest of the guide covers credit scores, income qualification, seller concessions, Texas assistance programs, and more. It's all in there.
+
+Read it when you're ready. And if you have questions — just reply to this email. I read every one.
+
+Talk soon,
+
+Adam Styer
+Senior Loan Officer | NMLS #513013
+Mortgage Solutions LP
+(512) 956-6010
+adam@thestyerteam.com
+
+
+============================================================
+EMAIL 2 — SEND 3 DAYS AFTER EMAIL 1
+============================================================
+
+SUBJECT: The negotiating trick that can save you $15,000+
+
+PREVIEW TEXT: Most Austin buyers don't ask for this. You should.
+
+---
+
+Hey *|FNAME|*,
+
+Quick question — did you know the seller can pay for your closing costs?
+
+It's called a seller concession, and it's one of the most underused tools in homebuying. Here's the short version:
+
+When you make an offer, you can negotiate for the seller to contribute a percentage of the purchase price toward your closing costs and prepaids. On a $350,000 home, that can be $10,500 to $21,000 — often enough to cover every dollar you'd owe at closing.
+
+But here's where it gets really interesting.
+
+If there's money left over after covering your costs, those concession dollars can buy down your interest rate. Two ways to do it:
+
+1. A 2-1 buydown — your rate drops 2% in year one, 1% in year two, then goes to your normal rate. If rates drop during that time, you refinance and keep the lower payment.
+
+2. Discount points — permanently lower your rate. One point (1% of the loan) typically cuts your rate by about 0.25%. And when the seller is paying for it? That's free savings for you.
+
+This is the kind of strategy most buyers never hear about because most people don't have a lender walking them through the options.
+
+That's what I do.
+
+If you're starting to think seriously about buying in the next 6-12 months, the smartest move is a quick pre-approval. No obligation, no pressure — just real numbers so you know exactly where you stand.
+
+Takes about 15 minutes:
+[GET PRE-APPROVED →]
+https://mslp.my1003app.com/513013/register
+
+Or just reply to this email with your questions. I'm here.
+
+Adam Styer
+Senior Loan Officer | NMLS #513013
+Mortgage Solutions LP
+(512) 956-6010
+adam@thestyerteam.com
+
+
+============================================================
+EMAIL 3 — SEND 5 DAYS AFTER EMAIL 2
+============================================================
+
+SUBJECT: Real talk — are you actually ready to buy?
+
+PREVIEW TEXT: Here's a 2-minute gut check.
+
+---
+
+Hey *|FNAME|*,
+
+I'll keep this one short.
+
+After 500+ families helped through the homebuying process, I've learned there are really only three things that separate "thinking about buying" from "actually buying":
+
+1. You know what you can afford. Not a guess — a real number from a lender, based on your income, credit, and debts. A pre-approval gives you this in about 15 minutes.
+
+2. You have some money saved. You don't need 20% down. You might not even need 5%. Between low down payment programs, Texas assistance programs, and seller concessions, the number is probably lower than you think.
+
+3. You have someone in your corner. Not a chatbot. Not a 1-800 number. A real person who picks up the phone, explains things in plain English, and fights to get you the best deal.
+
+That's what I do at Mortgage Solutions LP. We're not a big bank with overhead baked into your rate. We're not a broker waiting on a third party. We underwrite and fund your loan in-house, and we shop for the best pricing on the back end — so you get wholesale-level rates with a direct lender's speed.
+
+If you're ready to find out where you stand, here are two ways to take the next step:
+
+[GET PRE-APPROVED ONLINE →]
+https://mslp.my1003app.com/513013/register
+
+Or call/text me directly: (512) 956-6010
+
+No pressure. No obligation. Just clarity.
+
+Adam Styer
+Senior Loan Officer | NMLS #513013
+Mortgage Solutions LP
+(512) 956-6010
+adam@thestyerteam.com
+
+
+============================================================
+SEQUENCE NOTES
+============================================================
+
+TIMING:
+  - Email 1: Immediate (triggered by opt-in)
+  - Email 2: 3 days after Email 1
+  - Email 3: 5 days after Email 2 (8 days total from opt-in)
+
+MAILCHIMP SETUP:
+  - Create automation: "First-Time Buyer Guide Drip"
+  - Trigger: Subscriber joins the guide opt-in audience/tag
+  - 3 emails with time delays as noted above
+  - From name: Adam Styer
+  - From email: adam@thestyerteam.com
+  - Reply-to: adam@thestyerteam.com
+
+SUBJECT LINE A/B TEST IDEAS:
+  Email 1 Alt: "Here's your guide + the #1 mistake I see Austin buyers make"
+  Email 2 Alt: "What if the seller paid your closing costs?"
+  Email 3 Alt: "*|FNAME|*, quick question about your homebuying timeline"
+
+CTA LINKS:
+  - Guide download: https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9
+  - Pre-approval: https://mslp.my1003app.com/513013/register
+
+COMPLIANCE:
+  - All emails must include physical mailing address and unsubscribe link
+    (handled automatically by Mailchimp)
+  - NMLS #513013 included in every email signature
+  - No guaranteed rate promises — all examples use illustrative language
