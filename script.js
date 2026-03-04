@@ -358,11 +358,7 @@ function validateField(input) {
   return isValid;
 }
 
-function submitForm(form) {
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData);
-  console.log('Form submitted:', data);
-
+function showQuickContactSuccess(form) {
   const successMessage = document.createElement('div');
   successMessage.className = 'alert alert-success quick-contact-success';
   successMessage.setAttribute('role', 'status');
@@ -370,7 +366,6 @@ function submitForm(form) {
 
   form.insertBefore(successMessage, form.firstChild);
 
-  // Predictable motion: simple fade-in, then fade-out, respecting reduced motion
   successMessage.style.opacity = '0';
   successMessage.style.transition = 'opacity 220ms ease-out';
 
@@ -388,6 +383,22 @@ function submitForm(form) {
       setTimeout(() => successMessage.remove(), 180);
     }
   }, 2600);
+}
+
+function submitForm(form) {
+  const formData = new FormData(form);
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData).toString(),
+  })
+    .then(() => {
+      showQuickContactSuccess(form);
+    })
+    .catch((error) => {
+      alert(error);
+    });
 }
 
 function initFormValidation() {
@@ -427,7 +438,55 @@ function initFormValidation() {
 }
 
 // ========================================================================
-// 6. QUICK CONTACT SCROLL TRIGGER
+// 6. HERO QUICK QUOTE FORM (Netlify + success message)
+// ========================================================================
+
+function initHeroQuickForm() {
+  const form = document.getElementById('hero-quick-form');
+  const wrap = document.getElementById('hero-quick-form-wrap');
+  const successEl = document.getElementById('hero-quick-form-success');
+  const successText = successEl && successEl.querySelector('.hero-quick-form-success-text');
+  if (!form || !wrap || !successEl || !successText) return;
+
+  form.addEventListener('blur', (e) => {
+    if (e.target.matches('input, select')) validateField(e.target);
+  }, true);
+  form.addEventListener('input', (e) => {
+    if (e.target.matches('.form-error')) validateField(e.target);
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const inputs = form.querySelectorAll('input, select');
+    let isValid = true;
+    inputs.forEach((input) => {
+      if (!validateField(input)) isValid = false;
+    });
+    if (!isValid) return;
+
+    const formData = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        const name = (formData.get('name') || '').trim() || 'there';
+        const goalSelect = form.querySelector('[name="loanGoal"]');
+        const loanGoal = goalSelect && goalSelect.options[goalSelect.selectedIndex] ? goalSelect.options[goalSelect.selectedIndex].text : (formData.get('loanGoal') || 'request');
+        const message = "Got it, " + name + "! I'm reviewing your " + loanGoal + " request now. I'll text you shortly to discuss how the new $832,750 conforming limits affect your options. — Adam";
+        successText.textContent = message;
+        successEl.removeAttribute('hidden');
+        wrap.classList.add('submitted');
+        form.reset();
+      })
+      .catch((err) => alert(err));
+  });
+}
+
+// ========================================================================
+// 7. QUICK CONTACT SCROLL TRIGGER
 // ========================================================================
 
 function initQuickContactScroll() {
@@ -660,6 +719,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordion();
   initTabs();
   initFormValidation();
+  initHeroQuickForm();
   initQuickContactScroll();
   initTestimonialFilter();
   initPrequalForm();
