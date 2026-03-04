@@ -475,7 +475,7 @@ function initHeroQuickForm() {
         const name = (formData.get('name') || '').trim() || 'there';
         const goalSelect = form.querySelector('[name="loanGoal"]');
         const loanGoal = goalSelect && goalSelect.options[goalSelect.selectedIndex] ? goalSelect.options[goalSelect.selectedIndex].text : (formData.get('loanGoal') || 'request');
-        const message = "Got it, " + name + "! I'm reviewing your " + loanGoal + " request now. I'll text you shortly to discuss how the new $832,750 conforming limits affect your options. — Adam";
+        const message = "Got it, " + name + "! I'm reviewing your " + loanGoal + " request now. I'll text you shortly. — Adam";
         successText.textContent = message;
         successEl.removeAttribute('hidden');
         wrap.classList.add('submitted');
