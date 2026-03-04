@@ -49,29 +49,15 @@ function initNewsletterAutomation() {
   const statusEl = document.getElementById('newsletter-status');
   const retryBtn = document.getElementById('nl-retry-btn');
 
-  // Source toggle handling (AI Generate / Paste & Publish)
-  const sourceOptions = form.querySelectorAll('.dash-mode-option[data-source]');
-  sourceOptions.forEach(opt => {
-    opt.addEventListener('click', () => {
-      sourceOptions.forEach(o => o.classList.remove('active'));
-      opt.classList.add('active');
-      opt.querySelector('input[type="radio"]').checked = true;
-
-      const source = opt.dataset.source;
-      document.getElementById('nl-ai-fields').classList.toggle('hidden', source === 'paste');
-      document.getElementById('nl-paste-fields').classList.toggle('hidden', source === 'ai');
-    });
-  });
-
-  // Custom prompt toggle
-  const nlCustomToggle = document.getElementById('nl-custom-prompt-toggle');
-  if (nlCustomToggle) {
-    nlCustomToggle.addEventListener('change', () => {
-      const isCustom = nlCustomToggle.checked;
-      document.getElementById('nl-structured-fields').classList.toggle('hidden', isCustom);
-      document.getElementById('nl-custom-prompt-fields').classList.toggle('hidden', !isCustom);
-    });
+  // Mode select — single top-level dropdown
+  const modeSelect = document.getElementById('nl-mode-select');
+  function applyNlMode(mode) {
+    document.getElementById('nl-structured-fields').classList.toggle('hidden', mode !== 'structured');
+    document.getElementById('nl-custom-fields').classList.toggle('hidden', mode !== 'custom');
+    document.getElementById('nl-paste-fields').classList.toggle('hidden', mode !== 'paste');
   }
+  modeSelect.addEventListener('change', () => applyNlMode(modeSelect.value));
+  applyNlMode(modeSelect.value);
 
   // Action buttons: Preview, Publish Now, Schedule, Confirm & Schedule
   document.getElementById('nl-preview-btn').addEventListener('click', function() {
@@ -146,15 +132,16 @@ function initNewsletterAutomation() {
     // Get current mode
     const mode = form.dataset.pendingMode || 'preview';
 
-    // Determine source mode
-    const source = form.querySelector('input[name="nl-source"]:checked')?.value || 'ai';
-    const isPaste = source === 'paste';
+    // Determine content mode
+    const contentMode = form.querySelector('#nl-mode-select').value; // 'structured', 'custom', 'paste'
+    const isPaste = contentMode === 'paste';
+    const isCustom = contentMode === 'custom';
 
-    // Get schedule time (both modes)
+    // Get schedule time
     const scheduleRaw = form.querySelector('#nl-schedule').value;
     const scheduleTime = scheduleRaw ? new Date(scheduleRaw).toISOString() : null;
 
-    // Validate based on source
+    // Validate based on content mode
     if (isPaste) {
       const title = form.querySelector('#nl-paste-title').value.trim();
       const emailHtml = form.querySelector('#nl-paste-email').value.trim();
@@ -162,15 +149,12 @@ function initNewsletterAutomation() {
       if (!title) { form.querySelector('#nl-paste-title').focus(); return; }
       if (!emailHtml) { form.querySelector('#nl-paste-email').focus(); return; }
       if (!webContent) { form.querySelector('#nl-paste-web').focus(); return; }
+    } else if (isCustom) {
+      const cp = form.querySelector('#nl-custom-prompt').value.trim();
+      if (!cp) { form.querySelector('#nl-custom-prompt').focus(); return; }
     } else {
-      const isCustom = form.querySelector('#nl-custom-prompt-toggle')?.checked;
-      if (isCustom) {
-        const cp = form.querySelector('#nl-custom-prompt').value.trim();
-        if (!cp) { form.querySelector('#nl-custom-prompt').focus(); return; }
-      } else {
-        const topic = form.querySelector('#nl-topic').value.trim();
-        if (!topic) { form.querySelector('#nl-topic').focus(); return; }
-      }
+      const topic = form.querySelector('#nl-topic').value.trim();
+      if (!topic) { form.querySelector('#nl-topic').focus(); return; }
     }
 
     // Gather audiences
@@ -200,28 +184,26 @@ function initNewsletterAutomation() {
         mode,
         scheduleTime,
       };
+    } else if (isCustom) {
+      formData = {
+        customPrompt: form.querySelector('#nl-custom-prompt').value.trim(),
+        photo: form.querySelector('#nl-custom-photo').value.trim(),
+        audiences,
+        mode,
+        scheduleTime,
+      };
     } else {
-      const isCustom = form.querySelector('#nl-custom-prompt-toggle')?.checked;
-      if (isCustom) {
-        formData = {
-          customPrompt: form.querySelector('#nl-custom-prompt').value.trim(),
-          audiences,
-          mode,
-          scheduleTime,
-        };
-      } else {
-        formData = {
-          topic: form.querySelector('#nl-topic').value.trim(),
-          audiences,
-          mode,
-          articles: form.querySelector('#nl-articles').value.trim(),
-          story: form.querySelector('#nl-story').value.trim(),
-          photo: form.querySelector('#nl-photo').value.trim(),
-          aiTool: form.querySelector('#nl-ai-tool').value.trim(),
-          notes: form.querySelector('#nl-notes').value.trim(),
-          scheduleTime,
-        };
-      }
+      formData = {
+        topic: form.querySelector('#nl-topic').value.trim(),
+        audiences,
+        mode,
+        articles: form.querySelector('#nl-articles').value.trim(),
+        story: form.querySelector('#nl-story').value.trim(),
+        photo: form.querySelector('#nl-photo').value.trim(),
+        aiTool: form.querySelector('#nl-ai-tool').value.trim(),
+        notes: form.querySelector('#nl-notes').value.trim(),
+        scheduleTime,
+      };
     }
 
     // Reset UI
@@ -1055,12 +1037,12 @@ function initFormPersistence() {
     textFields: [
       'nl-topic', 'nl-articles', 'nl-story', 'nl-photo', 'nl-ai-tool', 'nl-notes',
       'nl-paste-title', 'nl-paste-description', 'nl-paste-subject', 'nl-paste-preheader',
-      'nl-paste-photo', 'nl-paste-email', 'nl-paste-web', 'nl-schedule', 'nl-custom-prompt'
+      'nl-paste-photo', 'nl-paste-email', 'nl-paste-web', 'nl-schedule',
+      'nl-custom-prompt', 'nl-custom-photo'
     ],
+    selectFields: ['nl-mode-select'],
     checkboxName: 'audience',
     checkboxKey: 'audiences',
-    radioFields: [{ name: 'nl-source', key: 'nlSource' }],
-    singleCheckboxes: ['nl-custom-prompt-toggle'],
   });
 
   // Rate form persistence
@@ -1124,6 +1106,7 @@ function persistForm({ storageKey, formId, textFields, selectFields, checkboxNam
           const el = document.getElementById(id);
           if (el && saved[id] !== undefined) {
             el.value = saved[id];
+            el.dispatchEvent(new Event('change'));
           }
         });
       }
