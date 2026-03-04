@@ -101,18 +101,18 @@
 
       <style>
         /* ── Page-scoped overrides ── */
-        .bd-hero { background: var(--color-navy); color: #fff; padding: 4rem 0 3rem; text-align: center; }
+        .bd-hero { background: var(--color-navy); color: #fff; padding: 2rem 0 1.5rem; text-align: center; }
         .bd-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem,4vw,2.75rem); margin-bottom: .75rem; color: #fff; }
         .bd-hero .hero-sub { font-size: 1.05rem; opacity: .85; max-width: 600px; margin: 0 auto 1.5rem; }
         .bd-hero .hero-badges { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
         .bd-hero .badge { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 99px; padding: .3rem .9rem; font-size: .8rem; color: #fff; }
 
         /* ── Two-column calc layout ── */
-        .calc-layout-bd { display: grid; grid-template-columns: 360px 1fr; gap: 2rem; align-items: start; padding: 2.5rem 0 1rem; }
+        .calc-layout-bd { display: grid; grid-template-columns: 360px 1fr; gap: 2rem; align-items: start; padding: 1.25rem 0 0.75rem; }
         @media (max-width: 900px) { .calc-layout-bd { grid-template-columns: 1fr; } }
-        .bd-inputs-panel { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; position: sticky; top: 80px; }
-        .bd-inputs-panel h2 { font-size: 1rem; font-weight: 700; color: var(--color-navy); margin-bottom: 1.25rem; letter-spacing: .03em; text-transform: uppercase; }
-        .bd-outputs-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+        .bd-inputs-panel { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; position: sticky; top: 80px; }
+        .bd-inputs-panel h2 { font-size: 1rem; font-weight: 700; color: var(--color-navy); margin-bottom: 0.75rem; letter-spacing: .03em; text-transform: uppercase; }
+        .bd-outputs-panel { display: flex; flex-direction: column; gap: 1rem; }
 
         /* ── Buydown type selector grid ── */
         .type-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .5rem; margin-bottom: 1.25rem; }
@@ -122,7 +122,7 @@
         .type-grid label:hover { border-color: var(--color-gold); }
 
         /* ── Form fields ── */
-        .bd-field { margin-bottom: 1rem; }
+        .bd-field { margin-bottom: 0.65rem; }
         .bd-field label { display: block; font-size: .8rem; font-weight: 600; color: #475569; margin-bottom: .3rem; }
         .bd-field input[type=number], .bd-field select { width: 100%; padding: .5rem .75rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .95rem; color: var(--color-navy); background: #fff; }
         .bd-field input[type=number]:focus, .bd-field select:focus { outline: 2px solid var(--color-gold); border-color: var(--color-gold); }
@@ -139,7 +139,7 @@
         /* ── Summary cards ── */
         .bd-summary-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
         @media (max-width: 700px) { .bd-summary-cards { grid-template-columns: repeat(2,1fr); } }
-        .bd-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem 1rem; text-align: center; }
+        .bd-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.75rem 0.85rem; text-align: center; }
         .bd-card .bd-card-label { font-size: .75rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .3rem; }
         .bd-card .bd-card-val { font-size: 1.5rem; font-weight: 700; color: var(--color-navy); }
         .bd-card .bd-card-sub { font-size: .78rem; color: #64748b; margin-top: .2rem; }
@@ -167,16 +167,16 @@
         .bd-alert.shortfall { background: #fef9c3; border: 1px solid #fde047; color: #713f12; }
 
         /* ── Charts section ── */
-        .bd-charts-section { padding: 2rem 0 1rem; }
-        .bd-charts-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--color-navy); margin-bottom: 1.5rem; }
+        .bd-charts-section { padding: 1.25rem 0 0.75rem; }
+        .bd-charts-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--color-navy); margin-bottom: 1rem; }
         .bd-chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         @media (max-width: 700px) { .bd-chart-grid { grid-template-columns: 1fr; } }
-        .bd-chart-wrap { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; }
-        .bd-chart-wrap h3 { font-size: .85rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 1rem; }
+        .bd-chart-wrap { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.85rem; }
+        .bd-chart-wrap h3 { font-size: .85rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 0.5rem; }
         .bd-chart-wrap canvas { width: 100% !important; height: 280px !important; }
 
         /* ── Full schedule ── */
-        .bd-schedule-section { padding: 1.5rem 0 2rem; }
+        .bd-schedule-section { padding: 1rem 0 1.5rem; }
         .bd-schedule-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--color-navy); margin-bottom: .25rem; }
         .bd-schedule-section .section-sub { font-size: .88rem; color: #64748b; margin-bottom: 1.25rem; }
         .schedule-table-wrap { overflow-x: auto; }
