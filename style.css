@@ -228,6 +228,55 @@ section.py-5xl {
 }
 
 /* Trust bar replaces chunky stats grid with a slim horizontal strip */
+/* Trust bar in hero: top-right corner, above portrait; above other hero content */
+.hero-trust-bar-wrap {
+  position: absolute;
+  top: 5rem;
+  right: 1.5rem;
+  z-index: 100;
+  max-width: calc(100% - 3rem);
+}
+
+/* Glassmorphism: frosted glass over Austin sunset */
+.hero-trust-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.65rem 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.hero-trust-bar-inner .trust-bar-item {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+.hero-trust-bar-inner .trust-bar-item strong {
+  color: #fff;
+}
+
+.hero-trust-bar-inner .trust-bar-divider {
+  height: 16px;
+}
+
+@media (max-width: 768px) {
+  .hero-trust-bar-wrap {
+    top: 4rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+  .hero-trust-bar-inner .trust-bar-divider {
+    display: none;
+  }
+}
+
 .trust-bar {
   padding: 1.25rem 0;
 }
@@ -770,16 +819,19 @@ footer {
 
 .hero {
   position: relative;
-  min-height: 720px;
+  width: 100%;
+  height: 80vh;
+  max-height: 800px;
+  min-height: 420px;
   display: flex;
   align-items: center;
   overflow: hidden;
   color: var(--color-white);
 
-  /* AI-generated Austin sunset background */
+  /* Austin sunset — cinematic wide crop */
   background-image: url('assets/hero-bg.jpg');
   background-size: cover;
-  background-position: center center;
+  background-position: center 20%;
   background-attachment: scroll;
 }
 
@@ -798,97 +850,130 @@ footer {
   z-index: 1;
 }
 
-/* Container sits above overlay */
+/* Container: vertically centered, shifted left */
 .hero > .container {
   position: relative;
   z-index: 3;
-  padding-top: var(--spacing-5xl);
-  padding-bottom: var(--spacing-5xl);
+  width: 100%;
+  max-width: 1280px;
+  margin-left: 0;
+  margin-right: auto;
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
 }
 
 /* ── GLASSMORPHISM CARD ────────────────────────────────────────────────── */
 .hero-glass-card {
-  max-width: 480px;
+  max-width: 920px;
+  width: 100%;
   backdrop-filter: blur(15px) saturate(180%);
   -webkit-backdrop-filter: blur(15px) saturate(180%);
   background: rgba(255, 255, 255, 0.10);
   border: 1px solid rgba(255, 255, 255, 0.20);
   border-radius: var(--radius-2xl);
-  padding: 2.5rem 2.75rem;
+  padding: 1.6rem 2rem;
   box-shadow:
     0 8px 40px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
   position: relative;
   z-index: 4;
+  overflow: visible;
 }
 
-/* ── HERO TYPOGRAPHY ───────────────────────────────────────────────────── */
+/* Two-column layout: Authority | Form */
+.hero-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-col-authority {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* Column 1: tight copy block with darker overlay for readability */
+.hero-authority-inner {
+  max-width: 450px;
+  background: rgba(10, 31, 63, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-authority-inner .hero-subtitle {
+  margin-bottom: 0;
+}
+
+/* Trust badge above Quick Quote in column 2 */
+.hero-col-form .hero-trust-badge {
+  margin-bottom: 0.75rem;
+}
+
+/* Trust Badge: between authority and form — high-contrast pop */
+.hero-trust-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 0.85rem;
+  border: 2px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  background: rgba(10, 31, 63, 0.5);
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.25);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+/* ── HERO TYPOGRAPHY (compact: ~30% less vertical spacing) ───────────────── */
 .hero h1 {
   color: #ffffff;
   font-size: var(--font-size-5xl);
-  line-height: var(--line-height-tight);
-  margin-bottom: var(--spacing-md);
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+  padding-top: 0.05em;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
 }
 
 .hero-subtitle {
-  font-size: var(--font-size-lg);
-  color: rgba(255, 255, 255, 0.90);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--spacing-xl);
-  max-width: 440px;
+  font-size: var(--font-size-base);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.4;
+  margin-bottom: var(--spacing-md);
+  max-width: 100%;
 }
 
-/* ── TRUST PILLS ───────────────────────────────────────────────────────── */
-.hero-trust-pills {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: nowrap;        /* single horizontal row */
-  margin-top: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
-}
-
-.hero-trust-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: rgba(201, 168, 76, 0.18);
-  border: 1px solid rgba(201, 168, 76, 0.50);
-  border-radius: 999px;
-  padding: 0.3rem 0.8rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--color-white);
-  text-decoration: none;
-  transition: background var(--transition-base), box-shadow var(--transition-base);
-  white-space: nowrap;
-}
-.hero-trust-pill:hover {
-  background: rgba(201, 168, 76, 0.30);
-  box-shadow: 0 0 14px rgba(201, 168, 76, 0.35);
-}
-.hero-trust-pill strong { color: var(--color-gold); }
-
-/* ── CTA BUTTONS ───────────────────────────────────────────────────────── */
+/* ── CTA BUTTONS: smaller, centered as a pair ───────────────────────────── */
 .hero-ctas {
   display: flex;
-  gap: 20px;
+  gap: 0.75rem;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: var(--spacing-md);
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  width: 100%;
 }
 
-/* Uniform button sizing: 55px height, same padding; side-by-side desktop, stack mobile */
-.hero-ctas .btn {
-  width: 220px;
-  height: 55px;
-  font-size: 0.95rem;
+.hero-cta-btn {
+  width: 190px;
+  height: 46px;
+  font-size: 0.875rem;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-ctas .btn.hero-cta-btn {
+  width: 190px;
+  height: 46px;
+  font-size: 0.875rem;
 }
 
 .hero-ctas .btn:hover {
@@ -916,7 +1001,7 @@ footer {
 
 /* Small call link below CTAs */
 .hero-call-link {
-  margin: 0 0 var(--spacing-lg);
+  margin: 0;
   font-size: var(--font-size-sm);
 }
 .hero-call-link-a {
@@ -934,14 +1019,14 @@ footer {
   flex-shrink: 0;
 }
 
-/* Quick Quote form — glass card */
+/* Quick Quote form — glass card (compact vertical padding) */
 .hero-quick-form-glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
+  padding: 1.2rem var(--spacing-lg);  /* ~20% less vertical */
   margin-bottom: var(--spacing-md);
   position: relative;
 }
@@ -1046,17 +1131,17 @@ footer {
 }
 
 /* ── ADAM CUTOUT ───────────────────────────────────────────────────────── */
-/* Positioned relative to .hero (not .container) so it bleeds to the edge */
+/* Sits on "floor" of hero; max-height 100%, fixed width so it doesn't dominate */
 .hero-cutout {
   position: absolute;
   bottom: 0;
   right: 3%;
-  height: 62%;              /* 95% × 0.65 ≈ 62% — 35% size reduction */
-  max-height: 455px;        /* 700px × 0.65 = 455px */
-  width: auto;
+  max-height: 100%;
+  width: 450px;
+  max-width: 45%;
   object-fit: contain;
   object-position: bottom center;
-  z-index: 2;               /* above overlay, below card */
+  z-index: 2;
   pointer-events: none;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.30));
 }
@@ -2084,10 +2169,12 @@ img {
     align-items: flex-start;
   }
 
-  /* Hero */
+  /* Hero: auto height so Get My Quote is above the fold on phone */
   .hero {
-    padding: var(--spacing-4xl) 0;
-    min-height: unset;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    padding: var(--spacing-3xl) 0;
   }
 
   .hero h1 {
@@ -2096,6 +2183,24 @@ img {
 
   .hero-subtitle {
     font-size: var(--font-size-base);
+  }
+
+  .hero-two-col {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .hero-col-authority {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-authority-inner {
+    max-width: 100%;
+  }
+
+  .hero-ctas {
+    justify-content: center;
   }
 
   .hero-glass-card {
@@ -2103,19 +2208,7 @@ img {
     padding: var(--spacing-xl) var(--spacing-lg);
   }
 
-  .hero h1 {
-    font-size: var(--font-size-3xl);
-  }
-
-  .hero-subtitle {
-    font-size: var(--font-size-base);
-  }
-
-  .hero-trust-pills {
-    gap: 0.4rem;
-  }
-
-  /* Hide cutout on mobile — card goes full-width */
+  /* Portrait hidden on mobile so card/form are full-width and button is visible */
   .hero-cutout {
     display: none;
   }

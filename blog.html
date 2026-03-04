@@ -34,6 +34,11 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <!-- Inline manifest so blog content shows without a network request (works at any URL/port) -->
+  <script type="application/json" id="blog-manifest">
+  {"posts":[{"slug":"first-time-buyer-guide","title":"First-Time Home Buyer's Guide","description":"Everything you need to know about purchasing your first home in Austin, from pre-approval to closing day.","date":"2025-02-01","category":"Homebuying","url":"/first-time-buyer-guide.html"},{"slug":"fixed-vs-adjustable","title":"Fixed vs. Adjustable Rate Mortgages","description":"Understanding the key differences between fixed-rate and adjustable-rate mortgages can save you thousands.","date":"2025-02-01","category":"Tips & Guides","url":"/fixed-vs-adjustable.html"},{"slug":"improve-credit-score","title":"How to Improve Your Credit Score for a Mortgage","description":"Your credit score directly impacts your mortgage rate and buying power. Discover proven strategies to strengthen your score.","date":"2025-02-01","category":"Tips & Guides","url":"/improve-credit-score.html"},{"slug":"how-much-house-can-i-afford-austin","title":"How Much House Can I Afford in Austin TX?","description":"Calculate your real home buying budget with Austin-specific costs, taxes, and practical budgeting tips from a local mortgage expert.","date":"2025-02-15","category":"Homebuying","url":"/how-much-house-can-i-afford-austin.html"},{"slug":"austin-down-payment-assistance","title":"Austin TX Down Payment Assistance Programs (2025)","description":"Grants, forgivable loans, and DPA options for first-time home buyers in Travis County, Williamson County, and beyond.","date":"2025-02-15","category":"Homebuying","url":"/austin-down-payment-assistance.html"},{"slug":"mortgage-pre-approval-austin","title":"Mortgage Pre-Approval in Austin, TX","description":"Why pre-approval is essential in Austin's market, what documents you need, and how to get started fast.","date":"2025-03-01","category":"Homebuying","url":"/mortgage-pre-approval-austin.html"},{"slug":"closing-costs-texas","title":"Closing Costs in Texas: What to Expect","description":"Complete breakdown of buyer and seller closing costs in Texas with real numbers and strategies to reduce fees.","date":"2025-03-01","category":"Tips & Guides","url":"/closing-costs-texas.html"},{"slug":"austin-housing-market-2025","title":"Austin Housing Market 2025: What Buyers Need to Know","description":"Austin housing market outlook for 2025: home prices, inventory trends, mortgage rates, and practical advice for buyers.","date":"2025-03-15","category":"Market Updates","url":"/austin-housing-market-2025.html"},{"slug":"mortgage-broker-vs-bank","title":"Mortgage Broker vs. Bank: Which Is Right for You?","description":"Should you use a mortgage broker or go directly to a bank? Honest comparison of rates, options, service, and closing speed.","date":"2026-02-26","category":"Tips & Guides","url":"/mortgage-broker-vs-bank.html"}]}
+  </script>
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -103,6 +108,7 @@
 
         <ul class="nav-links">
           <li><a href="/products.html">Loan Programs</a></li>
+          <li><a href="/blog.html">Blog</a></li>
           <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/resources/first-time-buyer-guide/">Buyer Guide</a></li></ul></li>
           <li><a href="/testimonials.html">Testimonials</a></li>
           <li><a href="/about.html">About Adam</a></li>
@@ -132,30 +138,33 @@
       </div>
     </section>
 
-    <!-- Blog Grid (dynamic) -->
+    <!-- Blog Grid (dynamic; default content so something shows before/if manifest loads) -->
     <section class="section">
       <div class="container">
-        <div id="blog-grid" class="grid grid-3"></div>
+        <div id="blog-grid" class="grid grid-3">
+          <a href="first-time-buyer-guide.html" class="card blog-card" data-animate>
+            <span class="blog-card-category">Homebuying</span>
+            <h3 class="blog-card-title">First-Time Home Buyer's Guide</h3>
+            <p class="blog-card-excerpt">Everything you need to know about purchasing your first home in Austin, from pre-approval to closing day.</p>
+            <div class="blog-card-meta"><span>February 2025</span></div>
+          </a>
+          <a href="fixed-vs-adjustable.html" class="card blog-card" data-animate>
+            <span class="blog-card-category">Tips &amp; Guides</span>
+            <h3 class="blog-card-title">Fixed vs. Adjustable Rate Mortgages</h3>
+            <p class="blog-card-excerpt">Understanding the key differences between fixed-rate and adjustable-rate mortgages can save you thousands.</p>
+            <div class="blog-card-meta"><span>February 2025</span></div>
+          </a>
+          <a href="improve-credit-score.html" class="card blog-card" data-animate>
+            <span class="blog-card-category">Tips &amp; Guides</span>
+            <h3 class="blog-card-title">How to Improve Your Credit Score for a Mortgage</h3>
+            <p class="blog-card-excerpt">Your credit score directly impacts your mortgage rate and buying power. Discover proven strategies to strengthen your score.</p>
+            <div class="blog-card-meta"><span>February 2025</span></div>
+          </a>
+        </div>
 
         <!-- Fallback for no-JS / crawlers -->
         <noscript>
-          <div class="grid grid-3">
-            <a href="first-time-buyer-guide.html" class="card blog-card">
-              <span class="blog-card-category">Homebuying</span>
-              <h3 class="blog-card-title">First-Time Home Buyer's Guide</h3>
-              <p class="blog-card-excerpt">Everything you need to know about purchasing your first home in Austin, from pre-approval to closing day.</p>
-            </a>
-            <a href="fixed-vs-adjustable.html" class="card blog-card">
-              <span class="blog-card-category">Tips &amp; Guides</span>
-              <h3 class="blog-card-title">Fixed vs. Adjustable Rate Mortgages</h3>
-              <p class="blog-card-excerpt">Understanding the key differences between fixed-rate and adjustable-rate mortgages can save you thousands.</p>
-            </a>
-            <a href="improve-credit-score.html" class="card blog-card">
-              <span class="blog-card-category">Tips &amp; Guides</span>
-              <h3 class="blog-card-title">How to Improve Your Credit Score for a Mortgage</h3>
-              <p class="blog-card-excerpt">Your credit score directly impacts your mortgage rate and buying power. Discover proven strategies to strengthen your score.</p>
-            </a>
-          </div>
+          <p class="text-center text-muted">Enable JavaScript to filter and load the full article list.</p>
         </noscript>
       </div>
     </section>
@@ -248,20 +257,24 @@
     var filtersBar = document.getElementById("blog-filters");
     if (!grid) return;
 
-    fetch("/blog/manifest.json")
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        var posts = data.posts || [];
-        if (!posts.length) return;
+    function escapeHtml(str) {
+      var div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
 
-        // Build category filter buttons
-        var categories = [];
-        posts.forEach(function (p) {
-          if (p.category && categories.indexOf(p.category) === -1) {
-            categories.push(p.category);
-          }
-        });
-        categories.sort();
+    function runWithPosts(posts) {
+      if (!posts || !posts.length) return;
+
+      // Build category filter buttons
+      var categories = [];
+      posts.forEach(function (p) {
+        if (p.category && categories.indexOf(p.category) === -1) {
+          categories.push(p.category);
+        }
+      });
+      categories.sort();
+      if (filtersBar) {
         categories.forEach(function (cat) {
           var btn = document.createElement("button");
           btn.className = "btn btn-sm blog-filter-btn";
@@ -269,33 +282,33 @@
           btn.textContent = cat;
           filtersBar.appendChild(btn);
         });
+      }
 
-        // Render all posts
-        function renderPosts(filter) {
-          grid.innerHTML = "";
-          var filtered = filter === "all" ? posts : posts.filter(function (p) { return p.category === filter; });
-          filtered.forEach(function (post) {
-            var card = document.createElement("a");
-            card.href = post.url;
-            card.className = "card blog-card";
-            card.setAttribute("data-animate", "");
+      function renderPosts(filter) {
+        grid.innerHTML = "";
+        var filtered = filter === "all" ? posts : posts.filter(function (p) { return p.category === filter; });
+        filtered.forEach(function (post) {
+          var card = document.createElement("a");
+          card.href = post.url;
+          card.className = "card blog-card";
+          card.setAttribute("data-animate", "");
 
-            var date = new Date(post.date + "T12:00:00");
-            var dateStr = date.toLocaleDateString("en-US", { year: "numeric", month: "long" });
+          var date = new Date(post.date + "T12:00:00");
+          var dateStr = date.toLocaleDateString("en-US", { year: "numeric", month: "long" });
 
-            card.innerHTML =
-              '<span class="blog-card-category">' + escapeHtml(post.category || "") + "</span>" +
-              '<h3 class="blog-card-title">' + escapeHtml(post.title) + "</h3>" +
-              '<p class="blog-card-excerpt">' + escapeHtml(post.description) + "</p>" +
-              '<div class="blog-card-meta"><span>' + dateStr + "</span></div>";
+          card.innerHTML =
+            '<span class="blog-card-category">' + escapeHtml(post.category || "") + "</span>" +
+            '<h3 class="blog-card-title">' + escapeHtml(post.title) + "</h3>" +
+            '<p class="blog-card-excerpt">' + escapeHtml(post.description) + "</p>" +
+            '<div class="blog-card-meta"><span>' + dateStr + "</span></div>";
 
-            grid.appendChild(card);
-          });
-        }
+          grid.appendChild(card);
+        });
+      }
 
-        renderPosts("all");
+      renderPosts("all");
 
-        // Filter click handler
+      if (filtersBar) {
         filtersBar.addEventListener("click", function (e) {
           var btn = e.target.closest(".blog-filter-btn");
           if (!btn) return;
@@ -303,32 +316,24 @@
           btn.classList.add("active");
           renderPosts(btn.getAttribute("data-category"));
         });
-      })
-      .catch(function () {
-        // If manifest fails to load, show the noscript fallback content
-        grid.innerHTML =
-          '<a href="first-time-buyer-guide.html" class="card blog-card">' +
-            '<span class="blog-card-category">Homebuying</span>' +
-            '<h3 class="blog-card-title">First-Time Home Buyer\'s Guide</h3>' +
-            '<p class="blog-card-excerpt">Everything you need to know about purchasing your first home in Austin, from pre-approval to closing day.</p>' +
-          "</a>" +
-          '<a href="fixed-vs-adjustable.html" class="card blog-card">' +
-            '<span class="blog-card-category">Tips &amp; Guides</span>' +
-            '<h3 class="blog-card-title">Fixed vs. Adjustable Rate Mortgages</h3>' +
-            '<p class="blog-card-excerpt">Understanding the key differences between fixed-rate and adjustable-rate mortgages can save you thousands.</p>' +
-          "</a>" +
-          '<a href="improve-credit-score.html" class="card blog-card">' +
-            '<span class="blog-card-category">Tips &amp; Guides</span>' +
-            '<h3 class="blog-card-title">How to Improve Your Credit Score for a Mortgage</h3>' +
-            '<p class="blog-card-excerpt">Your credit score directly impacts your mortgage rate and buying power. Discover proven strategies to strengthen your score.</p>' +
-          "</a>";
-      });
-
-    function escapeHtml(str) {
-      var div = document.createElement("div");
-      div.textContent = str;
-      return div.innerHTML;
+      }
     }
+
+    // Use inline manifest first (no network — works at http://127.0.0.1 or any URL)
+    var inlineEl = document.getElementById("blog-manifest");
+    if (inlineEl && inlineEl.textContent) {
+      try {
+        var data = JSON.parse(inlineEl.textContent);
+        runWithPosts(data.posts || []);
+        return;
+      } catch (e) {}
+    }
+
+    // Fallback: fetch manifest (e.g. if manifest is updated and HTML isn’t)
+    fetch("blog/manifest.json")
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (data) { runWithPosts(data.posts || []); })
+      .catch(function () {});
   })();
   </script>
 </body>
