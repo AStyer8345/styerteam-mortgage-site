@@ -322,8 +322,8 @@
               <div class="bd-field">
                 <label for="bd-rate-input">Note Rate (%)</label>
                 <div class="bd-slider-row">
-                  <input type="range" id="bd-rate-slider" min="2" max="12" step="0.125" value="7" aria-label="Interest rate slider">
-                  <input type="number" id="bd-rate-input" min="2" max="12" step="0.125" value="7" aria-label="Interest rate">
+                  <input type="range" id="bd-rate-slider" min="2" max="12" step="0.125" value="6.125" aria-label="Interest rate slider">
+                  <input type="number" id="bd-rate-input" min="2" max="12" step="0.125" value="6.125" aria-label="Interest rate">
                 </div>
               </div>
 
@@ -1020,7 +1020,7 @@
         return {
           bdType:      bdType ? bdType.value : '2-1',
           loanAmount:  parseFloat(document.getElementById('bd-loan-input').value)  || 400000,
-          noteRate:    parseFloat(document.getElementById('bd-rate-input').value)  || 7.0,
+          noteRate:    parseFloat(document.getElementById('bd-rate-input').value)  || 6.125,
           termYears:   termYears,
           startDate:   document.getElementById('bd-start-date').value || new Date().toISOString().slice(0,7),
           escrowMo:    taxMo + insMo + hoaMo,

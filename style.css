@@ -32,8 +32,9 @@
   --font-size-xl: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
   --font-size-2xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
   --font-size-3xl: clamp(1.5rem, 1.2rem + 1.2vw, 1.875rem);
-  --font-size-4xl: clamp(1.75rem, 1.3rem + 1.8vw, 2.25rem);
-  --font-size-5xl: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  /* Slightly softened display sizes for calmer hierarchy */
+  --font-size-4xl: clamp(1.65rem, 1.25rem + 1.6vw, 2.1rem);
+  --font-size-5xl: clamp(1.9rem, 1.35rem + 2.1vw, 2.7rem);
   --font-size-6xl: clamp(2.5rem, 1.6rem + 3.6vw, 3.75rem);
 
   --font-weight-normal: 400;
@@ -200,16 +201,101 @@ button {
   max-width: 1280px;
 }
 
+/* Calm Design: more generous vertical rhythm between sections */
 section {
-  padding: clamp(3rem, 5vw, 6rem) 0;
+  padding: clamp(5rem, 7vw, 7.5rem) 0;
 }
 
 section.py-4xl {
-  padding: var(--spacing-4xl) 0;
+  padding: 7.5rem 0;
 }
 
 section.py-5xl {
-  padding: var(--spacing-5xl) 0;
+  padding: 7.5rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   CALM GRID & TRUST BAR
+   -------------------------------------------------------------------------- */
+
+/* 12-column inspired max width with consistent gutters handled by .container.
+   Existing containers already center content; we reinforce alignment here. */
+.stats-grid,
+.grid,
+.split-content,
+.grid-2-tight {
+  align-items: stretch;
+}
+
+/* Trust bar replaces chunky stats grid with a slim horizontal strip */
+.trust-bar {
+  padding: 1.25rem 0;
+}
+
+.trust-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 0.85rem 1.75rem;
+}
+
+.trust-bar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-dark-gray);
+  white-space: nowrap;
+}
+
+.trust-bar-icon {
+  font-size: 1.05rem;
+}
+
+.trust-bar-divider {
+  width: 1px;
+  height: 22px;
+  background: linear-gradient(
+    to bottom,
+    rgba(148, 163, 184, 0.08),
+    rgba(148, 163, 184, 0.55),
+    rgba(148, 163, 184, 0.08)
+  );
+}
+
+@media (max-width: 768px) {
+  .trust-bar-inner {
+    flex-wrap: wrap;
+    gap: 0.85rem 1.5rem;
+    padding-inline: 1.25rem;
+  }
+
+  .trust-bar-divider {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL FADE-IN ANIMATIONS
+   -------------------------------------------------------------------------- */
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 500ms var(--transition-base),
+    transform 500ms var(--transition-base);
+  will-change: opacity, transform;
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ========================================================================
@@ -556,6 +642,68 @@ footer {
   box-shadow: var(--shadow-lg), 0 0 20px rgba(201, 168, 76, 0.4), 0 0 40px rgba(201, 168, 76, 0.15);
   transform: translateY(-2px);
   transition: all 0.2s ease;
+}
+
+/* ========================================================================
+   QUICK CONTACT GLASSMORPHISM
+   ======================================================================== */
+
+.quick-contact-section {
+  position: relative;
+}
+
+.quick-contact-card {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 2rem 2.25rem;
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: var(--shadow-premium);
+}
+
+.quick-contact-title {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.quick-contact-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+.quick-contact-grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.quick-contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.quick-contact-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: var(--spacing-lg);
+}
+
+.quick-contact-success {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 768px) {
+  .quick-contact-card {
+    padding: 1.5rem 1.75rem;
+  }
+
+  .quick-contact-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .btn-secondary {
@@ -2365,6 +2513,86 @@ textarea:focus {
   font-size: var(--font-size-sm);
   color: var(--color-gray);
   margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Loan program grid (homepage) — premium interactive cards
+   -------------------------------------------------------------------------- */
+
+.loan-programs-intro {
+  margin-bottom: var(--spacing-4xl);
+}
+
+.loan-program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+  align-items: stretch;
+}
+
+.loan-program-card {
+  display: block;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(10, 31, 63, 0.08);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.loan-program-card:hover,
+.loan-program-card:focus-visible {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.22);
+}
+
+.loan-program-card:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loan-program-card {
+    transition: box-shadow 0.2s ease;
+  }
+  .loan-program-card:hover,
+  .loan-program-card:focus-visible {
+    transform: none;
+  }
+}
+
+.loan-program-card h4 {
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-xl);
+}
+
+.loan-program-card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-dark-gray);
+  margin: 0 0 var(--spacing-md);
+  line-height: 1.5;
+}
+
+.loan-program-cta {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.loan-program-card:hover .loan-program-cta {
+  color: #B8932B;
+}
+
+@media (max-width: 900px) {
+  .loan-program-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* About page styles */

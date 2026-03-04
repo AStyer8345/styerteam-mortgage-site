@@ -197,21 +197,25 @@
 
     </section>
 
-    <!-- STATS SECTION -->
+    <!-- TRUST BAR -->
     <section class="bg-light">
       <div class="container">
-        <div class="stats-grid text-center">
-          <div class="stat-item" data-animate>
-            <div class="stat-number">136+</div>
-            <div class="stat-label">Total Reviews</div>
-          </div>
-          <div class="stat-item" data-animate>
-            <div class="stat-number">21</div>
-            <div class="stat-label">Day Average Close</div>
-          </div>
-          <div class="stat-item" data-animate>
-            <div class="stat-number">10+</div>
-            <div class="stat-label">Loan Programs</div>
+        <div class="trust-bar" data-animate>
+          <div class="trust-bar-inner">
+            <div class="trust-bar-item">
+              <span class="trust-bar-icon">&#11088;</span>
+              <span><strong>5.0</strong> rating &middot; 136+ reviews</span>
+            </div>
+            <div class="trust-bar-divider" aria-hidden="true"></div>
+            <div class="trust-bar-item">
+              <span class="trust-bar-icon">&#9201;</span>
+              <span>Average close time <strong>21 days</strong></span>
+            </div>
+            <div class="trust-bar-divider" aria-hidden="true"></div>
+            <div class="trust-bar-item">
+              <span class="trust-bar-icon">&#128179;</span>
+              <span><strong>Conventional, FHA, VA, Jumbo, Non-QM</strong></span>
+            </div>
           </div>
         </div>
       </div>
@@ -265,33 +269,45 @@
     <!-- LOAN PROGRAMS PREVIEW -->
     <section class="bg-light">
       <div class="container">
-        <div class="split-content">
-          <div>
-            <h2>Loans Built for Every Situation</h2>
-            <p class="text-lg mb-lg">
-              Whether you're buying your first home, refinancing, or making a complex real estate investment, we have loan programs designed for your specific needs.
-            </p>
-            <a href="/products.html" class="btn btn-primary">Explore All Programs</a>
-          </div>
+        <div class="loan-programs-intro">
+          <h2>Loans Built for Every Situation</h2>
+          <p class="text-lg mb-lg">
+            Whether you're buying your first home, refinancing, or making a complex real estate investment, we have loan programs designed for your specific needs.
+          </p>
+          <a href="/products.html" class="btn btn-primary">Explore All Programs</a>
+        </div>
 
-          <div class="grid-2-tight">
-            <div class="feature-item">
-              <h4>Conventional Loans</h4>
-              <p>Best rates for qualified borrowers</p>
-            </div>
-            <div class="feature-item">
-              <h4>FHA Loans</h4>
-              <p>3.5% down payment options</p>
-            </div>
-            <div class="feature-item">
-              <h4>VA Loans</h4>
-              <p>Zero down for our heroes</p>
-            </div>
-            <div class="feature-item">
-              <h4>Jumbo Loans</h4>
-              <p>$766K+ with competitive rates</p>
-            </div>
-          </div>
+        <div class="loan-program-grid">
+          <a href="/loans/conventional.html" class="loan-program-card" data-animate>
+            <h4>Conventional Loans</h4>
+            <p>Best rates for qualified borrowers.</p>
+            <span class="loan-program-cta">Learn More &rarr;</span>
+          </a>
+          <a href="/loans/fha.html" class="loan-program-card" data-animate>
+            <h4>FHA Loans</h4>
+            <p>3.5% down payment options.</p>
+            <span class="loan-program-cta">Learn More &rarr;</span>
+          </a>
+          <a href="/loans/va.html" class="loan-program-card" data-animate>
+            <h4>VA Loans</h4>
+            <p>Zero down for our heroes.</p>
+            <span class="loan-program-cta">Learn More &rarr;</span>
+          </a>
+          <a href="/loans/jumbo.html" class="loan-program-card" data-animate>
+            <h4>Jumbo Loans</h4>
+            <p>The 2026 Conforming Limit is $832,750; anything above requires a Jumbo solution.</p>
+            <span class="loan-program-cta">Learn More &rarr;</span>
+          </a>
+          <a href="/products.html#non-qm" class="loan-program-card" data-animate>
+            <h4>Non-QM Solutions</h4>
+            <p>Specialized financing for self-employed and complex income profiles.</p>
+            <span class="loan-program-cta">Learn More &rarr;</span>
+          </a>
+          <a href="/first-time-buyer-guide.html" class="loan-program-card" data-animate>
+            <h4>First-Time Buyer Programs</h4>
+            <p>Access grants and down payment assistance like &ldquo;My First Texas Home&rdquo; with as little as 3% down.</p>
+            <span class="loan-program-cta">Learn More &rarr;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -352,7 +368,57 @@
         </div>
 
         <div class="text-center mt-3xl">
-          <a href="/contact.html" class="btn btn-outline">Read All Reviews</a>
+          <button type="button" class="btn btn-outline" id="read-all-reviews-trigger">
+            Read All Reviews
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- QUICK CONTACT -->
+    <section class="quick-contact-section" id="contact-form">
+      <div class="container">
+        <div class="quick-contact-card" data-animate>
+          <h2 class="quick-contact-title">Quick Contact</h2>
+          <p class="quick-contact-subtitle">
+            Share a few details and Adam will personally follow up to help with your mortgage questions.
+          </p>
+          <form id="quick-contact-form" novalidate>
+            <div class="quick-contact-grid">
+              <div class="quick-contact-row">
+                <div class="form-field">
+                  <label for="qc-name">Name</label>
+                  <input id="qc-name" name="name" type="text" required autocomplete="name">
+                </div>
+                <div class="form-field">
+                  <label for="qc-email">Email</label>
+                  <input id="qc-email" name="email" type="email" required autocomplete="email">
+                </div>
+              </div>
+
+              <div class="quick-contact-row">
+                <div class="form-field">
+                  <label for="qc-phone">Phone</label>
+                  <input id="qc-phone" name="phone" type="tel" required autocomplete="tel">
+                </div>
+                <div class="form-field">
+                  <label for="qc-help">Loan Goal</label>
+                  <select id="qc-help" name="loanGoal" required>
+                    <option value="">Please choose…</option>
+                    <option value="purchase">Purchase</option>
+                    <option value="refi">Refi</option>
+                    <option value="non-qm">Non-QM</option>
+                    <option value="jumbo">Jumbo</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="quick-contact-actions">
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+          </form>
         </div>
       </div>
     </section>

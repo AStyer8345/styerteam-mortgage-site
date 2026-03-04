@@ -130,7 +130,7 @@ function initScrollAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       }
     });
@@ -364,20 +364,34 @@ function submitForm(form) {
   console.log('Form submitted:', data);
 
   const successMessage = document.createElement('div');
-  successMessage.className = 'alert alert-success';
+  successMessage.className = 'alert alert-success quick-contact-success';
   successMessage.setAttribute('role', 'status');
   successMessage.textContent = "Thank you! We'll be in touch soon.";
 
   form.insertBefore(successMessage, form.firstChild);
 
+  // Predictable motion: simple fade-in, then fade-out, respecting reduced motion
+  successMessage.style.opacity = '0';
+  successMessage.style.transition = 'opacity 220ms ease-out';
+
+  requestAnimationFrame(() => {
+    successMessage.style.opacity = '1';
+  });
+
   setTimeout(() => {
     form.reset();
-    successMessage.remove();
-  }, 3000);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      successMessage.remove();
+    } else {
+      successMessage.style.transition = 'opacity 160ms ease-in';
+      successMessage.style.opacity = '0';
+      setTimeout(() => successMessage.remove(), 180);
+    }
+  }, 2600);
 }
 
 function initFormValidation() {
-  const form = document.querySelector('form');
+  const form = document.getElementById('quick-contact-form');
   if (!form) return;
 
   // Skip forms that submit to external services (e.g., Mailchimp)
@@ -409,6 +423,20 @@ function initFormValidation() {
     });
 
     if (isValid) submitForm(form);
+  });
+}
+
+// ========================================================================
+// 6. QUICK CONTACT SCROLL TRIGGER
+// ========================================================================
+
+function initQuickContactScroll() {
+  const trigger = document.getElementById('read-all-reviews-trigger');
+  const quickContact = document.getElementById('contact-form');
+  if (!trigger || !quickContact) return;
+
+  trigger.addEventListener('click', () => {
+    quickContact.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 }
 
@@ -632,6 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordion();
   initTabs();
   initFormValidation();
+  initQuickContactScroll();
   initTestimonialFilter();
   initPrequalForm();
 });
