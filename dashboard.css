@@ -2,6 +2,11 @@
    Dashboard - Internal Content Creation Tool
    ========================================================================== */
 
+/* Utility: hide any element */
+.hidden {
+  display: none !important;
+}
+
 /* Dashboard Badge in Header */
 .dash-badge {
   display: inline-block;
