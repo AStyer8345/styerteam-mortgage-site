@@ -72,6 +72,7 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-premium: 0 10px 30px -10px rgba(10, 31, 63, 0.15);
 
   /* Transitions */
   --transition-fast: 150ms ease-in-out;
@@ -102,7 +103,7 @@ html {
 body {
   font-family: var(--font-primary);
   font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
+  line-height: 1.75;
   color: var(--color-text);
   background-color: var(--color-white);
   -webkit-font-smoothing: antialiased;
@@ -518,6 +519,35 @@ footer {
 .btn-primary {
   background-color: #F2C840;
   color: #0D1F3C;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+}
+
+.btn-primary:hover::before {
+  left: 150%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary::before {
+    display: none;
+  }
 }
 
 .btn-primary:hover {
@@ -656,6 +686,14 @@ footer {
   color: var(--color-gold);
 }
 
+.hero-ratings {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
+}
+
 /* ========================================================================
    8. FEATURE CARDS & GRIDS
    ======================================================================== */
@@ -681,13 +719,13 @@ footer {
   background-color: var(--color-white);
   border-radius: var(--radius-xl);
   padding: var(--spacing-2xl);
-  border: 1px solid var(--color-border);
-  transition: all var(--transition-base);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s ease;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-xl);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-premium);
+  transform: translateY(-8px);
   border-color: var(--color-gold);
 }
 
@@ -1916,6 +1954,14 @@ textarea:focus {
   min-width: 60px;
 }
 
+.calc-range {
+  width: 100%;
+  margin-bottom: var(--spacing-sm);
+  accent-color: var(--color-gold);
+  cursor: pointer;
+  height: 6px;
+}
+
 .calculator-output {
   background-color: var(--color-light-gray);
   padding: var(--spacing-2xl);
@@ -3088,5 +3134,60 @@ textarea:focus {
   .cta-buttons {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+/* ── Sticky Mobile CTA Bar ── */
+.sticky-mobile-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sticky-mobile-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: var(--color-navy);
+    padding: 0.75rem 1rem;
+    gap: 0.625rem;
+    box-shadow: 0 -4px 16px rgba(10, 31, 63, 0.25);
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+    pointer-events: none;
+  }
+
+  .sticky-mobile-bar.is-visible {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .sticky-mobile-bar .smb-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1;
+    cursor: pointer;
+    border: none;
+  }
+
+  .sticky-mobile-bar .smb-btn-call {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .sticky-mobile-bar .smb-btn-apply {
+    background: var(--color-gold);
+    color: var(--color-navy);
   }
 }

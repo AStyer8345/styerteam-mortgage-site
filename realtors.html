@@ -118,7 +118,7 @@
             Partner with the lender Austin's top agents trust. 24-hour pre-approvals, proactive updates, and 21-day average closings. Let's protect your commission together.
           </p>
           <div class="hero-ctas">
-            <a href="mailto:adam@thestyerteam.com?subject=Realtor%20Partner%20Inquiry" class="btn btn-primary btn-lg">Become a Partner</a>
+            <a href="#partner-form" class="btn btn-primary btn-lg">Become a Partner</a>
             <a href="tel:+15129566010" class="btn btn-white btn-lg">Call (512) 956-6010</a>
           </div>
         </div>
@@ -394,19 +394,60 @@
       </div>
     </section>
 
-    <!-- CTA SECTION -->
-    <section>
-      <div class="container text-center">
-        <h2 class="mb-md">Ready to Partner?</h2>
-        <p class="text-lg text-muted section-intro mb-xl">
-          Let's close more deals together. Reach out today to discuss how we can support your business.
-        </p>
-        <div class="cta-group">
-          <a href="mailto:adam@thestyerteam.com?subject=Realtor%20Partner%20Inquiry" class="btn btn-primary btn-lg">Partner With Us</a>
-          <a href="tel:+15129566010" class="btn btn-outline btn-lg">Call Adam</a>
+    <!-- PARTNER CONTACT FORM -->
+    <section id="partner-form">
+      <div class="container">
+        <div style="max-width:520px;margin:0 auto;text-align:center;">
+          <h2 class="mb-md">Let's Partner Up</h2>
+          <p class="text-lg text-muted mb-xl">Drop your info below. I'll reach out within one business day.</p>
         </div>
+        <form id="realtor-contact-form" style="max-width:520px;margin:0 auto;" novalidate>
+          <div class="form-group">
+            <label for="rc-name">Your Name</label>
+            <input type="text" id="rc-name" name="name" placeholder="Jane Smith" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="rc-brokerage">Brokerage</label>
+            <input type="text" id="rc-brokerage" name="brokerage" placeholder="Keller Williams / Compass / etc." required autocomplete="organization">
+          </div>
+          <div class="form-group">
+            <label for="rc-phone">Phone Number</label>
+            <input type="tel" id="rc-phone" name="phone" placeholder="(512) 555-0100" required autocomplete="tel">
+          </div>
+          <div id="rc-status" style="display:none;margin-bottom:1rem;padding:.75rem 1rem;border-radius:8px;font-size:.9rem;font-weight:600;"></div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Partner With Us</button>
+          <p style="text-align:center;margin-top:1rem;font-size:.85rem;color:#64748b;">
+            Or call directly: <a href="tel:+15129566010">(512) 956-6010</a>
+          </p>
+        </form>
       </div>
     </section>
+    <script>
+      (function() {
+        var form = document.getElementById('realtor-contact-form');
+        var status = document.getElementById('rc-status');
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var name     = document.getElementById('rc-name').value.trim();
+          var brokerage = document.getElementById('rc-brokerage').value.trim();
+          var phone    = document.getElementById('rc-phone').value.trim();
+          if (!name || !brokerage || !phone) {
+            status.style.display = '';
+            status.style.background = '#fef2f2';
+            status.style.color = '#991b1b';
+            status.textContent = 'Please fill in all fields.';
+            return;
+          }
+          var subject = encodeURIComponent('Realtor Partner Inquiry – ' + name);
+          var body    = encodeURIComponent('Name: ' + name + '\nBrokerage: ' + brokerage + '\nPhone: ' + phone);
+          window.location.href = 'mailto:adam@thestyerteam.com?subject=' + subject + '&body=' + body;
+          status.style.display = '';
+          status.style.background = 'rgba(201,168,76,.15)';
+          status.style.color = '#7c4a00';
+          status.textContent = 'Opening your email client\u2026 expect a reply within 1 business day.';
+        });
+      })();
+    </script>
   </main>
 
   <!-- FOOTER -->

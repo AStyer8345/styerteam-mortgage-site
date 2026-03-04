@@ -215,6 +215,27 @@
         .bd-share-confirm { font-size: .82rem; color: #16a34a; font-weight: 600; display: none; }
         #bd-print-summary { display: none; }
 
+        /* ── Buydown vs Price Reduction Comparison ── */
+        .bd-comparison-panel { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+        .bd-comparison-panel h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--color-navy); margin-bottom: .35rem; }
+        .bd-comp-intro { font-size: .85rem; color: #64748b; margin-bottom: 1.25rem; }
+        .bd-comparison-cards { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+        .bd-comp-card { background: #fff; border-radius: 10px; padding: 1.25rem; text-align: center; border: 2px solid #e2e8f0; transition: border-color .2s; }
+        .bd-comp-card.winner { border-color: var(--color-gold); box-shadow: 0 2px 12px rgba(201,168,76,.18); }
+        .bd-comp-label { font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: #64748b; margin-bottom: .5rem; }
+        .bd-comp-cost { font-size: .88rem; color: #94a3b8; margin-bottom: .75rem; }
+        .bd-comp-savings-label { font-size: .75rem; color: #94a3b8; margin-bottom: .25rem; }
+        .bd-comp-savings { font-size: 1.6rem; font-weight: 700; color: var(--color-navy); }
+        .bd-comp-vs { font-size: .9rem; font-weight: 700; color: #cbd5e1; text-align: center; }
+        .bd-comp-verdict { text-align: center; font-size: .88rem; font-weight: 600; padding: .7rem 1rem; border-radius: 8px; background: #f0f9ff; color: #0369a1; }
+        .bd-comp-verdict--buydown { background: rgba(201,168,76,.15); color: #7c4a00; }
+        .bd-comp-verdict--price   { background: rgba(16,185,129,.1);  color: #065f46; }
+        .bd-comp-verdict--tie     { background: #f1f5f9; color: #475569; }
+        @media (max-width: 500px) {
+          .bd-comparison-cards { grid-template-columns: 1fr; }
+          .bd-comp-vs { display: none; }
+        }
+
         /* ── Print styles ── */
         @media print {
           header, .bd-hero, .bd-inputs-panel, .bd-charts-section,
@@ -414,6 +435,28 @@
                   <div class="bd-card-val" id="bd-out-credit-balance">—</div>
                   <div class="bd-card-sub">After funding buydown</div>
                 </div>
+              </div>
+
+              <!-- Buydown vs. Price Reduction Comparison -->
+              <div class="bd-comparison-panel" id="bd-comparison-panel" style="display:none;">
+                <h2>Buydown vs. Price Reduction</h2>
+                <p class="bd-comp-intro">Given the same seller cost — which saves the buyer more in their first 2 years?</p>
+                <div class="bd-comparison-cards">
+                  <div class="bd-comp-card" id="bd-comp-buydown-card">
+                    <div class="bd-comp-label">Seller-Paid Buydown</div>
+                    <div class="bd-comp-cost" id="bd-comp-buydown-cost">—</div>
+                    <div class="bd-comp-savings-label">2-Year Payment Savings</div>
+                    <div class="bd-comp-savings" id="bd-comp-buydown-savings">—</div>
+                  </div>
+                  <div class="bd-comp-vs">VS</div>
+                  <div class="bd-comp-card" id="bd-comp-price-card">
+                    <div class="bd-comp-label">Price Reduction</div>
+                    <div class="bd-comp-cost" id="bd-comp-price-cost">—</div>
+                    <div class="bd-comp-savings-label">2-Year Payment Savings</div>
+                    <div class="bd-comp-savings" id="bd-comp-price-savings">—</div>
+                  </div>
+                </div>
+                <div class="bd-comp-verdict bd-comp-verdict--tie" id="bd-comp-verdict">Enter loan details above to see the comparison.</div>
               </div>
 
               <!-- Year-by-year breakdown -->
@@ -985,6 +1028,44 @@
         };
       }
 
+      /* Buydown vs. Price Reduction comparison */
+      function computeComparison(inp, bdConfig, s) {
+        var cost = s.totalSubsidy;
+        var panel = document.getElementById('bd-comparison-panel');
+        if (cost <= 0) { panel.style.display = 'none'; return; }
+        panel.style.display = '';
+        var reductions = bdConfig.reductions;
+        var basePmt = s.basePmt;
+        var buydownSavings24 = 0;
+        for (var yr = 0; yr < Math.min(2, reductions.length); yr++) {
+          var discPmt = pmt(inp.loanAmount, inp.noteRate - reductions[yr], inp.termYears);
+          buydownSavings24 += (basePmt - discPmt) * 12;
+        }
+        var reducedPmt = pmt(Math.max(0, inp.loanAmount - cost), inp.noteRate, inp.termYears);
+        var priceSavings24 = (basePmt - reducedPmt) * 24;
+        document.getElementById('bd-comp-buydown-cost').textContent = fmtDollarInt(cost) + ' seller deposit';
+        document.getElementById('bd-comp-price-cost').textContent   = fmtDollarInt(cost) + ' off purchase price';
+        document.getElementById('bd-comp-buydown-savings').textContent = fmtDollarInt(buydownSavings24);
+        document.getElementById('bd-comp-price-savings').textContent   = fmtDollarInt(priceSavings24);
+        var buydownCard = document.getElementById('bd-comp-buydown-card');
+        var priceCard   = document.getElementById('bd-comp-price-card');
+        var verdict     = document.getElementById('bd-comp-verdict');
+        buydownCard.classList.remove('winner'); priceCard.classList.remove('winner');
+        var diff = buydownSavings24 - priceSavings24;
+        if (Math.abs(diff) < 50) {
+          verdict.textContent = 'Both options save roughly the same over 2 years.';
+          verdict.className = 'bd-comp-verdict bd-comp-verdict--tie';
+        } else if (diff > 0) {
+          buydownCard.classList.add('winner');
+          verdict.textContent = '\u2713 Buydown saves ' + fmtDollarInt(diff) + ' more over the first 2 years.';
+          verdict.className = 'bd-comp-verdict bd-comp-verdict--buydown';
+        } else {
+          priceCard.classList.add('winner');
+          verdict.textContent = '\u2713 Price reduction saves ' + fmtDollarInt(-diff) + ' more over the first 2 years.';
+          verdict.className = 'bd-comp-verdict bd-comp-verdict--price';
+        }
+      }
+
       /* Master compute + render */
       function compute() {
         var inp = getInputs();
@@ -999,6 +1080,7 @@
         renderChartTimeline(rows, showPITI, inp.escrowMo);
         renderChartSubsidy(rows, bdConfig);
         renderPrintSummary(s, rows, bdConfig.label);
+        computeComparison(inp, bdConfig, s);
       }
 
       /* Build shareable URL with current inputs */
