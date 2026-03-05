@@ -385,6 +385,7 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
       <div class="clock-date" id="clock-date"></div>
       <div class="clock-time" id="clock-time"></div>
       <div class="hdr-actions">
+        <button class="hdr-btn" onclick="location.href='/loan-dashboard.html'">📊 Loan Dashboard</button>
         <button class="hdr-btn" onclick="exportData()">⬇ Backup</button>
         <button class="hdr-btn" onclick="document.getElementById('restore-input').click()">⬆ Restore</button>
         <input type="file" id="restore-input" accept=".json" style="display:none" onchange="importData(event)">
