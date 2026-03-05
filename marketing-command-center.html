@@ -1285,9 +1285,10 @@ function saveNL() {
     notes:       document.getElementById('nl-notes').value.trim(),
   };
   S.newsletters.push(entry);
-  // update tracker
-  const tKey = audience === 'Realtors' ? 'realtor-nl' : audience === 'Borrowers' ? 'borrower-nl' : null;
-  if (tKey) S.last[tKey] = new Date().toISOString();
+  // update tracker — Both updates both newsletters
+  const now = new Date().toISOString();
+  if (audience === 'Realtors' || audience === 'Both') S.last['realtor-nl']  = now;
+  if (audience === 'Borrowers'|| audience === 'Both') S.last['borrower-nl'] = now;
   S.log.push({ date: new Date().toISOString(),
     activity: `Newsletter sent — ${subject}`, channel: 'Email', notes: audience });
   save(); renderNL(); renderTracker(); renderToday(); renderLog();
