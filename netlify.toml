@@ -96,6 +96,16 @@
 # (Old redirect to /blog.html removed)
 
 [[redirects]]
+  from = "/resources/first-time-buyer-guide"
+  to = "/resources/first-time-buyer-guide/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/resources/first-time-buyer-guide/"
+  to = "/resources/first-time-buyer-guide/index.html"
+  status = 200
+
+[[redirects]]
   from = "/pre-qualification/"
   to = "/prequal.html"
   status = 301
