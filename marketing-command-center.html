@@ -273,10 +273,11 @@ body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;m
 .nl-or{font-family:'DM Mono',monospace;font-size:12px;color:var(--green);}
 .nl-or.na{color:var(--dim);}
 .nl-btns{display:flex;gap:5px;}
-.nl-btn-del{padding:4px 7px;border-radius:4px;font-size:10px;cursor:pointer;
+.nl-btn-del,.nl-btn-edit{padding:4px 7px;border-radius:4px;font-size:10px;cursor:pointer;
   border:1px solid var(--border);background:none;color:var(--dim);
   font-family:'DM Sans',sans-serif;transition:all .15s;}
 .nl-btn-del:hover{border-color:var(--red);color:var(--red);}
+.nl-btn-edit:hover{border-color:var(--gold);color:var(--gold);}
 @media(max-width:700px){
   .nl-row{grid-template-columns:90px 1fr 80px;gap:8px;}
   .nl-row .nl-or,.nl-row .nl-btns{display:none;}
@@ -664,7 +665,7 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
 <!-- NEWSLETTER MODAL -->
 <div class="mo" id="mo-nl">
   <div class="mc">
-    <div class="mc-title">Log Newsletter</div>
+    <div class="mc-title" id="mo-nl-title">Log Newsletter</div>
     <div class="mc-sub">Record a sent email campaign</div>
     <div class="fl">Audience</div>
     <select class="fi" id="nl-audience">
@@ -1257,18 +1258,23 @@ function renderNL() {
       <span class="nl-or ${n.openRate ? '' : 'na'}">${n.openRate || '—'}</span>
       <span class="nl-btns">
         ${n.mailchimpUrl ? `<a class="nl-link" href="${n.mailchimpUrl}" target="_blank" rel="noopener">View →</a>` : ''}
+        <button class="nl-btn-edit" onclick="openNLModal('${n.id}')">Edit</button>
         <button class="nl-btn-del" onclick="deleteNL('${n.id}')">✕</button>
       </span>
     </div>`).join('');
 }
 
-function openNLModal() {
-  document.getElementById('nl-audience').value = 'Realtors';
-  document.getElementById('nl-subject').value  = '';
-  document.getElementById('nl-date').value     = todayISO();
-  document.getElementById('nl-url').value      = '';
-  document.getElementById('nl-or').value       = '';
-  document.getElementById('nl-notes').value    = '';
+let _nlEditId = null;
+function openNLModal(editId) {
+  _nlEditId = editId || null;
+  const existing = editId ? S.newsletters.find(n => n.id === editId) : null;
+  document.getElementById('mo-nl-title').textContent = existing ? 'Edit Newsletter' : 'Log Newsletter';
+  document.getElementById('nl-audience').value = existing ? existing.audience  : 'Realtors';
+  document.getElementById('nl-subject').value  = existing ? existing.subject   : '';
+  document.getElementById('nl-date').value     = existing ? existing.date      : todayISO();
+  document.getElementById('nl-url').value      = existing ? existing.mailchimpUrl : '';
+  document.getElementById('nl-or').value       = existing ? existing.openRate  : '';
+  document.getElementById('nl-notes').value    = existing ? existing.notes     : '';
   openModal('mo-nl');
 }
 function saveNL() {
@@ -1276,7 +1282,7 @@ function saveNL() {
   const subject  = document.getElementById('nl-subject').value.trim();
   if (!subject) { alert('Subject line is required.'); return; }
   const entry = {
-    id:          uid(),
+    id:          _nlEditId || uid(),
     audience,
     subject,
     date:        document.getElementById('nl-date').value || todayISO(),
@@ -1284,13 +1290,17 @@ function saveNL() {
     openRate:    document.getElementById('nl-or').value.trim(),
     notes:       document.getElementById('nl-notes').value.trim(),
   };
-  S.newsletters.push(entry);
+  if (_nlEditId) {
+    S.newsletters = S.newsletters.map(n => n.id === _nlEditId ? entry : n);
+  } else {
+    S.newsletters.push(entry);
+    S.log.push({ date: new Date().toISOString(),
+      activity: `Newsletter sent — ${subject}`, channel: 'Email', notes: audience });
+  }
   // update tracker — Both updates both newsletters
   const now = new Date().toISOString();
   if (audience === 'Realtors' || audience === 'Both') S.last['realtor-nl']  = now;
   if (audience === 'Borrowers'|| audience === 'Both') S.last['borrower-nl'] = now;
-  S.log.push({ date: new Date().toISOString(),
-    activity: `Newsletter sent — ${subject}`, channel: 'Email', notes: audience });
   save(); renderNL(); renderTracker(); renderToday(); renderLog();
   closeModal('mo-nl');
 }
