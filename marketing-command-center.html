@@ -371,6 +371,39 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
 .plat-ig{color:#C13584;}
 .plat-both{color:var(--purple);}
 
+/* ── BRAIN DUMP ─────────────────────────────────────────────────── */
+.dump-section{margin-top:18px;}
+.dump-hdr{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
+.dump-hdr-title{font-family:'DM Serif Display',serif;font-size:16px;}
+.dump-count{font-size:11px;color:var(--dim);font-family:'DM Mono',monospace;}
+.dump-input-row{display:flex;gap:8px;margin-bottom:11px;}
+.dump-input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:10px 14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;
+  outline:none;transition:border-color .18s;}
+.dump-input:focus{border-color:var(--gold);}
+.dump-input::placeholder{color:var(--dim);}
+.dump-add-btn{padding:10px 16px;border-radius:8px;border:1px solid var(--border);
+  background:none;color:var(--muted);font-size:13px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all .15s;white-space:nowrap;}
+.dump-add-btn:hover{border-color:var(--gold);color:var(--gold);}
+.dump-list{display:flex;flex-direction:column;gap:5px;}
+.dump-item{display:flex;align-items:center;gap:11px;padding:10px 14px;
+  background:var(--surface);border:1px solid var(--border);border-radius:9px;
+  transition:opacity .28s ease, transform .28s ease, max-height .3s ease, padding .3s ease, margin .3s ease;
+  overflow:hidden;max-height:60px;}
+.dump-item.checking{opacity:0;transform:translateX(14px);max-height:0 !important;padding-top:0;padding-bottom:0;margin:0;}
+.dump-chk{width:19px;height:19px;border:1.5px solid rgba(255,255,255,.15);border-radius:5px;
+  flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .18s;background:none;font-size:11px;color:transparent;}
+.dump-chk:hover{border-color:var(--green);color:var(--green);}
+.dump-txt{font-size:13px;flex:1;color:var(--text);line-height:1.4;}
+.dump-del{padding:4px 7px;border-radius:4px;font-size:10px;cursor:pointer;border:1px solid transparent;
+  background:none;color:var(--dim);font-family:'DM Sans',sans-serif;transition:all .15s;
+  opacity:0;flex-shrink:0;}
+.dump-item:hover .dump-del{opacity:1;}
+.dump-del:hover{border-color:var(--red);color:var(--red);}
+.dump-empty{font-size:12px;color:var(--dim);padding:12px 0;text-align:center;}
+
 /* ── SHARED ─────────────────────────────────────────────────────── */
 .section-title{font-family:'DM Serif Display',serif;font-size:19px;}
 .btn-add{font-size:12px;padding:7px 14px;border-radius:7px;border:1px solid var(--border);
@@ -466,6 +499,21 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
         <div class="day-card-title" id="today-title">—</div>
       </div>
       <div id="today-tasks"></div>
+    </div>
+
+    <!-- BRAIN DUMP -->
+    <div class="dump-section">
+      <div class="dump-hdr">
+        <div class="dump-hdr-title">⚡ Brain Dump</div>
+        <span class="dump-count" id="dump-count"></span>
+      </div>
+      <div class="dump-input-row">
+        <input class="dump-input" id="dump-input" type="text"
+          placeholder="Type anything, hit Enter…"
+          onkeydown="if(event.key==='Enter')addTodo()" autocomplete="off">
+        <button class="dump-add-btn" onclick="addTodo()">Add</button>
+      </div>
+      <div class="dump-list" id="dump-list"></div>
     </div>
   </div>
 
@@ -810,6 +858,8 @@ if (!S.last)        S.last        = {};
 if (!S.contacts)    S.contacts    = {realtors:[],preapprovals:[],inprocess:[],hotleads:[]};
 if (!S.socialPosts) S.socialPosts = [];
 if (!S.newsletters) S.newsletters = [];
+if (!S.todos)       S.todos       = [];
+if (!S.doneTodos)   S.doneTodos   = [];
 function save() { localStorage.setItem('mcc_v1', JSON.stringify(S)); }
 
 // ═══════════════════════════════════════════════════════════════
@@ -1552,6 +1602,61 @@ function importData(event) {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+// BRAIN DUMP
+// ═══════════════════════════════════════════════════════════════
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function renderTodos() {
+  const list  = document.getElementById('dump-list');
+  const count = document.getElementById('dump-count');
+  if (!list) return;
+  const todos = S.todos || [];
+  count.textContent = todos.length ? `${todos.length} item${todos.length===1?'':'s'}` : '';
+  if (!todos.length) {
+    list.innerHTML = '<div class="dump-empty">Nothing here. You\'re clear.</div>';
+    return;
+  }
+  list.innerHTML = todos.map(t => `
+    <div class="dump-item" id="di-${t.id}">
+      <div class="dump-chk" onclick="checkTodo('${t.id}')" title="Mark done">✓</div>
+      <div class="dump-txt">${escHtml(t.text)}</div>
+      <button class="dump-del" onclick="deleteTodo('${t.id}')" title="Delete">✕</button>
+    </div>`).join('');
+}
+function addTodo() {
+  const inp  = document.getElementById('dump-input');
+  const text = inp.value.trim();
+  if (!text) return;
+  S.todos.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2,5),
+                 text, created: new Date().toISOString() });
+  save();
+  renderTodos();
+  inp.value = '';
+  inp.focus();
+}
+function checkTodo(id) {
+  const idx = S.todos.findIndex(t => t.id === id);
+  if (idx < 0) return;
+  const t  = S.todos[idx];
+  const el = document.getElementById('di-' + id);
+  const commit = () => {
+    S.todos.splice(idx, 1);
+    S.doneTodos.push({ ...t, done_at: new Date().toISOString() });
+    save();
+    renderTodos();
+  };
+  if (el) { el.classList.add('checking'); setTimeout(commit, 310); }
+  else commit();
+}
+function deleteTodo(id) {
+  S.todos = S.todos.filter(t => t.id !== id);
+  save();
+  renderTodos();
+}
+
+// ═══════════════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════════════
 function init() {
@@ -1562,6 +1667,7 @@ function init() {
   renderLog();
   renderSocial();
   renderNL();
+  renderTodos();
   Object.keys(S.contacts).forEach(l => renderCG(l));
 }
 
