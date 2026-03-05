@@ -656,12 +656,20 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
     <div class="mc-sub" id="mo-log-sub">Record a completed marketing action</div>
     <div class="fl">Activity</div>
     <input class="fi" id="f-act" placeholder="e.g. Sent realtor newsletter">
-    <div class="fl">Channel</div>
-    <select class="fi" id="f-chan">
-      <option>Email</option><option>Phone Call</option><option>LinkedIn</option>
-      <option>Facebook</option><option>Instagram</option><option>Text</option>
-      <option>Video</option><option>Rate Update</option><option>Other</option>
-    </select>
+    <div class="two-col">
+      <div>
+        <div class="fl">Channel</div>
+        <select class="fi" id="f-chan">
+          <option>Email</option><option>Phone Call</option><option>LinkedIn</option>
+          <option>Facebook</option><option>Instagram</option><option>Text</option>
+          <option>Video</option><option>Rate Update</option><option>Other</option>
+        </select>
+      </div>
+      <div>
+        <div class="fl">Date (defaults to today)</div>
+        <input class="fi" id="f-log-date" type="date">
+      </div>
+    </div>
     <div class="fl">Notes (optional)</div>
     <input class="fi" id="f-notes" placeholder="Any context…">
     <div class="ma">
@@ -1534,13 +1542,24 @@ function openLogModal(tid) {
     document.getElementById('mo-log-sub').textContent = 'Record a completed marketing action';
   }
   document.getElementById('f-notes').value = '';
+  // Default date field to today
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  const dd = String(today.getDate()).padStart(2,'0');
+  document.getElementById('f-log-date').value = `${yyyy}-${mm}-${dd}`;
   openModal('mo-log');
 }
 function saveLog() {
   const activity = document.getElementById('f-act').value.trim();
   if (!activity) return;
+  const dateVal = document.getElementById('f-log-date').value;
+  // Parse as local noon to avoid UTC-offset date shifting
+  const entryDate = dateVal
+    ? new Date(`${dateVal}T12:00:00`).toISOString()
+    : new Date().toISOString();
   const entry = {
-    date:     new Date().toISOString(),
+    date:     entryDate,
     activity,
     channel:  document.getElementById('f-chan').value,
     notes:    document.getElementById('f-notes').value.trim()
