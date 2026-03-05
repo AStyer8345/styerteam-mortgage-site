@@ -40,6 +40,11 @@
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
+[[headers]]
+  for = "/marketing-content.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
 # ─── 301 Redirects: Old WordPress URLs ───
 
 [[redirects]]
