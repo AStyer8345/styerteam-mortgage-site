@@ -58,7 +58,7 @@ async function generateNewsletter(formData) {
     // STEP 0: Compute the page URL FIRST so the AI can use it directly
     // ----------------------------------------------------------------
     const today = new Date().toISOString().split("T")[0];
-    const slugSource = isPaste ? (formData.title || "untitled") : topic;
+    const slugSource = isPaste ? (formData.title || "untitled") : (topic || formData.customPrompt || "newsletter");
     const slug = slugSource
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, "")
