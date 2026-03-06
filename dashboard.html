@@ -277,30 +277,56 @@
                   <p><strong>Web Page:</strong> <a id="result-page-url" href="#" target="_blank" rel="noopener"></a></p>
                   <div id="result-campaigns"></div>
                 </div>
+                <div id="result-social-section" class="hidden" style="margin-top: 1.5rem; border-top: 1px solid #E5E7EB; padding-top: 1.25rem;">
+                  <h4 style="margin-bottom: 1rem;">&#128241; Social Posts</h4>
+                  <div style="margin-bottom: 1.25rem;">
+                    <p style="margin-bottom: 0.5rem; font-weight: 600; font-size: 0.875rem;">LinkedIn <span id="result-linkedin-status" style="font-weight: 400; color: #6B7280;"></span> <button class="btn btn-xs" onclick="copyPreviewSocial('result-linkedin-post', this)" style="margin-left: 0.5rem; padding: 2px 10px; font-size: 0.75rem;">Copy</button></p>
+                    <textarea id="result-linkedin-post" rows="7" style="width: 100%; font-family: inherit; font-size: 0.875rem; padding: 10px; border: 1px solid #D1D5DB; border-radius: 6px; resize: vertical; line-height: 1.6;"></textarea>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; font-weight: 600; font-size: 0.875rem;">Facebook <span id="result-facebook-status" style="font-weight: 400; color: #6B7280;"></span> <button class="btn btn-xs" onclick="copyPreviewSocial('result-facebook-post', this)" style="margin-left: 0.5rem; padding: 2px 10px; font-size: 0.75rem;">Copy</button></p>
+                    <textarea id="result-facebook-post" rows="6" style="width: 100%; font-family: inherit; font-size: 0.875rem; padding: 10px; border: 1px solid #D1D5DB; border-radius: 6px; resize: vertical; line-height: 1.6;"></textarea>
+                  </div>
+                </div>
               </div>
               <div class="dash-preview-card hidden" id="result-card-preview">
                 <h3 style="margin-bottom: 0.25rem;">&#128065; Preview — Nothing Has Been Published or Sent</h3>
-                <p style="color: #6B7280; margin-bottom: 1.5rem; font-size: 0.9rem;">Review everything below. When you're happy, switch to <strong>Go Live</strong> and submit again.</p>
+                <p style="color: #6B7280; margin-bottom: 1.5rem; font-size: 0.9rem;">Review and edit everything below. Click any section to make changes directly. When you're happy, click <strong>Go Live</strong> — your edits will be published exactly as shown.</p>
 
                 <div class="dash-preview-section">
                   <h4>&#128196; Web Article</h4>
                   <p class="dash-preview-meta"><strong>Title:</strong> <span id="preview-page-title"></span></p>
                   <p class="dash-preview-meta"><strong>URL would be:</strong> <span id="preview-page-url"></span></p>
-                  <div class="dash-preview-body" id="preview-web-content"></div>
+                  <p class="dash-preview-meta" style="color: #9CA3AF; font-size: 0.8rem;">&#9998; Click content below to edit</p>
+                  <div class="dash-preview-body" id="preview-web-content" contenteditable="true" style="outline: none; border: 1px dashed #D1D5DB; border-radius: 6px; padding: 4px;"></div>
                 </div>
 
                 <div class="dash-preview-section" id="preview-borrower-section">
                   <h4>&#128231; Borrower Email</h4>
-                  <p class="dash-preview-meta"><strong>Subject:</strong> <span id="preview-borrower-subject"></span></p>
-                  <p class="dash-preview-meta"><strong>Preheader:</strong> <span id="preview-borrower-preheader"></span></p>
-                  <div class="dash-preview-email" id="preview-borrower-html"></div>
+                  <p class="dash-preview-meta"><strong>Subject:</strong> <input type="text" id="preview-borrower-subject" style="border: 1px solid #D1D5DB; border-radius: 4px; padding: 2px 8px; font-size: 0.9rem; width: 100%; max-width: 500px;" /></p>
+                  <p class="dash-preview-meta"><strong>Preheader:</strong> <input type="text" id="preview-borrower-preheader" style="border: 1px solid #D1D5DB; border-radius: 4px; padding: 2px 8px; font-size: 0.9rem; width: 100%; max-width: 500px;" /></p>
+                  <p class="dash-preview-meta" style="color: #9CA3AF; font-size: 0.8rem;">&#9998; Click email body below to edit</p>
+                  <div class="dash-preview-email" id="preview-borrower-html" contenteditable="true" style="outline: none; border: 1px dashed #D1D5DB; border-radius: 6px; padding: 4px;"></div>
                 </div>
 
                 <div class="dash-preview-section" id="preview-realtor-section">
                   <h4>&#128231; Realtor Email</h4>
-                  <p class="dash-preview-meta"><strong>Subject:</strong> <span id="preview-realtor-subject"></span></p>
-                  <p class="dash-preview-meta"><strong>Preheader:</strong> <span id="preview-realtor-preheader"></span></p>
-                  <div class="dash-preview-email" id="preview-realtor-html"></div>
+                  <p class="dash-preview-meta"><strong>Subject:</strong> <input type="text" id="preview-realtor-subject" style="border: 1px solid #D1D5DB; border-radius: 4px; padding: 2px 8px; font-size: 0.9rem; width: 100%; max-width: 500px;" /></p>
+                  <p class="dash-preview-meta"><strong>Preheader:</strong> <input type="text" id="preview-realtor-preheader" style="border: 1px solid #D1D5DB; border-radius: 4px; padding: 2px 8px; font-size: 0.9rem; width: 100%; max-width: 500px;" /></p>
+                  <p class="dash-preview-meta" style="color: #9CA3AF; font-size: 0.8rem;">&#9998; Click email body below to edit</p>
+                  <div class="dash-preview-email" id="preview-realtor-html" contenteditable="true" style="outline: none; border: 1px dashed #D1D5DB; border-radius: 6px; padding: 4px;"></div>
+                </div>
+
+                <div class="dash-preview-section hidden" id="preview-social-section">
+                  <h4>&#128241; Social Posts</h4>
+                  <div style="margin-bottom: 1.25rem;">
+                    <p class="dash-preview-meta" style="margin-bottom: 0.5rem;"><strong>LinkedIn</strong> <button class="btn btn-xs" id="copy-linkedin-btn" onclick="copyPreviewSocial('preview-linkedin-post', this)" style="margin-left: 0.5rem; padding: 2px 10px; font-size: 0.75rem;">Copy</button></p>
+                    <textarea id="preview-linkedin-post" rows="7" style="width: 100%; font-family: inherit; font-size: 0.875rem; padding: 10px; border: 1px solid #D1D5DB; border-radius: 6px; resize: vertical; line-height: 1.6;"></textarea>
+                  </div>
+                  <div>
+                    <p class="dash-preview-meta" style="margin-bottom: 0.5rem;"><strong>Facebook</strong> <button class="btn btn-xs" id="copy-facebook-btn" onclick="copyPreviewSocial('preview-facebook-post', this)" style="margin-left: 0.5rem; padding: 2px 10px; font-size: 0.75rem;">Copy</button></p>
+                    <textarea id="preview-facebook-post" rows="6" style="width: 100%; font-family: inherit; font-size: 0.875rem; padding: 10px; border: 1px solid #D1D5DB; border-radius: 6px; resize: vertical; line-height: 1.6;"></textarea>
+                  </div>
                 </div>
 
                 <div class="dash-preview-actions">

@@ -224,6 +224,37 @@ function initNewsletterAutomation() {
       setStatus('Generating content with AI... this takes about 30 seconds.');
     }
 
+    // If live mode and a preview was run first, capture any edits the user made
+    if (formData.mode !== 'preview') {
+      const webEl = document.getElementById('preview-web-content');
+      const bHtmlEl = document.getElementById('preview-borrower-html');
+      const rHtmlEl = document.getElementById('preview-realtor-html');
+      const bSubjectEl = document.getElementById('preview-borrower-subject');
+      const bPreheaderEl = document.getElementById('preview-borrower-preheader');
+      const rSubjectEl = document.getElementById('preview-realtor-subject');
+      const rPreheaderEl = document.getElementById('preview-realtor-preheader');
+
+      // Only attach if there's actually content to send (i.e., a preview was shown)
+      if (webEl && webEl.innerHTML.trim()) {
+        formData.preGeneratedContent = {
+          webContent: webEl.innerHTML,
+          borrowerEmail: bHtmlEl ? bHtmlEl.innerHTML : null,
+          borrowerSubject: bSubjectEl ? bSubjectEl.value : null,
+          borrowerPreheader: bPreheaderEl ? bPreheaderEl.value : null,
+          realtorEmail: rHtmlEl ? rHtmlEl.innerHTML : null,
+          realtorSubject: rSubjectEl ? rSubjectEl.value : null,
+          realtorPreheader: rPreheaderEl ? rPreheaderEl.value : null,
+        };
+      }
+
+      // Reuse reviewed social text
+      const nlSocialKey = 'nl_social_' + (formData.topic || formData.title || 'nl').toLowerCase().replace(/\s+/g, '_');
+      const cachedSocial = sessionStorage.getItem(nlSocialKey);
+      if (cachedSocial) {
+        try { formData.preGeneratedSocial = JSON.parse(cachedSocial); } catch (e) {}
+      }
+    }
+
     try {
       const response = await fetch('/.netlify/functions/generate-newsletter', {
         method: 'POST',
@@ -270,8 +301,10 @@ function initNewsletterAutomation() {
         const borrowerSection = document.getElementById('preview-borrower-section');
         if (p.borrowerEmailHtml) {
           borrowerSection.classList.remove('hidden');
-          setText('preview-borrower-subject', p.borrowerSubject || '');
-          setText('preview-borrower-preheader', p.borrowerPreheader || '');
+          const bSubjectEl = document.getElementById('preview-borrower-subject');
+          if (bSubjectEl) bSubjectEl.value = p.borrowerSubject || '';
+          const bPreheaderEl = document.getElementById('preview-borrower-preheader');
+          if (bPreheaderEl) bPreheaderEl.value = p.borrowerPreheader || '';
           const bEl = document.getElementById('preview-borrower-html');
           if (bEl) bEl.innerHTML = p.borrowerEmailHtml;
         } else {
@@ -282,12 +315,29 @@ function initNewsletterAutomation() {
         const realtorSection = document.getElementById('preview-realtor-section');
         if (p.realtorEmailHtml) {
           realtorSection.classList.remove('hidden');
-          setText('preview-realtor-subject', p.realtorSubject || '');
-          setText('preview-realtor-preheader', p.realtorPreheader || '');
+          const rSubjectEl = document.getElementById('preview-realtor-subject');
+          if (rSubjectEl) rSubjectEl.value = p.realtorSubject || '';
+          const rPreheaderEl = document.getElementById('preview-realtor-preheader');
+          if (rPreheaderEl) rPreheaderEl.value = p.realtorPreheader || '';
           const rEl = document.getElementById('preview-realtor-html');
           if (rEl) rEl.innerHTML = p.realtorEmailHtml;
         } else {
           realtorSection.classList.add('hidden');
+        }
+
+        // Social posts preview
+        const socialSection = document.getElementById('preview-social-section');
+        if (socialSection) {
+          if (p.linkedinPost || p.facebookPost) {
+            document.getElementById('preview-linkedin-post').value = p.linkedinPost || '';
+            document.getElementById('preview-facebook-post').value = p.facebookPost || '';
+            socialSection.classList.remove('hidden');
+            // Cache so live mode publishes the exact text you reviewed
+            const nlSocialKey = 'nl_social_' + (formData.topic || formData.title || 'nl').toLowerCase().replace(/\s+/g, '_');
+            sessionStorage.setItem(nlSocialKey, JSON.stringify({ linkedin: p.linkedinPost || '', facebook: p.facebookPost || '' }));
+          } else {
+            socialSection.classList.add('hidden');
+          }
         }
 
         resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -338,6 +388,21 @@ function initNewsletterAutomation() {
               escapeHtml(c.subject) + ' ' + statusBadge;
             campaignsEl.appendChild(el);
           });
+        }
+
+        // Social posts — show generated text and publish status
+        const socialResultSection = document.getElementById('result-social-section');
+        if (socialResultSection && data.socialPosts && !data.socialPosts.error) {
+          const sp = data.socialPosts;
+          const liText = sp.linkedinText || '';
+          const fbText = sp.facebookText || '';
+          document.getElementById('result-linkedin-post').value = liText;
+          document.getElementById('result-facebook-post').value = fbText;
+          const liStatus = document.getElementById('result-linkedin-status');
+          const fbStatus = document.getElementById('result-facebook-status');
+          if (liStatus) liStatus.textContent = sp.linkedin?.status === 'posted' ? '✓ Posted' : (sp.linkedin?.error ? '⚠ Failed' : '');
+          if (fbStatus) fbStatus.textContent = sp.facebook?.status === 'posted' ? '✓ Posted' : (sp.facebook?.error ? '⚠ Failed' : '');
+          if (liText || fbText) socialResultSection.classList.remove('hidden');
         }
 
         resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1022,6 +1087,19 @@ function initCopyButtons() {
       sel.removeAllRanges();
       sel.addRange(range);
     });
+  });
+}
+
+// Copy textarea content to clipboard (used by social post copy buttons)
+function copyPreviewSocial(textareaId, btn) {
+  const textarea = document.getElementById(textareaId);
+  if (!textarea) return;
+  navigator.clipboard.writeText(textarea.value).then(() => {
+    const original = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = original; }, 2000);
+  }).catch(() => {
+    textarea.select();
   });
 }
 

@@ -3,7 +3,7 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildPrompt } = require("./lib/prompt-builder");
 const { buildWebPage } = require("./lib/page-builder");
 const { buildBlogPage } = require("./lib/blog-page-builder");
-const { generateAndPostSocial } = require("./lib/social-poster");
+const { generateAndPostSocial, generateSocialPostsText } = require("./lib/social-poster");
 const { createGitHubFile, createAndSendCampaign, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument } = require("./lib/shared");
 
 // ====================================================================
@@ -74,7 +74,22 @@ async function generateNewsletter(formData) {
     // ----------------------------------------------------------------
     let parsed;
 
-    if (isPaste) {
+    if (formData.preGeneratedContent) {
+      // Client-edited content from preview — use exactly as provided, skip Claude
+      const c = formData.preGeneratedContent;
+      parsed = {
+        borrowerEmail: c.borrowerEmail || null,
+        borrowerSubject: c.borrowerSubject || null,
+        borrowerPreheader: c.borrowerPreheader || null,
+        realtorEmail: c.realtorEmail || null,
+        realtorSubject: c.realtorSubject || null,
+        realtorPreheader: c.realtorPreheader || null,
+        webContent: c.webContent || null,
+        pageTitle: null,   // derived from topic/title below
+        pageDescription: null,
+        pageCategory: null,
+      };
+    } else if (isPaste) {
       // Paste mode: skip AI entirely, use provided HTML directly
       parsed = {
         borrowerEmail: formData.emailHtml,
@@ -224,7 +239,7 @@ async function generateNewsletter(formData) {
       }
 
       // ----------------------------------------------------------------
-      // STEP 4: Queue social media posts via Buffer (non-blocking)
+      // STEP 4: Social media posts — generate AND publish (live mode)
       // ----------------------------------------------------------------
       try {
         const socialTopic = topic || formData.title || "Newsletter";
@@ -232,11 +247,30 @@ async function generateNewsletter(formData) {
           webContent: parsed.webContent,
           pageUrl,
           topic: socialTopic,
+          preGeneratedText: formData.preGeneratedSocial || null,
         });
         console.log("[social-poster] Result:", JSON.stringify(results.socialPosts));
       } catch (socialErr) {
         console.error("[social-poster] Failed (non-blocking):", socialErr.message);
         results.socialPosts = { error: socialErr.message };
+      }
+    }
+
+    // ----------------------------------------------------------------
+    // STEP 4b: Social post text generation for preview (non-blocking)
+    // ----------------------------------------------------------------
+    if (isPreview && parsed.webContent) {
+      try {
+        const socialTopic = topic || formData.title || "Newsletter";
+        const socialTexts = await generateSocialPostsText({
+          webContent: parsed.webContent,
+          pageUrl,
+          topic: socialTopic,
+        });
+        results.socialPostsPreview = socialTexts;
+      } catch (socialErr) {
+        console.error("[social-poster] Preview text generation failed (non-blocking):", socialErr.message);
+        results.socialPostsPreview = null;
       }
     }
 
@@ -258,6 +292,8 @@ async function generateNewsletter(formData) {
         webContent: parsed.webContent,
         borrowerEmailHtml: parsed.borrowerEmail ? injectPageLink(parsed.borrowerEmail, pageUrl) : null,
         realtorEmailHtml: parsed.realtorEmail ? injectPageLink(parsed.realtorEmail, pageUrl) : null,
+        linkedinPost: results.socialPostsPreview?.linkedin || null,
+        facebookPost: results.socialPostsPreview?.facebook || null,
       },
     };
 }

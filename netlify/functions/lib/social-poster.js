@@ -37,25 +37,19 @@ const Anthropic = require("@anthropic-ai/sdk");
  * @param {string} opts.topic       — The newsletter topic/title
  * @returns {Object} Results with linkedin and facebook post statuses
  */
-async function generateAndPostSocial({ webContent, pageUrl, topic }) {
-  // ── Check credentials ───────────────────────────────────────────
-  const linkedinToken = process.env.LINKEDIN_ACCESS_TOKEN;
-  const linkedinUrn = process.env.LINKEDIN_PERSON_URN;
-  const fbPageToken = process.env.FACEBOOK_PAGE_ACCESS_TOKEN;
-  const fbPageId = process.env.FACEBOOK_PAGE_ID;
-
-  const hasLinkedIn = linkedinToken && linkedinUrn;
-  const hasFacebook = fbPageToken && fbPageId;
-
-  if (!hasLinkedIn && !hasFacebook) {
-    console.log("[social-poster] Skipped: No LinkedIn or Facebook credentials configured");
-    return { skipped: true, reason: "No social media credentials configured" };
-  }
-
-  // Strip HTML tags to get plain text for the AI prompt
+/**
+ * Generate LinkedIn and Facebook post text from newsletter content via Claude.
+ * Does NOT publish — returns plain text strings only.
+ * Use this for preview mode or anywhere you need post text without posting.
+ *
+ * @param {Object} opts
+ * @param {string} opts.webContent  — The HTML article content
+ * @param {string} opts.pageUrl     — The published (or preview) URL of the article
+ * @param {string} opts.topic       — The newsletter topic/title
+ * @returns {{ linkedin: string|null, facebook: string|null }}
+ */
+async function generateSocialPostsText({ webContent, pageUrl, topic }) {
   const plainText = stripHtml(webContent);
-
-  // ── Step 1: Generate social posts via Claude ──────────────────────
   const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
   const prompt = buildSocialPrompt(plainText, pageUrl, topic);
 
@@ -84,13 +78,38 @@ async function generateAndPostSocial({ webContent, pageUrl, topic }) {
 
   if (!posts.linkedin && !posts.facebook) {
     console.error("[social-poster] Failed to parse social posts from AI response");
-    return { error: "Failed to parse AI response", raw: aiText.substring(0, 300) };
+    throw new Error("Failed to parse social posts from AI response");
   }
+
+  return posts; // { linkedin: string|null, facebook: string|null }
+}
+
+async function generateAndPostSocial({ webContent, pageUrl, topic, preGeneratedText }) {
+  // ── Check credentials ───────────────────────────────────────────
+  const linkedinToken = process.env.LINKEDIN_ACCESS_TOKEN;
+  const linkedinUrn = process.env.LINKEDIN_PERSON_URN;
+  const fbPageToken = process.env.FACEBOOK_PAGE_ACCESS_TOKEN;
+  const fbPageId = process.env.FACEBOOK_PAGE_ID;
+
+  const hasLinkedIn = linkedinToken && linkedinUrn;
+  const hasFacebook = fbPageToken && fbPageId;
+
+  if (!hasLinkedIn && !hasFacebook) {
+    console.log("[social-poster] Skipped: No LinkedIn or Facebook credentials configured");
+    return { skipped: true, reason: "No social media credentials configured" };
+  }
+
+  // ── Step 1: Generate (or reuse pre-reviewed) social post text ─────
+  const posts = preGeneratedText
+    ? { linkedin: preGeneratedText.linkedin || null, facebook: preGeneratedText.facebook || null }
+    : await generateSocialPostsText({ webContent, pageUrl, topic });
 
   // ── Step 2: Publish posts directly ──────────────────────────────
   const results = {
     linkedin: null,
     facebook: null,
+    linkedinText: posts.linkedin,
+    facebookText: posts.facebook,
     timestamp: new Date().toISOString(),
   };
 
@@ -399,4 +418,4 @@ function stripHtml(html) {
     .trim();
 }
 
-module.exports = { generateAndPostSocial };
+module.exports = { generateAndPostSocial, generateSocialPostsText };
