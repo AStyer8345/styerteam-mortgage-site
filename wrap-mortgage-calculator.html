@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WRAP Mortgage Calculator | Seller Financing | Adam Styer</title>
+  <meta name="description" content="Calculate your monthly income from a wraparound mortgage. See cash at closing, equity spread, and passive income when you seller-finance your home. Free tool from Adam Styer, NMLS #513013.">
+  <meta name="keywords" content="wrap mortgage calculator, wraparound mortgage, seller financing calculator, owner financing Texas, seller carryback, wrap loan, passive income real estate">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="WRAP Mortgage Calculator | Seller Financing | Adam Styer | Mortgage Solutions LP">
+  <meta property="og:description" content="Turn your sub-4% mortgage into passive income. See monthly spread, cash at closing, and buyer payment in seconds.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://styermortgage.com/wrap-mortgage-calculator.html">
+  <meta property="og:image" content="https://styermortgage.com/img/og-card.jpg">
+  <meta property="og:site_name" content="Adam Styer | Mortgage Solutions LP">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WRAP Mortgage Calculator | Seller Financing | Adam Styer">
+  <meta name="twitter:description" content="Turn your sub-4% mortgage into passive income. Calculate your monthly spread and cash at closing instantly.">
+  <meta name="twitter:image" content="https://styermortgage.com/img/og-card.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://styermortgage.com/wrap-mortgage-calculator.html">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "WRAP Mortgage Calculator",
+    "description": "Calculate monthly passive income, cash at closing, and equity spread for a wraparound seller-financing arrangement.",
+    "url": "https://styermortgage.com/wrap-mortgage-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "provider": {
+      "@type": "FinancialService",
+      "name": "Adam Styer | Mortgage Solutions LP",
+      "url": "https://styermortgage.com/"
+    }
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is a wraparound mortgage legal in Texas?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Owner/seller financing is legal in Texas and regulated under Chapter 5 of the Texas Property Code. WRAP mortgages require specific disclosures and must comply with SAFE Act requirements. Always work with a real estate attorney experienced in owner financing to structure the transaction correctly." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the 'due-on-sale' clause risk?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most conventional mortgages contain a due-on-sale clause that allows the lender to call the full loan balance due when the property is transferred. In a WRAP, the seller's existing mortgage stays in place without lender approval, which technically triggers this clause. The risk is real but lenders rarely exercise it when payments are current. An attorney can advise on structuring to minimize exposure." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if the buyer stops paying?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If the buyer defaults on the WRAP loan, you must continue paying your underlying mortgage to protect your credit and avoid foreclosure on your existing lien. You can then foreclose on the buyer through the owner-finance process. This is why proper legal documentation and a solid down payment are critical." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the WRAP interest rate set?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You and the buyer negotiate the WRAP rate. It should be high enough to generate meaningful spread above your existing rate, but low enough to attract buyers who can't or won't take a conventional loan at current market rates. Rates typically range from 1-3% above your existing rate, and below current market rates for the buyer." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the buyer know about my existing mortgage?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — ethical and legal seller financing requires full disclosure. The buyer must understand the WRAP structure, including your existing loan balance, rate, and the due-on-sale risk. Texas Property Code requires specific disclosures in owner-finance transactions." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ── Hero ── */
+    .wrap-hero { background: var(--color-navy); color: #fff; padding: 3rem 0 2rem; text-align: center; }
+    .wrap-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem,4.5vw,3rem); margin-bottom: .75rem; color: #fff; }
+    .wrap-hero .hero-sub { font-size: 1.1rem; opacity: .85; max-width: 620px; margin: 0 auto 1.5rem; }
+    .wrap-hero .hero-badges { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+    .wrap-hero .badge { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 99px; padding: .3rem .9rem; font-size: .8rem; color: #fff; }
+
+    /* ── Explainer cards ── */
+    .wrap-benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin: 2.5rem 0; }
+    @media (max-width: 768px) { .wrap-benefits { grid-template-columns: 1fr; } }
+    .wrap-benefit-card { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 1.75rem; box-shadow: var(--shadow-premium); }
+    .wrap-benefit-card .benefit-icon { font-size: 2rem; margin-bottom: .75rem; }
+    .wrap-benefit-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--color-navy); margin-bottom: .5rem; }
+    .wrap-benefit-card p { font-size: .9rem; color: var(--color-gray); line-height: 1.6; margin: 0; }
+
+    /* ── How it works steps ── */
+    .wrap-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin: 2rem 0; }
+    @media (max-width: 900px) { .wrap-steps { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 500px) { .wrap-steps { grid-template-columns: 1fr; } }
+    .wrap-step { text-align: center; }
+    .wrap-step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--color-gold); color: #fff; font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; margin: 0 auto .75rem; }
+    .wrap-step h4 { font-size: .9rem; font-weight: 700; color: var(--color-navy); margin-bottom: .35rem; }
+    .wrap-step p { font-size: .83rem; color: var(--color-gray); line-height: 1.5; margin: 0; }
+
+    /* ── Calculator layout ── */
+    .wrap-calc-section { background: var(--color-light-gray); padding: 3.5rem 0; }
+    .wrap-calc-inner { display: grid; grid-template-columns: 380px 1fr; gap: 2rem; align-items: start; }
+    @media (max-width: 960px) { .wrap-calc-inner { grid-template-columns: 1fr; } }
+
+    /* ── Input panel ── */
+    .wrap-input-panel { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 1.5rem; position: sticky; top: 84px; box-shadow: var(--shadow-premium); }
+    .wrap-input-panel h2 { font-size: .8rem; font-weight: 700; color: var(--color-navy); margin-bottom: 1.1rem; text-transform: uppercase; letter-spacing: .07em; }
+    .wrap-input-section-label { font-size: .75rem; font-weight: 600; color: var(--color-gold); text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid #f0f0f0; padding-bottom: .4rem; margin: 1.1rem 0 .85rem; }
+    .wrap-field { margin-bottom: .75rem; }
+    .wrap-field label { display: block; font-size: .82rem; font-weight: 600; color: var(--color-dark-gray); margin-bottom: .3rem; }
+    .wrap-field input[type=number] { width: 100%; padding: .55rem .85rem; border: 1px solid var(--color-border); border-radius: 8px; font-size: .95rem; color: var(--color-navy); background: #fff; box-sizing: border-box; }
+    .wrap-field input[type=number]:focus { outline: 2px solid var(--color-gold); border-color: var(--color-gold); }
+
+    /* ── Output panel ── */
+    .wrap-output-panel { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 1.75rem; box-shadow: var(--shadow-premium); }
+    .wrap-output-panel h2 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--color-navy); margin-bottom: 1.25rem; }
+    .wrap-output-row { display: flex; justify-content: space-between; align-items: baseline; padding: .65rem 0; border-bottom: 1px solid #f0f4f8; gap: 1rem; }
+    .wrap-output-row:last-of-type { border-bottom: none; }
+    .wrap-output-label { font-size: .88rem; color: var(--color-gray); }
+    .wrap-output-value { font-size: 1rem; font-weight: 600; color: var(--color-navy); text-align: right; }
+    .wrap-output-row--highlight { background: #f8f5ee; border-radius: 8px; padding: .75rem 1rem; margin: .5rem -1rem; border: none; }
+    .wrap-output-row--highlight .wrap-output-label { font-weight: 600; color: var(--color-navy); font-size: .9rem; }
+    .wrap-output-row--highlight .wrap-output-value { font-size: 1.5rem; font-weight: 700; color: var(--color-gold); }
+    .wrap-output-divider { border: none; border-top: 2px solid var(--color-border); margin: 1rem 0; }
+    .wrap-disclaimer { font-size: .78rem; color: #94a3b8; margin-top: 1.25rem; line-height: 1.5; }
+    .wrap-disclaimer a { color: var(--color-navy); }
+
+    /* ── Scenario box ── */
+    .wrap-scenario { background: #f0f6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 1.25rem 1.5rem; margin-top: 1.5rem; }
+    .wrap-scenario h4 { font-size: .85rem; font-weight: 700; color: #1e40af; margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .05em; }
+    .wrap-scenario p { font-size: .85rem; color: #1e3a8a; margin: 0; line-height: 1.5; }
+
+    /* ── CTA ── */
+    .wrap-cta { background: var(--color-navy); color: #fff; padding: 4rem 0; text-align: center; }
+    .wrap-cta h2 { font-family: 'Playfair Display', serif; font-size: 1.85rem; color: #fff; margin-bottom: .75rem; }
+    .wrap-cta p { opacity: .85; max-width: 540px; margin: 0 auto 2rem; }
+
+    /* ── For realtors callout ── */
+    .realtor-callout { background: #f8f5ee; border-left: 4px solid var(--color-gold); border-radius: 0 10px 10px 0; padding: 1.25rem 1.5rem; margin: 2rem 0; }
+    .realtor-callout h4 { font-size: 1rem; font-weight: 700; color: var(--color-navy); margin-bottom: .4rem; }
+    .realtor-callout p { font-size: .9rem; color: var(--color-dark-gray); margin: 0; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <a href="#wrap-calc" class="skip-link">Skip to calculator</a>
+
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.svg" alt="Adam Styer | Mortgage Solutions LP" class="nav-logo-img" width="180" height="40">
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li class="nav-has-dropdown"><a href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li><a href="/loans/conventional.html">Conventional</a></li><li><a href="/loans/fha.html">FHA</a></li><li><a href="/loans/va.html">VA</a></li><li><a href="/loans/usda.html">USDA</a></li><li><a href="/loans/jumbo.html">Jumbo</a></li><li><a href="/loans/construction.html">Construction</a></li><li><a href="/loans/refinance.html">Refinance</a></li><li><a href="/loans/investment.html">Investment</a></li><li><a href="/dscr-loan-austin-tx.html">DSCR / Non-QM</a></li></ul></li>
+          <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/resources/first-time-buyer-guide/">Buyer Guide</a></li></ul></li>
+          <li><a href="/testimonials.html">Testimonials</a></li>
+          <li><a href="/about.html">About Adam</a></li>
+          <li class="nav-has-dropdown"><a href="/realtors.html">For Realtors</a><ul class="nav-dropdown"><li><a href="/blog.html?tag=realtors">Realtor Blog</a></li></ul></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="https://mslp.my1003app.com/513013/register" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="wrap-hero">
+    <div class="container">
+      <h1>WRAP Mortgage Calculator</h1>
+      <p class="hero-sub">You bought at 3%. Today's market is 7%. That rate gap is worth thousands per month — if you know how to use it.</p>
+      <div class="hero-badges">
+        <span class="badge">For Sellers with Sub-4% Rates</span>
+        <span class="badge">Monthly Passive Income</span>
+        <span class="badge">Premium Sale Price</span>
+        <span class="badge">Cash at Closing</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- EDUCATIONAL EXPLAINER -->
+    <section style="padding: 3.5rem 0;">
+      <div class="container">
+        <h2 class="text-center" style="margin-bottom: .75rem;">What Is a Wraparound Mortgage?</h2>
+        <p class="text-center content-medium mx-auto" style="color: var(--color-gray); margin-bottom: 2.5rem;">
+          A WRAP mortgage (or wraparound) is owner financing — you sell your home, keep your existing low-rate mortgage, and issue a new, larger mortgage to the buyer at a higher rate. You pocket the difference every month.
+        </p>
+
+        <div class="wrap-benefits">
+          <div class="wrap-benefit-card">
+            <div class="benefit-icon">💰</div>
+            <h3>Passive Income for Years</h3>
+            <p>You collect monthly payments from the buyer at a higher rate and forward your original lower payment to the bank. The spread is yours — month after month, for the life of the loan.</p>
+          </div>
+          <div class="wrap-benefit-card">
+            <div class="benefit-icon">🏷️</div>
+            <h3>Premium on Your Price</h3>
+            <p>Buyers will pay full price — even above market — for below-market financing. When conventional rates are 7%+, offering 5–6% financing is a massive advantage that commands a higher sale price.</p>
+          </div>
+          <div class="wrap-benefit-card">
+            <div class="benefit-icon">💵</div>
+            <h3>Cash at Closing</h3>
+            <p>The buyer's down payment hits your pocket at closing, minus transaction costs. You get a lump sum upfront plus ongoing income — without listing commissions eating into both.</p>
+          </div>
+        </div>
+
+        <h3 style="text-align:center; margin-bottom: 1.5rem; color: var(--color-navy);">How It Works in 4 Steps</h3>
+        <div class="wrap-steps">
+          <div class="wrap-step">
+            <div class="wrap-step-num">1</div>
+            <h4>Find a Buyer</h4>
+            <p>You find a buyer directly — often someone who can't qualify conventionally but has solid income and a down payment.</p>
+          </div>
+          <div class="wrap-step">
+            <div class="wrap-step-num">2</div>
+            <h4>Agree on Terms</h4>
+            <p>You set the sale price, down payment, WRAP rate (between your existing rate and market rates), and loan term.</p>
+          </div>
+          <div class="wrap-step">
+            <div class="wrap-step-num">3</div>
+            <h4>Close the Deal</h4>
+            <p>You receive the down payment at closing. The buyer takes possession. An attorney documents everything — deed of trust, promissory note.</p>
+          </div>
+          <div class="wrap-step">
+            <div class="wrap-step-num">4</div>
+            <h4>Collect the Spread</h4>
+            <p>Buyer pays you. You pay the bank. The gap between those two payments is your monthly income — for up to 30 years.</p>
+          </div>
+        </div>
+
+        <div class="realtor-callout">
+          <h4>A Note for Realtors</h4>
+          <p>A WRAP can save a deal that won't survive current rate conditions. If your seller has a sub-4% loan and is struggling to attract offers at their price, seller financing eliminates the buyer's rate barrier entirely. Call Adam at (512) 956-6010 to talk through the structure for a specific listing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATOR -->
+    <section class="wrap-calc-section" id="wrap-calc">
+      <div class="container">
+        <h2 class="text-center" style="margin-bottom: .5rem;">Run the Numbers</h2>
+        <p class="text-center" style="color: var(--color-gray); margin-bottom: 2rem;">Enter your loan details and proposed sale terms to see your monthly income and cash at closing.</p>
+
+        <div class="wrap-calc-inner">
+          <!-- INPUT PANEL -->
+          <div class="wrap-input-panel">
+            <h2>Calculator Inputs</h2>
+
+            <div class="wrap-input-section-label">Your Existing Loan</div>
+
+            <div class="wrap-field">
+              <label for="w-balance">Current Mortgage Balance ($)</label>
+              <input type="number" id="w-balance" value="200000" min="0" step="1000">
+            </div>
+            <div class="wrap-field">
+              <label for="w-existing-payment">Your Current Monthly Payment ($)</label>
+              <input type="number" id="w-existing-payment" value="843" min="0" step="1">
+            </div>
+            <div class="wrap-field">
+              <label for="w-existing-rate">Your Current Interest Rate (%)</label>
+              <input type="number" id="w-existing-rate" value="3.0" min="0" max="15" step="0.125">
+            </div>
+
+            <div class="wrap-input-section-label">New Sale Terms</div>
+
+            <div class="wrap-field">
+              <label for="w-sale-price">Sale Price ($)</label>
+              <input type="number" id="w-sale-price" value="450000" min="0" step="1000">
+            </div>
+            <div class="wrap-field">
+              <label for="w-down-pct">Buyer Down Payment (%)</label>
+              <input type="number" id="w-down-pct" value="10" min="1" max="50" step="0.5">
+            </div>
+            <div class="wrap-field">
+              <label for="w-wrap-rate">WRAP Interest Rate (%) — charged to buyer</label>
+              <input type="number" id="w-wrap-rate" value="6.5" min="0" max="15" step="0.125">
+            </div>
+            <div class="wrap-field">
+              <label for="w-term">Loan Term (years)</label>
+              <input type="number" id="w-term" value="30" min="5" max="30" step="5">
+            </div>
+
+            <div class="wrap-input-section-label">Estimated Costs</div>
+
+            <div class="wrap-field">
+              <label for="w-closing-pct">Seller Closing Costs (% of sale price)</label>
+              <input type="number" id="w-closing-pct" value="3" min="0" max="15" step="0.5">
+            </div>
+          </div>
+
+          <!-- OUTPUT PANEL -->
+          <div class="wrap-output-panel">
+            <h2>Your Results</h2>
+
+            <!-- Monthly income highlight -->
+            <div class="wrap-output-row wrap-output-row--highlight">
+              <span class="wrap-output-label">Monthly Income (the spread)</span>
+              <span class="wrap-output-value" id="w-out-monthly-income">$0</span>
+            </div>
+
+            <hr class="wrap-output-divider">
+            <p style="font-size:.8rem;font-weight:700;color:var(--color-navy);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em;">At Closing</p>
+
+            <div class="wrap-output-row">
+              <span class="wrap-output-label">Buyer Down Payment</span>
+              <span class="wrap-output-value" id="w-out-down">$0</span>
+            </div>
+            <div class="wrap-output-row">
+              <span class="wrap-output-label">Your Closing Costs (est.)</span>
+              <span class="wrap-output-value" id="w-out-closing-costs">$0</span>
+            </div>
+            <div class="wrap-output-row">
+              <span class="wrap-output-label" style="font-weight:600;color:var(--color-navy);">Net Cash at Closing</span>
+              <span class="wrap-output-value" style="font-size:1.15rem;color:var(--color-navy);" id="w-out-net-cash">$0</span>
+            </div>
+
+            <hr class="wrap-output-divider">
+            <p style="font-size:.8rem;font-weight:700;color:var(--color-navy);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em;">Loan Structure</p>
+
+            <div class="wrap-output-row">
+              <span class="wrap-output-label">New Loan Amount (buyer)</span>
+              <span class="wrap-output-value" id="w-out-new-loan">$0</span>
+            </div>
+            <div class="wrap-output-row">
+              <span class="wrap-output-label">Existing Loan Balance (yours)</span>
+              <span class="wrap-output-value" id="w-out-balance">$0</span>
+            </div>
+            <div class="wrap-output-row">
+              <span class="wrap-output-label">Equity Spread (WRAP amount)</span>
+              <span class="wrap-output-value" id="w-out-equity-spread">$0</span>
+            </div>
+
+            <hr class="wrap-output-divider">
+            <p style="font-size:.8rem;font-weight:700;color:var(--color-navy);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em;">Buyer's Perspective</p>
+
+            <div class="wrap-output-row">
+              <span class="wrap-output-label">Buyer Monthly Payment</span>
+              <span class="wrap-output-value" id="w-out-buyer-payment">$0</span>
+            </div>
+            <div class="wrap-output-row">
+              <span class="wrap-output-label">Your Payment to Bank</span>
+              <span class="wrap-output-value" id="w-out-existing-pmt">$0</span>
+            </div>
+
+            <!-- Scenario interpretation -->
+            <div class="wrap-scenario" id="w-scenario-box">
+              <h4>Quick Read</h4>
+              <p id="w-scenario-text">Enter your numbers above to see a summary.</p>
+            </div>
+
+            <p class="wrap-disclaimer">
+              Estimates only — for illustrative purposes. Actual terms depend on negotiation, legal structure, and lender due-on-sale risk. WRAP mortgages require an experienced real estate attorney in Texas.
+              <a href="tel:+15129566010">Call Adam</a> to discuss your specific situation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="padding: 3.5rem 0; background: var(--color-light-gray);">
+      <div class="container">
+        <h2 class="text-center" style="margin-bottom: 2.5rem;">Frequently Asked Questions</h2>
+        <div class="content-narrow">
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-button">
+                <span>Is a wraparound mortgage legal in Texas?</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>Owner financing is fully legal in Texas and is governed by Chapter 5 of the Texas Property Code (Sections 5.061–5.086). Texas has some of the most detailed seller-finance laws in the country, including required disclosures, balloon payment restrictions, and mandatory annual accounting statements to the buyer. You'll want a real estate attorney experienced in Texas owner financing — not a generalist — to draft the promissory note and deed of trust correctly.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">
+                <span>What is the due-on-sale clause risk?</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>Almost all conventional mortgages originated in the last 30 years include a due-on-sale clause — technically allowing the lender to demand full repayment when the property transfers. In a WRAP, you're keeping your mortgage in place without lender approval, which triggers this clause. The practical risk: lenders rarely enforce it when payments are current, especially on well-performing loans. But the risk is real and should be understood. Some sellers mitigate this through a land trust structure. Talk to an attorney.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">
+                <span>What happens if the buyer stops paying me?</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>If the buyer defaults, your existing mortgage payment is still your obligation — the bank doesn't care about your arrangement with the buyer. You must keep paying to protect your credit and avoid foreclosure. You can then foreclose on the buyer through the Texas owner-finance process. This is why a substantial down payment matters: it gives the buyer real skin in the game and gives you a financial cushion. A good attorney will also require mortgage insurance and an escrow account for taxes and insurance.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">
+                <span>How do I find buyers for seller financing?</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>Owner-finance buyers are everywhere right now — self-employed borrowers who can't document income the conventional way, buyers rebuilding credit, entrepreneurs, and investors. "Owner financing available" in your listing description will generate significant inquiries. You can also list on sites that specialize in owner-finance properties. Unlike traditional buyers, these buyers often close faster with fewer contingencies because they're not dependent on bank approval.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">
+                <span>Should I use a servicer to manage payments?</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>Yes. A loan servicer (such as a title company or specialized mortgage servicer) collects the buyer's payment, forwards your underlying mortgage payment, and provides annual statements — which Texas law requires. The cost is usually $25–$50/month and is worth every penny. It keeps the transaction arm's-length, creates a paper trail for both parties, and protects you if there's ever a dispute.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="wrap-cta">
+      <div class="container">
+        <h2>Thinking About Seller Financing?</h2>
+        <p>This calculator gives you the math. Adam can give you the strategy — structuring, risk, attorney referrals, and whether it makes sense for your specific situation.</p>
+        <div class="cta-group">
+          <a href="tel:+15129566010" class="btn btn-primary btn-lg">Call (512) 956-6010</a>
+          <a href="/contact.html" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,.55);">Send a Message</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="nav-has-dropdown"><a href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li><a href="/loans/conventional.html">Conventional</a></li><li><a href="/loans/fha.html">FHA</a></li><li><a href="/loans/va.html">VA</a></li><li><a href="/loans/usda.html">USDA</a></li><li><a href="/loans/jumbo.html">Jumbo</a></li><li><a href="/loans/construction.html">Construction</a></li><li><a href="/loans/refinance.html">Refinance</a></li><li><a href="/loans/investment.html">Investment</a></li><li><a href="/dscr-loan-austin-tx.html">DSCR / Non-QM</a></li></ul></li>
+            <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/resources/first-time-buyer-guide/">Buyer Guide</a></li></ul></li>
+            <li><a href="/testimonials.html">Testimonials</a></li>
+            <li><a href="/about.html">About Adam</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/products.html">Mortgage Resources</a></li>
+            <li class="nav-has-dropdown"><a href="/realtors.html">For Realtors</a><ul class="nav-dropdown"><li><a href="/blog.html?tag=realtors">Realtor Blog</a></li></ul></li>
+            <li><a href="/prequal.html">Pre-Qualification</a></li>
+            <li><a href="texas-complaint-notice.html">TX Consumer Notice</a></li>
+            <li><a href="rate-buydown-calculator.html">Buydown Calculator</a></li>
+            <li><a href="wrap-mortgage-calculator.html">WRAP Calculator</a></li>
+            <li><a href="products.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>
+            <strong>Adam Styer | Mortgage Solutions LP</strong>
+          </p>
+          <p>
+            <a href="tel:+15129566010">(512) 956-6010</a><br>
+            <a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a><br>
+            5718 Sam Houston Circle<br>
+            Austin, TX 78731
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Awards &amp; Recognition</h4>
+          <p>
+            &#11088; 5.0 Stars &middot; 91 Google Reviews<br>
+            &#11088; 4.98 Stars &middot; 45 Zillow Reviews
+          </p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/styerteam/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.instagram.com/styerteam/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.linkedin.com/in/adamstyerloans/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener" aria-label="Zillow"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0L1 7.5V24h22V7.5L12 0zm7 21H5v-2h14v2zm0-4H5v-2h14v2zm0-4H5v-2h14v2z"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div>
+          <p>&copy; 2026 Mortgage Solutions, LP. All rights reserved.</p>
+          <div class="footer-nmls">
+            <strong>NMLS#:</strong> 2526130 (Company) | 513013 (Adam Styer) | <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2526130" target="_blank" rel="noopener" style="color:inherit;">NMLS Consumer Access</a><br>
+            Mortgage Solutions, LP is a Licensed Mortgage Broker in Texas. Calculations are for educational purposes only and not guaranteed. WRAP mortgages require independent legal counsel.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script>
+  (function() {
+    'use strict';
+
+    /* ── Utilities ── */
+    function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+    function fmtMonthly(n) { return '$' + Math.round(n).toLocaleString('en-US') + '/mo'; }
+    function val(id) { return parseFloat(document.getElementById(id).value) || 0; }
+    function set(id, v) { document.getElementById(id).textContent = v; }
+
+    function monthlyPayment(principal, annualRate, years) {
+      if (principal <= 0) return 0;
+      if (annualRate <= 0) return principal / (years * 12);
+      var r = annualRate / 100 / 12;
+      var n = years * 12;
+      return principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    }
+
+    /* ── Main calculation ── */
+    function calcWrap() {
+      var balance        = val('w-balance');
+      var existingPmt    = val('w-existing-payment');
+      var existingRate   = val('w-existing-rate');
+      var salePrice      = val('w-sale-price');
+      var downPct        = val('w-down-pct');
+      var wrapRate       = val('w-wrap-rate');
+      var term           = val('w-term');
+      var closingPct     = val('w-closing-pct');
+
+      var downPayment    = salePrice * (downPct / 100);
+      var newLoanAmount  = salePrice - downPayment;
+      var buyerPayment   = monthlyPayment(newLoanAmount, wrapRate, term);
+      var monthlyIncome  = buyerPayment - existingPmt;
+      var closingCosts   = salePrice * (closingPct / 100);
+      var netCash        = downPayment - closingCosts;
+      var equitySpread   = newLoanAmount - balance;
+
+      set('w-out-monthly-income', fmtMonthly(monthlyIncome));
+      set('w-out-down', fmt(downPayment));
+      set('w-out-closing-costs', fmt(closingCosts));
+      set('w-out-net-cash', fmt(netCash));
+      set('w-out-new-loan', fmt(newLoanAmount));
+      set('w-out-balance', fmt(balance));
+      set('w-out-equity-spread', fmt(equitySpread));
+      set('w-out-buyer-payment', fmtMonthly(buyerPayment));
+      set('w-out-existing-pmt', fmtMonthly(existingPmt));
+
+      /* ── Scenario summary ── */
+      var annualIncome = monthlyIncome * 12;
+      var tenYearIncome = monthlyIncome * 120;
+      var scenarioText = '';
+
+      if (salePrice > 0 && existingPmt > 0 && wrapRate > existingRate) {
+        scenarioText = 'At ' + wrapRate.toFixed(2) + '% WRAP vs your ' + existingRate.toFixed(2) + '% loan, '
+          + 'you earn approximately ' + fmt(monthlyIncome) + '/month — '
+          + fmt(annualIncome) + '/year — '
+          + fmt(netCash) + ' upfront at closing. '
+          + 'Over 10 years that\'s ' + fmt(tenYearIncome) + ' in spread income alone.';
+      } else if (wrapRate <= existingRate && existingRate > 0) {
+        scenarioText = 'Your WRAP rate needs to be above your existing rate (' + existingRate.toFixed(2) + '%) to generate income.';
+      } else {
+        scenarioText = 'Enter your numbers above to see a summary.';
+      }
+
+      document.getElementById('w-scenario-text').textContent = scenarioText;
+
+      /* ── Highlight negative net cash ── */
+      var netCashEl = document.getElementById('w-out-net-cash');
+      netCashEl.style.color = netCash < 0 ? '#dc2626' : 'var(--color-navy)';
+    }
+
+    /* ── Wire up inputs ── */
+    ['w-balance','w-existing-payment','w-existing-rate','w-sale-price',
+     'w-down-pct','w-wrap-rate','w-term','w-closing-pct'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', calcWrap);
+    });
+
+    /* ── Accordion ── */
+    document.querySelectorAll('.accordion-button').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.accordion-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    /* ── Initial calculation ── */
+    calcWrap();
+
+  }());
+  </script>
+</body>
+</html>
