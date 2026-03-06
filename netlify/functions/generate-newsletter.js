@@ -106,7 +106,30 @@ async function generateNewsletter(formData) {
     } else {
       // AI mode: generate content via Claude API
       const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      const prompt = formData.customPrompt || buildPrompt(formData, pageUrl);
+      let prompt;
+      if (formData.customPrompt) {
+        const wantsBorrower = audiences.includes("borrower");
+        const wantsRealtor = audiences.includes("realtor");
+        prompt = `${formData.customPrompt}
+
+## OUTPUT FORMAT — you MUST use these EXACT delimiters in your response
+PAGE_TITLE: [max 60 chars]
+PAGE_DESCRIPTION: [140-160 chars, include keyword + call to action]
+PAGE_CATEGORY: [one of: Market Update, Homebuying, Refinancing, Rates, Tips & Guides, Austin Market]
+${wantsBorrower ? "BORROWER_SUBJECT: [casual subject, not clickbait]\nBORROWER_PREHEADER: [max 90 chars]" : ""}
+${wantsRealtor ? "REALTOR_SUBJECT: [professional but casual subject]\nREALTOR_PREHEADER: [max 90 chars]" : ""}
+
+${wantsBorrower ? `---BORROWER_EMAIL_START---\n[Plain-text-style HTML email. CTA links to ${pageUrl}]\n---BORROWER_EMAIL_END---` : ""}
+
+${wantsRealtor ? `---REALTOR_EMAIL_START---\n[Plain-text-style HTML email. CTA links to ${pageUrl}]\n---REALTOR_EMAIL_END---` : ""}
+
+---WEB_CONTENT_START---
+[Article body HTML only — no <!DOCTYPE>, <html>, <head>, or <body> tags]
+---WEB_CONTENT_END---
+`;
+      } else {
+        prompt = buildPrompt(formData, pageUrl);
+      }
 
       // Retry up to 3 times on transient errors (429/529)
       let response;
