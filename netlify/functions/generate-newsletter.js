@@ -112,19 +112,49 @@ async function generateNewsletter(formData) {
         const wantsRealtor = audiences.includes("realtor");
         prompt = `${formData.customPrompt}
 
-## OUTPUT FORMAT — you MUST use these EXACT delimiters in your response
+## ADAM'S VOICE
+Write as Adam Styer — mortgage loan originator in Austin, TX. First person "I". Casual, direct, short sentences. No buzzwords, no marketing fluff.
+
+## EMAIL RULES
+Emails are SHORT teasers (100-150 words MAX) that drive the reader to click to the full article. Not a briefing. Not a summary. A hook.
+- Plain-text style HTML. No images. No banners. Just text.
+- Open with a personal hook or quick observation.
+- 2-3 bullet points previewing what's in the article.
+- One clear CTA link to: ${pageUrl}
+- Sign off: Adam Styer | Mortgage Solutions LP | NMLS# 513013 | (512) 956-6010
+
+${wantsBorrower ? `### BORROWER EMAIL
+- Write like Adam emailing a past client
+- Helpful, personal, not salesy
+- Focus: what this means for them as a homebuyer or homeowner` : ""}
+
+${wantsRealtor ? `### REALTOR EMAIL
+- Write like Adam emailing a realtor partner he works with regularly
+- Professional but casual — not "dear colleague" formal, not slang
+- Focus: market intel THEY can use with their clients this week
+- Think: what does a realtor need to know to advise their buyers right now?
+- Do NOT use borrower-focused language like "if you've been on the fence about locking in a rate"` : ""}
+
+## WEB ARTICLE
+800-1200 words. Two sections: main article + Personal Corner (separated by <hr>).
+Output ONLY body HTML fragments: <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>, <hr>.
+NO <!DOCTYPE>, <html>, <head>, <body>, <style>, or <meta> tags.
+
+End the article with: "Talk soon,<br>Adam Styer<br>Adam Styer | Mortgage Solutions LP<br>NMLS# 513013 | (512) 956-6010"
+
+## OUTPUT FORMAT — use these EXACT delimiters
 PAGE_TITLE: [max 60 chars]
 PAGE_DESCRIPTION: [140-160 chars, include keyword + call to action]
 PAGE_CATEGORY: [one of: Market Update, Homebuying, Refinancing, Rates, Tips & Guides, Austin Market]
 ${wantsBorrower ? "BORROWER_SUBJECT: [casual subject, not clickbait]\nBORROWER_PREHEADER: [max 90 chars]" : ""}
 ${wantsRealtor ? "REALTOR_SUBJECT: [professional but casual subject]\nREALTOR_PREHEADER: [max 90 chars]" : ""}
 
-${wantsBorrower ? `---BORROWER_EMAIL_START---\n[Plain-text-style HTML email. CTA links to ${pageUrl}]\n---BORROWER_EMAIL_END---` : ""}
+${wantsBorrower ? `---BORROWER_EMAIL_START---\n[100-150 word teaser email for past clients/borrowers. CTA links to ${pageUrl}]\n---BORROWER_EMAIL_END---` : ""}
 
-${wantsRealtor ? `---REALTOR_EMAIL_START---\n[Plain-text-style HTML email. CTA links to ${pageUrl}]\n---REALTOR_EMAIL_END---` : ""}
+${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for realtor partners. Focus on what they can use with clients. CTA links to ${pageUrl}]\n---REALTOR_EMAIL_END---` : ""}
 
 ---WEB_CONTENT_START---
-[Article body HTML only — no <!DOCTYPE>, <html>, <head>, or <body> tags]
+[Article body HTML — two sections, main article then Personal Corner, separated by <hr>]
 ---WEB_CONTENT_END---
 `;
       } else {
