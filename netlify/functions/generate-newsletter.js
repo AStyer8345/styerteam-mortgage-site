@@ -458,44 +458,47 @@ function parseAIResponse(text) {
 async function updateBlogManifest({ slug, title, description, date, category }) {
   const token = process.env.GITHUB_TOKEN || process.env.github_token;
   const repo = process.env.GITHUB_REPO || process.env.Github_repo;
-  const manifestPath = "blog/manifest.json";
-  const url = `https://api.github.com/repos/${repo}/contents/${manifestPath}`;
+  const blogHtmlPath = "blog.html";
+  const apiUrl = `https://api.github.com/repos/${repo}/contents/${blogHtmlPath}`;
 
-  // Fetch existing manifest (if it exists)
-  let posts = [];
-  let existingSha = null;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: "application/vnd.github.v3+json",
+    "Content-Type": "application/json",
+    "User-Agent": "StyerTeam-Newsletter-Bot",
+  };
 
-  try {
-    const getRes = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: "application/vnd.github.v3+json",
-        "User-Agent": "StyerTeam-Newsletter-Bot",
-      },
-    });
-
-    if (getRes.ok) {
-      const data = await getRes.json();
-      existingSha = data.sha;
-      const decoded = Buffer.from(data.content, "base64").toString("utf8");
-      const manifest = JSON.parse(decoded);
-      posts = manifest.posts || [];
-    }
-  } catch (e) {
-    console.log("No existing manifest found, creating new one");
+  // Fetch blog.html from GitHub
+  const getRes = await fetch(apiUrl, { headers });
+  if (!getRes.ok) {
+    console.error(`Failed to fetch blog.html for manifest update (${getRes.status})`);
+    return;
   }
 
-  // Add new post at the beginning (newest first)
-  posts.unshift({
-    slug,
-    title,
-    description,
-    date,
-    category,
-    url: `/blog/${slug}.html`,
-  });
+  const data = await getRes.json();
+  const existingSha = data.sha;
+  const blogHtml = Buffer.from(data.content, "base64").toString("utf8");
 
-  // Remove duplicates by slug (in case of re-publish)
+  // Extract inline manifest JSON from blog.html
+  const manifestMatch = blogHtml.match(
+    /(<script type="application\/json" id="blog-manifest">\s*)([\s\S]*?)(\s*<\/script>)/
+  );
+  if (!manifestMatch) {
+    console.error("Could not find inline blog-manifest in blog.html");
+    return;
+  }
+
+  let posts = [];
+  try {
+    const manifest = JSON.parse(manifestMatch[2]);
+    posts = manifest.posts || [];
+  } catch (e) {
+    console.error("Failed to parse inline blog manifest JSON:", e.message);
+    return;
+  }
+
+  // Add new post at the beginning (newest first), dedupe by slug
+  posts.unshift({ slug, title, description, date, category, url: `/blog/${slug}.html` });
   const seen = new Set();
   posts = posts.filter((p) => {
     if (seen.has(p.slug)) return false;
@@ -503,34 +506,29 @@ async function updateBlogManifest({ slug, title, description, date, category }) 
     return true;
   });
 
-  const manifestContent = JSON.stringify({ posts }, null, 2);
+  // Replace the inline manifest JSON in blog.html
+  const newManifestJson = JSON.stringify({ posts });
+  const updatedHtml = blogHtml.replace(
+    /(<script type="application\/json" id="blog-manifest">\s*)([\s\S]*?)(\s*<\/script>)/,
+    `$1${newManifestJson}$3`
+  );
 
-  const body = {
-    message: `Update blog manifest: add ${slug}`,
-    content: Buffer.from(manifestContent).toString("base64"),
-    branch: "main",
-  };
-
-  // Include sha if updating existing file
-  if (existingSha) {
-    body.sha = existingSha;
-  }
-
-  const putRes = await fetch(url, {
+  // Write updated blog.html back to GitHub
+  const putRes = await fetch(apiUrl, {
     method: "PUT",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/vnd.github.v3+json",
-      "Content-Type": "application/json",
-      "User-Agent": "StyerTeam-Newsletter-Bot",
-    },
-    body: JSON.stringify(body),
+    headers,
+    body: JSON.stringify({
+      message: `Update blog manifest: add ${slug}`,
+      content: Buffer.from(updatedHtml).toString("base64"),
+      sha: existingSha,
+      branch: "main",
+    }),
   });
 
   if (!putRes.ok) {
     const errBody = await putRes.text();
     console.error(`Blog manifest update failed (${putRes.status}): ${errBody}`);
-    // Don't throw — the blog post was already published, manifest is non-critical
+    // Don't throw — blog post already published, manifest is non-critical
   }
 }
 
