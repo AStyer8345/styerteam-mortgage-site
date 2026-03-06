@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "2026-03-06-temp-placeholder",
+      "title": "Newsletter",
+      "description": "Newsletter — Austin mortgage insights from Adam Styer",
+      "date": "2026-03-06",
+      "category": "Market Update",
+      "url": "/blog/2026-03-06-temp-placeholder.html"
+    },
+    {
       "slug": "first-time-buyer-guide",
       "title": "First-Time Home Buyer's Guide",
       "description": "Everything you need to know about purchasing your first home in Austin, from pre-approval to closing day.",
