@@ -310,15 +310,21 @@ body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;m
 /* ── ACTIVITY LOG ───────────────────────────────────────────────── */
 .log-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;}
 .log-table{background:var(--surface);border:1px solid var(--border);border-radius:11px;overflow:hidden;}
-.log-row{display:grid;grid-template-columns:115px 1fr 110px 70px;gap:12px;
+.log-row{display:grid;grid-template-columns:115px 1fr 110px 50px 26px;gap:12px;
   padding:10px 17px;border-bottom:1px solid var(--border);align-items:center;font-size:12.5px;}
+.log-row:not(.head){cursor:pointer;transition:background .15s;}
+.log-row:not(.head):hover{background:var(--surface2);}
 .log-row:last-child{border-bottom:none;}
 .log-row.head{font-size:10px;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;
   background:var(--surface2);}
 .log-d{font-family:'DM Mono',monospace;color:var(--muted);font-size:11px;}
 .st-done{font-size:10px;padding:2px 7px;border-radius:4px;background:rgba(76,175,130,.13);
   color:var(--green);width:fit-content;}
-@media(max-width:600px){.log-row{grid-template-columns:90px 1fr;}.log-row .log-d+span+span+span{display:none;}}
+.log-del{background:none;border:none;color:var(--dim);font-size:13px;cursor:pointer;
+  padding:2px 4px;border-radius:3px;opacity:0;transition:all .15s;line-height:1;}
+.log-row:hover .log-del{opacity:1;}
+.log-del:hover{color:var(--red);}
+@media(max-width:600px){.log-row{grid-template-columns:90px 1fr 26px;}.log-row .log-d+span+span,.log-row .log-d+span+span+span{display:none;}}
 
 /* ── ACTIVITY CALENDAR ──────────────────────────────────────── */
 .log-view-toggle{display:flex;gap:3px;background:var(--surface);padding:3px;border-radius:7px;border:1px solid var(--border);}
@@ -669,7 +675,7 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
         <select class="fi" id="f-chan">
           <option>Email</option><option>Phone Call</option><option>LinkedIn</option>
           <option>Facebook</option><option>Instagram</option><option>Text</option>
-          <option>Video</option><option>Rate Update</option><option>Other</option>
+          <option>Video</option><option>Rate Update</option><option>Task</option><option>Other</option>
         </select>
       </div>
       <div>
@@ -681,7 +687,7 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
     <input class="fi" id="f-notes" placeholder="Any context…">
     <div class="ma">
       <button class="btn-cancel" onclick="closeModal('mo-log')">Cancel</button>
-      <button class="btn-primary" onclick="saveLog()">Log It</button>
+      <button class="btn-primary" id="log-save-btn" onclick="saveLog()">Log It</button>
     </div>
   </div>
 </div>
@@ -1585,25 +1591,39 @@ function renderCalendar() {
 // LOG
 // ═══════════════════════════════════════════════════════════════
 function renderLog() {
+  // Migrate old entries without IDs
+  S.log.forEach(e => {
+    if (!e.id) e.id = Date.now().toString(36) + Math.random().toString(36).slice(2,5);
+  });
   const c = document.getElementById('log-entries');
   if (!S.log.length) {
     c.innerHTML = `<div class="log-row"><span style="color:var(--dim);grid-column:1/-1">No activities logged yet.</span></div>`;
   } else {
     c.innerHTML = [...S.log].reverse().map(e => `
-      <div class="log-row">
+      <div class="log-row" onclick="editLog('${e.id}')">
         <span class="log-d">${fmtDate(e.date)}</span>
-        <span>${e.activity}${e.notes ? ` <span style="color:var(--dim);font-size:11px">— ${e.notes}</span>` : ''}</span>
+        <span>${escHtml(e.activity)}${e.notes ? ` <span style="color:var(--dim);font-size:11px">— ${escHtml(e.notes)}</span>` : ''}</span>
         <span style="color:var(--muted)">${e.channel}</span>
         <span class="st-done">Done</span>
+        <button class="log-del" onclick="event.stopPropagation();deleteLog('${e.id}')" title="Delete">✕</button>
       </div>`).join('');
   }
-  // refresh calendar if it's visible
   if (document.getElementById('log-cal-view').style.display !== 'none') renderCalendar();
 }
 
 let _logTid = null;
+let _editLogId = null;
+
+function _logDateStr(d) {
+  const dd = new Date(d);
+  const yyyy = dd.getFullYear();
+  const mm = String(dd.getMonth()+1).padStart(2,'0');
+  const day = String(dd.getDate()).padStart(2,'0');
+  return `${yyyy}-${mm}-${day}`;
+}
 function openLogModal(tid) {
   _logTid = tid;
+  _editLogId = null;
   if (tid) {
     const t = TRACKERS.find(x => x.id === tid);
     document.getElementById('f-act').value = t ? t.name : '';
@@ -1612,31 +1632,57 @@ function openLogModal(tid) {
     document.getElementById('f-act').value = '';
     document.getElementById('mo-log-sub').textContent = 'Record a completed marketing action';
   }
+  document.getElementById('f-chan').value = 'Email';
   document.getElementById('f-notes').value = '';
-  // Default date field to today
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth()+1).padStart(2,'0');
-  const dd = String(today.getDate()).padStart(2,'0');
-  document.getElementById('f-log-date').value = `${yyyy}-${mm}-${dd}`;
+  document.getElementById('f-log-date').value = _logDateStr(new Date());
+  document.getElementById('log-save-btn').textContent = 'Log It';
   openModal('mo-log');
+}
+function editLog(id) {
+  const entry = S.log.find(e => e.id === id);
+  if (!entry) return;
+  _editLogId = id;
+  _logTid = null;
+  document.getElementById('f-act').value   = entry.activity;
+  document.getElementById('f-chan').value  = entry.channel;
+  document.getElementById('f-notes').value = entry.notes || '';
+  document.getElementById('f-log-date').value = _logDateStr(new Date(entry.date));
+  document.getElementById('mo-log-sub').textContent = 'Edit activity';
+  document.getElementById('log-save-btn').textContent = 'Save Changes';
+  openModal('mo-log');
+}
+function deleteLog(id) {
+  if (!confirm('Delete this activity log entry?')) return;
+  S.log = S.log.filter(e => e.id !== id);
+  save(); renderLog();
 }
 function saveLog() {
   const activity = document.getElementById('f-act').value.trim();
   if (!activity) return;
   const dateVal = document.getElementById('f-log-date').value;
-  // Parse as local noon to avoid UTC-offset date shifting
   const entryDate = dateVal
     ? new Date(`${dateVal}T12:00:00`).toISOString()
     : new Date().toISOString();
-  const entry = {
-    date:     entryDate,
-    activity,
-    channel:  document.getElementById('f-chan').value,
-    notes:    document.getElementById('f-notes').value.trim()
-  };
-  S.log.push(entry);
-  if (_logTid) S.last[_logTid] = entry.date;
+  if (_editLogId) {
+    const idx = S.log.findIndex(e => e.id === _editLogId);
+    if (idx >= 0) {
+      S.log[idx] = { ...S.log[idx], activity,
+        channel: document.getElementById('f-chan').value,
+        notes:   document.getElementById('f-notes').value.trim(),
+        date:    entryDate };
+    }
+    _editLogId = null;
+  } else {
+    const entry = {
+      id:       Date.now().toString(36) + Math.random().toString(36).slice(2,5),
+      date:     entryDate,
+      activity,
+      channel:  document.getElementById('f-chan').value,
+      notes:    document.getElementById('f-notes').value.trim()
+    };
+    S.log.push(entry);
+    if (_logTid) S.last[_logTid] = entry.date;
+  }
   save(); closeModal('mo-log');
   renderToday(); renderTracker(); renderLog();
 }
@@ -1733,9 +1779,18 @@ function checkTodo(id) {
   const el = document.getElementById('di-' + id);
   const commit = () => {
     S.todos.splice(idx, 1);
-    S.doneTodos.push({ ...t, done_at: new Date().toISOString() });
+    const doneAt = new Date().toISOString();
+    S.doneTodos.push({ ...t, done_at: doneAt });
+    S.log.push({
+      id:       Date.now().toString(36) + Math.random().toString(36).slice(2,5),
+      date:     doneAt,
+      activity: t.text,
+      channel:  'Task',
+      notes:    ''
+    });
     save();
     renderTodos();
+    renderLog();
   };
   if (el) { el.classList.add('checking'); setTimeout(commit, 310); }
   else commit();
