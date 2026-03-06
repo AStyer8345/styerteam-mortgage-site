@@ -5,6 +5,7 @@
   "description": "Adam Styer | Mortgage Solutions LP website with newsletter automation",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
-    "@mailchimp/mailchimp_marketing": "^3.0.80"
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
+    "@netlify/blobs": "^8.1.0"
   }
 }

@@ -66,6 +66,12 @@ body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;m
   background:none;color:var(--dim);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;}
 .hdr-btn:hover{border-color:var(--muted);color:var(--muted);}
 .hdr-btn.danger:hover{border-color:var(--red);color:var(--red);}
+.sync-status{font-size:11px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:20px;
+  align-self:center;transition:all .3s;display:none;}
+.sync-status.loading,.sync-status.saving{display:block;color:var(--dim);background:rgba(255,255,255,.05);}
+.sync-status.saved,.sync-status.synced{display:block;color:var(--green);background:rgba(76,175,130,.1);}
+.sync-status.offline{display:block;color:var(--dim);background:rgba(255,255,255,.05);}
+.sync-status.error{display:block;color:var(--red);background:rgba(224,82,82,.1);}
 
 /* ── TABS ──────────────────────────────────────────────────────── */
 .tabs{display:flex;gap:3px;margin-bottom:20px;background:var(--surface);
@@ -444,6 +450,7 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
       <div class="clock-date" id="clock-date"></div>
       <div class="clock-time" id="clock-time"></div>
       <div class="hdr-actions">
+        <div id="sync-status" class="sync-status"></div>
         <button class="hdr-btn" onclick="location.href='/marketing-content.html'">📝 Content</button>
         <button class="hdr-btn" onclick="location.href='/loan-dashboard.html'">📊 Loan Dashboard</button>
         <button class="hdr-btn" onclick="exportData()">⬇ Backup</button>
@@ -868,7 +875,70 @@ if (!S.socialPosts) S.socialPosts = [];
 if (!S.newsletters) S.newsletters = [];
 if (!S.todos)       S.todos       = [];
 if (!S.doneTodos)   S.doneTodos   = [];
-function save() { localStorage.setItem('mcc_v1', JSON.stringify(S)); }
+// ── SYNC STATUS ──────────────────────────────────────────────────────────────
+function setSyncStatus(state) {
+  const el = document.getElementById('sync-status');
+  if (!el) return;
+  const labels = { saving:'↑ Saving…', saved:'☁ Saved', synced:'☁ Synced',
+                   offline:'◌ Offline mode', error:'⚠ Sync failed', loading:'↓ Loading…' };
+  el.className = 'sync-status ' + state;
+  el.textContent = labels[state] || '';
+  if (state === 'saved' || state === 'synced') {
+    setTimeout(() => { el.className = 'sync-status'; el.textContent = ''; }, 3000);
+  }
+}
+
+// ── CLOUD SAVE (fire-and-forget) ─────────────────────────────────────────────
+async function cloudSave() {
+  const pass = sessionStorage.getItem('mcc_pass');
+  if (!pass) return;
+  setSyncStatus('saving');
+  try {
+    const res = await fetch('/.netlify/functions/mcc-data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-mcc-auth': pass },
+      body: JSON.stringify(S)
+    });
+    setSyncStatus(res.ok ? 'saved' : 'error');
+  } catch { setSyncStatus('offline'); }
+}
+
+// ── CLOUD LOAD (called on init) ───────────────────────────────────────────────
+async function cloudLoad() {
+  const pass = sessionStorage.getItem('mcc_pass');
+  if (!pass) return; // not logged in this tab session — keep localStorage data
+  setSyncStatus('loading');
+  try {
+    const res = await fetch('/.netlify/functions/mcc-data', {
+      headers: { 'x-mcc-auth': pass }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && typeof data === 'object') {
+        S = data;
+        // Ensure all required keys exist
+        if (!S.tasks)       S.tasks       = {};
+        if (!S.log)         S.log         = [];
+        if (!S.last)        S.last        = {};
+        if (!S.contacts)    S.contacts    = {realtors:[],preapprovals:[],inprocess:[],hotleads:[]};
+        if (!S.socialPosts) S.socialPosts = [];
+        if (!S.newsletters) S.newsletters = [];
+        if (!S.todos)       S.todos       = [];
+        if (!S.doneTodos)   S.doneTodos   = [];
+        localStorage.setItem('mcc_v1', JSON.stringify(S)); // keep local in sync
+        setSyncStatus('synced');
+        return;
+      }
+    }
+    setSyncStatus('offline');
+  } catch { setSyncStatus('offline'); }
+}
+
+// ── SAVE ─────────────────────────────────────────────────────────────────────
+function save() {
+  localStorage.setItem('mcc_v1', JSON.stringify(S)); // immediate local write
+  cloudSave();                                        // async cloud write
+}
 
 // ═══════════════════════════════════════════════════════════════
 // AUTH
@@ -877,6 +947,7 @@ function checkPass() {
   const v = document.getElementById('lock-input').value;
   if (v === PASS) {
     sessionStorage.setItem('mcc_auth', '1');
+    sessionStorage.setItem('mcc_pass', v); // used as auth header for cloud API calls
     document.getElementById('lock-screen').classList.add('hidden');
     document.getElementById('app').classList.add('visible');
     init();
@@ -1678,7 +1749,8 @@ function deleteTodo(id) {
 // ═══════════════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════════════
-function init() {
+async function init() {
+  await cloudLoad(); // pull latest from Netlify Blobs before rendering
   tick();
   renderToday();
   renderWeek();
