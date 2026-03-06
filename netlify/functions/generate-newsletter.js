@@ -58,8 +58,16 @@ async function generateNewsletter(formData) {
     // STEP 0: Compute the page URL FIRST so the AI can use it directly
     // ----------------------------------------------------------------
     const today = new Date().toISOString().split("T")[0];
-    const slugSource = isPaste ? (formData.title || "untitled") : (topic || formData.customPrompt || "newsletter");
-    const slug = slugSource
+
+    // For custom prompt mode, we don't have a clean topic yet — use a temp slug.
+    // After Claude responds, we'll re-derive from PAGE_TITLE and swap URLs.
+    const isCustomPrompt = !isPaste && !topic && !!formData.customPrompt;
+    const tempSlug = isCustomPrompt ? "temp-placeholder" : null;
+
+    const slugSource = isPaste
+      ? (formData.title || "untitled")
+      : (topic || "newsletter");
+    const slug = (tempSlug || slugSource)
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, "")
       .replace(/\s+/g, "-")
@@ -188,6 +196,31 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
       if (!parsed.webContent) {
         throw new Error(`Failed to parse AI response: ${aiText.substring(0, 200)}`);
       }
+
+      // For custom prompt mode: re-derive slug from PAGE_TITLE and fix all URLs
+      if (isCustomPrompt && parsed.pageTitle) {
+        const realSlug = parsed.pageTitle
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, "")
+          .replace(/\s+/g, "-")
+          .substring(0, 50)
+          .replace(/-+$/, "");
+        const realBlogSlug = `${today}-${realSlug}`;
+        const realFilename = `${realBlogSlug}.html`;
+        const realPageUrl = `https://styermortgage.com/blog/${realFilename}`;
+
+        // Swap temp URL for real URL in all generated content
+        const swapUrl = (s) => s ? s.split(pageUrl).join(realPageUrl) : s;
+        parsed.borrowerEmail = swapUrl(parsed.borrowerEmail);
+        parsed.realtorEmail = swapUrl(parsed.realtorEmail);
+        parsed.webContent = swapUrl(parsed.webContent);
+
+        // Promote real values so downstream code uses them
+        // (reassigning via closure — see block below)
+        parsed._realBlogSlug = realBlogSlug;
+        parsed._realFilename = realFilename;
+        parsed._realPageUrl = realPageUrl;
+      }
     }
 
     // Inject photo into the "Personal Corner" section of web content only (no photos in emails)
@@ -195,12 +228,17 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
       parsed.webContent = injectPhotoIntoPersonalSection(parsed.webContent, formData.photo);
     }
 
+    // Resolve final slug/filename/URL (custom prompt mode derives these from PAGE_TITLE)
+    const finalBlogSlug = parsed._realBlogSlug || blogSlug;
+    const finalFilename = parsed._realFilename || filename;
+    const finalPageUrl = parsed._realPageUrl || pageUrl;
+
     // Force all email links to use absolute URL (safety net)
     if (parsed.borrowerEmail) {
-      parsed.borrowerEmail = forceAbsoluteLinks(parsed.borrowerEmail, pageUrl);
+      parsed.borrowerEmail = forceAbsoluteLinks(parsed.borrowerEmail, finalPageUrl);
     }
     if (parsed.realtorEmail) {
-      parsed.realtorEmail = forceAbsoluteLinks(parsed.realtorEmail, pageUrl);
+      parsed.realtorEmail = forceAbsoluteLinks(parsed.realtorEmail, finalPageUrl);
     }
 
     // ----------------------------------------------------------------
@@ -213,7 +251,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
       title: effectiveTitle,
       description: parsed.pageDescription || `${effectiveTitle} — Austin mortgage insights from Adam Styer`,
       date: today,
-      slug: blogSlug,
+      slug: finalBlogSlug,
       content: parsed.webContent,
       category: parsed.pageCategory || formData.category || "Market Update",
     });
@@ -229,10 +267,10 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
     // In preview mode, skip publishing. In live mode, publish.
     if (!isPreview) {
       // Publish to /blog/ (SEO-optimized, indexed by Google)
-      await createGitHubFile(`blog/${filename}`, blogPageHtml);
+      await createGitHubFile(`blog/${finalFilename}`, blogPageHtml);
 
       // Also publish to /updates/ for backward compat with old email links
-      await createGitHubFile(`updates/${filename}`, updatesPageHtml);
+      await createGitHubFile(`updates/${finalFilename}`, updatesPageHtml);
 
       // Update the blog manifest so blog.html can list this post
       await updateBlogManifest({
@@ -247,7 +285,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
     // ----------------------------------------------------------------
     // STEP 3: Send Mailchimp campaigns (only if live)
     // ----------------------------------------------------------------
-    const results = { pageUrl, filename, campaigns: [] };
+    const results = { pageUrl: finalPageUrl, filename: finalFilename, campaigns: [] };
 
     if (!isPreview) {
       const mcApiKey = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key;
@@ -269,7 +307,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
             listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
             subject: parsed.borrowerSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
             preheader: parsed.borrowerPreheader || "",
-            html: injectPageLink(parsed.borrowerEmail, pageUrl),
+            html: injectPageLink(parsed.borrowerEmail, finalPageUrl),
             fromName: "Adam Styer",
             replyTo: "adam@thestyerteam.com",
             scheduleTime: scheduleTime || null,
@@ -282,7 +320,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
             listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
             subject: parsed.realtorSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
             preheader: parsed.realtorPreheader || "",
-            html: injectPageLink(parsed.realtorEmail, pageUrl),
+            html: injectPageLink(parsed.realtorEmail, finalPageUrl),
             fromName: "Adam Styer",
             replyTo: "adam@thestyerteam.com",
             scheduleTime: scheduleTime || null,
@@ -298,7 +336,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
         const socialTopic = topic || formData.title || parsed.pageTitle || "Newsletter";
         results.socialPosts = await generateAndPostSocial({
           webContent: parsed.webContent,
-          pageUrl,
+          pageUrl: finalPageUrl,
           topic: socialTopic,
           preGeneratedText: formData.preGeneratedSocial || null,
         });
