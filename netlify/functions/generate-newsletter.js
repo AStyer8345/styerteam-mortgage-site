@@ -265,7 +265,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[Plain-text-style HTML email. CTA l
       // STEP 4: Social media posts — generate AND publish (live mode)
       // ----------------------------------------------------------------
       try {
-        const socialTopic = topic || formData.title || "Newsletter";
+        const socialTopic = topic || formData.title || parsed.pageTitle || "Newsletter";
         results.socialPosts = await generateAndPostSocial({
           webContent: parsed.webContent,
           pageUrl,
@@ -284,7 +284,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[Plain-text-style HTML email. CTA l
     // ----------------------------------------------------------------
     if (isPreview && parsed.webContent) {
       try {
-        const socialTopic = topic || formData.title || "Newsletter";
+        const socialTopic = topic || formData.title || parsed.pageTitle || "Newsletter";
         const socialTexts = await generateSocialPostsText({
           webContent: parsed.webContent,
           pageUrl,
