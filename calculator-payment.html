@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Calculator | Mortgage Calculators | Adam Styer</title>
+  <meta name="description" content="Estimate your monthly mortgage payment (P&amp;I or PITI) with sliders. Real-time results and breakdown chart. Adam Styer, NMLS #513013.">
+  <link rel="canonical" href="https://styermortgage.com/calculator-payment.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="calculator-suite.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a href="#calc-main" class="skip-link">Skip to calculator</a>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html" class="nav-brand"><img src="assets/logo.svg" alt="Adam Styer | Mortgage Solutions LP" class="nav-logo-img" width="180" height="40"></a>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu"><span></span><span></span><span></span></button>
+        <ul class="nav-links">
+          <li class="nav-has-dropdown"><a href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li><a href="/loans/conventional.html">Conventional</a></li><li><a href="/loans/fha.html">FHA</a></li><li><a href="/loans/va.html">VA</a></li><li><a href="/loans/jumbo.html">Jumbo</a></li><li><a href="/loans/refinance.html">Refinance</a></li></ul></li>
+          <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/rate-buydown-calculator.html">Buydown</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP</a></li><li><a href="/blog.html">Blog</a></li></ul></li>
+          <li><a href="/testimonials.html">Testimonials</a></li>
+          <li><a href="/about.html">About Adam</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="https://mslp.my1003app.com/513013/register" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="calc-main" class="calc-suite">
+    <section class="calc-tool-hero">
+      <div class="container">
+        <h1>Payment Calculator</h1>
+        <p>Estimate your monthly P&amp;I — add taxes and insurance for full PITI. Results update as you move the sliders.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="calc-layout">
+          <div class="calc-inputs-col">
+            <div class="calc-card calc-card--solid">
+              <h2 class="calc-card-title" style="margin-bottom: 1rem;">Loan details</h2>
+              <div id="payment-sliders"></div>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>Monthly tax (optional)</span><span class="calc-slider-value" id="tax-value">$0</span></div>
+                <input type="range" class="calc-slider-input" id="tax-slider" min="0" max="1500" step="25" value="0">
+                <p class="calc-rule-note"><strong>Rule of thumb:</strong> ~2% of purchase price ÷ 12.</p>
+              </div>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>Monthly insurance (optional)</span><span class="calc-slider-value" id="ins-value">$0</span></div>
+                <input type="range" class="calc-slider-input" id="ins-slider" min="0" max="500" step="25" value="0">
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="calc-card calc-card--solid">
+              <div class="calc-hero-wrap">
+                <div class="calc-hero-label">Total monthly payment (PITI)</div>
+                <div class="calc-hero-number" id="hero-payment">—</div>
+              </div>
+              <div class="calc-donut-wrap">
+                <canvas id="payment-donut" width="280" height="260"></canvas>
+              </div>
+              <ul class="calc-result-list" style="margin-top: 1rem;">
+                <li class="calc-result-row"><span class="calc-result-label">Principal &amp; interest</span><span class="calc-result-value" id="out-pi">—</span></li>
+                <li class="calc-result-row"><span class="calc-result-label">Taxes</span><span class="calc-result-value" id="out-tax">—</span></li>
+                <li class="calc-result-row"><span class="calc-result-label">Insurance</span><span class="calc-result-value" id="out-ins">—</span></li>
+              </ul>
+            </div>
+            <p style="margin-top: 1rem;"><a href="calculators.html">← All calculators</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Mortgage Solutions, LP. NMLS# 2526130 (Company) | 513013 (Adam Styer). <a href="/contact.html">Contact</a> | <a href="calculators.html">Calculators</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="calculator-suite.js"></script>
+  <script>
+(function () {
+  var Suite = window.CalcSuite;
+  var container = document.getElementById('payment-sliders');
+  var heroEl = document.getElementById('hero-payment');
+  var outPi = document.getElementById('out-pi');
+  var outTax = document.getElementById('out-tax');
+  var outIns = document.getElementById('out-ins');
+  var taxSlider = document.getElementById('tax-slider');
+  var insSlider = document.getElementById('ins-slider');
+  var taxValue = document.getElementById('tax-value');
+  var insValue = document.getElementById('ins-value');
+
+  var state = { loan: 400000, rate: 6.5, years: 30, tax: 0, ins: 0 };
+  var donutChart = null;
+
+  function formatCurr(v) { return Suite.formatCurrency(v); }
+
+  function getPi() {
+    return Suite.monthlyPayment(state.loan, state.rate, state.years);
+  }
+
+  function update() {
+    var pi = getPi();
+    var tax = state.tax;
+    var ins = state.ins;
+    var total = pi + tax + ins;
+
+    heroEl.textContent = formatCurr(total);
+    outPi.textContent = formatCurr(pi);
+    outTax.textContent = formatCurr(tax);
+    outIns.textContent = formatCurr(ins);
+
+    var labels = ['P&I', 'Taxes', 'Insurance'];
+    var values = [Math.round(pi), Math.round(tax), Math.round(ins)];
+    if (tax === 0 && ins === 0) { labels = ['Principal & interest']; values = [Math.round(pi)]; }
+
+    if (typeof Chart !== 'undefined') {
+      if (donutChart) donutChart.destroy();
+      donutChart = Suite.createDonutChart('payment-donut', {
+        labels: labels,
+        values: values,
+        colors: ['#2563eb', '#059669', '#C9A84C']
+      });
+    }
+  }
+
+  Suite.createSlider(container, {
+    id: 'loan',
+    label: 'Loan amount',
+    min: 50000,
+    max: 1500000,
+    step: 10000,
+    value: 400000,
+    formatter: formatCurr,
+    onChange: function (v) { state.loan = v; update(); }
+  });
+  Suite.createSlider(container, {
+    id: 'rate',
+    label: 'Interest rate (%)',
+    min: 2,
+    max: 12,
+    step: 0.125,
+    value: 6.5,
+    formatter: function (v) { return v.toFixed(2) + '%'; },
+    onChange: function (v) { state.rate = v; update(); }
+  });
+  Suite.createSlider(container, {
+    id: 'term',
+    label: 'Loan term (years)',
+    min: 10,
+    max: 30,
+    step: 1,
+    value: 30,
+    formatter: function (v) { return v + ' yrs'; },
+    onChange: function (v) { state.years = v; update(); }
+  });
+
+  taxSlider.addEventListener('input', function () {
+    state.tax = parseFloat(taxSlider.value);
+    taxValue.textContent = formatCurr(state.tax);
+    update();
+  });
+  insSlider.addEventListener('input', function () {
+    state.ins = parseFloat(insSlider.value);
+    insValue.textContent = formatCurr(state.ins);
+    update();
+  });
+
+  update();
+})();
+  </script>
+</body>
+</html>

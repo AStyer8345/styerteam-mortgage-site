@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affordability Calculator | Mortgage Calculators | Adam Styer</title>
+  <meta name="description" content="See how much home you can afford. Income, DTI, and debts. Max payment and price in real time. Adam Styer, NMLS #513013.">
+  <link rel="canonical" href="https://styermortgage.com/calculator-affordability.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="calculator-suite.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a href="#calc-main" class="skip-link">Skip to calculator</a>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html" class="nav-brand"><img src="assets/logo.svg" alt="Adam Styer | Mortgage Solutions LP" class="nav-logo-img" width="180" height="40"></a>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu"><span></span><span></span><span></span></button>
+        <ul class="nav-links">
+          <li class="nav-has-dropdown"><a href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li><a href="/loans/conventional.html">Conventional</a></li><li><a href="/loans/fha.html">FHA</a></li><li><a href="/loans/va.html">VA</a></li><li><a href="/loans/jumbo.html">Jumbo</a></li><li><a href="/loans/refinance.html">Refinance</a></li></ul></li>
+          <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/rate-buydown-calculator.html">Buydown</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP</a></li><li><a href="/blog.html">Blog</a></li></ul></li>
+          <li><a href="/testimonials.html">Testimonials</a></li>
+          <li><a href="/about.html">About Adam</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="https://mslp.my1003app.com/513013/register" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="calc-main" class="calc-suite">
+    <section class="calc-tool-hero">
+      <div class="container">
+        <h1>Affordability Calculator</h1>
+        <p>Based on income, DTI limit, and monthly debts. Max payment and estimated price update as you move the sliders.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="calc-layout">
+          <div class="calc-inputs-col">
+            <div class="calc-card calc-card--solid">
+              <h2 class="calc-card-title" style="margin-bottom: 1rem;">Your numbers</h2>
+              <div id="afford-sliders"></div>
+            </div>
+          </div>
+          <div>
+            <div class="calc-card calc-card--solid">
+              <div class="calc-hero-wrap">
+                <div class="calc-hero-label">Max monthly payment (P&amp;I)</div>
+                <div class="calc-hero-number calc-hero-number--emerald" id="hero-payment">—</div>
+              </div>
+              <div class="calc-hero-wrap" style="padding-top: 0;">
+                <div class="calc-hero-label">Est. max home price (approx.)</div>
+                <div class="calc-hero-number" id="hero-price">—</div>
+              </div>
+              <p class="calc-rule-note">Rule of thumb: property tax ~2% of price ÷ 12.</p>
+              <p class="calc-card-desc" style="margin-top: 1rem;">Estimate assumes ~7% rate, 30-year term, and that P&amp;I is about 28% of gross. Not a pre-approval.</p>
+              <ul class="calc-result-list" style="margin-top: 1rem;">
+                <li class="calc-result-row"><span class="calc-result-label">Gross monthly income</span><span class="calc-result-value" id="out-income">—</span></li>
+                <li class="calc-result-row"><span class="calc-result-label">Monthly debts</span><span class="calc-result-value" id="out-debts">—</span></li>
+                <li class="calc-result-row"><span class="calc-result-label">DTI used</span><span class="calc-result-value" id="out-dti">—</span></li>
+              </ul>
+            </div>
+            <p style="margin-top: 1rem;"><a href="calculators.html">← All calculators</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Mortgage Solutions, LP. NMLS# 2526130 | 513013 (Adam Styer). <a href="/contact.html">Contact</a> | <a href="calculators.html">Calculators</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="calculator-suite.js"></script>
+  <script>
+(function () {
+  var Suite = window.CalcSuite;
+  var container = document.getElementById('afford-sliders');
+  var heroPayment = document.getElementById('hero-payment');
+  var heroPrice = document.getElementById('hero-price');
+  var outIncome = document.getElementById('out-income');
+  var outDebts = document.getElementById('out-debts');
+  var outDti = document.getElementById('out-dti');
+
+  var state = { income: 10000, dtiPercent: 43, debts: 800 };
+  var assumeRate = 7;
+  var assumeYears = 30;
+
+  function formatCurr(v) { return Suite.formatCurrency(v); }
+
+  function update() {
+    var maxTotal = state.income * (state.dtiPercent / 100);
+    var maxPi = Math.max(0, maxTotal - state.debts);
+    heroPayment.textContent = formatCurr(maxPi);
+
+    // Rough inverse: payment -> principal. P = PMT * ((1+r)^n - 1) / (r * (1+r)^n)
+    var r = assumeRate / 100 / 12;
+    var n = assumeYears * 12;
+    var maxPrincipal = r === 0 ? maxPi * n : (maxPi * (Math.pow(1 + r, n) - 1)) / (r * Math.pow(1 + r, n));
+    var estPrice = maxPrincipal / 0.95; // assume 5% down
+    heroPrice.textContent = formatCurr(estPrice);
+
+    outIncome.textContent = formatCurr(state.income);
+    outDebts.textContent = formatCurr(state.debts);
+    outDti.textContent = state.dtiPercent + '%';
+  }
+
+  Suite.createSlider(container, {
+    id: 'income',
+    label: 'Gross monthly income',
+    min: 2000,
+    max: 50000,
+    step: 500,
+    value: 10000,
+    formatter: formatCurr,
+    onChange: function (v) { state.income = v; update(); }
+  });
+  Suite.createSlider(container, {
+    id: 'dti',
+    label: 'Max DTI (%)',
+    min: 28,
+    max: 50,
+    step: 1,
+    value: 43,
+    formatter: function (v) { return v + '%'; },
+    onChange: function (v) { state.dtiPercent = v; update(); }
+  });
+  Suite.createSlider(container, {
+    id: 'debts',
+    label: 'Monthly debts',
+    min: 0,
+    max: 5000,
+    step: 50,
+    value: 800,
+    formatter: formatCurr,
+    onChange: function (v) { state.debts = v; update(); }
+  });
+
+  update();
+})();
+  </script>
+</body>
+</html>

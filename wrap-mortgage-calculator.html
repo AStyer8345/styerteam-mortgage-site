@@ -36,6 +36,7 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="calculator-suite.css">
 
   <!-- Schema: WebApplication -->
   <script type="application/ld+json">
@@ -206,19 +207,19 @@
       <div class="container">
         <h2 class="text-center" style="margin-bottom: .75rem;">What Is a Wraparound Mortgage?</h2>
         <p class="text-center content-medium mx-auto" style="color: var(--color-gray); margin-bottom: 2.5rem;">
-          A WRAP mortgage (or wraparound) is owner financing — you sell your home, keep your existing low-rate mortgage, and issue a new, larger mortgage to the buyer at a higher rate. You pocket the difference every month.
+          A WRAP is owner financing: you sell your home, keep your existing low-rate mortgage, and a new note is issued to the buyer at a higher rate. A <strong>mortgage servicer</strong> handles all payments — you stay hands-off and receive the delta (your passive income) every month.
         </p>
 
         <div class="wrap-benefits">
           <div class="wrap-benefit-card">
-            <div class="benefit-icon">💰</div>
-            <h3>Passive Income for Years</h3>
-            <p>You collect monthly payments from the buyer at a higher rate and forward your original lower payment to the bank. The spread is yours — month after month, for the life of the loan.</p>
+            <div class="benefit-icon">🤝</div>
+            <h3>Hands-Off for You</h3>
+            <p>A servicer is hired to manage the loan. The buyer pays the servicer. The servicer pays your original mortgage and sends the <em>delta</em> (the spread) to you. You never chase a payment — buyers and sellers never have to communicate directly.</p>
           </div>
           <div class="wrap-benefit-card">
             <div class="benefit-icon">🏷️</div>
             <h3>Premium on Your Price</h3>
-            <p>Buyers will pay full price — even above market — for below-market financing. When conventional rates are 7%+, offering 5–6% financing is a massive advantage that commands a higher sale price.</p>
+            <p>Buyers pay full price — even above market — for below-market financing. When conventional rates are 7%+, offering 5–6% financing is a massive advantage that commands a higher sale price.</p>
           </div>
           <div class="wrap-benefit-card">
             <div class="benefit-icon">💵</div>
@@ -227,154 +228,150 @@
           </div>
         </div>
 
-        <h3 style="text-align:center; margin-bottom: 1.5rem; color: var(--color-navy);">How It Works in 4 Steps</h3>
+        <h3 style="text-align:center; margin-bottom: 1.5rem; color: var(--color-navy);">How the Payment Flow Works</h3>
         <div class="wrap-steps">
           <div class="wrap-step">
             <div class="wrap-step-num">1</div>
-            <h4>Find a Buyer</h4>
-            <p>You find a buyer directly — often someone who can't qualify conventionally but has solid income and a down payment.</p>
+            <h4>Buyer Pays Servicer</h4>
+            <p>The buyer sends their monthly payment to the mortgage servicer — not to you. One point of contact, one payment.</p>
           </div>
           <div class="wrap-step">
             <div class="wrap-step-num">2</div>
-            <h4>Agree on Terms</h4>
-            <p>You set the sale price, down payment, WRAP rate (between your existing rate and market rates), and loan term.</p>
+            <h4>Servicer Pays Your Mortgage</h4>
+            <p>The servicer pays your original lender (underlying note) on time, every time. Your credit stays clean; the loan stays current.</p>
           </div>
           <div class="wrap-step">
             <div class="wrap-step-num">3</div>
-            <h4>Close the Deal</h4>
-            <p>You receive the down payment at closing. The buyer takes possession. An attorney documents everything — deed of trust, promissory note.</p>
+            <h4>Delta Goes to You</h4>
+            <p>After paying the bank, the servicer sends you the <strong>delta</strong> — the spread between the buyer's payment and your payment. That's your passive income.</p>
           </div>
           <div class="wrap-step">
             <div class="wrap-step-num">4</div>
-            <h4>Collect the Spread</h4>
-            <p>Buyer pays you. You pay the bank. The gap between those two payments is your monthly income — for up to 30 years.</p>
+            <h4>You Stay Out of the Middle</h4>
+            <p>Buyers and sellers never communicate directly; the seller never has to hunt for a payment. The servicer handles it all.</p>
           </div>
         </div>
 
-        <div class="realtor-callout">
+        <div class="realtor-callout" style="max-width: 720px; margin: 2rem auto 0;">
+          <h4>Why Styer Mortgage?</h4>
+          <p>I have extensive experience with wraparound financing. I provide a full ecosystem: specialized attorneys, title companies, and insurance referrals so your WRAP is structured and closed correctly. If you're considering seller financing — or you're a realtor with a seller who has a sub-4% loan — call me at (512) 956-6010 to talk through the deal.</p>
+        </div>
+
+        <div class="realtor-callout" style="margin-top: 1.5rem;">
           <h4>A Note for Realtors</h4>
           <p>A WRAP can save a deal that won't survive current rate conditions. If your seller has a sub-4% loan and is struggling to attract offers at their price, seller financing eliminates the buyer's rate barrier entirely. Call Adam at (512) 956-6010 to talk through the structure for a specific listing.</p>
         </div>
       </div>
     </section>
 
-    <!-- CALCULATOR -->
-    <section class="wrap-calc-section" id="wrap-calc">
+    <!-- CALCULATOR (EquityEdge logic + glassmorphism UI) -->
+    <section class="wrap-calc-section calc-suite" id="wrap-calc">
       <div class="container">
         <h2 class="text-center" style="margin-bottom: .5rem;">Run the Numbers</h2>
-        <p class="text-center" style="color: var(--color-gray); margin-bottom: 2rem;">Enter your loan details and proposed sale terms to see your monthly income and cash at closing.</p>
+        <p class="text-center" style="color: var(--color-gray); margin-bottom: 2rem;">Dual-note amortization. Results update as you type. Cash at closing and net payoff at balloon are the two key seller wins.</p>
 
-        <div class="wrap-calc-inner">
+        <div class="calc-layout">
           <!-- INPUT PANEL -->
-          <div class="wrap-input-panel">
-            <h2>Calculator Inputs</h2>
+          <div class="calc-inputs-col">
+            <div class="calc-card calc-card--solid">
+              <h2 class="calc-card-title" style="margin-bottom: 1rem;">Your existing loan</h2>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>Balance ($)</span><span class="calc-slider-value" id="w-balance-val">$200,000</span></div>
+                <input type="number" id="w-balance" value="200000" min="0" step="1000" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+              </div>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>Rate (%)</span><span class="calc-slider-value" id="w-existing-rate-val">3%</span></div>
+                <input type="number" id="w-existing-rate" value="3" min="0" max="15" step="0.125" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+              </div>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>Monthly P&amp;I ($)</span><span class="calc-slider-value" id="w-existing-payment-val">$843</span></div>
+                <input type="number" id="w-existing-payment" value="843" min="0" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+              </div>
+              <div class="calc-slider-group">
+                <label class="calc-slider-label" style="margin-bottom: .25rem;">Remaining term (years)</label>
+                <input type="number" id="w-remaining-term" value="25" min="1" max="30" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+              </div>
 
-            <div class="wrap-input-section-label">Your Existing Loan</div>
-
-            <div class="wrap-field">
-              <label for="w-balance">Current Mortgage Balance ($)</label>
-              <input type="number" id="w-balance" value="200000" min="0" step="1000">
-            </div>
-            <div class="wrap-field">
-              <label for="w-existing-payment">Your Current Monthly Payment ($)</label>
-              <input type="number" id="w-existing-payment" value="843" min="0" step="1">
-            </div>
-            <div class="wrap-field">
-              <label for="w-existing-rate">Your Current Interest Rate (%)</label>
-              <input type="number" id="w-existing-rate" value="3.0" min="0" max="15" step="0.125">
-            </div>
-
-            <div class="wrap-input-section-label">New Sale Terms</div>
-
-            <div class="wrap-field">
-              <label for="w-sale-price">Sale Price ($)</label>
-              <input type="number" id="w-sale-price" value="450000" min="0" step="1000">
-            </div>
-            <div class="wrap-field">
-              <label for="w-down-pct">Buyer Down Payment (%)</label>
-              <input type="number" id="w-down-pct" value="10" min="1" max="50" step="0.5">
-            </div>
-            <div class="wrap-field">
-              <label for="w-wrap-rate">WRAP Interest Rate (%) — charged to buyer</label>
-              <input type="number" id="w-wrap-rate" value="6.5" min="0" max="15" step="0.125">
-            </div>
-            <div class="wrap-field">
-              <label for="w-term">Loan Term (years)</label>
-              <input type="number" id="w-term" value="30" min="5" max="30" step="5">
-            </div>
-
-            <div class="wrap-input-section-label">Estimated Costs</div>
-
-            <div class="wrap-field">
-              <label for="w-closing-pct">Seller Closing Costs (% of sale price)</label>
-              <input type="number" id="w-closing-pct" value="3" min="0" max="15" step="0.5">
+              <h2 class="calc-card-title" style="margin: 1.25rem 0 .75rem;">Wrap terms (buyer)</h2>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>Sale price ($)</span><span class="calc-slider-value" id="w-sale-price-val">$450,000</span></div>
+                <input type="number" id="w-sale-price" value="450000" min="0" step="1000" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+              </div>
+              <div id="w-down-toggle-container"></div>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>Closing costs (%)</span><span class="calc-slider-value" id="w-closing-pct-val">8%</span></div>
+                <input type="number" id="w-closing-pct" value="8" min="0" max="15" step="0.5" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+              </div>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>Wrap rate (%)</span><span class="calc-slider-value" id="w-wrap-rate-val">6.5%</span></div>
+                <input type="number" id="w-wrap-rate" value="6.5" min="0" max="15" step="0.125" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+              </div>
+              <div class="calc-slider-group">
+                <label class="calc-slider-label" style="margin-bottom: .25rem;">Wrap term (years)</label>
+                <input type="number" id="w-term" value="30" min="5" max="30" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+              </div>
+              <div class="calc-slider-group">
+                <label class="calc-slider-label" style="margin-bottom: .25rem;">Balloon (years)</label>
+                <input type="number" id="w-balloon" value="5" min="1" max="30" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+              </div>
             </div>
           </div>
 
           <!-- OUTPUT PANEL -->
-          <div class="wrap-output-panel">
-            <h2>Your Results</h2>
+          <div>
+            <div class="calc-card calc-card--solid">
+              <div class="calc-hero-wrap">
+                <div class="calc-hero-label">Passive Income Delta</div>
+                <div class="calc-hero-number calc-hero-number--emerald" id="w-out-monthly-income">—</div>
+              </div>
 
-            <!-- Monthly income highlight -->
-            <div class="wrap-output-row wrap-output-row--highlight">
-              <span class="wrap-output-label">Monthly Income (the spread)</span>
-              <span class="wrap-output-value" id="w-out-monthly-income">$0</span>
-            </div>
+              <div class="calc-flow" id="w-flow" aria-hidden="false">
+                <div class="calc-flow-node">
+                  <span class="calc-flow-label">Buyer pays</span>
+                  <span class="calc-flow-value" id="w-flow-buyer">—</span>
+                </div>
+                <span class="calc-flow-arrow" aria-hidden="true"></span>
+                <div class="calc-flow-node">
+                  <span class="calc-flow-label">Servicer processes</span>
+                  <span class="calc-flow-value">—</span>
+                </div>
+                <span class="calc-flow-arrow" aria-hidden="true"></span>
+                <div class="calc-flow-fork">
+                  <div class="calc-flow-node">
+                    <span class="calc-flow-label">Seller mortgage paid</span>
+                    <span class="calc-flow-value" id="w-flow-under">—</span>
+                  </div>
+                  <div class="calc-flow-node calc-flow-delta">
+                    <span class="calc-flow-label">Seller keeps</span>
+                    <span class="calc-flow-value" id="w-flow-delta">—</span>
+                  </div>
+                </div>
+              </div>
 
-            <hr class="wrap-output-divider">
-            <p style="font-size:.8rem;font-weight:700;color:var(--color-navy);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em;">At Closing</p>
+              <ul class="calc-result-list">
+                <li class="calc-result-row calc-result-row--highlight">
+                  <span class="calc-result-label">Cash at closing</span>
+                  <span class="calc-result-value" id="w-out-net-cash">—</span>
+                </li>
+                <li class="calc-result-row calc-result-row--highlight">
+                  <span class="calc-result-label">Projected net payoff at balloon</span>
+                  <span class="calc-result-value" id="w-out-net-balloon">—</span>
+                </li>
+                <li class="calc-result-row"><span class="calc-result-label">Buyer down payment</span><span class="calc-result-value" id="w-out-down">—</span></li>
+                <li class="calc-result-row"><span class="calc-result-label">Wrap loan amount</span><span class="calc-result-value" id="w-out-new-loan">—</span></li>
+                <li class="calc-result-row"><span class="calc-result-label">Wrap monthly P&amp;I</span><span class="calc-result-value" id="w-out-buyer-payment">—</span></li>
+                <li class="calc-result-row"><span class="calc-result-label">Your payment to bank</span><span class="calc-result-value" id="w-out-existing-pmt">—</span></li>
+                <li class="calc-result-row"><span class="calc-result-label">Cumulative spread to balloon</span><span class="calc-result-value" id="w-out-cume-spread">—</span></li>
+              </ul>
 
-            <div class="wrap-output-row">
-              <span class="wrap-output-label">Buyer Down Payment</span>
-              <span class="wrap-output-value" id="w-out-down">$0</span>
-            </div>
-            <div class="wrap-output-row">
-              <span class="wrap-output-label">Your Closing Costs (est.)</span>
-              <span class="wrap-output-value" id="w-out-closing-costs">$0</span>
-            </div>
-            <div class="wrap-output-row">
-              <span class="wrap-output-label" style="font-weight:600;color:var(--color-navy);">Net Cash at Closing</span>
-              <span class="wrap-output-value" style="font-size:1.15rem;color:var(--color-navy);" id="w-out-net-cash">$0</span>
-            </div>
+              <p class="wrap-disclaimer" style="margin-top: 1rem; font-size: .8rem; color: var(--color-gray);">
+                Gross spread only — ignores escrow, reserves, servicing. Estimates only. <a href="tel:+15129566010">Call Adam</a> to discuss structure and due-on-sale risk.
+              </p>
 
-            <hr class="wrap-output-divider">
-            <p style="font-size:.8rem;font-weight:700;color:var(--color-navy);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em;">Loan Structure</p>
-
-            <div class="wrap-output-row">
-              <span class="wrap-output-label">New Loan Amount (buyer)</span>
-              <span class="wrap-output-value" id="w-out-new-loan">$0</span>
+              <div class="calc-referral-footer">
+                <strong>Referral network:</strong> Use a real estate attorney experienced in Texas owner financing to draft the note and deed of trust, and a title company or servicer to collect payments and forward your mortgage. <strong>Why Styer Mortgage?</strong> Adam structures WRAPs and can connect you with attorney and title partners — <a href="tel:+15129566010">(512) 956-6010</a>.
+              </div>
             </div>
-            <div class="wrap-output-row">
-              <span class="wrap-output-label">Existing Loan Balance (yours)</span>
-              <span class="wrap-output-value" id="w-out-balance">$0</span>
-            </div>
-            <div class="wrap-output-row">
-              <span class="wrap-output-label">Equity Spread (WRAP amount)</span>
-              <span class="wrap-output-value" id="w-out-equity-spread">$0</span>
-            </div>
-
-            <hr class="wrap-output-divider">
-            <p style="font-size:.8rem;font-weight:700;color:var(--color-navy);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em;">Buyer's Perspective</p>
-
-            <div class="wrap-output-row">
-              <span class="wrap-output-label">Buyer Monthly Payment</span>
-              <span class="wrap-output-value" id="w-out-buyer-payment">$0</span>
-            </div>
-            <div class="wrap-output-row">
-              <span class="wrap-output-label">Your Payment to Bank</span>
-              <span class="wrap-output-value" id="w-out-existing-pmt">$0</span>
-            </div>
-
-            <!-- Scenario interpretation -->
-            <div class="wrap-scenario" id="w-scenario-box">
-              <h4>Quick Read</h4>
-              <p id="w-scenario-text">Enter your numbers above to see a summary.</p>
-            </div>
-
-            <p class="wrap-disclaimer">
-              Estimates only — for illustrative purposes. Actual terms depend on negotiation, legal structure, and lender due-on-sale risk. WRAP mortgages require an experienced real estate attorney in Texas.
-              <a href="tel:+15129566010">Call Adam</a> to discuss your specific situation.
-            </p>
           </div>
         </div>
       </div>
@@ -526,96 +523,103 @@
   </footer>
 
   <script src="script.js" defer></script>
+  <script src="calculator-suite.js"></script>
   <script>
   (function() {
     'use strict';
+    var Suite = window.CalcSuite;
+    if (!Suite) return;
 
-    /* ── Utilities ── */
-    function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
-    function fmtMonthly(n) { return '$' + Math.round(n).toLocaleString('en-US') + '/mo'; }
     function val(id) { return parseFloat(document.getElementById(id).value) || 0; }
-    function set(id, v) { document.getElementById(id).textContent = v; }
+    function set(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; }
 
-    function monthlyPayment(principal, annualRate, years) {
-      if (principal <= 0) return 0;
-      if (annualRate <= 0) return principal / (years * 12);
-      var r = annualRate / 100 / 12;
-      var n = years * 12;
-      return principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    var downToggle = null;
+
+    function updateInputDisplays() {
+      set('w-balance-val', Suite.formatCurrency(val('w-balance')));
+      set('w-existing-rate-val', val('w-existing-rate').toFixed(2) + '%');
+      set('w-existing-payment-val', Suite.formatCurrency(val('w-existing-payment')));
+      set('w-sale-price-val', Suite.formatCurrency(val('w-sale-price')));
+      set('w-closing-pct-val', val('w-closing-pct').toFixed(1) + '%');
+      set('w-wrap-rate-val', val('w-wrap-rate').toFixed(2) + '%');
     }
 
-    /* ── Main calculation ── */
     function calcWrap() {
-      var balance        = val('w-balance');
-      var existingPmt    = val('w-existing-payment');
-      var existingRate   = val('w-existing-rate');
-      var salePrice      = val('w-sale-price');
-      var downPct        = val('w-down-pct');
-      var wrapRate       = val('w-wrap-rate');
-      var term           = val('w-term');
-      var closingPct     = val('w-closing-pct');
+      var downPct = downToggle ? downToggle.getDownPct() : 10;
+      var vals = {
+        existingMortgageBalance: val('w-balance'),
+        existingInterestRate: val('w-existing-rate'),
+        monthlyMortgagePayment: val('w-existing-payment'),
+        existingRemainingTermYears: val('w-remaining-term'),
+        salesPrice: val('w-sale-price'),
+        downPaymentPercentage: downPct,
+        closingCostPercentage: val('w-closing-pct'),
+        interestRate: val('w-wrap-rate'),
+        loanTerm: val('w-term'),
+        balloonYears: val('w-balloon')
+      };
 
-      var downPayment    = salePrice * (downPct / 100);
-      var newLoanAmount  = salePrice - downPayment;
-      var buyerPayment   = monthlyPayment(newLoanAmount, wrapRate, term);
-      var monthlyIncome  = buyerPayment - existingPmt;
-      var closingCosts   = salePrice * (closingPct / 100);
-      var netCash        = downPayment - closingCosts;
-      var equitySpread   = newLoanAmount - balance;
-
-      set('w-out-monthly-income', fmtMonthly(monthlyIncome));
-      set('w-out-down', fmt(downPayment));
-      set('w-out-closing-costs', fmt(closingCosts));
-      set('w-out-net-cash', fmt(netCash));
-      set('w-out-new-loan', fmt(newLoanAmount));
-      set('w-out-balance', fmt(balance));
-      set('w-out-equity-spread', fmt(equitySpread));
-      set('w-out-buyer-payment', fmtMonthly(buyerPayment));
-      set('w-out-existing-pmt', fmtMonthly(existingPmt));
-
-      /* ── Scenario summary ── */
-      var annualIncome = monthlyIncome * 12;
-      var tenYearIncome = monthlyIncome * 120;
-      var scenarioText = '';
-
-      if (salePrice > 0 && existingPmt > 0 && wrapRate > existingRate) {
-        scenarioText = 'At ' + wrapRate.toFixed(2) + '% WRAP vs your ' + existingRate.toFixed(2) + '% loan, '
-          + 'you earn approximately ' + fmt(monthlyIncome) + '/month — '
-          + fmt(annualIncome) + '/year — '
-          + fmt(netCash) + ' upfront at closing. '
-          + 'Over 10 years that\'s ' + fmt(tenYearIncome) + ' in spread income alone.';
-      } else if (wrapRate <= existingRate && existingRate > 0) {
-        scenarioText = 'Your WRAP rate needs to be above your existing rate (' + existingRate.toFixed(2) + '%) to generate income.';
-      } else {
-        scenarioText = 'Enter your numbers above to see a summary.';
+      if (vals.monthlyMortgagePayment <= 0 || vals.salesPrice <= 0) {
+        set('w-out-monthly-income', '—');
+        set('w-out-net-cash', '—');
+        set('w-out-net-balloon', '—');
+        set('w-out-down', '—');
+        set('w-out-new-loan', '—');
+        set('w-out-buyer-payment', '—');
+        set('w-out-existing-pmt', '—');
+        set('w-out-cume-spread', '—');
+        set('w-flow-buyer', '—');
+        set('w-flow-under', '—');
+        set('w-flow-delta', '—');
+        return;
       }
 
-      document.getElementById('w-scenario-text').textContent = scenarioText;
+      var r = Suite.computeWrap(vals);
+      set('w-out-monthly-income', Suite.formatCurrency(r.grossSpread) + '/mo');
+      set('w-out-net-cash', Suite.formatCurrency(r.cashAtClosing));
+      set('w-out-net-balloon', Suite.formatCurrency(r.netAtBalloon));
+      set('w-out-down', Suite.formatCurrency(r.downPayment));
+      set('w-out-new-loan', Suite.formatCurrency(r.wrapLoanAmount));
+      set('w-out-buyer-payment', Suite.formatCurrency(r.wrapMonthlyPayment) + '/mo');
+      set('w-out-existing-pmt', Suite.formatCurrency(vals.monthlyMortgagePayment) + '/mo');
+      set('w-out-cume-spread', Suite.formatCurrency(r.cumeSpread));
 
-      /* ── Highlight negative net cash ── */
+      set('w-flow-buyer', Suite.formatCurrency(r.wrapMonthlyPayment) + '/mo');
+      set('w-flow-under', Suite.formatCurrency(vals.monthlyMortgagePayment) + '/mo');
+      set('w-flow-delta', Suite.formatCurrency(r.grossSpread) + '/mo');
+
       var netCashEl = document.getElementById('w-out-net-cash');
-      netCashEl.style.color = netCash < 0 ? '#dc2626' : 'var(--color-navy)';
+      if (netCashEl) netCashEl.style.color = r.cashAtClosing < 0 ? '#dc2626' : '';
+
+      updateInputDisplays();
     }
 
-    /* ── Wire up inputs ── */
-    ['w-balance','w-existing-payment','w-existing-rate','w-sale-price',
-     'w-down-pct','w-wrap-rate','w-term','w-closing-pct'].forEach(function(id) {
-      document.getElementById(id).addEventListener('input', calcWrap);
+    var toggleContainer = document.getElementById('w-down-toggle-container');
+    if (toggleContainer && Suite.createDownPaymentToggle) {
+      downToggle = Suite.createDownPaymentToggle(toggleContainer, {
+        salePriceGetter: function () { return val('w-sale-price'); },
+        initialMode: 'pct',
+        initialPct: 10,
+        onChange: function () { calcWrap(); }
+      });
+    }
+
+    ['w-balance','w-existing-payment','w-existing-rate','w-remaining-term','w-sale-price',
+     'w-closing-pct','w-wrap-rate','w-term','w-balloon'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('input', calcWrap);
     });
 
-    /* ── Accordion ── */
     document.querySelectorAll('.accordion-button').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var item = btn.closest('.accordion-item');
-        var isOpen = item.classList.contains('open');
+        var isOpen = item && item.classList.contains('open');
         document.querySelectorAll('.accordion-item').forEach(function(i) { i.classList.remove('open'); });
-        if (!isOpen) item.classList.add('open');
+        if (item && !isOpen) item.classList.add('open');
       });
     });
 
-    /* ── Initial calculation ── */
     calcWrap();
-
   }());
   </script>
 </body>

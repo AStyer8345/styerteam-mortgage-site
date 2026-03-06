@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refinance Break-Even &amp; Monthly Savings | Mortgage Calculators | Adam Styer</title>
+  <meta name="description" content="See how long until your refinance pays off. Current vs new rate and term, closing costs. Break-even and monthly savings. Adam Styer, NMLS #513013.">
+  <link rel="canonical" href="https://styermortgage.com/calculator-refinance-breakeven.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="calculator-suite.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a href="#calc-main" class="skip-link">Skip to calculator</a>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html" class="nav-brand"><img src="assets/logo.svg" alt="Adam Styer | Mortgage Solutions LP" class="nav-logo-img" width="180" height="40"></a>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu"><span></span><span></span><span></span></button>
+        <ul class="nav-links">
+          <li class="nav-has-dropdown"><a href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li><a href="/loans/conventional.html">Conventional</a></li><li><a href="/loans/fha.html">FHA</a></li><li><a href="/loans/jumbo.html">Jumbo</a></li><li><a href="/loans/refinance.html">Refinance</a></li></ul></li>
+          <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/rate-buydown-calculator.html">Buydown</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP</a></li><li><a href="/blog.html">Blog</a></li></ul></li>
+          <li><a href="/testimonials.html">Testimonials</a></li>
+          <li><a href="/about.html">About Adam</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="https://mslp.my1003app.com/513013/register" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="calc-main" class="calc-suite">
+    <section class="calc-tool-hero">
+      <div class="container">
+        <h1>Refinance: Break-Even &amp; Monthly Savings</h1>
+        <p>Compare your current loan to a new rate and term. See monthly savings and how many months until closing costs are paid off.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="calc-layout">
+          <div class="calc-inputs-col">
+            <div class="calc-card calc-card--solid">
+              <h2 class="calc-card-title" style="margin-bottom: 1rem;">Current loan</h2>
+              <div id="refi-break-sliders"></div>
+              <h2 class="calc-card-title" style="margin: 1.25rem 0 .75rem;">New loan &amp; costs</h2>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>New rate (%)</span><span class="calc-slider-value" id="new-rate-val">6%</span></div>
+                <input type="range" class="calc-slider-input" id="new-rate" min="2" max="10" step="0.125" value="6">
+              </div>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>New term (years)</span><span class="calc-slider-value" id="new-term-val">30 yrs</span></div>
+                <input type="range" class="calc-slider-input" id="new-term" min="10" max="30" step="1" value="30">
+              </div>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>Closing costs ($)</span><span class="calc-slider-value" id="costs-val">$6,000</span></div>
+                <input type="range" class="calc-slider-input" id="costs" min="0" max="15000" step="500" value="6000">
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="calc-card calc-card--solid">
+              <div class="calc-hero-wrap">
+                <div class="calc-hero-label">Monthly savings</div>
+                <div class="calc-hero-number calc-hero-number--emerald" id="hero-savings">—</div>
+              </div>
+              <div class="calc-hero-wrap" style="padding-top: 0;">
+                <div class="calc-hero-label">Break-even (months)</div>
+                <div class="calc-hero-number calc-hero-number--cyan" id="hero-breakeven">—</div>
+              </div>
+              <ul class="calc-result-list" style="margin-top: 1rem;">
+                <li class="calc-result-row"><span class="calc-result-label">Current payment (P&amp;I)</span><span class="calc-result-value" id="out-current-pmt">—</span></li>
+                <li class="calc-result-row"><span class="calc-result-label">New payment (P&amp;I)</span><span class="calc-result-value" id="out-new-pmt">—</span></li>
+                <li class="calc-result-row"><span class="calc-result-label">Closing costs</span><span class="calc-result-value" id="out-costs">—</span></li>
+              </ul>
+              <p class="calc-card-desc" style="margin-top: 1rem;">If you stay past break-even, the refinance pays for itself. Not a commitment to lend.</p>
+            </div>
+            <p style="margin-top: 1rem;"><a href="calculators.html">← All calculators</a> · <a href="refinance-calculator.html">Refinance closing cost estimator →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Mortgage Solutions, LP. NMLS# 2526130 | 513013 (Adam Styer). <a href="/contact.html">Contact</a> | <a href="calculators.html">Calculators</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="calculator-suite.js"></script>
+  <script>
+(function () {
+  var Suite = window.CalcSuite;
+  var container = document.getElementById('refi-break-sliders');
+  var heroSavings = document.getElementById('hero-savings');
+  var heroBreakeven = document.getElementById('hero-breakeven');
+  var outCurrent = document.getElementById('out-current-pmt');
+  var outNew = document.getElementById('out-new-pmt');
+  var outCosts = document.getElementById('out-costs');
+  var newRateInp = document.getElementById('new-rate');
+  var newTermInp = document.getElementById('new-term');
+  var costsInp = document.getElementById('costs');
+  var newRateVal = document.getElementById('new-rate-val');
+  var newTermVal = document.getElementById('new-term-val');
+  var costsVal = document.getElementById('costs-val');
+
+  var state = { balance: 350000, currentRate: 7, currentYears: 30, newRate: 6, newYears: 30, costs: 6000 };
+
+  function formatCurr(v) { return Suite.formatCurrency(v); }
+
+  function update() {
+    var currentPmt = Suite.monthlyPayment(state.balance, state.currentRate, state.currentYears);
+    var newPmt = Suite.monthlyPayment(state.balance, state.newRate, state.newYears);
+    var savings = currentPmt - newPmt;
+    var months = state.costs > 0 && savings > 0 ? Math.ceil(state.costs / savings) : 0;
+
+    outCurrent.textContent = formatCurr(currentPmt) + '/mo';
+    outNew.textContent = formatCurr(newPmt) + '/mo';
+    outCosts.textContent = formatCurr(state.costs);
+    heroSavings.textContent = savings >= 0 ? formatCurr(savings) + '/mo' : '—';
+    heroBreakeven.textContent = months > 0 ? months + ' mo' : '—';
+
+    newRateVal.textContent = state.newRate.toFixed(2) + '%';
+    newTermVal.textContent = state.newYears + ' yrs';
+    costsVal.textContent = formatCurr(state.costs);
+  }
+
+  Suite.createSlider(container, {
+    id: 'balance',
+    label: 'Current balance ($)',
+    min: 50000,
+    max: 1000000,
+    step: 10000,
+    value: 350000,
+    formatter: formatCurr,
+    onChange: function (v) { state.balance = v; update(); }
+  });
+  Suite.createSlider(container, {
+    id: 'current-rate',
+    label: 'Current rate (%)',
+    min: 2,
+    max: 10,
+    step: 0.125,
+    value: 7,
+    formatter: function (v) { return v.toFixed(2) + '%'; },
+    onChange: function (v) { state.currentRate = v; update(); }
+  });
+  Suite.createSlider(container, {
+    id: 'current-term',
+    label: 'Current term (years)',
+    min: 10,
+    max: 30,
+    step: 1,
+    value: 30,
+    formatter: function (v) { return v + ' yrs'; },
+    onChange: function (v) { state.currentYears = v; update(); }
+  });
+
+  newRateInp.addEventListener('input', function () { state.newRate = parseFloat(newRateInp.value); update(); });
+  newTermInp.addEventListener('input', function () { state.newYears = parseFloat(newTermInp.value); update(); });
+  costsInp.addEventListener('input', function () { state.costs = parseFloat(costsInp.value); update(); });
+
+  update();
+})();
+  </script>
+</body>
+</html>
