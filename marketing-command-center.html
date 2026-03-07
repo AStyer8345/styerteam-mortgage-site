@@ -809,7 +809,7 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
 // ═══════════════════════════════════════════════════════════════
 // CONFIG — change password here
 // ═══════════════════════════════════════════════════════════════
-const PASS = 'Styer2026!';
+const PASS_HASH = '4e0b03f3d3e2d57646ade134211c3516a2c0f7af971a36cdf8f4ad2dd0b74bec';
 
 // ═══════════════════════════════════════════════════════════════
 // SCHEDULE DATA
@@ -949,9 +949,12 @@ function save() {
 // ═══════════════════════════════════════════════════════════════
 // AUTH
 // ═══════════════════════════════════════════════════════════════
-function checkPass() {
+async function checkPass() {
   const v = document.getElementById('lock-input').value;
-  if (v === PASS) {
+  const enc = new TextEncoder().encode(v);
+  const buf = await crypto.subtle.digest('SHA-256', enc);
+  const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  if (hash === PASS_HASH) {
     sessionStorage.setItem('mcc_auth', '1');
     sessionStorage.setItem('mcc_pass', v); // used as auth header for cloud API calls
     document.getElementById('lock-screen').classList.add('hidden');

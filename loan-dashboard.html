@@ -321,10 +321,13 @@ input[type="number"] { -moz-appearance: textfield; }
 
 <script>
 /* ===== AUTH ===== */
-const PASS = 'Styer2026!';
-function checkPass() {
+const PASS_HASH = '4e0b03f3d3e2d57646ade134211c3516a2c0f7af971a36cdf8f4ad2dd0b74bec';
+async function checkPass() {
   const v = document.getElementById('lock-input').value;
-  if (v === PASS) {
+  const enc = new TextEncoder().encode(v);
+  const buf = await crypto.subtle.digest('SHA-256', enc);
+  const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  if (hash === PASS_HASH) {
     sessionStorage.setItem('mcc_auth', '1');
     document.getElementById('lock-screen').classList.add('hidden');
     document.getElementById('app-wrap').classList.add('visible');
