@@ -4,7 +4,7 @@ const { buildPrompt } = require("./lib/prompt-builder");
 const { buildWebPage } = require("./lib/page-builder");
 const { buildBlogPage } = require("./lib/blog-page-builder");
 const { generateAndPostSocial, generateSocialPostsText } = require("./lib/social-poster");
-const { createGitHubFile, createAndSendCampaign, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument } = require("./lib/shared");
+const { createGitHubFile, createAndSendCampaign, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument, wrapEmailHtml } = require("./lib/shared");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateNewsletter()
@@ -307,7 +307,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
             listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
             subject: parsed.borrowerSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
             preheader: parsed.borrowerPreheader || "",
-            html: injectPageLink(parsed.borrowerEmail, finalPageUrl),
+            html: wrapEmailHtml(injectPageLink(parsed.borrowerEmail, finalPageUrl)),
             fromName: "Adam Styer",
             replyTo: "adam@thestyerteam.com",
             scheduleTime: scheduleTime || null,
@@ -320,7 +320,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
             listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
             subject: parsed.realtorSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
             preheader: parsed.realtorPreheader || "",
-            html: injectPageLink(parsed.realtorEmail, finalPageUrl),
+            html: wrapEmailHtml(injectPageLink(parsed.realtorEmail, finalPageUrl)),
             fromName: "Adam Styer",
             replyTo: "adam@thestyerteam.com",
             scheduleTime: scheduleTime || null,

@@ -2,7 +2,7 @@ const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildRatePrompt } = require("./lib/rate-prompt-builder");
 const { buildRatePage } = require("./lib/rate-page-builder");
-const { createGitHubFile, createAndSendCampaign, forceAbsoluteLinks, stripNestedHtmlDocument, formatDateForTitle } = require("./lib/shared");
+const { createGitHubFile, createAndSendCampaign, forceAbsoluteLinks, stripNestedHtmlDocument, formatDateForTitle, wrapEmailHtml } = require("./lib/shared");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateRateUpdate()
@@ -125,7 +125,7 @@ async function generateRateUpdate(formData) {
             listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
             subject: parsed.borrowerSubject || `Rate Update - ${formatDateForTitle(today)}`,
             preheader: parsed.borrowerPreheader || "",
-            html: parsed.borrowerEmail,
+            html: wrapEmailHtml(parsed.borrowerEmail),
             fromName: "Adam Styer",
             replyTo: "adam@thestyerteam.com",
           });
@@ -137,7 +137,7 @@ async function generateRateUpdate(formData) {
             listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
             subject: parsed.realtorSubject || `Rate Update - ${formatDateForTitle(today)}`,
             preheader: parsed.realtorPreheader || "",
-            html: parsed.realtorEmail,
+            html: wrapEmailHtml(parsed.realtorEmail),
             fromName: "Adam Styer",
             replyTo: "adam@thestyerteam.com",
           });

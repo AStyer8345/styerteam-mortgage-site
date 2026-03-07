@@ -3,7 +3,7 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildRealtorPrompt } = require("./lib/realtor-prompt-builder");
 const { buildRealtorPage } = require("./lib/realtor-page-builder");
 const { generateAndPostSocial } = require("./lib/social-poster");
-const { createGitHubFile, createAndSendCampaign, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument } = require("./lib/shared");
+const { createGitHubFile, createAndSendCampaign, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument, wrapEmailHtml } = require("./lib/shared");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateRealtorContent()
@@ -179,7 +179,7 @@ async function generateRealtorContent(formData) {
           listId: realtorListId,
           subject: parsed.realtorSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
           preheader: parsed.realtorPreheader || "",
-          html: injectPageLink(parsed.realtorEmail, pageUrl),
+          html: wrapEmailHtml(injectPageLink(parsed.realtorEmail, pageUrl)),
           fromName: "Adam Styer",
           replyTo: "adam@thestyerteam.com",
           scheduleTime: scheduleTime || null,

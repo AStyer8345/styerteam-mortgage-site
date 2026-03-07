@@ -156,6 +156,41 @@ function formatDateForTitle(dateStr) {
   return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 }
 
+// ====================================================================
+// EMAIL WRAPPER: Wraps raw HTML fragment in a proper email document
+// Claude outputs body-only fragments (no DOCTYPE/html/head/body).
+// Email clients require a full document + inline styles — no CSS reset,
+// no default list spacing, no paragraph margins exist in email context.
+// ====================================================================
+
+function wrapEmailHtml(content) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email</title>
+</head>
+<body style="margin:0;padding:0;background:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6;color:#222222;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td align="center" style="padding:24px 16px;">
+      <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;">
+        <tr>
+          <td style="padding:0 0 24px 0;">
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.7;color:#222222;">
+              ${content}
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>`;
+}
+
 module.exports = {
   createGitHubFile,
   createAndSendCampaign,
@@ -164,4 +199,5 @@ module.exports = {
   injectPhotoIntoPersonalSection,
   stripNestedHtmlDocument,
   formatDateForTitle,
+  wrapEmailHtml,
 };
