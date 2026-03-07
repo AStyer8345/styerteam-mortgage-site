@@ -13,10 +13,11 @@
 const crypto = require("crypto");
 
 // LIST_ID and DC are pulled from env vars (no hardcoded credentials)
-// DC is derived from the API key suffix (e.g. "abc123-us13" → "us13")
+// DC is derived from the API key suffix — format: <32-hex-chars>-<datacenter>
+// e.g. "abc...xyz-usXX" → "usXX"
 const LIST_ID  = process.env.MAILCHIMP_BORROWER_LIST_ID;
 const _apiKey  = process.env.MAILCHIMP_API_KEY || "";
-const DC       = _apiKey.includes("-") ? _apiKey.split("-").pop() : "us13";
+const DC       = _apiKey.includes("-") ? _apiKey.split("-").pop() : "";
 const API_BASE = `https://${DC}.api.mailchimp.com/3.0`;
 
 const CORS_HEADERS = {
