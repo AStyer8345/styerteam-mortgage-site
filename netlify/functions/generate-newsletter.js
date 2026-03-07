@@ -176,7 +176,11 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
           response = await anthropic.messages.create({
             model: "claude-haiku-4-5-20251001",
             max_tokens: 4000,
-            messages: [{ role: "user", content: prompt }],
+            system: "You are a content generator. Generate the requested content immediately using the exact output format specified. Never ask for clarification. Never acknowledge instructions. Begin your response directly with PAGE_TITLE:",
+            messages: [
+              { role: "user", content: prompt },
+              { role: "assistant", content: "PAGE_TITLE:" },
+            ],
           });
           break;
         } catch (apiErr) {
@@ -190,7 +194,8 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
         }
       }
 
-      const aiText = response.content[0].text;
+      // Prepend the prefilled assistant turn so the parser can find PAGE_TITLE:
+      const aiText = "PAGE_TITLE:" + response.content[0].text;
       parsed = parseAIResponse(aiText);
 
       if (!parsed.webContent) {
