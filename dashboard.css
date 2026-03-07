@@ -546,6 +546,29 @@
   max-height: 600px;
 }
 
+.dash-preview-email p,
+.dash-preview-body p {
+  margin-bottom: 0.75em;
+}
+
+.dash-preview-email ul,
+.dash-preview-email ol,
+.dash-preview-body ul,
+.dash-preview-body ol {
+  padding-left: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+.dash-preview-email li,
+.dash-preview-body li {
+  margin-bottom: 0.35em;
+}
+
+.dash-preview-email td,
+.dash-preview-body td {
+  padding: 0.25em 0;
+}
+
 .dash-preview-actions {
   display: flex;
   gap: var(--spacing-md);

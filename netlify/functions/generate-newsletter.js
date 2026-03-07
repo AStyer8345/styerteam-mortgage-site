@@ -125,7 +125,7 @@ Write as Adam Styer — mortgage loan originator in Austin, TX. First person "I"
 
 ## EMAIL RULES
 Emails are SHORT teasers (100-150 words MAX) that drive the reader to click to the full article. Not a briefing. Not a summary. A hook.
-- Plain-text style HTML. No images. No banners. Just text.
+- Use proper HTML tags: wrap every paragraph in <p> tags, use <ul>/<li> for bullet points, <a> for links. Never output raw text with literal newlines — browsers collapse whitespace. LOOKS like plain text but must be structured HTML. No images, no banners.
 - Open with a personal hook or quick observation.
 - 2-3 bullet points previewing what's in the article.
 - One clear CTA link to: ${pageUrl}

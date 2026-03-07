@@ -78,8 +78,8 @@ ${story}
   prompt += `
 ## EMAIL RULES
 Emails should be SHORT teasers (100-150 words) that get them to click to the full article.
-- Plain-text style. No images. No fancy formatting. Just text with minimal HTML.
-- Simple table layout for Mailchimp compatibility, but make it LOOK like a plain text email.
+- Use proper HTML tags throughout: wrap every paragraph in <p> tags, use <ul>/<li> for bullet points, <a> for links. Never output raw text with literal newlines — browsers collapse whitespace to a single space.
+- LOOKS like a plain text email but is structured with HTML. No images, no banners, no hero sections.
 - No hero images, no banners, no graphics.
 - Background: white. Text: dark gray (#333). Links: blue.
 - Open with something personal or a quick hook.${story ? " Reference the personal story briefly." : ""}
