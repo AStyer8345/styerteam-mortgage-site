@@ -12,8 +12,11 @@
 
 const crypto = require("crypto");
 
-const LIST_ID  = "5053c57af2";
-const DC       = "us13";
+// LIST_ID and DC are pulled from env vars (no hardcoded credentials)
+// DC is derived from the API key suffix (e.g. "abc123-us13" → "us13")
+const LIST_ID  = process.env.MAILCHIMP_BORROWER_LIST_ID;
+const _apiKey  = process.env.MAILCHIMP_API_KEY || "";
+const DC       = _apiKey.includes("-") ? _apiKey.split("-").pop() : "us13";
 const API_BASE = `https://${DC}.api.mailchimp.com/3.0`;
 
 const CORS_HEADERS = {
@@ -32,8 +35,8 @@ exports.handler = async (event) => {
   }
 
   const apiKey = process.env.MAILCHIMP_API_KEY;
-  if (!apiKey) {
-    console.error("MAILCHIMP_API_KEY env var is not set");
+  if (!apiKey || !LIST_ID) {
+    console.error("Missing env vars: MAILCHIMP_API_KEY or MAILCHIMP_BORROWER_LIST_ID");
     return respond(500, { error: "Server misconfiguration" });
   }
 
