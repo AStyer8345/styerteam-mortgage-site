@@ -159,6 +159,75 @@
     .realtor-callout { background: #f8f5ee; border-left: 4px solid var(--color-gold); border-radius: 0 10px 10px 0; padding: 1.25rem 1.5rem; margin: 2rem 0; }
     .realtor-callout h4 { font-size: 1rem; font-weight: 700; color: var(--color-navy); margin-bottom: .4rem; }
     .realtor-callout p { font-size: .9rem; color: var(--color-dark-gray); margin: 0; line-height: 1.6; }
+
+    /* ── Dual result cards ── */
+    .wrap-dual-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 780px) { .wrap-dual-cards { grid-template-columns: 1fr; } }
+    .wrap-result-card { border-radius: var(--radius-xl); padding: 1.5rem; background: #fff; }
+    .wrap-result-card--seller { border: 2px solid var(--color-gold); }
+    .wrap-result-card--buyer { border: 2px solid #2563eb; }
+    .wrap-card-header { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; margin-bottom: .75rem; padding-bottom: .5rem; border-bottom: 1px solid var(--color-border); }
+    .wrap-result-card--seller .wrap-card-header { color: var(--color-gold); }
+    .wrap-result-card--buyer .wrap-card-header { color: #2563eb; }
+    .wrap-metric-headline { margin-bottom: .9rem; }
+    .wrap-metric-headline-label { font-size: .7rem; color: var(--color-gray); text-transform: uppercase; letter-spacing: .05em; font-weight: 500; }
+    .wrap-metric-headline-value { font-size: 1.9rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .wrap-result-card--seller .wrap-metric-headline-value { color: var(--color-gold); }
+    .wrap-result-card--buyer .wrap-metric-headline-value { color: #2563eb; }
+    .wrap-metric { display: flex; justify-content: space-between; align-items: baseline; padding: .45rem 0; border-bottom: 1px solid #f0f4f8; gap: .5rem; }
+    .wrap-metric:last-child { border-bottom: none; }
+    .wrap-metric-label { font-size: .8rem; color: var(--color-gray); flex: 1; }
+    .wrap-metric-value { font-size: .9rem; font-weight: 600; color: var(--color-navy); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+    .wrap-metric-value--highlight { color: #059669; }
+    .wrap-metric--hidden { display: none; }
+
+    /* ── Inline market rate input ── */
+    .wrap-inline-rate { width: 54px; padding: .15rem .35rem; border: 1px solid var(--color-border); border-radius: 5px; font-size: .78rem; color: var(--color-navy); font-weight: 600; text-align: center; vertical-align: baseline; }
+
+    /* ── Balloon segmented buttons ── */
+    .wrap-balloon-btns { display: inline-flex; border-radius: 10px; background: var(--color-border); padding: 3px; gap: 0; }
+    .wrap-balloon-btn { padding: .4rem .85rem; border: none; border-radius: 8px; font-size: .78rem; font-weight: 500; cursor: pointer; background: transparent; color: var(--color-gray); transition: background .2s, color .2s; }
+    .wrap-balloon-btn.active { background: var(--color-navy); color: #fff; }
+
+    /* ── Action row ── */
+    .wrap-action-row { display: flex; gap: .75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+    .wrap-btn-pdf { padding: .5rem 1rem; border: 1px solid var(--color-gold); border-radius: 8px; background: transparent; color: var(--color-gold); font-size: .8rem; font-weight: 600; cursor: pointer; transition: background .2s, color .2s; }
+    .wrap-btn-pdf:hover { background: var(--color-gold); color: #fff; }
+    .wrap-btn-amort { padding: .5rem 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: transparent; color: var(--color-navy); font-size: .8rem; font-weight: 600; cursor: pointer; transition: background .2s; }
+    .wrap-btn-amort:hover { background: var(--color-light-gray); }
+
+    /* ── Amortization table ── */
+    .wrap-amort-wrap { margin-top: 1.5rem; overflow-x: auto; }
+    .wrap-amort-wrap[hidden] { display: none; }
+    .wrap-amort-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    .wrap-amort-table th { background: var(--color-navy); color: #fff; padding: .55rem .7rem; text-align: right; font-weight: 600; font-size: .72rem; white-space: nowrap; }
+    .wrap-amort-table th:first-child { text-align: left; }
+    .wrap-amort-table td { padding: .45rem .7rem; text-align: right; font-variant-numeric: tabular-nums; border-bottom: 1px solid #f0f4f8; }
+    .wrap-amort-table td:first-child { text-align: left; font-weight: 600; color: var(--color-navy); }
+    .wrap-amort-table tr:nth-child(even) td { background: #f8fafc; }
+    .wrap-amort-table tr.wrap-amort-balloon td { background: #fef9ee; color: var(--color-gold); font-weight: 700; border-top: 2px solid var(--color-gold); font-style: italic; }
+
+    /* ── Print ── */
+    .print-only { display: none; }
+    .no-print { /* visible on screen */ }
+    @media print {
+      header, .wrap-hero, section:not(.wrap-calc-section), footer, .skip-link,
+      .wrap-calc-section .container > h2, .wrap-calc-section .container > p,
+      .wrap-calc-section .calc-inputs-col, .wrap-action-row, .calc-referral-footer { display: none !important; }
+      body { margin: 0; font-size: 11pt; }
+      .wrap-calc-section { background: #fff !important; padding: 0 !important; }
+      .calc-layout { display: block !important; }
+      .wrap-dual-cards { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+      .wrap-amort-wrap, .wrap-amort-wrap[hidden] { display: block !important; }
+      .print-only { display: block !important; }
+      .no-print { display: none !important; }
+      .print-header { text-align: center; margin-bottom: 1.25rem; padding-bottom: .75rem; border-bottom: 2px solid var(--color-navy); }
+      .print-header h1 { font-size: 1.2rem; color: var(--color-navy); margin: 0 0 .2rem; }
+      .print-header p { font-size: .8rem; color: var(--color-gray); margin: 0; }
+      .print-input-summary { margin-bottom: 1rem; padding: .6rem .9rem; background: #f8fafc; border-radius: 6px; font-size: .8rem; }
+      .print-input-summary strong { color: var(--color-navy); }
+      .print-footer { margin-top: 1.25rem; padding-top: .75rem; border-top: 1px solid var(--color-border); font-size: .75rem; color: var(--color-gray); text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -288,8 +357,12 @@
                 <input type="number" id="w-existing-payment" value="843" min="0" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
               </div>
               <div class="calc-slider-group">
-                <label class="calc-slider-label" style="margin-bottom: .25rem;">Remaining term (years)</label>
-                <input type="number" id="w-remaining-term" value="25" min="1" max="30" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+                <label class="calc-slider-label" style="margin-bottom: .25rem;">Original loan term (years)</label>
+                <input type="number" id="w-original-term" value="30" min="5" max="40" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+              </div>
+              <div class="calc-slider-group">
+                <label class="calc-slider-label" style="margin-bottom: .25rem;">Years already paid</label>
+                <input type="number" id="w-loan-age" value="5" min="0" max="39" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
               </div>
 
               <h2 class="calc-card-title" style="margin: 1.25rem 0 .75rem;">Wrap terms (buyer)</h2>
@@ -311,66 +384,136 @@
                 <input type="number" id="w-term" value="30" min="5" max="30" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
               </div>
               <div class="calc-slider-group">
-                <label class="calc-slider-label" style="margin-bottom: .25rem;">Balloon (years)</label>
-                <input type="number" id="w-balloon" value="5" min="1" max="30" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+                <label class="calc-slider-label" style="margin-bottom: .5rem;">Balloon term</label>
+                <div class="wrap-balloon-btns" role="group" aria-label="Balloon term">
+                  <button type="button" class="wrap-balloon-btn" data-balloon="3">3 Years</button>
+                  <button type="button" class="wrap-balloon-btn active" data-balloon="5">5 Years</button>
+                  <button type="button" class="wrap-balloon-btn" data-balloon="null">None</button>
+                </div>
+              </div>
+              <div class="calc-slider-group">
+                <label class="calc-slider-label" style="margin-bottom: .25rem;">Annual appreciation (%)</label>
+                <input type="number" id="w-appreciation" value="3.0" min="0" max="10" step="0.1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
               </div>
             </div>
           </div>
 
           <!-- OUTPUT PANEL -->
           <div>
-            <div class="calc-card calc-card--solid">
-              <div class="calc-hero-wrap">
-                <div class="calc-hero-label">Passive Income Delta</div>
-                <div class="calc-hero-number calc-hero-number--emerald" id="w-out-monthly-income">—</div>
+            <!-- Print header (hidden on screen) -->
+            <div class="print-only print-header" id="print-header">
+              <div style="font-size:1.1rem; font-weight:700; color:var(--color-navy);">WRAP Mortgage Analysis</div>
+              <div id="print-scenario" style="font-size:.8rem; color:var(--color-gray); margin-top:.25rem;"></div>
+            </div>
+
+            <!-- Dual result cards -->
+            <div class="wrap-dual-cards">
+
+              <!-- Seller card -->
+              <div class="wrap-result-card wrap-result-card--seller">
+                <div class="wrap-card-header">Seller Analysis</div>
+                <div class="wrap-metric-headline">
+                  <div class="wrap-metric-headline-label">Total Cash Out</div>
+                  <div class="wrap-metric-headline-value" id="w-seller-total">—</div>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Cash at Closing</span>
+                  <span class="wrap-metric-value" id="w-out-net-cash">—</span>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Monthly Cash Flow</span>
+                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-monthly-income">—</span>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label" id="w-cume-spread-label">Cumulative Spread to Balloon</span>
+                  <span class="wrap-metric-value" id="w-out-cume-spread">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-existing-bal">
+                  <span class="wrap-metric-label">Existing Loan Bal. at Balloon</span>
+                  <span class="wrap-metric-value" id="w-out-existing-bal">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-wrap-bal">
+                  <span class="wrap-metric-label">Wrap Loan Bal. at Balloon</span>
+                  <span class="wrap-metric-value" id="w-out-wrap-bal">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-equity-capture">
+                  <span class="wrap-metric-label">Equity Capture at Balloon</span>
+                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-equity-capture">—</span>
+                </div>
               </div>
 
-              <div class="calc-flow" id="w-flow" aria-hidden="false">
-                <div class="calc-flow-node">
-                  <span class="calc-flow-label">Buyer pays</span>
-                  <span class="calc-flow-value" id="w-flow-buyer">—</span>
+              <!-- Buyer card -->
+              <div class="wrap-result-card wrap-result-card--buyer">
+                <div class="wrap-card-header">Buyer Analysis</div>
+                <div class="wrap-metric-headline">
+                  <div class="wrap-metric-headline-label">Monthly P&amp;I</div>
+                  <div class="wrap-metric-headline-value" id="w-out-buyer-payment">—</div>
                 </div>
-                <span class="calc-flow-arrow" aria-hidden="true"></span>
-                <div class="calc-flow-node">
-                  <span class="calc-flow-label">Servicer processes</span>
-                  <span class="calc-flow-value">—</span>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Down Payment</span>
+                  <span class="wrap-metric-value" id="w-out-down">—</span>
                 </div>
-                <span class="calc-flow-arrow" aria-hidden="true"></span>
-                <div class="calc-flow-fork">
-                  <div class="calc-flow-node">
-                    <span class="calc-flow-label">Seller mortgage paid</span>
-                    <span class="calc-flow-value" id="w-flow-under">—</span>
-                  </div>
-                  <div class="calc-flow-node calc-flow-delta">
-                    <span class="calc-flow-label">Seller keeps</span>
-                    <span class="calc-flow-value" id="w-flow-delta">—</span>
-                  </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Wrap Loan Amount</span>
+                  <span class="wrap-metric-value" id="w-out-new-loan">—</span>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Market Rate Pmt <input type="number" id="w-market-rate" class="wrap-inline-rate" value="7.25" min="1" max="20" step="0.125">%</span>
+                  <span class="wrap-metric-value" id="w-out-market-pmt">—</span>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Monthly Savings vs. Market</span>
+                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-savings">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-bal-due">
+                  <span class="wrap-metric-label">Balance Due at Balloon</span>
+                  <span class="wrap-metric-value" id="w-out-bal-due">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-home-val">
+                  <span class="wrap-metric-label">Est. Home Value at Balloon</span>
+                  <span class="wrap-metric-value" id="w-out-home-val">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-buyer-equity">
+                  <span class="wrap-metric-label">Est. Buyer Equity at Balloon</span>
+                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-buyer-equity">—</span>
                 </div>
               </div>
+            </div>
 
-              <ul class="calc-result-list">
-                <li class="calc-result-row calc-result-row--highlight">
-                  <span class="calc-result-label">Cash at closing</span>
-                  <span class="calc-result-value" id="w-out-net-cash">—</span>
-                </li>
-                <li class="calc-result-row calc-result-row--highlight">
-                  <span class="calc-result-label">Projected net payoff at balloon</span>
-                  <span class="calc-result-value" id="w-out-net-balloon">—</span>
-                </li>
-                <li class="calc-result-row"><span class="calc-result-label">Buyer down payment</span><span class="calc-result-value" id="w-out-down">—</span></li>
-                <li class="calc-result-row"><span class="calc-result-label">Wrap loan amount</span><span class="calc-result-value" id="w-out-new-loan">—</span></li>
-                <li class="calc-result-row"><span class="calc-result-label">Wrap monthly P&amp;I</span><span class="calc-result-value" id="w-out-buyer-payment">—</span></li>
-                <li class="calc-result-row"><span class="calc-result-label">Your payment to bank</span><span class="calc-result-value" id="w-out-existing-pmt">—</span></li>
-                <li class="calc-result-row"><span class="calc-result-label">Cumulative spread to balloon</span><span class="calc-result-value" id="w-out-cume-spread">—</span></li>
-              </ul>
+            <!-- Action row -->
+            <div class="wrap-action-row no-print">
+              <button type="button" class="wrap-btn-pdf" id="w-btn-pdf">&#11015; Download as PDF</button>
+              <button type="button" class="wrap-btn-amort" id="w-btn-amort">Show Amortization Table</button>
+            </div>
 
-              <p class="wrap-disclaimer" style="margin-top: 1rem; font-size: .8rem; color: var(--color-gray);">
-                Gross spread only — ignores escrow, reserves, servicing. Estimates only. <a href="tel:+15129566010">Call Adam</a> to discuss structure and due-on-sale risk.
-              </p>
+            <!-- Amortization table (hidden by default) -->
+            <div class="wrap-amort-wrap" id="w-amort-wrap" hidden>
+              <table class="wrap-amort-table" id="w-amort-table">
+                <thead>
+                  <tr>
+                    <th style="text-align:left;">Year</th>
+                    <th>Wrap Loan Balance</th>
+                    <th>Existing Loan Balance</th>
+                    <th>Monthly Spread</th>
+                    <th>Cumulative Seller Income</th>
+                  </tr>
+                </thead>
+                <tbody id="w-amort-tbody"></tbody>
+              </table>
+            </div>
 
-              <div class="calc-referral-footer">
-                <strong>Referral network:</strong> Use a real estate attorney experienced in Texas owner financing to draft the note and deed of trust, and a title company or servicer to collect payments and forward your mortgage. <strong>Why Styer Mortgage?</strong> Adam structures WRAPs and can connect you with attorney and title partners — <a href="tel:+15129566010">(512) 956-6010</a>.
-              </div>
+            <p class="no-print" style="margin-top: 1rem; font-size: .8rem; color: var(--color-gray);">
+              Gross spread only — ignores escrow, reserves, servicing. Estimates only. <a href="tel:+15129566010">Call Adam</a> to discuss structure and due-on-sale risk.
+            </p>
+
+            <!-- Print footer (hidden on screen) -->
+            <div class="print-only print-footer" style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid #e5e7eb; font-size:.8rem; color:var(--color-gray); text-align:center;">
+              Adam Styer | Mortgage Solutions LP &middot; (512) 956-6010 &middot; styermortgage.com<br>
+              <span style="font-size:.7rem;">Gross spread only — ignores escrow, reserves, servicing. Estimates only. Not a commitment to lend. Consult a real estate attorney before proceeding with owner financing.</span>
+            </div>
+
+            <div class="calc-referral-footer no-print">
+              <strong>Referral network:</strong> Use a real estate attorney experienced in Texas owner financing to draft the note and deed of trust, and a title company or servicer to collect payments and forward your mortgage. <strong>Why Styer Mortgage?</strong> Adam structures WRAPs and can connect you with attorney and title partners — <a href="tel:+15129566010">(512) 956-6010</a>.
             </div>
           </div>
         </div>
@@ -534,66 +677,174 @@
     function set(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; }
 
     var downToggle = null;
+    var selectedBalloon = 5; /* 3, 5, or null */
 
-    function updateInputDisplays() {
-      set('w-balance-val', Suite.formatCurrency(val('w-balance')));
-      set('w-existing-rate-val', val('w-existing-rate').toFixed(2) + '%');
-      set('w-existing-payment-val', Suite.formatCurrency(val('w-existing-payment')));
-      set('w-sale-price-val', Suite.formatCurrency(val('w-sale-price')));
-      set('w-closing-pct-val', val('w-closing-pct').toFixed(1) + '%');
-      set('w-wrap-rate-val', val('w-wrap-rate').toFixed(2) + '%');
+    /* Closed-form remaining balance after k payments on a NEW loan of P.
+       Works for wrap loan (starts fresh). For existing loan, use Suite.amortize from current balance. */
+    function remainingBalance(P, annualRatePct, n, k) {
+      if (P <= 0 || n <= 0 || k >= n) return 0;
+      var r = annualRatePct / 100 / 12;
+      if (r === 0) return P * (1 - k / n);
+      var pow_n = Math.pow(1 + r, n);
+      var pow_k = Math.pow(1 + r, k);
+      return Math.max(0, P * (pow_n - pow_k) / (pow_n - 1));
     }
 
-    function calcWrap() {
-      var downPct = downToggle ? downToggle.getDownPct() : 10;
-      var vals = {
-        existingMortgageBalance: val('w-balance'),
-        existingInterestRate: val('w-existing-rate'),
-        monthlyMortgagePayment: val('w-existing-payment'),
-        existingRemainingTermYears: val('w-remaining-term'),
-        salesPrice: val('w-sale-price'),
-        downPaymentPercentage: downPct,
-        closingCostPercentage: val('w-closing-pct'),
-        interestRate: val('w-wrap-rate'),
-        loanTerm: val('w-term'),
-        balloonYears: val('w-balloon')
-      };
+    function updateBalloonVisibility() {
+      var ids = ['w-metric-existing-bal','w-metric-wrap-bal','w-metric-equity-capture',
+                 'w-metric-bal-due','w-metric-home-val','w-metric-buyer-equity'];
+      var hasBalloon = selectedBalloon !== null;
+      ids.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.toggle('wrap-metric--hidden', !hasBalloon);
+      });
+      var lbl = document.getElementById('w-cume-spread-label');
+      if (lbl) lbl.textContent = hasBalloon ? 'Cumulative Spread to Balloon' : 'Cumulative Spread (lifetime)';
+    }
 
-      if (vals.monthlyMortgagePayment <= 0 || vals.salesPrice <= 0) {
-        set('w-out-monthly-income', '—');
-        set('w-out-net-cash', '—');
-        set('w-out-net-balloon', '—');
-        set('w-out-down', '—');
-        set('w-out-new-loan', '—');
-        set('w-out-buyer-payment', '—');
-        set('w-out-existing-pmt', '—');
-        set('w-out-cume-spread', '—');
-        set('w-flow-buyer', '—');
-        set('w-flow-under', '—');
-        set('w-flow-delta', '—');
+    /* Balloon segmented buttons */
+    document.querySelectorAll('.wrap-balloon-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.wrap-balloon-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var raw = btn.getAttribute('data-balloon');
+        selectedBalloon = (raw === 'null') ? null : parseInt(raw, 10);
+        updateBalloonVisibility();
+        calcWrap();
+      });
+    });
+
+    function calcWrap() {
+      var balance      = val('w-balance');
+      var existingRate = val('w-existing-rate');
+      var existingPmt  = val('w-existing-payment');
+      var wrapRate     = val('w-wrap-rate');
+      var wrapTerm     = val('w-term') || 30;
+      var salePrice    = val('w-sale-price');
+      var closingPct   = val('w-closing-pct');
+      var appreciation = val('w-appreciation');
+      var marketRateEl = document.getElementById('w-market-rate');
+      var marketRate   = marketRateEl ? (parseFloat(marketRateEl.value) || 7.25) : 7.25;
+      var downPct      = downToggle ? downToggle.getDownPct() : 10;
+
+      if (salePrice <= 0) {
+        ['w-seller-total','w-out-net-cash','w-out-monthly-income','w-out-cume-spread',
+         'w-out-existing-bal','w-out-wrap-bal','w-out-equity-capture',
+         'w-out-buyer-payment','w-out-down','w-out-new-loan','w-out-market-pmt',
+         'w-out-savings','w-out-bal-due','w-out-home-val','w-out-buyer-equity']
+          .forEach(function(id) { set(id, '—'); });
         return;
       }
 
-      var r = Suite.computeWrap(vals);
-      set('w-out-monthly-income', Suite.formatCurrency(r.grossSpread) + '/mo');
-      set('w-out-net-cash', Suite.formatCurrency(r.cashAtClosing));
-      set('w-out-net-balloon', Suite.formatCurrency(r.netAtBalloon));
-      set('w-out-down', Suite.formatCurrency(r.downPayment));
-      set('w-out-new-loan', Suite.formatCurrency(r.wrapLoanAmount));
-      set('w-out-buyer-payment', Suite.formatCurrency(r.wrapMonthlyPayment) + '/mo');
-      set('w-out-existing-pmt', Suite.formatCurrency(vals.monthlyMortgagePayment) + '/mo');
-      set('w-out-cume-spread', Suite.formatCurrency(r.cumeSpread));
+      var downPayment   = salePrice * downPct / 100;
+      var wrapLoan      = salePrice - downPayment;
+      var closingCosts  = salePrice * closingPct / 100;
+      var cashAtClosing = downPayment - closingCosts;
+      var wrapMonthly   = Suite.monthlyPayment(wrapLoan, wrapRate, wrapTerm);
+      var monthlySpread = wrapMonthly - existingPmt;
+      var marketPmt     = Suite.monthlyPayment(wrapLoan, marketRate, wrapTerm);
+      var savings       = marketPmt - wrapMonthly;
 
-      set('w-flow-buyer', Suite.formatCurrency(r.wrapMonthlyPayment) + '/mo');
-      set('w-flow-under', Suite.formatCurrency(vals.monthlyMortgagePayment) + '/mo');
-      set('w-flow-delta', Suite.formatCurrency(r.grossSpread) + '/mo');
+      var hasBalloon   = selectedBalloon !== null;
+      var spreadMonths = hasBalloon ? selectedBalloon * 12 : wrapTerm * 12;
+      var cumeSpread   = monthlySpread * spreadMonths;
+
+      if (hasBalloon) {
+        var balloonMo      = selectedBalloon * 12;
+        var wrapBalBalloon = remainingBalance(wrapLoan, wrapRate, wrapTerm * 12, balloonMo);
+        var existBalloon   = Suite.amortize(balance, existingRate, existingPmt, balloonMo).balance;
+        var equityCapture  = wrapBalBalloon - existBalloon;
+        var homeVal        = salePrice * Math.pow(1 + appreciation / 100, selectedBalloon);
+        var buyerEquity    = homeVal - wrapBalBalloon;
+        var sellerTotal    = cashAtClosing + cumeSpread + equityCapture;
+
+        set('w-out-existing-bal',   Suite.formatCurrency(existBalloon));
+        set('w-out-wrap-bal',       Suite.formatCurrency(wrapBalBalloon));
+        set('w-out-equity-capture', Suite.formatCurrency(equityCapture));
+        set('w-out-bal-due',        Suite.formatCurrency(wrapBalBalloon));
+        set('w-out-home-val',       Suite.formatCurrency(homeVal));
+        set('w-out-buyer-equity',   Suite.formatCurrency(buyerEquity));
+        set('w-seller-total',       Suite.formatCurrency(sellerTotal));
+      } else {
+        set('w-seller-total', Suite.formatCurrency(cashAtClosing + cumeSpread));
+      }
+
+      set('w-out-cume-spread',    Suite.formatCurrency(cumeSpread));
+      set('w-out-net-cash',       Suite.formatCurrency(cashAtClosing));
+      set('w-out-monthly-income', Suite.formatCurrency(monthlySpread) + '/mo');
+      set('w-out-buyer-payment',  Suite.formatCurrency(wrapMonthly) + '/mo');
+      set('w-out-down',           Suite.formatCurrency(downPayment));
+      set('w-out-new-loan',       Suite.formatCurrency(wrapLoan));
+      set('w-out-market-pmt',     Suite.formatCurrency(marketPmt) + '/mo');
+      set('w-out-savings',        Suite.formatCurrency(savings) + '/mo');
 
       var netCashEl = document.getElementById('w-out-net-cash');
-      if (netCashEl) netCashEl.style.color = r.cashAtClosing < 0 ? '#dc2626' : '';
+      if (netCashEl) netCashEl.style.color = cashAtClosing < 0 ? '#dc2626' : '';
 
-      updateInputDisplays();
+      buildAmortTable(wrapLoan, wrapRate, wrapTerm, existingPmt, balance, existingRate);
+      updatePrintSummary(salePrice, downPct, wrapRate, wrapTerm);
     }
 
+    function buildAmortTable(wrapLoan, wrapRate, wrapTerm, existingPmt, existingBal0, existingRate) {
+      var tbody = document.getElementById('w-amort-tbody');
+      if (!tbody) return;
+
+      var displayYears = selectedBalloon !== null ? selectedBalloon : wrapTerm;
+      var wrapMonthly  = Suite.monthlyPayment(wrapLoan, wrapRate, wrapTerm);
+      var wrapN        = wrapTerm * 12;
+      var existBal     = existingBal0;
+      var cume         = 0;
+      var spread       = wrapMonthly - existingPmt;
+      var rows         = '';
+
+      for (var yr = 1; yr <= displayYears; yr++) {
+        var wrapBal = remainingBalance(wrapLoan, wrapRate, wrapN, yr * 12);
+        var am = Suite.amortize(existBal, existingRate, existingPmt, 12);
+        existBal = am.balance;
+        cume += spread * 12;
+        var isBalloon = (selectedBalloon !== null && yr === selectedBalloon);
+        rows += '<tr' + (isBalloon ? ' class="wrap-amort-balloon"' : '') + '>';
+        rows += '<td style="text-align:left;">' + yr + (isBalloon ? ' ★' : '') + '</td>';
+        rows += '<td>' + Suite.formatCurrency(wrapBal) + '</td>';
+        rows += '<td>' + Suite.formatCurrency(existBal) + '</td>';
+        rows += '<td>' + Suite.formatCurrency(spread) + '/mo</td>';
+        rows += '<td>' + Suite.formatCurrency(cume) + '</td>';
+        rows += '</tr>';
+      }
+      tbody.innerHTML = rows;
+    }
+
+    function updatePrintSummary(salePrice, downPct, wrapRate, wrapTerm) {
+      var el = document.getElementById('print-scenario');
+      if (!el) return;
+      var balloonStr = selectedBalloon !== null ? selectedBalloon + '-yr balloon' : 'no balloon';
+      el.textContent = 'Sale price ' + Suite.formatCurrency(salePrice) +
+        ' · ' + downPct.toFixed(1) + '% down' +
+        ' · ' + wrapRate.toFixed(2) + '% wrap' +
+        ' · ' + wrapTerm + '-yr term' +
+        ' · ' + balloonStr;
+    }
+
+    /* Amort toggle */
+    var amortWrap = document.getElementById('w-amort-wrap');
+    var amortBtn  = document.getElementById('w-btn-amort');
+    if (amortBtn && amortWrap) {
+      amortBtn.addEventListener('click', function() {
+        if (amortWrap.hasAttribute('hidden')) {
+          amortWrap.removeAttribute('hidden');
+          amortBtn.textContent = 'Hide Amortization Table';
+        } else {
+          amortWrap.setAttribute('hidden', '');
+          amortBtn.textContent = 'Show Amortization Table';
+        }
+      });
+    }
+
+    /* PDF print */
+    var pdfBtn = document.getElementById('w-btn-pdf');
+    if (pdfBtn) pdfBtn.addEventListener('click', function() { window.print(); });
+
+    /* Down payment toggle */
     var toggleContainer = document.getElementById('w-down-toggle-container');
     if (toggleContainer && Suite.createDownPaymentToggle) {
       downToggle = Suite.createDownPaymentToggle(toggleContainer, {
@@ -604,21 +855,25 @@
       });
     }
 
-    ['w-balance','w-existing-payment','w-existing-rate','w-remaining-term','w-sale-price',
-     'w-closing-pct','w-wrap-rate','w-term','w-balloon'].forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el) el.addEventListener('input', calcWrap);
-    });
+    /* Input listeners */
+    ['w-balance','w-existing-rate','w-existing-payment','w-original-term','w-loan-age',
+     'w-sale-price','w-closing-pct','w-wrap-rate','w-term','w-appreciation','w-market-rate']
+      .forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('input', calcWrap);
+      });
 
+    /* Accordion */
     document.querySelectorAll('.accordion-button').forEach(function(btn) {
       btn.addEventListener('click', function() {
-        var item = btn.closest('.accordion-item');
+        var item   = btn.closest('.accordion-item');
         var isOpen = item && item.classList.contains('open');
         document.querySelectorAll('.accordion-item').forEach(function(i) { i.classList.remove('open'); });
         if (item && !isOpen) item.classList.add('open');
       });
     });
 
+    updateBalloonVisibility();
     calcWrap();
   }());
   </script>
