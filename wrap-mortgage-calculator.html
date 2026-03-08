@@ -428,6 +428,10 @@
                   <span class="wrap-metric-label" id="w-cume-spread-label">Cumulative Spread to Balloon</span>
                   <span class="wrap-metric-value" id="w-out-cume-spread">—</span>
                 </div>
+                <div class="wrap-metric" id="w-metric-exist-paydown">
+                  <span class="wrap-metric-label" id="w-exist-paydown-label">Existing Loan Paid Down to Balloon</span>
+                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-exist-paydown">—</span>
+                </div>
                 <div class="wrap-metric wrap-metric--hidden" id="w-metric-existing-bal">
                   <span class="wrap-metric-label">Existing Loan Bal. at Balloon</span>
                   <span class="wrap-metric-value" id="w-out-existing-bal">—</span>
@@ -700,6 +704,8 @@
       });
       var lbl = document.getElementById('w-cume-spread-label');
       if (lbl) lbl.textContent = hasBalloon ? 'Cumulative Spread to Balloon' : 'Cumulative Spread (lifetime)';
+      var pdlbl = document.getElementById('w-exist-paydown-label');
+      if (pdlbl) pdlbl.textContent = hasBalloon ? 'Existing Loan Paid Down to Balloon' : 'Existing Loan Paid Down (lifetime)';
     }
 
     /* Balloon segmented buttons */
@@ -729,7 +735,7 @@
 
       if (salePrice <= 0) {
         ['w-seller-total','w-out-net-cash','w-out-monthly-income','w-out-cume-spread',
-         'w-out-existing-bal','w-out-wrap-bal','w-out-equity-capture',
+         'w-out-exist-paydown','w-out-existing-bal','w-out-wrap-bal','w-out-equity-capture',
          'w-out-buyer-payment','w-out-down','w-out-new-loan','w-out-market-pmt',
          'w-out-savings','w-out-bal-due','w-out-home-val','w-out-buyer-equity']
           .forEach(function(id) { set(id, '—'); });
@@ -753,11 +759,13 @@
         var balloonMo      = selectedBalloon * 12;
         var wrapBalBalloon = remainingBalance(wrapLoan, wrapRate, wrapTerm * 12, balloonMo);
         var existBalloon   = Suite.amortize(balance, existingRate, existingPmt, balloonMo).balance;
+        var existPaydown   = balance - existBalloon;
         var equityCapture  = wrapBalBalloon - existBalloon;
         var homeVal        = salePrice * Math.pow(1 + appreciation / 100, selectedBalloon);
         var buyerEquity    = homeVal - wrapBalBalloon;
         var sellerTotal    = cashAtClosing + cumeSpread + equityCapture;
 
+        set('w-out-exist-paydown',  Suite.formatCurrency(existPaydown));
         set('w-out-existing-bal',   Suite.formatCurrency(existBalloon));
         set('w-out-wrap-bal',       Suite.formatCurrency(wrapBalBalloon));
         set('w-out-equity-capture', Suite.formatCurrency(equityCapture));
@@ -766,6 +774,9 @@
         set('w-out-buyer-equity',   Suite.formatCurrency(buyerEquity));
         set('w-seller-total',       Suite.formatCurrency(sellerTotal));
       } else {
+        var existAtTerm  = Suite.amortize(balance, existingRate, existingPmt, wrapTerm * 12).balance;
+        var existPaydown = balance - existAtTerm;
+        set('w-out-exist-paydown', Suite.formatCurrency(existPaydown));
         set('w-seller-total', Suite.formatCurrency(cashAtClosing + cumeSpread));
       }
 
