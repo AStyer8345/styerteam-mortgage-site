@@ -13,23 +13,29 @@ async function createGitHubFile(filePath, content, commitMessage) {
   const token = process.env.GITHUB_TOKEN || process.env.github_token;
   const repo = process.env.GITHUB_REPO || process.env.Github_repo;
   const url = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: "application/vnd.github.v3+json",
+    "Content-Type": "application/json",
+    "User-Agent": "StyerTeam-Bot",
+  };
+
+  // Check if file already exists — if so, include its SHA (required by GitHub API for updates)
+  let sha;
+  const getRes = await fetch(url, { headers });
+  if (getRes.ok) {
+    const existing = await getRes.json();
+    sha = existing.sha;
+  }
 
   const body = JSON.stringify({
-    message: commitMessage || `Add file: ${filePath}`,
+    message: commitMessage || `${sha ? "Update" : "Add"} file: ${filePath}`,
     content: Buffer.from(content).toString("base64"),
     branch: "main",
+    ...(sha ? { sha } : {}),
   });
 
-  const res = await fetch(url, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/vnd.github.v3+json",
-      "Content-Type": "application/json",
-      "User-Agent": "StyerTeam-Bot",
-    },
-    body,
-  });
+  const res = await fetch(url, { method: "PUT", headers, body });
 
   if (!res.ok) {
     const errBody = await res.text();
