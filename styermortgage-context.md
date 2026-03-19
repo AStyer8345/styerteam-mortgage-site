@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 19, 2026 — Daily optimization session (Cowork morning audit)
+March 19, 2026 — Code session: /thank-you nav fixed to logo-only; schema type corrected to MortgageBroker
 
 ---
 
@@ -209,7 +209,7 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 ### Schema Markup
 | Schema Type | Page | Status |
 |---|---|---|
-| LocalBusiness / MortgageLender | Homepage | ✅ Present — includes AggregateRating (136 reviews, 5.0) |
+| MortgageBroker | Homepage | ✅ Present — @type updated from FinancialService; includes AggregateRating (136 reviews, 5.0) |
 | AggregateRating | Homepage | ✅ Present in LocalBusiness schema |
 | FAQPage | /dscr-loan-austin-tx | ✅ Present — 6 questions — verified 2026-03-19 |
 | FAQPage | /loans/refinance | ✅ Present — 5 questions — verified 2026-03-19 |
@@ -246,7 +246,7 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 ### Navigation Rules
 - Standard pages: full site nav
 - Google Ads landing pages (/get-preapproved, /refinance-quote): logo only, no menu
-- /thank-you: logo only, no menu
+- /thank-you: logo only, no menu — conversion done, only exit point is Calendly
 
 ### Footer Rules
 - Standard pages: full footer with company links, service areas, contact, NMLS disclaimer
