@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 2026
+March 19, 2026 — Daily optimization session
 
 ---
 
@@ -144,9 +144,9 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 ### Google Ads Landing Pages (stripped nav — logo only)
 | Page | URL | Status |
 |---|---|---|
-| Purchase landing page | /get-preapproved | Build required |
-| Refi landing page | /refinance-quote | Build required |
-| Thank you / conversion | /thank-you | Build required |
+| Purchase landing page | /get-preapproved | ✅ Live — verified 2026-03-19 |
+| Refi landing page | /refinance-quote | ✅ Live — verified 2026-03-19 |
+| Thank you / conversion | /thank-you | ✅ Live — verified 2026-03-19 |
 
 ### Primary Conversion Pages (full nav)
 | Page | URL |
@@ -209,12 +209,12 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 ### Schema Markup
 | Schema Type | Page | Status |
 |---|---|---|
-| LocalBusiness / MortgageLender | Homepage | Verify — may need AggregateRating added |
-| AggregateRating | Homepage | BUILD REQUIRED |
-| FAQPage | /dscr-loan-austin-tx | BUILD REQUIRED |
-| FAQPage | /loans/refinance | BUILD REQUIRED |
-| FAQPage | All 9 suburb pages | BUILD REQUIRED |
-| BreadcrumbList | Suburb + loan pages | BUILD REQUIRED |
+| LocalBusiness / MortgageLender | Homepage | ✅ Present — includes AggregateRating (136 reviews, 5.0) |
+| AggregateRating | Homepage | ✅ Present in LocalBusiness schema |
+| FAQPage | /dscr-loan-austin-tx | ✅ Present — 6 questions — verified 2026-03-19 |
+| FAQPage | /loans/refinance | ✅ Present — 5 questions — verified 2026-03-19 |
+| FAQPage | All 9 suburb pages | ⚠️ Unverified — spot check needed |
+| BreadcrumbList | Suburb + loan pages | ⚠️ Unverified — spot check needed |
 
 ### Known SEO Gaps (as of March 2026)
 - Suburb pages need inline lead capture forms (currently just CTA buttons to /prequal)
@@ -270,13 +270,19 @@ Update this section as work is completed or new issues are found.
 
 | Issue | Priority | Status |
 |---|---|---|
-| /get-preapproved page doesn't exist | HIGH | Not started |
-| /refinance-quote page doesn't exist | HIGH | Not started |
-| /thank-you page doesn't exist | HIGH | Not started |
-| AggregateRating schema missing from homepage | HIGH | Not started |
-| FAQPage schema missing from DSCR, Refi, suburb pages | HIGH | Not started |
-| Suburb pages have no inline lead capture forms | MEDIUM | Not started |
-| Blog CTAs not wired to ad landing pages | MEDIUM | Not started |
-| Phone click tracking may not be wired | MEDIUM | Unverified |
-| "Austin mortgage rates today" page missing | MEDIUM | Not started |
+| /get-preapproved page doesn't exist | HIGH | ✅ DONE — live, tracking verified 2026-03-19 |
+| /refinance-quote page doesn't exist | HIGH | ✅ DONE — live, tracking verified 2026-03-19 |
+| /thank-you page doesn't exist | HIGH | ✅ DONE — live, thank_you_page_view fires on load |
+| AggregateRating schema missing from homepage | HIGH | ✅ DONE — present in LocalBusiness schema |
+| FAQPage schema missing from DSCR page | HIGH | ✅ DONE — 6 FAQs present |
+| FAQPage schema missing from /loans/refinance | HIGH | ✅ DONE — 5 FAQs present |
+| FAQPage schema missing from suburb pages | MEDIUM | ⚠️ Unverified — needs spot check |
+| Homepage missing link to /get-preapproved in body | MEDIUM | ✅ FIXED 2026-03-19 — final CTA now links to /get-preapproved |
+| /dscr-loan-austin-tx missing /calculators link | MEDIUM | ✅ FIXED 2026-03-19 — "Run the Numbers" button added to CTA |
+| /loans/refinance missing /refinance-quote link | MEDIUM | ✅ FIXED 2026-03-19 — "Get a Refi Quote" button added to CTA |
+| Mobile PageSpeed score on /get-preapproved: 79 | MEDIUM | Open — target 80+; compress images, defer JS |
+| Form below fold on mobile (both landing pages) | MEDIUM | Open — form stacks below hero copy at <900px |
+| Suburb pages have no inline lead capture forms | MEDIUM | Open |
+| Blog CTAs not wired to ad landing pages | MEDIUM | Open |
+| "Austin mortgage rates today" page missing | MEDIUM | Open — high-traffic keyword opportunity |
 | /austin-down-payment-assistance — existence unverified | LOW | Unverified |
