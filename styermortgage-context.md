@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 19, 2026 — Daily optimization session
+March 19, 2026 — Daily optimization session (Cowork morning audit)
 
 ---
 
@@ -280,7 +280,9 @@ Update this section as work is completed or new issues are found.
 | Homepage missing link to /get-preapproved in body | MEDIUM | ✅ FIXED 2026-03-19 — final CTA now links to /get-preapproved |
 | /dscr-loan-austin-tx missing /calculators link | MEDIUM | ✅ FIXED 2026-03-19 — "Run the Numbers" button added to CTA |
 | /loans/refinance missing /refinance-quote link | MEDIUM | ✅ FIXED 2026-03-19 — "Get a Refi Quote" button added to CTA |
-| Mobile PageSpeed score on /get-preapproved: 79 | MEDIUM | Open — target 80+; compress images, defer JS |
+| /dscr-loan-austin-tx linked to /mortgage-pre-approval-austin instead of /get-preapproved | LOW | ✅ FIXED 2026-03-19 — changed href to /get-preapproved |
+| Mobile PageSpeed score on /get-preapproved: 79 | MEDIUM | Open — target 80+; LCP 4.6s, compress hero image, defer non-critical JS |
+| Conversion tracking live test blocked (tab backgrounded) | LOW | Open — Adam to verify in GTM Preview mode with tab in focus |
 | Form below fold on mobile (both landing pages) | MEDIUM | Open — form stacks below hero copy at <900px |
 | Suburb pages have no inline lead capture forms | MEDIUM | Open |
 | Blog CTAs not wired to ad landing pages | MEDIUM | Open |
