@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 20, 2026 — GTM sprint + Cowork session: GTM-PQQ6PGLR installed on all 50 public pages (head snippet + noscript + dataLayer init); phone_click global handler added to script.js; conversion tracking fully verified; PageSpeed 80 confirmed; new SEO blog post published (Austin mortgage rates March 2026); manifest.json fixed to include March 18 post
+March 20, 2026 — GTM sprint + Cowork session: GTM-PQQ6PGLR installed on all 54 public pages (head snippet + noscript + dataLayer init); phone_click global delegated handler added to script.js; all dataLayer events confirmed; conversion tracking fully verified; PageSpeed 80 confirmed; new SEO blog post published (Austin mortgage rates March 2026); manifest.json fixed to include March 18 post
 
 ---
 
@@ -101,7 +101,7 @@ March 20, 2026 — GTM sprint + Cowork session: GTM-PQQ6PGLR installed on all 50
 ## CONVERSION TRACKING (GTM Events)
 
 GTM Container ID: GTM-PQQ6PGLR
-GTM Status: Installed on all public pages (as of 2026-03-20)
+GTM Status: Installed on all 54 public pages — head snippet + noscript + dataLayer init (as of 2026-03-20)
 GA4 Measurement ID: G-DDY0H0319S
 GA4 Status: Firing via GTM (as of 2026-03-20)
 Google Search Console: Verified via googlea3d746ce1ceb4bff.html (file was already present)
@@ -276,7 +276,7 @@ Update this section as work is completed or new issues are found.
 
 | Issue | Priority | Status |
 |---|---|---|
-| GTM not installed on live site | HIGH | ✅ DONE 2026-03-20 — GTM-PQQ6PGLR on all 50 public pages |
+| GTM not installed on live site | HIGH | ✅ DONE 2026-03-20 — GTM-PQQ6PGLR on all 54 public pages (head + noscript + dataLayer init) |
 | GA4 not firing on live site | HIGH | ✅ DONE 2026-03-20 — fires via GTM (G-DDY0H0319S) |
 | phone_click not wired | HIGH | ✅ DONE 2026-03-20 — global delegated handler in script.js |
 | Google Ads conversion tag missing from GTM | HIGH | Open — create conversion action in Ads account, then add tag in GTM container |
@@ -299,4 +299,4 @@ Update this section as work is completed or new issues are found.
 | manifest.json missing March 18 post | LOW | ✅ FIXED 2026-03-20 — ai-trap post added to manifest |
 | New blog post: Austin mortgage rates March 2026 | ✅ DONE | Published 2026-03-20: /blog/2026-03-20-austin-mortgage-rates-march-2026.html — Article + FAQPage schema, 5 FAQ questions, internal links to /get-preapproved, /refinance-quote, /calculators |
 | "Austin mortgage rates today" page missing | MEDIUM | ✅ Addressed by blog post — consider building a dedicated evergreen /austin-mortgage-rates page next |
-| /austin-down-payment-assistance — existence unverified | LOW | Unverified |
+| /austin-down-payment-assistance — existence unverified | LOW | ✅ CONFIRMED — file exists: austin-down-payment-assistance.html |
