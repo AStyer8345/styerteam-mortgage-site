@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 19, 2026 — Code session: /thank-you nav fixed to logo-only; schema type corrected to MortgageBroker
+March 20, 2026 — Cowork daily session: conversion tracking fully verified; PageSpeed 80 confirmed; new SEO blog post published (Austin mortgage rates March 2026); manifest.json fixed to include March 18 post
 
 ---
 
@@ -144,9 +144,9 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 ### Google Ads Landing Pages (stripped nav — logo only)
 | Page | URL | Status |
 |---|---|---|
-| Purchase landing page | /get-preapproved | ✅ Live — verified 2026-03-19 |
-| Refi landing page | /refinance-quote | ✅ Live — verified 2026-03-19 |
-| Thank you / conversion | /thank-you | ✅ Live — verified 2026-03-19 |
+| Purchase landing page | /get-preapproved | ✅ Live — verified 2026-03-20 |
+| Refi landing page | /refinance-quote | ✅ Live — verified 2026-03-20 |
+| Thank you / conversion | /thank-you | ✅ Live — verified 2026-03-20 |
 
 ### Primary Conversion Pages (full nav)
 | Page | URL |
@@ -219,7 +219,7 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 ### Known SEO Gaps (as of March 2026)
 - Suburb pages need inline lead capture forms (currently just CTA buttons to /prequal)
 - Blog posts need CTAs wired to /get-preapproved and /refinance-quote
-- "Austin mortgage rates today" page doesn't exist — high-traffic keyword opportunity
+- "Austin mortgage rates today" page — ✅ ADDRESSED: blog post published 2026-03-20 targeting "Austin mortgage rates March 2026"
 - /austin-down-payment-assistance referenced in FHA page but may not exist — verify
 
 ---
@@ -281,10 +281,12 @@ Update this section as work is completed or new issues are found.
 | /dscr-loan-austin-tx missing /calculators link | MEDIUM | ✅ FIXED 2026-03-19 — "Run the Numbers" button added to CTA |
 | /loans/refinance missing /refinance-quote link | MEDIUM | ✅ FIXED 2026-03-19 — "Get a Refi Quote" button added to CTA |
 | /dscr-loan-austin-tx linked to /mortgage-pre-approval-austin instead of /get-preapproved | LOW | ✅ FIXED 2026-03-19 — changed href to /get-preapproved |
-| Mobile PageSpeed score on /get-preapproved: 79 | MEDIUM | Open — target 80+; LCP 4.6s, compress hero image, defer non-critical JS |
-| Conversion tracking live test blocked (tab backgrounded) | LOW | Open — Adam to verify in GTM Preview mode with tab in focus |
-| Form below fold on mobile (both landing pages) | MEDIUM | Open — form stacks below hero copy at <900px |
+| Mobile PageSpeed score on /get-preapproved | MEDIUM | Score: 80 (verified 2026-03-20). LCP 4.6s is main drag — render-blocking requests (1,940ms savings) + unused JS (121 KiB). Fix: defer non-critical JS, inline critical CSS |
+| Conversion tracking verified | ✅ DONE | generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all confirmed firing — 2026-03-20 |
+| Form below fold on mobile (both landing pages) | MEDIUM | Submit button below fold on mobile (~500px). First field IS visible. Acceptable but worth tightening hero copy height |
 | Suburb pages have no inline lead capture forms | MEDIUM | Open |
-| Blog CTAs not wired to ad landing pages | MEDIUM | Open |
-| "Austin mortgage rates today" page missing | MEDIUM | Open — high-traffic keyword opportunity |
+| Blog CTAs not wired to ad landing pages | MEDIUM | New posts now include CTAs to /get-preapproved and /refinance-quote — older posts still need update |
+| manifest.json missing March 18 post | LOW | ✅ FIXED 2026-03-20 — ai-trap post added to manifest |
+| New blog post: Austin mortgage rates March 2026 | ✅ DONE | Published 2026-03-20: /blog/2026-03-20-austin-mortgage-rates-march-2026.html — Article + FAQPage schema, 5 FAQ questions, internal links to /get-preapproved, /refinance-quote, /calculators |
+| "Austin mortgage rates today" page missing | MEDIUM | ✅ Addressed by blog post — consider building a dedicated evergreen /austin-mortgage-rates page next |
 | /austin-down-payment-assistance — existence unverified | LOW | Unverified |
