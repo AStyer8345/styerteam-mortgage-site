@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>styermortgage.com/ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0A1F3F;
+  --bg-card: rgba(255,255,255,0.04);
+  --bg-card-hover: rgba(255,255,255,0.07);
+  --bg-table-row: rgba(255,255,255,0.02);
+  --gold: #C9A84C;
+  --gold-dim: rgba(201,168,76,0.15);
+  --green: #22c55e;
+  --yellow: #eab308;
+  --red: #ef4444;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.15);
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === STATUS BAR === */
+.status-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,31,63,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.status-bar-left {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.status-items {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.status-item:hover { opacity: 0.8; }
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.status-dot.yellow { background: var(--yellow); box-shadow: 0 0 6px var(--yellow); }
+.status-dot.red { background: var(--red); box-shadow: 0 0 6px var(--red); }
+
+.status-bar-right {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+/* === LAYOUT === */
+.dashboard { max-width: 1280px; margin: 0 auto; padding: 24px 24px 64px; }
+
+.section {
+  margin-bottom: 48px;
+}
+
+.section-header {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.section-header .sub {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.subsection-header {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 24px 0 12px;
+}
+
+/* === TABLES === */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+th {
+  text-align: left;
+  padding: 8px 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+}
+
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+tr:nth-child(even) td { background: var(--bg-table-row); }
+
+tr.total-row td {
+  font-weight: 600;
+  border-top: 1px solid var(--border-strong);
+  color: var(--gold);
+}
+
+.trend-up { color: var(--green); }
+.trend-down { color: var(--red); }
+.trend-neutral { color: var(--text-dim); }
+
+/* === CARDS === */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.flag-card {
+  border-left: 3px solid var(--red);
+  background: rgba(239,68,68,0.05);
+}
+
+.flag-card.medium { border-left-color: var(--yellow); background: rgba(234,179,8,0.05); }
+.flag-card.low { border-left-color: var(--text-dim); background: var(--bg-card); }
+
+.flag-priority {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.flag-priority.high { color: var(--red); }
+.flag-priority.medium { color: var(--yellow); }
+.flag-priority.low { color: var(--text-dim); }
+
+.flag-body {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.flag-action {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.flag-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  float: right;
+}
+
+/* === SCORE BARS === */
+.score-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.score-bar {
+  width: 80px;
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.score-bar-fill.green { background: var(--green); }
+.score-bar-fill.yellow { background: var(--yellow); }
+.score-bar-fill.red { background: var(--red); }
+
+.score-value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  min-width: 28px;
+}
+
+/* === TWO COL ISSUES === */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.col-header {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+/* === EMPTY STATE === */
+.empty {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-dim);
+  padding: 16px;
+  text-align: center;
+  background: var(--bg-card);
+  border-radius: 6px;
+}
+
+/* === BUILD QUEUE CARDS === */
+.build-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.build-card.high { border-color: rgba(239,68,68,0.4); background: rgba(239,68,68,0.04); }
+.build-card.medium { border-color: rgba(234,179,8,0.4); background: rgba(234,179,8,0.04); }
+.build-card.low { border-color: var(--border); }
+
+.build-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.build-card-priority {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.build-card-priority.high { color: var(--red); }
+.build-card-priority.medium { color: var(--yellow); }
+.build-card-priority.low { color: var(--text-dim); }
+
+.build-card-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.build-card-field {
+  font-size: 13px;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.build-card-field strong {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.build-card-status {
+  margin-top: 12px;
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.build-card-status span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.check-box {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.check-box.checked {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+/* === SESSION LOG === */
+details {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+summary {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+summary::before {
+  content: '▶';
+  font-size: 10px;
+  color: var(--text-dim);
+  transition: transform 0.2s;
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+summary::-webkit-details-marker { display: none; }
+
+.session-body {
+  padding: 0 16px 16px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.session-body p { margin-bottom: 4px; }
+
+.session-scores {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* === NEGATIVE KEYWORDS === */
+.neg-list {
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.neg-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+}
+
+.neg-list li:last-child { border-bottom: none; }
+
+.neg-date {
+  color: var(--text-dim);
+  font-size: 11px;
+}
+
+/* === A/B TEST === */
+.test-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+
+.test-card-header {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.test-field {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.test-field strong {
+  color: var(--text-muted);
+}
+
+.idea-list {
+  list-style: none;
+  font-size: 13px;
+}
+
+.idea-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.idea-list li:last-child { border-bottom: none; }
+
+.idea-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* === STATUS BADGES === */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.badge.active { background: rgba(34,197,94,0.15); color: var(--green); }
+.badge.paused { background: rgba(234,179,8,0.15); color: var(--yellow); }
+.badge.ended { background: rgba(239,68,68,0.15); color: var(--red); }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 16px;
+  }
+
+  .status-items { gap: 12px; }
+
+  .dashboard { padding: 16px 16px 48px; }
+
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  table { font-size: 12px; }
+  th, td { padding: 6px 8px; }
+}
+
+@media (max-width: 480px) {
+  .status-items { gap: 8px; }
+  .status-item { font-size: 11px; }
+  .section-header { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<script>
+// ============================================================
+// COWORK UPDATES THIS DATA SECTION EVERY SESSION
+// Last updated: March 20, 2026 9:14am CT
+// ============================================================
+
+const OPS_DATA = {
+
+  lastUpdated: "March 20, 2026 9:14am CT",
+
+  status: {
+    googleAds: "green",
+    funnel: "yellow",
+    seo: "yellow",
+    forms: "green"
+  },
+
+  googleAds: {
+    campaigns: [
+      {
+        name: "Round Rock — Purchase",
+        status: "active",
+        budget: "$8/day",
+        impressions: null,
+        clicks: null,
+        ctr: null,
+        avgCpc: null,
+        conversions: null,
+        costPerConv: null,
+        spend7d: null,
+        trend: "neutral"
+      },
+      {
+        name: "Cedar Park — Purchase",
+        status: "active",
+        budget: "$6/day",
+        impressions: null,
+        clicks: null,
+        ctr: null,
+        avgCpc: null,
+        conversions: null,
+        costPerConv: null,
+        spend7d: null,
+        trend: "neutral"
+      },
+      {
+        name: "Down Payment Assist",
+        status: "active",
+        budget: "$3/day",
+        impressions: null,
+        clicks: null,
+        ctr: null,
+        avgCpc: null,
+        conversions: null,
+        costPerConv: null,
+        spend7d: null,
+        trend: "neutral"
+      }
+    ],
+    flags: [],
+    recentNegatives: []
+  },
+
+  funnel: {
+    pageSpeed: {
+      getPreapproved: { mobile: null, desktop: null, lastChecked: null },
+      refinanceQuote: { mobile: null, desktop: null, lastChecked: null },
+      homepage: { mobile: null, desktop: null, lastChecked: null }
+    },
+    formSubmissions: {
+      getPreapproved: { total: null, last7d: null, last30d: null, lastSubmission: null },
+      refinanceQuote: { total: null, last7d: null, last30d: null, lastSubmission: null }
+    },
+    openIssues: [],
+    resolvedThisWeek: []
+  },
+
+  seo: {
+    schema: [
+      { item: "AggregateRating", page: "Homepage", status: null, lastVerified: null },
+      { item: "FAQPage", page: "/dscr-loan-austin-tx", status: null, lastVerified: null },
+      { item: "FAQPage", page: "/loans/refinance", status: null, lastVerified: null },
+      { item: "FAQPage", page: "Suburb pages", status: null, total: 9, complete: 0, lastVerified: null },
+      { item: "BreadcrumbList", page: "Loan + suburb pages", status: null, lastVerified: null }
+    ],
+    openTasks: [],
+    completedTasks: []
+  },
+
+  abTests: {
+    active: [],
+    ideas: [
+      { idea: "Step 1 button copy — 'Buy a Home' vs 'I'm Buying a Home →'", added: "March 20, 2026" },
+      { idea: "H1 headline — process vs outcome focused", added: "March 20, 2026" },
+      { idea: "Trust bar position — above vs below H1", added: "March 20, 2026" }
+    ],
+    completed: []
+  },
+
+  claudeCodeFlags: [],
+
+  sessionLog: [
+    {
+      date: "March 20, 2026",
+      session: 1,
+      summary: "Dashboard created. Awaiting first Cowork session data.",
+      tasks: [],
+      scores: { ads: null, seo: null, capture: null, mobile: null, funnel: null }
+    }
+  ]
+
+};
+// ============================================================
+// END DATA SECTION — DO NOT EDIT BELOW THIS LINE
+// ============================================================
+</script>
+
+<div id="dashboard"></div>
+
+<script>
+(function() {
+  const d = OPS_DATA;
+  const $ = (sel, ctx) => (ctx || document).querySelector(sel);
+  const v = (val) => val == null ? '—' : val;
+
+  function statusColor(s) {
+    return s === 'green' ? 'green' : s === 'yellow' ? 'yellow' : s === 'red' ? 'red' : 'yellow';
+  }
+
+  function statusLabel(s) {
+    return s === 'green' ? 'OK' : s === 'yellow' ? 'Watch' : s === 'red' ? 'Action Needed' : '—';
+  }
+
+  function trendIcon(t) {
+    if (t === 'up') return '<span class="trend-up">↑</span>';
+    if (t === 'down') return '<span class="trend-down">↓</span>';
+    return '<span class="trend-neutral">→</span>';
+  }
+
+  function campaignStatus(s) {
+    if (s === 'active') return '<span class="badge active">Active</span>';
+    if (s === 'paused') return '<span class="badge paused">Paused</span>';
+    if (s === 'ended') return '<span class="badge ended">Ended</span>';
+    return v(s);
+  }
+
+  function scoreColor(score) {
+    if (score == null) return '';
+    if (score >= 90) return 'green';
+    if (score >= 70) return 'yellow';
+    return 'red';
+  }
+
+  function renderScoreBar(score) {
+    if (score == null) return '<span class="score-value" style="color:var(--text-dim)">—</span>';
+    const color = scoreColor(score);
+    return `<div class="score-bar-container">
+      <div class="score-bar"><div class="score-bar-fill ${color}" style="width:${score}%"></div></div>
+      <span class="score-value" style="color:var(--${color})">${score}</span>
+    </div>`;
+  }
+
+  function schemaStatus(item) {
+    if (item.total != null) {
+      return `${item.complete}/${item.total} complete`;
+    }
+    if (item.status === true) return '✅';
+    if (item.status === false) return '❌';
+    return '—';
+  }
+
+  function priorityClass(p) {
+    if (!p) return '';
+    const pl = p.toLowerCase();
+    if (pl === 'high') return 'high';
+    if (pl === 'medium') return 'medium';
+    return 'low';
+  }
+
+  function issueCard(issue, type) {
+    const pc = priorityClass(issue.priority);
+    const cls = type === 'flag' ? `flag-card ${pc}` : `card`;
+    return `<div class="${cls}">
+      ${issue.priority ? `<div class="flag-priority ${pc}">${issue.priority === 'high' ? '🔴' : issue.priority === 'medium' ? '🟡' : '⚪'} ${issue.priority.toUpperCase()}: ${issue.title || ''}</div>` : ''}
+      <div class="flag-body">${issue.description || issue.title || ''}</div>
+      ${issue.action ? `<div class="flag-action">Action: ${issue.action}</div>` : ''}
+      ${issue.date ? `<div class="flag-date">${issue.date}</div>` : ''}
+      ${issue.status ? `<div class="flag-action">Status: ${issue.status}</div>` : ''}
+    </div>`;
+  }
+
+  // Build the dashboard HTML
+  let html = '';
+
+  // === STATUS BAR ===
+  const statusMap = {
+    googleAds: { label: 'Google Ads', anchor: 'google-ads' },
+    funnel: { label: 'Funnel', anchor: 'funnel' },
+    seo: { label: 'SEO', anchor: 'seo' },
+    forms: { label: 'Forms', anchor: 'forms' }
+  };
+
+  let statusBarItems = '';
+  for (const [key, meta] of Object.entries(statusMap)) {
+    const color = statusColor(d.status[key]);
+    const label = key === 'forms' ? (d.status[key] === 'green' ? 'Capturing' : statusLabel(d.status[key])) : statusLabel(d.status[key]);
+    const displayLabel = key === 'googleAds' && d.status[key] === 'green' ? 'Active' : label;
+    statusBarItems += `<a class="status-item" href="#${meta.anchor}">
+      <span class="status-dot ${color}"></span>
+      <span>${meta.label}: ${displayLabel}</span>
+    </a>`;
+  }
+
+  html += `<div class="status-bar">
+    <span class="status-bar-left">styermortgage.com/ops</span>
+    <div class="status-items">${statusBarItems}</div>
+    <span class="status-bar-right">Last Updated: ${d.lastUpdated}</span>
+  </div>`;
+
+  html += '<div class="dashboard">';
+
+  // === SECTION 2: GOOGLE ADS ===
+  html += `<div class="section" id="google-ads">
+    <div class="section-header">Google Ads <span class="sub">Account 758-138-2642</span></div>`;
+
+  // Campaign table
+  html += '<div class="table-wrap"><table><thead><tr>';
+  html += '<th>Campaign</th><th>Status</th><th>Budget</th><th>Impressions</th><th>Clicks</th><th>CTR</th><th>Avg CPC</th><th>Conv</th><th>Cost/Conv</th><th>7d Spend</th><th>Trend</th>';
+  html += '</tr></thead><tbody>';
+
+  let totalBudget = 0;
+  d.googleAds.campaigns.forEach(c => {
+    const budgetNum = parseFloat(c.budget.replace(/[^0-9.]/g, ''));
+    if (!isNaN(budgetNum)) totalBudget += budgetNum;
+    html += `<tr>
+      <td>${c.name}</td>
+      <td>${campaignStatus(c.status)}</td>
+      <td>${c.budget}</td>
+      <td>${v(c.impressions)}</td>
+      <td>${v(c.clicks)}</td>
+      <td>${v(c.ctr)}</td>
+      <td>${v(c.avgCpc)}</td>
+      <td>${v(c.conversions)}</td>
+      <td>${v(c.costPerConv)}</td>
+      <td>${v(c.spend7d)}</td>
+      <td>${trendIcon(c.trend)}</td>
+    </tr>`;
+  });
+
+  html += `<tr class="total-row">
+    <td>TOTAL</td><td></td><td>$${totalBudget}/day</td>
+    <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td></td>
+  </tr>`;
+  html += '</tbody></table></div>';
+
+  // Active Flags
+  html += '<div class="subsection-header">Active Flags</div>';
+  if (d.googleAds.flags.length === 0) {
+    html += '<div class="empty">No active flags 🟢</div>';
+  } else {
+    d.googleAds.flags.forEach(f => { html += issueCard(f, 'flag'); });
+  }
+
+  // Recent Negatives
+  html += '<div class="subsection-header">Search Terms — Last Added Negatives</div>';
+  if (d.googleAds.recentNegatives.length === 0) {
+    html += '<div class="empty">No negatives added yet</div>';
+  } else {
+    html += '<ul class="neg-list">';
+    d.googleAds.recentNegatives.forEach(n => {
+      html += `<li><span>${n.keyword}</span><span class="neg-date">${n.date || ''}</span></li>`;
+    });
+    html += '</ul>';
+  }
+
+  html += '</div>';
+
+  // === SECTION 3: FUNNEL HEALTH ===
+  html += `<div class="section" id="funnel">
+    <div class="section-header">Funnel Health <span class="sub">styermortgage.com</span></div>`;
+
+  // PageSpeed
+  html += '<div class="subsection-header">PageSpeed Scores</div>';
+  html += '<div class="table-wrap"><table><thead><tr><th>Page</th><th>Mobile</th><th>Desktop</th><th>Last Checked</th></tr></thead><tbody>';
+
+  const psPages = [
+    { key: 'getPreapproved', label: '/get-preapproved' },
+    { key: 'refinanceQuote', label: '/refinance-quote' },
+    { key: 'homepage', label: 'Homepage' }
+  ];
+
+  psPages.forEach(p => {
+    const ps = d.funnel.pageSpeed[p.key];
+    html += `<tr>
+      <td>${p.label}</td>
+      <td>${renderScoreBar(ps.mobile)}</td>
+      <td>${renderScoreBar(ps.desktop)}</td>
+      <td>${v(ps.lastChecked)}</td>
+    </tr>`;
+  });
+  html += '</tbody></table></div>';
+
+  // Form Submissions
+  html += '<div class="subsection-header">Form Submissions</div>';
+  html += '<div class="table-wrap"><table><thead><tr><th>Form</th><th>Total</th><th>Last 7 Days</th><th>Last 30 Days</th><th>Last Submission</th></tr></thead><tbody>';
+
+  const formKeys = [
+    { key: 'getPreapproved', label: 'get-preapproved' },
+    { key: 'refinanceQuote', label: 'refinance-quote' }
+  ];
+
+  formKeys.forEach(f => {
+    const fs = d.funnel.formSubmissions[f.key];
+    html += `<tr>
+      <td>${f.label}</td>
+      <td>${v(fs.total)}</td>
+      <td>${v(fs.last7d)}</td>
+      <td>${v(fs.last30d)}</td>
+      <td>${v(fs.lastSubmission)}</td>
+    </tr>`;
+  });
+  html += '</tbody></table></div>';
+
+  // Funnel Issues Queue
+  html += '<div class="subsection-header">Funnel Issues Queue</div>';
+  html += '<div class="two-col"><div>';
+  html += '<div class="col-header">Open Issues</div>';
+  if (d.funnel.openIssues.length === 0) {
+    html += '<div class="empty">No open issues 🟢</div>';
+  } else {
+    d.funnel.openIssues.forEach(i => { html += issueCard(i, 'flag'); });
+  }
+  html += '</div><div>';
+  html += '<div class="col-header">Resolved This Week</div>';
+  if (d.funnel.resolvedThisWeek.length === 0) {
+    html += '<div class="empty">No fixes this week yet</div>';
+  } else {
+    d.funnel.resolvedThisWeek.forEach(i => {
+      html += `<div class="card"><span style="color:var(--green)">✓</span> ${i.date ? `[${i.date}] ` : ''}${i.description || i.title || ''}</div>`;
+    });
+  }
+  html += '</div></div>';
+  html += '</div>';
+
+  // === SECTION 4: SEO STATUS ===
+  html += `<div class="section" id="seo">
+    <div class="section-header">SEO Status</div>`;
+
+  // Schema Checklist
+  html += '<div class="subsection-header">Schema Checklist</div>';
+  html += '<div class="table-wrap"><table><thead><tr><th>Item</th><th>Page</th><th>Status</th><th>Last Verified</th></tr></thead><tbody>';
+
+  d.seo.schema.forEach(s => {
+    html += `<tr>
+      <td>${s.item}</td>
+      <td>${s.page}</td>
+      <td>${schemaStatus(s)}</td>
+      <td>${v(s.lastVerified)}</td>
+    </tr>`;
+  });
+  html += '</tbody></table></div>';
+
+  // SEO Task Queue
+  html += '<div class="subsection-header">SEO Task Queue</div>';
+  html += '<div class="two-col"><div>';
+  html += '<div class="col-header">Open Tasks</div>';
+  if (d.seo.openTasks.length === 0) {
+    html += '<div class="empty">No open tasks 🟢</div>';
+  } else {
+    d.seo.openTasks.forEach(t => { html += issueCard(t, 'flag'); });
+  }
+  html += '</div><div>';
+  html += '<div class="col-header">Completed</div>';
+  if (d.seo.completedTasks.length === 0) {
+    html += '<div class="empty">No completed tasks yet</div>';
+  } else {
+    d.seo.completedTasks.forEach(t => {
+      html += `<div class="card"><span style="color:var(--green)">✓</span> ${t.date ? `[${t.date}] ` : ''}${t.description || t.title || ''}</div>`;
+    });
+  }
+  html += '</div></div>';
+  html += '</div>';
+
+  // === SECTION 5: A/B TESTS === (using 'forms' anchor for status bar link)
+  html += `<div class="section" id="forms">
+    <div class="section-header">A/B Tests</div>`;
+
+  // Active Tests
+  html += '<div class="subsection-header">Active Tests</div>';
+  if (d.abTests.active.length === 0) {
+    html += '<div class="empty">No active tests</div>';
+  } else {
+    d.abTests.active.forEach((t, i) => {
+      html += `<div class="test-card">
+        <div class="test-card-header">TEST #${i + 1} — Started ${t.started || '—'}</div>
+        <div class="test-field"><strong>Element:</strong> ${t.element || '—'}</div>
+        ${t.variantA ? `<div class="test-field"><strong>Variant A:</strong> ${t.variantA}</div>` : ''}
+        ${t.variantB ? `<div class="test-field"><strong>Variant B:</strong> ${t.variantB}</div>` : ''}
+        <div class="test-field"><strong>Status:</strong> ${t.status || '—'}</div>
+        ${t.hypothesis ? `<div class="test-field"><strong>Hypothesis:</strong> ${t.hypothesis}</div>` : ''}
+      </div>`;
+    });
+  }
+
+  // Completed Tests
+  html += '<div class="subsection-header">Completed Tests</div>';
+  if (d.abTests.completed.length === 0) {
+    html += '<div class="empty">No completed tests yet</div>';
+  } else {
+    d.abTests.completed.forEach(t => {
+      html += `<div class="test-card">
+        <div class="test-card-header">${t.name || 'Test'} — ${t.result || ''}</div>
+        <div class="test-field">${t.description || ''}</div>
+        ${t.shipped ? `<div class="test-field"><strong>Shipped:</strong> ${t.shipped}</div>` : ''}
+      </div>`;
+    });
+  }
+
+  // Ideas Queue
+  html += '<div class="subsection-header">Ideas Queue</div>';
+  if (d.abTests.ideas.length === 0) {
+    html += '<div class="empty">No ideas in queue</div>';
+  } else {
+    html += '<ul class="idea-list">';
+    d.abTests.ideas.forEach(i => {
+      html += `<li><span>${i.idea}</span><span class="idea-date">${i.added}</span></li>`;
+    });
+    html += '</ul>';
+  }
+
+  html += '</div>';
+
+  // === SECTION 6: CLAUDE CODE FLAGS ===
+  html += `<div class="section" id="claude-code">
+    <div class="section-header">Claude Code Build Queue</div>`;
+
+  if (d.claudeCodeFlags.length === 0) {
+    html += '<div class="empty">No Claude Code flags — all clear 🟢</div>';
+  } else {
+    d.claudeCodeFlags.forEach(f => {
+      const pc = priorityClass(f.priority);
+      html += `<div class="build-card ${pc}">
+        <div class="build-card-header">
+          <span class="build-card-priority ${pc}">${f.priority === 'high' ? '🔴' : f.priority === 'medium' ? '🟡' : '⚪'} ${(f.priority || '').toUpperCase()} PRIORITY</span>
+          <span class="build-card-date">Added: ${f.added || '—'}</span>
+        </div>
+        ${f.page ? `<div class="build-card-field"><strong>Page:</strong> ${f.page}</div>` : ''}
+        ${f.issue ? `<div class="build-card-field"><strong>Issue:</strong> ${f.issue}</div>` : ''}
+        ${f.suggested ? `<div class="build-card-field"><strong>Suggested:</strong> ${f.suggested}</div>` : ''}
+        ${f.expectedImpact ? `<div class="build-card-field"><strong>Expected impact:</strong> ${f.expectedImpact}</div>` : ''}
+        <div class="build-card-status">
+          <span><span class="check-box ${f.status === 'open' ? 'checked' : ''}"></span> Open</span>
+          <span><span class="check-box ${f.status === 'in_progress' ? 'checked' : ''}"></span> In Progress</span>
+          <span><span class="check-box ${f.status === 'done' ? 'checked' : ''}"></span> Done</span>
+        </div>
+      </div>`;
+    });
+  }
+
+  html += '</div>';
+
+  // === SECTION 7: SESSION LOG ===
+  html += `<div class="section" id="session-log">
+    <div class="section-header">Cowork Session Log</div>`;
+
+  if (d.sessionLog.length === 0) {
+    html += '<div class="empty">No sessions logged yet</div>';
+  } else {
+    d.sessionLog.forEach((s, i) => {
+      const isFirst = i === 0;
+      html += `<details${isFirst ? ' open' : ''}>
+        <summary>${s.date} — Session #${s.session}</summary>
+        <div class="session-body">
+          <p>${s.summary || ''}</p>`;
+      if (s.tasks && s.tasks.length > 0) {
+        s.tasks.forEach(t => { html += `<p>• ${t}</p>`; });
+      }
+      if (s.scores) {
+        const sc = s.scores;
+        const parts = [];
+        if (sc.ads != null) parts.push(`Ads ${sc.ads}/10`);
+        if (sc.seo != null) parts.push(`SEO ${sc.seo}/10`);
+        if (sc.capture != null) parts.push(`Capture ${sc.capture}/10`);
+        if (sc.mobile != null) parts.push(`Mobile ${sc.mobile}/10`);
+        if (sc.funnel != null) parts.push(`Funnel ${sc.funnel}/10`);
+        if (parts.length > 0) {
+          html += `<div class="session-scores">Scores: ${parts.join(' | ')}</div>`;
+        }
+      }
+      html += '</div></details>';
+    });
+  }
+
+  html += '</div>';
+
+  html += '</div>'; // close .dashboard
+
+  // Render
+  $('#dashboard').innerHTML = html;
+
+  // Move status bar outside dashboard to be full width
+  const statusBar = $('.status-bar');
+  if (statusBar) {
+    document.body.insertBefore(statusBar, $('#dashboard'));
+  }
+})();
+</script>
+
+</body>
+</html>
