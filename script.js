@@ -723,12 +723,16 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuickContactScroll();
   initTestimonialFilter();
   initPrequalForm();
+});
 
-  // Phone click tracking — fires GTM phone_click event on any tel: link
-  document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
-    el.addEventListener('click', function() {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'phone_click' });
-    });
-  });
+// ========================================================================
+// PHONE CLICK TRACKING
+// Global delegated listener — fires for every tel: link click on any page
+// ========================================================================
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href^="tel:"]');
+  if (link) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'phone_click' });
+  }
 });

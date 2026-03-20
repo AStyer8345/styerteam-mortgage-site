@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 20, 2026 — Cowork daily session: conversion tracking fully verified; PageSpeed 80 confirmed; new SEO blog post published (Austin mortgage rates March 2026); manifest.json fixed to include March 18 post
+March 20, 2026 — GTM sprint + Cowork session: GTM-PQQ6PGLR installed on all 50 public pages (head snippet + noscript + dataLayer init); phone_click global handler added to script.js; conversion tracking fully verified; PageSpeed 80 confirmed; new SEO blog post published (Austin mortgage rates March 2026); manifest.json fixed to include March 18 post
 
 ---
 
@@ -92,13 +92,19 @@ March 20, 2026 — Cowork daily session: conversion tracking fully verified; Pag
 | Deployment | Auto-deploy on GitHub push |
 | Forms backend | Netlify Forms — `netlify` attribute on `<form>`, hidden `form-name` input required |
 | Analytics | Google Analytics 4 — Measurement ID: G-DDY0H0319S |
-| Tag management | Google Tag Manager — already installed in `<head>` of all pages |
+| Tag management | Google Tag Manager — GTM-PQQ6PGLR — installed on all public pages (head + noscript + dataLayer init) as of 2026-03-20 |
 | Pixels | Facebook Pixel (via GTM), Google Ads tag (via GTM) |
 | Domain | styermortgage.com |
 
 ---
 
 ## CONVERSION TRACKING (GTM Events)
+
+GTM Container ID: GTM-PQQ6PGLR
+GTM Status: Installed on all public pages (as of 2026-03-20)
+GA4 Measurement ID: G-DDY0H0319S
+GA4 Status: Firing via GTM (as of 2026-03-20)
+Google Search Console: Verified via googlea3d746ce1ceb4bff.html (file was already present)
 
 These dataLayer events are wired (or must be wired) via JavaScript on form/link interactions. GTM listens for these and fires the corresponding ad platform tags.
 
@@ -270,6 +276,10 @@ Update this section as work is completed or new issues are found.
 
 | Issue | Priority | Status |
 |---|---|---|
+| GTM not installed on live site | HIGH | ✅ DONE 2026-03-20 — GTM-PQQ6PGLR on all 50 public pages |
+| GA4 not firing on live site | HIGH | ✅ DONE 2026-03-20 — fires via GTM (G-DDY0H0319S) |
+| phone_click not wired | HIGH | ✅ DONE 2026-03-20 — global delegated handler in script.js |
+| Google Ads conversion tag missing from GTM | HIGH | Open — create conversion action in Ads account, then add tag in GTM container |
 | /get-preapproved page doesn't exist | HIGH | ✅ DONE — live, tracking verified 2026-03-19 |
 | /refinance-quote page doesn't exist | HIGH | ✅ DONE — live, tracking verified 2026-03-19 |
 | /thank-you page doesn't exist | HIGH | ✅ DONE — live, thank_you_page_view fires on load |
