@@ -723,4 +723,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuickContactScroll();
   initTestimonialFilter();
   initPrequalForm();
+
+  // Phone click tracking — fires GTM phone_click event on any tel: link
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'phone_click' });
+    });
+  });
 });
