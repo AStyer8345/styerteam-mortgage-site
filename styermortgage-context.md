@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 20, 2026 — GTM sprint + Cowork session: GTM-PQQ6PGLR installed on all 54 public pages (head snippet + noscript + dataLayer init); phone_click global delegated handler added to script.js; all dataLayer events confirmed; conversion tracking fully verified; PageSpeed 80 confirmed; new SEO blog post published (Austin mortgage rates March 2026); manifest.json fixed to include March 18 post
+March 20, 2026 — Ops dashboard built at /ops (ops.html); GTM sprint + Cowork session: GTM-PQQ6PGLR installed on all 54 public pages (head snippet + noscript + dataLayer init); phone_click global delegated handler added to script.js; all dataLayer events confirmed; conversion tracking fully verified; PageSpeed 80 confirmed; new SEO blog post published (Austin mortgage rates March 2026); manifest.json fixed to include March 18 post
 
 ---
 
@@ -207,6 +207,11 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 | For Realtors | /realtors |
 | Contact | /contact |
 | Texas Consumer Notice | /texas-complaint-notice |
+
+### Internal (noindex, no nav/footer)
+| Page | URL | Status |
+|---|---|---|
+| Ops Dashboard | /ops | ✅ Live — added 2026-03-20. Cowork updates OPS_DATA in ops.html every session. |
 
 ---
 
