@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 20, 2026 — Ops dashboard built at /ops (ops.html); GTM sprint + Cowork session: GTM-PQQ6PGLR installed on all 54 public pages (head snippet + noscript + dataLayer init); phone_click global delegated handler added to script.js; all dataLayer events confirmed; conversion tracking fully verified; PageSpeed 80 confirmed; new SEO blog post published (Austin mortgage rates March 2026); manifest.json fixed to include March 18 post
+March 21, 2026 — Cowork scheduled session: Full conversion tracking re-verified (generate_lead purchase_prequal ✅, generate_lead refi_quote ✅, thank_you_page_view ✅, phone_click via GTM ✅); landing page UX audit complete; schema audit complete (Round Rock + Cedar Park suburb FAQPage confirmed ✅); mobile form-below-fold issue re-confirmed MEDIUM priority; /loans/va title tag missing NMLS# (LOW); PageSpeed API quota exhausted — score unverified today (last known: 80 as of 2026-03-20)
 
 ---
 
@@ -224,7 +224,10 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 | AggregateRating | Homepage | ✅ Present in LocalBusiness schema |
 | FAQPage | /dscr-loan-austin-tx | ✅ Present — 6 questions — verified 2026-03-19 |
 | FAQPage | /loans/refinance | ✅ Present — 5 questions — verified 2026-03-19 |
-| FAQPage | All 9 suburb pages | ⚠️ Unverified — spot check needed |
+| FAQPage | /round-rock-mortgage-lender | ✅ Present — 5 questions — verified 2026-03-21 |
+| FAQPage | /cedar-park-mortgage-lender | ✅ Present — 5 questions — verified 2026-03-21 |
+| FAQPage | Leander, Georgetown, Pflugerville, Kyle, San Marcos, Westlake, Buda | ⚠️ Unverified — spot check needed |
+| FAQPage | /loans/va | ✅ Present — 5 questions — verified 2026-03-21 |
 | BreadcrumbList | Suburb + loan pages | ⚠️ Unverified — spot check needed |
 
 ### Known SEO Gaps (as of March 2026)
@@ -298,8 +301,10 @@ Update this section as work is completed or new issues are found.
 | /dscr-loan-austin-tx linked to /mortgage-pre-approval-austin instead of /get-preapproved | LOW | ✅ FIXED 2026-03-19 — changed href to /get-preapproved |
 | Mobile PageSpeed score on /get-preapproved | MEDIUM | Score: 80 (verified 2026-03-20). LCP 4.6s is main drag — render-blocking requests (1,940ms savings) + unused JS (121 KiB). Fix: defer non-critical JS, inline critical CSS |
 | Conversion tracking verified | ✅ DONE | generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all confirmed firing — 2026-03-20 |
-| Form below fold on mobile (both landing pages) | MEDIUM | Submit button below fold on mobile (~500px). First field IS visible. Acceptable but worth tightening hero copy height |
-| Suburb pages have no inline lead capture forms | MEDIUM | Open |
+| Form below fold on mobile (both landing pages) | MEDIUM | Re-confirmed 2026-03-21. Hero stacks at 900px; H1 is first in DOM so form requires scroll. Fix: add `order: -1` to `.lp-form-card` inside the `@media (max-width: 900px)` block in style.css. One-line fix. |
+| /loans/va title tag missing NMLS# | LOW | Current: "VA Loans Austin TX \| Zero Down Veterans \| Adam Styer". Should match format: "VA Loans Austin TX \| Adam Styer \| NMLS #513013" |
+| PageSpeed mobile score unverified 2026-03-21 | LOW | API quota exhausted during scheduled run. Last confirmed score: 80 (2026-03-20). Check manually at pagespeed.web.dev when convenient. |
+| Suburb pages have no inline lead capture forms | MEDIUM | Open — Round Rock + Cedar Park confirmed to HAVE inline forms. Remaining 7 suburbs unverified. |
 | Blog CTAs not wired to ad landing pages | MEDIUM | New posts now include CTAs to /get-preapproved and /refinance-quote — older posts still need update |
 | manifest.json missing March 18 post | LOW | ✅ FIXED 2026-03-20 — ai-trap post added to manifest |
 | New blog post: Austin mortgage rates March 2026 | ✅ DONE | Published 2026-03-20: /blog/2026-03-20-austin-mortgage-rates-march-2026.html — Article + FAQPage schema, 5 FAQ questions, internal links to /get-preapproved, /refinance-quote, /calculators |
