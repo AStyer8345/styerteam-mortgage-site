@@ -32,7 +32,12 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <!-- Fonts load async — eliminates render-blocking -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
+
+  <!-- Preload hero cutout — desktop only so mobile skips the 5 MB download -->
+  <link rel="preload" as="image" href="assets/adam-cutout.webp" type="image/webp" media="(min-width: 769px)">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -168,13 +173,23 @@
         Cutout is a DIRECT child of .hero (not .container) so position:absolute
         is relative to the full-bleed hero section, not the constrained container.
       -->
-      <img
-        src="assets/adam-cutout.png"
-        alt="Adam Styer, Austin TX Mortgage Broker, NMLS #513013"
-        class="hero-cutout"
-        fetchpriority="high"
-        decoding="async"
-      >
+      <!--
+        <picture> with media queries: desktop loads the 46 KB WebP;
+        mobile never downloads the image (was 5 MB PNG — the LCP culprit).
+      -->
+      <picture>
+        <source media="(min-width: 769px)" srcset="assets/adam-cutout.webp" type="image/webp">
+        <source media="(min-width: 769px)" srcset="assets/adam-cutout-900.png" type="image/png">
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          alt="Adam Styer, Austin TX Mortgage Broker, NMLS #513013"
+          class="hero-cutout"
+          fetchpriority="high"
+          decoding="async"
+          width="450"
+          height="450"
+        >
+      </picture>
 
       <div class="container">
         <!-- ── Glassmorphism card ─────────────────────────────────────── -->
