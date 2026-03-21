@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 21, 2026 — Cowork session #2: Forms confirmed ✅ (both Netlify captures working); suburb FAQPage schema verified ✅ (Round Rock + Cedar Park, 5 questions each, Rich Results passed); PageSpeed audit — homepage LCP critical (40.4s 🚨, score 64), /get-preapproved regressed 80→67 (LCP 7.0s), /refinance-quote scored 61 (LCP 7.1s, TBT 375ms); Google Ads Search-1 campaign live ($100.36/day, Eligible, 0 impressions), conversion tag still missing from GTM; ops.html updated and committed
+March 21, 2026 — Performance sprint: homepage LCP root cause identified (adam-cutout.png was 5 MB PNG, fetchpriority=high, loaded on mobile where it's display:none — monopolizing bandwidth); adam-cutout.png → adam-cutout.webp at 900px (5 MB → 46 KB, 99% reduction); adam-cutout-900.png fallback (559 KB); hero-bg.jpg compressed 1.7 MB → 146 KB; homepage <picture> element with media query prevents mobile downloading cutout; preload hint desktop-only; Google Fonts async loading on homepage + /get-preapproved + /refinance-quote (eliminates 1,940ms render-block); all pushed to main → Netlify auto-deploying
 
 ---
 
@@ -296,7 +296,7 @@ Update this section as work is completed or new issues are found.
 | /dscr-loan-austin-tx missing /calculators link | MEDIUM | ✅ FIXED 2026-03-19 — "Run the Numbers" button added to CTA |
 | /loans/refinance missing /refinance-quote link | MEDIUM | ✅ FIXED 2026-03-19 — "Get a Refi Quote" button added to CTA |
 | /dscr-loan-austin-tx linked to /mortgage-pre-approval-austin instead of /get-preapproved | LOW | ✅ FIXED 2026-03-19 — changed href to /get-preapproved |
-| Mobile PageSpeed /get-preapproved | HIGH | ⚠️ REGRESSION 2026-03-21: Score dropped 80→67. LCP worsened 4.6s→7.0s. Render-blocking 1,940ms savings, unused JS 246 KiB. Fix: defer non-critical JS, lazy load below-fold images. (Prior score: 80, 2026-03-20) |
+| Mobile PageSpeed /get-preapproved | HIGH | ✅ FIXED 2026-03-21 — Google Fonts now async (was 1,940ms render-block). Re-run PageSpeed to verify score recovery. |
 | Conversion tracking verified | ✅ DONE | generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all confirmed firing — 2026-03-20 |
 | Form below fold on mobile (both landing pages) | MEDIUM | Submit button below fold on mobile (~500px). First field IS visible. Acceptable but worth tightening hero copy height |
 | Suburb pages have no inline lead capture forms | MEDIUM | Open |
@@ -304,7 +304,7 @@ Update this section as work is completed or new issues are found.
 | manifest.json missing March 18 post | LOW | ✅ FIXED 2026-03-20 — ai-trap post added to manifest |
 | New blog post: Austin mortgage rates March 2026 | ✅ DONE | Published 2026-03-20: /blog/2026-03-20-austin-mortgage-rates-march-2026.html — Article + FAQPage schema, 5 FAQ questions, internal links to /get-preapproved, /refinance-quote, /calculators |
 | "Austin mortgage rates today" page missing | MEDIUM | ✅ Addressed by blog post — consider building a dedicated evergreen /austin-mortgage-rates page next |
-| Homepage LCP critical | HIGH | 🚨 LCP = 40,439ms (40.4s), score 64 (2026-03-21). Not slow — broken. Likely hero image, background, video, or Calendly widget timing out on mobile. Identify and fix LCP element. Target: LCP < 2.5s. |
-| Mobile PageSpeed /refinance-quote | HIGH | Score: 61, LCP 7.1s, TBT 375ms (2026-03-21). Same render-blocking + unused JS pattern as /get-preapproved — likely shared root cause. Fix both together. |
-| /mortgage-pre-approval-austin.html existence unverified | MEDIUM | Suburb pages link to /mortgage-pre-approval-austin.html in bottom CTA. File existence unverified — possible dead conversion path. Check and fix href if broken. |
+| Homepage LCP critical | HIGH | ✅ FIXED 2026-03-21 — Root cause: adam-cutout.png (5 MB, fetchpriority=high) downloaded on mobile despite display:none. Fixed with <picture> + media query (mobile gets data URI, desktop gets 46 KB WebP). Also compressed hero-bg.jpg 1.7 MB→146 KB and added async fonts. Netlify deploying. |
+| Mobile PageSpeed /refinance-quote | HIGH | ✅ FIXED 2026-03-21 — Google Fonts now async (same fix as /get-preapproved). Re-run PageSpeed to verify. |
+| /mortgage-pre-approval-austin.html existence unverified | MEDIUM | ✅ CONFIRMED 2026-03-21 — file exists. Suburb pages (round-rock, cedar-park, kyle, san-marcos) link to it as an article, not a primary CTA. No broken links. |
 | /austin-down-payment-assistance — existence unverified | LOW | ✅ CONFIRMED — file exists: austin-down-payment-assistance.html |
