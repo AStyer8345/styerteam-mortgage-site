@@ -533,85 +533,114 @@ summary::-webkit-details-marker { display: none; }
 
 const OPS_DATA = {
 
-  lastUpdated: "March 20, 2026 9:14am CT",
+  lastUpdated: "March 21, 2026 5:50am CT",
 
   status: {
-    googleAds: "green",
-    funnel: "yellow",
-    seo: "yellow",
+    googleAds: "yellow",
+    funnel: "red",
+    seo: "green",
     forms: "green"
   },
 
   googleAds: {
     campaigns: [
       {
-        name: "Round Rock — Purchase",
+        name: "Search-1 (The Styer Mortgage Team)",
         status: "active",
-        budget: "$8/day",
-        impressions: null,
-        clicks: null,
+        budget: "$100.36/day",
+        impressions: 0,
+        clicks: 0,
         ctr: null,
         avgCpc: null,
-        conversions: null,
+        conversions: 0,
         costPerConv: null,
-        spend7d: null,
-        trend: "neutral"
-      },
-      {
-        name: "Cedar Park — Purchase",
-        status: "active",
-        budget: "$6/day",
-        impressions: null,
-        clicks: null,
-        ctr: null,
-        avgCpc: null,
-        conversions: null,
-        costPerConv: null,
-        spend7d: null,
-        trend: "neutral"
-      },
-      {
-        name: "Down Payment Assist",
-        status: "active",
-        budget: "$3/day",
-        impressions: null,
-        clicks: null,
-        ctr: null,
-        avgCpc: null,
-        conversions: null,
-        costPerConv: null,
-        spend7d: null,
-        trend: "neutral"
+        spend7d: "$0.00",
+        trend: "neutral",
+        note: "Status: Eligible. 0 impressions — conversion tag still missing from GTM."
       }
     ],
-    flags: [],
+    flags: [
+      {
+        priority: "high",
+        title: "Conversion tag missing from GTM",
+        description: "Google Ads conversion action not yet created in account. GTM container has no conversion tag wired. Campaign is eligible but blind — no lead data flowing back.",
+        action: "Adam: create conversion action in Google Ads UI first. Then Claude Code can add tag to GTM container.",
+        date: "March 21, 2026",
+        status: "OPEN — requires Adam action first"
+      }
+    ],
     recentNegatives: []
   },
 
   funnel: {
     pageSpeed: {
-      getPreapproved: { mobile: null, desktop: null, lastChecked: null },
-      refinanceQuote: { mobile: null, desktop: null, lastChecked: null },
-      homepage: { mobile: null, desktop: null, lastChecked: null }
+      getPreapproved: { mobile: 67, desktop: null, lastChecked: "March 21, 2026", note: "DOWN from 80 benchmark. LCP 7.0s (was 4.6s). Render-blocking: 1,940ms savings." },
+      refinanceQuote: { mobile: 61, desktop: null, lastChecked: "March 21, 2026", note: "LCP 7.1s, TBT 375ms. Never benchmarked before." },
+      homepage: { mobile: 64, desktop: null, lastChecked: "March 21, 2026", note: "CRITICAL: LCP 40.4s — likely broken LCP element (video/large image timing out)." }
     },
     formSubmissions: {
       getPreapproved: { total: null, last7d: null, last30d: null, lastSubmission: null },
       refinanceQuote: { total: null, last7d: null, last30d: null, lastSubmission: null }
     },
-    openIssues: [],
-    resolvedThisWeek: []
+    openIssues: [
+      {
+        priority: "high",
+        title: "Homepage LCP: 40.4 seconds",
+        description: "Mobile LCP is 40,439ms — this is a broken element, not just slow. Lighthouse is waiting for something that never loads. Likely a hero image, video, or background image that fails to load on mobile. Score: 64.",
+        action: "Claude Code: identify LCP element on homepage, fix missing/oversized resource.",
+        date: "March 21, 2026"
+      },
+      {
+        priority: "high",
+        title: "/get-preapproved PageSpeed: 80 → 67 (regression)",
+        description: "Score dropped 13 points since yesterday's benchmark. LCP worsened from 4.6s to 7.0s. Top opportunities: render-blocking requests (1,940ms savings), unused JS (246 KiB), unused CSS (12 KiB).",
+        action: "Claude Code: defer non-critical JS, fix render-blocking resources, lazy load below-fold images.",
+        date: "March 21, 2026"
+      },
+      {
+        priority: "high",
+        title: "/refinance-quote PageSpeed: 61 (first benchmark)",
+        description: "LCP 7.1s (fail), TBT 375ms (worse than /get-preapproved). Same render-blocking and unused JS issues. Score: 61.",
+        action: "Claude Code: same fixes as /get-preapproved — shared root cause likely in global JS/CSS.",
+        date: "March 21, 2026"
+      },
+      {
+        priority: "medium",
+        title: "Missing 'What happens next' section on landing pages",
+        description: "Both /get-preapproved and /refinance-quote lack a process section below the form. Reduces form completion confidence.",
+        action: "Claude Code: add 3-step 'What happens next' section. Copy drafted in task queue.",
+        date: "March 21, 2026"
+      },
+      {
+        priority: "medium",
+        title: "Testimonial attribution weak on /get-preapproved",
+        description: "Two testimonials attributed to 'Austin Home Buyer' with no name, city, or loan type. Homepage uses real names. Inconsistent trust signal.",
+        action: "Adam: replace with named testimonials. Or Claude Code can use placeholder structure.",
+        date: "March 21, 2026"
+      }
+    ],
+    resolvedThisWeek: [
+      { item: "Both forms tested — netlify capture working on /get-preapproved and /refinance-quote", date: "March 21, 2026" }
+    ]
   },
 
   seo: {
     schema: [
-      { item: "AggregateRating", page: "Homepage", status: null, lastVerified: null },
+      { item: "AggregateRating", page: "Homepage", status: true, lastVerified: "March 21, 2026" },
       { item: "FAQPage", page: "/dscr-loan-austin-tx", status: null, lastVerified: null },
       { item: "FAQPage", page: "/loans/refinance", status: null, lastVerified: null },
-      { item: "FAQPage", page: "Suburb pages", status: null, total: 9, complete: 0, lastVerified: null },
+      { item: "FAQPage", page: "Suburb pages", status: true, total: 9, complete: 2, lastVerified: "March 21, 2026" },
       { item: "BreadcrumbList", page: "Loan + suburb pages", status: null, lastVerified: null }
     ],
-    openTasks: [],
-    completedTasks: []
+    openTasks: [
+      { task: "Verify FAQPage schema on /dscr-loan-austin-tx and /loans/refinance via Rich Results Test", priority: "medium", added: "March 21, 2026" },
+      { task: "Verify remaining 7 suburb page FAQPage schemas (Round Rock + Cedar Park confirmed)", priority: "low", added: "March 21, 2026" },
+      { task: "Check if /mortgage-pre-approval-austin.html exists — linked from suburb page CTAs (possible broken link)", priority: "medium", added: "March 21, 2026" }
+    ],
+    completedTasks: [
+      { task: "AggregateRating schema verified on homepage (5.0, 136 reviews)", date: "March 21, 2026" },
+      { task: "FAQPage schema verified on Round Rock and Cedar Park suburb pages via Rich Results Test", date: "March 21, 2026" }
+    ]
   },
 
   abTests: {
@@ -619,14 +648,73 @@ const OPS_DATA = {
     ideas: [
       { idea: "Step 1 button copy — 'Buy a Home' vs 'I'm Buying a Home →'", added: "March 20, 2026" },
       { idea: "H1 headline — process vs outcome focused", added: "March 20, 2026" },
-      { idea: "Trust bar position — above vs below H1", added: "March 20, 2026" }
+      { idea: "Trust bar position — above vs below H1", added: "March 20, 2026" },
+      { idea: "Testimonials with real names + loan details vs generic 'Austin Home Buyer'", added: "March 21, 2026" }
     ],
     completed: []
   },
 
-  claudeCodeFlags: [],
+  claudeCodeFlags: [
+    {
+      priority: "high",
+      title: "Homepage LCP 40.4s — broken LCP element",
+      description: "Mobile PageSpeed score 64. LCP is 40,439ms — not slow, broken. Something is timing out (likely a hero image, video embed, or background resource). This is actively hurting Google Ads Quality Score and organic ranking.",
+      action: "Identify the LCP element in Lighthouse filmstrip. Fix missing/oversized resource. Target LCP < 2.5s.",
+      date: "March 21, 2026"
+    },
+    {
+      priority: "high",
+      title: "PageSpeed regression — /get-preapproved mobile: 80 → 67",
+      description: "LCP worsened from 4.6s to 7.0s overnight. Render-blocking requests: 1,940ms savings. Unused JS: 246 KiB. Unused CSS: 12 KiB. This is the Google Ads purchase campaign landing page.",
+      action: "Defer non-critical JS, remove render-blocking resources, compress/lazy-load images. Target score > 80.",
+      date: "March 21, 2026"
+    },
+    {
+      priority: "high",
+      title: "Google Ads conversion tag not in GTM",
+      description: "Campaigns are eligible and budgeted ($100.36/day) but zero conversion signal. Adam must first create the conversion action in Google Ads UI, then provide the Conversion ID + Label so the GTM tag can be added.",
+      action: "Adam creates conversion action → provides ID/Label → Claude Code adds gtag event tag to GTM container.",
+      date: "March 21, 2026",
+      status: "Blocked on Adam"
+    },
+    {
+      priority: "medium",
+      title: "/refinance-quote PageSpeed: 61, TBT 375ms",
+      description: "LCP 7.1s (fail), TBT 375ms. Likely same root cause as /get-preapproved. Fix render-blocking JS first — should improve both pages simultaneously.",
+      action: "Apply same JS deferral + image optimization fixes as /get-preapproved.",
+      date: "March 21, 2026"
+    },
+    {
+      priority: "medium",
+      title: "Broken link check — /mortgage-pre-approval-austin.html",
+      description: "Round Rock and Cedar Park suburb pages both link to /mortgage-pre-approval-austin.html in the bottom CTA. Existence not verified. If 404, this is a dead conversion path from two high-value suburb pages.",
+      action: "Check if file exists in repo. If not, create it or redirect to /get-preapproved.",
+      date: "March 21, 2026"
+    },
+    {
+      priority: "medium",
+      title: "Add 'What happens next' section to both landing pages",
+      description: "Neither /get-preapproved nor /refinance-quote has a post-form process section. Reduces form completion confidence, especially for cold traffic coming from Google Ads.",
+      action: "Add 3-step section: (1) We review your info → (2) Adam calls within 1 business day → (3) You get your options. Position immediately below the form.",
+      date: "March 21, 2026"
+    }
+  ],
 
   sessionLog: [
+    {
+      date: "March 21, 2026",
+      session: 2,
+      summary: "Full daily ops run. Forms verified working. Schema verified: AggregateRating (homepage) + FAQPage (Round Rock + Cedar Park suburb pages). PageSpeed run across all 3 key pages — all below 80 threshold. Homepage LCP critical at 40.4s. /get-preapproved regressed from 80 to 67. Google Ads: 1 eligible campaign (Search-1, $100.36/day), 0 impressions — conversion tag still missing from GTM.",
+      tasks: [
+        "Forms: /get-preapproved ✅ and /refinance-quote ✅ — netlify capture confirmed",
+        "Schema: AggregateRating ✅ verified homepage | FAQPage ✅ Round Rock + Cedar Park suburb pages",
+        "PageSpeed: Homepage 64 (LCP 40.4s — CRITICAL) | /get-preapproved 67 (LCP 7.0s, down from 80) | /refinance-quote 61 (LCP 7.1s)",
+        "Google Ads: 1 campaign 'Search-1' — Eligible, $100.36/day, 0 impressions, conversion tag missing",
+        "Flagged 6 issues for Claude Code (3 high, 3 medium)",
+        "Updated ops dashboard with all findings"
+      ],
+      scores: { ads: 4, seo: 7, capture: 9, mobile: 3, funnel: 5 }
+    },
     {
       date: "March 20, 2026",
       session: 1,
@@ -636,8 +724,7 @@ const OPS_DATA = {
     }
   ]
 
-};
-// ============================================================
+};// ============================================================
 // END DATA SECTION — DO NOT EDIT BELOW THIS LINE
 // ============================================================
 </script>
