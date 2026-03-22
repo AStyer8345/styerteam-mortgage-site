@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 22, 2026 — Cowork daily session: HIGH priority fix shipped — form-below-fold on mobile resolved (order:-1 on .lp-form-card, both landing pages); /thank-you phone number added (was missing); copyright year updated 2025→2026 on 7 pages; /mortgage-pre-approval-austin.html verified existing (medium flag cleared). New Claude Code flag: phone number not above fold on both landing pages. PageSpeed API rate-limited — last known scores: /get-preapproved 67, /refinance-quote 61, homepage 64 (March 21 baseline). Google Ads: requires authenticated access to check.
+March 22, 2026 — Cowork daily session: HIGH priority fix shipped — noindex added to /get-preapproved and /refinance-quote (both pages were missing robots meta tag; ad landing pages should not be indexed). All suburb FAQPage schemas verified present (Leander, Georgetown, Pflugerville, Kyle, San Marcos, Westlake, Buda — all confirmed ✅). Blog post 2026-03-20 confirmed with CTAs to conversion pages. Conversion tracking code verified clean: generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all properly wired. Previous session: PageSpeed API rate-limited — last known scores: /get-preapproved 67, /refinance-quote 61, homepage 64 (March 21 baseline). Google Ads: requires authenticated access to check.
 
 ---
 
@@ -226,9 +226,10 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 | FAQPage | /loans/refinance | ✅ Present — 5 questions — verified 2026-03-19 |
 | FAQPage | /round-rock-mortgage-lender | ✅ Present — 5 questions — verified 2026-03-21 |
 | FAQPage | /cedar-park-mortgage-lender | ✅ Present — 5 questions — verified 2026-03-21 |
-| FAQPage | Leander, Georgetown, Pflugerville, Kyle, San Marcos, Westlake, Buda | ⚠️ Unverified — spot check needed |
+| FAQPage | Leander, Georgetown, Pflugerville, Kyle, San Marcos, Westlake, Buda | ✅ All verified present — 2026-03-22 |
 | FAQPage | /loans/va | ✅ Present — 5 questions — verified 2026-03-21 |
 | BreadcrumbList | Suburb + loan pages | ⚠️ Unverified — spot check needed |
+| noindex tag | /get-preapproved + /refinance-quote | ✅ FIXED 2026-03-22 — robots noindex,nofollow added to both ad landing pages |
 
 ### Known SEO Gaps (as of March 2026)
 - Suburb pages need inline lead capture forms (currently just CTA buttons to /prequal)
