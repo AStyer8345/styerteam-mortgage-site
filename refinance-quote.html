@@ -274,6 +274,14 @@
               id="form-refinance-quote"
             >
               <input type="hidden" name="form-name" value="refinance-quote">
+              <!-- UTM tracking — auto-populated by JS below -->
+              <input type="hidden" id="rq-utm-source"   name="utm_source">
+              <input type="hidden" id="rq-utm-medium"   name="utm_medium">
+              <input type="hidden" id="rq-utm-campaign" name="utm_campaign">
+              <input type="hidden" id="rq-utm-term"     name="utm_term">
+              <input type="hidden" id="rq-utm-content"  name="utm_content">
+              <input type="hidden" id="rq-page-url"     name="page_url">
+              <input type="hidden" id="rq-referrer"     name="referrer">
               <div class="lp-form-row">
                 <div class="lp-form-field">
                   <label for="rq-first">First Name</label>
@@ -401,6 +409,21 @@
 
   <script src="/script.js" defer></script>
   <script src="/analytics.js" defer></script>
+  <script>
+    // Populate UTM hidden fields from URL params + referrer
+    (function () {
+      var p = new URLSearchParams(window.location.search);
+      var fields = { source: 'utm_source', medium: 'utm_medium', campaign: 'utm_campaign', term: 'utm_term', content: 'utm_content' };
+      for (var key in fields) {
+        var el = document.getElementById('rq-utm-' + key);
+        if (el) el.value = p.get('utm_' + key) || '';
+      }
+      var urlEl = document.getElementById('rq-page-url');
+      if (urlEl) urlEl.value = window.location.href;
+      var refEl = document.getElementById('rq-referrer');
+      if (refEl) refEl.value = document.referrer || '';
+    })();
+  </script>
   <script>
     (function () {
       var form = document.getElementById('form-refinance-quote');

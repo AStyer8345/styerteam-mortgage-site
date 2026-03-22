@@ -294,6 +294,14 @@
               id="form-get-preapproved"
             >
               <input type="hidden" name="form-name" value="get-preapproved">
+              <!-- UTM tracking — auto-populated by JS below -->
+              <input type="hidden" id="gpa-utm-source"   name="utm_source">
+              <input type="hidden" id="gpa-utm-medium"   name="utm_medium">
+              <input type="hidden" id="gpa-utm-campaign" name="utm_campaign">
+              <input type="hidden" id="gpa-utm-term"     name="utm_term">
+              <input type="hidden" id="gpa-utm-content"  name="utm_content">
+              <input type="hidden" id="gpa-page-url"     name="page_url">
+              <input type="hidden" id="gpa-referrer"     name="referrer">
               <div class="lp-form-row">
                 <div class="lp-form-field">
                   <label for="gpa-first">First Name</label>
@@ -404,6 +412,21 @@
 
   <script src="/script.js" defer></script>
   <script src="/analytics.js" defer></script>
+  <script>
+    // Populate UTM hidden fields from URL params + referrer
+    (function () {
+      var p = new URLSearchParams(window.location.search);
+      var fields = { source: 'utm_source', medium: 'utm_medium', campaign: 'utm_campaign', term: 'utm_term', content: 'utm_content' };
+      for (var key in fields) {
+        var el = document.getElementById('gpa-utm-' + key);
+        if (el) el.value = p.get('utm_' + key) || '';
+      }
+      var urlEl = document.getElementById('gpa-page-url');
+      if (urlEl) urlEl.value = window.location.href;
+      var refEl = document.getElementById('gpa-referrer');
+      if (refEl) refEl.value = document.referrer || '';
+    })();
+  </script>
   <script>
     (function () {
       var form = document.getElementById('form-get-preapproved');
