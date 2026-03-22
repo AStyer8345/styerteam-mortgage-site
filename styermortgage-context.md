@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 21, 2026 — Performance sprint (Claude Code): homepage LCP fixed — adam-cutout.png 5 MB → adam-cutout.webp 46 KB (99% reduction); hero-bg.jpg 1.7 MB → 146 KB; picture element prevents mobile downloading cutout; Google Fonts async on homepage + both LPs (eliminates 1,940ms render-block). Cowork daily session: all 4 conversion events re-verified ✅; landing page UX audit ✅; schema audit ✅ (Round Rock + Cedar Park FAQPage confirmed; /loans/va FAQPage confirmed); mobile form-below-fold re-confirmed MEDIUM; /loans/va title tag missing NMLS# LOW.
+March 22, 2026 — Cowork daily session: HIGH priority fix shipped — form-below-fold on mobile resolved (order:-1 on .lp-form-card, both landing pages); /thank-you phone number added (was missing); copyright year updated 2025→2026 on 7 pages; /mortgage-pre-approval-austin.html verified existing (medium flag cleared). New Claude Code flag: phone number not above fold on both landing pages. PageSpeed API rate-limited — last known scores: /get-preapproved 67, /refinance-quote 61, homepage 64 (March 21 baseline). Google Ads: requires authenticated access to check.
 
 ---
 
@@ -301,7 +301,10 @@ Update this section as work is completed or new issues are found.
 | /dscr-loan-austin-tx linked to /mortgage-pre-approval-austin instead of /get-preapproved | LOW | ✅ FIXED 2026-03-19 — changed href to /get-preapproved |
 | Mobile PageSpeed /get-preapproved | HIGH | ✅ FIXED 2026-03-21 — Google Fonts now async (was 1,940ms render-block). Re-run PageSpeed to verify score recovery. |
 | Conversion tracking verified | ✅ DONE | generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all confirmed firing — 2026-03-20 |
-| Form below fold on mobile (both landing pages) | MEDIUM | Re-confirmed 2026-03-21. Hero stacks at 900px; H1 is first in DOM so form requires scroll. Fix: add `order: -1` to `.lp-form-card` inside the `@media (max-width: 900px)` block in style.css. One-line fix. |
+| Form below fold on mobile (both landing pages) | MEDIUM | ✅ FIXED 2026-03-22 — added `order: -1` to `.lp-form-card` in `@media (max-width: 900px)` on both /get-preapproved and /refinance-quote. Form now renders above headline on mobile. |
+| /thank-you page missing phone number | LOW | ✅ FIXED 2026-03-22 — added "(512) 956-6010 — call or text me directly" below Calendly button. |
+| Copyright year 2025 on 7 pages | LOW | ✅ FIXED 2026-03-22 — updated to 2026 on thank-you, dscr, leander, pflugerville, georgetown, buda, westlake. |
+| Phone number not above fold on landing pages | MEDIUM | Open — both /get-preapproved and /refinance-quote show phone only in the "Prefer to talk first?" section below fold. Flagged for Claude Code: add to trust bar or hero section. |
 | /loans/va title tag missing NMLS# | LOW | Current: "VA Loans Austin TX \| Zero Down Veterans \| Adam Styer". Should match format: "VA Loans Austin TX \| Adam Styer \| NMLS #513013" |
 | PageSpeed mobile score unverified 2026-03-21 | LOW | API quota exhausted during scheduled run. Last confirmed score: 80 (2026-03-20). Check manually at pagespeed.web.dev when convenient. |
 | Suburb pages have no inline lead capture forms | MEDIUM | Open — Round Rock + Cedar Park confirmed to HAVE inline forms. Remaining 7 suburbs unverified. |

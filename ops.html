@@ -528,16 +528,16 @@ summary::-webkit-details-marker { display: none; }
 <script>
 // ============================================================
 // COWORK UPDATES THIS DATA SECTION EVERY SESSION
-// Last updated: March 20, 2026 9:14am CT
+// Last updated: March 22, 2026 6:00am CT
 // ============================================================
 
 const OPS_DATA = {
 
-  lastUpdated: "March 21, 2026 5:50am CT",
+  lastUpdated: "March 22, 2026 6:00am CT",
 
   status: {
     googleAds: "yellow",
-    funnel: "red",
+    funnel: "yellow",
     seo: "green",
     forms: "green"
   },
@@ -574,9 +574,9 @@ const OPS_DATA = {
 
   funnel: {
     pageSpeed: {
-      getPreapproved: { mobile: 67, desktop: null, lastChecked: "March 21, 2026", note: "DOWN from 80 benchmark. LCP 7.0s (was 4.6s). Render-blocking: 1,940ms savings." },
-      refinanceQuote: { mobile: 61, desktop: null, lastChecked: "March 21, 2026", note: "LCP 7.1s, TBT 375ms. Never benchmarked before." },
-      homepage: { mobile: 64, desktop: null, lastChecked: "March 21, 2026", note: "CRITICAL: LCP 40.4s — likely broken LCP element (video/large image timing out)." }
+      getPreapproved: { mobile: 67, desktop: null, lastChecked: "March 21, 2026", note: "Last known: 67. API rate-limited on March 22 — could not recheck. Form-below-fold CSS fix shipped today (order:-1). Re-verify after Claude Code JS deferral fix." },
+      refinanceQuote: { mobile: 61, desktop: null, lastChecked: "March 21, 2026", note: "Last known: 61. API rate-limited on March 22 — could not recheck. Form-below-fold CSS fix shipped today. Same root cause as /get-preapproved." },
+      homepage: { mobile: 64, desktop: null, lastChecked: "March 21, 2026", note: "Last known: 64. CRITICAL: LCP 40.4s — awaiting Claude Code fix. Image optimization completed March 21 (adam-cutout.png 46 KB WebP) but score not yet improved." }
     },
     formSubmissions: {
       getPreapproved: { total: null, last7d: null, last30d: null, lastSubmission: null },
@@ -620,7 +620,11 @@ const OPS_DATA = {
       }
     ],
     resolvedThisWeek: [
-      { item: "Both forms tested — netlify capture working on /get-preapproved and /refinance-quote", date: "March 21, 2026" }
+      { item: "Both forms tested — netlify capture working on /get-preapproved and /refinance-quote", date: "March 21, 2026" },
+      { item: "FIXED: Form below-fold on mobile — added order:-1 to .lp-form-card in @media(max-width:900px) on /get-preapproved and /refinance-quote", date: "March 22, 2026" },
+      { item: "FIXED: /thank-you page missing phone number — added (512) 956-6010 call/text line below Calendly button", date: "March 22, 2026" },
+      { item: "FIXED: Copyright year 2025 → 2026 on 7 pages (thank-you, dscr, leander, pflugerville, georgetown, buda, westlake)", date: "March 22, 2026" },
+      { item: "VERIFIED: /mortgage-pre-approval-austin.html EXISTS — medium-priority broken-link flag cleared", date: "March 22, 2026" }
     ]
   },
 
@@ -697,10 +701,33 @@ const OPS_DATA = {
       description: "Neither /get-preapproved nor /refinance-quote has a post-form process section. Reduces form completion confidence, especially for cold traffic coming from Google Ads.",
       action: "Add 3-step section: (1) We review your info → (2) Adam calls within 1 business day → (3) You get your options. Position immediately below the form.",
       date: "March 21, 2026"
+    },
+    {
+      priority: "medium",
+      title: "Phone number not visible above the fold on both landing pages",
+      description: "Funnel audit March 22: (512) 956-6010 appears only in the 'Prefer to talk first?' section below the fold on both /get-preapproved and /refinance-quote. Google recommends phone visibility above the fold for ad landing pages — improves Quality Score and builds trust for mobile visitors.",
+      action: "Add phone number to the trust bar or below the CTA button in the hero section, visible without scrolling on mobile (390px viewport).",
+      date: "March 22, 2026"
     }
   ],
 
   sessionLog: [
+    {
+      date: "March 22, 2026",
+      session: 3,
+      summary: "Conversion health check: ✅ both landing pages load, forms accessible, /thank-you Calendly visible. Shipped HIGH priority fix: form-below-fold on mobile (order:-1 on .lp-form-card, both landing pages). Added missing phone number to /thank-you. Fixed copyright year 2025→2026 on 7 pages. Funnel audit: phone not above fold on either landing page (new Claude Code flag). Verified /mortgage-pre-approval-austin.html exists (cleared medium flag). PageSpeed API rate-limited — could not recheck scores. Google Ads: requires authenticated access — unable to check from automated session.",
+      tasks: [
+        "Conversion health: /get-preapproved ✅ | /refinance-quote ✅ | /thank-you ✅",
+        "FIXED HIGH: form-below-fold mobile — added order:-1 to .lp-form-card @media(max-width:900px) on both landing pages",
+        "FIXED: /thank-you page — added (512) 956-6010 call/text line below Calendly button",
+        "FIXED: Copyright year 2025→2026 on 7 pages",
+        "VERIFIED: /mortgage-pre-approval-austin.html exists — medium broken-link flag cleared",
+        "PageSpeed: API rate-limited (429) — last known scores: /get-preapproved 67, /refinance-quote 61, homepage 64",
+        "Funnel audit: phone not above fold on either landing page → new Claude Code flag (medium)",
+        "Google Ads: authenticated access required — flagging for Adam to run manually"
+      ],
+      scores: { ads: null, seo: 7, capture: 9, mobile: 5, funnel: 6 }
+    },
     {
       date: "March 21, 2026",
       session: 2,
