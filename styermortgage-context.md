@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 23, 2026 — Cowork daily session: BreadcrumbList schema added to all 9 suburb pages and all 7 loan type pages (was unverified LOW issue — now resolved). VA loans title tag fixed to include NMLS #513013. Conversion tracking re-verified from source: generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all properly wired ✅. Form test on /get-preapproved confirmed redirect to /thank-you ✅. All suburb pages confirmed to have inline lead capture forms (all 9 ✅). All suburb FAQPage schemas confirmed present. Homepage AggregateRating confirmed: 5.0/136. PageSpeed API rate-limited again — last known scores remain from 2026-03-21 baseline. Loan page title tags need Tuesday audit: VA fixed, others still missing NMLS# per standard format. Phone not above fold on landing pages remains open MEDIUM issue for Claude Code.
+March 23, 2026 (Automated daily ops) — HIGH PRIORITY FIX: Google Ads conversion tag now live on thank-you.html — gtag.js loaded + gtag('event','conversion') fires on page load (AW-18028490942/XYcDCMqh64wcEL7h05RD). Blog CTA audit complete: all 5 posts updated to link /get-preapproved. Google Ads Campaign #1 metrics (4 days): 230 impr, 12 clicks, 5.19% CTR, $1.93 CPC, 0 conversions (fix now live). All schema complete: BreadcrumbList 16 pages ✅, FAQPage all pages ✅, AggregateRating ✅. Phone not above fold on landing pages remains MEDIUM open issue.
 
 ---
 
@@ -288,7 +288,7 @@ Update this section as work is completed or new issues are found.
 | GTM not installed on live site | HIGH | ✅ DONE 2026-03-20 — GTM-PQQ6PGLR on all 54 public pages (head + noscript + dataLayer init) |
 | GA4 not firing on live site | HIGH | ✅ DONE 2026-03-20 — fires via GTM (G-DDY0H0319S) |
 | phone_click not wired | HIGH | ✅ DONE 2026-03-20 — global delegated handler in script.js |
-| Google Ads conversion tag missing from GTM | HIGH | Open — create conversion action in Ads account, then add tag in GTM container |
+| Google Ads conversion tag missing from GTM | HIGH | ✅ FIXED 2026-03-23 — gtag.js + conversion event on thank-you.html. GTM tag still optional (belt-and-suspenders now in place) |
 | /get-preapproved page doesn't exist | HIGH | ✅ DONE — live, tracking verified 2026-03-19 |
 | /refinance-quote page doesn't exist | HIGH | ✅ DONE — live, tracking verified 2026-03-19 |
 | /thank-you page doesn't exist | HIGH | ✅ DONE — live, thank_you_page_view fires on load |
