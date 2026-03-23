@@ -26,6 +26,15 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
 
+  <!-- Google Ads Global Site Tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18028490942"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18028490942');
+  </script>
+
   <style>
     .lp-header .nav-links,
     .lp-header .mobile-menu-toggle,
@@ -153,9 +162,15 @@
   <script src="/script.js" defer></script>
   <script src="/analytics.js" defer></script>
   <script>
-    // Fire thank-you page view event for Google Ads conversion tracking
+    // Fire thank-you page view event for Google Ads conversion tracking (GTM relay)
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'thank_you_page_view' });
+
+    // Fire Google Ads conversion directly (belt-and-suspenders — GTM tag pending config)
+    // Conversion ID: AW-18028490942 | Label: XYcDCMqh64wcEL7h05RD
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18028490942/XYcDCMqh64wcEL7h05RD'
+    });
   </script>
 </body>
 </html>
