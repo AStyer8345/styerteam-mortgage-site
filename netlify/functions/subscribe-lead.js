@@ -11,14 +11,19 @@
 // Required Netlify env vars:
 //   MAILCHIMP_API_KEY
 //   MAILCHIMP_BORROWER_LIST_ID
-//   LOANOS_AGENT_SECRET   (set in Netlify → Site config → Env vars)
+//   MAILCHIMP_SERVER_PREFIX  (e.g. "us13" — Netlify → Site config → Env vars)
+//   LOANOS_AGENT_SECRET      (set in Netlify → Site config → Env vars)
 
 const crypto = require("crypto");
 
 // Borrowers list ID — hardcoded as authoritative fallback (verified 2026-03-23)
 const LIST_ID  = process.env.MAILCHIMP_BORROWER_LIST_ID || "5053c57af2";
 const _apiKey  = process.env.MAILCHIMP_API_KEY || "";
-const DC       = _apiKey.includes("-") ? _apiKey.split("-").pop() : "us13";
+// Derive datacenter from API key suffix (e.g. "abc123-us13" → "us13").
+// Fall back to MAILCHIMP_SERVER_PREFIX env var if key format is unexpected.
+const DC       = (_apiKey.includes("-") ? _apiKey.split("-").pop() : null)
+                 || process.env.MAILCHIMP_SERVER_PREFIX
+                 || "";
 const API_BASE = `https://${DC}.api.mailchimp.com/3.0`;
 
 // Journey 56 "First-Time Buyer Guide Drip" — signup trigger fires for new contacts,
