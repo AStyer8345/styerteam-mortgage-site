@@ -214,6 +214,17 @@
     .lp-nmls { font-size: var(--font-size-xs); color: rgba(255,255,255,0.5); text-align: center; line-height: var(--line-height-relaxed); }
     .lp-nmls a { color: rgba(255,255,255,0.5); text-decoration: underline; }
 
+    /* ── What happens next ──────────────────────────────────── */
+    .lp-next-steps { padding: var(--spacing-3xl) 0; background: var(--color-light-gray); }
+    .lp-next-steps-title { font-family: var(--font-display); font-size: var(--font-size-3xl); color: var(--color-navy); text-align: center; margin-bottom: var(--spacing-2xl); }
+    .lp-steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-xl); }
+    .lp-step { text-align: center; }
+    .lp-step-number { width: 52px; height: 52px; border-radius: 50%; background: var(--color-gold); color: var(--color-navy); font-weight: var(--font-weight-bold); font-size: var(--font-size-xl); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-md); }
+    .lp-step h3 { font-size: var(--font-size-lg); color: var(--color-navy); margin-bottom: var(--spacing-sm); font-weight: var(--font-weight-semibold); }
+    .lp-step p { font-size: var(--font-size-sm); color: var(--color-gray); line-height: var(--line-height-relaxed); }
+    .lp-trust-phone { color: rgba(255,255,255,0.9); text-decoration: none; }
+    .lp-trust-phone:hover { background: rgba(255,255,255,0.2); }
+
     /* ── Mobile responsive ──────────────────────────────────── */
     @media (max-width: 900px) {
       .lp-hero-inner { grid-template-columns: 1fr; gap: var(--spacing-2xl); }
@@ -225,6 +236,7 @@
     @media (max-width: 600px) {
       .lp-form-row { grid-template-columns: 1fr; }
       .lp-hero { padding: var(--spacing-2xl) 0; }
+      .lp-steps-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -256,6 +268,7 @@
               <span class="lp-trust-chip"><span class="stars">★★★★★</span> 5.0 (136+ Reviews)</span>
               <span class="lp-trust-chip">21-Day Avg. Close</span>
               <span class="lp-trust-chip">Licensed in Texas</span>
+              <a href="tel:+15129566010" class="lp-trust-chip lp-trust-phone">📞 (512) 956-6010</a>
             </div>
           </div>
 
@@ -320,6 +333,30 @@
             <p class="lp-form-disclaimer">No credit impact. No obligation. Responses within 1 business day.</p>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ WHAT HAPPENS NEXT ════════════════════════════════ -->
+    <section class="lp-next-steps">
+      <div class="container">
+        <h2 class="lp-next-steps-title">What happens after you submit</h2>
+        <div class="lp-steps-grid">
+          <div class="lp-step">
+            <div class="lp-step-number">1</div>
+            <h3>Adam reviews your info</h3>
+            <p>Same day. He reads every submission personally — no bots, no call center screening.</p>
+          </div>
+          <div class="lp-step">
+            <div class="lp-step-number">2</div>
+            <h3>He reaches out to discuss</h3>
+            <p>A quick call or text to understand your goals and walk through your refi options.</p>
+          </div>
+          <div class="lp-step">
+            <div class="lp-step-number">3</div>
+            <h3>Your refi quote in 24 hrs</h3>
+            <p>A real rate, real savings estimate, and breakeven timeline — not a teaser. Within one business day.</p>
+          </div>
         </div>
       </div>
     </section>

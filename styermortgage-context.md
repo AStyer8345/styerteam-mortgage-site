@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 23, 2026 (Automated daily ops) — HIGH PRIORITY FIX: Google Ads conversion tag now live on thank-you.html — gtag.js loaded + gtag('event','conversion') fires on page load (AW-18028490942/XYcDCMqh64wcEL7h05RD). Blog CTA audit complete: all 5 posts updated to link /get-preapproved. Google Ads Campaign #1 metrics (4 days): 230 impr, 12 clicks, 5.19% CTR, $1.93 CPC, 0 conversions (fix now live). All schema complete: BreadcrumbList 16 pages ✅, FAQPage all pages ✅, AggregateRating ✅. Phone not above fold on landing pages remains MEDIUM open issue.
+March 23, 2026 (Automated daily ops + Claude Code session) — HIGH PRIORITY FIX: Google Ads conversion tag now live on thank-you.html — gtag.js loaded + gtag('event','conversion') fires on page load (AW-18028490942/XYcDCMqh64wcEL7h05RD). Blog CTA audit complete: all 5 posts updated to link /get-preapproved. Google Ads Campaign #1 metrics (4 days): 230 impr, 12 clicks, 5.19% CTR, $1.93 CPC, 0 conversions (fix now live). All schema complete: BreadcrumbList 16 pages ✅, FAQPage all pages ✅, AggregateRating ✅. Claude Code: phone chip added to trust bar on both landing pages; "What happens next" 3-step section added to both pages; FAQPage schema added to surrender + AI trap blog posts; surrender post robots changed to index,follow.
 
 ---
 
@@ -305,13 +305,15 @@ Update this section as work is completed or new issues are found.
 | Form below fold on mobile (both landing pages) | MEDIUM | ✅ FIXED 2026-03-22 — added `order: -1` to `.lp-form-card` in `@media (max-width: 900px)` on both /get-preapproved and /refinance-quote. Form now renders above headline on mobile. |
 | /thank-you page missing phone number | LOW | ✅ FIXED 2026-03-22 — added "(512) 956-6010 — call or text me directly" below Calendly button. |
 | Copyright year 2025 on 7 pages | LOW | ✅ FIXED 2026-03-22 — updated to 2026 on thank-you, dscr, leander, pflugerville, georgetown, buda, westlake. |
-| Phone number not above fold on landing pages | MEDIUM | Open — both /get-preapproved and /refinance-quote show phone only in the "Prefer to talk first?" section below fold. Flagged for Claude Code: add to trust bar or hero section. |
+| Phone number not above fold on landing pages | MEDIUM | ✅ FIXED 2026-03-23 — phone chip added to trust bar on both /get-preapproved and /refinance-quote; visible without scroll at 390px |
+| No 'What happens next' section below form (both landing pages) | MEDIUM | ✅ FIXED 2026-03-23 — 3-step section added to both pages (reviews info same day → reaches out → letter/quote in 24hrs) |
 | /loans/va title tag missing NMLS# | LOW | ✅ FIXED 2026-03-23 — now "VA Loans Austin TX \| Adam Styer \| NMLS #513013" |
 | PageSpeed mobile score unverified 2026-03-21 | LOW | API quota exhausted during scheduled run. Last confirmed score: 80 (2026-03-20). Check manually at pagespeed.web.dev when convenient. |
 | Suburb pages have no inline lead capture forms | MEDIUM | ✅ CONFIRMED 2026-03-23 — all 9 suburb pages have inline forms |
 | Blog CTAs not wired to ad landing pages | MEDIUM | New posts now include CTAs to /get-preapproved and /refinance-quote — older posts still need update |
 | Loan page title tags missing NMLS# | LOW | Open — VA fixed 2026-03-23. Remaining 6 loan pages (conventional, fha, usda, jumbo, construction, investment) still missing NMLS #513013. Target format: "[Loan Type] in Austin TX \| Adam Styer \| NMLS #513013". Fix during Tuesday title tag audit. |
 | manifest.json missing March 18 post | LOW | ✅ FIXED 2026-03-20 — ai-trap post added to manifest |
+| FAQPage schema missing from surrender post + AI trap post | LOW | ✅ FIXED 2026-03-23 — 5 FAQs added to each post. Surrender post robots also changed to index,follow. |
 | New blog post: Austin mortgage rates March 2026 | ✅ DONE | Published 2026-03-20: /blog/2026-03-20-austin-mortgage-rates-march-2026.html — Article + FAQPage schema, 5 FAQ questions, internal links to /get-preapproved, /refinance-quote, /calculators |
 | "Austin mortgage rates today" page missing | MEDIUM | ✅ Addressed by blog post — consider building a dedicated evergreen /austin-mortgage-rates page next |
 | Homepage LCP critical | HIGH | ✅ FIXED 2026-03-21 — Root cause: adam-cutout.png (5 MB, fetchpriority=high) downloaded on mobile despite display:none. Fixed with <picture> + media query (mobile gets data URI, desktop gets 46 KB WebP). Also compressed hero-bg.jpg 1.7 MB→146 KB and added async fonts. Netlify deploying. |
