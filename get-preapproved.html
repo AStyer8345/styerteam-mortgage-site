@@ -487,12 +487,56 @@
   <script>
     (function () {
       var form = document.getElementById('form-get-preapproved');
-      if (form) {
-        form.addEventListener('submit', function () {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'generate_lead', lead_type: 'purchase_prequal' });
+      if (!form) return;
+
+      // Map loan goal → Mailchimp Journey tag
+      var TAG_MAP = {
+        'Purchase':         'purchase-lead',
+        'First-Time Buyer': 'ftb-lead',
+        'Refinance':        'refi-lead',
+        'DSCR/Investor':    'investor-lead',
+      };
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var data      = new FormData(form);
+        var loanGoal  = data.get('loan_goal') || '';
+        var tag       = TAG_MAP[loanGoal] || 'new-lead';
+
+        // GTM conversion event
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', lead_type: 'purchase_prequal' });
+
+        // Submit to Netlify (stores submission + emails Adam) AND call our
+        // subscribe-lead function (Mailchimp + Loanos) — both in parallel.
+        Promise.all([
+          fetch('/', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body:    new URLSearchParams(data).toString(),
+          }).catch(function (err) { console.error('Netlify form error:', err); }),
+
+          fetch('/.netlify/functions/subscribe-lead', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email:        data.get('email')        || '',
+              fname:        data.get('first_name')   || '',
+              lname:        data.get('last_name')    || '',
+              phone:        data.get('phone')        || '',
+              tag:          tag,
+              loan_goal:    loanGoal,
+              utm_source:   data.get('utm_source')   || '',
+              utm_medium:   data.get('utm_medium')   || '',
+              utm_campaign: data.get('utm_campaign') || '',
+              page_url:     data.get('page_url')     || window.location.href,
+            }),
+          }).catch(function (err) { console.error('subscribe-lead error:', err); }),
+        ]).finally(function () {
+          window.location.href = '/thank-you';
         });
-      }
+      });
     })();
   </script>
 </body>
