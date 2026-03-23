@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 22, 2026 — Cowork daily session: HIGH priority fix shipped — noindex added to /get-preapproved and /refinance-quote (both pages were missing robots meta tag; ad landing pages should not be indexed). All suburb FAQPage schemas verified present (Leander, Georgetown, Pflugerville, Kyle, San Marcos, Westlake, Buda — all confirmed ✅). Blog post 2026-03-20 confirmed with CTAs to conversion pages. Conversion tracking code verified clean: generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all properly wired. Previous session: PageSpeed API rate-limited — last known scores: /get-preapproved 67, /refinance-quote 61, homepage 64 (March 21 baseline). Google Ads: requires authenticated access to check.
+March 23, 2026 — Cowork daily session: BreadcrumbList schema added to all 9 suburb pages and all 7 loan type pages (was unverified LOW issue — now resolved). VA loans title tag fixed to include NMLS #513013. Conversion tracking re-verified from source: generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all properly wired ✅. Form test on /get-preapproved confirmed redirect to /thank-you ✅. All suburb pages confirmed to have inline lead capture forms (all 9 ✅). All suburb FAQPage schemas confirmed present. Homepage AggregateRating confirmed: 5.0/136. PageSpeed API rate-limited again — last known scores remain from 2026-03-21 baseline. Loan page title tags need Tuesday audit: VA fixed, others still missing NMLS# per standard format. Phone not above fold on landing pages remains open MEDIUM issue for Claude Code.
 
 ---
 
@@ -228,7 +228,7 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 | FAQPage | /cedar-park-mortgage-lender | ✅ Present — 5 questions — verified 2026-03-21 |
 | FAQPage | Leander, Georgetown, Pflugerville, Kyle, San Marcos, Westlake, Buda | ✅ All verified present — 2026-03-22 |
 | FAQPage | /loans/va | ✅ Present — 5 questions — verified 2026-03-21 |
-| BreadcrumbList | Suburb + loan pages | ⚠️ Unverified — spot check needed |
+| BreadcrumbList | Suburb + loan pages | ✅ FIXED 2026-03-23 — added to all 9 suburb pages + all 7 loan pages |
 | noindex tag | /get-preapproved + /refinance-quote | ✅ FIXED 2026-03-22 — robots noindex,nofollow added to both ad landing pages |
 
 ### Known SEO Gaps (as of March 2026)
@@ -306,10 +306,11 @@ Update this section as work is completed or new issues are found.
 | /thank-you page missing phone number | LOW | ✅ FIXED 2026-03-22 — added "(512) 956-6010 — call or text me directly" below Calendly button. |
 | Copyright year 2025 on 7 pages | LOW | ✅ FIXED 2026-03-22 — updated to 2026 on thank-you, dscr, leander, pflugerville, georgetown, buda, westlake. |
 | Phone number not above fold on landing pages | MEDIUM | Open — both /get-preapproved and /refinance-quote show phone only in the "Prefer to talk first?" section below fold. Flagged for Claude Code: add to trust bar or hero section. |
-| /loans/va title tag missing NMLS# | LOW | Current: "VA Loans Austin TX \| Zero Down Veterans \| Adam Styer". Should match format: "VA Loans Austin TX \| Adam Styer \| NMLS #513013" |
+| /loans/va title tag missing NMLS# | LOW | ✅ FIXED 2026-03-23 — now "VA Loans Austin TX \| Adam Styer \| NMLS #513013" |
 | PageSpeed mobile score unverified 2026-03-21 | LOW | API quota exhausted during scheduled run. Last confirmed score: 80 (2026-03-20). Check manually at pagespeed.web.dev when convenient. |
-| Suburb pages have no inline lead capture forms | MEDIUM | Open — Round Rock + Cedar Park confirmed to HAVE inline forms. Remaining 7 suburbs unverified. |
+| Suburb pages have no inline lead capture forms | MEDIUM | ✅ CONFIRMED 2026-03-23 — all 9 suburb pages have inline forms |
 | Blog CTAs not wired to ad landing pages | MEDIUM | New posts now include CTAs to /get-preapproved and /refinance-quote — older posts still need update |
+| Loan page title tags missing NMLS# | LOW | Open — VA fixed 2026-03-23. Remaining 6 loan pages (conventional, fha, usda, jumbo, construction, investment) still missing NMLS #513013. Target format: "[Loan Type] in Austin TX \| Adam Styer \| NMLS #513013". Fix during Tuesday title tag audit. |
 | manifest.json missing March 18 post | LOW | ✅ FIXED 2026-03-20 — ai-trap post added to manifest |
 | New blog post: Austin mortgage rates March 2026 | ✅ DONE | Published 2026-03-20: /blog/2026-03-20-austin-mortgage-rates-march-2026.html — Article + FAQPage schema, 5 FAQ questions, internal links to /get-preapproved, /refinance-quote, /calculators |
 | "Austin mortgage rates today" page missing | MEDIUM | ✅ Addressed by blog post — consider building a dedicated evergreen /austin-mortgage-rates page next |
