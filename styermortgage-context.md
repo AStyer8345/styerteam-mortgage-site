@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 23, 2026 (Automated daily ops + Claude Code session) — HIGH PRIORITY FIX: Google Ads conversion tag now live on thank-you.html — gtag.js loaded + gtag('event','conversion') fires on page load (AW-18028490942/XYcDCMqh64wcEL7h05RD). Blog CTA audit complete: all 5 posts updated to link /get-preapproved. Google Ads Campaign #1 metrics (4 days): 230 impr, 12 clicks, 5.19% CTR, $1.93 CPC, 0 conversions (fix now live). All schema complete: BreadcrumbList 16 pages ✅, FAQPage all pages ✅, AggregateRating ✅. Claude Code: phone chip added to trust bar on both landing pages; "What happens next" 3-step section added to both pages; FAQPage schema added to surrender + AI trap blog posts; surrender post robots changed to index,follow.
+March 23, 2026 (run 2 — automated daily ops) — Phone (512) 956-6010 now above fold on both landing pages as clickable trust bar chip (resolves medium open issue). All 6 loan page title tags now include NMLS #513013. All 9 suburb page title tags standardized with # and NMLS (Westlake + Buda had it missing). n8n Web Lead Automation active ✅. Suburb ads campaign day 1 — no lead data yet. 17 files pushed to GitHub.
 
 ---
 
@@ -311,7 +311,7 @@ Update this section as work is completed or new issues are found.
 | PageSpeed mobile score unverified 2026-03-21 | LOW | API quota exhausted during scheduled run. Last confirmed score: 80 (2026-03-20). Check manually at pagespeed.web.dev when convenient. |
 | Suburb pages have no inline lead capture forms | MEDIUM | ✅ CONFIRMED 2026-03-23 — all 9 suburb pages have inline forms |
 | Blog CTAs not wired to ad landing pages | MEDIUM | New posts now include CTAs to /get-preapproved and /refinance-quote — older posts still need update |
-| Loan page title tags missing NMLS# | LOW | Open — VA fixed 2026-03-23. Remaining 6 loan pages (conventional, fha, usda, jumbo, construction, investment) still missing NMLS #513013. Target format: "[Loan Type] in Austin TX \| Adam Styer \| NMLS #513013". Fix during Tuesday title tag audit. |
+| Loan page title tags missing NMLS# | LOW | ✅ FIXED 2026-03-23 (run 2) — all 6 remaining loan pages (conventional, fha, usda, jumbo, construction, investment) now include NMLS #513013. All 9 suburb pages also standardized (Westlake + Buda had NMLS missing entirely). |
 | manifest.json missing March 18 post | LOW | ✅ FIXED 2026-03-20 — ai-trap post added to manifest |
 | FAQPage schema missing from surrender post + AI trap post | LOW | ✅ FIXED 2026-03-23 — 5 FAQs added to each post. Surrender post robots also changed to index,follow. |
 | New blog post: Austin mortgage rates March 2026 | ✅ DONE | Published 2026-03-20: /blog/2026-03-20-austin-mortgage-rates-march-2026.html — Article + FAQPage schema, 5 FAQ questions, internal links to /get-preapproved, /refinance-quote, /calculators |

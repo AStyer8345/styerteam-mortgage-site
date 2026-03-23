@@ -533,11 +533,11 @@ summary::-webkit-details-marker { display: none; }
 
 const OPS_DATA = {
 
-  lastUpdated: "March 23, 2026 — Automated daily ops",
+  lastUpdated: "March 23, 2026 — Automated daily ops (run 2)",
 
   status: {
     googleAds: "yellow",
-    funnel: "yellow",
+    funnel: "green",
     seo: "green",
     forms: "green"
   },
@@ -627,7 +627,10 @@ const OPS_DATA = {
       { item: "VERIFIED: /mortgage-pre-approval-austin.html EXISTS — medium-priority broken-link flag cleared", date: "March 22, 2026" },
       { item: "FIXED: Google Ads conversion tag — added gtag.js + conversion event directly to thank-you.html (AW-18028490942/XYcDCMqh64wcEL7h05RD). Conversions now firing on thank-you page load.", date: "March 23, 2026" },
       { item: "FIXED: Blog CTAs — updated all 5 posts from /prequal.html or /contact.html to /get-preapproved. Organic blog traffic now routes to highest-converting landing page.", date: "March 23, 2026" },
-      { item: "VERIFIED: /get-preapproved and /refinance-quote — desktop load ✅, no JS errors ✅, forms functional ✅, trust signals above fold ✅", date: "March 23, 2026" }
+      { item: "VERIFIED: /get-preapproved and /refinance-quote — desktop load ✅, no JS errors ✅, forms functional ✅, trust signals above fold ✅", date: "March 23, 2026" },
+      { item: "FIXED: Phone (512) 956-6010 now above fold as trust bar chip on both landing pages — resolves medium issue from March 22", date: "March 23, 2026" },
+      { item: "FIXED: All 6 remaining loan page title tags (conventional, fha, usda, jumbo, construction, investment) now include NMLS #513013", date: "March 23, 2026" },
+      { item: "FIXED: All 9 suburb page title tags standardized — NMLS #513013 now present on all pages with correct # formatting", date: "March 23, 2026" }
     ]
   },
 
@@ -640,7 +643,7 @@ const OPS_DATA = {
       { item: "BreadcrumbList", page: "9 suburbs + 7 loan pages (16 total)", status: true, lastVerified: "March 23, 2026" }
     ],
     openTasks: [
-      { task: "Loan page title tags missing NMLS# — 6 pages pending (conventional, fha, usda, jumbo, construction, investment). VA fixed March 23.", priority: "low", added: "March 23, 2026" },
+      { task: "Build /austin-mortgage-rates as dedicated evergreen page (currently addressed by blog post only)", priority: "medium", added: "March 23, 2026" },
       { task: "Add 'Current Market Conditions' section (2-3 sentences) to each of 9 suburb pages for freshness signals", priority: "medium", added: "March 23, 2026" },
       { task: "Add internal links: each suburb page → at least 2 relevant loan program pages", priority: "medium", added: "March 23, 2026" },
       { task: "Blog posts missing FAQPage schema (surrender + AI trap posts) — rates post has schema, others do not", priority: "low", added: "March 23, 2026" }
@@ -650,7 +653,9 @@ const OPS_DATA = {
       { task: "FAQPage schema verified on all 9 suburb pages, /dscr-loan-austin-tx, /loans/refinance, /loans/va", date: "March 22, 2026" },
       { task: "BreadcrumbList added to all 9 suburb pages + 7 loan pages (16 total)", date: "March 23, 2026" },
       { task: "noindex tags added to /get-preapproved and /refinance-quote (prevents indexing of ad landing pages)", date: "March 22, 2026" },
-      { task: "Blog CTA audit complete — all 5 posts updated to link /get-preapproved", date: "March 23, 2026" }
+      { task: "Blog CTA audit complete — all 5 posts updated to link /get-preapproved", date: "March 23, 2026" },
+      { task: "Loan page title tags — all 6 remaining (conventional, fha, usda, jumbo, construction, investment) now include NMLS #513013", date: "March 23, 2026" },
+      { task: "Suburb page title tags — all 9 pages standardized: # added before 513013; NMLS #513013 added to Westlake + Buda", date: "March 23, 2026" }
     ]
   },
 
@@ -714,14 +719,31 @@ const OPS_DATA = {
     },
     {
       priority: "medium",
-      title: "Phone number not visible above the fold on both landing pages",
-      description: "Funnel audit March 22: (512) 956-6010 appears only in the 'Prefer to talk first?' section below the fold on both /get-preapproved and /refinance-quote. Google recommends phone visibility above the fold for ad landing pages — improves Quality Score and builds trust for mobile visitors.",
-      action: "Add phone number to the trust bar or below the CTA button in the hero section, visible without scrolling on mobile (390px viewport).",
-      date: "March 22, 2026"
+      title: "Phone number not visible above the fold on both landing pages — FIXED March 23",
+      description: "FIXED: Added (512) 956-6010 as a clickable tel: chip in the trust bar on both /get-preapproved and /refinance-quote. Now visible above fold on all devices. Styled with lp-trust-chip + lp-trust-phone CSS classes. phone_click dataLayer event fires via global delegated handler in script.js.",
+      action: "RESOLVED — phone now above fold on both landing pages",
+      date: "March 23, 2026",
+      status: "FIXED"
     }
   ],
 
   sessionLog: [
+    {
+      date: "March 23, 2026",
+      session: 5,
+      summary: "Automated daily ops run (run 2). Notebook consulted: AEO answer-first format, phone above fold, NMLS in title tags, form length. FIXED MEDIUM: phone now above fold on both landing pages (added as trust bar chip with lp-trust-phone class). FIXED LOW: all 6 remaining loan page title tags now include NMLS #513013. FIXED LOW: all 9 suburb page title tags standardized with # — Westlake + Buda had NMLS entirely missing. Suburb schema audit: all 9 pages FAQPage ✅ BreadcrumbList ✅ forms ✅. n8n: Web Lead Automation active ✅ — last successful runs March 22 (no new form leads day 1 of ad campaign). Outlook Sync errors pre-existing (needs env var). 17 files changed, pushed to GitHub.",
+      tasks: [
+        "FIXED MEDIUM: Phone (512) 956-6010 added to trust bar on /get-preapproved + /refinance-quote — now above fold on all devices",
+        "FIXED LOW: 6 loan page title tags updated — conventional, fha, usda, jumbo, construction, investment now all include NMLS #513013",
+        "FIXED LOW: 9 suburb page title tags standardized — all now use NMLS #513013 with # sign; Westlake + Buda had it missing entirely",
+        "Suburb audit: all 9 pages — FAQPage ✅ BreadcrumbList ✅ inline forms ✅ CTA patterns ✅",
+        "Ads: Suburb Purchase Leads campaign day 1 — no data yet (expected). Campaign config verified in context file.",
+        "n8n: Web Lead Automation active ✅ | Inbound Email Sync running ✅ | Outlook Sync errors pre-existing (env var needed)",
+        "Notebook key takeaways: phone above fold drives 60%+ conversion lift; long-tail keywords reduce CPC; NMLS# in title = E-E-A-T signal; answer-first format for AEO",
+        "Pushed 17-file commit to GitHub. Netlify auto-deploying."
+      ],
+      scores: { ads: 7, seo: 9, capture: 9, mobile: 7, funnel: 9 }
+    },
     {
       date: "March 23, 2026",
       session: 4,
