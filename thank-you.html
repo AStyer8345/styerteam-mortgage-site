@@ -14,7 +14,9 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <!-- Fonts load async — eliminates render-blocking -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/style.css">
@@ -141,6 +143,25 @@
         </div>
 
         <p class="ty-body" style="margin-bottom: var(--spacing-md);">Or call / text Adam directly: <a href="tel:+15129566010" style="color: var(--color-navy); font-weight: 600;">(512) 956-6010</a></p>
+
+        <!-- What happens next -->
+        <div style="background:var(--color-light-gray);border-radius:var(--radius-xl);padding:var(--spacing-xl);margin-top:var(--spacing-xl);text-align:left;">
+          <p style="font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--color-navy);margin-bottom:var(--spacing-md);text-align:center;">What happens next</p>
+          <div style="display:flex;flex-direction:column;gap:var(--spacing-sm);">
+            <div style="display:flex;align-items:flex-start;gap:var(--spacing-sm);">
+              <div style="min-width:24px;height:24px;border-radius:50%;background:var(--color-gold);color:var(--color-navy);font-weight:700;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div>
+              <p style="margin:0;font-size:var(--font-size-sm);color:var(--color-dark-gray);line-height:1.5;"><strong>Adam reviews your info today</strong> — he reads every submission personally, same day.</p>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:var(--spacing-sm);">
+              <div style="min-width:24px;height:24px;border-radius:50%;background:var(--color-gold);color:var(--color-navy);font-weight:700;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div>
+              <p style="margin:0;font-size:var(--font-size-sm);color:var(--color-dark-gray);line-height:1.5;"><strong>He reaches out to discuss</strong> — quick call or text to walk through your real options.</p>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:var(--spacing-sm);">
+              <div style="min-width:24px;height:24px;border-radius:50%;background:var(--color-gold);color:var(--color-navy);font-weight:700;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div>
+              <p style="margin:0;font-size:var(--font-size-sm);color:var(--color-dark-gray);line-height:1.5;"><strong>Pre-approval letter or rate quote within 24 hrs</strong> — real numbers, not estimates.</p>
+            </div>
+          </div>
+        </div>
 
         <div class="ty-trust">
           <span class="stars">★★★★★</span> 5.0 Stars &middot; 136+ Reviews &nbsp;|&nbsp; NMLS #513013

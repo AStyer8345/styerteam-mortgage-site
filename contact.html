@@ -206,7 +206,9 @@
           <div>
             <h2 class="mb-lg">Send Us a Message</h2>
 
-            <form>
+            <form name="contact" method="POST" action="/thank-you" netlify netlify-honeypot="bot-field" id="form-contact">
+              <input type="hidden" name="form-name" value="contact">
+              <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
               <div class="form-group">
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" required autocomplete="name">
@@ -242,6 +244,7 @@
               </div>
 
               <button type="submit" class="btn btn-primary btn-lg btn-block">Send Message</button>
+              <p style="font-size:0.8rem; color:var(--color-gray); margin-top:0.75rem; line-height:1.5;">I respond within 1 business day. Or skip the form — <a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener" style="color:var(--color-navy);">schedule a call here</a>.</p>
             </form>
           </div>
 
@@ -553,5 +556,15 @@
 
   <script src="script.js" defer></script>
   <script src="/analytics.js" defer></script>
+  <script>
+    (function () {
+      var form = document.getElementById('form-contact');
+      if (!form) return;
+      form.addEventListener('submit', function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', lead_type: 'contact_form' });
+      });
+    })();
+  </script>
 </body>
 </html>
