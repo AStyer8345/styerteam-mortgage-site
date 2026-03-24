@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 24, 2026 (daily run) — Contact form was broken (not wired to Netlify — fixed). TCPA compliance checkboxes added to both landing pages. FAQPage schema + FAQ section added to homepage. trust bar verbatim text fixed on homepage. Thank-you page: async fonts + 3-step what-happens-next added. Loan pages (conventional, fha) CTAs now link to /get-preapproved. All changes deployed.
+March 24, 2026 (daily run #2) — Title tag audit (Tuesday rotation): fixed NMLS# formatting (missing # symbol) on loans/refinance.html, products.html, about.html, calculators.html. Deployed. Conversion tracking verified: generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all confirmed firing.
 
 ---
 
@@ -331,6 +331,7 @@ Update this section as work is completed or new issues are found.
 | Suburb pages have no inline lead capture forms | MEDIUM | ✅ CONFIRMED 2026-03-23 — all 9 suburb pages have inline forms |
 | Blog CTAs not wired to ad landing pages | MEDIUM | ✅ CONFIRMED 2026-03-24 — all 3 blog posts (surrender, ai-trap, rates) + both placeholder posts have /get-preapproved CTAs. Rates post also has /refinance-quote. No older posts without CTAs found. |
 | Loan page title tags missing NMLS# | LOW | ✅ FIXED 2026-03-23 (run 2) — all 6 remaining loan pages (conventional, fha, usda, jumbo, construction, investment) now include NMLS #513013. All 9 suburb pages also standardized (Westlake + Buda had NMLS missing entirely). |
+| Title tags using "NMLS 513013" (no # symbol) | LOW | ✅ FIXED 2026-03-24 (run 2) — loans/refinance.html (also missing NMLS# entirely), products.html, about.html, calculators.html — all now use "NMLS #513013" format consistently. |
 | manifest.json missing March 18 post | LOW | ✅ FIXED 2026-03-20 — ai-trap post added to manifest |
 | FAQPage schema missing from surrender post + AI trap post | LOW | ✅ FIXED 2026-03-23 — 5 FAQs added to each post. Surrender post robots also changed to index,follow. |
 | New blog post: Austin mortgage rates March 2026 | ✅ DONE | Published 2026-03-20: /blog/2026-03-20-austin-mortgage-rates-march-2026.html — Article + FAQPage schema, 5 FAQ questions, internal links to /get-preapproved, /refinance-quote, /calculators |
