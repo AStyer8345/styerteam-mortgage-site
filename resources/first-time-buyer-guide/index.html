@@ -562,18 +562,21 @@
               </div>
               <button type="submit" class="guide-form-submit" id="guide-submit-btn">Send Me the Guide &#8594;</button>
               <p class="guide-form-privacy" id="guide-form-status">No spam, ever. Just the guide and occasional mortgage tips.</p>
+              <p id="guide-form-error" style="display:none;margin-top:10px;padding:10px 14px;background:#fef2f2;border:1px solid #fecaca;border-radius:6px;font-size:13px;color:#b91c1c;text-align:center;"></p>
             </form>
             <script>
               document.getElementById('guide-signup-form').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 var btn    = document.getElementById('guide-submit-btn');
                 var status = document.getElementById('guide-form-status');
+                var errBox = document.getElementById('guide-form-error');
                 var email  = document.getElementById('guide-email').value.trim();
                 var fname  = document.getElementById('guide-fname').value.trim();
 
                 btn.disabled = true;
                 btn.textContent = 'Sending\u2026';
                 status.textContent = '';
+                errBox.style.display = 'none';
 
                 try {
                   var res = await fetch('/.netlify/functions/subscribe-lead', {
@@ -583,7 +586,9 @@
                   });
                   var data = await res.json();
                   if (res.ok && data.success) {
-                    btn.textContent = 'Check your inbox!';
+                    btn.textContent = '\u2713 Check your inbox!';
+                    btn.style.background = '#16a34a';
+                    btn.style.color = '#fff';
                     status.textContent = 'The guide is on its way. Check your email (and spam just in case).';
                     document.getElementById('guide-fname').value = '';
                     document.getElementById('guide-email').value = '';
@@ -593,7 +598,8 @@
                 } catch (err) {
                   btn.disabled = false;
                   btn.textContent = 'Send Me the Guide \u2192';
-                  status.textContent = 'Something went wrong. Try again or email adam@styermortgage.com.';
+                  errBox.textContent = 'Something went wrong \u2014 please try again or email adam@styermortgage.com.';
+                  errBox.style.display = 'block';
                   console.error(err);
                 }
               });

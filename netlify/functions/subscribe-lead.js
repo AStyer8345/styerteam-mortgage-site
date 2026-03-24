@@ -18,11 +18,12 @@ const crypto = require("crypto");
 
 // List ID read exclusively from env — no hard-coded fallback
 const LIST_ID  = process.env.MAILCHIMP_BORROWER_LIST_ID || "";
-const _apiKey  = process.env.MAILCHIMP_API_KEY || "";
+const _apiKey  = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key || "";
 // Derive datacenter from the API key suffix, then fall back to the env var.
 // The API key format is "key-dc" where dc is the datacenter prefix.
 const DC       = (_apiKey.includes("-") ? _apiKey.split("-").pop() : null)
                  || process.env.MAILCHIMP_SERVER_PREFIX
+                 || process.env.mailchimp_server_prefix
                  || "";
 const API_BASE = `https://${DC}.api.mailchimp.com/3.0`;
 
@@ -48,7 +49,7 @@ exports.handler = async (event) => {
     return respond(405, { error: "Method not allowed" });
   }
 
-  const apiKey = process.env.MAILCHIMP_API_KEY;
+  const apiKey = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key;
   if (!apiKey || !LIST_ID) {
     console.error("Missing env vars: MAILCHIMP_API_KEY or MAILCHIMP_BORROWER_LIST_ID");
     return respond(500, { error: "Server misconfiguration" });
