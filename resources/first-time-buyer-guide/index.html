@@ -586,10 +586,11 @@
                   });
                   var data = await res.json();
                   if (res.ok && data.success) {
-                    btn.textContent = '\u2713 Check your inbox!';
+                    btn.textContent = '\u2713 Guide sent — opening now!';
                     btn.style.background = '#16a34a';
                     btn.style.color = '#fff';
-                    status.textContent = 'The guide is on its way. Check your email (and spam just in case).';
+                    status.textContent = 'Check your email too — a copy is on its way.';
+                    window.open('https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9', '_blank');
                     document.getElementById('guide-fname').value = '';
                     document.getElementById('guide-email').value = '';
                   } else {
