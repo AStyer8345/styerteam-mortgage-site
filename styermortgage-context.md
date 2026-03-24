@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 23, 2026 (run 2 — automated daily ops) — Phone (512) 956-6010 now above fold on both landing pages as clickable trust bar chip (resolves medium open issue). All 6 loan page title tags now include NMLS #513013. All 9 suburb page title tags standardized with # and NMLS (Westlake + Buda had it missing). n8n Web Lead Automation active ✅. Suburb ads campaign day 1 — no lead data yet. 17 files pushed to GitHub.
+March 24, 2026 (daily run) — Contact form was broken (not wired to Netlify — fixed). TCPA compliance checkboxes added to both landing pages. FAQPage schema + FAQ section added to homepage. trust bar verbatim text fixed on homepage. Thank-you page: async fonts + 3-step what-happens-next added. Loan pages (conventional, fha) CTAs now link to /get-preapproved. All changes deployed.
 
 ---
 
@@ -121,12 +121,29 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 
 ---
 
-## GOOGLE ADS CAMPAIGNS
+## GOOGLE ADS
+
+**Account ID:** 758-138-2642 (Adam Styer | Mortgage Solutions LP)
+**Optimization Score:** 87.9% (as of 2026-03-23) — working toward 100%
+
+### Optimizer Setup
+- **Google Ads Scripts** (Tools → Bulk actions → Scripts): "Daily Optimizer" script installed and scheduled daily. Applies safe recommendations automatically (extensions, match types, ad strength). Skips budget/bid changes for human review.
+- **Claude Code scheduled task:** `google-ads-daily-optimize` — runs 8 AM daily, queries NotebookLM for best practices, then runs the optimizer.
+- **Script file:** `/Users/adamstyer/loanos/scripts/google_ads_optimizer.py` (Python/API version — requires credentials)
+- **Command:** `/Users/adamstyer/loanos/.claude/commands/google-ads-optimize.md`
+
+### Campaigns
 
 | Campaign | Status | Ad Destination | Goal |
 |---|---|---|---|
-| Search-1 (The Styer Mortgage Team) | Eligible — $100.36/day, 0 impressions (2026-03-21) | /get-preapproved | Lead form submission |
+| Search-1 (The Styer Mortgage Team) | Eligible — $100.36/day | /get-preapproved | Lead form submission |
 | Refinance | In preparation | /refinance-quote | Lead form submission |
+
+### Sitelinks (applied 2026-03-23)
+| Sitelink | Destination | Status |
+|---|---|---|
+| First-Time Buyers | /first-time-buyer-guide | ✅ Fixed — was pointing to nonexistent /first-time-home-buyer |
+| Callout assets | Various | ✅ Applied via Scripts |
 
 **Target keywords — Purchase:**
 - mortgage lender austin tx
@@ -195,7 +212,8 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 | WRAP mortgage calculator | /wrap-mortgage-calculator |
 | Blog index | /blog |
 | Realtor resources | /realtor-resources |
-| Buyer guide | /first-time-buyer-guide |
+| Buyer guide (article) | /first-time-buyer-guide |
+| First-time buyer landing page | /first-time-home-buyer ✅ NEW 2026-03-23 — conversion LP with form, FHA/USDA/Conv cards, FAQ schema |
 | Fixed vs adjustable article | /fixed-vs-adjustable |
 | Improve credit score article | /improve-credit-score |
 
@@ -220,6 +238,7 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 ### Schema Markup
 | Schema Type | Page | Status |
 |---|---|---|
+| FAQPage | Homepage | ✅ Added 2026-03-24 — 5 questions (pre-approval speed, broker vs bank, loan programs, cost, refinance 2026) |
 | MortgageBroker | Homepage | ✅ Present — @type updated from FinancialService; includes AggregateRating (136 reviews, 5.0) |
 | AggregateRating | Homepage | ✅ Present in LocalBusiness schema |
 | FAQPage | /dscr-loan-austin-tx | ✅ Present — 6 questions — verified 2026-03-19 |
@@ -310,7 +329,7 @@ Update this section as work is completed or new issues are found.
 | /loans/va title tag missing NMLS# | LOW | ✅ FIXED 2026-03-23 — now "VA Loans Austin TX \| Adam Styer \| NMLS #513013" |
 | PageSpeed mobile score unverified 2026-03-21 | LOW | API quota exhausted during scheduled run. Last confirmed score: 80 (2026-03-20). Check manually at pagespeed.web.dev when convenient. |
 | Suburb pages have no inline lead capture forms | MEDIUM | ✅ CONFIRMED 2026-03-23 — all 9 suburb pages have inline forms |
-| Blog CTAs not wired to ad landing pages | MEDIUM | New posts now include CTAs to /get-preapproved and /refinance-quote — older posts still need update |
+| Blog CTAs not wired to ad landing pages | MEDIUM | ✅ CONFIRMED 2026-03-24 — all 3 blog posts (surrender, ai-trap, rates) + both placeholder posts have /get-preapproved CTAs. Rates post also has /refinance-quote. No older posts without CTAs found. |
 | Loan page title tags missing NMLS# | LOW | ✅ FIXED 2026-03-23 (run 2) — all 6 remaining loan pages (conventional, fha, usda, jumbo, construction, investment) now include NMLS #513013. All 9 suburb pages also standardized (Westlake + Buda had NMLS missing entirely). |
 | manifest.json missing March 18 post | LOW | ✅ FIXED 2026-03-20 — ai-trap post added to manifest |
 | FAQPage schema missing from surrender post + AI trap post | LOW | ✅ FIXED 2026-03-23 — 5 FAQs added to each post. Surrender post robots also changed to index,follow. |
@@ -320,3 +339,10 @@ Update this section as work is completed or new issues are found.
 | Mobile PageSpeed /refinance-quote | HIGH | ✅ FIXED 2026-03-21 — Google Fonts now async (same fix as /get-preapproved). Re-run PageSpeed to verify. |
 | /mortgage-pre-approval-austin.html existence unverified | MEDIUM | ✅ CONFIRMED 2026-03-21 — file exists. Suburb pages (round-rock, cedar-park, kyle, san-marcos) link to it as an article, not a primary CTA. No broken links. |
 | /austin-down-payment-assistance — existence unverified | LOW | ✅ CONFIRMED — file exists: austin-down-payment-assistance.html |
+| contact.html form not wired to Netlify | HIGH | ✅ FIXED 2026-03-24 — form now has netlify attribute, form-name hidden input, action="/thank-you", generate_lead event, Calendly secondary CTA |
+| TCPA compliance missing from landing pages | MEDIUM | ✅ FIXED 2026-03-24 — consent checkbox added to /get-preapproved and /refinance-quote forms |
+| Homepage missing FAQPage schema | MEDIUM | ✅ FIXED 2026-03-24 — 5-question FAQPage JSON-LD added to head + accordion FAQ section added above final CTA |
+| Homepage trust bar not verbatim standard | LOW | ✅ FIXED 2026-03-24 — was "#1 Austin Mortgage Team", now "Licensed in Texas \| NMLS #513013" |
+| thank-you.html fonts sync (render-blocking) | MEDIUM | ✅ FIXED 2026-03-24 — converted to async preload pattern |
+| thank-you.html missing 3-step what-happens-next | LOW | ✅ FIXED 2026-03-24 — 3-step inline section added to ty-card |
+| loans/conventional.html + loans/fha.html CTA links to loan app URL not /get-preapproved | MEDIUM | ✅ FIXED 2026-03-24 — CTA now links to /get-preapproved for better conversion path |
