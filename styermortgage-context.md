@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 24, 2026 (daily run #2) — Title tag audit (Tuesday rotation): fixed NMLS# formatting (missing # symbol) on loans/refinance.html, products.html, about.html, calculators.html. Deployed. Conversion tracking verified: generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all confirmed firing.
+March 25, 2026 (daily run) — Suburbs audit (Wednesday rotation): standardized trust bars on all 9 suburb pages to verbatim standard. Fixed Westlake + Buda title tags, meta descriptions (trimmed to <160 chars), added og:image, replaced short disclaimers with full NMLS verbatim disclaimer. Created learnings.md. Deployed.
 
 ---
 
@@ -347,3 +347,10 @@ Update this section as work is completed or new issues are found.
 | thank-you.html fonts sync (render-blocking) | MEDIUM | ✅ FIXED 2026-03-24 — converted to async preload pattern |
 | thank-you.html missing 3-step what-happens-next | LOW | ✅ FIXED 2026-03-24 — 3-step inline section added to ty-card |
 | loans/conventional.html + loans/fha.html CTA links to loan app URL not /get-preapproved | MEDIUM | ✅ FIXED 2026-03-24 — CTA now links to /get-preapproved for better conversion path |
+| Suburb trust bars inconsistent (two different formats) | HIGH | ✅ FIXED 2026-03-25 — all 9 pages now use standard: "5.0 ★ (136+ Reviews) \| 21-Day Avg. Close \| Licensed in Texas \| NMLS #513013" |
+| Westlake + Buda title tags non-standard format | MEDIUM | ✅ FIXED 2026-03-25 — standardized to "Mortgage Lender [City] TX \| Adam Styer \| NMLS #513013" |
+| Westlake + Buda meta descriptions >160 chars | MEDIUM | ✅ FIXED 2026-03-25 — trimmed to <160 chars |
+| Westlake + Buda missing og:image | LOW | ✅ FIXED 2026-03-25 — added og:image with headshot.jpg |
+| Westlake + Buda short NMLS disclaimer | MEDIUM | ✅ FIXED 2026-03-25 — replaced with full verbatim disclaimer + NMLS Consumer Access link |
+| Westlake + Buda template drift from other suburb pages | MEDIUM | FLAG FOR ADAM — these two pages were built from a different template; consider rebuilding to match other 7 suburb pages |
+| /privacy.html linked from WL + BD footers — existence unverified | LOW | Verify on next run (Thursday links audit) |
