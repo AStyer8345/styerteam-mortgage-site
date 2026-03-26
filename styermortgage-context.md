@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 26, 2026 (PM) — Google Ads strategy revised: Search-1 ($100/day broad Austin campaign) paused. New suburb-focused campaign spec written targeting Round Rock, Georgetown, Pflugerville, Dripping Springs at $500/month. Spec at: /Users/adamstyer/Documents/loanos-clone/tasks/seo-sem/specs/google-ads-suburb-campaigns.md. Also: 301 redirects added for all extensionless → .html URLs (fixes GSC duplicate URL split); GSC data added to tasks/seo-sem/gsc/; sitemap.xml expanded from 31 → 56 pages.
+March 26, 2026 (evening, daily-opt run) — Homepage H1 updated: "Your Austin Home Loan Simplified" → "Mortgage Broker Austin TX — Adam Styer | NMLS #513013" (keyword-front SEO fix per NotebookLM). Trust bar standardized on 39 pages: all now read "Licensed in Texas | NMLS #513013". 15 new suburb pages (bastrop, bee-cave, dripping-springs, elgin, florence, hutto, jarrell, lakeway, liberty-hill, manor, marble-falls, new-braunfels, smithville, spicewood, taylor) committed from prior sessions. Known issue: suburb quick-forms don't fire Google Ads conversion (see FLAG_FOR_ADAM in run-logs/2026-03-26.md).
 
 ---
 
@@ -359,3 +359,7 @@ Update this section as work is completed or new issues are found.
 | thank-you.html fonts sync (render-blocking) | MEDIUM | ✅ FIXED 2026-03-24 — converted to async preload pattern |
 | thank-you.html missing 3-step what-happens-next | LOW | ✅ FIXED 2026-03-24 — 3-step inline section added to ty-card |
 | loans/conventional.html + loans/fha.html CTA links to loan app URL not /get-preapproved | MEDIUM | ✅ FIXED 2026-03-24 — CTA now links to /get-preapproved for better conversion path |
+| Homepage H1 keyword-weak | HIGH | ✅ FIXED 2026-03-26 — was "Your Austin Home Loan Simplified" → "Mortgage Broker Austin TX — Adam Styer \| NMLS #513013" |
+| Trust bar non-standard on 39 pages | HIGH | ✅ FIXED 2026-03-26 — all pages now show "Licensed in Texas \| NMLS #513013" |
+| Suburb quick-form not counting as Google Ads conversion | MEDIUM | ⚠️ OPEN — suburb forms fire generate_lead but not thank_you_page_view. Google Ads only counts thank_you_page_view. Needs GTM config change — FLAG_FOR_ADAM. |
+| Homepage hero CTA links to loan app directly (bypasses tracked funnel) | LOW | ⚠️ OPEN — "Apply Now" hero button links to 1003 app. Conversions untracked in GA4/Ads. Low priority — intentional design for high-intent visitors. |
