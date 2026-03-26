@@ -11,3 +11,6 @@ package-lock.json
 facebook-oauth.js
 linkedin-oauth.js
 *-oauth.js
+
+# Local Netlify folder
+.netlify
