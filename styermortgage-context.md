@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 25, 2026 (daily run) — Built evergreen /austin-mortgage-rates page: Article + FAQPage + BreadcrumbList schema, 5 FAQ questions, rate factors grid, loan type comparison cards, calculator callout, broker advantage section. Added to sitemap.xml. Targets "Austin mortgage rates today", "Austin mortgage rates 2026", "mortgage rates Austin TX". This page should be refreshed monthly (update dateModified in Article schema).
+March 26, 2026 (PM) — Google Ads strategy revised: Search-1 ($100/day broad Austin campaign) paused. New suburb-focused campaign spec written targeting Round Rock, Georgetown, Pflugerville, Dripping Springs at $500/month. Spec at: /Users/adamstyer/Documents/loanos-clone/tasks/seo-sem/specs/google-ads-suburb-campaigns.md. Also: 301 redirects added for all extensionless → .html URLs (fixes GSC duplicate URL split); GSC data added to tasks/seo-sem/gsc/; sitemap.xml expanded from 31 → 56 pages.
 
 ---
 
@@ -134,31 +134,38 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 
 ### Campaigns
 
-| Campaign | Status | Ad Destination | Goal |
-|---|---|---|---|
-| Search-1 (The Styer Mortgage Team) | Eligible — $100.36/day | /get-preapproved | Lead form submission |
-| Refinance | In preparation | /refinance-quote | Lead form submission |
+| Campaign | Status | Budget | Ad Destination | Goal |
+|---|---|---|---|---|
+| Search-1 (The Styer Mortgage Team) | **PAUSED** — was $100/day, too broad | — | /get-preapproved | Paused 2026-03-26 |
+| Suburb — Purchase Intent | **SPEC READY — needs setup** | $500/mo ($16.67/day) | Suburb landing pages | Lead form submission |
+| Refinance | In preparation | TBD | /refinance-quote | Lead form submission |
 
-### Sitelinks (applied 2026-03-23)
+### Suburb Campaign (needs manual setup in Google Ads)
+**Full spec:** `/Users/adamstyer/Documents/loanos-clone/tasks/seo-sem/specs/google-ads-suburb-campaigns.md`
+
+| Ad Group | Final URL | Keywords |
+|---|---|---|
+| Round Rock | /round-rock-mortgage-lender.html | "mortgage lender round rock tx" + [exact] |
+| Georgetown | /georgetown-mortgage-lender.html | "mortgage lender georgetown tx" + [exact] |
+| Pflugerville | /pflugerville-mortgage-lender.html | "mortgage lender pflugerville tx" + [exact] |
+| Dripping Springs | /dripping-springs-mortgage-lender.html | "mortgage lender dripping springs tx" + [exact] |
+
+Each ad group: 15 headlines (≤30 chars), 4 descriptions (≤90 chars), phrase + exact match keywords. Campaign-level sitelinks, callouts, and call extension (512) 956-6010. NMLS #513013 in headline 14. Equal Housing in all ad groups.
+
+### Sitelinks (applied 2026-03-23 on old Search-1)
 | Sitelink | Destination | Status |
 |---|---|---|
 | First-Time Buyers | /first-time-buyer-guide | ✅ Fixed — was pointing to nonexistent /first-time-home-buyer |
 | Callout assets | Various | ✅ Applied via Scripts |
 
-**Target keywords — Purchase:**
-- mortgage lender austin tx
-- get pre-approved austin
-- home loan austin tx
-- first time home buyer austin
-- mortgage broker austin tx
-- austin mortgage broker
+**Suburb campaign target keywords (per ad group, phrase + exact):**
+- Round Rock: "mortgage lender round rock tx", "round rock mortgage broker", "home loans round rock tx"
+- Georgetown: "mortgage lender georgetown tx", "mortgage broker georgetown texas", "home loans georgetown tx"
+- Pflugerville: "mortgage lender pflugerville tx", "mortgage broker pflugerville", "home loans pflugerville tx"
+- Dripping Springs: "mortgage lender dripping springs tx", "mortgage broker dripping springs", "home loans dripping springs"
 
-**Target keywords — Refinance:**
-- refinance mortgage austin tx
-- lower my mortgage rate austin
-- cash out refinance austin tx
-- austin mortgage refinance
-- refinance home loan austin
+**Negative keywords (add immediately on new campaign):**
+jobs, career, salary, license, school, class, training, free house, rent, apartment, commercial, business loan
 
 ---
 
