@@ -1,3 +1,52 @@
+# 301 Redirects: Extensionless → .html (consolidates duplicate URLs in Google)
+
+/loans/conventional  /loans/conventional.html  301
+/loans/fha  /loans/fha.html  301
+/loans/va  /loans/va.html  301
+/loans/usda  /loans/usda.html  301
+/loans/jumbo  /loans/jumbo.html  301
+/loans/construction  /loans/construction.html  301
+/loans/investment  /loans/investment.html  301
+/loans/refinance  /loans/refinance.html  301
+
+/round-rock-mortgage-lender  /round-rock-mortgage-lender.html  301
+/cedar-park-mortgage-lender  /cedar-park-mortgage-lender.html  301
+/leander-mortgage-lender  /leander-mortgage-lender.html  301
+/georgetown-mortgage-lender  /georgetown-mortgage-lender.html  301
+/pflugerville-mortgage-lender  /pflugerville-mortgage-lender.html  301
+/kyle-mortgage-lender  /kyle-mortgage-lender.html  301
+/san-marcos-mortgage-lender  /san-marcos-mortgage-lender.html  301
+/westlake-mortgage-lender  /westlake-mortgage-lender.html  301
+/buda-mortgage-lender  /buda-mortgage-lender.html  301
+/bastrop-mortgage-lender  /bastrop-mortgage-lender.html  301
+/bee-cave-mortgage-lender  /bee-cave-mortgage-lender.html  301
+/dripping-springs-mortgage-lender  /dripping-springs-mortgage-lender.html  301
+/elgin-mortgage-lender  /elgin-mortgage-lender.html  301
+/florence-mortgage-lender  /florence-mortgage-lender.html  301
+/hutto-mortgage-lender  /hutto-mortgage-lender.html  301
+/jarrell-mortgage-lender  /jarrell-mortgage-lender.html  301
+/lakeway-mortgage-lender  /lakeway-mortgage-lender.html  301
+/liberty-hill-mortgage-lender  /liberty-hill-mortgage-lender.html  301
+/manor-mortgage-lender  /manor-mortgage-lender.html  301
+/marble-falls-mortgage-lender  /marble-falls-mortgage-lender.html  301
+/new-braunfels-mortgage-lender  /new-braunfels-mortgage-lender.html  301
+/smithville-mortgage-lender  /smithville-mortgage-lender.html  301
+/spicewood-mortgage-lender  /spicewood-mortgage-lender.html  301
+/taylor-mortgage-lender  /taylor-mortgage-lender.html  301
+
+/dscr-loan-austin-tx  /dscr-loan-austin-tx.html  301
+/mortgage-pre-approval-austin  /mortgage-pre-approval-austin.html  301
+/first-time-home-buyer  /first-time-home-buyer.html  301
+/products  /products.html  301
+/about  /about.html  301
+/contact  /contact.html  301
+/contact-us  /contact.html  301
+/calculators  /calculators.html  301
+/blog.html  /blog  301
+/testimonials  /testimonials.html  301
+/realtors  /realtors.html  301
+/prequal  /prequal.html  301
+
 # 301 Redirects: Old WordPress URLs → New Pages
 
 /mortgage-loan-refinance-options-austin/va-home-loan/  /loans/va.html  301
