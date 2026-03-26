@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 24, 2026 (daily run #2) — Title tag audit (Tuesday rotation): fixed NMLS# formatting (missing # symbol) on loans/refinance.html, products.html, about.html, calculators.html. Deployed. Conversion tracking verified: generate_lead (purchase_prequal + refi_quote), thank_you_page_view, phone_click all confirmed firing.
+March 25, 2026 (daily run) — Built evergreen /austin-mortgage-rates page: Article + FAQPage + BreadcrumbList schema, 5 FAQ questions, rate factors grid, loan type comparison cards, calculator callout, broker advantage section. Added to sitemap.xml. Targets "Austin mortgage rates today", "Austin mortgage rates 2026", "mortgage rates Austin TX". This page should be refreshed monthly (update dateModified in Article schema).
 
 ---
 
@@ -204,6 +204,11 @@ Google Ads conversion fires on: `thank_you_page_view` (page load at /thank-you)
 | Westlake | /westlake-mortgage-lender |
 | Buda | /buda-mortgage-lender |
 
+### Rates & Market Pages
+| Page | URL | Status |
+|---|---|---|
+| Austin mortgage rates (evergreen) | /austin-mortgage-rates | ✅ NEW 2026-03-25 — Article + FAQPage schema, 5 FAQs, rate factors, loan type comparison. Update dateModified monthly. |
+
 ### Resources & Tools
 | Page | URL |
 |---|---|
@@ -335,7 +340,7 @@ Update this section as work is completed or new issues are found.
 | manifest.json missing March 18 post | LOW | ✅ FIXED 2026-03-20 — ai-trap post added to manifest |
 | FAQPage schema missing from surrender post + AI trap post | LOW | ✅ FIXED 2026-03-23 — 5 FAQs added to each post. Surrender post robots also changed to index,follow. |
 | New blog post: Austin mortgage rates March 2026 | ✅ DONE | Published 2026-03-20: /blog/2026-03-20-austin-mortgage-rates-march-2026.html — Article + FAQPage schema, 5 FAQ questions, internal links to /get-preapproved, /refinance-quote, /calculators |
-| "Austin mortgage rates today" page missing | MEDIUM | ✅ Addressed by blog post — consider building a dedicated evergreen /austin-mortgage-rates page next |
+| "Austin mortgage rates today" page missing | MEDIUM | ✅ FIXED 2026-03-25 — dedicated evergreen /austin-mortgage-rates page built. Article + FAQPage + BreadcrumbList schema. Update dateModified monthly. |
 | Homepage LCP critical | HIGH | ✅ FIXED 2026-03-21 — Root cause: adam-cutout.png (5 MB, fetchpriority=high) downloaded on mobile despite display:none. Fixed with <picture> + media query (mobile gets data URI, desktop gets 46 KB WebP). Also compressed hero-bg.jpg 1.7 MB→146 KB and added async fonts. Netlify deploying. |
 | Mobile PageSpeed /refinance-quote | HIGH | ✅ FIXED 2026-03-21 — Google Fonts now async (same fix as /get-preapproved). Re-run PageSpeed to verify. |
 | /mortgage-pre-approval-austin.html existence unverified | MEDIUM | ✅ CONFIRMED 2026-03-21 — file exists. Suburb pages (round-rock, cedar-park, kyle, san-marcos) link to it as an article, not a primary CTA. No broken links. |
