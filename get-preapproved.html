@@ -363,10 +363,18 @@
                   </select>
                 </div>
               </div>
+              <!-- TCPA consent — required, unchecked by default -->
               <div class="lp-form-field full" style="margin-top:var(--spacing-sm);">
                 <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
-                  <input type="checkbox" name="tcpa_consent" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
-                  <span>By submitting, I agree to be contacted via phone, email, or text about mortgage options. Msg &amp; data rates may apply. Reply STOP to opt out at any time.</span>
+                  <input type="checkbox" name="tcpa_consent" id="gpa-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+                  <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+                </label>
+              </div>
+              <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
+              <div class="lp-form-field full" style="margin-top:var(--spacing-xs,8px);">
+                <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
+                  <input type="checkbox" name="sms_opt_in" id="gpa-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+                  <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
                 </label>
               </div>
               <div class="lp-form-submit">
@@ -495,20 +503,21 @@
       var form = document.getElementById('form-get-preapproved');
       if (!form) return;
 
-      // Map loan goal → Mailchimp Journey tag
+      // Map loan goal → Mailchimp Journey tag (loan-type tag for segmentation)
       var TAG_MAP = {
-        'Purchase':         'purchase-lead',
-        'First-Time Buyer': 'ftb-lead',
-        'Refinance':        'refi-lead',
+        'Purchase':         'purchase-buyer',
+        'First-Time Buyer': 'purchase-buyer',
+        'Refinance':        'refi-interest',
         'DSCR/Investor':    'investor-lead',
       };
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        var data      = new FormData(form);
-        var loanGoal  = data.get('loan_goal') || '';
-        var tag       = TAG_MAP[loanGoal] || 'new-lead';
+        var data         = new FormData(form);
+        var loanGoal     = data.get('loan_goal') || '';
+        var loanTypeTag  = TAG_MAP[loanGoal] || '';
+        var tag          = 'pre-approval-funnel';
 
         // GTM conversion event
         window.dataLayer = window.dataLayer || [];
@@ -527,16 +536,19 @@
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              email:        data.get('email')        || '',
-              fname:        data.get('first_name')   || '',
-              lname:        data.get('last_name')    || '',
-              phone:        data.get('phone')        || '',
-              tag:          tag,
-              loan_goal:    loanGoal,
-              utm_source:   data.get('utm_source')   || '',
-              utm_medium:   data.get('utm_medium')   || '',
-              utm_campaign: data.get('utm_campaign') || '',
-              page_url:     data.get('page_url')     || window.location.href,
+              email:         data.get('email')        || '',
+              fname:         data.get('first_name')   || '',
+              lname:         data.get('last_name')    || '',
+              phone:         data.get('phone')        || '',
+              tag:           tag,
+              loan_goal:     loanGoal,
+              lead_source:   'Pre-Approval Funnel',
+              sms_opt_in:    data.get('sms_opt_in') === 'on',
+              loan_type_tag: loanTypeTag,
+              utm_source:    data.get('utm_source')   || '',
+              utm_medium:    data.get('utm_medium')   || '',
+              utm_campaign:  data.get('utm_campaign') || '',
+              page_url:      data.get('page_url')     || window.location.href,
             }),
           }).catch(function (err) { console.error('subscribe-lead error:', err); }),
         ]).finally(function () {
