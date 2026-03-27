@@ -1,6 +1,58 @@
 # Site Improvement Session Log
 
 ---
+## [2026-03-27 2 AM] — SVG Icon Upgrade: Why Choose Cards
+
+**Category:** Design / Visual
+**Pages touched:** index.html, style.css
+
+**What changed:**
+- Replaced 6 emoji HTML entities in the "Why Choose Adam Styer" card grid with clean Feather-style inline SVG icons
+- Emojis replaced: &#128203; (clipboard) → clock, &#128176; (money bag) → price tag, &#127968; (house) → users/network, &#128222; (phone) → phone, &#127919; (bullseye) → award, &#128640; (rocket) → shield
+- Added `color: var(--color-gold)` to `.card-icon` in style.css so all SVGs inherit the brand gold via `currentColor`
+- SVGs are 28×28, stroke-based, `aria-hidden="true"` for accessibility
+
+**Why:**
+Emoji HTML entities render differently across every OS/browser combination — Apple renders them as colorful emoji, Windows renders them smaller and differently styled, Android has yet another interpretation. This creates an inconsistent, amateur appearance that undermines the professional tone of the surrounding hero and stats strip. Feather-style SVG icons are OS-agnostic, perfectly sized, always gold, and consistent everywhere. This is the standard on professional mortgage and financial services sites.
+
+**Research sources:**
+- Session log recommendation from 2026-03-27 1 AM run
+- Feather icon set (feathericons.com) — stroke-based icon system matching the site's existing SVG style (hero phone icon uses the same pattern)
+
+**Result:**
+The "Why Choose" section now has a visually consistent, professional icon set that matches the brand palette on every device. Eliminates cross-platform rendering inconsistency. Contributes to overall premium feel that builds trust with first-time visitors.
+
+**Next run suggestion:**
+Audit the homepage hero headline ("Mortgage Broker Austin TX — Adam Styer | NMLS #513013") — it's keyword-first for SEO but reads like a business card, not a value proposition. Consider A/B testing a sub-headline that directly answers "what's in it for me" (e.g., "Access 40+ wholesale lenders. Close in 21 days.") positioned immediately below the H1 to deliver both SEO signal and human persuasion.
+
+---
+## [2026-03-27 1 AM] — Social Proof Stats Strip
+
+**Category:** Design / Conversion
+**Pages touched:** index.html, style.css
+
+**What changed:**
+- Added a 4-stat navy band between the hero section and the "Why Choose Us" card grid
+- Stats: 1,000+ Loans Closed | 5.0 ★ Average Google Rating | 40+ Wholesale Lenders | 21 Days Avg. Close Time
+- Gold numbers (var(--color-gold)) on navy background with subtle white vertical dividers
+- Responsive: 4-column row on desktop → 2×2 grid on mobile (≤700px)
+- Inherits existing `data-animate` scroll fade-in (no JS changes needed)
+- Border-top: 3px gold creates visual continuity from the hero's gold accents
+
+**Why:**
+The homepage had no section that immediately answered "is this guy legitimate and experienced?" with hard numbers. The trust badge inside the hero form column is buried — many visitors never reach it. The stats strip places 1,000+ loans and 5.0★ directly in the reader's eyeline as they scroll off the hero. Hard numbers are the fastest trust-builder: they're scannable, credible, and difficult to fake. This is a standard pattern on high-converting mortgage sites and most financial services landing pages.
+
+**Research sources:**
+- Existing site audit (styermortgage-context.md)
+- Site's existing stats CSS pattern (style.css section 12) — reused `.stats-grid`, `.stat-item`, `.stat-number`, `.stat-label` base styles with new 4-column variant
+
+**Result:**
+Every homepage visitor now sees four high-credibility numbers within 1–2 scroll positions of landing. Should improve time-on-page and reduce bounce from first-time visitors who arrive via Google Ads or organic search and need a fast confidence signal.
+
+**Next run suggestion:**
+Replace the emoji HTML entities (&#128203; clipboard, &#128176; money bag, &#127968; house) in the "Why Choose Adam Styer" cards with clean SVG icons. Emoji render inconsistently across OS/browser combinations and look amateurish next to the professional hero and stats strip. Inline SVG icons would be a significant visual quality step up.
+
+---
 ## [2026-03-25 1 AM] — Evergreen Austin Mortgage Rates Page
 
 **Category:** SEO / Content
