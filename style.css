@@ -1428,6 +1428,45 @@ textarea {
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* STATS STRIP — Homepage social proof band after hero */
+.stats-strip {
+  padding: var(--spacing-2xl) 0;
+  border-top: 3px solid var(--color-gold);
+}
+
+.stats-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.stat-strip-item {
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  text-align: center;
+}
+
+.stat-strip-item + .stat-strip-item {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 700px) {
+  .stats-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-strip-item + .stat-strip-item {
+    border-left: none;
+  }
+
+  .stat-strip-item:nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .stat-strip-item:nth-child(-n+2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: var(--spacing-xl);
+  }
+}
+
 /* ========================================================================
    13. LISTS & FEATURES
    ======================================================================== */
