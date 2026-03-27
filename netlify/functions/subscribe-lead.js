@@ -30,6 +30,9 @@ const API_BASE = `https://${DC}.api.mailchimp.com/3.0`;
 // n8n webhook: sends the guide welcome email via Outlook for ALL subscribers
 const N8N_GUIDE_EMAIL_URL = "https://styer.app.n8n.cloud/webhook/ftb-guide-email";
 
+// n8n webhook: sends LO notification for pre-approval funnel leads
+const N8N_PA_LEAD_URL = "https://styer.app.n8n.cloud/webhook/pre-approval-lead";
+
 const LOANOS_URL    = "https://loanos.vercel.app";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
 
@@ -62,7 +65,8 @@ exports.handler = async (event) => {
 
   const {
     email, fname, lname, phone, tag,
-    loan_goal, utm_source, utm_medium, utm_campaign, page_url,
+    loan_goal, lead_source, sms_opt_in, loan_type_tag,
+    utm_source, utm_medium, utm_campaign, page_url,
   } = body;
 
   if (!email || !tag) {
@@ -89,6 +93,12 @@ exports.handler = async (event) => {
   sendGuideEmail({ email, fname }).catch(err =>
     console.error("[subscribe-lead] Guide email failed:", err.message)
   );
+
+  // Fire pre-approval lead notification to n8n (non-blocking — only when lead_source is Pre-Approval Funnel)
+  if (lead_source === "Pre-Approval Funnel") {
+    notifyPreApprovalLead({ email, fname, lname, phone, loan_goal, sms_opt_in, utm_source, utm_medium, utm_campaign, page_url })
+      .catch(err => console.error("[subscribe-lead] PA notify failed:", err.message));
+  }
 
   return respond(200, {
     success:   true,
@@ -147,7 +157,29 @@ async function sendGuideEmail({ email, fname }) {
 
 // ── Loanos ────────────────────────────────────────────────────────────────────
 
-async function createLoanosContact({ email, fname, lname, phone, loan_goal, utm_source, utm_medium, utm_campaign, page_url }) {
+async function notifyPreApprovalLead({ email, fname, lname, phone, loan_goal, sms_opt_in, utm_source, utm_medium, utm_campaign, page_url }) {
+  const res = await fetch(N8N_PA_LEAD_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      first_name:   fname || "",
+      last_name:    lname || "",
+      email:        email,
+      phone:        phone || "",
+      loan_goal:    loan_goal || "",
+      sms_opt_in:   sms_opt_in || false,
+      utm_source:   utm_source || "",
+      utm_medium:   utm_medium || "",
+      utm_campaign: utm_campaign || "",
+      page_url:     page_url || "",
+    }),
+  });
+  if (!res.ok) {
+    throw new Error(`PA lead notify webhook failed: ${res.status}`);
+  }
+}
+
+async function createLoanosContact({ email, fname, lname, phone, loan_goal, lead_source, utm_source, utm_medium, utm_campaign, page_url }) {
   if (!LOANOS_SECRET) {
     console.warn("[subscribe-lead] LOANOS_AGENT_SECRET not set — skipping Loanos contact creation");
     return;
@@ -165,7 +197,7 @@ async function createLoanosContact({ email, fname, lname, phone, loan_goal, utm_
       email:         email,
       phone:         phone || "",
       loan_type:     loan_goal || "",
-      lead_source:   "Website",
+      lead_source:   lead_source || "Website",
       referral_type: "web_lead",
       campaign:      utm_campaign || utm_source || "",
     }),

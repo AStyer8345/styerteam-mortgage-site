@@ -670,17 +670,52 @@ function initPrequalForm() {
     }
   });
 
-  // Form submission
-  form.addEventListener('submit', (e) => {
+  // Form submission — sends data to Mailchimp + LoanOS via subscribe-lead function
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!validateStep(currentStep)) return;
+
+    const submitBtn = form.querySelector('[type="submit"]');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting…'; }
+
+    const get = (name) => {
+      const el = form.querySelector(`[name="${name}"]`);
+      return el ? el.value.trim() : '';
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const payload = {
+      fname:        get('first_name'),
+      lname:        get('last_name'),
+      email:        get('email'),
+      phone:        get('phone'),
+      tag:          'prequal-lead',
+      loan_goal:    get('loan_purpose'),
+      lead_source:  'Pre-Approval Funnel',
+      sms_opt_in:   form.querySelector('[name="sms_opt_in"]')?.checked || false,
+      utm_source:   params.get('utm_source') || '',
+      utm_medium:   params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      page_url:     window.location.href,
+    };
+
+    try {
+      const res = await fetch('/.netlify/functions/subscribe-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    } catch (err) {
+      console.error('[prequal] subscribe-lead failed:', err);
+      // Non-blocking — form still shows success. data-netlify fallback captures submission.
+    }
 
     // Show success message
     const formCard = form.closest('.card') || form.parentElement;
     const success = document.createElement('div');
     success.className = 'alert alert-success';
     success.setAttribute('role', 'status');
-    success.innerHTML = '';
 
     const heading = document.createElement('h3');
     heading.textContent = 'Pre-Qualification Submitted!';
