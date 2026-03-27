@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 26, 2026 (evening, daily-opt run) — Homepage H1 updated: "Your Austin Home Loan Simplified" → "Mortgage Broker Austin TX — Adam Styer | NMLS #513013" (keyword-front SEO fix per NotebookLM). Trust bar standardized on 39 pages: all now read "Licensed in Texas | NMLS #513013". 15 new suburb pages (bastrop, bee-cave, dripping-springs, elgin, florence, hutto, jarrell, lakeway, liberty-hill, manor, marble-falls, new-braunfels, smithville, spicewood, taylor) committed from prior sessions. Known issue: suburb quick-forms don't fire Google Ads conversion (see FLAG_FOR_ADAM in run-logs/2026-03-26.md).
+March 27, 2026 (daily-opt run) — All 15 new suburb pages verified live on Netlify (HTTP 200) + in sitemap. Blog manifest fixed: "Newsletter" → "When You Can't Control It, Surrender It", AI trap post title-cased. TCPA consent language improved on /get-preapproved (adds "Consent is not a condition of purchase" + separate optional SMS opt-in per 2026 FCC rules). thank-you.html redesigned (prior session); note: noindex tag removed — flagged for Adam. Known issue: suburb quick-forms don't fire Google Ads conversion (see FLAG_FOR_ADAM).
 
 ---
 
@@ -363,3 +363,4 @@ Update this section as work is completed or new issues are found.
 | Trust bar non-standard on 39 pages | HIGH | ✅ FIXED 2026-03-26 — all pages now show "Licensed in Texas \| NMLS #513013" |
 | Suburb quick-form not counting as Google Ads conversion | MEDIUM | ⚠️ OPEN — suburb forms fire generate_lead but not thank_you_page_view. Google Ads only counts thank_you_page_view. Needs GTM config change — FLAG_FOR_ADAM. |
 | Homepage hero CTA links to loan app directly (bypasses tracked funnel) | LOW | ⚠️ OPEN — "Apply Now" hero button links to 1003 app. Conversions untracked in GA4/Ads. Low priority — intentional design for high-intent visitors. |
+| thank-you.html missing noindex tag | MEDIUM | ⚠️ OPEN — noindex removed during thank-you redesign (prior session). Organic visitors landing on /thank-you without submitting a form skew bounce/conversion data. Fix: add `<meta name="robots" content="noindex, nofollow">` — FLAG_FOR_ADAM. |
