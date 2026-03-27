@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Core pages -->
-  <url><loc>https://styermortgage.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://styermortgage.com/</loc><lastmod>2026-03-27</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://styermortgage.com/products.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://styermortgage.com/calculators.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/about.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/contact.html</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/realtors.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/calculators.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/about.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/contact.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/realtors.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/testimonials.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/testimonials.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/prequal.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/realtor-resources.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/realtor-resources.html</loc><lastmod>2026-03-27</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/texas-complaint-notice.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://styermortgage.com/rate-buydown-calculator.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/refinance-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/calculator-affordability.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/calculator-payment.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/calculator-refinance-breakeven.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://styermortgage.com/wrap-mortgage-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/wrap-mortgage-calculator.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Resources hub -->
   <url><loc>https://styermortgage.com/resources/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -27,65 +27,64 @@
   <!-- Loan program pages -->
   <url><loc>https://styermortgage.com/loans/conventional.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/loans/fha.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/loans/va.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/loans/va.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/loans/jumbo.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/loans/usda.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/loans/construction.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/loans/investment.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/loans/refinance.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/dscr-loan-austin-tx.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/loans/refinance.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/dscr-loan-austin-tx.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Rates & market pages -->
   <url><loc>https://styermortgage.com/austin-mortgage-rates</loc><lastmod>2026-03-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
   <!-- Austin metro landing pages -->
   <url><loc>https://styermortgage.com/mortgage-pre-approval-austin.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://styermortgage.com/first-time-home-buyer.html</loc><lastmod>2026-03-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/first-time-home-buyer.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Austin suburb pages — Tier 1 (highest population/volume) -->
-  <url><loc>https://styermortgage.com/round-rock-mortgage-lender.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/cedar-park-mortgage-lender.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/round-rock-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/cedar-park-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/leander-mortgage-lender.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/georgetown-mortgage-lender.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/pflugerville-mortgage-lender.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/georgetown-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/pflugerville-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/kyle-mortgage-lender.html</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/san-marcos-mortgage-lender.html</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/westlake-mortgage-lender.html</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/buda-mortgage-lender.html</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/hutto-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/westlake-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/buda-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/hutto-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/taylor-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/manor-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/bastrop-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/new-braunfels-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/new-braunfels-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Austin suburb pages — Tier 2 (smaller/niche) -->
   <url><loc>https://styermortgage.com/bee-cave-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/lakeway-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/dripping-springs-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/liberty-hill-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://styermortgage.com/jarrell-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://styermortgage.com/elgin-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://styermortgage.com/spicewood-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://styermortgage.com/marble-falls-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://styermortgage.com/smithville-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://styermortgage.com/florence-mortgage-lender.html</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/lakeway-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/dripping-springs-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/liberty-hill-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/jarrell-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/elgin-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/spicewood-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/marble-falls-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/smithville-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/florence-mortgage-lender.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <!-- Blog / content pages -->
   <url><loc>https://styermortgage.com/first-time-buyer-guide.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/fixed-vs-adjustable.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/fixed-vs-adjustable.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/improve-credit-score.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/how-much-house-can-i-afford-austin.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/austin-down-payment-assistance.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/closing-costs-texas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/austin-housing-market-2025.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/mortgage-broker-vs-bank.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/austin-down-payment-assistance.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/closing-costs-texas.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/mortgage-broker-vs-bank.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/mortgage-pre-approval-austin.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Blog posts -->
   <url><loc>https://styermortgage.com/resources/blog/2026-03-04-wait-for-rates.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/resources/blog/2026-03-04-wait-for-rates-realtor.html</loc><lastmod>2026-03-04</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/blog/2026-03-10-when-you-cant-control-it-surrender-it.html</loc><lastmod>2026-03-10</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://styermortgage.com/blog/2026-03-18-the-ai-trap-i-walked-right-into.html</loc><lastmod>2026-03-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/blog/2026-03-18-the-ai-trap-i-walked-right-into.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/blog/2026-03-20-austin-mortgage-rates-march-2026.html</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/blog/2026-03-24-cash-out-refinance-austin-tx.html</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
