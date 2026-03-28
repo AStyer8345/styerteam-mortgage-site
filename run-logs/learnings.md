@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-03-28 — Sitewide Async Font Loading Fix
+
+### Patterns
+- **Async font fix must be applied to ALL pages, not just landing pages**: When fixing render-blocking Google Fonts on landing pages, always grep for remaining `rel="stylesheet"` font loads across the full repo. Found 90 pages still had sync loading even after landing pages were fixed. The one-line pattern change (preload + noscript fallback) is safe to batch across all pages.
+- **Multiple font URL variants exist in the repo**: Most pages use `Inter:wght@400;500;600;700&family=Playfair+Display` but internal/old pages use `Inter:wght@300;400;500;600;700` (no Playfair). Use regex matching when batch-processing, not string matching, to catch both variants.
+- **Internal pages get the same fix**: ops.html, dashboard.html, marketing pages — even though they're noindexed, fixing fonts improves load time for Adam's own use.
+- **Thank-you redesigns often drop noindex**: Already noted in previous run, but confirmed again — monitor anytime thank-you.html is touched.
+
+---
+
 ## 2026-03-27 — Weekly Content: Down Payment Assistance Texas 2026
 
 ### Patterns

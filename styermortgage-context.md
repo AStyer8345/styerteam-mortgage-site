@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 27, 2026 (daily-opt run) — All 15 new suburb pages verified live on Netlify (HTTP 200) + in sitemap. Blog manifest fixed: "Newsletter" → "When You Can't Control It, Surrender It", AI trap post title-cased. TCPA consent language improved on /get-preapproved (adds "Consent is not a condition of purchase" + separate optional SMS opt-in per 2026 FCC rules). thank-you.html redesigned (prior session); note: noindex tag removed — flagged for Adam. Known issue: suburb quick-forms don't fire Google Ads conversion (see FLAG_FOR_ADAM).
+March 28, 2026 (daily-opt run) — Async Google Fonts fix applied sitewide (90 pages, all blogs/suburb/loan/resource/internal pages — site now fully async). thank-you.html noindex restored ✅. New blog post: "How Long Does Mortgage Pre-Approval Take in Austin TX?" (Article + FAQPage schema). Homepage: hero rating chip, outcome subtitle, SVG testimonial stars. Known issue: suburb quick-forms don't fire Google Ads conversion (see FLAG_FOR_ADAM).
 
 ---
 
