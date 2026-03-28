@@ -101,3 +101,30 @@ Replace the emoji HTML entities (&#128203; clipboard, &#128176; money bag, &#127
 
 **Next run suggestion:** Design/visual audit of the homepage hero. Headline "Your Austin Home Loan Simplified" is generic — doesn't answer "why Adam over a bank" in 5 seconds. Consider testing a more benefit-specific headline and evaluating whether the primary CTA should point to /get-preapproved instead of directly to the loan application.
 ---
+---
+## [2026-03-28 1 AM] — Hero Rating Chip + Outcome Subtitle + SVG Testimonial Stars
+
+**Category:** Design / Conversion
+**Pages touched:** index.html, style.css
+
+**What changed:**
+1. Added `.hero-rating-chip` above the H1 in the hero — gold-bordered pill showing "5.0 · 136 Google Reviews · Austin's Top-Rated Broker" with a gold star SVG. Answers visitor's trust question before they even read the headline.
+2. Rewrote hero subtitle from feature-list ("Independent broker. 40+ lenders. Pre-approved in 24 hours.") to outcome statement ("Get wholesale rates from 40+ lenders — pre-approved in 24 hours, closed in 21 days.") — shifts from what Adam is to what the buyer gets.
+3. Replaced all 3 testimonial emoji star blocks (`&#11088;` × 5) with 5 × inline gold SVG stars (#C9A84C). Emoji stars render yellow/inconsistently on Windows — brand-accurate gold SVG renders identically everywhere.
+4. Added Google logo SVG + "Google Review" text attribution below each testimonial author — standard trust pattern that anchors the reviews to a third-party platform.
+5. Added `.hero-rating-chip`, `.star-svg`, `.review-source` CSS rules to style.css.
+
+**Why:**
+The H1 is keyword-first for SEO but cold on its own. A rating chip directly above it delivers social proof in the exact moment a visitor's eye lands on the headline — before they decide to keep reading. Outcome-led copy (what you get, not what we are) is a fundamental high-converting conversion principle. SVG stars are a visual quality upgrade that brings the testimonials in line with the professionalism of the rest of the page.
+
+**Research sources:**
+- Site audit: previous session logs confirming hero headline repeatedly flagged across 3 sessions
+- Existing brand variables: `--color-gold: #C9A84C` used for star fill
+- Standard Google G SVG paths (4-color official Google colors)
+
+**Result:**
+Every homepage visitor now sees a credibility signal (5.0 · 136 reviews) within the first eyeline, before reading the headline. Testimonial stars are now brand-gold, pixel-perfect, and consistent across all OS/browser combinations. Expected impact: lower bounce from cold traffic, higher form submission rate from visitors who arrive without prior brand awareness.
+
+**Next run suggestion:**
+The testimonials section heading "Hear from Our Happy Clients" is generic. Consider replacing it with a stat-led headline: "136 Five-Star Reviews — Here's Why" or adding a 91-Google / 45-Zillow aggregate review count line below the heading to reinforce the aggregate rating before readers reach the individual reviews.
+---

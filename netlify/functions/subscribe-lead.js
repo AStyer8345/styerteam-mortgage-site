@@ -33,6 +33,12 @@ const N8N_GUIDE_EMAIL_URL = "https://styer.app.n8n.cloud/webhook/ftb-guide-email
 // n8n webhook: sends LO notification for pre-approval funnel leads
 const N8N_PA_LEAD_URL = "https://styer.app.n8n.cloud/webhook/pre-approval-lead";
 
+// Supabase direct access for drip enrollment
+const SUPABASE_URL  = "https://uuqedsvjlkeszrbwzizl.supabase.co";
+const SUPABASE_KEY  = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+const PA_CAMPAIGN_ID = "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d";
+const ORG_ID         = "18613f82-fdd9-42dd-a09e-f3c577328258";
+
 const LOANOS_URL    = "https://loanos.vercel.app";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
 
@@ -78,7 +84,7 @@ exports.handler = async (event) => {
   // Run Mailchimp subscribe + Loanos contact creation in parallel
   const [mailchimpResult, loanosResult] = await Promise.allSettled([
     subscribeToMailchimp({ email, authHeader, fname, lname, tag }),
-    createLoanosContact({ email, fname, lname, phone, loan_goal, utm_source, utm_medium, utm_campaign, page_url }),
+    createLoanosContact({ email, fname, lname, phone, loan_goal, lead_source, utm_source, utm_medium, utm_campaign, page_url }),
   ]);
 
   if (mailchimpResult.status === "rejected") {
@@ -98,6 +104,10 @@ exports.handler = async (event) => {
   if (lead_source === "Pre-Approval Funnel") {
     notifyPreApprovalLead({ email, fname, lname, phone, loan_goal, sms_opt_in, utm_source, utm_medium, utm_campaign, page_url })
       .catch(err => console.error("[subscribe-lead] PA notify failed:", err.message));
+
+    // Enroll in drip campaign (non-blocking)
+    enrollInDrip({ email, fname, lname })
+      .catch(err => console.error("[subscribe-lead] Drip enrollment failed:", err.message));
   }
 
   return respond(200, {
@@ -207,6 +217,60 @@ async function createLoanosContact({ email, fname, lname, phone, loan_goal, lead
     const err = await res.json().catch(() => ({}));
     throw new Error(`Loanos API ${res.status}: ${err.error || "unknown"}`);
   }
+}
+
+// ── Drip Enrollment ─────────────────────────────────────────────────────────
+
+async function enrollInDrip({ email, fname, lname }) {
+  if (!SUPABASE_KEY) {
+    console.warn("[subscribe-lead] SUPABASE_SERVICE_ROLE_KEY not set — skipping drip enrollment");
+    return;
+  }
+
+  // Look up the contact by email to get their contact_id
+  const contactRes = await fetch(
+    `${SUPABASE_URL}/rest/v1/contacts?email=eq.${encodeURIComponent(email.toLowerCase())}&select=id&limit=1`,
+    {
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+      },
+    }
+  );
+  if (!contactRes.ok) {
+    throw new Error(`Contact lookup failed: ${contactRes.status}`);
+  }
+  const contacts = await contactRes.json();
+  if (!contacts.length) {
+    console.warn(`[subscribe-lead] No contact found for ${email} — skipping drip`);
+    return;
+  }
+  const contactId = contacts[0].id;
+
+  // Create drip enrollment — next_send_at = now (step 1 has delay_days = 0)
+  const enrollRes = await fetch(`${SUPABASE_URL}/rest/v1/drip_enrollments`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_KEY,
+      Authorization: `Bearer ${SUPABASE_KEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal,resolution=ignore-duplicates",
+    },
+    body: JSON.stringify({
+      contact_id: contactId,
+      campaign_id: PA_CAMPAIGN_ID,
+      organization_id: ORG_ID,
+      status: "active",
+      current_step: 0,
+      next_send_at: new Date().toISOString(),
+    }),
+  });
+
+  if (!enrollRes.ok) {
+    const err = await enrollRes.json().catch(() => ({}));
+    throw new Error(`Drip enrollment failed: ${enrollRes.status} ${err.message || ""}`);
+  }
+  console.log(`[subscribe-lead] Drip enrolled: ${fname} ${lname} (${email})`);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
