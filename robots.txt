@@ -10,5 +10,6 @@ Disallow: /realtor-updates/manifest.json
 Disallow: /hero-test.html
 Disallow: /blog/2026-03-06-temp-placeholder.html
 Disallow: /blog/2026-03-10-temp-placeholder.html
+Disallow: /prequal.html
 
 Sitemap: https://styermortgage.com/sitemap.xml
