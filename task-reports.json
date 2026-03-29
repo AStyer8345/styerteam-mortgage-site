@@ -1,0 +1,395 @@
+{
+  "lastUpdated": "2026-03-28T14:30:00Z",
+  "tasks": [
+    {
+      "id": "website-daily-audit",
+      "name": "Daily Website Audit",
+      "project": "styer-mortgage",
+      "frequency": "daily",
+      "description": "Checks conversion tracking, landing pages, font loading, PageSpeed, and commits any fixes. Runs daily via scheduled Claude Code.",
+      "status": "active",
+      "lastRun": "2026-03-28T09:12:00Z",
+      "nextRun": "2026-03-29T09:00:00Z"
+    },
+    {
+      "id": "content-planner",
+      "name": "Weekly Content Planner",
+      "project": "styer-mortgage",
+      "frequency": "weekly",
+      "description": "Plans blog content queue, social posts, and content calendar. Checks 7-day threshold, surfaces top keyword gaps, queues social posts via Publer. Runs Fridays.",
+      "status": "active",
+      "lastRun": "2026-03-28T10:00:00Z",
+      "nextRun": "2026-04-04T10:00:00Z"
+    },
+    {
+      "id": "google-ads-optimizer",
+      "name": "Google Ads Optimizer",
+      "project": "styer-mortgage",
+      "frequency": "weekly",
+      "description": "Pulls optimization score, checks negative keywords, ad copy, bid adjustments, and conversion tracking health. Runs Mondays.",
+      "status": "active",
+      "lastRun": "2026-03-23T09:00:00Z",
+      "nextRun": "2026-03-30T09:00:00Z"
+    },
+    {
+      "id": "seo-performance-check",
+      "name": "SEO Performance Check",
+      "project": "styer-mortgage",
+      "frequency": "weekly",
+      "description": "Runs PageSpeed Insights on key landing pages, checks keyword ranking shifts, audits schema markup, reviews Google Search Console signals. Runs Mondays.",
+      "status": "active",
+      "lastRun": "2026-03-23T09:00:00Z",
+      "nextRun": "2026-03-30T09:00:00Z"
+    },
+    {
+      "id": "loanos-daily-audit",
+      "name": "LoanOS Daily Audit",
+      "project": "loanos",
+      "frequency": "daily",
+      "phase": "P2",
+      "description": "Audits DB schema, RLS policies, null org rows, API routes, and Vercel build health. Fixes and commits any issues. Flags blockers for Adam.",
+      "status": "active",
+      "lastRun": "2026-03-27T09:00:00Z",
+      "nextRun": "2026-03-28T09:00:00Z"
+    },
+    {
+      "id": "loanos-schema-hardening",
+      "name": "Schema Hardening",
+      "project": "loanos",
+      "frequency": "ad-hoc",
+      "phase": "P2",
+      "description": "Multi-tenancy enforcement — NOT NULL constraints, RLS policy audit, null row backfill across all org-scoped tables.",
+      "status": "completed",
+      "lastRun": "2026-03-25T09:00:00Z"
+    },
+    {
+      "id": "loanos-arive-separation",
+      "name": "Arive/LoanOS Separation",
+      "project": "loanos",
+      "frequency": "ad-hoc",
+      "phase": "P2",
+      "description": "Clean separation of concerns — Arive owns loan processing, LoanOS owns CRM/marketing/communications. Includes dead code removal and n8n workflow cleanup.",
+      "status": "completed",
+      "lastRun": "2026-03-27T09:00:00Z"
+    },
+    {
+      "id": "loanos-chat-v4",
+      "name": "Chat v4 — Attachments & Voice",
+      "project": "loanos",
+      "frequency": "ad-hoc",
+      "phase": "P2",
+      "description": "Chat v4.6: file attachments, voice input, expand-to-fullscreen, AI contact extraction, Hot Leads dashboard widget, 4 new quick action chips.",
+      "status": "completed",
+      "lastRun": "2026-03-23T09:00:00Z"
+    }
+  ],
+  "reports": [
+    {
+      "id": "rpt-20260328-001",
+      "taskId": "website-daily-audit",
+      "taskName": "Daily Website Audit",
+      "project": "styer-mortgage",
+      "timestamp": "2026-03-28T09:12:00Z",
+      "status": "complete",
+      "summary": "Async Google Fonts fix applied site-wide — 90 HTML files. All conversion tracking verified. thank-you.html noindex restored. No new issues found.",
+      "completed": [
+        "Async Google Fonts preload pattern applied to all 90 HTML files site-wide",
+        "Conversion tracking verified — generate_lead, thank_you_page_view, phone_click all firing",
+        "Landing page audit passed — trust bar, TCPA, CTA, no-nav all compliant on both pages",
+        "thank-you.html noindex tag restored (was removed in prior redesign)"
+      ],
+      "actionItems": [
+        {
+          "text": "Suburb quick-form not counting as Google Ads conversion — needs GTM fix or /thank-you redirect",
+          "priority": "medium",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "Monday March 30: retest PageSpeed on /get-preapproved + /refinance-quote after sitewide font fix",
+        "Monday March 30: pull Google Ads optimization score (Monday rotation)",
+        "March 31: next blog post due — Kyle TX Mortgage Guide or Austin Spring Market 2026"
+      ],
+      "metrics": {
+        "pagespeedMobile": 80,
+        "adsScore": 87.9,
+        "conversionTracking": "9/10",
+        "seoCoverage": "8/10",
+        "landingPageUX": "9/10",
+        "pagesAudited": 90
+      }
+    },
+    {
+      "id": "rpt-20260328-002",
+      "taskId": "content-planner",
+      "taskName": "Weekly Content Planner",
+      "project": "styer-mortgage",
+      "timestamp": "2026-03-28T10:00:00Z",
+      "status": "complete",
+      "summary": "Content queue planned for week of March 31. Kyle TX Mortgage Guide ranked #1 keyword target. Social posts drafted for 3 platforms.",
+      "completed": [
+        "Blog post candidates ranked — Kyle TX Mortgage Guide is top pick (easiest keyword win, no lender in top 3)",
+        "Social post drafts prepared for Facebook, Instagram, LinkedIn via Publer",
+        "Content calendar updated through April 4",
+        "NotebookLM queried for current keyword gap recommendations"
+      ],
+      "actionItems": [
+        {
+          "text": "Blog post due by March 31 — Kyle TX guide or Austin Spring Market 2026",
+          "priority": "low",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "Write and publish Kyle TX Mortgage Guide by March 31",
+        "Schedule social posts in Publer for week of March 31"
+      ],
+      "metrics": {
+        "blogDaysSinceLast": 4,
+        "nextBlogDueDate": "2026-03-31",
+        "keywordsMonitored": 12
+      }
+    },
+    {
+      "id": "rpt-20260327-001",
+      "taskId": "website-daily-audit",
+      "taskName": "Daily Website Audit",
+      "project": "styer-mortgage",
+      "timestamp": "2026-03-27T09:00:00Z",
+      "status": "complete",
+      "summary": "Blog manifest fixed (2 bad entries). TCPA language improved on landing page. thank-you.html noindex gap found and flagged.",
+      "completed": [
+        "Blog manifest corrected — 2 entries fixed (Newsletter title, lowercase AI Trap title)",
+        "get-preapproved.html — improved TCPA language, added SMS opt-in per 2026 FCC one-to-one rules",
+        "All 15 new suburb pages verified live on Netlify — all returning HTTP 200",
+        "All 15 suburb pages confirmed in sitemap.xml with FAQPage + BreadcrumbList schema"
+      ],
+      "actionItems": [
+        {
+          "text": "thank-you.html noindex tag was missing — caused by page redesign removing the tag",
+          "priority": "medium",
+          "status": "resolved"
+        },
+        {
+          "text": "Suburb quick-form Google Ads conversion gap — first identified",
+          "priority": "medium",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "Fix thank-you.html noindex — resolved in 3/28 session",
+        "Next blog post candidates: Kyle TX, Austin Spring Market 2026, Down Payment Assistance TX"
+      ],
+      "metrics": {
+        "pagespeedMobile": 80,
+        "adsScore": 87.9,
+        "conversionTracking": "9/10",
+        "seoCoverage": "8/10",
+        "landingPageUX": "9/10"
+      }
+    },
+    {
+      "id": "rpt-20260327-002",
+      "taskId": "loanos-arive-separation",
+      "taskName": "Arive/LoanOS Separation",
+      "project": "loanos",
+      "timestamp": "2026-03-27T11:00:00Z",
+      "status": "complete",
+      "summary": "Arive/LoanOS clean separation complete. 6 Outlook API routes deleted. 3 n8n workflows archived. Dead code fully pruned.",
+      "completed": [
+        "Deleted 6 Outlook OAuth API routes: auth, callback, disconnect, refresh, status, sync",
+        "Deleted /api/agents/milestone — Arive handles milestone emails natively",
+        "Archived 3 n8n workflows: Milestone Communication Agent, Outlook Email Sync, TEMP Mailchimp Journeys",
+        "Updated WF4 Inbound Email Log — added organization_id to both activity_log inserts",
+        "Settings page Outlook OAuth UI replaced with simple 'Email Sync — managed by n8n' status card",
+        "Removed OutlookStatus type, state variables, handlers, unused imports"
+      ],
+      "actionItems": [
+        {
+          "text": "Push WF1 (Arive New Loan → Supabase, ID: 1tagvoU0UXtdDiMY) to n8n cloud — still producing null loan_created rows",
+          "priority": "high",
+          "status": "open"
+        },
+        {
+          "text": "Push WF2 (Arive Status Update → Supabase, ID: 9JyzzwKac8v3uQ7d) to n8n cloud — same null issue",
+          "priority": "high",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "After WF1+WF2 pushed, add NOT NULL constraint to activity_log.organization_id",
+        "Begin Phase 3 scoping — performance page, notification system, plan selection UI"
+      ],
+      "metrics": {
+        "nullRows": 0,
+        "routesDeleted": 6,
+        "workflowsArchived": 3,
+        "buildStatus": "green"
+      }
+    },
+    {
+      "id": "rpt-20260326-001",
+      "taskId": "website-daily-audit",
+      "taskName": "Daily Website Audit",
+      "project": "styer-mortgage",
+      "timestamp": "2026-03-26T09:00:00Z",
+      "status": "complete",
+      "summary": "Homepage H1 keyword-rewrite deployed. Trust bar standardized across 39 pages. 15 suburb pages committed.",
+      "completed": [
+        "Homepage H1 updated: 'Your Austin Home Loan Simplified' → 'Mortgage Broker Austin TX — Adam Styer | NMLS #513013'",
+        "Trust bar standardized on 39 HTML files — '#1 Austin Mortgage Team' → 'Licensed in Texas | NMLS #513013'",
+        "15 new suburb pages committed: bastrop, bee-cave, dripping-springs, elgin, florence, hutto, jarrell, lakeway, liberty-hill, manor, marble-falls, new-braunfels, smithville, spicewood, taylor",
+        "Sitemap.xml updated with all 15 new suburb pages"
+      ],
+      "actionItems": [
+        {
+          "text": "Suburb quick-form does not redirect to /thank-you — Google Ads conversions uncounted for suburb leads",
+          "priority": "medium",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "Verify all 15 suburb pages live on Netlify (done 3/27)",
+        "Retest PageSpeed after sitewide async font fix (due 3/30)"
+      ],
+      "metrics": {
+        "pagespeedMobile": 80,
+        "adsScore": 87.9,
+        "conversionTracking": "9/10",
+        "seoCoverage": "8/10",
+        "landingPageUX": "9/10",
+        "pagesUpdated": 39
+      }
+    },
+    {
+      "id": "rpt-20260325-001",
+      "taskId": "loanos-schema-hardening",
+      "taskName": "Schema Hardening",
+      "project": "loanos",
+      "timestamp": "2026-03-25T09:00:00Z",
+      "status": "complete",
+      "summary": "NOT NULL applied to 8 tables. Daily-briefing unscoped queries fixed. Multi-tenancy Phase 2 hardening complete.",
+      "completed": [
+        "Migration 053 applied — NOT NULL on loans, contacts, documents, email_drafts, scenarios, todo_items, contact_activity, chat_sessions",
+        "daily-briefing milestone query scoped to org via loans join — no longer returns cross-org data",
+        "0 null rows confirmed in all 8 tables before applying constraints",
+        "RLS policies audited — all confirmed correct, no new gaps"
+      ],
+      "actionItems": [
+        {
+          "text": "activity_log.organization_id NOT NULL deferred — waiting on WF1/WF2 push confirmation",
+          "priority": "low",
+          "status": "open"
+        },
+        {
+          "text": "Performance page still uses localStorage with real borrower names — needs org-scoped Supabase query",
+          "priority": "medium",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "After WF1+WF2 pushed to n8n cloud, apply NOT NULL to activity_log",
+        "Begin Phase 3 planning"
+      ],
+      "metrics": {
+        "nullRows": 0,
+        "tablesHardened": 8,
+        "rlsPoliciesAudited": 14,
+        "buildStatus": "green"
+      }
+    },
+    {
+      "id": "rpt-20260323-001",
+      "taskId": "google-ads-optimizer",
+      "taskName": "Google Ads Optimizer",
+      "project": "styer-mortgage",
+      "timestamp": "2026-03-23T09:00:00Z",
+      "status": "complete",
+      "summary": "Ads optimization score at 87.9%. Conversion tracking healthy. Suburb keyword opportunity identified — low CPCs on Pflugerville, Kyle.",
+      "completed": [
+        "Google Ads optimization score pulled: 87.9%",
+        "Conversion tracking confirmed: generate_lead + thank_you_page_view feeding Google Ads",
+        "Negative keyword review — no new exclusions needed",
+        "Suburb keyword research: Pflugerville and Kyle have low competition, cheap CPCs available"
+      ],
+      "actionItems": [
+        {
+          "text": "Suburb quick-form conversions not counted in Google Ads — suburb leads do not fire Ads conversion event",
+          "priority": "medium",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "Monday March 30: recheck optimization score after landing page updates",
+        "Consider suburb-targeted ad groups for Kyle TX keyword"
+      ],
+      "metrics": {
+        "adsScore": 87.9,
+        "conversionTracking": "9/10",
+        "monthlyBudgetUtilization": "82%"
+      }
+    }
+  ],
+  "inbox": [
+    {
+      "id": "inbox-001",
+      "text": "Write Kyle TX Mortgage Guide blog post — easiest suburb keyword to win, no dedicated lender page in top 3 results",
+      "project": "styer-mortgage",
+      "source": "content-planner",
+      "priority": "high",
+      "status": "pending",
+      "createdAt": "2026-03-28T10:00:00Z",
+      "notes": "Due March 31. Use Answer-First format. Include neighborhoods, price ranges, school districts for content depth."
+    },
+    {
+      "id": "inbox-002",
+      "text": "Fix suburb quick-form Google Ads conversion gap — suburb leads fire generate_lead but not thank_you_page_view, so Google Ads doesn't count them",
+      "project": "styer-mortgage",
+      "source": "website-daily-audit",
+      "priority": "medium",
+      "status": "pending",
+      "createdAt": "2026-03-26T09:00:00Z",
+      "notes": "Fix options: (a) redirect suburb forms to /thank-you, or (b) add second Google Ads conversion trigger on generate_lead in GTM. Needs GTM dashboard access — Adam must do this."
+    },
+    {
+      "id": "inbox-003",
+      "text": "Push WF1 (Arive New Loan → Supabase) and WF2 (Arive Status Update → Supabase) to n8n cloud",
+      "project": "loanos",
+      "source": "loanos-daily-audit",
+      "priority": "high",
+      "status": "pending",
+      "createdAt": "2026-03-27T11:00:00Z",
+      "notes": "WF1 ID: 1tagvoU0UXtdDiMY | WF2 ID: 9JyzzwKac8v3uQ7d. Both still pushing null organization_id rows. After push confirmed, add NOT NULL to activity_log.organization_id."
+    },
+    {
+      "id": "inbox-004",
+      "text": "Performance page in LoanOS uses localStorage with real borrower names — replace with org-scoped Supabase query",
+      "project": "loanos",
+      "source": "loanos-daily-audit",
+      "priority": "medium",
+      "status": "pending",
+      "createdAt": "2026-03-25T09:00:00Z",
+      "notes": "Privacy concern — real borrower names in client-side localStorage. Should use Supabase with RLS for this data."
+    },
+    {
+      "id": "inbox-005",
+      "text": "Homepage hero primary CTA links directly to loan app, bypassing tracked funnel — consider changing to /get-preapproved",
+      "project": "styer-mortgage",
+      "source": "website-daily-audit",
+      "priority": "low",
+      "status": "pending",
+      "createdAt": "2026-03-26T09:00:00Z",
+      "notes": "Currently: hero CTA → 1003 app (untracked). Better: hero CTA → /get-preapproved (tracked in GA4 + Google Ads via generate_lead event)."
+    },
+    {
+      "id": "inbox-006",
+      "text": "LoanOS plan selection UI in onboarding defaults to 'starter' — needs real selection flow before Phase 4 licensing",
+      "project": "loanos",
+      "source": "loanos-daily-audit",
+      "priority": "low",
+      "status": "pending",
+      "createdAt": "2026-03-25T09:00:00Z",
+      "notes": "Not needed until Phase 4 (LO licensing). Low priority for now."
+    }
+  ]
+}

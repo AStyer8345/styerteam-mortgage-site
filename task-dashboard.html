@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Task Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--green:#4cc98a;--red:#c94c4c;--yellow:#c9a84c;
+  --blue:#4c7ec9;--purple:#9b4cc9;--orange:#c9884c;
+  --bg:#0a0a0c;--bg2:#111115;--bg3:#18181e;
+  --border:rgba(255,255,255,0.08);--border-strong:rgba(255,255,255,0.15);
+  --text:#f0ede8;--muted:#888;--dim:#555;
+  --font-display:"Syne",sans-serif;
+  --font-mono:"DM Mono",monospace;
+  --font-body:"DM Sans",sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh;font-size:14px;line-height:1.5}
+
+/* BG GRID */
+.bg-grid{pointer-events:none;z-index:0;background-image:linear-gradient(#C9A84C08 1px,transparent 1px),linear-gradient(90deg,#C9A84C08 1px,transparent 1px);background-size:48px 48px;position:fixed;inset:0}
+
+/* HEADER */
+.header{z-index:100;backdrop-filter:blur(16px);border-bottom:1px solid var(--border);background:#0a0a0ceb;position:sticky;top:0}
+.header-inner{display:flex;justify-content:space-between;align-items:center;max-width:1320px;margin:0 auto;padding:14px 32px;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand-mark{background:var(--gold);color:#0a0a0c;width:36px;height:36px;font-family:var(--font-display);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;letter-spacing:.02em;flex-shrink:0}
+.brand-name{font-family:var(--font-display);font-size:17px;font-weight:700;line-height:1.2}
+.brand-sub{color:var(--muted);font-size:11px;font-family:var(--font-mono);letter-spacing:.04em;margin-top:1px}
+.header-pills{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pill{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;border:1px solid;padding:5px 12px;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.pill-gold{color:var(--gold);border-color:#C9A84C40}
+.pill-green{color:var(--green);border-color:#4cc98a40}
+.pill-red{color:var(--red);border-color:#c94c4c40}
+.pill-blue{color:var(--blue);border-color:#4c7ec940}
+.pill-num{font-size:13px;font-weight:500}
+
+/* TABS */
+.tabs-bar{z-index:90;position:sticky;top:65px;background:#0a0a0cf5;backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;padding:0 32px;overflow-x:auto;gap:0}
+.tab-btn{background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:14px 20px;cursor:pointer;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:6px}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-count{background:#C9A84C22;color:var(--gold);border:1px solid #C9A84C33;font-size:9px;padding:1px 6px;font-family:var(--font-mono);letter-spacing:.04em}
+
+/* CONTENT */
+.content{z-index:1;position:relative;max-width:1320px;margin:0 auto;padding:32px 32px 80px}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* LOADING / ERROR */
+.loading-state,.error-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;gap:12px;text-align:center}
+.loading-icon{font-size:28px;color:var(--gold);animation:spin 1.2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.error-box{background:var(--bg2);border:1px solid #c94c4c40;padding:24px 32px;max-width:480px;text-align:left}
+.error-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--red);margin-bottom:8px}
+.error-msg{font-family:var(--font-mono);font-size:12px;color:var(--muted);line-height:1.6}
+
+/* SECTION TITLES */
+.section-title{font-family:var(--font-display);font-size:20px;font-weight:800;margin-bottom:4px}
+.section-sub{color:var(--muted);font-size:11px;margin-bottom:24px;font-family:var(--font-mono);letter-spacing:.04em}
+
+/* FILTER BAR */
+.filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.filter-btn{background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;cursor:pointer;transition:all .2s}
+.filter-btn:hover{border-color:var(--border-strong);color:var(--text)}
+.filter-btn.active{border-color:#C9A84C60;color:var(--gold);background:#C9A84C0c}
+.filter-sep{width:1px;height:20px;background:var(--border)}
+select.filter-select{background:var(--bg2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;padding:6px 12px;cursor:pointer;outline:none;appearance:none;-webkit-appearance:none;padding-right:28px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+select.filter-select:focus{border-color:var(--border-strong)}
+
+/* ACTIVITY CARDS */
+.feed-list{display:flex;flex-direction:column;gap:6px}
+.feed-card{background:var(--bg2);border:1px solid var(--border);overflow:hidden;transition:border-color .2s}
+.feed-card:hover{border-color:var(--border-strong)}
+.feed-card-header{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none}
+.feed-status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-complete{background:var(--green);box-shadow:0 0 5px var(--green)}
+.dot-in-progress{background:var(--yellow);box-shadow:0 0 5px var(--yellow)}
+.dot-failed{background:var(--red);box-shadow:0 0 5px var(--red)}
+.feed-task-name{font-family:var(--font-display);font-size:13px;font-weight:700;flex:1;min-width:0}
+.feed-badges{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.badge{font-family:var(--font-mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;border:1px solid;padding:3px 8px;white-space:nowrap}
+.badge-styer{color:var(--gold);border-color:#C9A84C40}
+.badge-loanos{color:var(--blue);border-color:#4c7ec940}
+.badge-daily{color:var(--green);border-color:#4cc98a30}
+.badge-weekly{color:var(--purple);border-color:#9b4cc930}
+.badge-adhoc{color:var(--orange);border-color:#c9884c30}
+.badge-p1{color:var(--green);border-color:#4cc98a30}
+.badge-p2{color:var(--gold);border-color:#C9A84C30}
+.badge-p3{color:var(--blue);border-color:#4c7ec930}
+.badge-p4{color:var(--purple);border-color:#9b4cc930}
+.feed-time{font-family:var(--font-mono);font-size:10px;color:var(--dim);white-space:nowrap;flex-shrink:0}
+.feed-chevron{color:var(--muted);font-size:12px;flex-shrink:0;transition:transform .2s;margin-left:4px}
+.feed-card.open .feed-chevron{transform:rotate(180deg)}
+.feed-summary{font-size:12px;color:var(--muted);padding:0 18px;margin-bottom:0;display:none;line-height:1.5}
+.feed-card.open .feed-summary{display:block;padding-bottom:12px}
+
+/* FEED EXPANDED */
+.feed-expanded{display:none;padding:0 18px 18px;border-top:1px solid var(--border)}
+.feed-card.open .feed-expanded{display:block}
+.exp-section{margin-top:14px}
+.exp-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+.exp-list{display:flex;flex-direction:column;gap:5px}
+.exp-item{display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.5}
+.exp-icon{flex-shrink:0;margin-top:2px;font-size:11px}
+.exp-icon-check{color:var(--green)}
+.exp-icon-warn{color:var(--yellow)}
+.exp-icon-warn-high{color:var(--red)}
+.exp-icon-arrow{color:var(--blue)}
+.exp-item-text{color:#f0ede8cc}
+.exp-priority-badge{font-family:var(--font-mono);font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border:1px solid;margin-left:6px;flex-shrink:0}
+.pri-high{color:var(--red);border-color:#c94c4c40}
+.pri-medium{color:var(--yellow);border-color:#c9a84c40}
+.pri-low{color:var(--muted);border-color:var(--border)}
+.status-resolved{color:var(--green);border-color:#4cc98a40}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:8px}
+.metric-box{background:#0000004d;border:1px solid var(--border);padding:9px 12px}
+.metric-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.metric-value{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--gold)}
+
+/* TASK GRID (Styer / LoanOS) */
+.task-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:32px}
+.task-card{background:var(--bg2);border:1px solid var(--border);padding:18px;position:relative;overflow:hidden;transition:all .2s}
+.task-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--gold));transform:scaleX(0);transform-origin:0;transition:transform .2s}
+.task-card:hover::before{transform:scaleX(1)}
+.task-card:hover{background:var(--bg3);border-color:rgba(255,255,255,0.14)}
+.tc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.tc-name{font-family:var(--font-display);font-size:14px;font-weight:700;line-height:1.3;flex:1;margin-right:8px}
+.tc-badges{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.tc-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px}
+.tc-meta{display:flex;gap:12px;flex-wrap:wrap}
+.tc-meta-item{font-family:var(--font-mono);font-size:10px;color:var(--dim);display:flex;align-items:center;gap:4px}
+.tc-meta-item span{color:var(--muted)}
+.tc-status-row{display:flex;align-items:center;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.tc-status-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.dot-active{background:var(--green);box-shadow:0 0 4px var(--green)}
+.dot-completed-task{background:var(--muted)}
+.tc-latest-summary{font-size:11px;color:#f0ede8aa;flex:1;line-height:1.4}
+
+/* METRICS PANEL */
+.metrics-panel{background:var(--bg2);border:1px solid var(--border);padding:20px;margin-bottom:32px}
+.metrics-panel-title{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.metrics-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.metric-cell{background:var(--bg2);padding:14px 16px}
+.mc-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.mc-val{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gold);line-height:1}
+.mc-note{font-family:var(--font-mono);font-size:9px;color:var(--dim);margin-top:3px}
+
+/* ACTION ITEMS ROLLUP */
+.action-rollup{background:var(--bg2);border:1px solid var(--border);margin-bottom:32px}
+.ar-header{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--border)}
+.ar-title{font-family:var(--font-display);font-size:14px;font-weight:700}
+.ar-count{font-family:var(--font-mono);font-size:10px;background:#c94c4c20;color:var(--red);border:1px solid #c94c4c30;padding:2px 8px}
+.ar-list{display:flex;flex-direction:column}
+.ar-item{display:flex;align-items:flex-start;gap:10px;padding:12px 18px;border-bottom:1px solid var(--border)}
+.ar-item:last-child{border-bottom:none}
+.ar-item-text{flex:1;font-size:12px;color:#f0ede8cc;line-height:1.5}
+.ar-item-meta{display:flex;align-items:center;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+
+/* PHASE PROGRESS */
+.phase-strip{display:flex;gap:0;margin-bottom:28px;border:1px solid var(--border);overflow:hidden}
+.phase-seg{flex:1;padding:14px 16px;text-align:center;border-right:1px solid var(--border);position:relative;overflow:hidden}
+.phase-seg:last-child{border-right:none}
+.phase-seg::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.phase-seg.done::before{background:linear-gradient(135deg,#4cc98a12,transparent);opacity:1}
+.phase-seg.active::before{background:linear-gradient(135deg,#C9A84C14,transparent);opacity:1}
+.ps-num{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.ps-name{font-family:var(--font-display);font-size:12px;font-weight:700;margin-bottom:4px;line-height:1.2}
+.ps-pct{font-family:var(--font-display);font-size:16px;font-weight:800}
+.phase-seg.done .ps-pct{color:var(--green)}
+.phase-seg.active .ps-pct{color:var(--gold)}
+.phase-seg.pending .ps-pct{color:var(--dim)}
+.ps-bar-track{background:#ffffff0a;height:3px;margin-top:6px}
+.ps-bar-fill{height:100%;transition:width .5s}
+.phase-seg.done .ps-bar-fill{background:var(--green)}
+.phase-seg.active .ps-bar-fill{background:var(--gold)}
+.phase-seg.pending .ps-bar-fill{background:var(--dim)}
+
+/* LOANOS OVERALL PROGRESS */
+.overall-progress{background:var(--bg2);border:1px solid var(--border);padding:20px;margin-bottom:28px}
+.op-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.op-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.op-pct{font-family:var(--font-display);font-size:26px;font-weight:800;color:var(--gold)}
+.op-bar-track{background:#ffffff0a;height:5px}
+.op-bar-fill{background:linear-gradient(90deg,var(--gold),#e8c86a);height:100%;transition:width .6s}
+.op-note{font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:6px}
+
+/* INBOX */
+.inbox-list{display:flex;flex-direction:column;gap:6px;margin-bottom:32px}
+.inbox-item{background:var(--bg2);border:1px solid var(--border);padding:14px 18px;display:flex;align-items:flex-start;gap:12px;transition:border-color .2s}
+.inbox-item:hover{border-color:var(--border-strong)}
+.inbox-priority-bar{width:3px;flex-shrink:0;border-radius:2px;align-self:stretch;min-height:20px}
+.pbar-high{background:var(--red)}
+.pbar-medium{background:var(--yellow)}
+.pbar-low{background:var(--dim)}
+.inbox-body{flex:1;min-width:0}
+.inbox-text{font-size:13px;line-height:1.5;margin-bottom:6px;color:var(--text)}
+.inbox-notes{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.inbox-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.inbox-source{font-family:var(--font-mono);font-size:9px;color:var(--dim);letter-spacing:.04em}
+.inbox-date{font-family:var(--font-mono);font-size:9px;color:var(--dim)}
+.status-badge{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;border:1px solid;padding:2px 7px}
+.sb-pending{color:var(--yellow);border-color:#c9a84c30}
+.sb-picked{color:var(--blue);border-color:#4c7ec930}
+.sb-done{color:var(--green);border-color:#4cc98a30}
+
+/* ADD IDEA */
+.add-idea-box{background:var(--bg2);border:1px dashed rgba(255,255,255,0.12);padding:24px}
+.ai-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:4px}
+.ai-sub{font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:.04em;margin-bottom:16px}
+.ai-form{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin-bottom:16px}
+@media(max-width:600px){.ai-form{grid-template-columns:1fr}}
+.ai-form-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+@media(max-width:500px){.ai-form-fields{grid-template-columns:1fr}}
+textarea.ai-textarea{background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:13px;padding:10px 14px;width:100%;resize:vertical;min-height:72px;outline:none;grid-column:1/-1;transition:border-color .2s}
+textarea.ai-textarea::placeholder{color:var(--dim)}
+textarea.ai-textarea:focus{border-color:#C9A84C60}
+select.ai-select{background:var(--bg3);border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono);font-size:10px;padding:8px 12px;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;transition:border-color .2s}
+select.ai-select:focus{border-color:#C9A84C60}
+.ai-btn{background:var(--gold);color:#0a0a0c;font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;padding:10px 20px;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.ai-btn:hover{opacity:.85}
+.ai-output{display:none}
+.ai-output.visible{display:block}
+.ai-output-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+pre.ai-json{background:#0000006d;border:1px solid var(--border);padding:14px;font-family:var(--font-mono);font-size:11px;color:#C9A84Ce0;white-space:pre-wrap;word-break:break-all;line-height:1.6}
+.ai-copy-btn{background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;cursor:pointer;margin-top:6px;transition:all .2s}
+.ai-copy-btn:hover{border-color:var(--border-strong);color:var(--text)}
+.ai-instructions{background:#0000006d;border:1px solid var(--border);padding:14px 16px;margin-top:16px}
+.ai-inst-title{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ai-inst-text{font-size:12px;color:var(--muted);line-height:1.6}
+.ai-inst-text code{font-family:var(--font-mono);font-size:11px;color:var(--gold);background:#C9A84C10;padding:1px 5px}
+
+/* FOOTER */
+.footer{z-index:1;position:relative;border-top:1px solid var(--border);padding:20px 32px;max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-note{font-family:var(--font-mono);font-size:10px;color:var(--dim);letter-spacing:.04em}
+.footer-links{display:flex;gap:16px}
+.footer-link{font-family:var(--font-mono);font-size:10px;color:var(--muted);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.footer-link:hover{color:var(--gold)}
+.footer-link::after{content:" →"}
+
+/* EMPTY STATE */
+.empty-state{padding:40px 24px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;border:1px dashed rgba(255,255,255,0.08)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .header-inner{padding:12px 16px}
+  .tabs-bar{padding:0 16px}
+  .content{padding:20px 16px 60px}
+  .task-grid{grid-template-columns:1fr}
+  .phase-strip{flex-direction:column}
+  .phase-seg{border-right:none;border-bottom:1px solid var(--border);text-align:left;display:flex;align-items:center;gap:12px}
+  .phase-seg:last-child{border-bottom:none}
+  .ps-bar-track{flex:1}
+  .ps-pct{min-width:40px;text-align:right}
+  .ai-form{grid-template-columns:1fr}
+  .footer{padding:16px}
+  .header-pills{gap:6px}
+  .pill{padding:4px 8px;font-size:9px}
+}
+@media(max-width:480px){
+  .brand-name{font-size:15px}
+  .feed-badges{flex-direction:column;align-items:flex-end}
+}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:24px 0}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">TCC</div>
+      <div>
+        <div class="brand-name">Task Command Center</div>
+        <div class="brand-sub" id="last-updated">Loading…</div>
+      </div>
+    </div>
+    <div class="header-pills" id="header-pills"></div>
+  </div>
+</header>
+
+<!-- TABS -->
+<nav class="tabs-bar">
+  <button class="tab-btn active" data-tab="feed">Activity Feed</button>
+  <button class="tab-btn" data-tab="styer">Styer Mortgage</button>
+  <button class="tab-btn" data-tab="loanos">LoanOS</button>
+  <button class="tab-btn" data-tab="inbox">Inbox <span class="tab-count" id="inbox-tab-count" style="display:none"></span></button>
+</nav>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- LOADING -->
+  <div id="loading" class="loading-state">
+    <div class="loading-icon">⟳</div>
+    <div class="loading-text">Loading task-reports.json…</div>
+  </div>
+
+  <!-- ERROR -->
+  <div id="error-state" class="error-state" style="display:none">
+    <div class="error-box">
+      <div class="error-title">Could not load task-reports.json</div>
+      <div class="error-msg" id="error-msg">Unknown error. Make sure task-reports.json is in the repo root and you're serving from a local or Netlify server.</div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY FEED TAB -->
+  <div id="tab-feed" class="tab-panel" style="display:none">
+    <div class="section-title">Activity Feed</div>
+    <div class="section-sub" id="feed-sub">All task reports, most recent first</div>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="styer-mortgage">Styer Mortgage</button>
+      <button class="filter-btn" data-filter="loanos">LoanOS</button>
+      <div class="filter-sep"></div>
+      <select class="filter-select" id="type-filter">
+        <option value="all">All types</option>
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="ad-hoc">Ad-hoc</option>
+      </select>
+    </div>
+    <div class="feed-list" id="feed-list"></div>
+  </div>
+
+  <!-- STYER MORTGAGE TAB -->
+  <div id="tab-styer" class="tab-panel" style="display:none">
+    <div class="section-title">Styer Mortgage</div>
+    <div class="section-sub">styermortgage.com — scheduled task activity</div>
+
+    <div class="metrics-panel" id="styer-metrics-panel">
+      <div class="metrics-panel-title">Latest Metrics</div>
+      <div class="metrics-row" id="styer-metrics-row"></div>
+    </div>
+
+    <div class="action-rollup" id="styer-actions">
+      <div class="ar-header">
+        <div class="ar-title">Open Action Items</div>
+        <div class="ar-count" id="styer-action-count">0</div>
+      </div>
+      <div class="ar-list" id="styer-action-list"></div>
+    </div>
+
+    <div class="section-title" style="font-size:16px;margin-bottom:16px">Scheduled Tasks</div>
+    <div class="task-grid" id="styer-task-grid"></div>
+  </div>
+
+  <!-- LOANOS TAB -->
+  <div id="tab-loanos" class="tab-panel" style="display:none">
+    <div class="section-title">LoanOS</div>
+    <div class="section-sub">loanos-clone — build & automation task activity</div>
+
+    <div class="overall-progress">
+      <div class="op-top">
+        <div class="op-label">Overall Build Progress</div>
+        <div class="op-pct" id="loanos-overall-pct">—</div>
+      </div>
+      <div class="op-bar-track">
+        <div class="op-bar-fill" id="loanos-overall-bar" style="width:0%"></div>
+      </div>
+      <div class="op-note" id="loanos-overall-note"></div>
+    </div>
+
+    <div class="phase-strip" id="phase-strip"></div>
+
+    <div class="action-rollup" id="loanos-actions">
+      <div class="ar-header">
+        <div class="ar-title">Open Action Items</div>
+        <div class="ar-count" id="loanos-action-count">0</div>
+      </div>
+      <div class="ar-list" id="loanos-action-list"></div>
+    </div>
+
+    <div class="section-title" style="font-size:16px;margin-bottom:16px">Tasks &amp; Modules</div>
+    <div class="task-grid" id="loanos-task-grid"></div>
+  </div>
+
+  <!-- INBOX TAB -->
+  <div id="tab-inbox" class="tab-panel" style="display:none">
+    <div class="section-title">Inbox</div>
+    <div class="section-sub">Ideas and flags for scheduled tasks to pick up</div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-inbox-filter="all">All</button>
+      <button class="filter-btn" data-inbox-filter="styer-mortgage">Styer Mortgage</button>
+      <button class="filter-btn" data-inbox-filter="loanos">LoanOS</button>
+      <div class="filter-sep"></div>
+      <button class="filter-btn" data-inbox-filter="pending">Pending</button>
+      <button class="filter-btn" data-inbox-filter="picked-up">Picked Up</button>
+      <button class="filter-btn" data-inbox-filter="completed">Completed</button>
+    </div>
+
+    <div class="inbox-list" id="inbox-list"></div>
+
+    <div class="add-idea-box">
+      <div class="ai-title">Add an Idea</div>
+      <div class="ai-sub">Drop ideas here. Scheduled tasks check the inbox and pick them up.</div>
+      <div class="ai-form-fields">
+        <select class="ai-select" id="idea-project">
+          <option value="styer-mortgage">Styer Mortgage</option>
+          <option value="loanos">LoanOS</option>
+        </select>
+        <select class="ai-select" id="idea-priority">
+          <option value="low">Low Priority</option>
+          <option value="medium">Medium Priority</option>
+          <option value="high">High Priority</option>
+        </select>
+      </div>
+      <textarea class="ai-textarea" id="idea-text" placeholder="Describe the idea or task clearly enough for an AI agent to act on it without asking questions…" rows="3"></textarea>
+      <textarea class="ai-textarea" id="idea-notes" placeholder="Optional: context, links, constraints, dependencies…" rows="2" style="margin-top:8px"></textarea>
+      <div style="margin-top:10px">
+        <button class="ai-btn" id="generate-idea-btn">Generate JSON Snippet</button>
+      </div>
+      <div class="ai-output" id="ai-output">
+        <div style="margin-top:16px">
+          <div class="ai-output-label">JSON to paste into task-reports.json → inbox[]</div>
+          <pre class="ai-json" id="ai-json-output"></pre>
+          <button class="ai-copy-btn" id="copy-json-btn">Copy to clipboard</button>
+        </div>
+      </div>
+      <div class="ai-instructions">
+        <div class="ai-inst-title">How it works</div>
+        <div class="ai-inst-text">
+          Generate the JSON snippet above, then open <code>task-reports.json</code> and paste it into the <code>inbox[]</code> array. The next time a scheduled task runs, it reads the inbox and picks up matching items — updating the status to <code>picked-up</code> in its report.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer">
+    <div class="footer-note">Reports auto-update when scheduled tasks run · Refresh to see latest</div>
+    <div class="footer-links">
+      <a href="ops.html" class="footer-link">Ops</a>
+      <a href="loanos.html" class="footer-link">LoanOS</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let DATA = null;
+let feedFilter = 'all';
+let feedTypeFilter = 'all';
+let inboxFilter = 'all';
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+async function init() {
+  try {
+    const res = await fetch('./task-reports.json?v=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + res.statusText);
+    DATA = await res.json();
+    document.getElementById('loading').style.display = 'none';
+    render();
+    showTab('feed');
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('error-state').style.display = 'flex';
+    document.getElementById('error-msg').textContent = e.message || String(e);
+  }
+}
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+function render() {
+  renderHeader();
+  renderFeed();
+  renderStyerMortgage();
+  renderLoanOS();
+  renderInbox();
+}
+
+// ─── HEADER ───────────────────────────────────────────────────────────────────
+function renderHeader() {
+  const ts = DATA.lastUpdated;
+  document.getElementById('last-updated').textContent = 'Updated ' + relTime(ts) + ' · ' + fmtDate(ts);
+
+  const totalTasks = DATA.tasks.filter(t => t.status === 'active').length;
+  const today = new Date().toDateString();
+  const reportsToday = DATA.reports.filter(r => new Date(r.timestamp).toDateString() === today).length;
+  const pendingActions = countOpenActions();
+
+  const pills = [
+    { label: 'Active Tasks', value: totalTasks, cls: 'pill-gold' },
+    { label: 'Reports Today', value: reportsToday, cls: 'pill-green' },
+    { label: 'Open Actions', value: pendingActions, cls: pendingActions > 0 ? 'pill-red' : 'pill-blue' },
+  ];
+
+  document.getElementById('header-pills').innerHTML = pills.map(p =>
+    `<div class="pill ${p.cls}"><span class="pill-num">${p.value}</span> ${p.label}</div>`
+  ).join('');
+
+  const pending = DATA.inbox.filter(i => i.status === 'pending').length;
+  const countEl = document.getElementById('inbox-tab-count');
+  if (pending > 0) {
+    countEl.textContent = pending;
+    countEl.style.display = 'inline';
+  }
+}
+
+function countOpenActions() {
+  let n = 0;
+  DATA.reports.forEach(r => {
+    if (r.actionItems) r.actionItems.forEach(a => { if (a.status === 'open') n++; });
+  });
+  return n;
+}
+
+// ─── FEED ─────────────────────────────────────────────────────────────────────
+function renderFeed() {
+  const filtered = DATA.reports.filter(r => {
+    const proj = feedFilter === 'all' || r.project === feedFilter;
+    const typeMatch = feedTypeFilter === 'all' || getTaskFreq(r.taskId) === feedTypeFilter;
+    return proj && typeMatch;
+  });
+
+  const sub = `${filtered.length} report${filtered.length !== 1 ? 's' : ''} · ${DATA.reports.length} total`;
+  document.getElementById('feed-sub').textContent = sub;
+
+  if (filtered.length === 0) {
+    document.getElementById('feed-list').innerHTML = '<div class="empty-state">No reports match this filter.</div>';
+    return;
+  }
+
+  document.getElementById('feed-list').innerHTML = filtered.map(r => buildFeedCard(r)).join('');
+
+  // Attach toggle listeners
+  document.querySelectorAll('.feed-card-header').forEach(h => {
+    h.addEventListener('click', () => {
+      const card = h.closest('.feed-card');
+      card.classList.toggle('open');
+    });
+  });
+}
+
+function getTaskFreq(taskId) {
+  const t = DATA.tasks.find(t => t.id === taskId);
+  return t ? t.frequency : 'ad-hoc';
+}
+
+function buildFeedCard(r) {
+  const dotCls = r.status === 'complete' ? 'dot-complete' : r.status === 'in-progress' ? 'dot-in-progress' : 'dot-failed';
+  const projBadge = r.project === 'styer-mortgage'
+    ? '<span class="badge badge-styer">Styer Mortgage</span>'
+    : '<span class="badge badge-loanos">LoanOS</span>';
+  const freq = getTaskFreq(r.taskId);
+  const freqBadge = freq === 'daily' ? '<span class="badge badge-daily">Daily</span>'
+    : freq === 'weekly' ? '<span class="badge badge-weekly">Weekly</span>'
+    : '<span class="badge badge-adhoc">Ad-hoc</span>';
+
+  const completedHtml = r.completed && r.completed.length
+    ? `<div class="exp-section">
+        <div class="exp-label">Completed</div>
+        <div class="exp-list">${r.completed.map(c =>
+          `<div class="exp-item"><span class="exp-icon exp-icon-check">✓</span><span class="exp-item-text">${esc(c)}</span></div>`
+        ).join('')}</div>
+      </div>` : '';
+
+  const actionsHtml = r.actionItems && r.actionItems.length
+    ? `<div class="exp-section">
+        <div class="exp-label">Action Items</div>
+        <div class="exp-list">${r.actionItems.map(a => {
+          const resolved = a.status === 'resolved';
+          const iconCls = resolved ? 'exp-icon-check' : a.priority === 'high' ? 'exp-icon-warn-high' : 'exp-icon-warn';
+          const icon = resolved ? '✓' : '⚠';
+          const priCls = a.priority === 'high' ? 'pri-high' : a.priority === 'medium' ? 'pri-medium' : 'pri-low';
+          const statusBadge = resolved ? '<span class="exp-priority-badge status-resolved">Resolved</span>' : `<span class="exp-priority-badge ${priCls}">${a.priority}</span>`;
+          return `<div class="exp-item"><span class="exp-icon ${iconCls}">${icon}</span><span class="exp-item-text">${esc(a.text)}${statusBadge}</span></div>`;
+        }).join('')}</div>
+      </div>` : '';
+
+  const nextHtml = r.nextSteps && r.nextSteps.length
+    ? `<div class="exp-section">
+        <div class="exp-label">Next Steps</div>
+        <div class="exp-list">${r.nextSteps.map(n =>
+          `<div class="exp-item"><span class="exp-icon exp-icon-arrow">→</span><span class="exp-item-text">${esc(n)}</span></div>`
+        ).join('')}</div>
+      </div>` : '';
+
+  const metricsHtml = r.metrics && Object.keys(r.metrics).length
+    ? `<div class="exp-section">
+        <div class="exp-label">Metrics</div>
+        <div class="metrics-grid">${Object.entries(r.metrics).map(([k, v]) =>
+          `<div class="metric-box"><div class="metric-label">${esc(humanKey(k))}</div><div class="metric-value">${esc(String(v))}</div></div>`
+        ).join('')}</div>
+      </div>` : '';
+
+  return `<div class="feed-card" data-project="${r.project}" data-taskid="${r.taskId}">
+    <div class="feed-card-header">
+      <div class="feed-status-dot ${dotCls}"></div>
+      <div class="feed-task-name">${esc(r.taskName)}</div>
+      <div class="feed-badges">${projBadge}${freqBadge}</div>
+      <div class="feed-time">${relTime(r.timestamp)}</div>
+      <div class="feed-chevron">▾</div>
+    </div>
+    <div class="feed-summary">${esc(r.summary)}</div>
+    <div class="feed-expanded">
+      ${completedHtml}${actionsHtml}${nextHtml}${metricsHtml}
+    </div>
+  </div>`;
+}
+
+// ─── STYER MORTGAGE ───────────────────────────────────────────────────────────
+function renderStyerMortgage() {
+  const tasks = DATA.tasks.filter(t => t.project === 'styer-mortgage');
+
+  // Latest metrics from most recent report
+  const latestMetrics = getLatestMetrics('styer-mortgage');
+  const metricsMap = {
+    pagespeedMobile: { label: 'PageSpeed Mobile', note: 'last verified' },
+    adsScore: { label: 'Ads Score', note: 'optimization %' },
+    conversionTracking: { label: 'Conv. Tracking', note: 'health score' },
+    seoCoverage: { label: 'SEO Coverage', note: 'health score' },
+    landingPageUX: { label: 'Landing Page UX', note: 'health score' },
+  };
+
+  const metricsHtml = Object.entries(metricsMap)
+    .filter(([k]) => latestMetrics[k] !== undefined)
+    .map(([k, meta]) => `
+      <div class="metric-cell">
+        <div class="mc-label">${meta.label}</div>
+        <div class="mc-val">${latestMetrics[k]}</div>
+        <div class="mc-note">${meta.note}</div>
+      </div>
+    `).join('');
+
+  document.getElementById('styer-metrics-row').innerHTML = metricsHtml || '<div class="metric-cell"><div class="mc-label">No metrics yet</div></div>';
+
+  // Open action items
+  const actions = getOpenActions('styer-mortgage');
+  document.getElementById('styer-action-count').textContent = actions.length;
+  document.getElementById('styer-action-list').innerHTML = actions.length
+    ? actions.map(a => buildActionItem(a)).join('')
+    : '<div class="ar-item"><div class="ar-item-text" style="color:var(--green)">No open action items.</div></div>';
+
+  // Task cards
+  document.getElementById('styer-task-grid').innerHTML = tasks.map(t => buildTaskCard(t)).join('');
+}
+
+function getLatestMetrics(project) {
+  const reports = DATA.reports.filter(r => r.project === project && r.metrics && Object.keys(r.metrics).length);
+  if (!reports.length) return {};
+  // Merge metrics from all reports, latest wins
+  const merged = {};
+  [...reports].reverse().forEach(r => Object.assign(merged, r.metrics));
+  return merged;
+}
+
+function getOpenActions(project) {
+  const seen = new Set();
+  const actions = [];
+  DATA.reports
+    .filter(r => r.project === project)
+    .forEach(r => {
+      if (r.actionItems) {
+        r.actionItems.filter(a => a.status === 'open').forEach(a => {
+          const key = a.text.slice(0, 60);
+          if (!seen.has(key)) {
+            seen.add(key);
+            actions.push({ ...a, taskName: r.taskName, reportId: r.id });
+          }
+        });
+      }
+    });
+  return actions;
+}
+
+function buildActionItem(a) {
+  const priCls = a.priority === 'high' ? 'pri-high' : a.priority === 'medium' ? 'pri-medium' : 'pri-low';
+  return `<div class="ar-item">
+    <div class="ar-item-text">${esc(a.text)}</div>
+    <div class="ar-item-meta">
+      ${a.taskName ? `<span class="badge badge-styer" style="font-size:8px">${esc(a.taskName)}</span>` : ''}
+      <span class="exp-priority-badge ${priCls}">${a.priority}</span>
+    </div>
+  </div>`;
+}
+
+function buildTaskCard(t) {
+  const latest = DATA.reports.filter(r => r.taskId === t.id).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))[0];
+  const freqBadge = t.frequency === 'daily' ? '<span class="badge badge-daily">Daily</span>'
+    : t.frequency === 'weekly' ? '<span class="badge badge-weekly">Weekly</span>'
+    : '<span class="badge badge-adhoc">Ad-hoc</span>';
+  const phaseBadge = t.phase ? `<span class="badge badge-${t.phase.toLowerCase()}">${t.phase}</span>` : '';
+  const statusDot = t.status === 'active' ? 'dot-active' : 'dot-completed-task';
+  const statusLabel = t.status === 'active' ? 'Active' : 'Completed';
+
+  return `<div class="task-card" style="--accent: ${t.project === 'loanos' ? 'var(--blue)' : 'var(--gold)'}">
+    <div class="tc-top">
+      <div class="tc-name">${esc(t.name)}</div>
+      <div class="tc-badges">${freqBadge}${phaseBadge}</div>
+    </div>
+    <div class="tc-desc">${esc(t.description)}</div>
+    <div class="tc-meta">
+      ${t.lastRun ? `<div class="tc-meta-item">Last run <span>${relTime(t.lastRun)}</span></div>` : ''}
+      ${t.nextRun ? `<div class="tc-meta-item">Next <span>${fmtDate(t.nextRun)}</span></div>` : ''}
+    </div>
+    <div class="tc-status-row">
+      <div class="tc-status-dot ${statusDot}"></div>
+      <div class="tc-latest-summary">${latest ? esc(latest.summary) : 'No reports yet.'}</div>
+    </div>
+  </div>`;
+}
+
+// ─── LOANOS ───────────────────────────────────────────────────────────────────
+function renderLoanOS() {
+  // Overall progress
+  const phases = [
+    { num: 'P1', name: 'Foundation', pct: 100, status: 'done', items: ['Next.js + Supabase setup', 'Auth + RLS', 'Loan pipeline view', 'Scenario Builder'] },
+    { num: 'P2', name: 'Automation', pct: 97, status: 'active', items: ['n8n workflows', 'Multi-tenancy', 'Chat v4', 'Arive integration', 'Schema hardening'] },
+    { num: 'P3', name: 'Performance', pct: 0, status: 'pending', items: ['Performance page refactor', 'Notification system', 'Plan selection UI'] },
+    { num: 'P4', name: 'Licensing', pct: 0, status: 'pending', items: ['Multi-LO onboarding', 'Billing integration', 'White-label support'] },
+  ];
+
+  const overallPct = Math.round(phases.reduce((s, p) => s + p.pct, 0) / phases.length);
+  document.getElementById('loanos-overall-pct').textContent = overallPct + '%';
+  document.getElementById('loanos-overall-bar').style.width = overallPct + '%';
+  document.getElementById('loanos-overall-note').textContent = 'P1 complete · P2 ~97% · P3–P4 not started';
+
+  document.getElementById('phase-strip').innerHTML = phases.map(p => `
+    <div class="phase-seg ${p.status}">
+      <div>
+        <div class="ps-num">${p.num}</div>
+        <div class="ps-name">${p.name}</div>
+      </div>
+      <div class="ps-bar-track" style="flex:1;margin:0 12px">
+        <div class="ps-bar-fill" style="width:${p.pct}%"></div>
+      </div>
+      <div class="ps-pct">${p.pct}%</div>
+    </div>
+  `).join('');
+
+  // Open action items
+  const actions = getOpenActionsForProject('loanos');
+  document.getElementById('loanos-action-count').textContent = actions.length;
+  document.getElementById('loanos-action-list').innerHTML = actions.length
+    ? actions.map(a => buildLoanOSActionItem(a)).join('')
+    : '<div class="ar-item"><div class="ar-item-text" style="color:var(--green)">No open action items.</div></div>';
+
+  // Task cards
+  const tasks = DATA.tasks.filter(t => t.project === 'loanos');
+  document.getElementById('loanos-task-grid').innerHTML = tasks.map(t => buildTaskCard(t)).join('');
+}
+
+function getOpenActionsForProject(project) {
+  const seen = new Set();
+  const actions = [];
+  DATA.reports
+    .filter(r => r.project === project)
+    .forEach(r => {
+      if (r.actionItems) {
+        r.actionItems.filter(a => a.status === 'open').forEach(a => {
+          const key = a.text.slice(0, 60);
+          if (!seen.has(key)) {
+            seen.add(key);
+            actions.push({ ...a, taskName: r.taskName });
+          }
+        });
+      }
+    });
+  return actions;
+}
+
+function buildLoanOSActionItem(a) {
+  const priCls = a.priority === 'high' ? 'pri-high' : a.priority === 'medium' ? 'pri-medium' : 'pri-low';
+  return `<div class="ar-item">
+    <div class="ar-item-text">${esc(a.text)}</div>
+    <div class="ar-item-meta">
+      ${a.taskName ? `<span class="badge badge-loanos" style="font-size:8px">${esc(a.taskName)}</span>` : ''}
+      <span class="exp-priority-badge ${priCls}">${a.priority}</span>
+    </div>
+  </div>`;
+}
+
+// ─── INBOX ────────────────────────────────────────────────────────────────────
+function renderInbox() {
+  let items = DATA.inbox || [];
+
+  if (inboxFilter !== 'all') {
+    if (['styer-mortgage', 'loanos'].includes(inboxFilter)) {
+      items = items.filter(i => i.project === inboxFilter);
+    } else {
+      items = items.filter(i => i.status === inboxFilter);
+    }
+  }
+
+  if (items.length === 0) {
+    document.getElementById('inbox-list').innerHTML = '<div class="empty-state">No inbox items match this filter.</div>';
+    return;
+  }
+
+  document.getElementById('inbox-list').innerHTML = items.map(item => {
+    const pbarCls = item.priority === 'high' ? 'pbar-high' : item.priority === 'medium' ? 'pbar-medium' : 'pbar-low';
+    const sbCls = item.status === 'pending' ? 'sb-pending' : item.status === 'picked-up' ? 'sb-picked' : 'sb-done';
+    const projBadge = item.project === 'styer-mortgage'
+      ? '<span class="badge badge-styer">Styer Mortgage</span>'
+      : '<span class="badge badge-loanos">LoanOS</span>';
+    return `<div class="inbox-item">
+      <div class="inbox-priority-bar ${pbarCls}"></div>
+      <div class="inbox-body">
+        <div class="inbox-text">${esc(item.text)}</div>
+        ${item.notes ? `<div class="inbox-notes">${esc(item.notes)}</div>` : ''}
+        <div class="inbox-meta">
+          ${projBadge}
+          <span class="status-badge ${sbCls}">${item.status}</span>
+          ${item.source ? `<span class="inbox-source">from ${esc(item.source)}</span>` : ''}
+          <span class="inbox-date">${relTime(item.createdAt)}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── TABS ─────────────────────────────────────────────────────────────────────
+function showTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => { p.style.display = 'none'; p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('tab-' + name);
+  const btn = document.querySelector('[data-tab="' + name + '"]');
+  if (panel) { panel.style.display = 'block'; panel.classList.add('active'); }
+  if (btn) btn.classList.add('active');
+}
+
+// ─── FILTERS ──────────────────────────────────────────────────────────────────
+function bindFilters() {
+  // Feed project filter
+  document.querySelectorAll('[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      feedFilter = btn.dataset.filter;
+      renderFeed();
+    });
+  });
+
+  // Feed type filter
+  document.getElementById('type-filter').addEventListener('change', e => {
+    feedTypeFilter = e.target.value;
+    renderFeed();
+  });
+
+  // Inbox filter
+  document.querySelectorAll('[data-inbox-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-inbox-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      inboxFilter = btn.dataset.inboxFilter;
+      renderInbox();
+    });
+  });
+
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => showTab(btn.dataset.tab));
+  });
+}
+
+// ─── ADD IDEA ─────────────────────────────────────────────────────────────────
+function bindAddIdea() {
+  document.getElementById('generate-idea-btn').addEventListener('click', () => {
+    const text = document.getElementById('idea-text').value.trim();
+    if (!text) { document.getElementById('idea-text').focus(); return; }
+    const project = document.getElementById('idea-project').value;
+    const priority = document.getElementById('idea-priority').value;
+    const notes = document.getElementById('idea-notes').value.trim();
+    const existing = DATA.inbox || [];
+    const maxN = existing.reduce((m, i) => {
+      const n = parseInt((i.id || '').replace('inbox-', ''), 10);
+      return isNaN(n) ? m : Math.max(m, n);
+    }, 0);
+    const newId = 'inbox-' + String(maxN + 1).padStart(3, '0');
+    const obj = {
+      id: newId,
+      text: text,
+      project: project,
+      source: 'manual-entry',
+      priority: priority,
+      status: 'pending',
+      createdAt: new Date().toISOString(),
+    };
+    if (notes) obj.notes = notes;
+    const json = JSON.stringify(obj, null, 2);
+    document.getElementById('ai-json-output').textContent = json;
+    document.getElementById('ai-output').classList.add('visible');
+  });
+
+  document.getElementById('copy-json-btn').addEventListener('click', () => {
+    const text = document.getElementById('ai-json-output').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copy-json-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy to clipboard'; }, 2000);
+    });
+  });
+}
+
+// ─── UTILS ────────────────────────────────────────────────────────────────────
+function relTime(isoStr) {
+  if (!isoStr) return '—';
+  const diff = Date.now() - new Date(isoStr).getTime();
+  const mins = Math.floor(diff / 60000);
+  const hours = Math.floor(diff / 3600000);
+  const days = Math.floor(diff / 86400000);
+  if (mins < 2) return 'just now';
+  if (mins < 60) return mins + 'm ago';
+  if (hours < 24) return hours + 'h ago';
+  if (days === 1) return 'yesterday';
+  if (days < 7) return days + 'd ago';
+  return fmtDate(isoStr);
+}
+
+function fmtDate(isoStr) {
+  if (!isoStr) return '—';
+  const d = new Date(isoStr);
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function esc(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function humanKey(k) {
+  return k.replace(/([A-Z])/g, ' $1').replace(/_/g, ' ').trim();
+}
+
+// ─── BOOT ─────────────────────────────────────────────────────────────────────
+bindFilters();
+bindAddIdea();
+init();
+</script>
+</body>
+</html>
