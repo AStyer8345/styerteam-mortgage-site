@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 28, 2026 (daily-opt run) — Async Google Fonts fix applied sitewide (90 pages, all blogs/suburb/loan/resource/internal pages — site now fully async). thank-you.html noindex restored ✅. New blog post: "How Long Does Mortgage Pre-Approval Take in Austin TX?" (Article + FAQPage schema). Homepage: hero rating chip, outcome subtitle, SVG testimonial stars. Known issue: suburb quick-forms don't fire Google Ads conversion (see FLAG_FOR_ADAM).
+March 29, 2026 (daily-opt run) — Blog listing fix: added 2 new March 28 posts to blog.html manifest (FHA vs Conventional, Pre-Approval Timing — were missing from blog listing). Fixed surrender post URL in blog listing (was pointing to temp-placeholder). Fixed FHA vs Conventional title tag (now includes "Adam Styer |"). NOTE: blog.html and blog/manifest.json are two separate manifests — BOTH must be updated when adding new posts.
 
 ---
 

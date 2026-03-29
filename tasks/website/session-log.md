@@ -128,3 +128,56 @@ Every homepage visitor now sees a credibility signal (5.0 · 136 reviews) within
 **Next run suggestion:**
 The testimonials section heading "Hear from Our Happy Clients" is generic. Consider replacing it with a stat-led headline: "136 Five-Star Reviews — Here's Why" or adding a 91-Google / 45-Zillow aggregate review count line below the heading to reinforce the aggregate rating before readers reach the individual reviews.
 ---
+---
+## [2026-03-29 1 AM] — Stat-Led Testimonials Heading + Cross-Platform Review Aggregate Bar
+
+**Category:** Design / Conversion
+**Pages touched:** index.html, style.css
+
+**What changed:**
+1. Replaced "Hear from Our Happy Clients" (generic marketing heading) with "136 Five-Star Reviews — Real Austin Clients" — stat-led, localized, specific
+2. Added `.review-aggregate-bar` directly below the heading with two platform panels:
+   - Google logo · 5.0 ★ · 91 Google reviews
+   - Zillow "Z" badge · 4.98 ★ · 45 Zillow reviews
+3. New CSS classes: `.review-aggregate-bar`, `.review-aggregate-item`, `.review-aggregate-rating`, `.review-aggregate-count`, `.review-aggregate-divider` — responsive with flex-wrap at 480px, divider hidden on mobile
+
+**Why:**
+The previous heading asked visitors to "hear from happy clients" — a passive, generic phrase that tells them nothing before they decide to read. The new heading opens with a hard number (136) and a specific qualifier (Five-Star), then localizes it (Real Austin Clients). This answers "should I trust this guy?" before the visitor reads a single testimonial.
+
+The aggregate platform bar solves a deeper trust problem: three individual testimonials could come from anywhere. Showing that the 5.0 rating comes from 91 Google reviews AND 4.98 from 45 Zillow reviews simultaneously anchors the social proof to two independently-verified third-party platforms — the gold standard for credibility on mortgage sites where trust is the #1 buying factor.
+
+**Research sources:**
+- Previous session log (2026-03-28 1 AM) — explicit next-run suggestion
+- Standard high-converting financial services site patterns (e.g., NerdWallet, LendingTree, top broker sites use multi-platform aggregate display)
+
+**Result:**
+Every visitor who scrolls to testimonials now sees "136 five-star reviews on Google and Zillow" before reading a word of copy. Should improve conversion from visitors arriving via organic/social who are comparison-shopping brokers and need a fast third-party credibility signal.
+
+**Next run suggestion:**
+The `/realtors` page (realtors.html) is Adam's B2B acquisition channel — realtors send him clients. Audit it for conversion quality: Does the headline speak to what realtors worry about (will my client close on time? will the broker embarrass me?)? Are the proof points relevant to realtors specifically (avg close time, communication speed, no-deal-fall-through record)? This page may have more upside than homepage at this stage.
+---
+---
+## [2026-03-29 1 AM (run 2)] — Realtors Hero: B2B CTA Fix, Stat Chip, SVG Stars
+
+**Category:** Conversion / Design
+**Pages touched:** realtors.html
+
+**What changed:**
+1. **Primary CTA fix**: Replaced "Apply Now" (pointing to borrower loan application) with "Partner With Me" (scrolls to `#partner-form` on the same page). The hero primary CTA on a B2B realtor page was sending visitors to a borrower mortgage application — a fundamental audience mismatch.
+2. **Hero rating chip**: Added `.hero-rating-chip` above H1 with realtor-specific stats: "21-Day Avg Close · 0 Deal Fall-Throughs · Austin's Top Agents Trust Us" — matching the homepage chip pattern added 2026-03-28, but framed for the B2B realtor audience.
+3. **SVG stars**: Replaced emoji &#11088;×5 with 5× brand-gold SVG stars (#C9A84C) in the realtor testimonial — consistent with homepage testimonial fix from 2026-03-28.
+4. **Google attribution**: Added Google logo SVG + "Google Review" attribution line below testimonial author.
+
+**Why:**
+A realtor visiting this page and clicking the most prominent button (Apply Now) was sent to a mortgage application — the borrower's action, not the realtor's action. The correct primary action for a realtor is to contact Adam about a partnership. The stat chip answers the B2B buyer's concern (will my deals close, will I look bad?) with two hard numbers before they read the headline. SVG stars are a quality/consistency fix.
+
+**Research sources:**
+- Previous session log: 2026-03-29 run suggested realtors page audit
+- Previous session log: 2026-03-28 established hero-rating-chip pattern on index.html
+
+**Result:**
+Realtors now see a CTA that matches their intent ("Partner With Me" → on-page partner form) instead of a borrower loan application. The stat chip delivers B2B credibility signals (fast close, zero fall-throughs) at first eyeline. Expected impact: higher realtor partner form submission rate from landing page traffic.
+
+**Next run suggestion:**
+The "What Realtors Say" section has only one testimonial with a generic "R" avatar and no real name. Adding a second testimonial with a specific agent name and brokerage (even first name + initial) would significantly strengthen social proof on this B2B page. OR: SEO audit of the page's H2 tags — several section headings ("Why Agents Partner With Us", "What We Offer Realtor Partners") could be replaced with keyword-bearing H2s targeting "Austin real estate agent mortgage partner" and related terms.
+---

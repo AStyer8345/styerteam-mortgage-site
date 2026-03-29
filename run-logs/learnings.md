@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-03-29 — Two-Manifest Problem on Blog
+
+### Patterns
+- **blog.html has its own inline manifest** separate from `blog/manifest.json`. Both must be updated when adding new posts. Prior sessions were only updating `manifest.json` — the blog listing page (`blog.html`) was missing the two newest March 28 posts entirely. Rule: any time a new blog post is added, grep for `"posts":[` in both `blog.html` AND `blog/manifest.json` and update BOTH.
+- **Blog post URL drift from temp-placeholder filenames**: Surrender post was linked from blog.html as `/blog/2026-03-10-temp-placeholder.html` instead of the real slug. When a post outgrows its placeholder filename, the blog listing must be updated immediately. Watch for `temp-placeholder` in `blog.html` manifest as a red flag.
+- **Title tag brand consistency**: Blog post titles should follow pattern "[Topic] | Adam Styer | NMLS #513013" — not just "| NMLS #513013". FHA post was missing "Adam Styer |". Check new posts before declaring them complete.
+
+---
+
 ## 2026-03-28 — Sitewide Async Font Loading Fix
 
 ### Patterns
