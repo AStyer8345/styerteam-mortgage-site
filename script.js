@@ -480,6 +480,10 @@ function initHeroQuickForm() {
         successEl.removeAttribute('hidden');
         wrap.classList.add('submitted');
         form.reset();
+        // Fire conversion events — counts as Google Ads conversion via GTM thank_you_page_view trigger
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', lead_type: 'quick_quote' });
+        window.dataLayer.push({ event: 'thank_you_page_view' });
       })
       .catch((err) => alert(err));
   });
