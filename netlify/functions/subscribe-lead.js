@@ -39,7 +39,7 @@ const SUPABASE_KEY  = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 const PA_CAMPAIGN_ID = "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d";
 const ORG_ID         = "18613f82-fdd9-42dd-a09e-f3c577328258";
 
-const LOANOS_URL    = "https://loanos.vercel.app";
+const LOANOS_URL    = process.env.LOANOS_URL || "";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
 
 const CORS_HEADERS = {
@@ -100,14 +100,18 @@ exports.handler = async (event) => {
     console.error("[subscribe-lead] Guide email failed:", err.message)
   );
 
-  // Fire pre-approval lead notification to n8n (non-blocking — only when lead_source is Pre-Approval Funnel)
+  // Fire pre-approval lead notification to n8n and enroll in drip — awaited so they complete before function returns
   if (lead_source === "Pre-Approval Funnel") {
-    notifyPreApprovalLead({ email, fname, lname, phone, loan_goal, sms_opt_in, utm_source, utm_medium, utm_campaign, page_url })
-      .catch(err => console.error("[subscribe-lead] PA notify failed:", err.message));
-
-    // Enroll in drip campaign (non-blocking)
-    enrollInDrip({ email, fname, lname })
-      .catch(err => console.error("[subscribe-lead] Drip enrollment failed:", err.message));
+    const [notifyResult, dripResult] = await Promise.allSettled([
+      notifyPreApprovalLead({ email, fname, lname, phone, loan_goal, sms_opt_in, utm_source, utm_medium, utm_campaign, page_url }),
+      enrollInDrip({ email, fname, lname }),
+    ]);
+    if (notifyResult.status === "rejected") {
+      console.error("[subscribe-lead] PA notify failed:", notifyResult.reason?.message);
+    }
+    if (dripResult.status === "rejected") {
+      console.error("[subscribe-lead] Drip enrollment failed:", dripResult.reason?.message);
+    }
   }
 
   return respond(200, {
