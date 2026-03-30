@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-03-29b — Noindex Regression + Title Pipe Pattern
+
+### Patterns
+- **noindex tags can silently disappear**: /get-preapproved was confirmed noindex,nofollow on 2026-03-22 but the tag was absent today. Likely caused by a file being overwritten or a new session rebuilding the page from scratch. Always grep for `noindex` on both landing pages at the start of every run, not just after changes.
+- **Title tag pipe separator is a consistent failure mode**: "Adam Styer NMLS #513013" (missing pipe) appeared in 4+ blog posts and the /get-preapproved title/OG tags. The correct format is "Adam Styer | NMLS #513013". When generating new pages, always use the pipe format. Run a grep for `Adam Styer NMLS` (without pipe) monthly to catch this.
+- **blog.html manifest divergence is a systemic problem**: Now missed 3 runs in a row. The two-manifest architecture (blog.html inline + blog/manifest.json) is fragile. Every new post needs both files updated. If this keeps happening, consider refactoring blog.html to dynamically fetch manifest.json instead of duplicating data inline.
+- **Server-side tracking is becoming necessary in 2026**: NotebookLM flagged that standard browser-based tracking may lose 20-40% of conversion data due to ad blockers, iOS privacy changes, and cookieless browsers. Worth flagging to Adam for a future architecture decision.
+
+---
+
 ## 2026-03-29 — Two-Manifest Problem on Blog
 
 ### Patterns

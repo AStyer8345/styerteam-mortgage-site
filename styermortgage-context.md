@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 29, 2026 (daily-opt run) — Blog listing fix: added 2 new March 28 posts to blog.html manifest (FHA vs Conventional, Pre-Approval Timing — were missing from blog listing). Fixed surrender post URL in blog listing (was pointing to temp-placeholder). Fixed FHA vs Conventional title tag (now includes "Adam Styer |"). NOTE: blog.html and blog/manifest.json are two separate manifests — BOTH must be updated when adding new posts.
+March 29, 2026 (daily-opt run 2) — Added VA loan eligibility post (2026-03-29) to blog.html manifest. Re-added missing noindex,nofollow to /get-preapproved (regressed since 2026-03-22 fix). Fixed title tag pipes on 4 blog posts (March 20, 24, 27, 28 — "Adam Styer NMLS" → "Adam Styer | NMLS"). thank-you.html noindex confirmed present (context was stale — marking fixed).
 
 ---
 
@@ -215,6 +215,7 @@ jobs, career, salary, license, school, class, training, free house, rent, apartm
 | Page | URL | Status |
 |---|---|---|
 | Austin mortgage rates (evergreen) | /austin-mortgage-rates | ✅ NEW 2026-03-25 — Article + FAQPage schema, 5 FAQs, rate factors, loan type comparison. Update dateModified monthly. |
+| VA Loan Eligibility Texas 2026 | /blog/2026-03-29-va-loan-eligibility-texas.html | ✅ NEW 2026-03-29 — Article + FAQPage schema, robots: index,follow, canonical present. |
 
 ### Resources & Tools
 | Page | URL |
@@ -363,4 +364,4 @@ Update this section as work is completed or new issues are found.
 | Trust bar non-standard on 39 pages | HIGH | ✅ FIXED 2026-03-26 — all pages now show "Licensed in Texas \| NMLS #513013" |
 | Suburb quick-form not counting as Google Ads conversion | MEDIUM | ⚠️ OPEN — suburb forms fire generate_lead but not thank_you_page_view. Google Ads only counts thank_you_page_view. Needs GTM config change — FLAG_FOR_ADAM. |
 | Homepage hero CTA links to loan app directly (bypasses tracked funnel) | LOW | ⚠️ OPEN — "Apply Now" hero button links to 1003 app. Conversions untracked in GA4/Ads. Low priority — intentional design for high-intent visitors. |
-| thank-you.html missing noindex tag | MEDIUM | ⚠️ OPEN — noindex removed during thank-you redesign (prior session). Organic visitors landing on /thank-you without submitting a form skew bounce/conversion data. Fix: add `<meta name="robots" content="noindex, nofollow">` — FLAG_FOR_ADAM. |
+| thank-you.html missing noindex tag | MEDIUM | ✅ CONFIRMED FIXED 2026-03-29 — noindex,nofollow present on line 7. Context was stale. |
