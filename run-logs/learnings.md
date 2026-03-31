@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-03-31 — Suburb CTAs + Two-Manifest Resolution + Title Pattern Persists
+
+### Patterns
+- **Suburb pages CTAs link to raw loan app URL, bypassing conversion tracking**: Round Rock had both "Start Your Pre-Approval" and "Start Your Application" CTAs pointing to the 1003 app URL directly. This means those clicks are invisible to Google Ads and GA4 (generate_lead doesn't fire). Fixed by changing to /get-preapproved. Likely affects all 9 suburb pages — audit one per run in rotation.
+- **blog.html now dynamically fetches manifest.json**: The recurring two-manifest divergence issue is RESOLVED. blog.html uses `fetch("blog/manifest.json")` — only one file needs updating when new posts are added. Going forward, only update blog/manifest.json.
+- **New blog posts (created outside daily-opt runs) consistently miss "Adam Styer |" in title**: DSCR post and Rates post were both created between runs with "| NMLS #513013" instead of "| Adam Styer | NMLS #513013". This is now confirmed a template-level problem. Always grep new blog files for `NMLS #513013` without preceding "Adam Styer |" at the start of each run: `grep -l "| NMLS #513013" blog/*.html | xargs grep -L "Adam Styer | NMLS"`.
+- **Temp-placeholder files persist silently**: A new 2026-03-30-temp-placeholder.html appeared with noindex + canonical to proper URL. Pattern: temp files are created during drafting, the proper-named version is deployed, but the temp file is left behind. These accumulate. Need Adam to authorize deletion policy.
+
+---
+
 ## 2026-03-30 — Title Tag Length + Blog Manifest Pattern
 
 ### Patterns

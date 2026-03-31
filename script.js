@@ -472,18 +472,9 @@ function initHeroQuickForm() {
       body: new URLSearchParams(formData).toString(),
     })
       .then(() => {
-        const name = (formData.get('name') || '').trim() || 'there';
-        const goalSelect = form.querySelector('[name="loanGoal"]');
-        const loanGoal = goalSelect && goalSelect.options[goalSelect.selectedIndex] ? goalSelect.options[goalSelect.selectedIndex].text : (formData.get('loanGoal') || 'request');
-        const message = "Got it, " + name + "! I'm reviewing your " + loanGoal + " request now. I'll text you shortly. — Adam";
-        successText.textContent = message;
-        successEl.removeAttribute('hidden');
-        wrap.classList.add('submitted');
-        form.reset();
-        // Fire conversion events — counts as Google Ads conversion via GTM thank_you_page_view trigger
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'generate_lead', lead_type: 'quick_quote' });
-        window.dataLayer.push({ event: 'thank_you_page_view' });
+        window.location.href = '/thank-you';
       })
       .catch((err) => alert(err));
   });

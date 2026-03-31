@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 30, 2026 (daily-opt) — Fixed Westlake Hills title (99→61 chars), Buda title (104→51 chars), refinance-quote title pipe, March 30 FTB blog post title. Added March 30 FTB programs post to blog.html manifest. noindex confirmed on both landing pages (no regression). Commit 273e47b.
+March 31, 2026 (daily-opt) — Fixed titles on 2 new blog posts (missing "Adam Styer |"). Round Rock CTAs changed from raw loan app URL → /get-preapproved for conversion tracking. blog.html confirmed to fetch manifest.json dynamically (one-manifest system). 3 new posts added to NotebookLM. Commit e8d25d9.
 
 ---
 
@@ -371,4 +371,6 @@ Update this section as work is completed or new issues are found.
 | blog/2026-03-30 FTB post missing "Adam Styer |" in title | LOW | ✅ FIXED 2026-03-30 |
 | blog.html manifest missing March 30 FTB post | MEDIUM | ✅ FIXED 2026-03-30 — added to inline manifest (recurring issue — 4 runs) |
 | 2026-03-06-temp-placeholder.html — real content at temp slug | MEDIUM | ⚠️ OPEN — "Oil Prices" post still at temp URL. Needs rename decision from Adam. |
-| 2026-03-10-temp-placeholder.html — duplicate of surrender story | MEDIUM | ⚠️ OPEN — properly named version exists. Temp file has wrong H1. Duplicate content risk. Needs Adam decision. |
+| 2026-03-10-temp-placeholder.html — duplicate of surrender story | MEDIUM | ✅ RESOLVED 2026-03-31 — file no longer exists; renamed to proper slug before this run. |
+| 2026-03-30-temp-placeholder.html — rates post at temp slug | LOW | ⚠️ OPEN — noindexed, canonical set to proper URL. Not SEO risk but dead file. Needs Adam to approve deletion. |
+| Suburb CTAs link to raw loan app URL (bypasses conversion tracking) | MEDIUM | ⚠️ OPEN — Round Rock fixed 2026-03-31. All other suburb pages likely same pattern — auditing one per day in rotation. |
