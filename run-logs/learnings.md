@@ -2,6 +2,30 @@
 
 ---
 
+## 2026-03-30 — Title Tag Length + Blog Manifest Pattern
+
+### Patterns
+- **Suburb page title tags can silently creep above 60-70 chars**: Westlake (99 chars) and Buda (104 chars) had rich descriptive titles that were too long for Google to display without truncation. The standard format "Mortgage Lender [City] TX | Adam Styer | NMLS #513013" is always safe. When creating suburb pages, verify title length before publishing.
+- **New blog posts inherit the "missing Adam Styer |" pattern**: The March 30 post had "First-Time Buyer Programs Austin TX 2026 | NMLS #513013" — missing "Adam Styer |". This is now the 5th+ occurrence. Pattern: whoever creates new pages is likely copying from a template that omits the brand. Correct format: "[Title] | Adam Styer | NMLS #513013".
+- **blog.html manifest divergence is now confirmed systemic (4 runs)**: Will not self-resolve. Either blog.html needs to fetch manifest.json dynamically, or a checklist step must be added to the post-publish workflow. Flag to Adam is escalated.
+- **Temp-placeholder filenames create ongoing risk**: Two temp files remain in repo (`2026-03-06-temp-placeholder.html`, `2026-03-10-temp-placeholder.html`). The March 10 one has both a temp version and a properly-named version — duplicate content risk. The March 06 one has real content at a temp URL. These need a decision from Adam before cleanup.
+- **noindex regression watch**: /get-preapproved noindex was confirmed present again today. Pattern: check this EVERY run as the first verification step, not just after changes.
+
+---
+
+## 2026-03-30 — Suburb Indexing Emergency + New Competitor Discovery
+
+### Patterns
+- **Suburb pages are NOT indexed after 4 weeks**: `site:styermortgage.com` returns zero results for any suburb keyword (Kyle, Pflugerville, Leander, Georgetown, Round Rock, Cedar Park). Homepage and product pages ARE indexed. Root cause: 15 pages were missing from sitemap.xml until ~March 26 fix. Even after fix, indexing takes time — but manual GSC submission is required NOW.
+- **Barton Creek Lending Group has 506 reviews at 4.9 stars**: This is the largest review count found in the Austin mortgage market — 3x Highlander (~168), 2x Big Life Georgetown (~265). They currently have NO suburb-specific pages, but their domain authority and social proof make them a latent threat for any keyword they target.
+- **Joel Richardson/FCM is actively rising**: Gained positions on multiple keywords simultaneously — now #4 for "mortgage lender austin tx" AND #1 for "cash out refinance austin tx" (displacing Austin Capital Mortgage). This signals active SEO investment. Needs a deep competitive analysis.
+- **San Marcos is more competitive than Kyle**: 3 lenders have dedicated San Marcos pages (Capital Home Mortgage, Lone Star, Big Life) vs. Kyle where zero lenders had dedicated pages. San Marcos page must differentiate harder.
+- **Westlake Hills is a luxury market**: Quantum Loans leads with jumbo/luxury emphasis. Barton Creek Lending dominates via reviews but has no dedicated page. Our Westlake page must emphasize jumbo loans, Rob Roy/Davenport Ranch, Eanes ISD. NotebookLM flagged title (96 chars → needs ≤60) and meta desc (193 chars → needs ≤155) as too long.
+- **Big Life is expanding**: Added San Marcos page since last check (not present in Week 3). Their suburb rollout is accelerating — window to establish first-mover advantage is narrowing.
+- **SERPs are shifting**: Multiple position changes this week — SouthStar Bank took #1 for refinance (new), CMG moved to #2 for broker, Max Leaman to #2 for home loan. More volatility than prior 3 weeks.
+
+---
+
 ## 2026-03-29b — Noindex Regression + Title Pipe Pattern
 
 ### Patterns

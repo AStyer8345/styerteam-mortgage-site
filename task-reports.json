@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-29T12:00:00Z",
+  "lastUpdated": "2026-03-31T07:50:00Z",
   "tasks": [
     {
       "id": "website-daily-audit",
@@ -46,7 +46,7 @@
       "name": "LoanOS Enterprise Build",
       "project": "loanos",
       "frequency": "daily",
-      "description": "Master Orchestrator + 6-subagent pipeline: research → architect → builder → reviewer → QA → reporter. Runs AM and PM. Builds Phase 3 enterprise features.",
+      "description": "Master Orchestrator + 6-subagent pipeline: research \u2192 architect \u2192 builder \u2192 reviewer \u2192 QA \u2192 reporter. Runs AM and PM. Builds Phase 3 enterprise features.",
       "status": "active",
       "lastRun": "2026-03-28T21:10:00Z",
       "nextRun": "2026-03-29T06:00:00Z"
@@ -67,7 +67,7 @@
       "project": "loanos",
       "frequency": "ad-hoc",
       "phase": "P2",
-      "description": "Multi-tenancy enforcement — NOT NULL constraints, RLS policy audit, null row backfill across all org-scoped tables.",
+      "description": "Multi-tenancy enforcement \u2014 NOT NULL constraints, RLS policy audit, null row backfill across all org-scoped tables.",
       "status": "completed",
       "lastRun": "2026-03-25T09:00:00Z"
     },
@@ -77,12 +77,70 @@
       "project": "loanos",
       "frequency": "ad-hoc",
       "phase": "P2",
-      "description": "Clean separation of concerns — Arive owns loan processing, LoanOS owns CRM/marketing/communications. Includes dead code removal and n8n workflow cleanup.",
+      "description": "Clean separation of concerns \u2014 Arive owns loan processing, LoanOS owns CRM/marketing/communications. Includes dead code removal and n8n workflow cleanup.",
       "status": "completed",
       "lastRun": "2026-03-27T09:00:00Z"
     }
   ],
   "reports": [
+    {
+      "id": "rpt-20260331-001",
+      "taskId": "social-media-build",
+      "taskName": "Social Media Build",
+      "project": "loanos",
+      "timestamp": "2026-03-31T07:50:00Z",
+      "status": "complete",
+      "summary": "Week 2 Posts 8-14 compliance reviewed, hashtag fixes applied, all 7 posts confirmed in social_drafts table.",
+      "completed": [
+        "NotebookLM PULL executed \u2014 pull report written to notebooklm-pull-2026-03-31.md",
+        "Reviewer run on Posts 8-14: Round 1 flagged Posts 10 + 12 for LinkedIn hashtag count (6 vs max 5)",
+        "Hashtag fixes applied inline to build report AND Supabase DB for Posts 10 and 12",
+        "Round 2 review: all 7 posts APPROVED WITH NOTES, 0 compliance failures",
+        "QA confirmed all 7 Week 2 posts in social_drafts with status=draft",
+        "Session log, QA report, review report, ADAM-TODO, Supabase activity log all updated",
+        "Prompt improvements added to prompt-improvements.md (LinkedIn hashtag rule + Reviewer timing)"
+      ],
+      "actionItems": [
+        {
+          "text": "Run 3 Publer curl commands for Posts 9, 11, 14 \u2014 commands in tasks/social-media/qa-reports/2026-03-31-week2-qa.md",
+          "priority": "medium",
+          "status": "open"
+        },
+        {
+          "text": "Create Canva assets for Posts 8, 10, 12, 13 \u2014 briefs in tasks/social-media/build-reports/2026-03-28-week2-build.md",
+          "priority": "medium",
+          "status": "open"
+        },
+        {
+          "text": "Film vertical videos for Posts 9 (Reel) + 11 (personal brand) before April 14 publish date",
+          "priority": "high",
+          "status": "open"
+        },
+        {
+          "text": "Pull Unlock MLS county stats on/after April 16 to replace ~[~PLACEHOLDER] in Posts 12 + 13 before April 17 publish",
+          "priority": "high",
+          "status": "open"
+        },
+        {
+          "text": "NMLS# profile audit on all 4 platforms still outstanding \u2014 must complete before April 7 Week 1 publish",
+          "priority": "high",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "Begin Week 3 content execution (Posts 15-21, April 20-24) \u2014 Sequence C",
+        "Check if Adam has run Week 1 Publer curl commands before building Week 3",
+        "If NMLS# audit still outstanding by April 5, write to BLOCKERS.md as blocking blocker"
+      ],
+      "metrics": {
+        "postsReviewed": 7,
+        "postsApproved": 7,
+        "complianceFailures": 0,
+        "hashtagFixesApplied": 2,
+        "supabaseRowsUpdated": 2,
+        "adamsActionItemsAdded": 4
+      }
+    },
     {
       "id": "rpt-20260328-004",
       "taskId": "loanos-enterprise-build",
@@ -90,17 +148,17 @@
       "project": "loanos",
       "timestamp": "2026-03-28T21:10:00Z",
       "status": "complete",
-      "summary": "LO Onboarding Session 3 (QA) complete — all 7 Definition of Done items verified, middleware bug fixed. Full onboarding flow is live.",
+      "summary": "LO Onboarding Session 3 (QA) complete \u2014 all 7 Definition of Done items verified, middleware bug fixed. Full onboarding flow is live.",
       "completed": [
-        "Migration 060 verified in Supabase — all 5 org_settings onboarding columns present with correct defaults",
-        "POST /api/onboarding/step QA passed — correct STEP_COLUMN map, updates org_settings",
-        "POST /api/contacts/csv-import QA passed — parses CSV, deduplicates on email, batch inserts in chunks of 100",
-        "GettingStartedWizard.tsx QA passed — 5-step wizard, skip on all steps, persists state via API",
-        "getting-started/page.tsx QA passed — force-dynamic, redirects if onboarding_completed",
-        "BUG FIXED: middleware onboarding redirect was commented out — uncommented, now active",
-        "npm run build — 0 TypeScript errors, 60 pages, /dashboard/getting-started confirmed in output",
-        "NotebookLM PUSH+CURATE — 3 stale system log copies removed, updated system log added",
-        "Daily digest sent to adam@thestyerteam.com — Zapier confirmed success"
+        "Migration 060 verified in Supabase \u2014 all 5 org_settings onboarding columns present with correct defaults",
+        "POST /api/onboarding/step QA passed \u2014 correct STEP_COLUMN map, updates org_settings",
+        "POST /api/contacts/csv-import QA passed \u2014 parses CSV, deduplicates on email, batch inserts in chunks of 100",
+        "GettingStartedWizard.tsx QA passed \u2014 5-step wizard, skip on all steps, persists state via API",
+        "getting-started/page.tsx QA passed \u2014 force-dynamic, redirects if onboarding_completed",
+        "BUG FIXED: middleware onboarding redirect was commented out \u2014 uncommented, now active",
+        "npm run build \u2014 0 TypeScript errors, 60 pages, /dashboard/getting-started confirmed in output",
+        "NotebookLM PUSH+CURATE \u2014 3 stale system log copies removed, updated system log added",
+        "Daily digest sent to adam@thestyerteam.com \u2014 Zapier confirmed success"
       ],
       "actionItems": [
         {
@@ -114,14 +172,14 @@
           "status": "open"
         },
         {
-          "text": "Decide Arive webhook scoping — single shared URL or per-tenant URL? Current code assumes shared.",
+          "text": "Decide Arive webhook scoping \u2014 single shared URL or per-tenant URL? Current code assumes shared.",
           "priority": "medium",
           "status": "open"
         }
       ],
       "nextSteps": [
-        "If Stripe ready: begin Billing Build Session 1 — npm install stripe, migrations 057+058, stripe.ts + entitlements.ts",
-        "If Stripe still blocked: begin White-Label architecture — domain routing spec, per-tenant theming",
+        "If Stripe ready: begin Billing Build Session 1 \u2014 npm install stripe, migrations 057+058, stripe.ts + entitlements.ts",
+        "If Stripe still blocked: begin White-Label architecture \u2014 domain routing spec, per-tenant theming",
         "Advance enterprise-queue.md: mark LO Onboarding COMPLETE, set White-Label as active focus"
       ],
       "metrics": {
@@ -139,18 +197,18 @@
       "project": "loanos",
       "timestamp": "2026-03-28T18:14:00Z",
       "status": "complete",
-      "summary": "LO Onboarding Session 1 complete — migration 060, CSV import pipeline, onboarding step API, middleware redirect, and wizard UI (Session 2) all built.",
+      "summary": "LO Onboarding Session 1 complete \u2014 migration 060, CSV import pipeline, onboarding step API, middleware redirect, and wizard UI (Session 2) all built.",
       "completed": [
-        "Migration 060 applied — 5 onboarding tracking columns added to org_settings in Supabase",
+        "Migration 060 applied \u2014 5 onboarding tracking columns added to org_settings in Supabase",
         "papaparse + @types/papaparse installed",
-        "POST /api/onboarding/step created — marks wizard steps complete, updates org_settings",
-        "POST /api/contacts/csv-import created — parses CSV, auto-detects 7 field mappings, email dedup, batch insert chunks of 100",
-        "Middleware updated — /dashboard root now redirects to /dashboard/getting-started when onboarding_completed = false",
-        "database.types.ts updated — org_settings Row/Insert/Update types reflect all 5 new columns",
-        "GettingStartedWizard.tsx built — 5-step wizard with skip on all steps, persists via API",
-        "getting-started/page.tsx built — server wrapper, force-dynamic, redirects if onboarding complete",
-        "DashboardClient.tsx updated — showSetupBanner prop + banner component added",
-        "npm run build — 0 TypeScript errors, both new API routes confirmed in output"
+        "POST /api/onboarding/step created \u2014 marks wizard steps complete, updates org_settings",
+        "POST /api/contacts/csv-import created \u2014 parses CSV, auto-detects 7 field mappings, email dedup, batch insert chunks of 100",
+        "Middleware updated \u2014 /dashboard root now redirects to /dashboard/getting-started when onboarding_completed = false",
+        "database.types.ts updated \u2014 org_settings Row/Insert/Update types reflect all 5 new columns",
+        "GettingStartedWizard.tsx built \u2014 5-step wizard with skip on all steps, persists via API",
+        "getting-started/page.tsx built \u2014 server wrapper, force-dynamic, redirects if onboarding complete",
+        "DashboardClient.tsx updated \u2014 showSetupBanner prop + banner component added",
+        "npm run build \u2014 0 TypeScript errors, both new API routes confirmed in output"
       ],
       "actionItems": [],
       "nextSteps": [
@@ -175,13 +233,13 @@
       "summary": "Async Google Fonts fix applied site-wide across all 90 HTML files. All conversion tracking verified. No new issues found.",
       "completed": [
         "Async Google Fonts preload pattern applied to all 90 HTML files site-wide",
-        "Conversion tracking verified — generate_lead, thank_you_page_view, phone_click all firing",
-        "Landing page audit passed — trust bar, TCPA, CTA, no-nav all compliant on both pages",
+        "Conversion tracking verified \u2014 generate_lead, thank_you_page_view, phone_click all firing",
+        "Landing page audit passed \u2014 trust bar, TCPA, CTA, no-nav all compliant on both pages",
         "thank-you.html noindex tag restored (was removed in prior redesign, found in 3/27 run)"
       ],
       "actionItems": [
         {
-          "text": "Suburb quick-form not counting as Google Ads conversion — needs GTM fix or /thank-you redirect",
+          "text": "Suburb quick-form not counting as Google Ads conversion \u2014 needs GTM fix or /thank-you redirect",
           "priority": "medium",
           "status": "open"
         }
@@ -189,7 +247,7 @@
       "nextSteps": [
         "Monday March 30: retest PageSpeed on /get-preapproved + /refinance-quote after sitewide font fix",
         "Monday March 30: pull Google Ads optimization score",
-        "March 31: next blog post due — Kyle TX Mortgage Guide or Austin Spring Market 2026"
+        "March 31: next blog post due \u2014 Kyle TX Mortgage Guide or Austin Spring Market 2026"
       ],
       "metrics": {
         "pagespeedMobile": 80,
@@ -209,14 +267,14 @@
       "status": "complete",
       "summary": "Content queue planned for week of March 31. Kyle TX Mortgage Guide ranked #1 keyword target. Social posts drafted for 3 platforms.",
       "completed": [
-        "Blog post candidates ranked — Kyle TX Mortgage Guide is top pick (easiest keyword win, no dedicated lender page in top 3)",
+        "Blog post candidates ranked \u2014 Kyle TX Mortgage Guide is top pick (easiest keyword win, no dedicated lender page in top 3)",
         "Social post drafts prepared for Facebook, Instagram, LinkedIn via Publer",
         "Content calendar updated through April 4",
         "NotebookLM queried for current keyword gap recommendations"
       ],
       "actionItems": [
         {
-          "text": "Blog post due by March 31 — Kyle TX guide or Austin Spring Market 2026",
+          "text": "Blog post due by March 31 \u2014 Kyle TX guide or Austin Spring Market 2026",
           "priority": "low",
           "status": "open"
         }
@@ -238,31 +296,31 @@
       "project": "styer-mortgage",
       "timestamp": "2026-03-27T18:16:00Z",
       "status": "complete",
-      "summary": "30-day content calendar skeleton complete — 30 post slots planned across LinkedIn, Instagram, Facebook with compliance flags assigned.",
+      "summary": "30-day content calendar skeleton complete \u2014 30 post slots planned across LinkedIn, Instagram, Facebook with compliance flags assigned.",
       "completed": [
-        "Architect subagent executed — produced specs/2026-03-27-30day-calendar-skeleton.md",
+        "Architect subagent executed \u2014 produced specs/2026-03-27-30day-calendar-skeleton.md",
         "30 post slots planned: LinkedIn (14), Instagram (13), Facebook (7 cross-posts) over 5 weeks",
-        "Publer scheduling slots defined — Mon 10am LinkedIn, 12pm Instagram; Wed 4pm LinkedIn, 12pm Instagram; Fri 9am all platforms",
-        "Compliance risk levels assigned per post — 5 HIGH, 10 MEDIUM, 15 LOW",
+        "Publer scheduling slots defined \u2014 Mon 10am LinkedIn, 12pm Instagram; Wed 4pm LinkedIn, 12pm Instagram; Fri 9am all platforms",
+        "Compliance risk levels assigned per post \u2014 5 HIGH, 10 MEDIUM, 15 LOW",
         "Builder execution instructions written into spec (copy-writing order, data placeholder notes, Canva brief format, Publer API draft instructions)",
-        "All 3 advance conditions from prior session met — architect phase authorized and executed"
+        "All 3 advance conditions from prior session met \u2014 architect phase authorized and executed"
       ],
       "actionItems": [
         {
-          "text": "NMLS# profile audit — must be completed across all platforms before first post goes live",
+          "text": "NMLS# profile audit \u2014 must be completed across all platforms before first post goes live",
           "priority": "high",
           "status": "open"
         },
         {
-          "text": "Confirm Publer auto-publish preference — manual review after compliance check, or auto-publish?",
+          "text": "Confirm Publer auto-publish preference \u2014 manual review after compliance check, or auto-publish?",
           "priority": "medium",
           "status": "open"
         }
       ],
       "nextSteps": [
-        "Builder subagent (03) — write post copy for Week 1 (Posts 1–7, April 6–10). Start with Rate Education (Posts 1–2) and Market Data (Posts 5–7)",
-        "Reviewer subagent (04) — review HIGH-risk posts (Posts 1, 8) after Builder writes them",
-        "QA subagent (05) — create Publer DRAFTS for Week 1 posts after Reviewer clears"
+        "Builder subagent (03) \u2014 write post copy for Week 1 (Posts 1\u20137, April 6\u201310). Start with Rate Education (Posts 1\u20132) and Market Data (Posts 5\u20137)",
+        "Reviewer subagent (04) \u2014 review HIGH-risk posts (Posts 1, 8) after Builder writes them",
+        "QA subagent (05) \u2014 create Publer DRAFTS for Week 1 posts after Reviewer clears"
       ],
       "metrics": {
         "postsPlanned": 30,
@@ -282,25 +340,25 @@
       "status": "complete",
       "summary": "Blog manifest fixed (2 bad entries). All 15 suburb pages verified live. thank-you.html noindex gap found and flagged.",
       "completed": [
-        "Blog manifest corrected — 2 entries fixed (Newsletter title, lowercase AI Trap title)",
-        "get-preapproved.html — improved TCPA language, added SMS opt-in per 2026 FCC one-to-one rules",
-        "All 15 new suburb pages verified live on Netlify — all returning HTTP 200",
+        "Blog manifest corrected \u2014 2 entries fixed (Newsletter title, lowercase AI Trap title)",
+        "get-preapproved.html \u2014 improved TCPA language, added SMS opt-in per 2026 FCC one-to-one rules",
+        "All 15 new suburb pages verified live on Netlify \u2014 all returning HTTP 200",
         "All 15 suburb pages confirmed in sitemap.xml with FAQPage + BreadcrumbList schema"
       ],
       "actionItems": [
         {
-          "text": "thank-you.html noindex tag was missing — caused by page redesign removing the tag",
+          "text": "thank-you.html noindex tag was missing \u2014 caused by page redesign removing the tag",
           "priority": "medium",
           "status": "resolved"
         },
         {
-          "text": "Suburb quick-form Google Ads conversion gap — first identified",
+          "text": "Suburb quick-form Google Ads conversion gap \u2014 first identified",
           "priority": "medium",
           "status": "open"
         }
       ],
       "nextSteps": [
-        "Fix thank-you.html noindex — resolved in 3/28 session",
+        "Fix thank-you.html noindex \u2014 resolved in 3/28 session",
         "Next blog post candidates: Kyle TX, Austin Spring Market 2026, Down Payment Assistance TX"
       ],
       "metrics": {
@@ -320,27 +378,27 @@
       "summary": "Arive/LoanOS clean separation complete. 6 Outlook API routes deleted. 3 n8n workflows archived. Dead code fully pruned.",
       "completed": [
         "Deleted 6 Outlook OAuth API routes: auth, callback, disconnect, refresh, status, sync",
-        "Deleted /api/agents/milestone — Arive handles milestone emails natively",
+        "Deleted /api/agents/milestone \u2014 Arive handles milestone emails natively",
         "Archived 3 n8n workflows: Milestone Communication Agent, Outlook Email Sync, TEMP Mailchimp Journeys",
-        "Updated WF4 Inbound Email Log — added organization_id to both activity_log inserts",
-        "Settings page Outlook OAuth UI replaced with simple 'Email Sync — managed by n8n' status card",
+        "Updated WF4 Inbound Email Log \u2014 added organization_id to both activity_log inserts",
+        "Settings page Outlook OAuth UI replaced with simple 'Email Sync \u2014 managed by n8n' status card",
         "Removed OutlookStatus type, state variables, handlers, unused imports"
       ],
       "actionItems": [
         {
-          "text": "Push WF1 (Arive New Loan → Supabase, ID: 1tagvoU0UXtdDiMY) to n8n cloud — still producing null loan_created rows",
+          "text": "Push WF1 (Arive New Loan \u2192 Supabase, ID: 1tagvoU0UXtdDiMY) to n8n cloud \u2014 still producing null loan_created rows",
           "priority": "high",
           "status": "open"
         },
         {
-          "text": "Push WF2 (Arive Status Update → Supabase, ID: 9JyzzwKac8v3uQ7d) to n8n cloud — same null issue",
+          "text": "Push WF2 (Arive Status Update \u2192 Supabase, ID: 9JyzzwKac8v3uQ7d) to n8n cloud \u2014 same null issue",
           "priority": "high",
           "status": "open"
         }
       ],
       "nextSteps": [
         "After WF1+WF2 pushed, add NOT NULL constraint to activity_log.organization_id",
-        "Begin Phase 3 enterprise build — LO Onboarding → Billing → White-Label"
+        "Begin Phase 3 enterprise build \u2014 LO Onboarding \u2192 Billing \u2192 White-Label"
       ],
       "metrics": {
         "nullRows": 0,
@@ -358,14 +416,14 @@
       "status": "complete",
       "summary": "Homepage H1 keyword-rewrite deployed. Trust bar standardized across 39 pages. 15 suburb pages committed.",
       "completed": [
-        "Homepage H1 updated to 'Mortgage Broker Austin TX — Adam Styer | NMLS #513013'",
-        "Trust bar standardized on 39 HTML files — replaced '#1 Austin Mortgage Team' with 'Licensed in Texas | NMLS #513013'",
+        "Homepage H1 updated to 'Mortgage Broker Austin TX \u2014 Adam Styer | NMLS #513013'",
+        "Trust bar standardized on 39 HTML files \u2014 replaced '#1 Austin Mortgage Team' with 'Licensed in Texas | NMLS #513013'",
         "15 new suburb pages committed: bastrop, bee-cave, dripping-springs, elgin, florence, hutto, jarrell, lakeway, liberty-hill, manor, marble-falls, new-braunfels, smithville, spicewood, taylor",
         "Sitemap.xml updated with all 15 new suburb pages"
       ],
       "actionItems": [
         {
-          "text": "Suburb quick-form does not redirect to /thank-you — Google Ads conversions uncounted for suburb leads",
+          "text": "Suburb quick-form does not redirect to /thank-you \u2014 Google Ads conversions uncounted for suburb leads",
           "priority": "medium",
           "status": "open"
         }
@@ -389,14 +447,14 @@
       "status": "complete",
       "summary": "NOT NULL applied to 8 tables. Daily-briefing unscoped queries fixed. Multi-tenancy Phase 2 hardening complete.",
       "completed": [
-        "Migration 053 applied — NOT NULL on loans, contacts, documents, email_drafts, scenarios, todo_items, contact_activity, chat_sessions",
-        "daily-briefing milestone query scoped to org via loans join — no longer returns cross-org data",
+        "Migration 053 applied \u2014 NOT NULL on loans, contacts, documents, email_drafts, scenarios, todo_items, contact_activity, chat_sessions",
+        "daily-briefing milestone query scoped to org via loans join \u2014 no longer returns cross-org data",
         "0 null rows confirmed in all 8 tables before applying constraints",
-        "RLS policies audited — all confirmed correct, no new gaps"
+        "RLS policies audited \u2014 all confirmed correct, no new gaps"
       ],
       "actionItems": [
         {
-          "text": "activity_log.organization_id NOT NULL deferred — waiting on WF1/WF2 push confirmation",
+          "text": "activity_log.organization_id NOT NULL deferred \u2014 waiting on WF1/WF2 push confirmation",
           "priority": "low",
           "status": "open"
         }
@@ -419,16 +477,16 @@
       "project": "styer-mortgage",
       "timestamp": "2026-03-23T09:00:00Z",
       "status": "complete",
-      "summary": "Ads optimization score at 87.9%. Conversion tracking healthy. Suburb keyword opportunity identified — low CPCs on Pflugerville, Kyle.",
+      "summary": "Ads optimization score at 87.9%. Conversion tracking healthy. Suburb keyword opportunity identified \u2014 low CPCs on Pflugerville, Kyle.",
       "completed": [
         "Google Ads optimization score pulled: 87.9%",
         "Conversion tracking confirmed: generate_lead + thank_you_page_view feeding Google Ads",
-        "Negative keyword review — no new exclusions needed",
+        "Negative keyword review \u2014 no new exclusions needed",
         "Suburb keyword research: Pflugerville and Kyle have low competition, cheap CPCs available"
       ],
       "actionItems": [
         {
-          "text": "Suburb quick-form conversions not counted in Google Ads — suburb leads do not fire Ads conversion event",
+          "text": "Suburb quick-form conversions not counted in Google Ads \u2014 suburb leads do not fire Ads conversion event",
           "priority": "medium",
           "status": "open"
         }
@@ -447,7 +505,7 @@
   "inbox": [
     {
       "id": "inbox-001",
-      "text": "Write Kyle TX Mortgage Guide blog post — easiest suburb keyword to win, no dedicated lender page in top 3 results",
+      "text": "Write Kyle TX Mortgage Guide blog post \u2014 easiest suburb keyword to win, no dedicated lender page in top 3 results",
       "project": "styer-mortgage",
       "source": "content-planner",
       "priority": "high",
@@ -457,17 +515,17 @@
     },
     {
       "id": "inbox-002",
-      "text": "Fix suburb quick-form Google Ads conversion gap — suburb leads fire generate_lead but not thank_you_page_view, so Google Ads doesn't count them",
+      "text": "Fix suburb quick-form Google Ads conversion gap \u2014 suburb leads fire generate_lead but not thank_you_page_view, so Google Ads doesn't count them",
       "project": "styer-mortgage",
       "source": "website-daily-audit",
       "priority": "medium",
       "status": "pending",
       "createdAt": "2026-03-26T09:00:00Z",
-      "notes": "Fix options: (a) redirect suburb forms to /thank-you, or (b) add second Google Ads conversion trigger on generate_lead in GTM. Needs GTM dashboard access — Adam must do this."
+      "notes": "Fix options: (a) redirect suburb forms to /thank-you, or (b) add second Google Ads conversion trigger on generate_lead in GTM. Needs GTM dashboard access \u2014 Adam must do this."
     },
     {
       "id": "inbox-003",
-      "text": "Add Stripe env vars to Vercel — billing build sessions are fully blocked until these are set",
+      "text": "Add Stripe env vars to Vercel \u2014 billing build sessions are fully blocked until these are set",
       "project": "loanos",
       "source": "loanos-enterprise-build",
       "priority": "high",
@@ -477,7 +535,7 @@
     },
     {
       "id": "inbox-004",
-      "text": "Run system_admins seed SQL in Supabase — required before admin panel is accessible",
+      "text": "Run system_admins seed SQL in Supabase \u2014 required before admin panel is accessible",
       "project": "loanos",
       "source": "loanos-enterprise-build",
       "priority": "medium",
@@ -487,17 +545,17 @@
     },
     {
       "id": "inbox-005",
-      "text": "Decide Arive webhook scoping — single shared URL for all tenants, or per-tenant URL?",
+      "text": "Decide Arive webhook scoping \u2014 single shared URL for all tenants, or per-tenant URL?",
       "project": "loanos",
       "source": "loanos-enterprise-build",
       "priority": "medium",
       "status": "pending",
       "createdAt": "2026-03-28T21:10:00Z",
-      "notes": "Current code assumes shared webhook URL for all tenants. Decision needed before Step 1 wizard ships to real LOs. Per-tenant is more secure but more complex — Adam's call."
+      "notes": "Current code assumes shared webhook URL for all tenants. Decision needed before Step 1 wizard ships to real LOs. Per-tenant is more secure but more complex \u2014 Adam's call."
     },
     {
       "id": "inbox-006",
-      "text": "NMLS# audit across all social media platforms — required before any post goes live",
+      "text": "NMLS# audit across all social media platforms \u2014 required before any post goes live",
       "project": "styer-mortgage",
       "source": "social-media-build",
       "priority": "high",
@@ -507,7 +565,7 @@
     },
     {
       "id": "inbox-007",
-      "text": "Confirm Publer auto-publish preference — manual review or auto-publish after QA compliance check?",
+      "text": "Confirm Publer auto-publish preference \u2014 manual review or auto-publish after QA compliance check?",
       "project": "styer-mortgage",
       "source": "social-media-build",
       "priority": "medium",

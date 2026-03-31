@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 29, 2026 (daily-opt run 2) — Added VA loan eligibility post (2026-03-29) to blog.html manifest. Re-added missing noindex,nofollow to /get-preapproved (regressed since 2026-03-22 fix). Fixed title tag pipes on 4 blog posts (March 20, 24, 27, 28 — "Adam Styer NMLS" → "Adam Styer | NMLS"). thank-you.html noindex confirmed present (context was stale — marking fixed).
+March 30, 2026 (daily-opt) — Fixed Westlake Hills title (99→61 chars), Buda title (104→51 chars), refinance-quote title pipe, March 30 FTB blog post title. Added March 30 FTB programs post to blog.html manifest. noindex confirmed on both landing pages (no regression). Commit 273e47b.
 
 ---
 
@@ -365,3 +365,10 @@ Update this section as work is completed or new issues are found.
 | Suburb quick-form not counting as Google Ads conversion | MEDIUM | ⚠️ OPEN — suburb forms fire generate_lead but not thank_you_page_view. Google Ads only counts thank_you_page_view. Needs GTM config change — FLAG_FOR_ADAM. |
 | Homepage hero CTA links to loan app directly (bypasses tracked funnel) | LOW | ⚠️ OPEN — "Apply Now" hero button links to 1003 app. Conversions untracked in GA4/Ads. Low priority — intentional design for high-intent visitors. |
 | thank-you.html missing noindex tag | MEDIUM | ✅ CONFIRMED FIXED 2026-03-29 — noindex,nofollow present on line 7. Context was stale. |
+| Westlake Hills title tag 99 chars (too long) | LOW | ✅ FIXED 2026-03-30 — now "Mortgage Lender Westlake Hills TX | Adam Styer | NMLS #513013" (61 chars) |
+| Buda title tag 104 chars (too long) | LOW | ✅ FIXED 2026-03-30 — now "Mortgage Lender Buda TX | Adam Styer | NMLS #513013" (51 chars) |
+| refinance-quote.html title missing pipe | LOW | ✅ FIXED 2026-03-30 — "Adam Styer NMLS" → "Adam Styer | NMLS" in title + og:title |
+| blog/2026-03-30 FTB post missing "Adam Styer |" in title | LOW | ✅ FIXED 2026-03-30 |
+| blog.html manifest missing March 30 FTB post | MEDIUM | ✅ FIXED 2026-03-30 — added to inline manifest (recurring issue — 4 runs) |
+| 2026-03-06-temp-placeholder.html — real content at temp slug | MEDIUM | ⚠️ OPEN — "Oil Prices" post still at temp URL. Needs rename decision from Adam. |
+| 2026-03-10-temp-placeholder.html — duplicate of surrender story | MEDIUM | ⚠️ OPEN — properly named version exists. Temp file has wrong H1. Duplicate content risk. Needs Adam decision. |
