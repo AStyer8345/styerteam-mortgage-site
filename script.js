@@ -745,7 +745,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // initQuickContactScroll(); — removed, no longer needed
   initTestimonialFilter();
   initPrequalForm();
+  initCityToggle();
 });
+
+function initCityToggle() {
+  var btn = document.getElementById('show-all-cities');
+  var overflow = document.getElementById('city-cards-overflow');
+  if (!btn || !overflow) return;
+  btn.addEventListener('click', function () {
+    var hidden = overflow.style.display === 'none';
+    overflow.style.display = hidden ? '' : 'none';
+    btn.innerHTML = hidden ? 'Show Fewer Cities &uarr;' : 'Show All 24 Cities &darr;';
+  });
+}
 
 // ========================================================================
 // PHONE CLICK TRACKING
