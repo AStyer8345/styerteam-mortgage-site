@@ -123,7 +123,7 @@
     <!-- Hero -->
     <section class="ty-hero">
       <div class="container">
-        <h1>Your Pre-Approval Request Was Received</h1>
+        <h1 id="ty-headline">Your Request Was Received</h1>
         <p>Adam personally reviews every submission — usually within a few hours during business hours (Mon–Fri, 8am–6pm CT). You'll get a call or text from him directly. No call center. No assistant. If you'd rather choose a time now, book a 15-minute call below.</p>
         <p class="ty-phone-cta">Or call / text now: <a href="tel:+15129566010">(512) 956-6010</a></p>
       </div>
@@ -143,7 +143,7 @@
   <!-- Minimal NMLS footer -->
   <footer class="lp-footer">
     <div class="container">
-      <p class="lp-nmls">Adam Styer | Mortgage Solutions LP | NMLS #513013 | Equal Housing Lender.</p>
+      <p class="lp-nmls">Adam Styer | Mortgage Solutions LP | NMLS #513013 | Company NMLS #2526130 | Equal Housing Lender.</p>
     </div>
   </footer>
 
@@ -161,30 +161,25 @@
     });
   </script>
   <script>
-    // Rate Alert funnel: show alternate copy when ?type=rate-alert is present
     (function () {
       var type = new URLSearchParams(window.location.search).get('type');
-      if (type !== 'rate-alert') return;
-
-      // Replace headline
-      var h1 = document.querySelector('.ty-hero h1');
-      if (h1) h1.textContent = "You're on the Austin Rate Watch list";
-
-      // Replace body copy
+      var h1 = document.getElementById('ty-headline');
       var paras = document.querySelectorAll('.ty-hero p:not(.ty-phone-cta)');
-      if (paras.length > 0) {
-        paras[0].textContent = "Check your inbox — your first rate update arrives this Friday. If you don't see it, check your spam folder once and mark us as "not spam."";
-      }
-
-      // Replace phone CTA with rates page link
       var phoneCta = document.querySelector('.ty-phone-cta');
-      if (phoneCta) {
-        phoneCta.innerHTML = 'While you wait: <a href="/austin-mortgage-rates.html">See current Austin mortgage rates &rarr;</a>';
-      }
-
-      // Hide the Calendly booking section (not relevant for low-intent rate-watch opt-in)
       var calendlySection = document.querySelector('.ty-calendly-section');
-      if (calendlySection) calendlySection.style.display = 'none';
+
+      if (type === 'rate-alert') {
+        if (h1) h1.textContent = "You're on the Austin Rate Watch List";
+        if (paras.length > 0) paras[0].textContent = "Check your inbox \u2014 your first rate update arrives this Friday. If you don\u2019t see it, check your spam folder and mark us as \u201cnot spam.\u201d";
+        if (phoneCta) phoneCta.innerHTML = 'While you wait: <a href="/austin-mortgage-rates.html">See current Austin mortgage rates &rarr;</a>';
+        if (calendlySection) calendlySection.style.display = 'none';
+      } else if (type === 'quick-quote') {
+        if (h1) h1.textContent = "Your Quote Request Was Received";
+      } else if (type === 'refinance') {
+        if (h1) h1.textContent = "Your Refinance Quote Request Was Received";
+      } else if (type === 'preapproval') {
+        if (h1) h1.textContent = "Your Pre-Approval Request Was Received";
+      }
     })();
   </script>
 </body>

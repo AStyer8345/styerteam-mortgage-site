@@ -484,15 +484,7 @@ function initHeroQuickForm() {
 // 7. QUICK CONTACT SCROLL TRIGGER
 // ========================================================================
 
-function initQuickContactScroll() {
-  const trigger = document.getElementById('read-all-reviews-trigger');
-  const quickContact = document.getElementById('contact-form');
-  if (!trigger || !quickContact) return;
-
-  trigger.addEventListener('click', () => {
-    quickContact.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-}
+// initQuickContactScroll removed — "Read All Reviews" now links directly to /testimonials.html
 
 // ========================================================================
 // TESTIMONIAL FILTER
@@ -750,7 +742,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initFormValidation();
   initHeroQuickForm();
-  initQuickContactScroll();
+  // initQuickContactScroll(); — removed, no longer needed
   initTestimonialFilter();
   initPrequalForm();
 });
