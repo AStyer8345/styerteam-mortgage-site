@@ -46,6 +46,29 @@ async function createGitHubFile(filePath, content, commitMessage) {
 }
 
 // ====================================================================
+// DEPLOY GATE: Poll a URL until it returns 200 (page is live on CDN)
+// Retries every 5s for up to 90s. Returns true if live, false if timed out.
+// ====================================================================
+
+async function waitForPageLive(url, { maxWaitMs = 90000, intervalMs = 5000 } = {}) {
+  const start = Date.now();
+  while (Date.now() - start < maxWaitMs) {
+    try {
+      const res = await fetch(url, { method: "HEAD" });
+      if (res.ok) {
+        console.log(`[deploy-gate] Page live at ${url} (${Date.now() - start}ms)`);
+        return true;
+      }
+    } catch (_) {
+      // Network error — keep polling
+    }
+    await new Promise(r => setTimeout(r, intervalMs));
+  }
+  console.warn(`[deploy-gate] Timed out waiting for ${url} after ${maxWaitMs}ms`);
+  return false;
+}
+
+// ====================================================================
 // MAILCHIMP: Create campaign + send immediately or schedule
 // Requires mailchimp.setConfig() to have been called by the caller first.
 // scheduleTime — ISO 8601 string; if omitted, sends immediately
@@ -90,15 +113,21 @@ function injectPageLink(html, pageUrl) {
 // ====================================================================
 
 function forceAbsoluteLinks(html, pageUrl) {
+  // Replace [PAGE_URL] placeholder with actual URL
   let result = html.replace(/\[PAGE_URL\]/g, pageUrl);
 
+  // Convert relative .html links to absolute by prepending the site origin
+  const siteOrigin = "https://styermortgage.com";
   result = result.replace(
     /href=["']([^"']*?\.html)["']/gi,
     (match, href) => {
-      if (href.startsWith("http") || href.startsWith("../") || href.startsWith("/")) {
-        return match;
+      if (href.startsWith("http")) return match;           // already absolute
+      if (href.startsWith("../")) {
+        // Convert ../ relative to absolute site root
+        return `href="${siteOrigin}/${href.replace(/^\.\.\//g, "")}"`;
       }
-      return `href="${pageUrl}"`;
+      if (href.startsWith("/")) return `href="${siteOrigin}${href}"`;  // root-relative
+      return `href="${siteOrigin}/${href}"`;                // bare filename → site root
     }
   );
 
@@ -199,6 +228,7 @@ function wrapEmailHtml(content) {
 
 module.exports = {
   createGitHubFile,
+  waitForPageLive,
   createAndSendCampaign,
   injectPageLink,
   forceAbsoluteLinks,
