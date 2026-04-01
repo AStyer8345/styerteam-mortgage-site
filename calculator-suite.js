@@ -200,7 +200,7 @@
       var canvas = document.getElementById(canvasId);
       if (!canvas || typeof Chart === 'undefined') return null;
       var ctx = canvas.getContext('2d');
-      var colors = data.colors || ['#2563eb', '#059669', '#C9A84C', '#6B7280', '#0A1F3F'];
+      var colors = data.colors || ['#2563eb', '#059669', '#9A7B2D', '#6B7280', '#0A1F3F'];
       return new Chart(ctx, {
         type: 'doughnut',
         data: {

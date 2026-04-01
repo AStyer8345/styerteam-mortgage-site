@@ -22,7 +22,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap"></noscript>
 <style>
 :root {
-  --gold:#C9A84C; --dark:#0D0D0D; --surface:#141414; --surface2:#1C1C1C;
+  --gold:#9A7B2D; --dark:#0D0D0D; --surface:#141414; --surface2:#1C1C1C;
   --surface3:#242424; --border:rgba(255,255,255,0.07); --text:#F0EDE8;
   --muted:#8A8480; --dim:#5A5754; --green:#4CAF82; --red:#E05252;
   --blue:#5B8FD4; --purple:#9B72CF; --orange:#D4844C;
@@ -850,7 +850,7 @@ const DAYS = {
   ]},
 };
 
-const TCOLS = {email:'#5B8FD4',call:'#4CAF82',social:'#9B72CF',text:'#C9A84C',video:'#E05252',admin:'#5A5754'};
+const TCOLS = {email:'#5B8FD4',call:'#4CAF82',social:'#9B72CF',text:'#9A7B2D',video:'#E05252',admin:'#5A5754'};
 
 const TRACKERS = [
   {id:'realtor-nl',   name:'Realtor Newsletter', channel:'Email · Mailchimp',  freq:7},
@@ -1508,7 +1508,7 @@ function renderTracker() {
     const days = last ? Math.floor((Date.now() - new Date(last)) / 86400000) : null;
     const pct  = days === null ? 100 : Math.min(100, Math.round((days / t.freq) * 100));
     const cls  = days === null ? 'stale' : days <= t.freq ? 'fresh' : days <= t.freq * 1.5 ? 'ok' : 'stale';
-    const fill = cls === 'fresh' ? '#4CAF82' : cls === 'ok' ? '#C9A84C' : '#E05252';
+    const fill = cls === 'fresh' ? '#4CAF82' : cls === 'ok' ? '#9A7B2D' : '#E05252';
     const lbl  = days === null ? 'Never logged' : days === 0 ? 'Today' : `${days}d ago`;
     const dt   = last ? new Date(last).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : '—';
     const el   = document.createElement('div');
