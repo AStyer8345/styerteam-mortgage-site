@@ -2,7 +2,7 @@ const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildRatePrompt } = require("./lib/rate-prompt-builder");
 const { buildRatePage } = require("./lib/rate-page-builder");
-const { createGitHubFile, createAndSendCampaign, forceAbsoluteLinks, stripNestedHtmlDocument, formatDateForTitle, wrapEmailHtml } = require("./lib/shared");
+const { createGitHubFile, createAndSendCampaign, waitForPageLive, forceAbsoluteLinks, stripNestedHtmlDocument, formatDateForTitle, wrapEmailHtml } = require("./lib/shared");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateRateUpdate()
@@ -100,6 +100,12 @@ async function generateRateUpdate(formData) {
 
     if (!isPreview) {
       await createGitHubFile(`rates/${filename}`, fullPageHtml, `Add rate update page: ${filename}`);
+
+      // Wait for Netlify to deploy the page before sending emails
+      const isLive = await waitForPageLive(pageUrl);
+      if (!isLive) {
+        console.warn(`[rate-update] Page not confirmed live at ${pageUrl} — proceeding with email send anyway`);
+      }
     }
 
     // ----------------------------------------------------------------
@@ -121,27 +127,37 @@ async function generateRateUpdate(formData) {
         const sendRealtor = audiences.includes("realtor") && process.env.MAILCHIMP_REALTOR_LIST_ID;
 
         if (sendBorrower && parsed.borrowerEmail) {
-          const borrowerResult = await createAndSendCampaign({
-            listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
-            subject: parsed.borrowerSubject || `Rate Update - ${formatDateForTitle(today)}`,
-            preheader: parsed.borrowerPreheader || "",
-            html: wrapEmailHtml(parsed.borrowerEmail),
-            fromName: "Adam Styer",
-            replyTo: "adam@thestyerteam.com",
-          });
-          results.campaigns.push({ audience: "borrower", ...borrowerResult });
+          try {
+            const borrowerResult = await createAndSendCampaign({
+              listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
+              subject: parsed.borrowerSubject || `Rate Update - ${formatDateForTitle(today)}`,
+              preheader: parsed.borrowerPreheader || "",
+              html: wrapEmailHtml(parsed.borrowerEmail),
+              fromName: "Adam Styer",
+              replyTo: "adam@thestyerteam.com",
+            });
+            results.campaigns.push({ audience: "borrower", ...borrowerResult });
+          } catch (err) {
+            console.error("[rate-update] Borrower campaign failed:", err.message);
+            results.campaigns.push({ audience: "borrower", status: "error", error: err.message });
+          }
         }
 
         if (sendRealtor && parsed.realtorEmail) {
-          const realtorResult = await createAndSendCampaign({
-            listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
-            subject: parsed.realtorSubject || `Rate Update - ${formatDateForTitle(today)}`,
-            preheader: parsed.realtorPreheader || "",
-            html: wrapEmailHtml(parsed.realtorEmail),
-            fromName: "Adam Styer",
-            replyTo: "adam@thestyerteam.com",
-          });
-          results.campaigns.push({ audience: "realtor", ...realtorResult });
+          try {
+            const realtorResult = await createAndSendCampaign({
+              listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
+              subject: parsed.realtorSubject || `Rate Update - ${formatDateForTitle(today)}`,
+              preheader: parsed.realtorPreheader || "",
+              html: wrapEmailHtml(parsed.realtorEmail),
+              fromName: "Adam Styer",
+              replyTo: "adam@thestyerteam.com",
+            });
+            results.campaigns.push({ audience: "realtor", ...realtorResult });
+          } catch (err) {
+            console.error("[rate-update] Realtor campaign failed:", err.message);
+            results.campaigns.push({ audience: "realtor", status: "error", error: err.message });
+          }
         }
       }
     }

@@ -4,7 +4,7 @@ const { buildPrompt } = require("./lib/prompt-builder");
 const { buildWebPage } = require("./lib/page-builder");
 const { buildBlogPage } = require("./lib/blog-page-builder");
 const { generateAndPostSocial, generateSocialPostsText } = require("./lib/social-poster");
-const { createGitHubFile, createAndSendCampaign, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument, wrapEmailHtml } = require("./lib/shared");
+const { createGitHubFile, createAndSendCampaign, waitForPageLive, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument, wrapEmailHtml } = require("./lib/shared");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateNewsletter()
@@ -120,8 +120,14 @@ async function generateNewsletter(formData) {
         const wantsRealtor = audiences.includes("realtor");
         prompt = `${formData.customPrompt}
 
-## ADAM'S VOICE
-Write as Adam Styer — mortgage loan originator in Austin, TX. First person "I". Casual, direct, short sentences. No buzzwords, no marketing fluff.
+## ADAM'S VOICE — READ THIS CAREFULLY
+Write as Adam — a real human writing to real people. NOT a marketing email. NOT a newsletter template. A person.
+
+TONE: Casual, direct, like a text or quick email to someone you actually know.
+- First person "I" always. Short sentences. Short paragraphs.
+- NO buzzwords. NO marketing language. NO hype.
+- NEVER use: "leverage", "unlock", "dream home", "exciting", "thrilled", "navigate", "empower", "game-changer", "take advantage", "don't miss out", "act now", "incredible opportunity", "market conditions", "poised for", "seize the moment", "strategic advantage"
+- Sound like: "Here's the deal", "Real talk", "The short version", "Let me break it down"
 
 ## EMAIL RULES
 Emails are SHORT teasers (100-150 words MAX) that drive the reader to click to the full article. Not a briefing. Not a summary. A hook.
@@ -285,6 +291,12 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
         date: today,
         category: parsed.pageCategory || formData.category || "Market Update",
       });
+
+      // Wait for Netlify to deploy the page before sending emails
+      const isLive = await waitForPageLive(finalPageUrl);
+      if (!isLive) {
+        console.warn(`[newsletter] Page not confirmed live at ${finalPageUrl} — proceeding with email send anyway`);
+      }
     }
 
     // ----------------------------------------------------------------
@@ -308,29 +320,39 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
         const effectiveTopic = topic || formData.title || "Newsletter";
 
         if (sendBorrower && parsed.borrowerEmail) {
-          const borrowerResult = await createAndSendCampaign({
-            listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
-            subject: parsed.borrowerSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
-            preheader: parsed.borrowerPreheader || "",
-            html: wrapEmailHtml(injectPageLink(parsed.borrowerEmail, finalPageUrl)),
-            fromName: "Adam Styer",
-            replyTo: "adam@thestyerteam.com",
-            scheduleTime: scheduleTime || null,
-          });
-          results.campaigns.push({ audience: "borrower", ...borrowerResult });
+          try {
+            const borrowerResult = await createAndSendCampaign({
+              listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
+              subject: parsed.borrowerSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
+              preheader: parsed.borrowerPreheader || "",
+              html: wrapEmailHtml(injectPageLink(parsed.borrowerEmail, finalPageUrl)),
+              fromName: "Adam Styer",
+              replyTo: "adam@thestyerteam.com",
+              scheduleTime: scheduleTime || null,
+            });
+            results.campaigns.push({ audience: "borrower", ...borrowerResult });
+          } catch (err) {
+            console.error("[newsletter] Borrower campaign failed:", err.message);
+            results.campaigns.push({ audience: "borrower", status: "error", error: err.message });
+          }
         }
 
         if (sendRealtor && parsed.realtorEmail) {
-          const realtorResult = await createAndSendCampaign({
-            listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
-            subject: parsed.realtorSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
-            preheader: parsed.realtorPreheader || "",
-            html: wrapEmailHtml(injectPageLink(parsed.realtorEmail, finalPageUrl)),
-            fromName: "Adam Styer",
-            replyTo: "adam@thestyerteam.com",
-            scheduleTime: scheduleTime || null,
-          });
-          results.campaigns.push({ audience: "realtor", ...realtorResult });
+          try {
+            const realtorResult = await createAndSendCampaign({
+              listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
+              subject: parsed.realtorSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
+              preheader: parsed.realtorPreheader || "",
+              html: wrapEmailHtml(injectPageLink(parsed.realtorEmail, finalPageUrl)),
+              fromName: "Adam Styer",
+              replyTo: "adam@thestyerteam.com",
+              scheduleTime: scheduleTime || null,
+            });
+            results.campaigns.push({ audience: "realtor", ...realtorResult });
+          } catch (err) {
+            console.error("[newsletter] Realtor campaign failed:", err.message);
+            results.campaigns.push({ audience: "realtor", status: "error", error: err.message });
+          }
         }
       }
 
@@ -373,8 +395,8 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
     return {
       success: true,
       mode: isPreview ? "preview" : "live",
-      pageUrl,
-      filename,
+      pageUrl: finalPageUrl,
+      filename: finalFilename,
       campaigns: results.campaigns,
       socialPosts: results.socialPosts || null,
       preview: {
@@ -386,8 +408,8 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
         pageDescription: parsed.pageDescription,
         pageCategory: parsed.pageCategory,
         webContent: parsed.webContent,
-        borrowerEmailHtml: parsed.borrowerEmail ? injectPageLink(parsed.borrowerEmail, pageUrl) : null,
-        realtorEmailHtml: parsed.realtorEmail ? injectPageLink(parsed.realtorEmail, pageUrl) : null,
+        borrowerEmailHtml: parsed.borrowerEmail ? injectPageLink(parsed.borrowerEmail, finalPageUrl) : null,
+        realtorEmailHtml: parsed.realtorEmail ? injectPageLink(parsed.realtorEmail, finalPageUrl) : null,
         linkedinPost: results.socialPostsPreview?.linkedin || null,
         facebookPost: results.socialPostsPreview?.facebook || null,
       },
