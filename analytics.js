@@ -35,6 +35,13 @@
         track({ event: 'calendly_click' });
       });
     });
+
+    // ── Apply Now / loan application clicks ────────────────────────
+    document.querySelectorAll('a[href*="mslp.my1003app.com"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        track({ event: 'apply_now_click', destination: link.href });
+      });
+    });
   }
 
   if (document.readyState === 'loading') {
