@@ -233,6 +233,13 @@
             <label for="phone-buda">Phone Number</label>
             <input type="tel" id="phone-buda" name="phone" placeholder="(512) 000-0000" required>
           </div>
+          <!-- TCPA consent — required, unchecked by default -->
+          <div style="margin-top:8px;margin-bottom:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
+              <input type="checkbox" name="tcpa_consent" id="hqf-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+              <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+            </label>
+          </div>
           <button type="submit" class="btn btn-primary btn-full">Get My Rate Quote</button>
         </form>
       </div>
