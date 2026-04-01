@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 31, 2026 (daily-opt) — Fixed titles on 2 new blog posts (missing "Adam Styer |"). Round Rock CTAs changed from raw loan app URL → /get-preapproved for conversion tracking. blog.html confirmed to fetch manifest.json dynamically (one-manifest system). 3 new posts added to NotebookLM. Commit e8d25d9.
+March 31, 2026 (daily-opt run 2) — Suburb CTA sweep: all 24 suburb pages now route body CTAs and footer Apply Now links through /get-preapproved for conversion tracking. Conversion Tracking score raised to 10/10. TCPA gap on suburb hero forms discovered. Commit b129a2b.
 
 ---
 
@@ -373,4 +373,5 @@ Update this section as work is completed or new issues are found.
 | 2026-03-06-temp-placeholder.html — real content at temp slug | MEDIUM | ⚠️ OPEN — "Oil Prices" post still at temp URL. Needs rename decision from Adam. |
 | 2026-03-10-temp-placeholder.html — duplicate of surrender story | MEDIUM | ✅ RESOLVED 2026-03-31 — file no longer exists; renamed to proper slug before this run. |
 | 2026-03-30-temp-placeholder.html — rates post at temp slug | LOW | ⚠️ OPEN — noindexed, canonical set to proper URL. Not SEO risk but dead file. Needs Adam to approve deletion. |
-| Suburb CTAs link to raw loan app URL (bypasses conversion tracking) | MEDIUM | ⚠️ OPEN — Round Rock fixed 2026-03-31. All other suburb pages likely same pattern — auditing one per day in rotation. |
+| Suburb CTAs link to raw loan app URL (bypasses conversion tracking) | MEDIUM | ✅ RESOLVED 2026-03-31 (run 2) — All 24 suburb pages patched in batch. Body CTAs + footer Apply Now links now route to /get-preapproved. Commit b129a2b. |
+| Suburb hero quick-forms missing TCPA consent checkbox | LOW | ⚠️ OPEN — Discovered 2026-03-31. /get-preapproved and /refinance-quote had TCPA added 2026-03-24 but suburb pages were not updated. Affects all 24 suburb pages. Add in next pass. |

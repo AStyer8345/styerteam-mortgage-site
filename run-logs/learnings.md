@@ -2,6 +2,17 @@
 
 ---
 
+## 2026-03-31b — Suburb CTA Sweep: All 24 Pages Fixed in One Batch
+
+### Patterns
+- **The raw loan app URL pattern was sitewide, not page-by-page**: After fixing Round Rock (2026-03-31) and Cedar Park + Leander + Georgetown individually, a count-based audit revealed 18+ remaining suburb pages still had body CTAs pointing to raw loan app URL. Batching the fix via `sed` across all `*-mortgage-lender.html` files took 2 minutes vs. the 24 days it would have taken at one page per day.
+- **Two URL variants existed**: Most pages used the `?time=1767737197980` version; 6 newer suburb pages (elgin, florence, etc.) used the base URL without timestamp. Both required a separate sed pattern — always check for both variants when doing batch URL replacements.
+- **Footer "Apply Now" links also bypass conversion tracking**: 6 suburb pages had an `<a>Apply Now</a>` inside a `<li>` in the footer contact section. These were missed by the body CTA sweep because they didn't have `btn-lg` class. Lesson: grep for the full domain URL, then audit by context — not just by class name.
+- **Instance count after batch fix = 2 is the clean baseline**: nav "Apply Now" (class=nav-cta) + hero "Apply Now" (class=hero-cta-primary) are intentional. Any suburb page with count > 2 after the fix has a remaining issue.
+- **Suburb hero quick-forms missing TCPA checkbox**: TCPA was added to /get-preapproved and /refinance-quote in 2026-03-24 but suburb pages were not updated. Discovered on Cedar Park today. Likely affects all 24 suburb pages — flag for tomorrow's run.
+
+---
+
 ## 2026-03-31 — Suburb CTAs + Two-Manifest Resolution + Title Pattern Persists
 
 ### Patterns
