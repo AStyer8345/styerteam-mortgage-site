@@ -2,6 +2,25 @@
 
 ---
 
+## 2026-04-01b — Suburb H1 "Serving" Pattern + 24-Page Count Correction
+
+### Patterns
+- **"Mortgage Lender Serving [City], TX" is a systemic H1 anti-pattern**: 12+ suburb pages use "Serving" in their H1 while the title tag says "Mortgage Lender [City] TX" (no "Serving"). This creates a title-H1 mismatch that dilutes keyword density and breaks message match. Fix in rotation: one page per run, drop "Serving" from H1. First fixed: Round Rock.
+- **Suburb page count is 24, not 9**: Context file listed only 9 suburb pages (the original Tier 1 cities). The repo actually has 24: bastrop, bee-cave, buda, cedar-park, dripping-springs, elgin, florence, georgetown, hutto, jarrell, kyle, lakeway, leander, liberty-hill, manor, marble-falls, new-braunfels, pflugerville, round-rock, san-marcos, smithville, spicewood, taylor, westlake. ALL 24 need GSC URL submission, not just 9. Context file suburb inventory needs updating.
+- **In-body calculators link is absent from all suburb pages (nav-only)**: Suburb pages link to /calculators only via site navigation. The task checklist requires both /get-preapproved AND /calculators as in-body links. A natural insertion point is the "Home Prices in [City]" section — "Use our mortgage calculator to estimate your monthly payment at current rates for any [City] price point." Apply this pattern to each suburb page as you rotate through them.
+
+---
+
+## 2026-04-01 — Context File Staleness + Loan Page CTA Pattern
+
+### Patterns
+- **Context file "FIXED" entries cannot be trusted without file verification**: Two items marked "✅ FIXED" in `styermortgage-context.md` (loans/conventional + fha hero CTAs, thank-you 3-step section) were NOT present in the actual files. Root cause unknown — likely a session that logged the fix before confirming, or a subsequent session overwrote the file. **Rule: always grep the actual file before assuming context is accurate.**
+- **All 8 loan pages had hero CTAs pointing to raw app URL**: The pattern was consistent — `class="btn btn-primary hero-cta-primary hero-cta-btn" target="_blank" rel="noopener">Apply Now` → raw loan app. Only conventional + fha were ever supposed to be fixed (2026-03-24) but weren't. When fixing one loan page, audit all remaining pages for the same pattern immediately.
+- **Refinance page hero CTA should go to /refinance-quote, not /get-preapproved**: When batch-fixing loan page CTAs, make an exception for the refinance page — its conversion funnel is /refinance-quote. All other loan pages → /get-preapproved.
+- **TCPA suburb forms appeared in context as open but were already present**: All 24 suburb pages already had TCPA checkbox before today's run. The TOMORROW_PRIORITY note was stale. Pattern: verify file state before doing work, not after.
+
+---
+
 ## 2026-03-31b — Suburb CTA Sweep: All 24 Pages Fixed in One Batch
 
 ### Patterns

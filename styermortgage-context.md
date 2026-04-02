@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-March 31, 2026 (daily-opt run 2) — Suburb CTA sweep: all 24 suburb pages now route body CTAs and footer Apply Now links through /get-preapproved for conversion tracking. Conversion Tracking score raised to 10/10. TCPA gap on suburb hero forms discovered. Commit b129a2b.
+April 1, 2026 (daily-opt run 2) — Round Rock H1 keyword alignment (removed "Serving"), added in-body /calculators link. Commit 0e9b2c2. Suburb page count corrected: 24 total (not 9). "Serving" H1 pattern flagged as systemic issue across 12+ suburb pages — fixing in rotation.
 
 ---
 
@@ -198,7 +198,7 @@ jobs, career, salary, license, school, class, training, free house, rent, apartm
 | Investment | /loans/investment |
 | DSCR / Non-QM | /dscr-loan-austin-tx |
 
-### Suburb / Service Area Pages
+### Suburb / Service Area Pages (24 total — verified 2026-04-01)
 | City | URL |
 |---|---|
 | Round Rock | /round-rock-mortgage-lender |
@@ -210,6 +210,21 @@ jobs, career, salary, license, school, class, training, free house, rent, apartm
 | San Marcos | /san-marcos-mortgage-lender |
 | Westlake | /westlake-mortgage-lender |
 | Buda | /buda-mortgage-lender |
+| Dripping Springs | /dripping-springs-mortgage-lender |
+| Lakeway | /lakeway-mortgage-lender |
+| Hutto | /hutto-mortgage-lender |
+| Liberty Hill | /liberty-hill-mortgage-lender |
+| Manor | /manor-mortgage-lender |
+| New Braunfels | /new-braunfels-mortgage-lender |
+| Bastrop | /bastrop-mortgage-lender |
+| Bee Cave | /bee-cave-mortgage-lender |
+| Marble Falls | /marble-falls-mortgage-lender |
+| Elgin | /elgin-mortgage-lender |
+| Florence | /florence-mortgage-lender |
+| Jarrell | /jarrell-mortgage-lender |
+| Smithville | /smithville-mortgage-lender |
+| Spicewood | /spicewood-mortgage-lender |
+| Taylor | /taylor-mortgage-lender |
 
 ### Rates & Market Pages
 | Page | URL | Status |
@@ -263,11 +278,31 @@ jobs, career, salary, license, school, class, training, free house, rent, apartm
 | BreadcrumbList | Suburb + loan pages | ✅ FIXED 2026-03-23 — added to all 9 suburb pages + all 7 loan pages |
 | noindex tag | /get-preapproved + /refinance-quote | ✅ FIXED 2026-03-22 — robots noindex,nofollow added to both ad landing pages |
 
-### Known SEO Gaps (as of March 2026)
-- Suburb pages need inline lead capture forms (currently just CTA buttons to /prequal)
-- Blog posts need CTAs wired to /get-preapproved and /refinance-quote
-- "Austin mortgage rates today" page — ✅ ADDRESSED: blog post published 2026-03-20 targeting "Austin mortgage rates March 2026"
-- /austin-down-payment-assistance referenced in FHA page but may not exist — verify
+### Known SEO Gaps (as of April 2026 audit)
+- ✅ Suburb pages inline forms — DONE
+- ✅ Blog CTAs wired to /get-preapproved — DONE
+- ✅ blog.html crawlability — FIXED 2026-04-01: noscript block has static links to all 21 posts + CollectionPage schema expanded. **RULE: Every new blog post must also be added to blog.html noscript + schema.**
+- Content gaps from April audit (queued in SEO agent backlog): condo mortgage guide, "How to Buy a House in Austin" pillar, monthly market report series, Non-QM expansion
+- /austin-down-payment-assistance referenced in FHA page — ✅ CONFIRMED exists
+
+---
+
+## CONTENT DISTRIBUTION SYSTEM (added 2026-04-01)
+
+All website content (rate updates, blog posts, newsletters) now auto-distributes to GBP + social media via two tiers:
+
+**Tier 1 — Immediate (same day, automated):**
+Social-media AM agent (daily 2:20 AM) scans /rates/, /blog/, /realtor-updates/ for new files.
+Fires n8n webhook: `POST https://styer.app.n8n.cloud/webhook/gbp-social-post`
+→ Gemini adapts per platform → Imagen generates image → Publer posts to GBP + FB + IG + LI.
+Tracked in: `loanos-clone/tasks/social-media/gbp-content-tracker.md`
+
+**Tier 2 — Platform-Native (2-3 days later):**
+Same detection queues content to `loanos-clone/tasks/social-media/content-repost-queue.md`.
+Architect subagent picks up → Builder creates native posts (carousels, Reels, long-form).
+Full quality + compliance review before publishing.
+
+**Result:** Every piece of content published to the website gets distributed to 4 social platforms twice — once fast (Tier 1), once deep (Tier 2).
 
 ---
 
@@ -358,8 +393,8 @@ Update this section as work is completed or new issues are found.
 | Homepage missing FAQPage schema | MEDIUM | ✅ FIXED 2026-03-24 — 5-question FAQPage JSON-LD added to head + accordion FAQ section added above final CTA |
 | Homepage trust bar not verbatim standard | LOW | ✅ FIXED 2026-03-24 — was "#1 Austin Mortgage Team", now "Licensed in Texas \| NMLS #513013" |
 | thank-you.html fonts sync (render-blocking) | MEDIUM | ✅ FIXED 2026-03-24 — converted to async preload pattern |
-| thank-you.html missing 3-step what-happens-next | LOW | ✅ FIXED 2026-03-24 — 3-step inline section added to ty-card |
-| loans/conventional.html + loans/fha.html CTA links to loan app URL not /get-preapproved | MEDIUM | ✅ FIXED 2026-03-24 — CTA now links to /get-preapproved for better conversion path |
+| thank-you.html missing 3-step what-happens-next | LOW | ✅ FIXED 2026-04-01 — 3-step "What Happens Next" section added above Calendly widget (prior "FIXED 2026-03-24" entry was stale) |
+| loans/conventional.html + loans/fha.html CTA links to loan app URL not /get-preapproved | MEDIUM | ✅ FIXED 2026-04-01 — batch fixed all 8 loan pages (prior "FIXED 2026-03-24" entry was stale — fix was never applied) |
 | Homepage H1 keyword-weak | HIGH | ✅ FIXED 2026-03-26 — was "Your Austin Home Loan Simplified" → "Mortgage Broker Austin TX — Adam Styer \| NMLS #513013" |
 | Trust bar non-standard on 39 pages | HIGH | ✅ FIXED 2026-03-26 — all pages now show "Licensed in Texas \| NMLS #513013" |
 | Suburb quick-form not counting as Google Ads conversion | MEDIUM | ⚠️ OPEN — suburb forms fire generate_lead but not thank_you_page_view. Google Ads only counts thank_you_page_view. Needs GTM config change — FLAG_FOR_ADAM. |
@@ -374,4 +409,10 @@ Update this section as work is completed or new issues are found.
 | 2026-03-10-temp-placeholder.html — duplicate of surrender story | MEDIUM | ✅ RESOLVED 2026-03-31 — file no longer exists; renamed to proper slug before this run. |
 | 2026-03-30-temp-placeholder.html — rates post at temp slug | LOW | ⚠️ OPEN — noindexed, canonical set to proper URL. Not SEO risk but dead file. Needs Adam to approve deletion. |
 | Suburb CTAs link to raw loan app URL (bypasses conversion tracking) | MEDIUM | ✅ RESOLVED 2026-03-31 (run 2) — All 24 suburb pages patched in batch. Body CTAs + footer Apply Now links now route to /get-preapproved. Commit b129a2b. |
-| Suburb hero quick-forms missing TCPA consent checkbox | LOW | ⚠️ OPEN — Discovered 2026-03-31. /get-preapproved and /refinance-quote had TCPA added 2026-03-24 but suburb pages were not updated. Affects all 24 suburb pages. Add in next pass. |
+| Suburb hero quick-forms missing TCPA consent checkbox | LOW | ✅ CONFIRMED ALREADY PRESENT 2026-04-01 — all 24 suburb pages verified to have TCPA checkbox. Context was stale. |
+| All loan pages hero CTAs linking to raw app URL | HIGH | ✅ FIXED 2026-04-01 — all 8 loan page hero CTAs now route to /get-preapproved (except /loans/refinance.html → /refinance-quote). Bottom CTAs also fixed. Commit 65b837c. |
+| loans/va.html meta description under-length (135 chars) | LOW | ✅ FIXED 2026-04-01 — expanded to 186 chars with "Get pre-approved in 24 hours" CTA language |
+| Round Rock H1 "Serving" keyword dilution | LOW | ✅ FIXED 2026-04-01b — H1 now "Mortgage Lender Round Rock TX" (matches title) |
+| Suburb pages missing in-body /calculators link | LOW | ✅ FIXED 2026-04-01b on Round Rock — pattern: add after "Home Prices in [City]" paragraph. Apply to remaining suburbs in rotation. |
+| "Mortgage Lender Serving [City], TX" H1 pattern — 12 suburb pages | MEDIUM | ⚠️ OPEN — bastrop, bee-cave, cedar-park, dripping-springs, hutto, kyle, lakeway, liberty-hill, manor, new-braunfels, san-marcos (Round Rock fixed). Fixing 1 per run in rotation. |
+| Suburb page inventory in context was stale (said 9, actual 24) | MEDIUM | ✅ FIXED 2026-04-01b — context now lists all 24 suburb pages. GSC submission needed for all 24. |
