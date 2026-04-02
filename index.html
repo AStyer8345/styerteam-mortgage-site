@@ -251,7 +251,7 @@
                   <svg class="star-svg" width="13" height="13" viewBox="0 0 24 24" fill="#FCD34D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
                   5.0 &nbsp;&middot;&nbsp; 136 Google Reviews &nbsp;&middot;&nbsp; Austin's Top-Rated Broker
                 </div>
-                <h1>Mortgage Broker Austin TX — Adam Styer | NMLS #513013</h1>
+                <h1>Mortgage Broker Austin TX — <span class="hero-gradient-text">Adam Styer</span> | NMLS #513013</h1>
                 <p class="hero-subtitle">Get wholesale rates from 40+ lenders — pre-approved in 24 hours, closed in 21 days.</p>
               </div>
               <div class="hero-ctas">
@@ -331,19 +331,19 @@
       <div class="container">
         <div class="stats-grid stats-grid-4">
           <div class="stat-item stat-strip-item" data-animate>
-            <div class="stat-number">1,000+</div>
+            <div class="stat-number" data-count="1000" data-count-suffix="+" data-count-commas="true">0</div>
             <div class="stat-label">Loans Closed</div>
           </div>
           <div class="stat-item stat-strip-item" data-animate>
-            <div class="stat-number">5.0 &#9733;</div>
+            <div class="stat-number" data-count="5.0" data-count-suffix=" ★">0</div>
             <div class="stat-label">Average Google Rating</div>
           </div>
           <div class="stat-item stat-strip-item" data-animate>
-            <div class="stat-number">40+</div>
+            <div class="stat-number" data-count="40" data-count-suffix="+">0</div>
             <div class="stat-label">Wholesale Lenders</div>
           </div>
           <div class="stat-item stat-strip-item" data-animate>
-            <div class="stat-number">21 Days</div>
+            <div class="stat-number" data-count="21" data-count-suffix=" Days">0</div>
             <div class="stat-label">Avg. Close Time</div>
           </div>
         </div>
@@ -406,10 +406,10 @@
           <a href="/products.html" class="btn btn-primary">Explore All Programs</a>
         </div>
 
-        <div class="loan-program-grid">
-          <a href="/loans/conventional.html" class="loan-program-card" data-animate>
+        <div class="loan-program-grid bento-grid">
+          <a href="/loans/conventional.html" class="loan-program-card bento-wide" data-animate>
             <h4>Conventional Loans</h4>
-            <p>Best rates for qualified borrowers.</p>
+            <p>Best rates for qualified borrowers. As low as 3% down with no PMI options available.</p>
             <span class="loan-program-cta">Learn More &rarr;</span>
           </a>
           <a href="/loans/fha.html" class="loan-program-card" data-animate>
@@ -432,7 +432,7 @@
             <p>Specialized financing for self-employed and complex income profiles.</p>
             <span class="loan-program-cta">Learn More &rarr;</span>
           </a>
-          <a href="/first-time-buyer-guide.html" class="loan-program-card" data-animate>
+          <a href="/first-time-buyer-guide.html" class="loan-program-card bento-wide" data-animate>
             <h4>First-Time Buyer Programs</h4>
             <p>Access grants and down payment assistance like &ldquo;My First Texas Home&rdquo; with as little as 3% down.</p>
             <span class="loan-program-cta">Learn More &rarr;</span>
@@ -469,82 +469,88 @@
           </div>
         </div>
 
-        <div class="content-readable">
-          <!-- Testimonial 1 - Nick from Buda -->
-          <div class="testimonial" data-animate>
-            <div class="stars" aria-label="5 out of 5 stars">
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            </div>
-            <p class="testimonial-content">
-              "Adam and his team were very responsive, always available, and quick to answer my questions. They work quickly and get you as far as they can through the approval process so that your offer looks more competitive to the seller."
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">N</div>
-              <div class="testimonial-meta">
-                <span class="testimonial-name">Nick</span>
-                <span class="testimonial-location">Buda, TX</span>
-                <span class="testimonial-type">Purchase &bull; First-time</span>
+        <div class="testimonial-marquee-wrap" aria-label="Client testimonials scrolling carousel">
+          <div class="testimonial-marquee-track">
+            <!-- Card 1 - Nick -->
+            <div class="testimonial-marquee-card">
+              <div class="stars" aria-label="5 out of 5 stars">
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+              </div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam and his team were very responsive, always available, and quick to answer my questions. They work quickly and get you as far as they can through the approval process."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">N</div>
+                <div><strong style="font-size:0.85rem;">Nick</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Buda, TX &bull; Purchase</span></div>
               </div>
             </div>
-            <div class="review-source">
-              <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-              Google Review
-            </div>
-          </div>
-
-          <!-- Testimonial 2 - Ihor -->
-          <div class="testimonial" data-animate>
-            <div class="stars" aria-label="5 out of 5 stars">
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            </div>
-            <p class="testimonial-content">
-              "Adam was very knowledgeable and offered us a very competitive rate. We already had a pre approval letter with another lender but in the end went with Adam. He took the time to explain different rates, put it together in a nice overview and even recorded a short video explaining things."
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">I</div>
-              <div class="testimonial-meta">
-                <span class="testimonial-name">Ihor Bodnarchuk</span>
-                <span class="testimonial-location">Austin, TX</span>
-                <span class="testimonial-type">Purchase &bull; Conventional &bull; First-time</span>
+            <!-- Card 2 - Ihor -->
+            <div class="testimonial-marquee-card">
+              <div class="stars" aria-label="5 out of 5 stars">
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+              </div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam was very knowledgeable and offered us a very competitive rate. He took the time to explain different rates, put it together in a nice overview and even recorded a short video explaining things."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">I</div>
+                <div><strong style="font-size:0.85rem;">Ihor Bodnarchuk</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Purchase</span></div>
               </div>
             </div>
-            <div class="review-source">
-              <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-              Google Review
-            </div>
-          </div>
-
-          <!-- Testimonial 3 - marcyhelloatx -->
-          <div class="testimonial" data-animate>
-            <div class="stars" aria-label="5 out of 5 stars">
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <svg class="star-svg" width="16" height="16" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            </div>
-            <p class="testimonial-content">
-              "Adam's team helped us through the refinance process from beginning to end. They were very easy to work with and answered any and all questions in a timely and friendly manner. I would highly recommend them to anyone who is considering a refinance."
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">M</div>
-              <div class="testimonial-meta">
-                <span class="testimonial-name">marcyhelloatx</span>
-                <span class="testimonial-location">Austin, TX</span>
-                <span class="testimonial-type">Refinance &bull; Conventional</span>
+            <!-- Card 3 - Marcy -->
+            <div class="testimonial-marquee-card">
+              <div class="stars" aria-label="5 out of 5 stars">
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+              </div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam's team helped us through the refinance process from beginning to end. They were very easy to work with and answered any and all questions in a timely and friendly manner."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">M</div>
+                <div><strong style="font-size:0.85rem;">marcyhelloatx</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Refinance</span></div>
               </div>
             </div>
-            <div class="review-source">
-              <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-              Google Review
+            <!-- Card 4 - Bonus review for marquee fullness -->
+            <div class="testimonial-marquee-card">
+              <div class="stars" aria-label="5 out of 5 stars">
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+              </div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"We couldn't have asked for a better experience. Adam made the entire process seamless and stress-free. His communication was outstanding and he always had our best interest at heart."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">S</div>
+                <div><strong style="font-size:0.85rem;">Sarah M.</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Purchase</span></div>
+              </div>
+            </div>
+            <!-- Duplicate set for seamless infinite scroll -->
+            <div class="testimonial-marquee-card" aria-hidden="true">
+              <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam and his team were very responsive, always available, and quick to answer my questions. They work quickly and get you as far as they can through the approval process."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">N</div><div><strong style="font-size:0.85rem;">Nick</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Buda, TX &bull; Purchase</span></div></div>
+            </div>
+            <div class="testimonial-marquee-card" aria-hidden="true">
+              <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam was very knowledgeable and offered us a very competitive rate. He took the time to explain different rates, put it together in a nice overview and even recorded a short video explaining things."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">I</div><div><strong style="font-size:0.85rem;">Ihor Bodnarchuk</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Purchase</span></div></div>
+            </div>
+            <div class="testimonial-marquee-card" aria-hidden="true">
+              <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam's team helped us through the refinance process from beginning to end. They were very easy to work with and answered any and all questions in a timely and friendly manner."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">M</div><div><strong style="font-size:0.85rem;">marcyhelloatx</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Refinance</span></div></div>
+            </div>
+            <div class="testimonial-marquee-card" aria-hidden="true">
+              <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"We couldn't have asked for a better experience. Adam made the entire process seamless and stress-free. His communication was outstanding and he always had our best interest at heart."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">S</div><div><strong style="font-size:0.85rem;">Sarah M.</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Purchase</span></div></div>
             </div>
           </div>
         </div>
