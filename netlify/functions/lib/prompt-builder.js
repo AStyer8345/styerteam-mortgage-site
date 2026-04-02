@@ -2,9 +2,10 @@
  * Builds the Claude prompt from dashboard form data.
  * @param {Object} formData - The form data from the dashboard
  * @param {string} pageUrl - The full absolute URL for the article page
+ * @param {string|null} voiceGuide - Full voice guide text from Supabase (optional)
  */
 
-function buildPrompt(formData, pageUrl) {
+function buildPrompt(formData, pageUrl, voiceGuide) {
   const {
     topic,
     audiences = [],
@@ -18,18 +19,26 @@ function buildPrompt(formData, pageUrl) {
   const wantsBorrower = audiences.includes("borrower");
   const wantsRealtor = audiences.includes("realtor");
 
-  let prompt = `You write weekly blog content for Adam Styer, mortgage loan originator at Mortgage Solutions, LP in Austin, TX (NMLS# 513013, Company NMLS# 2526130).
+  // Build voice section — use Supabase voice guide if available, fall back to hardcoded
+  const voiceSection = voiceGuide
+    ? `## ADAM'S VOICE & PERSONAL FACTS — READ THIS CAREFULLY
+The following is Adam's complete voice guide. Follow it exactly. NEVER fabricate personal details — only use facts from this guide.
 
-This content will be published as a blog article on styermortgage.com and indexed by Google. Write for BOTH human readers AND search engines.
-
-## ADAM'S VOICE — READ THIS CAREFULLY
+${voiceGuide}`
+    : `## ADAM'S VOICE — READ THIS CAREFULLY
 Write as Adam — a real human writing to real people. NOT a marketing email. NOT a newsletter template. A person.
 
 TONE: Casual, direct, like a text or quick email to someone you actually know.
 - First person "I" always. Short sentences. Short paragraphs.
 - NO buzzwords. NO marketing language. NO hype.
 - NEVER use: "leverage", "unlock", "dream home", "exciting", "thrilled", "navigate", "empower", "game-changer", "take advantage", "don't miss out", "act now", "incredible opportunity", "market conditions", "poised for", "seize the moment", "strategic advantage"
-- Sound like: "Here's the deal", "Real talk", "The short version", "Let me break it down"
+- Sound like: "Here's the deal", "Real talk", "The short version", "Let me break it down"`;
+
+  let prompt = `You write weekly blog content for Adam Styer, mortgage loan originator at Mortgage Solutions, LP in Austin, TX (NMLS# 513013, Company NMLS# 2526130).
+
+This content will be published as a blog article on styermortgage.com and indexed by Google. Write for BOTH human readers AND search engines.
+
+${voiceSection}
 
 ## SEO GUIDELINES
 - PAGE_TITLE must include the primary keyword/topic AND "Austin" when relevant. Max 60 chars.
@@ -37,10 +46,11 @@ TONE: Casual, direct, like a text or quick email to someone you actually know.
 - Use the topic keyword naturally in the first paragraph and in at least 2 <h2> headings.
 - Use descriptive <h2> and <h3> subheadings that someone might actually search for.
 - Include 3-5 internal links to relevant site pages (use "../" prefix):
-  ../products.html (Loan Programs), ../calculators.html (Calculators),
+  ../products.html (Loan Programs), ../calculators.html (Payment Calculator),
   ../prequal.html (Pre-Qualification), ../contact.html (Contact),
   ../about.html (About Adam), ../realtors.html (For Realtors),
   ../blog.html (More Articles), ../testimonials.html (Testimonials)
+- ⚠️ CALCULATOR LINK RULES: ../calculators.html is a PAYMENT calculator — it estimates monthly payments based on numbers the user enters. It does NOT show rates, look up rates, or tell anyone what their rate would be. NEVER say "see your rate", "find your rate", "what your rate would be", or anything implying the calculator shows rates. Correct usage: "Run your payment numbers", "See what your monthly payment could look like", "Estimate your monthly cost". If someone wants to know their actual rate, they need to contact Adam directly.
 ${category ? `- PAGE_CATEGORY: ${category}` : "- Choose a PAGE_CATEGORY from: Market Update, Homebuying, Refinancing, Rates, Tips & Guides, Austin Market"}
 
 ## ARTICLE URL
@@ -113,12 +123,12 @@ Cover the topic with real substance and depth. Use Adam's voice.
 - Write 600-900 words in this section — enough depth that Google considers it valuable
 
 ### Section 2: Personal Corner
-A separate section with an <hr> divider and <h2> header.${story ? `
+${story ? `A separate section with an <hr> divider and <h2> header.
 - Header should be something like "Personal Corner" or "Off the Clock" or "This Week Outside of Work"
 - USE ADAM'S EXACT STORY provided above about: ${story.substring(0, 100)}...
-- Write it in Adam's voice — casual, real, like he's sharing with a friend` : `
-- Header: "Personal Corner"
-- A brief personal note about faith, family, fitness, or finance`}
+- Write it in Adam's voice — casual, real, like he's sharing with a friend` : `⚠️ NO PERSONAL STORY WAS PROVIDED — SKIP THIS SECTION ENTIRELY.
+Do NOT write a Personal Corner section. Do NOT invent personal anecdotes, family stories, or activities.
+End the article after the main content — go straight to the sign-off.`}
 
 End the article with: "Talk soon,<br>Adam Styer<br>Adam Styer | Mortgage Solutions LP<br>NMLS# 513013 | (512) 956-6010"
 

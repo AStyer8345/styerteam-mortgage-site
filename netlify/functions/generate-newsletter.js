@@ -4,7 +4,7 @@ const { buildPrompt } = require("./lib/prompt-builder");
 const { buildWebPage } = require("./lib/page-builder");
 const { buildBlogPage } = require("./lib/blog-page-builder");
 const { generateAndPostSocial, generateSocialPostsText } = require("./lib/social-poster");
-const { createGitHubFile, createAndSendCampaign, waitForPageLive, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument, wrapEmailHtml } = require("./lib/shared");
+const { createGitHubFile, createAndSendCampaign, waitForPageLive, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument, wrapEmailHtml, fetchVoiceGuide } = require("./lib/shared");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateNewsletter()
@@ -114,20 +114,31 @@ async function generateNewsletter(formData) {
     } else {
       // AI mode: generate content via Claude API
       const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+      // Fetch the voice guide from Supabase for AI prompt injection
+      const voiceGuide = await fetchVoiceGuide();
+
       let prompt;
       if (formData.customPrompt) {
         const wantsBorrower = audiences.includes("borrower");
         const wantsRealtor = audiences.includes("realtor");
-        prompt = `${formData.customPrompt}
+        const customVoiceSection = voiceGuide
+          ? `## ADAM'S VOICE & PERSONAL FACTS — READ THIS CAREFULLY
+The following is Adam's complete voice guide. Follow it exactly. NEVER fabricate personal details — only use facts from this guide.
 
-## ADAM'S VOICE — READ THIS CAREFULLY
+${voiceGuide}`
+          : `## ADAM'S VOICE — READ THIS CAREFULLY
 Write as Adam — a real human writing to real people. NOT a marketing email. NOT a newsletter template. A person.
 
 TONE: Casual, direct, like a text or quick email to someone you actually know.
 - First person "I" always. Short sentences. Short paragraphs.
 - NO buzzwords. NO marketing language. NO hype.
 - NEVER use: "leverage", "unlock", "dream home", "exciting", "thrilled", "navigate", "empower", "game-changer", "take advantage", "don't miss out", "act now", "incredible opportunity", "market conditions", "poised for", "seize the moment", "strategic advantage"
-- Sound like: "Here's the deal", "Real talk", "The short version", "Let me break it down"
+- Sound like: "Here's the deal", "Real talk", "The short version", "Let me break it down"`;
+
+        prompt = `${formData.customPrompt}
+
+${customVoiceSection}
 
 ## EMAIL RULES
 Emails are SHORT teasers (100-150 words MAX) that drive the reader to click to the full article. Not a briefing. Not a summary. A hook.
@@ -148,6 +159,12 @@ ${wantsRealtor ? `### REALTOR EMAIL
 - Focus: market intel THEY can use with their clients this week
 - Think: what does a realtor need to know to advise their buyers right now?
 - Do NOT use borrower-focused language like "if you've been on the fence about locking in a rate"` : ""}
+
+## INTERNAL LINK RULES
+- ../calculators.html is a PAYMENT calculator — it estimates monthly payments. It does NOT show rates or look up rates. NEVER say "see your rate", "find your rate", or "what your rate would be" when linking to the calculator. Correct: "Run your payment numbers", "Estimate your monthly cost". To know their actual rate, readers must contact Adam.
+- ../prequal.html — Pre-Qualification page
+- ../contact.html — Contact Adam
+- ../products.html — Loan Programs
 
 ## WEB ARTICLE
 800-1200 words. Two sections: main article + Personal Corner (separated by <hr>).
@@ -172,7 +189,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
 ---WEB_CONTENT_END---
 `;
       } else {
-        prompt = buildPrompt(formData, pageUrl);
+        prompt = buildPrompt(formData, pageUrl, voiceGuide);
       }
 
       // Retry up to 3 times on transient errors (429/529)

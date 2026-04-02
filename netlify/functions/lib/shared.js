@@ -226,6 +226,51 @@ function wrapEmailHtml(content) {
 </html>`;
 }
 
+// ====================================================================
+// SUPABASE: Fetch the voice guide from social_settings
+// Returns the full voice guide text, or null if unavailable.
+// ====================================================================
+
+const SUPABASE_URL = "https://uuqedsvjlkeszrbwzizl.supabase.co";
+
+async function fetchVoiceGuide() {
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!key) {
+    console.warn("[voice-guide] SUPABASE_SERVICE_ROLE_KEY not set — using hardcoded voice defaults");
+    return null;
+  }
+
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/social_settings?key=eq.voice_guide&select=value&limit=1`,
+      {
+        headers: {
+          apikey: key,
+          Authorization: `Bearer ${key}`,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    if (!res.ok) {
+      console.warn(`[voice-guide] Supabase fetch failed (${res.status})`);
+      return null;
+    }
+
+    const rows = await res.json();
+    if (rows.length > 0 && rows[0].value) {
+      console.log("[voice-guide] Loaded voice guide from Supabase");
+      return typeof rows[0].value === "string" ? rows[0].value : JSON.stringify(rows[0].value);
+    }
+
+    console.warn("[voice-guide] No voice guide found in social_settings");
+    return null;
+  } catch (err) {
+    console.warn("[voice-guide] Fetch error:", err.message);
+    return null;
+  }
+}
+
 module.exports = {
   createGitHubFile,
   waitForPageLive,
@@ -236,4 +281,5 @@ module.exports = {
   stripNestedHtmlDocument,
   formatDateForTitle,
   wrapEmailHtml,
+  fetchVoiceGuide,
 };

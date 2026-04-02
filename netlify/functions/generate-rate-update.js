@@ -2,7 +2,7 @@ const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildRatePrompt } = require("./lib/rate-prompt-builder");
 const { buildRatePage } = require("./lib/rate-page-builder");
-const { createGitHubFile, createAndSendCampaign, waitForPageLive, forceAbsoluteLinks, stripNestedHtmlDocument, formatDateForTitle, wrapEmailHtml } = require("./lib/shared");
+const { createGitHubFile, createAndSendCampaign, waitForPageLive, forceAbsoluteLinks, stripNestedHtmlDocument, formatDateForTitle, wrapEmailHtml, fetchVoiceGuide } = require("./lib/shared");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateRateUpdate()
@@ -49,7 +49,8 @@ async function generateRateUpdate(formData) {
     // STEP 1: Generate content via Claude API
     // ----------------------------------------------------------------
     const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const prompt = buildRatePrompt(formData, pageUrl);
+    const voiceGuide = await fetchVoiceGuide();
+    const prompt = buildRatePrompt(formData, pageUrl, voiceGuide);
 
     let response;
     for (let attempt = 1; attempt <= 3; attempt++) {

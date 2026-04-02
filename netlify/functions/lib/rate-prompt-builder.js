@@ -7,7 +7,7 @@
  * @param {string} pageUrl  - The full absolute URL for the rate page
  */
 
-function buildRatePrompt(formData, pageUrl) {
+function buildRatePrompt(formData, pageUrl, voiceGuide) {
   const {
     rates = "",
     direction = "",
@@ -45,16 +45,24 @@ function buildRatePrompt(formData, pageUrl) {
     volatile: "Rates have been volatile / mixed",
   };
 
-  let prompt = `You write weekly rate updates for Adam Styer, mortgage loan originator at Mortgage Solutions, LP in Austin, TX (NMLS# 513013, Company NMLS# 2526130).
+  // Build voice section — use Supabase voice guide if available, fall back to hardcoded
+  const voiceSection = voiceGuide
+    ? `## ADAM'S VOICE — READ THIS CAREFULLY
+The following is Adam's complete voice guide. Follow it exactly.
 
-## ADAM'S VOICE — READ THIS CAREFULLY
+${voiceGuide}`
+    : `## ADAM'S VOICE — READ THIS CAREFULLY
 Write as Adam — a real human writing to real people. NOT a marketing email. A person.
 
 TONE: Casual, direct, like a text or quick email to someone you actually know.
 - First person "I" always. Short sentences. Short paragraphs.
 - NO buzzwords. NO marketing language. NO hype.
 - NEVER use: "leverage", "unlock", "dream home", "exciting", "thrilled", "navigate", "empower", "game-changer", "take advantage", "don't miss out", "act now", "incredible opportunity", "poised for", "seize the moment"
-- Sound like: "Here's the deal", "Real talk", "The short version", "Let me break it down"
+- Sound like: "Here's the deal", "Real talk", "The short version", "Let me break it down"`;
+
+  let prompt = `You write weekly rate updates for Adam Styer, mortgage loan originator at Mortgage Solutions, LP in Austin, TX (NMLS# 513013, Company NMLS# 2526130).
+
+${voiceSection}
 
 ## RATE PAGE URL
 The full rate page lives at this exact URL: ${pageUrl}
@@ -136,6 +144,7 @@ ${depth === "indepth" ? "- Go deeper: explain what's driving rates, what it mean
 - End with something casual like "Give me a call if you want to talk numbers" or "Happy to run the numbers for you."
 - Output ONLY simple HTML: <p> and <strong> tags. Nothing else. No <div>, no <style>, no wrappers.
 - For any links use "../" prefix (../contact.html, ../prequal.html)
+- ⚠️ ../calculators.html is a PAYMENT calculator — it estimates monthly payments based on numbers the user enters. It does NOT show rates or look up rates. NEVER say "see your rate", "find your rate", or "what your rate would be" when linking to the calculator. Correct: "Run your payment numbers", "Estimate your monthly cost". To know their actual rate, readers must contact Adam directly.
 
 ## OUTPUT FORMAT — use these EXACT delimiters
 
