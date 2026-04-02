@@ -540,6 +540,179 @@ header.scrolled {
   }
 }
 
+/* ── 7. TESTIMONIALS PAGE — ANIMATED STATS ───────────────────────────────── */
+.stats-grid .stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── 8. CTA SECTIONS — SPOTLIGHT GRADIENT ────────────────────────────────── */
+.bg-navy.cta-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-navy.cta-spotlight::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(154, 123, 45, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  animation: spotlight-drift 8s ease-in-out infinite alternate;
+}
+
+@keyframes spotlight-drift {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(80%) translateY(-10%); }
+}
+
+.bg-navy.cta-spotlight h2 {
+  position: relative;
+  z-index: 1;
+}
+
+.bg-navy.cta-spotlight p,
+.bg-navy.cta-spotlight .btn {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-navy.cta-spotlight::before {
+    animation: none;
+    left: 20%;
+  }
+}
+
+/* ── 9. PRODUCT CARDS — ENHANCED FEATURE ITEMS ───────────────────────────── */
+.product-section .feature-item {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  border: 1px solid var(--color-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.product-section .feature-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(10, 31, 63, 0.1);
+  border-color: var(--color-gold);
+}
+
+.product-section .feature-item h4 {
+  transition: color 0.3s ease;
+}
+
+.product-section .feature-item:hover h4 {
+  color: var(--color-gold);
+}
+
+.quick-jump-grid .btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quick-jump-grid .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 31, 63, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-section .feature-item:hover,
+  .quick-jump-grid .btn:hover {
+    transform: none;
+  }
+}
+
+/* ── 10. FLOATING LABEL FORMS ────────────────────────────────────────────── */
+.form-group.floating {
+  position: relative;
+  margin-bottom: var(--spacing-xl);
+}
+
+.form-group.floating input,
+.form-group.floating select,
+.form-group.floating textarea {
+  width: 100%;
+  padding: 1.25rem 0.875rem 0.5rem;
+  font-size: var(--font-size-base);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.form-group.floating label {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--font-size-base);
+  color: var(--color-gray);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  background: transparent;
+  padding: 0 4px;
+}
+
+.form-group.floating textarea ~ label {
+  top: 1.25rem;
+  transform: none;
+}
+
+.form-group.floating input:focus,
+.form-group.floating select:focus,
+.form-group.floating textarea:focus {
+  border-color: var(--color-navy);
+  box-shadow: 0 0 0 3px rgba(10, 31, 63, 0.08);
+}
+
+.form-group.floating input:focus ~ label,
+.form-group.floating input:not(:placeholder-shown) ~ label,
+.form-group.floating select:focus ~ label,
+.form-group.floating select:not([value=""]) ~ label,
+.form-group.floating textarea:focus ~ label,
+.form-group.floating textarea:not(:placeholder-shown) ~ label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: var(--color-navy);
+  font-weight: var(--font-weight-medium);
+  background: var(--color-white);
+}
+
+/* Select always shows value, so label always floats */
+.form-group.floating select ~ label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: var(--color-navy);
+  font-weight: var(--font-weight-medium);
+  background: var(--color-white);
+}
+
+.form-group.floating textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Contact info sidebar upgrade */
+.contact-info {
+  border-radius: var(--radius-xl);
+  transition: box-shadow 0.3s ease;
+}
+
+.contact-ctas a {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-ctas a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 31, 63, 0.12);
+}
+
 /* ========================================================================
    4. NAVIGATION
    ======================================================================== */
