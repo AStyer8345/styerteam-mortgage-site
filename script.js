@@ -52,10 +52,11 @@ function initNavigation() {
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const navLinks = document.querySelector('.nav-links');
 
-  // Sticky header shadow on scroll
+  // Sticky header shadow on scroll — read scrollY before DOM write to avoid forced reflow
   window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 0);
-  });
+    const scrolled = window.scrollY > 0;
+    header.classList.toggle('scrolled', scrolled);
+  }, { passive: true });
 
   // Mobile menu toggle
   if (mobileMenuToggle) {

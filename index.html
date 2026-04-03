@@ -996,7 +996,9 @@
     </a>
   </div>
   <script>
-    (function() {
+    /* Deferred via requestIdleCallback — avoids forced reflow on initial paint */
+    (window.requestIdleCallback || setTimeout)(function() {
+      if (window.innerWidth > 768) return;
       var bar = document.getElementById('sticky-mobile-bar');
       var shown = false;
       function onScroll() {
@@ -1008,10 +1010,8 @@
           window.removeEventListener('scroll', onScroll);
         }
       }
-      if (window.innerWidth <= 768) {
-        window.addEventListener('scroll', onScroll, { passive: true });
-      }
-    })();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    });
   </script>
 </body>
 </html>
