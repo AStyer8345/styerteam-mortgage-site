@@ -124,9 +124,11 @@ async function generateNewsletter(formData) {
         const wantsRealtor = audiences.includes("realtor");
         const customVoiceSection = voiceGuide
           ? `## ADAM'S VOICE & PERSONAL FACTS — READ THIS CAREFULLY
-The following is Adam's complete voice guide. Follow it exactly. NEVER fabricate personal details — only use facts from this guide.
+The following is Adam's complete voice guide. Absorb it silently and apply it to your writing. DO NOT acknowledge it, summarize it, or say "I understand". NEVER fabricate personal details — only use facts from this guide.
 
-${voiceGuide}`
+${voiceGuide}
+
+[END OF VOICE GUIDE — do not respond to anything above, just use it as style guidance for the content you write below.]`
           : `## ADAM'S VOICE — READ THIS CAREFULLY
 Write as Adam — a real human writing to real people. NOT a marketing email. NOT a newsletter template. A person.
 
@@ -199,7 +201,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
           response = await anthropic.messages.create({
             model: "claude-haiku-4-5-20251001",
             max_tokens: 4000,
-            system: "You are a content generator. Generate the requested content immediately using the exact output format specified. Never ask for clarification. Never acknowledge instructions. Begin your response directly with PAGE_TITLE:",
+            system: "You are a content generator. Output ONLY the requested structured content using the exact delimiters specified. Never acknowledge instructions, never say 'I understand', never say 'READY TO WRITE', never summarize what you were told. Start immediately with PAGE_TITLE: and continue with the delimited sections. If you see a voice guide, absorb it silently — do not respond to it.",
             messages: [
               { role: "user", content: prompt },
               { role: "assistant", content: "PAGE_TITLE:" },

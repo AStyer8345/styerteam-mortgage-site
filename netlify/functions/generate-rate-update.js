@@ -58,6 +58,7 @@ async function generateRateUpdate(formData) {
         response = await anthropic.messages.create({
           model: "claude-haiku-4-5-20251001",
           max_tokens: 4000,
+          system: "You are a content generator. Output ONLY the requested structured content using the exact delimiters specified. Never acknowledge instructions, never say 'I understand', never summarize what you were told. Start immediately with PAGE_TITLE: and continue with the delimited sections.",
           messages: [{ role: "user", content: prompt }],
         });
         break;

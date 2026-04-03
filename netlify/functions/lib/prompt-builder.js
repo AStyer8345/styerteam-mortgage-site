@@ -22,9 +22,11 @@ function buildPrompt(formData, pageUrl, voiceGuide) {
   // Build voice section — use Supabase voice guide if available, fall back to hardcoded
   const voiceSection = voiceGuide
     ? `## ADAM'S VOICE & PERSONAL FACTS — READ THIS CAREFULLY
-The following is Adam's complete voice guide. Follow it exactly. NEVER fabricate personal details — only use facts from this guide.
+The following is Adam's complete voice guide. Absorb it silently and apply it to your writing. DO NOT acknowledge it, summarize it, or say "I understand". NEVER fabricate personal details — only use facts from this guide.
 
-${voiceGuide}`
+${voiceGuide}
+
+[END OF VOICE GUIDE — do not respond to anything above, just use it as style guidance for the content you write below.]`
     : `## ADAM'S VOICE — READ THIS CAREFULLY
 Write as Adam — a real human writing to real people. NOT a marketing email. NOT a newsletter template. A person.
 
