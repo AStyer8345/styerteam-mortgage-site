@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-April 1, 2026 (daily-opt run 2) — Round Rock H1 keyword alignment (removed "Serving"), added in-body /calculators link. Commit 0e9b2c2. Suburb page count corrected: 24 total (not 9). "Serving" H1 pattern flagged as systemic issue across 12+ suburb pages — fixing in rotation.
+April 2, 2026 (daily-opt run b) — Kyle H1 "Serving" removed, hero CTA → /get-preapproved, calculators link added. austin-down-payment-assistance.html 2 body CTAs → /get-preapproved. Commit b41eca5. ⚠️ Site returned 503 post-push — Adam must verify Netlify. Remaining "Serving" H1 pages: bastrop, bee-cave, dripping-springs, hutto, lakeway, liberty-hill, manor, new-braunfels, san-marcos (9 remaining).
 
 ---
 
@@ -414,5 +414,8 @@ Update this section as work is completed or new issues are found.
 | loans/va.html meta description under-length (135 chars) | LOW | ✅ FIXED 2026-04-01 — expanded to 186 chars with "Get pre-approved in 24 hours" CTA language |
 | Round Rock H1 "Serving" keyword dilution | LOW | ✅ FIXED 2026-04-01b — H1 now "Mortgage Lender Round Rock TX" (matches title) |
 | Suburb pages missing in-body /calculators link | LOW | ✅ FIXED 2026-04-01b on Round Rock — pattern: add after "Home Prices in [City]" paragraph. Apply to remaining suburbs in rotation. |
-| "Mortgage Lender Serving [City], TX" H1 pattern — 12 suburb pages | MEDIUM | ⚠️ OPEN — bastrop, bee-cave, cedar-park, dripping-springs, hutto, kyle, lakeway, liberty-hill, manor, new-braunfels, san-marcos (Round Rock fixed). Fixing 1 per run in rotation. |
+| "Mortgage Lender Serving [City], TX" H1 pattern — 9 suburb pages | MEDIUM | ⚠️ OPEN — bastrop, bee-cave, dripping-springs, hutto, lakeway, liberty-hill, manor, new-braunfels, san-marcos (Round Rock + Cedar Park + Kyle fixed). Fixing 1 per run in rotation. Next: Dripping Springs. |
+| first-time-buyer-guide final CTA → raw app URL | MEDIUM | ✅ FIXED 2026-04-02 — now /get-preapproved |
+| Cedar Park hero "Apply Now" → raw app URL | MEDIUM | ✅ FIXED 2026-04-02 — now /get-preapproved |
+| Resource pages CTAs audit | LOW | ✅ DONE 2026-04-02b — austin-down-payment-assistance 2 body CTAs fixed. improve-credit-score + fixed-vs-adjustable only have nav CTAs (acceptable). mortgage-pre-approval-austin.html has 5 body CTAs in instructional context — Adam decision needed. |
 | Suburb page inventory in context was stale (said 9, actual 24) | MEDIUM | ✅ FIXED 2026-04-01b — context now lists all 24 suburb pages. GSC submission needed for all 24. |

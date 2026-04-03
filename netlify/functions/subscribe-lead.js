@@ -94,23 +94,31 @@ exports.handler = async (event) => {
     console.error("[subscribe-lead] Loanos failed:", loanosResult.reason);
   }
 
-  // Always send the guide welcome email via n8n → Outlook, regardless of
-  // whether the contact is new or existing in Mailchimp.
-  sendGuideEmail({ email, fname }).catch(err =>
-    console.error("[subscribe-lead] Guide email failed:", err.message)
-  );
+  // Send the FTB Guide welcome email via n8n → Outlook only for ftb-guide tag.
+  // DPA guide leads (ftb-dpa-guide) use Mailchimp automation instead — do NOT fire this.
+  if (tag === "ftb-guide") {
+    sendGuideEmail({ email, fname }).catch(err =>
+      console.error("[subscribe-lead] Guide email failed:", err.message)
+    );
+  }
 
-  // Fire pre-approval lead notification to n8n and enroll in drip — awaited so they complete before function returns
-  if (lead_source === "Pre-Approval Funnel") {
-    const [notifyResult, dripResult] = await Promise.allSettled([
+  // Fire LO notification for high-intent leads (PA funnel + DPA guide) — awaited so it completes before function returns
+  if (lead_source === "Pre-Approval Funnel" || lead_source === "FTB DPA Guide") {
+    const notifyResult = await Promise.allSettled([
       notifyPreApprovalLead({ email, fname, lname, phone, loan_goal, sms_opt_in, utm_source, utm_medium, utm_campaign, page_url }),
+    ]);
+    if (notifyResult[0].status === "rejected") {
+      console.error("[subscribe-lead] Lead notify failed:", notifyResult[0].reason?.message);
+    }
+  }
+
+  // Enroll in LoanOS drip only for PA funnel — DPA leads use Mailchimp Journey instead
+  if (lead_source === "Pre-Approval Funnel") {
+    const dripResult = await Promise.allSettled([
       enrollInDrip({ email, fname, lname }),
     ]);
-    if (notifyResult.status === "rejected") {
-      console.error("[subscribe-lead] PA notify failed:", notifyResult.reason?.message);
-    }
-    if (dripResult.status === "rejected") {
-      console.error("[subscribe-lead] Drip enrollment failed:", dripResult.reason?.message);
+    if (dripResult[0].status === "rejected") {
+      console.error("[subscribe-lead] Drip enrollment failed:", dripResult[0].reason?.message);
     }
   }
 

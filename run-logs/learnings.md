@@ -2,6 +2,25 @@
 
 ---
 
+## 2026-04-02b — Resource Page CTA Audit Complete + Netlify 503
+
+### Patterns
+- **Resource pages with raw nav CTAs are acceptable**: improve-credit-score.html and fixed-vs-adjustable.html only have raw loan app URL in the `nav-cta` anchor (standard site-wide nav pattern). Only body CTAs (`.btn.btn-primary` in article or section content) need to be converted to /get-preapproved. Nav CTAs are deliberate — they send high-intent readers directly to the 1003.
+- **mortgage-pre-approval-austin.html is a borderline case**: This article specifically explains how to complete the 1003 application and has 5 body CTAs linking to the raw URL in instructional context ("Start here"). Unlike other resource pages, these links are embedded in instructional copy about the application itself. Decision deferred to Adam.
+- **Netlify 503 pattern**: After push, site returned 503 for 2.5+ minutes on all pages including homepage. This may be a build failure OR a Netlify platform outage. Cannot diagnose from CLI — must check Netlify dashboard. If 503 persists >5 min after push, escalate to FLAG_FOR_ADAM immediately.
+- **NotebookLM sources go stale**: The notebook still referenced "Your Austin Home Loan Simplified" H1 (fixed March 26) as an open issue. Sources should be refreshed monthly or when major site changes complete. Use `notebooklm source add` to push updated context docs.
+
+---
+
+## 2026-04-02 — Raw App URL Still Present on Resource Pages + Batch Fix Gaps
+
+### Patterns
+- **Batch CTA sweep (2026-03-31) missed non-suburb pages**: The suburb CTA batch fix caught all 24 suburb pages but did not audit resource/guide pages. The first-time-buyer-guide final CTA and Cedar Park hero CTA were still pointing to the raw loan app URL today. Rule: after any batch fix, explicitly audit the adjacent page categories (loan pages, resource pages, guide pages) for the same pattern — not just the target category.
+- **Cedar Park hero "Apply Now" survived two batch fix rounds**: Cedar Park was included in the 2026-03-31 suburb batch fix AND the 2026-04-01 loan page fix, but neither caught this hero CTA. The hero CTA used the same class and URL as other suburb pages. Root cause: sed patterns in the batch fix may have been run with wrong file glob. When verifying batch fixes, grep each file individually rather than trusting the batch count.
+- **Thursday funnel trace is a fast health check**: The full funnel (homepage → /get-preapproved → /thank-you) can be verified in <2 min via grep. contact.html, thank-you.html, and the three ad landing pages are all clean. This check is low-friction and should stay in Thursday rotation.
+
+---
+
 ## 2026-04-01b — Suburb H1 "Serving" Pattern + 24-Page Count Correction
 
 ### Patterns
