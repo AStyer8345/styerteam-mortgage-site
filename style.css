@@ -1194,8 +1194,9 @@ footer {
   overflow: hidden;
   color: var(--color-white);
 
-  /* Austin sunset — cinematic wide crop */
-  background-image: url('assets/hero-bg.jpg');
+  /* Austin sunset — cinematic wide crop. WebP first, JPG fallback. */
+  background-image: url('assets/hero-bg.webp');
+  background-image: image-set(url('assets/hero-bg.webp') type('image/webp'), url('assets/hero-bg.jpg') type('image/jpeg'));
   background-size: cover;
   background-position: center 20%;
   background-attachment: scroll;

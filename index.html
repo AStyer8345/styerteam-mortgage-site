@@ -36,8 +36,10 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
 
-  <!-- Preload hero cutout — desktop only so mobile skips the 5 MB download -->
-  <link rel="preload" as="image" href="assets/adam-cutout.webp" type="image/webp" media="(min-width: 769px)">
+  <!-- Preload hero background — CSS bg-image is invisible to preload scanner without this -->
+  <link rel="preload" as="image" href="assets/hero-bg.webp" type="image/webp">
+  <!-- Preload hero cutout — desktop only, WebP version (45KB vs 558KB PNG) -->
+  <link rel="preload" as="image" href="assets/adam-cutout-900.webp" type="image/webp" media="(min-width: 769px)">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -227,6 +229,7 @@
       -->
       <picture>
         <source media="(min-width: 769px)" srcset="assets/adam-cutout.webp" type="image/webp">
+        <source media="(min-width: 769px)" srcset="assets/adam-cutout-900.webp" type="image/webp">
         <source media="(min-width: 769px)" srcset="assets/adam-cutout-900.png" type="image/png">
         <img
           src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
