@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-31T07:50:00Z",
+  "lastUpdated": "2026-04-04T08:00:00Z",
   "tasks": [
     {
       "id": "website-daily-audit",
@@ -83,6 +83,72 @@
     }
   ],
   "reports": [
+    {
+      "id": "rpt-20260404-001",
+      "taskId": "social-media-build",
+      "taskName": "Social Media Content Build",
+      "project": "styer-mortgage",
+      "timestamp": "2026-04-04T08:00:00Z",
+      "status": "complete",
+      "summary": "Week 6 Full Cycle complete — 7 posts (Posts 36–42, April 14–17) written, reviewed, and confirmed in social_drafts; repost queue for self-employed + condo blogs fully completed.",
+      "completed": [
+        "GBP webhook fired for rates/2026-04-03.html — HTTP 200, posted to GBP + FB + IG + LI",
+        "NotebookLM PULL written: tasks/social-media/notebooklm-pull-2026-04-04.md",
+        "Refresh check: Post 30 verified no placeholders; FOMC Posts 24–25 not due for 25 days",
+        "Research file written: tasks/social-media/research/2026-04-04-daily-rate-snapshot.md",
+        "Week 6 spec written: tasks/social-media/specs/2026-04-04-week6-spec.md",
+        "7 posts inserted into social_drafts (IDs: be7c9f06, e1ad5566, e82bbe3d, 0473a227, d31f60f3, d671a1a3, 26983680)",
+        "Quality pass: avg 7.6/10, 2 rewrites (Post 38 trimmed, Post 41 rewritten hook)",
+        "Reviewer pass: APPROVED WITH NOTES — 4 inline fixes applied, 0 rejections",
+        "QA pass: all 7 posts confirmed in social_drafts with status=draft",
+        "Repost queue: blog/2026-04-02 self-employed and blog/2026-04-03 condo moved to Completed",
+        "Build report written: tasks/social-media/build-reports/2026-04-04-week6-build.md",
+        "5 Adam action items added to ADAM-TODO.md and Supabase todo_items",
+        "social_activity row logged to Supabase"
+      ],
+      "actionItems": [
+        {
+          "text": "Create Canva assets for Post 36 (LinkedIn 5-slide carousel, condo) and Post 37 (Instagram static, HOA red flags) — briefs in 2026-04-04-week6-build.md",
+          "priority": "high",
+          "status": "open"
+        },
+        {
+          "text": "Film 30-sec vertical Reel for Post 40 (Austin spring market) — script in social_drafts ID d31f60f3",
+          "priority": "medium",
+          "status": "open"
+        },
+        {
+          "text": "April 10 post-8:30 AM ET: Refresh agent fills Post 39 (CPI TIMELY, ID 0473a227) — publish target April 15 3 PM CST",
+          "priority": "high",
+          "status": "open"
+        },
+        {
+          "text": "Publish Post 30 (Liberation Day Instagram, ID cd64f2b6) TODAY April 4 before story goes stale",
+          "priority": "high",
+          "status": "open"
+        },
+        {
+          "text": "NMLS# 513013 profile audit on all 4 platforms still outstanding — blocks all posts going live",
+          "priority": "high",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "April 10 AM: Refresh run to fill Post 39 CPI TIMELY placeholders after 8:30 AM ET BLS release",
+        "Begin Week 7 skeleton (Posts 43–49, April 21–24) — PCE/GDP April 30 TIMELY template needed",
+        "Verify Posts 36–37 Canva assets are ready before April 14 publish windows"
+      ],
+      "metrics": {
+        "postsWritten": 7,
+        "avgQualityScore": 7.6,
+        "rewrites": 2,
+        "inlineFixes": 4,
+        "complianceFailures": 0,
+        "repostQueueCompletions": 2,
+        "adamsActionItemsAdded": 5,
+        "platformBreakdown": "LinkedIn: 4, Instagram: 2, Facebook: 1"
+      }
+    },
     {
       "id": "rpt-20260331-001",
       "taskId": "social-media-build",
