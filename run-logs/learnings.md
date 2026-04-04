@@ -2,6 +2,35 @@
 
 ---
 
+## 2026-04-03b — AEO Answer-First Pattern Applied + San Marcos 3-Fix
+
+### Patterns
+- **Answer-first paragraph template**: Add a bolded 40-60 word direct answer as the FIRST paragraph of every blog post, before any narrative. Format: `<p><strong>[Direct answer to the title's implied question, 1-2 sentences.]</strong> [1 sentence of context/nuance.]</p>`. This is the extractable anchor for AI Overviews — narrative openers are skipped.
+- **Question-format H2 conversion pattern**: Statement H2s ("What Lenders Actually Look At") → question H2s ("What Do Lenders Look At for Self-Employed Borrowers?"). Conversion increases AI citation likelihood and matches conversational search queries. Apply to all new posts going forward; retrofit in rotation.
+- **Blog title tag brand drift is confirmed systemic**: April 2 (self-employed) and April 1 (spring market) posts both published missing "Adam Styer |" or "NMLS #513013". This is the 6th+ instance. The post creation template is the root cause — not a one-time error. Any new post must be grepped immediately: `grep "<title>" blog/YYYY-MM-DD-*.html | grep -v "Adam Styer"`.
+- **San Marcos 3-fix pattern complete**: H1 "Serving" removal + hero CTA → /get-preapproved + /calculators body link. Same 3-fix pattern should be applied to remaining 6 suburbs: bastrop, bee-cave, hutto, lakeway, liberty-hill, manor.
+
+---
+
+## 2026-04-03 — Sitemap Never Submitted — 4-Week Indexing Gap
+
+### Patterns
+- **Sitemap must be verified in GSC on day one of any new site**: styermortgage.com had 24 suburb pages live and fully optimized for 4+ weeks before any were indexed, because sitemap.xml was never submitted to GSC. All SEO work during that period was real but produced zero ranking signal until today (Apr 3). GSC "Submitted sitemaps" showing 0–0 of 0 is an immediate red flag — check this the first run of any new site.
+- **Monday rotation must include GSC sitemap status check**: Add to Monday checklist — verify sitemap.xml is submitted and returning Success in GSC. If status is "Couldn't fetch" or missing, fix before any other work.
+- **Page quality work was not wasted — just delayed**: All schema, H1 fixes, CTAs, FAQPage markup is intact and will matter once indexing completes. The 4-week gap delayed the ranking clock, not the work itself.
+
+---
+
+## 2026-04-03 — AEO Blog Audit + Dripping Springs Suburb Fix
+
+### Patterns
+- **Blog posts lack answer-first intros for AI extraction**: Both audited posts (self-employed, spring market) open with storytelling/context instead of a direct 40-60 word answer to the primary query. AI Overviews and SGE extract the first clear, direct answer on a page — narrative openers get skipped. Rule: every blog post intro should open with 1-2 sentences that directly answer the title's implicit question, then expand.
+- **H2s as statements vs. questions**: Post H2s like "What Lenders Actually Look At" and "The Problem With Writing Everything Off" are informative but not in the question format that AI engines use to match conversational queries. Reformatting as "What Do Lenders Look At for Self-Employed Borrowers?" increases AI citation likelihood. Apply to new posts going forward.
+- **NotebookLM source refresh cadence**: After 3 consecutive runs recommending already-fixed items (H1 keyword, trust bar), the notebook sources are confirmed stale. Sources should be refreshed after major site changes complete — add updated context.md + recent run logs. Refresh frequency: monthly or post-major-milestone.
+- **Dripping Springs suburb fixes now follow established pattern**: All three suburb improvements (H1 "Serving" removal, hero CTA → /get-preapproved, /calculators body link) were applied in one run. Same 3-fix pattern should be applied to remaining 7 suburbs.
+
+---
+
 ## 2026-04-02b — Resource Page CTA Audit Complete + Netlify 503
 
 ### Patterns
