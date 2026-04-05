@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-April 3, 2026 (daily-opt run 2) — San Marcos H1 "Serving" removed, hero CTA → /get-preapproved, /calculators body link added. Self-employed + spring market blog posts: title tags fixed, AEO answer-first intro + question H2s added to self-employed post. Remaining "Serving" H1 pages: bastrop, bee-cave, hutto, lakeway, liberty-hill, manor (6 remaining).
+April 5, 2026 (daily-opt run) — 3 blog posts (self-employed Apr 2, housing market Apr 4, spring market Apr 1) title tags fixed: "Adam Styer |" added before "NMLS #513013". Hutto suburb page: AEO answer-first bold paragraph added + in-body /calculators link added. Conversion tracking confirmed 10/10.
 
 ---
 
@@ -414,7 +414,9 @@ Update this section as work is completed or new issues are found.
 | loans/va.html meta description under-length (135 chars) | LOW | ✅ FIXED 2026-04-01 — expanded to 186 chars with "Get pre-approved in 24 hours" CTA language |
 | Round Rock H1 "Serving" keyword dilution | LOW | ✅ FIXED 2026-04-01b — H1 now "Mortgage Lender Round Rock TX" (matches title) |
 | Suburb pages missing in-body /calculators link | LOW | ✅ FIXED 2026-04-01b on Round Rock — pattern: add after "Home Prices in [City]" paragraph. Apply to remaining suburbs in rotation. |
-| "Mortgage Lender Serving [City], TX" H1 pattern — suburb pages | MEDIUM | ⚠️ OPEN — bastrop, bee-cave, hutto, lakeway, liberty-hill, manor (Round Rock + Cedar Park + Kyle + Dripping Springs + San Marcos fixed). Fixing 1 per run in rotation. Next: Bastrop. |
+| "Mortgage Lender Serving [City], TX" H1 pattern — suburb pages | MEDIUM | ✅ FULLY RESOLVED 2026-04-04 — all 24 suburb pages verified: zero have "Serving" H1 anti-pattern. |
+| Blog title tags missing "Adam Styer \|" — self-employed, housing market, spring market posts | LOW | ✅ FIXED 2026-04-05 — all three updated |
+| Hutto suburb page missing AEO answer-first intro + /calculators in-body link | LOW | ✅ FIXED 2026-04-05 — AEO bold paragraph added; calculators link in Home Prices section |
 | first-time-buyer-guide final CTA → raw app URL | MEDIUM | ✅ FIXED 2026-04-02 — now /get-preapproved |
 | Cedar Park hero "Apply Now" → raw app URL | MEDIUM | ✅ FIXED 2026-04-02 — now /get-preapproved |
 | Resource pages CTAs audit | LOW | ✅ DONE 2026-04-02b — austin-down-payment-assistance 2 body CTAs fixed. improve-credit-score + fixed-vs-adjustable only have nav CTAs (acceptable). mortgage-pre-approval-austin.html has 5 body CTAs in instructional context — Adam decision needed. |

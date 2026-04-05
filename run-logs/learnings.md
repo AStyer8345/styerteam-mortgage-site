@@ -2,6 +2,34 @@
 
 ---
 
+## 2026-04-05 — AEO Answer-First on Suburb Pages + Blog Title Drift Persists
+
+### Patterns
+- **AEO answer-first applies to suburb pages too, not just blog posts**: The pattern (`<p><strong>[40–60 word direct answer]</strong> [1 context sentence]</p>`) was previously applied only to blog posts. Suburb pages open with narrative ("Hutto is one of the fastest-growing cities in Texas...") which AI crawlers skip. The answer-first paragraph should be the very first `<p>` inside the main content section, before the intro H2. Applied to Hutto today.
+- **Blog title brand drift is now 9+ instances — it's the creation template, not operator error**: Three more posts (self-employed, housing market, spring market) were missing "Adam Styer |" in the `<title>` tag despite prior fixes. No post created outside a daily-opt run has ever had the correct format on first publish. The only reliable fix is a creation-time grep lint check.
+- **In-body calculators link pattern**: Insert inline in the "Home Prices in [City]" paragraph as: "Use our [mortgage calculator](/calculators.html) to estimate your monthly payment at current rates for any [City] price point." Natural placement, adds value, no content disruption.
+
+---
+
+## 2026-04-04b — AEO: Blockquote + Bold = Best of Both Worlds
+
+### Patterns
+- **Combining blockquote-style + `<strong>` is the optimal AEO pattern**: The condo post had a properly-styled intro (border-left, 49 words, directly answers the title query) but was missing `<strong>` bold wrapping. Adding `<strong>` costs nothing visually — the border-left styling dominates — but sends an explicit semantic signal to AI crawlers. Rule: every blog post intro should have BOTH a visual pull-quote style AND `<strong>` wrapping on the direct-answer portion.
+- **NotebookLM source refresh latency is real**: styermortgage-context.md was added as a source on April 4 morning, but the April 4 afternoon query still returned stale recommendations (H1 fix, GSC submission — both done weeks ago). Sources take more than one run to propagate into recommendations. Don't conclude that a refresh failed just because one query still returns old advice — check again in 2-3 runs.
+- **Second-run pattern**: When the same day triggers two runs (e.g., manual trigger + scheduled), check latest.md first — if the major priority items are already done, focus on any outstanding TOMORROW_PRIORITY items rather than re-doing work.
+
+---
+
+## 2026-04-04 — "Serving" H1 Inventory Correction + AEO Applied to 2 Posts
+
+### Patterns
+- **Context file "Serving" H1 list was stale in both directions**: bastrop + bee-cave were listed as needing fixes but were already clean; taylor + new-braunfels were NOT listed but had "Serving" H1. After today's batch fix, zero suburb pages have the "Serving" anti-pattern. **Rule: always grep `Mortgage Lender Serving` across all suburb pages rather than relying on the context's list.**
+- **Blog post title brand drift is now confirmed at 7+ instances**: The April 4 post was published with no brand in the title. This is not a one-off error — it's the blog post creation template. Until the template is fixed, grep every new post immediately: `grep "<title>" blog/YYYY-MM-DD-*.html | grep -v "Adam Styer"`.
+- **AEO answer-first paragraph applied to spring market + April 4 market report**: Both posts now open with a 50-60 word bolded direct answer before the first H2/narrative. Pattern confirmed effective — apply to any new post at time of creation.
+- **NotebookLM source deletion doesn't support --json flag**: `notebooklm source delete <id> --yes` works; `--yes --json` errors. Deletion itself succeeds.
+
+---
+
 ## 2026-04-03b — AEO Answer-First Pattern Applied + San Marcos 3-Fix
 
 ### Patterns
