@@ -2,6 +2,26 @@
 
 ---
 
+## 2026-04-06 — AEO Hero-Subtitle vs. Body Paragraph + Blog Title Drift at 10 Instances
+
+### Patterns
+- **Hero-subtitle class is NOT the same as an AEO body paragraph**: Suburb pages like Liberty Hill had answer-first text in `<p class="hero-subtitle">` in the hero section, but AI crawlers extract body content paragraphs, not hero UI elements. The Monday AEO audit now explicitly checks for a `<strong>` paragraph in the main content section (after `<!-- WHY [CITY] -->` comment, before first H2). A clean hero-subtitle does NOT satisfy the AEO requirement.
+- **Blog title drift has now reached 10 confirmed instances — this is a systemic process failure**: The blog post creation template has never been corrected at the source despite 10+ fixes after-the-fact. The correct pre-publish lint command is: `grep "<title>" blog/YYYY-MM-DD-*.html | grep -v "Adam Styer"` — any hit = broken title. Until the template is fixed, run this grep at the start of every run against ALL blog/*.html files to catch same-day posts.
+- **Homepage schema has two gaps worth tracking**: (1) No Person schema on homepage — only MortgageBroker/LocalBusiness + FAQPage. (2) No LocalBusiness schema on about page — only Person. Monday schema audit should flag if either of these diverges further. Adding Person schema to the homepage is a 1-block JSON-LD addition and would satisfy the "both pages have both schemas" target.
+- **NotebookLM has timed out on two consecutive scheduled runs (Apr 5 + Apr 6)**: The cached insights are sufficient for daily decision-making but the timeout pattern suggests either network latency or library issues. When timed out, always log the cached NOTEBOOK_INSIGHTS block verbatim from the prior run so the next run inherits them.
+
+---
+
+## 2026-04-06 — Sente Mortgage Is the New Review Benchmark + Dripping Springs Wide Open
+
+### Patterns
+- **Sente Mortgage (1,448+ reviews) displaced Barton Creek Lending (506) as the Austin review leader**: They jumped to #1 for "mortgage lender austin tx" from nowhere. Review volume at this scale creates self-reinforcing authority — Google rewards review signals in local/YMYL verticals. The benchmark for competitive review count is now 3x higher than previously assessed.
+- **Lone Star Financing is surging across multiple keywords simultaneously**: Appeared in top 3 for "mortgage broker" (#3), "home loan" (#2), and "refinance" (#2) — all keywords where they were absent last week. This pattern (multi-keyword jump in one week) suggests either a site-wide authority boost (new backlinks, domain age threshold) or coordinated on-page optimization. Monitor for new content or backlink activity.
+- **Dripping Springs is the widest-open suburb keyword found in 5 weeks**: Zero dedicated mortgage lender pages in results — only individual LOs at banks and a realtor recommendation page. Compare to Buda (Big Life has a page), San Marcos (3 dedicated pages), or Westlake Hills (Quantum Loans). If our Dripping Springs page gets indexed first, it has the highest probability of any suburb keyword to rank immediately.
+- **Suburb indexing at 5 weeks with 0 pages is now a confirmed technical emergency, not a patience issue**: Standard indexing for new pages on an established domain is 1-3 weeks. 5 weeks with zero suburb pages indexed — despite sitemap fix (commit 9313067, ~March 26) — suggests either (a) internal linking is too weak for Googlebot to discover and prioritize these URLs, (b) crawl budget is exhausted on higher-priority pages, or (c) there's a technical blocker (noindex, robots.txt, canonical issues). Must audit all three.
+
+---
+
 ## 2026-04-05b — Suburb Hero CTA Class Was Missed in All Batch Fixes
 
 ### Patterns

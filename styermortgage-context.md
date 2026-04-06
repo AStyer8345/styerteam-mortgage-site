@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-April 5, 2026 (daily-opt run 2) — ALL 17 suburb hero CTAs (hero-cta-primary) fixed → /get-preapproved (prior batch fix missed this class). Lakeway: AEO answer-first paragraph + /calculators body link added. Commit abac0a1.
+April 6, 2026 (Monday daily-opt) — Liberty Hill AEO answer-first bold paragraph added to body content before first H2. Blog post 2026-04-06-mortgage-document-checklist-austin-tx.html title fixed (10th blog brand drift instance) + intro wrapped in strong. Commit b41fd29.
 
 ---
 
@@ -425,3 +425,7 @@ Update this section as work is completed or new issues are found.
 | Suburb hero CTAs (hero-cta-primary) bypassing conversion tracking | HIGH | ✅ FIXED 2026-04-05b — all 17 suburb pages patched in batch. Prior 2026-03-31 fix only caught body+footer CTAs, not hero-cta-primary. Commit abac0a1. |
 | Lakeway AEO answer-first paragraph missing | MEDIUM | ✅ FIXED 2026-04-05b — 57-word bolded AEO intro added before first H2 |
 | Lakeway /calculators in-body link missing | LOW | ✅ FIXED 2026-04-05b — link added to Home Prices section |
+| Liberty Hill AEO body paragraph missing | MEDIUM | ✅ FIXED 2026-04-06 — 58-word strong-wrapped answer-first paragraph added before first H2 in body content (hero-subtitle alone does NOT satisfy AEO requirement) |
+| Homepage AEO gap — no extractable answer paragraph | MEDIUM | ⚠️ OPEN — first 150 words are fragmented hero UI text, not an extractable paragraph answering "best mortgage broker Austin TX". Needs a 50-60 word bolded intro in main content. FLAG_FOR_ADAM. |
+| Person schema missing from homepage | LOW | ⚠️ OPEN — homepage has MortgageBroker+FAQPage but no Person schema. About page has Person but no LocalBusiness. Both pages should have both schema types for full entity consistency. |
+| Blog title brand drift — 10th instance | HIGH | ⚠️ RECURRING — 2026-04-06-mortgage-document-checklist-austin-tx.html published without "Adam Styer |". Fixed same-day. Root cause: creation template never corrected. Lint: grep "<title>" blog/*.html | grep -v "Adam Styer" at start of every run. |
