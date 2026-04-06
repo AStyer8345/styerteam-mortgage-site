@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoanOS Waitlist | Built for Loan Officers | Adam Styer</title>
+  <meta name="description" content="LoanOS is a mortgage CRM built by an active loan officer. No VC. No SaaS bloat. Get on the waitlist.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
+
+  <style>
+    /* ── Landing page nav overrides ────────────────────────── */
+    .lp-header .nav-links,
+    .lp-header .mobile-menu-toggle,
+    .lp-header .nav-cta { display: none !important; }
+
+    /* ── Hero ──────────────────────────────────────────────── */
+    .lp-hero {
+      background: var(--color-navy);
+      padding: var(--spacing-4xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .lp-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: var(--spacing-4xl);
+      align-items: start;
+    }
+    .lp-hero-copy h1 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-5xl);
+      color: var(--color-white);
+      line-height: var(--line-height-tight);
+      margin-bottom: var(--spacing-lg);
+    }
+    .lp-hero-copy .lp-subhead {
+      font-size: var(--font-size-lg);
+      color: rgba(255,255,255,0.85);
+      margin-bottom: var(--spacing-xl);
+      line-height: var(--line-height-relaxed);
+    }
+    .lp-raw-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--spacing-xl);
+    }
+    .lp-raw-list li {
+      color: rgba(255,255,255,0.8);
+      font-size: var(--font-size-base);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lp-raw-list li::before {
+      content: '→';
+      color: var(--color-gold);
+      font-size: 0.9em;
+      flex-shrink: 0;
+    }
+    .lp-raw-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* ── Form Card ─────────────────────────────────────────── */
+    .lp-form-card {
+      background: var(--color-white);
+      border-radius: 12px;
+      padding: var(--spacing-xl);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+    }
+    .lp-form-card h2 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-2xl);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-xs);
+    }
+    .lp-form-card .form-subtitle {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray);
+      margin-bottom: var(--spacing-lg);
+    }
+    .lp-form-field {
+      margin-bottom: var(--spacing-md);
+    }
+    .lp-form-field label {
+      display: block;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--color-navy);
+      margin-bottom: 6px;
+    }
+    .lp-form-field label .optional {
+      font-weight: 400;
+      color: var(--color-gray);
+      font-size: 0.85em;
+    }
+    .lp-form-field input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #D0D0D0;
+      border-radius: 4px;
+      font-size: 16px;
+      font-family: var(--font-body);
+      color: var(--color-navy);
+      background: #FAFAFA;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .lp-form-field input:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      background: var(--color-white);
+    }
+    .lp-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+    }
+    .lp-form-submit {
+      margin-top: var(--spacing-lg);
+    }
+    .lp-form-submit button {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--color-gold);
+      color: var(--color-navy);
+      font-size: var(--font-size-base);
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: opacity 0.2s;
+    }
+    .lp-form-submit button:hover { opacity: 0.9; }
+    .lp-form-submit button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .lp-form-error {
+      display: none;
+      margin-top: var(--spacing-sm);
+      color: #C0392B;
+      font-size: var(--font-size-sm);
+    }
+    .lp-form-disclaimer {
+      margin-top: var(--spacing-sm);
+      font-size: 0.75rem;
+      color: var(--color-gray);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ── Who This Is For ──────────────────────────────────── */
+    .lp-who {
+      padding: var(--spacing-4xl) 0;
+      background: var(--color-light-gray);
+    }
+    .lp-who h2 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-3xl);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-xl);
+      text-align: center;
+    }
+    .lp-who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+    }
+    .lp-who-card {
+      background: var(--color-white);
+      border-radius: 8px;
+      padding: var(--spacing-lg);
+      border-left: 4px solid var(--color-gold);
+    }
+    .lp-who-card h3 {
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-sm);
+    }
+    .lp-who-card p {
+      font-size: var(--font-size-base);
+      color: #555;
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    /* ── About the Builder ────────────────────────────────── */
+    .lp-builder {
+      padding: var(--spacing-4xl) 0;
+      background: var(--color-white);
+    }
+    .lp-builder-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .lp-builder-inner h2 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-3xl);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-lg);
+    }
+    .lp-builder-inner p {
+      font-size: var(--font-size-lg);
+      color: #444;
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--spacing-md);
+    }
+    .lp-builder-stat {
+      display: inline-block;
+      background: var(--color-navy);
+      color: var(--color-white);
+      border-radius: 6px;
+      padding: 6px 16px;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      margin: 4px;
+    }
+
+    /* ── Mobile ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .lp-hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .lp-form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Header (minimal — no nav links on landing pages) -->
+  <header class="lp-header">
+    <div class="container">
+      <nav class="nav-inner">
+        <a href="/" class="nav-logo">Adam Styer | Mortgage Solutions</a>
+        <div class="nav-links"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══ HERO ══════════════════════════════════════════════ -->
+    <section class="lp-hero">
+      <div class="container">
+        <div class="lp-hero-inner">
+
+          <!-- Copy -->
+          <div class="lp-hero-copy">
+            <h1>Building software loan officers actually want.</h1>
+            <p class="lp-subhead">LoanOS is a mortgage CRM built by an active LO — not a SaaS company that's never closed a loan. No VC money. No bloated features nobody asked for. Just the tools I wish existed when I was grinding pipelines manually.</p>
+            <ul class="lp-raw-list">
+              <li>Arive sync — pipeline updates without the manual entry</li>
+              <li>Automated milestone emails — Janie stops chasing conditions</li>
+              <li>Lead routing that fires in under 5 minutes</li>
+              <li>Past client reactivation on autopilot</li>
+              <li>Built in Next.js + Supabase — not some CRM wrapper</li>
+            </ul>
+            <p style="color:rgba(255,255,255,0.6);font-size:var(--font-size-sm);">Not yet available. Waitlist gets first access + honest build updates.</p>
+          </div>
+
+          <!-- Form Card -->
+          <div class="lp-form-card">
+            <h2>Get on the waitlist.</h2>
+            <p class="form-subtitle">I'll reach out personally when LoanOS is ready for other LOs.</p>
+
+            <form id="form-lo-waitlist" novalidate>
+              <input type="hidden" id="lw-page-url" name="page_url">
+              <input type="hidden" id="lw-utm-source"   name="utm_source">
+              <input type="hidden" id="lw-utm-medium"   name="utm_medium">
+              <input type="hidden" id="lw-utm-campaign" name="utm_campaign">
+
+              <div class="lp-form-row">
+                <div class="lp-form-field">
+                  <label for="lw-fname">First Name</label>
+                  <input id="lw-fname" name="fname" type="text" required autocomplete="given-name" placeholder="First">
+                </div>
+                <div class="lp-form-field">
+                  <label for="lw-lname">Last Name</label>
+                  <input id="lw-lname" name="lname" type="text" required autocomplete="family-name" placeholder="Last">
+                </div>
+              </div>
+
+              <div class="lp-form-field">
+                <label for="lw-email">Email Address</label>
+                <input id="lw-email" name="email" type="email" required autocomplete="email" placeholder="your@email.com">
+              </div>
+
+              <div class="lp-form-field">
+                <label for="lw-nmls">NMLS# <span class="optional">(optional)</span></label>
+                <input id="lw-nmls" name="nmls" type="text" autocomplete="off" placeholder="123456">
+              </div>
+
+              <div class="lp-form-field">
+                <label for="lw-company">Company / Brokerage <span class="optional">(optional)</span></label>
+                <input id="lw-company" name="company" type="text" autocomplete="organization" placeholder="Your brokerage">
+              </div>
+
+              <div class="lp-form-submit">
+                <button type="submit" id="lw-submit-btn">Join the Waitlist &rarr;</button>
+              </div>
+              <div id="lw-form-error" class="lp-form-error">
+                Something went wrong. Please try again.
+              </div>
+            </form>
+            <p class="lp-form-disclaimer">No spam. No sales pitch.<br>Just honest build updates from one LO to another.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ WHO THIS IS FOR ════════════════════════════════════ -->
+    <section class="lp-who">
+      <div class="container">
+        <h2>Who this is for</h2>
+        <div class="lp-who-grid">
+          <div class="lp-who-card">
+            <h3>The LO who's tired of manual work</h3>
+            <p>You close loans. You shouldn't be copy-pasting borrower data, chasing conditions in email threads, or manually updating a spreadsheet pipeline. LoanOS automates the repetitive stuff so you can close more loans with the same headcount.</p>
+          </div>
+          <div class="lp-who-card">
+            <h3>The broker who wants to scale without hiring</h3>
+            <p>Adding headcount is expensive. LoanOS replaces the manual work without adding a processor. I replaced a full-time admin (January 2025) and the pipeline didn't miss a beat. The system runs it.</p>
+          </div>
+          <div class="lp-who-card">
+            <h3>The LO who's building something</h3>
+            <p>If you're a producer who thinks like an operator — LoanOS is built for you. Not for the LO who wants a shiny dashboard. For the one who wants fewer fires and more closed loans.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ ABOUT THE BUILDER ══════════════════════════════════ -->
+    <section class="lp-builder">
+      <div class="container">
+        <div class="lp-builder-inner">
+          <h2>Built by someone still in the trenches.</h2>
+          <p>I'm Adam Styer. Senior Loan Officer, Austin TX. Independent mortgage broker since 2017. I built LoanOS because no CRM I tried was built by anyone who actually closes loans.</p>
+          <p>I'm not raising money. I'm not building a SaaS product to sell. I'm building the system I wish I had — and when it's stable enough that I'd stake my pipeline on it, I'll open it to other LOs.</p>
+          <div style="margin-top: var(--spacing-lg);">
+            <span class="lp-builder-stat">1,000+ loans closed</span>
+            <span class="lp-builder-stat">Austin, TX since 2017</span>
+            <span class="lp-builder-stat">NMLS #513013</span>
+            <span class="lp-builder-stat">Independent broker</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="container">
+      <p class="lp-nmls">Adam Styer | Mortgage Solutions LP | NMLS #513013 | Company NMLS #2526130 | Licensed in Texas | Equal Housing Lender<br>
+      5900 Balcones Drive, Suite 100, Austin TX 78731 | (512) 956-6010 | adam@thestyerteam.com<br>
+      <a href="/texas-complaint-notice.html">Texas Consumer Complaint Notice</a> | <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2526130" target="_blank" rel="noopener">NMLS Consumer Access</a><br>
+      LoanOS is mortgage software built for internal use. This page is not a solicitation for mortgage services.</p>
+    </div>
+  </footer>
+
+  <script src="/script.js" defer></script>
+  <script src="/analytics.js" defer></script>
+
+  <!-- Populate hidden tracking fields -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(window.location.search);
+      ['source','medium','campaign'].forEach(function(k) {
+        var el = document.getElementById('lw-utm-' + k);
+        if (el) el.value = p.get('utm_' + k) || (k === 'source' ? 'direct' : (k === 'medium' ? 'web' : 'loanos-waitlist'));
+      });
+      var urlEl = document.getElementById('lw-page-url');
+      if (urlEl) urlEl.value = window.location.href;
+    })();
+  </script>
+
+  <!-- Form submit handler -->
+  <script>
+    (function () {
+      var form      = document.getElementById('form-lo-waitlist');
+      var submitBtn = document.getElementById('lw-submit-btn');
+      var errorEl   = document.getElementById('lw-form-error');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorEl.style.display = 'none';
+        submitBtn.disabled    = true;
+        submitBtn.textContent = 'Joining…';
+
+        var fname   = (document.getElementById('lw-fname').value   || '').trim();
+        var lname   = (document.getElementById('lw-lname').value   || '').trim();
+        var email   = (document.getElementById('lw-email').value   || '').trim();
+        var nmls    = (document.getElementById('lw-nmls').value    || '').trim();
+        var company = (document.getElementById('lw-company').value || '').trim();
+
+        if (!fname || !lname || !email) {
+          errorEl.textContent    = 'Please fill in your first name, last name, and email.';
+          errorEl.style.display  = 'block';
+          submitBtn.disabled     = false;
+          submitBtn.textContent  = 'Join the Waitlist →';
+          return;
+        }
+
+        // GTM event
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', lead_type: 'lo_waitlist_signup' });
+
+        fetch('/.netlify/functions/subscribe-lo', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fname:        fname,
+            lname:        lname,
+            email:        email,
+            nmls:         nmls,
+            company:      company,
+            tag:          'loanos-waitlist',
+            lead_source:  'LoanOS Waitlist',
+            page_url:     document.getElementById('lw-page-url').value   || window.location.href,
+            utm_source:   document.getElementById('lw-utm-source').value   || 'direct',
+            utm_medium:   document.getElementById('lw-utm-medium').value   || 'web',
+            utm_campaign: document.getElementById('lw-utm-campaign').value || 'loanos-waitlist',
+          }),
+        })
+        .then(function(res) {
+          if (!res.ok) throw new Error('Server error ' + res.status);
+          return res.json();
+        })
+        .then(function() {
+          window.location.href = '/thank-you.html?type=lo-waitlist';
+        })
+        .catch(function(err) {
+          console.error('[lo-waitlist]', err);
+          errorEl.textContent   = 'Something went wrong. Please try again or email adam@thestyerteam.com.';
+          errorEl.style.display = 'block';
+          submitBtn.disabled    = false;
+          submitBtn.textContent = 'Join the Waitlist →';
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

@@ -207,6 +207,11 @@
         if (h1) h1.textContent = "Your Refinance Quote Request Was Received";
       } else if (type === 'preapproval') {
         if (h1) h1.textContent = "Your Pre-Approval Request Was Received";
+      } else if (type === 'lo-waitlist') {
+        if (h1) h1.textContent = "You're on the LoanOS Waitlist";
+        if (paras.length > 0) paras[0].textContent = "I'll reach out personally when LoanOS is ready for other LOs. No spam — just honest build updates.";
+        if (phoneCta) phoneCta.innerHTML = 'Questions? <a href="mailto:adam@thestyerteam.com">Email Adam directly.</a>';
+        if (calendlySection) calendlySection.style.display = 'none';
       }
     })();
   </script>
