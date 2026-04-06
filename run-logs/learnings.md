@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-04-05b — Suburb Hero CTA Class Was Missed in All Batch Fixes
+
+### Patterns
+- **`hero-cta-primary` is a distinct class from body CTAs and footer Apply Now links**: The 2026-03-31 batch fix (and prior manual fixes) targeted body CTAs with `btn-lg` class and footer `<li>Apply Now</li>` links, but completely missed the hero section's primary CTA button which uses class `hero-cta-primary hero-cta-btn`. This was live on 16 suburb pages until today (Apr 5). **Rule: when auditing CTAs, always grep separately for `hero-cta-primary`, `btn-lg`, `nav-cta`, and footer Apply Now — these are four distinct placement categories.**
+- **The hero CTA suppresses Google Ads conversion tracking differently than body CTAs**: Body CTAs going to raw app URL skip the `generate_lead` event. The hero CTA going to raw app URL does the same — but the hero CTA is likely the highest-intent click on the page (above the fold, primary position). Fixing the hero CTA matters more per-click than body CTA fixes.
+- **Verify grep patterns exhaustively before declaring a batch fix complete**: After any batch CTA sweep, run: (1) `grep -l 'mslp.my1003app' *-mortgage-lender.html` for any remaining raw URL, (2) check count per file — nav-cta (1) + hero-cta-primary (1) = 2 intentional raw URLs max per suburb page (nav is intentional, hero is now /get-preapproved). Zero remaining after today's fix.
+
+---
+
 ## 2026-04-05 — AEO Answer-First on Suburb Pages + Blog Title Drift Persists
 
 ### Patterns

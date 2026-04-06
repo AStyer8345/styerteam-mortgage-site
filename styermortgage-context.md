@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-April 5, 2026 (daily-opt run) — 3 blog posts (self-employed Apr 2, housing market Apr 4, spring market Apr 1) title tags fixed: "Adam Styer |" added before "NMLS #513013". Hutto suburb page: AEO answer-first bold paragraph added + in-body /calculators link added. Conversion tracking confirmed 10/10.
+April 5, 2026 (daily-opt run 2) — ALL 17 suburb hero CTAs (hero-cta-primary) fixed → /get-preapproved (prior batch fix missed this class). Lakeway: AEO answer-first paragraph + /calculators body link added. Commit abac0a1.
 
 ---
 
@@ -422,3 +422,6 @@ Update this section as work is completed or new issues are found.
 | Resource pages CTAs audit | LOW | ✅ DONE 2026-04-02b — austin-down-payment-assistance 2 body CTAs fixed. improve-credit-score + fixed-vs-adjustable only have nav CTAs (acceptable). mortgage-pre-approval-austin.html has 5 body CTAs in instructional context — Adam decision needed. |
 | Suburb page inventory in context was stale (said 9, actual 24) | MEDIUM | ✅ FIXED 2026-04-01b — context now lists all 24 suburb pages. GSC submission needed for all 24. |
 | sitemap.xml never submitted to GSC | HIGH | ✅ FIXED 2026-04-03 — sitemap.xml submitted to Google Search Console, status: Success. Indexing in progress. |
+| Suburb hero CTAs (hero-cta-primary) bypassing conversion tracking | HIGH | ✅ FIXED 2026-04-05b — all 17 suburb pages patched in batch. Prior 2026-03-31 fix only caught body+footer CTAs, not hero-cta-primary. Commit abac0a1. |
+| Lakeway AEO answer-first paragraph missing | MEDIUM | ✅ FIXED 2026-04-05b — 57-word bolded AEO intro added before first H2 |
+| Lakeway /calculators in-body link missing | LOW | ✅ FIXED 2026-04-05b — link added to Home Prices section |
