@@ -19,6 +19,7 @@
     ).forEach(function (form) {
       form.addEventListener('submit', function () {
         track({ event: 'generate_lead', lead_type: 'quick_quote' });
+        track({ event: 'thank_you_page_view' });
       });
     });
 
