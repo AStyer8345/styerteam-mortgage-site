@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-04T08:00:00Z",
+  "lastUpdated": "2026-04-06T08:00:00Z",
   "tasks": [
     {
       "id": "website-daily-audit",
@@ -55,11 +55,11 @@
       "id": "social-media-build",
       "name": "Social Media Content Build",
       "project": "styer-mortgage",
-      "frequency": "weekly",
-      "description": "6-subagent pipeline building 30-day content calendar and post copy for LinkedIn, Instagram, Facebook. Compliance-checked before Publer scheduling.",
+      "frequency": "daily",
+      "description": "6-subagent pipeline (NotebookLM \u2192 Refresh \u2192 Research \u2192 Architect \u2192 Builder \u2192 Quality \u2192 Reviewer \u2192 QA \u2192 Reporter). Runs AM daily. Builds EVERGREEN + TIMELY post copy for LinkedIn, Instagram, Facebook. Compliance-checked before Publer scheduling.",
       "status": "active",
-      "lastRun": "2026-03-27T18:16:00Z",
-      "nextRun": "2026-03-30T10:00:00Z"
+      "lastRun": "2026-04-06T08:00:00Z",
+      "nextRun": "2026-04-07T08:00:00Z"
     },
     {
       "id": "loanos-schema-hardening",
@@ -83,6 +83,74 @@
     }
   ],
   "reports": [
+    {
+      "id": "rpt-20260406-001",
+      "taskId": "social-media-build",
+      "taskName": "Social Media Content Build",
+      "project": "styer-mortgage",
+      "timestamp": "2026-04-06T08:00:00Z",
+      "status": "complete",
+      "summary": "Week 10 Full Cycle complete — 5 posts (Posts 62\u201366, May 14\u201319) written, reviewed, QA confirmed in social_drafts. Pillar rebalance week (Personal-heavy correction). LoanOS stream partially unblocked — pool entry 1A-02 built as whiteboard_photo carousel. Rate repost queue cleared.",
+      "completed": [
+        "Step 1B: No new website content detected \u2014 no GBP webhook fired",
+        "Refresh: Posts 29+30 (Liberation Day) flagged as stale TIMELY — rate environment reversed, publish window expired, flagged for Adam decision",
+        "NotebookLM PULL: notebooklm-pull-2026-04-06.md written — BLOCKER-LOANOS-001 partial resolution identified",
+        "Research: 30yr rate ~6.50% (6th+ week up), March jobs +178K (beat 59K), FOMC April 28-29 (0% cut), Liberation Day rate dip fully reversed",
+        "Architect: 5-post Week 10 spec (Posts 62-66, May 14-19 window, all EVERGREEN). Lane 2 CHANGELOG reader: 2 proposed pool entries written to loanos-pool-proposed.md",
+        "Builder: 5 posts inserted into social_drafts via Supabase MCP",
+        "Quality: 2 rewrites (Post 62: 6\u21928, Post 64: 6\u21928). Avg 7.8/10",
+        "Reviewer: APPROVED WITH NOTES \u2014 0 rejections, 0 compliance issues",
+        "QA: PASS 5/5 confirmed in social_drafts. Hashtag format inconsistency noted for Posts 64/65/66 (pre-Publer cleanup needed)",
+        "Pool entry 1A-02 status updated to 'drafted' (Post 65). Partial BLOCKER-LOANOS-001 resolution.",
+        "Content repost queue: LinkedIn + Facebook rate items (rates/2026-04-03.html) moved to Completed",
+        "4 Adam action items added to ADAM-TODO.md and Supabase todo_items",
+        "social_activity row logged to Supabase"
+      ],
+      "actionItems": [
+        {
+          "text": "BY MAY 17: Post 65 \u2014 Draw + photograph whiteboard dashboard sketch (Live Loans / Hot Leads / Overnight Automations). Upload for Canva. Brief in 2026-04-06-week10-build.md",
+          "priority": "high",
+          "status": "open"
+        },
+        {
+          "text": "BY MAY 15: Post 63 \u2014 Film 30-40 sec Instagram Reel (closing day, funding wire). Vertical phone-shot. Script in social_drafts ID 706a81e9.",
+          "priority": "high",
+          "status": "open"
+        },
+        {
+          "text": "Review 2 LoanOS pool proposals in loanos-pool-proposed.md (PROPOSED-01: Cash to Close, PROPOSED-02: Smith He We). Gut-check voice, promote or kill.",
+          "priority": "medium",
+          "status": "open"
+        },
+        {
+          "text": "DECISION: Posts 29+30 (Liberation Day rate drop). Options: Archive / Convert to evergreen / Publish as-is. Auto-archives May 1 if no decision.",
+          "priority": "medium",
+          "status": "open"
+        },
+        {
+          "text": "Pre-Publer cleanup: strip inline hashtags from content field of Posts 64, 65, 66 and normalize hashtags column to #Tag1 #Tag2 format.",
+          "priority": "low",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "Week 11 content build: target Education 40% pillar (still under-indexed). Use LoanOS pool entry 1A-06 (whiteboard_photo, Loans module) as the LoanOS post.",
+        "Schema migration: add pool_entry_id TEXT column to social_drafts to enable proper LoanOS stream tracking.",
+        "If Adam uploads selfies: entries 1A-01, 1A-03, 1A-04, 1A-05 can be built in Week 12."
+      ],
+      "metrics": {
+        "postsWritten": 5,
+        "avgQualityScore": 7.8,
+        "rewrites": 2,
+        "inlineFixes": 0,
+        "complianceFailures": 0,
+        "repostQueueCompletions": 2,
+        "adamsActionItemsAdded": 4,
+        "platformBreakdown": "LinkedIn: 3, Instagram: 1, Facebook: 1",
+        "loanosPoolDrafted": 1,
+        "lane2ProposalsGenerated": 2
+      }
+    },
     {
       "id": "rpt-20260404-001",
       "taskId": "social-media-build",
