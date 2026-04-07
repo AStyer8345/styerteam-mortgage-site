@@ -6,7 +6,7 @@
 ---
 
 ## LAST UPDATED
-April 6, 2026 (Monday daily-opt run 2) — Homepage AEO gap fixed (54-word answer-first paragraph). Person schema added to homepage. Manor + Dripping Springs AEO paragraphs added. Blog template confirmed correct. Commit 826f312.
+April 7, 2026 (Tuesday daily-opt) — 6 loan page meta descriptions fixed (va LONG 181→153, conventional/fha/refinance/usda/products all SHORT → 150-160 range). AEO paragraphs added to Taylor, Smithville, Spicewood suburb pages. Commit e3374a2.
 
 ---
 
@@ -430,4 +430,13 @@ Update this section as work is completed or new issues are found.
 | Person schema missing from homepage | LOW | ✅ FIXED 2026-04-06b — Person schema JSON-LD added (Adam Styer, NMLS #513013, sameAs: LinkedIn/Zillow/FB, worksFor: MortgageBroker). Commit 826f312. |
 | Manor AEO answer-first paragraph missing | MEDIUM | ✅ FIXED 2026-04-06b — 62-word `<strong>` paragraph added before first H2. Commit 826f312. |
 | Dripping Springs AEO answer-first paragraph missing | MEDIUM | ✅ FIXED 2026-04-06b — 63-word `<strong>` paragraph added before first H2 (priority: widest-open suburb keyword per NotebookLM). Commit 826f312. |
-| Blog title brand drift — 10th instance | HIGH | ⚠️ RECURRING — template _template.html IS correct (confirmed 2026-04-06b). Root cause: human process — authors not using template. Pre-publish lint: `grep "<title>" blog/*.html \| grep -v "Adam Styer"` must run before every publish. |
+| Blog title brand drift — 10th instance | HIGH | ⚠️ RECURRING — template _template.html IS correct (confirmed 2026-04-06b). Root cause: human process — authors not using template. Pre-publish lint: `grep "<title>" blog/*.html \| grep -v "Adam Styer"` must run before every publish. Lint: CLEAN as of 2026-04-07. |
+| loans/va.html meta description over-length (181 chars) | LOW | ✅ FIXED 2026-04-07 — trimmed to 153 chars |
+| loans/conventional.html meta description short (142 chars) | LOW | ✅ FIXED 2026-04-07 — expanded to 154 chars |
+| loans/fha.html meta description short (143 chars) | LOW | ✅ FIXED 2026-04-07 — expanded to 152 chars |
+| loans/refinance.html meta description short (146 chars) | LOW | ✅ FIXED 2026-04-07 — expanded to 155 chars |
+| loans/usda.html meta description short (149 chars) | LOW | ✅ FIXED 2026-04-07 — expanded to 156 chars |
+| products.html meta description short (148 chars) | LOW | ✅ FIXED 2026-04-07 — expanded to 160 chars |
+| Taylor AEO answer-first body paragraph missing | MEDIUM | ✅ FIXED 2026-04-07 — 58-word `<strong>` paragraph added before first H2 |
+| Smithville AEO answer-first body paragraph missing | MEDIUM | ✅ FIXED 2026-04-07 — 57-word `<strong>` paragraph added before first H2 |
+| Spicewood AEO answer-first body paragraph missing | MEDIUM | ✅ FIXED 2026-04-07 — 52-word `<strong>` paragraph added before first H2 |

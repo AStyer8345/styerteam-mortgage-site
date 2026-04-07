@@ -326,3 +326,13 @@ Newest entries at the top.
 - **GSC "Request Indexing" vs. sitemap submission**: Sitemap submission tells Google pages exist. Manual "Request Indexing" in URL Inspection signals urgency and puts pages in the crawl priority queue. For a 24-page suburb URL set with a 5-week indexing lag, manual request indexing for the top 5-10 pages is the recommended acceleration path. Adam must do this in GSC — not automatable.
 - **NotebookLM timeout pattern**: Run 1 (early AM) timed out; Run 2 (later) succeeded. Likely an initialization/cold-start issue. If a scheduled run hits timeout, cached NOTEBOOK_INSIGHTS are sufficient to proceed. No action needed beyond logging.
 
+
+---
+
+## 2026-04-07 — Meta Description Length Audit: va.html Was Over-Length
+
+### Patterns
+- **va.html had the only over-length meta description at 181 chars**: All other loan pages were short (142-149), construction/jumbo/investment were already in range (150-156). The over-length va.html description crept in from the April 1 meta expansion that added "Get pre-approved in 24 hours" to an already full description. Rule: after any meta description edit, verify character count with Python before committing.
+- **Tuesday meta audit revealed 6 of 10 loan pages needed fixes**: Not all pages got attention in the same pass. The pattern now: run `python3 -c "..."` to bulk-check all loan page meta lengths at the start of every Tuesday rotation rather than reading files one by one.
+- **AEO suburb coverage progress**: Taylor, Smithville, Spicewood added 2026-04-07. Remaining suburb pages without confirmed AEO body paragraphs (needs audit): New Braunfels, Bastrop, Bee Cave, Marble Falls, Elgin, Florence, Jarrell. Next Wednesday rotation should pick up from alphabetical order.
+
