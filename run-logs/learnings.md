@@ -314,3 +314,15 @@ Newest entries at the top.
 
 ### GBP Notes
 - Posts rotate on 5-theme cycle: Rate Commentary → Loan Product → Homebuyer Tip → Misconception Buster → Client Story
+
+---
+
+## 2026-04-06b — Blog Template Confirmed Correct; AEO Homepage + Person Schema
+
+### Patterns
+- **Blog title drift root cause is human process, NOT the template**: `_template.html` line 28 already has `<title>@@POST_TITLE@@ | Adam Styer | NMLS #513013</title>` with a prominent enforcement comment block. The template was correct. Authors publishing new posts without using the template is the only explanation. Pre-publish lint (`grep "<title>" blog/*.html | grep -v "Adam Styer"`) is the only automated defense. Add this to the start of every run as a non-negotiable step.
+- **Homepage AEO paragraph placement**: The correct injection point is before the first H2 in a non-hero content section — specifically before the "Why Choose Adam Styer" H2 inside the `<section>` after the stats strip. Adding `<p class="text-center" style="max-width:760px;margin:0 auto 2rem;"><strong>...</strong></p>` at that position ensures the paragraph is both structurally early and visually coherent as a section intro.
+- **Person schema + MortgageBroker schema co-existence**: Both should live on the homepage. The `worksFor` relationship in Person schema pointing to the MortgageBroker entity creates a named-entity graph connection that helps Google treat Adam Styer as a real licensed professional rather than an anonymous business. `sameAs` with LinkedIn/Zillow/Facebook is the cross-domain entity validation signal.
+- **GSC "Request Indexing" vs. sitemap submission**: Sitemap submission tells Google pages exist. Manual "Request Indexing" in URL Inspection signals urgency and puts pages in the crawl priority queue. For a 24-page suburb URL set with a 5-week indexing lag, manual request indexing for the top 5-10 pages is the recommended acceleration path. Adam must do this in GSC — not automatable.
+- **NotebookLM timeout pattern**: Run 1 (early AM) timed out; Run 2 (later) succeeded. Likely an initialization/cold-start issue. If a scheduled run hits timeout, cached NOTEBOOK_INSIGHTS are sufficient to proceed. No action needed beyond logging.
+

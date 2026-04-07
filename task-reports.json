@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-06T08:00:00Z",
+  "lastUpdated": "2026-04-07T08:15:00Z",
   "tasks": [
     {
       "id": "website-daily-audit",
@@ -58,8 +58,8 @@
       "frequency": "daily",
       "description": "6-subagent pipeline (NotebookLM \u2192 Refresh \u2192 Research \u2192 Architect \u2192 Builder \u2192 Quality \u2192 Reviewer \u2192 QA \u2192 Reporter). Runs AM daily. Builds EVERGREEN + TIMELY post copy for LinkedIn, Instagram, Facebook. Compliance-checked before Publer scheduling.",
       "status": "active",
-      "lastRun": "2026-04-06T08:00:00Z",
-      "nextRun": "2026-04-07T08:00:00Z"
+      "lastRun": "2026-04-07T08:00:00Z",
+      "nextRun": "2026-04-08T08:00:00Z"
     },
     {
       "id": "loanos-schema-hardening",
@@ -84,17 +84,74 @@
   ],
   "reports": [
     {
+      "id": "rpt-20260407-001",
+      "taskId": "social-media-build",
+      "taskName": "Social Media Content Build",
+      "project": "styer-mortgage",
+      "timestamp": "2026-04-07T08:15:00Z",
+      "status": "complete",
+      "summary": "Built 5 EVERGREEN posts for Week 12 (Posts 72-76, May 27-Jun 2); QA PASS 5/5; distributed document checklist blog to GBP+social.",
+      "completed": [
+        "Step 1B: Detected blog/2026-04-06-mortgage-document-checklist-austin-tx.html as new content, fired GBP webhook (all 4 platforms, success:true)",
+        "Refresh: 0 TIMELY drafts within 48-hr window \u2014 no fills needed",
+        "Research: 30-yr rate 6.43% (MND Apr 6), PMMS 6.46% (Apr 2), CPI drops Apr 10 (Post 39 fill needed next session)",
+        "Week 12 spec written: 5 posts, RT(2)+Personal(1)+Education(2), all EVERGREEN",
+        "5 posts inserted into social_drafts: Post 72 (LI, doc checklist), Post 73 (IG Reel, personal), Post 74 (FB hot-take), Post 75 (LI correspondent), Post 76 (IG DTI)",
+        "Quality: 2 rewrites applied (Post 74 7\u21928, Post 76 6\u21928), avg 7.8/10",
+        "Reviewer: APPROVED WITH NOTES, 0 rejections, 3 non-blocking notes",
+        "QA: PASS 5/5 \u2014 all posts confirmed in Supabase social_drafts",
+        "content-repost-queue document checklist entry marked COMPLETED",
+        "Session log, build report, review file, QA report all written"
+      ],
+      "actionItems": [
+        {
+          "text": "Film Post 73 Reel by May 28 \u2014 30-40 sec vertical phone video, 'first summer in your home' personal angle. Script in social_drafts ID c56b43d2.",
+          "priority": "medium",
+          "status": "open"
+        },
+        {
+          "text": "Create Canva DTI card for Post 76 by June 2 \u2014 1080x1080, dark bg, Equal Housing Lender REQUIRED. Brief in build-reports/2026-04-07-week12-build.md.",
+          "priority": "medium",
+          "status": "open"
+        },
+        {
+          "text": "BLOCKER-LOANOS-001: Upload selfies to tasks/social-media/assets/selfies/ \u2014 unblocks all 4 LoanOS 1A pool entries",
+          "priority": "high",
+          "status": "open"
+        },
+        {
+          "text": "CPI drops April 10 \u2014 Post 39 (LinkedIn CPI template, Apr 15) needs Refresh fill on AM April 10 session",
+          "priority": "high",
+          "status": "open"
+        }
+      ],
+      "nextSteps": [
+        "Week 13 content build (Posts 77-81, June 3+) \u2014 prioritize Education + Real Talk to maintain pillar balance",
+        "April 10 AM session: check Post 39 CPI template for placeholder fill after 8:30 AM ET CPI release",
+        "Check selfies upload (BLOCKER-LOANOS-001) at session start \u2014 if present, LoanOS stream can finally launch"
+      ],
+      "metrics": {
+        "postsWritten": 5,
+        "qualityAvg": "7.8/10",
+        "rewrites": 2,
+        "rejections": 0,
+        "qaPass": "5/5",
+        "gbpWebhooksFired": 1,
+        "rollingPillarBalance": "RT 30% / Personal 30% / Education 30% / Promo 10%"
+      }
+    },
+    {
       "id": "rpt-20260406-001",
       "taskId": "social-media-build",
       "taskName": "Social Media Content Build",
       "project": "styer-mortgage",
       "timestamp": "2026-04-06T08:00:00Z",
       "status": "complete",
-      "summary": "Week 10 Full Cycle complete — 5 posts (Posts 62\u201366, May 14\u201319) written, reviewed, QA confirmed in social_drafts. Pillar rebalance week (Personal-heavy correction). LoanOS stream partially unblocked — pool entry 1A-02 built as whiteboard_photo carousel. Rate repost queue cleared.",
+      "summary": "Week 10 Full Cycle complete \u2014 5 posts (Posts 62\u201366, May 14\u201319) written, reviewed, QA confirmed in social_drafts. Pillar rebalance week (Personal-heavy correction). LoanOS stream partially unblocked \u2014 pool entry 1A-02 built as whiteboard_photo carousel. Rate repost queue cleared.",
       "completed": [
         "Step 1B: No new website content detected \u2014 no GBP webhook fired",
-        "Refresh: Posts 29+30 (Liberation Day) flagged as stale TIMELY — rate environment reversed, publish window expired, flagged for Adam decision",
-        "NotebookLM PULL: notebooklm-pull-2026-04-06.md written — BLOCKER-LOANOS-001 partial resolution identified",
+        "Refresh: Posts 29+30 (Liberation Day) flagged as stale TIMELY \u2014 rate environment reversed, publish window expired, flagged for Adam decision",
+        "NotebookLM PULL: notebooklm-pull-2026-04-06.md written \u2014 BLOCKER-LOANOS-001 partial resolution identified",
         "Research: 30yr rate ~6.50% (6th+ week up), March jobs +178K (beat 59K), FOMC April 28-29 (0% cut), Liberation Day rate dip fully reversed",
         "Architect: 5-post Week 10 spec (Posts 62-66, May 14-19 window, all EVERGREEN). Lane 2 CHANGELOG reader: 2 proposed pool entries written to loanos-pool-proposed.md",
         "Builder: 5 posts inserted into social_drafts via Supabase MCP",
@@ -158,16 +215,16 @@
       "project": "styer-mortgage",
       "timestamp": "2026-04-04T08:00:00Z",
       "status": "complete",
-      "summary": "Week 6 Full Cycle complete — 7 posts (Posts 36–42, April 14–17) written, reviewed, and confirmed in social_drafts; repost queue for self-employed + condo blogs fully completed.",
+      "summary": "Week 6 Full Cycle complete \u2014 7 posts (Posts 36\u201342, April 14\u201317) written, reviewed, and confirmed in social_drafts; repost queue for self-employed + condo blogs fully completed.",
       "completed": [
-        "GBP webhook fired for rates/2026-04-03.html — HTTP 200, posted to GBP + FB + IG + LI",
+        "GBP webhook fired for rates/2026-04-03.html \u2014 HTTP 200, posted to GBP + FB + IG + LI",
         "NotebookLM PULL written: tasks/social-media/notebooklm-pull-2026-04-04.md",
-        "Refresh check: Post 30 verified no placeholders; FOMC Posts 24–25 not due for 25 days",
+        "Refresh check: Post 30 verified no placeholders; FOMC Posts 24\u201325 not due for 25 days",
         "Research file written: tasks/social-media/research/2026-04-04-daily-rate-snapshot.md",
         "Week 6 spec written: tasks/social-media/specs/2026-04-04-week6-spec.md",
         "7 posts inserted into social_drafts (IDs: be7c9f06, e1ad5566, e82bbe3d, 0473a227, d31f60f3, d671a1a3, 26983680)",
         "Quality pass: avg 7.6/10, 2 rewrites (Post 38 trimmed, Post 41 rewritten hook)",
-        "Reviewer pass: APPROVED WITH NOTES — 4 inline fixes applied, 0 rejections",
+        "Reviewer pass: APPROVED WITH NOTES \u2014 4 inline fixes applied, 0 rejections",
         "QA pass: all 7 posts confirmed in social_drafts with status=draft",
         "Repost queue: blog/2026-04-02 self-employed and blog/2026-04-03 condo moved to Completed",
         "Build report written: tasks/social-media/build-reports/2026-04-04-week6-build.md",
@@ -176,17 +233,17 @@
       ],
       "actionItems": [
         {
-          "text": "Create Canva assets for Post 36 (LinkedIn 5-slide carousel, condo) and Post 37 (Instagram static, HOA red flags) — briefs in 2026-04-04-week6-build.md",
+          "text": "Create Canva assets for Post 36 (LinkedIn 5-slide carousel, condo) and Post 37 (Instagram static, HOA red flags) \u2014 briefs in 2026-04-04-week6-build.md",
           "priority": "high",
           "status": "open"
         },
         {
-          "text": "Film 30-sec vertical Reel for Post 40 (Austin spring market) — script in social_drafts ID d31f60f3",
+          "text": "Film 30-sec vertical Reel for Post 40 (Austin spring market) \u2014 script in social_drafts ID d31f60f3",
           "priority": "medium",
           "status": "open"
         },
         {
-          "text": "April 10 post-8:30 AM ET: Refresh agent fills Post 39 (CPI TIMELY, ID 0473a227) — publish target April 15 3 PM CST",
+          "text": "April 10 post-8:30 AM ET: Refresh agent fills Post 39 (CPI TIMELY, ID 0473a227) \u2014 publish target April 15 3 PM CST",
           "priority": "high",
           "status": "open"
         },
@@ -196,15 +253,15 @@
           "status": "open"
         },
         {
-          "text": "NMLS# 513013 profile audit on all 4 platforms still outstanding — blocks all posts going live",
+          "text": "NMLS# 513013 profile audit on all 4 platforms still outstanding \u2014 blocks all posts going live",
           "priority": "high",
           "status": "open"
         }
       ],
       "nextSteps": [
         "April 10 AM: Refresh run to fill Post 39 CPI TIMELY placeholders after 8:30 AM ET BLS release",
-        "Begin Week 7 skeleton (Posts 43–49, April 21–24) — PCE/GDP April 30 TIMELY template needed",
-        "Verify Posts 36–37 Canva assets are ready before April 14 publish windows"
+        "Begin Week 7 skeleton (Posts 43\u201349, April 21\u201324) \u2014 PCE/GDP April 30 TIMELY template needed",
+        "Verify Posts 36\u201337 Canva assets are ready before April 14 publish windows"
       ],
       "metrics": {
         "postsWritten": 7,
