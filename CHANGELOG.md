@@ -1,5 +1,13 @@
 # styermortgage.com — Changelog
 
+## 2026-04-07 (Monday run) — Schema audit + Round Rock AEO
+
+- Added LocalBusiness schema block to about.html (was missing; Person-only was the gap)
+- Added AEO answer-first paragraph to round-rock-mortgage-lender.html
+- Homepage Person schema confirmed present (learnings.md entry was stale)
+- Sitemap 200 ✅, blog lint clean ✅
+- NotebookLM returned Google Ads optimization advice (RSA assets, negative keywords, radius targeting)
+
 ## 2026-04-07 — Meta description fixes + suburb AEO paragraphs
 
 - Fixed 6 loan page meta descriptions (va LONG 181→153, conventional/fha/refinance/usda/products all expanded to 150-160 range)

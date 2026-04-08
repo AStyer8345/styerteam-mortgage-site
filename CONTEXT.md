@@ -2,9 +2,9 @@
 
 ## What This Is
 
-Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/JS on Netlify — no framework, no CMS. Netlify Functions handle content generation, email automation, and lead capture.
+Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/JS on Netlify — no framework, no CMS. Netlify Functions handle content generation, email automation, and lead capture. 54+ public pages live (homepage, 8 loan pages, 24 suburb SEO pages, 12+ resource/guide pages, blog, calculators, realtor hub).
 
-## Repo & Deploy
+## Repo
 
 | Item | Value |
 |------|-------|
@@ -14,14 +14,9 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Domain | styermortgage.com |
 | Dev server | `.claude/site-server.js` → port 8766 |
 
-## Current Status
+## Last Worked On
 
-- 54+ public pages live (homepage, 8 loan pages, 24 suburb SEO pages, 12+ resource/guide pages, blog, calculators, realtor hub)
-- GTM (GTM-PQQ6PGLR) + GA4 (G-DDY0H0319S) installed on all public pages
-- Google Ads: Search-1 paused, Suburb campaign spec ready (needs manual setup)
-- Content distribution: blog/rates/newsletters auto-post to GBP + FB + IG + LI via n8n + Publer
-- SEO: FAQPage + BreadcrumbList schema on all suburb + loan pages, AEO paragraphs on most pages
-- All conversion tracking verified: generate_lead, thank_you_page_view, phone_click, calendly_click
+2026-04-07 (Monday run) — Schema audit: LocalBusiness schema added to about.html (was missing). AEO paragraph added to round-rock-mortgage-lender.html. Homepage Person schema confirmed present (learnings.md was stale). NotebookLM returned Google Ads optimization advice. Sitemap 200 ✅. Blog lint clean ✅.
 
 ## Active Blockers
 
@@ -33,45 +28,28 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | `2026-03-30-temp-placeholder.html` — rates post at temp slug, noindexed | LOW |
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
 
-## Key Files
+## What's Next
 
-| File | Purpose |
-|------|---------|
-| `ARCHITECTURE.md` | Tech stack, page inventory, tracking config, Google Ads, legal |
-| `CHANGELOG.md` | Append-only history |
-| `DECISIONS.md` | Architecture decisions (Chose/Over/Why) |
-| `TODO.md` | Now / Next / Backlog work items |
-| `MAP.md` | Full file-by-file site map |
-| `.claude/CLAUDE.md` | Claude Code project instructions |
-| `netlify.toml` | Build config, headers, redirects |
+1. Fix suburb quick-form conversion tracking (generate_lead + thank_you_page_view)
+2. Rename temp placeholder blog posts to permanent slugs
+3. Continue AEO rollout — next suburbs: New Braunfels, Bastrop, Bee Cave, Cedar Park
+4. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
 
-## Rules for AI Sessions
+## Known Issues
 
-### Always
-- Read this file before starting any session
-- Match existing HTML/CSS patterns exactly before writing new pages
-- Use Netlify Forms for all form capture (`netlify` attribute + hidden `form-name` input)
-- Push to GitHub to deploy — Netlify auto-builds
-- Verify pages are live after every push
-- Use Adam's exact anchor text for loan app link — never display raw URL
-- Run blog title lint before publish: `grep "<title>" blog/*.html | grep -v "Adam Styer"`
-- New blog posts must also be added to `blog.html` noscript block + CollectionPage schema
+- GTM (GTM-PQQ6PGLR) + GA4 (G-DDY0H0319S) installed on all public pages
+- Google Ads: Search-1 paused, Suburb campaign spec ready (needs manual setup)
+- Content distribution: blog/rates/newsletters auto-post to GBP + FB + IG + LI via n8n + Publer
+- SEO: FAQPage + BreadcrumbList schema on all suburb + loan pages, AEO paragraphs on most pages
+- All conversion tracking verified: generate_lead, thank_you_page_view, phone_click, calendly_click
+- No `.env.local` present locally — expected, not a bug
 
-### Never
-- Add CSS frameworks, JS libraries, or npm packages without Adam's approval
-- Remove or modify the GTM container snippet
-- Change visual design without Adam's approval
-- Modify form field names on /get-preapproved or /refinance-quote (wired to GTM)
-- Use "The Styer Team" — always "Adam Styer | Mortgage Solutions LP"
-- Display the raw loan application URL — always use anchor text
+## Session Protocol
 
-### Navigation Rules
-- Standard pages: full site nav
-- Google Ads landing pages (/get-preapproved, /refinance-quote): logo only, no menu
-- /thank-you: logo only, no menu
+Read /Users/adamstyer/Documents/GOALS.md first.
 
-### End-of-Session
-1. Update `CONTEXT.md` — replace, don't append. Keep under 100 lines.
-2. Update `CHANGELOG.md` — append new dated entry
-3. `git add`, `git commit`, `git push`
-4. Verify Netlify deploy is live
+END OF SESSION:
+1. CONTEXT.md — replace Last Worked On, Active Blockers, What's Next only. Never append. Keep under 150 lines.
+2. CHANGELOG.md — append dated bullet points
+3. TODO.md — mark done, add new items
+4. DECISIONS.md — only if a real decision was made
