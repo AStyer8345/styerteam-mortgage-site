@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-04-07 — Person Schema Was Added to Homepage (Learnings Stale) + LocalBusiness Gap on About Page
+
+### Patterns
+- **Learnings.md schema entry was stale**: The 2026-04-06 entry noted "No Person schema on homepage." By 2026-04-07, Person schema (Block 3) was present. Monday schema audits should always verify live via grep, not rely on prior run notes. If a schema block exists and the type matches, mark it clean.
+- **About page was the real schema gap**: Homepage had MortgageBroker + FAQPage + Person. About page had only Person — no LocalBusiness. The fix (a minimal LocalBusiness block with address, phone, aggregateRating) took one Edit call. Note: sameAs CID is a placeholder until Adam provides the real Google Maps CID.
+- **Monday schema audit order matters**: Check homepage first (most important for AEO), then DSCR (FAQPage verification), then one rotating suburb. Track which suburb was last checked in TOMORROW_PRIORITY.
+- **NotebookLM Google Ads query (Monday-only) returned successfully on sync call after background call failed**: Background process exits 127 (not found) sometimes due to path issues in scheduled context. Always have a sync fallback.
+
+---
+
 ## 2026-04-06 — AEO Hero-Subtitle vs. Body Paragraph + Blog Title Drift at 10 Instances
 
 ### Patterns
