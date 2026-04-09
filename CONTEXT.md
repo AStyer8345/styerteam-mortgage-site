@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-08 (morning scheduled) — AEO answer-first paragraphs added to Elgin, Florence, Jarrell, Marble Falls. Funnel audit: clean end-to-end. Internal linking: 3 pages all healthy. Commit c3967c4. Deploy verified ✅.
+2026-04-09 (scheduled) — Wednesday suburb audit. Round Rock: all clean. San Marcos AEO answer-first paragraph added (USDA + investment angle). AEO grep: 13/25 suburb pages confirmed; Buda + Westlake identified as remaining gaps. Blog title lint: clean. Commit 55d6797. Deploy verified ✅.
 
 ## Active Blockers
 
@@ -32,10 +32,10 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 1. ~~Fix suburb quick-form conversion tracking~~ — DONE 2026-04-08
 2. Rename temp placeholder blog posts to permanent slugs
-3. ~~Continue city enrichment — Elgin, Florence, Jarrell, Marble Falls~~ — DONE 2026-04-08 (AEO added)
-4. AEO audit remaining suburbs: San Marcos, Georgetown, Round Rock, Leander, Pflugerville, Kyle, Buda, Dripping Springs, Taylor, Manor, Westlake, Smithville, Austin-area
-5. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
-6. GSC: manually request indexing for suburb pages (Adam — GSC URL Inspection tool)
+3. ~~AEO rollout — most suburbs done~~ — 13/25 confirmed; **Buda + Westlake remaining** (Thursday)
+4. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
+5. GSC: manually request indexing for suburb pages (Adam — GSC URL Inspection tool)
+6. Thursday funnel audit: 3 pages + thank-you + contact.html
 
 ## Known Issues
 

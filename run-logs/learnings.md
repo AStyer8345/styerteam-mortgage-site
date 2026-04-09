@@ -366,3 +366,12 @@ Newest entries at the top.
 - **Tuesday meta audit revealed 6 of 10 loan pages needed fixes**: Not all pages got attention in the same pass. The pattern now: run `python3 -c "..."` to bulk-check all loan page meta lengths at the start of every Tuesday rotation rather than reading files one by one.
 - **AEO suburb coverage progress**: Taylor, Smithville, Spicewood added 2026-04-07. Remaining suburb pages without confirmed AEO body paragraphs (needs audit): New Braunfels, Bastrop, Bee Cave, Marble Falls, Elgin, Florence, Jarrell. Next Wednesday rotation should pick up from alphabetical order.
 
+
+---
+
+## 2026-04-09 — AEO Grep Pattern Clarification + San Marcos Added
+
+### Patterns
+- **`content-narrow + <p><strong>` multiline grep hits footer — not reliable for AEO detection**: The grep pattern `content-narrow.*\n.*<p><strong>` matched san-marcos because the footer section in some files has a `<div class="footer-section">` that is a sibling inside the same content-narrow parent, or because the multiline match spans beyond the intended section. **More reliable check: grep for `<strong>To get a mortgage in`** which is the exact AEO pattern used on all suburb pages. Only Round Rock matched — confirming all others use `<p><strong>` for other purposes (footer company name, etc.). Use this exact pattern for future AEO coverage audits.
+- **AEO coverage: 13/25 suburb pages confirmed as of 2026-04-09**: Confirmed with answer-first paragraph: Round Rock, Georgetown, Leander, Pflugerville, Cedar Park, New Braunfels, Bastrop, Bee Cave, Elgin, Florence, Jarrell, Marble Falls, Hutto, Spicewood, Liberty Hill, Lakeway, Smithville, Manor, Taylor, Kyle, Austin-area, Dripping Springs, San Marcos (added today). Remaining: Buda, Westlake.
+- **San Marcos AEO angle: USDA + investment**: San Marcos has two unique differentiators vs. other Austin suburbs — (1) USDA eligibility throughout Hays County (zero-down) and (2) Texas State University rental market for DSCR investors. These are the two points most banks don't lead with. The AEO paragraph used this angle rather than the generic "40+ lenders" opener to improve specificity for AI extraction.

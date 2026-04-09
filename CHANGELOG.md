@@ -1,5 +1,22 @@
 # styermortgage.com — Changelog
 
+## 2026-04-09 (scheduled) — AEO: San Marcos + Wednesday suburb audit
+
+- Audited Round Rock: all clean — H1, FAQPage, BreadcrumbList, hero quick-form, trust badge, AEO ✅
+- AEO grep across all 25 suburb pages: confirmed 13/25 have answer-first paragraph
+- Added AEO answer-first paragraph to san-marcos-mortgage-lender.html (USDA + investment angle)
+- Identified Buda + Westlake as remaining AEO gaps — deferred to Thursday run
+- Blog title lint: CLEAN (only temp-placeholder + template show up)
+- Sitemap: 200 ✅ — Commit 55d6797, San Marcos 200 post-deploy ✅
+
+## 2026-04-09 AM — City enrichment at-a-glance paragraphs
+
+- Added at-a-glance paragraph to spicewood-mortgage-lender.html (Lake Travis ISD, SH-71 commutes, price ranges $400K–$3M+)
+- Added at-a-glance paragraph to florence-mortgage-lender.html (Florence ISD, FM 487/I-35 commutes, acreage $260K–$460K)
+- Added at-a-glance paragraph to jarrell-mortgage-lender.html (Jarrell ISD, I-35 commutes, new construction $280K–$430K)
+- Fixed pre-existing Spicewood meta description (156→155 chars — trailing period removed)
+- Commit 06fbfad — 3 pages updated, QA clean ✅
+
 ## 2026-04-08 (morning) — AEO answer-first paragraphs + funnel audit
 
 - Added AEO answer-first paragraphs to Elgin, Florence, Jarrell, Marble Falls (new content-narrow section between hero and feature grid on each)
