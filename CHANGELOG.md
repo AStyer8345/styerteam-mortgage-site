@@ -1,5 +1,13 @@
 # styermortgage.com — Changelog
 
+## 2026-04-08 (morning) — AEO answer-first paragraphs + funnel audit
+
+- Added AEO answer-first paragraphs to Elgin, Florence, Jarrell, Marble Falls (new content-narrow section between hero and feature grid on each)
+- Funnel audit clean: homepage→/get-preapproved→/thank-you, contact.html form + dataLayer verified
+- Internal linking audit: about.html, dscr, austin-mortgage-rates all have 20+ internal links ✅
+- AEO coverage now 11/25+ suburb pages confirmed
+- Commit c3967c4, all 4 pages 200 post-deploy ✅
+
 ## 2026-04-08 — Conversion tracking fix + blog slug cleanup
 
 - Fixed suburb quick-form conversion tracking: broadened analytics.js form selector to catch all `data-netlify="true"` forms, moved `thank_you_page_view` dataLayer push into script.js success handler (fires after confirmed Netlify submission, before redirect)

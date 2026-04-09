@@ -2,6 +2,26 @@
 
 ---
 
+## 2026-04-08b — AEO Batch: Elgin, Florence, Jarrell, Marble Falls + Funnel Audit
+
+### Patterns
+- **Pages missing a content-narrow section need one created, not just a `<p>` injected**: Elgin, Florence, Jarrell, and Marble Falls had no `<section><div class="container content-narrow">` block after the hero — only the feature grid and process steps. The AEO answer-first paragraph requires its own content-narrow section inserted between the hero `</section>` and the "Why [City]" feature grid. Pattern: insert `<section><div class="container content-narrow"><p><strong>...</strong></p></div></section>` targeting the `<!-- Why [City] -->` comment as anchor.
+- **AEO coverage is now 11/25 suburb pages confirmed**: Cedar Park, New Braunfels, Bastrop, Bee Cave, Hutto, Elgin, Florence, Jarrell, Marble Falls (added this run), Spicewood, Liberty Hill, Lakeway (pre-existing). Remaining ~13 pages to audit: San Marcos, Georgetown, Round Rock, Leander, Pflugerville, Kyle, Buda, Dripping Springs, Taylor, Manor, Westlake, Smithville, Austin-area.
+- **Second-run pattern confirmed again**: When TOMORROW_PRIORITY says "Thursday" but today is Tuesday, execute the TOMORROW_PRIORITY items rather than repeating the current-day rotation. The PM interactive session already completed Tuesday work; the morning scheduled run should advance to the next priority.
+- **Funnel is clean end-to-end**: Homepage→/get-preapproved (3 links), /get-preapproved→/thank-you (action attr), thank-you has Calendly + phone. contact.html has Netlify form + dataLayer event. Only gap is about.html + dscr CTAs pointing to raw app URL (LOW, known, carry forward).
+
+---
+
+## 2026-04-08 — AEO Answer-First Batch: Cedar Park, New Braunfels, Bastrop, Bee Cave
+
+### Patterns
+- **Four suburb pages were missing AEO answer-first paragraphs despite having other schema complete**: Cedar Park, New Braunfels, Bastrop, and Bee Cave all had LocalBusiness + FAQPage + BreadcrumbList schema, city-specific H1, internal links — but the first `<p>` in the main content section was still narrative, not a machine-extractable answer. Schema is not the same as AEO content structure.
+- **"At a glance" `<strong>` blocks are not AEO answer-first paragraphs**: Bastrop and Bee Cave had `<strong>Bastrop at a glance:</strong>` city enrichment paragraphs from prior runs. These are mid-section factual blocks, not opening answer-first paragraphs. The AEO requirement is specifically the *first* paragraph of the main content section, answering the page's primary query (e.g., "How do I get a mortgage in [City]?").
+- **Batch AEO is efficient when done by city cluster**: Four pages updated in one run. Future runs can continue the rotation: Spicewood, Florence, Jarrell, Marble Falls, Liberty Hill, Lakeway, Elgin — check each for missing answer-first paragraph before first H2.
+- **Chrome not running in scheduled context**: Control Chrome MCP tools require Chrome to be open. Scheduled runs cannot perform live conversion tracking verification. Carry forward from last manual verification — flag if more than 3 days without a live check.
+
+---
+
 ## 2026-04-07 — Person Schema Was Added to Homepage (Learnings Stale) + LocalBusiness Gap on About Page
 
 ### Patterns

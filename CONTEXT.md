@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-08 PM — AEO answer-first paragraphs added to Cedar Park, New Braunfels, Bastrop, Bee Cave. Tuesday title/meta audit: all loan pages clean, no regressions. Commit f8ca0f3. Deploy verified ✅.
+2026-04-08 (morning scheduled) — AEO answer-first paragraphs added to Elgin, Florence, Jarrell, Marble Falls. Funnel audit: clean end-to-end. Internal linking: 3 pages all healthy. Commit c3967c4. Deploy verified ✅.
 
 ## Active Blockers
 
@@ -32,8 +32,10 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 1. ~~Fix suburb quick-form conversion tracking~~ — DONE 2026-04-08
 2. Rename temp placeholder blog posts to permanent slugs
-3. Continue city enrichment — remaining: Spicewood, Florence, Jarrell, Marble Falls, Liberty Hill, Lakeway, Elgin
-4. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
+3. ~~Continue city enrichment — Elgin, Florence, Jarrell, Marble Falls~~ — DONE 2026-04-08 (AEO added)
+4. AEO audit remaining suburbs: San Marcos, Georgetown, Round Rock, Leander, Pflugerville, Kyle, Buda, Dripping Springs, Taylor, Manor, Westlake, Smithville, Austin-area
+5. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
+6. GSC: manually request indexing for suburb pages (Adam — GSC URL Inspection tool)
 
 ## Known Issues
 
