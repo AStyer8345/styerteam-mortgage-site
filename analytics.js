@@ -2,6 +2,11 @@
  * analytics.js — Shared conversion tracking for styermortgage.com
  * Fires dataLayer events for GTM / Google Ads.
  * Included on every page. Do not add page-specific events here.
+ *
+ * NOTE: thank_you_page_view is NOT fired here. It fires in two places:
+ *   1. script.js initHeroQuickForm() — after confirmed Netlify submission
+ *   2. /thank-you.html — on page load
+ * This prevents false positives from premature firing before validation.
  */
 (function () {
   'use strict';
@@ -12,14 +17,16 @@
   }
 
   function initTracking() {
-    // ── Quick Quote form ───────────────────────────────────────────
-    // Matches hero-quick-form on homepage and all landing pages
+    // ── All Netlify forms (hero-quick-form, suburb quotes, quick-contact)
+    // Broadened selector catches all data-netlify forms including suburb
+    // pages with unique form names (buda-quote, westlake-quote, etc.)
     document.querySelectorAll(
-      'form.hero-quick-form, form[name="hero-quick-form"], form[name="quick-contact"]'
+      'form[data-netlify="true"], form.hero-quick-form, form[name="quick-contact"]'
     ).forEach(function (form) {
       form.addEventListener('submit', function () {
         track({ event: 'generate_lead', lead_type: 'quick_quote' });
-        track({ event: 'thank_you_page_view' });
+        // thank_you_page_view intentionally omitted — fires after
+        // confirmed submission in script.js or on /thank-you.html
       });
     });
 

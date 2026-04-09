@@ -503,11 +503,28 @@ function initFormValidation() {
 // ========================================================================
 
 function initHeroQuickForm() {
-  const form = document.getElementById('hero-quick-form');
-  const wrap = document.getElementById('hero-quick-form-wrap');
-  const successEl = document.getElementById('hero-quick-form-success');
-  const successText = successEl && successEl.querySelector('.hero-quick-form-success-text');
-  if (!form || !wrap || !successEl || !successText) return;
+  // Primary: standard hero-quick-form with success elements
+  let form = document.getElementById('hero-quick-form');
+  let wrap = document.getElementById('hero-quick-form-wrap');
+  let successEl = document.getElementById('hero-quick-form-success');
+  let successText = successEl && successEl.querySelector('.hero-quick-form-success-text');
+
+  // Fallback: any data-netlify form without hero-quick-form id (suburb pages like buda, westlake)
+  if (!form) {
+    form = document.querySelector('form[data-netlify="true"]');
+    if (!form) return;
+    // Create minimal wrapper/success elements dynamically
+    wrap = form.parentElement;
+    if (!successEl) {
+      successEl = document.createElement('div');
+      successEl.hidden = true;
+      successText = document.createElement('p');
+      successText.textContent = 'Thanks! Adam will reach out within 1 business day.';
+      successEl.appendChild(successText);
+      form.parentElement.appendChild(successEl);
+    }
+  }
+  if (!form || !wrap) return;
 
   form.addEventListener('blur', (e) => {
     if (e.target.matches('input, select')) validateField(e.target);
@@ -535,6 +552,7 @@ function initHeroQuickForm() {
       .then(() => {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'generate_lead', lead_type: 'quick_quote' });
+        window.dataLayer.push({ event: 'thank_you_page_view' });
         window.location.href = '/thank-you';
       })
       .catch((err) => alert(err));
