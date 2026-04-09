@@ -16,13 +16,13 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-07 (Monday run) — Schema audit: LocalBusiness schema added to about.html (was missing). AEO paragraph added to round-rock-mortgage-lender.html. Homepage Person schema confirmed present (learnings.md was stale). NotebookLM returned Google Ads optimization advice. Sitemap 200 ✅. Blog lint clean ✅.
+2026-04-08 PM — AEO answer-first paragraphs added to Cedar Park, New Braunfels, Bastrop, Bee Cave. Tuesday title/meta audit: all loan pages clean, no regressions. Commit f8ca0f3. Deploy verified ✅.
 
 ## Active Blockers
 
 | Issue | Priority |
 |-------|----------|
-| Suburb quick-forms fire `generate_lead` but not `thank_you_page_view` — Google Ads only counts the latter | MEDIUM |
+| ~~Suburb quick-forms fire `generate_lead` but not `thank_you_page_view`~~ | ~~FIXED 2026-04-08~~ |
 | Homepage hero "Apply Now" links to raw 1003 app (bypasses tracked funnel) | LOW |
 | `2026-03-06-temp-placeholder.html` — "Oil Prices" post still at temp URL, needs rename decision | MEDIUM |
 | `2026-03-30-temp-placeholder.html` — rates post at temp slug, noindexed | LOW |
@@ -30,9 +30,9 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. Fix suburb quick-form conversion tracking (generate_lead + thank_you_page_view)
+1. ~~Fix suburb quick-form conversion tracking~~ — DONE 2026-04-08
 2. Rename temp placeholder blog posts to permanent slugs
-3. Continue AEO rollout — next suburbs: New Braunfels, Bastrop, Bee Cave, Cedar Park
+3. Continue city enrichment — remaining: Spicewood, Florence, Jarrell, Marble Falls, Liberty Hill, Lakeway, Elgin
 4. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
 
 ## Known Issues

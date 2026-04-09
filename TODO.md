@@ -5,7 +5,7 @@
 - [ ] Set up Suburb — Purchase Intent campaign in Google Ads (spec ready, needs manual setup)
 - [ ] Decide: rename `2026-03-06-temp-placeholder.html` ("Oil Prices" post) to proper slug
 - [ ] Decide: delete `2026-03-30-temp-placeholder.html` (rates post at temp slug, noindexed)
-- [ ] Fix suburb quick-form conversion gap — forms fire `generate_lead` but not `thank_you_page_view` (GTM config change needed)
+- [x] Fix suburb quick-form conversion gap — forms fire `generate_lead` but not `thank_you_page_view` (fixed 2026-04-08, CHANGELOG confirms)
 
 ## Next (before end of April)
 
