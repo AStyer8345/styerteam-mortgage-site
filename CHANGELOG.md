@@ -1,5 +1,30 @@
 # styermortgage.com — Changelog
 
+## 2026-04-08 — Conversion tracking fix + blog slug cleanup
+
+- Fixed suburb quick-form conversion tracking: broadened analytics.js form selector to catch all `data-netlify="true"` forms, moved `thank_you_page_view` dataLayer push into script.js success handler (fires after confirmed Netlify submission, before redirect)
+- Added fallback form detection in script.js `initHeroQuickForm()` for suburb pages without `#hero-quick-form`
+- Converted `blog/2026-03-30-temp-placeholder.html` to meta-refresh redirect → canonical URL (noindex, nofollow)
+- Google Ads conversion tracking now fires correctly: `generate_lead` on submit → `thank_you_page_view` on success
+
+## 2026-04-08 PM — AEO answer-first paragraphs (Cedar Park, New Braunfels, Bastrop, Bee Cave)
+
+- Added AEO answer-first `<strong>` paragraph to cedar-park-mortgage-lender.html (before first H2)
+- Added AEO answer-first `<strong>` paragraph to new-braunfels-mortgage-lender.html
+- Added AEO answer-first `<strong>` paragraph to bastrop-mortgage-lender.html
+- Added AEO answer-first `<strong>` paragraph to bee-cave-mortgage-lender.html
+- Tuesday title/meta audit: all 8 loan pages + homepage clean, no regressions
+- Blog title lint: clean — no posts missing brand
+- Commit f8ca0f3 — 4 files, 8 insertions, deploy verified ✅
+
+## 2026-04-08 AM — Glossary nav + loan page links + city enrichment
+
+- Added mortgage-glossary.html to Resources nav dropdown across 64 pages (batch Python replace)
+- Added glossary internal link to "Helpful articles" on conventional.html, fha.html, va.html
+- Added glossary link to DSCR page investment section ("Unfamiliar with terms like DSCR, LTV...")
+- City enrichment "at a glance" paragraphs: Bee Cave (Lake Travis ISD, commutes, neighborhood ranges), Manor (Manor ISD, Tesla/Samsung commutes, ShadowGlen/Presidential prices), Smithville (Smithville ISD, commutes, in-town vs acreage prices)
+- Commit e4ee80b — 65 files, 83 insertions
+
 ## 2026-04-07 (Monday run) — Schema audit + Round Rock AEO
 
 - Added LocalBusiness schema block to about.html (was missing; Person-only was the gap)
