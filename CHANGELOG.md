@@ -1,5 +1,14 @@
 # styermortgage.com — Changelog
 
+## 2026-04-09b (scheduled) — AEO completion + Thursday funnel audit
+
+- Added AEO answer-first paragraph to buda-mortgage-lender.html (Hays County affordability + FHA/conventional angle)
+- Added AEO answer-first paragraph to westlake-mortgage-lender.html (jumbo + portfolio lenders angle)
+- AEO coverage: 25/25 suburb pages complete ✅
+- Added /calculators.html link to first-time-home-buyer.html pillar section (was 1 body link → now 2)
+- Funnel audit: homepage → /get-preapproved → /thank-you all clean; contact.html dataLayer event ✅; thank-you 3-step section ✅
+- Commit 7e3b2fa — all 3 pages verified 200 post-deploy ✅
+
 ## 2026-04-09 (scheduled) — AEO: San Marcos + Wednesday suburb audit
 
 - Audited Round Rock: all clean — H1, FAQPage, BreadcrumbList, hero quick-form, trust badge, AEO ✅

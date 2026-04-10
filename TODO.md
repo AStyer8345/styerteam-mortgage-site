@@ -22,4 +22,4 @@
 - [ ] Homepage hero CTA bypasses tracked funnel (intentional for high-intent visitors, low priority)
 - [ ] Google Ads Refinance campaign (in preparation)
 - [ ] Google Ads optimization score push toward 100% (currently 87.9%)
-- [ ] Remaining suburb pages: verify AEO paragraphs + /calculators in-body links on all 24
+- [x] ~~AEO paragraphs on all 25 suburb pages~~ — DONE 2026-04-09b

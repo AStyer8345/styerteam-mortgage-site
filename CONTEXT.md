@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-09 (scheduled) — Wednesday suburb audit. Round Rock: all clean. San Marcos AEO answer-first paragraph added (USDA + investment angle). AEO grep: 13/25 suburb pages confirmed; Buda + Westlake identified as remaining gaps. Blog title lint: clean. Commit 55d6797. Deploy verified ✅.
+2026-04-09b (scheduled) — Thursday funnel + AEO completion. Added AEO paragraphs to Buda (Hays County affordability) and Westlake (jumbo/portfolio). AEO coverage now 25/25 ✅. Funnel audit clean. Added /calculators.html link to first-time-home-buyer.html pillar section. Commit 7e3b2fa. Deploy verified ✅.
 
 ## Active Blockers
 
@@ -32,7 +32,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 1. ~~Fix suburb quick-form conversion tracking~~ — DONE 2026-04-08
 2. Rename temp placeholder blog posts to permanent slugs
-3. ~~AEO rollout — most suburbs done~~ — 13/25 confirmed; **Buda + Westlake remaining** (Thursday)
+3. ~~AEO rollout — all 25/25 suburb pages complete~~ ✅ DONE 2026-04-09b
 4. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
 5. GSC: manually request indexing for suburb pages (Adam — GSC URL Inspection tool)
 6. Thursday funnel audit: 3 pages + thank-you + contact.html
