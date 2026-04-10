@@ -34,7 +34,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 2. Rename temp placeholder blog posts to permanent slugs
 3. ~~AEO rollout — all 25/25 suburb pages complete~~ ✅ DONE 2026-04-09b
 4. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
-5. GSC: manually request indexing for suburb pages (Adam — GSC URL Inspection tool)
+5. ~~GSC: suburb pages ARE indexed — confirmed 2026-04-10 (Leander shows "URL is on Google" ✅)~~
 6. City enrichment remaining: Liberty Hill, Elgin (Florence/Marble Falls need recheck)
 
 ## Known Issues

@@ -2,6 +2,14 @@
 
 ---
 
+## 2026-04-10 — Suburb Pages ARE Indexed + Stale FLAG_FOR_ADAM Rule
+
+### Patterns
+- **Suburb pages are indexed — confirmed 2026-04-10**: Leander shows "URL is on Google" with HTTPS + Breadcrumbs + FAQ all green in GSC. The "week 5 emergency" was resolved by the sitemap fix (March 26). The agent kept carrying forward the GSC URL Inspection flag for 2+ weeks without re-verifying. **Rule: before adding any flag to FLAG_FOR_ADAM, grep the run-logs for the same flag. If it's been there 3+ runs with no evidence it's still unresolved, verify the current state before flagging again.**
+- **"Stale flag" pattern**: A concern that was real at one point (pages unindexed, March–early April) became false after the fix. Adam had to correct this manually. The agent should never carry forward a FLAG_FOR_ADAM item beyond 2 runs without re-verifying it's still valid.
+
+---
+
 ## 2026-04-10 — blog-post-intro Class Is an AEO Anti-Pattern
 
 ### Patterns

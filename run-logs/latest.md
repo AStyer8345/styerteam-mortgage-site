@@ -66,7 +66,7 @@ Remaining enrichment backlog: Liberty Hill, Elgin, and rechecks needed for Flore
 ## NOTEBOOK_INSIGHTS (carry forward)
 - AEO answer-first paragraph (40–60 words, `<strong>`) is top priority for AI Overview extraction
 - Form length: 5 fields max for mobile — 60%+ of mortgage traffic is mobile
-- GSC manual URL inspection: request indexing for suburb pages directly in GSC (still outstanding for Adam)
+- ~~GSC suburb page indexing~~ — RESOLVED 2026-04-10. Leander confirmed "URL is on Google" ✅. Stale flag — pages were indexed after sitemap fix, never re-verified.
 - blog-post-intro class = AEO anti-pattern (same as hero-subtitle) — always add a standalone `<p><strong>` in article body
 - RSAs: 15 headlines + 4 descriptions for "Excellent" ad strength
 - NMLS #513013 + Equal Housing Lender required in every ad
@@ -82,7 +82,6 @@ Monday — Schema + Google Ads Quality Factors + AEO Entity Audit
 - GSC reminder: log FLAG_FOR_ADAM for weekly sitemap status verification
 
 ## FLAG_FOR_ADAM
-- HIGH (ongoing): GSC URL Inspection — manually request indexing for suburb pages. Round Rock, Georgetown, Cedar Park first. Tool: GSC → URL Inspection → Request Indexing
 - MEDIUM (weekly Monday): Verify GSC sitemap — search.google.com/search-console → Sitemaps → green "Success" + discovered pages > 0
 - MEDIUM (ongoing): PageSpeed manual check — pagespeed.web.dev for /get-preapproved and /refinance-quote. Target 80+ mobile
 - MEDIUM (ongoing): Google Ads optimization score — last known 87.9% (2026-03-23)
