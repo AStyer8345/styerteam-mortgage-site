@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-10 (scheduled) — Friday AEO + city enrichment. Fixed doc checklist blog post: added answer-first body `<p><strong>` paragraph + converted 2 H2s to question format. Added "at a glance" paragraphs to New Braunfels (dual ISD campuses, commutes) and Lakeway (LTISD campuses, commutes). Commit c098541. Deploy verified ✅.
+2026-04-10 (scheduled) — Weekly content: new blog post "FHA Loan Requirements Texas 2026" (1,050 words, FAQPage schema, 6 FAQ questions, AEO-compliant). All 3 blog index locations updated (manifest, noscript, CollectionPage schema). Sitemap updated. 3 social drafts queued to LoanOS Marketing Dashboard. Commit dae4128. Netlify deploy triggered ✅.
 
 ## Active Blockers
 

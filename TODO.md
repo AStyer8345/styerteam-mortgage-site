@@ -9,9 +9,11 @@
 
 ## Next (before end of April)
 
-- [ ] SEO content: condo mortgage guide
-- [ ] SEO content: "How to Buy a House in Austin" pillar page
-- [ ] SEO content: monthly market report series
+- [x] SEO content: condo mortgage guide — DONE 2026-04-03
+- [ ] SEO content: "How to Buy a House in Austin" pillar page (exists as standalone page, needs blog post)
+- [x] SEO content: monthly market report series — first post DONE 2026-04-04
+- [x] SEO content: FHA Loan Requirements Texas 2026 — DONE 2026-04-10
+- [ ] SEO content: "Should I Refinance?" decision guide — next HIGH PRIORITY
 - [ ] SEO content: Non-QM expansion page
 - [ ] Review `mortgage-pre-approval-austin.html` — has 5 body CTAs in instructional context, may need simplification
 - [ ] Re-run PageSpeed mobile audit (last confirmed: 80, 2026-03-20)

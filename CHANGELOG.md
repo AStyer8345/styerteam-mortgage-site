@@ -1,5 +1,12 @@
 # styermortgage.com — Changelog
 
+## 2026-04-10b (scheduled) — Weekly content: FHA Loan Requirements
+
+- New blog post: `blog/2026-04-10-fha-loan-requirements-texas-2026.html` — 1,050 words, 6-question FAQPage schema, AEO answer-first paragraph, question-format H2s, blog title lint PASS
+- Updated blog/manifest.json, blog.html noscript + CollectionPage schema (position 1), sitemap.xml
+- Queued 3 social drafts to LoanOS Marketing Dashboard (LinkedIn, Facebook, Instagram) — status: draft, pending Adam's review
+- Commit dae4128 — Netlify deploy triggered
+
 ## 2026-04-10 (scheduled) — Friday AEO audit + city enrichment
 
 - Doc checklist blog post: added answer-first `<p><strong>` body paragraph (blog-post-intro class is AEO anti-pattern — fixed)
