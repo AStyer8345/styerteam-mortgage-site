@@ -1,5 +1,14 @@
 # styermortgage.com — Changelog
 
+## 2026-04-10 (scheduled) — Friday AEO audit + city enrichment
+
+- Doc checklist blog post: added answer-first `<p><strong>` body paragraph (blog-post-intro class is AEO anti-pattern — fixed)
+- Doc checklist: converted 2 statement H2s to question format ("What Documents Do W-2 Employees Need?" + "What Are the 5 Things That Slow Down a Mortgage Closing?")
+- New Braunfels: added "at a glance" paragraph (dual ISD campuses, commute times, neighborhood prices)
+- Lakeway: added "at a glance" paragraph (Lake Travis ISD campuses, commute times, neighborhood prices)
+- sitemap.xml: lastmod updated for all 3 files to 2026-04-10
+- Commit c098541 — all 3 pages verified 200 post-deploy ✅
+
 ## 2026-04-09b (scheduled) — AEO completion + Thursday funnel audit
 
 - Added AEO answer-first paragraph to buda-mortgage-lender.html (Hays County affordability + FHA/conventional angle)

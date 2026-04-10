@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-04-10 — blog-post-intro Class Is an AEO Anti-Pattern
+
+### Patterns
+- **`<p class="blog-post-intro">` inside `<header>` is not a machine-extractable AEO paragraph**: The document checklist post had the answer-first text wrapped in `blog-post-intro` inside a `<header>` element. Like `hero-subtitle`, this is a styled UI class — AI crawlers extract `<article>` body paragraphs, not header-section elements. Fix: add a plain `<p><strong>...</strong></p>` directly in the article body after `</header>`. The styled class can remain for visual design; the body paragraph is what gets extracted.
+- **City enrichment via "at a glance" check: grep for "at a glance" not just "commute"**: Some pages mention commute casually in prose without having the structured "City at a glance:" paragraph. After today: New Braunfels (0→✅) and Lakeway (0→✅) confirmed done. Florence and Marble Falls show 2-3 markers each — likely done. Liberty Hill and Elgin remain.
+- **City enrichment order of value**: Prioritize by search volume — New Braunfels (large city, high search volume) and Lakeway (high-value jumbo market) were higher-priority than smaller Hill Country cities. When choosing next enrichment cities, pick higher-traffic markets first.
+
+---
+
 ## 2026-04-08b — AEO Batch: Elgin, Florence, Jarrell, Marble Falls + Funnel Audit
 
 ### Patterns

@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-09b (scheduled) — Thursday funnel + AEO completion. Added AEO paragraphs to Buda (Hays County affordability) and Westlake (jumbo/portfolio). AEO coverage now 25/25 ✅. Funnel audit clean. Added /calculators.html link to first-time-home-buyer.html pillar section. Commit 7e3b2fa. Deploy verified ✅.
+2026-04-10 (scheduled) — Friday AEO + city enrichment. Fixed doc checklist blog post: added answer-first body `<p><strong>` paragraph + converted 2 H2s to question format. Added "at a glance" paragraphs to New Braunfels (dual ISD campuses, commutes) and Lakeway (LTISD campuses, commutes). Commit c098541. Deploy verified ✅.
 
 ## Active Blockers
 
@@ -35,7 +35,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 3. ~~AEO rollout — all 25/25 suburb pages complete~~ ✅ DONE 2026-04-09b
 4. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
 5. GSC: manually request indexing for suburb pages (Adam — GSC URL Inspection tool)
-6. Thursday funnel audit: 3 pages + thank-you + contact.html
+6. City enrichment remaining: Liberty Hill, Elgin (Florence/Marble Falls need recheck)
 
 ## Known Issues
 
