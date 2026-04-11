@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-10 (scheduled) — Weekly content: new blog post "FHA Loan Requirements Texas 2026" (1,050 words, FAQPage schema, 6 FAQ questions, AEO-compliant). All 3 blog index locations updated (manifest, noscript, CollectionPage schema). Sitemap updated. 3 social drafts queued to LoanOS Marketing Dashboard. Commit dae4128. Netlify deploy triggered ✅.
+2026-04-10b (scheduled) — City enrichment: Liberty Hill + Elgin "at a glance" paragraphs added (school districts with campus names, commute times, neighborhood price ranges). Sitemap lastmod updated. Commit 9c4ef30. Both pages verified 200 ✅. City enrichment backlog now complete except Florence/Marble Falls recheck.
 
 ## Active Blockers
 

@@ -1,5 +1,12 @@
 # styermortgage.com — Changelog
 
+## 2026-04-10c (scheduled) — City enrichment: Liberty Hill + Elgin
+
+- liberty-hill-mortgage-lender.html — "Liberty Hill at a glance" paragraph: Liberty Hill ISD campuses, SH-183A/US-183 commutes, 4 community price ranges
+- elgin-mortgage-lender.html — "Elgin at a glance" section: Elgin ISD campuses, US-290/SH-130 commutes, 4 neighborhood price ranges
+- sitemap.xml — lastmod updated for both pages
+- Commit 9c4ef30 — both pages 200 ✅ post-deploy
+
 ## 2026-04-10b (scheduled) — Weekly content: FHA Loan Requirements
 
 - New blog post: `blog/2026-04-10-fha-loan-requirements-texas-2026.html` — 1,050 words, 6-question FAQPage schema, AEO answer-first paragraph, question-format H2s, blog title lint PASS
