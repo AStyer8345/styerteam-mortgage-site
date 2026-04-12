@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-04-12 — Blog Post AEO Anti-Pattern: Styled Header Paragraphs + DSCR BreadcrumbList
+
+### Patterns
+- **Styled header paragraphs (`<p style="border-left:...">` or `<p class="blog-post-intro">` inside `<header>`) do NOT satisfy AEO requirements**: The condo post had answer-first text inside a styled `<header>` section. AI crawlers extract `<article>` body paragraphs. The fix is always to add a plain `<p><strong>...</strong></p>` as the FIRST element inside `<div class="article-body">` — after `</header>`. Two posts had this gap (condo + choose-lender).
+- **DSCR page was missing BreadcrumbList JSON-LD despite having a visual breadcrumb**: The visual `<ol class="breadcrumb-list">` in HTML is NOT the same as `@type: BreadcrumbList` JSON-LD schema. Rich Results Test and Google both require the JSON-LD version for breadcrumb SERP display. Always add both: visual HTML + JSON-LD block in `<head>`.
+- **Monday schema audit should grep for JSON-LD BreadcrumbList separately from visual breadcrumbs**: Use `grep -n '"@type": "BreadcrumbList"'` not just `grep breadcrumb` — the latter catches the visual HTML and gives a false positive.
+- **codex branch isolation pattern**: When daily-opt commits land on a non-main branch, use `git checkout <branch> -- <files>` to selectively bring only the session's changed files to main. Do NOT merge or cherry-pick when the branch also contains Adam's unreviewed work.
+
+---
+
 ## 2026-04-11 — AEO Applies to Loan Type Pages Too + Second-Run Backlog Pattern
 
 ### Patterns

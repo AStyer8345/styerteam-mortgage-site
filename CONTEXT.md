@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-11b (scheduled) — Construction page improvements: AEO answer-first paragraph added, "The Build Process: What to Expect" section added (6-step walkthrough with Austin builder examples), dateModified updated, sitemap lastmod added. FHA post (2026-04-10) QA'd — PASS. Commit 811028f, verified 200 ✅.
+2026-04-12 (scheduled, Monday) — AEO body paragraphs added to choose-lender post (was missing) and condo post (was in styled header only, not body); BreadcrumbList JSON-LD added to DSCR page. Sitemap lastmod updated. Commit 7b8906e, all 3 pages verified 200 ✅.
 
 ## Active Blockers
 
@@ -36,6 +36,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 4. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
 5. ~~GSC: suburb pages ARE indexed — confirmed 2026-04-10 (Leander shows "URL is on Google" ✅)~~
 6. ~~City enrichment~~ — ALL 25 SUBURB PAGES COMPLETE ✅ (2026-04-11)
+7. Tuesday: title tag + meta description audit on all loan type pages
 
 ## Known Issues
 

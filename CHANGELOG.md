@@ -1,5 +1,13 @@
 # styermortgage.com — Changelog
 
+## 2026-04-12 (scheduled) — Monday rotation: AEO body paragraphs + DSCR BreadcrumbList
+
+- dscr-loan-austin-tx.html — Added BreadcrumbList JSON-LD schema (Home → Investment Loans → DSCR Loans Austin TX)
+- blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html — Added AEO answer-first paragraph (was missing entirely)
+- blog/2026-04-03-condo-mortgage-austin-tx.html — Added AEO answer-first paragraph to article-body (styled header paragraph didn't qualify)
+- sitemap.xml — Updated lastmod to 2026-04-12 for all 3 changed files
+- Commit 7b8906e — all 3 pages verified 200 ✅ post-deploy
+
 ## 2026-04-11b (scheduled) — Construction page AEO + builder process walkthrough
 
 - loans/construction.html — Added AEO answer-first paragraph (one-time close, down payment summary, interest-only payments during build)
