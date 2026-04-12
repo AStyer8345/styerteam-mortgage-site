@@ -17,16 +17,13 @@
   }
 
   function initTracking() {
-    // ── All Netlify forms (hero-quick-form, suburb quotes, quick-contact)
-    // Broadened selector catches all data-netlify forms including suburb
-    // pages with unique form names (buda-quote, westlake-quote, etc.)
-    document.querySelectorAll(
-      'form[data-netlify="true"], form.hero-quick-form, form[name="quick-contact"]'
-    ).forEach(function (form) {
-      form.addEventListener('submit', function () {
-        track({ event: 'generate_lead', lead_type: 'quick_quote' });
-        // thank_you_page_view intentionally omitted — fires after
-        // confirmed submission in script.js or on /thank-you.html
+    // ── Successful lead submissions ────────────────────────────────
+    document.addEventListener('styer:lead-submitted', function (event) {
+      var detail = event.detail || {};
+      track({
+        event: 'generate_lead',
+        lead_type: detail.lead_type || 'website_lead',
+        form_name: detail.form_name || ''
       });
     });
 
