@@ -43,6 +43,10 @@ function copyToClipboard(text) {
   });
 }
 
+function dispatchLeadSubmitted(detail) {
+  document.dispatchEvent(new CustomEvent('styer:lead-submitted', { detail }));
+}
+
 // ========================================================================
 // 1. NAVIGATION & HEADER
 // ========================================================================
@@ -51,6 +55,12 @@ function initNavigation() {
   const header = document.querySelector('header');
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const navLinks = document.querySelector('.nav-links');
+
+  if (mobileMenuToggle && navLinks) {
+    if (!navLinks.id) navLinks.id = 'site-nav-links';
+    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    mobileMenuToggle.setAttribute('aria-controls', navLinks.id);
+  }
 
   // Sticky header shadow on scroll — read scrollY before DOM write to avoid forced reflow
   window.addEventListener('scroll', () => {
@@ -385,7 +395,7 @@ function validatePhone(phone) {
 }
 
 function validateField(input) {
-  const value = input.value.trim();
+  const value = typeof input.value === 'string' ? input.value.trim() : '';
   let errorContainer = input.parentElement.querySelector('.error-message');
 
   if (!errorContainer) {
@@ -398,7 +408,18 @@ function validateField(input) {
   let isValid = true;
   let errorMessage = '';
 
-  if (input.hasAttribute('required') && !value) {
+  if (input.type === 'checkbox') {
+    if (input.required && !input.checked) {
+      isValid = false;
+      errorMessage = 'Please check this box to continue';
+    }
+  } else if (input.type === 'radio') {
+    const radioGroup = document.querySelectorAll(`input[type="radio"][name="${input.name}"]`);
+    if (input.required && ![...radioGroup].some((radio) => radio.checked)) {
+      isValid = false;
+      errorMessage = 'Please select an option';
+    }
+  } else if (input.hasAttribute('required') && !value) {
     isValid = false;
     errorMessage = 'This field is required';
   } else if (input.type === 'email' && value && !validateEmail(value)) {
@@ -433,6 +454,8 @@ function showQuickContactSuccess(form) {
   requestAnimationFrame(() => {
     successMessage.style.opacity = '1';
   });
+
+  dispatchLeadSubmitted({ lead_type: 'quick_contact', form_name: form.getAttribute('name') || form.id || 'quick-contact' });
 
   setTimeout(() => {
     form.reset();
@@ -550,9 +573,7 @@ function initHeroQuickForm() {
       body: new URLSearchParams(formData).toString(),
     })
       .then(() => {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'generate_lead', lead_type: 'quick_quote' });
-        window.dataLayer.push({ event: 'thank_you_page_view' });
+        dispatchLeadSubmitted({ lead_type: 'quick_quote', form_name: form.getAttribute('name') || 'hero-quick-form' });
         window.location.href = '/thank-you';
       })
       .catch((err) => alert(err));
@@ -795,6 +816,7 @@ function initPrequalForm() {
     const progress = document.querySelector('.prequal-progress');
     if (progress) progress.style.display = 'none';
     formCard.appendChild(success);
+    dispatchLeadSubmitted({ lead_type: 'prequal', form_name: form.getAttribute('name') || 'prequal' });
   });
 
   // Clear errors on input
