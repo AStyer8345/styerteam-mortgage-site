@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-12 (scheduled, Monday) — AEO body paragraphs added to choose-lender post (was missing) and condo post (was in styled header only, not body); BreadcrumbList JSON-LD added to DSCR page. Sitemap lastmod updated. Commit 7b8906e, all 3 pages verified 200 ✅.
+2026-04-12 — Rate Check page + n8n workflow. Created `/rate-check.html` with full SEO (MortgageLender, FAQPage, BreadcrumbList JSON-LD), upload form posting to n8n webhook, 5 FAQs, trust bar. Added "Rate Check" to main nav on all 102 pages. Built and activated n8n workflow `Pf1zWuKAnD4SznSR` (Webhook → Set Fields → Insert Contact + Log Activity + Send Notification Email → Respond to Webhook). Webhook URL: `https://styer.app.n8n.cloud/webhook/rate-check-submission`.
 
 ## Active Blockers
 
@@ -30,13 +30,11 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. ~~Fix suburb quick-form conversion tracking~~ — DONE 2026-04-08
+1. Test rate-check form end-to-end (submit test PDF, verify Supabase insert + Outlook email)
 2. Rename temp placeholder blog posts to permanent slugs
-3. ~~AEO rollout — all 25/25 suburb pages complete~~ ✅ DONE 2026-04-09b
-4. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
-5. ~~GSC: suburb pages ARE indexed — confirmed 2026-04-10 (Leander shows "URL is on Google" ✅)~~
-6. ~~City enrichment~~ — ALL 25 SUBURB PAGES COMPLETE ✅ (2026-04-11)
-7. Tuesday: title tag + meta description audit on all loan type pages
+3. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
+4. Tuesday: title tag + meta description audit on all loan type pages
+5. Add rate-check.html to sitemap.xml
 
 ## Known Issues
 

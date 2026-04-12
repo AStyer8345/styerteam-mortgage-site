@@ -1,5 +1,28 @@
 # styermortgage.com — Changelog
 
+## 2026-04-12 — Rate Check page + n8n workflow
+
+- Created `/rate-check.html` — "Get a Second Opinion on Your Mortgage Rate" landing page
+- Full SEO: MortgageLender, FAQPage (5 Qs), BreadcrumbList JSON-LD schemas
+- OG tags, Twitter cards, canonical, meta description
+- Upload form (7 fields + PDF upload + optional notes) → n8n webhook via `fetch()` + `FormData`
+- Client-side validation with inline error messages, `generate_lead` GTM event on success
+- Hero with dual CTAs (Calendly + form anchor), How It Works 3-step section, FAQ section, trust bar
+- Added "Rate Check" nav link to 102 pages (between "About Adam" and "For Realtors")
+- n8n workflow `Pf1zWuKAnD4SznSR` created and activated:
+  - Webhook (POST, binary data) → Set Fields → Insert Contact (Supabase) + Log Activity (Supabase) + Send Notification Email (Outlook) → Respond to Webhook (200 JSON)
+  - Supabase nodes: `neverError: true` for continue-on-error behavior
+  - Webhook URL: `https://styer.app.n8n.cloud/webhook/rate-check-submission`
+
+## 2026-04-12 (scheduled) — GBP Weekly: Client Story (Week 15)
+
+- GBP post published to Publer (GBP only, job 69dba83df50f031661e715a0) — 199 words, Client Story theme, Week 15
+- FB/IG/LI platform adaptations inserted as status:draft in social_drafts (awaiting Adam's approval)
+- 4 activity entries logged in social_activity
+- Master growth log appended + NotebookLM source refreshed (source 1b4db2f3)
+- Saved to run-logs/gbp-posts/2026-04-12.md
+- Schema note: social_drafts platform check constraint does not include google/gbp — GBP recorded via activity log only
+
 ## 2026-04-12 (scheduled) — Monday rotation: AEO body paragraphs + DSCR BreadcrumbList
 
 - dscr-loan-austin-tx.html — Added BreadcrumbList JSON-LD schema (Home → Investment Loans → DSCR Loans Austin TX)
