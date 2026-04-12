@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-10b (scheduled) — City enrichment: Liberty Hill + Elgin "at a glance" paragraphs added (school districts with campus names, commute times, neighborhood price ranges). Sitemap lastmod updated. Commit 9c4ef30. Both pages verified 200 ✅. City enrichment backlog now complete except Florence/Marble Falls recheck.
+2026-04-11b (scheduled) — Construction page improvements: AEO answer-first paragraph added, "The Build Process: What to Expect" section added (6-step walkthrough with Austin builder examples), dateModified updated, sitemap lastmod added. FHA post (2026-04-10) QA'd — PASS. Commit 811028f, verified 200 ✅.
 
 ## Active Blockers
 
@@ -35,7 +35,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 3. ~~AEO rollout — all 25/25 suburb pages complete~~ ✅ DONE 2026-04-09b
 4. Update about.html LocalBusiness sameAs with real Google CID (placeholder inserted)
 5. ~~GSC: suburb pages ARE indexed — confirmed 2026-04-10 (Leander shows "URL is on Google" ✅)~~
-6. City enrichment remaining: Liberty Hill, Elgin (Florence/Marble Falls need recheck)
+6. ~~City enrichment~~ — ALL 25 SUBURB PAGES COMPLETE ✅ (2026-04-11)
 
 ## Known Issues
 

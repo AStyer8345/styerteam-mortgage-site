@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-04-11 — AEO Applies to Loan Type Pages Too + Second-Run Backlog Pattern
+
+### Patterns
+- **Loan type pages need AEO answer-first paragraphs, not just blog posts**: construction.html opened directly with an H2 ("How Construction Loans Work") with no extractable opening paragraph. The AEO requirement applies to all pages that should appear in AI Overviews — loan pages are high-intent targets. Fix: insert `<p><strong>[40-60 word direct answer]</strong></p>` as the first element in the main content section, before any H2.
+- **Second-run on the same day: go straight to backlog**: When latest.md shows today's date, skip re-doing the rotation and go directly to the SEO/SEM backlog for the next available LOW_RISK or ZERO_RISK item. Don't repeat work already logged this morning.
+- **Construction pages benefit from named local builders**: Using real Austin-area builder names (Lennar, David Weekley, Milestone Community Builders, Scott Felder) in the process walkthrough adds local relevance signal and is more credible to readers than generic "production builder" language. Verify builder names are accurate before publishing.
+
+---
+
 ## 2026-04-10 — Suburb Pages ARE Indexed + Stale FLAG_FOR_ADAM Rule
 
 ### Patterns

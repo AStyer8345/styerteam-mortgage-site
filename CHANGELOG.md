@@ -1,5 +1,22 @@
 # styermortgage.com — Changelog
 
+## 2026-04-11b (scheduled) — Construction page AEO + builder process walkthrough
+
+- loans/construction.html — Added AEO answer-first paragraph (one-time close, down payment summary, interest-only payments during build)
+- loans/construction.html — Added "The Build Process: What to Expect" section (6-step walkthrough from pre-approval through CO + loan conversion, Austin builder examples)
+- loans/construction.html — Updated schema dateModified: 2026-02-25 → 2026-04-11
+- sitemap.xml — Added lastmod 2026-04-11 to construction.html entry
+- Commit 811028f — verified 200 ✅ post-deploy
+- Blog QA: 2026-04-10-fha-loan-requirements-texas-2026.html — PASS (title 60 chars, meta ~153 chars, canonical ✅, body AEO ✅, synced to sitemap/manifest/blog.html)
+
+## 2026-04-11 (scheduled) — City enrichment: Marble Falls at a glance
+
+- marble-falls-mortgage-lender.html — Added "Marble Falls at a glance" paragraph: Marble Falls ISD (3 campuses), commute times via US-281, neighborhood price ranges ($280K–$1.2M+ lakefront)
+- sitemap.xml — lastmod updated for marble-falls-mortgage-lender.html (2026-03-27 → 2026-04-11)
+- Florence confirmed already had "at a glance" section — no changes needed
+- All 25 suburb pages now complete with city enrichment ✅
+- Commit fbb0dd6 — marble-falls page verified 200 ✅ post-deploy
+
 ## 2026-04-10c (scheduled) — City enrichment: Liberty Hill + Elgin
 
 - liberty-hill-mortgage-lender.html — "Liberty Hill at a glance" paragraph: Liberty Hill ISD campuses, SH-183A/US-183 commutes, 4 community price ranges
