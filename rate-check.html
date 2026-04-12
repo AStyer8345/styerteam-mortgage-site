@@ -527,7 +527,7 @@
               </div>
             </div>
             <div class="rc-form-row">
-              <div class="rc-form-field full">
+              <div class="rc-form-field">
                 <label for="rc-loan-type">Loan Type</label>
                 <select id="rc-loan-type" name="loan_type" required>
                   <option value="">Choose…</option>
@@ -537,6 +537,18 @@
                   <option value="Jumbo">Jumbo</option>
                 </select>
                 <span class="field-error">Loan type is required</span>
+              </div>
+              <div class="rc-form-field">
+                <label for="rc-credit-score">Credit Score Range</label>
+                <select id="rc-credit-score" name="credit_score" required>
+                  <option value="">Choose…</option>
+                  <option value="680-700">680 to 700</option>
+                  <option value="700-720">700 to 720</option>
+                  <option value="720-740">720 to 740</option>
+                  <option value="740-780">740 to 780</option>
+                  <option value="780+">780 and above</option>
+                </select>
+                <span class="field-error">Credit score is required</span>
               </div>
             </div>
             <div class="rc-form-row">
