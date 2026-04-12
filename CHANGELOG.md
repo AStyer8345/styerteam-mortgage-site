@@ -1,5 +1,39 @@
 # styermortgage.com — Changelog
 
+## 2026-04-12 — Rate Check SEO expansion: 5 city pages + 10 blog posts
+
+### City rate-check landing pages (Phase 2)
+- `/rate-check-round-rock.html` — Round Rock + Pflugerville (I-35 corridor, new construction, tech relocations)
+- `/rate-check-cedar-park.html` — Cedar Park + Leander (183A corridor, LISD, Apple campus proximity)
+- `/rate-check-georgetown.html` — Georgetown + Hutto (Sun City, USDA-eligible areas, GISD)
+- `/rate-check-buda-kyle.html` — Buda + Kyle + San Marcos (south corridor, affordability, first-time buyers)
+- `/rate-check-new-braunfels.html` — New Braunfels (Comal County growth, flood zones, Vintage Oaks)
+- Each page: same upload form + n8n webhook, hidden `source` field for attribution, unique content, MortgageLender + FAQPage + BreadcrumbList JSON-LD, dataLayer events with city-specific lead_source
+
+### Rate shopper blog content cluster (Phase 3)
+- `blog/can-i-switch-lenders-after-going-under-contract-texas.html`
+- `blog/how-to-compare-two-mortgage-offers.html`
+- `blog/apr-vs-interest-rate-what-actually-matters.html`
+- `blog/are-mortgage-lender-fees-negotiable.html`
+- `blog/how-many-mortgage-quotes-should-i-get.html`
+- `blog/local-lender-vs-online-lender-austin-central-texas.html`
+- `blog/what-delays-closing-when-you-switch-lenders.html`
+- `blog/how-to-read-a-loan-estimate.html`
+- `blog/what-to-compare-besides-mortgage-rate.html`
+- `blog/is-the-lowest-rate-the-cheapest-loan.html`
+- Each post: Article + FAQPage + BreadcrumbList schema, AEO intro, CTAs to rate-check hub/city pages, 600-1400 words
+
+### Internal linking (Phase 4)
+- Added "Serving All of Central Texas" section to rate-check.html with links to all 5 city pages
+- Added "Rate Shopping Resources" section to rate-check.html with links to 4 key blog posts
+- Updated blog.html CollectionPage schema with 10 new posts
+- Updated blog.html noscript block with 10 new posts
+- All blog posts cross-link to rate-check hub + adjacent posts
+- All city pages link back to rate-check hub
+
+### Sitemap + infrastructure
+- Added 5 city pages + 10 blog posts to sitemap.xml (15 new URLs)
+
 ## 2026-04-12 — Rate Check page + n8n workflow
 
 - Created `/rate-check.html` — "Get a Second Opinion on Your Mortgage Rate" landing page
