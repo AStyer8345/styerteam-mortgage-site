@@ -214,6 +214,7 @@ async function createLoanosContact({ email, fname, lname, phone, loan_goal, lead
       "Authorization": `Bearer ${LOANOS_SECRET}`,
     },
     body: JSON.stringify({
+      org_slug:      "adam-styer-mslp",
       first_name:    fname || "",
       last_name:     lname || "",
       email:         email,
