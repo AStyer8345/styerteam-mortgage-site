@@ -7,6 +7,11 @@
 - [x] Rate Check SEO expansion — 5 city pages + 10 blog posts + internal linking (2026-04-12)
 - [x] Add rate-check.html to sitemap.xml (done 2026-04-12, plus 15 new URLs)
 - [x] Fix suburb quick-form conversion gap (fixed 2026-04-08)
+- [x] Week 6 competitive intelligence run — Hutto/Liberty Hill (2026-04-13)
+- [ ] **Hutto page: AEO paragraph + schema review count 91+ + neighborhood names** (HIGH — we're #3, beatable to #1)
+- [ ] **Liberty Hill page: unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch, MUD districts
+- [ ] **Audit /mortgage-broker-vs-bank.html** — comparison table + FAQPage schema; counter MortgageAustin.com
+- [ ] **GSC manual indexing requests** — Dripping Springs, Round Rock, Cedar Park, Leander, Georgetown (Hutto confirmed indexed)
 - [ ] Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
 - [ ] Verify all 15 new pages render on live Netlify deploy
 - [ ] Submit updated sitemap to Google Search Console

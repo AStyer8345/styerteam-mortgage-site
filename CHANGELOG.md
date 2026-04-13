@@ -1,5 +1,18 @@
 # styermortgage.com — Changelog
 
+## 2026-04-13 — Week 6 competitive intelligence run
+
+- SERP check: 9 keywords (7 core Austin + Hutto + Liberty Hill)
+- **FIRST TOP-10 RANKING: styermortgage.com #3 for "hutto tx mortgage lender"** — suburb page indexing confirmed working
+- Confirmed Big Life's Hutto page is weak (25 reviews schema, no local neighborhoods) — beatable
+- Liberty Hill: Guild Mortgage holds #1 + #2 with physical branch at 13563 Hwy 29 W — organic-only target
+- New threat: MortgageAustin.com ranking #3 for "mortgage broker austin tx" with "broker vs bank" blog content
+- Sente Mortgage dropped from #1 "mortgage lender austin tx" (Vista Lending new #1)
+- Lone Star Financing now #1 for "get pre-approved austin tx"
+- Full report: `run-logs/competitive/2026-04-13.md`
+- Updated learnings.md with suburb ranking + review schema patterns
+- Updated TODO.md with Hutto page strengthening + Liberty Hill content priorities
+
 ## 2026-04-12 — Rate Check SEO expansion: 5 city pages + 10 blog posts
 
 ### City rate-check landing pages (Phase 2)

@@ -2,6 +2,17 @@
 
 ---
 
+## 2026-04-13 — First Suburb Ranking + Competitor Review Gap Strategy
+
+### Patterns
+- **First top-10 ranking achieved via suburb pages, not core Austin keywords**: "hutto tx mortgage lender" → #3 in Week 6. Core Austin keywords remain at 0/7. Suburb-first SEO is the correct sequence: get indexed, rank locally, then leverage suburb authority to climb core terms.
+- **Review count in schema is a direct ranking lever vs. competitors**: Big Life's Hutto page shows only 25 reviews in AggregateRating schema despite being #1. Our 91+ reviews — if properly surfaced in schema — is a significant algorithmic advantage. Schema review count ≠ actual review count if schema is stale or misconfigured.
+- **Physical branch presence makes map pack unwinnable for competitors without local address**: Guild Mortgage's Liberty Hill branch (#1 and #2 for "liberty hill tx mortgage lender") demonstrates why independent brokers cannot target map pack for suburbs where competitors have a physical location. Organic-only targeting is the correct strategy in those cases.
+- **Templated competitor pages are beatable with hyper-local content**: Big Life's Hutto page has no Hutto neighborhood names, no Hays County specifics, no school district reference. A page with Star Ranch, Brushy Creek, Cottonwood Creek, HISD, Williamson County context will outperform a template page — even if the template is currently ranking higher.
+- **Rising content competitors should be tracked by blog post URL, not just domain**: MortgageAustin.com gained visibility via a specific blog post ("mortgage broker vs bank austin"). Tracking competitor domains is insufficient — track their individual ranking pages so you know what content to outcompete.
+
+---
+
 ## 2026-04-12 — Blog Post AEO Anti-Pattern: Styled Header Paragraphs + DSCR BreadcrumbList
 
 ### Patterns

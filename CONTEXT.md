@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-12 — Rate Check SEO expansion. Built 5 city rate-check landing pages (Round Rock, Cedar Park, Georgetown, Buda-Kyle, New Braunfels) and 10 rate-shopper blog posts forming a content cluster. All pages have full SEO (JSON-LD schemas, OG tags, canonical URLs), upload forms posting to n8n webhook `Pf1zWuKAnD4SznSR`, and city-specific lead attribution via hidden `source` fields. Updated rate-check hub with internal links to city pages and blog resources. Updated blog.html CollectionPage schema + noscript block. Added all 15 new URLs to sitemap.xml.
+2026-04-13 — Weekly competitive intelligence run (Week 6). **MAJOR: styermortgage.com ranks #3 for "hutto tx mortgage lender"** — first ever top-10 ranking. Suburb pages are indexing. Confirmed Big Life's Hutto page is weak (25 reviews in schema, no local neighborhood content). Liberty Hill dominated by Guild Mortgage (physical branch). MortgageAustin.com rising competitor for "mortgage broker austin tx" keyword. Full report in run-logs/competitive/2026-04-13.md.
 
 ## Rate Check Page Inventory
 
@@ -54,11 +54,13 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. Test rate-check form end-to-end (submit test PDF, verify Supabase insert + Outlook email)
-2. Verify all 15 new pages render correctly on live Netlify deploy
-3. Submit updated sitemap to Google Search Console
-4. Monitor indexing of new pages over next 7 days
-5. Rename temp placeholder blog posts to permanent slugs
+1. **Strengthen Hutto page** — AEO paragraph, schema review count to 91+, neighborhood names (Star Ranch, Brushy Creek, Cottonwood Creek), internal link from rate-check-georgetown.html
+2. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
+3. **Audit /mortgage-broker-vs-bank.html** — Add comparison table, FAQPage schema; counter MortgageAustin.com's rising blog post
+4. **GSC URL Inspection** — Submit Dripping Springs, Round Rock, Cedar Park, Leander, Georgetown for manual indexing
+5. **Publish /self-employed-mortgage-austin.html** — Still unchallenged content gap
+6. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
+7. Rename temp placeholder blog posts to permanent slugs
 
 ## Known Issues
 
