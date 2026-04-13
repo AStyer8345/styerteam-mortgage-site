@@ -281,3 +281,13 @@
 - /get-preapproved and /refinance-quote pages built and verified
 - /thank-you page with thank_you_page_view event
 - phone_click global handler wired in script.js
+
+## 2026-04-12 (run 2) — AEO answer-first paragraphs: 5 suburb pages
+
+- `kyle-mortgage-lender.html` — Added AEO answer-first section (new dedicated section before WHY KYLE)
+- `leander-mortgage-lender.html` — Added AEO answer-first paragraph before H2 in intro section
+- `pflugerville-mortgage-lender.html` — Added AEO answer-first paragraph before H2 in intro section
+- `georgetown-mortgage-lender.html` — Added AEO answer-first paragraph before H2 in intro section
+- `austin-area-mortgage-lender.html` — Added AEO answer-first paragraph before intro paragraph
+- `sitemap.xml` — Updated lastmod to 2026-04-12 for all 5 changed pages
+- Commit 32c2ae3 — all 5 pages verified 200 ✅
