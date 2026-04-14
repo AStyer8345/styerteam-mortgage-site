@@ -394,22 +394,14 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
     }
 
     // ----------------------------------------------------------------
-    // STEP 4b: Social post text generation for preview (non-blocking)
+    // STEP 4b: Social post text for preview — INTENTIONALLY SKIPPED
     // ----------------------------------------------------------------
-    if (isPreview && parsed.webContent) {
-      try {
-        const socialTopic = topic || formData.title || parsed.pageTitle || "Newsletter";
-        const socialTexts = await generateSocialPostsText({
-          webContent: parsed.webContent,
-          pageUrl,
-          topic: socialTopic,
-        });
-        results.socialPostsPreview = socialTexts;
-      } catch (socialErr) {
-        console.error("[social-poster] Preview text generation failed (non-blocking):", socialErr.message);
-        results.socialPostsPreview = null;
-      }
-    }
+    // Previously ran a second Claude call here to show LinkedIn/FB drafts
+    // in the preview panel. That pushed preview runtime to ~22s, right at
+    // Netlify's 26s sync limit, causing intermittent "Failed to fetch".
+    // Social posts are still generated + published at live/publish time
+    // via generateAndPostSocial (STEP 4 above). Preview now ~14s.
+    // Restore by un-stubbing if Netlify raises the sync limit.
 
     return {
       success: true,
