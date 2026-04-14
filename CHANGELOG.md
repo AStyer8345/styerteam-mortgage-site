@@ -1,5 +1,12 @@
 # styermortgage.com — Changelog
 
+## 2026-04-14 — Daily optimization (Tuesday title/meta audit)
+
+- Title tag audit: 6 loan/resource pages standardized to "[Loan Type] in Austin TX | Adam Styer | NMLS #513013"
+- Fixed: first-time-home-buyer.html (NMLS added), austin-down-payment-assistance.html (Adam Styer added), fixed-vs-adjustable.html (Adam Styer added), how-to-buy-a-house-in-austin-tx.html (Adam Styer added + meta updated), closing-costs-texas.html (Adam Styer added), improve-credit-score.html (NMLS + format corrected)
+- mortgage-broker-vs-bank.html: Article schema dateModified updated 2026-02-26 → 2026-04-14
+- Sitemap: 200 ✅ | Self-review: PASS — 7 files, 0 issues
+
 ## 2026-04-14 — Homepage form wiring to subscribe-lead.js
 
 - Quick Quote form (hero): now calls `/.netlify/functions/subscribe-lead` in parallel with Netlify POST → Mailchimp tag `quick-quote-lead` + LoanOS contact creation on submit

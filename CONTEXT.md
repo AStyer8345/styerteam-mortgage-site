@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-14 — Lead Gen AM session. Wired homepage Quick Quote + Quick Contact forms to subscribe-lead.js: both now call `/.netlify/functions/subscribe-lead` in parallel with Netlify backup POST. Mailchimp tags: `quick-quote-lead` / `quick-contact-lead`. LoanOS contact created on submit. UTM passthrough. Netlify backup preserved. Commit `1bb1ef1` deployed ✅.
+2026-04-14 — Daily opt (Tuesday title/meta audit). Standardized 6 loan/resource pages to "... | Adam Styer | NMLS #513013" title format. Updated mortgage-broker-vs-bank.html Article schema dateModified → 2026-04-14. 7 files, self-review PASS. Commit pending.
 
 ## Rate Check Page Inventory
 
@@ -56,7 +56,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 1. **Continue Hutto push** — monitor ranking movement; next step is internal links from other suburb pages to hutto-mortgage-lender.html
 2. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
-3. **mortgage-broker-vs-bank.html dateModified** — Article schema still shows 2026-02-26; update to 2026-04-13
+3. ~~**mortgage-broker-vs-bank.html dateModified**~~ ✅ DONE 2026-04-14
 4. **GSC URL Inspection** — Submit Dripping Springs, Round Rock, Cedar Park, Leander, Georgetown for manual indexing (Adam action)
 5. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
 6. Rename temp placeholder blog posts to permanent slugs
