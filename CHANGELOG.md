@@ -1,5 +1,21 @@
 # styermortgage.com — Changelog
 
+## 2026-04-14 — Homepage form wiring to subscribe-lead.js
+
+- Quick Quote form (hero): now calls `/.netlify/functions/subscribe-lead` in parallel with Netlify POST → Mailchimp tag `quick-quote-lead` + LoanOS contact creation on submit
+- Quick Contact form (bottom): same pattern → Mailchimp tag `quick-contact-lead` + LoanOS contact creation
+- Netlify backup POST preserved on both forms; UTM params forwarded; error handling non-blocking
+- Commit `1bb1ef1` deployed to Netlify
+
+## 2026-04-13 — Daily optimization (Monday schema + Hutto Kingmaker)
+
+- Schema audit: homepage, about, Hutto, DSCR all clean; AggregateRating 136 confirmed
+- hutto-mortgage-lender.html: added Cottonwood Creek + Brushy Creek trail mentions — hyper-local depth vs Big Life template
+- mortgage-broker-vs-bank.html: added BreadcrumbList JSON-LD schema (was missing despite visual breadcrumb)
+- sitemap.xml: fixed pre-existing domain typo on hutto entry (styremortgage→styermortgage); hutto lastmod updated
+- Commit 9559a14 — 3 files, both pages verified 200 post-deploy
+- Blog title lint: CLEAN
+
 ## 2026-04-13 — Week 6 competitive intelligence run
 
 - SERP check: 9 keywords (7 core Austin + Hutto + Liberty Hill)

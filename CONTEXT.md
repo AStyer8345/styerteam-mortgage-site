@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-13 — Weekly competitive intelligence run (Week 6). **MAJOR: styermortgage.com ranks #3 for "hutto tx mortgage lender"** — first ever top-10 ranking. Suburb pages are indexing. Confirmed Big Life's Hutto page is weak (25 reviews in schema, no local neighborhood content). Liberty Hill dominated by Guild Mortgage (physical branch). MortgageAustin.com rising competitor for "mortgage broker austin tx" keyword. Full report in run-logs/competitive/2026-04-13.md.
+2026-04-14 — Lead Gen AM session. Wired homepage Quick Quote + Quick Contact forms to subscribe-lead.js: both now call `/.netlify/functions/subscribe-lead` in parallel with Netlify backup POST. Mailchimp tags: `quick-quote-lead` / `quick-contact-lead`. LoanOS contact created on submit. UTM passthrough. Netlify backup preserved. Commit `1bb1ef1` deployed ✅.
 
 ## Rate Check Page Inventory
 
@@ -54,13 +54,12 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. **Strengthen Hutto page** — AEO paragraph, schema review count to 91+, neighborhood names (Star Ranch, Brushy Creek, Cottonwood Creek), internal link from rate-check-georgetown.html
+1. **Continue Hutto push** — monitor ranking movement; next step is internal links from other suburb pages to hutto-mortgage-lender.html
 2. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
-3. **Audit /mortgage-broker-vs-bank.html** — Add comparison table, FAQPage schema; counter MortgageAustin.com's rising blog post
-4. **GSC URL Inspection** — Submit Dripping Springs, Round Rock, Cedar Park, Leander, Georgetown for manual indexing
-5. **Publish /self-employed-mortgage-austin.html** — Still unchallenged content gap
-6. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
-7. Rename temp placeholder blog posts to permanent slugs
+3. **mortgage-broker-vs-bank.html dateModified** — Article schema still shows 2026-02-26; update to 2026-04-13
+4. **GSC URL Inspection** — Submit Dripping Springs, Round Rock, Cedar Park, Leander, Georgetown for manual indexing (Adam action)
+5. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
+6. Rename temp placeholder blog posts to permanent slugs
 
 ## Known Issues
 
