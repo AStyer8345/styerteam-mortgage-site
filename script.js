@@ -469,20 +469,40 @@ function showQuickContactSuccess(form) {
   }, 2600);
 }
 
-function submitForm(form) {
+async function submitForm(form) {
   const formData = new FormData(form);
+  const fullName = (formData.get('name') || '').trim();
+  const nameParts = fullName.split(' ');
+  const fname = nameParts[0] || '';
+  const lname = nameParts.slice(1).join(' ') || '';
+  const email = formData.get('email') || '';
+  const phone = formData.get('phone') || '';
+  const loanGoal = formData.get('loanGoal') || '';
+  const params = new URLSearchParams(window.location.search);
 
-  fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(formData).toString(),
-  })
-    .then(() => {
-      showQuickContactSuccess(form);
-    })
-    .catch((error) => {
-      alert(error);
-    });
+  await Promise.allSettled([
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    }),
+    fetch('/.netlify/functions/subscribe-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email, fname, lname, phone,
+        tag: 'quick-contact-lead',
+        loan_goal: loanGoal,
+        lead_source: 'Quick Contact',
+        page_url: window.location.href,
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+      }),
+    }).catch((err) => console.warn('[quick-contact] subscribe-lead failed:', err.message)),
+  ]);
+
+  showQuickContactSuccess(form);
 }
 
 function initFormValidation() {
@@ -556,7 +576,7 @@ function initHeroQuickForm() {
     if (e.target.matches('.form-error')) validateField(e.target);
   });
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const inputs = form.querySelectorAll('input, select');
@@ -567,16 +587,39 @@ function initHeroQuickForm() {
     if (!isValid) return;
 
     const formData = new FormData(form);
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => {
-        dispatchLeadSubmitted({ lead_type: 'quick_quote', form_name: form.getAttribute('name') || 'hero-quick-form' });
-        window.location.href = '/thank-you';
-      })
-      .catch((err) => alert(err));
+    const fullName = (formData.get('name') || '').trim();
+    const nameParts = fullName.split(' ');
+    const fname = nameParts[0] || '';
+    const lname = nameParts.slice(1).join(' ') || '';
+    const email = formData.get('email') || '';
+    const phone = formData.get('phone') || '';
+    const loanGoal = formData.get('loanGoal') || '';
+    const params = new URLSearchParams(window.location.search);
+
+    await Promise.allSettled([
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      }),
+      fetch('/.netlify/functions/subscribe-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email, fname, lname, phone,
+          tag: 'quick-quote-lead',
+          loan_goal: loanGoal,
+          lead_source: 'Quick Quote',
+          page_url: window.location.href,
+          utm_source: params.get('utm_source') || '',
+          utm_medium: params.get('utm_medium') || '',
+          utm_campaign: params.get('utm_campaign') || '',
+        }),
+      }).catch((err) => console.warn('[quick-quote] subscribe-lead failed:', err.message)),
+    ]);
+
+    dispatchLeadSubmitted({ lead_type: 'quick_quote', form_name: form.getAttribute('name') || 'hero-quick-form' });
+    window.location.href = '/thank-you';
   });
 }
 
