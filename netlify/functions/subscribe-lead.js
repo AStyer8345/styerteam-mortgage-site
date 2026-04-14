@@ -33,6 +33,10 @@ const N8N_GUIDE_EMAIL_URL = "https://styer.app.n8n.cloud/webhook/ftb-guide-email
 // n8n webhook: sends LO notification for pre-approval funnel leads
 const N8N_PA_LEAD_URL = "https://styer.app.n8n.cloud/webhook/pre-approval-lead";
 
+// n8n webhooks: nurture sequences via Resend (PA Welcome 6 emails / DPA Guide 8 emails)
+const N8N_PA_NURTURE_URL  = "https://styer.app.n8n.cloud/webhook/pa-nurture";
+const N8N_DPA_NURTURE_URL = "https://styer.app.n8n.cloud/webhook/dpa-nurture";
+
 // Supabase direct access for drip enrollment
 const SUPABASE_URL  = "https://uuqedsvjlkeszrbwzizl.supabase.co";
 const SUPABASE_KEY  = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
@@ -95,10 +99,23 @@ exports.handler = async (event) => {
   }
 
   // Send the FTB Guide welcome email via n8n → Outlook only for ftb-guide tag.
-  // DPA guide leads (ftb-dpa-guide) use Mailchimp automation instead — do NOT fire this.
   if (tag === "ftb-guide") {
     sendGuideEmail({ email, fname }).catch(err =>
       console.error("[subscribe-lead] Guide email failed:", err.message)
+    );
+  }
+
+  // PA Welcome nurture (6 emails, 60 days) — PA funnel leads only
+  if (lead_source === "Pre-Approval Funnel") {
+    fireNurtureWebhook(N8N_PA_NURTURE_URL, { email, fname }).catch(err =>
+      console.error("[subscribe-lead] PA nurture webhook failed:", err.message)
+    );
+  }
+
+  // DPA Guide nurture (8 emails, 52 days) — DPA guide leads only
+  if (tag === "ftb-dpa-guide" || lead_source === "FTB DPA Guide") {
+    fireNurtureWebhook(N8N_DPA_NURTURE_URL, { email, fname }).catch(err =>
+      console.error("[subscribe-lead] DPA nurture webhook failed:", err.message)
     );
   }
 
@@ -164,6 +181,17 @@ async function subscribeToMailchimp({ email, authHeader, fname, lname, tag }) {
   }
 
   return { isNew };
+}
+
+async function fireNurtureWebhook(url, { email, fname }) {
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, first_name: fname || "" }),
+  });
+  if (!res.ok) {
+    throw new Error(`Nurture webhook failed: ${res.status}`);
+  }
 }
 
 async function sendGuideEmail({ email, fname }) {
