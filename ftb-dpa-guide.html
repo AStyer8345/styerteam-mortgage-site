@@ -423,6 +423,7 @@
               <input type="hidden" id="dpa-utm-campaign" name="utm_campaign">
               <input type="hidden" id="dpa-utm-term"     name="utm_term">
               <input type="hidden" id="dpa-utm-content"  name="utm_content">
+              <input type="hidden" id="dpa-referrer"     name="referrer">
 
               <div class="lp-form-field">
                 <label for="dpa-fname">First Name</label>
@@ -590,7 +591,7 @@
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'generate_lead', lead_type: 'ftb_dpa_guide' });
 
-        fetch('/.netlify/functions/subscribe-lead', {
+        fetch('/.netlify/functions/lead-intake', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -611,12 +612,13 @@
           window.location.href = '/thank-you.html?type=ftb-dpa-guide';
         })
         .catch(function (err) {
-          console.error('[ftb-dpa-guide] subscribe-lead error:', err);
+          console.error('[ftb-dpa-guide] lead-intake error:', err);
           // Redirect anyway — lead capture failure shouldn't block the user
           window.location.href = '/thank-you.html?type=ftb-dpa-guide';
         });
       });
     })();
   </script>
+  <script src="/assets/utm.js" defer></script>
 </body>
 </html>

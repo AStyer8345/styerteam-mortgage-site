@@ -581,7 +581,7 @@
                 errBox.style.display = 'none';
 
                 try {
-                  var res = await fetch('/.netlify/functions/subscribe-lead', {
+                  var res = await fetch('/.netlify/functions/lead-intake', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email: email, fname: fname, tag: 'ftb-lead' })
@@ -813,5 +813,6 @@
   <!-- Main site script (for mobile menu, scroll behavior) -->
   <script src="/script.js" defer></script>
   <script src="/analytics.js" defer></script>
+  <script src="/assets/utm.js" defer></script>
 </body>
 </html>

@@ -399,6 +399,7 @@
               <input type="hidden" id="ra-utm-campaign" name="utm_campaign">
               <input type="hidden" id="ra-utm-term"     name="utm_term">
               <input type="hidden" id="ra-utm-content"  name="utm_content">
+              <input type="hidden" id="ra-referrer"     name="referrer">
 
               <div class="lp-form-field">
                 <label for="ra-fname">First Name</label>
@@ -562,7 +563,7 @@
         // Google Ads conversion
         gtag('event', 'conversion', { 'send_to': 'AW-18028490942/XYcDCMqh64wcEL7h05RD' });
 
-        fetch('/.netlify/functions/subscribe-lead', {
+        fetch('/.netlify/functions/lead-intake', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -584,12 +585,13 @@
           window.location.href = '/thank-you.html?type=rate-alert';
         })
         .catch(function (err) {
-          console.error('subscribe-lead error:', err);
+          console.error('lead-intake error:', err);
           // Still redirect — don't punish user for a backend error
           window.location.href = '/thank-you.html?type=rate-alert';
         });
       });
     })();
   </script>
+  <script src="/assets/utm.js" defer></script>
 </body>
 </html>

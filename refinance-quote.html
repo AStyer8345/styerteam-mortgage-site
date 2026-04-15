@@ -483,7 +483,7 @@
         window.dataLayer.push({ event: 'generate_lead', lead_type: 'refi_quote' });
 
         // Submit to Netlify (stores submission + emails Adam) AND call our
-        // subscribe-lead function (Mailchimp + Loanos) — both in parallel.
+        // lead-intake function (Mailchimp + Loanos) — both in parallel.
         Promise.all([
           fetch('/', {
             method:  'POST',
@@ -491,7 +491,7 @@
             body:    new URLSearchParams(data).toString(),
           }).catch(function (err) { console.error('Netlify form error:', err); }),
 
-          fetch('/.netlify/functions/subscribe-lead', {
+          fetch('/.netlify/functions/lead-intake', {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -506,12 +506,13 @@
               utm_campaign: data.get('utm_campaign') || '',
               page_url:     data.get('page_url')     || window.location.href,
             }),
-          }).catch(function (err) { console.error('subscribe-lead error:', err); }),
+          }).catch(function (err) { console.error('lead-intake error:', err); }),
         ]).finally(function () {
           window.location.href = '/thank-you';
         });
       });
     })();
   </script>
+  <script src="/assets/utm.js" defer></script>
 </body>
 </html>
