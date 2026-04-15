@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-04-14 — H2 Question Format as AEO Structure + City At-a-Glance Pattern for Tier-1 Suburb Pages
+
+### Patterns
+- **H2s in question format ("Why Should X?" vs "Why X") are a structural AEO signal**: AI crawlers and AI Overviews extract Q&A patterns from heading structure. Converting content H2s from informational labels ("Loan Options for Round Rock Buyers") to searchable questions ("What Loan Programs Are Available for Round Rock TX Homebuyers?") aligns with how AI systems parse page content for citation. Confirmed as a priority via NotebookLM.
+- **Tier-1 suburb pages (Round Rock, Cedar Park, Leander, Georgetown) were missing explicit city at-a-glance blocks despite having natural local content**: The content within body paragraphs doesn't carry the same local signal density as a structured `<p><strong>City at a glance:</strong> [facts]</p>` block. These blocks should include: county context (Williamson vs Travis tax rate), school district name + top high school names, 3-4 major employers, 5+ neighborhood names. Round Rock added 2026-04-14.
+- **Wednesday suburb rotation prioritization**: Within the Wednesday rotation, tier-1 cities (Round Rock, Cedar Park, Leander, Georgetown, Pflugerville) should be prioritized over tier-2 (Kyle, Buda, San Marcos) for H2 question format audits and at-a-glance enrichment.
+- **"TEA Exemplary" is outdated rating language**: Texas TEA now uses A-F ratings, not the old Exemplary/Recognized/Acceptable system. When describing school quality, use "highly-rated" or "A-rated" not "Exemplary."
+
+---
+
 ## 2026-04-13 — First Suburb Ranking + Competitor Review Gap Strategy
 
 ### Patterns
