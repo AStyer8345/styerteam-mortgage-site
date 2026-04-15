@@ -1,5 +1,15 @@
 # styermortgage.com — Changelog
 
+## 2026-04-15 — Daily optimization (Wednesday rotation: Cedar Park + Leander suburb AEO)
+
+- cedar-park-mortgage-lender.html: 3 H2s + 2 H3s converted to AEO question format
+- cedar-park-mortgage-lender.html: Added Cedar Park at-a-glance block (Williamson/Travis split, Leander ISD A-rated, Apple/Dell/IBM employers, 183A, neighborhoods: Buttercup Creek, Twin Creeks, Anderson Mill, Riviera Ridge, Carriage Hills)
+- cedar-park-mortgage-lender.html: Corrected TEA rating language from outdated "Exemplary" → "A-rated"
+- leander-mortgage-lender.html: 5 H2s converted to AEO question format (at-a-glance block already present)
+- sitemap.xml: cedar-park lastmod 2026-03-27 → 2026-04-15; leander lastmod 2026-04-12 → 2026-04-15
+- Full Cedar Park audit: all core checks PASS — form, FAQPage, BreadcrumbList, H1, /get-preapproved links, AEO paragraph
+- Self-review: PASS — 4 files, 0 issues
+
 ## 2026-04-14 — Daily optimization (Wednesday rotation: Round Rock suburb deep dive)
 
 - round-rock-mortgage-lender.html: H2s/H3 converted to question format for AEO ("Why Should...?", "What Loan Programs...?", "What Are Home Prices...?")

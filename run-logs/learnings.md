@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-04-15 — TEA Rating Language Update + Hutto Schema Already Correct
+
+### Patterns
+- **Texas TEA "Exemplary/Recognized" is definitively outdated — use "A-rated"**: Cedar Park's page used "Exemplary" (old system) and "consistently rated among the top" (generic). Fixed to "A-rated by the Texas Education Agency." This applies to any suburb page that references school quality. Scan for "Exemplary" and "Recognized" in all suburb pages and replace with "A-rated" or "highly-rated."
+- **Before acting on NotebookLM schema recommendations, verify the schema first**: NotebookLM recommended updating Hutto's AggregateRating to 91 reviews. A quick grep showed it already reads "136" — the notebook's reference to "91" was Google-only reviews, but combined (91 Google + 45 Zillow = 136) is already in the schema. Always grep the actual file before making schema changes based on AI recommendations.
+- **Leander H2s were not yet in question format despite at-a-glance block being present**: A page can have a rich at-a-glance block (from a prior session) and still have informational-label H2s. These are two separate AEO improvements. The Wednesday rotation should now check both independently.
+
+---
+
 ## 2026-04-14 — H2 Question Format as AEO Structure + City At-a-Glance Pattern for Tier-1 Suburb Pages
 
 ### Patterns

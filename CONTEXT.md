@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-14 (run 2) — Wednesday rotation: Round Rock suburb deep dive. Converted 2 H2s + 1 H3 to AEO question format. Added "Round Rock at a glance" city enrichment block (RRISD schools, Williamson County tax, employers, neighborhoods). Sitemap lastmod updated. Self-review PASS. All prior session files also committed.
+2026-04-15 (scheduled) — Wednesday rotation: Cedar Park + Leander suburb AEO. Cedar Park: 3 H2s + 2 H3s converted to question format; added Cedar Park at-a-glance block (Williamson/Travis split, Leander ISD A-rated, Apple/Dell/IBM, 183A, Buttercup Creek/Twin Creeks/Anderson Mill/Riviera Ridge/Carriage Hills). TEA language updated from outdated "Exemplary" → "A-rated". Leander: 5 H2s converted (at-a-glance already present). Both sitemap lastmods updated. Cedar Park deploy verified 200. Self-review PASS both files.
 
 ## Rate Check Page Inventory
 
@@ -54,10 +54,10 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. **Cedar Park suburb audit** — Wednesday rotation continues. H2: "Buying a Home in Cedar Park: What You Need to Know" → question format. Add at-a-glance block (Leander ISD, 183A, Apple proximity, Buttercup Creek/Twin Creeks neighborhoods).
-2. **Continue Hutto push** — internal links from other suburb pages to hutto-mortgage-lender.html; also update AggregateRating to 136 if not already done
+1. **Georgetown suburb H2 audit** — Wednesday rotation continues. Check H2 question format (updated 2026-04-12 but H2 format not confirmed). Verify at-a-glance block includes county context. Then check Pflugerville.
+2. **Hutto push** — AggregateRating schema already correct at 136 ✅. AEO paragraph present. Neighborhood names (Star Ranch, Riverview, Brushy Creek, Cottonwood Creek) present. No action needed unless GSC shows it slipped.
 3. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
-4. **GSC URL Inspection** — Submit Round Rock (just updated today), Cedar Park, Dripping Springs, Leander, Georgetown (Adam action)
+4. **GSC URL Inspection** — Submit Cedar Park + Leander (updated today); Round Rock (updated 2026-04-14). Adam action required.
 5. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
 6. Rename temp placeholder blog posts to permanent slugs
 
