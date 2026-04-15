@@ -1,5 +1,13 @@
 # styermortgage.com — Changelog
 
+## 2026-04-14 — Daily optimization (Wednesday rotation: Round Rock suburb deep dive)
+
+- round-rock-mortgage-lender.html: H2s/H3 converted to question format for AEO ("Why Should...?", "What Loan Programs...?", "What Are Home Prices...?")
+- round-rock-mortgage-lender.html: Added "Round Rock at a glance" city enrichment (RRISD schools, Williamson County tax context, employer list, neighborhoods)
+- sitemap.xml: round-rock-mortgage-lender.html lastmod updated 2026-03-27 → 2026-04-14
+- Round Rock full audit: all core checks PASS — form, FAQPage, BreadcrumbList, H1, /get-preapproved links, AEO paragraph, answer-first FAQs
+- Self-review: PASS — 2 files, 0 issues
+
 ## 2026-04-14 — Daily optimization (Tuesday title/meta audit)
 
 - Title tag audit: 6 loan/resource pages standardized to "[Loan Type] in Austin TX | Adam Styer | NMLS #513013"

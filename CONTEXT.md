@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-14 — Daily opt (Tuesday title/meta audit). Standardized 6 loan/resource pages to "... | Adam Styer | NMLS #513013" title format. Updated mortgage-broker-vs-bank.html Article schema dateModified → 2026-04-14. 7 files, self-review PASS. Commit pending.
+2026-04-14 (run 2) — Wednesday rotation: Round Rock suburb deep dive. Converted 2 H2s + 1 H3 to AEO question format. Added "Round Rock at a glance" city enrichment block (RRISD schools, Williamson County tax, employers, neighborhoods). Sitemap lastmod updated. Self-review PASS. All prior session files also committed.
 
 ## Rate Check Page Inventory
 
@@ -54,10 +54,10 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. **Continue Hutto push** — monitor ranking movement; next step is internal links from other suburb pages to hutto-mortgage-lender.html
-2. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
-3. ~~**mortgage-broker-vs-bank.html dateModified**~~ ✅ DONE 2026-04-14
-4. **GSC URL Inspection** — Submit Dripping Springs, Round Rock, Cedar Park, Leander, Georgetown for manual indexing (Adam action)
+1. **Cedar Park suburb audit** — Wednesday rotation continues. H2: "Buying a Home in Cedar Park: What You Need to Know" → question format. Add at-a-glance block (Leander ISD, 183A, Apple proximity, Buttercup Creek/Twin Creeks neighborhoods).
+2. **Continue Hutto push** — internal links from other suburb pages to hutto-mortgage-lender.html; also update AggregateRating to 136 if not already done
+3. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
+4. **GSC URL Inspection** — Submit Round Rock (just updated today), Cedar Park, Dripping Springs, Leander, Georgetown (Adam action)
 5. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
 6. Rename temp placeholder blog posts to permanent slugs
 
