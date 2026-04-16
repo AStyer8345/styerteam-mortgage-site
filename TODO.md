@@ -16,8 +16,8 @@
 - [ ] Verify all 15 new pages render on live Netlify deploy
 - [ ] Submit updated sitemap to Google Search Console
 - [ ] Set up Suburb — Purchase Intent campaign in Google Ads (spec ready, needs manual setup)
-- [ ] Decide: rename `2026-03-06-temp-placeholder.html` ("Oil Prices" post) to proper slug
-- [ ] Decide: delete `2026-03-30-temp-placeholder.html` (rates post at temp slug, noindexed)
+- [x] Rename temp/truncated blog slugs — oil-prices → rate-volatility; why-rates-jumped-...-tomo → why-rates-improved-today-bond-rally (2026-04-15); 301s added in _redirects
+- [x] Replace placeholder `your-cid` in about.html LocalBusiness sameAs with real CID ChIJYy5uEFPKRIYRmF-k_5gPk74 (2026-04-15)
 
 ## Next (before end of April)
 
@@ -33,7 +33,7 @@
 ## Backlog (someday/maybe)
 
 - [ ] Blog title brand drift — pre-publish lint catches it but root cause is human process
-- [ ] Homepage hero CTA bypasses tracked funnel (intentional for high-intent visitors, low priority)
+- [x] Homepage hero CTA bypasses tracked funnel — FIXED 2026-04-16 → /get-preapproved
 - [ ] Google Ads Refinance campaign (in preparation)
 - [ ] Google Ads optimization score push toward 100% (currently 87.9%)
 - [x] ~~AEO paragraphs on all 25 suburb pages~~ — DONE 2026-04-12 (run 2) — Kyle, Leander, Pflugerville, Georgetown, Austin-area were last gap

@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-04-16 — Buda Old-Template CTA Gap + Wednesday H2 Rotation Complete
+
+### Patterns
+- **Buda uses the older `city-hero` / `quick-quote-form` template, not the standard glass-card hero**: The March 31 batch CTA sweep targeted `*-mortgage-lender.html` files using the standard `hero-cta-primary` and `btn-lg` class patterns. Buda's older template uses a `<div class="quick-quote-form">` form with a submit button (not a standalone CTA button) — and its body CTA section used class `btn btn-primary` (no `hero-cta-primary`). Both the body CTA and footer Apply Now survived the sweep undetected until today. **Rule: always grep for the raw domain URL (`mslp.my1003app.com`) across ALL suburb pages after any batch CTA fix — not just by class name.**
+- **Wednesday suburb H2 question-format rotation is now complete for all 7 checked cities**: Round Rock ✅ (Apr 14), Cedar Park ✅ (Apr 15), Leander ✅ (Apr 15), Georgetown ✅ (Apr 15b), Pflugerville ✅ (Apr 15b), Kyle ✅ (Apr 16), Buda ✅ (Apr 16). Remaining suburb pages not yet audited for H2 format: San Marcos, Westlake, Dripping Springs, Hutto, Liberty Hill, Manor, Lakeway, Bee Cave, New Braunfels, Taylor, Bastrop, Spicewood, Smithville, Elgin, Jarrell, Florence, Marble Falls, Austin-area hub.
+- **NotebookLM may return stale recommendations weeks after fixes are applied**: Today's query recommended fixing the homepage H1 (done March 26) and Hutto schema to 91 reviews (schema already at 136). The query DID correctly flag the homepage hero CTA issue (still open as of today's run). Pattern: use NotebookLM for directional insight, always verify claimed issues against actual file state before acting. Stale recommendations are easy to filter once you read the file.
+- **Homepage hero CTA raw app URL persisted as a LOW blocker for 3+ weeks after suburb pages were fixed**: The March 31 batch fix was scoped to `*-mortgage-lender.html` files. The homepage was out of scope. DECISION TEST confirmed it was safe to fix (reversible, no judgment call needed, same fix as 24 suburb pages). Fixed today. **Rule: after any sitewide batch fix, explicitly check the homepage and loan pages for the same pattern — they're not covered by `*-mortgage-lender.html` globs.**
+
+---
+
 ## 2026-04-15 — TEA Rating Language Update + Hutto Schema Already Correct
 
 ### Patterns

@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-15b (scheduled) — Wednesday rotation: Georgetown + Pflugerville AEO. Georgetown: 5 H2s → question format; /calculators body link added; all checks PASS. Pflugerville: 4 H2s → question format; at-a-glance block added (Travis/Williamson split, PISD campuses, Amazon+Samsung+NE Austin, Blackhawk/Windermere/Heatherwilde/Falcon Pointe/Colorado Crossing, commutes, $320K–$420K); /calculators body link added. Both sitemap lastmods 2026-04-15. Deploy verified 200. Self-review PASS.
+2026-04-16 (scheduled) — TOMORROW_PRIORITY: Kyle + Buda H2 audit. Kyle: 3 H2s → question format; at-a-glance block added (Hays County, Kyle ISD, Amazon + Tesla corridor, Plum Creek/6 Creeks/Anthem/Crosswinds/Steeplechase, $280K–$380K). Buda: 3 H2s → question format; at-a-glance block added; /calculators body link added; body CTA + footer Apply Now fixed from raw app URL → /get-preapproved. Homepage hero "Apply Now" fixed from raw app URL → /get-preapproved (LOW blocker closed). Both sitemap lastmods 2026-04-16. Thursday funnel audit PASS. Deploy verified 200. Self-review PASS.
 
 ## Rate Check Page Inventory
 
@@ -48,17 +48,17 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 | Issue | Priority |
 |-------|----------|
-| Homepage hero "Apply Now" links to raw 1003 app (bypasses tracked funnel) | LOW |
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
+| Buda trust bar text differs from standard (old template) — needs update | LOW |
 
 ## What's Next
 
-1. **Kyle + Buda H2 audit** — Next in Wednesday rotation. Check H2 question format, at-a-glance block (verify county + ISD + employers + neighborhoods present), /calculators body link on each.
-2. **Hutto push** — AggregateRating schema correct at 136 ✅. AEO paragraph present. No action needed unless GSC shows slippage.
-3. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
-4. **GSC URL Inspection** — Submit Georgetown + Pflugerville (updated today); Cedar Park + Leander (updated 2026-04-15 AM); Round Rock (2026-04-14). Adam action required.
-5. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
-6. Rename temp placeholder blog posts to permanent slugs
+1. **Friday rotation** — Content planning + AEO review: check last blog post date, audit 2 posts for AEO quality (answer-first FAQ, H2 question format, extractable summary)
+2. **Buda trust bar fix** — Update old template hero text to match standard: "5.0 ★ (136+ Reviews) | 21-Day Avg. Close | Licensed in Texas | NMLS #513013" (LOW, quick)
+3. **Hutto push** — AggregateRating schema correct at 136 ✅. AEO paragraph present. No action needed unless GSC shows slippage.
+4. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
+5. **GSC URL Inspection** — Submit Kyle + Buda (updated today); Georgetown + Pflugerville (updated 2026-04-15); Cedar Park + Leander (updated 2026-04-15 AM). Adam action required.
+6. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
 
 ## Known Issues
 
