@@ -764,26 +764,65 @@
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting…';
 
-      var formData = new FormData(form);
+      // Build JSON payload — base64-encode the PDF so n8n's webhook can parse
+      // form fields reliably (n8n multipart parsing drops fields past ~3).
+      var fileEl = document.getElementById('rc-file');
+      var pdfFile = fileEl && fileEl.files && fileEl.files[0];
 
-      fetch(WEBHOOK_URL, {
-        method: 'POST',
-        body: formData
-      })
-      .then(function(res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
-      .then(function() {
-        form.style.display = 'none';
-        successMsg.className = 'rc-form-status success';
-        window.dataLayer.push({ event: 'generate_lead', lead_type: 'rate_check' });
-      })
-      .catch(function() {
-        errorMsg.className = 'rc-form-status error';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Upload & Get My Free Review';
-      });
+      var payload = {
+        first_name: form.first_name.value,
+        last_name: form.last_name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        closing_date: form.closing_date.value,
+        loan_amount: form.loan_amount.value,
+        loan_type: form.loan_type.value,
+        credit_score: form.credit_score.value,
+        notes: (form.notes && form.notes.value) || '',
+        loan_estimate_filename: pdfFile ? pdfFile.name : '',
+        loan_estimate_base64: ''
+      };
+
+      function sendPayload() {
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(function(res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function() {
+          form.style.display = 'none';
+          successMsg.className = 'rc-form-status success';
+          window.dataLayer.push({ event: 'generate_lead', lead_type: 'rate_check' });
+        })
+        .catch(function() {
+          errorMsg.className = 'rc-form-status error';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Upload & Get My Free Review';
+        });
+      }
+
+      if (pdfFile) {
+        var reader = new FileReader();
+        reader.onload = function(ev) {
+          // ev.target.result is a data URL: "data:application/pdf;base64,AAAA..."
+          var result = ev.target.result || '';
+          var comma = result.indexOf(',');
+          payload.loan_estimate_base64 = comma >= 0 ? result.substring(comma + 1) : '';
+          sendPayload();
+        };
+        reader.onerror = function() {
+          errorMsg.className = 'rc-form-status error';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Upload & Get My Free Review';
+        };
+        reader.readAsDataURL(pdfFile);
+      } else {
+        sendPayload();
+      }
     });
 
     // Live validation on blur
