@@ -1,5 +1,15 @@
 # styermortgage.com — Changelog
 
+## 2026-04-15b — Daily optimization (Wednesday rotation: Georgetown + Pflugerville suburb AEO)
+
+- georgetown-mortgage-lender.html: 5 H2s converted to question format ("Why Work With?", "Why Should...Use?", "What Loan Programs?", "What Should...Know?", "How Does the Process Work?")
+- georgetown-mortgage-lender.html: Added /calculators body link in New Construction paragraph
+- pflugerville-mortgage-lender.html: 4 H2s converted to question format (5th "How to Get a Mortgage" already correct)
+- pflugerville-mortgage-lender.html: Added Pflugerville at-a-glance block (Travis/Williamson split, PISD, Amazon+Samsung+NE Austin employers, 6 neighborhoods, commutes, $320K–$420K)
+- pflugerville-mortgage-lender.html: Added /calculators body link in Price Range paragraph
+- sitemap.xml: Georgetown + Pflugerville lastmods 2026-04-12 → 2026-04-15
+- Deploy verified: both pages 200 ✅. Self-review: PASS — 3 files, 0 issues.
+
 ## 2026-04-15 — Daily optimization (Wednesday rotation: Cedar Park + Leander suburb AEO)
 
 - cedar-park-mortgage-lender.html: 3 H2s + 2 H3s converted to AEO question format

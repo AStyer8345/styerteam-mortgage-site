@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-15 (scheduled) — Wednesday rotation: Cedar Park + Leander suburb AEO. Cedar Park: 3 H2s + 2 H3s converted to question format; added Cedar Park at-a-glance block (Williamson/Travis split, Leander ISD A-rated, Apple/Dell/IBM, 183A, Buttercup Creek/Twin Creeks/Anderson Mill/Riviera Ridge/Carriage Hills). TEA language updated from outdated "Exemplary" → "A-rated". Leander: 5 H2s converted (at-a-glance already present). Both sitemap lastmods updated. Cedar Park deploy verified 200. Self-review PASS both files.
+2026-04-15b (scheduled) — Wednesday rotation: Georgetown + Pflugerville AEO. Georgetown: 5 H2s → question format; /calculators body link added; all checks PASS. Pflugerville: 4 H2s → question format; at-a-glance block added (Travis/Williamson split, PISD campuses, Amazon+Samsung+NE Austin, Blackhawk/Windermere/Heatherwilde/Falcon Pointe/Colorado Crossing, commutes, $320K–$420K); /calculators body link added. Both sitemap lastmods 2026-04-15. Deploy verified 200. Self-review PASS.
 
 ## Rate Check Page Inventory
 
@@ -49,15 +49,14 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Issue | Priority |
 |-------|----------|
 | Homepage hero "Apply Now" links to raw 1003 app (bypasses tracked funnel) | LOW |
-| `2026-03-06-temp-placeholder.html` — "Oil Prices" post still at temp URL | MEDIUM |
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
 
 ## What's Next
 
-1. **Georgetown suburb H2 audit** — Wednesday rotation continues. Check H2 question format (updated 2026-04-12 but H2 format not confirmed). Verify at-a-glance block includes county context. Then check Pflugerville.
-2. **Hutto push** — AggregateRating schema already correct at 136 ✅. AEO paragraph present. Neighborhood names (Star Ranch, Riverview, Brushy Creek, Cottonwood Creek) present. No action needed unless GSC shows it slipped.
+1. **Kyle + Buda H2 audit** — Next in Wednesday rotation. Check H2 question format, at-a-glance block (verify county + ISD + employers + neighborhoods present), /calculators body link on each.
+2. **Hutto push** — AggregateRating schema correct at 136 ✅. AEO paragraph present. No action needed unless GSC shows slippage.
 3. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
-4. **GSC URL Inspection** — Submit Cedar Park + Leander (updated today); Round Rock (updated 2026-04-14). Adam action required.
+4. **GSC URL Inspection** — Submit Georgetown + Pflugerville (updated today); Cedar Park + Leander (updated 2026-04-15 AM); Round Rock (2026-04-14). Adam action required.
 5. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
 6. Rename temp placeholder blog posts to permanent slugs
 
