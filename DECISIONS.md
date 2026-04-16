@@ -1,5 +1,20 @@
 # styermortgage.com — Decisions
 
+## [2026-04-16] — Rate-check form uses JSON + base64 PDF, not multipart
+
+**Chose:** Form serializes fields as JSON and base64-encodes the PDF before POSTing to the n8n webhook.
+**Over:** Native `FormData` / multipart/form-data (the obvious, standard approach for file uploads).
+**Why:** n8n's webhook node (both v2 and v2.1) has a broken multipart parser. Testing showed it reliably parses only the first 3 form fields and then mashes everything after — including subsequent text fields AND the file — into a single corrupted binary blob labeled with whatever field name came 4th. This made the notification email useless and would have caused silent data loss on every submission.
+**Trade-off:** Slightly larger request payload (base64 inflates binary by ~33%). For typical Loan Estimate PDFs (200KB–1MB) this is a non-issue. On the n8n side, one extra Code node ("Decode PDF") rehydrates the base64 back into a proper `application/pdf` binary for the email attachment.
+**Context:** If n8n ever fixes its multipart parser, or if we switch lead capture to a different backend (Supabase Edge Function, Netlify Function), this can be revisited. Until then, JSON + base64 is the reliable path.
+
+## [2026-04-16] — `neverError: false` on all Supabase HTTP nodes in n8n
+
+**Chose:** Let Supabase HTTP node errors fail the workflow and surface in execution history.
+**Over:** `neverError: true`, which swallows HTTP 4xx/5xx and reports the execution as successful.
+**Why:** The rate-check workflow had `neverError: true` on both its Supabase inserts. NOT NULL constraint violations on `user_id` / `organization_id` were returning 400s that never bubbled up — the workflow reported success while nothing was landing. Found it only by testing with my personal Gmail and noticing no notification, then inspecting the raw HTTP response in execution data.
+**Rule going forward:** `neverError` stays off on every Supabase-backed workflow. If a real use case needs tolerance for a single failed insert (e.g., a fan-out where one row can fail without killing the rest), use a dedicated error-handling branch instead of silencing the error globally.
+
 ## [2026-03] — Static HTML, No Framework
 
 **Chose:** Vanilla HTML/CSS/JS with no build step.
