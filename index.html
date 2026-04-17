@@ -79,7 +79,7 @@
     .hero-call-link{margin:0;font-size:var(--font-size-sm)}.hero-call-link-a{display:inline-flex;align-items:center;gap:0.35rem;color:rgba(255,255,255,0.85);text-decoration:none}
     .hero-legal{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0}
     .hero-cutout{position:absolute;bottom:0;right:3%;max-height:100%;width:450px;max-width:45%;object-fit:contain;object-position:bottom center;z-index:2;pointer-events:none;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.30))}
-    .hero-gradient-text{background:linear-gradient(135deg,#ffffff 0%,#f0e6c8 40%,#d4b254 70%,#ffffff 100%);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-gradient-text{background:linear-gradient(135deg,#ffffff 0%,#f0e6c8 40%,#d4b254 70%,#ffffff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .star-svg{display:inline-block;flex-shrink:0}
     @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{height:auto;min-height:auto;max-height:none;padding:var(--spacing-3xl) 0}.hero h1{font-size:var(--font-size-3xl)}.hero-two-col{grid-template-columns:1fr;gap:1.25rem}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:center;text-align:center}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:center}.hero-glass-card{max-width:100%;padding:var(--spacing-xl) var(--spacing-lg);overflow:hidden}.hero-rating-chip{white-space:normal;text-align:center;justify-content:center}.hero-cutout{display:none}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
     @media(max-width:500px){.hero-quick-form-grid{grid-template-columns:1fr}}
@@ -249,12 +249,29 @@
   }
   </script>
   <script>window.dataLayer = window.dataLayer || [];</script>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
+  <!-- Google Tag Manager (deferred to idle-time to keep main thread clear during LCP) -->
+  <script>
+  (function(){
+    var loaded = false;
+    function loadGTM(){
+      if (loaded) return; loaded = true;
+      // Container snippet preserved verbatim — only the invocation is deferred.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PQQ6PGLR');
+    }
+    // Fire on first user interaction OR after idle, whichever comes first.
+    var events = ['scroll','mousemove','touchstart','keydown','click'];
+    events.forEach(function(ev){ window.addEventListener(ev, loadGTM, { once:true, passive:true }); });
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGTM, { timeout: 3500 });
+    } else {
+      setTimeout(loadGTM, 3500);
+    }
+  })();
+  </script>
   <!-- End Google Tag Manager -->
 </head>
 <body>

@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-16 (scheduled) — TOMORROW_PRIORITY: Kyle + Buda H2 audit. Kyle: 3 H2s → question format; at-a-glance block added (Hays County, Kyle ISD, Amazon + Tesla corridor, Plum Creek/6 Creeks/Anthem/Crosswinds/Steeplechase, $280K–$380K). Buda: 3 H2s → question format; at-a-glance block added; /calculators body link added; body CTA + footer Apply Now fixed from raw app URL → /get-preapproved. Homepage hero "Apply Now" fixed from raw app URL → /get-preapproved (LOW blocker closed). Both sitemap lastmods 2026-04-16. Thursday funnel audit PASS. Deploy verified 200. Self-review PASS.
+2026-04-16 (interactive) — Homepage Lighthouse perf fix. Was 72/100 with LCP 4.9s, FCP 2.7s, TBT 280ms on mobile. Deferred GTM loader to idle/first-interaction (container snippet preserved verbatim) — removes the long main-thread task and ~202 KiB unused JS from the critical path. Removed two non-composited animations: `gradient-shimmer` on hero H1 (was animating `background-position` for 4s during LCP window) and infinite `hero-cta-glow` box-shadow on Apply Now hover. Kept static gold gradient + static hover glow — no visual regression. Also cleaned up dead `background-size` / `will-change` declarations and the two now-unused `@keyframes`. Expected Lighthouse: 90+ / LCP ~3s / TBT ~50-100ms.
 
 ## Rate Check Page Inventory
 
