@@ -79,6 +79,199 @@
       text-decoration: none;
     }
     .ty-phone-cta a:hover { text-decoration: underline; }
+    .ty-cta-row {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: var(--spacing-lg);
+    }
+    .ty-cta-row .ty-phone-cta { margin: 0; }
+    .ty-cta-divider { color: rgba(255,255,255,0.5); font-weight: 400; }
+    .ty-schedule-btn {
+      display: inline-block;
+      background: var(--color-gold);
+      color: var(--color-navy) !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: var(--font-weight-semibold);
+      text-decoration: none !important;
+      font-size: var(--font-size-base);
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+      box-shadow: 0 4px 12px rgba(139,110,36,0.35);
+    }
+    .ty-schedule-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(139,110,36,0.5); }
+    @media (max-width: 600px) {
+      .ty-cta-divider { display: none; }
+      .ty-cta-row { flex-direction: column; gap: var(--spacing-sm); }
+    }
+    /* Follow-up section */
+    .ty-followup {
+      padding: var(--spacing-4xl) 0;
+      background: var(--color-white);
+      border-top: 1px solid var(--color-border);
+    }
+    .ty-followup-head { text-align: center; max-width: 720px; margin: 0 auto var(--spacing-2xl); }
+    .ty-followup-head h2 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-2xl);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-sm);
+    }
+    .ty-followup-head p {
+      color: var(--color-text-muted);
+      line-height: var(--line-height-relaxed);
+    }
+    .ty-followup-paths {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: var(--spacing-xl);
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    @media (max-width: 800px) {
+      .ty-followup-paths { grid-template-columns: 1fr; }
+    }
+    .ty-followup-card {
+      background: #f8f9fa;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+    }
+    .ty-followup-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-xl);
+      color: var(--color-navy);
+      margin-bottom: 6px;
+    }
+    .ty-followup-card-intro {
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+      margin-bottom: var(--spacing-lg);
+      line-height: var(--line-height-relaxed);
+    }
+    .ty-followup-card-app {
+      background: var(--color-navy);
+      border-color: var(--color-navy);
+      color: var(--color-white);
+      display: flex;
+      flex-direction: column;
+    }
+    .ty-followup-card-app h3 { color: var(--color-white); }
+    .ty-followup-card-app .ty-followup-card-intro { color: rgba(255,255,255,0.8); }
+    .ty-followup-card-app .ty-app-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--spacing-lg);
+      font-size: var(--font-size-sm);
+      color: rgba(255,255,255,0.9);
+    }
+    .ty-followup-card-app .ty-app-bullets li {
+      padding: 4px 0 4px 20px;
+      position: relative;
+      line-height: var(--line-height-relaxed);
+    }
+    .ty-followup-card-app .ty-app-bullets li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-gold);
+      font-weight: 700;
+    }
+    .ty-app-btn {
+      display: inline-block;
+      background: var(--color-gold);
+      color: var(--color-navy) !important;
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-weight: var(--font-weight-semibold);
+      text-decoration: none !important;
+      text-align: center;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+      margin-top: auto;
+    }
+    .ty-app-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(139,110,36,0.4); }
+    .ty-app-fineprint {
+      font-size: var(--font-size-xs);
+      color: rgba(255,255,255,0.6);
+      margin-top: var(--spacing-sm);
+      text-align: center;
+    }
+
+    .ty-followup-form { display: flex; flex-direction: column; gap: var(--spacing-md); }
+    .ty-followup-field label {
+      display: block;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text);
+      margin-bottom: 6px;
+    }
+    .ty-followup-field input,
+    .ty-followup-field select {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-base);
+      font-family: inherit;
+      background: var(--color-white);
+    }
+    .ty-followup-field input:focus,
+    .ty-followup-field select:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      box-shadow: 0 0 0 3px rgba(139,110,36,0.15);
+    }
+    .ty-followup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); }
+    @media (max-width: 520px) {
+      .ty-followup-grid { grid-template-columns: 1fr; }
+    }
+    .ty-followup-radio { display: flex; gap: var(--spacing-sm); }
+    .ty-followup-radio label {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 0.85rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: var(--font-weight-normal);
+      margin-bottom: 0;
+      background: var(--color-white);
+    }
+    .ty-followup-radio input { accent-color: var(--color-gold); }
+    .ty-followup-submit {
+      background: var(--color-navy);
+      color: var(--color-white);
+      border: 0;
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-base);
+      cursor: pointer;
+      margin-top: var(--spacing-sm);
+      transition: background var(--transition-base);
+    }
+    .ty-followup-submit:hover { background: #0d2a54; }
+    .ty-followup-skip {
+      text-align: center;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--spacing-sm);
+    }
+    .ty-followup-success {
+      text-align: center;
+      padding: var(--spacing-xl);
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: var(--radius-md);
+      color: #166534;
+      font-weight: var(--font-weight-semibold);
+    }
+    .ty-realtor-name { display: none; margin-top: var(--spacing-sm); }
+    .ty-realtor-name.is-visible { display: block; }
     .ty-calendly-section {
       padding: var(--spacing-4xl) 0;
       background: var(--color-white);
@@ -124,37 +317,173 @@
     <section class="ty-hero">
       <div class="container">
         <h1 id="ty-headline">Your Request Was Received</h1>
-        <p>Adam personally reviews every submission — usually within a few hours during business hours (Mon–Fri, 8am–6pm CT). You'll get a call or text from him directly. No call center. No assistant. If you'd rather choose a time now, book a 15-minute call below.</p>
-        <p class="ty-phone-cta">Or call / text now: <a href="tel:+15129566010">(512) 956-6010</a></p>
+        <p id="ty-subhead">Adam personally reviews every submission — usually within a few hours during business hours (Mon–Fri, 8am–6pm CT). You'll get a call or text from him directly. No call center. No assistant. If you'd rather choose a time now, book a 15-minute call below.</p>
+        <div class="ty-cta-row">
+          <p class="ty-phone-cta">Call / text now: <a href="tel:+15129566010">(512) 956-6010</a></p>
+          <span class="ty-cta-divider">|</span>
+          <a href="#ty-calendly" class="ty-schedule-btn">Schedule a 15-min Call</a>
+        </div>
       </div>
     </section>
 
     <!-- What Happens Next -->
-    <section style="padding:2.5rem 0;background:#f8f9fa;border-top:1px solid #e9ecef;">
+    <section id="ty-steps" style="padding:2.5rem 0;background:#f8f9fa;border-top:1px solid #e9ecef;">
       <div class="container">
         <h2 style="text-align:center;margin-bottom:2rem;font-size:1.35rem;">What Happens Next</h2>
         <div style="display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;max-width:750px;margin:0 auto;">
           <div style="flex:1;min-width:180px;text-align:center;">
             <div style="width:40px;height:40px;border-radius:50%;background:#0A1F3F;color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;">1</div>
-            <p style="font-weight:600;margin-bottom:0.35rem;">Adam reviews your file</p>
-            <p style="font-size:0.875rem;color:#555;margin:0;">Same-day review during business hours. He reads every submission personally.</p>
+            <p class="ty-step-title" style="font-weight:600;margin-bottom:0.35rem;">Adam reviews your file</p>
+            <p class="ty-step-desc" style="font-size:0.875rem;color:#555;margin:0;">Same-day review during business hours. He reads every submission personally.</p>
           </div>
           <div style="flex:1;min-width:180px;text-align:center;">
             <div style="width:40px;height:40px;border-radius:50%;background:#0A1F3F;color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;">2</div>
-            <p style="font-weight:600;margin-bottom:0.35rem;">He reaches out directly</p>
-            <p style="font-size:0.875rem;color:#555;margin:0;">Call or text from Adam — not a call center, not an assistant. You'll know exactly where you stand.</p>
+            <p class="ty-step-title" style="font-weight:600;margin-bottom:0.35rem;">He reaches out directly</p>
+            <p class="ty-step-desc" style="font-size:0.875rem;color:#555;margin:0;">Call or text from Adam — not a call center, not an assistant. You'll know exactly where you stand.</p>
           </div>
           <div style="flex:1;min-width:180px;text-align:center;">
             <div style="width:40px;height:40px;border-radius:50%;background:#0A1F3F;color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;">3</div>
-            <p style="font-weight:600;margin-bottom:0.35rem;">Letter or quote in 24 hrs</p>
-            <p style="font-size:0.875rem;color:#555;margin:0;">Pre-approval letter or rate quote delivered within one business day of submitting your documents.</p>
+            <p class="ty-step-title" style="font-weight:600;margin-bottom:0.35rem;">Letter or quote in 24 hrs</p>
+            <p class="ty-step-desc" style="font-size:0.875rem;color:#555;margin:0;">Pre-approval letter or rate quote delivered within one business day of submitting your documents.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Optional follow-up section (shown for quick-quote leads) -->
+    <section class="ty-followup" id="ty-followup" hidden>
+      <div class="container">
+        <div class="ty-followup-head">
+          <h2>Want a More Productive First Call?</h2>
+          <p>Totally optional — Adam will still reach out with what you've given him. But if you want a faster, more accurate quote, pick one of these:</p>
+        </div>
+
+        <div class="ty-followup-paths">
+          <!-- CARD 1: Quick details form -->
+          <div class="ty-followup-card">
+            <h3>Share a few quick details</h3>
+            <p class="ty-followup-card-intro">Takes about a minute. Helps Adam prep an accurate quote before he calls.</p>
+
+            <form name="quick-quote-followup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="ty-followup-form" id="ty-followup-form">
+              <input type="hidden" name="form-name" value="quick-quote-followup">
+              <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+              <input type="hidden" name="original_email" id="ty-fu-email">
+              <input type="hidden" name="original_name" id="ty-fu-name">
+              <input type="hidden" name="original_phone" id="ty-fu-phone">
+
+              <div class="ty-followup-field">
+                <label>Purchase or refinance?</label>
+                <div class="ty-followup-radio">
+                  <label><input type="radio" name="loan_type" value="Purchase"> Purchase</label>
+                  <label><input type="radio" name="loan_type" value="Refinance"> Refinance</label>
+                </div>
+              </div>
+
+              <div class="ty-followup-field">
+                <label for="ty-fu-stage">Where are you in the process?</label>
+                <select id="ty-fu-stage" name="process_stage">
+                  <option value="">Choose…</option>
+                  <option value="Just getting started">Just getting started</option>
+                  <option value="Shopping for homes">Shopping for homes</option>
+                  <option value="Made an offer">Made an offer</option>
+                  <option value="Under contract">Under contract</option>
+                  <option value="Refinancing current home">Refinancing current home</option>
+                  <option value="Just exploring">Just exploring</option>
+                </select>
+              </div>
+
+              <div class="ty-followup-field">
+                <label for="ty-fu-timeline">Timeline</label>
+                <select id="ty-fu-timeline" name="timeline">
+                  <option value="">Choose…</option>
+                  <option value="ASAP / within 30 days">ASAP / within 30 days</option>
+                  <option value="1–3 months">1–3 months</option>
+                  <option value="3–6 months">3–6 months</option>
+                  <option value="6+ months">6+ months</option>
+                  <option value="Just exploring">Just exploring</option>
+                </select>
+              </div>
+
+              <div class="ty-followup-grid">
+                <div class="ty-followup-field">
+                  <label for="ty-fu-price">Approx. purchase price <span style="color:var(--color-text-muted);font-weight:400;font-size:0.85em;">(or home value for refi)</span></label>
+                  <input id="ty-fu-price" name="purchase_price" type="text" inputmode="numeric" placeholder="$500,000">
+                </div>
+                <div class="ty-followup-field">
+                  <label for="ty-fu-down">Approx. down payment</label>
+                  <input id="ty-fu-down" name="down_payment" type="text" inputmode="numeric" placeholder="$100,000">
+                </div>
+              </div>
+
+              <div class="ty-followup-field">
+                <label for="ty-fu-credit">Credit score range</label>
+                <select id="ty-fu-credit" name="credit_score">
+                  <option value="">Choose…</option>
+                  <option value="740+">740+ (Excellent)</option>
+                  <option value="700–739">700–739 (Good)</option>
+                  <option value="660–699">660–699 (Fair)</option>
+                  <option value="620–659">620–659 (Below average)</option>
+                  <option value="Below 620">Below 620</option>
+                  <option value="Not sure">Not sure</option>
+                </select>
+              </div>
+
+              <div class="ty-followup-field">
+                <label>Working with a realtor?</label>
+                <div class="ty-followup-radio">
+                  <label><input type="radio" name="has_realtor" value="Yes" id="ty-fu-realtor-yes"> Yes</label>
+                  <label><input type="radio" name="has_realtor" value="No"> No</label>
+                  <label><input type="radio" name="has_realtor" value="Not yet"> Not yet</label>
+                </div>
+                <div class="ty-realtor-name" id="ty-fu-realtor-name-wrap">
+                  <label for="ty-fu-realtor-name">Realtor name <span style="color:var(--color-text-muted);font-weight:400;font-size:0.85em;">(optional)</span></label>
+                  <input id="ty-fu-realtor-name" name="realtor_name" type="text" placeholder="First & last name">
+                </div>
+              </div>
+
+              <div class="ty-followup-field">
+                <label for="ty-fu-source">How did you hear about Adam?</label>
+                <select id="ty-fu-source" name="referral_source">
+                  <option value="">Choose…</option>
+                  <option value="Google search">Google search</option>
+                  <option value="Realtor referral">Realtor referral</option>
+                  <option value="Friend or family">Friend or family</option>
+                  <option value="Social media">Social media</option>
+                  <option value="Podcast or YouTube">Podcast or YouTube</option>
+                  <option value="Past client">Past client</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <button type="submit" class="ty-followup-submit">Send Details</button>
+            </form>
+
+            <div class="ty-followup-success" id="ty-followup-success" hidden>
+              Thanks — Adam has your details. He'll reach out shortly.
+            </div>
+          </div>
+
+          <!-- CARD 2: Full loan application CTA -->
+          <div class="ty-followup-card ty-followup-card-app">
+            <h3>Or skip ahead — start the full application</h3>
+            <p class="ty-followup-card-intro">If you're ready to move, filling this out once makes our first call way more productive. Adam can come to the call with real numbers instead of ballparks.</p>
+            <ul class="ty-app-bullets">
+              <li>Takes about 10 minutes on your phone</li>
+              <li>Soft credit pull — doesn't hurt your score</li>
+              <li>Secure — encrypted 1003 application</li>
+              <li>Get a real pre-approval letter faster</li>
+            </ul>
+            <a href="https://mslp.my1003app.com/513013/register" class="ty-app-btn" target="_blank" rel="noopener">Start Loan Application →</a>
+            <p class="ty-app-fineprint">No obligation. No commitment. Just faster answers.</p>
+          </div>
+        </div>
+
+        <p class="ty-followup-skip" style="margin-top:var(--spacing-xl);">Or do nothing — Adam will reach out with what you've given him.</p>
+      </div>
+    </section>
+
     <!-- Calendly inline widget -->
-    <section class="ty-calendly-section">
+    <section class="ty-calendly-section" id="ty-calendly">
       <div class="container">
         <h2>Book a 15-Minute Call</h2>
         <div class="calendly-inline-widget" data-url="https://calendly.com/adamstyer/15minutes" style="min-width:320px;height:700px;"></div>
@@ -202,7 +531,69 @@
         if (phoneCta) phoneCta.innerHTML = 'While you wait: <a href="/austin-mortgage-rates.html">See current Austin mortgage rates &rarr;</a>';
         if (calendlySection) calendlySection.style.display = 'none';
       } else if (type === 'quick-quote') {
-        if (h1) h1.textContent = "Your Quote Request Was Received";
+        if (h1) h1.textContent = "Got It — Adam Will Reach Out Shortly";
+        if (paras.length > 0) paras[0].textContent = "Your name, phone, email, and loan goal are in Adam's inbox. He reads every submission personally and will call or text you directly — usually within a few hours during business hours (Mon–Fri, 8am–6pm CT). Want a faster, more accurate quote? Share a few more details below.";
+
+        // Rewrite the 3-step block for the quick-quote context (they only sent minimal info)
+        var stepTitles = document.querySelectorAll('#ty-steps .ty-step-title');
+        var stepDescs = document.querySelectorAll('#ty-steps .ty-step-desc');
+        if (stepTitles.length === 3) {
+          stepTitles[0].textContent = "Adam got your request";
+          stepDescs[0].textContent = "Name, phone, email, and loan goal received. Nothing else needed to get started.";
+          stepTitles[1].textContent = "Share more (optional)";
+          stepDescs[1].innerHTML = 'A few more details below help him prep an accurate quote. <a href="#ty-followup" style="color:#8B6E24;">Jump to form →</a>';
+          stepTitles[2].textContent = "He'll call or text you";
+          stepDescs[2].textContent = "Direct from Adam — not a call center, not an assistant. Usually same day during business hours.";
+        }
+
+        // Reveal the optional follow-up form and pre-fill hidden fields from the query string
+        var followup = document.getElementById('ty-followup');
+        if (followup) followup.hidden = false;
+        var emailParam = new URLSearchParams(window.location.search).get('email') || '';
+        var nameParam = new URLSearchParams(window.location.search).get('name') || '';
+        var phoneParam = new URLSearchParams(window.location.search).get('phone') || '';
+        var fuEmail = document.getElementById('ty-fu-email');
+        var fuName = document.getElementById('ty-fu-name');
+        var fuPhone = document.getElementById('ty-fu-phone');
+        if (fuEmail) fuEmail.value = emailParam;
+        if (fuName) fuName.value = nameParam;
+        if (fuPhone) fuPhone.value = phoneParam;
+
+        // Show realtor name field only when "Yes" is selected
+        var realtorRadios = document.querySelectorAll('input[name="has_realtor"]');
+        var realtorNameWrap = document.getElementById('ty-fu-realtor-name-wrap');
+        realtorRadios.forEach(function (r) {
+          r.addEventListener('change', function () {
+            if (realtorNameWrap) {
+              realtorNameWrap.classList.toggle('is-visible', r.checked && r.value === 'Yes');
+            }
+          });
+        });
+
+        // AJAX-submit the follow-up form so we stay on the thank-you page
+        var fuForm = document.getElementById('ty-followup-form');
+        var fuSuccess = document.getElementById('ty-followup-success');
+        if (fuForm) {
+          fuForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var fd = new FormData(fuForm);
+            var body = new URLSearchParams();
+            fd.forEach(function (v, k) { body.append(k, v); });
+            fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: body.toString(),
+            }).then(function () {
+              fuForm.hidden = true;
+              if (fuSuccess) fuSuccess.hidden = false;
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({ event: 'quick_quote_followup_submitted' });
+            }).catch(function (err) {
+              console.warn('[quick-quote-followup] submit failed:', err && err.message);
+              alert('Something went wrong sending that. Please call or text Adam at (512) 956-6010.');
+            });
+          });
+        }
       } else if (type === 'refinance') {
         if (h1) h1.textContent = "Your Refinance Quote Request Was Received";
       } else if (type === 'preapproval') {

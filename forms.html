@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forms Registry</title>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+  <!--
+    Netlify Forms detection stub.
+    This file exists so Netlify's build-time form parser reliably registers
+    any form whose markup on the live page lives inside a `hidden` section
+    or is otherwise not obvious at crawl time. Do not link to this page.
+    Keep field definitions here in sync with the real form on thank-you.html.
+  -->
+
+  <!-- quick-quote-followup: optional details form on /thank-you?type=quick-quote -->
+  <form name="quick-quote-followup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="quick-quote-followup">
+    <input type="text" name="bot-field">
+    <input type="hidden" name="original_email">
+    <input type="hidden" name="original_name">
+    <input type="hidden" name="original_phone">
+    <input type="radio" name="loan_type" value="Purchase">
+    <input type="radio" name="loan_type" value="Refinance">
+    <select name="process_stage">
+      <option value="Just getting started">Just getting started</option>
+      <option value="Shopping for homes">Shopping for homes</option>
+      <option value="Made an offer">Made an offer</option>
+      <option value="Under contract">Under contract</option>
+      <option value="Refinancing current home">Refinancing current home</option>
+      <option value="Just exploring">Just exploring</option>
+    </select>
+    <select name="timeline">
+      <option value="ASAP / within 30 days">ASAP / within 30 days</option>
+      <option value="1–3 months">1–3 months</option>
+      <option value="3–6 months">3–6 months</option>
+      <option value="6+ months">6+ months</option>
+      <option value="Just exploring">Just exploring</option>
+    </select>
+    <input type="text" name="purchase_price">
+    <input type="text" name="down_payment">
+    <select name="credit_score">
+      <option value="740+">740+</option>
+      <option value="700–739">700–739</option>
+      <option value="660–699">660–699</option>
+      <option value="620–659">620–659</option>
+      <option value="Below 620">Below 620</option>
+      <option value="Not sure">Not sure</option>
+    </select>
+    <input type="radio" name="has_realtor" value="Yes">
+    <input type="radio" name="has_realtor" value="No">
+    <input type="radio" name="has_realtor" value="Not yet">
+    <input type="text" name="realtor_name">
+    <select name="referral_source">
+      <option value="Google search">Google search</option>
+      <option value="Realtor referral">Realtor referral</option>
+      <option value="Friend or family">Friend or family</option>
+      <option value="Social media">Social media</option>
+      <option value="Podcast or YouTube">Podcast or YouTube</option>
+      <option value="Past client">Past client</option>
+      <option value="Other">Other</option>
+    </select>
+  </form>
+</body>
+</html>

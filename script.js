@@ -619,7 +619,11 @@ function initHeroQuickForm() {
     ]);
 
     dispatchLeadSubmitted({ lead_type: 'quick_quote', form_name: form.getAttribute('name') || 'hero-quick-form' });
-    window.location.href = '/thank-you';
+    var tyParams = new URLSearchParams({ type: 'quick-quote' });
+    if (email) tyParams.set('email', email);
+    if (fname || lname) tyParams.set('name', [fname, lname].filter(Boolean).join(' '));
+    if (phone) tyParams.set('phone', phone);
+    window.location.href = '/thank-you?' + tyParams.toString();
   });
 }
 
