@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-17 (scheduled) — Friday rotation: Buda footer Awards section updated (old Awards & Recognition list → current 5.0 ★/136+ Reviews/21-Day/NMLS metrics). Document Checklist blog post 4 H2s converted to question format. San Marcos 2 H2s converted to question format (Wednesday rotation catchup). Sitemap lastmod updated for all 3 files. Blog at 7-day threshold — content due.
+2026-04-17 (scheduled, weekly content) — Published "Should I Refinance in 2026? A Decision Guide for Austin Homeowners" (blog/2026-04-17-should-i-refinance-austin-tx-2026.html, ~1,350 words, FAQPage + Article + Breadcrumb schema). Updated blog.html noscript + CollectionPage schema, manifest.json, sitemap.xml. Queued 3 platform-specific social drafts (LinkedIn/Facebook/Instagram) to social_drafts table for Adam's dashboard approval.
 
 ## Rate Check Page Inventory
 
@@ -50,13 +50,13 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 |-------|----------|
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
 | GTM malware flag still shows in version list — cosmetic only; new tag entity IDs are clean and will pass next scan | LOW |
-| Blog content at 7-day threshold — new post due (last: April 10 FHA post) | MEDIUM |
+| Next blog due ~April 24 (7-day cadence, last: April 17 refinance guide) | LOW |
 
 ## What's Next
 
 1. **Monday rotation** — Schema audit (homepage AggregateRating, DSCR FAQPage, Westlake suburb), AEO entity check, PageSpeed Insights
 2. **GSC URL Inspection** — Submit Kyle + Buda + San Marcos + Georgetown + Pflugerville. Adam action required: search.google.com/search-console → URL Inspection → Request Indexing
-3. **New blog post** — 7 days since last. Topic: "Austin Mortgage Rates This Week — April 2026" or "Step-by-Step Home Buying Timeline Austin TX"
+3. **Next blog post (April 24)** — Top candidates from SEO audit HIGH PRIORITY: "How to Buy a House in Austin TX" pillar page (3,000+ words), or Monthly Austin Housing Market Report — May 2026.
 4. **Wednesday H2 audit** — Remaining: Westlake, Dripping Springs, Hutto, Liberty Hill, Manor
 5. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
 6. PageSpeed manual check — pagespeed.web.dev for /get-preapproved and /refinance-quote (quota blocks automated check)
