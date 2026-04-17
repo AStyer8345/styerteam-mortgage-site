@@ -47,6 +47,11 @@
 /realtors  /realtors.html  301
 /prequal  /prequal.html  301
 
+# 301 Redirects: Renamed blog posts (temp slugs → canonical SEO slugs)
+
+/blog/2026-03-06-oil-prices-jobs-report-austin-mortgage.html  /blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html  301
+/blog/2026-03-30-why-rates-jumped-today-and-why-i-cant-predict-tomo.html  /blog/2026-03-30-why-rates-improved-today-bond-rally.html  301
+
 # 301 Redirects: Old WordPress URLs → New Pages
 
 /mortgage-loan-refinance-options-austin/va-home-loan/  /loans/va.html  301

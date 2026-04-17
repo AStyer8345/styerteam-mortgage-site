@@ -149,7 +149,7 @@ Static HTML/CSS/JS site hosted on **Netlify**. No framework, no build step — r
 |------|---------|
 | `blog/manifest.json` | Blog post index — JSON feed consumed by blog.html for dynamic listing |
 | `blog/2026-03-31-dscr-loans-austin-tx-2026.html` | DSCR loans investor guide |
-| `blog/2026-03-30-why-rates-jumped-today-and-why-i-cant-predict-tomo.html` | Market commentary — rate movements and bond rally |
+| `blog/2026-03-30-why-rates-improved-today-bond-rally.html` | Market commentary — rate movements and bond rally |
 | `blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html` | First-time buyer programs roundup 2026 |
 | `blog/2026-03-29-va-loan-eligibility-texas.html` | VA loan eligibility guide for Texas |
 | `blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html` | Pre-approval timeline explainer |
@@ -159,7 +159,7 @@ Static HTML/CSS/JS site hosted on **Netlify**. No framework, no build step — r
 | `blog/2026-03-20-austin-mortgage-rates-march-2026.html` | March 2026 rate outlook |
 | `blog/2026-03-18-the-ai-trap-i-walked-right-into.html` | Personal/thought leadership — AI in mortgage |
 | `blog/2026-03-10-when-you-cant-control-it-surrender-it.html` | Personal/faith — surrender and perspective |
-| `blog/2026-03-06-oil-prices-jobs-report-austin-mortgage.html` | Market analysis — oil prices and jobs data impact |
+| `blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html` | Market analysis — oil prices and jobs data impact |
 | `blog/2026-03-30-temp-placeholder.html` | Temp placeholder (noindex) |
 
 ---
