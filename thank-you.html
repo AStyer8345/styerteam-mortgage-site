@@ -272,6 +272,111 @@
     }
     .ty-realtor-name { display: none; margin-top: var(--spacing-sm); }
     .ty-realtor-name.is-visible { display: block; }
+
+    /* Quick-quote: slim hero strip replaces big hero */
+    .ty-hero.ty-hero-slim { padding: var(--spacing-xl) 0; }
+    .ty-hero.ty-hero-slim #ty-headline,
+    .ty-hero.ty-hero-slim #ty-subhead { display: none; }
+    .ty-hero.ty-hero-slim .ty-strip-line {
+      color: rgba(255,255,255,0.95);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      text-align: center;
+      margin: 0 0 var(--spacing-sm);
+    }
+    .ty-hero.ty-hero-slim .ty-cta-row { margin-top: var(--spacing-xs); }
+    .ty-hero.ty-hero-slim .ty-phone-cta { font-size: var(--font-size-base); }
+    .ty-hero.ty-hero-slim .ty-schedule-btn {
+      padding: 0.55rem 1rem;
+      font-size: var(--font-size-sm);
+    }
+
+    /* Form hero — above-fold primary CTA for quick-quote */
+    .ty-form-hero {
+      padding: var(--spacing-2xl) 0 var(--spacing-xl);
+      background: var(--color-white);
+    }
+    .ty-form-hero-inner { max-width: 620px; margin: 0 auto; }
+    .ty-form-hero-title {
+      font-family: var(--font-display);
+      font-size: var(--font-size-3xl);
+      color: var(--color-navy);
+      text-align: center;
+      margin-bottom: var(--spacing-xs);
+      line-height: var(--line-height-tight);
+    }
+    .ty-form-hero-sub {
+      text-align: center;
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-xl);
+      line-height: var(--line-height-relaxed);
+    }
+
+    /* Alt paths — below-fold compact secondary options */
+    .ty-alt-paths {
+      padding: var(--spacing-xl) 0 var(--spacing-3xl);
+      background: #f8f9fa;
+      border-top: 1px solid var(--color-border);
+    }
+    .ty-alt-paths-heading {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--spacing-lg);
+      font-weight: var(--font-weight-semibold);
+    }
+    .ty-alt-paths-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+      max-width: 780px;
+      margin: 0 auto var(--spacing-lg);
+    }
+    @media (max-width: 600px) {
+      .ty-alt-paths-grid { grid-template-columns: 1fr; }
+    }
+    .ty-alt-card {
+      display: block;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      text-decoration: none;
+      color: var(--color-text);
+      transition: border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    }
+    .ty-alt-card:hover {
+      border-color: var(--color-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(10,31,63,0.08);
+      text-decoration: none;
+    }
+    .ty-alt-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-lg);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-xs);
+    }
+    .ty-alt-card p {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--spacing-md);
+    }
+    .ty-alt-card-cta {
+      color: var(--color-gold);
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-sm);
+    }
+    .ty-wait-note {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+      font-style: italic;
+      margin: 0;
+    }
     .ty-calendly-section {
       padding: var(--spacing-4xl) 0;
       background: var(--color-white);
@@ -350,37 +455,31 @@
       </div>
     </section>
 
-    <!-- Optional follow-up section (shown for quick-quote leads) -->
-    <section class="ty-followup" id="ty-followup" hidden>
+    <!-- QUICK-QUOTE: above-the-fold form hero (shown only for quick-quote leads) -->
+    <section class="ty-form-hero" id="ty-form-hero" hidden>
       <div class="container">
-        <div class="ty-followup-head">
-          <h2>Want a More Productive First Call?</h2>
-          <p>Totally optional — Adam will still reach out with what you've given him. But if you want a faster, more accurate quote, pick one of these:</p>
-        </div>
+        <div class="ty-form-hero-inner">
+          <h1 class="ty-form-hero-title">Help Adam prep a better first call</h1>
+          <p class="ty-form-hero-sub">Takes 60 seconds. Totally optional — but leads who share these details get a more accurate quote faster.</p>
 
-        <div class="ty-followup-paths">
-          <!-- CARD 1: Quick details form -->
-          <div class="ty-followup-card">
-            <h3>Share a few quick details</h3>
-            <p class="ty-followup-card-intro">Takes about a minute. Helps Adam prep an accurate quote before he calls.</p>
+          <form name="quick-quote-followup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="ty-followup-form" id="ty-followup-form">
+            <input type="hidden" name="form-name" value="quick-quote-followup">
+            <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+            <input type="hidden" name="original_email" id="ty-fu-email">
+            <input type="hidden" name="original_name" id="ty-fu-name">
+            <input type="hidden" name="original_phone" id="ty-fu-phone">
 
-            <form name="quick-quote-followup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="ty-followup-form" id="ty-followup-form">
-              <input type="hidden" name="form-name" value="quick-quote-followup">
-              <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
-              <input type="hidden" name="original_email" id="ty-fu-email">
-              <input type="hidden" name="original_name" id="ty-fu-name">
-              <input type="hidden" name="original_phone" id="ty-fu-phone">
-
-              <div class="ty-followup-field">
-                <label>Purchase or refinance?</label>
-                <div class="ty-followup-radio">
-                  <label><input type="radio" name="loan_type" value="Purchase"> Purchase</label>
-                  <label><input type="radio" name="loan_type" value="Refinance"> Refinance</label>
-                </div>
+            <div class="ty-followup-field">
+              <label>Purchase or refinance?</label>
+              <div class="ty-followup-radio">
+                <label><input type="radio" name="loan_type" value="Purchase"> Purchase</label>
+                <label><input type="radio" name="loan_type" value="Refinance"> Refinance</label>
               </div>
+            </div>
 
+            <div class="ty-followup-grid">
               <div class="ty-followup-field">
-                <label for="ty-fu-stage">Where are you in the process?</label>
+                <label for="ty-fu-stage">Where are you?</label>
                 <select id="ty-fu-stage" name="process_stage">
                   <option value="">Choose…</option>
                   <option value="Just getting started">Just getting started</option>
@@ -391,7 +490,6 @@
                   <option value="Just exploring">Just exploring</option>
                 </select>
               </div>
-
               <div class="ty-followup-field">
                 <label for="ty-fu-timeline">Timeline</label>
                 <select id="ty-fu-timeline" name="timeline">
@@ -403,18 +501,20 @@
                   <option value="Just exploring">Just exploring</option>
                 </select>
               </div>
+            </div>
 
-              <div class="ty-followup-grid">
-                <div class="ty-followup-field">
-                  <label for="ty-fu-price">Approx. purchase price <span style="color:var(--color-text-muted);font-weight:400;font-size:0.85em;">(or home value for refi)</span></label>
-                  <input id="ty-fu-price" name="purchase_price" type="text" inputmode="numeric" placeholder="$500,000">
-                </div>
-                <div class="ty-followup-field">
-                  <label for="ty-fu-down">Approx. down payment</label>
-                  <input id="ty-fu-down" name="down_payment" type="text" inputmode="numeric" placeholder="$100,000">
-                </div>
+            <div class="ty-followup-grid">
+              <div class="ty-followup-field">
+                <label for="ty-fu-price">Purchase price <span style="color:var(--color-text-muted);font-weight:400;font-size:0.85em;">(or home value)</span></label>
+                <input id="ty-fu-price" name="purchase_price" type="text" inputmode="numeric" placeholder="$500,000">
               </div>
+              <div class="ty-followup-field">
+                <label for="ty-fu-down">Down payment</label>
+                <input id="ty-fu-down" name="down_payment" type="text" inputmode="numeric" placeholder="$100,000">
+              </div>
+            </div>
 
+            <div class="ty-followup-grid">
               <div class="ty-followup-field">
                 <label for="ty-fu-credit">Credit score range</label>
                 <select id="ty-fu-credit" name="credit_score">
@@ -427,20 +527,6 @@
                   <option value="Not sure">Not sure</option>
                 </select>
               </div>
-
-              <div class="ty-followup-field">
-                <label>Working with a realtor?</label>
-                <div class="ty-followup-radio">
-                  <label><input type="radio" name="has_realtor" value="Yes" id="ty-fu-realtor-yes"> Yes</label>
-                  <label><input type="radio" name="has_realtor" value="No"> No</label>
-                  <label><input type="radio" name="has_realtor" value="Not yet"> Not yet</label>
-                </div>
-                <div class="ty-realtor-name" id="ty-fu-realtor-name-wrap">
-                  <label for="ty-fu-realtor-name">Realtor name <span style="color:var(--color-text-muted);font-weight:400;font-size:0.85em;">(optional)</span></label>
-                  <input id="ty-fu-realtor-name" name="realtor_name" type="text" placeholder="First & last name">
-                </div>
-              </div>
-
               <div class="ty-followup-field">
                 <label for="ty-fu-source">How did you hear about Adam?</label>
                 <select id="ty-fu-source" name="referral_source">
@@ -454,31 +540,48 @@
                   <option value="Other">Other</option>
                 </select>
               </div>
-
-              <button type="submit" class="ty-followup-submit">Send Details</button>
-            </form>
-
-            <div class="ty-followup-success" id="ty-followup-success" hidden>
-              Thanks — Adam has your details. He'll reach out shortly.
             </div>
-          </div>
 
-          <!-- CARD 2: Full loan application CTA -->
-          <div class="ty-followup-card ty-followup-card-app">
-            <h3>Or skip ahead — start the full application</h3>
-            <p class="ty-followup-card-intro">If you're ready to move, filling this out once makes our first call way more productive. Adam can come to the call with real numbers instead of ballparks.</p>
-            <ul class="ty-app-bullets">
-              <li>Takes about 10 minutes on your phone</li>
-              <li>Soft credit pull — doesn't hurt your score</li>
-              <li>Secure — encrypted 1003 application</li>
-              <li>Get a real pre-approval letter faster</li>
-            </ul>
-            <a href="https://mslp.my1003app.com/513013/register" class="ty-app-btn" target="_blank" rel="noopener">Start Loan Application →</a>
-            <p class="ty-app-fineprint">No obligation. No commitment. Just faster answers.</p>
+            <div class="ty-followup-field">
+              <label>Working with a realtor?</label>
+              <div class="ty-followup-radio">
+                <label><input type="radio" name="has_realtor" value="Yes" id="ty-fu-realtor-yes"> Yes</label>
+                <label><input type="radio" name="has_realtor" value="No"> No</label>
+                <label><input type="radio" name="has_realtor" value="Not yet"> Not yet</label>
+              </div>
+              <div class="ty-realtor-name" id="ty-fu-realtor-name-wrap">
+                <label for="ty-fu-realtor-name">Realtor name <span style="color:var(--color-text-muted);font-weight:400;font-size:0.85em;">(optional)</span></label>
+                <input id="ty-fu-realtor-name" name="realtor_name" type="text" placeholder="First & last name">
+              </div>
+            </div>
+
+            <button type="submit" class="ty-followup-submit">Send Details</button>
+          </form>
+
+          <div class="ty-followup-success" id="ty-followup-success" hidden>
+            Thanks — Adam has your details. He'll reach out shortly.
           </div>
         </div>
+      </div>
+    </section>
 
-        <p class="ty-followup-skip" style="margin-top:var(--spacing-xl);">Or do nothing — Adam will reach out with what you've given him.</p>
+    <!-- QUICK-QUOTE: below-fold alt paths -->
+    <section class="ty-alt-paths" id="ty-alt-paths" hidden>
+      <div class="container">
+        <p class="ty-alt-paths-heading">Or choose another path</p>
+        <div class="ty-alt-paths-grid">
+          <a href="https://mslp.my1003app.com/513013/register" class="ty-alt-card" target="_blank" rel="noopener">
+            <h3>Start the full application</h3>
+            <p>Ready right now? Fill out the full 1003 — soft credit pull, ~10 min. Our call becomes dramatically more productive.</p>
+            <span class="ty-alt-card-cta">Start application →</span>
+          </a>
+          <a href="#ty-calendly" class="ty-alt-card">
+            <h3>Pick a time to talk</h3>
+            <p>Lock in a specific slot. Adam comes to the call with current rate options ready.</p>
+            <span class="ty-alt-card-cta">Schedule 15 min →</span>
+          </a>
+        </div>
+        <p class="ty-wait-note">Or just wait — Adam will reach out shortly.</p>
       </div>
     </section>
 
@@ -531,24 +634,29 @@
         if (phoneCta) phoneCta.innerHTML = 'While you wait: <a href="/austin-mortgage-rates.html">See current Austin mortgage rates &rarr;</a>';
         if (calendlySection) calendlySection.style.display = 'none';
       } else if (type === 'quick-quote') {
-        if (h1) h1.textContent = "Got It — Adam Will Reach Out Shortly";
-        if (paras.length > 0) paras[0].textContent = "Your name, phone, email, and loan goal are in Adam's inbox. He reads every submission personally and will call or text you directly — usually within a few hours during business hours (Mon–Fri, 8am–6pm CT). Want a faster, more accurate quote? Share a few more details below.";
-
-        // Rewrite the 3-step block for the quick-quote context (they only sent minimal info)
-        var stepTitles = document.querySelectorAll('#ty-steps .ty-step-title');
-        var stepDescs = document.querySelectorAll('#ty-steps .ty-step-desc');
-        if (stepTitles.length === 3) {
-          stepTitles[0].textContent = "Adam got your request";
-          stepDescs[0].textContent = "Name, phone, email, and loan goal received. Nothing else needed to get started.";
-          stepTitles[1].textContent = "Share more (optional)";
-          stepDescs[1].innerHTML = 'A few more details below help him prep an accurate quote. <a href="#ty-followup" style="color:#8B6E24;">Jump to form →</a>';
-          stepTitles[2].textContent = "He'll call or text you";
-          stepDescs[2].textContent = "Direct from Adam — not a call center, not an assistant. Usually same day during business hours.";
+        // Slim the navy hero into a one-line strip with inline CTAs
+        var heroSection = document.querySelector('.ty-hero');
+        if (heroSection) {
+          heroSection.classList.add('ty-hero-slim');
+          // Inject the strip headline before the CTA row
+          var stripLine = document.createElement('p');
+          stripLine.className = 'ty-strip-line';
+          stripLine.textContent = "Got it — Adam has your request.";
+          var ctaRow = heroSection.querySelector('.ty-cta-row');
+          if (ctaRow && ctaRow.parentNode) {
+            ctaRow.parentNode.insertBefore(stripLine, ctaRow);
+          }
         }
 
-        // Reveal the optional follow-up form and pre-fill hidden fields from the query string
-        var followup = document.getElementById('ty-followup');
-        if (followup) followup.hidden = false;
+        // Hide the old 3-step "What Happens Next" block (replaced by form-as-hero)
+        var stepsSection = document.getElementById('ty-steps');
+        if (stepsSection) stepsSection.style.display = 'none';
+
+        // Reveal the new above-fold form hero + below-fold alt paths
+        var formHero = document.getElementById('ty-form-hero');
+        var altPaths = document.getElementById('ty-alt-paths');
+        if (formHero) formHero.hidden = false;
+        if (altPaths) altPaths.hidden = false;
         var emailParam = new URLSearchParams(window.location.search).get('email') || '';
         var nameParam = new URLSearchParams(window.location.search).get('name') || '';
         var phoneParam = new URLSearchParams(window.location.search).get('phone') || '';
