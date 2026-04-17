@@ -37,15 +37,20 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Root-level JS/CSS do NOT have content-hashed filenames (e.g. /script.js, /style.css),
+# so `immutable` would pin old versions in returning visitors' browsers for a year.
+# Use must-revalidate so the browser always sends a conditional GET; Netlify's ETag
+# returns 304 when unchanged, so bandwidth cost is near zero.
+# Content-hashed assets in /assets/* can still be cached immutably (see rule above).
 [[headers]]
   for = "/*.css"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/*.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/favicon*"
