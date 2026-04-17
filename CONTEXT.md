@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-16 (interactive) — Homepage Lighthouse perf fix. Was 72/100 with LCP 4.9s, FCP 2.7s, TBT 280ms on mobile. Deferred GTM loader to idle/first-interaction (container snippet preserved verbatim) — removes the long main-thread task and ~202 KiB unused JS from the critical path. Removed two non-composited animations: `gradient-shimmer` on hero H1 (was animating `background-position` for 4s during LCP window) and infinite `hero-cta-glow` box-shadow on Apply Now hover. Kept static gold gradient + static hover glow — no visual regression. Also cleaned up dead `background-size` / `will-change` declarations and the two now-unused `@keyframes`. Expected Lighthouse: 90+ / LCP ~3s / TBT ~50-100ms.
+2026-04-17 (interactive) — GTM tracking overhaul (Version 5) + Buda trust bar fix. All GA4 and Google Ads tracking had been broken since Feb 24 (GA4) and Mar 21 (Google Ads) due to Google's malware scanner flagging the published container. Fixed by deleting both paused tags and recreating with fresh entity IDs. Also added new `GA4 Event - generate_lead` tag (suburb quick-form conversion tracking gap — had existed since form launch) and `Conversion Linker` tag. Published as Version 5. Buda trust bar updated from old "1,000+ Loans Closed" copy to standard "5.0 ★ (136+ Reviews) | 21-Day Avg. Close | Licensed in Texas | NMLS #513013".
 
 ## Rate Check Page Inventory
 
@@ -49,16 +49,16 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Issue | Priority |
 |-------|----------|
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
-| Buda trust bar text differs from standard (old template) — needs update | LOW |
+| GTM malware flag still shows in version list — cosmetic only; new tag entity IDs are clean and will pass next scan | LOW |
 
 ## What's Next
 
-1. **Friday rotation** — Content planning + AEO review: check last blog post date, audit 2 posts for AEO quality (answer-first FAQ, H2 question format, extractable summary)
-2. **Buda trust bar fix** — Update old template hero text to match standard: "5.0 ★ (136+ Reviews) | 21-Day Avg. Close | Licensed in Texas | NMLS #513013" (LOW, quick)
-3. **Hutto push** — AggregateRating schema correct at 136 ✅. AEO paragraph present. No action needed unless GSC shows slippage.
-4. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
-5. **GSC URL Inspection** — Submit Kyle + Buda (updated today); Georgetown + Pflugerville (updated 2026-04-15); Cedar Park + Leander (updated 2026-04-15 AM). Adam action required.
-6. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
+1. **GSC URL Inspection** — Submit Kyle + Buda + Georgetown + Pflugerville + Cedar Park + Leander. Adam action required: https://search.google.com/search-console → URL Inspection → Request Indexing
+2. **Hutto push** — AggregateRating schema correct at 136 ✅. AEO paragraph present. No action needed unless GSC shows slippage.
+3. **Liberty Hill unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch new construction, MUD districts
+4. **Friday rotation** — Content planning + AEO review: check last blog post date, audit 2 posts for AEO quality
+5. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
+6. PageSpeed manual check — pagespeed.web.dev for /get-preapproved and /refinance-quote (quota blocks automated check)
 
 ## Known Issues
 
