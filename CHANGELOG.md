@@ -1,5 +1,12 @@
 # styermortgage.com — Changelog
 
+## 2026-04-17 — Friday AEO rotation: Buda footer, doc-checklist H2s, San Marcos H2s
+
+- buda-mortgage-lender.html: footer Awards & Recognition updated — removed stale "1,000+ Loans Closed" / "Top Producing Broker 2023" → current "5.0 ★ Google Rating · 136+ Reviews | 21-Day Avg. Close | Licensed in Texas · NMLS #513013"
+- blog/2026-04-06-mortgage-document-checklist-austin-tx.html: 4 H2s converted from label format ("Additional Documents — X") to AEO question format
+- san-marcos-mortgage-lender.html: 2 content H2s converted to question format
+- sitemap.xml: lastmod updated for buda (→ 04-17), san-marcos (03-06 → 04-17), doc-checklist (04-10 → 04-17)
+
 ## 2026-04-17 — GTM tracking fix (Version 5) + Buda trust bar
 
 - GTM container GTM-PQQ6PGLR published as Version 5 "Version 5 - Tracking Fix"

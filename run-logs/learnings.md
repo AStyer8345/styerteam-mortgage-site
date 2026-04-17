@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-04-17 — Footer Awards Section Is a Separate Drift Vector + NotebookLM Staleness Pattern
+
+### Patterns
+- **Footer "Awards & Recognition" section is a separate brand drift vector from the hero trust bar**: The Buda page hero trust bar was correct (updated April 16) but the footer Awards section still had the old content ("Top Producing Broker — Austin 2023", "1,000+ Loans Closed"). These two sections are independent — fixing the hero trust bar does NOT update the footer. When auditing trust bar consistency, always check BOTH the hero section AND the footer Awards section. The standard for the footer: "5.0 ★ Google Rating · 136+ Reviews", "21-Day Avg. Close", "Licensed in Texas · NMLS #513013".
+- **"Additional Documents — X" H2s in the document checklist are a non-question label format**: These section headers describe what the section contains (label) instead of asking the user's question. The AEO-correct format is "What Documents Do X Borrowers Need?" — which matches the conversational query someone would type or speak. The original content H2s ("What Documents Do W-2 Employees Need?") were already correct; only the supplemental type-specific sections had the old pattern.
+- **NotebookLM is running 2-3 weeks behind actual site state by April 2026**: Recommendations today included homepage H1 rewrite (done March 26) and hero CTA fix (done April 16). The notebook sources are not being refreshed often enough. Action: after any major content milestone, push updated CONTEXT.md + most recent 3 run logs to NotebookLM as sources. Until then, treat NotebookLM output as directional context, not task direction.
+
+---
+
 ## 2026-04-16 — Buda Old-Template CTA Gap + Wednesday H2 Rotation Complete
 
 ### Patterns
