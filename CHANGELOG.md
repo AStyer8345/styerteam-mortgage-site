@@ -1,6 +1,16 @@
 # styermortgage.com — Changelog
 
-## 2026-04-17 — Weekly content: "Should I Refinance in 2026?" blog post
+## 2026-04-18b — Dead file cleanup + sitemap suburb prune
+
+- Deleted `blog/_template.html` (dev-only template; referenced only in run-logs — historical, no code dependency)
+- Deleted `blog/2026-04-01-test.html` (test file, publicly reachable per robots disallow, never linked)
+- Deleted `hero-test.html` (glassmorphism hero prototype, not linked)
+- Deleted `updates/2026-03-18-the-ai-trap-i-walked-right-into.html` (duplicate of `/blog/` canonical version — duplicate content risk)
+- Deleted `blog/2026-03-30-temp-placeholder.html` (meta-refresh redirect stub, noindexed — dead weight)
+- sitemap.xml: removed 5 low-volume suburb URLs (jarrell, florence, smithville, taylor, elgin) — pages remain in repo pending cut/defer decision
+- No references found in blog.html noscript or CollectionPage schema for any deleted file; no sitemap changes beyond the 5 suburb removals
+
+
 
 - New post: `blog/2026-04-17-should-i-refinance-austin-tx-2026.html` — ~1,350 words, FAQPage + Article + BreadcrumbList schema, targets "refinance mortgage Austin" (Moderate/High-opportunity keyword from SEO audit)
 - Break-even math framing with real-client anecdote (radical transparency voice); internal links to /refinance-quote, /loans/refinance.html, /blog/2026-03-24-cash-out-refinance-austin-tx.html
