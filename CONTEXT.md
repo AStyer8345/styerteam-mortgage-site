@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-18 (scheduled, daily opt) — Schema audits (homepage ✅, about ✅, DSCR ✅, Westlake ✅). Added AEO paragraph to DSCR. Converted H2s to question format on 6 pages (DSCR, Westlake, Dripping Springs, Hutto, Liberty Hill, Manor). Fixed CTA raw URLs → /get-preapproved on DSCR (hero + body) and Westlake (body + footer). about.html CID confirmed real (not placeholder — auto-resolved).
+2026-04-18 (mobile perf) — Compressed 3 huge images (family2.jpg 8.1MB, adam-cutout.png 5.0MB, headshot.jpg 2.0MB) to WebP — 15.1 MB → 240 KB total (98.4% savings). Wrapped 42 `<img>` tags across 48 pages in `<picture>` blocks with WebP + fallback. Targets the GSC desktop-vs-mobile ranking gap (9.25 vs 36.47). Originals backed up to `assets/originals/`. Diagnosis + top-5 mobile issues in `tasks/mobile-perf-2026-04-18.md`. Needs Adam review: calculator slider tap targets (20×20 px), calculator form labels, blog hero-bg preload. Earlier today (daily opt): schema audits (homepage, about, DSCR, Westlake), AEO paragraph on DSCR, H2 question conversion on 6 suburb pages, raw URL → /get-preapproved fixes.
 
 ## Rate Check Page Inventory
 

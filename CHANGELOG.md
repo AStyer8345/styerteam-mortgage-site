@@ -1,5 +1,18 @@
 # styermortgage.com — Changelog
 
+## 2026-04-18c — Mobile perf fix: compress + picture-wrap 3 huge images
+
+Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47). Huge unoptimized hero images were the prime CWV suspect on all non-homepage pages.
+
+- Compressed 3 images to WebP (cwebp 1.6.0, q=80, 1200–1600 px long edge):
+  - `assets/family2.jpg`: 8.1 MB → 108 KB WebP (+ 332 KB JPG fallback)
+  - `assets/adam-cutout.png`: 5.0 MB → 64 KB WebP (+ 1.1 MB PNG fallback; PNG with alpha at 1200 px is inherently large without pngquant)
+  - `assets/headshot.jpg`: 2.0 MB → 68 KB WebP (+ 264 KB JPG fallback)
+  - Total primary-path savings: 15.1 MB → 240 KB (98.4%)
+  - Originals moved to `assets/originals/` for rollback
+- Wrapped 42 `<img>` tags across 48 HTML files in `<picture>` elements with WebP source + JPG/PNG fallback. Preserved alt, class, width/height, fetchpriority, decoding, loading, and inline style attributes. Skipped already-wrapped index.html and austin-mortgage-rates.html. Structured-data JSON references to headshot.jpg left as-is.
+- Mobile Lighthouse audit + perf diagnosis written to `tasks/mobile-perf-2026-04-18.md`. Top non-auto-fix issues flagged for Adam: calculator slider tap targets 20×20 px (need ≥44), calculator form inputs missing labels, blog hero-bg.webp missing preload (1.1 s load delay).
+
 ## 2026-04-18b — Dead file cleanup + sitemap suburb prune
 
 - Deleted `blog/_template.html` (dev-only template; referenced only in run-logs — historical, no code dependency)
