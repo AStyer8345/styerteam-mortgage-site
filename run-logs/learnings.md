@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-04-18 — DSCR Loan Page Missed Prior CTA Sweeps + about.html CID Was Already Fixed
+
+### Patterns
+- **DSCR page (dscr-loan-austin-tx.html) was missed in ALL prior CTA sweep rounds**: The March 31 suburb batch fix, April 1 loan page fix, and subsequent audits all targeted `*-mortgage-lender.html` and `/loans/*.html` files. The DSCR page sits at the root level with a different naming convention — it falls through every glob pattern. Rule: after any batch CTA sweep, explicitly grep ALL html files in the root for `mslp.my1003app.com` count > 1. The body CTA and hero CTA had never been fixed.
+- **about.html sameAs CID "placeholder" was already resolved on 2026-04-15**: The recurring issue had been carried forward for 11+ runs after it was actually fixed. Live grep showed `cid=ChIJYy5uEFPKRIYRmF-k_5gPk74` — real CID, not placeholder. This is the clearest example of the stale FLAG_FOR_ADAM anti-pattern: the TODO.md entry (`2026-04-15`) explicitly logged the fix, but the recurring issue list kept surfacing it. Rule: before logging a "recurring issue," check TODO.md for a completed fix entry. If it exists, mark resolved.
+- **Westlake suburb page body + footer CTAs were both still pointing to raw app URL**: The March 31 batch fix used a `btn-lg` class grep to catch body CTAs. Westlake's body CTA uses `btn btn-primary` (no `btn-lg`), and its footer Apply Now is inside a `<li>` without any button class. Both are invisible to class-based grep patterns. Confirmed rule: always grep for the raw domain URL itself, not by class name, when auditing CTAs.
+
+---
+
 ## 2026-04-17 — Footer Awards Section Is a Separate Drift Vector + NotebookLM Staleness Pattern
 
 ### Patterns

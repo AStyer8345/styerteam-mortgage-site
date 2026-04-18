@@ -7,6 +7,16 @@
 - Updated blog.html noscript block + CollectionPage JSON-LD schema, blog/manifest.json, sitemap.xml
 - Queued 3 platform-tailored social drafts (LinkedIn/Facebook/Instagram) to `social_drafts` for Adam's dashboard approval; logged `social_activity` entries
 
+## 2026-04-18 — Monday rotation: Schema audits + AEO + H2 question format (6 pages)
+
+- dscr-loan-austin-tx.html: AEO answer-first paragraph added; 7 H2s converted to question format; hero + body CTAs → /get-preapproved (missed in prior loan page sweep)
+- westlake-mortgage-lender.html: 3 content H2s → question format; body + footer CTAs → /get-preapproved
+- dripping-springs-mortgage-lender.html: 3 content H2s → question format (AEO was already present)
+- hutto/liberty-hill/manor -mortgage-lender.html: 2 H2s each → question format (prior session, committed today)
+- Schema audit: homepage ✅ MortgageBroker+Person+FAQPage+AggregateRating(136); about ✅ LocalBusiness+Person; DSCR ✅ FAQPage(6)+BreadcrumbList; Westlake ✅ all schemas
+- about.html sameAs CID: confirmed real (ChIJYy5uEFPKRIYRmF-k_5gPk74), stale flag auto-resolved
+- sitemap.xml: lastmod updated for all 6 changed pages → 2026-04-18
+
 ## 2026-04-17 — Friday AEO rotation: Buda footer, doc-checklist H2s, San Marcos H2s
 
 - buda-mortgage-lender.html: footer Awards & Recognition updated — removed stale "1,000+ Loans Closed" / "Top Producing Broker 2023" → current "5.0 ★ Google Rating · 136+ Reviews | 21-Day Avg. Close | Licensed in Texas · NMLS #513013"

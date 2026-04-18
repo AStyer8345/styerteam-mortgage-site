@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-17 (scheduled, weekly content) — Published "Should I Refinance in 2026? A Decision Guide for Austin Homeowners" (blog/2026-04-17-should-i-refinance-austin-tx-2026.html, ~1,350 words, FAQPage + Article + Breadcrumb schema). Updated blog.html noscript + CollectionPage schema, manifest.json, sitemap.xml. Queued 3 platform-specific social drafts (LinkedIn/Facebook/Instagram) to social_drafts table for Adam's dashboard approval.
+2026-04-18 (scheduled, daily opt) — Schema audits (homepage ✅, about ✅, DSCR ✅, Westlake ✅). Added AEO paragraph to DSCR. Converted H2s to question format on 6 pages (DSCR, Westlake, Dripping Springs, Hutto, Liberty Hill, Manor). Fixed CTA raw URLs → /get-preapproved on DSCR (hero + body) and Westlake (body + footer). about.html CID confirmed real (not placeholder — auto-resolved).
 
 ## Rate Check Page Inventory
 
@@ -51,13 +51,15 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
 | GTM malware flag still shows in version list — cosmetic only; new tag entity IDs are clean and will pass next scan | LOW |
 | Next blog due ~April 24 (7-day cadence, last: April 17 refinance guide) | LOW |
+| Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed | HIGH |
+| Hutto AEO review count in schema — confirm = 136 (not 91) | LOW |
 
 ## What's Next
 
-1. **Monday rotation** — Schema audit (homepage AggregateRating, DSCR FAQPage, Westlake suburb), AEO entity check, PageSpeed Insights
-2. **GSC URL Inspection** — Submit Kyle + Buda + San Marcos + Georgetown + Pflugerville. Adam action required: search.google.com/search-console → URL Inspection → Request Indexing
-3. **Next blog post (April 24)** — Top candidates from SEO audit HIGH PRIORITY: "How to Buy a House in Austin TX" pillar page (3,000+ words), or Monthly Austin Housing Market Report — May 2026.
-4. **Wednesday H2 audit** — Remaining: Westlake, Dripping Springs, Hutto, Liberty Hill, Manor
+1. **H2 audit** — Remaining pages: Taylor, Smithville, Spicewood, Florence, Jarrell, Marble Falls, Elgin, Lakeway, Bee Cave, Bastrop, New Braunfels, Austin-area hub
+2. **Hutto** — Verify schema review count = 136 (not 91); check AEO paragraph quality
+3. **GSC URL Inspection** — Submit Dripping Springs, Westlake, Hutto, Liberty Hill, Manor. Adam action: search.google.com/search-console → URL Inspection → Request Indexing
+4. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words) or "Austin Mortgage Rates — April 2026 Update"
 5. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
 6. PageSpeed manual check — pagespeed.web.dev for /get-preapproved and /refinance-quote (quota blocks automated check)
 
