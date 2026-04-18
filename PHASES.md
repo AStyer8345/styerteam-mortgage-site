@@ -13,8 +13,24 @@
 2. Executes its phase
 3. Updates its entry in this file (status, actual date, notes)
 4. Commits and pushes
+5. **Applies Standing Rules (see below) — including IndexNow ping after push.**
 
 If a trigger finds the prior phase is `status: pending` or `status: blocked`, it bails and appends a FLAG to TODO.md NEEDS ADAM section instead of executing.
+
+## Standing Rules — apply to every phase that commits changes
+
+**IndexNow submission.** After every successful `git push`, run:
+
+```
+python3 _deliverables/indexnow-submit.py --from-git-diff
+```
+
+This pings Bing's IndexNow API with the URLs of HTML files modified in the last commit. Bing powers ChatGPT web search, so this directly feeds AI answer engines. The script auto-derives URLs from `git diff HEAD~1`, skips non-indexable pages (dashboard, loanos, hero-test, updates/, netlify/), and returns exit 0 on HTTP 200/202.
+
+- Run this **after** push succeeds, not before — the URL changes need to be live for Bing to fetch them.
+- If the script exits non-zero, append the error to TODO.md NEEDS ADAM but do not roll back the commit.
+- The IndexNow key file (`acd320ce4aaac882bfb455892bdcf208.txt` at repo root) must stay committed for IndexNow auth to work. Do not delete it.
+- Phase 3's weekly run also applies this rule (internal-link changes count as updated URLs).
 
 ---
 

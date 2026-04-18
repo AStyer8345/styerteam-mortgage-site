@@ -37,3 +37,15 @@
 - [ ] Google Ads Refinance campaign (in preparation)
 - [ ] Google Ads optimization score push toward 100% (currently 87.9%)
 - [x] ~~AEO paragraphs on all 25 suburb pages~~ — DONE 2026-04-12 (run 2) — Kyle, Leander, Pflugerville, Georgetown, Austin-area were last gap
+
+## NEEDS ADAM
+
+Items auto-appended by scheduled remote agents land here. Glance weekly.
+
+- [ ] **Bing Webmaster Tools — optional manual setup (2026-04-18 added).** IndexNow is already live (keys + /acd320ce4aaac882bfb455892bdcf208.txt + submitter script + scheduled triggers). IndexNow handles the indexing *mechanism* automatically. Bing Webmaster Tools gives you the *dashboard* — crawl stats, index coverage, manual URL submit, query reports, etc. Not required, but useful observability. Setup, ~10 min:
+  1. Go to https://www.bing.com/webmasters → sign in with a Microsoft account
+  2. Add site: `https://styermortgage.com`
+  3. Verify ownership via one of three options — easiest is "Connect Google Search Console" (imports your GSC-verified ownership in one click)
+  4. Once verified, the dashboard lights up. Crawl stats are delayed ~24h on a new property.
+  5. Optional: in Settings → IndexNow, paste the key `acd320ce4aaac882bfb455892bdcf208` so Bing associates their dashboard with our IndexNow submissions (gives you submission-log visibility).
+
