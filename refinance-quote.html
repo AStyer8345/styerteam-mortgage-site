@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <title>Refinance Your Mortgage in Austin TX | Adam Styer | NMLS #513013</title>
-  <meta name="description" content="Lower your rate, access your equity, or eliminate PMI. Austin mortgage refinance specialist. Free quote, no obligation. NMLS #513013.">
+  <title>Austin Mortgage Refinance Quote — See What You Could Save | Adam Styer</title>
+  <meta name="description" content="Free Austin refinance quote in 24 hours. Lower your rate, cash out equity, drop PMI, or shorten your term. Texas 50(a)(6) experts. NMLS #513013.">
   <link rel="canonical" href="https://styermortgage.com/refinance-quote">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Refinance Your Mortgage in Austin TX | Adam Styer | NMLS #513013">
-  <meta property="og:description" content="Lower your rate, access your equity, or eliminate PMI. Austin mortgage refinance specialist. Free quote, no obligation.">
+  <meta property="og:title" content="Austin Mortgage Refinance Quote — See What You Could Save | Adam Styer">
+  <meta property="og:description" content="Free Austin refinance quote in 24 hours. Lower your rate, cash out equity, drop PMI, or shorten your term. Texas 50(a)(6) experts. NMLS #513013.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://styermortgage.com/refinance-quote">
 
@@ -29,12 +29,31 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/style.css?v=20260417">
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
+  <script>window.dataLayer = window.dataLayer || [];</script>
+  <!-- Google Tag Manager (deferred to idle-time to keep main thread clear during LCP) -->
+  <script>
+  (function(){
+    var loaded = false;
+    function loadGTM(){
+      if (loaded) return; loaded = true;
+      // Container snippet preserved verbatim — only the invocation is deferred.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PQQ6PGLR');
+    }
+    // Fire on first user interaction OR after idle, whichever comes first.
+    var events = ['scroll','mousemove','touchstart','keydown','click','focusin'];
+    events.forEach(function(ev){ window.addEventListener(ev, loadGTM, { once:true, passive:true }); });
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGTM, { timeout: 3500 });
+    } else {
+      setTimeout(loadGTM, 3500);
+    }
+  })();
+  </script>
+  <!-- End Google Tag Manager -->
 
   <style>
     /* ── Landing page nav overrides ────────────────────────── */
@@ -326,10 +345,18 @@
                   </select>
                 </div>
               </div>
+              <!-- TCPA consent — required, unchecked by default -->
               <div class="lp-form-field full" style="margin-top:var(--spacing-sm);">
                 <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
-                  <input type="checkbox" name="tcpa_consent" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
-                  <span>By submitting, I agree to be contacted via phone, email, or text about mortgage options. Msg &amp; data rates may apply. Reply STOP to opt out at any time.</span>
+                  <input type="checkbox" name="tcpa_consent" id="rq-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+                  <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+                </label>
+              </div>
+              <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
+              <div class="lp-form-field full" style="margin-top:var(--spacing-xs,8px);">
+                <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
+                  <input type="checkbox" name="sms_opt_in" id="rq-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+                  <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
                 </label>
               </div>
               <div class="lp-form-submit">
@@ -501,6 +528,8 @@
               phone:        data.get('phone')        || '',
               tag:          'refi-lead',
               loan_goal:    'Refinance',
+              lead_source:  'Refinance Funnel',
+              sms_opt_in:   data.get('sms_opt_in') === 'on',
               utm_source:   data.get('utm_source')   || '',
               utm_medium:   data.get('utm_medium')   || '',
               utm_campaign: data.get('utm_campaign') || '',
