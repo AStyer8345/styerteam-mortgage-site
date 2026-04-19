@@ -1,5 +1,17 @@
 # styermortgage.com — Changelog
 
+## 2026-04-19 — Suburb editor run 1: Round Rock deepened (suburb-editor-daily agent)
+
+- round-rock-mortgage-lender.html — removed templated "As an independent mortgage broker" paragraph (confirmed on 5 pages); updated home price to $388K Feb 2026 median (Redfin, cited); updated property tax rate to specific ~1.68% combined (Texas Property Calculator, cited); added employer list with sources (Dell HQ, Emerson HQ, Toppan Photomasks HQ, Amazon 149-acre campus — Round Rock Chamber); added Teravista neighborhood spotlight with zip 78626, University Blvd/Westinghouse Rd location, builders, price range, City-Data source; added Westwood High School 9/10 GreatSchools + A+ Niche + 99% grad rate with source links; added closing cost breakdown ($390K example: title ~$1,741, escrow ~$600, recording ~$125, property tax proration ~$3,276 mid-year); updated FAQ schema + accordion answer with real 2026 data; added WebPage schema with dateModified 2026-04-19
+- run-logs/suburb-editor-queue.md — created, Round 1 queue initialized
+
+## 2026-04-19 — AEO H2 audit (Spicewood + Florence + Jarrell) + blog title fix
+
+- spicewood-mortgage-lender.html — 4 H2s → question format for AEO extraction (preserved lakefront angle)
+- florence-mortgage-lender.html — 4 H2s → question format for AEO extraction
+- jarrell-mortgage-lender.html — 4 H2s → question format for AEO extraction
+- blog/2026-04-04-austin-housing-market-report-april-2026.html — title + og:title brand fix (added "Adam Styer | NMLS #513013")
+
 ## 2026-04-18e — AEO H2 audit (Taylor + Smithville) + sitemap gap fix
 
 - taylor-mortgage-lender.html — 4 H2s → question format for AEO extraction

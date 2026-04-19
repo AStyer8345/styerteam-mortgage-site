@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-18e (daily opt PM) — H2 question-format audit on Taylor (4 H2s) and Smithville (4 H2s). Discovered and fixed 5 suburb pages missing from sitemap since March 2026 (taylor, smithville, elgin, florence, jarrell). Verified Hutto: AEO ✅, reviewCount = 136 ✅, H2s ✅. Earlier today: title/meta rewrites on 8 GSC 0-click pages; mobile perf WebP compression (3 images, 98.4% savings, 42 picture-wrap blocks); schema audits + H2 conversions on 6 suburb pages; raw URL → /get-preapproved fixes.
+2026-04-19 (daily opt) — H2 question-format audit on Spicewood (4 H2s), Florence (4 H2s), Jarrell (4 H2s). Blog title brand drift fixed. Suburb editor run 1: Round Rock deepened — removed 1 templated paragraph, added Teravista neighborhood spotlight (78626), Westwood HS 9/10 GreatSchools rating, sourced employer list (Dell/Emerson/Toppan/Amazon), closing cost breakdown at $390K, updated home price to $388K Feb 2026 (Redfin). Queue tracking started at run-logs/suburb-editor-queue.md.
 
 ## Rate Check Page Inventory
 
@@ -53,10 +53,11 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Next blog due ~April 24 (7-day cadence, last: April 17 refinance guide) | LOW |
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed | HIGH |
 | GSC URL Inspection needed — Taylor, Smithville, Elgin, Florence, Jarrell now in sitemap; need manual Request Indexing | LOW |
+| PageSpeed manual check needed — quota blocks automated check | MEDIUM |
 
 ## What's Next
 
-1. **H2 audit** — Remaining pages: Spicewood, Florence, Jarrell, Marble Falls, Elgin, Lakeway, Bee Cave, Bastrop, New Braunfels, Austin-area hub (Taylor + Smithville done 2026-04-18)
+1. **H2 audit** — Remaining pages: Marble Falls, Elgin, Lakeway, Bee Cave, Bastrop, New Braunfels, Austin-area hub (Spicewood + Florence + Jarrell done 2026-04-19)
 2. **GSC URL Inspection** — Submit Taylor, Smithville, Elgin, Florence, Jarrell (now in sitemap), plus Dripping Springs, Westlake, Hutto, Liberty Hill, Manor. Adam action: search.google.com/search-console → URL Inspection → Request Indexing
 3. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words) or "Austin Mortgage Rates — April 2026 Update"
 4. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
