@@ -3,6 +3,7 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildRatePrompt } = require("./lib/rate-prompt-builder");
 const { buildRatePage } = require("./lib/rate-page-builder");
 const { createGitHubFile, createAndSendCampaign, waitForPageLive, forceAbsoluteLinks, stripNestedHtmlDocument, formatDateForTitle, wrapEmailHtml, fetchVoiceGuide } = require("./lib/shared");
+const { buildRatesJson } = require("./lib/rates-json-updater");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateRateUpdate()
@@ -102,6 +103,16 @@ async function generateRateUpdate(formData) {
 
     if (!isPreview) {
       await createGitHubFile(`rates/${filename}`, fullPageHtml, `Add rate update page: ${filename}`);
+
+      // Also refresh /rates.json at the repo root — powers the rate widget on
+      // /austin-mortgage-rates.html. Soft-fail: a JSON write error should not
+      // block the email send or surface to the user.
+      try {
+        const ratesJsonBody = await buildRatesJson(rates, { today });
+        await createGitHubFile("rates.json", ratesJsonBody, `Update rates.json for ${today}`);
+      } catch (jsonErr) {
+        console.error("[rate-update] rates.json refresh failed (non-fatal):", jsonErr.message);
+      }
 
       // Wait for Netlify to deploy the page before sending emails
       const isLive = await waitForPageLive(pageUrl);

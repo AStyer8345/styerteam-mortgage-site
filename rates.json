@@ -1,7 +1,7 @@
 {
   "last_updated": "2026-04-18",
   "week_of": "2026-04-16",
-  "source_note": "National averages from Freddie Mac PMMS (weekly survey). Adam's typical rates are wholesale broker pricing for a well-qualified Austin TX borrower — illustrative, not a commitment to lend. All rates subject to credit, property, and program approval.",
+  "source_note": "National averages from Freddie Mac PMMS (weekly survey). Adam's rates reflect wholesale broker pricing for a well-qualified Austin TX borrower — illustrative, not a commitment to lend. All rates subject to credit, property, and program approval.",
   "products": [
     {
       "key": "30yr_fixed",
@@ -36,11 +36,11 @@
       "adam_change": -0.10
     },
     {
-      "key": "7_6_arm",
-      "label": "7/6 SOFR ARM",
+      "key": "fha_5yr_arm",
+      "label": "FHA 5-Yr ARM",
       "national_avg": null,
       "national_change": null,
-      "adam_rate": 5.875,
+      "adam_rate": 5.375,
       "adam_change": -0.15
     },
     {
