@@ -180,6 +180,64 @@
       <p>Click any city below for local market insights, typical home prices, school district information, and the loan programs that make the most sense in that area.</p>
     </div></section>
 
+    <!-- INLINE LEAD CAPTURE (audit 2026-04-18: austin-area parity with suburb pages) -->
+    <section class="section bg-light" id="quick-quote">
+      <div class="container content-narrow">
+        <div class="hero-quick-form-glass" id="hero-quick-form-wrap" style="background:#fff;padding:1.75rem;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+          <form id="hero-quick-form" name="austin-area-quote" novalidate data-netlify="true" method="POST" class="hero-quick-form">
+            <input type="hidden" name="form-name" value="austin-area-quote">
+            <input type="hidden" name="city" value="Austin Metro (24 Cities)">
+            <p class="hero-quick-form-title" style="margin:0 0 0.75rem;font-size:1.25rem;font-weight:700;">Not Sure Which City Yet? Get a Quick Quote</p>
+            <p style="margin:0 0 1rem;font-size:0.95rem;color:#555;">Tell me what you're shopping for and I'll send you a pre-approval letter good in any of the 24 Central Texas cities I serve.</p>
+            <div class="hero-quick-form-grid">
+              <div class="hero-quick-form-field">
+                <label for="aa-name">Name</label>
+                <input id="aa-name" name="name" type="text" required autocomplete="name">
+              </div>
+              <div class="hero-quick-form-field">
+                <label for="aa-email">Email</label>
+                <input id="aa-email" name="email" type="email" required autocomplete="email">
+              </div>
+              <div class="hero-quick-form-field">
+                <label for="aa-phone">Phone</label>
+                <input id="aa-phone" name="phone" type="tel" required autocomplete="tel">
+              </div>
+              <div class="hero-quick-form-field">
+                <label for="aa-goal">Loan Goal</label>
+                <select id="aa-goal" name="loanGoal" required>
+                  <option value="">Choose&hellip;</option>
+                  <option value="Purchase">Purchase</option>
+                  <option value="Refinance">Refinance</option>
+                  <option value="First-Time Buyer">First-Time Buyer</option>
+                  <option value="Non-QM/Self-Employed">Non-QM / Self-Employed</option>
+                </select>
+              </div>
+            </div>
+            <!-- TCPA consent — required, unchecked by default -->
+            <div style="margin-top:8px;">
+              <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
+                <input type="checkbox" name="tcpa_consent" id="aa-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+                <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+              </label>
+            </div>
+            <!-- SMS opt-in — separate, optional (TCPA one-to-one consent, 2026 FCC rules) -->
+            <div style="margin-top:8px;">
+              <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
+                <input type="checkbox" name="sms_opt_in" id="aa-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+                <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
+              </label>
+            </div>
+            <div class="hero-quick-form-actions" style="margin-top:1rem;">
+              <button type="submit" class="btn btn-primary">Get My Quote</button>
+            </div>
+          </form>
+          <div class="hero-quick-form-success" id="hero-quick-form-success" aria-live="polite" hidden>
+            <p class="hero-quick-form-success-text">Thanks! Adam will reach out within 1 business day.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- WILLIAMSON COUNTY -->
     <section class="section bg-light">
       <div class="container">
