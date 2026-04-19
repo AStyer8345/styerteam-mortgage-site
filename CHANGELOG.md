@@ -1,5 +1,12 @@
 # styermortgage.com — Changelog
 
+## 2026-04-18e — AEO H2 audit (Taylor + Smithville) + sitemap gap fix
+
+- taylor-mortgage-lender.html — 4 H2s → question format for AEO extraction
+- smithville-mortgage-lender.html — 4 H2s → question format for AEO extraction
+- sitemap.xml — added 5 suburb pages missing since March 2026: taylor, smithville, elgin, florence, jarrell
+- Hutto verified: AEO ✅, reviewCount = 136 ✅, H2s ✅
+
 ## 2026-04-18d — SEO: rewrite titles + metas on 8 page-1-0-click pages
 
 Adam-approved title and meta description rewrites pushed to 8 high-impression / low-CTR pages flagged by GSC. Body content already supports each claim.

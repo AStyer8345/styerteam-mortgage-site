@@ -8,7 +8,7 @@
 - [x] Add rate-check.html to sitemap.xml (done 2026-04-12, plus 15 new URLs)
 - [x] Fix suburb quick-form conversion gap (fixed 2026-04-08)
 - [x] Week 6 competitive intelligence run — Hutto/Liberty Hill (2026-04-13)
-- [ ] **Hutto page: AEO paragraph + schema review count 91+ + neighborhood names** (HIGH — we're #3, beatable to #1)
+- [x] **Hutto page: AEO paragraph + schema review count 91+ + neighborhood names** — VERIFIED 2026-04-18: AEO ✅, reviewCount = 136 ✅, H2s in question format ✅
 - [ ] **Liberty Hill page: unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch, MUD districts
 - [ ] **Audit /mortgage-broker-vs-bank.html** — comparison table + FAQPage schema; counter MortgageAustin.com
 - [ ] **GSC manual indexing requests** — Dripping Springs, Round Rock, Cedar Park, Leander, Georgetown (Hutto confirmed indexed)

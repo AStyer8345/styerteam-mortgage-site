@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-04-18b — Sitemap Gap: 5 Suburb Pages Never Added + H2 Class Attribute Grep Trap
+
+### Patterns
+- **5 suburb pages (taylor, smithville, elgin, florence, jarrell) were never added to sitemap.xml**: The March 26 sitemap batch added 15 pages but missed these 5. These pages have been live and fully optimized since March/April 2026 but are invisible to Google's structured sitemap signal. Root cause: the "DONE" note for the March 26 sitemap update was written against the batch count (15) without auditing what was still missing. Rule: after any sitemap update, diff the actual file URLs against the full list of live suburb pages. Quick check: `grep "mortgage-lender" sitemap.xml | wc -l` should match `ls *-mortgage-lender.html | wc -l`.
+- **`grep "<h2>"` misses H2 tags with class attributes**: Simple `<h2>` grep catches only bare H2 tags. Tags like `<h2 class="text-center">` and `<h2 class="text-center mb-3xl">` are invisible to this pattern. Always use `grep "<h2"` (no closing angle bracket) to catch all H2 variants. This is especially important for this codebase where section-header H2s often have `text-center` or `mb-3xl` classes.
+- **Second-run same-day pattern applied correctly**: latest.md showed today's date (2026-04-18), so the run skipped NotebookLM and rotation steps and went directly to TOMORROW_PRIORITY items. Worked as intended — no duplicate work, maximum throughput.
+
+---
+
 ## 2026-04-18 — DSCR Loan Page Missed Prior CTA Sweeps + about.html CID Was Already Fixed
 
 ### Patterns

@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-18 (mobile perf) — Compressed 3 huge images (family2.jpg 8.1MB, adam-cutout.png 5.0MB, headshot.jpg 2.0MB) to WebP — 15.1 MB → 240 KB total (98.4% savings). Wrapped 42 `<img>` tags across 48 pages in `<picture>` blocks with WebP + fallback. Targets the GSC desktop-vs-mobile ranking gap (9.25 vs 36.47). Originals backed up to `assets/originals/`. Diagnosis + top-5 mobile issues in `tasks/mobile-perf-2026-04-18.md`. Needs Adam review: calculator slider tap targets (20×20 px), calculator form labels, blog hero-bg preload. Earlier today (daily opt): schema audits (homepage, about, DSCR, Westlake), AEO paragraph on DSCR, H2 question conversion on 6 suburb pages, raw URL → /get-preapproved fixes.
+2026-04-18e (daily opt PM) — H2 question-format audit on Taylor (4 H2s) and Smithville (4 H2s). Discovered and fixed 5 suburb pages missing from sitemap since March 2026 (taylor, smithville, elgin, florence, jarrell). Verified Hutto: AEO ✅, reviewCount = 136 ✅, H2s ✅. Earlier today: title/meta rewrites on 8 GSC 0-click pages; mobile perf WebP compression (3 images, 98.4% savings, 42 picture-wrap blocks); schema audits + H2 conversions on 6 suburb pages; raw URL → /get-preapproved fixes.
 
 ## Rate Check Page Inventory
 
@@ -52,16 +52,15 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | GTM malware flag still shows in version list — cosmetic only; new tag entity IDs are clean and will pass next scan | LOW |
 | Next blog due ~April 24 (7-day cadence, last: April 17 refinance guide) | LOW |
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed | HIGH |
-| Hutto AEO review count in schema — confirm = 136 (not 91) | LOW |
+| GSC URL Inspection needed — Taylor, Smithville, Elgin, Florence, Jarrell now in sitemap; need manual Request Indexing | LOW |
 
 ## What's Next
 
-1. **H2 audit** — Remaining pages: Taylor, Smithville, Spicewood, Florence, Jarrell, Marble Falls, Elgin, Lakeway, Bee Cave, Bastrop, New Braunfels, Austin-area hub
-2. **Hutto** — Verify schema review count = 136 (not 91); check AEO paragraph quality
-3. **GSC URL Inspection** — Submit Dripping Springs, Westlake, Hutto, Liberty Hill, Manor. Adam action: search.google.com/search-console → URL Inspection → Request Indexing
-4. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words) or "Austin Mortgage Rates — April 2026 Update"
-5. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
-6. PageSpeed manual check — pagespeed.web.dev for /get-preapproved and /refinance-quote (quota blocks automated check)
+1. **H2 audit** — Remaining pages: Spicewood, Florence, Jarrell, Marble Falls, Elgin, Lakeway, Bee Cave, Bastrop, New Braunfels, Austin-area hub (Taylor + Smithville done 2026-04-18)
+2. **GSC URL Inspection** — Submit Taylor, Smithville, Elgin, Florence, Jarrell (now in sitemap), plus Dripping Springs, Westlake, Hutto, Liberty Hill, Manor. Adam action: search.google.com/search-console → URL Inspection → Request Indexing
+3. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words) or "Austin Mortgage Rates — April 2026 Update"
+4. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
+5. PageSpeed manual check — pagespeed.web.dev for /get-preapproved and /refinance-quote (quota blocks automated check)
 
 ## Known Issues
 
