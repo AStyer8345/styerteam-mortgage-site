@@ -277,6 +277,81 @@
       </div>
     </section>
 
+    <!-- RATE WIDGET: audit 2026-04-18 - MND-style national avg vs Adam's wholesale -->
+    <section class="rate-widget-section" style="padding:3rem 0;background:#0f172a;color:#f8fafc;">
+      <div class="container">
+        <div class="rate-widget-header" style="text-align:center;margin-bottom:1.5rem;">
+          <h2 style="color:#f8fafc;margin:0 0 0.5rem 0;font-size:1.75rem;">Today's Austin Mortgage Rates</h2>
+          <p id="rate-widget-updated" style="color:#94a3b8;font-size:0.9rem;margin:0;">Loading latest rates…</p>
+        </div>
+        <div class="rate-widget-table-wrap" style="max-width:900px;margin:0 auto;overflow-x:auto;">
+          <table class="rate-widget-table" style="width:100%;border-collapse:collapse;background:#1e293b;border-radius:8px;overflow:hidden;font-size:0.95rem;">
+            <thead>
+              <tr style="background:#334155;">
+                <th style="padding:0.85rem 1rem;text-align:left;color:#f8fafc;font-weight:600;">Product</th>
+                <th style="padding:0.85rem 1rem;text-align:right;color:#f8fafc;font-weight:600;">National Avg</th>
+                <th style="padding:0.85rem 1rem;text-align:right;color:#f8fafc;font-weight:600;">Adam's Rate</th>
+                <th style="padding:0.85rem 1rem;text-align:right;color:#f8fafc;font-weight:600;">Week Δ</th>
+              </tr>
+            </thead>
+            <tbody id="rate-widget-tbody">
+              <tr><td colspan="4" style="padding:1.5rem;text-align:center;color:#94a3b8;">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="rate-widget-cta" style="text-align:center;margin-top:1.5rem;">
+          <a href="/get-preapproved" class="btn btn-light" style="margin-right:0.5rem;">Get My Personalized Rate</a>
+          <a href="tel:+15129566010" class="btn btn-outline-light">(512) 956-6010</a>
+        </div>
+        <p class="rate-widget-disclaimer" style="max-width:820px;margin:1.25rem auto 0;color:#94a3b8;font-size:0.8rem;line-height:1.5;text-align:center;">
+          National averages from the Freddie Mac Primary Mortgage Market Survey (weekly). Adam's rates reflect wholesale broker pricing for a well-qualified Austin TX borrower with strong credit, adequate reserves, and a conforming loan size — they are illustrative, not an offer or commitment to lend. Your actual rate depends on credit score, down payment, loan amount, property type, occupancy, and program. All loans subject to credit and property approval. NMLS #513013 / Company NMLS #2526130. Equal Housing Opportunity.
+        </p>
+      </div>
+    </section>
+
+    <script>
+      (function(){
+        var pct = function(v){ return (v == null) ? '—' : v.toFixed(3).replace(/0+$/,'').replace(/\.$/,'') + '%'; };
+        var pctRate = function(v){ return (v == null) ? '—' : v.toFixed(2) + '%'; };
+        var delta = function(v){
+          if (v == null) return '<span style="color:#94a3b8;">—</span>';
+          if (v > 0)  return '<span style="color:#f87171;">▲ +' + v.toFixed(2) + '</span>';
+          if (v < 0)  return '<span style="color:#4ade80;">▼ ' + v.toFixed(2) + '</span>';
+          return '<span style="color:#94a3b8;">0.00</span>';
+        };
+        var fmtDate = function(iso){
+          if (!iso) return '';
+          var d = new Date(iso + 'T12:00:00');
+          if (isNaN(d)) return iso;
+          return d.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+        };
+        fetch('/rates.json?v=' + Date.now())
+          .then(function(r){ return r.json(); })
+          .then(function(data){
+            var upd = document.getElementById('rate-widget-updated');
+            if (upd) upd.textContent = 'Last updated ' + fmtDate(data.last_updated) + ' · Week of ' + fmtDate(data.week_of);
+            var tbody = document.getElementById('rate-widget-tbody');
+            if (!tbody) return;
+            var rows = data.products.map(function(p){
+              var natAvg = (p.national_avg == null) ? '<span style="color:#94a3b8;">—</span>' : pctRate(p.national_avg);
+              var adamRate = pctRate(p.adam_rate);
+              var d = delta(p.adam_change != null ? p.adam_change : p.national_change);
+              return '<tr style="border-top:1px solid #334155;">' +
+                '<td style="padding:0.75rem 1rem;color:#f8fafc;font-weight:500;">' + p.label + '</td>' +
+                '<td style="padding:0.75rem 1rem;text-align:right;color:#cbd5e1;">' + natAvg + '</td>' +
+                '<td style="padding:0.75rem 1rem;text-align:right;color:#4ade80;font-weight:600;">' + adamRate + '</td>' +
+                '<td style="padding:0.75rem 1rem;text-align:right;font-variant-numeric:tabular-nums;">' + d + '</td>' +
+                '</tr>';
+            }).join('');
+            tbody.innerHTML = rows;
+          })
+          .catch(function(err){
+            var tbody = document.getElementById('rate-widget-tbody');
+            if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="padding:1.5rem;text-align:center;color:#94a3b8;">Rates temporarily unavailable — <a href="tel:+15129566010" style="color:#4ade80;">call (512) 956-6010</a> for today\'s quote.</td></tr>';
+          });
+      })();
+    </script>
+
     <!-- RATE CONTEXT -->
     <section>
       <div class="container content-narrow">
