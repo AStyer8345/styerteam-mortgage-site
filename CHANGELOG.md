@@ -1,5 +1,16 @@
 # styermortgage.com — Changelog
 
+## 2026-04-20 — Georgetown page deepened (suburb-editor-daily round 1, #2)
+
+- `georgetown-mortgage-lender.html` — 6 targeted changes:
+  - Updated FAQ schema + accordion: $395K median Feb 2026 with Redfin source (was vague ranges)
+  - Added WebPage schema with dateModified 2026-04-20
+  - "Georgetown at a glance" paragraph: added Redfin median price citation + named employers (AirBorn, St. David's, Loram Technologies, Southwestern University, SportClips HQ) with Chamber of Commerce source
+  - Added Wolf Ranch Neighborhood Spotlight: 129 Canyon View Road, 78628, Hillwood Communities, Highland Homes builder, with source link
+  - Replaced sourceless "Schools" paragraph with Georgetown ISD school ratings: Georgetown High 7/10 GreatSchools + East View 5/10 GreatSchools, both with source URLs
+  - Added closing cost breakdown: $1,762 title insurance, $600 escrow, $125 recording, ~$7,200/yr taxes (GISD $1.0506 + Georgetown city $0.3532 per $100, Community Impact + Hello Georgetown sources)
+- `run-logs/suburb-editor-queue.md` updated: Georgetown marked done, Cedar Park is next
+
 ## 2026-04-20 — H2 question format + CTR titles, 5 suburb pages (daily-opt)
 
 - 20 content H2s converted to question format: Lakeway, Bee Cave, Bastrop, New Braunfels, Austin-area hub
