@@ -2,6 +2,20 @@ Read /Users/adamstyer/Documents/GOALS.md before starting any session. Interactiv
 
 # styermortgage.com — Claude Code Instructions
 
+## Daily Operating System
+
+This repo is a member project of the Daily Operating System at `/Users/adamstyer/Documents/Daily Operating System/`. It is reachable at `<DOS>/projects/styer-mortgage-site/` (symlink back to here).
+
+Sister projects in the network:
+- `loanos-clone` · `loanos-marketing` (the product Adam is building)
+- `rancho-moonrise` · `adobe-creek-ranch` (STR client sites)
+- `client-ops` (ops hub — Styer Mortgage is an active client in the registry)
+
+Top-of-hierarchy reads:
+- `/Users/adamstyer/Documents/GOALS.md` — weekly direction (symlink → DOS GOALS.md)
+- `/Users/adamstyer/Documents/Daily Operating System/CONTEXT.md` — master state
+- `/Users/adamstyer/Documents/Daily Operating System/TODO.md` — master task list
+
 ## Read First
 
 1. `CONTEXT.md` — current site status, blockers, session rules
