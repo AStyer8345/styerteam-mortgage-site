@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-04-20 — Hutto #1 Confirmed + Round Rock Content Depth → #2 + MortgageAustin.com Threat Upgrade
+
+### Patterns
+- **Content depth on suburb pages directly caused Round Rock to appear at #2 this week**: The 2026-04-19 "Suburb editor" commit deepened the Round Rock page with first-party content. The very next Monday SERP check showed Round Rock at #2. The causal link between page depth and suburb keyword ranking is confirmed twice now (Hutto: schema + AEO → #1; Round Rock: content depth → #2). The pattern: generic suburb pages don't rank; hyper-local, first-person, neighborhood-specific pages do.
+- **MortgageAustin.com must now be tracked as primary independent broker competitor**: Anthony Ferrando, same independent broker positioning, same "low overhead, no kickbacks" pitch. Now #1 for "get pre-approved austin tx" — the highest-conversion keyword for an independent broker. This is the same threat posture that Sente held for "mortgage lender austin tx" but for the conversion-intent keyword cluster. The counter is AEO structure on /mortgage-pre-approval-austin.html + a step-by-step guide blog post.
+- **Nest Mortgaging (Kyle TX) revealed the content volume threshold needed for multi-keyword organic dominance**: 10+ 2026-specific posts are ranking simultaneously across 6+ keywords. They appear for "home loan austin tx" (#1), "refinance" (3 positions), "mortgage lender", "mortgage broker", "cash out refi". This is not luck — it's content velocity. Rule: to own multiple core Austin keywords organically as an independent broker, you need a minimum of 8-10 well-optimized, 2026-dated posts. Currently at approximately 5-6. The pillar page (April 24) + 2 more posts would close this gap.
+- **Re-verify gate prevented 5 stale claims from entering this week's report**: Prior claims about Vista Lending (#1 for "mortgage lender austin tx"), Lone Star (#1 for "get pre-approved"), and MortgageAustin.com's broker keyword position were all outdated. The gate caught all 5 and either upgraded or cleared them. This is the gate working as designed.
+
+---
+
 ## 2026-04-19 — CTR Title Optimization: Generic → Specific Hooks + Buda USDA Accuracy Issue
 
 ### Patterns

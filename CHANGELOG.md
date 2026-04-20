@@ -1,5 +1,17 @@
 # styermortgage.com — Changelog
 
+## 2026-04-20 — Weekly competitive intel run 7 (Monday)
+
+- SERP check: 10 keywords tracked (7 core Austin + 2 suburb + 1 revisit)
+- styermortgage.com upgraded to #1 for "hutto tx mortgage lender" (was #3)
+- styermortgage.com new #2 for "round rock tx mortgage lender" (first appearance in top 3)
+- Two new competitive threats identified: MortgageAustin.com (#1 for pre-approval) + Nest Mortgaging (6+ keyword positions)
+- AsertaLoans new entrant at #1 for "cash out refinance austin tx"
+- Report written to run-logs/competitive/2026-04-20.md + latest.md updated
+- NotebookLM SEO notebook updated with Week 7 report + master growth log refreshed
+- Re-verify gate: 5 prior claims cleared/upgraded (Vista dropped, Lone Star #1 pre-approval cleared, MortgageAustin.com broker claim updated, Hutto #3→#1 upgraded)
+- No site changes this run (research only)
+
 ## 2026-04-19 — H2 audit (Marble Falls + Elgin) + CTR title/meta rewrites (run 2)
 
 - marble-falls-mortgage-lender.html — 4 H2s → question format for AEO extraction
