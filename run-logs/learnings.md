@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-04-20 — Batch H2 Conversion: Same 4 Patterns Across All Suburb Pages
+
+### Patterns
+- **All remaining suburb pages used identical label-format H2s**: "Why [City] Buyers Work With an Independent Broker", "Loan Options for [City] Buyers", "How to Get Pre-Approved for a [City] Home", "[City] Mortgage FAQ" — exact same 4 patterns across Lakeway, Bee Cave, Bastrop, New Braunfels, and the Austin-area hub. This confirms the template is consistent. The question-format conversion is therefore batchable: the same 4 sed patterns work for any remaining suburb page.
+- **CTR-hook title differentiation follows market position**: Lakeway = "Jumbo & Luxury Specialist" (jumbo is the unique loan type for this price tier), Bee Cave = "Luxury & Jumbo Expert" (same tier, Eanes ISD angle), Bastrop = "Acreage & Rural OK" (rural land loans are the differentiator for this market). Each hook matches what a buyer in that city is actually searching for, not a generic loan type.
+- **sed fails when the replacement string contains the delimiter character**: Used `|` as sed delimiter but the NMLS pipe character (`|`) in strings like "Mortgage Lender Lakeway TX | Adam Styer | NMLS #513013" caused sed to fail silently (no error message, no change). Fix: use Python str.replace() for any string replacement that contains pipes, special regex characters, or HTML entities. This is the definitive pattern for this codebase.
+- **NotebookLM schema recommendations are now consistently stale for already-fixed items**: Fourth Monday in a row where NotebookLM recommended something already done (homepage H1 rewrite, Hutto reviewCount). The notebook IS correctly tracking ranking wins and new competitive threats. Pattern: use NotebookLM for directional insight on rankings and competitors, not for specific on-page fix recommendations. Verify all schema/content recommendations against live files.
+
+---
+
 ## 2026-04-20 — Hutto #1 Confirmed + Round Rock Content Depth → #2 + MortgageAustin.com Threat Upgrade
 
 ### Patterns

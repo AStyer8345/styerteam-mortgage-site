@@ -1,5 +1,14 @@
 # styermortgage.com — Changelog
 
+## 2026-04-20 — H2 question format + CTR titles, 5 suburb pages (daily-opt)
+
+- 20 content H2s converted to question format: Lakeway, Bee Cave, Bastrop, New Braunfels, Austin-area hub
+- CTR-hook titles + neighborhood-specific meta descriptions: Lakeway (jumbo/luxury), Bee Cave (luxury/jumbo), Bastrop (acreage/rural)
+- sitemap.xml lastmod updated for all 5 pages to 2026-04-20
+- Schema Monday audit: all clean — AggregateRating, FAQPage, Person all ✅
+- Hutto reviewCount verified at 136 ✅; blog title lint clean ✅
+- 11 of ~24 suburb pages now have CTR-optimized titles (up from 8 after yesterday's run)
+
 ## 2026-04-20 — Weekly competitive intel run 7 (Monday)
 
 - SERP check: 10 keywords tracked (7 core Austin + 2 suburb + 1 revisit)

@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-20 (competitive intel run 7) — Weekly SERP check. styermortgage.com UPGRADED to #1 for "hutto tx mortgage lender" (was #3) and NEW #2 for "round rock tx mortgage lender." Now 2 keywords in top 3. MortgageAustin.com surged to #1 for "get pre-approved austin tx." Nest Mortgaging (Erica Billé, Kyle TX) is a new content machine competitor ranking across 6+ keywords. Full report at run-logs/competitive/2026-04-20.md.
+2026-04-20 (daily-opt) — Monday run: H2 question format conversion + CTR title/meta rewrites. 4 suburb pages (Lakeway, Bee Cave, Bastrop, New Braunfels) + Austin-area hub H2s converted. Lakeway/Bee Cave/Bastrop got new CTR-hook titles (jumbo, luxury, acreage differentiators). 11 of ~24 suburb pages now have CTR-optimized titles. Schema audit clean. Commit eef238f pushed and verified on Netlify.
 
 ## Rate Check Page Inventory
 
@@ -58,12 +58,12 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. **Round Rock #2 → #1 push** — Add 3 neighborhoods (Teravista, Forest Creek, Old Town Round Rock) + Round Rock ISD + "beat builder rates" line. Same playbook that moved Hutto from #3 to #1.
-2. **Bee Cave indexing + AEO** — Page in sitemap since 4/3, not ranking yet. GSC URL Inspection (Adam action). Add AEO paragraph + Eanes ISD + Rob Roy/Falconhead neighborhoods + jumbo angle.
+1. **CTR title rewrites — remaining suburb pages** — Round Rock, Cedar Park, Georgetown, Buda, Westlake, Manor, Marble Falls, Spicewood, Smithville, Elgin, Florence, Jarrell, Taylor. All still have old "Mortgage Lender [City] TX" format. Do 3-4 per run.
+2. **Round Rock #2 → #1 push** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line. Same playbook that moved Hutto from #3 to #1.
 3. **Pre-approval page AEO** — Audit `/mortgage-pre-approval-austin.html` vs MortgageAustin.com's new #1 guide. Add answer-first paragraph + "same-day response" hook.
 4. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words). Interlinks all suburb pages.
 5. **Refinance FAQ schema** — Add "How does a Texas cash-out refinance work in 2026?" FAQ block to `/loans/refinance.html` to compete with AsertaLoans' new #1.
-6. **H2 audit remaining** — Lakeway, Bee Cave, Bastrop, New Braunfels body H2s, Austin-area hub
+6. **H2 audit remaining** — Taylor, Smithville, Florence, Jarrell, Spicewood, Westlake, Dripping Springs (not yet verified in question format)
 
 ## Known Issues
 
