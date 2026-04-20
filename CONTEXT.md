@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-19 (daily opt) — H2 question-format audit on Spicewood (4 H2s), Florence (4 H2s), Jarrell (4 H2s). Blog title brand drift fixed. Suburb editor run 1: Round Rock deepened — removed 1 templated paragraph, added Teravista neighborhood spotlight (78626), Westwood HS 9/10 GreatSchools rating, sourced employer list (Dell/Emerson/Toppan/Amazon), closing cost breakdown at $390K, updated home price to $388K Feb 2026 (Redfin). Queue tracking started at run-logs/suburb-editor-queue.md.
+2026-04-19 (daily opt run 2) — H2 question-format audit: Marble Falls (4 H2s) + Elgin (4 H2s). CTR title/meta rewrites: 8 suburb pages (Hutto, Leander, Pflugerville, Kyle, San Marcos, Dripping Springs, Liberty Hill, New Braunfels) — generic titles → specific hooks; generic metas → first-person local specifics. Sitemap lastmod updated for all 10 changed pages.
 
 ## Rate Check Page Inventory
 
@@ -48,16 +48,17 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 | Issue | Priority |
 |-------|----------|
+| Buda page claims USDA (meta, schema, FAQ) — Adam does NOT do USDA per voice guide. Verify + remove if wrong. | HIGH |
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
-| GTM malware flag still shows in version list — cosmetic only; new tag entity IDs are clean and will pass next scan | LOW |
-| Next blog due ~April 24 (7-day cadence, last: April 17 refinance guide) | LOW |
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed | HIGH |
-| GSC URL Inspection needed — Taylor, Smithville, Elgin, Florence, Jarrell now in sitemap; need manual Request Indexing | LOW |
 | PageSpeed manual check needed — quota blocks automated check | MEDIUM |
+| GSC URL Inspection needed — Taylor, Smithville, Elgin, Florence, Jarrell; manual Request Indexing needed | LOW |
+| Next blog due ~April 24 (7-day cadence, last: April 17 refinance guide) | LOW |
+| GTM malware flag still shows in version list — cosmetic only; new tag entity IDs are clean | LOW |
 
 ## What's Next
 
-1. **H2 audit** — Remaining pages: Marble Falls, Elgin, Lakeway, Bee Cave, Bastrop, New Braunfels, Austin-area hub (Spicewood + Florence + Jarrell done 2026-04-19)
+1. **H2 audit** — Remaining pages: Lakeway, Bee Cave, Bastrop, New Braunfels body H2s, Austin-area hub (Marble Falls + Elgin done 2026-04-19 run 2)
 2. **GSC URL Inspection** — Submit Taylor, Smithville, Elgin, Florence, Jarrell (now in sitemap), plus Dripping Springs, Westlake, Hutto, Liberty Hill, Manor. Adam action: search.google.com/search-console → URL Inspection → Request Indexing
 3. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words) or "Austin Mortgage Rates — April 2026 Update"
 4. Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)

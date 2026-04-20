@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-04-19 — CTR Title Optimization: Generic → Specific Hooks + Buda USDA Accuracy Issue
+
+### Patterns
+- **8 suburb pages had identical generic title format "Mortgage Lender [City] TX | Adam Styer | NMLS #513013"**: This format ranks (keyword-dense) but doesn't differentiate for click-through. GOALS.md flagged CTR as the week's SEO priority. The fix: rewrite titles with a specific hook after the colon — "Beat Builder Rates", "Same-Day Pre-Approval", "FHA & VA Expert", "TXST Area Expert", etc. These hooks match specific user intents within the category keyword. This is the same pattern that's already working on Round Rock, Cedar Park, Georgetown, and FHA pages.
+- **Meta description first-person + neighborhood-specific copy outperforms generic brand copy**: Compare old Leander meta "Leander TX mortgage lender Adam Styer — home loans, pre-approval, and refinancing for Leander homebuyers. Independent broker, 40+ lenders, NMLS #513013." vs new "Leander: Crystal Falls, Travisso, Mason Hills — new builds where I beat preferred-builder rates most weeks. 40+ lenders, same-day pre-approval. NMLS #513013." The new version gives the searcher a reason to click. The neighborhoods are local signal. The claim ("I beat those rates most weeks") is specific and credible.
+- **Buda page contains USDA claims that conflict with Adam's actual product offering**: buda-mortgage-lender.html line 7 (meta description), line 35 (LocalBusiness schema description), lines 98-101 (FAQ "Are USDA loans available in Buda TX?"), and line 125 (down payment comparison answer) all mention USDA as something Adam offers. The voice guide says Adam "Does NOT do: USDA loans." Do NOT fix this without Adam's explicit confirmation — it's a product-offering question. Flag it and leave the file unchanged until confirmed.
+
+---
+
 ## 2026-04-18b — Sitemap Gap: 5 Suburb Pages Never Added + H2 Class Attribute Grep Trap
 
 ### Patterns

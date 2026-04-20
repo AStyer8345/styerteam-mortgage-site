@@ -1,5 +1,23 @@
 # styermortgage.com — Changelog
 
+## 2026-04-19 — H2 audit (Marble Falls + Elgin) + CTR title/meta rewrites (run 2)
+
+- marble-falls-mortgage-lender.html — 4 H2s → question format for AEO extraction
+- elgin-mortgage-lender.html — 4 H2s → question format for AEO extraction
+- 8 suburb pages — generic titles → specific intent-matching hooks (per GOALS.md CTR priority)
+- 8 suburb pages — generic meta descriptions → first-person, neighborhood-specific copy
+- 8 suburb pages — og:title updated to match new titles
+- sitemap.xml — lastmod updated for all 10 changed pages to 2026-04-19
+- commit d4c2705 — 11 files, 42 insertions, 42 deletions
+
+## 2026-04-19 — GBP weekly post: Rate Commentary — Week 16 (styer-gbp-weekly agent)
+
+- GBP post (184 words, Rate Commentary theme) auto-published to Publer, job ID: 69e4e36dfa57756880b5ecae
+- FB, Instagram, LinkedIn platform-adapted drafts inserted into social_drafts (status: draft, awaiting Adam approval)
+- 4 activity log entries created in social_activity table
+- Post saved to run-logs/gbp-posts/2026-04-19.md
+- Master growth log updated; NotebookLM source refreshed
+
 ## 2026-04-19 — Suburb editor run 1: Round Rock deepened (suburb-editor-daily agent)
 
 - round-rock-mortgage-lender.html — removed templated "As an independent mortgage broker" paragraph (confirmed on 5 pages); updated home price to $388K Feb 2026 median (Redfin, cited); updated property tax rate to specific ~1.68% combined (Texas Property Calculator, cited); added employer list with sources (Dell HQ, Emerson HQ, Toppan Photomasks HQ, Amazon 149-acre campus — Round Rock Chamber); added Teravista neighborhood spotlight with zip 78626, University Blvd/Westinghouse Rd location, builders, price range, City-Data source; added Westwood High School 9/10 GreatSchools + A+ Niche + 99% grad rate with source links; added closing cost breakdown ($390K example: title ~$1,741, escrow ~$600, recording ~$125, property tax proration ~$3,276 mid-year); updated FAQ schema + accordion answer with real 2026 data; added WebPage schema with dateModified 2026-04-19
