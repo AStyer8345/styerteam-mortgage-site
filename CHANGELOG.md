@@ -1,5 +1,19 @@
 # styermortgage.com — Changelog
 
+## 2026-04-21 — Cedar Park page deepened (suburb-editor-daily round 1, #3)
+
+- `cedar-park-mortgage-lender.html` — 9 targeted changes:
+  - Rewrote AEO opener: FHA + jumbo program hooks tied to Leander ISD buyers and Twin Creeks/Ranch at Brushy Creek price range
+  - Replaced 2 generic body paragraphs with employer section: Cedar Park Regional Medical Center (Ascension), ETS-Lindgren, National Oilwell Varco, Firefly Aerospace ($1.1B NOC contract 2024) — Cedar Park EDC source
+  - Updated at-a-glance: real tax rate 1.86% nominal / 1.52% effective with WilCo + LISD source URLs; removed unverified IBM reference; corrected Apple distance
+  - Updated home prices H3: $492K March 2026 Redfin median replacing vague $400-500K range; added Block House Creek low end + Twin Creeks upper end
+  - Added school ratings H3: Cedar Park HS 8/10 + Vista Ridge HS 8/10 (GreatSchools links + physical addresses)
+  - Added 3 neighborhood spotlights: Buttercup Creek ($420K-$650K, 78613), Ranch at Brushy Creek ($500K-$850K, 78613), Twin Creeks ($700K-$1.1M+, Toll Brothers Crestline 2026)
+  - Added closing cost breakdown at $492K: lender title ~$2,100, escrow $650, recording $125, tax proration at 1.86% combined rate (~$4,575 mid-year), prepaids $3,500-$4,500
+  - Removed generic "Why Should Cedar Park Homebuyers Use an Independent Mortgage Broker?" H3 (templated boilerplate, confirmed pattern across Leander + Round Rock pages)
+  - Added internal link to rate-check-cedar-park.html; added WebPage schema; updated FAQ schema home price answer with Redfin $492K + LISD school ratings
+- `run-logs/suburb-editor-queue.md` updated: Cedar Park marked done, Leander is next
+
 ## 2026-04-20 — Georgetown page deepened (suburb-editor-daily round 1, #2)
 
 - `georgetown-mortgage-lender.html` — 6 targeted changes:
