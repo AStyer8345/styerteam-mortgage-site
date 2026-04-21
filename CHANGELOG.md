@@ -534,3 +534,10 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - `austin-area-mortgage-lender.html` — Added AEO answer-first paragraph before intro paragraph
 - `sitemap.xml` — Updated lastmod to 2026-04-12 for all 5 changed pages
 - Commit 32c2ae3 — all 5 pages verified 200 ✅
+
+## 2026-04-21 — Pre-approval AEO + Refinance Texas cash-out FAQ (daily-opt)
+
+- `mortgage-pre-approval-austin.html` — added 53-word AEO answer-first paragraph before first H2 with same-day pre-approval hook; dateModified 2026-04-21
+- `loans/refinance.html` — added "How does a Texas cash-out refinance work in 2026?" to FAQ accordion + FAQPage schema (6 questions total); dateModified 2026-04-21
+- `sitemap.xml` — lastmod updated to 2026-04-21 for both pages
+- Blog title lint: CLEAN; self-review: PASS

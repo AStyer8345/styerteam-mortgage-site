@@ -15,8 +15,8 @@
 - [ ] **GSC manual indexing requests** — Bee Cave, Taylor, Smithville, Elgin, Florence, Jarrell (submit in GSC URL Inspection → Request Indexing)
 - [ ] **Round Rock #2 → #1** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line
 - [ ] **Bee Cave AEO + Eanes ISD content** — add answer-first paragraph + Eanes ISD + Rob Roy/Falconhead/Lakes Edge neighborhoods + jumbo angle
-- [ ] **Pre-approval page AEO audit** — `/mortgage-pre-approval-austin.html` needs answer-first paragraph + "same-day response" hook to compete with MortgageAustin.com #1
-- [ ] **Refinance FAQ schema** — Add FAQPage block to `/loans/refinance.html` for "How does a Texas cash-out refinance work in 2026?"
+- [x] **Pre-approval page AEO audit** — 53-word answer-first paragraph + same-day hook added 2026-04-21
+- [x] **Refinance FAQ schema** — "How does a Texas cash-out refinance work in 2026?" added to accordion + FAQPage schema (now 6 questions) 2026-04-21
 - [ ] Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)
 - [ ] Verify all 15 new pages render on live Netlify deploy
 - [ ] Submit updated sitemap to Google Search Console

@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-20 (daily-opt) — Two runs: CTR-hook title + meta rewrite milestone — ALL 24 suburb pages complete. 10 more pages updated in run 2 (Buda, Westlake, Manor, Marble Falls, Spicewood, Smithville, Elgin, Florence, Jarrell, Taylor). USDA removed from meta descriptions on 4 pages per voice guide. Manor 2 H2s fixed to question format. H2 question-format audit: ALL 24 suburb pages complete. Round Rock content verified as fully deployed.
+2026-04-21 (daily-opt) — Pre-approval AEO paragraph added (53 words, same-day hook, before first H2). Refinance FAQ expanded: added "How does a Texas cash-out refinance work in 2026?" to accordion + FAQPage schema (now 6 questions). dateModified updated on both pages. Sitemap lastmod updated.
 
 ## Rate Check Page Inventory
 
@@ -59,12 +59,14 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. **Pre-approval page AEO** — Audit `/mortgage-pre-approval-austin.html` vs MortgageAustin.com's new #1 guide. Add answer-first paragraph + "same-day response" hook.
-2. **Refinance FAQ schema** — Add "How does a Texas cash-out refinance work in 2026?" FAQ block to `/loans/refinance.html` to compete with AsertaLoans' new #1.
-3. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words). Interlinks all suburb pages.
-4. **USDA cleanup (with Adam's confirmation)** — Buda + Smithville + Elgin + Florence + Jarrell body/schema/FAQ all have USDA claims. Once Adam confirms he does not do USDA, remove from those 5 pages.
-5. ~~CTR title rewrites~~ ✅ DONE — all 24 suburb pages complete as of 2026-04-20
-6. ~~H2 audit~~ ✅ DONE — all 24 suburb pages in question format as of 2026-04-20
+1. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words). Interlinks all suburb pages.
+2. **USDA cleanup (with Adam's confirmation)** — Buda + Smithville + Elgin + Florence + Jarrell body/schema/FAQ all have USDA claims. Once Adam confirms he does not do USDA, remove from those 5 pages.
+3. **Liberty Hill page unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch.
+4. **Audit /mortgage-broker-vs-bank.html** — comparison table + FAQPage schema; counter MortgageAustin.com.
+5. ~~Pre-approval AEO~~ ✅ DONE 2026-04-21
+6. ~~Refinance FAQ schema~~ ✅ DONE 2026-04-21
+7. ~~CTR title rewrites~~ ✅ DONE — all 24 suburb pages complete as of 2026-04-20
+8. ~~H2 audit~~ ✅ DONE — all 24 suburb pages in question format as of 2026-04-20
 
 ## Known Issues
 
