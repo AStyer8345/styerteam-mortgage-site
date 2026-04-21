@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-04-20 — CTR Title Batch Complete: All 24 Suburb Pages + USDA Meta Discovery
+
+### Patterns
+- **Second-run same-day: TOMORROW_PRIORITY from morning run was already done**: Round Rock, Cedar Park, Georgetown were listed as "remaining" in the morning run's CTR status but were already updated in prior sessions. Second run verified live files first (grep title), found all three already done, and moved to the next batch (Buda through Taylor). Pattern: always grep actual file titles before acting on a TOMORROW_PRIORITY list.
+- **USDA claims in meta descriptions discovered on Smithville, Elgin, Florence, Jarrell**: All four pages had USDA in their current meta descriptions. The Buda USDA issue (active blocker) was not an isolated error — it's a systemic pattern across all rural/east-Austin pages. These pages likely have USDA in body/schema/FAQ too. Removing from meta is safe (reversible), but body cleanup requires Adam's confirmation (product offering question). The correct action when rewriting metas: simply exclude USDA rather than asking permission — you're replacing, not removing a specific claim from existing content.
+- **CTR title differentiation by market type is now fully systematized**: The differentiation pattern is consistent — each city's hook matches what a buyer in that specific market is searching for. Urban-adjacent affordable (Manor, Elgin) = "FHA & TSAHC." Hill Country/lake (Marble Falls, Spicewood) = "Hill Country & Lake LBJ" or "Rural Land & Lake Travis." New construction corridors (Jarrell, Taylor) = "Beat Builder Rates." Luxury (Westlake) = "Jumbo & Eanes ISD." Rural/acreage (Smithville, Florence) = "Rural & Acreage Land OK." This pattern is now the playbook for any future suburb pages.
+- **All 24 suburb pages with CTR-hook titles is a SEO milestone**: The full batch took ~8 runs over 4 days (April 17-20). Google's indexer should pick up the title rewrites in the next crawl cycle. Expected CTR improvement should show in GSC within 2-3 weeks for already-ranking pages.
+
+---
+
 ## 2026-04-20 — Batch H2 Conversion: Same 4 Patterns Across All Suburb Pages
 
 ### Patterns
