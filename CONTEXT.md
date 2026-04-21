@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-20 (daily-opt) — Monday run: H2 question format conversion + CTR title/meta rewrites. 4 suburb pages (Lakeway, Bee Cave, Bastrop, New Braunfels) + Austin-area hub H2s converted. Lakeway/Bee Cave/Bastrop got new CTR-hook titles (jumbo, luxury, acreage differentiators). 11 of ~24 suburb pages now have CTR-optimized titles. Schema audit clean. Commit eef238f pushed and verified on Netlify.
+2026-04-20 (daily-opt) — Two runs: CTR-hook title + meta rewrite milestone — ALL 24 suburb pages complete. 10 more pages updated in run 2 (Buda, Westlake, Manor, Marble Falls, Spicewood, Smithville, Elgin, Florence, Jarrell, Taylor). USDA removed from meta descriptions on 4 pages per voice guide. Manor 2 H2s fixed to question format. H2 question-format audit: ALL 24 suburb pages complete. Round Rock content verified as fully deployed.
 
 ## Rate Check Page Inventory
 
@@ -49,6 +49,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Issue | Priority |
 |-------|----------|
 | Buda page claims USDA (meta, schema, FAQ) — Adam does NOT do USDA per voice guide. Verify + remove if wrong. | HIGH |
+| Smithville, Elgin, Florence, Jarrell: USDA removed from meta today. Body/schema/FAQ may still have USDA claims — same review as Buda needed. | HIGH |
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed | HIGH |
 | PageSpeed manual check needed — quota blocks automated check | MEDIUM |
@@ -58,12 +59,12 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. **CTR title rewrites — remaining suburb pages** — Round Rock, Cedar Park, Georgetown, Buda, Westlake, Manor, Marble Falls, Spicewood, Smithville, Elgin, Florence, Jarrell, Taylor. All still have old "Mortgage Lender [City] TX" format. Do 3-4 per run.
-2. **Round Rock #2 → #1 push** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line. Same playbook that moved Hutto from #3 to #1.
-3. **Pre-approval page AEO** — Audit `/mortgage-pre-approval-austin.html` vs MortgageAustin.com's new #1 guide. Add answer-first paragraph + "same-day response" hook.
-4. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words). Interlinks all suburb pages.
-5. **Refinance FAQ schema** — Add "How does a Texas cash-out refinance work in 2026?" FAQ block to `/loans/refinance.html` to compete with AsertaLoans' new #1.
-6. **H2 audit remaining** — Taylor, Smithville, Florence, Jarrell, Spicewood, Westlake, Dripping Springs (not yet verified in question format)
+1. **Pre-approval page AEO** — Audit `/mortgage-pre-approval-austin.html` vs MortgageAustin.com's new #1 guide. Add answer-first paragraph + "same-day response" hook.
+2. **Refinance FAQ schema** — Add "How does a Texas cash-out refinance work in 2026?" FAQ block to `/loans/refinance.html` to compete with AsertaLoans' new #1.
+3. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words). Interlinks all suburb pages.
+4. **USDA cleanup (with Adam's confirmation)** — Buda + Smithville + Elgin + Florence + Jarrell body/schema/FAQ all have USDA claims. Once Adam confirms he does not do USDA, remove from those 5 pages.
+5. ~~CTR title rewrites~~ ✅ DONE — all 24 suburb pages complete as of 2026-04-20
+6. ~~H2 audit~~ ✅ DONE — all 24 suburb pages in question format as of 2026-04-20
 
 ## Known Issues
 

@@ -11,7 +11,17 @@
   - Added closing cost breakdown: $1,762 title insurance, $600 escrow, $125 recording, ~$7,200/yr taxes (GISD $1.0506 + Georgetown city $0.3532 per $100, Community Impact + Hello Georgetown sources)
 - `run-logs/suburb-editor-queue.md` updated: Georgetown marked done, Cedar Park is next
 
-## 2026-04-20 — H2 question format + CTR titles, 5 suburb pages (daily-opt)
+## 2026-04-20 — CTR titles complete: all 24 suburb pages + H2 audit done (daily-opt run 2)
+
+- CTR-hook titles + neighborhood-specific meta descriptions: Buda, Westlake, Manor, Marble Falls, Spicewood, Smithville, Elgin, Florence, Jarrell, Taylor
+- USDA removed from meta descriptions: Smithville, Elgin, Florence, Jarrell (voice guide: Adam does not do USDA)
+- Manor H2s fixed to question format (2 remaining label-format H2s)
+- H2 format audit confirmed: ALL 24 suburb pages now in question format ✅
+- CTR-hook titles: ALL 24 suburb pages complete ✅ (milestone)
+- sitemap.xml lastmod updated for all 10 pages to 2026-04-20
+- Self-review: PASS — 10 HTML files + sitemap, GTM=2, no USDA in metas, no Styer Team
+
+## 2026-04-20 — H2 question format + CTR titles, 5 suburb pages (daily-opt run 1)
 
 - 20 content H2s converted to question format: Lakeway, Bee Cave, Bastrop, New Braunfels, Austin-area hub
 - CTR-hook titles + neighborhood-specific meta descriptions: Lakeway (jumbo/luxury), Bee Cave (luxury/jumbo), Bastrop (acreage/rural)
