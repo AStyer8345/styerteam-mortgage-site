@@ -1,5 +1,19 @@
 # styermortgage.com — Changelog
 
+## 2026-04-22 — Leander page deepened (suburb-editor-daily round 1, #4)
+
+- `leander-mortgage-lender.html` — 10 targeted changes:
+  - Added Travisso neighborhood spotlight (78641, off TX-1431, Taylor Morrison/Toll Brothers/Highland/Drees, $600s–$2M+, Olimpico Way — travisso.com + taylormorrison.com sources)
+  - Added school ratings with GreatSchools links: Glenn HS 6/10, Leander HS 6/10, Vista Ridge HS 8/10
+  - Added employer section: LISD 6,000+ (leanderisd.org/careers), National Aero Stands 2024 (leandertx.gov), Austin tech corridor commute context
+  - Added closing cost breakdown at $440K median: title ~$1,837, escrow ~$600, recording ~$125, tax proration ~$3,278 (LISD source)
+  - Updated median price throughout to $438K Feb 2026 (Redfin) with citation; replaced vague "$380K–$450K"
+  - Added LISD + Williamson County tax rate citations ($1.0869 + $0.3999 per $100) in intro and body
+  - Removed USDA Loans feature-item (Adam does not do USDA per voice guide)
+  - Removed templated DPA paragraph (confirmed verbatim duplicate with pflugerville page); replaced with Leander-specific DPA card
+  - Fixed LocalBusiness schema description to remove USDA
+  - Added WebPage schema + dateModified 2026-04-22
+
 ## 2026-04-22 — Bee Cave AEO audit + broker-vs-bank AEO/SEO pass (daily-opt)
 
 - `bee-cave-mortgage-lender.html` — Fixed OG description "near Eanes ISD" → "Lake Travis ISD" (factual error); added Lakes Edge neighborhood + inline /calculators.html link; footer Awards updated to 136+ standard
