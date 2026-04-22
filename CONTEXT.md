@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-21b (daily-opt) — Title tag audit: DSCR trimmed 68→48 chars, Refinance reordered 67→56 chars ("Cash-Out Refinance" now leads). Sitemap dedup: removed duplicate mortgage-pre-approval-austin.html entry (priority 0.8, was at line 95). All other loan pages clean.
+2026-04-22 (daily-opt) — Bee Cave AEO audit: OG description "near Eanes ISD" corrected to "Lake Travis ISD", Lakes Edge + calculators link added. Broker-vs-bank page: title added "Adam Styer |", 4 H2s converted to question format for AEO, CTAs fixed from /prequal.html → /get-preapproved, dateModified updated. Footer Awards standardized to 136+ on both pages.
 
 ## Rate Check Page Inventory
 
@@ -62,12 +62,13 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 1. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words). Interlinks all suburb pages.
 2. **USDA cleanup (with Adam's confirmation)** — Buda + Smithville + Elgin + Florence + Jarrell body/schema/FAQ all have USDA claims. Once Adam confirms he does not do USDA, remove from those 5 pages.
 3. **Liberty Hill page unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch.
-4. **Audit /mortgage-broker-vs-bank.html** — comparison table + FAQPage schema; counter MortgageAustin.com.
+4. ~~Audit /mortgage-broker-vs-bank.html~~ ✅ DONE 2026-04-22 — comparison table ✅, FAQPage ✅, H2 question format ✅, CTAs fixed
 5. ~~Pre-approval AEO~~ ✅ DONE 2026-04-21
 6. ~~Refinance FAQ schema~~ ✅ DONE 2026-04-21
 7. ~~CTR title rewrites~~ ✅ DONE — all 24 suburb pages complete as of 2026-04-20
 8. ~~H2 audit~~ ✅ DONE — all 24 suburb pages in question format as of 2026-04-20
 9. ~~Loan page title audit~~ ✅ DONE 2026-04-21b — DSCR 68→48 chars, Refinance 67→56 chars, sitemap dedup removed
+10. ~~Bee Cave AEO + ISD content~~ ✅ DONE 2026-04-22
 
 ## Known Issues
 

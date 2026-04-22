@@ -11,10 +11,10 @@
 - [x] Week 7 competitive intelligence run — Round Rock revisit + Bee Cave new (2026-04-20)
 - [x] **Hutto page: AEO paragraph + schema review count 91+ + neighborhood names** — VERIFIED 2026-04-18: AEO ✅, reviewCount = 136 ✅, H2s in question format ✅
 - [ ] **Liberty Hill page: unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch, MUD districts
-- [ ] **Audit /mortgage-broker-vs-bank.html** — comparison table + FAQPage schema; counter MortgageAustin.com
+- [x] **Audit /mortgage-broker-vs-bank.html** — comparison table ✅, FAQPage ✅, H2 question format ✅, CTAs fixed → /get-preapproved, title updated 2026-04-22
 - [ ] **GSC manual indexing requests** — Bee Cave, Taylor, Smithville, Elgin, Florence, Jarrell (submit in GSC URL Inspection → Request Indexing)
 - [ ] **Round Rock #2 → #1** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line
-- [ ] **Bee Cave AEO + Eanes ISD content** — add answer-first paragraph + Eanes ISD + Rob Roy/Falconhead/Lakes Edge neighborhoods + jumbo angle
+- [x] **Bee Cave AEO + ISD content** — AEO ✅ (already present), fixed OG desc "Eanes ISD"→"Lake Travis ISD", added Lakes Edge + calculators link, jumbo ✅ 2026-04-22
 - [x] **Pre-approval page AEO audit** — 53-word answer-first paragraph + same-day hook added 2026-04-21
 - [x] **Refinance FAQ schema** — "How does a Texas cash-out refinance work in 2026?" added to accordion + FAQPage schema (now 6 questions) 2026-04-21
 - [ ] Test rate-check form end-to-end (submit test PDF, verify Supabase + Outlook email)

@@ -1,5 +1,11 @@
 # styermortgage.com — Changelog
 
+## 2026-04-22 — Bee Cave AEO audit + broker-vs-bank AEO/SEO pass (daily-opt)
+
+- `bee-cave-mortgage-lender.html` — Fixed OG description "near Eanes ISD" → "Lake Travis ISD" (factual error); added Lakes Edge neighborhood + inline /calculators.html link; footer Awards updated to 136+ standard
+- `mortgage-broker-vs-bank.html` — Added "Adam Styer |" to title; converted 4 statement H2s to question format for AEO; fixed CTAs /prequal.html → /get-preapproved (3 places); updated Article schema dateModified; footer Awards updated
+- `sitemap.xml` — lastmod updated for both changed pages to 2026-04-22
+
 ## 2026-04-21b — Title tag audit + sitemap dedup (daily-opt second run)
 
 - `dscr-loan-austin-tx.html` — title trimmed 68→48 chars (removed redundant "| Investor Mortgage"), OG title updated
