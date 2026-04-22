@@ -54,3 +54,5 @@ Items auto-appended by scheduled remote agents land here. Glance weekly.
   4. Once verified, the dashboard lights up. Crawl stats are delayed ~24h on a new property.
   5. Optional: in Settings → IndexNow, paste the key `acd320ce4aaac882bfb455892bdcf208` so Bing associates their dashboard with our IndexNow submissions (gives you submission-log visibility).
 
+- [ ] **FLAG 2026-04-22 — Phase 1b (Cedar Park) blocked: Phase 1a (Round Rock) pre-check failed.** Phase 1a status is still `pending` in PHASES.md — it must reach `status: completed` before Phase 1b can execute. Phase 1b trigger fired today (scheduled 2026-04-22) but bailed without touching cedar-park-mortgage-lender.html. Action required: complete Phase 1a (round-rock-mortgage-lender.html rebuild) and update PHASES.md Phase 1a status to `completed`, then re-trigger Phase 1b.
+
