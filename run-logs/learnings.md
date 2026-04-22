@@ -530,6 +530,13 @@ Newest entries at the top.
 
 ---
 
+## 2026-04-21b — Loan Page Title Audit: Two Fixes + NMLS in Hook Titles
+
+### Patterns
+- **DSCR and Refinance titles were over 65 chars — simple redundancy trim resolved both**: DSCR had "| Investor Mortgage" after the product name (redundant — DSCR already implies investor mortgage). Refinance had "Mortgage" after "Refinance" (redundant) plus title order buried the product keyword. Fix: remove redundant segment, reorder "Cash-Out Refinance" to lead. Both now under 60 chars.
+- **FHA and Jumbo use deliberate hook titles that exclude NMLS (too long to include)**: "Austin FHA Loans: Broker, Not a Call Center | Adam Styer" and "Jumbo Loan Austin: 10% Down to $1.5M | Adam Styer" both have strong CTR hooks but no NMLS in the title. Adding NMLS pushes them over 65 chars. Decision: NMLS is in meta description + page body, which satisfies compliance. Hooks are deliberate differentiators — do not change.
+- **Second-run same-day correctly defaults to the skipped rotation**: Morning run overrode Tuesday rotation in favor of TOMORROW_PRIORITY items. Second run correctly executed the skipped Tuesday rotation (loan page title/meta audit) rather than repeating the morning work or jumping to Wednesday.
+
 ## 2026-04-21 — AEO Paragraph on Pre-Approval Page + Refinance FAQ Expansion
 
 ### Patterns

@@ -1,5 +1,11 @@
 # styermortgage.com — Changelog
 
+## 2026-04-21b — Title tag audit + sitemap dedup (daily-opt second run)
+
+- `dscr-loan-austin-tx.html` — title trimmed 68→48 chars (removed redundant "| Investor Mortgage"), OG title updated
+- `loans/refinance.html` — title reordered/trimmed 67→56 chars ("Cash-Out Refinance Austin TX" now leads keyword), OG title updated
+- `sitemap.xml` — removed duplicate mortgage-pre-approval-austin.html entry (kept priority 0.9, removed 0.8 duplicate)
+
 ## 2026-04-21 — Cedar Park page deepened (suburb-editor-daily round 1, #3)
 
 - `cedar-park-mortgage-lender.html` — 9 targeted changes:

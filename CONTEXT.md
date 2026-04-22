@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-21 (daily-opt) — Pre-approval AEO paragraph added (53 words, same-day hook, before first H2). Refinance FAQ expanded: added "How does a Texas cash-out refinance work in 2026?" to accordion + FAQPage schema (now 6 questions). dateModified updated on both pages. Sitemap lastmod updated.
+2026-04-21b (daily-opt) — Title tag audit: DSCR trimmed 68→48 chars, Refinance reordered 67→56 chars ("Cash-Out Refinance" now leads). Sitemap dedup: removed duplicate mortgage-pre-approval-austin.html entry (priority 0.8, was at line 95). All other loan pages clean.
 
 ## Rate Check Page Inventory
 
@@ -67,6 +67,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 6. ~~Refinance FAQ schema~~ ✅ DONE 2026-04-21
 7. ~~CTR title rewrites~~ ✅ DONE — all 24 suburb pages complete as of 2026-04-20
 8. ~~H2 audit~~ ✅ DONE — all 24 suburb pages in question format as of 2026-04-20
+9. ~~Loan page title audit~~ ✅ DONE 2026-04-21b — DSCR 68→48 chars, Refinance 67→56 chars, sitemap dedup removed
 
 ## Known Issues
 
