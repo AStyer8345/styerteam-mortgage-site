@@ -51,3 +51,10 @@
 **Chose:** Every website content piece auto-distributes twice — Tier 1 (immediate social post via Publer) and Tier 2 (platform-native post 2-3 days later).
 **Over:** Manual social posting or single-distribution.
 **Why:** Maximizes content ROI. Tier 1 gets fast visibility. Tier 2 adapts format (carousels, Reels) for each platform's algorithm.
+
+## [2026-04-23] — LoanOS is the CRM of record
+
+**Chose:** LoanOS (loanos.html in `AStyer8345/loanos` repo, backed by Supabase project `uuqedsvjlkeszrbwzizl`) as the single source of truth for all contacts, leads, and loan lifecycle data.
+**Over:** Salesforce (legacy), Arive (LOS only), or raw Supabase tables as primary record.
+**Why:** LoanOS was already being used as the working CRM before this decision was formally logged. Salesforce is decommissioned — no new contacts go there. Arive remains the LOS for pricing, disclosures, and AUS submissions but is not a contact or relationship system. Supabase powers LoanOS under the hood so it IS the data layer, but LoanOS is the record-of-truth interface. All n8n workflows (new-app, contract-received, pre-approval, CD, review-request) log activity to Supabase via LoanOS tables.
+**Context:** Decision prompted by fragmentation audit (styer-p3-15): contacts lived in 4 systems depending on lifecycle stage. Commit: LoanOS is authoritative. Other systems sync to it or are reference-only. Salesforce references in any config/docs are legacy and should not be followed.
