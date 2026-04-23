@@ -588,3 +588,7 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - `loans/refinance.html` — added "How does a Texas cash-out refinance work in 2026?" to FAQ accordion + FAQPage schema (6 questions total); dateModified 2026-04-21
 - `sitemap.xml` — lastmod updated to 2026-04-21 for both pages
 - Blog title lint: CLEAN; self-review: PASS
+
+## 2026-04-23 — Pflugerville suburb editor (daily-opt, queue #5)
+
+- `pflugerville-mortgage-lender.html` — Blackhawk neighborhood spotlight (78660, GFO/Chesmar/Coventry builders, $465K+ new construction, sourced Homes.com); school ratings H3 (Hendrickson HS 8/10, Pflugerville HS 6/10, GreatSchools linked); employer list H3 (Amazon 1,000 jobs PCDC cited, Costco, Baylor Scott & White, Samsung Taylor via US-130); closing cost breakdown at $355K median (Travis County recording ~$150, PISD $1.1069/$100 cited, ~2.0–2.1% combined rate); updated median price to $355K Mar 2026 (Redfin, cited in intro + market context + FAQ); removed "Down Payment Assistance" loan card (verbatim match Georgetown + Smithville — confirmed via grep); fixed USDA from LocalBusiness schema description; added WebPage schema + dateModified 2026-04-23
