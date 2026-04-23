@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-04-22b — Liberty Hill Content Enrichment + Footer Awards Audit
+
+### Patterns
+- **Footer Awards "91 Google + 45 Zillow" is a separate stale vector from the hero trust badge**: Liberty Hill's hero trust badge was correct (136+ Reviews) but the footer Awards section still had the old split format (91 Google + 45 Zillow). These are independently maintained. The standard footer format is: `&#11088; 5.0 Stars · 136+ Reviews / 21-Day Avg. Close · Licensed in Texas` — no platform split, no 4.98 Zillow stars. When auditing trust bar consistency, always check BOTH the hero trust badge AND the footer Awards section independently.
+- **Footer Awards old format is likely systemic across older suburb pages**: Liberty Hill, and possibly other pages created before the standard was set, may still have the 91/45 split format. Run `grep -l "91 Google Reviews" *-mortgage-lender.html` at the start of any session to find all remaining stale footers.
+- **USDA in LocalBusiness schema description is a separate USDA vector from FAQ and body**: The Liberty Hill schema description says "Conventional, FHA, VA, USDA, and new construction loans." This requires the same Adam confirmation as the Buda FAQ content. These are four independent places USDA can appear: (1) meta description, (2) LocalBusiness schema description, (3) body feature item, (4) FAQ. Each must be audited independently.
+
+---
+
 ## 2026-04-20 — CTR Title Batch Complete: All 24 Suburb Pages + USDA Meta Discovery
 
 ### Patterns

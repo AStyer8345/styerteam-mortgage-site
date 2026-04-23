@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-22 (daily-opt) — Bee Cave AEO audit: OG description "near Eanes ISD" corrected to "Lake Travis ISD", Lakes Edge + calculators link added. Broker-vs-bank page: title added "Adam Styer |", 4 H2s converted to question format for AEO, CTAs fixed from /prequal.html → /get-preapproved, dateModified updated. Footer Awards standardized to 136+ on both pages.
+2026-04-22b (daily-opt) — Liberty Hill: H2 question format, Orchard Ridge + Williamson County tax added to at-a-glance, footer Awards updated to standard. Funnel trace clean. Broker-vs-bank live confirmed.
 
 ## Rate Check Page Inventory
 
@@ -50,6 +50,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 |-------|----------|
 | Buda page claims USDA (meta, schema, FAQ) — Adam does NOT do USDA per voice guide. Verify + remove if wrong. | HIGH |
 | Smithville, Elgin, Florence, Jarrell: USDA removed from meta today. Body/schema/FAQ may still have USDA claims — same review as Buda needed. | HIGH |
+| Liberty Hill: USDA in LocalBusiness schema description + FAQ + pre-approval process text — same Adam-confirmation-required status as Buda. | HIGH |
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed | HIGH |
 | PageSpeed manual check needed — quota blocks automated check | MEDIUM |
@@ -61,7 +62,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 1. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words). Interlinks all suburb pages.
 2. **USDA cleanup (with Adam's confirmation)** — Buda + Smithville + Elgin + Florence + Jarrell body/schema/FAQ all have USDA claims. Once Adam confirms he does not do USDA, remove from those 5 pages.
-3. **Liberty Hill page unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch.
+3. ~~Liberty Hill page unique content~~ ✅ DONE 2026-04-22b — Orchard Ridge added, Williamson County tax context added, H2 question format, footer Awards updated
 4. ~~Audit /mortgage-broker-vs-bank.html~~ ✅ DONE 2026-04-22 — comparison table ✅, FAQPage ✅, H2 question format ✅, CTAs fixed
 5. ~~Pre-approval AEO~~ ✅ DONE 2026-04-21
 6. ~~Refinance FAQ schema~~ ✅ DONE 2026-04-21

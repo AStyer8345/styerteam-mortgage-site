@@ -14,6 +14,13 @@
   - Fixed LocalBusiness schema description to remove USDA
   - Added WebPage schema + dateModified 2026-04-22
 
+## 2026-04-22b — Liberty Hill content enrichment + footer audit (daily-opt)
+
+- `liberty-hill-mortgage-lender.html` — H2 "Loan Options for Liberty Hill Buyers" → question format for AEO
+- `liberty-hill-mortgage-lender.html` — At-a-glance: added Orchard Ridge to neighborhood list; added Williamson County property tax context (1.9–2.4% vs Travis County 2.2–2.7%)
+- `liberty-hill-mortgage-lender.html` — Footer Awards updated from old 91 Google/45 Zillow split to standard 136+ / 21-Day Avg. Close
+- `sitemap.xml` — liberty-hill lastmod updated to 2026-04-22
+
 ## 2026-04-22 — Bee Cave AEO audit + broker-vs-bank AEO/SEO pass (daily-opt)
 
 - `bee-cave-mortgage-lender.html` — Fixed OG description "near Eanes ISD" → "Lake Travis ISD" (factual error); added Lakes Edge neighborhood + inline /calculators.html link; footer Awards updated to 136+ standard
