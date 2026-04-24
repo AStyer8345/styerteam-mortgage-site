@@ -1,3 +1,17 @@
+## 2026-04-24 — DPA post refresh: title/meta CTR fix + accuracy corrections (weekly-blog-editor)
+
+- blog/2026-03-27-down-payment-assistance-texas-2026.html: title rewritten to include "Austin TX" + benefit-driven headline (was "What Still Works" — vague, not geo-targeted)
+- Meta description rewritten: leads with $40K / $160K income angle instead of acronym list
+- H1 + hero subtitle updated to match new angle
+- USDA removed from TDHCA eligibility list (Adam does not do USDA)
+- "broker" corrected to "correspondent lender" in FAQ
+- Travis County TSAHC income limit added with inline cite ($167,250, TSAHC PDF)
+- City of Austin DPA details updated: $40K, 10-year forgivable, 80% AMI limit
+- Austin median home price ($450K, April 2026) added with inline ACTRIS cite
+- Income limit paragraph updated: removed fabricated "$90K–$120K" range, replaced with verified $167,250 figure
+- dateModified bumped to 2026-04-24
+- Blog title lint: pass (all titles include "Adam Styer")
+
 ## 2026-04-24 — AEO body paragraphs + about.html CTAs (daily-opt)
 
 - blog/can-i-switch-lenders: AEO body paragraph added (blog-post-intro inside header is not machine-extractable); H2 question format
