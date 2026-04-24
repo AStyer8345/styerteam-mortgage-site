@@ -1,3 +1,12 @@
+## 2026-04-24 — Rate-Shopper AEO Gap + about.html CTA Pattern
+
+### Patterns
+- **`blog-post-intro` inside `<header>` is the same AEO anti-pattern as `hero-subtitle`**: Two rate-shopper posts (can-i-switch, how-to-compare) had strong answer-first text in `<p class="blog-post-intro"><strong>` inside the `<header>` block. This pattern was documented as an anti-pattern in April 10 + April 12 learnings but still appeared in newer posts. The `<p><strong>` AEO fix must go directly in the article body, after `</header>`. There are now 10 rate-shopper posts — audit the remaining 8 for this same gap in future Friday rotations.
+- **about.html body CTAs survived batch CTA sweeps because the page uses a different template**: The raw app URL persisted on about.html's body "Get Pre-Approved Today" CTA (line 300) and CTA section "Get Pre-Approved" (line 729). Both were missed in all prior sweeps because sweeps targeted `*-mortgage-lender.html` and loan pages. The nav-cta and hero-cta-primary on about.html are intentionally left as raw URL (direct application path). Only body and CTA section CTAs were converted to /get-preapproved.
+- **notebook_advisor.py does not exist on disk**: `find /` for the script returned empty. The `loanos/scripts/` path in SKILL.md was always stale (the `loanos/` directory was abandoned months ago). Step 0 cannot be executed. Adam must either restore the script at a known path or the step must be retired from SKILL.md. Until resolved, every run skips Step 0 and uses cached NOTEBOOK_INSIGHTS.
+
+---
+
 # styermortgage.com — Accumulated Learnings
 
 ## 2026-04-23 — Footer Awards Two-Template Pattern + Pillar Page Suburb Link Gap

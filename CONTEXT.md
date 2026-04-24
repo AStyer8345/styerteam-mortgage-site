@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-23 (daily-opt) — Footer Awards standardized across all 15 remaining suburb pages. how-to-buy-a-house pillar page: added internal links to all 24 suburb pages (suburb link gap closed). Liberty Hill live confirmed. Funnel clean. Blog lint: all titles pass.
+2026-04-24 (daily-opt) — AEO body paragraphs added to can-i-switch + how-to-compare rate-shopper posts (blog-post-intro in header was not machine-extractable). H2 question format on both posts. about.html body CTAs → /get-preapproved. Funnel clean. Blog lint: all titles pass. NotebookLM script confirmed dead — needs retirement.
 
 ## Rate Check Page Inventory
 
@@ -56,14 +56,14 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed | HIGH |
 | PageSpeed manual check needed — quota blocks automated check | MEDIUM |
 | GSC URL Inspection needed — Taylor, Smithville, Elgin, Florence, Jarrell; manual Request Indexing needed | LOW |
-| NotebookLM script path broken — loanos/ dir abandoned; script at loanos/scripts/notebook_advisor.py not found | LOW |
+| NotebookLM script path broken — notebook_advisor.py does NOT exist anywhere on disk; Step 0 must be retired or script restored | HIGH |
 | GTM malware flag still shows in version list — cosmetic only; new tag entity IDs are clean | LOW |
 
 ## What's Next
 
 1. **USDA cleanup (with Adam's confirmation)** — Buda, Smithville, Elgin, Florence, Jarrell body/schema/FAQ + Liberty Hill schema + how-to-buy loan table. Once Adam confirms he does not do USDA, remove from all affected pages.
 2. **Next blog post (due ~April 30)** — rate-shopper series or Austin market update. how-to-buy pillar page improved instead (24 suburb links added 2026-04-23).
-3. **Fix NotebookLM script path** — loanos/ dir abandoned; need correct path to notebook_advisor.py or retire the step.
+3. **Retire NotebookLM Step 0** — notebook_advisor.py confirmed NOT on disk anywhere. Adam must either restore it or this step must be removed from SKILL.md.
 4. **Round Rock #2 → #1** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line (from suburb-editor-daily Phase 1b).
 5. ~~Footer Awards standardized across all suburb pages~~ ✅ DONE 2026-04-23 — all 15 remaining pages fixed
 6. ~~how-to-buy pillar page suburb links~~ ✅ DONE 2026-04-23 — all 24 suburb pages linked

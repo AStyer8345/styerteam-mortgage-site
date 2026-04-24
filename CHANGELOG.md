@@ -1,3 +1,11 @@
+## 2026-04-24 — AEO body paragraphs + about.html CTAs (daily-opt)
+
+- blog/can-i-switch-lenders: AEO body paragraph added (blog-post-intro inside header is not machine-extractable); H2 question format
+- blog/how-to-compare-two-mortgage-offers: AEO body paragraph added; H2 question format
+- about.html: 2 body CTAs changed from raw app URL to /get-preapproved
+- sitemap.xml: lastmod updated for about.html + 2 blog posts to 2026-04-24
+- NotebookLM script confirmed missing on disk — escalated to HIGH blocker
+
 ## 2026-04-23 — Footer Awards standardized + how-to-buy suburb links (daily-opt)
 
 - Footer Awards updated to standard "136+ Reviews / 21-Day Avg. Close / Licensed in Texas" across 12 suburb pages (standard template variant)
