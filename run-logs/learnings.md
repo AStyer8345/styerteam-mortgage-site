@@ -1,5 +1,15 @@
 # styermortgage.com — Accumulated Learnings
 
+## 2026-04-23 — Footer Awards Two-Template Pattern + Pillar Page Suburb Link Gap
+
+### Patterns
+- **Two distinct template variants for the stale "91 Google / 45 Zillow" footer**: 12 suburb pages use `<p>&#11088; 5.0 Stars &middot; 91 Google Reviews<br>&#11088; 4.98 Stars &middot; 45 Zillow Reviews</p>` inside the footer Awards `<div>`. Three older pages (florence, jarrell, marble-falls) use a trust strip pattern `<p style="font-size:0.95rem;...">91 Google Reviews &middot; 45 Zillow Reviews</p>` inside a testimonial section. The grep pattern `91 Google Reviews` catches both, but the Python `str.replace()` must target the full literal string for each variant. The footer Awards section and the testimonial trust strip are two independently maintained review-count locations.
+- **Pillar pages can have zero suburb links even if suburb pages exist**: how-to-buy-a-house-in-austin-tx.html (713 lines, written 2026-04-03) had zero internal links to any suburb page despite being the site's top-of-funnel pillar page. A Python `re.findall` for `-mortgage-lender.html` in the content is the reliable way to audit suburb link coverage. The natural insertion point is the home search section (Step 4 in this case) where location-specific content is already discussed.
+- **TOMORROW_PRIORITY "write blog post" can mean "improve existing page" when the content already exists**: The April 22b run log said "Blog post due April 24 — How to Buy a House in Austin." Re-Verify Gate found the page existed at 713 lines. The correct interpretation was to improve it (add suburb links) rather than create a duplicate. The GOALS.md constraint "no new content" was also resolved by improving existing. Pattern: always grep for the target page before executing a "write" instruction from TOMORROW_PRIORITY.
+- **USDA can appear in loan program comparison tables in addition to meta/schema/FAQ/body**: The how-to-buy loan table included USDA with a link to /loans/usda.html. This is a fourth location (separate from meta, schema, and body feature items) where USDA can appear. When doing the USDA cleanup after Adam confirms, audit ALL of: (1) meta description, (2) LocalBusiness schema description, (3) body feature items/FAQs, (4) loan comparison tables.
+
+---
+
 ---
 
 ## 2026-04-22b — Liberty Hill Content Enrichment + Footer Awards Audit

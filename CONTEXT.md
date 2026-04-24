@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-22b (daily-opt) — Liberty Hill: H2 question format, Orchard Ridge + Williamson County tax added to at-a-glance, footer Awards updated to standard. Funnel trace clean. Broker-vs-bank live confirmed.
+2026-04-23 (daily-opt) — Footer Awards standardized across all 15 remaining suburb pages. how-to-buy-a-house pillar page: added internal links to all 24 suburb pages (suburb link gap closed). Liberty Hill live confirmed. Funnel clean. Blog lint: all titles pass.
 
 ## Rate Check Page Inventory
 
@@ -48,28 +48,29 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 | Issue | Priority |
 |-------|----------|
+| how-to-buy-a-house-in-austin-tx.html loan table includes USDA (`<a href="/loans/usda.html">USDA</a>`) — Adam does NOT do USDA. Needs removal. | HIGH |
 | Buda page claims USDA (meta, schema, FAQ) — Adam does NOT do USDA per voice guide. Verify + remove if wrong. | HIGH |
-| Smithville, Elgin, Florence, Jarrell: USDA removed from meta today. Body/schema/FAQ may still have USDA claims — same review as Buda needed. | HIGH |
+| Smithville, Elgin, Florence, Jarrell: body/schema/FAQ may still have USDA claims — same review as Buda needed. | HIGH |
 | Liberty Hill: USDA in LocalBusiness schema description + FAQ + pre-approval process text — same Adam-confirmation-required status as Buda. | HIGH |
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed | HIGH |
 | PageSpeed manual check needed — quota blocks automated check | MEDIUM |
 | GSC URL Inspection needed — Taylor, Smithville, Elgin, Florence, Jarrell; manual Request Indexing needed | LOW |
-| Next blog due ~April 24 (7-day cadence, last: April 17 refinance guide) | LOW |
+| NotebookLM script path broken — loanos/ dir abandoned; script at loanos/scripts/notebook_advisor.py not found | LOW |
 | GTM malware flag still shows in version list — cosmetic only; new tag entity IDs are clean | LOW |
 
 ## What's Next
 
-1. **Next blog post (April 24)** — "How to Buy a House in Austin TX 2026 Step-by-Step" (pillar page, 3,000+ words). Interlinks all suburb pages.
-2. **USDA cleanup (with Adam's confirmation)** — Buda + Smithville + Elgin + Florence + Jarrell body/schema/FAQ all have USDA claims. Once Adam confirms he does not do USDA, remove from those 5 pages.
-3. ~~Liberty Hill page unique content~~ ✅ DONE 2026-04-22b — Orchard Ridge added, Williamson County tax context added, H2 question format, footer Awards updated
-4. ~~Audit /mortgage-broker-vs-bank.html~~ ✅ DONE 2026-04-22 — comparison table ✅, FAQPage ✅, H2 question format ✅, CTAs fixed
-5. ~~Pre-approval AEO~~ ✅ DONE 2026-04-21
-6. ~~Refinance FAQ schema~~ ✅ DONE 2026-04-21
-7. ~~CTR title rewrites~~ ✅ DONE — all 24 suburb pages complete as of 2026-04-20
-8. ~~H2 audit~~ ✅ DONE — all 24 suburb pages in question format as of 2026-04-20
-9. ~~Loan page title audit~~ ✅ DONE 2026-04-21b — DSCR 68→48 chars, Refinance 67→56 chars, sitemap dedup removed
-10. ~~Bee Cave AEO + ISD content~~ ✅ DONE 2026-04-22
+1. **USDA cleanup (with Adam's confirmation)** — Buda, Smithville, Elgin, Florence, Jarrell body/schema/FAQ + Liberty Hill schema + how-to-buy loan table. Once Adam confirms he does not do USDA, remove from all affected pages.
+2. **Next blog post (due ~April 30)** — rate-shopper series or Austin market update. how-to-buy pillar page improved instead (24 suburb links added 2026-04-23).
+3. **Fix NotebookLM script path** — loanos/ dir abandoned; need correct path to notebook_advisor.py or retire the step.
+4. **Round Rock #2 → #1** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line (from suburb-editor-daily Phase 1b).
+5. ~~Footer Awards standardized across all suburb pages~~ ✅ DONE 2026-04-23 — all 15 remaining pages fixed
+6. ~~how-to-buy pillar page suburb links~~ ✅ DONE 2026-04-23 — all 24 suburb pages linked
+7. ~~Liberty Hill page unique content~~ ✅ DONE 2026-04-22b
+8. ~~Audit /mortgage-broker-vs-bank.html~~ ✅ DONE 2026-04-22
+9. ~~Pre-approval AEO~~ ✅ DONE 2026-04-21
+10. ~~Refinance FAQ schema~~ ✅ DONE 2026-04-21
 
 ## Known Issues
 

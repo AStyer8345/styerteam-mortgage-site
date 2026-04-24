@@ -1,3 +1,11 @@
+## 2026-04-23 — Footer Awards standardized + how-to-buy suburb links (daily-opt)
+
+- Footer Awards updated to standard "136+ Reviews / 21-Day Avg. Close / Licensed in Texas" across 12 suburb pages (standard template variant)
+- Trust strip review count updated to "136+ Reviews · 5.0 Stars" on 3 pages (florence, jarrell, marble-falls — older template variant)
+- how-to-buy-a-house-in-austin-tx.html: added internal links to all 24 Austin suburb mortgage pages between Step 4 and Step 5
+- sitemap.xml: how-to-buy lastmod updated 2026-04-03 → 2026-04-23
+- Liberty Hill 2026-04-22b changes confirmed live on Netlify
+
 # styermortgage.com — Changelog
 
 ## 2026-04-22 — Leander page deepened (suburb-editor-daily round 1, #4)

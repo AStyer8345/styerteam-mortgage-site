@@ -10,7 +10,7 @@
 - [x] Week 6 competitive intelligence run — Hutto/Liberty Hill (2026-04-13)
 - [x] Week 7 competitive intelligence run — Round Rock revisit + Bee Cave new (2026-04-20)
 - [x] **Hutto page: AEO paragraph + schema review count 91+ + neighborhood names** — VERIFIED 2026-04-18: AEO ✅, reviewCount = 136 ✅, H2s in question format ✅
-- [ ] **Liberty Hill page: unique content** — Liberty Hill ISD, Williamson County tax, Orchard Ridge/Santa Rita Ranch, MUD districts
+- [x] **Liberty Hill page: unique content** — DONE 2026-04-22b (Orchard Ridge, Williamson County tax, H2 question format, footer Awards)
 - [x] **Audit /mortgage-broker-vs-bank.html** — comparison table ✅, FAQPage ✅, H2 question format ✅, CTAs fixed → /get-preapproved, title updated 2026-04-22
 - [ ] **GSC manual indexing requests** — Bee Cave, Taylor, Smithville, Elgin, Florence, Jarrell (submit in GSC URL Inspection → Request Indexing)
 - [ ] **Round Rock #2 → #1** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line
@@ -27,7 +27,7 @@
 ## Next (before end of April)
 
 - [x] SEO content: condo mortgage guide — DONE 2026-04-03
-- [ ] SEO content: "How to Buy a House in Austin" pillar page (exists as standalone page, needs blog post)
+- [x] SEO content: how-to-buy pillar page — all 24 suburb links added 2026-04-23 (standalone page improved, no duplicate blog needed)
 - [x] SEO content: monthly market report series — first post DONE 2026-04-04
 - [x] SEO content: FHA Loan Requirements Texas 2026 — DONE 2026-04-10
 - [ ] SEO content: "Should I Refinance?" decision guide — next HIGH PRIORITY
@@ -56,3 +56,7 @@ Items auto-appended by scheduled remote agents land here. Glance weekly.
 
 - [ ] **FLAG 2026-04-22 — Phase 1b (Cedar Park) blocked: Phase 1a (Round Rock) pre-check failed.** Phase 1a status is still `pending` in PHASES.md — it must reach `status: completed` before Phase 1b can execute. Phase 1b trigger fired today (scheduled 2026-04-22) but bailed without touching cedar-park-mortgage-lender.html. Action required: complete Phase 1a (round-rock-mortgage-lender.html rebuild) and update PHASES.md Phase 1a status to `completed`, then re-trigger Phase 1b.
 
+
+- [ ] **USDA in how-to-buy loan table (2026-04-23)** — how-to-buy-a-house-in-austin-tx.html loan program table includes `<a href="/loans/usda.html">USDA</a>`. Adam does NOT do USDA. Confirm + remove. Same as Buda/Smithville/Florence/Jarrell USDA blockers.
+
+- [ ] **NotebookLM script path broken (2026-04-23)** — `/Users/adamstyer/loanos/scripts/notebook_advisor.py` not found (loanos/ dir abandoned). Either locate the correct path or retire the NotebookLM step from the daily scheduled task.
