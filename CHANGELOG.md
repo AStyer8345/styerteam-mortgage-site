@@ -1,3 +1,18 @@
+## 2026-04-24 — Buda suburb page deepened (styer-suburb-editor-daily)
+
+- buda-mortgage-lender.html: USDA removed from 7 locations (LocalBusiness schema description, FAQPage schema USDA FAQ replaced with schools FAQ, loan tile swapped USDA→DPA, stat card "$0 Down USDA"→"$0 Down VA eligible", process step 1 USDA check removed, CTA USDA mention removed, down payment FAQ USDA removed)
+- Removed templated USDA loan tile paragraph confirmed verbatim in jarrell + florence pages
+- Added neighborhood spotlights: Garlic Creek (78610, Centex/Mercedes 2007–15, $310K–$390K), Sunfield (78610, 2700ac, Taylor Morrison/Pulte/Chesmar/David Weekley/Brightland, lazy river, $350K–$470K), Ruby Ranch (78610, larger lots, $375K–$550K+)
+- Added schools H3: Jack C. Hays HS 6/10 GreatSchools, 2,191 students, 89–91% grad rate, sources inline
+- Added employers H3: US Foods, Heaven Hill/Deep Eddy Vodka ($12.5M+ investment), Cabela's, Texas Lehigh Cement, incoming H-E-B (City of Buda March 2026 + Buda EDC sourced)
+- Added closing cost breakdown at $370K: HCISD $1.1546/$100 + City of Buda $0.3576/$100 (both Community Impact sourced), ~$9K–$12K total
+- Updated median price stat to $382K (Feb 2026, Houzeo)
+- Updated at-a-glance with real tax rates, school name, employer list, median price
+- Added rate-check-buda-kyle.html internal link in Why section
+- Added WebPage schema with dateModified 2026-04-24
+- Meta description updated with school/employer specifics
+- Queue: Buda → Done; Next: Hutto
+
 ## 2026-04-24 — DPA post refresh: title/meta CTR fix + accuracy corrections (weekly-blog-editor)
 
 - blog/2026-03-27-down-payment-assistance-texas-2026.html: title rewritten to include "Austin TX" + benefit-driven headline (was "What Still Works" — vague, not geo-targeted)

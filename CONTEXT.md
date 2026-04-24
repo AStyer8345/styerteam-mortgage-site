@@ -16,6 +16,8 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
+2026-04-24 (styer-suburb-editor-daily) — Buda page deepened: USDA removed from 7 locations (schema/FAQ/tile/stat/process/CTA); 3 neighborhood spotlights added (Garlic Creek/Sunfield/Ruby Ranch, all 78610); Jack C. Hays HS 6/10 GreatSchools; employer list (US Foods, Deep Eddy/Heaven Hill, Cabela's, incoming H-E-B); closing cost breakdown at $370K with real HCISD+city tax rates (Community Impact sourced); median price updated $382K Feb 2026; rate-check-buda-kyle.html linked; WebPage schema added. Queue: Buda ✅ → Next: Hutto.
+
 2026-04-24 (weekly-blog-editor) — DPA post refreshed: title/meta rewritten for Austin CTR (361 impressions, 0 clicks). USDA removed from TDHCA section. "broker" corrected to correspondent lender. Travis County income limit ($167,250, TSAHC cite) added. Austin median price ($450K, ACTRIS April 2026) added. dateModified bumped. run-logs/editor-queue.md + gsc-reindex-queue.md created. Pushed to Netlify.
 
 2026-04-24 (daily-opt) — AEO body paragraphs added to can-i-switch + how-to-compare rate-shopper posts (blog-post-intro in header was not machine-extractable). H2 question format on both posts. about.html body CTAs → /get-preapproved. Funnel clean. Blog lint: all titles pass. NotebookLM script confirmed dead — needs retirement.
@@ -51,7 +53,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Issue | Priority |
 |-------|----------|
 | how-to-buy-a-house-in-austin-tx.html loan table includes USDA (`<a href="/loans/usda.html">USDA</a>`) — Adam does NOT do USDA. Needs removal. | HIGH |
-| Buda page claims USDA (meta, schema, FAQ) — Adam does NOT do USDA per voice guide. Verify + remove if wrong. | HIGH |
+| ~~Buda page claims USDA~~ ✅ FIXED 2026-04-24 — removed from schema, FAQ, loan tile, stat card, process step, CTA | DONE |
 | Smithville, Elgin, Florence, Jarrell: body/schema/FAQ may still have USDA claims — same review as Buda needed. | HIGH |
 | Liberty Hill: USDA in LocalBusiness schema description + FAQ + pre-approval process text — same Adam-confirmation-required status as Buda. | HIGH |
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
@@ -63,7 +65,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. **USDA cleanup (with Adam's confirmation)** — Buda, Smithville, Elgin, Florence, Jarrell body/schema/FAQ + Liberty Hill schema + how-to-buy loan table. Once Adam confirms he does not do USDA, remove from all affected pages.
+1. **USDA cleanup (remaining)** — Smithville, Elgin, Florence, Jarrell body/schema/FAQ + Liberty Hill schema + how-to-buy loan table. Buda ✅ done 2026-04-24. Voice guide confirms Adam does NOT do USDA — safe to remove from remaining pages.
 2. **Next blog post (due ~April 30)** — rate-shopper series or Austin market update. how-to-buy pillar page improved instead (24 suburb links added 2026-04-23).
 3. **Retire NotebookLM Step 0** — notebook_advisor.py confirmed NOT on disk anywhere. Adam must either restore it or this step must be removed from SKILL.md.
 4. **Round Rock #2 → #1** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line (from suburb-editor-daily Phase 1b).
