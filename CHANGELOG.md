@@ -1,3 +1,13 @@
+## 2026-04-24 PM — Rate-shopper AEO sweep continued (styer-site-daily)
+
+- blog/apr-vs-interest-rate-what-actually-matters.html: added 57-word `<p><strong>` AEO answer-first paragraph after `</header>` (existing `blog-post-intro` inside `<header>` was not machine-extractable). dateModified 2026-04-12 → 2026-04-24.
+- blog/are-mortgage-lender-fees-negotiable.html: added 55-word `<p><strong>` AEO answer-first paragraph after `</header>`. Converted statement-form H2 "Why a Mortgage Broker Already Has Lower Fees" → question form "Why Does a Mortgage Broker Already Have Lower Fees?". dateModified bumped.
+- sitemap.xml: lastmod bumped to 2026-04-24 for both posts.
+- Re-Verify Gate cleared Buda USDA flag (suburb-editor closed it earlier today via commit 4755b70).
+- New finding logged: stale "91 Google + 45 Zillow" footer Awards on 28 blog posts + 29 root pages — suburb pages were standardized 2026-04-23 but the batch missed everything else. Queued ZERO_RISK fix for next run.
+- NotebookLM Step 0 confirmed dead for the 2nd run; recommended retirement.
+- Commit 748ba68 (rebased onto incoming rate-update commits 1858bfa + 9fe6008).
+
 ## 2026-04-24 — Buda suburb page deepened (styer-suburb-editor-daily)
 
 - buda-mortgage-lender.html: USDA removed from 7 locations (LocalBusiness schema description, FAQPage schema USDA FAQ replaced with schools FAQ, loan tile swapped USDA→DPA, stat card "$0 Down USDA"→"$0 Down VA eligible", process step 1 USDA check removed, CTA USDA mention removed, down payment FAQ USDA removed)
