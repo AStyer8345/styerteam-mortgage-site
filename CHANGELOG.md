@@ -1,3 +1,14 @@
+## 2026-04-25 — Footer Awards sitewide standardization + AEO sweep continued (styer-site-daily)
+
+- 56 of 57 site files (28 root + 28 blog) standardized: footer Awards `<p>` updated from `★ 5.0 Stars · 91 Google Reviews / ★ 4.98 Stars · 45 Zillow Reviews` → `★ 5.0 Stars · 136+ Reviews / 21-Day Avg. Close · Licensed in Texas`. Two indent variants (multi-line and single-line) handled in two regex passes. Indentation preserved via `\g<lead>` capture group. Final `136+ Reviews` count across site: 88 pages (some pages have it in both hero trust badge and footer).
+- about.html intentionally excluded — its stale review-count instance is a `<span class="timeline-date">` inside a milestone timeline, not the footer `<p>` Awards block. Surfaced as MEDIUM Adam-decision flag (update vs. leave as historical milestone).
+- blog/how-many-mortgage-quotes-should-i-get.html: added 60-word `<p><strong>` AEO body paragraph after `</header>` (distinct from existing `blog-post-intro` in header). H2 "Why Most Buyers Only Get One Quote" → "Why Do Most Buyers Only Get One Quote?". dateModified 2026-04-12 → 2026-04-25.
+- blog/local-lender-vs-online-lender-austin-central-texas.html: added 54-word `<p><strong>` AEO body paragraph after `</header>`. H2 "How to Decide" → "How Do You Decide Between an Online, Local, or Broker Lender?". dateModified bumped.
+- sitemap.xml: lastmod bumped to 2026-04-25 for both rate-shopper posts.
+- Rate-shopper AEO progress: 6/10 posts now have machine-extractable answer-first paragraphs in article body.
+- NotebookLM Step 0 confirmed dead for the 3rd run — escalated to ESCALATED in FLAG_FOR_ADAM.
+- Commit b0f1dc6.
+
 ## 2026-04-24 PM — Rate-shopper AEO sweep continued (styer-site-daily)
 
 - blog/apr-vs-interest-rate-what-actually-matters.html: added 57-word `<p><strong>` AEO answer-first paragraph after `</header>` (existing `blog-post-intro` inside `<header>` was not machine-extractable). dateModified 2026-04-12 → 2026-04-24.

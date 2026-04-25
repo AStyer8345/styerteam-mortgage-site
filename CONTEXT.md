@@ -16,13 +16,15 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
+2026-04-25 (daily-opt) — Footer Awards sitewide standardization: 56 of 57 expected files (28 root + 28 blog) standardized from `★ 5.0 Stars · 91 Google Reviews / ★ 4.98 Stars · 45 Zillow Reviews` → `★ 5.0 Stars · 136+ Reviews / 21-Day Avg. Close · Licensed in Texas`. Two indent variants required two regex passes. about.html intentionally excluded (timeline-date span = different element type, surfaced as MEDIUM Adam-decision flag). Continued rate-shopper AEO sweep: how-many-mortgage-quotes + local-lender-vs-online both got `<p><strong>` body paragraphs after `</header>` (6/10 rate-shopper posts now AEO-clean). One statement→question H2 conversion on each. dateModified + sitemap lastmod bumped on both. NotebookLM Step 0 confirmed dead 3rd run — escalated to ESCALATED in FLAG_FOR_ADAM. Live verify: 4 sample pages 200, AEO content + 136+ Reviews format both confirmed live on Netlify. Commit b0f1dc6.
+
 2026-04-24 (styer-suburb-editor-daily) — Buda page deepened: USDA removed from 7 locations (schema/FAQ/tile/stat/process/CTA); 3 neighborhood spotlights added (Garlic Creek/Sunfield/Ruby Ranch, all 78610); Jack C. Hays HS 6/10 GreatSchools; employer list (US Foods, Deep Eddy/Heaven Hill, Cabela's, incoming H-E-B); closing cost breakdown at $370K with real HCISD+city tax rates (Community Impact sourced); median price updated $382K Feb 2026; rate-check-buda-kyle.html linked; WebPage schema added. Queue: Buda ✅ → Next: Hutto.
 
-2026-04-24 (weekly-blog-editor) — DPA post refreshed: title/meta rewritten for Austin CTR (361 impressions, 0 clicks). USDA removed from TDHCA section. "broker" corrected to correspondent lender. Travis County income limit ($167,250, TSAHC cite) added. Austin median price ($450K, ACTRIS April 2026) added. dateModified bumped. run-logs/editor-queue.md + gsc-reindex-queue.md created. Pushed to Netlify.
+2026-04-24 (weekly-blog-editor) — DPA post refreshed: title/meta rewritten for Austin CTR (361 impressions, 0 clicks). USDA removed from TDHCA section. "broker" corrected to correspondent lender. Travis County income limit ($167,250, TSAHC cite) added. Austin median price ($450K, ACTRIS April 2026) added. dateModified bumped. Pushed to Netlify.
 
-2026-04-24 PM (daily-opt) — Continued rate-shopper AEO sweep: apr-vs-interest-rate + are-mortgage-lender-fees-negotiable both got `<p><strong>` body paragraphs after `</header>` (4/10 rate-shopper posts now AEO-clean). Statement-form H2 on fees-negotiable converted to question. dateModified + sitemap lastmod bumped on both. Re-Verify Gate cleared Buda USDA (suburb-editor finished it earlier today). NEW FINDING: stale "91 Google + 45 Zillow" footer Awards on 28 blog posts + 29 root pages — suburb pages were standardized 2026-04-23 but the batch scope missed everything else; queued ZERO_RISK fix for next run.
+2026-04-24 PM (daily-opt) — apr-vs-interest-rate + are-mortgage-lender-fees-negotiable AEO-cleaned (4/10 rate-shopper posts). Statement-form H2 on fees-negotiable → question. NEW FINDING (resolved 2026-04-25): stale `91 Google + 45 Zillow` footer on 28 blog + 29 root pages.
 
-2026-04-24 AM (daily-opt) — AEO body paragraphs added to can-i-switch + how-to-compare rate-shopper posts (blog-post-intro in header was not machine-extractable). H2 question format on both posts. about.html body CTAs → /get-preapproved. Funnel clean. Blog lint: all titles pass. NotebookLM script confirmed dead — needs retirement.
+2026-04-24 AM (daily-opt) — AEO body paragraphs added to can-i-switch + how-to-compare. about.html body CTAs → /get-preapproved.
 
 ## Rate Check Page Inventory
 
@@ -57,7 +59,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | how-to-buy-a-house-in-austin-tx.html loan table includes USDA (`<a href="/loans/usda.html">USDA</a>`) — Adam does NOT do USDA. Needs removal. | HIGH |
 | Smithville (26 hits), Elgin (24), Florence (17), Jarrell (16): body/schema/FAQ USDA — same review as Buda (now done). | HIGH |
 | Liberty Hill (10 hits): USDA in LocalBusiness schema description + FAQ + pre-approval process text. | HIGH |
-| Stale "91 Google + 45 Zillow" footer on 28 blog posts + 29 root pages — suburb pages already standardized 2026-04-23; batch missed everything else. ZERO_RISK fix queued. | MEDIUM |
+| about.html timeline-date span still has "91 Google + 45 Zillow Reviews" — different element from footer Awards, intentionally excluded from 2026-04-25 batch. Adam decision: update or leave as historical milestone. | MEDIUM |
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed | HIGH |
 | PageSpeed manual check needed — quota blocks automated check | MEDIUM |
@@ -67,11 +69,11 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. **Footer Awards sitewide batch (NEW — ZERO_RISK)** — 28 blog posts + 29 root pages still carry the old `91 Google + 45 Zillow` two-line footer. Standard format `★ 5.0 Stars · 136+ Reviews / 21-Day Avg. Close · Licensed in Texas`. Use Python str.replace(); 57 files but identical replacement.
-2. **AEO sweep — 6 rate-shopper posts remain** — how-many-mortgage-quotes-should-i-get, local-lender-vs-online-lender, what-delays-closing, how-to-read-a-loan-estimate, what-to-compare-besides-rate, is-the-lowest-rate-the-cheapest. Same anti-pattern; same fix.
-3. **USDA cleanup (remaining)** — Smithville, Elgin, Florence, Jarrell body/schema/FAQ + Liberty Hill schema + how-to-buy loan table. Buda ✅ done 2026-04-24. Voice guide confirms Adam does NOT do USDA — safe to remove from remaining pages.
-4. **Retire NotebookLM Step 0** — notebook_advisor.py confirmed NOT on disk anywhere (2nd run today). Adam must either restore it or this step must be removed from SKILL.md.
-5. **Round Rock #2 → #1** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line (from suburb-editor-daily Phase 1b).
+1. **AEO sweep — 4 rate-shopper posts remain** — what-delays-closing, how-to-read-a-loan-estimate, what-to-compare-besides-rate, is-the-lowest-rate-the-cheapest. Same `blog-post-intro`-in-`<header>` anti-pattern; same fix.
+2. **USDA cleanup (remaining)** — Smithville, Elgin, Florence, Jarrell body/schema/FAQ + Liberty Hill schema + how-to-buy loan table. Buda ✅ done 2026-04-24. Voice guide confirms Adam does NOT do USDA — safe to remove from remaining pages.
+3. **Retire NotebookLM Step 0** — notebook_advisor.py confirmed NOT on disk anywhere (3rd run confirming). Adam must either restore it or Sunday's run will propose a SKILL.md edit removing Step 0.
+4. **about.html timeline-date** — Adam decision: update span to "136+ Google + Zillow Reviews" or leave as historical milestone (Pattern B = different element from footer Awards).
+5. **Round Rock #2 → #1** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line.
 5. ~~Footer Awards standardized across all suburb pages~~ ✅ DONE 2026-04-23 — all 15 remaining pages fixed
 6. ~~how-to-buy pillar page suburb links~~ ✅ DONE 2026-04-23 — all 24 suburb pages linked
 7. ~~Liberty Hill page unique content~~ ✅ DONE 2026-04-22b
