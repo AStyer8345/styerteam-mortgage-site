@@ -1,3 +1,16 @@
+## 2026-04-25 — Hutto suburb page deepened (styer-suburb-editor-daily)
+
+- Removed templated paragraph "As an independent mortgage broker, Adam Styer shops your loan across 40+ wholesale lenders..." — confirmed verbatim on 6 pages via grep (austin-mortgage-rates, bastrop, dripping-springs, hutto, liberty-hill, taylor).
+- Removed USDA from LocalBusiness schema description — Adam does not originate USDA loans.
+- Added WebPage schema with datePublished 2025-08-01 / dateModified 2026-04-25, isPartOf WebSite, about City+AdministrativeArea (Williamson County).
+- Refreshed FAQ Q1 + body home-price anchors to $340,000 median (Feb 2026, [Redfin](https://www.redfin.com/city/9075/TX/Hutto/housing-market) — down 9.3% YoY).
+- New H3 "Hutto Neighborhoods Where I Close Loans" — Star Ranch (78634, Clark Wilson Builder, sold-out, golf-course community off W Highfield), Emory Crossing (78634, 304 Stinchcomb Rd, Taylor Morrison + David Weekley townhomes, currently selling, [Jome](https://jome.com/community/tx/1029-emory-crossing-50s-by-taylor-morrison-304-stinchcomb-road-hutto-tx-78634)), Riverwalk (78634, established south-of-US-79).
+- New H3 "Top Hutto-Area Employers" — Samsung Austin Semiconductor in Taylor (~10 min via SH-130, 1,800 direct jobs targeted, [Community Impact Oct 2025](https://communityimpact.com/austin/georgetown/development/2025/10/08/samsung-employees-to-move-into-office-building-on-taylor-campus-this-november/)), Tesla Hutto 35,000 sq ft service/distribution facility ([FOX 7 Austin](https://www.fox7austin.com/news/tesla-hutto-austin-expansion)), Hutto ISD.
+- New H3 "Closing Cost Example — $340K Hutto Home" — typical $8,500–$10,500 closing costs at 5% down with breakdown: TX-promulgated title (~$2,200), lender fees ($1,500–$2,500), survey ($500), appraisal ($600–$700), property-tax escrow against ~1.93% combined rate (HISD $1.2052 + City of Hutto $0.385928 + Wilco). Both rates Community Impact sourced.
+- Added Hutto HS 6/10 [GreatSchools](https://www.greatschools.org/texas/hutto/3723-Hutto-High-School/) rating with direct URL.
+- Added internal link to /rate-check-georgetown.html (the rate-check page that covers Hutto).
+- Rewrote AEO opener with FHA + conventional + new-construction wedge (no DPA-grant-covers-everything overclaim).
+
 ## 2026-04-25 — Footer Awards sitewide standardization + AEO sweep continued (styer-site-daily)
 
 - 56 of 57 site files (28 root + 28 blog) standardized: footer Awards `<p>` updated from `★ 5.0 Stars · 91 Google Reviews / ★ 4.98 Stars · 45 Zillow Reviews` → `★ 5.0 Stars · 136+ Reviews / 21-Day Avg. Close · Licensed in Texas`. Two indent variants (multi-line and single-line) handled in two regex passes. Indentation preserved via `\g<lead>` capture group. Final `136+ Reviews` count across site: 88 pages (some pages have it in both hero trust badge and footer).

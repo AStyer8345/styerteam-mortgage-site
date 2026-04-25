@@ -9,7 +9,7 @@
 | 4 | `leander-mortgage-lender.html` | ✅ Done | 2026-04-22 | Removed USDA Loans card (Adam doesn't do USDA) + duplicate TSAHC/TDHCA DPA paragraph (verbatim match with pflugerville); added Travisso spotlight (78641, Taylor Morrison/Toll Brothers/Highland/Drees, Olimpico Way); school ratings (Glenn HS 6/10, Leander HS 6/10, Vista Ridge HS 8/10 GreatSchools); employer list (LISD 6,000+, National Aero Stands 2024); closing cost breakdown at $440K; updated median price to $438K Feb 2026 (Redfin); added WebPage schema |
 | 5 | `pflugerville-mortgage-lender.html` | ✅ Done | 2026-04-23 | Removed "Down Payment Assistance" loan card (verbatim match Georgetown + Smithville); added Blackhawk spotlight (78660, GFO/Chesmar/Coventry, $465K+ new construction); school ratings H3 (Hendrickson 8/10, Pflugerville HS 6/10, GreatSchools linked); employer list H3 (Amazon 1K jobs PCDC cited, Costco, Baylor S&W, Samsung Taylor); closing cost breakdown at $355K median (Travis County, PISD 1.1069, city tax rate sourced); updated FAQ home price to $355K Mar 2026 Redfin; fixed USDA in LocalBusiness schema; added WebPage schema |
 | 6 | `buda-mortgage-lender.html` | ✅ Done | 2026-04-24 | Removed USDA from 7 locations (schema/FAQ/tile/stat/process/CTA); added Garlic Creek/Sunfield/Ruby Ranch spotlights (78610); Jack C. Hays HS 6/10 GreatSchools; employer list (US Foods, Deep Eddy/Heaven Hill, Cabela's, H-E-B incoming — Buda EDC+City cited); closing cost breakdown at $370K (HCISD 1.1546 + city 0.3576 Community Impact cited); median price updated $382K Feb 2026 Houzeo; WebPage schema + dateModified added; rate-check-buda-kyle.html linked |
-| 7 | `hutto-mortgage-lender.html` | — | — | — |
+| 7 | `hutto-mortgage-lender.html` | ✅ Done | 2026-04-25 | Removed templated "As an independent broker" para (verbatim on 6 pages); removed USDA from schema description; added WebPage schema + dateModified; refreshed median to $340K Feb 2026 Redfin; added 3 neighborhood spotlights (Star Ranch / Emory Crossing 304 Stinchcomb Rd / Riverwalk, all 78634, with builders + Jome citations); Hutto HS 6/10 GreatSchools; employer list (Samsung Taylor 1,800 jobs Community Impact Oct 2025 + Tesla Hutto 35K sqft FOX 7 + Hutto ISD); closing cost breakdown at $340K (HISD 1.2052 + City of Hutto 0.385928 ~1.93% combined, both Community Impact sourced); rate-check-georgetown.html linked |
 | 8 | `liberty-hill-mortgage-lender.html` | — | — | — |
 | 9 | `manor-mortgage-lender.html` | — | — | — |
 | 10 | `lakeway-mortgage-lender.html` | — | — | — |
@@ -29,3 +29,4 @@
 - **2026-04-22** — Leander done. Next: Pflugerville.
 - **2026-04-23** — Pflugerville done. Next: Buda.
 - **2026-04-24** — Buda done. Next: Hutto.
+- **2026-04-25** — Hutto done. Next: Liberty Hill.
