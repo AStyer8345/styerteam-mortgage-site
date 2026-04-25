@@ -65,3 +65,5 @@ Items auto-appended by scheduled remote agents land here. Glance weekly.
 - [ ] **USDA in how-to-buy loan table (2026-04-23)** — how-to-buy-a-house-in-austin-tx.html loan program table includes `<a href="/loans/usda.html">USDA</a>`. Adam does NOT do USDA. Confirm + remove. Same as Buda/Smithville/Florence/Jarrell USDA blockers.
 
 - [ ] **NotebookLM script path broken (2026-04-23)** — `/Users/adamstyer/loanos/scripts/notebook_advisor.py` not found (loanos/ dir abandoned). Either locate the correct path or retire the NotebookLM step from the daily scheduled task.
+
+- [ ] **FLAG 2026-04-25 — Phase 1c (Leander) blocked: Phase 1b (Cedar Park) pre-check failed.** Phase 1b status is still `pending` in PHASES.md — it must reach `status: completed` before Phase 1c can execute. Phase 1c trigger fired today (scheduled 2026-04-25) but bailed without touching leander-mortgage-lender.html. Action required: complete Phase 1a (round-rock-mortgage-lender.html rebuild) → update Phase 1a to `completed`, then complete Phase 1b (cedar-park-mortgage-lender.html rebuild) → update Phase 1b to `completed`, then re-trigger Phase 1c.
