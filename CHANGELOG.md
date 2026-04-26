@@ -1,3 +1,13 @@
+## 2026-04-25 PM — Rate-shopper AEO 8/10 reached (styer-site-daily)
+
+- blog/what-delays-closing-when-you-switch-lenders.html — added body `<p><strong>` AEO answer paragraph (56w) after `</header>`, distinct from blog-post-intro inside header. Statement H2 "How a Broker Speeds Up the Process" → question "How Does a Broker Speed Up the Process?". dateModified 2026-04-12 → 2026-04-25.
+- blog/how-to-read-a-loan-estimate.html — added body `<p><strong>` AEO answer paragraph (66w) after `</header>`. Statement H2 "What to Do After You Read Your Loan Estimate" → question "What Should You Do After You Read Your Loan Estimate?". dateModified 2026-04-12 → 2026-04-25.
+- sitemap.xml — lastmod 2026-04-12 → 2026-04-25 for both posts.
+- Self-review PASS: GTM=2/2, NMLS intact, no Styer-Team, distinct-wording rule satisfied (both intros and body answers cover same question from different angles).
+- Live verify after Netlify deploy: both posts 200, body answers + question H2s + sitemap lastmod confirmed live.
+- Rate-shopper AEO coverage: 8/10 (was 6/10). Remaining: what-to-compare-besides-mortgage-rate, is-the-lowest-rate-the-cheapest-loan. Sunday finishes the series.
+- NotebookLM Step 0 dead 4th consecutive run — Sunday will draft the SKILL.md retirement patch.
+
 ## 2026-04-25 — Hutto suburb page deepened (styer-suburb-editor-daily)
 
 - Removed templated paragraph "As an independent mortgage broker, Adam Styer shops your loan across 40+ wholesale lenders..." — confirmed verbatim on 6 pages via grep (austin-mortgage-rates, bastrop, dripping-springs, hutto, liberty-hill, taylor).

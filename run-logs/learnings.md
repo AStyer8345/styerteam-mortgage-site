@@ -1,3 +1,15 @@
+## 2026-04-25 PM — Rate-Shopper AEO 8/10 + NotebookLM 4th-Run Escalation
+
+### Patterns
+- **Rate-shopper AEO 8/10 milestone — only 2 posts remaining**: Today's PM run knocked out `what-delays-closing-when-you-switch-lenders.html` and `how-to-read-a-loan-estimate.html`. Both had the predicted `blog-post-intro` inside `<header>` anti-pattern. The body `<p><strong>` after `</header>` fix continues to work cleanly. Remaining 2 rate-shopper posts: `what-to-compare-besides-mortgage-rate.html` + `is-the-lowest-rate-the-cheapest.html` (or whichever is in the remaining set — confirm by grepping `blog-post-intro` inside `<header>` on each rate-shopper post). Sunday's run should finish the series.
+- **AEO body-paragraph word-count zone — 50-70 words is the sweet spot**: Today's two new body answers landed at 56 and 66 words. Yesterday's were 60 and 54. All four read as direct answers without overflowing the visible viewport on mobile. Word-count target for the remaining 2 posts: 50-70 words, lead with the answer in the first 12-15 words.
+- **Distinct-wording rule prevents thin-content/duplicate signal**: The `blog-post-intro` and the body `<p><strong>` answer cover the same question but from different angles. delays-closing intro emphasized "appraisal + waiting too long" — body emphasized "start within first week, here's why timeline holds." loan-estimate intro listed the 5 numbers — body emphasized "don't read every line, focus on five." This pattern keeps both paragraphs useful without triggering duplicate-content signals or feeling repetitive to a human reader.
+- **Two-runs-same-day cadence proven again — same-day TOMORROW_PRIORITY can be executed by a same-day second run**: This is the second instance (also happened 2026-04-24) where the morning run set TOMORROW_PRIORITY for "Sunday" but the schedule fired again the same day, the second run executed it cleanly, and progress accelerated from 2/week to 4/week on the rate-shopper AEO series.
+- **NotebookLM Step 0 — 4th consecutive run confirms dead, remediation patch should be drafted**: Step 0 has now been a no-op for 4 runs (2026-04-23, 04-24 AM, 04-24 PM, 04-25 AM, 04-25 PM = arguably 5 runs). Sunday's run should write the concrete SKILL.md diff — not just keep flagging — so Adam can approve a one-shot edit. Proposed replacement: detect `/Users/adamstyer/.local/bin/notebooklm` (which DOES exist), use it via the `notebooklm` skill, and otherwise fall back to cached `NOTEBOOK_INSIGHTS` from learnings.md.
+- **Git rebase needed before push — sister scheduled task wrote between commit and push**: After commit, `git push` was rejected because `046948a` (suburb-deepener Phase 1c flag) had landed on remote during this run. `git pull --rebase origin main` cleanly replayed today's AEO commit on top. Pattern for future runs: when push is rejected, always check `git log HEAD..origin/main` first to see what landed, then rebase. Never force-push.
+
+---
+
 ## 2026-04-25 — Footer Awards Sitewide Batch + Two Indent Variants + Pattern A vs Pattern B Discrimination
 
 ### Patterns
