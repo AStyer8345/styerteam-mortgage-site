@@ -1,3 +1,15 @@
+## 2026-04-26 — Rate-shopper AEO series 10/10 COMPLETE + NotebookLM 5th-run patch (styer-site-daily)
+
+- blog/what-to-compare-besides-mortgage-rate.html — added body `<p><strong>` AEO answer paragraph (60w) after `</header>`, distinct from blog-post-intro (intro lists 6 factors; body leads with practical Section A side-by-side method + identical-rate $4,000+ spread example + rate=monthly/fees=upfront frame). Statement H2 "Origination Charges — The Biggest Variable" → question "Are Origination Charges the Biggest Variable in Loan Cost?". dateModified 2026-04-12 → 2026-04-26.
+- blog/is-the-lowest-rate-the-cheapest-loan.html — added body `<p><strong>` AEO answer paragraph (64w) after `</header>`, distinct from blog-post-intro (intro: total-cost frame; body leads with "compare loans over the time you'll keep them" + 6.375%/$8,500 vs 6.5%/$3,000 example aligned with post's existing Lender A/B numbers). Statement H2 "Why Buyers Fixate on the Rate" → question "Why Do Buyers Fixate on the Rate?". dateModified 2026-04-12 → 2026-04-26.
+- sitemap.xml — lastmod 2026-04-12 → 2026-04-26 for both posts.
+- Self-review PASS: GTM=2/2 on both, NMLS=4/4 each, no Styer-Team, distinct-wording rule satisfied, illustrative rates aligned with post's own Lender A/B example (no new compliance risk).
+- Live verify after Netlify deploy: both posts 200, body answers + question H2s + sitemap lastmod confirmed live.
+- **Rate-shopper AEO series 10/10 COMPLETE** — full anti-pattern (`blog-post-intro` inside `<header>` only) closed across all 10 posts after 4 days, ~20 min/run, 2-per-run cadence (commits de08af6, c6df081 PM, then today's 23d00c7).
+- NotebookLM Step 0 dead 5th consecutive run — concrete unified-style SKILL.md retirement diff drafted in run-log FLAG_FOR_ADAM (replaces lines 57-72 of `~/.claude/scheduled-tasks/styer-site-daily/SKILL.md`). One-shot edit Adam can apply.
+- Monday 2026-04-27 GSC sitemap status reminder logged in FLAG_FOR_ADAM (Step 1 weekly cadence).
+- Commit: 23d00c7. learnings.md appended with rate-shopper series complete pattern + 5th-run concrete-patch rule.
+
 ## 2026-04-25 PM — Rate-shopper AEO 8/10 reached (styer-site-daily)
 
 - blog/what-delays-closing-when-you-switch-lenders.html — added body `<p><strong>` AEO answer paragraph (56w) after `</header>`, distinct from blog-post-intro inside header. Statement H2 "How a Broker Speeds Up the Process" → question "How Does a Broker Speed Up the Process?". dateModified 2026-04-12 → 2026-04-25.

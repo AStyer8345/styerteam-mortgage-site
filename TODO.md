@@ -5,9 +5,9 @@
 - [x] **Footer Awards sitewide standardization** — 56 of 57 site files batched 2026-04-25; about.html timeline-date span surfaced as MEDIUM Adam-decision (different element, not in footer-Awards scope)
 - [x] **AEO sweep — how-many-mortgage-quotes + local-lender-vs-online** — both fixed 2026-04-25 AM (6/10 rate-shopper posts AEO-clean)
 - [x] **AEO sweep — what-delays-closing + how-to-read-a-loan-estimate** — both fixed 2026-04-25 PM (8/10 rate-shopper posts AEO-clean)
+- [x] **AEO sweep — final 2 rate-shopper posts** — what-to-compare-besides-mortgage-rate + is-the-lowest-rate-the-cheapest-loan fixed 2026-04-26. **Series 10/10 COMPLETE.**
+- [ ] **NEEDS ADAM (ESCALATED — 5th run)** — Apply NotebookLM SKILL.md retirement patch. Concrete unified-style diff in `run-logs/2026-04-26.md` FLAG_FOR_ADAM section. Replaces lines 57-72 of `~/.claude/scheduled-tasks/styer-site-daily/SKILL.md`. One-shot edit retires the broken Python script call and leans on carry-forward NOTEBOOK_INSIGHTS.
 - [ ] **NEEDS ADAM** — about.html timeline-date span: update "91 Google + 45 Zillow Reviews" to "136+ Google + Zillow Reviews", or leave as historical milestone snapshot. Different element from footer Awards.
-- [ ] **NEEDS ADAM** — NotebookLM Step 0 dead 4th consecutive run: restore `notebook_advisor.py` to a known path OR approve removing Step 0 from styer-site-daily SKILL.md. Sunday's run will draft the concrete SKILL.md diff for Adam to approve.
-- [ ] **AEO sweep — final 2 rate-shopper posts** — what-to-compare-besides-mortgage-rate, is-the-lowest-rate-the-cheapest-loan. Same anti-pattern; Sunday's run completes the series.
 - [x] Rate Check page — `/rate-check.html` created with SEO, form, FAQ (2026-04-12)
 - [x] Rate Check n8n workflow — `Pf1zWuKAnD4SznSR` active (2026-04-12)
 - [x] Rate Check SEO expansion — 5 city pages + 10 blog posts + internal linking (2026-04-12)
