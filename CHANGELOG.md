@@ -1,3 +1,12 @@
+## 2026-04-26 PM — should-i-refinance AEO body answer + blog-post-header template 14/14 complete (daily-opt)
+
+- blog/2026-04-17-should-i-refinance-austin-tx-2026.html — Added body `<p><strong>` AEO answer paragraph (56 words) immediately after `</header>` of `blog-post-header`, before existing first body `<p>`. Distinct angle from `blog-post-intro` inside header (intro: 3 conditions / body: run-the-formula + Austin median tenure ~6 yrs + 30/48-month examples drawn from post's own break-even math). All 6 H2s already in question form on this post — no statement→question conversion needed. dateModified 2026-04-17 → 2026-04-26 in schema.org Article.
+- sitemap.xml — lastmod 2026-04-17 → 2026-04-26 for the same post.
+- Commit 0c60b27 on top of cbddcc0. Pushed to main; Netlify deploy live within ~75s. Body answer + dateModified + sitemap lastmod confirmed live via curl.
+- AEO loose-thread audit: completed for `blog-post-header` template — 14/14 posts now have body `<p><strong>` answer (10 rate-shopper + 4 dated 2026-* posts using this template). Identified next AEO target cluster: ~16 dated 2026-* posts using the older `<header>` (page-level) + `<article class="blog-article">` template. Audit method needs upgrade to find first body `<p>` after `<h1>` inside `<article>`/`<main>`. Proposed cadence: 2 posts per AM run, paired by topic.
+- thank-you.html: discovered uncommitted change in working tree (`ty-alt-paths` reveal logic for refi/preapproval thank-you-types). Not from any current scheduled task — explicitly NOT staged. Logged for Adam decision (commit or revert).
+- NotebookLM Step 0 dead 6th run — concrete unified-diff SKILL.md retirement patch is in 2026-04-26 AM run-log FLAG_FOR_ADAM, still pending Adam's apply.
+
 ## 2026-04-26 — Liberty Hill suburb deepened (styer-suburb-editor-daily)
 
 - liberty-hill-mortgage-lender.html — Removed USDA from 5 locations: LocalBusiness schema description, FAQ schema Q (replaced with "What is the property tax rate in Liberty Hill TX?"), FAQ accordion (matching), loan-options card (swapped to Jumbo Loans card with SH-29/FM-1869 acreage hook), and Step 3 pre-approval text (swapped "USDA or DPA" → "Texas DPA or VA"). Adam doesn't originate USDA.

@@ -5,8 +5,11 @@
 - [x] **Footer Awards sitewide standardization** — 56 of 57 site files batched 2026-04-25; about.html timeline-date span surfaced as MEDIUM Adam-decision (different element, not in footer-Awards scope)
 - [x] **AEO sweep — how-many-mortgage-quotes + local-lender-vs-online** — both fixed 2026-04-25 AM (6/10 rate-shopper posts AEO-clean)
 - [x] **AEO sweep — what-delays-closing + how-to-read-a-loan-estimate** — both fixed 2026-04-25 PM (8/10 rate-shopper posts AEO-clean)
-- [x] **AEO sweep — final 2 rate-shopper posts** — what-to-compare-besides-mortgage-rate + is-the-lowest-rate-the-cheapest-loan fixed 2026-04-26. **Series 10/10 COMPLETE.**
-- [ ] **NEEDS ADAM (ESCALATED — 5th run)** — Apply NotebookLM SKILL.md retirement patch. Concrete unified-style diff in `run-logs/2026-04-26.md` FLAG_FOR_ADAM section. Replaces lines 57-72 of `~/.claude/scheduled-tasks/styer-site-daily/SKILL.md`. One-shot edit retires the broken Python script call and leans on carry-forward NOTEBOOK_INSIGHTS.
+- [x] **AEO sweep — final 2 rate-shopper posts** — what-to-compare-besides-mortgage-rate + is-the-lowest-rate-the-cheapest-loan fixed 2026-04-26 AM. **Series 10/10 COMPLETE.**
+- [x] **AEO sweep — should-i-refinance** — body `<p><strong>` (56w) added 2026-04-26 PM. **`blog-post-header` template cluster 14/14 COMPLETE** (10 rate-shopper + 4 dated 2026-* posts).
+- [ ] **AEO older-template cluster (NEW)** — ~16 dated 2026-* posts using older `<header>` (page-level) + `<article class="blog-article">` template. Audit method needs upgrade: find first body `<p>` after `<h1>` inside `<article>`/`<main>`. First pair: cash-out + fha-vs-conventional. Cadence: 2 posts/AM run paired by topic.
+- [ ] **NEEDS ADAM (ESCALATED — 6th run)** — Apply NotebookLM SKILL.md retirement patch. Concrete unified-style diff in `run-logs/2026-04-26.md` (AM) FLAG_FOR_ADAM section. Replaces lines 57-72 of `~/.claude/scheduled-tasks/styer-site-daily/SKILL.md`. One-shot edit retires the broken Python script call and leans on carry-forward NOTEBOOK_INSIGHTS.
+- [ ] **NEEDS ADAM (NEW 2026-04-26 PM)** — thank-you.html uncommitted change in working tree: `ty-alt-paths` reveal logic for refi/preapproval thank-you-types. Not from any current scheduled task. Decision: commit (with deploy verification) or revert.
 - [ ] **NEEDS ADAM** — about.html timeline-date span: update "91 Google + 45 Zillow Reviews" to "136+ Google + Zillow Reviews", or leave as historical milestone snapshot. Different element from footer Awards.
 - [x] Rate Check page — `/rate-check.html` created with SEO, form, FAQ (2026-04-12)
 - [x] Rate Check n8n workflow — `Pf1zWuKAnD4SznSR` active (2026-04-12)

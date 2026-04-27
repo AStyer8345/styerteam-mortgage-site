@@ -16,19 +16,19 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-2026-04-26 (daily-opt) — **Rate-shopper AEO series 10/10 COMPLETE.** Final 2 posts cleaned: what-to-compare-besides-mortgage-rate (60w body answer leading with practical Section A side-by-side method + identical-rate $4K spread example; "Origination Charges — The Biggest Variable" → "Are Origination Charges the Biggest Variable in Loan Cost?") and is-the-lowest-rate-the-cheapest-loan (64w body answer leading with "compare loans over the time you'll keep them" frame + 6.375%/$8,500 vs 6.5%/$3,000 example aligned with post's own Lender A/B numbers; "Why Buyers Fixate on the Rate" → "Why Do Buyers Fixate on the Rate?"). dateModified + sitemap lastmod bumped. Commit 23d00c7 → live within 60s. NotebookLM Step 0 dead 5th run — concrete unified-diff SKILL.md retirement patch drafted in run log FLAG_FOR_ADAM (replaces lines 57-72) for Adam to apply as one-shot edit.
+2026-04-26 PM (daily-opt) — **`blog-post-header` template AEO cluster 14/14 COMPLETE.** Closed last gap: 2026-04-17-should-i-refinance-austin-tx-2026 — body `<p><strong>` (56w) added after `</header>` with distinct angle from intro (intro: 3 conditions / body: run-the-formula + Austin median tenure ~6 yrs + 30/48-month examples). All 6 H2s already in question form. dateModified + sitemap lastmod bumped to 2026-04-26. Commit 0c60b27 → live within 75s. NotebookLM Step 0 dead 6th run — diff still pending Adam's apply. AEO loose-thread audit identified next cluster: ~16 older-template dated 2026-* posts that need a different audit method (find first `<p>` after `<h1>` in `<article>`/`<main>` body). Proposed cadence: 2 posts/AM run paired by topic (cash-out+fha-vs-conv → va+ftb → dscr+how-to-choose → self-employed+next).
 
-2026-04-25 PM (daily-opt) — Rate-shopper AEO continued: what-delays-closing-when-you-switch-lenders + how-to-read-a-loan-estimate (8/10). Body `<p><strong>` paragraphs (56w + 66w) after `</header>`. Two statement→question H2 conversions. NotebookLM Step 0 dead 4th run. Commit de08af6.
+2026-04-26 AM (daily-opt) — Rate-shopper AEO series 10/10 COMPLETE. Final 2 posts: what-to-compare-besides-mortgage-rate (60w) + is-the-lowest-rate-the-cheapest-loan (64w). Two statement→question H2 conversions. Commit 23d00c7. NotebookLM 5th-run concrete diff drafted.
 
-2026-04-25 (styer-suburb-editor-daily) — Hutto page deepened: USDA removed from LocalBusiness schema; median $340K Feb 2026; 3 neighborhood spotlights; tax breakdown + employer list. Queue: Hutto ✅ → Next: Liberty Hill.
+2026-04-25 PM (daily-opt) — Rate-shopper AEO 8/10: what-delays-closing + how-to-read-a-loan-estimate (56w + 66w). Commit de08af6.
 
-2026-04-25 AM (daily-opt) — Footer Awards sitewide standardization (56 of 57 files; about.html timeline-date span surfaced as separate Adam-decision element). Rate-shopper AEO: how-many-mortgage-quotes + local-lender-vs-online (6/10).
+2026-04-25 (styer-suburb-editor-daily) — Hutto page deepened: USDA removed; median $340K; 3 neighborhood spotlights; tax breakdown + employers.
 
-2026-04-24 (styer-suburb-editor-daily) — Buda page deepened: USDA removed from 7 locations; 3 neighborhood spotlights; HCISD tax rates; median $382K Feb 2026; rate-check-buda-kyle.html linked.
+2026-04-25 AM (daily-opt) — Footer Awards sitewide standardization (56 files; about.html timeline-date surfaced as separate Adam-decision). Rate-shopper AEO 6/10.
 
-2026-04-24 PM (daily-opt) — apr-vs-interest-rate + are-mortgage-lender-fees-negotiable AEO-cleaned (4/10). Statement-form H2 on fees-negotiable → question.
+2026-04-24 (styer-suburb-editor-daily) — Buda page deepened.
 
-2026-04-24 AM (daily-opt) — AEO body paragraphs added to can-i-switch + how-to-compare (2/10). about.html body CTAs → /get-preapproved.
+2026-04-24 PM (daily-opt) — apr-vs-interest-rate + are-mortgage-lender-fees-negotiable AEO-cleaned (4/10).
 
 ## Rate Check Page Inventory
 
@@ -60,13 +60,13 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 | Issue | Priority |
 |-------|----------|
-| NotebookLM Step 0 broken — concrete unified-diff SKILL.md retirement patch ready in 2026-04-26 run log FLAG_FOR_ADAM. One-shot edit. 5th-run escalation. | HIGH (ESCALATED) |
+| NotebookLM Step 0 broken — concrete unified-diff SKILL.md retirement patch ready in 2026-04-26 AM run log FLAG_FOR_ADAM. One-shot edit. 6th-run escalation. | HIGH (ESCALATED) |
 | how-to-buy-a-house-in-austin-tx.html loan table includes USDA (`<a href="/loans/usda.html">USDA</a>`) — Adam does NOT do USDA. Needs removal. | HIGH |
-| Smithville (26 hits), Elgin (24), Florence (17), Jarrell (16): body/schema/FAQ USDA — same review as Buda (now done). | HIGH |
-| Liberty Hill (10 hits): USDA in LocalBusiness schema description + FAQ + pre-approval process text. | HIGH |
+| Smithville (26 hits), Elgin (24), Florence (17), Jarrell (16): body/schema/FAQ USDA — same review as Buda (now done). Liberty Hill done 2026-04-26 (commit cbddcc0, separate session). | HIGH |
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed | HIGH |
 | Blog title brand drift — recurring issue, pre-publish lint required | HIGH |
 | about.html timeline-date span still has "91 Google + 45 Zillow Reviews" — different element from footer Awards. Adam decision: update or leave as historical milestone. | MEDIUM |
+| thank-you.html uncommitted change in working tree — `ty-alt-paths` reveal logic for refi/preapproval thank-you-types. Not from any current scheduled task. Adam decision: commit or revert. | MEDIUM |
 | PageSpeed manual check needed — quota blocks automated check | MEDIUM |
 | Monday 2026-04-27 — verify GSC sitemap.xml shows "Success" + discovered pages > 0 | LOW |
 | GSC URL Inspection needed — Taylor, Smithville, Elgin, Florence, Jarrell; manual Request Indexing needed | LOW |
@@ -74,16 +74,15 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## What's Next
 
-1. **Apply NotebookLM SKILL.md retirement patch** — concrete unified-style diff for `~/.claude/scheduled-tasks/styer-site-daily/SKILL.md` lines 57-72 in 2026-04-26 run-log FLAG_FOR_ADAM. One-shot edit removes broken Python script call and leans on carry-forward NOTEBOOK_INSIGHTS.
-2. **Monday 2026-04-27 — GSC sitemap status verification** — Step 1 weekly cadence. Confirm Google Search Console shows sitemap.xml as "Success" with discovered pages > 0.
-3. **USDA cleanup (remaining)** — Smithville, Elgin, Florence, Jarrell body/schema/FAQ + Liberty Hill schema + how-to-buy loan table. Voice guide confirms Adam does NOT do USDA — needs Adam confirmation on cleanup.
-4. **about.html timeline-date** — Adam decision: update span to "136+ Google + Zillow Reviews" or leave as historical milestone.
-5. **Next AEO target cluster** — rate-shopper series 10/10 complete. Identify next post cluster with `<header>`-trapped answers (refinance posts? FHA/VA loan pages? suburb pages without body `<p><strong>`?). Propose 2-per-week cadence on the largest open gap.
-6. **Round Rock #2 → #1** — Add Teravista/Forest Creek/Old Town Round Rock neighborhoods + Round Rock ISD + "beat builder rates" line.
-7. ~~Rate-shopper AEO series~~ ✅ **COMPLETE 2026-04-26 — 10/10 posts**
-8. ~~Footer Awards sitewide~~ ✅ DONE 2026-04-25 — 56 of 57 files
-9. ~~Footer Awards on all suburb pages~~ ✅ DONE 2026-04-23
-10. ~~how-to-buy pillar page suburb links~~ ✅ DONE 2026-04-23
+1. **Apply NotebookLM SKILL.md retirement patch** — concrete unified-style diff in 2026-04-26 AM run-log FLAG_FOR_ADAM. One-shot edit. 6th-run escalation.
+2. **Monday 2026-04-27 — GSC sitemap status verification** — Step 1 weekly cadence.
+3. **USDA cleanup (remaining)** — Smithville, Elgin, Florence, Jarrell body/schema/FAQ + how-to-buy loan table. Liberty Hill done.
+4. **about.html timeline-date** + **thank-you.html alt-paths** — both Adam decisions.
+5. **Next AEO target cluster — older `<header>` template, ~16 dated posts**: cash-out + fha-vs-conv → va + ftb-programs → dscr + how-to-choose-lender → self-employed + next loose thread. 2 posts per AM run, paired by topic. Audit method needs upgrade: find first body `<p>` after `<h1>` in `<article>`/`<main>`, check for `<strong>` answer-first.
+6. **Round Rock #2 → #1** — Add Teravista/Forest Creek/Old Town RR neighborhoods + Round Rock ISD + "beat builder rates" line.
+7. ~~`blog-post-header` template AEO cluster~~ ✅ **COMPLETE 2026-04-26 PM — 14/14 posts (10 rate-shopper + 4 dated)**
+8. ~~Rate-shopper AEO series~~ ✅ DONE 2026-04-26 — 10/10
+9. ~~Footer Awards sitewide~~ ✅ DONE 2026-04-25 — 56 of 57 files
 
 ## Known Issues
 

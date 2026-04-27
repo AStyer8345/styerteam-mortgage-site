@@ -1,3 +1,15 @@
+## 2026-04-26 PM — should-i-refinance AEO Body Answer + blog-post-header Template 14/14 Complete
+
+### Patterns
+- **`blog-post-header` template AEO cluster now 14/14 complete** — Tonight's PM run closed the last gap: `2026-04-17-should-i-refinance-austin-tx-2026.html`. The post used the exact same `<header class="blog-post-header"> → <p class="blog-post-intro"><strong>... → </header>` anti-pattern as the rate-shopper series. Same fix worked: body `<p><strong>` (56 words) inserted after `</header>`, distinct angle from the intro. Cluster total: 10 rate-shopper posts (closed 2026-04-23 → 2026-04-26 AM) + 4 dated 2026-* posts (3 already done pre-audit + tonight's 1) = 14 posts. The `blog-post-header` template is now AEO-clean.
+- **All 6 H2s already in question form on should-i-refinance — no statement→question conversion needed**: This is the first post in the AEO series where every single H2 was already a question. The post was apparently authored after the AEO question-H2 pattern was internalized. Lesson: scan H2s before assuming a conversion is needed; sometimes the only gap is the body answer paragraph itself.
+- **Audit method needs a second pass for the older `<header>` template (~16 dated 2026-* posts)**: The `<header class="blog-post-header">` audit script returns NO_BLOG_HEADER for posts that use the older `<header>` (page nav) + `<article class="blog-article">` template. Inspecting 5 representative posts (cash-out, fha-vs-conventional, va-eligibility, ftb-programs, dscr) shows they have `<p><strong>` paragraphs throughout the body but NOT as the answer-first leadoff after `<h1>`. They need a different audit method: find first `<p>` after `<h1>` inside `<article>`/`<main>`, check if it starts with `<strong>` and is 40-70 words.
+- **Same-day double-run pattern continues to compound progress** — Today's morning run + tonight's PM run combined to: (1) complete the rate-shopper series (10/10), (2) close the last `blog-post-header`-template gap, (3) audit + propose the next AEO target cluster with cadence. Three discrete deliverables in one calendar day. The morning-PM rhythm is now the proven pattern for accelerating cluster work.
+- **Next AEO sprint cadence proposed: 2 posts per AM run, paired by topical cluster**: cash-out + fha-vs-conventional → va-eligibility + ftb-programs → dscr + how-to-choose-lender → self-employed + (next loose thread). Pairing keeps each session focused on a single topic family and lets the body-answer wording reuse vocabulary across the pair.
+- **thank-you.html uncommitted change discovered tonight (not from this scheduled task)**: `git diff` showed an unstaged modification to thank-you.html exposing `ty-alt-paths` for refinance + preapproval thank-you-types. Not staged in tonight's commit. Logged in FLAG_FOR_ADAM. Lesson for future PM runs: always run `git diff` and `git status` before staging, and only stage the files you actually touched this session — never `git add .` or `git add -A` even when "everything looks fine."
+
+---
+
 ## 2026-04-26 — Rate-Shopper AEO Series Complete (10/10) + NotebookLM 5th-Run Concrete Patch
 
 ### Patterns
