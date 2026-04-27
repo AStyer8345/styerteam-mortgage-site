@@ -18,6 +18,11 @@
 - [x] Fix suburb quick-form conversion gap (fixed 2026-04-08)
 - [x] Week 6 competitive intelligence run — Hutto/Liberty Hill (2026-04-13)
 - [x] Week 7 competitive intelligence run — Round Rock revisit + Bee Cave new (2026-04-20)
+- [x] Week 8 competitive intelligence run — Cedar Park revisit + Lakeway new (2026-04-27)
+- [ ] **GSC URL Inspection sweep (overdue, from Week 8 intel)** — Submit re-indexing for: hutto-mortgage-lender.html (recapture #1 from Big Life), round-rock-mortgage-lender.html (recover from sandbox bounce — was #2, now not found), bee-cave-mortgage-lender.html (24 days since sitemap, never indexed for keyword), lakeway-mortgage-lender.html (verify schema/AEO first). Single highest-leverage move from Week 8.
+- [ ] **Refinance page upgrade vs Joel Richardson/FCM (new #1 cash-out)** — Audit `/loans/refinance.html` for FAQPage schema with cash-out questions, Texas 80% LTV + 12-month wait specifics, break-even math example. Joel Richardson holds dedicated `/cash-out-refinancing/` URL.
+- [ ] **Lakeway page AEO + jumbo emphasis** — Verify schema, AEO answer paragraph, neighborhood markers (Rough Hollow, The Hills, Lakeway proper, Vineyard Bay), Lake Travis ISD, jumbo loan emphasis. NEXA's "20-year Lakeway resident" line is the local-authority hook to beat.
+- [ ] **Pre-approval title rewrite** — `/mortgage-pre-approval-austin.html` — SERP for "get pre-approved austin tx" is contaminated with auto-loan results; an explicit "MORTGAGE pre-approval" hook in the title can capture mortgage-side searcher intent vs MortgageAustin.com #1.
 - [x] **Hutto page: AEO paragraph + schema review count 91+ + neighborhood names** — VERIFIED 2026-04-18: AEO ✅, reviewCount = 136 ✅, H2s in question format ✅
 - [x] **Liberty Hill page: unique content** — DONE 2026-04-22b (Orchard Ridge, Williamson County tax, H2 question format, footer Awards)
 - [x] **Audit /mortgage-broker-vs-bank.html** — comparison table ✅, FAQPage ✅, H2 question format ✅, CTAs fixed → /get-preapproved, title updated 2026-04-22
