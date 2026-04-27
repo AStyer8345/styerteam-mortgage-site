@@ -1,3 +1,12 @@
+## 2026-04-27 — AEO body answers: cash-out + fha-vs-conv (daily-opt)
+
+- blog/2026-03-24-cash-out-refinance-austin-tx.html — body `<p><strong>` AEO answer (69w, "three things line up" frame using post's own numbers). dateModified 2026-04-27.
+- blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html — body `<p><strong>` AEO answer (79w, decision-frame + MIP-vs-PMI life-of-loan distinction). dateModified 2026-04-27.
+- sitemap.xml — lastmod 2026-04-27 on both posts.
+- Wrote second audit script (find first `<p>` after `<h1>` in `<article>` body, check leading `<strong>` and 40-80w body). 16 older-template posts identified — 2 closed this run, 14 remaining.
+- Schema audit (Monday rotation): homepage MortgageBroker + Person ✅, DSCR FAQPage ✅, Hutto full stack ✅, about.html Person matches homepage. NEW finding logged in CONTEXT.md Active Blockers: about.html LocalBusiness address (5900 Balcones Drive) ≠ homepage MortgageBroker (5718 Sam Houston Circle). Adam decision needed.
+- Commit 984d1b0; live in 75s; verified via curl.
+
 ## 2026-04-27 — Week 8 competitive intel: SERP-wide snapback (styer-competitive-weekly)
 
 - run-logs/competitive/2026-04-27.md + latest.md — Week 8 report. SERP rankings: 2 → 1 in top 10. Hutto demoted #1→#2 (Big Life reclaimed with no content updates — algorithmic refresh, not on-page regression; both Hutto + Round Rock pages verified to have correct 136-review schema and recent edits). Round Rock #2 → not in top 10 (sandbox bounce on page deepened 2026-04-19). Bee Cave still not indexed (24 days). New top 3 across 11 tracked keywords logged with full re-verify gate.
