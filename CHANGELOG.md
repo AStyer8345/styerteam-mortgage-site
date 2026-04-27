@@ -1,3 +1,15 @@
+## 2026-04-27 — Manor suburb deepened (styer-suburb-editor-daily)
+
+- manor-mortgage-lender.html — Round 1, slot 9. Removed all Manor-specific USDA copy (LocalBusiness schema description, FAQ schema Q + accordion Q, body "even USDA financing" line) — header/footer nav `/loans/usda.html` left as sitewide concern (separate Adam decision). Replaced USDA FAQ Q with property-tax Q citing Manor ISD $1.0814/$100 (M&O 0.7113 + I&S 0.3701, Prop A approved Nov 2024) + Ownwell ~2.27% combined effective.
+- Removed templated "As an independent mortgage broker, Adam Styer shops rates across 40+ wholesale lenders" + "Adam works for you — not for a lender or a builder" paragraph (verbatim 4-page match: bee-cave, kyle, manor, san-marcos — Manor now removed). Removed templated DPA paragraph. Loan-tile #4 rewritten as Manor-specific TSAHC/TDHCA tile linking tsahc.org + tdhca.texas.gov.
+- Added 4 verified neighborhood spotlights with builders + 78653 zip: ShadowGlen (Terrata/Perry/Meritage/LGI, $499K-$555K top tier — 18-hole golf course + 4-acre water park), Whisper Valley (Pacesetter + Avi, geothermal+solar via Taurus Investment Holdings, $200s-$400s), Carillon (D.R. Horton at 13407 Eppright Trace, $299,990-$416,990, 1,574-2,677 sqft), Presidential Meadows (KB Home, sold-out resale, Presidential Meadows Elementary at 13252 George Bush St).
+- Manor Schools H3 — honest disclosure: Manor High School 2/10 GreatSchools cited inline. Recommended buyers verify specific elementary/middle attendance before writing offers.
+- Major Employers H3: Tesla Gigafactory 22,777+ employees (Electrek), ~15 min via SH-130 (Wikipedia confirms 2,500-acre site); Plastic Omnium 350K-sqft Tesla supplier plant + 800 jobs (Connect CRE); Samsung Austin Semiconductor Taylor fab; Manor ISD as local employer.
+- Median home price refreshed to $355,000 Nov 2025 (+6.6% YoY, Redfin) replacing $270K-$400K templated range. FAQ + accordion home-price Q + first-time-buyer Q + Tesla Q all rewritten with verified data + inline source links.
+- Closing cost example at $355K with 5% down: $7,500-$9,500 range itemized (title $1,800-$2,400, lender $1,200-$1,800, recording/survey $300-$500, prepaids $1,200-$1,800, 3-4 mo tax escrow $2,000-$2,700 at 2.27% effective).
+- Added WebPage schema with dateModified 2026-04-27. Meta description rewritten with neighborhood list + Redfin median. Internal links: /rate-check.html, /get-preapproved, Wikipedia Gigafactory, plus 7 source URLs.
+- All 4 JSON-LD blocks validated parse-clean.
+
 ## 2026-04-27 — AEO body answers: cash-out + fha-vs-conv (daily-opt)
 
 - blog/2026-03-24-cash-out-refinance-austin-tx.html — body `<p><strong>` AEO answer (69w, "three things line up" frame using post's own numbers). dateModified 2026-04-27.
