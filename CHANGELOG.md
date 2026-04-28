@@ -1,3 +1,13 @@
+## 2026-04-27 PM — AEO body answers: VA + FTB (daily-opt)
+
+- blog/2026-03-29-va-loan-eligibility-texas.html — body `<p><strong>` AEO answer (79w) inserted after `</div>` of newsletter-author-bar, before existing first `<p>`. Distinct angle from existing eligibility/service-test paragraph: leads with **benefit/economics** (zero down + no PMI + capped closing costs the seller can pay + $150–300/mo savings vs <20% down conventional + Funding Fee 1.25–3.3% waived for veterans with 10%+ service-connected disability). Numbers all sourced from post body. dateModified 2026-03-29 → 2026-04-27.
+- blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html — body `<p><strong>` AEO answer (81w) inserted inside `<div class="blog-article-body">`, before existing first `<p>`. Distinct angle from existing voice-y casual hook: leads with **four-program stack inventory** (TSAHC 3–5% grants, TDHCA My First Texas Home up to 5% as 30-year deferred lien, MCC $2,000/year federal tax credit for life of loan, City of Austin American Dream up to 10% for buyers <80% AMI) + Texas first-time definition (no primary-residence ownership in past 3 years). Numbers all sourced from post body. dateModified 2026-03-30 → 2026-04-27.
+- sitemap.xml — lastmod 2026-04-27 on both posts (was 2026-03-29 / 2026-03-30).
+- New insertion pattern documented in learnings.md: `blog-article-body`-template posts (FTB pattern) — insert immediately after the opening `<div class="blog-article-body">`, before the first `<p>`. Author block already closed inside `<div class="blog-article-header">`.
+- New layering insight: when existing first `<p>` is voice-y/casual (FTB), AEO answer paragraph serves as machine-extractable layer above; existing voice opener still functions as human hook below. Don't replace voice with extraction — add extraction above voice.
+- Commit 998c920; live verified via curl in 75s.
+- Older-template AEO cluster: was 14 remaining → now 12. Next pair: DSCR + how-to-choose-lender.
+
 ## 2026-04-27 — Manor suburb deepened (styer-suburb-editor-daily)
 
 - manor-mortgage-lender.html — Round 1, slot 9. Removed all Manor-specific USDA copy (LocalBusiness schema description, FAQ schema Q + accordion Q, body "even USDA financing" line) — header/footer nav `/loans/usda.html` left as sitewide concern (separate Adam decision). Replaced USDA FAQ Q with property-tax Q citing Manor ISD $1.0814/$100 (M&O 0.7113 + I&S 0.3701, Prop A approved Nov 2024) + Ownwell ~2.27% combined effective.
