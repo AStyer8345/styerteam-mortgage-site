@@ -704,8 +704,12 @@
         }
       } else if (type === 'refinance') {
         if (h1) h1.textContent = "Your Refinance Quote Request Was Received";
+        var altPathsRefi = document.getElementById('ty-alt-paths');
+        if (altPathsRefi) altPathsRefi.hidden = false;
       } else if (type === 'preapproval') {
         if (h1) h1.textContent = "Your Pre-Approval Request Was Received";
+        var altPathsPa = document.getElementById('ty-alt-paths');
+        if (altPathsPa) altPathsPa.hidden = false;
       } else if (type === 'lo-waitlist') {
         if (h1) h1.textContent = "You're on the LoanOS Waitlist";
         if (paras.length > 0) paras[0].textContent = "I'll reach out personally when LoanOS is ready for other LOs. No spam — just honest build updates.";
