@@ -1,3 +1,15 @@
+## 2026-04-28 — Meta descriptions + DSCR AEO body answer (daily-opt)
+
+- 10 meta descriptions rewritten to 150-160 char spec on key indexed pages: calculator-affordability (119→157), rate-alert (124→150), how-to-buy-a-house (127→154), about (131→159), first-time-home-buyer (132→160 — USDA removed per voice-guide rule), calculator-payment (135→156), rate-check (135→152), calculators (137→155), fixed-vs-adjustable (139→150), manor-mortgage-lender (173→159 trim).
+- blog/2026-03-31-dscr-loans-austin-tx-2026.html — body `<p><strong>` AEO answer (66w, mechanics/qualification math angle: DSCR formula, 1.0/1.25 thresholds, 680/740 credit floors, 20–25% down, no W-2/no tax returns, LLC title). Numbers all sourced from post body (PITI table, lender requirements, comparison table). Distinct from existing investor pain-point/scenario intro. dateModified 2026-03-31 → 2026-04-28.
+- Re-verify gate auto-resolved how-to-choose-a-mortgage-lender — already had `<p><strong>` AEO answer at line 190 from earlier session. No edit required.
+- sitemap.xml — lastmod 2026-04-28 on 10 in-sitemap pages + DSCR. Added missing `<lastmod>` attributes to calculator-affordability + calculator-payment.
+- New finding logged: rate-alert.html missing from sitemap.xml. Verify indexability and add next run.
+- thank-you.html uncommitted state escalated MEDIUM → HIGH (4th run carry forward, Adam decision required).
+- Older-template AEO cluster: 4/16 → 6/16 closed, 10 remaining. Next pair: self-employed + DPA.
+- Commit 6db2ebe; live ~0s after push; all 12 URLs HTTP 200 verified via curl.
+- New learnings: (1) re-verify-before-write rule for AEO body answers — grep `<p><strong>` BEFORE inserting, prevents duplicate/redundant work; (2) em-dash byte/char gotcha when targeting 160-char meta descriptions — wc -c overcounts by 2 per em dash, validate with `python3 print(len(...))`; (3) USDA removal on small surfaces (meta) is auto-doable; body removal still requires Adam confirmation.
+
 ## 2026-04-27 PM — AEO body answers: VA + FTB (daily-opt)
 
 - blog/2026-03-29-va-loan-eligibility-texas.html — body `<p><strong>` AEO answer (79w) inserted after `</div>` of newsletter-author-bar, before existing first `<p>`. Distinct angle from existing eligibility/service-test paragraph: leads with **benefit/economics** (zero down + no PMI + capped closing costs the seller can pay + $150–300/mo savings vs <20% down conventional + Funding Fee 1.25–3.3% waived for veterans with 10%+ service-connected disability). Numbers all sourced from post body. dateModified 2026-03-29 → 2026-04-27.
