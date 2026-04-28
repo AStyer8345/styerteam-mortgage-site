@@ -20,29 +20,36 @@ async function createGitHubFile(filePath, content, commitMessage) {
     "User-Agent": "StyerTeam-Bot",
   };
 
-  // Check if file already exists — if so, include its SHA (required by GitHub API for updates)
-  let sha;
-  const getRes = await fetch(url, { headers });
-  if (getRes.ok) {
-    const existing = await getRes.json();
-    sha = existing.sha;
-  }
+  // Retry on 409 — GitHub's contents API serializes at the branch tip, so
+  // concurrent PUTs to *different* files can still race when a sibling commit
+  // lands between our GET and PUT. Refetch SHA and retry.
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    let sha;
+    const getRes = await fetch(url, { headers });
+    if (getRes.ok) {
+      const existing = await getRes.json();
+      sha = existing.sha;
+    }
 
-  const body = JSON.stringify({
-    message: commitMessage || `${sha ? "Update" : "Add"} file: ${filePath}`,
-    content: Buffer.from(content).toString("base64"),
-    branch: "main",
-    ...(sha ? { sha } : {}),
-  });
+    const body = JSON.stringify({
+      message: commitMessage || `${sha ? "Update" : "Add"} file: ${filePath}`,
+      content: Buffer.from(content).toString("base64"),
+      branch: "main",
+      ...(sha ? { sha } : {}),
+    });
 
-  const res = await fetch(url, { method: "PUT", headers, body });
+    const res = await fetch(url, { method: "PUT", headers, body });
+    if (res.ok) return res.json();
 
-  if (!res.ok) {
     const errBody = await res.text();
+    if (res.status === 409 && attempt < 4) {
+      const backoff = 200 * attempt + Math.floor(Math.random() * 200);
+      console.log(`[github] 409 on ${filePath} (attempt ${attempt}/4), retrying in ${backoff}ms`);
+      await new Promise(r => setTimeout(r, backoff));
+      continue;
+    }
     throw new Error(`GitHub API error (${res.status}): ${errBody}`);
   }
-
-  return res.json();
 }
 
 // ====================================================================
@@ -63,31 +70,41 @@ async function updateGitHubFile(filePath, mutator, commitMessage) {
     "User-Agent": "StyerTeam-Bot",
   };
 
-  const getRes = await fetch(url, { headers });
-  if (!getRes.ok) {
-    throw new Error(`GitHub fetch failed (${getRes.status}) for ${filePath}`);
-  }
-  const data = await getRes.json();
-  const sha = data.sha;
-  const current = Buffer.from(data.content, "base64").toString("utf8");
+  // Retry on 409 — re-fetch SHA, re-run mutator on the now-newer content
+  // (mutators must be idempotent; ours all check `includes(...)` before inserting).
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    const getRes = await fetch(url, { headers });
+    if (!getRes.ok) {
+      throw new Error(`GitHub fetch failed (${getRes.status}) for ${filePath}`);
+    }
+    const data = await getRes.json();
+    const sha = data.sha;
+    const current = Buffer.from(data.content, "base64").toString("utf8");
 
-  const next = await mutator(current);
-  if (next == null || next === current) return null;
+    const next = await mutator(current);
+    if (next == null || next === current) return null;
 
-  const putRes = await fetch(url, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify({
-      message: commitMessage || `Update ${filePath}`,
-      content: Buffer.from(next).toString("base64"),
-      sha,
-      branch: "main",
-    }),
-  });
-  if (!putRes.ok) {
-    throw new Error(`GitHub PUT failed (${putRes.status}) for ${filePath}: ${await putRes.text()}`);
+    const putRes = await fetch(url, {
+      method: "PUT",
+      headers,
+      body: JSON.stringify({
+        message: commitMessage || `Update ${filePath}`,
+        content: Buffer.from(next).toString("base64"),
+        sha,
+        branch: "main",
+      }),
+    });
+    if (putRes.ok) return putRes.json();
+
+    const errBody = await putRes.text();
+    if (putRes.status === 409 && attempt < 4) {
+      const backoff = 200 * attempt + Math.floor(Math.random() * 200);
+      console.log(`[github] 409 on ${filePath} (attempt ${attempt}/4), retrying in ${backoff}ms`);
+      await new Promise(r => setTimeout(r, backoff));
+      continue;
+    }
+    throw new Error(`GitHub PUT failed (${putRes.status}) for ${filePath}: ${errBody}`);
   }
-  return putRes.json();
 }
 
 // ====================================================================
