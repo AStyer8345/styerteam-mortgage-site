@@ -3,7 +3,7 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildRealtorPrompt } = require("./lib/realtor-prompt-builder");
 const { buildRealtorPage } = require("./lib/realtor-page-builder");
 const { generateAndPostSocial } = require("./lib/social-poster");
-const { createGitHubFile, createAndSendCampaign, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument, wrapEmailHtml } = require("./lib/shared");
+const { createGitHubFile, addSitemapEntry, createAndSendCampaign, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument, wrapEmailHtml } = require("./lib/shared");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateRealtorContent()
@@ -34,6 +34,7 @@ exports.handler = async (event) => {
 async function generateRealtorContent(formData) {
     const { topic, mode, source, scheduleTime } = formData;
     const isPreview = mode === "preview";
+    const isPublishOnly = mode === "publish-only";
     const isPaste = source === "paste";
 
     // Validate
@@ -144,17 +145,33 @@ async function generateRealtorContent(formData) {
     });
 
     if (!isPreview) {
-      // Publish to /realtor-updates/
-      await createGitHubFile(`realtor-updates/${filename}`, realtorPageHtml);
+      // Three independent files → run commits in parallel (each has its own SHA, no race).
+      const publishResults = await Promise.allSettled([
+        createGitHubFile(`realtor-updates/${filename}`, realtorPageHtml),
+        updateRealtorManifest({
+          slug: fullSlug,
+          title: effectiveTitle,
+          description: parsed.pageDescription || `${effectiveTitle} — partner resources from Adam Styer`,
+          date: today,
+          category: parsed.pageCategory || formData.category || "Market Intel",
+        }),
+        addSitemapEntry({
+          url: pageUrl,
+          lastmod: today,
+          changefreq: "yearly",
+          priority: "0.4",
+          marker: "Update posts",
+        }),
+      ]);
 
-      // Update the realtor manifest
-      await updateRealtorManifest({
-        slug: fullSlug,
-        title: effectiveTitle,
-        description: parsed.pageDescription || `${effectiveTitle} — partner resources from Adam Styer`,
-        date: today,
-        category: parsed.pageCategory || formData.category || "Market Intel",
+      const labels = ["realtor-updates/page", "realtor-updates/manifest.json", "sitemap.xml"];
+      publishResults.forEach((r, i) => {
+        if (r.status === "rejected") {
+          console.error(`[realtor] Publish step failed (${labels[i]}):`, r.reason?.message || r.reason);
+        }
       });
+      // The page itself is critical — surface that failure.
+      if (publishResults[0].status === "rejected") throw publishResults[0].reason;
     }
 
     // ----------------------------------------------------------------
@@ -162,7 +179,8 @@ async function generateRealtorContent(formData) {
     // ----------------------------------------------------------------
     const results = { pageUrl, filename, campaigns: [] };
 
-    if (!isPreview) {
+    // publish-only mode skips Mailchimp + social — exercises GitHub commits in isolation
+    if (!isPreview && !isPublishOnly) {
       const mcApiKey = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key;
       const mcServer = process.env.MAILCHIMP_SERVER_PREFIX || process.env.mailchimp_server_prefix;
       const realtorListId = process.env.MAILCHIMP_REALTOR_LIST_ID;
@@ -206,7 +224,7 @@ async function generateRealtorContent(formData) {
 
     return {
       success: true,
-      mode: isPreview ? "preview" : "live",
+      mode: isPreview ? "preview" : isPublishOnly ? "publish-only" : "live",
       pageUrl,
       filename,
       campaigns: results.campaigns,

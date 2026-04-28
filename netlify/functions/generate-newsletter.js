@@ -4,7 +4,7 @@ const { buildPrompt } = require("./lib/prompt-builder");
 const { buildWebPage } = require("./lib/page-builder");
 const { buildBlogPage } = require("./lib/blog-page-builder");
 const { generateAndPostSocial, generateSocialPostsText } = require("./lib/social-poster");
-const { createGitHubFile, createAndSendCampaign, waitForPageLive, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument, wrapEmailHtml, fetchVoiceGuide } = require("./lib/shared");
+const { createGitHubFile, updateGitHubFile, addSitemapEntry, createAndSendCampaign, waitForPageLive, injectPageLink, forceAbsoluteLinks, injectPhotoIntoPersonalSection, stripNestedHtmlDocument, wrapEmailHtml, fetchVoiceGuide } = require("./lib/shared");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateNewsletter()
@@ -35,6 +35,7 @@ exports.handler = async (event) => {
 async function generateNewsletter(formData) {
     const { topic, audiences, mode, source, scheduleTime } = formData;
     const isPreview = mode === "preview";
+    const isPublishOnly = mode === "publish-only";
     const isPaste = source === "paste";
 
     // Validate
@@ -296,20 +297,39 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
 
     // In preview mode, skip publishing. In live mode, publish.
     if (!isPreview) {
-      // Publish to /blog/ (SEO-optimized, indexed by Google)
-      await createGitHubFile(`blog/${finalFilename}`, blogPageHtml);
-
-      // Also publish to /updates/ for backward compat with old email links
-      await createGitHubFile(`updates/${finalFilename}`, updatesPageHtml);
-
-      // Update the blog manifest so blog.html can list this post
-      await updateBlogManifest({
-        slug: blogSlug,
+      const post = {
+        slug: finalBlogSlug,
         title: effectiveTitle,
         description: parsed.pageDescription || `${effectiveTitle} — Austin mortgage insights from Adam Styer`,
         date: today,
         category: parsed.pageCategory || formData.category || "Market Update",
+      };
+
+      // All five GitHub commits target different files, so they can run in parallel.
+      // Each helper does its own get-then-put with a per-file SHA — no race.
+      const publishResults = await Promise.allSettled([
+        createGitHubFile(`blog/${finalFilename}`, blogPageHtml),
+        createGitHubFile(`updates/${finalFilename}`, updatesPageHtml),
+        updateBlogManifest(post),
+        updateBlogHtmlIndex(post),
+        addSitemapEntry({
+          url: finalPageUrl,
+          lastmod: today,
+          changefreq: "monthly",
+          priority: "0.8",
+          marker: "Blog posts",
+        }),
+      ]);
+
+      const labels = ["blog/post", "updates/post", "blog/manifest.json", "blog.html", "sitemap.xml"];
+      publishResults.forEach((r, i) => {
+        if (r.status === "rejected") {
+          console.error(`[newsletter] Publish step failed (${labels[i]}):`, r.reason?.message || r.reason);
+        }
       });
+      // The two post HTML files are critical — if either failed, surface it.
+      if (publishResults[0].status === "rejected") throw publishResults[0].reason;
+      if (publishResults[1].status === "rejected") throw publishResults[1].reason;
 
       // Wait for Netlify to deploy the page before sending emails
       const isLive = await waitForPageLive(finalPageUrl);
@@ -323,7 +343,8 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
     // ----------------------------------------------------------------
     const results = { pageUrl: finalPageUrl, filename: finalFilename, campaigns: [] };
 
-    if (!isPreview) {
+    // publish-only mode skips Mailchimp + social — exercises GitHub commits in isolation
+    if (!isPreview && !isPublishOnly) {
       const mcApiKey = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key;
       const mcServer = process.env.MAILCHIMP_SERVER_PREFIX || process.env.mailchimp_server_prefix;
 
@@ -405,7 +426,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
 
     return {
       success: true,
-      mode: isPreview ? "preview" : "live",
+      mode: isPreview ? "preview" : isPublishOnly ? "publish-only" : "live",
       pageUrl: finalPageUrl,
       filename: finalFilename,
       campaigns: results.campaigns,
@@ -490,83 +511,67 @@ function parseAIResponse(text) {
 }
 
 // ====================================================================
-// GITHUB API: Update blog manifest with new post
+// GITHUB API: Update blog/manifest.json (the data source the JS grid reads)
 // ====================================================================
 
 async function updateBlogManifest({ slug, title, description, date, category }) {
-  const token = process.env.GITHUB_TOKEN || process.env.github_token;
-  const repo = process.env.GITHUB_REPO || process.env.Github_repo;
-  const blogHtmlPath = "blog.html";
-  const apiUrl = `https://api.github.com/repos/${repo}/contents/${blogHtmlPath}`;
-
-  const headers = {
-    Authorization: `Bearer ${token}`,
-    Accept: "application/vnd.github.v3+json",
-    "Content-Type": "application/json",
-    "User-Agent": "StyerTeam-Newsletter-Bot",
-  };
-
-  // Fetch blog.html from GitHub
-  const getRes = await fetch(apiUrl, { headers });
-  if (!getRes.ok) {
-    console.error(`Failed to fetch blog.html for manifest update (${getRes.status})`);
-    return;
-  }
-
-  const data = await getRes.json();
-  const existingSha = data.sha;
-  const blogHtml = Buffer.from(data.content, "base64").toString("utf8");
-
-  // Extract inline manifest JSON from blog.html
-  const manifestMatch = blogHtml.match(
-    /(<script type="application\/json" id="blog-manifest">\s*)([\s\S]*?)(\s*<\/script>)/
+  return updateGitHubFile(
+    "blog/manifest.json",
+    (content) => {
+      const manifest = JSON.parse(content);
+      const posts = manifest.posts || [];
+      posts.unshift({ slug, title, description, date, category, url: `/blog/${slug}.html` });
+      const seen = new Set();
+      const deduped = posts.filter((p) => {
+        if (seen.has(p.slug)) return false;
+        seen.add(p.slug);
+        return true;
+      });
+      return JSON.stringify({ posts: deduped }, null, 2) + "\n";
+    },
+    `Update blog manifest: add ${slug}`
   );
-  if (!manifestMatch) {
-    console.error("Could not find inline blog-manifest in blog.html");
-    return;
-  }
+}
 
-  let posts = [];
-  try {
-    const manifest = JSON.parse(manifestMatch[2]);
-    posts = manifest.posts || [];
-  } catch (e) {
-    console.error("Failed to parse inline blog manifest JSON:", e.message);
-    return;
-  }
+// ====================================================================
+// GITHUB API: Update blog.html — noscript <ul> + CollectionPage schema
+// Both updates must land in the same commit so the file's SHA stays consistent.
+// ====================================================================
 
-  // Add new post at the beginning (newest first), dedupe by slug
-  posts.unshift({ slug, title, description, date, category, url: `/blog/${slug}.html` });
-  const seen = new Set();
-  posts = posts.filter((p) => {
-    if (seen.has(p.slug)) return false;
-    seen.add(p.slug);
-    return true;
-  });
+async function updateBlogHtmlIndex({ slug, title }) {
+  const relUrl = `/blog/${slug}.html`;
+  const fullUrl = `https://styermortgage.com${relUrl}`;
+  // Escape for HTML/JSON contexts. Title is plain text from form/AI — sanitize defensively.
+  const htmlSafe = title
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  const jsonSafe = title.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 
-  // Replace the inline manifest JSON in blog.html
-  const newManifestJson = JSON.stringify({ posts });
-  const updatedHtml = blogHtml.replace(
-    /(<script type="application\/json" id="blog-manifest">\s*)([\s\S]*?)(\s*<\/script>)/,
-    `$1${newManifestJson}$3`
+  return updateGitHubFile(
+    "blog.html",
+    (html) => {
+      let updated = html;
+
+      // 1. Noscript crawler list — insert <li> as first child of the <ul>.
+      const noscriptAnchor = '<ul style="margin:2rem 0;padding-left:1.5rem;">';
+      if (updated.includes(noscriptAnchor) && !updated.includes(`href="${relUrl}"`)) {
+        const newLi = `\n            <li><a href="${relUrl}">${htmlSafe}</a></li>`;
+        updated = updated.replace(noscriptAnchor, noscriptAnchor + newLi);
+      }
+
+      // 2. CollectionPage itemListElement — insert ListItem as first entry.
+      // (Existing entries already have duplicate position numbers; matching that precedent
+      // rather than renumbering 30+ items each run.)
+      const schemaAnchor = '"itemListElement": [';
+      if (updated.includes(schemaAnchor) && !updated.includes(`"url": "${fullUrl}"`)) {
+        const newItem = `\n        {"@type": "ListItem", "position": 1, "url": "${fullUrl}", "name": "${jsonSafe}"},`;
+        updated = updated.replace(schemaAnchor, schemaAnchor + newItem);
+      }
+
+      return updated === html ? null : updated;
+    },
+    `Update blog.html index: add ${slug}`
   );
-
-  // Write updated blog.html back to GitHub
-  const putRes = await fetch(apiUrl, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify({
-      message: `Update blog manifest: add ${slug}`,
-      content: Buffer.from(updatedHtml).toString("base64"),
-      sha: existingSha,
-      branch: "main",
-    }),
-  });
-
-  if (!putRes.ok) {
-    const errBody = await putRes.text();
-    console.error(`Blog manifest update failed (${putRes.status}): ${errBody}`);
-    // Don't throw — blog post already published, manifest is non-critical
-  }
 }
 

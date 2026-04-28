@@ -46,6 +46,77 @@ async function createGitHubFile(filePath, content, commitMessage) {
 }
 
 // ====================================================================
+// GITHUB API: Fetch + mutate + commit a file in a single round-trip pair
+// mutator(currentContent) -> newContent  (return same value or null to skip)
+// Use for in-place edits where you need to read the existing content first
+// (manifest.json, sitemap.xml, blog.html). For new files, use createGitHubFile.
+// ====================================================================
+
+async function updateGitHubFile(filePath, mutator, commitMessage) {
+  const token = process.env.GITHUB_TOKEN || process.env.github_token;
+  const repo = process.env.GITHUB_REPO || process.env.Github_repo;
+  const url = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: "application/vnd.github.v3+json",
+    "Content-Type": "application/json",
+    "User-Agent": "StyerTeam-Bot",
+  };
+
+  const getRes = await fetch(url, { headers });
+  if (!getRes.ok) {
+    throw new Error(`GitHub fetch failed (${getRes.status}) for ${filePath}`);
+  }
+  const data = await getRes.json();
+  const sha = data.sha;
+  const current = Buffer.from(data.content, "base64").toString("utf8");
+
+  const next = await mutator(current);
+  if (next == null || next === current) return null;
+
+  const putRes = await fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify({
+      message: commitMessage || `Update ${filePath}`,
+      content: Buffer.from(next).toString("base64"),
+      sha,
+      branch: "main",
+    }),
+  });
+  if (!putRes.ok) {
+    throw new Error(`GitHub PUT failed (${putRes.status}) for ${filePath}: ${await putRes.text()}`);
+  }
+  return putRes.json();
+}
+
+// ====================================================================
+// SITEMAP: Insert a new <url> entry after a marker comment
+// e.g. marker "Blog posts" → looks for "<!-- Blog posts -->"
+// ====================================================================
+
+async function addSitemapEntry({ url, lastmod, changefreq, priority, marker }) {
+  const markerStr = `<!-- ${marker} -->`;
+  return updateGitHubFile(
+    "sitemap.xml",
+    (xml) => {
+      if (!xml.includes(markerStr)) {
+        console.warn(`[sitemap] Marker not found: ${marker} — skipping insert for ${url}`);
+        return null;
+      }
+      // Skip if URL already in sitemap (idempotent for re-publishes)
+      if (xml.includes(`<loc>${url}</loc>`)) {
+        console.log(`[sitemap] ${url} already present — skipping`);
+        return null;
+      }
+      const entry = `\n  <url><loc>${url}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
+      return xml.replace(markerStr, markerStr + entry);
+    },
+    `Update sitemap: add ${url}`
+  );
+}
+
+// ====================================================================
 // DEPLOY GATE: Poll a URL until it returns 200 (page is live on CDN)
 // Retries every 5s for up to 90s. Returns true if live, false if timed out.
 // ====================================================================
@@ -273,6 +344,8 @@ async function fetchVoiceGuide() {
 
 module.exports = {
   createGitHubFile,
+  updateGitHubFile,
+  addSitemapEntry,
   waitForPageLive,
   createAndSendCampaign,
   injectPageLink,
