@@ -1,14 +1,6 @@
 {
   "posts": [
     {
-      "slug": "2026-04-28-publish-only-test-3-retry-fix-verification",
-      "title": "Publish-Only Test 3 — Retry Fix Verification",
-      "description": "Verifying retry-on-409 deploys clean",
-      "date": "2026-04-28",
-      "category": "Market Update",
-      "url": "/blog/2026-04-28-publish-only-test-3-retry-fix-verification.html"
-    },
-    {
       "slug": "2026-04-27-why-home-prices-arent-crashing",
       "title": "Why Home Prices Aren't Crashing — And What the Data Actually Says",
       "description": "I pulled the actual data — the lock-in effect, equity levels, why this isn't 2008, and what it really means if you're thinking about buying.",
