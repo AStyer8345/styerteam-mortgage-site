@@ -4,9 +4,9 @@
   <!-- Core pages -->
   <url><loc>https://styermortgage.com/</loc><lastmod>2026-03-27</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://styermortgage.com/products.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://styermortgage.com/calculators.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/about.html</loc><lastmod>2026-04-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/rate-check.html</loc><lastmod>2026-04-12</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/calculators.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/about.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/rate-check.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/get-preapproved</loc><lastmod>2026-04-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://styermortgage.com/refinance-quote</loc><lastmod>2026-04-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://styermortgage.com/contact.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -18,8 +18,8 @@
   <url><loc>https://styermortgage.com/texas-complaint-notice.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://styermortgage.com/rate-buydown-calculator.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/refinance-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/calculator-affordability.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://styermortgage.com/calculator-payment.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/calculator-affordability.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/calculator-payment.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/calculator-refinance-breakeven.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/wrap-mortgage-calculator.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
@@ -38,7 +38,7 @@
   <url><loc>https://styermortgage.com/loans/refinance.html</loc><lastmod>2026-04-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/dscr-loan-austin-tx.html</loc><lastmod>2026-04-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/self-employed-mortgage-austin.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/how-to-buy-a-house-in-austin-tx.html</loc><lastmod>2026-04-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/how-to-buy-a-house-in-austin-tx.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/mortgage-glossary.html</loc><lastmod>2026-04-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/austin-area-mortgage-lender.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
@@ -47,7 +47,7 @@
 
   <!-- Austin metro landing pages -->
   <url><loc>https://styermortgage.com/mortgage-pre-approval-austin.html</loc><lastmod>2026-04-21</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://styermortgage.com/first-time-home-buyer.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/first-time-home-buyer.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Austin suburb pages — Tier 1 (highest population/volume) -->
   <url><loc>https://styermortgage.com/round-rock-mortgage-lender.html</loc><lastmod>2026-04-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -60,7 +60,7 @@
   <url><loc>https://styermortgage.com/westlake-mortgage-lender.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/buda-mortgage-lender.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/hutto-mortgage-lender.html</loc><lastmod>2026-04-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/manor-mortgage-lender.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/manor-mortgage-lender.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/bastrop-mortgage-lender.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/new-braunfels-mortgage-lender.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
@@ -86,7 +86,7 @@
 
   <!-- Blog / content pages -->
   <url><loc>https://styermortgage.com/first-time-buyer-guide.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/fixed-vs-adjustable.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/fixed-vs-adjustable.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/improve-credit-score.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/how-much-house-can-i-afford-austin.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/austin-down-payment-assistance.html</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -114,7 +114,7 @@
   <url><loc>https://styermortgage.com/blog/2026-04-02-self-employed-mortgage-austin-tx.html</loc><lastmod>2026-04-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/blog/2026-04-01-spring-market-update.html</loc><lastmod>2026-04-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html</loc><lastmod>2026-04-12</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://styermortgage.com/blog/2026-03-31-dscr-loans-austin-tx-2026.html</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://styermortgage.com/blog/2026-03-31-dscr-loans-austin-tx-2026.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/blog/2026-03-30-why-rates-improved-today-bond-rally.html</loc><lastmod>2026-03-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
