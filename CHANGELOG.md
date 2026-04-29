@@ -1,3 +1,13 @@
+## 2026-04-29 — Round Rock USDA cleanup + rate-alert sitemap entry (daily-opt, Wednesday rotation)
+
+- round-rock-mortgage-lender.html — voice-guide compliance: removed USDA from 3 surfaces (LocalBusiness schema description; FAQPage schema "loan programs" answer; visible accordion same answer). DSCR / bank-statement loans substituted in compensating positions for self-employed and investor buyers. dateModified bumped 2026-04-19 → 2026-04-29.
+- sitemap.xml — added rate-alert.html (`<lastmod>2026-04-29</lastmod>`, weekly, priority 0.7); bumped round-rock-mortgage-lender.html lastmod 2026-04-14 → 2026-04-29.
+- Wednesday rotation suburb deep dive (Round Rock): structural audit 15/15 pass (form, all schemas, AEO answer-first paragraph, question-form H2/H3, internal links, trust bar, NMLS, GTM, TCPA + SMS opt-in).
+- Re-Verify Gate cleared 2 stale flags: (1) thank-you.html "uncommitted" 4-run HIGH carry-forward → `git diff` returned empty, claim auto-resolved; (2) rate-alert.html missing-from-sitemap → resolved via implementation in same run.
+- Consolidated multiple per-page USDA flags into 1 Adam-decision flag covering site-wide nav dropdown (header + footer on ~88 pages link to `/loans/usda.html`).
+- Commit ac042b4. Netlify deploy verified live; round-rock + rate-alert + sitemap all HTTP 200; round-rock body confirms USDA only remains in global nav (intended scope boundary).
+- NotebookLM Step 0 dead 10th run; SKILL.md retirement diff still pending Adam apply.
+
 ## 2026-04-28 — Lakeway page deepened (styer-suburb-editor-daily, Round 1 slot 10/13)
 
 - lakeway-mortgage-lender.html — Round 1 slot 10. Median refreshed: $704K February 2026 Redfin (-11.2% YoY, $258/sqft, 104 days on market). Removed templated 6-sentence "Home Prices in Lakeway" paragraph + at-a-glance schools list; replaced with cited Redfin median, builder roster (Drees / David Weekley / Newmark / Scott Felder / Westin) across Rough Hollow's Vista Ridge Estates / Las Brisas / Canyon Pass / The District (78738), and Estates of Flintrock 2017–2023 (Ashton Woods + Mercury). Cardinal Hills tagged as 78734 entry tier.
