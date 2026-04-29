@@ -1,3 +1,20 @@
+## 2026-04-29 — Bee Cave page deepened (styer-suburb-editor-daily, Round 1 slot 11/13)
+
+- bee-cave-mortgage-lender.html — Round 1 slot 11. Median refreshed: $1.0M March 2026 Redfin (+6.9% YoY, $293/sqft, -7.0% per-sqft) replacing vague "$500K–$1.2M" range used in body + FAQ + accordion + meta description.
+- Removed templated "As an independent mortgage broker, Adam Styer shops rates across 40+" paragraph (verbatim match w/ kyle-mortgage-lender.html + san-marcos-mortgage-lender.html — duplication confirmed via grep).
+- New H3 "Bee Cave Neighborhoods Adam Closes In" w/ 3 cited spotlights:
+  - Spanish Oaks (78738) — 13001 Spanish Oaks Club Dr, gated golf w/ two 24-hr staffed gatehouses, 2,500–10,000+ sqft, custom builders Weston Dean / Camelot / Bella Vita / Heyl / Russell Eppright / Stadler (spanishoaks.com cited).
+  - Sweetwater (78738) — 1,400-acre Newland MPC off Hwy 71 west of RR 620 (Bee Creek Rd / Bee Cave Pkwy), upper $300s entry tier, Westin/Newmark/Chesmar product, 10-acre Sweetwater Club w/ 3 pools (sweetwaterliving.com cited).
+  - Falconhead (78738) — Drees / Meritage / Taylor Morrison + Prestige Custom + Callahan Custom, $650K–$1.5M+, 1,550–6,200 sqft, gated sub-sections (austinhomeseeker.com cited).
+- New H3 "Bee Cave Schools (Lake Travis ISD)" — Lake Travis HS 9/10 GreatSchools (3324 RR 620 South 78738, AP/PLTW/G&T) + Bee Cave Elementary 8/10 GreatSchools (14300 Hamilton Pool Rd, Pre-K–5, A on Niche). Both rating links cited.
+- New H3 "Bee Cave Major Employers & Commute Anchors" — Hill Country Galleria 152 acres / 100+ retailers anchored by Dillard's, Whole Foods, Cinemark, Barnes & Noble + on-site Class A office (Regus listing cited) + Spanish Oaks Golf Club hospitality. Commute notes: ~25 min downtown via SH-71, ~20 min Domain via RR 620+US-183, ~30 min AUS via SH-71.
+- New H3 "Bee Cave Property Tax & Closing Costs at the Median" — LTISD $1.0397/$100 (M&O 0.7122 + I&S 0.3275, lowest in district history per CitizenPortal) + City of Bee Cave $0.02/$100 FY25-26 (Community Impact, $153.97/yr on $769,846 avg homestead) + Bee Cave Road District No. 1 28.9176¢/$100 (Travis County). Closing-cost breakdown at $1.0M w/ 20% down ($800K loan): $20K–$25K itemized (origination/title/escrow/recording/survey/HOI/3-4mo tax escrow at ~1.7% effective per Ownwell) + jumbo 6-12 mo PITI reserve callout.
+- FAQ schema + accordion: "average home price" → "median home price" w/ Redfin citation; schools answer rewritten w/ both GreatSchools cited ratings + addresses.
+- WebPage schema added (dateModified 2026-04-29, isPartOf WebSite, about Place Bee Cave). All 4 JSON-LD blocks (LocalBusiness/FAQPage/WebPage/BreadcrumbList) parse clean.
+- Meta description rewritten: "$1.0M median (Redfin March 2026). Spanish Oaks, Falconhead, Sweetwater. Lake Travis HS 9/10."
+- Sitemap lastmod bumped 2026-04-22 → 2026-04-29.
+- Queue: Bee Cave done. Next slot 12/13: Dripping Springs.
+
 ## 2026-04-29 — Round Rock USDA cleanup + rate-alert sitemap entry (daily-opt, Wednesday rotation)
 
 - round-rock-mortgage-lender.html — voice-guide compliance: removed USDA from 3 surfaces (LocalBusiness schema description; FAQPage schema "loan programs" answer; visible accordion same answer). DSCR / bank-statement loans substituted in compensating positions for self-employed and investor buyers. dateModified bumped 2026-04-19 → 2026-04-29.
