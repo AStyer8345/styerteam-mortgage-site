@@ -62,12 +62,6 @@ function initNavigation() {
     mobileMenuToggle.setAttribute('aria-controls', navLinks.id);
   }
 
-  // Sticky header shadow on scroll — read scrollY before DOM write to avoid forced reflow
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY > 0;
-    header.classList.toggle('scrolled', scrolled);
-  }, { passive: true });
-
   // Mobile menu toggle
   if (mobileMenuToggle) {
     mobileMenuToggle.addEventListener('click', () => {
@@ -128,89 +122,6 @@ function initNavigation() {
       }
     }
   });
-}
-
-// ========================================================================
-// 2. INTERSECTION OBSERVER - ANIMATIONS ON SCROLL
-// ========================================================================
-
-function initScrollAnimations() {
-  const animatedElements = document.querySelectorAll('[data-animate]');
-  if (!animatedElements.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-  });
-
-  animatedElements.forEach(el => observer.observe(el));
-}
-
-// ========================================================================
-// 2b. ANIMATED NUMBER COUNTERS (21st.dev-inspired)
-// ========================================================================
-
-function initCounters() {
-  const counters = document.querySelectorAll('[data-count]');
-  if (!counters.length) return;
-
-  function easeOutQuart(t) {
-    return 1 - Math.pow(1 - t, 4);
-  }
-
-  function animateCounter(el) {
-    const target = parseFloat(el.dataset.count);
-    const suffix = el.dataset.countSuffix || '';
-    const prefix = el.dataset.countPrefix || '';
-    const decimals = (el.dataset.count.includes('.')) ? 1 : 0;
-    const useCommas = el.dataset.countCommas === 'true';
-    const duration = 2000;
-    const startTime = performance.now();
-
-    function update(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = easeOutQuart(progress);
-      const current = easedProgress * target;
-
-      let display = decimals > 0
-        ? current.toFixed(decimals)
-        : Math.floor(current).toString();
-
-      if (useCommas) {
-        display = Number(display).toLocaleString('en-US', {
-          minimumFractionDigits: decimals,
-          maximumFractionDigits: decimals
-        });
-      }
-
-      el.textContent = prefix + display + suffix;
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
-    }
-
-    requestAnimationFrame(update);
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  counters.forEach(el => observer.observe(el));
 }
 
 // ========================================================================
@@ -885,8 +796,6 @@ function initPrequalForm() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
-  initScrollAnimations();
-  initCounters();
   initAccordion();
   initTabs();
   initFormValidation();
