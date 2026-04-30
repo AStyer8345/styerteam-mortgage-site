@@ -1,3 +1,17 @@
+## 2026-04-30 — Thursday Internal Linking + Funnel Flow rotation + AEO continuation (daily-opt)
+
+- Thursday rotation: Internal Linking + Funnel Flow audit on 3 pages — DSCR (28+ internal links), Round Rock (30+ internal links), calculator-affordability (17+ internal links). All PASS — well above 2+ relevant link threshold. No internal-linking gaps.
+- contact.html form wiring verified: both forms (hero-quick-form + contact) correctly wired with data-netlify, hidden form-name input, GTM container, dataLayer push for `generate_lead { lead_type: 'contact_form' }`.
+- thank-you.html audit verified: noindex/nofollow set, tel: link to (512) 956-6010, Calendly inline widget @ calendly.com/adamstyer/15minutes, 3-step "What Happens Next" section (`#ty-steps`), thank_you_page_view dataLayer push.
+- blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html — added answer-first `<p><strong>` paragraph (~67 words). File-type breakdown distinct from existing range-based P1: W-2 with all docs = same business day; self-employed with 2-yr returns + YTD P&L = same-day or next-day; missing documents or recent credit events = three business days. Closing line: "The variable isn't underwriting speed — it's documentation readiness. Get the file complete, get the letter." Uses post's own framing throughout (no new compliance risk).
+- calculator-affordability.html — normalized `/get-preapproved.html` → `/get-preapproved` to match site-wide pattern. Every other page on the site uses extensionless; `_redirects` resolves both. LOW_RISK consistency fix.
+- sitemap.xml — bumped lastmod on both modified pages to 2026-04-30.
+- AEO older-template cluster: 8/16 → 9/16. Remaining 7: TBD on Friday/next-week rotations.
+- Re-verify gate (4 claims): Sitemap 200 STILL OK; NotebookLM script missing 12th run STILL OPEN; about.html LocalBusiness vs MortgageBroker address mismatch 5th-run STILL OPEN (Adam decision); pre-approval-take `<p><strong>` claim RESOLVED via implementation.
+- Step 4B SEO/SEM backlog: all P1/P2 ZERO_RISK + LOW_RISK items already complete; remaining items are P3 Adam-decision-blocked or P4 GSC-blocked. Picked up 1 LOW_RISK consistency fix (calc-affordability link) found via Internal Linking audit.
+- Self-review PASS: NMLS preserved (6 occurrences on blog post), GTM intact (2 occurrences each), no "Styer Team", no new rate quotes, voice-guide compliant.
+- Commit 5782c7d on top of d7689e0; pushed to main; Netlify deploy verified live (HTTP 200 on both pages + sitemap; curl grep confirms `<p><strong>A complete W-2 application` shipped + `/get-preapproved` extensionless on calc page + both 2026-04-30 sitemap lastmod entries).
+
 ## 2026-04-29 PM — AEO older-template cluster +2 (daily-opt PM)
 
 - blog/2026-03-20-austin-mortgage-rates-march-2026.html — added answer-first `<p><strong>` paragraph (~67 words). Lead clause: "30-year fixed mortgage rates in Austin TX for March 2026 are running in the mid-to-upper 6% range for well-qualified buyers." Followed by structured VA/FHA/15-yr/DSCR rate breakdown using post's own numbers. Inserted at `<header>`/newsletter-author-bar pattern: after `</div>` closing newsletter-author-bar, before existing P1 voice-y hook.
