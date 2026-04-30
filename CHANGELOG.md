@@ -1,3 +1,14 @@
+## 2026-04-29 PM — AEO older-template cluster +2 (daily-opt PM)
+
+- blog/2026-03-20-austin-mortgage-rates-march-2026.html — added answer-first `<p><strong>` paragraph (~67 words). Lead clause: "30-year fixed mortgage rates in Austin TX for March 2026 are running in the mid-to-upper 6% range for well-qualified buyers." Followed by structured VA/FHA/15-yr/DSCR rate breakdown using post's own numbers. Inserted at `<header>`/newsletter-author-bar pattern: after `</div>` closing newsletter-author-bar, before existing P1 voice-y hook.
+- blog/2026-03-27-down-payment-assistance-texas-2026.html — added answer-first `<p><strong>` paragraph (~77 words). Distinct angle from existing P1 (which already led with "3% to 5% available"): TDHCA vs TSAHC program comparison, including stack-with-FHA/VA/conventional, deferred-second-lien-vs-grant trade-off, 620 credit floor, county income limits.
+- sitemap.xml — bumped lastmod on both posts to 2026-04-29.
+- AEO older-template cluster: 6/16 → 8/16. Remaining: 2026-03-28-how-long-does-mortgage-pre-approval-take.html (next), plus 7 others.
+- Re-verify gate: 2 TOMORROW_PRIORITY items resolved via implementation; about.html LocalBusiness vs MortgageBroker address mismatch confirmed STILL OPEN (4th run, Adam decision); NotebookLM script confirmed missing 11th consecutive run.
+- Caught typo in morning's TOMORROW_PRIORITY: "2026-03-28-how-to-take-mortgage-pre-approval" → actual file is "2026-03-28-how-long-does-mortgage-pre-approval-take.html". Filename corrected for Thursday's run.
+- Self-review PASS: NMLS preserved, GTM intact, no rate quotes beyond post's own numbers, no "Styer Team", voice-guide compliant.
+- Commit 57e40d3 on top of f079441; pushed to main; Netlify deploy verified live (HTTP 200 + curl grep confirms `<p><strong>` openers shipped + sitemap lastmods updated).
+
 ## 2026-04-29 — Bee Cave page deepened (styer-suburb-editor-daily, Round 1 slot 11/13)
 
 - bee-cave-mortgage-lender.html — Round 1 slot 11. Median refreshed: $1.0M March 2026 Redfin (+6.9% YoY, $293/sqft, -7.0% per-sqft) replacing vague "$500K–$1.2M" range used in body + FAQ + accordion + meta description.

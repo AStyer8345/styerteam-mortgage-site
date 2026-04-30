@@ -1,3 +1,13 @@
+## 2026-04-29 PM — AEO Cluster +2 (austin-rates-march, DPA-texas) + Filename Verification Lesson
+
+### Patterns
+- **TOMORROW_PRIORITY filenames must be live-verified before insertion.** Morning run named `2026-03-28-how-to-take-mortgage-pre-approval` in TOMORROW_PRIORITY #5 — the actual file is `2026-03-28-how-long-does-mortgage-pre-approval-take.html`. PM run caught this with `ls blog/2026-03-28*.html` (~5 seconds). Lesson for next runs: on TOMORROW_PRIORITY items that name specific files, confirm with `ls` before reading or editing. The pre-approval post still needs work but the filename now points correctly for Thursday's run.
+- **Distinct-angle pattern works even when existing P1 IS answer-first.** DPA-texas's existing first paragraph already led with "first-time buyers can access 3% to 5%…" — a structurally answer-first opener, just lacking `<p><strong>` wrapper. The right move was NOT to wrap that paragraph but to add a NEW answer paragraph above it that frames a different facet of the answer (the TDHCA vs TSAHC comparison). This produces two AI-extractable layers: existing P1 = "what's available," new body answer = "how the two programs compare." Both serve AI Overviews for different query intents. Generalized rule: distinct-angle works on three sub-cases now — (a) voice-y existing intro + machine-extractable new layer; (b) existing intro that already contains the answer mid-paragraph (don't replace, add); (c) existing intro that IS answer-first but lacks `<strong>` wrap (add a different-facet answer above, don't fight over the same wording).
+- **PM run cadence is becoming a pattern.** Wednesday April 29 fired both AM (08:04) and PM (23:08), same as April 27. The PM run's job is NOT to redo the AM rotation — it's to advance TOMORROW_PRIORITY items that are concrete + reversible + don't require fresh decisions. AEO `<p><strong>` insertion is the canonical PM-run task: pre-defined insertion pattern, distinct-angle rule, post's-own-numbers reuse — all fully-specified by morning's NOTEBOOK_INSIGHTS.
+- **NotebookLM 11th consecutive dead run.** Same as 10th. Diff pending Adam's apply.
+
+---
+
 ## 2026-04-28 — Re-Verify-Before-Write Saves a Whole AEO Insertion + Em-Dash Char-Count Gotcha + Auto-Compliance USDA Removal
 
 ### Patterns
