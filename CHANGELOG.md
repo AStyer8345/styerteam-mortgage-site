@@ -1,3 +1,25 @@
+## 2026-04-30 — Dripping Springs suburb deepened (Round 1 slot 12/13) (styer-suburb-editor-daily)
+
+- dripping-springs-mortgage-lender.html — Round 1 slot 12 of 13. Median refreshed from $500K-$900K range to **$542,500 March 2026 Redfin (+4.7% YoY)** with inline source URL. LocalBusiness schema description rewritten with 78620 + named neighborhoods + DSISD tax rate.
+- FAQ schema + accordion: "average home price" → "median home price" with Redfin cite. "Hill Country land/acreage" Q swapped → "What is the property tax rate in Dripping Springs TX?" Q with DSISD $1.1052/$100 (Community Impact Sep 2025) + City of DS $0.2267/$100 (Community Impact Sep 2025) + Hays effective 1.71% (Ownwell), with $9,275/yr property tax example on median home.
+- Removed templated paragraph: "A big bank will give you one product and one rate. As an independent mortgage broker, Adam Styer shops your loan across 40+ wholesale lenders..." (verbatim match across 5+ suburb pages — confirmed via grep).
+- Removed USDA from "VA & USDA Loans" tile per Adam's no-USDA stance — replaced with VA-only tile that calls out well/septic distance + potability requirements citing VA Circular 26-24-05 (benefits.va.gov source).
+- Body neighborhood spotlights with builders + 78620 zip:
+  - Headwaters — David Weekley + Toll Brothers, $500s-$1.5M+, has DSISD elementary onsite (liveheadwaters.com cited)
+  - Caliterra — Drees Custom Homes + David Weekley + Scott Felder, $700K-$1.2M+ Ranch at Caliterra phase, Onion Creek corridor (caliterraliving.com cited)
+  - Reunion Ranch — acreage/custom $1M+, horse-friendly, low HOA, gravity-fed septic
+  - Arrowhead Ranch — west DS along Fitzhugh Rd, 1+ acre lots, no production builders
+- Belterra disclosure added — technically zip 78737 not 78620 + different ISD boundary parts; warns reader before assuming DSISD enrollment.
+- Schools H3 with all GreatSchools links: Dripping Springs HS 7/10, Dripping Springs Middle 8/10, Sycamore Springs Middle 8/10, Sycamore Springs Elem 8/10, Walnut Springs Elem 6/10.
+- Major Employers H3: DSISD ~1,100 (Dripping Springs News cited) + Dripping Springs Distilling (19 states, founded 2005, drippingspringsdistilling.com cited) + Treaty Oak (Waterloo Gin, Red Handed Bourbon) + Desert Door (only US sotol distillery, destinationdrippingsprings.com cited) + H-E-B/US-290 retail. Honest framing: "small relative to Round Rock — most buyers commute to Austin or work remote."
+- Property Tax + Closing Costs H3: cited rate stack + closing-cost example $11K-$14K at $542K with 20% down + jumbo example $18K-$22K at $900K with 10% down + escrow + jumbo reserves callout.
+- Hill Country Construction H3: Hays County OSSF (septic) permit link + 2-yr aerobic maintenance contract requirement + well/septic potability + FHA/VA distance setbacks. Internal link added to /rate-check.html.
+- WebPage schema added with dateModified 2026-04-30. Meta description rewritten with median + named neighborhoods + jumbo/construction angle. OG description tightened.
+- All 4 JSON-LD blocks (LocalBusiness/FAQPage/WebPage/BreadcrumbList) validated via JSON parse — clean.
+- sitemap.xml — lastmod bumped 2026-04-19 → 2026-04-30.
+- run-logs/suburb-editor-queue.md — slot 12/13 marked Done. Final Round 1 slot is Westlake.
+- USDA in header/footer nav dropdown remains (2 hits site-wide) — site-wide nav cleanup blocked on Adam's USDA cascade decision per CONTEXT.md Active Blockers.
+
 ## 2026-04-30 — Thursday Internal Linking + Funnel Flow rotation + AEO continuation (daily-opt)
 
 - Thursday rotation: Internal Linking + Funnel Flow audit on 3 pages — DSCR (28+ internal links), Round Rock (30+ internal links), calculator-affordability (17+ internal links). All PASS — well above 2+ relevant link threshold. No internal-linking gaps.
