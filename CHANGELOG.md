@@ -1,3 +1,16 @@
+## 2026-04-30 PM — Bookkeeping commit + cluster correction (daily-opt)
+
+- run-logs/2026-04-30b.md — PM run log written. Same-day second run on Thursday 2026-04-30; AM run was thorough (Internal Linking + Funnel Flow rotation + AEO p-strong on pre-approval-take + calc-affordability link normalization).
+- Re-verify gate auto-resolved 2 stale claims: (a) Friday TOMORROW_PRIORITY pair (DSCR + how-to-choose-lender) — both already shipped with leading `<p><strong>` from prior sessions (DSCR added 2026-04-28 commit; lender already had pre-cluster); (b) older-template AEO denominator drift — corrected from "9/16, 7 remaining" to **11/16 OK, 5 remaining** (audit method missed FTB blog-article-body + 2 silently-fixed posts).
+- Of the 5 remaining older-template posts, 4 are explicitly deferred per voice-guide reasoning (rate-volatility / life-devotional cluster: oil-prices, surrender-it stolen-car, ai-trap, why-rates-improved-bond-rally — adding answer-first paragraphs would dilute voice for marginal AEO gain) and 1 needs Adam's structural decision (why-home-prices-arent-crashing — has duplicate `<h2>` sub-title + meta-date `<p>` between author-bar and first content; AEO insertion would compete visually with sub-title h2).
+- Older-template AEO sweep is **effectively complete** pending Adam structural call on why-home-prices.
+- run-logs/latest.md — overwritten to PM run.
+- CONTEXT.md — Last Worked On + What's Next item 5 corrected. Line count 115 (under 150 cap).
+- learnings.md — appended PM-run pattern: TOMORROW_PRIORITY *pairs* need live-verified completeness state (not just filename) at AM run time; cluster-completeness re-statement; deferred-cluster discipline.
+- No HTML/code changes this run — bookkeeping only.
+- NotebookLM Step 0 dead 13th run (carry forward).
+- about.html LocalBusiness address mismatch 6th run open (carry forward — Adam decision).
+
 ## 2026-04-30 — Dripping Springs suburb deepened (Round 1 slot 12/13) (styer-suburb-editor-daily)
 
 - dripping-springs-mortgage-lender.html — Round 1 slot 12 of 13. Median refreshed from $500K-$900K range to **$542,500 March 2026 Redfin (+4.7% YoY)** with inline source URL. LocalBusiness schema description rewritten with 78620 + named neighborhoods + DSISD tax rate.
