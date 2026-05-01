@@ -1,3 +1,14 @@
+## 2026-05-01 — Friday Content Planning + AEO Review rotation (daily-opt)
+
+- Friday rotation executed in full. Latest blog post 2026-04-27 (4 days ago, under 7-day flag — no weekly content escalation).
+- **Blog CTA conversion-funnel audit (21 dated 2026-* posts):** caught the only outlier — `blog/2026-04-27-why-home-prices-arent-crashing.html` with **0 links** to `/get-preapproved` or `/refinance-quote`. Bottom CTA was using legacy `../prequal.html` instead of canonical `../get-preapproved` extensionless path used by 20 of 21 dated posts. Fixed: CTA href + button label "Get Pre-Qualified" → "Get Pre-Approved" (matches the link target and Adam's correspondent-lender voice — he issues PA letters himself).
+- **Footer Awards drift caught + fixed:** the same 2026-04-27 post was published 2 days after the 2026-04-25 sitewide footer Awards sweep (88/88), so it imported the legacy 2-line `91 Google + 45 Zillow Reviews` block. Standardized to canonical `136+ Reviews | 21-Day Avg. Close | Licensed in Texas`. Footer Awards consistency 88/88 → **89/89 sitewide**.
+- JSON-LD `dateModified` and sitemap.xml `lastmod` bumped 2026-04-27 → 2026-05-01 on the corrected post.
+- AEO 2-post spot-check: `2026-04-17-should-i-refinance-austin-tx-2026.html` PASS (6 question-form H2s + leading body `<p><strong>` + multiple CTAs); `2026-04-27-why-home-prices-arent-crashing.html` voice-first essay format using H3-only sectioning + no FAQ — explicitly deferred per voice guide pending Adam's structural decision (now 2nd recurrence).
+- Two new learnings captured: (a) Friday CTA audit pattern catches conversion-funnel breakage that title/meta audits miss — every Friday run should `grep -c "get-preapproved\\|refinance-quote"` per dated post and fix any zero-result post immediately; (b) sitewide sweeps go stale by ONE the moment a post is published with the legacy template — future blog publishes need a footer-block lint at publish time, not waiting for the next sweep cycle.
+- Re-verify gate: 5 claims checked. Sitemap 200 ✅. NotebookLM script missing 14th run (carry forward). about.html LocalBusiness address mismatch 7th run (carry forward — Adam decision). 1 new finding caught and resolved in-run (footer drift).
+- Modified: `blog/2026-04-27-why-home-prices-arent-crashing.html`, `sitemap.xml`. New: `run-logs/2026-05-01.md`, `run-logs/latest.md` overwrite.
+
 ## 2026-04-30 PM — Bookkeeping commit + cluster correction (daily-opt)
 
 - run-logs/2026-04-30b.md — PM run log written. Same-day second run on Thursday 2026-04-30; AM run was thorough (Internal Linking + Funnel Flow rotation + AEO p-strong on pre-approval-take + calc-affordability link normalization).
