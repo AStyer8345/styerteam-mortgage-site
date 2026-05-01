@@ -1,3 +1,24 @@
+## 2026-05-01 — Westlake Hills suburb page deepened — **Round 1 closeout 13/13** (styer-suburb-editor-daily)
+
+- Final slot in Round 1 priority queue. All 13 high-volume Austin-area suburbs touched between 2026-04-19 and 2026-05-01.
+- **Median refreshed** $1.2M+ → **$1.6M Mar 2026 Redfin** (+40.9% YoY) with inline cite to redfin.com/city/19594.
+- **LocalBusiness schema description rewritten** with 78746 + Rob Roy / Davenport Ranch / Lost Creek / Barton Creek + Eanes ISD $0.8322 + WLH $0.176783 + Travis County 1.65% effective.
+- **FAQ schema** "What are home prices like" → "What is the median home price" with tiered ranges (Davenport / Lost Creek $1.5M–$3M; Rob Roy / Barton Creek $4.5M–$15M+); jumbo limit body line `(2025 conforming limit)` corrected to `(2026 FHFA conforming limit, all Texas counties)`.
+- **WebPage schema added** with `dateModified: 2026-05-01` and `about: Place containedInPlace Travis County`. All 4 JSON-LD blocks (LocalBusiness/FAQPage/BreadcrumbList/WebPage) validated clean via Python json.loads.
+- **De-duped Portfolio loan card** — was verbatim with Spicewood (`Held by the lender on their books — more flexible underwriting...`); rewritten Westlake-specific (HNW + Rob Roy / Davenport Ranch / Barton Creek; bank-statement 12–24 mo + asset-depletion programs).
+- **4 new H3 sections in body (~75 lines):**
+  1. **Westlake Hills Neighborhoods (78746)** — 4 spotlights: Rob Roy 78746 (six subdivisions inc. Rob Roy West, $3M–$15M+, 1–5 acre lots, austinluxurygroup cite), Davenport Ranch 78746/78733 (~500 homes, Loop 360 + Westlake Drive, Austin Country Club inside, moreland.com cite), Lost Creek 78746 (~1,200 homes, Lost Creek Boulevard, Lost Creek Country Club, Forest Trail Elementary feeder, lostcreekld.org cite), Barton Creek 78735/78746 (16 sub-neighborhoods each gated, Barton Creek Country Club at 8212 Barton Club Drive 78735, four golf courses inc. Crenshaw/Coore).
+  2. **Eanes ISD Schools** — Westlake HS 9/10 + Hill Country MS 10/10 + Eanes Elementary 10/10 (all GreatSchools links). Disclosed all 5 elementary feeders (Forest Trail / Barton Creek / Bridge Point / Cedar Creek / Valley View) feeding Westlake HS.
+  3. **Major Employers** — Eanes ISD ~7,700 students/9 schools (Wikipedia + Westlake Chamber); 3 country clubs (Austin CC inside Davenport, Lost Creek CC, Barton Creek CC at 8212 Barton Club Drive 78735); HEB Westlake; Data USA cite for Professional/Scientific/Technical Services as #1 industry. **Honest disclosure:** 78746 is bedroom community for downtown Austin (10 mi).
+  4. **Property Tax & Closing Costs** — Eanes ISD $0.8322/$100 ($0.7122 M&O + $0.12 I&S, Aug 19 2025 adoption per Community Impact); City of West Lake Hills $0.176783/$100 (-1.02% per city's Notice of Tax Rates document); Travis County 1.65% effective per Ownwell. **Closing-cost example at $1.6M w/ 20% down ($320K → $1.28M loan):** $20K–$28K itemized (title $5.5K–$7K, lender fees $2.5K–$3.5K, survey + HOI $3.5K–$5.5K, 3–4 mo escrow at 1.65% = $6.6K–$8.8K) + 6–12mo PITI reserve callout for jumbo at 10% down ($80K–$150K liquid).
+- **Footer standardized** — this was the **last suburb page** still on the legacy `Top Producing Broker — Austin 2023 / 5-Star Zillow Reviews / Google Rating: 5.0 ⭐ / 1,000+ Loans Closed` block. Replaced with canonical `⭐ 5.0 Stars · 136+ Reviews / 21-Day Avg. Close · Licensed in Texas` + 5718 Sam Houston Circle / Austin TX 78731 NAP + NMLS Consumer Access link + Mortgage Solutions, LP licensing disclaimer. Wrapped grid in `.container` and fixed `<script src="script.js">` → `<script src="/script.js" defer>`.
+- **Stat card:** `$1.2M+ Median` → `$1.6M Median (Redfin Mar 2026)`.
+- **Internal links added:** /rate-check.html, /loans/jumbo.html (new contextual link from closing-cost section).
+- **18 inline source URLs** added across body — Redfin, FHFA, Wikipedia (Eanes ISD), 3 GreatSchools, Community Impact (Eanes tax rate), West Lake Hills city Notice of Tax Rates document, Ownwell (Travis County), 4 neighborhood guides, 3 country club sites, Westlake Chamber, Data USA.
+- Sitemap `lastmod` 2026-04-20 → 2026-05-01.
+- **Round 2 begins next eligible run at slot 1: round-rock-mortgage-lender.html.**
+- Modified: `westlake-mortgage-lender.html`, `sitemap.xml`, `run-logs/suburb-editor-queue.md`. New: `run-logs/2026-05-01-suburb-editor.md`.
+
 ## 2026-05-01 — Weekly blog editor refresh: FHA vs Conventional (styer-content-weekly)
 
 - Picked next-up post per editor queue: `blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html` (45 imp / 0 clicks GSC, page 1).
