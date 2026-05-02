@@ -1,3 +1,15 @@
+## 2026-05-02 — Saturday: Sitemap + Re-Verify Only (daily-opt)
+
+- Sitemap.xml health check: 200 ✅
+- Re-verify gate run on 9 live claims; 5 confirmed STILL OK; 4 confirmed STILL OPEN carry forwards.
+- 2026-04-27 post fixes (commit e0a1d9f) confirmed propagated to live a second day: canonical `/get-preapproved` CTA + canonical `136+ Reviews` footer.
+- Homepage schema entity stack confirmed healthy live: MortgageBroker (×2), Person, AggregateRating, FAQPage all present.
+- about.html LocalBusiness vs homepage MortgageBroker address mismatch — 9th run open (Adam decision required).
+- NotebookLM `notebook_advisor.py` confirmed missing 16th consecutive check; SKILL.md retirement diff still pending Adam apply.
+- **New learning logged:** Netlify pretty-URL config strips `.html` from served HTML, so re-verify gate `grep` patterns must search by resource name (`usda`), not literal file path (`/loans/usda.html`). Initial gate run nearly auto-cleared the how-to-buy USDA blocker as resolved; widening the grep caught 6 USDA mentions still live. Pattern added to `run-logs/learnings.md`.
+- No HTML / schema / sitemap mutations. Saturday is sitemap + re-verify only per yesterday's plan.
+- Modified: `run-logs/2026-05-02.md` (new), `run-logs/latest.md` (refreshed), `run-logs/learnings.md` (one new pattern entry), `CHANGELOG.md` (this entry), `CONTEXT.md` (Last Worked On + counters).
+
 ## 2026-05-01 PM — Bookkeeping + Re-Verify Gate (daily-opt)
 
 - Re-verify gate confirmed AM commit e0a1d9f propagated to live: 2026-04-27 post CTA shows `../get-preapproved` (was legacy `../prequal.html`); footer Awards block shows canonical `136+ Reviews / 21-Day Avg. Close / Licensed in Texas` (was legacy `91 Google + 45 Zillow Reviews`).
