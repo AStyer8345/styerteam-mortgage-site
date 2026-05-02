@@ -1,3 +1,13 @@
+## 2026-05-01 PM — Bookkeeping + Re-Verify Gate (daily-opt)
+
+- Re-verify gate confirmed AM commit e0a1d9f propagated to live: 2026-04-27 post CTA shows `../get-preapproved` (was legacy `../prequal.html`); footer Awards block shows canonical `136+ Reviews / 21-Day Avg. Close / Licensed in Texas` (was legacy `91 Google + 45 Zillow Reviews`).
+- HTTP 200 + sitemap.xml entry (single, no duplicate) verified for `blog/2026-04-27-why-home-prices-arent-crashing.html`.
+- FHA blog refresh (commit 89b9de3) verified live — Travis County + FHFA references propagated.
+- NotebookLM `notebook_advisor.py` confirmed missing 15th consecutive check; SKILL.md retirement diff still pending Adam apply (concrete patch in 2026-04-26 AM `latest.md`).
+- about.html LocalBusiness (5900 Balcones Dr) vs homepage MortgageBroker (5718 Sam Houston Cir) address mismatch live unchanged — 8th run open, Adam decision required.
+- No HTML / schema / sitemap mutations. Bookkeeping-only run per "AM was thorough" pattern.
+- Modified: `run-logs/2026-05-01b.md` (new), `run-logs/latest.md` (refreshed), `CHANGELOG.md` (this entry), `CONTEXT.md` (Last Worked On + counters).
+
 ## 2026-05-01 — Westlake Hills suburb page deepened — **Round 1 closeout 13/13** (styer-suburb-editor-daily)
 
 - Final slot in Round 1 priority queue. All 13 high-volume Austin-area suburbs touched between 2026-04-19 and 2026-05-01.
