@@ -1,3 +1,22 @@
+## 2026-05-02 — Round Rock deepened (Round 2 slot 1) (styer-suburb-editor-daily)
+
+- **Round 2 of suburb editor begins.** Round Rock is the first slot of Round 2 (Round 1 closed yesterday with Westlake — 13/13 complete).
+- **Median refreshed** $388K Feb 2026 → $367,500 Mar 2026 Redfin (-7.1% YoY); $191/sqft (-5.2% YoY).
+- **Tax stack baked into LocalBusiness schema description**: RRISD $0.8931 (M&O 0.7101 + I&S 0.1830) + City of Round Rock $0.372 + Williamson County $0.413776 — all per $100; combined ~1.68%.
+- **VA tile re-targeted off Fort Cavazos** (Kyle analysis flagged the 90+ minute drive as marketing overreach). New angle: military families relocating from out-of-state postings drawn to RRISD ratings — verifiable in Round Rock VA purchase data.
+- **Loan tile #4 swapped DPA → Jumbo.** DPA tile copy was verbatim with Kyle and Taylor (`Texas programs like TSAHC and TDHCA offer grants and forgivable second loans...`). New Jumbo tile is Round Rock-specific (upper Brushy Creek 78681, golf-course Forest Creek/Teravista). DPA still mentioned in FAQ schema/accordion.
+- **3 new body H3 sections (~50 lines):**
+  - *Forest Creek (78664) spotlight* — 1,200 homes mid-90s/mid-00s; original builders Toll Brothers/David Weekley/Scott Felder/Taylor Morrison/Meritage/Drees/D.R. Horton/Standard Pacific (Austin Home Seeker); $500K Mar 2026 median + $538,216 12-mo avg (Redfin); avg 3,100+ sqft; Forest Creek Elementary inside community.
+  - *Brushy Creek + Sendero Springs (78681) combined spotlight* — Brushy Creek $578.5K 12-mo median + Coventry Homes/MileStone Community Builders new construction $800K-$1M+ (Homes.com); Sendero Springs 632 homes / 42-acre greenbelt / FM 1431 / Standard Pacific + Streetman builders (Sendero Springs HOA).
+  - *Round Rock Major Employers* — Dell global HQ (since 1990s), Emerson Automation Solutions 1100 W. Louis Henna Blvd semiconductor software hub, TECO-Westinghouse 1,000+ Round Rock employees industrial motors, Amazon 149-acre 2025 last-mile + data center campus, 60,000+ STEM jobs ~7% annual growth (Round Rock Chamber).
+  - *Property Tax & Closing Costs* — full cited tax stack + $367,500 closing-cost breakdown (lender's title $1,664, escrow $600, recording $125 WilCo, ~$6,174/yr tax proration credit, prepaids $3K-$4.5K, origination $1.5K-$2.5K).
+- **At-a-glance lede updated** with full tax stack + neighborhood roster (78664/78665/78681) + first internal link to `/rate-check-round-rock.html` (Kyle analysis flagged this as missing).
+- **FAQ accordion home-price + loan-programs answers synced** with new schema language; "average" → "median"; loan-programs answer now explicit on conforming limit + jumbo trigger zones.
+- All 4 JSON-LD blocks (LocalBusiness / FAQPage / BreadcrumbList / WebPage) validated clean post-edit. WebPage `dateModified` 2026-04-29 → 2026-05-02. Sitemap `lastmod` bumped.
+- **14 inline source URLs** on the page: Redfin city + Redfin Forest Creek + City-Data Teravista + GreatSchools Westwood + Round Rock ISD article + Round Rock Chamber major-employers + Round Rock Chamber target-industries + CitizenPortal RRISD 2025 rate + Community Impact City rate FY 25-26 + KXAN WilCo rate + Austin Home Seeker Forest Creek + Homes.com Brushy Creek + Sendero Springs HOA.
+- Modified: `round-rock-mortgage-lender.html`, `sitemap.xml`, `run-logs/suburb-editor-queue.md`, this CHANGELOG, `CONTEXT.md`.
+- **Next queue slot:** Georgetown (Round 2 slot 2).
+
 ## 2026-05-02 — Saturday: Sitemap + Re-Verify Only (daily-opt)
 
 - Sitemap.xml health check: 200 ✅

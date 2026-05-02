@@ -1,5 +1,10 @@
 # Suburb Editor Queue
 
+## Round 2 — In progress
+| # | File | Status | Date Touched | Notes |
+|---|------|--------|-------------|-------|
+| 1 | `round-rock-mortgage-lender.html` | ✅ Round 2 | 2026-05-02 | Median refreshed $388K Feb → $367.5K Mar 2026 Redfin (-7.1% YoY); $191/sqft (-5.2%). LocalBusiness schema description rewritten with 78664/78665/78681 + 7 named neighborhoods + tax stack (RRISD $0.8931 + City $0.372 + WilCo $0.413776). FAQ schema "average" → "median" + Forest Creek $500K + Brushy Creek $578.5K integrated. WebPage dateModified bumped 04-29 → 05-02. **VA tile re-targeted** off Fort Cavazos overreach (Kyle analysis flag, 90+ min drive) → RRISD-relocating-military-families angle. **Loan tile #4 swapped** DPA → Jumbo (de-duplicates verbatim DPA tile copy with Kyle/Taylor). **3 new H3 sections (~50 lines):** Forest Creek 78664 spotlight (Toll/Weekley/Scott Felder/Taylor Morrison/Meritage/Drees/D.R. Horton/Standard Pacific, $500K Mar 2026 Redfin median, 1,200 homes, Forest Creek Elementary inside community); Brushy Creek + Sendero Springs 78681 combined spotlight (Brushy Creek $578.5K 12-mo median + Coventry/MileStone $800K-$1M+ new build / Sendero Springs 632 homes + Standard Pacific + Streetman + 42-acre greenbelt FM 1431); Major Employers (Dell global HQ, Emerson 1100 W. Louis Henna Blvd semiconductor software, TECO-Westinghouse 1,000+ Round Rock employees, Amazon 149-acre 2025 campus, 60K+ STEM jobs); Property Tax & Closing Costs (cited tax stack + $367.5K closing cost breakdown w/ 6 itemized line items). **At-a-glance updated** with full tax stack + rate-check-round-rock.html internal link added. FAQ accordion home-price + loan-programs answers synced w/ new schema. All 4 JSON-LD blocks (LocalBusiness/FAQPage/BreadcrumbList/WebPage) validated clean. Sitemap lastmod bumped. 14 inline source URLs. |
+
 ## Round 1 — Priority order
 | # | File | Status | Date Touched | Notes |
 |---|------|--------|-------------|-------|
@@ -36,3 +41,4 @@
 - **2026-04-29** — Bee Cave done. Next: Dripping Springs.
 - **2026-04-30** — Dripping Springs done. Next: Westlake (final Round 1 slot).
 - **2026-05-01** — Westlake done. **Round 1 complete (13/13).** Round 2 begins at slot 1: Round Rock.
+- **2026-05-02** — **Round 2 begins.** Round Rock deepened: median refresh + 3 new H3 sections (Forest Creek + Brushy Creek/Sendero Springs + Major Employers + Property Tax/Closing); VA tile fixed (Fort Cavazos overreach removed); DPA tile → Jumbo. Next: Georgetown (Round 2 slot 2).
