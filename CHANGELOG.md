@@ -1,3 +1,15 @@
+## 2026-05-03 — GBP weekly post: Homebuyer Tip — Week 18 (styer-gbp-weekly agent)
+
+- GBP post (262 words, Homebuyer Tip theme) auto-published to Publer GBP account, job ID: `69f757ac2fb3758a0935c4b5`
+- Topic: counter-intuitive offer-writing tip — ask sellers for concessions toward a 2-1 temporary buydown instead of price reduction; better near-term cash flow when buyers are most stretched. Frames the soft Austin spring market as the leverage window.
+- IG/FB/LI drafts NOT generated (per scheduled-task revision 2026-04-19, this task is GBP-only; IG/FB/LI is owned by styer-social-am/pm orchestrator)
+- `social_drafts` insert: skipped — schema check constraint still rejects `platform=google` (3rd recurrence; matches 2026-04-19 + 2026-04-26 pattern, not re-flagging per stale-flag rule). Publer is source of truth for the publish.
+- `social_activity` insert: SUCCESS — `posted` action logged (id `9fc4b273-57a4-4143-98bf-1f71872df8e6`)
+- Post saved to `run-logs/gbp-posts/2026-05-03.md`
+- Master growth log appended (`/Users/adamstyer/Documents/memory/styer-mortgage/Styer_Growth_Log.md`)
+- NotebookLM source refresh: FAILED (auth expired — `notebooklm login` required); pre-existing carry-forward issue, NotebookLM advisor script also still missing — both already in TODO/NEEDS ADAM, not re-flagging
+- No HTML/site mutations — run-log + CHANGELOG entries only
+
 ## 2026-05-02 — Round Rock deepened (Round 2 slot 1) (styer-suburb-editor-daily)
 
 - **Round 2 of suburb editor begins.** Round Rock is the first slot of Round 2 (Round 1 closed yesterday with Westlake — 13/13 complete).
