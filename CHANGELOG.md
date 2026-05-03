@@ -1,3 +1,24 @@
+## 2026-05-03 — Georgetown deepened (Round 2 slot 2) (styer-suburb-editor-daily)
+
+- **Median refreshed** $395K Feb 2026 → $412,500 Mar 2026 Redfin (+1.9% YoY) — flip from February's negative print as the market firms.
+- **USDA fully removed from page** (Adam doesn't originate): FAQ schema USDA Q → property-tax Q; FAQ accordion USDA item → property-tax item; loan-tile USDA → Asset Depletion / Asset-Based Income (first-class entry for Sun City retirees, mirrors body's existing asset-depletion FAQ); AEO opener `USDA programs for outer Williamson County` → `asset-depletion programs for Sun City retirees and jumbo financing for Wolf Ranch and Parkside`. Footer + nav USDA links untouched (sitewide cleanup blocker per CONTEXT).
+- **VA tile re-targeted** off Fort Cavazos overreach (~73 mi from Georgetown, same problem Kyle analysis flagged for Round Rock). New framing: WilCo retired-military population + GISD-zoned communities (Wolf Ranch, Sun City, Parkside) as VA-eligible buyer pool. No more `proximity to Fort Cavazos`.
+- **LocalBusiness schema description rewritten** with 78626/78628/78633 zips + Sun City (Del Webb/Pulte 55+) + Wolf Ranch (Hillwood, San Gabriel River) + Parkside on the River (1,500-acre MPC, 6 builders) + Saddlecreek (100 Furlong Dr, Pacesetter+Lennar) + Morningstar (Liberty Hill ISD, north of Hwy 29) named + WilCo 1.68% Ownwell tax stack + GISD $1.0506 + City of Georgetown $0.3532.
+- **FAQ schema** "average home price" → "median home price" w/ 5 neighborhood price ranges integrated (Wolf Ranch $400s-$1M+ across 9 builders / Parkside $540s-$840s+ / Sun City 12-mo $396K + 157 active April 2026 / Saddlecreek mid-$300s-$500s / Morningstar Liberty Hill ISD callout). USDA Q replaced with property-tax Q citing GISD + City + WilCo Ownwell.
+- **4 new body H3 sections (~80 lines):**
+  - **Sun City Georgetown (78633) — 55+ Active Adult Spotlight** — Del Webb/Pulte largest active-adult community in TX per Redfin Sun City neighborhood; 12-mo median $396K + ~157 active listings April 2026 per Cain Realty Group; 3 financing structures called out: conventional 80% LTV with retirement-account drawdown / asset-depletion 60-120 mo amortization / jumbo for golf-course upper tier; out-of-state equity proceeds → delayed-financing pivot disclosed.
+  - **MorningStar — Mailing Address Georgetown, but Liberty Hill ISD** — biggest-missed school-zoning detail in Georgetown. Round 1 wrongly implied GISD; corrected per livingmorningstar.com community overview. North of Hwy 29 / Kauffman Loop. Meritage $300s-$400s + Saratoga $350s-$500s. Liberty Hill HS 7/10 GreatSchools flagged. Buyers regularly assume Georgetown HS and discover otherwise mid-contract.
+  - **Saddlecreek (78626) + Parkside on the River (78628)** — combined H3. Saddlecreek: 100 Furlong Drive, southeast Georgetown, Pacesetter Homes + Lennar primary, prior phases by CastleRock/Century/Gehan/Chesmar/D.R. Horton, 830 SFH + 230 cluster + 150 townhome buildout, amenities cited. Parkside: 1,500-acre MPC on San Gabriel River, 6 builders (Chesmar/Coventry/Highland/M/I/Perry/Taylor Morrison) per parksideontheriver.com; $540s 50ft → $690s 60ft → $840s+ 70ft per Highland Homes — upper tier crosses $832,750 Texas conforming line into jumbo.
+  - **Major Employers in Georgetown** — broken out from Round 1's at-a-glance. AirBorn (Molex) 3500 Airborn Circle 78626 + St. David's Georgetown Hospital + Loram Technologies + Southwestern University ~1,500 students + SportClips HQ + GISD + Round Rock Dell HQ ~12 mi south down I-35.
+- **At-a-glance updated** — all 5 community zips + Liberty Hill ISD MorningStar flag + WilCo 1.68% effective + new median + tax stack with 3 cited inline sources (Community Impact GISD, Hello Georgetown City, Ownwell WilCo).
+- **Closing-cost section refreshed** $395K → $412.5K with 6 itemized line items + jumbo 6-12 mo PITI reserve callout (Parkside 70ft + Wolf Ranch upper-tier crossing $832,750 conforming line) + Sun City asset-depletion documentation pivot + internal link to /rate-check-georgetown.html.
+- **FAQ accordion** home-prices + property-tax answers synced verbatim with new schema.
+- **WebPage dateModified** bumped 2026-04-20 → 2026-05-03. **Meta description rewritten** with Mar 2026 median + zips + Sun City asset depletion + Wolf Ranch jumbo. **Sitemap lastmod** bumped 2026-04-15 → 2026-05-03.
+- **All 4 JSON-LD blocks** (LocalBusiness/FAQPage/BreadcrumbList/WebPage) parse-validated clean via python json.loads.
+- **18 inline source URLs** — Round Rock Round 2 had 14, Georgetown beats it.
+- **Active blocker added to CONTEXT What's Next #6**: Georgetown joins Hutto + Round Rock for GSC URL Inspection re-indexing nudge after Round 2 deltas.
+- Next queue slot: Cedar Park (Round 2 slot 3).
+
 ## 2026-05-03 — GBP weekly post: Homebuyer Tip — Week 18 (styer-gbp-weekly agent)
 
 - GBP post (262 words, Homebuyer Tip theme) auto-published to Publer GBP account, job ID: `69f757ac2fb3758a0935c4b5`
