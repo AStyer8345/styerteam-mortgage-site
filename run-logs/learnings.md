@@ -1,3 +1,21 @@
+## 2026-05-03 — Re-Verify Gate: Count-Method Drift vs Real Drift (18th Dead NotebookLM Run)
+
+### Patterns
+- **`grep -oi <substring>` counts substring occurrences, not lines — and a single HTML link contains the substring twice.** Today's how-to-buy USDA re-verify returned 8 matches; Saturday PM had reported 6. The page hasn't been edited since 2026-04-23 (commit d2ef146). The "drift" was a measurement artifact: each `<a href='/loans/usda'>USDA</a>` link contains "usda" twice (URL slug + visible text), so 2 link locations + 4 body mentions = 8 substring matches across 5 lines. To prevent fake-drift in future re-verify gates, either: (a) cite both `grep -coi` (line count) AND `grep -oi … | wc -l` (substring count), or (b) standardize on substring count and never switch methods between runs. Page-impact answers want line count; SEO-impact answers want substring count. Pick one and stick with it inside a single claim's lifecycle.
+- **Re-verify gate doing its job in the opposite direction:** today's gate didn't auto-resolve a stale claim — it caught a stale *count* on a still-true claim. Same discipline (re-check live before reporting), different outcome shape: the blocker stays open, the metric was wrong. This is its own positive signal — gate prevents reporting drift, both real and apparent.
+- **Sunday-after-thorough-Saturday repeat is the cheapest possible run shape.** AM Sat = thorough sitemap + re-verify. PM Sat = repeat gate (no drift). Sun AM = repeat gate (one count correction, no actionable). Three runs, one honest correction, zero false alarms, zero site mutations. This is exactly what the "skip only if AM was incomplete" rule was trying to enable.
+- **NotebookLM 18th confirming dead-script check.** No change. SKILL.md retirement diff still pending Adam apply.
+
+---
+
+## 2026-05-02 PM — Same-Day PM Re-Verify Confirms No Drift (17th Dead NotebookLM Run)
+
+### Patterns
+- **Same-day PM repeat of AM re-verify gate is cheap and confirms no drift between runs.** AM run 2026-05-02 was thorough Saturday "sitemap + re-verify only". PM ran the identical gate against live state ~hours later: zero drift on 9 claims. Useful discipline when AM was thorough and PM has no rotation: rather than skip PM entirely, repeat the gate to formalize "AM commit propagated to live AND nothing drifted in the gap." Skip only if AM was incomplete or known-broken.
+- **NotebookLM 17th confirming dead-script check.** No change. SKILL.md retirement diff still pending Adam apply (concrete patch in 2026-04-26 AM `latest.md`). Pattern for next run: continue the count, do not re-pitch the patch — Adam's queue is the bottleneck, not surfacing.
+
+---
+
 ## 2026-04-30 PM — TOMORROW_PRIORITY Pair Stale-Detection + "Cluster Effectively Complete" State + Voice-Guide Deferral Discipline
 
 ### Patterns

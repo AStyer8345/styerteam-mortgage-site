@@ -1,3 +1,14 @@
+## 2026-05-03 — Sunday: Sitemap + Re-Verify Only (daily-opt)
+
+- Sitemap health check: https://styermortgage.com/sitemap.xml → 200 ✅
+- Re-Verify Gate run on 7 live claims: 3 STILL OK, 4 STILL OPEN carry forwards (no actionable items unblocked)
+- **Count-method correction:** how-to-buy USDA mention count restated from 6 (Sat PM) to 8 (today). Page hasn't been edited since 2026-04-23 (commit d2ef146); Sat PM `grep -oi "usda"` was undercounted. Each `<a href='/loans/usda'>USDA</a>` link contains "usda" twice (URL slug + visible text), so 2 link locations = 4 substring matches + 4 body content mentions = 8. Standardizing on substring-count going forward.
+- NotebookLM script (`notebook_advisor.py`) missing for 18th consecutive check — SKILL.md retirement diff still pending Adam apply
+- **NEW finding (HIGH):** NotebookLM CLI auth expired — `/Users/adamstyer/.local/bin/notebooklm` returned "Authentication expired or invalid." Separate problem from the missing python script. Adam fix: run `notebooklm login`. Master Styer_Growth_Log appended locally; only the NotebookLM mirror is stale until re-auth.
+- Cleaned up yesterday's untracked PM run-log (`run-logs/2026-05-02b.md`) + uncommitted `run-logs/latest.md` modifications, rolled into today's bookkeeping commit
+- Updated CONTEXT.md Last Worked On + 11th-run address mismatch carry forward + 18th-run NotebookLM escalation; learnings.md +1 lesson on grep substring-vs-line counting; appended to master Styer_Growth_Log
+- Self-review: PASS — 0 modified site files. Bookkeeping-only Sunday run. Hard constraints not at risk.
+
 ## 2026-05-03 — Georgetown deepened (Round 2 slot 2) (styer-suburb-editor-daily)
 
 - **Median refreshed** $395K Feb 2026 → $412,500 Mar 2026 Redfin (+1.9% YoY) — flip from February's negative print as the market firms.
