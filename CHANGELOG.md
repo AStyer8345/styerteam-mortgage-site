@@ -1,3 +1,15 @@
+## 2026-05-04 — Week 9 competitive intel (styer-competitive-weekly)
+
+- **First Leander top-10 ranking ★** — `leander-mortgage-lender.html` (last edited 2026-04-28; FAQPage + AggregateRating schema verified on disk) appeared at **#6 for "leander tx mortgage lender"**. First top-10 ranking for Leander since tracking began. Same Hutto-playbook trajectory: deepen + schema → indexed → ranks within 1-2 SERP cycles.
+- **Hutto held #2** — Big Life still #1; live audit confirms NO 2026 dates, NO neighborhoods, NO review schema visible — content gap intact.
+- **Bee Cave 31 days unindexed** — `site:styermortgage.com bee cave` returns zero results. Escalated from "overdue" to "BLOCKING" — manual GSC URL Inspection only Adam can take.
+- **Two new threats this week:** (a) Arnaiz Mortgage NEW #1 cash-out + #2 refi (multi-state lender NMLS #2033319, generic `/refinance/texas/austin/` template, no suburb pages, no review counts visible — pure license-footprint play); (b) ATX Mortgage Lending NEW #4 core "mortgage lender austin tx" (NMLS #2445761 very recent license; explicitly lists 9 Adam suburbs in body text — Leander/Cedar Park/Liberty Hill/Georgetown/Round Rock/Hutto/Pflugerville/Kyle/Buda — but no dedicated suburb pages yet).
+- Re-verify gate auto-resolved 1 stale claim (Vista Lending dropped from "home loan austin tx" top 10) and downgraded 2 (MortgageAustin demoted #1 → #2 mortgage interp; Joel Richardson/FCM demoted #1 → #3 cash-out).
+- Auto-loan SERP contamination on "get pre-approved austin tx" intensifying (3 → 5 auto results in 2 weeks).
+- Top-10 hit rate 9% (1/11) → **17% (2/12)**. First positive-direction movement in 2 weeks.
+- Reports written: `run-logs/competitive/2026-05-04.md` + `latest.md`; learnings.md +1 entry; master `Styer_Growth_Log.md` appended (NotebookLM mirror skipped — CLI auth still expired, 19th run dead).
+- 0 site mutations — research-only run per skill rules. Findings carried as TOMORROW_PRIORITY for daily site task + new TODO items.
+
 ## 2026-05-03 — Sunday: Sitemap + Re-Verify Only (daily-opt)
 
 - Sitemap health check: https://styermortgage.com/sitemap.xml → 200 ✅
