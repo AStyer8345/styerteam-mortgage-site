@@ -1,3 +1,21 @@
+## 2026-05-05 — Tuesday rotation: Schema/AEO carry-over + 5 title/meta fixes (daily-opt)
+
+- **Sunday's Monday-rotation TOMORROW_PRIORITY (Schema + Google Ads + AEO Entity Audit) carried into today** — Monday daily-opt slot was missed (commits 2026-05-04 are suburb-editor + competitive). Schema sweep + AEO entity audit batched with Tuesday title/meta rotation in one run since Schema/AEO portion was largely verification-class.
+- **Schema sweep (3 pages):** index.html (MortgageBroker 5718 Sam Houston Circle / AggregateRating 5.0/136 / FAQPage 5Qs / Person worksFor MortgageBroker — all internally consistent), DSCR (LocalBusiness + FinancialProduct + FAQPage 6Qs + Article + BreadcrumbList), Bee Cave (LocalBusiness 78738 + FAQPage 5Qs + AggregateRating 5.0/136). All structurally valid.
+- **Person + LocalBusiness consistency check:** 5718 Sam Houston Circle appears in 3 schema blocks (homepage MortgageBroker, homepage Person, about.html Person+worksFor); about.html LocalBusiness 5900 Balcones Drive Suite 100 appears in 1 — 12th-run mismatch. Recommend aligning to 5718 (3:1 weight-of-evidence). One-line edit on about.html line 123 once Adam confirms canonical address.
+- **Homepage AEO entity audit:** body answer paragraph at index.html line 454 (`<p><strong>Adam Styer | Mortgage Solutions LP (NMLS #513013) is Austin's independent mortgage broker…`) is the canonical extractable answer to "Who is the best mortgage broker in Austin TX?" — present and correct.
+- **Tuesday rotation: 5 over-length title/meta values batched and FIXED** (all reversible, LOW_RISK):
+  - `bee-cave-mortgage-lender.html` meta 168 → 158 (reworded "Lake Travis HS 9/10" → "Lake Travis ISD" + reordered)
+  - `dripping-springs-mortgage-lender.html` meta 218 → 153 (removed "21-day close" + "buyers" filler, used em-dash for community list)
+  - `georgetown-mortgage-lender.html` meta 182 → 150 (consolidated zip-coverage callouts; replaced "136+ reviews" with "NMLS #513013")
+  - `calculator-refinance-breakeven.html` title 78 → 59 (canonical `[Topic] | Adam Styer | NMLS #513013` convention)
+  - `ftb-dpa-guide.html` title 84 → 64 (canonical convention)
+- **Five borderline titles 67-68 chars deliberately skipped** — fixed-vs-adjustable, first-time-home-buyer, get-preapproved (landing page), improve-credit-score, marble-falls-mortgage-lender. All are 1-3 chars over and follow convention; trim would lose keyword density. Per 2026-04-21b learnings, FHA/Jumbo "hook-class" titles are similarly preserved at 49-56 chars even without NMLS.
+- **Re-verify gate (8 claims):** 4 STILL OK (homepage AggregateRating 5.0/136, Bee Cave AggregateRating 5.0/136, DSCR FAQPage, homepage AEO body paragraph); 4 STILL OPEN carry-forwards (about.html address mismatch 12th run, /loans/usda 200 14th day, USDA cascade pending Adam, NotebookLM script missing 19th confirming check).
+- **Blog cadence trip:** last post 2026-04-27 = 8 days as of today = trips 7-day cadence flag. Escalates to MEDIUM in FLAG_FOR_ADAM. Suburb deep-dive (Wednesday) can pair with topical post.
+- **PageSpeed manual + GSC URL Inspection + Google Ads Optimization Score** — all UNVERIFIED (manual UI access, Adam-only). Last known scores stale 6+ weeks.
+- Run log → `run-logs/2026-05-05.md` (mirrored to `latest.md`); learnings appended (5 new patterns).
+
 ## 2026-05-04 — Cedar Park deepened (Round 2 slot 3) (styer-suburb-editor-daily)
 
 - **Median refreshed** $492K Mar 2026 → **$496K Mar 2026 Redfin (-8.0% YoY)**, $228/sqft. Round 1's $492K was slightly below Redfin's true closing-period median.
