@@ -86,3 +86,23 @@ Items auto-appended by scheduled remote agents land here. Glance weekly.
 - [ ] **FLAG 2026-05-01 — Phase 1e (Pflugerville) blocked: Phase 1d (Georgetown) pre-check failed.** Phase 1d status is still `pending` in PHASES.md — it must reach `status: completed` before Phase 1e can execute. Phase 1e trigger fired today (scheduled 2026-05-01) but bailed without touching pflugerville-mortgage-lender.html. Action required: complete Phase 1a → 1b → 1c → 1d in sequence (all four still `pending`), update each to `completed` in PHASES.md, then re-trigger Phase 1e.
 
 - [ ] **FLAG 2026-05-04 — Phase 1f (Dripping Springs) blocked: Phase 1e (Pflugerville) pre-check failed.** Phase 1e status is still `pending` in PHASES.md — it must reach `status: completed` before Phase 1f can execute. Phase 1f trigger fired today (scheduled 2026-05-04) but bailed without touching dripping-springs-mortgage-lender.html. Action required: complete Phase 1a → 1b → 1c → 1d → 1e in sequence (all five still `pending`), update each to `completed` in PHASES.md, then re-trigger Phase 1f. **Root cause:** Phase 1a (Round Rock) was never executed, blocking the entire chain. Resolve 1a first.
+
+## Now (Phase 5 follow-ups — 2026-05-05)
+
+- [ ] **Deploy to Netlify** — `git add` + commit + push (auto-deploys)
+- [ ] **Submit 7 new URLs to GSC** — request indexing for `non-qm-loans.html`, `dscr-loans-texas.html`, `dscr-loans-fredericksburg-tx.html`, `dscr-loans-dripping-springs.html`, `bank-statement-loans.html`, `high-net-worth-mortgage.html`, `investor-loans.html`
+- [ ] **Mobile nav dropdown test** — verify "Loan Programs" dropdown renders correctly on real mobile device + desktop
+- [ ] **FAQ content + FAQPage schema** — add to about.html and calculator hub pages (Phase 5 follow-up)
+- [ ] **Audit additional LocalBusiness schemas** — sweep for any other NAP mismatches beyond the about.html fix
+- [ ] **Case-study/scenario blocks** — as Adam closes non-QM deals, add to spoke pages for EEAT
+- [ ] **Internal linking from blog posts** — wire contextual blog posts to new non-QM pages where natural
+
+## Done (2026-05-05)
+
+- [x] **Phase 1** — SEO audit (`SEO-AUDIT.md`)
+- [x] **Phase 2** — SEO plan with deep research (`SEO-PLAN.md`)
+- [x] **Phase 3** — Build 7 new non-QM/DSCR pages (hub + 6 spokes)
+- [x] **Phase 4** — Site-wide nav restructure (Loan Programs dropdown across 66 files); USDA noindex; about.html NAP fix; internal hub-and-spoke linking
+- [x] **Phase 5** — CONTEXT/CHANGELOG/DECISIONS/TODO/sitemap updates + deployment checklist
+- [x] **about.html canonical address resolved** — aligned to 5718 Sam Houston Circle (closes 12+ run blocker)
+- [x] **USDA cascade decision** — noindex + remove from nav + product card; reversible

@@ -1,3 +1,20 @@
+## 2026-05-05 — Leander Round 2 deepened (suburb-editor — slot 4/13)
+
+- **Median refreshed $438K Feb +7.6% YoY → $411K Mar 2026 Redfin (-8.7% YoY)**, $197/sqft — sharp price flip. Steepest YoY drop across the 13-suburb queue this round.
+- **WilCo rate corrected** $0.3999 → $0.413776 FY 2025-26 (3.44% increase per WilCo CivicAlerts AID=665) — current LISD + WilCo stack now $1.500676/$100.
+- **Internal duplicate DPA paragraph removed**: page had verbatim "TSAHC or TDHCA programs that provide 3–5%" copy in BOTH the Why grid AND the Loan Programs grid. Loan Programs DPA tile swapped to **Jumbo & Construction tile** (Travisso Verona / gated Crystal Falls Cap Rock + Fairways + Grand Mesa cross the $832,750 Texas conforming line).
+- **VA tile re-targeted** off generic veteran framing → Camp Mabry 35 mi south + 620/183A retiree migration toward LISD.
+- **AEO opener rewritten** — generic "conventional + jumbo $600K+" → 78641 + Mason Hills $400K-$650K conventional 5-10% down + Travisso Verona/gated Crystal Falls jumbo wedge + industrial pivot (Tech Park, Titan 1.3M sqft, Northline).
+- **5 new H3 sections (~150 lines):**
+  - Travisso EXPANDED — 5 collections by lot width (Capri 50' / Siena 60' / Naples 70' / Florence 80' / Verona 100'), 9 model homes (5 Toll / 4 Taylor), Olimpico Way addresses 4901+4917 Siena, 4909+4913 Naples, final-phase 50' Capri lots flag.
+  - Crystal Falls 78641 spotlight — 5,000 acres, 7 named subsections (Bluffs/Boulders/Cap Rock/Highlands/Fairways/Wild Rock/Grand Mesa), 3 gated (Cap Rock+Fairways+Grand Mesa), public 18-hole golf, mid-$200s-$1M+, Group Three Builders Grand Mesa Hill Country lots up to 7 acres.
+  - Mason Hills 78641 spotlight — 1,000+ homes built on Mason Ranch grounds 2012-2014-2021, 7 builders (Toll/Highland/Pulte/Gehan/GFO/KB/Ashton Woods), Highland 2104 Cotton Farm Trail + KB 1600 Abbott Cove specific addresses, Whitestone Elementary <2 mi all LISD.
+  - Northline 116-acre TOD spotlight — SH-183/San Gabriel Pkwy downtown district, 85K sqft retail Phase 1 Endeavor under construction, $4M city loan Feb 2026 + 1-acre municipal land dedication library/cultural center, Community Impact May 4 2026 tax-reimbursement structure update.
+  - Leander Industrial Boom — Leander183 Commerce Center + National Aero Stands, Leander Tech Park (St. John Properties, 8 buildings 270K sqft Phase 1 2026), Titan Development 115-ac/1.3M sqft Class-A flex, EastGroup Heritage Grove 600K sqft, LISD ~6,000 employees + commute-tier Apple/Oracle/IBM Cedar Park ~15min + Dell/HP Round Rock ~20min.
+- **Schools H3 expanded** — Tom Glenn HS 6/10 (2,129 students, 97% grad, 1,140 SAT — US News + GreatSchools cited) + Leander HS 6/10 (2,202 students, 96% grad, AP+IB+PLTW — Niche cited 42,593 LISD-wide enrollment) + Vista Ridge HS 8/10.
+- **Closing-cost section** refreshed $438K → $411K w/ 10% down ($369,900 loan): $8K-$11.5K itemized 6 line items + jumbo $14K-$22K + 6-12mo PITI reserve callout for Verona/Cap Rock/Fairways/Grand Mesa + 8.7% YoY drop = builder buydown leverage framing.
+- WebPage dateModified bumped 04-22 → 05-05. Meta description rewritten. All 4 JSON-LD blocks (LocalBusiness/FAQPage/WebPage/BreadcrumbList) validated clean via python json.loads. Sitemap lastmod bumped 04-19 → 05-05. **20 inline source URLs.**
+
 ## 2026-05-05 — Tuesday rotation: Schema/AEO carry-over + 5 title/meta fixes (daily-opt)
 
 - **Sunday's Monday-rotation TOMORROW_PRIORITY (Schema + Google Ads + AEO Entity Audit) carried into today** — Monday daily-opt slot was missed (commits 2026-05-04 are suburb-editor + competitive). Schema sweep + AEO entity audit batched with Tuesday title/meta rotation in one run since Schema/AEO portion was largely verification-class.
@@ -1049,3 +1066,14 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 ## 2026-04-23 — Pflugerville suburb editor (daily-opt, queue #5)
 
 - `pflugerville-mortgage-lender.html` — Blackhawk neighborhood spotlight (78660, GFO/Chesmar/Coventry builders, $465K+ new construction, sourced Homes.com); school ratings H3 (Hendrickson HS 8/10, Pflugerville HS 6/10, GreatSchools linked); employer list H3 (Amazon 1,000 jobs PCDC cited, Costco, Baylor Scott & White, Samsung Taylor via US-130); closing cost breakdown at $355K median (Travis County recording ~$150, PISD $1.1069/$100 cited, ~2.0–2.1% combined rate); updated median price to $355K Mar 2026 (Redfin, cited in intro + market context + FAQ); removed "Down Payment Assistance" loan card (verbatim match Georgetown + Smithville — confirmed via grep); fixed USDA from LocalBusiness schema description; added WebPage schema + dateModified 2026-04-23
+
+## 2026-05-05 — Non-QM SEO expansion (Phases 1–5)
+
+- **7 new pages built** with deep research-backed copy: `non-qm-loans.html` (hub), `dscr-loans-texas.html`, `dscr-loans-fredericksburg-tx.html`, `dscr-loans-dripping-springs.html`, `bank-statement-loans.html`, `high-net-worth-mortgage.html`, `investor-loans.html`. Hub-and-spoke architecture; each spoke targets a specific borrower scenario or geography rather than templated near-duplicates.
+- **Nav restructured site-wide** — added "Loan Programs" dropdown across 66 files. Header + footer normalized.
+- **USDA deprioritized** — page noindexed (not deleted); removed from nav dropdown across all 66 files; removed from `products.html` loan card grid. Less disruptive than 301/delete; reversible if Adam ever does USDA again.
+- **about.html NAP fix** — LocalBusiness schema address aligned to canonical 5718 Sam Houston Circle (was 5900 Balcones, multi-run flagged blocker now closed).
+- **Internal linking** — hub-and-spoke pattern wired into `index.html`, `products.html`, `dscr-loan-austin-tx.html`, `self-employed-mortgage-austin.html`, `austin-mortgage-rates.html`.
+- **Sitemap updated** — 7 new URLs added with 2026-05-05 lastmod (hub priority 0.9, spokes 0.8). USDA URL removed since noindexed.
+- **Skipped:** `dscr-loans-nationwide.html`. Adam is TX-licensed only; CFPB/UDAAP risk on state-level licensing claims. Out-of-state investors find `dscr-loans-texas.html` instead.
+- **Voice decision:** HNW page = warm conversational (consistent with rest of site), not cold private-banking tone. Sophisticated borrowers can read sophistication without being talked down to.

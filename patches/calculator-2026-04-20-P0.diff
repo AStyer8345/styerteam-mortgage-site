@@ -1,0 +1,130 @@
+--- P0 CALCULATOR PATCHES — 2026-04-20 ---
+
+Review each patch before applying. Do NOT apply blindly.
+These are proposed fixes for the 5 P0 issues identified in the calculator audit.
+
+---
+== PATCH 1: P0-A — Fix Annual frequency check in rate-buydown-calculator.html ==
+
+The radio values are "mo" and "yr" but the JS checks for "annual".
+Fix: change the JS check to match the actual radio values.
+
+FILE: rate-buydown-calculator.html
+
+FIND (approx line 1033-1035):
+    var taxMo   = taxFreq === 'annual' ? taxRaw / 12 : taxRaw;
+    var insMo   = insFreq === 'annual' ? insRaw / 12 : insRaw;
+
+REPLACE WITH:
+    var taxMo   = taxFreq === 'yr' ? taxRaw / 12 : taxRaw;
+    var insMo   = insFreq === 'yr' ? insRaw / 12 : insRaw;
+
+---
+== PATCH 2: P0-B — Fix swapped Principal/Interest columns in rate-buydown-calculator.html ==
+
+The table header says Principal, Interest but data is rendered as interest, principal.
+Fix: swap the two data cells to match the header order.
+
+FILE: rate-buydown-calculator.html
+
+FIND (in renderSchedule function, approx line 895-903):
+          var cls = r.isBuydown ? ' class="buydown-row"' : '';
+          html += '<tr' + cls + '>'
+            + '<td>' + r.month + '</td>'
+            + '<td>' + r.date + '</td>'
+            + '<td>' + fmtPct(r.effectiveRate) + '</td>'
+            + '<td>' + fmtDollarInt(pmtShow) + '</td>'
+            + '<td>' + fmtDollarInt(r.interest) + '</td>'
+            + '<td>' + fmtDollarInt(r.principal) + '</td>'
+            + '<td>' + (r.subsidy > 0 ? fmtDollarInt(r.subsidy) : '—') + '</td>'
+            + '<td>' + fmtDollarInt(r.balance) + '</td>'
+            + '</tr>';
+
+REPLACE WITH:
+          var cls = r.isBuydown ? ' class="buydown-row"' : '';
+          html += '<tr' + cls + '>'
+            + '<td>' + r.month + '</td>'
+            + '<td>' + r.date + '</td>'
+            + '<td>' + fmtPct(r.effectiveRate) + '</td>'
+            + '<td>' + fmtDollarInt(pmtShow) + '</td>'
+            + '<td>' + fmtDollarInt(r.principal) + '</td>'
+            + '<td>' + fmtDollarInt(r.interest) + '</td>'
+            + '<td>' + (r.subsidy > 0 ? fmtDollarInt(r.subsidy) : '—') + '</td>'
+            + '<td>' + fmtDollarInt(r.balance) + '</td>'
+            + '</tr>';
+
+---
+== PATCH 3: P0-D — Add for/id to fee row labels in refinance-calculator.html ==
+
+14 fee-row <label> elements have no `for` attribute; inputs have no `id`.
+Fix: add matching id/for pairs to each fee row.
+
+FILE: refinance-calculator.html
+
+This is a repetitive change to 14 inputs. Example pattern for first 3:
+
+FIND:
+      <div class="fee-row"><label>Origination Fee</label><input type="number" class="lender-fee" data-name="Origination Fee" value="0" min="0" step="50"></div>
+      <div class="fee-row"><label>Underwriting Fee</label><input type="number" class="lender-fee" data-name="Underwriting Fee" value="1295" min="0" step="50"></div>
+      <div class="fee-row"><label>Processing Fee</label><input type="number" class="lender-fee" data-name="Processing Fee" value="995" min="0" step="50"></div>
+
+REPLACE WITH:
+      <div class="fee-row"><label for="fee-origination">Origination Fee</label><input id="fee-origination" type="number" class="lender-fee" data-name="Origination Fee" value="0" min="0" step="50"></div>
+      <div class="fee-row"><label for="fee-underwriting">Underwriting Fee</label><input id="fee-underwriting" type="number" class="lender-fee" data-name="Underwriting Fee" value="1295" min="0" step="50"></div>
+      <div class="fee-row"><label for="fee-processing">Processing Fee</label><input id="fee-processing" type="number" class="lender-fee" data-name="Processing Fee" value="995" min="0" step="50"></div>
+
+(Apply same pattern to all 14 fee rows — Application Fee, Admin Fee, Appraisal, Credit Report, Doc Prep, Flood Cert, TX Attorney, Settlement Agent, Title Search, Title Endorsements, Recording Fee)
+
+---
+== PATCH 4: P0-E — Move Chart.js to end of body in rate-buydown-calculator.html ==
+
+Chart.js is in <head> with no defer/async — blocks rendering.
+Fix: move to end of body, before the existing <script> blocks.
+
+FILE: rate-buydown-calculator.html
+
+FIND in <head> section:
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+DELETE that line from <head>.
+
+ADD at end of <body>, before the <script> containing buydown calculator code:
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+NOTE: The DOMContentLoaded wrapper in the inline script means Chart.js will be loaded
+before compute() is first called, so no timing issues.
+
+---
+== PATCH 5: P0-C — Add aria-label to createSlider() in calculator-suite.js ==
+== (REVIEW CAREFULLY — touches shared code used on 4 pages) ==
+
+FILE: calculator-suite.js
+
+FIND (line 73-74 in createSlider):
+        '<input type="range" class="calc-slider-input" id="' + id + '" min="' + config.min + '" max="' + config.max + '" step="' + (config.step != null ? config.step : 1) + '" value="' + value + '">';
+
+REPLACE WITH:
+        '<input type="range" class="calc-slider-input" id="' + id + '" aria-label="' + (config.label || '') + '" min="' + config.min + '" max="' + config.max + '" step="' + (config.step != null ? config.step : 1) + '" value="' + value + '">';
+
+This adds aria-label equal to the config.label string to every generated range input.
+
+SECONDARY FIX: Also change the label span in createSlider to use <label> element for visual association:
+
+FIND:
+        '<div class="calc-slider-label">' +
+          '<span>' + (config.label || '') + '</span>' +
+          '<span class="calc-slider-value" data-value></span>' +
+        '</div>' +
+
+REPLACE WITH:
+        '<div class="calc-slider-label">' +
+          '<label for="' + id + '">' + (config.label || '') + '</label>' +
+          '<span class="calc-slider-value" data-value></span>' +
+        '</div>' +
+
+REGRESSION CHECK: After applying, verify sliders still render and display correctly on:
+- calculator-payment.html
+- calculator-affordability.html
+- calculator-refinance-breakeven.html
+- wrap-mortgage-calculator.html

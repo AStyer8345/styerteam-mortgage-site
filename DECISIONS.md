@@ -58,3 +58,31 @@
 **Over:** Salesforce (legacy), Arive (LOS only), or raw Supabase tables as primary record.
 **Why:** LoanOS was already being used as the working CRM before this decision was formally logged. Salesforce is decommissioned — no new contacts go there. Arive remains the LOS for pricing, disclosures, and AUS submissions but is not a contact or relationship system. Supabase powers LoanOS under the hood so it IS the data layer, but LoanOS is the record-of-truth interface. All n8n workflows (new-app, contract-received, pre-approval, CD, review-request) log activity to Supabase via LoanOS tables.
 **Context:** Decision prompted by fragmentation audit (styer-p3-15): contacts lived in 4 systems depending on lifecycle stage. Commit: LoanOS is authoritative. Other systems sync to it or are reference-only. Salesforce references in any config/docs are legacy and should not be followed.
+
+## [2026-05-05] — Hub-and-spoke 7-page non-QM cluster, not 30+ programmatic state pages
+
+**Chose:** A 7-page hub-and-spoke non-QM cluster with deep, scenario-specific copy (DSCR Texas / Fredericksburg / Dripping Springs, bank-statement, HNW, investor, plus a non-QM hub).
+**Over:** Programmatic 30+ state-level near-duplicates ("DSCR loans in [state]" templated pages).
+**Why:** Google's helpful-content updates penalize templated near-duplicates. Hub-and-spoke with deep, specific content (named neighborhoods, borrower scenarios, real numbers) wins on both rankings and conversion.
+**Context:** Adam's true niche is self-employed + investor non-QM in Austin/Hill Country. Programmatic state pages would also create out-of-state intent we can't legally serve (TX-licensed only).
+
+## [2026-05-05] — Skipped dscr-loans-nationwide.html
+
+**Chose:** No nationwide DSCR landing page. Out-of-state investors land on `dscr-loans-texas.html` instead.
+**Over:** A nationwide page that captures search volume and refers out-of-state leads to corporate.
+**Why:** Adam is TX-licensed only. Referring out-of-state to corporate is a real workflow, but a public-facing page implying nationwide capability is CFPB/UDAAP risk on state-level licensing claims.
+**Context:** Out-of-state investors searching "DSCR loans Texas" are still real targets; the Texas page captures them without the licensing exposure.
+
+## [2026-05-05] — HNW page uses warm conversational tone
+
+**Chose:** Warm conversational voice on `high-net-worth-mortgage.html` — consistent with the rest of the site.
+**Over:** Cold, formal "private banking" tone typical of HNW lender pages.
+**Why:** Adam's voice is consistent across the site; sophisticated borrowers can read sophistication without being talked down to. Voice consistency also helps E-E-A-T signals — same author across pages.
+**Context:** This is a deliberate departure from competitor HNW pages. Bet is that authentic voice converts better than borrowed prestige tone.
+
+## [2026-05-05] — USDA: noindex, don't delete
+
+**Chose:** Add `<meta name="robots" content="noindex">` to `loans/usda.html`; remove from nav and product surfaces.
+**Over:** Deleting the page outright or 301-redirecting it.
+**Why:** Less disruptive — Google drops it from the index without broken links; reversible if Adam ever does USDA again. No 301 chain to manage.
+**Context:** Adam doesn't originate USDA. Multi-run blocker since at least 2026-04. Single decision unblocks ~88-page nav cleanup, the standalone page status, and remaining body/schema/FAQ USDA references on suburb pages.
