@@ -185,3 +185,43 @@ PASS — 5 modified site files (3 suburb meta, 2 page titles). Re-read each post
 - ✅ No live drift since Sunday beyond expected path-rendering count clarification
 - ✅ Adam-decision items consolidated (USDA cascade is a single-decision unblock for site-wide work)
 - ✅ Blog cadence flag tripped and escalated to MEDIUM
+
+---
+
+## PM ADDENDUM — 2026-05-05 ~08:44 CDT (same-day second invocation)
+
+The scheduled task fired a second time today, 14 min after the AM commit `6156e09` at 08:30:04 CDT. Treating as a verify-only pass (rotation already executed) per "true no-op" guidance — the right job here is to confirm the morning's writes propagated and re-check carry-forward flags, not to redo the rotation work.
+
+### Live propagation of AM fixes
+| Page | Field | AM target | Live-served | Notes |
+|---|---|---|---|---|
+| bee-cave-mortgage-lender | meta | 158 | 162 | within Google display range; 4-char drift = `$`/em-dash byte vs char count |
+| dripping-springs-mortgage-lender | meta | 153 | 159 | same — UTF-8 byte counting on em-dashes |
+| georgetown-mortgage-lender | meta | 150 | 150 | exact match |
+| calculator-refinance-breakeven | title | 59 | 59 | exact match |
+| ftb-dpa-guide | title | 64 | 64 | exact match |
+
+All 5 morning edits propagated to Netlify (deploy time well under the 60-second buffer). All within compliant length ranges. **Lesson logged: AM length checks should switch from Python `len()` (char count) to byte-equivalent or use a shared helper that matches Google's serp-display measurement.** Adding to NOTEBOOK_INSIGHTS.
+
+### Re-verify gate (PM)
+| Claim | AM | PM live | Outcome |
+|-------|----|---------|---------|
+| Sitemap.xml 200 | 200 | 200 | ✅ STILL OK |
+| /loans/usda{,.html} both 200 | 200/200 | 200/200 | STILL OPEN — 15th day |
+| about.html 5718 Sam Houston (1) ↔ 5900 Balcones (1) | both present | both present | STILL OPEN — **13th recurrence** |
+| Homepage AggregateRating 5.0/136 | 136 | 136 | ✅ STILL OK |
+| Homepage ratingValue 5.0 | 5.0 | 5.0 | ✅ STILL OK |
+| Days since last blog post (2026-04-27) | 8 | 8 | STILL OPEN — MEDIUM, AM-flagged |
+| how-to-buy USDA substring count (served) | 6 | 8 | path-rendering noise — same finding (overall USDA cascade still OPEN, count is measurement-method dependent per 2026-05-02 learnings) |
+
+### CHANGES MADE (PM)
+- run-logs/2026-05-05.md — appended this PM addendum
+- run-logs/latest.md — refreshed mirror to include PM addendum
+
+### NO new code/content edits this PM pass — verification only.
+
+### PM SELF-REVIEW
+PASS — read-only PM verification. Two log files updated (this addendum + latest.md mirror). No site HTML touched. No commit needed beyond log updates. Hard constraints intact.
+
+### TOMORROW_PRIORITY (preserved from AM — Wednesday 2026-05-06 rotation)
+Same as AM: Wednesday Suburb Page Deep Dive + AEO. **Leander Round 2** is the priority slot. Re-verify gate carry forwards: about.html mismatch (14th run), USDA cascade, NotebookLM script (20th), how-to-buy USDA count via served HTML.
