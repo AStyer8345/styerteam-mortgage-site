@@ -1,3 +1,21 @@
+## 2026-05-06 — Pflugerville Round 2 deepened (suburb-editor — slot 5/13)
+
+- **Median confirmed $355K Mar 2026 Redfin (-10.2% YoY)**, $193/sqft (+8.7% YoY), 5 mo. supply (up from 1.6 mo. last year — strongest buyer-leverage shift in the queue).
+- **LocalBusiness schema description rewritten** — 78660 + Blackhawk/Falcon Pointe/Windermere/Heatherwilde + Hendrickson 8/10 + Pflugerville HS 6/10 + full tax stack (PISD $1.1069 + City $0.5350 FY 2025-26 + Travis County + ESD 2 $0.092765 ≈ $2.04 nominal / 1.82% effective per Ownwell).
+- **FAQ schema rewritten** — "What are typical home prices" → "What is the median home price" w/ Falcon Pointe Newland MPC builder roster + $500K April 2026 median list integrated; **"How is the mortgage process different" Q swapped for "What is the property tax rate"** (full cited tax stack — biggest Pflugerville buyer concern, weakest existing Q replaced).
+- **2 new neighborhood spotlight H3s** added after Blackhawk:
+  - Falcon Pointe (78660) — Newland Communities 1,400-acre MPC built 2002–2017, builders Lennar/Chesmar/Taylor Morrison/Meritage/Newmark/Highland, $500K Apr 2026 median list (Regent), $400s-$600s resale range, Hendrickson HS feeder.
+  - Windermere & Heatherwilde combined "established 78660 value tier" — Windermere ~$326K median (Centex/Buffington/Hampton, 1,200-2,800 sqft, late 1980s-early 2000s), Heatherwilde ~$372K average (same builders, 1,200-3,200 sqft, 1986+), $279,900-$419,999 listing range. FHA-strong framing with $11,375 down on $325K.
+- **Schools H3 expanded** with student counts/grad rates/SAT — Hendrickson 19201 Colorado Sand Dr 78660 (8/10, 2,106 students, 98% grad, 1170 SAT, US News) + Pflugerville HS 1301 W. Pecan St 78660 (6/10, 1,851 students, 95% grad). Resale-velocity correlation w/ school zone surfaced.
+- **Major Employers H3 EXPANDED** — Amazon Project Charm 3.8M sqft fulfillment center on E. Pecan St (KVUE rezoning + PCDC $250M / 1,000 jobs), **Stone Hill Town Center** (Target/Kohl's/Best Buy anchors + Daiso 8,500 sqft + Miniso 2025 openings — Community Impact Jul 2025), Costco (185 active postings ZipRecruiter), Baylor Scott & White, Samsung Taylor 30 min east via SH-130, PISD largest public-sector employer.
+- **Property Tax & Closing Costs H3** rewritten with full citations — itemized PISD $1.1069 (M&O 0.7869 + I&S 0.3200 Community Impact) + City of Pflugerville $0.5350 FY 2025-26 down from $0.5428 (Community Impact + city.gov) + Travis County ~$0.304 (Truth in Taxation) + ESD 2 $0.092765 (ESD 2 notice). $355K w/ 5% down ($337,250 loan) closing-cost breakdown — 6 itemized line items at 1.82% effective + 5 mo. supply leverage callout for seller concessions.
+- **Templated paragraphs removed:**
+  - "Diverse Income Types" Why-grid card (generic — "hourly, salary, gig economy, self-employed, military") swapped for **PISD School-Zone Strategy** card (Hendrickson 8/10 vs Pflugerville HS 6/10 — same price, different attendance zones depending on Wells Branch Pkwy / Pecan St boundaries).
+  - **VA tile de-templated** — was verbatim w/ georgetown + leander ("Zero down for eligible veterans, active duty, and surviving spouses. No monthly PMI. A significant number of [suburb] residents have military background"); rewrote w/ Pflugerville-specific framing — Camp Mabry ~25 min south, VA-relocating families landing in Hendrickson feeders (Falcon Pointe / Blackhawk), disabled-veteran exemption stack at 1.82% effective rate.
+  - **Older closing-costs paragraph block removed** — superseded by deeper Property Tax & Closing Costs H3 above (5-line `<ul>` removed).
+- **Meta description rewritten** w/ median + Hendrickson rating + named neighborhoods.
+- WebPage dateModified bumped 04-23 → 05-06. All 4 JSON-LD blocks (LocalBusiness/FAQPage/WebPage/BreadcrumbList) validated clean via python json.loads. Sitemap lastmod bumped 04-19 → 05-06. **15 inline source URLs.**
+
 ## 2026-05-06 — Wednesday daily-opt: non-QM CTA fix + Dripping Springs title trim + Leander Round 2 (cluster gap-fixing)
 
 - Swapped 4 non-QM cluster pages' CTAs from external 1003 (untracked) → `/get-preapproved` (tracked landing): non-qm-loans, investor-loans, dscr-loans-fredericksburg-tx, high-net-worth-mortgage. Tue eve only flagged 2/4; today's full sweep caught all 4. HNW preserved Calendly-primary (consultation-first pattern); only secondary CTAs swapped.
