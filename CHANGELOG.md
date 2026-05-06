@@ -1,3 +1,11 @@
+## 2026-05-06 — Wednesday daily-opt: non-QM CTA fix + Dripping Springs title trim + Leander Round 2 (cluster gap-fixing)
+
+- Swapped 4 non-QM cluster pages' CTAs from external 1003 (untracked) → `/get-preapproved` (tracked landing): non-qm-loans, investor-loans, dscr-loans-fredericksburg-tx, high-net-worth-mortgage. Tue eve only flagged 2/4; today's full sweep caught all 4. HNW preserved Calendly-primary (consultation-first pattern); only secondary CTAs swapped.
+- Trimmed dscr-loans-dripping-springs `<title>` 90 → 65 chars (preserves "Wedding Venue STR" wedge while killing SERP-truncation risk). OG/Twitter titles untouched.
+- Leander Round 2 deepening — added h3 "Emerging Communities: Bryson, Caballo Ranch & Leander Springs" + 1 paragraph (~690 chars) covering the three named gap-neighborhoods + CapMetro Red Line Leander Station commute angle. Inserted between Mason Hills and Northline spotlights.
+- Updated `run-logs/gsc-reindex-queue.md` with 6 new URLs for Adam's manual GSC URL Inspection.
+- Re-verify gate confirmed Tue evening's auto-resolutions still hold (about.html NAP, USDA noindex, sitemap USDA removal). Blog cadence trip now 9 days (escalates HIGH on Friday).
+
 ## 2026-05-05 — Leander Round 2 deepened (suburb-editor — slot 4/13)
 
 - **Median refreshed $438K Feb +7.6% YoY → $411K Mar 2026 Redfin (-8.7% YoY)**, $197/sqft — sharp price flip. Steepest YoY drop across the 13-suburb queue this round.

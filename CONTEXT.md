@@ -16,6 +16,8 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-05-06 — Wednesday daily-opt:** Closed funnel-tracking gap on the new non-QM cluster — swapped hero+bottom CTAs on 4 pages (non-qm-loans, investor-loans, dscr-loans-fredericksburg-tx, high-net-worth-mortgage) from external 1003 → `/get-preapproved` so leads route through the tracked landing page. Trimmed dscr-loans-dripping-springs title 90 → 65 chars (SERP-truncation fix; "Wedding Venue STR" wedge preserved). Leander Round 2 deepening: added Bryson / Caballo Ranch / Leander Springs neighborhoods + CapMetro Red Line Leander Station commute angle. 6 URLs added to GSC reindex queue.
+
 **2026-05-05 — Non-QM SEO Expansion (Phases 1–5).** Built a hub-and-spoke non-QM cluster with deep, research-backed copy:
 
 New pages (7):
