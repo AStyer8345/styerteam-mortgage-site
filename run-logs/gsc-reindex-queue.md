@@ -9,3 +9,12 @@ Adam submits these manually via GSC URL Inspection.
 |------------|-----|--------|
 | 2026-04-24 | `https://styermortgage.com/blog/2026-03-27-down-payment-assistance-texas-2026.html` | Title/meta changed, content updated — needs reindex to reflect new title in SERPs |
 | 2026-05-01 | `https://styermortgage.com/blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html` | Content refresh: 2026 FHA limit $571,550 + conventional conforming $832,750 + Austin median $426,220 + tightened CTA — needs reindex |
+| 2026-05-05 | `https://styermortgage.com/non-qm-loans.html` | NEW page — non-QM hub, FAQPage + LoanOrCreditService schema. Submit for indexing. |
+| 2026-05-05 | `https://styermortgage.com/dscr-loans-texas.html` | NEW page — DSCR Texas hub. Submit for indexing. |
+| 2026-05-05 | `https://styermortgage.com/dscr-loans-fredericksburg-tx.html` | NEW page — DSCR Fredericksburg STR. Submit for indexing. |
+| 2026-05-05 | `https://styermortgage.com/dscr-loans-dripping-springs.html` | NEW page — DSCR Dripping Springs wedding-venue STR. Submit for indexing. |
+| 2026-05-05 | `https://styermortgage.com/bank-statement-loans.html` | NEW page — bank-statement self-employed loans. Submit for indexing. |
+| 2026-05-05 | `https://styermortgage.com/high-net-worth-mortgage.html` | NEW page — HNW asset-depletion. Submit for indexing. |
+| 2026-05-05 | `https://styermortgage.com/investor-loans.html` | NEW page — investor loan programs hub. Submit for indexing. |
+| 2026-05-05 | `https://styermortgage.com/loans/usda.html` | NOINDEX added — submit URL Inspection to confirm Google removes from index. |
+| 2026-05-05 | `https://styermortgage.com/about.html` | NAP fix — removed 5900 Balcones, canonical 5718 Sam Houston Circle. Reindex to refresh schema in Google's cache. |

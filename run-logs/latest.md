@@ -225,3 +225,114 @@ PASS — read-only PM verification. Two log files updated (this addendum + lates
 
 ### TOMORROW_PRIORITY (preserved from AM — Wednesday 2026-05-06 rotation)
 Same as AM: Wednesday Suburb Page Deep Dive + AEO. **Leander Round 2** is the priority slot. Re-verify gate carry forwards: about.html mismatch (14th run), USDA cascade, NotebookLM script (20th), how-to-buy USDA count via served HTML.
+
+---
+
+## EVENING ADDENDUM — 2026-05-05 ~23:08 CDT (third same-day invocation)
+
+Third firing of the scheduled task today. Between the PM addendum (08:56 CDT) and now, Adam shipped commit `d031be5` (15:16 CDT) — a major non-QM cluster launch that **resolves two HIGH carry-forward flags I've been re-surfacing for weeks**. Treating this run as a Re-Verify Gate sweep + auto-resolution log + flag the new cluster's gaps for tomorrow.
+
+### What landed in `d031be5` (Adam + another Claude session)
+- 7 new pages (~16k words): non-qm-loans hub, dscr-loans-texas, dscr-loans-fredericksburg-tx, dscr-loans-dripping-springs, bank-statement-loans, high-net-worth-mortgage, investor-loans
+- "Loan Programs" nav dropdown deployed across 66 customer-facing pages
+- `/loans/usda.html` — `<meta name="robots" content="noindex, follow">` added; removed from sitemap, products.html, and nav surfaces
+- about.html NAP fix — 5900 Balcones removed; canonical address now `5718 Sam Houston Circle` site-wide
+- New SEO-AUDIT.md + SEO-PLAN.md committed (319 + 484 lines — drives further work)
+- 5 internal-link wires from index, products, dscr-austin, self-employed, austin-mortgage-rates into the new cluster
+
+### RE-VERIFY GATE — auto-resolutions
+
+| Claim | Prior surfaced | Live state now | Outcome |
+|-------|----------------|----------------|---------|
+| about.html LocalBusiness vs homepage MortgageBroker address mismatch | 13 runs (Apr 27 → today PM) | 0 instances of "5900 Balcones" on live `about.html`; only `5718 Sam Houston Circle` ×3 | **AUTO-RESOLVED** ✅ |
+| `/loans/usda.html` indexable + Adam decision pending | 15 days | `<meta name="robots" content="noindex, follow">` live; URL removed from sitemap.xml | **AUTO-RESOLVED** ✅ (Adam decision: noindex + remove from products/nav, keep page for now) |
+| Site-wide nav USDA dropdown link | 7 days | USDA absent from `index.html` nav grep; "Loan Programs" dropdown present on bee-cave (sample) | **AUTO-RESOLVED** ✅ |
+| how-to-buy-a-house USDA mention count (served HTML) | 6→8 PM | 5 (still 200; cleanup not yet propagated to this page's loan table) | STILL OPEN — narrower flag, MEDIUM not HIGH |
+| Sitemap.xml health | 200 | 200 | ✅ STILL OK |
+| 7 new non-QM pages 200 + in sitemap | new | 7/7 → 200; 7/7 in sitemap with `lastmod 2026-05-05` | ✅ NEW + healthy |
+
+Per Re-Verify Gate runbook: "A recurring issue that's been surfaced 2+ runs but is now resolved live → remove from RECURRING_ISSUES and FLAG_FOR_ADAM. Do NOT carry it forward on muscle memory." Done.
+
+### NEW FINDINGS — non-QM cluster gaps (for Wednesday)
+
+Schema sweep on 4 of 7 new pages:
+
+| Page | FAQ | LoanOrCredit | Breadcrumb | `<p><strong>` AEO | /get-preapproved CTA |
+|------|-----|--------------|------------|-------------------|---------------------|
+| non-qm-loans (hub) | ✅ | ✅ | ✅ | 2 | **0 ❌** |
+| dscr-loans-texas | ✅ | ✅ | ✅ | 9 | 2 ✅ |
+| bank-statement-loans | ✅ | ✅ | ✅ | 1 | 2 ✅ |
+| investor-loans | ✅ | ✅ | ✅ | 15 | **0 ❌** |
+
+**Title length audit (5 of 7 over 65 chars):**
+
+| Page | Title length | Issue |
+|------|--------------|-------|
+| non-qm-loans | 78 | 13 over canonical |
+| dscr-loans-texas | 81 | 16 over |
+| dscr-loans-fredericksburg-tx | 85 | 20 over |
+| **dscr-loans-dripping-springs** | **90** | **25 over — will be SERP-truncated** |
+| bank-statement-loans | 77 | 12 over |
+| high-net-worth-mortgage | 79 | 14 over |
+| investor-loans | 68 | 3 over (deliberate-hook borderline class b) |
+
+These are class-b deliberate-hook titles — the hooks are real differentiators ("Wine Country Airbnb & STR Financing", "Asset Depletion & Jumbo No-Ratio Loans"). Not unilaterally trimming a 4-hour-old freshly-shipped cluster. **Adam-decision flag tomorrow:** are these intentional? If yes, accept as class b. If no, trim Dripping Springs to ≤68 chars at minimum (90 will truncate).
+
+**Meta lengths** all 152-162 chars — within Google display range, fine.
+
+### CHANGES MADE (evening)
+- run-logs/2026-05-05.md — appended this evening addendum
+- run-logs/latest.md — refreshed mirror to include evening addendum
+- run-logs/gsc-reindex-queue.md — added 7 new non-QM URLs for Adam to Request Indexing in GSC
+
+### NO new site HTML edits this evening — re-verify + flag-for-tomorrow only.
+
+### EVENING SELF-REVIEW
+PASS — read-only verification + 3 log files updated. No site HTML touched. Auto-resolutions documented. New cluster gaps flagged for Wednesday. Hard constraints intact.
+
+### TOMORROW_PRIORITY (UPDATED — Wednesday 2026-05-06)
+
+Wednesday rotation = Suburb Page Deep Dive + AEO **PLUS** new non-QM cluster sanity-pass:
+
+1. **Leander Round 2** — primary suburb deep-dive slot per Tuesday's TOMORROW_PRIORITY.
+2. **Non-QM cluster gap-fixing (LOW_RISK only):**
+   - Add /get-preapproved + /refinance-quote CTAs to non-qm-loans.html and investor-loans.html (currently zero — funnel gap on hub pages).
+   - Length-trim **dscr-loans-dripping-springs** title from 90 to ≤68 chars unless Adam flags otherwise.
+3. **Re-verify gate carry forwards (now smaller list):**
+   - NotebookLM script (20th run — still pending the SKILL.md retirement diff apply)
+   - how-to-buy-a-house USDA count cleanup (still 5 mentions on served HTML — propagate USDA removal to that page's loan table)
+   - about.html timeline-date span (91/45 stale — Adam decision still pending)
+   - why-home-prices structural decision (6th recurrence)
+4. **Blog cadence trip persists** — 9 days since last blog post (2026-04-27) by Wednesday. Escalate from MEDIUM to HIGH if still no post by Friday.
+5. **GSC URL Inspection priority list updated** — add the 7 new non-QM URLs (already in queue file).
+6. **Verify the 5 AM-edited title/meta values still propagate post-deploy** — they did this morning; spot-check after Wednesday deploys.
+
+### FLAG_FOR_ADAM (UPDATED — major reductions)
+
+#### CLEARED THIS EVENING (auto-resolved by `d031be5`)
+- ✅ about.html LocalBusiness vs homepage MortgageBroker address mismatch — RESOLVED
+- ✅ /loans/usda.html standalone page Adam decision — RESOLVED (noindex chosen)
+- ✅ Site-wide nav USDA dropdown — RESOLVED (removed)
+- ✅ Sitemap USDA presence — RESOLVED (removed)
+
+#### HIGH (still pending — narrowed)
+- **NotebookLM Step 0 retirement** — `notebook_advisor.py` confirmed missing 20th check tomorrow if not patched. Concrete SKILL.md diff in `run-logs/2026-04-26.md` FLAG_FOR_ADAM.
+- **Run `notebooklm login`** — for master-log NotebookLM source-refresh. Local file IS being appended; just not mirrored.
+- Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config needed.
+- GSC URL Inspection sweep overdue: Hutto, Round Rock, Bee Cave, Lakeway, Georgetown, **+ 7 new non-QM URLs added to queue this evening**.
+
+#### MEDIUM (still pending)
+- Smithville/Elgin/Florence/Jarrell USDA cleanup — Adam decision still pending (now lower risk since site-level USDA removed from nav/products; suburb-page mentions are localized).
+- how-to-buy-a-house USDA loan-table cleanup — propagate USDA removal to the page's loan list (currently 5 mentions served).
+- Blog cadence: 8 days since 2026-04-27 — escalates to HIGH on Friday if no post.
+- about.html timeline-date span ("91 Google + 45 Zillow Reviews") — Adam decision: update or leave as historical milestone.
+- why-home-prices-arent-crashing.html structural decision — 6th recurrence (decision pending).
+- PageSpeed manual check on /get-preapproved + /refinance-quote (pagespeed.web.dev manual UI, quota refreshes Mondays).
+- **NEW:** Non-QM cluster title lengths (5/7 between 77–90 chars). Adam: are these deliberate-hook class b titles? If not, Dripping Springs at 90 will be SERP-truncated.
+
+#### LOW (this week)
+- GSC URL Inspection — Taylor, Smithville, Elgin, Florence, Jarrell — manual Request Indexing (queue file maintained).
+- Bing Webmaster Tools optional setup (~10 min, IndexNow already live).
+
+### EVENING TASK-RUN EMISSION
+Will emit JSONL after this addendum is committed. `resolved=4` (about-NAP, USDA-page-decision, USDA-nav, USDA-sitemap), `findings=2` (non-QM titles + missing CTAs flagged for tomorrow). Status: ok. Note: "Auto-resolved 4 stale flags after Adam shipped non-QM cluster + USDA noindex (commit d031be5); flagged 2 new gaps in the new cluster for Wednesday."
