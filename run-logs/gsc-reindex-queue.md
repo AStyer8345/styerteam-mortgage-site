@@ -18,3 +18,9 @@ Adam submits these manually via GSC URL Inspection.
 | 2026-05-05 | `https://styermortgage.com/investor-loans.html` | NEW page — investor loan programs hub. Submit for indexing. |
 | 2026-05-05 | `https://styermortgage.com/loans/usda.html` | NOINDEX added — submit URL Inspection to confirm Google removes from index. |
 | 2026-05-05 | `https://styermortgage.com/about.html` | NAP fix — removed 5900 Balcones, canonical 5718 Sam Houston Circle. Reindex to refresh schema in Google's cache. |
+| 2026-05-06 | `https://styermortgage.com/non-qm-loans.html` | Hero + bottom CTA swapped from external 1003 → `/get-preapproved` (funnel tracking fix). Reindex. |
+| 2026-05-06 | `https://styermortgage.com/investor-loans.html` | Hero + bottom CTA swapped from external 1003 → `/get-preapproved` (funnel tracking fix). Reindex. |
+| 2026-05-06 | `https://styermortgage.com/dscr-loans-fredericksburg-tx.html` | Hero + bottom CTA swapped from external 1003 → `/get-preapproved` (funnel tracking fix). Reindex. |
+| 2026-05-06 | `https://styermortgage.com/high-net-worth-mortgage.html` | Secondary hero + bottom CTA swapped from external 1003 → `/get-preapproved` (Calendly remains primary; funnel-tracking fix). Reindex. |
+| 2026-05-06 | `https://styermortgage.com/dscr-loans-dripping-springs.html` | Title trimmed 90 → 65 chars (SERP-truncation fix while preserving "Wedding Venue STR" wedge). Reindex. |
+| 2026-05-06 | `https://styermortgage.com/leander-mortgage-lender.html` | Round 2 deepening: added Bryson, Caballo Ranch, Leander Springs neighborhood spotlight + CapMetro Red Line Leander Station commute angle. Force re-crawl. |
