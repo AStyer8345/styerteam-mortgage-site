@@ -156,7 +156,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
         </div>
 
         <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
-          <a href="../realtor-resources.html" style="color: var(--color-blue); text-decoration: none; font-weight: 500;">&larr; Back to partner resources</a>
+          <a href="../realtor-resources.html" style="color: var(--color-gold); text-decoration: none; font-weight: 500;">&larr; Back to partner resources</a>
         </div>
       </div>
     </section>
