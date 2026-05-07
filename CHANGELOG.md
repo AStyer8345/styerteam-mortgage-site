@@ -1,3 +1,12 @@
+## 2026-05-06 PM — daily-opt PM run: non-QM cluster internal-linking sweep
+
+- **3 cluster pages were at 3/6 cross-cluster links** — non-qm-loans.html (the hub), bank-statement-loans.html, high-net-worth-mortgage.html. All missing the same 3 sibling pages (DSCR Texas, DSCR Fredericksburg, DSCR Dripping Springs).
+- Added 3 `<li>` per page into each page's existing Related Programs / Other Programs section, matching each page's voice cadence and the existing investor-loans.html / DSCR-cluster pattern.
+- All 7 non-QM cluster pages now at **6/6 cross-cluster link coverage**.
+- Re-Verify Gate (PM repeat of AM): all 7 cluster CTA hrefs to /get-preapproved still propagated; Dripping Springs title still 65 chars; Leander Round 2 paragraph still live. No drift between AM and PM runs.
+- Live propagation verified post-deploy via curl on all 3 modifications.
+- **Surfaced for Adam:** uncommitted style.css change in working tree (header.scrolled .nav-dropdown a color rules — likely needed nav-restructure follow-up). Left untouched, flagged in run log.
+
 ## 2026-05-06 — Pflugerville Round 2 deepened (suburb-editor — slot 5/13)
 
 - **Median confirmed $355K Mar 2026 Redfin (-10.2% YoY)**, $193/sqft (+8.7% YoY), 5 mo. supply (up from 1.6 mo. last year — strongest buyer-leverage shift in the queue).

@@ -1,3 +1,15 @@
+## 2026-05-06 PM — Cluster Internal-Linking Sweep + Netlify Quote-Style Rewrite (21st Dead NotebookLM Run)
+
+### Patterns
+- **Cluster internal-linking audits should use an N×N matrix.** A 2-deep nested grep (each page × each sibling) on a content cluster produces an N×N coverage matrix in <2s and makes gaps visually obvious. Today's matrix on the 7-page non-QM cluster surfaced 3 pages at 3/6 (the hub plus two leaf pages), all missing the same 3 DSCR siblings (Texas/Fredericksburg/Dripping Springs). Without the matrix view, the gap was invisible — each page's individual Related list "looked complete." Reusable pattern for any future content cluster (suburb pages, loan-type pages, blog tag clusters).
+- **Hub pages are the highest-priority candidates for cross-link gap closure.** non-qm-loans.html is the cluster's routing center. A hub at 3/6 cross-links sends readers to "DSCR Austin" but never tells them about the 3 geo-targeted DSCR pages — losing both the human funnel AND PageRank distribution. Hub gaps should be flagged HIGHEST priority within any cluster sweep.
+- **Netlify rewrites BOTH `.html` stripping AND attribute quote-style (double → single) on internal hrefs.** Earlier learning (2026-04-23) flagged `.html` stripping; today's PM verification caught the additional quote-style flip. Source HTML: `href="/dscr-loans-texas.html"`. Served HTML: `href='/dscr-loans-texas'`. Live re-verify greps must be tolerant to both. Path-agnostic regex pattern: `href=['\"]/<page>(\.html)?['\"#?]` works for both source and served.
+- **PM-run pattern: pull TOMORROW_PRIORITY items forward when concrete + reversible.** Today's PM run advanced Thursday's "Internal Linking + Funnel Flow" rotation by completing the cluster cross-linking half (the funnel trace half requires Chrome — not available in scheduled context, deferred). Same pattern as 2026-04-29 PM (AEO insertion) and 2026-04-30 PM (bookkeeping commit). PM run produces correct framing for Thursday's AM run, which itself is valuable.
+- **Working-tree style.css orphan change preserved untouched.** Found uncommitted `header.scrolled .nav-dropdown a` color/hover rules in working tree — clearly Adam's pending fix from after the d031be5 nav-restructure (otherwise dropdown menu items become invisible on scrolled-header state). Per CLAUDE.md "Touch only what the request requires," NOT mine to commit. Used `git add <specific files>` instead of `git add -A` to avoid sweeping it in. Surfaced in FLAG_FOR_ADAM MEDIUM. Pattern: when a scheduled task finds orphan working-tree changes, use file-specific staging and surface in run log; do not auto-commit other-author work.
+- **NotebookLM 21st consecutive dead run.** Same pattern. SKILL.md retirement diff still pending Adam apply. The carry-forward NOTEBOOK_INSIGHTS continues to do the work; the failed-script call adds noise to every run log.
+
+---
+
 ## 2026-05-04 — Competitive Week 9: First Leander Top-10 + Two New Refi Threats + Bee Cave 31 Days Unindexed
 
 ### Patterns

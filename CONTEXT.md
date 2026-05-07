@@ -16,6 +16,8 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-05-06 PM — daily-opt PM run:** Non-QM cluster internal-linking sweep. 3 of 7 cluster pages were at 3/6 cross-cluster links (non-qm-loans hub, bank-statement-loans, high-net-worth-mortgage) — all missing the 3 DSCR cluster siblings (Texas / Fredericksburg / Dripping Springs). Added 3 `<li>` per page to existing Related sections, mirroring investor-loans.html pattern. All 7 cluster pages now at 6/6 cross-cluster link coverage. Re-Verify Gate (PM repeat of AM) confirmed no drift. Surfaced uncommitted style.css change (nav-dropdown scrolled-state color fix) for Adam's review.
+
 **2026-05-06 — Wednesday daily-opt:** Closed funnel-tracking gap on the new non-QM cluster — swapped hero+bottom CTAs on 4 pages (non-qm-loans, investor-loans, dscr-loans-fredericksburg-tx, high-net-worth-mortgage) from external 1003 → `/get-preapproved` so leads route through the tracked landing page. Trimmed dscr-loans-dripping-springs title 90 → 65 chars (SERP-truncation fix; "Wedding Venue STR" wedge preserved). Leander Round 2 deepening: added Bryson / Caballo Ranch / Leander Springs neighborhoods + CapMetro Red Line Leander Station commute angle. 6 URLs added to GSC reindex queue.
 
 **2026-05-05 — Non-QM SEO Expansion (Phases 1–5).** Built a hub-and-spoke non-QM cluster with deep, research-backed copy:
