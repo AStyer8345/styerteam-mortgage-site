@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/JS on Netlify — no framework, no CMS. 75+ public pages live (homepage, loan pages, 24 suburb SEO pages, 5 rate-check city pages, 10 rate-shopper blog posts, resource/guide pages, blog, calculators, realtor hub, plus a new 7-page non-QM cluster as of 2026-05-05).
+Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/JS on Netlify — no framework, no CMS. 75+ public pages live (homepage, loan pages, 24 suburb SEO pages, 5 rate-check city pages, 10 rate-shopper blog posts, resource/guide pages, blog, calculators, realtor hub, plus the 7-page non-QM cluster as of 2026-05-05).
 
 ## Repo
 
@@ -16,31 +16,9 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-05-06 PM — daily-opt PM run:** Non-QM cluster internal-linking sweep. 3 of 7 cluster pages were at 3/6 cross-cluster links (non-qm-loans hub, bank-statement-loans, high-net-worth-mortgage) — all missing the 3 DSCR cluster siblings (Texas / Fredericksburg / Dripping Springs). Added 3 `<li>` per page to existing Related sections, mirroring investor-loans.html pattern. All 7 cluster pages now at 6/6 cross-cluster link coverage. Re-Verify Gate (PM repeat of AM) confirmed no drift. Surfaced uncommitted style.css change (nav-dropdown scrolled-state color fix) for Adam's review.
+**2026-05-07 AM — daily-opt Thursday rotation (Internal Linking + Funnel Flow):** Closed the funnel-CTA gap on the loan programs hub (products.html) — same hero+bottom CTA swap pattern that was applied to 4 cluster pages on 2026-05-06 but missed on the parent hub. Hero CTA + bottom "Start Your Pre-Approval" now route to /get-preapproved (tracked landing page) instead of raw 1003 URL. `target="_blank"` and `rel="noopener"` removed on internal hero link per 2026-05-06 learning. Programmatic funnel trace via curl + grep verified end-to-end (homepage → /get-preapproved → /thank-you all firing correctly at HTTP level — replaces "Chrome unavailable" carry-forward). Re-Verify Gate auto-resolved a stale framing in the loanos-clone backlog: claim "/prequal.html is noindexed orphan" was true 2026-03-28 but no longer — Disallow entry was removed during AEO crawler allowlist expansion; /prequal.html is HTTP 200 and indexable. Backlog wording corrected within same run. Loanos-clone push needed one clean rebuild after Next.js pre-push hook hit a stale `.next/export/500.html` rename ENOENT.
 
-**2026-05-06 — Wednesday daily-opt:** Closed funnel-tracking gap on the new non-QM cluster — swapped hero+bottom CTAs on 4 pages (non-qm-loans, investor-loans, dscr-loans-fredericksburg-tx, high-net-worth-mortgage) from external 1003 → `/get-preapproved` so leads route through the tracked landing page. Trimmed dscr-loans-dripping-springs title 90 → 65 chars (SERP-truncation fix; "Wedding Venue STR" wedge preserved). Leander Round 2 deepening: added Bryson / Caballo Ranch / Leander Springs neighborhoods + CapMetro Red Line Leander Station commute angle. 6 URLs added to GSC reindex queue.
-
-**2026-05-05 — Non-QM SEO Expansion (Phases 1–5).** Built a hub-and-spoke non-QM cluster with deep, research-backed copy:
-
-New pages (7):
-- `non-qm-loans.html` (hub)
-- `dscr-loans-texas.html`
-- `dscr-loans-fredericksburg-tx.html`
-- `dscr-loans-dripping-springs.html`
-- `bank-statement-loans.html`
-- `high-net-worth-mortgage.html`
-- `investor-loans.html`
-
-Site-wide changes:
-- Nav restructured with **Loan Programs dropdown** across 66 files
-- USDA noindexed (page kept; removed from nav and from `products.html` card grid)
-- about.html NAP corrected (canonical: 5718 Sam Houston Circle)
-- Internal hub-and-spoke linking wired into `index.html`, `products.html`, `dscr-loan-austin-tx.html`, `self-employed-mortgage-austin.html`, `austin-mortgage-rates.html`
-- Sitemap updated with 7 new URLs (hub priority 0.9, spokes 0.8)
-
-Key compliance/voice decisions:
-- Skipped `dscr-loans-nationwide.html` — Adam is TX-licensed only; out-of-state investors land on `dscr-loans-texas.html`
-- HNW page voice = warm conversational (consistent with site voice), not cold private-banking
+**Surfaced for Adam (still):** Uncommitted style.css change in working tree (Adam's pending nav-dropdown scrolled-state fix from after the d031be5 nav-restructure). Left untouched.
 
 ## Site Structure (key categories)
 
@@ -55,17 +33,22 @@ Key compliance/voice decisions:
 | Resources | first-time-buyer-guide, glossary, how-to-buy, etc. |
 | Deprioritized | usda (noindex, kept live) |
 
-## Open Items (Phase 5 follow-ups)
+## Open Items
 
 | Item | Priority |
 |------|----------|
+| Blog cadence: 10 days since last post (2026-04-27). Friday escalates HIGH at Day 11. | HIGH (Friday) |
+| how-to-buy-a-house USDA loan-table cleanup (5 mentions, no drift since 2026-05-03) | HIGH (carry) |
+| products.html 7 in-card "Get Pre-Approved" buttons still route to raw 1003 (Adam decision: unify or preserve) | MEDIUM |
+| Site-wide footer `/prequal.html` link in 20 pages — corrected framing today: parity gap not orphan cleanup | LOW (revised) |
+| Uncommitted style.css change in working tree (Adam's pending fix) | MEDIUM |
+| Smithville/Elgin/Florence/Jarrell USDA cleanup pending | MEDIUM |
+| about.html timeline-date span (91/45 stale) | MEDIUM |
+| why-home-prices structural decision (6th recurrence) | MEDIUM |
+| NotebookLM SKILL.md retirement diff (22nd dead run) — diff drafted 2026-04-26, awaiting Adam apply | HIGH (Adam queue) |
+| GSC URL Inspection sweep (Hutto, Round Rock, Bee Cave, Lakeway, Georgetown, Leander, + products.html today) | HIGH (Adam) |
+| Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config | HIGH (Adam) |
 | Verify NAP fix across remaining LocalBusiness/Person schemas (audit for additional 5900 Balcones references) | HIGH |
-| Submit 7 new non-QM URLs to GSC + request indexing | HIGH |
-| Test "Loan Programs" nav dropdown on real mobile device | HIGH |
-| Add FAQ content + FAQPage schema to about.html and calculator hub pages | MEDIUM |
-| Add blog post(s) driving to new non-QM pages where contextual | MEDIUM |
-| As Adam closes non-QM deals, add case-study/scenario blocks to spoke pages (EEAT) | LOW |
-| Existing carry-forwards: Bee Cave indexing, Leander #6→top 4, Refinance page upgrade, NotebookLM SKILL.md retirement | (per prior CONTEXT) |
 
 ## Session Rules
 
