@@ -104,6 +104,40 @@
     }
   }
   </script>
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How often is the blog updated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "New posts go up most weeks, with rate updates published whenever the market moves enough to matter. Topics rotate between Austin market commentary, loan program explainers, and answers to questions Adam fields from buyers and realtors that week."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who writes the blog content?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Adam Styer writes everything personally. No ghostwriters, no agency, no rewrites of someone else's article. The takes, the rate commentary, and the loan-program breakdowns come from a working mortgage broker — not a marketing team."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get notified about new posts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The closest thing is rate alerts — sign up at /rate-alert.html and you'll get notified when rates move on a target you set, plus the occasional market update. There's no general blog email list, but rate alerts catch the posts that matter most."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -309,6 +343,43 @@
             <li><a href="/mortgage-broker-vs-bank.html">Mortgage Broker vs. Bank: Which Is Right for You?</a></li>
           </ul>
         </noscript>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container content-narrow">
+        <h2>Blog FAQ</h2>
+        <div class="accordion">
+
+          <div class="accordion-item">
+            <button class="accordion-button" aria-expanded="false">
+              How often is the blog updated?
+            </button>
+            <div class="accordion-content">
+              <p>New posts go up most weeks, with rate updates published whenever the market moves enough to matter. Topics rotate between Austin market commentary, loan program explainers, and answers to questions Adam fields from buyers and realtors that week.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-button" aria-expanded="false">
+              Who writes the blog content?
+            </button>
+            <div class="accordion-content">
+              <p>Adam Styer writes everything personally. No ghostwriters, no agency, no rewrites of someone else's article. The takes, the rate commentary, and the loan-program breakdowns come from a working mortgage broker — not a marketing team.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-button" aria-expanded="false">
+              Can I get notified about new posts?
+            </button>
+            <div class="accordion-content">
+              <p>The closest thing is rate alerts — <a href="/rate-alert.html">sign up here</a> and you'll get notified when rates move on a target you set, plus the occasional market update. There's no general blog email list, but rate alerts catch the posts that matter most.</p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
