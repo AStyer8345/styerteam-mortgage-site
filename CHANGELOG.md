@@ -1,3 +1,32 @@
+## 2026-05-08 — Weekly blog editor refresh
+
+- **Refreshed `blog/2026-04-04-austin-housing-market-report-april-2026.html`** — highest-leverage CTR target from GSC 2026-04-18 export: 7,249 impressions / 5 clicks (0.07% CTR) at position 4.05.
+- Title rewrite: `Austin Housing Market Report — April 2026 | Adam Styer | NMLS #513013` → `Austin Housing Market: 16K+ Listings, $445K Median, 6.37% Rates | Adam Styer`. Concrete-number CTR hook; 76 chars.
+- Meta description rewrite to lead with verified April 2026 numbers + LO voice.
+- Body data corrections (with inline source citations):
+  - Median sale price: vague `$412–$425K` → **$445,000** (Apr 2026, Unlock MLS / ABoR)
+  - Active listings: `10,000+` → **16,064** (late Apr 2026)
+  - 30-year rate: `mid-to-upper 6%` → **6.37%** (Freddie Mac PMMS, week ending May 7, 2026)
+  - DOM: `55–70 days` → **~82 days**
+  - Sold-to-list ratio added (97.5%); price-reduction share added (48.5%)
+  - YTD closed sales (+5.2% YoY, 9,311 cumulative through April) added
+- Author bar updated: "Published April 4, 2026 · Updated May 8, 2026 with end-of-April MLS data and current PMMS rates".
+- Hero subtitle rewritten to lead with concrete data instead of "tariff shock" framing.
+- Table refreshed: 6 metrics × YoY columns + inline sources footnote (Unlock MLS, Freddie Mac PMMS).
+- FAQPage JSON-LD schema fully rewritten (6 Q&As) to match new data; visible accordion FAQ rewritten to match schema verbatim with inline source links.
+- CTA tightened: "See What You Can Afford in April's Market" → "Real Numbers at Today's 6.37%"; sub-CTA in body rewritten to reference 6.37%.
+- Schema `dateModified` bumped 2026-04-04 → 2026-05-08; sitemap.xml `lastmod` bumped to match.
+- URL slug + H1 preserved to protect existing page-1 ranking.
+- Title lint passed (`grep "<title>" blog/*.html | grep -v "Adam Styer"` returns empty).
+- Queued for GSC URL Inspection in `run-logs/gsc-reindex-queue.md`.
+- Editor queue updated; logged a follow-up note that monthly-series cadence may need a NEEDS ADAM decision (April post stays canonical until/unless a May entry is created).
+
+Sources cited inline in the post:
+- [Unlock MLS / ABoR Q1 2026 Central Texas Housing Report](https://www.unlockmls.com/news/march-q1-2026-central-texas-housing-report)
+- [Freddie Mac PMMS](https://www.freddiemac.com/pmms)
+
+---
+
 ## 2026-05-07 PM — daily-opt same-day re-run (no edits)
 
 - Sitemap 200 ✅, all 4 funnel pages 200, conversion tracking marker counts unchanged from AM (11/7/4/13).
