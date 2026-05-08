@@ -65,6 +65,8 @@
 
 Items auto-appended by scheduled remote agents land here. Glance weekly.
 
+- [ ] **FLAG 2026-05-08 — Phase 2 blocked: Phase 1f (Dripping Springs) pre-check failed.** Phase 1f status is still `pending` in PHASES.md — it must reach `status: completed` before Phase 2 can execute. Phase 2 trigger fired today (scheduled 2026-05-08) but bailed without making any content changes. Root cause: Phase 1a (Round Rock) was never executed, blocking the entire Phase 1 chain (1a → 1b → 1c → 1d → 1e → 1f — all six still `pending`). Action required: decide whether to (a) run Phase 1a–1f in sequence, updating PHASES.md to `completed` after each, then re-trigger Phase 2; OR (b) override the pre-check and manually authorize Phase 2 to run independently (Phase 2 content — H2 variation, kill-list merge, llms.txt — does not technically depend on Phase 1 page rebuilds, so independent execution is safe if Adam chooses it).
+
 - [ ] **Bing Webmaster Tools — optional manual setup (2026-04-18 added).** IndexNow is already live (keys + /acd320ce4aaac882bfb455892bdcf208.txt + submitter script + scheduled triggers). IndexNow handles the indexing *mechanism* automatically. Bing Webmaster Tools gives you the *dashboard* — crawl stats, index coverage, manual URL submit, query reports, etc. Not required, but useful observability. Setup, ~10 min:
   1. Go to https://www.bing.com/webmasters → sign in with a Microsoft account
   2. Add site: `https://styermortgage.com`
