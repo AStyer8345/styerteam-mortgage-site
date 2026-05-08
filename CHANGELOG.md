@@ -1,3 +1,11 @@
+## 2026-05-07 PM — daily-opt same-day re-run (no edits)
+
+- Sitemap 200 ✅, all 4 funnel pages 200, conversion tracking marker counts unchanged from AM (11/7/4/13).
+- Re-verified AM products.html commit (`cf905c9`) is still propagated on Netlify — line 236 hero + line 867 bottom both `/get-preapproved`, no drift.
+- Re-Verify Gate run on 9 persistent claims; 5 STILL OK, 4 STILL OPEN with no drift since AM (USDA on how-to-buy live=5/local=5, blog cadence Day 10, NotebookLM script 23rd missing, style.css working-tree pre-existing change).
+- Zero file modifications this run — correct outcome since AM rotation already completed all actionable ZERO/LOW-RISK items. Backlog has nothing else pickable; remaining open items are Adam-decision MEDIUM/HIGH.
+- TOMORROW_PRIORITY (Friday Content Planning + AEO Review) re-asserted from AM run unchanged.
+
 ## 2026-05-07 — Buda Round 2 deepened (suburb-editor — slot 6/13)
 
 - **Median confirmed $382,337 Feb 2026 Houzeo (-0.21% YoY)** + rolling 30-day ~$339K April 2026 Orchard (-11.3% YoY); **months of supply 5.1 (April 2026) up from 2.7 a year ago — strongest buyer-leverage shift since Pflugerville**. Buda is cooling faster than the Hays metro average.

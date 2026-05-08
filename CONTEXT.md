@@ -16,9 +16,11 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-05-07 AM — daily-opt Thursday rotation (Internal Linking + Funnel Flow):** Closed the funnel-CTA gap on the loan programs hub (products.html) — same hero+bottom CTA swap pattern that was applied to 4 cluster pages on 2026-05-06 but missed on the parent hub. Hero CTA + bottom "Start Your Pre-Approval" now route to /get-preapproved (tracked landing page) instead of raw 1003 URL. `target="_blank"` and `rel="noopener"` removed on internal hero link per 2026-05-06 learning. Programmatic funnel trace via curl + grep verified end-to-end (homepage → /get-preapproved → /thank-you all firing correctly at HTTP level — replaces "Chrome unavailable" carry-forward). Re-Verify Gate auto-resolved a stale framing in the loanos-clone backlog: claim "/prequal.html is noindexed orphan" was true 2026-03-28 but no longer — Disallow entry was removed during AEO crawler allowlist expansion; /prequal.html is HTTP 200 and indexable. Backlog wording corrected within same run. Loanos-clone push needed one clean rebuild after Next.js pre-push hook hit a stale `.next/export/500.html` rename ENOENT.
+**2026-05-07 PM — daily-opt same-day re-run after AM rotation:** No edits this run. Re-verified the AM products.html hero+bottom CTA swap is still propagated on Netlify (line 236 hero + line 867 bottom both `/get-preapproved`, no drift). Programmatic funnel trace re-passed: sitemap 200, all 4 funnel pages 200, 11/7/4/13 tracking marker counts unchanged from AM. Re-Verify Gate run on 9 persistent claims — 5 STILL OK, 4 STILL OPEN with no drift (USDA on how-to-buy live=5/local=5, blog cadence Day 10, NotebookLM script 23rd missing, style.css working-tree). Same-day PM run produced no new edits — correct outcome since AM completed all actionable ZERO/LOW-RISK items. Friday rotation priorities re-asserted from AM.
 
-**Surfaced for Adam (still):** Uncommitted style.css change in working tree (Adam's pending nav-dropdown scrolled-state fix from after the d031be5 nav-restructure). Left untouched.
+**2026-05-07 AM — Thursday rotation (Internal Linking + Funnel Flow):** products.html hero + bottom CTAs swapped to `/get-preapproved` (matches 2026-05-06 cluster pattern). Programmatic funnel trace verified end-to-end. Re-Verify Gate auto-resolved stale "/prequal.html is noindexed orphan" framing — page is HTTP 200 + indexable; backlog corrected.
+
+**Surfaced for Adam (still):** Uncommitted style.css change in working tree (Adam's pending nav-dropdown scrolled-state fix). Left untouched both AM and PM.
 
 ## Site Structure (key categories)
 
