@@ -1147,3 +1147,13 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - **Sitemap updated** — 7 new URLs added with 2026-05-05 lastmod (hub priority 0.9, spokes 0.8). USDA URL removed since noindexed.
 - **Skipped:** `dscr-loans-nationwide.html`. Adam is TX-licensed only; CFPB/UDAAP risk on state-level licensing claims. Out-of-state investors find `dscr-loans-texas.html` instead.
 - **Voice decision:** HNW page = warm conversational (consistent with rest of site), not cold private-banking tone. Sophisticated borrowers can read sophistication without being talked down to.
+
+## 2026-05-08 — daily-opt Friday (Content Planning + AEO Review)
+
+- Re-Verify Gate auto-resolved 1 stale carry: `how-to-buy-a-house USDA cleanup` — both URL variants (`-2026.html` and `.html`) return HTTP 404, page does not exist on site or in repo, phantom for 5+ runs.
+- Self-review correction: initial auto-resolution of `about.html 91/45` claim under date-span framing was wrong. Real claim is GBP/Zillow review-count breakdown (lines 576, 755-756) — sums to 136+ stated elsewhere (internally consistent) but may drift vs live counts. Tagged UNVERIFIED:2026-05-08; stays in FLAG_FOR_ADAM (Adam's GBP/Zillow access required).
+- Audited all 31 blog posts for funnel-CTA presence (path-agnostic grep covers absolute + relative); 31/31 pass.
+- AEO sample audit on `2026-04-27-why-home-prices` + `2026-04-17-should-i-refinance`. Re-framed "why-home-prices structural decision" carry: post HAS `/get-preapproved` via relative `../get-preapproved`; actual gap is missing `/refinance-quote` + relative-vs-absolute path inconsistency.
+- Blog cadence Day 11 reset per GOALS.md week-of-04-20 directive ("No new content on any site this week"); will re-evaluate Mon 2026-05-11 GOALS refresh.
+- Conversion programmatic trace re-passed (15/21/5/14 markers across `/`, `/get-preapproved`, `/refinance-quote`, `/thank-you`); sitemap 200; products.html hero+bottom CTAs still propagated.
+- 0 file modifications; self-review PASS; NotebookLM script 24th miss.
