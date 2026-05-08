@@ -1,3 +1,26 @@
+## 2026-05-08 — Hutto suburb page Round 2 (suburb editor task)
+
+- **`hutto-mortgage-lender.html`** — Round 2 deepening (slot 7 of 13).
+- Median refreshed: Feb $340K (-9.3% YoY) → **$366,166 Mar 2026 Redfin (+1.1% YoY)** sharp flip from negative; $/sqft $170 (-7.6% YoY); 3.9 mo supply Apr 2026 (Neuhaus Realty Group).
+- **Star Ranch correction (Crestline/MorningStar pattern):** Round 1 said "Clark Wilson Builder is sold out" with HISD-only feeders. Reality: 1,000-acre golf community building since 2003, 7 active/recent builders (Meritage, Perry, KB Home, Wilshire, Pacesetter, Streetman, Clark Wilson) + Villas at Star Ranch + condos/townhomes/SFRs, 1,402–4,150 sqft, $250K–$400K range. **Critical school-zoning correction: community straddles Gattis School Road — homes north feed HISD (Kerley/Hutto MS/Hutto HS); homes south feed Pflugerville ISD.** Source: Star Ranch Real Estate, Pacesetter, Zillow.
+- 2 new neighborhood spotlights added:
+  - **Brooklands (78634)** — 203 Pinkerton Drive, master-planned, multi-builder: CastleRock from $295,990 (active), Gray Point Homes, Pacesetter Homes; Chesmar sold out. 1,297–2,730 sqft, 0.1–0.2 acre lots. Sources: Jome master-planned profile, CastleRock at NewHomeSource.
+  - **Lookout at Brushy Creek (78634)** — premier custom community SE Hutto on 1–8 acre lots near FM 1660 + Brushy Creek; lake-fronted; ~3,300 sqft avg; built 1999–2008 with sporadic infill custom. Upper tier crosses 2026 conforming line $832,750 → jumbo callout. Sources: Bramlett Partners, Austin Real Estate Homes Blog.
+- Riverwalk refreshed: 12-month median $379,154 (+4% YoY), D.R. Horton + Continental + Centex builders, started 2006, 1,295–2,999 sqft, 0.13–0.35 ac lots.
+- Emory Crossing updated: Yardly Emory Crossing Taylor Morrison "Coming Soon" + David Weekley townhomes "next phase coming soon" (sources: Taylor Morrison, David Weekley News, Jome).
+- 2 new H3 sections (~110 lines):
+  - **Hutto Schools** — Hutto HS 6/10 GreatSchools, B- Niche, 2,133 students, 16:1 student-teacher, 73% minority, 40% econ disadvantaged, 94% grad rate, 32% AP, PLTW + GT, ranked 1,104th TX. HISD 10,035 students PK-12 / 11 schools. **$522M bond approved 2023 zero-tax-rate-increase.** PISD-zoning callout for Star Ranch south-of-Gattis.
+  - **Hutto Major Employers EXPANDED** — Samsung Taylor $17B fab targeting 1,500 perm employees by EOY 2026 + 2nm risk production at 50K WSPM + 1,500+ ASML/Lam/KLA engineers during ramp; **Hutto Megasite 1,400 acres / $18M spine road complete** unlocking PowerCampus by Skybox+Prologis (600MW, up to 6 buildings, 3.9M sqft, **$10B+ minimum capital investment**) + Project Strat3 by Live Oak+Riverside (52-acre Samsung supply chain) + Project Flex by Headwater (242K sqft, 3 shallow-bay buildings) + Hutto Mega TechCenter by Titan (188 acres / 2M sqft); Tesla 35K sqft service/distribution; HISD 10,035 students; H-E-B Plus #696 at 5000 Gattis School Rd.
+- Property Tax & Closing Costs promoted from buried paragraph to dedicated H3 section: full cited stack HISD $1.2052 + City of Hutto $0.385928 FY 2025-26 + WilCo $0.413776 FY 2025-26 (+3.4%) ≈ $2.005 nominal / 1.93%–2.00% effective per Ownwell. 6-line itemized closing-cost example at $366K w/ 5% down ($347,858 loan): $8.5K-$10.5K + jumbo 6-12mo PITI reserve callout. **3.9-mo-supply seller-concessions leverage callout** (didn't exist when supply was 1.6 mo a year ago).
+- FAQ schema rewritten: "What is the average home price" → "What is the median home price" (Mar 2026 + builder corrections + Gattis School Road note); "How does new construction financing work" rewritten Hutto-specific (removed inaccurate "Lennar active" claim from Round 1 — current research shows CastleRock/Gray Point/Pacesetter active, not Lennar); "What first-time buyer programs are available" rewritten with WilCo income limits $99K-$118K + $12,810 FHA-3.5% math; **"How does Hutto compare to Round Rock" Q swapped for "What is the property tax rate" Q** (biggest Hutto buyer concern). FAQ accordion fully synced verbatim.
+- VA tile de-templated: was generic "Hutto's growing veteran population" → Camp Mabry 30 min SW + Joint Base San Antonio 75 min S + **100% disabled-veteran homestead exemption math: ~$7,300/year at 1.93%-2.00% effective on $366K median**.
+- DPA tile de-templated: WilCo income limits $99K-$118K + cooler 3.9-mo-supply market = seller-concessions stack on top of DPA.
+- LocalBusiness schema description rewritten with 78634 + 5 named neighborhoods + full tax stack.
+- WebPage dateModified bumped 04-25 → 05-08. Meta description rewritten with median + 5 neighborhoods.
+- All 4 JSON-LD blocks (LocalBusiness/FAQPage/WebPage/BreadcrumbList) validated clean via python json.loads.
+- Sitemap lastmod bumped 04-19 → 05-08.
+- 22 unique source URLs across the page.
+
 ## 2026-05-08 — Weekly blog editor refresh
 
 - **Refreshed `blog/2026-04-04-austin-housing-market-report-april-2026.html`** — highest-leverage CTR target from GSC 2026-04-18 export: 7,249 impressions / 5 clicks (0.07% CTR) at position 4.05.
