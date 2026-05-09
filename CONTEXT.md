@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-05-08 — Suburb editor Round 2 slot 7 (Hutto):** `hutto-mortgage-lender.html` deepened. Median refresh **Feb $340K (-9.3% YoY) → $366,166 Mar 2026 Redfin (+1.1% YoY)** — sharp flip. **Star Ranch correction surfaced** (Crestline/MorningStar pattern): community straddles Gattis School Road = HISD north / **PISD south** school district split that Round 1 missed; 7 active/recent builders not "Clark Wilson sold-out" only. 2 new neighborhood spotlights: Brooklands 78634 (CastleRock from $295,990 + Gray Point + Pacesetter; Chesmar sold out) + Lookout at Brushy Creek 78634 (1–8 acre custom lots, jumbo callout for upper tier crossing $832,750). Riverwalk refreshed with 12-mo $379,154 +4% YoY + D.R. Horton/Continental/Centex builder list. 2 new H3s: Hutto Schools (6/10 + B- + 2,133 students + 94% grad + 32% AP + PLTW + GT, $522M HISD bond zero-tax-rate-increase callout, PISD-zoning callout for Star Ranch south-of-Gattis); Hutto Major Employers EXPANDED (Samsung Taylor 1,500 EOY 2026 + 2nm + 50K WSPM; **Hutto Megasite 1,400 acres / $18M spine road complete** = PowerCampus 600MW $10B+ + Strat3 + Flex + Mega TechCenter; Tesla 35K sqft; H-E-B Plus #696). Property Tax & Closing Costs promoted to dedicated H3 with full cited stack ($2.005 nominal / 1.93%–2.00% effective) + 6-line $366K closing-cost itemization + 3.9-mo-supply seller-concessions leverage callout. FAQ "Hutto vs Round Rock" Q swapped for property-tax Q. VA tile de-templated (Camp Mabry/JBSA + 100% disabled-vet exemption ~$7,300/yr math). DPA tile de-templated (WilCo income limits $99K–$118K). All 4 JSON-LD blocks validated clean. Sitemap bumped. 22 source URLs.
+**2026-05-09 (Saturday — no-rotation drift sweep):** Re-Verify Gate + sitemap + conversion + Step 4B sweep + Adam Friday-commit propagation check at 24h. **Zero edits to repo.** All 11 carries drift-free; sitemap 200; conversion 9/10 across 4 pages with all critical tokens; Adam's 2 Friday commits (April housing post 0230947, Hutto Round 2 3daf874) holding live with full CTA inventory; SEO/SEM ZERO/LOW_RISK queue still empty; 31/31 blog CTA coverage holds; NotebookLM script **26th consecutive missing**. Saturday/Sunday no-rotation by design — Monday 2026-05-11 resumes Schema + Google Ads + AEO Entity rotation and refreshes GOALS.md.
 
 **Surfaced for Adam (still):** Uncommitted style.css change in working tree (Adam's pending nav-dropdown scrolled-state fix). Untouched.
 
@@ -43,8 +43,8 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Uncommitted style.css change in working tree (Adam's pending nav-dropdown scrolled-state fix) | MEDIUM |
 | Smithville/Elgin/Florence/Jarrell USDA cleanup pending | MEDIUM |
 | about.html "91 Google + 45 Zillow" review breakdown (UNVERIFIED:2026-05-08; Adam GBP/Zillow access needed) | MEDIUM |
-| 2026-04-27-why-home-prices CTA structure: relative `../get-preapproved` + missing `/refinance-quote` (re-framed 2026-05-08, 7th recurrence) | MEDIUM |
-| NotebookLM SKILL.md retirement diff — diff drafted 2026-04-26, **24 consecutive dead runs**, Adam apply queue | HIGH (Adam queue) |
+| 2026-04-27-why-home-prices CTA structure: relative `../get-preapproved` + missing `/refinance-quote` (re-framed 2026-05-08, 8th recurrence) | MEDIUM |
+| NotebookLM SKILL.md retirement diff — diff drafted 2026-04-26, **26 consecutive dead runs**, Adam apply queue | HIGH (Adam queue) |
 | GSC URL Inspection sweep (Hutto, Round Rock, Bee Cave, Lakeway, Georgetown, Leander, products.html) | HIGH (Adam) |
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config | HIGH (Adam) |
 | Verify NAP fix across remaining LocalBusiness/Person schemas (audit for additional 5900 Balcones references) | HIGH |

@@ -1209,3 +1209,13 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Blog cadence Day 11 reset per GOALS.md week-of-04-20 directive ("No new content on any site this week"); will re-evaluate Mon 2026-05-11 GOALS refresh.
 - Conversion programmatic trace re-passed (15/21/5/14 markers across `/`, `/get-preapproved`, `/refinance-quote`, `/thank-you`); sitemap 200; products.html hero+bottom CTAs still propagated.
 - 0 file modifications; self-review PASS; NotebookLM script 24th miss.
+
+## 2026-05-09 — daily-opt Saturday (no-rotation drift sweep)
+
+- Saturday no-rotation by design: Re-Verify Gate + sitemap + conversion + Step 4B sweep + Adam Friday-commit propagation check at 24h. Zero file modifications to repo.
+- Sitemap 200; conversion 9/10 across `/`, `/get-preapproved`, `/refinance-quote`, `/thank-you` with all critical tokens (generate_lead, purchase_prequal/refi_quote, TCPA, Netlify Functions wired, GTM, dataLayer).
+- Re-Verify Gate: 11 carries checked — 6 STILL OK, 4 STILL OPEN (products.html 7 in-card 1003, working-tree style.css, NotebookLM script, why-home-prices CTA structure 8th recurrence), 1 STILL UNVERIFIED (about.html 91/45). No drift, no auto-resolutions.
+- Adam's 2 Friday commits sanity-checked at 24h: `0230947` April housing post (3 `/get-preapproved` + 1 `/refinance-quote`), `3daf874` Hutto Round 2 (4 `/get-preapproved`). Both holding live, sitemap lastmod fresh.
+- Blog CTA coverage 31/31 ✅; SEO/SEM ZERO/LOW_RISK queue still empty.
+- NotebookLM script 26th consecutive missing; auth expired on master-log source refresh (known carry, HIGH FLAG_FOR_ADAM).
+- Self-review PASS — 0 modifications, hard constraints intact.

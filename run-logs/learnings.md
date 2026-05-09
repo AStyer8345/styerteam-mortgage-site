@@ -838,3 +838,8 @@ Newest entries at the top.
 - **GOALS.md trumps daily rotation escalations.** When weekly direction explicitly excludes work ("No new content on any site this week"), automated escalation rules (blog cadence Day-11 → HIGH) defer until next Monday's GOALS refresh. Log the exemption in run log + CONTEXT.md so it doesn't re-escalate every day.
 - **Re-Verify Gate self-correction.** Auto-resolved a claim under wrong framing (date span) when the actual claim was about review-count breakdown. Pattern: before auto-resolving any carry that mentions specific numbers ("91/45"), re-read the most recent TODO.md context for that exact item — don't trust the run-log carry text alone. The TODO.md or DECISIONS.md is the canonical source for the claim's intent.
 - **Re-Verify Gate UNVERIFIED tag is the right answer when live verification needs Adam's UI-only credentials** (GBP, Zillow, GSC). Don't auto-resolve those — tag UNVERIFIED:<date> and surface for Adam.
+
+## 2026-05-08 PM rerun — added insights
+- Programmatic conversion-tracking grep should test for `Netlify` (case-insensitive) and `netlify/functions/lead-intake`, NOT `data-netlify`. The LP forms post via JS to a Netlify Function, not bare-attribute Netlify Forms. Update grep templates accordingly.
+- When Adam pushes mid-day commits between AM and PM runs, sanity-check JUST those impacted URLs with HTTP+CTA+sitemap-lastmod — don't re-walk the whole site. Marginal-cost-aware verification.
+- PM rerun on a same-day cycle should re-state and re-affirm AM's conscious deferrals, not silently re-litigate them. If AM chose to defer X, and nothing has changed since, PM defers X.
