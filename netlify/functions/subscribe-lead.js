@@ -38,10 +38,11 @@ const N8N_PA_NURTURE_URL  = "https://styer.app.n8n.cloud/webhook/pa-nurture";
 const N8N_DPA_NURTURE_URL = "https://styer.app.n8n.cloud/webhook/dpa-nurture";
 
 // Supabase direct access for drip enrollment
-const SUPABASE_URL  = "https://uuqedsvjlkeszrbwzizl.supabase.co";
-const SUPABASE_KEY  = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
-const PA_CAMPAIGN_ID = "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d";
-const ORG_ID         = "18613f82-fdd9-42dd-a09e-f3c577328258";
+const SUPABASE_URL   = "https://uuqedsvjlkeszrbwzizl.supabase.co";
+const SUPABASE_KEY   = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+const PA_CAMPAIGN_ID  = "8b540726-0143-4d96-b1fe-deb65450705d";
+const DPA_CAMPAIGN_ID = "46ea4f7b-2f78-444b-b712-fed6ec52da70";
+const ORG_ID          = "18613f82-fdd9-42dd-a09e-f3c577328258";
 
 const LOANOS_URL    = process.env.LOANOS_URL || "";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
@@ -129,10 +130,17 @@ exports.handler = async (event) => {
     }
   }
 
-  // Enroll in LoanOS drip only for PA funnel — DPA leads use Mailchimp Journey instead
-  if (lead_source === "Pre-Approval Funnel") {
+  // Enroll in LoanOS drip — PA Welcome (PA funnel) or DPA Guide (DPA guide leads).
+  // Best-effort backup to the n8n workflow's internal enrollment; resolution=ignore-duplicates
+  // prevents collisions when n8n also enrolls.
+  const dripCampaignId =
+    lead_source === "Pre-Approval Funnel" ? PA_CAMPAIGN_ID :
+    (tag === "ftb-dpa-guide" || lead_source === "FTB DPA Guide") ? DPA_CAMPAIGN_ID :
+    null;
+
+  if (dripCampaignId) {
     const dripResult = await Promise.allSettled([
-      enrollInDrip({ email, fname, lname }),
+      enrollInDrip({ email, fname, lname, campaignId: dripCampaignId }),
     ]);
     if (dripResult[0].status === "rejected") {
       console.error("[subscribe-lead] Drip enrollment failed:", dripResult[0].reason?.message);
@@ -262,15 +270,15 @@ async function createLoanosContact({ email, fname, lname, phone, loan_goal, lead
 
 // ── Drip Enrollment ─────────────────────────────────────────────────────────
 
-async function enrollInDrip({ email, fname, lname }) {
+async function enrollInDrip({ email, fname, lname, campaignId }) {
   if (!SUPABASE_KEY) {
     console.warn("[subscribe-lead] SUPABASE_SERVICE_ROLE_KEY not set — skipping drip enrollment");
     return;
   }
 
-  // Look up the contact by email to get their contact_id
+  // Look up the contact by email (scoped to org) to get their contact_id
   const contactRes = await fetch(
-    `${SUPABASE_URL}/rest/v1/contacts?email=eq.${encodeURIComponent(email.toLowerCase())}&select=id&limit=1`,
+    `${SUPABASE_URL}/rest/v1/contacts?organization_id=eq.${ORG_ID}&email=eq.${encodeURIComponent(email.toLowerCase())}&select=id&limit=1`,
     {
       headers: {
         apikey: SUPABASE_KEY,
@@ -288,7 +296,9 @@ async function enrollInDrip({ email, fname, lname }) {
   }
   const contactId = contacts[0].id;
 
-  // Create drip enrollment — next_send_at = now (step 1 has delay_days = 0)
+  // drip_enrollments columns: org_id (NOT organization_id), campaign_id, contact_id,
+  // status, enrolled_by, current_step. next_send_at is nullable; the n8n sender worker
+  // drives sends from drip_steps, so we leave it null on insert.
   const enrollRes = await fetch(`${SUPABASE_URL}/rest/v1/drip_enrollments`, {
     method: "POST",
     headers: {
@@ -298,12 +308,12 @@ async function enrollInDrip({ email, fname, lname }) {
       Prefer: "return=minimal,resolution=ignore-duplicates",
     },
     body: JSON.stringify({
+      org_id: ORG_ID,
+      campaign_id: campaignId,
       contact_id: contactId,
-      campaign_id: PA_CAMPAIGN_ID,
-      organization_id: ORG_ID,
       status: "active",
+      enrolled_by: "auto",
       current_step: 0,
-      next_send_at: new Date().toISOString(),
     }),
   });
 
@@ -311,7 +321,7 @@ async function enrollInDrip({ email, fname, lname }) {
     const err = await enrollRes.json().catch(() => ({}));
     throw new Error(`Drip enrollment failed: ${enrollRes.status} ${err.message || ""}`);
   }
-  console.log(`[subscribe-lead] Drip enrolled: ${fname} ${lname} (${email})`);
+  console.log(`[subscribe-lead] Drip enrolled: ${fname} ${lname} (${email}) → ${campaignId}`);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
