@@ -843,3 +843,9 @@ Newest entries at the top.
 - Programmatic conversion-tracking grep should test for `Netlify` (case-insensitive) and `netlify/functions/lead-intake`, NOT `data-netlify`. The LP forms post via JS to a Netlify Function, not bare-attribute Netlify Forms. Update grep templates accordingly.
 - When Adam pushes mid-day commits between AM and PM runs, sanity-check JUST those impacted URLs with HTTP+CTA+sitemap-lastmod — don't re-walk the whole site. Marginal-cost-aware verification.
 - PM rerun on a same-day cycle should re-state and re-affirm AM's conscious deferrals, not silently re-litigate them. If AM chose to defer X, and nothing has changed since, PM defers X.
+
+## 2026-05-10
+
+- **Always carry the FULL slug in run-log carry text — truncating produces 404 false-regressions.** Sat PM run carried "2026-04-27-why-home-prices" (truncated); today's curl to that URL returned 404. Full slug "2026-04-27-why-home-prices-arent-crashing" returns 200 with state unchanged (2 `../get-preapproved`, 0 `/refinance-quote`). If a previously-OK URL 404s and you can't explain why, suspect run-log slug drift before flagging a regression. Re-Verify Gate works on the gate's own metadata, not just inherited claims. Pattern: never abbreviate slugs in carry text — copy/paste the full filename without `.html`.
+- **24h+ post-deploy cache-window check is the right point to drop a Liberty Hill–style suburb-editor commit from the active sanity table.** Adam's Sat 09:22 Liberty Hill R2 commit at 27h+ post-deploy is fully propagated through Netlify edge. Token-count drift between AM (67) and PM (77) is grep-methodology drift, not content drift. Drop-from-table rule = next run after 24h+ confirmation, unless an issue emerges.
+- **Sunday no-rotation by convention** (matching Saturday's no-rotation pattern). Run shape: Re-Verify Gate + sitemap + conversion check + Step 4B backlog sweep only. Zero new edits expected, zero made. Monday resumes full rotation.
