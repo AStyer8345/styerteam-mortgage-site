@@ -1,3 +1,47 @@
+## 2026-05-10 — Manor suburb page Round 2 (suburb editor task)
+
+- **`manor-mortgage-lender.html`** — Round 2 deepening (slot 9 of 13).
+- **Median refreshed:** Round 1 had $355K Nov 2025 (+6.6% YoY) → **$340K Mar 2026 Redfin (-5.7% YoY)**, 98 days on market vs 91 prior year. Sharp negative flip; market has cooled, not appreciated.
+- **CRITICAL school-district correction surfaced — Whisper Valley = Del Valle ISD, NOT Manor ISD.** Round 1 implied all four named neighborhoods sit in Manor ISD. Reality per Whisper Valley + Spectrum News: Whisper Valley feeds **Gilbert Elementary → Dailey Middle → Del Valle High School** today; DVISD has purchased two sites inside Whisper Valley (78.1 ac high school + 71.1 ac elementary/middle); **new in-community DVISD high school opens for 2026-27 school year**. This is a buyer-decision-grade fact (property tax math, school ratings, resale story all change) — promoted to AEO opener + dedicated FAQ Q + LocalBusiness schema description + Schools H3 + Neighborhoods section.
+- **Manor ISD has 4 high schools, not 1** (Round 1 implied Manor HS only). New Schools H3 breaks them out: **Manor HS** (default zoned, GreatSchools 2/10, ~2,422 students), **Manor New Tech** (lottery, **GreatSchools 4/10**, project-based), **Manor Early College** (lottery, ACC partnership), **Manor Senior HS** (jr/sr-only Career &amp; Tech, ~1K-1.2K students, walking distance from Mustang Valley).
+- **FAQ schema fully reworked:**
+  - "What is the average home price" → "What is the median home price" w/ refreshed Mar 2026 Redfin + 5 builder/neighborhood price callouts.
+  - **"How does Manor compare to Pflugerville" Q swapped for "Will my Manor home be zoned to Manor ISD or Del Valle ISD?" Q** — biggest 78653 buyer concern, anchors the DVISD callout.
+  - "First-time buyer programs" rewritten with **2026 FHA Travis County limit $571,550** (Round 1 had stale $524,225) + TSAHC 2025 income ceiling $167,250 non-targeted / $187,320 targeted.
+  - "Tesla Gigafactory impacted" → "How is Tesla's Gigafactory affecting Manor housing in 2026?" — rewritten with current Tesla headcount **16,506 EOY 2025 (down 22%)** + early-2026 ~22% additional cut announcement (KXAN, TechBuzz). Round 1's 22,777 figure (Electrek April 2024) was 18 months stale.
+  - "Property tax rate" rewritten with **median 1.69% per Ownwell** (Round 1 had 2.27% which is actually the 75th percentile) + Manor ISD $1.0814 held + Travis County FY26 $0.375845 + **Manor ISD $385M Bond 2025 FAILED Nov 4, 2025** + Whisper Valley PID $1,480-$2,004/yr replacing City of Austin ad valorem.
+- **3 NEW neighborhood spotlights** beyond Round 1's 4:
+  - **Lagos (78653 — Manor ISD)** — 1104 S. San Marcos, Ashton Woods primary + Pulte/Tri Pointe/Milestone, mid-$300s to high-$400s, on-site Lagos Elementary.
+  - **Mustang Valley (78653 — Manor ISD)** — KB Home, 90 SFH planned, **$299,995–$345,000 starting** (BusinessWire grand opening 2024), walking distance to Manor Senior HS — one of few sub-$300K-floor new-construction options in Travis County.
+  - **Manor acreage (78653)** — Outside the master-planneds: 14815 Johnson Road Trail $700K/2.57 ac; 20217 Engelmann Ln $725K/40 ac; **median list $847,450 — above 2026 Texas conforming line $832,750**, jumbo callout.
+- **Existing 4 neighborhoods deepened:**
+  - **ShadowGlen** — Builder roster updated: **Meritage now lead** of new ~690-home expansion phase (Round 1 had Terrata/Perry/Meritage/LGI as equal); Terrata starting $439,900; ShadowGlen Golf Club address (12801 Lexington Street, 7,174-yard 18-hole) + 4-acre water park + 202 acres Wilberger Creek trails added.
+  - **Whisper Valley** — Builder roster expanded from 2 to 7 (added GFO Home, Terrata, CastleRock, AHA Dream Homes, Thurman Homes); 2,065 → **2,066 acres** correction; **$1,480.46–$2,003.66/year PID** by lot size + **$55–$70/month EcoSmart geothermal ESS fee** disclosed; **DVISD school-zoning callout** (the big one).
+  - **Carillon** — **$25,000 builder flex cash** promo (March 22 → Dec 31 2026 contracts, close by Jan 31 2027) added; M/I Homes added as second active builder; full amenity-center inventory.
+  - **Presidential Meadows** — **1,670 SFH at full build-out** (Jome) added; transitioning from new construction to resale.
+- **Loan tiles fully de-templated** (Round 1 left FHA/Conventional/VA/DPA tiles as 1-page orphans of templated language):
+  - **FHA tile** — $571,550 Travis County 2026 limit (Round 1 had $524,225 stale) + Manor-specific gift-fund/DTI math.
+  - **Conventional tile** — 2026 $832,750 conforming limit + acreage-jumbo callout for the $847K median list.
+  - **VA tile DE-TEMPLATED** (was generic boilerplate) — Manor-specific framing: $340K median + 1.69% effective tax stretching VA budgets, **100% disabled-veteran homestead exemption ~$5,750/year erased** at Manor's median, Camp Mabry ~25min + JBSA via I-35 commute, Whisper Valley exemption-only-on-ad-valorem caveat (PID + ESS still apply).
+  - **TSAHC/TDHCA tile** — 2025 $167,250 / $187,320 income limits added; $340K-under-TDHCA-purchase-ceiling math.
+- **Major Employers H3 EXPANDED:**
+  - **OPmobility (formerly Plastic Omnium)** — corrected "Plastic Omnium" → "OPmobility" rebrand; updated from "350K sqft / 800 jobs" announced specs to current operational status: **inaugurated April 2024, 400+ employees by 2025, 800-job announced ceiling** (OPmobility press release).
+  - **NEW: Mustang Crossing** — 127-acre, 6-building, **1.2M-sqft Class A industrial park** at 13754 Gregg Manor Rd by Ryan Companies + DWS Group; Phase 1 (4 buildings, ~$59M) under construction since Dec 2024 finishing March 2026; Building 1 came online with 291,200 sqft available Feb 2026 (Urbanize Austin, Commercial Property Executive).
+  - **NEW: Manor Crossing retail** — 18-acre 150,000-sqft retail at US-290 + FM 973, full center 2026; **H-E-B opened late 2025**; tenants include TJ Maxx, Burlington, Planet Fitness, Five Below, James Avery, McAlister's, Mattress Firm, Tropical Smoothie, Tomlinson's Feed (KVUE, The Retail Connection) — the long-missing local-amenity stack.
+  - **Samsung Taylor** — updated mass-production target to **early 2027** (delayed); risk production 2026 SF2/SF3P at 50K WSPM (Tom's Hardware); ~1,000 SAS employees relocating into Taylor offices over next two quarters; 10K-job full build-out target.
+  - **Tesla** — corrected from 22,777 (Electrek April 2024) to **16,506 EOY 2025** with 2026 layoffs underway flag.
+- **NEW dedicated H3 — Manor Property Tax &amp; Closing Costs:** Full cited stack (Manor ISD $1.0814 + Travis County $0.375845 + ESD 12 + City of Manor); median 1.69% effective per Ownwell with explicit MUD/PID overlay disclosure for Whisper Valley + ShadowGlen (75th-90th percentile 2.24%-2.52%); Whisper Valley PID $1,480-$2,004/yr + ESS $55-$70/mo line-item; itemized 6-line closing-cost example at $340K w/ 5% down ($323K loan): **$6,300-$8,800 total** + jumbo 6-12mo PITI reserve callout for acreage; Whisper Valley PID-into-DTI warning ($123-$167/mo effective payment add).
+- **Templated paragraphs removed:**
+  - Process intro "Manor's new construction market moves fast. Builders release lots on a schedule..." (verbatim shared with Hutto pre-edit) → rewritten Manor-specific with the 3 active builder incentives (Carillon $25K flex, Whisper Valley 4.99% buydown, Mustang Valley sub-$300K floor).
+  - **AEO opener** — generic "sub-$400K + sub-$5K out of pocket" pitch replaced with school-district-line lede (the actual Manor differentiator nobody else surfaces).
+- **Schema updates:**
+  - LocalBusiness `description` rewritten with 78653 + 6 named neighborhoods (4 Manor ISD + 1 DVISD + acreage tier) + full tax stack + median + DPA programs.
+  - WebPage `dateModified` 2026-04-27 → 2026-05-10.
+  - Meta description rewritten with median + MISD/DVISD school-zoning split + FHA $571,550 limit.
+- **Validation:** All 4 JSON-LD blocks (LocalBusiness/FAQPage/BreadcrumbList/WebPage) parse cleanly via `python3 json.loads`.
+- **Sitemap lastmod bumped:** 2026-04-28 → 2026-05-10.
+- **23 inline source URLs** (Round 1 had 7).
+
 ## 2026-05-09 — Liberty Hill suburb page Round 2 (suburb editor task)
 
 - **`liberty-hill-mortgage-lender.html`** — Round 2 deepening (slot 8 of 13).
