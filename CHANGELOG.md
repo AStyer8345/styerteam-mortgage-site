@@ -1,3 +1,16 @@
+## 2026-05-11 — Competitive Week 10 (styer-competitive-weekly task)
+
+- **Tracked top-10 keywords jumped 2 → 4.** Hutto held #2, Leander held #6, **Pflugerville NEW #4**, **Kyle NEW #8**. Both new entries appeared on first SERP rotation measurement — indicating ranking pre-dates measurement.
+- **Re-Verify Gate:** Processed 14 prior claims. Held: Hutto #2, Leander #6, Round Rock not-found, BoA #1, AustinHomeLoans #1 home loan, SouthStar #1 refi, Lone Star #1 Round Rock, ATX 0 suburb pages, Big Life template gap. Cleared/reversed: Joel Richardson reclaimed #1 cash-out (Arnaiz demoted #1→#3); Arnaiz also demoted on refi #2→#3; MortgageAustin reclaims #1 on mortgage-qualified pre-approval query.
+- **ATX Mortgage Lending sitemap audit:** Fetched live `atxmortgagelending.com/sitemap.xml` — 0/61 URLs contain dedicated suburb pages. First-mover advantage preserved at least through 2026-05-25 recheck.
+- **Competitor spotlight — Geneva Financial:** New #1 Pflugerville with **Arizona address** (180 S. Arizona Ave, Chandler AZ 85225) listed as the "Pflugerville branch." No FAQPage/AggregateRating schema, no local references, no Pflugerville ISD mentions. Highest overtake opportunity surfaced this run.
+- **Highlander Mortgage NEW #1** for "mortgage broker austin tx" (was #2; Yelp demoted to #2).
+- **Master log appended** at `/Users/adamstyer/Documents/memory/styer-mortgage/Styer_Growth_Log.md`.
+- **NotebookLM CLI auth expired (NEW BLOCKER):** Step 6 push to SEO notebook + Styer Growth Log notebook failed with "Authentication expired or invalid." `notebooklm login` required. Master log entry persisted on disk but NOT pushed to remote.
+- **No site edits** — research-only task per SKILL.md rules.
+
+---
+
 ## 2026-05-10 — Manor suburb page Round 2 (suburb editor task)
 
 - **`manor-mortgage-lender.html`** — Round 2 deepening (slot 9 of 13).
