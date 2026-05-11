@@ -1,3 +1,16 @@
+## 2026-05-11 — daily-opt Monday (styer-site-daily, full rotation)
+
+- **Step 4 Monday rotation complete.** Schema audit on homepage + DSCR + Manor — all rotation targets clean and full template coverage intact. AEO entity check passes: Person + LocalBusiness/MortgageBroker present on homepage + about pages; first 150 words of homepage answer "Who is the best mortgage broker in Austin TX?" via H1 + P1 (15w concise) + P6 (57w entity-rich).
+- **PSI quota 429 on Monday AM** — drained before this run fired (recurring-issue pattern, 2nd consecutive Monday). Surfaced HIGH FLAG_FOR_ADAM: provision dedicated PSI API key OR accept UNVERIFIED weekly.
+- **Manor R2 dropped from active sanity table** — 24h+ post-deploy, propagation clean (4 funnel CTAs, DVISD:3/MISD:1, FAQ 5q intact).
+- **Re-Verify Gate: 13 claims, 1 auto-resolved.** SMS opt-in backlog L79 was a stale duplicate of completed L107 (commit `6fb8883`, 2026-04-06) — struck through with cleanup note after live-verifying `sms_opt_in` attr on 25/25 suburb files. Working-tree edit in `loanos-clone/tasks/seo-sem/backlog.md` (not pushed; markdown-only bookkeeping).
+- **Methodology insight:** `grep -E "a\|b"` is literal-pipe, NOT alternation. Today's first conversion-trace returned 0 for `consent\|TCPA` and `netlify-lead-intake`; re-running with `grep -E "a|b"` (no backslash) returned the expected 9 and 1. Defensive pattern captured in NOTEBOOK_INSIGHTS.
+- **Conversion tracking 9/10** — all critical tokens hold parity. Sitemap 200, lastmod 2026-05-10 (Adam's Manor R2 still freshest).
+- **Carries open:** NotebookLM script 30th consecutive missing; products.html 7 in-card 1003 (12th carry, Adam decision); why-home-prices-arent-crashing CTA structure (12th carry, deferred); about.html 91/45 breakdown UNVERIFIED:2026-05-08; Smithville/Elgin/Florence/Jarrell USDA cleanup; style.css working-tree change preserved untouched.
+- **No site HTML/CSS/JS modifications this run.** Self-review PASS. Hard constraints intact.
+
+---
+
 ## 2026-05-11 — Competitive Week 10 (styer-competitive-weekly task)
 
 - **Tracked top-10 keywords jumped 2 → 4.** Hutto held #2, Leander held #6, **Pflugerville NEW #4**, **Kyle NEW #8**. Both new entries appeared on first SERP rotation measurement — indicating ranking pre-dates measurement.

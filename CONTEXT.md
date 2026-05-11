@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-05-11 (Monday — Competitive Week 10):** styer-competitive-weekly task. **BREAKOUT: tracked top-10 keywords jumped 2 → 4** (Hutto held #2, Leander held #6, **Pflugerville NEW #4**, **Kyle NEW #8**). Both suburb rotation NEW keywords ranked on first measurement — confirming the 9-week rotation cadence under-measures real progress. Re-Verify Gate processed 14 prior claims (3 cleared/reversed: Joel reclaimed cash-out #1, Arnaiz demoted on BOTH refi keywords #1→#3 + #2→#3, MortgageAustin reclaims #1 when query qualified with "mortgage"). ATX Mortgage Lending sitemap audit confirmed 0/61 dedicated suburb pages — first-mover advantage preserved. **NotebookLM CLI auth expired** — Step 6 push (SEO notebook + Styer Growth Log notebook) failed with "Authentication expired or invalid"; master log appended on disk OK but not pushed to remote notebooks. New Adam-flag: `notebooklm login` required.
+**2026-05-11 (Monday — daily-opt, full rotation):** styer-site-daily Step 4 Monday rotation. Schema audit on homepage + DSCR + Manor — all rotation targets clean. AEO entity check: Person + LocalBusiness/MortgageBroker on homepage + about; first 150 words of homepage answer "Who is the best mortgage broker in Austin TX?" via H1 + P1 (15w) + P6 (57w). PSI quota 429 on Monday AM — drained before this run fired (recurring-issue pattern). Manor R2 at 24h+ — propagation clean (4 funnel CTAs, DVISD:3/MISD:1), dropped from active sanity table. Re-Verify Gate: 13 claims, 1 AUTO-RESOLVED (SMS opt-in backlog L79 duplicate struck through — verified live on 25/25 suburb files via `sms_opt_in` name attr). Methodology insight: `grep -E "a\\|b"` is literal pipe, not alternation — silent miss on conversion-tracking trace; fixed to `grep -E "a|b"`. NotebookLM script still missing (30th consecutive check).
 
-**2026-05-10 (Sunday — Manor suburb page Round 2, suburb editor task):** `manor-mortgage-lender.html` deepened (slot 9 of 13 in Round 2). Median **$355K Nov 2025 → $340K Mar 2026 Redfin (-5.7% YoY)**, 98 DOM. **CRITICAL — Whisper Valley = Del Valle ISD, NOT Manor ISD**. Property tax median 1.69% Ownwell + Whisper Valley PID + closing example. **Manor ISD $385M Bond 2025 FAILED Nov 4, 2025**. Round 2 advances to slot 10 (Lakeway) next.
+**2026-05-11 (Monday — Competitive Week 10):** styer-competitive-weekly task. **BREAKOUT: tracked top-10 keywords jumped 2 → 4** (Hutto held #2, Leander held #6, **Pflugerville NEW #4**, **Kyle NEW #8**). Both suburb rotation NEW keywords ranked on first measurement — confirming the 9-week rotation cadence under-measures real progress. ATX Mortgage Lending sitemap audit confirmed 0/61 dedicated suburb pages — first-mover advantage preserved. **NotebookLM CLI auth expired** — Step 6 push failed with "Authentication expired or invalid"; master log appended on disk OK but not pushed to remote notebooks. `notebooklm login` required.
 
-**Surfaced for Adam (still):** Uncommitted style.css change in working tree (Adam's pending nav-dropdown scrolled-state fix). Untouched.
+**Surfaced for Adam (still):** Uncommitted style.css change in styerteam-mortgage-site working tree (Adam's pending nav-dropdown scrolled-state fix). NEW today: 1-line working-tree edit in loanos-clone/tasks/seo-sem/backlog.md (L79 stale strikethrough) — not auto-pushed.
 
 ## Site Structure (key categories)
 
@@ -46,7 +46,8 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Smithville/Elgin/Florence/Jarrell USDA cleanup pending | MEDIUM |
 | about.html "91 Google + 45 Zillow" review breakdown (UNVERIFIED:2026-05-08; Adam GBP/Zillow access needed) | MEDIUM |
 | 2026-04-27-why-home-prices-arent-crashing CTA structure: relative `../get-preapproved` (2) + missing `/refinance-quote` (10th recurrence; full slug corrected 2026-05-10) | MEDIUM |
-| NotebookLM SKILL.md retirement diff — diff drafted 2026-04-26, **28 consecutive dead runs**, Adam apply queue | HIGH (Adam queue) |
+| NotebookLM SKILL.md retirement diff — diff drafted 2026-04-26, **30 consecutive dead runs**, Adam apply queue | HIGH (Adam queue) |
+| PSI quota drained by Monday AM (2nd consecutive Monday 429) — provision dedicated PSI API key OR accept UNVERIFIED weekly | HIGH (Adam) |
 | **NotebookLM CLI auth expired (NEW 2026-05-11)** — `notebooklm login` required; Week 10 master log appended on disk but not pushed to remote notebooks | HIGH (Adam) |
 | GSC URL Inspection sweep — **add Pflugerville + Kyle** (new top-10s 2026-05-11), Hutto, Round Rock, Bee Cave (38+ days unindexed), Lakeway, Georgetown, Leander, products.html | HIGH (Adam) |
 | **Bulk suburb audit recommendation (NEW 2026-05-11)** — replace 9-week rotation with bulk weekly audit; Pflugerville/Kyle wins were untracked for weeks | MEDIUM |
