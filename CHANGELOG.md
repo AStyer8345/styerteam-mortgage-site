@@ -1,3 +1,13 @@
+## 2026-05-12 — Suburb Editor Round 2 #10 (Lakeway)
+
+- **`lakeway-mortgage-lender.html` Round 2 ship.** Last touched 2026-04-28 (Round 1). Round 2 adds: (1) **April 2026 ACTRIS MLS data via Neuhaus Realty** alongside Feb Redfin — 15 SFH closings at $868K median, 6.3 mo supply, 94.9% close-to-list, 12-day median list-to-contract (reconciled the Redfin/Neuhaus methodology gap inline). (2) **City of Lakeway's own employer ranking** — LTISD #1 / BSW #2 / Lakeway Resort & Spa #3 (lakeway-tx.gov About) — replaces Round 1's BSW self-citation. (3) **NEW H3 "Lakeway Neighborhoods Inside Lake Travis ISD"** — Rough Hollow expanded with **Legend Communities + 22 distinct neighborhoods + Yacht Club & Marina MAX awards + Highland Village waterpark + The Point/The District new builds**, **NEW Serene Hills 78738 spotlight** (456-acre / 339 homesites / 342 preserved acres / Weston Dean+Brohn+Sitterle / Serene Hills Elem 9/10 INSIDE community), Flintrock/The Hills/Lakeway Highlands/Cardinal Hills consolidated.
+- **Process Step 4 de-templated.** Round 1 had verbatim "Take your pre-approval letter to any Lakeway listing. In the luxury segment..." — grep-confirmed across 10 suburb pages. Rewrote Lakeway-specific (listing-agent gate-verification calls + 12-day ACTRIS list-to-contract signal).
+- **FAQ home-prices** (schema + accordion synced) rewritten with reconciled Redfin/Neuhaus data + Serene Hills + 22-neighborhoods detail.
+- WebPage dateModified 04-28 → 05-12. Sitemap lastmod 04-28 → 05-12. All 4 JSON-LD blocks validated clean via python json.loads. **6 new inline source URLs** (~20 total on page).
+- Working-tree carries preserved untouched (style.css 14th-carry).
+
+---
+
 ## 2026-05-12 — daily-opt Tuesday (styer-site-daily, Title+Meta rotation)
 
 - **Tuesday Step 4 rotation complete.** Title Tags + Meta Descriptions audit on 12 loan-type pages — all present, none missing/duplicate/generic. 2 LOW_RISK length fixes shipped (commit `7091c5e`); 2 MEDIUM findings (investor-loans + high-net-worth title brand presence) surfaced for Adam.
