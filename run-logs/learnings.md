@@ -885,3 +885,30 @@ Newest entries at the top.
 - **Adam's suburb-page editing cadence now includes Sunday-afternoon intra-day commits.** Both 2026-05-09 (Saturday: Liberty Hill R2) and 2026-05-10 (Sunday: Manor R2) shipped on weekend days. The "weekend no-rotation" convention is for THIS task (no site edits from the agent) — it does not mean the site itself is frozen. Manor R2 deepening propagated live within Netlify's normal cache window; 12h+ post-deploy sanity check showed clean propagation. Pattern locked in: weekend PM runs should always check `git log --oneline -5` against AM's last sha to detect intra-day commits before deciding the PM scope.
 - **NotebookLM 29th consecutive dead run.** SKILL.md retirement diff still pending Adam apply. No new framing — just the increment.
 
+
+---
+## 2026-05-11 PM — Monday no-rotation drift sweep
+
+**Canonical Netlify-fn grep token = `/.netlify/functions/lead-intake` (slash form).**
+The hyphenated `netlify-lead-intake` label seen in older logs was a conceptual shorthand. The literal hyphenated string does NOT appear in served HTML. Going forward, conversion-tracking critical-token grep uses the slash form. Both labels prove the same endpoint is wired, but only one matches the body literally.
+
+**Root-path SEO landing pages do NOT live under `/blog/`.**
+`/how-to-buy-a-house-in-austin-tx` is a top-level page, not a blog post. When re-verifying carries on this slug (or similarly-named landing pages), use the root-path URL. Reconstructing from `/blog/<slug>` produces a 404 false-regression. Defensive pattern: store the exact canonical URL (with leading-slash prefix) in carry text — don't infer from slug.
+
+**Same-day PM fire = no-rotation drift sweep, not next-day rotation.**
+TOMORROW_PRIORITY in latest.md is for the next CALENDAR DAY's AM fire. If two fires happen on the same calendar date (AM full + PM same-day), the PM run follows the Sunday PM precedent: re-verify carries, retry PSI, sweep backlog, no new rotation work. Detection: `[ "$(date +%Y-%m-%d)" = "<latest.md filename date>" ]`. Skip Step 4 rotation if true.
+
+**PSI daily-drain pattern is now established.**
+Two consecutive Mondays (2026-05-04 and 2026-05-11) AND today's PM retry: all 429. The SKILL.md "quota refreshes Mondays" guidance is no longer accurate. Some other consumer of project 583797351490 drains the daily quota before this task's first fire. Mitigation requires either (a) provisioning a dedicated PSI API key for this task, or (b) accepting UNVERIFIED on the PSI metric Mondays. AM run already escalated to HIGH FLAG_FOR_ADAM; not re-pitching PM.
+
+---
+
+## 2026-05-12 (Tuesday — Title+Meta rotation)
+
+**Loan-type page roster correction (NEW, important):** The SKILL.md Tuesday rotation lists `/conventional-loan-austin-tx`, `/fha-loan-austin-tx`, `/va-loan-austin-tx`, `/jumbo-loan-austin-tx` as audit targets. Those slugs return 404. The canonical pages are under `/loans/`: `/loans/conventional`, `/loans/fha`, `/loans/va`, `/loans/jumbo` (all linked from `index.html`). Other loan-type pages live at root (`/dscr-loan-austin-tx`, `/bank-statement-loans`, `/non-qm-loans`, `/investor-loans`, `/high-net-worth-mortgage`, `/self-employed-mortgage-austin`, `/austin-down-payment-assistance`, `/first-time-home-buyer`). Mixed root/`/loans/` pattern across the site. Future Title+Meta audits: use the actual roster, not the SKILL.md example list.
+
+**Polling a Netlify deploy via `until grep`: marker must be UNIQUE to NEW content.** Today's first verify attempt polled `until grep -q "24-hour pre-approval"` to confirm the first-time-home-buyer meta edit went live. The until-loop exited immediately — but the live page still served the OLD meta. Root cause: the page's `og:description` already contained "24-hour pre-approval" verbatim before my edit. The grep matched the OG, not my new meta. Re-polled with `"Williamson Counties"` (a phrase I'd introduced in the *other* file edit) and got an accurate deploy signal. **Defensive pattern going forward:** when verifying a meta-description edit live via grep poll, choose a phrase that exists ONLY in the new version of the file — check og:, twitter:, JSON-LD, body copy, and headers first. Or use a phrase from a different edit that landed in the same commit.
+
+**OG ↔ meta intra-page consistency is a free win.** First-time-home-buyer.html had `og:description` = "...24-hour pre-approval. NMLS #513013." and `meta name="description"` = "...Pre-approved in 24 hours. Adam Styer, NMLS #513013." Trimming the meta to match the OG copy (a) brought it into the 150-160 char window AND (b) eliminated an intra-page consistency mismatch. One edit, two wins. Pattern: when rewriting a meta description for length, check the page's own og:description first — matching it is often the right answer.
+
+**PSI multi-day drain pattern is now confirmed.** Mon AM + Mon PM + Tue AM all 429 on Google Cloud project 583797351490. The "quota refreshes Mondays" assumption AND the "quota refreshes daily" assumption are both wrong — quota is drained by another consumer of project 583797351490 every calendar day before this task fires. Escalation: this is no longer a "Monday quota issue", it's a "permanent UNVERIFIED unless Adam provisions a dedicated PSI API key for this task" issue.

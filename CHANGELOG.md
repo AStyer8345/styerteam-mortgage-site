@@ -1,3 +1,26 @@
+## 2026-05-12 — daily-opt Tuesday (styer-site-daily, Title+Meta rotation)
+
+- **Tuesday Step 4 rotation complete.** Title Tags + Meta Descriptions audit on 12 loan-type pages — all present, none missing/duplicate/generic. 2 LOW_RISK length fixes shipped (commit `7091c5e`); 2 MEDIUM findings (investor-loans + high-net-worth title brand presence) surfaced for Adam.
+- **Site edits:** `first-time-home-buyer.html` meta 162→158 chars (`Pre-approved in 24 hours.` → `24-hour pre-approval.` — matches og:description on same page, intra-page consistency win). `austin-down-payment-assistance.html` meta 145→161 chars (added Williamson County — reflects TSAHC/TDHCA service area). Netlify deploy verified live with `Williamson Counties` marker poll.
+- **Loan-type roster correction captured:** `/loans/conventional`, `/loans/fha`, `/loans/va`, `/loans/jumbo` are canonical paths — not the SKILL.md-aspirational `/conventional-loan-austin-tx` root variants (404). NOTEBOOK_INSIGHTS updated so future rotations don't waste cycles on the 404s.
+- **PSI multi-day-drain confirmed.** Mon AM + Mon PM + Tue AM all 429 on project 583797351490. FLAG_FOR_ADAM HIGH escalated: dedicated PSI key needed, or accept permanent UNVERIFIED on weekly PSI metric.
+- **Methodology lessons:** (1) Polling for Netlify deploy via `until grep` requires a marker UNIQUE to the new content — first poll matched og:description's pre-existing "24-hour pre-approval" and exited early; re-polled with "Williamson Counties" (added phrase only in DPA edit) and got accurate signal. (2) OG ↔ meta description intra-page consistency check is a free win on meta rewrites — match og:description text when possible.
+- **Re-Verify Gate:** 7 carry claims, all STILL OK or STILL OPEN with no false regressions, 0 new auto-resolutions. NotebookLM script 32nd consecutive missing.
+- **Hard constraints intact.** 2 file edits, 0 issues. Working-tree carries preserved untouched (style.css, sibling-task log files).
+
+---
+
+## 2026-05-11 PM — daily-opt Monday PM (styer-site-daily, no-rotation drift sweep)
+
+- **PM same-day re-fire, no-rotation pattern.** Followed Sunday PM 2026-05-10 precedent: 0 site HTML/CSS/JS edits, 0 loanos-clone edits. Always-on checks (sitemap, conversion tracking, re-verify carries) + PSI retry + backlog sweep.
+- **Conversion tracking 10/10 (PM).** Switched canonical Netlify-fn grep token from hyphen-form `netlify-lead-intake` (AM label, doesn't appear literally in HTML) to slash-form `/.netlify/functions/lead-intake` (actual served token). All critical tokens hold parity vs AM and Sunday PM.
+- **PSI 429 confirmed all day Monday.** AM and PM both blocked. Pattern now: daily-drained, not "refreshes Mondays". No new escalation (AM already HIGH-flagged).
+- **Re-Verify Gate: 11 claims, 9 STILL OK, 3 STILL OPEN (Adam decisions), 1 STILL UNVERIFIED (about.html review counts), 2 methodology learnings.** Methodology fixes: (1) canonical Netlify-fn token is slash-form not hyphen; (2) `/how-to-buy-a-house-in-austin-tx` lives at root path, NOT under `/blog/` — `/blog/`-prefixed URL produces a 404 false-regression. Both captured in NOTEBOOK_INSIGHTS.
+- **NotebookLM script 31st consecutive missing.** Retirement diff still queued in FLAG_FOR_ADAM HIGH from 2026-04-26 AM.
+- **No site HTML/CSS/JS modifications this run.** Self-review PASS. Hard constraints intact (GTM untouched, form field names untouched, no nav changes, no "Styer Team" copy, no raw 1003 in new content).
+
+---
+
 ## 2026-05-11 — daily-opt Monday (styer-site-daily, full rotation)
 
 - **Step 4 Monday rotation complete.** Schema audit on homepage + DSCR + Manor — all rotation targets clean and full template coverage intact. AEO entity check passes: Person + LocalBusiness/MortgageBroker present on homepage + about pages; first 150 words of homepage answer "Who is the best mortgage broker in Austin TX?" via H1 + P1 (15w concise) + P6 (57w entity-rich).
