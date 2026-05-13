@@ -1,3 +1,24 @@
+## 2026-05-13 — daily-opt Wednesday (styer-site-daily, Suburb Deep Dive + AEO rotation)
+
+- **Wednesday rotation — Pflugerville suburb deep dive.** New top-10 ranker per Competitive Week 10. Page audited against SKILL.md Wednesday rotation checklist: H1 city-specific ✅, FAQPage + BreadcrumbList + LocalBusiness + AggregateRating + City schema all present ✅, inline lead capture form ✅, internal links to `/get-preapproved` ✅ (2), AEO answer-first body intro ✅ ("To get a mortgage in Pflugerville TX, work with an independent broker like Adam Styer..."), H2s as conversational questions ✅ (5 of 7), voice match ✅.
+- **One LOW_RISK fix shipped (commit `13f8cd5`):** `pflugerville-mortgage-lender.html` meta description trimmed 174 → 151 chars; added "Adam Styer" before NMLS #513013. Dropped "Mar 2026 Redfin" wording and Hendrickson HS 8/10 rating to fit Google's 160-char display window. High-value tokens preserved (city+state, FHA/VA/conventional, Blackhawk/Falcon Pointe/Windermere, $355K median, 40+ lenders, NMLS).
+- **NEW LOW finding flagged for Adam:** 4 of 5 sampled suburb pages (round-rock, leander, hutto, georgetown, pflugerville) have 0 internal `/calculators` links; only cedar-park has 1. Roster-wide pattern. Not implemented as a 24-page cross-cutting fix without Adam's decision.
+- **PSI 5-of-5 consecutive drain locked in.** Mon AM + Mon PM + Tue AM + Tue PM + Wed AM all 429 on project 583797351490. Metric now permanently UNVERIFIED until Adam provisions dedicated PSI API key.
+- **Re-Verify Gate on 13 prior carries:** all STILL OK / STILL OPEN with no false regressions. AM Tuesday meta fixes (`/first-time-home-buyer` + `/austin-down-payment-assistance`) verified STILL LIVE on Netlify.
+- **NotebookLM 34th consecutive missing-script check.** Adam queue bottleneck continues on retirement diff (drafted 2026-04-26).
+- Methodology note captured to NOTEBOOK_INSIGHTS: audit suburb body intro paragraphs at the first `<section class="section">` after the hero (`<!-- Intro Content -->` marker), NOT raw `<p>` after `<h1>` — the latter pulls hero-subtitle + Call CTA + form labels.
+
+---
+
+## 2026-05-12 PM — daily-opt Tuesday PM (styer-site-daily, no-rotation drift sweep)
+
+- **Tuesday PM re-fire — no site edits.** Following Sunday PM + Monday PM no-rotation precedent: sitemap (200, freshest lastmod 2026-05-12 — AM Title+Meta commits + Lakeway suburb-editor R2 rolled into Netlify sitemap regen), conversion tracking 10/10 critical tokens across `/`, `/get-preapproved`, `/refinance-quote`, `/thank-you`, PSI retry (429 on both landing pages — **4-of-4 consecutive drain period** on project 583797351490), Re-Verify Gate on 14 AM carries (all STILL OK / STILL OPEN with no false regressions), seo-sem backlog 0 open items.
+- **Methodology correction captured:** the why-home-prices-arent-crashing CTA "2 + 2" carry was a substring-overlap double-count (relative `../get-preapproved` contains the substring `/get-preapproved`, so bare-grep counted each href twice). Live file has 2 total CTAs (both relative). Switched to `href="`-anchored patterns in NOTEBOOK_INSIGHTS for future audits.
+- **PM-live verification of AM Tuesday meta fixes:** `/first-time-home-buyer` serving "24-hour pre-approval" + `/austin-down-payment-assistance` serving "Travis & Williamson Counties" — both meta-fix commits live on Netlify.
+- NotebookLM 33rd consecutive missing-script check; PSI escalation already at HIGH ceiling, no further bump.
+
+---
+
 ## 2026-05-12 — Suburb Editor Round 2 #10 (Lakeway)
 
 - **`lakeway-mortgage-lender.html` Round 2 ship.** Last touched 2026-04-28 (Round 1). Round 2 adds: (1) **April 2026 ACTRIS MLS data via Neuhaus Realty** alongside Feb Redfin — 15 SFH closings at $868K median, 6.3 mo supply, 94.9% close-to-list, 12-day median list-to-contract (reconciled the Redfin/Neuhaus methodology gap inline). (2) **City of Lakeway's own employer ranking** — LTISD #1 / BSW #2 / Lakeway Resort & Spa #3 (lakeway-tx.gov About) — replaces Round 1's BSW self-citation. (3) **NEW H3 "Lakeway Neighborhoods Inside Lake Travis ISD"** — Rough Hollow expanded with **Legend Communities + 22 distinct neighborhoods + Yacht Club & Marina MAX awards + Highland Village waterpark + The Point/The District new builds**, **NEW Serene Hills 78738 spotlight** (456-acre / 339 homesites / 342 preserved acres / Weston Dean+Brohn+Sitterle / Serene Hills Elem 9/10 INSIDE community), Flintrock/The Hills/Lakeway Highlands/Cardinal Hills consolidated.
