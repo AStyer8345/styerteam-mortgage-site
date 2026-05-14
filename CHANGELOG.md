@@ -1,3 +1,12 @@
+## 2026-05-13 PM — daily-opt Wednesday PM (styer-site-daily, no-rotation drift sweep)
+
+- **Wednesday PM bonus run — no site edits.** Same-day no-rotation precedent (Sun PM + Mon PM + Tue PM extended). Sitemap (200), conversion tracking 10/10 critical tokens across `/`, `/get-preapproved`, `/refinance-quote`, `/thank-you`, PSI retry (429 on both landing pages — **6-of-6 consecutive drain period** on project 583797351490), Re-Verify Gate on 15 AM carries (all STILL OK / STILL OPEN with no false regressions), seo-sem backlog 0 open items.
+- **AM Wed Pflugerville meta fix verified STILL LIVE on Netlify** — 151 chars, "Adam Styer" before NMLS, Blackhawk/Falcon Pointe/Windermere intact (commit `13f8cd5`).
+- **Methodology note captured to NOTEBOOK_INSIGHTS:** sibling-agent commits between AM/PM runs can shift `dataLayer` counts (today AM 5/7/7/8 → PM 7/10/10/14 from `30fe26a` Bee Cave R2 + `90bf131` session-end docs). Critical-token methodology survives — `generate_lead`, `lead_type`, `lead-intake`, `form-name`, `thank_you_page_view` are the load-bearing checks, not raw `dataLayer` count.
+- NotebookLM 35th consecutive missing-script check; PSI escalation already at HIGH ceiling (no further bump).
+
+---
+
 ## 2026-05-13 — Suburb Editor Round 2 #11 (Bee Cave)
 
 - **`bee-cave-mortgage-lender.html` Round 2 ship.** Last touched 2026-04-29 (Round 1). Round 2 adds: (1) **CesiumAstro $500M global HQ expansion** as headline employer signal — ~270K sqft three-building campus near SH-71/Sweetwater Village Drive, 500+ new jobs, operations 2027, 1,000+ employees by 2030, anchors Element satellite platform + Vireo multi-beam payloads (Community Impact Jan 15 2026, CesiumAstro press release, Office of the Governor cited; Mayor Kara King quote integrated). (2) **NEW Lake Pointe (78738) neighborhood spotlight** — 825 homes off Bee Caves Rd / RM 2244, dev started 1994, subdivisions The Settling/The Landing/The Estate/Vista Pointe/gated Pointe at end of Resaca Blvd, $350K-$1M+, Napa Park, LCRA Lake Austin day dock via HOA (movetoaustin.org). (3) **NEW Lake Pointe Elementary 9/10 GreatSchools** (11801 Sonoma Dr, 748 PK-5) added to schools list; Bee Cave Elementary updated with Falconhead/Sweetwater feeder note. (4) **Tax stack expanded** with LT Fire / Travis County ESD No. 6 line $0.090399/$100 (M&O 0.085646 + I&S 0.003753, TY2025, LTFR Resolution 2025-01 cited); Spanish Oaks no-MUD/no-PID callout added (1,200-acre, 462 custom homesites, only Travis County + LTISD apply).

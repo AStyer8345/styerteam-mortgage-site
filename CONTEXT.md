@@ -16,13 +16,13 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-05-13 (Wednesday — daily-opt, Suburb Deep Dive + AEO rotation):** styer-site-daily Step 4 Wednesday rotation. **Pflugerville deep dive** (new top-10 ranker per Competitive Week 10). Page strong on schema (FAQPage, BreadcrumbList, LocalBusiness, AggregateRating, City), H1, AEO answer-first body intro ("To get a mortgage in Pflugerville TX, work with an independent broker like Adam Styer..."), and H2-as-question pattern. **1 LOW_RISK fix shipped (commit `13f8cd5`)**: meta description trimmed 174 → 151 chars, added "Adam Styer" before NMLS. PSI **5-of-5 consecutive drain** (Mon AM + Mon PM + Tue AM + Tue PM + Wed AM all 429) — PSI metric now locked permanently UNVERIFIED. NotebookLM 34th consecutive missing-script check. Re-Verify Gate on 13 prior carries: all STILL OK / STILL OPEN, no false regressions. **NEW LOW finding:** 4/5 sampled suburb pages lack `/calculators` link (roster-wide pattern; flagged for Adam decision before any 24-page cross-cutting change).
+**2026-05-13 PM (Wednesday PM — daily-opt bonus, no-rotation drift sweep):** Second Wed fire, no site edits — same-day no-rotation precedent (Sun PM + Mon PM + Tue PM extended). Sitemap 200, conversion tracking 10/10 critical tokens (note: `dataLayer` count grew vs AM from sibling-agent commits `30fe26a` Bee Cave R2 + `90bf131` session-end docs propagating; critical tokens unchanged). **PSI 6-of-6 consecutive drain locked in** (Wed PM 429 on both landing pages). Re-Verify Gate on 15 carries — all STILL OK / STILL OPEN. AM Wed Pflugerville meta fix verified STILL LIVE (151 chars, "Adam Styer" before NMLS). NotebookLM 35th consecutive missing-script check.
 
-**2026-05-12 PM (Tuesday PM — daily-opt no-rotation drift sweep):** No site edits; established Sun PM + Mon PM precedent. Conversion tracking 10/10, sitemap 200, PSI 4-of-4 drain confirmed.
+**2026-05-13 AM (Wednesday — daily-opt, Suburb Deep Dive + AEO rotation):** styer-site-daily Step 4 Wednesday rotation. **Pflugerville deep dive** (new top-10 ranker per Competitive Week 10). **1 LOW_RISK fix shipped (commit `13f8cd5`)**: meta description trimmed 174 → 151 chars, added "Adam Styer" before NMLS. **NEW LOW finding:** 4/5 sampled suburb pages lack `/calculators` link (roster-wide pattern; flagged for Adam decision).
 
-**2026-05-12 AM (Tuesday — daily-opt, Title+Meta rotation):** 12-page audit on loan-type pages, all 12 present. 2 LOW_RISK meta fixes shipped (commit `7091c5e`): `first-time-home-buyer.html` 162→158 chars; `austin-down-payment-assistance.html` 145→161 chars. 2 MEDIUM findings: `/investor-loans` + `/high-net-worth-mortgage` titles lack "Adam Styer".
+**2026-05-12 PM (Tuesday PM — daily-opt no-rotation drift sweep):** No site edits. Conversion tracking 10/10, sitemap 200, PSI 4-of-4 drain confirmed.
 
-**Surfaced for Adam (still):** Uncommitted style.css change in working tree (nav-dropdown scrolled-state fix, 16th carry). `/investor-loans` + `/high-net-worth-mortgage` title brand-vs-length tradeoff (3rd run carry, decision needed). NEW: Suburb roster `/calculators` linking gap (24-page LOW_RISK; Adam decision before implementation).
+**Surfaced for Adam (still):** Uncommitted style.css change in working tree (nav-dropdown scrolled-state fix, 17th carry). `/investor-loans` + `/high-net-worth-mortgage` title brand-vs-length tradeoff (4th run carry, decision needed). Suburb roster `/calculators` linking gap (24-page LOW_RISK; Adam decision before implementation).
 
 ## Site Structure (key categories)
 
@@ -44,13 +44,13 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Blog cadence: 11 days since last post (2026-04-27) — **deferred per GOALS.md "no new content this week" until Mon 2026-05-11 refresh** | DEFERRED |
 | products.html 7 in-card "Get Pre-Approved" buttons still route to raw 1003 (Adam decision: unify or preserve) | MEDIUM |
 | Site-wide footer `/prequal.html` link in 20 pages — parity gap not orphan cleanup | LOW |
-| Uncommitted style.css change in working tree (Adam's pending nav-dropdown scrolled-state fix, 16th carry) | MEDIUM |
+| Uncommitted style.css change in working tree (Adam's pending nav-dropdown scrolled-state fix, 17th carry) | MEDIUM |
 | Suburb roster `/calculators` linking gap — 4/5 sampled suburb pages lack link; SKILL.md Wednesday check; 24-page cross-cutting decision | LOW (Adam) |
 | Smithville/Elgin/Florence/Jarrell USDA cleanup pending | MEDIUM |
 | about.html "91 Google + 45 Zillow" review breakdown (UNVERIFIED:2026-05-08; Adam GBP/Zillow access needed) | MEDIUM |
 | 2026-04-27-why-home-prices-arent-crashing CTA structure: relative `../get-preapproved` (2) + missing `/refinance-quote` (10th recurrence; full slug corrected 2026-05-10) | MEDIUM |
-| NotebookLM SKILL.md retirement diff — diff drafted 2026-04-26, **32 consecutive dead runs**, Adam apply queue | HIGH (Adam queue) |
-| PSI quota drained Mon AM + Mon PM + Tue AM (3-day consecutive 429 on project 583797351490) — provision dedicated PSI API key OR accept permanent UNVERIFIED | HIGH (Adam) |
+| NotebookLM SKILL.md retirement diff — diff drafted 2026-04-26, **35 consecutive dead runs**, Adam apply queue | HIGH (Adam queue) |
+| PSI quota drained 6/6 consecutive periods (Mon AM + Mon PM + Tue AM + Tue PM + Wed AM + Wed PM 429 on project 583797351490) — provision dedicated PSI API key OR accept permanent UNVERIFIED | HIGH (Adam) |
 | `/investor-loans` (T=68) + `/high-net-worth-mortgage` (T=79) titles missing "Adam Styer" before "NMLS #513013" — brand vs. SERP-truncation tradeoff | MEDIUM (Adam decision) |
 | **NotebookLM CLI auth expired (NEW 2026-05-11)** — `notebooklm login` required; Week 10 master log appended on disk but not pushed to remote notebooks | HIGH (Adam) |
 | GSC URL Inspection sweep — **add Pflugerville + Kyle** (new top-10s 2026-05-11), Hutto, Round Rock, Bee Cave (38+ days unindexed), Lakeway, Georgetown, Leander, products.html | HIGH (Adam) |

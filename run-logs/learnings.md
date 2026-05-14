@@ -938,3 +938,10 @@ Two consecutive Mondays (2026-05-04 and 2026-05-11) AND today's PM retry: all 42
 
 ### Methodology improvements over time
 - Tue AM + PM + Wed AM all caught and captured fresh methodology corrections — substring double-count (Tue PM), marker uniqueness on Netlify deploy polls (Tue AM), and now suburb body-intro audit boundary (Wed AM). The pattern of capturing one methodology correction per rotation week is durable. Each correction permanently reduces false positives in subsequent rotations.
+
+---
+
+## 2026-05-13 PM — Bonus PM run patterns
+
+- **PM bonus runs should be no-rotation drift sweeps.** Sun PM + Mon PM + Tue PM + Wed PM all chose this pattern when SKILL.md fired a second same-day run. Scope: mandatory health checks (sitemap, conversion tracking) + Re-Verify Gate sweep + Step 4B backlog scan + PSI retry. Do NOT duplicate the same-day rotation.
+- **Sibling-agent commits between AM/PM can shift `dataLayer` counts** (today: AM 5/7/7/8 → PM 7/10/10/14 from `30fe26a` Bee Cave R2 + `90bf131` session-end docs). Don't flag this as a regression. Critical tokens (`generate_lead`, `lead_type`, `lead-intake`, `form-name`, `thank_you_page_view`) are the load-bearing checks; raw `dataLayer` count is noise-prone.
