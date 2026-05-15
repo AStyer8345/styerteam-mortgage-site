@@ -1,3 +1,30 @@
+## 2026-05-15 — Suburb Editor: westlake-mortgage-lender Round 2 (Round 2 closeout)
+
+- **Last Round 2 page in the priority queue** — westlake-mortgage-lender.html Round 2 deepening + Round 2 rotation complete (13/13 pages).
+- **Median triple-snapshot reconciliation:** Round 1 had only Redfin $1.6M (city of WLH, Mar 2026, +40.9% YoY). Round 2 adds **TeamPrice 78746 zip YTD $2,394,287** + **Neuhaus 2026 luxury slice $3.5–3.6M @ $756/sqft, 54–85 day DOM, 9.0 mo. supply** + sales-tier breakdown $1M–$2M 45% / $2M–$3M 28% / $3M–$5M 18% / $5M+ 9%. New H3 explains why three sources show three different medians (geography slice, not data conflict).
+- **CRITICAL Lost Creek Country Club correction (Crestline/MorningStar/Star Ranch/Reunion Ranch pattern):** Round 1 linked `lostcreekcc.com` which now points to Lost Creek Custom Cabinetry (East Tennessee — broken first-party reference); the club itself **rebranded to Westlake Country Club in 2022** under Invited and completed a three-year multimillion-dollar transformation in **December 2025** (Lanny Wadkins-redesigned 18-hole course unveiled Nov 2023, tennis/racquet/pool/clubhouse rebuilds, restaurant relaunched as "Veranda"). Address 2612 Lost Creek Blvd. Lost Creek bullet rewritten; Westlake Country Club promoted to named-employer H3 slot.
+- **Eanes ISD update — district past the budget cliff:** new superintendent **Kirk Koennecke** (started Jan 1, 2026); $9.6M FY 2026-27 deficit projection **reversed to $1.6M projected surplus** after $2.8M Right Size Plan + 69 FTE attrition + virtual academy + transfer enrollment expansion (Community Impact Apr 29 2026). 480 teachers qualify for $2,500–$5,000 retention allotments. **5 new Westlake HS 2026-27 courses** (AP Business + Personal Finance, AP Cybersecurity, Fundamentals of Real Estate, Dual Credit English 1301/1302 via ACC, Dual Enrollment Statistics via UT OnRamps).
+- **New first-party comp:** 4312 Amarra Drive (Heyl Homes) sold $3.5M Oct 28, 2025 — Austin's priciest spec sale that week at $1,000/sqft on 3,300 sqft / 3-2 (The Real Deal cited).
+- **New Barton Creek sub-community pricing breakdown** (Seely Properties 2026): Barton Creek West $3M–$7M+ / Estates $1.5M–$2.5M / Villas $1.2M–$1.8M / Sections 1–8 $1.4M–$2.8M.
+- **New Omni Barton Creek Resort employer slot** — $150M renovation completed 2019 (13,000 sqft Mokara Spa, 17 treatment rooms, adults-only rooftop pool) + active Beck Group expansion (180-room new guest tower, ballroom, conference, event pavilion).
+- **3 of 4 Process Steps de-templated** — Step 2 verbatim shared with spicewood ("Your file goes to multiple jumbo and portfolio investors simultaneously. You get competing offers — not just one bank's rate") rewritten with Rob Roy K-1 / Davenport Ranch asset-depletion / Barton Creek RSU differentiation + $300–$700/mo investor-spread math on $2M loans; Step 3 generic "soft pre-qual" rewritten with Westlake listing-agent verification at Rob Roy gate + Barton Creek sub-neighborhoods; Step 4 generic "jumbo can take longer" rewritten with Day-1 appraisal-ordering + HOA-estoppel-ordering at Rob Roy/Barton Creek/Davenport Ranch as actual delay points.
+- **FAQ schema** "median home price" rewritten with three-snapshot reconciliation; **NEW Q added** "Is Eanes ISD's budget stable for 2026-27?" anchoring the $1.6M FY26-27 surplus + Koennecke + August 2026 tax-rate adoption. FAQ accordion synced verbatim.
+- **LocalBusiness schema description** rewritten with 3 median snapshots + 9.0 mo supply + tax stack + Koennecke + Right Size Plan + $1.6M surplus.
+- **WebPage dateModified** 2026-05-01 → 2026-05-15. Meta description refreshed. Sitemap lastmod bumped 2026-05-01 → 2026-05-15.
+- All 4 JSON-LD blocks (LocalBusiness/FAQPage/BreadcrumbList/WebPage) validated clean via python json.loads.
+- **18 new inline source URLs** (combined with Round 1 = 30+ total citations on the page).
+- Queue log updated. Suburb editor queue position rolls over to Round 3 start next run.
+
+## 2026-05-15 PM — daily-opt duplicate same-day fire (bonus drift sweep)
+
+- **Same-day duplicate fire** 4 min after AM cleanup (09:49 → 09:53). No rotation re-do. Every-run checks idempotent.
+- Sitemap 200 ✅. Conversion tracking 10/10 critical tokens hold across all 4 pages. GTM single-container hex verified.
+- PSI 8-of-8 consecutive drain locked in (no new escalation — already at HIGH ceiling).
+- NotebookLM script: 37th consecutive missing check.
+- Re-Verify Gate sweep on 16 carries — all STILL OK / STILL OPEN with no false regressions or new auto-resolutions.
+- **NEW operational MEDIUM flag for Adam:** scheduler reliability degrading (Thursday 5/14 no-fire + Friday 5/15 duplicate same-day fire).
+- Zero site files modified. Zero commits.
+
 ## 2026-05-15 — Weekly Blog Editor: local-lender-vs-online-lender correspondent-lender repositioning
 
 - **Refreshed `blog/local-lender-vs-online-lender-austin-central-texas.html`.** Slug + H1 + title preserved (protect existing rankings). dateModified bumped 2026-04-25 → 2026-05-15. Sitemap lastmod bumped.
