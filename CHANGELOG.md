@@ -1,3 +1,28 @@
+## 2026-05-15 — Weekly Blog Editor: local-lender-vs-online-lender correspondent-lender repositioning
+
+- **Refreshed `blog/local-lender-vs-online-lender-austin-central-texas.html`.** Slug + H1 + title preserved (protect existing rankings). dateModified bumped 2026-04-25 → 2026-05-15. Sitemap lastmod bumped.
+- **Core fix: "broker" → "correspondent lender" positioning** (per Adam's voice guide: "We're a correspondent lender — that's different from a broker, and it matters"). Body recast in 7 places: lead bold, intro paragraph, TSAHC line, "Third Option" H2 + 4 body paragraphs, final H2 + closing. Visible FAQ + FAQPage JSON-LD rewritten (3 Q&As, including new "What's a correspondent lender?" Q replacing the broker-advantage Q). TX regulatory footer "Licensed Mortgage Broker" preserved (legal designation).
+- **Same fix pattern as 2026-04-24 DPA editor run** (`"broker" → correspondent lender`). Adam's flexibility — "can also broker deals when wholesale pricing wins" — preserved as a beat in the positioning.
+- **3 of 5 SKILL.md improvements:**
+  - Austin data point: $445K Austin–RR–SM MSA median (April 2026, Unlock MLS) + 16K+ active listings — added to "Why Austin Buyers" section with inline citation.
+  - Updated rate/program data: Freddie Mac PMMS mid-6% range with `freddiemac.com/pmms` citation; LLPA matrix cited to `singlefamily.fanniemae.com`; TSAHC + TDHCA URLs added (replacing un-linked program names); internal links added to `/austin-down-payment-assistance.html`, `/dscr-loan-austin-tx.html`, `/bank-statement-loans.html`, `/non-qm-loans.html`.
+  - Tighter CTA in Adam's voice: signature reworded to "Got a quote from an online lender or a bank? Send it over. I'll line it up against my pricing... Same-day pre-approval if you want to move on it." Same-day pre-approval differentiator per voice guide.
+- **NOT done (skipped per SKILL.md "never fabricate" rule):** No `/Users/adamstyer/.claude/projects/-Users-adamstyer-Documents/memory/people/` directory exists — no verifiable borrower anecdote available, did not invent one. Photo addition deferred (no verified asset path).
+- **Related Guides anchor updated:** `Mortgage Broker vs Bank` → `Correspondent Lender vs Broker vs Bank` (URL `/mortgage-broker-vs-bank.html` preserved; future redirect/rename is Adam's call).
+- **Blog title lint passed** (`grep "<title>" blog/*.html | grep -v "Adam Styer"` returns empty).
+- **Queued for GSC URL Inspection reindex.**
+- **NEEDS ADAM (NEW 2026-05-15) — rate-shopper cluster consolidation review:** 5-post near-duplicate cluster on "comparing quotes/offers" angle: `how-many-mortgage-quotes-should-i-get.html`, `how-to-compare-two-mortgage-offers.html`, `what-to-compare-besides-mortgage-rate.html`, `is-the-lowest-rate-the-cheapest-loan.html`, `apr-vs-interest-rate-what-actually-matters.html`. Per SKILL.md, posts in a 3+ near-duplicate cluster are not edited unilaterally — consolidation decision (merge into 1–2 canonical posts with 301s, or differentiate angles further) is Adam's call. Logged to TODO.md.
+
+## 2026-05-15 — daily-opt Friday (Content Planning + AEO Review rotation)
+
+- **First fire since Wed PM. Thursday 2026-05-14 styer-site-daily DID NOT FIRE — Internal Linking + Funnel Flow rotation skipped.** Logged as operational MEDIUM flag for Adam (check scheduler). No site edits this session — Friday rotation collapsed correctly per GOALS.md "no new content this week" guidance.
+- **Sitemap 200 ✅. Conversion tracking 10/10 critical tokens** across `/`, `/get-preapproved`, `/refinance-quote`, `/thank-you`. GTM single-container hex-verified (`GTM-PQQ6PGLR`). PSI 7-of-7 consecutive drain locked in (HIGH escalation ceiling — no new bump).
+- **Blog audit:** Latest post 18 days old (2026-04-27-why-home-prices-arent-crashing, deferred per GOALS.md). Audited 2 most recent: `should-i-refinance-austin-tx-2026` clean AEO (6/9 H2 questions, FAQPage schema, balanced /get-preapproved + /refinance-quote CTAs); `why-home-prices-arent-crashing` declarative H2s flagged voice-vs-AEO tradeoff (keep declarative, matches Adam's voice). **NEW finding:** same post missing FAQPage schema — LOW_RISK, bundled with existing 18-carry CTA structure decision.
+- **Re-Verify Gate 15 carries — all hold.** AM Tue/Wed meta fixes (FTB/DPA/Pflugerville) STILL LIVE on Netlify; products.html 10 in-card 1003 (18th carry); style.css working-tree (18th carry); `/investor-loans` + `/high-net-worth-mortgage` titles missing "Adam Styer" (5th run carry); NotebookLM script missing (36th carry).
+- NOTEBOOK_INSIGHT captured: `GTM-` naive substring count ≠ container count (head + noscript references inflate); hex-unique grep is authoritative.
+
+---
+
 ## 2026-05-14 — Suburb Editor Round 2 #12 (Dripping Springs)
 
 - **dripping-springs-mortgage-lender.html Round 2.** Median dual-snapshot — Round 1 Mar 2026 Redfin $542,500 (+4.7% YoY) supplemented with **April 2026 ACTRIS pull via Neuhaus: 50 closings at $575,750 (-19.5% YoY)** — gap reconciled as mix-shift from 2026 new-construction flood.
