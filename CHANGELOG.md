@@ -1,3 +1,16 @@
+## 2026-05-16 — suburb-editor Round 3 kickoff: round-rock-mortgage-lender.html
+
+- **Round 3 begins** — Round 2 completed 2026-05-15 (westlake). Round 3 #1 = round-rock-mortgage-lender.html.
+- **Lighter-touch refresh** following the 2026-05-02 deep renovation (page was already first-party-dense).
+- April 2026 Redfin data attempted via WebFetch (403-blocked); WebSearch surfaced Orchard $415K–$419K — different methodology, didn't swap in unverified Redfin figure. Preserved well-sourced Mar 2026 Redfin $367,500 baseline.
+- **NEW H3: Chandler Creek 78664 spotlight** — Palm Valley east-side community, built late-1990s through early-2000s by KB Homes/Lennar/Centex/Brighton ([austinrealestatehomesblog.com](https://www.austinrealestatehomesblog.com/round-rock/chandler-creek/)). Floor plans 1,120 → ~4,000 sqft on lots up to 0.435 acres. RRISD: Double File Trail Elementary @ 2400 Chandler Creek Blvd → Hernandez Middle → Stony Point HS ([roundrockisd.org](https://www.roundrockisd.org/o/rrisd/page/chandler-oaks-elementary-school)). HOA <$400/yr — pool, ½-mile lit ADA trails, playgrounds, ball fields, Compass Rose Veterans Memorial ([chandlercreekhoa.org](https://www.chandlercreekhoa.org)). Memorial reinforces page-wide VA narrative.
+- **Step-4 process narrative de-templatized** — was verbatim on 8 suburb pages → now Round Rock 78664/78665/78681-specific (38+ DOM reality, seller concessions returning, builder-preferred-lender contingency framing, RRISD on-time-close reputation).
+- WebPage schema dateModified bumped 2026-05-02 → 2026-05-16.
+- Sitemap.xml lastmod bumped 2026-05-02 → 2026-05-16.
+- **3 new inline source URLs added.** All 4 JSON-LD blocks left validated-clean (no schema edits in this pass).
+
+---
+
 ## 2026-05-16 — daily-opt Saturday UNSCHEDULED FIRE (abbreviated playbook)
 
 - **Saturday weekend fire @ 07:12 CDT** — Saturday is NOT in the Mon–Fri rotation. Friday NIGHT's TOMORROW_PRIORITY explicitly anticipated this as scheduler-anomaly evidence; now confirmed. **4th scheduler anomaly in 3 days** (Thu no-fire / Fri triple-fire / Sat weekend fire = 3 distinct anomaly types).
