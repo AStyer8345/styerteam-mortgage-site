@@ -1456,3 +1456,11 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Blog CTA coverage 31/31 ✅; SEO/SEM ZERO/LOW_RISK queue still empty.
 - NotebookLM script 26th consecutive missing; auth expired on master-log source refresh (known carry, HIGH FLAG_FOR_ADAM).
 - Self-review PASS — 0 modifications, hard constraints intact.
+
+## 2026-05-15 NIGHT — daily-opt (Friday — THIRD same-day fire 23:09)
+- Third Friday fire on 2026-05-15 (AM 09:49, PM 09:53, NIGHT 23:09; PM→NIGHT gap = 13.3h). Friday rotation already done twice today. Third-fire bonus drift sweep — every-run non-negotiables only.
+- Sitemap 200 ✅. Conversion tracking 10/10 critical tokens across 4 pages (homepage / get-preapproved / refinance-quote / thank-you). GTM single-container hex `GTM-PQQ6PGLR` verified.
+- Re-Verify Gate: 16 carries — all STILL OK / STILL OPEN. No drift, no auto-resolutions, no false regressions. AM Tuesday meta fixes (FTB 158c, DPA 161c, Pflugerville 151c) STILL LIVE.
+- PSI quota 8-of-8 drain held; skipped retry to preserve potential Monday-refresh window. NotebookLM script 38th consecutive missing check.
+- Scheduler reliability escalated MEDIUM → HIGH FLAG_FOR_ADAM: Thursday 2026-05-14 no-fire + Friday 5/15 triple same-day fires confirms pattern, not flakiness. Manual scheduler review warranted.
+- Self-review PASS — 0 site files modified, hard constraints intact, style.css working-tree (Adam's nav-dropdown fix) preserved untouched.

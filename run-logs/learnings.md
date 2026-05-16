@@ -945,3 +945,17 @@ Two consecutive Mondays (2026-05-04 and 2026-05-11) AND today's PM retry: all 42
 
 - **PM bonus runs should be no-rotation drift sweeps.** Sun PM + Mon PM + Tue PM + Wed PM all chose this pattern when SKILL.md fired a second same-day run. Scope: mandatory health checks (sitemap, conversion tracking) + Re-Verify Gate sweep + Step 4B backlog scan + PSI retry. Do NOT duplicate the same-day rotation.
 - **Sibling-agent commits between AM/PM can shift `dataLayer` counts** (today: AM 5/7/7/8 → PM 7/10/10/14 from `30fe26a` Bee Cave R2 + `90bf131` session-end docs). Don't flag this as a regression. Critical tokens (`generate_lead`, `lead_type`, `lead-intake`, `form-name`, `thank_you_page_view`) are the load-bearing checks; raw `dataLayer` count is noise-prone.
+
+---
+
+## 2026-05-15 PM — Same-day duplicate fire pattern + scheduler reliability degradation
+
+### Patterns
+- **Same-day duplicate fire 4 minutes after AM cleanup.** AM ran 09:49 (Friday rotation: Content Planning + AEO Review). PM fired 09:53 — same Friday, same date. This is a new operational failure mode: not a Tue PM / Wed PM / Sun PM "bonus PM" pattern (those came hours after AM, with sibling agents in between), but a back-to-back re-trigger with effectively no system-state change. Correct response: every-run health checks are idempotent and should still run; rotation work must NOT re-execute. Treat as a bonus drift sweep with no editorial scope.
+- **PM `dataLayer` drift vs AM was minimal** today (TY 8→10, others identical). Confirms the AM theory that yesterday's larger swings (5/7/7/8 → 7/10/10/14 in Wed PM) were sibling-agent commits, not duplicate-fire side effects. When the gap is 4 minutes with zero commits between, dataLayer count is stable to ±2. Use that as a "no other agent ran" signature.
+- **Scheduler reliability is now a 2-data-point regression.** Thursday 2026-05-14 missing-fire + Friday 2026-05-15 duplicate same-day fire. Both within the same week. Pattern to watch: if Monday 5/18 fires correctly, this is two unrelated incidents. If Monday fires at an unusual time or duplicates, scheduler infra is the root cause. Logged as operational MEDIUM for Adam.
+- **PSI 8/8 drain — same project ID, same error verbatim.** Project 583797351490 daily-queries quota saturated. Confirm: only one PSI run per day (AM only). Skipping `/refinance-quote` 2nd call to preserve any remaining quota for legitimate ad-hoc checks.
+
+### Methodology improvements over time
+- **Establishing "AM call type vs PM call type" as a first-class run-mode distinction.** The previous learnings entry (2026-05-13 PM) established the no-rotation rule for late-day bonus runs. Today's entry refines it: even minutes-apart duplicate fires follow the same rule. The decision is based on whether the AM run wrote `run-logs/<date>.md` and ran Step 4 rotation, NOT on clock time. Single test: if today's date-stamped log exists with rotation work done, PM is a no-rotation drift sweep.
+- **Path: read `run-logs/<today>.md` before deciding rotation scope.** Today this single read informed the entire run shape. Cheaper than re-running the rotation; safer than skipping every-run checks.
