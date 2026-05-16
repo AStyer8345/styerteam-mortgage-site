@@ -1,3 +1,13 @@
+## 2026-05-16 — daily-opt Saturday UNSCHEDULED FIRE (abbreviated playbook)
+
+- **Saturday weekend fire @ 07:12 CDT** — Saturday is NOT in the Mon–Fri rotation. Friday NIGHT's TOMORROW_PRIORITY explicitly anticipated this as scheduler-anomaly evidence; now confirmed. **4th scheduler anomaly in 3 days** (Thu no-fire / Fri triple-fire / Sat weekend fire = 3 distinct anomaly types).
+- Sitemap 200 ✅. Conversion tracking 10/10 critical tokens hold across all 4 pages (GTM single-container `GTM-PQQ6PGLR` hex verified).
+- PSI 8-of-8 consecutive drain — retry skipped to preserve Monday 5/18 refresh window. Already at HIGH ceiling.
+- NotebookLM script: 39th consecutive missing check.
+- Re-Verify Gate sweep on 16 carries — all STILL OK / STILL OPEN with no false regressions or new auto-resolutions.
+- Scheduler reliability HIGH flag held + evidence expanded (3 distinct anomaly types in 3 consecutive days). Strongly recommend manual scheduler-log review.
+- 0 site files edited.
+
 ## 2026-05-15 — Suburb Editor: westlake-mortgage-lender Round 2 (Round 2 closeout)
 
 - **Last Round 2 page in the priority queue** — westlake-mortgage-lender.html Round 2 deepening + Round 2 rotation complete (13/13 pages).

@@ -959,3 +959,10 @@ Two consecutive Mondays (2026-05-04 and 2026-05-11) AND today's PM retry: all 42
 ### Methodology improvements over time
 - **Establishing "AM call type vs PM call type" as a first-class run-mode distinction.** The previous learnings entry (2026-05-13 PM) established the no-rotation rule for late-day bonus runs. Today's entry refines it: even minutes-apart duplicate fires follow the same rule. The decision is based on whether the AM run wrote `run-logs/<date>.md` and ran Step 4 rotation, NOT on clock time. Single test: if today's date-stamped log exists with rotation work done, PM is a no-rotation drift sweep.
 - **Path: read `run-logs/<today>.md` before deciding rotation scope.** Today this single read informed the entire run shape. Cheaper than re-running the rotation; safer than skipping every-run checks.
+
+## 2026-05-16 — Saturday weekend fire (scheduler-anomaly pattern expands)
+
+- Saturday styer-site-daily fired at 07:12 CDT on a day not in the Mon–Fri rotation playbook. Confirms Friday NIGHT's hypothesis that the scheduler is firing on no-fire days.
+- 4 anomalies in 3 days, 3 distinct types: (1) Thu 5/14 no-fire, (2) Fri 5/15 triple-fire same day, (3) Sat 5/16 weekend fire. Pattern is structural, not flakiness.
+- Operational discipline confirmed: the "abbreviated weekend playbook" (every-run + Re-Verify Gate, no rotation) is the right shape because Saturday/Sunday have no rotation work to legitimately re-execute. Following the rotation rotation on a weekend fire would either duplicate Friday's work or skip ahead to Monday's — both wrong.
+- Re-Verify Gate continues to hold under repeated runs: 16 carries across 5 consecutive fires (AM/PM/NIGHT Fri + Sat) with no false regressions and no carry creep. Discipline is sustainable.
