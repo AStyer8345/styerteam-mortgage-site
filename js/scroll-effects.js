@@ -101,7 +101,7 @@
   }
 
   function initCounters() {
-    var counters = Array.prototype.slice.call(document.querySelectorAll('.stats-strip .stat-number'));
+    var counters = Array.prototype.slice.call(document.querySelectorAll('.stats-grid .stat-number'));
     if (!counters.length) return;
 
     counters.forEach(function (counter) {
