@@ -1,3 +1,19 @@
+## 2026-05-17 — suburb-editor Round 3 slot 2: georgetown-mortgage-lender.html
+
+- **Lighter-touch refresh** following 2026-05-03 Round 2 deep renovation (page was already first-party-dense).
+- Redfin direct fetch 403-blocked (same as Round Rock 5/16); WebSearch re-confirmed March 2026 Redfin median $413K +1.9% YoY = preserved page's $412.5K figure rather than swap for an Orchard/Zillow methodology mismatch.
+- **NEW H3: Cimarron Hills (78628) — Guard-Gated Golf + Second ISD Split** — Jack Nicklaus Signature 1,000+ acre community opened Jan 2003 with clubhouse at 200 Cimarron Hills Trail W ([cimarronhills.com](https://www.cimarronhills.com/about-us/our-location-200-cimarron-hills-trail-west-georgetown-tx-78628)). 4-tier pricing ladder per [Cimarron Hills real-estate page](https://www.cimarronhills.com/real-estate): Villas 1,550–2,600 sqft / 2–4BR low-$300s; Homes on the Fairway low-$450s; Country Club Homes $558,900+; Estates ½–1 acre $700s+. Current new-construction inventory: 5 active listings at $1.23M median list ([Redfin](https://www.redfin.com/neighborhood/199061/TX/Georgetown/Cimarron-Hills/new-homes)); 12-month resale median $1,150,000.
+- **CRITICAL — SECOND LHISD-Georgetown-mailing-address split surfaced** — Cimarron Hills is split between GISD (northern half: San Gabriel Elem → Benold MS → East View HS) and Liberty Hill ISD (southern half: Rancho Sienna Elem → Santa Rita MS → Legacy Ranch HS / Liberty Hill HS) per [austinrealestatehomesblog](https://www.austinrealestatehomesblog.com/georgetown/cimarron-hills/) + [Liberty Hill ISD zone tool](https://www.libertyhill.txed.net/zones). MorningStar pattern repeats; now both LHISD traps documented on the page.
+- **Historic-district filler paragraph rewritten** — was generic "popular with buyers who want character architecture" → Old Town District 78626 specifics: FHA 203(k) renovation framework + 2026 Williamson County FHA limit $571,550 + non-conforming-lot Texas appraiser callout + live [Redfin Old Town District tracker](https://www.redfin.com/neighborhood/176391/TX/Georgetown/Old-Town-District/housing-market) link.
+- **Why-card "Experience with Georgetown's Diverse Market" de-templated** → "ISD-Zoning Verification Before You Offer" card naming MorningStar (entire community) + Cimarron Hills (southern half) as the two LHISD traps with underwriting-tax-escrow rationale.
+- LocalBusiness schema description expanded with Cimarron Hills + clubhouse address + GISD/LHISD split.
+- FAQ home-price schema + accordion answer updated with Cimarron Hills 4-tier ladder + $1.15M resale median.
+- WebPage dateModified bumped 2026-05-03 → 2026-05-17.
+- Sitemap.xml lastmod bumped 2026-05-03 → 2026-05-17.
+- **5 new inline source URLs added.** All 4 JSON-LD blocks validated clean.
+
+---
+
 ## 2026-05-16 — suburb-editor Round 3 kickoff: round-rock-mortgage-lender.html
 
 - **Round 3 begins** — Round 2 completed 2026-05-15 (westlake). Round 3 #1 = round-rock-mortgage-lender.html.
