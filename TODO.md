@@ -86,6 +86,8 @@ Items auto-appended by scheduled remote agents land here. Glance weekly.
   4. Once verified, the dashboard lights up. Crawl stats are delayed ~24h on a new property.
   5. Optional: in Settings → IndexNow, paste the key `acd320ce4aaac882bfb455892bdcf208` so Bing associates their dashboard with our IndexNow submissions (gives you submission-log visibility).
 
+- [ ] **IndexNow HTTP 403 — Phase 1a push (2026-05-17).** After pushing Phase 1a rebuild, `python3 _deliverables/indexnow-submit.py --from-git-diff` returned HTTP 403 "Host not in allowlist". URLs attempted: round-rock-mortgage-lender.html, austin-area-mortgage-lender.html, index.html. Likely cause: Bing Webmaster Tools domain not yet verified (see setup note above) — the IndexNow key file exists at `/acd320ce4aaac882bfb455892bdcf208.txt` but Bing hasn't confirmed domain ownership. Fix: complete Bing Webmaster Tools setup, then re-run `python3 _deliverables/indexnow-submit.py https://styermortgage.com/round-rock-mortgage-lender.html`.
+
 - [ ] **FLAG 2026-04-22 — Phase 1b (Cedar Park) blocked: Phase 1a (Round Rock) pre-check failed.** Phase 1a status is still `pending` in PHASES.md — it must reach `status: completed` before Phase 1b can execute. Phase 1b trigger fired today (scheduled 2026-04-22) but bailed without touching cedar-park-mortgage-lender.html. Action required: complete Phase 1a (round-rock-mortgage-lender.html rebuild) and update PHASES.md Phase 1a status to `completed`, then re-trigger Phase 1b.
 
 
