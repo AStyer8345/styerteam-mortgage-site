@@ -976,3 +976,11 @@ Two consecutive Mondays (2026-05-04 and 2026-05-11) AND today's PM retry: all 42
 - **TY dataLayer 8↔10 bounce is now a documented cache-regen artifact, not drift.** Four consecutive runs show: Fri NIGHT 8 → Sat AM 10 → Sat NIGHT 8. Page hasn't been edited. Each value is observed at the edge cache after Netlify regenerates that node's response. The "critical token" set (`ty=1`, `ni=1`, `gtm=1` of GTM-PQQ6PGLR) holds across all bounces; the dataLayer count is a noisy total that includes both static-init lines and conditional event lines. Don't write the dataLayer count as a regression signal; do write `ty` and `ni` as regression signals.
 - **Saturday "second fire" naming convention: use `-night.md` (matches Friday's pattern).** Sat AM = `2026-05-16.md`, Sat NIGHT = `2026-05-16-night.md`. Mirrors Fri 5/15 (which has `.md`, `-pm.md`, `-night.md`). The `-pm.md` slot was unused for Sat AM-fire because the AM fire already covered the morning slot. Slot picker: AM=`.md`, midday=`-pm.md`, evening=`-night.md`. Don't invent new suffixes when the existing ones map cleanly.
 
+
+## 2026-05-17 — Sunday weekend fire — scheduler-anomaly streak hits 7
+
+Yesterday's TOMORROW_PRIORITY exact prediction held: "Sunday 2026-05-17 is also a no-fire day per playbook. If Sunday fires: ... Tally would advance to 7+ anomalies in 4 days." Sunday fired at 07:08 CDT. Pattern is now: Thu 5/14 no-fire, Fri 5/15 triple-fire, Sat 5/16 double-fire, Sun 5/17 single fire = 7 anomalies / 4 distinct anomaly types / 4 consecutive days.
+
+Key learning: the abbreviated weekend playbook (every-run non-negotiables + Re-Verify Gate, no rotation) is the right shape for unexpected weekend fires. It costs minimal quota (no PSI, no NotebookLM), surfaces no false regressions, and produces durable scheduler-anomaly evidence for Adam. Rotation MUST remain skipped on weekends regardless of fire count — the playbook is the source of truth, not the scheduler's behavior.
+
+Edge cache TY page dataLayer continues to bounce 8↔10 between fires. Critical-token signal (ty=1, ni=1) holds across the oscillation. The bounce is cosmetic, not a regression.
