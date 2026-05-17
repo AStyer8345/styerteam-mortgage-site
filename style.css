@@ -5,6 +5,8 @@
 header{transition:background-color 0.35s ease,box-shadow 0.35s ease,backdrop-filter 0.35s ease}
 header.scrolled{background-color:rgba(10,31,63,0.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:var(--shadow-md)}
 header.scrolled .nav-links a,header.scrolled .nav-brand{color:var(--color-white)}
+header.scrolled .nav-dropdown a{color:var(--color-text)}
+header.scrolled .nav-dropdown a:hover{color:var(--color-gold)}
 header.scrolled .nav-logo-img{filter:brightness(0) invert(1)}
 header.scrolled .mobile-menu-toggle span{background-color:var(--color-white)}
 .reveal{opacity:0;transform:translateY(25px);transition:opacity 0.65s ease,transform 0.65s ease;transition-delay:var(--reveal-delay,0s);will-change:opacity,transform}
