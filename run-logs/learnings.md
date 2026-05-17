@@ -966,3 +966,13 @@ Two consecutive Mondays (2026-05-04 and 2026-05-11) AND today's PM retry: all 42
 - 4 anomalies in 3 days, 3 distinct types: (1) Thu 5/14 no-fire, (2) Fri 5/15 triple-fire same day, (3) Sat 5/16 weekend fire. Pattern is structural, not flakiness.
 - Operational discipline confirmed: the "abbreviated weekend playbook" (every-run + Re-Verify Gate, no rotation) is the right shape because Saturday/Sunday have no rotation work to legitimately re-execute. Following the rotation rotation on a weekend fire would either duplicate Friday's work or skip ahead to Monday's — both wrong.
 - Re-Verify Gate continues to hold under repeated runs: 16 carries across 5 consecutive fires (AM/PM/NIGHT Fri + Sat) with no false regressions and no carry creep. Discipline is sustainable.
+
+---
+
+## 2026-05-16 NIGHT — Saturday Double-Fire + 6-Anomaly 3-Day Window + 40th Dead NotebookLM Run
+
+### Patterns
+- **Scheduler weekend-and-extra-fire pattern is now sustained, not transient.** Three days, three distinct anomaly types: Thu 5/14 zero fires, Fri 5/15 three fires same day (09:49/09:53/23:09), Sat 5/16 two fires same day (07:12/23:13). 6 anomalies in 3 days. Idempotent every-run checks held: sitemap 200, conversion 10/10, working-tree style.css untouched, zero false regressions across all 5 anomalous runs. This is the right "defensive design" outcome — when scheduler misbehavior is high, the only thing that protects against bad data is making each run independently safe. Generalizes: any scheduled task that may fire unexpectedly needs (a) idempotent every-run checks, (b) rotation gated explicitly by weekday, (c) carry-state stored on disk not in-memory.
+- **TY dataLayer 8↔10 bounce is now a documented cache-regen artifact, not drift.** Four consecutive runs show: Fri NIGHT 8 → Sat AM 10 → Sat NIGHT 8. Page hasn't been edited. Each value is observed at the edge cache after Netlify regenerates that node's response. The "critical token" set (`ty=1`, `ni=1`, `gtm=1` of GTM-PQQ6PGLR) holds across all bounces; the dataLayer count is a noisy total that includes both static-init lines and conditional event lines. Don't write the dataLayer count as a regression signal; do write `ty` and `ni` as regression signals.
+- **Saturday "second fire" naming convention: use `-night.md` (matches Friday's pattern).** Sat AM = `2026-05-16.md`, Sat NIGHT = `2026-05-16-night.md`. Mirrors Fri 5/15 (which has `.md`, `-pm.md`, `-night.md`). The `-pm.md` slot was unused for Sat AM-fire because the AM fire already covered the morning slot. Slot picker: AM=`.md`, midday=`-pm.md`, evening=`-night.md`. Don't invent new suffixes when the existing ones map cleanly.
+
