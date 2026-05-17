@@ -127,6 +127,8 @@ Deploy gate:
 
 ## Phase 5: Internal Links and AEO Blocks
 
+Status: completed in this Phase 5 work session.
+
 Tasks:
 - Add "Related complex-income pages" blocks to every core page.
 - Add 4-6 concise Q&A blocks per core page written in extractable answer format.
