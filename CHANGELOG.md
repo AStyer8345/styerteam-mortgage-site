@@ -1,3 +1,61 @@
+## 2026-05-17 EVENING — Repositioning sweep + "21-Day Avg. Close" claim retired sitewide
+
+- **Goal context:** Adam moving to new company. New-employer compliance audit incoming. Pre-emptive cleanup of styermortgage.com so the audit clears on first read. Positioning shifted to "the loans your bank said no to" + wholesale-pricing leg.
+- **Homepage hero:** H1 → "The loans your bank said no to. The pricing your bank can't match." Subtitle rewritten: complicated income / wholesale pricing two-leg pitch. Stats strip slot 4: "21 Days / Avg. Close Time" → "Non-QM / & Self-Employed Specialist". Boilerplate intro paragraph rewritten to lead with complicated-income specialty. Homepage FAQ schema + accordion: stripped the "21 days average close time" claim.
+- **about.html:** H1 → "Hi, I'm Adam Styer. I close the loans your bank can't." Subtitle rewritten around specialty + wholesale pricing.
+- **Sitewide find-and-replace:** "21-Day Avg. Close" → "1,000+ Loans Closed" across trust badges (~80 files), footer Awards & Recognition blocks (~30 files), `lp-trust-chip` spans (ad LPs), inline spans, list items.
+- **Boilerplate body-copy:** "and an average 21-day close" → "and 1,000+ loans closed since 2017" on index, austin-area, dripping-springs, elgin, florence, jarrell, liberty-hill, manor, marble-falls.
+- **san-marcos testimonial:** specific "closed in 21 days" claim stripped from fabricated-looking testimonial pending full testimonial audit per 2026-05-17 compliance review.
+- **Files touched:** ~95 HTML files. All edits via exact-string Edit with `replace_all=true` — surrounding context preserved.
+- **3 acceptable 21-day mentions left as-is:** generic advice paragraph in `blog/2026-04-01-how-to-choose-a-mortgage-lender`, internal `dashboard.html` placeholder text, historical `updates/2026-02-20-fast-closes-teamwork-and-spring-market-momentum.html` (dated post about one specific deal).
+- **GOALS.md fully rewritten** at /Users/adamstyer/Documents/Daily Operating System/GOALS.md — loan-officer-first, LoanOS/Client Ops/portfolio paused.
+- **2026-05-17_compliance-audit** delivered to workspace folder with 21-finding pre-audit review and prioritized remediation plan. Critical findings: rate widget APR missing on austin-mortgage-rates.html (Reg Z §1026.24(c)), apparent fabricated testimonials (FTC 16 CFR Part 255), GLBA privacy policy gap.
+- **Open compliance follow-ups (not done this session):** testimonial authenticity audit (Adam call), rate widget APR fix, privacy policy GLBA rewrite, sitewide superlative cleanup ("award-winning" in schema, "Austin's Top-Rated", "best/lowest"), EHL coverage gaps on ~60 pages, NMLS Consumer Access link gaps on ~53 pages, standard footer partial build.
+- **Deploy:** uncommitted in working tree. Adam to run git add/commit/push when ready.
+
+---
+
+## 2026-05-17 — Private-wealth / non-QM expansion (6 new niche pages + homepage schema/FAQ rewrite)
+
+**Driver:** Adam-approved strategic SEO/AEO audit + multi-agent execution. Audit found the site was schema-optimized for commodity searches ("Austin mortgage broker, 21-day close, 40+ lenders") while the actual book is 1,000+ closings of complex-income / private-wealth deals. Goal: add high-value niche pages and reposition homepage structured data to dominate `bank statement Austin`, `DSCR Texas`, `K-1 mortgage`, `asset depletion`, `1099-only`, `P&L mortgage`, and `OTC construction Texas` — keyword universes competitor research confirmed nobody owns.
+
+**Note re session overlap:** This work ran earlier on 2026-05-17 (daytime). Adam's EVENING repositioning sweep (above entry) ran after, replacing the homepage hero H1 + subtitle with sharper "loans your bank said no to" framing and stripping the 21-day claim sitewide. My homepage schema/FAQ/nav/Offer-Catalog edits and the 6 new niche pages survived clean. The Q5 FAQ "21 days average close time" sentence was removed by Adam's sweep — schema and visible accordion still match verbatim.
+
+**Process:**
+- **3 parallel research agents** produced sourced research bundles in `cowork/scratch/styer-research-{nonqm-mechanics,austin-market,competitor-aeo}.md` (~9,000 words, primary-source citations: FHFA, Fannie Selling Guide, Freddie §5307.1, Census ACS, ABoR, NAR International Transactions, Angel Oak/Acra/Newrez/A&D lender matrices).
+- **4 parallel content agents** built 6 new HTML pages off the research bundles + `bank-statement-loans.html` pattern. [UNCERTAIN] research items hedged with embedded `<!-- FLAG_FOR_ADAM: ... -->` comments.
+- **1 fact-check verification agent** cross-referenced all 7 changed files against research and produced `FLAG_FOR_ADAM.md`. Verdict YELLOW → blocker (fabricated 5-star testimonials on all 6 new pages) → testimonials deleted per Adam decision → effectively GREEN.
+
+**Homepage schema/structure changes that survived Adam's EVENING sweep:**
+- Title, meta description, OG, Twitter Card — all reframed to niche
+- `MortgageBroker` schema description rewritten + Offer Catalog reordered (12 programs, non-QM first, conventional/FHA/VA last)
+- `Person` schema upgraded: `description`, `knowsAbout` array (12 specialties), expanded `sameAs` to include NMLS Consumer Access + Yelp + Instagram, added `url` to `hasCredential`
+- `FAQPage` schema rewritten — 5 niche citation-grade Q&As replacing commodity questions; visible accordion HTML updated to match schema verbatim; FAQ answers trimmed to ~50w AEO target with internal links to the 6 new pages
+- Bento loan grid: "First-Time Buyer Programs" wide card → "DSCR Investor Loans" wide card
+- Nav (header + footer): leads with "Business Owners & Self-Employed" pillar link; surfaces Asset Depletion + K-1 Income + non-QM hub
+- Sitemap.xml: 6 new URLs added with 2026-05-17 lastmod (0.9 pillar, 0.8 niches); homepage lastmod bumped
+
+**Homepage changes that were OVERRIDDEN by Adam's EVENING sweep (kept his):**
+- H1 (mine: "Mortgages for Business Owners, Investors & Complex Deals" → his: "The loans your bank said no to. The pricing your bank can't match.")
+- Hero subtitle (mine niche-specific → his: wholesale-pricing two-leg pitch)
+- Stats strip slot 4 (mine: trust badge already updated → his: "Non-QM & Self-Employed Specialist" replaces "21 Days Avg. Close")
+
+**New pages (6, all in repo root):**
+- `mortgage-for-business-owners-austin.html` (pillar, ~759 lines, 12 FAQs, 5 illustrative deal archetypes labeled as illustrative)
+- `asset-depletion-mortgage-texas.html` — divisor comparison table (Fannie 360 / Freddie §5307.1 240 / non-QM 60-120), worked $3M founder example, retirement haircut hedged per [UNCERTAIN]
+- `k1-income-mortgage-austin.html` — Fannie B3-3.4-19 (effective 2026-03-04) sub-25% framing, Form 1084 mechanics, business liquidity test (current ratio ≥1.0), worked law-firm partner example
+- `1099-only-mortgage-texas.html` — expense factor methodology, multiple-1099 handling, 1-yr vs 2-yr history comparison
+- `p-and-l-mortgage-texas.html` — CPA-prepared P&L requirements, who can prepare (CPA/EA/CTEC), hybrid deposit validation
+- `one-time-close-construction-loan-texas.html` — Texas §50(a)(5) construction-lien rules (5-day waiting, 3-day rescission, spousal joinder, written contract), Hill Country pricing tiers ($180-$300/sq ft, $900K-$2.5M typical), 7-county target grid
+
+**Schema coverage on every new page:** LocalBusiness + LoanOrCreditService + FAQPage + Article (Person author with NMLS identifier) + BreadcrumbList. 12 FAQs each (13 on P&L), 40-60w answers, schema/visible accordion verbatim match. Fabricated 5-star testimonials deleted per Adam decision.
+
+**Fact-check baseline checks all PASS:** zero "Styer Team" / "nationwide" / raw URL violations; 231 internal links resolve; NMLS/GTM/CSS/phone/address identical across all files. `style.css` deliberately not touched (Adam's 22nd carry preserved).
+
+**Items requiring Adam to verify against current wholesale matrices before quoting borrowers** (all hedged on live pages, full list in `FLAG_FOR_ADAM.md`): Fannie 360-month divisor (sourced via Truss, not primary Fannie text), Newrez SmartSelf 50% 1099 factor, A&D P&L parameters (660 FICO, $2.5M cap), Acra 1099 parameters, retirement haircut convention, non-QM rate premium bps, OTC contingency reserve %, Hill Country pricing tiers.
+
+---
+
 ## 2026-05-17 — suburb-editor Round 3 slot 2: georgetown-mortgage-lender.html
 
 - **Lighter-touch refresh** following 2026-05-03 Round 2 deep renovation (page was already first-party-dense).
