@@ -13,7 +13,7 @@ Owner: Adam Styer | Mortgage Solutions LP
 
 ## Phase 1: Foundation Cleanup
 
-Status: completed in commit `9b70175`.
+Status: completed in commit `199f025`.
 
 Tasks:
 - Replace remaining "Apply Now" and "Quick Quote" CTAs on priority pages with scenario-review language.
@@ -30,7 +30,7 @@ Deploy gate:
 
 ## Phase 2: Conversion Layer
 
-Status: implemented locally after `9b70175`; ready for review and commit.
+Status: completed in commit `4986d64`.
 
 Tasks:
 - Rename all lead forms from "Scenario Review" only where the form title fits the page intent:
@@ -54,7 +54,13 @@ Deploy gate:
 
 ## Phase 3: Product + Location Landing Pages
 
+Status: completed in this Phase 3 work session.
+
 Build these after Phase 2 so added traffic lands on stronger conversion surfaces.
+
+Implementation note:
+- Built six missing product + location pages and reused the existing Austin DSCR and K-1 income pages rather than duplicating near-identical URLs.
+- Added sitemap entries and inbound related links from the closest core hub pages.
 
 Priority pages:
 - Bank Statement Loans Austin TX
