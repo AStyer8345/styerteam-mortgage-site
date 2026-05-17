@@ -13,7 +13,7 @@ Owner: Adam Styer | Mortgage Solutions LP
 
 ## Phase 1: Foundation Cleanup
 
-Status: in progress from current work session.
+Status: completed in commit `9b70175`.
 
 Tasks:
 - Replace remaining "Apply Now" and "Quick Quote" CTAs on priority pages with scenario-review language.
@@ -30,7 +30,7 @@ Deploy gate:
 
 ## Phase 2: Conversion Layer
 
-Build before adding more traffic pages.
+Status: implemented locally after `9b70175`; ready for review and commit.
 
 Tasks:
 - Rename all lead forms from "Scenario Review" only where the form title fits the page intent:
@@ -168,4 +168,3 @@ Post-deploy checks:
 - Confirm NMLS/footer disclosures render.
 - Run Rich Results/Schema validation on core pages.
 - Update GBP and internal tracking notes with changed positioning.
-
