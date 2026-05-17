@@ -122,3 +122,5 @@ Items auto-appended by scheduled remote agents land here. Glance weekly.
 - [x] **Phase 5** — CONTEXT/CHANGELOG/DECISIONS/TODO/sitemap updates + deployment checklist
 - [x] **about.html canonical address resolved** — aligned to 5718 Sam Houston Circle (closes 12+ run blocker)
 - [x] **USDA cascade decision** — noindex + remove from nav + product card; reversible
+- [ ] **Round Rock rebuild live (2026-05-17 — Phase 1a).** Submit https://styermortgage.com/round-rock-mortgage-lender.html to Google Search Console via URL Inspection → Request Indexing.
+

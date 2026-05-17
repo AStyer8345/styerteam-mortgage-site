@@ -92,11 +92,13 @@ For each city, the rebuild must include:
 ### Phase 1a — Round Rock
 
 **Scheduled:** 2026-04-19 (Sun)
-**Status:** pending
+**Status:** completed
+**Actual:** 2026-05-17
 **File:** `round-rock-mortgage-lender.html`
 **Angle:** "Round Rock's Teravista vs Forest Creek: Two Different Loan Conversations"
 **Pre-check:** Phase 0 status == completed
 **Post-check:** boilerplate % for this page drops below 3%, H2s share no pattern with other Tier 1 pages
+**Notes:** All 8 AEO items applied: (1) direct-answer summary block with Adam Styer + NMLS #513013 + Teravista/Forest Creek hook; (2) 5 of 8 H2s are question-form, all unique vs other Tier 1 pages; (3) definitional paragraph "A Round Rock mortgage lender is..."; (4) April 2026 Market Snapshot block with median price, DOM, inventory, combined tax rate 1.68%, MoM rate movement; (5) 5 named neighborhoods with price ranges, loan profiles, HOA/MUD notes, flood zone flags; (6) closed-loan story (J.M., Teravista, $465K, conventional 5% down); (7) 5 city-specific FAQ questions with unique stems + bulleted answers where natural; (8) byline + last-reviewed date near H1; (9) 3 topical cluster internal links (conventional, USDA, construction); (10) full schema stack — LocalBusiness (@id), Person (NMLS #513013 PropertyValue identifier), 6 Service schemas, FAQPage with SpeakableSpecification, BreadcrumbList, WebPage with author + dateModified; (11) sitemap lastmod updated to 2026-05-17; (12) paragraph-context internal links added to index.html and austin-area-mortgage-lender.html.
 
 ### Phase 1b — Cedar Park
 
