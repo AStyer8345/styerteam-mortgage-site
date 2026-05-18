@@ -125,3 +125,61 @@ FLAG_FOR_ADAM HTML comment embeds: 11 total across the 6 new pages, all on hedge
 **Eight items requiring lender-matrix verification** before quoting a specific borrower based on page language. None of these are visible accuracy violations — the pages all use hedged language — but the underlying claims should be re-confirmed against current wholesale rate sheets before relying on them in production deals.
 
 Everything else is clean. Bylines, schemas, internal links, NMLS/GTM/CSS/phone/address baseline, factual claim consistency, Texas-licensed positioning, hedging on [UNCERTAIN] items, FAQ schema integrity — all pass.
+
+---
+
+# 2026-05-17 (afternoon) — UX/Conversion overhaul
+
+Major homepage + new `/scenario` page changes. Needs your eyes on a few things:
+
+### 1. Brand-name conflict (UNRESOLVED — needs decision)
+
+Your **global** `/Users/adamstyer/Documents/CLAUDE.md` says:
+> Business name: HyperSmart Loans (never "The Styer Team", **never "Adam Styer | Mortgage Solutions LP"**)
+
+But this site's **project** `CLAUDE.md` (and `.claude/CLAUDE.md`) says:
+> Never use "The Styer Team" — **always "Adam Styer | Mortgage Solutions LP"**
+
+These contradict each other. The site footer + landing-page footers all currently say "Adam Styer | Mortgage Solutions LP." I did not touch them in this session. **Decide which name is correct for this site and update the appropriate CLAUDE.md so future sessions don't fight over it.**
+
+### 2. Case studies are composites (anonymized) — you approved this
+
+Three composite case studies replaced the generic "Why Choose Adam" 6-card section on the homepage. They reflect typical Non-QM/jumbo/DSCR/refi rescue files. Numbers and locations are illustrative, not real client data. **Read them and edit any numbers that aren't accurate to what you actually close** — especially:
+- Westlake $1.2M (21-day close, bank statement program)
+- 4-property STR portfolio (LLC vesting, 60-day close)
+- Pflugerville $485K rescue ($90/mo savings, 0.375% rate beat)
+
+If any of those numbers feel inflated, dial them down before this gets seen as advertising hyperbole.
+
+### 3. Review counts are now live (92 Google / 45 Zillow)
+
+Stats strip and trust lines use these numbers. **If those counts change, find/replace the numerals**:
+- `index.html`: stats-strip section + hero-form-trust + form-trust-line
+- `scenario.html`: lp-trust-bar + lp-form-trust-line
+
+### 4. Smart-form data — make sure your CRM + n8n pickup handles new fields
+
+The mid-page Quick Contact form (Netlify form name `quick-contact`) now posts these additional fields:
+- `employment_type`, `property_use`, `credit_score`, `timeline`, `loan_amount`, `income_range`, `notes`
+
+The new `/scenario` form (Netlify form name `scenario`) posts everything above + `bank_said`, `situation`, and `documents` (file upload, multipart).
+
+**Action items:**
+- Make sure your n8n inbound webhook for new lead notifications surfaces these new fields, otherwise they'll be invisible in your alerts.
+- The `scenario` form does NOT post to the `/.netlify/functions/lead-intake` Mailchimp/LoanOS pipeline because file uploads can't be JSON-encoded — it uses native Netlify multipart submission only. If you want Mailchimp tagging on scenario leads, we'll need a Netlify function that subscribes to the `scenario` form submission webhook server-side.
+
+### 5. Mobile hero photo
+
+Added a small circular headshot (96px) at the top of the mobile hero, using the existing `assets/adam-cutout-900.webp`. The full-body cutout is cropped to top-center for face emphasis. **If you want a true headshot crop instead, replace the asset** at `assets/adam-cutout-900.webp` with a head-and-shoulders image at 192×192 or larger.
+
+### 6. Sticky mobile CTA now appears at 120px scroll OR after 2 seconds
+
+Previously waited until 30% page scroll. Now effectively persistent — first scroll past 120px OR a 2-second timeout reveals it. Test on your own phone and tell me if it feels too aggressive.
+
+### 7. `/scenario` page — Netlify Forms config required
+
+The new `/scenario.html` posts to a Netlify form named `scenario`. Netlify will auto-detect it on next deploy (the hidden form template at the top of `scenario.html` ensures detection). **After the first deploy, verify**:
+- Form appears in Netlify dashboard under "Forms"
+- Test submission with a file upload arrives in your inbox
+- File attachment links work from the notification email
+

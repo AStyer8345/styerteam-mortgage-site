@@ -80,9 +80,12 @@
     .hero-call-link{margin:0;font-size:var(--font-size-sm)}.hero-call-link-a{display:inline-flex;align-items:center;gap:0.35rem;color:rgba(255,255,255,0.85);text-decoration:none}
     .hero-legal{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0}
     .hero-cutout{position:absolute;bottom:0;right:3%;max-height:100%;width:450px;max-width:45%;object-fit:contain;object-position:bottom center;z-index:2;pointer-events:none;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.30))}
+    .hero-mobile-headshot{display:none}
+    .hero-form-trust{margin-top:.5rem;font-size:.78rem;line-height:1.4;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.4);text-align:center}
+    .form-trust-line{margin-top:.75rem;font-size:.82rem;color:var(--color-gray);text-align:center;line-height:1.4}
     .hero-gradient-text{background:linear-gradient(135deg,#ffffff 0%,#f0e6c8 40%,#d4b254 70%,#ffffff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .star-svg{display:inline-block;flex-shrink:0}
-    @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{height:auto;min-height:auto;max-height:none;padding:var(--spacing-3xl) 0}.hero h1{font-size:var(--font-size-3xl)}.hero-two-col{grid-template-columns:1fr;gap:1.25rem}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:center;text-align:center}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:center}.hero-glass-card{max-width:100%;padding:var(--spacing-xl) var(--spacing-lg);overflow:hidden}.hero-rating-chip{white-space:normal;text-align:center;justify-content:center}.hero-cutout{display:none}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
+    @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{height:auto;min-height:auto;max-height:none;padding:var(--spacing-3xl) 0}.hero h1{font-size:var(--font-size-3xl)}.hero-two-col{grid-template-columns:1fr;gap:1.25rem}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:center;text-align:center}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:center}.hero-glass-card{max-width:100%;padding:var(--spacing-xl) var(--spacing-lg);overflow:hidden}.hero-rating-chip{white-space:normal;text-align:center;justify-content:center}.hero-cutout{display:none}.hero-mobile-headshot{display:block;width:96px;height:96px;border-radius:50%;overflow:hidden;margin:0 auto var(--spacing-md);border:3px solid rgba(255,255,255,.6);box-shadow:0 6px 16px rgba(0,0,0,.25)}.hero-mobile-headshot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
     @media(max-width:500px){.hero-quick-form-grid{grid-template-columns:1fr}}
   </style>
   <!-- Full stylesheet — loads async, applies after critical CSS is already painted -->
@@ -346,6 +349,7 @@
       <picture>
         <source media="(min-width: 769px)" srcset="assets/adam-cutout.webp" type="image/webp">
         <source media="(min-width: 769px)" srcset="assets/adam-cutout-900.png" type="image/png">
+        <source srcset="assets/adam-cutout-900.webp" type="image/webp">
         <img
           src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
           alt="Adam Styer, Austin TX Mortgage Broker, NMLS #513013"
@@ -364,6 +368,9 @@
 
             <!-- Column 1: Authority -->
             <div class="hero-col hero-col-authority">
+              <div class="hero-mobile-headshot" aria-hidden="true">
+                <img src="assets/adam-cutout-900.webp" alt="" width="96" height="96" decoding="async" loading="eager">
+              </div>
               <div class="hero-authority-inner">
                 <div class="hero-rating-chip" aria-label="Client reviews and complex mortgage experience">
                   <svg class="star-svg" width="13" height="13" viewBox="0 0 24 24" fill="#FCD34D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
@@ -373,8 +380,8 @@
                 <p class="hero-subtitle">Self-employed, complicated income, jumbo, DSCR — I close the files banks decline. And I shop 40+ wholesale lenders, so the easy files usually beat the bank quote too. 1,000+ closings. NMLS #513013.</p>
               </div>
               <div class="hero-ctas">
-                <a href="/get-preapproved" class="btn btn-primary hero-cta-primary hero-cta-btn">Send My Scenario</a>
-                <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-hero-ghost hero-cta-btn" target="_blank" rel="noopener">Schedule Strategy Call</a>
+                <a href="/scenario.html" class="btn btn-primary hero-cta-primary hero-cta-btn">Send My Scenario</a>
+                <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-hero-ghost hero-cta-btn" target="_blank" rel="noopener">Book 15-Min Call</a>
               </div>
               <p class="hero-call-link">
                 <a href="tel:+15129566010" class="hero-call-link-a">
@@ -416,6 +423,18 @@
                     <option value="Non-QM/Self-Employed">Non-QM / Self-Employed</option>
                   </select>
                 </div>
+                <div class="hero-quick-form-field" style="grid-column:1/-1;">
+                  <label for="hqf-timeline">Timeline</label>
+                  <select id="hqf-timeline" name="timeline" required>
+                    <option value="">Choose…</option>
+                    <option value="ASAP / Under contract">ASAP / Under contract</option>
+                    <option value="0-30 days">Buying in 0–30 days</option>
+                    <option value="30-90 days">Buying in 30–90 days</option>
+                    <option value="3-6 months">Buying in 3–6 months</option>
+                    <option value="6-12 months">6–12 months out</option>
+                    <option value="Just exploring">Just exploring</option>
+                  </select>
+                </div>
               </div>
               <!-- TCPA consent -->
               <div class="hero-quick-form-field" style="grid-column:1/-1;margin-top:4px;">
@@ -427,6 +446,7 @@
               <div class="hero-quick-form-actions">
                 <button type="submit" class="btn btn-primary btn-sm">Request a Call Back</button>
               </div>
+              <p class="hero-form-trust">Reply within 1 business hour · 5.0 ★ from 92 Google reviews · 1,000+ loans closed</p>
                 <div class="hero-next-steps" aria-label="What happens after you submit">
                   <p class="hero-next-steps-title">What happens next</p>
                   <ol>
@@ -464,63 +484,62 @@
           </div>
           <div class="stat-item stat-strip-item" data-animate>
             <div class="stat-number">5.0 ★</div>
-            <div class="stat-label">Average Google Rating</div>
+            <div class="stat-label">from 92 Google reviews</div>
+          </div>
+          <div class="stat-item stat-strip-item" data-animate>
+            <div class="stat-number">4.98 ★</div>
+            <div class="stat-label">from 45 Zillow reviews</div>
           </div>
           <div class="stat-item stat-strip-item" data-animate>
             <div class="stat-number">40+</div>
-            <div class="stat-label">Wholesale Lenders</div>
-          </div>
-          <div class="stat-item stat-strip-item" data-animate>
-            <div class="stat-number">Non-QM</div>
-            <div class="stat-label">&amp; Self-Employed Specialist</div>
+            <div class="stat-label">Wholesale Lenders Shopped</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHY CHOOSE US -->
+    <!-- CASE STUDIES -->
     <section>
       <div class="container">
-        <p class="text-center" style="max-width:760px;margin:0 auto 2rem;"><strong>Adam Styer | Mortgage Solutions LP (NMLS #513013) is Austin's independent mortgage broker for complicated income — self-employed, 1099, jumbo, DSCR, the files banks decline. 40+ wholesale lenders, 24-hour pre-approvals, 1,000+ loans closed since 2017. Adam works for you — not a bank — and on conventional files, wholesale pricing usually beats the bank quote too.</strong></p>
-        <h2 class="text-center mb-3xl">Why Choose Adam Styer</h2>
+        <p class="text-center" style="max-width:760px;margin:0 auto 2rem;"><strong>Adam Styer | Mortgage Solutions LP (NMLS #513013) is Austin's independent mortgage broker for complicated income — self-employed, 1099, jumbo, DSCR, the files banks decline. 40+ wholesale lenders, 24-hour pre-approvals, 1,000+ loans closed since 2017.</strong></p>
+        <h2 class="text-center mb-md">Deals Banks Said No To</h2>
+        <p class="text-center mb-3xl" style="max-width:680px;margin-left:auto;margin-right:auto;color:var(--color-gray);">Composite scenarios reflecting the kind of files I close every month. Names and exact numbers changed to protect client privacy.</p>
 
         <div class="grid grid-3">
           <div class="card" data-animate>
-            <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-            <h3>24-Hour Pre-Approvals</h3>
-            <p>Start your journey to homeownership faster. Our streamlined process means pre-approval in one day, keeping you competitive in a fast-moving market.</p>
+            <div class="card-icon" style="background:rgba(139,110,36,.12);color:#8B6E24;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <div style="font-size:.75rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#8B6E24;margin-bottom:.5rem;">Self-Employed Jumbo</div>
+            <h3>$1.2M Westlake purchase — 3 banks declined</h3>
+            <p style="margin-bottom:.75rem;"><strong>The file:</strong> S-corp owner, write-offs killed his tax-return income. Banks saw "low W-2 wages" and bounced him.</p>
+            <p style="margin-bottom:.75rem;"><strong>What I did:</strong> Switched him to a 24-month bank statement program. Counted real business deposits instead of taxable income.</p>
+            <p><strong>Outcome:</strong> Closed in 21 days at a rate within 0.25% of conventional pricing. Seller never knew it was a Non-QM file.</p>
           </div>
 
           <div class="card" data-animate>
-            <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
-            <h3>Transparent Pricing</h3>
-            <p>No surprises. No hidden fees. You'll always know exactly what you're paying and why. Our competitive rates and clear breakdowns build trust.</p>
+            <div class="card-icon" style="background:rgba(139,110,36,.12);color:#8B6E24;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div style="font-size:.75rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#8B6E24;margin-bottom:.5rem;">DSCR Investor</div>
+            <h3>4-property Austin STR portfolio — no personal income docs</h3>
+            <p style="margin-bottom:.75rem;"><strong>The file:</strong> Investor wanted to scale to 4 short-term rentals. Conventional cap of 10 financed properties + tax-return income wasn't going to support it.</p>
+            <p style="margin-bottom:.75rem;"><strong>What I did:</strong> Used DSCR loans qualifying off projected rents — no W-2s, no tax returns. Held title in LLC vesting for asset protection.</p>
+            <p><strong>Outcome:</strong> Three properties closed in 60 days. Fourth funded the month after. All STR-eligible.</p>
           </div>
 
           <div class="card" data-animate>
-            <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <h3>Mortgage Broker Advantage</h3>
-            <p>We shop multiple lenders to find YOU the best rate and terms. As an independent broker, we work for you, not a single institution.</p>
-          </div>
-
-          <div class="card" data-animate>
-            <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-            <h3>Always Available</h3>
-            <p>Real people answering your calls. Adam personally manages client relationships. We're responsive, knowledgeable, and genuinely care about your success.</p>
-          </div>
-
-          <div class="card" data-animate>
-            <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
-            <h3>Expert Guidance</h3>
-            <p>From first-time buyers to complex jumbo loans. We educate you about every option so you make the right decision for your family.</p>
-          </div>
-
-          <div class="card" data-animate>
-            <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <h3>Deal Protection</h3>
-            <p>Work with a lender who gets it done. We handle complex scenarios and challenging credit with problem-solving solutions so your deal closes.</p>
+            <div class="card-icon" style="background:rgba(139,110,36,.12);color:#8B6E24;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div style="font-size:.75rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#8B6E24;margin-bottom:.5rem;">First-Time Buyer Rescue</div>
+            <h3>$485K Pflugerville — switched mid-contract with 10 days to close</h3>
+            <p style="margin-bottom:.75rem;"><strong>The file:</strong> Buyer's original lender pulled the appraisal late, hit underwriting snags, and threatened to push the closing date. Earnest money at risk.</p>
+            <p style="margin-bottom:.75rem;"><strong>What I did:</strong> Took the file, kept the appraisal transfer, ran a parallel desktop underwrite. Beat the original lender's rate by 0.375%.</p>
+            <p><strong>Outcome:</strong> Closed on the contract date. Buyer saved roughly $90/mo on payment and kept their earnest money intact.</p>
           </div>
         </div>
+        <p class="text-center mt-xl"><a href="/scenario.html" class="btn btn-primary">Send Me Your Scenario</a></p>
       </div>
     </section>
 
@@ -693,13 +712,13 @@
       </div>
     </section>
 
-    <!-- QUICK CONTACT -->
+    <!-- QUICK CONTACT (Smart Form) -->
     <section class="quick-contact-section" id="contact-form">
       <div class="container">
         <div class="quick-contact-card" data-animate>
-          <h2 class="quick-contact-title">Quick Contact</h2>
+          <h2 class="quick-contact-title">Tell Me About Your Loan</h2>
           <p class="quick-contact-subtitle">
-            Share a few details and Adam will personally follow up to help with your mortgage questions.
+            The more I know up front, the faster I can tell you exactly what's possible. Takes 60 seconds.
           </p>
           <form id="quick-contact-form" name="quick-contact" novalidate data-netlify="true">
             <input type="hidden" name="form-name" value="quick-contact">
@@ -723,26 +742,117 @@
                 <div class="form-field">
                   <label for="qc-help">Loan Goal</label>
                   <select id="qc-help" name="loanGoal" required>
-                    <option value="">Please choose…</option>
+                    <option value="">Choose…</option>
                     <option value="purchase">Purchase</option>
-                    <option value="refi">Refi</option>
-                    <option value="non-qm">Non-QM</option>
+                    <option value="refi">Refinance</option>
+                    <option value="non-qm">Non-QM / Self-Employed</option>
                     <option value="jumbo">Jumbo</option>
+                    <option value="dscr">DSCR / Investor</option>
+                    <option value="va">VA</option>
+                    <option value="not-sure">Not sure yet</option>
                   </select>
                 </div>
+              </div>
+
+              <div class="quick-contact-row">
+                <div class="form-field">
+                  <label for="qc-employment">Employment / Income Type</label>
+                  <select id="qc-employment" name="employment_type" required>
+                    <option value="">Choose…</option>
+                    <option value="W-2">W-2 employee</option>
+                    <option value="Self-Employed">Self-employed / 1099</option>
+                    <option value="Business Owner">Business owner (S-corp / LLC / K-1)</option>
+                    <option value="Retired">Retired / asset depletion</option>
+                    <option value="VA / Active Military">VA / active military</option>
+                    <option value="Investor">Real estate investor (DSCR)</option>
+                    <option value="Mixed">Mixed / other</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="qc-property-use">Property Use</label>
+                  <select id="qc-property-use" name="property_use" required>
+                    <option value="">Choose…</option>
+                    <option value="Primary">Primary residence</option>
+                    <option value="Secondary">Second home / vacation</option>
+                    <option value="Investment">Investment / rental</option>
+                    <option value="STR">Short-term rental (Airbnb)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="quick-contact-row">
+                <div class="form-field">
+                  <label for="qc-credit">Estimated Credit Range</label>
+                  <select id="qc-credit" name="credit_score">
+                    <option value="">Choose…</option>
+                    <option value="760+">760+ (excellent)</option>
+                    <option value="720-759">720–759 (very good)</option>
+                    <option value="680-719">680–719 (good)</option>
+                    <option value="640-679">640–679 (fair)</option>
+                    <option value="600-639">600–639 (lower)</option>
+                    <option value="Below 600">Below 600</option>
+                    <option value="Not sure">Not sure</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="qc-timeline">Timeline</label>
+                  <select id="qc-timeline" name="timeline" required>
+                    <option value="">Choose…</option>
+                    <option value="ASAP / Under contract">ASAP / under contract</option>
+                    <option value="0-30 days">0–30 days</option>
+                    <option value="30-90 days">30–90 days</option>
+                    <option value="3-6 months">3–6 months</option>
+                    <option value="6-12 months">6–12 months</option>
+                    <option value="Just exploring">Just exploring</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="quick-contact-row">
+                <div class="form-field">
+                  <label for="qc-loan-amount">Estimated Loan Amount</label>
+                  <select id="qc-loan-amount" name="loan_amount">
+                    <option value="">Choose…</option>
+                    <option value="Under $250k">Under $250k</option>
+                    <option value="$250k-$500k">$250k–$500k</option>
+                    <option value="$500k-$750k">$500k–$750k</option>
+                    <option value="$750k-$1M">$750k–$1M</option>
+                    <option value="$1M-$2M">$1M–$2M</option>
+                    <option value="$2M+">$2M+</option>
+                    <option value="Not sure">Not sure</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="qc-income">Annual Household Income</label>
+                  <select id="qc-income" name="income_range">
+                    <option value="">Choose…</option>
+                    <option value="Under $75k">Under $75k</option>
+                    <option value="$75k-$150k">$75k–$150k</option>
+                    <option value="$150k-$300k">$150k–$300k</option>
+                    <option value="$300k-$500k">$300k–$500k</option>
+                    <option value="$500k+">$500k+</option>
+                    <option value="Variable / hard to peg">Variable / hard to peg</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field" style="margin-top:var(--spacing-md);">
+                <label for="qc-notes">Tell me more (optional but helps)</label>
+                <textarea id="qc-notes" name="notes" rows="4" placeholder="Address or area, what a bank already told you, deal structure, anything I should know."></textarea>
               </div>
             </div>
 
             <!-- TCPA consent -->
-            <div class="hero-quick-form-field" style="grid-column:1/-1;margin-top:4px;">
+            <div class="hero-quick-form-field" style="grid-column:1/-1;margin-top:var(--spacing-md);">
               <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.75rem;font-weight:400;color:var(--color-gray);cursor:pointer;line-height:1.5;">
                 <input type="checkbox" name="tcpa_consent" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
                 <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
               </label>
             </div>
             <div class="quick-contact-actions">
-              <button type="submit" class="btn btn-primary">Send Message</button>
+              <button type="submit" class="btn btn-primary">Send My Details</button>
             </div>
+            <p class="form-trust-line">Reply within 1 business hour · 5.0 ★ from 92 Google reviews · 4.98 ★ from 45 Zillow reviews · 1,000+ loans closed</p>
           </form>
         </div>
       </div>
@@ -1029,7 +1139,7 @@
           Start with a low-pressure scenario review. No judgment, no guesswork, and no full application required to talk through real options.
         </p>
         <div class="cta-group">
-          <a href="/get-preapproved" class="btn btn-primary btn-lg">Send My Scenario</a>
+          <a href="/scenario.html" class="btn btn-primary btn-lg">Send My Scenario</a>
           <a href="tel:+15129566010" class="btn btn-outline btn-lg">Call (512) 956-6010</a>
         </div>
       </div>
@@ -1132,7 +1242,7 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       Call Adam
     </a>
-    <a href="/get-preapproved" class="smb-btn smb-btn-apply" aria-label="Send My Scenario">Send My Scenario</a>
+    <a href="/scenario.html" class="smb-btn smb-btn-apply" aria-label="Send My Scenario">Send My Scenario</a>
   </div>
   <script>
     /* Deferred via requestIdleCallback — avoids forced reflow on initial paint */
@@ -1140,17 +1250,20 @@
       if (window.innerWidth > 768) return;
       var bar = document.getElementById('sticky-mobile-bar');
       var shown = false;
+      function reveal() {
+        if (shown) return;
+        bar.classList.add('is-visible');
+        bar.removeAttribute('aria-hidden');
+        bar.removeAttribute('inert');
+        shown = true;
+        window.removeEventListener('scroll', onScroll);
+      }
       function onScroll() {
-        var scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-        if (!shown && scrollPct >= 0.30) {
-          bar.classList.add('is-visible');
-          bar.removeAttribute('aria-hidden');
-          bar.removeAttribute('inert');
-          shown = true;
-          window.removeEventListener('scroll', onScroll);
-        }
+        if (window.scrollY >= 120) reveal();
       }
       window.addEventListener('scroll', onScroll, { passive: true });
+      // Also reveal after 2s even without scroll — keeps CTA persistently available
+      setTimeout(reveal, 2000);
     });
   </script>
 </body>

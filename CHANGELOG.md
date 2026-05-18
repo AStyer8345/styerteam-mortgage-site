@@ -1,3 +1,16 @@
+## 2026-05-17 LATE — UX/conversion overhaul (homepage + /scenario page)
+
+- **Hero CTA cleanup:** Secondary CTA label "Schedule Strategy Call" → "Book 15-Min Call". Both hero CTAs (`Send My Scenario`, mobile sticky bar, final-CTA section) now route to new `/scenario.html` instead of `/get-preapproved`.
+- **Mobile hero photo:** Added 96px circular headshot at top of mobile hero authority column. Uses existing `assets/adam-cutout-900.webp` cropped object-position:top-center. Desktop cutout unchanged.
+- **Hero quick form:** Added Timeline qualifying field (full-width). New trust line under submit button: "Reply within 1 business hour · 5.0 ★ from 92 Google reviews · 1,000+ loans closed".
+- **Stats strip:** Replaced ratings slot with explicit review counts. Now shows 1,000+ Loans / 5.0 ★ from 92 Google reviews / 4.98 ★ from 45 Zillow reviews / 40+ Wholesale Lenders Shopped.
+- **Quick Contact form (smart form upgrade):** Renamed "Quick Contact" → "Tell Me About Your Loan". Added 8 qualifying fields: Employment/Income Type, Property Use, Estimated Credit Range, Timeline, Estimated Loan Amount, Annual Household Income, expanded Loan Goal options (DSCR/VA/not-sure added), and free-text "Tell me more" textarea. Submit button: "Send Message" → "Send My Details". Trust line added under submit.
+- **"Why Choose Adam" section → 3 composite case studies:** Replaced the generic 6-card feature grid with 3 anonymized case-study cards (Self-Employed Jumbo Westlake $1.2M, DSCR STR Portfolio 4-property, FTB Pflugerville $485K rescue). Added CTA button to /scenario at bottom of section. Composite framing disclosed in section subtitle.
+- **Sticky mobile CTA:** Now reveals at 120px scroll OR 2-second timeout (was 30% scroll). Effectively persistent after page load. CTA href updated to /scenario.html.
+- **New page: `/scenario.html`** — dedicated long-form qualifying intake landing page. Modeled on `get-preapproved.html` layout but tailored to scenario-review positioning. Form fields: contact info + loan goal + employment type + property use + loan amount + credit range + timeline + income range + city + "bank said" status + free-text situation + optional file upload (multipart, PDF/JPG/PNG up to 8MB). TCPA + SMS opt-in checkboxes preserved. Trust line + 3-step "what happens next" + secondary phone CTA. Form name: `scenario`. Netlify auto-detection via hidden template form at top of file.
+- **`_redirects`:** Added `/scenario → /scenario.html 301` for extensionless URL parity.
+- **Note on file uploads:** Scenario form does NOT post to `/.netlify/functions/lead-intake` (Mailchimp/LoanOS) because multipart form data can't be JSON-encoded. Native Netlify submission only. Future: Netlify function subscribing to scenario-form webhook can pick up server-side if Mailchimp tagging is needed.
+
 ## 2026-05-17 EVENING — Repositioning sweep + "21-Day Avg. Close" claim retired sitewide
 
 - **Goal context:** Adam moving to new company. New-employer compliance audit incoming. Pre-emptive cleanup of styermortgage.com so the audit clears on first read. Positioning shifted to "the loans your bank said no to" + wholesale-pricing leg.
