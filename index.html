@@ -57,22 +57,22 @@
     .nav-has-dropdown{position:relative}.nav-dropdown{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--color-white);border-top:2px solid var(--color-gold);border-radius:0 0 0.5rem 0.5rem;box-shadow:var(--shadow-lg);list-style:none;min-width:190px;z-index:var(--z-dropdown);padding:var(--spacing-xs) 0}
     .mobile-menu-toggle{display:none;flex-direction:column;gap:var(--spacing-xs);background:none;border:none;cursor:pointer;padding:var(--spacing-md)}.mobile-menu-toggle span{width:24px;height:3px;background-color:var(--color-navy);border-radius:var(--radius-sm)}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--spacing-sm);padding:var(--spacing-md) var(--spacing-xl);font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);border-radius:var(--radius-lg);transition:background-color var(--transition-base),color var(--transition-base),box-shadow var(--transition-base),border-color var(--transition-base),opacity var(--transition-base);text-decoration:none;border:2px solid transparent;cursor:pointer}
-    .btn-primary{background-color:#F2C840;color:#0D1F3C;position:relative;overflow:hidden}.btn-hero-ghost{background-color:transparent;color:#F2C840;border:2px solid #F2C840}
+    .btn-primary{background-color:#F2C840;color:#0D1F3C;position:relative;overflow:hidden}.btn-hero-ghost{background-color:transparent;color:#fff;border:2px solid rgba(255,255,255,0.85)}.btn-hero-ghost:hover{background-color:rgba(255,255,255,0.1)}
     .hero{position:relative;width:100%;height:80vh;max-height:800px;min-height:420px;display:flex;align-items:center;overflow:hidden;color:var(--color-white);background-image:url('assets/hero-bg.webp');background-size:cover;background-position:center 20%}
-    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,31,63,0.78) 0%,rgba(10,31,63,0.48) 45%,rgba(10,31,63,0.10) 100%);pointer-events:none;z-index:1}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,31,63,0.88) 0%,rgba(10,31,63,0.72) 38%,rgba(10,31,63,0.30) 65%,rgba(10,31,63,0.10) 100%);pointer-events:none;z-index:1}
     .hero>.container{position:relative;z-index:3;width:100%;max-width:1280px;margin-left:0;margin-right:auto;padding-top:var(--spacing-2xl);padding-bottom:var(--spacing-2xl)}
-    .hero-glass-card{max-width:680px;width:100%;backdrop-filter:blur(15px) saturate(180%);-webkit-backdrop-filter:blur(15px) saturate(180%);background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.20);border-radius:var(--radius-2xl);padding:1.75rem 2rem;box-shadow:0 8px 40px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.14);position:relative;z-index:4;overflow:visible}
-    .hero-col-authority{display:flex;flex-direction:column;align-items:flex-start;gap:0}.hero-authority-inner{max-width:600px;background:rgba(10,31,63,0.35);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:0.85rem}
-    .hero h1{color:#fff;font-size:var(--font-size-5xl);line-height:1.25;margin-top:0;margin-bottom:0.35rem;text-shadow:0 2px 16px rgba(0,0,0,0.4)}
-    .hero-subtitle{font-size:var(--font-size-base);color:rgba(255,255,255,0.92);line-height:1.4;margin-bottom:var(--spacing-md)}
-    .hero-rating-chip{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.4);color:rgba(255,255,255,0.92);font-size:0.77rem;font-weight:600;padding:0.28rem 0.65rem;border-radius:100px;margin-bottom:0.65rem}
+    .hero-glass-card{max-width:620px;width:100%;padding:0;position:relative;z-index:4}
+    .hero-col-authority{display:flex;flex-direction:column;align-items:flex-start;gap:0}.hero-authority-inner{max-width:620px;margin-bottom:1.25rem}
+    .hero h1{color:#fff;font-size:var(--font-size-5xl);line-height:1.18;margin-top:0;margin-bottom:0.65rem;text-shadow:0 2px 24px rgba(0,0,0,0.55)}
+    .hero-subtitle{font-size:var(--font-size-lg);color:rgba(255,255,255,0.94);line-height:1.5;margin-bottom:var(--spacing-md);text-shadow:0 1px 12px rgba(0,0,0,0.45)}
+    .hero-rating-chip{display:inline-flex;align-items:center;gap:0.45rem;background:rgba(201,168,76,0.18);border:1px solid rgba(242,200,64,0.5);color:#fff;font-size:0.8rem;font-weight:600;padding:0.35rem 0.8rem;border-radius:100px;margin-bottom:1rem;letter-spacing:0.01em}
     .hero-ctas{display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;justify-content:center;margin-bottom:0.5rem;width:100%}
     .hero-cta-btn{width:190px;height:46px;font-size:0.875rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0}
     .hero-call-link{margin:0;font-size:var(--font-size-sm)}.hero-call-link-a{display:inline-flex;align-items:center;gap:0.35rem;color:rgba(255,255,255,0.85);text-decoration:none}
-    .hero-legal{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.5rem}
+    .hero-legal{font-size:0.72rem;color:rgba(255,255,255,0.55);margin-top:0.85rem;letter-spacing:0.02em}
     .hero-cutout{position:absolute;bottom:0;right:4%;max-height:90%;width:340px;max-width:28%;object-fit:contain;object-position:bottom center;z-index:2;pointer-events:none;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.30))}
     .hero-mobile-headshot{display:none}
-    .hero-form-trust{margin-top:.5rem;font-size:.78rem;line-height:1.4;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.4);text-align:center}
+    .hero-form-trust{margin-top:.85rem;font-size:.82rem;line-height:1.5;color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.5);text-align:left}
     .form-trust-line{margin-top:.75rem;font-size:.82rem;color:var(--color-gray);text-align:center;line-height:1.4}
     .hero-gradient-text{background:linear-gradient(135deg,#ffffff 0%,#f0e6c8 40%,#d4b254 70%,#ffffff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .star-svg{display:inline-block;flex-shrink:0}
@@ -359,9 +359,9 @@
               <img src="assets/adam-cutout-900.webp" alt="" width="96" height="96" decoding="async" loading="eager">
             </div>
             <div class="hero-authority-inner">
-              <div class="hero-rating-chip" aria-label="Client reviews and complex mortgage experience">
+              <div class="hero-rating-chip" aria-label="5 star Google rating, 92 reviews, Non-QM specialist">
                 <svg class="star-svg" width="13" height="13" viewBox="0 0 24 24" fill="#FCD34D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-                5.0 ★ · 92 Google Reviews &nbsp;&middot;&nbsp; Non-QM &amp; Investor Specialist &nbsp;&middot;&nbsp; NMLS #513013
+                5.0 · 92 Google Reviews &nbsp;&middot;&nbsp; Non-QM Specialist
               </div>
               <h1>The loans your bank said no to. <span class="hero-gradient-text">The pricing your bank can't match.</span></h1>
               <p class="hero-subtitle">Self-employed, complicated income, jumbo, DSCR — I close the files banks decline. And I shop 40+ wholesale lenders, so the easy files usually beat the bank quote too. 1,000+ closings. NMLS #513013.</p>
@@ -370,7 +370,7 @@
               <a href="/scenario.html" class="btn btn-primary hero-cta-primary hero-cta-btn">Send My Scenario</a>
               <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-hero-ghost hero-cta-btn" target="_blank" rel="noopener">Book 15-Min Call</a>
             </div>
-            <p class="hero-form-trust" style="text-align:left;margin-top:0.75rem;">Reply within 1 business hour · 5.0 ★ from 92 Google · 4.98 ★ from 45 Zillow · 1,000+ loans closed</p>
+            <p class="hero-form-trust">Reply within 1 business hour · 5.0 ★ from 92 Google · 4.98 ★ from 45 Zillow · 1,000+ loans closed</p>
             <p class="hero-call-link" style="margin-top:0.4rem;">
               <a href="tel:+15129566010" class="hero-call-link-a">
                 <svg class="hero-call-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
