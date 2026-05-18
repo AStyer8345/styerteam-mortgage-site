@@ -61,34 +61,22 @@
     .hero{position:relative;width:100%;height:80vh;max-height:800px;min-height:420px;display:flex;align-items:center;overflow:hidden;color:var(--color-white);background-image:url('assets/hero-bg.webp');background-size:cover;background-position:center 20%}
     .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,31,63,0.78) 0%,rgba(10,31,63,0.48) 45%,rgba(10,31,63,0.10) 100%);pointer-events:none;z-index:1}
     .hero>.container{position:relative;z-index:3;width:100%;max-width:1280px;margin-left:0;margin-right:auto;padding-top:var(--spacing-2xl);padding-bottom:var(--spacing-2xl)}
-    .hero-glass-card{max-width:920px;width:100%;backdrop-filter:blur(15px) saturate(180%);-webkit-backdrop-filter:blur(15px) saturate(180%);background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.20);border-radius:var(--radius-2xl);padding:1.6rem 2rem;box-shadow:0 8px 40px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.14);position:relative;z-index:4;overflow:visible}
-    .hero-two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
-    .hero-col-authority{display:flex;flex-direction:column;align-items:flex-start;gap:0}.hero-authority-inner{max-width:450px;background:rgba(10,31,63,0.35);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:0.75rem}
+    .hero-glass-card{max-width:680px;width:100%;backdrop-filter:blur(15px) saturate(180%);-webkit-backdrop-filter:blur(15px) saturate(180%);background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.20);border-radius:var(--radius-2xl);padding:1.75rem 2rem;box-shadow:0 8px 40px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.14);position:relative;z-index:4;overflow:visible}
+    .hero-col-authority{display:flex;flex-direction:column;align-items:flex-start;gap:0}.hero-authority-inner{max-width:600px;background:rgba(10,31,63,0.35);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:0.85rem}
     .hero h1{color:#fff;font-size:var(--font-size-5xl);line-height:1.25;margin-top:0;margin-bottom:0.35rem;text-shadow:0 2px 16px rgba(0,0,0,0.4)}
     .hero-subtitle{font-size:var(--font-size-base);color:rgba(255,255,255,0.92);line-height:1.4;margin-bottom:var(--spacing-md)}
     .hero-rating-chip{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.4);color:rgba(255,255,255,0.92);font-size:0.77rem;font-weight:600;padding:0.28rem 0.65rem;border-radius:100px;margin-bottom:0.65rem}
     .hero-ctas{display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;justify-content:center;margin-bottom:0.5rem;width:100%}
     .hero-cta-btn{width:190px;height:46px;font-size:0.875rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0}
-    .hero-trust-badge{font-size:0.8rem;font-weight:700;color:#fff;text-align:center;padding:0.5rem 0.85rem;border:2px solid var(--color-gold);border-radius:var(--radius-lg);background:rgba(10,31,63,0.5);line-height:1.35;margin-bottom:0.75rem}
-    .hero-quick-form-glass{background:rgba(255,255,255,0.1);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.25);border-radius:var(--radius-lg);padding:1.2rem var(--spacing-lg);margin-bottom:var(--spacing-md)}
-    .hero-quick-form-title{font-size:var(--font-size-sm);font-weight:600;color:var(--color-white);margin:0 0 var(--spacing-md)}
-    .hero-quick-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm) var(--spacing-md)}
-    .hero-quick-form-field label{display:block;font-size:0.75rem;color:rgba(255,255,255,0.8);margin-bottom:0.2rem}
-    .hero-quick-form-field input,.hero-quick-form-field select{width:100%;padding:0.5rem 0.6rem;font-size:0.875rem;border:1px solid rgba(255,255,255,0.3);border-radius:var(--radius-sm);background:rgba(255,255,255,0.15);color:var(--color-white)}
-    .hero-quick-form-actions{margin-top:var(--spacing-md)}.hero-quick-form-actions .btn-sm{padding:0.5rem 1rem;font-size:0.875rem;height:auto;width:auto}
-    .hero-next-steps{margin-top:0.9rem;padding-top:0.85rem;border-top:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.86);font-size:0.76rem;line-height:1.45}.hero-next-steps-title{font-size:0.78rem;font-weight:700;color:#fff;margin:0 0 0.35rem}.hero-next-steps ol{margin:0 0 0.45rem 1rem;padding:0}.hero-next-steps li{margin-bottom:0.25rem}.hero-next-steps-note,.hero-partner-note{margin:0.35rem 0 0}.hero-partner-note a{color:#F2C840;text-decoration:underline;text-underline-offset:2px}@media(max-width:500px){.hero-next-steps{font-size:0.74rem}}
     .hero-call-link{margin:0;font-size:var(--font-size-sm)}.hero-call-link-a{display:inline-flex;align-items:center;gap:0.35rem;color:rgba(255,255,255,0.85);text-decoration:none}
-    .hero-legal{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0}
-    .hero-cutout{position:absolute;bottom:0;right:3%;max-height:100%;width:450px;max-width:45%;object-fit:contain;object-position:bottom center;z-index:2;pointer-events:none;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.30))}
+    .hero-legal{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.5rem}
+    .hero-cutout{position:absolute;bottom:0;right:4%;max-height:90%;width:340px;max-width:28%;object-fit:contain;object-position:bottom center;z-index:2;pointer-events:none;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.30))}
     .hero-mobile-headshot{display:none}
     .hero-form-trust{margin-top:.5rem;font-size:.78rem;line-height:1.4;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.4);text-align:center}
     .form-trust-line{margin-top:.75rem;font-size:.82rem;color:var(--color-gray);text-align:center;line-height:1.4}
-    .hero-quick-form-field textarea{width:100%;padding:.5rem .6rem;font-size:.875rem;border:1px solid rgba(255,255,255,.3);border-radius:var(--radius-sm);background:rgba(255,255,255,.15);color:var(--color-white);font-family:var(--font-primary);resize:vertical;min-height:60px}
-    .hero-quick-form-field textarea::placeholder{color:rgba(255,255,255,.5)}
     .hero-gradient-text{background:linear-gradient(135deg,#ffffff 0%,#f0e6c8 40%,#d4b254 70%,#ffffff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .star-svg{display:inline-block;flex-shrink:0}
-    @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{height:auto;min-height:auto;max-height:none;padding:var(--spacing-3xl) 0}.hero h1{font-size:var(--font-size-3xl)}.hero-two-col{grid-template-columns:1fr;gap:1.25rem}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:center;text-align:center}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:center}.hero-glass-card{max-width:100%;padding:var(--spacing-xl) var(--spacing-lg);overflow:hidden}.hero-rating-chip{white-space:normal;text-align:center;justify-content:center}.hero-cutout{display:none}.hero-mobile-headshot{display:block;width:96px;height:96px;border-radius:50%;overflow:hidden;margin:0 auto var(--spacing-md);border:3px solid rgba(255,255,255,.6);box-shadow:0 6px 16px rgba(0,0,0,.25)}.hero-mobile-headshot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
-    @media(max-width:500px){.hero-quick-form-grid{grid-template-columns:1fr}}
+    @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{height:auto;min-height:auto;max-height:none;padding:var(--spacing-3xl) 0}.hero h1{font-size:var(--font-size-3xl)}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:center;text-align:center}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:center}.hero-glass-card{max-width:100%;padding:var(--spacing-xl) var(--spacing-lg);overflow:hidden}.hero-rating-chip{white-space:normal;text-align:center;justify-content:center}.hero-cutout{display:none}.hero-mobile-headshot{display:block;width:96px;height:96px;border-radius:50%;overflow:hidden;margin:0 auto var(--spacing-md);border:3px solid rgba(255,255,255,.6);box-shadow:0 6px 16px rgba(0,0,0,.25)}.hero-mobile-headshot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
   </style>
   <!-- Full stylesheet — loads async, applies after critical CSS is already painted -->
   <link rel="preload" href="style.css?v=20260417" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -366,109 +354,29 @@
       <div class="container">
         <!-- ── Glassmorphism card ─────────────────────────────────────── -->
         <div class="hero-glass-card">
-          <div class="hero-two-col">
-
-            <!-- Column 1: Authority -->
-            <div class="hero-col hero-col-authority">
-              <div class="hero-mobile-headshot" aria-hidden="true">
-                <img src="assets/adam-cutout-900.webp" alt="" width="96" height="96" decoding="async" loading="eager">
-              </div>
-              <div class="hero-authority-inner">
-                <div class="hero-rating-chip" aria-label="Client reviews and complex mortgage experience">
-                  <svg class="star-svg" width="13" height="13" viewBox="0 0 24 24" fill="#FCD34D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-                  Client Reviews &nbsp;&middot;&nbsp; Non-QM &amp; Investor Specialist &nbsp;&middot;&nbsp; NMLS #513013
-                </div>
-                <h1>The loans your bank said no to. <span class="hero-gradient-text">The pricing your bank can't match.</span></h1>
-                <p class="hero-subtitle">Self-employed, complicated income, jumbo, DSCR — I close the files banks decline. And I shop 40+ wholesale lenders, so the easy files usually beat the bank quote too. 1,000+ closings. NMLS #513013.</p>
-              </div>
-              <div class="hero-ctas">
-                <a href="/scenario.html" class="btn btn-primary hero-cta-primary hero-cta-btn">Send My Scenario</a>
-                <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-hero-ghost hero-cta-btn" target="_blank" rel="noopener">Book 15-Min Call</a>
-              </div>
-              <p class="hero-call-link">
-                <a href="tel:+15129566010" class="hero-call-link-a">
-                  <svg class="hero-call-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  Call (512) 956-6010
-                </a>
-              </p>
+          <div class="hero-col hero-col-authority">
+            <div class="hero-mobile-headshot" aria-hidden="true">
+              <img src="assets/adam-cutout-900.webp" alt="" width="96" height="96" decoding="async" loading="eager">
             </div>
-
-            <!-- Column 2: Trust badge + Scenario Review form -->
-            <div class="hero-col hero-col-form">
-              <div class="hero-trust-badge">
-                Client Reviews · 1,000+ Closings · Self-Employed &amp; Investor Specialist · Texas · NMLS #513013
+            <div class="hero-authority-inner">
+              <div class="hero-rating-chip" aria-label="Client reviews and complex mortgage experience">
+                <svg class="star-svg" width="13" height="13" viewBox="0 0 24 24" fill="#FCD34D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                5.0 ★ · 92 Google Reviews &nbsp;&middot;&nbsp; Non-QM &amp; Investor Specialist &nbsp;&middot;&nbsp; NMLS #513013
               </div>
-              <div class="hero-quick-form-glass" id="hero-quick-form-wrap">
-            <form id="hero-quick-form" name="hero-quick-form" novalidate data-netlify="true" class="hero-quick-form">
-              <input type="hidden" name="form-name" value="hero-quick-form">
-              <p class="hero-quick-form-title">Request a Call Back</p>
-              <div class="hero-quick-form-grid">
-                <div class="hero-quick-form-field">
-                  <label for="hqf-name">Name</label>
-                  <input id="hqf-name" name="name" type="text" required autocomplete="name">
-                </div>
-                <div class="hero-quick-form-field">
-                  <label for="hqf-email">Email</label>
-                  <input id="hqf-email" name="email" type="email" required autocomplete="email">
-                </div>
-                <div class="hero-quick-form-field">
-                  <label for="hqf-phone">Phone</label>
-                  <input id="hqf-phone" name="phone" type="tel" required autocomplete="tel">
-                </div>
-                <div class="hero-quick-form-field">
-                  <label for="hqf-goal">Loan Goal</label>
-                  <select id="hqf-goal" name="loanGoal" required>
-                    <option value="">Choose…</option>
-                    <option value="Purchase">Purchase</option>
-                    <option value="Refinance">Refinance</option>
-                    <option value="First-Time Buyer">First-Time Buyer</option>
-                    <option value="Non-QM/Self-Employed">Non-QM / Self-Employed</option>
-                  </select>
-                </div>
-                <div class="hero-quick-form-field" style="grid-column:1/-1;">
-                  <label for="hqf-timeline">Timeline</label>
-                  <select id="hqf-timeline" name="timeline" required>
-                    <option value="">Choose…</option>
-                    <option value="ASAP / Under contract">ASAP / Under contract</option>
-                    <option value="0-30 days">Buying in 0–30 days</option>
-                    <option value="30-90 days">Buying in 30–90 days</option>
-                    <option value="3-6 months">Buying in 3–6 months</option>
-                    <option value="6-12 months">6–12 months out</option>
-                    <option value="Just exploring">Just exploring</option>
-                  </select>
-                </div>
-                <div class="hero-quick-form-field" style="grid-column:1/-1;">
-                  <label for="hqf-scenario">Tell me about your scenario <span style="font-weight:400;opacity:.75;">(optional)</span></label>
-                  <textarea id="hqf-scenario" name="scenario" rows="3" placeholder="Self-employed, bank statement, jumbo, what a bank already said, etc."></textarea>
-                </div>
-              </div>
-              <!-- TCPA consent -->
-              <div class="hero-quick-form-field" style="grid-column:1/-1;margin-top:4px;">
-                <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.8rem;font-weight:400;color:rgba(255,255,255,0.92);text-shadow:0 1px 2px rgba(0,0,0,0.4);cursor:pointer;line-height:1.5;">
-                  <input type="checkbox" name="tcpa_consent" required style="margin-top:3px;flex-shrink:0;width:18px;height:18px;accent-color:#8B6E24;">
-                  <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
-                </label>
-              </div>
-              <div class="hero-quick-form-actions">
-                <button type="submit" class="btn btn-primary btn-sm">Request a Call Back</button>
-              </div>
-              <p class="hero-form-trust">Reply within 1 business hour · 5.0 ★ from 92 Google reviews · 1,000+ loans closed</p>
-                <div class="hero-next-steps" aria-label="What happens after you submit">
-                  <p class="hero-next-steps-title">What happens next</p>
-                  <ol>
-                    <li>Adam uses your contact info and loan goal to follow up and gather the missing scenario details.</li>
-                    <li>On that call, he reviews the income, property, or build details and tells you what is worth documenting next.</li>
-                    <li>You get a no-pressure next step, even if a bank already said no.</li>
-                  </ol>
-                  <p class="hero-next-steps-note">No judgment. You do not need a perfect tax return to start the conversation.</p>
-                  <p class="hero-partner-note">CPA, advisor, or agent with a client scenario? <a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Talk through it with Adam</a>.</p>
-                </div>
-            </form>
-                <div class="hero-quick-form-success" id="hero-quick-form-success" aria-live="polite" hidden>
-                  <p class="hero-quick-form-success-text">Thanks! Adam will reach out within 1 business day.</p>
-                </div>
-              </div>
+              <h1>The loans your bank said no to. <span class="hero-gradient-text">The pricing your bank can't match.</span></h1>
+              <p class="hero-subtitle">Self-employed, complicated income, jumbo, DSCR — I close the files banks decline. And I shop 40+ wholesale lenders, so the easy files usually beat the bank quote too. 1,000+ closings. NMLS #513013.</p>
             </div>
+            <div class="hero-ctas">
+              <a href="/scenario.html" class="btn btn-primary hero-cta-primary hero-cta-btn">Send My Scenario</a>
+              <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-hero-ghost hero-cta-btn" target="_blank" rel="noopener">Book 15-Min Call</a>
+            </div>
+            <p class="hero-form-trust" style="text-align:left;margin-top:0.75rem;">Reply within 1 business hour · 5.0 ★ from 92 Google · 4.98 ★ from 45 Zillow · 1,000+ loans closed</p>
+            <p class="hero-call-link" style="margin-top:0.4rem;">
+              <a href="tel:+15129566010" class="hero-call-link-a">
+                <svg class="hero-call-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Or call (512) 956-6010
+              </a>
+            </p>
           </div>
 
           <p class="hero-legal">
