@@ -7,8 +7,9 @@
 //
 // Accepts BOTH payload shapes (backward-compatible with existing site forms):
 //   - legacy: { email, fname, lname, phone, tag, loan_goal, lead_source, utm_*, page_url, referrer }
-//   - plan  : { email, first_name, last_name, phone, loan_goal, purchase_price, credit_score,
-//               situation, page_url, form-name, utm_*, referrer }
+//   - plan  : { email, first_name, last_name, phone, loan_goal, purchase_price, down_payment,
+//               credit_score, income_type, property_use, target_city, timeline, lender_status,
+//               documentation_issue, situation, page_url, form-name, utm_*, referrer }
 //
 // Accepts both application/json and application/x-www-form-urlencoded bodies.
 //
@@ -84,8 +85,17 @@ exports.handler = async (event) => {
       firstName, lastName, email, phone,
       loanGoal, leadSource, formName,
       purchasePrice: body.purchase_price ?? null,
+      downPayment:   body.down_payment ?? null,
       creditScore:   body.credit_score ?? null,
+      incomeType:    body.income_type ?? null,
+      propertyUse:   body.property_use ?? null,
+      targetCity:    body.target_city ?? null,
+      timeline:      body.timeline ?? null,
+      lenderStatus:  body.lender_status ?? null,
+      documentationIssue: body.documentation_issue ?? null,
       situation:     body.situation ?? null,
+      tcpaConsent:   body.tcpa_consent ?? null,
+      smsOptIn:      body.sms_opt_in ?? null,
       sourcePage:    body.page_url ?? body.source_page ?? null,
       utmSource:     body.utm_source ?? null,
       utmMedium:     body.utm_medium ?? null,
@@ -176,8 +186,17 @@ async function createLoanosContact(p) {
       referral_type:  "web_lead",
       "form-name":    p.formName,
       purchase_price: p.purchasePrice,
+      down_payment:   p.downPayment,
       credit_score:   p.creditScore,
+      income_type:    p.incomeType,
+      property_use:   p.propertyUse,
+      target_city:    p.targetCity,
+      timeline:       p.timeline,
+      lender_status:  p.lenderStatus,
+      documentation_issue: p.documentationIssue,
       situation:      p.situation,
+      tcpa_consent:   p.tcpaConsent,
+      sms_opt_in:     p.smsOptIn,
       source_page:    p.sourcePage,
       utm_source:     p.utmSource,
       utm_medium:     p.utmMedium,

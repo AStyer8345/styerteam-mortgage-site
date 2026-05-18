@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Austin Home Loan Pre-Approval in 24 Hours — 40+ Lenders | Adam Styer</title>
+  <title>Quick Mortgage Pre-Qual Review | Adam Styer</title>
   <meta name="robots" content="index, follow">
-  <meta name="description" content="Get pre-approved for an Austin home loan in 24 hours. Independent broker shopping 40+ wholesale lenders. Free quote, no credit impact. NMLS #513013.">
+  <meta name="description" content="Send Adam Styer the key details for a quick mortgage pre-qual review. Helpful for self-employed, investor, jumbo, construction, refinance, and standard purchase scenarios. NMLS #513013.">
   <link rel="canonical" href="https://styermortgage.com/get-preapproved">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Austin Home Loan Pre-Approval in 24 Hours — 40+ Lenders | Adam Styer">
-  <meta property="og:description" content="Get pre-approved for an Austin home loan in 24 hours. Independent broker shopping 40+ wholesale lenders. Free quote, no credit impact. NMLS #513013.">
+  <meta property="og:title" content="Quick Mortgage Pre-Qual Review | Adam Styer">
+  <meta property="og:description" content="Send Adam the key details for a quick mortgage pre-qual review. Helpful for self-employed, investor, jumbo, construction, refinance, and standard purchase scenarios. NMLS #513013.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://styermortgage.com/get-preapproved">
 
@@ -80,6 +80,7 @@
       grid-template-columns: 1fr 420px;
       gap: var(--spacing-4xl);
       align-items: center;
+      min-width: 0;
     }
     .lp-hero-copy h1 {
       font-family: var(--font-display);
@@ -117,6 +118,7 @@
       border-radius: var(--radius-2xl);
       box-shadow: 0 24px 48px rgba(0,0,0,0.3);
       padding: var(--spacing-2xl);
+      min-width: 0;
     }
     .lp-form-card h2 {
       font-size: var(--font-size-2xl);
@@ -153,6 +155,7 @@
       background: var(--color-white);
       transition: border-color var(--transition-base);
       width: 100%;
+      min-width: 0;
     }
     .lp-form-field input:focus,
     .lp-form-field select:focus,
@@ -164,6 +167,52 @@
       min-height: 96px;
       resize: vertical;
     }
+    .lp-form-helper {
+      color: var(--color-gray);
+      font-size: var(--font-size-xs);
+      line-height: 1.45;
+      margin-top: 2px;
+    }
+    .lp-funnel-progress {
+      display: grid;
+      gap: 8px;
+      margin-bottom: var(--spacing-lg);
+    }
+    .lp-funnel-step-label {
+      color: var(--color-gray);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .lp-funnel-track {
+      height: 5px;
+      border-radius: 999px;
+      background: var(--color-border);
+      overflow: hidden;
+    }
+    .lp-funnel-fill {
+      display: block;
+      height: 100%;
+      width: 33%;
+      border-radius: inherit;
+      background: var(--color-gold);
+      transition: width var(--transition-base);
+    }
+    .lp-funnel-step[hidden] { display: none; }
+    .lp-funnel-prompt {
+      color: var(--color-gray);
+      font-size: var(--font-size-sm);
+      line-height: 1.55;
+      margin: -0.25rem 0 var(--spacing-md);
+    }
+    .lp-funnel-nav {
+      display: flex;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-lg);
+    }
+    .lp-funnel-nav .btn { flex: 1; }
+    .lp-funnel-nav.lp-form-submit .btn { width: auto; }
     .lp-form-submit {
       margin-top: var(--spacing-lg);
     }
@@ -314,6 +363,11 @@
     @media (max-width: 600px) {
       .lp-form-row { grid-template-columns: 1fr; }
       .lp-hero { padding: var(--spacing-2xl) 0; }
+      .lp-hero .container { padding: 0 var(--spacing-md); }
+      .lp-form-card {
+        border-radius: var(--radius-xl);
+        padding: var(--spacing-xl);
+      }
       .lp-steps-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -340,8 +394,8 @@
 
           <!-- Copy column -->
           <div class="lp-hero-copy">
-            <h1>Tell Adam What's Going On</h1>
-            <p class="lp-subhead">Independent broker. 40+ lenders. 24-hour response. NMLS #513013.</p>
+            <h1>Quick Pre-Qual Review</h1>
+            <p class="lp-subhead">Share the details that actually matter: income type, property goal, down payment or equity, timing, and where the file may be getting stuck.</p>
             <div class="lp-trust-bar">
               <span class="lp-trust-chip"><span class="stars">★★★★★</span> 5.0 (Client Reviews)</span>
               <span class="lp-trust-chip">1,000+ Loans Closed</span>
@@ -352,7 +406,7 @@
 
           <!-- Form column -->
           <div class="lp-form-card">
-            <h2>Tell Adam What's Going On</h2>
+            <h2>Tell Adam What to Look At</h2>
             <!-- Netlify honeypot -->
             <p style="display:none;">
               <label>Don't fill this out if you're human: <input name="bot-field"></label>
@@ -374,74 +428,175 @@
               <input type="hidden" id="gpa-utm-content"  name="utm_content">
               <input type="hidden" id="gpa-page-url"     name="page_url">
               <input type="hidden" id="gpa-referrer"     name="referrer">
-              <div class="lp-form-row">
-                <div class="lp-form-field">
-                  <label for="gpa-first">First Name</label>
-                  <input id="gpa-first" name="first_name" type="text" required autocomplete="given-name" placeholder="Jane">
+              <div class="lp-funnel-progress" aria-live="polite">
+                <span class="lp-funnel-step-label" id="gpa-step-label">Step 1 of 3: Contact</span>
+                <span class="lp-funnel-track" aria-hidden="true"><span class="lp-funnel-fill" id="gpa-progress-fill"></span></span>
+              </div>
+
+              <div class="lp-funnel-step" data-step="1">
+                <p class="lp-funnel-prompt">Start with the basics. Adam needs a way to follow up and the type of loan conversation you want.</p>
+                <div class="lp-form-row">
+                  <div class="lp-form-field">
+                    <label for="gpa-first">First Name</label>
+                    <input id="gpa-first" name="first_name" type="text" required autocomplete="given-name" placeholder="Jane">
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-last">Last Name</label>
+                    <input id="gpa-last" name="last_name" type="text" required autocomplete="family-name" placeholder="Smith">
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-email">Email</label>
+                    <input id="gpa-email" name="email" type="email" required autocomplete="email" placeholder="jane@email.com">
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-phone">Phone</label>
+                    <input id="gpa-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(512) 555-1234">
+                  </div>
+                  <div class="lp-form-field full">
+                    <label for="gpa-goal">Loan Goal</label>
+                    <select id="gpa-goal" name="loan_goal" required>
+                      <option value="">Choose...</option>
+                      <option value="Purchase">Purchase</option>
+                      <option value="Refinance">Refinance</option>
+                      <option value="Cash-Out Refinance">Cash-Out Refinance</option>
+                      <option value="DSCR/Investor">DSCR / Investor</option>
+                      <option value="Bank Statement/Self-Employed">Bank Statement / Self-Employed</option>
+                      <option value="Construction">Construction</option>
+                      <option value="Jumbo/High Net Worth">Jumbo / High Net Worth</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="lp-form-field">
-                  <label for="gpa-last">Last Name</label>
-                  <input id="gpa-last" name="last_name" type="text" required autocomplete="family-name" placeholder="Smith">
-                </div>
-                <div class="lp-form-field">
-                  <label for="gpa-email">Email</label>
-                  <input id="gpa-email" name="email" type="email" required autocomplete="email" placeholder="jane@email.com">
-                </div>
-                <div class="lp-form-field">
-                  <label for="gpa-phone">Phone</label>
-                  <input id="gpa-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(512) 555-1234">
-                </div>
-                <div class="lp-form-field full">
-                  <label for="gpa-goal">Loan Goal</label>
-                  <select id="gpa-goal" name="loan_goal" required>
-                    <option value="">Choose…</option>
-                    <option value="Purchase">Purchase</option>
-                    <option value="Refinance">Refinance</option>
-                    <option value="First-Time Buyer">First-Time Buyer</option>
-                    <option value="DSCR/Investor">DSCR / Investor</option>
-                  </select>
-                </div>
-                <div class="lp-form-field">
-                  <label for="gpa-price">Target Price or Loan Amount <span style="font-weight:400;color:var(--color-gray);">(optional)</span></label>
-                  <input id="gpa-price" name="purchase_price" type="text" inputmode="numeric" placeholder="$750,000">
-                </div>
-                <div class="lp-form-field">
-                  <label for="gpa-credit">Estimated Credit Range <span style="font-weight:400;color:var(--color-gray);">(optional)</span></label>
-                  <select id="gpa-credit" name="credit_score">
-                    <option value="">Choose...</option>
-                    <option value="760+">760+</option>
-                    <option value="720-759">720-759</option>
-                    <option value="680-719">680-719</option>
-                    <option value="640-679">640-679</option>
-                    <option value="Under 640">Under 640</option>
-                    <option value="Not sure">Not sure</option>
-                  </select>
-                </div>
-                <div class="lp-form-field full">
-                  <label for="gpa-situation">What should Adam know? <span style="font-weight:400;color:var(--color-gray);">(required)</span></label>
-                  <textarea id="gpa-situation" name="situation" required placeholder="Example: self-employed S-corp owner, bank declined me because tax returns look low, buying around $900k in Austin, 20% down."></textarea>
+                <div class="lp-funnel-nav">
+                  <button type="button" class="btn btn-primary" data-gpa-next>Next: Loan Details</button>
                 </div>
               </div>
-              <!-- TCPA consent — required, unchecked by default -->
-              <div class="lp-form-field full" style="margin-top:var(--spacing-sm);">
-                <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
-                  <input type="checkbox" name="tcpa_consent" id="gpa-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
-                  <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
-                </label>
+
+              <div class="lp-funnel-step" data-step="2" hidden>
+                <p class="lp-funnel-prompt">A few numbers help Adam tell whether this is a conventional, jumbo, bank statement, DSCR, construction, or other path.</p>
+                <div class="lp-form-row">
+                  <div class="lp-form-field">
+                    <label for="gpa-income-type">Income Type</label>
+                    <select id="gpa-income-type" name="income_type" required>
+                      <option value="">Choose...</option>
+                      <option value="W-2 employee">W-2 employee</option>
+                      <option value="Self-employed business owner">Self-employed business owner</option>
+                      <option value="1099 contractor">1099 contractor</option>
+                      <option value="K-1/partnership income">K-1 / partnership income</option>
+                      <option value="Retired/assets">Retired / asset-based income</option>
+                      <option value="Investor/DSCR">Investor / DSCR</option>
+                      <option value="Mixed income">Mixed income</option>
+                    </select>
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-property-use">Property Use</label>
+                    <select id="gpa-property-use" name="property_use" required>
+                      <option value="">Choose...</option>
+                      <option value="Primary residence">Primary residence</option>
+                      <option value="Second home">Second home</option>
+                      <option value="Investment property">Investment property</option>
+                      <option value="Construction/build">Construction / build</option>
+                      <option value="Not sure yet">Not sure yet</option>
+                    </select>
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-price">Target Price or Loan Amount</label>
+                    <input id="gpa-price" name="purchase_price" type="text" inputmode="numeric" placeholder="$750,000">
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-down-payment">Down Payment or Equity</label>
+                    <input id="gpa-down-payment" name="down_payment" type="text" inputmode="numeric" placeholder="$150,000 or 20%">
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-city">Property City / Area</label>
+                    <input id="gpa-city" name="target_city" type="text" autocomplete="address-level2" placeholder="Austin, Round Rock...">
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-credit">Estimated Credit Range</label>
+                    <select id="gpa-credit" name="credit_score">
+                      <option value="">Choose...</option>
+                      <option value="760+">760+</option>
+                      <option value="720-759">720-759</option>
+                      <option value="680-719">680-719</option>
+                      <option value="640-679">640-679</option>
+                      <option value="Under 640">Under 640</option>
+                      <option value="Not sure">Not sure</option>
+                    </select>
+                  </div>
+                  <div class="lp-form-field full">
+                    <label for="gpa-timeline">Timing</label>
+                    <select id="gpa-timeline" name="timeline" required>
+                      <option value="">Choose...</option>
+                      <option value="Under contract now">Under contract now</option>
+                      <option value="Offer soon">Making offers soon</option>
+                      <option value="30-90 days">30-90 days</option>
+                      <option value="3-6 months">3-6 months</option>
+                      <option value="Planning ahead">Planning ahead</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="lp-funnel-nav">
+                  <button type="button" class="btn btn-outline" data-gpa-prev>Back</button>
+                  <button type="button" class="btn btn-primary" data-gpa-next>Next: What Got Stuck</button>
+                </div>
               </div>
-              <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
-              <div class="lp-form-field full" style="margin-top:var(--spacing-xs,8px);">
-                <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
-                  <input type="checkbox" name="sms_opt_in" id="gpa-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
-                  <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
-                </label>
-              </div>
-              <div class="lp-form-submit">
-                <button type="submit" class="btn btn-primary">Send My Scenario &rarr;</button>
+
+              <div class="lp-funnel-step" data-step="3" hidden>
+                <p class="lp-funnel-prompt">This is where the useful pre-qual context lives. No SSN. No full account numbers. Just the problem Adam should solve first.</p>
+                <div class="lp-form-row">
+                  <div class="lp-form-field full">
+                    <label for="gpa-lender-status">Current Status</label>
+                    <select id="gpa-lender-status" name="lender_status">
+                      <option value="">Choose...</option>
+                      <option value="Have not talked to a lender">Have not talked to a lender</option>
+                      <option value="Pre-approved elsewhere">Pre-approved elsewhere</option>
+                      <option value="Bank or lender said no">Bank or lender said no</option>
+                      <option value="Need a second opinion">Need a second opinion</option>
+                      <option value="Need pricing compared">Need pricing compared</option>
+                    </select>
+                  </div>
+                  <div class="lp-form-field full">
+                    <label for="gpa-issue">Where is the file getting stuck?</label>
+                    <select id="gpa-issue" name="documentation_issue">
+                      <option value="">Choose what fits best...</option>
+                      <option value="Tax returns show low income">Tax returns show low income</option>
+                      <option value="Bank statement income">Need to use bank statements</option>
+                      <option value="1099 income">1099 income</option>
+                      <option value="K-1 or partnership income">K-1 or partnership income</option>
+                      <option value="Debt-to-income ratio">Debt-to-income ratio</option>
+                      <option value="Investor property cash flow">Investor property cash flow</option>
+                      <option value="Construction or land">Construction or land</option>
+                      <option value="Rate or lender comparison">Rate or lender comparison</option>
+                      <option value="Not sure">Not sure</option>
+                    </select>
+                  </div>
+                  <div class="lp-form-field full">
+                    <label for="gpa-situation">What should Adam know?</label>
+                    <textarea id="gpa-situation" name="situation" required placeholder="Example: self-employed S-corp owner, bank declined me because tax returns look low, buying around $900k in Austin, 20% down, need to know if bank statements or P&L would work."></textarea>
+                    <p class="lp-form-helper">A short plain-English summary is enough to start.</p>
+                  </div>
+                </div>
+                <!-- TCPA consent — required, unchecked by default -->
+                <div class="lp-form-field full" style="margin-top:var(--spacing-sm);">
+                  <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
+                    <input type="checkbox" name="tcpa_consent" id="gpa-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+                    <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+                  </label>
+                </div>
+                <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
+                <div class="lp-form-field full" style="margin-top:var(--spacing-xs,8px);">
+                  <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
+                    <input type="checkbox" name="sms_opt_in" id="gpa-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+                    <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
+                  </label>
+                </div>
+                <div class="lp-funnel-nav lp-form-submit">
+                  <button type="button" class="btn btn-outline" data-gpa-prev>Back</button>
+                  <button type="submit" class="btn btn-primary">Send My Pre-Qual Details &rarr;</button>
+                </div>
               </div>
             </form>
             <div class="lp-scenario-reassurance">
-              <p><strong>What happens next:</strong> Adam reviews the details you send, follows up on anything missing, and tells you what is worth documenting before a full application.</p>
+              <p><strong>What happens next:</strong> Adam reviews the quick pre-qual details, follows up on anything missing, and tells you what is realistic before you start a full application.</p>
               <p>No pressure. No judgment if a bank already said no. You do not need a perfect tax return to start the conversation.</p>
               <p>CPA, advisor, or agent with a client scenario? <a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Talk through it with Adam</a>.</p>
             </div>
@@ -459,18 +614,18 @@
         <div class="lp-steps-grid">
           <div class="lp-step">
             <div class="lp-step-number">1</div>
-            <h3>Adam reviews your info</h3>
-            <p>Same day. He reads every submission personally — no bots, no call center screening.</p>
+              <h3>Adam reviews the useful details</h3>
+              <p>Income type, property goal, down payment or equity, timing, and where the file may be getting stuck.</p>
           </div>
           <div class="lp-step">
             <div class="lp-step-number">2</div>
-            <h3>He reaches out to discuss</h3>
-            <p>A quick call or text to understand your situation and walk through your real options.</p>
+              <h3>He fills in the gaps</h3>
+              <p>A quick call or text to clarify anything needed before documents or a full application.</p>
           </div>
           <div class="lp-step">
             <div class="lp-step-number">3</div>
-            <h3>Pre-approval letter in 24 hrs</h3>
-            <p>Most buyers receive a full pre-approval letter within one business day — ready to make an offer.</p>
+              <h3>You get the next move</h3>
+              <p>Adam tells you which paths are worth pursuing and what documentation would be needed next.</p>
           </div>
         </div>
       </div>
@@ -483,8 +638,8 @@
         <div class="lp-proof-grid">
           <div class="lp-proof-card">
             <div class="lp-proof-icon">⚡</div>
-            <h3>24-Hour Pre-Approvals</h3>
-            <p>Start your search ready to win. Our streamlined process issues a full pre-approval letter within one business day — keeping you competitive in a fast-moving market.</p>
+            <h3>Fast, Practical Triage</h3>
+            <p>Start with the facts that matter so Adam can tell you whether the file needs conventional, jumbo, bank statement, DSCR, construction, or another path.</p>
           </div>
           <div class="lp-proof-card">
             <div class="lp-proof-icon">🏦</div>
@@ -493,8 +648,8 @@
           </div>
           <div class="lp-proof-card">
             <div class="lp-proof-icon">🛡️</div>
-            <h3>Deal Protection</h3>
-            <p>We handle complex scenarios, challenging credit, and tight timelines. Our track record keeps deals alive and closes on time — so you never lose a home over financing.</p>
+            <h3>Complex-File Guidance</h3>
+            <p>Self-employed income, investor cash flow, construction, jumbo, and standard purchase files each need different documentation. Adam helps you avoid the wrong path early.</p>
           </div>
         </div>
       </div>
@@ -568,6 +723,53 @@
       var form = document.getElementById('form-get-preapproved');
       if (!form) return;
 
+      var steps = Array.prototype.slice.call(form.querySelectorAll('.lp-funnel-step'));
+      var stepLabel = document.getElementById('gpa-step-label');
+      var progressFill = document.getElementById('gpa-progress-fill');
+      var currentStep = 1;
+      var stepNames = {
+        1: 'Step 1 of 3: Contact',
+        2: 'Step 2 of 3: Loan Details',
+        3: 'Step 3 of 3: What Got Stuck'
+      };
+
+      function showStep(step) {
+        currentStep = step;
+        steps.forEach(function (el) {
+          el.hidden = Number(el.getAttribute('data-step')) !== currentStep;
+        });
+        if (stepLabel) stepLabel.textContent = stepNames[currentStep] || '';
+        if (progressFill) progressFill.style.width = (currentStep / steps.length * 100) + '%';
+      }
+
+      function validateVisibleStep() {
+        var activeStep = form.querySelector('.lp-funnel-step[data-step="' + currentStep + '"]');
+        if (!activeStep) return true;
+        var fields = Array.prototype.slice.call(activeStep.querySelectorAll('input, select, textarea'));
+        for (var i = 0; i < fields.length; i++) {
+          if (!fields[i].checkValidity()) {
+            fields[i].reportValidity();
+            return false;
+          }
+        }
+        return true;
+      }
+
+      form.addEventListener('click', function (e) {
+        var next = e.target.closest('[data-gpa-next]');
+        var prev = e.target.closest('[data-gpa-prev]');
+        if (next) {
+          e.preventDefault();
+          if (validateVisibleStep() && currentStep < steps.length) showStep(currentStep + 1);
+        }
+        if (prev) {
+          e.preventDefault();
+          if (currentStep > 1) showStep(currentStep - 1);
+        }
+      });
+
+      showStep(1);
+
       // Map loan goal → Mailchimp Journey tag (loan-type tag for segmentation)
       var TAG_MAP = {
         'Purchase':         'purchase-buyer',
@@ -578,6 +780,10 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (!validateVisibleStep() || !form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
 
         var data         = new FormData(form);
         var loanGoal     = data.get('loan_goal') || '';
@@ -608,9 +814,17 @@
               tag:           tag,
               loan_goal:     loanGoal,
               purchase_price: data.get('purchase_price') || '',
+              down_payment:   data.get('down_payment')    || '',
               credit_score:   data.get('credit_score')   || '',
+              income_type:    data.get('income_type')    || '',
+              property_use:   data.get('property_use')   || '',
+              target_city:    data.get('target_city')    || '',
+              timeline:       data.get('timeline')       || '',
+              lender_status:  data.get('lender_status')  || '',
+              documentation_issue: data.get('documentation_issue') || '',
               situation:      data.get('situation')      || '',
               lead_source:   'Pre-Approval Funnel',
+              tcpa_consent:   data.get('tcpa_consent') === 'on',
               sms_opt_in:    data.get('sms_opt_in') === 'on',
               loan_type_tag: loanTypeTag,
               utm_source:    data.get('utm_source')   || '',

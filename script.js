@@ -397,7 +397,7 @@ async function submitForm(form) {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString(),
     }),
-    fetch('/.netlify/functions/subscribe-lead', {
+    fetch('/.netlify/functions/lead-intake', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -405,12 +405,24 @@ async function submitForm(form) {
         tag: 'quick-contact-lead',
         loan_goal: loanGoal,
         lead_source: 'Quick Contact',
+        purchase_price: formData.get('purchase_price') || formData.get('loan_amount') || '',
+        down_payment: formData.get('down_payment') || '',
+        credit_score: formData.get('credit_score') || '',
+        income_type: formData.get('income_type') || '',
+        property_use: formData.get('property_use') || '',
+        target_city: formData.get('target_city') || formData.get('property_location') || '',
+        timeline: formData.get('timeline') || '',
+        lender_status: formData.get('lender_status') || '',
+        documentation_issue: formData.get('documentation_issue') || '',
+        situation: formData.get('situation') || formData.get('notes') || '',
+        tcpa_consent: formData.get('tcpa_consent') === 'on',
+        sms_opt_in: formData.get('sms_opt_in') === 'on',
         page_url: window.location.href,
         utm_source: params.get('utm_source') || '',
         utm_medium: params.get('utm_medium') || '',
         utm_campaign: params.get('utm_campaign') || '',
       }),
-    }).catch((err) => console.warn('[quick-contact] subscribe-lead failed:', err.message)),
+    }).catch((err) => console.warn('[quick-contact] lead-intake failed:', err.message)),
   ]);
 
   showQuickContactSuccess(form);
@@ -481,7 +493,7 @@ function initHeroQuickForm() {
   if (!form || !wrap) return;
 
   form.addEventListener('blur', (e) => {
-    if (e.target.matches('input, select')) validateField(e.target);
+    if (e.target.matches('input, select, textarea')) validateField(e.target);
   }, true);
   form.addEventListener('input', (e) => {
     if (e.target.matches('.form-error')) validateField(e.target);
@@ -490,7 +502,7 @@ function initHeroQuickForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const inputs = form.querySelectorAll('input, select');
+    const inputs = form.querySelectorAll('input, select, textarea');
     let isValid = true;
     inputs.forEach((input) => {
       if (!validateField(input)) isValid = false;
@@ -513,7 +525,7 @@ function initHeroQuickForm() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString(),
       }),
-      fetch('/.netlify/functions/subscribe-lead', {
+      fetch('/.netlify/functions/lead-intake', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -521,12 +533,24 @@ function initHeroQuickForm() {
           tag: 'quick-quote-lead',
           loan_goal: loanGoal,
           lead_source: 'Quick Quote',
+          purchase_price: formData.get('purchase_price') || formData.get('loan_amount') || '',
+          down_payment: formData.get('down_payment') || '',
+          credit_score: formData.get('credit_score') || '',
+          income_type: formData.get('income_type') || '',
+          property_use: formData.get('property_use') || '',
+          target_city: formData.get('target_city') || formData.get('property_location') || '',
+          timeline: formData.get('timeline') || '',
+          lender_status: formData.get('lender_status') || '',
+          documentation_issue: formData.get('documentation_issue') || '',
+          situation: formData.get('situation') || formData.get('notes') || '',
+          tcpa_consent: formData.get('tcpa_consent') === 'on',
+          sms_opt_in: formData.get('sms_opt_in') === 'on',
           page_url: window.location.href,
           utm_source: params.get('utm_source') || '',
           utm_medium: params.get('utm_medium') || '',
           utm_campaign: params.get('utm_campaign') || '',
         }),
-      }).catch((err) => console.warn('[quick-quote] subscribe-lead failed:', err.message)),
+      }).catch((err) => console.warn('[quick-quote] lead-intake failed:', err.message)),
     ]);
 
     dispatchLeadSubmitted({ lead_type: 'quick_quote', form_name: form.getAttribute('name') || 'hero-quick-form' });
@@ -715,7 +739,7 @@ function initPrequalForm() {
     }
   });
 
-  // Form submission — sends data to Mailchimp + LoanOS via subscribe-lead function
+  // Form submission — sends data to Mailchimp + LoanOS via lead-intake function
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!validateStep(currentStep)) return;
@@ -737,6 +761,14 @@ function initPrequalForm() {
       tag:          'prequal-lead',
       loan_goal:    get('loan_purpose'),
       lead_source:  'Pre-Approval Funnel',
+      purchase_price: get('property_value'),
+      down_payment: get('down_payment'),
+      credit_score: get('credit_score'),
+      income_type: get('employment_status'),
+      property_use: get('property_type'),
+      target_city: get('property_location'),
+      situation: get('additional_notes'),
+      tcpa_consent: form.querySelector('[name="tcpa_consent"]')?.checked || false,
       sms_opt_in:   form.querySelector('[name="sms_opt_in"]')?.checked || false,
       utm_source:   params.get('utm_source') || '',
       utm_medium:   params.get('utm_medium') || '',
@@ -745,14 +777,14 @@ function initPrequalForm() {
     };
 
     try {
-      const res = await fetch('/.netlify/functions/subscribe-lead', {
+      const res = await fetch('/.netlify/functions/lead-intake', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
     } catch (err) {
-      console.error('[prequal] subscribe-lead failed:', err);
+      console.error('[prequal] lead-intake failed:', err);
       // Non-blocking — form still shows success. data-netlify fallback captures submission.
     }
 
