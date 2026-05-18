@@ -16,6 +16,8 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-05-18 07:09 CDT (Monday — styer-site-daily second pass):** Same-calendar-day re-fire after first Monday pass. Phase A residual cleanup the first pass missed: retired fabricated AggregateRating JSON-LD blocks (`reviewCount: "136"`) on 6 loan-type pages + Dripping Springs. Commit `0cc148a` deployed and live-verified (HTTP 200, AggregateRating=0, reviewCount136=0 on all 7). JSON-LD validity re-confirmed via `python json.loads` on all blocks post-edit. Site-wide user-facing AggregateRating exposure now 0/8. Auto-resolved about.html review-count body-copy (91/98/45 → 0 live). Loan-type title rewrites (`/investor-loans`, `/high-net-worth-mortgage`) DEFERRED per GOALS.md Phase B impending name swap — modifying titles now risks rework. NotebookLM 43rd dead run. PSI 11th dead run.
+
 **2026-05-18 PM (Monday — styer-competitive-weekly Week 11):** Tracked top-10 jumped 4 → 6 suburbs (Round Rock ★ #9 first-ever, San Marcos ★ #9 first-measurement, Pflugerville #4 → #2 with Geneva demoted to #3, Leander #6 → #4, Kyle #8 → #6, Hutto demoted #2 → #3 via Zillow insertion). Added NEW strategic tracking dimension — complicated-income SERPs per GOALS.md repositioning: jumbo #2 + asset depletion #4 (via jumbo page), but **0 of 5 on self-employed / bank statement / non-QM / DSCR / 1099**. LendFriend is new #1 strategic competitor. Head-to-head audit: Adam's `/non-qm-loans.html` is structurally stronger on 4 of 8 dimensions but loses on FAQPage schema. Compliance-permitted fix this week = schema audit on 5 complicated-income pages + jumbo page. ATX Mortgage Lending 0/61 suburb pages (2nd biweekly verify). Westlake dropped from rotation. Stephanie Donnell flagged for Week 12 deep-audit. NotebookLM CLI auth still expired (Step 6 push blocked); advisor script 43rd dead run.
 
 **2026-05-18 AM (Monday — styer-site-daily rotation, Phase A residual sweep):** Monday rotation fire restored (scheduler-anomaly 4-day streak appears ended). Retired residual "Close in 21 Days" H3 on 6 suburb pages (commit `a317f1b`, all live-verified). Two carries auto-resolved (style.css working tree; homepage AggregateRating schema). PSI quota 10/10 consecutive drain. NotebookLM 42nd consecutive dead run.
@@ -49,11 +51,13 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | ~~Uncommitted style.css change in working tree~~ ✅ AUTO-RESOLVED 2026-05-18 — clean tree | DONE |
 | Suburb roster `/calculators` linking gap (5th carry) | LOW (Adam) |
 | Smithville/Elgin/Florence/Jarrell USDA cleanup pending | MEDIUM |
-| about.html "91 Google + 45 Zillow" review breakdown (UNVERIFIED:2026-05-08; Adam GBP/Zillow access) | MEDIUM |
+| ~~about.html "91 Google + 45 Zillow" review breakdown~~ ✅ AUTO-RESOLVED 2026-05-18 pass-2 — all 3 tokens 0× live | DONE |
+| ops.html internal dashboard "AggregateRating ✅" claim now stale post 2026-05-18 pass-2 cleanup. Adam-owned source of truth — update or retain as historical record? | LOW (Adam) |
+| Homepage body-copy still references "92 Google reviews" + "45 Zillow reviews" + "5.0 ★" (index.html lines 455, 492, 861) — audit finding #4 body-copy level. Awaiting Adam's "complicated income" trust-strip repositioning decision. | MEDIUM (Adam) |
 | 2026-04-27-why-home-prices-arent-crashing CTA structure (21st carry) + missing FAQPage schema (4th carry) | MEDIUM |
 | NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **42 consecutive dead runs** | HIGH (Adam) |
 | PSI quota drained 10/10 consecutive periods — Monday refresh confirmed NOT effective — provision dedicated key OR accept permanent UNVERIFIED | HIGH (Adam) |
-| `/investor-loans` (T=68) + `/high-net-worth-mortgage` (T=79) titles missing "Adam Styer" — 11th run carry; Tuesday 5/19 rotation will self-execute MEDIUM_RISK rewrite | MEDIUM (Adam) |
+| `/investor-loans` (T=68) + `/high-net-worth-mortgage` (T=79) titles missing "Adam Styer" — **12th run carry; Tuesday self-execute DEFERRED by 2026-05-18 pass-2** per Phase B impending name swap. **Adam decision required:** rewrite now or wait for name swap? | MEDIUM (Adam) |
 | NotebookLM CLI auth expired (2026-05-11) — `notebooklm login` required | HIGH (Adam) |
 | GSC URL Inspection sweep (UPDATED 2026-05-18) — Round Rock ★ NEW, San Marcos ★ NEW, Hutto (DEFENSE after Zillow demotion), Pflugerville hold, Leander, Bee Cave (40+ days, 7th carry) | HIGH (Adam) |
 | Complicated-income SERP gap (NEW 2026-05-18, GOALS-CRITICAL) — 0/5 ranking on self-employed / bank statement / non-QM / DSCR / 1099 Austin despite having dedicated pages. Fix this week (compliance-permitted) = FAQPage + AggregateRating schema audit on 5 pages + /loans/jumbo.html. | HIGH |

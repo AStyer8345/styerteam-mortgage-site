@@ -1012,3 +1012,14 @@ Edge cache TY page dataLayer continues to bounce 8↔10 between fires. Critical-
 - New 8-dimension head-to-head comparison table format (Adam page vs top-ranking competitor) for any "exists but doesn't rank" page. Worked well for `/non-qm-loans.html` vs LendFriend. Apply to bank-statement / self-employed / DSCR pages in Week 12.
 - Added new tracking metric: "complicated-income pages on disk vs ranking" (7 on disk, 1.5 ranking). Sits alongside suburb tracking. Should persist as a permanent dimension in this report.
 - Added new "GOALS-filter" pass over OPPORTUNITIES — explicitly tagged which recommendations fit Phase A scope and which were deferred to Phase B per GOALS rules. This should become a standard report section header.
+
+---
+
+## 2026-05-18 (Monday — second pass, scheduled re-fire)
+
+### Insights worth keeping
+
+- **An "AUTO-RESOLVED" flag is only as good as its grep scope.** First pass cleared audit finding #4 (AggregateRating fabricated/exposed) on the homepage and marked the parent audit item resolved. Second pass found the same `reviewCount: "136"` block still live on 6 loan-type pages + Dripping Springs. The cleanup pattern Adam used on homepage had not been carried across the rest of the site. **Pattern:** when auto-resolving an audit finding scoped to one URL, do not mark the parent finding resolved without grepping the same schema/copy fragment across the whole repo (`grep -rnE "AggregateRating" --include="*.html" .`). The schema fragment is the unit, not the page URL.
+- **JSON-LD post-edit safety = Python `json.loads` on every `<script type="application/ld+json">` block.** Pulled into the toolkit. Caught zero issues today (all 7 cleanups parsed clean) but is the right cheap gate for any future schema mutation. Use it before commit, not after deploy.
+- **GOALS.md Phase B imminence overrides scheduled rotation work.** Previous pass approved a Tuesday self-execute on `/investor-loans` and `/high-net-worth-mortgage` title rewrites (add "Adam Styer" before NMLS). This pass declined to act early because GOALS.md flags Phase B (company name swap) as imminent — modifying titles now risks rework when the name swap lands. **Pattern:** when GOALS.md has a "Phase B is coming" flag, defer brand-coupled edits even if Decision Test technically passes. Phase B impendingness is itself a Phase-B-coupling judgment call only Adam can make.
+- **Same-calendar-day re-fires need a second-pass log convention.** Today's scheduler fired the daily task twice on the same calendar date (Sun 23:16 CDT / Mon UTC, then Mon 07:09 CDT). The first pass already wrote `2026-05-18.md`. Naming today's run `2026-05-18-pass2.md` keeps history clean. Copy to `latest.md` so the next-day fire picks up the most recent state. **Pattern:** if `run-logs/YYYY-MM-DD.md` already exists, write `YYYY-MM-DD-passN.md`, never overwrite.

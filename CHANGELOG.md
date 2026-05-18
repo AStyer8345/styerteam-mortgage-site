@@ -1594,3 +1594,10 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - PSI quota 8-of-8 drain held; skipped retry to preserve potential Monday-refresh window. NotebookLM script 38th consecutive missing check.
 - Scheduler reliability escalated MEDIUM → HIGH FLAG_FOR_ADAM: Thursday 2026-05-14 no-fire + Friday 5/15 triple same-day fires confirms pattern, not flakiness. Manual scheduler review warranted.
 - Self-review PASS — 0 site files modified, hard constraints intact, style.css working-tree (Adam's nav-dropdown fix) preserved untouched.
+
+## 2026-05-18 (Monday 07:09 CDT — styer-site-daily second pass)
+- **Phase A residual:** Retired fabricated AggregateRating JSON-LD blocks on 6 loan-type pages + Dripping Springs (`loans/{construction,jumbo,usda,va,fha,investment}.html`, `dripping-springs-mortgage-lender.html`). Commit `0cc148a` deployed and live-verified on all 7 URLs (HTTP 200, AggregateRating=0, reviewCount136=0). JSON-LD validity confirmed via Python `json.loads` on all blocks post-edit. Site-wide user-facing AggregateRating exposure now 0/8.
+- **Auto-resolved:** about.html "91 Google / 98 Zillow / 45 Zillow" body-copy — all three tokens now 0× live. Audit finding #4 body-copy fully cleared on about.html.
+- **Deferred:** `/investor-loans` + `/high-net-worth-mortgage` title rewrites (12-run carry). Previous pass approved Tuesday self-execute; this pass declined per GOALS.md Phase B impending name swap. Adam decision required: rewrite now for SEO consistency or wait for the name swap?
+- Sitemap 200 ✅. Conversion tracking 10/10 critical tokens across 4 pages. GTM single-container hex verified.
+- Self-review PASS — 7 site files modified, all JSON-LD block removals + 1 trailing-comma trim. Hard constraints intact.
