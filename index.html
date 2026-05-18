@@ -83,6 +83,8 @@
     .hero-mobile-headshot{display:none}
     .hero-form-trust{margin-top:.5rem;font-size:.78rem;line-height:1.4;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.4);text-align:center}
     .form-trust-line{margin-top:.75rem;font-size:.82rem;color:var(--color-gray);text-align:center;line-height:1.4}
+    .hero-quick-form-field textarea{width:100%;padding:.5rem .6rem;font-size:.875rem;border:1px solid rgba(255,255,255,.3);border-radius:var(--radius-sm);background:rgba(255,255,255,.15);color:var(--color-white);font-family:var(--font-primary);resize:vertical;min-height:60px}
+    .hero-quick-form-field textarea::placeholder{color:rgba(255,255,255,.5)}
     .hero-gradient-text{background:linear-gradient(135deg,#ffffff 0%,#f0e6c8 40%,#d4b254 70%,#ffffff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .star-svg{display:inline-block;flex-shrink:0}
     @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{height:auto;min-height:auto;max-height:none;padding:var(--spacing-3xl) 0}.hero h1{font-size:var(--font-size-3xl)}.hero-two-col{grid-template-columns:1fr;gap:1.25rem}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:center;text-align:center}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:center}.hero-glass-card{max-width:100%;padding:var(--spacing-xl) var(--spacing-lg);overflow:hidden}.hero-rating-chip{white-space:normal;text-align:center;justify-content:center}.hero-cutout{display:none}.hero-mobile-headshot{display:block;width:96px;height:96px;border-radius:50%;overflow:hidden;margin:0 auto var(--spacing-md);border:3px solid rgba(255,255,255,.6);box-shadow:0 6px 16px rgba(0,0,0,.25)}.hero-mobile-headshot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
@@ -434,6 +436,10 @@
                     <option value="6-12 months">6–12 months out</option>
                     <option value="Just exploring">Just exploring</option>
                   </select>
+                </div>
+                <div class="hero-quick-form-field" style="grid-column:1/-1;">
+                  <label for="hqf-scenario">Tell me about your scenario <span style="font-weight:400;opacity:.75;">(optional)</span></label>
+                  <textarea id="hqf-scenario" name="scenario" rows="3" placeholder="Self-employed, bank statement, jumbo, what a bank already said, etc."></textarea>
                 </div>
               </div>
               <!-- TCPA consent -->
