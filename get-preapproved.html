@@ -142,7 +142,8 @@
       color: var(--color-dark-gray);
     }
     .lp-form-field input,
-    .lp-form-field select {
+    .lp-form-field select,
+    .lp-form-field textarea {
       padding: 10px 14px;
       border: 1.5px solid var(--color-border);
       border-radius: var(--radius-md);
@@ -154,9 +155,14 @@
       width: 100%;
     }
     .lp-form-field input:focus,
-    .lp-form-field select:focus {
+    .lp-form-field select:focus,
+    .lp-form-field textarea:focus {
       outline: none;
       border-color: var(--color-navy);
+    }
+    .lp-form-field textarea {
+      min-height: 96px;
+      resize: vertical;
     }
     .lp-form-submit {
       margin-top: var(--spacing-lg);
@@ -334,7 +340,7 @@
 
           <!-- Copy column -->
           <div class="lp-hero-copy">
-            <h1>Review My Scenario for an Austin Home Loan</h1>
+            <h1>Tell Adam What's Going On</h1>
             <p class="lp-subhead">Independent broker. 40+ lenders. 24-hour response. NMLS #513013.</p>
             <div class="lp-trust-bar">
               <span class="lp-trust-chip"><span class="stars">★★★★★</span> 5.0 (Client Reviews)</span>
@@ -346,7 +352,7 @@
 
           <!-- Form column -->
           <div class="lp-form-card">
-            <h2>Submit My Scenario</h2>
+            <h2>Tell Adam What's Going On</h2>
             <!-- Netlify honeypot -->
             <p style="display:none;">
               <label>Don't fill this out if you're human: <input name="bot-field"></label>
@@ -395,6 +401,26 @@
                     <option value="DSCR/Investor">DSCR / Investor</option>
                   </select>
                 </div>
+                <div class="lp-form-field">
+                  <label for="gpa-price">Target Price or Loan Amount <span style="font-weight:400;color:var(--color-gray);">(optional)</span></label>
+                  <input id="gpa-price" name="purchase_price" type="text" inputmode="numeric" placeholder="$750,000">
+                </div>
+                <div class="lp-form-field">
+                  <label for="gpa-credit">Estimated Credit Range <span style="font-weight:400;color:var(--color-gray);">(optional)</span></label>
+                  <select id="gpa-credit" name="credit_score">
+                    <option value="">Choose...</option>
+                    <option value="760+">760+</option>
+                    <option value="720-759">720-759</option>
+                    <option value="680-719">680-719</option>
+                    <option value="640-679">640-679</option>
+                    <option value="Under 640">Under 640</option>
+                    <option value="Not sure">Not sure</option>
+                  </select>
+                </div>
+                <div class="lp-form-field full">
+                  <label for="gpa-situation">What should Adam know? <span style="font-weight:400;color:var(--color-gray);">(required)</span></label>
+                  <textarea id="gpa-situation" name="situation" required placeholder="Example: self-employed S-corp owner, bank declined me because tax returns look low, buying around $900k in Austin, 20% down."></textarea>
+                </div>
               </div>
               <!-- TCPA consent — required, unchecked by default -->
               <div class="lp-form-field full" style="margin-top:var(--spacing-sm);">
@@ -411,11 +437,11 @@
                 </label>
               </div>
               <div class="lp-form-submit">
-                <button type="submit" class="btn btn-primary">Submit My Scenario &rarr;</button>
+                <button type="submit" class="btn btn-primary">Send My Scenario &rarr;</button>
               </div>
             </form>
             <div class="lp-scenario-reassurance">
-              <p><strong>What happens next:</strong> Adam reviews the income, property, or loan scenario, identifies the most realistic program paths, and tells you what is worth pursuing before a full application.</p>
+              <p><strong>What happens next:</strong> Adam reviews the details you send, follows up on anything missing, and tells you what is worth documenting before a full application.</p>
               <p>No pressure. No judgment if a bank already said no. You do not need a perfect tax return to start the conversation.</p>
               <p>CPA, advisor, or agent with a client scenario? <a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Talk through it with Adam</a>.</p>
             </div>
@@ -581,6 +607,9 @@
               phone:         data.get('phone')        || '',
               tag:           tag,
               loan_goal:     loanGoal,
+              purchase_price: data.get('purchase_price') || '',
+              credit_score:   data.get('credit_score')   || '',
+              situation:      data.get('situation')      || '',
               lead_source:   'Pre-Approval Funnel',
               sms_opt_in:    data.get('sms_opt_in') === 'on',
               loan_type_tag: loanTypeTag,
