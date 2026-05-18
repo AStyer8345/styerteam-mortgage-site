@@ -6,7 +6,7 @@
   <title>Send My Scenario | Adam Styer Mortgage</title>
   <meta name="robots" content="index, follow">
   <meta name="description" content="Send Adam Styer the details on a complicated mortgage scenario — self-employed, jumbo, DSCR, the file your bank declined. Upload tax returns, bank statements, or pay stubs securely. NMLS #513013.">
-  <link rel="canonical" href="https://styermortgage.com/scenario">
+  <link rel="canonical" href="https://styermortgage.com/scenario.html">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Send My Scenario | Adam Styer Mortgage">
@@ -26,7 +26,127 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="/style.css?v=20260517">
+  <link rel="stylesheet" href="/style.css?v=20260518">
+
+  <!-- JSON-LD: MortgageBroker + Person (Adam) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MortgageBroker",
+    "@id": "https://styermortgage.com/#mortgagebroker",
+    "name": "Adam Styer | Mortgage Solutions LP",
+    "url": "https://styermortgage.com/",
+    "telephone": "+1-512-956-6010",
+    "email": "adam@thestyerteam.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "5718 Sam Houston Circle",
+      "addressLocality": "Austin",
+      "addressRegion": "TX",
+      "postalCode": "78731",
+      "addressCountry": "US"
+    },
+    "areaServed": { "@type": "State", "name": "Texas" },
+    "employee": {
+      "@type": "Person",
+      "name": "Adam Styer",
+      "jobTitle": "Senior Loan Officer",
+      "identifier": "NMLS #513013",
+      "sameAs": [
+        "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013"
+      ]
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: LoanOrCreditService (the scenario review offering) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LoanOrCreditService",
+    "name": "Complex Mortgage Scenario Review",
+    "serviceType": "Non-QM mortgage scenario review",
+    "description": "Free scenario review for self-employed, K-1, jumbo, DSCR, and other complex-income mortgage files — including loans previously declined by banks. Adam Styer personally reviews supporting documents and identifies workable loan programs.",
+    "provider": { "@id": "https://styermortgage.com/#mortgagebroker" },
+    "areaServed": { "@type": "State", "name": "Texas" },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free, no-obligation scenario review. No credit pull."
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Send My Scenario", "item": "https://styermortgage.com/scenario.html" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage — AEO-optimized question/answer pairs matching scenario page content -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What if a bank already declined my mortgage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Send the scenario anyway. Most files I close were declined by a bank for tax-return income, debt-to-income ratio, or program fit reasons. As an independent broker I shop 40+ wholesale lenders, including non-QM programs (bank statement, P&L, DSCR, asset depletion) that banks do not offer. A prior decline does not predict the outcome of a Non-QM review."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I upload my tax returns and bank statements securely?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The scenario form supports optional file uploads (PDF, JPG, PNG) up to 8MB per file. Uploads are encrypted in transit. You can include tax returns, bank statements, pay stubs, a prior lender denial letter, or a P&L. None of it is required to start the conversation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How fast will Adam reply after I send my scenario?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Within one business hour during weekdays. Adam personally reviews every scenario submission and follows up by phone, text, or email. There is no call center and no junior loan officer involved in the initial review."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will sending my scenario affect my credit score?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The scenario review does not involve a credit pull. There is no obligation to apply and no commitment of any kind. The review identifies which loan programs realistically fit your file before you decide whether to formally apply."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What kinds of files does Adam Styer handle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Self-employed Schedule C borrowers, S-corp and LLC owners with K-1 distributions, 1099 contractors, real estate investors (DSCR), high-net-worth borrowers using asset depletion, jumbo files up to $4M+, VA, FHA, and conventional purchase and refinance loans. Most of the practice is non-QM and complicated income, statewide in Texas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the scenario review the same as a mortgage pre-approval?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. A scenario review identifies whether a file is workable and which programs to consider — it is conversational and document-light. A full pre-approval includes a credit pull, income and asset documentation, and produces a formal pre-approval letter you can attach to a purchase offer. Many borrowers start with a scenario review and convert to a pre-approval once they have a target property and a clear program path."
+        }
+      }
+    ]
+  }
+  </script>
 
   <script>window.dataLayer = window.dataLayer || [];</script>
   <!-- Google Tag Manager (deferred to idle-time) -->
@@ -595,6 +715,19 @@
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- ══ BYLINE + DIFFERENTIATION ═════════════════════════ -->
+    <section style="padding: var(--spacing-2xl) 0; background: var(--color-white);">
+      <div class="container" style="max-width: 760px;">
+        <p style="font-size:0.9rem;color:var(--color-gray);margin-bottom:1rem;border-left:3px solid #8B6E24;padding:0.4rem 0 0.4rem 0.9rem;">
+          By <strong>Adam Styer</strong>, NMLS <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" target="_blank" rel="noopener">#513013</a> · Senior Loan Officer, Adam Styer | Mortgage Solutions LP · Austin, TX · 1,000+ loans closed since 2017 · <em><time datetime="2026-05-18">Updated May 18, 2026</time></em>
+        </p>
+        <p style="font-size:0.95rem;color:var(--color-dark-gray);line-height:1.6;background:var(--color-light-gray);padding:1rem 1.25rem;border-radius:0.5rem;margin:0;">
+          <strong>Scenario review vs. pre-approval — what's the difference?</strong>
+          A scenario review is a low-commitment conversation about whether a file is workable. No credit pull, no formal application, just a back-and-forth about your income, the property, and what programs realistically fit. If you already have a property under contract or need a pre-approval letter to make offers, <a href="/get-preapproved" style="color:#8B6E24;font-weight:600;">start a Pre-Qual Review →</a> instead.
+        </p>
       </div>
     </section>
 

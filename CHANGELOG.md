@@ -1,3 +1,38 @@
+## 2026-05-18 LATE — SEO/AEO fixes per audit: scenario schema, sitemap, differentiation
+
+Audit findings: /scenario.html had zero structured data and wasn't in
+sitemap.xml; 91 recently-touched URLs in sitemap had stale lastmod;
+/scenario and /get-preapproved overlapped in positioning (keyword
+cannibalization risk).
+
+- **scenario.html:** Added 4 JSON-LD schema blocks: MortgageBroker
+  (with Person/Adam, NMLS sameAs), LoanOrCreditService (the scenario
+  review offering, $0 price), BreadcrumbList, and a 6-question
+  FAQPage covering the page's core AEO questions. Added byline
+  with NMLS link + `<time datetime>` updated date. Added
+  differentiation callout linking to /get-preapproved for users
+  whose intent is actually pre-approval not scenario review. Fixed
+  canonical to match served URL (was `/scenario`, now
+  `/scenario.html` since `_redirects` keeps both routes valid).
+
+- **get-preapproved.html:** Repositioned as the pre-approval letter
+  funnel for active home shoppers (vs scenario review for
+  complex/declined files). Title: "Quick Mortgage Pre-Qual Review"
+  → "Mortgage Pre-Approval Letter Austin TX | 24-Hour Turnaround".
+  Meta description rewritten to lead with "active home shoppers"
+  and pre-approval letter. H1 + form heading updated. Added byline
+  + differentiation callout linking to /scenario.
+
+- **sitemap.xml:** Added /scenario.html entry (priority 0.9,
+  changefreq monthly). Bulk-bumped lastmod to 2026-05-18 for 91
+  URLs corresponding to HTML files modified in the last 24h via
+  git log lookup. 31 URLs with older dates left untouched (blog
+  posts, location pages not modified this session).
+
+Verified: scenario.html now has 23 schema entries (was 0); both
+pages have cross-link differentiation callouts; canonical points
+to the .html URL.
+
 ## 2026-05-18 PM — Week 11 competitive intel run (styer-competitive-weekly)
 
 - **Tracked top-10 jumped 4 → 6 suburbs.** Round Rock ★ #9 (FIRST top-10 ever, breaks 6+ month carry), San Marcos ★ #9 (first measurement). Pflugerville #4 → #2 (Geneva Financial demoted #1 → #3). Leander #6 → #4. Kyle #8 → #6. Hutto demoted #2 → #3 (Zillow directory insertion at #2). Westlake formally dropped from rotation — SERP doesn't disambiguate to TX (returns Westlake Village CA / NJ).
