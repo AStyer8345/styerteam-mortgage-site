@@ -16,13 +16,13 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-05-17 EVENING (Sunday — repositioning sweep + 21-day claim retired):** Adam announced new company move + new-employer compliance audit incoming. Pre-emptive cleanup. Homepage hero → "The loans your bank said no to. The pricing your bank can't match." about.html h1 → "I close the loans your bank can't." Stats slot 4: "21 Days" → "Non-QM Specialist". Sitewide "21-Day Avg. Close" → "1,000+ Loans Closed" across ~95 files (trust badges, footers, trust chips, inline spans, list items). Boilerplate body "an average 21-day close" rewritten on index + 9 suburb pages. Homepage schema/FAQ 21-day claim removed. san-marcos testimonial 21-day claim stripped. GOALS.md fully rewritten — LoanOS/Client Ops/portfolio paused, loan-officer pipeline first. 2026-05-17_compliance-audit delivered to workspace folder with 21-finding pre-audit review.
+**2026-05-18 AM (Monday — styer-site-daily rotation, Phase A residual sweep):** Monday rotation fire restored (scheduler-anomaly 4-day streak appears ended). Sitemap 200 ✅, conversion 10/10 ✅, GTM single-container hex-verified, AEO entity coverage clean on homepage + about. Retired residual "Close in 21 Days" H3 performance claim on 6 suburb pages (smithville, marble-falls, elgin, jarrell, florence, buda) that Adam's Sunday EVENING trust-bar sweep missed — replaced with "Coordinated Close" matching existing body copy ("I manage the timeline proactively"). Commit `a317f1b` deployed, all 6 URLs live-verified HTTP 200. Two carries auto-resolved this run: (1) style.css working-tree change (23 prior runs) — now clean tree, (2) homepage AggregateRating + 136+ Reviews badge — confirmed removed at schema level by Adam's Sunday sweep. PSI quota STILL drained on Monday refresh — 10-of-10 consecutive (carry now reframed as "Monday refresh does NOT restore quota"). NotebookLM 42nd consecutive dead run.
 
-**2026-05-17 DAYTIME (Sunday — private-wealth / non-QM expansion):** Adam-approved SEO/AEO repositioning audit + multi-agent execution (ran earlier; Adam's EVENING sweep above overlaid hero copy but left schema/FAQ/nav/sitemap edits intact — clean merge). 6 new niche pages added in repo root: `mortgage-for-business-owners-austin` (pillar), `asset-depletion-mortgage-texas` (Fannie 360 / Freddie §5307.1 240 divisor comparison nobody else publishes), `k1-income-mortgage-austin` (Fannie B3-3.4-19 sub-25% framing, effective 2026-03-04), `1099-only-mortgage-texas`, `p-and-l-mortgage-texas`, `one-time-close-construction-loan-texas` (Texas §50(a)(5)). Homepage: title, meta, MortgageBroker schema description + Offer Catalog (12 programs, non-QM first), Person schema with knowsAbout + NMLS Consumer Access sameAs, FAQPage rewritten (5 niche citation-grade Q&As, schema + visible accordion synced verbatim, 21-day claim later stripped by EVENING sweep), bento FTB card → DSCR Investor wide card, nav header+footer reordered to lead with pillar. Sitemap 6 new URLs. Research bundles in `cowork/scratch/styer-research-{nonqm-mechanics,austin-market,competitor-aeo}.md` (~9,000 sourced words). Fact-check verdict YELLOW → fabricated 5-star testimonials deleted on all 6 pages → GREEN. `FLAG_FOR_ADAM.md` written to repo root with full pre-publication review + 11 hedged-claim items.
+**2026-05-17 EVENING (Sunday — repositioning sweep + 21-day claim retired):** Sitewide "21-Day Avg. Close" → "1,000+ Loans Closed" across ~95 files (trust badges, footers, trust chips, inline spans, list items). Homepage schema/FAQ 21-day claim removed. AggregateRating + 136+ Reviews badge removed from homepage schema. GOALS.md fully rewritten — LoanOS/Client Ops/portfolio paused, loan-officer pipeline first. 2026-05-17_compliance-audit delivered with 21-finding pre-audit review.
 
-**Open after this session:** Working tree includes both this session's work AND Adam's EVENING sweep — committed together. Compliance remediation Phase A items still pending. Compliance remediation Phase A items pending (testimonial audit, rate widget APR fix, GLBA privacy policy, superlative cleanup, EHL coverage, NMLS Consumer Access link gaps). 3 acceptable 21-day mentions left as-is (generic blog advice, internal dashboard placeholder, historical dated post).
+**2026-05-17 DAYTIME (Sunday — private-wealth / non-QM expansion):** 6 new niche pages added in repo root. Homepage schema, FAQ, nav reordered to lead with pillar. Fact-check verdict GREEN after fabricated testimonials deleted. `FLAG_FOR_ADAM.md` written to repo root with 11 hedged-claim items.
 
-**Surfaced for Adam:** Uncommitted style.css change in working tree (22nd carry). `/investor-loans` + `/high-net-worth-mortgage` title brand-vs-length tradeoff. Suburb roster `/calculators` linking gap. Compliance audit Critical #1 (Reg Z rate widget) and Critical #2 (fabricated testimonials) — Adam decision needed before Phase A execution. 5 Rancho Moonrise scheduled tasks need pause approval (tool requires interactive confirm).
+**Surfaced for Adam:** `/investor-loans` + `/high-net-worth-mortgage` title brand-vs-length tradeoff (11th carry — Tuesday rotation will self-execute MEDIUM_RISK rewrite per Decision Test). Suburb roster `/calculators` linking gap (8th carry). Audit finding #4 body-copy level review counts ("45 Zillow" still appears on homepage body 2×) — schema-level cleared, body-copy still open. PSI quota provision needed (HIGH escalation).
 
 ## Site Structure (key categories)
 
@@ -42,16 +42,16 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Item | Priority |
 |------|----------|
 | Blog cadence: 19 days since last post (2026-04-27) — **deferred per GOALS.md "no new content this week"** | DEFERRED |
-| products.html 10 in-card "Get Pre-Approved" buttons still route to raw 1003 (Adam decision; 21st carry) | MEDIUM |
+| products.html 10 in-card "Get Pre-Approved" buttons still route to raw 1003 (Adam decision; 24th carry) | MEDIUM |
 | Site-wide footer `/prequal.html` link in 20 pages — parity gap | LOW |
-| Uncommitted style.css change in working tree (Adam's nav-dropdown scrolled-state fix, 21st carry) | MEDIUM |
+| ~~Uncommitted style.css change in working tree~~ ✅ AUTO-RESOLVED 2026-05-18 — clean tree | DONE |
 | Suburb roster `/calculators` linking gap (5th carry) | LOW (Adam) |
 | Smithville/Elgin/Florence/Jarrell USDA cleanup pending | MEDIUM |
 | about.html "91 Google + 45 Zillow" review breakdown (UNVERIFIED:2026-05-08; Adam GBP/Zillow access) | MEDIUM |
 | 2026-04-27-why-home-prices-arent-crashing CTA structure (21st carry) + missing FAQPage schema (4th carry) | MEDIUM |
-| NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **39 consecutive dead runs** | HIGH (Adam) |
-| PSI quota drained 8/8 consecutive periods — provision dedicated key OR accept permanent UNVERIFIED | HIGH (Adam) |
-| `/investor-loans` (T=68) + `/high-net-worth-mortgage` (T=79) titles missing "Adam Styer" — 8th run carry | MEDIUM (Adam) |
+| NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **42 consecutive dead runs** | HIGH (Adam) |
+| PSI quota drained 10/10 consecutive periods — Monday refresh confirmed NOT effective — provision dedicated key OR accept permanent UNVERIFIED | HIGH (Adam) |
+| `/investor-loans` (T=68) + `/high-net-worth-mortgage` (T=79) titles missing "Adam Styer" — 11th run carry; Tuesday 5/19 rotation will self-execute MEDIUM_RISK rewrite | MEDIUM (Adam) |
 | NotebookLM CLI auth expired (2026-05-11) — `notebooklm login` required | HIGH (Adam) |
 | GSC URL Inspection sweep — Pflugerville + Kyle (new top-10s), Hutto, Round Rock, Bee Cave, Lakeway, Georgetown, Leander, products.html | HIGH (Adam) |
 | Bulk suburb audit recommendation — replace 9-week rotation with weekly audit | MEDIUM |

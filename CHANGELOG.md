@@ -1,3 +1,12 @@
+## 2026-05-18 AM — Residual "Close in 21 Days" H3 sweep + Re-Verify Gate auto-resolutions
+
+- **Phase A compliance cleanup (commit `a317f1b`):** Adam's Sunday EVENING sitewide "21-Day Avg. Close" sweep missed 6 suburb pages where the claim lived inside a "How I Work" Step 4 H3 heading. Replaced "Close in 21 Days" → "Coordinated Close" on buda, elgin, florence, jarrell, marble-falls, smithville mortgage-lender pages. Replacement matches each page's existing body copy ("I manage the timeline proactively") so no body rewrite needed. All 6 pages live-verified HTTP 200 with new copy post-Netlify deploy.
+- **Lesson:** marketing-phrase audits should grep across ALL `.html` (not just `<meta>` + JSON-LD blocks) and resolve every match with context. Sub-headings in body content are the easiest miss.
+- **Re-Verify Gate — 2 auto-resolutions:** (1) style.css working-tree carry (23 prior runs of being uncommitted) — clean tree confirmed today; Adam committed nav-dropdown fix between Sun and Mon. (2) Homepage AggregateRating + 136+ Reviews badge — confirmed REMOVED at schema level by Adam's Sunday EVENING sweep (audit finding #4 schema-level satisfaction). 5.0/45 Zillow text still appears in body copy 2× on homepage — body-copy level audit item remains open.
+- **PSI Monday refresh test:** quota STILL drained on `project_number:583797351490` even on Monday 5/18 (10-of-10 consecutive drain). Carry now reframed from "may restore on Monday" to "Monday refresh does NOT restore quota." Confirms permanent throttle theory; provision dedicated key or accept permanent UNVERIFIED.
+- **Scheduler-anomaly streak:** Mon 5/18 fired exactly once at normal time. First non-anomaly day after a 4-day, 7-anomaly, 4-distinct-type streak (Thu 5/14 no-fire → Fri 5/15 triple → Sat 5/16 double → Sun 5/17 weekend). HIGH flag stays until 3 clean days in a row.
+- **Tuesday 5/19 self-execute preview:** `/investor-loans` (11th carry) + `/high-net-worth-mortgage` (11th carry) title rewrites to insert "Adam Styer" before "NMLS #513013" — Decision Test PASSES (reversible, audit-supported, no legal judgment). Will execute MEDIUM_RISK during Tuesday rotation's Title Tags + Meta Descriptions step.
+
 ## 2026-05-17 LATE — UX/conversion overhaul (homepage + /scenario page)
 
 - **Hero CTA cleanup:** Secondary CTA label "Schedule Strategy Call" → "Book 15-Min Call". Both hero CTAs (`Send My Scenario`, mobile sticky bar, final-CTA section) now route to new `/scenario.html` instead of `/get-preapproved`.
