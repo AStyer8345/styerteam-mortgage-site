@@ -1,3 +1,12 @@
+## 2026-05-18 EVENING (styer-site-daily pass-3) — Re-Verify Gate only, no auto-edits
+
+- **Verification-only run** — 0 files modified. Third Monday fire of the day (after AM rotation pass + same-day Phase A AggregateRating cleanup pass).
+- **Re-Verify Gate** swept 22 claims: 11 STILL OK, 9 STILL OPEN carries deferred to Adam, 2 NEW open findings.
+- **Validated Adam's two same-day commits live:** `6e27eb5` nav consolidation (3-page spot-check passes; soft inconsistency on suburb `About Adam` standalone vs nested) + `53b4733` scenario differentiation (4 JSON-LD blocks live, sitemap entry present, get-preapproved tracking preserved post-rewrite).
+- **NEW HIGH escalation:** Calculator P0-A (12× inflated PITI bug on `rate-buydown-calculator.html` lines 1035–1036). Sister task `styer-calculator-audit-weekly` flagged 4 weeks running with `patches/calculator-2026-04-20-P0.diff` on disk — escalating from this surface so it doesn't fall through the cracks.
+- **NEW LOW finding:** Adam's nav-consolidation commit description claims `About Adam` should nest under Contact dropdown, but suburb pages render it as standalone `<li>`. consolidate-nav.py per-template gap. Logged for tomorrow's spot-audit.
+- Conversion tracking 10/10 critical tokens survived Adam's `/get-preapproved` rewrite cleanly.
+
 ## 2026-05-18 LATE — SEO/AEO fixes per audit: scenario schema, sitemap, differentiation
 
 Audit findings: /scenario.html had zero structured data and wasn't in
