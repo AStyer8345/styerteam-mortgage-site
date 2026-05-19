@@ -766,14 +766,80 @@
     })();
   </script>
   <script>
-    // GTM conversion event on submit. File uploads require native multipart form
-    // submission to Netlify — we let the browser handle it instead of intercepting.
+    // Dual-submit pattern (matches get-preapproved.html):
+    //   1. POST multipart FormData (including file) to Netlify Forms — captures
+    //      submission + any uploaded documents in the Forms dashboard.
+    //   2. POST JSON of the text fields to /.netlify/functions/lead-intake —
+    //      fires Mailchimp subscribe + LoanOS web-lead webhook, which triggers
+    //      the n8n "Web Lead Automation" workflow that emails Adam.
+    // Files are stored by Netlify only (the function can't JSON-encode binary
+    // payloads). The function payload includes has_file_upload: yes/no so
+    // Adam knows whether to check Netlify Forms for the attachment.
     (function () {
       var form = document.getElementById('form-scenario');
       if (!form) return;
-      form.addEventListener('submit', function () {
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        var data = new FormData(form);
+        var fileInput = form.querySelector('input[name="documents"]');
+        var hasFile = !!(fileInput && fileInput.files && fileInput.files.length);
+
+        // GTM conversion event
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'generate_lead', lead_type: 'scenario_review' });
+
+        Promise.all([
+          // 1. Native Netlify Forms submission with multipart body (includes file)
+          fetch('/', {
+            method: 'POST',
+            body: data,
+          }).catch(function (err) { console.error('Netlify form error:', err); }),
+
+          // 2. lead-intake function — JSON text fields → Mailchimp + LoanOS → n8n → Adam email
+          fetch('/.netlify/functions/lead-intake', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email:           data.get('email')           || '',
+              first_name:      data.get('first_name')      || '',
+              last_name:       data.get('last_name')       || '',
+              fname:           data.get('first_name')      || '',
+              lname:           data.get('last_name')       || '',
+              phone:           data.get('phone')           || '',
+              tag:             'scenario-review',
+              loan_goal:       data.get('loan_goal')       || '',
+              employment_type: data.get('employment_type') || '',
+              property_use:    data.get('property_use')    || '',
+              loan_amount:     data.get('loan_amount')     || '',
+              credit_score:    data.get('credit_score')    || '',
+              timeline:        data.get('timeline')        || '',
+              income_range:    data.get('income_range')    || '',
+              target_city:     data.get('target_city')     || '',
+              bank_said:       data.get('bank_said')       || '',
+              situation:       data.get('situation')       || '',
+              has_file_upload: hasFile ? 'yes' : 'no',
+              lead_source:     'Scenario Review',
+              tcpa_consent:    data.get('tcpa_consent') === 'on',
+              sms_opt_in:      data.get('sms_opt_in') === 'on',
+              utm_source:      data.get('utm_source')      || '',
+              utm_medium:      data.get('utm_medium')      || '',
+              utm_campaign:    data.get('utm_campaign')    || '',
+              utm_term:        data.get('utm_term')        || '',
+              utm_content:     data.get('utm_content')     || '',
+              page_url:        data.get('page_url')        || window.location.href,
+              referrer:        data.get('referrer')        || '',
+              'form-name':     'scenario',
+            }),
+          }).catch(function (err) { console.error('lead-intake error:', err); }),
+        ]).finally(function () {
+          window.location.href = '/thank-you';
+        });
       });
     })();
   </script>
