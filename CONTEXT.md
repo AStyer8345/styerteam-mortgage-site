@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/JS on Netlify — no framework, no CMS. 75+ public pages live (homepage, loan pages, 24 suburb SEO pages, 5 rate-check city pages, 10 rate-shopper blog posts, resource/guide pages, blog, calculators, realtor hub, plus the 7-page non-QM cluster as of 2026-05-05).
+Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/JS on Netlify — no framework, no CMS. 75+ public pages live (homepage, loan pages, 24 suburb SEO pages, 5 rate-check city pages, 10 rate-shopper blog posts, resource/guide pages, blog, calculators, realtor hub, plus the 7-page non-QM cluster).
 
 ## Repo
 
@@ -16,25 +16,52 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-05-18 EVENING (Monday — styer-site-daily THIRD pass):** Verification-only Re-Verify Gate sweep — 0 files modified. 22 claims swept: 11 STILL OK, 9 STILL OPEN carries, 2 NEW open findings. Validated Adam's two same-day commits live (`6e27eb5` nav 8→5 consolidation, `53b4733` scenario differentiation + sitemap bulk-bump of 91 URLs). Conversion tracking 10/10 survived Adam's `/get-preapproved` repositioning rewrite cleanly. NEW HIGH escalation: Calculator P0-A 12× inflated PITI bug (sister task `styer-calculator-audit-weekly` flagged 4 weeks running, patch on disk). NEW LOW: suburb pages render `About Adam` standalone vs nav-consolidation commit's claim of nesting under Contact dropdown. NotebookLM 44th dead run. PSI 12th dead run.
+**2026-05-19 (Tuesday — styer-site-daily):** Tuesday rotation (titles + meta descriptions) + extended Phase A AggregateRating cleanup the prior pass missed. 24 files modified across 2 commits.
+- Commit `889496b`: NMLS suffix added to 3 titles missing it (dscr-loans-central-texas, asset-depletion-mortgage-austin-tx, self-employed-mortgage-round-rock-tx). Trimmed 3 meta descriptions >190 chars (1099-only, p-and-l, asset-depletion-texas) to ≤159 chars.
+- Commit `9631c86`: Phase A audit finding #4 — extended Adam's `0cc148a` AggregateRating cleanup pattern to 18 user-facing pages still carrying the fabricated `reviewCount: "136"` block (15 suburb pages + 2 DSCR geo + first-time-home-buyer). Three syntactic variants handled (short/long pattern, end/mid-object placement). JSON-LD validated parseable on every page post-edit. Sweep now confirms **0 AggregateRating + 0 reviewCount:"136" sitewide**.
+- Conversion tracking 10/10 critical tokens hold pre + post deploy. Netlify deploy live; 10-page HTTP 200 spot-check confirms.
+- Re-Verify Gate caught + corrected yesterday's stale metric claim ("0/8 user-facing pages" — was actually 18 still carrying the block).
 
-**2026-05-18 07:09 CDT (Monday — styer-site-daily second pass):** Same-calendar-day re-fire after first Monday pass. Phase A residual cleanup the first pass missed: retired fabricated AggregateRating JSON-LD blocks (`reviewCount: "136"`) on 6 loan-type pages + Dripping Springs. Commit `0cc148a` deployed and live-verified (HTTP 200, AggregateRating=0, reviewCount136=0 on all 7). Site-wide user-facing AggregateRating exposure now 0/8. Auto-resolved about.html review-count body-copy (91/98/45 → 0 live).
+**2026-05-18 EVENING (Monday — third pass):** Verification-only Re-Verify Gate. NEW HIGH escalation: Calculator P0-A 12× inflated PITI bug, sister task 4 weeks running. Validated Adam's same-day commits (`6e27eb5` nav 8→5; `53b4733` scenario differentiation).
 
-**2026-05-18 PM (Monday — styer-competitive-weekly Week 11):** Tracked top-10 jumped 4 → 6 suburbs (Round Rock ★ #9 first-ever, San Marcos ★ #9 first-measurement, Pflugerville #4 → #2 with Geneva demoted to #3, Leander #6 → #4, Kyle #8 → #6, Hutto demoted #2 → #3 via Zillow insertion). Added NEW strategic tracking dimension — complicated-income SERPs per GOALS.md repositioning: jumbo #2 + asset depletion #4 (via jumbo page), but **0 of 5 on self-employed / bank statement / non-QM / DSCR / 1099**. LendFriend is new #1 strategic competitor. Head-to-head audit: Adam's `/non-qm-loans.html` is structurally stronger on 4 of 8 dimensions but loses on FAQPage schema. Compliance-permitted fix this week = schema audit on 5 complicated-income pages + jumbo page. ATX Mortgage Lending 0/61 suburb pages (2nd biweekly verify). Westlake dropped from rotation. Stephanie Donnell flagged for Week 12 deep-audit. NotebookLM CLI auth still expired (Step 6 push blocked); advisor script 43rd dead run.
+**2026-05-17 (Sunday):** Sitewide "21-Day Avg. Close" → "1,000+ Loans Closed" across ~95 files. GOALS.md fully rewritten — LoanOS/Client Ops/portfolio paused, loan-officer pipeline first.
 
-**2026-05-18 AM (Monday — styer-site-daily rotation, Phase A residual sweep):** Monday rotation fire restored (scheduler-anomaly 4-day streak appears ended). Retired residual "Close in 21 Days" H3 on 6 suburb pages (commit `a317f1b`, all live-verified). Two carries auto-resolved (style.css working tree; homepage AggregateRating schema). PSI quota 10/10 consecutive drain. NotebookLM 42nd consecutive dead run.
+## Active Blockers
 
-**2026-05-17 EVENING (Sunday — repositioning sweep + 21-day claim retired):** Sitewide "21-Day Avg. Close" → "1,000+ Loans Closed" across ~95 files (trust badges, footers, trust chips, inline spans, list items). Homepage schema/FAQ 21-day claim removed. AggregateRating + 136+ Reviews badge removed from homepage schema. GOALS.md fully rewritten — LoanOS/Client Ops/portfolio paused, loan-officer pipeline first. 2026-05-17_compliance-audit delivered with 21-finding pre-audit review.
+| Item | Priority |
+|------|----------|
+| **Calculator P0-A 12× inflated PITI bug** — `rate-buydown-calculator.html` lines 1032-1033, 29 days live, patch `patches/calculator-2026-04-20-P0.diff` on disk, sister task flagged 5 weeks running | HIGH (Adam) |
+| NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **45 consecutive dead runs** | HIGH (Adam) |
+| PSI quota drained **13/13** consecutive periods — provision dedicated key OR accept permanent UNVERIFIED | HIGH (Adam) |
+| `/investor-loans` + `/high-net-worth-mortgage` titles missing "Adam Styer" — **14th run carry** deferred per Phase B name swap. Adam decision: rewrite now or wait? | MEDIUM (Adam) |
+| Homepage body-copy still references "92 Google reviews" + "45 Zillow reviews" + "5.0 ★" (index.html lines 455, 492, 861) — awaiting Adam's "complicated income" trust-strip pivot copy | MEDIUM (Adam) |
+| products.html 10 in-card "Get Pre-Approved" route to raw 1003 (27th carry; Adam decision) | MEDIUM |
+| GSC URL Inspection sweep overdue — Round Rock, San Marcos, Hutto, Pflugerville, Leander, Bee Cave (7+ carries) | HIGH (Adam) |
+| Complicated-income SERP gap — 0/5 ranking on self-employed / bank statement / non-QM / DSCR / 1099 Austin. Compliance-permitted fix this week = FAQPage + AggregateRating schema audit on 5 pages + /loans/jumbo | HIGH |
+| **Hedged claims to verify (NEW 2026-05-17)** — 8 items in `FLAG_FOR_ADAM.md` against current wholesale rate sheets before quoting borrowers | HIGH (Adam) |
+| NotebookLM CLI auth expired (2026-05-11) — `notebooklm login` required | HIGH (Adam) |
+| Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config | HIGH (Adam) |
+| Smithville/Elgin/Florence/Jarrell USDA cleanup pending | MEDIUM |
+| 2026-04-27-why-home-prices-arent-crashing CTA structure (27th carry) + missing FAQPage schema (10th carry) | MEDIUM |
+| ~~Phase A AggregateRating cleanup incomplete on 18 pages~~ ✅ COMPLETED 2026-05-19 commit `9631c86` — site now genuinely 0/0 | DONE |
+| ~~ops.html internal dashboard "AggregateRating ✅" stale~~ — now technically correct sitewide after 2026-05-19 cleanup; phrasing audit pending | MEDIUM (Adam) |
+| **Sitewide nav inconsistency (2026-05-17)** — ~75 pages still have older nav order vs index.html's pillar-first reorder | MEDIUM |
+| Site-wide footer `/prequal.html` link in 20 pages — parity gap | LOW |
+| Suburb roster `/calculators` linking gap (11th carry) | LOW (Adam) |
+| Suburb pages render `About Adam` standalone vs Contact dropdown — `consolidate-nav.py` per-template gap | LOW (Adam) |
+| **5 of 6 new HNW/non-QM pages missing NMLS Consumer Access `sameAs` in Article schema** | LOW |
+| Bulk suburb audit recommendation — replace 9-week rotation with weekly audit (3rd carry) | MEDIUM |
+| **Scheduler reliability** — Thu 5/14 no-fire (10th carry); favorable streak Mon 5/18 ended scheduler-anomaly run | HIGH (Adam) |
 
-**2026-05-17 DAYTIME (Sunday — private-wealth / non-QM expansion):** 6 new niche pages added in repo root. Homepage schema, FAQ, nav reordered to lead with pillar. Fact-check verdict GREEN after fabricated testimonials deleted. `FLAG_FOR_ADAM.md` written to repo root with 11 hedged-claim items.
+## What's Next
 
-**Surfaced for Adam:** `/investor-loans` + `/high-net-worth-mortgage` title brand-vs-length tradeoff (11th carry — Tuesday rotation will self-execute MEDIUM_RISK rewrite per Decision Test). Suburb roster `/calculators` linking gap (8th carry). Audit finding #4 body-copy level review counts ("45 Zillow" still appears on homepage body 2×) — schema-level cleared, body-copy still open. PSI quota provision needed (HIGH escalation).
+Wednesday 2026-05-20 rotation = Suburb Page Deep Dive + AEO. Round Rock first in rotation (Round Rock → Cedar Park → Leander → Georgetown → Pflugerville → Kyle → San Marcos → Westlake → Buda). Also: continue meta description trim sweep on 8 remaining pages over 160 chars (bank-statement-loans 187, k1-income 193, mortgage-for-business-owners 203, one-time-close 185, etc.). Re-verify yesterday's 24 changes still hold live.
 
 ## Site Structure (key categories)
 
 | Category | Pages |
 |----------|-------|
-| Core | index, products, calculators, about, contact, blog, realtors |
+| Core | index, products, calculators, about, contact, blog, realtors, scenario |
 | Loan programs | conventional, fha, va, jumbo, construction, investment, refinance, dscr-loan-austin-tx, self-employed-mortgage-austin, **non-qm-loans (hub)**, **bank-statement-loans**, **high-net-worth-mortgage**, **investor-loans** |
 | DSCR cluster | dscr-loan-austin-tx, **dscr-loans-texas**, **dscr-loans-fredericksburg-tx**, **dscr-loans-dripping-springs** |
 | Suburb SEO | 24 `*-mortgage-lender.html` pages |
@@ -42,37 +69,6 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 | Rate shopper blog | 10 posts |
 | Resources | first-time-buyer-guide, glossary, how-to-buy, etc. |
 | Deprioritized | usda (noindex, kept live) |
-
-## Open Items
-
-| Item | Priority |
-|------|----------|
-| Blog cadence: 19 days since last post (2026-04-27) — **deferred per GOALS.md "no new content this week"** | DEFERRED |
-| products.html 10 in-card "Get Pre-Approved" buttons still route to raw 1003 (Adam decision; 24th carry) | MEDIUM |
-| Site-wide footer `/prequal.html` link in 20 pages — parity gap | LOW |
-| ~~Uncommitted style.css change in working tree~~ ✅ AUTO-RESOLVED 2026-05-18 — clean tree | DONE |
-| Suburb roster `/calculators` linking gap (5th carry) | LOW (Adam) |
-| Smithville/Elgin/Florence/Jarrell USDA cleanup pending | MEDIUM |
-| ~~about.html "91 Google + 45 Zillow" review breakdown~~ ✅ AUTO-RESOLVED 2026-05-18 pass-2 — all 3 tokens 0× live | DONE |
-| **Calculator P0-A 12× inflated PITI bug** — `rate-buydown-calculator.html` lines 1035-1036, 28 days live, patch `patches/calculator-2026-04-20-P0.diff` on disk, sister task flagged 4 weeks running | HIGH (Adam) |
-| **Suburb pages render `About Adam` standalone** rather than nested under Contact dropdown per Adam's `6e27eb5` nav-consolidation commit intent — consolidate-nav.py per-template gap | LOW (Adam) |
-| ops.html internal dashboard "AggregateRating ✅" claim now stale post 2026-05-18 pass-2 cleanup. Adam-owned source of truth — update or retain as historical record? | LOW (Adam) |
-| Homepage body-copy still references "92 Google reviews" + "45 Zillow reviews" + "5.0 ★" (index.html lines 455, 492, 861) — audit finding #4 body-copy level. Awaiting Adam's "complicated income" trust-strip repositioning decision. | MEDIUM (Adam) |
-| 2026-04-27-why-home-prices-arent-crashing CTA structure (21st carry) + missing FAQPage schema (4th carry) | MEDIUM |
-| NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **42 consecutive dead runs** | HIGH (Adam) |
-| PSI quota drained 10/10 consecutive periods — Monday refresh confirmed NOT effective — provision dedicated key OR accept permanent UNVERIFIED | HIGH (Adam) |
-| `/investor-loans` (T=68) + `/high-net-worth-mortgage` (T=79) titles missing "Adam Styer" — **12th run carry; Tuesday self-execute DEFERRED by 2026-05-18 pass-2** per Phase B impending name swap. **Adam decision required:** rewrite now or wait for name swap? | MEDIUM (Adam) |
-| NotebookLM CLI auth expired (2026-05-11) — `notebooklm login` required | HIGH (Adam) |
-| GSC URL Inspection sweep (UPDATED 2026-05-18) — Round Rock ★ NEW, San Marcos ★ NEW, Hutto (DEFENSE after Zillow demotion), Pflugerville hold, Leander, Bee Cave (40+ days, 7th carry) | HIGH (Adam) |
-| Complicated-income SERP gap (NEW 2026-05-18, GOALS-CRITICAL) — 0/5 ranking on self-employed / bank statement / non-QM / DSCR / 1099 Austin despite having dedicated pages. Fix this week (compliance-permitted) = FAQPage + AggregateRating schema audit on 5 pages + /loans/jumbo.html. | HIGH |
-| Bulk suburb audit recommendation — replace 9-week rotation with weekly audit (2nd carry; Westlake confirmed off-rotation 2026-05-18) | MEDIUM |
-| Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config | HIGH (Adam) |
-| Verify NAP fix across remaining LocalBusiness/Person schemas | HIGH |
-| **Scheduler reliability HIGH FLAG** — Thu 5/14 no-fire + Fri 5/15 triple same-day (09:49/09:53/23:09) + **NEW: Sat 5/16 weekend fire @ 07:12** — 4 anomalies in 3 days, 3 distinct types | HIGH (Adam) |
-| **NEEDS ADAM (NEW 2026-05-17) — Verify 8 hedged-claim items in `FLAG_FOR_ADAM.md`** against current wholesale rate sheets before quoting borrowers: Fannie 360-mo divisor (sourced via Truss not primary), Newrez SmartSelf 50% 1099 factor, A&D P&L parameters (660 FICO, $2.5M cap), Acra 1099 parameters (600 FICO), retirement haircut convention, non-QM rate premium bps, OTC contingency reserve %, Hill Country pricing tiers. All hedged on live pages. | HIGH (Adam) |
-| **Sitewide nav inconsistency (NEW 2026-05-17)** — only `index.html` nav updated this session to lead with `mortgage-for-business-owners-austin` pillar. ~75 other pages still have older nav order. Bulk sweep deferred (surgical scope this session). | MEDIUM |
-| **5 of 6 new pages missing NMLS Consumer Access `sameAs` in Article schema** — `mortgage-for-business-owners-austin` has it; the other 5 don't. AEO research flagged this as highest-value E-E-A-T entity signal. 5-min fix next session. | LOW |
-| **OTC §50(a)(5) page lists 4 absolute requirements; research lists 5** — venue rule ("contract executed at lender/title/attorney office, not kitchen table") mentioned on page but as side note, not numbered. Cosmetic. | LOW |
 
 ## Session Rules
 
@@ -89,7 +85,7 @@ Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/
 Read `/Users/adamstyer/Documents/GOALS.md` first.
 
 END OF SESSION:
-1. CONTEXT.md — replace Last Worked On, Open Items only. Keep under 150 lines.
+1. CONTEXT.md — replace Last Worked On, Active Blockers, What's Next only. Keep under 100 lines.
 2. CHANGELOG.md — append dated bullet points
 3. TODO.md — mark done, add new items
 4. DECISIONS.md — only if a real decision was made
