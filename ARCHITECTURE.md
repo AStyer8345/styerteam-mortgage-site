@@ -28,11 +28,11 @@
 
 | Field | Value |
 |-------|-------|
-| Name | Adam Styer \| Mortgage Solutions LP |
-| NMLS | 513013 (Adam) / 2526130 (Company) |
+| Name | Adam Styer \| Kyber Mortgage Corporation dba HyperSmart Home Loans |
+| NMLS | 513013 (Adam) / 2653540 (Company) |
 | Phone | (512) 956-6010 |
 | Email | adam@thestyerteam.com |
-| Address | 5718 Sam Houston Circle, Austin, TX 78731 |
+| Address | 9050 N. Capital of Texas Hwy, Ste 390, Austin, Texas 78759 |
 | Calendly | https://calendly.com/adamstyer/15minutes |
 | Loan app | https://hypersmart.my1003app.com/513013/register?time=1779291829279 |
 | GBP Place ID | ChIJYy5uEFPKRIYRmF-k_5gPk74 |
@@ -162,7 +162,7 @@ All website content auto-distributes to GBP + FB + IG + LI:
 ## NMLS Legal Disclaimer (verbatim on all pages)
 
 ```
-© 2026 Mortgage Solutions, LP. All rights reserved.
-NMLS# 2526130 (Company) | 513013 (Adam Styer) | NMLS Consumer Access: https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2526130
-Mortgage Solutions, LP is a Licensed Mortgage Broker in Texas. This is not an offer to enter into an agreement. Not all customers will qualify. Information, rates and programs are subject to change without notice. All products are subject to credit and property approval. The property must be appraised at a value sufficient to support the loan requested. Additional restrictions and limitations may apply. Equal Housing Opportunity.
+© 2026 Kyber Mortgage Corporation dba HyperSmart Home Loans. All rights reserved.
+NMLS# 2653540 (Company) | 513013 (Adam Styer) | NMLS Consumer Access: https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2653540
+Kyber Mortgage Corporation dba HyperSmart Home Loans is a Licensed Mortgage Broker in Texas. This is not an offer to enter into an agreement. Not all customers will qualify. Information, rates and programs are subject to change without notice. All products are subject to credit and property approval. The property must be appraised at a value sufficient to support the loan requested. Additional restrictions and limitations may apply. Equal Housing Opportunity.
 ```

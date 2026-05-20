@@ -30,12 +30,12 @@ function buildRealtorPage({ title, description, date, slug, content, category })
       "jobTitle": "Loan Originator",
       "worksFor": {
         "@type": "Organization",
-        "name": "Mortgage Solutions, LP"
+        "name": "Kyber Mortgage Corporation dba HyperSmart Home Loans"
       }
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Mortgage Solutions, LP",
+      "name": "Kyber Mortgage Corporation dba HyperSmart Home Loans",
       "url": "https://styermortgage.com",
       "logo": {
         "@type": "ImageObject",
@@ -70,7 +70,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${pageUrl}">
-  <meta property="og:site_name" content="Adam Styer | Mortgage Solutions LP">
+  <meta property="og:site_name" content="Adam Styer | HyperSmart Home Loans">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(title)}">
@@ -101,7 +101,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
     <div class="container">
       <nav>
         <a href="../index.html" class="nav-brand">
-          <img src="../assets/logo.svg" alt="Adam Styer | Mortgage Solutions LP" class="nav-logo-img" width="180" height="40">
+          <img src="../assets/logo.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -151,7 +151,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
 
           <p>Want to talk strategy or run scenarios for a client? Give me a call or shoot me a text. Always happy to help close the deal.</p>
 
-          <p>Let's close some deals together,<br><strong>Adam Styer</strong><br>Adam Styer | Mortgage Solutions LP<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
+          <p>Let's close some deals together,<br><strong>Adam Styer</strong><br>Adam Styer | HyperSmart Home Loans<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
 
         </div>
 
@@ -203,8 +203,8 @@ function buildRealtorPage({ title, description, date, slug, content, category })
         <div class="footer-section">
           <h4>Contact</h4>
           <p>
-            <strong>Adam Styer | Mortgage Solutions LP</strong><br>
-            Mortgage Solutions, LP
+            <strong>Adam Styer | HyperSmart Home Loans</strong><br>
+            Kyber Mortgage Corporation dba HyperSmart Home Loans
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
@@ -232,10 +232,10 @@ function buildRealtorPage({ title, description, date, slug, content, category })
 
       <div class="footer-bottom">
         <div>
-          <p>&copy; ${new Date().getFullYear()} Mortgage Solutions, LP. All rights reserved.</p>
+          <p>&copy; ${new Date().getFullYear()} Kyber Mortgage Corporation dba HyperSmart Home Loans. All rights reserved.</p>
           <div class="footer-nmls">
-            <strong>NMLS#:</strong> 2526130 (Company) | 513013 (Adam Styer)<br>
-            Mortgage Solutions, LP is a Licensed Mortgage Broker in Texas.
+            <strong>NMLS#:</strong> 2653540 (Company) | 513013 (Adam Styer)<br>
+            Kyber Mortgage Corporation dba HyperSmart Home Loans is a Licensed Mortgage Broker in Texas.
           </div>
         </div>
       </div>

@@ -54,7 +54,7 @@
 2. Nest Mortgaging — Erica Billé (local broker, Kyle street address)
 3. Yelp directory
 4. LegalMatch (off-intent)
-5. Mortgage Solutions LP — Logan Patterson (same company as Adam)
+5. Kyber Mortgage Corporation dba HyperSmart Home Loans — Logan Patterson (same company as Adam)
 6. **styermortgage.com/kyle-mortgage-lender.html** (Adam)
 7. Real Estate Bees directory
 8. mortgagesolutionslp.com home

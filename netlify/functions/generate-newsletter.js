@@ -149,7 +149,7 @@ Emails are SHORT teasers (100-150 words MAX) that drive the reader to click to t
 - Open with a personal hook or quick observation.
 - 2-3 bullet points previewing what's in the article.
 - One clear CTA link to: ${pageUrl}
-- Sign off: Adam Styer | Mortgage Solutions LP | NMLS# 513013 | (512) 956-6010
+- Sign off: Adam Styer | HyperSmart Home Loans | NMLS# 513013 | (512) 956-6010
 
 ${wantsBorrower ? `### BORROWER EMAIL
 - Write like Adam emailing a past client
@@ -174,7 +174,7 @@ ${wantsRealtor ? `### REALTOR EMAIL
 Output ONLY body HTML fragments: <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>, <hr>.
 NO <!DOCTYPE>, <html>, <head>, <body>, <style>, or <meta> tags.
 
-End the article with: "Talk soon,<br>Adam Styer<br>Adam Styer | Mortgage Solutions LP<br>NMLS# 513013 | (512) 956-6010"
+End the article with: "Talk soon,<br>Adam Styer<br>Adam Styer | HyperSmart Home Loans<br>NMLS# 513013 | (512) 956-6010"
 
 ## OUTPUT FORMAT — use these EXACT delimiters
 PAGE_TITLE: [max 60 chars]
@@ -363,7 +363,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
           try {
             const borrowerResult = await createAndSendCampaign({
               listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
-              subject: parsed.borrowerSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
+              subject: parsed.borrowerSubject || `${effectiveTopic} - Adam Styer | HyperSmart Home Loans`,
               preheader: parsed.borrowerPreheader || "",
               html: wrapEmailHtml(injectPageLink(parsed.borrowerEmail, finalPageUrl)),
               fromName: "Adam Styer",
@@ -381,7 +381,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
           try {
             const realtorResult = await createAndSendCampaign({
               listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
-              subject: parsed.realtorSubject || `${effectiveTopic} - Adam Styer | Mortgage Solutions LP`,
+              subject: parsed.realtorSubject || `${effectiveTopic} - Adam Styer | HyperSmart Home Loans`,
               preheader: parsed.realtorPreheader || "",
               html: wrapEmailHtml(injectPageLink(parsed.realtorEmail, finalPageUrl)),
               fromName: "Adam Styer",

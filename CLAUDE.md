@@ -35,7 +35,14 @@ Top-of-hierarchy reads:
 - Use Netlify Forms for all form capture (`netlify` attribute + hidden `form-name` input)
 - Never add CSS frameworks, JS libraries, or npm packages without Adam's approval
 - Never modify GTM container snippet or form field names on landing pages
-- Never use "The Styer Team" — always "Adam Styer | Mortgage Solutions LP"
+- Display name: "Adam Styer | HyperSmart Home Loans" (footer/nav/OG meta)
+- Legal entity name (anywhere a disclaimer or NMLS line appears): "Kyber Mortgage Corporation dba HyperSmart Home Loans"
+- Never use "The Styer Team" or "Mortgage Solutions LP" (legacy entity — fully retired 2026-05-20)
+- Company NMLS: 2653540 (was 2526130 under prior entity)
+- Adam's personal NMLS: 513013 (unchanged)
+- Corp address: 9050 N. Capital of Texas Hwy, Ste 390, Austin, Texas 78759
+- Corp phone: (877) 876-3956 | Adam's direct: (512) 956-6010
+- Corp licensing email: licensing@hypersmart.loan | Adam's direct: adam@thestyerteam.com
 - Never display raw loan application URL — use anchor text
 - Run blog title lint before publish: `grep "<title>" blog/*.html | grep -v "Adam Styer"`
 - New blog posts must be added to `blog.html` noscript block + CollectionPage schema

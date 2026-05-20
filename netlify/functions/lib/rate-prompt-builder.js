@@ -62,7 +62,7 @@ TONE: Casual, direct, like a text or quick email to someone you actually know.
 - NEVER use: "leverage", "unlock", "dream home", "exciting", "thrilled", "navigate", "empower", "game-changer", "take advantage", "don't miss out", "act now", "incredible opportunity", "poised for", "seize the moment"
 - Sound like: "Here's the deal", "Real talk", "The short version", "Let me break it down"`;
 
-  let prompt = `You write weekly rate updates for Adam Styer, mortgage loan originator at Mortgage Solutions, LP in Austin, TX (NMLS# 513013, Company NMLS# 2526130).
+  let prompt = `You write weekly rate updates for Adam Styer, mortgage loan originator at Kyber Mortgage Corporation dba HyperSmart Home Loans in Austin, TX (NMLS# 513013, Company NMLS# 2653540).
 
 ${voiceSection}
 
@@ -100,7 +100,7 @@ ABSOLUTE RULES FOR ALL EMAILS:
 5. Length target: ${d.emailLength}
 6. Plain-text style HTML for Mailchimp. White background, dark text (#333), blue links.
 7. No images, no banners, no hero sections, no graphics.
-8. Sign off: Adam Styer | Mortgage Solutions LP | NMLS# 513013 | (512) 956-6010
+8. Sign off: Adam Styer | HyperSmart Home Loans | NMLS# 513013 | (512) 956-6010
 ${firstNamePersonalization ? `9. Start the email with a personalized greeting using the Mailchimp merge tag: "Hey *|FNAME|*," — this personalizes to each subscriber's first name.` : ""}
 
 The email structure is:

@@ -17,7 +17,7 @@ function buildRealtorPrompt(formData, pageUrl) {
     category = "",
   } = formData;
 
-  let prompt = `You write weekly content for Adam Styer, mortgage loan originator at Mortgage Solutions, LP in Austin, TX (NMLS# 513013, Company NMLS# 2526130).
+  let prompt = `You write weekly content for Adam Styer, mortgage loan originator at Kyber Mortgage Corporation dba HyperSmart Home Loans in Austin, TX (NMLS# 513013, Company NMLS# 2653540).
 
 This content targets REALTORS — Adam's #1 referral partners. It will be published as an article on styermortgage.com and indexed by Google.
 
@@ -94,7 +94,7 @@ The email should be a SHORT teaser (100-150 words) that gets them to click to th
 - Open with a quick, direct hook — something they'd actually read between showings.${story ? " Reference the personal note briefly if it fits." : ""}
 - 2-3 bullet points previewing the article content.
 - CTA link MUST use this exact URL: ${pageUrl}
-- Sign off: Adam Styer | Mortgage Solutions LP | NMLS# 513013 | (512) 956-6010
+- Sign off: Adam Styer | HyperSmart Home Loans | NMLS# 513013 | (512) 956-6010
 - Tone: like a quick text to a realtor partner, not a corporate newsletter.
 
 ## WEB ARTICLE STRUCTURE
@@ -117,7 +117,7 @@ A brief section separated by <hr>.
 - USE ADAM'S EXACT NOTE provided above
 - Keep it short — 2-3 sentences. Realtors appreciate the personal touch but don't need a novel.` : ""}
 
-End the article with: "Let's close some deals together.<br>Adam Styer<br>Adam Styer | Mortgage Solutions LP<br>NMLS# 513013 | <a href=\\"tel:+15129566010\\">(512) 956-6010</a>"
+End the article with: "Let's close some deals together.<br>Adam Styer<br>Adam Styer | HyperSmart Home Loans<br>NMLS# 513013 | <a href=\\"tel:+15129566010\\">(512) 956-6010</a>"
 
 ## OUTPUT FORMAT — use these EXACT delimiters
 PAGE_TITLE: [max 60 chars, include primary keyword]

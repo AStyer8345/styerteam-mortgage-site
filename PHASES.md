@@ -68,7 +68,7 @@ These are **Answer Engine Optimization** requirements. Goal: make page content e
 
 7. **Topical cluster linking.** Include 2-3 outbound internal links to topically-related pages/posts with **descriptive** anchor text (not "click here" or "learn more"). Example anchor: *"how USDA loans work in rural Williamson County"* → `/loans/usda.html` or a relevant blog post. Builds topical authority in AI entity graphs.
 
-8. **Entity consistency.** Across every rebuild, Adam is referenced identically: *"Adam Styer, NMLS #513013, independent mortgage broker."* Same address, same phone, same business name *"Adam Styer | Mortgage Solutions LP"* — never "The Styer Team". Inconsistent entity strings dilute AI entity resolution.
+8. **Entity consistency.** Across every rebuild, Adam is referenced identically: *"Adam Styer, NMLS #513013, independent mortgage broker."* Same address, same phone, same business name *"Adam Styer | HyperSmart Home Loans"* — never "The Styer Team". Inconsistent entity strings dilute AI entity resolution.
 
 ---
 

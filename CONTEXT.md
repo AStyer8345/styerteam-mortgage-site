@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Public mortgage website for Adam Styer | Mortgage Solutions LP. Static HTML/CSS/JS on Netlify — no framework, no CMS. 75+ public pages live (homepage, loan pages, 24 suburb SEO pages, 5 rate-check city pages, 10 rate-shopper blog posts, resource/guide pages, blog, calculators, realtor hub, plus the 7-page non-QM cluster).
+Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/JS on Netlify — no framework, no CMS. 75+ public pages live (homepage, loan pages, 24 suburb SEO pages, 5 rate-check city pages, 10 rate-shopper blog posts, resource/guide pages, blog, calculators, realtor hub, plus the 7-page non-QM cluster).
 
 ## Repo
 
@@ -73,7 +73,7 @@ Wednesday 2026-05-20 rotation = Suburb Page Deep Dive + AEO. Round Rock first in
 ## Session Rules
 
 - Voice: short punchy sentences, conversational, raw, no fluff. HNW = warm conversational, not cold private-banking.
-- Business name: "Adam Styer | Mortgage Solutions LP" — never "The Styer Team"
+- Business name: "Adam Styer | HyperSmart Home Loans" — never "The Styer Team"
 - Match existing HTML/CSS patterns exactly when adding pages
 - TX-licensed only — never imply Adam originates outside Texas
 - No USDA origination — keep removing from product surfaces as found

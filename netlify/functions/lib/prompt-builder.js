@@ -36,7 +36,7 @@ TONE: Casual, direct, like a text or quick email to someone you actually know.
 - NEVER use: "leverage", "unlock", "dream home", "exciting", "thrilled", "navigate", "empower", "game-changer", "take advantage", "don't miss out", "act now", "incredible opportunity", "market conditions", "poised for", "seize the moment", "strategic advantage"
 - Sound like: "Here's the deal", "Real talk", "The short version", "Let me break it down"`;
 
-  let prompt = `You write weekly blog content for Adam Styer, mortgage loan originator at Mortgage Solutions, LP in Austin, TX (NMLS# 513013, Company NMLS# 2526130).
+  let prompt = `You write weekly blog content for Adam Styer, mortgage loan originator at Kyber Mortgage Corporation dba HyperSmart Home Loans in Austin, TX (NMLS# 513013, Company NMLS# 2653540).
 
 This content will be published as a blog article on styermortgage.com and indexed by Google. Write for BOTH human readers AND search engines.
 
@@ -97,7 +97,7 @@ Emails should be SHORT teasers (100-150 words) that get them to click to the ful
 - Open with something personal or a quick hook.${story ? " Reference the personal story briefly." : ""}
 - 2-3 bullet points previewing the article.
 - CTA link MUST use this exact URL: ${pageUrl}
-- Sign off: Adam Styer | Mortgage Solutions LP | NMLS# 513013 | (512) 956-6010
+- Sign off: Adam Styer | HyperSmart Home Loans | NMLS# 513013 | (512) 956-6010
 
 ${wantsBorrower ? `### BORROWER EMAIL
 - Write like Adam emailing a past client
@@ -132,7 +132,7 @@ ${story ? `A separate section with an <hr> divider and <h2> header.
 Do NOT write a Personal Corner section. Do NOT invent personal anecdotes, family stories, or activities.
 End the article after the main content — go straight to the sign-off.`}
 
-End the article with: "Talk soon,<br>Adam Styer<br>Adam Styer | Mortgage Solutions LP<br>NMLS# 513013 | (512) 956-6010"
+End the article with: "Talk soon,<br>Adam Styer<br>Adam Styer | HyperSmart Home Loans<br>NMLS# 513013 | (512) 956-6010"
 
 ## OUTPUT FORMAT — use these EXACT delimiters
 PAGE_TITLE: [max 60 chars, include primary keyword]

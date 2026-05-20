@@ -1,6 +1,6 @@
 # styermortgage.com
 
-Public mortgage website for Adam Styer | Mortgage Solutions LP (NMLS #513013). Austin, TX.
+Public mortgage website for Adam Styer | HyperSmart Home Loans (NMLS #513013). Austin, TX.
 
 ## Stack
 
