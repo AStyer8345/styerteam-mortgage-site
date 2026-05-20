@@ -39,7 +39,7 @@
     stroke-width="1.5"
   />
 
-  <!-- Mortgage Solutions LP -->
+  <!-- HyperSmart Home Loans -->
   <text
     x="300"
     y="255"
@@ -49,5 +49,5 @@
     font-size="24"
     fill="#C4A962"
     letter-spacing="3"
-  >Mortgage Solutions LP</text>
+  >HyperSmart Home Loans</text>
 </svg>
