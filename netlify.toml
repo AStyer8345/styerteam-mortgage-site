@@ -174,12 +174,12 @@
 
 [[redirects]]
   from = "/apply-now/"
-  to = "https://mslp.my1003app.com/513013/register"
+  to = "https://hypersmart.my1003app.com/513013/register?time=1779291829279"
   status = 301
 
 [[redirects]]
   from = "/apply-now"
-  to = "https://mslp.my1003app.com/513013/register"
+  to = "https://hypersmart.my1003app.com/513013/register?time=1779291829279"
   status = 301
 
 # ─── 301 Redirects: Old WordPress Loan Pages ───

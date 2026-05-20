@@ -118,7 +118,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
           <li><a href="../about.html">About Adam</a></li>
           <li><a href="../realtors.html" class="active">For Realtors</a></li>
           <li><a href="../contact.html">Contact</a></li>
-          <li><a href="https://mslp.my1003app.com/513013/register" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
+          <li><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
         </ul>
       </nav>
     </div>

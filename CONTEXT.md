@@ -77,7 +77,7 @@ Wednesday 2026-05-20 rotation = Suburb Page Deep Dive + AEO. Round Rock first in
 - Match existing HTML/CSS patterns exactly when adding pages
 - TX-licensed only — never imply Adam originates outside Texas
 - No USDA origination — keep removing from product surfaces as found
-- Loan application link: https://mslp.my1003app.com/513013/register (anchor text only)
+- Loan application link: https://hypersmart.my1003app.com/513013/register?time=1779291829279 (anchor text only)
 - Run blog title lint before publish: `grep "<title>" blog/*.html | grep -v "Adam Styer"`
 
 ## Session Protocol
