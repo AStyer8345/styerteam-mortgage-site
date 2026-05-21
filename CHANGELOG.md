@@ -1645,3 +1645,12 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - **Deferred:** `/investor-loans` + `/high-net-worth-mortgage` title rewrites (12-run carry). Previous pass approved Tuesday self-execute; this pass declined per GOALS.md Phase B impending name swap. Adam decision required: rewrite now for SEO consistency or wait for the name swap?
 - Sitemap 200 ✅. Conversion tracking 10/10 critical tokens across 4 pages. GTM single-container hex verified.
 - Self-review PASS — 7 site files modified, all JSON-LD block removals + 1 trailing-comma trim. Hard constraints intact.
+
+## 2026-05-21 (styer-site-daily — Thursday rotation)
+
+- **Phase B residual scrub:** Removed last "Styer Team" wording sitewide. `realtors.html:189` team-office.jpg alt attribute now reads "Adam Styer at his Kyber Mortgage Corporation dba HyperSmart Home Loans office in Austin, Texas". Commit `276b894` deployed; verified live in ~1s, HTTP 200.
+- **Site-wide entity scrub confirmed clean:** 0 "Mortgage Solutions LP", 0 NMLS 2526130, 0 "Styer Team" sitewide. Adoption of HyperSmart + Kyber + NMLS #2653540 healthy across homepage + /get-preapproved + /refinance-quote + /thank-you.
+- **Thursday rotation — Internal Linking + Funnel Flow:** 3 complicated-income pages audited (self-employed, DSCR, bank-statement). All hit ≥2 high-intent CTAs (/scenarios + /calculators + /contact). thank-you.html structure intact (Calendly + tel + 3 next-step markers). contact.html wiring intact (Netlify + form-name + dataLayer).
+- **New finding:** homepage has 0 direct CTAs to `/get-preapproved` or `/refinance-quote` post-`71b8590` hero cleanup. Routes go direct to loan-app URL + tel:. Flagged for Adam.
+- **Sitemap + robots 200 ✅. Conversion tracking 10/10 ✅.**
+- **NotebookLM script missing — 47th consecutive dead check.** PSI quota drain — 14th consecutive.
