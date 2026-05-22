@@ -32,6 +32,28 @@ const REALTOR_LIST = process.env.MAILCHIMP_REALTOR_LIST_ID || "";
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 const TOKEN = process.env.LOANOS_AGENT_SECRET || "";
 
+const JUNK_DOMAINS = new Set([
+  "email.com",
+  "test.com",
+  "example.com",
+  "example.org",
+  "example.net",
+  "fake.com",
+  "placeholder.com",
+  "noemail.com",
+  "none.com",
+  "na.com",
+  "tbd.com",
+]);
+
+function isJunkEmail(email) {
+  if (!email || !email.includes("@")) return true;
+  const domain = email.split("@").pop();
+  if (JUNK_DOMAINS.has(domain)) return true;
+  if (email.startsWith("test@") || email.startsWith("noreply@")) return true;
+  return false;
+}
+
 exports.handler = async (event) => {
   const params = event.queryStringParameters || {};
 
@@ -89,6 +111,7 @@ async function diffAndMaybeSync({ listId, audienceLabel, supabaseQuery, auth, dr
 
   const mcSet = new Set(mcEmails.map((e) => e.toLowerCase()));
   const missing = [];
+  const junkSkipped = [];
   const seen = new Set();
 
   for (const c of supContacts) {
@@ -97,6 +120,10 @@ async function diffAndMaybeSync({ listId, audienceLabel, supabaseQuery, auth, dr
     if (seen.has(email)) continue;
     seen.add(email);
     if (mcSet.has(email)) continue;
+    if (isJunkEmail(email)) {
+      junkSkipped.push(email);
+      continue;
+    }
     missing.push({
       email,
       fname: (c.first_name || "").trim(),
@@ -109,8 +136,10 @@ async function diffAndMaybeSync({ listId, audienceLabel, supabaseQuery, auth, dr
     mailchimp_existing: mcSet.size,
     loanos_total: supContacts.length,
     loanos_unique_emails: seen.size,
+    junk_skipped_count: junkSkipped.length,
+    sample_junk_skipped: junkSkipped.slice(0, 10),
     missing_count: missing.length,
-    sample_missing: missing.slice(0, 10).map((m) => m.email),
+    sample_missing: missing.slice(0, 15).map((m) => m.email),
   };
 
   if (dryRun || missing.length === 0) {
