@@ -1,3 +1,13 @@
+## 2026-05-22 (styer-site-daily, Friday) — Phase B title swap + 8 meta description trims
+
+- **Phase B title cleanup DONE (15-run carry resolved):** /investor-loans now reads "Investor Loans Austin TX | Adam Styer | NMLS #513013" (52 chars); /high-net-worth-mortgage now reads "High-Net-Worth Mortgage Austin TX | Adam Styer | NMLS #513013" (61 chars). og:title and twitter:title intentionally left as their shorter social variants per prior carry-over insight.
+- **8 meta description trims to ≤160 chars across complicated-income pages** — all aligned with GOALS.md weekly priority (repositioning around complicated income). Lengths: bank-statement-loans 187→157, bank-statement-loans-austin-tx 169→142, dscr-loan-austin-tx 187→137, dscr-loans-texas 181→155, self-employed-mortgage-austin 182→131, k1-income-mortgage-austin 193→151, mortgage-for-business-owners-austin 203→159, one-time-close-construction-loan-texas 185→149.
+- **Misleading "broker" wording removed** from mortgage-for-business-owners-austin meta — Adam is correspondent lender per voice guide; trimmed "Austin's mortgage broker for X" → "Austin mortgage for X".
+- **Friday rotation: Content Planning + AEO Review** — 2026-04-17 refinance post strong AEO (FAQPage + 8 question H2s + 8 CTAs); 2026-04-27 home-prices post still missing FAQPage schema (10th carry, paused per GOALS.md no-content rule). Blog stale 25 days, flagged but paused.
+- **Single commit `a8d565c`, 10 files**, pushed and verified live (10× HTTP 200 + title + meta spot-checks). Self-review PASS — no hard-constraint violations.
+- Re-Verify Gate: prior `276b894` realtors.html alt-text scrub still holds; 0 banned phrases sitewide.
+- NotebookLM 48th dead-check; PSI quota 15-of-15 drain (both carry).
+
 ## 2026-05-18 EVENING (styer-site-daily pass-3) — Re-Verify Gate only, no auto-edits
 
 - **Verification-only run** — 0 files modified. Third Monday fire of the day (after AM rotation pass + same-day Phase A AggregateRating cleanup pass).

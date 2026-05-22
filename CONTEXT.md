@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-05-21 (Thursday — styer-site-daily):** Thursday rotation (Internal Linking + Funnel Flow) + Phase B entity-scrub residual. Site fully clean of legacy "Mortgage Solutions LP" / NMLS 2526130 / "Styer Team" wording after `276b894` scrubbed one stray "Styer Team" in `realtors.html:189` image alt text (was missed by Adam's three earlier name-swap commits 2a0c1e8 / c427b15 / efd26fe). HyperSmart + Kyber + NMLS #2653540 adoption now clean across homepage, /get-preapproved, /refinance-quote, /thank-you. Thursday rotation: 3 complicated-income pages (self-employed, DSCR, bank-statement) all route through /scenarios + /calculators + /contact — ≥2 high-intent CTAs each. New finding: homepage has 0 direct CTAs to /get-preapproved or /refinance-quote post-`71b8590` hero cleanup — funnel-direction question flagged for Adam.
+**2026-05-22 (Friday — styer-site-daily):** Friday rotation (Content Planning + AEO Review) + completed yesterday's TOMORROW_PRIORITY in full. Single 10-file commit `a8d565c`: (1) Phase B title rewrites on /investor-loans + /high-net-worth-mortgage — both now include "Adam Styer | NMLS #513013" (resolves 15-run carry); (2) 8 meta description trims to ≤160 chars across complicated-income pages (bank-statement ×2, DSCR ×2, self-employed, k1-income, business-owners, OTC construction) — all aligned with GOALS.md repositioning. AEO audit: 2026-04-17 refinance post strong (FAQPage + 8 question H2s + 8 CTAs); 2026-04-27 home-prices post still missing FAQPage schema (10th-carry, gated on no-content policy). Blog stale 25 days — flagged but paused per GOALS.md "no new content" rule.
+
+**2026-05-21 (Thursday — styer-site-daily):** Thursday rotation (Internal Linking + Funnel Flow) + Phase B entity-scrub residual. `276b894` scrubbed stray "Styer Team" in realtors.html:189 alt text. Site fully clean of legacy entity. New finding: homepage 0 direct CTAs to /get-preapproved or /refinance-quote post-`71b8590` hero cleanup.
 
 **2026-05-19 (Tuesday — styer-site-daily):** Tuesday rotation (titles + meta descriptions) + extended Phase A AggregateRating cleanup. 24 files across `889496b` + `9631c86`. Site confirmed 0/0 AggregateRating sitewide.
-
-**2026-05-18 EVENING (Monday — third pass):** Verification-only Re-Verify Gate. Calculator P0-A 12× inflated PITI bug escalated to HIGH. Validated `6e27eb5` (nav 8→5) + `53b4733` (scenario differentiation).
 
 ## Active Blockers
 
@@ -29,7 +29,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | **Calculator P0-A 12× inflated PITI bug** — `rate-buydown-calculator.html` lines 1032-1033, 29 days live, patch `patches/calculator-2026-04-20-P0.diff` on disk, sister task flagged 5 weeks running | HIGH (Adam) |
 | NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **47 consecutive dead runs** | HIGH (Adam) |
 | PSI quota drained **14/14** consecutive periods — provision dedicated key OR accept permanent UNVERIFIED | HIGH (Adam) |
-| `/investor-loans` + `/high-net-worth-mortgage` titles missing "Adam Styer" — **15th run carry** — Phase B entity transition completed 2026-05-20, so this is now UNBLOCKED. Tomorrow's run will rewrite as ZERO_RISK unless Adam says hold. | MEDIUM |
+| ~~`/investor-loans` + `/high-net-worth-mortgage` titles missing "Adam Styer"~~ ✅ DONE 2026-05-22 commit `a8d565c` — both titles now match "Austin TX \| Adam Styer \| NMLS #513013" pattern, verified live | DONE |
 | **NEW: Homepage 0 direct CTAs to `/get-preapproved` or `/refinance-quote`** post `71b8590` hero cleanup. Loan-app URL + tel: are the only conversion paths from homepage. Decision: keep direct-to-1003 OR restore in-house funnel CTA card? | MEDIUM (Adam) |
 | Homepage body-copy still references "92 Google reviews" + "45 Zillow reviews" + "5.0 ★" (index.html lines 455, 492, 861) — awaiting Adam's "complicated income" trust-strip pivot copy | MEDIUM (Adam) |
 | products.html 10 in-card "Get Pre-Approved" route to raw 1003 (27th carry; Adam decision) | MEDIUM |
@@ -52,7 +52,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-Friday 2026-05-22 rotation = Content Planning + AEO Review. Audit /blog last-post date; check 2 blog posts for FAQ answer-first + AI-extractable summary + CTA to /get-preapproved or /refinance-quote (extra important if homepage really has no direct CTA). Phase B title cleanup now UNBLOCKED — rewrite /investor-loans + /high-net-worth-mortgage titles to include "Adam Styer | NMLS #513013" (ZERO_RISK). Continue meta-description trim sweep on 8 remaining pages over 160 chars.
+Monday 2026-05-26 rotation = Schema + Google Ads Quality Factors + AEO Entity Audit. Saturday 2026-05-23 + Sunday 2026-05-24 — no scheduled fires. Tuesday meta-tag rotation has reduced surface area now that all 8 top-priority complicated-income meta descriptions are compliant; consider expanding Tuesday to include suburb-page meta sweep (24 pages, none have been audited). Continue carries: products.html 10 in-card 1003 (Adam decision); why-home-prices-arent-crashing FAQPage gap (paused per content policy); ops.html dashboard refresh; Calculator P0 patch (HIGH). Adam updates GOALS.md on Monday AM — verify priorities still align.
 
 ## Site Structure (key categories)
 
