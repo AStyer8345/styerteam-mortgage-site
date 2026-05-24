@@ -2,7 +2,7 @@
 FIRST-TIME HOMEBUYER GUIDE — 3-EMAIL DRIP SEQUENCE
 ============================================================
 By Adam Styer, Senior Loan Officer | NMLS #513013
-Mortgage Solutions LP | Austin, TX
+HyperSmart Home Loans | Austin, TX
 
 Trigger: New subscriber opts in via the First-Time Buyer Guide landing page
 Platform: Mailchimp (or any ESP with automation)
@@ -41,7 +41,7 @@ Talk soon,
 
 Adam Styer
 Senior Loan Officer | NMLS #513013
-Mortgage Solutions LP
+HyperSmart Home Loans
 (512) 956-6010
 adam@thestyerteam.com
 
@@ -80,13 +80,13 @@ If you're starting to think seriously about buying in the next 6-12 months, the 
 
 Takes about 15 minutes:
 [GET PRE-APPROVED →]
-https://mslp.my1003app.com/513013/register
+https://hypersmart.my1003app.com/513013/register
 
 Or just reply to this email with your questions. I'm here.
 
 Adam Styer
 Senior Loan Officer | NMLS #513013
-Mortgage Solutions LP
+HyperSmart Home Loans
 (512) 956-6010
 adam@thestyerteam.com
 
@@ -113,12 +113,12 @@ After 500+ families helped through the homebuying process, I've learned there ar
 
 3. You have someone in your corner. Not a chatbot. Not a 1-800 number. A real person who picks up the phone, explains things in plain English, and fights to get you the best deal.
 
-That's what I do at Mortgage Solutions LP. We're not a big bank with overhead baked into your rate. We're not a broker waiting on a third party. We underwrite and fund your loan in-house, and we shop for the best pricing on the back end — so you get wholesale-level rates with a direct lender's speed.
+That's what I do at HyperSmart Home Loans. We're not a big bank with overhead baked into your rate. We're not a broker waiting on a third party. We underwrite and fund your loan in-house, and we shop for the best pricing on the back end — so you get wholesale-level rates with a direct lender's speed.
 
 If you're ready to find out where you stand, here are two ways to take the next step:
 
 [GET PRE-APPROVED ONLINE →]
-https://mslp.my1003app.com/513013/register
+https://hypersmart.my1003app.com/513013/register
 
 Or call/text me directly: (512) 956-6010
 
@@ -126,7 +126,7 @@ No pressure. No obligation. Just clarity.
 
 Adam Styer
 Senior Loan Officer | NMLS #513013
-Mortgage Solutions LP
+HyperSmart Home Loans
 (512) 956-6010
 adam@thestyerteam.com
 
@@ -155,7 +155,7 @@ SUBJECT LINE A/B TEST IDEAS:
 
 CTA LINKS:
   - Guide download: https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9
-  - Pre-approval: https://mslp.my1003app.com/513013/register
+  - Pre-approval: https://hypersmart.my1003app.com/513013/register
 
 COMPLIANCE:
   - All emails must include physical mailing address and unsubscribe link

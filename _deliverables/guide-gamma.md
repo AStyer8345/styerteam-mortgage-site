@@ -1,7 +1,7 @@
 # The First-Time Homebuyer Guide
 ### 12 Things Every Austin Buyer Needs to Know Before They Sign Anything
 **By Adam Styer, Senior Loan Officer | NMLS #513013**
-Mortgage Solutions LP | Austin, TX
+HyperSmart Home Loans | Austin, TX
 
 ---
 
@@ -208,7 +208,7 @@ Not all lenders are the same. Here's what to look for:
 
 Most buyers don't know there are different types of lenders. Big banks use their own money and their own rates. Brokers shop your loan to multiple investors. But the best pricing often comes from an **IMA correspondent lender** — a lender that underwrites and funds loans in-house but sells to investors at pre-negotiated rates. This gives you wholesale-level pricing with the speed and control of a direct lender.
 
-That's how we operate at Mortgage Solutions LP. We're not a big bank with overhead baked into your rate, and we're not a broker waiting on a third party to approve your file. We underwrite, fund, and close your loan — and we shop for the best pricing on the back end so you don't have to.
+That's how we operate at HyperSmart Home Loans. We're not a big bank with overhead baked into your rate, and we're not a broker waiting on a third party to approve your file. We underwrite, fund, and close your loan — and we shop for the best pricing on the back end so you don't have to.
 
 The cheapest rate on a website doesn't help if the lender can't close on time or communicate with your agent. Your lender is the most important person on your homebuying team after your agent.
 
@@ -221,13 +221,13 @@ You've got the knowledge. Now let's put it to work.
 - **Get pre-approved**: Find out exactly what you qualify for — no obligation, no pressure
 - **Call or text Adam**: (512) 956-6010
 - **Email**: adam@thestyerteam.com
-- **Apply online**: [Start Your Application](https://mslp.my1003app.com/513013/register)
+- **Apply online**: [Start Your Application](https://hypersmart.my1003app.com/513013/register)
 
 > "I wrote this guide because I was tired of watching first-time buyers get bad advice. This is the same conversation I have with every buyer who sits across from me. No sales pitch. Just the truth about what it takes to buy a home in Austin."
 > — Adam Styer, NMLS #513013
 
 ---
 
-*Mortgage Solutions, LP | NMLS #2526130*
+*Kyber Mortgage Corporation dba HyperSmart Home Loans | NMLS #2653540*
 *Adam Styer, Senior Loan Officer | NMLS #513013*
 *Licensed Mortgage Broker in Texas*
