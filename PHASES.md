@@ -103,10 +103,12 @@ For each city, the rebuild must include:
 ### Phase 1b — Cedar Park
 
 **Scheduled:** 2026-04-22 (Wed)
-**Status:** pending
+**Status:** completed
+**Actual:** 2026-05-24
 **File:** `cedar-park-mortgage-lender.html`
 **Angle:** "Why Leander ISD Premium Changes Your Mortgage Math in Cedar Park"
 **Pre-check:** Phase 1a status == completed
+**Notes:** All 8 AEO items applied: (1) direct-answer summary block with Adam Styer + NMLS #513013 + Leander ISD 1.86% tax hook; (2) 5 of 8 H2s are question-form, all unique vs Round Rock and other Tier 1 pages — lead H2 "Why Does the Leander ISD Attendance Zone Change Your Cedar Park Mortgage Math?"; (3) definitional paragraph "A Cedar Park mortgage lender is..."; (4) May 2026 Market Snapshot block with median price ~$490K, DOM 42-48 days, inventory ~520-560 homes, combined 1.86% tax rate, MoM rate movement range; (5) 5 named neighborhoods — Brushy Creek (entry FHA), Buttercup Creek (established move-up conventional), Cypress Creek (family mid-tier), Ranch at Brushy Creek (master-planned), Twin Creeks (golf community jumbo) — with price ranges, loan profiles, HOA notes, flood zone and attendance zone flags; (6) closed-loan story (B. family, Buttercup Creek, $462K, 0.25% rate advantage via wholesale vs bank); (7) 5 city-specific FAQ with unique stems (LISD attendance zone + program fit; 1.86% tax rate DTI impact; min down payment by neighborhood; Crestline/Twin Creeks jumbo requirements; appraisal risk in declining market) — bulleted answers throughout; (8) byline + last-reviewed date 2026-05-24 near H1; (9) 3 topical cluster internal links (FHA guidelines for Williamson County, VA zero-down for Austin suburbs, jumbo above conforming limit — all descriptive anchors); (10) full schema stack — LocalBusiness (@id), Person (NMLS #513013 PropertyValue identifier, worksFor, sameAs NMLS Consumer Access), 4 Service schemas (Conventional, FHA, VA, Jumbo), FAQPage with SpeakableSpecification (.direct-answer + .accordion-body selectors), BreadcrumbList, WebPage with author + dateModified 2026-05-24; (11) sitemap lastmod updated to 2026-05-24; (12) descriptive internal links added to index.html (Leander ISD tax rate paragraph) and austin-area-mortgage-lender.html (Cedar Park card updated with LISD tax rate hook).
 
 ### Phase 1c — Leander
 

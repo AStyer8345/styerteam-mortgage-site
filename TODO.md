@@ -97,7 +97,9 @@ Items auto-appended by scheduled remote agents land here. Glance weekly.
 
 - [ ] **IndexNow HTTP 403 — Phase 1a push (2026-05-17).** After pushing Phase 1a rebuild, `python3 _deliverables/indexnow-submit.py --from-git-diff` returned HTTP 403 "Host not in allowlist". URLs attempted: round-rock-mortgage-lender.html, austin-area-mortgage-lender.html, index.html. Likely cause: Bing Webmaster Tools domain not yet verified (see setup note above) — the IndexNow key file exists at `/acd320ce4aaac882bfb455892bdcf208.txt` but Bing hasn't confirmed domain ownership. Fix: complete Bing Webmaster Tools setup, then re-run `python3 _deliverables/indexnow-submit.py https://styermortgage.com/round-rock-mortgage-lender.html`.
 
-- [ ] **FLAG 2026-04-22 — Phase 1b (Cedar Park) blocked: Phase 1a (Round Rock) pre-check failed.** Phase 1a status is still `pending` in PHASES.md — it must reach `status: completed` before Phase 1b can execute. Phase 1b trigger fired today (scheduled 2026-04-22) but bailed without touching cedar-park-mortgage-lender.html. Action required: complete Phase 1a (round-rock-mortgage-lender.html rebuild) and update PHASES.md Phase 1a status to `completed`, then re-trigger Phase 1b.
+- [x] **FLAG 2026-04-22 — Phase 1b (Cedar Park) blocked: Phase 1a (Round Rock) pre-check failed.** RESOLVED 2026-05-24: Phase 1a completed 2026-05-17; Phase 1b rebuild executed today.
+
+- [ ] **Cedar Park rebuild live (2026-05-24).** Submit https://styermortgage.com/cedar-park-mortgage-lender.html to GSC → Request Indexing. Also submit https://styermortgage.com/index.html and https://styermortgage.com/austin-area-mortgage-lender.html (internal links added to both).
 
 
 - [ ] **USDA in how-to-buy loan table (2026-04-23)** — how-to-buy-a-house-in-austin-tx.html loan program table includes `<a href="/loans/usda.html">USDA</a>`. Adam does NOT do USDA. Confirm + remove. Same as Buda/Smithville/Florence/Jarrell USDA blockers.
