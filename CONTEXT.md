@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-05-23 (Saturday — styer-site-daily, unscheduled fire):** Phase A entity coverage gap sweep via `comm -23` audit. Commit `83ad1d4` (2 files): buda-mortgage-lender.html + ftb-dpa-guide.html footers now include "Kyber Mortgage Corporation dba HyperSmart Home Loans" legal entity name + NMLS Consumer Access link, matching site-wide compliance pattern post-2026-05-20 entity transition. Live verified HTTP 200 + "Kyber" 2× on each page. 5 noindexed admin pages remain with HyperSmart-only footers — out of scope (not crawler-facing). Sister-task working-tree changes detected (TODO.md, suburb-editor files) but not staged. Conversion tracking 10/10 holds. NotebookLM 50th dead run.
+
 **2026-05-22 (Friday — styer-site-daily):** Friday rotation (Content Planning + AEO Review) + completed yesterday's TOMORROW_PRIORITY in full. Single 10-file commit `a8d565c`: (1) Phase B title rewrites on /investor-loans + /high-net-worth-mortgage — both now include "Adam Styer | NMLS #513013" (resolves 15-run carry); (2) 8 meta description trims to ≤160 chars across complicated-income pages (bank-statement ×2, DSCR ×2, self-employed, k1-income, business-owners, OTC construction) — all aligned with GOALS.md repositioning. AEO audit: 2026-04-17 refinance post strong (FAQPage + 8 question H2s + 8 CTAs); 2026-04-27 home-prices post still missing FAQPage schema (10th-carry, gated on no-content policy). Blog stale 25 days — flagged but paused per GOALS.md "no new content" rule.
 
 **2026-05-21 (Thursday — styer-site-daily):** Thursday rotation (Internal Linking + Funnel Flow) + Phase B entity-scrub residual. `276b894` scrubbed stray "Styer Team" in realtors.html:189 alt text. Site fully clean of legacy entity. New finding: homepage 0 direct CTAs to /get-preapproved or /refinance-quote post-`71b8590` hero cleanup.
-
-**2026-05-19 (Tuesday — styer-site-daily):** Tuesday rotation (titles + meta descriptions) + extended Phase A AggregateRating cleanup. 24 files across `889496b` + `9631c86`. Site confirmed 0/0 AggregateRating sitewide.
 
 ## Active Blockers
 
@@ -48,11 +48,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | Suburb pages render `About Adam` standalone vs Contact dropdown — `consolidate-nav.py` per-template gap | LOW (Adam) |
 | **5 of 6 new HNW/non-QM pages missing NMLS Consumer Access `sameAs` in Article schema** | LOW |
 | Bulk suburb audit recommendation — replace 9-week rotation with weekly audit (3rd carry) | MEDIUM |
-| **Scheduler reliability** — Thu 5/14 no-fire (11th carry); Wed 2026-05-20 no-fire (1st carry, 1 day after entity transition) | HIGH (Adam) |
+| **Scheduler reliability** — Thu 5/14 no-fire (11th carry); Wed 2026-05-20 no-fire (1st carry, 1 day after entity transition); **Sat 2026-05-23 unscheduled fire** (2nd weekend anomaly after 2026-05-22 PM) | HIGH (Adam) |
 
 ## What's Next
 
-Monday 2026-05-26 rotation = Schema + Google Ads Quality Factors + AEO Entity Audit. Saturday 2026-05-23 + Sunday 2026-05-24 — no scheduled fires. Tuesday meta-tag rotation has reduced surface area now that all 8 top-priority complicated-income meta descriptions are compliant; consider expanding Tuesday to include suburb-page meta sweep (24 pages, none have been audited). Continue carries: products.html 10 in-card 1003 (Adam decision); why-home-prices-arent-crashing FAQPage gap (paused per content policy); ops.html dashboard refresh; Calculator P0 patch (HIGH). Adam updates GOALS.md on Monday AM — verify priorities still align.
+Monday 2026-05-26 rotation = Schema + Google Ads Quality Factors + AEO Entity Audit. Sunday 2026-05-24 — no scheduled fire expected (but Sat 2026-05-23 fire happened despite same expectation, so if Sun fires: re-verify gate only). Tuesday meta-tag rotation has reduced surface area now that all 8 top-priority complicated-income meta descriptions are compliant; consider expanding Tuesday to include suburb-page meta sweep (24 pages, none have been audited). Continue carries: products.html 10 in-card 1003 (Adam decision); why-home-prices-arent-crashing FAQPage gap (paused per content policy); ops.html dashboard refresh; Calculator P0 patch (HIGH); homepage testimonial pivot copy (HIGH — Adam decision blocking trust-strip cleanup). Admin-page Kyber entity coverage (5 noindexed pages) deferred to opportunistic batching. Adam updates GOALS.md on Monday AM — verify priorities still align.
 
 ## Site Structure (key categories)
 

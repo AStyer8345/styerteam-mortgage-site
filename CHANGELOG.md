@@ -1,3 +1,12 @@
+## 2026-05-23 (styer-site-daily, Saturday — unscheduled fire) — Phase A entity coverage gap sweep
+
+- **Phase A EHL/NMLS coverage compliance:** `83ad1d4` fixed 2 public-facing footer disclosures missing the new "Kyber Mortgage Corporation dba HyperSmart Home Loans" legal entity name (post-2026-05-20 entity transition). `buda-mortgage-lender.html` (in sitemap, ranked) — copyright + `.footer-disclaimer` rewritten to match site-wide pattern; added NMLS Consumer Access link. `ftb-dpa-guide.html` (DPA landing page) — `.lp-nmls` rewritten with Kyber legal entity in copyright + Consumer Access link in same one-line landing-page footer style.
+- **Gap audit via `comm -23`:** identified 7 pages with `HyperSmart Home Loans` but missing `Kyber Mortgage`. Triaged via `noindex` + sitemap intersection — 5 admin/internal pages (dashboard, loan-dashboard, marketing-command-center, marketing-content, loanos-waitlist, thank-you) are noindexed and out of sitemap, so not crawler-facing — deferred. 2 public pages fixed.
+- **Re-Verify Gate:** legacy entity "Mortgage Solutions LP" + "Styer Team" + legacy NMLS 2526130 all 0 occurrences sitewide. Yesterday's `a8d565c` Phase B title fixes (/investor-loans + /high-net-worth-mortgage) still hold live.
+- **Health:** sitemap.xml 200, robots.txt 200, conversion tracking 10/10 (GTM-PQQ6PGLR + generate_lead + purchase_prequal/refi_quote + thank_you_page_view all verified live).
+- **Sister-task working-tree changes** (TODO.md, run-logs/suburb-editor-queue.md, 4 untracked suburb-editor run logs) intentionally NOT staged — file-specific `git add` only, per orphan-file rule from 2026-05-06 learnings.
+- NotebookLM 50th dead-check; PSI quota 16-of-16 drain (both carry).
+
 ## 2026-05-22 (styer-site-daily, Friday) — Phase B title swap + 8 meta description trims
 
 - **Phase B title cleanup DONE (15-run carry resolved):** /investor-loans now reads "Investor Loans Austin TX | Adam Styer | NMLS #513013" (52 chars); /high-net-worth-mortgage now reads "High-Net-Worth Mortgage Austin TX | Adam Styer | NMLS #513013" (61 chars). og:title and twitter:title intentionally left as their shorter social variants per prior carry-over insight.
