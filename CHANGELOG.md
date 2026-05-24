@@ -1,3 +1,12 @@
+## 2026-05-23 PM (styer-site-daily, Saturday — SECOND unscheduled fire) — Re-verify gate + audit sweep surfacing
+
+- **0 site files modified** — second-fire discipline: re-verify only, no piling sweeping copy changes on AM commit. Per CONTEXT.md TOMORROW_PRIORITY for weekend fires + Decision Test (brand positioning is Adam territory).
+- **Re-Verify Gate** — sitemap 200, robots 200, conversion 10/10, AM Kyber fixes (buda + ftb-dpa-guide) both still 2× live, legacy entity scrub holds (0/0/0 for "Mortgage Solutions LP" / "Styer Team" / NMLS 2526130).
+- **1 audit finding auto-resolved:** 2026-05-17 audit Issue #6 (HNW "~30 states") — 0 occurrences live, likely Adam-cleared between audit publication and now. Removed from future surface.
+- **NEW finding for Adam batch approval:** Audit Issue #5 "bank can't match" + "beat builder rates" superlative sweep — 9 files, 12 edits, full file:line table in `run-logs/2026-05-23-pm.md`. Includes index.html H1 + hero subtitle, about.html hero subtitle, 5 suburb pages (georgetown, kyle, leander×2, round-rock×2, taylor×2). Will unblock Phase A "superlatives cleanup" weekly priority.
+- **3rd unscheduled weekend fire flagged** — 2026-05-22 PM, 2026-05-23 AM, 2026-05-23 PM. Pattern not anomaly; document expected cadence in SKILL.md.
+- NotebookLM 51st dead-check; PSI 17/17 drain (both carry).
+
 ## 2026-05-23 (styer-site-daily, Saturday — unscheduled fire) — Phase A entity coverage gap sweep
 
 - **Phase A EHL/NMLS coverage compliance:** `83ad1d4` fixed 2 public-facing footer disclosures missing the new "Kyber Mortgage Corporation dba HyperSmart Home Loans" legal entity name (post-2026-05-20 entity transition). `buda-mortgage-lender.html` (in sitemap, ranked) — copyright + `.footer-disclaimer` rewritten to match site-wide pattern; added NMLS Consumer Access link. `ftb-dpa-guide.html` (DPA landing page) — `.lp-nmls` rewritten with Kyber legal entity in copyright + Consumer Access link in same one-line landing-page footer style.
