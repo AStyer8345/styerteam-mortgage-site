@@ -1,3 +1,13 @@
+## 2026-05-25 (styer-site-daily, Monday — scheduled fire) — Schema + AEO Entity Audit + suburb meta trim batch
+
+- **Monday rotation: Schema + Google Ads Quality Factors + AEO Entity Audit.** Homepage schema audit confirmed MortgageBroker × 2 + Person + 12 Service + 12 Offer + FAQPage + EducationalOccupationalCredential + City + State + GeoCoordinates. About page: Person + LocalBusiness + 2 Organization. DSCR Austin: FAQPage with 6 Questions. Cedar Park (sister-task rebuilt 2026-05-24 `1b4d028`): verified HTTP 200, strong schema integrity (BreadcrumbList + FAQPage 5Qs + LocalBusiness + Person + SpeakableSpecification + 12 more entity types).
+- **Audit finding auto-resolved (2026-04-27 AM):** homepage MortgageBroker address (was `5718 Sam Houston Circle`) and about.html LocalBusiness address (was `5900 Balcones Drive`) now both consistently use HyperSmart corp `9050 N. Capital of Texas Hwy, Ste 390 / 78759`. Resolved by 2026-05-20 entity transition. Removed from active blockers.
+- **AEO entity check passed:** homepage first-150-words extractability strong — H1 (specialist positioning) + P1 32-word concise value prop with all key entities (self-employed, jumbo, DSCR, 40+ wholesale, NMLS #513013). Person + LocalBusiness schemas consistent across homepage + about.
+- **Commit `e05f134` — 4 suburb meta description trims to ≤160 chars:** westlake 254→154, buda 235→143, hutto 234→158, round-rock 212→155. All within Google SERP truncation window. Cedar Park (276) excluded — sister-task fresh territory. All 4 live verified HTTP 200 after Netlify deploy. 6 additional suburb pages >160 chars queued for Tuesday rotation: liberty-hill, manor, dripping-springs, leander, new-braunfels, bee-cave.
+- **Audit Issue #5 superlative sweep drift:** count 12→11 occurrences between Sat PM and Mon (self-resolved). 8 files, 11 occurrences still gated on Adam batch approval. Full file:line in `run-logs/2026-05-23-pm.md`.
+- **Re-Verify Gate (12 claims):** all hold. Sitemap + robots 200, conversion 10/10, legacy entity scrub 0/0/0, 21-day claim 0, Kyber footers hold, titles hold, HNW resolution holds, AggregateRating scrub holds.
+- NotebookLM 53rd dead-check; PSI 19/19 drain (carries).
+
 ## 2026-05-24 (styer-site-daily, Sunday — 4th unscheduled weekend fire in 9 days) — Re-verify gate only
 
 - **0 site files modified.** Per yesterday PM's TOMORROW_PRIORITY #1: Sunday unscheduled fire = re-verify gate only. Per GOALS.md "no new content beyond repositioning + compliance fixes" + Decision Test (brand positioning copy is Adam territory).
