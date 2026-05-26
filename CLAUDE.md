@@ -37,7 +37,7 @@ Top-of-hierarchy reads:
 - Never modify GTM container snippet or form field names on landing pages
 - Display name: "Adam Styer | HyperSmart Home Loans" (footer/nav/OG meta)
 - Legal entity name (anywhere a disclaimer or NMLS line appears): "Kyber Mortgage Corporation dba HyperSmart Home Loans"
-- Never use "The Styer Team" or "Mortgage Solutions LP" (legacy entity — fully retired 2026-05-20)
+- Never use "The Styer Team" or "Mortgage Solutions LP" as a **displayed business name** (legacy entity — fully retired 2026-05-20). EXCEPTION: the `/styerteam/` social handles on Facebook + Instagram + Nextdoor are the RETAINED personal-brand social identity — those URLs stay (`facebook.com/styerteam/`, `instagram.com/styerteam/`, etc.). The rule covers display copy, page headings, JSON-LD `name`/`legalName` fields, and footer/about strings — NOT the URL handles of retained social profiles.
 - Company NMLS: 2653540 (was 2526130 under prior entity)
 - Adam's personal NMLS: 513013 (unchanged)
 - Corp address: 9050 N. Capital of Texas Hwy, Ste 390, Austin, Texas 78759
