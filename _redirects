@@ -1,64 +1,127 @@
-# 301 Redirects: Extensionless → .html (consolidates duplicate URLs in Google)
+# 301 Redirects — extensionless → .html canonical
+# IMPORTANT: Netlify's default pretty-URL match means /about will serve /about.html with a 200
+# UNLESS the redirect rule has the `!` force flag. Every rule below where the SOURCE path matches
+# an existing file MUST use 301! — otherwise the rule silently no-ops and the duplicate URL ships.
 
-/loans/conventional  /loans/conventional.html  301
-/loans/fha  /loans/fha.html  301
-/loans/va  /loans/va.html  301
-/loans/usda  /loans/usda.html  301
-/loans/jumbo  /loans/jumbo.html  301
-/loans/construction  /loans/construction.html  301
-/loans/investment  /loans/investment.html  301
-/loans/refinance  /loans/refinance.html  301
+# /loans/* products
+/loans/conventional  /loans/conventional.html  301!
+/loans/fha  /loans/fha.html  301!
+/loans/va  /loans/va.html  301!
+/loans/usda  /loans/usda.html  301!
+/loans/jumbo  /loans/jumbo.html  301!
+/loans/construction  /loans/construction.html  301!
+/loans/investment  /loans/investment.html  301!
+/loans/refinance  /loans/refinance.html  301!
 
-/round-rock-mortgage-lender  /round-rock-mortgage-lender.html  301
-/cedar-park-mortgage-lender  /cedar-park-mortgage-lender.html  301
-/leander-mortgage-lender  /leander-mortgage-lender.html  301
-/georgetown-mortgage-lender  /georgetown-mortgage-lender.html  301
-/pflugerville-mortgage-lender  /pflugerville-mortgage-lender.html  301
-/kyle-mortgage-lender  /kyle-mortgage-lender.html  301
-/san-marcos-mortgage-lender  /san-marcos-mortgage-lender.html  301
-/westlake-mortgage-lender  /westlake-mortgage-lender.html  301
-/buda-mortgage-lender  /buda-mortgage-lender.html  301
-/bastrop-mortgage-lender  /bastrop-mortgage-lender.html  301
-/bee-cave-mortgage-lender  /bee-cave-mortgage-lender.html  301
-/dripping-springs-mortgage-lender  /dripping-springs-mortgage-lender.html  301
-/elgin-mortgage-lender  /elgin-mortgage-lender.html  301
-/florence-mortgage-lender  /florence-mortgage-lender.html  301
-/hutto-mortgage-lender  /hutto-mortgage-lender.html  301
-/jarrell-mortgage-lender  /jarrell-mortgage-lender.html  301
-/lakeway-mortgage-lender  /lakeway-mortgage-lender.html  301
-/liberty-hill-mortgage-lender  /liberty-hill-mortgage-lender.html  301
-/manor-mortgage-lender  /manor-mortgage-lender.html  301
-/marble-falls-mortgage-lender  /marble-falls-mortgage-lender.html  301
-/new-braunfels-mortgage-lender  /new-braunfels-mortgage-lender.html  301
-/smithville-mortgage-lender  /smithville-mortgage-lender.html  301
-/spicewood-mortgage-lender  /spicewood-mortgage-lender.html  301
-/taylor-mortgage-lender  /taylor-mortgage-lender.html  301
+# Suburb pages
+/round-rock-mortgage-lender  /round-rock-mortgage-lender.html  301!
+/cedar-park-mortgage-lender  /cedar-park-mortgage-lender.html  301!
+/leander-mortgage-lender  /leander-mortgage-lender.html  301!
+/georgetown-mortgage-lender  /georgetown-mortgage-lender.html  301!
+/pflugerville-mortgage-lender  /pflugerville-mortgage-lender.html  301!
+/kyle-mortgage-lender  /kyle-mortgage-lender.html  301!
+/san-marcos-mortgage-lender  /san-marcos-mortgage-lender.html  301!
+/westlake-mortgage-lender  /westlake-mortgage-lender.html  301!
+/buda-mortgage-lender  /buda-mortgage-lender.html  301!
+/bastrop-mortgage-lender  /bastrop-mortgage-lender.html  301!
+/bee-cave-mortgage-lender  /bee-cave-mortgage-lender.html  301!
+/dripping-springs-mortgage-lender  /dripping-springs-mortgage-lender.html  301!
+/elgin-mortgage-lender  /elgin-mortgage-lender.html  301!
+/florence-mortgage-lender  /florence-mortgage-lender.html  301!
+/hutto-mortgage-lender  /hutto-mortgage-lender.html  301!
+/jarrell-mortgage-lender  /jarrell-mortgage-lender.html  301!
+/lakeway-mortgage-lender  /lakeway-mortgage-lender.html  301!
+/liberty-hill-mortgage-lender  /liberty-hill-mortgage-lender.html  301!
+/manor-mortgage-lender  /manor-mortgage-lender.html  301!
+/marble-falls-mortgage-lender  /marble-falls-mortgage-lender.html  301!
+/new-braunfels-mortgage-lender  /new-braunfels-mortgage-lender.html  301!
+/smithville-mortgage-lender  /smithville-mortgage-lender.html  301!
+/spicewood-mortgage-lender  /spicewood-mortgage-lender.html  301!
+/taylor-mortgage-lender  /taylor-mortgage-lender.html  301!
 
-/dscr-loan-austin-tx  /dscr-loan-austin-tx.html  301
+# Niche cluster (SEO pivot 2026-05-25 — self-employed + HNW non-QM)
+/bank-statement-loans  /bank-statement-loans.html  301!
+/bank-statement-loans-austin-tx  /bank-statement-loans-austin-tx.html  301!
+/dscr-loans-texas  /dscr-loans-texas.html  301!
+/dscr-loans-dripping-springs  /dscr-loans-dripping-springs.html  301!
+/dscr-loans-fredericksburg-tx  /dscr-loans-fredericksburg-tx.html  301!
+/asset-depletion-mortgage-texas  /asset-depletion-mortgage-texas.html  301!
+/asset-depletion-mortgage-austin-tx  /asset-depletion-mortgage-austin-tx.html  301!
+/1099-only-mortgage-texas  /1099-only-mortgage-texas.html  301!
+/self-employed-mortgage-austin  /self-employed-mortgage-austin.html  301!
+/self-employed-mortgage-round-rock-tx  /self-employed-mortgage-round-rock-tx.html  301!
+/non-qm-loans  /non-qm-loans.html  301!
+/non-qm-loans-self-employed-austin  /non-qm-loans-self-employed-austin.html  301!
+/k1-income-mortgage-austin  /k1-income-mortgage-austin.html  301!
+/mortgage-for-business-owners-austin  /mortgage-for-business-owners-austin.html  301!
+/investor-loans  /investor-loans.html  301!
+/high-net-worth-mortgage  /high-net-worth-mortgage.html  301!
+/referral-partners-self-employed-clients  /referral-partners-self-employed-clients.html  301!
+/p-and-l-mortgage-texas  /p-and-l-mortgage-texas.html  301!
+/one-time-close-construction-loan-texas  /one-time-close-construction-loan-texas.html  301!
+/one-time-close-construction-loans-texas-hill-country  /one-time-close-construction-loans-texas-hill-country.html  301!
+
+# Single-page routes
+/dscr-loan-austin-tx  /dscr-loan-austin-tx.html  301!
+/mortgage-pre-approval-austin  /mortgage-pre-approval-austin.html  301!
+/first-time-home-buyer  /first-time-home-buyer.html  301!
+/products  /products.html  301!
+/about  /about.html  301!
+/contact  /contact.html  301!
+/contact-us  /contact.html  301!
+/calculators  /calculators.html  301!
+/testimonials  /testimonials.html  301!
+/realtors  /realtors.html  301!
+/prequal  /prequal.html  301!
+/scenario  /scenario.html  301!
+
+# Blog landing — .html is canonical (previous rule was inverted and silently no-op)
+/blog  /blog.html  301!
+
+# Additional public root pages (added 2026-05-25 — were duplicate-serving with no rule at all)
+/austin-area-mortgage-lender  /austin-area-mortgage-lender.html  301!
+/austin-down-payment-assistance  /austin-down-payment-assistance.html  301!
+/austin-housing-market-2025  /austin-housing-market-2025.html  301!
+/austin-mortgage-rates  /austin-mortgage-rates.html  301!
+/closing-costs-texas  /closing-costs-texas.html  301!
+/first-time-buyer-guide  /first-time-buyer-guide.html  301!
+/ftb-dpa-guide  /ftb-dpa-guide.html  301!
+/get-preapproved  /get-preapproved.html  301!
+/how-much-house-can-i-afford-austin  /how-much-house-can-i-afford-austin.html  301!
+/how-to-buy-a-house-in-austin-tx  /how-to-buy-a-house-in-austin-tx.html  301!
+/improve-credit-score  /improve-credit-score.html  301!
+/fixed-vs-adjustable  /fixed-vs-adjustable.html  301!
+/mortgage-broker-vs-bank  /mortgage-broker-vs-bank.html  301!
+/mortgage-glossary  /mortgage-glossary.html  301!
+/realtor-resources  /realtor-resources.html  301!
+/texas-complaint-notice  /texas-complaint-notice.html  301!
+/privacy  /privacy.html  301!
+/terms  /terms.html  301!
+/thank-you  /thank-you.html  301!
+/rate-alert  /rate-alert.html  301!
+/rate-buydown-calculator  /rate-buydown-calculator.html  301!
+/rate-check  /rate-check.html  301!
+/rate-check-buda-kyle  /rate-check-buda-kyle.html  301!
+/rate-check-cedar-park  /rate-check-cedar-park.html  301!
+/rate-check-georgetown  /rate-check-georgetown.html  301!
+/rate-check-new-braunfels  /rate-check-new-braunfels.html  301!
+/rate-check-round-rock  /rate-check-round-rock.html  301!
+/refinance-quote  /refinance-quote.html  301!
+/loanos-waitlist  /loanos-waitlist.html  301!
+/calculator-affordability  /calculator-affordability.html  301!
+/calculator-payment  /calculator-payment.html  301!
+/calculator-refinance-breakeven  /calculator-refinance-breakeven.html  301!
 
 # Consolidation: dscr-loans-central-texas merged into dscr-loan-austin-tx (2026-05-25)
-/dscr-loans-central-texas  /dscr-loan-austin-tx.html  301
-/dscr-loans-central-texas.html  /dscr-loan-austin-tx.html  301
-
-/mortgage-pre-approval-austin  /mortgage-pre-approval-austin.html  301
-/first-time-home-buyer  /first-time-home-buyer.html  301
-/products  /products.html  301
-/about  /about.html  301
-/contact  /contact.html  301
-/contact-us  /contact.html  301
-/calculators  /calculators.html  301
-/blog.html  /blog  301
-/testimonials  /testimonials.html  301
-/realtors  /realtors.html  301
-/prequal  /prequal.html  301
-/scenario  /scenario.html  301
+/dscr-loans-central-texas  /dscr-loan-austin-tx.html  301!
+/dscr-loans-central-texas.html  /dscr-loan-austin-tx.html  301!
 
 # 301 Redirects: Renamed blog posts (temp slugs → canonical SEO slugs)
 
 /blog/2026-03-06-oil-prices-jobs-report-austin-mortgage.html  /blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html  301
 /blog/2026-03-30-why-rates-jumped-today-and-why-i-cant-predict-tomo.html  /blog/2026-03-30-why-rates-improved-today-bond-rally.html  301
 
-# 301 Redirects: Old WordPress URLs → New Pages
+# 301 Redirects: Old WordPress URLs → New Pages (source paths don't match files — no force flag needed)
 
 /mortgage-loan-refinance-options-austin/va-home-loan/  /loans/va.html  301
 /mortgage-loan-refinance-options-austin/usda-loan/  /loans/usda.html  301
@@ -71,4 +134,4 @@
 /what-is-an-fha-mortgage-insurance-premium/  /loans/fha.html  301
 /adam-styer/  /about.html  301
 /author/adam/  /about.html  301
-/how-long-does-it-take-to-buy-a-home/  /blog/  301
+/how-long-does-it-take-to-buy-a-home/  /blog.html  301
