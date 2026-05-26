@@ -16,15 +16,15 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-05-25 PM (Monday — styer-site-daily, same-day SECOND fire):** Re-verify gate only per same-day second-fire discipline. **0 site files modified.** **TWO major auto-resolutions surfaced:** (1) Audit Issue #5 superlative sweep dropped **11→2** occurrences between AM and PM (sister task or Adam batch resolved 9/11); only homepage H1 hero + leander #276 remain — Phase A "superlatives cleanup" weekly priority per GOALS.md is **~95% complete**. (2) Tuesday's planned 6-suburb meta-trim batch already done by sister task `db7ab16 seo: trim 24 over-length meta descriptions to <=160 chars` — **23/24 suburb pages now ≤160 char compliant** (bee-cave 162-src/158-visible renders compliant via `&amp;` HTML entity decode). **Tooling gotcha caught:** post-`e24b973 seo: force flag on _redirects`, conversion verification MUST use `curl -L` (without it, all 3 LP routes return 301 + 11–12 bytes of plain text — looks like total tracking breakage). 12 sister-task seo-* commits between AM and PM. Sitemap count 135→134 (redirect/DSCR consolidation). All other AM claims hold live. NotebookLM 54th dead; PSI 20/20 drain.
+**2026-05-26 (Tuesday — styer-site-daily, scheduled fire):** Tuesday rotation pivot per yesterday PM's TOMORROW_PRIORITY option (b) — meta-trim already auto-resolved 2026-05-25 PM, so did **sitewide title-tag pipe-format audit**. Found 14 files with non-compliant `Adam Styer NMLS #513013` (missing pipe) vs. 22 canonical. Commit `64cf39b` — **12 LOW_RISK title fixes** (1099-only, bank-statement-loans + austin-tx, asset-depletion, mortgage-for-business-owners, non-qm-loans-self-employed-austin, k1-income, one-time-close (×2), p-and-l, non-qm-loans title + twitter:title, referral-partners). Live verified T+75s. **2 files routed to FLAG_FOR_ADAM** per Step 4B risk tiers: `index.html` (HIGH_RISK homepage) + `get-preapproved.html` (MEDIUM_RISK paid LP + `24-Hour Turnaround` GOALS.md performance-claim tension). Also flagged `hutto-mortgage-lender.html` (Same-Day claim + missing NMLS tail). Loanos-clone BLOCKERS.md write REVERTED — pre-push hook triggers Vercel deploy of paused LoanOS product per GOALS.md. Surfaced via FLAG_FOR_ADAM instead. NotebookLM 55th dead; PSI 21/21 drain.
 
-**2026-05-25 AM (Monday — styer-site-daily, scheduled fire):** Full Monday rotation = Schema + AEO Entity Audit + cedar-park verification + SEO/SEM backlog action. Commit `e05f134` (4 files): suburb meta description trim batch — westlake 254→154, buda 235→143, hutto 234→158, round-rock 212→155. All ≤160 char SERP-truncation compliant; aligned with GOALS.md 40+ wholesale lenders positioning. **Auto-resolved 2026-04-27 about.html LocalBusiness address mismatch** — both schemas now use HyperSmart corp `9050 N. Capital of Texas Hwy, Ste 390`.
+**2026-05-25 PM (Monday — same-day SECOND fire):** Re-verify gate only. **0 site files modified.** TWO major auto-resolutions: Audit Issue #5 superlative sweep 11→2 occurrences; Tuesday's planned 6-suburb meta-trim batch done by sister task `db7ab16` (23/24 suburb pages now ≤160 char compliant). Tooling gotcha: post-`e24b973`, conversion verification MUST use `curl -L`. Sitemap count 135→134 (redirect/DSCR consolidation).
 
-**2026-05-24 (Sunday — unscheduled weekend fire):** Re-verify gate only. 0 site files modified. All 11 prior claims hold live. Sister task `suburb-editor` shipped 3 commits before fire (cedar-park rebuild + HyperSmart asset sweep + IndexNow 403).
+**2026-05-25 AM (Monday — scheduled fire):** Full Monday rotation. Commit `e05f134` (4 files): suburb meta trim batch — westlake 254→154, buda 235→143, hutto 234→158, round-rock 212→155. Auto-resolved 2026-04-27 about.html LocalBusiness address mismatch.
 
-**2026-05-23 PM (Saturday — SECOND unscheduled fire):** Re-verify gate only. Auto-resolved 2026-05-17 audit Issue #6 (HNW "~30 states"). Surfaced Audit Issue #5 superlative sweep file:line table.
+**2026-05-24 (Sunday — unscheduled weekend fire):** Re-verify gate only. 0 site files modified.
 
-**2026-05-23 AM (Saturday — unscheduled fire):** Phase A entity coverage gap sweep. Commit `83ad1d4` (2 files): buda + ftb-dpa-guide footers now include "Kyber Mortgage Corporation dba HyperSmart Home Loans" + NMLS Consumer Access link.
+**2026-05-23 (Saturday — both fires):** Phase A entity coverage gap sweep. Commit `83ad1d4` (2 files): buda + ftb-dpa-guide footers now include "Kyber Mortgage Corporation dba HyperSmart Home Loans" + NMLS Consumer Access link. PM auto-resolved 2026-05-17 audit Issue #6.
 
 **2026-05-22 (Friday):** Commit `a8d565c` (10 files): /investor-loans + /high-net-worth-mortgage title fixes + 8 complicated-income page meta trims to ≤160 chars.
 
@@ -32,7 +32,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 | Item | Priority |
 |------|----------|
-| **Calculator P0-A 12× inflated PITI bug** — `rate-buydown-calculator.html` lines 1032-1033, 29 days live, patch `patches/calculator-2026-04-20-P0.diff` on disk, sister task flagged 5 weeks running | HIGH (Adam) |
+| **NEW 2026-05-26: Homepage title pipe normalization (HIGH_RISK deferred)** — `index.html` line 6, `Adam Styer NMLS #513013` missing pipe + title is 107 chars (over 60-char SERP truncation). Adam decision: simple pipe fix OR fuller rewrite leading with "complicated income" positioning + "Mortgage Broker" vs "Correspondent Lender" copy choice | MEDIUM (Adam) |
+| **NEW 2026-05-26: /get-preapproved.html title (MEDIUM_RISK paid LP)** — missing pipe + `24-Hour Turnaround` performance claim. GOALS.md "no performance-metric marketing" vs voice-guide "same-day PA is real differentiator" tension. Suggested replacement: `Mortgage Pre-Approval Letter Austin TX \| Complicated Income Welcome \| Adam Styer \| NMLS #513013` | MEDIUM (Adam) |
+| **NEW 2026-05-26: /hutto-mortgage-lender.html title** — Same-Day Pre-Approval claim + missing NMLS tail. Hutto currently #6 ranking; title doing CTR work. Suggested: `Hutto TX Mortgage Lender \| 40+ Wholesale Lenders \| Adam Styer \| NMLS #513013` | LOW (Adam) |
+| **NEW 2026-05-26: SKILL.md infrastructure question** — should styer-site-daily own BLOCKERS.md inside `styerteam-mortgage-site/` instead of `loanos-clone/tasks/seo-sem/`? Current path triggers Vercel deploy of paused LoanOS product | LOW (Adam) |
+| **Calculator P0-A 12× inflated PITI bug** — `rate-buydown-calculator.html` lines 1032-1033, patch `patches/calculator-2026-04-20-P0.diff` on disk, sister task flagged 5+ weeks | HIGH (Adam) |
 | NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **47 consecutive dead runs** | HIGH (Adam) |
 | PSI quota drained **14/14** consecutive periods — provision dedicated key OR accept permanent UNVERIFIED | HIGH (Adam) |
 | ~~`/investor-loans` + `/high-net-worth-mortgage` titles missing "Adam Styer"~~ ✅ DONE 2026-05-22 commit `a8d565c` — both titles now match "Austin TX \| Adam Styer \| NMLS #513013" pattern, verified live | DONE |
@@ -61,7 +65,14 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-Tuesday 2026-05-26 rotation pivot needed — original meta-trim batch was AUTO-RESOLVED via sister task `db7ab16`. New best uses of Tuesday's slot: (a) **Pull forward Wednesday's Suburb Deep Dive** (Leander or Pflugerville — FAQPage + BreadcrumbList + city-specific H1 + inline lead form + AEO extractability), OR (b) **Sitewide title tag format audit** (sample 20 pages, confirm "[Loan/Page] in Austin TX | Adam Styer | NMLS #513013"). Continue carries: products.html 10 in-card 1003 (Adam decision); ops.html dashboard refresh; Calculator P0 patch (HIGH, 38 runs); homepage testimonial pivot copy (HIGH — Adam blocking); only **2 Audit Issue #5 occurrences left** (homepage H1 + leander #276 — both Adam pivot copy). **Tooling update:** Step 2 conversion verification must use `curl -L` going forward post-`e24b973` redirect-force; AM already correct. If Tue fires unscheduled before normal time: re-verify gate only.
+Wednesday 2026-05-27 = Suburb Page Deep Dive rotation per SKILL.md. Suggested:
+1. **Suburb rotation** — Leander or Pflugerville (confirm FAQPage + BreadcrumbList + city-specific H1 + inline lead form + AEO extractability). Leander has the unresolved Audit Issue #5 superlative at line 276 — could pair the audit with addressing it if Adam treats as Phase A.
+2. **og:title / og:site_name pattern audit follow-up** — today's title-tag audit covered `<title>` and `twitter:title` only. og:title hits across the 12 edited files use varying tails (`| Adam Styer` no NMLS). LOW_RISK if mechanical.
+3. **If Adam unblocks index.html homepage title pivot** — close last 2 title-tag inconsistencies in one commit alongside any homepage hero superlative cleanup.
+4. **Calculator P0 patch** (39 runs HIGH carry) — still gated on Adam apply.
+5. **If Wed fires unscheduled before normal time** — re-verify gate only.
+
+**Tooling rule (carried):** Step 2 conversion verification must use `curl -L` post-`e24b973` redirect-force. **SKILL.md path question (NEW):** should this task's BLOCKERS.md path move from `loanos-clone/tasks/seo-sem/BLOCKERS.md` to inside `styerteam-mortgage-site/`? Current path triggers Vercel deploy of paused LoanOS product on every BLOCKER write.
 
 ## Site Structure (key categories)
 
