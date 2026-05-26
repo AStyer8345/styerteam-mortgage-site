@@ -33,7 +33,6 @@ User-agent: *
 Allow: /
 Disallow: /dashboard.html
 Disallow: /loanos.html
-Disallow: /updates/
 Disallow: /netlify/
 Disallow: /blog/manifest.json
 Disallow: /realtor-updates/manifest.json
@@ -42,5 +41,9 @@ Disallow: /blog/2026-03-06-temp-placeholder.html
 Disallow: /blog/2026-03-10-temp-placeholder.html
 Disallow: /blog/2026-03-30-temp-placeholder.html
 Disallow: /blog/2026-04-01-test.html
+Disallow: /updates/2026-03-06-temp-placeholder.html
+Disallow: /updates/2026-03-10-temp-placeholder.html
+Disallow: /updates/2026-03-30-temp-placeholder.html
+Disallow: /updates/2026-04-01-test.html
 
 Sitemap: https://styermortgage.com/sitemap.xml
