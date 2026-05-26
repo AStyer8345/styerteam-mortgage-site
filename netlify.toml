@@ -31,6 +31,15 @@
 #   name = "scheduled-newsletter"
 #   schedule = "0 14 * * 4"
 
+# ─── Security Headers ────────────────────────────────────────────────────────
+# HSTS: Netlify sets max-age=31536000 by default. Adding includeSubDomains +
+# preload to harden posture. preload directive is declarative only — actual
+# HSTS preload list submission must be done separately at hstspreload.org.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
 # ─── Cache Headers for Static Assets ─────────────────────────────────────────
 [[headers]]
   for = "/assets/*"
