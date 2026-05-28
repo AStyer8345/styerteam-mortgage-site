@@ -1,3 +1,22 @@
+## 2026-05-28 PM Q3 (user-initiated, Adam) — Scenario #1 shipped LIVE
+
+- **DRAFT filled with Adam's real (anonymized) borrower story.** Memorial Day call from a Texas borrower with oil and gas royalty income; declined by two banks for income-documentation reasons; asset-depletion loan qualified her from verified investment and retirement balances; she closed on the home she wanted.
+- **File renamed via `git mv`.** Original DRAFT slug `self-employed-writeoffs-bank-statement.html` was wrong for the actual content (the story isn't self-employed / bank-statement — that was a path tried; the strategy that worked was asset depletion). New slug: `/scenarios/oil-gas-royalty-asset-depletion.html`. Git rename preserves history.
+- **Categories.** Card carries `data-category="jumbo-hnw declined"` so it surfaces under both Jumbo/HNW (asset depletion is the HNW playbook) and Denied Elsewhere (two prior declines, high-intent search). Hub filter chips now light up "All" + Jumbo/HNW + Denied Elsewhere. Self-Employed and DSCR chips stay commented-out (no empty-doorway category chips per spec).
+- **Hub empty-state removed.** `/scenarios.html` no longer shows the "Scenarios coming soon" placeholder — replaced with the live card. Card-stub HTML comment kept inline as a copy-template for the next scenario.
+- **Sitemap.** Added `/scenarios/oil-gas-royalty-asset-depletion.html` (priority 0.7, monthly, lastmod 2026-05-28). Hub lastmod stays 2026-05-28.
+- **Compliance applied to the real story:**
+  - No specific loan amount, no city/neighborhood (just "Texas"), no specific FICO, no LTV.
+  - The 60-month asset-depletion divisor Adam mentioned is **not** published. Asset depletion described conceptually as "converts verified investment and retirement balances into a qualifying-income equivalent." Avoids freezing a per-investor program parameter into a permanent SERP/AEO citation.
+  - Pricing described as "competitive for the file," not superlative or "best."
+  - No performance-metric claims (no "21-day close," no "same-day").
+  - Borrower referred to with "she" (per Adam's narration) — privacy disclaimer covers identifying-detail changes; gender pronoun alone is not identifying.
+  - "Program availability and guidelines change by investor, occupancy, and loan type" appears next to every program-specific claim and in the At-A-Glance footer.
+  - Mandatory privacy / outcomes-vary block renders in the page footer.
+- **AEO surface:** 5-question FAQ (1 more than template minimum) mirrored exactly between visible accordion and FAQPage JSON-LD. Article schema `about` and `abstract` fields populated. Direct Answer block 75 words, well within 40–80 target. Person schema with NMLS sameAs present.
+- **Related links** point UP to `/high-net-worth-mortgage.html` and `/asset-depletion-mortgage-texas.html` (the pillar guides for the strategy used in this file) + back to `/scenario.html` for conversion. No lateral auto-widget.
+- **Loan app URL spec mismatch.** Adam's original Prompt A referenced `mslp.my1003app.com/513013/register` — I used the live `hypersmart.my1003app.com/513013/register?time=1779291829279` per CLAUDE.md and CONTEXT.md across all 3 scenario files. Surfaced in FLAG_FOR_ADAM.md (Q2 session).
+
 ## 2026-05-28 PM Q2 (user-initiated, Adam) — Internal-linking audit + Tier-1 product-page cluster fix (3 files, 10 edits)
 
 - **Full link-graph audit delivered.** Mapped inbound/outbound for 147 indexable pages. Findings: 24 true orphans (0 inbound), 36 weakly linked (1–2 inbound), and a hub-spoke asymmetry across 4 verticals where `/loans/*` product pages hoard inbound equity but link 0–1 times to their own cluster siblings — starving Phase 3/4 niche pages. `/loans/jumbo.html` (72 inbound, 0 in-cluster outbound) flagged as single highest-leverage fix on the site.

@@ -224,43 +224,40 @@
     <div class="container">
 
       <!--
-        FILTER CHIPS — render a chip only when at least one live scenario card exists in that category.
-        With zero live scenarios, the filter row is suppressed entirely.
-
-        When the first scenario in a category ships, uncomment the "All" chip + that category's chip.
-        Pattern matches .testimonial-filter-btn styling but uses a separate container class
-        (.scenario-filter) so it does not bind to the testimonial filter JS in script.js.
-
-        <div class="scenario-filter">
-          <button class="btn btn-outline testimonial-filter-btn active" data-filter="all">All</button>
+        FILTER CHIPS — only categories with at least one live scenario render.
+        When new categories ship, add the matching chip here.
+      -->
+      <div class="scenario-filter">
+        <button class="btn btn-outline testimonial-filter-btn active" data-filter="all">All</button>
+        <button class="btn btn-outline testimonial-filter-btn" data-filter="jumbo-hnw">Jumbo / High Net Worth</button>
+        <button class="btn btn-outline testimonial-filter-btn" data-filter="declined">Denied Elsewhere</button>
+        <!--
+          Additional chips — uncomment when the first scenario in each category ships:
           <button class="btn btn-outline testimonial-filter-btn" data-filter="self-employed">Self-Employed / Bank Statement</button>
           <button class="btn btn-outline testimonial-filter-btn" data-filter="dscr">DSCR / Investor</button>
-          <button class="btn btn-outline testimonial-filter-btn" data-filter="jumbo-hnw">Jumbo / High Net Worth</button>
-          <button class="btn btn-outline testimonial-filter-btn" data-filter="declined">Denied Elsewhere</button>
-        </div>
-      -->
+        -->
+      </div>
 
       <div class="scenario-grid">
 
-        <!--
-          SCENARIO CARD STUB — uncomment + fill when the first scenario is ready.
-          data-category values: self-employed | dscr | jumbo-hnw | declined  (multiple allowed, space-separated)
+        <article class="card scenario-card" data-category="jumbo-hnw declined">
+          <span class="scenario-tag">Jumbo / HNW · Denied Elsewhere</span>
+          <h3>Oil &amp; Gas Royalty Income, Two Bank Declines, and an Asset-Depletion Solution</h3>
+          <p>A Texas borrower with oil and gas royalty income was declined by two banks before an asset-depletion loan qualified her from verified investment and retirement balances. She closed on the home she wanted.</p>
+          <a href="/scenarios/oil-gas-royalty-asset-depletion.html" class="scenario-link">Read the scenario →</a>
+        </article>
 
-          <article class="card scenario-card" data-category="self-employed">
-            <span class="scenario-tag">Self-Employed / Bank Statement</span>
+        <!--
+          SCENARIO CARD STUB — copy when the next scenario ships.
+          data-category values: self-employed | dscr | jumbo-hnw | declined (multiple allowed, space-separated).
+
+          <article class="card scenario-card" data-category="[category]">
+            <span class="scenario-tag">[Category Label]</span>
             <h3>[Scenario Title]</h3>
             <p>[1-sentence summary. Hedged. No specific numbers.]</p>
             <a href="/scenarios/[slug].html" class="scenario-link">Read the scenario →</a>
           </article>
         -->
-
-        <!-- Placeholder state shown while zero scenarios are live. Remove when first card ships. -->
-        <div class="scenario-empty" style="grid-column: 1 / -1;">
-          <h2 style="margin-bottom:0.75rem;">Scenarios coming soon</h2>
-          <p style="margin-bottom:1.5rem;color:var(--color-dark-gray);">Curating a library of real borrower files — self-employed, DSCR, jumbo, and the files other lenders declined. Have one of your own to send in the meantime?</p>
-          <a href="/scenario.html" class="btn btn-primary">Send My Scenario</a>
-          <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-outline" style="margin-left:0.5rem;" target="_blank" rel="noopener">Schedule a Call</a>
-        </div>
 
       </div>
     </div>

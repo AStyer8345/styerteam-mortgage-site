@@ -185,37 +185,31 @@ The new `/scenario.html` posts to a Netlify form named `scenario`. Netlify will 
 
 ---
 
-# 2026-05-28 PM — Scenarios system shipped — needs your input
+# 2026-05-28 PM — Scenarios system shipped (+ scenario #1 LIVE)
 
-## 1. Scenario #1 is DRAFT — needs anonymized borrower facts
+## 1. Scenario #1 is LIVE — please review
 
-`/scenarios/self-employed-writeoffs-bank-statement.html` is deployed but `noindex`, NOT in `sitemap.xml`, and the matching card stub on `/scenarios.html` is commented out. Before going live, send me an anonymized version of one self-employed / bank-statement file you closed and I'll fill in:
+[/scenarios/oil-gas-royalty-asset-depletion.html](https://styermortgage.com/scenarios/oil-gas-royalty-asset-depletion.html) — your oil/gas royalty + asset-depletion file, anonymized + hedged. Slug renamed from the original DRAFT slug because the story is actually Jumbo/HNW + Denied Elsewhere, not Self-Employed/Bank-Statement.
 
-- H1 + Scenario Title
-- Direct Answer block (40–80 words)
-- At-A-Glance values (categorical only — borrower type, primary challenge, strategy used, loan type/structure, Texas region)
-- The Situation / The Obstacle / The Strategy / The Outcome narrative
-- 4 FAQ Q&As (already stubbed with the right questions)
+**Specifically check:**
+- The "she" pronoun — used throughout per your narration. If you'd prefer fully neutral ("the borrower"), easy edit.
+- Texas region listed as just "Texas" in the At-A-Glance — I don't know if it was Austin, Hill Country, or elsewhere. Easy edit if you want more specific.
+- The 60-month asset-depletion divisor you mentioned is **deliberately NOT published** — compliance rule against publishing universal program parameters. Asset depletion is described conceptually ("converts verified balances into a qualifying-income equivalent"). The story works without the number; publishing it would freeze a per-investor parameter into a permanent SERP/AEO citation that'll be wrong when investor guidelines move.
+- Pricing called "competitive for the file" — not "great" or any superlative.
 
-Compliance rules baked into the template will block hard-number claims, performance-metric language, and identifying details. You can send me real numbers and I'll convert them to hedged categories before they hit the page.
+## 2. Hub now lights up 3 chips — Self-Employed and DSCR chips are commented out
 
-**To deploy scenario #1:**
-1. Replace every `[SQUARE BRACKET]` token in the file
-2. Remove the top `<!-- DRAFT -->` comment block
-3. Remove `<meta name="robots" content="noindex">` (line ~26)
-4. Add `<url><loc>https://styermortgage.com/scenarios/self-employed-writeoffs-bank-statement.html</loc><lastmod>YYYY-MM-DD</lastmod>...</url>` to `sitemap.xml`
-5. Uncomment the matching card stub on `/scenarios.html` (look for `<!-- SCENARIO CARD STUB -->`)
-6. Uncomment the Self-Employed / Bank Statement chip + the "All" chip in the same file
+`/scenarios.html` filter chips render only when ≥1 scenario in that category exists. With scenario #1 in Jumbo/HNW + Denied Elsewhere, those 2 chips + "All" appear. Self-Employed and DSCR chips stay commented out until you ship a scenario in each. The HTML comments next to the chip block tell future-you (or future-me) exactly what to uncomment.
 
-## 2. `/scenarios.html` hub launches with zero visible cards
+## 3. Resources nav has a "Scenarios" link on the 4 scenario pages only
 
-This is intentional and matches your spec ("no empty category doorways" — filter chips don't render until ≥1 scenario per category exists). Hub currently shows a "Scenarios coming soon" placeholder + CTAs to `/scenario.html` and Calendly. When scenario #1 ships, the placeholder gets replaced with the card and the first 2 chips ("All" + "Self-Employed / Bank Statement") appear.
-
-## 3. Resources nav now has a "Scenarios" link — on the 3 new pages only
-
-Per spec, no sitewide nav change this session. When you're ready to surface scenarios from the rest of the site, the consolidate-nav pass would propagate that link to all ~75 pages. Not blocking — flagging so you know the rest of the site doesn't yet link to `/scenarios.html` from the header.
+Per the original spec, no sitewide nav change. When you're ready to surface scenarios from the rest of the site, the consolidate-nav pass would propagate the link. Flagging so you know the other ~75 pages don't yet link to `/scenarios.html` from the header.
 
 ## 4. Loan app URL mismatch in the original prompt
 
 The Prompt A spec referenced `https://mslp.my1003app.com/513013/register` — that's the old MSLP URL. CLAUDE.md / CONTEXT.md / every live page uses `https://hypersmart.my1003app.com/513013/register?time=1779291829279`. I used the live one. If `mslp.my1003app.com` is still live and you want both URLs supported, let me know.
+
+## 5. Next-up: scenarios #2 and #3 to light up the remaining filter chips
+
+When you have anonymized facts for them, send me one Self-Employed / Bank-Statement file and one DSCR / Investor file and I'll write each in the same hedged, compliance-baked pattern. That'll flip on all 4 filter chips and make the hub a fully functional category navigator.
 
