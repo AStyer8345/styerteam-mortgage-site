@@ -1,3 +1,12 @@
+## 2026-05-28 PM Q6 (user-initiated, Adam) — Cluster near-orphan rescue (2 files, 3 edits)
+
+- **Follow-up to Q4, same session.** Re-ran the link-graph audit against the post-Q4 tree and found two self-employed/non-QM cluster *variant* pages still near-orphaned, each linked only by its own canonical hub: `non-qm-loans-self-employed-austin.html` (1 inbound) and `bank-statement-loans-austin-tx.html` (2 inbound). Both are self-canonical, indexable, 1,300–1,500-word distinct geo/variant pages — legitimate spokes, not consolidation doorways (verified: no noindex, canonical points to self).
+- **Fresh-source links added** (the graph counts unique source pages, so a second link from the hub that already links them wouldn't lift inbound count):
+  - `bank-statement-loans.html` related list → new `<li>` to `/non-qm-loans-self-employed-austin.html`.
+  - `self-employed-mortgage-austin.html` related list → 2 new `<p>` entries → `/non-qm-loans-self-employed-austin.html` + `/bank-statement-loans-austin-tx.html`.
+- **Result:** `non-qm-loans-self-employed-austin` 1→3 inbound (now sourced from self-employed + bank-statement + non-qm hubs), `bank-statement-loans-austin-tx` 2→3. Both off the weakly-linked (1–2 inbound) list.
+- **Skipped (do-no-harm):** `self-employed-mortgage-round-rock-tx.html` (1 inbound) — its only natural fresh source is the Round Rock suburb page, which has no existing self-employed discussion; injecting one would be content insertion into a template-managed page, not a surgical link. Left for a dedicated suburb→niche pass. No new CSS/JS/schema/nav.
+
 ## 2026-05-28 PM Q5 (user-initiated, Adam) — Sitewide footer + scenario CTA visibility fix (30 files)
 
 - **Adam reported two broken-formatting screenshots on the live scenario page:** footer column headings invisible, and the "Have a Similar File?" CTA heading unreadable (dark on navy). Diagnosed both with live computed-style checks via chrome-devtools, not eyeballing.
