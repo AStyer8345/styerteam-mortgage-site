@@ -1,3 +1,14 @@
+## 2026-05-28 PM Q4 (user-initiated, Adam) — Phase 4 spoke equity push: hub→spoke companion to Q2 (4 files, 11 edits)
+
+- **Symmetric follow-up to the Q2 Tier-1 product-page fix.** Q2 pushed equity from `/loans/*` product pages down to their cluster siblings. Q4 pushes from the 4 cluster HUB pages down to the 4 under-equity'd complex-income SPOKE pages. Net effect: each spoke now receives PageRank from BOTH its `/loans/*` product page (Q2) AND multiple cluster hubs — the hub-spoke asymmetry in the complex-income cluster is broken.
+- **`self-employed-mortgage-austin.html` (4 spoke links, 3 edits).** (1) "1099 Income Loans" feature card — appended inline link to `/1099-only-mortgage-texas.html`. (2) "P&L Loans" feature card — appended inline link to `/p-and-l-mortgage-texas.html`. (3) "Related Complex-Income Pages" list — 2 new `<p>` entries → `/mortgage-for-business-owners-austin.html` + `/k1-income-mortgage-austin.html`.
+- **`bank-statement-loans.html` (3 body anchors).** (1) "Method 2: P&L Method" section → `/p-and-l-mortgage-texas.html`. (2) "1099-Only Programs" h3 section → `/1099-only-mortgage-texas.html`. (3) "Business Owners (LLC / S-Corp)" feature card → `/mortgage-for-business-owners-austin.html`.
+- **`non-qm-loans.html` (4 edits; already linked 1099-only + k1).** (1) "Self-Employed P&L" feature card trailing link repointed from self-employed guide → `/p-and-l-mortgage-texas.html`. (2) "Recent Business Owner Without Two Years of Returns" scenario → `/mortgage-for-business-owners-austin.html`. (3) Related list — 2 new `<li>` entries → p-and-l + business-owners.
+- **`dscr-loan-austin-tx.html` (1 edit, list-only).** 2 new `<li>` entries in "Related Complex-Income Pages" → `/k1-income-mortgage-austin.html` + `/mortgage-for-business-owners-austin.html`. Routed ONLY through the existing related list (no forced body anchors) — DSCR is investment-focused, so self-employment-doc body links would be unnatural.
+- **Per-spoke hub coverage after.** 1099-only: 3 hubs. p-and-l: 3 hubs (non-qm ×2 surfaces). k1-income: 3 hubs (incl. high-authority DSCR). business-owners: 4 hubs.
+- **Link-graph inbound unique-source gains.** business-owners 13→17, p-and-l 6→9, 1099-only 9→11, k1-income 6→8.
+- **Pattern discipline.** Body-copy contextual anchors favored over list entries for PageRank weight where the prose supported it. No new CSS, JS, schema, nav, or breadcrumb changes. Surgical inline inserts only.
+
 ## 2026-05-28 PM Q3 (user-initiated, Adam) — Scenario #1 shipped LIVE
 
 - **DRAFT filled with Adam's real (anonymized) borrower story.** Memorial Day call from a Texas borrower with oil and gas royalty income; declined by two banks for income-documentation reasons; asset-depletion loan qualified her from verified investment and retirement balances; she closed on the home she wanted.
