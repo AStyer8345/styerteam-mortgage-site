@@ -6,7 +6,9 @@ ziEOo8Wy
 Thumbs.db
 node_modules/
 package-lock.json
-.claude/
+.claude/*
+# Track shared skills so they version-control with the repo
+!.claude/skills/
 # OAuth setup scripts with secrets — never commit
 facebook-oauth.js
 linkedin-oauth.js
