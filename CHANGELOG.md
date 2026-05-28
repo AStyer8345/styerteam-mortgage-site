@@ -1,4 +1,26 @@
-## 2026-05-28 (styer-site-daily, Thursday — scheduled fire) — Internal Linking + Funnel Flow rotation + sitemap lastmod ZERO_RISK fix
+## 2026-05-28 PM (user-initiated, Adam) — Narrative scenario system (hub + template + DRAFT scenario #1)
+
+- **New content type shipped.** Scenarios are now a distinct category from pillar/product pages — each scenario page tells the story of one solved or representative borrower file (Situation → Obstacle → Strategy → Outcome) anchored by a scannable At-A-Glance data block for AEO extraction.
+- **3 new files:**
+  - `/scenarios.html` — hub page with CollectionPage + BreadcrumbList + Person JSON-LD (with NMLS sameAs). Standard full nav + breadcrumb + footer. Filter chip markup + card stubs are commented out (no empty category doorways per spec). With zero live scenarios, the hub shows a placeholder "Scenarios coming soon" state with CTAs to `/scenario.html` and Calendly. Scoped JS handler for `.scenario-filter` container so it does not collide with the existing `.testimonial-filter` JS in `script.js`.
+  - `/scenarios/_TEMPLATE.html` — reusable scenario template. Full standard `<head>`, byline pattern from `scenario.html`, Direct Answer block (40–80w AEO summary), hedged At-A-Glance table (Borrower Type · Primary Challenge · Strategy Used · Loan Type/Structure · Texas Region — categorical values only, no specific numbers), narrative sections, FAQ accordion with FAQPage schema mirror, Article + FAQPage + BreadcrumbList + Person JSON-LD, mandatory privacy/outcomes-vary line baked into the footer (cannot render template without it), `<meta name="robots" content="noindex">` as safety net, `[SQUARE BRACKET]` placeholders throughout, top compliance comment listing the non-negotiable rules.
+  - `/scenarios/self-employed-writeoffs-bank-statement.html` — **DRAFT** scenario #1 (Self-Employed / Bank Statement category). noindex, NOT added to sitemap. Awaiting Adam's real anonymized borrower facts before going live.
+- **Sitemap + robots:** `/scenarios.html` added to `sitemap.xml` (priority 0.7, weekly, lastmod 2026-05-28). DRAFT scenario intentionally excluded. `robots.txt` gains `Disallow: /scenarios/_TEMPLATE.html`.
+- **Navigation:** "Scenarios" link added to the Resources dropdown on the 3 new pages only — **no sitewide nav change** this session per spec.
+- **CTAs:** every scenario CTA routes to `/scenario.html` (the tracked LP), not the raw 1003 — consistent with the active complicated-income-cluster CTA decision still pending in CONTEXT.md blockers.
+- **Compliance baked into template structure (not just documented):**
+  - At-A-Glance table cells carry inline `[Hedged category — e.g. ...]` hints right where literal numbers would naturally get typed.
+  - Mandatory privacy + outcomes-vary disclaimer renders as a full-width gray block in the footer of every scenario page — cannot be missed by an author editing the template.
+  - Compliance checklist appears as the top comment block of both the template and the DRAFT scenario.
+  - No hard FICO/LTV/expense %/loan amounts permitted; "Program availability and guidelines change by investor, occupancy, and loan type" appears next to every program-specific claim.
+  - No fabricated star-rating testimonials, no performance-metric claims ("21-day," "same-day," "24-hour"), no absolutes.
+  - Texas-only scope.
+  - Article schema (not TechArticle/TechReport) for consistency with the rest of the site.
+  - Entity strings verified: display name "Adam Styer | HyperSmart Home Loans"; legal "Kyber Mortgage Corporation dba HyperSmart Home Loans"; NMLS #2653540 / #513013; corp address + phone match CLAUDE.md.
+- **Loan app URL:** template + new pages use `https://hypersmart.my1003app.com/513013/register?time=1779291829279` per CLAUDE.md / CONTEXT.md, not the `mslp.my1003app.com` URL referenced in the spec prompt (prompt referenced a stale URL).
+- **Verified:** files written, sitemap + robots updated, no edits to `style.css`, no new CSS variables/frameworks/libraries, no edits to existing pillar/product pages, no sitewide nav change. Filter chip + card markup left commented out and discoverable for Adam when scenario #1 is filled in.
+
+## 2026-05-28 AM (styer-site-daily, Thursday — scheduled fire) — Internal Linking + Funnel Flow rotation + sitemap lastmod ZERO_RISK fix
 
 - **Thursday rotation = Internal Linking + Funnel Flow per SKILL.md.** First scheduled fire since 2026-05-26 PM (Wed 2026-05-27 = NO FIRE, scheduler-anomaly carry bumps to 12+ instances). Adam ran an interactive Phase 4.2 session on 2026-05-27 PM that updated `/non-qm-loans.html` in-page `dateModified` to 2026-05-27 but missed sitemap.xml.
 - **Site change shipped — 1 file, 1 line.** `sitemap.xml:45` `<lastmod>2026-05-18</lastmod>` → `<lastmod>2026-05-27</lastmod>` for `/non-qm-loans.html`. ZERO_RISK mechanical fix bringing sitemap.xml lastmod into sync with the page's actual JSON-LD `dateModified` after Adam's 2026-05-27 PM commits `1486a01` / `e81269a` / `db10ccf` / `6b64ebf`. Reversible via git; no copy/voice/positioning change. Other 2026-05-27 commits only touched `non-qm-loans.html` + CONTEXT/CHANGELOG, so drift was contained to this URL.

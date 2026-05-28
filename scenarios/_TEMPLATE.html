@@ -1,0 +1,438 @@
+<!--
+  ╔══════════════════════════════════════════════════════════════════════════╗
+  ║  SCENARIO PAGE TEMPLATE — DO NOT DEPLOY THIS FILE AS-IS                  ║
+  ║                                                                          ║
+  ║  Copy to /scenarios/[slug].html. Replace every [SQUARE BRACKET] token.   ║
+  ║  Remove this comment block. Remove the <meta name="robots" noindex>.     ║
+  ║                                                                          ║
+  ║  COMPLIANCE — NON-NEGOTIABLE:                                            ║
+  ║   • No hard universal numbers (FICO floors, LTV maxes, expense %, rate   ║
+  ║     premiums, asset divisors). Frame as program/lender-dependent.        ║
+  ║   • Mandatory privacy + outcomes-vary line is in this template.          ║
+  ║     Do not remove it. It's required on every scenario page.              ║
+  ║   • No invented testimonials. No star-rating quote blocks.               ║
+  ║   • No performance-metric claims (no "21-day," "same-day," "24-hour").   ║
+  ║   • No absolutes (guaranteed, always, easy, no-doc, beat any rate).      ║
+  ║   • Texas scope only.                                                    ║
+  ║   • Entity strings: display "Adam Styer | HyperSmart Home Loans";        ║
+  ║     legal "Kyber Mortgage Corporation dba HyperSmart Home Loans";        ║
+  ║     company NMLS 2653540; Adam NMLS 513013.                              ║
+  ║                                                                          ║
+  ║  At-A-Glance values MUST be hedged categorical ranges, never literal     ║
+  ║  loan amounts, LTVs, FICOs, or borrower identifiers.                     ║
+  ╚══════════════════════════════════════════════════════════════════════════╝
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Scenario Title] | Mortgage Scenario | Adam Styer | NMLS #513013</title>
+  <meta name="description" content="[1-sentence hook describing the scenario in ~150 chars. Lead with borrower type and outcome category. No specific numbers.]">
+  <meta name="robots" content="noindex"><!-- SAFETY NET: remove on the live page only. Template itself must never index. -->
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="[Scenario Title] | Mortgage Scenario | Adam Styer">
+  <meta property="og:description" content="[Same hook as meta description, may be slightly longer.]">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://styermortgage.com/scenarios/[slug].html">
+  <meta property="og:image" content="https://styermortgage.com/assets/og-image.png">
+  <meta property="og:site_name" content="Adam Styer | HyperSmart Home Loans">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[Scenario Title] | Mortgage Scenario">
+  <meta name="twitter:description" content="[Same hook, trimmed if needed.]">
+  <meta name="twitter:image" content="https://styermortgage.com/assets/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+  <link rel="canonical" href="https://styermortgage.com/scenarios/[slug].html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
+  <link rel="stylesheet" href="/style.css?v=20260518">
+
+  <script>window.dataLayer = window.dataLayer || [];</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "[Scenario Title]",
+    "description": "[1-2 sentence summary mirroring the Direct Answer block. Hedged. No specific numbers.]",
+    "about": "[Borrower type and primary challenge category — e.g. 'Self-employed business owner with heavy tax write-offs']",
+    "abstract": "[1-sentence strategy summary — e.g. 'Bank statement loan program used in place of tax-return income documentation.']",
+    "author": {
+      "@type": "Person",
+      "name": "Adam Styer",
+      "jobTitle": "Senior Loan Officer",
+      "url": "https://styermortgage.com/about.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Adam Styer | HyperSmart Home Loans",
+      "url": "https://styermortgage.com"
+    },
+    "url": "https://styermortgage.com/scenarios/[slug].html",
+    "datePublished": "[YYYY-MM-DD]",
+    "dateModified": "[YYYY-MM-DD]"
+  }
+  </script>
+
+  <!-- FAQPage Schema — mirror the 4-6 Q&As in the accordion below -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "[FAQ question 1 — answer-first phrasing]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[40-80 word answer. Lead with the direct answer. Hedged. No universal program rules.]"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "[FAQ question 2]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[40-80 word answer.]"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "[FAQ question 3]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[40-80 word answer.]"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "[FAQ question 4]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[40-80 word answer.]"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com"},
+      {"@type": "ListItem", "position": 2, "name": "Scenarios", "item": "https://styermortgage.com/scenarios.html"},
+      {"@type": "ListItem", "position": 3, "name": "[Scenario Title]", "item": "https://styermortgage.com/scenarios/[slug].html"}
+    ]
+  }
+  </script>
+
+  <!-- Person Schema — entity signal required on every scenario page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://styermortgage.com/about.html#adam-styer",
+    "name": "Adam Styer",
+    "jobTitle": "Senior Loan Officer",
+    "url": "https://styermortgage.com/about.html",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "NMLS",
+      "value": "513013"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Adam Styer | HyperSmart Home Loans",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "2653540"
+      }
+    },
+    "knowsAbout": [
+      "self-employed mortgage",
+      "bank statement loans",
+      "Non-QM mortgages",
+      "DSCR loans",
+      "asset depletion mortgages",
+      "K-1 income mortgage qualification",
+      "1099 income mortgage qualification",
+      "P&L mortgage qualification",
+      "jumbo mortgage strategy",
+      "Texas mortgage lending"
+    ],
+    "sameAs": [
+      "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013"
+    ]
+  }
+  </script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header class="site-header">
+  <nav class="nav-container">
+    <a href="/index.html" class="nav-brand">
+      <img src="/assets/logo.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
+    </a>
+    <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li class="nav-has-dropdown"><a href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li><a href="/non-qm-loans.html">Non-QM Loans</a></li><li><a href="/dscr-loan-austin-tx.html">DSCR Loans</a></li><li><a href="/self-employed-mortgage-austin.html">Self-Employed Mortgage</a></li><li><a href="/bank-statement-loans.html">Bank Statement Loans</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth</a></li><li><a href="/investor-loans.html">Investor Loans</a></li></ul></li>
+      <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li><li><a href="/resources/first-time-buyer-guide/">Buyer Guide</a></li><li><a href="/scenarios.html">Scenarios</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/rate-check.html">Rate Check</a></li><li><a href="/realtors.html">For Realtors</a></li></ul></li>
+      <li><a href="/testimonials.html">Testimonials</a></li>
+      <li class="nav-has-dropdown"><a href="/contact.html">Contact</a><ul class="nav-dropdown"><li><a href="/about.html">About Adam</a></li></ul></li>
+      <li><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="nav-cta" target="_blank" rel="noopener">Start Application</a></li>
+    </ul>
+    <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="nav-cta btn btn-primary" target="_blank" rel="noopener">Review My Income</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb bg-light">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="/index.html">Home</a></li>
+          <li aria-hidden="true">›</li>
+          <li><a href="/scenarios.html">Scenarios</a></li>
+          <li aria-hidden="true">›</li>
+          <li aria-current="page">[Scenario Title]</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Article body -->
+  <article class="article-body">
+
+    <!-- H1 + Byline -->
+    <section class="section">
+      <div class="container content-narrow">
+        <h1>[Scenario Title]</h1>
+        <p style="font-size:0.9rem;color:var(--color-gray);margin:1rem 0 2rem;border-left:3px solid #8B6E24;padding:0.4rem 0 0.4rem 0.9rem;">
+          By <strong>Adam Styer</strong>, NMLS <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" target="_blank" rel="noopener">#513013</a> · Senior Loan Officer, Adam Styer | HyperSmart Home Loans · Austin, TX · <em><time datetime="[YYYY-MM-DD]">Updated [Month D, YYYY]</time></em>
+        </p>
+
+        <!-- DIRECT ANSWER (AEO) — 40-80 words, answer-first, top of page -->
+        <div style="background:var(--color-light-gray);padding:1.25rem 1.5rem;border-radius:0.5rem;border-left:4px solid #8B6E24;margin-bottom:2rem;">
+          <p style="margin:0;font-size:1.05rem;line-height:1.6;"><strong>The short version:</strong> [40-80 word direct answer. Lead with the borrower's situation in one phrase, then the strategy used, then the result category. No specific numbers. Hedged. Example structure: "A self-employed business owner couldn't qualify with tax returns because of write-offs. We used a bank statement program that documents income from deposit history instead. The borrower closed on a primary residence in Texas. Program availability and guidelines change by investor, occupancy, and loan type."]</p>
+        </div>
+
+        <!-- AT-A-GLANCE (hedged categorical values only — see compliance header) -->
+        <h2 style="margin-top:2rem;">Scenario at a Glance</h2>
+        <div style="overflow-x:auto;margin-bottom:1rem;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.95rem;">
+            <tbody>
+              <tr style="background:#1a3a5c;color:#fff;">
+                <th style="padding:0.75rem 1rem;text-align:left;width:35%;">Borrower Type</th>
+                <td style="padding:0.75rem 1rem;background:#fff;color:var(--color-text);">[Hedged category — e.g. "Self-employed business owner" or "Real estate investor (LLC)". Never a name, age, or identifying detail.]</td>
+              </tr>
+              <tr>
+                <th style="padding:0.75rem 1rem;text-align:left;background:#f9f9f9;font-weight:600;">Primary Challenge</th>
+                <td style="padding:0.75rem 1rem;background:#f9f9f9;">[Hedged category — e.g. "Tax write-offs reducing documentable income" or "Debt-to-income pressure from prior properties". No specific ratios or thresholds.]</td>
+              </tr>
+              <tr>
+                <th style="padding:0.75rem 1rem;text-align:left;font-weight:600;">Strategy Used</th>
+                <td style="padding:0.75rem 1rem;">[Hedged category — e.g. "Bank statement income documentation" or "DSCR program based on rental cash flow". Name the program family, not a specific lender's product.]</td>
+              </tr>
+              <tr>
+                <th style="padding:0.75rem 1rem;text-align:left;background:#f9f9f9;font-weight:600;">Loan Type / Structure</th>
+                <td style="padding:0.75rem 1rem;background:#f9f9f9;">[Hedged — e.g. "Non-QM bank statement loan, primary residence purchase" or "DSCR investor loan, refinance". Never a specific loan amount or LTV.]</td>
+              </tr>
+              <tr>
+                <th style="padding:0.75rem 1rem;text-align:left;font-weight:600;">Texas Region</th>
+                <td style="padding:0.75rem 1rem;">[Region only — e.g. "Greater Austin" or "Texas Hill Country". Never a specific city + neighborhood combination that could identify a borrower.]</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.85rem;color:var(--color-gray);font-style:italic;margin-bottom:2rem;">Program availability and guidelines change by investor, occupancy, and loan type.</p>
+      </div>
+    </section>
+
+    <!-- THE SITUATION -->
+    <section class="section bg-light">
+      <div class="container content-narrow">
+        <h2>The Situation</h2>
+        <p>[Borrower profile and goal. Specificity comes from the narrative — the income story, the real-life circumstance — not from program numbers. Describe the business or income source in plain terms. State what the borrower wanted to accomplish.]</p>
+        <p>[Optional second paragraph adding context — family situation, timing, prior homeownership, or why this purchase/refinance mattered.]</p>
+      </div>
+    </section>
+
+    <!-- THE OBSTACLE -->
+    <section class="section">
+      <div class="container content-narrow">
+        <h2>The Obstacle</h2>
+        <p>[What made the file hard. May reference categories of friction — tax write-offs reducing documentable income, debt-to-income pressure, income-documentation mismatch — in plain terms. Do NOT publish specific AUS overlay parameters, divisors, or named-investor guideline figures as if universal.]</p>
+        <p>[If a prior lender or path stalled, explain why in plain terms. Avoid naming specific lenders. Avoid implying a universal rule from one file's outcome.]</p>
+      </div>
+    </section>
+
+    <!-- THE STRATEGY -->
+    <section class="section bg-light">
+      <div class="container content-narrow">
+        <h2>The Strategy</h2>
+        <p>[The program approach and why it fit. Educational, not a guideline sheet. Explain why this program family qualifies income or assets differently. Do not state guideline numbers as universal rules — frame as "this program qualified income from [source]" rather than "this program requires X% down."]</p>
+        <p>[Why this path was a better match than the alternative. Frame around documentation fit, not rate or fee superlatives. Mention that program availability varies by investor and lender.]</p>
+        <p><em>Program availability and guidelines change by investor, occupancy, and loan type.</em></p>
+      </div>
+    </section>
+
+    <!-- THE OUTCOME -->
+    <section class="section">
+      <div class="container content-narrow">
+        <h2>The Outcome</h2>
+        <p>[Factual outcome description. What closed, or what the borrower was positioned to do. Avoid performance-metric claims (no "21-day close," "same-day approval"). Process-based language only: "the file moved through underwriting and closed."]</p>
+        <p><strong>Outcomes vary.</strong> Every file is different. This scenario illustrates one path that worked for one borrower's specific circumstances. The same strategy may not be available, advisable, or produce the same result for other borrowers — that depends on credit, income documentation, property, occupancy, and current investor guidelines.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section bg-light">
+      <div class="container content-narrow">
+        <h2>Questions Borrowers Ask About This Type of File</h2>
+        <div class="accordion">
+
+          <div class="accordion-item">
+            <button class="accordion-button" aria-expanded="false">
+              [FAQ question 1 — answer-first phrasing]
+            </button>
+            <div class="accordion-content">
+              <p>[40-80 word answer. Lead with the direct answer. Hedged. No universal program rules stated as fact.]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-button" aria-expanded="false">
+              [FAQ question 2]
+            </button>
+            <div class="accordion-content">
+              <p>[40-80 word answer.]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-button" aria-expanded="false">
+              [FAQ question 3]
+            </button>
+            <div class="accordion-content">
+              <p>[40-80 word answer.]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-button" aria-expanded="false">
+              [FAQ question 4]
+            </button>
+            <div class="accordion-content">
+              <p>[40-80 word answer.]</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED (strict silo — link UP to the relevant pillar, not laterally) -->
+    <section class="section">
+      <div class="container content-narrow">
+        <h2>Related</h2>
+        <p>For the full program guide on the strategy used in this file, see <a href="[/pillar-page.html — e.g. /self-employed-mortgage-austin.html or /dscr-loan-austin-tx.html]">[Pillar Page Title] →</a>.</p>
+        <p>Have a file that looks similar to this one? <a href="/scenario.html">Send Adam your scenario →</a> — no credit pull, no obligation.</p>
+        <!-- RELATED: link sibling scenarios when available -->
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section bg-navy cta-spotlight">
+      <div class="container text-center">
+        <h2 class="text-white">Have a Similar File?</h2>
+        <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Send me the details. I'll tell you what's workable, what isn't, and which program family fits — before you formally apply.</p>
+        <a href="/scenario.html" class="btn btn-primary btn-lg">Send My Scenario</a>
+        <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-white btn-lg" style="margin-left:1rem;" target="_blank" rel="noopener">Schedule a Call →</a>
+        <p class="text-white" style="margin-top:1rem;opacity:0.7;font-size:0.9rem;">Or call <a href="tel:+15129566010" style="color:#fff;">(512) 956-6010</a> — NMLS #513013</p>
+      </div>
+    </section>
+
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+
+    <!-- MANDATORY SCENARIO PRIVACY + OUTCOMES-VARY LINE — DO NOT REMOVE -->
+    <div style="background:var(--color-light-gray);padding:1rem 1.5rem;border-radius:0.5rem;margin-bottom:2rem;font-size:0.85rem;color:var(--color-dark-gray);line-height:1.6;text-align:center;">
+      <strong>About these scenarios:</strong> Scenarios reflect real financing strategies. Identifying borrower details are changed or combined to protect privacy. Outcomes vary by individual circumstances and are not a prediction or guarantee.
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Adam Styer | HyperSmart Home Loans</h4>
+        <p>Independent mortgage broker specializing in self-employed, non-QM, and investor loans across Texas.</p>
+        <p>NMLS #513013 (Adam Styer)<br>NMLS #2653540 (Kyber Mortgage Corporation dba HyperSmart Home Loans)</p>
+      </div>
+      <div class="footer-col">
+        <h4>Loan Types</h4>
+        <ul>
+          <li><a href="/loans/conventional.html">Conventional</a></li>
+          <li><a href="/loans/fha.html">FHA Loans</a></li>
+          <li><a href="/loans/va.html">VA Loans</a></li>
+          <li><a href="/loans/investment.html">Investment Property</a></li>
+          <li><a href="/dscr-loan-austin-tx.html">DSCR Loans</a></li>
+          <li><a href="/self-employed-mortgage-austin.html">Self-Employed Mortgage</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><a href="tel:+15129566010">(512) 956-6010</a></p>
+        <p><a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a></p>
+        <p>9050 N. Capital of Texas Hwy, Ste 390<br>Austin, Texas 78759</p>
+      </div>
+      <div class="footer-col">
+        <h4>Areas Served</h4>
+        <ul>
+          <li><a href="/round-rock-mortgage-lender.html">Round Rock</a></li>
+          <li><a href="/cedar-park-mortgage-lender.html">Cedar Park</a></li>
+          <li><a href="/leander-mortgage-lender.html">Leander</a></li>
+          <li><a href="/georgetown-mortgage-lender.html">Georgetown</a></li>
+          <li><a href="/pflugerville-mortgage-lender.html">Pflugerville</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Adam Styer | HyperSmart Home Loans. All rights reserved.</p>
+      <p>Adam Styer | HyperSmart Home Loans | NMLS #2653540 | Adam Styer NMLS #513013 | Licensed in Texas | <a href="/texas-complaint-notice.html">Texas Consumer Complaint Notice</a> | <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2653540" target="_blank" rel="noopener" style="color:inherit;">NMLS Consumer Access</a></p>
+      <p>Kyber Mortgage Corporation dba HyperSmart Home Loans, NMLS ID 2653540. Adam Styer, NMLS #513013. Principal address 9050 N. Capital of Texas Hwy, Ste 390, Austin, Texas 78759. This is not an offer for extension of credit or commitment to lend. All loans must satisfy underwriting guidelines. Not all applicants qualify. Information and pricing are subject to change at any time and without notice. Products not available in all areas. Equal Housing Lender. Non-QM products — qualification requirements differ from conventional programs.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/script.js?v=20260417" defer></script>
+<script src="/js/scroll-effects.js?v=20260429" defer></script>
+<script src="/analytics.js?v=20260417" defer></script>
+</body>
+</html>

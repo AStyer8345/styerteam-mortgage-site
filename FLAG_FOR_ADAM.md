@@ -183,3 +183,39 @@ The new `/scenario.html` posts to a Netlify form named `scenario`. Netlify will 
 - Test submission with a file upload arrives in your inbox
 - File attachment links work from the notification email
 
+---
+
+# 2026-05-28 PM — Scenarios system shipped — needs your input
+
+## 1. Scenario #1 is DRAFT — needs anonymized borrower facts
+
+`/scenarios/self-employed-writeoffs-bank-statement.html` is deployed but `noindex`, NOT in `sitemap.xml`, and the matching card stub on `/scenarios.html` is commented out. Before going live, send me an anonymized version of one self-employed / bank-statement file you closed and I'll fill in:
+
+- H1 + Scenario Title
+- Direct Answer block (40–80 words)
+- At-A-Glance values (categorical only — borrower type, primary challenge, strategy used, loan type/structure, Texas region)
+- The Situation / The Obstacle / The Strategy / The Outcome narrative
+- 4 FAQ Q&As (already stubbed with the right questions)
+
+Compliance rules baked into the template will block hard-number claims, performance-metric language, and identifying details. You can send me real numbers and I'll convert them to hedged categories before they hit the page.
+
+**To deploy scenario #1:**
+1. Replace every `[SQUARE BRACKET]` token in the file
+2. Remove the top `<!-- DRAFT -->` comment block
+3. Remove `<meta name="robots" content="noindex">` (line ~26)
+4. Add `<url><loc>https://styermortgage.com/scenarios/self-employed-writeoffs-bank-statement.html</loc><lastmod>YYYY-MM-DD</lastmod>...</url>` to `sitemap.xml`
+5. Uncomment the matching card stub on `/scenarios.html` (look for `<!-- SCENARIO CARD STUB -->`)
+6. Uncomment the Self-Employed / Bank Statement chip + the "All" chip in the same file
+
+## 2. `/scenarios.html` hub launches with zero visible cards
+
+This is intentional and matches your spec ("no empty category doorways" — filter chips don't render until ≥1 scenario per category exists). Hub currently shows a "Scenarios coming soon" placeholder + CTAs to `/scenario.html` and Calendly. When scenario #1 ships, the placeholder gets replaced with the card and the first 2 chips ("All" + "Self-Employed / Bank Statement") appear.
+
+## 3. Resources nav now has a "Scenarios" link — on the 3 new pages only
+
+Per spec, no sitewide nav change this session. When you're ready to surface scenarios from the rest of the site, the consolidate-nav pass would propagate that link to all ~75 pages. Not blocking — flagging so you know the rest of the site doesn't yet link to `/scenarios.html` from the header.
+
+## 4. Loan app URL mismatch in the original prompt
+
+The Prompt A spec referenced `https://mslp.my1003app.com/513013/register` — that's the old MSLP URL. CLAUDE.md / CONTEXT.md / every live page uses `https://hypersmart.my1003app.com/513013/register?time=1779291829279`. I used the live one. If `mslp.my1003app.com` is still live and you want both URLs supported, let me know.
+
