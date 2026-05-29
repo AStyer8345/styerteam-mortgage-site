@@ -1,3 +1,14 @@
+## 2026-05-28 PM — styer-site-daily same-day second fire (Thursday PM, scheduled, 0 mutations)
+
+- Triggered 23:30 CT, finished 01:17 CT 2026-05-29. Wall-clock midnight crossover handled per cached learning: trigger date `2026-05-28-pm.md` keeps AM/PM pair grouped.
+- Re-Verify Gate (13 claims): sitemap + robots ✅ 200/200; conversion tracking ✅ 10/10 (no regression despite Adam's 14 inter-fire commits); legacy entity scrub ✅ 0/0/0; AM findings hold; sitemap count moved 134 → **136** (delta = Adam scenarios shipped: `/scenarios.html` + `/scenarios/oil-gas-royalty-asset-depletion.html`, both lastmod 2026-05-28, both HTTP 200 live ✅).
+- **2 NEW PM findings** flagged for Adam batch — no auto-edit per same-day-second-fire discipline:
+  - Homepage `#contact-form` (surfaced by Q10/`089439a`) lacks `generate_lead` dataLayer push — silent conversion-tracking gap. Possible the lead-intake JS handles it at submit time; AM tomorrow to verify the trace.
+  - 147-file sitemap lastmod batch drift from Adam's 14-commit day (149 HTML files edited; only 2 scenarios pages got lastmod bumps). Sweep deferred to Friday AM with risk-tier framing (content edits vs nav-only edits).
+- **AM MEDIUM cluster CTA finding REFINED, not auto-resolved.** Adam's PM funnel direction = homepage-form-first, NOT cluster→tracked-LP. Tracked LPs `/get-preapproved.html` + `/refinance-quote.html` may now be deprecation candidates rather than restoration targets. Adam-positioning territory.
+- Adam's interactive-commit velocity 2026-05-28 = **14 commits** — highest single-day in this task's history. PM gate's job on high-velocity days is to re-frame AM findings against new Adam-shipped state, not just verify surface conditions.
+- Full PM detail in `run-logs/2026-05-28-pm.md`. NotebookLM = 58th consecutive dead run.
+
 ## 2026-05-28 PM Q10 (user-initiated, Adam) — Surface homepage quick form + price/down-payment fields (index.html)
 
 - **Adam:** "since I put the scenario form I haven't received any new leads…the scenario form is too intimidating…we need a quick contact capture" → then "I don't see it on the homepage." Diagnosis (verified, not assumed): the homepage ALREADY had a full quick-capture form (`#contact-form`, "Tell Me About Your Loan", ~11 fields) but it was buried near the bottom (after reviews, before Calculators), and the hero's primary CTA funneled everyone to the 16-field `scenario.html` instead. Lead pipeline itself confirmed working via n8n exec data (alerts fire; prior "errors" were benign duplicate-email/bot cases). So: a *surfacing* problem, not a missing-feature problem.

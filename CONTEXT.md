@@ -50,18 +50,18 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
+**2026-05-28 PM styer-site-daily (same-day second fire) — 0 mutations.** Per same-day-second-fire discipline (51st run cached): re-verify only, no copy-change piling. PM gate verified sitemap/conversion/legacy-scrub all green; AM findings hold; sitemap count moved 134 → 136 (Adam scenarios shipped). 2 NEW findings flagged for Adam batch: (a) homepage `#contact-form` lacks `generate_lead` dataLayer push (silent conversion gap on freshly-shipped Q10 form); (b) 147-file sitemap lastmod batch drift from Adam's 14-commit day (deferred to Friday AM batched sweep). Refined carry: "complicated-income cluster 0 CTAs" → Adam funnel-direction implication (tracked LPs may be deprecation candidates given homepage-form-first PM direction). Full detail in `run-logs/2026-05-28-pm.md`.
+
 Audit roadmap remaining (from `/Users/adamstyer/Documents/SEO-AUDIT-2026-05.md`):
-1. **Phase 3.2 — VA Loan Austin TX** new ~3,000-word landing page (FAQ + Breadcrumb + Article schema). Highest-traffic-ceiling open spoke.
+1. **Phase 3.2 — VA Loan Austin TX** new ~3,000-word landing page.
 2. **Phase 3.3 — Physician Mortgage Austin** new page.
 3. **Phase 3.4 — ITIN Mortgage Texas** new page (compliance-sensitive).
 4. **Phase 3.5 — Foreign National Mortgage Texas** new page.
-5. **Phase 2 external manual work** — see `SEO-PHASE2-CHECKLIST.md` (LinkedIn employer, Facebook page name, Instagram bio, GSC URL Inspection sweep, GBP audit, PSI API key).
+5. **Phase 2 external manual work** — see `SEO-PHASE2-CHECKLIST.md`.
 
 Scheduled task track:
-- Friday 2026-05-29 AM = Content Planning + AEO Review rotation per SKILL.md. Blog last-post date check + CTA audit + AEO question-style H2 review on 2 posts.
-- **Sitemap lastmod sweep (Thursday-rotation byproduct):** grep all `*.html` for `"dateModified":` from the last 14 days, cross-check vs sitemap.xml `<lastmod>`. Any drift = ZERO_RISK fix.
-- og:title pattern audit follow-up — 2026-05-26 title-tag audit covered `<title>` + `twitter:title` only; og:title tails vary across the 12 AM-edited files.
-- **Scenario #2 candidates** — next scenarios should ideally cover Self-Employed/Bank-Statement and DSCR/Investor to light up those filter chips. Adam to surface anonymized files when ready.
+- **Friday 2026-05-29 AM** = Content Planning + AEO Review rotation + 147-file sitemap lastmod batch sweep (with risk-tier framing: ZERO_RISK content edits vs DEFER nav-only edits) + verify homepage `#contact-form` lead-intake JS handles `generate_lead` push at submit time.
+- **Scenario #2 candidates** — next scenarios should cover Self-Employed/Bank-Statement and DSCR/Investor to light up filter chips. Adam to surface anonymized files when ready.
 
 ## Site Structure (key categories)
 
