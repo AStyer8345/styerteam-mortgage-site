@@ -1,3 +1,31 @@
+## 2026-05-29 — styer-content-weekly (blog editor, scheduled): JUMBO STRENGTHEN: DONE
+
+- **Standing priority complete.** `loans/jumbo.html` strengthened to match DSCR/HNW page depth.
+- **Word count:** 2,370 → 5,604 (target ~4,300, exceeded by 30%).
+- **Schema blocks:** 4 → 6. Added `FinancialProduct` + `Person` (NMLS-identified) blocks matching DSCR-page template. Existing MortgageBroker / Article / FAQPage / BreadcrumbList preserved and updated (Article `dateModified` 2026-02-25 → 2026-05-29).
+- **External citations:** 0 → 6 authoritative sources, inlined:
+  - FHFA conforming loan limits (2026 Travis County $832,750) — cited 2x (body + FAQ)
+  - CFPB ATR/QM rule 12 CFR § 1026.43 — cited 2x (compliance section + DTI FAQ)
+  - Fannie Mae LLPA matrix — cited 2x (jumbo-vs-conforming explanation + rate FAQ)
+  - Freddie Mac PMMS (May 7 2026, 6.37% reference rate)
+  - Unlock MLS / ABoR (April 2026 metro median $445K, ~16K active listings)
+  - IRS Schedule C / Form 1040 (self-employed buyer scenario)
+- **New body sections added** (5 H2s + 1 H3 cluster):
+  - "Why Austin Hits Jumbo Territory So Often" — Westlake / Tarrytown / Barton Creek / Lake Travis price-floor context + 5-archetype "who's buying jumbo in Austin" breakdown
+  - "Three Austin Jumbo Files I See Constantly" — composite scenarios (Westlake tech exec w/ RSU comp, founder post-exit w/ asset depletion, Tarrytown self-employed w/ bank statement). Clearly labeled illustrative — no fabricated clients per SKILL.md hard rule.
+  - "Jumbo vs. Conforming: When Crossing the Line Saves You Money" — LLPA arbitrage explanation (the #1 non-obvious jumbo insight for high-FICO/low-LTV buyers)
+  - "What Makes Austin Jumbo Underwriting Different" — appraisal comp pools, Lake Travis waterfront, acreage overlays, condo warrantability, Travis County tax math, Texas 50(a)(6) homestead rules
+  - "How to Start the Jumbo Pre-Approval Process" — 6-step workflow with same-day pre-approval differentiator
+- **FAQ expanded** 5 → 9 questions (added QM-vs-non-QM, DTI cap, closing speed, pledged-asset). Both FAQPage JSON-LD and visible accordion updated in lockstep.
+- **Specialty programs grid expanded** 4 → 6 cards (added K-1 income jumbo + jumbo construction-to-permanent).
+- **Cross-link to `high-net-worth-mortgage.html`** retained + reinforced (3 placements: body lead, specialty programs grid, related-reading footer).
+- **Voice/CTA tightening:** removed "white-glove" filler from hero subtitle, replaced with concrete price band + neighborhoods; final CTA rewritten ("Same-day pre-approvals. Discreet, efficient..."); first-person framing throughout ("I close...", "I shop the file..."); sign-off "Talk soon — Adam Styer" added to spotlight CTA.
+- **Title + meta rewritten** with concrete hook: "Jumbo Loan Austin TX: 10% Down to $1.5M, Portfolio Options | Adam Styer". Meta description expanded with Travis County conforming limit.
+- **Hero alt text enriched** with neighborhood specifics (Westlake / Barton Creek / Tarrytown) per SKILL.md photo requirement.
+- Slug + H1 preserved to protect any existing ranking signal. Header/nav/footer/scripts untouched.
+- Sitemap lastmod 2026-05-18 → 2026-05-29. Queued for GSC manual reindex in `run-logs/gsc-reindex-queue.md`.
+- `run-logs/editor-queue.md` updated: row appended + "JUMBO STRENGTHEN: DONE" marker added; niche-first queue resumes next run.
+
 ## 2026-05-28 PM — styer-site-daily same-day second fire (Thursday PM, scheduled, 0 mutations)
 
 - Triggered 23:30 CT, finished 01:17 CT 2026-05-29. Wall-clock midnight crossover handled per cached learning: trigger date `2026-05-28-pm.md` keeps AM/PM pair grouped.
