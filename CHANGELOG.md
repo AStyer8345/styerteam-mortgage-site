@@ -1,3 +1,13 @@
+## 2026-05-28 PM Q9 (continuation, autonomous) — Blog→cluster contextual linking, Tier 2 (2 files, 5 edits)
+
+- **Next safe step in the topical-graph build, after the Q4/Q6 hub→spoke and near-orphan work.** Two cluster-topic blog posts each described cluster spoke pages in their body copy but linked none of them. Added in-body contextual links (weighted higher than list/nav links because the surrounding sentence supplies the entity-relationship context) from those posts into the spokes — fresh inbound from indexable blog sources the spokes didn't previously receive.
+- **`blog/2026-04-02-self-employed-mortgage-austin-tx.html` (3 edits, absolute-path style to match the post):**
+  - Bank Statement Loan subsection — wrapped existing phrase "a bank statement loan" → `/bank-statement-loans.html`.
+  - 1099-Only Loan subsection — appended "See the full guide to 1099-only mortgages in Texas" → `/1099-only-mortgage-texas.html`.
+  - P&L Only Loan subsection — wrapped "CPA-prepared profit &amp; loss statement" → `/p-and-l-mortgage-texas.html`.
+- **`blog/2026-03-31-dscr-loans-austin-tx-2026.html` (1 edit, 4 links, relative-path style to match the post):** extended the existing "see also" paragraph with → `dscr-loans-texas`, `dscr-loans-fredericksburg-tx`, `dscr-loans-dripping-springs`, `investor-loans`. **Did NOT** re-link `dscr-loan-austin-tx` — this post already links it twice (lines 358, 373), so a third link adds zero inbound under unique-source counting.
+- **Net:** 7 fresh-source inbound links across the complex-income + DSCR clusters from 2 indexable posts. No CSS/JS/schema/nav changes. Blog title lint passes (both titles contain "Adam Styer"). Diffs are surgical and additive only. Verify links resolve on live Netlify after push.
+
 ## 2026-05-28 PM Q8 (user-initiated, Adam) — "Scenarios" rolled into Resources dropdown, sitewide (101 files)
 
 - **Adam:** "I thought we were going to have scenarios in the header, in between loan programs and resources. did we decide not to do that?" Clarified the actual prior decision (Scenarios was added to the Resources dropdown on only the 3 scenario pages; sitewide rollout was deferred). Chose (via question prompt): **Resources dropdown, sitewide** — roll the existing dropdown link out to every page that has a Resources dropdown.
