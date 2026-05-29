@@ -1,3 +1,16 @@
+## 2026-05-28 PM Q10 (user-initiated, Adam) — Surface homepage quick form + price/down-payment fields (index.html)
+
+- **Adam:** "since I put the scenario form I haven't received any new leads…the scenario form is too intimidating…we need a quick contact capture" → then "I don't see it on the homepage." Diagnosis (verified, not assumed): the homepage ALREADY had a full quick-capture form (`#contact-form`, "Tell Me About Your Loan", ~11 fields) but it was buried near the bottom (after reviews, before Calculators), and the hero's primary CTA funneled everyone to the 16-field `scenario.html` instead. Lead pipeline itself confirmed working via n8n exec data (alerts fire; prior "errors" were benign duplicate-email/bot cases). So: a *surfacing* problem, not a missing-feature problem.
+- **Changes (all `index.html`, committed `089439a`):**
+  - Hero primary CTA "Send My Scenario" → **"Get Started"**, `href="/scenario.html"` → `href="#contact-form"`.
+  - **Relocated** the `quick-contact-section` block to sit directly below the social-proof stats strip (was buried low). Moved by stable content markers (Python), not a 145-line Edit; asserted single occurrence + block integrity post-move.
+  - Added explicit **Purchase Price** + **Down Payment** inputs (`name="purchase_price"` / `name="down_payment"`) before the Loan Amount range (kept the range, per Adam). `script.js` `submitForm`/`lead-intake.js` already referenced these field names — the inputs were the missing half of a half-built feature.
+  - Added secondary **"Send a full scenario →"** link under the form (scenario form stays reachable).
+  - Added `scroll-margin-top:90px` to `#contact-form` so the anchor clears the `position:sticky` header.
+- **Backend: zero edits needed.** Verified the live n8n "Web Lead Automation" Parse node already reads `purchase_price`/`down_payment` (snake + hyphen fallbacks) and feeds both the Outlook alert and the LoanOS write. New fields work end-to-end on both lead paths (native Netlify→n8n, and `lead-intake.js`→Mailchimp/LoanOS).
+- **Verified live** (`styermortgage.com`, cache-busted): "Get Started", `purchase_price`, `down_payment`, `scroll-margin-top:90px`, "Send a full scenario" all present post-deploy.
+- **Flagged, NOT changed (await Adam):** (1) mobile sticky bottom-bar CTA (`index.html` ~1167) still "Send My Scenario" → scenario.html — recommend repointing to `#contact-form` for mobile funnel consistency. (2) n8n Outlook lead-alert shows "Type: Not specified" because the form field is `loanGoal` (camelCase) and the Parse node only checks `loan_goal`/`loan_type`/`loan-type`; goal IS captured in LoanOS via `lead-intake.js`, just missing from the alert email — one-line `loanGoal` fallback fix, safe via REST PUT.
+
 ## 2026-05-28 PM Q9 (continuation, autonomous) — Blog→cluster contextual linking, Tier 2 (2 files, 5 edits)
 
 - **Next safe step in the topical-graph build, after the Q4/Q6 hub→spoke and near-orphan work.** Two cluster-topic blog posts each described cluster spoke pages in their body copy but linked none of them. Added in-body contextual links (weighted higher than list/nav links because the surrounding sentence supplies the entity-relationship context) from those posts into the spokes — fresh inbound from indexable blog sources the spokes didn't previously receive.
