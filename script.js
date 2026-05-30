@@ -45,6 +45,10 @@ function copyToClipboard(text) {
 
 function dispatchLeadSubmitted(detail) {
   document.dispatchEvent(new CustomEvent('styer:lead-submitted', { detail }));
+  // Feed GTM/Google Ads: standard GA4 lead conversion event. Pushes to the
+  // dataLayer (GTM's public input) — does NOT touch the GTM container snippet.
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(Object.assign({ event: 'generate_lead' }, detail || {}));
 }
 
 // ========================================================================

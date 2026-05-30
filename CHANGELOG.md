@@ -9,6 +9,12 @@
 - **`style.css`:** added hero two-column layout rules (`.hero-glass-card-2col` flex row, 50/50 columns, stacks ≤768px) + hides the desktop `.hero-cutout` photo (the form takes its place). Cache-busters bumped to `?v=20260530`.
 - **Verified locally** (Playwright, desktop 1280 + mobile 390): desktop two-column clean/no clip; mobile stacks pitch-over-form, hero section expands to fit (no `overflow:hidden` clipping), sticky bar intact. `#contact-form` anchor still resolves for Deals CTA + mobile sticky bar.
 
+### Follow-up same session — `generate_lead` conversion tracking (sitewide)
+
+- **Closed the Q10 carry** ("homepage `#contact-form` lacks `generate_lead` dataLayer push"). `dispatchLeadSubmitted()` in `script.js` now also does `window.dataLayer.push({ event:'generate_lead', lead_type, form_name })` in addition to the existing internal `styer:lead-submitted` CustomEvent. Pushes to the dataLayer (GTM's public input) — **does not modify the GTM container snippet** (rule preserved). Single chokepoint: every lead path already calls this fn (quick_contact, quick_quote, prequal), so hero form, full form, prequal, and quick-quote all fire the GA4 lead event with no per-form wiring.
+- **Sitewide cache-buster bump:** normalized every page's `script.js?v=…` to `?v=20260530b` (was 100 pages on `20260417`, 1 on `20260517`, homepage on `20260530`). Required so returning visitors — especially on the **suburb Google Ads landing pages** — refetch the new JS instead of serving the cached old copy. 102 HTML files touched, buster-line-only diffs. Adam chose sitewide rollout over homepage-only because the suburb pages are the actual paid-traffic landing pages.
+- **Note for GTM side:** event is named `generate_lead` (GA4 standard). A GTM trigger on that custom event → Google Ads conversion tag still needs to exist/be confirmed in the GTM container for the conversion to register. The site side is now emitting the signal.
+
 ## 2026-05-29 — styer-content-weekly (blog editor, scheduled): JUMBO STRENGTHEN: DONE
 
 - **Standing priority complete.** `loans/jumbo.html` strengthened to match DSCR/HNW page depth.
