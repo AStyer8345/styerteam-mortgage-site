@@ -1,9 +1,16 @@
 // netlify/functions/lead-intake.js
-// Unified lead ingress — replaces subscribe-lead.js for the n8n → Workflow DevKit cutover.
+// Unified lead ingress for site forms.
 //
-// Behavior:
-//   1. Subscribes contact to Mailchimp list (no journey tagging — Workflow DevKit owns drip now)
-//   2. POSTs normalized payload (incl. UTM / source_page / referrer) to LoanOS /api/contacts/web-lead
+// Behavior (in parallel, none fatal):
+//   1. Mailchimp: list add + segmentation tag
+//   2. LoanOS:    POST /api/contacts/web-lead (contact record)
+//   3. n8n:       fire the appropriate workflow for this lead type:
+//                   - tag=ftb-guide      → /webhook/ftb-guide-email   (one-shot welcome)
+//                   - tag=ftb-dpa-guide  → /webhook/dpa-nurture       (8-email 52-day drip)
+//                   - lead_source=Pre-Approval Funnel → /webhook/pa-nurture (6-email 60-day drip)
+//                   - PA/DPA/Refi/Rate-Alert leads → /webhook/pre-approval-lead (Adam notify)
+//   4. Supabase:  best-effort drip_enrollments insert for PA + DPA leads
+//                 (n8n workflow also enrolls; resolution=ignore-duplicates avoids collision)
 //
 // Accepts BOTH payload shapes (backward-compatible with existing site forms):
 //   - legacy: { email, fname, lname, phone, tag, loan_goal, lead_source, utm_*, page_url, referrer }
@@ -13,12 +20,13 @@
 //
 // Accepts both application/json and application/x-www-form-urlencoded bodies.
 //
-// Required Netlify env vars (preserves names from subscribe-lead.js):
+// Required Netlify env vars:
 //   MAILCHIMP_API_KEY              — datacenter derived from key suffix, with server-prefix fallback
 //   MAILCHIMP_BORROWER_LIST_ID     — list ID (no hard-coded fallback)
 //   MAILCHIMP_SERVER_PREFIX        — fallback datacenter (e.g. "us1") if key has no suffix
 //   LOANOS_URL                     — base URL to LoanOS (e.g. https://app.loanos.io)
 //   LOANOS_AGENT_SECRET            — bearer token for /api/contacts/web-lead
+//   SUPABASE_SERVICE_ROLE_KEY      — for direct drip_enrollments insert (PA + DPA backup)
 
 const crypto = require("crypto");
 
@@ -32,6 +40,19 @@ const API_BASE  = DC ? `https://${DC}.api.mailchimp.com/3.0` : "";
 
 const LOANOS_URL    = process.env.LOANOS_URL || process.env.LOANOS_API_URL || "";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
+
+// n8n webhook endpoints
+const N8N_FTB_GUIDE_URL   = "https://styer.app.n8n.cloud/webhook/ftb-guide-email";
+const N8N_PA_NURTURE_URL  = "https://styer.app.n8n.cloud/webhook/pa-nurture";
+const N8N_DPA_NURTURE_URL = "https://styer.app.n8n.cloud/webhook/dpa-nurture";
+const N8N_PA_LEAD_URL     = "https://styer.app.n8n.cloud/webhook/pre-approval-lead";
+
+// Supabase direct drip_enrollments insert (backup to n8n workflow's internal enrollment)
+const SUPABASE_URL    = "https://uuqedsvjlkeszrbwzizl.supabase.co";
+const SUPABASE_KEY    = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+const PA_CAMPAIGN_ID  = "8b540726-0143-4d96-b1fe-deb65450705d";
+const DPA_CAMPAIGN_ID = "46ea4f7b-2f78-444b-b712-fed6ec52da70";
+const ORG_ID          = "18613f82-fdd9-42dd-a09e-f3c577328258";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
@@ -111,10 +132,65 @@ exports.handler = async (event) => {
     console.error("[lead-intake] LoanOS error (non-fatal):", loResult.reason?.message);
   }
 
+  // Route to the right n8n workflow based on tag / lead_source.
+  // All n8n calls are fire-and-forget — the function returns before they complete.
+  const isPAFunnel  = leadSource === "Pre-Approval Funnel";
+  const isDPAGuide  = tag === "ftb-dpa-guide" || tag === "ftb-dpa-guide-form" || leadSource === "FTB DPA Guide";
+  const isFTBGuide  = tag === "ftb-guide" || tag === "ftb-lead";
+  const isHighIntent = isPAFunnel || isDPAGuide || leadSource === "Refinance Funnel" || leadSource === "Rate Alert Funnel";
+
+  if (isFTBGuide) {
+    fireWebhook(N8N_FTB_GUIDE_URL, { email, fname: firstName }).catch(err =>
+      console.error("[lead-intake] FTB guide email webhook failed:", err.message)
+    );
+  }
+  if (isPAFunnel) {
+    fireWebhook(N8N_PA_NURTURE_URL, { email, first_name: firstName }).catch(err =>
+      console.error("[lead-intake] PA nurture webhook failed:", err.message)
+    );
+  }
+  if (isDPAGuide) {
+    fireWebhook(N8N_DPA_NURTURE_URL, { email, first_name: firstName }).catch(err =>
+      console.error("[lead-intake] DPA nurture webhook failed:", err.message)
+    );
+  }
+  if (isHighIntent) {
+    notifyAdam({
+      first_name:   firstName,
+      last_name:    lastName,
+      email,
+      phone,
+      loan_goal:    loanGoal,
+      sms_opt_in:   body.sms_opt_in === true || body.sms_opt_in === "on",
+      utm_source:   body.utm_source || "",
+      utm_medium:   body.utm_medium || "",
+      utm_campaign: body.utm_campaign || "",
+      page_url:     body.page_url || "",
+    }).catch(err =>
+      console.error("[lead-intake] Adam notify failed:", err.message)
+    );
+  }
+
+  // Direct drip enrollment — best-effort backup to n8n internal enrollment.
+  const dripCampaignId = isPAFunnel ? PA_CAMPAIGN_ID : (isDPAGuide ? DPA_CAMPAIGN_ID : null);
+  let dripStatus = "skipped";
+  if (dripCampaignId) {
+    const dripResult = await Promise.allSettled([
+      enrollInDrip({ email, campaignId: dripCampaignId }),
+    ]);
+    if (dripResult[0].status === "rejected") {
+      console.error("[lead-intake] Drip enrollment failed:", dripResult[0].reason?.message);
+      dripStatus = "failed";
+    } else {
+      dripStatus = "ok";
+    }
+  }
+
   return respond(200, {
     success:   true,
     mailchimp: mcResult.status === "fulfilled" ? "ok" : "failed",
     loanos:    loResult.status === "fulfilled" ? "ok" : "failed",
+    drip:      dripStatus,
   });
 };
 
@@ -210,6 +286,83 @@ async function createLoanosContact(p) {
     const err = await res.json().catch(() => ({}));
     throw new Error(`LoanOS API ${res.status}: ${err.error || "unknown"}`);
   }
+}
+
+// ── n8n routing ───────────────────────────────────────────────────────────────
+
+async function fireWebhook(url, body) {
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    throw new Error(`${url} returned ${res.status}`);
+  }
+}
+
+async function notifyAdam(payload) {
+  const res = await fetch(N8N_PA_LEAD_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    throw new Error(`Adam notify webhook returned ${res.status}`);
+  }
+}
+
+// ── Drip Enrollment ───────────────────────────────────────────────────────────
+
+async function enrollInDrip({ email, campaignId }) {
+  if (!SUPABASE_KEY) {
+    console.warn("[lead-intake] SUPABASE_SERVICE_ROLE_KEY not set — skipping drip enrollment");
+    return;
+  }
+
+  // Look up contact_id by email scoped to org
+  const contactRes = await fetch(
+    `${SUPABASE_URL}/rest/v1/contacts?organization_id=eq.${ORG_ID}&email=eq.${encodeURIComponent(email.toLowerCase())}&select=id&limit=1`,
+    {
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+      },
+    }
+  );
+  if (!contactRes.ok) {
+    throw new Error(`Contact lookup failed: ${contactRes.status}`);
+  }
+  const contacts = await contactRes.json();
+  if (!contacts.length) {
+    console.warn(`[lead-intake] No contact found for ${email} — skipping drip`);
+    return;
+  }
+  const contactId = contacts[0].id;
+
+  const enrollRes = await fetch(`${SUPABASE_URL}/rest/v1/drip_enrollments`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_KEY,
+      Authorization: `Bearer ${SUPABASE_KEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal,resolution=ignore-duplicates",
+    },
+    body: JSON.stringify({
+      org_id:       ORG_ID,
+      campaign_id:  campaignId,
+      contact_id:   contactId,
+      status:       "active",
+      enrolled_by:  "auto",
+      current_step: 0,
+    }),
+  });
+
+  if (!enrollRes.ok) {
+    const err = await enrollRes.json().catch(() => ({}));
+    throw new Error(`Drip enrollment failed: ${enrollRes.status} ${err.message || ""}`);
+  }
+  console.log(`[lead-intake] Drip enrolled: ${email} → ${campaignId}`);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
