@@ -43,12 +43,35 @@ function copyToClipboard(text) {
   });
 }
 
-function dispatchLeadSubmitted(detail) {
+function dispatchLeadSubmitted(detail, options) {
   document.dispatchEvent(new CustomEvent('styer:lead-submitted', { detail }));
   // Feed GTM/Google Ads: standard GA4 lead conversion event. Pushes to the
   // dataLayer (GTM's public input) — does NOT touch the GTM container snippet.
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(Object.assign({ event: 'generate_lead' }, detail || {}));
+  const eventPayload = Object.assign({ event: 'generate_lead' }, detail || {});
+
+  if (!options || options.waitForTags !== true) {
+    window.dataLayer.push(eventPayload);
+    return Promise.resolve();
+  }
+
+  const timeoutMs = Number.isFinite(options.timeoutMs) ? options.timeoutMs : 1200;
+
+  return new Promise((resolve) => {
+    let settled = false;
+    const done = () => {
+      if (settled) return;
+      settled = true;
+      resolve();
+    };
+
+    window.dataLayer.push(Object.assign(eventPayload, {
+      eventCallback: done,
+      eventTimeout: timeoutMs,
+    }));
+
+    setTimeout(done, timeoutMs + 250);
+  });
 }
 
 // ========================================================================
@@ -527,6 +550,11 @@ function initHeroQuickForm() {
     const loanGoal = formData.get('loanGoal') || '';
     const params = new URLSearchParams(window.location.search);
 
+    const leadTracking = dispatchLeadSubmitted(
+      { lead_type: 'quick_quote', form_name: form.getAttribute('name') || 'hero-quick-form' },
+      { waitForTags: true, timeoutMs: 1200 }
+    );
+
     await Promise.allSettled([
       fetch('/', {
         method: 'POST',
@@ -559,9 +587,9 @@ function initHeroQuickForm() {
           utm_campaign: params.get('utm_campaign') || '',
         }),
       }).catch((err) => console.warn('[quick-quote] lead-intake failed:', err.message)),
+      leadTracking,
     ]);
 
-    dispatchLeadSubmitted({ lead_type: 'quick_quote', form_name: form.getAttribute('name') || 'hero-quick-form' });
     var tyParams = new URLSearchParams({ type: 'quick-quote' });
     if (email) tyParams.set('email', email);
     if (fname || lname) tyParams.set('name', [fname, lname].filter(Boolean).join(' '));
