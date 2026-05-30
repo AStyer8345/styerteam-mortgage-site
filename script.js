@@ -429,7 +429,11 @@ async function submitForm(form) {
 }
 
 function initFormValidation() {
-  const form = document.getElementById('quick-contact-form');
+  // Bind every quick-contact form on the page (hero compact form + full form).
+  document.querySelectorAll('.js-quick-contact').forEach(bindQuickContactForm);
+}
+
+function bindQuickContactForm(form) {
   if (!form) return;
 
   // Skip forms that submit to external services (e.g., Mailchimp)

@@ -1,3 +1,14 @@
+## 2026-05-30 — Homepage restructure (user-initiated, Adam): hero lead form + section reorder
+
+- **Adam's ask:** "put the form in the hero, then loans built for every scenario below, then deals banks said no to below that." Approved two design choices via Q&A: (1) hero gets a **compact 4-field form** (Name, Phone, Email, Loan Goal) while the full ~13-field form stays lower; (2) full form placed **immediately after "Deals Banks Said No To"** (intent peak) for best conversion.
+- **Hero → two-column glass card** (`index.html`): left column keeps the rating chip, h1 ("The loans your bank said no to. The pricing your bank can't match."), subtitle, "Book 15-Min Call" + call link, NMLS line. Right column holds a new compact lead form (`id="hero-lead-form"`, `name="hero-quick-lead"`, Netlify Forms) with Name/Phone/Email/Loan Goal 2×2 grid + TCPA consent + "Get Started" submit + trust line. Dropped the redundant "Get Started" text button from the left column (the form IS the CTA).
+- **New Netlify form `hero-quick-lead`** — auto-detected at build; `class="js-quick-contact"` wires it into the existing dual pipeline (native POST → n8n Web Lead Automation + lead-intake function → Mailchimp/LoanOS). No backend changes needed.
+- **`script.js`:** refactored `initFormValidation()` to bind **every** `.js-quick-contact` form on the page via new `bindQuickContactForm(form)` (was hardcoded to `#quick-contact-form`). Full form tagged `js-quick-contact` too. `submitForm`/`showQuickContactSuccess` already generic — reused as-is; success/dataLayer fire per form name.
+- **Section reorder:** Hero → **Loans Built for Every Situation** → **Deals Banks Said No To** → full quick-contact form (was: full form → Deals → Loans). Done via marker-anchored block move.
+- **Deals CTA repointed:** `/scenario.html` "Send Me Your Scenario" → `#contact-form` "Tell Me About Your File" — lands on the relocated full form just below.
+- **`style.css`:** added hero two-column layout rules (`.hero-glass-card-2col` flex row, 50/50 columns, stacks ≤768px) + hides the desktop `.hero-cutout` photo (the form takes its place). Cache-busters bumped to `?v=20260530`.
+- **Verified locally** (Playwright, desktop 1280 + mobile 390): desktop two-column clean/no clip; mobile stacks pitch-over-form, hero section expands to fit (no `overflow:hidden` clipping), sticky bar intact. `#contact-form` anchor still resolves for Deals CTA + mobile sticky bar.
+
 ## 2026-05-29 — styer-content-weekly (blog editor, scheduled): JUMBO STRENGTHEN: DONE
 
 - **Standing priority complete.** `loans/jumbo.html` strengthened to match DSCR/HNW page depth.
