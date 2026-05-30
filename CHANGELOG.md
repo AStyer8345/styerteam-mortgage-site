@@ -1932,3 +1932,11 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - **New finding:** homepage has 0 direct CTAs to `/get-preapproved` or `/refinance-quote` post-`71b8590` hero cleanup. Routes go direct to loan-app URL + tel:. Flagged for Adam.
 - **Sitemap + robots 200 ✅. Conversion tracking 10/10 ✅.**
 - **NotebookLM script missing — 47th consecutive dead check.** PSI quota drain — 14th consecutive.
+
+## 2026-05-30 (styer-blog-writer-weekly — FIRST RUN, supervised)
+
+- **Net-new post PUBLISHED:** "Physician Mortgage Loans in Texas: How Doctors Qualify in 2026" (`blog/2026-05-30-physician-mortgage-texas.html`, 1,387 words, Tier B). Commit `4876d86`. The new writer task's first live output — sibling to the Friday editor; this is the only task that creates URLs.
+- **Grounded in approved sources only:** Fannie Mae Selling Guide B3-3.3-03 (employment offers/contracts), B3-6-05 (deferred student-loan DTI), B3-3.1-01 (income continuance), CFPB ATR/QM 12 CFR 1026.43. No rate quotes. 4 inline citations.
+- **All 7 compliance gates PASS.** GATE 3 required a STRIP: removed "24 hours / same day" performance-time claims from the dual-CTA + body before publish.
+- **Registered in 4 surfaces:** blog.html noscript + CollectionPage schema, blog/manifest.json, sitemap.xml. Wired into complex-income cluster with 5 in-body links (jumbo x2, self-employed, 1099-only, non-QM).
+- **To undo:** `git revert 4876d86 && git push`. Run brief: `run-logs/content-2026-05-30.md`.

@@ -18,7 +18,7 @@ Source: `/Users/adamstyer/Documents/SEO-AUDIT-2026-05.md`. Blog-post angles that
 support the planned landing pages (the pages themselves are a separate effort).
 
 - VA loan basics for Austin buyers — eligibility, funding fee, $0-down reality (supports future VA landing page)
-- Physician mortgage in Texas — how doctor loans treat student debt + deferred income (supports future physician page)
+- ~~Physician mortgage in Texas — how doctor loans treat student debt + deferred income~~ — CONSUMED 2026-05-30
 - Self-employed underwriting deep-dive — add-backs, 2-year averaging, what underwriters actually want
 
 ## Tier C — GSC page-1 / 0-click recovery
@@ -30,4 +30,4 @@ with zero clicks → a companion blog post that targets the question intent.
 ## Consumed topics (append-only log)
 Format: `YYYY-MM-DD | <slug> | <tier> | <commit-sha>`
 
-- (none yet)
+- 2026-05-30 | 2026-05-30-physician-mortgage-texas | B | 4876d86
