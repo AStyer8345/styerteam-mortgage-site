@@ -407,6 +407,22 @@ function showQuickContactSuccess(form) {
   }, 2600);
 }
 
+function hasSuccessfulCapture(results) {
+  return results.some((result) => result.status === 'fulfilled' && result.value && result.value.ok);
+}
+
+function showQuickContactError(form) {
+  let errorMessage = form.querySelector('.quick-contact-submit-error');
+  if (!errorMessage) {
+    errorMessage = document.createElement('div');
+    errorMessage.className = 'alert alert-error quick-contact-submit-error';
+    errorMessage.setAttribute('role', 'alert');
+    errorMessage.style.cssText = 'background:#FEE2E2;color:#991B1B;padding:1rem;border-radius:.5rem;margin-bottom:1rem;border-left:4px solid #EF4444;';
+    form.insertBefore(errorMessage, form.firstChild);
+  }
+  errorMessage.textContent = 'Something went wrong. Please try again or call Adam at (512) 956-6010.';
+}
+
 async function submitForm(form) {
   const formData = new FormData(form);
   const fullName = (formData.get('name') || '').trim();
@@ -418,7 +434,7 @@ async function submitForm(form) {
   const loanGoal = formData.get('loanGoal') || '';
   const params = new URLSearchParams(window.location.search);
 
-  await Promise.allSettled([
+  const captureResults = await Promise.allSettled([
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -449,8 +465,13 @@ async function submitForm(form) {
         utm_medium: params.get('utm_medium') || '',
         utm_campaign: params.get('utm_campaign') || '',
       }),
-    }).catch((err) => console.warn('[quick-contact] lead-intake failed:', err.message)),
+    }),
   ]);
+
+  if (!hasSuccessfulCapture(captureResults)) {
+    showQuickContactError(form);
+    return;
+  }
 
   showQuickContactSuccess(form);
 }
@@ -508,7 +529,7 @@ function initHeroQuickForm() {
 
   // Fallback: any data-netlify form without hero-quick-form id (suburb pages like buda, westlake)
   if (!form) {
-    form = document.querySelector('form[data-netlify="true"]');
+    form = document.querySelector('form[data-netlify="true"]:not(.js-quick-contact)');
     if (!form) return;
     // Create minimal wrapper/success elements dynamically
     wrap = form.parentElement;
@@ -555,7 +576,7 @@ function initHeroQuickForm() {
       { waitForTags: true, timeoutMs: 1200 }
     );
 
-    await Promise.allSettled([
+    const quoteCaptureResults = await Promise.allSettled([
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -586,14 +607,26 @@ function initHeroQuickForm() {
           utm_medium: params.get('utm_medium') || '',
           utm_campaign: params.get('utm_campaign') || '',
         }),
-      }).catch((err) => console.warn('[quick-quote] lead-intake failed:', err.message)),
-      leadTracking,
+      }),
     ]);
 
+    if (!hasSuccessfulCapture(quoteCaptureResults)) {
+      showQuickContactError(form);
+      return;
+    }
+
+    await leadTracking;
+
     var tyParams = new URLSearchParams({ type: 'quick-quote' });
-    if (email) tyParams.set('email', email);
-    if (fname || lname) tyParams.set('name', [fname, lname].filter(Boolean).join(' '));
-    if (phone) tyParams.set('phone', phone);
+    try {
+      sessionStorage.setItem('styer:quick-quote-contact', JSON.stringify({
+        email: email,
+        name: [fname, lname].filter(Boolean).join(' '),
+        phone: phone,
+      }));
+    } catch (err) {
+      console.warn('[quick-quote] session storage unavailable:', err.message);
+    }
     window.location.href = '/thank-you?' + tyParams.toString();
   });
 }

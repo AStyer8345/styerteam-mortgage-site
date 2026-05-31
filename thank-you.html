@@ -22,6 +22,23 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/style.css?v=20260518">
 
+  <script>
+    // strip legacy contact parameters before analytics tags initialize
+    (function () {
+      var url = new URL(window.location.href);
+      var removed = false;
+      ['email', 'name', 'phone'].forEach(function (key) {
+        if (url.searchParams.has(key)) {
+          url.searchParams.delete(key);
+          removed = true;
+        }
+      });
+      if (removed) {
+        history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+      }
+    })();
+  </script>
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -29,8 +46,7 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
 
-  <!-- Google Ads Global Site Tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18028490942"></script>
+  <!-- Queue Google Ads configuration for the library loaded through GTM -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -604,7 +620,7 @@
     </div>
   </footer>
 
-  <script src="/script.js?v=20260530b" defer></script>
+  <script src="/script.js?v=20260531" defer></script>
   <script src="/js/scroll-effects.js?v=20260429" defer></script>
   <script src="/analytics.js?v=20260417" defer></script>
   <script>
@@ -659,15 +675,19 @@
         var altPaths = document.getElementById('ty-alt-paths');
         if (formHero) formHero.hidden = false;
         if (altPaths) altPaths.hidden = false;
-        var emailParam = new URLSearchParams(window.location.search).get('email') || '';
-        var nameParam = new URLSearchParams(window.location.search).get('name') || '';
-        var phoneParam = new URLSearchParams(window.location.search).get('phone') || '';
+        var quickQuoteContact = {};
+        try {
+          quickQuoteContact = JSON.parse(sessionStorage.getItem('styer:quick-quote-contact') || '{}');
+          sessionStorage.removeItem('styer:quick-quote-contact');
+        } catch (err) {
+          quickQuoteContact = {};
+        }
         var fuEmail = document.getElementById('ty-fu-email');
         var fuName = document.getElementById('ty-fu-name');
         var fuPhone = document.getElementById('ty-fu-phone');
-        if (fuEmail) fuEmail.value = emailParam;
-        if (fuName) fuName.value = nameParam;
-        if (fuPhone) fuPhone.value = phoneParam;
+        if (fuEmail) fuEmail.value = quickQuoteContact.email || '';
+        if (fuName) fuName.value = quickQuoteContact.name || '';
+        if (fuPhone) fuPhone.value = quickQuoteContact.phone || '';
 
         // Show realtor name field only when "Yes" is selected
         var realtorRadios = document.querySelectorAll('input[name="has_realtor"]');

@@ -1951,3 +1951,11 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - **All 7 compliance gates PASS.** GATE 3 required a STRIP: removed "24 hours / same day" performance-time claims from the dual-CTA + body before publish.
 - **Registered in 4 surfaces:** blog.html noscript + CollectionPage schema, blog/manifest.json, sitemap.xml. Wired into complex-income cluster with 5 in-body links (jumbo x2, self-employed, 1099-only, non-QM).
 - **To undo:** `git revert 4876d86 && git push`. Run brief: `run-logs/content-2026-05-30.md`.
+
+## 2026-05-31 (interactive — lead-flow safety release)
+
+- Removed email, name, and phone from quick-quote thank-you URLs. Follow-up prefill now uses tab-scoped `sessionStorage`; legacy contact query parameters are stripped before analytics initializes.
+- Added capture-response checks for shared quick-contact and legacy quote forms. Visitors now see an error and retry path if neither Netlify Forms nor `lead-intake` accepts the submission.
+- Excluded modern `.js-quick-contact` forms from the legacy Netlify fallback to prevent the homepage hero form from binding twice and redirecting unexpectedly.
+- Removed the direct Google Ads library request from `thank-you.html`; GTM remains the single loader. Bumped `script.js` cache version to `20260531` across 102 HTML files.
+- Added `tests/lead-flow-regression.test.js`. Verified with `node --check script.js`, `node --test tests/lead-flow-regression.test.js`, `git diff --check`, and local browser smoke tests for both homepage and legacy quote paths.
