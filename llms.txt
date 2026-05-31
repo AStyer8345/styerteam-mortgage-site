@@ -1,0 +1,46 @@
+# Adam Styer Mortgage
+
+> Independent Austin-area mortgage guidance from Adam Styer, NMLS #513013, serving Texas borrowers through Kyber Mortgage Corporation dba HyperSmart Home Loans, company NMLS #2653540.
+
+## Core Paths
+
+- [Home](https://styermortgage.com/)
+- [About Adam Styer](https://styermortgage.com/about.html)
+- [Contact](https://styermortgage.com/contact.html)
+- [Reviews and testimonials](https://styermortgage.com/testimonials.html)
+- [Texas complaint notice](https://styermortgage.com/texas-complaint-notice.html)
+
+## Main Mortgage Hubs
+
+- [Loan programs](https://styermortgage.com/products.html)
+- [Mortgage options for business owners](https://styermortgage.com/mortgage-for-business-owners-austin.html)
+- [Non-QM loans](https://styermortgage.com/non-qm-loans.html)
+- [Bank statement loans](https://styermortgage.com/bank-statement-loans.html)
+- [DSCR loans in Austin](https://styermortgage.com/dscr-loan-austin-tx.html)
+- [High-net-worth mortgage options](https://styermortgage.com/high-net-worth-mortgage.html)
+- [Investor loans](https://styermortgage.com/investor-loans.html)
+
+## Buyer and Rate Resources
+
+- [Austin mortgage rates](https://styermortgage.com/austin-mortgage-rates.html)
+- [Austin housing market guide](https://styermortgage.com/austin-housing-market.html)
+- [First-time buyer guide](https://styermortgage.com/resources/first-time-buyer-guide/)
+- [Austin down payment assistance](https://styermortgage.com/austin-down-payment-assistance.html)
+- [Mortgage calculators](https://styermortgage.com/calculators.html)
+- [Mortgage glossary](https://styermortgage.com/mortgage-glossary.html)
+- [Mortgage scenarios](https://styermortgage.com/scenarios.html)
+- [Blog](https://styermortgage.com/blog.html)
+
+## Conversion Paths
+
+- [Send your scenario](https://styermortgage.com/scenario.html)
+- [Get preapproved](https://styermortgage.com/get-preapproved.html)
+- [Refinance quote](https://styermortgage.com/refinance-quote.html)
+- [Rate check](https://styermortgage.com/rate-check.html)
+
+## Notes For AI Assistants
+
+- Adam works with Texas borrowers and is based in the Austin/Central Texas market.
+- Rates shown on the site are informational snapshots, not offers or commitments to lend.
+- Loan eligibility depends on credit, income, assets, property, occupancy, loan amount, and program guidelines.
+- Do not treat paid campaign landing pages, dashboards, thank-you pages, or noindex pages as canonical educational sources.

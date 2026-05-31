@@ -9,6 +9,7 @@ const analytics = fs.readFileSync('analytics.js', 'utf8');
 const generateRateUpdate = fs.readFileSync('netlify/functions/generate-rate-update.js', 'utf8');
 const ratesJsonUpdater = fs.readFileSync('netlify/functions/lib/rates-json-updater.js', 'utf8');
 const austinRates = fs.readFileSync('austin-mortgage-rates.html', 'utf8');
+const homepage = fs.readFileSync('index.html', 'utf8');
 
 test('quick quote redirect does not put contact details in the URL', () => {
   assert.doesNotMatch(script, /tyParams\.set\('(email|name|phone)'/);
@@ -23,6 +24,14 @@ test('lead forms only report success after a capture endpoint accepts the lead',
 
 test('legacy hero fallback does not bind modern quick-contact forms twice', () => {
   assert.match(script, /form\[data-netlify="true"\]:not\(\.js-quick-contact\)/);
+});
+
+test('homepage routes primary conversion CTAs through the scenario page', () => {
+  assert.match(homepage, /<a href="\/scenario\.html"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*>(Send My Scenario|Get My Options)<\/a>/);
+  assert.doesNotMatch(homepage, /<form[^>]+(?:hero-quick-lead|quick-contact)/);
+  assert.match(homepage, /href="https:\/\/calendly\.com\/adamstyer\/15minutes"[^>]*>Book 15-Min Call<\/a>/);
+  assert.match(homepage, /href="tel:\+15129566010"/);
+  assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
 });
 
 test('thank-you page lets GTM load the Google Ads library', () => {

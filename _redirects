@@ -41,7 +41,8 @@
 
 # Niche cluster (SEO pivot 2026-05-25 — self-employed + HNW non-QM)
 /bank-statement-loans  /bank-statement-loans.html  301!
-/bank-statement-loans-austin-tx  /bank-statement-loans-austin-tx.html  301!
+/bank-statement-loans-austin-tx  /bank-statement-loans.html  301!
+/bank-statement-loans-austin-tx.html  /bank-statement-loans.html  301!
 /dscr-loans-texas  /dscr-loans-texas.html  301!
 /dscr-loans-dripping-springs  /dscr-loans-dripping-springs.html  301!
 /dscr-loans-fredericksburg-tx  /dscr-loans-fredericksburg-tx.html  301!
@@ -51,7 +52,8 @@
 /self-employed-mortgage-austin  /self-employed-mortgage-austin.html  301!
 /self-employed-mortgage-round-rock-tx  /self-employed-mortgage-round-rock-tx.html  301!
 /non-qm-loans  /non-qm-loans.html  301!
-/non-qm-loans-self-employed-austin  /non-qm-loans-self-employed-austin.html  301!
+/non-qm-loans-self-employed-austin  /non-qm-loans.html  301!
+/non-qm-loans-self-employed-austin.html  /non-qm-loans.html  301!
 /k1-income-mortgage-austin  /k1-income-mortgage-austin.html  301!
 /mortgage-for-business-owners-austin  /mortgage-for-business-owners-austin.html  301!
 /investor-loans  /investor-loans.html  301!
@@ -81,10 +83,13 @@
 # Additional public root pages (added 2026-05-25 — were duplicate-serving with no rule at all)
 /austin-area-mortgage-lender  /austin-area-mortgage-lender.html  301!
 /austin-down-payment-assistance  /austin-down-payment-assistance.html  301!
-/austin-housing-market-2025  /austin-housing-market-2025.html  301!
+/austin-housing-market  /austin-housing-market.html  301!
+/austin-housing-market-2025  /austin-housing-market.html  301!
+/austin-housing-market-2025.html  /austin-housing-market.html  301!
 /austin-mortgage-rates  /austin-mortgage-rates.html  301!
 /closing-costs-texas  /closing-costs-texas.html  301!
-/first-time-buyer-guide  /first-time-buyer-guide.html  301!
+/first-time-buyer-guide  /resources/first-time-buyer-guide/  301!
+/first-time-buyer-guide.html  /resources/first-time-buyer-guide/  301!
 /ftb-dpa-guide  /ftb-dpa-guide.html  301!
 /get-preapproved  /get-preapproved.html  301!
 /how-much-house-can-i-afford-austin  /how-much-house-can-i-afford-austin.html  301!
