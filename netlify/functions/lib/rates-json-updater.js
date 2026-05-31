@@ -3,7 +3,7 @@
 // PMMS national averages + previous week's rates.json (for deltas), and returns
 // a fresh rates.json body ready to commit to the repo root.
 //
-// Called from generate-rate-update.js after the dated rate page is generated.
+// Called from generate-rate-update.js before the dated rate page is published.
 
 const LIVE_RATES_URL = "https://styermortgage.com/rates.json";
 const PMMS_CSV_URL   = "https://www.freddiemac.com/pmms/docs/PMMS_history.csv";
@@ -128,7 +128,8 @@ async function fetchFreddieMac() {
 // ====================================================================
 async function buildRatesJson(ratesString, { today } = {}) {
   const now = today || new Date().toISOString().split("T")[0];
-  const parsed = parseRates(ratesString);
+  const { parsedByKey } = validateRequiredRates(ratesString);
+
   const previous = await fetchPreviousRates();
   const freddie = await fetchFreddieMac();
 
@@ -138,22 +139,18 @@ async function buildRatesJson(ratesString, { today } = {}) {
     for (const p of previous.products) prevByKey[p.key] = p;
   }
 
-  // Assemble new products in canonical order. For each key, prefer newly-pasted
-  // data; fall back to previous rates.json so products Adam didn't update this
-  // week still render.
-  const parsedByKey = {};
-  for (const p of parsed) parsedByKey[p.key] = p;
-
+  // Assemble new products in canonical order. Every Adam rate must come from
+  // the current pasted input, never from a previous rates.json snapshot.
   const products = PRODUCT_ORDER.map(key => {
     const mapped = Object.values(PRODUCT_MAP).find(m => m.key === key);
     const label = mapped ? mapped.label : key;
     const prev = prevByKey[key] || {};
     const fresh = parsedByKey[key];
 
-    const adam_rate = fresh ? fresh.adam_rate : (prev.adam_rate ?? null);
-    const adam_change = (fresh && prev.adam_rate != null)
+    const adam_rate = fresh.adam_rate;
+    const adam_change = (prev.adam_rate != null)
       ? Math.round((fresh.adam_rate - prev.adam_rate) * 100) / 100
-      : (prev.adam_change ?? null);
+      : null;
 
     // National average — only 30yr_fixed and 15yr_fixed have PMMS data.
     let national_avg    = prev.national_avg    ?? null;
@@ -179,4 +176,24 @@ async function buildRatesJson(ratesString, { today } = {}) {
   return JSON.stringify(body, null, 2) + "\n";
 }
 
-module.exports = { buildRatesJson, parseRates, fetchFreddieMac, PRODUCT_MAP, PRODUCT_ORDER };
+function validateRequiredRates(ratesString) {
+  const parsed = parseRates(ratesString);
+  const parsedByKey = {};
+  for (const p of parsed) parsedByKey[p.key] = p;
+
+  const missingKeys = PRODUCT_ORDER.filter(key => !parsedByKey[key]);
+  if (missingKeys.length) {
+    const labels = missingKeys.map(key => {
+      const mapped = Object.values(PRODUCT_MAP).find(m => m.key === key);
+      return mapped ? mapped.label : key;
+    });
+    throw Object.assign(
+      new Error(`Rates input is missing required products: ${labels.join(", ")}`),
+      { statusCode: 400 }
+    );
+  }
+
+  return { parsed, parsedByKey };
+}
+
+module.exports = { buildRatesJson, parseRates, validateRequiredRates, fetchFreddieMac, PRODUCT_MAP, PRODUCT_ORDER };

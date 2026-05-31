@@ -64,7 +64,7 @@
     },
     "url": "https://styermortgage.com/austin-mortgage-rates",
     "datePublished": "2026-03-25",
-    "dateModified": "2026-03-25",
+    "dateModified": "2026-05-31",
     "speakable": {
       "@type": "SpeakableSpecification",
       "cssSelector": [".blog-post-intro", "h1"]
@@ -234,7 +234,7 @@
     <section class="rate-widget-section" style="padding:3rem 0;background:#0f172a;color:#f8fafc;">
       <div class="container">
         <div class="rate-widget-header" style="text-align:center;margin-bottom:1.5rem;">
-          <h2 style="color:#f8fafc;margin:0 0 0.5rem 0;font-size:1.75rem;">Today's Austin Mortgage Rates</h2>
+          <h2 style="color:#f8fafc;margin:0 0 0.5rem 0;font-size:1.75rem;">Austin Mortgage Rate Snapshot</h2>
           <p id="rate-widget-updated" style="color:#94a3b8;font-size:0.9rem;margin:0;">Loading latest rates…</p>
         </div>
         <div class="rate-widget-table-wrap" style="max-width:900px;margin:0 auto;overflow-x:auto;">
@@ -244,7 +244,7 @@
                 <th style="padding:0.85rem 1rem;text-align:left;color:#f8fafc;font-weight:600;">Product</th>
                 <th style="padding:0.85rem 1rem;text-align:right;color:#f8fafc;font-weight:600;">National Avg</th>
                 <th style="padding:0.85rem 1rem;text-align:right;color:#f8fafc;font-weight:600;">Adam's Rate</th>
-                <th style="padding:0.85rem 1rem;text-align:right;color:#f8fafc;font-weight:600;">Week Δ</th>
+                <th style="padding:0.85rem 1rem;text-align:right;color:#f8fafc;font-weight:600;">Rate Δ</th>
               </tr>
             </thead>
             <tbody id="rate-widget-tbody">
@@ -278,17 +278,32 @@
           if (isNaN(d)) return iso;
           return d.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
         };
+        var daysSince = function(iso){
+          if (!iso) return Infinity;
+          var d = new Date(iso + 'T12:00:00');
+          if (isNaN(d)) return Infinity;
+          return Math.floor((Date.now() - d.getTime()) / 86400000);
+        };
+        var quotePrompt = '<a href="tel:+15129566010" style="color:#4ade80;">call/text (512) 956-6010</a> for a current quote';
         fetch('/rates.json?v=' + Date.now())
           .then(function(r){ return r.json(); })
           .then(function(data){
             var upd = document.getElementById('rate-widget-updated');
-            if (upd) upd.textContent = 'Last updated ' + fmtDate(data.last_updated) + ' · Week of ' + fmtDate(data.week_of);
+            var stale = daysSince(data.last_updated) > 7;
+            if (upd) {
+              if (stale) {
+                upd.innerHTML = 'Rate snapshot from ' + fmtDate(data.last_updated) + ' · ' + quotePrompt + '.';
+                upd.style.color = '#facc15';
+              } else {
+                upd.textContent = 'Last updated ' + fmtDate(data.last_updated) + ' · Week of ' + fmtDate(data.week_of);
+              }
+            }
             var tbody = document.getElementById('rate-widget-tbody');
             if (!tbody) return;
             var rows = data.products.map(function(p){
               var natAvg = (p.national_avg == null) ? '<span style="color:#94a3b8;">—</span>' : pctRate(p.national_avg);
-              var adamRate = pctRate(p.adam_rate);
-              var d = delta(p.adam_change != null ? p.adam_change : p.national_change);
+              var adamRate = stale ? '<span style="color:#facc15;">Call for quote</span>' : pctRate(p.adam_rate);
+              var d = stale ? '<span style="color:#94a3b8;">—</span>' : delta(p.adam_change != null ? p.adam_change : p.national_change);
               return '<tr style="border-top:1px solid #334155;">' +
                 '<td style="padding:0.75rem 1rem;color:#f8fafc;font-weight:500;">' + p.label + '</td>' +
                 '<td style="padding:0.75rem 1rem;text-align:right;color:#cbd5e1;">' + natAvg + '</td>' +
@@ -510,7 +525,7 @@
         <div style="max-width:600px; margin:0 auto; background:var(--color-light-gray); border-radius:var(--radius-2xl); padding:var(--spacing-3xl); border-left:4px solid var(--color-gold);">
           <div style="font-size:2rem; margin-bottom:var(--spacing-md);">📬</div>
           <h2 style="font-family:var(--font-display);font-size:var(--font-size-3xl);color:var(--color-navy);margin-bottom:var(--spacing-md);">Never Miss a Rate Move</h2>
-          <p style="font-size:var(--font-size-base);color:var(--color-gray);line-height:var(--line-height-relaxed);margin-bottom:var(--spacing-xl);">Get Austin mortgage rates delivered every Friday — free. Join Austin homebuyers watching the market so you know exactly when to lock.</p>
+          <p style="font-size:var(--font-size-base);color:var(--color-gray);line-height:var(--line-height-relaxed);margin-bottom:var(--spacing-xl);">Get Austin mortgage rate context by email — free. Join Austin homebuyers watching the market so you know when it may be time to lock.</p>
           <a href="/rate-alert.html" class="btn btn-primary">Join Austin Rate Watch &rarr;</a>
           <p style="font-size:var(--font-size-xs);color:var(--color-gray);margin-top:var(--spacing-md);">Free · No spam · Unsubscribe anytime · NMLS #513013</p>
         </div>

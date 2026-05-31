@@ -1,9 +1,10 @@
 const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
+const crypto = require("crypto");
 const { buildRatePrompt } = require("./lib/rate-prompt-builder");
 const { buildRatePage } = require("./lib/rate-page-builder");
 const { createGitHubFile, createAndSendCampaign, waitForPageLive, forceAbsoluteLinks, stripNestedHtmlDocument, formatDateForTitle, wrapEmailHtml, fetchVoiceGuide } = require("./lib/shared");
-const { buildRatesJson } = require("./lib/rates-json-updater");
+const { buildRatesJson, validateRequiredRates } = require("./lib/rates-json-updater");
 
 // ====================================================================
 // HTTP HANDLER — thin wrapper around generateRateUpdate()
@@ -12,11 +13,13 @@ const { buildRatesJson } = require("./lib/rates-json-updater");
 exports.handler = async (event) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Content-Type": "application/json",
   };
   if (event.httpMethod === "OPTIONS") return { statusCode: 204, headers, body: "" };
   if (event.httpMethod !== "POST") return { statusCode: 405, headers, body: JSON.stringify({ error: "Method not allowed" }) };
+  const authError = requireDispatchAuth(event);
+  if (authError) return { statusCode: authError.statusCode, headers, body: JSON.stringify({ error: authError.message }) };
   try {
     const formData = JSON.parse(event.body);
     const result = await generateRateUpdate(formData);
@@ -45,6 +48,11 @@ async function generateRateUpdate(formData) {
     const today = new Date().toISOString().split("T")[0];
     const filename = `${today}.html`;
     const pageUrl = `https://styermortgage.com/rates/${filename}`;
+    let ratesJsonBody = null;
+
+    if (!isPreview) {
+      validateRequiredRates(rates);
+    }
 
     // ----------------------------------------------------------------
     // STEP 1: Generate content via Claude API
@@ -102,17 +110,13 @@ async function generateRateUpdate(formData) {
     });
 
     if (!isPreview) {
+      ratesJsonBody = await buildRatesJson(rates, { today });
+
       await createGitHubFile(`rates/${filename}`, fullPageHtml, `Add rate update page: ${filename}`);
 
-      // Also refresh /rates.json at the repo root — powers the rate widget on
-      // /austin-mortgage-rates.html. Soft-fail: a JSON write error should not
-      // block the email send or surface to the user.
-      try {
-        const ratesJsonBody = await buildRatesJson(rates, { today });
-        await createGitHubFile("rates.json", ratesJsonBody, `Update rates.json for ${today}`);
-      } catch (jsonErr) {
-        console.error("[rate-update] rates.json refresh failed (non-fatal):", jsonErr.message);
-      }
+      // Also refresh /rates.json at the repo root. If this fails, stop before
+      // sending rate emails so the public widget cannot lag behind a campaign.
+      await createGitHubFile("rates.json", ratesJsonBody, `Update rates.json for ${today}`);
 
       // Wait for Netlify to deploy the page before sending emails
       const isLive = await waitForPageLive(pageUrl);
@@ -196,6 +200,31 @@ async function generateRateUpdate(formData) {
 }
 exports.generateRateUpdate = generateRateUpdate;
 
+function requireDispatchAuth(event) {
+  const secret = process.env.DISPATCH_SECRET;
+  if (!secret) {
+    console.error("DISPATCH_SECRET env var is not set");
+    return { statusCode: 500, message: "Server misconfiguration: DISPATCH_SECRET not set" };
+  }
+
+  const authHeader = event.headers?.authorization || event.headers?.Authorization || "";
+  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : null;
+
+  if (!token || !safeTokenEquals(token, secret)) {
+    return { statusCode: 401, message: "Unauthorized" };
+  }
+
+  return null;
+}
+exports.requireDispatchAuth = requireDispatchAuth;
+
+function safeTokenEquals(token, secret) {
+  const tokenBuffer = Buffer.from(token);
+  const secretBuffer = Buffer.from(secret);
+  return tokenBuffer.length === secretBuffer.length && crypto.timingSafeEqual(tokenBuffer, secretBuffer);
+}
+exports.safeTokenEquals = safeTokenEquals;
+
 // ====================================================================
 // PARSE AI RESPONSE
 // ====================================================================
@@ -242,4 +271,3 @@ function parseAIResponse(text) {
 
   return result;
 }
-

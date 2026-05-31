@@ -6,6 +6,9 @@ const script = fs.readFileSync('script.js', 'utf8');
 const thankYou = fs.readFileSync('thank-you.html', 'utf8');
 const leadIntake = fs.readFileSync('netlify/functions/lead-intake.js', 'utf8');
 const analytics = fs.readFileSync('analytics.js', 'utf8');
+const generateRateUpdate = fs.readFileSync('netlify/functions/generate-rate-update.js', 'utf8');
+const ratesJsonUpdater = fs.readFileSync('netlify/functions/lib/rates-json-updater.js', 'utf8');
+const austinRates = fs.readFileSync('austin-mortgage-rates.html', 'utf8');
 
 test('quick quote redirect does not put contact details in the URL', () => {
   assert.doesNotMatch(script, /tyParams\.set\('(email|name|phone)'/);
@@ -54,4 +57,31 @@ test('analytics.js does not duplicate lead or phone events already emitted by sc
   assert.doesNotMatch(analytics, /styer:lead-submitted/);
   assert.doesNotMatch(analytics, /phone_click/);
   assert.doesNotMatch(analytics, /a\[href\^="tel:"\]/);
+});
+
+test('direct rate publishing endpoint requires the dispatch secret', () => {
+  assert.match(generateRateUpdate, /requireDispatchAuth\(event\)/);
+  assert.match(generateRateUpdate, /DISPATCH_SECRET/);
+  assert.match(generateRateUpdate, /Unauthorized/);
+  assert.match(generateRateUpdate, /timingSafeEqual/);
+  assert.match(generateRateUpdate, /Content-Type, Authorization/);
+});
+
+test('rate JSON updater refuses to stamp incomplete pasted rates as fresh', () => {
+  assert.match(generateRateUpdate, /validateRequiredRates\(rates\)/);
+  assert.match(ratesJsonUpdater, /missingKeys/);
+  assert.match(ratesJsonUpdater, /missing required products/);
+  assert.doesNotMatch(ratesJsonUpdater, /fall back to previous rates\.json/);
+  assert.doesNotMatch(ratesJsonUpdater, /prev\.adam_rate \?\? null/);
+});
+
+test('Austin rates page handles stale public rate data honestly', () => {
+  assert.match(austinRates, /"dateModified": "2026-05-31"/);
+  assert.match(austinRates, /Austin Mortgage Rate Snapshot/);
+  assert.match(austinRates, /Rate Δ/);
+  assert.match(austinRates, /daysSince/);
+  assert.match(austinRates, /Call for quote/);
+  assert.match(austinRates, /Rate snapshot from/);
+  assert.doesNotMatch(austinRates, /Today's Austin Mortgage Rates/);
+  assert.doesNotMatch(austinRates, /delivered every Friday/);
 });
