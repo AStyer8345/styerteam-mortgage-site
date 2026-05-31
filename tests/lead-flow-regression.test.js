@@ -4,6 +4,7 @@ const test = require('node:test');
 
 const script = fs.readFileSync('script.js', 'utf8');
 const thankYou = fs.readFileSync('thank-you.html', 'utf8');
+const leadIntake = fs.readFileSync('netlify/functions/lead-intake.js', 'utf8');
 
 test('quick quote redirect does not put contact details in the URL', () => {
   assert.doesNotMatch(script, /tyParams\.set\('(email|name|phone)'/);
@@ -36,4 +37,14 @@ test('thank-you page strips legacy contact parameters before GTM initializes', (
   assert.ok(scrubIndex < gtmIndex);
   assert.match(thankYou, /\['email', 'name', 'phone'\]/);
   assert.match(thankYou, /history\.replaceState/);
+});
+
+test('lead-intake restores the active web lead acknowledgment automation', () => {
+  assert.match(leadIntake, /N8N_WEB_LEAD_URL/);
+  assert.match(leadIntake, /styer\.app\.n8n\.cloud\/webhook\/web-lead/);
+  assert.match(leadIntake, /notifyWebLeadAutomation/);
+  assert.match(leadIntake, /form_name: p\.formName/);
+  assert.match(leadIntake, /const data = \{/);
+  assert.match(leadIntake, /\n\s+data,/);
+  assert.doesNotMatch(leadIntake, /ftb-guide-email/);
 });

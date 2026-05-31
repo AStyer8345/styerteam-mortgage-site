@@ -19,6 +19,7 @@
 //   MAILCHIMP_SERVER_PREFIX        — fallback datacenter (e.g. "us1") if key has no suffix
 //   LOANOS_URL                     — base URL to LoanOS (e.g. https://app.loanos.io)
 //   LOANOS_AGENT_SECRET            — bearer token for /api/contacts/web-lead
+//   N8N_WEB_LEAD_URL               — optional override for active Web Lead Automation webhook
 
 const crypto = require("crypto");
 
@@ -32,6 +33,7 @@ const API_BASE  = DC ? `https://${DC}.api.mailchimp.com/3.0` : "";
 
 const LOANOS_URL    = process.env.LOANOS_URL || process.env.LOANOS_API_URL || "";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
+const N8N_WEB_LEAD_URL = process.env.N8N_WEB_LEAD_URL || "https://styer.app.n8n.cloud/webhook/web-lead";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
@@ -78,30 +80,33 @@ exports.handler = async (event) => {
     return respond(400, { error: "email required" });
   }
 
-  // Run Mailchimp + LoanOS in parallel; neither is fatal.
-  const [mcResult, loResult] = await Promise.allSettled([
+  const leadPayload = {
+    firstName, lastName, email, phone,
+    loanGoal, leadSource, formName,
+    purchasePrice: body.purchase_price ?? null,
+    downPayment:   body.down_payment ?? null,
+    creditScore:   body.credit_score ?? null,
+    incomeType:    body.income_type ?? body.employment_type ?? null,
+    propertyUse:   body.property_use ?? null,
+    targetCity:    body.target_city ?? body.property_location ?? null,
+    timeline:      body.timeline ?? null,
+    lenderStatus:  body.lender_status ?? null,
+    documentationIssue: body.documentation_issue ?? null,
+    situation:     body.situation ?? body.notes ?? null,
+    tcpaConsent:   body.tcpa_consent ?? null,
+    smsOptIn:      body.sms_opt_in ?? null,
+    sourcePage:    body.page_url ?? body.source_page ?? null,
+    utmSource:     body.utm_source ?? null,
+    utmMedium:     body.utm_medium ?? null,
+    utmCampaign:   body.utm_campaign ?? null,
+    referrer:      body.referrer ?? null,
+  };
+
+  // Run Mailchimp + LoanOS + active n8n Web Lead Automation in parallel; none is fatal.
+  const [mcResult, loResult, n8nResult] = await Promise.allSettled([
     addToMailchimp({ email, firstName, lastName, tag }),
-    createLoanosContact({
-      firstName, lastName, email, phone,
-      loanGoal, leadSource, formName,
-      purchasePrice: body.purchase_price ?? null,
-      downPayment:   body.down_payment ?? null,
-      creditScore:   body.credit_score ?? null,
-      incomeType:    body.income_type ?? null,
-      propertyUse:   body.property_use ?? null,
-      targetCity:    body.target_city ?? null,
-      timeline:      body.timeline ?? null,
-      lenderStatus:  body.lender_status ?? null,
-      documentationIssue: body.documentation_issue ?? null,
-      situation:     body.situation ?? null,
-      tcpaConsent:   body.tcpa_consent ?? null,
-      smsOptIn:      body.sms_opt_in ?? null,
-      sourcePage:    body.page_url ?? body.source_page ?? null,
-      utmSource:     body.utm_source ?? null,
-      utmMedium:     body.utm_medium ?? null,
-      utmCampaign:   body.utm_campaign ?? null,
-      referrer:      body.referrer ?? null,
-    }),
+    createLoanosContact(leadPayload),
+    notifyWebLeadAutomation(leadPayload),
   ]);
 
   if (mcResult.status === "rejected") {
@@ -110,11 +115,15 @@ exports.handler = async (event) => {
   if (loResult.status === "rejected") {
     console.error("[lead-intake] LoanOS error (non-fatal):", loResult.reason?.message);
   }
+  if (n8nResult.status === "rejected") {
+    console.error("[lead-intake] Web lead automation error (non-fatal):", n8nResult.reason?.message);
+  }
 
   return respond(200, {
     success:   true,
     mailchimp: mcResult.status === "fulfilled" ? "ok" : "failed",
     loanos:    loResult.status === "fulfilled" ? "ok" : "failed",
+    webLeadAutomation: n8nResult.status === "fulfilled" ? "ok" : "failed",
   });
 };
 
@@ -209,6 +218,70 @@ async function createLoanosContact(p) {
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
     throw new Error(`LoanOS API ${res.status}: ${err.error || "unknown"}`);
+  }
+}
+
+// ── n8n Web Lead Automation ───────────────────────────────────────────────────
+// This active workflow sends Adam's alert and the borrower's immediate
+// "Got your info" email. Payload mirrors Netlify form notification shape.
+
+async function notifyWebLeadAutomation(p) {
+  if (!N8N_WEB_LEAD_URL) {
+    console.warn("[lead-intake] N8N_WEB_LEAD_URL missing — skipping Web Lead Automation");
+    return;
+  }
+
+  const fullName = [p.firstName, p.lastName].filter(Boolean).join(" ");
+  const data = {
+    name: fullName,
+    first_name: p.firstName,
+    last_name: p.lastName,
+    fname: p.firstName,
+    lname: p.lastName,
+    email: p.email,
+    phone: p.phone,
+    loanGoal: p.loanGoal,
+    loan_goal: p.loanGoal,
+    loan_type: p.loanGoal,
+    lead_source: p.leadSource,
+    form_name: p.formName,
+    "form-name": p.formName,
+    purchase_price: p.purchasePrice,
+    down_payment: p.downPayment,
+    credit_score: p.creditScore,
+    income_type: p.incomeType,
+    employment_type: p.incomeType,
+    property_use: p.propertyUse,
+    target_city: p.targetCity,
+    timeline: p.timeline,
+    lender_status: p.lenderStatus,
+    documentation_issue: p.documentationIssue,
+    situation: p.situation,
+    notes: p.situation,
+    tcpa_consent: p.tcpaConsent,
+    sms_opt_in: p.smsOptIn,
+    page_url: p.sourcePage,
+    source_page: p.sourcePage,
+    utm_source: p.utmSource,
+    utm_medium: p.utmMedium,
+    utm_campaign: p.utmCampaign,
+    referrer: p.referrer,
+  };
+
+  const res = await fetch(N8N_WEB_LEAD_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      form_name: p.formName,
+      formName: p.formName,
+      submitted_at: new Date().toISOString(),
+      data,
+      ...data,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Web Lead Automation ${res.status}`);
   }
 }
 
