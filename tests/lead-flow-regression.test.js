@@ -5,6 +5,7 @@ const test = require('node:test');
 const script = fs.readFileSync('script.js', 'utf8');
 const thankYou = fs.readFileSync('thank-you.html', 'utf8');
 const leadIntake = fs.readFileSync('netlify/functions/lead-intake.js', 'utf8');
+const analytics = fs.readFileSync('analytics.js', 'utf8');
 
 test('quick quote redirect does not put contact details in the URL', () => {
   assert.doesNotMatch(script, /tyParams\.set\('(email|name|phone)'/);
@@ -47,4 +48,10 @@ test('lead-intake restores the active web lead acknowledgment automation', () =>
   assert.match(leadIntake, /const data = \{/);
   assert.match(leadIntake, /\n\s+data,/);
   assert.doesNotMatch(leadIntake, /ftb-guide-email/);
+});
+
+test('analytics.js does not duplicate lead or phone events already emitted by script.js', () => {
+  assert.doesNotMatch(analytics, /styer:lead-submitted/);
+  assert.doesNotMatch(analytics, /phone_click/);
+  assert.doesNotMatch(analytics, /a\[href\^="tel:"\]/);
 });

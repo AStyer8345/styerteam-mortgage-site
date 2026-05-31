@@ -17,23 +17,6 @@
   }
 
   function initTracking() {
-    // ── Successful lead submissions ────────────────────────────────
-    document.addEventListener('styer:lead-submitted', function (event) {
-      var detail = event.detail || {};
-      track({
-        event: 'generate_lead',
-        lead_type: detail.lead_type || 'website_lead',
-        form_name: detail.form_name || ''
-      });
-    });
-
-    // ── Phone number clicks ────────────────────────────────────────
-    document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        track({ event: 'phone_click', phone_number: '5129566010' });
-      });
-    });
-
     // ── Calendly link clicks ───────────────────────────────────────
     document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
       link.addEventListener('click', function () {
