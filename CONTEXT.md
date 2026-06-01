@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-06-01 (styer-site-daily Monday rotation): Schema + AEO + Google Ads.** 3-line sitemap.xml lastmod bump (homepage `/` + scenarios.html + scenarios/oil-gas — 2026-05-18/2026-05-28 → 2026-05-31; surfaces Adam's `f3f8f07`+`15e8119`+`0e54435` homepage AEO/conversion rewrite to GSC). Re-Verify Gate clean: sitemap live=local=131, conversion tracking 10/10, legacy entity scrub 0/0/0, title pipe 35/37 (carry holds). Physician post AEO answer-first structure verified at correct date-prefixed URL (Sunday's run log had wrong URL — corrected). Cache-buster rolled `?v=20260530b → ?v=20260531` sitewide. NEW LOW carry: homepage MortgageBroker vs about LocalBusiness schema type inconsistency (Python JSON-LD parse found it; grep would have missed). NotebookLM 60th dead run. TOMORROW_PRIORITY #5 from Sunday closed.
+
 **2026-06-01 (styer-competitive-weekly Wk 13): 0 mutations — research only. MASSIVE Phase A win.** Complicated-income SERPs flipped 2/7 → **5/7** in 14 days (Wk 12 was a skip). **NEW top-10 wins:** self-employed mortgage austin tx **#3** (was NOT RANKED), bank statement loan austin tx **#6** (was NOT RANKED), 1099 mortgage austin texas **#7 via self-employed page** (was NOT RANKED). **Asset depletion mortgage texas: #1 + #5 DOUBLE** (both `/asset-depletion-mortgage-texas` AND `/asset-depletion-mortgage-austin-tx.html` top 5). Remaining Phase A gaps: non-qm + dscr (still not in top 10). **Suburb mix:** Buda **★ NEW #4** first-ever, Hutto **#3→#2 ↑**, San Marcos **#9→#8 ↑**, Pflugerville #2 held, Round Rock #9 held; Leander **#4→#6 ↓** + Kyle **#6→#8 ↓** (Big Life/Movement/Guild new entrants). **Bee Cave page now indexed** — 7-run carry-forward CLEARED via `site:` check. ATX Mortgage Lending sitemap still 0/61 suburb pages (3rd consecutive biweekly verify). LendFriend confirmed #1 strategic threat — new visibility at #3 on cash-out. NotebookLM CLI auth still broken (3rd carry).
 
 **2026-05-31 (styer-site-daily Sunday gap-day recovery): 0 mutations, 2 in-window auto-resolutions, race condition with Adam.** Re-Verify Gate cleared homepage `#contact-form` no-`generate_lead` finding (Adam's `14935a5` + `0a72ac8` sitewide `dispatchLeadSubmitted()` JS bridge) + live↔local sitemap drift (Adam's `1d09cc7` + `f3f8f07`). Race: Adam pushed 8 commits during run; rebase pulled cleanly. New Adam files: `llms.txt`, `tests/aeo-structure-regression.test.js`, `tests/lead-flow-regression.test.js`. Gates green post-pull.
-
-**2026-05-31 (subagent-driven build, supervised): styer-blog-writer-weekly task launched + first post published.** New scheduled SKILL task (cron Tue 8am CT) auto-publishes ONE compliance-gated blog post/week. First run published **"Physician Mortgage Loans in Texas"** (`blog/2026-05-30-physician-mortgage-texas.html`, 1,387 words, Tier B). All 7 compliance gates PASS. Commits: `4876d86` + `d850436` + `f7e14c5`.
 
 ## Active Blockers
 
@@ -52,16 +52,17 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Mon 2026-06-01 styer-site-daily = Schema + Google Ads Quality + AEO Entity Audit rotation** per SKILL.md. Wk 13 comp run surfaced Phase A priorities (above), Adam-pivot Sun 5-31 carries to re-audit, and `llms.txt` validation NEW.
+**Tue 2026-06-02 styer-site-daily = Title Tags + Meta Descriptions rotation** per SKILL.md.
 
 Site-daily priorities:
-1. **Phase A complicated-income tail closure** — audit `/non-qm-loans.html` + `/dscr-loan-austin-tx.html` side-by-side vs current #1-3 on each keyword (CMRE/Capital Home/Stephanie Donnell for non-QM; Newfi/Easy Street/TX Premier for DSCR). Compare word count, FAQPage schema, AggregateRating presence, internal-link inbound from the 5 wins (self-emp / bank-stmt / 1099 / asset-depletion ×2).
-2. **Cedar Park "broker beats branch" framing** — lone suburb gap. CrossCountry owns 2 of top 10 + physical branch. Same physical-presence dominance Adam fought through on Pflugerville (Geneva wedge) and Georgetown. Apply Hutto playbook.
-3. **Leander + Kyle recovery** — both dropped ↓2 this cycle. Big Life/Movement/Guild new entrants. TODO carries "Leander page deepening" + "Kyle page deepening" are now urgent rather than backlog.
-4. **Asset depletion defense** — Adam's #1 + #5 double is strongest moat. Monthly content-refresh cadence on both `/asset-depletion-mortgage-texas` AND `/asset-depletion-mortgage-austin-tx.html` vs Truss #2 / LendFriend #3.
-5. **Verify Adam's 8 Sun 5-31 commits** (`f3f8f07` homepage AEO routing + `8c32fd4` scenario flow + `15e8119` duplicate analytics + `0e54435` portal language) — re-run conversion gates + AEO regression tests.
-6. **Validate `llms.txt`** (NEW Adam file) — verify accessible at `/llms.txt`, structure follows spec.
-7. **Monday rotation per SKILL.md** — Rich Results Test, PSI both LPs (likely UNVERIFIED), AEO entity check on homepage rewrite.
+1. **Tuesday rotation execution** — audit all loan-type + suburb + resource page title formats and meta description lengths. 35/37 already pipe-compliant; the 2 non-compliant (index + get-preapproved) are HIGH/MEDIUM_RISK Adam-pivot carries — surface but do not auto-edit.
+2. **NEW LOW carry — Schema-type unification:** homepage uses `MortgageBroker`, about uses `LocalBusiness`. Both valid. MortgageBroker is more specific. 2-file fix once Adam picks direction.
+3. **`llms.txt` validation** (NEW Adam file) — verify accessible at `/llms.txt`, structure follows spec. Tuesday is the right rotation to do this since it's adjacent to title/meta surfaces.
+4. **Phase A complicated-income tail closure** — audit `/non-qm-loans.html` + `/dscr-loan-austin-tx.html` side-by-side vs current #1-3 (CMRE/Capital Home/Stephanie Donnell for non-QM; Newfi/Easy Street/TX Premier for DSCR). Compare word count, FAQPage schema, AggregateRating, inbound internal-links from the 5 Phase A wins.
+5. **Cedar Park "broker beats branch" framing** — lone suburb gap; CrossCountry owns 2 of top 10. Apply Hutto playbook.
+6. **Leander + Kyle recovery** — both dropped ↓2 in Wk 13. TODO carries "Leander page deepening" + "Kyle page deepening" now urgent.
+7. **Asset depletion defense** — Adam's #1 + #5 double moat. Monthly content-refresh cadence on both pages vs Truss/LendFriend.
+8. **Cache-buster sweep** — if Adam rolls another `?v=...` overnight, run the 5-sample sweep early (cheap regression catcher).
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`). Scenario #2 candidates: Self-Employed/Bank-Stmt + DSCR/Investor (double-down on Phase A wins).
 
