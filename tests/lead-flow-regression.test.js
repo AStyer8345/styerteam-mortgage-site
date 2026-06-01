@@ -10,6 +10,7 @@ const generateRateUpdate = fs.readFileSync('netlify/functions/generate-rate-upda
 const ratesJsonUpdater = fs.readFileSync('netlify/functions/lib/rates-json-updater.js', 'utf8');
 const austinRates = fs.readFileSync('austin-mortgage-rates.html', 'utf8');
 const homepage = fs.readFileSync('index.html', 'utf8');
+const scenarioPage = fs.readFileSync('scenario.html', 'utf8');
 
 test('quick quote redirect does not put contact details in the URL', () => {
   assert.doesNotMatch(script, /tyParams\.set\('(email|name|phone)'/);
@@ -26,12 +27,23 @@ test('legacy hero fallback does not bind modern quick-contact forms twice', () =
   assert.match(script, /form\[data-netlify="true"\]:not\(\.js-quick-contact\)/);
 });
 
-test('homepage routes primary conversion CTAs through the scenario page', () => {
-  assert.match(homepage, /<a href="\/scenario\.html"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*>(Send My Scenario|Get My Options)<\/a>/);
+test('homepage routes primary conversion CTAs to the secure loan application', () => {
+  assert.match(homepage, /<a href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*target="_blank"[^>]*>Start Loan Application<\/a>/);
   assert.doesNotMatch(homepage, /<form[^>]+(?:hero-quick-lead|quick-contact)/);
+  assert.doesNotMatch(homepage, />Send My Scenario</);
   assert.match(homepage, /href="https:\/\/calendly\.com\/adamstyer\/15minutes"[^>]*>Book 15-Min Call<\/a>/);
   assert.match(homepage, /href="tel:\+15129566010"/);
   assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
+});
+
+test('scenario page is now an application bridge, not a duplicate intake form', () => {
+  assert.match(scenarioPage, /Start Your Loan Application/);
+  assert.match(scenarioPage, /Start Secure Loan Application/);
+  assert.match(scenarioPage, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+  assert.doesNotMatch(scenarioPage, /id="form-scenario"/);
+  assert.doesNotMatch(scenarioPage, /name="scenario"/);
+  assert.doesNotMatch(scenarioPage, /lead_type: 'scenario_review'/);
+  assert.doesNotMatch(scenarioPage, /"@type": "FAQPage"/);
 });
 
 test('thank-you page lets GTM load the Google Ads library', () => {
