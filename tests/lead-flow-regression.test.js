@@ -27,21 +27,29 @@ test('legacy hero fallback does not bind modern quick-contact forms twice', () =
   assert.match(script, /form\[data-netlify="true"\]:not\(\.js-quick-contact\)/);
 });
 
-test('homepage routes primary conversion CTAs to the secure loan application', () => {
-  assert.match(homepage, /<a href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*target="_blank"[^>]*>Start Loan Application<\/a>/);
-  assert.doesNotMatch(homepage, /<form[^>]+(?:hero-quick-lead|quick-contact)/);
-  assert.doesNotMatch(homepage, />Send My Scenario</);
+test('homepage offers secure portal and lightweight scenario contact paths', () => {
+  assert.match(homepage, /<a href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*target="_blank"[^>]*>Start Here<\/a>/);
+  assert.match(homepage, /id="quick-scenario-form"/);
+  assert.match(homepage, /name="quick-scenario"/);
+  assert.match(homepage, /Tell me about the scenario/);
+  assert.match(homepage, /Email Adam Instead/);
+  assert.doesNotMatch(homepage, /Start Loan Application/);
   assert.match(homepage, /href="https:\/\/calendly\.com\/adamstyer\/15minutes"[^>]*>Book 15-Min Call<\/a>/);
   assert.match(homepage, /href="tel:\+15129566010"/);
   assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
 });
 
-test('scenario page is now an application bridge, not a duplicate intake form', () => {
-  assert.match(scenarioPage, /Start Your Loan Application/);
-  assert.match(scenarioPage, /Start Secure Loan Application/);
+test('scenario page uses portal language and keeps a short note fallback', () => {
+  assert.match(scenarioPage, /Start Here/);
+  assert.match(scenarioPage, /Start in the Secure Portal/);
   assert.match(scenarioPage, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+  assert.match(scenarioPage, /id="scenario-note-form"/);
+  assert.match(scenarioPage, /name="scenario-note"/);
+  assert.match(scenarioPage, /Send the short version/);
+  assert.match(scenarioPage, /Email Adam Instead/);
   assert.doesNotMatch(scenarioPage, /id="form-scenario"/);
-  assert.doesNotMatch(scenarioPage, /name="scenario"/);
+  assert.doesNotMatch(scenarioPage, /Start Secure Loan Application/);
+  assert.doesNotMatch(scenarioPage, /Start Your Loan Application/);
   assert.doesNotMatch(scenarioPage, /lead_type: 'scenario_review'/);
   assert.doesNotMatch(scenarioPage, /"@type": "FAQPage"/);
 });
