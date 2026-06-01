@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-05-31 (styer-site-daily Sunday gap-day recovery): 0 mutations, 2 in-window auto-resolutions, race condition with Adam.** Wed 5-27 + Fri 5-29 + Sat 5-30 full-rotation fires all missed (4th gap-day recovery in this task's history). Re-Verify Gate, 13 claims: (1) PM 2026-05-28 finding "homepage `#contact-form` no `generate_lead` dataLayer push" **AUTO-RESOLVED** via Adam's `14935a5` + `0a72ac8` (sitewide `dispatchLeadSubmitted()` JS bridge). (2) AM-detected live↔local sitemap.xml drift (live=131, local=137, 11 distinct URLs) **AUTO-RESOLVED IN-WINDOW** via Adam's race-condition push of `1d09cc7 Normalize canonical URLs and internal links` + `f3f8f07 Simplify homepage conversion and AEO routing` — both touched sitemap.xml. Post-pull verify: live=131 = local=131 parity. **Race condition:** Adam pushed **8 commits during this run** (`6a39c52` → `12293d8` → `1d09cc7` → `15e8119` → `6572642` → `f3f8f07` → `8c32fd4` → `0e54435`); initial push rejected; rebase pulled cleanly (no conflicts). New Adam files: `llms.txt`, `tests/aeo-structure-regression.test.js`, `tests/lead-flow-regression.test.js`. **Monday batch verify:** Adam's homepage AEO/conversion rewrite may have addressed multiple Adam-pivot carries (title pipe + 107-char, testimonials, complicated-income cluster CTAs). Gates green post-pull: sitemap/robots HTTP 200, conversion 10/10, legacy entity scrub 0/0/0, pipe-format title 35/37.
+**2026-06-01 (styer-competitive-weekly Wk 13): 0 mutations — research only. MASSIVE Phase A win.** Complicated-income SERPs flipped 2/7 → **5/7** in 14 days (Wk 12 was a skip). **NEW top-10 wins:** self-employed mortgage austin tx **#3** (was NOT RANKED), bank statement loan austin tx **#6** (was NOT RANKED), 1099 mortgage austin texas **#7 via self-employed page** (was NOT RANKED). **Asset depletion mortgage texas: #1 + #5 DOUBLE** (both `/asset-depletion-mortgage-texas` AND `/asset-depletion-mortgage-austin-tx.html` top 5). Remaining Phase A gaps: non-qm + dscr (still not in top 10). **Suburb mix:** Buda **★ NEW #4** first-ever, Hutto **#3→#2 ↑**, San Marcos **#9→#8 ↑**, Pflugerville #2 held, Round Rock #9 held; Leander **#4→#6 ↓** + Kyle **#6→#8 ↓** (Big Life/Movement/Guild new entrants). **Bee Cave page now indexed** — 7-run carry-forward CLEARED via `site:` check. ATX Mortgage Lending sitemap still 0/61 suburb pages (3rd consecutive biweekly verify). LendFriend confirmed #1 strategic threat — new visibility at #3 on cash-out. NotebookLM CLI auth still broken (3rd carry).
 
-**2026-05-31 (subagent-driven build, supervised): styer-blog-writer-weekly task launched + first post published.** New scheduled SKILL task (`/Users/adamstyer/.claude/scheduled-tasks/styer-blog-writer-weekly/`, cron Tue 8am CT) that auto-publishes ONE net-new compliance-gated blog post/week. First run executed inline & supervised: published **"Physician Mortgage Loans in Texas: How Doctors Qualify in 2026"** (`blog/2026-05-30-physician-mortgage-texas.html`, 1,387 words, Tier B). 4 approved-source citations; all 7 compliance gates PASS; registered across all 4 surfaces. Commits: `4876d86` publish + `d850436` bookkeeping + `f7e14c5` BreadcrumbList JSON-LD. Live verified HTTP 200. **To undo:** `git revert d850436..f7e14c5`.
+**2026-05-31 (styer-site-daily Sunday gap-day recovery): 0 mutations, 2 in-window auto-resolutions, race condition with Adam.** Re-Verify Gate cleared homepage `#contact-form` no-`generate_lead` finding (Adam's `14935a5` + `0a72ac8` sitewide `dispatchLeadSubmitted()` JS bridge) + live↔local sitemap drift (Adam's `1d09cc7` + `f3f8f07`). Race: Adam pushed 8 commits during run; rebase pulled cleanly. New Adam files: `llms.txt`, `tests/aeo-structure-regression.test.js`, `tests/lead-flow-regression.test.js`. Gates green post-pull.
 
-**2026-05-30 (user-initiated, Adam): Homepage restructure — hero lead form + section reorder + sitewide GA4 `generate_lead` dispatch.** Two-column hero (`index.html`, commit `40028bb`): left = pitch; right = compact 4-field lead form (`name="hero-quick-lead"`, Netlify Forms — Name/Phone/Email/Loan Goal + TCPA + "Get Started"). `script.js` `initFormValidation()` refactored to bind **all** `.js-quick-contact` forms via new `bindQuickContactForm()`. Section order: Hero → Loans Built for Every Situation → Deals Banks Said No To → full ~13-field quick-contact form. Sitewide `generate_lead` GA4 conversion event added — `dispatchLeadSubmitted()` in `script.js` pushes `{event:'generate_lead', lead_type, form_name}` to dataLayer at submit (commit `14935a5`); `0a72ac8` adds `waitForTags`/timeout for redirect timing. Cache-busters bumped to `?v=20260530b` sitewide (102 HTML files). **Still needed on GTM side:** trigger on the `generate_lead` event → Google Ads conversion tag.
+**2026-05-31 (subagent-driven build, supervised): styer-blog-writer-weekly task launched + first post published.** New scheduled SKILL task (cron Tue 8am CT) auto-publishes ONE compliance-gated blog post/week. First run published **"Physician Mortgage Loans in Texas"** (`blog/2026-05-30-physician-mortgage-texas.html`, 1,387 words, Tier B). All 7 compliance gates PASS. Commits: `4876d86` + `d850436` + `f7e14c5`.
 
 ## Active Blockers
 
@@ -36,8 +36,8 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | **NEW: Homepage/mobile CTAs now route to `#contact-form` quick form (Q10).** Hero + mobile sticky both land on the on-site quick form (in-house funnel, not raw 1003). Open: whether to ALSO surface a direct `/get-preapproved` or `/refinance-quote` path. | MEDIUM (Adam) |
 | Homepage body-copy still references "92 Google reviews" + "45 Zillow reviews" + "5.0 ★" (index.html lines 455, 492, 861) — awaiting Adam's "complicated income" trust-strip pivot copy | MEDIUM (Adam) |
 | products.html 10 in-card "Get Pre-Approved" route to raw 1003 (27th carry; Adam decision) | MEDIUM |
-| GSC URL Inspection sweep overdue — Round Rock, San Marcos, Hutto, Pflugerville, Leander, Bee Cave (7+ carries) | HIGH (Adam) |
-| Complicated-income SERP gap — 0/5 ranking on self-employed / bank statement / non-QM / DSCR / 1099 Austin. Compliance-permitted fix this week = FAQPage + AggregateRating schema audit on 5 pages + /loans/jumbo | HIGH |
+| GSC URL Inspection sweep overdue — Round Rock, San Marcos, Hutto, Pflugerville, Leander (Bee Cave CLEARED — page indexed per Wk 13 `site:` check) | HIGH (Adam) |
+| Complicated-income SERP gap — **5/7 now ranking (Wk 13)**. Remaining gaps: `/non-qm-loans.html` + `/dscr-loan-austin-tx.html` still not in top 10. Audit each side-by-side vs current #1-3 (CMRE/Capital Home/Stephanie Donnell for non-QM; Newfi/Easy Street/TX Premier for DSCR) | HIGH |
 | **Hedged claims to verify (NEW 2026-05-17)** — 8 items in `FLAG_FOR_ADAM.md` against current wholesale rate sheets before quoting borrowers | HIGH (Adam) |
 | NotebookLM CLI auth expired (2026-05-11) — `notebooklm login` required | HIGH (Adam) |
 | Suburb quick-form submissions not counted as Google Ads conversions — GTM dashboard config | HIGH (Adam) |
@@ -52,26 +52,18 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Monday 2026-06-01 styer-site-daily = Schema + Google Ads Quality + AEO Entity Audit rotation.** Per SKILL.md Monday default. Today's Sunday gap-day recovery cleared the PM 2026-05-28 conversion-tracking finding via auto-resolution and surfaced 1 NEW finding (live↔local sitemap drift). 0 mutations this run. Full detail in `run-logs/2026-05-31.md`.
+**Mon 2026-06-01 styer-site-daily = Schema + Google Ads Quality + AEO Entity Audit rotation** per SKILL.md. Wk 13 comp run surfaced Phase A priorities (above), Adam-pivot Sun 5-31 carries to re-audit, and `llms.txt` validation NEW.
 
-Monday priorities:
-1. **Verify Adam's 8 in-window commits (Sun 5-31) didn't introduce regressions:** `f3f8f07` homepage AEO routing + `8c32fd4` scenario flow + `15e8119` duplicate analytics fix + `0e54435` portal language. Re-run conversion gates (already 10/10 post-pull) + check `tests/aeo-structure-regression.test.js` + `tests/lead-flow-regression.test.js` if runner available.
-2. **Validate `llms.txt`** (NEW file Adam added today) — verify content/structure follows the emerging spec, accessible at `/llms.txt`.
-3. **Monday rotation per SKILL.md:** Rich Results Test (homepage AggregateRating, DSCR FAQPage, rotate suburb), PSI on both LPs (26th likely UNVERIFIED), Google Ads Optimizer log, NotebookLM query (60th likely dead).
-4. **AEO entity check on Adam's homepage rewrite (`f3f8f07`):** Person + LocalBusiness schema present and consistent after AEO routing changes.
-5. **Re-audit Adam-pivot carries** that may have been addressed in Adam's Sun 5-31 sweep: homepage title pipe + 107-char overlength, homepage testimonials, complicated-income cluster CTA architecture, /get-preapproved title `24-Hour Turnaround` claim.
-6. **AEO content audit on physician post** (1-day-old, fresh before Google's first-crawl decisions).
-7. **Cache-buster `?v=20260530b` propagation check** across 5 sample pages.
+Site-daily priorities:
+1. **Phase A complicated-income tail closure** — audit `/non-qm-loans.html` + `/dscr-loan-austin-tx.html` side-by-side vs current #1-3 on each keyword (CMRE/Capital Home/Stephanie Donnell for non-QM; Newfi/Easy Street/TX Premier for DSCR). Compare word count, FAQPage schema, AggregateRating presence, internal-link inbound from the 5 wins (self-emp / bank-stmt / 1099 / asset-depletion ×2).
+2. **Cedar Park "broker beats branch" framing** — lone suburb gap. CrossCountry owns 2 of top 10 + physical branch. Same physical-presence dominance Adam fought through on Pflugerville (Geneva wedge) and Georgetown. Apply Hutto playbook.
+3. **Leander + Kyle recovery** — both dropped ↓2 this cycle. Big Life/Movement/Guild new entrants. TODO carries "Leander page deepening" + "Kyle page deepening" are now urgent rather than backlog.
+4. **Asset depletion defense** — Adam's #1 + #5 double is strongest moat. Monthly content-refresh cadence on both `/asset-depletion-mortgage-texas` AND `/asset-depletion-mortgage-austin-tx.html` vs Truss #2 / LendFriend #3.
+5. **Verify Adam's 8 Sun 5-31 commits** (`f3f8f07` homepage AEO routing + `8c32fd4` scenario flow + `15e8119` duplicate analytics + `0e54435` portal language) — re-run conversion gates + AEO regression tests.
+6. **Validate `llms.txt`** (NEW Adam file) — verify accessible at `/llms.txt`, structure follows spec.
+7. **Monday rotation per SKILL.md** — Rich Results Test, PSI both LPs (likely UNVERIFIED), AEO entity check on homepage rewrite.
 
-Audit roadmap remaining (from `/Users/adamstyer/Documents/SEO-AUDIT-2026-05.md`):
-1. **Phase 3.2 — VA Loan Austin TX** new ~3,000-word landing page.
-2. ~~Phase 3.3 — Physician Mortgage Austin~~ ✅ DONE 2026-05-30 (`blog/2026-05-30-physician-mortgage-texas.html`).
-3. **Phase 3.4 — ITIN Mortgage Texas** new page (compliance-sensitive).
-4. **Phase 3.5 — Foreign National Mortgage Texas** new page.
-5. **Phase 2 external manual work** — see `SEO-PHASE2-CHECKLIST.md`.
-
-Scheduled task track:
-- **Scenario #2 candidates** — next scenarios should cover Self-Employed/Bank-Statement and DSCR/Investor to light up filter chips. Adam to surface anonymized files when ready.
+Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`). Scenario #2 candidates: Self-Employed/Bank-Stmt + DSCR/Investor (double-down on Phase A wins).
 
 ## Site Structure (key categories)
 
