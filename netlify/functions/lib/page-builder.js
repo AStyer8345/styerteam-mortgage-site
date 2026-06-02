@@ -162,7 +162,7 @@ function buildWebPage({ title, description, date, content }) {
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
-            <a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a><br>
+            <a href="mailto:adam.styer@hypersmart.loan">adam.styer@hypersmart.loan</a><br>
             Austin, TX
           </p>
         </div>

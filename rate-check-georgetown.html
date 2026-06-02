@@ -43,7 +43,7 @@
     "name": "Adam Styer | HyperSmart Home Loans",
     "url": "https://styermortgage.com",
     "telephone": "+1-512-956-6010",
-    "email": "adam@thestyerteam.com",
+    "email": "adam.styer@hypersmart.loan",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "9050 N. Capital of Texas Hwy, Ste 390",
@@ -634,7 +634,7 @@
             </div>
           </form>
           <div id="rc-success" class="rc-form-status">Got it. I'll review your Loan Estimate and reach out within a few hours.</div>
-          <div id="rc-error" class="rc-form-status">Something went wrong. Email me directly at <a href="mailto:adam@thestyerteam.com" style="color:inherit;text-decoration:underline;">adam@thestyerteam.com</a></div>
+          <div id="rc-error" class="rc-form-status">Something went wrong. Email me directly at <a href="mailto:adam.styer@hypersmart.loan" style="color:inherit;text-decoration:underline;">adam.styer@hypersmart.loan</a></div>
           <p class="rc-form-disclaimer">By submitting, you consent to be contacted about your mortgage inquiry. NMLS #513013. Adam Styer | HyperSmart Home Loans.</p>
         </div>
       </div>
@@ -747,7 +747,7 @@
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
-            <a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a><br>
+            <a href="mailto:adam.styer@hypersmart.loan">adam.styer@hypersmart.loan</a><br>
             9050 N. Capital of Texas Hwy, Ste 390<br>
             Austin, Texas 78759
           </p>
@@ -838,6 +838,9 @@
       submitBtn.textContent = 'Submitting\u2026';
 
       var formData = new FormData(form);
+      formData.append("notification_email", "adam.styer@hypersmart.loan");
+      formData.append("recipient_email", "adam.styer@hypersmart.loan");
+      formData.append("adam_email", "adam.styer@hypersmart.loan");
 
       fetch(WEBHOOK_URL, {
         method: 'POST',

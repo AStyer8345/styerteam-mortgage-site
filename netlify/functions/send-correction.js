@@ -51,7 +51,7 @@ exports.handler = async (event) => {
           subject_line: "That link didn't work — here's the right one",
           preview_text: "Sorry about that! Here's the correct article link.",
           from_name: "Adam Styer",
-          reply_to: "adam@thestyerteam.com",
+          reply_to: "adam.styer@hypersmart.loan",
         },
       });
       await mailchimp.campaigns.setContent(campaign.id, { html: CORRECTION_HTML });
@@ -69,7 +69,7 @@ exports.handler = async (event) => {
           subject_line: "That link didn't work — here's the right one",
           preview_text: "Sorry about that! Here's the correct article link.",
           from_name: "Adam Styer",
-          reply_to: "adam@thestyerteam.com",
+          reply_to: "adam.styer@hypersmart.loan",
         },
       });
       await mailchimp.campaigns.setContent(campaign.id, { html: CORRECTION_HTML });

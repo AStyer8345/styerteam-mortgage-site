@@ -45,6 +45,7 @@ const ORG_ID         = "18613f82-fdd9-42dd-a09e-f3c577328258";
 
 const LOANOS_URL    = process.env.LOANOS_URL || "";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
+const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam.styer@hypersmart.loan";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
@@ -187,7 +188,7 @@ async function fireNurtureWebhook(url, { email, fname }) {
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, first_name: fname || "" }),
+    body: JSON.stringify({ email, first_name: fname || "", notification_email: ADAM_NOTIFICATION_EMAIL, recipient_email: ADAM_NOTIFICATION_EMAIL }),
   });
   if (!res.ok) {
     throw new Error(`Nurture webhook failed: ${res.status}`);
@@ -198,7 +199,7 @@ async function sendGuideEmail({ email, fname }) {
   const res = await fetch(N8N_GUIDE_EMAIL_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, fname }),
+    body: JSON.stringify({ email, fname, notification_email: ADAM_NOTIFICATION_EMAIL, recipient_email: ADAM_NOTIFICATION_EMAIL }),
   });
   if (!res.ok) {
     throw new Error(`Guide email webhook failed: ${res.status}`);
@@ -222,6 +223,9 @@ async function notifyPreApprovalLead({ email, fname, lname, phone, loan_goal, sm
       utm_medium:   utm_medium || "",
       utm_campaign: utm_campaign || "",
       page_url:     page_url || "",
+      notification_email: ADAM_NOTIFICATION_EMAIL,
+      recipient_email: ADAM_NOTIFICATION_EMAIL,
+      adam_email: ADAM_NOTIFICATION_EMAIL,
     }),
   });
   if (!res.ok) {

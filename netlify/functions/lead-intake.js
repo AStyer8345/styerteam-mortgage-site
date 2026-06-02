@@ -34,6 +34,7 @@ const API_BASE  = DC ? `https://${DC}.api.mailchimp.com/3.0` : "";
 const LOANOS_URL    = process.env.LOANOS_URL || process.env.LOANOS_API_URL || "";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
 const N8N_WEB_LEAD_URL = process.env.N8N_WEB_LEAD_URL || "https://styer.app.n8n.cloud/webhook/web-lead";
+const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam.styer@hypersmart.loan";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
@@ -100,6 +101,7 @@ exports.handler = async (event) => {
     utmMedium:     body.utm_medium ?? null,
     utmCampaign:   body.utm_campaign ?? null,
     referrer:      body.referrer ?? null,
+    notificationEmail: ADAM_NOTIFICATION_EMAIL,
   };
 
   // Run Mailchimp + LoanOS + active n8n Web Lead Automation in parallel; none is fatal.
@@ -266,6 +268,9 @@ async function notifyWebLeadAutomation(p) {
     utm_medium: p.utmMedium,
     utm_campaign: p.utmCampaign,
     referrer: p.referrer,
+    notification_email: p.notificationEmail,
+    recipient_email: p.notificationEmail,
+    adam_email: p.notificationEmail,
   };
 
   const res = await fetch(N8N_WEB_LEAD_URL, {

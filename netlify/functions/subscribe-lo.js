@@ -20,6 +20,7 @@ const crypto = require("crypto");
 
 // n8n webhook — LO Waitlist Intake workflow
 const N8N_LO_WAITLIST_URL = "https://styer.app.n8n.cloud/webhook/loanos-waitlist";
+const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam.styer@hypersmart.loan";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
@@ -95,6 +96,9 @@ async function notifyN8n({ fname, lname, email, nmls, company, lead_source, utm_
       utm_campaign: utm_campaign || "",
       page_url:     page_url || "",
       submitted_at: new Date().toISOString(),
+      notification_email: ADAM_NOTIFICATION_EMAIL,
+      recipient_email: ADAM_NOTIFICATION_EMAIL,
+      adam_email: ADAM_NOTIFICATION_EMAIL,
     }),
   });
   if (!res.ok) {
