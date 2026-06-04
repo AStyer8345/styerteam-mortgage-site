@@ -1,3 +1,16 @@
+## 2026-06-04 — styer-site-daily Thursday rotation (Internal Linking + Funnel Flow)
+
+- **0 site files modified, 0 commits.** 0-mutation discipline applied — today's run value was carry refinement with hard cluster-wide counts, not mechanical fixes.
+- **3-page internal-link audit ✅.** `non-qm-loans.html`, `georgetown-mortgage-lender.html`, `self-employed-mortgage-austin.html` all carry 25+ unique internal links. Cluster lattice intact.
+- **Full funnel trace.** Homepage CTAs: 0 links to `/get-preapproved`, 0 links to `/refinance-quote`, 1 link to `/scenarios.html`, 2 links to `/contact.html`. Homepage form `quick-scenario` present + Netlify-wired but does not fire `generate_lead` (existing GTM-config carry). Landing→thank-you wiring confirmed for both `/get-preapproved` and `/refinance-quote`. Thank-you has 10 Calendly hits + 3 "what happens next" markers + tel: link — rich post-conversion CTA architecture intact.
+- **Carry refinement #1 — USDA cluster scope 5 → 12 suburbs / 143 mentions.** Full-cluster grep: Smithville=23, Elgin=21, Florence=15, Bastrop=15 (NEW), Jarrell=14, San Marcos=12 (NEW), Austin Area=11 (NEW), Kyle=10, Round Rock=9, New Braunfels=7 (NEW), Taylor=5 (NEW), Cedar Park=1. Round Rock 2026-04-29 cleanup was a partial pass (9 mentions still remain on Round Rock). Cluster scope is 5–6× prior framing.
+- **Carry refinement #2 — Performance-metric ban cluster 25/25 suburbs / ~89 surface instances.** Yesterday's hypothesis "15-20 of 24 suburbs" was under. Actual: 100% of suburb pages carry at least 1 perf-claim (Same-day=10, 24-hour=53, pre-approval-in-24=26, total ~89 across 25 suburbs). Heaviest: Hutto+Leander (7 each), Buda+Elgin+Florence+Georgetown (6 each).
+- **Carry refinement #3 — 0-tracked-LP cluster 32 → 34 surfaces.** Homepage now confirmed in cluster: 0 links to `/get-preapproved` or `/refinance-quote`. All 25 suburbs route through `/scenario(s)` (avg 3.7 links/page), `/contact` (1.6), Calendly (1.5). Frame upgraded from "should suburbs have tracked LPs?" to "should the entire organic funnel route through tracked LPs, or is `/scenarios.html` the canonical organic LP?"
+- **Suburb count correction (NEW LOW).** Multiple framings (CONTEXT.md, prior logs) reference "24 suburb pages." Actual = 25 (`austin-area-mortgage-lender.html` was missed in prior counts). CONTEXT.md updated this run.
+- **SEO/SEM backlog review.** P0/P1/P2 complete; P3 remainder = content additions paused by GOALS.md. **0 eligible items today** — structurally expected during Phase A.
+- **Re-Verify Gate:** sitemap+robots 200/200, sitemap 131 live=local (md5 identical), conversion tracking 10/10, cache-buster `?v=20260531` stable, legacy entity scrub 0/0/0, gold hex carry holds (`#8B6E24` ≠ SKILL.md `#C9A84C`), homepage Phase A trust strip intact. 14 claims checked, 0 stale-and-still-claimed, 3 carries refined with hard data.
+- **NotebookLM:** 63rd consecutive dead run.
+
 ## 2026-06-03 — styer-site-daily Wednesday rotation (Suburb Page Deep Dive + AEO — Kyle)
 
 - **0 site files modified, 0 commits.** 0-mutation discipline applied: all Kyle findings cluster-routed to existing carries with quantitative scope refinement per Wednesday-rotation-on-Adam-pivot-territory rule (added to learnings today).

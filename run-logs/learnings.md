@@ -1257,3 +1257,21 @@ Edge cache TY page dataLayer continues to bounce 8↔10 between fires. Critical-
 - **NotebookLM 61st consecutive dead run.** Pattern unchanged. SKILL.md retirement diff still pending Adam apply queue.
 
 ---
+
+## 2026-06-04 — Thursday rotation (Internal Linking + Funnel Flow)
+
+- **Cluster-wide grep is the highest-leverage Thursday-rotation byproduct on Adam-pivot territory (NEW today).** Today's mechanical Thursday work (3-page link audit + funnel trace) found zero blockers — internal linking density healthy, funnel instrumented. Real value: running cluster-wide grep to convert hand-wavy carry framings ("a few pages with this issue") into exact counts (25/25 suburbs / 89 surfaces / 143 mentions / 34 surfaces). 5× scope refinements upgrade Adam's decision class — what was "MEDIUM cleanup of 5 pages" becomes "MEDIUM batch of 143 surfaces across 12 suburbs," which materially affects whether and when Adam batches the work. Reusable rule: when a mechanical rotation finds nothing to fix, spend the time converting existing carry framings to hard cluster counts.
+
+- **Homepage is a funnel surface — Adam-pivot funnel-architecture carries should explicitly include it (NEW today).** Yesterday's Kyle audit framed the funnel-architecture decision as "24 suburb pages route through /scenarios.html, not tracked LPs." Today's Thursday funnel trace shows the homepage itself has 0 tracked-LP links. So organic-traffic top-of-funnel has zero Google-Ads-attribution path. Decision frame upgraded: not "should suburbs have tracked LPs" — "should the entire organic funnel route through tracked LPs, or is /scenarios.html the canonical organic LP?" Both valid; Adam needs the bigger framing. Reusable rule: when a carry references "the X cluster," check whether the canonical hub (homepage, /products) ALSO carries the same pattern — usually does.
+
+- **Round Rock 2026-04-29 USDA cleanup was a partial pass (NEW today).** The carry has been "Round Rock cleared 3 surfaces" — implying it was a complete pass that cleared the page. Today's grep shows 9 USDA mentions remain on Round Rock. So either (a) the 9 are legitimate context (e.g., "USDA loans for rural areas — not our focus") and the carry framing was correct, or (b) the cleanup missed surfaces. Friday's priority: spot-read Round Rock's USDA content to determine which. Reusable rule: when a carry says "N surfaces cleared," verify N is the total count not a partial — partial passes leave invisible drift.
+
+- **Counts drift as pages ship — verify with fresh ls/grep (NEW today).** CONTEXT.md, prior logs, and SKILL.md notes consistently reference "24 suburb pages." Actual = 25 (austin-area-mortgage-lender.html was missed). Likely added after prior counts were committed to convention. Reusable rule: whenever a daily log references "N pages in cluster X," double-check with `ls` or `grep -c` — the framing is cheap to correct but compounds errors when carried forward.
+
+- **SEO/SEM backlog "0 eligible items" is structurally expected during Phase A (NEW today).** P0/P1/P2 complete; P3 remainder = content additions GOALS.md "no new content" explicitly paused. There's no in-scope work for the SEO/SEM agent right now. Reusable rule: log "0 eligible" honestly when the backlog has no in-scope items; don't invent low-value mechanical work to fill the slot. The right output on these days is the cluster-wide grep refinements above, not manufactured tasks.
+
+- **Carry refinement compounds across consecutive runs (NEW today).** Wednesday refined two carries on Kyle alone (USDA 4→5; 0-CTAs 8→32). Thursday's cluster sweep took both further (USDA 5→12; 0-CTAs 32→34). Pattern: cluster-level refinement compounds because each daily rotation surfaces a different slice. Today's refinements ARE complete cluster sweeps — no more expansion expected from these dimensions. Reusable rule: mark whether a carry refinement is "complete cluster sweep done" or "next-day expansion expected." When complete, Adam has the final scope number; when expansion expected, the carry is still moving.
+
+- **NotebookLM 63rd consecutive dead run.** Pattern unchanged. SKILL.md retirement diff still pending Adam apply queue.
+
+---
