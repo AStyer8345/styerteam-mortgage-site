@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/JS on Netlify — no framework, no CMS. 75+ public pages live (homepage, loan pages, 24 suburb SEO pages, 5 rate-check city pages, 10 rate-shopper blog posts, resource/guide pages, blog, calculators, realtor hub, plus the 7-page non-QM cluster).
+Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/JS on Netlify — no framework, no CMS. 75+ public pages live (homepage, loan pages, 25 suburb SEO pages, 5 rate-check city pages, 10 rate-shopper blog posts, resource/guide pages, blog, calculators, realtor hub, plus the 7-page non-QM cluster).
 
 ## Repo
 
@@ -16,7 +16,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-04 (styer-site-daily Thursday rotation): Internal Linking + Funnel Flow.** 0-mutation discipline run. Mechanical Thursday work (3-page link audit + full funnel trace) found ZERO blockers — internal linking density healthy (25+ links/page on non-qm-loans / georgetown / self-employed), full funnel instrumentation works (form→thank-you wired, dataLayer firing). Real value of run: **cluster-wide grep refined 3 Adam-pivot carries with hard counts that materially upgrade their scope**: (1) USDA cluster 5 suburbs/~25 surfaces → **12 suburbs/143 mentions** (Bastrop/San Marcos/Austin Area/New Braunfels/Taylor are NEW; Round Rock 2026-04-29 cleanup was partial — 9 mentions remain); (2) Perf-metric ban hypothesis "15-20 of 24 suburbs" → **25/25 suburbs / ~89 surface instances**; (3) 0-tracked-LP cluster 32 → **34 surfaces** (homepage now confirmed: 0 links to `/get-preapproved` or `/refinance-quote`). Suburb count drift corrected (24 → 25 — `austin-area-mortgage-lender.html` was missed). SEO/SEM backlog: 0 eligible items (P3 remainder = content-add paused by GOALS.md). Conversion 10/10. NotebookLM 63rd dead run.
+**2026-06-05 (styer-site-daily Friday rotation): Content Planning + AEO Review.** Blog: 32/32 posts carry a tracked-LP CTA; latest post 2026-05-30 (6 days, within window). AEO healthy — physician post has question-form H2s + FAQPage schema + 5 CTAs. **Headline finding — USDA carry REFRAMED:** the 143-mention "cleanup" was the wrong frame. Mentions split into 2 classes: **8 pages PROMOTE USDA as the lead product** (smithville/elgin/florence/jarrell/bastrop/san-marcos/kyle/new-braunfels — hero + section headers + FAQ), advertising a product Adam says he doesn't originate; 4 pages STEER AWAY (round-rock/austin-area/taylor/cedar-park — honest "ineligible" context, keep). Round Rock's 9 mentions are legit class-B, not cleanup misses. This is an accuracy/compliance question, not a tidy-up. **Consolidated all 3 suburb-cluster carries into `run-logs/adam-batch-memo-2026-06-05.md`** (USDA / perf-claims / 0-tracked-LP) with exact file lists + one decision each. Perf-claims root cause named: GOALS.md "no perf marketing" vs voice-guide "same-day is a differentiator" — Adam must reconcile. 2 doc edits shipped: suburb count 24→25, USDA carry reframed. SEO/SEM backlog 0 eligible. Conversion 10/10. Sitemap 131=131. NotebookLM 64th dead run.
 
 **2026-06-03 (styer-site-daily Wednesday rotation): Suburb Page Deep Dive + AEO — Kyle.** 0-mutation. Kyle structural 7/9, 5 USDA surfaces, 3 perf-metric surfaces. Refined USDA cluster 4→5 suburbs; 0-CTA cluster 8→32 pages. Conversion 10/10.
 
@@ -26,9 +26,9 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 | Item | Priority |
 |------|----------|
-| **REFINED 2026-06-04: USDA cluster scope 5 → 12 suburbs / 143 mentions.** Bastrop=15, San Marcos=12, Austin Area=11, New Braunfels=7, Taylor=5 are NEW additions; Round Rock 2026-04-29 cleanup was a partial pass (9 mentions remain). 5–6× larger than prior framing. Round Rock playbook still precedent | MEDIUM (Adam) |
-| **REFINED 2026-06-04: Performance-metric ban cluster — 25/25 suburbs / ~89 surface instances.** Yesterday's hypothesis "15-20 of 24" was under. Plus 3 headline-page title carries + thank-you 7-carry. Material Adam-batch | MEDIUM (Adam) |
-| **REFINED 2026-06-04: 0-tracked-LP cluster 32 → 34 surfaces.** Homepage now confirmed: 0 links to `/get-preapproved` or `/refinance-quote`. Decision frame upgraded — site-wide organic funnel architecture, not just suburbs | MEDIUM (Adam) |
+| **REFRAMED 2026-06-05: USDA is an accuracy question, not mechanical cleanup → see `run-logs/adam-batch-memo-2026-06-05.md` Decision 1.** The 143 mentions split into 2 classes: (A) **8 pages PROMOTE USDA zero-down as the LEAD product** in hero + `<h3>`/`<h4>` + FAQ (smithville 23, elgin 21, florence 15, jarrell 14, bastrop 15, san-marcos 12, kyle 10, new-braunfels 7) — these advertise a product CONTEXT/voice-guide say Adam does NOT originate; (B) 4 pages STEER AWAY (round-rock 9, austin-area 11, taylor 5, cedar-park 1 — honest "no longer eligible" context, recommend keep). Round Rock's 9 are class-B legit, NOT cleanup misses. Decision: does Adam broker USDA rurally (close) or reposition 8 pages off USDA (content rewrite, GOALS-gated)? | MEDIUM (Adam) |
+| **Performance-metric claims — root cause is GOALS.md vs voice-guide conflict → see memo Decision 2.** GOALS.md says "no performance-metric marketing"; voice guide line 48 calls same-day pre-approval "a real differentiator." ~89 instances (25/25 suburbs) + 3 headline titles + thank-you 459/468/469. NOTE: "21-day close" already 0 sitewide (win met); remainder = "same-day"/"24-hour" speed claims. Recommend: kill "24-hour" (~53), keep "same-day." Needs Adam to reconcile his two docs | MEDIUM (Adam) |
+| **0-tracked-LP cluster 34 surfaces (8 loan-type + 25 suburb + homepage) → see memo Decision 3.** All organic routes via `/scenarios.html` + `/contact.html` (by design, 2026-05-28 architecture). Question: is `/scenarios.html` the canonical organic LP (keep), or add tracked-LP links for Ads attribution coverage (~34-page mechanical add)? | MEDIUM (Adam) |
 | **NEW 2026-06-03: Kyle missing inline lead-capture form** — other top-ranked suburbs surface inline form. Adam UX decision | MEDIUM (Adam) |
 | **NEW 2026-06-02: Brand gold hex drift** — SKILL.md design audit line says `#C9A84C`; style.css `--color-gold` ships `#8B6E24`. Confirm new gold + update SKILL.md, or revert. Likely intentional Phase A brand pivot — needs SKILL.md sync, not site revert | LOW (Adam) |
 | **NEW 2026-06-01: Homepage MortgageBroker vs about LocalBusiness schema** — both schema.org-valid. MortgageBroker more specific. 2-file unification opportunity | LOW (Adam) |
@@ -56,17 +56,16 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Fri 2026-06-05 styer-site-daily = Content Planning + AEO Review rotation** per SKILL.md.
+**Sat/Sun 2026-06-06/07 = weekend fire (if any) → re-verify gate only.** Next full rotation: **Mon 2026-06-08 = Schema + Google Ads Quality + AEO Entity Audit** per SKILL.md.
 
-Site-daily priorities:
-1. **Friday rotation execution** — check `/blog`: last post 2026-05-30 (6 days, within 7-day window — but Fri-of-check will hit 7); audit blog CTAs (all should link to `/get-preapproved` or `/refinance-quote`); AEO review on 2 posts (answer-first, question-form H2s, extractable summary). GOALS.md "no new content" still gates edits — cluster-note only.
-2. **Round Rock USDA partial-pass audit** — 9 USDA mentions remain after the 2026-04-29 cleanup. Spot-read content to determine which are legitimate context vs cleanup misses. Refines USDA cluster batch scope.
-3. **Cluster batch-scope memo for Adam** — consolidate today's 3 refined carries (USDA 143 mentions / perf-claims 89 surfaces / 0-CTAs 34 surfaces) into a single batch-decision memo with per-file lists. Don't write the diffs — just stage the decision Adam needs to make.
-4. **Suburb count correction** — CONTEXT.md says "24 suburb SEO pages"; actual is 25. 1-line fix.
-5. **Brand gold hex confirm** (Tue carry) — Adam decision: update SKILL.md to `#8B6E24` or revert style.css.
-6. **Schema-type unification carry** (Mon) — MortgageBroker vs LocalBusiness still pending Adam.
-7. **products.html 10 in-card 1003 routing (42-run carry)** — re-surface.
-8. **Cache-buster sweep** — if Adam rolls another `?v=...` overnight, run 5-sample sweep early.
+Priorities (in order):
+1. **AWAIT Adam's reply to `run-logs/adam-batch-memo-2026-06-05.md`** — 3 decisions (USDA / perf-claims / 0-tracked-LP). The moment he answers, execute the chosen sweeps. This unblocks weeks of carry. Recommended answers in memo: 1=b-or-a (USDA accuracy), 2=a (kill 24-hour, keep same-day), 3=a (scenarios is canonical).
+2. **Monday rotation** — Python JSON-LD parse on homepage + about + 1 suburb; AEO entity check (Person/LocalBusiness consistency); PageSpeed (likely UNVERIFIED — PSI quota 30/30); Google Ads optimizer log.
+3. **If blog post hits 7 days (Sat 2026-06-06)** — flag weekly content task (last post 2026-05-30).
+4. **Schema-type unification carry** (Mon) — MortgageBroker vs LocalBusiness still pending Adam.
+5. **Brand gold hex confirm** (Tue carry) — update SKILL.md to `#8B6E24` or revert style.css.
+6. **products.html 10 in-card 1003 routing (43-run carry)** — re-surface.
+7. **Cache-buster sweep** — if Adam rolls another `?v=...` overnight, run 5-sample sweep early.
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 

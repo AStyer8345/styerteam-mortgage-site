@@ -1,3 +1,13 @@
+## 2026-06-05 — styer-site-daily Friday rotation (Content Planning + AEO Review)
+
+- **2 doc edits, 0 site-HTML files.** CONTEXT.md (suburb count 24→25, USDA carry reframed, blockers point to memo, Last Worked On + What's Next replaced) + new `run-logs/adam-batch-memo-2026-06-05.md`. Every remaining sweep is genuinely Adam-decision-gated.
+- **USDA carry REFRAMED via content read (headline finding).** The 143-mention "mechanical cleanup" frame was wrong. Mentions split into 2 classes: **8 pages PROMOTE USDA zero-down as the lead product** (smithville 23, elgin 21, florence 15, jarrell 14, bastrop 15, san-marcos 12, kyle 10, new-braunfels 7 — hero subtitle + `<h3>`/`<h4>` + FAQ "yes most of X qualifies"), advertising a product Adam states he does NOT originate; **4 pages STEER AWAY** (round-rock 9, austin-area 11, taylor 5, cedar-park 1 — honest "no longer eligible" context, keep). Round Rock's 9 are legit class-B, NOT 2026-04-29 partial-pass misses. This is an accuracy/compliance question, not a tidy-up.
+- **Perf-claim carry root cause NAMED.** It never resolves because GOALS.md ("no performance-metric marketing") contradicts voice-guide line 48 ("same-day pre-approvals — a real differentiator"). Adam must reconcile his two docs. "21-day close" already 0 sitewide (win met); remainder = same-day/24-hour speed claims (~89). Recommend: kill 24-hour, keep same-day.
+- **Adam batch-decision memo created.** `run-logs/adam-batch-memo-2026-06-05.md` consolidates all 3 suburb-cluster carries (USDA / perf-claims / 0-tracked-LP) with exact file lists + one decision + a recommendation each. Converts weeks of carry into a single "1=x, 2=y, 3=z" reply.
+- **Friday rotation clean.** Blog 32/32 posts carry tracked-LP CTA; latest post 2026-05-30 (6 days, hits 7 tomorrow); physician post AEO-healthy (question-form H2s + FAQPage + 5 CTAs); why-home-prices carry refined (CTAs present, FAQPage still content-gated).
+- **Re-Verify Gate:** sitemap+robots 200/200, 131 live=local (md5 identical), conversion 10/10 (HTML-token, no pipeline pollution), blog 32/32 CTAs, legacy entity 0/0/0, trust strip Phase A intact, gold-hex carry holds, usda.html noindex+out-of-sitemap. 12 claims checked, 0 stale-and-still-claimed, 2 carries reframed.
+- **SEO/SEM backlog:** 0 eligible (P0–P3 done, P4 GSC-blocked, P5 content-paused). **NotebookLM:** 64th consecutive dead run.
+
 ## 2026-06-04 — styer-site-daily Thursday rotation (Internal Linking + Funnel Flow)
 
 - **0 site files modified, 0 commits.** 0-mutation discipline applied — today's run value was carry refinement with hard cluster-wide counts, not mechanical fixes.
