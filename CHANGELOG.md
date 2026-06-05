@@ -1,3 +1,12 @@
+## 2026-06-05 — styer-content-weekly (Blog Editor — DSCR niche citation pass)
+
+- **1 page refreshed: `dscr-loan-austin-tx.html`.** Standing JUMBO priority confirmed DONE (2026-05-29). Resumed niche-first queue → priority #1 = niche hub with <3 external citations.
+- **Citation audit across all 18 niche pages.** Only `loans/jumbo.html` (6, self-built) + `mortgage-for-business-owners-austin.html` (4) clear the 3-citation bar. **16 niche hubs sit at 0.** Picked DSCR as highest-leverage: flagship product Adam originates, CONTEXT.md-flagged SERP gap (not top-10), named depth-reference page.
+- **Mandatory AEO citation pass: 0 → 5 authoritative external citations.** (1) **CFPB ATR/QM 12 CFR 1026.43** — new paragraph framing DSCR as a business-purpose loan exempt from the consumer Ability-to-Repay rule (the legal reason rent-based qualifying works — a precise AEO fact). (2) **IRS Schedule E** — rental-depreciation mention. (3) **Unlock MLS / ABoR** — new sourced Austin data point ($445K April 2026 metro median, 16K listings) replacing unsourced "2026 Austin data". (4) **Freddie Mac PMMS** — anchored the representative 7.375% DSCR rate to the 6.37% May-7 conforming benchmark + 0.75–1.5% DSCR spread. (5) **Fannie Mae LLPA matrix** — conventional investment-property add-ons in the DSCR-vs-conventional section.
+- **Enrichment (4 of 5):** Austin data point ✓ · sourced rate data ✓ · enriched hero alt text ✓ (generic "Austin TX Mortgage Broker" → "DSCR and investment-property mortgage lender … qualifying rental loans on property cash flow") · tighter CTA sign-off ✓ ("Talk soon — Adam Styer"). Anecdote skipped — `memory/people/` does not exist; will not fabricate (per SKILL.md correctness rules).
+- **Mechanics.** Word count 4,281 → 4,567. All 6 JSON-LD blocks re-validated (Python). dateModified 2026-03-04 → 2026-06-05; sitemap lastmod 2026-05-28 → 2026-06-05. Title + H1 + slug preserved (protects existing ranking). Blog title lint clean. Queued for GSC reindex.
+- **Logged for next runs:** 15 niche hubs remain at 0 citations — `non-qm-loans.html` is the CONTEXT-flagged next target. See `run-logs/editor-queue.md`.
+
 ## 2026-06-05 — styer-site-daily Friday rotation (Content Planning + AEO Review)
 
 - **2 doc edits, 0 site-HTML files.** CONTEXT.md (suburb count 24→25, USDA carry reframed, blockers point to memo, Last Worked On + What's Next replaced) + new `run-logs/adam-batch-memo-2026-06-05.md`. Every remaining sweep is genuinely Adam-decision-gated.
