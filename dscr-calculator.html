@@ -351,7 +351,7 @@
       color: #fff;
       position: relative; z-index: 1;
     }
-    .dscr-calculator-module .dscr-band-tag .dot {
+    .dscr-calculator-module .dscr-band-tag .dscr-band-dot {
       width: 8px; height: 8px; border-radius: 50%;
       background: var(--dscr-green);
     }
@@ -750,7 +750,7 @@
                 <span class="dscr-score-x">x</span>
               </div>
               <span class="dscr-band-tag" id="dscr-band-tag">
-                <span class="dot"></span>
+                <span class="dscr-band-dot"></span>
                 <span id="dscr-band-label">Solid coverage</span>
               </span>
 
@@ -860,7 +860,7 @@
     <!-- Final CTA (uses existing site CTA style) -->
     <section class="section bg-navy cta-spotlight">
       <div class="container text-center">
-        <h2 class="text-white">Ready to put the math in front of a real underwriter's eye?</h2>
+        <h2 class="text-white">Ready for Adam to review the real scenario?</h2>
         <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Send the property, rent estimate, and your rough plan. I'll come back with whether there's a DSCR path — usually same day.</p>
         <a href="/scenario.html" class="btn btn-primary btn-lg">Send Your Scenario</a>
         <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-white btn-lg" target="_blank" rel="noopener" style="margin-left:1rem;">Book 15-Min Call</a>
@@ -958,19 +958,24 @@
 
     // Meter range and band tick positions used to map a DSCR value to a 0..100% position on the meter.
     // Layout below MUST match the CSS grid-template-columns on .dscr-meter-track:
-    //   <0.75 → 0–34%   |   0.75–0.99 → 34–45%   |   1.00–1.14 → 45–52%   |   1.15+ → 52–100%
+    //   <0.75 → 0–35.05% | 0.75–0.99 → 35.05–46.26% | 1.00–1.14 → 46.26–53.27% | 1.15+ → 53.27–100%
+    var METER_END_BELOW = 35.05;
+    var METER_END_COMMON = 46.26;
+    var METER_END_SOLID = 53.27;
     function ratioToPercent(r) {
       if (!isFinite(r) || r < 0) return 0;
       if (r >= 1.5) return 100;
-      if (r >= 1.15) return 52 + ((r - 1.15) / (1.5 - 1.15)) * 48;
-      if (r >= 1.00) return 45 + ((r - 1.00) / (1.15 - 1.00)) * 7;
-      if (r >= 0.75) return 34 + ((r - 0.75) / (1.00 - 0.75)) * 11;
+      if (r >= 1.15) return METER_END_SOLID + ((r - 1.15) / (1.5 - 1.15)) * (100 - METER_END_SOLID);
+      if (r >= 1.00) return METER_END_COMMON + ((r - 1.00) / (1.15 - 1.00)) * (METER_END_SOLID - METER_END_COMMON);
+      if (r >= 0.75) return METER_END_BELOW + ((r - 0.75) / (1.00 - 0.75)) * (METER_END_COMMON - METER_END_BELOW);
       // below 0.75
-      return Math.max(2, (r / 0.75) * 34);
+      return Math.max(2, (r / 0.75) * METER_END_BELOW);
     }
 
     // ----- Helpers -----------------------------------------------
-    function $(id) { return document.getElementById(id); }
+    var root = document.querySelector(".dscr-calculator-module");
+    if (!root) return;
+    function $(id) { return root.querySelector("#" + id); }
     function num(el) {
       if (!el) return 0;
       var v = parseFloat(el.value);
@@ -1015,7 +1020,7 @@
 
     var scoreEl = $("dscr-score");
     var bandLabelEl = $("dscr-band-label");
-    var bandTagDot = document.querySelector("#dscr-band-tag .dot");
+    var bandTagDot = root.querySelector("#dscr-band-tag .dscr-band-dot");
     var meterMarker = $("dscr-meter-marker");
     var cashflowEl = $("dscr-cashflow");
     var statusEl = $("dscr-status");
@@ -1064,12 +1069,30 @@
       if (inputs.rent < 0)  { setError("dscr-rent",  "Rent cannot be negative."); ok = false; }
 
       if (inputs.downAmount < 0) { setError("dscr-down", "Down payment cannot be negative."); ok = false; }
-      if (inputs.downAmount > inputs.price && inputs.price > 0) {
+      if (inputs.downAmount > inputs.price) {
         setError("dscr-down", "Down payment cannot exceed purchase price.");
         ok = false;
       }
       if (inputs.loan < 0) { ok = false; }
       return ok;
+    }
+
+    function setInvalidState() {
+      scoreEl.textContent = "—";
+      bandLabelEl.textContent = "Check inputs";
+      if (bandTagDot) bandTagDot.style.background = "#9CA3AF";
+      statusEl.classList.remove("tone-green", "tone-blue", "tone-amber", "tone-red");
+      statusEl.classList.add("tone-red");
+      statusTitleEl.textContent = "Fix the highlighted input";
+      statusMsgEl.textContent = "Once the input is corrected, the DSCR estimate will update automatically.";
+      meterMarker.style.left = "0%";
+      cashflowEl.textContent = "—";
+      cashflowEl.classList.remove("positive", "negative");
+      piOut.textContent = "—";
+      taxOut.textContent = "—";
+      insOut.textContent = "—";
+      hoaOut.textContent = "—";
+      pitiaOut.textContent = "—";
     }
 
     // ----- Main compute ------------------------------------------
@@ -1097,7 +1120,10 @@
       // Live "loan amount" helper text
       loanAmtEl.textContent = $currency(loan);
 
-      if (!valid) return;
+      if (!valid) {
+        setInvalidState();
+        return;
+      }
 
       var pi = monthlyPI(loan, rate, years);
       var taxM = annualTax / 12;
