@@ -11,6 +11,7 @@ const ratesJsonUpdater = fs.readFileSync('netlify/functions/lib/rates-json-updat
 const austinRates = fs.readFileSync('austin-mortgage-rates.html', 'utf8');
 const homepage = fs.readFileSync('index.html', 'utf8');
 const scenarioPage = fs.readFileSync('scenario.html', 'utf8');
+const stylesheet = fs.readFileSync('style.css', 'utf8');
 
 test('quick quote redirect does not put contact details in the URL', () => {
   assert.doesNotMatch(script, /tyParams\.set\('(email|name|phone)'/);
@@ -40,6 +41,12 @@ test('homepage leads with lightweight scenario contact paths before the full app
   assert.match(homepage, /href="https:\/\/calendly\.com\/adamstyer\/15minutes"[^>]*>Book 15-Min Call<\/a>/);
   assert.match(homepage, /href="tel:\+15129566010"/);
   assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
+});
+
+test('homepage keeps Adam cutout visible on desktop hero', () => {
+  assert.match(homepage, /class="hero-cutout"/);
+  assert.match(homepage, /assets\/adam-cutout\.webp/);
+  assert.doesNotMatch(stylesheet, /@media\s*\(min-width:769px\)\s*\{\.hero-cutout\{display:none\}\}/);
 });
 
 test('scenario page uses portal language and keeps a short note fallback', () => {
