@@ -33,5 +33,4 @@ header.scrolled .nav-links a.nav-phone:hover{color:var(--color-gold)}
 .hero-glass-card-2col .hero-col-authority .hero-authority-inner{max-width:100%;margin-bottom:1rem}
 .hero-glass-card-2col .hero-col-form{flex:1 1 50%}
 .hero-glass-card-2col .hero-col-form .hero-quick-form-glass{margin-bottom:0}
-@media (min-width:769px){.hero-cutout{display:none}}
 @media (max-width:768px){.hero-glass-card-2col{max-width:100%}.hero-glass-card-2col .hero-glass-row{flex-direction:column;gap:var(--spacing-lg)}}
