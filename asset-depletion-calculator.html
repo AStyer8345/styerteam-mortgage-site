@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asset Depletion Income Calculator | Estimate Monthly Asset Utilization | Adam Styer | NMLS #513013</title>
+  <meta name="description" content="Estimate monthly asset-utilization income from checking, brokerage, and retirement balances. Educational planning calculator for high-net-worth, retiree, and self-employed mortgage scenarios. Adam Styer, NMLS #513013.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Asset Depletion Income Calculator | Adam Styer">
+  <meta property="og:description" content="Estimate how liquid assets may translate into qualifying monthly income for high-net-worth, retiree, and founder mortgage planning.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://styermortgage.com/asset-depletion-calculator.html">
+  <meta property="og:image" content="https://styermortgage.com/assets/og-image.png">
+  <meta property="og:site_name" content="Adam Styer | HyperSmart Home Loans">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Asset Depletion Income Calculator">
+  <meta name="twitter:description" content="Estimate monthly income from liquid assets across 36 / 60 / 84 month depletion periods. Educational planning only.">
+  <meta name="twitter:image" content="https://styermortgage.com/assets/og-image.png">
+
+  <link rel="canonical" href="https://styermortgage.com/asset-depletion-calculator.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
+  <link rel="stylesheet" href="/style.css?v=20260531">
+
+  <script>window.dataLayer = window.dataLayer || [];</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- WebPage / Calculator schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Asset Depletion Income Calculator",
+    "url": "https://styermortgage.com/asset-depletion-calculator.html",
+    "description": "Educational planning calculator that estimates monthly asset-utilization income from liquid balances across 36, 60, and 84 month depletion periods.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Adam Styer | HyperSmart Home Loans",
+      "url": "https://styermortgage.com"
+    },
+    "about": {
+      "@type": "FinancialProduct",
+      "name": "Asset Depletion Mortgage Planning"
+    }
+  }
+  </script>
+
+  <!-- ==========================================================================
+       START ASSET DEPLETION CALCULATOR MODULE — STYLES
+       Scoped under .asset-depletion-calculator-module so this block can be
+       copy-pasted into other landing pages without leaking styles.
+       ========================================================================== -->
+  <style>
+    .asset-depletion-calculator-module {
+      --adc-navy: var(--color-navy, #0A1F3F);
+      --adc-navy-deep: #06152C;
+      --adc-gold: var(--color-gold, #8B6E24);
+      --adc-gold-soft: rgba(139, 110, 36, 0.12);
+      --adc-white: #FFFFFF;
+      --adc-light: #F7F8FA;
+      --adc-border: #E5E7EB;
+      --adc-text: #1F2937;
+      --adc-muted: #6B7280;
+      --adc-success: #047857;
+      --adc-success-soft: rgba(4, 120, 87, 0.10);
+      --adc-warn: #B45309;
+      --adc-warn-soft: rgba(180, 83, 9, 0.10);
+      --adc-alert: #B91C1C;
+      --adc-alert-soft: rgba(185, 28, 28, 0.08);
+      --adc-radius: 14px;
+      --adc-shadow: 0 14px 38px -18px rgba(10, 31, 63, 0.35);
+
+      font-family: var(--font-primary, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
+      color: var(--adc-text);
+      padding: clamp(2rem, 4vw, 3.5rem) 0;
+      background:
+        radial-gradient(1200px 600px at -10% -20%, rgba(10,31,63,0.05), transparent 60%),
+        radial-gradient(900px 500px at 110% 0%, rgba(139,110,36,0.06), transparent 60%),
+        var(--adc-light);
+    }
+    .asset-depletion-calculator-module *,
+    .asset-depletion-calculator-module *::before,
+    .asset-depletion-calculator-module *::after { box-sizing: border-box; }
+
+    .adc-container { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
+
+    .adc-heading {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      color: var(--adc-navy);
+      font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
+      margin: 0 0 .25rem;
+      line-height: 1.2;
+    }
+    .adc-sub {
+      color: var(--adc-muted);
+      font-size: .95rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .adc-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 960px) { .adc-grid { grid-template-columns: 1fr; } }
+
+    /* Cards */
+    .adc-card {
+      background: var(--adc-white);
+      border: 1px solid var(--adc-border);
+      border-radius: var(--adc-radius);
+      box-shadow: var(--adc-shadow);
+      padding: clamp(1.25rem, 2vw, 1.75rem);
+    }
+    .adc-card + .adc-card { margin-top: 1.25rem; }
+
+    .adc-card-title {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: 1.15rem;
+      color: var(--adc-navy);
+      margin: 0 0 .25rem;
+    }
+    .adc-card-desc {
+      font-size: .85rem;
+      color: var(--adc-muted);
+      margin: 0 0 1rem;
+    }
+
+    /* Inputs */
+    .adc-field { margin-bottom: 1rem; }
+    .adc-label {
+      display: block;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--adc-navy);
+      margin-bottom: .35rem;
+      letter-spacing: .01em;
+    }
+    .adc-help {
+      display: block;
+      font-size: .72rem;
+      color: var(--adc-muted);
+      margin-top: .25rem;
+      line-height: 1.4;
+    }
+    .adc-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .adc-input-prefix {
+      position: absolute;
+      left: .85rem;
+      color: var(--adc-muted);
+      font-size: .9rem;
+      font-weight: 600;
+      pointer-events: none;
+    }
+    .adc-input {
+      width: 100%;
+      padding: .7rem .85rem .7rem 1.65rem;
+      font-family: inherit;
+      font-size: .95rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--adc-text);
+      background: var(--adc-white);
+      border: 1px solid var(--adc-border);
+      border-radius: 10px;
+      transition: border-color .15s ease, box-shadow .15s ease;
+      -moz-appearance: textfield;
+    }
+    .adc-input::-webkit-outer-spin-button,
+    .adc-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .adc-input:focus {
+      outline: none;
+      border-color: var(--adc-gold);
+      box-shadow: 0 0 0 3px rgba(139,110,36,0.18);
+    }
+    .adc-input--no-prefix { padding-left: .85rem; }
+
+    /* Percentage inputs */
+    .adc-input-suffix {
+      position: absolute;
+      right: .85rem;
+      color: var(--adc-muted);
+      font-size: .85rem;
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    /* Segmented control */
+    .adc-segmented {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      background: var(--adc-light);
+      border: 1px solid var(--adc-border);
+      border-radius: 999px;
+      padding: 4px;
+    }
+    .adc-seg-btn {
+      flex: 1 1 auto;
+      min-width: 70px;
+      padding: .55rem .85rem;
+      border: none;
+      background: transparent;
+      color: var(--adc-muted);
+      font-family: inherit;
+      font-size: .85rem;
+      font-weight: 600;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease, box-shadow .15s ease;
+    }
+    .adc-seg-btn:hover { color: var(--adc-navy); }
+    .adc-seg-btn.is-active {
+      background: var(--adc-navy);
+      color: #fff;
+      box-shadow: 0 4px 10px -4px rgba(10,31,63,0.4);
+    }
+    .adc-seg-btn--alt.is-active {
+      background: var(--adc-gold);
+      color: #fff;
+    }
+
+    /* Advanced accordion */
+    .adc-accordion {
+      margin-top: 1rem;
+      border-top: 1px solid var(--adc-border);
+      padding-top: 1rem;
+    }
+    .adc-accordion-toggle {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--adc-navy);
+      font-family: inherit;
+      font-size: .85rem;
+      font-weight: 600;
+      padding: 0;
+    }
+    .adc-accordion-toggle::after {
+      content: "+";
+      font-size: 1.2rem;
+      line-height: 1;
+      color: var(--adc-gold);
+      transition: transform .2s ease;
+    }
+    .adc-accordion-toggle[aria-expanded="true"]::after {
+      transform: rotate(45deg);
+    }
+    .adc-accordion-body {
+      display: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--adc-border);
+    }
+    .adc-accordion-body.is-open { display: block; }
+
+    .adc-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .85rem;
+    }
+    @media (max-width: 520px) { .adc-grid-2 { grid-template-columns: 1fr; } }
+
+    /* Hero number */
+    .adc-hero {
+      background: linear-gradient(135deg, var(--adc-navy) 0%, var(--adc-navy-deep) 100%);
+      color: #fff;
+      border-radius: var(--adc-radius);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .adc-hero::after {
+      content: "";
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(139,110,36,0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .adc-hero-label {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 .25rem;
+      font-weight: 600;
+    }
+    .adc-hero-number {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: clamp(2.1rem, 1.4rem + 3vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+    .adc-hero-number-period {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--adc-gold);
+      margin-left: .35rem;
+      font-family: var(--font-primary, 'Inter', sans-serif);
+    }
+    .adc-hero-sub {
+      margin: .5rem 0 0;
+      font-size: .85rem;
+      color: rgba(255,255,255,0.78);
+    }
+
+    /* Period comparison cards */
+    .adc-period-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .65rem;
+      margin-top: 1.25rem;
+    }
+    @media (max-width: 520px) { .adc-period-cards { grid-template-columns: 1fr; } }
+    .adc-period {
+      cursor: pointer;
+      text-align: left;
+      background: var(--adc-white);
+      border: 1px solid var(--adc-border);
+      border-radius: 10px;
+      padding: .85rem;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease, background .15s ease;
+      font-family: inherit;
+    }
+    .adc-period:hover {
+      transform: translateY(-2px);
+      border-color: var(--adc-gold);
+      box-shadow: 0 8px 16px -10px rgba(10,31,63,0.25);
+    }
+    .adc-period.is-selected {
+      border-color: var(--adc-gold);
+      background: linear-gradient(135deg, #fff 0%, var(--adc-gold-soft) 100%);
+      box-shadow: 0 0 0 2px rgba(139,110,36,0.35) inset;
+    }
+    .adc-period-label {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--adc-muted);
+      font-weight: 700;
+    }
+    .adc-period-months {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--adc-navy);
+      line-height: 1.1;
+      margin-top: .15rem;
+    }
+    .adc-period-income {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--adc-text);
+      margin-top: .5rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .adc-period-meta {
+      font-size: .7rem;
+      color: var(--adc-muted);
+      margin-top: .15rem;
+    }
+
+    /* Result rows */
+    .adc-result-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+    .adc-result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding: .55rem 0;
+      border-bottom: 1px solid var(--adc-border);
+    }
+    .adc-result-row:last-child { border-bottom: none; }
+    .adc-result-row--total {
+      border-top: 2px solid var(--adc-navy);
+      border-bottom: none;
+      padding-top: .85rem;
+      margin-top: .35rem;
+    }
+    .adc-result-label {
+      font-size: .85rem;
+      color: var(--adc-muted);
+    }
+    .adc-result-value {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--adc-navy);
+      font-variant-numeric: tabular-nums;
+    }
+    .adc-result-row--total .adc-result-label { color: var(--adc-navy); font-weight: 700; }
+    .adc-result-row--total .adc-result-value { font-size: 1.1rem; }
+
+    /* Coverage meter */
+    .adc-coverage {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      background: var(--adc-light);
+      border-radius: 10px;
+      border: 1px solid var(--adc-border);
+    }
+    .adc-coverage-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: .55rem;
+    }
+    .adc-coverage-title {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--adc-navy);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .adc-coverage-ratio {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--adc-navy);
+      font-variant-numeric: tabular-nums;
+    }
+    .adc-bar {
+      position: relative;
+      width: 100%;
+      height: 14px;
+      background: #E5E7EB;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .adc-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--adc-gold), #C49B46);
+      transition: width .4s ease, background .2s ease;
+      border-radius: 999px;
+    }
+    .adc-bar-fill--strong { background: linear-gradient(90deg, var(--adc-success), #10B981); }
+    .adc-bar-fill--warn { background: linear-gradient(90deg, var(--adc-warn), #D97706); }
+    .adc-bar-fill--alert { background: linear-gradient(90deg, var(--adc-alert), #DC2626); }
+    .adc-bar-marker {
+      position: absolute;
+      top: -4px; bottom: -4px;
+      width: 2px;
+      background: var(--adc-navy);
+      opacity: .55;
+    }
+    .adc-coverage-foot {
+      display: flex;
+      justify-content: space-between;
+      margin-top: .4rem;
+      font-size: .72rem;
+      color: var(--adc-muted);
+    }
+
+    /* Status card */
+    .adc-status {
+      margin-top: 1.25rem;
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--adc-gold);
+      background: var(--adc-gold-soft);
+    }
+    .adc-status--strong { border-left-color: var(--adc-success); background: var(--adc-success-soft); }
+    .adc-status--warn { border-left-color: var(--adc-warn); background: var(--adc-warn-soft); }
+    .adc-status--alert { border-left-color: var(--adc-alert); background: var(--adc-alert-soft); }
+    .adc-status-label {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--adc-navy);
+      margin: 0 0 .25rem;
+    }
+    .adc-status-title {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: 1.1rem;
+      color: var(--adc-navy);
+      margin: 0 0 .35rem;
+    }
+    .adc-status-msg {
+      font-size: .9rem;
+      color: var(--adc-text);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Compliance lines */
+    .adc-disclaimer {
+      margin-top: 1rem;
+      font-size: .72rem;
+      color: var(--adc-muted);
+      line-height: 1.55;
+    }
+
+    /* CTA inside module */
+    .adc-cta {
+      margin-top: 1.5rem;
+      background: linear-gradient(135deg, var(--adc-navy) 0%, var(--adc-navy-deep) 100%);
+      color: #fff;
+      border-radius: var(--adc-radius);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      text-align: center;
+    }
+    .adc-cta h3 {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      color: #fff;
+      font-size: clamp(1.25rem, 1rem + 1vw, 1.65rem);
+      margin: 0 0 .65rem;
+    }
+    .adc-cta p {
+      color: rgba(255,255,255,0.85);
+      margin: 0 auto 1.25rem;
+      max-width: 560px;
+      font-size: .95rem;
+    }
+    .adc-cta-row {
+      display: flex;
+      gap: .65rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .adc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .8rem 1.4rem;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform .15s ease, background-color .15s ease, color .15s ease, box-shadow .15s ease;
+    }
+    .adc-btn-primary {
+      background: var(--adc-gold);
+      color: #fff;
+    }
+    .adc-btn-primary:hover {
+      background: #A58530;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px -6px rgba(139,110,36,0.55);
+    }
+    .adc-btn-ghost {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.5);
+    }
+    .adc-btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+      color: #fff;
+    }
+    .adc-cta-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: rgba(255,255,255,0.7);
+      font-size: .8rem;
+      text-decoration: underline;
+    }
+    .adc-cta-link:hover { color: #fff; }
+
+    /* Email form (only visible if WEBHOOK_URL set) */
+    .adc-email {
+      margin-top: 1.25rem;
+      background: var(--adc-white);
+      border: 1px solid var(--adc-border);
+      border-radius: var(--adc-radius);
+      padding: 1.25rem;
+    }
+    .adc-email[hidden] { display: none; }
+    .adc-email h4 {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      color: var(--adc-navy);
+      margin: 0 0 .85rem;
+      font-size: 1.05rem;
+    }
+    .adc-email-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+    @media (max-width: 520px) { .adc-email-grid { grid-template-columns: 1fr; } }
+    .adc-email-full { grid-column: 1 / -1; }
+    .adc-email-msg {
+      margin-top: .75rem;
+      font-size: .85rem;
+      min-height: 1.2em;
+    }
+    .adc-email-msg--ok { color: var(--adc-success); }
+    .adc-email-msg--err { color: var(--adc-alert); }
+
+    /* Educational section */
+    .adc-edu {
+      max-width: 820px;
+      margin: 3rem auto 0;
+      padding: 0 1.25rem;
+    }
+    .adc-edu h2 {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      color: var(--adc-navy);
+      font-size: clamp(1.4rem, 1.1rem + 1vw, 1.8rem);
+      margin: 0 0 .75rem;
+    }
+    .adc-edu h3 {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      color: var(--adc-navy);
+      font-size: 1.1rem;
+      margin: 1.5rem 0 .5rem;
+    }
+    .adc-edu p {
+      color: var(--adc-text);
+      line-height: 1.7;
+      font-size: .95rem;
+      margin: 0 0 .85rem;
+    }
+
+    /* Accessibility */
+    .adc-sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .asset-depletion-calculator-module *,
+      .asset-depletion-calculator-module *::before,
+      .asset-depletion-calculator-module *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+  <!-- END ASSET DEPLETION CALCULATOR MODULE — STYLES -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <a href="#adc-main" class="skip-link">Skip to calculator</a>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <img src="/assets/logo.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
+      </a>
+      <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li class="nav-has-dropdown"><a href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li><a href="/non-qm-loans.html">Non-QM Loans</a></li><li><a href="/dscr-loan-austin-tx.html">DSCR Loans</a></li><li><a href="/self-employed-mortgage-austin.html">Self-Employed Mortgage</a></li><li><a href="/bank-statement-loans.html">Bank Statement Loans</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth</a></li><li><a href="/investor-loans.html">Investor Loans</a></li></ul></li>
+        <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li><li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li><li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li><li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li><li><a href="/resources/first-time-buyer-guide/">Buyer Guide</a></li><li><a href="/scenarios.html">Scenarios</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/rate-check.html">Rate Check</a></li><li><a href="/realtors.html">For Realtors</a></li></ul></li>
+        <li><a href="/testimonials.html">Testimonials</a></li>
+        <li class="nav-has-dropdown"><a href="/contact.html">Contact</a><ul class="nav-dropdown"><li><a href="/about.html">About Adam</a></li></ul></li>
+        <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/scenario.html" class="nav-cta">Send Your Scenario</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="adc-main">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb bg-light">
+      <div class="container">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb-list" style="list-style:none;display:flex;gap:.5rem;padding:.75rem 0;margin:0;font-size:.85rem;">
+            <li><a href="/index.html">Home</a></li>
+            <li aria-hidden="true">›</li>
+            <li><a href="/calculators.html">Calculators</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li>
+            <li aria-hidden="true">›</li>
+            <li aria-current="page">Asset Depletion Calculator</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="calc-tool-hero" style="background:linear-gradient(135deg,#0A1F3F 0%,#0d2847 100%);color:#fff;padding:clamp(2.5rem,5vw,4rem) 0;text-align:center;">
+      <div class="container">
+        <p style="font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#C49B46;margin:0 0 .5rem;font-weight:600;">Asset-Based Mortgage Planning</p>
+        <h1 style="font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.9rem,1.4rem + 2vw,2.6rem);line-height:1.15;margin:0 0 .75rem;max-width:780px;margin-left:auto;margin-right:auto;">Turn Assets Into a Mortgage Planning Number</h1>
+        <p style="font-size:1.05rem;color:rgba(255,255,255,0.88);max-width:680px;margin:0 auto 1.5rem;line-height:1.55;">Estimate how checking, brokerage, retirement, and other liquid assets may translate into monthly income for high-net-worth or retiree mortgage planning.</p>
+        <div style="display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;">
+          <a href="#adc-calculator" class="btn btn-primary" style="background:#F2C840;color:#0D1F3C;padding:.85rem 1.6rem;border-radius:10px;font-weight:700;text-decoration:none;">Start Calculating</a>
+          <a href="/scenario.html" class="btn btn-hero-ghost" style="background:transparent;color:#fff;padding:.85rem 1.6rem;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid rgba(255,255,255,0.55);">Send Your Scenario</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         START ASSET DEPLETION CALCULATOR MODULE
+         Copy this entire <section> (and the matching styles + script blocks)
+         into another page to embed the calculator. The wrapper class
+         .asset-depletion-calculator-module scopes everything.
+         ========================================================================== -->
+    <section id="adc-calculator" class="asset-depletion-calculator-module">
+      <div class="adc-container">
+        <header style="text-align:center;max-width:680px;margin:0 auto 1.5rem;">
+          <h2 class="adc-heading">Asset Depletion Income Calculator</h2>
+          <p class="adc-sub">Estimate monthly asset-utilization income across 36, 60, and 84 month depletion periods. For planning only.</p>
+        </header>
+
+        <div class="adc-grid">
+          <!-- INPUTS ============================================== -->
+          <div>
+            <div class="adc-card">
+              <h3 class="adc-card-title">Assets &amp; Income</h3>
+              <p class="adc-card-desc">Defaults are placeholders. Adjust the numbers to match the real asset picture.</p>
+
+              <div class="adc-field">
+                <label class="adc-label" for="adc-checking">Checking / savings balance</label>
+                <div class="adc-input-wrap">
+                  <span class="adc-input-prefix">$</span>
+                  <input id="adc-checking" class="adc-input" type="number" inputmode="decimal" min="0" step="1000" value="250000">
+                </div>
+              </div>
+
+              <div class="adc-field">
+                <label class="adc-label" for="adc-brokerage">Brokerage / non-retirement investments</label>
+                <div class="adc-input-wrap">
+                  <span class="adc-input-prefix">$</span>
+                  <input id="adc-brokerage" class="adc-input" type="number" inputmode="decimal" min="0" step="1000" value="1000000">
+                </div>
+              </div>
+
+              <div class="adc-field">
+                <label class="adc-label" for="adc-retirement">Retirement accounts</label>
+                <div class="adc-input-wrap">
+                  <span class="adc-input-prefix">$</span>
+                  <input id="adc-retirement" class="adc-input" type="number" inputmode="decimal" min="0" step="1000" value="750000">
+                </div>
+              </div>
+
+              <div class="adc-field">
+                <label class="adc-label" for="adc-other">Other liquid assets</label>
+                <div class="adc-input-wrap">
+                  <span class="adc-input-prefix">$</span>
+                  <input id="adc-other" class="adc-input" type="number" inputmode="decimal" min="0" step="1000" value="0">
+                </div>
+              </div>
+
+              <div class="adc-field">
+                <label class="adc-label" for="adc-other-income">Existing monthly income <span style="font-weight:400;color:var(--adc-muted)">(optional)</span></label>
+                <div class="adc-input-wrap">
+                  <span class="adc-input-prefix">$</span>
+                  <input id="adc-other-income" class="adc-input" type="number" inputmode="decimal" min="0" step="100" value="0">
+                </div>
+                <span class="adc-help">Pension, Social Security, W-2, K-1, distributions, etc.</span>
+              </div>
+
+              <div class="adc-field">
+                <label class="adc-label" for="adc-target">Target monthly housing payment <span style="font-weight:400;color:var(--adc-muted)">(optional)</span></label>
+                <div class="adc-input-wrap">
+                  <span class="adc-input-prefix">$</span>
+                  <input id="adc-target" class="adc-input" type="number" inputmode="decimal" min="0" step="100" value="10000">
+                </div>
+                <span class="adc-help">Estimated mortgage payment you want to support.</span>
+              </div>
+
+              <div class="adc-field">
+                <span class="adc-label">Depletion period</span>
+                <div class="adc-segmented" role="tablist" aria-label="Depletion period in months">
+                  <button type="button" class="adc-seg-btn" role="tab" data-period="36">36 mo</button>
+                  <button type="button" class="adc-seg-btn is-active" role="tab" data-period="60" aria-selected="true">60 mo</button>
+                  <button type="button" class="adc-seg-btn" role="tab" data-period="84">84 mo</button>
+                </div>
+                <div class="adc-segmented" role="tablist" aria-label="Reference longer depletion periods" style="margin-top:.4rem;">
+                  <button type="button" class="adc-seg-btn adc-seg-btn--alt" role="tab" data-period="120">120 mo</button>
+                  <button type="button" class="adc-seg-btn adc-seg-btn--alt" role="tab" data-period="240">240 mo</button>
+                  <button type="button" class="adc-seg-btn adc-seg-btn--alt" role="tab" data-period="360">360 mo</button>
+                </div>
+                <span class="adc-help">36 / 60 / 84 are the primary planning views. Longer periods are reference only.</span>
+              </div>
+
+              <!-- Advanced assumptions accordion -->
+              <div class="adc-accordion">
+                <button type="button" class="adc-accordion-toggle" aria-expanded="false" aria-controls="adc-advanced">
+                  Advanced assumptions
+                </button>
+                <div id="adc-advanced" class="adc-accordion-body" role="region">
+                  <p class="adc-card-desc" style="margin-bottom:.85rem;">
+                    Different programs treat assets differently. Adjust the percentage of each asset class included in the estimate. This calculator is for planning only.
+                  </p>
+                  <div class="adc-grid-2">
+                    <div class="adc-field">
+                      <label class="adc-label" for="adc-pct-checking">Checking / savings %</label>
+                      <div class="adc-input-wrap">
+                        <input id="adc-pct-checking" class="adc-input adc-input--no-prefix" type="number" inputmode="decimal" min="0" max="100" step="1" value="100">
+                        <span class="adc-input-suffix">%</span>
+                      </div>
+                    </div>
+                    <div class="adc-field">
+                      <label class="adc-label" for="adc-pct-brokerage">Brokerage %</label>
+                      <div class="adc-input-wrap">
+                        <input id="adc-pct-brokerage" class="adc-input adc-input--no-prefix" type="number" inputmode="decimal" min="0" max="100" step="1" value="100">
+                        <span class="adc-input-suffix">%</span>
+                      </div>
+                    </div>
+                    <div class="adc-field">
+                      <label class="adc-label" for="adc-pct-retirement">Retirement %</label>
+                      <div class="adc-input-wrap">
+                        <input id="adc-pct-retirement" class="adc-input adc-input--no-prefix" type="number" inputmode="decimal" min="0" max="100" step="1" value="70">
+                        <span class="adc-input-suffix">%</span>
+                      </div>
+                    </div>
+                    <div class="adc-field">
+                      <label class="adc-label" for="adc-pct-other">Other liquid %</label>
+                      <div class="adc-input-wrap">
+                        <input id="adc-pct-other" class="adc-input adc-input--no-prefix" type="number" inputmode="decimal" min="0" max="100" step="1" value="100">
+                        <span class="adc-input-suffix">%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULTS ============================================ -->
+          <div>
+            <div class="adc-card">
+              <div class="adc-hero" aria-live="polite" aria-atomic="true">
+                <p class="adc-hero-label">Estimated Monthly Asset Income</p>
+                <p class="adc-hero-number">
+                  <span id="adc-hero-amount">$0</span><span class="adc-hero-number-period" id="adc-hero-period">/mo @ 60 mo</span>
+                </p>
+                <p class="adc-hero-sub">Planning estimate based on adjusted eligible assets ÷ selected depletion period.</p>
+              </div>
+
+              <div class="adc-period-cards" role="group" aria-label="Compare depletion periods">
+                <button type="button" class="adc-period" data-period-card="36">
+                  <span class="adc-period-label">Aggressive</span>
+                  <div class="adc-period-months">36 mo</div>
+                  <div class="adc-period-income" id="adc-period-36">$0</div>
+                  <div class="adc-period-meta">per month</div>
+                </button>
+                <button type="button" class="adc-period is-selected" data-period-card="60" aria-pressed="true">
+                  <span class="adc-period-label">Balanced</span>
+                  <div class="adc-period-months">60 mo</div>
+                  <div class="adc-period-income" id="adc-period-60">$0</div>
+                  <div class="adc-period-meta">per month</div>
+                </button>
+                <button type="button" class="adc-period" data-period-card="84">
+                  <span class="adc-period-label">Conservative</span>
+                  <div class="adc-period-months">84 mo</div>
+                  <div class="adc-period-income" id="adc-period-84">$0</div>
+                  <div class="adc-period-meta">per month</div>
+                </button>
+              </div>
+
+              <ul class="adc-result-list" aria-live="polite">
+                <li class="adc-result-row">
+                  <span class="adc-result-label">Total assets entered</span>
+                  <span class="adc-result-value" id="adc-out-total-assets">$0</span>
+                </li>
+                <li class="adc-result-row">
+                  <span class="adc-result-label">Eligible assets after adjustments</span>
+                  <span class="adc-result-value" id="adc-out-eligible">$0</span>
+                </li>
+                <li class="adc-result-row">
+                  <span class="adc-result-label">Asset-utilization income (selected period)</span>
+                  <span class="adc-result-value" id="adc-out-asset-income">$0</span>
+                </li>
+                <li class="adc-result-row" id="adc-out-existing-row" hidden>
+                  <span class="adc-result-label">Existing monthly income</span>
+                  <span class="adc-result-value" id="adc-out-existing">$0</span>
+                </li>
+                <li class="adc-result-row adc-result-row--total">
+                  <span class="adc-result-label">Total estimated monthly qualifying income</span>
+                  <span class="adc-result-value" id="adc-out-total-income">$0</span>
+                </li>
+              </ul>
+
+              <!-- Coverage meter (only when target payment entered) -->
+              <div class="adc-coverage" id="adc-coverage" hidden>
+                <div class="adc-coverage-head">
+                  <span class="adc-coverage-title">Coverage vs target payment</span>
+                  <span class="adc-coverage-ratio" id="adc-coverage-ratio">—</span>
+                </div>
+                <div class="adc-bar" aria-hidden="true">
+                  <div class="adc-bar-fill" id="adc-bar-fill"></div>
+                  <div class="adc-bar-marker" id="adc-bar-marker" style="left:66%"></div>
+                </div>
+                <div class="adc-coverage-foot">
+                  <span>Total income: <strong id="adc-coverage-income">$0</strong></span>
+                  <span>Target payment: <strong id="adc-coverage-target">$0</strong></span>
+                </div>
+                <p class="adc-result-row" style="border:none;padding:.5rem 0 0;margin:0;">
+                  <span class="adc-result-label" id="adc-surplus-label">Estimated surplus / shortfall</span>
+                  <span class="adc-result-value" id="adc-surplus-value">$0</span>
+                </p>
+              </div>
+
+              <!-- Status card -->
+              <div class="adc-status" id="adc-status" role="status" aria-live="polite">
+                <p class="adc-status-label">Status</p>
+                <h4 class="adc-status-title" id="adc-status-title">Planning estimate</h4>
+                <p class="adc-status-msg" id="adc-status-msg">Enter assets and an optional target payment to see how depletion periods change the picture.</p>
+              </div>
+
+              <p class="adc-disclaimer">
+                Estimates only. Not a quote, loan offer, approval, commitment to lend, or Loan Estimate.
+                Asset-utilization treatment varies by program, asset type, account ownership, liquidity,
+                seasoning, credit profile, property, and full underwriting review.
+              </p>
+            </div>
+
+            <!-- CTA inside module -->
+            <div class="adc-cta">
+              <h3>Want Adam to review the real asset picture?</h3>
+              <p>Send the rough asset mix, income situation, property goal, and timeline. I'll tell you whether an asset-depletion or high-net-worth mortgage path is worth pursuing before asking you to complete a full application.</p>
+              <div class="adc-cta-row">
+                <a class="adc-btn adc-btn-primary" href="/scenario.html">Send Your Scenario</a>
+                <a class="adc-btn adc-btn-ghost" href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Book 15-Min Call</a>
+              </div>
+              <a id="adc-app-link" class="adc-cta-link" href="#" hidden>Already talked with Adam? Start Full Loan Application</a>
+            </div>
+
+            <!-- Email-me-this-analysis (hidden unless WEBHOOK_URL set) -->
+            <div class="adc-email" id="adc-email" hidden>
+              <h4>Email me this analysis</h4>
+              <form id="adc-email-form" novalidate>
+                <div class="adc-email-grid">
+                  <div class="adc-field" style="margin:0;">
+                    <label class="adc-label" for="adc-email-name">Name</label>
+                    <input id="adc-email-name" class="adc-input adc-input--no-prefix" type="text" autocomplete="name" required>
+                  </div>
+                  <div class="adc-field" style="margin:0;">
+                    <label class="adc-label" for="adc-email-addr">Email</label>
+                    <input id="adc-email-addr" class="adc-input adc-input--no-prefix" type="email" autocomplete="email" required>
+                  </div>
+                  <div class="adc-field adc-email-full" style="margin:0;">
+                    <label class="adc-label" for="adc-email-notes">Notes (optional)</label>
+                    <textarea id="adc-email-notes" class="adc-input adc-input--no-prefix" rows="3" style="resize:vertical;min-height:80px;"></textarea>
+                  </div>
+                </div>
+                <div style="display:flex;gap:.65rem;align-items:center;margin-top:.85rem;flex-wrap:wrap;">
+                  <button type="submit" class="adc-btn adc-btn-primary">Email me the analysis</button>
+                  <span class="adc-email-msg" id="adc-email-msg" role="status" aria-live="polite"></span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <p class="adc-disclaimer" style="text-align:center;max-width:780px;margin:1.5rem auto 0;">
+          This calculator is for educational planning only. It does not determine whether any borrower qualifies for a mortgage.
+        </p>
+      </div>
+    </section>
+    <!-- END ASSET DEPLETION CALCULATOR MODULE -->
+
+    <!-- Educational section -->
+    <section style="padding:clamp(2.5rem,5vw,4rem) 0;background:#fff;">
+      <div class="adc-edu">
+        <h2>What asset depletion income actually means</h2>
+        <p>Asset depletion, sometimes called asset utilization or asset dissipation, is a way to estimate monthly income from eligible liquid assets. Instead of relying only on W-2s or tax-return income, a lender may review assets and divide eligible balances over a set number of months.</p>
+
+        <h3>Why 36, 60, and 84 months matter</h3>
+        <p>The shorter the depletion period, the higher the estimated monthly income. The longer the period, the more conservative the estimate. Different programs may use different periods and asset treatment, which is why the same borrower can look very different depending on the structure.</p>
+
+        <h3>Which borrowers use this?</h3>
+        <p>This can be useful for retirees, founders after a liquidity event, high-net-worth borrowers, investors, business owners with low taxable income, and borrowers whose assets tell a stronger story than their tax returns.</p>
+
+        <h3>Which assets usually need a closer review</h3>
+        <p>Retirement accounts, business accounts, recently deposited funds, gifted balances, and accounts in trust or LLC ownership often need additional review. Account ownership, seasoning, liquidity restrictions, and tax treatment can all change how an asset is counted — or whether it is counted at all.</p>
+
+        <p style="font-size:.78rem;color:var(--adc-muted,#6B7280);margin-top:2rem;">
+          Estimates only. Not a quote, loan offer, approval, commitment to lend, or Loan Estimate.
+          Asset-utilization treatment varies by program, asset type, account ownership, liquidity, seasoning,
+          credit profile, property, and full underwriting review.
+        </p>
+      </div>
+    </section>
+
+    <!-- Related pages -->
+    <section style="padding:clamp(2rem,4vw,3rem) 0;background:#F7F8FA;">
+      <div class="container" style="max-width:1180px;margin:0 auto;padding:0 1.25rem;">
+        <h2 style="font-family:'Playfair Display',serif;color:#0A1F3F;font-size:1.4rem;text-align:center;margin:0 0 1.5rem;">Related asset-based mortgage pages</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
+          <a href="/asset-depletion-mortgage-texas.html" style="display:block;background:#fff;padding:1.25rem;border-radius:12px;border:1px solid #E5E7EB;text-decoration:none;color:#0A1F3F;">
+            <strong style="display:block;margin-bottom:.35rem;">Asset Depletion Mortgages — Texas</strong>
+            <span style="font-size:.85rem;color:#6B7280;">Statewide overview of asset-based qualification programs.</span>
+          </a>
+          <a href="/asset-depletion-mortgage-austin-tx.html" style="display:block;background:#fff;padding:1.25rem;border-radius:12px;border:1px solid #E5E7EB;text-decoration:none;color:#0A1F3F;">
+            <strong style="display:block;margin-bottom:.35rem;">Asset Depletion — Austin, TX</strong>
+            <span style="font-size:.85rem;color:#6B7280;">Austin-specific asset-utilization mortgage page.</span>
+          </a>
+          <a href="/high-net-worth-mortgage.html" style="display:block;background:#fff;padding:1.25rem;border-radius:12px;border:1px solid #E5E7EB;text-decoration:none;color:#0A1F3F;">
+            <strong style="display:block;margin-bottom:.35rem;">High-Net-Worth Mortgage</strong>
+            <span style="font-size:.85rem;color:#6B7280;">Private-wealth structures for complex balance sheets.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Adam Styer | HyperSmart Home Loans</h4>
+          <p>Independent mortgage broker specializing in self-employed, private-wealth, and Non-QM mortgage programs across Texas.</p>
+          <p>NMLS #513013 (Adam Styer)<br>NMLS #2653540 (Kyber Mortgage Corporation dba HyperSmart Home Loans)</p>
+        </div>
+        <div class="footer-section">
+          <h4>Loan Types</h4>
+          <ul>
+            <li><a href="/loans/conventional.html">Conventional</a></li>
+            <li><a href="/loans/fha.html">FHA Loans</a></li>
+            <li><a href="/loans/va.html">VA Loans</a></li>
+            <li><a href="/loans/investment.html">Investment Property</a></li>
+            <li><a href="/loans/jumbo.html">Jumbo Loans</a></li>
+            <li><a href="/dscr-loan-austin-tx.html">DSCR Loans</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p><a href="tel:+15129566010">(512) 956-6010</a></p>
+          <p><a href="mailto:adam.styer@hypersmart.loan">adam.styer@hypersmart.loan</a></p>
+          <p>9050 N. Capital of Texas Hwy, Ste 390<br>Austin, Texas 78759</p>
+        </div>
+        <div class="footer-section">
+          <h4>Areas Served</h4>
+          <ul>
+            <li><a href="/round-rock-mortgage-lender.html">Round Rock</a></li>
+            <li><a href="/cedar-park-mortgage-lender.html">Cedar Park</a></li>
+            <li><a href="/leander-mortgage-lender.html">Leander</a></li>
+            <li><a href="/georgetown-mortgage-lender.html">Georgetown</a></li>
+            <li><a href="/pflugerville-mortgage-lender.html">Pflugerville</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Adam Styer | HyperSmart Home Loans. All rights reserved.</p>
+        <p>Adam Styer | HyperSmart Home Loans | NMLS #2653540 | Adam Styer NMLS #513013 | Licensed in Texas | <a href="/texas-complaint-notice.html">Texas Consumer Complaint Notice</a> | <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2653540" target="_blank" rel="noopener" style="color:inherit;">NMLS Consumer Access</a></p>
+        <p>Kyber Mortgage Corporation dba HyperSmart Home Loans, NMLS ID 2653540. Adam Styer, NMLS #513013. Principal address 9050 N. Capital of Texas Hwy, Ste 390, Austin, Texas 78759. This is not an offer for extension of credit or commitment to lend. All loans must satisfy underwriting guidelines. Not all applicants qualify. Information and pricing are subject to change at any time and without notice. Products not available in all areas. Equal Housing Lender.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js?v=20260531" defer></script>
+  <script src="/js/scroll-effects.js?v=20260429" defer></script>
+  <script src="/analytics.js?v=20260417" defer></script>
+
+  <!-- ==========================================================================
+       START ASSET DEPLETION CALCULATOR MODULE — SCRIPT
+       Self-contained IIFE. Reads/writes only DOM within
+       .asset-depletion-calculator-module. Safe to copy with the markup.
+       ========================================================================== -->
+  <script>
+  (function () {
+    'use strict';
+
+    // ----- CONFIG (edit these to adjust behavior) ----------------------------
+    // Active loan application URL. Set to "" to hide the tertiary link.
+    var APPLICATION_URL = "https://hypersmart.my1003app.com/513013/register?time=1779291829279";
+
+    // Webhook for the optional "Email me this analysis" form. Empty = hide.
+    var WEBHOOK_URL = "";
+
+    // Primary depletion periods (visually emphasized cards)
+    var PRIMARY_PERIODS = [36, 60, 84];
+
+    // Default haircut assumptions (percentages, 0–100)
+    var DEFAULT_HAIRCUTS = {
+      checking: 100,
+      brokerage: 100,
+      retirement: 70,
+      other: 100
+    };
+
+    // Compliance / disclaimer copy (used in webhook payload as well)
+    var DISCLAIMER = "Estimates only. Not a quote, loan offer, approval, commitment to lend, or Loan Estimate. Asset-utilization treatment varies by program, asset type, account ownership, liquidity, seasoning, credit profile, property, and full underwriting review.";
+
+    // ----- Helpers -----------------------------------------------------------
+    function $(id) { return document.getElementById(id); }
+    function qsa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+    function num(v) {
+      var n = parseFloat(v);
+      return isFinite(n) && n >= 0 ? n : 0;
+    }
+    function pct(v) {
+      var n = parseFloat(v);
+      if (!isFinite(n)) return 0;
+      if (n < 0) return 0;
+      if (n > 100) return 100;
+      return n;
+    }
+    var currencyFmt = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    });
+    function money(v) {
+      if (!isFinite(v) || v < 0) v = 0;
+      return currencyFmt.format(Math.round(v));
+    }
+
+    // ----- DOM refs ----------------------------------------------------------
+    var els = {
+      checking: $('adc-checking'),
+      brokerage: $('adc-brokerage'),
+      retirement: $('adc-retirement'),
+      other: $('adc-other'),
+      otherIncome: $('adc-other-income'),
+      target: $('adc-target'),
+      pctChecking: $('adc-pct-checking'),
+      pctBrokerage: $('adc-pct-brokerage'),
+      pctRetirement: $('adc-pct-retirement'),
+      pctOther: $('adc-pct-other'),
+      segBtns: qsa('.adc-seg-btn'),
+      periodCards: qsa('.adc-period'),
+      heroAmount: $('adc-hero-amount'),
+      heroPeriod: $('adc-hero-period'),
+      period36: $('adc-period-36'),
+      period60: $('adc-period-60'),
+      period84: $('adc-period-84'),
+      outTotalAssets: $('adc-out-total-assets'),
+      outEligible: $('adc-out-eligible'),
+      outAssetIncome: $('adc-out-asset-income'),
+      outExistingRow: $('adc-out-existing-row'),
+      outExisting: $('adc-out-existing'),
+      outTotalIncome: $('adc-out-total-income'),
+      coverage: $('adc-coverage'),
+      coverageRatio: $('adc-coverage-ratio'),
+      coverageIncome: $('adc-coverage-income'),
+      coverageTarget: $('adc-coverage-target'),
+      barFill: $('adc-bar-fill'),
+      surplusLabel: $('adc-surplus-label'),
+      surplusValue: $('adc-surplus-value'),
+      status: $('adc-status'),
+      statusTitle: $('adc-status-title'),
+      statusMsg: $('adc-status-msg'),
+      appLink: $('adc-app-link'),
+      accordionToggle: document.querySelector('.adc-accordion-toggle'),
+      accordionBody: $('adc-advanced'),
+      emailWrap: $('adc-email'),
+      emailForm: $('adc-email-form'),
+      emailMsg: $('adc-email-msg'),
+      emailName: $('adc-email-name'),
+      emailAddr: $('adc-email-addr'),
+      emailNotes: $('adc-email-notes')
+    };
+
+    // ----- State -------------------------------------------------------------
+    var state = { period: 60 };
+
+    // ----- Wire config -> DOM ------------------------------------------------
+    if (APPLICATION_URL && els.appLink) {
+      els.appLink.href = APPLICATION_URL;
+      els.appLink.target = "_blank";
+      els.appLink.rel = "noopener";
+      els.appLink.hidden = false;
+    }
+    if (WEBHOOK_URL && els.emailWrap) {
+      els.emailWrap.hidden = false;
+    }
+
+    // ----- Core math ---------------------------------------------------------
+    function readInputs() {
+      return {
+        assets: {
+          checking: num(els.checking.value),
+          brokerage: num(els.brokerage.value),
+          retirement: num(els.retirement.value),
+          other: num(els.other.value)
+        },
+        haircuts: {
+          checking: pct(els.pctChecking.value),
+          brokerage: pct(els.pctBrokerage.value),
+          retirement: pct(els.pctRetirement.value),
+          other: pct(els.pctOther.value)
+        },
+        otherIncome: num(els.otherIncome.value),
+        target: num(els.target.value)
+      };
+    }
+
+    function computeEligible(inputs) {
+      var a = inputs.assets, h = inputs.haircuts;
+      return (
+        a.checking   * (h.checking   / 100) +
+        a.brokerage  * (h.brokerage  / 100) +
+        a.retirement * (h.retirement / 100) +
+        a.other      * (h.other      / 100)
+      );
+    }
+
+    function totalAssets(inputs) {
+      var a = inputs.assets;
+      return a.checking + a.brokerage + a.retirement + a.other;
+    }
+
+    function monthlyFromAssets(eligible, periodMonths) {
+      if (!periodMonths || periodMonths <= 0) return 0;
+      return eligible / periodMonths;
+    }
+
+    // ----- Status bands ------------------------------------------------------
+    function computeStatus(totalIncome, target) {
+      if (!target || target <= 0) {
+        return {
+          mod: '',
+          title: 'Planning estimate',
+          msg: 'This shows how different depletion periods can change estimated monthly income. Send the scenario if you want Adam to review which structure may fit.'
+        };
+      }
+      var ratio = totalIncome / target;
+      if (ratio >= 1.5) {
+        return {
+          mod: 'adc-status--strong',
+          title: 'Strong asset-income picture',
+          msg: 'Your estimated asset-utilization income appears meaningfully above the target payment. The next step is reviewing which assets a lender can actually use.'
+        };
+      }
+      if (ratio >= 1.0) {
+        return {
+          mod: 'adc-status--warn',
+          title: 'Worth reviewing',
+          msg: 'The estimated income is in the range where structure matters. Asset type, account ownership, reserves, and program fit can change the answer.'
+        };
+      }
+      return {
+        mod: 'adc-status--alert',
+        title: 'Needs a closer look',
+        msg: 'This estimate is below the target payment, but the file may still have options depending on assets, income, down payment, property type, and loan structure.'
+      };
+    }
+
+    function applyStatus(s) {
+      els.status.classList.remove('adc-status--strong', 'adc-status--warn', 'adc-status--alert');
+      if (s.mod) els.status.classList.add(s.mod);
+      els.statusTitle.textContent = s.title;
+      els.statusMsg.textContent = s.msg;
+    }
+
+    // ----- Render ------------------------------------------------------------
+    function render() {
+      var inputs = readInputs();
+      var totalA = totalAssets(inputs);
+      var eligible = computeEligible(inputs);
+
+      // Period card incomes
+      var income36 = monthlyFromAssets(eligible, 36);
+      var income60 = monthlyFromAssets(eligible, 60);
+      var income84 = monthlyFromAssets(eligible, 84);
+      els.period36.textContent = money(income36);
+      els.period60.textContent = money(income60);
+      els.period84.textContent = money(income84);
+
+      // Selected period
+      var assetIncome = monthlyFromAssets(eligible, state.period);
+      var totalIncome = assetIncome + inputs.otherIncome;
+
+      // Hero
+      els.heroAmount.textContent = money(assetIncome);
+      els.heroPeriod.textContent = '/mo @ ' + state.period + ' mo';
+
+      // Result list
+      els.outTotalAssets.textContent = money(totalA);
+      els.outEligible.textContent = money(eligible);
+      els.outAssetIncome.textContent = money(assetIncome);
+      if (inputs.otherIncome > 0) {
+        els.outExistingRow.hidden = false;
+        els.outExisting.textContent = money(inputs.otherIncome);
+      } else {
+        els.outExistingRow.hidden = true;
+      }
+      els.outTotalIncome.textContent = money(totalIncome);
+
+      // Coverage meter
+      if (inputs.target > 0) {
+        els.coverage.hidden = false;
+        var ratio = inputs.target > 0 ? (totalIncome / inputs.target) : 0;
+        // visual scale: cap at 200% but show ratio number truthfully
+        var widthPct = Math.max(0, Math.min(200, ratio * 100));
+        // Map 0–200% onto 0–100% of bar (so 100% target sits at midpoint ~50%)
+        els.barFill.style.width = (widthPct / 2) + '%';
+        els.barFill.classList.remove('adc-bar-fill--strong', 'adc-bar-fill--warn', 'adc-bar-fill--alert');
+        if (ratio >= 1.5) els.barFill.classList.add('adc-bar-fill--strong');
+        else if (ratio >= 1.0) els.barFill.classList.add('adc-bar-fill--warn');
+        else els.barFill.classList.add('adc-bar-fill--alert');
+
+        els.coverageRatio.textContent = (ratio * 100).toFixed(0) + '% of target';
+        els.coverageIncome.textContent = money(totalIncome);
+        els.coverageTarget.textContent = money(inputs.target);
+
+        var diff = totalIncome - inputs.target;
+        els.surplusLabel.textContent = diff >= 0 ? 'Estimated surplus vs target' : 'Estimated shortfall vs target';
+        els.surplusValue.textContent = money(Math.abs(diff));
+      } else {
+        els.coverage.hidden = true;
+      }
+
+      // Status
+      applyStatus(computeStatus(totalIncome, inputs.target));
+
+      // Period cards selection state
+      els.periodCards.forEach(function (btn) {
+        var p = parseInt(btn.getAttribute('data-period-card'), 10);
+        var sel = (p === state.period);
+        btn.classList.toggle('is-selected', sel);
+        btn.setAttribute('aria-pressed', sel ? 'true' : 'false');
+      });
+      els.segBtns.forEach(function (btn) {
+        var p = parseInt(btn.getAttribute('data-period'), 10);
+        var sel = (p === state.period);
+        btn.classList.toggle('is-active', sel);
+        if (sel) btn.setAttribute('aria-selected', 'true');
+        else btn.removeAttribute('aria-selected');
+      });
+
+      // Stash latest snapshot for webhook
+      lastSnapshot = {
+        inputs: {
+          checking: inputs.assets.checking,
+          brokerage: inputs.assets.brokerage,
+          retirement: inputs.assets.retirement,
+          other: inputs.assets.other,
+          existingMonthlyIncome: inputs.otherIncome,
+          targetMonthlyPayment: inputs.target
+        },
+        assumptions: inputs.haircuts,
+        outputs: {
+          totalAssets: Math.round(totalA),
+          eligibleAssets: Math.round(eligible),
+          assetUtilizationIncome: Math.round(assetIncome),
+          totalQualifyingIncome: Math.round(totalIncome),
+          income36mo: Math.round(income36),
+          income60mo: Math.round(income60),
+          income84mo: Math.round(income84)
+        },
+        selectedDepletionPeriod: state.period,
+        estimatedAssetIncome: Math.round(assetIncome),
+        estimatedTotalIncome: Math.round(totalIncome)
+      };
+    }
+
+    var lastSnapshot = null;
+
+    // ----- Events ------------------------------------------------------------
+    function onInput() { render(); }
+
+    [els.checking, els.brokerage, els.retirement, els.other,
+     els.otherIncome, els.target,
+     els.pctChecking, els.pctBrokerage, els.pctRetirement, els.pctOther
+    ].forEach(function (el) {
+      if (el) el.addEventListener('input', onInput);
+    });
+
+    els.segBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.period = parseInt(btn.getAttribute('data-period'), 10) || 60;
+        render();
+      });
+    });
+
+    els.periodCards.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.period = parseInt(btn.getAttribute('data-period-card'), 10) || 60;
+        render();
+      });
+    });
+
+    if (els.accordionToggle) {
+      els.accordionToggle.addEventListener('click', function () {
+        var open = els.accordionBody.classList.toggle('is-open');
+        els.accordionToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    // ----- Email form (only active when WEBHOOK_URL is set) ------------------
+    if (WEBHOOK_URL && els.emailForm) {
+      els.emailForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = (els.emailName.value || '').trim();
+        var email = (els.emailAddr.value || '').trim();
+        var notes = (els.emailNotes.value || '').trim();
+        els.emailMsg.classList.remove('adc-email-msg--ok', 'adc-email-msg--err');
+
+        if (!name || !email || email.indexOf('@') < 1) {
+          els.emailMsg.textContent = 'Please add your name and a valid email.';
+          els.emailMsg.classList.add('adc-email-msg--err');
+          return;
+        }
+
+        var payload = Object.assign({
+          name: name,
+          email: email,
+          notes: notes,
+          page: 'asset-depletion-calculator',
+          disclaimer: DISCLAIMER
+        }, lastSnapshot || {});
+
+        els.emailMsg.textContent = 'Sending…';
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function (res) {
+          if (!res.ok) throw new Error('http ' + res.status);
+          els.emailMsg.textContent = 'Thanks — Adam will follow up shortly.';
+          els.emailMsg.classList.add('adc-email-msg--ok');
+          els.emailForm.reset();
+        }).catch(function () {
+          els.emailMsg.textContent = "Couldn't send right now. Email adam.styer@hypersmart.loan and Adam will follow up.";
+          els.emailMsg.classList.add('adc-email-msg--err');
+        });
+      });
+    }
+
+    // First render
+    render();
+  })();
+  </script>
+  <!-- END ASSET DEPLETION CALCULATOR MODULE — SCRIPT -->
+</body>
+</html>
