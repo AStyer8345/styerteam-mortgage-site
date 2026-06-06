@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSCR Calculator | Investor Loan Math | Adam Styer | NMLS #513013</title>
+  <meta name="description" content="Free DSCR calculator for Texas real estate investors. Estimate the rent-to-PITIA ratio on an investment property before writing the offer. Adam Styer, NMLS #513013.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DSCR Calculator | Adam Styer | HyperSmart Home Loans">
+  <meta property="og:description" content="Run the DSCR math on a rental property — gross rent vs. estimated PITIA — and send the scenario to Adam if the deal pencils.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://styermortgage.com/dscr-calculator.html">
+  <meta property="og:image" content="https://styermortgage.com/assets/og-image.png">
+  <meta property="og:site_name" content="Adam Styer | HyperSmart Home Loans">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DSCR Calculator | Run the Investor Math">
+  <meta name="twitter:description" content="Estimate whether the rent covers the payment on an investment property. Free DSCR calculator from Adam Styer, NMLS #513013.">
+  <meta name="twitter:image" content="https://styermortgage.com/assets/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+  <link rel="canonical" href="https://styermortgage.com/dscr-calculator.html">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
+
+  <link rel="stylesheet" href="/style.css?v=20260531">
+
+  <script>window.dataLayer = window.dataLayer || [];</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is DSCR and how is it calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DSCR (Debt Service Coverage Ratio) compares a rental property's gross monthly rent to its monthly PITIA payment (Principal, Interest, Taxes, Insurance, HOA). DSCR = Gross Monthly Rent ÷ PITIA. A ratio of 1.0 means the rent covers the payment exactly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a DSCR below 1.0 automatically a bad deal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Many investor properties in competitive Texas markets come in below 1.0 on a simple rent-to-payment calculation. That does not automatically mean weak pricing or a dead file. Credit, reserves, property type, rent source, loan structure, and program fit all matter."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are DSCR loans available for primary residences?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. DSCR loans are business-purpose loans for investment properties only. They are not available for owner-occupied primary residences."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ============================================================
+       DSCR CALCULATOR — PAGE-LEVEL STYLES
+       Scoped to .dscr-calculator-module wherever possible so the
+       block can be lifted into other pages cleanly.
+       ============================================================ -->
+  <style>
+    /* Hero */
+    .dscr-hero {
+      background: linear-gradient(135deg, #0A1F3F 0%, #142d56 55%, #1a3a6c 100%);
+      color: #fff;
+      padding: 4rem 1.5rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .dscr-hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 20% 30%, rgba(139,110,36,0.18) 0, transparent 45%),
+                        radial-gradient(circle at 80% 70%, rgba(16,185,129,0.12) 0, transparent 45%);
+      pointer-events: none;
+    }
+    .dscr-hero .container { position: relative; max-width: 820px; }
+    .dscr-hero h1 {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: clamp(1.9rem, 1.4rem + 2vw, 2.75rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .dscr-hero p.subtitle {
+      font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+      color: rgba(255,255,255,0.85);
+      max-width: 640px;
+      margin: 0 auto 2rem;
+    }
+    .dscr-hero-ctas { display: inline-flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+    .dscr-hero .btn-primary { background: #8B6E24; color: #fff; }
+    .dscr-hero .btn-primary:hover { background: #a3852f; }
+    .dscr-hero .btn-ghost {
+      background: transparent; color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.4);
+    }
+    .dscr-hero .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.7); }
+
+    /* ============================================================
+       START DSCR CALCULATOR MODULE — STYLES
+       ============================================================ */
+    .dscr-calculator-module {
+      --dscr-navy: #0A1F3F;
+      --dscr-navy-2: #142d56;
+      --dscr-gold: #8B6E24;
+      --dscr-gold-soft: #c9a44a;
+      --dscr-green: #10B981;
+      --dscr-amber: #F59E0B;
+      --dscr-red: #E04B3F;
+      --dscr-blue: #2563EB;
+      --dscr-bg: #FAFAF7;
+      --dscr-card: #FFFFFF;
+      --dscr-border: #E5E7EB;
+      --dscr-text: #1F2937;
+      --dscr-muted: #6B7280;
+      --dscr-radius: 14px;
+      --dscr-shadow: 0 10px 30px -12px rgba(10,31,63,0.18);
+
+      background: var(--dscr-bg);
+      padding: 3rem 1rem;
+      font-family: var(--font-primary, 'Inter', sans-serif);
+      color: var(--dscr-text);
+    }
+    .dscr-calculator-module * { box-sizing: border-box; }
+    .dscr-calculator-module .dscr-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .dscr-calculator-module .dscr-section-title {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+      color: var(--dscr-navy);
+      margin: 0 0 0.4rem;
+      text-align: center;
+    }
+    .dscr-calculator-module .dscr-section-sub {
+      text-align: center;
+      color: var(--dscr-muted);
+      font-size: 0.95rem;
+      margin: 0 auto 2rem;
+      max-width: 600px;
+    }
+    .dscr-calculator-module .dscr-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    }
+    @media (max-width: 880px) {
+      .dscr-calculator-module .dscr-grid { grid-template-columns: 1fr; }
+    }
+    .dscr-calculator-module .dscr-card {
+      background: var(--dscr-card);
+      border: 1px solid var(--dscr-border);
+      border-radius: var(--dscr-radius);
+      box-shadow: var(--dscr-shadow);
+      padding: 1.6rem;
+    }
+    .dscr-calculator-module .dscr-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dscr-navy);
+      margin: 0 0 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .dscr-calculator-module .dscr-card-title::before {
+      content: "";
+      width: 8px; height: 22px;
+      background: linear-gradient(180deg, var(--dscr-gold) 0%, var(--dscr-gold-soft) 100%);
+      border-radius: 3px;
+    }
+
+    /* Inputs */
+    .dscr-calculator-module .dscr-field { margin-bottom: 1.1rem; }
+    .dscr-calculator-module .dscr-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--dscr-navy);
+      margin-bottom: 0.4rem;
+    }
+    .dscr-calculator-module .dscr-helper {
+      font-size: 0.78rem;
+      color: var(--dscr-muted);
+      margin-top: 0.25rem;
+    }
+    .dscr-calculator-module .dscr-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+    }
+    .dscr-calculator-module .dscr-input {
+      width: 100%;
+      padding: 0.7rem 0.85rem;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--dscr-text);
+      border: 1.5px solid var(--dscr-border);
+      border-radius: 8px;
+      background: #fff;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+    }
+    .dscr-calculator-module .dscr-input:focus {
+      outline: none;
+      border-color: var(--dscr-gold);
+      box-shadow: 0 0 0 3px rgba(139,110,36,0.18);
+    }
+    .dscr-calculator-module .dscr-input-prefix,
+    .dscr-calculator-module .dscr-input-suffix {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--dscr-muted);
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+    .dscr-calculator-module .dscr-input-prefix { left: 0.85rem; }
+    .dscr-calculator-module .dscr-input-suffix { right: 0.85rem; }
+    .dscr-calculator-module .dscr-input.has-prefix { padding-left: 1.65rem; }
+    .dscr-calculator-module .dscr-input.has-suffix { padding-right: 1.85rem; }
+
+    .dscr-calculator-module select.dscr-input {
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.5'><polyline points='6 9 12 15 18 9'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 0.85rem center;
+      padding-right: 2rem;
+    }
+
+    .dscr-calculator-module .dscr-error {
+      font-size: 0.78rem;
+      color: var(--dscr-red);
+      margin-top: 0.25rem;
+      min-height: 1em;
+    }
+
+    /* Toggle (% vs $) */
+    .dscr-calculator-module .dscr-toggle {
+      display: inline-flex;
+      background: #F1F1ED;
+      border-radius: 999px;
+      padding: 3px;
+      margin-left: auto;
+    }
+    .dscr-calculator-module .dscr-toggle button {
+      border: 0;
+      background: transparent;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--dscr-muted);
+      cursor: pointer;
+      border-radius: 999px;
+      transition: background 150ms ease, color 150ms ease;
+    }
+    .dscr-calculator-module .dscr-toggle button.is-active {
+      background: var(--dscr-navy);
+      color: #fff;
+    }
+    .dscr-calculator-module .dscr-label-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .dscr-calculator-module .dscr-label-row .dscr-label { margin: 0; }
+
+    /* Big DSCR result */
+    .dscr-calculator-module .dscr-score-card {
+      background: linear-gradient(135deg, #0A1F3F 0%, #142d56 100%);
+      color: #fff;
+      border: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .dscr-calculator-module .dscr-score-card::after {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 85% 15%, rgba(201,164,74,0.22) 0, transparent 50%);
+      pointer-events: none;
+    }
+    .dscr-calculator-module .dscr-score-card .dscr-card-title { color: #fff; }
+    .dscr-calculator-module .dscr-score-card .dscr-card-title::before { background: linear-gradient(180deg, #c9a44a 0%, #8B6E24 100%); }
+
+    .dscr-calculator-module .dscr-score-display {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      margin: 0.6rem 0 0.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .dscr-calculator-module .dscr-score-number {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: clamp(2.6rem, 2.2rem + 2.5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      transition: color 200ms ease;
+    }
+    .dscr-calculator-module .dscr-score-x {
+      font-size: 1.4rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+    }
+    .dscr-calculator-module .dscr-score-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+      position: relative; z-index: 1;
+    }
+    .dscr-calculator-module .dscr-band-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      position: relative; z-index: 1;
+    }
+    .dscr-calculator-module .dscr-band-tag .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--dscr-green);
+    }
+
+    /* DSCR meter / gauge */
+    .dscr-calculator-module .dscr-meter {
+      margin: 1.4rem 0 0.5rem;
+      position: relative; z-index: 1;
+    }
+    .dscr-calculator-module .dscr-meter-track {
+      display: grid;
+      grid-template-columns: 0.75fr 0.24fr 0.15fr 1fr; /* widths represent band ranges */
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .dscr-calculator-module .dscr-meter-band {
+      height: 100%;
+    }
+    .dscr-calculator-module .dscr-meter-band.band-red    { background: linear-gradient(90deg, #b03127 0%, #E04B3F 100%); }
+    .dscr-calculator-module .dscr-meter-band.band-amber  { background: linear-gradient(90deg, #d18b14 0%, #F59E0B 100%); }
+    .dscr-calculator-module .dscr-meter-band.band-blue   { background: linear-gradient(90deg, #1E4FCB 0%, #2563EB 100%); }
+    .dscr-calculator-module .dscr-meter-band.band-green  { background: linear-gradient(90deg, #0E9E70 0%, #10B981 100%); }
+
+    .dscr-calculator-module .dscr-meter-marker {
+      position: absolute;
+      top: -6px;
+      left: 0%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 26px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      transition: left 280ms cubic-bezier(.4,.6,.3,1);
+    }
+    .dscr-calculator-module .dscr-meter-marker::after {
+      content: "";
+      position: absolute;
+      bottom: -8px; left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #fff;
+    }
+    .dscr-calculator-module .dscr-meter-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .dscr-calculator-module .dscr-cashflow {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 1.3rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      position: relative; z-index: 1;
+    }
+    .dscr-calculator-module .dscr-cashflow-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .dscr-calculator-module .dscr-cashflow-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-feature-settings: "tnum";
+    }
+    .dscr-calculator-module .dscr-cashflow-value.positive { color: #4CE5AE; }
+    .dscr-calculator-module .dscr-cashflow-value.negative { color: #FFB199; }
+
+    /* Status card */
+    .dscr-calculator-module .dscr-status {
+      margin-top: 1.25rem;
+      padding: 1rem 1.1rem;
+      border-radius: 10px;
+      background: #FFFDF7;
+      border-left: 4px solid var(--dscr-gold);
+      font-size: 0.92rem;
+      color: var(--dscr-text);
+      transition: border-color 200ms ease, background 200ms ease;
+    }
+    .dscr-calculator-module .dscr-status.tone-green {
+      background: #ECFDF5; border-left-color: var(--dscr-green);
+    }
+    .dscr-calculator-module .dscr-status.tone-blue {
+      background: #EFF4FF; border-left-color: var(--dscr-blue);
+    }
+    .dscr-calculator-module .dscr-status.tone-amber {
+      background: #FFFDF7; border-left-color: var(--dscr-gold);
+    }
+    .dscr-calculator-module .dscr-status.tone-red {
+      background: #FEF2F2; border-left-color: var(--dscr-red);
+    }
+    .dscr-calculator-module .dscr-status strong { color: var(--dscr-navy); display: block; margin-bottom: 0.2rem; }
+
+    /* PITIA breakout */
+    .dscr-calculator-module .dscr-pitia {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+    .dscr-calculator-module .dscr-pitia li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.55rem 0;
+      border-bottom: 1px dashed var(--dscr-border);
+      font-size: 0.92rem;
+    }
+    .dscr-calculator-module .dscr-pitia li:last-child { border-bottom: 0; font-weight: 700; color: var(--dscr-navy); padding-top: 0.7rem; }
+    .dscr-calculator-module .dscr-pitia .val { font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
+
+    /* Hint */
+    .dscr-calculator-module .dscr-hint {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--dscr-muted);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Disclaimer */
+    .dscr-calculator-module .dscr-disclaimer {
+      margin-top: 1.5rem;
+      padding: 1rem 1.2rem;
+      background: #F4F4F1;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--dscr-muted);
+    }
+    .dscr-calculator-module .dscr-disclaimer strong { color: var(--dscr-text); }
+
+    /* Conversion block */
+    .dscr-calculator-module .dscr-cta-block {
+      margin-top: 2rem;
+      padding: 2rem 1.5rem;
+      background: linear-gradient(135deg, #FFFDF7 0%, #F7F2E6 100%);
+      border: 1px solid #EEE3C5;
+      border-radius: var(--dscr-radius);
+      text-align: center;
+    }
+    .dscr-calculator-module .dscr-cta-block h3 {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.7rem);
+      color: var(--dscr-navy);
+      margin: 0 0 0.5rem;
+    }
+    .dscr-calculator-module .dscr-cta-block p { color: var(--dscr-text); max-width: 560px; margin: 0 auto 1.2rem; font-size: 0.97rem; }
+    .dscr-calculator-module .dscr-cta-buttons { display: inline-flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+    .dscr-calculator-module .dscr-btn {
+      display: inline-block;
+      padding: 0.8rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 120ms ease, background 150ms ease, box-shadow 150ms ease;
+      cursor: pointer;
+      border: 0;
+      font-family: inherit;
+    }
+    .dscr-calculator-module .dscr-btn:hover { transform: translateY(-1px); }
+    .dscr-calculator-module .dscr-btn-primary { background: var(--dscr-gold); color: #fff; box-shadow: 0 4px 10px rgba(139,110,36,0.25); }
+    .dscr-calculator-module .dscr-btn-primary:hover { background: #a3852f; }
+    .dscr-calculator-module .dscr-btn-secondary { background: var(--dscr-navy); color: #fff; }
+    .dscr-calculator-module .dscr-btn-secondary:hover { background: #142d56; }
+    .dscr-calculator-module .dscr-tertiary {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--dscr-muted);
+      text-decoration: underline;
+    }
+    .dscr-calculator-module .dscr-tertiary:hover { color: var(--dscr-navy); }
+
+    /* Lead capture form */
+    .dscr-calculator-module .dscr-lead {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: #fff;
+      border: 1px solid var(--dscr-border);
+      border-radius: var(--dscr-radius);
+    }
+    .dscr-calculator-module .dscr-lead h4 {
+      font-size: 1.05rem;
+      color: var(--dscr-navy);
+      margin: 0 0 0.8rem;
+    }
+    .dscr-calculator-module .dscr-lead-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    @media (max-width: 600px) {
+      .dscr-calculator-module .dscr-lead-row { grid-template-columns: 1fr; }
+    }
+    .dscr-calculator-module .dscr-lead-status {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      min-height: 1em;
+    }
+    .dscr-calculator-module .dscr-lead-status.ok { color: var(--dscr-green); }
+    .dscr-calculator-module .dscr-lead-status.err { color: var(--dscr-red); }
+    /* ============================================================
+       END DSCR CALCULATOR MODULE — STYLES
+       ============================================================ */
+
+    /* Educational section */
+    .dscr-edu {
+      background: #fff;
+      padding: 3.5rem 1.5rem;
+    }
+    .dscr-edu .container { max-width: 760px; }
+    .dscr-edu h2 {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      color: var(--color-navy, #0A1F3F);
+      font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+      margin-bottom: 1rem;
+    }
+    .dscr-edu h3 {
+      color: var(--color-navy, #0A1F3F);
+      font-size: 1.2rem;
+      margin: 2rem 0 0.6rem;
+    }
+    .dscr-edu p {
+      color: var(--color-text, #1F2937);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .dscr-edu .edu-callout {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      border-left: 4px solid var(--color-gold, #8B6E24);
+      background: #F7F2E6;
+      font-size: 0.95rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <a href="#dscr-calc-main" class="skip-link">Skip to calculator</a>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <img src="/assets/logo.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
+      </a>
+      <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li class="nav-has-dropdown"><a href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li><a href="/non-qm-loans.html">Non-QM Loans</a></li><li><a href="/dscr-loan-austin-tx.html">DSCR Loans</a></li><li><a href="/self-employed-mortgage-austin.html">Self-Employed Mortgage</a></li><li><a href="/bank-statement-loans.html">Bank Statement Loans</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth</a></li><li><a href="/investor-loans.html">Investor Loans</a></li></ul></li>
+        <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li><li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li><li><a href="/resources/first-time-buyer-guide/">Buyer Guide</a></li><li><a href="/scenarios.html">Scenarios</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/rate-check.html">Rate Check</a></li><li><a href="/realtors.html">For Realtors</a></li></ul></li>
+        <li><a href="/testimonials.html">Testimonials</a></li>
+        <li class="nav-has-dropdown"><a href="/contact.html">Contact</a><ul class="nav-dropdown"><li><a href="/about.html">About Adam</a></li></ul></li>
+        <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li>
+        <li><a href="/scenario.html" class="nav-cta">Send Scenario</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="dscr-calc-main">
+
+    <!-- Hero -->
+    <section class="dscr-hero">
+      <div class="container">
+        <h1>Run the DSCR Math Before You Write the Offer</h1>
+        <p class="subtitle">Estimate whether the rent covers the payment, see the PITIA breakdown, and send the scenario to Adam if the deal deserves a closer look.</p>
+        <div class="dscr-hero-ctas">
+          <a href="#dscr-calculator" class="btn btn-primary">Start Calculating</a>
+          <a href="/scenario.html" class="btn btn-ghost">Send Your Scenario</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         START DSCR CALCULATOR MODULE
+         Copy this <section> + the inline <script> at page bottom
+         into any DSCR-related page. Required: /style.css for nav
+         tokens (--font-primary, --font-display). The module brings
+         its own visual styles and JS.
+         ============================================================ -->
+    <section class="dscr-calculator-module" id="dscr-calculator" aria-labelledby="dscr-calc-heading">
+      <div class="dscr-inner">
+        <h2 class="dscr-section-title" id="dscr-calc-heading">DSCR Calculator</h2>
+        <p class="dscr-section-sub">Defaults are placeholders. Adjust the numbers to match the property.</p>
+
+        <div class="dscr-grid">
+
+          <!-- Inputs -->
+          <div class="dscr-card">
+            <h3 class="dscr-card-title">Property &amp; Loan Inputs</h3>
+
+            <div class="dscr-field">
+              <label class="dscr-label" for="dscr-price">Purchase price</label>
+              <div class="dscr-input-wrap">
+                <span class="dscr-input-prefix">$</span>
+                <input type="number" inputmode="decimal" class="dscr-input has-prefix" id="dscr-price" min="0" step="1000" value="500000" aria-describedby="dscr-price-err">
+              </div>
+              <div class="dscr-error" id="dscr-price-err" aria-live="polite"></div>
+            </div>
+
+            <div class="dscr-field">
+              <div class="dscr-label-row">
+                <label class="dscr-label" for="dscr-down">Down payment</label>
+                <div class="dscr-toggle" role="group" aria-label="Down payment input mode">
+                  <button type="button" class="is-active" data-down-mode="pct" id="dscr-down-pct-btn">%</button>
+                  <button type="button" data-down-mode="dollar" id="dscr-down-dollar-btn">$</button>
+                </div>
+              </div>
+              <div class="dscr-input-wrap">
+                <input type="number" inputmode="decimal" class="dscr-input has-suffix" id="dscr-down" min="0" step="0.5" value="20" aria-describedby="dscr-down-err">
+                <span class="dscr-input-suffix" id="dscr-down-suffix">%</span>
+              </div>
+              <p class="dscr-helper" id="dscr-down-helper">Loan amount: <strong id="dscr-loan-amount">$400,000</strong></p>
+              <div class="dscr-error" id="dscr-down-err" aria-live="polite"></div>
+            </div>
+
+            <div class="dscr-field">
+              <label class="dscr-label" for="dscr-rate">Interest rate</label>
+              <div class="dscr-input-wrap">
+                <input type="number" inputmode="decimal" class="dscr-input has-suffix" id="dscr-rate" min="0" max="20" step="0.125" value="7.5" aria-describedby="dscr-rate-err">
+                <span class="dscr-input-suffix">%</span>
+              </div>
+              <div class="dscr-error" id="dscr-rate-err" aria-live="polite"></div>
+            </div>
+
+            <div class="dscr-field">
+              <label class="dscr-label" for="dscr-term">Loan term</label>
+              <select class="dscr-input" id="dscr-term">
+                <option value="30" selected>30 years</option>
+                <option value="15">15 years</option>
+              </select>
+            </div>
+
+            <div class="dscr-field">
+              <label class="dscr-label" for="dscr-tax">Annual property taxes</label>
+              <div class="dscr-input-wrap">
+                <span class="dscr-input-prefix">$</span>
+                <input type="number" inputmode="decimal" class="dscr-input has-prefix" id="dscr-tax" min="0" step="100" value="9000" aria-describedby="dscr-tax-err">
+              </div>
+              <div class="dscr-error" id="dscr-tax-err" aria-live="polite"></div>
+            </div>
+
+            <div class="dscr-field">
+              <label class="dscr-label" for="dscr-ins">Annual insurance</label>
+              <div class="dscr-input-wrap">
+                <span class="dscr-input-prefix">$</span>
+                <input type="number" inputmode="decimal" class="dscr-input has-prefix" id="dscr-ins" min="0" step="50" value="2500" aria-describedby="dscr-ins-err">
+              </div>
+              <div class="dscr-error" id="dscr-ins-err" aria-live="polite"></div>
+            </div>
+
+            <div class="dscr-field">
+              <label class="dscr-label" for="dscr-hoa">Monthly HOA</label>
+              <div class="dscr-input-wrap">
+                <span class="dscr-input-prefix">$</span>
+                <input type="number" inputmode="decimal" class="dscr-input has-prefix" id="dscr-hoa" min="0" step="10" value="0" aria-describedby="dscr-hoa-err">
+              </div>
+              <div class="dscr-error" id="dscr-hoa-err" aria-live="polite"></div>
+            </div>
+
+            <div class="dscr-field" style="margin-bottom:0;">
+              <label class="dscr-label" for="dscr-rent">Market rent or lease amount</label>
+              <div class="dscr-input-wrap">
+                <span class="dscr-input-prefix">$</span>
+                <input type="number" inputmode="decimal" class="dscr-input has-prefix" id="dscr-rent" min="0" step="50" value="3500" aria-describedby="dscr-rent-err">
+              </div>
+              <p class="dscr-helper">Gross monthly rent before vacancy or operating expenses.</p>
+              <div class="dscr-error" id="dscr-rent-err" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div>
+            <div class="dscr-card dscr-score-card" aria-live="polite" aria-atomic="true">
+              <h3 class="dscr-card-title">Estimated DSCR</h3>
+
+              <div class="dscr-score-label">Rent ÷ PITIA</div>
+              <div class="dscr-score-display">
+                <span class="dscr-score-number" id="dscr-score">1.08</span>
+                <span class="dscr-score-x">x</span>
+              </div>
+              <span class="dscr-band-tag" id="dscr-band-tag">
+                <span class="dot"></span>
+                <span id="dscr-band-label">Solid coverage</span>
+              </span>
+
+              <div class="dscr-meter" aria-hidden="true">
+                <div class="dscr-meter-track">
+                  <div class="dscr-meter-band band-red" title="Below 0.75"></div>
+                  <div class="dscr-meter-band band-amber" title="0.75 – 0.99"></div>
+                  <div class="dscr-meter-band band-blue" title="1.00 – 1.14"></div>
+                  <div class="dscr-meter-band band-green" title="1.15+"></div>
+                </div>
+                <div class="dscr-meter-marker" id="dscr-meter-marker" style="left:50%;"></div>
+                <div class="dscr-meter-labels">
+                  <span>0.50</span><span>0.75</span><span>1.00</span><span>1.15</span><span>1.50+</span>
+                </div>
+              </div>
+
+              <div class="dscr-cashflow">
+                <span class="dscr-cashflow-label">Monthly Cash Flow</span>
+                <span class="dscr-cashflow-value positive" id="dscr-cashflow">$0</span>
+              </div>
+            </div>
+
+            <div class="dscr-status tone-blue" id="dscr-status" role="status" aria-live="polite">
+              <strong id="dscr-status-title">Solid coverage</strong>
+              <span id="dscr-status-msg">Solid. The estimated rent covers the estimated debt payment.</span>
+            </div>
+
+            <div class="dscr-card" style="margin-top:1.25rem;">
+              <h3 class="dscr-card-title">PITIA Breakdown</h3>
+              <ul class="dscr-pitia">
+                <li><span>Principal &amp; interest</span><span class="val" id="dscr-pi">$0</span></li>
+                <li><span>Property taxes (monthly)</span><span class="val" id="dscr-tax-m">$0</span></li>
+                <li><span>Insurance (monthly)</span><span class="val" id="dscr-ins-m">$0</span></li>
+                <li><span>HOA</span><span class="val" id="dscr-hoa-m">$0</span></li>
+                <li><span>Estimated monthly PITIA</span><span class="val" id="dscr-pitia">$0</span></li>
+              </ul>
+              <p class="dscr-hint">Rent, purchase price, down payment, taxes, and rate all affect the DSCR.</p>
+            </div>
+          </div>
+
+        </div><!-- /.dscr-grid -->
+
+        <!-- Lead capture (hidden unless WEBHOOK_URL set) -->
+        <div class="dscr-lead" id="dscr-lead" hidden>
+          <h4>Email me this analysis</h4>
+          <p style="font-size:0.88rem;color:var(--dscr-muted);margin:0 0 0.8rem;">Adam will receive your numbers along with the calculation. No obligation.</p>
+          <div class="dscr-lead-row">
+            <div>
+              <label class="dscr-label" for="dscr-lead-name">Name</label>
+              <input class="dscr-input" id="dscr-lead-name" type="text" autocomplete="name">
+            </div>
+            <div>
+              <label class="dscr-label" for="dscr-lead-email">Email</label>
+              <input class="dscr-input" id="dscr-lead-email" type="email" autocomplete="email">
+            </div>
+          </div>
+          <div class="dscr-field" style="margin-top:0.75rem;">
+            <label class="dscr-label" for="dscr-lead-notes">Notes (optional)</label>
+            <input class="dscr-input" id="dscr-lead-notes" type="text" placeholder="Address, scenario details, questions...">
+          </div>
+          <div style="margin-top:0.9rem;">
+            <button type="button" class="dscr-btn dscr-btn-primary" id="dscr-lead-submit">Send to Adam</button>
+            <div class="dscr-lead-status" id="dscr-lead-status" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- Disclaimer (near result) -->
+        <div class="dscr-disclaimer">
+          <strong>Estimates only.</strong> Not a quote, loan offer, approval, commitment to lend, or Loan Estimate. For business-purpose investment property scenarios. Terms are subject to credit, property, income/rent analysis, and program approval. DSCR loans are for investment properties, not primary residences.
+        </div>
+
+        <!-- Conversion block -->
+        <div class="dscr-cta-block">
+          <h3>Want Adam to review the real scenario?</h3>
+          <p>Send the property, rent, and rough numbers. I'll tell you whether the deal has a DSCR path before asking you to complete a full application.</p>
+          <div class="dscr-cta-buttons">
+            <a href="/scenario.html" class="dscr-btn dscr-btn-primary">Send Your Scenario</a>
+            <a href="https://calendly.com/adamstyer/15minutes" class="dscr-btn dscr-btn-secondary" target="_blank" rel="noopener">Book 15-Min Call</a>
+          </div>
+          <a href="#" class="dscr-tertiary" id="dscr-app-link" hidden>Already talked with Adam? Start Full Loan Application</a>
+        </div>
+
+      </div>
+    </section>
+    <!-- ============================================================
+         END DSCR CALCULATOR MODULE
+         ============================================================ -->
+
+    <!-- Educational section -->
+    <section class="dscr-edu">
+      <div class="container">
+        <h2>What the DSCR number actually tells you</h2>
+        <p>DSCR compares the property's gross monthly rent to the estimated monthly PITIA payment. It is one lens lenders use for investment-property financing, but it is not the whole file. Credit, reserves, property type, rent source, loan structure, and program fit can all matter.</p>
+
+        <h3>Is DSCR below 1.0 bad?</h3>
+        <p>No. Many investor properties, especially in competitive Texas markets, come in below 1.0 on a simple rent-to-payment calculation. That does not automatically mean weak pricing or a dead file. It means the full scenario matters.</p>
+
+        <h3>What numbers actually move the result</h3>
+        <p>Purchase price and down payment drive the loan amount. Loan amount and interest rate drive principal &amp; interest. Property taxes and insurance vary by county, property type, and risk profile. HOA dues can shift the math on condos and townhomes. The rent side is usually set by the market — but lease versus market versus short-term-rent income can each be evaluated differently depending on the loan structure.</p>
+
+        <div class="edu-callout">
+          <strong>Bottom line:</strong> The calculator gives you a directional read. If the deal looks close, send it to Adam — sub-1.0 files often have a path that a simple ratio doesn't reveal.
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA (uses existing site CTA style) -->
+    <section class="section bg-navy cta-spotlight">
+      <div class="container text-center">
+        <h2 class="text-white">Ready to put the math in front of a real underwriter's eye?</h2>
+        <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Send the property, rent estimate, and your rough plan. I'll come back with whether there's a DSCR path — usually same day.</p>
+        <a href="/scenario.html" class="btn btn-primary btn-lg">Send Your Scenario</a>
+        <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-white btn-lg" target="_blank" rel="noopener" style="margin-left:1rem;">Book 15-Min Call</a>
+        <p class="text-white" style="margin-top:1rem;opacity:0.7;font-size:0.9rem;">Adam Styer — NMLS #513013 — <a href="tel:+15129566010" style="color:#fff;">(512) 956-6010</a></p>
+      </div>
+    </section>
+
+    <!-- Footer disclaimer (page-level repeat) -->
+    <section style="background:#F4F4F1;padding:1.5rem;">
+      <div class="container" style="max-width:760px;font-size:0.78rem;color:#6B7280;line-height:1.6;">
+        <p><strong>Estimates only.</strong> The DSCR calculator on this page is for educational and scenario-planning purposes. It is not a quote, loan offer, approval, commitment to lend, or Loan Estimate. For business-purpose investment property scenarios. Terms are subject to credit, property, income/rent analysis, and program approval. DSCR loans are for investment properties, not primary residences.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Adam Styer | HyperSmart Home Loans</h4>
+          <p>Independent mortgage broker specializing in DSCR and investment property loans across Texas.</p>
+          <p>NMLS #513013 (Adam Styer)<br>NMLS #2653540 (Kyber Mortgage Corporation dba HyperSmart Home Loans)</p>
+        </div>
+        <div class="footer-section">
+          <h4>Loan Types</h4>
+          <ul>
+            <li><a href="/loans/conventional.html">Conventional</a></li>
+            <li><a href="/loans/fha.html">FHA Loans</a></li>
+            <li><a href="/loans/va.html">VA Loans</a></li>
+            <li><a href="/loans/investment.html">Investment Property</a></li>
+            <li><a href="/loans/jumbo.html">Jumbo Loans</a></li>
+            <li><a href="/dscr-loan-austin-tx.html">DSCR Loans</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p><a href="tel:+15129566010">(512) 956-6010</a></p>
+          <p><a href="mailto:adam.styer@hypersmart.loan">adam.styer@hypersmart.loan</a></p>
+          <p>9050 N. Capital of Texas Hwy, Ste 390<br>Austin, Texas 78759</p>
+        </div>
+        <div class="footer-section">
+          <h4>Calculators</h4>
+          <ul>
+            <li><a href="/calculators.html">All Calculators</a></li>
+            <li><a href="/dscr-calculator.html">DSCR Calculator</a></li>
+            <li><a href="/calculator-payment.html">Payment Calculator</a></li>
+            <li><a href="/calculator-affordability.html">Affordability</a></li>
+            <li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Adam Styer | HyperSmart Home Loans. All rights reserved.</p>
+        <p>Adam Styer | HyperSmart Home Loans | NMLS #2653540 | Adam Styer NMLS #513013 | Licensed in Texas | <a href="/texas-complaint-notice.html">Texas Consumer Complaint Notice</a> | <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2653540" target="_blank" rel="noopener" style="color:inherit;">NMLS Consumer Access</a></p>
+        <p>Kyber Mortgage Corporation dba HyperSmart Home Loans, NMLS ID 2653540. Adam Styer, NMLS #513013. Principal address 9050 N. Capital of Texas Hwy, Ste 390, Austin, Texas 78759. This is not an offer for extension of credit or commitment to lend. All loans must satisfy underwriting guidelines. Not all applicants qualify. Information and pricing are subject to change at any time and without notice. Products not available in all areas. Equal Housing Lender. DSCR loans are for investment properties only. Not available for primary residences.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js?v=20260531" defer></script>
+  <script src="/js/scroll-effects.js?v=20260429" defer></script>
+  <script src="/analytics.js?v=20260417" defer></script>
+
+  <!-- ============================================================
+       START DSCR CALCULATOR MODULE — JAVASCRIPT
+       Self-contained. Reads/writes only #dscr-* elements inside
+       .dscr-calculator-module. Safe to copy alongside the markup
+       above into other pages.
+       ============================================================ -->
+  <script>
+  (function () {
+    "use strict";
+
+    // ----- CONFIG (edit these to tune behavior) ------------------
+    // Set APPLICATION_URL to enable the tertiary "Start Full Loan Application" link.
+    // Site's current application URL pattern:
+    var APPLICATION_URL = "https://hypersmart.my1003app.com/513013/register?time=1779291829279";
+
+    // Set WEBHOOK_URL to enable the optional "Email me this analysis" form.
+    // Empty string keeps the form hidden.
+    var WEBHOOK_URL = "";
+
+    // Ratio bands (edit cutoffs / labels / messages here)
+    var BANDS = [
+      { min: 1.15, key: "strong", label: "Strong coverage", tone: "tone-green", color: "#10B981",
+        msg: "Strong. This may also fit programs with higher coverage expectations, including some short-term rental scenarios." },
+      { min: 1.00, key: "solid",  label: "Solid coverage",  tone: "tone-blue",  color: "#2563EB",
+        msg: "Solid. The estimated rent covers the estimated debt payment." },
+      { min: 0.75, key: "common", label: "Common investor range", tone: "tone-amber", color: "#F59E0B",
+        msg: "Common investor range. DSCR below 1.0 does not automatically mean weak pricing. Strong files can still be very competitive." },
+      { min: 0,    key: "tight",  label: "Needs a closer look",   tone: "tone-red",   color: "#E04B3F",
+        msg: "Tight on rent coverage alone. That does not always mean the deal is dead, but it needs a closer look before making assumptions." }
+    ];
+
+    // Meter range and band tick positions used to map a DSCR value to a 0..100% position on the meter.
+    // Layout below MUST match the CSS grid-template-columns on .dscr-meter-track:
+    //   <0.75 → 0–34%   |   0.75–0.99 → 34–45%   |   1.00–1.14 → 45–52%   |   1.15+ → 52–100%
+    function ratioToPercent(r) {
+      if (!isFinite(r) || r < 0) return 0;
+      if (r >= 1.5) return 100;
+      if (r >= 1.15) return 52 + ((r - 1.15) / (1.5 - 1.15)) * 48;
+      if (r >= 1.00) return 45 + ((r - 1.00) / (1.15 - 1.00)) * 7;
+      if (r >= 0.75) return 34 + ((r - 0.75) / (1.00 - 0.75)) * 11;
+      // below 0.75
+      return Math.max(2, (r / 0.75) * 34);
+    }
+
+    // ----- Helpers -----------------------------------------------
+    function $(id) { return document.getElementById(id); }
+    function num(el) {
+      if (!el) return 0;
+      var v = parseFloat(el.value);
+      return isFinite(v) ? v : 0;
+    }
+    var fmtCurrency = new Intl.NumberFormat("en-US", {
+      style: "currency", currency: "USD", maximumFractionDigits: 0
+    });
+    function $currency(n) { return fmtCurrency.format(Math.round(n)); }
+
+    // Monthly P&I with safe handling of 0% rate
+    function monthlyPI(loan, annualRatePct, years) {
+      var n = years * 12;
+      if (loan <= 0 || n <= 0) return 0;
+      if (annualRatePct === 0) return loan / n;
+      var r = (annualRatePct / 100) / 12;
+      var pow = Math.pow(1 + r, n);
+      return loan * (r * pow) / (pow - 1);
+    }
+
+    function bandFor(ratio) {
+      for (var i = 0; i < BANDS.length; i++) {
+        if (ratio >= BANDS[i].min) return BANDS[i];
+      }
+      return BANDS[BANDS.length - 1];
+    }
+
+    // ----- Elements ----------------------------------------------
+    var priceEl = $("dscr-price");
+    var downEl = $("dscr-down");
+    var downSuffix = $("dscr-down-suffix");
+    var loanAmtEl = $("dscr-loan-amount");
+    var rateEl = $("dscr-rate");
+    var termEl = $("dscr-term");
+    var taxEl = $("dscr-tax");
+    var insEl = $("dscr-ins");
+    var hoaEl = $("dscr-hoa");
+    var rentEl = $("dscr-rent");
+
+    var pctBtn = $("dscr-down-pct-btn");
+    var dollarBtn = $("dscr-down-dollar-btn");
+
+    var scoreEl = $("dscr-score");
+    var bandLabelEl = $("dscr-band-label");
+    var bandTagDot = document.querySelector("#dscr-band-tag .dot");
+    var meterMarker = $("dscr-meter-marker");
+    var cashflowEl = $("dscr-cashflow");
+    var statusEl = $("dscr-status");
+    var statusTitleEl = $("dscr-status-title");
+    var statusMsgEl = $("dscr-status-msg");
+
+    var piOut = $("dscr-pi");
+    var taxOut = $("dscr-tax-m");
+    var insOut = $("dscr-ins-m");
+    var hoaOut = $("dscr-hoa-m");
+    var pitiaOut = $("dscr-pitia");
+
+    var appLink = $("dscr-app-link");
+    var leadBlock = $("dscr-lead");
+    var leadSubmit = $("dscr-lead-submit");
+    var leadStatus = $("dscr-lead-status");
+
+    var downMode = "pct"; // "pct" or "dollar"
+
+    // Show app link / lead form per config
+    if (APPLICATION_URL) {
+      appLink.hidden = false;
+      appLink.setAttribute("href", APPLICATION_URL);
+      appLink.setAttribute("target", "_blank");
+      appLink.setAttribute("rel", "noopener");
+    }
+    if (WEBHOOK_URL) {
+      leadBlock.hidden = false;
+    }
+
+    // ----- Validation --------------------------------------------
+    function setError(id, msg) {
+      var el = $(id + "-err");
+      if (el) el.textContent = msg || "";
+    }
+    function validate(inputs) {
+      var ok = true;
+      setError("dscr-price", ""); setError("dscr-down", ""); setError("dscr-rate", "");
+      setError("dscr-tax", ""); setError("dscr-ins", ""); setError("dscr-hoa", ""); setError("dscr-rent", "");
+
+      if (inputs.price < 0) { setError("dscr-price", "Purchase price cannot be negative."); ok = false; }
+      if (inputs.rate < 0)  { setError("dscr-rate",  "Interest rate cannot be negative."); ok = false; }
+      if (inputs.tax < 0)   { setError("dscr-tax",   "Taxes cannot be negative."); ok = false; }
+      if (inputs.ins < 0)   { setError("dscr-ins",   "Insurance cannot be negative."); ok = false; }
+      if (inputs.hoa < 0)   { setError("dscr-hoa",   "HOA cannot be negative."); ok = false; }
+      if (inputs.rent < 0)  { setError("dscr-rent",  "Rent cannot be negative."); ok = false; }
+
+      if (inputs.downAmount < 0) { setError("dscr-down", "Down payment cannot be negative."); ok = false; }
+      if (inputs.downAmount > inputs.price && inputs.price > 0) {
+        setError("dscr-down", "Down payment cannot exceed purchase price.");
+        ok = false;
+      }
+      if (inputs.loan < 0) { ok = false; }
+      return ok;
+    }
+
+    // ----- Main compute ------------------------------------------
+    function compute() {
+      var price = num(priceEl);
+      var downRaw = num(downEl);
+      var rate = num(rateEl);
+      var years = parseInt(termEl.value, 10) || 30;
+      var annualTax = num(taxEl);
+      var annualIns = num(insEl);
+      var hoa = num(hoaEl);
+      var rent = num(rentEl);
+
+      var downAmount = downMode === "pct"
+        ? (price * (downRaw / 100))
+        : downRaw;
+      var loan = Math.max(price - downAmount, 0);
+
+      var inputs = {
+        price: price, downRaw: downRaw, downAmount: downAmount, rate: rate,
+        years: years, tax: annualTax, ins: annualIns, hoa: hoa, rent: rent, loan: loan
+      };
+      var valid = validate(inputs);
+
+      // Live "loan amount" helper text
+      loanAmtEl.textContent = $currency(loan);
+
+      if (!valid) return;
+
+      var pi = monthlyPI(loan, rate, years);
+      var taxM = annualTax / 12;
+      var insM = annualIns / 12;
+      var pitia = pi + taxM + insM + hoa;
+      var dscr = pitia > 0 ? rent / pitia : 0;
+      var cashflow = rent - pitia;
+
+      // Score
+      scoreEl.textContent = pitia > 0 ? dscr.toFixed(2) : "—";
+
+      // Band
+      var band = bandFor(dscr);
+      bandLabelEl.textContent = band.label;
+      if (bandTagDot) bandTagDot.style.background = band.color;
+
+      // Status card
+      statusEl.classList.remove("tone-green", "tone-blue", "tone-amber", "tone-red");
+      statusEl.classList.add(band.tone);
+      statusTitleEl.textContent = band.label;
+      statusMsgEl.textContent = band.msg;
+
+      // Meter marker
+      var pct = ratioToPercent(dscr);
+      meterMarker.style.left = pct + "%";
+
+      // Cashflow
+      cashflowEl.textContent = (cashflow >= 0 ? "+" : "−") + $currency(Math.abs(cashflow));
+      cashflowEl.classList.toggle("positive", cashflow >= 0);
+      cashflowEl.classList.toggle("negative", cashflow < 0);
+
+      // Breakdown
+      piOut.textContent  = $currency(pi);
+      taxOut.textContent = $currency(taxM);
+      insOut.textContent = $currency(insM);
+      hoaOut.textContent = $currency(hoa);
+      pitiaOut.textContent = $currency(pitia);
+    }
+
+    // ----- Wire up events ----------------------------------------
+    [priceEl, downEl, rateEl, termEl, taxEl, insEl, hoaEl, rentEl].forEach(function (el) {
+      if (!el) return;
+      var ev = el.tagName === "SELECT" ? "change" : "input";
+      el.addEventListener(ev, compute);
+    });
+
+    // Down payment toggle
+    function setDownMode(mode) {
+      if (mode === downMode) return;
+      var price = num(priceEl);
+      var current = num(downEl);
+      downMode = mode;
+      pctBtn.classList.toggle("is-active", mode === "pct");
+      dollarBtn.classList.toggle("is-active", mode === "dollar");
+      downSuffix.textContent = mode === "pct" ? "%" : "$";
+      // Convert displayed value so user keeps the same dollar amount
+      if (mode === "dollar") {
+        var dollars = price * (current / 100);
+        downEl.value = Math.round(dollars);
+        downEl.step = "1000";
+      } else {
+        var pct = price > 0 ? (current / price) * 100 : 0;
+        downEl.value = pct.toFixed(2).replace(/\.0+$/, "").replace(/(\.\d*[1-9])0+$/, "$1");
+        downEl.step = "0.5";
+      }
+      compute();
+    }
+    pctBtn.addEventListener("click", function () { setDownMode("pct"); });
+    dollarBtn.addEventListener("click", function () { setDownMode("dollar"); });
+
+    // ----- Lead capture (only active if WEBHOOK_URL set) ----------
+    if (WEBHOOK_URL && leadSubmit) {
+      leadSubmit.addEventListener("click", function () {
+        var name = ($("dscr-lead-name").value || "").trim();
+        var email = ($("dscr-lead-email").value || "").trim();
+        var notes = ($("dscr-lead-notes").value || "").trim();
+        leadStatus.className = "dscr-lead-status";
+        if (!name || !email || !/.+@.+\..+/.test(email)) {
+          leadStatus.textContent = "Please enter your name and a valid email.";
+          leadStatus.classList.add("err");
+          return;
+        }
+        leadStatus.textContent = "Sending...";
+
+        var price = num(priceEl), downRaw = num(downEl), rate = num(rateEl);
+        var years = parseInt(termEl.value, 10) || 30;
+        var downAmount = downMode === "pct" ? price * (downRaw / 100) : downRaw;
+        var loan = Math.max(price - downAmount, 0);
+        var pi = monthlyPI(loan, rate, years);
+        var taxM = num(taxEl) / 12, insM = num(insEl) / 12, hoa = num(hoaEl);
+        var pitia = pi + taxM + insM + hoa;
+        var rent = num(rentEl);
+        var dscr = pitia > 0 ? rent / pitia : 0;
+        var cashflow = rent - pitia;
+
+        var payload = {
+          name: name, email: email, notes: notes,
+          inputs: {
+            purchasePrice: price, downPaymentMode: downMode,
+            downPaymentValue: downRaw, downPaymentAmount: downAmount,
+            loanAmount: loan, interestRate: rate, termYears: years,
+            annualTaxes: num(taxEl), annualInsurance: num(insEl),
+            monthlyHOA: hoa, monthlyRent: rent
+          },
+          outputs: {
+            dscr: +dscr.toFixed(4), monthlyPITIA: +pitia.toFixed(2),
+            monthlyCashFlow: +cashflow.toFixed(2)
+          },
+          dscr: +dscr.toFixed(4),
+          cashFlow: +cashflow.toFixed(2),
+          pitiaBreakout: {
+            principalInterest: +pi.toFixed(2),
+            taxes: +taxM.toFixed(2),
+            insurance: +insM.toFixed(2),
+            hoa: +hoa.toFixed(2),
+            total: +pitia.toFixed(2)
+          },
+          page: "dscr-calculator"
+        };
+
+        fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }).then(function (res) {
+          if (!res.ok) throw new Error("Network");
+          leadStatus.textContent = "Sent. Adam will reply directly.";
+          leadStatus.classList.add("ok");
+        }).catch(function () {
+          leadStatus.textContent = "Could not send right now — please email adam.styer@hypersmart.loan.";
+          leadStatus.classList.add("err");
+        });
+      });
+    }
+
+    // Initial compute
+    compute();
+  })();
+  </script>
+  <!-- ============================================================
+       END DSCR CALCULATOR MODULE — JAVASCRIPT
+       ============================================================ -->
+</body>
+</html>
