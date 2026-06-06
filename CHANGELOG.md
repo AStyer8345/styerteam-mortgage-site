@@ -1,3 +1,10 @@
+## 2026-06-06 — styer-site-daily (Saturday weekend re-verify)
+
+- Clean weekend run, 0 site-HTML mutations. Sitemap/robots 200; 133 live = 133 local (md5 identical); conversion tracking 10/10 (HTML-token).
+- Re-Verify Gate auto-resolved 2 stale flags: "blog hits 7 days → flag weekly content" (2 DSCR posts shipped 2026-06-05, latest now 1 day old) and sitemap count 131→133.
+- Audited the 2 new DSCR posts (airbnb-str + cash-out-brrrr): both carry tracked-LP CTAs, FAQPage schema, NMLS 513013, blog.html wiring (noscript + CollectionPage), zero legacy-entity drift, title lint PASS.
+- Adam batch-memo (2026-06-05) still unanswered — carries point to memo, not re-surfaced. NotebookLM advisor script absent (65th run).
+
 ## 2026-06-05 — DSCR cluster: 2 net-new blog posts (manual writer run, 50d1919)
 
 - Published `2026-06-05-dscr-cash-out-refinance-texas-brrrr` and `2026-06-05-dscr-airbnb-str-loan-texas` as an Adam-prioritized DSCR push.

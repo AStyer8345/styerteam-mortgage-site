@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-05 (styer-site-daily Friday rotation): Content Planning + AEO Review.** Blog: 32/32 posts carry a tracked-LP CTA; latest post 2026-05-30 (6 days, within window). AEO healthy — physician post has question-form H2s + FAQPage schema + 5 CTAs. **Headline finding — USDA carry REFRAMED:** the 143-mention "cleanup" was the wrong frame. Mentions split into 2 classes: **8 pages PROMOTE USDA as the lead product** (smithville/elgin/florence/jarrell/bastrop/san-marcos/kyle/new-braunfels — hero + section headers + FAQ), advertising a product Adam says he doesn't originate; 4 pages STEER AWAY (round-rock/austin-area/taylor/cedar-park — honest "ineligible" context, keep). Round Rock's 9 mentions are legit class-B, not cleanup misses. This is an accuracy/compliance question, not a tidy-up. **Consolidated all 3 suburb-cluster carries into `run-logs/adam-batch-memo-2026-06-05.md`** (USDA / perf-claims / 0-tracked-LP) with exact file lists + one decision each. Perf-claims root cause named: GOALS.md "no perf marketing" vs voice-guide "same-day is a differentiator" — Adam must reconcile. 2 doc edits shipped: suburb count 24→25, USDA carry reframed. SEO/SEM backlog 0 eligible. Conversion 10/10. Sitemap 131=131. NotebookLM 64th dead run.
+**2026-06-06 (styer-site-daily Saturday weekend re-verify): clean run, 0 site-HTML mutations.** Sitemap/robots 200; **133 live = 133 local** (md5 identical — up from 131, +2 DSCR posts); conversion tracking 10/10 (HTML-token). **2 stale flags auto-resolved:** (1) "blog hits 7 days → flag weekly content" RESOLVED — 2 DSCR posts shipped 2026-06-05 (commit 50d1919), latest post now 1 day old; (2) sitemap count 131→133. **Audited both new DSCR posts (airbnb-str + cash-out-brrrr)** — clean: tracked-LP CTAs (3/5), FAQPage schema, NMLS 513013, blog.html wired (noscript+CollectionPage), 0 legacy-entity drift, title lint PASS. Full blog CTA sweep 24/24 date-prefixed, 0 missing. **Adam batch-memo (2026-06-05) still unanswered** — carries point to memo, not re-surfaced. SEO/SEM backlog 0 eligible. NotebookLM advisor script absent (65th run).
 
-**2026-06-03 (styer-site-daily Wednesday rotation): Suburb Page Deep Dive + AEO — Kyle.** 0-mutation. Kyle structural 7/9, 5 USDA surfaces, 3 perf-metric surfaces. Refined USDA cluster 4→5 suburbs; 0-CTA cluster 8→32 pages. Conversion 10/10.
+**2026-06-05 (styer-site-daily Friday rotation): Content Planning + AEO Review.** USDA carry REFRAMED — 8 pages PROMOTE USDA as lead product (accuracy/compliance question), 4 STEER AWAY. All 3 suburb-cluster carries consolidated into `run-logs/adam-batch-memo-2026-06-05.md`. Conversion 10/10. Sitemap 131=131. NotebookLM 64th dead run.
 
-**2026-06-02 (styer-site-daily Tuesday rotation): Title Tags + Meta Descriptions.** 2 LOW_RISK within-page-consistency fixes. NEW LOW carry: brand gold hex drift `#C9A84C` → `#8B6E24`. Conversion 10/10.
+**2026-06-03 (styer-site-daily Wednesday rotation): Suburb Page Deep Dive + AEO — Kyle.** 0-mutation. Kyle structural 7/9, 5 USDA surfaces. Refined USDA cluster 4→5 suburbs; 0-CTA cluster 8→32 pages. Conversion 10/10.
 
 ## Active Blockers
 
@@ -56,15 +56,15 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Sat/Sun 2026-06-06/07 = weekend fire (if any) → re-verify gate only.** Next full rotation: **Mon 2026-06-08 = Schema + Google Ads Quality + AEO Entity Audit** per SKILL.md.
+**Sun 2026-06-07 = weekend fire (if any) → re-verify gate only.** Next full rotation: **Mon 2026-06-08 = Schema + Google Ads Quality + AEO Entity Audit** per SKILL.md.
 
 Priorities (in order):
 1. **AWAIT Adam's reply to `run-logs/adam-batch-memo-2026-06-05.md`** — 3 decisions (USDA / perf-claims / 0-tracked-LP). The moment he answers, execute the chosen sweeps. This unblocks weeks of carry. Recommended answers in memo: 1=b-or-a (USDA accuracy), 2=a (kill 24-hour, keep same-day), 3=a (scenarios is canonical).
-2. **Monday rotation** — Python JSON-LD parse on homepage + about + 1 suburb; AEO entity check (Person/LocalBusiness consistency); PageSpeed (likely UNVERIFIED — PSI quota 30/30); Google Ads optimizer log.
-3. **If blog post hits 7 days (Sat 2026-06-06)** — flag weekly content task (last post 2026-05-30).
+2. **Monday rotation** — Python JSON-LD parse on homepage + about + 1 suburb; AEO entity check (Person/LocalBusiness consistency); PageSpeed (likely UNVERIFIED — PSI quota 31/31); Google Ads optimizer log. Include the 2 new DSCR posts in the JSON-LD validity parse (today confirmed schema presence, not full validity).
+3. **GSC sitemap check (Mon weekly cadence)** — confirm GSC picks up the 2 new DSCR URLs (count now 133, was 131).
 4. **Schema-type unification carry** (Mon) — MortgageBroker vs LocalBusiness still pending Adam.
 5. **Brand gold hex confirm** (Tue carry) — update SKILL.md to `#8B6E24` or revert style.css.
-6. **products.html 10 in-card 1003 routing (43-run carry)** — re-surface.
+6. **products.html 10 in-card 1003 routing (44-run carry)** — re-surface.
 7. **Cache-buster sweep** — if Adam rolls another `?v=...` overnight, run 5-sample sweep early.
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).

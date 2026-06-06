@@ -1292,3 +1292,8 @@ Edge cache TY page dataLayer continues to bounce 8↔10 between fires. Critical-
 - **NotebookLM 63rd consecutive dead run.** Pattern unchanged. SKILL.md retirement diff still pending Adam apply queue.
 
 ---
+
+## 2026-06-06 (Saturday weekend re-verify)
+- **Audit new surfaces the moment they appear, not just on rotation day.** 2 DSCR posts shipped 2026-06-05 (off-cycle, manual writer run). Today is Saturday with no blog rotation, but new content = new compliance surface. A cheap CTA/FAQPage/NMLS/blog.html-wiring grep confirmed both clean — catching a missing schema or unwired blog.html entry the day after publish beats finding it weeks later. Rule: when git history shows content shipped since last audit, audit it this run regardless of the rotation calendar.
+- **A queued "flag tomorrow" item is a re-verify candidate, not a guaranteed flag.** Yesterday queued "blog hits 7 days tomorrow → flag weekly content." Today it would've been a FALSE flag — 2 posts shipped overnight, latest now 1 day old. Always re-check the live condition before acting on a queued flag; the world moves between runs. This is the Re-Verify Gate applied to your own TOMORROW_PRIORITY, not just to external-system claims.
+- **Sitemap count changes are signal, not noise.** Count jumped 131→133 — instead of just noting drift, traced it to commit 50d1919 (DSCR publish) and confirmed it's legitimate new content (md5 live=local still identical). A count change without a traced cause would be the thing to flag.
