@@ -29,13 +29,21 @@ test('legacy hero fallback does not bind modern quick-contact forms twice', () =
 });
 
 test('homepage leads with lightweight scenario contact paths before the full application', () => {
+  const heroCtas = homepage.match(/<div class="hero-ctas">([\s\S]*?)<\/div>/)?.[1] || '';
+  const heroButtonLabels = Array.from(heroCtas.matchAll(/class="[^"]*\bhero-cta-btn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
+  const introActions = homepage.match(/<div class="quick-contact-actions">([\s\S]*?)<\/div>/)?.[1] || '';
+  const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
+
   assert.match(homepage, /<a href="#contact-form"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*>Send Your Scenario<\/a>/);
+  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Book 15-Min Call']);
+  assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Book 15-Min Call']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.match(homepage, /name="quick-scenario"/);
   assert.match(homepage, /Tell me about the scenario/);
   assert.match(homepage, /Email Adam Instead/);
-  assert.match(homepage, /Already talked with Adam or ready to complete the full application\?/);
-  assert.match(homepage, /<a href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*target="_blank"[^>]*>Start Full Loan Application<\/a>/);
+  assert.match(homepage, /Already talked with Adam or ready for the Secure Portal\?/);
+  assert.match(homepage, /<a href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*target="_blank"[^>]*>Open Secure Portal<\/a>/);
+  assert.doesNotMatch(homepage, /Start Full Loan Application/);
   assert.doesNotMatch(homepage, /Start Loan Application/);
   assert.doesNotMatch(homepage, /Start Here/);
   assert.match(homepage, /href="https:\/\/calendly\.com\/adamstyer\/15minutes"[^>]*>Book 15-Min Call<\/a>/);
