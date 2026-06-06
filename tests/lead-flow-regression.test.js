@@ -29,7 +29,7 @@ test('legacy hero fallback does not bind modern quick-contact forms twice', () =
 });
 
 test('homepage leads with lightweight scenario contact paths before the full application', () => {
-  assert.match(homepage, /<a href="#contact-form"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*>Send My Scenario<\/a>/);
+  assert.match(homepage, /<a href="#contact-form"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*>Send Your Scenario<\/a>/);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.match(homepage, /name="quick-scenario"/);
   assert.match(homepage, /Tell me about the scenario/);
