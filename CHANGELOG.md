@@ -1,3 +1,13 @@
+## 2026-06-06 — styer-suburb-editor (Cedar Park Round 3 — content freeze LIFTED)
+
+- **Adam lifted the site content freeze** mid-session ("update goals, just delete them, proceed — especially cleaning up"). Removed the "No new content on the site beyond repositioning + compliance" line from `GOALS.md` (DOS master); added `styer-suburb-editor-daily` to the Keep-Running list; stamped the audit trail. LoanOS/Client Ops/ad-spend strategic pauses retained (not cleanup blockers).
+- **Cedar Park Round 3 executed** (19-day skip streak ended): refreshed median to **$489,747 April 2026 Redfin (-8.6% YoY)** with inline citation (page previously cited "May 2026" with no source URL) — schema description, market-snapshot intro, and median tile all updated.
+- **Performance-claim cleanup (batch-memo D2):** killed all 6 "24-hour pre-approval" / "24–48 hours" instances (meta×3, hero subtitle, VA section, CTA) → "same-day" per voice guide. 0 remain on the page.
+- **USDA accuracy cleanup (batch-memo D1):** removed the lone USDA surface (TSAHC "works with… USDA") — Adam doesn't originate USDA. 0 remain.
+- **De-templated** the definitional opener (was a verbatim shared frame with round-rock) → Cedar-Park-specific Williamson/Travis county-line + LISD/RRISD tax-zone lede.
+- **New cited Major Employers section** (page had none): Firefly Aerospace HQ (+300 jobs, $3M — Cedar Park EDC), Ascension Seton Cedar Park / formerly Cedar Park Regional Medical Center (108-bed; 2025 Ascension acquisition from CHS), Dell+Apple commuter tier, Leander ISD. 5 new inline source URLs.
+- WebPage dateModified + sitemap lastmod → 2026-06-06. All 6 JSON-LD blocks re-validated (Python). Committed only the 3 task files + run-logs — left the in-progress sitewide Asset-Depletion-Calculator nav sweep (~105 files) untouched for that workstream.
+
 ## 2026-06-06 — styer-site-daily (Saturday weekend re-verify)
 
 - Clean weekend run, 0 site-HTML mutations. Sitemap/robots 200; 133 live = 133 local (md5 identical); conversion tracking 10/10 (HTML-token).

@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-06-06 (styer-suburb-editor — Cedar Park Round 3 + FREEZE LIFTED): Adam killed the GOALS.md content freeze mid-session** ("update goals, just delete them, proceed — especially cleaning up"). Removed the "no new content beyond repositioning + compliance" line from GOALS.md (DOS master), added `styer-suburb-editor-daily` to Keep-Running; LoanOS/Client Ops/ad-spend pauses retained. **Cedar Park Round 3 shipped** (19-day skip streak ended): median → $489,747 Apr 2026 Redfin (-8.6% YoY) cited; all 6 "24-hour" perf-claims → "same-day"; lone USDA surface removed; round-rock-shared opener de-templated; new cited Major Employers H3 (Firefly/Ascension Seton/Dell+Apple/LISD); 5 source URLs; 6 JSON-LD blocks valid. Committed page+sitemap+CHANGELOG+run-logs only — left the in-progress sitewide asset-depletion-calculator nav sweep (~105 files) + calculator patches untouched. **Sitewide cleanup now unblocked: "24-hour" lives on all 24 suburb pages + USDA on several — recommend a dedicated sweep, not 1/day rotation.**
+
 **2026-06-06 (styer-site-daily Saturday weekend re-verify): clean run, 0 site-HTML mutations.** Sitemap/robots 200; **133 live = 133 local** (md5 identical — up from 131, +2 DSCR posts); conversion tracking 10/10 (HTML-token). **2 stale flags auto-resolved:** (1) "blog hits 7 days → flag weekly content" RESOLVED — 2 DSCR posts shipped 2026-06-05 (commit 50d1919), latest post now 1 day old; (2) sitemap count 131→133. **Audited both new DSCR posts (airbnb-str + cash-out-brrrr)** — clean: tracked-LP CTAs (3/5), FAQPage schema, NMLS 513013, blog.html wired (noscript+CollectionPage), 0 legacy-entity drift, title lint PASS. Full blog CTA sweep 24/24 date-prefixed, 0 missing. **Adam batch-memo (2026-06-05) still unanswered** — carries point to memo, not re-surfaced. SEO/SEM backlog 0 eligible. NotebookLM advisor script absent (65th run).
 
 **2026-06-05 (styer-site-daily Friday rotation): Content Planning + AEO Review.** USDA carry REFRAMED — 8 pages PROMOTE USDA as lead product (accuracy/compliance question), 4 STEER AWAY. All 3 suburb-cluster carries consolidated into `run-logs/adam-batch-memo-2026-06-05.md`. Conversion 10/10. Sitemap 131=131. NotebookLM 64th dead run.
-
-**2026-06-03 (styer-site-daily Wednesday rotation): Suburb Page Deep Dive + AEO — Kyle.** 0-mutation. Kyle structural 7/9, 5 USDA surfaces. Refined USDA cluster 4→5 suburbs; 0-CTA cluster 8→32 pages. Conversion 10/10.
 
 ## Active Blockers
 
