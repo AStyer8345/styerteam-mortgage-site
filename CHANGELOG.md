@@ -1,3 +1,9 @@
+## 2026-06-05 — DSCR cluster: 2 net-new blog posts (manual writer run, 50d1919)
+
+- Published `2026-06-05-dscr-cash-out-refinance-texas-brrrr` and `2026-06-05-dscr-airbnb-str-loan-texas` as an Adam-prioritized DSCR push.
+- Both passed dedup gate against the 3/31 hub — initial Tier A picks (Requirements + vs Conventional) were swapped after hub-overlap review to BRRRR + STR.
+- Registered in blog.html (noscript + CollectionPage schema), blog/manifest.json, sitemap.xml. Live, HTTP 200.
+
 ## 2026-06-05 — styer-content-weekly (Blog Editor — DSCR niche citation pass)
 
 - **1 page refreshed: `dscr-loan-austin-tx.html`.** Standing JUMBO priority confirmed DONE (2026-05-29). Resumed niche-first queue → priority #1 = niche hub with <3 external citations.
