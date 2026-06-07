@@ -1,3 +1,12 @@
+## 2026-06-07 — styer-suburb-editor (Leander Round 3)
+
+- **Leander Round 3 executed** (queue position #4, following round-rock / georgetown / cedar-park). Refreshed median **$411K March 2026 (-8.7%) → $418K trailing-3-month April 2026 Redfin (-3.2% YoY, $196/sqft)** with two fresh demand signals: **80 days on market (up from 64 a year ago)** and **313 closings (up from 280)**. Updated across LocalBusiness FAQ schema, FAQ accordion, intro, at-a-glance, market section, and closing-cost example.
+- **Removed a now-false superlative:** the page claimed "the steepest YoY drop among my 13 Austin-metro suburb pages this run" — true at March's -8.7%, false at April's -3.2%. Replaced with DOM/sales buyer-leverage framing; kept "March printed -8.7%" as honest moderation context.
+- **Performance-claim cleanup (batch-memo D2):** all 5 "24 hours" / "within 24 hours" pre-approval instances (FAQ schema, FAQ accordion, intro, Process Step 1, CTA) → "same-day." 0 remain.
+- **De-templated** the generic "Down Payment Assistance Programs" Why-card (verbatim "3–5% in down payment or closing cost assistance" shared with georgetown) → Leander-specific "Assistance vs. Builder Concessions — The Real Math" card weighing a DPA second lien against a Travisso/Mason Hills builder rate buydown in an 80-DOM market.
+- **Titan Development Business Park bullet deepened:** added Phase 1 groundbreaking near Hero Way + County Road 270, full buildout anticipated by 2035, ~$18.5M projected combined tax/utility revenue to the City over the next decade (leandertx.gov cited).
+- Closing-cost example recomputed at $418K: $376,200 loan (10% down), title ~$1,759, property-tax proration ~$6,273/yr (~$3,136 mid-year seller credit). USDA already 0 (clean). WebPage dateModified 05-05 → 06-07; sitemap lastmod 05-18 → 06-07. All 4 JSON-LD blocks (LocalBusiness/FAQPage/WebPage/BreadcrumbList) re-validated clean via python json.loads.
+
 ## 2026-06-06 — styer-suburb-editor (Cedar Park Round 3 — content freeze LIFTED)
 
 - **Adam lifted the site content freeze** mid-session ("update goals, just delete them, proceed — especially cleaning up"). Removed the "No new content on the site beyond repositioning + compliance" line from `GOALS.md` (DOS master); added `styer-suburb-editor-daily` to the Keep-Running list; stamped the audit trail. LoanOS/Client Ops/ad-spend strategic pauses retained (not cleanup blockers).
