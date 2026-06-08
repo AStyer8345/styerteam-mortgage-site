@@ -1,3 +1,11 @@
+## 2026-06-08 — styer-suburb-editor-daily (Round 3 #5 — pflugerville lighter-touch refresh)
+
+- **`pflugerville-mortgage-lender.html` refreshed.** Page was already 100% unique body copy (no cross-page verbatim duplicates left — 8-week success metric met), so this was deepening + a fresh-data pass, not de-duplication.
+- **Median preserved, not overstated:** May 2026 Redfin "$440,781" is an *average* (different methodology; mean pulled up by high-end Blackhawk/Falcon Pointe sales), so kept the well-sourced March 2026 Redfin **$355K median (-10.2% YoY)**.
+- **4 new first-party elements:** (1) new **Sorento (78660) H3 spotlight** — D.R. Horton/Pacesetter/Meritage/Brightland/Westin MPC off Weiss Ln, $479,900 median (HomeCity), 1,690–3,304 sqft, Mott→Cele→Weiss feeders; (2) **Weiss High School 6/10 GreatSchools** added (1,989 students, 94% grad, 1130 SAT) — PISD section now "three comprehensive high schools"; (3) fresh Redfin **~52 days on market + ~1 offer/listing** in the buyer-leverage paragraph; (4) **PCDC 2025 Workforce Study** datapoint — software-dev +121%, data-scientist demand +918% over the decade (Site Selection Magazine + pfdevelopment.com), tied to bank-statement/asset-based qualifying.
+- **Internal-redundancy trim:** removed 3 soft "What Should Buyers Know" paragraphs (Neighborhoods / School district / Employment proximity) now superseded by the deeper H3 spotlights; kept price-comparison + Lake Pflugerville.
+- WebPage `dateModified` 05-06 → 06-08; sitemap `lastmod` 05-18 → 06-08. All 4 JSON-LD blocks validated clean (python `json.loads`). **4 new inline source URLs.** Queue: next is #6 buda.
+
 ## 2026-06-08 — styer-site-daily (Monday — Schema + Google Ads + AEO Entity Audit)
 
 - **Clean Monday rotation, 0 site-HTML mutations.** Health: sitemap/robots 200, 133 live = 133 local, conversion tracking 10/10 (HTML-token). Run log: `run-logs/2026-06-08.md` (+ `latest.md`).
