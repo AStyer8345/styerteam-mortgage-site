@@ -2084,3 +2084,11 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Excluded modern `.js-quick-contact` forms from the legacy Netlify fallback to prevent the homepage hero form from binding twice and redirecting unexpectedly.
 - Removed the direct Google Ads library request from `thank-you.html`; GTM remains the single loader. Bumped `script.js` cache version to `20260531` across 102 HTML files.
 - Added `tests/lead-flow-regression.test.js`. Verified with `node --check script.js`, `node --test tests/lead-flow-regression.test.js`, `git diff --check`, and local browser smoke tests for both homepage and legacy quote paths.
+
+## 2026-06-07 (styer-site-daily — Sunday weekend re-verify)
+
+- Health checks green: sitemap.xml + robots.txt HTTP 200; 133 live = 133 local; conversion tracking 10/10 (HTML-token, identical to prior run).
+- Blog fresh (latest 2026-06-05, 2 days old) + tracked-LP CTA sweep 24/24, 0 missing. SEO/SEM backlog 0-eligible; BLOCKERS.md clean.
+- Re-Verify Gate auto-resolved 1 stale TODO carry: 4th-run NEEDS-ADAM "styer-suburb-editor-daily status" — Adam answered (b) on 2026-06-06 (freeze deleted, task → GOALS.md Keep-Running). Marked `[x]` in TODO.md.
+- Adam batch-memo (USDA / perf-claims / 0-tracked-LP) still unanswered — pointed to, not re-surfaced. NotebookLM advisor script absent (66th run). PSI not re-attempted (Monday-rotation work).
+- 0 site-HTML files modified. Doc/log only (TODO, CONTEXT, run-log, learnings, this entry). Sister-task gbp-posts working file not staged.

@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-06-07 (styer-site-daily Sunday weekend re-verify): clean run, 0 site-HTML mutations.** Sitemap/robots 200; **133 live = 133 local**; conversion tracking 10/10 (HTML-token, identical to yesterday). Blog fresh (latest 2026-06-05, 2 days) + CTA sweep 24/24, 0 missing. SEO/SEM backlog 0-eligible (all P4 GSC-blocked or Adam-gated); BLOCKERS.md clean. **1 stale TODO carry auto-resolved:** the 4th-run NEEDS-ADAM "`styer-suburb-editor-daily` status under GOALS.md" — Adam already answered (b) on 2026-06-06 (freeze deleted, task → Keep-Running line 66). **Adam batch-memo (2026-06-05) still unanswered** — carries point to memo, not re-surfaced. NotebookLM advisor script absent (66th run). PSI not re-attempted (Sunday; Monday-rotation work — count held at 31/31, not falsely incremented).
+
 **2026-06-06 (styer-suburb-editor — Cedar Park Round 3 + FREEZE LIFTED): Adam killed the GOALS.md content freeze mid-session** ("update goals, just delete them, proceed — especially cleaning up"). Removed the "no new content beyond repositioning + compliance" line from GOALS.md (DOS master), added `styer-suburb-editor-daily` to Keep-Running; LoanOS/Client Ops/ad-spend pauses retained. **Cedar Park Round 3 shipped** (19-day skip streak ended): median → $489,747 Apr 2026 Redfin (-8.6% YoY) cited; all 6 "24-hour" perf-claims → "same-day"; lone USDA surface removed; round-rock-shared opener de-templated; new cited Major Employers H3 (Firefly/Ascension Seton/Dell+Apple/LISD); 5 source URLs; 6 JSON-LD blocks valid. Committed page+sitemap+CHANGELOG+run-logs only — left the in-progress sitewide asset-depletion-calculator nav sweep (~105 files) + calculator patches untouched. **Sitewide cleanup now unblocked: "24-hour" lives on all 24 suburb pages + USDA on several — recommend a dedicated sweep, not 1/day rotation.**
 
 **2026-06-06 (styer-site-daily Saturday weekend re-verify): clean run, 0 site-HTML mutations.** Sitemap/robots 200; **133 live = 133 local** (md5 identical — up from 131, +2 DSCR posts); conversion tracking 10/10 (HTML-token). **2 stale flags auto-resolved:** (1) "blog hits 7 days → flag weekly content" RESOLVED — 2 DSCR posts shipped 2026-06-05 (commit 50d1919), latest post now 1 day old; (2) sitemap count 131→133. **Audited both new DSCR posts (airbnb-str + cash-out-brrrr)** — clean: tracked-LP CTAs (3/5), FAQPage schema, NMLS 513013, blog.html wired (noscript+CollectionPage), 0 legacy-entity drift, title lint PASS. Full blog CTA sweep 24/24 date-prefixed, 0 missing. **Adam batch-memo (2026-06-05) still unanswered** — carries point to memo, not re-surfaced. SEO/SEM backlog 0 eligible. NotebookLM advisor script absent (65th run).
-
-**2026-06-05 (styer-site-daily Friday rotation): Content Planning + AEO Review.** USDA carry REFRAMED — 8 pages PROMOTE USDA as lead product (accuracy/compliance question), 4 STEER AWAY. All 3 suburb-cluster carries consolidated into `run-logs/adam-batch-memo-2026-06-05.md`. Conversion 10/10. Sitemap 131=131. NotebookLM 64th dead run.
 
 ## Active Blockers
 
@@ -56,7 +56,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Sun 2026-06-07 = weekend fire (if any) → re-verify gate only.** Next full rotation: **Mon 2026-06-08 = Schema + Google Ads Quality + AEO Entity Audit** per SKILL.md.
+**Mon 2026-06-08 = full rotation: Schema + Google Ads Quality Factors + AEO Entity Audit** per SKILL.md.
 
 Priorities (in order):
 1. **AWAIT Adam's reply to `run-logs/adam-batch-memo-2026-06-05.md`** — 3 decisions (USDA / perf-claims / 0-tracked-LP). The moment he answers, execute the chosen sweeps. This unblocks weeks of carry. Recommended answers in memo: 1=b-or-a (USDA accuracy), 2=a (kill 24-hour, keep same-day), 3=a (scenarios is canonical).
