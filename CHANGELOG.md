@@ -1,3 +1,14 @@
+## 2026-06-08 — styer-competitive-weekly (Week 14)
+
+- **Research-only run, 0 site mutations.** Report: `run-logs/competitive/2026-06-08.md` (+ copied to `latest.md`).
+- **Phase A complicated-income held 5/7 top-10 with 2 internal gains:** self-employed austin **#3→#2** (now directly behind only LendFriend), bank statement austin **#6→#4**. Jumbo #2, asset-depletion #1+#5, 1099 #7 all held. non-QM + DSCR remain the only 2 gaps (Defy Mortgage new DSCR entrant).
+- **Core Austin head terms 0/6** (directory/physical-presence dominated). Barton Creek reclaimed mortgage-lender #1 from ATFCU; Highlander #1 broker / MortgageAustin #1 pre-approved / Yelp #1 refi / Joel #4 cash-out all held; LendFriend climbing cash-out #3→#2.
+- **Suburb rotation (Westlake + Cedar Park):** Westlake **#6 ★** — first-ever TX-disambiguated top-10 (dedicated `/westlake-mortgage-lender` page now disambiguates the CA "Westlake Village" SERP noise). Cedar Park still NR (4th measure; CrossCountry 2 branches + BoA + Benchmark physical-presence).
+- **LendFriend schema wedge held 3rd consecutive:** re-fetched `/self-employed-home-loans` — 9-Q FAQ visible but no JSON-LD FAQPage, no AggregateRating, no review count. Binary, Adam-controlled lever to take self-employed #1; blocked only on the AggregateRating policy decision (existing carry).
+- **Re-verify gate caught a query-variant false-downgrade:** "jumbo mortgage **lender** austin tx" dropped Styer from the set, but the exact prior query "jumbo mortgage austin tx" confirmed #2 held. Logged the discriminator to learnings.
+- **NotebookLM 65th consecutive dead run** — advisor script now ABSENT (`/Users/adamstyer/loanos/scripts/notebook_advisor.py` gone, stale repo) AND binary auth expired ("Authentication expired or invalid"). Steps 0/4/6 NotebookLM portions skipped; master growth log appended to local disk only (`memory/styer-mortgage/Styer_Growth_Log.md`).
+- Google Ads paid-landscape: not programmatically verifiable via WebSearch (organic-only) — flagged honestly, recommended manual/SEM path rather than fabricating ad counts.
+
 ## 2026-06-07 — styer-suburb-editor (Leander Round 3)
 
 - **Leander Round 3 executed** (queue position #4, following round-rock / georgetown / cedar-park). Refreshed median **$411K March 2026 (-8.7%) → $418K trailing-3-month April 2026 Redfin (-3.2% YoY, $196/sqft)** with two fresh demand signals: **80 days on market (up from 64 a year ago)** and **313 closings (up from 280)**. Updated across LocalBusiness FAQ schema, FAQ accordion, intro, at-a-glance, market section, and closing-cost example.
