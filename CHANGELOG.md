@@ -1,3 +1,13 @@
+## 2026-06-08 — styer-site-daily (Monday — Schema + Google Ads + AEO Entity Audit)
+
+- **Clean Monday rotation, 0 site-HTML mutations.** Health: sitemap/robots 200, 133 live = 133 local, conversion tracking 10/10 (HTML-token). Run log: `run-logs/2026-06-08.md` (+ `latest.md`).
+- **Schema audit: 17/17 JSON-LD blocks VALID** via python `json.loads` — home (MortgageBroker/FAQPage/Person), about (Person+Organization/LocalBusiness/FAQPage), round-rock (6 blocks), + the 2 DSCR posts (2026-06-05). **DSCR posts upgraded "present" → "VALID"** (Article+FAQPage+BreadcrumbList all parse) — clears the open "confirm schema validity" priority.
+- **AEO entity consistency verified** across home↔about: name "Adam Styer | HyperSmart Home Loans" / legalName "Kyber Mortgage Corporation dba HyperSmart Home Loans", NMLS 513013+2653540, address 9050 N Capital of TX Hwy Ste 390, phone — all consistent. Only inconsistency = the documented schema-type carry (home MortgageBroker vs about LocalBusiness), Adam-gated.
+- **AEO extractability reframed, not flagged:** homepage first-150 deliberately answers the *specialist* query (self-employed/complex-income/DSCR/non-QM) rather than the generic "best mortgage broker" superlative — on-strategy per GOALS Phase A (superlatives are a named cleanup target + mortgage-advertising compliance risk). SKILL.md's literal "best broker" AEO check filtered through GOALS before treating as a gap.
+- **PSI: real Monday attempt, quota exceeded → honest 31/31 → 32/32** (single shared per-day quota; not double-counted per LP). **Google Ads optimization score left Adam-owned/UNVERIFIED** (Ads UI, not fabricated).
+- **Adam batch-memo (2026-06-05) still unanswered** — 3 cluster carries (USDA / perf-claims / 0-tracked-LP) stay paused, not re-surfaced. SEO/SEM backlog 0-eligible; BLOCKERS.md clean. NotebookLM advisor script absent (67th dead run).
+- Design spot-check: navy #0A1F3F ✅; gold #8B6E24 (SKILL.md `#C9A84C` drift carry); hero CTAs → scenarios funnel by design; index.html comment balance 39/39.
+
 ## 2026-06-08 — styer-competitive-weekly (Week 14)
 
 - **Research-only run, 0 site mutations.** Report: `run-logs/competitive/2026-06-08.md` (+ copied to `latest.md`).
