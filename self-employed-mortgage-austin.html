@@ -305,6 +305,64 @@
 
   </section>
 
+  <!-- Quick Quote Form -->
+  <section class="section bg-light">
+    <div class="container content-narrow">
+      <div class="quick-quote-form">
+        <h3>Get Your Self-Employed Rate Quote</h3>
+        <form name="self-employed-quote" method="POST" action="/thank-you" data-netlify="true">
+          <input type="hidden" name="form-name" value="self-employed-quote">
+          <div class="form-group">
+            <label for="loan-purpose-self-employed">Loan Purpose</label>
+            <select id="loan-purpose-self-employed" name="loanGoal" required>
+              <option value="">Select...</option>
+              <option value="Purchase">Purchase</option>
+              <option value="Refinance">Refinance</option>
+              <option value="Cash-Out">Cash-Out</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="loan-amount-self-employed">Estimated Purchase Price</label>
+            <select id="loan-amount-self-employed" name="loan_amount" required>
+              <option value="">Select...</option>
+              <option value="under-500k">Under $500K</option>
+              <option value="500k-800k">$500K – $800K</option>
+              <option value="800k-1.2m">$800K – $1.2M</option>
+              <option value="1.2m+">$1.2M+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name-self-employed">Your Name</label>
+            <input type="text" id="name-self-employed" name="name" placeholder="First &amp; Last" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email-self-employed">Email Address</label>
+            <input type="email" id="email-self-employed" name="email" placeholder="you@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="phone-self-employed">Phone Number</label>
+            <input type="tel" id="phone-self-employed" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
+          </div>
+          <!-- TCPA consent — required, unchecked by default -->
+          <div style="margin-top:8px;margin-bottom:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
+              <input type="checkbox" name="tcpa_consent" id="hqf-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+              <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+            </label>
+          </div>
+          <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
+          <div style="margin-top:8px;margin-bottom:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
+              <input type="checkbox" name="sms_opt_in" id="hqf-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+              <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Get My Rate Quote</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- Answer-first intro -->
   <section class="section">
     <div class="container content-narrow">
@@ -635,7 +693,7 @@
       <h2>Related Complex-Income Pages</h2>
       <p>If you own investment property or want to buy rental properties in addition to your primary home, you may benefit from pairing a bank statement loan with a DSCR program for investment financing. DSCR loans don't look at personal income at all — they qualify purely on rental cash flow. For many self-employed investors in Austin, this combination is the most efficient path to building a portfolio.</p>
       <p><a href="/dscr-loan-austin-tx.html">Learn about DSCR loans for investment property →</a></p>
-      <p>Working north of Austin? <a href="/self-employed-mortgage-round-rock-tx.html">Self-Employed Mortgage Options in Round Rock TX →</a></p>
+      <p>Working north of Austin? <a href="/self-employed-mortgage-austin.html">Self-Employed Mortgage Options in Round Rock TX →</a></p>
       <p>Want a deeper breakdown of bank statement underwriting math? <a href="/bank-statement-loans.html">Bank Statement Loans — full program guide →</a></p>
       <p>Curious about the broader Non-QM landscape? <a href="/non-qm-loans.html">Non-QM Loans Hub — every alternative-doc program Adam offers →</a></p>
       <p>Self-employed and shopping non-QM specifically in Austin? <a href="/non-qm-loans.html">Non-QM loans for self-employed borrowers in Austin →</a></p>

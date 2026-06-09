@@ -323,6 +323,64 @@
     </div>
   </section>
 
+  <!-- Quick Quote Form -->
+  <section class="section bg-light">
+    <div class="container content-narrow">
+      <div class="quick-quote-form">
+        <h3>See What Your Deposits Qualify For</h3>
+        <form name="bank-statement-quote" method="POST" action="/thank-you" data-netlify="true">
+          <input type="hidden" name="form-name" value="bank-statement-quote">
+          <div class="form-group">
+            <label for="loan-purpose-bank-statement">Loan Purpose</label>
+            <select id="loan-purpose-bank-statement" name="loanGoal" required>
+              <option value="">Select...</option>
+              <option value="Purchase">Purchase</option>
+              <option value="Refinance">Refinance</option>
+              <option value="Cash-Out">Cash-Out</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="loan-amount-bank-statement">Estimated Purchase Price</label>
+            <select id="loan-amount-bank-statement" name="loan_amount" required>
+              <option value="">Select...</option>
+              <option value="under-500k">Under $500K</option>
+              <option value="500k-800k">$500K – $800K</option>
+              <option value="800k-1.2m">$800K – $1.2M</option>
+              <option value="1.2m+">$1.2M+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name-bank-statement">Your Name</label>
+            <input type="text" id="name-bank-statement" name="name" placeholder="First &amp; Last" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email-bank-statement">Email Address</label>
+            <input type="email" id="email-bank-statement" name="email" placeholder="you@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="phone-bank-statement">Phone Number</label>
+            <input type="tel" id="phone-bank-statement" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
+          </div>
+          <!-- TCPA consent — required, unchecked by default -->
+          <div style="margin-top:8px;margin-bottom:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
+              <input type="checkbox" name="tcpa_consent" id="hqf-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+              <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+            </label>
+          </div>
+          <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
+          <div style="margin-top:8px;margin-bottom:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
+              <input type="checkbox" name="sms_opt_in" id="hqf-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+              <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Get My Rate Quote</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- Why Bank Statement Loans Exist -->
   <section class="section">
     <div class="container content-narrow">

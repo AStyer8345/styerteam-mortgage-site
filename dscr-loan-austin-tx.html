@@ -312,6 +312,64 @@
 
         </section>
 
+  <!-- Quick Quote Form -->
+  <section class="section bg-light">
+    <div class="container content-narrow">
+      <div class="quick-quote-form">
+        <h3>Price Your DSCR Loan</h3>
+        <form name="dscr-quote" method="POST" action="/thank-you" data-netlify="true">
+          <input type="hidden" name="form-name" value="dscr-quote">
+          <div class="form-group">
+            <label for="loan-purpose-dscr">Loan Purpose</label>
+            <select id="loan-purpose-dscr" name="loanGoal" required>
+              <option value="">Select...</option>
+              <option value="Purchase investment property">Purchase investment property</option>
+              <option value="Refinance investment property">Refinance investment property</option>
+              <option value="Cash-out refinance">Cash-out refinance</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="loan-amount-dscr">Estimated Property Price</label>
+            <select id="loan-amount-dscr" name="loan_amount" required>
+              <option value="">Select...</option>
+              <option value="under-400k">Under $400K</option>
+              <option value="400k-600k">$400K – $600K</option>
+              <option value="600k-1m">$600K – $1M</option>
+              <option value="1m+">$1M+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name-dscr">Your Name</label>
+            <input type="text" id="name-dscr" name="name" placeholder="First &amp; Last" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email-dscr">Email Address</label>
+            <input type="email" id="email-dscr" name="email" placeholder="you@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="phone-dscr">Phone Number</label>
+            <input type="tel" id="phone-dscr" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
+          </div>
+          <!-- TCPA consent — required, unchecked by default -->
+          <div style="margin-top:8px;margin-bottom:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
+              <input type="checkbox" name="tcpa_consent" id="hqf-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+              <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+            </label>
+          </div>
+          <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
+          <div style="margin-top:8px;margin-bottom:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
+              <input type="checkbox" name="sms_opt_in" id="hqf-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+              <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Get My Rate Quote</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
 
   <!-- IMAGE: Modern Austin Texas investment rental property with For Rent sign, professional photography style, urban neighborhood with mature trees, showing value and income potential -->
 

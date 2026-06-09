@@ -228,6 +228,62 @@
               </p>
             </div>
 
+            <div class="hero-col hero-col-form">
+              <!-- Quick Quote Form -->
+              <div class="quick-quote-form">
+                <h3>Get Your Rate Quote</h3>
+                <form name="kyle-quote" method="POST" action="/thank-you" data-netlify="true">
+                  <input type="hidden" name="form-name" value="kyle-quote">
+                  <input type="hidden" name="city" value="Kyle">
+                  <div class="form-group">
+                    <label for="loan-purpose-kyle">Loan Purpose</label>
+                    <select id="loan-purpose-kyle" name="loanGoal" required>
+                      <option value="">Select...</option>
+                      <option value="Purchase">Purchase</option>
+                      <option value="Refinance">Refinance</option>
+                      <option value="Cash-Out Refinance">Cash-Out Refinance</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="loan-amount-kyle">Estimated Purchase Price</label>
+                    <select id="loan-amount-kyle" name="loan_amount" required>
+                      <option value="">Select...</option>
+                      <option value="under-300k">Under $300K</option>
+                      <option value="300k-400k">$300K – $400K</option>
+                      <option value="400k-500k">$400K – $500K</option>
+                      <option value="500k+">$500K+</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="name-kyle">Your Name</label>
+                    <input type="text" id="name-kyle" name="name" placeholder="First &amp; Last" required autocomplete="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="email-kyle">Email Address</label>
+                    <input type="email" id="email-kyle" name="email" placeholder="you@email.com" required autocomplete="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="phone-kyle">Phone Number</label>
+                    <input type="tel" id="phone-kyle" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
+                  </div>
+                  <!-- TCPA consent — required, unchecked by default -->
+                  <div style="margin-top:8px;margin-bottom:8px;">
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
+                      <input type="checkbox" name="tcpa_consent" id="hqf-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+                      <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+                    </label>
+                  </div>
+                  <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
+                  <div style="margin-top:8px;margin-bottom:8px;">
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
+                      <input type="checkbox" name="sms_opt_in" id="hqf-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+                      <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-full">Get My Rate Quote</button>
+                </form>
+              </div>
+            </div>
 
           </div>
           <p class="hero-legal">

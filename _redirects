@@ -47,10 +47,12 @@
 /dscr-loans-dripping-springs  /dscr-loans-dripping-springs.html  301!
 /dscr-loans-fredericksburg-tx  /dscr-loans-fredericksburg-tx.html  301!
 /asset-depletion-mortgage-texas  /asset-depletion-mortgage-texas.html  301!
-/asset-depletion-mortgage-austin-tx  /asset-depletion-mortgage-austin-tx.html  301!
+/asset-depletion-mortgage-austin-tx  /asset-depletion-mortgage-texas.html  301!
+/asset-depletion-mortgage-austin-tx.html  /asset-depletion-mortgage-texas.html  301!
 /1099-only-mortgage-texas  /1099-only-mortgage-texas.html  301!
 /self-employed-mortgage-austin  /self-employed-mortgage-austin.html  301!
-/self-employed-mortgage-round-rock-tx  /self-employed-mortgage-round-rock-tx.html  301!
+/self-employed-mortgage-round-rock-tx  /self-employed-mortgage-austin.html  301!
+/self-employed-mortgage-round-rock-tx.html  /self-employed-mortgage-austin.html  301!
 /non-qm-loans  /non-qm-loans.html  301!
 /non-qm-loans-self-employed-austin  /non-qm-loans.html  301!
 /non-qm-loans-self-employed-austin.html  /non-qm-loans.html  301!
@@ -61,7 +63,8 @@
 /referral-partners-self-employed-clients  /referral-partners-self-employed-clients.html  301!
 /p-and-l-mortgage-texas  /p-and-l-mortgage-texas.html  301!
 /one-time-close-construction-loan-texas  /one-time-close-construction-loan-texas.html  301!
-/one-time-close-construction-loans-texas-hill-country  /one-time-close-construction-loans-texas-hill-country.html  301!
+/one-time-close-construction-loans-texas-hill-country  /one-time-close-construction-loan-texas.html  301!
+/one-time-close-construction-loans-texas-hill-country.html  /one-time-close-construction-loan-texas.html  301!
 
 # Single-page routes
 /dscr-loan-austin-tx  /dscr-loan-austin-tx.html  301!
