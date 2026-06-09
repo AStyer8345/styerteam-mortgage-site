@@ -794,9 +794,9 @@
           return res.json();
         })
         .then(function() {
-          form.style.display = 'none';
-          successMsg.className = 'rc-form-status success';
           window.dataLayer.push({ event: 'generate_lead', lead_type: 'rate_check' });
+          /* Land on /thank-you so the Google Ads conversion (thank_you_page_view) counts this lead */
+          window.location.href = '/thank-you?type=rate-check';
         })
         .catch(function() {
           errorMsg.className = 'rc-form-status error';

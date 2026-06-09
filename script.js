@@ -473,7 +473,13 @@ async function submitForm(form) {
     return;
   }
 
-  showQuickContactSuccess(form);
+  // Fire GA4 lead event (waits briefly for tags), then land on /thank-you so the
+  // Google Ads conversion (thank_you_page_view) counts this submission.
+  await dispatchLeadSubmitted(
+    { lead_type: 'quick_contact', form_name: form.getAttribute('name') || form.id || 'quick-contact' },
+    { waitForTags: true }
+  );
+  window.location.href = '/thank-you?type=quick-contact';
 }
 
 function initFormValidation() {
@@ -846,36 +852,34 @@ function initPrequalForm() {
     };
 
     try {
-      const res = await fetch('/.netlify/functions/lead-intake', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      // Post to Netlify Forms first (backup capture), then the lead-intake pipeline.
+      const results = await Promise.allSettled([
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString(),
+        }),
+        fetch('/.netlify/functions/lead-intake', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        }),
+      ]);
+      if (!hasSuccessfulCapture(results)) throw new Error('all capture endpoints failed');
     } catch (err) {
-      console.error('[prequal] lead-intake failed:', err);
-      // Non-blocking — form still shows success. data-netlify fallback captures submission.
+      console.error('[prequal] lead capture failed:', err);
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Pre-Qualification'; }
+      showQuickContactError(form);
+      return;
     }
 
-    // Show success message
-    const formCard = form.closest('.card') || form.parentElement;
-    const success = document.createElement('div');
-    success.className = 'alert alert-success';
-    success.setAttribute('role', 'status');
-
-    const heading = document.createElement('h3');
-    heading.textContent = 'Pre-Qualification Submitted!';
-    success.appendChild(heading);
-
-    const msg = document.createElement('p');
-    msg.textContent = 'Thank you! Adam will review your information and reach out within 24 hours to discuss your options.';
-    success.appendChild(msg);
-
-    form.style.display = 'none';
-    const progress = document.querySelector('.prequal-progress');
-    if (progress) progress.style.display = 'none';
-    formCard.appendChild(success);
-    dispatchLeadSubmitted({ lead_type: 'prequal', form_name: form.getAttribute('name') || 'prequal' });
+    // Fire GA4 lead event, then land on /thank-you so the Google Ads
+    // conversion (thank_you_page_view) counts this submission.
+    await dispatchLeadSubmitted(
+      { lead_type: 'prequal', form_name: form.getAttribute('name') || 'prequal' },
+      { waitForTags: true }
+    );
+    window.location.href = '/thank-you?type=prequal';
   });
 
   // Clear errors on input
