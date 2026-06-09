@@ -33,6 +33,12 @@ User-agent: *
 Allow: /
 Disallow: /dashboard.html
 Disallow: /loanos.html
+Disallow: /ops.html
+Disallow: /marketing-command-center.html
+Disallow: /marketing-content.html
+Disallow: /task-dashboard.html
+Disallow: /loan-dashboard.html
+Disallow: /refinance-calculator.html
 Disallow: /netlify/
 Disallow: /blog/manifest.json
 Disallow: /realtor-updates/manifest.json

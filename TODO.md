@@ -112,7 +112,7 @@ Items auto-appended by scheduled remote agents land here. Glance weekly.
 - [ ] **Cedar Park rebuild live (2026-05-24).** Submit https://styermortgage.com/cedar-park-mortgage-lender.html to GSC → Request Indexing. Also submit https://styermortgage.com/index.html and https://styermortgage.com/austin-area-mortgage-lender.html (internal links added to both).
 
 
-- [ ] **USDA in how-to-buy loan table (2026-04-23)** — how-to-buy-a-house-in-austin-tx.html loan program table includes `<a href="/loans/usda.html">USDA</a>`. Adam does NOT do USDA. Confirm + remove. Same as Buda/Smithville/Florence/Jarrell USDA blockers.
+- [x] **USDA in how-to-buy loan table (2026-04-23)** — DONE 2026-06-09: table row replaced with DPA programs (TSAHC/TDHCA) linking /austin-down-payment-assistance.html. Informational VA/USDA 0%-down comparisons in body/schema kept (educational, no origination claim). Full Decision 1(b) USDA repositioning executed on all 8 Class-A suburb pages same session.
 
 - [ ] **NotebookLM script path broken (2026-04-23)** — `/Users/adamstyer/loanos/scripts/notebook_advisor.py` not found (loanos/ dir abandoned). Either locate the correct path or retire the NotebookLM step from the daily scheduled task.
 

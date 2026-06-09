@@ -1,5 +1,13 @@
 # styermortgage.com — Decisions
 
+## [2026-06-09] — Batch-memo decisions: USDA 1=b, speed claims 2=a, funnel attribution via /thank-you
+
+**Chose:** (1) Reposition all 8 Class-A rural suburb pages OFF USDA — Adam does not originate USDA; pages now lead with conventional/FHA/VA/DPA + OTC construction, keeping the USDA FAQ question with an honest "I don't originate USDA" answer. (2) Kill "24-hour" speed-claim variants sitewide (non-blog), keep "same-day pre-approval" — reconciles GOALS.md ("no performance-metric marketing") with the voice guide (same-day is a true differentiator). (3) Resolve the 0-tracked-LP question at the form layer instead of the link layer: every lead form now lands on /thank-you where the Ads conversion fires, so organic submissions attribute without adding tracked-LP links to 34 pages. /scenarios.html remains the canonical organic LP.
+**Over:** (1a) claiming Adam brokers rural USDA, or (1c) soft "ask me" reframe — both leave an advertised product he doesn't originate as page lead. (2b) killing all speed claims — strips a true differentiator. (3b) adding /get-preapproved links across the 34-page cluster — extra nav surface for a problem attribution plumbing already solves.
+**Why:** Accuracy/compliance first (TDSML advertising exposure on USDA promotion), then conversion attribution with the smallest content footprint.
+**Trade-off:** 8 rural pages may shed some "USDA loans [city]" long-tail rankings; the honest FAQ answer retains the query surface with a redirect-to-strength answer. Client testimonial quotes containing speed claims were left verbatim (2) or removed when product-false (2 USDA quotes) — never rewritten.
+**Context:** Decisions captured live from Adam in the 2026-06-09 interactive session, answering run-logs/adam-batch-memo-2026-06-05.md.
+
 ## [2026-05-28] — Scenarios are a separate content type from pillar/product pages
 
 **Chose:** Build `/scenarios/` as a parallel content type with its own hub, template, and silo. Scenario pages tell the story of one borrower file (Situation → Obstacle → Strategy → Outcome). They link UP to the relevant pillar page (e.g. `/self-employed-mortgage-austin.html`) and back to `/scenario.html` for conversion. They do not replace, fork, or compete with the existing pillar/product pages.
