@@ -68,10 +68,10 @@
       wrap.className = 'calc-slider-group';
       wrap.innerHTML =
         '<div class="calc-slider-label">' +
-          '<span>' + (config.label || '') + '</span>' +
+          '<label for="' + id + '">' + (config.label || '') + '</label>' +
           '<span class="calc-slider-value" data-value></span>' +
         '</div>' +
-        '<input type="range" class="calc-slider-input" id="' + id + '" min="' + config.min + '" max="' + config.max + '" step="' + (config.step != null ? config.step : 1) + '" value="' + value + '">';
+        '<input type="range" class="calc-slider-input" id="' + id + '" aria-label="' + (config.label || '') + '" min="' + config.min + '" max="' + config.max + '" step="' + (config.step != null ? config.step : 1) + '" value="' + value + '">';
 
       var valueEl = wrap.querySelector('[data-value]');
       var input = wrap.querySelector('input');

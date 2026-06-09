@@ -38,9 +38,6 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css?v=20260531">
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-
   <!-- Schema: WebApplication -->
   <script type="application/ld+json">
   {
@@ -720,6 +717,8 @@
       <script src="script.js?v=20260531" defer></script>
   <script src="/js/scroll-effects.js?v=20260429" defer></script>
   <script src="/analytics.js?v=20260417" defer></script>
+      <!-- Chart.js — loaded at end of body so it doesn't block first render (P0-E) -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
       <script>
       /* ── Buydown Calculator ── */
       var BUYDOWN_TYPES = {
@@ -1029,8 +1028,8 @@
         var insFreq = document.querySelector('input[name="bd-ins-freq"]:checked').value;
         var taxRaw  = parseFloat(document.getElementById('bd-tax-input').value)  || 0;
         var insRaw  = parseFloat(document.getElementById('bd-ins-input').value)  || 0;
-        var taxMo   = taxFreq === 'annual' ? taxRaw / 12 : taxRaw;
-        var insMo   = insFreq === 'annual' ? insRaw / 12 : insRaw;
+        var taxMo   = taxFreq === 'yr' ? taxRaw / 12 : taxRaw;
+        var insMo   = insFreq === 'yr' ? insRaw / 12 : insRaw;
         var hoaMo   = parseFloat(document.getElementById('bd-hoa').value) || 0;
         return {
           bdType:      bdType ? bdType.value : '2-1',
