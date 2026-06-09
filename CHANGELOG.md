@@ -2121,3 +2121,9 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Re-Verify Gate auto-resolved 1 stale TODO carry: 4th-run NEEDS-ADAM "styer-suburb-editor-daily status" — Adam answered (b) on 2026-06-06 (freeze deleted, task → GOALS.md Keep-Running). Marked `[x]` in TODO.md.
 - Adam batch-memo (USDA / perf-claims / 0-tracked-LP) still unanswered — pointed to, not re-surfaced. NotebookLM advisor script absent (66th run). PSI not re-attempted (Monday-rotation work).
 - 0 site-HTML files modified. Doc/log only (TODO, CONTEXT, run-log, learnings, this entry). Sister-task gbp-posts working file not staged.
+
+## 2026-06-09 (styer-site-daily — Tuesday: Title Tags + Meta Descriptions)
+- Trimmed 2 over-length meta descriptions to ≤160 chars: `asset-depletion-calculator.html` (217→152), `loans/jumbo.html` (203→160, now matches its og/twitter description). Commit `930da40`, both verified live HTTP 200.
+- Title audit (111 pages): 0 duplicate titles, 0 missing public-page titles. `title!=og:title` confirmed by-design (social variant) — not equalized.
+- Meta-description "SHORT" flags (index/kyle/scenario/etc.) identified as regex artifacts (apostrophe truncation) and verified against live tags — 0 false fixes. `thank-you.html` no-description confirmed correct (noindex).
+- Conversion 10/10; sitemap 134 live = 134 local; SEO/SEM BLOCKERS clean, 0 backlog items eligible. Adam batch-memo still unanswered — 3 cluster carries stay paused.

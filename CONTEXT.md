@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-06-09 (styer-site-daily Tuesday — Title Tags + Meta Descriptions): 2 LOW_RISK site mutations.** Sitemap/robots 200; **134 live = 134 local** (+1 vs 06-08 = physician post); conversion **10/10** (HTML-token). Title audit across 111 pages: **0 duplicate titles, 0 missing public-page titles**; `title!=og:title` confirmed by-design (social variant), not equalized. Meta-description audit: **0 duplicates**; the ~10 "SHORT" flags were all **regex artifacts** (pattern truncated at apostrophes in "Austin's"/"today's") — verified each live tag, **0 false fixes**. `thank-you.html` "missing desc" = correct (noindex). **2 genuine over-length descriptions trimmed:** `asset-depletion-calculator.html` 217→152, `loans/jumbo.html` 203→160 (now matches its own og/twitter). Commit `930da40`, both verified live HTTP 200. SEO/SEM backlog 0-eligible; BLOCKERS clean. **Adam batch-memo (2026-06-05) still unanswered** — 3 cluster carries stay paused. NotebookLM script absent (68th). PSI held 32/32 (non-Monday, no false increment).
+
 **2026-06-08 (styer-site-daily Monday — Schema + Google Ads + AEO Entity Audit): clean run, 0 site-HTML mutations.** Sitemap/robots 200; **133 live = 133 local**; conversion 10/10 (HTML-token). **Monday schema audit: 17/17 JSON-LD blocks VALID** via python `json.loads` across home (MortgageBroker/FAQPage/Person) + about (Person/LocalBusiness/FAQPage) + round-rock (6 blocks) + the 2 DSCR posts (2026-06-05) — **DSCR posts upgraded present → VALID** (Article+FAQPage+BreadcrumbList all parse). **AEO entity consistency strong:** name (HyperSmart/Kyber), NMLS 513013+2653540, address, phone all consistent home↔about. **AEO extractability reframed, not flagged:** homepage first-150 deliberately answers the *specialist* query (self-employed/complex-income/DSCR/non-QM), NOT the generic "best broker" superlative — on-strategy per GOALS Phase A (superlatives are a cleanup target + compliance risk). PSI quota exceeded — **real Monday attempt, honest 31/31→32/32**. Google Ads score left Adam-owned/UNVERIFIED (Ads UI). SEO/SEM backlog 0-eligible; BLOCKERS clean. **Adam batch-memo (2026-06-05) still unanswered** — 3 cluster carries stay paused. NotebookLM advisor script absent (67th run). Schema-type carry (home MortgageBroker vs about LocalBusiness) + gold-hex drift (#C9A84C→#8B6E24) confirmed present, both Adam-gated.
 
 **2026-06-08 (styer-competitive-weekly Wk 14): clean research run, 0 site mutations.** Phase A held **5/7 top-10 with 2 internal gains** — self-employed austin **#3→#2** (behind only LendFriend), bank statement **#6→#4**; jumbo #2 + asset-depletion #1+#5 + 1099 #7 held; non-QM + DSCR still the only 2 gaps. Core Austin head terms 0/6. Westlake **#6 ★ first-ever TX-disambiguated top-10**; Cedar Park NR. **LendFriend schema wedge held 3rd consecutive** (no FAQPage/AggregateRating JSON-LD) — binary lever to take self-employed #1, blocked only on the AggregateRating policy decision. Report: `run-logs/competitive/2026-06-08.md`.
-
-**2026-06-07 (styer-site-daily Sunday weekend re-verify): clean run, 0 site-HTML mutations.** Sitemap/robots 200; 133 live = 133 local; conversion 10/10. Blog fresh + CTA sweep 24/24. **1 stale TODO carry auto-resolved:** suburb-editor status — Adam answered (b) 2026-06-06 (freeze deleted, task → Keep-Running line 66). NotebookLM absent (66th run); PSI not re-attempted (Sunday — count held 31/31, not falsely incremented).
 
 ## Active Blockers
 
@@ -56,12 +56,13 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Tue 2026-06-09 = Title Tags + Meta Descriptions rotation** per SKILL.md.
+**Wed 2026-06-10 = Suburb Page Deep Dive + AEO rotation** per SKILL.md.
 
 Priorities (in order):
 1. **AWAIT Adam's reply to `run-logs/adam-batch-memo-2026-06-05.md`** — 3 decisions (USDA / perf-claims / 0-tracked-LP). The moment he answers, execute the chosen sweeps. Unblocks weeks of carry. Recommended in memo: 1=b-or-a, 2=a (kill 24-hour, keep same-day), 3=a (scenarios canonical).
-2. **Tuesday rotation** — title-format audit (note Phase A titles intentionally lead specialist framing, not the generic `[Loan Type] in Austin TX` pattern); meta-desc length distribution (150–160); Python dedup (set/dict) for duplicate titles + descriptions. Within-page meta consistency (title↔og:title↔twitter:title) = LOW_RISK auto-edit; site-wide brand strings = Adam carry.
-3. **🎯 AggregateRating policy decision** — highest-confidence competitive lever: re-add `AggregateRating` w/ VERIFIED count to `/self-employed-mortgage-austin.html` (#2) + `/loans/jumbo.html` (#2). LendFriend (#1 both) has no FAQPage/AggregateRating — 3 weeks confirmed.
+2. **Wednesday rotation** — suburb deep dive. Pick: **Cedar Park** (lone suburb gap, NR after 4 measures, physical-presence dominated) or **Kyle/Leander** (both dropped 2 spots, defensive). Audit inline lead form (Kyle still missing), FAQPage + BreadcrumbList schema, city-specific H1, AEO answer-first paragraph, internal links to /get-preapproved + /calculators.
+3. **Blog freshness** — latest post 2026-05-30 (10 days, >7-day SKILL threshold). Surface to `styer-content-weekly` (not a styer-site-daily action).
+4. **🎯 AggregateRating policy decision** — highest-confidence competitive lever: re-add `AggregateRating` w/ VERIFIED count to `/self-employed-mortgage-austin.html` (#2) + `/loans/jumbo.html` (#2). LendFriend (#1 both) has no FAQPage/AggregateRating — 3 weeks confirmed.
 4. **Homepage + `/get-preapproved` title carries** — pipe-normalization + "24-Hour Turnaround" perf-claim; deferred to memo Decision 2 + Adam HIGH_RISK title call.
 5. **Schema-type unification** (MortgageBroker vs LocalBusiness) + **gold hex** (#C9A84C→#8B6E24 SKILL.md sync) — both Adam-gated carries.
 6. **GSC sitemap status** (Mon cadence carry) — confirm GSC picked up all 133 incl. 2 DSCR posts.
