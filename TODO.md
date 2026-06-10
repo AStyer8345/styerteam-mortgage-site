@@ -86,6 +86,7 @@
 
 ## Backlog (someday/maybe)
 
+- [ ] **Honeypot consistency on 7 new quick-quote forms (NEW 2026-06-10)** — kyle/cedar-park/dscr/bank-statement/self-employed/non-qm/hnw-quote lack the `netlify-honeypot="bot-field"` + hidden bot-field input that `/get-preapproved` carries. LOW_RISK, additive, matches site pattern. Natural fit for a Thursday Internal-Linking/Funnel rotation. Netlify ships Akismet by default + TCPA friction, so not a defect — spam-hardening only. Verify build after.
 - [ ] Blog title brand drift — pre-publish lint catches it but root cause is human process
 - [x] Homepage hero CTA bypasses tracked funnel — FIXED 2026-04-16 → /get-preapproved
 - [ ] Google Ads Refinance campaign (in preparation)

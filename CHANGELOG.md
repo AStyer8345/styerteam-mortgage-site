@@ -1,3 +1,11 @@
+## 2026-06-10 — styer-site-daily Wednesday (Suburb Deep Dive + AEO): clean verification run, 0 site mutations
+
+- **Post-deploy verification of the 2026-06-09 6-commit batch — 100% GREEN.** 7 new inline quick-quote forms (kyle/cedar-park/dscr/bank-statement/self-employed/non-qm/hnw-quote) all live HTTP 200, `data-netlify="true"` + matching `form-name` in source, functionally complete (name/email/phone/TCPA). Confirmed Netlify strips the `data-netlify` attr from served HTML post-build (so live `data-netlify:0` is expected, not a defect — same as known-good `/get-preapproved`).
+- **Buydown calculator P0-A (12× PITI bug) FIXED & LIVE** — root cause was radios `value="yr"` vs JS `=== 'annual'`; fix (`=== 'yr'`) confirmed on served page. 52-run HIGH bug resolved. P0-E Chart.js render-block also confirmed moved to end-of-body live.
+- **USDA repositioning (Decision 1=b) held** — smithville/kyle/san-marcos spot-checked: 0 USDA in headers, mentions −70%. **Decision-2a "24-hour" sweep held** on LP pages (0 residual; same-day kept).
+- **Wednesday rotation — Cedar Park deep dive:** on-page complete + AEO-excellent (direct-answer hero, question-format H2s, answer-first 5-Q FAQ with local data, FAQPage+BreadcrumbList+Speakable, EEAT byline + last-reviewed date). No defect — "NR" is an off-page citation/physical-presence gap (Adam-owned). No edits (surgical discipline).
+- **Re-Verify Gate cleared 5 stale carries** already resolved by Adam's 2026-06-09 evening interactive session but still open in Tuesday's automated run-log: batch-memo (1=b,2=a + executed), calculator P0-A, USDA cluster, perf-metric conflict, Kyle inline form. Sitemap 131 live = 131 local; conversion 10/10; SEO/SEM backlog 0-eligible; BLOCKERS clean.
+
 ## 2026-06-09 (evening) — Header/nav emergency fix (Adam-reported, 3 commits)
 
 - **Adam flagged broken headers via screenshots: blog posts overlapped the nav on scroll; FTB guide nav wrapped into two lines.**

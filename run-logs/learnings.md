@@ -1331,3 +1331,19 @@ Edge cache TY page dataLayer continues to bounce 8↔10 between fires. Critical-
 - **A wide audit flag is not a wide defect — read the live tag before fixing.** Tuesday meta-description audit flagged ~10 pages "SHORT", all regex artifacts: `content="(.*?)"` truncated at apostrophes in contractions ("Austin's", "today's"). Real descriptions were all 140–160 chars. One cheap grep per suspicious hit prevented ~10 destructive "fixes." Apostrophe truncation makes strings look SHORTER, never LONGER — so the 2 "LONG" flags (217/203) were the only trustworthy ones and the only real defects.
 - **og:title ≠ title is by design** on ~80 pages (punchier social variant). Do NOT mass-equalize — would strip deliberate social-share copy. Align only when the variant itself is defective.
 - Fixed 2 real over-length descriptions: asset-depletion-calculator 217→152, loans/jumbo 203→160 (jumbo now matches its own og/twitter desc). Commit 930da40, both verified live 200.
+
+---
+
+## 2026-06-10 — Verification-day learnings (styer-site-daily Wednesday)
+
+### A fresh automated run-log can be STALER than CONTEXT.md — reconcile both before carrying a flag
+Tuesday 2026-06-09's automated run-log said the Adam batch-memo was "still unanswered" and the calculator P0-A was "52 runs open." Both were FALSE by Wednesday: Adam answered the memo (1=b, 2=a) and the P0-A fix shipped in a 2026-06-09 **evening interactive session** that ran AFTER the Tuesday automated job. Interactive sessions write to CONTEXT.md ("Last Worked On"), not to the automated run-log. So the run-log froze state at automated-run time while CONTEXT moved on. **Rule:** when a carry claims "Adam hasn't answered X" or "bug Y still open," check CONTEXT.md's freshest "Last Worked On" entry (and the relevant commit) BEFORE re-surfacing. This one reconciliation cleared 5 stale recurring carries in a single pass. The Re-Verify Gate's spirit ("don't trust prior runs") applies to your OWN prior run-logs, not just external systems.
+
+### Netlify strips `data-netlify`/`netlify` from served HTML at build time
+A live page showing NO `data-netlify` attribute on its `<form>` does NOT mean the form is undetected. Netlify consumes the attribute during the build, registers the form server-side, and serves HTML without it. The known-good `/get-preapproved` form shows exactly this stripped state live. **Verify form wiring against LOCAL source** (`data-netlify="true"` + matching `<input name="form-name" value="X">`), never the served HTML. A "form not wired for Netlify" alarm based on the served page is a false positive. `forms.html` in this repo is a single generic form, NOT a central detection registry — detection is per-page via the attribute.
+
+### Extensionless URLs 301→.html — always follow redirects in conversion/token checks
+`curl` (without `-L`) to `https://styermortgage.com/get-preapproved` returns a 37-byte "Redirecting to /get-preapproved.html" stub, so every dataLayer/GTM/form token grep returns 0 → a false "conversion tracking broken" 10/10→0/10 alarm. **Always `curl -L`** (follow redirects) or hit the `.html` path directly when running the conversion HTML-token matrix. This is distinct from the live-submit-pollutes-CRM rule: the method is right, but the URL must resolve to the real page first.
+
+### Buydown P0-A root cause (for future calculator audits)
+The 12× PITI bug was a value/comparison mismatch: radios emit `value="yr"`/`value="mo"` but the JS checked `taxFreq === 'annual'` (a string that never matched), so the annual→monthly `/12` divide never ran. Fix was `=== 'yr'`. **Lesson for calculator audits:** when a calculator "ignores" a toggle, diff the radio/select `value=` attributes against the exact strings the JS compares — silent string mismatches produce plausible-but-wrong math, not errors.
