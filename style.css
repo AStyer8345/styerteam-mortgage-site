@@ -34,3 +34,7 @@ header.scrolled .nav-links a.nav-phone:hover{color:var(--color-gold)}
 .hero-glass-card-2col .hero-col-form{flex:1 1 50%}
 .hero-glass-card-2col .hero-col-form .hero-quick-form-glass{margin-bottom:0}
 @media (max-width:768px){.hero-glass-card-2col{max-width:100%}.hero-glass-card-2col .hero-glass-row{flex-direction:column;gap:var(--spacing-lg)}}
+
+/* FIX 2026-06-09: bare `header` selector made inner article/calculator <header> elements sticky too,
+   so blog post titles pinned over the site nav on scroll. Inner headers must flow normally. */
+main header,article header{position:static;z-index:auto}
