@@ -1,3 +1,14 @@
+## 2026-06-09 (evening) — Header/nav emergency fix (Adam-reported, 3 commits)
+
+- **Adam flagged broken headers via screenshots: blog posts overlapped the nav on scroll; FTB guide nav wrapped into two lines.**
+- **Root cause 1 (scroll overlap):** style.css styles the site header with a BARE `header` element selector (`header{position:sticky;top:0;z-index:100}`), which also applied to the inner `<header class="blog-post-header">` on 15 blog posts + the inner `<header>` in asset-depletion-calculator — the article title block became a second sticky header pinned over the nav. Fix: scoped override `main header,article header{position:static;z-index:auto}` appended to style.css.
+- **Root cause 2 (wrapping/inconsistent nav):** ~146 pages carried older nav variants (pre pillar-first reorder; some with extra top-level items that overflow at desktop width; condo blog post had a bare `<nav class="nav-container">` with no `<header>` wrapper and no matching CSS). This was the known 2026-05-17 nav-inconsistency carry. Fix: canonical index.html header (absolutized: `/` brand link, `/assets/logo.svg`, CTA → `/scenario.html`) replaced the first `<header>` on every public page with a full nav. Stripped-nav LPs untouched (ftb-dpa-guide, rate-alert, refinance-quote, scenario, first-time-home-buyer, thank-you, get-preapproved).
+- **Follow-up:** resources/index.html + resources/first-time-buyer-guide/index.html were initially skipped by the homepage `index.html` filename guard — fixed in 4e30604.
+- **Generator templates:** all 4 Netlify page builders (blog/page/rate/realtor-page-builder.js) emitted the old nav — templates updated to canonical so weekly generated pages stop regressing.
+- **Verified in browser (desktop)**: blog post (top + scrolled), FTB guide (top + scrolled), asset-depletion calculator (scrolled) — single sticky header, navy .scrolled state clean, no overlap, no wrap. NOTE: Netlify post-processing rewrites internal links to extensionless single-quoted form — curl checks must account for this.
+- FTB guide stat block: second "500+ families" instance → "1,000+ loans closed since 2013".
+- **Carry CLOSED:** "Sitewide nav inconsistency (2026-05-17) — ~75 pages" — actual count was 148.
+
 ## 2026-06-09 — Interactive session w/ Adam (full audit + Phase 2/3 build, 6 commits)
 
 - **Batch-memo ANSWERED live by Adam: 1=b, 2=a, satellites=consolidate, inline forms=go.** Weeks of carries unblocked and executed same session.
