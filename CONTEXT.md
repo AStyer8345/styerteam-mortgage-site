@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-06-11 (styer-site-daily Thursday — Internal Linking + Funnel Flow): 1 commit, 7 files — honeypot ship.** Added `netlify-honeypot="bot-field"` + hidden `bot-field` input to all 7 inline quick-quote forms (kyle, cedar-park, dscr, bank-statement, self-employed, non-qm, hnw), matching the `/get-preapproved` spam pattern (commit `ed49bd8`). **Verified 7/7 live** — HTTP 200, bot-field served, form-name intact. Bot-field placed INSIDE the form (vs get-preapproved's just-outside placement) so it's actually submitted. Sitemap/robots 200; conversion **10/10** (HTML-token, redirects followed). **Funnel trace intact end-to-end:** all 7 forms `action="/thank-you"` → `thank_you_page_view` fires Ads conversion (Decision 3). Internal-linking spot check (kyle/dscr/non-qm) dense, no gaps. **Re-Verify Gate re-characterized prequal "conversion parity" MEDIUM→LOW:** prequal.html form already `action="/thank-you"` so conversion already fires; only granular `generate_lead`/`lead_type` analytics push is absent. NotebookLM script absent (70th). Concurrent-writer `hutto` + sister-task gbp-posts left unstaged.
+
 **2026-06-10 (styer-site-daily Wednesday — Suburb Deep Dive + AEO): clean verification run, 0 site-HTML mutations.** Sitemap/robots 200; **131 live = 131 local** (satellite consolidation deployed); conversion **10/10** (HTML-token, redirects followed). **Post-deploy verification of the 2026-06-09 6-commit batch — 100% GREEN:** (1) 7 new inline quick-quote forms all live HTTP 200, `data-netlify="true"` + matching `form-name` in source, functionally complete (name/email/phone/TCPA) — Netlify strips the attr from served HTML post-build (expected). (2) Buydown **P0-A 12× PITI bug FIXED & LIVE** (`taxFreq === 'yr'` confirmed live) + P0-E Chart.js render-block fixed live. (3) USDA repositioning HELD — 3/3 spot-checked (smithville/kyle/san-marcos: 0 USDA in headers, mentions −70%). (4) Decision-2a "24-hour" sweep held on LP pages (0 residual; same-day kept). **Cedar Park deep dive: on-page complete + AEO-excellent** (direct-answer hero, question H2s, answer-first 5-Q FAQ w/ local data, FAQPage+BreadcrumbList+Speakable, EEAT byline) — no defect; "NR" is an off-page citation gap (Adam-owned). **Re-Verify Gate cleared 5 stale carries** (memo answered+executed; P0-A fixed) via CONTEXT-vs-Tuesday-run-log reconciliation. SEO/SEM backlog 0-eligible; BLOCKERS clean. NotebookLM script absent (69th).
 
-**2026-06-09 (interactive session w/ Adam — full audit + Phase 2/3 build): 6 commits, 3 batch-memo decisions ANSWERED + executed.** Adam answered the 2026-06-05 memo live: **1=b (reposition off USDA), 2=a (kill 24-hour, keep same-day), satellites=consolidate, inline forms=go.** Shipped: calculator P0 patch (commit f6c4080 — P0-A 12× PITI bug, P0-E Chart.js, P0-D refi labels, P0-C aria); conversion plumbing (quick-contact/prequal/rate-check → /thank-you for Ads); 7 inline quick-quote forms (DSCR, bank-statement, self-employed, non-QM, HNW + Kyle + Cedar Park, each `data-netlify` + form-name); 5 thin satellites consolidated (sitemap 134→131); 24-hour sweep ~75 instances → same-day/business-day across 40 pages; USDA repositioning on all 8 Class-A pages (honest "don't originate USDA" FAQ kept, FAQPage JSON-LD re-synced). **All verified live 2026-06-10.**
-
-**2026-06-09 (styer-site-daily Tuesday — Title/Meta): 2 LOW_RISK mutations.** Title audit 111 pages: 0 dup titles, 0 missing public-page titles. Meta-desc: 0 dups; ~10 "SHORT" flags were apostrophe regex artifacts (0 false fixes); **2 over-length trimmed** — `asset-depletion-calculator.html` 217→152, `loans/jumbo.html` 203→160 (commit `930da40`). NOTE: this run's log said the Adam memo was "unanswered" — superseded the same evening by the interactive session above; the memo is ANSWERED.
+*(2026-06-09 entries — interactive Phase 2/3 build + Tuesday Title/Meta — rolled into CHANGELOG; all work verified live 2026-06-10.)*
 
 ## Active Blockers
 
@@ -55,16 +55,17 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Thu 2026-06-11 = Internal Linking + Funnel Flow rotation** per SKILL.md.
+**Fri 2026-06-12 = Content Planning + AEO Review rotation** per SKILL.md.
 
 Priorities (in order):
-1. **Funnel trace** on the 7 verified-wired form pages: suburb/money page → inline quick-quote → /thank-you → confirm Ads conversion fires from organic submissions (Adam watching Ads UI counts over 2 weeks per Decision 3).
-2. **Honeypot-consistency (LOW_RISK):** 7 new forms lack the `bot-field` honeypot `/get-preapproved` carries — add `netlify-honeypot="bot-field"` + hidden input to match site pattern; verify build. (Deferred from 06-10: surgical discipline, no defect driving it then.)
-3. **prequal.html conversion parity** (backlog line 168) — add `generate_lead`+`lead_type:"purchase_prequal"` dataLayer push so footer-routed submits count, OR footer-redirect to /get-preapproved. Adam decision.
+1. **Blog freshness + CTA audit** — latest post 2026-06-05 (DSCR cash-out BRRRR), ~7 days at Fri; if past 7, surface to `styer-content-weekly`. Confirm every post links to /get-preapproved or /refinance-quote.
+2. **AEO content audit** — 2 blog posts: FAQ answers lead direct? H2s AI-style questions? Extractable 1-2 sentence summary near top? Backlog gaps.
+3. **prequal.html granular event (LOW, Adam-gated)** — RE-CHARACTERIZED 2026-06-11: prequal already `action="/thank-you"` so the Ads conversion (`thank_you_page_view`) ALREADY fires on submit. Only the granular `generate_lead`/`lead_type` dataLayer push is absent (analytics detail, not a conversion gap). Touches conversion plumbing → do NOT auto-ship.
 4. **🎯 AggregateRating policy decision** (Adam) — highest-confidence competitive lever for self-employed #2→#1 + jumbo #2. Blocked only on Adam confirming a VERIFIED review count (will not fabricate).
 5. **Homepage title pipe** (HIGH_RISK, Adam) + **schema-type unification** + **gold hex SKILL.md sync** — Adam-gated carries.
-6. **Blog freshness** — latest post 2026-05-30 (11 days); surface to `styer-content-weekly`.
-7. **GSC** (Adam UI): URL-inspect the 8 USDA-repositioned pages + 3 deleted satellites (should show 301); confirm 131-URL sitemap shows Success.
+6. **GSC** (Adam UI): URL-inspect the 8 USDA-repositioned pages + 3 deleted satellites (should show 301); confirm 131-URL sitemap shows Success.
+
+**DONE 2026-06-11:** honeypot shipped to 7/7 inline forms (verified live); funnel trace + internal linking clean.
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 

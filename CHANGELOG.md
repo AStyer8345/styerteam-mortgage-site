@@ -2167,3 +2167,9 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Title audit (111 pages): 0 duplicate titles, 0 missing public-page titles. `title!=og:title` confirmed by-design (social variant) — not equalized.
 - Meta-description "SHORT" flags (index/kyle/scenario/etc.) identified as regex artifacts (apostrophe truncation) and verified against live tags — 0 false fixes. `thank-you.html` no-description confirmed correct (noindex).
 - Conversion 10/10; sitemap 134 live = 134 local; SEO/SEM BLOCKERS clean, 0 backlog items eligible. Adam batch-memo still unanswered — 3 cluster carries stay paused.
+
+## 2026-06-11 (styer-site-daily — Thursday: Internal Linking + Funnel Flow)
+- Shipped honeypot-consistency (deferred from 06-10): added `netlify-honeypot="bot-field"` + hidden `bot-field` input to all 7 inline quote forms (kyle, cedar-park, dscr, bank-statement, self-employed, non-qm, hnw). Commit `ed49bd8`; verified 7/7 live (HTTP 200, bot-field served, form-name intact).
+- Funnel trace: all 7 forms `action="/thank-you"` → `thank_you_page_view` Ads conversion fires; internal-linking spot check (kyle/dscr/non-qm) dense, no gaps.
+- Re-Verify Gate: re-characterized prequal.html "conversion parity" MEDIUM→LOW — already routes to /thank-you so conversion fires; only granular dataLayer event absent.
+- Health: sitemap/robots 200; conversion 10/10; NotebookLM script absent (70th). Concurrent-writer hutto + sister-task gbp-posts left unstaged.
