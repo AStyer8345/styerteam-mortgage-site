@@ -319,8 +319,12 @@
               <!-- Quick Quote Form -->
               <div class="quick-quote-form">
                 <h3>Get Your Rate Quote</h3>
-                <form name="cedar-park-quote" method="POST" action="/thank-you" data-netlify="true">
+                <form name="cedar-park-quote" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
                   <input type="hidden" name="form-name" value="cedar-park-quote">
+                  <!-- Netlify honeypot -->
+                  <p style="display:none;">
+                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                  </p>
                   <input type="hidden" name="city" value="Cedar Park">
                   <div class="form-group">
                     <label for="loan-purpose-cedar-park">Loan Purpose</label>

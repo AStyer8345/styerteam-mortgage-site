@@ -373,8 +373,12 @@
     <div class="container content-narrow">
       <div class="quick-quote-form">
         <h3>Get a Non-QM Quote</h3>
-        <form name="non-qm-quote" method="POST" action="/thank-you" data-netlify="true">
+        <form name="non-qm-quote" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="non-qm-quote">
+          <!-- Netlify honeypot -->
+          <p style="display:none;">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
           <div class="form-group">
             <label for="loan-purpose-non-qm">Loan Purpose</label>
             <select id="loan-purpose-non-qm" name="loanGoal" required>

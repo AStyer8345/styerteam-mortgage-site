@@ -333,8 +333,12 @@
     <div class="container content-narrow">
       <div class="quick-quote-form">
         <h3>See What Your Deposits Qualify For</h3>
-        <form name="bank-statement-quote" method="POST" action="/thank-you" data-netlify="true">
+        <form name="bank-statement-quote" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="bank-statement-quote">
+          <!-- Netlify honeypot -->
+          <p style="display:none;">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
           <div class="form-group">
             <label for="loan-purpose-bank-statement">Loan Purpose</label>
             <select id="loan-purpose-bank-statement" name="loanGoal" required>

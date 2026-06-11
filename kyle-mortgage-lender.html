@@ -236,8 +236,12 @@
               <!-- Quick Quote Form -->
               <div class="quick-quote-form">
                 <h3>Get Your Rate Quote</h3>
-                <form name="kyle-quote" method="POST" action="/thank-you" data-netlify="true">
+                <form name="kyle-quote" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
                   <input type="hidden" name="form-name" value="kyle-quote">
+                  <!-- Netlify honeypot -->
+                  <p style="display:none;">
+                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                  </p>
                   <input type="hidden" name="city" value="Kyle">
                   <div class="form-group">
                     <label for="loan-purpose-kyle">Loan Purpose</label>

@@ -315,8 +315,12 @@
     <div class="container content-narrow">
       <div class="quick-quote-form">
         <h3>Get Your Self-Employed Rate Quote</h3>
-        <form name="self-employed-quote" method="POST" action="/thank-you" data-netlify="true">
+        <form name="self-employed-quote" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="self-employed-quote">
+          <!-- Netlify honeypot -->
+          <p style="display:none;">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
           <div class="form-group">
             <label for="loan-purpose-self-employed">Loan Purpose</label>
             <select id="loan-purpose-self-employed" name="loanGoal" required>
