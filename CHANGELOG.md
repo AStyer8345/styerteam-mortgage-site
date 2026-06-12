@@ -1,3 +1,13 @@
+## 2026-06-12 — styer-site-daily Friday (Content Planning + AEO Review): clean verification day, 0 site mutations
+
+- **Sitemap/robots 200; conversion 10/10** (HTML-token via live `curl -L`, redirects followed; live-submit avoided to prevent fake CRM leads).
+- **Blog CTA audit: 34/34 posts** link to /get-preapproved or /refinance-quote — zero gaps.
+- **AEO content audit — 2 complicated-income posts, both AEO-excellent.** DSCR cash-out BRRRR: natural-language FAQ Qs, answer-first responses, answer-first extractable intro (75% LTV / seasoning / qualifies on rent), FAQPage schema. Self-employed: AI-style question H2s, answer-first FAQ. No defect → no edit (declined to manufacture a rewrite of already-strong copy).
+- **Blog freshness at exact 7-day boundary** (latest 2026-06-05) — surfaced to `styer-content-weekly`; tips past window Sat 06-13.
+- **SEO/SEM backlog: 0 site-eligible**; BLOCKERS.md clean; loanos-clone backlog NOT mutated (paused-LoanOS deploy guard).
+- **Design spot-check (homepage + about):** hero CTAs route to `#contact-form` → /thank-you (by-design, Decision Q10); brand intact; zero legacy entity names.
+- NotebookLM advisor script re-verified ABSENT (71st). Self-review PASS — 0 files edited, no commits to styermortgage repo, sister-task gbp-posts left unstaged.
+
 ## 2026-06-11 — styer-suburb-editor-daily (Round 3 #7 Hutto): shipped at-risk concurrent-writer work + mechanical completion (1 commit)
 
 - **Queue #7 hutto.** Body-copy Round 3 deepening had already been done by the styer-site-daily concurrent writer and left **uncommitted** (flagged in CONTEXT 2026-06-11: "concurrent-writer hutto left unstaged") — at risk of being swept by another session per the concurrent-git-writers discipline. This run committed it atomically and finished the mechanical pieces it was missing. Did **not** redo or pile redundant content on already-complete, well-cited work.
