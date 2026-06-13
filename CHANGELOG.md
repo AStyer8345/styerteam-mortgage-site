@@ -1,3 +1,13 @@
+## 2026-06-13 — styer-site-daily Saturday (weekend recovery fire): clean verification day, 0 site mutations
+
+- **Sitemap/robots 200; conversion 10/10** (HTML-token via live `curl -L`, redirects followed; live-submit avoided). Confirmed both LP forms `action='/thank-you'` (single-quoted in source — quote-agnostic grep required) + JS redirect → Ads conversion fires.
+- **LP light compliance pass:** TCPA consent + personal NMLS 513013 + company NMLS 2653540 all present on both LPs; zero legacy display names; zero banned "21-day" trust claims.
+- **Design spot-check (homepage):** navy `#0A1F3F` intact, HyperSmart branding present, no legacy names; hero CTAs route `#contact-form` (Decision Q10). Gold renders `#8B6E24` (known hex-drift carry, Adam-gated SKILL.md sync).
+- **Net-new LOW awareness:** one "Closed in 21 days" token = a real scenario-outcome card, NOT the banned sitewide "21-Day Avg. Close" performance claim — kept per Decision-2 precedent (real outcome facts retained; "quotes can't be honestly rewritten"). No edit.
+- **Blog freshness 8 days (PAST window)** — hard-surfaced to `styer-content-weekly` (latest 2026-06-05; content task owns publishing, not a FLAG).
+- **SEO/SEM backlog: 0 site-eligible**; BLOCKERS.md clean; loanos-clone NOT mutated (paused-LoanOS deploy guard).
+- NotebookLM advisor script re-verified ABSENT (72nd). Self-review PASS — 0 files edited in styermortgage repo, no commits, sister-task gbp-posts left unstaged. (Bash-tool PATH quirk noted: `cd`/command-substitution drop PATH — used absolute tool paths.)
+
 ## 2026-06-12 — styer-site-daily Friday (Content Planning + AEO Review): clean verification day, 0 site mutations
 
 - **Sitemap/robots 200; conversion 10/10** (HTML-token via live `curl -L`, redirects followed; live-submit avoided to prevent fake CRM leads).

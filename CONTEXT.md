@@ -16,13 +16,13 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-12 (styer-site-daily Friday — Content Planning + AEO Review): clean verification day, 0 site-HTML mutations.** Sitemap/robots 200; conversion **10/10** (HTML-token, redirects followed). **Blog CTA coverage 34/34** — every post links to /get-preapproved or /refinance-quote. **AEO audit of 2 complicated-income posts** (`2026-06-05-dscr-cash-out-refinance-texas-brrrr` + `2026-04-02-self-employed-mortgage-austin-tx`) — both **AEO-excellent**: natural-language FAQ Qs, answer-first responses, extractable answer-first intros, FAQPage schema. No defect → no edit (surgical discipline). **Blog freshness at exact 7-day boundary** (latest 2026-06-05) — surfaced to `styer-content-weekly` as due-now (tips past window Sat 06-13). SEO/SEM backlog **0 site-eligible** (open items all done-elsewhere / Adam-awareness-only / Adam-gated); BLOCKERS clean; loanos-clone backlog NOT mutated (paused-LoanOS deploy guard). Design spot-check (homepage + about) clean — hero CTAs route to #contact-form by design (Decision Q10), brand intact, zero legacy entity names. NotebookLM script absent (71st). Sister-task gbp-posts left unstaged.
+**2026-06-13 (styer-site-daily Saturday — weekend recovery fire): clean verification day, 0 site-HTML mutations.** Per Fri TOMORROW_PRIORITY: Steps 1–2 non-negotiables + Step 5 design spot-check + deferred blog-freshness hard-surface. Sitemap/robots **200**; conversion **10/10** (HTML-token, redirects followed — note form `action='/thank-you'` is single-quoted, use quote-agnostic grep). LP light compliance pass clean (TCPA + both NMLS present, zero legacy names, zero banned 21-day trust claims). **Blog now 8 days stale (PAST window)** — hard-surfaced to `styer-content-weekly` (latest 2026-06-05; content task owns it, not a FLAG). Design spot-check homepage clean — navy intact, HyperSmart branding, no legacy names. **NET-NEW LOW awareness:** one "Closed in 21 days" token = a real scenario-outcome card, NOT the banned sitewide "21-Day Avg. Close" trust claim — kept by Decision-2 precedent (real outcome facts retained), no edit. SEO/SEM backlog **0 site-eligible**; BLOCKERS clean; loanos-clone NOT mutated (paused-LoanOS deploy guard). NotebookLM script absent (72nd). Sister-task gbp-posts left unstaged.
 
-**2026-06-11 (styer-site-daily Thursday — Internal Linking + Funnel Flow): 1 commit, 7 files — honeypot ship.** Added `netlify-honeypot="bot-field"` + hidden `bot-field` input to all 7 inline quick-quote forms (kyle, cedar-park, dscr, bank-statement, self-employed, non-qm, hnw), matching the `/get-preapproved` spam pattern (commit `ed49bd8`). **Verified 7/7 live** — HTTP 200, bot-field served, form-name intact. Conversion **10/10**. **Funnel trace intact end-to-end:** all 7 forms `action="/thank-you"` → `thank_you_page_view` fires Ads conversion (Decision 3). **Re-Verify Gate re-characterized prequal "conversion parity" MEDIUM→LOW.** NotebookLM script absent (70th).
+**2026-06-12 (styer-site-daily Friday — Content Planning + AEO Review): clean verification day, 0 site-HTML mutations.** Sitemap/robots 200; conversion **10/10**. **Blog CTA coverage 34/34.** **AEO audit of 2 complicated-income posts** (`2026-06-05-dscr-cash-out-refinance-texas-brrrr` + `2026-04-02-self-employed-mortgage-austin-tx`) — both **AEO-excellent** (answer-first FAQ, question H2s, extractable intros, FAQPage schema). Blog freshness at 7-day boundary → surfaced to `styer-content-weekly`. SEO/SEM backlog 0 site-eligible; BLOCKERS clean. Design spot-check (homepage + about) clean. NotebookLM script absent (71st).
 
-**2026-06-10 (styer-site-daily Wednesday — Suburb Deep Dive + AEO): clean verification run, 0 site-HTML mutations.** Sitemap/robots 200; **131 live = 131 local** (satellite consolidation deployed); conversion **10/10** (HTML-token, redirects followed). **Post-deploy verification of the 2026-06-09 6-commit batch — 100% GREEN:** (1) 7 new inline quick-quote forms all live HTTP 200, `data-netlify="true"` + matching `form-name` in source, functionally complete (name/email/phone/TCPA) — Netlify strips the attr from served HTML post-build (expected). (2) Buydown **P0-A 12× PITI bug FIXED & LIVE** (`taxFreq === 'yr'` confirmed live) + P0-E Chart.js render-block fixed live. (3) USDA repositioning HELD — 3/3 spot-checked (smithville/kyle/san-marcos: 0 USDA in headers, mentions −70%). (4) Decision-2a "24-hour" sweep held on LP pages (0 residual; same-day kept). **Cedar Park deep dive: on-page complete + AEO-excellent** (direct-answer hero, question H2s, answer-first 5-Q FAQ w/ local data, FAQPage+BreadcrumbList+Speakable, EEAT byline) — no defect; "NR" is an off-page citation gap (Adam-owned). **Re-Verify Gate cleared 5 stale carries** (memo answered+executed; P0-A fixed) via CONTEXT-vs-Tuesday-run-log reconciliation. SEO/SEM backlog 0-eligible; BLOCKERS clean. NotebookLM script absent (69th).
+**2026-06-11 (styer-site-daily Thursday — Internal Linking + Funnel Flow): 1 commit, 7 files — honeypot ship.** Added `netlify-honeypot="bot-field"` + hidden `bot-field` input to all 7 inline quick-quote forms (commit `ed49bd8`). Verified 7/7 live. Conversion **10/10**. Funnel trace intact end-to-end (all forms `action="/thank-you"` → `thank_you_page_view` fires Ads conversion).
 
-*(2026-06-09 entries — interactive Phase 2/3 build + Tuesday Title/Meta — rolled into CHANGELOG; all work verified live 2026-06-10.)*
+*(2026-06-09/06-10 entries — interactive Phase 2/3 build + post-deploy verification — rolled into CHANGELOG; all work verified live.)*
 
 ## Active Blockers
 
@@ -38,12 +38,12 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | ~~/get-preapproved title~~ **RESOLVED 2026-06-09** — now "Fast Pre-Approval", pipes normalized. Hutto title keeps "Same-Day" per Decision 2(a) | — |
 | SKILL.md infrastructure question — should BLOCKERS.md live inside `styerteam-mortgage-site/` instead of `loanos-clone/tasks/seo-sem/`? Current path triggers Vercel deploy of paused LoanOS product | LOW (Adam) |
 | ~~Calculator P0-A 12× PITI bug~~ **FIXED 2026-06-09 + VERIFIED LIVE 2026-06-10** (`taxFreq === 'yr'` on served page) — RESOLVED | — |
-| NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **71 consecutive dead runs** | HIGH (Adam) |
+| NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **72 consecutive dead runs** | HIGH (Adam) |
 | PSI quota drained **32/32** consecutive periods — provision dedicated key or accept permanent UNVERIFIED | HIGH (Adam) |
 | Homepage/mobile CTAs route to `#contact-form` quick form (Q10). Open: whether to ALSO surface direct `/get-preapproved` or `/refinance-quote` path | MEDIUM (Adam) |
 | Homepage body-copy references "92 Google reviews" + "45 Zillow reviews" + "5.0 ★" (lines 455/492/861) — awaiting Adam's "complicated income" trust-strip pivot copy | MEDIUM (Adam) |
-| products.html 7 in-card "Get Pre-Approved" route to raw 1003 (**50 carries**; Adam decision) | MEDIUM |
-| GSC URL Inspection sweep overdue — Round Rock, San Marcos, Hutto, Pflugerville, Leander (**29 carries**) | HIGH (Adam) |
+| products.html 7 in-card "Get Pre-Approved" route to raw 1003 (**51 carries**; Adam decision) | MEDIUM |
+| GSC URL Inspection sweep overdue — Round Rock, San Marcos, Hutto, Pflugerville, Leander (**30 carries**) | HIGH (Adam) |
 | Complicated-income SERP gap — 5/7 ranking. Remaining: `/non-qm-loans.html` + `/dscr-loan-austin-tx.html` not in top 10. Audit vs CMRE/Capital Home/Stephanie Donnell + Newfi/Easy Street/TX Premier | HIGH |
 | Hedged claims to verify (2026-05-17) — 8 items in `FLAG_FOR_ADAM.md` against current wholesale rate sheets | HIGH (Adam) |
 | NotebookLM CLI auth expired (2026-05-11) — `notebooklm login` required | HIGH (Adam) |
@@ -57,17 +57,17 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Sat 2026-06-13 = weekend** (scheduler may fire recovery). If it runs: Steps 1–2 non-negotiables (sitemap/conversion) + Step 5 design spot-check, then:
+**Sun 2026-06-14 = weekend** (scheduler may fire recovery). If it runs: Steps 1–2 non-negotiables (sitemap/conversion) + Step 5 design spot-check, then:
 
 Priorities (in order):
-1. **Blog freshness — PAST window (8 days Sat).** Hard-surface to `styer-content-weekly`: new post due. Latest = 2026-06-05; serve "complicated income" positioning (DSCR/self-employed/bank-statement/jumbo).
-2. **prequal.html granular event (LOW, Adam-gated)** — optional analytics-granularity add only; conversion ALREADY fires via /thank-you. Do NOT auto-ship (touches conversion plumbing).
-3. **🎯 AggregateRating policy decision** (Adam) — highest-confidence competitive lever for self-employed #2→#1 + jumbo #2. Blocked only on Adam confirming a VERIFIED review count (will not fabricate).
+1. **Blog freshness — PAST window** unless `styer-content-weekly` shipped. Re-check latest blog date; if still 2026-06-05, re-surface to `styer-content-weekly` (DON'T author here — content task owns it). Serve "complicated income" positioning.
+2. **🎯 AggregateRating policy decision** (Adam) — highest-confidence competitive lever for self-employed #2→#1 + jumbo #2. Blocked only on Adam confirming a VERIFIED review count (will not fabricate).
+3. **prequal.html granular event (LOW, Adam-gated)** — optional analytics-granularity add only; conversion ALREADY fires via /thank-you. Do NOT auto-ship.
 4. **Homepage title pipe** (HIGH_RISK, Adam) + **schema-type unification** + **gold hex SKILL.md sync** — Adam-gated carries.
-5. **GSC** (Adam UI): URL-inspect the 8 USDA-repositioned pages + 3 deleted satellites (should show 301); confirm sitemap shows Success.
-6. **Next weekday rotation: Mon = Schema + Google Ads QF + AEO Entity Audit.**
+5. **GSC** (Adam UI): URL-inspect the 8 USDA-repositioned pages + 3 deleted satellites; confirm sitemap shows Success.
+6. **Mon 06-15 = next weekday rotation: Schema + Google Ads QF + AEO Entity Audit** (restate weekly GSC sitemap-Success reminder).
 
-**DONE 2026-06-12:** Friday AEO audit (2 posts AEO-excellent, no defect); blog CTA 34/34; conversion 10/10; design spot-check clean.
+**DONE 2026-06-13:** Steps 1–2 (sitemap/conversion 10/10), LP compliance light pass, design spot-check; blog freshness hard-surfaced to styer-content-weekly (8 days). New LOW awareness: "Closed in 21 days" scenario-outcome card kept per Decision-2.
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 
