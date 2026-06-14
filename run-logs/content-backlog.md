@@ -54,3 +54,4 @@ Format: `YYYY-MM-DD | <slug> | <tier> | <commit-sha>`
 - 2026-06-05 | 2026-06-05-dscr-cash-out-refinance-texas-brrrr | A (DSCR cluster) | 50d1919
 - 2026-06-05 | 2026-06-05-dscr-airbnb-str-loan-texas | A (DSCR cluster) | 50d1919
 - 2026-06-14 | 2026-06-14-dscr-vs-conventional-investment-property-loan-texas | A (DSCR cluster) | 8323044
+- 2026-06-14 | 2026-06-14-buy-before-you-sell-austin-tx | manual (Adam-directed) | a60395e
