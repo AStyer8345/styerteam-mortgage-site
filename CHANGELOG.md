@@ -1,3 +1,8 @@
+## 2026-06-14 — styer-blog-writer-weekly (manual catch-up): published "DSCR vs Conventional Investment Property Loan in Texas" (Tier A DSCR cluster)
+
+- **Net-new post** `blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html` — decision guide (DSCR qualifies on rent, conventional on DTI). 1,410-word prose body, Article + FAQPage (5 Q&As) + BreadcrumbList schema. Grounded in 5 approved-source citations: Fannie Mae Selling Guide B2-2-03 (10-property cap), B3-6-02 (DTI 50%), B2-1.2-01 (LTV), CFPB Reg Z 1026.3(a)(1) (business-purpose exemption) + 1026.43 (ATR). No rate quotes, no performance claims. NotebookLM unavailable → WebSearch on approved domains.
+- **All STEP 4 gates passed**; registered in all 4 surfaces (blog.html noscript + CollectionPage, blog/manifest.json, sitemap.xml); 4 in-body cluster links incl. DSCR hub cross-link. Commit A `8323044` pushed → verified live HTTP 200 (`/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas`). Bookkeeping in commit B (this entry + backlog consumed-log + run brief `run-logs/content-2026-06-14.md`). To undo post: `git revert 8323044`.
+
 ## 2026-06-14 — styer-site-daily Sunday (weekend recovery fire): clean verification day, 0 site mutations
 
 - **Sitemap/robots 200; conversion 10/10** (HTML-token via live `curl -L`, redirects followed; live-submit avoided to prevent fake CRM/n8n leads). Both LP forms confirmed `action='/thank-you'` (single-quoted — quote-agnostic grep), GTM `PQQ6PGLR`, `generate_lead` + correct `lead_type` (purchase_prequal / refi_quote), `/thank-you` fires `thank_you_page_view`.
