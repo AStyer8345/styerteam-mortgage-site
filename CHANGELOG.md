@@ -1,3 +1,11 @@
+## 2026-06-14 — styer-site-daily Sunday (weekend recovery fire): clean verification day, 0 site mutations
+
+- **Sitemap/robots 200; conversion 10/10** (HTML-token via live `curl -L`, redirects followed; live-submit avoided to prevent fake CRM/n8n leads). Both LP forms confirmed `action='/thank-you'` (single-quoted — quote-agnostic grep), GTM `PQQ6PGLR`, `generate_lead` + correct `lead_type` (purchase_prequal / refi_quote), `/thank-you` fires `thank_you_page_view`.
+- **Design spot-check (homepage):** navy `#0A1F3F` intact, HyperSmart branding (13×), personal NMLS 513013 (15×) + company 2653540 (3×), old company 2526130 = 0, zero legacy display names (`styerteam` ×6 = retained social URLs only). Hero CTAs route `#contact-form` (Decision Q10).
+- **Re-Verify Gate on lone "21-day" token:** line 493 `Closed in 21 days at a rate within 0.25% of conventional pricing` = scenario-outcome card (real closed file), NOT the banned trust-strip claim → kept per Decision-2, no edit.
+- **Blog freshness 9 days stale** (latest 2026-06-05) — re-surfaced to `styer-content-weekly` (2nd consecutive; content task owns authoring, not a FLAG).
+- **SEO/SEM backlog 0 site-eligible; BLOCKERS.md clean; loanos-clone not mutated** (paused-LoanOS deploy guard). NotebookLM advisor script absent (73rd). No commits — clean tree respected.
+
 ## 2026-06-13 — styer-suburb-editor-daily (Round 3 #8 Liberty Hill): lighter-touch refresh (1 commit, 2 files)
 
 - **Queue #8 liberty-hill** (Round 2 deep-renovated 2026-05-09; Round 3 now 8/13). Already content-rich → lighter-touch refresh per buda/hutto precedent, not a redo.

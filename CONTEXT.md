@@ -16,11 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-06-14 (styer-site-daily Sunday — weekend recovery fire): clean verification day, 0 site-HTML mutations.** Per Sat TOMORROW_PRIORITY: Steps 1–2 non-negotiables + Step 5 design spot-check + blog-freshness re-check. Sitemap/robots **200**; conversion **10/10** (HTML-token, redirects followed). Homepage spot-check clean — navy + GTM `PQQ6PGLR` + HyperSmart (13×), personal NMLS 513013 (15×) + company 2653540 (3×), old company 2526130 = 0, zero legacy display names (`styerteam` ×6 = retained social URLs only). **Re-Verify Gate** on the lone "21-day" token → line 493 `Closed in 21 days` scenario-outcome card (real closed file), NOT the banned trust-strip claim — kept by Decision-2, no edit. **Blog now 9 days stale (PAST window)** — re-surfaced to `styer-content-weekly` (latest 2026-06-05; content task owns authoring, not a FLAG; 2nd consecutive surface). SEO/SEM backlog **0 site-eligible**; BLOCKERS clean; loanos-clone NOT mutated (paused-LoanOS deploy guard). NotebookLM script absent (73rd).
+
 **2026-06-13 (styer-site-daily Saturday — weekend recovery fire): clean verification day, 0 site-HTML mutations.** Per Fri TOMORROW_PRIORITY: Steps 1–2 non-negotiables + Step 5 design spot-check + deferred blog-freshness hard-surface. Sitemap/robots **200**; conversion **10/10** (HTML-token, redirects followed — note form `action='/thank-you'` is single-quoted, use quote-agnostic grep). LP light compliance pass clean (TCPA + both NMLS present, zero legacy names, zero banned 21-day trust claims). **Blog now 8 days stale (PAST window)** — hard-surfaced to `styer-content-weekly` (latest 2026-06-05; content task owns it, not a FLAG). Design spot-check homepage clean — navy intact, HyperSmart branding, no legacy names. **NET-NEW LOW awareness:** one "Closed in 21 days" token = a real scenario-outcome card, NOT the banned sitewide "21-Day Avg. Close" trust claim — kept by Decision-2 precedent (real outcome facts retained), no edit. SEO/SEM backlog **0 site-eligible**; BLOCKERS clean; loanos-clone NOT mutated (paused-LoanOS deploy guard). NotebookLM script absent (72nd). Sister-task gbp-posts left unstaged.
 
-**2026-06-12 (styer-site-daily Friday — Content Planning + AEO Review): clean verification day, 0 site-HTML mutations.** Sitemap/robots 200; conversion **10/10**. **Blog CTA coverage 34/34.** **AEO audit of 2 complicated-income posts** (`2026-06-05-dscr-cash-out-refinance-texas-brrrr` + `2026-04-02-self-employed-mortgage-austin-tx`) — both **AEO-excellent** (answer-first FAQ, question H2s, extractable intros, FAQPage schema). Blog freshness at 7-day boundary → surfaced to `styer-content-weekly`. SEO/SEM backlog 0 site-eligible; BLOCKERS clean. Design spot-check (homepage + about) clean. NotebookLM script absent (71st).
-
-**2026-06-11 (styer-site-daily Thursday — Internal Linking + Funnel Flow): 1 commit, 7 files — honeypot ship.** Added `netlify-honeypot="bot-field"` + hidden `bot-field` input to all 7 inline quick-quote forms (commit `ed49bd8`). Verified 7/7 live. Conversion **10/10**. Funnel trace intact end-to-end (all forms `action="/thank-you"` → `thank_you_page_view` fires Ads conversion).
+*(2026-06-11/06-12 — Thu honeypot ship (commit `ed49bd8`, 7 inline forms, verified live) + Fri Content/AEO review (blog CTA 34/34, 2 complicated-income posts AEO-excellent) — rolled into CHANGELOG; all verified live.)*
 
 *(2026-06-09/06-10 entries — interactive Phase 2/3 build + post-deploy verification — rolled into CHANGELOG; all work verified live.)*
 
@@ -57,17 +57,16 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Sun 2026-06-14 = weekend** (scheduler may fire recovery). If it runs: Steps 1–2 non-negotiables (sitemap/conversion) + Step 5 design spot-check, then:
+**Mon 2026-06-15 = next weekday — full rotation: Schema + Google Ads QF + AEO Entity Audit.**
 
 Priorities (in order):
-1. **Blog freshness — PAST window** unless `styer-content-weekly` shipped. Re-check latest blog date; if still 2026-06-05, re-surface to `styer-content-weekly` (DON'T author here — content task owns it). Serve "complicated income" positioning.
-2. **🎯 AggregateRating policy decision** (Adam) — highest-confidence competitive lever for self-employed #2→#1 + jumbo #2. Blocked only on Adam confirming a VERIFIED review count (will not fabricate).
-3. **prequal.html granular event (LOW, Adam-gated)** — optional analytics-granularity add only; conversion ALREADY fires via /thank-you. Do NOT auto-ship.
+1. **Restate weekly GSC sitemap-Success reminder** (Monday cadence) + **AEO entity check** (Person + LocalBusiness/MortgageBroker schema consistent on homepage + about; first 150 words answer "best mortgage broker in Austin TX?" extractably) + **Rich Results Test** (homepage AggregateRating, DSCR FAQPage, one suburb).
+2. **Blog freshness — PAST window (9+ days)** unless `styer-content-weekly` shipped. Re-check latest blog date; if still 2026-06-05, re-surface (DON'T author here — content task owns it). Serve "complicated income" positioning.
+3. **🎯 AggregateRating policy decision** (Adam) — highest-confidence competitive lever for self-employed #2→#1 + jumbo #2. Blocked only on Adam confirming a VERIFIED review count (will not fabricate).
 4. **Homepage title pipe** (HIGH_RISK, Adam) + **schema-type unification** + **gold hex SKILL.md sync** — Adam-gated carries.
 5. **GSC** (Adam UI): URL-inspect the 8 USDA-repositioned pages + 3 deleted satellites; confirm sitemap shows Success.
-6. **Mon 06-15 = next weekday rotation: Schema + Google Ads QF + AEO Entity Audit** (restate weekly GSC sitemap-Success reminder).
 
-**DONE 2026-06-13:** Steps 1–2 (sitemap/conversion 10/10), LP compliance light pass, design spot-check; blog freshness hard-surfaced to styer-content-weekly (8 days). New LOW awareness: "Closed in 21 days" scenario-outcome card kept per Decision-2.
+**DONE 2026-06-14:** Steps 1–2 (sitemap/conversion 10/10), homepage design spot-check clean; "21-day" token re-verified per Re-Verify Gate (scenario-outcome, kept per Decision-2); blog freshness re-surfaced to styer-content-weekly (9 days, 2nd consecutive). 0 site mutations.
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 
