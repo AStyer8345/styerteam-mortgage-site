@@ -1,0 +1,108 @@
+# Calculator P0 Patch — 2026-06-15
+# Source: styer-calculator-audit-weekly (run-logs/calculator-audit-2026-06-15.md)
+#
+# THIS IS A FIND/REPLACE DOCUMENT, NOT A GIT-APPLY-ABLE UNIFIED DIFF.
+# It is line-number-independent and matches current source as of 2026-06-15.
+# NOT APPLIED. Adam reviews Monday and applies by hand.
+#
+# Scope: the 2 P0s still open after f6c4080 (2026-06-09).
+#   P0-B  rate-buydown on-screen schedule columns mislabeled (display only; math is correct)
+#   P0-C-resid  16 hand-written inputs with no screen-reader label (WCAG AA)
+#
+# No math is changed. Only column header labels and aria-label attributes.
+
+# =============================================================================
+# P0-B — rate-buydown-calculator.html
+# On-screen schedule header reads "Principal, Interest" but the cells emit
+# r.interest then r.principal (the modal/full schedule already uses the
+# "Interest, Principal" order and is consistent). Fix the on-screen HEADER to
+# match the data + the modal. Swap these two consecutive <th> lines (~L530-531).
+# =============================================================================
+
+FIND (two consecutive lines, ~530-531):
+                  <th scope="col">Principal</th>
+                  <th scope="col">Interest</th>
+
+REPLACE:
+                  <th scope="col">Interest</th>
+                  <th scope="col">Principal</th>
+
+
+# =============================================================================
+# P0-C-resid — add aria-label to hand-written inputs the JS factory fix missed.
+# Each id="..." string below is unique within its file, so each FIND is unambiguous.
+# =============================================================================
+
+# --- calculator-payment.html (2 inline sliders) ---
+
+FIND (L73):
+                <input type="range" class="calc-slider-input" id="tax-slider" min="0" max="1500" step="25" value="0">
+REPLACE:
+                <input type="range" class="calc-slider-input" id="tax-slider" aria-label="Monthly tax (optional)" min="0" max="1500" step="25" value="0">
+
+FIND (L78):
+                <input type="range" class="calc-slider-input" id="ins-slider" min="0" max="500" step="25" value="0">
+REPLACE:
+                <input type="range" class="calc-slider-input" id="ins-slider" aria-label="Monthly insurance (optional)" min="0" max="500" step="25" value="0">
+
+# --- calculator-refinance-breakeven.html (3 inline sliders) ---
+
+FIND (L74):
+                <input type="range" class="calc-slider-input" id="new-rate" min="2" max="10" step="0.125" value="6">
+REPLACE:
+                <input type="range" class="calc-slider-input" id="new-rate" aria-label="New rate (%)" min="2" max="10" step="0.125" value="6">
+
+FIND (L78):
+                <input type="range" class="calc-slider-input" id="new-term" min="10" max="30" step="1" value="30">
+REPLACE:
+                <input type="range" class="calc-slider-input" id="new-term" aria-label="New term (years)" min="10" max="30" step="1" value="30">
+
+FIND (L82):
+                <input type="range" class="calc-slider-input" id="costs" min="0" max="15000" step="500" value="6000">
+REPLACE:
+                <input type="range" class="calc-slider-input" id="costs" aria-label="Closing costs ($)" min="0" max="15000" step="500" value="6000">
+
+# --- wrap-mortgage-calculator.html (11 inputs) ---
+# (Append aria-label="..."; keep the existing inline style attribute untouched.
+#  Shown abbreviated as ...> — match on the unique id and insert aria-label right after the id.)
+
+FIND:  <input type="number" id="w-balance" value="200000" ...>
+INSERT aria-label="Existing loan balance ($)" after id="w-balance"
+
+FIND:  <input type="number" id="w-existing-rate" value="3" ...>
+INSERT aria-label="Existing loan rate (%)" after id="w-existing-rate"
+
+FIND:  <input type="number" id="w-existing-payment" value="843" ...>
+INSERT aria-label="Existing monthly P&I ($)" after id="w-existing-payment"
+
+FIND:  <input type="number" id="w-original-term" value="30" ...>
+INSERT aria-label="Original loan term (years)" after id="w-original-term"
+
+FIND:  <input type="number" id="w-loan-age" value="5" ...>
+INSERT aria-label="Years already paid" after id="w-loan-age"
+
+FIND:  <input type="number" id="w-sale-price" value="450000" ...>
+INSERT aria-label="Sale price ($)" after id="w-sale-price"
+
+FIND:  <input type="number" id="w-closing-pct" value="8" ...>
+INSERT aria-label="Closing costs (%)" after id="w-closing-pct"
+
+FIND:  <input type="number" id="w-wrap-rate" value="6.5" ...>
+INSERT aria-label="Wrap rate (%)" after id="w-wrap-rate"
+
+FIND:  <input type="number" id="w-term" value="30" ...>
+INSERT aria-label="Wrap term (years)" after id="w-term"
+
+FIND:  <input type="number" id="w-appreciation" value="3.0" ...>
+INSERT aria-label="Annual appreciation (%)" after id="w-appreciation"
+
+FIND:  <input type="number" id="w-market-rate" class="wrap-inline-rate" value="7.25" ...>
+INSERT aria-label="Market rate (%)" after id="w-market-rate"
+
+# =============================================================================
+# NOT IN THIS PATCH (handle in same Monday session, separate edits):
+#   P2-G  Equal Housing Lender — 6 files, FIND "513013 (Adam Styer)." ->
+#         REPLACE "513013 (Adam Styer). Equal Housing Lender."
+#         (affordability, payment, breakeven, rate-buydown, wrap, calculators)
+#   P2-A  /get-preapproved.html -> /get-preapproved (payment + breakeven)
+# =============================================================================
