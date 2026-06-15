@@ -122,3 +122,14 @@ PASS — 0 files edited in the styermortgage repo this session (clean verificati
 - ✅ SEO/SEM backlog 0 site-eligible; BLOCKERS.md clean; loanos-clone untouched
 - ✅ Shared working tree respected (no commits, no `-A` staging)
 - ✅ Self-review PASS
+
+---
+
+## TOMORROW_PRIORITY — from styer-competitive-weekly (2026-06-15, Wk 15)
+
+> Research-only task; these are findings for styer-site-daily to action. Full report: `run-logs/competitive/2026-06-15.md`.
+
+1. **⚠ VERIFY-FIRST — asset-depletion ranking drop.** `asset-depletion-mortgage-texas` measured at #6 this week (was #1+#5 last week; LendFriend #1, Lendingshops + STX Lending NEW above). Page is NOT 404 (exists locally). **Do a manual logged-out Google SERP check** before treating the moat as lost — WebSearch is a generic-result proxy, not Adam's localized SERP. If real, this is the top recovery priority (deepest Phase A moat). If noise, clear it.
+2. **Self-employed main-LP slip.** `/self-employed-mortgage-austin.html` dropped #2→#5 while the blog post holds #3 — Adam's blog now out-ranks his own money page on the head term. Check LP freshness/internal-links for cannibalization; a LP freshness refresh + internal-link consolidation may reclaim the stronger URL.
+3. **Schema wedge now more urgent.** Self-employed (#3) and jumbo (#3) both slipped; new #1 (Champions) has NO FAQPage/AggregateRating schema at all. The FAQPage + AggregateRating (verified review count) add to `/self-employed-mortgage-austin.html` + `/loans/jumbo.html` is still the binary, Adam-controlled lever — still gated on the AggregateRating review-count decision (already carried above).
+4. **Georgetown #7 ★ (first-ever top-10)** — defensible win; a Georgetown deepening pass (Sun City retiree + Wolf Ranch new-construction angles) could push #7 → top 5. (Belongs to styer-suburb-editor-daily.)
