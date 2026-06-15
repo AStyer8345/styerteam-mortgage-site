@@ -16,9 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-14 (styer-site-daily Sunday — weekend recovery fire): clean verification day, 0 site-HTML mutations.** Per Sat TOMORROW_PRIORITY: Steps 1–2 non-negotiables + Step 5 design spot-check + blog-freshness re-check. Sitemap/robots **200**; conversion **10/10** (HTML-token, redirects followed). Homepage spot-check clean — navy + GTM `PQQ6PGLR` + HyperSmart (13×), personal NMLS 513013 (15×) + company 2653540 (3×), old company 2526130 = 0, zero legacy display names (`styerteam` ×6 = retained social URLs only). **Re-Verify Gate** on the lone "21-day" token → line 493 `Closed in 21 days` scenario-outcome card (real closed file), NOT the banned trust-strip claim — kept by Decision-2, no edit. **Blog now 9 days stale (PAST window)** — re-surfaced to `styer-content-weekly` (latest 2026-06-05; content task owns authoring, not a FLAG; 2nd consecutive surface). SEO/SEM backlog **0 site-eligible**; BLOCKERS clean; loanos-clone NOT mutated (paused-LoanOS deploy guard). NotebookLM script absent (73rd).
+**2026-06-15 (styer-site-daily Monday — full rotation: Schema + Google Ads QF + AEO Entity Audit): clean verification day, 0 site-HTML mutations.** Sitemap/robots **200**; conversion **10/10** (HTML-token, redirects followed; used absolute tool paths after subshell PATH-drop). **Monday schema audit:** homepage **3/3 JSON-LD blocks VALID** (live Python parse — Re-Verify fallback); `MortgageBroker`+`Person`+`FAQPage`+NMLS-credential on homepage, `LocalBusiness`+`Person`+`Organization`+`FAQPage` on about, `Article`+`FAQPage`+`FinancialProduct`+`BreadcrumbList` on DSCR. **AEO entity:** Person consistent homepage↔about; entity-name hygiene clean (`Mortgage Solutions LP`=0, `The Styer Team`=0, old company `2526130`=0, HyperSmart×9, Kyber×4, company NMLS 2653540 + personal 513013 present). Homepage lede = NEW "complicated income" positioning (H1 *"The loans your bank said no to…"*) — **positioning pivot LIVE**, no 21-day/perf claim. AggregateRating still absent (Adam-gated). **🟢 BLOG FRESHNESS RESOLVED** — `styer-content-weekly` shipped two 2026-06-14 posts (live, HTTP 200, in sitemap); latest now **1 day old**; stale flag cleared from RECURRING_ISSUES. DSCR-post CTA → Send-Your-Scenario funnel (resolved-by-design). SEO/SEM backlog **0 site-eligible**; BLOCKERS clean; loanos-clone NOT mutated. NotebookLM script absent (74th).
 
-**2026-06-13 (styer-site-daily Saturday — weekend recovery fire): clean verification day, 0 site-HTML mutations.** Per Fri TOMORROW_PRIORITY: Steps 1–2 non-negotiables + Step 5 design spot-check + deferred blog-freshness hard-surface. Sitemap/robots **200**; conversion **10/10** (HTML-token, redirects followed — note form `action='/thank-you'` is single-quoted, use quote-agnostic grep). LP light compliance pass clean (TCPA + both NMLS present, zero legacy names, zero banned 21-day trust claims). **Blog now 8 days stale (PAST window)** — hard-surfaced to `styer-content-weekly` (latest 2026-06-05; content task owns it, not a FLAG). Design spot-check homepage clean — navy intact, HyperSmart branding, no legacy names. **NET-NEW LOW awareness:** one "Closed in 21 days" token = a real scenario-outcome card, NOT the banned sitewide "21-Day Avg. Close" trust claim — kept by Decision-2 precedent (real outcome facts retained), no edit. SEO/SEM backlog **0 site-eligible**; BLOCKERS clean; loanos-clone NOT mutated (paused-LoanOS deploy guard). NotebookLM script absent (72nd). Sister-task gbp-posts left unstaged.
+**2026-06-14 (Sunday weekend recovery): clean verification day, 0 mutations.** Sitemap/robots 200; conversion 10/10. "21-day" token re-verified → scenario-outcome card (Decision-2), kept. Blog 9 days stale, re-surfaced (NOW RESOLVED 06-15). NotebookLM absent (73rd).
+
+*(2026-06-13 Sat — clean verification, 0 mutations; conversion 10/10; "Closed in 21 days" scenario-outcome kept per Decision-2 — rolled up.)*
 
 *(2026-06-11/06-12 — Thu honeypot ship (commit `ed49bd8`, 7 inline forms, verified live) + Fri Content/AEO review (blog CTA 34/34, 2 complicated-income posts AEO-excellent) — rolled into CHANGELOG; all verified live.)*
 
@@ -38,7 +40,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | ~~/get-preapproved title~~ **RESOLVED 2026-06-09** — now "Fast Pre-Approval", pipes normalized. Hutto title keeps "Same-Day" per Decision 2(a) | — |
 | SKILL.md infrastructure question — should BLOCKERS.md live inside `styerteam-mortgage-site/` instead of `loanos-clone/tasks/seo-sem/`? Current path triggers Vercel deploy of paused LoanOS product | LOW (Adam) |
 | ~~Calculator P0-A 12× PITI bug~~ **FIXED 2026-06-09 + VERIFIED LIVE 2026-06-10** (`taxFreq === 'yr'` on served page) — RESOLVED | — |
-| NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **72 consecutive dead runs** | HIGH (Adam) |
+| NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **74 consecutive dead runs** | HIGH (Adam) |
 | PSI quota drained **32/32** consecutive periods — provision dedicated key or accept permanent UNVERIFIED | HIGH (Adam) |
 | Homepage/mobile CTAs route to `#contact-form` quick form (Q10). Open: whether to ALSO surface direct `/get-preapproved` or `/refinance-quote` path | MEDIUM (Adam) |
 | Homepage body-copy references "92 Google reviews" + "45 Zillow reviews" + "5.0 ★" (lines 455/492/861) — awaiting Adam's "complicated income" trust-strip pivot copy | MEDIUM (Adam) |
@@ -57,16 +59,16 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Mon 2026-06-15 = next weekday — full rotation: Schema + Google Ads QF + AEO Entity Audit.**
+**Tue 2026-06-16 = next weekday — rotation: Title Tags + Meta Descriptions.**
 
 Priorities (in order):
-1. **Restate weekly GSC sitemap-Success reminder** (Monday cadence) + **AEO entity check** (Person + LocalBusiness/MortgageBroker schema consistent on homepage + about; first 150 words answer "best mortgage broker in Austin TX?" extractably) + **Rich Results Test** (homepage AggregateRating, DSCR FAQPage, one suburb).
-2. **Blog freshness — PAST window (9+ days)** unless `styer-content-weekly` shipped. Re-check latest blog date; if still 2026-06-05, re-surface (DON'T author here — content task owns it). Serve "complicated income" positioning.
-3. **🎯 AggregateRating policy decision** (Adam) — highest-confidence competitive lever for self-employed #2→#1 + jumbo #2. Blocked only on Adam confirming a VERIFIED review count (will not fabricate).
+1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token).
+2. **Title/meta audit** of loan-type pages vs pattern + 150–160-char metas. NOTE positioning pivot: titles may now favor "complicated income" hooks over generic "[Loan Type] in Austin TX" — flag conflicts to Adam, don't blanket-rewrite indexed-page titles (HIGH_RISK).
+3. **🎯 AggregateRating policy decision** (Adam) — highest-confidence competitive lever for self-employed #2→#1 + jumbo #2. Blocked only on Adam confirming a VERIFIED review count (will not fabricate; self-serve homepage review markup also carries Google policy risk).
 4. **Homepage title pipe** (HIGH_RISK, Adam) + **schema-type unification** + **gold hex SKILL.md sync** — Adam-gated carries.
 5. **GSC** (Adam UI): URL-inspect the 8 USDA-repositioned pages + 3 deleted satellites; confirm sitemap shows Success.
 
-**DONE 2026-06-14:** Steps 1–2 (sitemap/conversion 10/10), homepage design spot-check clean; "21-day" token re-verified per Re-Verify Gate (scenario-outcome, kept per Decision-2); blog freshness re-surfaced to styer-content-weekly (9 days, 2nd consecutive). 0 site mutations.
+**DONE 2026-06-15:** Steps 1–2 (sitemap/conversion 10/10); Monday schema audit (homepage 3/3 JSON-LD valid, Person consistent homepage↔about, entity-name hygiene clean, positioning pivot live); **blog freshness AUTO-RESOLVED** (content task shipped two 06-14 posts, latest 1 day old) + stale flag cleared. 0 site mutations.
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 
