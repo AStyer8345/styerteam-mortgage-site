@@ -1,3 +1,6 @@
+## 2026-06-16 — styer-blog-writer-weekly: published "DSCR Loan Requirements in Texas (2026)"
+- Net-new Tier-A DSCR-cluster post (eligibility deep-dive: credit, down payment/LTV, reserves, DSCR ratio, property types, LLC titling, no personal income/DTI). Slug `2026-06-16-dscr-loan-requirements-texas`, 1,581 words, 4 approved-source citations (CFPB 1026.3(a), Fannie B2-1.1-01 + B3-4.1-01, FRED). Fills confirmed "dscr loan austin tx" SERP gap. All 7 gates pass; registered in blog.html (noscript + CollectionPage), manifest.json, sitemap.xml. Commit `bbe7c05`, deploy verified live (HTTP 200).
+
 ## 2026-06-16 — styer-site-daily (Tuesday): title+meta audit + 3 meta fixes + VA superlative cleanup
 
 - **Non-negotiables:** sitemap.xml + robots.txt 200; conversion tracking 10/10 (HTML-token, redirects followed — no live-submit pipeline pollution).
