@@ -1,3 +1,11 @@
+## 2026-06-16 — styer-site-daily (Tuesday): title+meta audit + 3 meta fixes + VA superlative cleanup
+
+- **Non-negotiables:** sitemap.xml + robots.txt 200; conversion tracking 10/10 (HTML-token, redirects followed — no live-submit pipeline pollution).
+- **Audited 20 loan-type/specialty money-page titles + meta descriptions.** Titles all present/unique/in-range, 0 legacy entity names; HIGH_RISK indexed-title rewrites flagged, not edited.
+- **3 deficient meta descriptions fixed (LOW_RISK):** `self-employed-mortgage-austin.html` 131→158 chars (+K-1, +"Get pre-approved" CTA — serves competitive-intel #2→#5 recovery); `dscr-loan-austin-tx.html` 137→156 (+"Get a quote today" CTA); `loans/va.html` removed "lowest rates available" superlative from meta + og:description + twitter:description + hero subtitle (GOALS.md Phase A; replaced "deserves the best, and we deliver" puffery with relational positioning).
+- **Flagged for Adam (not edited):** fha.html title/meta call Adam "a broker" — conflicts with correspondent-lender positioning; va.html body line-261 `<strong>Lowest rates</strong>` header + line-335 testimonial "best rate" = Phase A body-sweep candidates (testimonial edits Adam-gated).
+- **Committed `7bafb4e`** (3 files, file-specific add — sister-task untracked `run-logs/gbp-posts/2026-06-07.md` left alone), pushed to main, deploy verified live. Self-review PASS.
+
 ## 2026-06-15 — styer-suburb-editor-daily (Round 3 #9): deepen Manor page
 
 - **Queue: Round 3, position 9 of 13** (manor) — lighter-touch refresh following 2026-05-10 Round 2 deep renovation. Next: #10 lakeway.

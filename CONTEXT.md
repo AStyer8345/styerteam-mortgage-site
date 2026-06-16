@@ -16,13 +16,13 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-15 (styer-competitive-weekly Wk 15 — research only, 0 site mutations):** Phase A cluster **PULLBACK** — 4 of 5 tracked complicated-income keywords lost position. self-employed #2→#3 (main LP slipped #2→#5, blog holds #3; **Champions Mortgage** NEW #1), bank statement #4→#7, jumbo #2→#3 (**Grove** NEW #2), **asset depletion #1+#5→#6 ⚠ flagged for manual logged-out verification** (LendFriend #1; Lendingshops + STX Lending NEW), 1099 #7→#4 (lone gainer). Top-10 count held 5/7 but trend reversed. Suburbs (RR+Georgetown): **Georgetown NEW #7 ★** (first-ever top-10), Round Rock ↓ out of top 10. LendFriend re-fetched live — STILL no FAQPage/AggregateRating schema (wedge holds); new #1 Champions also schema-less + thinner → on-page advantage intact, gap is off-page authority. Core terms 0/6 held (Highlander/MortgageAustin/Barton Creek all lost their head-term #1s to directories). Full report `run-logs/competitive/2026-06-15.md`; TOMORROW_PRIORITY added to `run-logs/latest.md`.
+**2026-06-16 (styer-site-daily Tuesday — rotation: Title Tags + Meta Descriptions): 3 files edited, verified live.** Sitemap/robots **200**; conversion **10/10** (HTML-token). Audited all 20 loan-type/specialty money-page titles + metas. **Titles** all present/unique/in-range, 0 legacy entity names — HIGH_RISK indexed-title rewrites flagged not edited. **3 deficient metas fixed (LOW_RISK):** self-employed 131→158 (added K-1 + "Get pre-approved" CTA — serves competitive #2→#5 recovery), dscr-loan-austin-tx 137→156 (CTA), loans/va removed "lowest rates available" superlative ×4 (meta+og+twitter+hero subtitle — GOALS.md Phase A). Commit `7bafb4e`, pushed, deploy verified live (se/va/dscr tokens present). **Flagged:** fha.html title/meta call Adam "a broker" — conflicts w/ correspondent-lender positioning (Adam decision); va.html body line-261 "Lowest rates" header + line-335 testimonial "best rate" = Phase A body-sweep candidates. SEO/SEM BLOCKERS clean; loanos-clone NOT mutated. NotebookLM script absent (75th).
 
-**2026-06-15 (styer-site-daily Monday — full rotation: Schema + Google Ads QF + AEO Entity Audit): clean verification day, 0 site-HTML mutations.** Sitemap/robots **200**; conversion **10/10** (HTML-token, redirects followed; used absolute tool paths after subshell PATH-drop). **Monday schema audit:** homepage **3/3 JSON-LD blocks VALID** (live Python parse — Re-Verify fallback); `MortgageBroker`+`Person`+`FAQPage`+NMLS-credential on homepage, `LocalBusiness`+`Person`+`Organization`+`FAQPage` on about, `Article`+`FAQPage`+`FinancialProduct`+`BreadcrumbList` on DSCR. **AEO entity:** Person consistent homepage↔about; entity-name hygiene clean (`Mortgage Solutions LP`=0, `The Styer Team`=0, old company `2526130`=0, HyperSmart×9, Kyber×4, company NMLS 2653540 + personal 513013 present). Homepage lede = NEW "complicated income" positioning (H1 *"The loans your bank said no to…"*) — **positioning pivot LIVE**, no 21-day/perf claim. AggregateRating still absent (Adam-gated). **🟢 BLOG FRESHNESS RESOLVED** — `styer-content-weekly` shipped two 2026-06-14 posts (live, HTTP 200, in sitemap); latest now **1 day old**; stale flag cleared from RECURRING_ISSUES. DSCR-post CTA → Send-Your-Scenario funnel (resolved-by-design). SEO/SEM backlog **0 site-eligible**; BLOCKERS clean; loanos-clone NOT mutated. NotebookLM script absent (74th).
+**2026-06-15 (styer-site-daily Monday — Schema + AEO entity audit): clean verification, 0 mutations.** Homepage 3/3 JSON-LD valid; Person consistent homepage↔about; entity-name hygiene clean; "complicated income" positioning pivot LIVE. **🟢 BLOG FRESHNESS RESOLVED** (06-14 posts live). Conversion 10/10.
 
-**2026-06-14 (Sunday weekend recovery): clean verification day, 0 mutations.** Sitemap/robots 200; conversion 10/10. "21-day" token re-verified → scenario-outcome card (Decision-2), kept. Blog 9 days stale, re-surfaced (NOW RESOLVED 06-15). NotebookLM absent (73rd).
+*(2026-06-15 styer-competitive-weekly Wk 15 — research only: Phase A cluster PULLBACK, 4 of 5 complicated-income keywords lost position; asset-depletion #1+#5→#6 ⚠ needs manual logged-out verify; Georgetown NEW #7 ★. Full report `run-logs/competitive/2026-06-15.md`.)*
 
-*(2026-06-13 Sat — clean verification, 0 mutations; conversion 10/10; "Closed in 21 days" scenario-outcome kept per Decision-2 — rolled up.)*
+*(2026-06-13/06-14 — clean verification days, 0 mutations, conversion 10/10 — rolled up.)*
 
 *(2026-06-11/06-12 — Thu honeypot ship (commit `ed49bd8`, 7 inline forms, verified live) + Fri Content/AEO review (blog CTA 34/34, 2 complicated-income posts AEO-excellent) — rolled into CHANGELOG; all verified live.)*
 
@@ -42,7 +42,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | ~~/get-preapproved title~~ **RESOLVED 2026-06-09** — now "Fast Pre-Approval", pipes normalized. Hutto title keeps "Same-Day" per Decision 2(a) | — |
 | SKILL.md infrastructure question — should BLOCKERS.md live inside `styerteam-mortgage-site/` instead of `loanos-clone/tasks/seo-sem/`? Current path triggers Vercel deploy of paused LoanOS product | LOW (Adam) |
 | ~~Calculator P0-A 12× PITI bug~~ **FIXED 2026-06-09 + VERIFIED LIVE 2026-06-10** (`taxFreq === 'yr'` on served page) — RESOLVED | — |
-| NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **74 consecutive dead runs** | HIGH (Adam) |
+| NotebookLM SKILL.md retirement diff — drafted 2026-04-26, **75 consecutive dead runs** | HIGH (Adam) |
 | PSI quota drained **32/32** consecutive periods — provision dedicated key or accept permanent UNVERIFIED | HIGH (Adam) |
 | Homepage/mobile CTAs route to `#contact-form` quick form (Q10). Open: whether to ALSO surface direct `/get-preapproved` or `/refinance-quote` path | MEDIUM (Adam) |
 | Homepage body-copy references "92 Google reviews" + "45 Zillow reviews" + "5.0 ★" (lines 455/492/861) — awaiting Adam's "complicated income" trust-strip pivot copy | MEDIUM (Adam) |
@@ -61,16 +61,16 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Tue 2026-06-16 = next weekday — rotation: Title Tags + Meta Descriptions.**
+**Wed 2026-06-17 = next weekday — rotation: Suburb Page Deep Dive + AEO.**
 
 Priorities (in order):
 1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token).
-2. **Title/meta audit** of loan-type pages vs pattern + 150–160-char metas. NOTE positioning pivot: titles may now favor "complicated income" hooks over generic "[Loan Type] in Austin TX" — flag conflicts to Adam, don't blanket-rewrite indexed-page titles (HIGH_RISK).
-3. **🎯 AggregateRating policy decision** (Adam) — highest-confidence competitive lever for self-employed #2→#1 + jumbo #2. Blocked only on Adam confirming a VERIFIED review count (will not fabricate; self-serve homepage review markup also carries Google policy risk).
-4. **Homepage title pipe** (HIGH_RISK, Adam) + **schema-type unification** + **gold hex SKILL.md sync** — Adam-gated carries.
-5. **GSC** (Adam UI): URL-inspect the 8 USDA-repositioned pages + 3 deleted satellites; confirm sitemap shows Success.
+2. **Suburb rotation page** — inline lead form, FAQPage + BreadcrumbList schema, city-specific H1, internal links to /get-preapproved + /calculators, answer-first AEO FAQ. NOTE: suburb deep edits belong to styer-suburb-editor-daily — coordinate, don't double-edit.
+3. **fha.html "broker" positioning flag** (Adam) — keep broker SEO hook or align to correspondent-lender language? HIGH_RISK indexed title.
+4. **🎯 AggregateRating policy decision** (Adam) — highest-confidence competitive lever for self-employed + jumbo. Blocked on Adam confirming a VERIFIED review count (will not fabricate).
+5. **Homepage title pipe** (HIGH_RISK, Adam) + **schema-type unification** + **gold hex SKILL.md sync** — Adam-gated carries.
 
-**DONE 2026-06-15:** Steps 1–2 (sitemap/conversion 10/10); Monday schema audit (homepage 3/3 JSON-LD valid, Person consistent homepage↔about, entity-name hygiene clean, positioning pivot live); **blog freshness AUTO-RESOLVED** (content task shipped two 06-14 posts, latest 1 day old) + stale flag cleared. 0 site mutations.
+**DONE 2026-06-16:** Steps 1–2 (sitemap/conversion 10/10); Tuesday title+meta audit (20 money pages); 3 deficient metas fixed to 150–160; VA superlative cleaned (meta+og+twitter+hero); fha "broker" positioning flagged; deploy verified live (`7bafb4e`).
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 
