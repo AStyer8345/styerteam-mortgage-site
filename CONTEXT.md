@@ -16,7 +16,9 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-16 (styer-site-daily Tuesday — rotation: Title Tags + Meta Descriptions): 3 files edited, verified live.** Sitemap/robots **200**; conversion **10/10** (HTML-token). Audited all 20 loan-type/specialty money-page titles + metas. **Titles** all present/unique/in-range, 0 legacy entity names — HIGH_RISK indexed-title rewrites flagged not edited. **3 deficient metas fixed (LOW_RISK):** self-employed 131→158 (added K-1 + "Get pre-approved" CTA — serves competitive #2→#5 recovery), dscr-loan-austin-tx 137→156 (CTA), loans/va removed "lowest rates available" superlative ×4 (meta+og+twitter+hero subtitle — GOALS.md Phase A). Commit `7bafb4e`, pushed, deploy verified live (se/va/dscr tokens present). **Flagged:** fha.html title/meta call Adam "a broker" — conflicts w/ correspondent-lender positioning (Adam decision); va.html body line-261 "Lowest rates" header + line-335 testimonial "best rate" = Phase A body-sweep candidates. SEO/SEM BLOCKERS clean; loanos-clone NOT mutated. NotebookLM script absent (75th).
+**2026-06-17 (styer-site-daily Wednesday — rotation: Suburb Deep Dive + AEO): clean verification, 0 site mutations.** Sitemap/robots **200**; conversion **10/10** (HTML-token, redirects followed, absolute tool paths). Audited **Georgetown** suburb page (picked over rotation order — Wk-15 competitive intel flagged it NEW #7 ★). On-page **excellent, 0 defects:** city-specific H1, answer-first AEO intro, question-H2s, 4 valid JSON-LD blocks (json.loads ×4 OK), internal links → /calculators + /rate-check-georgetown, NMLS/Kyber entity correct. **Systemic finding:** only **5 of 25** suburb pages carry an inline lead form (austin-area, buda, cedar-park, kyle, westlake) — other 20 incl. Georgetown lack the `/thank-you`-form pattern. Flagged not edited (form-approval gate + unmapped-form-name silent-lead-loss risk + sister-task domain). SEO/SEM BLOCKERS clean; backlog 0 site-eligible; loanos-clone NOT mutated. Blog fresh (06-16). NotebookLM script absent (76th).
+
+**2026-06-16 (styer-site-daily Tuesday — Title Tags + Meta Descriptions): 3 files edited, verified live.** Audited 20 money-page titles + metas; 3 deficient metas fixed (self-employed 131→158, dscr 137→156, loans/va removed "lowest rates" superlative ×4). Commit `7bafb4e`. fha.html "broker" vs correspondent-lender positioning flagged (Adam).
 
 **2026-06-15 (styer-site-daily Monday — Schema + AEO entity audit): clean verification, 0 mutations.** Homepage 3/3 JSON-LD valid; Person consistent homepage↔about; entity-name hygiene clean; "complicated income" positioning pivot LIVE. **🟢 BLOG FRESHNESS RESOLVED** (06-14 posts live). Conversion 10/10.
 
@@ -46,6 +48,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | PSI quota drained **32/32** consecutive periods — provision dedicated key or accept permanent UNVERIFIED | HIGH (Adam) |
 | Homepage/mobile CTAs route to `#contact-form` quick form (Q10). Open: whether to ALSO surface direct `/get-preapproved` or `/refinance-quote` path | MEDIUM (Adam) |
 | Homepage body-copy references "92 Google reviews" + "45 Zillow reviews" + "5.0 ★" (lines 455/492/861) — awaiting Adam's "complicated income" trust-strip pivot copy | MEDIUM (Adam) |
+| Suburb inline-form coverage **5/25** — only austin-area/buda/cedar-park/kyle/westlake carry an inline quick-quote form; other 20 (incl. Georgetown, now ranking #7) lack the `/thank-you`-form pattern. Batch worth approving but it's a form change (Adam gate) + needs n8n alert mapping for 20 new form-names. Sister-task (styer-suburb-editor-daily) domain | MEDIUM (Adam) |
 | products.html 7 in-card "Get Pre-Approved" route to raw 1003 (**51 carries**; Adam decision) | MEDIUM |
 | GSC URL Inspection sweep overdue — Round Rock, San Marcos, Hutto, Pflugerville, Leander (**30 carries**) | HIGH (Adam) |
 | Complicated-income SERP gap — 5/7 top-10 count held but **Wk 15 PULLBACK: 4 of 5 lost position** (self-emp #3, bank-stmt #7, jumbo #3, asset-depl **#6 ⚠ verify**, 1099 #4↑). Remaining outright gaps: `/non-qm-loans.html` (Austin Mortgages NEW #1) + `/dscr-loan-austin-tx.html` (Cambridge + Tidal NEW). ⚠ **Asset-depletion #1+#5→#6 needs manual logged-out verification before treating moat as lost.** | HIGH |
@@ -61,16 +64,16 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Wed 2026-06-17 = next weekday — rotation: Suburb Page Deep Dive + AEO.**
+**Thu 2026-06-18 = next weekday — rotation: Internal Linking + Funnel Flow.**
 
 Priorities (in order):
-1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token).
-2. **Suburb rotation page** — inline lead form, FAQPage + BreadcrumbList schema, city-specific H1, internal links to /get-preapproved + /calculators, answer-first AEO FAQ. NOTE: suburb deep edits belong to styer-suburb-editor-daily — coordinate, don't double-edit.
-3. **fha.html "broker" positioning flag** (Adam) — keep broker SEO hook or align to correspondent-lender language? HIGH_RISK indexed title.
-4. **🎯 AggregateRating policy decision** (Adam) — highest-confidence competitive lever for self-employed + jumbo. Blocked on Adam confirming a VERIFIED review count (will not fabricate).
-5. **Homepage title pipe** (HIGH_RISK, Adam) + **schema-type unification** + **gold hex SKILL.md sync** — Adam-gated carries.
+1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute tool paths).
+2. **Trace full funnel** on the 5 form-equipped suburb pages: homepage → suburb → inline quick-quote → /thank-you → Ads conversion fire.
+3. **Pick 3 pages, verify each links to 2+ relevant pages** (internal-linking checklist).
+4. **Suburb inline-form coverage gap (5/25)** — quantify the 20 missing pages, propose a batched Adam-approval ask (form-gate + n8n mapping) to styer-suburb-editor-daily; don't drip.
+5. **fha.html "broker" positioning** + **🎯 AggregateRating policy** + **Homepage title pipe** + **schema-type unification** + **gold hex SKILL.md sync** — Adam-gated carries.
 
-**DONE 2026-06-16:** Steps 1–2 (sitemap/conversion 10/10); Tuesday title+meta audit (20 money pages); 3 deficient metas fixed to 150–160; VA superlative cleaned (meta+og+twitter+hero); fha "broker" positioning flagged; deploy verified live (`7bafb4e`).
+**DONE 2026-06-17:** Steps 1–2 (sitemap/conversion 10/10); Wednesday Georgetown suburb deep-dive audit — on-page excellent, 0 defects, 4 JSON-LD valid; systemic inline-form gap (5/25) surfaced + flagged; SEO/SEM clean; 0 site mutations (clean verification run).
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 

@@ -1,3 +1,10 @@
+## 2026-06-17 — styer-site-daily (Wednesday): Georgetown suburb deep-dive audit — clean, 0 mutations
+
+- **Non-negotiables:** sitemap.xml + robots.txt 200; conversion tracking 10/10 (HTML-token via `curl -L`, redirects followed — no live-submit pipeline pollution). Absolute tool paths used (PATH-drop learning re-confirmed in `for`-loop subshell).
+- **Wednesday rotation — Georgetown suburb deep dive + AEO.** Picked over strict order because Wk-15 competitive intel flagged it NEW #7 ★ (only rising keyword amid a 4-of-5 pullback). On-page **excellent, 0 defects:** city-specific H1, answer-first AEO intro, question-phrased H2s, 4 valid JSON-LD blocks (LocalBusiness/FAQPage/BreadcrumbList/WebPage — all parse via python json.loads), internal links to /calculators + /rate-check-georgetown, NMLS 513013/2653540 + Kyber entity correct, 0 legacy entity names.
+- **Systemic finding surfaced (not edited):** only 5 of 25 suburb pages carry an inline Netlify quick-quote form (austin-area, buda, cedar-park, kyle, westlake); the other 20 incl. Georgetown lack the on-page `/thank-you`-landing form pattern. Not unilaterally added — form changes are an Adam-approval gate + create unmapped Netlify form-names (silent-lead-loss risk) + deep suburb edits are styer-suburb-editor-daily's domain. Flagged for coordination.
+- **SEO/SEM:** BLOCKERS.md clean; backlog 0 site-eligible items; loanos-clone NOT mutated (paused-LoanOS deploy guard). Blog fresh (06-16). **0 site-HTML mutations — clean verification run.** Committed only this task's run-log + session docs (file-specific add; sister-task untracked gbp-posts file left alone).
+
 ## 2026-06-16 — styer-suburb-editor-daily (Round 3 #10): deepen Lakeway page
 
 - **Queue: Round 3, position 10 of 13** (lakeway) — lighter-touch refresh following 2026-05-12 Round 2 deep renovation. Next: #11 bee-cave.
