@@ -1,3 +1,12 @@
+## 2026-06-18 — styer-site-daily (Thursday): fixed conversion-funnel break on 3 suburb forms
+
+- **Non-negotiables:** sitemap.xml + robots.txt 200; conversion tracking 10/10 (HTML-token via `curl -L`, no live-submit pollution). Absolute tool paths.
+- **Thursday rotation — Internal Linking + Funnel Flow.** Traced the funnel on all 5 form-equipped suburb pages and found a real **conversion-tracking break on 3 of them**: `austin-area`, `buda`, `westlake` quick-quote forms had `data-netlify="true"` but **no `action`** attribute. Verified no shared JS submit handler exists (`script.js`/`analytics.js`/`scroll-effects.js` clean), so those forms did a native POST to Netlify's default success page — bypassing `/thank-you`, so `generate_lead`/`thank_you_page_view` never fired and real leads saw a bare Netlify page instead of Adam's branded next-steps. **Fix:** added `action="/thank-you"` to all 3, matching the known-good `cedar-park`/`kyle` pattern. Commit `c519c4e`; Netlify deploy `ready` (3 files uploaded, secret-scan clean, mobile Lighthouse home Perf 81/A11y 100/BP 100/SEO 100); all 5 forms verified routing to /thank-you live.
+- **Internal linking:** 3 pages (austin-area/buda/westlake) each link to well above 2 relevant pages (peer suburbs, /calculators, /scenario, FTB guide). ✅
+- **Design spot-check:** homepage hero CTA → `#contact-form`/`#quick-scenario-form` + Calendly is intentional under the repositioning (not a defect — stale checklist item left un-"fixed"); entity hygiene clean (0 legacy names, NMLS present); positioning copy strong (self-employed/wholesale/complicated-income). Gold hex `#8B6E24` carried LOW (Adam).
+- **SEO/SEM:** BLOCKERS clean; backlog 0 site-eligible; loanos-clone NOT mutated. Blog fresh (06-16).
+- **Learning:** Netlify HTML post-processing rewrites form attributes (double→single quotes, alphabetical reorder, strips `data-netlify`) — quote-sensitive verification greps give false negatives; verify quote-agnostic + via deploy permalink/API. Committed only the 3 page files (file-specific add; sister-task untracked `gbp-posts` file left alone).
+
 ## 2026-06-17 — styer-site-daily (Wednesday): Georgetown suburb deep-dive audit — clean, 0 mutations
 
 - **Non-negotiables:** sitemap.xml + robots.txt 200; conversion tracking 10/10 (HTML-token via `curl -L`, redirects followed — no live-submit pipeline pollution). Absolute tool paths used (PATH-drop learning re-confirmed in `for`-loop subshell).

@@ -16,7 +16,9 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-17 (styer-site-daily Wednesday — rotation: Suburb Deep Dive + AEO): clean verification, 0 site mutations.** Sitemap/robots **200**; conversion **10/10** (HTML-token, redirects followed, absolute tool paths). Audited **Georgetown** suburb page (picked over rotation order — Wk-15 competitive intel flagged it NEW #7 ★). On-page **excellent, 0 defects:** city-specific H1, answer-first AEO intro, question-H2s, 4 valid JSON-LD blocks (json.loads ×4 OK), internal links → /calculators + /rate-check-georgetown, NMLS/Kyber entity correct. **Systemic finding:** only **5 of 25** suburb pages carry an inline lead form (austin-area, buda, cedar-park, kyle, westlake) — other 20 incl. Georgetown lack the `/thank-you`-form pattern. Flagged not edited (form-approval gate + unmapped-form-name silent-lead-loss risk + sister-task domain). SEO/SEM BLOCKERS clean; backlog 0 site-eligible; loanos-clone NOT mutated. Blog fresh (06-16). NotebookLM script absent (76th).
+**2026-06-18 (styer-site-daily Thursday — rotation: Internal Linking + Funnel Flow): 3 files edited, verified live.** Sitemap/robots **200**; conversion **10/10**. Funnel trace on all 5 form-equipped suburb pages found a real **conversion-tracking break on 3 of them** — austin-area, buda, westlake quick-quote forms had `data-netlify` but **no `action`**, so submissions hit Netlify's default page (bypassing /thank-you → no `generate_lead`/`thank_you_page_view` fire; real leads saw a bare Netlify page). Fixed with `action="/thank-you"` to match known-good cedar-park/kyle. Commit `c519c4e`, deploy `ready`, all 5 verified routing to /thank-you live. Internal linking 3 pages ✅; blog fresh (06-16). Netlify Lighthouse (mobile home): Perf 81 / A11y 100 / BP 100 / SEO 100. NotebookLM script absent (77th). Learning: Netlify post-processing rewrites form attrs (double→single quote, alpha reorder) — verify quote-agnostic + via deploy permalink/API.
+
+*(2026-06-17 Wed — Georgetown suburb deep-dive audit, on-page excellent 0 defects, 4 JSON-LD valid; surfaced 5/25 inline-form gap; 0 mutations — rolled up.)*
 
 **2026-06-16 (styer-site-daily Tuesday — Title Tags + Meta Descriptions): 3 files edited, verified live.** Audited 20 money-page titles + metas; 3 deficient metas fixed (self-employed 131→158, dscr 137→156, loans/va removed "lowest rates" superlative ×4). Commit `7bafb4e`. fha.html "broker" vs correspondent-lender positioning flagged (Adam).
 
@@ -54,7 +56,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | Complicated-income SERP gap — 5/7 top-10 count held but **Wk 15 PULLBACK: 4 of 5 lost position** (self-emp #3, bank-stmt #7, jumbo #3, asset-depl **#6 ⚠ verify**, 1099 #4↑). Remaining outright gaps: `/non-qm-loans.html` (Austin Mortgages NEW #1) + `/dscr-loan-austin-tx.html` (Cambridge + Tidal NEW). ⚠ **Asset-depletion #1+#5→#6 needs manual logged-out verification before treating moat as lost.** | HIGH |
 | Hedged claims to verify (2026-05-17) — 8 items in `FLAG_FOR_ADAM.md` against current wholesale rate sheets | HIGH (Adam) |
 | NotebookLM CLI auth expired (2026-05-11) — `notebooklm login` required | HIGH (Adam) |
-| ~~Suburb quick-form Ads conversions~~ **FIXED IN CODE 2026-06-09** — all quick forms now land on /thank-you where the Ads conversion fires. Adam: confirm counts in Ads UI | MEDIUM (Adam) |
+| ~~Suburb quick-form Ads conversions~~ **FULLY FIXED 2026-06-18** — austin-area/buda/westlake forms were silently missing `action="/thank-you"` (only cedar-park/kyle had it); all 5 now route to /thank-you where the Ads conversion fires (commit `c519c4e`, verified live). Adam: (a) confirm counts rise in Ads UI; (b) check Netlify Forms for past austin-area-quote/buda-quote/westlake-quote submissions that may have come in without a matching conversion | MEDIUM (Adam) |
 | 2026-04-27-why-home-prices-arent-crashing CTA structure + missing FAQPage schema (**42 carries**, paused per GOALS.md no-content policy) | MEDIUM |
 | ~~Sitewide nav inconsistency~~ **CLOSED 2026-06-09 evening** — canonical header on 148 pages + 4 generator templates; bare-header sticky CSS bug fixed (blog scroll overlap) | — |
 | Suburb/footer cosmetic carries (LOW) — footer `/prequal.html` parity, suburb `/calculators` linking gap, suburb `About Adam` standalone | LOW (Adam) |
@@ -64,16 +66,17 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Thu 2026-06-18 = next weekday — rotation: Internal Linking + Funnel Flow.**
+**Fri 2026-06-19 = next weekday — rotation: Content Planning + AEO Review.**
 
 Priorities (in order):
-1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute tool paths).
-2. **Trace full funnel** on the 5 form-equipped suburb pages: homepage → suburb → inline quick-quote → /thank-you → Ads conversion fire.
-3. **Pick 3 pages, verify each links to 2+ relevant pages** (internal-linking checklist).
-4. **Suburb inline-form coverage gap (5/25)** — quantify the 20 missing pages, propose a batched Adam-approval ask (form-gate + n8n mapping) to styer-suburb-editor-daily; don't drip.
-5. **fha.html "broker" positioning** + **🎯 AggregateRating policy** + **Homepage title pipe** + **schema-type unification** + **gold hex SKILL.md sync** — Adam-gated carries.
+1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute tool paths). **Quote-agnostic** greps (Netlify rewrites attr quotes).
+2. **Blog freshness** — /blog last-post date; if >7 days, flag weekly-content task.
+3. **Blog CTA audit** — every post links to /get-preapproved or /refinance-quote.
+4. **AEO** — pick 2 blog posts: FAQ answers lead with direct answer? H2s phrased as AI-style questions? Extractable summary near top?
+5. **Re-verify yesterday's funnel fix held** — all 5 suburb forms (austin-area/buda/westlake/cedar-park/kyle) still route to /thank-you.
+6. **Adam-gated carries:** suburb inline-form 5/25 batch · fha.html "broker" · AggregateRating policy · homepage title pipe · schema-type unification · gold hex SKILL.md sync.
 
-**DONE 2026-06-17:** Steps 1–2 (sitemap/conversion 10/10); Wednesday Georgetown suburb deep-dive audit — on-page excellent, 0 defects, 4 JSON-LD valid; systemic inline-form gap (5/25) surfaced + flagged; SEO/SEM clean; 0 site mutations (clean verification run).
+**DONE 2026-06-18:** Steps 1–2 (sitemap/conversion 10/10); Thursday funnel trace — found + fixed conversion-tracking break on 3 of 5 form-equipped suburb pages (austin-area/buda/westlake missing `action="/thank-you"`), all 5 verified live; internal linking 3 pages ✅; blog fresh; SEO/SEM clean.
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 
