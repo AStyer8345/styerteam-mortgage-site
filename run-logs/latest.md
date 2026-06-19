@@ -131,3 +131,16 @@ PASS — 3 site files edited (austin-area, buda, westlake form `action` attr onl
 - ✅ Design spot-check: homepage CTA/entity/positioning all good; stale checklist item not mis-fixed
 - ✅ SEO/SEM BLOCKERS clean; backlog 0 site-eligible; loanos-clone untouched
 - ✅ Self-review PASS; deploy verified live
+
+---
+
+## LATE RE-FIRE VERIFICATION — 2026-06-18 23:43 CDT
+Scheduler re-fired styer-site-daily late Thursday, after the morning Thursday rotation had already completed (this same log above). Per learnings — *"a clean audit is a valid output; don't manufacture an edit"* and *"don't redo a completed same-day rotation"* — ran non-negotiables only. **All green, nothing regressed; zero edits.**
+
+| Check | Result |
+|---|---|
+| sitemap.xml / robots.txt HTTP | 200 / 200 ✅ |
+| Conversion tracking (HTML-token, quote-agnostic) | 10/10 ✅ — GTM-PQQ6PGLR, generate_lead+lead_type on both landing pages, thank_you_page_view on /thank-you, tel:+15129566010 sitewide, TCPA present |
+| Morning funnel fix held (cedar-park, kyle, austin-area, buda, westlake → /thank-you) | 5/5 ✅ (Netlify single-quoted `action='/thank-you'` as predicted) |
+
+No clobber of morning run; TOMORROW_PRIORITY (Fri 2026-06-19 = Content Planning + AEO Review) preserved. Re-applied learning: absolute tool paths after the `for`-loop PATH-drop bit again on Step 2's first attempt.
