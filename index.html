@@ -963,6 +963,15 @@
       </div>
     </section>
 
+    <!-- RECENTLY UPDATED (auto-generated from git history at deploy; hidden until feed loads) -->
+    <section id="recent-updates-section" hidden>
+      <div class="container">
+        <h2 class="text-center mb-md">Recently Updated</h2>
+        <p class="text-center content-medium mx-auto mb-3xl">Fresh rate data, new guides, and refreshed local detail &mdash; this site is worked on continuously. Here's what changed most recently.</p>
+        <div id="recent-updates-grid" class="loan-program-grid"></div>
+      </div>
+    </section>
+
     <!-- FAQ SECTION -->
     <section id="faq" class="bg-light">
       <div class="container">
@@ -1127,6 +1136,36 @@
       // Also reveal after 2s even without scroll — keeps CTA persistently available
       setTimeout(reveal, 2000);
     });
+  </script>
+  <script>
+    /* Recently Updated strip — feed is auto-generated from git history at deploy.
+       Renders nothing (section stays hidden) if the feed is missing or empty. */
+    (function () {
+      var section = document.getElementById("recent-updates-section");
+      var grid = document.getElementById("recent-updates-grid");
+      if (!section || !grid) return;
+      function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+      fetch("/recent-updates.json")
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+        .then(function (data) {
+          var items = (data && data.items) || [];
+          if (!items.length) return;
+          items.slice(0, 8).forEach(function (it) {
+            if (!it.url || !it.title || !it.date) return;
+            var d = new Date(it.date + "T12:00:00");
+            var ds = d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+            var a = document.createElement("a");
+            a.href = it.url;
+            a.className = "card";
+            a.innerHTML =
+              '<span class="blog-card-category">Updated ' + esc(ds) + '</span>' +
+              '<h3 class="blog-card-title">' + esc(it.title) + '</h3>';
+            grid.appendChild(a);
+          });
+          if (grid.children.length) section.hidden = false;
+        })
+        .catch(function () {});
+    })();
   </script>
 </body>
 </html>

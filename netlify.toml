@@ -1,5 +1,9 @@
 [build]
   publish = "."
+  # Regenerate the homepage "Recently Updated" feed from git history on every deploy.
+  # "|| true" guarantees a generator failure can never block the deploy; a committed
+  # recent-updates.json fallback ships in the repo so the strip works even without it.
+  command = "node scripts/gen-recent-updates.js || true"
 
 # ─── Secrets Scanning ─────────────────────────────────────────────────────────
 # marketing-command-center.html contains a SHA256 password hash (PASS_HASH) for

@@ -1,3 +1,20 @@
+## 2026-06-20 — interactive (Adam): blog cannibalization audit + fixes, rates canonical, "Recently Updated" homepage strip
+
+Full keyword-cannibalization audit (mapped every blog post + money page to its target query). Cluster discipline mostly clean (lender-shopping, complicated-income); found **4 real collisions**, all fixed via title/H1/anchor differentiation — **no deletions, no 301s, no money pages merged** (signal concentration, not removal):
+
+- **Pre-approval blog** — `<title>` was byte-identical to the `mortgage-pre-approval-austin` money page (only tag never customized; H1/OG/desc were already correct). Retitled → "How Long Does Mortgage Pre-Approval Take? Austin TX Timeline."
+- **DSCR Austin blog** — re-angled `<title>`/H1/OG/Twitter/Article-headline/FAQ-h2 → "How DSCR Loans Work in Austin TX — 2026 Investor's Guide" (informational) to stop competing with `dscr-loan-austin-tx` (transactional).
+- **DPA blog** — re-angled → "2026 Texas Down Payment Assistance Programs: TSAHC, TDHCA & City of Austin" (program long-tail), ceding "down payment assistance Austin" to the money page. `ftb-dpa-guide.html` was already `noindex` (lead magnet) — left untouched.
+- **FTB blog** — sharpened → "First-Time Buyer Assistance Programs Austin TX (2026): TSAHC, TDHCA & MCC" vs the `first-time-home-buyer` loan money page (kept per Adam).
+- **self-employed-mortgage-austin** — dropped "Bank Statement Loans" from `<title>`/OG (dedicated `bank-statement-loans` page owns that term).
+- Synced all `blog.html` ListItem schema + noscript anchors and `blog/manifest.json` card titles. All 4 blog posts already linked UP to their money pages — internal-link layer was already correct.
+
+**Rates canonical:** decaying `blog/2026-03-20-austin-mortgage-rates-march-2026.html` now `rel=canonical` → `/austin-mortgage-rates.html` (consolidate "Austin mortgage rates" signal onto the evergreen page).
+
+**"Recently Updated" homepage strip** (new feature): surfaces the site's daily edit activity as visible freshness, not just weekly net-new posts. Auto-generated from git history at deploy (`scripts/gen-recent-updates.js` → `recent-updates.json`), rendered client-side on `index.html` between Service Areas and FAQ. Self-maintaining (regenerates every deploy), fail-safe (Netlify `command` wrapped in `|| true`; committed JSON fallback; section stays `hidden` if the feed is missing/empty). Verified live in Site Preview: feed HTTP 200, 8 cards rendered, 0 console errors. See DECISIONS.
+
+**Verification:** blog title lint pass; `recent-updates.json` valid JSON (10 items); 0 stale colliding strings (grep-confirmed across all touched files); strip renders in browser preview.
+
 ## 2026-06-20 — interactive (Adam): self-employed money-page recovery + AEO schema + blog de-cannibalization
 
 Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behind Adam's own blog post — flagged in Wk 15 competitive intel). Two real causes found + fixed:

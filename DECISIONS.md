@@ -1,5 +1,13 @@
 # styermortgage.com — Decisions
 
+## [2026-06-20] — "Recently Updated" feed derives from git history at deploy (introduces a Netlify build step)
+
+**Chose:** Generate the homepage "Recently Updated" strip's data (`recent-updates.json`) from `git log` at deploy time via a Netlify `command` (`node scripts/gen-recent-updates.js || true`), rendered client-side on `index.html`. The site previously had no build step (`publish = "."` only).
+**Over:** (a) A hand-maintained JSON list — rots the moment a daily task forgets to update it (Adam explicitly dislikes stale widgets). (b) Wiring the existing daily scheduled tasks to append to a feed — more moving parts, same rot risk, and edits scheduled-task skills out-of-band. (c) Reusing `blog/manifest.json` (publish dates only) — would show weekly net-new posts, not the daily *edit* activity the strip exists to surface.
+**Why:** Git history is the single source of truth for "what changed when." Deriving from it at deploy means the feed can never drift from reality and needs zero manual upkeep — every push (including the 40+ daily bot commits) regenerates it.
+**Trade-off:** Adds a build step to a previously static-only deploy. Mitigated to fail-safe: `|| true` so a generator error can never block a deploy; a committed `recent-updates.json` fallback ships in the repo so the strip works even if the command never runs; the homepage section stays `hidden` and renders nothing if the feed is missing/empty. No npm deps added (pure Node built-ins + git).
+**Context:** Adam's complaint that the site "feels idle" — net-new blog posts only publish weekly (Tuesdays via `styer-blog-writer-weekly`), while daily work is page *edits* that never surfaced anywhere visible. This makes the daily depth work legible to visitors and as a freshness signal.
+
 ## [2026-06-09] — Batch-memo decisions: USDA 1=b, speed claims 2=a, funnel attribution via /thank-you
 
 **Chose:** (1) Reposition all 8 Class-A rural suburb pages OFF USDA — Adam does not originate USDA; pages now lead with conventional/FHA/VA/DPA + OTC construction, keeping the USDA FAQ question with an honest "I don't originate USDA" answer. (2) Kill "24-hour" speed-claim variants sitewide (non-blog), keep "same-day pre-approval" — reconciles GOALS.md ("no performance-metric marketing") with the voice guide (same-day is a true differentiator). (3) Resolve the 0-tracked-LP question at the form layer instead of the link layer: every lead form now lands on /thank-you where the Ads conversion fires, so organic submissions attribute without adding tracked-LP links to 34 pages. /scenarios.html remains the canonical organic LP.
