@@ -46,6 +46,7 @@ Top-of-hierarchy reads:
 - Never display raw loan application URL — use anchor text
 - Run blog title lint before publish: `grep "<title>" blog/*.html | grep -v "Adam Styer"`
 - New blog posts must be added to `blog.html` noscript block + CollectionPage schema
+- Realtor updates (`/realtor-updates/*.html`) must ALSO be registered in the blog index — add to `blog/manifest.json` (drives the grid; sort by date desc), `blog.html` noscript block, and CollectionPage ItemList schema. Keep their canonical URL at `/realtor-updates/` — do NOT move the file into `/blog/`.
 - **Never mark a briefing ticket "done" unless every file touched for that ticket is committed in the same session.** Marking tracking metadata as done while leaving the work product uncommitted creates silent drift between the ticket system and `main`. If a ticket's files aren't ready to commit, leave the ticket status untouched. Before marking anything done, run `git status` and confirm a clean tree (or that the relevant files are staged in the commit you're about to make).
 
 ## Deploy Workflow

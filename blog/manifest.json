@@ -41,6 +41,14 @@
       "url": "/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html"
     },
     {
+      "slug": "2026-06-08-when-other-lenders-say-no",
+      "title": "When Other Lenders Say No, That's Usually When I Get Interested",
+      "description": "When a buyer gets declined, the deal usually isn't dead. The loan options that exist for self-employed, investor, and high-net-worth clients who don't fit conventional guidelines.",
+      "date": "2026-06-08",
+      "category": "Loan Programs",
+      "url": "/realtor-updates/2026-06-08-when-other-lenders-say-no.html"
+    },
+    {
       "slug": "2026-06-05-dscr-cash-out-refinance-texas-brrrr",
       "title": "DSCR Cash-Out Refinance Texas (2026): The BRRRR Investor's Guide",
       "description": "How DSCR cash-out refinances work for Texas investors: LTV caps, seasoning, why Texas A6 doesn't apply to investment property, and how to make BRRRR actually pencil in 2026.",
@@ -71,6 +79,14 @@
       "date": "2026-04-27",
       "category": "Market Update",
       "url": "/blog/2026-04-27-why-home-prices-arent-crashing.html"
+    },
+    {
+      "slug": "2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers",
+      "title": "The Crash That Isn't Coming — Data for Your Buyers",
+      "description": "Real data to walk fence-sitters through — the lock-in effect, equity, why this isn't 2008, and the negotiating window your buyers have right now.",
+      "date": "2026-04-27",
+      "category": "Market Intel",
+      "url": "/realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers.html"
     },
     {
       "slug": "2026-04-17-should-i-refinance-austin-tx-2026",
@@ -313,28 +329,36 @@
       "url": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
     },
     {
-      "slug": "first-time-buyer-guide",
-      "title": "First-Time Home Buyer's Guide",
-      "description": "Everything you need to know about purchasing your first home in Austin, from pre-approval to closing day.",
-      "date": "2026-02-19",
-      "category": "Homebuying",
-      "url": "/first-time-buyer-guide.html"
+      "slug": "2026-03-04-wait-for-rates",
+      "title": "Should You Wait for Rates to Drop Before You Buy?",
+      "description": "Most people think waiting for rates is the safe play. The math says otherwise. Here's the framework I use with every client facing this exact decision.",
+      "date": "2026-03-04",
+      "category": "Market Updates",
+      "url": "/resources/blog/2026-03-04-wait-for-rates.html"
     },
     {
-      "slug": "fixed-vs-adjustable",
-      "title": "Fixed vs. Adjustable Rate Mortgages",
-      "description": "Understanding the key differences between fixed-rate and adjustable-rate mortgages can save you thousands.",
-      "date": "2026-02-19",
-      "category": "Tips & Guides",
-      "url": "/fixed-vs-adjustable.html"
+      "slug": "2026-03-04-wait-for-rates-realtor",
+      "title": "The \"Wait for Rates\" Objection — Here's How to Handle It",
+      "description": "The single biggest friction point in the move-up market. Here's the framework that turns fence-sitters into closings, plus an AI Playbook to save you time.",
+      "date": "2026-03-04",
+      "category": "Market Intel",
+      "url": "/resources/blog/2026-03-04-wait-for-rates-realtor.html"
     },
     {
-      "slug": "improve-credit-score",
-      "title": "How to Improve Your Credit Score for a Mortgage",
-      "description": "Your credit score directly impacts your mortgage rate and buying power. Discover proven strategies to strengthen your score.",
-      "date": "2026-02-19",
+      "slug": "2026-02-27-ai-for-realtors-rates-drop-below-6",
+      "title": "AI Tools & Rate Cuts Below 6% for Austin Realtors",
+      "description": "Mortgage rates dropped below 6%. Plus: how AI automation is changing realtor workflows. Read what's happening this week in Austin.",
+      "date": "2026-02-27",
+      "category": "Tech & Tools",
+      "url": "/realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6.html"
+    },
+    {
+      "slug": "mortgage-broker-vs-bank",
+      "title": "Mortgage Broker vs. Bank: Which Is Right for You?",
+      "description": "Should you use a mortgage broker or go directly to a bank? Honest comparison of rates, options, service, and closing speed.",
+      "date": "2026-02-26",
       "category": "Tips & Guides",
-      "url": "/improve-credit-score.html"
+      "url": "/mortgage-broker-vs-bank.html"
     },
     {
       "slug": "how-much-house-can-i-afford-austin",
@@ -377,20 +401,28 @@
       "url": "/austin-housing-market-2025.html"
     },
     {
-      "slug": "mortgage-broker-vs-bank",
-      "title": "Mortgage Broker vs. Bank: Which Is Right for You?",
-      "description": "Should you use a mortgage broker or go directly to a bank? Honest comparison of rates, options, service, and closing speed.",
-      "date": "2026-02-26",
-      "category": "Tips & Guides",
-      "url": "/mortgage-broker-vs-bank.html"
+      "slug": "first-time-buyer-guide",
+      "title": "First-Time Home Buyer's Guide",
+      "description": "Everything you need to know about purchasing your first home in Austin, from pre-approval to closing day.",
+      "date": "2026-02-19",
+      "category": "Homebuying",
+      "url": "/first-time-buyer-guide.html"
     },
     {
-      "slug": "2026-03-04-wait-for-rates",
-      "title": "Should You Wait for Rates to Drop Before You Buy?",
-      "description": "Most people think waiting for rates is the safe play. The math says otherwise. Here's the framework I use with every client facing this exact decision.",
-      "date": "2026-03-04",
-      "category": "Market Updates",
-      "url": "/resources/blog/2026-03-04-wait-for-rates.html"
+      "slug": "fixed-vs-adjustable",
+      "title": "Fixed vs. Adjustable Rate Mortgages",
+      "description": "Understanding the key differences between fixed-rate and adjustable-rate mortgages can save you thousands.",
+      "date": "2026-02-19",
+      "category": "Tips & Guides",
+      "url": "/fixed-vs-adjustable.html"
+    },
+    {
+      "slug": "improve-credit-score",
+      "title": "How to Improve Your Credit Score for a Mortgage",
+      "description": "Your credit score directly impacts your mortgage rate and buying power. Discover proven strategies to strengthen your score.",
+      "date": "2026-02-19",
+      "category": "Tips & Guides",
+      "url": "/improve-credit-score.html"
     }
   ]
 }
