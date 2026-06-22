@@ -2365,3 +2365,11 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Funnel trace: all 7 forms `action="/thank-you"` → `thank_you_page_view` Ads conversion fires; internal-linking spot check (kyle/dscr/non-qm) dense, no gaps.
 - Re-Verify Gate: re-characterized prequal.html "conversion parity" MEDIUM→LOW — already routes to /thank-you so conversion fires; only granular dataLayer event absent.
 - Health: sitemap/robots 200; conversion 10/10; NotebookLM script absent (70th). Concurrent-writer hutto + sister-task gbp-posts left unstaged.
+
+## 2026-06-22 (styer-competitive-weekly — Wk 16, research only)
+- **Broad recovery / mean-reversion week.** Nearly every Wk 15 "loss" reverted, confirming the Wk 15 pullback was WebSearch composition noise, not real decay. Asset depletion back at **#1** (Wk15 "#6 collapse" was noise → moat intact); self-employed reclaimed **#1** (blog; Champions fell #1→#6); jumbo back to **#2** (Grove fell #2→#8); 1099 best-position ↑ to **#3**. Lone decliner: bank statement #7→#8 (1st NWM + Texas Tech CU new entrants).
+- **★ Styer prequal.html DEBUTS #7 on "get pre-approved austin tx mortgage"** — first-ever top-10 on a core (non-suburb) purchase term.
+- **Suburb rotation Pflugerville + Kyle:** Pflugerville **#1 ★** (above directories; ↑ from #2 Wk11), Kyle **#3** (↑ from #6 Wk11).
+- **Re-Verify Gate correction (curl+grep, authoritative):** long-carried "LendFriend has NO FAQPage schema" is FALSE — LendFriend's self-employed page DOES carry FAQPage JSON-LD; the real wedge is **AggregateRating**, which NEITHER party has (symmetric gap, first-mover advantage). Prior "no FAQPage" readings were WebFetch markdown false-negatives. Styer's asset-depletion page confirmed carrying FAQPage (6 ld+json blocks). LendFriend now displays 547 Google + 1,113 Experience review counts visually but un-schema'd.
+- Cleared 9 Wk15 claims as CHANGED-recovered, held 4, corrected 1. NotebookLM dead on both legs (advisor script absent + CLI auth erroring, re-verified live). Report: `run-logs/competitive/2026-06-22.md`.
+- **0 site-HTML files modified** (research only). Doc/log only: competitive report + latest, learnings, CONTEXT, TODO, this entry, master growth log. Concurrent-writer files (`index.html`, `run-logs/latest.md`, `run-logs/2026-06-20.md`, `gbp-posts/*`) left untouched + unstaged.

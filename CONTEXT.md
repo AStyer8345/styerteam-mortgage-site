@@ -24,7 +24,9 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 **2026-06-15 (styer-site-daily Monday — Schema + AEO entity audit): clean verification, 0 mutations.** Homepage 3/3 JSON-LD valid; Person consistent homepage↔about; entity-name hygiene clean; "complicated income" positioning pivot LIVE. **🟢 BLOG FRESHNESS RESOLVED** (06-14 posts live). Conversion 10/10.
 
-*(2026-06-15 styer-competitive-weekly Wk 15 — research only: Phase A cluster PULLBACK, 4 of 5 complicated-income keywords lost position; asset-depletion #1+#5→#6 ⚠ needs manual logged-out verify; Georgetown NEW #7 ★. Full report `run-logs/competitive/2026-06-15.md`.)*
+*(2026-06-22 styer-competitive-weekly Wk 16 — research only: BROAD RECOVERY — Wk15 pullback was WebSearch noise, nearly all reverted. Asset-depl back **#1** (moat intact), self-emp **#1** blog, jumbo **#2**, 1099 **#3**; bank-stmt #8 lone decliner. ★ get-pre-approved DEBUTS #7 (first core top-10). Suburbs: Pflugerville **#1**, Kyle **#3**. **Re-Verify correction: "LendFriend no FAQPage" was FALSE (curl+grep) — both carry FAQPage; real gap = AggregateRating, symmetric.** Report `run-logs/competitive/2026-06-22.md`.)*
+
+*(2026-06-15 styer-competitive-weekly Wk 15 — research only: Phase A cluster PULLBACK [SUPERSEDED by Wk16 — was composition noise]. Full report `run-logs/competitive/2026-06-15.md`.)*
 
 *(2026-06-13/06-14 — clean verification days, 0 mutations, conversion 10/10 — rolled up.)*
 
@@ -53,7 +55,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | Suburb inline-form coverage **5/25** — only austin-area/buda/cedar-park/kyle/westlake carry an inline quick-quote form; other 20 (incl. Georgetown, now ranking #7) lack the `/thank-you`-form pattern. Batch worth approving but it's a form change (Adam gate) + needs n8n alert mapping for 20 new form-names. Sister-task (styer-suburb-editor-daily) domain | MEDIUM (Adam) |
 | products.html 7 in-card "Get Pre-Approved" route to raw 1003 (**51 carries**; Adam decision) | MEDIUM |
 | GSC URL Inspection sweep overdue — Round Rock, San Marcos, Hutto, Pflugerville, Leander (**30 carries**) | HIGH (Adam) |
-| Complicated-income SERP gap — 5/7 top-10 count held but **Wk 15 PULLBACK: 4 of 5 lost position** (self-emp #3, bank-stmt #7, jumbo #3, asset-depl **#6 ⚠ verify**, 1099 #4↑). Remaining outright gaps: `/non-qm-loans.html` (Austin Mortgages NEW #1) + `/dscr-loan-austin-tx.html` (Cambridge + Tidal NEW). ⚠ **Asset-depletion #1+#5→#6 needs manual logged-out verification before treating moat as lost.** | HIGH |
+| Complicated-income SERP gap — **Wk 16 RECOVERY: 4 of 5 gained/recovered** (self-emp **#1** blog, asset-depl **#1** ★, jumbo **#2**, 1099 **#3** best; bank-stmt **#8** lone decliner). **✅ Asset-depletion moat INTACT — back at #1; the Wk15 "#6" was WebSearch composition noise, not a real drop. Manual-verify flag CLEARED.** Remaining outright gaps: `/non-qm-loans.html` (CMRE #1) + `/dscr-loan-austin-tx.html` (Newfi #1). | MEDIUM |
 | Hedged claims to verify (2026-05-17) — 8 items in `FLAG_FOR_ADAM.md` against current wholesale rate sheets | HIGH (Adam) |
 | NotebookLM CLI auth expired (2026-05-11) — `notebooklm login` required | HIGH (Adam) |
 | ~~Suburb quick-form Ads conversions~~ **FULLY FIXED 2026-06-18** — austin-area/buda/westlake forms were silently missing `action="/thank-you"` (only cedar-park/kyle had it); all 5 now route to /thank-you where the Ads conversion fires (commit `c519c4e`, verified live). Adam: (a) confirm counts rise in Ads UI; (b) check Netlify Forms for past austin-area-quote/buda-quote/westlake-quote submissions that may have come in without a matching conversion | MEDIUM (Adam) |
