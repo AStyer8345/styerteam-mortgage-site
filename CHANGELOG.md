@@ -1,3 +1,5 @@
+## 2026-06-23 — styer-blog-writer-weekly: published "No-Ratio & Low-DSCR Loans in Texas" (Tier A, DSCR cluster 5/5, final seeded entry). 1,490 words, 5 approved-source citations (CFPB 1026.3/1026.43, Fannie B3-3.8-01 + B2-1.2-01, FRED TXRVAC), all STEP 4 gates pass, registered in 4 surfaces. Commit db561c1. Live 200.
+
 ## 2026-06-22 — styer-suburb-editor-daily (Round 4 #2): georgetown deepening + median refresh
 
 Page was intact (matched Round 3 queue notes — no concurrent-writer drift). Treated as a normal deepening pass.

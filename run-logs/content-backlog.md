@@ -56,3 +56,4 @@ Format: `YYYY-MM-DD | <slug> | <tier> | <commit-sha>`
 - 2026-06-14 | 2026-06-14-dscr-vs-conventional-investment-property-loan-texas | A (DSCR cluster) | 8323044
 - 2026-06-14 | 2026-06-14-buy-before-you-sell-austin-tx | manual (Adam-directed) | a60395e
 - 2026-06-16 | 2026-06-16-dscr-loan-requirements-texas | A (DSCR cluster) | bbe7c05
+- 2026-06-23 | 2026-06-23-no-ratio-low-dscr-loans-texas | A (DSCR cluster) | db561c1
