@@ -1,3 +1,11 @@
+## 2026-06-23 — styer-site-daily (Tuesday — Title Tags + Meta Descriptions)
+
+- Audited 25 loan-type/product money-page titles + metas. Titles: 0 legacy-entity drift, no superlatives, NMLS #513013 present; titles >60 chars left as-is (intentional keyword+NMLS suffix, shortening indexed titles = HIGH_RISK).
+- **Fixed 4 meta descriptions** (commit `b2241a6`, all live HTTP 200): `mortgage-pre-approval-austin` — dropped off-positioning "**24–48 hours**" speed claim (GOALS: no performance-metric marketing; Decision 2(a) swept "24-hour" variants), reframed to value (158); `products` tightened + on-positioning (154); `1099-only-mortgage-texas` added CTA (156); `one-time-close-construction-loan-texas` added benefit (159).
+- Left `loans/va` (148) + `investor-loans` (149) as-is — within tolerance, no superlative/drift; avoided low-value churn.
+- Re-verified: last Tuesday's (06-16) metas held (self-employed 156, dscr 154, va no-superlative); JSON-LD entity hygiene clean (0 legacy `The Styer Team`/`Mortgage Solutions LP`, both NMLS present); conversion 10/10; sitemap/robots 200.
+- Picked up orphaned concurrent-writer doc drift (06-22 run-logs + CONTEXT/latest/learnings) in the doc commit. NotebookLM advisor script still absent (80th run).
+
 ## 2026-06-23 — styer-blog-writer-weekly: published "No-Ratio & Low-DSCR Loans in Texas" (Tier A, DSCR cluster 5/5, final seeded entry). 1,490 words, 5 approved-source citations (CFPB 1026.3/1026.43, Fannie B3-3.8-01 + B2-1.2-01, FRED TXRVAC), all STEP 4 gates pass, registered in 4 surfaces. Commit db561c1. Live 200.
 
 ## 2026-06-22 — styer-suburb-editor-daily (Round 4 #2): georgetown deepening + median refresh

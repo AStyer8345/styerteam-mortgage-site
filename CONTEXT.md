@@ -16,7 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-18 (styer-site-daily Thursday — rotation: Internal Linking + Funnel Flow): 3 files edited, verified live.** Sitemap/robots **200**; conversion **10/10**. Funnel trace on all 5 form-equipped suburb pages found a real **conversion-tracking break on 3 of them** — austin-area, buda, westlake quick-quote forms had `data-netlify` but **no `action`**, so submissions hit Netlify's default page (bypassing /thank-you → no `generate_lead`/`thank_you_page_view` fire; real leads saw a bare Netlify page). Fixed with `action="/thank-you"` to match known-good cedar-park/kyle. Commit `c519c4e`, deploy `ready`, all 5 verified routing to /thank-you live. Internal linking 3 pages ✅; blog fresh (06-16). Netlify Lighthouse (mobile home): Perf 81 / A11y 100 / BP 100 / SEO 100. NotebookLM script absent (77th). Learning: Netlify post-processing rewrites form attrs (double→single quote, alpha reorder) — verify quote-agnostic + via deploy permalink/API.
+**2026-06-23 (styer-site-daily Tuesday — rotation: Title Tags + Meta Descriptions): 4 metas fixed + deployed live.** Sitemap/robots **200**; conversion **10/10** (HTML-token). Audited 25 loan-type/product money-page titles + metas. Fixed 4 deficient metas (commit `b2241a6`, all live HTTP 200): `mortgage-pre-approval-austin` — **dropped "24–48 hours" speed claim** (off-positioning per GOALS); `products`/`1099-only`/`one-time-close` — tightened to 150–160 + CTAs. Left va (148)/investor (149) — within tolerance. Titles >60 chars left as-is (intentional keyword+NMLS; shortening = HIGH_RISK). Entity hygiene held: 0 legacy drift in JSON-LD names, both NMLS present. Last Tuesday's (06-16) fixes held. Concurrent-writer note: sister-task commits landed today (`5ba13af` daily-opt, `db561c1`/`7faa255` blog publish) — my work distinct/additive. NotebookLM script absent (80th).
+
+*(2026-06-22 Mon — Schema + Google Ads Quality + AEO Entity Audit: clean audit, 0 mutations. 18/18 JSON-LD valid homepage/about/DSCR/round-rock; AEO entity hygiene clean post-transition; homepage extractable answer strong + on-positioning. New LOW: homepage MortgageBroker schema carries personal NMLS 513013 not company 2653540 (Adam-gated). Run-log files left uncommitted — picked up 06-23.)*
+
+*(2026-06-18 Thu — Internal Linking + Funnel Flow: found + fixed real conversion-tracking break on 3 of 5 form suburb pages — austin-area/buda/westlake missing `action="/thank-you"`; commit `c519c4e`, all 5 verified live. Netlify Lighthouse mobile home: Perf 81/A11y 100/BP 100/SEO 100.)*
 
 *(2026-06-17 Wed — Georgetown suburb deep-dive audit, on-page excellent 0 defects, 4 JSON-LD valid; surfaced 5/25 inline-form gap; 0 mutations — rolled up.)*
 
@@ -44,6 +48,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | ~~Kyle inline form~~ **DONE 2026-06-09** — Kyle + Cedar Park + 5 money pages all have inline quick-quote forms. POST-DEPLOY: verify 7 new form names in Netlify Forms dashboard + n8n alert coverage | HIGH (Adam) |
 | **NEW 2026-06-02: Brand gold hex drift** — SKILL.md design audit line says `#C9A84C`; style.css `--color-gold` ships `#8B6E24`. Confirm new gold + update SKILL.md, or revert. Likely intentional Phase A brand pivot — needs SKILL.md sync, not site revert | LOW (Adam) |
 | **NEW 2026-06-01: Homepage MortgageBroker vs about LocalBusiness schema** — both schema.org-valid. MortgageBroker more specific. 2-file unification opportunity | LOW (Adam) |
+| **NEW 2026-06-22: Homepage MortgageBroker JSON-LD carries personal NMLS 513013, not company NMLS 2653540** — displayed copy correct (both shown); decide whether business-entity schema should use company NMLS. Low confidence (broker entity named after originator may legitimately ref originator NMLS). Legal/NMLS identifier → Adam-gated | LOW (Adam) |
 | Homepage title pipe normalization (HIGH_RISK deferred) — `index.html` line 6, `Adam Styer NMLS #513013` missing pipe + 107-char title. Adam decision: simple pipe fix or "complicated income" rewrite | MEDIUM (Adam) |
 | ~~/get-preapproved title~~ **RESOLVED 2026-06-09** — now "Fast Pre-Approval", pipes normalized. Hutto title keeps "Same-Day" per Decision 2(a) | — |
 | SKILL.md infrastructure question — should BLOCKERS.md live inside `styerteam-mortgage-site/` instead of `loanos-clone/tasks/seo-sem/`? Current path triggers Vercel deploy of paused LoanOS product | LOW (Adam) |
@@ -68,17 +73,15 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Fri 2026-06-19 = next weekday — rotation: Content Planning + AEO Review.**
+**Wed 2026-06-24 = next weekday — rotation: Suburb Page Deep Dive + AEO.**
 
 Priorities (in order):
 1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute tool paths). **Quote-agnostic** greps (Netlify rewrites attr quotes).
-2. **Blog freshness** — /blog last-post date; if >7 days, flag weekly-content task.
-3. **Blog CTA audit** — every post links to /get-preapproved or /refinance-quote.
-4. **AEO** — pick 2 blog posts: FAQ answers lead with direct answer? H2s phrased as AI-style questions? Extractable summary near top?
-5. **Re-verify yesterday's funnel fix held** — all 5 suburb forms (austin-area/buda/westlake/cedar-park/kyle) still route to /thank-you.
-6. **Adam-gated carries:** suburb inline-form 5/25 batch · fha.html "broker" · AggregateRating policy · homepage title pipe · schema-type unification · gold hex SKILL.md sync.
+2. **Suburb audit** (next by cadence: Cedar Park → Leander). styer-site-daily = AUDIT only (inline form? FAQPage? BreadcrumbList? city H1? internal links to /get-preapproved + /calculators? answer-first AEO FAQ?). On-page deepening is styer-suburb-editor-daily's domain — don't duplicate its mutations.
+3. **Re-verify** the 4 metas shipped 06-23 held + entity hygiene held.
+4. **Adam-gated carries:** suburb inline-form 5/25 batch · fha.html "broker" · AggregateRating policy · homepage title pipe · schema-type unification · gold hex SKILL.md sync · homepage MortgageBroker NMLS (513013 vs 2653540).
 
-**DONE 2026-06-18:** Steps 1–2 (sitemap/conversion 10/10); Thursday funnel trace — found + fixed conversion-tracking break on 3 of 5 form-equipped suburb pages (austin-area/buda/westlake missing `action="/thank-you"`), all 5 verified live; internal linking 3 pages ✅; blog fresh; SEO/SEM clean.
+**DONE 2026-06-23 (Tue):** Steps 1–2 (sitemap/conversion 10/10); Tuesday rotation — 25 money-page titles/metas audited, 4 metas fixed + deployed live (commit `b2241a6`), "24–48 hours" speed claim removed from pre-approval page; entity hygiene held; last Tuesday fixes held; SEO/SEM BLOCKERS clean; loanos-clone untouched.
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 
