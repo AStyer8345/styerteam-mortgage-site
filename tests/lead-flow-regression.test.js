@@ -11,6 +11,7 @@ const ratesJsonUpdater = fs.readFileSync('netlify/functions/lib/rates-json-updat
 const austinRates = fs.readFileSync('austin-mortgage-rates.html', 'utf8');
 const homepage = fs.readFileSync('index.html', 'utf8');
 const scenarioPage = fs.readFileSync('scenario.html', 'utf8');
+const nonQmPage = fs.readFileSync('non-qm-loans.html', 'utf8');
 const stylesheet = fs.readFileSync('style.css', 'utf8');
 
 test('quick quote redirect does not put contact details in the URL', () => {
@@ -31,6 +32,13 @@ test('legacy hero fallback does not bind modern quick-contact forms twice', () =
 test('FAQ accordions toggle hidden panels open and closed', () => {
   assert.match(script, /nextElementSibling\.hidden = true/);
   assert.match(script, /nextElementSibling\.hidden = isActive/);
+});
+
+test('Non-QM quote form uses primary notification capture path', () => {
+  assert.match(nonQmPage, /<form[^>]+name="non-qm-quote"[^>]+class="[^"]*\bjs-quick-contact\b[^"]*"/);
+  assert.match(nonQmPage, /<input type="hidden" name="form-name" value="non-qm-quote">/);
+  assert.match(nonQmPage, /\/script\.js\?v=20260627-leads/);
+  assert.match(script, /'form-name': formData\.get\('form-name'\) \|\| form\.getAttribute\('name'\) \|\| ''/);
 });
 
 test('homepage leads with lightweight scenario contact paths before the full application', () => {
