@@ -35,7 +35,7 @@ test('homepage leads with lightweight scenario contact paths before the full app
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
   assert.match(homepage, /<a href="#contact-form"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*>Send Your Scenario<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Book 15-Min Call', 'Email Adam']);
+  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Book 15-Min Call']);
   assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Book 15-Min Call', 'Email Adam']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.match(homepage, /name="quick-scenario"/);

@@ -38,3 +38,11 @@ header.scrolled .nav-links a.nav-phone:hover{color:var(--color-gold)}
 /* FIX 2026-06-09: bare `header` selector made inner article/calculator <header> elements sticky too,
    so blog post titles pinned over the site nav on scroll. Inner headers must flow normally. */
 main header,article header{position:static;z-index:auto}
+
+/* Homepage hero simplification: keep the first screen focused and prevent proof text clipping. */
+.hero>.container{padding-top:var(--spacing-lg);padding-bottom:var(--spacing-lg)}
+.hero-glass-card.hero-glass-card-2col{max-width:650px}
+.hero-glass-card-2col .hero-glass-row{display:block}
+.hero h1{font-size:clamp(2.35rem,5vw,4.35rem);line-height:1.05;margin-bottom:.8rem}
+.hero-subtitle{font-size:clamp(1rem,1.6vw,1.25rem);line-height:1.45;max-width:620px}
+.hero-rating-chip{font-size:.78rem;padding:.32rem .72rem;margin-bottom:.85rem;max-width:100%}

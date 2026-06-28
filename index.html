@@ -59,12 +59,12 @@
     .btn-primary{background-color:#F2C840;color:#0D1F3C;position:relative;overflow:hidden}.btn-hero-ghost{background-color:transparent;color:#fff;border:2px solid rgba(255,255,255,0.85)}.btn-hero-ghost:hover{background-color:rgba(255,255,255,0.1)}
     .hero{position:relative;width:100%;height:80vh;max-height:800px;min-height:420px;display:flex;align-items:center;overflow:hidden;color:var(--color-white);background-image:url('assets/hero-bg.webp');background-size:cover;background-position:center 20%}
     .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,31,63,0.88) 0%,rgba(10,31,63,0.72) 38%,rgba(10,31,63,0.30) 65%,rgba(10,31,63,0.10) 100%);pointer-events:none;z-index:1}
-    .hero>.container{position:relative;z-index:3;width:100%;max-width:1280px;margin-left:0;margin-right:auto;padding-top:var(--spacing-2xl);padding-bottom:var(--spacing-2xl)}
-    .hero-glass-card{max-width:620px;width:100%;padding:0;position:relative;z-index:4}
+    .hero>.container{position:relative;z-index:3;width:100%;max-width:1280px;margin-left:0;margin-right:auto;padding-top:var(--spacing-lg);padding-bottom:var(--spacing-lg)}
+    .hero-glass-card{max-width:650px;width:100%;padding:0;position:relative;z-index:4}
     .hero-col-authority{display:flex;flex-direction:column;align-items:flex-start;gap:0}.hero-authority-inner{max-width:620px;margin-bottom:1.25rem}
-    .hero h1{color:#fff;font-size:var(--font-size-5xl);line-height:1.18;margin-top:0;margin-bottom:0.65rem;text-shadow:0 2px 24px rgba(0,0,0,0.55)}
-    .hero-subtitle{font-size:var(--font-size-lg);color:rgba(255,255,255,0.94);line-height:1.5;margin-bottom:var(--spacing-md);text-shadow:0 1px 12px rgba(0,0,0,0.45)}
-    .hero-rating-chip{display:inline-flex;align-items:center;gap:0.45rem;background:rgba(201,168,76,0.18);border:1px solid rgba(242,200,64,0.5);color:#fff;font-size:0.8rem;font-weight:600;padding:0.35rem 0.8rem;border-radius:100px;margin-bottom:1rem;letter-spacing:0.01em}
+    .hero h1{color:#fff;font-size:clamp(2.35rem,5vw,4.35rem);line-height:1.05;margin-top:0;margin-bottom:0.8rem;text-shadow:0 2px 24px rgba(0,0,0,0.55)}
+    .hero-subtitle{font-size:clamp(1rem,1.6vw,1.25rem);color:rgba(255,255,255,0.94);line-height:1.45;margin-bottom:var(--spacing-md);text-shadow:0 1px 12px rgba(0,0,0,0.45);max-width:620px}
+    .hero-rating-chip{display:inline-flex;align-items:center;gap:0.45rem;background:rgba(201,168,76,0.18);border:1px solid rgba(242,200,64,0.5);color:#fff;font-size:0.78rem;font-weight:600;padding:0.32rem 0.72rem;border-radius:100px;margin-bottom:0.85rem;letter-spacing:0.01em;max-width:100%}
     .hero-ctas{display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;justify-content:flex-start;margin-bottom:0.5rem}
     .hero-cta-btn{width:190px;height:46px;font-size:0.875rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0}
     .hero-call-link{margin:0;font-size:var(--font-size-sm)}.hero-call-link-a{display:inline-flex;align-items:center;gap:0.35rem;color:rgba(255,255,255,0.85);text-decoration:none}
@@ -363,15 +363,14 @@
               <div class="hero-authority-inner">
                 <div class="hero-rating-chip" aria-label="5.0 Google rating, 4.98 Zillow rating, 137+ total client reviews">
                   <svg class="star-svg" width="13" height="13" viewBox="0 0 24 24" fill="#FCD34D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-                  5.0 Google · 4.98 Zillow · 137+ client reviews
+                  5.0 Google · 137+ client reviews
                 </div>
-                <h1>Austin private wealth mortgage bank for self-employed, investor, and complex-income borrowers.</h1>
-                <p class="hero-subtitle">Bank statement, DSCR, jumbo, asset-based, and non-QM options for borrowers whose real financial picture does not fit a basic bank box. I shop 40+ wholesale lenders and give you the cleanest path before a full application. NMLS #513013.</p>
+                <h1>Austin mortgage options for complex borrowers.</h1>
+                <p class="hero-subtitle">Self-employed, investor, jumbo, DSCR, and asset-based loans. Send the short version and I will map the cleanest path before a full application.</p>
               </div>
               <div class="hero-ctas">
                 <a href="#contact-form" class="btn btn-primary hero-cta-btn">Send Your Scenario</a>
                 <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-hero-ghost hero-cta-btn" target="_blank" rel="noopener">Book 15-Min Call</a>
-                <a href="mailto:adam.styer@hypersmart.loan?subject=Mortgage%20scenario" class="btn btn-hero-ghost hero-cta-btn">Email Adam</a>
               </div>
               <p class="hero-call-link" style="margin-top:0.5rem;">
                 <a href="tel:+15129566010" class="hero-call-link-a">
@@ -379,18 +378,6 @@
                   Or call (512) 956-6010
                 </a>
               </p>
-            </div>
-
-            <div class="hero-col hero-col-form">
-              <div class="hero-next-steps" aria-label="What happens next">
-                <p class="hero-next-steps-title">What happens next</p>
-                <ol>
-                  <li>Send the short version: goal, contact info, and what is unusual about the file.</li>
-                  <li>I review the scenario and compare conventional, Non-QM, jumbo, DSCR, and other paths.</li>
-                  <li>You get the cleanest next step: call, document list, or Secure Portal link if it is time.</li>
-                </ol>
-                <p class="hero-next-steps-note">Prefer a conversation first? Book 15 minutes or call me directly.</p>
-              </div>
             </div>
           </div>
 
