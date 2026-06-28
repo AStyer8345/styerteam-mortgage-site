@@ -291,6 +291,16 @@
   })();
   </script>
   <!-- End Google Tag Manager -->
+
+  <!-- Homepage surface tuning: deepen the light bands so the page isn't a white wash,
+       and give white cards a real edge so they read as distinct surfaces.
+       Scoped to the homepage; double-class selectors win over the async global sheet. -->
+  <style>
+    section.bg-light { background-color: #E9EDF3; }
+    .card.card { border: 1px solid #DCE1E9; }
+    .testimonial-marquee-card.testimonial-marquee-card { border: 1px solid #DCE1E9; }
+    .quick-contact-card.quick-contact-card { background: var(--color-white); border: 1px solid #DCE1E9; }
+  </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
