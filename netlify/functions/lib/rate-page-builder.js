@@ -23,6 +23,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escapeHtml(title)} | Adam Styer | HyperSmart Home Loans</title>
   <meta name="description" content="${escapeHtml(description)}">
+  <link rel="canonical" href="https://styermortgage.com/rates/${date}.html">
 
   <meta name="robots" content="noindex, nofollow">
 
@@ -336,8 +337,7 @@ ${rateTable}
         <div class="footer-section">
           <h4>Awards &amp; Recognition</h4>
           <p>
-            &#11088; 5.0 Stars &middot; 91 Google Reviews<br>
-            &#11088; 4.98 Stars &middot; 45 Zillow Reviews
+            &#11088; 5.0 Google &middot; 4.98 Zillow<br>137+ Reviews &middot; Licensed in Texas
           </p>
           <div class="social-links">
             <a href="https://www.facebook.com/styerteam/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
