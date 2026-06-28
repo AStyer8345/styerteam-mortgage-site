@@ -28,6 +28,11 @@ test('legacy hero fallback does not bind modern quick-contact forms twice', () =
   assert.match(script, /form\[data-netlify="true"\]:not\(\.js-quick-contact\)/);
 });
 
+test('FAQ accordions toggle hidden panels open and closed', () => {
+  assert.match(script, /nextElementSibling\.hidden = true/);
+  assert.match(script, /nextElementSibling\.hidden = isActive/);
+});
+
 test('homepage leads with lightweight scenario contact paths before the full application', () => {
   const heroCtas = homepage.match(/<div class="hero-ctas">([\s\S]*?)<\/div>/)?.[1] || '';
   const heroButtonLabels = Array.from(heroCtas.matchAll(/class="[^"]*\bhero-cta-btn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);

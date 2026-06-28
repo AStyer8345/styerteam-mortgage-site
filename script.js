@@ -188,6 +188,7 @@ function initAccordion() {
           btn.classList.remove('active');
           btn.setAttribute('aria-expanded', 'false');
           btn.nextElementSibling.classList.remove('active');
+          btn.nextElementSibling.hidden = true;
         }
       });
     }
@@ -196,6 +197,7 @@ function initAccordion() {
     button.classList.toggle('active', !isActive);
     button.setAttribute('aria-expanded', String(!isActive));
     button.nextElementSibling.classList.toggle('active', !isActive);
+    button.nextElementSibling.hidden = isActive;
   });
 
   // Keyboard navigation within accordions
