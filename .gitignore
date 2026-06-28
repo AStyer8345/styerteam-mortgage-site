@@ -16,3 +16,4 @@ linkedin-oauth.js
 
 # Local Netlify folder
 .netlify
+.superpowers/
