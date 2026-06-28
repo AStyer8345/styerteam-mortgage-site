@@ -423,6 +423,12 @@ function showQuickContactError(form) {
   errorMessage.textContent = 'Something went wrong. Please try again or call Adam at (512) 956-6010.';
 }
 
+function getScenarioSituation(formData) {
+  const scenarioType = formData.get('scenario_type') || '';
+  const notes = formData.get('situation') || formData.get('notes') || '';
+  return scenarioType ? `Scenario type: ${scenarioType}\n\n${notes}` : notes;
+}
+
 async function submitForm(form) {
   const formData = new FormData(form);
   const fullName = (formData.get('name') || '').trim();
@@ -457,7 +463,7 @@ async function submitForm(form) {
         timeline: formData.get('timeline') || '',
         lender_status: formData.get('lender_status') || '',
         documentation_issue: formData.get('documentation_issue') || '',
-        situation: formData.get('situation') || formData.get('notes') || '',
+        situation: getScenarioSituation(formData),
         tcpa_consent: formData.get('tcpa_consent') === 'on',
         sms_opt_in: formData.get('sms_opt_in') === 'on',
         page_url: window.location.href,
@@ -485,6 +491,34 @@ async function submitForm(form) {
 function initFormValidation() {
   // Bind every quick-contact form on the page (hero compact form + full form).
   document.querySelectorAll('.js-quick-contact').forEach(bindQuickContactForm);
+}
+
+function initScenarioChooser() {
+  const chooser = document.querySelector('.scenario-chooser');
+  const form = document.getElementById('quick-scenario-form');
+  if (!chooser || !form) return;
+
+  const buttons = Array.from(chooser.querySelectorAll('.scenario-choice'));
+  const scenarioField = form.querySelector('[name="scenario_type"]');
+  const situationField = form.querySelector('[name="situation"], textarea');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      buttons.forEach((item) => item.classList.remove('is-selected'));
+      button.classList.add('is-selected');
+
+      const scenarioType = button.dataset.scenarioType || '';
+      const prompt = button.dataset.scenarioPrompt || '';
+      if (scenarioField) scenarioField.value = scenarioType;
+      if (situationField && prompt) situationField.setAttribute('placeholder', prompt);
+
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const firstField = form.querySelector('input:not([type="hidden"]), textarea, select');
+      if (firstField) {
+        window.setTimeout(() => firstField.focus({ preventScroll: true }), 350);
+      }
+    });
+  });
 }
 
 function bindQuickContactForm(form) {
@@ -605,7 +639,7 @@ function initHeroQuickForm() {
           timeline: formData.get('timeline') || '',
           lender_status: formData.get('lender_status') || '',
           documentation_issue: formData.get('documentation_issue') || '',
-          situation: formData.get('situation') || formData.get('notes') || '',
+          situation: getScenarioSituation(formData),
           tcpa_consent: formData.get('tcpa_consent') === 'on',
           sms_opt_in: formData.get('sms_opt_in') === 'on',
           page_url: window.location.href,
@@ -904,6 +938,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordion();
   initTabs();
   initFormValidation();
+  initScenarioChooser();
   initHeroQuickForm();
   // initQuickContactScroll(); — removed, no longer needed
   initTestimonialFilter();

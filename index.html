@@ -549,8 +549,49 @@
             <a href="mailto:adam.styer@hypersmart.loan?subject=Mortgage%20scenario" class="btn btn-outline">Email Adam</a>
           </div>
           <div style="margin:var(--spacing-xl) 0;border-top:1px solid var(--color-border);"></div>
+          <div class="scenario-chooser" aria-labelledby="scenario-chooser-title">
+            <div class="scenario-chooser-header">
+              <p class="eyebrow">Start with the file, not the application</p>
+              <h3 id="scenario-chooser-title">What kind of mortgage scenario are we solving?</h3>
+              <p>Pick the closest lane. If it is messy, that is usually where I can help the most.</p>
+            </div>
+            <div class="scenario-chooser-grid" role="list">
+              <button type="button" class="scenario-choice is-primary" data-scenario-type="Self-employed / business owner" data-scenario-prompt="Tell me how you earn: business type, pay structure, bank statements, K-1, 1099, P&amp;L, or anything that makes tax-return income look lower than reality." role="listitem">
+                <span class="scenario-choice-label">Core niche</span>
+                <strong>Self-employed / business owner</strong>
+                <span>Bank statements, K-1, 1099, P&amp;L, S-corp, or write-off-heavy income.</span>
+              </button>
+              <button type="button" class="scenario-choice is-primary" data-scenario-type="Investor / DSCR" data-scenario-prompt="Tell me about the property: purchase or cash-out, long-term rental or STR, estimated rent, loan amount, and if the DSCR is below 1.0." role="listitem">
+                <span class="scenario-choice-label">Core niche</span>
+                <strong>Investor / DSCR</strong>
+                <span>Rental, STR, cash-out, LLC vesting, low DSCR, or no personal income docs.</span>
+              </button>
+              <button type="button" class="scenario-choice is-primary" data-scenario-type="Complex income / high net worth" data-scenario-prompt="Tell me what makes the file unusual: assets, RSUs, trust income, multiple entities, jumbo size, recent liquidity event, or a bank decline." role="listitem">
+                <span class="scenario-choice-label">Core niche</span>
+                <strong>Complex income / high net worth</strong>
+                <span>Asset depletion, jumbo, trusts, RSUs, multiple entities, or bank declined.</span>
+              </button>
+              <button type="button" class="scenario-choice" data-scenario-type="Buying a primary home" data-scenario-prompt="Tell me the purchase price range, location, down payment, timeline, and whether you are using conventional, FHA, VA, or jumbo financing." role="listitem">
+                <span class="scenario-choice-label">Traditional lane</span>
+                <strong>Buying a primary home</strong>
+                <span>Conventional, FHA, VA, jumbo, first-time buyer, or move-up purchase.</span>
+              </button>
+              <button type="button" class="scenario-choice" data-scenario-type="Refinance or cash-out" data-scenario-prompt="Tell me your current loan balance, estimated home value, goal, and whether this is rate/payment, cash-out, debt consolidation, or renovation money." role="listitem">
+                <span class="scenario-choice-label">Traditional lane</span>
+                <strong>Refinance or cash-out</strong>
+                <span>Lower payment, debt consolidation, home improvements, or cash-out options.</span>
+              </button>
+              <button type="button" class="scenario-choice" data-scenario-type="Not sure where I fit" data-scenario-prompt="Tell me the short version: what you are trying to do, what feels unusual, and whether another lender has already looked at it." role="listitem">
+                <span class="scenario-choice-label">Fallback</span>
+                <strong>Not sure where I fit</strong>
+                <span>Send the short version. I will route it before asking for a full application.</span>
+              </button>
+            </div>
+            <p class="scenario-chooser-note">Choose one to tailor the form below, or skip straight to the short form.</p>
+          </div>
           <form id="quick-scenario-form" name="quick-scenario" class="js-quick-contact" novalidate data-netlify="true">
             <input type="hidden" name="form-name" value="quick-scenario">
+            <input type="hidden" name="scenario_type" id="scenario-type-field" value="">
             <div class="quick-contact-row">
               <div class="form-field">
                 <label for="qs-name">Name</label>

@@ -39,6 +39,16 @@ test('homepage leads with lightweight scenario contact paths before the full app
   assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Book 15-Min Call', 'Email Adam']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.match(homepage, /name="quick-scenario"/);
+  assert.match(homepage, /class="[^"]*\bscenario-chooser\b[^"]*"/);
+  assert.match(homepage, /Self-employed \/ business owner/);
+  assert.match(homepage, /Investor \/ DSCR/);
+  assert.match(homepage, /Complex income \/ high net worth/);
+  assert.match(homepage, /Buying a primary home/);
+  assert.match(homepage, /Refinance or cash-out/);
+  assert.match(homepage, /Not sure where I fit/);
+  assert.match(homepage, /name="scenario_type"/);
+  assert.match(script, /function initScenarioChooser\(\)/);
+  assert.match(script, /scenario_type/);
   assert.match(homepage, /Tell me about the scenario/);
   assert.match(homepage, /Email Adam Instead/);
   assert.match(homepage, /Already talked with Adam or ready for the Secure Portal\?/);
