@@ -54,7 +54,9 @@ test('homepage leads with lightweight scenario contact paths before the full app
   assert.match(homepage, /name="quick-scenario"/);
   assert.match(homepage, /Tell me about the scenario/);
   assert.match(homepage, /Email Adam Instead/);
-  assert.match(homepage, /Already talked with Adam or ready for the Secure Portal\?/);
+  assert.match(homepage, /Answer a few questions in my secure online portal/);
+  assert.match(homepage, /usually takes 7-9 minutes/);
+  assert.match(homepage, /make our first call more efficient/);
   assert.match(homepage, /<a href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*target="_blank"[^>]*>Open Secure Portal<\/a>/);
   assert.doesNotMatch(homepage, /Start Full Loan Application/);
   assert.doesNotMatch(homepage, /Start Loan Application/);
@@ -71,18 +73,31 @@ test('homepage keeps Adam cutout visible on desktop hero', () => {
 });
 
 test('scenario page uses portal language and keeps a short note fallback', () => {
-  assert.match(scenarioPage, /Start Here/);
-  assert.match(scenarioPage, /Start in the Secure Portal/);
+  assert.match(scenarioPage, /Choose the easiest way to start/);
+  assert.match(scenarioPage, /Send Adam the short version/);
+  assert.match(scenarioPage, /Answer a few questions in my secure online portal/);
+  assert.match(scenarioPage, /usually takes 7-9 minutes/);
+  assert.match(scenarioPage, /make our first call more efficient/);
   assert.match(scenarioPage, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
   assert.match(scenarioPage, /id="scenario-note-form"/);
   assert.match(scenarioPage, /name="scenario-note"/);
-  assert.match(scenarioPage, /Send the short version/);
   assert.match(scenarioPage, /Email Adam Instead/);
   assert.doesNotMatch(scenarioPage, /id="form-scenario"/);
   assert.doesNotMatch(scenarioPage, /Start Secure Loan Application/);
   assert.doesNotMatch(scenarioPage, /Start Your Loan Application/);
+  assert.doesNotMatch(scenarioPage, /Start the full application/);
   assert.doesNotMatch(scenarioPage, /lead_type: 'scenario_review'/);
   assert.doesNotMatch(scenarioPage, /"@type": "FAQPage"/);
+});
+
+test('thank-you page offers portal as an efficient next step without application-first wording', () => {
+  assert.match(thankYou, /Answer a few questions in my secure online portal/);
+  assert.match(thankYou, /usually takes 7-9 minutes/);
+  assert.match(thankYou, /first call more efficient/);
+  assert.match(thankYou, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+  assert.match(thankYou, /type === 'quick-contact'[\s\S]*ty-alt-paths/);
+  assert.doesNotMatch(thankYou, /Start the full application/);
+  assert.doesNotMatch(thankYou, /full 1003/);
 });
 
 test('thank-you page lets GTM load the Google Ads library', () => {
