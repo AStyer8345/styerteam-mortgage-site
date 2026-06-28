@@ -38,19 +38,3 @@ header.scrolled .nav-links a.nav-phone:hover{color:var(--color-gold)}
 /* FIX 2026-06-09: bare `header` selector made inner article/calculator <header> elements sticky too,
    so blog post titles pinned over the site nav on scroll. Inner headers must flow normally. */
 main header,article header{position:static;z-index:auto}
-
-.scenario-chooser{margin:1.25rem 0 1.5rem;padding:1.25rem;border:1px solid rgba(15,36,64,.12);border-radius:8px;background:#fff;box-shadow:0 12px 30px rgba(15,36,64,.06)}
-.scenario-chooser-header{max-width:720px;margin-bottom:1rem}
-.scenario-chooser-header h3{margin:.25rem 0 .35rem;font-size:1.35rem;line-height:1.2;color:var(--color-navy)}
-.scenario-chooser-header p:last-child,.scenario-chooser-note{color:var(--color-gray);margin:0}
-.scenario-chooser-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
-.scenario-choice{appearance:none;text-align:left;border:1px solid rgba(15,36,64,.14);border-radius:8px;background:#fff;padding:1rem;display:flex;flex-direction:column;gap:.4rem;min-height:150px;cursor:pointer;color:var(--color-text);transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
-.scenario-choice:hover,.scenario-choice:focus-visible{border-color:var(--color-gold);box-shadow:0 10px 24px rgba(15,36,64,.10);transform:translateY(-1px);outline:none}
-.scenario-choice.is-selected{border-color:var(--color-gold);box-shadow:0 0 0 3px rgba(212,175,55,.18)}
-.scenario-choice.is-primary{background:linear-gradient(180deg,#fff 0%,#fbf8ef 100%)}
-.scenario-choice-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#7A5F1F}
-.scenario-choice strong{font-size:1rem;line-height:1.2;color:var(--color-navy)}
-.scenario-choice span:last-child{font-size:.9rem;line-height:1.45;color:var(--color-gray)}
-.scenario-chooser-note{font-size:.9rem;margin-top:.85rem}
-@media(max-width:900px){.scenario-chooser-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:620px){.scenario-chooser{padding:1rem}.scenario-chooser-grid{grid-template-columns:1fr}.scenario-choice{min-height:auto}.scenario-chooser-header h3{font-size:1.15rem}}

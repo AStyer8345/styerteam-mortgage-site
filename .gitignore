@@ -5,7 +5,6 @@ ziEOo8Wy
 .DS_Store
 Thumbs.db
 node_modules/
-.superpowers/
 package-lock.json
 .claude/*
 # Track shared skills so they version-control with the repo
