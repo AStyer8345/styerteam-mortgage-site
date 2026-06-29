@@ -16,7 +16,9 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-25 (styer-site-daily Thursday — rotation: Internal Linking + Funnel Flow): clean audit, 0 mutations.** Sitemap/robots **200**; conversion **10/10** (HTML-token). Full funnel traced end-to-end, all hops healthy: homepage `#contact-form` quick form → `generate_lead` + `script.js:476-482` redirect to `/thank-you?type=quick-contact`; Ads LPs → `/thank-you`; contact.html → `action="/thank-you"` + `lead_type:'contact_form'`; 3 complicated-income money pages (non-qm hub, dscr-austin, self-employed) each carry inline form→/thank-you + /scenario + Calendly and far exceed the 2+ internal-link bar. **No funnel leak** (contrast 06-18). Money pages NOT linking /get-preapproved is BY DESIGN (Decision 3 — organic funnels via /scenario+inline form). Design spot-check clean (non-qm + leander). Backlog: no site-eligible item. **⚠️ Wednesday 06-24 (Suburb Deep Dive) scheduler no-fire — skipped.** NotebookLM script absent (81st).
+**2026-06-29 (styer-site-daily Monday — rotation: Schema + Google Ads Quality + AEO Entity Audit): 1 LOW_RISK schema fix shipped + verified live.** Sitemap/robots **200**; conversion **10/10** (HTML-token). **16/16 JSON-LD valid** across homepage/about/dscr/pflugerville. AEO entity consistency homepage↔about clean (Person name/title + MortgageBroker name consistent; aggregateRating homepage-only BY DESIGN; entity-name hygiene 0 legacy). **Real gap found + fixed:** about.html Person `sameAs` was missing NMLS Consumer Access (513013) + Yelp — both present on homepage; added to the E-E-A-T anchor page (commit `265cbb7`, verified live ~160s). Homepage H1 on-positioning ("complex borrowers"); no superlative BY DESIGN. Design spot-check clean (homepage + dscr). BLOCKERS clean; loanos-clone untouched. **⚠️ Fri 06-26 / weekend = no run logs (scheduler no-fire + weekend).** NotebookLM script absent (82nd).
+
+*(2026-06-25 Thu — Internal Linking + Funnel Flow: clean audit, 0 mutations. Sitemap/robots 200; conversion 10/10. Full funnel traced end-to-end, all hops healthy (homepage quick form → /thank-you; Ads LPs → /thank-you; contact.html + 3 money pages inline form→/thank-you, each far exceed 2+ internal-link bar). No funnel leak. Money pages not linking /get-preapproved is BY DESIGN (Decision 3). Wed 06-24 Suburb Deep Dive scheduler no-fire.)*
 
 *(2026-06-23 Tue — Title Tags + Meta Descriptions: 4 deficient metas fixed + deployed live, commit `b2241a6`; `mortgage-pre-approval-austin` dropped "24–48 hours" speed claim; entity hygiene held; last Tuesday fixes held.)*
 
@@ -70,20 +72,20 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | ~~Sitewide nav inconsistency~~ **CLOSED 2026-06-09 evening** — canonical header on 148 pages + 4 generator templates; bare-header sticky CSS bug fixed (blog scroll overlap) | — |
 | Suburb/footer cosmetic carries (LOW) — footer `/prequal.html` parity, suburb `/calculators` linking gap, suburb `About Adam` standalone | LOW (Adam) |
 | 5 of 6 new HNW/non-QM pages missing NMLS Consumer Access `sameAs` in Article schema | LOW |
-| Scheduler reliability — recent no-fires: **Wed 2026-06-24** (Suburb Deep Dive skipped), Fri 06-19; earlier Wed 5-20/5-27, Fri 5-29, Sat 5-30 | HIGH (Adam) |
+| Scheduler reliability — recent no-fires: **Fri 2026-06-26 + weekend (no run logs)**, Wed 06-24 (Suburb Deep Dive skipped), Fri 06-19; earlier Wed 5-20/5-27, Fri 5-29, Sat 5-30 | HIGH (Adam) |
 | ~~thank-you.html performance claims~~ **RESOLVED 2026-06-09** per Decision 2(a) — now "one business day" phrasing | — |
 
 ## What's Next
 
-**Fri 2026-06-26 = next weekday — rotation: Content Planning + AEO Review.**
+**Tue 2026-06-30 = next weekday — rotation: Title Tags + Meta Descriptions.**
 
 Priorities (in order):
-1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute tool paths). **Quote-agnostic** greps (Netlify rewrites attr quotes).
-2. **Friday content/AEO:** `/blog` last-post date (06-23 = fresh; flag only if >7d by Fri); blog CTA audit (every post → /get-preapproved or /refinance-quote or inline form); AEO review 2 blog posts (answer-first FAQ, question-phrased H2s, extractable summary near top).
-3. **Wednesday 06-24 gap:** suburb deep-dive (Cedar Park → Leander) is styer-suburb-editor-daily's domain — confirm that task fired even though styer-site-daily's Wed slot skipped.
+1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute tool paths, `curl -L`). **Quote-agnostic** greps (Netlify rewrites attr quotes).
+2. **Tuesday titles/metas:** audit loan-type + money-page titles (`[Loan Type] in Austin TX | Adam Styer | NMLS #513013`); metas 150–160 chars w/ location + product + CTA; fix missing/duplicate/generic/superlative. Confirm last Tuesday fixes held (06-23 `b2241a6`, 06-16 `7bafb4e`).
+3. **Blog freshness watch:** latest post 06-23 = 7d by Tue — may warrant a freshness flag to styer-content-weekly if Fri 06-26 Content/AEO rotation never ran.
 4. **Adam-gated carries:** suburb inline-form 5/25 batch · fha.html "broker" · AggregateRating policy · homepage title pipe · schema-type unification · gold hex SKILL.md sync · homepage MortgageBroker NMLS (513013 vs 2653540).
 
-**DONE 2026-06-25 (Thu):** Steps 1–2 (sitemap/conversion 10/10); Thursday rotation — 3 money pages internal-linking audited (each far exceed 2+ bar), full funnel traced end-to-end (all hops fire generate_lead + land /thank-you), contact.html + thank-you.html verified, design spot-check clean; 0 mutations (clean audit day); SEO/SEM BLOCKERS clean; loanos-clone untouched. Surfaced Wed 06-24 scheduler no-fire.
+**DONE 2026-06-29 (Mon):** Steps 1–2 (sitemap/conversion 10/10); Monday rotation — 16/16 JSON-LD valid (homepage/about/dscr/pflugerville), AEO entity consistency homepage↔about verified, entity-name hygiene clean; **found + fixed about.html Person `sameAs` NMLS Consumer Access + Yelp gap** (commit `265cbb7`, verified live); design spot-check clean; BLOCKERS clean; loanos-clone untouched. Surfaced Fri 06-26/weekend scheduler no-fire.
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 
