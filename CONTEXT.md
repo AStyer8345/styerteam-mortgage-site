@@ -16,7 +16,9 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-29 (styer-site-daily Monday — rotation: Schema + Google Ads Quality + AEO Entity Audit): 1 LOW_RISK schema fix shipped + verified live.** Sitemap/robots **200**; conversion **10/10** (HTML-token). **16/16 JSON-LD valid** across homepage/about/dscr/pflugerville. AEO entity consistency homepage↔about clean (Person name/title + MortgageBroker name consistent; aggregateRating homepage-only BY DESIGN; entity-name hygiene 0 legacy). **Real gap found + fixed:** about.html Person `sameAs` was missing NMLS Consumer Access (513013) + Yelp — both present on homepage; added to the E-E-A-T anchor page (commit `265cbb7`, verified live ~160s). Homepage H1 on-positioning ("complex borrowers"); no superlative BY DESIGN. Design spot-check clean (homepage + dscr). BLOCKERS clean; loanos-clone untouched. **⚠️ Fri 06-26 / weekend = no run logs (scheduler no-fire + weekend).** NotebookLM script absent (82nd).
+**2026-06-30 (styer-site-daily Tuesday — rotation: Title Tags + Meta Descriptions): clean audit, 0 site mutations.** Sitemap/robots **200**; conversion **10/10** (HTML-token, action→/thank-you both LPs). Audited 25 money/loan titles+metas — zero superlatives in titles (prior sweeps held), 23/25 metas in 150–160; the two <150 (va 148, investor-loans 149) are complete + on-positioning → padding = churn, left. **Re-Verify Gate:** loans/va body "Lowest rates — VA typically 0.25-0.50% lower than conventional" = factual hedged comparative (benign), NOT the banned "lowest rates available" puffery 06-16 swept; verified live. Prior Tuesday fixes held (06-23 `b2241a6` 24–48hr gone; 06-16 `7bafb4e` va/self-emp/dscr in-band). Blog latest genuinely **06-23 = 7d** (mtime ≠ datePublished; `ls -t` artifact reconciled) → soft heads-up to styer-content-weekly. BLOCKERS+backlog clean; loanos-clone untouched. Design spot-check clean (homepage+jumbo). NotebookLM script absent (83rd). **⚠️ Fri 06-26 Content/AEO no-fire.**
+
+*(2026-06-29 Mon — Schema + AEO Entity Audit: 1 LOW_RISK fix shipped + verified live. 16/16 JSON-LD valid (homepage/about/dscr/pflugerville); AEO entity consistency homepage↔about clean. about.html Person `sameAs` was missing NMLS Consumer Access (513013) + Yelp — added to E-E-A-T anchor page, commit `265cbb7`, verified live. Design spot-check clean; BLOCKERS clean.)*
 
 *(2026-06-25 Thu — Internal Linking + Funnel Flow: clean audit, 0 mutations. Sitemap/robots 200; conversion 10/10. Full funnel traced end-to-end, all hops healthy (homepage quick form → /thank-you; Ads LPs → /thank-you; contact.html + 3 money pages inline form→/thank-you, each far exceed 2+ internal-link bar). No funnel leak. Money pages not linking /get-preapproved is BY DESIGN (Decision 3). Wed 06-24 Suburb Deep Dive scheduler no-fire.)*
 
@@ -77,15 +79,15 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Tue 2026-06-30 = next weekday — rotation: Title Tags + Meta Descriptions.**
+**Wed 2026-07-01 = next weekday — rotation: Suburb Page Deep Dive + AEO.** Rotation cursor: Round Rock → Cedar Park → Leander → Georgetown → Pflugerville → Kyle → San Marcos → Westlake → Buda.
 
 Priorities (in order):
 1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute tool paths, `curl -L`). **Quote-agnostic** greps (Netlify rewrites attr quotes).
-2. **Tuesday titles/metas:** audit loan-type + money-page titles (`[Loan Type] in Austin TX | Adam Styer | NMLS #513013`); metas 150–160 chars w/ location + product + CTA; fix missing/duplicate/generic/superlative. Confirm last Tuesday fixes held (06-23 `b2241a6`, 06-16 `7bafb4e`).
-3. **Blog freshness watch:** latest post 06-23 = 7d by Tue — may warrant a freshness flag to styer-content-weekly if Fri 06-26 Content/AEO rotation never ran.
+2. **Wednesday suburb deep-dive:** pick next suburb in rotation; verify inline lead form + FAQPage + BreadcrumbList + city-specific H1; internal links to /get-preapproved + /calculators; AEO answer-first first paragraph + conversational H2s.
+3. **Blog freshness ESCALATION:** latest post 06-23 → 8 days by Wed 07-01. If no new post shipped, upgrade soft heads-up to a hard freshness flag for styer-content-weekly.
 4. **Adam-gated carries:** suburb inline-form 5/25 batch · fha.html "broker" · AggregateRating policy · homepage title pipe · schema-type unification · gold hex SKILL.md sync · homepage MortgageBroker NMLS (513013 vs 2653540).
 
-**DONE 2026-06-29 (Mon):** Steps 1–2 (sitemap/conversion 10/10); Monday rotation — 16/16 JSON-LD valid (homepage/about/dscr/pflugerville), AEO entity consistency homepage↔about verified, entity-name hygiene clean; **found + fixed about.html Person `sameAs` NMLS Consumer Access + Yelp gap** (commit `265cbb7`, verified live); design spot-check clean; BLOCKERS clean; loanos-clone untouched. Surfaced Fri 06-26/weekend scheduler no-fire.
+**DONE 2026-06-30 (Tue):** Steps 1–2 (sitemap/conversion 10/10); Tuesday rotation — 25 money/loan titles+metas audited, 0 real defects, prior fixes (06-23 `b2241a6`, 06-16 `7bafb4e`) held; Re-Verify cleared loans/va "Lowest rates" as benign factual comparative; reconciled blog-freshness (latest genuinely 06-23, `ls -t` mtime artifact); BLOCKERS+backlog clean; design spot-check clean; loanos-clone untouched. 0 mutations (clean-audit outcome).
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 
