@@ -57,3 +57,4 @@ Format: `YYYY-MM-DD | <slug> | <tier> | <commit-sha>`
 - 2026-06-14 | 2026-06-14-buy-before-you-sell-austin-tx | manual (Adam-directed) | a60395e
 - 2026-06-16 | 2026-06-16-dscr-loan-requirements-texas | A (DSCR cluster) | bbe7c05
 - 2026-06-23 | 2026-06-23-no-ratio-low-dscr-loans-texas | A (DSCR cluster) | db561c1
+- 2026-06-30 | 2026-06-30-bank-statement-loans-texas | A (bank-stmt freshness, Wk16 THREAT #1) | 5c2a2b0

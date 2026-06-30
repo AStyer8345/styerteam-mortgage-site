@@ -1,3 +1,7 @@
+## 2026-06-30 — styer-blog-writer-weekly: PUBLISHED "Bank Statement Loans in Texas" (Tier A — bank-stmt freshness)
+
+Net-new blog post `2026-06-30-bank-statement-loans-texas.html` (commit `5c2a2b0`, live HTTP 200). Targets the lone declining complicated-income keyword (bank statement #7→#8 per Wk16 competitive THREAT #1); no bank-statement blog existed (only the money page). Qualify-on-deposits explainer for self-employed TX borrowers, grounded in IRS Schedule C, Fannie Mae B3-3.5-01, and CFPB ATR rule 12 CFR 1026.43 (4 inline citations, no rate quotes). 3 schema blocks valid (Article/FAQPage/BreadcrumbList); all 7 compliance gates PASS; registered in blog.html (noscript + CollectionPage), blog/manifest.json, sitemap.xml; wired into bank-statement/self-employed/non-QM/asset-depletion hubs. Core prose 1,435 words. Run brief: `run-logs/content-2026-06-30.md`. To undo: `git revert 5c2a2b0`.
+
 ## 2026-06-30 — styer-suburb-editor-daily (Round 4 #9): manor deepening + Bell Farms spotlight + Oak Meadows 3/10 + Manor ISD rezoning gotcha + Step 3 de-template
 
 Page intact (clean git tree — only this page + sitemap modified, no concurrent-writer drift). Already deep from R1–R3 (7 neighborhood spotlights, MISD-vs-DVISD school-zoning split, 4-high-school breakdown, full tax stack + itemized closing-cost example, Major Employers list, 23 citations), so this lighter-touch Round 4 added an affordability-tier resale community, a rated campus tied to a live rezoning story, district-scale facts, and a fresh price anchor — then de-templated the most-shared process step.
