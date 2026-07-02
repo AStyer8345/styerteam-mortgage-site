@@ -16,7 +16,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-06-30 (styer-site-daily Tuesday — rotation: Title Tags + Meta Descriptions): clean audit, 0 site mutations.** Sitemap/robots **200**; conversion **10/10** (HTML-token, action→/thank-you both LPs). Audited 25 money/loan titles+metas — zero superlatives in titles (prior sweeps held), 23/25 metas in 150–160; the two <150 (va 148, investor-loans 149) are complete + on-positioning → padding = churn, left. **Re-Verify Gate:** loans/va body "Lowest rates — VA typically 0.25-0.50% lower than conventional" = factual hedged comparative (benign), NOT the banned "lowest rates available" puffery 06-16 swept; verified live. Prior Tuesday fixes held (06-23 `b2241a6` 24–48hr gone; 06-16 `7bafb4e` va/self-emp/dscr in-band). Blog latest genuinely **06-23 = 7d** (mtime ≠ datePublished; `ls -t` artifact reconciled) → soft heads-up to styer-content-weekly. BLOCKERS+backlog clean; loanos-clone untouched. Design spot-check clean (homepage+jumbo). NotebookLM script absent (83rd). **⚠️ Fri 06-26 Content/AEO no-fire.**
+**2026-07-02 (styer-site-daily Thursday — rotation: Internal Linking + Funnel Flow): clean audit, 0 site mutations.** Sitemap/robots **200**; conversion **10/10** (HTML-token). **Full funnel traced end-to-end, all hops healthy, no leak:** homepage quick form (`js-quick-contact`→`script.js` L51 `generate_lead`→POST `/`+lead-intake→L485 redirect `/thank-you?type=quick-contact`); `/get-preapproved`(purchase_prequal)+`/refinance-quote`(refi_quote) both `action='/thank-you'`; `/thank-you` = `thank_you_page_view` + Calendly + `tel:+15129566010` + 3-step. contact.html wiring healthy (`action=/thank-you`, netlify, form-name=contact, generate_lead). Internal-link 2+ bar: contact 25+, conventional 35(4 funnel), va 33(4), non-qm 40(16) — all far exceed. Money-page `/get-preapproved`=0 by design (Decision 3, route to /scenario). BLOCKERS+backlog clean; glossary backlog item stale/done (`mortgage-glossary.html` exists); loanos-clone untouched (paused-LoanOS guard). Design spot-check clean (homepage+conventional); 0 entity drift, 0 "21-day". NotebookLM script absent (85th). **✅ Scheduler fired Wed 07-01 + Thu 07-02 (2 in a row).**
+
+*(2026-07-01 Wed — Suburb Deep Dive + AEO → Pflugerville: clean audit, 0 mutations. `pflugerville-mortgage-lender.html` PASS, 4/4 JSON-LD valid, answer-first AEO + question-form H2s, calculators ×3. Re-Verify Gate auto-resolved the queued 06-30 blog-freshness escalation — new 06-30 post live → flag cleared, not fired. Micro-obs FAQ Q4 question drift below threshold. Scheduler fired.)*
+
+*(2026-06-30 Tue — Title Tags + Meta Descriptions: clean audit, 0 mutations. 25 money/loan titles+metas — zero title superlatives, 23/25 metas in 150–160; va 148 + investor-loans 149 complete → padding=churn, left. Re-Verify cleared loans/va "Lowest rates" body label = benign factual comparative. Prior Tuesday fixes held. Blog then genuinely 06-23=7d → soft heads-up [now resolved 07-01].)*
 
 *(2026-06-29 Mon — Schema + AEO Entity Audit: 1 LOW_RISK fix shipped + verified live. 16/16 JSON-LD valid (homepage/about/dscr/pflugerville); AEO entity consistency homepage↔about clean. about.html Person `sameAs` was missing NMLS Consumer Access (513013) + Yelp — added to E-E-A-T anchor page, commit `265cbb7`, verified live. Design spot-check clean; BLOCKERS clean.)*
 
@@ -28,15 +32,11 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 *(2026-06-18 Thu — Internal Linking + Funnel Flow: found + fixed real conversion-tracking break on 3 of 5 form suburb pages — austin-area/buda/westlake missing `action="/thank-you"`; commit `c519c4e`, all 5 verified live. Netlify Lighthouse mobile home: Perf 81/A11y 100/BP 100/SEO 100.)*
 
-*(2026-06-17 Wed — Georgetown suburb deep-dive audit, on-page excellent 0 defects, 4 JSON-LD valid; surfaced 5/25 inline-form gap; 0 mutations — rolled up.)*
-
 **2026-06-16 (styer-site-daily Tuesday — Title Tags + Meta Descriptions): 3 files edited, verified live.** Audited 20 money-page titles + metas; 3 deficient metas fixed (self-employed 131→158, dscr 137→156, loans/va removed "lowest rates" superlative ×4). Commit `7bafb4e`. fha.html "broker" vs correspondent-lender positioning flagged (Adam).
 
 **2026-06-15 (styer-site-daily Monday — Schema + AEO entity audit): clean verification, 0 mutations.** Homepage 3/3 JSON-LD valid; Person consistent homepage↔about; entity-name hygiene clean; "complicated income" positioning pivot LIVE. **🟢 BLOG FRESHNESS RESOLVED** (06-14 posts live). Conversion 10/10.
 
 *(2026-06-22 styer-competitive-weekly Wk 16 — research only: BROAD RECOVERY — Wk15 pullback was WebSearch noise, nearly all reverted. Asset-depl back **#1** (moat intact), self-emp **#1** blog, jumbo **#2**, 1099 **#3**; bank-stmt #8 lone decliner. ★ get-pre-approved DEBUTS #7 (first core top-10). Suburbs: Pflugerville **#1**, Kyle **#3**. **Re-Verify correction: "LendFriend no FAQPage" was FALSE (curl+grep) — both carry FAQPage; real gap = AggregateRating, symmetric.** Report `run-logs/competitive/2026-06-22.md`.)*
-
-*(2026-06-15 styer-competitive-weekly Wk 15 — research only: Phase A cluster PULLBACK [SUPERSEDED by Wk16 — was composition noise]. Full report `run-logs/competitive/2026-06-15.md`.)*
 
 *(2026-06-13/06-14 — clean verification days, 0 mutations, conversion 10/10 — rolled up.)*
 
@@ -79,15 +79,15 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## What's Next
 
-**Wed 2026-07-01 = next weekday — rotation: Suburb Page Deep Dive + AEO.** Rotation cursor: Round Rock → Cedar Park → Leander → Georgetown → Pflugerville → Kyle → San Marcos → Westlake → Buda.
+**Fri 2026-07-03 = next weekday — rotation: Content Planning + AEO Review.**
 
 Priorities (in order):
 1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute tool paths, `curl -L`). **Quote-agnostic** greps (Netlify rewrites attr quotes).
-2. **Wednesday suburb deep-dive:** pick next suburb in rotation; verify inline lead form + FAQPage + BreadcrumbList + city-specific H1; internal links to /get-preapproved + /calculators; AEO answer-first first paragraph + conversational H2s.
-3. **Blog freshness ESCALATION:** latest post 06-23 → 8 days by Wed 07-01. If no new post shipped, upgrade soft heads-up to a hard freshness flag for styer-content-weekly.
+2. **Friday content + AEO:** check `/blog` freshness — latest is **06-30 (3 days by Fri, fresh)**, no flag expected unless >7 days. Audit blog CTAs (every post → /get-preapproved or /refinance-quote). AEO: pick 2 blog posts — FAQ answers answer-first? H2s phrased as AI-style questions? Extractable summary near top?
+3. **Suburb rotation cursor** now past Pflugerville → next Wednesday suburb = **Kyle** (then San Marcos → Westlake → Buda).
 4. **Adam-gated carries:** suburb inline-form 5/25 batch · fha.html "broker" · AggregateRating policy · homepage title pipe · schema-type unification · gold hex SKILL.md sync · homepage MortgageBroker NMLS (513013 vs 2653540).
 
-**DONE 2026-06-30 (Tue):** Steps 1–2 (sitemap/conversion 10/10); Tuesday rotation — 25 money/loan titles+metas audited, 0 real defects, prior fixes (06-23 `b2241a6`, 06-16 `7bafb4e`) held; Re-Verify cleared loans/va "Lowest rates" as benign factual comparative; reconciled blog-freshness (latest genuinely 06-23, `ls -t` mtime artifact); BLOCKERS+backlog clean; design spot-check clean; loanos-clone untouched. 0 mutations (clean-audit outcome).
+**DONE 2026-07-02 (Thu):** Steps 1–2 (sitemap/conversion 10/10); Thursday rotation — full funnel traced homepage → LP → form → /thank-you, all hops healthy; contact.html wiring healthy; internal linking on 4 pages far exceeds 2+ bar; thank-you.html Calendly + phone + 3-step present; BLOCKERS+backlog clean (glossary item stale/done); design spot-check clean; loanos-clone untouched. 0 mutations (clean-audit outcome). Scheduler fired 2 days in a row.
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 

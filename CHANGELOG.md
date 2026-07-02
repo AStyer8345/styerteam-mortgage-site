@@ -1,3 +1,11 @@
+## 2026-07-02 — styer-site-daily (Thursday: Internal Linking + Funnel Flow) — clean audit, 0 site mutations
+
+- Steps 1–2 non-negotiables green: sitemap.xml + robots.txt HTTP **200**; conversion tracking **10/10** via HTML-token matrix (`curl -L`, live-submit avoided to prevent fake CRM/n8n leads).
+- Full funnel traced end-to-end, all hops healthy, no leak: homepage quick form (`js-quick-contact` → `script.js` L51 `generate_lead` → POST `/` + `/.netlify/functions/lead-intake` → L485 redirect `/thank-you`); `/get-preapproved`(purchase_prequal) + `/refinance-quote`(refi_quote) both `action='/thank-you'`; `/thank-you` fires `thank_you_page_view` + Calendly + `tel:+15129566010` + 3-step next.
+- contact.html wiring healthy (`action=/thank-you`, netlify, `form-name=contact`, generate_lead). Internal-link 2+ bar cleared on 4 pages: contact 25+, conventional 35, va 33, non-qm 40 unique internal links.
+- SEO/SEM BLOCKERS + backlog clean; glossary backlog item stale/done (`mortgage-glossary.html` exists); `loanos-clone` untouched (paused-LoanOS guard). Design spot-check clean (homepage + conventional): 0 entity drift, 0 "21-day" claim, GTM + nav intact.
+- 0 commits of site HTML, 0 deploys — clean-audit outcome (no defect met the fix threshold; no manufactured churn). Scheduler fired Wed 07-01 + Thu 07-02 (2 in a row). NotebookLM advisor script absent (85th run).
+
 ## 2026-07-01 — styer-suburb-editor-daily (Round 4 #10): lakeway deepening + Vineyard Bay spotlight + Lakeway Elementary 8/10 + Cardinal Hills reframe + Step 2 de-template
 
 Page already very deep from R1–R3 (7 neighborhood spotlights, 9/8/9 feeder ladder, Major Employers H3, full LTISD/Lakeway/Travis tax stack + itemized closing-cost example, conforming-vs-jumbo wrinkle), so this lighter-touch Round 4 added the top waterfront tier, a second in-town elementary with a boundary-stability insight, and reframed the entry-tier neighborhood with current data — then de-templated the most-shared process step. Page intact (clean tree — only this page + sitemap modified; the concurrent styer-site-daily run left CHANGELOG/CONTEXT/latest/learnings uncommitted, so I staged only my own files by explicit path).
