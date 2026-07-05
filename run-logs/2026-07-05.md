@@ -1,5 +1,9 @@
 # Daily Run — 2026-07-05 (Sunday)
 
+> **SECOND FIRE — 09:27** (first fire was 09:01, logged below). Scheduler double-fired on Sunday 07-05. Re-ran non-negotiables independently (did NOT trust the first-fire log): sitemap **200**, robots **200**, conversion **10/10** (HTML-token matrix), design spot-check **clean** on rotated pages (about.html + products.html — GTM PQQ6PGLR ×2, 0 legacy-entity display drift, NMLS 513013 present, HyperSmart present, 0 "21-day" claim, `<header>` nav present), BLOCKERS.md `[No active blockers]`, latest blog 2026-06-30 (5d, fresh). **0 mutations — nothing changed since 09:01.** advisor script still missing (88th consecutive check). Did NOT duplicate the full audit or manufacture off-rotation content (per cached learning). Same-day double-fire recorded as a scheduler-reliability data point. No commit/deploy.
+
+---
+
 **Off-rotation day** (Step 4's weekday rotation only defines Mon–Fri; Monday 07-06 owns the Schema + AEO Entity rotation). Ran the non-negotiables (Steps 1–2), SEO/SEM backlog check (4B), and design spot-check (5). **Healthy funnel, clean audit, 0 mutations.** Scheduler fired Sun 07-05 (this run) after a Sat 07-04 no-fire.
 
 ## NOTEBOOKLM
