@@ -16,7 +16,9 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-07-03 (styer-site-daily Friday — rotation: Content Planning + AEO Review): 1 real fix shipped + verified live.** Sitemap/robots **200**; conversion **10/10** (HTML-token). Blog fresh (latest 06-30, 3d). **Blog CTA audit: 1 of 40 posts (06-23 no-ratio-DSCR) was missing a `/get-preapproved`|`/refinance-quote` conversion CTA — added standardized `blog-dual-cta` block (Get Pre-Approved→`/get-preapproved`, Cash-Out Refi Quote→`/refinance-quote`, DSCR Calculator, tel), commit `87fe207`, verified live (Netlify Pretty-URLs = extensionless hrefs). Coverage now 40/40.** AEO on 2 newest posts (06-30 bank-statement, 06-23) excellent — answer-first FAQs (5 Q&A each), definition-first extractable leads, question/statement H2 mix; 0 defects. BLOCKERS+backlog clean; loanos-clone untouched (paused-LoanOS guard). Design spot-check clean (about+jumbo); 0 entity drift. Swept 7 sitewide "21-day" matches — **0 are the banned close-claim** (appraisal turnaround, 121-days-on-market substring, contract clocks, template compliance instruction, noindexed admin textarea) — verified before flagging. NotebookLM script absent (86th). **✅ Scheduler fired Wed 07-01 + Thu 07-02 + Fri 07-03 (3 in a row, recovering).**
+**2026-07-05 (styer-site-daily Sunday — OFF-ROTATION): healthy funnel, clean audit, 0 mutations.** Sunday has no assigned weekday rotation (Step 4 is Mon–Fri; Monday 07-06 owns Schema + AEO Entity). Ran non-negotiables + backlog + design spot-check. Sitemap/robots **200**; conversion **10/10** (HTML-token via `curl -L`). BLOCKERS clean; backlog's remaining open items are all Adam-gated new-page creation or sister-task-owned (no un-gated site work). `loanos-clone` untouched (writing backlog.md triggers a Vercel build of paused LoanOS). Design spot-check (index + dscr) clean: GTM ×2, 0 legacy-entity drift, NMLS 513013, header nav, 0 "21-day" close claim, HyperSmart brand live. NotebookLM script absent (87th). **Scheduler: Wed 07-01 + Thu 07-02 + Fri 07-03 fired; Sat 07-04 no-fire; Sun 07-05 fired (this run).** No commit/deploy (0 mutations).
+
+*(2026-07-03 Fri — Content Planning + AEO Review: 1 real fix shipped + verified live. Blog CTA audit found 1 of 40 posts (06-23 no-ratio-DSCR) missing a `/get-preapproved`|`/refinance-quote` conversion CTA — added standardized `blog-dual-cta` block, commit `87fe207`, verified live, coverage 40/40. AEO on 2 newest posts excellent, 0 defects. 7 sitewide "21-day" matches verified benign. Scheduler fired 3 in a row.)*
 
 *(2026-07-02 Thu — Internal Linking + Funnel Flow: clean audit, 0 mutations. Sitemap/robots 200; conversion 10/10. Full funnel traced end-to-end, all hops healthy, no leak (homepage quick form → /thank-you; Ads LPs → /thank-you; contact.html wiring healthy). Internal-link 2+ bar: contact 25+, conventional 35, va 33, non-qm 40 — all far exceed. Money-page `/get-preapproved`=0 by design (Decision 3). Design spot-check clean.)*
 
@@ -76,7 +78,7 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | ~~Sitewide nav inconsistency~~ **CLOSED 2026-06-09 evening** — canonical header on 148 pages + 4 generator templates; bare-header sticky CSS bug fixed (blog scroll overlap) | — |
 | Suburb/footer cosmetic carries (LOW) — footer `/prequal.html` parity, suburb `/calculators` linking gap, suburb `About Adam` standalone | LOW (Adam) |
 | 5 of 6 new HNW/non-QM pages missing NMLS Consumer Access `sameAs` in Article schema | LOW |
-| Scheduler reliability — recent no-fires: **Fri 2026-06-26 + weekend (no run logs)**, Wed 06-24 (Suburb Deep Dive skipped), Fri 06-19; earlier Wed 5-20/5-27, Fri 5-29, Sat 5-30 | HIGH (Adam) |
+| Scheduler reliability — recent: Wed 07-01 + Thu 07-02 + Fri 07-03 fired, **Sat 07-04 no-fire**, Sun 07-05 fired; earlier no-fires Fri 06-26 + weekend, Wed 06-24, Fri 06-19 | HIGH (Adam) |
 | ~~thank-you.html performance claims~~ **RESOLVED 2026-06-09** per Decision 2(a) — now "one business day" phrasing | — |
 
 ## What's Next
@@ -89,7 +91,9 @@ Priorities (in order):
 3. **Suburb rotation cursor:** next Wednesday suburb = **Kyle** (then San Marcos → Westlake → Buda).
 4. **Adam-gated carries:** suburb inline-form 5/25 batch · fha.html "broker" · AggregateRating policy · homepage title pipe · schema-type unification · gold hex SKILL.md sync · homepage MortgageBroker NMLS (513013 vs 2653540) · **task-file SKILL.md names retired "Mortgage Solutions LP" entity**.
 
-**DONE 2026-07-03 (Fri):** Steps 1–2 (sitemap/conversion 10/10); Friday rotation — blog fresh (06-30); CTA audit found + fixed the lone gap (06-23 → dual-CTA block, commit `87fe207`, verified live, coverage 40/40); AEO on 2 newest posts excellent, 0 defects; BLOCKERS+backlog clean; design spot-check clean (about+jumbo); 7 sitewide "21-day" matches verified benign (no banned close-claim); loanos-clone untouched. Scheduler fired 3 days in a row.
+**DONE 2026-07-05 (Sun, off-rotation):** Steps 1–2 green (sitemap/robots 200; conversion 10/10 HTML-token); BLOCKERS+backlog clean of un-gated site work; design spot-check clean (index+dscr, 0 entity drift, 0 "21-day" claim); loanos-clone untouched. 0 mutations — healthy funnel, no manufactured content off-rotation.
+
+**DONE 2026-07-03 (Fri):** Friday rotation — blog fresh (06-30); CTA audit fixed the lone gap (06-23 → dual-CTA block, commit `87fe207`, verified live, 40/40); AEO on 2 newest posts excellent; design spot-check clean (about+jumbo).
 
 Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
 

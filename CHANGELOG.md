@@ -1,3 +1,9 @@
+## 2026-07-05 — styer-site-daily (Sunday, off-rotation): healthy funnel, clean audit, 0 site mutations
+
+- Non-negotiables green: `sitemap.xml` + `robots.txt` HTTP **200**; conversion tracking **10/10** (HTML-token matrix via `curl -L` — GTM ×2, `generate_lead`/`lead_type` correct on both LPs, `thank_you_page_view` on /thank-you, tel/TCPA/`action="/thank-you"` all present).
+- SEO/SEM `BLOCKERS.md` clean; `backlog.md` remaining open items all Adam-gated new-page creation or sister-task-owned — no un-gated site work. `loanos-clone` untouched (paused-LoanOS guard).
+- Design spot-check (index + dscr-loan-austin-tx): GTM ×2, 0 legacy-entity drift, NMLS 513013 + header nav present, 0 "21-day" close claim, HyperSmart brand live. No site-HTML commit / no deploy (0 mutations). NotebookLM advisor script absent (87th).
+
 ## 2026-07-04 — styer-suburb-editor-daily (Round 4 #13, ROUND 4 COMPLETE): westlake — Rollingwood as the missing 78746 municipality + its own city tax rate + Barton Creek Elementary "A" + fresh Zillow ZHVI print
 
 Page already exhaustively deep from three prior rounds (all 5 Westlake Hills neighborhoods — Rob Roy / Davenport Ranch / Lost Creek / Barton Creek / Westlake Highlands; full Eanes school ladder — Westlake HS 9 / Hill Country MS 10 / Eanes Elem 10 / Forest Trail Elem 10 / West Ridge MS 10; median reconciliation across Redfin / TeamPrice / Neuhaus; 5 employers; itemized closing-cost example). This Round 4 added the one thing every prior round missed — **Rollingwood, the second incorporated city inside 78746** — plus its distinct tax rate, completed the Rob Roy feeder-school ladder with a real rating, and layered a fresher value-index print. Page intact — clean tree on main, only this page + sitemap modified (no concurrent-writer drift).
