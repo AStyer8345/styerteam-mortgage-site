@@ -9,6 +9,17 @@
  * This prevents false positives from premature firing before validation.
  */
 (function () {
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('a,button');
+    if (!link) return;
+    var eventName = link.getAttribute('data-track');
+    if (!eventName && link.matches('a[href^="mailto:"]')) eventName = 'email_click';
+    if (!eventName && link.matches('a[href*="my1003app.com"]')) eventName = 'secure_application_click';
+    if (!eventName && link.matches('a[href*="scenario"]')) eventName = 'send_scenario_click';
+    if (!eventName) return;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: eventName, page_path: window.location.pathname });
+  });
   'use strict';
 
   function track(eventData) {

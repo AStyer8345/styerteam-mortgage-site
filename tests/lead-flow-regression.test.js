@@ -48,7 +48,7 @@ test('homepage leads with lightweight scenario contact paths before the full app
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
   assert.match(homepage, /<a href="#contact-form"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*>Send Your Scenario<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Book 15-Min Call']);
+  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Start a Secure Application']);
   assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Book 15-Min Call', 'Email Adam']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.match(homepage, /name="quick-scenario"/);
@@ -61,7 +61,7 @@ test('homepage leads with lightweight scenario contact paths before the full app
   assert.doesNotMatch(homepage, /Start Full Loan Application/);
   assert.doesNotMatch(homepage, /Start Loan Application/);
   assert.doesNotMatch(homepage, /Start Here/);
-  assert.match(homepage, /href="https:\/\/calendly\.com\/adamstyer\/15minutes"[^>]*>Book 15-Min Call<\/a>/);
+  assert.match(homepage, /Complex mortgages for Austin business owners, investors, move-up buyers, and high-net-worth borrowers/);
   assert.match(homepage, /href="tel:\+15129566010"/);
   assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
 });
@@ -132,6 +132,21 @@ test('analytics.js does not duplicate lead or phone events already emitted by sc
   assert.doesNotMatch(analytics, /styer:lead-submitted/);
   assert.doesNotMatch(analytics, /phone_click/);
   assert.doesNotMatch(analytics, /a\[href\^="tel:"\]/);
+});
+
+test('required complex-mortgage routes and metadata exist', () => {
+  const buyBeforeSell = fs.readFileSync('buy-before-you-sell-austin.html', 'utf8');
+  const businessOwner = fs.readFileSync('resources/mortgage-options-for-business-owners.html', 'utf8');
+  const realtor = fs.readFileSync('realtors.html', 'utf8');
+  const notFound = fs.readFileSync('404.html', 'utf8');
+  assert.match(buyBeforeSell, /<link rel="canonical" href="https:\/\/styermortgage\.com\/buy-before-you-sell-austin\.html">/);
+  assert.match(buyBeforeSell, /Bridge financing/);
+  assert.match(businessOwner, /"@type":"Article"/);
+  assert.match(businessOwner, /Bank-statement programs/);
+  assert.match(realtor, /name="realtor-scenario"/);
+  assert.match(realtor, /netlify-honeypot="bot-field"/);
+  assert.doesNotMatch(realtor, /license nationwide/i);
+  assert.match(notFound, /<meta name="robots" content="noindex">/);
 });
 
 test('direct rate publishing endpoint requires the dispatch secret', () => {
