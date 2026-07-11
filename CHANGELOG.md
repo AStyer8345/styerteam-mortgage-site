@@ -2557,3 +2557,10 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - **Re-Verify Gate correction (curl+grep, authoritative):** long-carried "LendFriend has NO FAQPage schema" is FALSE — LendFriend's self-employed page DOES carry FAQPage JSON-LD; the real wedge is **AggregateRating**, which NEITHER party has (symmetric gap, first-mover advantage). Prior "no FAQPage" readings were WebFetch markdown false-negatives. Styer's asset-depletion page confirmed carrying FAQPage (6 ld+json blocks). LendFriend now displays 547 Google + 1,113 Experience review counts visually but un-schema'd.
 - Cleared 9 Wk15 claims as CHANGED-recovered, held 4, corrected 1. NotebookLM dead on both legs (advisor script absent + CLI auth erroring, re-verified live). Report: `run-logs/competitive/2026-06-22.md`.
 - **0 site-HTML files modified** (research only). Doc/log only: competitive report + latest, learnings, CONTEXT, TODO, this entry, master growth log. Concurrent-writer files (`index.html`, `run-logs/latest.md`, `run-logs/2026-06-20.md`, `gbp-posts/*`) left untouched + unstaged.
+## 2026-07-11 — Complex-mortgage conversion, compliance, and content implementation
+
+- Added the required audit, implementation plan, content inventory, and compliance-inconsistency documents.
+- Repositioned the homepage and clarified scenario vs secure-application CTAs.
+- Expanded scenario intake and rebuilt the Realtor difficult-scenario form on the existing Netlify-to-LoanOS path; removed the unsupported nationwide claim.
+- Added the buy-before-you-sell landing page, business-owner article, sitemap entries, analytics events, and a dedicated 404.
+- Validation: 22 tests passed; syntax/diff checks passed; responsive review passed at 375, 430, 768, 1024, and 1440 px.

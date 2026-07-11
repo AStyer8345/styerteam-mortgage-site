@@ -405,7 +405,7 @@
               <div class="accordion-content">
                 <div class="accordion-body">
                   <p>
-                    Easy. Share our application link: https://hypersmart.my1003app.com/513013/register?time=1779291829279. Or have them call (512) 956-6010. Let us know they're referred by you so we can give them priority service and send you updates.
+                    Start with <a href="#partner-form">Submit a Difficult Scenario</a> when the deal needs an initial review. If the borrower is ready for a full application, use the <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" target="_blank" rel="noopener">secure application</a>. Please obtain permission before sharing borrower information.
                   </p>
                 </div>
               </div>
@@ -418,7 +418,7 @@
               <div class="accordion-content">
                 <div class="accordion-body">
                   <p>
-                    Primarily Austin and Texas, but we license nationwide. We specialize in the Austin market and understand the competitive dynamics, price ranges, and unique factors that affect lending here. That's our advantage for you and your clients.
+                    Adam focuses on Austin-area and Texas mortgage scenarios. Program and geographic availability varies; send the property location and scenario for a specific review.
                   </p>
                 </div>
               </div>
@@ -445,23 +445,33 @@
     <section id="partner-form">
       <div class="container">
         <div style="max-width:520px;margin:0 auto;text-align:center;">
-          <h2 class="mb-md">Let's Partner Up</h2>
-          <p class="text-lg text-muted mb-xl">Drop your info below. I'll reach out within one business day. For CPA, advisor, attorney, or builder scenarios, start with the <a href="/referral-partners-self-employed-clients.html">advisor-friendly complex-income partner page</a>.</p>
+          <h2 class="mb-md">Submit a Difficult Scenario</h2>
+          <p class="text-lg text-muted mb-xl">Send Adam the deal that does not fit cleanly at a bank. Share only what is needed for an initial review, and obtain the borrower's permission before including their name.</p>
         </div>
-        <form id="realtor-contact-form" style="max-width:520px;margin:0 auto;" novalidate>
+        <form id="realtor-contact-form" name="realtor-scenario" class="js-quick-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="max-width:620px;margin:0 auto;" novalidate>
+          <input type="hidden" name="form-name" value="realtor-scenario">
+          <p class="hidden" aria-hidden="true"><label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <div class="form-group">
             <label for="rc-name">Your Name</label>
             <input type="text" id="rc-name" name="name" placeholder="Jane Smith" required autocomplete="name">
           </div>
           <div class="form-group">
-            <label for="rc-brokerage">Brokerage</label>
-            <input type="text" id="rc-brokerage" name="brokerage" placeholder="Keller Williams / Compass / etc." required autocomplete="organization">
+            <label for="rc-brokerage">Company</label>
+            <input type="text" id="rc-brokerage" name="company" required autocomplete="organization">
           </div>
           <div class="form-group">
             <label for="rc-phone">Phone Number</label>
             <input type="tel" id="rc-phone" name="phone" placeholder="(512) 555-0100" required autocomplete="tel">
           </div>
-          <div id="rc-status" style="display:none;margin-bottom:1rem;padding:.75rem 1rem;border-radius:8px;font-size:.9rem;font-weight:600;"></div>
+          <div class="form-group"><label for="rc-email">Email</label><input type="email" id="rc-email" name="email" required autocomplete="email"></div>
+          <div class="form-group"><label for="rc-contract">Contract status</label><select id="rc-contract" name="contractStatus" required><option value="">Choose…</option><option>Not under contract</option><option>Making an offer</option><option>Under contract</option></select></div>
+          <div class="form-group"><label for="rc-price">Approximate purchase price (optional)</label><input type="text" id="rc-price" name="purchasePrice" inputmode="numeric"></div>
+          <div class="form-group"><label for="rc-property">Property type</label><input type="text" id="rc-property" name="propertyType" required></div>
+          <div class="form-group"><label for="rc-issue">Primary financing issue</label><select id="rc-issue" name="primaryIssue" required><option value="">Choose…</option><option>Buy before selling</option><option>Self-employed income</option><option>Jumbo or asset-based qualification</option><option>DSCR or investor scenario</option><option>Relocation or new employment</option><option>Complex ownership or property structure</option><option>Other</option></select></div>
+          <div class="form-group"><label for="rc-deadline">Financing deadline (optional)</label><input type="date" id="rc-deadline" name="financingDeadline"></div>
+          <div class="form-group"><label for="rc-borrower">Borrower first name (optional; only with permission)</label><input type="text" id="rc-borrower" name="borrowerFirstName" autocomplete="off"></div>
+          <div class="form-group"><label for="rc-summary">Scenario summary</label><textarea id="rc-summary" name="notes" rows="5" required></textarea><small>Do not include Social Security numbers, account numbers, tax returns, bank statements, or other sensitive documents.</small></div>
+          <div class="form-group"><label><input type="checkbox" name="borrowerPermission" value="yes"> I have permission for Adam to contact the borrower if I included their name.</label></div>
           <!-- TCPA consent -->
           <div class="hero-quick-form-field" style="grid-column:1/-1;margin-top:4px;">
             <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.75rem;font-weight:400;color:var(--color-gray);cursor:pointer;line-height:1.5;">
@@ -469,39 +479,13 @@
               <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
             </label>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Partner With Us</button>
+          <button type="submit" class="btn btn-primary btn-lg" data-track="realtor_scenario_cta" style="width:100%;">Submit a Difficult Scenario</button>
           <p style="text-align:center;margin-top:1rem;font-size:.85rem;color:#64748b;">
             Or call directly: <a href="tel:+15129566010">(512) 956-6010</a>
           </p>
         </form>
       </div>
     </section>
-    <script>
-      (function() {
-        var form = document.getElementById('realtor-contact-form');
-        var status = document.getElementById('rc-status');
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          var name     = document.getElementById('rc-name').value.trim();
-          var brokerage = document.getElementById('rc-brokerage').value.trim();
-          var phone    = document.getElementById('rc-phone').value.trim();
-          if (!name || !brokerage || !phone) {
-            status.style.display = '';
-            status.style.background = '#fef2f2';
-            status.style.color = '#991b1b';
-            status.textContent = 'Please fill in all fields.';
-            return;
-          }
-          var subject = encodeURIComponent('Realtor Partner Inquiry – ' + name);
-          var body    = encodeURIComponent('Name: ' + name + '\nBrokerage: ' + brokerage + '\nPhone: ' + phone);
-          window.location.href = 'mailto:adam.styer@hypersmart.loan?subject=' + subject + '&body=' + body;
-          status.style.display = '';
-          status.style.background = 'rgba(201,168,76,.15)';
-          status.style.color = '#7c4a00';
-          status.textContent = 'Opening your email client\u2026 expect a reply within 1 business day.';
-        });
-      })();
-    </script>
   </main>
 
   <!-- FOOTER -->
