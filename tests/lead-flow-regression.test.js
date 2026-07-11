@@ -61,7 +61,8 @@ test('homepage leads with lightweight scenario contact paths before the full app
   assert.doesNotMatch(homepage, /Start Full Loan Application/);
   assert.doesNotMatch(homepage, /Start Loan Application/);
   assert.doesNotMatch(homepage, /Start Here/);
-  assert.match(homepage, /Complex mortgages for Austin business owners, investors, move-up buyers, and high-net-worth borrowers/);
+  assert.match(homepage, /Complex mortgage\. Clear path forward\./);
+  assert.match(homepage, /Austin business owners · investors · move-up buyers/);
   assert.match(homepage, /href="tel:\+15129566010"/);
   assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
 });
