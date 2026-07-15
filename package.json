@@ -3,9 +3,21 @@
   "version": "1.0.0",
   "private": true,
   "description": "Adam Styer | HyperSmart Home Loans website with newsletter automation",
+  "scripts": {
+    "build": "npm run validate:knowledge && (node scripts/gen-recent-updates.js || true)",
+    "test": "node --test tests/*.test.js && tsx --test tests/assistant/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "validate:knowledge": "node scripts/validate-ai-knowledge.mjs"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@netlify/blobs": "^8.1.0"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^5.3.0",
+    "@types/node": "^26.1.1",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
   }
 }
