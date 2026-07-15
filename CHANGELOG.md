@@ -1,3 +1,11 @@
+## 2026-07-15 — styer-site-daily (Wednesday, Suburb Deep Dive → Kyle): 1 real fix + scheduler outage flagged
+
+- **Kyle FAQ speed-claim fix** (commit `0e5540e`): FAQ "How long does pre-approval take?" led with "24 to 48 hours" — the retired Decision-2a speed variant ("same-day" is the kept phrasing) — while the page's meta/AEO/CTA all say "same-day pre-approval." Rewrote both JSON-LD and visible accordion to "Adam issues same-day pre-approvals routinely… often within one business day." 3/3 JSON-LD blocks re-validated, schema↔visible parity confirmed, verified live HTTP 200.
+- **Non-negotiables green:** sitemap + robots HTTP **200**; conversion **10/10** (HTML-token matrix, `curl -L`). Design spot-check (index + about) clean — 0 legacy-entity drift, 0 "21-day" claim.
+- **Re-Verify Gate:** 4 sitewide "24–48 hours" matches context-checked; 3 benign (employment-verification / wire-instruction / general-broker timing) left as-is, only Kyle's own-service claim fixed.
+- **⚠️ Scheduler 10-day outage:** no styer-site-daily runs 2026-07-06 → 07-14 (last log was 07-05). Escalated to Adam — longest gap on record for this task.
+- Concurrent-writer conflict on push handled by stashing only the other session's uncommitted `high-net-worth-mortgage.html`, rebasing, pushing, then restoring it untouched. `loanos-clone` not mutated (paused-LoanOS guard).
+
 ## 2026-07-15 — styer-content-weekly (blog editor): high-net-worth-mortgage.html — mandatory AEO citation pass, 0 → 5 authoritative citations
 
 Niche-first queue "do next" page. Re-verified live before selecting: **0 authoritative external citations** (only NMLS/fonts/Calendly links), below the 3-citation bar. The page was already DSCR-depth (6 valid JSON-LD blocks, 10-Q&A FAQPage, 4,801 words) — citations were the sole gap, so this was a pure citation-and-enrichment pass, no padding.

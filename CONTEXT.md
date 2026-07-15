@@ -16,7 +16,9 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
-**2026-07-05 (styer-site-daily Sunday — OFF-ROTATION, DOUBLE-FIRED 09:01 + 09:27): healthy funnel, clean audit, 0 mutations.** Sunday has no assigned weekday rotation (Step 4 is Mon–Fri; Monday 07-06 owns Schema + AEO Entity). Ran non-negotiables + backlog + design spot-check. Sitemap/robots **200**; conversion **10/10** (HTML-token via `curl -L`). BLOCKERS clean; backlog's remaining open items are all Adam-gated new-page creation or sister-task-owned (no un-gated site work). `loanos-clone` untouched (writing backlog.md triggers a Vercel build of paused LoanOS). Design spot-check clean both fires (09:01 index + dscr; 09:27 about + products): GTM ×2, 0 legacy-entity drift, NMLS 513013, header nav, 0 "21-day" close claim, HyperSmart brand live. NotebookLM script absent (88th). **Scheduler: Wed 07-01 + Thu 07-02 + Fri 07-03 fired; Sat 07-04 no-fire; Sun 07-05 DOUBLE-fired (09:01 + 09:27) — second fire re-verified all non-negotiables green independently, changed nothing.** No commit/deploy (0 mutations).
+**2026-07-15 (styer-site-daily Wednesday — Suburb Deep Dive → Kyle): 1 real fix shipped + verified live.** Non-negotiables green (sitemap/robots **200**; conversion **10/10** HTML-token). Kyle deep-dive caught the FAQ describing Adam's own pre-approval turnaround as "24 to 48 hours" (retired Decision-2a speed variant) while the page's meta/AEO/CTA say "same-day" — rewrote both JSON-LD + visible accordion to the approved same-day framing (honest hedge kept); 3/3 JSON-LD valid, schema↔visible parity confirmed, commit `0e5540e`, live HTTP 200. Design spot-check (index + about) clean. Concurrent-writer push conflict handled by stashing only the other session's uncommitted `high-net-worth-mortgage.html`, rebasing, pushing, restoring it untouched. **⚠️ Scheduler 10-day outage: no runs 07-06 → 07-14 (last log 07-05) — escalated to Adam.** `loanos-clone` untouched (paused-LoanOS guard).
+
+*(2026-07-05 styer-site-daily Sunday — OFF-ROTATION, DOUBLE-FIRED 09:01 + 09:27: healthy funnel, clean audit, 0 mutations.)* Sunday has no assigned weekday rotation (Step 4 is Mon–Fri; Monday 07-06 owns Schema + AEO Entity). Ran non-negotiables + backlog + design spot-check. Sitemap/robots **200**; conversion **10/10** (HTML-token via `curl -L`). BLOCKERS clean; backlog's remaining open items are all Adam-gated new-page creation or sister-task-owned (no un-gated site work). `loanos-clone` untouched (writing backlog.md triggers a Vercel build of paused LoanOS). Design spot-check clean both fires (09:01 index + dscr; 09:27 about + products): GTM ×2, 0 legacy-entity drift, NMLS 513013, header nav, 0 "21-day" close claim, HyperSmart brand live. NotebookLM script absent (88th). **Scheduler: Wed 07-01 + Thu 07-02 + Fri 07-03 fired; Sat 07-04 no-fire; Sun 07-05 DOUBLE-fired (09:01 + 09:27) — second fire re-verified all non-negotiables green independently, changed nothing.** No commit/deploy (0 mutations).
 
 *(2026-07-03 Fri — Content Planning + AEO Review: 1 real fix shipped + verified live. Blog CTA audit found 1 of 40 posts (06-23 no-ratio-DSCR) missing a `/get-preapproved`|`/refinance-quote` conversion CTA — added standardized `blog-dual-cta` block, commit `87fe207`, verified live, coverage 40/40. AEO on 2 newest posts excellent, 0 defects. 7 sitewide "21-day" matches verified benign. Scheduler fired 3 in a row.)*
 
@@ -78,20 +80,20 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | ~~Sitewide nav inconsistency~~ **CLOSED 2026-06-09 evening** — canonical header on 148 pages + 4 generator templates; bare-header sticky CSS bug fixed (blog scroll overlap) | — |
 | Suburb/footer cosmetic carries (LOW) — footer `/prequal.html` parity, suburb `/calculators` linking gap, suburb `About Adam` standalone | LOW (Adam) |
 | 5 of 6 new HNW/non-QM pages missing NMLS Consumer Access `sameAs` in Article schema | LOW |
-| Scheduler reliability — recent: Wed 07-01 + Thu 07-02 + Fri 07-03 fired, **Sat 07-04 no-fire**, Sun 07-05 fired; earlier no-fires Fri 06-26 + weekend, Wed 06-24, Fri 06-19 | HIGH (Adam) |
+| **Scheduler reliability — 10-DAY OUTAGE: no runs 2026-07-06 → 07-14 (last log 07-05, resumed 07-15). ESCALATED.** Prior pattern was intermittent single-day no-fires; this is a sustained 10-day gap — longest on record. Recommend checking scheduler/cron health directly | HIGH (Adam) |
 | ~~thank-you.html performance claims~~ **RESOLVED 2026-06-09** per Decision 2(a) — now "one business day" phrasing | — |
 
 ## What's Next
 
-**Mon 2026-07-06 = next weekday — rotation: Schema + Google Ads Quality Factors + AEO Entity Audit.**
+**Thu 2026-07-16 = next weekday — rotation: Internal Linking + Funnel Flow.**
 
 Priorities (in order):
 1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute tool paths, `curl -L`). **Quote-agnostic + extensionless** greps (Netlify Pretty-URLs strips `.html` and rewrites attr quotes).
-2. **Monday schema/AEO:** JSON-LD validity homepage (AggregateRating), DSCR page (FAQPage), one suburb page (**Kyle** — next in cursor). Person + LocalBusiness consistency homepage↔about. Homepage first-150-words extractable answer to "best mortgage broker in Austin TX?". **Monday = GSC sitemap-status reminder day** (log FLAG_FOR_ADAM) + **weekly METRICS update day**.
-3. **Suburb rotation cursor:** next Wednesday suburb = **Kyle** (then San Marcos → Westlake → Buda).
-4. **Adam-gated carries:** suburb inline-form 5/25 batch · fha.html "broker" · AggregateRating policy · homepage title pipe · schema-type unification · gold hex SKILL.md sync · homepage MortgageBroker NMLS (513013 vs 2653540) · **task-file SKILL.md names retired "Mortgage Solutions LP" entity**.
+2. **Thursday funnel:** pick 3 pages, verify each links 2+ relevant pages; trace full funnel homepage→LP→form→/thank-you; contact.html wiring; thank-you.html (Calendly + phone + 3-step).
+3. **Suburb rotation cursor:** next Wednesday suburb = **San Marcos** (then Westlake → Buda → wrap). Kyle done 07-15.
+4. **Adam-gated carries:** suburb inline-form 5/25 batch · fha.html "broker" · AggregateRating policy · homepage title pipe · schema-type unification · gold hex SKILL.md sync · homepage MortgageBroker NMLS (513013 vs 2653540) · **task-file SKILL.md names retired "Mortgage Solutions LP" entity**. **NEW: scheduler 10-day outage — highest-priority Adam flag.**
 
-**DONE 2026-07-05 (Sun, off-rotation):** Steps 1–2 green (sitemap/robots 200; conversion 10/10 HTML-token); BLOCKERS+backlog clean of un-gated site work; design spot-check clean (index+dscr, 0 entity drift, 0 "21-day" claim); loanos-clone untouched. 0 mutations — healthy funnel, no manufactured content off-rotation.
+**DONE 2026-07-15 (Wed, Kyle Suburb Deep Dive):** Steps 1–2 green; Kyle FAQ "24–48hr" → "same-day" fix shipped + verified live (`0e5540e`); design spot-check clean (index+about); loanos-clone untouched; concurrent-writer conflict handled without clobbering other session. Scheduler 10-day outage (07-06→07-14) surfaced.
 
 **DONE 2026-07-03 (Fri):** Friday rotation — blog fresh (06-30); CTA audit fixed the lone gap (06-23 → dual-CTA block, commit `87fe207`, verified live, 40/40); AEO on 2 newest posts excellent; design spot-check clean (about+jumbo).
 
