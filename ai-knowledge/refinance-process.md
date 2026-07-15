@@ -1,14 +1,12 @@
 ---
 title: Refinance process
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-09-13
 ---
 
 # Refinance process
-
-> DRAFT — owner review complete; compliance review required before activation.
 
 A refinance replaces an existing mortgage with a new loan. Common goals include changing the loan term or structure, reducing a payment when market and borrower circumstances support it, removing or changing mortgage insurance, or accessing equity through a cash-out transaction.
 

@@ -1,14 +1,12 @@
 ---
 title: DSCR loans
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-09-13
 ---
 
 # DSCR loans
-
-> DRAFT — owner review complete; product and underwriting review required before activation.
 
 A debt-service-coverage-ratio loan is an investment-property mortgage that generally evaluates the property's rental income in relation to its housing expense instead of qualifying primarily from the borrower's personal employment income.
 

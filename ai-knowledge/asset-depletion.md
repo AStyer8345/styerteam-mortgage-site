@@ -1,14 +1,12 @@
 ---
 title: Asset depletion
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-09-13
 ---
 
 # Asset depletion
-
-> DRAFT — owner review complete; product and underwriting review required before activation.
 
 Asset-depletion or asset-utilization programs may convert a portion of eligible assets into qualifying monthly income for mortgage analysis. They may be useful for retirees, investors, business owners, or other borrowers with substantial assets whose taxable or employment income does not fully describe their financial capacity.
 

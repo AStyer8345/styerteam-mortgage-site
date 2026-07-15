@@ -1,14 +1,12 @@
 ---
 title: Document requirements
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-09-13
 ---
 
 # Document requirements
-
-> DRAFT — owner review complete; underwriting and compliance review required before activation.
 
 Documents depend on the borrower and loan program. A licensed professional may request items such as:
 

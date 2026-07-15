@@ -1,14 +1,12 @@
 ---
 title: Self-employed borrowers
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-09-13
 ---
 
 # Self-employed borrowers
-
-> DRAFT — owner review complete; underwriting and compliance review required before activation.
 
 Self-employed borrowers can pursue conventional, government-backed, jumbo, or alternative-documentation financing depending on their circumstances and current program availability. Taxable income shown on returns may differ from business cash flow because of deductions, depreciation, ownership structure, and other factors.
 

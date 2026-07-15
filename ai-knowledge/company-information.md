@@ -1,14 +1,12 @@
 ---
 title: Company information
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-10-13
 ---
 
 # Company information
-
-> DRAFT — owner confirmed; compliance review required before activation.
 
 Adam Styer is a Texas-licensed mortgage loan originator with Kyber Mortgage Corporation dba HyperSmart Home Loans. Kyber Mortgage Corporation's NMLS identifier is 2653540. Adam Styer's NMLS identifier is 513013.
 

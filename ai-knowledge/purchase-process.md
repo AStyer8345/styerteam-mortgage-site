@@ -1,14 +1,12 @@
 ---
 title: Purchase process
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-09-13
 ---
 
 # Purchase process
-
-> DRAFT — owner review complete; compliance review required before activation.
 
 A purchase mortgage generally starts with a conversation about the buyer's goals, property plans, income documentation, available funds, and timing. A licensed loan professional can then discuss potentially suitable loan paths and explain what information is needed for an application or preapproval review.
 

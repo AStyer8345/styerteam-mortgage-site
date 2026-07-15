@@ -1,14 +1,12 @@
 ---
 title: Bank statement loans
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-09-13
 ---
 
 # Bank statement loans
-
-> DRAFT — owner review complete; product and underwriting review required before activation.
 
 Bank-statement loans are alternative-documentation mortgages that may evaluate recurring deposits rather than relying primarily on taxable income shown on tax returns. They are commonly considered by self-employed borrowers, business owners, and independent contractors whose tax returns may not reflect current cash flow.
 

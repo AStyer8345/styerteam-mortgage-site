@@ -10,7 +10,7 @@ import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
 const COOKIE = 'mortgage_assistant_session';
 const MUTATING = new Set(['create_or_update_website_lead', 'create_follow_up_task', 'schedule_consultation', 'escalate_to_adam']);
 const TOOL_NAMES = new Set(['create_or_update_website_lead', 'create_follow_up_task', 'send_application_link', 'get_available_call_times', 'schedule_consultation', 'escalate_to_adam']);
-const POLICY_VERSION = 'PLACEHOLDER-LEGAL-REVIEW-REQUIRED-v1';
+const POLICY_VERSION = 'privacy-contact-2026-07-15-v1';
 
 export default async function handler(request: Request, context: Context): Promise<Response> {
   const correlationId = context.requestId || randomUUID();
@@ -113,7 +113,7 @@ function handleConfig(context: Context, headers: Record<string, string>): Respon
     aiDisclosure: "You’re chatting with an AI assistant. Mortgage information is limited to approved website materials; Adam can review questions that need human judgment.",
     sensitiveDataNotice: "Don’t send Social Security numbers, full birth dates, financial account or card numbers, passwords, authentication codes, or ID documents.",
     consentPolicyVersion: POLICY_VERSION,
-    consentText: 'PLACEHOLDER — privacy and communication consent wording requires owner/legal approval before this feature can be enabled.',
+    consentText: 'By submitting this request, I agree that Adam Styer or his team may contact me by phone, email, or text regarding my mortgage inquiry. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out. I understand this assistant is not a secure place to submit Social Security numbers, full birth dates, financial account information, passwords, authentication codes, or identification documents. See the Privacy Policy at styermortgage.com/privacy.html for more information.',
   }, 200, headers);
 }
 

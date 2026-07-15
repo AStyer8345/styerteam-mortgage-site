@@ -1,14 +1,12 @@
 ---
 title: Frequently asked questions
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-09-13
 ---
 
 # Frequently asked questions
-
-> DRAFT — owner review complete; compliance review required before activation.
 
 ## Can a self-employed borrower get a mortgage without relying primarily on tax returns?
 

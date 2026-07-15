@@ -1,14 +1,12 @@
 ---
 title: Bridge loans
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-09-13
 ---
 
 # Bridge loans
-
-> DRAFT — owner confirmed current origination capability; product and compliance review required before activation.
 
 A bridge loan is short-term financing intended to help cover a timing gap between transactions. In a buy-before-you-sell scenario, it may help a homeowner access eligible equity or otherwise support the purchase of a new home before the existing home is sold.
 

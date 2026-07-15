@@ -1,14 +1,12 @@
 ---
 title: Physician loans
-status: placeholder
+status: approved
 owner: Adam Styer
-reviewed_on: null
-review_expires_on: null
+reviewed_on: 2026-07-15
+review_expires_on: 2026-09-13
 ---
 
 # Physician loans
-
-> DRAFT — owner review complete; product availability and compliance review required before activation.
 
 Physician and professional mortgage programs are designed for certain licensed professionals whose education, student debt, contract income, or early-career earnings may not fit ordinary underwriting patterns. Depending on the current program, features may include specialized treatment of qualifying income, employment contracts, student debt, down payment, or mortgage insurance.
 
