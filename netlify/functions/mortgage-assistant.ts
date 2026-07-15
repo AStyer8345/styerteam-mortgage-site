@@ -43,6 +43,7 @@ export default async function handler(request: Request, context: Context): Promi
   }
 
   if (typeof body.confirmAction === 'string') return handleConfirmedAction(body.confirmAction, body, secret, conversationId, correlationId, session.id, headers);
+  if (body.leadRequest && typeof body.leadRequest === 'object') return handleLeadRequest(body.leadRequest as Record<string, unknown>, secret, conversationId, headers);
 
   const message = typeof body.message === 'string' ? body.message.trim() : '';
   if (!message || message.length > 4000) return json({ error: { code: 'invalid_message', message: 'Enter a message between 1 and 4,000 characters.' } }, 400, headers);
@@ -114,6 +115,21 @@ function handleConfig(context: Context, headers: Record<string, string>): Respon
     consentPolicyVersion: POLICY_VERSION,
     consentText: 'PLACEHOLDER — privacy and communication consent wording requires owner/legal approval before this feature can be enabled.',
   }, 200, headers);
+}
+
+function handleLeadRequest(value: Record<string, unknown>, secret: string, conversationId: string, headers: Record<string, string>): Response {
+  const firstName = boundedText(value.firstName, 80);
+  const lastName = boundedText(value.lastName, 100, false);
+  const email = boundedText(value.email, 254, false)?.toLowerCase();
+  const phone = boundedText(value.phone, 32, false);
+  const leadIntent = typeof value.leadIntent === 'string' && ['purchase', 'refinance', 'investment', 'information', 'other'].includes(value.leadIntent) ? value.leadIntent : null;
+  const timeline = typeof value.timeline === 'string' && ['within_30_days', '31_to_90_days', 'more_than_90_days', 'unsure'].includes(value.timeline) ? value.timeline : null;
+  if (!firstName || (!email && !phone) || !leadIntent || !timeline) return json({ error: { code: 'invalid_lead_request', message: 'First name, a valid contact method, intent, and timeline are required.' } }, 400, headers);
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: { code: 'invalid_email', message: 'Enter a valid email address.' } }, 400, headers);
+  if (phone && !/^\+?[0-9() .-]{10,20}$/.test(phone)) return json({ error: { code: 'invalid_phone', message: 'Enter a valid phone number.' } }, 400, headers);
+  const args = { firstName, lastName: lastName || null, email: email || null, phone: phone || null, leadIntent, timeline, preferredContact: email ? 'email' : 'phone' };
+  const token = createConfirmationToken(secret, { name: 'create_or_update_website_lead', args, conversationId, toolCallId: `structured-lead-${randomUUID()}`, expiresAt: Date.now() + 10 * 60_000 });
+  return json({ conversationId, message: 'Please review the privacy notice and confirm before I save this contact request.', sources: [], confirmation: { token, operation: 'create_or_update_website_lead', summary: `Save a contact request for ${firstName}` } }, 200, headers);
 }
 
 async function handleConfirmedAction(token: string, body: Record<string, unknown>, secret: string, conversationId: string, correlationId: string, sessionId: string, headers: Record<string, string>) {
@@ -210,6 +226,12 @@ function parseSourceRef(value: string) {
 }
 function isGreeting(value: string) { return /^(?:hi|hello|hey|good (?:morning|afternoon|evening))[!. ]*$/i.test(value); }
 function validUuid(value: unknown) { return typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
+function boundedText(value: unknown, max: number, required = true) {
+  if (value == null || value === '') return required ? null : undefined;
+  if (typeof value !== 'string') return null;
+  const clean = value.trim();
+  return clean && clean.length <= max && !/[\u0000-\u001F]/.test(clean) ? clean : null;
+}
 function json(body: unknown, status: number, headers: Record<string, string>) { return new Response(JSON.stringify(body), { status, headers }); }
 
 export const config: Config = { path: '/api/mortgage-assistant', method: ['GET', 'POST'] };

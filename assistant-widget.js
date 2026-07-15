@@ -50,6 +50,14 @@
       '    <textarea id="ma-input" rows="2" maxlength="4000" placeholder="Ask a general mortgage question…" required></textarea>',
       '    <button type="submit" class="ma-send">Send<span class="ma-visually-hidden"> message</span></button>',
       '  </form>',
+      '  <button type="button" class="ma-lead-toggle">Ask Adam to follow up</button>',
+      '  <form class="ma-lead-form" hidden>',
+      '    <div class="ma-lead-grid"><label>First name<input name="firstName" maxlength="80" required></label><label>Last name<input name="lastName" maxlength="100"></label></div>',
+      '    <label>Email<input name="email" type="email" maxlength="254" autocomplete="email"></label>',
+      '    <label>Phone<input name="phone" type="tel" maxlength="32" autocomplete="tel"></label>',
+      '    <div class="ma-lead-grid"><label>What can Adam help with?<select name="leadIntent" required><option value="">Choose one</option><option value="purchase">Purchase</option><option value="refinance">Refinance</option><option value="investment">Investment property</option><option value="information">General information</option><option value="other">Other</option></select></label><label>Timeline<select name="timeline" required><option value="">Choose one</option><option value="within_30_days">Within 30 days</option><option value="31_to_90_days">31–90 days</option><option value="more_than_90_days">More than 90 days</option><option value="unsure">Not sure</option></select></label></div>',
+      '    <div class="ma-lead-actions"><button type="submit" class="ma-lead-submit">Review request</button><button type="button" class="ma-lead-cancel">Cancel</button></div>',
+      '  </form>',
       '  <p class="ma-sensitive-notice"></p>',
       '  <div class="ma-status ma-visually-hidden" role="status" aria-live="polite"></div>',
       '</section>',
@@ -72,6 +80,9 @@
     ui.consentText = root.querySelector('.ma-consent span');
     ui.confirm = root.querySelector('.ma-confirm');
     ui.cancel = root.querySelector('.ma-cancel');
+    ui.leadToggle = root.querySelector('.ma-lead-toggle');
+    ui.leadForm = root.querySelector('.ma-lead-form');
+    ui.leadCancel = root.querySelector('.ma-lead-cancel');
     root.querySelector('#ma-disclosure').textContent = state.config.aiDisclosure;
     root.querySelector('.ma-sensitive-notice').textContent = state.config.sensitiveDataNotice;
 
@@ -84,6 +95,9 @@
     });
     ui.confirm.addEventListener('click', confirmAction);
     ui.cancel.addEventListener('click', clearConfirmation);
+    ui.leadToggle.addEventListener('click', function () { ui.leadForm.hidden = false; ui.leadToggle.hidden = true; ui.leadForm.querySelector('input').focus(); });
+    ui.leadCancel.addEventListener('click', closeLeadForm);
+    ui.leadForm.addEventListener('submit', submitLeadRequest);
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && !ui.panel.hidden) closePanel();
     });
@@ -180,6 +194,32 @@
     if (!ui.confirmation) return;
     ui.confirmation.hidden = true;
     ui.consentInput.checked = false;
+  }
+
+  function submitLeadRequest(event) {
+    event.preventDefault();
+    if (state.busy) return;
+    var data = new FormData(ui.leadForm);
+    if (!String(data.get('email') || '').trim() && !String(data.get('phone') || '').trim()) {
+      ui.status.textContent = 'Enter an email address or phone number.';
+      ui.leadForm.querySelector('[name="email"]').focus();
+      return;
+    }
+    setBusy(true, 'Preparing your contact request for review.');
+    request({
+      conversationId: state.conversationId,
+      leadRequest: {
+        firstName: data.get('firstName'), lastName: data.get('lastName'), email: data.get('email'), phone: data.get('phone'),
+        leadIntent: data.get('leadIntent'), timeline: data.get('timeline'),
+      },
+      sourcePage: window.location.href.split('#')[0],
+    }).then(function (response) { closeLeadForm(); handleResponse(response); }).catch(handleError).finally(function () { setBusy(false, ''); });
+  }
+
+  function closeLeadForm() {
+    ui.leadForm.hidden = true;
+    ui.leadToggle.hidden = false;
+    ui.leadToggle.focus();
   }
 
   function addMessage(role, text) {
