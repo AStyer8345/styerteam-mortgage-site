@@ -124,3 +124,16 @@ Next weekday run (Thu 2026-07-16) = **Internal Linking + Funnel Flow** rotation.
 - ✅ Concurrent-writer conflict handled without clobbering other session's work
 - ✅ Run log + learnings + CONTEXT updated; task-run emitted
 - ⚠️ 10-day scheduler outage surfaced to Adam (new HIGH escalation)
+
+---
+
+## TOMORROW_PRIORITY (from styer-competitive-weekly, 2026-07-15)
+
+**Two structural SERP wins this run — both are DEFEND-THE-LEAD, no new builds, no Adam gate:**
+
+1. **`/non-qm-loans.html` DEBUTS #1 on "non-qm loans austin tx"** (was NR every prior week; out-ranks LendFriend #4). Verified live HTTP 200. **Action for site-daily:** make non-QM the internal-link HUB for the cluster — confirm self-employed / 1099 / bank-statement / asset-depletion money pages all link INTO `/non-qm-loans.html`, and keep its `dateModified` fresh. Consolidate the authority on the term Adam now owns.
+2. **Bank-statement page is the ONE degrading position** — `bank statement loan austin tx` slid #7→#8→#9 across 3 measured runs; the #1 result is a *blog* (mbanc). **Action for site-daily:** treat `/bank-statement-loans-austin-tx.html` as a content-depth/AEO target (answer-first, question H2s) to counter the crowding (new entrants: Austin Home Loans #8, Rate Advantage #10). This is content, NOT a form change → un-gated.
+3. **Deprioritize DSCR** — now the sole outright gap, but the SERP is 100% investor/hard-money (Newfi, Easy Street, Tidal, Defy). Off the Phase A owner-occupied thesis. Recommend NOT chasing it.
+4. **Drop AggregateRating from "active blockers"** — per `reference_aggregate_rating_self_serving.md` it's AEO-only, no SERP stars; real star lever is GBP/Zillow off-page. Stop carrying it as a competitive priority.
+
+Full report: `run-logs/competitive/2026-07-15.md`.

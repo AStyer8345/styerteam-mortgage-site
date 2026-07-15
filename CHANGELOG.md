@@ -1,3 +1,15 @@
+## 2026-07-15 — styer-competitive-weekly (first run since Wk 16 / 06-22): TWO structural SERP wins — research only, 0 mutations
+
+- **Ran 3 weeks late** — scheduler outage meant no comp runs 06-29 / 07-06 / 07-13 (same outage the site-daily task escalated). This run bridges the full gap.
+- **WIN 1 — `non-qm loans austin tx`: Styer DEBUTS #1** (was NR out of top 10 every prior week). Out-ranks LendFriend (#4). Verified live: HTTP 200, title match, FAQPage schema present. Closes one of the two long-standing complicated-income gaps; validates GOALS wholesale-pricing leg (page titled "40+ Wholesale Lenders").
+- **WIN 2 — Westlake #1** on suburb rotation (`/westlake-mortgage-lender.html`), first clean measurement since Wk 11 when it was dropped for CA-disambiguation noise. San Marcos held #10.
+- **Moat held:** asset-depletion #1 (across full 3-wk gap, +2nd URL #5); self-employed blog #1; jumbo #2. **Tracked complicated-income top-10 rose 5 → 6 of 7; #1 rankings 2 → 3.** DSCR now the sole outright gap.
+- **Lone decliner:** `bank statement loan austin tx` #8 → #9 — a 3-run downtrend (#7→#8→#9), the one genuinely degrading position; identifiable cause (new entrants Austin Home Loans #8, Rate Advantage #10 + a ranking blog at #1). 1099 also softened #3→#4.
+- **Head-term mean-reversion (again):** all 3 head-term #1s that "reclaimed" in Wk 16 (Barton Creek lender, Highlander broker, MortgageAustin pre-approved) gave those #1s right back this week — confirming head-term rank is WebSearch composition noise, not real movement. get-pre-approved: Styer #9 (held top 10 2nd wk, ↓2 from #7).
+- **Re-Verify Gate:** 18 prior claims re-checked live; cleared/updated 12, held 6. Full clearance block + rankings in `run-logs/competitive/2026-07-15.md` (copied to latest).
+- **Policy correction reinforced:** AggregateRating is AEO-only (no SERP stars) per `reference_aggregate_rating_self_serving.md` — recommended downstream agents DROP it from "active blockers"; real star lever = GBP/Zillow off-page.
+- **Tooling (dead run, ~5th consecutive):** NotebookLM advisor script absent + CLI auth-expired, both re-verified live → Steps 0/4/6-push NotebookLM portions skipped. Google Ads paid landscape not programmatically verifiable (organic-only WebSearch) — no ad-count claims fabricated.
+
 ## 2026-07-15 — styer-site-daily (Wednesday, Suburb Deep Dive → Kyle): 1 real fix + scheduler outage flagged
 
 - **Kyle FAQ speed-claim fix** (commit `0e5540e`): FAQ "How long does pre-approval take?" led with "24 to 48 hours" — the retired Decision-2a speed variant ("same-day" is the kept phrasing) — while the page's meta/AEO/CTA all say "same-day pre-approval." Rewrote both JSON-LD and visible accordion to "Adam issues same-day pre-approvals routinely… often within one business day." 3/3 JSON-LD blocks re-validated, schema↔visible parity confirmed, verified live HTTP 200.
