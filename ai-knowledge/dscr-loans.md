@@ -8,6 +8,10 @@ review_expires_on: null
 
 # DSCR loans
 
-> PLACEHOLDER — product and underwriting review required before activation.
+> DRAFT — owner review complete; product and underwriting review required before activation.
 
-Add approved educational information about debt-service-coverage-ratio lending. Do not calculate eligibility or publish universal ratios, pricing, reserves, or property requirements.
+A debt-service-coverage-ratio loan is an investment-property mortgage that generally evaluates the property's rental income in relation to its housing expense instead of qualifying primarily from the borrower's personal employment income.
+
+The lender determines which rent evidence and property expenses apply. Long-term leases, market-rent estimates, short-term-rental information, taxes, insurance, association dues, and the proposed loan payment may be relevant depending on the program. Some programs may permit ownership through an eligible business entity.
+
+Minimum ratios, credit standards, down payments, reserves, property types, short-term-rental treatment, entity requirements, prepayment terms, and pricing differ by lender. The assistant may explain the concept but must not calculate a ratio from chat data or conclude that a borrower or property qualifies.
