@@ -1,0 +1,238 @@
+(function () {
+  'use strict';
+
+  var endpoint = '/api/mortgage-assistant';
+  var state = {
+    conversationId: createId(),
+    turns: [],
+    pendingConfirmation: null,
+    config: null,
+    busy: false,
+  };
+  var ui = {};
+
+  fetch(endpoint, { credentials: 'same-origin', headers: { Accept: 'application/json' } })
+    .then(function (response) { return response.ok ? response.json() : Promise.reject(new Error('disabled')); })
+    .then(function (config) {
+      if (!config || config.enabled !== true) return;
+      state.config = config;
+      renderWidget();
+    })
+    .catch(function () {});
+
+  function renderWidget() {
+    var stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    stylesheet.href = '/assistant-widget.css?v=20260715';
+    document.head.appendChild(stylesheet);
+
+    var root = document.createElement('div');
+    root.className = 'mortgage-assistant';
+    root.innerHTML = [
+      '<button class="ma-launcher" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="mortgage-assistant-panel">',
+      '  <span class="ma-launcher-icon" aria-hidden="true">✦</span>',
+      '  <span>Ask a mortgage question</span>',
+      '</button>',
+      '<section class="ma-panel" id="mortgage-assistant-panel" role="dialog" aria-modal="false" aria-labelledby="ma-title" hidden>',
+      '  <header class="ma-header">',
+      '    <div><p class="ma-kicker">AI ASSISTANT</p><h2 id="ma-title">Mortgage questions, grounded answers</h2></div>',
+      '    <button class="ma-close" type="button" aria-label="Close mortgage assistant">×</button>',
+      '  </header>',
+      '  <div class="ma-disclosure" id="ma-disclosure"></div>',
+      '  <div class="ma-messages" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Conversation"></div>',
+      '  <div class="ma-confirmation" hidden>',
+      '    <p class="ma-confirmation-summary"></p>',
+      '    <label class="ma-consent" hidden><input type="checkbox"> <span></span></label>',
+      '    <div class="ma-confirmation-actions"><button type="button" class="ma-confirm">Confirm</button><button type="button" class="ma-cancel">Cancel</button></div>',
+      '  </div>',
+      '  <form class="ma-form">',
+      '    <label for="ma-input" class="ma-visually-hidden">Message the mortgage assistant</label>',
+      '    <textarea id="ma-input" rows="2" maxlength="4000" placeholder="Ask a general mortgage question…" required></textarea>',
+      '    <button type="submit" class="ma-send">Send<span class="ma-visually-hidden"> message</span></button>',
+      '  </form>',
+      '  <p class="ma-sensitive-notice"></p>',
+      '  <div class="ma-status ma-visually-hidden" role="status" aria-live="polite"></div>',
+      '</section>',
+    ].join('');
+    document.body.appendChild(root);
+
+    ui.root = root;
+    ui.launcher = root.querySelector('.ma-launcher');
+    ui.panel = root.querySelector('.ma-panel');
+    ui.close = root.querySelector('.ma-close');
+    ui.messages = root.querySelector('.ma-messages');
+    ui.form = root.querySelector('.ma-form');
+    ui.input = root.querySelector('#ma-input');
+    ui.send = root.querySelector('.ma-send');
+    ui.status = root.querySelector('.ma-status');
+    ui.confirmation = root.querySelector('.ma-confirmation');
+    ui.confirmationSummary = root.querySelector('.ma-confirmation-summary');
+    ui.consent = root.querySelector('.ma-consent');
+    ui.consentInput = root.querySelector('.ma-consent input');
+    ui.consentText = root.querySelector('.ma-consent span');
+    ui.confirm = root.querySelector('.ma-confirm');
+    ui.cancel = root.querySelector('.ma-cancel');
+    root.querySelector('#ma-disclosure').textContent = state.config.aiDisclosure;
+    root.querySelector('.ma-sensitive-notice').textContent = state.config.sensitiveDataNotice;
+
+    addMessage('assistant', 'Hi — I can answer general mortgage questions when approved website information supports the answer, or help you reach Adam.');
+    ui.launcher.addEventListener('click', openPanel);
+    ui.close.addEventListener('click', closePanel);
+    ui.form.addEventListener('submit', submitMessage);
+    ui.input.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); ui.form.requestSubmit(); }
+    });
+    ui.confirm.addEventListener('click', confirmAction);
+    ui.cancel.addEventListener('click', clearConfirmation);
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !ui.panel.hidden) closePanel();
+    });
+  }
+
+  function openPanel() {
+    ui.panel.hidden = false;
+    ui.launcher.setAttribute('aria-expanded', 'true');
+    window.setTimeout(function () { ui.input.focus(); }, 0);
+  }
+
+  function closePanel() {
+    ui.panel.hidden = true;
+    ui.launcher.setAttribute('aria-expanded', 'false');
+    ui.launcher.focus();
+  }
+
+  function submitMessage(event) {
+    event.preventDefault();
+    if (state.busy) return;
+    var message = ui.input.value.trim();
+    if (!message) return;
+    clearConfirmation();
+    addMessage('user', message);
+    ui.input.value = '';
+    setBusy(true, 'The assistant is reviewing approved information.');
+    request({
+      message: message,
+      conversationId: state.conversationId,
+      conversation: state.turns.slice(-8),
+      sourcePage: window.location.href.split('#')[0],
+    }).then(handleResponse).catch(handleError).finally(function () { setBusy(false, ''); });
+  }
+
+  function handleResponse(data) {
+    if (data.conversationId) state.conversationId = data.conversationId;
+    addMessage('assistant', data.message || 'I could not complete that request.');
+    if (Array.isArray(data.sources) && data.sources.length) addSources(data.sources);
+    if (data.toolResult && data.toolResult.data && data.toolResult.data.applicationUrl) addTrustedLink(data.toolResult.data.applicationUrl, 'Open secure application');
+    if (data.confirmation) showConfirmation(data.confirmation);
+  }
+
+  function handleError(error) {
+    addMessage('assistant', error && error.message ? error.message : 'The assistant is temporarily unavailable. No action was completed.');
+  }
+
+  function request(body) {
+    return fetch(endpoint, {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(body),
+    }).then(function (response) {
+      return response.json().catch(function () { return {}; }).then(function (data) {
+        if (!response.ok) throw new Error(data.error && data.error.message ? data.error.message : 'The request could not be completed.');
+        return data;
+      });
+    });
+  }
+
+  function showConfirmation(confirmation) {
+    state.pendingConfirmation = confirmation;
+    ui.confirmationSummary.textContent = confirmation.summary || 'Confirm this action?';
+    var needsConsent = confirmation.operation === 'create_or_update_website_lead';
+    ui.consent.hidden = !needsConsent;
+    ui.consentInput.checked = false;
+    ui.consentText.textContent = state.config.consentText;
+    ui.confirmation.hidden = false;
+    ui.confirm.focus();
+  }
+
+  function confirmAction() {
+    if (!state.pendingConfirmation || state.busy) return;
+    var needsConsent = state.pendingConfirmation.operation === 'create_or_update_website_lead';
+    if (needsConsent && !ui.consentInput.checked) {
+      ui.status.textContent = 'Please review and accept the privacy notice before confirming.';
+      ui.consentInput.focus();
+      return;
+    }
+    setBusy(true, 'Confirming the requested action.');
+    request({
+      conversationId: state.conversationId,
+      confirmAction: state.pendingConfirmation.token,
+      consentAccepted: needsConsent ? ui.consentInput.checked : undefined,
+      sourcePage: window.location.href.split('#')[0],
+    }).then(function (data) {
+      clearConfirmation();
+      handleResponse(data);
+    }).catch(handleError).finally(function () { setBusy(false, ''); });
+  }
+
+  function clearConfirmation() {
+    state.pendingConfirmation = null;
+    if (!ui.confirmation) return;
+    ui.confirmation.hidden = true;
+    ui.consentInput.checked = false;
+  }
+
+  function addMessage(role, text) {
+    var item = document.createElement('div');
+    item.className = 'ma-message ma-message-' + role;
+    var label = document.createElement('span');
+    label.className = 'ma-visually-hidden';
+    label.textContent = role === 'user' ? 'You: ' : 'AI assistant: ';
+    item.appendChild(label);
+    item.appendChild(document.createTextNode(text));
+    ui.messages.appendChild(item);
+    ui.messages.scrollTop = ui.messages.scrollHeight;
+    state.turns.push({ role: role, text: text });
+    if (state.turns.length > 16) state.turns = state.turns.slice(-16);
+  }
+
+  function addSources(sources) {
+    var box = document.createElement('div');
+    box.className = 'ma-sources';
+    box.textContent = 'Approved sources: ' + sources.map(function (source) { return source.file + (source.section ? ' — ' + source.section : ''); }).join('; ');
+    ui.messages.appendChild(box);
+  }
+
+  function addTrustedLink(value, label) {
+    try {
+      var url = new URL(value);
+      if (url.protocol !== 'https:') return;
+      var wrapper = document.createElement('div');
+      wrapper.className = 'ma-trusted-link';
+      var link = document.createElement('a');
+      link.href = url.href;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = label;
+      wrapper.appendChild(link);
+      ui.messages.appendChild(wrapper);
+    } catch (_) {}
+  }
+
+  function setBusy(busy, message) {
+    state.busy = busy;
+    ui.send.disabled = busy;
+    ui.input.disabled = busy;
+    ui.confirm.disabled = busy;
+    ui.status.textContent = message;
+    ui.send.textContent = busy ? 'Wait…' : 'Send';
+  }
+
+  function createId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (character) {
+      var random = Math.random() * 16 | 0;
+      return (character === 'x' ? random : (random & 3 | 8)).toString(16);
+    });
+  }
+})();

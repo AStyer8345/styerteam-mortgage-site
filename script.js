@@ -913,7 +913,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialFilter();
   initPrequalForm();
   initCityToggle();
+  initMortgageAssistant();
 });
+
+function initMortgageAssistant() {
+  if (document.querySelector('script[data-mortgage-assistant]')) return;
+  var script = document.createElement('script');
+  script.src = '/assistant-widget.js?v=20260715';
+  script.defer = true;
+  script.dataset.mortgageAssistant = 'true';
+  document.head.appendChild(script);
+}
 
 function initCityToggle() {
   var btn = document.getElementById('show-all-cities');
