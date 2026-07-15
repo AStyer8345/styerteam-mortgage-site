@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 
 test('assistant gateway is server-side and feature-gated', () => {
-  const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.ts', 'utf8');
+  const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
   const openai = fs.readFileSync('netlify/functions/_shared/openai-responses.ts', 'utf8');
   assert.match(gateway, /MORTGAGE_ASSISTANT_ENABLED/);
   assert.match(openai, /OPENAI_API_KEY/);
