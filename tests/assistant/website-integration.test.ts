@@ -29,3 +29,11 @@ test('assistant offers the approved secure application beside human follow-up', 
   assert.match(browser, /class="ma-application-link"/);
   assert.match(browser, /rel="noopener noreferrer"/);
 });
+
+test('assistant renders readable paragraphs, lists, and collapsible sources safely', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  assert.match(browser, /appendFormattedAnswer/);
+  assert.match(browser, /document\.createTextNode\(line\)/);
+  assert.match(browser, /document\.createElement\('details'\)/);
+  assert.doesNotMatch(browser, /innerHTML\s*=\s*text/);
+});

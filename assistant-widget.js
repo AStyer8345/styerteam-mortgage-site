@@ -23,7 +23,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260716-actions-v3';
+    stylesheet.href = '/assistant-widget.css?v=20260716-readable-v4';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -232,7 +232,8 @@
     label.className = 'ma-visually-hidden';
     label.textContent = role === 'user' ? 'You: ' : 'AI assistant: ';
     item.appendChild(label);
-    item.appendChild(document.createTextNode(text));
+    if (role === 'assistant') appendFormattedAnswer(item, text);
+    else item.appendChild(document.createTextNode(text));
     ui.messages.appendChild(item);
     ui.messages.scrollTop = ui.messages.scrollHeight;
     state.turns.push({ role: role, text: text });
@@ -240,10 +241,47 @@
   }
 
   function addSources(sources) {
-    var box = document.createElement('div');
+    var box = document.createElement('details');
     box.className = 'ma-sources';
-    box.textContent = 'Approved sources: ' + sources.map(function (source) { return source.file + (source.section ? ' — ' + source.section : ''); }).join('; ');
+    var summary = document.createElement('summary');
+    summary.textContent = 'Sources used (' + sources.length + ')';
+    var list = document.createElement('ul');
+    sources.forEach(function (source) {
+      var item = document.createElement('li');
+      item.textContent = source.section || String(source.file || '').replace(/\.md$/, '').replace(/-/g, ' ');
+      list.appendChild(item);
+    });
+    box.appendChild(summary);
+    box.appendChild(list);
     ui.messages.appendChild(box);
+  }
+
+  function appendFormattedAnswer(container, text) {
+    var content = document.createElement('div');
+    content.className = 'ma-message-content';
+    String(text || '').trim().split(/\n{2,}/).forEach(function (block) {
+      var lines = block.split('\n').map(function (line) { return line.trim(); }).filter(Boolean);
+      if (!lines.length) return;
+      var bullets = lines.every(function (line) { return /^[-*•]\s+/.test(line); });
+      var numbered = lines.every(function (line) { return /^\d+[.)]\s+/.test(line); });
+      if (bullets || numbered) {
+        var list = document.createElement(numbered ? 'ol' : 'ul');
+        lines.forEach(function (line) {
+          var item = document.createElement('li');
+          item.textContent = line.replace(bullets ? /^[-*•]\s+/ : /^\d+[.)]\s+/, '');
+          list.appendChild(item);
+        });
+        content.appendChild(list);
+        return;
+      }
+      var paragraph = document.createElement('p');
+      lines.forEach(function (line, index) {
+        if (index) paragraph.appendChild(document.createElement('br'));
+        paragraph.appendChild(document.createTextNode(line));
+      });
+      content.appendChild(paragraph);
+    });
+    container.appendChild(content);
   }
 
   function addTrustedLink(value, label) {
