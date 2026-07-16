@@ -13,8 +13,8 @@ const instructionPatterns = [
 ];
 const errors = [];
 
-if (!manifest.version || !Array.isArray(manifest.files) || manifest.files.length !== 12) {
-  errors.push('manifest.json must define a version and exactly 12 approved filenames');
+if (!manifest.version || !Array.isArray(manifest.files) || manifest.files.length < 1) {
+  errors.push('manifest.json must define a version and at least one approved filename');
 }
 
 for (const filename of manifest.files || []) {

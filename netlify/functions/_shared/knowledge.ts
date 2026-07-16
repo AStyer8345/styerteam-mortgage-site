@@ -12,7 +12,7 @@ export async function retrieveApprovedKnowledge(question: string, limit = 4): Pr
   cached = index;
   const terms = tokenize(question);
   const results = index.chunks
-    .map((chunk) => ({ ...chunk, score: score(terms, tokenize(`${chunk.title} ${chunk.section} ${chunk.text}`)) }))
+    .map((chunk) => ({ ...chunk, score: score(terms, tokenize(`${chunk.title} ${chunk.section}`), tokenize(chunk.text)) }))
     .filter((chunk) => chunk.score >= 0.18)
     .sort((left, right) => right.score - left.score)
     .slice(0, limit);
@@ -74,10 +74,13 @@ function tokenize(value: string): Set<string> {
   return new Set((value.toLowerCase().match(/[a-z0-9]+/g) || []).filter((term) => term.length > 2 && !STOP.has(term)));
 }
 
-function score(query: Set<string>, candidate: Set<string>): number {
+function score(query: Set<string>, heading: Set<string>, body: Set<string>): number {
   if (!query.size) return 0;
   let matches = 0;
-  for (const term of query) if (candidate.has(term)) matches += 1;
+  for (const term of query) {
+    if (heading.has(term)) matches += 1.5;
+    else if (body.has(term)) matches += 1;
+  }
   return matches / query.size;
 }
 

@@ -1,5 +1,5 @@
 {
-  "version": "approved-2026-07-15",
+  "version": "approved-2026-07-16-general-mortgage-v1",
   "files": [
     "company-information.md",
     "purchase-process.md",
@@ -12,6 +12,13 @@
     "bridge-loans.md",
     "asset-depletion.md",
     "faqs.md",
-    "compliance-boundaries.md"
+    "compliance-boundaries.md",
+    "core-loan-programs.md",
+    "mortgage-basics.md",
+    "credit-income-and-underwriting.md",
+    "funds-closing-and-escrow.md",
+    "property-appraisal-and-insurance.md",
+    "refinance-and-home-equity.md",
+    "common-borrower-scenarios.md"
   ]
 }
