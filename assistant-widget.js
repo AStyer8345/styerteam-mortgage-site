@@ -23,7 +23,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260716-fullscreen';
+    stylesheet.href = '/assistant-widget.css?v=20260716-fullscreen-v2';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
