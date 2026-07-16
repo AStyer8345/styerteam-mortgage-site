@@ -23,7 +23,8 @@ test('browser code never contains privileged credential names', () => {
 
 test('assistant offers the approved secure application beside human follow-up', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
-  assert.match(browser, /Ask Adam to follow up/);
+  assert.match(browser, /Have Adam contact me/);
+  assert.match(browser, /Start my application/);
   assert.match(browser, /https:\/\/hypersmart\.my1003app\.com\/513013\/register/);
   assert.match(browser, /class="ma-application-link"/);
   assert.match(browser, /rel="noopener noreferrer"/);

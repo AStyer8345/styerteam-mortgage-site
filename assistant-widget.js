@@ -51,8 +51,8 @@
       '    <button type="submit" class="ma-send">Send<span class="ma-visually-hidden"> message</span></button>',
       '  </form>',
       '  <div class="ma-next-actions">',
-      '    <button type="button" class="ma-lead-toggle">Ask Adam to follow up</button>',
-      '    <a class="ma-application-link" href="https://hypersmart.my1003app.com/513013/register" target="_blank" rel="noopener noreferrer">Start an application</a>',
+      '    <button type="button" class="ma-lead-toggle">Have Adam contact me</button>',
+      '    <a class="ma-application-link" href="https://hypersmart.my1003app.com/513013/register" target="_blank" rel="noopener noreferrer">Start my application</a>',
       '  </div>',
       '  <form class="ma-lead-form" hidden>',
       '    <div class="ma-lead-grid"><label>First name<input name="firstName" maxlength="80" required></label><label>Last name<input name="lastName" maxlength="100"></label></div>',
@@ -89,7 +89,7 @@
     root.querySelector('#ma-disclosure').textContent = state.config.aiDisclosure;
     root.querySelector('.ma-sensitive-notice').textContent = state.config.sensitiveDataNotice;
 
-    addMessage('assistant', 'Hi — I can answer general mortgage questions when approved website information supports the answer, or help you reach Adam.');
+    addMessage('assistant', 'Hi! I’m here to make mortgages a little easier. Ask me a question, or choose an option below whenever you’re ready for the next step.');
     ui.launcher.addEventListener('click', openPanel);
     ui.close.addEventListener('click', closePanel);
     ui.form.addEventListener('submit', submitMessage);
