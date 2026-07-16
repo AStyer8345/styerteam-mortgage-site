@@ -19,3 +19,7 @@ test('rejects prohibited outcome claims in model output', () => {
   assert.equal(validateAssistantOutput('You are approved for this loan.').safe, false);
   assert.equal(validateAssistantOutput('A licensed human should review your specific situation.').safe, true);
 });
+
+test('allows a clear statement that program guidance does not guarantee approval', () => {
+  assert.equal(validateAssistantOutput('A minimum credit score does not guarantee approval. The full application must be reviewed.').safe, true);
+});

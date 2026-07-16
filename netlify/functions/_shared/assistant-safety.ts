@@ -9,7 +9,8 @@ const SENSITIVE_RULES: Array<{ type: string; pattern: RegExp }> = [
 
 const PROHIBITED_OUTPUT = [
   /\b(?:you are|you're|you appear) (?:approved|preapproved|qualified|eligible)\b/i,
-  /\b(?:guarantee|guaranteed|definitely|certainly)\b.{0,50}\b(?:rate|payment|closing|approval|qualification)\b/i,
+  /\b(?:we|i) (?:can |will )?guarantee\b.{0,50}\b(?:rate|payment|closing|approval|qualification)\b/i,
+  /\b(?:guaranteed|definitely|certainly)\b.{0,50}\b(?:rate|payment|closing|approval|qualification)\b/i,
   /\byour (?:rate|payment) (?:is|will be)\b/i,
   /\bwe (?:will|can) close (?:in|by|on)\b/i,
 ];
