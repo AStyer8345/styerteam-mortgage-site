@@ -23,7 +23,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260716-fullscreen-v2';
+    stylesheet.href = '/assistant-widget.css?v=20260716-actions-v3';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -50,7 +50,10 @@
       '    <textarea id="ma-input" rows="2" maxlength="4000" placeholder="Ask a general mortgage question…" required></textarea>',
       '    <button type="submit" class="ma-send">Send<span class="ma-visually-hidden"> message</span></button>',
       '  </form>',
-      '  <button type="button" class="ma-lead-toggle">Ask Adam to follow up</button>',
+      '  <div class="ma-next-actions">',
+      '    <button type="button" class="ma-lead-toggle">Ask Adam to follow up</button>',
+      '    <a class="ma-application-link" href="https://hypersmart.my1003app.com/513013/register" target="_blank" rel="noopener noreferrer">Start an application</a>',
+      '  </div>',
       '  <form class="ma-lead-form" hidden>',
       '    <div class="ma-lead-grid"><label>First name<input name="firstName" maxlength="80" required></label><label>Last name<input name="lastName" maxlength="100"></label></div>',
       '    <label>Email<input name="email" type="email" maxlength="254" autocomplete="email"></label>',

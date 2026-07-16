@@ -20,3 +20,11 @@ test('browser code never contains privileged credential names', () => {
   const browser = fs.existsSync('assistant-widget.js') ? fs.readFileSync('assistant-widget.js', 'utf8') : '';
   assert.doesNotMatch(browser, /OPENAI_API_KEY|LOANOS_ASSISTANT_SIGNING_SECRET|LOANOS_ASSISTANT_BYPASS_TOKEN|SUPABASE_SERVICE/);
 });
+
+test('assistant offers the approved secure application beside human follow-up', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  assert.match(browser, /Ask Adam to follow up/);
+  assert.match(browser, /https:\/\/hypersmart\.my1003app\.com\/513013\/register/);
+  assert.match(browser, /class="ma-application-link"/);
+  assert.match(browser, /rel="noopener noreferrer"/);
+});
