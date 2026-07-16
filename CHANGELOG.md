@@ -1,3 +1,11 @@
+## 2026-07-16 — styer-site-daily (Thursday, Internal Linking + Funnel Flow): clean audit, 0 mutations
+
+- **Non-negotiables green:** sitemap.xml + robots.txt HTTP 200 (sandbox-disabled curl — sandboxed Bash false-returns `000` on network); conversion tracking **10/10** via HTML-token matrix (get-preapproved→purchase_prequal, refinance-quote→refi_quote, thank-you→thank_you_page_view; GTM ×2, tel, TCPA, action→/thank-you all present).
+- **Full funnel traced end-to-end, no leak:** homepage quick form → `script.js:482-485` dataLayer(quick_contact) → `/thank-you`; Ads LPs → generate_lead + action=/thank-you; contact.html action=/thank-you + generate_lead; thank-you.html Calendly + phone + 3-step.
+- **Internal-link 2+ bar passed on 3 pages:** non-qm-loans (9 spoke links), self-employed (contextual hub links), bank-statement (36 internal hrefs).
+- **Competitive TOMORROW_PRIORITY (07-15) folded in — both un-gated asks already satisfied, no manufactured edits:** (1) non-QM hub authority-consolidation already bidirectional for all 4 named spokes; dateModified 06-26 not fake-bumped. (2) bank-statement AEO already answer-first + 10-question FAQPage schema with answer-lead text; #7→#9 slide is competitive crowding, not a page defect.
+- **Design spot-check clean** (non-qm + bank-statement): GTM ×2, NMLS 513013 + company 2653540, 0 legacy-entity drift, 0 "21-day"/"24-48hr" claims. Concurrent-writer's uncommitted `round-rock-mortgage-lender.html` left untouched (sister-task domain, explicit file-adds only). loanos-clone untouched (paused-LoanOS guard). Scheduler fired today — recovery continuing after 07-06→07-14 outage.
+
 ## 2026-07-15 — styer-competitive-weekly (first run since Wk 16 / 06-22): TWO structural SERP wins — research only, 0 mutations
 
 - **Ran 3 weeks late** — scheduler outage meant no comp runs 06-29 / 07-06 / 07-13 (same outage the site-daily task escalated). This run bridges the full gap.
