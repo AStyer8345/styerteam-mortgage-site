@@ -11,6 +11,7 @@ test('assistant gateway is server-side and feature-gated', () => {
   assert.match(loanos, /X-Vercel-Protection-Bypass/);
   assert.match(gateway, /scanSensitiveInput\(message\)/);
   assert.match(gateway, /retrieveApprovedKnowledge\(message\)/);
+  assert.match(gateway, /confirmation_recorded/);
   assert.match(openai, /store: false/);
   assert.doesNotMatch(gateway, /Access-Control-Allow-Origin/);
 });

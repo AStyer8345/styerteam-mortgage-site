@@ -140,9 +140,11 @@ async function handleConfirmedAction(token: string, body: Record<string, unknown
   const confirmation = verifyConfirmationToken(secret, token);
   if (!confirmation || confirmation.conversationId !== conversationId || !MUTATING.has(confirmation.name)) return json({ error: { code: 'invalid_confirmation', message: 'That confirmation expired or is invalid.' } }, 400, headers);
   if (confirmation.name === 'create_or_update_website_lead' && body.consentAccepted !== true) return json({ error: { code: 'consent_required', message: 'Please review and accept the privacy notice before submitting contact information.' } }, 400, headers);
+  const recordedConfirmation = await recordTurn(conversationId, correlationId, sessionId, '[CONFIRMED_ACTION]', 'The visitor confirmed the requested action.', [], { confirmed_tool: confirmation.name, confirmation_recorded: true }, undefined, 0);
+  if (!recordedConfirmation.ok) return json({ error: { code: 'conversation_unavailable', message: 'The request could not be safely recorded. Please try again.' } }, 502, headers);
   const result = await executeTool(confirmation.name, confirmation.args, conversationId, correlationId, body, confirmation.toolCallId);
   const answer = toolResultMessage(confirmation.name, result);
-  await recordTurn(conversationId, correlationId, sessionId, '[CONFIRMED_ACTION]', answer, [], { confirmed_tool: confirmation.name, tool_status: result.status }, undefined, 0);
+  await recordTurn(conversationId, correlationId, sessionId, '[ACTION_RESULT]', answer, [], { confirmed_tool: confirmation.name, tool_status: result.status }, undefined, 1);
   return json({ conversationId, message: answer, sources: [], toolResult: result }, result.ok ? 200 : 502, headers);
 }
 
@@ -157,7 +159,7 @@ async function executeTool(name: string, args: Record<string, unknown>, conversa
 
 async function recordTurn(conversationId: string, correlationId: string, sessionId: string, visitorMessage: string, assistantMessage: string, sources: string[], policyOutcome: Record<string, boolean | string>, modelRequestId: string | undefined, priorTurnCount: number, knowledgeVersion?: string) {
   const sessionHash = createHash('sha256').update(sessionId).digest('hex');
-  await callLoanOs('record_conversation_turn', {
+  return callLoanOs('record_conversation_turn', {
     conversationId, correlationId, sessionHash, visitorMessage, assistantMessage,
     sequenceStart: Math.max(1, priorTurnCount * 2 + 1), knowledgeVersion, sourceRefs: sources,
     policyOutcome, modelRequestId,
