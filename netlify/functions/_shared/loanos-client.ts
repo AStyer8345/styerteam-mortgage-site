@@ -6,6 +6,7 @@ export async function callLoanOs(operation: string, payload: Record<string, unkn
   const baseUrl = Netlify.env.get('LOANOS_ASSISTANT_URL')?.replace(/\/$/, '');
   const keyId = Netlify.env.get('LOANOS_ASSISTANT_KEY_ID');
   const secret = Netlify.env.get('LOANOS_ASSISTANT_SIGNING_SECRET');
+  const protectionBypass = Netlify.env.get('LOANOS_ASSISTANT_BYPASS_TOKEN');
   if (!baseUrl || !keyId || !secret) return { ok: false, status: 'not_configured', error: { code: 'loanos_not_configured', message: 'Secure lead operations are not configured.', retryable: false } };
 
   const path = `/api/v1/website-assistant/${operation}`;
@@ -18,17 +19,20 @@ export async function callLoanOs(operation: string, payload: Record<string, unkn
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 8_000);
   try {
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      'X-Assistant-Key-Id': keyId,
+      'X-Assistant-Timestamp': timestamp,
+      'X-Assistant-Nonce': nonce,
+      'X-Assistant-Signature': signature,
+      'X-Idempotency-Key': options?.idempotencyKey || randomUUID(),
+      'X-Correlation-Id': String(payload.correlationId || randomUUID()),
+    };
+    if (protectionBypass) headers['X-Vercel-Protection-Bypass'] = protectionBypass;
+
     const response = await fetch(`${baseUrl}${path}`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Assistant-Key-Id': keyId,
-        'X-Assistant-Timestamp': timestamp,
-        'X-Assistant-Nonce': nonce,
-        'X-Assistant-Signature': signature,
-        'X-Idempotency-Key': options?.idempotencyKey || randomUUID(),
-        'X-Correlation-Id': String(payload.correlationId || randomUUID()),
-      },
+      headers,
       body,
       signal: controller.signal,
     });

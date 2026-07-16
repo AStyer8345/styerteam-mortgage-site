@@ -39,6 +39,8 @@ The “Ask Adam to follow up” form collects first name, one contact method, br
 
 Outbound email/text and live scheduling are disabled in this phase. The assistant must not claim an operation succeeded unless LoanOS confirms it.
 
+Protected Vercel previews require a Protection Bypass for Automation secret. Store it only in the Netlify Functions environment as `LOANOS_ASSISTANT_BYPASS_TOKEN`; the server sends it to LoanOS in the Vercel bypass header. It must never be included in browser code or responses.
+
 ## Staging checklist
 
 - Populate only staging environment variables and sandbox credentials.
