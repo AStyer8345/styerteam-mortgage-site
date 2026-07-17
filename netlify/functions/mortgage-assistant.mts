@@ -94,7 +94,7 @@ export default async function handler(request: Request, context: Context): Promi
     const validation = validateAssistantOutput(model.text);
     if (!validation.safe) throw new Error(`Unsafe model output: ${validation.reason}`);
     await recordTurn(conversationId, correlationId, session.id, message, model.text, model.citedSources, { grounded: true }, model.responseId, priorTurns.length, retrieval.version);
-    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef) }, 200, headers);
+    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: model.recommendedResources }, 200, headers);
   } catch (error) {
     console.error('[mortgage-assistant] response generation failed', {
       correlationId,
