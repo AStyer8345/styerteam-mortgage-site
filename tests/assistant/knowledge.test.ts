@@ -17,6 +17,18 @@ test('core FHA credit-score guidance is retrievable', async () => {
   assert.match(result.results.find((item) => item.section === 'FHA loans')?.text || '', /580/);
 });
 
+test('conventional DTI guidance is retrievable using the failed live wording', async () => {
+  __resetKnowledgeCacheForTests();
+  const result = await retrieveApprovedKnowledge('what is the max dti on a conventional loan');
+  assert.ok(result.results.some((item) => /50%|45%/.test(item.text)));
+});
+
+test('VA credit guidance is retrievable using conversational wording', async () => {
+  __resetKnowledgeCacheForTests();
+  const result = await retrieveApprovedKnowledge('what is a good credit score on a va loan');
+  assert.ok(result.results.some((item) => /no universal minimum/i.test(item.text)));
+});
+
 const commonQuestions = [
   ["What's the difference between interest rate and APR?", 'mortgage-basics.md'],
   ['What is debt-to-income ratio?', 'credit-income-and-underwriting.md'],

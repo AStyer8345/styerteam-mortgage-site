@@ -34,9 +34,9 @@ test('unsupported rate questions receive a useful, time-sensitive explanation', 
 
 test('other unsupported questions invite useful, non-sensitive context', () => {
   const answer = safeUnsupportedNotice('Can I do this?');
-  assert.match(answer, /buying or refinancing/i);
-  assert.match(answer, /Adam or his team/i);
-  assert.match(answer, /broad strokes/i);
+  assert.match(answer, /don't want to bluff/i);
+  assert.match(answer, /without collecting private financial details/i);
+  assert.match(answer, /What outcome are you hoping for\?/i);
   assert.doesNotMatch(answer, /not enough approved information/i);
 });
 

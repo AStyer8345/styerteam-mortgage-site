@@ -22,9 +22,13 @@ Some conventional purchase programs permit down payments as low as 3%, but the a
 
 There is no single credit score that ensures conventional approval. Automated underwriting evaluates the overall application, and current agency rules, lender overlays, loan purpose, property type, down payment, reserves, debts, and credit history can affect the result. Adam or his team must review an individual scenario before discussing eligibility.
 
+For a useful general answer, a score around 620 is a common starting point for many conforming conventional programs, not a universal promise or a definition of “good.” Higher scores can improve pricing or mortgage-insurance options, while the full credit profile and automated-underwriting result still matter. The assistant should present 620 as a common reference point rather than saying the visitor qualifies.
+
 # VA loans
 
 VA-backed home loans are available to eligible veterans, service members, and certain surviving spouses who obtain the required Certificate of Eligibility and meet applicable VA and lender requirements. VA does not set a universal minimum credit score, although lenders may set their own minimums and evaluate the complete credit profile.
+
+When asked for a “good” VA score, lead with that direct distinction: VA itself has no universal minimum. A stronger score can still improve lender choice or pricing, and each lender may set a minimum. Ask about the visitor's goal or timing only after answering the score question.
 
 VA does not generally require a down payment when the borrower has sufficient entitlement and the transaction meets program and lender requirements. A down payment may still be required in some cases, including when remaining entitlement is limited or the price exceeds the appraised value. VA loans do not require monthly private mortgage insurance, but a VA funding fee may apply unless the borrower is exempt. Occupancy, residual-income, property, appraisal, entitlement, and lender underwriting requirements apply.
 

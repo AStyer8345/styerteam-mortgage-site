@@ -62,5 +62,17 @@ export function safeUnsupportedNotice(question = ''): string {
     return "Great question—and honestly, rates are a moving target. They can change during the day, so tossing out one number here could be stale before you finish reading it.\n\nThe rate you’d actually see depends on things like the loan type, whether it’s a home or investment property, your down payment or equity, your general credit profile, and whether you’re buying or refinancing. Share those basics—nothing sensitive—and I can help you make sense of what drives the quote. For a real today-number, Adam or his team can price out the options with you.";
   }
 
-  return "There’s probably a useful answer here—I just need a little more context so I don’t send you down the wrong path. Are you buying or refinancing, what kind of property is it, and roughly when are you hoping to make a move?\n\nGive me the broad strokes (no private financial details), and I’ll explain what I can. If it comes down to your exact numbers or current lender pricing, Adam or his team can take a closer look.";
+  if (/\b(?:dti|debt.to.income|debt income)\b/.test(normalized)) {
+    return "DTI is the percentage of qualifying gross monthly income used for the new housing payment and other counted debts. Conventional limits depend on the agency path and underwriting result, so there isn't one number that works for every file; lower DTI generally gives the application more room.\n\nIs this for a home you plan to live in or an investment property?";
+  }
+
+  if (/\b(?:credit|fico|score)\b/.test(normalized)) {
+    return "Credit score matters, but it isn't the whole approval decision. The useful benchmark depends on the loan program, and lenders can set standards above an agency baseline; payment history, balances, down payment, and the full underwriting result matter too.\n\nWhich program are you considering—conventional, FHA, or VA?";
+  }
+
+  if (/\b(?:self employed|self employment|tax returns?|bank statements?|business income)\b/.test(normalized)) {
+    return "Self-employed income often needs a different look than a W-2 salary. Depending on the program, the review may use tax returns and business cash flow, or explore alternatives such as bank statements, a profit-and-loss statement, assets, or rental-property cash flow.\n\nWill this be your primary home or an investment property?";
+  }
+
+  return "I don't want to bluff my way through that one. I can still help narrow it down or point you to the right next step without collecting private financial details.\n\nWhat outcome are you hoping for?";
 }
