@@ -28,7 +28,7 @@ export function recommendApprovedResources(question: string): Array<{ label: str
     [/\b(?:2[- ]?1|3[- ]?2[- ]?1|temporary)\b.*buydown|rate buydown/, 'Temporary rate buydown calculator'],
     [/wraparound|wrap mortgage|seller financ/, 'Wrap mortgage calculator'],
     [/\b(?:calculator|calculators|tools)\b/, 'All mortgage calculators'],
-    [/\b(?:current|today|right now|quote|loan estimate)\b.*\b(?:rate|rates|pricing)\b|\b(?:rate|rates|pricing)\b.*\b(?:current|today|right now|quote|loan estimate)\b/, 'Request a rate review'],
+    [/\b(?:current|today|right now|quote|loan estimate)\b.*\b(?:rate|rates|pricing)\b|\b(?:rate|rates|pricing)\b.*\b(?:current|today|right now|quote|loan estimate)\b|\byour rates?\b/, 'Request a rate review'],
   ] as const;
   const labels = matches.filter(([pattern]) => pattern.test(value)).map(([, label]) => label);
   return labels.slice(0, 2).flatMap((label) => {
