@@ -2,7 +2,7 @@ import type { Config, Context } from '@netlify/functions';
 import { createHash, createHmac, randomUUID, timingSafeEqual } from 'node:crypto';
 import { scanSensitiveInput, isPromptInjection, safeSensitiveNotice, safeUnsupportedReply, validateAssistantOutput } from './_shared/assistant-safety.ts';
 import { retrieveApprovedKnowledge } from './_shared/knowledge.ts';
-import { createMortgageResponse } from './_shared/openai-responses.ts';
+import { createMortgageResponse, createSalesConversationResponse } from './_shared/openai-responses.ts';
 import { createSessionToken, verifySessionToken } from './_shared/session.ts';
 import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
@@ -87,8 +87,24 @@ export default async function handler(request: Request, context: Context): Promi
     : null;
   const guidedReply = guidedConversationReply(message, salesState, previousPending);
   if (guidedReply) {
-    await recordTurn(conversationId, correlationId, session.id, message, guidedReply.message, [], { guided_sales_conversation: true }, undefined, sequenceStart);
-    return json({ conversationId, message: guidedReply.message, sources: [], resources: [], suggestedReplies: guidedReply.suggestedReplies, salesState: guidedReply.salesState }, 200, headers);
+    let answer = guidedReply.message;
+    let suggestedReplies = guidedReply.suggestedReplies;
+    let responseId: string | undefined;
+    const nextState = { ...guidedReply.salesState };
+    try {
+      const modelTurns = priorTurns.map((turn) => ({ role: turn.role, text: scanSensitiveInput(turn.text).redacted }));
+      const model = await createSalesConversationResponse({ message, conversation: modelTurns, salesState });
+      const validation = validateAssistantOutput(model.text);
+      if (!validation.safe) throw new Error(`Unsafe sales output: ${validation.reason}`);
+      answer = model.text;
+      suggestedReplies = model.suggestedReplies;
+      nextState.pendingQuestion = model.nextQuestion;
+      responseId = model.responseId;
+    } catch (error) {
+      console.error('[mortgage-assistant] sales conversation generation failed', { correlationId, reason: error instanceof Error ? error.message.slice(0, 240) : 'unknown_error' });
+    }
+    await recordTurn(conversationId, correlationId, session.id, message, answer, [], { guided_sales_conversation: true, model_led_sales: Boolean(responseId) }, responseId, sequenceStart);
+    return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies, salesState: nextState }, 200, headers);
   }
 
   const contextualQuery = buildContextualQuery(message, priorTurns);
