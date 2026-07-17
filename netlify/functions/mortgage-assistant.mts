@@ -158,9 +158,20 @@ export default async function handler(request: Request, context: Context): Promi
       correlationId,
       reason: error instanceof Error ? error.message.slice(0, 300) : 'unknown_error',
     });
-    const fallback = safeUnsupportedReply(contextualQuery);
-    await recordTurn(conversationId, correlationId, session.id, message, fallback.message, [], { safe_fallback: true }, undefined, sequenceStart, retrieval.version);
-    return json({ conversationId, message: fallback.message, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: fallback.suggestedReplies, salesState, canEscalate: true }, 200, headers);
+    const followUp = generalAnswerFollowUp(salesState);
+    try {
+      const modelTurns = priorTurns.map((turn) => ({ role: turn.role, text: scanSensitiveInput(turn.text).redacted }));
+      const general = await createGeneralMortgageResponse({ message, conversation: modelTurns, salesState, requiredQuestion: followUp.question });
+      const validation = validateAssistantOutput(general.text);
+      if (!validation.safe) throw new Error(`Unsafe general answer: ${validation.reason}`);
+      await recordTurn(conversationId, correlationId, session.id, message, general.text, [], { grounded_fallback_to_general: true }, general.responseId, sequenceStart, retrieval.version);
+      return json({ conversationId, message: general.text, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: followUp.suggestedReplies, salesState }, 200, headers);
+    } catch (generalError) {
+      console.error('[mortgage-assistant] general fallback failed', { correlationId, reason: generalError instanceof Error ? generalError.message.slice(0, 240) : 'unknown_error' });
+      const answer = `Here’s the useful way to approach it: start with the decision and the tradeoffs, then add only the numbers that change the answer.\n\n${followUp.question}`;
+      await recordTurn(conversationId, correlationId, session.id, message, answer, [], { final_safe_fallback: true }, undefined, sequenceStart, retrieval.version);
+      return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies: followUp.suggestedReplies, salesState }, 200, headers);
+    }
   }
 }
 
