@@ -41,10 +41,11 @@ test('assistant renders readable paragraphs, lists, and collapsible sources safe
 test('assistant can recommend only approved website resources as safe links', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
   const openai = fs.readFileSync('netlify/functions/_shared/openai-responses.ts', 'utf8');
+  const resources = fs.readFileSync('netlify/functions/_shared/assistant-resources.ts', 'utf8');
   assert.match(openai, /recommended_resources/);
-  assert.match(openai, /calculator-payment\.html/);
-  assert.match(openai, /calculator-affordability\.html/);
-  assert.match(openai, /calculator-refinance-breakeven\.html/);
+  assert.match(resources, /calculator-payment\.html/);
+  assert.match(resources, /calculator-affordability\.html/);
+  assert.match(resources, /calculator-refinance-breakeven\.html/);
   assert.match(browser, /data\.resources/);
   assert.match(browser, /approvedHost/);
 });

@@ -1,3 +1,5 @@
+import { APPROVED_RESOURCES, isApprovedResource } from './assistant-resources.ts';
+
 type Source = { source: string; section: string; text: string };
 type ToolCall = { id: string; name: string; arguments: Record<string, unknown> };
 
@@ -28,18 +30,6 @@ const OUTPUT_SCHEMA = {
   },
   required: ['answer', 'support_adequate', 'cited_sources', 'recommended_resources'],
 };
-
-const APPROVED_RESOURCES = [
-  { label: 'Mortgage payment calculator', url: 'https://adamstyer.com/calculator-payment.html', use: 'estimating principal, interest, taxes, insurance, or a monthly housing payment' },
-  { label: 'Home affordability calculator', url: 'https://adamstyer.com/calculator-affordability.html', use: 'exploring a comfortable price range based on income and monthly debts' },
-  { label: 'Refinance break-even calculator', url: 'https://adamstyer.com/calculator-refinance-breakeven.html', use: 'comparing refinance costs, monthly savings, and estimated break-even time' },
-  { label: 'DSCR calculator', url: 'https://adamstyer.com/dscr-calculator.html', use: 'estimating an investment property rent-to-PITIA ratio' },
-  { label: 'Asset depletion calculator', url: 'https://adamstyer.com/asset-depletion-calculator.html', use: 'exploring how eligible assets may translate into estimated monthly income' },
-  { label: 'Temporary rate buydown calculator', url: 'https://adamstyer.com/rate-buydown-calculator.html', use: 'comparing 2-1 or 3-2-1 buydown payments and subsidy costs' },
-  { label: 'Wrap mortgage calculator', url: 'https://adamstyer.com/wrap-mortgage-calculator.html', use: 'exploring seller-financing or wraparound mortgage cash flow' },
-  { label: 'All mortgage calculators', url: 'https://adamstyer.com/calculators.html', use: 'when the visitor broadly asks what calculators or tools are available' },
-  { label: 'Request a rate review', url: 'https://adamstyer.com/rate-check.html', use: 'reviewing a current Loan Estimate or getting scenario-specific live pricing' },
-] as const;
 
 const TOOLS = [
   tool('create_or_update_website_lead', {
@@ -115,11 +105,6 @@ function parseResponse(payload: Record<string, unknown>): AssistantModelResult {
       : [],
     toolCalls,
   };
-}
-
-function isApprovedResource(resource: { label?: unknown; url?: unknown }): resource is { label: string; url: string } {
-  if (typeof resource.label !== 'string' || typeof resource.url !== 'string') return false;
-  return APPROVED_RESOURCES.some((approved) => approved.url === resource.url);
 }
 
 function systemInstructions(sources: string): string {
