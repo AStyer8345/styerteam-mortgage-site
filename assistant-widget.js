@@ -14,6 +14,12 @@
     config: null,
     salesState: null,
     busy: false,
+    opened: false,
+    conversationStarted: false,
+    converted: false,
+    abandonedTracked: false,
+    abandonmentTimer: null,
+    analyticsSeen: {},
   };
   var ui = {};
 
@@ -50,7 +56,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260717-contact-capture-v1';
+    stylesheet.href = '/assistant-widget.css?v=20260717-strategy-assistant-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -58,11 +64,11 @@
     root.innerHTML = [
       '<button class="ma-launcher" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="mortgage-assistant-panel">',
       '  <span class="ma-launcher-icon" aria-hidden="true">✦</span>',
-      '  <span>Ask a mortgage question</span>',
+      '  <span>Explore your mortgage options</span>',
       '</button>',
-      '<section class="ma-panel" id="mortgage-assistant-panel" role="dialog" aria-modal="false" aria-labelledby="ma-title" hidden>',
+      '<section class="ma-panel" id="mortgage-assistant-panel" role="dialog" aria-modal="true" aria-labelledby="ma-title" hidden>',
       '  <header class="ma-header">',
-      '    <div><p class="ma-kicker">AI ASSISTANT</p><h2 id="ma-title">Mortgage questions, grounded answers</h2></div>',
+      '    <div><p class="ma-kicker">MORTGAGE STRATEGY ASSISTANT</p><h2 id="ma-title">Explore the numbers and your options</h2></div>',
       '    <button class="ma-close" type="button" aria-label="Close mortgage assistant">×</button>',
       '  </header>',
       '  <div class="ma-disclosure" id="ma-disclosure"></div>',
@@ -77,15 +83,12 @@
       '    <textarea id="ma-input" rows="2" maxlength="4000" placeholder="Ask a general mortgage question…" required></textarea>',
       '    <button type="submit" class="ma-send">Send<span class="ma-visually-hidden"> message</span></button>',
       '  </form>',
-      '  <div class="ma-next-actions">',
-      '    <button type="button" class="ma-lead-toggle">Have Adam contact me</button>',
-      '    <a class="ma-application-link" href="https://hypersmart.my1003app.com/513013/register" target="_blank" rel="noopener noreferrer">Start my application</a>',
-      '  </div>',
       '  <form class="ma-lead-form" hidden>',
-      '    <div class="ma-lead-grid"><label>First name<input name="firstName" maxlength="80" required></label><label>Last name<input name="lastName" maxlength="100"></label></div>',
+      '    <p class="ma-lead-intro">Adam will receive the strategy details already discussed. Just add the best way to reach you.</p>',
+      '    <label>First name<input name="firstName" maxlength="80" autocomplete="given-name" required></label>',
       '    <label>Email<input name="email" type="email" maxlength="254" autocomplete="email"></label>',
       '    <label>Phone<input name="phone" type="tel" maxlength="32" autocomplete="tel"></label>',
-      '    <div class="ma-lead-grid"><label>What can Adam help with?<select name="leadIntent" required><option value="">Choose one</option><option value="purchase">Purchase</option><option value="refinance">Refinance</option><option value="investment">Investment property</option><option value="information">General information</option><option value="other">Other</option></select></label><label>Timeline<select name="timeline" required><option value="">Choose one</option><option value="within_30_days">Within 30 days</option><option value="31_to_90_days">31–90 days</option><option value="more_than_90_days">More than 90 days</option><option value="unsure">Not sure</option></select></label></div>',
+      '    <label>Preferred contact method<select name="preferredContact" required><option value="email">Email</option><option value="text">Text</option><option value="phone">Phone call</option></select></label>',
       '    <div class="ma-lead-actions"><button type="submit" class="ma-lead-submit">Review request</button><button type="button" class="ma-lead-cancel">Cancel</button></div>',
       '  </form>',
       '  <p class="ma-sensitive-notice"></p>',
@@ -110,7 +113,6 @@
     ui.consentText = root.querySelector('.ma-consent span');
     ui.confirm = root.querySelector('.ma-confirm');
     ui.cancel = root.querySelector('.ma-cancel');
-    ui.leadToggle = root.querySelector('.ma-lead-toggle');
     ui.leadForm = root.querySelector('.ma-lead-form');
     ui.leadCancel = root.querySelector('.ma-lead-cancel');
     root.querySelector('#ma-disclosure').textContent = state.config.aiDisclosure;
@@ -125,9 +127,10 @@
         if (turn && (turn.role === 'user' || turn.role === 'assistant') && typeof turn.text === 'string') addMessage(turn.role, turn.text);
       });
       state.turnCount = typeof stored.turnCount === 'number' && stored.turnCount >= state.turns.length ? stored.turnCount : state.turns.length;
+      state.conversationStarted = state.turns.some(function (turn) { return turn.role === 'user'; });
     } else {
-      addMessage('assistant', 'Hi! I’m here to make mortgages a little easier. Ask me a question, or choose an option below whenever you’re ready for the next step.');
-      addSuggestedReplies(['Buying a home', 'Refinancing', 'Investment property']);
+      addMessage('assistant', 'What are you trying to figure out? I can estimate a payment, identify potential financing options, or help you think through a complicated income or property situation.');
+      addSuggestedReplies(['Estimate payment and cash', 'See what may qualify', 'Explain my situation', 'Compare estimated pricing']);
       state.turnCount = 0;
     }
     ui.launcher.addEventListener('click', openPanel);
@@ -138,18 +141,23 @@
     });
     ui.confirm.addEventListener('click', confirmAction);
     ui.cancel.addEventListener('click', clearConfirmation);
-    ui.leadToggle.addEventListener('click', openLeadForm);
     ui.leadCancel.addEventListener('click', closeLeadForm);
     ui.leadForm.addEventListener('submit', submitLeadRequest);
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && !ui.panel.hidden) closePanel();
+      if (event.key === 'Tab' && !ui.panel.hidden) trapFocus(event);
     });
+    trackAssistant('assistant_impression');
   }
 
   function openPanel() {
     ui.panel.hidden = false;
     ui.launcher.setAttribute('aria-expanded', 'true');
     window.setTimeout(function () { ui.input.focus(); }, 0);
+    if (!state.opened) {
+      state.opened = true;
+      trackAssistant('assistant_opened');
+    }
   }
 
   function closePanel() {
@@ -164,8 +172,13 @@
     var message = ui.input.value.trim();
     if (!message) return;
     clearConfirmation();
+    if (!state.conversationStarted) {
+      state.conversationStarted = true;
+      trackAssistant('conversation_started');
+    }
     var priorTurnCount = state.turnCount;
     addMessage('user', message);
+    scheduleAbandonment();
     ui.input.value = '';
     setBusy(true, 'The assistant is reviewing approved information.');
     request({
@@ -188,13 +201,17 @@
       if (resource && resource.url && resource.label) addTrustedLink(resource.url, resource.label);
     });
     if (Array.isArray(data.suggestedReplies) && data.suggestedReplies.length) addSuggestedReplies(data.suggestedReplies);
+    if (Array.isArray(data.actions) && data.actions.length) addContextActions(data.actions);
     if (data.collectContactDetails === true) openLeadForm();
     if (data.toolResult && data.toolResult.data && data.toolResult.data.applicationUrl) addTrustedLink(data.toolResult.data.applicationUrl, 'Open secure application');
     if (data.confirmation) showConfirmation(data.confirmation);
+    trackResponse(data);
+    scheduleAbandonment();
   }
 
   function handleError(error) {
     addMessage('assistant', error && error.message ? error.message : 'The assistant is temporarily unavailable. No action was completed.');
+    trackAssistant('assistant_error');
   }
 
   function request(body) {
@@ -263,12 +280,14 @@
       ui.leadForm.querySelector('[name="email"]').focus();
       return;
     }
+    var preferredContact = String(data.get('preferredContact') || 'email');
+    if (preferredContact === 'email' && !String(data.get('email') || '').trim()) preferredContact = 'text';
+    if ((preferredContact === 'text' || preferredContact === 'phone') && !String(data.get('phone') || '').trim()) preferredContact = 'email';
     setBusy(true, 'Preparing your contact request for review.');
     request({
       conversationId: state.conversationId,
       leadRequest: {
-        firstName: data.get('firstName'), lastName: data.get('lastName'), email: data.get('email'), phone: data.get('phone'),
-        leadIntent: data.get('leadIntent'), timeline: data.get('timeline'),
+        firstName: data.get('firstName'), email: data.get('email'), phone: data.get('phone'), preferredContact: preferredContact,
         salesState: state.salesState,
       },
       sourcePage: window.location.href.split('#')[0],
@@ -277,29 +296,24 @@
 
   function closeLeadForm() {
     ui.leadForm.hidden = true;
-    ui.leadToggle.hidden = false;
-    ui.leadToggle.focus();
+    ui.input.focus();
   }
 
   function openLeadForm() {
     prefillLeadContext();
     ui.leadForm.hidden = false;
-    ui.leadToggle.hidden = true;
     var target = ui.leadForm.querySelector('[name="email"]');
     var firstName = ui.leadForm.querySelector('[name="firstName"]');
     if (!firstName.value) target = firstName;
     target.focus();
     target.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    trackAssistant('contact_form_opened', { cta_type: 'contact' });
   }
 
   function prefillLeadContext() {
     if (!state.salesState || !ui.leadForm) return;
-    var intent = ui.leadForm.querySelector('[name="leadIntent"]');
-    var timeline = ui.leadForm.querySelector('[name="timeline"]');
     var firstName = ui.leadForm.querySelector('[name="firstName"]');
     if (firstName && state.salesState.visitorName && !firstName.value) firstName.value = state.salesState.visitorName;
-    if (intent && ['purchase', 'refinance', 'investment'].indexOf(state.salesState.goal) >= 0) intent.value = state.salesState.goal;
-    if (timeline && ['within_30_days', '31_to_90_days', 'more_than_90_days', 'unsure'].indexOf(state.salesState.timeline) >= 0) timeline.value = state.salesState.timeline;
   }
 
   function addMessage(role, text) {
@@ -325,12 +339,15 @@
     var wrapper = document.createElement('div');
     wrapper.className = 'ma-suggested-replies';
     wrapper.setAttribute('aria-label', 'Suggested replies');
-    replies.slice(0, 3).forEach(function (reply) {
+    replies.slice(0, 4).forEach(function (reply) {
       if (typeof reply !== 'string' || !reply.trim()) return;
       var button = document.createElement('button');
       button.type = 'button';
       button.textContent = reply.trim();
       button.addEventListener('click', function () {
+        if (['Estimate payment and cash', 'See what may qualify', 'Explain my situation', 'Compare estimated pricing'].indexOf(reply.trim()) >= 0) {
+          trackAssistant('opening_choice_selected', { opening_choice: openingChoiceValue(reply.trim()) });
+        }
         ui.input.value = reply.trim();
         ui.form.requestSubmit();
       });
@@ -403,9 +420,121 @@
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       link.textContent = label;
+      link.addEventListener('click', function () { trackLinkClick(url); });
       wrapper.appendChild(link);
       ui.messages.appendChild(wrapper);
     } catch (_) {}
+  }
+
+  function addContextActions(actions) {
+    var wrapper = document.createElement('div');
+    wrapper.className = 'ma-context-actions';
+    wrapper.setAttribute('aria-label', 'Recommended next step');
+    actions.slice(0, 2).forEach(function (action) {
+      if (!action || typeof action.type !== 'string' || typeof action.label !== 'string') return;
+      if (action.type === 'contact') {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = action.label;
+        button.addEventListener('click', openLeadForm);
+        wrapper.appendChild(button);
+        return;
+      }
+      if (typeof action.url !== 'string') return;
+      try {
+        var url = new URL(action.url);
+        var approved = url.protocol === 'https:' && (url.hostname === 'adamstyer.com' || url.hostname === 'www.adamstyer.com' || url.hostname === 'hypersmart.my1003app.com' || url.hostname === 'calendly.com');
+        if (!approved) return;
+        var link = document.createElement('a');
+        link.href = url.href;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = action.label;
+        link.addEventListener('click', function () { trackLinkClick(url); });
+        wrapper.appendChild(link);
+      } catch (_) {}
+    });
+    if (wrapper.children.length) {
+      ui.messages.appendChild(wrapper);
+      ui.messages.scrollTop = ui.messages.scrollHeight;
+    }
+  }
+
+  function trackResponse(data) {
+    var kind = String(data.responseKind || '');
+    if (kind === 'estimate_started') trackAssistant('estimate_started');
+    if (kind === 'estimate_completed') { trackAssistant('estimate_completed'); trackAssistant('useful_answer_delivered'); }
+    if (kind === 'pricing_started') trackAssistant('estimate_started', { opening_choice: 'pricing' });
+    if (kind === 'pricing_range') { trackAssistant('pricing_range_viewed'); trackAssistant('useful_answer_delivered'); }
+    if (kind === 'complex_started') trackAssistant('complex_scenario_started');
+    if (kind === 'scenario_assessment') { trackAssistant('scenario_assessment_completed'); trackAssistant('useful_answer_delivered'); }
+    if (kind === 'useful_answer') trackAssistant('useful_answer_delivered');
+    if (data.toolResult && data.toolResult.ok !== false && /saved|created|existing|completed/i.test(String(data.toolResult.status || ''))) {
+      state.converted = true;
+      trackAssistant('contact_submitted', { cta_type: 'contact' });
+    }
+  }
+
+  function trackLinkClick(url) {
+    if (url.hostname === 'hypersmart.my1003app.com') { state.converted = true; trackAssistant('application_clicked', { cta_type: 'application' }); }
+    else if (url.hostname === 'calendly.com') { state.converted = true; trackAssistant('scheduling_clicked', { cta_type: 'schedule' }); }
+    else if (/rate-check/.test(url.pathname)) { state.converted = true; trackAssistant('rate_review_clicked', { cta_type: 'rate_review' }); }
+  }
+
+  function trackAssistant(eventName, extra) {
+    var allowedEvents = ['assistant_impression', 'assistant_opened', 'conversation_started', 'opening_choice_selected', 'useful_answer_delivered', 'estimate_started', 'estimate_completed', 'pricing_range_viewed', 'complex_scenario_started', 'scenario_assessment_completed', 'contact_form_opened', 'contact_submitted', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'assistant_error', 'conversation_abandoned'];
+    if (allowedEvents.indexOf(eventName) < 0) return;
+    var oncePerConversation = ['conversation_started', 'opening_choice_selected', 'estimate_started', 'estimate_completed', 'pricing_range_viewed', 'complex_scenario_started', 'scenario_assessment_completed', 'contact_submitted', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'conversation_abandoned'];
+    if (oncePerConversation.indexOf(eventName) >= 0 && state.analyticsSeen[eventName]) return;
+    if (oncePerConversation.indexOf(eventName) >= 0) state.analyticsSeen[eventName] = true;
+    var sales = state.salesState || {};
+    var strategy = sales.strategy || {};
+    var payload = {
+      event: eventName,
+      source_page: window.location.pathname,
+      opening_choice: safeAnalyticsValue(extra && extra.opening_choice || strategy.path),
+      conversation_stage: safeAnalyticsValue(sales.stage),
+      goal: safeAnalyticsValue(sales.goal),
+      concern_category: safeAnalyticsValue(sales.concern),
+      visitor_message_count: state.turns.filter(function (turn) { return turn.role === 'user'; }).length,
+      cta_type: safeAnalyticsValue(extra && extra.cta_type),
+    };
+    Object.keys(payload).forEach(function (key) { if (payload[key] === null || payload[key] === '' || payload[key] === 'unknown') delete payload[key]; });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(payload);
+  }
+
+  function safeAnalyticsValue(value) {
+    if (typeof value !== 'string' || !/^[a-z_]{1,40}$/.test(value)) return null;
+    return value;
+  }
+
+  function openingChoiceValue(label) {
+    if (/payment/.test(label.toLowerCase())) return 'payment';
+    if (/qualify/.test(label.toLowerCase())) return 'qualification';
+    if (/situation/.test(label.toLowerCase())) return 'complex';
+    return 'pricing';
+  }
+
+  function scheduleAbandonment() {
+    if (state.abandonmentTimer) window.clearTimeout(state.abandonmentTimer);
+    if (!state.conversationStarted || state.converted || state.abandonedTracked) return;
+    state.abandonmentTimer = window.setTimeout(trackAbandonment, 120000);
+  }
+
+  function trackAbandonment() {
+    if (!state.conversationStarted || state.converted || state.abandonedTracked) return;
+    state.abandonedTracked = true;
+    trackAssistant('conversation_abandoned');
+  }
+
+  function trapFocus(event) {
+    var focusable = Array.prototype.slice.call(ui.panel.querySelectorAll('button:not([disabled]),a[href],textarea:not([disabled]),input:not([disabled]),select:not([disabled])')).filter(function (element) { return !element.hidden && element.offsetParent !== null; });
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   }
 
   function setBusy(busy, message) {

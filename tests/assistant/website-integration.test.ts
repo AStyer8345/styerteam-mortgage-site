@@ -29,13 +29,14 @@ test('confirmed chatbot leads report LoanOS notification and acknowledgment fail
   assert.match(gateway, /email notification could not be sent/);
 });
 
-test('assistant offers the approved secure application beside human follow-up', () => {
+test('assistant uses contextual conversion actions instead of an always-visible CTA bar', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
-  assert.match(browser, /Have Adam contact me/);
-  assert.match(browser, /Start my application/);
-  assert.match(browser, /https:\/\/hypersmart\.my1003app\.com\/513013\/register/);
-  assert.match(browser, /class="ma-application-link"/);
-  assert.match(browser, /rel="noopener noreferrer"/);
+  const resources = fs.readFileSync('netlify/functions/_shared/assistant-resources.ts', 'utf8');
+  assert.doesNotMatch(browser, /class="ma-next-actions"/);
+  assert.match(browser, /addContextActions/);
+  assert.match(resources, /Start secure application/);
+  assert.match(resources, /Have Adam verify pricing/);
+  assert.match(browser, /rel = 'noopener noreferrer'/);
 });
 
 test('assistant renders readable paragraphs, lists, and collapsible sources safely', () => {
@@ -103,4 +104,38 @@ test('the widget loader and stylesheet share one cache-busting version', () => {
 test('prior turns are redacted again before reaching the model', () => {
   const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
   assert.match(gateway, /scanSensitiveInput\(turn\.text\)\.redacted/);
+});
+
+test('outcome-driven opening offers four strategy paths and no early name request', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  const sales = fs.readFileSync('netlify/functions/_shared/sales-conversation.ts', 'utf8');
+  assert.match(browser, /Explore your mortgage options/);
+  assert.match(browser, /Estimate payment and cash/);
+  assert.match(browser, /See what may qualify/);
+  assert.match(browser, /Explain my situation/);
+  assert.match(browser, /Compare estimated pricing/);
+  assert.doesNotMatch(sales, /Before we go further, what should I call you/);
+});
+
+test('market ranges and estimate assumptions remain server-side', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  const config = fs.readFileSync('netlify/functions/_shared/rate-market.ts', 'utf8');
+  assert.match(config, /MORTGAGE_ASSISTANT_RATE_MARKET_JSON/);
+  assert.match(config, /MORTGAGE_ASSISTANT_ESTIMATE_ASSUMPTIONS_JSON/);
+  assert.doesNotMatch(browser, /MORTGAGE_ASSISTANT_RATE_MARKET_JSON|conventional30YearRange/);
+});
+
+test('lead form asks only for missing identity and contact details', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  assert.match(browser, /First name/);
+  assert.match(browser, /Preferred contact method/);
+  assert.doesNotMatch(browser, /name="leadIntent"|name="timeline"|name="lastName"/);
+  assert.match(browser, /salesState: state\.salesState/);
+});
+
+test('widget traps keyboard focus and restores launcher focus on close', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  assert.match(browser, /trapFocus/);
+  assert.match(browser, /event\.key === 'Tab'/);
+  assert.match(browser, /ui\.launcher\.focus\(\)/);
 });
