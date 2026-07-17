@@ -20,7 +20,6 @@ export type SalesConversationResult = {
   responseId: string;
   text: string;
   suggestedReplies: string[];
-  nextQuestion: SalesConversationState['pendingQuestion'];
 };
 
 const SALES_OUTPUT_SCHEMA = {
@@ -28,9 +27,8 @@ const SALES_OUTPUT_SCHEMA = {
   properties: {
     answer: { type: 'string', maxLength: 1200 },
     suggested_replies: { type: 'array', items: { type: 'string', maxLength: 60 }, maxItems: 3 },
-    next_question: { type: ['string', 'null'], enum: ['shopping_stage', 'property_use', 'timeline', 'price_range', 'cash_strategy', 'cash_amount', 'priority', null] },
   },
-  required: ['answer', 'suggested_replies', 'next_question'],
+  required: ['answer', 'suggested_replies'],
 };
 
 const OUTPUT_SCHEMA = {
@@ -100,7 +98,7 @@ export async function createMortgageResponse(input: { message: string; sources: 
   }
 }
 
-export async function createSalesConversationResponse(input: { message: string; conversation: Array<{ role: 'user' | 'assistant'; text: string }>; salesState: SalesConversationState }): Promise<SalesConversationResult> {
+export async function createSalesConversationResponse(input: { message: string; conversation: Array<{ role: 'user' | 'assistant'; text: string }>; salesState: SalesConversationState; requiredQuestion: SalesConversationState['pendingQuestion'] }): Promise<SalesConversationResult> {
   const apiKey = Netlify.env.get('OPENAI_API_KEY');
   if (!apiKey) throw new Error('OPENAI_API_KEY is not configured');
   const model = Netlify.env.get('OPENAI_MORTGAGE_ASSISTANT_MODEL') || 'gpt-5.6-luna';
@@ -113,7 +111,7 @@ export async function createSalesConversationResponse(input: { message: string; 
       headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model, store: false, max_output_tokens: 500,
-        instructions: `${SALES_CONVERSATION_DOCTRINE}\n\nThis is a discovery turn, not permission to give mortgage guidelines, quote rates, calculate payments, recommend a loan program, or determine eligibility. You may reflect what the visitor said and ask one useful question. If they supplied a meaningful preference, explain why that preference changes the strategy in general terms without making a product claim.\n\nKnown facts: ${safeDiscoveryContext(input.salesState)}\n\nChoose next_question only when your answer visibly asks that exact category of question. Suggested replies must directly answer it. If no question is asked, return null and an empty array.`,
+        instructions: `${SALES_CONVERSATION_DOCTRINE}\n\nThis is a discovery turn, not permission to give mortgage guidelines, quote rates, calculate payments, recommend a loan program, or determine eligibility. The application—not you—has already selected the sales-process step. You must not choose, skip, or replace it. Reflect what the visitor said naturally, then ask exactly this required question: ${input.requiredQuestion ? discoveryQuestion(input.requiredQuestion) : 'No question. Acknowledge naturally and do not ask one.'}\n\nKnown facts: ${safeDiscoveryContext(input.salesState)}\n\nSuggested replies must directly answer the required question. If there is no required question, return an empty array.`,
         input: [...recent, { role: 'user', content: [{ type: 'input_text', text: input.message }] }],
         text: { format: { type: 'json_schema', name: 'sales_conversation_response', strict: true, schema: SALES_OUTPUT_SCHEMA } },
       }),
@@ -126,16 +124,14 @@ export async function createSalesConversationResponse(input: { message: string; 
       if (item.type !== 'message' || !Array.isArray(item.content)) continue;
       for (const content of item.content as Array<Record<string, unknown>>) {
         if (content.type !== 'output_text' || typeof content.text !== 'string') continue;
-        const parsed = JSON.parse(content.text) as { answer: string; suggested_replies: string[]; next_question: SalesConversationState['pendingQuestion'] };
-        const nextQuestion = parsed.next_question;
-        const text = nextQuestion && !parsed.answer.includes('?')
-          ? `${parsed.answer.trim()}\n\n${discoveryQuestion(nextQuestion)}`
+        const parsed = JSON.parse(content.text) as { answer: string; suggested_replies: string[] };
+        const text = input.requiredQuestion && !parsed.answer.includes('?')
+          ? `${parsed.answer.trim()}\n\n${discoveryQuestion(input.requiredQuestion)}`
           : parsed.answer;
         return {
           responseId: typeof payload.id === 'string' ? payload.id : '',
           text,
           suggestedReplies: parsed.suggested_replies.filter((value) => typeof value === 'string' && value.trim()).slice(0, 3),
-          nextQuestion,
         };
       }
     }
@@ -152,6 +148,8 @@ function discoveryQuestion(question: NonNullable<SalesConversationState['pending
     cash_strategy: 'Have you decided how much cash you want to use, or would you rather compare a few approaches?',
     cash_amount: 'Roughly how much cash are you considering using?',
     priority: 'Which matters most here: preserving cash, lowering the payment, minimizing total cost, or strengthening the offer?',
+    refinance_goal: 'What would you want a refinance to accomplish?',
+    investment_goal: 'What matters most for this investment: cash flow, preserving capital, easier documentation, or faster portfolio growth?',
   };
   return questions[question];
 }
