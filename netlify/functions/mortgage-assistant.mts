@@ -8,7 +8,7 @@ import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
 import { recommendApprovedResources } from './_shared/assistant-resources.ts';
 import { buildContextualQuery, computeSequenceStart, fixedConversationReply } from './_shared/conversation-context.ts';
-import { deriveSalesState, salesNextStepReply, salesStateSummary } from './_shared/sales-conversation.ts';
+import { deriveSalesState, guidedConversationReply, salesNextStepReply, salesStateSummary } from './_shared/sales-conversation.ts';
 
 const COOKIE = 'mortgage_assistant_session';
 const MUTATING = new Set(['create_or_update_website_lead', 'create_follow_up_task', 'schedule_consultation', 'escalate_to_adam']);
@@ -82,12 +82,18 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ conversationId, message: nextStepReply.message, sources: [], suggestedReplies: nextStepReply.suggestedReplies, salesState }, 200, headers);
   }
 
+  const guidedReply = guidedConversationReply(message, salesState);
+  if (guidedReply) {
+    await recordTurn(conversationId, correlationId, session.id, message, guidedReply.message, [], { guided_sales_conversation: true }, undefined, sequenceStart);
+    return json({ conversationId, message: guidedReply.message, sources: [], resources: [], suggestedReplies: guidedReply.suggestedReplies, salesState: guidedReply.salesState }, 200, headers);
+  }
+
   const contextualQuery = buildContextualQuery(message, priorTurns);
   const retrieval = await retrieveApprovedKnowledge(contextualQuery);
   if (!retrieval.results.length) {
     const fallback = safeUnsupportedReply(contextualQuery);
     await recordTurn(conversationId, correlationId, session.id, message, fallback.message, [], { insufficient_knowledge: true }, undefined, sequenceStart, retrieval.version);
-    return json({ conversationId, message: fallback.message, sources: [], resources: recommendApprovedResources(contextualQuery), suggestedReplies: fallback.suggestedReplies, salesState, canEscalate: true }, 200, headers);
+    return json({ conversationId, message: fallback.message, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: fallback.suggestedReplies, salesState, canEscalate: true }, 200, headers);
   }
 
   try {
@@ -115,7 +121,7 @@ export default async function handler(request: Request, context: Context): Promi
     const validation = validateAssistantOutput(model.text);
     if (!validation.safe) throw new Error(`Unsafe model output: ${validation.reason}`);
     await recordTurn(conversationId, correlationId, session.id, message, model.text, model.citedSources, { grounded: true }, model.responseId, sequenceStart, retrieval.version);
-    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: model.recommendedResources, suggestedReplies: model.suggestedReplies, salesState }, 200, headers);
+    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: allowResourceRecommendation(message) ? model.recommendedResources.slice(0, 1) : [], suggestedReplies: model.suggestedReplies, salesState }, 200, headers);
   } catch (error) {
     console.error('[mortgage-assistant] response generation failed', {
       correlationId,
@@ -123,7 +129,7 @@ export default async function handler(request: Request, context: Context): Promi
     });
     const fallback = safeUnsupportedReply(contextualQuery);
     await recordTurn(conversationId, correlationId, session.id, message, fallback.message, [], { safe_fallback: true }, undefined, sequenceStart, retrieval.version);
-    return json({ conversationId, message: fallback.message, sources: [], resources: recommendApprovedResources(contextualQuery), suggestedReplies: fallback.suggestedReplies, salesState, canEscalate: true }, 200, headers);
+    return json({ conversationId, message: fallback.message, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: fallback.suggestedReplies, salesState, canEscalate: true }, 200, headers);
   }
 }
 
@@ -265,6 +271,9 @@ function parseSourceRef(value: string) {
   return { file, section };
 }
 function isGreeting(value: string) { return /^(?:hi|hello|hey|howdy|hi there|hey there|hello there|good (?:morning|afternoon|evening))[!. ]*$/i.test(value); }
+function allowResourceRecommendation(value: string) {
+  return /\b(?:calculator|calculate|estimate|run the numbers|monthly payment|how much (?:house|home)|afford|break.?even|compare (?:payments|down payments|options)|dscr calculator)\b/i.test(value);
+}
 function validUuid(value: unknown) { return typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function boundedText(value: unknown, max: number, required = true) {
   if (value == null || value === '') return required ? null : undefined;

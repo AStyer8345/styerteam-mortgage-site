@@ -8,16 +8,56 @@ export type SalesConversationState = {
   location: string | null;
   intentScore: number;
   stage: 'discover' | 'educate' | 'evaluate' | 'ready';
+  shoppingStage: 'exploring' | 'price_range' | 'actively_shopping' | 'property_identified' | 'under_contract' | 'unknown';
+  pendingQuestion: 'shopping_stage' | 'property_use' | 'timeline' | 'price_range' | 'cash_strategy' | 'priority' | null;
+  purchasePrice: number | null;
+  cashAvailable: number | null;
+  priority: 'preserve_cash' | 'lowest_payment' | 'lowest_total_cost' | 'strongest_offer' | 'compare_options' | 'unknown';
 };
 
 export const EMPTY_SALES_STATE: SalesConversationState = {
   goal: 'unknown', propertyUse: 'unknown', timeline: 'unknown', concern: 'unknown', location: null, intentScore: 0, stage: 'discover',
+  shoppingStage: 'unknown', pendingQuestion: null, purchasePrice: null, cashAvailable: null, priority: 'unknown',
 };
 
 export function deriveSalesState(message: string, conversation: ConversationTurn[], supplied: unknown): SalesConversationState {
   const base = parseSuppliedState(supplied);
   const visitorText = [...conversation.filter((turn) => turn.role === 'user').map((turn) => turn.text), message].join(' ').toLowerCase();
   const state = { ...base };
+  const current = message.trim().toLowerCase();
+
+  // Short replies belong to the question the assistant just asked. This is
+  // intentionally resolved before broad keyword inference so "more than three
+  // months" and "primary residence" advance the conversation instead of
+  // falling into generic retrieval.
+  if (base.pendingQuestion === 'shopping_stage') {
+    if (/under contract/.test(current)) state.shoppingStage = 'under_contract';
+    else if (/(found|specific|particular).*(home|property)|have an address/.test(current)) state.shoppingStage = 'property_identified';
+    else if (/looking|shopping|touring|realtor/.test(current)) state.shoppingStage = 'actively_shopping';
+    else if (/price|range|budget|around \$|\$[\d,.]+/.test(current)) state.shoppingStage = 'price_range';
+    else if (/explor|figuring|starting|not sure|early/.test(current)) state.shoppingStage = 'exploring';
+  }
+  if (base.pendingQuestion === 'property_use') {
+    if (/primary|live in|my home/.test(current)) state.propertyUse = 'primary';
+    else if (/second|vacation/.test(current)) state.propertyUse = 'second_home';
+    else if (/investment|rental/.test(current)) state.propertyUse = 'investment';
+  }
+  if (base.pendingQuestion === 'timeline') {
+    if (/asap|right away|under contract|this month|within (?:30|a month)/.test(current)) state.timeline = 'within_30_days';
+    else if (/31|60|90|two months|three months|1.?3 months/.test(current)) state.timeline = '31_to_90_days';
+    else if (/more than (?:3|three) months|over (?:3|three) months|later this year|next year|no rush/.test(current)) state.timeline = 'more_than_90_days';
+    else if (/not sure|unsure|don't know/.test(current)) state.timeline = 'unsure';
+  }
+  const money = parseMoney(current);
+  if (base.pendingQuestion === 'price_range' && money) state.purchasePrice = money;
+  if (base.pendingQuestion === 'cash_strategy' && money) state.cashAvailable = money;
+  if (base.pendingQuestion === 'priority') {
+    if (/preserve|liquid|keep.*cash/.test(current)) state.priority = 'preserve_cash';
+    else if (/lowest.*payment|payment down/.test(current)) state.priority = 'lowest_payment';
+    else if (/total cost|least interest|long.?term/.test(current)) state.priority = 'lowest_total_cost';
+    else if (/strong.*offer|competitive/.test(current)) state.priority = 'strongest_offer';
+    else if (/compare|show.*options|not sure/.test(current)) state.priority = 'compare_options';
+  }
 
   if (/\b(?:buy|buying|purchase|purchasing|homebuyer)\b/.test(visitorText)) state.goal = 'purchase';
   if (/\b(?:refi|refinance|refinancing|cash.?out)\b/.test(visitorText)) state.goal = 'refinance';
@@ -48,7 +88,56 @@ export function deriveSalesState(message: string, conversation: ConversationTurn
   if (/\b(?:pre.?approv|apply|application|offer|under contract|call me|contact me|talk to adam|text me)\b/.test(visitorText)) score += 4;
   state.intentScore = Math.min(10, Math.max(base.intentScore, score));
   state.stage = state.intentScore >= 7 ? 'ready' : state.intentScore >= 4 ? 'evaluate' : state.intentScore >= 2 ? 'educate' : 'discover';
+  state.pendingQuestion = null;
   return state;
+}
+
+export type GuidedConversationReply = { message: string; suggestedReplies: string[]; salesState: SalesConversationState };
+
+export function guidedConversationReply(message: string, state: SalesConversationState): GuidedConversationReply | null {
+  const text = message.trim();
+  const lower = text.toLowerCase();
+  const isQuestion = /\?$/.test(text) || /^(?:what|why|when|where|who|how|can|could|would|should|do|does|did|is|are|am|will|tell me|explain)\b/i.test(text);
+  const isGoalChoice = /^(?:buy(?:ing)?(?: a home)?|purchase|refinanc(?:e|ing)|investment property)$/i.test(text);
+  const isPendingAnswer = state.pendingQuestion === null && text.length <= 100 && (
+    state.goal !== 'unknown' && /^(?:my primary residence|primary residence|second home|investment|rental|more than|within|under contract|i'm looking|im looking|still figuring|\$?[\d,.]+[kKmM]?)\b/i.test(text)
+  );
+  if (isQuestion && !isGoalChoice) return null;
+  if (!isGoalChoice && !isPendingAnswer && state.goal === 'unknown') return null;
+
+  const next = { ...state };
+  if (state.goal === 'purchase' && state.shoppingStage === 'unknown') {
+    next.pendingQuestion = 'shopping_stage';
+    return reply("Absolutely. Let’s start with where you are—not with a loan program. Are you already looking at a particular home or price range, or are you still figuring out what makes sense?", ['I have a property in mind', 'I know my price range', 'I’m still figuring it out'], next);
+  }
+  if (state.goal === 'purchase' && state.propertyUse === 'unknown') {
+    next.pendingQuestion = 'property_use';
+    return reply('Got it. Will this be a home you plan to live in, a second home, or an investment property?', ['My primary residence', 'A second home', 'An investment property'], next);
+  }
+  if (state.goal === 'purchase' && state.purchasePrice === null && ['price_range', 'property_identified', 'actively_shopping', 'under_contract'].includes(state.shoppingStage)) {
+    next.pendingQuestion = 'price_range';
+    return reply("That helps. What purchase price or general range are you considering? A rough number is plenty—I’m just trying to frame the right tradeoffs.", [], next);
+  }
+  if (state.goal === 'purchase' && state.timeline === 'unknown') {
+    next.pendingQuestion = 'timeline';
+    return reply('And how soon do you realistically want to make a move?', ['Within 30 days', '1–3 months', 'More than 3 months from now', 'I’m not sure yet'], next);
+  }
+  if (state.goal === 'purchase' && state.purchasePrice !== null && state.cashAvailable === null) {
+    next.pendingQuestion = 'cash_strategy';
+    return reply("Have you thought about roughly how much cash you’d want to use, or would you rather compare a few cash-versus-payment options? There isn’t one universally “right” down payment.", ['I have an amount in mind', 'I want to preserve cash', 'I’d like to compare options'], next);
+  }
+  if (state.cashAvailable !== null && state.priority === 'unknown') {
+    next.pendingQuestion = 'priority';
+    return reply('That gives us meaningful flexibility. Which matters most to you: keeping more cash available, getting the monthly payment down, minimizing long-term cost, or seeing a side-by-side comparison?', ['Preserve more cash', 'Lower monthly payment', 'Lowest total cost', 'Compare the options'], next);
+  }
+  if (isGoalChoice || isPendingAnswer) {
+    return reply("Perfect—that gives me a better picture. What would be most useful to work through next?", ['Monthly payment strategy', 'Cash and down payment', 'Loan options', 'What I should do next'], next);
+  }
+  return null;
+}
+
+function reply(message: string, suggestedReplies: string[], salesState: SalesConversationState): GuidedConversationReply {
+  return { message, suggestedReplies, salesState };
 }
 
 export function salesStateSummary(state: SalesConversationState): string {
@@ -88,7 +177,20 @@ function parseSuppliedState(value: unknown): SalesConversationState {
   // location must stay a plain place name — never free-form text.
   if (typeof item.location === 'string' && /^[A-Za-z][A-Za-z .'-]{1,39}$/.test(item.location)) state.location = item.location;
   if (Number.isInteger(item.intentScore)) state.intentScore = Math.min(10, Math.max(0, Number(item.intentScore)));
+  if (['exploring', 'price_range', 'actively_shopping', 'property_identified', 'under_contract', 'unknown'].includes(String(item.shoppingStage))) state.shoppingStage = item.shoppingStage as SalesConversationState['shoppingStage'];
+  if (['shopping_stage', 'property_use', 'timeline', 'price_range', 'cash_strategy', 'priority'].includes(String(item.pendingQuestion))) state.pendingQuestion = item.pendingQuestion as SalesConversationState['pendingQuestion'];
+  if (typeof item.purchasePrice === 'number' && item.purchasePrice > 0 && item.purchasePrice < 100_000_000) state.purchasePrice = item.purchasePrice;
+  if (typeof item.cashAvailable === 'number' && item.cashAvailable >= 0 && item.cashAvailable < 100_000_000) state.cashAvailable = item.cashAvailable;
+  if (['preserve_cash', 'lowest_payment', 'lowest_total_cost', 'strongest_offer', 'compare_options', 'unknown'].includes(String(item.priority))) state.priority = item.priority as SalesConversationState['priority'];
   return state;
+}
+
+function parseMoney(value: string): number | null {
+  const match = value.match(/\$?([\d,.]+)\s*(k|m|thousand|million)?\b/i);
+  if (!match) return null;
+  const suffix = match[2]?.toLowerCase();
+  const amount = Number(match[1].replaceAll(',', '')) * (suffix === 'm' || suffix === 'million' ? 1_000_000 : suffix === 'k' || suffix === 'thousand' ? 1_000 : 1);
+  return Number.isFinite(amount) && amount >= 10_000 ? amount : null;
 }
 
 function titleCase(value: string) { return value.replace(/\b\w/g, (letter) => letter.toUpperCase()); }
