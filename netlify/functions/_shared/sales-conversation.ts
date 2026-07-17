@@ -84,7 +84,9 @@ function parseSuppliedState(value: unknown): SalesConversationState {
   if (['primary', 'second_home', 'investment', 'unknown'].includes(String(item.propertyUse))) state.propertyUse = item.propertyUse as SalesConversationState['propertyUse'];
   if (['within_30_days', '31_to_90_days', 'more_than_90_days', 'unsure', 'unknown'].includes(String(item.timeline))) state.timeline = item.timeline as SalesConversationState['timeline'];
   if (['credit', 'income', 'payment', 'rates', 'down_payment', 'property_transition', 'documents', 'unknown'].includes(String(item.concern))) state.concern = item.concern as SalesConversationState['concern'];
-  if (typeof item.location === 'string' && item.location.length <= 80) state.location = item.location;
+  // The state is serialized into model instructions, so a client-supplied
+  // location must stay a plain place name — never free-form text.
+  if (typeof item.location === 'string' && /^[A-Za-z][A-Za-z .'-]{1,39}$/.test(item.location)) state.location = item.location;
   if (Number.isInteger(item.intentScore)) state.intentScore = Math.min(10, Math.max(0, Number(item.intentScore)));
   return state;
 }
