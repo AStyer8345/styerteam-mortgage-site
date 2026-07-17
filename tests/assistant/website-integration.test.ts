@@ -60,3 +60,33 @@ test('assistant can recommend only approved website resources as safe links', ()
   assert.match(browser, /data\.resources/);
   assert.match(browser, /approvedHost/);
 });
+
+test('transcript sequencing uses the widget turn count end to end', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
+  assert.match(browser, /turnCount: priorTurnCount/);
+  assert.match(browser, /turnCount: state\.turnCount/);
+  assert.match(gateway, /computeSequenceStart\(body\.turnCount/);
+  assert.doesNotMatch(gateway, /priorTurnCount \* 2/);
+});
+
+test('conversations persist across page navigation in the same tab', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  assert.match(browser, /sessionStorage\.getItem/);
+  assert.match(browser, /sessionStorage\.setItem/);
+  assert.match(browser, /loadStoredConversation/);
+});
+
+test('the widget loader and stylesheet share one cache-busting version', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  const site = fs.readFileSync('script.js', 'utf8');
+  const cssVersion = browser.match(/assistant-widget\.css\?v=([\w-]+)/);
+  const jsVersion = site.match(/assistant-widget\.js\?v=([\w-]+)/);
+  assert.ok(cssVersion && jsVersion, 'both asset references must be versioned');
+  assert.equal(cssVersion![1], jsVersion![1]);
+});
+
+test('prior turns are redacted again before reaching the model', () => {
+  const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
+  assert.match(gateway, /scanSensitiveInput\(turn\.text\)\.redacted/);
+});

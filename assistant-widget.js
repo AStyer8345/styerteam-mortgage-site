@@ -2,15 +2,41 @@
   'use strict';
 
   var endpoint = '/api/mortgage-assistant';
+  var STORAGE_KEY = 'mortgageAssistantConversationV1';
   var state = {
     conversationId: createId(),
     turns: [],
+    // Total messages ever shown in this conversation. Unlike state.turns this
+    // never gets trimmed, so the server can assign unique transcript sequence
+    // numbers for long conversations.
+    turnCount: 0,
     pendingConfirmation: null,
     config: null,
     salesState: null,
     busy: false,
   };
   var ui = {};
+
+  function loadStoredConversation() {
+    try {
+      var raw = window.sessionStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed.conversationId !== 'string' || !Array.isArray(parsed.turns)) return null;
+      return parsed;
+    } catch (_) { return null; }
+  }
+
+  function persistConversation() {
+    try {
+      window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
+        conversationId: state.conversationId,
+        turns: state.turns.slice(-24),
+        turnCount: state.turnCount,
+        salesState: state.salesState,
+      }));
+    } catch (_) {}
+  }
 
   fetch(endpoint, { credentials: 'same-origin', headers: { Accept: 'application/json' } })
     .then(function (response) { return response.ok ? response.json() : Promise.reject(new Error('disabled')); })
@@ -24,7 +50,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260716-sales-v2';
+    stylesheet.href = '/assistant-widget.css?v=20260717-conversation-v3';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -90,7 +116,20 @@
     root.querySelector('#ma-disclosure').textContent = state.config.aiDisclosure;
     root.querySelector('.ma-sensitive-notice').textContent = state.config.sensitiveDataNotice;
 
-    addMessage('assistant', 'Hi! I’m here to make mortgages a little easier. Ask me a question, or choose an option below whenever you’re ready for the next step.');
+    var stored = loadStoredConversation();
+    if (stored && stored.turns.length) {
+      // Continue the conversation across page navigation within this tab.
+      state.conversationId = stored.conversationId;
+      state.salesState = stored.salesState || null;
+      stored.turns.forEach(function (turn) {
+        if (turn && (turn.role === 'user' || turn.role === 'assistant') && typeof turn.text === 'string') addMessage(turn.role, turn.text);
+      });
+      state.turnCount = typeof stored.turnCount === 'number' && stored.turnCount >= state.turns.length ? stored.turnCount : state.turns.length;
+    } else {
+      addMessage('assistant', 'Hi! I’m here to make mortgages a little easier. Ask me a question, or choose an option below whenever you’re ready for the next step.');
+      addSuggestedReplies(['Buying a home', 'Refinancing', 'Investment property']);
+      state.turnCount = 0;
+    }
     ui.launcher.addEventListener('click', openPanel);
     ui.close.addEventListener('click', closePanel);
     ui.form.addEventListener('submit', submitMessage);
@@ -128,13 +167,15 @@
     var message = ui.input.value.trim();
     if (!message) return;
     clearConfirmation();
+    var priorTurnCount = state.turnCount;
     addMessage('user', message);
     ui.input.value = '';
     setBusy(true, 'The assistant is reviewing approved information.');
     request({
       message: message,
       conversationId: state.conversationId,
-      conversation: state.turns.slice(0, -1).slice(-8),
+      conversation: state.turns.slice(0, -1).slice(-16),
+      turnCount: priorTurnCount,
       sourcePage: window.location.href.split('#')[0],
       salesState: state.salesState,
     }).then(handleResponse).catch(handleError).finally(function () { setBusy(false, ''); });
@@ -144,6 +185,7 @@
     if (data.conversationId) state.conversationId = data.conversationId;
     if (data.salesState) state.salesState = data.salesState;
     addMessage('assistant', data.message || 'I could not complete that request.');
+    persistConversation();
     if (Array.isArray(data.sources) && data.sources.length) addSources(data.sources);
     if (Array.isArray(data.resources)) data.resources.forEach(function (resource) {
       if (resource && resource.url && resource.label) addTrustedLink(resource.url, resource.label);
@@ -195,10 +237,14 @@
       conversationId: state.conversationId,
       confirmAction: state.pendingConfirmation.token,
       consentAccepted: needsConsent ? ui.consentInput.checked : undefined,
+      turnCount: state.turnCount,
       sourcePage: window.location.href.split('#')[0],
       salesState: state.salesState,
     }).then(function (data) {
       clearConfirmation();
+      // The server records two transcript pairs for a confirmed action
+      // (confirmation + result), so advance past all four rows.
+      state.turnCount += 3;
       handleResponse(data);
     }).catch(handleError).finally(function () { setBusy(false, ''); });
   }
@@ -258,7 +304,9 @@
     ui.messages.appendChild(item);
     ui.messages.scrollTop = ui.messages.scrollHeight;
     state.turns.push({ role: role, text: text });
-    if (state.turns.length > 16) state.turns = state.turns.slice(-16);
+    state.turnCount += 1;
+    if (state.turns.length > 24) state.turns = state.turns.slice(-24);
+    persistConversation();
   }
 
   function addSuggestedReplies(replies) {
