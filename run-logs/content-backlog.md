@@ -39,7 +39,7 @@ support the planned landing pages (the pages themselves are a separate effort).
 
 - VA loan basics for Austin buyers — eligibility, funding fee, $0-down reality (supports future VA landing page)
 - ~~Physician mortgage in Texas — how doctor loans treat student debt + deferred income~~ — CONSUMED 2026-05-30
-- Self-employed underwriting deep-dive — add-backs, 2-year averaging, what underwriters actually want
+- ~~Self-employed underwriting deep-dive — add-backs, 2-year averaging, what underwriters actually want~~ — CONSUMED 2026-07-16
 
 ## Tier C — GSC page-1 / 0-click recovery
 Source: most recent GSC export in `~/Downloads/` or `tasks/`. Pages ranking page-1
@@ -58,3 +58,4 @@ Format: `YYYY-MM-DD | <slug> | <tier> | <commit-sha>`
 - 2026-06-16 | 2026-06-16-dscr-loan-requirements-texas | A (DSCR cluster) | bbe7c05
 - 2026-06-23 | 2026-06-23-no-ratio-low-dscr-loans-texas | A (DSCR cluster) | db561c1
 - 2026-06-30 | 2026-06-30-bank-statement-loans-texas | A (bank-stmt freshness, Wk16 THREAT #1) | 5c2a2b0
+- 2026-07-16 | 2026-07-16-self-employed-income-calculation-underwriting-texas | B (manual catch-up — scheduler outage killed 7/7 + 7/14 runs) | 8db5c73

@@ -1,3 +1,8 @@
+## 2026-07-16 — Manual blog publish (interactive session): self-employed underwriting deep-dive
+
+- **NEW POST — `blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html`** (commit 8db5c73, live 200). "How Underwriters Actually Calculate Self-Employed Income: Add-Backs, Averaging, and the Two-Year Rule" — 1,540 words, Tier B backlog topic, 6 approved-source citations (Fannie B3-3.2-02/B3-3.5-01/B3-3.6-03, Form 1084, Freddie Form 91, IRS Schedule C), 6 cluster links incl. non-QM hub (Wk29 Opportunity #1). Registered in all 4 surfaces.
+- **Why manual:** scheduler outage (~7/5–7/15) killed the 7/7 + 7/14 styer-blog-writer-weekly runs; the 7/16 catch-up run produced no output (no commit, no run brief, no skip record — violates its loud-skip guarantee). Flagged to Adam for review before Tue 7/21.
+
 ## 2026-07-16 — styer-suburb-editor-daily (Round 5 opens → Round Rock): Behrens Ranch spotlight added, concurrent-writer schema edit made coherent
 
 - **Round 5 #1 — `round-rock-mortgage-lender.html`.** Picked up the concurrent styer-site-daily session's uncommitted Service-schema edit (it had teed up "Behrens Ranch" in the Conventional block + "gated Mira Vista section of Behrens Ranch" in the Jumbo block, no body) and made it coherent by adding the matching body content — the orphaned edit now ships inside a complete change instead of being clobbered or stranded.
