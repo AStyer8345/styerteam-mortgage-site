@@ -50,7 +50,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260717-compact-replies-v1';
+    stylesheet.href = '/assistant-widget.css?v=20260717-contact-capture-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -138,10 +138,7 @@
     });
     ui.confirm.addEventListener('click', confirmAction);
     ui.cancel.addEventListener('click', clearConfirmation);
-    ui.leadToggle.addEventListener('click', function () {
-      prefillLeadContext();
-      ui.leadForm.hidden = false; ui.leadToggle.hidden = true; ui.leadForm.querySelector('input').focus();
-    });
+    ui.leadToggle.addEventListener('click', openLeadForm);
     ui.leadCancel.addEventListener('click', closeLeadForm);
     ui.leadForm.addEventListener('submit', submitLeadRequest);
     document.addEventListener('keydown', function (event) {
@@ -191,6 +188,7 @@
       if (resource && resource.url && resource.label) addTrustedLink(resource.url, resource.label);
     });
     if (Array.isArray(data.suggestedReplies) && data.suggestedReplies.length) addSuggestedReplies(data.suggestedReplies);
+    if (data.collectContactDetails === true) openLeadForm();
     if (data.toolResult && data.toolResult.data && data.toolResult.data.applicationUrl) addTrustedLink(data.toolResult.data.applicationUrl, 'Open secure application');
     if (data.confirmation) showConfirmation(data.confirmation);
   }
@@ -283,10 +281,23 @@
     ui.leadToggle.focus();
   }
 
+  function openLeadForm() {
+    prefillLeadContext();
+    ui.leadForm.hidden = false;
+    ui.leadToggle.hidden = true;
+    var target = ui.leadForm.querySelector('[name="email"]');
+    var firstName = ui.leadForm.querySelector('[name="firstName"]');
+    if (!firstName.value) target = firstName;
+    target.focus();
+    target.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
   function prefillLeadContext() {
     if (!state.salesState || !ui.leadForm) return;
     var intent = ui.leadForm.querySelector('[name="leadIntent"]');
     var timeline = ui.leadForm.querySelector('[name="timeline"]');
+    var firstName = ui.leadForm.querySelector('[name="firstName"]');
+    if (firstName && state.salesState.visitorName && !firstName.value) firstName.value = state.salesState.visitorName;
     if (intent && ['purchase', 'refinance', 'investment'].indexOf(state.salesState.goal) >= 0) intent.value = state.salesState.goal;
     if (timeline && ['within_30_days', '31_to_90_days', 'more_than_90_days', 'unsure'].indexOf(state.salesState.timeline) >= 0) timeline.value = state.salesState.timeline;
   }
