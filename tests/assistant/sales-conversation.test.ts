@@ -58,17 +58,17 @@ test('purchase discovery advances one question at a time without assuming a prog
   assert.doesNotMatch(reply.message, /3%|FHA|calculator/i);
 
   state = deriveSalesState("I'm still figuring it out", [], reply.salesState);
-  reply = guidedConversationReply("I'm still figuring it out", state)!;
+  reply = guidedConversationReply("I'm still figuring it out", state, 'shopping_stage')!;
   assert.equal(reply.salesState.pendingQuestion, 'property_use');
   assert.doesNotMatch(reply.message, /calculator/i);
 
   state = deriveSalesState('My primary residence', [], reply.salesState);
-  reply = guidedConversationReply('My primary residence', state)!;
+  reply = guidedConversationReply('My primary residence', state, 'property_use')!;
   assert.equal(reply.salesState.pendingQuestion, 'timeline');
 
   state = deriveSalesState('More than 3 months from now', [], reply.salesState);
   assert.equal(state.timeline, 'more_than_90_days');
-  reply = guidedConversationReply('More than 3 months from now', state)!;
+  reply = guidedConversationReply('More than 3 months from now', state, 'timeline')!;
   assert.doesNotMatch(reply.message, /bluff|outcome are you hoping|calculator/i);
 });
 
@@ -79,15 +79,31 @@ test('high-price high-cash discovery explores strategy instead of minimum down p
   });
   assert.equal(state.purchasePrice, 2_000_000);
   state.timeline = 'more_than_90_days';
-  let reply = guidedConversationReply('$2 million', state)!;
+  let reply = guidedConversationReply('$2 million', state, 'price_range')!;
   assert.equal(reply.salesState.pendingQuestion, 'cash_strategy');
   assert.doesNotMatch(reply.message, /minimum|3%|calculator|afford/i);
 
   state = deriveSalesState('$1 million', [], reply.salesState);
   assert.equal(state.cashAvailable, 1_000_000);
-  reply = guidedConversationReply('$1 million', state)!;
+  reply = guidedConversationReply('$1 million', state, 'cash_strategy')!;
   assert.equal(reply.salesState.pendingQuestion, 'priority');
   assert.match(reply.message, /keeping more cash|monthly payment|long-term cost/i);
+});
+
+test('cash choices advance and direct mortgage questions escape guided discovery', () => {
+  const base = { ...deriveSalesState('Buying a primary home', [], null), shoppingStage: 'price_range' as const, purchasePrice: 500_000, timeline: '31_to_90_days' as const, pendingQuestion: 'cash_strategy' as const };
+  let state = deriveSalesState('I have an amount in mind', [], base);
+  let reply = guidedConversationReply('I have an amount in mind', state, 'cash_strategy')!;
+  assert.equal(reply.salesState.pendingQuestion, 'cash_amount');
+  assert.match(reply.message, /roughly how much cash/i);
+
+  state = deriveSalesState('I want to preserve cash', [], base);
+  reply = guidedConversationReply('I want to preserve cash', state, 'cash_strategy')!;
+  assert.notEqual(reply.salesState.pendingQuestion, 'cash_strategy');
+
+  const direct = 'I want to know how much I need to put down and what the minimum credit score is';
+  state = deriveSalesState(direct, [], base);
+  assert.equal(guidedConversationReply(direct, state, 'cash_strategy'), null);
 });
 
 test('a goal answer to a topical question stays with the knowledge path', () => {
