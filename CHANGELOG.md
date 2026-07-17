@@ -1,3 +1,16 @@
+## 2026-07-17 — styer-content-weekly (blog editor): asset-depletion citation pass, 0 → 6 authoritative citations
+
+- **Page refreshed — `asset-depletion-mortgage-texas.html`** (niche-first priority #1; queue "do next"; re-verified live at **0 authoritative external citations** — the sole gap on an otherwise DSCR-depth page: 6 JSON-LD blocks, 12-Q&A FAQPage, 4,476 words, divisor comparison table, worked example).
+- **Mandatory AEO citation pass: 0 → 6 authoritative external citations.**
+  1. **CFPB ATR/QM 12 CFR §1026.43(c)(2)** — new top-of-page paragraph: the owner-occupied Ability-to-Repay rule requires verifying "current or reasonably expected income **or assets**," so asset depletion is that rule used as written ("not a loophole" — strongest AEO fact).
+  2. **Fannie Mae Selling Guide B3-3.1-09** (Employment-Related Assets) — sources the Fannie method in a new divisor-table sourcing line.
+  3. **Freddie Mac Single-Family Seller/Servicer Guide §5307.1** — sources the 240-month path, 62+ requirement, and crypto exclusion (converts the FLAG_FOR_ADAM divisor-uncertainty note into a sourced statement, no over-claim on exact divisor language).
+  4. **Freddie Mac PMMS 6.55%** (week of July 16, 2026, WebSearch-verified, up from 6.49% prior week) — anchors the "+0.5–1.5% over conforming" non-QM premium in the worked example (was unsourced).
+  5. **IRS Topic no. 557** — sources the "10% additional tax on early distributions" behind the under-59½ retirement-account haircut.
+  6. **Unlock MLS / ABoR** — Austin metro median **$450,000 June 2026** (WebSearch-verified), first Austin data point, framed honestly against the $1M–$3M asset-depletion luxury tier.
+- **Enrichment 4/5:** Austin data point ✓ · current sourced rate ✓ · enriched hero alt text ✓ (generic "Texas Mortgage Broker" → "asset depletion and high-net-worth mortgage lender qualifying borrowers on liquid assets") · tighter CTA in Adam's voice ✓ ("Send me your account statements… which one buys the most house — usually same day… — Adam"; also fixed a lowercase "tax returns" fragment). Anecdote skipped — `memory/people/` absent (verified repo + Documents root; only a stale `cowork/archive/` copy), won't fabricate; page's existing composite scenarios retained per DSCR precedent.
+- **Verification:** all 6 JSON-LD re-validated (python json.loads, 6/6); title lint clean (includes "Adam Styer"); word count 4,476 → ~4,650 (no padding — already DSCR-depth). dateModified 2026-05-17 → 2026-07-17 (byline + Article schema); sitemap lastmod 2026-05-18 → 2026-07-17. Title + H1 + slug preserved. Queued for GSC reindex.
+
 ## 2026-07-17 — styer-site-daily (Friday, Content Planning + AEO Review): clean audit, 0 site mutations
 
 - **Non-negotiables green:** sitemap.xml + robots.txt HTTP 200 (sandbox-disabled `curl -sL`, absolute binaries); conversion tracking 10/10 via HTML-token matrix (`action='/thank-you'` single-quote form matched — Netlify Pretty-URLs quote-swap still active).
