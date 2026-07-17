@@ -47,18 +47,15 @@ test('high-intent next-step questions produce a direct handoff instead of a fall
   const reply = salesNextStepReply('What should I do next?', state);
   assert.ok(reply);
   assert.match(reply!.message, /scenario review/i);
-  assert.match(reply!.message, /Have Adam contact me/);
+  assert.match(reply!.message, /review form/i);
   assert.doesNotMatch(reply!.message, /What outcome are you hoping for/i);
 });
 
 test('purchase discovery advances one question at a time without assuming a program or calculator', () => {
   let state = deriveSalesState('Buying a home', [], null);
   let reply = guidedConversationReply('Buying a home', state)!;
-  assert.equal(reply.salesState.pendingQuestion, 'first_name');
-  state = deriveSalesState('Sarah', [], reply.salesState);
-  reply = guidedConversationReply('Sarah', state, 'first_name')!;
-  assert.equal(state.visitorName, 'Sarah');
   assert.equal(reply.salesState.pendingQuestion, 'shopping_stage');
+  assert.doesNotMatch(reply.message, /name|call you/i);
   assert.doesNotMatch(reply.message, /3%|FHA|calculator/i);
 
   state = deriveSalesState("I'm still figuring it out", [], reply.salesState);

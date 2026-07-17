@@ -1,4 +1,5 @@
 export type AssistantResource = { label: string; url: string; use: string };
+export type AssistantAction = { type: 'contact' | 'application' | 'schedule' | 'rate_review'; label: string; url?: string };
 
 export const APPROVED_RESOURCES: readonly AssistantResource[] = [
   { label: 'Mortgage payment calculator', url: 'https://adamstyer.com/calculator-payment.html', use: 'estimating principal, interest, taxes, insurance, or a monthly housing payment' },
@@ -25,12 +26,18 @@ export function conversionResources(stage: string, message = ''): Array<{ label:
   if (/\b(?:apply|application|pre.?approv|get started)\b/.test(value)) return [{ label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register' }];
   if (/\b(?:schedule|book|calendly|appointment|call)\b/.test(value)) return [{ label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes' }];
   if (/\b(?:contact|reach|email|text|scenario)\b/.test(value)) return [{ label: 'Send Adam my scenario', url: 'https://adamstyer.com/scenario.html' }];
-  if (stage === 'ready') return [
-    { label: 'Have Adam review my scenario', url: 'https://adamstyer.com/scenario.html' },
-    { label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register' },
-    { label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes' },
-  ];
+  void stage;
   return [];
+}
+
+export function resolveAssistantActions(actions: Array<'contact' | 'application' | 'schedule' | 'rate_review'>): AssistantAction[] {
+  const definitions: Record<AssistantAction['type'], AssistantAction> = {
+    contact: { type: 'contact', label: 'Have Adam review this' },
+    application: { type: 'application', label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register' },
+    schedule: { type: 'schedule', label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes' },
+    rate_review: { type: 'rate_review', label: 'Have Adam verify pricing', url: 'https://adamstyer.com/rate-check.html' },
+  };
+  return [...new Set(actions)].map((action) => definitions[action]);
 }
 
 export function recommendApprovedResources(question: string): Array<{ label: string; url: string }> {
