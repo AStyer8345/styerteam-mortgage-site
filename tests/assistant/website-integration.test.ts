@@ -10,7 +10,8 @@ test('assistant gateway is server-side and feature-gated', () => {
   assert.match(openai, /OPENAI_API_KEY/);
   assert.match(loanos, /X-Vercel-Protection-Bypass/);
   assert.match(gateway, /scanSensitiveInput\(message\)/);
-  assert.match(gateway, /retrieveApprovedKnowledge\(message\)/);
+  assert.match(gateway, /buildContextualQuery\(message, priorTurns\)/);
+  assert.match(gateway, /retrieveApprovedKnowledge\(contextualQuery\)/);
   assert.match(gateway, /confirmation_recorded/);
   assert.match(openai, /store: false/);
   assert.doesNotMatch(gateway, /Access-Control-Allow-Origin/);
@@ -19,6 +20,13 @@ test('assistant gateway is server-side and feature-gated', () => {
 test('browser code never contains privileged credential names', () => {
   const browser = fs.existsSync('assistant-widget.js') ? fs.readFileSync('assistant-widget.js', 'utf8') : '';
   assert.doesNotMatch(browser, /OPENAI_API_KEY|LOANOS_ASSISTANT_SIGNING_SECRET|LOANOS_ASSISTANT_BYPASS_TOKEN|SUPABASE_SERVICE/);
+});
+
+test('confirmed chatbot leads report LoanOS notification and acknowledgment failures', () => {
+  const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
+  assert.match(gateway, /ownerNotified/);
+  assert.match(gateway, /visitorAcknowledged/);
+  assert.match(gateway, /email notification could not be sent/);
 });
 
 test('assistant offers the approved secure application beside human follow-up', () => {
@@ -43,6 +51,7 @@ test('assistant can recommend only approved website resources as safe links', ()
   const openai = fs.readFileSync('netlify/functions/_shared/openai-responses.ts', 'utf8');
   const resources = fs.readFileSync('netlify/functions/_shared/assistant-resources.ts', 'utf8');
   assert.match(openai, /recommended_resources/);
+  assert.match(openai, /suggested_replies/);
   assert.match(resources, /calculator-payment\.html/);
   assert.match(resources, /calculator-affordability\.html/);
   assert.match(resources, /calculator-refinance-breakeven\.html/);

@@ -9,6 +9,7 @@ export type AssistantModelResult = {
   supportAdequate: boolean;
   citedSources: string[];
   recommendedResources: Array<{ label: string; url: string }>;
+  suggestedReplies: string[];
   toolCalls: ToolCall[];
 };
 
@@ -27,8 +28,9 @@ const OUTPUT_SCHEMA = {
         required: ['label', 'url'],
       },
     },
+    suggested_replies: { type: 'array', items: { type: 'string', maxLength: 60 }, maxItems: 3 },
   },
-  required: ['answer', 'support_adequate', 'cited_sources', 'recommended_resources'],
+  required: ['answer', 'support_adequate', 'cited_sources', 'recommended_resources', 'suggested_replies'],
 };
 
 const TOOLS = [
@@ -81,7 +83,7 @@ export async function createMortgageResponse(input: { message: string; sources: 
 function parseResponse(payload: Record<string, unknown>): AssistantModelResult {
   const output = Array.isArray(payload.output) ? payload.output as Array<Record<string, unknown>> : [];
   const toolCalls: ToolCall[] = [];
-  let parsed: { answer: string; support_adequate: boolean; cited_sources: string[]; recommended_resources: Array<{ label: string; url: string }> } | null = null;
+  let parsed: { answer: string; support_adequate: boolean; cited_sources: string[]; recommended_resources: Array<{ label: string; url: string }>; suggested_replies: string[] } | null = null;
   for (const item of output) {
     if (item.type === 'function_call' && typeof item.name === 'string' && typeof item.arguments === 'string' && typeof item.call_id === 'string') {
       try { toolCalls.push({ id: item.call_id, name: item.name, arguments: JSON.parse(item.arguments) as Record<string, unknown> }); } catch { throw new Error('Malformed model tool call'); }
@@ -103,6 +105,9 @@ function parseResponse(payload: Record<string, unknown>): AssistantModelResult {
     recommendedResources: Array.isArray(parsed?.recommended_resources)
       ? parsed!.recommended_resources.filter(isApprovedResource).slice(0, 2)
       : [],
+    suggestedReplies: Array.isArray(parsed?.suggested_replies)
+      ? parsed!.suggested_replies.filter((value) => typeof value === 'string' && value.trim().length > 0).map((value) => value.trim()).slice(0, 3)
+      : [],
     toolCalls,
   };
 }
@@ -116,7 +121,9 @@ Sound like a friendly, sharp member of Adam's team—not a policy manual, search
 
 Lead with the direct answer in one or two sentences. Then explain why it matters in a practical way, using a small example when the approved sources support one. Keep most answers under 180 words unless the visitor asks for detail. Break longer answers into short paragraphs, and use simple hyphen bullets when listing three or more items. End naturally—often with a relevant next step or one useful follow-up question—instead of repeatedly appending the same disclaimer. Do not use markdown headings, tables, bold markers, or dense walls of text. Avoid stiff phrases such as “associated with,” “minimum required investment,” “the individual,” or “a human should review”; translate them into everyday language whenever accuracy allows. Add a brief scenario-specific caveat only when accuracy or compliance requires it. When personal review is appropriate, say Adam or his team can take a look rather than referring impersonally to “a human mortgage professional.”
 
-Be actively helpful and conversational. Use recent turns so you do not ask for information the visitor already provided. When one missing detail would materially improve the guidance, ask one focused question at the end. Do not turn every answer into an intake form, ask several questions at once, or pressure the visitor to apply. If a website resource below directly helps with the visitor's goal, include it in recommended_resources and briefly explain why it is useful. Recommend no more than two and return an empty array when none genuinely fits. Never place URLs in the answer text and never invent or alter a resource URL.
+Be actively helpful and conversational. Treat a short visitor reply as an answer to your most recent question, not as a brand-new topic. Use recent turns so you do not ask for information the visitor already provided. Follow a value-first sales rhythm: answer the question, identify the visitor's current goal or obstacle, and offer one proportionate next step. When one missing detail would materially improve the guidance, ask exactly one focused question at the end. Never ask two or three questions in one sentence. Never repeat a question that the visitor already answered. Do not turn every answer into an intake form, pressure the visitor to apply, or mention Adam in every response.
+
+Return up to three short suggested_replies only when they directly answer your final question or offer clearly relevant paths. They will become buttons, so each must make sense as a visitor message. Return an empty array if the response does not ask a question. If a website resource below directly helps with the visitor's goal, include it in recommended_resources and briefly explain why it is useful. Recommend no more than two and return an empty array when none genuinely fits. Never place URLs in the answer text and never invent or alter a resource URL.
 
 Never promise or represent approval, preapproval, qualification, eligibility, rates, rate availability, payments, closing dates, underwriting outcomes, or guaranteed results. Never solicit protected-class information. Never use protected characteristics or proxies for scoring, routing, personalization, eligibility, or service decisions. Do not ask for SSNs, full birth dates, account/card numbers, passwords, codes, or identification documents.
 

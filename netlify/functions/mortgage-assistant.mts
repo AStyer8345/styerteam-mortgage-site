@@ -7,6 +7,7 @@ import { createSessionToken, verifySessionToken } from './_shared/session.ts';
 import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
 import { recommendApprovedResources } from './_shared/assistant-resources.ts';
+import { buildContextualQuery, fixedConversationReply } from './_shared/conversation-context.ts';
 
 const COOKIE = 'mortgage_assistant_session';
 const MUTATING = new Set(['create_or_update_website_lead', 'create_follow_up_task', 'schedule_consultation', 'escalate_to_adam']);
@@ -66,11 +67,18 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ conversationId, message: answer, sources: [], aiDisclosure: true }, 200, headers);
   }
 
-  const retrieval = await retrieveApprovedKnowledge(message);
+  const fixedReply = fixedConversationReply(message);
+  if (fixedReply) {
+    await recordTurn(conversationId, correlationId, session.id, message, fixedReply.message, [], { fixed_operational_text: true }, undefined, priorTurns.length);
+    return json({ conversationId, message: fixedReply.message, sources: [], suggestedReplies: fixedReply.suggestedReplies || [], aiDisclosure: true }, 200, headers);
+  }
+
+  const contextualQuery = buildContextualQuery(message, priorTurns);
+  const retrieval = await retrieveApprovedKnowledge(contextualQuery);
   if (!retrieval.results.length) {
-    const answer = safeUnsupportedNotice(message);
+    const answer = safeUnsupportedNotice(contextualQuery);
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { insufficient_knowledge: true }, undefined, priorTurns.length, retrieval.version);
-    return json({ conversationId, message: answer, sources: [], resources: recommendApprovedResources(message), canEscalate: true }, 200, headers);
+    return json({ conversationId, message: answer, sources: [], resources: recommendApprovedResources(contextualQuery), canEscalate: true }, 200, headers);
   }
 
   try {
@@ -95,15 +103,15 @@ export default async function handler(request: Request, context: Context): Promi
     const validation = validateAssistantOutput(model.text);
     if (!validation.safe) throw new Error(`Unsafe model output: ${validation.reason}`);
     await recordTurn(conversationId, correlationId, session.id, message, model.text, model.citedSources, { grounded: true }, model.responseId, priorTurns.length, retrieval.version);
-    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: model.recommendedResources }, 200, headers);
+    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: model.recommendedResources, suggestedReplies: model.suggestedReplies }, 200, headers);
   } catch (error) {
     console.error('[mortgage-assistant] response generation failed', {
       correlationId,
       reason: error instanceof Error ? error.message.slice(0, 300) : 'unknown_error',
     });
-    const answer = safeUnsupportedNotice(message);
+    const answer = safeUnsupportedNotice(contextualQuery);
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { safe_fallback: true }, undefined, priorTurns.length, retrieval.version);
-    return json({ conversationId, message: answer, sources: [], resources: recommendApprovedResources(message), canEscalate: true }, 200, headers);
+    return json({ conversationId, message: answer, sources: [], resources: recommendApprovedResources(contextualQuery), canEscalate: true }, 200, headers);
   }
 }
 
@@ -206,7 +214,12 @@ function verifyConfirmationToken(secret: string, token: string): { name: string;
 function toolResultMessage(name: string, result: { ok: boolean; status: string; data?: Record<string, unknown>; error?: { message: string } }): string {
   if (!result.ok) return result.error?.message || 'That action could not be completed. I have not claimed it succeeded.';
   if (name === 'send_application_link' && typeof result.data?.applicationUrl === 'string') return `Here is the approved secure application link: ${result.data.applicationUrl}`;
-  if (name === 'create_or_update_website_lead') return result.status === 'existing' ? 'Your request was added to the existing contact record.' : 'Your contact request was saved.';
+  if (name === 'create_or_update_website_lead') {
+    const saved = result.status === 'existing' ? 'Your request was added to the existing contact record.' : 'Your contact request was saved.';
+    if (result.data?.ownerNotified !== true) return `${saved} The email notification could not be sent, so Adam may not see it immediately. Please call or text (512) 956-6010.`;
+    if (result.data?.visitorAcknowledged === true) return `${saved} Adam was notified, and a confirmation email is on its way.`;
+    return `${saved} Adam was notified, but the confirmation email could not be sent.`;
+  }
   if (name === 'create_follow_up_task') return 'A follow-up task was created for Adam.';
   if (name === 'schedule_consultation') return 'Your consultation was scheduled.';
   if (name === 'escalate_to_adam') return 'A follow-up task was created for Adam.';

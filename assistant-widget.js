@@ -23,7 +23,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260716-readable-v4';
+    stylesheet.href = '/assistant-widget.css?v=20260716-conversation-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -130,7 +130,7 @@
     request({
       message: message,
       conversationId: state.conversationId,
-      conversation: state.turns.slice(-8),
+      conversation: state.turns.slice(0, -1).slice(-8),
       sourcePage: window.location.href.split('#')[0],
     }).then(handleResponse).catch(handleError).finally(function () { setBusy(false, ''); });
   }
@@ -142,6 +142,7 @@
     if (Array.isArray(data.resources)) data.resources.forEach(function (resource) {
       if (resource && resource.url && resource.label) addTrustedLink(resource.url, resource.label);
     });
+    if (Array.isArray(data.suggestedReplies) && data.suggestedReplies.length) addSuggestedReplies(data.suggestedReplies);
     if (data.toolResult && data.toolResult.data && data.toolResult.data.applicationUrl) addTrustedLink(data.toolResult.data.applicationUrl, 'Open secure application');
     if (data.confirmation) showConfirmation(data.confirmation);
   }
@@ -229,6 +230,7 @@
   }
 
   function addMessage(role, text) {
+    if (role === 'user') removeSuggestedReplies();
     var item = document.createElement('div');
     item.className = 'ma-message ma-message-' + role;
     var label = document.createElement('span');
@@ -241,6 +243,33 @@
     ui.messages.scrollTop = ui.messages.scrollHeight;
     state.turns.push({ role: role, text: text });
     if (state.turns.length > 16) state.turns = state.turns.slice(-16);
+  }
+
+  function addSuggestedReplies(replies) {
+    removeSuggestedReplies();
+    var wrapper = document.createElement('div');
+    wrapper.className = 'ma-suggested-replies';
+    wrapper.setAttribute('aria-label', 'Suggested replies');
+    replies.slice(0, 3).forEach(function (reply) {
+      if (typeof reply !== 'string' || !reply.trim()) return;
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = reply.trim();
+      button.addEventListener('click', function () {
+        ui.input.value = reply.trim();
+        ui.form.requestSubmit();
+      });
+      wrapper.appendChild(button);
+    });
+    if (wrapper.children.length) {
+      ui.messages.appendChild(wrapper);
+      ui.messages.scrollTop = ui.messages.scrollHeight;
+    }
+  }
+
+  function removeSuggestedReplies() {
+    if (!ui.messages) return;
+    ui.messages.querySelectorAll('.ma-suggested-replies').forEach(function (item) { item.remove(); });
   }
 
   function addSources(sources) {

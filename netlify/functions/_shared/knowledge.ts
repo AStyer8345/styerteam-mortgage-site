@@ -71,7 +71,21 @@ function splitSections(source: string, title: string, body: string): Array<Omit<
 }
 
 function tokenize(value: string): Set<string> {
-  return new Set((value.toLowerCase().match(/[a-z0-9]+/g) || []).filter((term) => term.length > 2 && !STOP.has(term)));
+  const raw = (value.toLowerCase().match(/[a-z0-9]+/g) || []).filter((term) => term.length > 2 && !STOP.has(term));
+  const expanded = [...raw];
+  const synonyms: Record<string, string[]> = {
+    dti: ['debt', 'income', 'ratio'],
+    conventional: ['fannie', 'freddie', 'conforming'],
+    fico: ['credit', 'score'],
+    score: ['credit'],
+    scores: ['credit'],
+    buy: ['purchase'],
+    buying: ['purchase'],
+    refi: ['refinance'],
+    self: ['employment', 'income'],
+  };
+  for (const term of raw) expanded.push(...(synonyms[term] || []));
+  return new Set(expanded);
 }
 
 function score(query: Set<string>, heading: Set<string>, body: Set<string>): number {
