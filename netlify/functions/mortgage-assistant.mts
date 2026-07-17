@@ -67,7 +67,7 @@ export default async function handler(request: Request, context: Context): Promi
 
   const retrieval = await retrieveApprovedKnowledge(message);
   if (!retrieval.results.length) {
-    const answer = safeUnsupportedNotice();
+    const answer = safeUnsupportedNotice(message);
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { insufficient_knowledge: true }, undefined, priorTurns.length, retrieval.version);
     return json({ conversationId, message: answer, sources: [], canEscalate: true }, 200, headers);
   }
@@ -100,7 +100,7 @@ export default async function handler(request: Request, context: Context): Promi
       correlationId,
       reason: error instanceof Error ? error.message.slice(0, 300) : 'unknown_error',
     });
-    const answer = safeUnsupportedNotice();
+    const answer = safeUnsupportedNotice(message);
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { safe_fallback: true }, undefined, priorTurns.length, retrieval.version);
     return json({ conversationId, message: answer, sources: [], canEscalate: true }, 200, headers);
   }

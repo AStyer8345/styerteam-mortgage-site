@@ -51,6 +51,12 @@ export function safeSensitiveNotice(): string {
   return "For your security, please don't send Social Security numbers, full birth dates, account or card numbers, passwords, authentication codes, or identification documents here. I removed the sensitive-looking information from this conversation. You can continue with a general question, or I can help you reach Adam.";
 }
 
-export function safeUnsupportedNotice(): string {
-  return "I don't have enough approved information to answer that accurately. I can help you connect with Adam for a reviewed answer.";
+export function safeUnsupportedNotice(question = ''): string {
+  const normalized = question.toLowerCase();
+
+  if (/\b(?:rate|rates|interest|apr)\b/.test(normalized)) {
+    return "Mortgage rates can change throughout the day, so I don’t want to give you a stale or misleading number. Your actual options also depend on the loan type, property use, down payment or equity, credit profile, and whether you’re buying or refinancing.\n\nIf you share those basics—without sending sensitive information—I can help explain what affects the quote. For today’s actual pricing, Adam or his team can compare the available options with you.";
+  }
+
+  return "I want to be careful here because the answer depends on details I don’t have yet. If you tell me a little more about what you’re trying to do—such as buying or refinancing, the property type, your general timeline, and the loan program you’re considering—I may be able to give you a more useful explanation.\n\nIf your question needs a decision based on your personal finances or current lender pricing, Adam or his team can review it and give you a specific answer.";
 }
