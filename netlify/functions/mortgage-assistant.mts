@@ -6,10 +6,12 @@ import { createGeneralMortgageResponse, createMortgageResponse, createSalesConve
 import { createSessionToken, verifySessionToken } from './_shared/session.ts';
 import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
-import { conversionResources, recommendApprovedResources } from './_shared/assistant-resources.ts';
+import { conversionResources, recommendApprovedResources, resolveAssistantActions } from './_shared/assistant-resources.ts';
 import { buildContextualQuery, computeSequenceStart, fixedConversationReply } from './_shared/conversation-context.ts';
 import { deriveSalesState, generalAnswerFollowUp, guidedConversationReply, salesNextStepReply, salesStateSummary } from './_shared/sales-conversation.ts';
 import { allowsResourceRecommendation, checkDiscoveryLanguage } from './_shared/conversation-policy.ts';
+import { buildStructuredLeadContext, strategyConversationReply } from './_shared/mortgage-strategy.ts';
+import { loadEstimateAssumptions, loadRateMarketConfig } from './_shared/rate-market.ts';
 
 const COOKIE = 'mortgage_assistant_session';
 const MUTATING = new Set(['create_or_update_website_lead', 'create_follow_up_task', 'schedule_consultation', 'escalate_to_adam']);
@@ -47,7 +49,7 @@ export default async function handler(request: Request, context: Context): Promi
   }
 
   if (typeof body.confirmAction === 'string') return handleConfirmedAction(body.confirmAction, body, secret, conversationId, correlationId, session.id, headers);
-  if (body.leadRequest && typeof body.leadRequest === 'object') return handleLeadRequest(body.leadRequest as Record<string, unknown>, secret, conversationId, headers);
+  if (body.leadRequest && typeof body.leadRequest === 'object') return handleLeadRequest(body.leadRequest as Record<string, unknown>, secret, conversationId, headers, body);
 
   const message = typeof body.message === 'string' ? body.message.trim() : '';
   if (!message || message.length > 4000) return json({ error: { code: 'invalid_message', message: 'Enter a message between 1 and 4,000 characters.' } }, 400, headers);
@@ -99,10 +101,37 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ conversationId, message: fixedReply.message, sources: [], suggestedReplies: fixedReply.suggestedReplies || [], salesState, aiDisclosure: true }, 200, headers);
   }
 
+  const strategyReply = strategyConversationReply(message, salesState.strategy, {
+    market: loadRateMarketConfig(),
+    assumptions: loadEstimateAssumptions(),
+  });
+  if (strategyReply) {
+    const nextState = { ...salesState, strategy: strategyReply.strategy };
+    if (strategyReply.strategy.propertyUse !== 'unknown') nextState.propertyUse = strategyReply.strategy.propertyUse;
+    if (strategyReply.strategy.timeline !== 'unknown') nextState.timeline = strategyReply.strategy.timeline;
+    if (strategyReply.strategy.targetPrice !== null) nextState.purchasePrice = strategyReply.strategy.targetPrice;
+    if (strategyReply.strategy.availableCash !== null) nextState.cashAvailable = strategyReply.strategy.availableCash;
+    await recordTurn(conversationId, correlationId, session.id, message, strategyReply.message, [], {
+      mortgage_strategy: true,
+      response_kind: strategyReply.responseKind,
+      strategy_path: strategyReply.strategy.path || 'unknown',
+    }, undefined, sequenceStart);
+    return json({
+      conversationId,
+      message: strategyReply.message,
+      sources: [],
+      resources: [],
+      actions: resolveAssistantActions(strategyReply.actions),
+      suggestedReplies: strategyReply.suggestedReplies,
+      salesState: nextState,
+      responseKind: strategyReply.responseKind,
+    }, 200, headers);
+  }
+
   const nextStepReply = salesNextStepReply(message, salesState);
   if (nextStepReply) {
     await recordTurn(conversationId, correlationId, session.id, message, nextStepReply.message, [], { fixed_sales_guidance: true, sales_stage: salesState.stage, intent_score: String(salesState.intentScore) }, undefined, sequenceStart);
-    return json({ conversationId, message: nextStepReply.message, sources: [], suggestedReplies: nextStepReply.suggestedReplies, salesState }, 200, headers);
+    return json({ conversationId, message: nextStepReply.message, sources: [], suggestedReplies: nextStepReply.suggestedReplies, actions: salesState.stage === 'ready' ? resolveAssistantActions(['contact']) : [], salesState }, 200, headers);
   }
 
   const previousPending = body.salesState && typeof body.salesState === 'object' && !Array.isArray(body.salesState)
@@ -140,12 +169,12 @@ export default async function handler(request: Request, context: Context): Promi
       const validation = validateAssistantOutput(model.text);
       if (!validation.safe) throw new Error(`Unsafe general answer: ${validation.reason}`);
       await recordTurn(conversationId, correlationId, session.id, message, model.text, [], { general_educational_answer: true }, model.responseId, sequenceStart, retrieval.version);
-      return json({ conversationId, message: model.text, sources: [], resources: [...(allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : []), ...conversionResources(salesState.stage, message)].slice(0, 3), suggestedReplies: followUp.suggestedReplies, salesState }, 200, headers);
+      return json({ conversationId, message: model.text, sources: [], resources: [...(allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : []), ...conversionResources(salesState.stage, message)].slice(0, 3), suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     } catch (error) {
       console.error('[mortgage-assistant] general answer failed', { correlationId, reason: error instanceof Error ? error.message.slice(0, 240) : 'unknown_error' });
       const answer = `Let’s work through it from the decision you’re trying to make.\n\n${followUp.question}`;
       await recordTurn(conversationId, correlationId, session.id, message, answer, [], { general_answer_fallback: true }, undefined, sequenceStart, retrieval.version);
-      return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies: followUp.suggestedReplies, salesState }, 200, headers);
+      return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     }
   }
 
@@ -186,7 +215,7 @@ export default async function handler(request: Request, context: Context): Promi
     const validation = validateAssistantOutput(model.text);
     if (!validation.safe) throw new Error(`Unsafe model output: ${validation.reason}`);
     await recordTurn(conversationId, correlationId, session.id, message, model.text, model.citedSources, { grounded: true }, model.responseId, sequenceStart, retrieval.version);
-    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: allowResourceRecommendation(message) ? model.recommendedResources.slice(0, 1) : [], suggestedReplies: model.suggestedReplies, salesState }, 200, headers);
+    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: allowResourceRecommendation(message) ? model.recommendedResources.slice(0, 1) : [], suggestedReplies: model.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
   } catch (error) {
     console.error('[mortgage-assistant] response generation failed', {
       correlationId,
@@ -199,12 +228,12 @@ export default async function handler(request: Request, context: Context): Promi
       const validation = validateAssistantOutput(general.text);
       if (!validation.safe) throw new Error(`Unsafe general answer: ${validation.reason}`);
       await recordTurn(conversationId, correlationId, session.id, message, general.text, [], { grounded_fallback_to_general: true }, general.responseId, sequenceStart, retrieval.version);
-      return json({ conversationId, message: general.text, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: followUp.suggestedReplies, salesState }, 200, headers);
+      return json({ conversationId, message: general.text, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     } catch (generalError) {
       console.error('[mortgage-assistant] general fallback failed', { correlationId, reason: generalError instanceof Error ? generalError.message.slice(0, 240) : 'unknown_error' });
       const answer = `Here’s the useful way to approach it: start with the decision and the tradeoffs, then add only the numbers that change the answer.\n\n${followUp.question}`;
       await recordTurn(conversationId, correlationId, session.id, message, answer, [], { final_safe_fallback: true }, undefined, sequenceStart, retrieval.version);
-      return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies: followUp.suggestedReplies, salesState }, 200, headers);
+      return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     }
   }
 }
@@ -217,25 +246,29 @@ function handleConfig(context: Context, headers: Record<string, string>): Respon
   }
   return json({
     enabled: enabled && Boolean(secret),
-    aiDisclosure: "You’re chatting with an AI assistant. Mortgage information is limited to approved website materials; Adam can review questions that need human judgment.",
+    aiDisclosure: "You’re chatting with an AI mortgage strategy assistant. It can provide general education and planning estimates, but it cannot approve a loan or quote live pricing; Adam can verify your scenario.",
     sensitiveDataNotice: "Don’t send Social Security numbers, full birth dates, financial account or card numbers, passwords, authentication codes, or ID documents.",
     consentPolicyVersion: POLICY_VERSION,
     consentText: 'By submitting this request, I agree that Adam Styer or his team may contact me by phone, email, or text regarding my mortgage inquiry. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out. I understand this assistant is not a secure place to submit Social Security numbers, full birth dates, financial account information, passwords, authentication codes, or identification documents. See the Privacy Policy at styermortgage.com/privacy.html for more information.',
   }, 200, headers);
 }
 
-function handleLeadRequest(value: Record<string, unknown>, secret: string, conversationId: string, headers: Record<string, string>): Response {
+function handleLeadRequest(value: Record<string, unknown>, secret: string, conversationId: string, headers: Record<string, string>, requestBody: Record<string, unknown>): Response {
   const firstName = boundedText(value.firstName, 80);
-  const lastName = boundedText(value.lastName, 100, false);
   const email = boundedText(value.email, 254, false)?.toLowerCase();
   const phone = boundedText(value.phone, 32, false);
-  const leadIntent = typeof value.leadIntent === 'string' && ['purchase', 'refinance', 'investment', 'information', 'other'].includes(value.leadIntent) ? value.leadIntent : null;
-  const timeline = typeof value.timeline === 'string' && ['within_30_days', '31_to_90_days', 'more_than_90_days', 'unsure'].includes(value.timeline) ? value.timeline : null;
-  if (!firstName || (!email && !phone) || !leadIntent || !timeline) return json({ error: { code: 'invalid_lead_request', message: 'First name, a valid contact method, intent, and timeline are required.' } }, 400, headers);
+  const preferredContact = typeof value.preferredContact === 'string' && ['email', 'phone', 'text'].includes(value.preferredContact) ? value.preferredContact : (email ? 'email' : 'phone');
+  if (!firstName || (!email && !phone)) return json({ error: { code: 'invalid_lead_request', message: 'First name and a valid email address or phone number are required.' } }, 400, headers);
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: { code: 'invalid_email', message: 'Enter a valid email address.' } }, 400, headers);
   if (phone && !/^\+?[0-9() .-]{10,20}$/.test(phone)) return json({ error: { code: 'invalid_phone', message: 'Enter a valid phone number.' } }, 400, headers);
+  if (preferredContact === 'email' && !email) return json({ error: { code: 'preferred_contact_missing', message: 'Enter an email address or choose phone or text.' } }, 400, headers);
+  if ((preferredContact === 'phone' || preferredContact === 'text') && !phone) return json({ error: { code: 'preferred_contact_missing', message: 'Enter a phone number or choose email.' } }, 400, headers);
   const leadSalesState = deriveSalesState('', [], value.salesState);
-  const args = { firstName, lastName: lastName || null, email: email || null, phone: phone || null, leadIntent, timeline, preferredContact: email ? 'email' : 'phone', conversationSummary: salesStateSummary(leadSalesState) };
+  const leadIntent = ['purchase', 'refinance', 'investment'].includes(leadSalesState.goal) ? leadSalesState.goal : 'information';
+  const timeline = leadSalesState.timeline === 'unknown' ? 'unsure' : leadSalesState.timeline;
+  const structuredContext = buildStructuredLeadContext(leadSalesState, typeof requestBody.sourcePage === 'string' ? requestBody.sourcePage : undefined);
+  const conversationSummary = JSON.stringify(structuredContext).slice(0, 1000);
+  const args = { firstName, lastName: null, email: email || null, phone: phone || null, leadIntent, timeline, preferredContact, conversationSummary };
   const token = createConfirmationToken(secret, { name: 'create_or_update_website_lead', args, conversationId, toolCallId: `structured-lead-${randomUUID()}`, expiresAt: Date.now() + 10 * 60_000 });
   return json({ conversationId, message: 'Please review the privacy notice and confirm before I save this contact request.', sources: [], confirmation: { token, operation: 'create_or_update_website_lead', summary: `Save a contact request for ${firstName}` } }, 200, headers);
 }
@@ -313,7 +346,7 @@ function verifyConfirmationToken(secret: string, token: string): { name: string;
   } catch { return null; }
 }
 
-function toolResultMessage(name: string, result: { ok: boolean; status: string; data?: Record<string, unknown>; error?: { message: string } }): string {
+export function toolResultMessage(name: string, result: { ok: boolean; status: string; data?: Record<string, unknown>; error?: { message: string } }): string {
   if (!result.ok) return result.error?.message || 'That action could not be completed. I have not claimed it succeeded.';
   if (name === 'send_application_link' && typeof result.data?.applicationUrl === 'string') return `Here is the approved secure application link: ${result.data.applicationUrl}`;
   if (name === 'create_or_update_website_lead') {
