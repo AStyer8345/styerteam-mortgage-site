@@ -26,7 +26,7 @@ test('allows a clear statement that program guidance does not guarantee approval
 
 test('unsupported rate questions receive a useful, time-sensitive explanation', () => {
   const answer = safeUnsupportedNotice('What are rates right now?');
-  assert.match(answer, /change throughout the day/i);
+  assert.match(answer, /moving target/i);
   assert.match(answer, /loan type/i);
   assert.doesNotMatch(answer, /not enough approved information/i);
 });
@@ -35,5 +35,6 @@ test('other unsupported questions invite useful, non-sensitive context', () => {
   const answer = safeUnsupportedNotice('Can I do this?');
   assert.match(answer, /buying or refinancing/i);
   assert.match(answer, /Adam or his team/i);
+  assert.match(answer, /broad strokes/i);
   assert.doesNotMatch(answer, /not enough approved information/i);
 });

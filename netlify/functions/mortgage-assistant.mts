@@ -60,7 +60,7 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ conversationId, message: answer, sources: [], canEscalate: true }, 200, headers);
   }
   if (isGreeting(message)) {
-    const answer = "Hi — I’m an AI assistant for Adam’s mortgage website. I can share information from approved website materials and help with next steps. Please don’t send Social Security numbers, full birth dates, account or card numbers, passwords, codes, or ID documents.";
+    const answer = "Hi! I’m here to make the mortgage side of things feel a little less complicated. Ask me anything about loan programs or the process, and I’ll give you the clearest answer I can. One quick note: please don’t send Social Security numbers, full birth dates, account or card numbers, passwords, codes, or ID documents here.";
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { fixed_operational_text: true }, undefined, priorTurns.length);
     return json({ conversationId, message: answer, sources: [], aiDisclosure: true }, 200, headers);
   }

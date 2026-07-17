@@ -55,8 +55,8 @@ export function safeUnsupportedNotice(question = ''): string {
   const normalized = question.toLowerCase();
 
   if (/\b(?:rate|rates|interest|apr)\b/.test(normalized)) {
-    return "Mortgage rates can change throughout the day, so I don’t want to give you a stale or misleading number. Your actual options also depend on the loan type, property use, down payment or equity, credit profile, and whether you’re buying or refinancing.\n\nIf you share those basics—without sending sensitive information—I can help explain what affects the quote. For today’s actual pricing, Adam or his team can compare the available options with you.";
+    return "Great question—and honestly, rates are a moving target. They can change during the day, so tossing out one number here could be stale before you finish reading it.\n\nThe rate you’d actually see depends on things like the loan type, whether it’s a home or investment property, your down payment or equity, your general credit profile, and whether you’re buying or refinancing. Share those basics—nothing sensitive—and I can help you make sense of what drives the quote. For a real today-number, Adam or his team can price out the options with you.";
   }
 
-  return "I want to be careful here because the answer depends on details I don’t have yet. If you tell me a little more about what you’re trying to do—such as buying or refinancing, the property type, your general timeline, and the loan program you’re considering—I may be able to give you a more useful explanation.\n\nIf your question needs a decision based on your personal finances or current lender pricing, Adam or his team can review it and give you a specific answer.";
+  return "There’s probably a useful answer here—I just need a little more context so I don’t send you down the wrong path. Are you buying or refinancing, what kind of property is it, and roughly when are you hoping to make a move?\n\nGive me the broad strokes (no private financial details), and I’ll explain what I can. If it comes down to your exact numbers or current lender pricing, Adam or his team can take a closer look.";
 }
