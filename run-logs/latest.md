@@ -135,3 +135,28 @@ Next weekday run (Fri 2026-07-17) = **Content Planning + AEO Review** rotation. 
 - ✅ Concurrent-writer file (round-rock) left untouched
 - ✅ Run log + learnings + CONTEXT + CHANGELOG + TODO updated; task-run emitted
 - ✅ Scheduler fired today (07-16) — recovery continuing after 10-day outage
+
+---
+
+## ADDENDUM — 2026-07-16 23:08 CDT (SECOND SAME-DAY FIRE)
+
+Scheduler fired a **second time** on Thursday 07-16 (late evening, ~23:08 CDT), after the thorough morning run above already completed the full Thursday rotation clean. Two fires in one day is consistent with the post-outage catch-up pattern (10-day outage 07-06→07-14; 07-15 + 07-16-AM both fired). **No rotation duplication and no manufactured edits** — the morning run cleared every Thursday item hours ago; re-running the rotation would only produce cosmetic churn on already-correct pages (violates the "0 mutations is a valid healthy day" learning).
+
+**Every-run non-negotiables re-verified live (sandbox-disabled `curl -L`, absolute binaries):**
+| Check | Live | Result |
+|---|---|---|
+| `sitemap.xml` HTTP | 200 | ✅ |
+| `robots.txt` HTTP | 200 | ✅ |
+| Conversion (HTML-token matrix) | 10/10 | ✅ — identical to 07-16-AM, zero regression |
+
+Conversion detail (unchanged): `/get-preapproved` GTM-PQQ6PGLR + gen_lead + purchase_prequal + tel + TCPA(6) + action→/thank-you; `/refinance-quote` same w/ refi_quote + TCPA(5); `/thank-you` GTM + thank_you_page_view + tel. `action='/thank-you'` single-quote form confirms Netlify Pretty-URLs quote-swap still in effect (quote-agnostic grep matched).
+
+**Working tree:** clean. This morning's concurrent-writer `round-rock-mortgage-lender.html` has since been committed by the sister task (styer-suburb-editor-daily) — no longer pending. Nothing to stage.
+
+**RE-VERIFY GATE:** live-owned claims re-checked green, none surfaced (sitemap non-200→200; robots→200; conversion broken→10/10). No stale flags cleared (all open FLAG_FOR_ADAM items are Adam-gated externals — no cheap live path).
+
+**CHANGES MADE (addendum):** None. Doc-only (this addendum). 0 site files touched.
+
+**SELF-REVIEW (addendum):** PASS — 0 site files changed. No `git add -A`; no site HTML mutated. All hard constraints intact.
+
+**TOMORROW_PRIORITY (unchanged):** Next weekday run (Fri 2026-07-17) = **Content Planning + AEO Review** rotation — blog freshness (>7d → flag weekly-content), blog CTA re-verify (last 40/40), AEO audit 2 posts. Suburb cursor next Wed = **San Marcos**. Adam-gated carries unchanged.
