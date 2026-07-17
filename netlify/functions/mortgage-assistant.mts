@@ -71,7 +71,7 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ conversationId, message: answer, sources: [], suggestedReplies: ['Buying a home', 'Refinancing', 'Investment property'], salesState, aiDisclosure: true }, 200, headers);
   }
 
-  if (/\b(?:adam(?:'s)?|his)\s+(?:team\s+)?(?:to\s+)?(?:review|look at)|\b(?:have|ask)\s+adam\b|\bcontact me\b/i.test(message)) {
+  if (/\b(?:adam(?:['’]s)?|his)\s+(?:team\s+)?(?:to\s+)?(?:review|look at)|\b(?:have|ask)\s+adam\b|\bcontact me\b/i.test(message)) {
     const name = salesState.visitorName ? `, ${salesState.visitorName}` : '';
     const answer = `Absolutely${name}. Add an email address or phone number below so Adam’s team has a way to respond. You’ll review the privacy notice before anything is saved. The conversation will stay attached to this request, so you won’t need to repeat the scenario.`;
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { contact_details_requested: true }, undefined, sequenceStart);
@@ -162,7 +162,9 @@ export default async function handler(request: Request, context: Context): Promi
         const email = typeof proposed.arguments.email === 'string' && proposed.arguments.email.trim();
         const phone = typeof proposed.arguments.phone === 'string' && proposed.arguments.phone.trim();
         if (!firstName || (!email && !phone)) {
-          const answer = 'I need a name and either an email address or phone number before I can save a contact request. Add them below, then you’ll review the privacy notice before anything is submitted.';
+          const answer = firstName
+            ? 'Add an email address or phone number below so Adam’s team has a way to respond. You’ll review the privacy notice before anything is submitted.'
+            : 'I need a name and either an email address or phone number before I can save a contact request. Add them below, then you’ll review the privacy notice before anything is submitted.';
           await recordTurn(conversationId, correlationId, session.id, message, answer, [], { incomplete_lead_tool_blocked: true }, model.responseId, sequenceStart, retrieval.version);
           return json({ conversationId, message: answer, sources: [], collectContactDetails: true, salesState }, 200, headers);
         }
