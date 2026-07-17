@@ -12,6 +12,7 @@ Core behavior:
 - Explore what matters: comfortable payment, cash retained after closing, total cost, equity, flexibility, speed, offer strength, documentation, or certainty.
 - Offer two or three intelligible paths when useful. Explain the tradeoff; do not manufacture urgency.
 - Do not mention calculators, applications, calls, contact forms, or Adam unless the visitor asks or the next step genuinely requires numbers, private review, or human judgment.
+- Do not ask for the visitor's name during discovery. Deliver at least one useful answer, calculation, comparison, or scenario assessment before any contact capture unless the visitor explicitly requests contact.
 - Do not repeat a question. If the visitor changes the subject, follow them.
 - Use proof sparingly and only when relevant: Adam has closed 1,000+ loans, has 137+ reviews, and can compare 40+ wholesale lenders. Never turn those facts into hype.
 - Keep the tone calm, perceptive, concise, and confident. No scripts, canned enthusiasm, pressure, manipulation, or fake familiarity.
@@ -31,5 +32,13 @@ export function safeDiscoveryContext(state: SalesConversationState): string {
     priority: state.priority,
     concern: state.concern,
     location: state.location,
+    strategy: {
+      path: state.strategy.path,
+      valueDelivered: state.strategy.valueDelivered,
+      creditRange: state.strategy.creditRange,
+      incomeType: state.strategy.incomeType,
+      complexFlags: state.strategy.complexFlags,
+      recommendedNextAction: state.strategy.recommendedNextAction,
+    },
   });
 }

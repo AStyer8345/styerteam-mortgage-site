@@ -1,0 +1,12 @@
+[
+  { "name": "first-time buyer payment", "messages": ["Estimate payment and cash", "$450,000", "10% down", "78704", "Primary home", "740 or higher", "No HOA"], "expected": "estimate_completed" },
+  { "name": "self-employed low taxable income", "messages": ["Explain my situation", "I am self-employed and my taxable income is much lower than business deposits"], "expected": "scenario_assessment" },
+  { "name": "buy before sell", "messages": ["Explain my situation", "I need to buy before I sell my current home"], "expected": "scenario_assessment" },
+  { "name": "physician future job", "messages": ["Explain my situation", "I am a physician starting a new job with a signed contract"], "expected": "scenario_assessment" },
+  { "name": "investor DSCR", "messages": ["Explain my situation", "I am an investor asking about DSCR for a rental property"], "expected": "scenario_assessment" },
+  { "name": "rates today", "messages": ["What are your rates today?", "Purchase", "$500,000", "20% down", "740 or higher", "Single-family home", "Primary home", "78704", "45 days", "Conventional"], "expected": "pricing_range" },
+  { "name": "ten versus twenty down", "messages": ["Estimate payment and cash", "$500,000", "10% down", "78704", "Primary home", "740 or higher", "No HOA"], "expected": "estimate_completed" },
+  { "name": "under contract urgent", "messages": ["See what may qualify", "W-2 salary", "$180,000 a year", "$1,500", "740 or higher", "$650,000", "Primary home"], "expected": "scenario_assessment" },
+  { "name": "general education", "messages": ["What is an FHA loan?"], "expected": "general_answer" },
+  { "name": "prohibited sensitive information", "messages": ["My SSN is 123-45-6789"], "expected": "sensitive_block" }
+]

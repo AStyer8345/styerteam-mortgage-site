@@ -1,4 +1,5 @@
 import type { ConversationTurn } from './conversation-context.ts';
+import { deriveStrategyState, EMPTY_STRATEGY_STATE, parseStrategyState, strategySummary, type StrategyState } from './mortgage-strategy.ts';
 
 export type SalesConversationState = {
   goal: 'purchase' | 'refinance' | 'investment' | 'explore' | 'unknown';
@@ -14,11 +15,12 @@ export type SalesConversationState = {
   purchasePrice: number | null;
   cashAvailable: number | null;
   priority: 'preserve_cash' | 'lowest_payment' | 'lowest_total_cost' | 'strongest_offer' | 'compare_options' | 'unknown';
+  strategy: StrategyState;
 };
 
 export const EMPTY_SALES_STATE: SalesConversationState = {
   goal: 'unknown', propertyUse: 'unknown', timeline: 'unknown', concern: 'unknown', location: null, intentScore: 0, stage: 'discover',
-  shoppingStage: 'unknown', pendingQuestion: null, visitorName: null, purchasePrice: null, cashAvailable: null, priority: 'unknown',
+  shoppingStage: 'unknown', pendingQuestion: null, visitorName: null, purchasePrice: null, cashAvailable: null, priority: 'unknown', strategy: { ...EMPTY_STRATEGY_STATE },
 };
 
 export function deriveSalesState(message: string, conversation: ConversationTurn[], supplied: unknown): SalesConversationState {
@@ -111,6 +113,13 @@ export function deriveSalesState(message: string, conversation: ConversationTurn
   state.intentScore = Math.min(10, Math.max(base.intentScore, score));
   state.stage = state.intentScore >= 7 ? 'ready' : state.intentScore >= 4 ? 'evaluate' : state.intentScore >= 2 ? 'educate' : 'discover';
   state.pendingQuestion = followUpPending;
+  state.strategy = deriveStrategyState(message, base.strategy);
+  if (state.strategy.propertyUse !== 'unknown') state.propertyUse = state.strategy.propertyUse;
+  if (state.strategy.timeline !== 'unknown') state.timeline = state.strategy.timeline;
+  if (state.strategy.targetPrice !== null) state.purchasePrice = state.strategy.targetPrice;
+  if (state.strategy.availableCash !== null) state.cashAvailable = state.strategy.availableCash;
+  if (state.strategy.transactionPurpose === 'purchase') state.goal = 'purchase';
+  if (state.strategy.transactionPurpose === 'refinance') state.goal = 'refinance';
   return state;
 }
 
@@ -141,10 +150,6 @@ export function guidedConversationReply(message: string, state: SalesConversatio
   if (state.pendingQuestion === 'cash_amount') {
     next.pendingQuestion = 'cash_amount';
     return reply('Sure—roughly how much cash are you considering using? A ballpark is enough.', [], next);
-  }
-  if (state.goal !== 'unknown' && !state.visitorName) {
-    next.pendingQuestion = 'first_name';
-    return reply('Before we go further, what should I call you?', [], next);
   }
   if (state.goal === 'refinance' && state.concern === 'unknown') {
     next.pendingQuestion = 'refinance_goal';
@@ -203,6 +208,7 @@ export function salesStateSummary(state: SalesConversationState): string {
     state.timeline !== 'unknown' ? `Timeline: ${state.timeline.replaceAll('_', ' ')}` : null,
     state.concern !== 'unknown' ? `Primary concern: ${state.concern.replace('_', ' ')}` : null,
     state.location ? `Location: ${state.location}` : null,
+    strategySummary(state.strategy) || null,
     `Engagement stage: ${state.stage}`,
   ].filter(Boolean).join('; ');
 }
@@ -212,7 +218,7 @@ export function salesNextStepReply(message: string, state: SalesConversationStat
   if (state.stage === 'ready') {
     const context = state.concern !== 'unknown' ? `, especially with the ${state.concern.replace('_', ' ')} question you mentioned` : '';
     return {
-      message: `The best next step is a quick scenario review${context}. That lets Adam or his team look at the full picture securely and tell you which path is worth pursuing before you make a commitment. Use “Have Adam contact me” below and the form will already remember the goal and timeline you shared.`,
+      message: `The best next step is a quick scenario review${context}. That lets Adam or his team look at the full picture securely and tell you which path is worth pursuing before you make a commitment. The review form will remember the goal and timeline you already shared.`,
       suggestedReplies: [],
     };
   }
@@ -239,6 +245,7 @@ function parseSuppliedState(value: unknown): SalesConversationState {
   if (typeof item.purchasePrice === 'number' && item.purchasePrice > 0 && item.purchasePrice < 100_000_000) state.purchasePrice = item.purchasePrice;
   if (typeof item.cashAvailable === 'number' && item.cashAvailable >= 0 && item.cashAvailable < 100_000_000) state.cashAvailable = item.cashAvailable;
   if (['preserve_cash', 'lowest_payment', 'lowest_total_cost', 'strongest_offer', 'compare_options', 'unknown'].includes(String(item.priority))) state.priority = item.priority as SalesConversationState['priority'];
+  state.strategy = parseStrategyState(item.strategy);
   return state;
 }
 
