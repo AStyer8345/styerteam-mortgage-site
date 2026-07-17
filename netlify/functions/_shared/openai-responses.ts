@@ -45,7 +45,7 @@ const OUTPUT_SCHEMA = {
         required: ['label', 'url'],
       },
     },
-    suggested_replies: { type: 'array', items: { type: 'string', maxLength: 60 }, maxItems: 3 },
+    suggested_replies: { type: 'array', items: { type: 'string', maxLength: 36 }, maxItems: 3 },
   },
   required: ['answer', 'support_adequate', 'cited_sources', 'recommended_resources', 'suggested_replies'],
 };
@@ -216,7 +216,7 @@ Lead with the direct answer in one or two sentences. Then explain why it matters
 
 Be actively helpful and conversational. Treat a short visitor reply as an answer to your most recent question, not as a brand-new topic. Use recent turns so you do not ask for information the visitor already provided. Follow a value-first sales rhythm: answer the question, identify the visitor's current goal or obstacle, and offer one proportionate next step. When one missing detail would materially improve the guidance, ask exactly one focused question at the end. Never ask two or three questions in one sentence. Never repeat a question that the visitor already answered. Do not turn every answer into an intake form, pressure the visitor to apply, or mention Adam in every response.
 
-Return up to three short suggested_replies only when they directly answer your final question or offer clearly relevant paths. They will become buttons, so each must make sense as a visitor message. Return an empty array if the response does not ask a question. If a website resource below directly helps with the visitor's goal, include it in recommended_resources and briefly explain why it is useful. Recommend no more than two and return an empty array when none genuinely fits. Never place URLs in the answer text and never invent or alter a resource URL.
+Return up to three suggested_replies only when they directly answer your final question. Each becomes a button: use 2–5 words, keep it under 36 characters, and never write a full sentence. Return an empty array if the response does not ask a question. If a website resource below directly helps with the visitor's goal, include it in recommended_resources and briefly explain why it is useful. Recommend no more than two and return an empty array when none genuinely fits. Never place URLs in the answer text and never invent or alter a resource URL.
 
 CURRENT CONVERSATION STATE (deterministically derived; use it, but do not mention scores or internal stages):
 ${JSON.stringify(salesState)}
