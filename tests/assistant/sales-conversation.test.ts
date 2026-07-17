@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { deriveSalesState, salesStateSummary } from '../../netlify/functions/_shared/sales-conversation.ts';
+import { deriveSalesState, salesNextStepReply, salesStateSummary } from '../../netlify/functions/_shared/sales-conversation.ts';
 import { salesPlaybook } from '../../netlify/functions/_shared/sales-playbooks.ts';
 import { evaluateConversation } from '../../netlify/functions/_shared/conversation-quality.ts';
 
@@ -39,4 +39,13 @@ test('conversation evaluator catches repeated and interrogating answers', () => 
   assert.ok(result.flags.includes('multiple_questions'));
   assert.ok(result.flags.includes('repeated_answer'));
   assert.ok(result.score < 100);
+});
+
+test('high-intent next-step questions produce a direct handoff instead of a fallback', () => {
+  const state = deriveSalesState('I am buying in Texas this month and I am worried about credit', [], null);
+  const reply = salesNextStepReply('What should I do next?', state);
+  assert.ok(reply);
+  assert.match(reply!.message, /scenario review/i);
+  assert.match(reply!.message, /Have Adam contact me/);
+  assert.doesNotMatch(reply!.message, /What outcome are you hoping for/i);
 });

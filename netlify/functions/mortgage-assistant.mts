@@ -1,6 +1,6 @@
 import type { Config, Context } from '@netlify/functions';
 import { createHash, createHmac, randomUUID, timingSafeEqual } from 'node:crypto';
-import { scanSensitiveInput, isPromptInjection, safeSensitiveNotice, safeUnsupportedNotice, validateAssistantOutput } from './_shared/assistant-safety.ts';
+import { scanSensitiveInput, isPromptInjection, safeSensitiveNotice, safeUnsupportedReply, validateAssistantOutput } from './_shared/assistant-safety.ts';
 import { retrieveApprovedKnowledge } from './_shared/knowledge.ts';
 import { createMortgageResponse } from './_shared/openai-responses.ts';
 import { createSessionToken, verifySessionToken } from './_shared/session.ts';
@@ -8,7 +8,7 @@ import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
 import { recommendApprovedResources } from './_shared/assistant-resources.ts';
 import { buildContextualQuery, fixedConversationReply } from './_shared/conversation-context.ts';
-import { deriveSalesState, salesStateSummary } from './_shared/sales-conversation.ts';
+import { deriveSalesState, salesNextStepReply, salesStateSummary } from './_shared/sales-conversation.ts';
 
 const COOKIE = 'mortgage_assistant_session';
 const MUTATING = new Set(['create_or_update_website_lead', 'create_follow_up_task', 'schedule_consultation', 'escalate_to_adam']);
@@ -73,6 +73,12 @@ export default async function handler(request: Request, context: Context): Promi
   if (fixedReply) {
     await recordTurn(conversationId, correlationId, session.id, message, fixedReply.message, [], { fixed_operational_text: true }, undefined, priorTurns.length);
     return json({ conversationId, message: fixedReply.message, sources: [], suggestedReplies: fixedReply.suggestedReplies || [], salesState, aiDisclosure: true }, 200, headers);
+  }
+
+  const nextStepReply = salesNextStepReply(message, salesState);
+  if (nextStepReply) {
+    await recordTurn(conversationId, correlationId, session.id, message, nextStepReply.message, [], { fixed_sales_guidance: true, sales_stage: salesState.stage, intent_score: salesState.intentScore }, undefined, priorTurns.length);
+    return json({ conversationId, message: nextStepReply.message, sources: [], suggestedReplies: nextStepReply.suggestedReplies, salesState }, 200, headers);
   }
 
   const contextualQuery = buildContextualQuery(message, priorTurns);
