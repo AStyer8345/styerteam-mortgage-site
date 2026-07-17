@@ -103,6 +103,10 @@ export function guidedConversationReply(message: string, state: SalesConversatio
     state.goal !== 'unknown' && /^(?:my primary residence|primary residence|second home|investment|rental|more than|within|under contract|i'm looking|im looking|still figuring|\$?[\d,.]+[kKmM]?)\b/i.test(text)
   );
   if (isQuestion && !isGoalChoice) return null;
+  // A goal choice that answers a topical question (self-employed income,
+  // credit, rates) belongs to the knowledge path so the visitor's concern
+  // stays the subject; the director only takes over concern-free conversations.
+  if (isGoalChoice && state.concern !== 'unknown') return null;
   if (!isGoalChoice && !isPendingAnswer && state.goal === 'unknown') return null;
 
   const next = { ...state };
