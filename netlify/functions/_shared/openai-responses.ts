@@ -152,7 +152,7 @@ export async function createGeneralMortgageResponse(input: { message: string; co
   const payload = await response.json() as Record<string, unknown>;
   for (const item of (Array.isArray(payload.output) ? payload.output : []) as Array<Record<string, unknown>>) if (item.type === 'message' && Array.isArray(item.content)) for (const content of item.content as Array<Record<string, unknown>>) if (content.type === 'output_text' && typeof content.text === 'string') {
     const parsed = JSON.parse(content.text) as { answer: string };
-    return { responseId: typeof payload.id === 'string' ? payload.id : '', text: parsed.answer.includes(input.requiredQuestion) ? parsed.answer : `${parsed.answer.trim()}\n\n${input.requiredQuestion}` };
+    return { responseId: typeof payload.id === 'string' ? payload.id : '', text: parsed.answer.includes('?') ? parsed.answer : `${parsed.answer.trim()}\n\n${input.requiredQuestion}` };
   }
   throw new Error('OpenAI returned no general mortgage output');
 }
