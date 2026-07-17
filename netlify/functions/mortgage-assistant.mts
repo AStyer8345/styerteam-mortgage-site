@@ -82,7 +82,10 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ conversationId, message: nextStepReply.message, sources: [], suggestedReplies: nextStepReply.suggestedReplies, salesState }, 200, headers);
   }
 
-  const guidedReply = guidedConversationReply(message, salesState);
+  const previousPending = body.salesState && typeof body.salesState === 'object' && !Array.isArray(body.salesState)
+    ? ((body.salesState as { pendingQuestion?: import('./_shared/sales-conversation.ts').SalesConversationState['pendingQuestion'] }).pendingQuestion || null)
+    : null;
+  const guidedReply = guidedConversationReply(message, salesState, previousPending);
   if (guidedReply) {
     await recordTurn(conversationId, correlationId, session.id, message, guidedReply.message, [], { guided_sales_conversation: true }, undefined, sequenceStart);
     return json({ conversationId, message: guidedReply.message, sources: [], resources: [], suggestedReplies: guidedReply.suggestedReplies, salesState: guidedReply.salesState }, 200, headers);
