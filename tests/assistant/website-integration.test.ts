@@ -61,6 +61,11 @@ test('assistant can recommend only approved website resources as safe links', ()
   assert.match(browser, /approvedHost/);
 });
 
+test('assistant permits the approved Calendly scheduling link', () => {
+  const widget = fs.readFileSync('assistant-widget.js', 'utf8');
+  assert.match(widget, /calendly\.com/);
+});
+
 test('transcript sequencing uses the widget turn count end to end', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
   const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
