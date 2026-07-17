@@ -89,3 +89,17 @@ test('high-price high-cash discovery explores strategy instead of minimum down p
   assert.equal(reply.salesState.pendingQuestion, 'priority');
   assert.match(reply.message, /keeping more cash|monthly payment|long-term cost/i);
 });
+
+test('a goal answer to a topical question stays with the knowledge path', () => {
+  // Regression: "I'm self employed…" then "buy" must continue the
+  // self-employed discussion, not restart scripted discovery.
+  const state = deriveSalesState('buy', [
+    { role: 'user', text: "I'm self employed and my tax returns don't show my true income." },
+    { role: 'assistant', text: 'Are you looking to buy, refinance, or finance an investment property?' },
+  ], null);
+  assert.equal(state.concern, 'income');
+  assert.equal(guidedConversationReply('buy', state), null);
+  // Concern-free goal choices still enter the guided conversation.
+  const fresh = deriveSalesState('Buying a home', [], null);
+  assert.ok(guidedConversationReply('Buying a home', fresh));
+});
