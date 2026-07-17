@@ -8,6 +8,7 @@ import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
 import { recommendApprovedResources } from './_shared/assistant-resources.ts';
 import { buildContextualQuery, fixedConversationReply } from './_shared/conversation-context.ts';
+import { deriveSalesState, salesStateSummary } from './_shared/sales-conversation.ts';
 
 const COOKIE = 'mortgage_assistant_session';
 const MUTATING = new Set(['create_or_update_website_lead', 'create_follow_up_task', 'schedule_consultation', 'escalate_to_adam']);
@@ -50,27 +51,28 @@ export default async function handler(request: Request, context: Context): Promi
   const message = typeof body.message === 'string' ? body.message.trim() : '';
   if (!message || message.length > 4000) return json({ error: { code: 'invalid_message', message: 'Enter a message between 1 and 4,000 characters.' } }, 400, headers);
   const priorTurns = parseConversation(body.conversation);
+  const salesState = deriveSalesState(message, priorTurns, body.salesState);
   const scan = scanSensitiveInput(message);
   if (scan.blocked) {
     const answer = safeSensitiveNotice();
     await recordTurn(conversationId, correlationId, session.id, scan.redacted, answer, [], { sensitive_input_blocked: true }, undefined, priorTurns.length);
-    return json({ conversationId, message: answer, sources: [], sensitiveInputDetected: true, canEscalate: true }, 200, headers);
+    return json({ conversationId, message: answer, sources: [], salesState, sensitiveInputDetected: true, canEscalate: true }, 200, headers);
   }
   if (isPromptInjection(message)) {
     const answer = 'I can help with mortgage information supported by the approved website materials, or help you reach Adam. I can’t follow requests to reveal or override system instructions.';
     await recordTurn(conversationId, correlationId, session.id, '[PROMPT_INJECTION_REDACTED]', answer, [], { prompt_injection_blocked: true }, undefined, priorTurns.length);
-    return json({ conversationId, message: answer, sources: [], canEscalate: true }, 200, headers);
+    return json({ conversationId, message: answer, sources: [], salesState, canEscalate: true }, 200, headers);
   }
   if (isGreeting(message)) {
     const answer = "Hi! I’m here to make the mortgage side of things feel a little less complicated. Ask me anything about loan programs or the process, and I’ll give you the clearest answer I can. One quick note: please don’t send Social Security numbers, full birth dates, account or card numbers, passwords, codes, or ID documents here.";
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { fixed_operational_text: true }, undefined, priorTurns.length);
-    return json({ conversationId, message: answer, sources: [], aiDisclosure: true }, 200, headers);
+    return json({ conversationId, message: answer, sources: [], salesState, aiDisclosure: true }, 200, headers);
   }
 
   const fixedReply = fixedConversationReply(message);
   if (fixedReply) {
     await recordTurn(conversationId, correlationId, session.id, message, fixedReply.message, [], { fixed_operational_text: true }, undefined, priorTurns.length);
-    return json({ conversationId, message: fixedReply.message, sources: [], suggestedReplies: fixedReply.suggestedReplies || [], aiDisclosure: true }, 200, headers);
+    return json({ conversationId, message: fixedReply.message, sources: [], suggestedReplies: fixedReply.suggestedReplies || [], salesState, aiDisclosure: true }, 200, headers);
   }
 
   const contextualQuery = buildContextualQuery(message, priorTurns);
@@ -78,11 +80,11 @@ export default async function handler(request: Request, context: Context): Promi
   if (!retrieval.results.length) {
     const answer = safeUnsupportedNotice(contextualQuery);
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { insufficient_knowledge: true }, undefined, priorTurns.length, retrieval.version);
-    return json({ conversationId, message: answer, sources: [], resources: recommendApprovedResources(contextualQuery), canEscalate: true }, 200, headers);
+    return json({ conversationId, message: answer, sources: [], resources: recommendApprovedResources(contextualQuery), salesState, canEscalate: true }, 200, headers);
   }
 
   try {
-    const model = await createMortgageResponse({ message, sources: retrieval.results, conversation: priorTurns });
+    const model = await createMortgageResponse({ message, sources: retrieval.results, conversation: priorTurns, salesState });
     if (model.toolCalls.length) {
       const proposed = model.toolCalls[0];
       if (!TOOL_NAMES.has(proposed.name)) throw new Error('Unauthorized model tool call');
@@ -103,7 +105,7 @@ export default async function handler(request: Request, context: Context): Promi
     const validation = validateAssistantOutput(model.text);
     if (!validation.safe) throw new Error(`Unsafe model output: ${validation.reason}`);
     await recordTurn(conversationId, correlationId, session.id, message, model.text, model.citedSources, { grounded: true }, model.responseId, priorTurns.length, retrieval.version);
-    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: model.recommendedResources, suggestedReplies: model.suggestedReplies }, 200, headers);
+    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: model.recommendedResources, suggestedReplies: model.suggestedReplies, salesState }, 200, headers);
   } catch (error) {
     console.error('[mortgage-assistant] response generation failed', {
       correlationId,
@@ -111,7 +113,7 @@ export default async function handler(request: Request, context: Context): Promi
     });
     const answer = safeUnsupportedNotice(contextualQuery);
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { safe_fallback: true }, undefined, priorTurns.length, retrieval.version);
-    return json({ conversationId, message: answer, sources: [], resources: recommendApprovedResources(contextualQuery), canEscalate: true }, 200, headers);
+    return json({ conversationId, message: answer, sources: [], resources: recommendApprovedResources(contextualQuery), salesState, canEscalate: true }, 200, headers);
   }
 }
 
@@ -140,7 +142,8 @@ function handleLeadRequest(value: Record<string, unknown>, secret: string, conve
   if (!firstName || (!email && !phone) || !leadIntent || !timeline) return json({ error: { code: 'invalid_lead_request', message: 'First name, a valid contact method, intent, and timeline are required.' } }, 400, headers);
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: { code: 'invalid_email', message: 'Enter a valid email address.' } }, 400, headers);
   if (phone && !/^\+?[0-9() .-]{10,20}$/.test(phone)) return json({ error: { code: 'invalid_phone', message: 'Enter a valid phone number.' } }, 400, headers);
-  const args = { firstName, lastName: lastName || null, email: email || null, phone: phone || null, leadIntent, timeline, preferredContact: email ? 'email' : 'phone' };
+  const leadSalesState = deriveSalesState('', [], value.salesState);
+  const args = { firstName, lastName: lastName || null, email: email || null, phone: phone || null, leadIntent, timeline, preferredContact: email ? 'email' : 'phone', conversationSummary: salesStateSummary(leadSalesState) };
   const token = createConfirmationToken(secret, { name: 'create_or_update_website_lead', args, conversationId, toolCallId: `structured-lead-${randomUUID()}`, expiresAt: Date.now() + 10 * 60_000 });
   return json({ conversationId, message: 'Please review the privacy notice and confirm before I save this contact request.', sources: [], confirmation: { token, operation: 'create_or_update_website_lead', summary: `Save a contact request for ${firstName}` } }, 200, headers);
 }
@@ -162,6 +165,7 @@ async function executeTool(name: string, args: Record<string, unknown>, conversa
   if (name === 'create_or_update_website_lead') {
     payload.consents = [{ type: 'privacy', status: requestBody.consentAccepted === true ? 'granted' : 'denied', policyVersion: POLICY_VERSION, consentedAt: requestBody.consentAccepted === true ? new Date().toISOString() : undefined }];
     payload.sourcePage = typeof requestBody.sourcePage === 'string' ? requestBody.sourcePage.slice(0, 500) : undefined;
+    if (typeof payload.conversationSummary !== 'string') payload.conversationSummary = salesStateSummary(deriveSalesState('', [], requestBody.salesState));
   }
   return callLoanOs(name, payload, { idempotencyKey: `${conversationId}:${toolCallId}` });
 }
