@@ -1,6 +1,7 @@
 import { APPROVED_RESOURCES, isApprovedResource } from './assistant-resources.ts';
 import type { SalesConversationState } from './sales-conversation.ts';
 import { salesPlaybook } from './sales-playbooks.ts';
+import { SALES_CONVERSATION_DOCTRINE, safeDiscoveryContext } from './sales-training.ts';
 
 type Source = { source: string; section: string; text: string };
 type ToolCall = { id: string; name: string; arguments: Record<string, unknown> };
@@ -13,6 +14,23 @@ export type AssistantModelResult = {
   recommendedResources: Array<{ label: string; url: string }>;
   suggestedReplies: string[];
   toolCalls: ToolCall[];
+};
+
+export type SalesConversationResult = {
+  responseId: string;
+  text: string;
+  suggestedReplies: string[];
+  nextQuestion: SalesConversationState['pendingQuestion'];
+};
+
+const SALES_OUTPUT_SCHEMA = {
+  type: 'object', additionalProperties: false,
+  properties: {
+    answer: { type: 'string', maxLength: 1200 },
+    suggested_replies: { type: 'array', items: { type: 'string', maxLength: 60 }, maxItems: 3 },
+    next_question: { type: ['string', 'null'], enum: ['shopping_stage', 'property_use', 'timeline', 'price_range', 'cash_strategy', 'cash_amount', 'priority', null] },
+  },
+  required: ['answer', 'suggested_replies', 'next_question'],
 };
 
 const OUTPUT_SCHEMA = {
@@ -80,6 +98,45 @@ export async function createMortgageResponse(input: { message: string; sources: 
   } finally {
     clearTimeout(timer);
   }
+}
+
+export async function createSalesConversationResponse(input: { message: string; conversation: Array<{ role: 'user' | 'assistant'; text: string }>; salesState: SalesConversationState }): Promise<SalesConversationResult> {
+  const apiKey = Netlify.env.get('OPENAI_API_KEY');
+  if (!apiKey) throw new Error('OPENAI_API_KEY is not configured');
+  const model = Netlify.env.get('OPENAI_MORTGAGE_ASSISTANT_MODEL') || 'gpt-5.6-luna';
+  const recent = input.conversation.slice(-12).map((turn) => ({ role: turn.role, content: [{ type: turn.role === 'user' ? 'input_text' : 'output_text', text: turn.text }] }));
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 20_000);
+  try {
+    const response = await fetch('https://api.openai.com/v1/responses', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model, store: false, max_output_tokens: 500,
+        instructions: `${SALES_CONVERSATION_DOCTRINE}\n\nThis is a discovery turn, not permission to give mortgage guidelines, quote rates, calculate payments, recommend a loan program, or determine eligibility. You may reflect what the visitor said and ask one useful question. If they supplied a meaningful preference, explain why that preference changes the strategy in general terms without making a product claim.\n\nKnown facts: ${safeDiscoveryContext(input.salesState)}\n\nChoose next_question only when your answer visibly asks that exact category of question. Suggested replies must directly answer it. If no question is asked, return null and an empty array.`,
+        input: [...recent, { role: 'user', content: [{ type: 'input_text', text: input.message }] }],
+        text: { format: { type: 'json_schema', name: 'sales_conversation_response', strict: true, schema: SALES_OUTPUT_SCHEMA } },
+      }),
+      signal: controller.signal,
+    });
+    if (!response.ok) throw new Error(`OpenAI Responses API failed with ${response.status}`);
+    const payload = await response.json() as Record<string, unknown>;
+    const output = Array.isArray(payload.output) ? payload.output as Array<Record<string, unknown>> : [];
+    for (const item of output) {
+      if (item.type !== 'message' || !Array.isArray(item.content)) continue;
+      for (const content of item.content as Array<Record<string, unknown>>) {
+        if (content.type !== 'output_text' || typeof content.text !== 'string') continue;
+        const parsed = JSON.parse(content.text) as { answer: string; suggested_replies: string[]; next_question: SalesConversationState['pendingQuestion'] };
+        return {
+          responseId: typeof payload.id === 'string' ? payload.id : '',
+          text: parsed.answer,
+          suggestedReplies: parsed.suggested_replies.filter((value) => typeof value === 'string' && value.trim()).slice(0, 3),
+          nextQuestion: parsed.next_question,
+        };
+      }
+    }
+    throw new Error('OpenAI returned no sales conversation output');
+  } finally { clearTimeout(timer); }
 }
 
 function parseResponse(payload: Record<string, unknown>): AssistantModelResult {
