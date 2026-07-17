@@ -1,3 +1,13 @@
+## 2026-07-17 — styer-site-daily (Friday, Content Planning + AEO Review): clean audit, 0 site mutations
+
+- **Non-negotiables green:** sitemap.xml + robots.txt HTTP 200 (sandbox-disabled `curl -sL`, absolute binaries); conversion tracking 10/10 via HTML-token matrix (`action='/thank-you'` single-quote form matched — Netlify Pretty-URLs quote-swap still active).
+- **Blog fresh:** latest post 2026-07-16 = 1 day old → no weekly-content flag.
+- **Borrower blog CTA 40/40:** scanned 45 posts; the 4 "missing /get-preapproved|/refinance-quote" are all `realtor-updates/` carrying the correct realtor CTA ("Send Your Scenario" → /scenario.html + phone + Contact). Per voice guide, realtor content is positioning/scenario, not borrower pre-approval — NOT defects, 0 manufactured edits.
+- **AEO audit — 2 posts, both excellent, 0 defects:** `2026-07-16-self-employed-income-calculation-underwriting-texas` (NEW, first audit — extractable E-E-A-T + "$250K vs $91K" problem lead; 5 conversational-question FAQPage; every answer answer-first) + `2026-06-30-bank-statement-loans-texas` (extractable lead; 5 Q; answer-first). Narrative statement-form body H2s + dedicated FAQPage block = site's established AEO-valid pattern.
+- **Design spot-check clean** (index.html + self-employed-mortgage-austin.html): GTM PQQ6PGLR ×2, NMLS 513013 + company 2653540 present, 0 legacy entity, 0 "21-day"/"24-48hr", HyperSmart brand + header nav present.
+- **No un-gated site work:** backlog residue is Adam-gated (new-page creation, products.html 7-card 1003 routing, prequal.html conversion parity, FHA/Jumbo title NMLS) or sister-task-owned (suburb city data → styer-suburb-editor-daily). `loanos-clone` untouched (paused-LoanOS Vercel guard).
+- **Scheduler:** fired 07-17 — 3rd clean day in a row (07-15/16/17) after the 07-06→07-14 10-day outage.
+
 ## 2026-07-16 — Manual blog publish (interactive session): self-employed underwriting deep-dive
 
 - **NEW POST — `blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html`** (commit 8db5c73, live 200). "How Underwriters Actually Calculate Self-Employed Income: Add-Backs, Averaging, and the Two-Year Rule" — 1,540 words, Tier B backlog topic, 6 approved-source citations (Fannie B3-3.2-02/B3-3.5-01/B3-3.6-03, Form 1084, Freddie Form 91, IRS Schedule C), 6 cluster links incl. non-QM hub (Wk29 Opportunity #1). Registered in all 4 surfaces.
