@@ -113,8 +113,8 @@ export function safeUnsupportedReply(question = ''): UnsupportedReply {
   }
 
   return {
-    message: "I don't want to bluff my way through that one. I can still help narrow it down or point you to the right next step without collecting private financial details.\n\nWhat outcome are you hoping for?",
-    suggestedReplies: ['Buying a home', 'Refinancing', 'Talk to Adam'],
+    message: "Let’s break that down around the decision you’re trying to make. I can explain the general strategy and tradeoffs, then identify which details would actually change the answer.\n\nWhat is the biggest uncertainty you want to solve first?",
+    suggestedReplies: ['Monthly payment', 'Cash needed', 'Credit or income', 'Timing'],
   };
 }
 

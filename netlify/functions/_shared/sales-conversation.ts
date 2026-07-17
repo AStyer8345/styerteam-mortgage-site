@@ -114,6 +114,14 @@ export function deriveSalesState(message: string, conversation: ConversationTurn
 
 export type GuidedConversationReply = { message: string; suggestedReplies: string[]; salesState: SalesConversationState };
 
+export function generalAnswerFollowUp(state: SalesConversationState): { question: string; suggestedReplies: string[] } {
+  if (state.goal === 'investment' && state.concern === 'payment') return { question: 'What purchase price and expected monthly rent are you working with?', suggestedReplies: ['I have both numbers', 'I only know the purchase price', 'I’m still estimating rent'] };
+  if (state.concern === 'credit') return { question: 'Is your main concern qualifying, improving pricing, or deciding when to apply?', suggestedReplies: ['Qualifying', 'Getting better pricing', 'When to apply'] };
+  if (state.concern === 'income') return { question: 'What part of your income is hardest to document or explain?', suggestedReplies: ['Self-employed income', '1099 or commission income', 'Rental income'] };
+  if (state.concern === 'payment') return { question: 'Are you trying to set a comfortable monthly budget or compare a specific purchase scenario?', suggestedReplies: ['Set a comfortable budget', 'Compare a specific property'] };
+  return { question: 'What is the biggest uncertainty you want to solve before taking the next step?', suggestedReplies: ['Monthly payment', 'Cash needed', 'Credit or income', 'Timing'] };
+}
+
 export function guidedConversationReply(message: string, state: SalesConversationState, previousPending: SalesConversationState['pendingQuestion'] = null): GuidedConversationReply | null {
   const text = message.trim();
   const isQuestion = /\?$/.test(text) || /^(?:what|why|when|where|who|how|can|could|would|should|do|does|did|is|are|am|will|tell me|explain)\b/i.test(text);

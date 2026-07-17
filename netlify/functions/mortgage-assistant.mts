@@ -2,13 +2,13 @@ import type { Config, Context } from '@netlify/functions';
 import { createHash, createHmac, randomUUID, timingSafeEqual } from 'node:crypto';
 import { scanSensitiveInput, isPromptInjection, safeSensitiveNotice, safeUnsupportedReply, validateAssistantOutput } from './_shared/assistant-safety.ts';
 import { retrieveApprovedKnowledge } from './_shared/knowledge.ts';
-import { createMortgageResponse, createSalesConversationResponse } from './_shared/openai-responses.ts';
+import { createGeneralMortgageResponse, createMortgageResponse, createSalesConversationResponse } from './_shared/openai-responses.ts';
 import { createSessionToken, verifySessionToken } from './_shared/session.ts';
 import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
 import { recommendApprovedResources } from './_shared/assistant-resources.ts';
 import { buildContextualQuery, computeSequenceStart, fixedConversationReply } from './_shared/conversation-context.ts';
-import { deriveSalesState, guidedConversationReply, salesNextStepReply, salesStateSummary } from './_shared/sales-conversation.ts';
+import { deriveSalesState, generalAnswerFollowUp, guidedConversationReply, salesNextStepReply, salesStateSummary } from './_shared/sales-conversation.ts';
 import { allowsResourceRecommendation, checkDiscoveryLanguage } from './_shared/conversation-policy.ts';
 
 const COOKIE = 'mortgage_assistant_session';
@@ -111,9 +111,20 @@ export default async function handler(request: Request, context: Context): Promi
   const contextualQuery = buildContextualQuery(message, priorTurns);
   const retrieval = await retrieveApprovedKnowledge(contextualQuery);
   if (!retrieval.results.length) {
-    const fallback = safeUnsupportedReply(contextualQuery);
-    await recordTurn(conversationId, correlationId, session.id, message, fallback.message, [], { insufficient_knowledge: true }, undefined, sequenceStart, retrieval.version);
-    return json({ conversationId, message: fallback.message, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: fallback.suggestedReplies, salesState, canEscalate: true }, 200, headers);
+    const followUp = generalAnswerFollowUp(salesState);
+    try {
+      const modelTurns = priorTurns.map((turn) => ({ role: turn.role, text: scanSensitiveInput(turn.text).redacted }));
+      const model = await createGeneralMortgageResponse({ message, conversation: modelTurns, salesState, requiredQuestion: followUp.question });
+      const validation = validateAssistantOutput(model.text);
+      if (!validation.safe) throw new Error(`Unsafe general answer: ${validation.reason}`);
+      await recordTurn(conversationId, correlationId, session.id, message, model.text, [], { general_educational_answer: true }, model.responseId, sequenceStart, retrieval.version);
+      return json({ conversationId, message: model.text, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: followUp.suggestedReplies, salesState }, 200, headers);
+    } catch (error) {
+      console.error('[mortgage-assistant] general answer failed', { correlationId, reason: error instanceof Error ? error.message.slice(0, 240) : 'unknown_error' });
+      const answer = `Let’s work through it from the decision you’re trying to make.\n\n${followUp.question}`;
+      await recordTurn(conversationId, correlationId, session.id, message, answer, [], { general_answer_fallback: true }, undefined, sequenceStart, retrieval.version);
+      return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies: followUp.suggestedReplies, salesState }, 200, headers);
+    }
   }
 
   try {
