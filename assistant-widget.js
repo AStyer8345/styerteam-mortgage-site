@@ -7,6 +7,7 @@
     turns: [],
     pendingConfirmation: null,
     config: null,
+    salesState: null,
     busy: false,
   };
   var ui = {};
@@ -23,7 +24,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260716-conversation-v1';
+    stylesheet.href = '/assistant-widget.css?v=20260716-sales-v2';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -98,7 +99,10 @@
     });
     ui.confirm.addEventListener('click', confirmAction);
     ui.cancel.addEventListener('click', clearConfirmation);
-    ui.leadToggle.addEventListener('click', function () { ui.leadForm.hidden = false; ui.leadToggle.hidden = true; ui.leadForm.querySelector('input').focus(); });
+    ui.leadToggle.addEventListener('click', function () {
+      prefillLeadContext();
+      ui.leadForm.hidden = false; ui.leadToggle.hidden = true; ui.leadForm.querySelector('input').focus();
+    });
     ui.leadCancel.addEventListener('click', closeLeadForm);
     ui.leadForm.addEventListener('submit', submitLeadRequest);
     document.addEventListener('keydown', function (event) {
@@ -132,11 +136,13 @@
       conversationId: state.conversationId,
       conversation: state.turns.slice(0, -1).slice(-8),
       sourcePage: window.location.href.split('#')[0],
+      salesState: state.salesState,
     }).then(handleResponse).catch(handleError).finally(function () { setBusy(false, ''); });
   }
 
   function handleResponse(data) {
     if (data.conversationId) state.conversationId = data.conversationId;
+    if (data.salesState) state.salesState = data.salesState;
     addMessage('assistant', data.message || 'I could not complete that request.');
     if (Array.isArray(data.sources) && data.sources.length) addSources(data.sources);
     if (Array.isArray(data.resources)) data.resources.forEach(function (resource) {
@@ -190,6 +196,7 @@
       confirmAction: state.pendingConfirmation.token,
       consentAccepted: needsConsent ? ui.consentInput.checked : undefined,
       sourcePage: window.location.href.split('#')[0],
+      salesState: state.salesState,
     }).then(function (data) {
       clearConfirmation();
       handleResponse(data);
@@ -218,6 +225,7 @@
       leadRequest: {
         firstName: data.get('firstName'), lastName: data.get('lastName'), email: data.get('email'), phone: data.get('phone'),
         leadIntent: data.get('leadIntent'), timeline: data.get('timeline'),
+        salesState: state.salesState,
       },
       sourcePage: window.location.href.split('#')[0],
     }).then(function (response) { closeLeadForm(); handleResponse(response); }).catch(handleError).finally(function () { setBusy(false, ''); });
@@ -227,6 +235,14 @@
     ui.leadForm.hidden = true;
     ui.leadToggle.hidden = false;
     ui.leadToggle.focus();
+  }
+
+  function prefillLeadContext() {
+    if (!state.salesState || !ui.leadForm) return;
+    var intent = ui.leadForm.querySelector('[name="leadIntent"]');
+    var timeline = ui.leadForm.querySelector('[name="timeline"]');
+    if (intent && ['purchase', 'refinance', 'investment'].indexOf(state.salesState.goal) >= 0) intent.value = state.salesState.goal;
+    if (timeline && ['within_30_days', '31_to_90_days', 'more_than_90_days', 'unsure'].indexOf(state.salesState.timeline) >= 0) timeline.value = state.salesState.timeline;
   }
 
   function addMessage(role, text) {

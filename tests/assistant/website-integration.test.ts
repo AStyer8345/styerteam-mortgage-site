@@ -52,6 +52,8 @@ test('assistant can recommend only approved website resources as safe links', ()
   const resources = fs.readFileSync('netlify/functions/_shared/assistant-resources.ts', 'utf8');
   assert.match(openai, /recommended_resources/);
   assert.match(openai, /suggested_replies/);
+  assert.match(openai, /CURRENT CONVERSATION STATE/);
+  assert.match(browser, /salesState/);
   assert.match(resources, /calculator-payment\.html/);
   assert.match(resources, /calculator-affordability\.html/);
   assert.match(resources, /calculator-refinance-breakeven\.html/);
