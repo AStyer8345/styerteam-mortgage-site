@@ -127,16 +127,33 @@ export async function createSalesConversationResponse(input: { message: string; 
       for (const content of item.content as Array<Record<string, unknown>>) {
         if (content.type !== 'output_text' || typeof content.text !== 'string') continue;
         const parsed = JSON.parse(content.text) as { answer: string; suggested_replies: string[]; next_question: SalesConversationState['pendingQuestion'] };
+        const nextQuestion = parsed.next_question;
+        const text = nextQuestion && !parsed.answer.includes('?')
+          ? `${parsed.answer.trim()}\n\n${discoveryQuestion(nextQuestion)}`
+          : parsed.answer;
         return {
           responseId: typeof payload.id === 'string' ? payload.id : '',
-          text: parsed.answer,
+          text,
           suggestedReplies: parsed.suggested_replies.filter((value) => typeof value === 'string' && value.trim()).slice(0, 3),
-          nextQuestion: parsed.next_question,
+          nextQuestion,
         };
       }
     }
     throw new Error('OpenAI returned no sales conversation output');
   } finally { clearTimeout(timer); }
+}
+
+function discoveryQuestion(question: NonNullable<SalesConversationState['pendingQuestion']>): string {
+  const questions: Record<NonNullable<SalesConversationState['pendingQuestion']>, string> = {
+    shopping_stage: 'Where are you in the process—just exploring, actively looking, or already focused on a particular property?',
+    property_use: 'Will this be a home you live in, a second home, or an investment property?',
+    timeline: 'When would you ideally like to make the move?',
+    price_range: 'What purchase price or general range are you considering?',
+    cash_strategy: 'Have you decided how much cash you want to use, or would you rather compare a few approaches?',
+    cash_amount: 'Roughly how much cash are you considering using?',
+    priority: 'Which matters most here: preserving cash, lowering the payment, minimizing total cost, or strengthening the offer?',
+  };
+  return questions[question];
 }
 
 function parseResponse(payload: Record<string, unknown>): AssistantModelResult {
