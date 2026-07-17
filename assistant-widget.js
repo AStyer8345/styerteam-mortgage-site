@@ -383,7 +383,7 @@
   function addTrustedLink(value, label) {
     try {
       var url = new URL(value);
-      var approvedHost = url.hostname === 'adamstyer.com' || url.hostname === 'www.adamstyer.com' || url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'hypersmart.my1003app.com';
+      var approvedHost = url.hostname === 'adamstyer.com' || url.hostname === 'www.adamstyer.com' || url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'hypersmart.my1003app.com' || url.hostname === 'calendly.com';
       if (url.protocol !== 'https:' || !approvedHost) return;
       var wrapper = document.createElement('div');
       wrapper.className = 'ma-trusted-link';

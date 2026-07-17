@@ -159,6 +159,7 @@ export async function createGeneralMortgageResponse(input: { message: string; co
 
 function discoveryQuestion(question: NonNullable<SalesConversationState['pendingQuestion']>): string {
   const questions: Record<NonNullable<SalesConversationState['pendingQuestion']>, string> = {
+    first_name: 'What should I call you?',
     shopping_stage: 'Where are you in the process—just exploring, actively looking, or already focused on a particular property?',
     property_use: 'Will this be a home you live in, a second home, or an investment property?',
     timeline: 'When would you ideally like to make the move?',

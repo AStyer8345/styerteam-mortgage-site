@@ -9,7 +9,8 @@ export type SalesConversationState = {
   intentScore: number;
   stage: 'discover' | 'educate' | 'evaluate' | 'ready';
   shoppingStage: 'exploring' | 'price_range' | 'actively_shopping' | 'property_identified' | 'under_contract' | 'unknown';
-  pendingQuestion: 'shopping_stage' | 'property_use' | 'timeline' | 'price_range' | 'cash_strategy' | 'cash_amount' | 'priority' | 'refinance_goal' | 'investment_goal' | null;
+  pendingQuestion: 'first_name' | 'shopping_stage' | 'property_use' | 'timeline' | 'price_range' | 'cash_strategy' | 'cash_amount' | 'priority' | 'refinance_goal' | 'investment_goal' | null;
+  visitorName: string | null;
   purchasePrice: number | null;
   cashAvailable: number | null;
   priority: 'preserve_cash' | 'lowest_payment' | 'lowest_total_cost' | 'strongest_offer' | 'compare_options' | 'unknown';
@@ -17,7 +18,7 @@ export type SalesConversationState = {
 
 export const EMPTY_SALES_STATE: SalesConversationState = {
   goal: 'unknown', propertyUse: 'unknown', timeline: 'unknown', concern: 'unknown', location: null, intentScore: 0, stage: 'discover',
-  shoppingStage: 'unknown', pendingQuestion: null, purchasePrice: null, cashAvailable: null, priority: 'unknown',
+  shoppingStage: 'unknown', pendingQuestion: null, visitorName: null, purchasePrice: null, cashAvailable: null, priority: 'unknown',
 };
 
 export function deriveSalesState(message: string, conversation: ConversationTurn[], supplied: unknown): SalesConversationState {
@@ -26,6 +27,7 @@ export function deriveSalesState(message: string, conversation: ConversationTurn
   const state = { ...base };
   const current = message.trim().toLowerCase();
   let followUpPending: SalesConversationState['pendingQuestion'] = null;
+  if (base.pendingQuestion === 'first_name' && /^[a-z][a-z '-]{0,39}$/i.test(message.trim())) state.visitorName = titleCase(message.trim());
 
   // Short replies belong to the question the assistant just asked. This is
   // intentionally resolved before broad keyword inference so "more than three
@@ -140,6 +142,10 @@ export function guidedConversationReply(message: string, state: SalesConversatio
     next.pendingQuestion = 'cash_amount';
     return reply('Sure—roughly how much cash are you considering using? A ballpark is enough.', [], next);
   }
+  if (state.goal !== 'unknown' && !state.visitorName) {
+    next.pendingQuestion = 'first_name';
+    return reply('Before we go further, what should I call you?', [], next);
+  }
   if (state.goal === 'refinance' && state.concern === 'unknown') {
     next.pendingQuestion = 'refinance_goal';
     return reply('What would you want a refinance to accomplish?', ['Lower my monthly payment', 'Access equity or consolidate debt', 'Pay the home off sooner', 'Compare my options'], next);
@@ -228,7 +234,8 @@ function parseSuppliedState(value: unknown): SalesConversationState {
   if (typeof item.location === 'string' && /^[A-Za-z][A-Za-z .'-]{1,39}$/.test(item.location)) state.location = item.location;
   if (Number.isInteger(item.intentScore)) state.intentScore = Math.min(10, Math.max(0, Number(item.intentScore)));
   if (['exploring', 'price_range', 'actively_shopping', 'property_identified', 'under_contract', 'unknown'].includes(String(item.shoppingStage))) state.shoppingStage = item.shoppingStage as SalesConversationState['shoppingStage'];
-  if (['shopping_stage', 'property_use', 'timeline', 'price_range', 'cash_strategy', 'cash_amount', 'priority', 'refinance_goal', 'investment_goal'].includes(String(item.pendingQuestion))) state.pendingQuestion = item.pendingQuestion as SalesConversationState['pendingQuestion'];
+  if (['first_name', 'shopping_stage', 'property_use', 'timeline', 'price_range', 'cash_strategy', 'cash_amount', 'priority', 'refinance_goal', 'investment_goal'].includes(String(item.pendingQuestion))) state.pendingQuestion = item.pendingQuestion as SalesConversationState['pendingQuestion'];
+  if (typeof item.visitorName === 'string' && /^[A-Za-z][A-Za-z '-]{0,39}$/.test(item.visitorName)) state.visitorName = item.visitorName;
   if (typeof item.purchasePrice === 'number' && item.purchasePrice > 0 && item.purchasePrice < 100_000_000) state.purchasePrice = item.purchasePrice;
   if (typeof item.cashAvailable === 'number' && item.cashAvailable >= 0 && item.cashAvailable < 100_000_000) state.cashAvailable = item.cashAvailable;
   if (['preserve_cash', 'lowest_payment', 'lowest_total_cost', 'strongest_offer', 'compare_options', 'unknown'].includes(String(item.priority))) state.priority = item.priority as SalesConversationState['priority'];

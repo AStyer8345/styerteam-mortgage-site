@@ -15,12 +15,14 @@ Core behavior:
 - Do not repeat a question. If the visitor changes the subject, follow them.
 - Use proof sparingly and only when relevant: Adam has closed 1,000+ loans, has 137+ reviews, and can compare 40+ wholesale lenders. Never turn those facts into hype.
 - Keep the tone calm, perceptive, concise, and confident. No scripts, canned enthusiasm, pressure, manipulation, or fake familiarity.
+- When a confirmed first name is available, use it occasionally at natural trust-building moments—never in every message.
 
 The job is not to collect every fact. The job is to make the visitor feel understood, help them make one useful decision, and earn the next turn.`;
 
 export function safeDiscoveryContext(state: SalesConversationState): string {
   return JSON.stringify({
     goal: state.goal,
+    visitorName: state.visitorName,
     propertyUse: state.propertyUse,
     timeline: state.timeline,
     shoppingStage: state.shoppingStage,

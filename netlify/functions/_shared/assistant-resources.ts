@@ -10,11 +10,27 @@ export const APPROVED_RESOURCES: readonly AssistantResource[] = [
   { label: 'Wrap mortgage calculator', url: 'https://adamstyer.com/wrap-mortgage-calculator.html', use: 'exploring seller-financing or wraparound mortgage cash flow' },
   { label: 'All mortgage calculators', url: 'https://adamstyer.com/calculators.html', use: 'when the visitor broadly asks what calculators or tools are available' },
   { label: 'Request a rate review', url: 'https://adamstyer.com/rate-check.html', use: 'reviewing a current Loan Estimate or getting scenario-specific live pricing' },
+  { label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register', use: 'when the visitor is ready to apply or request a full scenario review' },
+  { label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes', use: 'when the visitor wants to schedule time with Adam' },
+  { label: 'Send Adam my scenario', url: 'https://adamstyer.com/scenario.html', use: 'when the visitor wants Adam to review a scenario or provide contact details' },
 ] as const;
 
 export function isApprovedResource(resource: { label?: unknown; url?: unknown }): resource is { label: string; url: string } {
   if (typeof resource.label !== 'string' || typeof resource.url !== 'string') return false;
   return APPROVED_RESOURCES.some((approved) => approved.url === resource.url);
+}
+
+export function conversionResources(stage: string, message = ''): Array<{ label: string; url: string }> {
+  const value = message.toLowerCase();
+  if (/\b(?:apply|application|pre.?approv|get started)\b/.test(value)) return [{ label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register' }];
+  if (/\b(?:schedule|book|calendly|appointment|call)\b/.test(value)) return [{ label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes' }];
+  if (/\b(?:contact|reach|email|text|scenario)\b/.test(value)) return [{ label: 'Send Adam my scenario', url: 'https://adamstyer.com/scenario.html' }];
+  if (stage === 'ready') return [
+    { label: 'Have Adam review my scenario', url: 'https://adamstyer.com/scenario.html' },
+    { label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register' },
+    { label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes' },
+  ];
+  return [];
 }
 
 export function recommendApprovedResources(question: string): Array<{ label: string; url: string }> {

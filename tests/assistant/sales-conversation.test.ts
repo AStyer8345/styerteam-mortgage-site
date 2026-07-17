@@ -54,8 +54,11 @@ test('high-intent next-step questions produce a direct handoff instead of a fall
 test('purchase discovery advances one question at a time without assuming a program or calculator', () => {
   let state = deriveSalesState('Buying a home', [], null);
   let reply = guidedConversationReply('Buying a home', state)!;
+  assert.equal(reply.salesState.pendingQuestion, 'first_name');
+  state = deriveSalesState('Sarah', [], reply.salesState);
+  reply = guidedConversationReply('Sarah', state, 'first_name')!;
+  assert.equal(state.visitorName, 'Sarah');
   assert.equal(reply.salesState.pendingQuestion, 'shopping_stage');
-  assert.match(reply.message, /particular home or price range/i);
   assert.doesNotMatch(reply.message, /3%|FHA|calculator/i);
 
   state = deriveSalesState("I'm still figuring it out", [], reply.salesState);
@@ -76,7 +79,7 @@ test('purchase discovery advances one question at a time without assuming a prog
 test('high-price high-cash discovery explores strategy instead of minimum down payment', () => {
   let state = deriveSalesState('$2 million', [], {
     ...deriveSalesState('Buying a primary home', [], null),
-    shoppingStage: 'price_range', pendingQuestion: 'price_range',
+    visitorName: 'Sarah', shoppingStage: 'price_range', pendingQuestion: 'price_range',
   });
   assert.equal(state.purchasePrice, 2_000_000);
   state.timeline = 'more_than_90_days';
@@ -136,12 +139,14 @@ test('calculator gate opens only when the visitor asks for numbers', () => {
 
 test('refinance and investment use separate deterministic discovery maps', () => {
   let state = deriveSalesState('Refinancing', [], null);
+  state.visitorName = 'Sarah';
   let reply = guidedConversationReply('Refinancing', state)!;
   assert.equal(reply.salesState.pendingQuestion, 'refinance_goal');
   state = deriveSalesState('Lower my monthly payment', [], reply.salesState);
   assert.equal(state.concern, 'payment');
 
   state = deriveSalesState('Investment property', [], null);
+  state.visitorName = 'Sarah';
   reply = guidedConversationReply('Investment property', state)!;
   assert.equal(reply.salesState.pendingQuestion, 'investment_goal');
   state = deriveSalesState('Simpler income documentation', [], reply.salesState);

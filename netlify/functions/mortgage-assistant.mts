@@ -6,7 +6,7 @@ import { createGeneralMortgageResponse, createMortgageResponse, createSalesConve
 import { createSessionToken, verifySessionToken } from './_shared/session.ts';
 import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
-import { recommendApprovedResources } from './_shared/assistant-resources.ts';
+import { conversionResources, recommendApprovedResources } from './_shared/assistant-resources.ts';
 import { buildContextualQuery, computeSequenceStart, fixedConversationReply } from './_shared/conversation-context.ts';
 import { deriveSalesState, generalAnswerFollowUp, guidedConversationReply, salesNextStepReply, salesStateSummary } from './_shared/sales-conversation.ts';
 import { allowsResourceRecommendation, checkDiscoveryLanguage } from './_shared/conversation-policy.ts';
@@ -71,6 +71,21 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ conversationId, message: answer, sources: [], suggestedReplies: ['Buying a home', 'Refinancing', 'Investment property'], salesState, aiDisclosure: true }, 200, headers);
   }
 
+  if (/\b(?:text|email|schedule|book|calendly|apply|application|contact)\b.*\b(?:adam|call|loan|mortgage|me)?\b/i.test(message)) {
+    const resources = conversionResources(salesState.stage, message);
+    if (resources.length) {
+      const answer = /\btext\b/i.test(message)
+        ? 'You can text Adam directly at (512) 956-6010. You can also email adam.styer@hypersmart.loan, schedule a 15-minute call, or use the secure application when you’re ready.'
+        : /\bemail\b/i.test(message)
+          ? 'You can email Adam directly at adam.styer@hypersmart.loan. If scheduling or applying is easier, those options are available too.'
+          : /\b(?:schedule|book|calendly|call)\b/i.test(message)
+            ? 'Absolutely—you can choose a convenient time on Adam’s calendar below. You can also call or text him at (512) 956-6010.'
+            : 'When you’re ready, use the secure application below. If you would rather talk first, text Adam at (512) 956-6010 or email adam.styer@hypersmart.loan.';
+      await recordTurn(conversationId, correlationId, session.id, message, answer, [], { direct_conversion_option: true }, undefined, sequenceStart);
+      return json({ conversationId, message: answer, sources: [], resources, salesState }, 200, headers);
+    }
+  }
+
   const fixedReply = fixedConversationReply(message);
   if (fixedReply) {
     await recordTurn(conversationId, correlationId, session.id, message, fixedReply.message, [], { fixed_operational_text: true }, undefined, sequenceStart);
@@ -118,7 +133,7 @@ export default async function handler(request: Request, context: Context): Promi
       const validation = validateAssistantOutput(model.text);
       if (!validation.safe) throw new Error(`Unsafe general answer: ${validation.reason}`);
       await recordTurn(conversationId, correlationId, session.id, message, model.text, [], { general_educational_answer: true }, model.responseId, sequenceStart, retrieval.version);
-      return json({ conversationId, message: model.text, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: followUp.suggestedReplies, salesState }, 200, headers);
+      return json({ conversationId, message: model.text, sources: [], resources: [...(allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : []), ...conversionResources(salesState.stage, message)].slice(0, 3), suggestedReplies: followUp.suggestedReplies, salesState }, 200, headers);
     } catch (error) {
       console.error('[mortgage-assistant] general answer failed', { correlationId, reason: error instanceof Error ? error.message.slice(0, 240) : 'unknown_error' });
       const answer = `Let’s work through it from the decision you’re trying to make.\n\n${followUp.question}`;
