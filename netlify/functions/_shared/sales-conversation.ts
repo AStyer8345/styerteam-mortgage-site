@@ -62,6 +62,20 @@ export function salesStateSummary(state: SalesConversationState): string {
   ].filter(Boolean).join('; ');
 }
 
+export function salesNextStepReply(message: string, state: SalesConversationState): { message: string; suggestedReplies: string[] } | null {
+  if (!/\b(?:what should i do next|what do i do next|next step|where do i start|how do i start|ready to move forward)\b/i.test(message)) return null;
+  if (state.stage === 'ready') {
+    const context = state.concern !== 'unknown' ? `, especially with the ${state.concern.replace('_', ' ')} question you mentioned` : '';
+    return {
+      message: `The best next step is a quick scenario review${context}. That lets Adam or his team look at the full picture securely and tell you which path is worth pursuing before you make a commitment. Use “Have Adam contact me” below and the form will already remember the goal and timeline you shared.`,
+      suggestedReplies: [],
+    };
+  }
+  if (state.goal === 'unknown') return { message: 'Let’s start with the goal so I can point you in the right direction. Are you buying, refinancing, or looking at an investment property?', suggestedReplies: ['Buying a home', 'Refinancing', 'Investment property'] };
+  if (state.timeline === 'unknown') return { message: 'The next useful step is to match the advice to your timing. Roughly when are you hoping to move forward?', suggestedReplies: ['Within 30 days', '31–90 days', 'More than 90 days'] };
+  return { message: 'The next useful step is to identify the biggest question standing between you and a decision. What are you most concerned about right now?', suggestedReplies: ['Monthly payment', 'Credit', 'Income documentation'] };
+}
+
 function parseSuppliedState(value: unknown): SalesConversationState {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return { ...EMPTY_SALES_STATE };
   const item = value as Record<string, unknown>;
