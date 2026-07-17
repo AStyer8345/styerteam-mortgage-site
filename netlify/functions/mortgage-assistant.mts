@@ -100,7 +100,6 @@ export default async function handler(request: Request, context: Context): Promi
       const policy = checkDiscoveryLanguage(model.text, guidedReply.salesState.pendingQuestion);
       if (!policy.safe) throw new Error(`Sales process violation: ${policy.reason}`);
       answer = model.text;
-      suggestedReplies = model.suggestedReplies;
       responseId = model.responseId;
     } catch (error) {
       console.error('[mortgage-assistant] sales conversation generation failed', { correlationId, reason: error instanceof Error ? error.message.slice(0, 240) : 'unknown_error' });
