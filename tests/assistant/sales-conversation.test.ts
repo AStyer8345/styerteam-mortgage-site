@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { deriveSalesState, salesNextStepReply, salesStateSummary } from '../../netlify/functions/_shared/sales-conversation.ts';
+import { deriveSalesState, guidedConversationReply, salesNextStepReply, salesStateSummary } from '../../netlify/functions/_shared/sales-conversation.ts';
 import { salesPlaybook } from '../../netlify/functions/_shared/sales-playbooks.ts';
 import { evaluateConversation } from '../../netlify/functions/_shared/conversation-quality.ts';
 
@@ -48,4 +48,44 @@ test('high-intent next-step questions produce a direct handoff instead of a fall
   assert.match(reply!.message, /scenario review/i);
   assert.match(reply!.message, /Have Adam contact me/);
   assert.doesNotMatch(reply!.message, /What outcome are you hoping for/i);
+});
+
+test('purchase discovery advances one question at a time without assuming a program or calculator', () => {
+  let state = deriveSalesState('Buying a home', [], null);
+  let reply = guidedConversationReply('Buying a home', state)!;
+  assert.equal(reply.salesState.pendingQuestion, 'shopping_stage');
+  assert.match(reply.message, /particular home or price range/i);
+  assert.doesNotMatch(reply.message, /3%|FHA|calculator/i);
+
+  state = deriveSalesState("I'm still figuring it out", [], reply.salesState);
+  reply = guidedConversationReply("I'm still figuring it out", state)!;
+  assert.equal(reply.salesState.pendingQuestion, 'property_use');
+  assert.doesNotMatch(reply.message, /calculator/i);
+
+  state = deriveSalesState('My primary residence', [], reply.salesState);
+  reply = guidedConversationReply('My primary residence', state)!;
+  assert.equal(reply.salesState.pendingQuestion, 'timeline');
+
+  state = deriveSalesState('More than 3 months from now', [], reply.salesState);
+  assert.equal(state.timeline, 'more_than_90_days');
+  reply = guidedConversationReply('More than 3 months from now', state)!;
+  assert.doesNotMatch(reply.message, /bluff|outcome are you hoping|calculator/i);
+});
+
+test('high-price high-cash discovery explores strategy instead of minimum down payment', () => {
+  let state = deriveSalesState('$2 million', [], {
+    ...deriveSalesState('Buying a primary home', [], null),
+    shoppingStage: 'price_range', pendingQuestion: 'price_range',
+  });
+  assert.equal(state.purchasePrice, 2_000_000);
+  state.timeline = 'more_than_90_days';
+  let reply = guidedConversationReply('$2 million', state)!;
+  assert.equal(reply.salesState.pendingQuestion, 'cash_strategy');
+  assert.doesNotMatch(reply.message, /minimum|3%|calculator|afford/i);
+
+  state = deriveSalesState('$1 million', [], reply.salesState);
+  assert.equal(state.cashAvailable, 1_000_000);
+  reply = guidedConversationReply('$1 million', state)!;
+  assert.equal(reply.salesState.pendingQuestion, 'priority');
+  assert.match(reply.message, /keeping more cash|monthly payment|long-term cost/i);
 });
