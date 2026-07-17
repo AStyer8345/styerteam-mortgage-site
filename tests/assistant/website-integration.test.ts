@@ -66,6 +66,15 @@ test('assistant permits the approved Calendly scheduling link', () => {
   assert.match(widget, /calendly\.com/);
 });
 
+test('review requests collect contact details before proposing a lead write', () => {
+  const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
+  const widget = fs.readFileSync('assistant-widget.js', 'utf8');
+  assert.match(gateway, /collectContactDetails: true/);
+  assert.match(gateway, /incomplete_lead_tool_blocked/);
+  assert.match(widget, /data\.collectContactDetails === true/);
+  assert.match(widget, /state\.salesState\.visitorName/);
+});
+
 test('transcript sequencing uses the widget turn count end to end', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
   const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
