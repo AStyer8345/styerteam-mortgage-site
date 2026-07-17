@@ -19,16 +19,14 @@ export type AssistantModelResult = {
 export type SalesConversationResult = {
   responseId: string;
   text: string;
-  suggestedReplies: string[];
 };
 
 const SALES_OUTPUT_SCHEMA = {
   type: 'object', additionalProperties: false,
   properties: {
     answer: { type: 'string', maxLength: 1200 },
-    suggested_replies: { type: 'array', items: { type: 'string', maxLength: 60 }, maxItems: 3 },
   },
-  required: ['answer', 'suggested_replies'],
+  required: ['answer'],
 };
 
 const OUTPUT_SCHEMA = {
@@ -124,14 +122,13 @@ export async function createSalesConversationResponse(input: { message: string; 
       if (item.type !== 'message' || !Array.isArray(item.content)) continue;
       for (const content of item.content as Array<Record<string, unknown>>) {
         if (content.type !== 'output_text' || typeof content.text !== 'string') continue;
-        const parsed = JSON.parse(content.text) as { answer: string; suggested_replies: string[] };
+        const parsed = JSON.parse(content.text) as { answer: string };
         const text = input.requiredQuestion && !parsed.answer.includes('?')
           ? `${parsed.answer.trim()}\n\n${discoveryQuestion(input.requiredQuestion)}`
           : parsed.answer;
         return {
           responseId: typeof payload.id === 'string' ? payload.id : '',
           text,
-          suggestedReplies: parsed.suggested_replies.filter((value) => typeof value === 'string' && value.trim()).slice(0, 3),
         };
       }
     }
