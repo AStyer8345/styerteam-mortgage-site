@@ -50,7 +50,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260717-conversation-v3';
+    stylesheet.href = '/assistant-widget.css?v=20260717-compact-replies-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
