@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { isPromptInjection, scanSensitiveInput, validateAssistantOutput } from '../../netlify/functions/_shared/assistant-safety.ts';
+import { isPromptInjection, safeUnsupportedNotice, scanSensitiveInput, validateAssistantOutput } from '../../netlify/functions/_shared/assistant-safety.ts';
 
 test('blocks and redacts prohibited sensitive information before the model', () => {
   for (const value of ['SSN 123-45-6789', 'DOB 01/02/1980', 'password: open-sesame', 'routing 021000021']) {
@@ -22,4 +22,18 @@ test('rejects prohibited outcome claims in model output', () => {
 
 test('allows a clear statement that program guidance does not guarantee approval', () => {
   assert.equal(validateAssistantOutput('A minimum credit score does not guarantee approval. The full application must be reviewed.').safe, true);
+});
+
+test('unsupported rate questions receive a useful, time-sensitive explanation', () => {
+  const answer = safeUnsupportedNotice('What are rates right now?');
+  assert.match(answer, /change throughout the day/i);
+  assert.match(answer, /loan type/i);
+  assert.doesNotMatch(answer, /not enough approved information/i);
+});
+
+test('other unsupported questions invite useful, non-sensitive context', () => {
+  const answer = safeUnsupportedNotice('Can I do this?');
+  assert.match(answer, /buying or refinancing/i);
+  assert.match(answer, /Adam or his team/i);
+  assert.doesNotMatch(answer, /not enough approved information/i);
 });
