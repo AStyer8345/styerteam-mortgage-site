@@ -54,6 +54,10 @@ export function safeSensitiveNotice(): string {
 export function safeUnsupportedNotice(question = ''): string {
   const normalized = question.toLowerCase();
 
+  if (/\b(?:afford|affordability|price range|how much house|home budget)\b/.test(normalized)) {
+    return "That’s a smart place to start. The useful number isn’t just the most a lender might approve—it’s a payment that still leaves room for the rest of your life. The affordability calculator can help you test a price range using income, monthly debts, down payment, taxes, and insurance.\n\nWhat monthly payment would feel comfortable to you, before utilities and maintenance?";
+  }
+
   if (/\b(?:rate|rates|interest|apr)\b/.test(normalized)) {
     return "Great question—and honestly, rates are a moving target. They can change during the day, so tossing out one number here could be stale before you finish reading it.\n\nThe rate you’d actually see depends on things like the loan type, whether it’s a home or investment property, your down payment or equity, your general credit profile, and whether you’re buying or refinancing. Share those basics—nothing sensitive—and I can help you make sense of what drives the quote. For a real today-number, Adam or his team can price out the options with you.";
   }

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { isPromptInjection, safeUnsupportedNotice, scanSensitiveInput, validateAssistantOutput } from '../../netlify/functions/_shared/assistant-safety.ts';
+import { recommendApprovedResources } from '../../netlify/functions/_shared/assistant-resources.ts';
 
 test('blocks and redacts prohibited sensitive information before the model', () => {
   for (const value of ['SSN 123-45-6789', 'DOB 01/02/1980', 'password: open-sesame', 'routing 021000021']) {
@@ -37,4 +38,12 @@ test('other unsupported questions invite useful, non-sensitive context', () => {
   assert.match(answer, /Adam or his team/i);
   assert.match(answer, /broad strokes/i);
   assert.doesNotMatch(answer, /not enough approved information/i);
+});
+
+test('unsupported questions still recommend the right approved calculator', () => {
+  assert.deepEqual(recommendApprovedResources('How much house can I afford?'), [{
+    label: 'Home affordability calculator',
+    url: 'https://adamstyer.com/calculator-affordability.html',
+  }]);
+  assert.deepEqual(recommendApprovedResources('What is an FHA loan?'), []);
 });

@@ -6,6 +6,7 @@ import { createMortgageResponse } from './_shared/openai-responses.ts';
 import { createSessionToken, verifySessionToken } from './_shared/session.ts';
 import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
+import { recommendApprovedResources } from './_shared/assistant-resources.ts';
 
 const COOKIE = 'mortgage_assistant_session';
 const MUTATING = new Set(['create_or_update_website_lead', 'create_follow_up_task', 'schedule_consultation', 'escalate_to_adam']);
@@ -69,7 +70,7 @@ export default async function handler(request: Request, context: Context): Promi
   if (!retrieval.results.length) {
     const answer = safeUnsupportedNotice(message);
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { insufficient_knowledge: true }, undefined, priorTurns.length, retrieval.version);
-    return json({ conversationId, message: answer, sources: [], canEscalate: true }, 200, headers);
+    return json({ conversationId, message: answer, sources: [], resources: recommendApprovedResources(message), canEscalate: true }, 200, headers);
   }
 
   try {
@@ -102,7 +103,7 @@ export default async function handler(request: Request, context: Context): Promi
     });
     const answer = safeUnsupportedNotice(message);
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { safe_fallback: true }, undefined, priorTurns.length, retrieval.version);
-    return json({ conversationId, message: answer, sources: [], canEscalate: true }, 200, headers);
+    return json({ conversationId, message: answer, sources: [], resources: recommendApprovedResources(message), canEscalate: true }, 200, headers);
   }
 }
 
