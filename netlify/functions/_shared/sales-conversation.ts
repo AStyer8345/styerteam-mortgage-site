@@ -9,7 +9,7 @@ export type SalesConversationState = {
   intentScore: number;
   stage: 'discover' | 'educate' | 'evaluate' | 'ready';
   shoppingStage: 'exploring' | 'price_range' | 'actively_shopping' | 'property_identified' | 'under_contract' | 'unknown';
-  pendingQuestion: 'shopping_stage' | 'property_use' | 'timeline' | 'price_range' | 'cash_strategy' | 'cash_amount' | 'priority' | null;
+  pendingQuestion: 'shopping_stage' | 'property_use' | 'timeline' | 'price_range' | 'cash_strategy' | 'cash_amount' | 'priority' | 'refinance_goal' | 'investment_goal' | null;
   purchasePrice: number | null;
   cashAvailable: number | null;
   priority: 'preserve_cash' | 'lowest_payment' | 'lowest_total_cost' | 'strongest_offer' | 'compare_options' | 'unknown';
@@ -68,6 +68,16 @@ export function deriveSalesState(message: string, conversation: ConversationTurn
     else if (/strong.*offer|competitive/.test(current)) state.priority = 'strongest_offer';
     else if (/compare|show.*options|not sure/.test(current)) state.priority = 'compare_options';
   }
+  if (base.pendingQuestion === 'refinance_goal') {
+    if (/cash|debt|renovat|equity/.test(current)) state.concern = 'down_payment';
+    else if (/payment|monthly|cash flow/.test(current)) state.concern = 'payment';
+    else if (/rate|interest/.test(current)) state.concern = 'rates';
+  }
+  if (base.pendingQuestion === 'investment_goal') {
+    if (/cash flow|payment|income/.test(current)) state.concern = 'payment';
+    else if (/leverage|cash|down/.test(current)) state.concern = 'down_payment';
+    else if (/document|tax|income/.test(current)) state.concern = 'income';
+  }
 
   if (/\b(?:buy|buying|purchase|purchasing|homebuyer)\b/.test(visitorText)) state.goal = 'purchase';
   if (/\b(?:refi|refinance|refinancing|cash.?out)\b/.test(visitorText)) state.goal = 'refinance';
@@ -121,6 +131,22 @@ export function guidedConversationReply(message: string, state: SalesConversatio
   if (state.pendingQuestion === 'cash_amount') {
     next.pendingQuestion = 'cash_amount';
     return reply('Sure—roughly how much cash are you considering using? A ballpark is enough.', [], next);
+  }
+  if (state.goal === 'refinance' && state.concern === 'unknown') {
+    next.pendingQuestion = 'refinance_goal';
+    return reply('What would you want a refinance to accomplish?', ['Lower my monthly payment', 'Access equity or consolidate debt', 'Pay the home off sooner', 'Compare my options'], next);
+  }
+  if (state.goal === 'refinance' && state.propertyUse === 'unknown') {
+    next.pendingQuestion = 'property_use';
+    return reply('How do you use the property today?', ['My primary residence', 'A second home', 'An investment property'], next);
+  }
+  if (state.goal === 'investment' && state.concern === 'unknown') {
+    next.pendingQuestion = 'investment_goal';
+    return reply('What matters most for this investment—cash flow, preserving capital, easier documentation, or building the portfolio quickly?', ['Monthly cash flow', 'Preserve more cash', 'Simpler income documentation', 'Portfolio growth'], next);
+  }
+  if (state.goal === 'investment' && state.shoppingStage === 'unknown') {
+    next.pendingQuestion = 'shopping_stage';
+    return reply('Where are you with the property itself?', ['I have a property identified', 'I’m actively looking', 'I’m still exploring'], next);
   }
   if (state.goal === 'purchase' && state.shoppingStage === 'unknown') {
     next.pendingQuestion = 'shopping_stage';
@@ -194,7 +220,7 @@ function parseSuppliedState(value: unknown): SalesConversationState {
   if (typeof item.location === 'string' && /^[A-Za-z][A-Za-z .'-]{1,39}$/.test(item.location)) state.location = item.location;
   if (Number.isInteger(item.intentScore)) state.intentScore = Math.min(10, Math.max(0, Number(item.intentScore)));
   if (['exploring', 'price_range', 'actively_shopping', 'property_identified', 'under_contract', 'unknown'].includes(String(item.shoppingStage))) state.shoppingStage = item.shoppingStage as SalesConversationState['shoppingStage'];
-  if (['shopping_stage', 'property_use', 'timeline', 'price_range', 'cash_strategy', 'cash_amount', 'priority'].includes(String(item.pendingQuestion))) state.pendingQuestion = item.pendingQuestion as SalesConversationState['pendingQuestion'];
+  if (['shopping_stage', 'property_use', 'timeline', 'price_range', 'cash_strategy', 'cash_amount', 'priority', 'refinance_goal', 'investment_goal'].includes(String(item.pendingQuestion))) state.pendingQuestion = item.pendingQuestion as SalesConversationState['pendingQuestion'];
   if (typeof item.purchasePrice === 'number' && item.purchasePrice > 0 && item.purchasePrice < 100_000_000) state.purchasePrice = item.purchasePrice;
   if (typeof item.cashAvailable === 'number' && item.cashAvailable >= 0 && item.cashAvailable < 100_000_000) state.cashAvailable = item.cashAvailable;
   if (['preserve_cash', 'lowest_payment', 'lowest_total_cost', 'strongest_offer', 'compare_options', 'unknown'].includes(String(item.priority))) state.priority = item.priority as SalesConversationState['priority'];

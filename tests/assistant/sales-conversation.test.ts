@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { deriveSalesState, guidedConversationReply, salesNextStepReply, salesStateSummary } from '../../netlify/functions/_shared/sales-conversation.ts';
 import { salesPlaybook } from '../../netlify/functions/_shared/sales-playbooks.ts';
 import { evaluateConversation } from '../../netlify/functions/_shared/conversation-quality.ts';
+import { allowsResourceRecommendation, checkDiscoveryLanguage } from '../../netlify/functions/_shared/conversation-policy.ts';
 
 test('derives a high-intent purchase state without using protected characteristics', () => {
   const state = deriveSalesState('I am buying a primary home in Texas and hope to make an offer this month. My credit worries me.', [], null);
@@ -118,4 +119,31 @@ test('a goal answer to a topical question stays with the knowledge path', () => 
   // Concern-free goal choices still enter the guided conversation.
   const fresh = deriveSalesState('Buying a home', [], null);
   assert.ok(guidedConversationReply('Buying a home', fresh));
+});
+
+test('the assumption checker blocks products, calculators, CTAs, and invented rates during discovery', () => {
+  assert.deepEqual(checkDiscoveryLanguage('That helps. When would you like to move?', 'timeline'), { safe: true });
+  assert.equal(checkDiscoveryLanguage('An FHA loan may fit. When would you like to move?', 'timeline').safe, false);
+  assert.equal(checkDiscoveryLanguage('Try the calculator. When would you like to move?', 'timeline').safe, false);
+  assert.equal(checkDiscoveryLanguage('You can put 3% down. When would you like to move?', 'timeline').safe, false);
+  assert.equal(checkDiscoveryLanguage('When are you moving? What price?', 'timeline').safe, false);
+});
+
+test('calculator gate opens only when the visitor asks for numbers', () => {
+  assert.equal(allowsResourceRecommendation('I am buying a home'), false);
+  assert.equal(allowsResourceRecommendation('Can you estimate my monthly payment?'), true);
+});
+
+test('refinance and investment use separate deterministic discovery maps', () => {
+  let state = deriveSalesState('Refinancing', [], null);
+  let reply = guidedConversationReply('Refinancing', state)!;
+  assert.equal(reply.salesState.pendingQuestion, 'refinance_goal');
+  state = deriveSalesState('Lower my monthly payment', [], reply.salesState);
+  assert.equal(state.concern, 'payment');
+
+  state = deriveSalesState('Investment property', [], null);
+  reply = guidedConversationReply('Investment property', state)!;
+  assert.equal(reply.salesState.pendingQuestion, 'investment_goal');
+  state = deriveSalesState('Simpler income documentation', [], reply.salesState);
+  assert.equal(state.concern, 'income');
 });

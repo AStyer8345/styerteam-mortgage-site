@@ -9,6 +9,7 @@ import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
 import { recommendApprovedResources } from './_shared/assistant-resources.ts';
 import { buildContextualQuery, computeSequenceStart, fixedConversationReply } from './_shared/conversation-context.ts';
 import { deriveSalesState, guidedConversationReply, salesNextStepReply, salesStateSummary } from './_shared/sales-conversation.ts';
+import { allowsResourceRecommendation, checkDiscoveryLanguage } from './_shared/conversation-policy.ts';
 
 const COOKIE = 'mortgage_assistant_session';
 const MUTATING = new Set(['create_or_update_website_lead', 'create_follow_up_task', 'schedule_consultation', 'escalate_to_adam']);
@@ -93,12 +94,13 @@ export default async function handler(request: Request, context: Context): Promi
     const nextState = { ...guidedReply.salesState };
     try {
       const modelTurns = priorTurns.map((turn) => ({ role: turn.role, text: scanSensitiveInput(turn.text).redacted }));
-      const model = await createSalesConversationResponse({ message, conversation: modelTurns, salesState });
+      const model = await createSalesConversationResponse({ message, conversation: modelTurns, salesState, requiredQuestion: guidedReply.salesState.pendingQuestion });
       const validation = validateAssistantOutput(model.text);
       if (!validation.safe) throw new Error(`Unsafe sales output: ${validation.reason}`);
+      const policy = checkDiscoveryLanguage(model.text, guidedReply.salesState.pendingQuestion);
+      if (!policy.safe) throw new Error(`Sales process violation: ${policy.reason}`);
       answer = model.text;
       suggestedReplies = model.suggestedReplies;
-      nextState.pendingQuestion = model.nextQuestion;
       responseId = model.responseId;
     } catch (error) {
       console.error('[mortgage-assistant] sales conversation generation failed', { correlationId, reason: error instanceof Error ? error.message.slice(0, 240) : 'unknown_error' });
@@ -290,9 +292,7 @@ function parseSourceRef(value: string) {
   return { file, section };
 }
 function isGreeting(value: string) { return /^(?:hi|hello|hey|howdy|hi there|hey there|hello there|good (?:morning|afternoon|evening))[!. ]*$/i.test(value); }
-function allowResourceRecommendation(value: string) {
-  return /\b(?:calculator|calculate|estimate|run the numbers|monthly payment|how much (?:house|home)|afford|break.?even|compare (?:payments|down payments|options)|dscr calculator)\b/i.test(value);
-}
+const allowResourceRecommendation = allowsResourceRecommendation;
 function validUuid(value: unknown) { return typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function boundedText(value: unknown, max: number, required = true) {
   if (value == null || value === '') return required ? null : undefined;
