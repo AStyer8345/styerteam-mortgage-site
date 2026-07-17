@@ -139,6 +139,9 @@
     if (data.conversationId) state.conversationId = data.conversationId;
     addMessage('assistant', data.message || 'I could not complete that request.');
     if (Array.isArray(data.sources) && data.sources.length) addSources(data.sources);
+    if (Array.isArray(data.resources)) data.resources.forEach(function (resource) {
+      if (resource && resource.url && resource.label) addTrustedLink(resource.url, resource.label);
+    });
     if (data.toolResult && data.toolResult.data && data.toolResult.data.applicationUrl) addTrustedLink(data.toolResult.data.applicationUrl, 'Open secure application');
     if (data.confirmation) showConfirmation(data.confirmation);
   }
@@ -287,7 +290,8 @@
   function addTrustedLink(value, label) {
     try {
       var url = new URL(value);
-      if (url.protocol !== 'https:') return;
+      var approvedHost = url.hostname === 'adamstyer.com' || url.hostname === 'www.adamstyer.com' || url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'hypersmart.my1003app.com';
+      if (url.protocol !== 'https:' || !approvedHost) return;
       var wrapper = document.createElement('div');
       wrapper.className = 'ma-trusted-link';
       var link = document.createElement('a');
