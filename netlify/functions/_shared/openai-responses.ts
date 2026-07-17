@@ -28,6 +28,7 @@ const SALES_OUTPUT_SCHEMA = {
   },
   required: ['answer'],
 };
+const GENERAL_OUTPUT_SCHEMA = { type: 'object', additionalProperties: false, properties: { answer: { type: 'string', maxLength: 3000 } }, required: ['answer'] };
 
 const OUTPUT_SCHEMA = {
   type: 'object',
@@ -134,6 +135,26 @@ export async function createSalesConversationResponse(input: { message: string; 
     }
     throw new Error('OpenAI returned no sales conversation output');
   } finally { clearTimeout(timer); }
+}
+
+export async function createGeneralMortgageResponse(input: { message: string; conversation: Array<{ role: 'user' | 'assistant'; text: string }>; salesState: SalesConversationState; requiredQuestion: string }): Promise<SalesConversationResult> {
+  const apiKey = Netlify.env.get('OPENAI_API_KEY');
+  if (!apiKey) throw new Error('OPENAI_API_KEY is not configured');
+  const model = Netlify.env.get('OPENAI_MORTGAGE_ASSISTANT_MODEL') || 'gpt-5.6-luna';
+  const recent = input.conversation.slice(-12).map((turn) => ({ role: turn.role, content: [{ type: turn.role === 'user' ? 'input_text' : 'output_text', text: turn.text }] }));
+  const response = await fetch('https://api.openai.com/v1/responses', { method: 'POST', headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' }, body: JSON.stringify({
+    model, store: false, max_output_tokens: 900,
+    instructions: `${SALES_CONVERSATION_DOCTRINE}\n\nAnswer first using reliable, broadly accepted mortgage knowledge. Explain concepts, tradeoffs, and typical process. Do not invent current rates, lender overlays, exact eligibility, approval, or personalized financial advice. Use confirmed context without assuming missing facts: ${safeDiscoveryContext(input.salesState)}. End with exactly this director-selected question: ${input.requiredQuestion}. Never say you lack approved information, cannot bluff, or can only point them elsewhere. Do not recommend a calculator or CTA.`,
+    input: [...recent, { role: 'user', content: [{ type: 'input_text', text: input.message }] }],
+    text: { format: { type: 'json_schema', name: 'general_mortgage_response', strict: true, schema: GENERAL_OUTPUT_SCHEMA } },
+  }) });
+  if (!response.ok) throw new Error(`OpenAI Responses API failed with ${response.status}`);
+  const payload = await response.json() as Record<string, unknown>;
+  for (const item of (Array.isArray(payload.output) ? payload.output : []) as Array<Record<string, unknown>>) if (item.type === 'message' && Array.isArray(item.content)) for (const content of item.content as Array<Record<string, unknown>>) if (content.type === 'output_text' && typeof content.text === 'string') {
+    const parsed = JSON.parse(content.text) as { answer: string };
+    return { responseId: typeof payload.id === 'string' ? payload.id : '', text: parsed.answer.includes(input.requiredQuestion) ? parsed.answer : `${parsed.answer.trim()}\n\n${input.requiredQuestion}` };
+  }
+  throw new Error('OpenAI returned no general mortgage output');
 }
 
 function discoveryQuestion(question: NonNullable<SalesConversationState['pendingQuestion']>): string {

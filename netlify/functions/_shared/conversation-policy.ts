@@ -15,5 +15,5 @@ export function checkDiscoveryLanguage(text: string, requiredQuestion: string | 
 }
 
 export function allowsResourceRecommendation(message: string): boolean {
-  return /\b(?:calculator|calculate|estimate|run the numbers|monthly payment|how much (?:house|home)|afford|break.?even|compare (?:payments|down payments|options)|dscr calculator)\b/i.test(message);
+  return /\b(?:calculator|calculate|estimate (?:my|the|a)|run the numbers|what would (?:my|the) payment|how much (?:house|home) can i afford|break.?even calculator|dscr calculator)\b/i.test(message);
 }
