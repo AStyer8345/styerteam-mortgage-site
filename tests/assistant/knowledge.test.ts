@@ -24,6 +24,10 @@ const commonQuestions = [
   ['What happens if the appraisal is low?', 'property-appraisal-and-insurance.md'],
   ['How does a cash-out refinance work?', 'refinance-and-home-equity.md'],
   ['Do I need 20% down?', 'common-borrower-scenarios.md'],
+  ['Why did mortgage rates change today?', 'mortgage-basics.md'],
+  ['Should I lock my mortgage rate or float?', 'mortgage-basics.md'],
+  ['What happens if my rate lock expires?', 'mortgage-basics.md'],
+  ['Why is APR different from the interest rate?', 'mortgage-basics.md'],
 ] as const;
 
 for (const [question, expectedSource] of commonQuestions) {
