@@ -1,3 +1,11 @@
+## 2026-07-18 — styer-site-daily (Saturday, OFF-ROTATION): clean audit, 0 site mutations
+
+- **Non-negotiables green:** sitemap.xml / robots.txt / homepage all HTTP 200 (sandbox-disabled curl, absolute binaries). Conversion tracking 10/10 via HTML-token matrix — matches 07-17 exactly (GTM ×2 all 3 pages; get-preapproved gen_lead=1/purchase_prequal; refinance-quote gen_lead=1/refi_quote; thank-you thank_you_page_view=1; `action='/thank-you'` single-quote form still in effect). No live-submit (avoids fake CRM/n8n leads).
+- **Off-rotation Saturday** — no assigned Step 4 weekday rotation (Mon–Fri). Ran non-negotiables + read-only backlog + design spot-check only; no manufactured rotation work.
+- **Design spot-check clean** (about + dscr): GTM ×2, NMLS 513013 (11/15) + company 2653540 (6/7), 0 legacy entity ("The Styer Team"/"Mortgage Solutions LP"), 0 "21-day"/"24-48", HyperSmart brand + header nav present.
+- **Backlog + BLOCKERS read-only** (writing loanos-clone triggers Vercel build of paused LoanOS): BLOCKERS clean `[No active blockers]`; 3 open backlog items all content-creation (Adam-gated new-page / styer-content-weekly blog+PDF) — no un-gated site work remaining. loanos-clone untouched.
+- Scheduler fired today (07-18) — 4th clean day in a row (07-15/16/17/18) after the 07-06→07-14 10-day outage. Doc-only writes; 0 site mutations; self-review PASS.
+
 ## 2026-07-17 — styer-suburb-editor-daily (Round 5 #2): georgetown — La Conterra entry-tier spotlight + rated feeder + FHA de-template
 
 - **Page deepened — `georgetown-mortgage-lender.html`** (Round 5 #2; page already deep from R1–R4: Wolf Ranch/Sun City/MorningStar/Cimarron Hills/Berry Creek/Saddlecreek/Parkside spotlights, 3 ISD-split gotchas, employers, closing-cost example). **4 first-party cited adds — all genuinely NEW (grep-confirmed absent before this run):**
