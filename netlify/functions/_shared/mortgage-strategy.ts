@@ -15,6 +15,7 @@ export type StrategyPending =
 export type StrategyState = {
   path: StrategyPath;
   pendingQuestion: StrategyPending;
+  clarificationRequested: boolean;
   valueDelivered: boolean;
   targetPrice: number | null;
   downPaymentAmount: number | null;
@@ -41,7 +42,7 @@ export type StrategyState = {
 };
 
 export const EMPTY_STRATEGY_STATE: StrategyState = {
-  path: null, pendingQuestion: null, valueDelivered: false, targetPrice: null, downPaymentAmount: null, downPaymentPercent: null,
+  path: null, pendingQuestion: null, clarificationRequested: false, valueDelivered: false, targetPrice: null, downPaymentAmount: null, downPaymentPercent: null,
   location: null, propertyUse: 'unknown', creditRange: 'unknown', hoaMonthly: null, assumedRate: null,
   incomeType: 'unknown', grossMonthlyIncome: null, monthlyDebts: null, availableCash: null, timeline: 'unknown',
   transactionPurpose: 'unknown', propertyValue: null, loanAmount: null, propertyType: 'unknown', closingDate: null, loanType: 'unknown',
@@ -86,6 +87,7 @@ export function parseStrategyState(value: unknown): StrategyState {
   const state: StrategyState = { ...EMPTY_STRATEGY_STATE };
   if (['payment', 'qualification', 'complex', 'pricing'].includes(String(item.path))) state.path = item.path as Exclude<StrategyPath, null>;
   if (STRATEGY_PENDING.includes(item.pendingQuestion as StrategyPending)) state.pendingQuestion = item.pendingQuestion as StrategyPending;
+  state.clarificationRequested = item.clarificationRequested === true;
   state.valueDelivered = item.valueDelivered === true;
   for (const key of ['targetPrice', 'downPaymentAmount', 'downPaymentPercent', 'hoaMonthly', 'assumedRate', 'grossMonthlyIncome', 'monthlyDebts', 'availableCash', 'propertyValue', 'loanAmount'] as const) {
     if (typeof item[key] === 'number' && Number.isFinite(item[key]) && item[key] >= 0 && item[key] < 100_000_000) state[key] = item[key] as never;
@@ -131,6 +133,11 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
   if (state.path === 'complex' && detectedComplex.length) state.complexFlags = [...new Set([...state.complexFlags, ...detectedComplex])].slice(0, 8);
 
   const pending = state.pendingQuestion;
+  if (pending && isClarificationRequest(current)) {
+    state.clarificationRequested = true;
+    return state;
+  }
+  state.clarificationRequested = false;
   const money = parseMoney(current);
   if (pending === 'purchase_price' && money !== null) state.targetPrice = money;
   if (pending === 'down_payment') {
@@ -145,7 +152,7 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
   if (pending === 'assumed_rate') state.assumedRate = parsePercent(current);
   if (pending === 'employment_type') state.incomeType = parseIncomeType(normalized);
   if (pending === 'gross_income' && money !== null) state.grossMonthlyIncome = /year|annual|annually/i.test(current) ? money / 12 : money;
-  if (pending === 'monthly_debts' && money !== null) state.monthlyDebts = money;
+  if (pending === 'monthly_debts') state.monthlyDebts = /\b(?:no|none|zero|debt[- ]?free)\b/i.test(current) ? 0 : money;
   if (pending === 'available_cash' && money !== null) state.availableCash = money;
   if (pending === 'timeline') state.timeline = parseTimeline(normalized);
   if (pending === 'complex_description') state.complexFlags = detectComplexScenarios(current);
@@ -166,6 +173,7 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
 
 export function strategyConversationReply(message: string, strategy: StrategyState, runtime: StrategyRuntime): StrategyReply | null {
   if (!strategy.path) return null;
+  if (strategy.clarificationRequested && strategy.pendingQuestion) return pendingQuestionClarification(strategy);
   const directQuestion = /\?$/.test(message.trim()) || /^(?:what|why|how|can|could|should|is|are|do|does|will)\b/i.test(message.trim());
   const openingChoice = /^(?:estimate payment and cash|see what may qualify|explain my situation|compare estimated pricing)$/i.test(message.trim());
   if (strategy.valueDelivered && !openingChoice) return null;
@@ -324,8 +332,55 @@ function pricingReply(state: StrategyState, runtime: StrategyRuntime): StrategyR
 
 const RATE_DISCLOSURE = 'This is a general market estimate, not a rate quote or offer to lend. Actual pricing depends on credit, loan amount, down payment, property, occupancy, loan program, points, lock period and market conditions.';
 
+const PENDING_QUESTION_HELP: Record<Exclude<StrategyPending, null>, { message: string; suggestedReplies: string[] }> = {
+  purchase_price: { message: 'A rough target or range is enough—it does not need to be a final offer price. I use it only to model the loan size and costs. What price or range should I use?', suggestedReplies: [] },
+  down_payment: { message: 'Use the amount you would realistically consider, not necessarily the smallest possible down payment. A dollar amount or percentage works, and different structures can be compared later. What amount should I model?', suggestedReplies: ['10% down', '20% down', 'I have a dollar amount'] },
+  location: { message: 'The ZIP code or county helps account for differences in property taxes, insurance, and loan limits. What property location should I use?', suggestedReplies: [] },
+  property_use: { message: 'Primary means you plan to live there most of the year; a second home is for your own occasional use; an investment property is primarily rented or held for income. Which one best describes the property?', suggestedReplies: ['Primary home', 'Second home', 'Investment property'] },
+  credit_range: { message: 'A broad estimate is enough, and this chat does not pull credit. The range helps identify which program categories may be worth reviewing. Which range is closest?', suggestedReplies: ['Below 580', '580–619', '620–679', '680–739', '740 or higher'] },
+  hoa: { message: 'Only include a required homeowners or condo association payment here—not utilities, taxes, or insurance. What monthly HOA amount should I include?', suggestedReplies: ['No HOA', '$100 a month', '$250 a month'] },
+  assumed_rate: { message: 'This is only a planning assumption for the payment calculation, not a quote or promise of pricing. What rate would you like the illustration to use?', suggestedReplies: [] },
+  employment_type: { message: 'I am asking how most qualifying income is received—for example W-2 salary, self-employment, 1099 or commission income, retirement income, or assets. Which is the closest fit?', suggestedReplies: ['W-2 salary', 'Self-employed', '1099 or variable', 'Retirement or assets'] },
+  gross_income: { message: 'Gross income means income before taxes, insurance, retirement contributions, and other deductions. Use combined household income if more than one borrower will apply; monthly or annual is fine. About how much is it?', suggestedReplies: [] },
+  monthly_debts: { message: 'Count recurring obligations that normally appear on credit or must be included in mortgage qualification: minimum credit-card payments, auto, student, and personal loans, alimony or child support, and payments on other mortgages. Usually do not include utilities, groceries, phone, internet, insurance premiums, or subscriptions here. About what do those monthly debt payments total?', suggestedReplies: ['No monthly debts', '$500 a month', '$1,000 a month'] },
+  available_cash: { message: 'A rough amount is enough. Think about funds you could realistically use for the down payment and closing while keeping the reserves you want—do not share account numbers or statements here. About how much would you consider using?', suggestedReplies: [] },
+  timeline: { message: 'This is the approximate timing for buying, refinancing, or needing a financing decision; an exact closing date is not required. Which timeframe is closest?', suggestedReplies: ['Within 30 days', '1–3 months', 'More than 3 months', 'Just exploring'] },
+  complex_description: { message: 'Share the non-sensitive part that makes the scenario harder than a standard loan—income documentation, another property, credit history, property type, or timing. What is the main complication?', suggestedReplies: [] },
+  transaction_purpose: { message: 'A purchase finances a home you are acquiring; a refinance replaces or restructures financing on a property you already own. Which are you considering?', suggestedReplies: ['Purchase', 'Refinance'] },
+  property_value: { message: 'For a purchase, use the expected purchase price. For a refinance, use a reasonable estimate of the current property value. What amount should I use?', suggestedReplies: [] },
+  loan_amount: { message: 'For a purchase, either the expected loan amount or planned down payment works. For a refinance, use the approximate new loan balance you want. What amount should I use?', suggestedReplies: [] },
+  property_type: { message: 'Examples include a single-family home, condo, two-to-four-unit property, or manufactured home. Which type is it?', suggestedReplies: ['Single-family home', 'Condo', '2–4 unit property'] },
+  occupancy: { message: 'Primary means you plan to live there most of the year; a second home is for your own occasional use; an investment property is primarily rented or held for income. Which one best describes the property?', suggestedReplies: ['Primary home', 'Second home', 'Investment property'] },
+  closing_date: { message: 'A rough expected closing date or lock period is enough because timing can affect available pricing. What timing should I use?', suggestedReplies: [] },
+  loan_type: { message: 'If you already have a program in mind, choose it; otherwise conventional is a useful comparison starting point and Adam can review alternatives. Which loan type should I model?', suggestedReplies: ['Conventional', 'FHA', 'VA', 'Use conventional as a starting point'] },
+};
+
+function isClarificationRequest(message: string): boolean {
+  const value = message.trim().toLowerCase();
+  return /^(?:what do you mean|(?:can|could|would) you (?:explain|clarify)|(?:please )?(?:explain|clarify)|i(?:'m| am)? not sure what|what (?:exactly )?(?:counts?|should i (?:include|count)|are you (?:asking|looking) for)|which (?:items?|debts?|payments?)|do i (?:need|have) to (?:include|count)|does .{1,80} count|should i (?:include|count)|is that (?:gross|net|before|after))\b/i.test(value);
+}
+
+function pendingQuestionClarification(state: StrategyState): StrategyReply {
+  const pending = state.pendingQuestion as Exclude<StrategyPending, null>;
+  const help = PENDING_QUESTION_HELP[pending];
+  const responseKind: StrategyReply['responseKind'] = state.path === 'payment'
+    ? 'estimate_started'
+    : state.path === 'qualification'
+      ? 'qualification_started'
+      : state.path === 'complex'
+        ? 'complex_started'
+        : 'pricing_started';
+  return {
+    message: help.message,
+    suggestedReplies: help.suggestedReplies,
+    strategy: { ...state, clarificationRequested: false, recommendedNextAction: 'continue_discovery' },
+    responseKind,
+    actions: [],
+  };
+}
+
 function ask(state: StrategyState, pendingQuestion: StrategyPending, message: string, suggestedReplies: string[], responseKind: StrategyReply['responseKind']): StrategyReply {
-  return { message, suggestedReplies, strategy: { ...state, pendingQuestion, recommendedNextAction: 'continue_discovery' }, responseKind, actions: [] };
+  return { message, suggestedReplies, strategy: { ...state, pendingQuestion, clarificationRequested: false, recommendedNextAction: 'continue_discovery' }, responseKind, actions: [] };
 }
 
 function downPaymentDollars(state: Pick<StrategyState, 'targetPrice' | 'downPaymentAmount' | 'downPaymentPercent'>): number {

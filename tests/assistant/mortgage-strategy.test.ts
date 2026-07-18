@@ -44,6 +44,51 @@ test('payment path asks one question at a time, never asks for a name, and does 
   assert.equal(reply.strategy.pendingQuestion, 'location');
 });
 
+test('qualification clarification explains monthly debts without losing the pending question or looping', () => {
+  let state: StrategyState = {
+    ...EMPTY_STRATEGY_STATE,
+    path: 'qualification',
+    incomeType: 'w2',
+    grossMonthlyIncome: 10_000,
+    pendingQuestion: 'monthly_debts',
+  };
+
+  state = deriveStrategyState('what do you mean', state);
+  assert.equal(state.pendingQuestion, 'monthly_debts');
+  assert.equal(state.clarificationRequested, true);
+  let reply = strategyConversationReply('what do you mean', state, runtime)!;
+  assert.match(reply.message, /minimum credit-card payments/i);
+  assert.match(reply.message, /do not include utilities/i);
+  assert.notEqual(reply.message, 'About how much do the recurring monthly debts total, before a new housing payment?');
+  assert.equal((reply.message.match(/\?/g) || []).length, 1);
+  assert.equal(reply.strategy.pendingQuestion, 'monthly_debts');
+  assert.equal(reply.strategy.clarificationRequested, false);
+
+  state = deriveStrategyState('do I need to count my utilities', reply.strategy);
+  reply = strategyConversationReply('do I need to count my utilities', state, runtime)!;
+  assert.match(reply.message, /do not include utilities/i);
+  assert.equal(reply.strategy.pendingQuestion, 'monthly_debts');
+
+  state = deriveStrategyState('500', reply.strategy);
+  assert.equal(state.monthlyDebts, 500);
+  assert.equal(state.pendingQuestion, null);
+  reply = strategyConversationReply('500', state, runtime)!;
+  assert.equal(reply.strategy.pendingQuestion, 'credit_range');
+});
+
+test('qualification accepts no recurring monthly debts as zero and advances', () => {
+  const state = deriveStrategyState('No monthly debts', {
+    ...EMPTY_STRATEGY_STATE,
+    path: 'qualification',
+    incomeType: 'w2',
+    grossMonthlyIncome: 10_000,
+    pendingQuestion: 'monthly_debts',
+  });
+  assert.equal(state.monthlyDebts, 0);
+  const reply = strategyConversationReply('No monthly debts', state, runtime)!;
+  assert.equal(reply.strategy.pendingQuestion, 'credit_range');
+});
+
 test('completed payment estimate identifies every assumption and compares down-payment approaches', () => {
   const state: StrategyState = {
     ...EMPTY_STRATEGY_STATE, path: 'payment', targetPrice: 500_000, downPaymentPercent: 10, location: '78704', propertyUse: 'primary', creditRange: '740_plus', hoaMonthly: 0,
