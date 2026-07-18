@@ -64,9 +64,11 @@ test('qualification clarification explains monthly debts without losing the pend
   assert.equal(reply.strategy.pendingQuestion, 'monthly_debts');
   assert.equal(reply.strategy.clarificationRequested, false);
 
+  const generalExplanation = reply.message;
   state = deriveStrategyState('do I need to count my utilities', reply.strategy);
   reply = strategyConversationReply('do I need to count my utilities', state, runtime)!;
-  assert.match(reply.message, /do not include utilities/i);
+  assert.match(reply.message, /^No—do not include utilities/i);
+  assert.notEqual(reply.message, generalExplanation);
   assert.equal(reply.strategy.pendingQuestion, 'monthly_debts');
 
   state = deriveStrategyState('500', reply.strategy);
