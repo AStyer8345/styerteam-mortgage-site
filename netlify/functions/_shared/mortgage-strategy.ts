@@ -173,7 +173,7 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
 
 export function strategyConversationReply(message: string, strategy: StrategyState, runtime: StrategyRuntime): StrategyReply | null {
   if (!strategy.path) return null;
-  if (strategy.clarificationRequested && strategy.pendingQuestion) return pendingQuestionClarification(strategy);
+  if (strategy.clarificationRequested && strategy.pendingQuestion) return pendingQuestionClarification(strategy, message);
   const directQuestion = /\?$/.test(message.trim()) || /^(?:what|why|how|can|could|should|is|are|do|does|will)\b/i.test(message.trim());
   const openingChoice = /^(?:estimate payment and cash|see what may qualify|explain my situation|compare estimated pricing)$/i.test(message.trim());
   if (strategy.valueDelivered && !openingChoice) return null;
@@ -360,9 +360,20 @@ function isClarificationRequest(message: string): boolean {
   return /^(?:what do you mean|(?:can|could|would) you (?:explain|clarify)|(?:please )?(?:explain|clarify)|i(?:'m| am)? not sure what|what (?:exactly )?(?:counts?|should i (?:include|count)|are you (?:asking|looking) for)|which (?:items?|debts?|payments?)|do i (?:need|have) to (?:include|count)|does .{1,80} count|should i (?:include|count)|is that (?:gross|net|before|after))\b/i.test(value);
 }
 
-function pendingQuestionClarification(state: StrategyState): StrategyReply {
+function pendingQuestionClarification(state: StrategyState, visitorMessage: string): StrategyReply {
   const pending = state.pendingQuestion as Exclude<StrategyPending, null>;
-  const help = PENDING_QUESTION_HELP[pending];
+  let help = PENDING_QUESTION_HELP[pending];
+  if (pending === 'monthly_debts' && /utilit|electric|water bill|gas bill|phone|internet|grocer|subscription/i.test(visitorMessage)) {
+    help = {
+      message: 'No—do not include utilities or ordinary living expenses. For this estimate, count required monthly payments such as credit cards, auto, student, or personal loans, support obligations, and other mortgages. About what do those debt payments total?',
+      suggestedReplies: PENDING_QUESTION_HELP.monthly_debts.suggestedReplies,
+    };
+  } else if (pending === 'monthly_debts' && /credit.?card|auto|car (?:loan|payment)|student|personal loan|alimony|child support|other mortgage/i.test(visitorMessage)) {
+    help = {
+      message: 'Yes—include the required monthly payment for that obligation, not the full balance. About what do all of those monthly debt payments total?',
+      suggestedReplies: PENDING_QUESTION_HELP.monthly_debts.suggestedReplies,
+    };
+  }
   const responseKind: StrategyReply['responseKind'] = state.path === 'payment'
     ? 'estimate_started'
     : state.path === 'qualification'
