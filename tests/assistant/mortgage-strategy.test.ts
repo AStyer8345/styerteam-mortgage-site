@@ -148,6 +148,23 @@ test('missing market snapshot still provides value and gathers a short pricing s
   assert.deepEqual(reply.actions, ['rate_review', 'schedule']);
 });
 
+test('a short monthly-payment reply after another completed path starts the payment flow without inventing a scenario', () => {
+  const state = deriveStrategyState('Monthly payment', {
+    ...EMPTY_STRATEGY_STATE,
+    path: 'pricing',
+    valueDelivered: true,
+    recommendedNextAction: 'rate_review',
+  });
+  assert.equal(state.path, 'payment');
+  assert.equal(state.valueDelivered, false);
+  assert.equal(state.recommendedNextAction, 'none');
+
+  const reply = strategyConversationReply('Monthly payment', state, runtime)!;
+  assert.equal(reply.strategy.pendingQuestion, 'purchase_price');
+  assert.match(reply.message, /purchase price/i);
+  assert.doesNotMatch(reply.message, /second mortgage|\$300,000|7%/i);
+});
+
 test('configured pricing uses only an illustrative midpoint, required disclosure, and no APR calculation', () => {
   const state: StrategyState = { ...EMPTY_STRATEGY_STATE, path: 'pricing', transactionPurpose: 'purchase', propertyValue: 500_000, downPaymentPercent: 20, creditRange: '740_plus', propertyType: 'single_family', propertyUse: 'primary', location: '78704', closingDate: '45 days', loanType: 'conventional' };
   const reply = strategyConversationReply('Conventional', state, runtime)!;

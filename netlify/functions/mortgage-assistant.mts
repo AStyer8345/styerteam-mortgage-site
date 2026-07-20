@@ -9,7 +9,7 @@ import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
 import { conversionResources, recommendApprovedResources, resolveAssistantActions } from './_shared/assistant-resources.ts';
 import { buildContextualQuery, computeSequenceStart, fixedConversationReply } from './_shared/conversation-context.ts';
 import { deriveSalesState, generalAnswerFollowUp, guidedConversationReply, salesNextStepReply, salesStateSummary } from './_shared/sales-conversation.ts';
-import { allowsResourceRecommendation, checkDiscoveryLanguage } from './_shared/conversation-policy.ts';
+import { allowsResourceRecommendation, checkDiscoveryLanguage, checkGeneralAnswerLanguage } from './_shared/conversation-policy.ts';
 import { buildStructuredLeadContext, strategyConversationReply } from './_shared/mortgage-strategy.ts';
 import { loadEstimateAssumptions, loadRateMarketConfig } from './_shared/rate-market.ts';
 
@@ -168,6 +168,8 @@ export default async function handler(request: Request, context: Context): Promi
       const model = await createGeneralMortgageResponse({ message, conversation: modelTurns, salesState, requiredQuestion: followUp.question });
       const validation = validateAssistantOutput(model.text);
       if (!validation.safe) throw new Error(`Unsafe general answer: ${validation.reason}`);
+      const policy = checkGeneralAnswerLanguage(model.text, followUp.question);
+      if (!policy.safe) throw new Error(`General answer policy violation: ${policy.reason}`);
       await recordTurn(conversationId, correlationId, session.id, message, model.text, [], { general_educational_answer: true }, model.responseId, sequenceStart, retrieval.version);
       return json({ conversationId, message: model.text, sources: [], resources: [...(allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : []), ...conversionResources(salesState.stage, message)].slice(0, 3), suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     } catch (error) {
@@ -227,6 +229,8 @@ export default async function handler(request: Request, context: Context): Promi
       const general = await createGeneralMortgageResponse({ message, conversation: modelTurns, salesState, requiredQuestion: followUp.question });
       const validation = validateAssistantOutput(general.text);
       if (!validation.safe) throw new Error(`Unsafe general answer: ${validation.reason}`);
+      const policy = checkGeneralAnswerLanguage(general.text, followUp.question);
+      if (!policy.safe) throw new Error(`General answer policy violation: ${policy.reason}`);
       await recordTurn(conversationId, correlationId, session.id, message, general.text, [], { grounded_fallback_to_general: true }, general.responseId, sequenceStart, retrieval.version);
       return json({ conversationId, message: general.text, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     } catch (generalError) {
