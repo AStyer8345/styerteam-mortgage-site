@@ -101,6 +101,20 @@ test('the widget loader and stylesheet share one cache-busting version', () => {
   assert.equal(cssVersion![1], jsVersion![1]);
 });
 
+test('the widget shows an accessible animated typing indicator while requests are pending', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  const styles = fs.readFileSync('assistant-widget.css', 'utf8');
+  assert.match(browser, /showTypingIndicator/);
+  assert.match(browser, /hideTypingIndicator/);
+  assert.match(browser, /Assistant is typing/);
+  assert.match(browser, /index < 3/);
+  assert.match(browser, /aria-hidden/);
+  assert.match(browser, /if \(wrapper\.children\.length\) \{\s*ui\.messages\.appendChild\(wrapper\);\s*ui\.messages\.scrollTop = ui\.messages\.scrollHeight;\s*\}\s*\}\s*function showTypingIndicator/);
+  assert.match(styles, /\.ma-typing-dot/);
+  assert.match(styles, /@keyframes ma-typing-bounce/);
+  assert.match(styles, /prefers-reduced-motion:reduce/);
+});
+
 test('prior turns are redacted again before reaching the model', () => {
   const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
   assert.match(gateway, /scanSensitiveInput\(turn\.text\)\.redacted/);
