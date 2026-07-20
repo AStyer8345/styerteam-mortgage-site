@@ -248,7 +248,7 @@ function paymentReply(state: StrategyState, runtime: StrategyRuntime): StrategyR
   if (state.hoaMonthly === null) return ask(state, 'hoa', 'Is there a monthly HOA amount to include?', ['No HOA', '$100 a month', '$250 a month'], 'estimate_started');
   if (runtime.assumptions.status !== 'available' || !runtime.assumptions.config) {
     const next = { ...state, valueDelivered: true, recommendedNextAction: 'scenario_review' as const };
-    return { message: 'I have the scenario details, but the reviewed tax, insurance, PMI, and closing-cost assumptions are not currently configured, so I won’t manufacture a total. Adam can run a personalized payment and cash-to-close review with current assumptions.', suggestedReplies: [], strategy: next, responseKind: 'pricing_unavailable', actions: ['contact'] };
+    return { message: 'I have the basics. A useful total also needs current property-tax, homeowners-insurance, mortgage-insurance, and closing-cost assumptions for this property. Those figures vary by property and are not current inside this chat today. Adam can run the payment and cash-to-close comparison with current numbers and show how different down-payment choices change the result.', suggestedReplies: [], strategy: next, responseKind: 'pricing_unavailable', actions: ['contact', 'schedule'] };
   }
   let annualRate = state.assumedRate;
   let rateNote = '';
@@ -306,10 +306,7 @@ function complexReply(state: StrategyState): StrategyReply {
 }
 
 function pricingReply(state: StrategyState, runtime: StrategyRuntime): StrategyReply {
-  if (runtime.market.status !== 'available' || !runtime.market.config) {
-    const next = { ...state, valueDelivered: true, recommendedNextAction: 'rate_review' as const };
-    return { message: 'I can’t provide a current market estimate because the reviewed, date-stamped pricing configuration is missing, disabled, invalid, or expired. I won’t substitute a number from model memory. Adam can verify actual pricing for this scenario.', suggestedReplies: [], strategy: next, responseKind: 'pricing_unavailable', actions: ['rate_review'] };
-  }
+  if (runtime.market.status !== 'available' || !runtime.market.config) return unavailablePricingReply(state);
   if (state.transactionPurpose === 'unknown') return ask(state, 'transaction_purpose', 'Is this for a purchase or refinance?', ['Purchase', 'Refinance'], 'pricing_started');
   if (state.propertyValue === null) return ask(state, 'property_value', state.transactionPurpose === 'purchase' ? 'What is the purchase price?' : 'What is the estimated property value?', [], 'pricing_started');
   if (state.loanAmount === null && state.downPaymentAmount === null && state.downPaymentPercent === null) return ask(state, 'loan_amount', state.transactionPurpose === 'purchase' ? 'What loan amount or down payment are you considering?' : 'About how much would the new loan be?', [], 'pricing_started');
@@ -328,6 +325,37 @@ function pricingReply(state: StrategyState, runtime: StrategyRuntime): StrategyR
   const cost = runtime.market.config.costStructure === 'points' ? 'assumes points' : runtime.market.config.costStructure === 'no_points' ? 'assumes no points' : 'uses an unspecified cost structure';
   const message = `Configured estimated market range:\n\n- Date last updated: ${runtime.market.config.lastUpdated}\n- Source: ${runtime.market.config.sourceDescription}\n- Loan type: ${loanLabel(loanType)}\n- Estimated range: ${range.min.toFixed(3)}%–${range.max.toFixed(3)}%\n- Cost structure: ${cost}\n- Illustrative midpoint: ${midpoint.toFixed(3)}%\n- Estimated principal and interest at the illustrative midpoint: ${money(pi)}/month on ${money(loanAmount)}\n\nRates inside the range may carry different points, credits, and closing costs. Taxes, homeowners insurance, mortgage insurance, and HOA are not included in that principal-and-interest amount and may be additional. No APR is shown because the actual associated fees are not known.\n\n${RATE_DISCLOSURE}\n\nThis does not mean you qualify for the range. Adam can verify actual pricing for the full scenario.`;
   return { message, suggestedReplies: [], strategy: next, responseKind: 'pricing_range', actions: ['rate_review'] };
+}
+
+function unavailablePricingReply(state: StrategyState): StrategyReply {
+  if (state.transactionPurpose === 'unknown') {
+    return ask(
+      state,
+      'transaction_purpose',
+      'Mortgage pricing is a tradeoff between the interest rate and the upfront cost or lender credit tied to it. It also changes with the loan amount, down payment or equity, credit range, property use, loan program, and lock period. I do not have a fresh rate sheet available inside this chat today, but I can gather the few details Adam needs to compare real options efficiently. Is this for a purchase or refinance?',
+      ['Purchase', 'Refinance'],
+      'pricing_started',
+    );
+  }
+  if (state.propertyValue === null) {
+    return ask(state, 'property_value', state.transactionPurpose === 'purchase' ? 'What purchase price or range are you considering?' : 'About what is the property worth today?', [], 'pricing_started');
+  }
+  if (state.loanAmount === null && state.downPaymentAmount === null && state.downPaymentPercent === null) {
+    return ask(state, 'loan_amount', state.transactionPurpose === 'purchase' ? 'What loan amount or down payment are you considering?' : 'About how much would the new loan be?', [], 'pricing_started');
+  }
+  if (state.creditRange === 'unknown') return ask(state, 'credit_range', 'Which broad credit range is closest? No exact score is needed.', ['Below 580', '580–619', '620–679', '680–739', '740 or higher'], 'pricing_started');
+  if (state.propertyUse === 'unknown') return ask(state, 'occupancy', 'Will this be a primary home, second home, or investment property?', ['Primary home', 'Second home', 'Investment property'], 'pricing_started');
+
+  const purpose = state.transactionPurpose === 'purchase' ? 'purchase' : 'refinance';
+  const structure = state.downPaymentPercent !== null
+    ? `${state.downPaymentPercent.toFixed(state.downPaymentPercent % 1 === 0 ? 0 : 1)}% down`
+    : state.downPaymentAmount !== null
+      ? `${money(state.downPaymentAmount)} down`
+      : `an estimated ${money(state.loanAmount || 0)} loan`;
+  const occupancy = state.propertyUse === 'primary' ? 'primary home' : state.propertyUse === 'second_home' ? 'second home' : 'investment property';
+  const next: StrategyState = { ...state, valueDelivered: true, recommendedNextAction: 'rate_review', pendingQuestion: null };
+  const message = `That is enough context to make the next step useful: a ${purpose} around ${money(state.propertyValue)} with ${structure}, a ${creditLabel(state.creditRange)} credit range, and ${occupancy} occupancy.\n\nThe exact comparison will still depend on the property, loan program, points or lender credits, and lock period. I do not have a fresh rate sheet available inside this chat today. Adam can compare actual rate-and-cost options side by side—including whether paying more upfront for a lower rate makes sense for your expected time in the loan.`;
+  return { message, suggestedReplies: [], strategy: next, responseKind: 'pricing_unavailable', actions: ['rate_review', 'schedule'] };
 }
 
 const RATE_DISCLOSURE = 'This is a general market estimate, not a rate quote or offer to lend. Actual pricing depends on credit, loan amount, down payment, property, occupancy, loan program, points, lock period and market conditions.';
@@ -436,6 +464,18 @@ function parseCreditRange(value: string): CreditRange {
   if (/680|700|720|739/.test(value)) return '680_739';
   if (/740|760|780|800|higher|excellent/.test(value)) return '740_plus';
   return 'unknown';
+}
+
+function creditLabel(value: CreditRange): string {
+  const labels: Record<CreditRange, string> = {
+    below_580: 'below 580',
+    '580_619': '580–619',
+    '620_679': '620–679',
+    '680_739': '680–739',
+    '740_plus': '740 or higher',
+    unknown: 'unspecified',
+  };
+  return labels[value];
 }
 
 function parseIncomeType(value: string): IncomeType {

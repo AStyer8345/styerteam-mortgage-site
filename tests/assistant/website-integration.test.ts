@@ -35,7 +35,7 @@ test('assistant uses contextual conversion actions instead of an always-visible 
   assert.doesNotMatch(browser, /class="ma-next-actions"/);
   assert.match(browser, /addContextActions/);
   assert.match(resources, /Start secure application/);
-  assert.match(resources, /Have Adam verify pricing/);
+  assert.match(resources, /Compare current rate options/);
   assert.match(browser, /rel = 'noopener noreferrer'/);
 });
 
