@@ -56,7 +56,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260717-strategy-assistant-v1';
+    stylesheet.href = '/assistant-widget.css?v=20260720-typing-indicator-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -359,6 +359,36 @@
     }
   }
 
+  function showTypingIndicator(message) {
+    if (ui.typingIndicator) return;
+    var indicator = document.createElement('div');
+    indicator.className = 'ma-message ma-message-assistant ma-typing-indicator';
+
+    var label = document.createElement('span');
+    label.className = 'ma-visually-hidden';
+    label.textContent = message || 'Assistant is typing.';
+    indicator.appendChild(label);
+
+    var dots = document.createElement('span');
+    dots.className = 'ma-typing-dots';
+    dots.setAttribute('aria-hidden', 'true');
+    for (var index = 0; index < 3; index += 1) {
+      var dot = document.createElement('span');
+      dot.className = 'ma-typing-dot';
+      dots.appendChild(dot);
+    }
+    indicator.appendChild(dots);
+    ui.typingIndicator = indicator;
+    ui.messages.appendChild(indicator);
+    ui.messages.scrollTop = ui.messages.scrollHeight;
+  }
+
+  function hideTypingIndicator() {
+    if (!ui.typingIndicator) return;
+    ui.typingIndicator.remove();
+    ui.typingIndicator = null;
+  }
+
   function removeSuggestedReplies() {
     if (!ui.messages) return;
     ui.messages.querySelectorAll('.ma-suggested-replies').forEach(function (item) { item.remove(); });
@@ -544,6 +574,8 @@
     ui.confirm.disabled = busy;
     ui.status.textContent = message;
     ui.send.textContent = busy ? 'Wait…' : 'Send';
+    if (busy) showTypingIndicator(message || 'Assistant is typing.');
+    else hideTypingIndicator();
   }
 
   function createId() {
