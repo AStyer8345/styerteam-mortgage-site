@@ -35,7 +35,7 @@ export function resolveAssistantActions(actions: Array<'contact' | 'application'
     contact: { type: 'contact', label: 'Have Adam review this' },
     application: { type: 'application', label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register' },
     schedule: { type: 'schedule', label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes' },
-    rate_review: { type: 'rate_review', label: 'Have Adam verify pricing', url: 'https://adamstyer.com/rate-check.html' },
+    rate_review: { type: 'rate_review', label: 'Compare current rate options', url: 'https://adamstyer.com/rate-check.html' },
   };
   return [...new Set(actions)].map((action) => definitions[action]);
 }

@@ -109,8 +109,43 @@ test('pricing refuses missing or expired configuration and never invents a rate'
   const state: StrategyState = { ...EMPTY_STRATEGY_STATE, path: 'pricing', transactionPurpose: 'purchase', propertyValue: 500_000, downPaymentPercent: 20, creditRange: '740_plus', propertyType: 'single_family', propertyUse: 'primary', location: '78704', closingDate: '45 days', loanType: 'conventional' };
   const missing = strategyConversationReply('Conventional', state, { ...runtime, market: { status: 'missing', config: null } })!;
   assert.equal(missing.responseKind, 'pricing_unavailable');
-  assert.match(missing.message, /won’t substitute a number from model memory/i);
+  assert.match(missing.message, /fresh rate sheet available inside this chat today/i);
+  assert.match(missing.message, /rate-and-cost options side by side/i);
+  assert.doesNotMatch(missing.message, /configuration|model memory|missing|invalid|expired/i);
   assert.doesNotMatch(missing.message, /\d+\.\d+%/);
+  assert.deepEqual(missing.actions, ['rate_review', 'schedule']);
+});
+
+test('missing market snapshot still provides value and gathers a short pricing scenario one question at a time', () => {
+  const unavailableRuntime: StrategyRuntime = { ...runtime, market: { status: 'missing', config: null } };
+  let state = deriveStrategyState('Compare estimated pricing', EMPTY_STRATEGY_STATE);
+  let reply = strategyConversationReply('Compare estimated pricing', state, unavailableRuntime)!;
+  assert.equal(reply.strategy.pendingQuestion, 'transaction_purpose');
+  assert.match(reply.message, /tradeoff between the interest rate and the upfront cost/i);
+  assert.equal(reply.actions.length, 0);
+  assert.equal((reply.message.match(/\?/g) || []).length, 1);
+
+  state = deriveStrategyState('Purchase', reply.strategy);
+  reply = strategyConversationReply('Purchase', state, unavailableRuntime)!;
+  assert.equal(reply.strategy.pendingQuestion, 'property_value');
+
+  state = deriveStrategyState('$500,000', reply.strategy);
+  reply = strategyConversationReply('$500,000', state, unavailableRuntime)!;
+  assert.equal(reply.strategy.pendingQuestion, 'loan_amount');
+
+  state = deriveStrategyState('20% down', reply.strategy);
+  reply = strategyConversationReply('20% down', state, unavailableRuntime)!;
+  assert.equal(reply.strategy.pendingQuestion, 'credit_range');
+
+  state = deriveStrategyState('740 or higher', reply.strategy);
+  reply = strategyConversationReply('740 or higher', state, unavailableRuntime)!;
+  assert.equal(reply.strategy.pendingQuestion, 'occupancy');
+
+  state = deriveStrategyState('Primary home', reply.strategy);
+  reply = strategyConversationReply('Primary home', state, unavailableRuntime)!;
+  assert.equal(reply.responseKind, 'pricing_unavailable');
+  assert.match(reply.message, /purchase around \$500,000 with 20% down/i);
+  assert.deepEqual(reply.actions, ['rate_review', 'schedule']);
 });
 
 test('configured pricing uses only an illustrative midpoint, required disclosure, and no APR calculation', () => {
