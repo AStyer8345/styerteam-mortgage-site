@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { deriveSalesState, guidedConversationReply, salesNextStepReply, salesStateSummary } from '../../netlify/functions/_shared/sales-conversation.ts';
 import { salesPlaybook } from '../../netlify/functions/_shared/sales-playbooks.ts';
 import { evaluateConversation } from '../../netlify/functions/_shared/conversation-quality.ts';
-import { allowsResourceRecommendation, checkDiscoveryLanguage } from '../../netlify/functions/_shared/conversation-policy.ts';
+import { allowsResourceRecommendation, checkDiscoveryLanguage, checkGeneralAnswerLanguage } from '../../netlify/functions/_shared/conversation-policy.ts';
 
 test('derives a high-intent purchase state without using protected characteristics', () => {
   const state = deriveSalesState('I am buying a primary home in Texas and hope to make an offer this month. My credit worries me.', [], null);
@@ -127,6 +127,14 @@ test('the assumption checker blocks products, calculators, CTAs, and invented ra
   assert.equal(checkDiscoveryLanguage('Try the calculator. When would you like to move?', 'timeline').safe, false);
   assert.equal(checkDiscoveryLanguage('You can put 3% down. When would you like to move?', 'timeline').safe, false);
   assert.equal(checkDiscoveryLanguage('When are you moving? What price?', 'timeline').safe, false);
+});
+
+test('general answers must use the director question and cannot invent a rate-and-payment illustration', () => {
+  const required = 'What purchase price are you considering?';
+  assert.deepEqual(checkGeneralAnswerLanguage(`A co-borrower may help if their qualifying income is included.\n\n${required}`, required), { safe: true });
+  assert.equal(checkGeneralAnswerLanguage(`Would your mom live there?\n\n${required}`, required).safe, false);
+  assert.equal(checkGeneralAnswerLanguage(`A $300,000 loan at 7% would have a payment near $1,996.\n\n${required}`, required).safe, false);
+  assert.equal(checkGeneralAnswerLanguage('A co-borrower may help. What matters most?', required).safe, false);
 });
 
 test('calculator gate opens only when the visitor asks for numbers', () => {

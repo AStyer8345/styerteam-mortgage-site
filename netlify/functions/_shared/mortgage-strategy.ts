@@ -125,6 +125,9 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
   else if (/^see what may qualify$/i.test(current)) state = { ...EMPTY_STRATEGY_STATE, path: 'qualification' };
   else if (/^explain my situation$/i.test(current)) state = { ...EMPTY_STRATEGY_STATE, path: 'complex' };
   else if (/^compare estimated pricing$/i.test(current)) state = { ...EMPTY_STRATEGY_STATE, path: 'pricing' };
+  else if (/^(?:monthly payment|payment estimate|estimate (?:my |the )?payment|what would (?:my |the )?payment be)$/i.test(current) && (!state.path || state.valueDelivered)) {
+    state = { ...EMPTY_STRATEGY_STATE, path: 'payment' };
+  }
   else if (!state.path && /\b(?:estimate|calculate|what would).{0,30}(?:payment|cash to close)|\bpayment estimate\b/i.test(current)) state.path = 'payment';
   else if (!state.path && /\b(?:do i|could i|can i|what may) qualif|\bwhat can i afford\b/i.test(current)) state.path = 'qualification';
   else if (!state.path && /\b(?:rates?|pricing).{0,20}(?:today|right now|current|estimate)|\bwhat are (?:your|the) rates\b/i.test(current)) state.path = 'pricing';
