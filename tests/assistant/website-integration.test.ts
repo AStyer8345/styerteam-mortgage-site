@@ -1,6 +1,16 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import path from 'node:path';
 import test from 'node:test';
+
+function listHtmlFiles(directory = '.'): string[] {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    if (entry.name === '.git' || entry.name === 'node_modules') return [];
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return listHtmlFiles(entryPath);
+    return entry.isFile() && entry.name.endsWith('.html') ? [entryPath] : [];
+  });
+}
 
 test('assistant gateway is server-side and feature-gated', () => {
   const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
@@ -99,6 +109,14 @@ test('the widget loader and stylesheet share one cache-busting version', () => {
   const jsVersion = site.match(/assistant-widget\.js\?v=([\w-]+)/);
   assert.ok(cssVersion && jsVersion, 'both asset references must be versioned');
   assert.equal(cssVersion![1], jsVersion![1]);
+});
+
+test('every website page uses the current cache-busted script loader', () => {
+  const versions = listHtmlFiles().flatMap((file) =>
+    Array.from(fs.readFileSync(file, 'utf8').matchAll(/script\.js\?v=([\w-]+)/g), (match) => match[1]),
+  );
+  assert.ok(versions.length > 0, 'at least one page must load the shared site script');
+  assert.deepEqual(new Set(versions), new Set(['20260721-assistant-main-v1']));
 });
 
 test('the widget shows an accessible animated typing indicator while requests are pending', () => {

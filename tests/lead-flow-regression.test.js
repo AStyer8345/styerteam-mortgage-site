@@ -37,7 +37,7 @@ test('FAQ accordions toggle hidden panels open and closed', () => {
 test('Non-QM quote form uses primary notification capture path', () => {
   assert.match(nonQmPage, /<form[^>]+name="non-qm-quote"[^>]+class="[^"]*\bjs-quick-contact\b[^"]*"/);
   assert.match(nonQmPage, /<input type="hidden" name="form-name" value="non-qm-quote">/);
-  assert.match(nonQmPage, /\/script\.js\?v=20260627-leads/);
+  assert.match(nonQmPage, /\/script\.js\?v=20260721-assistant-main-v1/);
   assert.match(script, /'form-name': formData\.get\('form-name'\) \|\| form\.getAttribute\('name'\) \|\| ''/);
 });
 
