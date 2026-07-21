@@ -59,3 +59,4 @@ Format: `YYYY-MM-DD | <slug> | <tier> | <commit-sha>`
 - 2026-06-23 | 2026-06-23-no-ratio-low-dscr-loans-texas | A (DSCR cluster) | db561c1
 - 2026-06-30 | 2026-06-30-bank-statement-loans-texas | A (bank-stmt freshness, Wk16 THREAT #1) | 5c2a2b0
 - 2026-07-16 | 2026-07-16-self-employed-income-calculation-underwriting-texas | B (manual catch-up — scheduler outage killed 7/7 + 7/14 runs) | 8db5c73
+- 2026-07-21 | 2026-07-21-itin-mortgage-loans-texas | B (SEO-AUDIT Phase 3 gap — ITIN; Tier A had no net-new-post opportunity) | ce5c83d
