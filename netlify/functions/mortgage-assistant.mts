@@ -39,6 +39,7 @@ export default async function handler(request: Request, context: Context): Promi
   let body: Record<string, unknown>;
   try { body = await request.json() as Record<string, unknown>; } catch { return json({ error: { code: 'invalid_json', message: 'Invalid request.' } }, 400, headers); }
   const conversationId = validUuid(body.conversationId) ? String(body.conversationId) : randomUUID();
+  const sourcePage = boundedText(body.sourcePage, 500, false) || undefined;
   try {
     const ipLimit = await checkPersistentRateLimit(`ip:${context.ip || 'unknown'}`, 20, 60_000);
     const sessionLimit = await checkPersistentRateLimit(`session:${session.id}`, 40, 10 * 60_000);
@@ -59,24 +60,24 @@ export default async function handler(request: Request, context: Context): Promi
   const scan = scanSensitiveInput(message);
   if (scan.blocked) {
     const answer = safeSensitiveNotice();
-    await recordTurn(conversationId, correlationId, session.id, scan.redacted, answer, [], { sensitive_input_blocked: true }, undefined, sequenceStart);
+    await recordTurn(conversationId, correlationId, session.id, scan.redacted, answer, [], { sensitive_input_blocked: true }, undefined, sequenceStart, sourcePage);
     return json({ conversationId, message: answer, sources: [], salesState, sensitiveInputDetected: true, canEscalate: true }, 200, headers);
   }
   if (isPromptInjection(message)) {
     const answer = 'I can help with mortgage information supported by the approved website materials, or help you reach Adam. I can’t follow requests to reveal or override system instructions.';
-    await recordTurn(conversationId, correlationId, session.id, '[PROMPT_INJECTION_REDACTED]', answer, [], { prompt_injection_blocked: true }, undefined, sequenceStart);
+    await recordTurn(conversationId, correlationId, session.id, '[PROMPT_INJECTION_REDACTED]', answer, [], { prompt_injection_blocked: true }, undefined, sequenceStart, sourcePage);
     return json({ conversationId, message: answer, sources: [], salesState, canEscalate: true }, 200, headers);
   }
   if (isGreeting(message)) {
     const answer = "Hi! I’m here to make the mortgage side of things feel a little less complicated. Ask me anything about loan programs or the process, and I’ll give you the clearest answer I can. One quick note: please don’t send Social Security numbers, full birth dates, account or card numbers, passwords, codes, or ID documents here.";
-    await recordTurn(conversationId, correlationId, session.id, message, answer, [], { fixed_operational_text: true }, undefined, sequenceStart);
+    await recordTurn(conversationId, correlationId, session.id, message, answer, [], { fixed_operational_text: true }, undefined, sequenceStart, sourcePage);
     return json({ conversationId, message: answer, sources: [], suggestedReplies: ['Buying a home', 'Refinancing', 'Investment property'], salesState, aiDisclosure: true }, 200, headers);
   }
 
   if (/\b(?:adam(?:['’]s)?|his)\s+(?:team\s+)?(?:to\s+)?(?:review|look at)|\b(?:have|ask)\s+adam\b|\bcontact me\b/i.test(message)) {
     const name = salesState.visitorName ? `, ${salesState.visitorName}` : '';
     const answer = `Absolutely${name}. Add an email address or phone number below so Adam’s team has a way to respond. You’ll review the privacy notice before anything is saved. The conversation will stay attached to this request, so you won’t need to repeat the scenario.`;
-    await recordTurn(conversationId, correlationId, session.id, message, answer, [], { contact_details_requested: true }, undefined, sequenceStart);
+    await recordTurn(conversationId, correlationId, session.id, message, answer, [], { contact_details_requested: true }, undefined, sequenceStart, sourcePage);
     return json({ conversationId, message: answer, sources: [], collectContactDetails: true, salesState }, 200, headers);
   }
 
@@ -90,14 +91,14 @@ export default async function handler(request: Request, context: Context): Promi
           : /\b(?:schedule|book|calendly|call)\b/i.test(message)
             ? 'Absolutely—you can choose a convenient time on Adam’s calendar below. You can also call or text him at (512) 956-6010.'
             : 'When you’re ready, use the secure application below. If you would rather talk first, text Adam at (512) 956-6010 or email adam.styer@hypersmart.loan.';
-      await recordTurn(conversationId, correlationId, session.id, message, answer, [], { direct_conversion_option: true }, undefined, sequenceStart);
+      await recordTurn(conversationId, correlationId, session.id, message, answer, [], { direct_conversion_option: true }, undefined, sequenceStart, sourcePage);
       return json({ conversationId, message: answer, sources: [], resources, salesState }, 200, headers);
     }
   }
 
   const fixedReply = fixedConversationReply(message);
   if (fixedReply) {
-    await recordTurn(conversationId, correlationId, session.id, message, fixedReply.message, [], { fixed_operational_text: true }, undefined, sequenceStart);
+    await recordTurn(conversationId, correlationId, session.id, message, fixedReply.message, [], { fixed_operational_text: true }, undefined, sequenceStart, sourcePage);
     return json({ conversationId, message: fixedReply.message, sources: [], suggestedReplies: fixedReply.suggestedReplies || [], salesState, aiDisclosure: true }, 200, headers);
   }
 
@@ -115,7 +116,7 @@ export default async function handler(request: Request, context: Context): Promi
       mortgage_strategy: true,
       response_kind: strategyReply.responseKind,
       strategy_path: strategyReply.strategy.path || 'unknown',
-    }, undefined, sequenceStart);
+    }, undefined, sequenceStart, sourcePage);
     return json({
       conversationId,
       message: strategyReply.message,
@@ -130,7 +131,7 @@ export default async function handler(request: Request, context: Context): Promi
 
   const nextStepReply = salesNextStepReply(message, salesState);
   if (nextStepReply) {
-    await recordTurn(conversationId, correlationId, session.id, message, nextStepReply.message, [], { fixed_sales_guidance: true, sales_stage: salesState.stage, intent_score: String(salesState.intentScore) }, undefined, sequenceStart);
+    await recordTurn(conversationId, correlationId, session.id, message, nextStepReply.message, [], { fixed_sales_guidance: true, sales_stage: salesState.stage, intent_score: String(salesState.intentScore) }, undefined, sequenceStart, sourcePage);
     return json({ conversationId, message: nextStepReply.message, sources: [], suggestedReplies: nextStepReply.suggestedReplies, actions: salesState.stage === 'ready' ? resolveAssistantActions(['contact']) : [], salesState }, 200, headers);
   }
 
@@ -155,7 +156,7 @@ export default async function handler(request: Request, context: Context): Promi
     } catch (error) {
       console.error('[mortgage-assistant] sales conversation generation failed', { correlationId, reason: error instanceof Error ? error.message.slice(0, 240) : 'unknown_error' });
     }
-    await recordTurn(conversationId, correlationId, session.id, message, answer, [], { guided_sales_conversation: true, model_led_sales: Boolean(responseId) }, responseId, sequenceStart);
+    await recordTurn(conversationId, correlationId, session.id, message, answer, [], { guided_sales_conversation: true, model_led_sales: Boolean(responseId) }, responseId, sequenceStart, sourcePage);
     return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies, salesState: nextState }, 200, headers);
   }
 
@@ -170,12 +171,12 @@ export default async function handler(request: Request, context: Context): Promi
       if (!validation.safe) throw new Error(`Unsafe general answer: ${validation.reason}`);
       const policy = checkGeneralAnswerLanguage(model.text, followUp.question);
       if (!policy.safe) throw new Error(`General answer policy violation: ${policy.reason}`);
-      await recordTurn(conversationId, correlationId, session.id, message, model.text, [], { general_educational_answer: true }, model.responseId, sequenceStart, retrieval.version);
+      await recordTurn(conversationId, correlationId, session.id, message, model.text, [], { general_educational_answer: true }, model.responseId, sequenceStart, sourcePage, retrieval.version);
       return json({ conversationId, message: model.text, sources: [], resources: [...(allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : []), ...conversionResources(salesState.stage, message)].slice(0, 3), suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     } catch (error) {
       console.error('[mortgage-assistant] general answer failed', { correlationId, reason: error instanceof Error ? error.message.slice(0, 240) : 'unknown_error' });
       const answer = `Let’s work through it from the decision you’re trying to make.\n\n${followUp.question}`;
-      await recordTurn(conversationId, correlationId, session.id, message, answer, [], { general_answer_fallback: true }, undefined, sequenceStart, retrieval.version);
+      await recordTurn(conversationId, correlationId, session.id, message, answer, [], { general_answer_fallback: true }, undefined, sequenceStart, sourcePage, retrieval.version);
       return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     }
   }
@@ -196,19 +197,19 @@ export default async function handler(request: Request, context: Context): Promi
           const answer = firstName
             ? 'Add an email address or phone number below so Adam’s team has a way to respond. You’ll review the privacy notice before anything is submitted.'
             : 'I need a name and either an email address or phone number before I can save a contact request. Add them below, then you’ll review the privacy notice before anything is submitted.';
-          await recordTurn(conversationId, correlationId, session.id, message, answer, [], { incomplete_lead_tool_blocked: true }, model.responseId, sequenceStart, retrieval.version);
+          await recordTurn(conversationId, correlationId, session.id, message, answer, [], { incomplete_lead_tool_blocked: true }, model.responseId, sequenceStart, sourcePage, retrieval.version);
           return json({ conversationId, message: answer, sources: [], collectContactDetails: true, salesState }, 200, headers);
         }
       }
       if (!MUTATING.has(proposed.name)) {
         const result = await executeTool(proposed.name, proposed.arguments, conversationId, correlationId, body, proposed.id);
         const answer = toolResultMessage(proposed.name, result);
-        await recordTurn(conversationId, correlationId, session.id, message, answer, [], { tool_executed: proposed.name, tool_status: result.status }, model.responseId, sequenceStart, retrieval.version);
+        await recordTurn(conversationId, correlationId, session.id, message, answer, [], { tool_executed: proposed.name, tool_status: result.status }, model.responseId, sequenceStart, sourcePage, retrieval.version);
         return json({ conversationId, message: answer, sources: [], toolResult: result }, 200, headers);
       }
       const confirmation = createConfirmationToken(secret, { name: proposed.name, args: proposed.arguments, conversationId, toolCallId: proposed.id, expiresAt: Date.now() + 10 * 60_000 });
       const prompt = confirmationPrompt(proposed.name);
-      await recordTurn(conversationId, correlationId, session.id, message, prompt, [], { tool_confirmation_required: proposed.name }, model.responseId, sequenceStart, retrieval.version);
+      await recordTurn(conversationId, correlationId, session.id, message, prompt, [], { tool_confirmation_required: proposed.name }, model.responseId, sequenceStart, sourcePage, retrieval.version);
       return json({ conversationId, message: prompt, sources: [], confirmation: { token: confirmation, operation: proposed.name, summary: safeActionSummary(proposed.name, proposed.arguments) } }, 200, headers);
     }
     if (!model.supportAdequate) throw new Error('Insufficient model support');
@@ -216,7 +217,7 @@ export default async function handler(request: Request, context: Context): Promi
     if (!model.citedSources.length || model.citedSources.some((source) => !allowedSources.has(source))) throw new Error('Invalid model sources');
     const validation = validateAssistantOutput(model.text);
     if (!validation.safe) throw new Error(`Unsafe model output: ${validation.reason}`);
-    await recordTurn(conversationId, correlationId, session.id, message, model.text, model.citedSources, { grounded: true }, model.responseId, sequenceStart, retrieval.version);
+    await recordTurn(conversationId, correlationId, session.id, message, model.text, model.citedSources, { grounded: true }, model.responseId, sequenceStart, sourcePage, retrieval.version);
     return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: allowResourceRecommendation(message) ? model.recommendedResources.slice(0, 1) : [], suggestedReplies: model.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
   } catch (error) {
     console.error('[mortgage-assistant] response generation failed', {
@@ -231,12 +232,12 @@ export default async function handler(request: Request, context: Context): Promi
       if (!validation.safe) throw new Error(`Unsafe general answer: ${validation.reason}`);
       const policy = checkGeneralAnswerLanguage(general.text, followUp.question);
       if (!policy.safe) throw new Error(`General answer policy violation: ${policy.reason}`);
-      await recordTurn(conversationId, correlationId, session.id, message, general.text, [], { grounded_fallback_to_general: true }, general.responseId, sequenceStart, retrieval.version);
+      await recordTurn(conversationId, correlationId, session.id, message, general.text, [], { grounded_fallback_to_general: true }, general.responseId, sequenceStart, sourcePage, retrieval.version);
       return json({ conversationId, message: general.text, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     } catch (generalError) {
       console.error('[mortgage-assistant] general fallback failed', { correlationId, reason: generalError instanceof Error ? generalError.message.slice(0, 240) : 'unknown_error' });
       const answer = `Here’s the useful way to approach it: start with the decision and the tradeoffs, then add only the numbers that change the answer.\n\n${followUp.question}`;
-      await recordTurn(conversationId, correlationId, session.id, message, answer, [], { final_safe_fallback: true }, undefined, sequenceStart, retrieval.version);
+      await recordTurn(conversationId, correlationId, session.id, message, answer, [], { final_safe_fallback: true }, undefined, sequenceStart, sourcePage, retrieval.version);
       return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     }
   }
@@ -304,13 +305,13 @@ async function executeTool(name: string, args: Record<string, unknown>, conversa
   return callLoanOs(name, payload, { idempotencyKey: `${conversationId}:${toolCallId}` });
 }
 
-async function recordTurn(conversationId: string, correlationId: string, sessionId: string, visitorMessage: string, assistantMessage: string, sources: string[], policyOutcome: Record<string, boolean | string>, modelRequestId: string | undefined, sequenceStart: number, knowledgeVersion?: string) {
+async function recordTurn(conversationId: string, correlationId: string, sessionId: string, visitorMessage: string, assistantMessage: string, sources: string[], policyOutcome: Record<string, boolean | string>, modelRequestId: string | undefined, sequenceStart: number, sourcePage?: string, knowledgeVersion?: string) {
   const sessionHash = createHash('sha256').update(sessionId).digest('hex');
   const sequence = Math.max(1, sequenceStart);
   return callLoanOs('record_conversation_turn', {
     conversationId, correlationId, sessionHash, visitorMessage, assistantMessage,
     sequenceStart: sequence, knowledgeVersion, sourceRefs: sources,
-    policyOutcome, modelRequestId,
+    policyOutcome, modelRequestId, sourcePage,
   }, { idempotencyKey: `${conversationId}:turn:${sequence}` });
 }
 

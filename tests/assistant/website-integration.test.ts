@@ -39,6 +39,13 @@ test('confirmed chatbot leads report LoanOS notification and acknowledgment fail
   assert.match(gateway, /email notification could not be sent/);
 });
 
+test('the first recorded chat turn forwards its website source page to LoanOS', () => {
+  const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
+  assert.match(gateway, /const sourcePage = boundedText\(body\.sourcePage, 500, false\) \|\| undefined/);
+  assert.match(gateway, /policyOutcome, modelRequestId, sourcePage/);
+  assert.match(gateway, /sequenceStart, sourcePage/);
+});
+
 test('assistant uses contextual conversion actions instead of an always-visible CTA bar', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
   const resources = fs.readFileSync('netlify/functions/_shared/assistant-resources.ts', 'utf8');
