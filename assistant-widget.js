@@ -56,7 +56,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260720-typing-indicator-v1';
+    stylesheet.href = '/assistant-widget.css?v=20260722-panel-layout-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');

@@ -118,6 +118,14 @@ test('the widget loader and stylesheet share one cache-busting version', () => {
   assert.equal(cssVersion![1], jsVersion![1]);
 });
 
+test('the assistant panel is isolated from global section and header layout rules', () => {
+  const styles = fs.readFileSync('assistant-widget.css', 'utf8');
+  assert.match(styles, /\.ma-panel\{[^}]*padding:0/);
+  assert.match(styles, /\.ma-header\{[^}]*position:static/);
+  assert.match(styles, /\.ma-header\{[^}]*margin:0/);
+  assert.match(styles, /\.ma-header\{[^}]*border:0/);
+});
+
 test('every website page uses the current cache-busted script loader', () => {
   const versions = listHtmlFiles().flatMap((file) =>
     Array.from(fs.readFileSync(file, 'utf8').matchAll(/script\.js\?v=([\w-]+)/g), (match) => match[1]),

@@ -919,7 +919,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMortgageAssistant() {
   if (document.querySelector('script[data-mortgage-assistant]')) return;
   var script = document.createElement('script');
-  script.src = '/assistant-widget.js?v=20260720-typing-indicator-v1';
+  script.src = '/assistant-widget.js?v=20260722-panel-layout-v1';
   script.defer = true;
   script.dataset.mortgageAssistant = 'true';
   document.head.appendChild(script);
