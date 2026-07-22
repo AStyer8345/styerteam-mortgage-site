@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { buildStructuredLeadContext, calculatePaymentEstimate, calculatePrincipalAndInterest, deriveStrategyState, detectComplexScenarios, EMPTY_STRATEGY_STATE, strategyConversationReply, type StrategyRuntime, type StrategyState } from '../../netlify/functions/_shared/mortgage-strategy.ts';
-import { parseEstimateAssumptions, parseRateMarketConfig } from '../../netlify/functions/_shared/rate-market.ts';
+import { parseEstimateAssumptions, parsePmmsConfig, parseRateMarketConfig, parseTexasPropertyTaxConfig } from '../../netlify/functions/_shared/rate-market.ts';
 
 const marketRaw = JSON.stringify({
   enabled: true, conventional30YearRange: { min: 6.25, max: 6.75 }, fha30YearRange: { min: 6, max: 6.5 }, va30YearRange: { min: 5.875, max: 6.375 }, jumbo30YearRange: { min: 6.5, max: 7 },
@@ -11,7 +11,19 @@ const assumptionsRaw = JSON.stringify({
   enabled: true, reviewedOn: '2026-07-17', expiration: '2026-10-15', sourceDescription: 'Reviewed Texas planning assumptions',
   propertyTaxAnnualRate: 0.018, homeownersInsuranceAnnualRate: 0.006, pmiAnnualRate: 0.006, closingCostsPercentRange: { min: 0.02, max: 0.04 },
 });
-const runtime: StrategyRuntime = { market: parseRateMarketConfig(marketRaw, new Date('2026-07-18')), assumptions: parseEstimateAssumptions(assumptionsRaw, new Date('2026-07-18')) };
+const pmmsRaw = JSON.stringify({
+  enabled: true, thirtyYearFixedAverage: 6.55, fifteenYearFixedAverage: 5.93, lastUpdated: '2026-07-16',
+  sourceDescription: 'Freddie Mac Primary Mortgage Market Survey weekly averages', sourceUrl: 'https://www.freddiemac.com/pmms', expiration: '2026-07-30',
+});
+const texasTaxRaw = JSON.stringify({
+  enabled: true, annualRate: 0.02, reviewedOn: '2026-07-22', sourceDescription: 'Adam Styer Texas property-tax planning assumption', expiration: '2027-07-22',
+});
+const runtime: StrategyRuntime = {
+  market: parseRateMarketConfig(marketRaw, new Date('2026-07-18')),
+  assumptions: parseEstimateAssumptions(assumptionsRaw, new Date('2026-07-18')),
+  pmms: { status: 'missing', config: null },
+  texasPropertyTax: parseTexasPropertyTaxConfig(texasTaxRaw, new Date('2026-07-22')),
+};
 
 test('monthly principal and interest uses deterministic amortization math', () => {
   assert.equal(Math.round(calculatePrincipalAndInterest(400_000, 6.5)), 2528);
@@ -174,6 +186,62 @@ test('configured pricing uses only an illustrative midpoint, required disclosure
   assert.doesNotMatch(reply.message, /your rate/i);
   assert.match(reply.message, /No APR is shown because the actual associated fees are not known/);
   assert.match(reply.message, /Taxes, homeowners insurance, mortgage insurance, and HOA.*may be additional/);
+});
+
+test('Freddie Mac PMMS answers current-rate questions immediately as a national ballpark', () => {
+  const state = deriveStrategyState('What are rates right now?', EMPTY_STRATEGY_STATE);
+  const reply = strategyConversationReply('What are rates right now?', state, {
+    ...runtime,
+    market: { status: 'missing', config: null },
+    pmms: parsePmmsConfig(pmmsRaw, new Date('2026-07-22')),
+  })!;
+  assert.equal(reply.responseKind, 'market_average');
+  assert.match(reply.message, /Average 30-year fixed: 6\.55%/);
+  assert.match(reply.message, /Average 15-year fixed: 5\.93%/);
+  assert.match(reply.message, /national weekly averages/i);
+  assert.match(reply.message, /loan program, credit profile, down payment or LTV/i);
+  assert.doesNotMatch(reply.message, /your rate/i);
+});
+
+test('Texas planning estimate uses the 2% annual tax shortcut without inventing other costs', () => {
+  const state: StrategyState = {
+    ...EMPTY_STRATEGY_STATE,
+    path: 'payment',
+    targetPrice: 600_000,
+    downPaymentPercent: 20,
+    location: '78704',
+    propertyUse: 'primary',
+    creditRange: '740_plus',
+    hoaMonthly: 0,
+  };
+  const reply = strategyConversationReply('No HOA', state, {
+    ...runtime,
+    market: { status: 'missing', config: null },
+    assumptions: { status: 'missing', config: null },
+    pmms: parsePmmsConfig(pmmsRaw, new Date('2026-07-22')),
+  })!;
+  assert.equal(reply.responseKind, 'estimate_completed');
+  assert.match(reply.message, /Estimated Texas property taxes: \$1,000\/month/);
+  assert.match(reply.message, /multiplied it by 2% for the year, then divided by 12/i);
+  assert.match(reply.message, /leaving them out rather than guessing/i);
+  assert.doesNotMatch(reply.message, /Estimated homeowners insurance/);
+});
+
+test('payment strategy refuses to model a clearly out-of-state property', () => {
+  const state: StrategyState = {
+    ...EMPTY_STRATEGY_STATE,
+    path: 'payment',
+    targetPrice: 600_000,
+    downPaymentPercent: 20,
+    location: 'California',
+    propertyUse: 'primary',
+    creditRange: '740_plus',
+    hoaMonthly: 0,
+  };
+  const reply = strategyConversationReply('California', state, runtime)!;
+  assert.equal(reply.responseKind, 'pricing_unavailable');
+  assert.match(reply.message, /Texas mortgage scenarios only/i);
+  assert.doesNotMatch(reply.message, /\$|%/);
 });
 
 test('detects all required complex-situation families', () => {

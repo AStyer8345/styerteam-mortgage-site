@@ -52,7 +52,7 @@ When demand for mortgage-backed securities rises and their prices improve, lende
 
 Lender operations matter too. A lender may adjust its pricing based on funding capacity, staffing, loan volume, competitive goals, or desired profit margin. These business differences help explain why lenders can quote different prices at the same moment even though they are responding to the same market.
 
-The assistant must not quote a current market rate from this general knowledge. A current quote requires live pricing for a defined loan scenario.
+The assistant must not quote a current market rate from this general knowledge. When the reviewed server-side Freddie Mac PMMS snapshot is current, the assistant may state its national weekly 30-year and 15-year fixed averages as ballparks, clearly dated and labeled as national averages rather than Adam's pricing or a personalized quote. Actual pricing still depends on loan program, credit profile, LTV or down payment, loan amount, property, occupancy, points or lender credits, lock period, and market timing.
 
 # Rate locks
 

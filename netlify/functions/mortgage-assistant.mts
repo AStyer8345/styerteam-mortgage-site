@@ -11,7 +11,7 @@ import { buildContextualQuery, computeSequenceStart, fixedConversationReply } fr
 import { deriveSalesState, generalAnswerFollowUp, guidedConversationReply, salesNextStepReply, salesStateSummary } from './_shared/sales-conversation.ts';
 import { allowsResourceRecommendation, checkDiscoveryLanguage, checkGeneralAnswerLanguage } from './_shared/conversation-policy.ts';
 import { buildStructuredLeadContext, strategyConversationReply } from './_shared/mortgage-strategy.ts';
-import { loadEstimateAssumptions, loadRateMarketConfig } from './_shared/rate-market.ts';
+import { loadEstimateAssumptions, loadPmmsConfig, loadRateMarketConfig, loadTexasPropertyTaxConfig } from './_shared/rate-market.ts';
 
 const COOKIE = 'mortgage_assistant_session';
 const MUTATING = new Set(['create_or_update_website_lead', 'create_follow_up_task', 'schedule_consultation', 'escalate_to_adam']);
@@ -74,6 +74,12 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ conversationId, message: answer, sources: [], suggestedReplies: ['Buying a home', 'Refinancing', 'Investment property'], salesState, aiDisclosure: true }, 200, headers);
   }
 
+  if (salesState.location && salesState.location.toLowerCase() !== 'texas') {
+    const answer = `This assistant is set up for Texas mortgage scenarios only, so I won’t estimate taxes, payments, or loan options for a property in ${salesState.location}. If the property is actually in Texas, tell me the Texas ZIP code or county and I can keep going.`;
+    await recordTurn(conversationId, correlationId, session.id, message, answer, [], { texas_only_service_area: true }, undefined, sequenceStart, sourcePage);
+    return json({ conversationId, message: answer, sources: [], suggestedReplies: [], salesState, responseKind: 'unsupported_geography' }, 200, headers);
+  }
+
   if (/\b(?:adam(?:['’]s)?|his)\s+(?:team\s+)?(?:to\s+)?(?:review|look at)|\b(?:have|ask)\s+adam\b|\bcontact me\b/i.test(message)) {
     const name = salesState.visitorName ? `, ${salesState.visitorName}` : '';
     const answer = `Absolutely${name}. Add an email address or phone number below so Adam’s team has a way to respond. You’ll review the privacy notice before anything is saved. The conversation will stay attached to this request, so you won’t need to repeat the scenario.`;
@@ -105,6 +111,8 @@ export default async function handler(request: Request, context: Context): Promi
   const strategyReply = strategyConversationReply(message, salesState.strategy, {
     market: loadRateMarketConfig(),
     assumptions: loadEstimateAssumptions(),
+    pmms: loadPmmsConfig(),
+    texasPropertyTax: loadTexasPropertyTaxConfig(),
   });
   if (strategyReply) {
     const nextState = { ...salesState, strategy: strategyReply.strategy };

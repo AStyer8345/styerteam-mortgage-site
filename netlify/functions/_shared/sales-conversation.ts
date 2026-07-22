@@ -100,7 +100,8 @@ export function deriveSalesState(message: string, conversation: ConversationTurn
   else if (/\b(?:buy before|sell my|bridge|current home)\b/.test(visitorText)) state.concern = 'property_transition';
   else if (/\b(?:documents|paperwork|paystub|w-2|w2)\b/.test(visitorText)) state.concern = 'documents';
 
-  const stateMatch = visitorText.match(/\b(?:in|moving to|property in)\s+(texas|tx|california|ca|florida|florida|colorado|georgia|tennessee|arizona|north carolina|south carolina|virginia)\b/i);
+  const statePattern = /\b(?:in|moving to|property in)\s+(alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|vermont|virginia|washington|west virginia|wisconsin|wyoming|tx|ca|fl|co|ga|tn|az|nc|sc|va)\b/i;
+  const stateMatch = current.match(statePattern) || visitorText.match(statePattern);
   if (stateMatch) state.location = stateMatch[1].toUpperCase() === 'TX' ? 'Texas' : titleCase(stateMatch[1]);
 
   let score = 0;

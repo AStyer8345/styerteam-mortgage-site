@@ -17,6 +17,24 @@ export type RateMarketConfig = {
   costStructure: 'points' | 'no_points' | 'unspecified';
 };
 
+export type PmmsConfig = {
+  enabled: true;
+  thirtyYearFixedAverage: number;
+  fifteenYearFixedAverage: number;
+  lastUpdated: string;
+  sourceDescription: string;
+  sourceUrl: 'https://www.freddiemac.com/pmms';
+  expiration: string;
+};
+
+export type TexasPropertyTaxConfig = {
+  enabled: true;
+  annualRate: number;
+  reviewedOn: string;
+  sourceDescription: string;
+  expiration: string;
+};
+
 export type EstimateAssumptions = {
   enabled: true;
   reviewedOn: string;
@@ -39,6 +57,14 @@ export function loadRateMarketConfig(now = new Date()): ConfigResult<RateMarketC
 
 export function loadEstimateAssumptions(now = new Date()): ConfigResult<EstimateAssumptions> {
   return parseEstimateAssumptions(Netlify.env.get('MORTGAGE_ASSISTANT_ESTIMATE_ASSUMPTIONS_JSON'), now);
+}
+
+export function loadPmmsConfig(now = new Date()): ConfigResult<PmmsConfig> {
+  return parsePmmsConfig(Netlify.env.get('MORTGAGE_ASSISTANT_PMMS_JSON'), now);
+}
+
+export function loadTexasPropertyTaxConfig(now = new Date()): ConfigResult<TexasPropertyTaxConfig> {
+  return parseTexasPropertyTaxConfig(Netlify.env.get('MORTGAGE_ASSISTANT_TEXAS_PROPERTY_TAX_JSON'), now);
 }
 
 export function parseRateMarketConfig(raw: string | undefined, now = new Date()): ConfigResult<RateMarketConfig> {
@@ -95,6 +121,54 @@ export function parseEstimateAssumptions(raw: string | undefined, now = new Date
       homeownersInsuranceAnnualRate: insurance,
       pmiAnnualRate: pmi,
       closingCostsPercentRange: closing,
+    },
+  };
+}
+
+export function parsePmmsConfig(raw: string | undefined, now = new Date()): ConfigResult<PmmsConfig> {
+  if (!raw) return { status: 'missing', config: null };
+  let value: Record<string, unknown>;
+  try { value = JSON.parse(raw) as Record<string, unknown>; } catch { return { status: 'invalid', config: null }; }
+  if (value.enabled !== true) return { status: 'disabled', config: null };
+  const thirtyYear = finiteBetween(value.thirtyYearFixedAverage, 0.1, 30);
+  const fifteenYear = finiteBetween(value.fifteenYearFixedAverage, 0.1, 30);
+  if (thirtyYear === null || fifteenYear === null) return { status: 'invalid', config: null };
+  if (!isIsoDate(value.lastUpdated) || !isIsoDate(value.expiration)) return { status: 'invalid', config: null };
+  if (value.sourceUrl !== 'https://www.freddiemac.com/pmms') return { status: 'invalid', config: null };
+  if (typeof value.sourceDescription !== 'string' || value.sourceDescription.trim().length < 5 || value.sourceDescription.length > 240) return { status: 'invalid', config: null };
+  if (String(value.expiration) < localDate(now)) return { status: 'expired', config: null };
+  return {
+    status: 'available',
+    config: {
+      enabled: true,
+      thirtyYearFixedAverage: thirtyYear,
+      fifteenYearFixedAverage: fifteenYear,
+      lastUpdated: String(value.lastUpdated),
+      sourceDescription: value.sourceDescription.trim(),
+      sourceUrl: value.sourceUrl,
+      expiration: String(value.expiration),
+    },
+  };
+}
+
+export function parseTexasPropertyTaxConfig(raw: string | undefined, now = new Date()): ConfigResult<TexasPropertyTaxConfig> {
+  if (!raw) return { status: 'missing', config: null };
+  let value: Record<string, unknown>;
+  try { value = JSON.parse(raw) as Record<string, unknown>; } catch { return { status: 'invalid', config: null }; }
+  if (value.enabled !== true) return { status: 'disabled', config: null };
+  const annualRate = finiteBetween(value.annualRate, 0, 0.2);
+  if (annualRate === null) return { status: 'invalid', config: null };
+  if (!isIsoDate(value.reviewedOn) || !isIsoDate(value.expiration)) return { status: 'invalid', config: null };
+  if (typeof value.sourceDescription !== 'string' || value.sourceDescription.trim().length < 5 || value.sourceDescription.length > 240) return { status: 'invalid', config: null };
+  if (String(value.expiration) < localDate(now)) return { status: 'expired', config: null };
+  return {
+    status: 'available',
+    config: {
+      enabled: true,
+      annualRate,
+      reviewedOn: String(value.reviewedOn),
+      sourceDescription: value.sourceDescription.trim(),
+      expiration: String(value.expiration),
     },
   };
 }

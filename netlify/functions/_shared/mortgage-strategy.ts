@@ -1,5 +1,5 @@
 import type { ConversationTurn } from './conversation-context.ts';
-import type { ConfigResult, EstimateAssumptions, RateLoanType, RateMarketConfig } from './rate-market.ts';
+import type { ConfigResult, EstimateAssumptions, PmmsConfig, RateLoanType, RateMarketConfig, TexasPropertyTaxConfig } from './rate-market.ts';
 import { selectRateRange } from './rate-market.ts';
 
 export type StrategyPath = 'payment' | 'qualification' | 'complex' | 'pricing' | null;
@@ -52,13 +52,15 @@ export const EMPTY_STRATEGY_STATE: StrategyState = {
 export type StrategyRuntime = {
   market: ConfigResult<RateMarketConfig>;
   assumptions: ConfigResult<EstimateAssumptions>;
+  pmms: ConfigResult<PmmsConfig>;
+  texasPropertyTax: ConfigResult<TexasPropertyTaxConfig>;
 };
 
 export type StrategyReply = {
   message: string;
   suggestedReplies: string[];
   strategy: StrategyState;
-  responseKind: 'estimate_started' | 'estimate_completed' | 'qualification_started' | 'scenario_assessment' | 'complex_started' | 'pricing_started' | 'pricing_range' | 'pricing_unavailable';
+  responseKind: 'estimate_started' | 'estimate_completed' | 'qualification_started' | 'scenario_assessment' | 'complex_started' | 'pricing_started' | 'pricing_range' | 'market_average' | 'pricing_unavailable';
   actions: Array<'contact' | 'application' | 'schedule' | 'rate_review'>;
 };
 
@@ -128,9 +130,11 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
   else if (/^(?:monthly payment|payment estimate|estimate (?:my |the )?payment|what would (?:my |the )?payment be)$/i.test(current) && (!state.path || state.valueDelivered)) {
     state = { ...EMPTY_STRATEGY_STATE, path: 'payment' };
   }
+  else if (/\b(?:rates?|pricing).{0,20}(?:today|right now|current|estimate|average|ballpark)|\b(?:average|current|today(?:'s)?)\s+(?:30|15)[- ]year\b|\b(?:30|15)[- ]year fixed(?: rate)?\b|\bwhat are (?:your|the) rates\b/i.test(current) && (!state.path || state.valueDelivered)) {
+    state = { ...EMPTY_STRATEGY_STATE, path: 'pricing' };
+  }
   else if (!state.path && /\b(?:estimate|calculate|what would).{0,30}(?:payment|cash to close)|\bpayment estimate\b/i.test(current)) state.path = 'payment';
   else if (!state.path && /\b(?:do i|could i|can i|what may) qualif|\bwhat can i afford\b/i.test(current)) state.path = 'qualification';
-  else if (!state.path && /\b(?:rates?|pricing).{0,20}(?:today|right now|current|estimate)|\bwhat are (?:your|the) rates\b/i.test(current)) state.path = 'pricing';
   else if (!state.path && detectComplexScenarios(current).length && /\b(?:i|i'm|im|my|we|our|situation|need|have|am)\b/i.test(current)) state.path = 'complex';
   const detectedComplex = detectComplexScenarios(current);
   if (state.path === 'complex' && detectedComplex.length) state.complexFlags = [...new Set([...state.complexFlags, ...detectedComplex])].slice(0, 8);
@@ -245,26 +249,47 @@ export function buildStructuredLeadContext(state: { goal: string; propertyUse: s
 function paymentReply(state: StrategyState, runtime: StrategyRuntime): StrategyReply {
   if (state.targetPrice === null) return ask(state, 'purchase_price', 'What purchase price or range would you like me to model?', [], 'estimate_started');
   if (state.downPaymentAmount === null && state.downPaymentPercent === null) return ask(state, 'down_payment', 'How much would you like to put down—either a dollar amount or percentage?', ['10% down', '20% down', 'I have a dollar amount'], 'estimate_started');
-  if (!state.location) return ask(state, 'location', 'What ZIP code or county is the property in?', [], 'estimate_started');
+  if (!state.location) return ask(state, 'location', 'What Texas ZIP code or county is the property in?', [], 'estimate_started');
+  if (!isTexasLocation(state.location)) return texasOnlyReply(state);
   if (state.propertyUse === 'unknown') return ask(state, 'property_use', 'Will this be your primary home, a second home, or an investment property?', ['Primary home', 'Second home', 'Investment property'], 'estimate_started');
   if (state.creditRange === 'unknown') return ask(state, 'credit_range', 'Which broad credit range is closest? No exact score is needed.', ['620–679', '680–739', '740 or higher'], 'estimate_started');
   if (state.hoaMonthly === null) return ask(state, 'hoa', 'Is there a monthly HOA amount to include?', ['No HOA', '$100 a month', '$250 a month'], 'estimate_started');
-  if (runtime.assumptions.status !== 'available' || !runtime.assumptions.config) {
-    const next = { ...state, valueDelivered: true, recommendedNextAction: 'scenario_review' as const };
-    return { message: 'I have the basics. A useful total also needs current property-tax, homeowners-insurance, mortgage-insurance, and closing-cost assumptions for this property. Those figures vary by property and are not current inside this chat today. Adam can run the payment and cash-to-close comparison with current numbers and show how different down-payment choices change the result.', suggestedReplies: [], strategy: next, responseKind: 'pricing_unavailable', actions: ['contact', 'schedule'] };
-  }
   let annualRate = state.assumedRate;
   let rateNote = '';
   let disclosure = '';
-  if (runtime.market.status === 'available' && runtime.market.config) {
+  if (runtime.pmms.status === 'available' && runtime.pmms.config) {
+    annualRate = runtime.pmms.config.thirtyYearFixedAverage;
+    rateNote = `The principal-and-interest illustration uses Freddie Mac’s ${annualRate.toFixed(2)}% national 30-year fixed weekly average from ${runtime.pmms.config.lastUpdated} only as a ballpark planning assumption.`;
+    disclosure = PMMS_DISCLOSURE;
+  } else if (runtime.market.status === 'available' && runtime.market.config) {
     const loanType: RateLoanType = state.loanType === 'unknown' ? 'conventional' : state.loanType;
     const range = selectRateRange(runtime.market.config, loanType);
     annualRate = (range.min + range.max) / 2;
     rateNote = `The principal-and-interest illustration uses the ${annualRate.toFixed(3)}% illustrative midpoint of the configured ${loanLabel(loanType)} range (${range.min.toFixed(3)}%–${range.max.toFixed(3)}%), updated ${runtime.market.config.lastUpdated} from ${runtime.market.config.sourceDescription}.`;
     disclosure = RATE_DISCLOSURE;
   }
-  if (annualRate === null) return ask(state, 'assumed_rate', 'The current market-range configuration is unavailable. What interest-rate assumption would you like me to use only for this illustration?', [], 'estimate_started');
+  if (annualRate === null) return ask(state, 'assumed_rate', 'What interest-rate assumption would you like me to use only for this illustration?', [], 'estimate_started');
   const down = downPaymentDollars(state);
+  if (runtime.assumptions.status !== 'available' || !runtime.assumptions.config) {
+    if (runtime.texasPropertyTax.status !== 'available' || !runtime.texasPropertyTax.config) {
+      const next = { ...state, valueDelivered: true, recommendedNextAction: 'scenario_review' as const };
+      return { message: 'I can model principal and interest, but a useful housing-payment estimate also needs a reviewed Texas property-tax assumption. Adam can run the full comparison with current taxes, insurance, mortgage insurance, HOA, and closing costs.', suggestedReplies: [], strategy: next, responseKind: 'pricing_unavailable', actions: ['contact', 'schedule'] };
+    }
+    const loanAmount = Math.max(0, state.targetPrice - down);
+    const principalAndInterest = calculatePrincipalAndInterest(loanAmount, annualRate);
+    const taxes = state.targetPrice * runtime.texasPropertyTax.config.annualRate / 12;
+    const knownMonthlySubtotal = principalAndInterest + taxes + state.hoaMonthly;
+    const next = { ...state, valueDelivered: true, recommendedNextAction: 'rate_review' as const, pendingQuestion: null };
+    const message = [
+      `Here’s a Texas planning estimate for a ${money(state.targetPrice)} purchase with ${money(down)} down.`,
+      rateNote || `The principal-and-interest illustration uses the ${annualRate.toFixed(3)}% rate assumption you supplied; it is not a current market estimate or quote.`,
+      `- Estimated principal and interest: ${money(principalAndInterest)}/month\n- Estimated Texas property taxes: ${money(taxes)}/month\n- HOA entered: ${money(state.hoaMonthly)}/month\n- Subtotal of those known items: ${money(knownMonthlySubtotal)}/month`,
+      `For the tax estimate, I used ${money(state.targetPrice)} as the planning value, multiplied it by ${(runtime.texasPropertyTax.config.annualRate * 100).toFixed(0)}% for the year, then divided by 12. If an appraised value is available, use that value instead. This is a planning shortcut, not a tax bill; exemptions, local tax rates, and the appraisal district can change the actual amount.`,
+      'Homeowners insurance, flood insurance if required, mortgage insurance if applicable, and other property-specific costs are not included in that subtotal. I am leaving them out rather than guessing.',
+      disclosure,
+    ].filter(Boolean).join('\n\n');
+    return { message, suggestedReplies: [], strategy: next, responseKind: 'estimate_completed', actions: ['rate_review'] };
+  }
   const estimate = calculatePaymentEstimate({ price: state.targetPrice, downPaymentAmount: down, annualRatePercent: annualRate, hoaMonthly: state.hoaMonthly, assumptions: runtime.assumptions.config, includePmi: state.propertyUse !== 'investment' });
   const altDown = down / state.targetPrice < 0.2 ? state.targetPrice * 0.2 : state.targetPrice * 0.1;
   const alternative = calculatePaymentEstimate({ price: state.targetPrice, downPaymentAmount: altDown, annualRatePercent: annualRate, hoaMonthly: state.hoaMonthly, assumptions: runtime.assumptions.config, includePmi: state.propertyUse !== 'investment' });
@@ -309,6 +334,7 @@ function complexReply(state: StrategyState): StrategyReply {
 }
 
 function pricingReply(state: StrategyState, runtime: StrategyRuntime): StrategyReply {
+  if (runtime.pmms.status === 'available' && runtime.pmms.config) return pmmsReply(state, runtime.pmms.config);
   if (runtime.market.status !== 'available' || !runtime.market.config) return unavailablePricingReply(state);
   if (state.transactionPurpose === 'unknown') return ask(state, 'transaction_purpose', 'Is this for a purchase or refinance?', ['Purchase', 'Refinance'], 'pricing_started');
   if (state.propertyValue === null) return ask(state, 'property_value', state.transactionPurpose === 'purchase' ? 'What is the purchase price?' : 'What is the estimated property value?', [], 'pricing_started');
@@ -328,6 +354,18 @@ function pricingReply(state: StrategyState, runtime: StrategyRuntime): StrategyR
   const cost = runtime.market.config.costStructure === 'points' ? 'assumes points' : runtime.market.config.costStructure === 'no_points' ? 'assumes no points' : 'uses an unspecified cost structure';
   const message = `Configured estimated market range:\n\n- Date last updated: ${runtime.market.config.lastUpdated}\n- Source: ${runtime.market.config.sourceDescription}\n- Loan type: ${loanLabel(loanType)}\n- Estimated range: ${range.min.toFixed(3)}%–${range.max.toFixed(3)}%\n- Cost structure: ${cost}\n- Illustrative midpoint: ${midpoint.toFixed(3)}%\n- Estimated principal and interest at the illustrative midpoint: ${money(pi)}/month on ${money(loanAmount)}\n\nRates inside the range may carry different points, credits, and closing costs. Taxes, homeowners insurance, mortgage insurance, and HOA are not included in that principal-and-interest amount and may be additional. No APR is shown because the actual associated fees are not known.\n\n${RATE_DISCLOSURE}\n\nThis does not mean you qualify for the range. Adam can verify actual pricing for the full scenario.`;
   return { message, suggestedReplies: [], strategy: next, responseKind: 'pricing_range', actions: ['rate_review'] };
+}
+
+function pmmsReply(state: StrategyState, config: PmmsConfig): StrategyReply {
+  const next: StrategyState = {
+    ...state,
+    valueDelivered: true,
+    recommendedNextAction: 'rate_review',
+    pendingQuestion: null,
+    pricingRangeViewed: { loanType: 'conventional', min: config.thirtyYearFixedAverage, max: config.thirtyYearFixedAverage, lastUpdated: config.lastUpdated },
+  };
+  const message = `Here’s a useful market ballpark from Freddie Mac’s Primary Mortgage Market Survey, dated ${config.lastUpdated}:\n\n- Average 30-year fixed: ${config.thirtyYearFixedAverage.toFixed(2)}%\n- Average 15-year fixed: ${config.fifteenYearFixedAverage.toFixed(2)}%\n\nThese are national weekly averages for conventional, conforming, owner-occupied purchase applications—not Adam’s rate sheet and not a personalized quote. Freddie Mac does not report the points or fees tied to these averages. Your actual rate and cost can move based on the loan program, credit profile, down payment or LTV, loan amount, property and occupancy, points or lender credits, lock period, and market timing.\n\n${PMMS_DISCLOSURE}`;
+  return { message, suggestedReplies: ['Monthly payment'], strategy: next, responseKind: 'market_average', actions: ['rate_review'] };
 }
 
 function unavailablePricingReply(state: StrategyState): StrategyReply {
@@ -362,6 +400,29 @@ function unavailablePricingReply(state: StrategyState): StrategyReply {
 }
 
 const RATE_DISCLOSURE = 'This is a general market estimate, not a rate quote or offer to lend. Actual pricing depends on credit, loan amount, down payment, property, occupancy, loan program, points, lock period and market conditions.';
+const PMMS_DISCLOSURE = 'Use these Freddie Mac averages as a ballpark only. Adam can verify current pricing for a specific Texas scenario.';
+
+function texasOnlyReply(state: StrategyState): StrategyReply {
+  const next: StrategyState = { ...state, valueDelivered: true, pendingQuestion: null, recommendedNextAction: 'none' };
+  return {
+    message: 'This assistant is set up for Texas mortgage scenarios only, so I won’t estimate taxes, payments, or loan options for a property in another state. If the property is in Texas, send the Texas ZIP code or county and I can continue.',
+    suggestedReplies: [],
+    strategy: next,
+    responseKind: 'pricing_unavailable',
+    actions: [],
+  };
+}
+
+function isTexasLocation(location: string): boolean {
+  const value = location.trim().toLowerCase();
+  if (/\b(?:texas|tx)\b/.test(value)) return true;
+  if (/^\d{5}$/.test(value)) {
+    const zip = Number(value);
+    return zip === 73301 || (zip >= 75001 && zip <= 79999) || (zip >= 88510 && zip <= 88595);
+  }
+  const otherState = /\b(?:alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|utah|vermont|virginia|washington|west virginia|wisconsin|wyoming)\b/;
+  return !otherState.test(value);
+}
 
 const PENDING_QUESTION_HELP: Record<Exclude<StrategyPending, null>, { message: string; suggestedReplies: string[] }> = {
   purchase_price: { message: 'A rough target or range is enough—it does not need to be a final offer price. I use it only to model the loan size and costs. What price or range should I use?', suggestedReplies: [] },

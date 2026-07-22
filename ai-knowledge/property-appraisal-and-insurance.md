@@ -2,13 +2,19 @@
 title: Property, appraisal, title, and insurance
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-16
-review_expires_on: 2026-09-14
+reviewed_on: 2026-07-22
+review_expires_on: 2026-10-20
 ---
 
 # Appraisal and home inspection
 
 An appraisal is an independent opinion of value prepared for the lending process and may also address program property requirements. A home inspection is a separate evaluation chosen by the buyer to understand the property's condition. An appraisal is not a substitute for an inspection.
+
+# Texas property-tax planning estimate
+
+For a rough Texas-only planning estimate, use the appraised value when it is known; otherwise use the purchase price as a proxy. Multiply that value by 2% to estimate annual property taxes, then divide by 12 for a monthly estimate.
+
+This is a planning shortcut, not a tax quote or tax bill. The actual amount can differ because local tax rates, appraisal-district values, exemptions, and other property-specific factors vary. The assistant must not use this shortcut for a property outside Texas.
 
 # Low appraisal or appraised value below the purchase price
 

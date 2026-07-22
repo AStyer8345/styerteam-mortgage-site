@@ -22,6 +22,13 @@ test('merges validated prior state when early details leave the recent transcrip
   assert.equal(state.stage, 'ready');
 });
 
+test('tracks an explicitly stated property state and lets a newer Texas correction replace it', () => {
+  const outOfState = deriveSalesState('I am buying in New York', [], null);
+  assert.equal(outOfState.location, 'New York');
+  const corrected = deriveSalesState('I am actually buying in Texas', [], outOfState);
+  assert.equal(corrected.location, 'Texas');
+});
+
 test('selects value-first playbook guidance by stage and concern', () => {
   const state = deriveSalesState('I am self employed and buying an investment property', [], null);
   const playbook = salesPlaybook(state);

@@ -34,9 +34,27 @@ The deterministic detector supports self-employment, bank statements, 1099/commi
 
 ### Estimated pricing
 
-The assistant gathers transaction purpose, value/price, loan amount or down payment/equity, broad credit range, property type, occupancy, location, closing/lock timing, and desired loan type. It displays a range only when the reviewed market configuration is enabled, valid, and unexpired. It never asks the model to generate a current rate.
+For a general current-rate question, the assistant immediately displays the reviewed Freddie Mac PMMS national weekly averages for 30-year and 15-year fixed mortgages. It labels them as ballparks—not Adam's rate sheet or a personalized quote—and explains the borrower and transaction factors that can change actual pricing. It never asks the model to generate a current rate.
 
-Every displayed range includes the update date, source, loan type, range, cost structure, illustrative midpoint, principal-and-interest illustration, excluded-cost warning, required disclosure, and Adam’s rate-review action. APR is not displayed because actual fees are unknown.
+The legacy product-specific market-range configuration remains supported for a separately reviewed rate sheet. The PMMS benchmark is preferred whenever both are available.
+
+## Freddie Mac PMMS maintenance
+
+Store `MORTGAGE_ASSISTANT_PMMS_JSON` only as a server-side Netlify environment variable:
+
+```json
+{
+  "enabled": true,
+  "thirtyYearFixedAverage": 6.55,
+  "fifteenYearFixedAverage": 5.93,
+  "lastUpdated": "2026-07-16",
+  "sourceDescription": "Freddie Mac Primary Mortgage Market Survey weekly averages",
+  "sourceUrl": "https://www.freddiemac.com/pmms",
+  "expiration": "2026-07-30"
+}
+```
+
+Update both values, the publication date, and the expiration together after Freddie Mac's weekly release. The source URL is allowlisted in server code. When the snapshot expires, the assistant will not present the values as current.
 
 ## Market-range maintenance
 
@@ -63,6 +81,20 @@ The required disclosure is fixed in server code:
 > This is a general market estimate, not a rate quote or offer to lend. Actual pricing depends on credit, loan amount, down payment, property, occupancy, loan program, points, lock period and market conditions.
 
 ## Estimate-assumption maintenance
+
+The approved Texas-only property-tax shortcut is stored separately in `MORTGAGE_ASSISTANT_TEXAS_PROPERTY_TAX_JSON` so the assistant can calculate a tax planning amount without inventing insurance, PMI, or closing costs:
+
+```json
+{
+  "enabled": true,
+  "annualRate": 0.02,
+  "reviewedOn": "2026-07-22",
+  "sourceDescription": "Adam Styer Texas property-tax planning assumption",
+  "expiration": "2027-07-22"
+}
+```
+
+Use the appraised value when known; otherwise use the purchase price as a planning proxy. Multiply by 2% annually and divide by 12 monthly. Do not use this rule outside Texas.
 
 Store `MORTGAGE_ASSISTANT_ESTIMATE_ASSUMPTIONS_JSON` server-side with reviewed planning assumptions:
 

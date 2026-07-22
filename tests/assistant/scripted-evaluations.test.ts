@@ -9,6 +9,8 @@ const evaluations = JSON.parse(fs.readFileSync('tests/assistant/fixtures/strateg
 const runtime = {
   market: parseRateMarketConfig(JSON.stringify({ enabled: true, conventional30YearRange: { min: 6.25, max: 6.75 }, fha30YearRange: { min: 6, max: 6.5 }, va30YearRange: { min: 5.875, max: 6.375 }, jumbo30YearRange: { min: 6.5, max: 7 }, lastUpdated: '2026-07-17', sourceDescription: 'Reviewed staging snapshot', expiration: '2026-07-24', costStructure: 'unspecified' }), new Date('2026-07-18')),
   assumptions: parseEstimateAssumptions(JSON.stringify({ enabled: true, reviewedOn: '2026-07-17', expiration: '2026-10-15', sourceDescription: 'Reviewed Texas planning assumptions', propertyTaxAnnualRate: 0.018, homeownersInsuranceAnnualRate: 0.006, pmiAnnualRate: 0.006, closingCostsPercentRange: { min: 0.02, max: 0.04 } }), new Date('2026-07-18')),
+  pmms: { status: 'missing' as const, config: null },
+  texasPropertyTax: { status: 'missing' as const, config: null },
 };
 
 for (const evaluation of evaluations) {
