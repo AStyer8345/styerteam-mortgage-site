@@ -25,17 +25,19 @@
   <url><loc>https://styermortgage.com/privacy.html</loc><lastmod>2026-05-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://styermortgage.com/terms.html</loc><lastmod>2026-05-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://styermortgage.com/rate-buydown-calculator.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/dscr-calculator.html</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/asset-depletion-calculator.html</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/calculator-affordability.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/calculator-payment.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/calculator-refinance-breakeven.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://styermortgage.com/wrap-mortgage-calculator.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Resources hub -->
-  <url><loc>https://styermortgage.com/resources/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/resources/first-time-buyer-guide/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/resources/</loc><lastmod>2026-06-27</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/resources/first-time-buyer-guide/</loc><lastmod>2026-06-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Loan program pages -->
-  <url><loc>https://styermortgage.com/loans/conventional.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/loans/conventional.html</loc><lastmod>2026-06-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/loans/fha.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/loans/va.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/loans/jumbo.html</loc><lastmod>2026-05-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
