@@ -16,6 +16,8 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 ## Last Worked On
 
+**2026-07-22 (styer-site-daily Wednesday — Suburb Deep Dive + AEO): 1 ZERO_RISK fix shipped + verified live.** `sitemap.xml` was missing two indexable, 159-inbound-link calculators — `dscr-calculator.html` + `asset-depletion-calculator.html`, the two flagship *complicated-income* tools per GOALS.md. Added both (`lastmod` from real git dates) + backfilled `lastmod` on 3 entries lacking it. Sitemap **142 → 144 URLs**, XML valid, 0 dupes, commit `bba4de3`, live-verified. Audited all 18 sitemap absentees first — 16 correctly excluded (robots `Disallow` / `noindex` / dashboards / root-covered `index.html`). **San Marcos suburb deep dive PASS, 0 defects** (8 JSON-LD types valid, 5/5 answer-first FAQ, question-form H2s, city H1, NMLS ×8). Non-negotiables green (sitemap/robots/homepage/san-marcos **200**; conversion **10/10**). **Averted a HIGH false flag:** `/scenario.html` — the CTA target of all 25 suburb pages — shows 0 `generate_lead`/0 `/thank-you` in page HTML, but is tracked via `script.js:490` (`.js-quick-contact` → `lead_type: 'quick_contact'` → `/thank-you`). Funnel intact. Shipped through an isolated `git worktree` because a **concurrent session holds 9 dirty files + 9 unpushed commits**; shared tree left byte-identical.
+
 **2026-07-18 (styer-site-daily Saturday — OFF-ROTATION): clean audit, 0 site mutations.** Saturday has no assigned Step 4 weekday rotation (Mon–Fri only) — ran non-negotiables + read-only backlog + design spot-check. Non-negotiables green (sitemap/robots/homepage **200** sandbox-disabled curl; conversion **10/10** HTML-token, matches 07-17 matrix; `action='/thank-you'` single-quote form still in effect). Design spot-check clean (about + dscr): GTM ×2, NMLS 513013 (about 11/dscr 15) + company 2653540 (about 6/dscr 7), 0 legacy entity, 0 "21-day"/"24-48". Backlog + BLOCKERS read-only (BLOCKERS clean); 3 open backlog items all content-creation (Adam-gated new-page / styer-content-weekly blog+PDF) — no un-gated site work remaining. `loanos-clone` untouched (paused-LoanOS guard). Scheduler fired today — 4th clean day in a row (07-15/16/17/18) after the 10-day outage.
 
 *(2026-07-17 styer-site-daily Friday — Content Planning + AEO Review: clean audit, 0 mutations. Non-negotiables green; blog fresh (07-16, 1d); borrower blog CTA 40/40 (4 "missing" are realtor-updates w/ correct realtor CTA — not defects); 2 posts AEO-audited (07-16 new + 06-30), both excellent 0 defects; design spot-check clean (index + self-employed). Scheduler 3rd clean day.)*
@@ -37,10 +39,6 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 *(2026-06-29 Mon — Schema + AEO Entity Audit: 1 LOW_RISK fix shipped + verified live. 16/16 JSON-LD valid (homepage/about/dscr/pflugerville); AEO entity consistency homepage↔about clean. about.html Person `sameAs` was missing NMLS Consumer Access (513013) + Yelp — added to E-E-A-T anchor page, commit `265cbb7`, verified live. Design spot-check clean; BLOCKERS clean.)*
 
 *(2026-06-25 Thu — Internal Linking + Funnel Flow: clean audit, 0 mutations. Sitemap/robots 200; conversion 10/10. Full funnel traced end-to-end, all hops healthy (homepage quick form → /thank-you; Ads LPs → /thank-you; contact.html + 3 money pages inline form→/thank-you, each far exceed 2+ internal-link bar). No funnel leak. Money pages not linking /get-preapproved is BY DESIGN (Decision 3). Wed 06-24 Suburb Deep Dive scheduler no-fire.)*
-
-*(2026-06-23 Tue — Title Tags + Meta Descriptions: 4 deficient metas fixed + deployed live, commit `b2241a6`; `mortgage-pre-approval-austin` dropped "24–48 hours" speed claim; entity hygiene held; last Tuesday fixes held.)*
-
-*(2026-06-22 Mon — Schema + Google Ads Quality + AEO Entity Audit: clean audit, 0 mutations. 18/18 JSON-LD valid homepage/about/DSCR/round-rock; AEO entity hygiene clean post-transition; homepage extractable answer strong + on-positioning. New LOW: homepage MortgageBroker schema carries personal NMLS 513013 not company 2653540 (Adam-gated). Run-log files left uncommitted — picked up 06-23.)*
 
 *(2026-06-18 Thu — Internal Linking + Funnel Flow: found + fixed real conversion-tracking break on 3 of 5 form suburb pages — austin-area/buda/westlake missing `action="/thank-you"`; commit `c519c4e`, all 5 verified live. Netlify Lighthouse mobile home: Perf 81/A11y 100/BP 100/SEO 100.)*
 
@@ -88,26 +86,20 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 | ~~Sitewide nav inconsistency~~ **CLOSED 2026-06-09 evening** — canonical header on 148 pages + 4 generator templates; bare-header sticky CSS bug fixed (blog scroll overlap) | — |
 | Suburb/footer cosmetic carries (LOW) — footer `/prequal.html` parity, suburb `/calculators` linking gap, suburb `About Adam` standalone | LOW (Adam) |
 | 5 of 6 new HNW/non-QM pages missing NMLS Consumer Access `sameAs` in Article schema | LOW |
-| **Scheduler reliability — 10-day outage 07-06 → 07-14 (last log 07-05); RECOVERY HOLDING: fired 07-15/16/17/18 (4 clean days in a row).** Monitor for recurrence. Prior pattern was intermittent single-day no-fires; the 10-day gap was longest on record. If another multi-day gap appears, check scheduler/cron health directly | HIGH (Adam) |
-| ~~thank-you.html performance claims~~ **RESOLVED 2026-06-09** per Decision 2(a) — now "one business day" phrasing | — |
+| **Scheduler reliability — TWO failure modes.** 07-19 (Sun) + 07-21 (Tue) **no-fire**; 07-20 (Mon) **fired and shipped work (commit `c675929`) but never wrote a run log or updated `latest.md`** — 4 later runs would have read 07-18 as latest. Prior: 10-day outage 07-06 → 07-14. Cross-check `git log --since=<last-log-date>` against run-log filenames before sizing any outage | HIGH (Adam) |
+| **NEW 2026-07-22: 9 uncommitted files + 2 untracked in the shared working tree from a concurrent session** — `about`, `austin-down-payment-assistance`, `buy-before-you-sell-austin`, `contact`, `leander`, `refinance-quote`, `scenario`, `smithville`, `testimonials` (real meta-description improvements, **not deployed**), plus Finder-duplicate artifacts `CONTEXT 2.md` + `cedar-park-mortgage-lender 2.html`. At risk from any `stash`/`add -A`/`reset` by another session. Commit or confirm discardable | MEDIUM (Adam) || ~~thank-you.html performance claims~~ **RESOLVED 2026-06-09** per Decision 2(a) — now "one business day" phrasing | — |
 
 ## What's Next
 
-**Mon 2026-07-20 = next weekday — rotation: Schema + Google Ads Quality + AEO Entity Audit.**
+**Thu 2026-07-23 = next run — rotation: Internal Linking + Funnel Flow.**
 
 Priorities (in order):
-1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute tool paths, `curl -L` **with sandbox disabled** — sandboxed Bash false-returns `000`). **Quote-agnostic + extensionless** greps (Netlify Pretty-URLs strips `.html` and rewrites attr quotes).
-2. **Monday schema/AEO:** Rich Results / JSON-LD validity on homepage (AggregateRating), DSCR (FAQPage), one suburb (rotate); AEO entity consistency (Person + LocalBusiness homepage↔about; homepage first-150-words extractable answer to "best mortgage broker in Austin TX"); **log GSC sitemap-status reminder in FLAG_FOR_ADAM (Monday cadence)**; attempt PSI + weekly METRICS update.
-3. **Suburb rotation cursor:** next Wednesday suburb = **San Marcos** (then Westlake → Buda → wrap). Kyle done 07-15.
-4. **Adam-gated carries:** suburb inline-form 5/25 batch · fha.html "broker" · AggregateRating policy (DROP per competitive+memory) · homepage title pipe · schema-type unification · gold hex SKILL.md sync · homepage MortgageBroker NMLS (513013 vs 2653540) · task-file SKILL.md names retired "Mortgage Solutions LP" entity · scheduler reliability (monitor — recovering).
-
-**DONE 2026-07-18 (Sat, OFF-ROTATION):** Steps 1–2 green (sitemap/robots/homepage 200; conversion 10/10); backlog + BLOCKERS read-only (BLOCKERS clean, no un-gated site item); design spot-check clean (about + dscr); loanos-clone untouched; 0 site mutations. Scheduler fired (4th clean day 07-15/16/17/18).
-
-**DONE 2026-07-17 (Fri, Content Planning + AEO Review):** Steps 1–2 green; blog fresh (07-16, 1d); borrower blog CTA 40/40 (4 "missing" are realtor-updates w/ correct realtor CTA — not defects); 2 posts AEO-audited (07-16 new + 06-30), both excellent 0 defects; design spot-check clean (index + self-employed); loanos-clone untouched; 0 site mutations. Scheduler fired (3rd clean day 07-15/16/17).
-
-**DONE 2026-07-16 (Thu, Internal Linking + Funnel Flow):** Steps 1–2 green; full funnel traced no-leak; 2+ link bar passed 3 pages; competitive TOMORROW_PRIORITY folded in — non-QM hub bidirectional + bank-statement AEO both already-satisfied (0 manufactured edits); design clean; loanos-clone untouched.
-
-Audit roadmap (`SEO-AUDIT-2026-05.md`): 3.2 VA Austin · ~~3.3 Physician~~ ✅ · 3.4 ITIN TX · 3.5 Foreign National TX · Phase 2 external (`SEO-PHASE2-CHECKLIST.md`).
+1. **Steps 1–2 non-negotiables** (sitemap/robots 200, conversion 10/10 HTML-token, absolute `/usr/bin/*` binaries, `curl -L` **with sandbox disabled** — sandboxed Bash false-returns `000`). **Quote-agnostic + extensionless** greps (Netlify Pretty-URLs strips `.html` and rewrites attr quotes).
+2. **Thursday funnel work:** pick 3 pages, verify each links to 2+ relevant pages; trace homepage → landing page → form → thank-you; check `contact.html` Netlify + dataLayer wiring; audit `thank-you.html` (Calendly, phone, 3-step next).
+3. **Resolve JS-bound forms through `script.js`** — do NOT judge `/scenario.html`, `/prequal.html`, or any `.js-quick-contact` form by page HTML alone. Page-level greps can't see the shared bundle (this nearly produced a 25-page false alarm on 07-22).
+4. **Missed Monday-cadence items** (07-20 fired-but-unlogged): GSC sitemap-status reminder (expect **144** discovered URLs now, up from 142), weekly METRICS update, PSI re-attempt — fold into Mon 07-27.
+5. **Re-check the concurrent session's 9 dirty files.** If still dangling and undeployed, escalate.
+6. Suburb rotation cursor: next Wednesday = **Westlake** (then Buda → wrap).
 
 ## Site Structure (key categories)
 
