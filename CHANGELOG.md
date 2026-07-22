@@ -1,3 +1,13 @@
+## 2026-07-22 — SEO/AEO audit session (interactive): /home 301 + blog manifest cleanup
+
+- **Full SEO+AEO audit run** (repo + live). Verdict: technical/schema foundation strong; gaps are off-page (old-brand Nextdoor/Yelp/Birdeye listings, zero presence on "HyperSmart Loans" query) and EEAT (no author bio blocks on blog posts). Full findings delivered in session; on-site quick fixes shipped here.
+- **`_redirects`: added `/home  /  301`** — `styermortgage.com/home` is in Google's index (site: query, verified live 2026-07-22) but returned 404. Legacy-URL section, plain 301 (no file shadowing, `!` not needed).
+- **`blog/manifest.json`: removed 2 dead entries** — `/austin-housing-market-2025.html` and `/first-time-buyer-guide.html` (neither file exists; both rendered broken cards in the blog grid). FTB guide already has a correct static card + noscript + schema entry in `blog.html` pointing at `/resources/first-time-buyer-guide/`, so removal (not repoint) avoids a duplicate card. 55 posts remain, JSON validated.
+- **Sitemap calculator fix NOT duplicated** — audit independently flagged missing `dscr-calculator.html` + `asset-depletion-calculator.html`, but the morning styer-site-daily run (commit `bba4de3`) had already shipped it. Verified on origin/main before editing; local redundant edit discarded.
+- **False alarm cleared**: index.html Google Fonts "double load" flagged by audit subagent is actually the correct async-preload + `<noscript>` fallback pattern — no change.
+- **Deleted local-only Finder dupes** `cedar-park-mortgage-lender 2.html` (stale, pre-Silverado-West) and `CONTEXT 2.md` — both untracked, never deployed.
+- **Shipped past live concurrent session** (9 dirty files, local main 10 behind): worktree off origin/main + isolated commit, per the 2026-07-22 styer-site-daily precedent. Concurrent-writer files untouched; CONTEXT.md deliberately NOT replaced (morning daily-task state preserved).
+
 ## 2026-07-22 — styer-site-daily (Wednesday — Suburb Deep Dive + AEO): sitemap coverage fix + San Marcos PASS + HIGH false-flag averted
 
 - **`sitemap.xml` 142 → 144 URLs** (commit `bba4de3`, live-verified). Added `dscr-calculator.html` + `asset-depletion-calculator.html` — both HTTP 200, no `noindex`, not disallowed, self-canonical, **159 internal inbound links each**, with six sibling calculators already listed. They are the two flagship complicated-income tools per GOALS.md, so the omission was suppressing exactly the positioning being pushed. Also backfilled `lastmod` on `/resources/`, `/resources/first-time-buyer-guide/`, `/loans/conventional.html` using true git commit dates (2026-06-27) — no fake bumps. XML re-validated: well-formed, 0 duplicates, 0 missing `lastmod`.

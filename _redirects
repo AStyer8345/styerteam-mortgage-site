@@ -143,6 +143,7 @@
 /adam-styer/  /about.html  301
 /author/adam/  /about.html  301
 /how-long-does-it-take-to-buy-a-home/  /blog.html  301
+/home  /  301
 
 # Additional indexable content pages — force extensionless variants to .html (2026-05-31 audit)
 /scenarios  /scenarios.html  301!
