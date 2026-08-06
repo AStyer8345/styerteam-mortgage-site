@@ -2705,3 +2705,11 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Expanded scenario intake and rebuilt the Realtor difficult-scenario form on the existing Netlify-to-LoanOS path; removed the unsupported nationwide claim.
 - Added the buy-before-you-sell landing page, business-owner article, sitemap entries, analytics events, and a dedicated 404.
 - Validation: 22 tests passed; syntax/diff checks passed; responsive review passed at 375, 430, 768, 1024, and 1440 px.
+
+## 2026-08-06 — New blog post: asset depletion case study (Adam-requested, ad hoc)
+
+- Added `blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html` — anonymized client story (former CFO, sabbatical after a company liquidity event, zero W-2 income, qualified via asset depletion), matched to existing blog post template (GTM, Article/FAQPage/BreadcrumbList JSON-LD, header/nav/footer).
+- Links to the existing `/asset-depletion-mortgage-texas.html` pillar page and `/asset-depletion-calculator.html` rather than duplicating the divisor deep-dive, to protect the page's #1 SERP position on asset depletion terms.
+- Registered in `blog.html` (CollectionPage ItemList + noscript block), `blog/manifest.json`, and `sitemap.xml`.
+- Pre-publish checks run: blog title lint (`grep "<title>" blog/*.html | grep -v "Adam Styer"`) clean, all JSON-LD blocks validated, sitemap XML validated, 0 legacy-entity-name matches.
+- Requested via Cowork (mobile session), not the daily automation rotation — CONTEXT.md/TODO.md/DECISIONS.md intentionally left untouched for the scheduled sessions to log in their normal rotation.
