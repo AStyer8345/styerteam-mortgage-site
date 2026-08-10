@@ -44,21 +44,18 @@ test('Non-QM quote form uses primary notification capture path', () => {
 test('homepage prioritizes the secure application and preserves the scenario fallback', () => {
   const heroCtas = homepage.match(/<div class="hero-ctas">([\s\S]*?)<\/div>/)?.[1] || '';
   const heroButtonLabels = Array.from(heroCtas.matchAll(/class="[^"]*\bhero-cta-btn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
-  const introActions = homepage.match(/<div class="quick-contact-actions">([\s\S]*?)<\/div>/)?.[1] || '';
+  const introActions = homepage.match(/<div id="quick-scenario-form" class="quick-contact-actions"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
   assert.match(homepage, /data-track="secure_application_click"[^>]*>Start a Secure Loan Application<\/a>/);
   assert.match(homepage, /<a href="\/get-preapproved\.html\?intent=scenario"[^>]*>Send Your Scenario Instead<\/a>/);
   assert.deepEqual(heroButtonLabels, ['Start a Secure Loan Application', 'Send Your Scenario Instead']);
-  assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Book 15-Min Call', 'Email Adam']);
+  assert.deepEqual(introActionLabels, ['Start Secure Application', 'Send Your Scenario']);
   assert.match(homepage, /id="quick-scenario-form"/);
-  assert.match(homepage, /Use the Short Scenario Form/);
   assert.doesNotMatch(homepage, /name="quick-scenario"/);
-  assert.match(homepage, /Email Adam Instead/);
-  assert.match(homepage, /Answer a few questions in my secure online portal/);
-  assert.match(homepage, /usually takes 7-9 minutes/);
-  assert.match(homepage, /make our first call more efficient/);
-  assert.match(homepage, /<a href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*target="_blank"[^>]*>Open Secure Portal<\/a>/);
+  assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);
+  assert.doesNotMatch(homepage, /Book 15-Min Call/);
+  assert.doesNotMatch(homepage, /Email Adam Instead/);
   assert.doesNotMatch(homepage, /Start Full Loan Application/);
   assert.doesNotMatch(homepage, /Start Loan Application/);
   assert.doesNotMatch(homepage, /Start Here/);
