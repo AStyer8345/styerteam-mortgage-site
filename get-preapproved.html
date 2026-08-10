@@ -394,8 +394,8 @@
 
           <!-- Copy column -->
           <div class="lp-hero-copy">
-            <h1>Mortgage Pre-Approval Letter — Austin TX</h1>
-            <p class="lp-subhead">Complex borrowers. Sophisticated mortgage strategy. For active buyers, business owners, investors, and high-income professionals who want the right structure before making an offer.</p>
+            <h1 id="qualification-heading">Mortgage Pre-Approval Letter — Austin TX</h1>
+            <p class="lp-subhead" id="qualification-subhead">Complex borrowers. Sophisticated mortgage strategy. For active buyers, business owners, investors, and high-income professionals who want the right structure before making an offer.</p>
             <div class="lp-trust-bar">
               <span class="lp-trust-chip"><span class="stars">★★★★★</span> 5.0 (Client Reviews)</span>
               <span class="lp-trust-chip">1,000+ Loans Closed</span>
@@ -406,7 +406,7 @@
 
           <!-- Form column -->
           <div class="lp-form-card">
-            <h2>Start Your Pre-Approval</h2>
+            <h2 id="qualification-form-heading">Start Your Pre-Approval</h2>
             <!-- Netlify honeypot -->
             <p style="display:none;">
               <label>Don't fill this out if you're human: <input name="bot-field"></label>
@@ -771,6 +771,16 @@
     (function () {
       var form = document.getElementById('form-get-preapproved');
       if (!form) return;
+      var intent = new URLSearchParams(window.location.search).get('intent');
+      if (intent === 'scenario') {
+        document.title = 'Send Your Mortgage Scenario | Adam Styer';
+        var heading = document.getElementById('qualification-heading');
+        var subhead = document.getElementById('qualification-subhead');
+        var formHeading = document.getElementById('qualification-form-heading');
+        if (heading) heading.textContent = 'Tell Adam About Your Financing Scenario';
+        if (subhead) subhead.textContent = 'Share the transaction, income, equity, credit range, and timing. Adam will identify the most practical next step without making you complete a full mortgage application.';
+        if (formHeading) formHeading.textContent = 'Start the Short Scenario Review';
+      }
 
       var steps = Array.prototype.slice.call(form.querySelectorAll('.lp-funnel-step'));
       var stepLabel = document.getElementById('gpa-step-label');
