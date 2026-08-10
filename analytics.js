@@ -12,6 +12,17 @@
   document.addEventListener('click', function (event) {
     var link = event.target.closest('a,button');
     if (!link) return;
+    if (link.matches('a[href*="calendly.com"]') && !link.hasAttribute('data-qualified-calendar')) {
+      event.preventDefault();
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'qualification_started',
+        source_page: window.location.pathname,
+        original_cta: (link.textContent || '').trim(),
+      });
+      window.location.href = '/get-preapproved.html?intent=schedule&source=' + encodeURIComponent(window.location.pathname);
+      return;
+    }
     var eventName = link.getAttribute('data-track');
     if (!eventName && link.matches('a[href^="mailto:"]')) eventName = 'email_click';
     if (!eventName && link.matches('a[href*="my1003app.com"]')) eventName = 'secure_application_click';

@@ -22,6 +22,7 @@
 //   N8N_WEB_LEAD_URL               — optional override for active Web Lead Automation webhook
 
 const crypto = require("crypto");
+const { qualifyLead } = require("./lib/lead-qualification");
 
 const LIST_ID   = process.env.MAILCHIMP_BORROWER_LIST_ID || "";
 const _apiKey   = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key || "";
@@ -85,10 +86,15 @@ exports.handler = async (event) => {
     firstName, lastName, email, phone,
     loanGoal, leadSource, formName,
     purchasePrice: body.purchase_price ?? null,
+    propertyValue: body.property_value ?? null,
+    loanAmount:    body.loan_amount ?? null,
     downPayment:   body.down_payment ?? null,
+    householdIncome: body.household_income ?? null,
     creditScore:   body.credit_score ?? null,
     incomeType:    body.income_type ?? body.employment_type ?? null,
     propertyUse:   body.property_use ?? null,
+    propertyType:  body.property_type ?? null,
+    underContract: body.under_contract ?? null,
     targetCity:    body.target_city ?? body.property_location ?? null,
     timeline:      body.timeline ?? null,
     lenderStatus:  body.lender_status ?? null,
@@ -103,6 +109,9 @@ exports.handler = async (event) => {
     referrer:      body.referrer ?? null,
     notificationEmail: ADAM_NOTIFICATION_EMAIL,
   };
+  const qualification = qualifyLead({ ...body, ...leadPayload });
+  leadPayload.qualificationTier = qualification.tier;
+  leadPayload.qualificationScore = qualification.score;
 
   // Run Mailchimp + LoanOS + active n8n Web Lead Automation in parallel; none is fatal.
   const [mcResult, loResult, n8nResult] = await Promise.allSettled([
@@ -126,6 +135,7 @@ exports.handler = async (event) => {
     mailchimp: mcResult.status === "fulfilled" ? "ok" : "failed",
     loanos:    loResult.status === "fulfilled" ? "ok" : "failed",
     webLeadAutomation: n8nResult.status === "fulfilled" ? "ok" : "failed",
+    qualification: { tier: qualification.tier, score: qualification.score },
   });
 };
 
@@ -197,10 +207,15 @@ async function createLoanosContact(p) {
       referral_type:  "web_lead",
       "form-name":    p.formName,
       purchase_price: p.purchasePrice,
+      property_value: p.propertyValue,
+      loan_amount: p.loanAmount,
       down_payment:   p.downPayment,
+      household_income: p.householdIncome,
       credit_score:   p.creditScore,
       income_type:    p.incomeType,
       property_use:   p.propertyUse,
+      property_type:  p.propertyType,
+      under_contract: p.underContract,
       target_city:    p.targetCity,
       timeline:       p.timeline,
       lender_status:  p.lenderStatus,
@@ -214,6 +229,8 @@ async function createLoanosContact(p) {
       utm_campaign:   p.utmCampaign,
       campaign:       p.utmCampaign || p.utmSource || "",
       referrer:       p.referrer,
+      qualification_tier: p.qualificationTier,
+      qualification_score: p.qualificationScore,
     }),
   });
 
@@ -249,11 +266,16 @@ async function notifyWebLeadAutomation(p) {
     form_name: p.formName,
     "form-name": p.formName,
     purchase_price: p.purchasePrice,
+    property_value: p.propertyValue,
+    loan_amount: p.loanAmount,
     down_payment: p.downPayment,
+    household_income: p.householdIncome,
     credit_score: p.creditScore,
     income_type: p.incomeType,
     employment_type: p.incomeType,
     property_use: p.propertyUse,
+    property_type: p.propertyType,
+    under_contract: p.underContract,
     target_city: p.targetCity,
     timeline: p.timeline,
     lender_status: p.lenderStatus,
@@ -271,6 +293,8 @@ async function notifyWebLeadAutomation(p) {
     notification_email: p.notificationEmail,
     recipient_email: p.notificationEmail,
     adam_email: p.notificationEmail,
+    qualification_tier: p.qualificationTier,
+    qualification_score: p.qualificationScore,
   };
 
   const res = await fetch(N8N_WEB_LEAD_URL, {

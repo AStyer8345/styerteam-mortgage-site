@@ -395,7 +395,7 @@
           <!-- Copy column -->
           <div class="lp-hero-copy">
             <h1>Mortgage Pre-Approval Letter — Austin TX</h1>
-            <p class="lp-subhead">For active home shoppers who need a pre-approval letter to attach to an offer. Adam reviews income, credit, and assets, runs the file through the right loan program, and issues a personalized pre-approval letter — most the same business day.</p>
+            <p class="lp-subhead">Complex borrowers. Sophisticated mortgage strategy. For active buyers, business owners, investors, and high-income professionals who want the right structure before making an offer.</p>
             <div class="lp-trust-bar">
               <span class="lp-trust-chip"><span class="stars">★★★★★</span> 5.0 (Client Reviews)</span>
               <span class="lp-trust-chip">1,000+ Loans Closed</span>
@@ -499,8 +499,12 @@
                     </select>
                   </div>
                   <div class="lp-form-field">
-                    <label for="gpa-price">Target Price or Loan Amount</label>
-                    <input id="gpa-price" name="purchase_price" type="text" inputmode="numeric" placeholder="$750,000">
+                    <label for="gpa-price">Purchase Price / Property Value</label>
+                    <input id="gpa-price" name="property_value" type="text" inputmode="numeric" required placeholder="$750,000">
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-loan-amount">Estimated Loan Amount</label>
+                    <input id="gpa-loan-amount" name="loan_amount" type="text" inputmode="numeric" required placeholder="$600,000">
                   </div>
                   <div class="lp-form-field">
                     <label for="gpa-down-payment">Down Payment or Equity</label>
@@ -512,7 +516,7 @@
                   </div>
                   <div class="lp-form-field">
                     <label for="gpa-credit">Estimated Credit Range</label>
-                    <select id="gpa-credit" name="credit_score">
+                    <select id="gpa-credit" name="credit_score" required>
                       <option value="">Choose...</option>
                       <option value="760+">760+</option>
                       <option value="720-759">720-759</option>
@@ -520,6 +524,38 @@
                       <option value="640-679">640-679</option>
                       <option value="Under 640">Under 640</option>
                       <option value="Not sure">Not sure</option>
+                    </select>
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-income">Approximate Household Income</label>
+                    <select id="gpa-income" name="household_income" required>
+                      <option value="">Choose...</option>
+                      <option value="300000">$300,000+</option>
+                      <option value="200000">$200,000-$299,999</option>
+                      <option value="125000">$125,000-$199,999</option>
+                      <option value="75000">$75,000-$124,999</option>
+                      <option value="40000">$40,000-$74,999</option>
+                      <option value="25000">Under $40,000</option>
+                    </select>
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-property-type">Property Type</label>
+                    <select id="gpa-property-type" name="property_type" required>
+                      <option value="">Choose...</option>
+                      <option value="Single-family">Single-family</option>
+                      <option value="Condo/townhome">Condo / townhome</option>
+                      <option value="2-4 unit">2-4 unit</option>
+                      <option value="5+ unit/commercial">5+ unit / commercial</option>
+                      <option value="Land/construction">Land / construction</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-contract">Currently Under Contract?</label>
+                    <select id="gpa-contract" name="under_contract" required>
+                      <option value="">Choose...</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
                     </select>
                   </div>
                   <div class="lp-form-field full">
@@ -597,8 +633,8 @@
             </form>
             <div class="lp-scenario-reassurance">
               <p><strong>What happens next:</strong> Adam reviews the quick pre-qual details, follows up on anything missing, and tells you what is realistic before you start a full application.</p>
-              <p>No pressure. No judgment if a bank already said no. You do not need a perfect tax return to start the conversation.</p>
-              <p>CPA, advisor, or agent with a client scenario? <a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Talk through it with Adam</a>.</p>
+              <p>Built for conventional, jumbo, investor, business-owner, alternative-documentation, and asset-based scenarios. The overall financial picture matters more than any one number.</p>
+              <p>CPA, advisor, or agent with a client scenario? <a href="/realtors.html#partner-form">Send the structured scenario for review</a>.</p>
             </div>
             <p class="lp-form-disclaimer">No credit impact. No obligation. Responses within 1 business day.</p>
           </div>
@@ -615,7 +651,7 @@
         </p>
         <p style="font-size:0.95rem;color:var(--color-dark-gray);line-height:1.6;background:var(--color-light-gray);padding:1rem 1.25rem;border-radius:0.5rem;margin:0;">
           <strong>Pre-approval vs. scenario review — what's the difference?</strong>
-          Pre-approval is for borrowers who are actively shopping or already under contract and need a letter to attach to an offer. It includes a credit pull and income verification. If you are not yet at the offer stage — or a bank already declined your file and you want to know whether anything else is workable — <a href="/scenario.html" style="color:#8B6E24;font-weight:600;">send your scenario instead →</a>. Scenario reviews are conversational, document-light, and require no credit pull.
+          Pre-approval is for borrowers who are actively shopping or already under contract and need a letter to attach to an offer. It includes a credit pull and income verification. If your income, assets, ownership structure, or investment strategy needs a more tailored review, <a href="/scenario.html" style="color:#8B6E24;font-weight:600;">send your scenario instead →</a>. Scenario reviews are conversational, document-light, and require no credit pull.
         </p>
       </div>
     </section>
@@ -699,7 +735,7 @@
         <p>Adam personally takes calls. No call center, no gatekeeper.</p>
         <div class="lp-cta-actions">
           <span class="lp-cta-phone">📞 <a href="tel:+15129566010">(512) 956-6010</a></span>
-          <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-primary" target="_blank" rel="noopener">Schedule a Free Call</a>
+          <a href="#form-get-preapproved" class="btn btn-primary">Complete the Short Review</a>
         </div>
       </div>
     </section>
@@ -715,7 +751,7 @@
 
   <script src="/script.js?v=20260721-assistant-main-v1" defer></script>
   <script src="/js/scroll-effects.js?v=20260429" defer></script>
-  <script src="/analytics.js?v=20260417" defer></script>
+  <script src="/analytics.js?v=20260810-qualified-funnel-v1" defer></script>
   <script>
     // Populate UTM hidden fields from URL params + referrer
     (function () {
@@ -809,6 +845,8 @@
 
         // Submit to Netlify (stores submission + emails Adam) AND call our
         // lead-intake function (Mailchimp + Loanos) — both in parallel.
+        var submitButton = form.querySelector('button[type="submit"]');
+        if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Reviewing Your Scenario...'; }
         Promise.all([
           fetch('/', {
             method:  'POST',
@@ -826,11 +864,15 @@
               phone:         data.get('phone')        || '',
               tag:           tag,
               loan_goal:     loanGoal,
-              purchase_price: data.get('purchase_price') || '',
+              property_value: data.get('property_value') || '',
+              loan_amount:    data.get('loan_amount')    || '',
               down_payment:   data.get('down_payment')    || '',
+              household_income: data.get('household_income') || '',
               credit_score:   data.get('credit_score')   || '',
               income_type:    data.get('income_type')    || '',
               property_use:   data.get('property_use')   || '',
+              property_type:  data.get('property_type')  || '',
+              under_contract: data.get('under_contract') || '',
               target_city:    data.get('target_city')    || '',
               timeline:       data.get('timeline')       || '',
               lender_status:  data.get('lender_status')  || '',
@@ -845,9 +887,27 @@
               utm_campaign:  data.get('utm_campaign') || '',
               page_url:      data.get('page_url')     || window.location.href,
             }),
-          }).catch(function (err) { console.error('lead-intake error:', err); }),
-        ]).finally(function () {
-          window.location.href = '/thank-you';
+          }).then(function (response) {
+            if (!response.ok) throw new Error('Lead review failed');
+            return response.json();
+          }),
+        ]).then(function (results) {
+          var qualification = results[1] && results[1].qualification ? results[1].qualification : { tier: 'review', score: 0 };
+          sessionStorage.setItem('styer:qualification', JSON.stringify(qualification));
+          window.dataLayer.push({
+            event: 'lead_qualified',
+            lead_type: 'purchase_prequal',
+            qualification_tier: qualification.tier,
+            qualification_score: qualification.score,
+            estimated_loan_amount: data.get('loan_amount') || '',
+            landing_page: data.get('page_url') || window.location.href,
+            utm_source: data.get('utm_source') || '',
+          });
+          window.location.href = '/thank-you?type=qualification';
+        }).catch(function (err) {
+          console.error('lead-intake error:', err);
+          sessionStorage.setItem('styer:qualification', JSON.stringify({ tier: 'review', score: 0 }));
+          window.location.href = '/thank-you?type=qualification';
         });
       });
     })();
