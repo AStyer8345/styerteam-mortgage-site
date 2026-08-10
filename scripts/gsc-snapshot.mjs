@@ -1,9 +1,16 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 
 const siteUrl = process.env.GSC_SITE_URL || 'https://styermortgage.com/';
-const rawCredentials = process.env.GSC_SERVICE_ACCOUNT_JSON;
-if (!rawCredentials) throw new Error('Set GSC_SERVICE_ACCOUNT_JSON to a read-only Google service-account JSON value.');
+const credentialsFile = process.env.GSC_SERVICE_ACCOUNT_FILE
+  || path.join(os.homedir(), '.config', 'styermortgage', 'gsc-service-account.json');
+const rawCredentials = process.env.GSC_SERVICE_ACCOUNT_JSON
+  || (fs.existsSync(credentialsFile) ? fs.readFileSync(credentialsFile, 'utf8') : '');
+if (!rawCredentials) {
+  throw new Error(`Set GSC_SERVICE_ACCOUNT_FILE or GSC_SERVICE_ACCOUNT_JSON. No credential was found at ${credentialsFile}.`);
+}
 const credentials = JSON.parse(rawCredentials);
 
 const base64url = (value) => Buffer.from(value).toString('base64url');
