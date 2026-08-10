@@ -443,7 +443,7 @@
         <div class="ty-cta-row">
           <p class="ty-phone-cta">Call / text now: <a href="tel:+15129566010">(512) 956-6010</a></p>
           <span class="ty-cta-divider">|</span>
-          <a href="#ty-calendly" class="ty-schedule-btn">Schedule a 15-min Call</a>
+          <a href="#ty-calendly" class="ty-schedule-btn" id="ty-schedule-btn" hidden>Schedule a 15-min Call</a>
         </div>
       </div>
     </section>
@@ -603,7 +603,7 @@
     </section>
 
     <!-- Calendly inline widget -->
-    <section class="ty-calendly-section" id="ty-calendly">
+    <section class="ty-calendly-section" id="ty-calendly" hidden>
       <div class="container">
         <h2>Book a 15-Minute Call</h2>
         <div class="calendly-inline-widget" data-url="https://calendly.com/adamstyer/15minutes" style="min-width:320px;height:700px;"></div>
@@ -622,7 +622,7 @@
 
   <script src="/script.js?v=20260721-assistant-main-v1" defer></script>
   <script src="/js/scroll-effects.js?v=20260429" defer></script>
-  <script src="/analytics.js?v=20260417" defer></script>
+  <script src="/analytics.js?v=20260810-qualified-funnel-v1" defer></script>
   <script>
     // Fire thank-you page view event for Google Ads conversion tracking (GTM relay)
     window.dataLayer = window.dataLayer || [];
@@ -641,6 +641,34 @@
       var paras = document.querySelectorAll('.ty-hero p:not(.ty-phone-cta)');
       var phoneCta = document.querySelector('.ty-phone-cta');
       var calendlySection = document.querySelector('.ty-calendly-section');
+      var scheduleButton = document.getElementById('ty-schedule-btn');
+
+      if (type === 'qualification') {
+        var qualification = { tier: 'review', score: 0 };
+        try {
+          qualification = JSON.parse(sessionStorage.getItem('styer:qualification') || '{"tier":"review","score":0}');
+          sessionStorage.removeItem('styer:qualification');
+        } catch (err) {
+          qualification = { tier: 'review', score: 0 };
+        }
+        window.dataLayer.push({
+          event: 'qualification_result_view',
+          qualification_tier: qualification.tier,
+          qualification_score: qualification.score,
+        });
+        if (qualification.tier === 'priority') {
+          if (h1) h1.textContent = 'Your Scenario Looks Like a Strong Fit';
+          if (paras.length > 0) paras[0].textContent = 'Your details are in. You can choose a time with Adam now, and he will review the scenario before the call.';
+          if (calendlySection) calendlySection.hidden = false;
+          if (scheduleButton) scheduleButton.hidden = false;
+        } else if (qualification.tier === 'specialized') {
+          if (h1) h1.textContent = 'Your Scenario Was Received for Specialized Review';
+          if (paras.length > 0) paras[0].textContent = 'Your financing scenario may require additional review. Our team will review the details and determine the best next step. There is nothing else you need to complete right now.';
+        } else {
+          if (h1) h1.textContent = 'Your Scenario Is Ready for Review';
+          if (paras.length > 0) paras[0].textContent = 'Adam will review the details and contact you with the best next step. If anything else is needed, he will let you know.';
+        }
+      } else
 
       if (type === 'ftb-dpa-guide') {
         if (h1) h1.textContent = 'Your Austin DPA Guide Is On Its Way';

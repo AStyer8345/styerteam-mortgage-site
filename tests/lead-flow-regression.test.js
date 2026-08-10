@@ -41,18 +41,19 @@ test('Non-QM quote form uses primary notification capture path', () => {
   assert.match(script, /'form-name': formData\.get\('form-name'\) \|\| form\.getAttribute\('name'\) \|\| ''/);
 });
 
-test('homepage leads with lightweight scenario contact paths before the full application', () => {
+test('homepage prioritizes the secure application and preserves the scenario fallback', () => {
   const heroCtas = homepage.match(/<div class="hero-ctas">([\s\S]*?)<\/div>/)?.[1] || '';
   const heroButtonLabels = Array.from(heroCtas.matchAll(/class="[^"]*\bhero-cta-btn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
   const introActions = homepage.match(/<div class="quick-contact-actions">([\s\S]*?)<\/div>/)?.[1] || '';
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
-  assert.match(homepage, /<a href="#contact-form"[^>]*class="[^"]*\bbtn-primary\b[^"]*"[^>]*>Send Your Scenario<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Start a Secure Application']);
+  assert.match(homepage, /data-track="secure_application_click"[^>]*>Start a Secure Loan Application<\/a>/);
+  assert.match(homepage, /<a href="\/get-preapproved\.html\?intent=scenario"[^>]*>Send Your Scenario Instead<\/a>/);
+  assert.deepEqual(heroButtonLabels, ['Start a Secure Loan Application', 'Send Your Scenario Instead']);
   assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Book 15-Min Call', 'Email Adam']);
   assert.match(homepage, /id="quick-scenario-form"/);
-  assert.match(homepage, /name="quick-scenario"/);
-  assert.match(homepage, /Tell me about the scenario/);
+  assert.match(homepage, /Use the Short Scenario Form/);
+  assert.doesNotMatch(homepage, /name="quick-scenario"/);
   assert.match(homepage, /Email Adam Instead/);
   assert.match(homepage, /Answer a few questions in my secure online portal/);
   assert.match(homepage, /usually takes 7-9 minutes/);
@@ -75,13 +76,14 @@ test('homepage keeps Adam cutout visible on desktop hero', () => {
 
 test('scenario page uses portal language and keeps a short note fallback', () => {
   assert.match(scenarioPage, /Choose the easiest way to start/);
-  assert.match(scenarioPage, /Send Adam the short version/);
+  assert.match(scenarioPage, /Send Your Scenario for a Structured Review/);
   assert.match(scenarioPage, /Answer a few questions in my secure online portal/);
+  assert.match(scenarioPage, /Start a Secure Loan Application/);
   assert.match(scenarioPage, /usually takes 7-9 minutes/);
   assert.match(scenarioPage, /make our first call more efficient/);
   assert.match(scenarioPage, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
-  assert.match(scenarioPage, /id="scenario-note-form"/);
-  assert.match(scenarioPage, /name="scenario-note"/);
+  assert.match(scenarioPage, /get-preapproved\.html\?intent=scenario/);
+  assert.doesNotMatch(scenarioPage, /id="scenario-note-form"/);
   assert.match(scenarioPage, /Email Adam Instead/);
   assert.doesNotMatch(scenarioPage, /id="form-scenario"/);
   assert.doesNotMatch(scenarioPage, /Start Secure Loan Application/);
