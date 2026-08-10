@@ -2720,3 +2720,4 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Registered the post in the blog manifest, blog index, sitemap, and backward-compatible updates archive through the established newsletter publishing workflow.
 - Added matching FAQPage structured data and preserved Adam Styer NMLS #513013, company NMLS #2653540, Texas licensing, principal-address, credit, and Equal Housing Lender disclosures.
 - Prepared a borrower Mailchimp teaser linking to the live article. External send remains pending Adam's final confirmation.
+- Added an Austin-specific editorial neighborhood visual, Adam's real headshot, social-share image metadata, and a warmer first-person editorial pass before the borrower and realtor sends.

@@ -36,6 +36,7 @@ async function generateNewsletter(formData) {
     const { topic, audiences, mode, source, scheduleTime } = formData;
     const isPreview = mode === "preview";
     const isPublishOnly = mode === "publish-only";
+    const isEmailOnly = mode === "email-only";
     const isPaste = source === "paste";
 
     // Validate
@@ -296,7 +297,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
     });
 
     // In preview mode, skip publishing. In live mode, publish.
-    if (!isPreview) {
+    if (!isPreview && !isEmailOnly) {
       const post = {
         slug: finalBlogSlug,
         title: effectiveTitle,
@@ -399,18 +400,20 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
       // ----------------------------------------------------------------
       // STEP 4: Social media posts — generate AND publish (live mode)
       // ----------------------------------------------------------------
-      try {
-        const socialTopic = topic || formData.title || parsed.pageTitle || "Newsletter";
-        results.socialPosts = await generateAndPostSocial({
-          webContent: parsed.webContent,
-          pageUrl: finalPageUrl,
-          topic: socialTopic,
-          preGeneratedText: formData.preGeneratedSocial || null,
-        });
-        console.log("[social-poster] Result:", JSON.stringify(results.socialPosts));
-      } catch (socialErr) {
-        console.error("[social-poster] Failed (non-blocking):", socialErr.message);
-        results.socialPosts = { error: socialErr.message };
+      if (!isEmailOnly) {
+        try {
+          const socialTopic = topic || formData.title || parsed.pageTitle || "Newsletter";
+          results.socialPosts = await generateAndPostSocial({
+            webContent: parsed.webContent,
+            pageUrl: finalPageUrl,
+            topic: socialTopic,
+            preGeneratedText: formData.preGeneratedSocial || null,
+          });
+          console.log("[social-poster] Result:", JSON.stringify(results.socialPosts));
+        } catch (socialErr) {
+          console.error("[social-poster] Failed (non-blocking):", socialErr.message);
+          results.socialPosts = { error: socialErr.message };
+        }
       }
     }
 
@@ -426,7 +429,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
 
     return {
       success: true,
-      mode: isPreview ? "preview" : isPublishOnly ? "publish-only" : "live",
+      mode: isPreview ? "preview" : isPublishOnly ? "publish-only" : isEmailOnly ? "email-only" : "live",
       pageUrl: finalPageUrl,
       filename: finalFilename,
       campaigns: results.campaigns,
@@ -574,4 +577,3 @@ async function updateBlogHtmlIndex({ slug, title }) {
     `Update blog.html index: add ${slug}`
   );
 }
-
