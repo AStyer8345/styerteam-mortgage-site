@@ -2713,3 +2713,10 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Registered in `blog.html` (CollectionPage ItemList + noscript block), `blog/manifest.json`, and `sitemap.xml`.
 - Pre-publish checks run: blog title lint (`grep "<title>" blog/*.html | grep -v "Adam Styer"`) clean, all JSON-LD blocks validated, sitemap XML validated, 0 legacy-entity-name matches.
 - Requested via Cowork (mobile session), not the daily automation rotation — CONTEXT.md/TODO.md/DECISIONS.md intentionally left untouched for the scheduled sessions to log in their normal rotation.
+
+## 2026-08-10 — August 2026 Austin housing market report
+
+- Published `blog/2026-08-10-austin-housing-market-report-august-2026.html` using the latest complete Unlock MLS report (June and first-half 2026) and Freddie Mac PMMS for the week ending August 6, 2026.
+- Registered the post in the blog manifest, blog index, sitemap, and backward-compatible updates archive through the established newsletter publishing workflow.
+- Added matching FAQPage structured data and preserved Adam Styer NMLS #513013, company NMLS #2653540, Texas licensing, principal-address, credit, and Equal Housing Lender disclosures.
+- Prepared a borrower Mailchimp teaser linking to the live article. External send remains pending Adam's final confirmation.
