@@ -49,6 +49,9 @@ function dispatchLeadSubmitted(detail, options) {
   // dataLayer (GTM's public input) — does NOT touch the GTM container snippet.
   window.dataLayer = window.dataLayer || [];
   const eventPayload = Object.assign({ event: 'generate_lead' }, detail || {});
+  window.dataLayer.push(Object.assign({ event: 'scenario_submit' }, detail || {}, {
+    page_path: window.location.pathname
+  }));
 
   if (!options || options.waitForTags !== true) {
     window.dataLayer.push(eventPayload);

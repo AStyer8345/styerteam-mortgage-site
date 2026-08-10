@@ -31,7 +31,7 @@
     // ── Calendly link clicks ───────────────────────────────────────
     document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
       link.addEventListener('click', function () {
-        track({ event: 'calendly_click' });
+        track({ event: 'book_call_click', page_path: window.location.pathname });
       });
     });
 

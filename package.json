@@ -6,6 +6,9 @@
   "scripts": {
     "build": "npm run validate:knowledge && (node scripts/gen-recent-updates.js || true)",
     "test": "node --test tests/*.test.js && tsx --test tests/assistant/*.test.ts",
+    "seo:audit": "node scripts/seo-audit.mjs",
+    "seo:registry": "node scripts/generate-seo-registry.mjs",
+    "seo:gsc": "node scripts/gsc-snapshot.mjs",
     "typecheck": "tsc --noEmit",
     "validate:knowledge": "node scripts/validate-ai-knowledge.mjs"
   },

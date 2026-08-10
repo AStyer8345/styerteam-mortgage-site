@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-08-10",
+  "approvalRequired": true,
+  "items": [
+    {
+      "priority": 1,
+      "url": "https://styermortgage.com/blog/2026-04-04-austin-housing-market-report-april-2026.html",
+      "impressions": 8820,
+      "position": 4.71,
+      "ctr": 0.0008,
+      "action": "Decide whether to preserve this dated report as a historical market snapshot or consolidate its strongest material into the evergreen Austin housing market page; draft a title/snippet aligned to April 2026 median-price queries."
+    },
+    {
+      "priority": 2,
+      "url": "https://styermortgage.com/asset-depletion-mortgage-texas.html",
+      "impressions": 3016,
+      "position": 8.21,
+      "ctr": 0.0023,
+      "action": "Draft a query-aligned title and opening answer for Texas/Austin asset-depletion lender intent; preserve sourced divisor explanations and compliance review."
+    },
+    {
+      "priority": 3,
+      "url": "https://styermortgage.com/blog/2026-03-27-down-payment-assistance-texas-2026.html",
+      "impressions": 1527,
+      "position": 7.68,
+      "ctr": 0,
+      "action": "Rewrite the search snippet and answer-first introduction around Texas 2026 assistance eligibility; verify every program fact before approval."
+    },
+    {
+      "priority": 4,
+      "url": "https://styermortgage.com/kyle-mortgage-lender.html",
+      "impressions": 987,
+      "position": 9.64,
+      "ctr": 0.002,
+      "action": "Draft a Kyle-specific title, direct answer, local proof section, and stronger scenario CTA for mortgage broker/lender queries."
+    },
+    {
+      "priority": 5,
+      "url": "https://styermortgage.com/one-time-close-construction-loan-texas.html",
+      "impressions": 2818,
+      "position": 15.13,
+      "ctr": 0.0099,
+      "action": "Expand requirements, process, documents, tradeoffs, worked example, and primary-source citations after professional review."
+    }
+  ]
+}

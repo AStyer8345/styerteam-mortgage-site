@@ -13,7 +13,7 @@ const MAX = 10;
 
 // Utility / app / legal pages we never surface as "content updates".
 const DENY = new Set([
-  "index.html", "blog.html", "ops.html", "dashboard.html", "loan-dashboard.html",
+  "index.html", "404.html", "blog.html", "ops.html", "dashboard.html", "loan-dashboard.html",
   "marketing-command-center.html", "marketing-content.html", "task-dashboard.html",
   "loanos.html", "loanos-waitlist.html", "forms.html", "prequal.html", "scenario.html",
   "scenarios.html", "thank-you.html", "privacy.html", "terms.html", "texas-complaint-notice.html",
@@ -34,12 +34,20 @@ function titleOf(file) {
   } catch (e) { return file; }
 }
 
+function isIndexable(file) {
+  try {
+    const html = fs.readFileSync(path.join(ROOT, file), "utf8");
+    return !/<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html)
+      && !/<meta[^>]+content=["'][^"']*noindex[^"']*["'][^>]+name=["']robots["']/i.test(html);
+  } catch (e) { return false; }
+}
+
 try {
   // Tracked HTML in root + blog/ only (money + suburb pages live in root).
   let files = sh('git ls-files "*.html"').split("\n").filter(Boolean);
   files = files.filter(function (f) {
     if (f.indexOf("/") !== -1 && f.indexOf("blog/") !== 0) return false; // root or blog/ only
-    return !DENY.has(f);
+    return !DENY.has(f) && isIndexable(f);
   });
 
   let items = files.map(function (f) {
