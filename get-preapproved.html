@@ -194,7 +194,7 @@
     .lp-funnel-fill {
       display: block;
       height: 100%;
-      width: 33%;
+      width: 50%;
       border-radius: inherit;
       background: var(--color-gold);
       transition: width var(--transition-base);
@@ -395,7 +395,7 @@
           <!-- Copy column -->
           <div class="lp-hero-copy">
             <h1 id="qualification-heading">Mortgage Pre-Approval Letter — Austin TX</h1>
-            <p class="lp-subhead" id="qualification-subhead">Complex borrowers. Sophisticated mortgage strategy. For active buyers, business owners, investors, and high-income professionals who want the right structure before making an offer.</p>
+            <p class="lp-subhead" id="qualification-subhead">Straightforward guidance for homebuyers, homeowners, investors, and anyone who wants to understand their mortgage options.</p>
             <div class="lp-trust-bar">
               <span class="lp-trust-chip"><span class="stars">★★★★★</span> 5.0 (Client Reviews)</span>
               <span class="lp-trust-chip">1,000+ Loans Closed</span>
@@ -411,7 +411,7 @@
               <p><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-primary btn-block" data-track="secure_application_click" target="_blank" rel="noopener">Start a Secure Loan Application</a></p>
               <p style="text-align:center;">Not ready for the application? Use the short form below.</p>
             </div>
-            <h2 id="qualification-form-heading">Start Your Pre-Approval</h2>
+            <h2 id="qualification-form-heading">Tell me a little about what you're looking to do.</h2>
             <!-- Netlify honeypot -->
             <p style="display:none;">
               <label>Don't fill this out if you're human: <input name="bot-field"></label>
@@ -434,12 +434,57 @@
               <input type="hidden" id="gpa-page-url"     name="page_url">
               <input type="hidden" id="gpa-referrer"     name="referrer">
               <div class="lp-funnel-progress" aria-live="polite">
-                <span class="lp-funnel-step-label" id="gpa-step-label">Step 1 of 3: Contact</span>
+                <span class="lp-funnel-step-label" id="gpa-step-label">Step 1 of 2: Your Plans</span>
                 <span class="lp-funnel-track" aria-hidden="true"><span class="lp-funnel-fill" id="gpa-progress-fill"></span></span>
               </div>
 
               <div class="lp-funnel-step" data-step="1">
-                <p class="lp-funnel-prompt">Start with the basics. Adam needs a way to follow up and the type of loan conversation you want.</p>
+                <p class="lp-funnel-prompt">A few quick details will help me understand your situation before we talk.</p>
+                <div class="lp-form-row">
+                  <div class="lp-form-field full">
+                    <label for="gpa-goal">What are you looking to do?</label>
+                    <select id="gpa-goal" name="loan_goal" required>
+                      <option value="">Choose...</option>
+                      <option value="Purchase">Purchase a Home</option>
+                      <option value="Refinance">Refinance</option>
+                      <option value="Investment Property">Investment Property</option>
+                      <option value="Construction or Renovation">Construction or Renovation</option>
+                      <option value="Not Sure Yet">Not Sure Yet</option>
+                    </select>
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-price">Purchase Price / Property Value</label>
+                    <input id="gpa-price" name="property_value" type="text" inputmode="numeric" required placeholder="$750,000">
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-down-payment">Down Payment / Equity</label>
+                    <input id="gpa-down-payment" name="down_payment" type="text" required placeholder="$150,000 or 20%">
+                  </div>
+                  <div class="lp-form-field">
+                    <label for="gpa-city">Property City / Area</label>
+                    <input id="gpa-city" name="target_city" type="text" autocomplete="address-level2" required placeholder="Austin or Round Rock">
+                  </div>
+                  <div class="lp-form-field full">
+                    <label for="gpa-timeline">Where are you in the process?</label>
+                    <select id="gpa-timeline" name="timeline" required>
+                      <option value="">Choose...</option>
+                      <option value="Just starting to explore">Just starting to explore</option>
+                      <option value="Planning to buy in the next few months">Planning to buy in the next few months</option>
+                      <option value="Actively looking at homes">Actively looking at homes</option>
+                      <option value="Making offers">Making offers</option>
+                      <option value="Under contract">Under contract</option>
+                      <option value="Need financing quickly">Need financing quickly</option>
+                      <option value="Refinancing an existing property">Refinancing an existing property</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="lp-funnel-nav">
+                  <button type="button" class="btn btn-primary" data-gpa-next>Continue &rarr;</button>
+                </div>
+              </div>
+
+              <div class="lp-funnel-step" data-step="2" hidden>
+                <p class="lp-funnel-prompt">How should Adam reach you?</p>
                 <div class="lp-form-row">
                   <div class="lp-form-field">
                     <label for="gpa-first">First Name</label>
@@ -458,162 +503,9 @@
                     <input id="gpa-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(512) 555-1234">
                   </div>
                   <div class="lp-form-field full">
-                    <label for="gpa-goal">Loan Goal</label>
-                    <select id="gpa-goal" name="loan_goal" required>
-                      <option value="">Choose...</option>
-                      <option value="Purchase">Purchase</option>
-                      <option value="Refinance">Refinance</option>
-                      <option value="Cash-Out Refinance">Cash-Out Refinance</option>
-                      <option value="DSCR/Investor">DSCR / Investor</option>
-                      <option value="Bank Statement/Self-Employed">Bank Statement / Self-Employed</option>
-                      <option value="Construction">Construction</option>
-                      <option value="Jumbo/High Net Worth">Jumbo / High Net Worth</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="lp-funnel-nav">
-                  <button type="button" class="btn btn-primary" data-gpa-next>Next: Loan Details</button>
-                </div>
-              </div>
-
-              <div class="lp-funnel-step" data-step="2" hidden>
-                <p class="lp-funnel-prompt">A few numbers help Adam tell whether this is a conventional, jumbo, bank statement, DSCR, construction, or other path.</p>
-                <div class="lp-form-row">
-                  <div class="lp-form-field">
-                    <label for="gpa-income-type">Income Type</label>
-                    <select id="gpa-income-type" name="income_type" required>
-                      <option value="">Choose...</option>
-                      <option value="W-2 employee">W-2 employee</option>
-                      <option value="Self-employed business owner">Self-employed business owner</option>
-                      <option value="1099 contractor">1099 contractor</option>
-                      <option value="K-1/partnership income">K-1 / partnership income</option>
-                      <option value="Retired/assets">Retired / asset-based income</option>
-                      <option value="Investor/DSCR">Investor / DSCR</option>
-                      <option value="Mixed income">Mixed income</option>
-                    </select>
-                  </div>
-                  <div class="lp-form-field">
-                    <label for="gpa-property-use">Property Use</label>
-                    <select id="gpa-property-use" name="property_use" required>
-                      <option value="">Choose...</option>
-                      <option value="Primary residence">Primary residence</option>
-                      <option value="Second home">Second home</option>
-                      <option value="Investment property">Investment property</option>
-                      <option value="Construction/build">Construction / build</option>
-                      <option value="Not sure yet">Not sure yet</option>
-                    </select>
-                  </div>
-                  <div class="lp-form-field">
-                    <label for="gpa-price">Purchase Price / Property Value</label>
-                    <input id="gpa-price" name="property_value" type="text" inputmode="numeric" required placeholder="$750,000">
-                  </div>
-                  <div class="lp-form-field">
-                    <label for="gpa-loan-amount">Estimated Loan Amount</label>
-                    <input id="gpa-loan-amount" name="loan_amount" type="text" inputmode="numeric" required placeholder="$600,000">
-                  </div>
-                  <div class="lp-form-field">
-                    <label for="gpa-down-payment">Down Payment or Equity</label>
-                    <input id="gpa-down-payment" name="down_payment" type="text" inputmode="numeric" placeholder="$150,000 or 20%">
-                  </div>
-                  <div class="lp-form-field">
-                    <label for="gpa-city">Property City / Area</label>
-                    <input id="gpa-city" name="target_city" type="text" autocomplete="address-level2" placeholder="Austin, Round Rock...">
-                  </div>
-                  <div class="lp-form-field">
-                    <label for="gpa-credit">Estimated Credit Range</label>
-                    <select id="gpa-credit" name="credit_score" required>
-                      <option value="">Choose...</option>
-                      <option value="760+">760+</option>
-                      <option value="720-759">720-759</option>
-                      <option value="680-719">680-719</option>
-                      <option value="640-679">640-679</option>
-                      <option value="Under 640">Under 640</option>
-                      <option value="Not sure">Not sure</option>
-                    </select>
-                  </div>
-                  <div class="lp-form-field">
-                    <label for="gpa-income">Approximate Household Income</label>
-                    <select id="gpa-income" name="household_income" required>
-                      <option value="">Choose...</option>
-                      <option value="300000">$300,000+</option>
-                      <option value="200000">$200,000-$299,999</option>
-                      <option value="125000">$125,000-$199,999</option>
-                      <option value="75000">$75,000-$124,999</option>
-                      <option value="40000">$40,000-$74,999</option>
-                      <option value="25000">Under $40,000</option>
-                    </select>
-                  </div>
-                  <div class="lp-form-field">
-                    <label for="gpa-property-type">Property Type</label>
-                    <select id="gpa-property-type" name="property_type" required>
-                      <option value="">Choose...</option>
-                      <option value="Single-family">Single-family</option>
-                      <option value="Condo/townhome">Condo / townhome</option>
-                      <option value="2-4 unit">2-4 unit</option>
-                      <option value="5+ unit/commercial">5+ unit / commercial</option>
-                      <option value="Land/construction">Land / construction</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                  <div class="lp-form-field">
-                    <label for="gpa-contract">Currently Under Contract?</label>
-                    <select id="gpa-contract" name="under_contract" required>
-                      <option value="">Choose...</option>
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-                  <div class="lp-form-field full">
-                    <label for="gpa-timeline">Timing</label>
-                    <select id="gpa-timeline" name="timeline" required>
-                      <option value="">Choose...</option>
-                      <option value="Under contract now">Under contract now</option>
-                      <option value="Offer soon">Making offers soon</option>
-                      <option value="30-90 days">30-90 days</option>
-                      <option value="3-6 months">3-6 months</option>
-                      <option value="Planning ahead">Planning ahead</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="lp-funnel-nav">
-                  <button type="button" class="btn btn-outline" data-gpa-prev>Back</button>
-                  <button type="button" class="btn btn-primary" data-gpa-next>Next: What Got Stuck</button>
-                </div>
-              </div>
-
-              <div class="lp-funnel-step" data-step="3" hidden>
-                <p class="lp-funnel-prompt">This is where the useful pre-qual context lives. No SSN. No full account numbers. Just the problem Adam should solve first.</p>
-                <div class="lp-form-row">
-                  <div class="lp-form-field full">
-                    <label for="gpa-lender-status">Current Status</label>
-                    <select id="gpa-lender-status" name="lender_status">
-                      <option value="">Choose...</option>
-                      <option value="Have not talked to a lender">Have not talked to a lender</option>
-                      <option value="Pre-approved elsewhere">Pre-approved elsewhere</option>
-                      <option value="Bank or lender said no">Bank or lender said no</option>
-                      <option value="Need a second opinion">Need a second opinion</option>
-                      <option value="Need pricing compared">Need pricing compared</option>
-                    </select>
-                  </div>
-                  <div class="lp-form-field full">
-                    <label for="gpa-issue">Where is the file getting stuck?</label>
-                    <select id="gpa-issue" name="documentation_issue">
-                      <option value="">Choose what fits best...</option>
-                      <option value="Tax returns show low income">Tax returns show low income</option>
-                      <option value="Bank statement income">Need to use bank statements</option>
-                      <option value="1099 income">1099 income</option>
-                      <option value="K-1 or partnership income">K-1 or partnership income</option>
-                      <option value="Debt-to-income ratio">Debt-to-income ratio</option>
-                      <option value="Investor property cash flow">Investor property cash flow</option>
-                      <option value="Construction or land">Construction or land</option>
-                      <option value="Rate or lender comparison">Rate or lender comparison</option>
-                      <option value="Not sure">Not sure</option>
-                    </select>
-                  </div>
-                  <div class="lp-form-field full">
-                    <label for="gpa-situation">What should Adam know?</label>
-                    <textarea id="gpa-situation" name="situation" required placeholder="Example: self-employed S-corp owner, bank declined me because tax returns look low, buying around $900k in Austin, 20% down, need to know if bank statements or P&L would work."></textarea>
-                    <p class="lp-form-helper">A short plain-English summary is enough to start.</p>
+                    <label for="gpa-situation">Anything you'd like Adam to know before you talk?</label>
+                    <textarea id="gpa-situation" name="situation" placeholder="Share anything that would help Adam prepare for your conversation."></textarea>
+                    <p class="lp-form-helper">Optional &mdash; tell me anything about your goals, financing, property, income, or situation that would be helpful.</p>
                   </div>
                 </div>
                 <!-- TCPA consent — required, unchecked by default -->
@@ -632,13 +524,13 @@
                 </div>
                 <div class="lp-funnel-nav lp-form-submit">
                   <button type="button" class="btn btn-outline" data-gpa-prev>Back</button>
-                  <button type="submit" class="btn btn-primary">Send My Pre-Qual Details &rarr;</button>
+                  <button type="submit" class="btn btn-primary">Talk With Adam &rarr;</button>
                 </div>
               </div>
             </form>
             <div class="lp-scenario-reassurance">
-              <p><strong>What happens next:</strong> Adam reviews the quick pre-qual details, follows up on anything missing, and tells you what is realistic before you start a full application.</p>
-              <p>Built for conventional, jumbo, investor, business-owner, alternative-documentation, and asset-based scenarios. The overall financial picture matters more than any one number.</p>
+              <p><strong>What happens next:</strong> Adam reviews your details, follows up personally, and helps you understand the most practical next step.</p>
+              <p>Whether your loan is straightforward or needs a more tailored approach, the first step is a simple conversation.</p>
               <p>CPA, advisor, or agent with a client scenario? <a href="/realtors.html#partner-form">Send the structured scenario for review</a>.</p>
             </div>
             <p class="lp-form-disclaimer">No credit impact. No obligation. Responses within 1 business day.</p>
@@ -669,7 +561,7 @@
           <div class="lp-step">
             <div class="lp-step-number">1</div>
               <h3>Adam reviews the useful details</h3>
-              <p>Income type, property goal, down payment or equity, timing, and where the file may be getting stuck.</p>
+              <p>Your goal, property details, down payment or equity, timing, and anything else you choose to share.</p>
           </div>
           <div class="lp-step">
             <div class="lp-step-number">2</div>
@@ -692,8 +584,8 @@
         <div class="lp-proof-grid">
           <div class="lp-proof-card">
             <div class="lp-proof-icon">⚡</div>
-            <h3>Fast, Practical Triage</h3>
-            <p>Start with the facts that matter so Adam can tell you whether the file needs conventional, jumbo, bank statement, DSCR, construction, or another path.</p>
+            <h3>A Clear Starting Point</h3>
+            <p>Share a few useful details and get straightforward guidance on the best next step for your goals.</p>
           </div>
           <div class="lp-proof-card">
             <div class="lp-proof-icon">🏦</div>
@@ -702,8 +594,8 @@
           </div>
           <div class="lp-proof-card">
             <div class="lp-proof-icon">🛡️</div>
-            <h3>Complex-File Guidance</h3>
-            <p>Self-employed income, investor cash flow, construction, jumbo, and standard purchase files each need different documentation. Adam helps you avoid the wrong path early.</p>
+            <h3>Guidance for Every Borrower</h3>
+            <p>From a first home or simple refinance to an investment or more tailored scenario, Adam helps you find the right path.</p>
           </div>
         </div>
       </div>
@@ -781,10 +673,8 @@
         document.title = 'Send Your Mortgage Scenario | Adam Styer';
         var heading = document.getElementById('qualification-heading');
         var subhead = document.getElementById('qualification-subhead');
-        var formHeading = document.getElementById('qualification-form-heading');
         if (heading) heading.textContent = 'Tell Adam About Your Financing Scenario';
-        if (subhead) subhead.textContent = 'Share the transaction, income, equity, credit range, and timing. Adam will identify the most practical next step without making you complete a full mortgage application.';
-        if (formHeading) formHeading.textContent = 'Start the Short Scenario Review';
+        if (subhead) subhead.textContent = 'Share a few quick details so Adam can understand what you want to accomplish before you talk.';
       }
 
       var steps = Array.prototype.slice.call(form.querySelectorAll('.lp-funnel-step'));
@@ -792,9 +682,8 @@
       var progressFill = document.getElementById('gpa-progress-fill');
       var currentStep = 1;
       var stepNames = {
-        1: 'Step 1 of 3: Contact',
-        2: 'Step 2 of 3: Loan Details',
-        3: 'Step 3 of 3: What Got Stuck'
+        1: 'Step 1 of 2: Your Plans',
+        2: 'Step 2 of 2: Contact'
       };
 
       function showStep(step) {
@@ -836,10 +725,10 @@
 
       // Map loan goal → Mailchimp Journey tag (loan-type tag for segmentation)
       var TAG_MAP = {
-        'Purchase':         'purchase-buyer',
-        'First-Time Buyer': 'purchase-buyer',
-        'Refinance':        'refi-interest',
-        'DSCR/Investor':    'investor-lead',
+        'Purchase':                   'purchase-buyer',
+        'Refinance':                  'refi-interest',
+        'Investment Property':        'investor-lead',
+        'Construction or Renovation': 'construction-lead'
       };
 
       form.addEventListener('submit', function (e) {
@@ -861,7 +750,7 @@
         // Submit to Netlify (stores submission + emails Adam) AND call our
         // lead-intake function (Mailchimp + Loanos) — both in parallel.
         var submitButton = form.querySelector('button[type="submit"]');
-        if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Reviewing Your Scenario...'; }
+        if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Sending...'; }
         Promise.all([
           fetch('/', {
             method:  'POST',
@@ -914,7 +803,7 @@
             lead_type: 'purchase_prequal',
             qualification_tier: qualification.tier,
             qualification_score: qualification.score,
-            estimated_loan_amount: data.get('loan_amount') || '',
+            property_value: data.get('property_value') || '',
             landing_page: data.get('page_url') || window.location.href,
             utm_source: data.get('utm_source') || '',
           });

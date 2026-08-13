@@ -2721,3 +2721,12 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Added matching FAQPage structured data and preserved Adam Styer NMLS #513013, company NMLS #2653540, Texas licensing, principal-address, credit, and Equal Housing Lender disclosures.
 - Prepared a borrower Mailchimp teaser linking to the live article. External send remains pending Adam's final confirmation.
 - Added an Austin-specific editorial neighborhood visual, Adam's real headshot, social-share image metadata, and a warmer first-person editorial pass before the borrower and realtor sends.
+
+## 2026-08-13 — Universal mortgage intake form
+
+- Rebuilt `/get-preapproved.html` as a two-step, conversion-focused intake for all borrowers rather than a complex-file triage form.
+- Limited Step 1 to goal, purchase price/property value, down payment/equity, property city/area, and process stage.
+- Moved First Name, Last Name, Email, Phone, and an optional open-ended context field to Step 2; retained required TCPA consent and optional SMS opt-in.
+- Removed initial-page loan amount, income type, credit range, household income, property type, and under-contract duplication, plus all “where is the file getting stuck?” framing.
+- Preserved Netlify capture, lead-intake/LoanOS/Mailchimp routing, UTM fields, GTM events, validation, consent, and thank-you routing. Updated segmentation for investment and construction goals.
+- Verified the complete interaction at desktop and mobile sizes with no horizontal overflow. Full test suite passed: 104 tests.
