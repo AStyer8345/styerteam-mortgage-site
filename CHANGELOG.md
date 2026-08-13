@@ -2730,3 +2730,4 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Removed initial-page loan amount, income type, credit range, household income, property type, and under-contract duplication, plus all “where is the file getting stuck?” framing.
 - Preserved Netlify capture, lead-intake/LoanOS/Mailchimp routing, UTM fields, GTM events, validation, consent, and thank-you routing. Updated segmentation for investment and construction goals.
 - Verified the complete interaction at desktop and mobile sizes with no horizontal overflow. Full test suite passed: 104 tests.
+- Standardized the narrow form card to one full-width field per row on desktop and mobile, removing uneven label wrapping and the empty half-row beside Property City / Area.
