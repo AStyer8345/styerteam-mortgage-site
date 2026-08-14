@@ -1,3 +1,10 @@
+## 2026-08-14 — Friday freshness and AEO approval follow-through
+
+- Corrected live 2026 loan-limit inconsistencies: baseline conforming limit is now $832,750, and Travis/Williamson FHA limits now use $571,550 / $731,700 / $884,450 / $1,099,150 for 1–4 units across metadata, schema, body copy, FAQs, and comparison pages.
+- Replaced forecast-led Austin market copy with a date-stamped June 2026 Unlock MLS snapshot; softened categorical self-employed, asset-depletion, construction, rate-comparison, timing, and performance claims.
+- Updated the verified combined review floor from 137+ to 140+ across live HTML and refreshed affected sitemap dates. Preserved the stale-rate safety behavior rather than publishing unapproved current product pricing.
+- Recorded the fixed five-question web/answer-engine baseline in `run-logs/freshness-aeo-2026-08-14.md`. Validation: 104 tests, typecheck, production build, 145-URL SEO audit, targeted JSON-LD parsing, and `git diff --check` all pass.
+
 ## 2026-08-14 — styer-suburb-editor-daily (Round 5 #5): Pflugerville — Highland Park spotlight, Hendrickson-zone value join, EOS employer, FHA worked example
 
 - **4 first-party cited elements added, all grep-confirmed new** (`Highland Park` appeared on zero suburb pages sitewide): Highland Park (78660) neighborhood spotlight (Capital Pacific/Lennar 2005–2008, D.R. Horton to 2018; $290,000–$469,999 at ~$211/sqft, 1,292–2,388 sqft, HOA $41–$45/mo); Highland Park Elementary **7/10** (703 students) → Park Crest Middle **6/10** (682 students), both direct-fetched from GreatSchools; **EOS North America** metal additive-manufacturing production ($3M Feb-2026 investment, 10 new jobs); and an **FHA 3.5%-down worked example on a $350,000 Highland Park home** ($12,250 down, $5,911 UFMIP financed, itemized title/escrow/recording/proration).
