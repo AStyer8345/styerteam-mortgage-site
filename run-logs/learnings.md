@@ -1598,3 +1598,60 @@ No match = genuinely novel. A match = the working copy is an old commit wearing 
 
 ### Harness note
 Foreground `sleep` is blocked. Write the run log and doc updates between `git push` and live verification instead — the wall-clock cost is the same and the time is spent productively.
+
+---
+
+## 2026-08-19 PM — styer-site-daily (SECOND RUN same date, Thursday: Internal Linking + Funnel Flow)
+
+### Documentation drift on a retired compliance claim outranks site drift
+"21-Day Avg. Close" was swept from site HTML on 2026-05-17 per GOALS.md. Three months later `ARCHITECTURE.md` still published it as the **canonical verbatim trust bar**, and this task's own `SKILL.md` Step 3 still lists it as a required landing-page checklist item.
+
+> The site is the output. The doc is the *instruction*. An agent doing exactly what the doc says will reintroduce the retired claim — and the pre-audit compliance cleanup is the worst possible moment for that.
+
+**When a claim is retired sitewide, grep the docs too — and grep them again a quarter later.** A `git grep` for the retired string across `*.md` takes seconds and would have caught this in May.
+
+Corollary on the fix: the correction *deliberately* re-introduces the literal string inside a "retired — do not reintroduce" warning. A future compliance grep will hit it. That's the right trade (the guardrail beats a clean grep) but it must be stated in the run log so it isn't mistaken for drift later.
+
+### Verify that documented events actually exist before trusting an event table
+`ARCHITECTURE.md` documented `calendly_click`. It exists in **zero** files — not `script.js`, not `analytics.js`, not any HTML. The real event is `book_call_click`. Anything built on the phantom (GTM trigger, Ads conversion) would silently never fire.
+
+The check is one loop over the event names against both bundles + all HTML:
+```bash
+for ev in <events>; do
+  js=$( { grep -o "$ev" script.js; grep -o "$ev" analytics.js; } | wc -l)
+  html=$(git grep -o "$ev" -- '*.html' | wc -l)
+  [ "$js" = "0" ] && [ "$html" = "0" ] && echo "$ev NOT PRESENT ANYWHERE"
+done
+```
+Same run also found the inverse: 7 real events and 5 real `lead_type` values were undocumented. **Event tables rot in both directions.**
+
+### I walked into the single-quote/extensionless grep trap again — it cost a near-miss HIGH
+Already in learnings since July: *"Netlify Pretty-URLs strip `.html` and rewrite attr quotes to single — use quote-agnostic + extensionless greps."* First-pass grep on `/scenario.html` used `href="..."` and returned only `/`, `mailto:`, `tel:` — which reads as **a dead primary CTA on the funnel-exit page for all 25 suburb pages.** I had it drafted as HIGH. Actual markup: `href='/get-preapproved?intent=scenario'`.
+
+> Knowing a trap is in your learnings file does not stop you walking into it. Make the safe form the *default* grep, not the remedial one: always `href=['\"][^'\"]*` , never `href="[^"]*`.
+
+### A "0 exemptions out of 100" ratio is not automatically a broken allowlist
+`analytics.js` intercepts `a[href*="calendly.com"]`, `preventDefault()`s it, and routes to `/get-preapproved?intent=schedule` — exempting only `data-qualified-calendar`. Exempt count across ~100 pages: **0**. That reads as "converted leads get bounced back to the form."
+
+Wrong. `/thank-you` solved it by **not matching the selector at all** — it embeds Calendly as an inline widget (`data-url=`) and its buttons are internal `#ty-calendly` jumps. The gate is correctly scoped: every pre-conversion page qualifies first; post-conversion leads book directly.
+
+> Before calling an exemption list empty, check whether the case that needed exempting is simply **out of the selector's scope**. Empty allowlist ≠ missing allowlist.
+
+### A correct conclusion can rest on false evidence — fix the evidence, not just the verdict
+The AM run concluded "suburb pages link to `/get-preapproved` 0/25 — by design." The conclusion is right (re-verified quote-agnostically). Its stated proof was *"the sitewide pattern also confirmed on the homepage."* **The homepage has 4 `/get-preapproved.html?intent=scenario` CTAs.**
+
+The real mechanism is a **two-hop funnel**: suburbs → `/scenario.html` → `/get-preapproved?intent=scenario`. Bad reasoning attached to a right answer survives into learnings and gets reused on a case where it doesn't hold. **When you confirm a prior verdict, re-derive its reasoning too.**
+
+### Test the redirect hop for state loss, not just for a 200
+The two-hop funnel passes `?intent=scenario` through `_redirects:97` (`/get-preapproved → /get-preapproved.html 301!`). A 301 that drops the query string would have silently stripped intent from *all* organic suburb traffic while every hop still returned 200.
+
+```bash
+curl -sL -o /dev/null -w '%{url_effective} %{num_redirects}\n' "<url>?param=v"
+```
+Param survives, and `get-preapproved.html` reads `intent === 'scenario'`. **A funnel trace that only checks status codes cannot see state loss.**
+
+### Write funnel shape down once, in the repo, or it gets re-derived wrongly every rotation
+Thursday's rotation re-derives the funnel from scratch each time, and two consecutive runs produced a wrong intermediate claim about it. Moved the verified topology, the full event inventory, and the Qualification Gate into `ARCHITECTURE.md` — the file the repo's own CLAUDE.md designates for tracking. **Note `styermortgage-context.md` is a DEPRECATED 10-line stub; the SKILL still points Step 8 at it.**
+
+### Two runs fired on the same date — do the *next* rotation, don't redo the last one
+A second same-date invocation should not overwrite `run-logs/YYYY-MM-DD.md` or repeat completed work. Ran the prior log's `TOMORROW_PRIORITY` (Thursday) instead, wrote to `-b.md`, preserved the AM log, and pointed `latest.md` at the newer run.

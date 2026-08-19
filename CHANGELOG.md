@@ -1,4 +1,12 @@
 
+## 2026-08-19 PM — styer-site-daily (SECOND RUN, Thursday — Internal Linking + Funnel Flow): 1 LOW_RISK doc fix shipped
+
+- `ARCHITECTURE.md` — removed the documented `calendly_click` event; it exists in **no bundle and no page**. Real event is `book_call_click`. Warning note left so it isn't re-added. Commit `67f03c3`.
+- `ARCHITECTURE.md` — retired the documented "verbatim" trust bar still containing **"21-Day Avg. Close"**, the performance claim swept from site HTML on 2026-05-17 per GOALS.md. Site was already clean; this doc was the last thing instructing agents to reintroduce it. Replaced with the current homepage stats strip.
+- `ARCHITECTURE.md` — documented the real tracking surface: 10 events split by bundle (`script.js` vs `analytics.js`), 8 `lead_type` values (was 3), the Calendly Qualification Gate, and the verified two-hop funnel topology.
+- Thursday rotation PASS, 0 site defects — 10-page internal-link audit (9–22 main-body links each vs a 2+ bar), `contact.html` wiring, `thank-you.html` audit, full funnel trace. Confirmed `?intent=scenario` survives the `_redirects:97` 301.
+- Three findings killed by the Re-Verify Gate, incl. a drafted HIGH ("dead CTA on `/scenario.html`") that was a single-quote/extensionless grep error on my part. Docs only — no site HTML, CSS, or JS touched; stale-overlay tree left untouched (52 entries).
+
 ## 2026-08-19 — styer-site-daily (Wednesday — Suburb Deep Dive + AEO): 1 LOW_RISK fix shipped
 
 - `self-employed-mortgage-austin.html` — meta description 181 → 156 chars (was truncating in SERPs on the site's core complicated-income page); rewritten to lead with the qualifying question and carry the 40+ lender positioning. `dateModified` + sitemap `lastmod` → 2026-08-19. Commit `8833d36`, live-verified.
