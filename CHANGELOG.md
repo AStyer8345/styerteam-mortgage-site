@@ -1,3 +1,13 @@
+
+## 2026-08-19 — styer-site-daily (Wednesday — Suburb Deep Dive + AEO): 1 LOW_RISK fix shipped
+
+- `self-employed-mortgage-austin.html` — meta description 181 → 156 chars (was truncating in SERPs on the site's core complicated-income page); rewritten to lead with the qualifying question and carry the 40+ lender positioning. `dateModified` + sitemap `lastmod` → 2026-08-19. Commit `8833d36`, live-verified.
+- Westlake suburb deep dive PASS (0 defects) + batch survey of all 25 suburb pages: FAQPage 24/25, `MortgageBroker` entity 25/25, city-specific H1 25/25, inline form 5/25.
+- Folded in the missed Tuesday title/meta rotation: 92 indexable pages audited — 0 duplicate titles, 0 duplicate metas, 1 real defect (fixed). 26 titles over 65 chars deliberately left alone (HIGH_RISK tier + live rank movement).
+- New sitemap↔canonical integrity check: 146/146 sitemap URLs self-canonical, 0 coverage gaps.
+- Re-Verify Gate killed 3 findings before surfacing, 2 of which would have shipped regressions (March-20 rates post is correctly out of the sitemap — it canonicalizes to the evergreen hub; `loanos.html` is robots-Disallowed; `LocalBusiness` "9/25" was a grep artifact).
+- Committed the orphaned `run-logs/2026-07-24.md` (untracked since July) and restored `CONTEXT.md` + `CHANGELOG.md` from HEAD — their stale working copies would have deleted six August entries. Re-diagnosed the dirty tree as a stale ~08-06 checkout overlay, not concurrent pending work.
+
 ## 2026-08-17 — styer-suburb-editor-daily (Round 5 #7): Hutto — Hutto Highlands spotlight, inverted school-premium join, Kval + Opus employers, stale-rating correction
 
 - **Shipped the orphaned 2026-08-16 Buda run first.** That run completed and verified all its work and staged its `sitemap.xml` + `CHANGELOG.md` hunks, but never ran `git commit` and never staged `buda-mortgage-lender.html` — the whole Buda R5 renovation sat undeployed. Committed as `8343ccf` before starting Hutto.

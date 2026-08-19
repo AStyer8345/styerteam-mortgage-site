@@ -1544,3 +1544,57 @@ Cedar Park was the site's longest-standing suburb gap (NR across 4+ consecutive 
 
 ### Concurrent-writer state: commit your own files, and say plainly which required files you skipped
 Tree was 5 commits behind origin with **61 dirty files**, including `CHANGELOG.md` carrying another session's in-flight restructure (43-line staged deletion). Committing it via pathspec would have shipped their half-finished work. Skipped `CHANGELOG.md` and `CONTEXT.md` deliberately and said so in the report rather than either entangling or silently omitting. `run-logs/learnings.md` was also dirty — but with a *complete, coherent, orphaned* 07-24 entry, so appending and committing it rescued that work instead of endangering it. **Inspect the actual diff before deciding; "dirty" is not one condition.** Also skipped the SKILL's "TOMORROW_PRIORITY → run-logs/latest.md" step for the same reason (224-line in-flight rewrite) and routed those findings to the clean `TODO.md` instead.
+
+---
+
+## 2026-08-19 — styer-site-daily (Wednesday, Suburb Deep Dive + AEO)
+
+### The strongest form of the missing-token rule
+Prior runs learned "a missing-token finding must be checked against where the token actually lives." Today generalized it one level further:
+
+> **An absence is only a defect if the page is actually competing for the query.**
+
+Before treating any missing token as a gap, resolve three things:
+1. **Is the page indexable?** robots.txt `Disallow` + `<meta name="robots">` + sitemap presence.
+2. **Does its canonical point at itself,** or is it deliberately feeding an evergreen hub?
+3. **Does the token live on the page, in a shared bundle, or in a *supertype*?**
+
+That test killed three findings today. Two would have shipped regressions.
+
+### Trap: "indexable page missing from sitemap.xml" on a dated post
+`blog/2026-03-20-austin-mortgage-rates-march-2026.html` is live 200, `robots: index, follow`, in `blog/manifest.json`, in `blog.html`, and absent from `sitemap.xml`. That is a textbook ZERO_RISK win — and adding it would have been a **regression**. Its canonical is `/austin-mortgage-rates.html`: the dated post deliberately hands its authority to the evergreen rates hub.
+
+> **A non-self-canonical URL must never be listed in sitemap.xml.** Listing it sends Google two contradicting signals about the same content.
+
+Confirmation method that settled it: the four peer March/April blog posts that *are* in the sitemap are all self-canonical. The pattern is intentional, not an oversight. **Always check the peer set before calling a single absence a bug.**
+
+### Trap: schema audits that grep strings instead of resolving types
+A grep for `LocalBusiness` across the 25 suburb pages returned 9/25 — a scary-looking entity gap. Actual coverage is **25/25**: the pages declare `"@type": "MortgageBroker"`, which *is* a `LocalBusiness` subtype. Schema audits must resolve the schema.org type hierarchy, not match strings.
+
+### Heuristic: uniform absence is design, outlier absence is defect
+`/get-preapproved` link count across suburb pages: **0/25 — perfectly uniform.** That is the sitewide repositioned-funnel pattern (suburb pages convert through their own inline Netlify form; `/get-preapproved` is a nav-less *ads* landing page). By contrast, FAQPage was 24/25 — and the single outlier was the one worth inspecting.
+
+> Survey the whole set before judging one page. **0/25 is a decision. 1/25 is a bug.**
+
+### Don't chase character counts on pages that are ranking
+26 indexed titles exceed 65 chars. Left every one alone: indexed-title edits are HIGH_RISK by this task's own tier system, and the 08-17 competitive report shows live rank movement on exactly those pages (`get-pre-approved` #9→#1). Check the competitive report before touching a title. A truncated-but-ranking title beats a tidy-but-reshuffled one.
+
+### A "dirty working tree" can be a stale checkout, and the diff will lie to you
+The dirty-tree flag had been carried since 07-22 as *"a concurrent session holds N files with real meta-description improvements."* Wrong — and the truth was far more dangerous. Content-hashing each dirty file against every prior commit of that file showed most of the tree is an **old snapshot**: `index.html` byte-identical to its 08-06 version, `get-preapproved.html`/`thank-you.html` to 07-21, `script.js` to 07-22, `analytics.js` to 07-11. `git status` labels these `M` (modified) — but committing them is a **revert**, not an update. The 11 "deletions" were just August files post-dating the snapshot; all live 200.
+
+**Diagnostic worth reusing:**
+```bash
+WT=$(shasum FILE | cut -d' ' -f1)
+for C in $(git log --format=%h -30 -- FILE); do
+  [ "$(git show $C:FILE | shasum | cut -d' ' -f1)" = "$WT" ] && echo "STALE — matches $C"
+done
+```
+No match = genuinely novel. A match = the working copy is an old commit wearing a "modified" label.
+
+**Corollary:** never `git add -A` / `git commit -a` in a shared repo. Stage by explicit path and verify with `git show --stat HEAD` *after* every commit.
+
+### Uncommitted run logs are a silent state-loss bug
+`run-logs/2026-07-24.md` had been sitting **untracked since July**, and `latest.md`'s committed version was still the 07-22 run. Any run reading `latest.md` from a fresh clone would have silently read 07-22 as "yesterday" and mis-sized the scheduler gap. Committed it this run. **A run log that isn't committed did not happen.**
+
+### Harness note
+Foreground `sleep` is blocked. Write the run log and doc updates between `git push` and live verification instead — the wall-clock cost is the same and the time is spent productively.
