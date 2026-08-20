@@ -1655,3 +1655,66 @@ Thursday's rotation re-derives the funnel from scratch each time, and two consec
 
 ### Two runs fired on the same date — do the *next* rotation, don't redo the last one
 A second same-date invocation should not overwrite `run-logs/YYYY-MM-DD.md` or repeat completed work. Ran the prior log's `TOMORROW_PRIORITY` (Thursday) instead, wrote to `-b.md`, preserved the AM log, and pointed `latest.md` at the newer run.
+
+---
+
+## 2026-08-20 — styer-site-daily (Friday: Content Planning + AEO Review)
+
+### Check `robots.txt` FIRST on a sitemap-addition candidate, not last
+`refinance-calculator.html` was a confirmed P1/ZERO_RISK sitemap addition by every test I ran, in order:
+live **200** · **self-canonical** · no meta `noindex` · title + 144-char meta description · 3 inbound internal
+links · and — the clincher — **8 of 9 calculators are in the sitemap and this was the lone outlier**, which the
+existing "0/25 is a decision, 1/25 is a bug" heuristic scores as a definite defect.
+
+Then the last guard: `robots.txt` line 8 is `Disallow: /refinance-calculator.html`.
+
+> Every other guard asks whether the page *deserves* to be indexed. `robots.txt` records that someone already
+> decided it shouldn't be. It **overrides all of them**, and it is the cheapest check of the set.
+
+Adding it would have put a Disallowed URL into `sitemap.xml` — two contradicting signals, and a
+"Blocked by robots.txt" error in the GSC sitemap report, on the file whose health is this task's Step 1
+non-negotiable. Guard order is now written into `ARCHITECTURE.md` with robots.txt first.
+
+**Corollary — the outlier heuristic has a veto.** "Uniform absence is design, outlier absence is defect" is a
+good prior, not a proof. It ranks *candidates*; it does not clear them.
+
+### The peer-set rule applies to your own writing, not just to the site
+I found 40 pages missing the phrase `Licensed Mortgage Broker in Texas`, sampled **one**, saw it carried a
+longer disclaimer with the principal address and Texas Consumer Complaint Notice, and wrote
+*"Variant B — 40 URLs, adds address + Consumer Complaint Notice"* into `ARCHITECTURE.md` as fact.
+
+Self-review re-verified across all 40 before commit: **33/40**, plus a **third thin variant** on 5 pages with
+neither, plus `privacy`/`terms` as a fourth shape. Corrected to A=106 / B=33 / C=5 / legal=2 pre-commit.
+
+> n=1 is a hypothesis. A source-of-truth doc is the worst place to publish one, because it becomes the next
+> agent's premise instead of their question. Verify the set before you write the generalization.
+
+### When the site and a guide disagree, check which one is dated
+Drafted as a compliance HIGH: *"18 pages call Adam a mortgage broker, but the voice guide says he's a
+correspondent lender — not a broker."* The instinct was to fix the 18 pages.
+
+Inverted. Every page's own NMLS footer reads *"Kyber Mortgage Corporation dba HyperSmart Home Loans is a
+**Licensed Mortgage Broker** in Texas"*, and repo `CLAUDE.md` says "Independent mortgage broker." The **voice
+guide is dated 2026-03-29 — before the Kyber entity change** — and instructs the correspondent-lender framing in
+four places. The site was right; the instruction was stale, and 3 pages had already absorbed it.
+
+> Same shape as yesterday's `ARCHITECTURE.md` finding, one level up: **the doc is the instruction, so a stale
+> doc regenerates the defect faster than the cleanup removes it.** When source docs conflict, date them before
+> you pick a winner — and check the legal footer, which is the one string nobody edits casually.
+
+### Coverage sweeps must normalize URL form before reporting a gap
+3 of 8 apparent sitemap gaps were `index.html`, `resources/index.html`, and
+`resources/first-time-buyer-guide/index.html` — all present as `/`, `/resources/`, and
+`/resources/first-time-buyer-guide/`. A naive `/path.html` comparison reports **the homepage as missing from its
+own sitemap**, which should be the tell that the comparison is wrong, not the site.
+
+### Match compliance coverage on the identifier, not the prose
+"40 of 146 pages missing the NMLS disclaimer" was a phrase grep. Company NMLS `2653540` coverage is **146/146**.
+Three legitimate prose variants exist. Same failure as the July `MortgageBroker`/`LocalBusiness` string grep:
+**resolve the entity, don't match the sentence.** For disclaimer sweeps, grep the NMLS ID.
+
+### Don't "fix" AEO style against a documented voice
+Blog H2s are declarative (1/9 question-form), and the Friday rotation asks for "conversational H2s people would
+ask an AI." Left alone: FAQPage schema *and* rendered accordion questions already carry the question surface on
+every post, H2 rewrites are MEDIUM_RISK on ranking pages, and story-driven H2s are Adam's documented voice.
+**A checklist item is not worth a real asset.** Log the reasoning so it isn't re-litigated every Friday.

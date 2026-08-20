@@ -2830,3 +2830,11 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Preserved Netlify capture, lead-intake/LoanOS/Mailchimp routing, UTM fields, GTM events, validation, consent, and thank-you routing. Updated segmentation for investment and construction goals.
 - Verified the complete interaction at desktop and mobile sizes with no horizontal overflow. Full test suite passed: 104 tests.
 - Standardized the narrow form card to one full-width field per row on desktop and mobile, removing uneven label wrapping and the empty half-row beside Property City / Area.
+
+## 2026-08-20 — styer-site-daily (Friday rotation: Content Planning + AEO Review)
+
+- **`ARCHITECTURE.md`** — added a **Sitemap Governance** section: the 4 guards that must pass before any URL is added (with `robots.txt` Disallow listed **first**), plus a table of all 8 repo pages deliberately absent from `sitemap.xml` and the reason for each, including 3 path-normalization false positives. Commit `f8bc841`, docs only.
+- **`ARCHITECTURE.md`** — rewrote the NMLS disclaimer section from the false "verbatim on all pages" to a verified variant table (**A=106 / B=33 / C=5 / legal=2**, coverage **146/146** by NMLS ID). Corrected the calculator inventory to 8 indexed + 1 crawl-blocked.
+- **Friday rotation PASS, 0 content defects** — last post 2 days old; 35/35 blog posts carry a lead CTA; 35/35 registered in `blog/manifest.json`; AEO answer-first review clean on the jumbo and asset-depletion posts.
+- **Three findings killed by the Re-Verify Gate**, one already decided for shipping: `refinance-calculator.html` cleared every indexability guard *and* the peer-set outlier test but is `robots.txt`-Disallowed; "40 pages missing the NMLS disclaimer" was a phrase-matching artifact; "18 pages wrongly say mortgage broker" inverted — the site matches its own legal footer and the **voice guide** is the stale artifact.
+- **New Adam-gated blockers logged:** 3 pages advertising "correspondent lender" against the sitewide Licensed Mortgage Broker disclaimer (upstream cause: the 2026-03-29 voice guide); `refinance-calculator.html` robots-blocked while internally promoted; disclaimer Variant C omitting address + Texas Consumer Complaint Notice on 5 pages.
