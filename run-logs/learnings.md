@@ -1718,3 +1718,42 @@ Blog H2s are declarative (1/9 question-form), and the Friday rotation asks for "
 ask an AI." Left alone: FAQPage schema *and* rendered accordion questions already carry the question surface on
 every post, H2 rewrites are MEDIUM_RISK on ranking pages, and story-driven H2s are Adam's documented voice.
 **A checklist item is not worth a real asset.** Log the reasoning so it isn't re-litigated every Friday.
+
+---
+
+## 2026-08-20 (PM run) — Monday rotation: Schema + AEO Entity Audit
+
+**For JSON-LD, `grep` counts are not evidence. Parse and walk the object graph.**
+Three separate false findings in one run, all from flat text matching:
+1. `grep -c '"BreadcrumbList"'` counted a nested `@type` and a top-level node as interchangeable — it
+   cannot tell a duplicate from a legitimate nested reference.
+2. `grep -l '"breadcrumb"'` matched 11 files; 10 matched on `<nav class="breadcrumb">` — a **CSS class**.
+   This one nearly inverted the fix, making the one broken page look compliant and 8 good pages look broken.
+3. `grep -c '"Person"'` conflated a canonical top-level entity (with `@id`) against a nested `employee`
+   reference. Different constructs, different conventions — a nested employee may legitimately omit `@id`.
+JSON-LD semantics live in **nesting position**, which no flat search can see. Parse, then walk with the
+parent key in hand.
+
+**A true count can still be a useless finding.** "6/9 suburb pages have Person schema" was accurate and
+pointed at the wrong fix. Splitting it by construct (2 canonical / 4 nested / 3 absent) is what surfaced
+`"founder": {Adam Styer}` on 2 pages — the most important find of the run, which the aggregate hid entirely.
+
+**Check your own extractor before believing it found a site defect.** A regex HTML stripper emitted
+`...the LCP culprit). -->` inside the homepage's first 150 words — reads exactly like an unclosed comment
+shipping to users, a HIGH finding. Live page: 42 `<!--` / 42 `-->`, balanced. `<[^>]+>` terminates a
+comment at the first `>` inside it and spills the rest as text. Distinguish *my tool broke* from *the page
+is broken* first — the cheap test is a balance count on the raw source.
+
+**Prefer the fix that removes an unsupported claim over the one that adds a claim.**
+`founder` → `employee` was safe precisely because the site already asserted `employee`/`worksFor` on 77
+pages and both canonical entity nodes agreed. The same "improve the schema" impulse pointed at adding
+Person blocks to the 3 pages that lack one — but that means inventing telephone/email/sameAs values.
+Identical motivation, opposite risk profile. Reconciliation (`@id` references) adds no new claim about the
+world; invention does.
+
+**Predict the dirty count before committing in this repo.** 52 → 56 (4 edits) → 52 after commit turns
+"I staged the right files" into a falsifiable check that catches a stray `-A` against the stale overlay.
+
+**The stale checkout is now blocking work, not just threatening it.** Three genuine AEO entity conflicts
+on the homepage/about pair were found and could not be shipped, because `index.html` carries a 100-line
+uncommitted diff. A latent hazard that persists long enough becomes a throughput problem.

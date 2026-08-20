@@ -1,4 +1,12 @@
 
+## 2026-08-20 PM — styer-site-daily (Monday rotation): schema entity fixes on 4 suburb pages
+
+- **Removed an unsupported corporate-role claim from structured data.** `westlake-mortgage-lender.html` and `buda-mortgage-lender.html` asserted `"founder": {Adam Styer}` on the business node. Sitewide the count is **77 pages saying `employee`/`worksFor` vs 2 saying `founder`**, and both canonical entity nodes (homepage + about `#adam-styer`) use `worksFor`. Corrected to `employee`, matching the kyle/san-marcos sibling template.
+- **Fixed conflicting breadcrumb trails on Buda.** The page declared BreadcrumbList twice — a nested `WebPage.breadcrumb` (2-level, `.html` URL form) and a standalone top-level block (3-level, extensionless). A structured parse of the repo showed Buda is the **only** page with a nested one; all 8 sibling suburb pages carry exactly one standalone 3-level trail. Removed the nested block; kept the WebPage node and the standalone trail.
+- **Reconciled the Adam Styer Person entity across suburb pages, 2/6 → 6/6.** Added `"@id": "https://styermortgage.com/#adam-styer"` to the four nested `employee` Person nodes (kyle, san-marcos, westlake, buda) so they merge with the canonical entity defined on homepage/about/round-rock instead of floating as unnamed employees. `@id` is a reference, not a new claim.
+- **Deliberately not actioned:** the 3 suburb pages with no Person entity at all (leander, georgetown, pflugerville) — adding one means inventing telephone/email/sameAs values. Logged as an AEO opportunity instead.
+- Commit `f6a8328` — **4 files, +7/−10, JSON-LD only.** No visible copy, GTM, form field names, nav, canonical, CSS or JS touched. All 4 pages re-verified live (HTTP 200, `founder`=0, `@id` present, nested breadcrumb=0, all JSON-LD valid). Commit isolation proven by dirty-count parity against the 52-entry stale overlay (52 → 56 → 52).
+
 ## 2026-08-19 — styer-suburb-editor-daily (Round 5 #8): Liberty Hill — market-data reversal fix, Lariat/Butler Farms/Clearwater Ranch spotlights, MUD tax analysis
 
 - **CORRECTNESS, highest priority this run: the page's headline market claim had reversed sign and was live.** It presented `+11.0% YoY` (March 2026) and a `$500,000` April median as current. Redfin 78642 now reads **$491,049, -4.6% YoY, $196/sqft, 107 DOM on 316 closings (+26.3%)** for June 2026 ([Redfin](https://www.redfin.com/zipcode/78642/housing-market)). Corrected everywhere, and the page now states the reversal explicitly rather than silently swapping numbers.
