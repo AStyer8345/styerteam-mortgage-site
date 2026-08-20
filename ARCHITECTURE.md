@@ -168,10 +168,48 @@ Round Rock, Cedar Park, Leander, Georgetown, Pflugerville, Kyle, San Marcos, Wes
 | Austin Mortgage Rates | /austin-mortgage-rates |
 
 ### Calculators
-payment, affordability, refinance-breakeven, rate-buydown, wrap-mortgage, refinance (internal)
+**Indexed (8, all in sitemap.xml):** calculators (hub), calculator-payment, calculator-affordability,
+calculator-refinance-breakeven, rate-buydown-calculator, dscr-calculator, asset-depletion-calculator,
+wrap-mortgage-calculator.
+
+**Crawl-blocked (1):** `refinance-calculator.html` — "Refinance Cost Calculator", 45KB, the richest of the
+refinance tools. It is live 200, self-canonical, has a title + 144-char meta description, and is linked from
+`calculators.html` as a primary `calc-card--solid`, **but `robots.txt` carries `Disallow: /refinance-calculator.html`.**
+Do not add it to sitemap.xml — see Sitemap Governance below. The internally-promoted-but-crawl-blocked
+contradiction is a real open question flagged to Adam (2026-08-20); resolve the policy before changing either side.
 
 ### Internal (noindex)
 ops, dashboard, marketing-command-center, marketing-content, loan-dashboard, loanos, task-dashboard, hero-test
+
+## Sitemap Governance
+
+`sitemap.xml` = **146 URLs, 146 `<lastmod>`, verified correct 2026-08-20.** 143 carry `.html`; the 3 that don't
+are directory-style URLs (`/`, `/resources/`, `/resources/first-time-buyer-guide/`).
+
+**Before adding any URL, all four guards must pass.** Guard 1 is the one that gets skipped:
+
+1. **`robots.txt` has no `Disallow` for it.** ← checked *last* on 2026-08-20 and it was the only guard that
+   caught a would-be regression. A sitemap entry for a Disallowed URL sends Google two contradicting
+   signals and surfaces as a "Blocked by robots.txt" error in the GSC sitemap report.
+2. **No `<meta name="robots" content="noindex">`.**
+3. **Canonical points at itself.** A non-self-canonical URL must never be listed — it splits the signal.
+4. **The peer set agrees.** Uniform absence across a category is a decision; a lone outlier is the defect.
+
+### The 8 repo pages deliberately absent from sitemap.xml — all correct, do not "fix"
+
+| Page | Why it is excluded |
+|---|---|
+| `refinance-calculator.html` | `robots.txt` Disallow (guard 1) |
+| `loanos.html` | `robots.txt` Disallow + LoanOS marketing paused per GOALS.md |
+| `rates/2026-03-24.html` | 0 of 10 dated `rates/` pages are listed — uniform, by design (guard 4) |
+| `blog/2026-03-20-austin-mortgage-rates-march-2026.html` | canonical → `/austin-mortgage-rates.html` (guard 3) |
+| `googlea3d746ce1ceb4bff.html` | GSC site-verification file |
+| `index.html` | listed as `https://styermortgage.com/` (root form) |
+| `resources/index.html` | listed as `/resources/` (trailing-slash form) |
+| `resources/first-time-buyer-guide/index.html` | listed as `/resources/first-time-buyer-guide/` |
+
+The last three are **path-normalization false positives**: any coverage sweep must compare against the
+root and trailing-slash forms, or it will report the homepage as missing from its own sitemap.
 
 ## Netlify Functions
 
@@ -205,7 +243,33 @@ All website content auto-distributes to GBP + FB + IG + LI:
 | Article | Blog posts, austin-mortgage-rates |
 | CollectionPage | blog.html |
 
-## NMLS Legal Disclaimer (verbatim on all pages)
+## NMLS Legal Disclaimer
+
+**Three variants are in use.** Company NMLS `2653540` coverage is **146/146 live URLs** — there is no
+page without a disclaimer. Verified 2026-08-20 by fetching all 146 sitemap URLs.
+**Match on `2653540` for coverage, never on prose.** A grep for the phrase
+`Licensed Mortgage Broker in Texas` returns 40 false "missing disclaimer" hits.
+
+| Variant | URLs | Contents |
+|---|---|---|
+| **A** — full block (quoted below) | 106 | *"is a Licensed Mortgage Broker in Texas"* · *"Equal Housing Opportunity"* |
+| **B** — long-form footer | 33 | Kyber legal name · **principal address** · **Texas Consumer Complaint Notice** · *"Licensed in Texas"* · *"Equal Housing **Lender**"* · product-specific disclosure where one applies (e.g. "DSCR loans are for investment properties only"). Used on loan-product, DSCR, suburb, and lead-capture pages. |
+| **C** — thin footer | 5 | Kyber legal name + both NMLS IDs only. **No address, no Consumer Complaint Notice.** |
+| *(legal pages)* | 2 | `privacy.html`, `terms.html` — address present, no Consumer Complaint Notice. Different document type. |
+
+**Variant C pages:** `calculator-payment`, `calculator-affordability`, `calculator-refinance-breakeven`,
+`rate-buydown-calculator`, `first-time-home-buyer`. Note this splits the calculator set — the other four
+calculators carry A or B. Whether C is thin-by-design or drift is **Adam-gated** (legal copy); flagged
+2026-08-20, do not resolve unilaterally.
+
+> ⚠️ **Open, Adam-gated (2026-08-20):** the two variants disagree on entity type — Variant A says
+> *Licensed Mortgage **Broker***, Variant B says *Equal Housing **Lender***. Separately, 3 pages
+> (`realtors.html`, `blog/local-lender-vs-online-lender-austin-central-texas.html`,
+> `blog/2026-03-27-down-payment-assistance-texas-2026.html`) advertise Adam as a
+> ***correspondent lender* who "funds in my own name"**, which contradicts the Licensed Mortgage Broker
+> disclaimer in their own footers. Do not resolve either without Adam — license-type copy is his call.
+
+### Variant A (verbatim)
 
 ```
 © 2026 Kyber Mortgage Corporation dba HyperSmart Home Loans. All rights reserved.
