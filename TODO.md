@@ -121,6 +121,21 @@
 
 ## NEEDS ADAM
 
+### NEEDS ADAM — "broker" vs "correspondent lender" site-wide (flagged 2026-08-21, weekly content editor)
+
+The voice guide (`loanos-clone/tasks/social-media/adam-voice-and-workflow.md`) is explicit: Adam is a **correspondent lender**, not a broker — he funds loans in his own name, and the guide calls this "a differentiator — use it."
+
+The site does not reflect that. Current counts:
+- **60** HTML pages contain "Independent mortgage broker"
+- **3** contain "correspondent lender"
+
+On `self-employed-mortgage-austin.html` specifically it appears in three places: the Article schema `description`, a body paragraph headed "**The broker advantage:** As an independent broker…", and the footer descriptor.
+
+**Not changed** during the 2026-08-21 citation pass. Flipping one page inside a routine edit would leave it inconsistent with the other 59, and this reads as a brand/compliance decision rather than a content edit.
+
+**Decision needed:** site-wide sweep to "correspondent lender," leave as-is, or a hybrid (correspondent in positioning copy, broker retained only where it is the legal designation). Note the Texas regulatory footer language "Licensed Mortgage Broker" is a legal designation and must be preserved either way per `CLAUDE.md`.
+
+
 Items auto-appended by scheduled remote agents land here. Glance weekly.
 
 - [ ] **NEEDS ADAM (NEW 2026-08-20, from styer-site-daily, MEDIUM — license-type copy) — 3 pages advertise you as a "correspondent lender" while their own footer says you're a Licensed Mortgage Broker.** Most explicit is `blog/local-lender-vs-online-lender-austin-central-texas.html`: **"I'm a correspondent lender in Austin — fund in my own name"**, three times. Also `realtors.html` (×3 — "As a correspondent lender, we have access to numerous lending partners", which actually describes broker behavior) and `blog/2026-03-27-down-payment-assistance-texas-2026.html`. Every page's own NMLS footer reads *"Kyber Mortgage Corporation dba HyperSmart Home Loans is a **Licensed Mortgage Broker** in Texas."* **The upstream cause is your voice guide** — `loanos-clone/tasks/social-media/adam-voice-and-workflow.md`, last updated **2026-03-29 (pre-Kyber)**, instructs in four places that you're a correspondent lender "not a broker" and calls it a differentiator to use. Every content agent reads it first, so this regenerates. I did not touch either: license-type copy is Adam-gated, and the guide lives in paused `loanos-clone`. **Directly in scope for the GOALS.md pre-audit compliance cleanup** — which is correct for the Kyber entity?

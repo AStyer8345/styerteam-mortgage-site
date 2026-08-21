@@ -1,3 +1,25 @@
+## 2026-08-21 — Weekly content editor: self-employed hub citation pass + Austin median correction
+
+**Page:** `self-employed-mortgage-austin.html` (niche hub, queue "DO NEXT")
+
+**Citations 0 → 6** (all live-verified HTTP 200):
+- CFPB ATR/QM **12 CFR §1026.43** — new "this is not a loophole" paragraph: non-QM sits outside the QM safe harbor, but ATR still requires a reasonable good-faith determination from *verified* income or assets and does not mandate a tax return. The bank statements, 1099s, and CPA P&L **are** the verification.
+- IRS **Schedule C (Form 1040)** — sourced on the $320K-gross → $115K-AGI worked example.
+- Fannie Mae Selling Guide **B3-3.5-01** — sources *why* a conventional lender must use the post-write-off number (25%+ ownership = self-employed; qualify on net income after expenses).
+- Freddie Mac **PMMS 6.65%**, week of Aug 20 2026 — anchors the previously bare "0.5–1.5% higher" claim in the comparison table.
+- FHFA **2026 conforming loan limit $832,750** — linked on the table cell that stated it without a source.
+- Unlock MLS / ABoR — **$435,000** Austin–Round Rock–San Marcos median, July 2026.
+
+**Factual correction.** The page asserted, with no source, that the Austin metro median was "$450,000–$600,000 … for most family-sized homes in suburbs like Round Rock, Cedar Park, and Georgetown." Those suburbs are Williamson County, whose July 2026 median is **$415,000** — below the stated floor. Replaced with the sourced county-level spread: metro $435,000, Travis $520,000, Williamson $415,000, City of Austin $577,000.
+
+**Other changes:** enriched hero alt text (generic "Austin TX Mortgage Broker" → self-employed / bank-statement / 1099 / P&L specifics); tightened the closing CTA into Adam's voice; reconciled a date drift where the visible byline read "August 14" while schema `dateModified` read 2026-08-19 (both now 2026-08-21); sitemap `lastmod` bumped.
+
+**Verification:** all 6 JSON-LD blocks re-validated via `json.loads`; p/a/div/section tag balance even; blog title lint clean; no banned filler; no retired business names. Word count 3,400 → 3,782. Title, H1, and slug preserved.
+
+**NEEDS ADAM:** "Independent mortgage broker" appears on **60 pages** site-wide vs "correspondent lender" on **3**. The voice guide says Adam is a correspondent lender and calls it a differentiator. Not changed here — that is a site-wide positioning decision, logged to TODO.md.
+
+**Note on Fannie URLs:** the slug `.../underwriting-self-employed-borrowers` **404s**. The correct current slug is `.../underwriting-factors-and-documentation-self-employed-borrower`. Section B3-3.5-01 is right — Chapter B3-3 was renumbered +0.3 effective 03/04/2026 (old B3-3.2-01 → new B3-3.5-01). Legacy URLs still return 200 while serving stale headers, so **a 200 alone does not prove a Fannie citation is current**; match section number *and* slug.
+
 
 ## 2026-08-20 — styer-suburb-editor-daily (Round 5 #9): Manor — school-opening reversal, Tesla double-count, Wilbarger Creek MUD disclosure
 
