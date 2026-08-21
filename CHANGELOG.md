@@ -2870,3 +2870,20 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - **Friday rotation PASS, 0 content defects** — last post 2 days old; 35/35 blog posts carry a lead CTA; 35/35 registered in `blog/manifest.json`; AEO answer-first review clean on the jumbo and asset-depletion posts.
 - **Three findings killed by the Re-Verify Gate**, one already decided for shipping: `refinance-calculator.html` cleared every indexability guard *and* the peer-set outlier test but is `robots.txt`-Disallowed; "40 pages missing the NMLS disclaimer" was a phrase-matching artifact; "18 pages wrongly say mortgage broker" inverted — the site matches its own legal footer and the **voice guide** is the stale artifact.
 - **New Adam-gated blockers logged:** 3 pages advertising "correspondent lender" against the sitewide Licensed Mortgage Broker disclaimer (upstream cause: the 2026-03-29 voice guide); `refinance-calculator.html` robots-blocked while internally promoted; disclaimer Variant C omitting address + Texas Consumer Complaint Notice on 5 pages.
+
+## 2026-08-21 — styer-site-daily (Tuesday rotation: Title Tags + Meta Descriptions)
+
+- Audited all 146 sitemap URLs for title/description presence, duplication and length, reading from
+  `git HEAD` rather than the working tree. Baseline clean: 146/146 titles, 146/146 descriptions,
+  **zero duplicates of either, zero missing**. All 23 loan-type pages audited individually — no defects.
+- Trimmed **9 meta descriptions** that exceeded 165 chars and were truncating mid-sentence in SERP
+  (two realtor-update pages at 240 and 225) into the 150–160 band. Commit `29b56be`, +9/−9, every
+  changed line a `<meta name="description">`; `og:`/`twitter:description` left untouched. All 9
+  live-verified in-band post-deploy.
+- Removed a specific rate figure ("mid-6% range") from the Iran/inflation post's search snippet in
+  favour of directional language, matching the voice guide's rate-disclosure guardrail.
+- Killed two self-inflicted false findings: an extractor regex that closed on either quote character
+  (34 phantom "truncated description" results) and a relative glob that resolved in `/tmp` and
+  reported the already-fixed `founder` defect as regressed. Repo re-check: 0 founder / 16 employee /
+  70 worksFor.
+- Swept blog CTA coverage — 44/44. Classified realtor-update CTA absence (0/4) as design, not defect.

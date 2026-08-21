@@ -1757,3 +1757,76 @@ world; invention does.
 **The stale checkout is now blocking work, not just threatening it.** Three genuine AEO entity conflicts
 on the homepage/about pair were found and could not be shipped, because `index.html` carries a 100-line
 uncommitted diff. A latent hazard that persists long enough becomes a throughput problem.
+
+---
+
+## 2026-08-21 — styer-site-daily (Tuesday rotation: Title Tags + Meta Descriptions)
+
+### A regex that opens on one quote must close on the *same* quote
+My meta-description extractor was `content=["\'](.*?)["\']`. It opens on a double quote but closes on
+**either** quote character — so it terminated at the first apostrophe inside the text. It reported **34
+pages with severely truncated descriptions**, including a **6-character** homepage description ("Austin").
+
+The tell was in the data, not the code: every "truncated" string ended exactly where an apostrophe
+belongs — *"Underwriters don"*, *"A lower rate doesn"*, *"Kyle is one of Texas"*, *"Here"*. Thirty-four
+independent pages do not all fail at the same grammatical position by coincidence.
+
+```python
+# wrong — closes on either quote
+re.search(r'content=["\'](.*?)["\']', tag)
+# right — backreference forces the closing quote to match the opening one
+re.search(r'content\s*=\s*(["\'])(.*?)\1', tag, re.S)
+```
+
+> Real count of severely-short descriptions: **zero**. Trusting this would have meant rewriting 34
+> working meta tags to fix a bug in my own regex. **When a finding has a suspiciously uniform shape,
+> suspect the instrument.**
+
+### Sandbox-disabled Bash resets cwd — a relative glob then reads the wrong directory
+`grep -l '"founder"' *.html` was meant to confirm yesterday's fix held. It reported **3** — i.e. a
+*fixed* defect had regressed. Cause: the previous sandbox-disabled call reset cwd, so the glob resolved
+in `/tmp`, which is littered with scratch HTML from past runs (`live_buda.html`, `deep404.html`, …).
+Re-run in the repo with an absolute `cd` and a quoted `--include`: **0 founder / 16 employee / 70 worksFor.**
+
+Two compounding mistakes: (1) relying on inherited cwd across calls, and (2) `zsh` expanding
+`--include=*.html` before `grep` saw it, which silently changed the command's meaning.
+
+> A false positive that accuses *already-fixed* code is the most expensive kind — it invites re-fixing
+> something that works. **Corollary: stop writing scratch files to `/tmp`.** The repo CLAUDE.md
+> designates a session scratchpad; `/tmp` is now live bait for exactly this error.
+
+### In a repo with an uncommitted overlay, audit `git show HEAD:<path>`, not the working tree
+This repo carries a 52-file stale checkout that was never committed; Netlify builds from `main`. My
+first full sweep read local files and therefore described a checkout nobody deployed — 6 of the pages
+it flagged were overlay artifacts. Re-based the entire audit onto `git show HEAD:<path>`.
+
+> The working tree is a hypothesis about the site. `HEAD` is the site.
+
+### "Out of target band" is not the same as "defective"
+57 descriptions sit at 121–149 chars — under the 150 target, but not truncating, not duplicated, and
+carrying complete sentences. Only the **>165** group was actually losing text in SERP (two at 240 and
+225, cut mid-clause). Fixed those 9; left the 57 alone and wrote the threshold down so it isn't
+re-litigated every Tuesday.
+
+> Fix the ones that lose information. Leave the ones that merely miss a round number. Same family as
+> the 08-20 rule: *a checklist item is not worth a real asset.*
+
+### Shortening SERP copy is a chance to remove a compliance claim, not just characters
+One post's description led with *"climbed back into the mid-6% range"* — a specific rate figure in the
+copy Google actually displays, with no APR context. The trim replaced it with directional language
+(*"climbed on an energy-driven inflation shock"*), satisfying the length fix and the voice guide's
+rate-disclosure guardrail in the same edit.
+
+> Same principle as `founder` → `employee`: **prefer the fix that removes a claim over the one that
+> adds one.** When you're already editing a line for another reason, check what it asserts.
+
+### Round-trip the replacement to prove no collateral change
+Guarding a scripted edit with "it matched once" is weak. Stronger: after substituting, verify that
+putting the *old* text back reproduces the original file byte-for-byte.
+
+```python
+if out.replace(newdesc, old, 1) != src:  # collateral change — skip the file
+```
+
+Combined with `git diff -U0` asserting that **every** changed line matches `<meta name="description"`,
+this turns "I think I only touched the tag" into a mechanical check. 9 files, +9/−9, 18/18 meta lines.
