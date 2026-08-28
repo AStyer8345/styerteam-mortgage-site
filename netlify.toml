@@ -5,6 +5,12 @@
   # recent-updates.json fallback ships in the repo so the strip works even without it.
   command = "npm run build"
 
+# Preserve the canonical `.html` hrefs authored in source. Netlify's Pretty URLs
+# post-processing otherwise rewrites those links to extensionless paths, which
+# then hit the site's intentional extensionless → `.html` redirects.
+[build.processing.html]
+  pretty_urls = false
+
 # ─── Secrets Scanning ─────────────────────────────────────────────────────────
 # marketing-command-center.html contains a SHA256 password hash (PASS_HASH) for
 # client-side auth on this internal tool page — not a real API secret.
