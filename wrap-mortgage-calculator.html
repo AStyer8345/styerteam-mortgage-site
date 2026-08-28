@@ -132,6 +132,17 @@
     .wrap-field input[type=number] { width: 100%; padding: .55rem .85rem; border: 1px solid var(--color-border); border-radius: 8px; font-size: .95rem; color: var(--color-navy); background: #fff; box-sizing: border-box; }
     .wrap-field input[type=number]:focus { outline: 2px solid var(--color-gold); border-color: var(--color-gold); }
 
+    /* ── Formatted currency and down-payment fields ── */
+    .wrap-money-input { font-variant-numeric: tabular-nums; }
+    .wrap-down-payment-fields { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: .65rem; }
+    .wrap-down-field { position: relative; }
+    .wrap-down-field input { width: 100%; box-sizing: border-box; padding: .5rem 2rem .5rem .65rem; border: 1px solid var(--color-border); border-radius: 8px; font-size: .95rem; color: var(--color-navy); background: #fff; font-variant-numeric: tabular-nums; }
+    .wrap-down-field input:focus { outline: 2px solid var(--color-gold); border-color: var(--color-gold); }
+    .wrap-down-field input[readonly] { color: #64748b; background: #f1f5f9; cursor: default; }
+    .wrap-down-affix { position: absolute; right: .7rem; top: 50%; transform: translateY(-50%); color: #64748b; font-size: .85rem; pointer-events: none; }
+    .wrap-down-field--amount input { padding-left: 1.55rem; padding-right: .65rem; }
+    .wrap-down-field--amount .wrap-down-affix { left: .7rem; right: auto; }
+
     /* ── Output panel ── */
     .wrap-output-panel { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 1.75rem; box-shadow: var(--shadow-premium); }
     .wrap-output-panel h2 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--color-navy); margin-bottom: 1.25rem; }
@@ -362,7 +373,7 @@
               <h2 class="calc-card-title" style="margin-bottom: 1rem;">Your existing loan</h2>
               <div class="calc-slider-group">
                 <div class="calc-slider-label"><span>Balance ($)</span><span class="calc-slider-value" id="w-balance-val">$200,000</span></div>
-                <input type="number" id="w-balance" value="200000" min="0" step="1000" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+                <input type="text" inputmode="numeric" class="wrap-money-input" id="w-balance" value="200,000" data-min="0" data-step="1000" aria-label="Existing loan balance" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
               </div>
               <div class="calc-slider-group">
                 <div class="calc-slider-label"><span>Rate (%)</span><span class="calc-slider-value" id="w-existing-rate-val">3%</span></div>
@@ -370,7 +381,7 @@
               </div>
               <div class="calc-slider-group">
                 <div class="calc-slider-label"><span>Monthly P&amp;I ($)</span><span class="calc-slider-value" id="w-existing-payment-val">$843</span></div>
-                <input type="number" id="w-existing-payment" value="843" min="0" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+                <input type="text" inputmode="numeric" class="wrap-money-input" id="w-existing-payment" value="843" data-min="0" data-step="1" aria-label="Monthly principal and interest payment" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
               </div>
               <div class="calc-slider-group">
                 <label class="calc-slider-label" style="margin-bottom: .25rem;">Original loan term (years)</label>
@@ -384,9 +395,21 @@
               <h2 class="calc-card-title" style="margin: 1.25rem 0 .75rem;">Wrap terms (buyer)</h2>
               <div class="calc-slider-group">
                 <div class="calc-slider-label"><span>Sale price ($)</span><span class="calc-slider-value" id="w-sale-price-val">$450,000</span></div>
-                <input type="number" id="w-sale-price" value="450000" min="0" step="1000" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+                <input type="text" inputmode="numeric" class="wrap-money-input" id="w-sale-price" value="450,000" data-min="0" data-step="1000" aria-label="Sale price" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
               </div>
-              <div id="w-down-toggle-container"></div>
+              <div class="calc-slider-group">
+                <div class="calc-slider-label"><span>Down payment</span><span class="calc-slider-value" id="w-down-pct-val">10%</span></div>
+                <div class="wrap-down-payment-fields">
+                  <div class="wrap-down-field">
+                    <input type="number" id="w-down-pct" value="10" min="0" max="100" step="0.5" aria-label="Down payment percentage">
+                    <span class="wrap-down-affix">%</span>
+                  </div>
+                  <div class="wrap-down-field wrap-down-field--amount">
+                    <input type="text" id="w-down-amount" value="45,000" readonly aria-label="Calculated down payment amount">
+                    <span class="wrap-down-affix">$</span>
+                  </div>
+                </div>
+              </div>
               <div class="calc-slider-group">
                 <div class="calc-slider-label"><span>Closing costs (%)</span><span class="calc-slider-value" id="w-closing-pct-val">8%</span></div>
                 <input type="number" id="w-closing-pct" value="8" min="0" max="15" step="0.5" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
@@ -695,8 +718,21 @@
     var Suite = window.CalcSuite;
     if (!Suite) return;
 
-    function val(id) { return parseFloat(document.getElementById(id).value) || 0; }
+    function val(id) {
+      var el = document.getElementById(id);
+      return el ? (parseFloat(String(el.value).replace(/,/g, '')) || 0) : 0;
+    }
     function set(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; }
+    function formatInputNumber(value) {
+      var digits = String(value).replace(/[^0-9]/g, '');
+      return digits ? Number(digits).toLocaleString('en-US') : '';
+    }
+    function updateDownPaymentDisplay(salePrice, downPct) {
+      var amountEl = document.getElementById('w-down-amount');
+      var pctValEl = document.getElementById('w-down-pct-val');
+      if (amountEl) amountEl.value = Math.round(salePrice * downPct / 100).toLocaleString('en-US');
+      if (pctValEl) pctValEl.textContent = downPct.toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%';
+    }
 
     var downToggle = null;
     var selectedBalloon = 5; /* 3, 5, or null */
@@ -749,7 +785,8 @@
       var appreciation = val('w-appreciation');
       var marketRateEl = document.getElementById('w-market-rate');
       var marketRate   = marketRateEl ? (parseFloat(marketRateEl.value) || 7.25) : 7.25;
-      var downPct      = downToggle ? downToggle.getDownPct() : 10;
+      var downPct      = Math.min(100, Math.max(0, val('w-down-pct')));
+      updateDownPaymentDisplay(salePrice, downPct);
 
       if (salePrice <= 0) {
         ['w-seller-total','w-out-net-cash','w-out-monthly-income','w-out-cume-spread',
@@ -873,20 +910,19 @@
     var pdfBtn = document.getElementById('w-btn-pdf');
     if (pdfBtn) pdfBtn.addEventListener('click', function() { window.print(); });
 
-    /* Down payment toggle */
-    var toggleContainer = document.getElementById('w-down-toggle-container');
-    if (toggleContainer && Suite.createDownPaymentToggle) {
-      downToggle = Suite.createDownPaymentToggle(toggleContainer, {
-        salePriceGetter: function () { return val('w-sale-price'); },
-        initialMode: 'pct',
-        initialPct: 10,
-        onChange: function () { calcWrap(); }
+    /* Format currency inputs with thousands separators while preserving numeric calculations. */
+    document.querySelectorAll('.wrap-money-input').forEach(function(el) {
+      el.addEventListener('input', function() {
+        el.value = formatInputNumber(el.value);
       });
-    }
+      el.addEventListener('blur', function() {
+        el.value = formatInputNumber(el.value);
+      });
+    });
 
     /* Input listeners */
     ['w-balance','w-existing-rate','w-existing-payment','w-original-term','w-loan-age',
-     'w-sale-price','w-closing-pct','w-wrap-rate','w-term','w-appreciation','w-market-rate']
+     'w-sale-price','w-down-pct','w-closing-pct','w-wrap-rate','w-term','w-appreciation','w-market-rate']
       .forEach(function(id) {
         var el = document.getElementById(id);
         if (el) el.addEventListener('input', calcWrap);
