@@ -166,7 +166,7 @@ test('rate JSON updater refuses to stamp incomplete pasted rates as fresh', () =
 });
 
 test('Austin rates page handles stale public rate data honestly', () => {
-  assert.match(austinRates, /"dateModified": "2026-08-14"/);
+  assert.match(austinRates, /"dateModified": "2026-08-28"/);
   assert.match(austinRates, /Austin Mortgage Rate Snapshot/);
   assert.match(austinRates, /Rate Δ/);
   assert.match(austinRates, /daysSince/);
