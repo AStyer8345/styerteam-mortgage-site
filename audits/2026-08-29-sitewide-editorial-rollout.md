@@ -55,3 +55,5 @@ The pre-approval page is slightly taller because the refined form preserves all 
 ## Browser coverage
 
 Representative families were checked at 1440 × 900, 1024 px, 768 px, and 390 × 844. Checks covered horizontal overflow, console errors, H1 count, stylesheet loading, image/cutout suppression, focus-visible rules, and FAQ disclosure toggling. No horizontal overflow or console errors were observed. No live form was submitted.
+
+The approved navy header was additionally checked across homepage, loan, location, guide, calculator, lead, and trust representatives at desktop and mobile widths. The shared treatment resolves to navy `rgb(13, 35, 66)`, the light logo asset, white desktop links, and gold `rgb(209, 181, 104)` CTA. The mobile menu uses a white surface with dark text and visible focus/hover states. An excluded dashboard retained its original header, confirming the scope boundary.
