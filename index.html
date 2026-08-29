@@ -100,12 +100,20 @@
     .home-pilot .btn-hero-ghost{background:transparent;color:var(--color-navy);border:1px solid rgba(10,31,63,.45)}
     .home-pilot .hero-call-link-a{color:#536172}
     .home-pilot .hero-legal{color:#7a8490}
+    .home-pilot>header{background:#0d2342;border-bottom:1px solid rgba(209,181,104,.4);box-shadow:0 5px 18px rgba(13,35,66,.12)}
+    .home-pilot>header .nav-links>li>a:not(.nav-cta){color:#fff}
+    .home-pilot>header .nav-links>li>a:not(.nav-cta):hover{color:#e5ca7c}
+    .home-pilot>header .nav-cta{background:#d1b568;color:#0d2342}
+    .home-pilot>header .nav-cta:hover{background:#e0c77f;color:#0d2342}
+    .home-pilot>header .mobile-menu-toggle span{background:#fff}
+    .home-pilot>header .nav-dropdown a{color:#0d1f3c}
+    .home-pilot>header .nav-dropdown a:hover{color:#7a5f1f}
     .home-pilot .home-hero-panel-intro{display:grid;grid-template-columns:88px minmax(0,1fr);gap:1rem;align-items:center;margin-bottom:.6rem}
     .home-pilot .home-hero-photo{display:block;width:88px;height:96px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 8px 12px rgba(13,31,60,.13))}
     .home-pilot .home-hero-panel-intro h2{margin:0 0 .25rem}
     .home-pilot .home-hero-panel-intro p{margin:0;color:#687483;font-size:.87rem;line-height:1.5}
     @media(max-width:900px){.home-pilot .home-hero-layout{grid-template-columns:1fr}.home-pilot .home-hero-panel{max-width:700px}}
-    @media(max-width:768px){.home-pilot .hero{padding:2.75rem 0}.home-pilot .hero h1{font-size:clamp(2.25rem,10vw,3.15rem)}.home-pilot .hero-ctas{align-items:stretch}.home-pilot .hero-cta-btn{width:100%;max-width:none}.home-pilot .home-hero-panel-intro{grid-template-columns:72px minmax(0,1fr);gap:.85rem}.home-pilot .home-hero-photo{width:72px;height:80px}}
+    @media(max-width:768px){.home-pilot .hero{padding:2.75rem 0}.home-pilot .hero h1{font-size:clamp(2.25rem,10vw,3.15rem)}.home-pilot .hero-ctas{align-items:stretch}.home-pilot .hero-cta-btn{width:100%;max-width:none}.home-pilot .home-hero-panel-intro{grid-template-columns:72px minmax(0,1fr);gap:.85rem}.home-pilot .home-hero-photo{width:72px;height:80px}.home-pilot>header .nav-links.active{background:#fff}.home-pilot>header .nav-links.active>li>a:not(.nav-cta){color:#0d1f3c}.home-pilot>header .nav-links.active .nav-cta{margin:.5rem 1rem}}
   </style>
 
   <!-- Schema.org LocalBusiness -->
@@ -344,7 +352,7 @@
     <div class="container">
       <nav>
         <a href="index.html" class="nav-brand">
-          <img src="assets/logo.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
+          <img src="assets/logo-light.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
