@@ -239,16 +239,25 @@
     .bank-pilot .pilot-secondary { border:1px solid rgba(255,255,255,.55); color:#fff; background:transparent; }
     .bank-pilot .pilot-secondary:hover { background:#fff; color:var(--pilot-navy); }
     .bank-pilot .pilot-updated { margin:16px 0 0; color:rgba(255,255,255,.62); font-size:.78rem; }
-    .bank-pilot .pilot-form-card { padding:24px; border:1px solid rgba(255,255,255,.16); border-radius:16px; background:#fff; color:var(--pilot-ink); box-shadow:0 20px 50px rgba(0,0,0,.22); }
-    .bank-pilot .pilot-form-card h2 { font-size:1.45rem; margin-bottom:4px; }
-    .bank-pilot .pilot-form-card > p { margin:0 0 16px; color:var(--pilot-muted); font-size:.9rem; }
-    .bank-pilot .pilot-form-grid { display:grid; grid-template-columns:1fr 1fr; gap:11px; }
+    .bank-pilot .pilot-form-card { padding:26px; border:1px solid #d8d2c6; border-radius:10px; background:#fbfaf7; color:var(--pilot-ink); box-shadow:0 16px 38px rgba(5,25,44,.16); }
+    .bank-pilot .pilot-form-card h2 { font-size:1.42rem; margin-bottom:5px; }
+    .bank-pilot .pilot-form-card > p { margin:0 0 6px; color:var(--pilot-muted); font-size:.9rem; }
+    .bank-pilot .pilot-form-assurance { margin:0 0 17px !important; color:var(--pilot-blue) !important; font-size:.76rem !important; font-weight:600; }
+    .bank-pilot .pilot-form-grid { display:grid; grid-template-columns:1fr; gap:10px; }
     .bank-pilot .pilot-form-grid .form-group { margin:0; }
     .bank-pilot .pilot-form-grid .pilot-span { grid-column:1/-1; }
-    .bank-pilot .pilot-form-card label { margin-bottom:4px; font-size:.78rem; }
-    .bank-pilot .pilot-form-card input:not([type=checkbox]), .bank-pilot .pilot-form-card select { min-height:42px; padding:8px 10px; font-size:.9rem; }
-    .bank-pilot .pilot-consent { display:flex; align-items:flex-start; gap:7px; margin:2px 0; color:var(--pilot-muted); font-size:10px; font-weight:400; line-height:1.42; cursor:pointer; }
-    .bank-pilot .pilot-consent input { flex:0 0 auto; width:15px; height:15px; margin-top:2px; }
+    .bank-pilot .pilot-form-card label { margin-bottom:3px; font-family:var(--font-primary); font-size:.76rem; font-weight:600; }
+    .bank-pilot .pilot-form-card input:not([type=checkbox]), .bank-pilot .pilot-form-card select { min-height:44px; padding:8px 11px; border-color:#c9c5bc; background:#fff; font-size:.9rem; }
+    .bank-pilot .pilot-form-card input:focus, .bank-pilot .pilot-form-card select:focus { outline:3px solid rgba(26,79,122,.18); outline-offset:1px; border-color:var(--pilot-blue); }
+    .bank-pilot .pilot-consent-wrap { padding-top:3px; border-top:1px solid #e2ded5; }
+    .bank-pilot .pilot-consent-wrap.optional { padding:9px 10px; border:1px solid #e2ded5; border-radius:6px; background:#f4f2ed; }
+    .bank-pilot .pilot-consent { display:flex; align-items:flex-start; gap:8px; margin:0; color:var(--pilot-muted); font-size:10px; font-weight:400; line-height:1.42; cursor:pointer; }
+    .bank-pilot .pilot-consent input { flex:0 0 auto; width:16px; height:16px; margin-top:1px; accent-color:var(--pilot-navy); }
+    .bank-pilot .pilot-form-submit { min-height:46px; margin-top:2px; border:1px solid var(--pilot-navy); background:var(--pilot-navy) !important; color:#fff !important; box-shadow:none; }
+    .bank-pilot .pilot-form-submit:hover { background:#1a4569 !important; transform:none; }
+    .bank-pilot .pilot-form-trust { margin:1px 0 0; text-align:center; color:var(--pilot-muted); font-size:.72rem; line-height:1.4; }
+    .bank-pilot .pilot-form-alt { margin:0; text-align:center; color:var(--pilot-muted); font-size:.78rem; }
+    .bank-pilot .pilot-form-alt a { font-weight:600; text-decoration:underline; text-underline-offset:2px; }
     .bank-pilot .pilot-card-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:24px; }
     .bank-pilot .pilot-card { padding:20px; border:1px solid var(--pilot-line); border-radius:12px; background:#fff; box-shadow:0 8px 24px rgba(16,47,78,.05); }
     .bank-pilot .pilot-card p { margin:0; color:var(--pilot-muted); font-size:.92rem; }
@@ -394,8 +403,9 @@
         <p class="pilot-updated">Last updated July 3, 2026 · Adam Styer, NMLS #513013 · Company NMLS #2653540</p>
       </div>
       <div class="pilot-form-card" id="deposit-review">
-        <h2>See What Your Deposits Qualify For</h2>
-        <p>Share the basics. Adam will compare the income paths for your scenario.</p>
+        <h2>Let's Review Your Scenario</h2>
+        <p>Tell me what you're trying to accomplish. I'll compare the available income-documentation paths.</p>
+        <p class="pilot-form-assurance">This is not an application and does not authorize a credit pull.</p>
         <form name="bank-statement-quote" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="bank-statement-quote">
           <p style="display:none;">
@@ -412,7 +422,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="loan-amount-bank-statement">Estimated Purchase Price</label>
+            <label for="loan-amount-bank-statement">Estimated Property Value</label>
             <select id="loan-amount-bank-statement" name="loan_amount" required>
               <option value="">Select...</option>
               <option value="under-500k">Under $500K</option>
@@ -433,19 +443,21 @@
             <label for="phone-bank-statement">Phone Number</label>
             <input type="tel" id="phone-bank-statement" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
           </div>
-          <div class="pilot-span">
+          <div class="pilot-span pilot-consent-wrap">
             <label class="pilot-consent">
               <input type="checkbox" name="tcpa_consent" id="hqf-tcpa" required>
               <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
             </label>
           </div>
-          <div class="pilot-span">
+          <div class="pilot-span pilot-consent-wrap optional">
             <label class="pilot-consent">
               <input type="checkbox" name="sms_opt_in" id="hqf-sms-optin">
               <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
             </label>
           </div>
-          <button type="submit" class="btn btn-primary btn-full pilot-span">Review My Scenario</button>
+          <button type="submit" class="btn btn-full pilot-span pilot-form-submit">Request a Deposit Review</button>
+          <p class="pilot-form-trust pilot-span">Reviewed personally by Adam Styer · NMLS #513013</p>
+          <p class="pilot-form-alt pilot-span">Prefer to talk first? <a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Schedule a 15-minute call</a>.</p>
           </div>
         </form>
       </div>
