@@ -100,8 +100,12 @@
     .home-pilot .btn-hero-ghost{background:transparent;color:var(--color-navy);border:1px solid rgba(10,31,63,.45)}
     .home-pilot .hero-call-link-a{color:#536172}
     .home-pilot .hero-legal{color:#7a8490}
+    .home-pilot .home-hero-panel-intro{display:grid;grid-template-columns:88px minmax(0,1fr);gap:1rem;align-items:center;margin-bottom:.6rem}
+    .home-pilot .home-hero-photo{display:block;width:88px;height:96px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 8px 12px rgba(13,31,60,.13))}
+    .home-pilot .home-hero-panel-intro h2{margin:0 0 .25rem}
+    .home-pilot .home-hero-panel-intro p{margin:0;color:#687483;font-size:.87rem;line-height:1.5}
     @media(max-width:900px){.home-pilot .home-hero-layout{grid-template-columns:1fr}.home-pilot .home-hero-panel{max-width:700px}}
-    @media(max-width:768px){.home-pilot .hero{padding:2.75rem 0}.home-pilot .hero h1{font-size:clamp(2.25rem,10vw,3.15rem)}.home-pilot .hero-ctas{align-items:stretch}.home-pilot .hero-cta-btn{width:100%;max-width:none}}
+    @media(max-width:768px){.home-pilot .hero{padding:2.75rem 0}.home-pilot .hero h1{font-size:clamp(2.25rem,10vw,3.15rem)}.home-pilot .hero-ctas{align-items:stretch}.home-pilot .hero-cta-btn{width:100%;max-width:none}.home-pilot .home-hero-panel-intro{grid-template-columns:72px minmax(0,1fr);gap:.85rem}.home-pilot .home-hero-photo{width:72px;height:80px}}
   </style>
 
   <!-- Schema.org LocalBusiness -->
@@ -389,8 +393,13 @@
           </div>
 
           <aside class="home-hero-panel" aria-label="Choose a mortgage starting point">
-            <h2>Start with your situation</h2>
-            <p>You do not need to know the loan program before reaching out.</p>
+            <div class="home-hero-panel-intro">
+              <img class="home-hero-photo" src="/assets/adam-cutout-900.webp" width="88" height="96" alt="Adam Styer, Austin mortgage broker" decoding="async">
+              <div>
+                <h2>Start with your situation</h2>
+                <p>You do not need to know the loan program before reaching out.</p>
+              </div>
+            </div>
             <a class="home-path" href="/mortgage-for-business-owners-austin.html">
               <span class="home-path-number">01</span><span><strong>I own a business</strong><small>Bank statements, 1099, P&amp;L, K-1, or assets</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
             </a>
