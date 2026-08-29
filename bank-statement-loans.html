@@ -126,42 +126,10 @@
       },
       {
         "@type": "Question",
-        "name": "How is income calculated on a bank statement loan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Three common methods. (1) Deposits method: lender averages eligible deposits over 12 or 24 months and applies an expense factor (commonly 50% for business accounts, lower for service-only businesses, higher for material-heavy industries). (2) P&L method: a CPA-prepared P&L is used alongside the statements to confirm net income. (3) Hybrid: deposits validate the P&L, and the underwriter uses the lower of the two. The method matters — the same borrower can qualify for very different loan amounts depending on which approach is used."
-        }
-      },
-      {
-        "@type": "Question",
         "name": "What's the difference between 12 and 24 month bank statement programs?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Most lenders offer both. 24-month programs price slightly better and require more reserves but smooth out seasonal income — ideal for landscapers, restaurateurs, and other seasonal businesses. 12-month programs are better when your income trended up sharply in the last year (a 24-month average would drag your qualifying income down). They typically cost 0.125–0.375% more in rate."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use business bank statements if I'm an LLC or S-Corp?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Business statements are usually preferred for LLCs and S-Corps because they show actual business cash flow before owner draws. The expense factor (typically 50%) is applied to net deposits to estimate income. If your business is a service business with low overhead — consultants, attorneys, real estate agents — some lenders apply a lower expense factor (25–35%) and qualify you for more."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What credit score do I need for a bank statement loan in Texas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most bank statement programs start at a 660–680 minimum credit score. 700+ unlocks better pricing and lower down payment options. Higher-LTV and stronger-pricing structures typically require stronger credit, often 720+. Below 660 is possible with a few lenders but expect higher rates and 20–25% down."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much down payment do bank statement loans require?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "10% down is achievable with strong credit (720+) and a clean two-year self-employment history. 15% down is the most common entry point. 20% down opens the widest lender pool and the best pricing. Loan amounts above $1 million typically require 20–25% down regardless of credit."
         }
       }
     ]
@@ -244,6 +212,117 @@
     ]
   }
   </script>
+  <style>
+    /* Bank statement pilot: intentionally scoped to this page only. */
+    .bank-pilot { --pilot-navy:#102f4e; --pilot-blue:#1a4f7a; --pilot-gold:#d4a84f; --pilot-ink:#172536; --pilot-muted:#5f6f7f; --pilot-line:#dce4ea; --pilot-soft:#f5f8fa; color:var(--pilot-ink); }
+    .bank-pilot .pilot-container { width:min(1160px, calc(100% - 40px)); margin-inline:auto; }
+    .bank-pilot .breadcrumb { padding:12px 0 !important; }
+    .bank-pilot .breadcrumb ol { margin:0 !important; align-items:center; row-gap:4px; }
+    .bank-pilot .breadcrumb li[aria-hidden="true"] { display:none; }
+    .bank-pilot .pilot-reading { max-width:740px; }
+    .bank-pilot .pilot-section { padding:52px 0; }
+    .bank-pilot .pilot-section + .pilot-section { border-top:1px solid var(--pilot-line); }
+    .bank-pilot h2 { font-size:clamp(1.65rem,2.4vw,2.2rem); line-height:1.16; margin:0 0 12px; }
+    .bank-pilot h3 { font-size:1.08rem; line-height:1.3; margin:0 0 8px; }
+    .bank-pilot p { line-height:1.68; }
+    .bank-pilot .pilot-kicker { margin:0 0 10px; color:var(--pilot-blue); font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .bank-pilot .pilot-intro { margin:0; color:var(--pilot-muted); font-size:1.05rem; }
+    .bank-pilot .pilot-hero { background:linear-gradient(125deg,#0b2946 0%,#153f63 62%,#1e547c 100%); color:#fff; overflow:hidden; }
+    .bank-pilot .pilot-hero > picture { display:none; }
+    .bank-pilot .pilot-hero-grid { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(360px,.82fr); gap:46px; align-items:center; padding:48px 0; }
+    .bank-pilot .pilot-hero h1 { max-width:680px; margin:0 0 14px; color:#fff !important; font-size:clamp(2.25rem,4vw,3.65rem); line-height:1.03; }
+    .bank-pilot .pilot-hero-copy { max-width:650px; margin:0 0 22px; color:rgba(255,255,255,.84); font-size:1.08rem; }
+    .bank-pilot .pilot-proof { display:flex; flex-wrap:wrap; gap:8px 18px; margin:22px 0 0; padding:0; list-style:none; color:rgba(255,255,255,.82); font-size:.86rem; }
+    .bank-pilot .pilot-proof li::before { content:'✓'; margin-right:7px; color:#f3c86e; font-weight:700; }
+    .bank-pilot .pilot-actions { display:flex; flex-wrap:wrap; gap:10px; }
+    .bank-pilot .pilot-actions .btn { margin:0; }
+    .bank-pilot .pilot-secondary { border:1px solid rgba(255,255,255,.55); color:#fff; background:transparent; }
+    .bank-pilot .pilot-secondary:hover { background:#fff; color:var(--pilot-navy); }
+    .bank-pilot .pilot-updated { margin:16px 0 0; color:rgba(255,255,255,.62); font-size:.78rem; }
+    .bank-pilot .pilot-form-card { padding:24px; border:1px solid rgba(255,255,255,.16); border-radius:16px; background:#fff; color:var(--pilot-ink); box-shadow:0 20px 50px rgba(0,0,0,.22); }
+    .bank-pilot .pilot-form-card h2 { font-size:1.45rem; margin-bottom:4px; }
+    .bank-pilot .pilot-form-card > p { margin:0 0 16px; color:var(--pilot-muted); font-size:.9rem; }
+    .bank-pilot .pilot-form-grid { display:grid; grid-template-columns:1fr 1fr; gap:11px; }
+    .bank-pilot .pilot-form-grid .form-group { margin:0; }
+    .bank-pilot .pilot-form-grid .pilot-span { grid-column:1/-1; }
+    .bank-pilot .pilot-form-card label { margin-bottom:4px; font-size:.78rem; }
+    .bank-pilot .pilot-form-card input:not([type=checkbox]), .bank-pilot .pilot-form-card select { min-height:42px; padding:8px 10px; font-size:.9rem; }
+    .bank-pilot .pilot-consent { display:flex; align-items:flex-start; gap:7px; margin:2px 0; color:var(--pilot-muted); font-size:10px; font-weight:400; line-height:1.42; cursor:pointer; }
+    .bank-pilot .pilot-consent input { flex:0 0 auto; width:15px; height:15px; margin-top:2px; }
+    .bank-pilot .pilot-card-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:24px; }
+    .bank-pilot .pilot-card { padding:20px; border:1px solid var(--pilot-line); border-radius:12px; background:#fff; box-shadow:0 8px 24px rgba(16,47,78,.05); }
+    .bank-pilot .pilot-card p { margin:0; color:var(--pilot-muted); font-size:.92rem; }
+    .bank-pilot .pilot-two-col { display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:start; }
+    .bank-pilot .pilot-example { padding:24px; border-radius:14px; background:var(--pilot-navy); color:#fff; }
+    .bank-pilot .pilot-example h3 { color:#fff; }
+    .bank-pilot .pilot-math { display:grid; gap:8px; margin-top:18px; }
+    .bank-pilot .pilot-math-row { display:flex; justify-content:space-between; gap:20px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,.15); font-size:.9rem; }
+    .bank-pilot .pilot-math-row:last-child { padding:11px 12px; border:0; border-radius:8px; background:rgba(255,255,255,.12); font-weight:700; }
+    .bank-pilot .pilot-note { padding:20px; border:1px solid var(--pilot-line); border-radius:14px; background:var(--pilot-soft); }
+    .bank-pilot .pilot-note ul, .bank-pilot .pilot-checklist { margin:12px 0 0; padding-left:20px; }
+    .bank-pilot .pilot-note li, .bank-pilot .pilot-checklist li { margin-bottom:8px; line-height:1.55; }
+    .bank-pilot .pilot-comparison { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:22px; }
+    .bank-pilot .pilot-comparison article { padding:22px; border:1px solid var(--pilot-line); border-radius:12px; background:#fff; }
+    .bank-pilot .pilot-comparison article:first-child { border-top:4px solid var(--pilot-gold); }
+    .bank-pilot .pilot-comparison article:last-child { border-top:4px solid var(--pilot-blue); }
+    .bank-pilot .pilot-comparison ul { margin:12px 0 0; padding-left:18px; }
+    .bank-pilot .pilot-comparison li { margin-bottom:7px; }
+    .bank-pilot .pilot-check-wrap { display:grid; grid-template-columns:.85fr 1.15fr; gap:36px; }
+    .bank-pilot .pilot-checklist { columns:2; column-gap:30px; margin:0; }
+    .bank-pilot .pilot-checklist li { break-inside:avoid; padding-left:3px; }
+    .bank-pilot .pilot-faq { max-width:860px; }
+    .bank-pilot details { border-bottom:1px solid var(--pilot-line); }
+    .bank-pilot summary { padding:16px 34px 16px 0; font-weight:700; cursor:pointer; position:relative; list-style:none; }
+    .bank-pilot summary::-webkit-details-marker { display:none; }
+    .bank-pilot summary::after { content:'+'; position:absolute; right:4px; color:var(--pilot-blue); font-size:1.35rem; font-weight:400; }
+    .bank-pilot details[open] summary::after { content:'–'; }
+    .bank-pilot details > div { padding:0 28px 15px 0; color:var(--pilot-muted); }
+    .bank-pilot details p { margin:0; }
+    .bank-pilot .pilot-guide { background:var(--pilot-soft); }
+    .bank-pilot .pilot-guide > .pilot-container > details { margin-top:22px; padding:0 22px; border:1px solid var(--pilot-line); border-radius:12px; background:#fff; }
+    .bank-pilot .pilot-guide > .pilot-container > details + details { margin-top:10px; }
+    .bank-pilot .pilot-guide-content { max-width:760px; padding:4px 0 22px !important; color:var(--pilot-ink) !important; }
+    .bank-pilot .pilot-guide-content h3 { margin-top:20px; }
+    .bank-pilot .pilot-guide-content table { width:100%; border-collapse:collapse; font-size:.9rem; }
+    .bank-pilot .pilot-guide-content th, .bank-pilot .pilot-guide-content td { padding:9px 10px; border-bottom:1px solid var(--pilot-line); text-align:left; }
+    .bank-pilot .pilot-related { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+    .bank-pilot .pilot-related a { padding:7px 10px; border:1px solid var(--pilot-line); border-radius:999px; background:#fff; font-size:.82rem; text-decoration:none; }
+    .bank-pilot .pilot-final { padding:46px 0; background:var(--pilot-navy); color:#fff; }
+    .bank-pilot .pilot-final-inner { display:flex; align-items:center; justify-content:space-between; gap:32px; }
+    .bank-pilot .pilot-final h2 { color:#fff; }
+    .bank-pilot .pilot-final p { max-width:700px; margin:0; color:rgba(255,255,255,.78); }
+    .bank-pilot .pilot-review { margin-top:24px; color:var(--pilot-muted); font-size:.82rem; }
+    .bank-pilot .pilot-legacy-extra { display:none; }
+    .bank-pilot .pilot-docs ul { columns:2; column-gap:34px; }
+    .bank-pilot .pilot-docs li { break-inside:avoid; margin-bottom:9px; }
+    .bank-pilot .pilot-faq-section .accordion-item:nth-child(n+7) { display:none; }
+    .bank-pilot .pilot-faq-section .accordion-button { padding:14px 38px 14px 0; font-size:.98rem; }
+    .bank-pilot .pilot-faq-section .accordion-content p { padding-right:18px; }
+    .bank-pilot .pilot-links ul { display:grid; grid-template-columns:repeat(2,1fr); gap:8px 24px; padding-left:18px; }
+    .bank-pilot .pilot-links li { margin:0; font-size:.86rem; line-height:1.45; }
+    .bank-pilot .pilot-testimonial { padding:34px 0; }
+    .bank-pilot .pilot-final .container { max-width:900px; }
+    .bank-pilot .pilot-final h2 { margin-bottom:8px; }
+    .bank-pilot .pilot-final .btn { margin-top:18px; }
+    @media (max-width:900px) {
+      .bank-pilot .pilot-hero-grid, .bank-pilot .pilot-two-col, .bank-pilot .pilot-check-wrap { grid-template-columns:1fr; }
+      .bank-pilot .pilot-hero-grid { gap:28px; padding:38px 0; }
+      .bank-pilot .pilot-card-grid { grid-template-columns:repeat(2,1fr); }
+      .bank-pilot .pilot-final-inner { align-items:flex-start; flex-direction:column; }
+    }
+    @media (max-width:620px) {
+      .bank-pilot .pilot-container { width:min(100% - 28px,1160px); }
+      .bank-pilot .pilot-section { padding:38px 0; }
+      .bank-pilot .pilot-hero-grid { padding:32px 0; }
+      .bank-pilot .pilot-hero h1 { font-size:2.15rem; }
+      .bank-pilot .pilot-form-grid, .bank-pilot .pilot-card-grid, .bank-pilot .pilot-comparison { grid-template-columns:1fr; }
+      .bank-pilot .pilot-form-grid .pilot-span { grid-column:auto; }
+      .bank-pilot .pilot-form-card { padding:18px; }
+      .bank-pilot .pilot-checklist { columns:1; }
+      .bank-pilot .pilot-docs ul, .bank-pilot .pilot-links ul { columns:1; grid-template-columns:1fr; }
+      .bank-pilot .pilot-actions .btn { width:100%; text-align:center; }
+    }
+  </style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -273,7 +352,7 @@
     </div>
   </header>
 
-<main id="main">
+<main id="main" class="bank-pilot">
 
   <!-- Breadcrumb -->
   <div class="breadcrumb bg-light">
@@ -290,8 +369,8 @@
     </div>
   </div>
 
-  <!-- Hero -->
-  <section class="hero">
+  <!-- Pilot conversion experience -->
+  <section class="pilot-hero">
     <picture><source srcset="assets/adam-cutout.webp" type="image/webp"><img
       src="assets/adam-cutout.png"
       alt="Adam Styer, Texas bank statement and self-employed mortgage specialist qualifying borrowers on deposits instead of tax returns, NMLS #513013"
@@ -300,46 +379,29 @@
       decoding="async"
     ></picture>
 
-    <div class="container">
-      <div class="hero-glass-card">
-        <div class="hero-two-col">
-          <div class="hero-col hero-col-authority">
-            <div class="hero-authority-inner">
-              <h1>Bank Statement Loans in Texas</h1>
-              <p class="hero-subtitle">Self-employed and writing off heavily? Qualify on your deposits — not your tax returns. 12 and 24 month programs, personal or business statements, across Texas.</p>
-              <p class="hero-updated" style="font-size:0.8rem;opacity:0.72;margin:0.55rem 0 0;">Last updated: July 3, 2026</p>
-            </div>
-            <div class="hero-ctas">
-              <a href="/scenario.html" class="btn btn-primary hero-cta-primary hero-cta-btn">Check My Bank Statement Income</a>
-              <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-hero-ghost hero-cta-btn" target="_blank" rel="noopener">Schedule Strategy Call</a>
-            </div>
-            <p class="hero-call-link">
-              <a href="tel:+15129566010" class="hero-call-link-a">
-                <svg class="hero-call-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                Call or Text (512) 956-6010
-              </a>
-            </p>
-          </div>
-
+    <div class="pilot-container pilot-hero-grid">
+      <div>
+        <p class="pilot-kicker" style="color:#f3c86e;">Mortgage options for self-employed Texans</p>
+        <h1>Bank Statement Loans in Texas</h1>
+        <p class="pilot-hero-copy">Qualify using your deposits—not the taxable income left after business write-offs. Compare 12- and 24-month programs across personal, business, and 1099 documentation.</p>
+        <div class="pilot-actions">
+          <a href="#deposit-review" class="btn btn-primary">See What I May Qualify For</a>
+          <a href="https://calendly.com/adamstyer/15minutes" class="btn pilot-secondary" target="_blank" rel="noopener">Schedule a 15-Minute Call</a>
         </div>
-        <p class="hero-legal">
-          NMLS#: 2653540 (Company) &middot; 513013 (Adam Styer)
-        </p>
+        <ul class="pilot-proof" aria-label="Service highlights">
+          <li>40+ wholesale lenders</li><li>Texas statewide</li><li>Adam reviews your statements</li>
+        </ul>
+        <p class="pilot-updated">Last updated July 3, 2026 · Adam Styer, NMLS #513013 · Company NMLS #2653540</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Quick Quote Form -->
-  <section class="section bg-light">
-    <div class="container content-narrow">
-      <div class="quick-quote-form">
-        <h3>See What Your Deposits Qualify For</h3>
+      <div class="pilot-form-card" id="deposit-review">
+        <h2>See What Your Deposits Qualify For</h2>
+        <p>Share the basics. Adam will compare the income paths for your scenario.</p>
         <form name="bank-statement-quote" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="bank-statement-quote">
-          <!-- Netlify honeypot -->
           <p style="display:none;">
             <label>Don't fill this out if you're human: <input name="bot-field"></label>
           </p>
+          <div class="pilot-form-grid">
           <div class="form-group">
             <label for="loan-purpose-bank-statement">Loan Purpose</label>
             <select id="loan-purpose-bank-statement" name="loanGoal" required>
@@ -371,124 +433,113 @@
             <label for="phone-bank-statement">Phone Number</label>
             <input type="tel" id="phone-bank-statement" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
           </div>
-          <!-- TCPA consent — required, unchecked by default -->
-          <div style="margin-top:8px;margin-bottom:8px;">
-            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
-              <input type="checkbox" name="tcpa_consent" id="hqf-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+          <div class="pilot-span">
+            <label class="pilot-consent">
+              <input type="checkbox" name="tcpa_consent" id="hqf-tcpa" required>
               <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
             </label>
           </div>
-          <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
-          <div style="margin-top:8px;margin-bottom:8px;">
-            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
-              <input type="checkbox" name="sms_opt_in" id="hqf-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
+          <div class="pilot-span">
+            <label class="pilot-consent">
+              <input type="checkbox" name="sms_opt_in" id="hqf-sms-optin">
               <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
             </label>
           </div>
-          <button type="submit" class="btn btn-primary btn-full">Get My Rate Quote</button>
+          <button type="submit" class="btn btn-primary btn-full pilot-span">Review My Scenario</button>
+          </div>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- Why Bank Statement Loans Exist -->
-  <section class="section">
-    <div class="container content-narrow">
-      <p><strong>A bank statement loan lets a self-employed borrower in Texas qualify for a mortgage using 12 or 24 months of bank deposits instead of tax returns.</strong> Adam Styer (NMLS #513013) closes bank statement loans across Texas with program options that vary by credit, down payment, reserves, and documentation, with access to 40+ wholesale lenders for personal-account, business-account, and 1099-only programs.</p>
-
-      <h2>Why Bank Statement Loans Exist</h2>
-      <p>Conventional mortgage underwriting was built around W-2 employees. Two paystubs, a couple of W-2s, an employment verification call, and you're done. Self-employed borrowers don't fit that model — and the gap is wider than most realize.</p>
-      <p>The problem isn't that self-employed people don't make money. The problem is that the tax code rewards them for making their money <em>look</em> small. Section 179 deductions, vehicle write-offs, home office, business meals, depreciation, retirement contributions, health premiums — every legitimate deduction reduces taxable income. By the time the return is filed, a contractor pulling $250,000 in revenue might show $80,000 of net profit on <a href="https://www.irs.gov/forms-pubs/about-schedule-c-form-1040" target="_blank" rel="noopener">IRS Schedule C (Form 1040)</a>. Conventional underwriting — which follows the <a href="https://selling-guide.fanniemae.com/sel/b3-3.5-01/underwriting-factors-and-documentation-self-employed-borrower" target="_blank" rel="noopener">Fannie Mae Selling Guide's self-employed income rules</a> and works off that Schedule C net — sees $80,000. The bank statement lender sees the actual $250,000.</p>
-      <p>Bank statement programs were built specifically to close that gap. They're a recognition that for millions of business owners, freelancers, gig workers, and 1099 contractors, tax returns are not a fair proxy for income. They're a tax-optimization tool. And using them to qualify a mortgage punishes people for being good at running their business.</p>
-      <p>These loans sit in the Non-QM category — non-qualified mortgages. That's a legal classification, not a quality grade. Under the CFPB's Ability-to-Repay rule (<a href="https://www.ecfr.gov/current/title-12/chapter-X/part-1026/subpart-E/section-1026.43" target="_blank" rel="noopener">12 CFR 1026.43</a>), a lender still has to make a reasonable, good-faith determination that you can repay the loan — but the rule expressly allows that determination to rest on records like bank statements, not only tax returns and W-2s. Bank statement underwriting isn't a loophole. It's a documented, compliant way to prove the income your tax return hides.</p>
-      <p>For a more general overview of self-employment financing options, read the <a href="/self-employed-mortgage-austin.html">self-employed mortgage guide</a>. This page goes deeper on the bank statement program specifically — how the math works, what lenders look for, and how to structure the loan to qualify for the most house.</p>
+  <section class="pilot-section">
+    <div class="pilot-container">
+      <div class="pilot-reading">
+        <p class="pilot-kicker">The short answer</p>
+        <h2>What is a bank statement loan?</h2>
+        <p class="pilot-intro"><strong>A bank statement loan lets a self-employed borrower qualify using 12 or 24 months of eligible bank deposits instead of relying primarily on tax returns.</strong> The lender still reviews credit, assets, reserves, property, and ability to repay; only the way income is documented changes.</p>
+      </div>
+      <div class="pilot-card-grid" aria-label="Qualification highlights">
+        <article class="pilot-card"><h3>Income documentation</h3><p>Personal or business statements, with 1099-only and P&amp;L paths available for some profiles.</p></article>
+        <article class="pilot-card"><h3>Typical history</h3><p>Two years self-employed is standard; some programs consider one year plus related W-2 history.</p></article>
+        <article class="pilot-card"><h3>Credit &amp; down payment</h3><p>Many programs begin around 660–680 credit. Strong files may have options starting at 10% down.</p></article>
+      </div>
     </div>
   </section>
 
-  <!-- How Underwriters Calculate Income -->
-  <section class="section bg-light">
-    <div class="container content-narrow">
-      <h2>How Underwriters Calculate Income on a Bank Statement Loan</h2>
-      <p>This is the section most other lender websites skip. It's also the most important part of the loan, because the same borrower can qualify for wildly different loan amounts depending on which method is used and how the deposits look.</p>
-
-      <h3>Method 1: Deposits Method (Most Common)</h3>
-      <p>The underwriter pulls 12 or 24 months of statements, totals the eligible deposits, divides by the number of months, and applies an expense factor.</p>
-      <div style="background:#f4f4f4;border-left:4px solid #1a3a5c;padding:1.25rem 1.5rem;margin:1.5rem 0;border-radius:4px;">
-        <p style="font-size:1rem;font-weight:600;margin:0 0 0.5rem;">Worked Example — Business Bank Statements</p>
-        <p style="margin:0;font-family:monospace;font-size:0.95rem;line-height:1.7;">
-          Total business deposits over 12 months: $240,000<br>
-          Average monthly deposits: $240,000 ÷ 12 = $20,000<br>
-          Expense factor applied: 50% (typical default)<br>
-          Qualifying income: $20,000 × 50% = $10,000/mo<br>
-          Annualized: $120,000
-        </p>
+  <section class="pilot-section" style="background:var(--pilot-soft);">
+    <div class="pilot-container pilot-two-col">
+      <div class="pilot-example">
+        <p class="pilot-kicker" style="color:#f3c86e;">Worked example</p>
+        <h2 style="color:#fff;">How deposit-based income is calculated</h2>
+        <div class="pilot-math">
+          <div class="pilot-math-row"><span>12-month business deposits</span><strong>$240,000</strong></div>
+          <div class="pilot-math-row"><span>Average monthly deposits</span><strong>$20,000</strong></div>
+          <div class="pilot-math-row"><span>50% expense factor</span><strong>− $10,000</strong></div>
+          <div class="pilot-math-row"><span>Qualifying monthly income</span><strong>$10,000</strong></div>
+        </div>
       </div>
-      <p>The expense factor is where the program gets interesting. 50% is the industry default for business accounts, but it's not a hard rule. The factor varies by industry and by lender:</p>
-      <ul>
-        <li><strong>Service businesses (consultants, attorneys, real estate agents, financial advisors, designers):</strong> often 25–35% expense factor — fewer materials and overhead means more of the deposit is actual income.</li>
-        <li><strong>Standard mixed businesses (most LLCs, S-Corps, online businesses):</strong> 50% is the default.</li>
-        <li><strong>Contractors, restaurateurs, retail, anything with significant cost of goods:</strong> 50–70% expense factor — more of the deposit is paying for materials, labor, and inventory before it becomes income.</li>
-        <li><strong>CPA-letter override:</strong> some lenders will accept a CPA letter stating actual expense ratio. If your CPA confirms expenses are 30%, the lender uses 30% — meaningful difference.</li>
-      </ul>
-      <p>Ineligible deposits get stripped out before the math runs: transfers between accounts, loan proceeds, refunds, tax refunds, gifts, and one-time large deposits flagged as non-recurring.</p>
-
-      <h3>Method 2: P&amp;L Method</h3>
-      <p>A CPA-prepared profit and loss statement is submitted alongside the statements. The lender uses the P&amp;L net income figure and uses the bank statements only to validate that deposits roughly match revenue. This method works well for borrowers whose actual expenses are higher than the standard 50% factor — a CPA P&amp;L showing 65% real expenses unlocks lower qualifying income but a more accurate underwriting picture, and some lenders pair this with a lower rate. When the P&amp;L carries the file on its own, see the dedicated <a href="/p-and-l-mortgage-texas.html">P&amp;L-only mortgage program for Texas</a>.</p>
-
-      <h3>Method 3: Hybrid</h3>
-      <p>The deposits and the P&amp;L are both reviewed. The underwriter typically uses the lower of the two as qualifying income. Hybrid programs are most common at $1M+ loan amounts where lenders want extra confidence in the income number.</p>
+      <div class="pilot-note">
+        <h3>The expense factor changes the result</h3>
+        <p>Underwriters remove ineligible deposits, average what remains, then estimate business expenses. A 50% factor is a common business-account default, but the actual factor depends on the lender, industry, and documentation.</p>
+        <ul>
+          <li>Service businesses may receive a 25–35% factor.</li>
+          <li>Mixed businesses commonly use 50%.</li>
+          <li>Material- or inventory-heavy businesses may use 50–70%.</li>
+          <li>Some lenders accept a CPA-supported expense ratio.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- 12 vs 24 Month -->
-  <section class="section">
-    <div class="container content-narrow">
-      <h2>12-Month vs. 24-Month Bank Statement Programs</h2>
-      <p>Most wholesale Non-QM lenders offer both lookbacks, and choosing correctly can change your qualifying income by tens of thousands of dollars.</p>
-      <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;font-size:0.95rem;">
-          <thead>
-            <tr style="background:#1a3a5c;color:#fff;">
-              <th style="padding:0.75rem 1rem;text-align:left;">Factor</th>
-              <th style="padding:0.75rem 1rem;text-align:left;">12-Month Program</th>
-              <th style="padding:0.75rem 1rem;text-align:left;">24-Month Program</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom:1px solid #e0e0e0;">
-              <td style="padding:0.75rem 1rem;font-weight:500;">Income lookback</td>
-              <td style="padding:0.75rem 1rem;">Most recent 12 months</td>
-              <td style="padding:0.75rem 1rem;">Most recent 24 months</td>
-            </tr>
-            <tr style="background:#f9f9f9;border-bottom:1px solid #e0e0e0;">
-              <td style="padding:0.75rem 1rem;font-weight:500;">Rate premium</td>
-              <td style="padding:0.75rem 1rem;">+0.125% to +0.375% over 24-mo</td>
-              <td style="padding:0.75rem 1rem;">Baseline Non-QM rate</td>
-            </tr>
-            <tr style="border-bottom:1px solid #e0e0e0;">
-              <td style="padding:0.75rem 1rem;font-weight:500;">Down payment</td>
-              <td style="padding:0.75rem 1rem;">Often 15% minimum</td>
-              <td style="padding:0.75rem 1rem;">Often 10% minimum (strong credit)</td>
-            </tr>
-            <tr style="background:#f9f9f9;border-bottom:1px solid #e0e0e0;">
-              <td style="padding:0.75rem 1rem;font-weight:500;">Best for</td>
-              <td style="padding:0.75rem 1rem;">Borrowers with sharply rising recent income</td>
-              <td style="padding:0.75rem 1rem;">Borrowers with steady or seasonal income</td>
-            </tr>
-            <tr>
-              <td style="padding:0.75rem 1rem;font-weight:500;">Reserves</td>
-              <td style="padding:0.75rem 1rem;">3–6 months PITI typical</td>
-              <td style="padding:0.75rem 1rem;">6+ months PITI typical</td>
-            </tr>
-          </tbody>
-        </table>
+  <section class="pilot-section">
+    <div class="pilot-container">
+      <p class="pilot-kicker">Choose the right lookback</p>
+      <h2>12-month vs. 24-month programs</h2>
+      <p class="pilot-intro pilot-reading">Both can work. The stronger choice depends on whether your income is rising, stable, or seasonal.</p>
+      <div class="pilot-comparison">
+        <article><h3>12-month statements</h3><ul><li>Best when recent income has risen sharply</li><li>Often 15% minimum down</li><li>Typically 3–6 months PITI reserves</li><li>May price 0.125%–0.375% above a 24-month option</li></ul></article>
+        <article><h3>24-month statements</h3><ul><li>Best for stable or seasonal income</li><li>Some strong-credit options begin at 10% down</li><li>Often 6+ months PITI reserves</li><li>Longer history can support baseline Non-QM pricing</li></ul></article>
       </div>
-      <p style="margin-top:1.5rem;">Quick rule of thumb: if last year's income is at least 25% higher than the year before, the 12-month program almost always qualifies you for more loan even after the rate bump. If your income is steady or you're a seasonal business (landscaping, restaurants, tax prep) the 24-month program smooths the curve and prices better.</p>
+    </div>
+  </section>
+
+  <!-- Detailed guide begins after the primary conversion content -->
+  <section class="pilot-section pilot-guide">
+    <div class="pilot-container">
+      <p class="pilot-kicker">Secondary educational content</p>
+      <h2>Detailed Bank Statement Loan Guide</h2>
+      <p class="pilot-intro pilot-reading">Explore the deeper underwriting details when you need them. The primary answers above remain visible and indexable.</p>
+      <details>
+        <summary>Why these loans exist and how Non-QM underwriting works</summary>
+        <div class="pilot-guide-content">
+          <p>Conventional underwriting generally starts with taxable self-employed income. Legitimate deductions—depreciation, vehicle expenses, retirement contributions, health premiums, and other write-offs—can make the return a poor proxy for cash flow. Bank statement programs use documented deposits to address that gap.</p>
+          <p>Non-QM is a legal classification, not a quality grade. Under the CFPB's Ability-to-Repay rule (<a href="https://www.ecfr.gov/current/title-12/chapter-X/part-1026/subpart-E/section-1026.43" target="_blank" rel="noopener">12 CFR 1026.43</a>), lenders still make a reasonable, good-faith repayment determination. See the <a href="/self-employed-mortgage-austin.html">self-employed mortgage guide</a> for the broader program landscape.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Personal, business, P&amp;L, hybrid, and 1099 income methods</summary>
+        <div class="pilot-guide-content">
+          <h3>Business statements</h3><p>Business statements show cash flow before owner draws. Underwriters generally apply an expense factor, remove transfers and non-recurring deposits, and assess consistency.</p>
+          <h3>Personal statements</h3><p>Personal-account programs may use a smaller expense factor because the business has already paid expenses before the owner transfer. Co-mingled accounts can work, but transfers must be identified to prevent double-counting.</p>
+          <h3>P&amp;L and hybrid</h3><p>A CPA-prepared profit and loss statement may support the income calculation. Hybrid programs review both deposits and P&amp;L figures and commonly use the lower supported income. Learn about the <a href="/p-and-l-mortgage-texas.html">P&amp;L-only mortgage path</a>.</p>
+          <h3>1099-only</h3><p>Some lenders use gross 1099 income with a flat 10–20% expense factor when most income is documented on 1099s. These programs commonly request two years of 1099s and current year-to-date earnings. See the <a href="/1099-only-mortgage-texas.html">1099-only mortgage guide</a>.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Typical program ranges and underwriting considerations</summary>
+        <div class="pilot-guide-content">
+          <table><thead><tr><th>Detail</th><th>Typical range</th></tr></thead><tbody>
+            <tr><td>Rate vs. conventional</td><td>About 0.5%–1.5% higher</td></tr><tr><td>Minimum credit score</td><td>660–680 entry; 720+ often improves options</td></tr><tr><td>Down payment</td><td>10% for some strong files; 15–25% is common</td></tr><tr><td>Loan amounts</td><td>$150,000 to $3M+ depending on program</td></tr><tr><td>Reserves</td><td>3–12 months PITI depending on structure</td></tr><tr><td>Self-employment</td><td>Two years standard; exceptions may apply</td></tr>
+          </tbody></table>
+          <p>Rates, loan-to-value limits, reserves, and documentation vary by credit, loan amount, occupancy, property, and investor. Contact Adam for current program availability and pricing.</p>
+        </div>
+      </details>
     </div>
   </section>
 
   <!-- Personal vs Business Statements -->
-  <section class="section bg-light">
+  <section class="section bg-light pilot-legacy-extra" aria-hidden="true">
     <div class="container content-narrow">
       <h2>Personal vs. Business Bank Statements</h2>
       <p>Whether the lender pulls personal or business statements changes the qualifying math significantly.</p>
@@ -507,7 +558,7 @@
   </section>
 
   <!-- Who This Loan Is For -->
-  <section class="section">
+  <section class="section pilot-legacy-extra" aria-hidden="true">
     <div class="container">
       <h2 class="text-center">Who Bank Statement Loans Are Built For</h2>
       <div class="grid grid-2">
@@ -540,7 +591,7 @@
   </section>
 
   <!-- Programs We Offer -->
-  <section class="section bg-light">
+  <section class="section bg-light pilot-legacy-extra" aria-hidden="true">
     <div class="container content-narrow">
       <h2>Bank Statement Loan Programs and Pricing</h2>
       <p>Every wholesale lender prices Non-QM differently. The numbers below are representative for Texas in 2026 — the actual quote depends on credit, loan amount, expense factor, and which investor we shop the deal to.</p>
@@ -589,8 +640,8 @@
   </section>
 
   <!-- What We'll Need -->
-  <section class="section">
-    <div class="container content-narrow">
+  <section class="pilot-section pilot-docs">
+    <div class="pilot-container pilot-reading">
       <h2>What We'll Need From You</h2>
       <p>Bank statement loans are documentation-light compared to conventional, but they're not no-doc. Plan on:</p>
       <ul>
@@ -607,8 +658,8 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="section bg-light">
-    <div class="container content-narrow">
+  <section id="faq" class="pilot-section pilot-faq-section">
+    <div class="pilot-container pilot-faq">
       <h2>Bank Statement Loan FAQ — Texas</h2>
       <div class="accordion">
 
@@ -707,7 +758,7 @@
   </section>
 
   <!-- Extractable answers and comparison -->
-  <section class="section bg-light">
+  <section class="section bg-light pilot-legacy-extra" aria-hidden="true">
     <div class="container content-narrow">
       <h2>Quick Answers About Bank Statement Loans</h2>
       <h3>Who is a bank statement loan for?</h3>
@@ -753,8 +804,8 @@
   </section>
 
   <!-- Related Programs -->
-  <section class="section">
-    <div class="container content-narrow">
+  <section class="pilot-section pilot-links">
+    <div class="pilot-container">
       <h2>Related Complex-Income Pages</h2>
       <p>Bank statement is one of several ways to qualify outside the conventional box. Depending on your full picture, one of these may fit better:</p>
       <ul>
@@ -773,7 +824,7 @@
   </section>
 
   <!-- Trust Strip -->
-  <section class="section bg-light">
+  <section class="pilot-testimonial bg-light">
     <div class="container text-center">
       <p style="font-size:1.5rem;margin-bottom:0.5rem;">★★★★★</p>
       <p style="font-style:italic;max-width:620px;margin:0 auto 1rem;">"My CPA had me writing off so much that my returns showed almost no income. Adam ran my deposits, found a 12-month program, and closed us in 28 days on a house we couldn't have touched conventionally."</p>
@@ -782,7 +833,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="section bg-navy cta-spotlight">
+  <section class="pilot-final cta-spotlight">
     <div class="container text-center">
       <h2 class="text-white">Check Your Bank Statement Income</h2>
       <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Send me the short version — your deposits, your business type, your purchase goal. I'll tell you which income path gives you the most buying power before you fill out a single application. I run same-day pre-approvals, and I read the statements myself. — Adam</p>
