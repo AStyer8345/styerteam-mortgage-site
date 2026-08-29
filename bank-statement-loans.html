@@ -41,6 +41,8 @@
     .bsl-page main ul{margin:0 0 .9rem 1.15rem}
     .bsl-page main li{margin-bottom:.45rem;line-height:1.6}
     .bsl-page .breadcrumb{margin-bottom:0;padding:.55rem 0}
+    .bsl-page .breadcrumb ol{margin:0;align-items:center;row-gap:.2rem}
+    .bsl-page .breadcrumb li[aria-hidden="true"]{display:none}
     .bsl-wrap{max-width:1140px;margin-inline:auto}
     .bsl-prose{max-width:740px}
     .bsl-prose h3{margin-top:1.15rem}
@@ -53,20 +55,27 @@
     .bsl-page .hero>.container{margin-inline:auto;padding-top:0;padding-bottom:0}
     .bsl-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,4vw,3.5rem);align-items:center;max-width:1140px;margin-inline:auto}
     .bsl-page .hero h1{font-size:clamp(1.9rem,1.4rem + 1.8vw,2.5rem);margin-bottom:.6rem}
-    .bsl-page .hero-subtitle{font-size:1.02rem;line-height:1.55;margin-bottom:1rem}
+    .bsl-page .hero h1,.bsl-page .hero-subtitle,.bsl-page .hero-call-link{text-shadow:0 2px 14px rgba(0,8,22,.72)}
+    .bsl-page .hero-subtitle{font-size:1.02rem;line-height:1.55;margin-bottom:1rem;color:rgba(255,255,255,.94)}
     .bsl-page .hero-ctas{margin-bottom:.7rem}
     .bsl-hero-meta{font-size:.78rem;opacity:.72;margin:.75rem 0 0}
     .bsl-page .hero-legal{margin-top:.4rem}
 
     /* ---- Lead form card (the conversion rail) ---- */
-    .bsl-form-card{background:rgba(255,255,255,.97);border-radius:var(--radius-xl);border:1px solid rgba(255,255,255,.55);border-top:4px solid #F2C840;box-shadow:0 18px 45px rgba(4,14,32,.35);padding:1.35rem 1.5rem 1.2rem;color:var(--color-text)}
+    .bsl-form-card{background:rgba(251,250,247,.98);border-radius:10px;border:1px solid rgba(224,218,206,.9);border-top:2px solid #B99642;box-shadow:0 16px 36px rgba(4,14,32,.25);padding:1.35rem 1.5rem 1.2rem;color:var(--color-text)}
     .bsl-form-title{font-family:var(--font-display);color:var(--color-navy);font-size:1.3rem;line-height:1.25;margin:0 0 .2rem}
-    .bsl-form-sub{font-size:.82rem;color:var(--color-gray);margin:0 0 .9rem}
+    .bsl-form-sub{font-size:.82rem;color:var(--color-gray);margin:0 0 .25rem}
+    .bsl-form-assurance{font-size:.72rem;color:#295274;font-weight:600;margin:0 0 .85rem}
     .bsl-form-card .form-group{margin-bottom:.7rem}
     .bsl-form-card label{font-size:.78rem;font-weight:600;margin-bottom:.25rem;color:var(--color-dark-gray)}
     .bsl-form-card input,.bsl-form-card select{padding:.55rem .7rem;font-size:.9rem;border-radius:var(--radius-md)}
+    .bsl-form-card input:focus,.bsl-form-card select:focus{outline:3px solid rgba(26,79,122,.18);outline-offset:1px;border-color:#295274}
     .bsl-form-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    .bsl-consent{margin:.5rem 0;padding-top:.5rem;border-top:1px solid #e3ded4}
+    .bsl-consent--optional{padding:.55rem .65rem;border:1px solid #e3ded4;border-radius:6px;background:#f2f0ea}
     .bsl-form-card .btn-full{width:100%;margin-top:.4rem}
+    .bsl-form-card .bsl-form-submit{border:1px solid var(--color-navy);background:var(--color-navy);color:#fff;box-shadow:none}
+    .bsl-form-card .bsl-form-submit:hover{background:#163b60;color:#fff;transform:none}
     .bsl-form-trust{font-size:.72rem;color:var(--color-gray);text-align:center;margin:.6rem 0 0}
 
     /* ---- Two-column shells, cards, rails ---- */
@@ -77,7 +86,7 @@
     .bsl-card h3{margin-top:0}
     .bsl-card p:last-child{margin-bottom:0}
     .bsl-rail{position:sticky;top:6.5rem}
-    .bsl-glance{border-top:4px solid #F2C840;padding:1.2rem 1.35rem}
+    .bsl-glance{border-top:2px solid #B99642;padding:1.2rem 1.35rem}
     .bsl-glance-title{font-family:var(--font-display);font-weight:700;color:var(--color-navy);font-size:1.1rem;margin:0 0 .35rem}
     .bsl-glance dl{margin:0 0 .9rem}
     .bsl-glance-row{display:flex;justify-content:space-between;gap:1rem;padding:.48rem 0;border-bottom:1px solid var(--color-border);font-size:.86rem}
@@ -99,7 +108,7 @@
     .bsl-table td{padding:.55rem .8rem;border-bottom:1px solid #e0e0e0;vertical-align:top}
     .bsl-table tbody tr:nth-child(even){background:#f9f9f9}
     .bsl-table td:first-child{font-weight:500}
-    .bsl-callout{border-left:4px solid #F2C840}
+    .bsl-callout{border-left:2px solid #B99642}
     .bsl-callout-title{font-weight:700;color:var(--color-navy);font-size:.92rem;margin:0 0 .35rem}
     .bsl-callout p{font-size:.9rem}
 
@@ -440,8 +449,9 @@
 
         <div class="bsl-hero-form">
           <div class="bsl-form-card quick-quote-form">
-            <h2 class="bsl-form-title">See What Your Deposits Qualify For</h2>
-            <p class="bsl-form-sub">Goes straight to Adam Styer, NMLS #513013 — licensed in Texas.</p>
+            <h2 class="bsl-form-title">Let's Review Your Scenario</h2>
+            <p class="bsl-form-sub">Tell me what you're trying to accomplish. I'll compare the available income-documentation paths.</p>
+            <p class="bsl-form-assurance">This is not an application and does not authorize a credit pull.</p>
             <form name="bank-statement-quote" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
               <input type="hidden" name="form-name" value="bank-statement-quote">
               <!-- Netlify honeypot -->
@@ -459,7 +469,7 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="loan-amount-bank-statement">Estimated Purchase Price</label>
+                  <label for="loan-amount-bank-statement">Estimated Property Value</label>
                   <select id="loan-amount-bank-statement" name="loan_amount" required>
                     <option value="">Select...</option>
                     <option value="under-500k">Under $500K</option>
@@ -484,22 +494,22 @@
                 </div>
               </div>
               <!-- TCPA consent — required, unchecked by default -->
-              <div style="margin-top:8px;margin-bottom:8px;">
+              <div class="bsl-consent">
                 <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
                   <input type="checkbox" name="tcpa_consent" id="hqf-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
                   <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
                 </label>
               </div>
               <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
-              <div style="margin-top:8px;margin-bottom:8px;">
+              <div class="bsl-consent bsl-consent--optional">
                 <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
                   <input type="checkbox" name="sms_opt_in" id="hqf-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
                   <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
                 </label>
               </div>
-              <button type="submit" class="btn btn-primary btn-full">Get My Rate Quote</button>
+              <button type="submit" class="btn btn-full bsl-form-submit">Request a Deposit Review</button>
             </form>
-            <p class="bsl-form-trust">No tax returns needed to start. Adam reads the statements himself.</p>
+            <p class="bsl-form-trust">Reviewed personally by Adam Styer · NMLS #513013</p>
           </div>
         </div>
       </div>

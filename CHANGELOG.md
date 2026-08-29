@@ -1,12 +1,3 @@
-## 2026-08-29 — PILOT (branch `redesign/bank-statement-pilot`, NOT merged): bank-statement-loans.html compact redesign
-
-- **One-page design pilot per Adam's directive** — perfect this page first, review, then decide which patterns roll out sitewide. No other page touched; all CSS is page-scoped via `body.bsl-page` in a `<style>` block (zero changes to `style.css`).
-- **Density:** desktop page height 14,206px → 7,234px (−49%); mobile 18,682px → 12,193px (−35%). Section padding ~101px → ~65px; H2 33.6px → 28.8px. Content shell 1140px with 740px prose column; two-column layouts for what-is/at-a-glance, worked example/methods, 12-vs-24/rule-of-thumb.
-- **Conversion path:** the `bank-statement-quote` Netlify form moved into a white card beside the hero H1 (above the fold at 1440×1000). Same form name, field names, TCPA + SMS consent copy, honeypot, `/thank-you` action — script.js AJAX/lead-intake binding unchanged. Sticky "At a Glance" qualification card with CTA in section 2.
-- **Long-form content preserved, demoted:** "Why these loans exist," personal-vs-business/1099, persona grid, pricing table, and program comparison table moved verbatim into a collapsed "Detailed Guide" accordion (crawlable HTML). All 10 FAQ items kept — FAQPage schema parity intact. Title/meta/canonical/H1/schema/GTM/footer/licensing untouched.
-- **Removed:** hero Adam-cutout image (conflicted with hero form rail), self-referencing related-link, duplicate `/non-qm-loans.html` link; related-links descriptors shortened. Added `/1099-only-mortgage-texas.html` + `/p-and-l-mortgage-texas.html` to related links.
-- Verified: no horizontal overflow at 1440/375, all 17 internal links 200, accordions + ARIA working, single Netlify form, heading outline clean.
-
 ## 2026-08-21 — Weekly content editor: self-employed hub citation pass + Austin median correction
 
 **Page:** `self-employed-mortgage-austin.html` (niche hub, queue "DO NEXT")
