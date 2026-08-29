@@ -61,10 +61,10 @@
     .lp-header .mobile-menu-toggle,
     .lp-header .nav-cta { display: none !important; }
 
-    /* ── Hero ──────────────────────────────────────────────── */
+    /* ── Hero (compact — pilot scale) ──────────────────────── */
     .lp-hero {
       background: var(--color-navy);
-      padding: var(--spacing-4xl) 0;
+      padding: clamp(2rem, 3.5vw, 3rem) 0;
       position: relative;
       overflow: hidden;
     }
@@ -77,23 +77,25 @@
     }
     .lp-hero-inner {
       display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: var(--spacing-4xl);
+      grid-template-columns: 1fr 440px;
+      gap: clamp(2rem, 4vw, 3rem);
       align-items: center;
       min-width: 0;
+      max-width: 1140px;
+      margin-inline: auto;
     }
     .lp-hero-copy h1 {
       font-family: var(--font-display);
-      font-size: var(--font-size-5xl);
+      font-size: clamp(1.9rem, 1.4rem + 1.8vw, 2.5rem);
       color: var(--color-white);
       line-height: var(--line-height-tight);
-      margin-bottom: var(--spacing-lg);
+      margin-bottom: .6rem;
     }
     .lp-hero-copy .lp-subhead {
-      font-size: var(--font-size-lg);
-      color: rgba(255,255,255,0.85);
-      margin-bottom: var(--spacing-xl);
-      line-height: var(--line-height-relaxed);
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 1.1rem;
+      line-height: 1.55;
     }
     .lp-trust-bar {
       display: flex;
@@ -105,51 +107,62 @@
       background: rgba(255,255,255,0.1);
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 2rem;
-      padding: 6px 14px;
-      font-size: var(--font-size-sm);
+      padding: 5px 12px;
+      font-size: .8rem;
       color: rgba(255,255,255,0.9);
       white-space: nowrap;
     }
     .lp-trust-chip .stars { color: #F59E0B; }
 
-    /* ── Lead Form ─────────────────────────────────────────── */
+    /* ── Lead Form (warm card — pilot polish) ──────────────── */
     .lp-form-card {
-      background: var(--color-white);
-      border-radius: var(--radius-2xl);
-      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
-      padding: var(--spacing-2xl);
+      background: rgba(251,250,247,.98);
+      border-radius: 10px;
+      border: 1px solid rgba(224,218,206,.9);
+      border-top: 2px solid #B99642;
+      box-shadow: 0 16px 36px rgba(4,14,32,.25);
+      padding: 1.35rem 1.5rem 1.2rem;
       min-width: 0;
     }
     .lp-form-card h2 {
-      font-size: var(--font-size-2xl);
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      line-height: 1.25;
       color: var(--color-navy);
-      margin-bottom: var(--spacing-lg);
+      margin-bottom: .75rem;
       font-weight: var(--font-weight-bold);
     }
+    .lp-form-lede {
+      margin-bottom: 1rem !important;
+      padding-bottom: .85rem;
+      border-bottom: 1px solid #e3ded4;
+    }
+    .lp-form-lede p { font-size: .8rem; margin-bottom: .5rem; }
+    .lp-form-lede p:last-child { margin-bottom: 0; }
     .lp-form-row {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--spacing-md);
-      margin-bottom: var(--spacing-md);
+      grid-template-columns: 1fr 1fr;
+      gap: .7rem;
+      margin-bottom: .7rem;
     }
     .lp-form-field {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
     .lp-form-field.full { grid-column: 1 / -1; }
     .lp-form-field label {
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-medium);
+      font-size: .78rem;
+      font-weight: var(--font-weight-semibold);
       color: var(--color-dark-gray);
     }
     .lp-form-field input,
     .lp-form-field select,
     .lp-form-field textarea {
-      padding: 10px 14px;
-      border: 1.5px solid var(--color-border);
+      padding: .55rem .7rem;
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
-      font-size: var(--font-size-base);
+      font-size: .9rem;
       font-family: var(--font-primary);
       color: var(--color-text);
       background: var(--color-white);
@@ -160,13 +173,18 @@
     .lp-form-field input:focus,
     .lp-form-field select:focus,
     .lp-form-field textarea:focus {
-      outline: none;
-      border-color: var(--color-navy);
+      outline: 3px solid rgba(26,79,122,.18);
+      outline-offset: 1px;
+      border-color: #295274;
     }
     .lp-form-field textarea {
-      min-height: 96px;
+      min-height: 72px;
       resize: vertical;
     }
+    .lp-consent { margin: .5rem 0; padding-top: .5rem; border-top: 1px solid #e3ded4; }
+    .lp-consent--optional { padding: .55rem .65rem; border: 1px solid #e3ded4; border-radius: 6px; background: #f2f0ea; }
+    .lp-btn-navy { background: var(--color-navy); color: #fff; border: 1px solid var(--color-navy); box-shadow: none; }
+    .lp-btn-navy:hover { background: #163b60; color: #fff; transform: none; }
     .lp-form-helper {
       color: var(--color-gray);
       font-size: var(--font-size-xs);
@@ -175,18 +193,18 @@
     }
     .lp-funnel-progress {
       display: grid;
-      gap: 8px;
-      margin-bottom: var(--spacing-lg);
+      gap: 6px;
+      margin-bottom: .85rem;
     }
     .lp-funnel-step-label {
       color: var(--color-gray);
-      font-size: var(--font-size-xs);
+      font-size: .7rem;
       font-weight: var(--font-weight-semibold);
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
     .lp-funnel-track {
-      height: 5px;
+      height: 4px;
       border-radius: 999px;
       background: var(--color-border);
       overflow: hidden;
@@ -196,111 +214,134 @@
       height: 100%;
       width: 50%;
       border-radius: inherit;
-      background: var(--color-gold);
+      background: #B99642;
       transition: width var(--transition-base);
     }
     .lp-funnel-step[hidden] { display: none; }
     .lp-funnel-prompt {
       color: var(--color-gray);
-      font-size: var(--font-size-sm);
-      line-height: 1.55;
-      margin: -0.25rem 0 var(--spacing-md);
+      font-size: .82rem;
+      line-height: 1.5;
+      margin: -0.2rem 0 .7rem;
     }
     .lp-funnel-nav {
       display: flex;
       gap: var(--spacing-sm);
-      margin-top: var(--spacing-lg);
+      margin-top: .85rem;
     }
     .lp-funnel-nav .btn { flex: 1; }
     .lp-funnel-nav.lp-form-submit .btn { width: auto; }
     .lp-form-submit {
-      margin-top: var(--spacing-lg);
+      margin-top: .85rem;
     }
     .lp-form-submit .btn {
       width: 100%;
-      padding: 14px;
+      padding: 12px;
       font-size: var(--font-size-base);
       font-weight: var(--font-weight-semibold);
       justify-content: center;
     }
     .lp-form-disclaimer {
-      font-size: var(--font-size-xs);
+      font-size: .72rem;
       color: var(--color-gray);
       text-align: center;
-      margin-top: var(--spacing-md);
-      line-height: var(--line-height-relaxed);
+      margin-top: .6rem;
+      line-height: 1.5;
     }
     .lp-scenario-reassurance {
-      margin-top: var(--spacing-md);
-      padding-top: var(--spacing-md);
-      border-top: 1px solid var(--color-border);
-      font-size: var(--font-size-sm);
+      margin-top: .75rem;
+      padding-top: .75rem;
+      border-top: 1px solid #e3ded4;
+      font-size: .8rem;
       color: var(--color-gray);
-      line-height: var(--line-height-relaxed);
+      line-height: 1.5;
     }
     .lp-scenario-reassurance p {
-      margin-bottom: var(--spacing-sm);
+      margin-bottom: .45rem;
     }
     .lp-scenario-reassurance p:last-child {
       margin-bottom: 0;
     }
 
-    /* ── Below fold sections ───────────────────────────────── */
-    .lp-proof { padding: var(--spacing-4xl) 0; background: var(--color-white); }
+    /* ── Below fold sections (compact — pilot scale) ───────── */
+    .lp-eyebrow {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: #7A5F1F;
+      margin-bottom: .45rem;
+      text-align: center;
+    }
+    .lp-sec-title {
+      color: var(--color-navy);
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 1.2rem + 1vw, 1.8rem);
+      text-align: center;
+      margin-bottom: 0;
+    }
+    .lp-proof { padding: clamp(2.5rem, 4vw, 3.5rem) 0; background: var(--color-white); }
     .lp-proof-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-xl);
-      margin-top: var(--spacing-2xl);
+      gap: 1rem;
+      margin-top: 1.5rem;
+      max-width: 1140px;
+      margin-inline: auto;
     }
     .lp-proof-card {
       background: var(--color-light-gray);
-      border-radius: var(--radius-xl);
-      padding: var(--spacing-xl);
-      border-left: 4px solid var(--color-gold);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.25rem;
+      border-left: 3px solid #B99642;
     }
     .lp-proof-card .lp-proof-icon {
-      font-size: 2rem;
-      margin-bottom: var(--spacing-md);
+      font-size: 1.5rem;
+      margin-bottom: .5rem;
     }
     .lp-proof-card h3 {
-      font-size: var(--font-size-lg);
+      font-size: 1rem;
       color: var(--color-navy);
-      margin-bottom: var(--spacing-sm);
+      margin-bottom: .35rem;
       font-weight: var(--font-weight-bold);
     }
     .lp-proof-card p {
-      font-size: var(--font-size-sm);
+      font-size: .875rem;
       color: var(--color-gray);
-      line-height: var(--line-height-relaxed);
+      line-height: 1.55;
+      margin-bottom: 0;
     }
 
-    .lp-reviews { padding: var(--spacing-4xl) 0; background: var(--color-light-gray); }
+    .lp-reviews { padding: clamp(2.5rem, 4vw, 3.5rem) 0; background: var(--color-light-gray); }
     .lp-reviews-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-xl);
-      margin-top: var(--spacing-2xl);
+      gap: 1rem;
+      margin-top: 1.5rem;
+      max-width: 1140px;
+      margin-inline: auto;
     }
     .lp-review-card {
       background: var(--color-white);
-      border-radius: var(--radius-xl);
-      padding: var(--spacing-xl);
-      box-shadow: var(--shadow-md);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-border);
     }
-    .lp-review-stars { color: #F59E0B; font-size: 1.1rem; margin-bottom: var(--spacing-md); }
+    .lp-review-stars { color: #F59E0B; font-size: 1rem; margin-bottom: .5rem; }
     .lp-review-text {
-      font-size: var(--font-size-sm);
+      font-size: .875rem;
       color: var(--color-dark-gray);
-      line-height: var(--line-height-relaxed);
+      line-height: 1.55;
       font-style: italic;
-      margin-bottom: var(--spacing-md);
+      margin-bottom: .6rem;
     }
-    .lp-review-author { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-navy); }
+    .lp-review-author { font-size: .82rem; font-weight: var(--font-weight-semibold); color: var(--color-navy); }
 
-    .lp-secondary-cta { padding: var(--spacing-4xl) 0; background: var(--color-navy); text-align: center; }
-    .lp-secondary-cta h2 { font-family: var(--font-display); font-size: var(--font-size-4xl); color: var(--color-white); margin-bottom: var(--spacing-md); }
-    .lp-secondary-cta p { color: rgba(255,255,255,0.8); margin-bottom: var(--spacing-2xl); }
+    .lp-secondary-cta { padding: clamp(2.5rem, 4vw, 3.5rem) 0; background: var(--color-navy); text-align: center; }
+    .lp-secondary-cta h2 { font-family: var(--font-display); font-size: clamp(1.45rem, 1.2rem + 1vw, 1.8rem); color: var(--color-white); margin-bottom: .5rem; }
+    .lp-secondary-cta p { color: rgba(255,255,255,0.8); margin-bottom: 1.25rem; }
     .lp-cta-actions { display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap; align-items: center; }
     .lp-cta-phone { color: rgba(255,255,255,0.9); font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); }
     .lp-cta-phone a { color: inherit; text-decoration: none; }
@@ -320,32 +361,34 @@
     .lp-nmls a { color: rgba(255,255,255,0.5); text-decoration: underline; }
 
     /* ── What happens next ──────────────────────────────────── */
-    .lp-next-steps { padding: var(--spacing-3xl) 0; background: var(--color-light-gray); }
+    .lp-next-steps { padding: clamp(2.5rem, 4vw, 3.5rem) 0; background: var(--color-light-gray); }
     .lp-next-steps-title {
       font-family: var(--font-display);
-      font-size: var(--font-size-3xl);
+      font-size: clamp(1.45rem, 1.2rem + 1vw, 1.8rem);
       color: var(--color-navy);
       text-align: center;
-      margin-bottom: var(--spacing-2xl);
+      margin-bottom: 1.5rem;
     }
     .lp-steps-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-xl);
+      gap: 1rem;
+      max-width: 1140px;
+      margin-inline: auto;
     }
     .lp-step { text-align: center; }
     .lp-step-number {
-      width: 52px; height: 52px;
+      width: 44px; height: 44px;
       border-radius: 50%;
-      background: var(--color-gold);
+      background: #F2C840;
       color: var(--color-navy);
       font-weight: var(--font-weight-bold);
-      font-size: var(--font-size-xl);
+      font-size: 1.1rem;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto var(--spacing-md);
+      margin: 0 auto .6rem;
     }
-    .lp-step h3 { font-size: var(--font-size-lg); color: var(--color-navy); margin-bottom: var(--spacing-sm); font-weight: var(--font-weight-semibold); }
-    .lp-step p { font-size: var(--font-size-sm); color: var(--color-gray); line-height: var(--line-height-relaxed); }
+    .lp-step h3 { font-size: 1rem; color: var(--color-navy); margin-bottom: .35rem; font-weight: var(--font-weight-semibold); }
+    .lp-step p { font-size: .875rem; color: var(--color-gray); line-height: 1.55; margin-bottom: 0; }
     .lp-trust-phone { color: rgba(255,255,255,0.9); text-decoration: none; }
     .lp-trust-phone:hover { background: rgba(255,255,255,0.2); }
 
@@ -355,7 +398,7 @@
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
       }
-      .lp-form-card { order: -1; }
+      .lp-form-card { order: -1; max-width: 560px; width: 100%; margin-inline: auto; }
       .lp-hero-copy h1 { font-size: var(--font-size-4xl); }
       .lp-proof-grid,
       .lp-reviews-grid { grid-template-columns: 1fr; }
@@ -365,8 +408,8 @@
       .lp-hero { padding: var(--spacing-2xl) 0; }
       .lp-hero .container { padding: 0 var(--spacing-md); }
       .lp-form-card {
-        border-radius: var(--radius-xl);
-        padding: var(--spacing-xl);
+        border-radius: 10px;
+        padding: 1.2rem 1.15rem 1rem;
       }
       .lp-steps-grid { grid-template-columns: 1fr; }
     }
@@ -406,7 +449,7 @@
 
           <!-- Form column -->
           <div class="lp-form-card">
-            <div class="lp-scenario-reassurance" style="margin-bottom:var(--spacing-lg);">
+            <div class="lp-scenario-reassurance lp-form-lede">
               <p><strong>Ready to move forward?</strong> The secure application is the fastest way to give Adam the complete file for pricing and pre-approval.</p>
               <p><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-primary btn-block" data-track="secure_application_click" target="_blank" rel="noopener">Start a Secure Loan Application</a></p>
               <p style="text-align:center;">Not ready for the application? Use the short form below.</p>
@@ -479,7 +522,7 @@
                   </div>
                 </div>
                 <div class="lp-funnel-nav">
-                  <button type="button" class="btn btn-primary" data-gpa-next>Continue &rarr;</button>
+                  <button type="button" class="btn lp-btn-navy" data-gpa-next>Continue &rarr;</button>
                 </div>
               </div>
 
@@ -509,14 +552,14 @@
                   </div>
                 </div>
                 <!-- TCPA consent — required, unchecked by default -->
-                <div class="lp-form-field full" style="margin-top:var(--spacing-sm);">
+                <div class="lp-consent">
                   <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
                     <input type="checkbox" name="tcpa_consent" id="gpa-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
                     <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
                   </label>
                 </div>
                 <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
-                <div class="lp-form-field full" style="margin-top:var(--spacing-xs,8px);">
+                <div class="lp-consent lp-consent--optional">
                   <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-gray);cursor:pointer;line-height:1.5;">
                     <input type="checkbox" name="sms_opt_in" id="gpa-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
                     <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
@@ -524,7 +567,7 @@
                 </div>
                 <div class="lp-funnel-nav lp-form-submit">
                   <button type="button" class="btn btn-outline" data-gpa-prev>Back</button>
-                  <button type="submit" class="btn btn-primary">Talk With Adam &rarr;</button>
+                  <button type="submit" class="btn lp-btn-navy">Talk With Adam &rarr;</button>
                 </div>
               </div>
             </form>
@@ -541,7 +584,7 @@
     </section>
 
     <!-- ══ BYLINE + DIFFERENTIATION ═════════════════════════ -->
-    <section style="padding: var(--spacing-2xl) 0; background: var(--color-white);">
+    <section style="padding: 1.5rem 0; background: var(--color-white);">
       <div class="container" style="max-width: 760px;">
         <p style="font-size:0.9rem;color:var(--color-gray);margin-bottom:1rem;border-left:3px solid #8B6E24;padding:0.4rem 0 0.4rem 0.9rem;">
           By <strong>Adam Styer</strong>, NMLS <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" target="_blank" rel="noopener">#513013</a> · Senior Loan Officer, Adam Styer | HyperSmart Home Loans · Austin, TX · 1,000+ loans closed since 2017 · <em><time datetime="2026-05-18">Updated May 18, 2026</time></em>
@@ -556,6 +599,7 @@
     <!-- ══ WHAT HAPPENS NEXT ════════════════════════════════ -->
     <section class="lp-next-steps">
       <div class="container">
+        <span class="lp-eyebrow">The Process</span>
         <h2 class="lp-next-steps-title">What happens after you submit</h2>
         <div class="lp-steps-grid">
           <div class="lp-step">
@@ -580,7 +624,8 @@
     <!-- ══ PROOF POINTS ══════════════════════════════════════ -->
     <section class="lp-proof">
       <div class="container">
-        <h2 class="text-center" style="color:var(--color-navy);font-family:var(--font-display);font-size:var(--font-size-3xl);margin-bottom:0;">Why Austin buyers choose Adam</h2>
+        <span class="lp-eyebrow">Why Adam</span>
+        <h2 class="lp-sec-title">Why Austin buyers choose Adam</h2>
         <div class="lp-proof-grid">
           <div class="lp-proof-card">
             <div class="lp-proof-icon">⚡</div>
@@ -604,7 +649,8 @@
     <!-- ══ TESTIMONIALS ══════════════════════════════════════ -->
     <section class="lp-reviews">
       <div class="container">
-        <h2 class="text-center" style="color:var(--color-navy);font-family:var(--font-display);font-size:var(--font-size-3xl);margin-bottom:0;">What buyers say</h2>
+        <span class="lp-eyebrow">Client Reviews</span>
+        <h2 class="lp-sec-title">What buyers say</h2>
         <div class="lp-reviews-grid">
           <div class="lp-review-card">
             <div class="lp-review-stars">★★★★★</div>
