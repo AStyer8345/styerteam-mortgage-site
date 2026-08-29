@@ -85,8 +85,8 @@
     .bsl-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.1rem 1.25rem;box-shadow:var(--shadow-sm)}
     .bsl-card h3{margin-top:0}
     .bsl-card p:last-child{margin-bottom:0}
-    .bsl-rail{position:static}
-    .bsl-glance{border-top:2px solid #B99642;padding:1.2rem 1.35rem}
+    .bsl-rail{position:relative;height:100%}
+    .bsl-glance{position:sticky;top:8.5rem;border-top:2px solid #B99642;padding:1.2rem 1.35rem}
     .bsl-glance-title{font-family:var(--font-display);font-weight:700;color:var(--color-navy);font-size:1.1rem;margin:0 0 .35rem}
     .bsl-glance dl{margin:0 0 .9rem}
     .bsl-glance-row{display:flex;justify-content:space-between;gap:1rem;padding:.48rem 0;border-bottom:1px solid var(--color-border);font-size:.86rem}
@@ -154,7 +154,8 @@
     @media (max-width:960px){
       .bsl-hero-grid,.bsl-2col,.bsl-2col--even,.bsl-2col--table{grid-template-columns:1fr}
       .bsl-hero-form{max-width:560px;width:100%;margin-inline:auto}
-      .bsl-rail{position:static}
+      .bsl-rail{position:static;height:auto}
+      .bsl-glance{position:static}
       .bsl-page .hero-ctas{justify-content:flex-start}
       .bsl-page .hero-ctas a{width:auto}
     }
