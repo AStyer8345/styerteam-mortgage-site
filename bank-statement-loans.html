@@ -68,8 +68,10 @@
     .bsl-form-assurance{font-size:.72rem;color:#295274;font-weight:600;margin:0 0 .85rem}
     .bsl-form-card .form-group{margin-bottom:.7rem}
     .bsl-form-card label{font-size:.78rem;font-weight:600;margin-bottom:.25rem;color:var(--color-dark-gray)}
-    .bsl-form-card input,.bsl-form-card select{padding:.55rem .7rem;font-size:.9rem;border-radius:var(--radius-md)}
-    .bsl-form-card input:focus,.bsl-form-card select:focus{outline:3px solid rgba(26,79,122,.18);outline-offset:1px;border-color:#295274}
+    .bsl-form-card input,.bsl-form-card select,.bsl-form-card textarea{padding:.55rem .7rem;font-size:.9rem;border-radius:var(--radius-md)}
+    .bsl-form-card textarea{width:100%;min-height:72px;resize:vertical;line-height:1.45}
+    .bsl-form-card input:focus,.bsl-form-card select:focus,.bsl-form-card textarea:focus{outline:3px solid rgba(26,79,122,.18);outline-offset:1px;border-color:#295274}
+    .bsl-field-note{display:block;margin-top:.2rem;color:var(--color-gray);font-size:.66rem;line-height:1.35}
     .bsl-form-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
     .bsl-consent{margin:.5rem 0;padding-top:.5rem;border-top:1px solid #e3ded4}
     .bsl-consent--optional{padding:.55rem .65rem;border:1px solid #e3ded4;border-radius:6px;background:#f2f0ea}
@@ -493,6 +495,11 @@
                   <label for="phone-bank-statement">Phone Number</label>
                   <input type="tel" id="phone-bank-statement" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
                 </div>
+              </div>
+              <div class="form-group">
+                <label for="situation-bank-statement">Tell Me More <span style="font-weight:400;color:var(--color-gray);">(optional)</span></label>
+                <textarea id="situation-bank-statement" name="situation" rows="3" maxlength="1200" placeholder="Your business, approximate monthly deposits, timeline, or anything else Adam should know."></textarea>
+                <small class="bsl-field-note">Please don’t include account numbers, tax documents, or other sensitive information.</small>
               </div>
               <!-- TCPA consent — required, unchecked by default -->
               <div class="bsl-consent">
