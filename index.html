@@ -36,10 +36,6 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
 
-  <!-- Preload hero background — fetchpriority=high tells browser this is the LCP resource -->
-  <link rel="preload" as="image" href="assets/hero-bg.webp" type="image/webp" fetchpriority="high">
-  <!-- Preload hero cutout — desktop only, WebP version (46KB vs 558KB PNG) -->
-
   <!-- Critical CSS — inlined for instant first paint (hero + header + nav) -->
   <style>
     :root{--color-navy:#0A1F3F;--color-gold:#8B6E24;--color-white:#FFFFFF;--color-light-gray:#F7F7F7;--color-gray:#6B7280;--color-text:#1F2937;--color-text-muted:#6B7280;--color-border:#E5E7EB;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--font-display:'Playfair Display',serif;--font-size-xs:0.75rem;--font-size-sm:0.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:clamp(1.125rem,1.05rem + 0.3vw,1.25rem);--font-size-2xl:clamp(1.25rem,1.1rem + 0.6vw,1.5rem);--font-size-3xl:clamp(1.5rem,1.2rem + 1.2vw,1.875rem);--font-size-5xl:clamp(1.9rem,1.35rem + 2.1vw,2.7rem);--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--line-height-tight:1.2;--spacing-xs:0.25rem;--spacing-sm:0.5rem;--spacing-md:1rem;--spacing-lg:1.5rem;--spacing-xl:2rem;--spacing-2xl:2.5rem;--spacing-3xl:3rem;--radius-sm:0.375rem;--radius-lg:0.75rem;--radius-2xl:1.5rem;--shadow-md:0 4px 6px -1px rgba(0,0,0,0.1);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1);--transition-fast:150ms ease-in-out;--transition-base:200ms ease-in-out;--z-dropdown:1000}
@@ -56,31 +52,57 @@
     .nav-has-dropdown{position:relative}.nav-dropdown{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--color-white);border-top:2px solid var(--color-gold);border-radius:0 0 0.5rem 0.5rem;box-shadow:var(--shadow-lg);list-style:none;min-width:190px;z-index:var(--z-dropdown);padding:var(--spacing-xs) 0}
     .mobile-menu-toggle{display:none;flex-direction:column;gap:var(--spacing-xs);background:none;border:none;cursor:pointer;padding:var(--spacing-md)}.mobile-menu-toggle span{width:24px;height:3px;background-color:var(--color-navy);border-radius:var(--radius-sm)}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--spacing-sm);padding:var(--spacing-md) var(--spacing-xl);font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);border-radius:var(--radius-lg);transition:background-color var(--transition-base),color var(--transition-base),box-shadow var(--transition-base),border-color var(--transition-base),opacity var(--transition-base);text-decoration:none;border:2px solid transparent;cursor:pointer}
-    .btn-primary{background-color:#F2C840;color:#0D1F3C;position:relative;overflow:hidden}.btn-hero-ghost{background-color:transparent;color:#fff;border:2px solid rgba(255,255,255,0.85)}.btn-hero-ghost:hover{background-color:rgba(255,255,255,0.1)}
-    .hero{position:relative;width:100%;height:min(78vh,760px);min-height:620px;display:flex;align-items:center;overflow:hidden;color:var(--color-white);background-image:url('assets/hero-bg.webp');background-size:cover;background-position:center 20%}
-    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(5,18,40,0.93) 0%,rgba(10,31,63,0.82) 38%,rgba(10,31,63,0.35) 68%,rgba(10,31,63,0.16) 100%);pointer-events:none;z-index:1}
-    .hero>.container{position:relative;z-index:3;width:100%;max-width:1280px;margin-left:0;margin-right:auto;padding-top:var(--spacing-lg);padding-bottom:var(--spacing-lg)}
-    .hero-glass-card{max-width:590px;width:100%;padding:0;position:relative;z-index:4}
+    .btn-primary{background-color:#F2C840;color:#0D1F3C;position:relative;overflow:hidden}.btn-hero-ghost{background-color:transparent;color:var(--color-navy);border:1px solid rgba(10,31,63,.45)}.btn-hero-ghost:hover{background-color:rgba(10,31,63,.06)}
+    .hero{position:relative;width:100%;height:auto;min-height:0;display:block;overflow:hidden;color:var(--color-text);background:#f3f0e8;padding:clamp(3.5rem,6vw,5.5rem) 0}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.4),transparent 55%);pointer-events:none}
+    .hero>.container{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding-top:0;padding-bottom:0}
+    .hero-glass-card{max-width:none;width:100%;padding:0;position:relative}
+    .home-hero-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.75fr);gap:clamp(2.5rem,6vw,5.25rem);align-items:center}
     .hero-col-authority{display:flex;flex-direction:column;align-items:flex-start;gap:0}.hero-authority-inner{max-width:620px;margin-bottom:1.25rem}
     .hero-eyebrow{margin:0 0 .75rem;color:#F2C840;font-family:var(--font-primary);font-size:.76rem;font-weight:700;letter-spacing:.11em;line-height:1.4;text-transform:uppercase}
-    .hero h1{color:#fff;font-size:clamp(2.35rem,3.4vw,3.25rem);line-height:1.06;letter-spacing:-.02em;margin-top:0;margin-bottom:1rem;text-shadow:0 2px 24px rgba(0,0,0,0.5);max-width:560px}
-    .hero-subtitle{font-size:clamp(.98rem,1.1vw,1.08rem);color:rgba(255,255,255,0.9);line-height:1.55;margin-bottom:1.35rem;text-shadow:0 1px 12px rgba(0,0,0,0.4);max-width:560px}
-    .hero-rating-chip{display:inline-flex;align-items:center;gap:0.45rem;background:rgba(201,168,76,0.18);border:1px solid rgba(242,200,64,0.5);color:#fff;font-size:0.78rem;font-weight:600;padding:0.32rem 0.72rem;border-radius:100px;margin-bottom:0.85rem;letter-spacing:0.01em;max-width:100%}
+    .hero h1{color:var(--color-navy);font-size:clamp(2.5rem,4.4vw,4.35rem);line-height:1.02;letter-spacing:-.035em;margin:0 0 1.15rem;max-width:700px}
+    .hero-subtitle{font-size:clamp(1rem,1.15vw,1.12rem);color:#536172;line-height:1.65;margin-bottom:1.45rem;max-width:650px}
+    .hero-rating-chip{display:inline-flex;align-items:center;gap:0.45rem;background:transparent;border:0;border-left:2px solid #B99642;color:var(--color-navy);font-size:0.78rem;font-weight:600;padding:.15rem 0 .15rem .7rem;border-radius:0;margin-bottom:1rem;letter-spacing:0.01em;max-width:100%}
     .hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;justify-content:flex-start;margin-bottom:.7rem}
     .hero-cta-btn{width:auto;min-width:190px;min-height:50px;font-size:.875rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:.8rem 1.25rem;border-radius:.7rem}
-    .hero-call-link{margin:0;font-size:var(--font-size-sm)}.hero-call-link-a{display:inline-flex;align-items:center;gap:0.35rem;color:rgba(255,255,255,0.85);text-decoration:none}
-    .hero-legal{font-size:0.72rem;color:rgba(255,255,255,0.55);margin-top:0.85rem;letter-spacing:0.02em}
-    .hero-cutout{position:absolute;bottom:0;right:4%;max-height:90%;width:340px;max-width:28%;object-fit:contain;object-position:bottom center;z-index:2;pointer-events:none;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.30))}
-    .hero-mobile-headshot{display:none}
+    .hero-call-link{margin:0;font-size:var(--font-size-sm)}.hero-call-link-a{display:inline-flex;align-items:center;gap:0.35rem;color:#536172;text-decoration:none}
+    .hero-legal{font-size:0.72rem;color:#7a8490;margin-top:0.85rem;letter-spacing:0.02em}
+    .home-hero-panel{border-top:2px solid #B99642;border-bottom:1px solid #d6d0c4;padding:1.25rem 0 .25rem}
+    .home-hero-panel h2{font-size:1.35rem;margin-bottom:.25rem}
+    .home-hero-panel>p{font-size:.87rem;color:#687483;margin-bottom:.75rem}
+    .home-path{display:grid;grid-template-columns:2rem 1fr auto;gap:.75rem;align-items:center;padding:.9rem 0;border-top:1px solid #d6d0c4;color:var(--color-navy);text-decoration:none}
+    .home-path-number{font-family:var(--font-display);font-size:1.05rem;color:#8B6E24}
+    .home-path strong{display:block;font-size:.9rem}
+    .home-path small{display:block;color:#6B7280;font-size:.73rem;line-height:1.4}
+    .home-path-arrow{font-size:1.15rem;color:#8B6E24}
     .hero-form-trust{margin-top:.85rem;font-size:.82rem;line-height:1.5;color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.5);text-align:left}
     .form-trust-line{margin-top:.75rem;font-size:.82rem;color:var(--color-gray);text-align:center;line-height:1.4}
     .hero-gradient-text{background:linear-gradient(135deg,#ffffff 0%,#f0e6c8 40%,#d4b254 70%,#ffffff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .star-svg{display:inline-block;flex-shrink:0}
-    @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{height:auto;min-height:620px;max-height:none;padding:2.5rem 0;background-position:62% center}.hero h1{font-size:clamp(2.1rem,9vw,2.8rem);line-height:1.06}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:center;text-align:center}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:center;flex-direction:column;width:100%}.hero-cta-btn{width:100%;max-width:340px}.hero-glass-card{max-width:100%;padding:0;overflow:visible;background:none}.hero-rating-chip{white-space:normal;text-align:center;justify-content:center}.hero-eyebrow{text-align:center;font-size:.68rem}.hero-cutout{display:none}.hero-mobile-headshot{display:block;width:78px;height:78px;border-radius:50%;overflow:hidden;margin:0 auto var(--spacing-md);border:3px solid rgba(255,255,255,.6);box-shadow:0 6px 16px rgba(0,0,0,.25)}.hero-mobile-headshot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
+    @media(max-width:900px){.home-hero-layout{grid-template-columns:1fr}.home-hero-panel{max-width:700px}}
+    @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{padding:2.75rem 0}.hero h1{font-size:clamp(2.25rem,10vw,3.15rem);line-height:1.02}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:flex-start;text-align:left}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:flex-start;flex-direction:column;width:100%}.hero-cta-btn{width:100%;max-width:none}.hero-glass-card{max-width:100%;padding:0;overflow:visible;background:none}.hero-rating-chip{white-space:normal;text-align:left;justify-content:flex-start}.hero-eyebrow{text-align:left;font-size:.68rem}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
   </style>
   <!-- Full stylesheet — loads async, applies after critical CSS is already painted -->
   <link rel="preload" href="style.css?v=20260531" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="style.css?v=20260531"></noscript>
+  <style>
+    /* Homepage pilot overrides load after the shared stylesheet. */
+    .home-pilot .hero{height:auto;min-height:0;max-height:none;display:block;overflow:hidden;color:var(--color-text);background:#f3f0e8;background-image:none;padding:clamp(3.5rem,6vw,5.5rem) 0}
+    .home-pilot .hero::before{background:linear-gradient(90deg,rgba(255,255,255,.4),transparent 55%);z-index:1}
+    .home-pilot .hero>.container{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding-top:0;padding-bottom:0}
+    .home-pilot .hero-glass-card{max-width:none;width:100%;padding:0;background:none;box-shadow:none;backdrop-filter:none;border:0;overflow:visible}
+    .home-pilot .home-hero-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.75fr);gap:clamp(2.5rem,6vw,5.25rem);align-items:center}
+    .home-pilot .hero-col-authority{align-items:flex-start;text-align:left}
+    .home-pilot .hero h1{color:var(--color-navy);font-size:clamp(2.5rem,4.4vw,4.35rem);line-height:1.02;letter-spacing:-.035em;margin:0 0 1.15rem;max-width:700px;text-shadow:none}
+    .home-pilot .hero-subtitle{font-size:clamp(1rem,1.15vw,1.12rem);color:#536172;line-height:1.65;margin-bottom:1.45rem;max-width:650px;text-shadow:none}
+    .home-pilot .hero-rating-chip{background:transparent;border:0;border-left:2px solid #B99642;color:var(--color-navy);padding:.15rem 0 .15rem .7rem;border-radius:0;margin-bottom:1rem}
+    .home-pilot .hero-eyebrow{color:#7A5F1F}
+    .home-pilot .btn-hero-ghost{background:transparent;color:var(--color-navy);border:1px solid rgba(10,31,63,.45)}
+    .home-pilot .hero-call-link-a{color:#536172}
+    .home-pilot .hero-legal{color:#7a8490}
+    @media(max-width:900px){.home-pilot .home-hero-layout{grid-template-columns:1fr}.home-pilot .home-hero-panel{max-width:700px}}
+    @media(max-width:768px){.home-pilot .hero{padding:2.75rem 0}.home-pilot .hero h1{font-size:clamp(2.25rem,10vw,3.15rem)}.home-pilot .hero-ctas{align-items:stretch}.home-pilot .hero-cta-btn{width:100%;max-width:none}}
+  </style>
 
   <!-- Schema.org LocalBusiness -->
   <script type="application/ld+json">
@@ -305,7 +327,7 @@
     .quick-contact-card.quick-contact-card { background: var(--color-white); border: 1px solid #DCE1E9; }
   </style>
 </head>
-<body>
+<body class="home-pilot">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -341,46 +363,17 @@
   <main id="main">
     <!-- HERO SECTION -->
     <section class="hero">
-
-      <!--
-        Cutout is a DIRECT child of .hero (not .container) so position:absolute
-        is relative to the full-bleed hero section, not the constrained container.
-      -->
-      <!--
-        <picture> with media queries: desktop loads the 46 KB WebP;
-        mobile never downloads the image (was 5 MB PNG — the LCP culprit).
-      -->
-      <picture>
-        <source media="(min-width: 769px)" srcset="assets/adam-cutout.webp" type="image/webp">
-        <source media="(min-width: 769px)" srcset="assets/adam-cutout-900.png" type="image/png">
-        <source srcset="assets/adam-cutout-900.webp" type="image/webp">
-        <img
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-          alt="Adam Styer, Austin TX Mortgage Broker, NMLS #513013"
-          class="hero-cutout"
-          fetchpriority="high"
-          decoding="async"
-          width="450"
-          height="450"
-        >
-      </picture>
-
       <div class="container">
-        <!-- ── Glassmorphism card ─────────────────────────────────────── -->
-        <div class="hero-glass-card hero-glass-card-2col">
-          <div class="hero-glass-row">
-            <div class="hero-col hero-col-authority">
-              <div class="hero-mobile-headshot" aria-hidden="true">
-                <img src="assets/adam-cutout-900.webp" alt="" width="96" height="96" decoding="async" loading="eager">
-              </div>
+        <div class="hero-glass-card home-hero-layout">
+          <div class="hero-col hero-col-authority">
               <div class="hero-authority-inner">
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener" class="hero-rating-chip" aria-label="Read Adam Styer's Google reviews: 5.0 rating, 140+ total client reviews" style="text-decoration:none;">
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener" class="hero-rating-chip" aria-label="Read Adam Styer's reviews: 5.0 Google rating and 141 total published reviews" style="text-decoration:none;">
                   <svg class="star-svg" width="13" height="13" viewBox="0 0 24 24" fill="#FCD34D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-                  5.0 Google · 140+ client reviews
+                  5.0 Google · 141 published reviews
                 </a>
                 <p class="hero-eyebrow">Austin business owners · investors · move-up buyers</p>
                 <h1>Complex mortgage. Clear path forward.</h1>
-                <p class="hero-subtitle">Bank-statement, asset-depletion, jumbo, DSCR, and buy-before-you-sell strategies. Send the situation first—I will help identify the practical next step.</p>
+                <p class="hero-subtitle">Thoughtful mortgage strategy for people whose finances do not fit neatly in a conventional box. Share the situation first—I’ll help identify the practical next step.</p>
               </div>
               <div class="hero-ctas">
                 <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-primary hero-cta-btn" data-track="secure_application_click" target="_blank" rel="noopener">Start a Secure Loan Application</a>
@@ -392,16 +385,24 @@
                   Or call (512) 956-6010
                 </a>
               </p>
-            </div>
+              <p class="hero-legal">NMLS#: 2653540 (Company) &middot; 513013 (Adam Styer)</p>
           </div>
 
-          <p class="hero-legal">
-            NMLS#: 2653540 (Company) &middot; 513013 (Adam Styer)
-          </p>
-
+          <aside class="home-hero-panel" aria-label="Choose a mortgage starting point">
+            <h2>Start with your situation</h2>
+            <p>You do not need to know the loan program before reaching out.</p>
+            <a class="home-path" href="/mortgage-for-business-owners-austin.html">
+              <span class="home-path-number">01</span><span><strong>I own a business</strong><small>Bank statements, 1099, P&amp;L, K-1, or assets</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="home-path" href="/dscr-loan-austin-tx.html">
+              <span class="home-path-number">02</span><span><strong>I’m buying an investment</strong><small>DSCR and investor-focused financing</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="home-path" href="/buy-before-you-sell-austin.html">
+              <span class="home-path-number">03</span><span><strong>I need to move before I sell</strong><small>Bridge and buy-before-you-sell strategies</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
+            </a>
+          </aside>
         </div>
       </div>
-
     </section>
 
     <!-- SOCIAL PROOF STATS STRIP -->
@@ -537,7 +538,7 @@
     <!-- TESTIMONIALS SECTION -->
     <section>
       <div class="container">
-        <h2 class="text-center mb-xl">Client Reviews — Real Austin Clients</h2>
+        <h2 class="text-center mb-xl">Client and Partner Reviews</h2>
         <div class="review-aggregate-bar">
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener" class="review-aggregate-item" style="color:inherit;text-decoration:none;" aria-label="Read Adam Styer's Google reviews">
             <svg width="14" height="14" viewBox="0 0 24 24" aria-label="Google" role="img">
@@ -548,7 +549,7 @@
             </svg>
             <span class="review-aggregate-rating">5.0</span>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            <span class="review-aggregate-count">Google reviews</span>
+            <span class="review-aggregate-count">96 Google reviews</span>
           </a>
           <div class="review-aggregate-divider" aria-hidden="true"></div>
           <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener" class="review-aggregate-item" style="color:inherit;text-decoration:none;" aria-label="Read Adam Styer's Zillow reviews">
@@ -558,7 +559,7 @@
             </svg>
             <span class="review-aggregate-rating">4.98</span>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            <span class="review-aggregate-count">Zillow reviews</span>
+            <span class="review-aggregate-count">45 Zillow reviews</span>
           </a>
         </div>
 
@@ -594,7 +595,7 @@
                 <div><strong style="font-size:0.85rem;">Ihor Bodnarchuk</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Purchase</span></div>
               </div>
             </div>
-            <!-- Card 3 - Marcy -->
+            <!-- Card 3 - Jeanne -->
             <div class="testimonial-marquee-card">
               <div class="stars" role="img" aria-label="5 out of 5 stars">
                 <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
@@ -603,13 +604,13 @@
                 <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
                 <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
               </div>
-              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam's team helped us through the refinance process from beginning to end. They were very easy to work with and answered any and all questions in a timely and friendly manner."</p>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"I've known Adam Styer for the past four years, and he has consistently proven to be one of the most knowledgeable, reliable, and supportive mortgage professionals I've worked with."</p>
               <div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
-                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">M</div>
-                <div><strong style="font-size:0.85rem;">marcyhelloatx</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Refinance</span></div>
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">J</div>
+                <div><strong style="font-size:0.85rem;">Jeanne Miller</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Google &bull; Realtor Partner</span></div>
               </div>
             </div>
-            <!-- Card 4 - Bonus review for marquee fullness -->
+            <!-- Card 4 - Matthew -->
             <div class="testimonial-marquee-card">
               <div class="stars" role="img" aria-label="5 out of 5 stars">
                 <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
@@ -618,10 +619,10 @@
                 <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
                 <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
               </div>
-              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"We couldn't have asked for a better experience. Adam made the entire process seamless and stress-free. His communication was outstanding and he always had our best interest at heart."</p>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam is awesome - he works to understand your needs, presents multiple and often creative financing options to meet them, and supports you throughout the whole home purchase."</p>
               <div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
-                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">S</div>
-                <div><strong style="font-size:0.85rem;">Sarah M.</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Purchase</span></div>
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">M</div>
+                <div><strong style="font-size:0.85rem;">Matthew Latimer</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Google &bull; Purchase</span></div>
               </div>
             </div>
             <!-- Duplicate set for seamless infinite scroll -->
@@ -637,13 +638,13 @@
             </div>
             <div class="testimonial-marquee-card" aria-hidden="true">
               <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
-              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam's team helped us through the refinance process from beginning to end. They were very easy to work with and answered any and all questions in a timely and friendly manner."</p>
-              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">M</div><div><strong style="font-size:0.85rem;">marcyhelloatx</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Refinance</span></div></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"I've known Adam Styer for the past four years, and he has consistently proven to be one of the most knowledgeable, reliable, and supportive mortgage professionals I've worked with."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">J</div><div><strong style="font-size:0.85rem;">Jeanne Miller</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Google &bull; Realtor Partner</span></div></div>
             </div>
             <div class="testimonial-marquee-card" aria-hidden="true">
               <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
-              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"We couldn't have asked for a better experience. Adam made the entire process seamless and stress-free. His communication was outstanding and he always had our best interest at heart."</p>
-              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">S</div><div><strong style="font-size:0.85rem;">Sarah M.</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Austin, TX &bull; Purchase</span></div></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam is awesome - he works to understand your needs, presents multiple and often creative financing options to meet them, and supports you throughout the whole home purchase."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">M</div><div><strong style="font-size:0.85rem;">Matthew Latimer</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Google &bull; Purchase</span></div></div>
             </div>
           </div>
         </div>
@@ -1018,7 +1019,7 @@
         <div class="footer-section">
           <h3 class="heading-sm">Awards & Recognition</h3>
           <p>
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener" style="color:inherit;">&#11088; 5.0 Google</a> &middot; <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener" style="color:inherit;">4.98 Zillow</a><br><a href="/testimonials.html" style="color:inherit;">140+ Reviews</a> &middot; Licensed in Texas
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener" style="color:inherit;">&#11088; 5.0 Google</a> &middot; <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener" style="color:inherit;">4.98 Zillow</a><br><a href="/testimonials.html" style="color:inherit;">141 Reviews</a> &middot; Licensed in Texas
           </p>
           <div class="social-links">
             <a href="https://www.facebook.com/styerteam/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>

@@ -65,10 +65,11 @@ test('homepage prioritizes the secure application and preserves the scenario fal
   assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
 });
 
-test('homepage keeps Adam cutout visible on desktop hero', () => {
-  assert.match(homepage, /class="hero-cutout"/);
-  assert.match(homepage, /assets\/adam-cutout\.webp/);
-  assert.doesNotMatch(stylesheet, /@media\s*\(min-width:769px\)\s*\{\.hero-cutout\{display:none\}\}/);
+test('homepage image-free hero avoids the oversized photo treatment', () => {
+  const hero = homepage.match(/<section class="hero">([\s\S]*?)<\/section>/)?.[1] || '';
+  assert.doesNotMatch(hero, /<picture|<img/);
+  assert.match(homepage, /class="hero-glass-card home-hero-layout"/);
+  assert.match(homepage, /\.home-pilot \.hero\{[^}]*background-image:none/);
 });
 
 test('scenario page uses portal language and keeps a short note fallback', () => {
