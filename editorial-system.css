@@ -61,3 +61,19 @@
 @media(max-width:768px){.home-pilot .hero{padding:2.75rem 0}.home-pilot .hero h1{font-size:clamp(2.25rem,10vw,3.15rem)}.home-pilot .hero-ctas{align-items:stretch}.home-pilot .hero-cta-btn{width:100%;max-width:none}}
 @media(max-width:640px){.bsl-form-row,.bsl-check-grid,.bsl-persona-grid,.bsl-links{grid-template-columns:1fr}.bsl-page .hero-ctas a{width:100%}}
 @media(prefers-reduced-motion:reduce){.editorial-page *{scroll-behavior:auto}}
+
+/* Family adaptations: compact, purpose-specific compositions. */
+.loan-page:not(.bsl-page) .hero,.location-page .hero,.trust-page .hero,.guide-page .hero{height:auto;min-height:0;max-height:none;background:var(--editorial-warm);background-image:none;color:var(--color-text);padding:clamp(2.75rem,5vw,4.25rem) 0}
+.loan-page:not(.bsl-page) .hero::before,.location-page .hero::before,.trust-page .hero::before,.guide-page .hero::before{background:linear-gradient(90deg,rgba(255,255,255,.5),transparent 62%)}
+.loan-page:not(.bsl-page) .hero-cutout,.location-page .hero-cutout,.trust-page .hero-cutout,.guide-page .hero-cutout{display:none}
+.loan-page:not(.bsl-page) .hero-glass-card,.location-page .hero-glass-card,.trust-page .hero-glass-card,.guide-page .hero-glass-card{max-width:var(--editorial-shell);padding:0;background:none;border:0;box-shadow:none;backdrop-filter:none}
+.loan-page:not(.bsl-page) .hero h1,.location-page .hero h1,.trust-page .hero h1,.guide-page .hero h1{color:var(--color-navy);font-size:clamp(2rem,1.55rem + 2vw,3.15rem);line-height:1.08;text-shadow:none;max-width:760px}
+.loan-page:not(.bsl-page) .hero-subtitle,.location-page .hero-subtitle,.trust-page .hero-subtitle,.guide-page .hero-subtitle{color:#536172;text-shadow:none;max-width:760px;font-size:1rem;line-height:1.65}
+.loan-page:not(.bsl-page) .hero-call-link-a,.location-page .hero-call-link-a,.trust-page .hero-call-link-a,.guide-page .hero-call-link-a{color:#536172}
+.loan-page:not(.bsl-page) .hero-legal,.location-page .hero-legal,.trust-page .hero-legal,.guide-page .hero-legal{color:#7a8490}
+.loan-page:not(.bsl-page) .hero-col-form,.location-page .hero-col-form{border-top:2px solid var(--editorial-gold)}
+.guide-page main>.hero+.section,.calculator-page .calc-tool-hero+section{padding-top:2.5rem}
+.guide-page main>.section .container>p,.guide-page article p{max-width:var(--editorial-prose)}
+.calculator-page main section{padding:2.25rem 0}.calculator-page .calc-tool-hero{padding:2rem 0 1.35rem;background:var(--editorial-warm);border-bottom:1px solid #ddd6c9}.calculator-page .calc-tool-hero h1{font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:.35rem}.calculator-page .calc-tool-hero p{max-width:700px;margin-bottom:0}.calculator-page .calc-card{border-radius:10px;box-shadow:0 4px 14px rgba(10,31,63,.07)}
+.lead-page .lp-hero{min-height:0;padding:clamp(2.25rem,4vw,3.5rem) 0;background:var(--editorial-warm);background-image:none}.lead-page .lp-hero::before{display:none}.lead-page .lp-hero-inner{max-width:var(--editorial-shell);gap:clamp(2rem,4vw,3.5rem);align-items:start}.lead-page .lp-hero-copy h1{font-size:clamp(2rem,1.5rem + 2vw,3rem);color:var(--color-navy)}.lead-page .lp-hero-copy .lp-subhead{color:#536172}.lead-page .lp-form-card{border-radius:10px;border:1px solid #ded8cd;border-top:2px solid var(--editorial-gold);box-shadow:0 14px 32px rgba(10,31,63,.12)}.lead-page .lp-form-field input,.lead-page .lp-form-field select,.lead-page .lp-form-field textarea{min-height:46px}
+.trust-page .bio-section{align-items:start;gap:clamp(2rem,5vw,4rem)}.trust-page .bio-section>div:last-child{max-width:var(--editorial-prose)}
