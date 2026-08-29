@@ -85,8 +85,9 @@
   <!-- Full stylesheet — loads async, applies after critical CSS is already painted -->
   <link rel="preload" href="style.css?v=20260531" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="style.css?v=20260531"></noscript>
+  <link rel="stylesheet" href="/editorial-system.css?v=20260829">
   <style>
-    /* Homepage pilot overrides load after the shared stylesheet. */
+    /* Latest pilot-specific homepage refinements remain authoritative. */
     .home-pilot .hero{height:auto;min-height:0;max-height:none;display:block;overflow:hidden;color:var(--color-text);background:#f3f0e8;background-image:none;padding:clamp(3.5rem,6vw,5.5rem) 0}
     .home-pilot .hero::before{background:linear-gradient(90deg,rgba(255,255,255,.4),transparent 55%);z-index:1}
     .home-pilot .hero>.container{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding-top:0;padding-bottom:0}
@@ -339,7 +340,7 @@
     .quick-contact-card.quick-contact-card { background: var(--color-white); border: 1px solid #DCE1E9; }
   </style>
 </head>
-<body class="home-pilot">
+<body class="editorial-page home-pilot">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

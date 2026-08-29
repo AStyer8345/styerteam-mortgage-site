@@ -29,10 +29,10 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
   <link rel="stylesheet" href="/style.css?v=20260531">
+  <link rel="stylesheet" href="/editorial-system.css?v=20260829">
 
-  <!-- Page-scoped redesign styles (bank-statement pilot) — every rule is keyed
-       off body.bsl-page so nothing here can affect any other page. -->
-  <style>
+  <!-- Page-scoped redesign styles moved to editorial-system.css. -->
+  <!--
     /* ---- Rhythm: tighter sections, headings, and prose ---- */
     .bsl-page main section{padding:clamp(3rem,4.5vw,4.75rem) 0}
     .bsl-page main h2{font-size:clamp(1.45rem,1.2rem + 1vw,1.8rem);margin-bottom:.7rem}
@@ -165,7 +165,7 @@
       .bsl-form-row,.bsl-check-grid,.bsl-persona-grid,.bsl-links{grid-template-columns:1fr}
       .bsl-page .hero-ctas a{width:100%}
     }
-  </style>
+  -->
 
   <script>window.dataLayer = window.dataLayer || [];</script>
   <!-- Google Tag Manager -->
@@ -382,7 +382,7 @@
   }
   </script>
 </head>
-<body class="bsl-page">
+<body class="editorial-page loan-page bsl-page">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
