@@ -20,7 +20,7 @@ test('editorial public pages load the current rollout stylesheet', () => {
     /<body class="[^"]*\beditorial-page\b/.test(fs.readFileSync(file, 'utf8'))
   );
 
-  assert.equal(editorialPages.length, 92);
+  assert.equal(editorialPages.length, 85);
   for (const file of editorialPages) {
     const html = fs.readFileSync(file, 'utf8');
     assert.match(
@@ -50,7 +50,7 @@ test('internal and noindex utility pages remain outside the editorial rollout', 
   assert.doesNotMatch(fs.readFileSync('loans/usda.html', 'utf8'), /\beditorial-page\b/);
 });
 
-test('every indexable nested loan page receives the editorial loan treatment', () => {
+test('every indexable nested loan page receives the header-only treatment', () => {
   for (const file of [
     'loans/construction.html',
     'loans/conventional.html',
@@ -60,7 +60,10 @@ test('every indexable nested loan page receives the editorial loan treatment', (
     'loans/refinance.html',
     'loans/va.html'
   ]) {
-    assert.match(fs.readFileSync(file, 'utf8'), /<body class="editorial-page loan-page">/, file);
+    const html = fs.readFileSync(file, 'utf8');
+    assert.match(html, /<body class="public-header-page legacy-loan-page">/, file);
+    assert.match(html, /style\.css\?v=20260830-loanfix1/, file);
+    assert.doesNotMatch(html, /\beditorial-page\b/, file);
   }
 });
 
@@ -69,6 +72,8 @@ test('the shared stylesheet owns the approved public header treatment', () => {
   assert.match(stylesheet, /content:url\('\/assets\/logo-light\.svg'\)/);
   assert.match(stylesheet, /\.editorial-page>header \.nav-cta\{background:#d1b568/);
   assert.match(stylesheet, /\.editorial-page>header \.nav-links\.active\{background:#fff/);
+  assert.match(stylesheet, /\.public-header-page>header\{background:#0d2342/);
+  assert.match(stylesheet, /\.legacy-loan-page \.hero-two-col\{display:grid/);
 });
 
 test('wide guide tables use accessible horizontal scroll regions', () => {
