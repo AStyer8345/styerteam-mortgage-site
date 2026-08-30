@@ -1915,3 +1915,115 @@ own task file.
 > **Generalize:** when a checklist asks you to confirm the *presence* of something a higher-priority
 > doc *retires*, the checklist is not merely out of date — it is a live regression vector. Flag it as
 > such, not as doc hygiene.
+
+---
+
+## 2026-08-30 — Thursday rotation (Internal Linking + Funnel Flow) — the checklist asked the wrong direction
+
+### A link *graph* finds what a link *checklist* cannot
+
+The rotation says: *"Pick 3 pages, verify each links to 2+ relevant pages."* I ran it across all 147
+sitemap URLs instead of 3, and it passed **147/147** — there was nothing to fix on that axis and there
+probably never has been. Every real defect was on the **inbound** side, which the checklist never
+asks about: **3 pages had zero inbound internal links.**
+
+> **Rule:** when a checklist item passes trivially across the whole site, don't record the pass and
+> move on — **invert the question.** Outbound-links-per-page is a property every templated page
+> inherits from its nav and footer, so it is nearly guaranteed to pass. Inbound links are a property
+> of the rest of the site's *editorial* choices, so they are where the holes are. Cheap checks that
+> always pass are measuring the template, not the content.
+
+### An orphan is a page the site asks Google to rank but refuses to link to
+
+All three were indexable, self-canonical, carried no `noindex`, and sat in `sitemap.xml` — while
+nothing on the site linked to them. That combination is a self-contradiction: the sitemap says
+*"crawl and rank this"* and the link graph says *"this is worth nothing."* It is also **invisible to
+every page-at-a-time audit** — each orphan looks perfectly healthy when you open it. Months of
+per-page rotations never surfaced these; one whole-graph pass surfaced all three.
+
+Sharpest instance: `/resources/mortgage-options-for-business-owners.html` is a **child of
+`/resources/`** that the resources hub itself did not list — and it is squarely on the "complicated
+income" positioning GOALS.md is rebuilding the site around.
+
+### Before linking an orphan, check whether it is a duplicate
+
+The reflex fix — "add a link" — is wrong if the orphan is a near-copy of a well-linked page. Then the
+page is competing with its own sibling and the correct fix is a canonical (HIGH_RISK on an indexed
+page → Adam-gated), not a link. So compare first:
+
+```python
+difflib.SequenceMatcher(None, text_a, text_b).quick_ratio()   # plus: are the H2 sets disjoint?
+```
+
+All three came back distinct — 0.43 and 0.56 similarity with completely disjoint H2 sets (short guide
+vs pillar page; scenario funnel vs educational post), and the third distinct by audience
+(borrower vs realtor). **That comparison is what licensed linking them.** Without it, "fix the
+orphans" could have doubled down on cannibalization.
+
+### Equal counts are not parity — diff the sets
+
+`blog.html` maintains the post list in **three** parallel registries: `blog/manifest.json` (drives the
+JS card grid), a `<noscript>` `<ul>` (what a crawler without JS sees, and what carries the link
+equity), and CollectionPage `ItemList` schema. One post was in the first only.
+
+**All three registries held exactly 59 entries.** Every count-based check agrees; the contents differ.
+
+```python
+set(p['slug'] for p in manifest['posts']) - set(map(key, noscript_links))
+# -> {'2026-03-04-wait-for-rates'}
+```
+
+> **Rule:** wherever the same list is maintained in N places, diff them as **sets**, never compare
+> cardinalities. Equal length is the *most likely* failure mode, not evidence of sync — a hand-edited
+> list tends to gain one entry while losing another. And note the reverse-direction hit
+> (`first-time-buyer-guide` in noscript but not manifest) was **correct** — a guide hub, not a post.
+> A set diff produces findings in both directions; only one of them was a defect.
+
+### An href regex must strip HTML comments first — then re-run the WHOLE analysis
+
+`scenarios.html` contains `href="/scenarios/[slug].html"`. The href is real, it 404s live, and my
+extractor found it. It sits inside `<!-- SCENARIO CARD STUB — copy when the next scenario ships -->`.
+
+Killing the false finding was the easy half. The important half:
+
+> **A parser that ignores comments doesn't just invent fake findings — it can invent fake *inbound*
+> links and thereby hide real orphans.** The correct response was not "drop that one finding," it was
+> **rebuild the entire graph comment-aware and diff it against the naive parse.** (0 pages changed, so
+> the orphan set was sound — but that is a result, not an assumption.) When you discover a systematic
+> flaw in an extractor, re-run everything it produced.
+
+### Normalize `?query` and `#fragment` before comparing paths
+
+`href="/get-preapproved(\.html)?"` anchored to end-of-path returned **0** homepage links to the
+primary conversion page. The real hrefs are `/get-preapproved.html?intent=scenario` — **×5**.
+
+### A *selective* zero is more dangerous than a uniform zero
+
+08-29's rule was: *a per-target loop returning the same number for every target is your tooling.* The
+sibling case is worse. Here `/contact` returned 2 and `/calculators` returned 1 — plausible, lumpy,
+trustworthy-looking numbers — with `/get-preapproved` at 0 sitting among them. **A zero surrounded by
+non-zeros reads as a genuine finding.** Uniformity at least announces itself.
+
+> Both are tooling until the extractor has been tested against a known-good case. The test costs one
+> command; believing the finding would have cost a fabricated HIGH about the homepage having no path
+> to the conversion page.
+
+### Don't write a second extractor
+
+Both false findings today came from **inline one-off regexes written after a correct, normalizing
+extractor already existed in the same session.** The graph code stripped comments, stripped `?`/`#`,
+and mapped `foo/index.html` → `foo/`. The funnel check was then written fresh, three lines, sloppier —
+and produced both errors.
+
+This is the same failure as 08-29's re-derived sitemap normalizer, one level up: not "port the fix
+from learnings," but **"reuse the function you wrote twenty minutes ago."**
+
+> **Rule:** one extractor per session, defined once, used everywhere. If a check needs a different
+> shape, extend the extractor — do not open a second one.
+
+### Anchor text should match the destination's `<h1>`, not a stale index title
+
+`manifest.json` titles the post "…Before You **Buy**?"; the page's `<title>` and `<h1>` say
+"…Before You **Sell and Buy**?". The new static links use the page's real `<h1>` — anchor text is a
+relevance signal about the destination, so it should describe the destination. The index entry was
+flagged rather than silently changed, because it renders in the card grid.
