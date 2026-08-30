@@ -2909,3 +2909,11 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
   reported the already-fixed `founder` defect as regressed. Repo re-check: 0 founder / 16 employee /
   70 worksFor.
 - Swept blog CTA coverage — 44/44. Classified realtor-update CTA absence (0/4) as design, not defect.
+
+## 2026-08-29 — Interactive: stale-overlay rescue + full-site audit (PR #16)
+
+- **Repo rescue:** aborted the dead `git am` (superseded Aug-6 CFO case-study patch — already live on main), backed up the 52-file stale overlay (git stash `stale-overlay-2026-08-29-backup` + scratchpad diff), fast-forwarded to origin/main. The repo's top constraint since 08-19 is cleared.
+- **Shipped to production main (`342cb0d`, verified live):** the six queued fixes — index.html Person.url → `/about.html`, worksFor → display name + legalName + `@id #business` (+ about.html worksFor @id), and 3 over-length meta descriptions trimmed into 150–160 (physician 152, smithville 155, buy-before-you-sell 155).
+- **Closed stale blocker:** homepage 107-char title row — HEAD title is already 63 chars and compliant.
+- **PR #16 (`redesign/audit-2026-08-29` → `redesign/sitewide-editorial-rollout`, 10 commits):** full-site audit implementation stacking on the editorial redesign (Adam confirmed PR #15 is the target design). Conversion bugs (mobile drawer had no CTA/phone sitewide; invisible about.html CTAs; unreachable thank-you refi branch; header CTA unified on 160 pages; get-preapproved portal button moved below the tracked form), compliance sweep (superlatives, "Private Wealth Mortgage Bank" title, invented testimonial variants → verbatim reviews), SEO/AEO (FAQPage rebuilt from visible content on 14 pages; og:image ×47; Article image ×82; llms.txt +8 cluster pages; orphan pages linked; rates outlier noindexed; breadcrumbs normalized), business-owner content (hub +7 FAQs; DSCR-calculator asides; self-link cleanup), calculators (affordability overstated max price ~$137k — model fixed + disclosed; marker/placeholder/share-URL/dead-input fixes; a11y; 17 new tests, previously zero coverage). All 168 tests pass.
+- **Adam-gated questions consolidated in the PR body:** competing 1003-app URLs, review counts, named wholesale lenders, posture split on hard numbers, ITIN/program-availability claims, remaining speed-claim quotes.
