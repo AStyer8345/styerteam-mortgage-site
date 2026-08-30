@@ -11,7 +11,7 @@ const leadingItems = [loanPrograms, resources, calculators];
 const defaultTailItems = [
   '<li><a href="/testimonials.html">Testimonials</a></li>',
   '<li class="nav-has-dropdown"><a href="/contact.html">Contact</a><ul class="nav-dropdown"><li><a href="/about.html">About Adam</a></li></ul></li>',
-  '<li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/scenario.html" class="nav-cta">Send Your Scenario</a></li>',
+  '<li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/get-preapproved.html?intent=scenario" class="nav-cta">Send Your Scenario</a></li>',
 ];
 
 function htmlFiles(directory) {
@@ -44,9 +44,13 @@ for (const file of htmlFiles(root)) {
   const existingItems = html.slice(openEnd + 1, listEnd);
   const tailMarker = '<li><a href="/testimonials.html">Testimonials</a></li>';
   const tailStart = existingItems.indexOf(tailMarker);
-  const tail = tailStart === -1
+  const rawTail = tailStart === -1
     ? defaultTailItems.join('\n          ')
     : existingItems.slice(tailStart).trim();
+  const tail = rawTail.replaceAll(
+    '<a href="/scenario.html" class="nav-cta">Send Your Scenario</a>',
+    '<a href="/get-preapproved.html?intent=scenario" class="nav-cta">Send Your Scenario</a>',
+  );
   const replacement = `\n${leadingItems.map((item) => `          ${item}`).join('\n')}\n          ${tail}\n        `;
   const updated = `${html.slice(0, openEnd + 1)}${replacement}${html.slice(listEnd)}`;
   if (updated === html) continue;

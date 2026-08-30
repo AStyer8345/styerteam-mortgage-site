@@ -58,7 +58,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260830-form-alert-v1';
+    stylesheet.href = '/assistant-widget.css?v=20260830-merged-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');

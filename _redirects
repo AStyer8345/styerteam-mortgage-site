@@ -60,6 +60,7 @@
 /mortgage-for-business-owners-austin  /mortgage-for-business-owners-austin.html  301!
 /investor-loans  /investor-loans.html  301!
 /high-net-worth-mortgage  /high-net-worth-mortgage.html  301!
+/reverse-mortgage-texas  /reverse-mortgage-texas.html  301!
 /referral-partners-self-employed-clients  /referral-partners-self-employed-clients.html  301!
 /p-and-l-mortgage-texas  /p-and-l-mortgage-texas.html  301!
 /one-time-close-construction-loan-texas  /one-time-close-construction-loan-texas.html  301!
@@ -144,6 +145,49 @@
 /author/adam/  /about.html  301
 /how-long-does-it-take-to-buy-a-home/  /blog.html  301
 /home  /  301
+
+# Legacy route cleanup from GSC Page Indexing report (2026-08-23)
+# Product and intent routes from the prior site are mapped to the closest current canonical page.
+/reverse-refinance  /products.html  301
+/calendar  /contact.html  301
+/purchase  /get-preapproved.html  301
+/home-equity  /products.html  301
+/legal  /terms.html  301
+/construction  /loans/construction.html  301
+/conventional-refinance  /loans/refinance.html  301
+/dscr-purchase  /dscr-loans-texas.html  301
+/usda-purchase  /loans/usda.html  301
+/terms-and-conditions  /terms.html  301
+/reverse-purchase  /products.html  301
+/thank-you-appointment-confirmation  /thank-you.html  301
+/usda-refinance  /loans/usda.html  301
+/dscr-refinance  /dscr-loans-texas.html  301
+/rates/YYYY-MM-DD.html  /austin-mortgage-rates.html  301
+/bank-statement-purchase  /bank-statement-loans.html  301
+/homestyle-purchase  /loans/construction.html  301
+/conventional-purchase  /loans/conventional.html  301
+/203k-refinance  /loans/fha.html  301
+/bank-statement-refinance  /bank-statement-loans.html  301
+/no-income-refinance  /non-qm-loans.html  301
+/our-team  /about.html  301
+/va-purchase  /loans/va.html  301
+/va-refinance  /loans/va.html  301
+/203k-purchase  /loans/fha.html  301
+/privacy-policy  /privacy.html  301
+/privacy-policy/  /privacy.html  301
+/fha-purchase  /loans/fha.html  301
+/jumbo-purchase  /loans/jumbo.html  301
+/thank-you-refinance-request  /thank-you.html  301
+/about-us  /about.html  301
+/thank-you-purchase-request  /thank-you.html  301
+/licensing  /texas-complaint-notice.html  301
+/homestyle-refinance  /loans/construction.html  301
+/itin-purchase  /blog/2026-07-21-itin-mortgage-loans-texas.html  301
+/itin-refinance  /blog/2026-07-21-itin-mortgage-loans-texas.html  301
+/fha-refinance  /loans/fha.html  301
+
+# GSC reported /rate-check/ as a redirect error; force it directly to the canonical file.
+/rate-check/  /rate-check.html  301!
 
 # Additional indexable content pages — force extensionless variants to .html (2026-05-31 audit)
 /scenarios  /scenarios.html  301!

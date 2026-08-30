@@ -15,6 +15,14 @@ test('derives a high-intent purchase state without using protected characteristi
   assert.match(salesStateSummary(state), /Goal: purchase/);
 });
 
+test('derives urgency and investment intent from a flip-completion request', () => {
+  const state = deriveSalesState('I own a Texas flip outright and need $25,000 quickly to finish it and sell it.', [], null);
+  assert.equal(state.goal, 'investment');
+  assert.equal(state.timeline, 'within_30_days');
+  assert.equal(state.stage, 'ready');
+  assert.ok(state.strategy.complexFlags.includes('flip_completion'));
+});
+
 test('merges validated prior state when early details leave the recent transcript', () => {
   const state = deriveSalesState('Mostly business bank deposits', [], { goal: 'purchase', propertyUse: 'primary', timeline: '31_to_90_days', concern: 'income', intentScore: 7 });
   assert.equal(state.goal, 'purchase');

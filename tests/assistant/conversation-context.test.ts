@@ -23,6 +23,22 @@ test('identity questions receive a direct and friendly disclosure', () => {
   assert.equal(reply!.suggestedReplies?.length, 3);
 });
 
+test('company and credential questions receive guaranteed factual answers', () => {
+  for (const question of ['Who does Adam work for?', 'Where does Adam work?', 'What company is Adam with?', 'What lender is Adam with?', 'What mortgage company is this?', 'Is this HyperSmart Home Loans?']) {
+    const reply = fixedConversationReply(question);
+    assert.ok(reply, `expected a fixed company answer for "${question}"`);
+    assert.match(reply!.message, /Kyber Mortgage Corporation/i);
+    assert.match(reply!.message, /HyperSmart Home Loans/i);
+    assert.match(reply!.message, /NMLS number is 513013/i);
+    assert.doesNotMatch(reply!.message, /unknown|hasn.t been identified/i);
+  }
+
+  const credentials = fixedConversationReply("What's Adam's NMLS?");
+  assert.ok(credentials);
+  assert.match(credentials!.message, /513013/);
+  assert.match(credentials!.message, /2653540/);
+});
+
 test('thanks and goodbyes receive a warm close instead of the knowledge fallback', () => {
   for (const value of ['thanks', 'Thank you!', 'that helps', "that's all", "I'm good"]) {
     const reply = fixedConversationReply(value);

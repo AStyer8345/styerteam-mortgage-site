@@ -255,6 +255,61 @@ test('detects all required complex-situation families', () => {
   for (const [message, expected] of samples) assert.ok(detectComplexScenarios(message).includes(expected), `${expected} was not detected`);
 });
 
+test('the failed live S-corp scenario is understood in one turn and never repeats the prompt', () => {
+  let state = deriveStrategyState('Explain my situation', EMPTY_STRATEGY_STATE);
+  let reply = strategyConversationReply('Explain my situation', state, runtime)!;
+  assert.equal(reply.strategy.pendingQuestion, 'complex_description');
+
+  const scenario = 'I own an S-corp and my tax returns show low income because of write-offs. I want to buy a $900,000 primary home in Austin with 20% down in the next 60 days. Can I qualify?';
+  state = deriveStrategyState(scenario, reply.strategy);
+  reply = strategyConversationReply(scenario, state, runtime)!;
+
+  assert.equal(reply.responseKind, 'scenario_assessment');
+  assert.ok(reply.strategy.complexFlags.includes('self_employed'));
+  assert.equal(reply.strategy.incomeType, 'self_employed');
+  assert.equal(reply.strategy.targetPrice, 900_000);
+  assert.equal(reply.strategy.downPaymentPercent, 20);
+  assert.equal(reply.strategy.propertyUse, 'primary');
+  assert.equal(reply.strategy.timeline, '31_to_90_days');
+  assert.match(reply.message, /\$900,000 target purchase/i);
+  assert.match(reply.message, /20% down/i);
+  assert.match(reply.message, /self-employed income/i);
+  assert.match(reply.message, /within about 90 days/i);
+  assert.doesNotMatch(reply.message, /Tell me what makes/i);
+  assert.deepEqual(reply.actions, ['contact', 'application']);
+});
+
+test('a pasted S-corp scenario routes directly to complex strategy without requiring an opening choice', () => {
+  const scenario = 'I own an S-corp, use tax write-offs, and want to buy a $1,000,000 primary home with 20% down in 60 days. Can I qualify?';
+  const state = deriveStrategyState(scenario, EMPTY_STRATEGY_STATE);
+  const reply = strategyConversationReply(scenario, state, runtime)!;
+  assert.equal(state.path, 'complex');
+  assert.equal(reply.responseKind, 'scenario_assessment');
+  assert.match(reply.message, /\$1,000,000 target purchase/);
+  assert.doesNotMatch(reply.message, /How is most of your income earned|Tell me what makes/);
+});
+
+test('urgent flip-completion financing gets a useful assessment and contact handoff', () => {
+  const scenario = 'I have bad credit, own a Texas flip outright, and need $25,000 quickly to finish the renovation and sell it.';
+  const state = deriveStrategyState(scenario, EMPTY_STRATEGY_STATE);
+  const reply = strategyConversationReply(scenario, state, runtime)!;
+  assert.equal(state.path, 'complex');
+  assert.ok(state.complexFlags.includes('flip_completion'));
+  assert.equal(reply.responseKind, 'scenario_assessment');
+  assert.match(reply.message, /existing equity|bridge|renovation-completion/i);
+  assert.deepEqual(reply.actions, ['contact']);
+});
+
+test('a detailed unrecognized complex description advances instead of repeating itself', () => {
+  const initial = strategyConversationReply('Explain my situation', deriveStrategyState('Explain my situation', EMPTY_STRATEGY_STATE), runtime)!;
+  const description = 'My situation involves an unusual property restriction and I need someone to help me understand the next step.';
+  const state = deriveStrategyState(description, initial.strategy);
+  const reply = strategyConversationReply(description, state, runtime)!;
+  assert.ok(state.complexFlags.includes('other_complex'));
+  assert.equal(reply.responseKind, 'scenario_assessment');
+  assert.doesNotMatch(reply.message, /Tell me what makes/i);
+});
+
 test('complex assessment explains paths, obstacles, facts, documents, and applying now', () => {
   const state = deriveStrategyState('I need to buy before I sell', { ...EMPTY_STRATEGY_STATE, path: 'complex', pendingQuestion: 'complex_description' });
   const reply = strategyConversationReply('I need to buy before I sell', state, runtime)!;

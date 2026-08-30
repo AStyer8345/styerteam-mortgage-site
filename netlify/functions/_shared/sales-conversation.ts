@@ -85,11 +85,11 @@ export function deriveSalesState(message: string, conversation: ConversationTurn
 
   if (/\b(?:buy|buying|purchase|purchasing|homebuyer)\b/.test(visitorText)) state.goal = 'purchase';
   if (/\b(?:refi|refinance|refinancing|cash.?out)\b/.test(visitorText)) state.goal = 'refinance';
-  if (/\b(?:investment property|investor|dscr|rental property)\b/.test(visitorText)) state.goal = 'investment';
+  if (/\b(?:investment property|investor|dscr|rental property|flip|fix(?:er)?[- ]?(?:and[- ]?)?flip|house flip)\b/.test(visitorText)) state.goal = 'investment';
   if (/\b(?:primary|live in|owner occupied)\b/.test(visitorText)) state.propertyUse = 'primary';
   if (/\bsecond home\b/.test(visitorText)) state.propertyUse = 'second_home';
-  if (/\b(?:investment property|rental property|dscr)\b/.test(visitorText)) state.propertyUse = 'investment';
-  if (/\b(?:asap|right away|under contract|this month|within 30|next 30)\b/.test(visitorText)) state.timeline = 'within_30_days';
+  if (/\b(?:investment property|rental property|dscr|flip|fix(?:er)?[- ]?(?:and[- ]?)?flip|house flip)\b/.test(visitorText)) state.propertyUse = 'investment';
+  if (/\b(?:asap|urgent|urgently|quickly|right away|under contract|this month|within 30|next 30|need (?:this|it|funds|financing).{0,20}quick)\b/.test(visitorText)) state.timeline = 'within_30_days';
   else if (/\b(?:31.?90|60 days|90 days|two months|three months)\b/.test(visitorText)) state.timeline = '31_to_90_days';
   else if (/\b(?:more than 90|later this year|next year|just planning|not ready)\b/.test(visitorText)) state.timeline = 'more_than_90_days';
   if (/\b(?:credit|fico|score|bankruptcy|foreclosure)\b/.test(visitorText)) state.concern = 'credit';
@@ -103,6 +103,7 @@ export function deriveSalesState(message: string, conversation: ConversationTurn
   const statePattern = /\b(?:in|moving to|property in)\s+(alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|vermont|virginia|washington|west virginia|wisconsin|wyoming|tx|ca|fl|co|ga|tn|az|nc|sc|va)\b/i;
   const stateMatch = current.match(statePattern) || visitorText.match(statePattern);
   if (stateMatch) state.location = stateMatch[1].toUpperCase() === 'TX' ? 'Texas' : titleCase(stateMatch[1]);
+  else if (/\b(?:texas|tx)\b/i.test(current)) state.location = 'Texas';
 
   let score = 0;
   if (state.goal !== 'unknown' && state.goal !== 'explore') score += 2;
@@ -251,7 +252,7 @@ function parseSuppliedState(value: unknown): SalesConversationState {
 }
 
 function parseMoney(value: string): number | null {
-  const match = value.match(/\$?([\d,.]+)\s*(k|m|thousand|million)?\b/i);
+  const match = value.match(/\$?(\d[\d,]*(?:\.\d+)?)\s*(k|m|thousand|million)?\b/i);
   if (!match) return null;
   const suffix = match[2]?.toLowerCase();
   const amount = Number(match[1].replaceAll(',', '')) * (suffix === 'm' || suffix === 'million' ? 1_000_000 : suffix === 'k' || suffix === 'thousand' ? 1_000 : 1);

@@ -14,6 +14,23 @@ test('canonical extensionless variants are force-redirected', () => {
   }
 });
 
+test('Search Console legacy 404 routes resolve to current canonical pages', () => {
+  const expected = new Map([
+    ['/purchase', '/get-preapproved.html'],
+    ['/construction', '/loans/construction.html'],
+    ['/dscr-purchase', '/dscr-loans-texas.html'],
+    ['/privacy-policy', '/privacy.html'],
+    ['/our-team', '/about.html'],
+    ['/itin-purchase', '/blog/2026-07-21-itin-mortgage-loans-texas.html'],
+  ]);
+  for (const [source, target] of expected) {
+    const escapedSource = source.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const escapedTarget = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    assert.match(redirects, new RegExp(`^${escapedSource}\\s+${escapedTarget}\\s+301!?$`, 'm'));
+  }
+  assert.match(redirects, /^\/rate-check\/\s+\/rate-check\.html\s+301!$/m);
+});
+
 test('qualified conversion events use the shared measurement vocabulary', () => {
   assert.match(mainScript, /event: 'scenario_submit'/);
   assert.match(analytics, /book_call_click/);

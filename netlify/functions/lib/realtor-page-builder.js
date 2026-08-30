@@ -27,7 +27,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
       "@type": "Person",
       "name": "Adam Styer",
       "url": "https://styermortgage.com/about.html",
-      "jobTitle": "Loan Originator",
+      "jobTitle": "Senior Loan Officer",
       "worksFor": {
         "@type": "Organization",
         "name": "Kyber Mortgage Corporation dba HyperSmart Home Loans"

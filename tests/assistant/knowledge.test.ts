@@ -10,6 +10,16 @@ test('approved knowledge is eligible for grounded substantive answers', async ()
   assert.match(result.version, /^approved-/);
 });
 
+test('company identity is retrievable for natural employer questions', async () => {
+  __resetKnowledgeCacheForTests();
+  const result = await retrieveApprovedKnowledge('Who does Adam work for and what company is this?');
+  const company = result.results.find((item) => item.source === 'company-information.md');
+  assert.ok(company);
+  assert.match(company!.text, /Kyber Mortgage Corporation/i);
+  assert.match(company!.text, /HyperSmart Home Loans/i);
+  assert.match(company!.text, /Do not say that his company or employer is unknown/i);
+});
+
 test('core FHA credit-score guidance is retrievable', async () => {
   __resetKnowledgeCacheForTests();
   const result = await retrieveApprovedKnowledge("What's the minimum credit score on an FHA loan?");

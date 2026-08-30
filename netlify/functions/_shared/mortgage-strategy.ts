@@ -81,6 +81,8 @@ const COMPLEX_SCENARIOS: Record<string, { label: string; potential: string; obst
   employment_change: { label: 'recent employment change', potential: 'A move within the same field or a documented new salary may still support a workable path.', obstacle: 'Gaps, probation, variable pay, or a major field change can require more review.', facts: 'start date, compensation structure, field, employment gaps, and closing date', documents: 'offer letter, recent pay records, employment history, and verification of employment' },
   multiple_properties: { label: 'multiple financed properties', potential: 'Conventional, portfolio, or DSCR strategies may be compared across the property set.', obstacle: 'Reserves, financed-property count, rental-income treatment, and entity ownership add complexity.', facts: 'number of properties, ownership, payments, rents, and reserves', documents: 'mortgage statements, leases, tax returns when required, and reserve statements' },
   major_credit_event: { label: 'bankruptcy, foreclosure, or major credit event', potential: 'Some programs permit financing after defined waiting periods or with documented extenuating circumstances.', obstacle: 'Event type, discharge or completion date, housing history, and rebuilt credit determine the available paths.', facts: 'event type, key dates, current housing history, and credit recovery', documents: 'discharge or completion papers, explanatory documentation, and current credit review through a secure application' },
+  flip_completion: { label: 'short-term renovation or flip financing', potential: 'Existing equity may support a short-term bridge, renovation-completion, or other investor financing review.', obstacle: 'The as-is value, remaining work, credit, lien position, fees, repayment deadline, and sale plan all affect whether the request is workable.', facts: 'property use, current as-is value, remaining budget and scope, existing liens, expected completion date, and sale plan', documents: 'title and lien information, a remaining-work budget, property-value support, and the planned exit strategy' },
+  other_complex: { label: 'a non-standard mortgage situation', potential: 'A reviewed conventional, government-backed, non-QM, portfolio, or short-term financing path may be relevant depending on the facts.', obstacle: 'The answer depends on the specific income, property, credit, funds, and timing issue rather than one standard guideline.', facts: 'the main constraint, transaction goal, property use, timing, and the result the visitor needs', documents: 'only the scenario-specific records Adam requests through a secure channel after an initial review' },
 };
 
 export function parseStrategyState(value: unknown): StrategyState {
@@ -123,6 +125,7 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
   let state = parseStrategyState(supplied);
   const current = message.trim();
   const normalized = current.toLowerCase();
+  const detectedComplex = detectComplexScenarios(current);
   if (/^estimate payment and cash$/i.test(current)) state = { ...EMPTY_STRATEGY_STATE, path: 'payment' };
   else if (/^see what may qualify$/i.test(current)) state = { ...EMPTY_STRATEGY_STATE, path: 'qualification' };
   else if (/^explain my situation$/i.test(current)) state = { ...EMPTY_STRATEGY_STATE, path: 'complex' };
@@ -134,10 +137,12 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
     state = { ...EMPTY_STRATEGY_STATE, path: 'pricing' };
   }
   else if (!state.path && /\b(?:estimate|calculate|what would).{0,30}(?:payment|cash to close)|\bpayment estimate\b/i.test(current)) state.path = 'payment';
+  else if (!state.path && detectedComplex.length && /\b(?:i|i'm|im|my|we|our|situation|need|have|am)\b/i.test(current)) state.path = 'complex';
   else if (!state.path && /\b(?:do i|could i|can i|what may) qualif|\bwhat can i afford\b/i.test(current)) state.path = 'qualification';
-  else if (!state.path && detectComplexScenarios(current).length && /\b(?:i|i'm|im|my|we|our|situation|need|have|am)\b/i.test(current)) state.path = 'complex';
-  const detectedComplex = detectComplexScenarios(current);
-  if (state.path === 'complex' && detectedComplex.length) state.complexFlags = [...new Set([...state.complexFlags, ...detectedComplex])].slice(0, 8);
+  if (state.path === 'complex') {
+    if (detectedComplex.length) state.complexFlags = [...new Set([...state.complexFlags, ...detectedComplex])].slice(0, 8);
+    state = absorbVolunteeredComplexFacts(state, current);
+  }
 
   const pending = state.pendingQuestion;
   if (pending && isClarificationRequest(current)) {
@@ -162,7 +167,10 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
   if (pending === 'monthly_debts') state.monthlyDebts = /\b(?:no|none|zero|debt[- ]?free)\b/i.test(current) ? 0 : money;
   if (pending === 'available_cash' && money !== null) state.availableCash = money;
   if (pending === 'timeline') state.timeline = parseTimeline(normalized);
-  if (pending === 'complex_description') state.complexFlags = detectComplexScenarios(current);
+  if (pending === 'complex_description') {
+    if (detectedComplex.length) state.complexFlags = [...new Set([...state.complexFlags, ...detectedComplex])].slice(0, 8);
+    else if (current.length >= 30 && /\b(?:i|i'm|im|my|we|our)\b/i.test(current)) state.complexFlags = [...new Set([...state.complexFlags, 'other_complex'])].slice(0, 8);
+  }
   if (pending === 'transaction_purpose') state.transactionPurpose = /refi/.test(normalized) ? 'refinance' : /buy|purchase/.test(normalized) ? 'purchase' : 'unknown';
   if (pending === 'property_value' && money !== null) state.propertyValue = money;
   if (pending === 'loan_amount') {
@@ -223,14 +231,40 @@ export function calculatePaymentEstimate(input: {
 export function detectComplexScenarios(message: string): string[] {
   const value = message.toLowerCase();
   const matches: Array<[RegExp, string]> = [
-    [/self.?employed|own (?:a|my) business/, 'self_employed'], [/bank statements?|deposits instead of tax/, 'bank_statement'], [/1099|commission|bonus|variable income/, 'variable_income'],
+    [/self.?employed|own (?:a|my) business|\bbusiness owner\b|\b(?:s[- ]?corp(?:oration)?|llc|sole propriet(?:or|orship))\b|(?:tax returns?|taxable income).{0,60}(?:write.?offs?|deductions?|show (?:low|little)|too low)|(?:write.?offs?|deductions?).{0,60}(?:tax returns?|taxable income)/, 'self_employed'], [/bank statements?|deposits instead of tax|(?:business|personal) bank deposits|deposit income/, 'bank_statement'], [/1099|commission|bonus|variable income/, 'variable_income'],
     [/self.?employed.{0,40}(?:less than|under|only).{0,15}(?:year|month)|started (?:my|a) business/, 'short_self_employment'], [/physician|doctor.{0,30}(?:contract|new job|starting)/, 'physician_contract'],
     [/asset depletion|asset utilization|live off (?:my )?assets/, 'asset_depletion'], [/\brsus?\b|restricted stock/, 'rsu'], [/\bdscr\b|investor loan|rental property/, 'dscr'],
     [/short.?term rental|airbnb|vrbo/, 'short_term_rental'], [/buy before (?:i )?sell|purchase before selling/, 'buy_before_sell'], [/keep.{0,30}(?:current|old) (?:home|house).{0,30}rent|turn.{0,20}rental/, 'keep_as_rental'],
     [/bridge (?:loan|financing)|bridge the gap/, 'bridge'], [/divorc|separation agreement/, 'divorce'], [/new job|changed jobs?|employment change|job offer/, 'employment_change'],
     [/multiple (?:financed )?(?:properties|homes)|\d+ rental properties/, 'multiple_properties'], [/bankrupt|foreclos|short sale|major credit event/, 'major_credit_event'],
+    [/\b(?:flip|fix(?:er)?[- ]?(?:and[- ]?)?flip|house flip|middle of a flip|rehab loan|renovation completion)\b|finish(?:ing)? .{0,25}(?:flip|rehab|renovation)/, 'flip_completion'],
   ];
   return [...new Set(matches.filter(([pattern]) => pattern.test(value)).map(([, flag]) => flag))];
+}
+
+function absorbVolunteeredComplexFacts(state: StrategyState, message: string): StrategyState {
+  const next = { ...state };
+  const value = message.toLowerCase();
+  const amount = parseMoney(message);
+  const percent = parsePercent(message);
+  const propertyUse = parsePropertyUse(value);
+  const timeline = parseTimeline(value);
+  const incomeType = parseIncomeType(value);
+
+  if (next.targetPrice === null && amount !== null && amount >= 50_000 && /\b(?:buy|purchase|home|house|property)\b/.test(value)) next.targetPrice = amount;
+  if (next.downPaymentPercent === null && /\bdown\b/.test(value) && percent !== null) next.downPaymentPercent = percent;
+  if (next.propertyUse === 'unknown' && propertyUse !== 'unknown') next.propertyUse = propertyUse;
+  if (next.timeline === 'unknown' && timeline !== 'unknown') next.timeline = timeline;
+  if (next.incomeType === 'unknown' && incomeType !== 'unknown') next.incomeType = incomeType;
+  if (next.transactionPurpose === 'unknown') {
+    if (/\b(?:buy|purchase)\b/.test(value)) next.transactionPurpose = 'purchase';
+    else if (/\brefi(?:nance|nancing)?\b/.test(value)) next.transactionPurpose = 'refinance';
+  }
+  if (!next.location) {
+    if (/\b(?:texas|tx)\b/.test(value)) next.location = 'Texas';
+    else if (/\baustin\b/.test(value)) next.location = 'Austin, Texas';
+  }
+  return next;
 }
 
 export function buildStructuredLeadContext(state: { goal: string; propertyUse: string; timeline: string; shoppingStage: string; purchasePrice: number | null; cashAvailable: number | null; concern: string; intentScore: number; strategy: StrategyState }, sourcePage?: string): Record<string, unknown> {
@@ -329,8 +363,23 @@ function complexReply(state: StrategyState): StrategyReply {
   const scenarios = state.complexFlags.map((flag) => COMPLEX_SCENARIOS[flag]).filter(Boolean);
   const labels = scenarios.map((item) => item.label).join(', ');
   const next = { ...state, valueDelivered: true, recommendedNextAction: 'scenario_review' as const, pendingQuestion: null };
-  const message = `Here’s the initial strategy read for ${labels}:\n\n- What may potentially work: ${scenarios.map((item) => item.potential).join(' ')}\n- What could be the obstacle: ${scenarios.map((item) => item.obstacle).join(' ')}\n- Facts that change the answer: ${scenarios.map((item) => item.facts).join('; ')}.\n- What Adam would need to review securely: ${scenarios.map((item) => item.documents).join('; ')}. Do not send those documents in chat.\n- Does applying now appear reasonable? A secure application or scenario review is reasonable if you are actively shopping, under contract, or need a decision soon. If you are still exploring, a short scenario review can identify the best documentation path before a full application.\n\nThis is not an underwriting decision or a promise that a program is available.`;
-  return { message, suggestedReplies: [], strategy: next, responseKind: 'scenario_assessment', actions: ['contact'] };
+  const knownFacts = complexKnownFacts(state);
+  const timingAdvice = state.timeline === 'within_30_days' || state.timeline === '31_to_90_days'
+    ? 'Because your timing is within about 90 days, getting a secure scenario review now is reasonable; it can identify the documentation path before you rely on the target price or write an offer.'
+    : 'If you are still exploring, a short scenario review can identify the best documentation path before a full application.';
+  const message = `Here’s the initial strategy read${knownFacts ? ` for ${knownFacts}` : ''}. The relevant issues are ${labels}.\n\n- What may potentially work: ${scenarios.map((item) => item.potential).join(' ')}\n- What could be the obstacle: ${scenarios.map((item) => item.obstacle).join(' ')}\n- Facts that change the answer: ${scenarios.map((item) => item.facts).join('; ')}.\n- What Adam would need to review securely: ${scenarios.map((item) => item.documents).join('; ')}. Do not send those documents in chat.\n- Does applying now appear reasonable? ${timingAdvice}\n\nThis is an initial strategy assessment, not an approval or a promise that a program is available.`;
+  const actions: StrategyReply['actions'] = state.timeline === 'within_30_days' || state.timeline === '31_to_90_days' ? ['contact', 'application'] : ['contact'];
+  return { message, suggestedReplies: [], strategy: next, responseKind: 'scenario_assessment', actions };
+}
+
+function complexKnownFacts(state: StrategyState): string {
+  const facts = [
+    state.targetPrice !== null ? `a ${money(state.targetPrice)} target purchase` : null,
+    state.downPaymentPercent !== null ? `${state.downPaymentPercent}% down` : state.downPaymentAmount !== null ? `${money(state.downPaymentAmount)} down` : null,
+    state.propertyUse === 'primary' ? 'a primary home' : state.propertyUse === 'second_home' ? 'a second home' : state.propertyUse === 'investment' ? 'an investment property' : null,
+    state.timeline === 'within_30_days' ? 'a decision needed within 30 days' : state.timeline === '31_to_90_days' ? 'a 31–90 day timeline' : state.timeline === 'more_than_90_days' ? 'a timeline beyond 90 days' : null,
+  ].filter(Boolean);
+  return facts.join(', ');
 }
 
 function pricingReply(state: StrategyState, runtime: StrategyRuntime): StrategyReply {
@@ -494,7 +543,7 @@ function downPaymentDollars(state: Pick<StrategyState, 'targetPrice' | 'downPaym
 }
 
 function parseMoney(value: string): number | null {
-  const match = value.match(/\$?([\d,.]+)\s*(k|m|thousand|million)?\b/i);
+  const match = value.match(/\$?(\d[\d,]*(?:\.\d+)?)\s*(k|m|thousand|million)?\b/i);
   if (!match) return null;
   const base = Number(match[1].replaceAll(',', ''));
   const suffix = match[2]?.toLowerCase();
@@ -543,7 +592,7 @@ function creditLabel(value: CreditRange): string {
 }
 
 function parseIncomeType(value: string): IncomeType {
-  if (/self|business owner/.test(value)) return 'self_employed';
+  if (/self|business owner|s[- ]?corp|\bllc\b|sole propriet|own (?:a|my) business|tax (?:write.?offs?|deductions?)/.test(value)) return 'self_employed';
   if (/1099|commission|bonus|variable/.test(value)) return '1099_variable';
   if (/retir|asset|social security|pension/.test(value)) return 'retired_assets';
   if (/w-?2|salary|hourly/.test(value)) return 'w2';

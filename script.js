@@ -1038,7 +1038,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMortgageAssistant() {
   if (document.querySelector('script[data-mortgage-assistant]')) return;
   var script = document.createElement('script');
-  script.src = '/assistant-widget.js?v=20260830-form-alert-v1';
+  script.src = '/assistant-widget.js?v=20260830-merged-v1';
   script.defer = true;
   script.dataset.mortgageAssistant = 'true';
   document.head.appendChild(script);
