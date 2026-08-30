@@ -1,3 +1,13 @@
+## 2026-08-29 — styer-site-daily: GTM restored on the one indexed page that had none; overlay blocker closed
+
+**Commit `83f7413`** — `buy-before-you-sell-austin.html`, **+10 / −1**, live-verified.
+
+- **Restored the standard GTM container** (head `gtm.js` snippet + body `noscript` iframe, copied byte-for-byte from a peer page). This was the **only** public, indexed, sitemap-listed page of 147 carrying **zero `GTM-PQQ6PGLR`** — while still initializing `dataLayer`, loading `analytics.js`, and carrying a `data-track="secure_application_click"` hero CTA. Every event on it fired into a container that was never loaded. Root cause: the file was locked by the stale overlay during the 08-25 seven-page GTM restore (`83c01ee`). **GTM coverage now 147/147 indexed pages.**
+- **Re-verify gate closed three carried blockers at once.** Working tree is **clean, 0 dirty entries** (was 52 entries / 12 deletions, the repo's top constraint since 07-22; overlay preserved in stash `stale-overlay-2026-08-29-backup`). All six previously-parked fixes confirmed *in `HEAD`*, not trusted from the commit message: 3 AEO entity fixes on `index.html` plus 3 meta descriptions now at 154 / 155 / 157.
+- **Wednesday rotation (Buda) passed every axis** — city-specific H1, FAQPage 6Q/6A, BreadcrumbList, inline Netlify form, `/calculators` ×2, 4-of-5 question-form H2s, answer-first second paragraph — so the run generalized to a **25-page suburb cohort sweep**: H1 25/25, BreadcrumbList 25/25, `/calculators` 25/25, question-H2 25/25, FAQPage 24/24 eligible. Inline forms remain 5/25 (Adam form-gate).
+- **Metadata layer verified clean across all 147 sitemap URLs:** 147/147 titles, 147/147 descriptions, **0 duplicates of either**, 0 descriptions over 165 chars (was 3), canonical exactly ×1 on 147/147, company NMLS `2653540` on 147/147, 0 stray `noindex`, 0 real sitemap gaps.
+- **Three of the agent's own false findings killed before surfacing, all tooling rather than site defects:** (1) `austin-area` flagged as the lone FAQPage absence — it is the cohort's directory hub with zero FAQ content, so adding the schema would have been fabricated markup; (2) "Buda has 0 internal links" — a shell variable inside a double-quoted grep pattern containing `\"` broke under zsh and returned 0 for *every* target, when the page actually carries 139 hrefs; (3) "5 pages missing from sitemap" — the URL normalizer never mapped `foo/index.html` → `foo/`, reproducing a false-positive class already documented in `learnings.md`.
+
 ## 2026-08-21 — Weekly content editor: self-employed hub citation pass + Austin median correction
 
 **Page:** `self-employed-mortgage-austin.html` (niche hub, queue "DO NEXT")
