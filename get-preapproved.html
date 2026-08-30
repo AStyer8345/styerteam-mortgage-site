@@ -173,6 +173,13 @@
       width: 100%;
       min-width: 0;
     }
+    @media (max-width: 768px) {
+      .lp-form-field input,
+      .lp-form-field select,
+      .lp-form-field textarea {
+        font-size: 16px; /* iOS zoom guard: <16px inputs trigger focus-zoom */
+      }
+    }
     .lp-form-field input:focus,
     .lp-form-field select:focus,
     .lp-form-field textarea:focus {

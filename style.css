@@ -150,4 +150,5 @@ main header,article header{position:static;z-index:auto}
 /* Keyboard access: open desktop nav dropdowns on focus */
 @media (min-width:769px){.nav-has-dropdown:focus-within .nav-dropdown{display:block}}
 /* iOS zoom guard: keep form controls at >=16px on mobile (root is 15px) */
+@media (max-width:768px){.nav-links a.nav-cta{font-size:var(--font-size-sm)}}
 @media (max-width:768px){.lp-form-field input,.lp-form-field select,.lp-form-field textarea,.form-group input,.form-group select,.form-group textarea,.qq-form input,.qq-form select{font-size:16px}}
