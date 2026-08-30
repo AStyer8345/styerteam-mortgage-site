@@ -20,7 +20,7 @@ test('editorial public pages load the current rollout stylesheet', () => {
     /<body class="[^"]*\beditorial-page\b/.test(fs.readFileSync(file, 'utf8'))
   );
 
-  assert.equal(editorialPages.length, 85);
+  assert.equal(editorialPages.length, 91);
   for (const file of editorialPages) {
     const html = fs.readFileSync(file, 'utf8');
     assert.match(

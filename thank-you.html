@@ -643,7 +643,28 @@
       var calendlySection = document.querySelector('.ty-calendly-section');
       var scheduleButton = document.getElementById('ty-schedule-btn');
 
-      if (type === 'qualification') {
+      if (type === 'professional-referral') {
+        var professionalReferral = {};
+        try {
+          professionalReferral = JSON.parse(sessionStorage.getItem('styer:professional-referral') || '{}');
+          sessionStorage.removeItem('styer:professional-referral');
+        } catch (err) {
+          professionalReferral = {};
+        }
+        var isTexasReferral = !professionalReferral.propertyState || professionalReferral.propertyState === 'Texas';
+        if (h1) h1.textContent = 'Your Scenario Was Received';
+        if (paras.length > 0) paras[0].textContent = isTexasReferral
+          ? 'Adam will review the broad facts and follow up with the mortgage questions that matter. No client documents are needed yet.'
+          : 'Because the property is outside Texas, HyperSmart Home Loans will first determine whether an appropriately licensed loan originator is available for that state. Adam is not represented as the originating loan officer for this out-of-state request.';
+        var stepTitles = document.querySelectorAll('.ty-step-title');
+        var stepDescriptions = document.querySelectorAll('.ty-step-desc');
+        if (stepTitles[0]) stepTitles[0].textContent = 'The scenario is triaged';
+        if (stepDescriptions[0]) stepDescriptions[0].textContent = isTexasReferral ? 'Adam reviews the goal, timing, and general constraint.' : 'The team checks state licensing and program availability before assigning the request.';
+        if (stepTitles[1]) stepTitles[1].textContent = 'The right person follows up';
+        if (stepDescriptions[1]) stepDescriptions[1].textContent = isTexasReferral ? 'Adam responds with the next useful mortgage question.' : 'If available, an appropriately licensed HyperSmart originator will be identified for the property state.';
+        if (stepTitles[2]) stepTitles[2].textContent = 'Documents come later';
+        if (stepDescriptions[2]) stepDescriptions[2].textContent = 'Sensitive documents are requested only through an appropriate secure process if the scenario moves forward.';
+      } else if (type === 'qualification') {
         var qualification = { tier: 'review', score: 0 };
         try {
           qualification = JSON.parse(sessionStorage.getItem('styer:qualification') || '{"tier":"review","score":0}');

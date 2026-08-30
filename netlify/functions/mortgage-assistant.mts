@@ -40,6 +40,7 @@ export default async function handler(request: Request, context: Context): Promi
   try { body = await request.json() as Record<string, unknown>; } catch { return json({ error: { code: 'invalid_json', message: 'Invalid request.' } }, 400, headers); }
   const conversationId = validUuid(body.conversationId) ? String(body.conversationId) : randomUUID();
   const sourcePage = boundedText(body.sourcePage, 500, false) || undefined;
+  const assistantMode = typeof body.assistantMode === 'string' && ['consumer', 'advisor', 'advisor_reverse', 'cpa'].includes(body.assistantMode) ? body.assistantMode : 'consumer';
   try {
     const ipLimit = await checkPersistentRateLimit(`ip:${context.ip || 'unknown'}`, 20, 60_000);
     const sessionLimit = await checkPersistentRateLimit(`session:${session.id}`, 40, 10 * 60_000);
@@ -168,7 +169,8 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ conversationId, message: answer, sources: [], resources: [], suggestedReplies, salesState: nextState }, 200, headers);
   }
 
-  const contextualQuery = buildContextualQuery(message, priorTurns);
+  const modeContext = assistantMode === 'advisor_reverse' ? 'financial advisor reverse mortgage retirement liquidity ' : assistantMode === 'advisor' ? 'financial advisor client mortgage strategy ' : assistantMode === 'cpa' ? 'CPA self-employed tax returns alternative documentation ' : '';
+  const contextualQuery = `${modeContext}${buildContextualQuery(message, priorTurns)}`.trim();
   const retrieval = await retrieveApprovedKnowledge(contextualQuery);
   if (!retrieval.results.length) {
     const followUp = generalAnswerFollowUp(salesState);
@@ -280,6 +282,7 @@ function handleLeadRequest(value: Record<string, unknown>, secret: string, conve
   const leadIntent = ['purchase', 'refinance', 'investment'].includes(leadSalesState.goal) ? leadSalesState.goal : 'information';
   const timeline = leadSalesState.timeline === 'unknown' ? 'unsure' : leadSalesState.timeline;
   const structuredContext = buildStructuredLeadContext(leadSalesState, typeof requestBody.sourcePage === 'string' ? requestBody.sourcePage : undefined);
+  structuredContext.assistantMode = typeof requestBody.assistantMode === 'string' ? requestBody.assistantMode.slice(0, 32) : 'consumer';
   const conversationSummary = JSON.stringify(structuredContext).slice(0, 1000);
   const args = { firstName, lastName: null, email: email || null, phone: phone || null, leadIntent, timeline, preferredContact, conversationSummary };
   const token = createConfirmationToken(secret, { name: 'create_or_update_website_lead', args, conversationId, toolCallId: `structured-lead-${randomUUID()}`, expiresAt: Date.now() + 10 * 60_000 });
@@ -308,6 +311,7 @@ async function executeTool(name: string, args: Record<string, unknown>, conversa
   if (name === 'create_or_update_website_lead') {
     payload.consents = [{ type: 'privacy', status: requestBody.consentAccepted === true ? 'granted' : 'denied', policyVersion: POLICY_VERSION, consentedAt: requestBody.consentAccepted === true ? new Date().toISOString() : undefined }];
     payload.sourcePage = typeof requestBody.sourcePage === 'string' ? requestBody.sourcePage.slice(0, 500) : undefined;
+    payload.assistantMode = typeof requestBody.assistantMode === 'string' ? requestBody.assistantMode.slice(0, 32) : 'consumer';
     if (typeof payload.conversationSummary !== 'string') payload.conversationSummary = salesStateSummary(deriveSalesState('', [], requestBody.salesState));
   }
   return callLoanOs(name, payload, { idempotencyKey: `${conversationId}:${toolCallId}` });

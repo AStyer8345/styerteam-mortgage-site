@@ -14,6 +14,10 @@ export const APPROVED_RESOURCES: readonly AssistantResource[] = [
   { label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register', use: 'when the visitor is ready to apply or request a full scenario review' },
   { label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes', use: 'when the visitor wants to schedule time with Adam' },
   { label: 'Send Adam my scenario', url: 'https://adamstyer.com/scenario.html', use: 'when the visitor wants Adam to review a scenario or provide contact details' },
+  { label: 'Financial advisor mortgage strategies', url: 'https://styermortgage.com/mortgage-strategies-financial-advisors-texas.html', use: 'financial advisors comparing liquidity, retirement income, asset depletion, reverse mortgage, or complex-income client options' },
+  { label: 'CPA mortgage resources', url: 'https://styermortgage.com/mortgage-resources-for-cpas-texas.html', use: 'CPAs reviewing self-employed income, tax returns, bank statements, 1099, profit-and-loss, or asset-based qualification' },
+  { label: 'Texas reverse mortgage guide', url: 'https://styermortgage.com/reverse-mortgage-texas.html', use: 'general reverse mortgage eligibility, obligations, tradeoffs, and alternatives' },
+  { label: 'Mortgage case studies for advisors and CPAs', url: 'https://styermortgage.com/mortgage-case-studies-for-advisors-cpas.html', use: 'professional partners looking for anonymized examples of complex mortgage scenarios' },
 ] as const;
 
 export function isApprovedResource(resource: { label?: unknown; url?: unknown }): resource is { label: string; url: string } {
@@ -48,6 +52,10 @@ export function recommendApprovedResources(question: string): Array<{ label: str
     [/\b(?:refinance|refi)\b.*\b(?:break.?even|saving|worth|cost)\b|\bbreak.?even\b.*\b(?:refinance|refi)\b/, 'Refinance break-even calculator'],
     [/\bdscr\b|debt service coverage/, 'DSCR calculator'],
     [/asset depletion|asset utilization/, 'Asset depletion calculator'],
+    [/financial advisor|wealth manager|portfolio liquidity/, 'Financial advisor mortgage strategies'],
+    [/\bcpa\b|tax advisor|tax return.*self.?employed/, 'CPA mortgage resources'],
+    [/reverse mortgage|\bhecm\b/, 'Texas reverse mortgage guide'],
+    [/case stud|client example/, 'Mortgage case studies for advisors and CPAs'],
     [/\b(?:2[- ]?1|3[- ]?2[- ]?1|temporary)\b.*buydown|rate buydown/, 'Temporary rate buydown calculator'],
     [/wraparound|wrap mortgage|seller financ/, 'Wrap mortgage calculator'],
     [/\b(?:calculator|calculators|tools)\b/, 'All mortgage calculators'],

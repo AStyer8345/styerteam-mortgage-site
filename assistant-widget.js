@@ -20,6 +20,7 @@
     abandonedTracked: false,
     abandonmentTimer: null,
     analyticsSeen: {},
+    assistantMode: document.body && document.body.dataset ? (document.body.dataset.assistantMode || 'consumer') : 'consumer',
   };
   var ui = {};
 
@@ -56,19 +57,20 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260722-panel-layout-v1';
+    stylesheet.href = '/assistant-widget.css?v=20260830-professional-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
     root.className = 'mortgage-assistant';
+    var professionalMode = /^(advisor|advisor_reverse|cpa)$/.test(state.assistantMode);
     root.innerHTML = [
       '<button class="ma-launcher" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="mortgage-assistant-panel">',
       '  <span class="ma-launcher-icon" aria-hidden="true">✦</span>',
-      '  <span>Explore your mortgage options</span>',
+      '  <span>' + (professionalMode ? 'Explore a client scenario' : 'Explore your mortgage options') + '</span>',
       '</button>',
       '<section class="ma-panel" id="mortgage-assistant-panel" role="dialog" aria-modal="true" aria-labelledby="ma-title" hidden>',
       '  <header class="ma-header">',
-      '    <div><p class="ma-kicker">MORTGAGE STRATEGY ASSISTANT</p><h2 id="ma-title">Explore the numbers and your options</h2></div>',
+      '    <div><p class="ma-kicker">MORTGAGE STRATEGY ASSISTANT</p><h2 id="ma-title">' + (professionalMode ? 'Explore an anonymized client scenario' : 'Explore the numbers and your options') + '</h2></div>',
       '    <button class="ma-close" type="button" aria-label="Close mortgage assistant">×</button>',
       '  </header>',
       '  <div class="ma-disclosure" id="ma-disclosure"></div>',
@@ -129,8 +131,8 @@
       state.turnCount = typeof stored.turnCount === 'number' && stored.turnCount >= state.turns.length ? stored.turnCount : state.turns.length;
       state.conversationStarted = state.turns.some(function (turn) { return turn.role === 'user'; });
     } else {
-      addMessage('assistant', 'What are you trying to figure out? I can estimate a payment, identify potential financing options, or help you think through a complicated income or property situation.');
-      addSuggestedReplies(['Estimate payment and cash', 'See what may qualify', 'Explain my situation', 'Compare estimated pricing']);
+      addMessage('assistant', professionalMode ? 'Share the client goal without names, account numbers, documents, or other identifying details. I can help compare general mortgage paths and prepare the right questions for Adam.' : 'What are you trying to figure out? I can estimate a payment, identify potential financing options, or help you think through a complicated income or property situation.');
+      addSuggestedReplies(professionalMode ? (state.assistantMode === 'cpa' ? ['Tax returns reduced qualifying income', 'Compare alternative documentation', 'Asset-based qualification'] : state.assistantMode === 'advisor_reverse' ? ['Compare reverse and forward options', 'Protect portfolio liquidity', 'Retirement income planning'] : ['Protect portfolio liquidity', 'Complex-income client', 'Retirement or asset strategy']) : ['Estimate payment and cash', 'See what may qualify', 'Explain my situation', 'Compare estimated pricing']);
       state.turnCount = 0;
     }
     ui.launcher.addEventListener('click', openPanel);
@@ -187,6 +189,7 @@
       conversation: state.turns.slice(0, -1).slice(-16),
       turnCount: priorTurnCount,
       sourcePage: window.location.href.split('#')[0],
+      assistantMode: state.assistantMode,
       salesState: state.salesState,
     }).then(handleResponse).catch(handleError).finally(function () { setBusy(false, ''); });
   }
@@ -254,6 +257,7 @@
       consentAccepted: needsConsent ? ui.consentInput.checked : undefined,
       turnCount: state.turnCount,
       sourcePage: window.location.href.split('#')[0],
+      assistantMode: state.assistantMode,
       salesState: state.salesState,
     }).then(function (data) {
       clearConfirmation();
@@ -291,6 +295,7 @@
         salesState: state.salesState,
       },
       sourcePage: window.location.href.split('#')[0],
+      assistantMode: state.assistantMode,
     }).then(function (response) { closeLeadForm(); handleResponse(response); }).catch(handleError).finally(function () { setBusy(false, ''); });
   }
 

@@ -126,12 +126,15 @@ test('the assistant panel is isolated from global section and header layout rule
   assert.match(styles, /\.ma-header\{[^}]*border:0/);
 });
 
-test('every website page uses the current cache-busted script loader', () => {
+test('website pages use an approved cache-busted script loader', () => {
   const versions = listHtmlFiles().flatMap((file) =>
     Array.from(fs.readFileSync(file, 'utf8').matchAll(/script\.js\?v=([\w-]+)/g), (match) => match[1]),
   );
   assert.ok(versions.length > 0, 'at least one page must load the shared site script');
-  assert.deepEqual(new Set(versions), new Set(['20260721-assistant-main-v1']));
+  assert.deepEqual(new Set(versions), new Set(['20260721-assistant-main-v1', '20260830-professional-v1']));
+  for (const file of ['referral-partners-self-employed-clients.html', 'mortgage-strategies-financial-advisors-texas.html', 'mortgage-resources-for-cpas-texas.html', 'reverse-mortgage-financial-advisors-texas.html']) {
+    assert.match(fs.readFileSync(file, 'utf8'), /script\.js\?v=20260830-professional-v1/, file);
+  }
 });
 
 test('the widget shows an accessible animated typing indicator while requests are pending', () => {
