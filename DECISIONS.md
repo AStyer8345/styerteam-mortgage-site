@@ -1,5 +1,13 @@
 # styermortgage.com — Decisions
 
+## [2026-08-30] — Published GBP posts sign the current entity, even when the GBP profile itself still carries the retired one
+
+**Chose:** Sign the weekly GBP post **"Adam Styer | HyperSmart Home Loans | NMLS #513013"**, overriding the `gbp-weekly-optimization/SKILL.md` hardcoded "Adam Styer | Mortgage Solutions LP" and reversing the 2026-07-15 run's precedent — despite the Publer/GBP profile still being named with the retired entity (re-verified live today, along with Facebook and Instagram).
+**Over:** (a) Matching the live profile name, as the 07-15 run did, on the reasoning that the signature should agree with the header the reader sees. (b) Dropping the signature line entirely to sidestep the conflict — but the NMLS number has to appear on any post mentioning loan products, and it reads as an orphan without the business name.
+**Why:** `CLAUDE.md` forbids "Mortgage Solutions LP" as a displayed business name with no exception beyond the retained `/styerteam/` social handles, and the entity was fully retired 2026-05-20. The site, its JSON-LD, and Adam's work email have all cut over. A GBP post is displayed business copy, so the prohibition applies squarely. Between the two mismatches available, publishing a retired legal entity name in public copy is a compliance exposure, while a signature that differs from a profile header is cosmetic.
+**Trade-off:** The mismatch is now live and visible — the GBP listing header reads "Mortgage Solutions LP" above a post signed "HyperSmart Home Loans" — and it will repeat every week until Adam renames the three profiles (GBP, Facebook, Instagram), which is UI-gated work no agent can do. Accepted deliberately rather than silently: tracked in `TODO.md` under the 2026-07-15 retired-entity item.
+**Context:** The 2026-07-15 GBP post shipped the retired entity to Google and was self-flagged at the time. This run re-verified the profile names via the Publer accounts API rather than trusting the six-week-old flag, confirmed nothing had changed, and resolved the conflict in `CLAUDE.md`'s favour. Future GBP runs should follow this precedent, not the SKILL's hardcoded string.
+
 ## [2026-06-20] — "Recently Updated" feed derives from git history at deploy (introduces a Netlify build step)
 
 **Chose:** Generate the homepage "Recently Updated" strip's data (`recent-updates.json`) from `git log` at deploy time via a Netlify `command` (`node scripts/gen-recent-updates.js || true`), rendered client-side on `index.html`. The site previously had no build step (`publish = "."` only).

@@ -25,7 +25,7 @@ test('editorial public pages load the current rollout stylesheet', () => {
     const html = fs.readFileSync(file, 'utf8');
     assert.match(
       html,
-      /(?:style\.css\?v=(?:20260830-cta1|20260830-reviews1|20260830-program3|20260830-selfemp1)|editorial-system\.css\?v=20260829-audit1)/,
+      /(?:style\.css\?v=(?:20260830-cta1|20260830-reviews1|20260830-program3|20260830-selfemp1|20260830-lp2)|editorial-system\.css\?v=20260829-audit1)/,
       `${file} must load a cache-busted rollout stylesheet`
     );
   }

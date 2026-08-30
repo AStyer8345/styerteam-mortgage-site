@@ -749,7 +749,7 @@
                 <label class="adc-label" for="adc-checking">Checking / savings balance</label>
                 <div class="adc-input-wrap">
                   <span class="adc-input-prefix">$</span>
-                  <input id="adc-checking" class="adc-input" type="number" inputmode="decimal" min="0" step="1000" value="250000">
+                  <input id="adc-checking" class="adc-input" type="text" inputmode="decimal" min="0" step="1000" value="250000">
                 </div>
               </div>
 
@@ -757,7 +757,7 @@
                 <label class="adc-label" for="adc-brokerage">Brokerage / non-retirement investments</label>
                 <div class="adc-input-wrap">
                   <span class="adc-input-prefix">$</span>
-                  <input id="adc-brokerage" class="adc-input" type="number" inputmode="decimal" min="0" step="1000" value="1000000">
+                  <input id="adc-brokerage" class="adc-input" type="text" inputmode="decimal" min="0" step="1000" value="1000000">
                 </div>
               </div>
 
@@ -765,7 +765,7 @@
                 <label class="adc-label" for="adc-retirement">Retirement accounts</label>
                 <div class="adc-input-wrap">
                   <span class="adc-input-prefix">$</span>
-                  <input id="adc-retirement" class="adc-input" type="number" inputmode="decimal" min="0" step="1000" value="750000">
+                  <input id="adc-retirement" class="adc-input" type="text" inputmode="decimal" min="0" step="1000" value="750000">
                 </div>
               </div>
 
@@ -773,7 +773,7 @@
                 <label class="adc-label" for="adc-other">Other liquid assets</label>
                 <div class="adc-input-wrap">
                   <span class="adc-input-prefix">$</span>
-                  <input id="adc-other" class="adc-input" type="number" inputmode="decimal" min="0" step="1000" value="0">
+                  <input id="adc-other" class="adc-input" type="text" inputmode="decimal" min="0" step="1000" value="0">
                 </div>
               </div>
 
@@ -781,7 +781,7 @@
                 <label class="adc-label" for="adc-other-income">Existing monthly income <span style="font-weight:400;color:var(--adc-muted)">(optional)</span></label>
                 <div class="adc-input-wrap">
                   <span class="adc-input-prefix">$</span>
-                  <input id="adc-other-income" class="adc-input" type="number" inputmode="decimal" min="0" step="100" value="0">
+                  <input id="adc-other-income" class="adc-input" type="text" inputmode="decimal" min="0" step="100" value="0">
                 </div>
                 <span class="adc-help">Pension, Social Security, W-2, K-1, distributions, etc.</span>
               </div>
@@ -790,7 +790,7 @@
                 <label class="adc-label" for="adc-target">Target monthly housing payment <span style="font-weight:400;color:var(--adc-muted)">(optional)</span></label>
                 <div class="adc-input-wrap">
                   <span class="adc-input-prefix">$</span>
-                  <input id="adc-target" class="adc-input" type="number" inputmode="decimal" min="0" step="100" value="10000">
+                  <input id="adc-target" class="adc-input" type="text" inputmode="decimal" min="0" step="100" value="10000">
                 </div>
                 <span class="adc-help">Estimated mortgage payment you want to support.</span>
               </div>
@@ -1116,7 +1116,7 @@
     function $(id) { return document.getElementById(id); }
     function qsa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
     function num(v) {
-      var n = parseFloat(v);
+      var n = parseFloat(String(v).replace(/[$,]/g, ""));
       return isFinite(n) && n >= 0 ? n : 0;
     }
     function pct(v) {
@@ -1454,5 +1454,38 @@
   })();
   </script>
   <!-- END ASSET DEPLETION CALCULATOR MODULE — SCRIPT -->
+<script>
+/* Comma formatting for currency inputs (values are parsed comma-tolerantly) */
+window.styerMoney = (function () {
+  function fmtEl(el) {
+    if (!el) return;
+    var s = el.value;
+    var c = String(s).replace(/[^0-9.]/g, '');
+    if (c === '') { if (s !== '') el.value = ''; return; }
+    var dot = c.indexOf('.');
+    var intp = dot === -1 ? c : c.slice(0, dot);
+    var frac = dot === -1 ? '' : '.' + c.slice(dot + 1).replace(/\./g, '').slice(0, 2);
+    var out = (intp ? Number(intp).toLocaleString('en-US') : '0') + frac;
+    if (out === s) return;
+    var fromEnd = s.length - (el.selectionStart == null ? s.length : el.selectionStart);
+    el.value = out;
+    if (el === document.activeElement) {
+      var pos = Math.max(0, out.length - fromEnd);
+      try { el.setSelectionRange(pos, pos); } catch (e) {}
+    }
+  }
+  function attach(ids) {
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', function () { fmtEl(el); });
+      el.addEventListener('blur', function () { fmtEl(el); });
+      fmtEl(el);
+    });
+  }
+  return { attach: attach, fmtEl: function (x) { fmtEl(typeof x === 'string' ? document.getElementById(x) : x); } };
+})();
+window.styerMoney.attach(["adc-checking", "adc-brokerage", "adc-retirement", "adc-other", "adc-other-income", "adc-target"]);
+</script>
 </body>
 </html>

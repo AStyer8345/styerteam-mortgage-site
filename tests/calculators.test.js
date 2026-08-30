@@ -134,3 +134,35 @@ test('wrap calculator has no dead inputs', () => {
   assert.doesNotMatch(wrap, /w-original-term/);
   assert.doesNotMatch(wrap, /w-loan-age/);
 });
+
+test('currency inputs use comma formatting with comma-tolerant parsers', () => {
+  const pages = {
+    'dscr-calculator.html': ['dscr-price', 'dscr-rent'],
+    'asset-depletion-calculator.html': ['adc-checking', 'adc-target'],
+    'rate-buydown-calculator.html': ['bd-loan-input', 'bd-seller-credit'],
+    'refinance-calculator.html': ['loan-amount', 'lenders-title'],
+  };
+  for (const [page, inputs] of Object.entries(pages)) {
+    const src = fs.readFileSync(page, 'utf8');
+    // formatter present and wired
+    assert.match(src, /window\.styerMoney/, `${page} missing styerMoney formatter`);
+    assert.match(src, /styerMoney\.attach\(/, `${page} never attaches the formatter`);
+    // every parser that reads a currency field strips commas
+    assert.match(src, /replace\(\/\[\$,\]\/g/, `${page} parser does not strip commas`);
+    for (const id of inputs) {
+      const tag = src.match(new RegExp(`<input[^>]*id="${id}"[^>]*>`));
+      assert.ok(tag, `${page} missing #${id}`);
+      assert.match(tag[0], /type="text"/, `${page} #${id} still type=number (cannot display commas)`);
+    }
+    // the silent killer: no bare parseFloat directly on a converted currency field
+    for (const id of inputs) {
+      assert.doesNotMatch(src, new RegExp(`parseFloat\\(document\\.getElementById\\('${id}'\\)\\.value\\)`),
+        `${page} #${id} read by comma-blind parseFloat`);
+    }
+  }
+});
+
+test('wrap calculator money inputs keep their existing comma formatting', () => {
+  const wrap = fs.readFileSync('wrap-mortgage-calculator.html', 'utf8');
+  assert.match(wrap, /wrap-money-input/);
+});
