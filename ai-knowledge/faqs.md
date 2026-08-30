@@ -42,4 +42,4 @@ No. The assistant provides general information from reviewed website materials. 
 
 ## How do I reach Adam?
 
-Call or text (512) 956-6010, email adam.styer@hypersmart.loan, schedule a short call, or use the secure application. Adam or his team will respond as soon as possible.
+Call or text (512) 956-6010, email adam@thestyerteam.com, schedule a short call, or use the secure application. Adam or his team will respond as soon as possible.

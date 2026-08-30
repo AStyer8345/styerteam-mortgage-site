@@ -56,10 +56,13 @@ test('the first recorded chat turn forwards its website source page to LoanOS', 
   assert.match(gateway, /sequenceStart, sourcePage/);
 });
 
-test('assistant uses contextual conversion actions instead of an always-visible CTA bar', () => {
+test('assistant keeps contact and pre-approval actions available without sending short reviews to the full application', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
   const resources = fs.readFileSync('netlify/functions/_shared/assistant-resources.ts', 'utf8');
-  assert.doesNotMatch(browser, /class="ma-next-actions"/);
+  assert.match(browser, /class="ma-next-actions"/);
+  assert.match(browser, />Send this to Adam</);
+  assert.match(browser, /get-preapproved\.html\?intent=scenario/);
+  assert.match(browser, /ui\.leadToggle\.addEventListener\('click', openLeadForm\)/);
   assert.match(browser, /addContextActions/);
   assert.match(resources, /Start secure application/);
   assert.match(resources, /Compare current rate options/);
@@ -98,6 +101,7 @@ test('review requests collect contact details before proposing a lead write', ()
   const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
   const widget = fs.readFileSync('assistant-widget.js', 'utf8');
   assert.match(gateway, /collectContactDetails: true/);
+  assert.match(gateway, /send \(\?:this\|it\|my scenario\) to adam/);
   assert.match(gateway, /incomplete_lead_tool_blocked/);
   assert.match(widget, /data\.collectContactDetails === true/);
   assert.match(widget, /state\.salesState\.visitorName/);
@@ -117,6 +121,20 @@ test('conversations persist across page navigation in the same tab', () => {
   assert.match(browser, /sessionStorage\.getItem/);
   assert.match(browser, /sessionStorage\.setItem/);
   assert.match(browser, /loadStoredConversation/);
+  assert.match(browser, /if \(!state\.conversationStarted\) addSuggestedReplies\(starterSuggestedReplies\(professionalMode\)\)/);
+});
+
+test('assistant links remain on styermortgage.com and public direct-contact email uses Adam portable inbox', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
+  const resources = fs.readFileSync('netlify/functions/_shared/assistant-resources.ts', 'utf8');
+  const contact = fs.readFileSync('contact.html', 'utf8');
+  const scenario = fs.readFileSync('scenario.html', 'utf8');
+  assert.doesNotMatch(`${browser}\n${resources}`, /https:\/\/(?:www\.)?adamstyer\.com/);
+  assert.doesNotMatch(`${gateway}\n${contact}\n${scenario}`, /adam\.styer@hypersmart\.loan/);
+  assert.match(gateway, /adam@thestyerteam\.com/);
+  assert.match(contact, /mailto:adam@thestyerteam\.com/);
+  assert.match(scenario, /"email": "adam@thestyerteam\.com"/);
 });
 
 test('the widget loader and stylesheet share one cache-busting version', () => {

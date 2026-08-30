@@ -81,23 +81,26 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ conversationId, message: answer, sources: [], suggestedReplies: [], salesState, responseKind: 'unsupported_geography' }, 200, headers);
   }
 
-  if (/\b(?:adam(?:['’]s)?|his)\s+(?:team\s+)?(?:to\s+)?(?:review|look at)|\b(?:have|ask)\s+adam\b|\bcontact me\b/i.test(message)) {
+  if (/\b(?:adam(?:['’]s)?|his)\s+(?:team\s+)?(?:to\s+)?(?:review|look at)|\b(?:have|ask)\s+adam\b|\bcontact me\b|\bsend (?:this|it|my scenario) to adam\b|\bsend adam (?:this|it|my scenario)\b/i.test(message)) {
     const name = salesState.visitorName ? `, ${salesState.visitorName}` : '';
     const answer = `Absolutely${name}. Add an email address or phone number below so Adam’s team has a way to respond. You’ll review the privacy notice before anything is saved. The conversation will stay attached to this request, so you won’t need to repeat the scenario.`;
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { contact_details_requested: true }, undefined, sequenceStart, sourcePage);
     return json({ conversationId, message: answer, sources: [], collectContactDetails: true, salesState }, 200, headers);
   }
 
-  if (/\b(?:text|email|schedule|book|calendly|apply|application|contact)\b.*\b(?:adam|call|loan|mortgage|me)?\b/i.test(message)) {
+  if (/\b(?:text|email|schedule|book|calendly|apply|application|contact|pre[- ]?approv(?:e|ed|al)?|scenario)\b|\bshort review\b|\breview (?:my|this|the) (?:file|situation|scenario)\b|\bsend (?:this|it) to adam\b/i.test(message)) {
     const resources = conversionResources(salesState.stage, message);
     if (resources.length) {
+      const fullApplication = resources.some((resource) => resource.url.includes('my1003app.com'));
       const answer = /\btext\b/i.test(message)
-        ? 'You can text Adam directly at (512) 956-6010. You can also email adam.styer@hypersmart.loan, schedule a 15-minute call, or use the secure application when you’re ready.'
+        ? 'You can text Adam directly at (512) 956-6010. You can also email adam@thestyerteam.com, schedule a 15-minute call, or send the short pre-approval and scenario form below.'
         : /\bemail\b/i.test(message)
-          ? 'You can email Adam directly at adam.styer@hypersmart.loan. If scheduling or applying is easier, those options are available too.'
+          ? 'You can email Adam directly at adam@thestyerteam.com. If scheduling or sending the short pre-approval and scenario form is easier, those options are available too.'
           : /\b(?:schedule|book|calendly|call)\b/i.test(message)
             ? 'Absolutely—you can choose a convenient time on Adam’s calendar below. You can also call or text him at (512) 956-6010.'
-            : 'When you’re ready, use the secure application below. If you would rather talk first, text Adam at (512) 956-6010 or email adam.styer@hypersmart.loan.';
+            : fullApplication
+              ? 'When you are ready to complete the full application, use the secure HyperSmart portal below. If you would rather talk first, text Adam at (512) 956-6010 or email adam@thestyerteam.com.'
+              : 'Use the short pre-approval and scenario form below to give Adam your contact information and the details he should review. You do not need to complete the full application first.';
       await recordTurn(conversationId, correlationId, session.id, message, answer, [], { direct_conversion_option: true }, undefined, sequenceStart, sourcePage);
       return json({ conversationId, message: answer, sources: [], resources, salesState }, 200, headers);
     }

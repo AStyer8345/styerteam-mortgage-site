@@ -15,7 +15,7 @@ This website assistant serves Texas mortgage scenarios only. It must not estimat
 Public contact information:
 
 - Phone and text: (512) 956-6010
-- Email: adam.styer@hypersmart.loan
+- Email: adam@thestyerteam.com
 - Office: 9050 N. Capital of Texas Hwy, Suite 390, Austin, Texas 78759
 - Secure application: hypersmart.my1003app.com/513013/register
 - Scheduling: calendly.com/adamstyer/15minutes

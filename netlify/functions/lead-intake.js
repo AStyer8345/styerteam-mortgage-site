@@ -3,13 +3,14 @@
 //
 // Behavior:
 //   1. Subscribes contact to Mailchimp list (no journey tagging — Workflow DevKit owns drip now)
-//   2. POSTs normalized payload (incl. UTM / source_page / referrer) to LoanOS /api/contacts/web-lead
+//   2. POSTs normalized payload (including first-touch attribution) to LoanOS /api/contacts/web-lead
 //
 // Accepts BOTH payload shapes (backward-compatible with existing site forms):
 //   - legacy: { email, fname, lname, phone, tag, loan_goal, lead_source, utm_*, page_url, referrer }
 //   - plan  : { email, first_name, last_name, phone, loan_goal, purchase_price, down_payment,
 //               credit_score, income_type, property_use, target_city, timeline, lender_status,
-//               documentation_issue, situation, page_url, form-name, utm_*, referrer }
+//               documentation_issue, situation, page_url, form-name, utm_*, entry_referrer,
+//               first_touch_*, intent, source, cta_source_page, cta_label }
 //
 // Accepts both application/json and application/x-www-form-urlencoded bodies.
 //
@@ -106,7 +107,22 @@ exports.handler = async (event) => {
     utmSource:     body.utm_source ?? null,
     utmMedium:     body.utm_medium ?? null,
     utmCampaign:   body.utm_campaign ?? null,
-    referrer:      body.referrer ?? null,
+    utmTerm:       body.utm_term ?? null,
+    utmContent:    body.utm_content ?? null,
+    entryReferrer: body.entry_referrer ?? body.referrer ?? null,
+    firstTouchPage: body.first_touch_page ?? null,
+    firstTouchReferrer: body.first_touch_referrer ?? null,
+    firstTouchAt: body.first_touch_at ?? null,
+    firstTouchSource: body.first_touch_source ?? null,
+    firstTouchUtmSource: body.first_touch_utm_source ?? null,
+    firstTouchUtmMedium: body.first_touch_utm_medium ?? null,
+    firstTouchUtmCampaign: body.first_touch_utm_campaign ?? null,
+    firstTouchUtmTerm: body.first_touch_utm_term ?? null,
+    firstTouchUtmContent: body.first_touch_utm_content ?? null,
+    intent: body.intent ?? null,
+    attributionSource: body.source ?? null,
+    ctaSourcePage: body.cta_source_page ?? null,
+    ctaLabel: body.cta_label ?? null,
     audienceType:  body.audience_type ?? null,
     partnerRole:   body.partner_role ?? null,
     scenarioCategory: body.scenario_category ?? null,
@@ -244,8 +260,24 @@ async function createLoanosContact(p) {
       utm_source:     p.utmSource,
       utm_medium:     p.utmMedium,
       utm_campaign:   p.utmCampaign,
+      utm_term:       p.utmTerm,
+      utm_content:    p.utmContent,
       campaign:       p.utmCampaign || p.utmSource || "",
-      referrer:       p.referrer,
+      entry_referrer: p.entryReferrer,
+      referrer:       p.entryReferrer, // Backward-compatible downstream alias; not a Netlify form field.
+      first_touch_page: p.firstTouchPage,
+      first_touch_referrer: p.firstTouchReferrer,
+      first_touch_at: p.firstTouchAt,
+      first_touch_source: p.firstTouchSource,
+      first_touch_utm_source: p.firstTouchUtmSource,
+      first_touch_utm_medium: p.firstTouchUtmMedium,
+      first_touch_utm_campaign: p.firstTouchUtmCampaign,
+      first_touch_utm_term: p.firstTouchUtmTerm,
+      first_touch_utm_content: p.firstTouchUtmContent,
+      intent: p.intent,
+      source: p.attributionSource,
+      cta_source_page: p.ctaSourcePage,
+      cta_label: p.ctaLabel,
       audience_type:  p.audienceType,
       partner_role:   p.partnerRole,
       scenario_category: p.scenarioCategory,
@@ -314,7 +346,23 @@ async function notifyWebLeadAutomation(p) {
     utm_source: p.utmSource,
     utm_medium: p.utmMedium,
     utm_campaign: p.utmCampaign,
-    referrer: p.referrer,
+    utm_term: p.utmTerm,
+    utm_content: p.utmContent,
+    entry_referrer: p.entryReferrer,
+    referrer: p.entryReferrer, // Backward-compatible downstream alias; not a Netlify form field.
+    first_touch_page: p.firstTouchPage,
+    first_touch_referrer: p.firstTouchReferrer,
+    first_touch_at: p.firstTouchAt,
+    first_touch_source: p.firstTouchSource,
+    first_touch_utm_source: p.firstTouchUtmSource,
+    first_touch_utm_medium: p.firstTouchUtmMedium,
+    first_touch_utm_campaign: p.firstTouchUtmCampaign,
+    first_touch_utm_term: p.firstTouchUtmTerm,
+    first_touch_utm_content: p.firstTouchUtmContent,
+    intent: p.intent,
+    source: p.attributionSource,
+    cta_source_page: p.ctaSourcePage,
+    cta_label: p.ctaLabel,
     audience_type: p.audienceType,
     partner_role: p.partnerRole,
     scenario_category: p.scenarioCategory,

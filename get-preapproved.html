@@ -107,12 +107,12 @@
       align-items: center;
     }
     .lp-trust-chip {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(10,31,63,0.07);
+      border: 1px solid rgba(10,31,63,0.18);
       border-radius: 2rem;
       padding: 5px 12px;
       font-size: .8rem;
-      color: rgba(255,255,255,0.9);
+      color: var(--color-navy);
       white-space: nowrap;
     }
     .lp-trust-chip .stars { color: #F59E0B; }
@@ -399,8 +399,8 @@
     }
     .lp-step h3 { font-size: 1rem; color: var(--color-navy); margin-bottom: .35rem; font-weight: var(--font-weight-semibold); }
     .lp-step p { font-size: .875rem; color: var(--color-gray); line-height: 1.55; margin-bottom: 0; }
-    .lp-trust-phone { color: rgba(255,255,255,0.9); text-decoration: none; }
-    .lp-trust-phone:hover { background: rgba(255,255,255,0.2); }
+    .lp-trust-phone { color: var(--color-navy); text-decoration: none; }
+    .lp-trust-phone:hover { background: rgba(10,31,63,0.13); }
 
     /* ── Mobile responsive ──────────────────────────────────── */
     @media (max-width: 900px) {
@@ -460,10 +460,6 @@
           <!-- Form column -->
           <div class="lp-form-card">
             <h2 id="qualification-form-heading">Tell me a little about what you're looking to do.</h2>
-            <!-- Netlify honeypot -->
-            <p style="display:none;">
-              <label>Don't fill this out if you're human: <input name="bot-field"></label>
-            </p>
             <form
               name="get-preapproved"
               method="POST"
@@ -473,6 +469,10 @@
               id="form-get-preapproved"
             >
               <input type="hidden" name="form-name" value="get-preapproved">
+              <!-- Netlify honeypot must be part of the submitted form. -->
+              <p style="display:none;" aria-hidden="true">
+                <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+              </p>
               <!-- UTM tracking — auto-populated by JS below -->
               <input type="hidden" id="gpa-utm-source"   name="utm_source">
               <input type="hidden" id="gpa-utm-medium"   name="utm_medium">
@@ -480,7 +480,20 @@
               <input type="hidden" id="gpa-utm-term"     name="utm_term">
               <input type="hidden" id="gpa-utm-content"  name="utm_content">
               <input type="hidden" id="gpa-page-url"     name="page_url">
-              <input type="hidden" id="gpa-referrer"     name="referrer">
+              <input type="hidden" name="entry_referrer">
+              <input type="hidden" name="first_touch_page">
+              <input type="hidden" name="first_touch_referrer">
+              <input type="hidden" name="first_touch_at">
+              <input type="hidden" name="first_touch_source">
+              <input type="hidden" name="first_touch_utm_source">
+              <input type="hidden" name="first_touch_utm_medium">
+              <input type="hidden" name="first_touch_utm_campaign">
+              <input type="hidden" name="first_touch_utm_term">
+              <input type="hidden" name="first_touch_utm_content">
+              <input type="hidden" name="intent">
+              <input type="hidden" name="source">
+              <input type="hidden" name="cta_source_page">
+              <input type="hidden" name="cta_label">
               <div class="lp-funnel-progress" aria-live="polite">
                 <span class="lp-funnel-step-label" id="gpa-step-label">Step 1 of 2: Your Plans</span>
                 <span class="lp-funnel-track" aria-hidden="true"><span class="lp-funnel-fill" id="gpa-progress-fill"></span></span>
@@ -704,21 +717,6 @@
   <script src="/js/scroll-effects.js?v=20260429" defer></script>
   <script src="/analytics.js?v=20260810-qualified-funnel-v1" defer></script>
   <script>
-    // Populate UTM hidden fields from URL params + referrer
-    (function () {
-      var p = new URLSearchParams(window.location.search);
-      var fields = { source: 'utm_source', medium: 'utm_medium', campaign: 'utm_campaign', term: 'utm_term', content: 'utm_content' };
-      for (var key in fields) {
-        var el = document.getElementById('gpa-utm-' + key);
-        if (el) el.value = p.get('utm_' + key) || '';
-      }
-      var urlEl = document.getElementById('gpa-page-url');
-      if (urlEl) urlEl.value = window.location.href;
-      var refEl = document.getElementById('gpa-referrer');
-      if (refEl) refEl.value = document.referrer || '';
-    })();
-  </script>
-  <script>
     (function () {
       var form = document.getElementById('form-get-preapproved');
       if (!form) return;
@@ -739,6 +737,40 @@
         1: 'Step 1 of 2: Your Plans',
         2: 'Step 2 of 2: Contact'
       };
+      var formStarted = false;
+      var stepOneCompleted = false;
+
+      function attributionEvent(eventName) {
+        var value = function (name) {
+          var input = form.querySelector('input[name="' + name + '"]');
+          return input ? input.value : '';
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: eventName,
+          form_name: 'get-preapproved',
+          intent: value('intent') || intent || '',
+          source: value('source'),
+          cta_source_page: value('cta_source_page'),
+          cta_label: value('cta_label'),
+          first_touch_source: value('first_touch_source'),
+          first_touch_page: value('first_touch_page')
+        });
+      }
+
+      function trackFormStart() {
+        if (formStarted) return;
+        formStarted = true;
+        attributionEvent('form_start');
+      }
+
+      document.addEventListener('styer:attribution-ready', function () {
+        attributionEvent('qualification_funnel_view');
+      }, { once: true });
+
+      ['focusin', 'input', 'change'].forEach(function (eventName) {
+        form.addEventListener(eventName, trackFormStart, { once: true });
+      });
 
       function showStep(step) {
         currentStep = step;
@@ -767,7 +799,14 @@
         var prev = e.target.closest('[data-gpa-prev]');
         if (next) {
           e.preventDefault();
-          if (validateVisibleStep() && currentStep < steps.length) showStep(currentStep + 1);
+          trackFormStart();
+          if (validateVisibleStep() && currentStep < steps.length) {
+            if (!stepOneCompleted && currentStep === 1) {
+              stepOneCompleted = true;
+              attributionEvent('step_1_complete');
+            }
+            showStep(currentStep + 1);
+          }
         }
         if (prev) {
           e.preventDefault();
@@ -844,7 +883,23 @@
               utm_source:    data.get('utm_source')   || '',
               utm_medium:    data.get('utm_medium')   || '',
               utm_campaign:  data.get('utm_campaign') || '',
+              utm_term:      data.get('utm_term')     || '',
+              utm_content:   data.get('utm_content')  || '',
               page_url:      data.get('page_url')     || window.location.href,
+              entry_referrer: data.get('entry_referrer') || '',
+              first_touch_page: data.get('first_touch_page') || '',
+              first_touch_referrer: data.get('first_touch_referrer') || '',
+              first_touch_at: data.get('first_touch_at') || '',
+              first_touch_source: data.get('first_touch_source') || '',
+              first_touch_utm_source: data.get('first_touch_utm_source') || '',
+              first_touch_utm_medium: data.get('first_touch_utm_medium') || '',
+              first_touch_utm_campaign: data.get('first_touch_utm_campaign') || '',
+              first_touch_utm_term: data.get('first_touch_utm_term') || '',
+              first_touch_utm_content: data.get('first_touch_utm_content') || '',
+              intent: data.get('intent') || intent || '',
+              source: data.get('source') || '',
+              cta_source_page: data.get('cta_source_page') || '',
+              cta_label: data.get('cta_label') || '',
             }),
           }).then(function (response) {
             if (!response.ok) throw new Error('Lead review failed');
@@ -857,7 +912,18 @@
           var qualification = leadAccepted && results[1].value.qualification
             ? results[1].value.qualification
             : { tier: 'review', score: 0 };
-          sessionStorage.setItem('styer:qualification', JSON.stringify(qualification));
+          try {
+            sessionStorage.setItem('styer:qualification', JSON.stringify(qualification));
+            sessionStorage.setItem('styer:qualification-contact', JSON.stringify({
+              email: data.get('email') || '',
+              first_name: data.get('first_name') || '',
+              last_name: data.get('last_name') || '',
+              phone: data.get('phone') || ''
+            }));
+          } catch (storageError) {
+            console.warn('Unable to save optional thank-you context:', storageError);
+          }
+          attributionEvent('accepted_submit');
           window.dataLayer.push({
             event: 'lead_qualified',
             lead_type: 'purchase_prequal',
@@ -876,6 +942,6 @@
       });
     })();
   </script>
-  <script src="/assets/utm.js" defer></script>
+  <script src="/assets/utm.js?v=20260830-first-touch-v1" defer></script>
 </body>
 </html>

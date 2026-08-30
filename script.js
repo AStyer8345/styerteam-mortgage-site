@@ -619,16 +619,17 @@ function bindQuickContactForm(form) {
 // ========================================================================
 
 function initHeroQuickForm() {
-  // Primary: standard hero-quick-form with success elements
-  let form = document.getElementById('hero-quick-form');
+  // Bind only forms explicitly designated as legacy hero quote forms. Using a
+  // stable class prevents specialized Netlify forms from inheriting this flow.
+  const form = document.querySelector('form.js-hero-quote');
+  if (!form) return;
+
   let wrap = document.getElementById('hero-quick-form-wrap');
   let successEl = document.getElementById('hero-quick-form-success');
   let successText = successEl && successEl.querySelector('.hero-quick-form-success-text');
 
-  // Fallback: any data-netlify form without hero-quick-form id (suburb pages like buda, westlake)
-  if (!form) {
-    form = document.querySelector('form[data-netlify="true"]:not(.js-quick-contact)');
-    if (!form) return;
+  // Some legacy quote cards do not ship a dedicated wrapper/success panel.
+  if (!wrap) {
     // Create minimal wrapper/success elements dynamically
     wrap = form.parentElement;
     if (!successEl) {
@@ -660,14 +661,27 @@ function initHeroQuickForm() {
     if (!isValid) return;
 
     const formData = new FormData(form);
-    const fullName = (formData.get('name') || '').trim();
+    const formValue = (...names) => {
+      for (const name of names) {
+        const value = formData.get(name);
+        if (typeof value === 'string' && value.trim()) return value.trim();
+      }
+      return '';
+    };
+    const fullName = formValue('name', 'full_name');
     const nameParts = fullName.split(' ');
     const fname = nameParts[0] || '';
     const lname = nameParts.slice(1).join(' ') || '';
-    const email = formData.get('email') || '';
-    const phone = formData.get('phone') || '';
-    const loanGoal = formData.get('loanGoal') || '';
+    const email = formValue('email');
+    const phone = formValue('phone');
+    const loanGoal = formValue('loanGoal', 'loan_goal', 'loan-purpose', 'loan_purpose');
     const params = new URLSearchParams(window.location.search);
+    let firstTouch = {};
+    try {
+      firstTouch = JSON.parse(sessionStorage.getItem('styer:first-touch:v1') || localStorage.getItem('styer:first-touch:v1') || '{}');
+    } catch (_) {
+      firstTouch = {};
+    }
 
     const leadTracking = dispatchLeadSubmitted(
       { lead_type: 'quick_quote', form_name: form.getAttribute('name') || 'hero-quick-form' },
@@ -689,22 +703,38 @@ function initHeroQuickForm() {
           loan_goal: loanGoal,
           lead_source: 'Quick Quote',
           'form-name': formData.get('form-name') || form.getAttribute('name') || '',
-          purchase_price: formData.get('purchase_price') || formData.get('loan_amount') || '',
-          down_payment: formData.get('down_payment') || '',
-          credit_score: formData.get('credit_score') || '',
-          income_type: formData.get('income_type') || '',
-          property_use: formData.get('property_use') || '',
-          target_city: formData.get('target_city') || formData.get('property_location') || '',
-          timeline: formData.get('timeline') || '',
-          lender_status: formData.get('lender_status') || '',
-          documentation_issue: formData.get('documentation_issue') || '',
-          situation: formData.get('situation') || formData.get('notes') || '',
+          purchase_price: formValue('purchase_price', 'property_value', 'loan_amount', 'loan-amount'),
+          down_payment: formValue('down_payment', 'down-payment'),
+          credit_score: formValue('credit_score', 'credit-score'),
+          income_type: formValue('income_type', 'income-type'),
+          property_use: formValue('property_use', 'property-use'),
+          target_city: formValue('target_city', 'property_location', 'city'),
+          timeline: formValue('timeline'),
+          lender_status: formValue('lender_status'),
+          documentation_issue: formValue('documentation_issue'),
+          situation: formValue('situation', 'notes'),
           tcpa_consent: formData.get('tcpa_consent') === 'on',
           sms_opt_in: formData.get('sms_opt_in') === 'on',
-          page_url: window.location.href,
-          utm_source: params.get('utm_source') || '',
-          utm_medium: params.get('utm_medium') || '',
-          utm_campaign: params.get('utm_campaign') || '',
+          page_url: window.location.origin + window.location.pathname,
+          entry_referrer: firstTouch.first_touch_referrer || '',
+          first_touch_page: firstTouch.first_touch_page || '',
+          first_touch_referrer: firstTouch.first_touch_referrer || '',
+          first_touch_at: firstTouch.first_touch_at || '',
+          first_touch_source: firstTouch.first_touch_source || '',
+          first_touch_utm_source: firstTouch.first_touch_utm_source || '',
+          first_touch_utm_medium: firstTouch.first_touch_utm_medium || '',
+          first_touch_utm_campaign: firstTouch.first_touch_utm_campaign || '',
+          first_touch_utm_term: firstTouch.first_touch_utm_term || '',
+          first_touch_utm_content: firstTouch.first_touch_utm_content || '',
+          intent: params.get('intent') || 'quick_quote',
+          source: params.get('source') || window.location.pathname,
+          cta_source_page: window.location.origin + window.location.pathname,
+          cta_label: (form.querySelector('button[type="submit"]')?.textContent || 'Quick Quote').trim(),
+          utm_source: params.get('utm_source') || firstTouch.first_touch_utm_source || '',
+          utm_medium: params.get('utm_medium') || firstTouch.first_touch_utm_medium || '',
+          utm_campaign: params.get('utm_campaign') || firstTouch.first_touch_utm_campaign || '',
+          utm_term: params.get('utm_term') || firstTouch.first_touch_utm_term || '',
+          utm_content: params.get('utm_content') || firstTouch.first_touch_utm_content || '',
         }),
       }),
     ]);

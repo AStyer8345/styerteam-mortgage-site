@@ -12,6 +12,7 @@ const austinRates = fs.readFileSync('austin-mortgage-rates.html', 'utf8');
 const homepage = fs.readFileSync('index.html', 'utf8');
 const scenarioPage = fs.readFileSync('scenario.html', 'utf8');
 const nonQmPage = fs.readFileSync('non-qm-loans.html', 'utf8');
+const preapprovalGuide = fs.readFileSync('mortgage-pre-approval-austin.html', 'utf8');
 const stylesheet = fs.readFileSync('style.css', 'utf8');
 const formsRegistry = fs.readFileSync('forms.html', 'utf8');
 const subscribeLo = fs.readFileSync('netlify/functions/subscribe-lo.js', 'utf8');
@@ -39,8 +40,35 @@ test('lead forms only report success after a capture endpoint accepts the lead',
   assert.match(script, /if \(!hasSuccessfulCapture\(quoteCaptureResults\)\)/);
 });
 
-test('legacy hero fallback does not bind modern quick-contact forms twice', () => {
-  assert.match(script, /form\[data-netlify="true"\]:not\(\.js-quick-contact\)/);
+test('legacy hero quote flow binds only explicitly designated quote forms', () => {
+  assert.match(script, /document\.querySelector\('form\.js-hero-quote'\)/);
+  assert.doesNotMatch(script, /querySelector\(['"]form\[data-netlify/);
+
+  const intendedQuotePages = [
+    'austin-area-mortgage-lender.html',
+    'bank-statement-loans.html',
+    'buda-mortgage-lender.html',
+    'cedar-park-mortgage-lender.html',
+    'dscr-loan-austin-tx.html',
+    'high-net-worth-mortgage.html',
+    'kyle-mortgage-lender.html',
+    'westlake-mortgage-lender.html',
+    'loans/construction.html',
+    'loans/conventional.html',
+    'loans/fha.html',
+    'loans/investment.html',
+    'loans/jumbo.html',
+    'loans/refinance.html',
+    'loans/usda.html',
+    'loans/va.html',
+  ];
+  intendedQuotePages.forEach((file) => {
+    assert.match(fs.readFileSync(file, 'utf8'), /<form[^>]+class="[^"]*\bjs-hero-quote\b[^"]*"[^>]*>/, file);
+  });
+
+  ['ftb-dpa-guide.html', 'loanos-waitlist.html', 'prequal.html', 'rate-alert.html', 'resources/first-time-buyer-guide/index.html', 'thank-you.html'].forEach((file) => {
+    assert.doesNotMatch(fs.readFileSync(file, 'utf8'), /\bjs-hero-quote\b/, file);
+  });
 });
 
 test('FAQ accordions toggle hidden panels open and closed', () => {
@@ -55,16 +83,16 @@ test('Non-QM quote form uses primary notification capture path', () => {
   assert.match(script, /'form-name': formData\.get\('form-name'\) \|\| form\.getAttribute\('name'\) \|\| ''/);
 });
 
-test('homepage prioritizes the secure application and preserves the scenario fallback', () => {
+test('homepage prioritizes the short scenario review and preserves the secure application', () => {
   const heroCtas = homepage.match(/<div class="hero-ctas">([\s\S]*?)<\/div>/)?.[1] || '';
   const heroButtonLabels = Array.from(heroCtas.matchAll(/class="[^"]*\bhero-cta-btn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
   const introActions = homepage.match(/<div id="quick-scenario-form" class="quick-contact-actions"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
-  assert.match(homepage, /data-track="secure_application_click"[^>]*>Start a Secure Loan Application<\/a>/);
-  assert.match(homepage, /<a href="\/get-preapproved\.html\?intent=scenario"[^>]*>Send Your Scenario Instead<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Start a Secure Loan Application', 'Send Your Scenario Instead']);
-  assert.deepEqual(introActionLabels, ['Start Secure Application', 'Send Your Scenario']);
+  assert.match(homepage, /href="\/get-preapproved\.html\?intent=scenario&amp;source=homepage_hero"[^>]*data-source="homepage_hero"[^>]*>Send Your Scenario<\/a>/);
+  assert.match(homepage, /data-track="secure_application_click"[^>]*data-source="homepage_hero_secondary"[^>]*>Start Secure Application<\/a>/);
+  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Start Secure Application']);
+  assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Start Secure Application']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.doesNotMatch(homepage, /name="quick-scenario"/);
   assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);
@@ -76,7 +104,17 @@ test('homepage prioritizes the secure application and preserves the scenario fal
   assert.match(homepage, /Complex mortgage\. Clear path forward\./);
   assert.match(homepage, /Austin business owners · investors · move-up buyers/);
   assert.match(homepage, /href="tel:\+15129566010"/);
+  assert.match(homepage, /href="\/get-preapproved\.html\?intent=scenario&amp;source=homepage_sticky_mobile"[^>]*data-source="homepage_sticky_mobile"/);
+  assert.match(homepage, /document\.body\.classList\.add\('sticky-mobile-bar-active'\)/);
+  assert.match(stylesheet, /\.home-pilot\.sticky-mobile-bar-active \.mortgage-assistant\{bottom:calc\(5\.75rem \+ env\(safe-area-inset-bottom\)\)\}/);
   assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
+});
+
+test('pre-approval guide routes pre-approval and application CTAs by intent', () => {
+  assert.match(preapprovalGuide, /href="\/get-preapproved\.html\?source=preapproval_guide_hero"[^>]*>Get Pre-Approved Now<\/a>/);
+  assert.doesNotMatch(preapprovalGuide, /href="\/scenario\.html"[^>]*>(?:Get|Start)[^<]*(?:Pre-Approved|Application)/i);
+  assert.match(preapprovalGuide, /href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*data-source="preapproval_guide_documents"[^>]*>Start Your Application<\/a>/);
+  assert.doesNotMatch(preapprovalGuide, /register\?time=[^"']*\?time=/);
 });
 
 test('homepage hero keeps Adam’s portrait compact and avoids the oversized photo treatment', () => {

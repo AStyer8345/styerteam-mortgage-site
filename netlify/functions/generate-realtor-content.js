@@ -199,7 +199,7 @@ async function generateRealtorContent(formData) {
           preheader: parsed.realtorPreheader || "",
           html: wrapEmailHtml(injectPageLink(parsed.realtorEmail, pageUrl)),
           fromName: "Adam Styer",
-          replyTo: "adam.styer@hypersmart.loan",
+          replyTo: "adam@thestyerteam.com",
           scheduleTime: scheduleTime || null,
         });
         results.campaigns.push({ audience: "realtor", ...campaignResult });

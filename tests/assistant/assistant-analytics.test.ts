@@ -9,7 +9,7 @@ test('assistant analytics includes the required funnel events', () => {
   for (const event of [
     'assistant_impression', 'assistant_opened', 'conversation_started', 'opening_choice_selected', 'useful_answer_delivered',
     'estimate_started', 'estimate_completed', 'pricing_range_viewed', 'complex_scenario_started', 'scenario_assessment_completed',
-    'contact_form_opened', 'contact_submitted', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'assistant_error', 'conversation_abandoned',
+    'contact_form_opened', 'contact_submitted', 'preapproval_clicked', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'assistant_error', 'conversation_abandoned',
   ]) assert.match(browser, new RegExp(event));
 });
 

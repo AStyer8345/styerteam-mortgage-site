@@ -76,6 +76,10 @@
       '  </header>',
       '  <div class="ma-disclosure" id="ma-disclosure"></div>',
       '  <div class="ma-messages" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Conversation"></div>',
+      '  <div class="ma-next-actions" aria-label="Contact and pre-approval options">',
+      '    <button type="button" class="ma-lead-toggle">Send this to Adam</button>',
+      '    <a class="ma-application-link" href="https://styermortgage.com/get-preapproved.html?intent=scenario">Get pre-approved</a>',
+      '  </div>',
       '  <div class="ma-confirmation" hidden>',
       '    <p class="ma-confirmation-summary"></p>',
       '    <label class="ma-consent" hidden><input type="checkbox"> <span></span></label>',
@@ -116,6 +120,8 @@
     ui.consentText = root.querySelector('.ma-consent span');
     ui.confirm = root.querySelector('.ma-confirm');
     ui.cancel = root.querySelector('.ma-cancel');
+    ui.leadToggle = root.querySelector('.ma-lead-toggle');
+    ui.preapprovalLink = root.querySelector('.ma-application-link');
     ui.leadForm = root.querySelector('.ma-lead-form');
     ui.leadCancel = root.querySelector('.ma-lead-cancel');
     root.querySelector('#ma-disclosure').textContent = state.config.aiDisclosure;
@@ -131,9 +137,10 @@
       });
       state.turnCount = typeof stored.turnCount === 'number' && stored.turnCount >= state.turns.length ? stored.turnCount : state.turns.length;
       state.conversationStarted = state.turns.some(function (turn) { return turn.role === 'user'; });
+      if (!state.conversationStarted) addSuggestedReplies(starterSuggestedReplies(professionalMode));
     } else {
       addMessage('assistant', professionalMode ? 'Share the client goal without names, account numbers, documents, or other identifying details. I can help compare general mortgage paths and prepare the right questions for Adam.' : 'What are you trying to figure out? I can estimate a payment, identify potential financing options, or help you think through a complicated income or property situation.');
-      addSuggestedReplies(professionalMode ? (state.assistantMode === 'cpa' ? ['Tax returns reduced qualifying income', 'Compare alternative documentation', 'Asset-based qualification'] : state.assistantMode === 'advisor_reverse' ? ['Compare reverse and forward options', 'Protect portfolio liquidity', 'Retirement income planning'] : ['Protect portfolio liquidity', 'Complex-income client', 'Retirement or asset strategy']) : ['Estimate payment and cash', 'See what may qualify', 'Explain my situation', 'Compare estimated pricing']);
+      addSuggestedReplies(starterSuggestedReplies(professionalMode));
       state.turnCount = 0;
     }
     ui.launcher.addEventListener('click', openPanel);
@@ -144,6 +151,11 @@
     });
     ui.confirm.addEventListener('click', confirmAction);
     ui.cancel.addEventListener('click', clearConfirmation);
+    ui.leadToggle.addEventListener('click', openLeadForm);
+    ui.preapprovalLink.addEventListener('click', function () {
+      state.converted = true;
+      trackAssistant('preapproval_clicked', { cta_type: 'preapproval' });
+    });
     ui.leadCancel.addEventListener('click', closeLeadForm);
     ui.leadForm.addEventListener('submit', submitLeadRequest);
     document.addEventListener('keydown', function (event) {
@@ -151,6 +163,13 @@
       if (event.key === 'Tab' && !ui.panel.hidden) trapFocus(event);
     });
     trackAssistant('assistant_impression');
+  }
+
+  function starterSuggestedReplies(professionalMode) {
+    if (!professionalMode) return ['Estimate payment and cash', 'See what may qualify', 'Explain my situation', 'Compare estimated pricing'];
+    if (state.assistantMode === 'cpa') return ['Tax returns reduced qualifying income', 'Compare alternative documentation', 'Asset-based qualification'];
+    if (state.assistantMode === 'advisor_reverse') return ['Compare reverse and forward options', 'Protect portfolio liquidity', 'Retirement income planning'];
+    return ['Protect portfolio liquidity', 'Complex-income client', 'Retirement or asset strategy'];
   }
 
   function openPanel() {
@@ -517,7 +536,7 @@
   function addTrustedLink(value, label) {
     try {
       var url = new URL(value);
-      var approvedHost = url.hostname === 'adamstyer.com' || url.hostname === 'www.adamstyer.com' || url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'hypersmart.my1003app.com' || url.hostname === 'calendly.com';
+      var approvedHost = url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'hypersmart.my1003app.com' || url.hostname === 'calendly.com';
       if (url.protocol !== 'https:' || !approvedHost) return;
       var wrapper = document.createElement('div');
       wrapper.className = 'ma-trusted-link';
@@ -549,7 +568,7 @@
       if (typeof action.url !== 'string') return;
       try {
         var url = new URL(action.url);
-        var approved = url.protocol === 'https:' && (url.hostname === 'adamstyer.com' || url.hostname === 'www.adamstyer.com' || url.hostname === 'hypersmart.my1003app.com' || url.hostname === 'calendly.com');
+        var approved = url.protocol === 'https:' && (url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'hypersmart.my1003app.com' || url.hostname === 'calendly.com');
         if (!approved) return;
         var link = document.createElement('a');
         link.href = url.href;
@@ -584,13 +603,14 @@
   function trackLinkClick(url) {
     if (url.hostname === 'hypersmart.my1003app.com') { state.converted = true; trackAssistant('application_clicked', { cta_type: 'application' }); }
     else if (url.hostname === 'calendly.com') { state.converted = true; trackAssistant('scheduling_clicked', { cta_type: 'schedule' }); }
+    else if (/get-preapproved\.html$/.test(url.pathname)) { state.converted = true; trackAssistant('preapproval_clicked', { cta_type: 'preapproval' }); }
     else if (/rate-check/.test(url.pathname)) { state.converted = true; trackAssistant('rate_review_clicked', { cta_type: 'rate_review' }); }
   }
 
   function trackAssistant(eventName, extra) {
-    var allowedEvents = ['assistant_impression', 'assistant_opened', 'conversation_started', 'opening_choice_selected', 'useful_answer_delivered', 'estimate_started', 'estimate_completed', 'pricing_range_viewed', 'complex_scenario_started', 'scenario_assessment_completed', 'contact_form_opened', 'contact_submitted', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'assistant_error', 'conversation_abandoned'];
+    var allowedEvents = ['assistant_impression', 'assistant_opened', 'conversation_started', 'opening_choice_selected', 'useful_answer_delivered', 'estimate_started', 'estimate_completed', 'pricing_range_viewed', 'complex_scenario_started', 'scenario_assessment_completed', 'contact_form_opened', 'contact_submitted', 'preapproval_clicked', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'assistant_error', 'conversation_abandoned'];
     if (allowedEvents.indexOf(eventName) < 0) return;
-    var oncePerConversation = ['conversation_started', 'opening_choice_selected', 'estimate_started', 'estimate_completed', 'pricing_range_viewed', 'complex_scenario_started', 'scenario_assessment_completed', 'contact_submitted', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'conversation_abandoned'];
+    var oncePerConversation = ['conversation_started', 'opening_choice_selected', 'estimate_started', 'estimate_completed', 'pricing_range_viewed', 'complex_scenario_started', 'scenario_assessment_completed', 'contact_submitted', 'preapproval_clicked', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'conversation_abandoned'];
     if (oncePerConversation.indexOf(eventName) >= 0 && state.analyticsSeen[eventName]) return;
     if (oncePerConversation.indexOf(eventName) >= 0) state.analyticsSeen[eventName] = true;
     var sales = state.salesState || {};

@@ -368,7 +368,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
               preheader: parsed.borrowerPreheader || "",
               html: wrapEmailHtml(injectPageLink(parsed.borrowerEmail, finalPageUrl)),
               fromName: "Adam Styer",
-              replyTo: "adam.styer@hypersmart.loan",
+              replyTo: "adam@thestyerteam.com",
               scheduleTime: scheduleTime || null,
             });
             results.campaigns.push({ audience: "borrower", ...borrowerResult });
@@ -386,7 +386,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
               preheader: parsed.realtorPreheader || "",
               html: wrapEmailHtml(injectPageLink(parsed.realtorEmail, finalPageUrl)),
               fromName: "Adam Styer",
-              replyTo: "adam.styer@hypersmart.loan",
+              replyTo: "adam@thestyerteam.com",
               scheduleTime: scheduleTime || null,
             });
             results.campaigns.push({ audience: "realtor", ...realtorResult });

@@ -74,7 +74,7 @@ test('self-employed program cards link to their full guides and use a scenario-f
   }
   assert.match(html, /Not sure which income path fits\?/);
   assert.match(html, /<section class="section bg-light program-always-visible">/);
-  assert.match(html, /href="\/scenario\.html" class="btn btn-primary">Send My Scenario/);
+  assert.match(html, /href="\/get-preapproved\.html\?intent=scenario" class="btn btn-primary">Send My Scenario/);
   assert.doesNotMatch(html, /Get Your Self-Employed Rate Quote/);
   assert.doesNotMatch(html, /name="self-employed-quote"/);
   const script = fs.readFileSync('js/program-page-layout.js', 'utf8');

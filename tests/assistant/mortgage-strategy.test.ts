@@ -278,7 +278,7 @@ test('qualification result is explicitly an initial assessment, not a preapprova
 
 test('structured lead context contains strategy facts and transcript attachment instructions', () => {
   const state: StrategyState = { ...EMPTY_STRATEGY_STATE, path: 'complex', targetPrice: 700_000, creditRange: '680_739', incomeType: 'self_employed', grossMonthlyIncome: 20_000, monthlyDebts: 2_000, complexFlags: ['self_employed'], recommendedNextAction: 'scenario_review' };
-  const context = buildStructuredLeadContext({ goal: 'purchase', propertyUse: 'primary', timeline: '31_to_90_days', shoppingStage: 'actively_shopping', purchasePrice: 700_000, cashAvailable: 150_000, concern: 'income', intentScore: 8, strategy: state }, 'https://adamstyer.com/self-employed');
+  const context = buildStructuredLeadContext({ goal: 'purchase', propertyUse: 'primary', timeline: '31_to_90_days', shoppingStage: 'actively_shopping', purchasePrice: 700_000, cashAvailable: 150_000, concern: 'income', intentScore: 8, strategy: state }, 'https://styermortgage.com/self-employed');
   assert.equal(context.targetPrice, 700_000);
   assert.equal(context.creditRange, '680_739');
   assert.deepEqual(context.complexSituationFlags, ['self_employed']);

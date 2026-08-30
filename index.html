@@ -140,7 +140,7 @@
       "longitude": -97.7580
     },
     "telephone": "(512) 956-6010",
-    "email": "adam.styer@hypersmart.loan",
+    "email": "adam@thestyerteam.com",
     "url": "https://styermortgage.com/",
     "hasMap": "https://www.google.com/maps/search/?api=1&query=Adam%20Styer&query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74",
     "openingHoursSpecification": [
@@ -256,7 +256,7 @@
     "url": "https://styermortgage.com/about.html",
     "image": "https://styermortgage.com/assets/headshot.jpg",
     "telephone": "+15129566010",
-    "email": "adam.styer@hypersmart.loan",
+    "email": "adam@thestyerteam.com",
     "knowsAbout": [
       "Bank Statement Loans",
       "DSCR Investor Loans",
@@ -391,8 +391,8 @@
                 <p class="hero-subtitle">Thoughtful mortgage strategy for people whose finances do not fit neatly in a conventional box. Share the situation first—I’ll help identify the practical next step.</p>
               </div>
               <div class="hero-ctas">
-                <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-primary hero-cta-btn" data-track="secure_application_click" target="_blank" rel="noopener">Start a Secure Loan Application</a>
-                <a href="/get-preapproved.html?intent=scenario" class="btn btn-hero-ghost hero-cta-btn">Send Your Scenario Instead</a>
+                <a href="/get-preapproved.html?intent=scenario&amp;source=homepage_hero" class="btn btn-primary hero-cta-btn" data-track="scenario_review_click" data-source="homepage_hero">Send Your Scenario</a>
+                <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-hero-ghost hero-cta-btn" data-track="secure_application_click" data-source="homepage_hero_secondary" target="_blank" rel="noopener">Start Secure Application</a>
               </div>
               <p class="hero-call-link" style="margin-top:0.5rem;">
                 <a href="tel:+15129566010" class="hero-call-link-a">
@@ -555,10 +555,10 @@
       <div class="container">
         <div class="quick-contact-card" data-animate>
           <h2 class="quick-contact-title">Ready to Get Started?</h2>
-          <p class="quick-contact-subtitle">Choose the option that feels easiest. Apply securely now, or send a short scenario for Adam to review.</p>
+          <p class="quick-contact-subtitle">Send a short scenario for Adam to review, or start the secure application if you are ready to move forward.</p>
           <div id="quick-scenario-form" class="quick-contact-actions" style="justify-content:center;margin-top:var(--spacing-xl);">
-            <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-primary btn-lg" data-track="secure_application_click" target="_blank" rel="noopener">Start Secure Application</a>
-            <a href="/get-preapproved.html?intent=scenario" class="btn btn-outline btn-lg">Send Your Scenario</a>
+            <a href="/get-preapproved.html?intent=scenario&amp;source=homepage_scenario_section" class="btn btn-primary btn-lg" data-track="scenario_review_click" data-source="homepage_scenario_section">Send Your Scenario</a>
+            <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-outline btn-lg" data-track="secure_application_click" data-source="homepage_scenario_section_secondary" target="_blank" rel="noopener">Start Secure Application</a>
           </div>
           <p class="form-trust-line" style="margin-top:var(--spacing-lg);">Secure and confidential · No obligation · Adam personally reviews every submission</p>
         </div>
@@ -1040,7 +1040,7 @@
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
-            <a href="mailto:adam.styer@hypersmart.loan">adam.styer@hypersmart.loan</a><br>
+            <a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a><br>
             9050 N. Capital of Texas Hwy, Ste 390<br>
             Austin, Texas 78759
           </p>
@@ -1085,7 +1085,7 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       Call or Text Adam
     </a>
-    <a href="#contact-form" class="smb-btn smb-btn-apply" aria-label="Send my mortgage scenario">Send Scenario</a>
+    <a href="/get-preapproved.html?intent=scenario&amp;source=homepage_sticky_mobile" class="smb-btn smb-btn-apply" data-track="scenario_review_click" data-source="homepage_sticky_mobile" aria-label="Send my mortgage scenario">Send Scenario</a>
   </div>
   <script>
     /* Deferred via requestIdleCallback — avoids forced reflow on initial paint */
@@ -1096,6 +1096,7 @@
       function reveal() {
         if (shown) return;
         bar.classList.add('is-visible');
+        document.body.classList.add('sticky-mobile-bar-active');
         bar.removeAttribute('aria-hidden');
         bar.removeAttribute('inert');
         shown = true;

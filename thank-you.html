@@ -549,6 +549,7 @@
                 <select id="ty-fu-source" name="referral_source">
                   <option value="">Choose…</option>
                   <option value="Google search">Google search</option>
+                  <option value="ChatGPT or another AI assistant">ChatGPT or another AI assistant</option>
                   <option value="Realtor referral">Realtor referral</option>
                   <option value="Friend or family">Friend or family</option>
                   <option value="Social media">Social media</option>
@@ -577,6 +578,110 @@
 
           <div class="ty-followup-success" id="ty-followup-success" hidden>
             Thanks — Adam has your details. He'll reach out shortly.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRE-APPROVAL: optional progressive enrichment after the lead is secured -->
+    <section class="ty-form-hero" id="ty-qualification-details" hidden>
+      <div class="container">
+        <div class="ty-form-hero-inner">
+          <h2 class="ty-form-hero-title">One last optional step</h2>
+          <p class="ty-form-hero-sub">Your contact information is already safely submitted. These answers simply help Adam prepare a more useful first conversation.</p>
+
+          <form name="qualification-followup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="ty-followup-form" id="ty-qualification-form">
+            <input type="hidden" name="form-name" value="qualification-followup">
+            <input type="hidden" name="subject" value="Additional pre-approval details">
+            <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+            <input type="hidden" name="original_email" id="ty-qf-email">
+            <input type="hidden" name="original_name" id="ty-qf-name">
+            <input type="hidden" name="original_phone" id="ty-qf-phone">
+
+            <div class="ty-followup-field">
+              <label for="ty-qf-source">How did you find Adam?</label>
+              <select id="ty-qf-source" name="referral_source" required>
+                <option value="">Choose one…</option>
+                <option value="Google search">Google search</option>
+                <option value="ChatGPT or another AI assistant">ChatGPT or another AI assistant</option>
+                <option value="Realtor referral">Realtor referral</option>
+                <option value="CPA or financial advisor referral">CPA or financial advisor referral</option>
+                <option value="Friend or family">Friend or family</option>
+                <option value="Past client">Past client</option>
+                <option value="Social media, podcast, or YouTube">Social media, podcast, or YouTube</option>
+                <option value="Other or not sure">Other or not sure</option>
+              </select>
+            </div>
+
+            <div class="ty-followup-grid">
+              <div class="ty-followup-field">
+                <label for="ty-qf-income">How is most income documented?</label>
+                <select id="ty-qf-income" name="income_type">
+                  <option value="">Optional…</option>
+                  <option value="W-2 salary">W-2 salary</option>
+                  <option value="Self-employed or business owner">Self-employed or business owner</option>
+                  <option value="1099 or contract income">1099 or contract income</option>
+                  <option value="Retirement, investments, or assets">Retirement, investments, or assets</option>
+                  <option value="Mixed sources">Mixed sources</option>
+                  <option value="Other or not sure">Other or not sure</option>
+                </select>
+              </div>
+              <div class="ty-followup-field">
+                <label for="ty-qf-use">How will the property be used?</label>
+                <select id="ty-qf-use" name="property_use">
+                  <option value="">Optional…</option>
+                  <option value="Primary residence">Primary residence</option>
+                  <option value="Second home">Second home</option>
+                  <option value="Investment property">Investment property</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="ty-followup-grid">
+              <div class="ty-followup-field">
+                <label for="ty-qf-credit">Approximate credit range</label>
+                <select id="ty-qf-credit" name="credit_score">
+                  <option value="">Optional…</option>
+                  <option value="740+">740+</option>
+                  <option value="700-739">700–739</option>
+                  <option value="660-699">660–699</option>
+                  <option value="620-659">620–659</option>
+                  <option value="Below 620">Below 620</option>
+                  <option value="Not sure">Not sure</option>
+                </select>
+              </div>
+              <div class="ty-followup-field">
+                <label for="ty-qf-issue">What needs the most attention?</label>
+                <select id="ty-qf-issue" name="documentation_issue">
+                  <option value="">Optional…</option>
+                  <option value="Straightforward pre-approval">Straightforward pre-approval</option>
+                  <option value="Tax-return income or write-offs">Tax-return income or write-offs</option>
+                  <option value="Assets or retirement income">Assets or retirement income</option>
+                  <option value="Another lender declined or limited the file">Another lender declined or limited the file</option>
+                  <option value="Under contract or timing is urgent">Under contract or timing is urgent</option>
+                  <option value="Other or not sure">Other or not sure</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="ty-followup-field">
+              <label for="ty-qf-contact">Preferred follow-up</label>
+              <select id="ty-qf-contact" name="preferred_contact">
+                <option value="">Optional…</option>
+                <option value="Phone call">Phone call</option>
+                <option value="Text message">Text message</option>
+                <option value="Email">Email</option>
+                <option value="No preference">No preference</option>
+              </select>
+            </div>
+
+            <button type="submit" class="ty-followup-submit">Send Optional Details</button>
+            <p class="ty-followup-skip">Prefer to stop here? You are already done—Adam has the information from your first submission.</p>
+          </form>
+
+          <div class="ty-followup-success" id="ty-qualification-success" hidden>
+            Thanks—Adam has the additional context for your review.
           </div>
         </div>
       </div>
@@ -688,6 +793,63 @@
         } else {
           if (h1) h1.textContent = 'Your Scenario Is Ready for Review';
           if (paras.length > 0) paras[0].textContent = 'Adam will review the details and contact you with the best next step. If anything else is needed, he will let you know.';
+        }
+
+        var qualificationDetails = document.getElementById('ty-qualification-details');
+        var qualificationForm = document.getElementById('ty-qualification-form');
+        var qualificationSuccess = document.getElementById('ty-qualification-success');
+        if (qualificationDetails) qualificationDetails.hidden = false;
+
+        var qualificationContact = {};
+        try {
+          qualificationContact = JSON.parse(sessionStorage.getItem('styer:qualification-contact') || '{}');
+          sessionStorage.removeItem('styer:qualification-contact');
+        } catch (err) {
+          qualificationContact = {};
+        }
+        var qfEmail = document.getElementById('ty-qf-email');
+        var qfName = document.getElementById('ty-qf-name');
+        var qfPhone = document.getElementById('ty-qf-phone');
+        if (qfEmail) qfEmail.value = qualificationContact.email || '';
+        if (qfName) qfName.value = qualificationContact.name || [qualificationContact.first_name, qualificationContact.last_name].filter(Boolean).join(' ');
+        if (qfPhone) qfPhone.value = qualificationContact.phone || '';
+
+        if (qualificationForm) {
+          qualificationForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            if (!qualificationForm.checkValidity()) {
+              qualificationForm.reportValidity();
+              return;
+            }
+            var submitButton = qualificationForm.querySelector('button[type="submit"]');
+            var originalLabel = submitButton ? submitButton.textContent : '';
+            if (submitButton) {
+              submitButton.disabled = true;
+              submitButton.textContent = 'Sending…';
+            }
+            var body = new URLSearchParams(new FormData(qualificationForm));
+            fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: body.toString(),
+            }).then(function (response) {
+              if (!response.ok) throw new Error('Netlify form returned ' + response.status);
+              qualificationForm.hidden = true;
+              if (qualificationSuccess) qualificationSuccess.hidden = false;
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({
+                event: 'qualification_followup_submitted',
+                referral_source: body.get('referral_source') || 'not_provided',
+              });
+            }).catch(function (err) {
+              console.warn('[qualification-followup] submit failed:', err && err.message);
+              if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = originalLabel;
+              }
+              alert('Something went wrong sending those details. Your original request is still safe. Please call or text Adam at (512) 956-6010 if needed.');
+            });
+          });
         }
       } else
 
@@ -801,7 +963,7 @@
       } else if (type === 'lo-waitlist') {
         if (h1) h1.textContent = "You're on the LoanOS Waitlist";
         if (paras.length > 0) paras[0].textContent = "I'll reach out personally when LoanOS is ready for other LOs. No spam — just honest build updates.";
-        if (phoneCta) phoneCta.innerHTML = 'Questions? <a href="mailto:adam.styer@hypersmart.loan">Email Adam directly.</a>';
+        if (phoneCta) phoneCta.innerHTML = 'Questions? <a href="mailto:adam@thestyerteam.com">Email Adam directly.</a>';
         if (calendlySection) calendlySection.style.display = 'none';
       }
     })();
