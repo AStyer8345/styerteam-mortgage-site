@@ -15,7 +15,7 @@ test('complex-income pages load the reusable modern program layout', () => {
     const html = fs.readFileSync(file, 'utf8');
     assert.match(html, /<body class="editorial-page loan-page program-page-modern">/, file);
     assert.match(html, /\/js\/program-page-layout\.js\?v=20260830/, file);
-    assert.match(html, /style\.css\?v=20260830-program1/, file);
+    assert.match(html, /style\.css\?v=20260830-program2/, file);
   }
 });
 
