@@ -25,7 +25,7 @@ test('editorial public pages load the current rollout stylesheet', () => {
     const html = fs.readFileSync(file, 'utf8');
     assert.match(
       html,
-      /(?:style\.css\?v=(?:20260829-audit1|20260830-cases1|20260830-program3)|editorial-system\.css\?v=20260829-audit1)/,
+      /(?:style\.css\?v=(?:20260829-audit1|20260830-reviews1|20260830-program3)|editorial-system\.css\?v=20260829-audit1)/,
       `${file} must load a cache-busted rollout stylesheet`
     );
   }
@@ -93,4 +93,13 @@ test('homepage case studies align and expose the long third story on demand', ()
   assert.match(homepage, /button\.setAttribute\('aria-expanded', String\(!expanded\)\)/);
   assert.match(stylesheet, /\.home-case-card\{display:flex;flex-direction:column;width:100%\}/);
   assert.match(homepage, /classList\.toggle\('is-expanded', !expanded\)/);
+});
+
+test('homepage reviews move directly below case studies with compact spacing', () => {
+  const homepage = fs.readFileSync('index.html', 'utf8');
+
+  assert.match(homepage, /id="case-studies"/);
+  assert.match(homepage, /class="home-reviews-section" id="client-reviews"/);
+  assert.match(homepage, /caseStudies\.insertAdjacentElement\('afterend', reviews\)/);
+  assert.match(stylesheet, /\.home-pilot \.home-reviews-section\{padding:clamp\(3rem,4\.5vw,4\.5rem\) 0\}/);
 });

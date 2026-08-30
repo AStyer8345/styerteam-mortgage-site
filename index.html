@@ -83,8 +83,8 @@
     @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{padding:2.75rem 0}.hero h1{font-size:clamp(2.25rem,10vw,3.15rem);line-height:1.02}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:flex-start;text-align:left}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:flex-start;flex-direction:column;width:100%}.hero-cta-btn{width:100%;max-width:none}.hero-glass-card{max-width:100%;padding:0;overflow:visible;background:none}.hero-rating-chip{white-space:normal;text-align:left;justify-content:flex-start}.hero-eyebrow{text-align:left;font-size:.68rem}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
   </style>
   <!-- Full stylesheet — loads async, applies after critical CSS is already painted -->
-  <link rel="preload" href="style.css?v=20260830-cases1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="style.css?v=20260830-cases1"></noscript>
+  <link rel="preload" href="style.css?v=20260830-reviews1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260830-reviews1"></noscript>
   <link rel="stylesheet" href="/editorial-system.css?v=20260829">
   <style>
     /* Latest pilot-specific homepage refinements remain authoritative. */
@@ -454,7 +454,7 @@
     </section>
 
     <!-- CASE STUDIES -->
-    <section>
+    <section id="case-studies">
       <div class="container">
         <p class="text-center" style="max-width:760px;margin:0 auto 2rem;"><strong>Adam Styer | HyperSmart Home Loans (NMLS #513013) is an Austin mortgage broker for complex scenarios—including self-employed, 1099, jumbo, DSCR, and asset-based qualification. Each file is reviewed against multiple available lender and program paths.</strong></p>
         <h2 class="text-center mb-md">Deals Banks Said No To</h2>
@@ -564,7 +564,7 @@
     </section>
 
     <!-- TESTIMONIALS SECTION -->
-    <section>
+    <section class="home-reviews-section" id="client-reviews">
       <div class="container">
         <h2 class="text-center mb-xl">Client and Partner Reviews</h2>
         <div class="review-aggregate-bar">
@@ -1106,6 +1106,13 @@
       // Also reveal after 2s even without scroll — keeps CTA persistently available
       setTimeout(reveal, 2000);
     });
+  </script>
+  <script>
+    (function () {
+      var caseStudies = document.getElementById('case-studies');
+      var reviews = document.getElementById('client-reviews');
+      if (caseStudies && reviews) caseStudies.insertAdjacentElement('afterend', reviews);
+    })();
   </script>
   <script>
     (function () {

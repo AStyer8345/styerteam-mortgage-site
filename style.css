@@ -60,6 +60,9 @@ main header,article header{position:static;z-index:auto}
 .home-case-continue:hover{color:#0a1f3f}
 .home-case-continue:focus-visible{outline:3px solid rgba(26,79,122,.35);outline-offset:4px}
 @media(min-width:901px){.home-case-card{height:32.5rem;overflow:hidden}.home-case-card.is-expanded{height:auto;overflow:visible}}
+.home-pilot .home-reviews-section{padding:clamp(3rem,4.5vw,4.5rem) 0}
+.home-pilot .home-reviews-section .testimonial-marquee-wrap{padding:.75rem 0}
+.home-pilot .home-reviews-section .mt-3xl{margin-top:1.5rem}
 
 /* Header-only treatment for the nested legacy loan templates. */
 .public-header-page>header{background:#0d2342;border-bottom:1px solid rgba(209,181,104,.4);box-shadow:0 5px 18px rgba(13,35,66,.12)}
