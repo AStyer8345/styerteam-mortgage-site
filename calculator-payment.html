@@ -94,18 +94,18 @@
               <div id="payment-sliders"></div>
               <div class="calc-slider-group">
                 <div class="calc-slider-label"><span>Monthly tax (optional)</span><span class="calc-slider-value" id="tax-value">$0</span></div>
-                <input type="range" class="calc-slider-input" id="tax-slider" min="0" max="1500" step="25" value="0">
+                <input type="range" class="calc-slider-input" id="tax-slider" aria-label="Monthly property tax" min="0" max="1500" step="25" value="0">
                 <p class="calc-rule-note"><strong>Rule of thumb:</strong> ~2% of purchase price ÷ 12.</p>
               </div>
               <div class="calc-slider-group">
                 <div class="calc-slider-label"><span>Monthly insurance (optional)</span><span class="calc-slider-value" id="ins-value">$0</span></div>
-                <input type="range" class="calc-slider-input" id="ins-slider" min="0" max="500" step="25" value="0">
+                <input type="range" class="calc-slider-input" id="ins-slider" aria-label="Monthly insurance" min="0" max="500" step="25" value="0">
               </div>
             </div>
           </div>
           <div>
             <div class="calc-card calc-card--solid">
-              <div class="calc-hero-wrap">
+              <div class="calc-hero-wrap" aria-live="polite" aria-atomic="true">
                 <div class="calc-hero-label">Total monthly payment (PITI)</div>
                 <div class="calc-hero-number" id="hero-payment">—</div>
               </div>

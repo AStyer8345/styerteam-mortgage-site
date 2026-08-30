@@ -1110,7 +1110,11 @@
           rate:   inp.noteRate,
           term:   inp.termYears,
           start:  inp.startDate,
-          escrow: inp.escrowMo.toFixed(2),
+          tax:    document.getElementById('bd-tax-input').value || 0,
+          taxfreq: document.querySelector('input[name="bd-tax-freq"]:checked').value,
+          ins:    document.getElementById('bd-ins-input').value || 0,
+          insfreq: document.querySelector('input[name="bd-ins-freq"]:checked').value,
+          hoa:    document.getElementById('bd-hoa').value || 0,
           credit: inp.sellerCredit,
           pimode: PI_MODE
         });
@@ -1133,10 +1137,25 @@
           else { sel.value = 'custom'; document.getElementById('bd-term-custom').value = term; document.getElementById('bd-term-custom').style.display = 'block'; }
         }
         var start = p.get('start'); if (start) document.getElementById('bd-start-date').value = start;
+        var tax = p.get('tax'); if (tax) document.getElementById('bd-tax-input').value = tax;
+        var taxfreq = p.get('taxfreq'); if (taxfreq) {
+          var tfr = document.querySelector('input[name="bd-tax-freq"][value="' + taxfreq + '"]');
+          if (tfr) tfr.checked = true;
+        }
+        var ins = p.get('ins'); if (ins) document.getElementById('bd-ins-input').value = ins;
+        var insfreq = p.get('insfreq'); if (insfreq) {
+          var ifr = document.querySelector('input[name="bd-ins-freq"][value="' + insfreq + '"]');
+          if (ifr) ifr.checked = true;
+        }
+        var hoa = p.get('hoa'); if (hoa) document.getElementById('bd-hoa').value = hoa;
+        var credit = p.get('credit'); if (credit) document.getElementById('bd-seller-credit').value = credit;
         var pimode = p.get('pimode'); if (pimode === 'piti') {
           PI_MODE = 'piti';
-          document.getElementById('btn-show-piti').classList.add('active');
-          document.getElementById('btn-show-pi').classList.remove('active');
+          var btnPiti = document.getElementById('btn-show-piti');
+          var btnPi = document.getElementById('btn-show-pi');
+          btnPiti.classList.add('active');
+          btnPi.classList.remove('active');
+          if (btnPiti.hasAttribute('aria-pressed')) { btnPiti.setAttribute('aria-pressed','true'); btnPi.setAttribute('aria-pressed','false'); }
         }
       }
 

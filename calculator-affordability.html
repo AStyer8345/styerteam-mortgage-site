@@ -96,7 +96,7 @@
           <div>
             <div class="calc-card calc-card--solid">
               <div class="calc-hero-wrap">
-                <div class="calc-hero-label">Max monthly payment (P&amp;I)</div>
+                <div class="calc-hero-label">Max monthly housing payment (incl. est. taxes &amp; insurance)</div>
                 <div class="calc-hero-number calc-hero-number--emerald" id="hero-payment">—</div>
               </div>
               <div class="calc-hero-wrap" style="padding-top: 0;">
@@ -104,7 +104,7 @@
                 <div class="calc-hero-number" id="hero-price">—</div>
               </div>
               <p class="calc-rule-note">Rule of thumb: property tax ~2% of price ÷ 12.</p>
-              <p class="calc-card-desc" style="margin-top: 1rem;">Estimate assumes ~7% rate, 30-year term, and that P&amp;I is about 28% of gross. Not a pre-approval.</p>
+              <p class="calc-card-desc" style="margin-top: 1rem;">Estimate assumes a ~7% rate, 30-year term, 5% down, ~2% property tax, ~0.5% homeowners insurance, and your selected DTI as the total debt cap. Excludes HOA and mortgage insurance. Not a pre-approval.</p>
               <ul class="calc-result-list" style="margin-top: 1rem;">
                 <li class="calc-result-row"><span class="calc-result-label">Gross monthly income</span><span class="calc-result-value" id="out-income">—</span></li>
                 <li class="calc-result-row"><span class="calc-result-label">Monthly debts</span><span class="calc-result-value" id="out-debts">—</span></li>
@@ -160,14 +160,17 @@
 
   function update() {
     var maxTotal = state.income * (state.dtiPercent / 100);
-    var maxPi = Math.max(0, maxTotal - state.debts);
-    heroPayment.textContent = formatCurr(maxPi);
+    var maxHousing = Math.max(0, maxTotal - state.debts);
+    heroPayment.textContent = formatCurr(maxHousing);
 
-    // Rough inverse: payment -> principal. P = PMT * ((1+r)^n - 1) / (r * (1+r)^n)
+    // Solve price where PI(price * 0.95) + taxes + insurance = maxHousing.
+    // pmtFactor = monthly P&I per $1 of loan; taxes ~2%/yr and insurance ~0.5%/yr of price (Austin-area estimates).
     var r = assumeRate / 100 / 12;
     var n = assumeYears * 12;
-    var maxPrincipal = r === 0 ? maxPi * n : (maxPi * (Math.pow(1 + r, n) - 1)) / (r * Math.pow(1 + r, n));
-    var estPrice = maxPrincipal / 0.95; // assume 5% down
+    var pmtFactor = r === 0 ? 1 / n : (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    var taxMonthlyRate = 0.02 / 12;
+    var insMonthlyRate = 0.005 / 12;
+    var estPrice = maxHousing / (0.95 * pmtFactor + taxMonthlyRate + insMonthlyRate); // assume 5% down
     heroPrice.textContent = formatCurr(estPrice);
 
     outIncome.textContent = formatCurr(state.income);

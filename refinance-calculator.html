@@ -715,8 +715,9 @@ function calcPrepaidDays(closingDate) {
  */
 function calcFirstPaymentDate(closingDate) {
   if (!closingDate) return { month: 0, year: 2026 };
-  const day = closingDate.getDate();
-  const offset = day <= 15 ? 1 : 2;
+  // Standard refi convention: first payment is due the 1st of the SECOND month
+  // after closing, regardless of closing day (interim interest covers the gap).
+  const offset = 2;
   let m = closingDate.getMonth() + offset;
   let y = closingDate.getFullYear();
   if (m > 11) { m -= 12; y++; }

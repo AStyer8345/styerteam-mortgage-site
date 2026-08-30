@@ -5,7 +5,7 @@
 .calc-suite {
   --calc-navy: var(--color-navy, #0A1F3F);
   --calc-charcoal: #1e293b;
-  --calc-emerald: #059669;
+  --calc-emerald: #047857;
   --calc-emerald-light: rgba(5, 150, 105, 0.12);
   --calc-blue: #2563eb;
   --calc-blue-light: rgba(37, 99, 235, 0.12);
