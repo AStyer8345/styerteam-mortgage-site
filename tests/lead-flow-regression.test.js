@@ -74,21 +74,23 @@ test('homepage hero keeps Adam’s portrait compact and avoids the oversized pho
   assert.match(homepage, /\.home-pilot \.home-hero-photo\{[^}]*width:88px;[^}]*height:96px/);
 });
 
-test('scenario page uses portal language and keeps a short note fallback', () => {
-  assert.match(scenarioPage, /Choose the easiest way to start/);
-  assert.match(scenarioPage, /Send Your Scenario for a Structured Review/);
-  assert.match(scenarioPage, /Answer a few questions in my secure online portal/);
-  assert.match(scenarioPage, /Start a Secure Loan Application/);
-  assert.match(scenarioPage, /usually takes 7-9 minutes/);
-  assert.match(scenarioPage, /make our first call more efficient/);
+test('scenario page puts the short conversion form first and keeps the secure portal secondary', () => {
+  assert.match(scenarioPage, /Tell me what you’re trying to accomplish/);
+  assert.match(scenarioPage, /id="scenario-form"/);
+  assert.match(scenarioPage, /name="scenario-review"/);
+  assert.match(scenarioPage, /id="form-scenario-review" class="js-quick-contact"/);
+  assert.match(scenarioPage, /<button type="submit" class="btn btn-primary">Send My Scenario/);
+  assert.match(scenarioPage, /name="loanGoal"/);
+  assert.match(scenarioPage, /name="email" type="email"/);
+  assert.match(scenarioPage, /name="situation"/);
+  assert.match(scenarioPage, /name="tcpa_consent"/);
+  assert.match(scenarioPage, /class="nav-has-dropdown"/);
+  assert.match(scenarioPage, /class="mobile-menu-toggle"/);
+  assert.match(scenarioPage, /Start Secure Application/);
   assert.match(scenarioPage, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
-  assert.match(scenarioPage, /get-preapproved\.html\?intent=scenario/);
-  assert.doesNotMatch(scenarioPage, /id="scenario-note-form"/);
-  assert.match(scenarioPage, /Email Adam Instead/);
-  assert.doesNotMatch(scenarioPage, /id="form-scenario"/);
-  assert.doesNotMatch(scenarioPage, /Start Secure Loan Application/);
-  assert.doesNotMatch(scenarioPage, /Start Your Loan Application/);
-  assert.doesNotMatch(scenarioPage, /Start the full application/);
+  assert.ok(scenarioPage.indexOf('Send My Scenario') < scenarioPage.indexOf('Start Secure Application'));
+  assert.doesNotMatch(scenarioPage, /lp-header \.nav-links/);
+  assert.doesNotMatch(scenarioPage, /Answer the basics/);
   assert.doesNotMatch(scenarioPage, /lead_type: 'scenario_review'/);
   assert.doesNotMatch(scenarioPage, /"@type": "FAQPage"/);
 });
