@@ -218,115 +218,116 @@
   <!-- FAQPage Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is a bank statement loan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A bank statement loan is a Non-QM mortgage that qualifies self-employed borrowers using 12 or 24 months of bank deposits instead of tax returns, W-2s, or pay stubs. Underwriters average eligible deposits, apply an expense factor (commonly 50% for business accounts, sometimes lower for service businesses, higher for contractors), and use the result as monthly qualifying income."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "I'm a 1099 contractor. Can I qualify on my deposits?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. 1099 contractors are one of the most common bank statement loan profiles. Some lenders offer dedicated 1099-only programs that take your gross 1099 income and apply a flat expense factor (often 10–20%) — simpler and usually friendlier than a full bank statement review. If you receive 1099s but also deposit cash from side work, a standard 12 or 24 month bank statement program is often a better fit."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if I co-mingle business and personal accounts?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Co-mingled accounts are fine — most underwriters expect them for sole proprietors and small operators. Personal-account programs apply a smaller or zero expense factor since you've already paid yourself out of the business. The trade-off: lenders will look harder for transfers between accounts to avoid double-counting the same dollar. Clean labeling on your statements helps. If your business and personal accounts are separate, business statement programs usually qualify you for more income."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you need my tax returns at all?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. The whole point of a bank statement loan is to skip tax returns. Underwriters do not pull transcripts and your write-offs do not reduce qualifying income. You will need a business license or CPA letter confirming you've been self-employed for at least two years, government ID, and the bank statements themselves."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What's the rate hit versus a conventional loan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Bank statement loans typically price 0.5%–1.5% above a comparable conventional loan, depending on credit score, down payment, loan amount, and which program. The premium covers the expanded documentation risk. For a self-employed borrower whose tax returns understate income, the math almost always works in favor of bank statement financing — qualifying for the right house at a slightly higher rate beats not qualifying at all on a conventional loan."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is income calculated on a bank statement loan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Three common methods. (1) Deposits method: lender averages eligible deposits over 12 or 24 months and applies an expense factor (commonly 50% for business accounts, lower for service-only businesses, higher for material-heavy industries). (2) P&L method: a CPA-prepared P&L is used alongside the statements to confirm net income. (3) Hybrid: deposits validate the P&L, and the underwriter uses the lower of the two. The method matters — the same borrower can qualify for very different loan amounts depending on which approach is used."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What's the difference between 12 and 24 month bank statement programs?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most lenders offer both. 24-month programs price slightly better and require more reserves but smooth out seasonal income — ideal for landscapers, restaurateurs, and other seasonal businesses. 12-month programs are better when your income trended up sharply in the last year (a 24-month average would drag your qualifying income down). They typically cost 0.125–0.375% more in rate."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use business bank statements if I'm an LLC or S-Corp?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Business statements are usually preferred for LLCs and S-Corps because they show actual business cash flow before owner draws. The expense factor (typically 50%) is applied to net deposits to estimate income. If your business is a service business with low overhead — consultants, attorneys, real estate agents — some lenders apply a lower expense factor (25–35%) and qualify you for more."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What credit score do I need for a bank statement loan in Texas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most bank statement programs start at a 660–680 minimum credit score. 700+ unlocks better pricing and lower down payment options. Higher-LTV and stronger-pricing structures typically require stronger credit, often 720+. Below 660 is possible with a few lenders but expect higher rates and 20–25% down."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much down payment do bank statement loans require?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "10% down is achievable with strong credit (720+) and a clean two-year self-employment history. 15% down is the most common entry point. 20% down opens the widest lender pool and the best pricing. Loan amounts above $1 million typically require 20–25% down regardless of credit."
-        }
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a bank statement loan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A bank statement loan is a Non-QM mortgage that qualifies self-employed borrowers using 12 or 24 months of bank deposits instead of tax returns. Underwriters average eligible deposits, apply an expense factor (commonly 50% for business accounts), and use the result as monthly qualifying income. W-2s, paystubs, and IRS transcripts may not be the primary income documents on some programs."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm a 1099 contractor. Can I qualify on my deposits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. 1099 contractors are one of the most common bank statement loan profiles. Some lenders offer dedicated 1099-only programs that take your gross 1099 income and apply a flat expense factor (often 10–20%) — simpler and usually friendlier than a full bank statement review. If you also deposit cash from side work, a standard 12 or 24 month bank statement program may qualify you for more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I co-mingle business and personal accounts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Co-mingled accounts are fine — most underwriters expect them for sole proprietors. Personal-account programs apply a smaller or zero expense factor since you've already paid yourself. Lenders will look hard for transfers between accounts to avoid double-counting the same dollar, so clean labeling helps. If your business and personal accounts are separate, business statement programs usually qualify you for more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you need my tax returns at all?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The whole point of a bank statement loan is to skip tax returns. Underwriters do not pull transcripts and your write-offs do not reduce qualifying income. You will need a business license or CPA letter confirming at least two years of self-employment, government ID, and the bank statements themselves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the rate hit versus a conventional loan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bank statement loans typically price 0.5%–1.5% above a comparable conventional loan, depending on credit score, down payment, and program. The premium covers the expanded documentation risk. For self-employed borrowers whose tax returns understate income, the math almost always favors bank statement financing — qualifying for the right house at a slightly higher rate beats not qualifying on a conventional loan at all."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between 12 and 24 month programs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "24-month programs price slightly better and require more reserves but smooth out seasonal income — ideal for landscapers, restaurants, and tax preparers. 12-month programs cost 0.125–0.375% more in rate but qualify you for more income if last year was sharply better than the year before. We'll model both for your specific deposits before picking a lane."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What credit score do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most bank statement programs start at a 660–680 minimum. 700+ unlocks better pricing and lower down payment options. Higher-LTV and lower-expense-factor structures typically require stronger credit, often 720+. Below 660 is possible with a few lenders but expect higher rates and 20–25% down."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much down payment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "10% down is achievable with strong credit (720+) and a clean two-year self-employment history. 15% down is the most common entry point. 20% down opens the widest lender pool and the best pricing. Loan amounts above $1 million typically require 20–25% down regardless of credit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use a bank statement loan for an investment property?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but for most investment-property buyers, a DSCR loan is a cleaner fit — DSCR qualifies on the rental income of the subject property and skips personal income entirely. Bank statement loans on investment properties cap LTV at 75–80% and price higher than DSCR for most scenarios. We'll compare both for your deal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does closing take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typical close is 25–35 days. Bank statement loans involve more underwriting review than conventional (someone has to read the statements line by line) but less back-and-forth than a heavy tax-return file. Clean statements, prompt document responses, and no last-minute large deposits keep the timeline tight."
+      }
+    }
+  ]
+}
   </script>
 
   <!-- Article Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Bank Statement Loans in Texas — The Self-Employed Borrower's Guide",
-    "description": "Complete guide to bank statement mortgages for self-employed borrowers in Texas. 12 vs 24 month programs, expense factors, deposits vs P&L methods.",
-    "author": {
-      "@type": "Person",
-      "name": "Adam Styer",
-      "jobTitle": "Mortgage Loan Originator",
-      "url": "https://styermortgage.com/about.html"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Adam Styer | HyperSmart Home Loans",
-      "url": "https://styermortgage.com"
-    },
-    "url": "https://styermortgage.com/bank-statement-loans.html",
-    "datePublished": "2026-05-05",
-    "dateModified": "2026-07-03"
-  }
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bank Statement Loans in Texas — The Self-Employed Borrower's Guide",
+  "description": "Complete guide to bank statement mortgages for self-employed borrowers in Texas. 12 vs 24 month programs, expense factors, deposits vs P&L methods.",
+  "author": {
+    "@type": "Person",
+    "name": "Adam Styer",
+    "jobTitle": "Mortgage Loan Originator",
+    "url": "https://styermortgage.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adam Styer | HyperSmart Home Loans",
+    "url": "https://styermortgage.com"
+  },
+  "url": "https://styermortgage.com/bank-statement-loans.html",
+  "datePublished": "2026-05-05",
+  "dateModified": "2026-07-03",
+  "image": "https://styermortgage.com/assets/og-image.png"
+}
   </script>
 
   <!-- BreadcrumbList Schema -->

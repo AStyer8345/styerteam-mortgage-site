@@ -65,7 +65,7 @@
   {
     "@context": "https://schema.org",
     "@type": "LoanOrCreditService",
-    "name": "1099-Only Mortgage — Contractor &amp; Consultant Home Loan",
+    "name": "1099-Only Mortgage — Contractor & Consultant Home Loan",
     "description": "Expanded-documentation mortgage for 1099 contractors, consultants, real estate agents, and gig workers. Qualifies on 1 or 2 years of 1099 gross income with a flat expense factor — tax returns may not need to be the primary income document.",
     "provider": {
       "@type": "Organization",
@@ -81,209 +81,233 @@
   <!-- FAQPage Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is a 1099-only mortgage?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A 1099-only mortgage is a Non-QM home loan that qualifies independent contractors, consultants, real estate agents, and gig workers on their gross 1099 income with a flat expense factor (commonly 10–20%) instead of tax returns. The underwriter takes 1 or 2 years of 1099-NEC/MISC forms, applies the factor, and divides by the months to set qualifying monthly income."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is income calculated on a 1099-only loan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Gross 1099 income × (1 − expense factor) ÷ months in the lookback period. A contractor with $180,000 of 1099 income over 12 months and a 10% factor qualifies at $13,500/month. The factor varies by lender and industry. Some lenders are more conservative (Newrez SmartSelf uses 50%), so it pays to shop programs."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need 1 year or 2 years of 1099 history?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Both exist. Two-year programs are the default and price better. One-year programs are available at several Non-QM lenders but usually cap LTV around 75–80% and require a 700+ credit score plus prior same-industry W-2 history. If you switched from W-2 to 1099 in the last 12 months, the one-year path is often your only route."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is a 1099-only loan different from a bank statement loan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Bank statement loans review 12–24 months of deposits and apply expense factors of 25–70% depending on the business type. 1099-only loans skip the deposit review and use the 1099 forms directly with a flat 10–20% factor at most lenders. If your income is clean 1099 with low cash side work, 1099-only is simpler and usually qualifies you for more."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I combine multiple 1099 sources?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Lenders aggregate 1099s from multiple payers as long as they're in the same line of work. New sources started within the last 12 months are usually excluded from the average. A consultant with three steady clients all paying on 1099-NEC will see all three counted; a side gig that started six months ago typically will not."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What credit score do I need?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most 1099-only programs start at 660–680. A small number of investors may consider lower scores with larger down payments and stronger compensating factors. 700+ unlocks better pricing and the one-year history option at most lenders. 720+ often creates access to stronger pricing and higher-LTV structures, when available. Below 660 is possible but expect 20–25% down."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What about 1099-K from Stripe, PayPal, or Venmo?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "1099-K is the messiest 1099 for mortgage purposes. The form reports gross payment processor flow, which can include returns, fees, and pass-through dollars that aren't actual income. Lenders treating 1099-K usually apply a higher expense factor (often 50%+) or require reconciliation to a P&amp;L. If most of your income hits Stripe or PayPal, a bank statement or P&amp;L loan is often a better fit."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "I'm a real estate agent — does this work for me?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Real estate agents are one of the cleanest fits for 1099-only mortgages. Brokerages issue 1099-NEC, splits are predictable, and your gross commission income is well-documented. Some lenders pull MLS sales history to validate the 1099. Two-year averaging smooths out market cycles; a strong 12-month rebound from a slow prior year is a 1-year program candidate."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Will my Schedule C write-offs hurt me?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No — that's the whole point. 1099-only programs do not pull tax transcripts and do not look at Schedule C. The qualifying income is your 1099 gross with a flat factor applied. If your Schedule C shows $80,000 net on $250,000 gross, conventional uses $80,000 and 1099-only uses $200,000–$225,000. The difference is often the entire loan approval."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is 1099-only ever the wrong choice?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Three cases: (1) most of your income hits a personal bank account from cash or check side work — bank statement is better. (2) Your true expenses are higher than 10–20%, you need a CPA-attested P&amp;L for accurate qualifying — P&amp;L only fits. (3) Your conventional qualifying income would actually be higher because your write-offs are small — use a conventional loan and save the rate premium."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much down payment do I need?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "10% down is achievable on two-year 1099 history with 720+ credit on owner-occupied. 15% down is the most common entry point. 20% opens the widest lender pool and the best pricing. One-year programs typically require 20–25% down regardless of credit. Loan amounts above $1 million almost always require 20% or more."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use a 1099-only loan for a second home or investment property?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes for second homes — LTV caps at 80% typically. For investment property, a DSCR loan that qualifies on the rental income of the property is usually a cleaner fit and prices better than 1099-only on a rental. We model both for your specific deal. Second-home 1099 deals work well for Texas borrowers buying Hill Country or coastal retreats."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is a 1099-only mortgage available in Austin, Travis County, and Williamson County?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes — 1099-only programs are available throughout the Austin metro, including Round Rock, Cedar Park, Leander, Georgetown, Westlake, Bee Cave, Dripping Springs, Pflugerville, and surrounding counties. Texas is one of the strongest 1099-program states because there's no state income tax — lender underwriting math doesn't have to back into state-tax assumptions. Pricing is competitive across the metro."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need to live in Austin to qualify for a Texas 1099-only loan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No — the qualifying loan is for any Texas property, not tied to where you live now. Austin metro buyers relocating from California, the Northeast, and other high-tax markets close 1099-only files every month. What matters for underwriting is that your 1099 income is documented and consistent, and that the property securing the loan is in a state where the broker is licensed."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if I'm a 1099 contractor working for multiple Austin tech companies?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Multiple payers is a strength, not a problem. Lenders prefer multiple 1099 payers because the income isn't dependent on one client. Apple-Austin, Indeed, Tesla, Dell, Oracle, Google Austin, and mid-stage Austin startups all issue 1099-NEC to contractors. The 1099s are combined, an expense factor applied, and total qualifying income calculated. Three to five payers is common in Austin tech consulting and underwrites cleanly."
-        }
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a 1099-only mortgage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 1099-only mortgage is a Non-QM home loan that qualifies independent contractors, consultants, real estate agents, and gig workers on their gross 1099 income with a flat expense factor (commonly 10–20%) instead of tax returns. The underwriter takes 1 or 2 years of 1099-NEC/MISC forms, applies the factor, and divides by the months to set qualifying monthly income."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "How is income calculated on a 1099-only loan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gross 1099 income × (1 − expense factor) ÷ months in the lookback period. A contractor with $180,000 of 1099 income over 12 months and a 10% factor qualifies at $13,500/month. The factor varies by lender and industry. Some lenders are more conservative (Newrez SmartSelf uses 50%), so it pays to shop programs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need 1 year or 2 years of 1099 history?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both exist. Two-year programs are the default and price better. One-year programs are available at several Non-QM lenders but usually cap LTV around 75–80% and require a 700+ credit score plus prior same-industry W-2 history. If you switched from W-2 to 1099 in the last 12 months, the one-year path is often your only route."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is a 1099-only loan different from a bank statement loan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bank statement loans review 12–24 months of deposits and apply expense factors of 25–70% depending on the business type. 1099-only loans skip the deposit review and use the 1099 forms directly with a flat 10–20% factor at most lenders. If your income is clean 1099 with low cash side work, 1099-only is simpler and usually qualifies you for more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I combine multiple 1099 sources?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Lenders aggregate 1099s from multiple payers as long as they're in the same line of work. New sources started within the last 12 months are usually excluded from the average. A consultant with three steady clients all paying on 1099-NEC will see all three counted; a side gig that started six months ago typically will not."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What credit score do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most 1099-only programs start at 660–680. A small number of investors may consider lower scores with larger down payments and stronger compensating factors. 700+ unlocks better pricing and the one-year history option at most lenders. 720+ often creates access to stronger pricing and higher-LTV structures, when available. Below 660 is possible but expect 20–25% down."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about 1099-K from Stripe, PayPal, or Venmo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1099-K is the messiest 1099 for mortgage purposes. The form reports gross payment processor flow, which can include returns, fees, and pass-through dollars that aren't actual income. Lenders treating 1099-K usually apply a higher expense factor (often 50%+) or require reconciliation to a P&L. If most of your income hits Stripe or PayPal, a bank statement or P&L loan is often a better fit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm a real estate agent — does this work for me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Real estate agents are one of the cleanest fits for 1099-only mortgages. Brokerages issue 1099-NEC, splits are predictable, and your gross commission income is well-documented. Some lenders pull MLS sales history to validate the 1099. Two-year averaging smooths out market cycles; a strong 12-month rebound from a slow prior year is a 1-year program candidate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my Schedule C write-offs hurt me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — that's the whole point. 1099-only programs do not pull tax transcripts and do not look at Schedule C. The qualifying income is your 1099 gross with a flat factor applied. If your Schedule C shows $80,000 net on $250,000 gross, conventional uses $80,000 and 1099-only uses $200,000–$225,000. The difference is often the entire loan approval."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is 1099-only ever the wrong choice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Three cases: (1) most of your income hits a personal bank account from cash or check side work — bank statement is better. (2) Your true expenses are higher than 10–20%, you need a CPA-attested P&L for accurate qualifying — P&L only fits . (3) Your conventional qualifying income would actually be higher because your write-offs are small — use a conventional loan and save the rate premium."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much down payment do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "10% down is achievable on two-year 1099 history with 720+ credit on owner-occupied. 15% down is the most common entry point. 20% opens the widest lender pool and the best pricing. One-year programs typically require 20–25% down regardless of credit. Loan amounts above $1 million almost always require 20% or more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use a 1099-only loan for a second home or investment property?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes for second homes — LTV caps at 80% typically. For investment property, a DSCR loan that qualifies on the rental income of the property is usually a cleaner fit and prices better than 1099-only on a rental. We model both for your specific deal. Second-home 1099 deals work well for Texas borrowers buying Hill Country or coastal retreats."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the 1099 need to come from a US company?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes for standard programs — US-issued 1099-NEC or 1099-MISC. If you're a US tax resident contracting with foreign clients who don't issue 1099s, you'll need a bank statement program instead, since there's no 1099 to underwrite. For foreign nationals without US tax filings, that's a separate Non-QM product."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a 1099-only mortgage available in Austin, Travis County, and Williamson County?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — 1099-only programs are available throughout the Austin metro, including Round Rock , Cedar Park , Leander , Georgetown , Westlake , Bee Cave , Dripping Springs , Pflugerville , and surrounding counties. Texas is one of the strongest 1099-program states because there's no state income tax — lender underwriting math doesn't have to back into state-tax assumptions. Pricing is competitive across the metro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to live in Austin to qualify for a Texas 1099-only loan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — the qualifying loan is for any Texas property, not tied to where you live now. I close 1099-only files for Austin metro buyers relocating from California, the Northeast, and other high-tax markets every month. What matters for underwriting is that your 1099 income is documented and consistent, and that the property securing the loan is in a state where I'm licensed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I'm a 1099 contractor working for multiple Austin tech companies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That's a strength, not a problem. Lenders prefer multiple 1099 payers because it shows your income isn't dependent on one client. Apple-Austin, Indeed, Tesla, Dell, Oracle, Google Austin, and the dozens of mid-stage Austin startups all issue 1099-NEC to contractors. We combine the 1099s, apply the expense factor, and use the total qualifying income. Three to five payers is common in Austin tech consulting and underwrites cleanly."
+      }
+    }
+  ]
+}
   </script>
 
   <!-- Article Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "1099-Only Mortgages in Texas — Qualify Without Tax Returns",
-    "description": "Complete Texas guide to 1099-only mortgages for independent contractors, consultants, real estate agents, and gig workers. Expense factor math, 1-year vs 2-year programs, and how 1099-only stacks up vs bank statement and conventional.",
-    "author": {
-      "@type": "Person",
-      "name": "Adam Styer",
-      "jobTitle": "Mortgage Loan Originator",
-      "url": "https://styermortgage.com/about.html",
-      "identifier": "NMLS #513013"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Adam Styer | HyperSmart Home Loans",
-      "url": "https://styermortgage.com"
-    },
-    "url": "https://styermortgage.com/1099-only-mortgage-texas.html",
-    "datePublished": "2026-05-17",
-    "dateModified": "2026-07-24"
-  }
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "1099-Only Mortgages in Texas — Qualify Without Tax Returns",
+  "description": "Complete Texas guide to 1099-only mortgages for independent contractors, consultants, real estate agents, and gig workers. Expense factor math, 1-year vs 2-year programs, and how 1099-only stacks up vs bank statement and conventional.",
+  "author": {
+    "@type": "Person",
+    "name": "Adam Styer",
+    "jobTitle": "Mortgage Loan Originator",
+    "url": "https://styermortgage.com/about.html",
+    "identifier": "NMLS #513013"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adam Styer | HyperSmart Home Loans",
+    "url": "https://styermortgage.com"
+  },
+  "url": "https://styermortgage.com/1099-only-mortgage-texas.html",
+  "datePublished": "2026-05-17",
+  "dateModified": "2026-07-24",
+  "image": "https://styermortgage.com/assets/og-image.png"
+}
   </script>
 
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Loan Programs", "item": "https://styermortgage.com/products.html" },
-      { "@type": "ListItem", "position": 3, "name": "1099-Only Mortgage Texas", "item": "https://styermortgage.com/1099-only-mortgage-texas.html" }
-    ]
-  }
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://styermortgage.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Loan Programs",
+      "item": "https://styermortgage.com/products.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "1099-Only Mortgage Texas",
+      "item": "https://styermortgage.com/1099-only-mortgage-texas.html"
+    }
+  ]
+}
   </script>
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://styermortgage.com/#adam-styer",
-    "name": "Adam Styer",
-    "jobTitle": "Senior Loan Officer",
-    "url": "https://styermortgage.com/about.html",
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://styermortgage.com/#adam-styer",
+  "name": "Adam Styer",
+  "jobTitle": "Senior Loan Officer",
+  "url": "https://styermortgage.com/about.html",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "NMLS",
+    "value": "513013"
+  },
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Adam Styer | HyperSmart Home Loans",
     "identifier": {
       "@type": "PropertyValue",
       "propertyID": "NMLS",
-      "value": "513013"
-    },
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Adam Styer | HyperSmart Home Loans",
-      "identifier": {
-        "@type": "PropertyValue",
-        "propertyID": "NMLS",
-        "value": "2653540"
-      }
-    },
-    "knowsAbout": [
-      "self-employed mortgage",
-      "bank statement loans",
-      "Non-QM mortgages",
-      "DSCR loans",
-      "asset depletion mortgages",
-      "K-1 income mortgage qualification",
-      "1099 income mortgage qualification",
-      "P&L mortgage qualification",
-      "one-time-close construction loans",
-      "jumbo mortgage strategy",
-      "Texas mortgage lending"
-    ],
-    "sameAs": [
-      "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013"
-    ]
-  }
+      "value": "2653540"
+    }
+  },
+  "knowsAbout": [
+    "self-employed mortgage",
+    "bank statement loans",
+    "Non-QM mortgages",
+    "DSCR loans",
+    "asset depletion mortgages",
+    "K-1 income mortgage qualification",
+    "1099 income mortgage qualification",
+    "P&L mortgage qualification",
+    "one-time-close construction loans",
+    "jumbo mortgage strategy",
+    "Texas mortgage lending"
+  ],
+  "sameAs": [
+    "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013"
+  ]
+}
   </script>
 </head>
 <body class="editorial-page loan-page program-page-modern">

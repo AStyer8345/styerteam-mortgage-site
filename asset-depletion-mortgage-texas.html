@@ -81,133 +81,137 @@
   <!-- FAQPage Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is an asset depletion mortgage?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "An asset depletion mortgage may calculate qualifying income from eligible documented assets after subtracting transaction funds and other required exclusions. Fannie Mae's employment-related-assets method divides net documented assets by the loan's amortization term in months; Freddie Mac §5307.1 divides net eligible assets by 240. Non-QM eligibility, discounts, divisors, loan-to-value limits, reserves, rates, and documentation vary by investor and current program."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which divisor should I use — Fannie, Freddie, or non-QM?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The applicable divisor depends on the program for which the borrower, assets, property, occupancy, and transaction are eligible. Fannie Mae uses the loan's amortization term for its employment-related-assets method, while Freddie Mac §5307.1 uses 240 months. A current written investor matrix controls any non-QM calculation."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What assets count for asset depletion?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Eligible asset types, ownership, access, valuation, discounts, exclusions, and documentation depend on the program. Fannie Mae limits its method to eligible employment-related assets; Freddie Mac §5307.1 identifies eligible depository, securities, and retirement assets and excludes cryptocurrency. A current guide or written investor matrix controls."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I have to actually liquidate my assets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Asset depletion is a qualifying-income calculation, not necessarily a scheduled withdrawal plan. Account access, liquidation, pledge, transaction-fund, reserve, and documentation requirements still vary by program and asset type."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I be under age 62 and still qualify?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Possibly. Fannie Mae's employment-related-assets method has a 70% maximum LTV, or 80% when the asset owner used to qualify is at least 62. Freddie Mac §5307.1 requires an account owner age 62 or older for eligible depository accounts and securities, while retirement assets have separate access requirements. Non-QM age, asset, LTV, and pricing rules vary by investor."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I stack asset depletion on top of other income?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Possibly. Whether asset-depletion income may be combined with another income source, and whether the same asset or income would be double-counted, depends on the current agency guide or investor matrix."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are retirement accounts treated differently?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Retirement-asset eligibility depends on ownership, vesting, access, withdrawal terms, taxes or penalties, current distributions, and the program's required discounts. The same assets cannot be counted twice when a guide prohibits double-counting."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much down payment and credit do I need?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Down payment or equity, credit, reserves, eligible assets, ownership, occupancy, and maximum loan-to-value vary by program. Fannie Mae and Freddie Mac publish specific agency limits; non-QM requirements must be checked against a current written investor matrix for the scenario."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does crypto count as an eligible asset?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Freddie Mac §5307.1 excludes cryptocurrency from net eligible assets. Treatment of converted funds, sourcing, documentation, and any required history varies by program; confirm the written requirements before moving or liquidating assets."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What documentation will I need?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Required statements, account history, ownership and access records, sourcing, transaction documents, appraisal, tax or income documents, and explanations vary by program and scenario. Review the complete document list before relying on a timeline or moving assets."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use jointly-held or trust-owned assets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Joint, trust, and entity-owned assets require program-specific review of ownership, access, control, valuation, and documentation. Confirm eligibility before relying on a co-owner letter, trust distribution, or entity interest."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How fast can asset depletion close?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Closing time depends on the lender, program, appraisal, title, property, asset ownership, transfers, documentation, and underwriting conditions. Confirm the expected timeline and required account history before relying on a closing date."
-        }
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an asset depletion mortgage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An asset depletion mortgage may calculate qualifying income from eligible documented assets after subtracting transaction funds and other required exclusions. Fannie Mae's employment-related-assets method uses the loan's amortization term; Freddie Mac §5307.1 uses 240 months. Non-QM calculations vary by investor and current program."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "Which divisor should I use — Fannie, Freddie, or non-QM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The applicable calculation depends on the program for which the borrower, assets, property, occupancy, and transaction are eligible. Compare current written agency requirements and investor matrices rather than selecting a program by divisor alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What assets count?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Eligible asset types, ownership, access, valuation, discounts, exclusions, and documentation depend on the program. Fannie Mae limits its method to eligible employment-related assets; Freddie Mac §5307.1 identifies eligible depository, securities, and retirement assets and excludes cryptocurrency. A current guide or written investor matrix controls."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to actually liquidate my assets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Asset depletion is a qualifying-income calculation, not necessarily a scheduled withdrawal plan. Account access, liquidation, pledge, transaction-fund, reserve, and documentation requirements still vary by program and asset type."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I be under 62 and still qualify?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Possibly. Fannie Mae's employment-related-assets method has a 70% maximum LTV, or 80% when the asset owner used to qualify is at least 62. Freddie Mac §5307.1 requires an account owner age 62 or older for eligible depository accounts and securities, while retirement assets have separate access requirements. Non-QM age, asset, leverage, and pricing rules vary by investor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I stack asset depletion on top of other income?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Possibly. Whether asset-depletion income may be combined with another income source, and whether the same asset or income would be double-counted, depends on the current agency guide or investor matrix."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are retirement accounts treated differently?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Retirement-asset eligibility depends on ownership, vesting, access, withdrawal terms, taxes or penalties, current distributions, and the program's required discounts. The same assets cannot be counted twice when a guide prohibits double-counting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much down payment and credit do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Down payment or equity, credit, reserves, eligible assets, ownership, occupancy, and maximum loan-to-value vary by program. Fannie Mae and Freddie Mac publish specific agency limits; non-QM requirements must be checked against a current written investor matrix for the scenario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does crypto count?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Freddie Mac §5307.1 excludes cryptocurrency from net eligible assets. Treatment of converted funds, sourcing, documentation, and any required history varies by program; confirm the written requirements before moving or liquidating assets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What documentation will I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Required statements, account history, ownership and access records, sourcing, transaction documents, appraisal, tax or income documents, and explanations vary by program and scenario. Review the complete document list before relying on a timeline or moving assets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use jointly-held or trust-owned assets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Joint, trust, and entity-owned assets require program-specific review of ownership, access, control, valuation, and documentation. Confirm eligibility before relying on a co-owner letter, trust distribution, or entity interest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast can asset depletion close?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Closing time depends on the lender, program, appraisal, title, property, asset ownership, transfers, documentation, and underwriting conditions. Confirm the expected timeline and required account history before relying on a closing date."
+      }
+    }
+  ]
+}
   </script>
 
   <!-- Article Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Asset Depletion Mortgages in Texas — Qualify on Your Liquid Assets",
-    "description": "Guide to current Fannie Mae, Freddie Mac, and investor-specific asset-depletion mortgage calculations for eligible Texas borrowers.",
-    "author": {
-      "@type": "Person",
-      "name": "Adam Styer",
-      "jobTitle": "Senior Loan Officer",
-      "identifier": "NMLS #513013",
-      "url": "https://styermortgage.com/about.html"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Adam Styer | HyperSmart Home Loans",
-      "url": "https://styermortgage.com",
-      "logo": { "@type": "ImageObject", "url": "https://styermortgage.com/assets/logo.svg" }
-    },
-    "url": "https://styermortgage.com/asset-depletion-mortgage-texas.html",
-    "datePublished": "2026-05-17",
-    "dateModified": "2026-08-28"
-  }
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Asset Depletion Mortgages in Texas — Qualify on Your Liquid Assets",
+  "description": "Guide to current Fannie Mae, Freddie Mac, and investor-specific asset-depletion mortgage calculations for eligible Texas borrowers.",
+  "author": {
+    "@type": "Person",
+    "name": "Adam Styer",
+    "jobTitle": "Senior Loan Officer",
+    "identifier": "NMLS #513013",
+    "url": "https://styermortgage.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adam Styer | HyperSmart Home Loans",
+    "url": "https://styermortgage.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://styermortgage.com/assets/logo.svg"
+    }
+  },
+  "url": "https://styermortgage.com/asset-depletion-mortgage-texas.html",
+  "datePublished": "2026-05-17",
+  "dateModified": "2026-08-28",
+  "image": "https://styermortgage.com/assets/og-image.png"
+}
   </script>
 
   <!-- BreadcrumbList Schema -->

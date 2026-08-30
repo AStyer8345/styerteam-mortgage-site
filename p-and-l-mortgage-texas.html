@@ -81,193 +81,209 @@
   <!-- FAQPage Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is a P&L only mortgage?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A P&L only mortgage is a Non-QM home loan that qualifies self-employed borrowers on a CPA-prepared profit and loss statement instead of tax returns. The lender uses the net income on the P&L (plus standard add-backs like depreciation) as monthly qualifying income. Most programs require the P&L cover at least 12 months and include current year-to-date results."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who can prepare the P&L?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Requirements vary by lender. The standard is a licensed CPA, IRS Enrolled Agent (EA), or CTEC-registered tax preparer. Some lenders also accept PTIN-holding licensed tax professionals; others restrict to CPA or EA only. Requirements vary by investor and should be verified against the current matrix before quoting a borrower. The preparer must sign and date the P&L on their letterhead and include their license or PTIN number."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is qualifying income calculated from a P&L?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The underwriter takes the P&L net income, adds back non-cash deductions (depreciation, amortization), and divides by the months in the P&L period. A 24-month P&L showing $480,000 net income plus $24,000 depreciation add-back equals $504,000 ÷ 24 = $21,000/month qualifying income. Ownership percentage is applied if the borrower doesn't own 100%."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is a P&L loan different from a bank statement loan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Bank statement loans use deposits with a generic expense factor (often 50%) — accurate if your real expenses match the default, off if they don't. P&L only uses your CPA's actual numbers, so a service business with 20% real expenses qualifies for more than the 50% bank statement default would allow. Higher-expense businesses sometimes qualify for more on bank statement. The P&L route prices the file to reality."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What's a hybrid P&L program?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Hybrid programs pair the CPA P&L with 2–3 months of bank statements as a sanity check. The lender confirms the bank deposits are within roughly 25% of the P&L revenue (the exact tolerance varies by investor). If they match, the P&L number stands. If deposits are far below P&L revenue, the lender uses the lower number. Most programs above 70% LTV require this hybrid structure."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if my CPA refuses to prepare the P&L?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It happens. Some CPAs decline due to AICPA professional standards around compilation engagements and liability. If your CPA won't do it, an IRS Enrolled Agent (EA) or CTEC-registered tax preparer is the standard fallback. Most lender programs accept EA-prepared P&Ls as equivalent to CPA-prepared. We have CPAs and EAs in network who'll handle this."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does the P&L need YTD coverage?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Standard requirement is a P&L covering at least 12 full months plus year-to-date through a recent month — typically within 60–90 days of the application date. A 24-month CPA P&L with YTD through the prior month is the cleanest documentation. Stale P&Ls (older than 90 days at application) usually need to be re-issued and re-signed by the preparer."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What credit score and down payment do I need?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Many 2-year CPA P&L programs start in the 660–680 minimum FICO range, with stronger pricing and lower down payment options usually reserved for higher-credit borrowers. Maximum loan amount, CLTV, reserves, and cash-out terms vary by investor and must be verified against the current matrix. Three months of reserves is the floor; six is more common above $1M."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use a P&L only loan as an S-corp owner?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. S-corp owners are a common P&L profile. The P&L can show the S-corp's results and the lender uses your ownership percentage to calculate qualifying income. If you take a modest W-2 from your S-corp and the rest as distributions, the P&L captures the full business income before owner compensation — usually qualifies you for far more than tax-return-based underwriting would."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What gotchas should I watch for?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Three main ones. (1) P&L not matching deposits — if bank statements show way less revenue than the P&L claims, the file dies. (2) Implausible expense ratios — a consultant claiming 5% expenses or a contractor claiming 70% expenses will get flagged for review. (3) Preparer documentation — missing PTIN, missing letterhead, or wrong signature line. The P&L must look like a CPA prepared it, not a borrower typing into Excel."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long do P&L only loans take to close?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Typical close is 25–35 days. The bottleneck is usually getting the CPA or EA to issue the P&L on letterhead with the right signature block. If your preparer is responsive and you have the P&L ready at application, P&L only is among the faster Non-QM closes — less underwriter document review than bank statement, less back-and-forth than conventional."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is P&L only available for investment property?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, but for most investment-property buyers a DSCR loan that qualifies on the rental income of the subject property is a cleaner fit. P&L only on investment caps LTV at 75–80% and usually prices similar to or higher than DSCR. For a primary residence or second home where personal income is the qualification path, P&L only is the right tool."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What about partnerships and multi-member LLCs?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Multi-member entities work as long as the borrower owns at least 25% — the industry minimum threshold. The P&L is for the business as a whole; the lender applies your ownership percentage to the qualifying income. For partnerships and S-corps, K-1 income analysis is often a parallel path on conventional financing; we model both before picking a lane."
-        }
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a P&L only mortgage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A P&L only mortgage is a Non-QM home loan that qualifies self-employed borrowers on a CPA-prepared profit and loss statement instead of tax returns. The lender uses the net income on the P&L (plus standard add-backs like depreciation) as monthly qualifying income. Most programs require the P&L cover at least 12 months and include current year-to-date results."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "Who can prepare the P&L?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Requirements vary by lender. The standard is a licensed CPA, IRS Enrolled Agent (EA), or CTEC-registered tax preparer. A&D Mortgage accepts licensed CPA, CTEC preparer, or EA on its 2-year P&L program. Some lenders also accept PTIN-holding licensed tax professionals; others restrict to CPA or EA only. The preparer must sign and date the P&L on their letterhead and include their license or PTIN number."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is qualifying income calculated from a P&L?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The underwriter takes the P&L net income, adds back non-cash deductions (depreciation, amortization), and divides by the months in the P&L period. A 24-month P&L showing $480,000 net income plus $24,000 depreciation add-back equals $504,000 ÷ 24 = $21,000/month qualifying income. Ownership percentage is applied if the borrower doesn't own 100%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is a P&L loan different from a bank statement loan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bank statement loans use deposits with a generic expense factor (often 50%) — accurate if your real expenses match the default, off if they don't. P&L only uses your CPA's actual numbers, so a service business with 20% real expenses qualifies for more than the 50% bank statement default would allow. Higher-expense businesses sometimes qualify for more on bank statement. The P&L route prices the file to reality."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's a hybrid P&L program?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hybrid programs pair the CPA P&L with 2–3 months of bank statements as a sanity check. The lender confirms the bank deposits are within roughly 25% of the P&L revenue (A&D Mortgage uses ±25%). If they match, the P&L number stands. If deposits are far below P&L revenue, the lender uses the lower number. Most programs above 70% LTV require this hybrid structure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if my CPA refuses to prepare the P&L?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It happens. Some CPAs decline due to AICPA professional standards around compilation engagements and liability. If your CPA won't do it, an IRS Enrolled Agent (EA) or CTEC-registered tax preparer is the standard fallback. Most lender programs accept EA-prepared P&Ls as equivalent to CPA-prepared. We have CPAs and EAs in network who'll handle this."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the P&L need YTD coverage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Standard requirement is a P&L covering at least 12 full months plus year-to-date through a recent month — typically within 60–90 days of the application date. A 24-month CPA P&L with YTD through the prior month is the cleanest documentation. Stale P&Ls (older than 90 days at application) usually need to be re-issued and re-signed by the preparer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What credit score and down payment do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A&D Mortgage's 2-year CPA P&L starts at 660 minimum credit (680 for interest-only, 700 for cash-in-hand). 80% maximum CLTV on purchase or cash-out. Loans up to $2.5M. Most other lenders run similar terms — 660–680 minimum FICO, 20% down standard, 10–15% down possible on 720+ credit. Three months of reserves is the floor; six is more common above $1M."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use a P&L only loan as an S-corp owner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. S-corp owners are a common P&L profile. The P&L can show the S-corp's results and the lender uses your ownership percentage to calculate qualifying income. If you take a modest W-2 from your S-corp and the rest as distributions, the P&L captures the full business income before owner compensation — usually qualifies you for far more than tax-return-based underwriting would."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What gotchas should I watch for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three main ones. (1) P&L not matching deposits — if bank statements show way less revenue than the P&L claims, the file dies. (2) Implausible expense ratios — a consultant claiming 5% expenses or a contractor claiming 70% expenses will get flagged for review. (3) Preparer documentation — missing PTIN, missing letterhead, or wrong signature line. The P&L must look like a CPA prepared it, not a borrower typing into Excel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long do P&L only loans take to close?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typical close is 25–35 days. The bottleneck is usually getting the CPA or EA to issue the P&L on letterhead with the right signature block. If your preparer is responsive and you have the P&L ready at application, P&L only is among the faster Non-QM closes — less underwriter document review than bank statement, less back-and-forth than conventional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is P&L only available for investment property?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but for most investment-property buyers a DSCR loan that qualifies on the rental income of the subject property is a cleaner fit. P&L only on investment caps LTV at 75–80% and usually prices similar to or higher than DSCR. For a primary residence or second home where personal income is the qualification path, P&L only is the right tool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about partnerships and multi-member LLCs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multi-member entities work as long as the borrower owns at least 25% — the industry minimum threshold. The P&L is for the business as a whole; the lender applies your ownership percentage to the qualifying income. For partnerships and S-corps, K-1 income analysis is often a parallel path on conventional financing; we model both before picking a lane."
+      }
+    }
+  ]
+}
   </script>
 
   <!-- Article Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "P&L Only Mortgages in Texas — Qualify on Your CPA-Prepared Profit &amp; Loss",
-    "description": "Complete Texas guide to P&L only mortgages for sole proprietors, single-member LLCs, and S-corp owners. Preparer requirements, YTD rules, hybrid programs, and how P&L only compares to bank statement and 1099-only loans.",
-    "author": {
-      "@type": "Person",
-      "name": "Adam Styer",
-      "jobTitle": "Mortgage Loan Originator",
-      "url": "https://styermortgage.com/about.html",
-      "identifier": "NMLS #513013"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Adam Styer | HyperSmart Home Loans",
-      "url": "https://styermortgage.com"
-    },
-    "url": "https://styermortgage.com/p-and-l-mortgage-texas.html",
-    "datePublished": "2026-05-17",
-    "dateModified": "2026-05-17"
-  }
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "P&L Only Mortgages in Texas — Qualify on Your CPA-Prepared Profit &amp; Loss",
+  "description": "Complete Texas guide to P&L only mortgages for sole proprietors, single-member LLCs, and S-corp owners. Preparer requirements, YTD rules, hybrid programs, and how P&L only compares to bank statement and 1099-only loans.",
+  "author": {
+    "@type": "Person",
+    "name": "Adam Styer",
+    "jobTitle": "Mortgage Loan Originator",
+    "url": "https://styermortgage.com/about.html",
+    "identifier": "NMLS #513013"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adam Styer | HyperSmart Home Loans",
+    "url": "https://styermortgage.com"
+  },
+  "url": "https://styermortgage.com/p-and-l-mortgage-texas.html",
+  "datePublished": "2026-05-17",
+  "dateModified": "2026-05-17",
+  "image": "https://styermortgage.com/assets/og-image.png"
+}
   </script>
 
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Loan Programs", "item": "https://styermortgage.com/products.html" },
-      { "@type": "ListItem", "position": 3, "name": "P&L Only Mortgage Texas", "item": "https://styermortgage.com/p-and-l-mortgage-texas.html" }
-    ]
-  }
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://styermortgage.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Loan Programs",
+      "item": "https://styermortgage.com/products.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "P&L Only Mortgage Texas",
+      "item": "https://styermortgage.com/p-and-l-mortgage-texas.html"
+    }
+  ]
+}
   </script>
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://styermortgage.com/#adam-styer",
-    "name": "Adam Styer",
-    "jobTitle": "Senior Loan Officer",
-    "url": "https://styermortgage.com/about.html",
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://styermortgage.com/#adam-styer",
+  "name": "Adam Styer",
+  "jobTitle": "Senior Loan Officer",
+  "url": "https://styermortgage.com/about.html",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "NMLS",
+    "value": "513013"
+  },
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Adam Styer | HyperSmart Home Loans",
     "identifier": {
       "@type": "PropertyValue",
       "propertyID": "NMLS",
-      "value": "513013"
-    },
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Adam Styer | HyperSmart Home Loans",
-      "identifier": {
-        "@type": "PropertyValue",
-        "propertyID": "NMLS",
-        "value": "2653540"
-      }
-    },
-    "knowsAbout": [
-      "self-employed mortgage",
-      "bank statement loans",
-      "Non-QM mortgages",
-      "DSCR loans",
-      "asset depletion mortgages",
-      "K-1 income mortgage qualification",
-      "1099 income mortgage qualification",
-      "P&L mortgage qualification",
-      "one-time-close construction loans",
-      "jumbo mortgage strategy",
-      "Texas mortgage lending"
-    ],
-    "sameAs": [
-      "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013"
-    ]
-  }
+      "value": "2653540"
+    }
+  },
+  "knowsAbout": [
+    "self-employed mortgage",
+    "bank statement loans",
+    "Non-QM mortgages",
+    "DSCR loans",
+    "asset depletion mortgages",
+    "K-1 income mortgage qualification",
+    "1099 income mortgage qualification",
+    "P&L mortgage qualification",
+    "one-time-close construction loans",
+    "jumbo mortgage strategy",
+    "Texas mortgage lending"
+  ],
+  "sameAs": [
+    "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013"
+  ]
+}
   </script>
 </head>
 <body class="editorial-page loan-page program-page-modern">
@@ -802,7 +818,7 @@
   <section class="section bg-navy cta-spotlight">
     <div class="container text-center">
       <h2 class="text-white">Run Your P&amp;L Numbers</h2>
-      <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Send me your CPA's P&amp;L (or let me connect you with a preparer in network) and I'll tell you what loan amount you qualify for. tax returns may not need to be the primary income document.</p>
+      <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Send me your CPA's P&amp;L (or let me connect you with a preparer in network) and I'll tell you what loan amount you qualify for. Tax returns may not need to be the primary income document.</p>
       <a href="/scenario.html" class="btn btn-primary btn-lg">Review My P&L</a>
       <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-white btn-lg" style="margin-left:1rem;" target="_blank" rel="noopener">Book a 15-Minute Call →</a>
       <p class="text-white" style="margin-top:1rem;opacity:0.7;font-size:0.9rem;">Or call <a href="tel:+15129566010" style="color:#fff;">(512) 956-6010</a> — NMLS #513013</p>
