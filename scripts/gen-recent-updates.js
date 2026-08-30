@@ -10,6 +10,10 @@ const path = require("path");
 const ROOT = path.resolve(__dirname, "..");
 const OUT = path.join(ROOT, "recent-updates.json");
 const MAX = 10;
+// A sitewide design, compliance, email, or CTA rollout can legitimately touch
+// hundreds of pages without turning all of them into fresh editorial content.
+// Ignore those bulk HTML commits when choosing each page's display date.
+const MAX_HTML_FILES_PER_EDITORIAL_COMMIT = 24;
 
 // Utility / app / legal pages we never surface as "content updates".
 const DENY = new Set([
@@ -42,6 +46,37 @@ function isIndexable(file) {
   } catch (e) { return false; }
 }
 
+function substantiveDates(eligibleFiles) {
+  const eligible = new Set(eligibleFiles);
+  const dates = new Map();
+  const output = sh('git log --format="__COMMIT__%x09%H%x09%cs" --name-only -- "*.html"');
+  const commits = [];
+  let current = null;
+
+  output.split("\n").forEach(function (line) {
+    if (line.indexOf("__COMMIT__\t") === 0) {
+      if (current) commits.push(current);
+      const parts = line.split("\t");
+      current = { hash: parts[1] || "", date: parts[2] || "", files: [] };
+    } else if (current && line.trim()) {
+      current.files.push(line.trim());
+    }
+  });
+  if (current) commits.push(current);
+
+  commits.forEach(function (commit) {
+    const htmlFiles = Array.from(new Set(commit.files.filter(function (file) {
+      return file.endsWith(".html");
+    })));
+    if (htmlFiles.length > MAX_HTML_FILES_PER_EDITORIAL_COMMIT) return;
+    htmlFiles.forEach(function (file) {
+      if (eligible.has(file) && !dates.has(file)) dates.set(file, commit.date);
+    });
+  });
+
+  return dates;
+}
+
 try {
   // Tracked HTML in root + blog/ only (money + suburb pages live in root).
   let files = sh('git ls-files "*.html"').split("\n").filter(Boolean);
@@ -50,10 +85,9 @@ try {
     return !DENY.has(f) && isIndexable(f);
   });
 
+  const dates = substantiveDates(files);
   let items = files.map(function (f) {
-    let date = "";
-    try { date = sh('git log -1 --format=%cs -- "' + f + '"'); } catch (e) {}
-    return { url: "/" + f, title: titleOf(f), date: date };
+    return { url: "/" + f, title: titleOf(f), date: dates.get(f) || "" };
   }).filter(function (it) { return it.date; });
 
   items.sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });

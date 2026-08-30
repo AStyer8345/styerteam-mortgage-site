@@ -26,3 +26,8 @@ test('recent updates never promotes error or noindex pages', () => {
   assert.match(recentUpdatesGenerator, /isIndexable/);
   assert.match(recentUpdatesGenerator, /noindex/);
 });
+
+test('recent updates ignores bulk sitewide HTML rollouts', () => {
+  assert.match(recentUpdatesGenerator, /MAX_HTML_FILES_PER_EDITORIAL_COMMIT/);
+  assert.match(recentUpdatesGenerator, /htmlFiles\.length > MAX_HTML_FILES_PER_EDITORIAL_COMMIT/);
+});
