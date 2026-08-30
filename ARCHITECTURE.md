@@ -40,9 +40,9 @@
 ### Reviews
 | Platform | Stars | Count |
 |----------|-------|-------|
-| Google | 5.0 | 91 |
+| Google | 5.0 | 96 |
 | Zillow | 4.98 | 45 |
-| Combined | 5.0 | 136+ |
+| Combined | 5.0 | 141 |
 
 **Homepage stats strip (verbatim, current):** `1,000+ Loans Closed | 5.0 ★ Google rating | 4.98 ★ Zillow rating | 40+ Wholesale Lenders Shopped`
 
