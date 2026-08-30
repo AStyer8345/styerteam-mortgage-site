@@ -5,7 +5,7 @@
 The rollout adds an explicitly opted-in `editorial-page` system with page-family classes. The approved bank-statement page and latest pilot homepage remain the visual references; the upstream pilot's compact portrait treatment is preserved without restoring the former oversized hero image.
 
 - Homepage: `index.html`
-- Loan programs: 17 top-level program pages, including the bank-statement reference
+- Loan programs: 23 public program pages, including the bank-statement reference and seven nested `/loans/` pages
 - Locations: Austin-area hub plus 24 city pages
 - Guides/resources: 17 top-level guide, resource, legal, and index pages
 - Calculators: 9 calculator/tool pages
@@ -17,7 +17,7 @@ Intentionally excluded: `404.html`, dashboards, ops and marketing tools, `forms.
 ### Changed pages by family
 
 - **Homepage (1):** `index.html`
-- **Loan programs (16):** `1099-only-mortgage-texas.html`, `asset-depletion-mortgage-texas.html`, `bank-statement-loans.html`, `dscr-loan-austin-tx.html`, `dscr-loans-dripping-springs.html`, `dscr-loans-fredericksburg-tx.html`, `dscr-loans-texas.html`, `first-time-home-buyer.html`, `high-net-worth-mortgage.html`, `investor-loans.html`, `k1-income-mortgage-austin.html`, `mortgage-for-business-owners-austin.html`, `non-qm-loans.html`, `one-time-close-construction-loan-texas.html`, `p-and-l-mortgage-texas.html`, `self-employed-mortgage-austin.html`
+- **Loan programs (23):** `1099-only-mortgage-texas.html`, `asset-depletion-mortgage-texas.html`, `bank-statement-loans.html`, `dscr-loan-austin-tx.html`, `dscr-loans-dripping-springs.html`, `dscr-loans-fredericksburg-tx.html`, `dscr-loans-texas.html`, `first-time-home-buyer.html`, `high-net-worth-mortgage.html`, `investor-loans.html`, `k1-income-mortgage-austin.html`, `mortgage-for-business-owners-austin.html`, `non-qm-loans.html`, `one-time-close-construction-loan-texas.html`, `p-and-l-mortgage-texas.html`, `self-employed-mortgage-austin.html`, `loans/construction.html`, `loans/conventional.html`, `loans/fha.html`, `loans/investment.html`, `loans/jumbo.html`, `loans/refinance.html`, `loans/va.html`
 - **Locations (25):** `austin-area-mortgage-lender.html`, `bastrop-mortgage-lender.html`, `bee-cave-mortgage-lender.html`, `buda-mortgage-lender.html`, `cedar-park-mortgage-lender.html`, `dripping-springs-mortgage-lender.html`, `elgin-mortgage-lender.html`, `florence-mortgage-lender.html`, `georgetown-mortgage-lender.html`, `hutto-mortgage-lender.html`, `jarrell-mortgage-lender.html`, `kyle-mortgage-lender.html`, `lakeway-mortgage-lender.html`, `leander-mortgage-lender.html`, `liberty-hill-mortgage-lender.html`, `manor-mortgage-lender.html`, `marble-falls-mortgage-lender.html`, `new-braunfels-mortgage-lender.html`, `pflugerville-mortgage-lender.html`, `round-rock-mortgage-lender.html`, `san-marcos-mortgage-lender.html`, `smithville-mortgage-lender.html`, `spicewood-mortgage-lender.html`, `taylor-mortgage-lender.html`, `westlake-mortgage-lender.html`
 - **Guides and hubs (17):** `austin-down-payment-assistance.html`, `austin-housing-market.html`, `austin-mortgage-rates.html`, `blog.html`, `closing-costs-texas.html`, `fixed-vs-adjustable.html`, `how-much-house-can-i-afford-austin.html`, `how-to-buy-a-house-in-austin-tx.html`, `improve-credit-score.html`, `mortgage-broker-vs-bank.html`, `mortgage-glossary.html`, `mortgage-pre-approval-austin.html`, `privacy.html`, `products.html`, `scenarios.html`, `terms.html`, `texas-complaint-notice.html`
 - **Calculators (9):** `asset-depletion-calculator.html`, `calculator-affordability.html`, `calculator-payment.html`, `calculator-refinance-breakeven.html`, `calculators.html`, `dscr-calculator.html`, `rate-buydown-calculator.html`, `refinance-calculator.html`, `wrap-mortgage-calculator.html`
@@ -44,7 +44,7 @@ The pre-approval page is slightly taller because the refined form preserves all 
 ## Automated validation
 
 - Build and knowledge validation: pass
-- Node governance, AEO, lead-flow, review-count, and assistant suites: 139/139 pass
+- Node governance, AEO, lead-flow, review-count, rollout, and assistant suites: 144/144 pass
 - TypeScript typecheck: pass
 - SEO audit: 147 sitemap URLs, 0 issues
 - Changed-page JSON-LD parsing: pass
@@ -61,3 +61,5 @@ The approved navy header was additionally checked across homepage, loan, locatio
 ### Follow-up audit
 
 A complete 85-page browser crawl at 1440 × 900 and 390 × 844 found one mobile overflow issue in the Austin home-buying guide. Its three comparison tables now use labeled, keyboard-focusable horizontal scroll regions. A second 85-page mobile crawl passed with zero overflow, broken-image, H1, header, or console failures. The mobile navigation was also opened interactively and verified for `aria-expanded`, white menu surface, and readable dark links. Duplicate family/header declarations were removed from `editorial-system.css`; `style.css` is now the authoritative source for shared rollout rules.
+
+The final audit identified seven indexable nested loan pages that were omitted by the original top-level-only inventory. All seven now opt into `editorial-page loan-page`; the noindex USDA page remains excluded. The regression inventory now searches recursively and requires 92 rollout pages. All seven nested pages passed desktop and mobile checks for navy header, light logo, white desktop navigation, gold CTA, fully contained H1, zero horizontal overflow, and zero broken images. The refinance mobile menu was opened interactively and passed its expanded-state color and ARIA checks.

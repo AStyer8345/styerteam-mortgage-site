@@ -3,14 +3,24 @@ const fs = require('node:fs');
 const test = require('node:test');
 
 const stylesheet = fs.readFileSync('style.css', 'utf8');
-const publicPages = fs.readdirSync('.').filter((file) => file.endsWith('.html'));
+function findHtmlFiles(directory = '.') {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const file = `${directory}/${entry.name}`;
+    if (entry.isDirectory()) {
+      return ['.git', '.netlify', 'node_modules'].includes(entry.name) ? [] : findHtmlFiles(file);
+    }
+    return entry.isFile() && entry.name.endsWith('.html') ? [file.replace(/^\.\//, '')] : [];
+  });
+}
+
+const publicPages = findHtmlFiles();
 
 test('editorial public pages load the current rollout stylesheet', () => {
   const editorialPages = publicPages.filter((file) =>
     /<body class="[^"]*\beditorial-page\b/.test(fs.readFileSync(file, 'utf8'))
   );
 
-  assert.equal(editorialPages.length, 85);
+  assert.equal(editorialPages.length, 92);
   for (const file of editorialPages) {
     const html = fs.readFileSync(file, 'utf8');
     assert.match(
@@ -35,6 +45,22 @@ test('internal and noindex utility pages remain outside the editorial rollout', 
     'thank-you.html'
   ]) {
     assert.doesNotMatch(fs.readFileSync(file, 'utf8'), /\beditorial-page\b/, file);
+  }
+
+  assert.doesNotMatch(fs.readFileSync('loans/usda.html', 'utf8'), /\beditorial-page\b/);
+});
+
+test('every indexable nested loan page receives the editorial loan treatment', () => {
+  for (const file of [
+    'loans/construction.html',
+    'loans/conventional.html',
+    'loans/fha.html',
+    'loans/investment.html',
+    'loans/jumbo.html',
+    'loans/refinance.html',
+    'loans/va.html'
+  ]) {
+    assert.match(fs.readFileSync(file, 'utf8'), /<body class="editorial-page loan-page">/, file);
   }
 });
 
