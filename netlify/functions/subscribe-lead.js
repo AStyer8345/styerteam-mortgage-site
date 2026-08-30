@@ -45,7 +45,7 @@ const ORG_ID         = "18613f82-fdd9-42dd-a09e-f3c577328258";
 
 const LOANOS_URL    = process.env.LOANOS_URL || "";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
-const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam.styer@hypersmart.loan";
+const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam@thestyerteam.com";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",

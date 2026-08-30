@@ -551,7 +551,7 @@
       var errorEl = document.getElementById('ra-form-error');
       if (!form) return;
 
-      form.addEventListener('submit', function (e) {
+      form.addEventListener('submit', async function (e) {
         e.preventDefault();
         errorEl.style.display = 'none';
         submitBtn.disabled = true;
@@ -567,7 +567,7 @@
         // Google Ads conversion
         gtag('event', 'conversion', { 'send_to': 'AW-18028490942/XYcDCMqh64wcEL7h05RD' });
 
-        fetch('/.netlify/functions/lead-intake', {
+        var primaryNotification = fetch('/.netlify/functions/lead-intake', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -582,17 +582,35 @@
             utm_term:     document.getElementById('ra-utm-term').value     || '',
             utm_content:  document.getElementById('ra-utm-content').value  || '',
           }),
-        })
-        .then(function (res) {
-          // Redirect to thank-you regardless of response status
-          // Netlify Forms data-netlify="true" acts as safety net backup
-          window.location.href = '/thank-you.html?type=rate-alert';
-        })
-        .catch(function (err) {
-          console.error('lead-intake error:', err);
-          // Still redirect — don't punish user for a backend error
-          window.location.href = '/thank-you.html?type=rate-alert';
+        }).then(function (res) {
+          if (!res.ok) throw new Error('lead-intake returned ' + res.status);
+          return res.json();
+        }).then(function (data) {
+          if (!data.success) throw new Error(data.error || 'Lead intake did not confirm success');
+          return data;
         });
+
+        var ownerEmailNotification = Promise.resolve().then(function () {
+          return window.StyerCaptureNotificationBackup({
+            sourceForm: 'rate-alert-form',
+            name: fname,
+            email: email,
+            subject: 'New mortgage rate-alert signup',
+            details: 'The visitor requested the mortgage rate alert.'
+          });
+        });
+
+        var results = await Promise.allSettled([primaryNotification, ownerEmailNotification]);
+        if (results[0].status === 'fulfilled' || results[1].status === 'fulfilled') {
+          window.location.href = '/thank-you.html?type=rate-alert';
+          return;
+        }
+
+        console.error('[rate-alert notifications]', results[0].reason, results[1].reason);
+        errorEl.textContent = 'Your request did not send. Please try again or call (512) 956-6010.';
+        errorEl.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Get My Weekly Rate Updates →';
       });
     })();
   </script>

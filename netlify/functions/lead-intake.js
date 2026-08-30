@@ -35,7 +35,7 @@ const API_BASE  = DC ? `https://${DC}.api.mailchimp.com/3.0` : "";
 const LOANOS_URL    = process.env.LOANOS_URL || process.env.LOANOS_API_URL || "";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
 const N8N_WEB_LEAD_URL = process.env.N8N_WEB_LEAD_URL || "https://styer.app.n8n.cloud/webhook/web-lead";
-const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam.styer@hypersmart.loan";
+const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam@thestyerteam.com";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
@@ -138,11 +138,20 @@ exports.handler = async (event) => {
     console.error("[lead-intake] Web lead automation error (non-fatal):", n8nResult.reason?.message);
   }
 
-  return respond(200, {
-    success:   true,
+  const ownerNotified = n8nResult.status === "fulfilled";
+  const captured = mcResult.status === "fulfilled" || loResult.status === "fulfilled";
+
+  // Notification is part of a successful lead handoff, not a best-effort side
+  // effect. Returning a non-2xx response prevents custom forms from treating
+  // this primary path as successful; those forms also run an independent
+  // Netlify owner-email capture.
+  return respond(ownerNotified ? 200 : 502, {
+    success:   ownerNotified,
+    captured,
+    ownerNotified,
     mailchimp: mcResult.status === "fulfilled" ? "ok" : "failed",
     loanos:    loResult.status === "fulfilled" ? "ok" : "failed",
-    webLeadAutomation: n8nResult.status === "fulfilled" ? "ok" : "failed",
+    webLeadAutomation: ownerNotified ? "ok" : "failed",
     qualification: { tier: qualification.tier, score: qualification.score },
   });
 };

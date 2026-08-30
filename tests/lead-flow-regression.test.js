@@ -13,6 +13,20 @@ const homepage = fs.readFileSync('index.html', 'utf8');
 const scenarioPage = fs.readFileSync('scenario.html', 'utf8');
 const nonQmPage = fs.readFileSync('non-qm-loans.html', 'utf8');
 const stylesheet = fs.readFileSync('style.css', 'utf8');
+const formsRegistry = fs.readFileSync('forms.html', 'utf8');
+const subscribeLo = fs.readFileSync('netlify/functions/subscribe-lo.js', 'utf8');
+const dpaGuide = fs.readFileSync('ftb-dpa-guide.html', 'utf8');
+const rateAlert = fs.readFileSync('rate-alert.html', 'utf8');
+const buyerGuide = fs.readFileSync('resources/first-time-buyer-guide/index.html', 'utf8');
+const loWaitlist = fs.readFileSync('loanos-waitlist.html', 'utf8');
+const rateCheckPages = [
+  'rate-check.html',
+  'rate-check-buda-kyle.html',
+  'rate-check-cedar-park.html',
+  'rate-check-georgetown.html',
+  'rate-check-new-braunfels.html',
+  'rate-check-round-rock.html',
+].map((file) => [file, fs.readFileSync(file, 'utf8')]);
 
 test('quick quote redirect does not put contact details in the URL', () => {
   assert.doesNotMatch(script, /tyParams\.set\('(email|name|phone)'/);
@@ -131,6 +145,46 @@ test('lead-intake restores the active web lead acknowledgment automation', () =>
   assert.match(leadIntake, /const data = \{/);
   assert.match(leadIntake, /\n\s+data,/);
   assert.doesNotMatch(leadIntake, /ftb-guide-email/);
+});
+
+test('owner notification failures are not reported as successful API responses', () => {
+  assert.match(leadIntake, /ownerNotified \? 200 : 502/);
+  assert.match(leadIntake, /success:\s+ownerNotified/);
+  assert.doesNotMatch(leadIntake, /return respond\(200, \{\s*success:\s+true/);
+  assert.match(subscribeLo, /n8nOk \? 200 : 502/);
+  assert.match(subscribeLo, /success:\s+n8nOk/);
+});
+
+test('custom notification routes have a registered Netlify email fallback', () => {
+  assert.match(formsRegistry, /name="notification-backup"/);
+  assert.match(formsRegistry, /name="form-name" value="notification-backup"/);
+  assert.match(script, /window\.StyerCaptureNotificationBackup = captureNotificationBackup/);
+  assert.match(script, /window\.StyerCaptureRateCheckNotificationBackup = captureRateCheckNotificationBackup/);
+
+  for (const [file, html] of rateCheckPages) {
+    assert.match(html, /StyerCaptureRateCheckNotificationBackup\(form,\s*''\)/, file);
+    assert.match(html, /adam@thestyerteam\.com/, file);
+  }
+  assert.match(dpaGuide, /sourceForm: 'ftb-dpa-guide-form'/);
+  assert.match(rateAlert, /sourceForm: 'rate-alert-form'/);
+  assert.match(buyerGuide, /sourceForm: 'first-time-buyer-guide'/);
+  assert.match(loWaitlist, /sourceForm: 'loanos-waitlist'/);
+});
+
+test('owner notification routes default to the forwarding-safe Styer Team inbox', () => {
+  assert.match(leadIntake, /ADAM_NOTIFICATION_EMAIL[\s\S]*adam@thestyerteam\.com/);
+  assert.match(subscribeLo, /ADAM_NOTIFICATION_EMAIL[\s\S]*adam@thestyerteam\.com/);
+});
+
+test('inline lead handlers reject non-2xx responses before redirecting', () => {
+  for (const [file, html] of [
+    ['ftb-dpa-guide.html', dpaGuide],
+    ['rate-alert.html', rateAlert],
+    ['resources/first-time-buyer-guide/index.html', buyerGuide],
+  ]) {
+    assert.match(html, /if \(!res\.ok\) throw/, file);
+  }
+  assert.match(thankYou, /if \(!res\.ok\) throw new Error\('Netlify form returned '/);
 });
 
 test('analytics.js does not duplicate lead or phone events already emitted by script.js', () => {

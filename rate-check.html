@@ -758,6 +758,12 @@
       }
       if (!allValid) return;
 
+      var ownerEmailCapture = typeof window.StyerCaptureRateCheckNotificationBackup === 'function'
+        ? window.StyerCaptureRateCheckNotificationBackup(form, '').catch(function(backupErr) {
+            console.error('[rate-check owner email]', backupErr);
+          })
+        : Promise.resolve();
+
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting…';
 
@@ -777,9 +783,9 @@
         credit_score: form.credit_score.value,
         notes: (form.notes && form.notes.value) || '',
         loan_estimate_filename: pdfFile ? pdfFile.name : '',
-        notification_email: 'adam.styer@hypersmart.loan',
-        recipient_email: 'adam.styer@hypersmart.loan',
-        adam_email: 'adam.styer@hypersmart.loan',
+        notification_email: 'adam@thestyerteam.com',
+        recipient_email: 'adam@thestyerteam.com',
+        adam_email: 'adam@thestyerteam.com',
         loan_estimate_base64: ''
       };
 
@@ -792,6 +798,9 @@
         .then(function(res) {
           if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();
+        })
+        .then(function() {
+          return ownerEmailCapture;
         })
         .then(function() {
           window.dataLayer.push({ event: 'generate_lead', lead_type: 'rate_check' });

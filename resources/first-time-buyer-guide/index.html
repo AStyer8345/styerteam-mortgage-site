@@ -558,14 +558,16 @@
             <h2>Get the Free Guide</h2>
             <p class="form-sub">Instant access. No spam. Unsubscribe anytime.</p>
 
-            <form id="guide-signup-form">
+            <form id="guide-signup-form" name="first-time-buyer-guide" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="first-time-buyer-guide">
+              <p hidden><label>Leave this blank: <input name="bot-field"></label></p>
               <div class="guide-form-group">
                 <label for="guide-fname">First Name</label>
-                <input type="text" id="guide-fname" placeholder="Your first name">
+                <input type="text" id="guide-fname" name="first_name" placeholder="Your first name">
               </div>
               <div class="guide-form-group">
                 <label for="guide-email">Email Address</label>
-                <input type="email" id="guide-email" placeholder="you@example.com" required>
+                <input type="email" id="guide-email" name="email" placeholder="you@example.com" required>
               </div>
               <button type="submit" class="guide-form-submit" id="guide-submit-btn">Send Me the Guide &#8594;</button>
               <p class="guide-form-privacy" id="guide-form-status">No spam, ever. Just the guide and occasional mortgage tips.</p>
@@ -585,31 +587,49 @@
                 status.textContent = '';
                 errBox.style.display = 'none';
 
-                try {
-                  var res = await fetch('/.netlify/functions/lead-intake', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email, fname: fname, tag: 'ftb-lead' })
-                  });
+                var primaryNotification = fetch('/.netlify/functions/lead-intake', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ email: email, fname: fname, tag: 'ftb-lead' })
+                }).then(async function (res) {
+                  if (!res.ok) throw new Error('lead-intake returned ' + res.status);
                   var data = await res.json();
-                  if (res.ok && data.success) {
-                    btn.textContent = '\u2713 Guide sent — opening now!';
-                    btn.style.background = '#16a34a';
-                    btn.style.color = '#fff';
-                    status.textContent = 'Check your email too — a copy is on its way.';
-                    window.open('https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9', '_blank');
-                    document.getElementById('guide-fname').value = '';
-                    document.getElementById('guide-email').value = '';
-                  } else {
-                    throw new Error(data.error || 'Something went wrong');
-                  }
-                } catch (err) {
+                  if (!data.success) throw new Error(data.error || 'Lead intake did not confirm success');
+                  return data;
+                });
+
+                var ownerEmailNotification = Promise.resolve().then(function () {
+                  return window.StyerCaptureNotificationBackup({
+                      sourceForm: 'first-time-buyer-guide',
+                      name: fname,
+                      email: email,
+                      subject: 'New first-time buyer guide request',
+                      details: 'The visitor requested the first-time buyer guide.'
+                    });
+                });
+
+                var results = await Promise.allSettled([primaryNotification, ownerEmailNotification]);
+                var primaryAccepted = results[0].status === 'fulfilled';
+                var ownerEmailAccepted = results[1].status === 'fulfilled';
+
+                if (!primaryAccepted && !ownerEmailAccepted) {
                   btn.disabled = false;
                   btn.textContent = 'Send Me the Guide \u2192';
-                  errBox.textContent = 'Something went wrong \u2014 please try again or email adam.styer@hypersmart.loan.';
+                  errBox.textContent = 'Something went wrong \u2014 please try again or email adam@thestyerteam.com.';
                   errBox.style.display = 'block';
-                  console.error(err);
+                  console.error(results[0].reason, results[1].reason);
+                  return;
                 }
+
+                btn.textContent = '\u2713 Guide ready — opening now!';
+                btn.style.background = '#16a34a';
+                btn.style.color = '#fff';
+                status.textContent = primaryAccepted
+                  ? 'Check your email too — a copy is on its way.'
+                  : 'The guide is opening now. Adam also received your request for follow-up.';
+                window.open('https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9', '_blank');
+                document.getElementById('guide-fname').value = '';
+                document.getElementById('guide-email').value = '';
               });
             </script>
           </div>

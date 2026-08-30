@@ -519,14 +519,18 @@
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'generate_lead', lead_type: 'refi_quote' });
 
+        var submitButton = form.querySelector('button[type="submit"]');
+        var submitLabel = submitButton ? submitButton.textContent : '';
+        if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Sending...'; }
+
         // Submit to Netlify (stores submission + emails Adam) AND call our
         // lead-intake function (Mailchimp + Loanos) — both in parallel.
-        Promise.all([
+        Promise.allSettled([
           fetch('/', {
             method:  'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body:    new URLSearchParams(data).toString(),
-          }).catch(function (err) { console.error('Netlify form error:', err); }),
+          }),
 
           fetch('/.netlify/functions/lead-intake', {
             method:  'POST',
@@ -545,9 +549,19 @@
               utm_campaign: data.get('utm_campaign') || '',
               page_url:     data.get('page_url')     || window.location.href,
             }),
-          }).catch(function (err) { console.error('lead-intake error:', err); }),
-        ]).finally(function () {
+          }).then(function (response) {
+            if (!response.ok) throw new Error('lead-intake returned ' + response.status);
+            return response.json();
+          }),
+        ]).then(function (results) {
+          var netlifyAccepted = results[0].status === 'fulfilled' && results[0].value.ok;
+          var leadAccepted = results[1].status === 'fulfilled' && results[1].value && results[1].value.success;
+          if (!netlifyAccepted && !leadAccepted) throw new Error('No lead capture endpoint accepted the request');
           window.location.href = '/thank-you?type=refinance';
+        }).catch(function (err) {
+          console.error('lead capture error:', err);
+          if (submitButton) { submitButton.disabled = false; submitButton.textContent = submitLabel; }
+          showQuickContactError(form);
         });
       });
     })();

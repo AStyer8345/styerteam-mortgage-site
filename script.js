@@ -416,6 +416,79 @@ function hasSuccessfulCapture(results) {
   return results.some((result) => result.status === 'fulfilled' && result.value && result.value.ok);
 }
 
+/**
+ * Independent email capture for public forms whose primary submission path is
+ * a custom webhook. The hidden form is registered in /forms.html and covered
+ * by the site's global Netlify submission-email notification. Uploaded files
+ * and binary data must never be included here; send only enough metadata for
+ * Adam to contact the visitor and recover the request manually.
+ */
+async function captureNotificationBackup(options = {}) {
+  const text = (value, max = 1000) => String(value == null ? '' : value).slice(0, max);
+  let details = options.details || '';
+  if (typeof details !== 'string') {
+    try {
+      details = JSON.stringify(details);
+    } catch (error) {
+      details = 'Additional details could not be serialized.';
+    }
+  }
+
+  const body = new URLSearchParams({
+    'form-name': 'notification-backup',
+    'bot-field': '',
+    source_form: text(options.sourceForm || 'unknown', 120),
+    name: text(options.name, 180),
+    email: text(options.email, 254),
+    phone: text(options.phone, 40),
+    subject: text(options.subject || 'New website form submission', 180),
+    details: text(details, 4000),
+    source_page: text(options.sourcePage || window.location.href, 1000),
+    failed_endpoint: text(options.failedEndpoint, 500),
+    submitted_at: new Date().toISOString(),
+  });
+
+  const response = await fetch('/forms.html', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: body.toString(),
+  });
+  if (!response.ok) throw new Error(`notification backup failed: ${response.status}`);
+  return true;
+}
+
+window.StyerCaptureNotificationBackup = captureNotificationBackup;
+
+function captureRateCheckNotificationBackup(form, failedEndpoint) {
+  const data = new FormData(form);
+  const firstName = String(data.get('first_name') || '').trim();
+  const lastName = String(data.get('last_name') || '').trim();
+  const upload = data.get('loan_estimate');
+  return captureNotificationBackup({
+    sourceForm: `rate-check:${window.location.pathname}`,
+    name: [firstName, lastName].filter(Boolean).join(' '),
+    email: data.get('email') || '',
+    phone: data.get('phone') || '',
+    subject: failedEndpoint
+      ? 'Rate-check upload notification failed — contact visitor'
+      : 'New rate-check review request',
+    details: {
+      closing_date: data.get('closing_date') || '',
+      loan_amount: data.get('loan_amount') || '',
+      loan_type: data.get('loan_type') || '',
+      credit_score: data.get('credit_score') || '',
+      notes: data.get('notes') || '',
+      loan_estimate_filename: upload && upload.name ? upload.name : '',
+      important: failedEndpoint
+        ? 'The PDF itself was not copied to this backup. Contact the visitor to recover it securely.'
+        : 'The PDF was sent separately through the secure review workflow and is not copied into this email alert.',
+    },
+    failedEndpoint,
+  });
+}
+
+window.StyerCaptureRateCheckNotificationBackup = captureRateCheckNotificationBackup;
+
 function showQuickContactError(form) {
   let errorMessage = form.querySelector('.quick-contact-submit-error');
   if (!errorMessage) {

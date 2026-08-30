@@ -806,13 +806,19 @@
       }
       if (!allValid) return;
 
+      var ownerEmailCapture = typeof window.StyerCaptureRateCheckNotificationBackup === 'function'
+        ? window.StyerCaptureRateCheckNotificationBackup(form, '').catch(function(backupErr) {
+            console.error('[rate-check owner email]', backupErr);
+          })
+        : Promise.resolve();
+
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting\u2026';
 
       var formData = new FormData(form);
-      formData.append("notification_email", "adam.styer@hypersmart.loan");
-      formData.append("recipient_email", "adam.styer@hypersmart.loan");
-      formData.append("adam_email", "adam.styer@hypersmart.loan");
+      formData.append("notification_email", "adam@thestyerteam.com");
+      formData.append("recipient_email", "adam@thestyerteam.com");
+      formData.append("adam_email", "adam@thestyerteam.com");
 
       fetch(WEBHOOK_URL, {
         method: 'POST',
@@ -821,6 +827,9 @@
       .then(function(res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
+      })
+      .then(function() {
+        return ownerEmailCapture;
       })
       .then(function() {
         form.style.display = 'none';

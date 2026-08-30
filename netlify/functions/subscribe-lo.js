@@ -20,7 +20,7 @@ const crypto = require("crypto");
 
 // n8n webhook — LO Waitlist Intake workflow
 const N8N_LO_WAITLIST_URL = "https://styer.app.n8n.cloud/webhook/loanos-waitlist";
-const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam.styer@hypersmart.loan";
+const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam@thestyerteam.com";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
@@ -71,8 +71,12 @@ exports.handler = async (event) => {
   const n8nOk       = results[0].status === "fulfilled";
   const mailchimpOk = results.length > 1 ? results[1].status === "fulfilled" : null;
 
-  return respond(200, {
-    success:   true,
+  // The owner alert is required. A non-2xx response prevents the browser from
+  // treating this primary path as successful; the form also runs an
+  // independent registered Netlify owner-email capture.
+  return respond(n8nOk ? 200 : 502, {
+    success:   n8nOk,
+    ownerNotified: n8nOk,
     n8n:       n8nOk ? "ok" : "failed",
     mailchimp: mailchimpOk === null ? "skipped" : (mailchimpOk ? "ok" : "failed"),
   });

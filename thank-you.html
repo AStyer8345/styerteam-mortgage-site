@@ -765,7 +765,8 @@
               method: 'POST',
               headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
               body: body.toString(),
-            }).then(function () {
+            }).then(function (res) {
+              if (!res.ok) throw new Error('Netlify form returned ' + res.status);
               fuForm.hidden = true;
               if (fuSuccess) fuSuccess.hidden = false;
               window.dataLayer = window.dataLayer || [];

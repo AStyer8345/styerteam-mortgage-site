@@ -804,13 +804,14 @@
         // Submit to Netlify (stores submission + emails Adam) AND call our
         // lead-intake function (Mailchimp + Loanos) — both in parallel.
         var submitButton = form.querySelector('button[type="submit"]');
+        var submitLabel = submitButton ? submitButton.textContent : '';
         if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Sending...'; }
-        Promise.all([
+        Promise.allSettled([
           fetch('/', {
             method:  'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body:    new URLSearchParams(data).toString(),
-          }).catch(function (err) { console.error('Netlify form error:', err); }),
+          }),
 
           fetch('/.netlify/functions/lead-intake', {
             method:  'POST',
@@ -850,7 +851,12 @@
             return response.json();
           }),
         ]).then(function (results) {
-          var qualification = results[1] && results[1].qualification ? results[1].qualification : { tier: 'review', score: 0 };
+          var netlifyAccepted = results[0].status === 'fulfilled' && results[0].value.ok;
+          var leadAccepted = results[1].status === 'fulfilled' && results[1].value && results[1].value.success;
+          if (!netlifyAccepted && !leadAccepted) throw new Error('No lead capture endpoint accepted the request');
+          var qualification = leadAccepted && results[1].value.qualification
+            ? results[1].value.qualification
+            : { tier: 'review', score: 0 };
           sessionStorage.setItem('styer:qualification', JSON.stringify(qualification));
           window.dataLayer.push({
             event: 'lead_qualified',
@@ -863,9 +869,9 @@
           });
           window.location.href = '/thank-you?type=qualification';
         }).catch(function (err) {
-          console.error('lead-intake error:', err);
-          sessionStorage.setItem('styer:qualification', JSON.stringify({ tier: 'review', score: 0 }));
-          window.location.href = '/thank-you?type=qualification';
+          console.error('lead capture error:', err);
+          if (submitButton) { submitButton.disabled = false; submitButton.textContent = submitLabel; }
+          showQuickContactError(form);
         });
       });
     })();

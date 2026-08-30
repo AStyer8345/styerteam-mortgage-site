@@ -572,7 +572,7 @@
       var errorMsg = document.getElementById('dpa-error-msg');
       if (!form) return;
 
-      form.addEventListener('submit', function (e) {
+      form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         // Disable button to prevent double-submit
@@ -595,7 +595,7 @@
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'generate_lead', lead_type: 'ftb_dpa_guide' });
 
-        fetch('/.netlify/functions/lead-intake', {
+        var primaryNotification = fetch('/.netlify/functions/lead-intake', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -611,15 +611,37 @@
             utm_content:  utmContent,
             page_url:     pageUrl,
           }),
-        })
-        .then(function () {
-          window.location.href = '/thank-you.html?type=ftb-dpa-guide';
-        })
-        .catch(function (err) {
-          console.error('[ftb-dpa-guide] lead-intake error:', err);
-          // Redirect anyway — lead capture failure shouldn't block the user
-          window.location.href = '/thank-you.html?type=ftb-dpa-guide';
+        }).then(function (res) {
+          if (!res.ok) throw new Error('lead-intake returned ' + res.status);
+          return res.json();
+        }).then(function (data) {
+          if (!data.success) throw new Error(data.error || 'Lead intake did not confirm success');
+          return data;
         });
+
+        var ownerEmailNotification = Promise.resolve().then(function () {
+          return window.StyerCaptureNotificationBackup({
+            sourceForm: 'ftb-dpa-guide-form',
+            name: fname,
+            email: email,
+            phone: phone,
+            subject: 'New down-payment guide request',
+            details: { lead_source: leadSource, tag: tag },
+            sourcePage: pageUrl
+          });
+        });
+
+        var results = await Promise.allSettled([primaryNotification, ownerEmailNotification]);
+        if (results[0].status === 'fulfilled' || results[1].status === 'fulfilled') {
+          window.location.href = '/thank-you.html?type=ftb-dpa-guide';
+          return;
+        }
+
+        console.error('[ftb-dpa-guide notifications]', results[0].reason, results[1].reason);
+        errorMsg.textContent = 'Your request did not send. Please try again or call (512) 956-6010.';
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Me the Free Guide →';
       });
     })();
   </script>
