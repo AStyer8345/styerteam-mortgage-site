@@ -145,6 +145,7 @@ body {
   margin-bottom: 3px;
 }
 .field input[type="number"],
+.field input[type="text"],
 .field input[type="date"],
 .field input[type="text"] {
   width: 100%;
@@ -433,7 +434,7 @@ body {
       <div class="row2">
         <div class="field">
           <label for="loan-amount">Loan Amount ($)</label>
-          <input type="number" id="loan-amount" placeholder="250000" min="0" step="1000">
+          <input type="text" inputmode="decimal" id="loan-amount" placeholder="250000" min="0" step="1000">
           <div class="hint">Optional; used for per-diem &amp; points calc</div>
         </div>
         <div class="field">
@@ -448,7 +449,7 @@ body {
         </div>
         <div class="field">
           <label for="manual-perdiem">Manual Per-Diem Override ($)</label>
-          <input type="number" id="manual-perdiem" placeholder="0.00" min="0" step="0.01">
+          <input type="text" inputmode="decimal" id="manual-perdiem" placeholder="0.00" min="0" step="0.01">
           <div class="hint">If entered, overrides rate calc</div>
         </div>
         <div class="field">
@@ -477,17 +478,17 @@ body {
       <div class="row2">
         <div class="field">
           <label for="annual-taxes">Annual Property Taxes ($)</label>
-          <input type="number" id="annual-taxes" placeholder="4800" min="0" step="100">
+          <input type="text" inputmode="decimal" id="annual-taxes" placeholder="4800" min="0" step="100">
           <p class="calc-rule-note calc-tax-hint"><strong>Rule of thumb:</strong> ~2% of home value ÷ 12.</p>
         </div>
         <div class="field">
           <label for="annual-hazard">Annual Hazard Insurance ($)</label>
-          <input type="number" id="annual-hazard" placeholder="1800" min="0" step="100">
+          <input type="text" inputmode="decimal" id="annual-hazard" placeholder="1800" min="0" step="100">
         </div>
       </div>
       <div class="field">
         <label for="monthly-hoa">Monthly HOA ($)</label>
-        <input type="number" id="monthly-hoa" placeholder="0" min="0" step="10">
+        <input type="text" inputmode="decimal" id="monthly-hoa" placeholder="0" min="0" step="10">
         <div class="hint">Optional; not escrowed unless checked below</div>
       </div>
       <!-- Escrow-specific checkboxes -->
@@ -515,11 +516,11 @@ body {
   <div class="card">
     <div class="card-header">Lender Fees</div>
     <div class="card-body">
-      <div class="fee-row"><label for="fee-origination-fee">Origination Fee</label><input id="fee-origination-fee" type="number" class="lender-fee" data-name="Origination Fee" value="0" min="0" step="50"></div>
-      <div class="fee-row"><label for="fee-underwriting-fee">Underwriting Fee</label><input id="fee-underwriting-fee" type="number" class="lender-fee" data-name="Underwriting Fee" value="1295" min="0" step="50"></div>
-      <div class="fee-row"><label for="fee-processing-fee">Processing Fee</label><input id="fee-processing-fee" type="number" class="lender-fee" data-name="Processing Fee" value="995" min="0" step="50"></div>
-      <div class="fee-row"><label for="fee-application-fee">Application Fee</label><input id="fee-application-fee" type="number" class="lender-fee" data-name="Application Fee" value="0" min="0" step="50"></div>
-      <div class="fee-row"><label for="fee-admin-fee">Admin Fee</label><input id="fee-admin-fee" type="number" class="lender-fee" data-name="Admin Fee" value="0" min="0" step="50"></div>
+      <div class="fee-row"><label for="fee-origination-fee">Origination Fee</label><input id="fee-origination-fee" type="text" inputmode="decimal" class="lender-fee" data-name="Origination Fee" value="0" min="0" step="50"></div>
+      <div class="fee-row"><label for="fee-underwriting-fee">Underwriting Fee</label><input id="fee-underwriting-fee" type="text" inputmode="decimal" class="lender-fee" data-name="Underwriting Fee" value="1295" min="0" step="50"></div>
+      <div class="fee-row"><label for="fee-processing-fee">Processing Fee</label><input id="fee-processing-fee" type="text" inputmode="decimal" class="lender-fee" data-name="Processing Fee" value="995" min="0" step="50"></div>
+      <div class="fee-row"><label for="fee-application-fee">Application Fee</label><input id="fee-application-fee" type="text" inputmode="decimal" class="lender-fee" data-name="Application Fee" value="0" min="0" step="50"></div>
+      <div class="fee-row"><label for="fee-admin-fee">Admin Fee</label><input id="fee-admin-fee" type="text" inputmode="decimal" class="lender-fee" data-name="Admin Fee" value="0" min="0" step="50"></div>
       <hr style="border:none;border-top:1px solid #f1f5f9;margin:6px 0;">
       <div class="row2" style="margin-top:8px;">
         <div class="field">
@@ -528,7 +529,7 @@ body {
         </div>
         <div class="field">
           <label for="points-dollar">Discount Points ($)</label>
-          <input type="number" id="points-dollar" placeholder="0" min="0" step="100">
+          <input type="text" inputmode="decimal" id="points-dollar" placeholder="0" min="0" step="100">
           <div class="hint">Auto-computed from % if loan amount entered</div>
         </div>
       </div>
@@ -539,15 +540,15 @@ body {
   <div class="card">
     <div class="card-header">Third-Party Fees</div>
     <div class="card-body">
-      <div class="fee-row"><label for="fee-appraisal">Appraisal</label><input id="fee-appraisal" type="number" class="tp-fee" data-name="Appraisal" value="795" min="0" step="25"></div>
-      <div class="fee-row"><label for="fee-credit-report">Credit Report</label><input id="fee-credit-report" type="number" class="tp-fee" data-name="Credit Report" value="110" min="0" step="5"></div>
-      <div class="fee-row"><label for="fee-doc-preparation-fee">Doc Preparation Fee</label><input id="fee-doc-preparation-fee" type="number" class="tp-fee" data-name="Doc Preparation Fee" value="495" min="0" step="25"></div>
-      <div class="fee-row"><label for="fee-flood-certification">Flood Certification</label><input id="fee-flood-certification" type="number" class="tp-fee" data-name="Flood Certification" value="15" min="0" step="1"></div>
-      <div class="fee-row"><label for="fee-tx-attorney-fee">TX Attorney Fee</label><input id="fee-tx-attorney-fee" type="number" class="tp-fee" data-name="TX Attorney Fee" value="125" min="0" step="25"></div>
-      <div class="fee-row"><label for="fee-settlement-agent-fee">Settlement Agent Fee</label><input id="fee-settlement-agent-fee" type="number" class="tp-fee" data-name="Settlement Agent Fee" value="550" min="0" step="25"></div>
-      <div class="fee-row"><label for="fee-title-search">Title Search</label><input id="fee-title-search" type="number" class="tp-fee" data-name="Title Search" value="125" min="0" step="25"></div>
-      <div class="fee-row"><label for="fee-title-endorsements">Title Endorsements</label><input id="fee-title-endorsements" type="number" class="tp-fee" data-name="Title Endorsements" value="12" min="0" step="1"></div>
-      <div class="fee-row"><label for="fee-recording-fee">Recording Fee</label><input id="fee-recording-fee" type="number" class="tp-fee" data-name="Recording Fee" value="200" min="0" step="10"></div>
+      <div class="fee-row"><label for="fee-appraisal">Appraisal</label><input id="fee-appraisal" type="text" inputmode="decimal" class="tp-fee" data-name="Appraisal" value="795" min="0" step="25"></div>
+      <div class="fee-row"><label for="fee-credit-report">Credit Report</label><input id="fee-credit-report" type="text" inputmode="decimal" class="tp-fee" data-name="Credit Report" value="110" min="0" step="5"></div>
+      <div class="fee-row"><label for="fee-doc-preparation-fee">Doc Preparation Fee</label><input id="fee-doc-preparation-fee" type="text" inputmode="decimal" class="tp-fee" data-name="Doc Preparation Fee" value="495" min="0" step="25"></div>
+      <div class="fee-row"><label for="fee-flood-certification">Flood Certification</label><input id="fee-flood-certification" type="text" inputmode="decimal" class="tp-fee" data-name="Flood Certification" value="15" min="0" step="1"></div>
+      <div class="fee-row"><label for="fee-tx-attorney-fee">TX Attorney Fee</label><input id="fee-tx-attorney-fee" type="text" inputmode="decimal" class="tp-fee" data-name="TX Attorney Fee" value="125" min="0" step="25"></div>
+      <div class="fee-row"><label for="fee-settlement-agent-fee">Settlement Agent Fee</label><input id="fee-settlement-agent-fee" type="text" inputmode="decimal" class="tp-fee" data-name="Settlement Agent Fee" value="550" min="0" step="25"></div>
+      <div class="fee-row"><label for="fee-title-search">Title Search</label><input id="fee-title-search" type="text" inputmode="decimal" class="tp-fee" data-name="Title Search" value="125" min="0" step="25"></div>
+      <div class="fee-row"><label for="fee-title-endorsements">Title Endorsements</label><input id="fee-title-endorsements" type="text" inputmode="decimal" class="tp-fee" data-name="Title Endorsements" value="12" min="0" step="1"></div>
+      <div class="fee-row"><label for="fee-recording-fee">Recording Fee</label><input id="fee-recording-fee" type="text" inputmode="decimal" class="tp-fee" data-name="Recording Fee" value="200" min="0" step="10"></div>
     </div>
   </div>
 
@@ -557,7 +558,7 @@ body {
     <div class="card-body">
       <div class="field">
         <label for="lenders-title">Lender's Title Policy ($)</label>
-        <input type="number" id="lenders-title" value="2119" min="0" step="50">
+        <input type="text" inputmode="decimal" id="lenders-title" value="2119" min="0" step="50">
         <div class="hint">Enter manually; rate-table lookup can be plugged in later</div>
       </div>
     </div>
@@ -570,12 +571,12 @@ body {
       <div class="row2">
         <div class="field">
           <label for="lender-credit">Lender Credit ($)</label>
-          <input type="number" id="lender-credit" placeholder="0" min="0" step="100">
+          <input type="text" inputmode="decimal" id="lender-credit" placeholder="0" min="0" step="100">
           <div class="hint">Enter as positive; applied as reduction</div>
         </div>
         <div class="field">
           <label for="seller-credit">Seller / Other Credits ($)</label>
-          <input type="number" id="seller-credit" placeholder="0" min="0" step="100">
+          <input type="text" inputmode="decimal" id="seller-credit" placeholder="0" min="0" step="100">
         </div>
       </div>
     </div>
@@ -657,7 +658,7 @@ function fmt(n) {
 
 /** Parse a numeric value from an input element by ID; returns 0 if empty/NaN */
 function num(id) {
-  const v = parseFloat(document.getElementById(id).value);
+  const v = parseFloat(String(document.getElementById(id).value).replace(/[$,]/g, ''));
   return isNaN(v) ? 0 : v;
 }
 
@@ -826,7 +827,7 @@ function calcHoaEscrow(monthlyHoa, escrowHoa) {
 function sumClass(cls) {
   let total = 0;
   document.querySelectorAll('.' + cls).forEach(function(el) {
-    const v = parseFloat(el.value);
+    const v = parseFloat(String(el.value).replace(/[$,]/g, ''));
     if (!isNaN(v)) total += v;
   });
   return total;
@@ -836,7 +837,7 @@ function sumClass(cls) {
 function collectFeeItems(cls) {
   const items = [];
   document.querySelectorAll('.' + cls).forEach(function(el) {
-    const v = parseFloat(el.value) || 0;
+    const v = parseFloat(String(el.value).replace(/[$,]/g, '')) || 0;
     items.push({ name: el.getAttribute('data-name'), amount: v });
   });
   return items;
@@ -878,6 +879,7 @@ function calculateAll() {
     if (!document.getElementById('points-dollar').dataset.manual) {
       pointsDollar = computed;
       document.getElementById('points-dollar').value = computed.toFixed(2);
+      if (window.styerMoney) window.styerMoney.fmtEl('points-dollar');
     }
   }
 
@@ -1158,6 +1160,7 @@ function handlePointsPctChange() {
   const dollarInput = document.getElementById('points-dollar');
   if (pct > 0 && loanAmt > 0) {
     dollarInput.value = (loanAmt * (pct / 100)).toFixed(2);
+    if (window.styerMoney) window.styerMoney.fmtEl(dollarInput);
     delete dollarInput.dataset.manual;
   }
 }
@@ -1185,7 +1188,7 @@ function resetAll() {
   document.getElementById('collect-prepaid-anyway').checked = false;
   document.getElementById('points-pct').value = '';
   document.getElementById('points-dollar').value = '';
-  document.getElementById('lenders-title').value = '2119';
+  document.getElementById('lenders-title').value = '2,119';
   document.getElementById('lender-credit').value = '';
   document.getElementById('seller-credit').value = '';
 
@@ -1253,5 +1256,38 @@ document.getElementById('btn-copy').addEventListener('click', copyBreakdown);
 })();
 </script>
 
+<script>
+/* Comma formatting for currency inputs (values are parsed comma-tolerantly) */
+window.styerMoney = (function () {
+  function fmtEl(el) {
+    if (!el) return;
+    var s = el.value;
+    var c = String(s).replace(/[^0-9.]/g, '');
+    if (c === '') { if (s !== '') el.value = ''; return; }
+    var dot = c.indexOf('.');
+    var intp = dot === -1 ? c : c.slice(0, dot);
+    var frac = dot === -1 ? '' : '.' + c.slice(dot + 1).replace(/\./g, '').slice(0, 2);
+    var out = (intp ? Number(intp).toLocaleString('en-US') : '0') + frac;
+    if (out === s) return;
+    var fromEnd = s.length - (el.selectionStart == null ? s.length : el.selectionStart);
+    el.value = out;
+    if (el === document.activeElement) {
+      var pos = Math.max(0, out.length - fromEnd);
+      try { el.setSelectionRange(pos, pos); } catch (e) {}
+    }
+  }
+  function attach(ids) {
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', function () { fmtEl(el); });
+      el.addEventListener('blur', function () { fmtEl(el); });
+      fmtEl(el);
+    });
+  }
+  return { attach: attach, fmtEl: function (x) { fmtEl(typeof x === 'string' ? document.getElementById(x) : x); } };
+})();
+window.styerMoney.attach(["loan-amount", "manual-perdiem", "annual-taxes", "annual-hazard", "monthly-hoa", "fee-origination-fee", "fee-underwriting-fee", "fee-processing-fee", "fee-application-fee", "fee-admin-fee", "points-dollar", "fee-appraisal", "fee-credit-report", "fee-doc-preparation-fee", "fee-flood-certification", "fee-tx-attorney-fee", "fee-settlement-agent-fee", "fee-title-search", "fee-title-endorsements", "fee-recording-fee", "lenders-title", "lender-credit", "seller-credit"]);
+</script>
 </body>
 </html>

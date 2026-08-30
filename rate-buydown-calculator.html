@@ -122,11 +122,11 @@
         /* ── Form fields ── */
         .bd-field { margin-bottom: 0.65rem; }
         .bd-field label { display: block; font-size: .8rem; font-weight: 600; color: #475569; margin-bottom: .3rem; }
-        .bd-field input[type=number], .bd-field select { width: 100%; padding: .5rem .75rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .95rem; color: var(--color-navy); background: #fff; }
-        .bd-field input[type=number]:focus, .bd-field select:focus { outline: 2px solid var(--color-gold); border-color: var(--color-gold); }
+        .bd-field input[type=number], .bd-field input[type=text], .bd-field select { width: 100%; padding: .5rem .75rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .95rem; color: var(--color-navy); background: #fff; }
+        .bd-field input[type=number]:focus, .bd-field input[type=text]:focus, .bd-field select:focus { outline: 2px solid var(--color-gold); border-color: var(--color-gold); }
         .bd-slider-row { display: flex; align-items: center; gap: .5rem; margin-bottom: .35rem; }
         .bd-slider-row input[type=range] { flex: 1; accent-color: var(--color-gold); }
-        .bd-slider-row input[type=number] { width: 100px; flex-shrink: 0; padding: .4rem .6rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .9rem; }
+        .bd-slider-row input[type=number], .bd-slider-row input[type=text] { width: 100px; flex-shrink: 0; padding: .4rem .6rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .9rem; }
         .freq-toggle { display: flex; gap: .25rem; margin-top: .3rem; }
         .freq-toggle input[type=radio] { position: absolute; opacity: 0; width: 0; height: 0; }
         .freq-toggle label { padding: .25rem .65rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: .78rem; font-weight: 600; cursor: pointer; color: #64748b; transition: all .15s; }
@@ -327,7 +327,7 @@
                 <label for="bd-loan-input">Loan Amount</label>
                 <div class="bd-slider-row">
                   <input type="range" id="bd-loan-slider" min="50000" max="2000000" step="5000" value="400000" aria-label="Loan amount slider">
-                  <input type="number" id="bd-loan-input" min="50000" max="2000000" step="5000" value="400000" aria-label="Loan amount">
+                  <input type="text" inputmode="decimal" id="bd-loan-input" min="50000" max="2000000" step="5000" value="400000" aria-label="Loan amount">
                 </div>
               </div>
 
@@ -367,7 +367,7 @@
               <!-- Property taxes -->
               <div class="bd-field">
                 <label for="bd-tax-input">Property Taxes</label>
-                <input type="number" id="bd-tax-input" min="0" step="1" value="0" placeholder="0" aria-label="Property taxes">
+                <input type="text" inputmode="decimal" id="bd-tax-input" min="0" step="1" value="0" placeholder="0" aria-label="Property taxes">
                 <div class="freq-toggle" role="radiogroup" aria-label="Tax frequency">
                   <input type="radio" name="bd-tax-freq" id="bd-tax-mo" value="mo" checked><label for="bd-tax-mo">Mo</label>
                   <input type="radio" name="bd-tax-freq" id="bd-tax-yr" value="yr"><label for="bd-tax-yr">Annual</label>
@@ -377,7 +377,7 @@
               <!-- Homeowners insurance -->
               <div class="bd-field">
                 <label for="bd-ins-input">Homeowners Insurance</label>
-                <input type="number" id="bd-ins-input" min="0" step="1" value="0" placeholder="0" aria-label="Homeowners insurance">
+                <input type="text" inputmode="decimal" id="bd-ins-input" min="0" step="1" value="0" placeholder="0" aria-label="Homeowners insurance">
                 <div class="freq-toggle" role="radiogroup" aria-label="Insurance frequency">
                   <input type="radio" name="bd-ins-freq" id="bd-ins-mo" value="mo" checked><label for="bd-ins-mo">Mo</label>
                   <input type="radio" name="bd-ins-freq" id="bd-ins-yr" value="yr"><label for="bd-ins-yr">Annual</label>
@@ -387,7 +387,7 @@
               <!-- HOA -->
               <div class="bd-field">
                 <label for="bd-hoa">HOA (Monthly)</label>
-                <input type="number" id="bd-hoa" min="0" step="1" value="0" placeholder="0" aria-label="HOA monthly fee">
+                <input type="text" inputmode="decimal" id="bd-hoa" min="0" step="1" value="0" placeholder="0" aria-label="HOA monthly fee">
               </div>
 
               <hr class="bd-divider">
@@ -395,7 +395,7 @@
               <!-- Seller credit -->
               <div class="bd-field">
                 <label for="bd-seller-credit">Seller Credit ($)</label>
-                <input type="number" id="bd-seller-credit" min="0" step="100" value="0" placeholder="0" aria-label="Seller credit amount">
+                <input type="text" inputmode="decimal" id="bd-seller-credit" min="0" step="100" value="0" placeholder="0" aria-label="Seller credit amount">
               </div>
 
               <!-- Share / Print row -->
@@ -846,7 +846,7 @@
         var shortfall = document.getElementById('bd-alert-shortfall');
         surplus.style.display   = 'none';
         shortfall.style.display = 'none';
-        var credit = parseFloat(document.getElementById('bd-seller-credit').value) || 0;
+        var credit = parseFloat(String(document.getElementById('bd-seller-credit').value).replace(/[$,]/g, '')) || 0;
         if (credit <= 0) return;
         if (s.creditLeft >= 0) {
           surplus.style.display = 'block';
@@ -994,7 +994,7 @@
       /* Render print summary */
       function renderPrintSummary(s, rows, bdLabel) {
         var div = document.getElementById('bd-print-body');
-        var loan = parseFloat(document.getElementById('bd-loan-input').value) || 0;
+        var loan = parseFloat(String(document.getElementById('bd-loan-input').value).replace(/[$,]/g, '')) || 0;
         document.getElementById('bd-print-date').textContent = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
         div.innerHTML = '<p><strong>Buydown Type:</strong> ' + bdLabel + '</p>'
           + '<p><strong>Loan Amount:</strong> ' + fmtDollar(loan) + '</p>'
@@ -1030,19 +1030,19 @@
           : parseInt(termSel);
         var taxFreq = document.querySelector('input[name="bd-tax-freq"]:checked').value;
         var insFreq = document.querySelector('input[name="bd-ins-freq"]:checked').value;
-        var taxRaw  = parseFloat(document.getElementById('bd-tax-input').value)  || 0;
-        var insRaw  = parseFloat(document.getElementById('bd-ins-input').value)  || 0;
+        var taxRaw  = parseFloat(String(document.getElementById('bd-tax-input').value).replace(/[$,]/g, ''))  || 0;
+        var insRaw  = parseFloat(String(document.getElementById('bd-ins-input').value).replace(/[$,]/g, ''))  || 0;
         var taxMo   = taxFreq === 'yr' ? taxRaw / 12 : taxRaw;
         var insMo   = insFreq === 'yr' ? insRaw / 12 : insRaw;
-        var hoaMo   = parseFloat(document.getElementById('bd-hoa').value) || 0;
+        var hoaMo   = parseFloat(String(document.getElementById('bd-hoa').value).replace(/[$,]/g, '')) || 0;
         return {
           bdType:      bdType ? bdType.value : '2-1',
-          loanAmount:  parseFloat(document.getElementById('bd-loan-input').value)  || 400000,
+          loanAmount:  parseFloat(String(document.getElementById('bd-loan-input').value).replace(/[$,]/g, ''))  || 400000,
           noteRate:    parseFloat(document.getElementById('bd-rate-input').value)  || 6.125,
           termYears:   termYears,
           startDate:   document.getElementById('bd-start-date').value || new Date().toISOString().slice(0,7),
           escrowMo:    taxMo + insMo + hoaMo,
-          sellerCredit: parseFloat(document.getElementById('bd-seller-credit').value) || 0
+          sellerCredit: parseFloat(String(document.getElementById('bd-seller-credit').value).replace(/[$,]/g, '')) || 0
         };
       }
 
@@ -1128,7 +1128,7 @@
         var type = p.get('type') || '2-1';
         var radio = document.querySelector('input[name="bd-type"][value="' + type + '"]');
         if (radio) radio.checked = true;
-        var amt  = p.get('amt');   if (amt)  { document.getElementById('bd-loan-slider').value = amt;  document.getElementById('bd-loan-input').value = amt; }
+        var amt  = p.get('amt');   if (amt)  { var amtClean = String(amt).replace(/[$,]/g, ''); document.getElementById('bd-loan-slider').value = amtClean; document.getElementById('bd-loan-input').value = amtClean; }
         var rate = p.get('rate');  if (rate) { document.getElementById('bd-rate-slider').value = rate; document.getElementById('bd-rate-input').value = rate; }
         var term = p.get('term');  if (term) {
           var sel = document.getElementById('bd-term');
@@ -1170,8 +1170,8 @@
         /* Loan amount slider + number sync */
         var loanSlider = document.getElementById('bd-loan-slider');
         var loanInput  = document.getElementById('bd-loan-input');
-        loanSlider.addEventListener('input', function(){ loanInput.value = loanSlider.value; compute(); });
-        loanInput.addEventListener('input',  function(){ loanSlider.value = loanInput.value; compute(); });
+        loanSlider.addEventListener('input', function(){ loanInput.value = Number(loanSlider.value).toLocaleString('en-US'); compute(); });
+        loanInput.addEventListener('input',  function(){ loanSlider.value = String(loanInput.value).replace(/[$,]/g, ''); compute(); });
 
         /* Rate slider + number sync */
         var rateSlider = document.getElementById('bd-rate-slider');
@@ -1250,5 +1250,38 @@
       });
 
     </script>
-  </body>
+  <script>
+/* Comma formatting for currency inputs (values are parsed comma-tolerantly) */
+window.styerMoney = (function () {
+  function fmtEl(el) {
+    if (!el) return;
+    var s = el.value;
+    var c = String(s).replace(/[^0-9.]/g, '');
+    if (c === '') { if (s !== '') el.value = ''; return; }
+    var dot = c.indexOf('.');
+    var intp = dot === -1 ? c : c.slice(0, dot);
+    var frac = dot === -1 ? '' : '.' + c.slice(dot + 1).replace(/\./g, '').slice(0, 2);
+    var out = (intp ? Number(intp).toLocaleString('en-US') : '0') + frac;
+    if (out === s) return;
+    var fromEnd = s.length - (el.selectionStart == null ? s.length : el.selectionStart);
+    el.value = out;
+    if (el === document.activeElement) {
+      var pos = Math.max(0, out.length - fromEnd);
+      try { el.setSelectionRange(pos, pos); } catch (e) {}
+    }
+  }
+  function attach(ids) {
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', function () { fmtEl(el); });
+      el.addEventListener('blur', function () { fmtEl(el); });
+      fmtEl(el);
+    });
+  }
+  return { attach: attach, fmtEl: function (x) { fmtEl(typeof x === 'string' ? document.getElementById(x) : x); } };
+})();
+window.styerMoney.attach(["bd-loan-input", "bd-tax-input", "bd-ins-input", "bd-hoa", "bd-seller-credit"]);
+</script>
+</body>
 </html>

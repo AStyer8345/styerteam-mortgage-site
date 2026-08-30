@@ -668,7 +668,7 @@
               <label class="dscr-label" for="dscr-price">Purchase price</label>
               <div class="dscr-input-wrap">
                 <span class="dscr-input-prefix">$</span>
-                <input type="number" inputmode="decimal" class="dscr-input has-prefix" id="dscr-price" min="0" step="1000" value="500000" aria-describedby="dscr-price-err">
+                <input type="text" inputmode="decimal" class="dscr-input has-prefix" id="dscr-price" min="0" step="1000" value="500000" aria-describedby="dscr-price-err">
               </div>
               <div class="dscr-error" id="dscr-price-err" aria-live="polite"></div>
             </div>
@@ -682,7 +682,7 @@
                 </div>
               </div>
               <div class="dscr-input-wrap">
-                <input type="number" inputmode="decimal" class="dscr-input has-suffix" id="dscr-down" min="0" step="0.5" value="20" aria-describedby="dscr-down-err">
+                <input type="text" inputmode="decimal" class="dscr-input has-suffix" id="dscr-down" min="0" step="0.5" value="20" aria-describedby="dscr-down-err">
                 <span class="dscr-input-suffix" id="dscr-down-suffix">%</span>
               </div>
               <p class="dscr-helper" id="dscr-down-helper">Loan amount: <strong id="dscr-loan-amount">$400,000</strong></p>
@@ -710,7 +710,7 @@
               <label class="dscr-label" for="dscr-tax">Annual property taxes</label>
               <div class="dscr-input-wrap">
                 <span class="dscr-input-prefix">$</span>
-                <input type="number" inputmode="decimal" class="dscr-input has-prefix" id="dscr-tax" min="0" step="100" value="9000" aria-describedby="dscr-tax-err">
+                <input type="text" inputmode="decimal" class="dscr-input has-prefix" id="dscr-tax" min="0" step="100" value="9000" aria-describedby="dscr-tax-err">
               </div>
               <div class="dscr-error" id="dscr-tax-err" aria-live="polite"></div>
             </div>
@@ -719,7 +719,7 @@
               <label class="dscr-label" for="dscr-ins">Annual insurance</label>
               <div class="dscr-input-wrap">
                 <span class="dscr-input-prefix">$</span>
-                <input type="number" inputmode="decimal" class="dscr-input has-prefix" id="dscr-ins" min="0" step="50" value="2500" aria-describedby="dscr-ins-err">
+                <input type="text" inputmode="decimal" class="dscr-input has-prefix" id="dscr-ins" min="0" step="50" value="2500" aria-describedby="dscr-ins-err">
               </div>
               <div class="dscr-error" id="dscr-ins-err" aria-live="polite"></div>
             </div>
@@ -728,7 +728,7 @@
               <label class="dscr-label" for="dscr-hoa">Monthly HOA</label>
               <div class="dscr-input-wrap">
                 <span class="dscr-input-prefix">$</span>
-                <input type="number" inputmode="decimal" class="dscr-input has-prefix" id="dscr-hoa" min="0" step="10" value="0" aria-describedby="dscr-hoa-err">
+                <input type="text" inputmode="decimal" class="dscr-input has-prefix" id="dscr-hoa" min="0" step="10" value="0" aria-describedby="dscr-hoa-err">
               </div>
               <div class="dscr-error" id="dscr-hoa-err" aria-live="polite"></div>
             </div>
@@ -737,7 +737,7 @@
               <label class="dscr-label" for="dscr-rent">Market rent or lease amount</label>
               <div class="dscr-input-wrap">
                 <span class="dscr-input-prefix">$</span>
-                <input type="number" inputmode="decimal" class="dscr-input has-prefix" id="dscr-rent" min="0" step="50" value="3500" aria-describedby="dscr-rent-err">
+                <input type="text" inputmode="decimal" class="dscr-input has-prefix" id="dscr-rent" min="0" step="50" value="3500" aria-describedby="dscr-rent-err">
               </div>
               <p class="dscr-helper">Gross monthly rent before vacancy or operating expenses.</p>
               <div class="dscr-error" id="dscr-rent-err" aria-live="polite"></div>
@@ -983,7 +983,7 @@
     function $(id) { return root.querySelector("#" + id); }
     function num(el) {
       if (!el) return 0;
-      var v = parseFloat(el.value);
+      var v = parseFloat(String(el.value).replace(/[$,]/g, ""));
       return isFinite(v) ? v : 0;
     }
     var fmtCurrency = new Intl.NumberFormat("en-US", {
@@ -1188,6 +1188,7 @@
       if (mode === "dollar") {
         var dollars = price * (current / 100);
         downEl.value = Math.round(dollars);
+        if (window.styerMoney) window.styerMoney.fmtEl(downEl);
         downEl.step = "1000";
       } else {
         var pct = price > 0 ? (current / price) * 100 : 0;
@@ -1271,5 +1272,38 @@
   <!-- ============================================================
        END DSCR CALCULATOR MODULE — JAVASCRIPT
        ============================================================ -->
+<script>
+/* Comma formatting for currency inputs (values are parsed comma-tolerantly) */
+window.styerMoney = (function () {
+  function fmtEl(el) {
+    if (!el) return;
+    var s = el.value;
+    var c = String(s).replace(/[^0-9.]/g, '');
+    if (c === '') { if (s !== '') el.value = ''; return; }
+    var dot = c.indexOf('.');
+    var intp = dot === -1 ? c : c.slice(0, dot);
+    var frac = dot === -1 ? '' : '.' + c.slice(dot + 1).replace(/\./g, '').slice(0, 2);
+    var out = (intp ? Number(intp).toLocaleString('en-US') : '0') + frac;
+    if (out === s) return;
+    var fromEnd = s.length - (el.selectionStart == null ? s.length : el.selectionStart);
+    el.value = out;
+    if (el === document.activeElement) {
+      var pos = Math.max(0, out.length - fromEnd);
+      try { el.setSelectionRange(pos, pos); } catch (e) {}
+    }
+  }
+  function attach(ids) {
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', function () { fmtEl(el); });
+      el.addEventListener('blur', function () { fmtEl(el); });
+      fmtEl(el);
+    });
+  }
+  return { attach: attach, fmtEl: function (x) { fmtEl(typeof x === 'string' ? document.getElementById(x) : x); } };
+})();
+window.styerMoney.attach(["dscr-price", "dscr-down", "dscr-tax", "dscr-ins", "dscr-hoa", "dscr-rent"]);
+</script>
 </body>
 </html>
