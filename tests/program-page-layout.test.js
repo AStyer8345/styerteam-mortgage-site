@@ -39,11 +39,15 @@ test('program layout uses accessible progressive disclosure', () => {
   assert.match(script, /program-section-details/);
 });
 
-test('every warm loan hero uses a visible navy secondary action', () => {
+test('every warm editorial hero uses a visible navy secondary action', () => {
   const stylesheet = fs.readFileSync('style.css', 'utf8');
 
-  assert.match(stylesheet, /\.editorial-page\.loan-page:not\(\.bsl-page\) \.hero \.btn-hero-ghost\{color:#0d2342/);
+  assert.match(stylesheet, /\.editorial-page\.loan-page:not\(\.bsl-page\) \.hero \.btn-hero-ghost,/);
+  assert.match(stylesheet, /\.editorial-page\.location-page \.hero \.btn-hero-ghost,/);
+  assert.match(stylesheet, /\.editorial-page\.trust-page \.hero \.btn-hero-ghost,/);
+  assert.match(stylesheet, /\.editorial-page\.guide-page \.hero \.btn-hero-ghost\{color:#0d2342/);
   assert.match(stylesheet, /\.editorial-page\.loan-page:not\(\.bsl-page\) \.hero \.btn-hero-ghost:hover/);
+  assert.match(stylesheet, /\.editorial-page\.guide-page \.hero \.btn-hero-ghost:focus-visible\{color:#fff/);
 });
 
 test('modern loan heroes keep scenario review primary and scheduling secondary', () => {
