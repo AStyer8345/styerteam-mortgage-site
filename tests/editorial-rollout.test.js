@@ -25,7 +25,7 @@ test('editorial public pages load the current rollout stylesheet', () => {
     const html = fs.readFileSync(file, 'utf8');
     assert.match(
       html,
-      /(?:style\.css\?v=20260829-audit1|editorial-system\.css\?v=20260829-audit1)/,
+      /(?:style\.css\?v=(?:20260829-audit1|20260830-cases1)|editorial-system\.css\?v=20260829-audit1)/,
       `${file} must load a cache-busted rollout stylesheet`
     );
   }
@@ -82,4 +82,15 @@ test('wide guide tables use accessible horizontal scroll regions', () => {
 
   assert.equal(regions.length, 3);
   assert.match(stylesheet, /\.editorial-table-scroll\{max-width:100%;overflow-x:auto/);
+});
+
+test('homepage case studies align and expose the long third story on demand', () => {
+  const homepage = fs.readFileSync('index.html', 'utf8');
+
+  assert.equal((homepage.match(/class="card home-case-card/g) || []).length, 3);
+  assert.match(homepage, /id="move-up-case-rest" class="home-case-rest" hidden/);
+  assert.match(homepage, /class="home-case-continue" aria-expanded="false" aria-controls="move-up-case-rest">Continue/);
+  assert.match(homepage, /button\.setAttribute\('aria-expanded', String\(!expanded\)\)/);
+  assert.match(stylesheet, /\.home-case-card\{display:flex;flex-direction:column;width:100%\}/);
+  assert.match(homepage, /classList\.toggle\('is-expanded', !expanded\)/);
 });

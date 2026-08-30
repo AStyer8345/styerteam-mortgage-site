@@ -83,8 +83,8 @@
     @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{padding:2.75rem 0}.hero h1{font-size:clamp(2.25rem,10vw,3.15rem);line-height:1.02}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:flex-start;text-align:left}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:flex-start;flex-direction:column;width:100%}.hero-cta-btn{width:100%;max-width:none}.hero-glass-card{max-width:100%;padding:0;overflow:visible;background:none}.hero-rating-chip{white-space:normal;text-align:left;justify-content:flex-start}.hero-eyebrow{text-align:left;font-size:.68rem}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
   </style>
   <!-- Full stylesheet — loads async, applies after critical CSS is already painted -->
-  <link rel="preload" href="style.css?v=20260829-audit1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="style.css?v=20260829-audit1"></noscript>
+  <link rel="preload" href="style.css?v=20260830-cases1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260830-cases1"></noscript>
   <link rel="stylesheet" href="/editorial-system.css?v=20260829">
   <style>
     /* Latest pilot-specific homepage refinements remain authoritative. */
@@ -460,8 +460,8 @@
         <h2 class="text-center mb-md">Deals Banks Said No To</h2>
         <p class="text-center mb-3xl" style="max-width:680px;margin-left:auto;margin-right:auto;color:var(--color-gray);">Composite scenarios reflecting the kind of files I close every month. Names and exact numbers changed to protect client privacy.</p>
 
-        <div class="grid grid-3">
-          <div class="card" data-animate>
+        <div class="grid grid-3 home-case-grid">
+          <div class="card home-case-card" data-animate>
             <div class="card-icon" style="background:rgba(139,110,36,.12);color:#8B6E24;">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
             </div>
@@ -472,7 +472,7 @@
             <p><strong>Outcome:</strong> Closed at a rate within 0.25% of conventional pricing. Seller never knew it was a Non-QM file.</p>
           </div>
 
-          <div class="card" data-animate>
+          <div class="card home-case-card" data-animate>
             <div class="card-icon" style="background:rgba(139,110,36,.12);color:#8B6E24;">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
@@ -483,15 +483,19 @@
             <p><strong>Outcome:</strong> Three properties closed in 60 days. Fourth funded the month after. All STR-eligible.</p>
           </div>
 
-          <div class="card" data-animate>
+          <div class="card home-case-card home-case-card-expandable" data-animate>
             <div class="card-icon" style="background:rgba(139,110,36,.12);color:#8B6E24;">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div style="font-size:.75rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#8B6E24;margin-bottom:.5rem;">Move-Up Buyer Rescue</div>
             <h3>Departing residence fell out of contract — still closed on the new home</h3>
-            <p style="margin-bottom:.75rem;"><strong>The file:</strong> Buyers were under contract on a new purchase. Their current home was simultaneously under contract, which allowed us to exclude that mortgage payment from their DTI. They also needed the sale proceeds for the down payment. A few weeks in, the buyers for their current home terminated. Most lenders would have killed the deal on the spot.</p>
-            <p style="margin-bottom:.75rem;"><strong>What I did:</strong> Secured a guaranteed backup purchase contract on their departing residence — kept the DTI exclusion alive. For the down payment gap, I restructured into a 75-20-5 piggyback: 75% first, 20% second lien, 5% cash at closing. They were planning ~30% down using sale proceeds. They closed with 5%. When the home sells, they pay off the second lien and keep the first.</p>
-            <p><strong>Outcome:</strong> Closed on the new home without waiting for their current home to sell. Clean path to eliminating the second lien the moment the sale funds.</p>
+            <p style="margin-bottom:.75rem;"><strong>The file:</strong> Buyers were under contract on a new purchase while their current home was also under contract. That allowed us to exclude the departing mortgage payment from their DTI, and they planned to use the sale proceeds for their down payment.</p>
+            <div id="move-up-case-rest" class="home-case-rest" hidden>
+              <p style="margin-bottom:.75rem;">A few weeks in, the buyers for their current home terminated. Most lenders would have killed the deal on the spot.</p>
+              <p style="margin-bottom:.75rem;"><strong>What I did:</strong> Secured a guaranteed backup purchase contract on their departing residence — kept the DTI exclusion alive. For the down payment gap, I restructured into a 75-20-5 piggyback: 75% first, 20% second lien, 5% cash at closing. They were planning ~30% down using sale proceeds. They closed with 5%. When the home sells, they pay off the second lien and keep the first.</p>
+              <p><strong>Outcome:</strong> Closed on the new home without waiting for their current home to sell. Clean path to eliminating the second lien the moment the sale funds.</p>
+            </div>
+            <button type="button" class="home-case-continue" aria-expanded="false" aria-controls="move-up-case-rest">Continue</button>
           </div>
         </div>
         <p class="text-center mt-xl"><a href="/get-preapproved.html?intent=scenario" class="btn btn-primary">Send Your Scenario</a></p>
@@ -1102,6 +1106,20 @@
       // Also reveal after 2s even without scroll — keeps CTA persistently available
       setTimeout(reveal, 2000);
     });
+  </script>
+  <script>
+    (function () {
+      var button = document.querySelector('.home-case-continue');
+      var rest = document.getElementById('move-up-case-rest');
+      if (!button || !rest) return;
+      button.addEventListener('click', function () {
+        var expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        rest.hidden = expanded;
+        button.closest('.home-case-card').classList.toggle('is-expanded', !expanded);
+        button.textContent = expanded ? 'Continue' : 'Show less';
+      });
+    })();
   </script>
   <script>
     /* Recently Updated strip — feed is auto-generated from git history at deploy.
