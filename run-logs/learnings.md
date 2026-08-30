@@ -1830,3 +1830,200 @@ if out.replace(newdesc, old, 1) != src:  # collateral change — skip the file
 
 Combined with `git diff -U0` asserting that **every** changed line matches `<meta name="description"`,
 this turns "I think I only touched the tag" into a mechanical check. 9 files, +9/−9, 18/18 meta lines.
+
+---
+
+## 2026-08-29 — Wednesday rotation (Buda) — the overlay's real cost, and three self-inflicted false findings
+
+### An uncommitted overlay causes real DATA LOSS, not just blocked cosmetics
+
+For six weeks the stale-checkout blocker was framed as "blocking six one-line fixes" — an
+inconvenience. Today's actual finding reframes it: `buy-before-you-sell-austin.html` was the **one
+page** the 08-25 seven-page GTM restore (`83c01ee`) could not reach, because the overlay had it
+locked. It then ran **live, indexed, and in the sitemap with zero analytics** for four more days,
+while still initializing `dataLayer`, loading `analytics.js`, and carrying a tracked CTA.
+
+> **Rule:** when an overlay, lock, or dirty tree forces you to skip files in a batch fix, **record the
+> skipped list explicitly** so the next sweep re-targets them. A batch fix reported as "7 pages fixed"
+> silently became "7 fixed, 1 bleeding" because the skip was never written down as a work item.
+
+Corollary: **partial-coverage sweeps must report their denominator.** "Restored GTM on 7 pages" is not
+the same claim as "GTM coverage is now 100%", and only the second one is verifiable.
+
+### "Outlier absence is the defect" holds only WITHIN a single page type
+
+The cohort sweep found `austin-area-mortgage-lender.html` was the only 1 of 25 `*-mortgage-lender.html`
+pages without FAQPage schema. By the cached rule (uniform absence = design, outlier absence = defect)
+that is a defect. **It is not.** The page is the cohort's **directory hub** — H1 "Austin Area Mortgage
+Lender — 24 Cities Served", 24 city `<h3>` cards under county `<h2>`s, `ItemList` + `BreadcrumbList`
+schema, and **zero FAQ content** (0 matches for `faq|frequently asked`).
+
+> **Refinement:** the filename pattern made it look like a peer of the 24 city pages. It is their
+> *index*. Before acting on an outlier absence, ask **what the page is**, not what it is named.
+> `austin-area` is n=1 in the filename pattern **and** n=1 in page type — that second n=1 is the real
+> one.
+
+And the harder rule underneath it: **never add schema for content the page does not contain.**
+FAQPage without visible Q&A is fabricated markup and a structured-data violation risk. The "fix"
+here would have been worse than the finding.
+
+### A uniform 0 across ALL targets is your tooling, not the site
+
+`grep -o "href=\"[^\"]*$l[^\"]*\""` inside a double-quoted zsh string emitted
+`(eval):10: bad math expression: operand expected at '^\"'` and returned **0 for every one of five
+targets**. Re-run through Python: 139 hrefs, `/calculators` ×2, `/scenario` ×4, `/contact` ×1. Had I
+trusted it, I'd have reported the cohort's best-linked page as having no internal links at all.
+
+> **Rule:** a per-target loop that returns the *same* number for every target — especially 0 — is a
+> broken extractor until proven otherwise. Real sites are lumpy; uniformity is a signature of
+> tooling failure. Use Python for anything with nested quotes, and read the stderr you are
+> discarding: the `bad math expression` line was printed and was the whole answer.
+
+This is the third distinct quoting/pathing false-positive class in three runs (08-20 JSON-LD flat
+greps, 08-21 the either-quote regex and the `/tmp` cwd glob, 08-29 this). **The shell is the common
+factor.** Default to Python for extraction; reserve grep for existence checks with fixed strings.
+
+### Reusing a documented rule beats re-deriving it
+
+My sitemap sweep reported 5 missing URLs. Two — `resources/index.html` and
+`resources/first-time-buyer-guide/index.html` — are **present**, as `/resources/` and
+`/resources/first-time-buyer-guide/`. My normalizer stripped `.html` but never mapped
+`foo/index.html` → `foo/`.
+
+This exact false positive is **already written in this file** ("Coverage sweeps must normalize URL
+form before reporting a gap"). I reproduced it because I wrote a fresh comparison instead of porting
+the documented one.
+
+> **Rule:** when `learnings.md` documents a false-positive class, **port the fix, don't rewrite the
+> check.** A learnings entry that only describes the bug — rather than carrying the corrected
+> snippet — will be re-derived wrong. Prefer recording the working expression over the anecdote.
+
+### Verify a commit message's claims against HEAD
+
+`342cb0d` said "ship the six queued fixes." It was true — but confirming all six in `HEAD` cost one
+command and is what licensed clearing three carried blockers. A commit message is a claim about the
+past; `HEAD` is the state. **Clear flags on the state.**
+
+### GOALS.md outranks SKILL.md, and the conflict here is now inverted
+
+SKILL Step 3 asks for a trust bar containing `21-Day Avg. Close`; GOALS.md retires that claim. This
+has crossed from stale to actively harmful: a run following the checklist literally would **restore a
+performance claim the business deliberately removed**, during pre-audit compliance week. Verified
+absence (0 on all three key pages) instead. Escalated for a SKILL.md edit — the agent cannot edit its
+own task file.
+
+> **Generalize:** when a checklist asks you to confirm the *presence* of something a higher-priority
+> doc *retires*, the checklist is not merely out of date — it is a live regression vector. Flag it as
+> such, not as doc hygiene.
+
+---
+
+## 2026-08-30 — Thursday rotation (Internal Linking + Funnel Flow) — the checklist asked the wrong direction
+
+### A link *graph* finds what a link *checklist* cannot
+
+The rotation says: *"Pick 3 pages, verify each links to 2+ relevant pages."* I ran it across all 147
+sitemap URLs instead of 3, and it passed **147/147** — there was nothing to fix on that axis and there
+probably never has been. Every real defect was on the **inbound** side, which the checklist never
+asks about: **3 pages had zero inbound internal links.**
+
+> **Rule:** when a checklist item passes trivially across the whole site, don't record the pass and
+> move on — **invert the question.** Outbound-links-per-page is a property every templated page
+> inherits from its nav and footer, so it is nearly guaranteed to pass. Inbound links are a property
+> of the rest of the site's *editorial* choices, so they are where the holes are. Cheap checks that
+> always pass are measuring the template, not the content.
+
+### An orphan is a page the site asks Google to rank but refuses to link to
+
+All three were indexable, self-canonical, carried no `noindex`, and sat in `sitemap.xml` — while
+nothing on the site linked to them. That combination is a self-contradiction: the sitemap says
+*"crawl and rank this"* and the link graph says *"this is worth nothing."* It is also **invisible to
+every page-at-a-time audit** — each orphan looks perfectly healthy when you open it. Months of
+per-page rotations never surfaced these; one whole-graph pass surfaced all three.
+
+Sharpest instance: `/resources/mortgage-options-for-business-owners.html` is a **child of
+`/resources/`** that the resources hub itself did not list — and it is squarely on the "complicated
+income" positioning GOALS.md is rebuilding the site around.
+
+### Before linking an orphan, check whether it is a duplicate
+
+The reflex fix — "add a link" — is wrong if the orphan is a near-copy of a well-linked page. Then the
+page is competing with its own sibling and the correct fix is a canonical (HIGH_RISK on an indexed
+page → Adam-gated), not a link. So compare first:
+
+```python
+difflib.SequenceMatcher(None, text_a, text_b).quick_ratio()   # plus: are the H2 sets disjoint?
+```
+
+All three came back distinct — 0.43 and 0.56 similarity with completely disjoint H2 sets (short guide
+vs pillar page; scenario funnel vs educational post), and the third distinct by audience
+(borrower vs realtor). **That comparison is what licensed linking them.** Without it, "fix the
+orphans" could have doubled down on cannibalization.
+
+### Equal counts are not parity — diff the sets
+
+`blog.html` maintains the post list in **three** parallel registries: `blog/manifest.json` (drives the
+JS card grid), a `<noscript>` `<ul>` (what a crawler without JS sees, and what carries the link
+equity), and CollectionPage `ItemList` schema. One post was in the first only.
+
+**All three registries held exactly 59 entries.** Every count-based check agrees; the contents differ.
+
+```python
+set(p['slug'] for p in manifest['posts']) - set(map(key, noscript_links))
+# -> {'2026-03-04-wait-for-rates'}
+```
+
+> **Rule:** wherever the same list is maintained in N places, diff them as **sets**, never compare
+> cardinalities. Equal length is the *most likely* failure mode, not evidence of sync — a hand-edited
+> list tends to gain one entry while losing another. And note the reverse-direction hit
+> (`first-time-buyer-guide` in noscript but not manifest) was **correct** — a guide hub, not a post.
+> A set diff produces findings in both directions; only one of them was a defect.
+
+### An href regex must strip HTML comments first — then re-run the WHOLE analysis
+
+`scenarios.html` contains `href="/scenarios/[slug].html"`. The href is real, it 404s live, and my
+extractor found it. It sits inside `<!-- SCENARIO CARD STUB — copy when the next scenario ships -->`.
+
+Killing the false finding was the easy half. The important half:
+
+> **A parser that ignores comments doesn't just invent fake findings — it can invent fake *inbound*
+> links and thereby hide real orphans.** The correct response was not "drop that one finding," it was
+> **rebuild the entire graph comment-aware and diff it against the naive parse.** (0 pages changed, so
+> the orphan set was sound — but that is a result, not an assumption.) When you discover a systematic
+> flaw in an extractor, re-run everything it produced.
+
+### Normalize `?query` and `#fragment` before comparing paths
+
+`href="/get-preapproved(\.html)?"` anchored to end-of-path returned **0** homepage links to the
+primary conversion page. The real hrefs are `/get-preapproved.html?intent=scenario` — **×5**.
+
+### A *selective* zero is more dangerous than a uniform zero
+
+08-29's rule was: *a per-target loop returning the same number for every target is your tooling.* The
+sibling case is worse. Here `/contact` returned 2 and `/calculators` returned 1 — plausible, lumpy,
+trustworthy-looking numbers — with `/get-preapproved` at 0 sitting among them. **A zero surrounded by
+non-zeros reads as a genuine finding.** Uniformity at least announces itself.
+
+> Both are tooling until the extractor has been tested against a known-good case. The test costs one
+> command; believing the finding would have cost a fabricated HIGH about the homepage having no path
+> to the conversion page.
+
+### Don't write a second extractor
+
+Both false findings today came from **inline one-off regexes written after a correct, normalizing
+extractor already existed in the same session.** The graph code stripped comments, stripped `?`/`#`,
+and mapped `foo/index.html` → `foo/`. The funnel check was then written fresh, three lines, sloppier —
+and produced both errors.
+
+This is the same failure as 08-29's re-derived sitemap normalizer, one level up: not "port the fix
+from learnings," but **"reuse the function you wrote twenty minutes ago."**
+
+> **Rule:** one extractor per session, defined once, used everywhere. If a check needs a different
+> shape, extend the extractor — do not open a second one.
+
+### Anchor text should match the destination's `<h1>`, not a stale index title
+
+`manifest.json` titles the post "…Before You **Buy**?"; the page's `<title>` and `<h1>` say
+"…Before You **Sell and Buy**?". The new static links use the page's real `<h1>` — anchor text is a
+relevance signal about the destination, so it should describe the destination. The index entry was
+flagged rather than silently changed, because it renders in the card grid.
