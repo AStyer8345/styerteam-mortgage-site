@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
-  <link rel="stylesheet" href="/style.css?v=20260830-program3">
+  <link rel="stylesheet" href="/style.css?v=20260830-selfemp1">
 
   <script>window.dataLayer = window.dataLayer || [];</script>
   <!-- Google Tag Manager -->
@@ -311,64 +311,18 @@
 
   </section>
 
-  <!-- Quick Quote Form -->
+  <!-- Conversion path -->
   <section class="section bg-light">
-    <div class="container content-narrow">
-      <div class="quick-quote-form">
-        <h3>Get Your Self-Employed Rate Quote</h3>
-        <form name="self-employed-quote" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="self-employed-quote">
-          <!-- Netlify honeypot -->
-          <p style="display:none;">
-            <label>Don't fill this out if you're human: <input name="bot-field"></label>
-          </p>
-          <div class="form-group">
-            <label for="loan-purpose-self-employed">Loan Purpose</label>
-            <select id="loan-purpose-self-employed" name="loanGoal" required>
-              <option value="">Select...</option>
-              <option value="Purchase">Purchase</option>
-              <option value="Refinance">Refinance</option>
-              <option value="Cash-Out">Cash-Out</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="loan-amount-self-employed">Estimated Purchase Price</label>
-            <select id="loan-amount-self-employed" name="loan_amount" required>
-              <option value="">Select...</option>
-              <option value="under-500k">Under $500K</option>
-              <option value="500k-800k">$500K – $800K</option>
-              <option value="800k-1.2m">$800K – $1.2M</option>
-              <option value="1.2m+">$1.2M+</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="name-self-employed">Your Name</label>
-            <input type="text" id="name-self-employed" name="name" placeholder="First &amp; Last" required autocomplete="name">
-          </div>
-          <div class="form-group">
-            <label for="email-self-employed">Email Address</label>
-            <input type="email" id="email-self-employed" name="email" placeholder="you@email.com" required autocomplete="email">
-          </div>
-          <div class="form-group">
-            <label for="phone-self-employed">Phone Number</label>
-            <input type="tel" id="phone-self-employed" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
-          </div>
-          <!-- TCPA consent — required, unchecked by default -->
-          <div style="margin-top:8px;margin-bottom:8px;">
-            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
-              <input type="checkbox" name="tcpa_consent" id="hqf-tcpa" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
-              <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
-            </label>
-          </div>
-          <!-- SMS opt-in — separate, optional, unchecked by default (TCPA one-to-one consent, 2026 FCC rules) -->
-          <div style="margin-top:8px;margin-bottom:8px;">
-            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--font-size-xs,11px);font-weight:normal;color:var(--color-gray);cursor:pointer;line-height:1.5;">
-              <input type="checkbox" name="sms_opt_in" id="hqf-sms-optin" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
-              <span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span>
-            </label>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">Get My Rate Quote</button>
-        </form>
+    <div class="container">
+      <div class="program-decision-panel">
+        <div>
+          <h2>Not sure which income path fits?</h2>
+          <p>Send Adam the short version of your income, property, and timing. He’ll compare the documentation paths before asking you to complete a full application.</p>
+        </div>
+        <div class="program-decision-actions">
+          <a href="/scenario.html" class="btn btn-primary">Send My Scenario</a>
+          <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-outline" data-track="secure_application_click" target="_blank" rel="noopener">Start Secure Application</a>
+        </div>
       </div>
     </div>
   </section>
@@ -386,35 +340,39 @@
   </section>
 
   <!-- Programs -->
-  <section class="section bg-light">
+  <section class="section bg-light program-always-visible">
     <div class="container">
       <h2 class="text-center">Self-Employed Mortgage Programs Available in Austin</h2>
       <p class="text-center" style="max-width:640px;margin:0 auto 2.5rem;">There's no single "self-employed mortgage." There are several programs — each built for a different documentation situation. The right one depends on how you track income.</p>
       <div class="grid grid-2">
 
-        <div class="feature-item">
+        <a class="feature-item program-link-card" href="/bank-statement-loans.html">
           <h3>Bank Statement Loans</h3>
           <p>A bank-statement program may calculate income from eligible deposits after excluding transfers and other non-income items and applying the program's expense treatment. Statement period, supporting documents, credit, leverage, reserves, and pricing vary by investor.</p>
           <p><strong>Compare when:</strong> Eligible deposits may document the business cash flow more clearly than a tax-return calculation.</p>
-        </div>
+          <span class="program-card-link">View bank statement guide &rarr;</span>
+        </a>
 
-        <div class="feature-item">
+        <a class="feature-item program-link-card" href="/1099-only-mortgage-texas.html">
           <h3>1099 Income Loans</h3>
-          <p>A 1099 program may use eligible 1099 income with a program-specific expense treatment. Required history, tax or business documents, supporting deposits, credit, leverage, reserves, and pricing vary by investor. See the full <a href="/1099-only-mortgage-texas.html">1099-only mortgage guide for Texas</a>.</p>
+          <p>A 1099 program may use eligible 1099 income with a program-specific expense treatment. Required history, tax or business documents, supporting deposits, credit, leverage, reserves, and pricing vary by investor.</p>
           <p><strong>Compare when:</strong> Eligible 1099 income is the clearest documented income source.</p>
-        </div>
+          <span class="program-card-link">View 1099-only guide &rarr;</span>
+        </a>
 
-        <div class="feature-item">
+        <a class="feature-item program-link-card" href="/p-and-l-mortgage-texas.html">
           <h3>P&L Loans</h3>
-          <p>A P&amp;L program may use an eligible profit-and-loss statement and supporting documentation to calculate income. Preparer qualifications, coverage period, bank-statement review, expense treatment, add-backs, credit, leverage, reserves, and loan limits vary by investor. See how a <a href="/p-and-l-mortgage-texas.html">P&amp;L mortgage in Texas</a> is reviewed.</p>
+          <p>A P&amp;L program may use an eligible profit-and-loss statement and supporting documentation to calculate income. Preparer qualifications, coverage period, bank-statement review, expense treatment, add-backs, credit, leverage, reserves, and loan limits vary by investor.</p>
           <p><strong>Compare when:</strong> An eligible P&amp;L and supporting records may document current business income.</p>
-        </div>
+          <span class="program-card-link">View P&amp;L mortgage guide &rarr;</span>
+        </a>
 
-        <div class="feature-item">
+        <a class="feature-item program-link-card" href="/asset-depletion-mortgage-texas.html">
           <h3>Asset Depletion / Asset Utilization</h3>
           <p>Asset-depletion programs may calculate qualifying income from eligible documented assets after required deductions. Agency and investor-specific eligibility, asset discounts, divisors, leverage, reserves, rates, and documentation differ.</p>
-          <p><strong>Compare when:</strong> Eligible documented assets may support the file more effectively than recurring earned income. <a href="/asset-depletion-calculator.html">Run an illustrative calculation →</a></p>
-        </div>
+          <p><strong>Compare when:</strong> Eligible documented assets may support the file more effectively than recurring earned income.</p>
+          <span class="program-card-link">View asset depletion guide &rarr;</span>
+        </a>
 
       </div>
     </div>
@@ -782,6 +740,6 @@
 <script src="/script.js?v=20260721-assistant-main-v1" defer></script>
   <script src="/js/scroll-effects.js?v=20260429" defer></script>
 <script src="/analytics.js?v=20260417" defer></script>
-<script src="/js/program-page-layout.js?v=20260830" defer></script>
+<script src="/js/program-page-layout.js?v=20260830-links1" defer></script>
 </body>
 </html>

@@ -103,6 +103,7 @@
   }
 
   function collapseLongSection(container) {
+    if (container.closest('.program-always-visible')) return;
     if (container.querySelector('.accordion, .program-option-grid, .program-list-grid')) return;
     var words = container.textContent.trim().split(/\s+/).length;
     if (words < 220) return;

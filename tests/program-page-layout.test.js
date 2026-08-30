@@ -24,7 +24,7 @@ test('complex-income pages load the reusable modern program layout', () => {
     const html = fs.readFileSync(file, 'utf8');
     assert.match(html, /<body class="editorial-page loan-page program-page-modern">/, file);
     assert.match(html, /\/js\/program-page-layout\.js\?v=20260830/, file);
-    assert.match(html, /style\.css\?v=20260830-program3/, file);
+    assert.match(html, /style\.css\?v=20260830-(?:program3|selfemp1)/, file);
   }
 });
 
@@ -59,4 +59,24 @@ test('modern loan heroes keep scenario review primary and scheduling secondary',
     assert.ok(secondary, `${file} must have a secondary hero CTA`);
     assert.match(secondary[1], /Schedule Strategy Call/);
   }
+});
+
+test('self-employed program cards link to their full guides and use a scenario-first CTA', () => {
+  const html = fs.readFileSync('self-employed-mortgage-austin.html', 'utf8');
+
+  for (const href of [
+    '/bank-statement-loans.html',
+    '/1099-only-mortgage-texas.html',
+    '/p-and-l-mortgage-texas.html',
+    '/asset-depletion-mortgage-texas.html'
+  ]) {
+    assert.match(html, new RegExp(`<a class="feature-item program-link-card" href="${href.replaceAll('.', '\\.')}">`), href);
+  }
+  assert.match(html, /Not sure which income path fits\?/);
+  assert.match(html, /<section class="section bg-light program-always-visible">/);
+  assert.match(html, /href="\/scenario\.html" class="btn btn-primary">Send My Scenario/);
+  assert.doesNotMatch(html, /Get Your Self-Employed Rate Quote/);
+  assert.doesNotMatch(html, /name="self-employed-quote"/);
+  const script = fs.readFileSync('js/program-page-layout.js', 'utf8');
+  assert.match(script, /container\.closest\('\.program-always-visible'\)/);
 });
