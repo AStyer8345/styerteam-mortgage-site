@@ -416,6 +416,19 @@ function hasSuccessfulCapture(results) {
   return results.some((result) => result.status === 'fulfilled' && result.value && result.value.ok);
 }
 
+async function fetchWithTimeout(resource, options = {}, timeoutMs = 15000) {
+  if (typeof AbortController !== 'function' || !timeoutMs) return fetch(resource, options);
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(resource, { ...options, signal: controller.signal });
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+window.StyerFetchWithTimeout = fetchWithTimeout;
+
 /**
  * Independent email capture for public forms whose primary submission path is
  * a custom webhook. The hidden form is registered in /forms.html and covered
@@ -448,11 +461,11 @@ async function captureNotificationBackup(options = {}) {
     submitted_at: new Date().toISOString(),
   });
 
-  const response = await fetch('/forms.html', {
+  const response = await fetchWithTimeout('/forms.html', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: body.toString(),
-  });
+  }, 12000);
   if (!response.ok) throw new Error(`notification backup failed: ${response.status}`);
   return true;
 }
@@ -481,7 +494,7 @@ function captureRateCheckNotificationBackup(form, failedEndpoint) {
       loan_estimate_filename: upload && upload.name ? upload.name : '',
       important: failedEndpoint
         ? 'The PDF itself was not copied to this backup. Contact the visitor to recover it securely.'
-        : 'The PDF was sent separately through the secure review workflow and is not copied into this email alert.',
+        : 'The PDF is never copied into this email alert. Verify that it arrived in the secure review workflow; if it did not, contact the visitor for a secure resend.',
     },
     failedEndpoint,
   });
@@ -995,7 +1008,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMortgageAssistant() {
   if (document.querySelector('script[data-mortgage-assistant]')) return;
   var script = document.createElement('script');
-  script.src = '/assistant-widget.js?v=20260830-professional-v1';
+  script.src = '/assistant-widget.js?v=20260830-form-alert-v1';
   script.defer = true;
   script.dataset.mortgageAssistant = 'true';
   document.head.appendChild(script);

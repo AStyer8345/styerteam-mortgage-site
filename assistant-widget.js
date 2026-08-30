@@ -11,6 +11,7 @@
     // numbers for long conversations.
     turnCount: 0,
     pendingConfirmation: null,
+    pendingLeadNotification: null,
     config: null,
     salesState: null,
     busy: false,
@@ -57,7 +58,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260830-professional-v1';
+    stylesheet.href = '/assistant-widget.css?v=20260830-form-alert-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -217,13 +218,16 @@
     trackAssistant('assistant_error');
   }
 
-  function request(body) {
-    return fetch(endpoint, {
+  function request(body, timeoutMs) {
+    var fetchRequest = timeoutMs && typeof window.StyerFetchWithTimeout === 'function'
+      ? window.StyerFetchWithTimeout
+      : fetch;
+    return fetchRequest(endpoint, {
       method: 'POST',
       credentials: 'same-origin',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(body),
-    }).then(function (response) {
+    }, timeoutMs).then(function (response) {
       return response.json().catch(function () { return {}; }).then(function (data) {
         if (!response.ok) throw new Error(data.error && data.error.message ? data.error.message : 'The request could not be completed.');
         return data;
@@ -250,8 +254,18 @@
       ui.consentInput.focus();
       return;
     }
+    var ownerEmailCapture = null;
+    if (needsConsent && state.pendingLeadNotification) {
+      var approvedNotification = state.pendingLeadNotification;
+      ownerEmailCapture = Promise.resolve().then(function () {
+        if (typeof window.StyerCaptureNotificationBackup !== 'function') {
+          throw new Error('Owner email capture is unavailable.');
+        }
+        return window.StyerCaptureNotificationBackup(approvedNotification);
+      });
+    }
     setBusy(true, 'Confirming the requested action.');
-    request({
+    var actionRequest = request({
       conversationId: state.conversationId,
       confirmAction: state.pendingConfirmation.token,
       consentAccepted: needsConsent ? ui.consentInput.checked : undefined,
@@ -259,17 +273,52 @@
       sourcePage: window.location.href.split('#')[0],
       assistantMode: state.assistantMode,
       salesState: state.salesState,
-    }).then(function (data) {
-      clearConfirmation();
-      // The server records two transcript pairs for a confirmed action
-      // (confirmation + result), so advance past all four rows.
-      state.turnCount += 3;
-      handleResponse(data);
-    }).catch(handleError).finally(function () { setBusy(false, ''); });
+    }, 20000);
+
+    if (!ownerEmailCapture) {
+      actionRequest.then(function (data) {
+        clearConfirmation();
+        // The server records two transcript pairs for a confirmed action
+        // (confirmation + result), so advance past all four rows.
+        state.turnCount += 3;
+        handleResponse(data);
+      }).catch(handleError).finally(function () { setBusy(false, ''); });
+      return;
+    }
+
+    Promise.allSettled([actionRequest, ownerEmailCapture]).then(function (results) {
+      var actionResult = results[0];
+      var emailResult = results[1];
+      if (actionResult.status === 'fulfilled') {
+        var data = actionResult.value;
+        if (emailResult.status === 'fulfilled' && data.toolResult && data.toolResult.data && data.toolResult.data.ownerNotified !== true) {
+          data.message = 'Your contact request was saved, and a separate email alert was sent to Adam.';
+        }
+        clearConfirmation();
+        // The server records two transcript pairs for a confirmed action
+        // (confirmation + result), so advance past all four rows.
+        state.turnCount += 3;
+        handleResponse(data);
+        return;
+      }
+
+      if (emailResult.status === 'fulfilled') {
+        clearConfirmation();
+        state.turnCount += 3;
+        addMessage('assistant', 'Your contact request was sent to Adam by email, but the assistant could not finish saving it in the contact system. Adam can still follow up using the information you approved.');
+        state.converted = true;
+        trackAssistant('contact_submitted', { cta_type: 'contact' });
+        return;
+      }
+
+      handleError(actionResult.reason);
+    }).finally(function () { setBusy(false, ''); });
   }
 
   function clearConfirmation() {
+    var clearingLead = state.pendingConfirmation && state.pendingConfirmation.operation === 'create_or_update_website_lead';
     state.pendingConfirmation = null;
+    if (clearingLead) state.pendingLeadNotification = null;
     if (!ui.confirmation) return;
     ui.confirmation.hidden = true;
     ui.consentInput.checked = false;
@@ -287,6 +336,22 @@
     var preferredContact = String(data.get('preferredContact') || 'email');
     if (preferredContact === 'email' && !String(data.get('email') || '').trim()) preferredContact = 'text';
     if ((preferredContact === 'text' || preferredContact === 'phone') && !String(data.get('phone') || '').trim()) preferredContact = 'email';
+    state.pendingLeadNotification = {
+      sourceForm: 'mortgage-assistant-contact',
+      name: String(data.get('firstName') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      phone: String(data.get('phone') || '').trim(),
+      subject: 'New mortgage assistant contact request',
+      details: {
+        preferred_contact: preferredContact,
+        assistant_mode: state.assistantMode,
+        conversation_id: state.conversationId,
+        goal: state.salesState && state.salesState.goal ? state.salesState.goal : '',
+        timeline: state.salesState && state.salesState.timeline ? state.salesState.timeline : '',
+        property_state: state.salesState && state.salesState.propertyState ? state.salesState.propertyState : ''
+      },
+      sourcePage: window.location.href.split('#')[0]
+    };
     setBusy(true, 'Preparing your contact request for review.');
     request({
       conversationId: state.conversationId,
@@ -296,7 +361,13 @@
       },
       sourcePage: window.location.href.split('#')[0],
       assistantMode: state.assistantMode,
-    }).then(function (response) { closeLeadForm(); handleResponse(response); }).catch(handleError).finally(function () { setBusy(false, ''); });
+    }, 15000).then(function (response) {
+      closeLeadForm();
+      handleResponse(response);
+    }).catch(function (error) {
+      state.pendingLeadNotification = null;
+      handleError(error);
+    }).finally(function () { setBusy(false, ''); });
   }
 
   function closeLeadForm() {

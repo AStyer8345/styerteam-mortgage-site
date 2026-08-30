@@ -595,7 +595,7 @@
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'generate_lead', lead_type: 'ftb_dpa_guide' });
 
-        var primaryNotification = fetch('/.netlify/functions/lead-intake', {
+        var primaryNotification = window.StyerFetchWithTimeout('/.netlify/functions/lead-intake', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -611,11 +611,12 @@
             utm_content:  utmContent,
             page_url:     pageUrl,
           }),
-        }).then(function (res) {
+        }, 15000).then(function (res) {
           if (!res.ok) throw new Error('lead-intake returned ' + res.status);
           return res.json();
         }).then(function (data) {
           if (!data.success) throw new Error(data.error || 'Lead intake did not confirm success');
+          if (data.mailchimp !== 'ok') throw new Error('Guide delivery subscription was not confirmed');
           return data;
         });
 
@@ -632,8 +633,12 @@
         });
 
         var results = await Promise.allSettled([primaryNotification, ownerEmailNotification]);
-        if (results[0].status === 'fulfilled' || results[1].status === 'fulfilled') {
+        if (results[0].status === 'fulfilled') {
           window.location.href = '/thank-you.html?type=ftb-dpa-guide';
+          return;
+        }
+        if (results[1].status === 'fulfilled') {
+          window.location.href = '/thank-you.html?type=form-recovery&request=dpa-guide';
           return;
         }
 

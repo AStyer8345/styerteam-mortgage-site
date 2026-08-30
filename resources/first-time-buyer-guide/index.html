@@ -587,11 +587,11 @@
                 status.textContent = '';
                 errBox.style.display = 'none';
 
-                var primaryNotification = fetch('/.netlify/functions/lead-intake', {
+                var primaryNotification = window.StyerFetchWithTimeout('/.netlify/functions/lead-intake', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ email: email, fname: fname, tag: 'ftb-lead' })
-                }).then(async function (res) {
+                }, 15000).then(async function (res) {
                   if (!res.ok) throw new Error('lead-intake returned ' + res.status);
                   var data = await res.json();
                   if (!data.success) throw new Error(data.error || 'Lead intake did not confirm success');

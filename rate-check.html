@@ -790,11 +790,11 @@
       };
 
       function sendPayload() {
-        fetch(WEBHOOK_URL, {
+        window.StyerFetchWithTimeout(WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
-        })
+        }, 30000)
         .then(function(res) {
           if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();

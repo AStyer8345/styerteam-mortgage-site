@@ -160,15 +160,29 @@ test('custom notification routes have a registered Netlify email fallback', () =
   assert.match(formsRegistry, /name="form-name" value="notification-backup"/);
   assert.match(script, /window\.StyerCaptureNotificationBackup = captureNotificationBackup/);
   assert.match(script, /window\.StyerCaptureRateCheckNotificationBackup = captureRateCheckNotificationBackup/);
+  assert.match(script, /window\.StyerFetchWithTimeout = fetchWithTimeout/);
 
   for (const [file, html] of rateCheckPages) {
     assert.match(html, /StyerCaptureRateCheckNotificationBackup\(form,\s*''\)/, file);
+    assert.match(html, /StyerFetchWithTimeout\(WEBHOOK_URL,[\s\S]*30000\)/, file);
     assert.match(html, /adam@thestyerteam\.com/, file);
   }
   assert.match(dpaGuide, /sourceForm: 'ftb-dpa-guide-form'/);
   assert.match(rateAlert, /sourceForm: 'rate-alert-form'/);
   assert.match(buyerGuide, /sourceForm: 'first-time-buyer-guide'/);
   assert.match(loWaitlist, /sourceForm: 'loanos-waitlist'/);
+});
+
+test('custom owner-notification requests have bounded network waits', () => {
+  assert.match(script, /fetchWithTimeout\('\/forms\.html',[\s\S]*12000\)/);
+  for (const [file, html] of [
+    ['ftb-dpa-guide.html', dpaGuide],
+    ['rate-alert.html', rateAlert],
+    ['resources/first-time-buyer-guide/index.html', buyerGuide],
+    ['loanos-waitlist.html', loWaitlist],
+  ]) {
+    assert.match(html, /StyerFetchWithTimeout\([\s\S]*15000\)/, file);
+  }
 });
 
 test('owner notification routes default to the forwarding-safe Styer Team inbox', () => {
@@ -185,6 +199,16 @@ test('inline lead handlers reject non-2xx responses before redirecting', () => {
     assert.match(html, /if \(!res\.ok\) throw/, file);
   }
   assert.match(thankYou, /if \(!res\.ok\) throw new Error\('Netlify form returned '/);
+});
+
+test('subscription funnels distinguish confirmed enrollment from manual recovery', () => {
+  assert.match(dpaGuide, /data\.mailchimp !== 'ok'/);
+  assert.match(dpaGuide, /type=form-recovery&request=dpa-guide/);
+  assert.match(rateAlert, /data\.mailchimp !== 'ok'/);
+  assert.match(rateAlert, /type=form-recovery&request=rate-alert/);
+  assert.match(loWaitlist, /type=form-recovery&request=loanos-waitlist/);
+  assert.match(thankYou, /type === 'form-recovery'/);
+  assert.match(thankYou, /automated signup or delivery could not be confirmed/);
 });
 
 test('analytics.js does not duplicate lead or phone events already emitted by script.js', () => {

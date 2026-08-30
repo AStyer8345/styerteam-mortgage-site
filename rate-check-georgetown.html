@@ -848,10 +848,10 @@
       formData.append("recipient_email", "adam@thestyerteam.com");
       formData.append("adam_email", "adam@thestyerteam.com");
 
-      fetch(WEBHOOK_URL, {
+      window.StyerFetchWithTimeout(WEBHOOK_URL, {
         method: 'POST',
         body: formData
-      })
+      }, 30000)
       .then(function(res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();

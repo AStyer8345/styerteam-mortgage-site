@@ -69,6 +69,9 @@ for (const absolute of htmlFiles) {
       if (!/notification_email/.test(html) || !/recipient_email/.test(html)) {
         fail(file, formName, 'custom rate-check webhook is missing server-workflow recipient metadata.');
       }
+      if (!/StyerFetchWithTimeout\(WEBHOOK_URL,[\s\S]*30000\)/.test(html)) {
+        fail(file, formName, 'custom rate-check webhook has no bounded primary request.');
+      }
       continue;
     }
 
@@ -82,6 +85,12 @@ const leadIntake = fs.readFileSync(path.join(root, 'netlify/functions/lead-intak
 const subscribeLo = fs.readFileSync(path.join(root, 'netlify/functions/subscribe-lo.js'), 'utf8');
 const subscribeLead = fs.readFileSync(path.join(root, 'netlify/functions/subscribe-lead.js'), 'utf8');
 const dscrCalculator = fs.readFileSync(path.join(root, 'dscr-calculator.html'), 'utf8');
+const assistantWidget = fs.readFileSync(path.join(root, 'assistant-widget.js'), 'utf8');
+
+// The mortgage-assistant contact form is rendered at runtime, so it is not
+// visible to the static HTML walk above. Count and audit it explicitly.
+auditedForms += 1;
+customForms += 1;
 
 const requiredOwnerEmailCaptures = new Map([
   ['ftb-dpa-guide.html', /StyerCaptureNotificationBackup\(\{[\s\S]*sourceForm: 'ftb-dpa-guide-form'/],
@@ -95,6 +104,9 @@ if (!/name="notification-backup"[\s\S]*name="form-name" value="notification-back
 }
 if (!/window\.StyerCaptureNotificationBackup = captureNotificationBackup/.test(sharedScript)) {
   failures.push('script.js: global notification backup helper is missing.');
+}
+if (!/window\.StyerFetchWithTimeout = fetchWithTimeout/.test(sharedScript)) {
+  failures.push('script.js: bounded form-request helper is missing.');
 }
 if (!/ownerNotified \? 200 : 502/.test(leadIntake) || /success:\s+true/.test(leadIntake)) {
   failures.push('lead-intake.js: notification failures can still be reported as successful.');
@@ -114,11 +126,23 @@ for (const [file, source] of [
 if (!/id="dscr-lead" hidden/.test(dscrCalculator) || !/var WEBHOOK_URL = "";/.test(dscrCalculator)) {
   failures.push('dscr-calculator.html: dormant lead capture is unexpectedly visible or enabled without notification coverage.');
 }
+if (!/class="ma-lead-form"/.test(assistantWidget)
+  || !/pendingLeadNotification/.test(assistantWidget)
+  || !/StyerCaptureNotificationBackup\(approvedNotification\)/.test(assistantWidget)) {
+  failures.push('assistant-widget.js: dynamic contact form has no independent Netlify owner-email capture.');
+}
+if (!/if \(needsConsent && !ui\.consentInput\.checked\)[\s\S]*if \(needsConsent && state\.pendingLeadNotification\)/.test(assistantWidget)) {
+  failures.push('assistant-widget.js: owner-email capture is not gated behind explicit lead consent.');
+}
+if (!/actionRequest = request\([\s\S]*}, 20000\)/.test(assistantWidget)) {
+  failures.push('assistant-widget.js: confirmed contact action has no bounded primary request.');
+}
 
 for (const [file, backupPattern] of requiredOwnerEmailCaptures) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
   if (!backupPattern.test(html)) failures.push(`${file}: custom submit handler has no independent Netlify owner-email capture.`);
   if (!/Promise\.allSettled/.test(html)) failures.push(`${file}: custom submit handler does not wait for its independent notification paths.`);
+  if (!/StyerFetchWithTimeout/.test(html)) failures.push(`${file}: custom submit handler has no bounded primary request.`);
   if (!/if \(!res\.ok\) throw/.test(html)) failures.push(`${file}: custom submit handler does not reject a non-2xx primary response.`);
 }
 

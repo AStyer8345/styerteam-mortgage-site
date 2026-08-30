@@ -447,7 +447,7 @@
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'generate_lead', lead_type: 'lo_waitlist_signup' });
 
-        var primaryNotification = fetch('/.netlify/functions/subscribe-lo', {
+        var primaryNotification = window.StyerFetchWithTimeout('/.netlify/functions/subscribe-lo', {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -463,7 +463,7 @@
             utm_medium:   document.getElementById('lw-utm-medium').value   || 'web',
             utm_campaign: document.getElementById('lw-utm-campaign').value || 'loanos-waitlist',
           }),
-        }).then(function(res) {
+        }, 15000).then(function(res) {
           if (!res.ok) throw new Error('Server error ' + res.status);
           return res.json();
         }).then(function(data) {
@@ -482,8 +482,12 @@
         });
 
         var results = await Promise.allSettled([primaryNotification, ownerEmailNotification]);
-        if (results[0].status === 'fulfilled' || results[1].status === 'fulfilled') {
+        if (results[0].status === 'fulfilled') {
           window.location.href = '/thank-you.html?type=lo-waitlist';
+          return;
+        }
+        if (results[1].status === 'fulfilled') {
+          window.location.href = '/thank-you.html?type=form-recovery&request=loanos-waitlist';
           return;
         }
 

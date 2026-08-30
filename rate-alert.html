@@ -567,7 +567,7 @@
         // Google Ads conversion
         gtag('event', 'conversion', { 'send_to': 'AW-18028490942/XYcDCMqh64wcEL7h05RD' });
 
-        var primaryNotification = fetch('/.netlify/functions/lead-intake', {
+        var primaryNotification = window.StyerFetchWithTimeout('/.netlify/functions/lead-intake', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -582,11 +582,12 @@
             utm_term:     document.getElementById('ra-utm-term').value     || '',
             utm_content:  document.getElementById('ra-utm-content').value  || '',
           }),
-        }).then(function (res) {
+        }, 15000).then(function (res) {
           if (!res.ok) throw new Error('lead-intake returned ' + res.status);
           return res.json();
         }).then(function (data) {
           if (!data.success) throw new Error(data.error || 'Lead intake did not confirm success');
+          if (data.mailchimp !== 'ok') throw new Error('Rate-alert subscription was not confirmed');
           return data;
         });
 
@@ -601,8 +602,12 @@
         });
 
         var results = await Promise.allSettled([primaryNotification, ownerEmailNotification]);
-        if (results[0].status === 'fulfilled' || results[1].status === 'fulfilled') {
+        if (results[0].status === 'fulfilled') {
           window.location.href = '/thank-you.html?type=rate-alert';
+          return;
+        }
+        if (results[1].status === 'fulfilled') {
+          window.location.href = '/thank-you.html?type=form-recovery&request=rate-alert';
           return;
         }
 

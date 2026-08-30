@@ -700,6 +700,11 @@
         if (paras.length > 0) paras[0].textContent = "Check your inbox \u2014 your first rate update arrives this Friday. If you don\u2019t see it, check your spam folder and mark us as \u201cnot spam.\u201d";
         if (phoneCta) phoneCta.innerHTML = 'While you wait: <a href="/austin-mortgage-rates.html">See current Austin mortgage rates &rarr;</a>';
         if (calendlySection) calendlySection.style.display = 'none';
+      } else if (type === 'form-recovery') {
+        if (h1) h1.textContent = 'Your Request Was Received for Personal Follow-Up';
+        if (paras.length > 0) paras[0].textContent = 'The automated signup or delivery could not be confirmed, but Adam received your contact request by email and will follow up personally.';
+        if (phoneCta) phoneCta.innerHTML = 'Need help sooner? Call or text <a href="tel:+15129566010">(512) 956-6010</a>.';
+        if (calendlySection) calendlySection.style.display = 'none';
       } else if (type === 'quick-contact') {
         var altPathsQuickContact = document.getElementById('ty-alt-paths');
         if (altPathsQuickContact) altPathsQuickContact.hidden = false;

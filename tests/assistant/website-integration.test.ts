@@ -39,6 +39,16 @@ test('confirmed chatbot leads report LoanOS notification and acknowledgment fail
   assert.match(gateway, /email notification could not be sent/);
 });
 
+test('assistant contact confirmations independently email Adam after consent', () => {
+  const browser = fs.readFileSync('assistant-widget.js', 'utf8');
+  assert.match(browser, /pendingLeadNotification/);
+  assert.match(browser, /if \(needsConsent && !ui\.consentInput\.checked\)/);
+  assert.match(browser, /if \(needsConsent && state\.pendingLeadNotification\)/);
+  assert.match(browser, /StyerCaptureNotificationBackup\(approvedNotification\)/);
+  assert.match(browser, /Promise\.allSettled\(\[actionRequest, ownerEmailCapture\]\)/);
+  assert.match(browser, /actionRequest = request\([\s\S]*}, 20000\)/);
+});
+
 test('the first recorded chat turn forwards its website source page to LoanOS', () => {
   const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
   assert.match(gateway, /const sourcePage = boundedText\(body\.sourcePage, 500, false\) \|\| undefined/);
