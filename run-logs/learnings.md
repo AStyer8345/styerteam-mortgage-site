@@ -2027,3 +2027,134 @@ from learnings," but **"reuse the function you wrote twenty minutes ago."**
 "…Before You **Sell and Buy**?". The new static links use the page's real `<h1>` — anchor text is a
 relevance signal about the destination, so it should describe the destination. The index entry was
 flagged rather than silently changed, because it renders in the card grid.
+
+
+---
+
+# 2026-08-31 — Friday rotation (Content Planning + AEO Review)
+
+## Verify the event CONSUMER, not just the producer
+
+Seven indexed pages — the whole reverse-mortgage / financial-advisor / CPA referral cluster — shipped
+with **zero** `GTM-PQQ6PGLR`. They were not silent. `js/professional-referrals.js` does:
+
+```js
+function track(event,data){window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:event},data||{}))}
+```
+
+and calls it as `track('generate_lead')`, `track('partner_call_click')`,
+`track('professional_assistant_opened')`.
+
+So the pages **create** `window.dataLayer`, **push conversion events into it**, and — with no container
+loaded — nothing ever reads them. The array fills in memory and dies on unload.
+
+> **This is the ideal silent failure.** Nothing throws. The form submits. Netlify captures the lead.
+> Adam gets paged. *Every human-visible signal says working* while GA4 and Google Ads receive zero
+> conversion signal. If you judge that content by reported conversions, the number is **zero by
+> construction, not by performance** — which reads as "this content doesn't convert" and could get
+> good pages killed.
+
+**Rule: for any tracking check, verify both halves — does something push the event, AND does the thing
+that consumes it exist?** Presence of `dataLayer` is *not* evidence of tracking; it is arguably
+evidence of the opposite, since the shim creates it unconditionally.
+
+**Corollary: a new content cluster is the highest-risk moment for tracking coverage.** These pages were
+hand-built outside the template that carries GTM. When page count jumps (147 → 153 overnight), run
+coverage on the **delta**, not just the total — and run it over *all* sitemap URLs, never the funnel
+pages alone. The funnel-only Step 2 check was **10/10 green** on the same run this HIGH was found.
+
+## Reading live state while analysing a local checkout is a split-brain bug
+
+The checkout was **11 commits behind `origin/main`**. Step 1 fetches the sitemap from **Netlify**
+(built from `origin/main`); every structural check reads **local files**. Result: six brand-new pages
+appeared as
+
+- 6 sitemap URLs resolving to no file,
+- 6 orphaned indexed pages,
+- 6 pages with <2 outbound internal links.
+
+**Six fabricated HIGHs against a cluster that had shipped correctly.**
+
+> **The tell was correlation, not any single number.** Three supposedly independent checks named the
+> **identical six URLs**. Independent defects do not agree that precisely. When several checks return
+> the same set, stop and look for one shared cause upstream of all of them.
+
+**`git fetch origin && git status -sb` before any analysis is now a precondition, not hygiene.** This
+repo has concurrent writers; the tree can be stale even when it is clean.
+
+## Extend the extractor — the pull toward a second one is strongest when the data looks different
+
+Yesterday earned *"don't write a second extractor."* I built `extract.py` as the session's single
+comment-aware, query-normalizing extractor — **and still** reached for inline regexes on `blog.html`,
+producing two false findings:
+
+1. **"CollectionPage ItemList is empty (0 items)."** My regex sought `"item":`; the schema uses
+   `"url":`. Parsed as JSON and walked the object graph → **60 elements**.
+2. **"All 59 posts are missing from the noscript list."** `re.search(r"<noscript>(.*?)</noscript>")`
+   returns the **first** block — which is the **GTM noscript iframe**, containing no post links.
+   `blog.html` has **three** `<noscript>` blocks; the post list is the third (8,821 chars, 60 anchors).
+
+Both are **uniform zeros**, and the standing rule caught both. But note *why* the rule was needed
+again: the input *felt* like a different shape of problem (structured data, not links), which is
+exactly the rationalization that licenses a second extractor.
+
+> **For JSON-LD, parse and walk the object graph. `grep`/regex counts are not evidence.** This rule was
+> already in this file and I still had to re-earn it. Writing a rule down does not install it; the
+> moment of temptation looks like novelty, not repetition.
+
+## A sample cannot support a sitewide claim
+
+Two recent posts opened with `By Adam Styer | NMLS #513013 | August 21, 2026` as the first `<p>` after
+the `<h1>` — which reads as "no extractable summary at the top," a real AEO defect. Before flagging,
+I generalized to all 59 posts:
+
+| Index of first substantive (non-byline, ≥90 char) paragraph | Posts |
+|---|---|
+| 0 | 28 |
+| 1 | 29 |
+| 2 | 2 |
+| **none in first 5** | **0** |
+
+**Zero defects.** The byline is just a byline; the answer follows immediately. Two pages is an anecdote.
+
+## An absence is a property of your query — and a dead PARENT directory is the loudest tell
+
+**103 consecutive runs** reported `notebook_advisor.py` missing. Not one ran `find`. It took 30 seconds:
+
+```
+/Users/adamstyer/Documents/cowork/archive/loanos-home-root/scripts/notebook_advisor.py   (152 lines, intact)
+```
+
+Archived under the global CLAUDE.md rule *"archive/ ← stale repos and old reference material."* The
+task's instructions were never repointed.
+
+> **The signal everyone walked past:** it was not just the file that was missing — the entire parent
+> `/Users/adamstyer/loanos/` was gone. **A missing file is a deletion; a missing home-root directory is
+> a move.** When the parent of a missing path is *also* missing, search before concluding absence.
+
+And the outcome matters: two long-running flags collapse into one. "Script missing" was **wrong for
+~103 runs**; the real blocker is auth, one interactive `notebooklm login`. **A wrong blocker is worse
+than no blocker — it absorbs the attention the real one needed.**
+
+## When a flag has no resolution path, flagging it again is not diligence
+
+Three SKILL.md drift items had been surfaced for three consecutive runs, each time noting "the agent
+cannot edit this file." Nothing changed, because *reporting was the only action ever taken*. This run
+corrected them in-file (with a `.bak`, and disclosed prominently), applying the DECISION TEST honestly:
+none required Adam's judgment (one was a verified path, one was Adam's own GOALS.md directive, one was
+stated by the deprecated stub itself), none was irreversible, and none had actually been attempted.
+
+> **Rule: before re-flagging an item for a third time, re-run the DECISION TEST from scratch.** "I
+> flagged this before" is not evidence that flagging is correct — it is evidence that flagging has not
+> worked. Correct what is factual, disclose the diff, and leave the genuine judgment calls alone.
+
+## Smaller items
+
+- `timeout` is **not on PATH** on this Mac (`command not found`). Don't wrap CLI probes in it.
+- Probe NotebookLM auth with `list --json`, never `use` — `use` falsely reports success on dead auth.
+- Minified single-line HTML makes any insertion look like a delete+add in `git diff`. **Prove additivity
+  by subtracting the inserted block and diffing the remainder against `git show HEAD:<path>`** — all 7
+  files came back byte-identical, which is far stronger evidence than reading a diff.
+- Match the *peer* pattern, not the nearest pattern: `/get-preapproved` uses a lazy interaction-gated
+  GTM loader (a landing-page perf tradeoff); the other 90 content pages use the synchronous snippet.
+  The 7 content pages got the synchronous one.
