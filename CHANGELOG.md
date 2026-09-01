@@ -1,3 +1,14 @@
+## 2026-08-31 (PM) — styer-site-daily Monday rotation: Schema + Ads Quality + AEO Entity Audit
+
+**Commit `a2ea6f7`** — `construction-loan-scenario-review.html`.
+
+- **Found the referral cluster's second gap by re-sweeping the same 7 pages for a different defect.** Yesterday those pages shipped without GTM; today `construction-loan-scenario-review.html` — a live Netlify lead-capture page — turned out to be the only one of the seven with **zero JSON-LD** (siblings carry 1–3 blocks). Added `ProfessionalService` matching the sibling byte-pattern. Purely additive: inserted block subtracted diffs **byte-identical** vs `HEAD`. Live-verified 200 + `ProfessionalService` + GTM ×2.
+- **FAQPage deliberately withheld.** The page's headings are criteria (`Defined site`, `Qualified builder`), not Q&A pairs — adding it would fabricate schema for content the page does not contain. `dateModified` left at 08-30 rather than stamped today: a metadata-only edit must not manufacture a freshness signal.
+- **Sitewide schema audit clean — 0 JSON-LD parse errors across all 153 pages.** AEO entity check: homepage↔about consistent (same `#business` `@id`, name, address, `Person`/`worksFor`). DSCR and Round Rock both carry full FAQPage + BreadcrumbList; Round Rock also has `SpeakableSpecification`.
+- **Homepage hero deliberately not rewritten** despite the rotation asking for an extractable broker answer in the first 150 words — entity coverage is already satisfied elsewhere and the hero carries GOALS.md's complicated-income positioning. A rotation checklist is not authority to overwrite a brand decision.
+- **Three false findings killed, all filter artifacts** — an object-literal regex that missed `thank_you_page_view` call sites; a graph-flatten that made the nested `root.worksFor → #business` reference look like a duplicate node; a `/blog/`-prefix filter that excluded root-level pages from the registry count. Generalized: **a filter inside your extractor is a second extractor in disguise.**
+- **Carried blockers re-verified live, none on faith:** PSI **429** on both landing pages, ad LPs still pre-shift on **both** (`wholesale` ×1 only), `prequal.html` `generate_lead` still 0, NotebookLM script runs but auth dead. `git fetch` precondition caught a 1-commit lag before analysis.
+
 ## 2026-08-31 — styer-suburb-editor-daily R5 #11: Bee Cave — closing-cost total didn't sum, title premium understated, school rating unverified
 
 **Commit `PENDING`** — `bee-cave-mortgage-lender.html` + `sitemap.xml`.

@@ -2158,3 +2158,55 @@ stated by the deprecated stub itself), none was irreversible, and none had actua
 - Match the *peer* pattern, not the nearest pattern: `/get-preapproved` uses a lazy interaction-gated
   GTM loader (a landing-page perf tradeoff); the other 90 content pages use the synchronous snippet.
   The 7 content pages got the synchronous one.
+
+---
+
+## 2026-08-31 PM — Monday rotation (Schema + Ads Quality + AEO Entity Audit)
+
+**A filter inside your extractor is a second extractor in disguise.** Yesterday's rule was "extend the
+extractor, don't open a second one." All three false findings today came from a *narrowing clause* inside
+the one extractor I did build:
+- an event regex matching only the object-literal form `event: "name"` → reported `analytics.js` had lost
+  `thank_you_page_view`; a direct token count showed it intact (script.js ×2, analytics.js ×1)
+- a `walk()` that flattens the JSON-LD graph → made a nested node reference look like a duplicate
+  `#business` node with conflicting data
+- an href filter keeping only `/blog/`, `/realtor-updates/`, `/resources/` → reported 6 posts missing from
+  the `blog.html` noscript registry; without the filter, all 60 hrefs were present
+
+**Rule: when a count comes back short, re-run it with the filter removed BEFORE believing it.** A narrowing
+clause is invisible in the output — it produces a plausible number, not an obvious error.
+
+**A repeating `@id` in JSON-LD is a reference, not a duplicate.** Check the node's *depth and path*, not just
+its presence. `root.worksFor → #business` carrying 5 keys next to a 17-key `root` node is **correct** JSON-LD
+node referencing. Had I "fixed" it, I would have turned correct markup into worse markup — the first time this
+log has caught a false finding whose remediation would have caused the damage.
+
+**When a hand-built cluster misses one thing, sweep it for everything.** Yesterday: 7 pages, no GTM. Today:
+one of those same 7, no JSON-LD. A cluster built outside the site template misses **more than one** thing.
+Finding the first gap should trigger a full re-sweep of that exact page set on other axes — not a victory lap.
+
+**Never stamp `dateModified` with today's date for a metadata-only edit.** Adding schema does not change the
+content; a fresh date is a fabricated freshness signal. Left it at the sitemap `lastmod` (08-30).
+
+**A rotation checklist is not authority to overwrite a brand decision.** The Monday rotation asks for an
+extractable "best mortgage broker in Austin TX" answer in the homepage's first 150 words. The hero instead
+carries GOALS.md's deliberate complicated-income positioning, and the entity is already well established by
+the meta description, a 5-question Austin-scoped FAQPage, and a full `MortgageBroker` node. **GOALS.md
+outranks SKILL.md; "the check says do X" is not a mandate.** Logged as a preference, not a defect.
+
+**Withholding schema is a result, not an omission.** `construction-loan-scenario-review.html` got
+`ProfessionalService` but deliberately **not** FAQPage — its headings are criteria (`Defined site`,
+`Qualified builder`), not Q&A pairs. One H2 *is* a question, but its answer is six H3 bullets, which is not
+an answer body. Adding FAQPage would have been fabricated markup.
+
+**`git fetch` before analysis is now 2-for-2.** 08-31 AM: 11 commits behind, nearly six fabricated HIGHs.
+08-31 PM: 1 behind again *within hours*. This repo has concurrent writers — assume behind, always.
+
+**Re-verify carried blockers with a live call, not by carrying the row forward.** PSI returned an actual
+**HTTP 429** today; the ad-LP positioning gap was re-measured on **both** pages (not just the one previously
+named). A blocker restated without a fresh probe is indistinguishable from a stale flag.
+
+**When a block is genuinely Adam-gated, name the missing input, not just the gate.** The ad-LP rewrite had
+been "offered" for several runs, which reads as reflex. The real reason is specific: landing-page H1s must
+message-match ad copy the agent cannot see, and rewriting blind risks quality score on live campaigns.
+Stating the *missing input* converts a stale offer into a one-move decision.
