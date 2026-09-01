@@ -1,3 +1,10 @@
+# Primary-domain consolidation: preserve every path while moving both
+# adamstyer.com host variants permanently to styermortgage.com.
+https://adamstyer.com/*      https://styermortgage.com/:splat  301!
+https://www.adamstyer.com/*  https://styermortgage.com/:splat  301!
+http://adamstyer.com/*       https://styermortgage.com/:splat  301!
+http://www.adamstyer.com/*   https://styermortgage.com/:splat  301!
+
 # 301 Redirects — extensionless → .html canonical
 # IMPORTANT: Netlify's default pretty-URL match means /about will serve /about.html with a 200
 # UNLESS the redirect rule has the `!` force flag. Every rule below where the SOURCE path matches
