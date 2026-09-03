@@ -1,3 +1,13 @@
+## 2026-09-01 — styer-site-daily Tuesday rotation: Title Tags + Meta Descriptions
+
+**Commit `c109c97`** — 6 HTML files, meta descriptions only.
+
+- **Trimmed 6 over-length meta descriptions into the 150–160 SERP band.** Google truncates around 160 characters and cuts from the end, where the CTA lives — the CPA resource page was 173. Trimmed to 152–155: `mortgage-resources-for-cpas-texas`, `mortgage-strategies-financial-advisors-texas`, `reverse-mortgage-financial-advisors-texas`, `dscr-calculator`, `reverse-mortgage-texas`, and the CFO asset-depletion case study. Diff was exactly 6 files / 6 lines, every one a `name="description"` attribute; each replacement asserted `count(old)==1` before writing. All six live-verified in-band with GTM ×2 intact.
+- **Near-miss caught: an attribute regex reported the homepage description as 6 characters.** `content=["\'](.*?)["\']` uses a character class, not a backreference, so the apostrophe in *Austin's* ended the match — manufacturing 33 "dangerously short" descriptions. Re-parsed with `html.parser`: the homepage is a healthy 154 and the true count is **1**. **32 of 33 were punctuation**; acting on them would have overwritten 33 healthy descriptions. Nothing was changed on those pages.
+- **Sitewide title/description audit, all 153 batched:** 0 missing, **0 duplicate titles, 0 duplicate descriptions**, 153/153 with exactly one canonical and one `<h1>`. Carried claim corrected — "26 indexed titles > 65 chars" measured **61** today; the item stays an Adam-side no-op but the number was stale.
+- **Three loan-type titles lacking NMLS deliberately left alone.** Appending `| NMLS #513013` costs 15 characters, pushing 51/52/61-char titles to 66/67/76 — past Google's cut, truncating the NMLS anyway while displacing keywords. Disclosure is satisfied on-page (18/14/4 occurrences), matching recorded precedent at `tasks/seo-sem/backlog.md` L125–126.
+- **Three more false findings killed, one of them in the verifier itself** — landing-page `<nav>` contains only the logo (constraint satisfied, not violated); the "render-blocking" Google Fonts link sits inside `<noscript>` (correct preload+onload pattern); `dscr-calculator.html`'s 9/8 `<script>` imbalance is prose text and **identical at HEAD**. Tap-target height left **UNRESOLVED rather than guessed** (43–48px depending on inherited `line-height`; browser tool timed out twice).
+
 ## 2026-08-31 (PM) — styer-site-daily Monday rotation: Schema + Ads Quality + AEO Entity Audit
 
 **Commit `a2ea6f7`** — `construction-loan-scenario-review.html`.

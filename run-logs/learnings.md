@@ -2210,3 +2210,63 @@ named). A blocker restated without a fresh probe is indistinguishable from a sta
 been "offered" for several runs, which reads as reflex. The real reason is specific: landing-page H1s must
 message-match ad copy the agent cannot see, and rewriting blind risks quality score on live campaigns.
 Stating the *missing input* converts a stale offer into a one-move decision.
+
+## 2026-09-01 — Tuesday rotation (Title Tags + Meta Descriptions)
+
+**The near-miss that defines this run: `["\']` is a character class, not a backreference.**
+Parsing `<meta name="description" content="...">` with `content=["\'](.*?)["\']` closes the attribute
+on *either* quote type. Any apostrophe inside a double-quoted attribute ends the match early.
+Result: the homepage description measured **6 characters** (`"Austin"`) instead of 154, and **33 pages**
+appeared to have dangerously short descriptions. **32 of the 33 were punctuation.** Had I acted, I would
+have overwritten 33 healthy descriptions — the homepage included — to fix a defect that did not exist.
+**Rule: parse HTML with `html.parser`. If you must regex, backreference the delimiter: `content=(["\'])(.*?)\1`.**
+
+**Corollary — the shape of a finding set is evidence about the extractor.** 33 descriptions did not
+independently decide to end at `don`, `doesn`, `Here`, and `Styer`. When every hit truncates at the same
+character class, the bug is in the reader, not the data. Read the *pattern of the failures* before
+reading the failures.
+
+**The verifier gets artifacts too.** The self-review gate raised a false FAIL — `dscr-calculator.html`
+having nine `<script` vs eight `</script>` — from a naive `count('<script')` matching the literal word
+in body prose (`…s <section> + the inline <script`). `git show HEAD:` gave the identical 9/8, proving it
+pre-existing and untouched. **Check your checker against HEAD before believing it found something.**
+
+**An empty result is not a finding until the pattern is validated.** Two dead queries this run: a PCRE
+`(?!~~)` lookahead passed to `grep -E` (ERE — silently matches nothing, looked exactly like "no open
+backlog items"), and a funnel URL match against extensionless paths when sitemap.xml uses `.html`
+(looked exactly like "these pages aren't in the sitemap"). Both would have read as absence.
+
+**A tag name is not a feature.** `<nav>` on the landing pages looked like a hard-constraint violation
+("no site navigation"). It contains only the logo linked to `/`. Read what is *inside* the element
+before scoring a constraint against it.
+
+**Check `<noscript>` before calling a stylesheet render-blocking.** Three `googleapis.com` links looked
+like a perf defect; the plain `<link rel="stylesheet">` was inside `<noscript>`. The correct
+preload+onload async font pattern *always* leaves a blocking-looking link in the fallback.
+
+**Don't append NMLS to a title already near the truncation limit.** Three loan-type titles lack
+`| NMLS #513013`. Adding it costs 15 characters and pushes 51/52/61-char titles to 66/67/76 — past
+where Google cuts, so the NMLS gets truncated anyway *and* displaces keywords on the way out. NMLS is a
+trust signal, not a ranking factor, and disclosure is satisfied on-page (18/14/4 occurrences).
+Matches recorded precedent at `tasks/seo-sem/backlog.md` L125–126. **A rotation template is not
+authority to make a page worse.**
+
+**Report a measurement you couldn't take as unmeasured.** The landing-page CTA computes to 48px at the
+site's `line-height: 1.5` token and ~43px at browser-default `normal`; the browser tool timed out twice
+(100s each) so I could not resolve which applies. **A bounded range plus "unresolved" beats a confident
+guess in either direction.** Carried forward rather than closed.
+
+**Report carried numbers you re-measured, even when the item stays parked.** RECURRING_ISSUES carried
+"26 indexed titles > 65 chars"; today's measurement says **61**. The item remains an Adam-side no-op, but
+reprinting 26 as though verified would launder a stale number through a fresh run.
+
+**Narrow the edit to the line with the defect.** The CFO case study carried its description string in
+three places (`name="description"`, `og:description`, Article JSON-LD). SERP truncation only affects the
+first, and og:description already diverges from meta description elsewhere in the same cluster. Changed
+one line, not three.
+
+**`timeout` is not on PATH on this Mac.** `timeout 120 python3 …` → `command not found`, which reads as a
+script failure rather than a missing binary. Don't wrap commands in it.
+
+**`git fetch` before analysing — now 3-for-3.** Behind by one again (`41bb244`, a sitemap lastmod refresh
+from a concurrent writer). This repo always has another agent mid-write; assume behind.
