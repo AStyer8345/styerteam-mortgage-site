@@ -433,6 +433,29 @@ Next run = **Wednesday rotation (Suburb Page Deep Dive + AEO)** — rotation cur
    having no GTM (LoanOS marketing paused); the 12 `noindex` dashboards having no GTM; plus every
    prior exclusion.
 
+---
+
+## POST-COMMIT CORRECTION (same session) — commit `c5d6b06`
+
+**I caught a compliance slip in my own edit and fixed it.** Trimming `dscr-calculator.html` from 164
+chars, I dropped `Adam Styer, ` to save characters — leaving the description ending in a bare
+`NMLS #513013.` with no one attached to the license number.
+
+The repo's `CLAUDE.md` treats NMLS text as compliance copy, and SKILL.md puts "legal/compliance/NMLS
+copy" in the **requires-Adam-approval** tier. **An NMLS ID with the licensee's name removed is exactly
+the wrong place to economize on characters** — the number's whole function is attribution.
+
+Re-trimmed to hit the same 154 characters by cutting `real estate` instead of the name:
+
+> Free DSCR calculator for Texas investors. Estimate the rent-to-PITIA ratio on an investment property
+> before you write the offer. **Adam Styer, NMLS #513013.**
+
+Audited the other five edits for the same class of mistake — `git show c109c97` filtered for
+`NMLS|513013|licens|Kyber|Equal Housing` returns **only this page**. The other five touched no
+compliance copy. Live-verified: HTTP 200 · 154 chars · `Adam Styer` + `NMLS #513013` present · GTM ×2.
+
+**Lesson: character budgets are found in adjectives, never in attribution.** Added to learnings.
+
 ## FLAG_FOR_ADAM
 
 ### Net new this run:

@@ -2270,3 +2270,11 @@ script failure rather than a missing binary. Don't wrap commands in it.
 
 **`git fetch` before analysing — now 3-for-3.** Behind by one again (`41bb244`, a sitemap lastmod refresh
 from a concurrent writer). This repo always has another agent mid-write; assume behind.
+
+**Character budgets come out of adjectives, never out of attribution.** Trimming a 164-char meta
+description on `dscr-calculator.html`, I dropped `Adam Styer, ` and left it ending in a bare
+`NMLS #513013.` The repo CLAUDE.md treats NMLS text as compliance copy and SKILL.md puts it in the
+requires-Adam-approval tier — and a license number with the licensee's name removed defeats the only
+thing the number is there to do. Re-trimmed to the identical 154 chars by cutting the adjective
+`real estate` instead. **When a length budget forces a cut, cut description, never identity** — and
+after any batch edit, re-grep your own diff for `NMLS|licens|Kyber|Equal Housing` to catch the class.
