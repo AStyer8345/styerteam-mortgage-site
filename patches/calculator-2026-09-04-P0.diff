@@ -1,0 +1,143 @@
+# Calculator P0 patch — 2026-09-04
+# Style: FIND/REPLACE document (line-number-independent, survives head/CTA edits).
+# NOT git-apply-able by design. Adam reviews and applies by hand.
+# No math is touched by any edit below.
+#
+# Covers 4 P0s:
+#   P0-1  Invisible hero H1 + subhead on 3 calculator pages (white text on cream)  — 1 file, 2 edits
+#   P0-2  rate-buydown on-screen schedule "Principal"/"Interest" headers swapped   — 1 file, 1 edit (12+ weeks open)
+#   P0-3  7 unlabeled form controls (5 wrap + 2 refinance) — WCAG AA               — 2 files, 7 edits
+#   P0-4  Sitewide assistant launcher button has NO accessible name at <=1600px    — 1 file, 1 edit
+#
+# After applying P0-1: bump the style.css cache-busting param on the 3 affected pages
+# (currently `style.css?v=20260830-cta1`) or the fix won't reach returning visitors.
+# After applying P0-4: bump `/assistant-widget.js?v=...` in script.js:1041 (currently v=20260830-merged-v1).
+
+################################################################################
+# P0-1 — style.css (2 edits)
+# Mechanism: calculator-suite.css:111 sets `.calc-tool-hero h1{color:#fff}` for the
+# old navy-gradient hero. The 08-30 editorial rollout recolors the hero background to
+# cream (--editorial-warm #f3f0e8) via `.calculator-page .calc-tool-hero{...}` but
+# never overrides the text color, so the H1 renders white-on-cream at 1.13:1 —
+# effectively invisible. Verified live (screenshot + getComputedStyle) on
+# calculator-payment, calculator-affordability; calculator-refinance-breakeven has the
+# identical class pair. asset-depletion is NOT affected (inline navy background wins).
+# Same class of bug as the .lp-trust-chip fix Adam caught on 08-30.
+################################################################################
+
+FILE: style.css
+
+FIND:
+.calculator-page .calc-tool-hero h1{font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:.35rem}
+
+REPLACE:
+.calculator-page .calc-tool-hero h1{font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:.35rem;color:var(--color-navy)}
+
+FIND:
+.calculator-page .calc-tool-hero p{max-width:700px;margin-bottom:0}
+
+REPLACE:
+.calculator-page .calc-tool-hero p{max-width:700px;margin-bottom:0;color:#536172;opacity:1}
+
+# Note: #536172 is the exact subtitle color the editorial system already uses for
+# .hero-subtitle on loan/location/trust/guide pages — matches the design system.
+# opacity:1 neutralizes calculator-suite.css's `.calc-tool-hero p{opacity:0.9}`.
+
+################################################################################
+# P0-2 — rate-buydown-calculator.html (1 edit)
+# On-screen schedule header says Principal|Interest at columns 5-6; the row renderer
+# emits r.interest then r.principal (L903-904). The full-schedule modal header
+# (Interest|Principal) matches the cells and is correct. In month 1, the column
+# labeled "Principal" shows the (much larger) interest figure. Swap the two <th>.
+################################################################################
+
+FILE: rate-buydown-calculator.html
+
+FIND:
+                  <th scope="col">Principal</th>
+                  <th scope="col">Interest</th>
+
+REPLACE:
+                  <th scope="col">Interest</th>
+                  <th scope="col">Principal</th>
+
+################################################################################
+# P0-3a — wrap-mortgage-calculator.html (5 edits)
+# 5 number inputs have visible text nearby but no programmatic label (the text sits
+# in a sibling <span> or an un-associated <label> with no `for`). Confirmed by BOTH
+# the static accessible-name audit and live Lighthouse (axe `label` audit) — same 5.
+# aria-label text mirrors each control's visible label.
+# (The other 6 wrap inputs gained aria-labels since the 06-29 audit — 16 -> 5 open.)
+################################################################################
+
+FILE: wrap-mortgage-calculator.html
+
+FIND:
+                <input type="number" id="w-existing-rate" value="3" min="0" max="15" step="0.125" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+
+REPLACE:
+                <input type="number" id="w-existing-rate" aria-label="Existing loan interest rate percent" value="3" min="0" max="15" step="0.125" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+
+FIND:
+                <input type="number" id="w-closing-pct" value="8" min="0" max="15" step="0.5" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+
+REPLACE:
+                <input type="number" id="w-closing-pct" aria-label="Closing costs percent" value="8" min="0" max="15" step="0.5" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+
+FIND:
+                <input type="number" id="w-wrap-rate" value="6.5" min="0" max="15" step="0.125" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+
+REPLACE:
+                <input type="number" id="w-wrap-rate" aria-label="Wrap loan interest rate percent" value="6.5" min="0" max="15" step="0.125" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+
+FIND:
+                <input type="number" id="w-term" value="30" min="5" max="30" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+
+REPLACE:
+                <input type="number" id="w-term" aria-label="Wrap term in years" value="30" min="5" max="30" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+
+FIND:
+                <input type="number" id="w-appreciation" value="3.0" min="0" max="10" step="0.1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+
+REPLACE:
+                <input type="number" id="w-appreciation" aria-label="Annual appreciation percent" value="3.0" min="0" max="10" step="0.1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
+
+################################################################################
+# P0-3b — refinance-calculator.html (2 edits)
+# 1) The escrow on/off switch is a checkbox inside a text-free <label class="switch">
+#    — accessible name is EMPTY, so a screen reader announces only "checkbox".
+# 2) The read-only Computed Per-Diem display field's <label> has no `for` attribute.
+################################################################################
+
+FILE: refinance-calculator.html
+
+FIND:
+          <input type="checkbox" id="escrow-toggle" checked>
+
+REPLACE:
+          <input type="checkbox" id="escrow-toggle" aria-label="Include escrows in payment" checked>
+
+FIND:
+          <input type="text" id="computed-perdiem" readonly tabindex="-1" style="background:#f8fafc;color:var(--text-muted);">
+
+REPLACE:
+          <input type="text" id="computed-perdiem" aria-label="Computed per-diem interest" readonly tabindex="-1" style="background:#f8fafc;color:var(--text-muted);">
+
+################################################################################
+# P0-4 — assistant-widget.js (1 edit)  [sitewide element, surfaced on calc pages]
+# assistant-widget.css:15 hides the launcher's text span at <=1600px
+# (`.ma-launcher span:last-child{display:none}`) and the remaining icon span is
+# aria-hidden — so on virtually every real screen the floating assistant button has
+# NO accessible name. Lighthouse `button-name` fails on every audited calc page.
+# A static aria-label also hardens the professionalMode text variant.
+################################################################################
+
+FILE: assistant-widget.js
+
+FIND:
+      '<button class="ma-launcher" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="mortgage-assistant-panel">',
+
+REPLACE:
+      '<button class="ma-launcher" type="button" aria-label="Open mortgage assistant" aria-haspopup="dialog" aria-expanded="false" aria-controls="mortgage-assistant-panel">',
+
+# END OF PATCH — 11 edits, 4 files. No math, no form names, no GTM, no tracking touched.
