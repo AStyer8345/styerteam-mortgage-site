@@ -1,3 +1,10 @@
+## 2026-09-05 — Durable inquiry handoff and single owner notification
+
+- All registered forms retain one inquiry ID across Netlify capture and the website function. The function persists contact matching, inquiry, task, and notification work in LoanOS before dispatching; a retry returns the original receipt.
+- Follow-up questionnaires carry their original inquiry ID. Assistant backup capture is attempted only when the primary handoff fails. Queued delivery is described as saved, not falsely reported as delivered or failed.
+- Controlled internal tests skip Mailchimp. Existing approved acknowledgements remain on the durable worker; no new marketing sequence is introduced.
+- Validation: 216 tests, TypeScript, and the 44-form notification audit passed before release. Backend transaction checks distinguish retries, questionnaire continuations, and separate new inquiries from the same person.
+
 ## 2026-09-04 PM — styer-site-daily Friday rotation: clean audit, PSI escalated, blog staleness worsened
 
 **No commit — 0 site mutations.**

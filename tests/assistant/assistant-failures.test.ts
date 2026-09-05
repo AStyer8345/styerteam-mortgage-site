@@ -30,3 +30,10 @@ test('gateway enforces persistent rate limiting and lead consent', () => {
   assert.match(gateway, /consent_required/);
   assert.match(gateway, /consentAccepted !== true/);
 });
+
+
+test('a saved notification queue is not reported as failed delivery', () => {
+  const message = toolResultMessage('create_or_update_website_lead', { ok: true, status: 'created', data: { notificationsQueued: true, ownerNotified: null } });
+  assert.match(message, /follow-up queue/);
+  assert.doesNotMatch(message, /could not|was notified|email.*sent/);
+});

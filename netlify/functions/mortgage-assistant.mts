@@ -371,6 +371,7 @@ export function toolResultMessage(name: string, result: { ok: boolean; status: s
   if (name === 'send_application_link' && typeof result.data?.applicationUrl === 'string') return `Here is the approved secure application link: ${result.data.applicationUrl}`;
   if (name === 'create_or_update_website_lead') {
     const saved = result.status === 'existing' ? 'Your request was added to the existing contact record.' : 'Your contact request was saved.';
+    if (result.data?.notificationsQueued === true) return `${saved} It is in Adam’s team’s follow-up queue.`;
     if (result.data?.ownerNotified !== true) return `${saved} The email notification could not be sent, so Adam may not see it immediately. Please call or text (512) 956-6010.`;
     if (result.data?.visitorAcknowledged === true) return `${saved} Adam was notified, and a confirmation email is on its way.`;
     return `${saved} Adam was notified, but the confirmation email could not be sent.`;

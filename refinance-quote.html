@@ -325,6 +325,7 @@
               id="form-refinance-quote"
             >
               <input type="hidden" name="form-name" value="refinance-quote">
+<input type="hidden" name="inquiry_id" value="">
               <!-- UTM tracking — auto-populated by JS below -->
               <input type="hidden" id="rq-utm-source"   name="utm_source">
               <input type="hidden" id="rq-utm-medium"   name="utm_medium">
@@ -545,6 +546,8 @@
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+              inquiry_id: data.get('inquiry_id'),
+              'form-name': data.get('form-name'),
               email:        data.get('email')        || '',
               fname:        data.get('first_name')   || '',
               lname:        data.get('last_name')    || '',

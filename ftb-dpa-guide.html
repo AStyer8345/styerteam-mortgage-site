@@ -417,6 +417,7 @@
               <!-- Netlify honeypot -->
               <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
               <input type="hidden" name="form-name" value="ftb-dpa-guide-form">
+<input type="hidden" name="inquiry_id" value="">
               <!-- Hidden tracking fields — populated by JS below -->
               <input type="hidden" id="dpa-tag"          name="tag"          value="ftb-dpa-guide">
               <input type="hidden" id="dpa-lead-source"  name="lead_source"  value="FTB DPA Guide">
@@ -599,6 +600,8 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            inquiry_id: window.StyerInquiryId(form),
+            'form-name': form.getAttribute('name'),
             email:        email,
             fname:        fname,
             phone:        phone,
@@ -620,7 +623,7 @@
           return data;
         });
 
-        var ownerEmailNotification = Promise.resolve().then(function () {
+        var ownerEmailNotification = primaryNotification.then(function () { return false; }, function () {
           return window.StyerCaptureNotificationBackup({
             sourceForm: 'ftb-dpa-guide-form',
             name: fname,
@@ -637,7 +640,7 @@
           window.location.href = '/thank-you.html?type=ftb-dpa-guide';
           return;
         }
-        if (results[1].status === 'fulfilled') {
+        if (results[1].status === 'fulfilled' && results[1].value !== false) {
           window.location.href = '/thank-you.html?type=form-recovery&request=dpa-guide';
           return;
         }

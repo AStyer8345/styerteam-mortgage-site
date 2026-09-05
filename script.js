@@ -1,3 +1,25 @@
+// One ID survives primary/fallback transport and retry; a reset starts a new inquiry.
+function styerInquiryId(form) {
+  let field = form.querySelector('input[name="inquiry_id"]');
+  if (!field) { field = document.createElement('input'); field.type = 'hidden'; field.name = 'inquiry_id'; form.appendChild(field); }
+  if (!field.value) field.value = crypto.randomUUID();
+  const formName = form.getAttribute('name') || form.querySelector('[name="form-name"]')?.value || '';
+  try {
+    if (['qualification-followup', 'quick-quote-followup'].includes(formName)) {
+      let parent = form.querySelector('input[name="parent_inquiry_id"]');
+      if (!parent) { parent = document.createElement('input'); parent.type = 'hidden'; parent.name = 'parent_inquiry_id'; form.appendChild(parent); }
+      parent.value = sessionStorage.getItem('styer:parent-inquiry-id') || '';
+    } else if (formName !== 'notification-backup') {
+      sessionStorage.setItem('styer:parent-inquiry-id', field.value);
+    }
+  } catch (_) { /* Capture remains available when browser storage is disabled. */ }
+  return field.value;
+}
+window.StyerInquiryId = styerInquiryId;
+document.addEventListener('submit', event => { if (event.target.tagName === 'FORM') styerInquiryId(event.target); }, true);
+document.addEventListener('formdata', event => { event.formData.set('inquiry_id', styerInquiryId(event.target)); const parent = event.target.querySelector('[name="parent_inquiry_id"]'); if (parent) event.formData.set('parent_inquiry_id', parent.value); }, true);
+document.addEventListener('reset', event => { const field = event.target.querySelector('input[name="inquiry_id"]'); if (field) field.value = ''; }, true);
+
 /* ==========================================================================
    HyperSmart Home Loans - Main JavaScript
    ========================================================================== */
@@ -536,6 +558,7 @@ async function submitForm(form) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email, fname, lname, phone,
+        inquiry_id: formData.get('inquiry_id'),
         tag: 'quick-contact-lead',
         loan_goal: loanGoal,
         lead_source: 'Quick Contact',
@@ -699,6 +722,7 @@ function initHeroQuickForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email, fname, lname, phone,
+        inquiry_id: formData.get('inquiry_id'),
           tag: 'quick-quote-lead',
           loan_goal: loanGoal,
           lead_source: 'Quick Quote',
@@ -952,6 +976,8 @@ function initPrequalForm() {
 
     const params = new URLSearchParams(window.location.search);
     const payload = {
+      inquiry_id: window.StyerInquiryId(form),
+      'form-name': form.getAttribute('name') || 'prequal',
       fname:        get('first_name'),
       lname:        get('last_name'),
       email:        get('email'),

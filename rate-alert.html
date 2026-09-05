@@ -393,6 +393,7 @@
               netlify-honeypot="bot-field"
             >
               <input type="hidden" name="form-name" value="rate-alert-form">
+<input type="hidden" name="inquiry_id" value="">
               <!-- Hidden tracking fields — populated by JS before submit -->
               <input type="hidden" id="ra-tag"          name="tag"          value="rate-alert">
               <input type="hidden" id="ra-lead-source"  name="lead_source"  value="Rate Alert Funnel">
@@ -571,6 +572,8 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            inquiry_id: window.StyerInquiryId(form),
+            'form-name': form.getAttribute('name'),
             fname:        fname,
             email:        email,
             tag:          'rate-alert',
@@ -591,7 +594,7 @@
           return data;
         });
 
-        var ownerEmailNotification = Promise.resolve().then(function () {
+        var ownerEmailNotification = primaryNotification.then(function () { return false; }, function () {
           return window.StyerCaptureNotificationBackup({
             sourceForm: 'rate-alert-form',
             name: fname,
@@ -606,7 +609,7 @@
           window.location.href = '/thank-you.html?type=rate-alert';
           return;
         }
-        if (results[1].status === 'fulfilled') {
+        if (results[1].status === 'fulfilled' && results[1].value !== false) {
           window.location.href = '/thank-you.html?type=form-recovery&request=rate-alert';
           return;
         }

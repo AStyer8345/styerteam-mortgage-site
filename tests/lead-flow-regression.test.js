@@ -175,22 +175,15 @@ test('thank-you page strips legacy contact parameters before GTM initializes', (
   assert.match(thankYou, /history\.replaceState/);
 });
 
-test('lead-intake restores the active web lead acknowledgment automation', () => {
-  assert.match(leadIntake, /N8N_WEB_LEAD_URL/);
-  assert.match(leadIntake, /styer\.app\.n8n\.cloud\/webhook\/web-lead/);
-  assert.match(leadIntake, /notifyWebLeadAutomation/);
-  assert.match(leadIntake, /form_name: p\.formName/);
-  assert.match(leadIntake, /const data = \{/);
-  assert.match(leadIntake, /\n\s+data,/);
-  assert.doesNotMatch(leadIntake, /ftb-guide-email/);
+test('lead intake dispatches the durable outbox through the existing automation', () => {
+  assert.match(leadIntake, /dispatch_inquiry_id: captured.inquiry_id/);
+  assert.match(leadIntake, /api\/intake\/inquiries/);
+  assert.doesNotMatch(leadIntake, /api\/contacts\/web-lead/);
 });
-
-test('owner notification failures are not reported as successful API responses', () => {
-  assert.match(leadIntake, /ownerNotified \? 200 : 502/);
-  assert.match(leadIntake, /success:\s+ownerNotified/);
-  assert.doesNotMatch(leadIntake, /return respond\(200, \{\s*success:\s+true/);
+test('owner delivery is explicitly distinct from capture and recoverable dispatch', () => {
+  assert.match(leadIntake, /ownerNotified: null/);
+  assert.match(leadIntake, /pending-recovery/);
   assert.match(subscribeLo, /n8nOk \? 200 : 502/);
-  assert.match(subscribeLo, /success:\s+n8nOk/);
 });
 
 test('custom notification routes have a registered Netlify email fallback', () => {

@@ -16,7 +16,9 @@
 
   <!-- quick-quote-followup: optional details form on /thank-you?type=quick-quote -->
   <form name="quick-quote-followup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+<input type="hidden" name="parent_inquiry_id" value="">
     <input type="hidden" name="form-name" value="quick-quote-followup">
+<input type="hidden" name="inquiry_id" value="">
     <input type="text" name="bot-field">
     <input type="hidden" name="original_email">
     <input type="hidden" name="original_name">
@@ -70,6 +72,7 @@
   -->
   <form name="notification-backup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
     <input type="hidden" name="form-name" value="notification-backup">
+<input type="hidden" name="inquiry_id" value="">
     <input type="text" name="bot-field">
     <input type="text" name="source_form">
     <input type="text" name="name">
