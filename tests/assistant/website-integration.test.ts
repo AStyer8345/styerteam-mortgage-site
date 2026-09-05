@@ -39,13 +39,14 @@ test('confirmed chatbot leads report LoanOS notification and acknowledgment fail
   assert.match(gateway, /email notification could not be sent/);
 });
 
-test('assistant contact confirmations independently email Adam after consent', () => {
+test('assistant contact confirmations use backup only when the primary request fails', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
   assert.match(browser, /pendingLeadNotification/);
   assert.match(browser, /if \(needsConsent && !ui\.consentInput\.checked\)/);
   assert.match(browser, /if \(needsConsent && state\.pendingLeadNotification\)/);
   assert.match(browser, /StyerCaptureNotificationBackup\(approvedNotification\)/);
-  assert.match(browser, /Promise\.allSettled\(\[actionRequest, ownerEmailCapture\]\)/);
+  assert.match(browser, /actionRequest\.then[\s\S]*\.catch\(function \(error\)/);
+  assert.doesNotMatch(browser, /Promise\.allSettled\(\[actionRequest, ownerEmailCapture\]\)/);
   assert.match(browser, /actionRequest = request\([\s\S]*}, 20000\)/);
 });
 

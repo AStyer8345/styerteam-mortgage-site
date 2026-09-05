@@ -561,6 +561,7 @@
 
             <form id="guide-signup-form" name="first-time-buyer-guide" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
               <input type="hidden" name="form-name" value="first-time-buyer-guide">
+<input type="hidden" name="inquiry_id" value="">
               <p hidden><label>Leave this blank: <input name="bot-field"></label></p>
               <div class="guide-form-group">
                 <label for="guide-fname">First Name</label>
@@ -577,6 +578,7 @@
             <script>
               document.getElementById('guide-signup-form').addEventListener('submit', async function(e) {
                 e.preventDefault();
+                var form = e.currentTarget;
                 var btn    = document.getElementById('guide-submit-btn');
                 var status = document.getElementById('guide-form-status');
                 var errBox = document.getElementById('guide-form-error');
@@ -591,7 +593,7 @@
                 var primaryNotification = window.StyerFetchWithTimeout('/.netlify/functions/lead-intake', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ email: email, fname: fname, tag: 'ftb-lead' })
+                  body: JSON.stringify({ inquiry_id: window.StyerInquiryId(form), 'form-name': form.getAttribute('name'), email: email, fname: fname, tag: 'ftb-lead' })
                 }, 15000).then(async function (res) {
                   if (!res.ok) throw new Error('lead-intake returned ' + res.status);
                   var data = await res.json();
@@ -599,7 +601,7 @@
                   return data;
                 });
 
-                var ownerEmailNotification = Promise.resolve().then(function () {
+                var ownerEmailNotification = primaryNotification.then(function () { return false; }, function () {
                   return window.StyerCaptureNotificationBackup({
                       sourceForm: 'first-time-buyer-guide',
                       name: fname,
@@ -611,7 +613,7 @@
 
                 var results = await Promise.allSettled([primaryNotification, ownerEmailNotification]);
                 var primaryAccepted = results[0].status === 'fulfilled';
-                var ownerEmailAccepted = results[1].status === 'fulfilled';
+                var ownerEmailAccepted = results[1].status === 'fulfilled' && results[1].value !== false;
 
                 if (!primaryAccepted && !ownerEmailAccepted) {
                   btn.disabled = false;
@@ -629,6 +631,7 @@
                   ? 'Check your email too — a copy is on its way.'
                   : 'The guide is opening now. Adam also received your request for follow-up.';
                 window.open('https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9', '_blank');
+                form.reset();
                 document.getElementById('guide-fname').value = '';
                 document.getElementById('guide-email').value = '';
               });

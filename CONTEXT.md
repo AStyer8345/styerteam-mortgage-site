@@ -1,5 +1,7 @@
 # styermortgage.com — Context
 
+**2026-09-05 intake release:** Website forms and the assistant now use LoanOS durable inquiry/outbox capture. Netlify is an independent capture transport using the same inquiry ID. Follow-up questionnaires retain the parent inquiry ID; backup alerts are failure-only. See CHANGELOG and LoanOS `docs/COMMAND_CENTER_INTAKE.md`. Do not restore the old parallel raw-webhook/contact writers.
+
 ## What This Is
 
 Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/JS on Netlify — no framework, no CMS. 75+ public pages live (homepage, loan pages, 25 suburb SEO pages, 5 rate-check city pages, 10 rate-shopper blog posts, resource/guide pages, blog, calculators, realtor hub, plus the 7-page non-QM cluster).

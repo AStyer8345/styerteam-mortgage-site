@@ -480,7 +480,9 @@
           <p class="ty-form-hero-sub">Takes 60 seconds. Totally optional — but leads who share these details get a more accurate quote faster.</p>
 
           <form name="quick-quote-followup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="ty-followup-form" id="ty-followup-form">
+<input type="hidden" name="parent_inquiry_id" value="">
             <input type="hidden" name="form-name" value="quick-quote-followup">
+<input type="hidden" name="inquiry_id" value="">
             <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
             <input type="hidden" name="original_email" id="ty-fu-email">
             <input type="hidden" name="original_name" id="ty-fu-name">
@@ -591,7 +593,9 @@
           <p class="ty-form-hero-sub">Your contact information is already safely submitted. These answers simply help Adam prepare a more useful first conversation.</p>
 
           <form name="qualification-followup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="ty-followup-form" id="ty-qualification-form">
+<input type="hidden" name="parent_inquiry_id" value="">
             <input type="hidden" name="form-name" value="qualification-followup">
+<input type="hidden" name="inquiry_id" value="">
             <input type="hidden" name="subject" value="Additional pre-approval details">
             <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
             <input type="hidden" name="original_email" id="ty-qf-email">

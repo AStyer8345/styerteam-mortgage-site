@@ -122,7 +122,7 @@ test('lead intake propagates first-touch and CTA attribution to downstream syste
     'cta_source_page', 'cta_label',
   ]) {
     const occurrences = leadIntake.match(new RegExp(field, 'g')) || [];
-    assert.ok(occurrences.length >= 3, `${field} should be normalized and sent to both downstream systems`);
+    assert.ok(occurrences.length >= 2, `${field} should be normalized and persisted to the authoritative capture`);
   }
 });
 
@@ -142,7 +142,7 @@ test('lead intake sends normalized attribution in the live notification payload'
     process.env.LOANOS_AGENT_SECRET = 'test-only';
     global.fetch = async (url, options = {}) => {
       requests.push({ url: String(url), options });
-      return { ok: true, json: async () => ({}) };
+      return { ok: true, json: async () => ({captured:true,inquiry_id:'stored-inquiry-test'}) };
     };
     const modulePath = require.resolve('../netlify/functions/lead-intake.js');
     delete require.cache[modulePath];
@@ -151,6 +151,7 @@ test('lead intake sends normalized attribution in the live notification payload'
       httpMethod: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
+        inquiry_id: 'stable-inquiry-1234',
         email: 'person@example.test',
         first_name: 'Test',
         'form-name': 'get-preapproved',
@@ -167,13 +168,13 @@ test('lead intake sends normalized attribution in the live notification payload'
 
     assert.equal(response.statusCode, 200);
     assert.equal(requests.length, 2);
-    const notification = requests.find((request) => request.url === 'https://example.test/web-lead');
+    const notification = requests.find((request) => request.url === 'https://loanos.example.test/api/intake/inquiries');
     const payload = JSON.parse(notification.options.body);
-    assert.equal(payload.data.entry_referrer, 'https://styermortgage.com/bank-statement-loans.html');
-    assert.equal(payload.data.first_touch_source, 'chatgpt');
-    assert.equal(payload.data.first_touch_utm_source, 'chatgpt');
-    assert.equal(payload.data.intent, 'scenario');
-    assert.equal(payload.data.cta_label, 'Send Your Scenario');
+    assert.equal(payload.entry_referrer, 'https://styermortgage.com/bank-statement-loans.html');
+    assert.equal(payload.first_touch_source, 'chatgpt');
+    assert.equal(payload.first_touch_utm_source, 'chatgpt');
+    assert.equal(payload.intent, 'scenario');
+    assert.equal(payload.cta_label, 'Send Your Scenario');
   } finally {
     global.fetch = previousFetch;
     envNames.forEach((name) => {

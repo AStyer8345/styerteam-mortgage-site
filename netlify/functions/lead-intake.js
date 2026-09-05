@@ -1,9 +1,9 @@
 // netlify/functions/lead-intake.js
-// Unified lead ingress — replaces subscribe-lead.js for the n8n → Workflow DevKit cutover.
+// Durable lead ingress. LoanOS owns inquiry identity, matching, tasks and delivery state.
 //
 // Behavior:
-//   1. Subscribes contact to Mailchimp list (no journey tagging — Workflow DevKit owns drip now)
-//   2. POSTs normalized payload (including first-touch attribution) to LoanOS /api/contacts/web-lead
+//   1. Atomically captures an inquiry and delivery outbox in LoanOS.
+//   2. Dispatches that outbox through n8n; tests skip all marketing.
 //
 // Accepts BOTH payload shapes (backward-compatible with existing site forms):
 //   - legacy: { email, fname, lname, phone, tag, loan_goal, lead_source, utm_*, page_url, referrer }
@@ -19,7 +19,7 @@
 //   MAILCHIMP_BORROWER_LIST_ID     — list ID (no hard-coded fallback)
 //   MAILCHIMP_SERVER_PREFIX        — fallback datacenter (e.g. "us1") if key has no suffix
 //   LOANOS_URL                     — base URL to LoanOS (e.g. https://app.loanos.io)
-//   LOANOS_AGENT_SECRET            — bearer token for /api/contacts/web-lead
+//   LOANOS_AGENT_SECRET            — bearer token for /api/intake/inquiries
 //   N8N_WEB_LEAD_URL               — optional override for active Web Lead Automation webhook
 
 const crypto = require("crypto");
@@ -83,7 +83,13 @@ exports.handler = async (event) => {
     return respond(400, { error: "email required" });
   }
 
+  const isTest = body.test_mode === true || body.test_mode === "true";
+  if (isTest && !["adam@thestyerteam.com", "adam.styer@hypersmart.loan", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
+  const inquiryId = String(body.inquiry_id || "");
+  if (!/^[A-Za-z0-9:_-]{8,200}$/.test(inquiryId)) return respond(400, { error: "A stable inquiry_id is required" });
+
   const leadPayload = {
+    inquiryId, isTest, parentInquiryId: body.parent_inquiry_id || null,
     firstName, lastName, email, phone,
     loanGoal, leadSource, formName,
     purchasePrice: body.purchase_price ?? null,
@@ -137,40 +143,21 @@ exports.handler = async (event) => {
   leadPayload.qualificationTier = qualification.tier;
   leadPayload.qualificationScore = qualification.score;
 
-  // Run independent capture paths and request the active n8n notification workflow.
-  const [mcResult, loResult, n8nResult] = await Promise.allSettled([
-    addToMailchimp({ email, firstName, lastName, tag }),
-    createLoanosContact(leadPayload),
-    notifyWebLeadAutomation(leadPayload),
+  // Persist contact matching, task and outbox atomically before any alert.
+  let captured;
+  try { captured = await createLoanosContact(leadPayload); }
+  catch (error) { return respond(502, { success: false, captured: false, ownerNotified: null, error: "Primary capture unavailable; the independent form backup remains available" }); }
+  const [marketing, delivery] = await Promise.allSettled([
+    isTest ? Promise.resolve("skipped-test") : addToMailchimp({ email, firstName, lastName, tag }),
+    fetch(N8N_WEB_LEAD_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ dispatch_inquiry_id: captured.inquiry_id }) }).then(response => { if (!response.ok) throw new Error("Delivery dispatch unavailable"); }),
   ]);
-
-  if (mcResult.status === "rejected") {
-    console.error("[lead-intake] Mailchimp error (non-fatal):", mcResult.reason?.message);
-  }
-  if (loResult.status === "rejected") {
-    console.error("[lead-intake] LoanOS error (non-fatal):", loResult.reason?.message);
-  }
-  if (n8nResult.status === "rejected") {
-    console.error("[lead-intake] Web lead automation error (non-fatal):", n8nResult.reason?.message);
-  }
-
-  const automationAccepted = n8nResult.status === "fulfilled";
-  const captured = mcResult.status === "fulfilled" || loResult.status === "fulfilled";
-
-  // n8n acknowledges before downstream delivery. A 2xx confirms durable capture
-  // plus workflow acceptance, never a delivered email. Independent Netlify form
-  // capture remains available when this primary handoff fails.
-  const handoffAccepted = captured && automationAccepted;
-  return respond(handoffAccepted ? 200 : 502, {
-    success: handoffAccepted,
-    captured,
-    automationAccepted,
-    ownerNotified: null, // Unknown until a downstream delivery receipt exists.
-    mailchimp: mcResult.status === "fulfilled" ? "ok" : "failed",
-    loanos:    loResult.status === "fulfilled" ? "ok" : "failed",
-    webLeadAutomation: automationAccepted ? "accepted" : "failed",
-    qualification: { tier: qualification.tier, score: qualification.score },
-  });
+  // Captured work remains recoverable even if the immediate dispatcher fails.
+  return respond(200, { success: true, captured: true, inquiry_id: captured.inquiry_id,
+    contact_id: captured.contact_id, task_id: captured.task_id, duplicate: captured.duplicate,
+    automationAccepted: delivery.status === "fulfilled", ownerNotified: null,
+    mailchimp: isTest ? "skipped-test" : marketing.status === "fulfilled" ? "ok" : "failed",
+    loanos: "ok", webLeadAutomation: delivery.status === "fulfilled" ? "accepted" : "pending-recovery",
+    qualification: { tier: qualification.tier, score: qualification.score } });
 };
 
 // ── Mailchimp ─────────────────────────────────────────────────────────────────
@@ -220,7 +207,7 @@ async function createLoanosContact(p) {
     throw new Error("LoanOS capture is not configured");
   }
 
-  const res = await fetch(`${LOANOS_URL}/api/contacts/web-lead`, {
+  const res = await fetch(`${LOANOS_URL}/api/intake/inquiries`, {
     method: "POST",
     headers: {
       "Content-Type":  "application/json",
@@ -228,6 +215,9 @@ async function createLoanosContact(p) {
     },
     body: JSON.stringify({
       org_slug:       "adam-styer-mslp",
+      inquiry_id: p.inquiryId,
+      parent_inquiry_id: p.parentInquiryId,
+      test_mode: p.isTest,
       first_name:     p.firstName,
       last_name:      p.lastName,
       email:          p.email,
@@ -293,103 +283,9 @@ async function createLoanosContact(p) {
     const err = await res.json().catch(() => ({}));
     throw new Error(`LoanOS API ${res.status}: ${err.error || "unknown"}`);
   }
-}
-
-// ── n8n Web Lead Automation ───────────────────────────────────────────────────
-// This active workflow sends Adam's alert and the borrower's immediate
-// "Got your info" email. Payload mirrors Netlify form notification shape.
-
-async function notifyWebLeadAutomation(p) {
-  if (!N8N_WEB_LEAD_URL) {
-    throw new Error("Web lead automation is not configured");
-  }
-
-  const fullName = [p.firstName, p.lastName].filter(Boolean).join(" ");
-  const data = {
-    name: fullName,
-    first_name: p.firstName,
-    last_name: p.lastName,
-    fname: p.firstName,
-    lname: p.lastName,
-    email: p.email,
-    phone: p.phone,
-    loanGoal: p.loanGoal,
-    loan_goal: p.loanGoal,
-    loan_type: p.loanGoal,
-    lead_source: p.leadSource,
-    form_name: p.formName,
-    "form-name": p.formName,
-    purchase_price: p.purchasePrice,
-    property_value: p.propertyValue,
-    loan_amount: p.loanAmount,
-    down_payment: p.downPayment,
-    household_income: p.householdIncome,
-    credit_score: p.creditScore,
-    income_type: p.incomeType,
-    employment_type: p.incomeType,
-    property_use: p.propertyUse,
-    property_type: p.propertyType,
-    under_contract: p.underContract,
-    target_city: p.targetCity,
-    timeline: p.timeline,
-    lender_status: p.lenderStatus,
-    documentation_issue: p.documentationIssue,
-    situation: p.situation,
-    notes: p.situation,
-    tcpa_consent: p.tcpaConsent,
-    sms_opt_in: p.smsOptIn,
-    page_url: p.sourcePage,
-    source_page: p.sourcePage,
-    utm_source: p.utmSource,
-    utm_medium: p.utmMedium,
-    utm_campaign: p.utmCampaign,
-    utm_term: p.utmTerm,
-    utm_content: p.utmContent,
-    entry_referrer: p.entryReferrer,
-    referrer: p.entryReferrer, // Backward-compatible downstream alias; not a Netlify form field.
-    first_touch_page: p.firstTouchPage,
-    first_touch_referrer: p.firstTouchReferrer,
-    first_touch_at: p.firstTouchAt,
-    first_touch_source: p.firstTouchSource,
-    first_touch_utm_source: p.firstTouchUtmSource,
-    first_touch_utm_medium: p.firstTouchUtmMedium,
-    first_touch_utm_campaign: p.firstTouchUtmCampaign,
-    first_touch_utm_term: p.firstTouchUtmTerm,
-    first_touch_utm_content: p.firstTouchUtmContent,
-    intent: p.intent,
-    source: p.attributionSource,
-    cta_source_page: p.ctaSourcePage,
-    cta_label: p.ctaLabel,
-    audience_type: p.audienceType,
-    partner_role: p.partnerRole,
-    scenario_category: p.scenarioCategory,
-    property_state: p.propertyState,
-    assistant_mode: p.assistantMode,
-    client_goal: p.clientGoal,
-    include_referrer_in_follow_up: p.includeReferrerInFollowUp,
-    preferred_follow_up: p.preferredFollowUp,
-    notification_email: p.notificationEmail,
-    recipient_email: p.notificationEmail,
-    adam_email: p.notificationEmail,
-    qualification_tier: p.qualificationTier,
-    qualification_score: p.qualificationScore,
-  };
-
-  const res = await fetch(N8N_WEB_LEAD_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      form_name: p.formName,
-      formName: p.formName,
-      submitted_at: new Date().toISOString(),
-      data,
-      ...data,
-    }),
-  });
-
-  if (!res.ok) {
-    throw new Error(`Web Lead Automation ${res.status}`);
-  }
+  const receipt = await res.json();
+  if (!receipt.captured || !receipt.inquiry_id) throw new Error("Capture receipt missing");
+  return receipt;
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────

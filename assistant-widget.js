@@ -273,16 +273,8 @@
       ui.consentInput.focus();
       return;
     }
-    var ownerEmailCapture = null;
-    if (needsConsent && state.pendingLeadNotification) {
-      var approvedNotification = state.pendingLeadNotification;
-      ownerEmailCapture = Promise.resolve().then(function () {
-        if (typeof window.StyerCaptureNotificationBackup !== 'function') {
-          throw new Error('Owner email capture is unavailable.');
-        }
-        return window.StyerCaptureNotificationBackup(approvedNotification);
-      });
-    }
+    var approvedNotification = null;
+    if (needsConsent && state.pendingLeadNotification) approvedNotification = state.pendingLeadNotification;
     setBusy(true, 'Confirming the requested action.');
     var actionRequest = request({
       conversationId: state.conversationId,
@@ -294,43 +286,21 @@
       salesState: state.salesState,
     }, 20000);
 
-    if (!ownerEmailCapture) {
-      actionRequest.then(function (data) {
-        clearConfirmation();
-        // The server records two transcript pairs for a confirmed action
-        // (confirmation + result), so advance past all four rows.
-        state.turnCount += 3;
-        handleResponse(data);
-      }).catch(handleError).finally(function () { setBusy(false, ''); });
-      return;
-    }
-
-    Promise.allSettled([actionRequest, ownerEmailCapture]).then(function (results) {
-      var actionResult = results[0];
-      var emailResult = results[1];
-      if (actionResult.status === 'fulfilled') {
-        var data = actionResult.value;
-        if (emailResult.status === 'fulfilled' && data.toolResult && data.toolResult.data && data.toolResult.data.ownerNotified !== true) {
-          data.message = 'Your contact request was saved, and a separate email alert was sent to Adam.';
-        }
-        clearConfirmation();
-        // The server records two transcript pairs for a confirmed action
-        // (confirmation + result), so advance past all four rows.
-        state.turnCount += 3;
-        handleResponse(data);
-        return;
+    actionRequest.then(function (data) {
+      clearConfirmation();
+      state.turnCount += 3;
+      handleResponse(data);
+    }).catch(function (error) {
+      if (!approvedNotification || typeof window.StyerCaptureNotificationBackup !== 'function') {
+        handleError(error); return;
       }
-
-      if (emailResult.status === 'fulfilled') {
+      return window.StyerCaptureNotificationBackup(approvedNotification).then(function () {
         clearConfirmation();
         state.turnCount += 3;
-        addMessage('assistant', 'Your contact request was sent to Adam by email, but the assistant could not finish saving it in the contact system. Adam can still follow up using the information you approved.');
+        addMessage('assistant', 'Your contact details were saved in our backup for Adam’s team to review. The primary request could not be confirmed.');
         state.converted = true;
-        trackAssistant('contact_submitted', { cta_type: 'contact' });
-        return;
-      }
-
-      handleError(actionResult.reason);
+        trackAssistant('contact_submitted', { cta_type: 'contact', recovery: true });
+      }).catch(function () { handleError(error); });
     }).finally(function () { setBusy(false, ''); });
   }
 

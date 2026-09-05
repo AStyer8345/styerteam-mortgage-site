@@ -108,8 +108,8 @@ if (!/window\.StyerCaptureNotificationBackup = captureNotificationBackup/.test(s
 if (!/window\.StyerFetchWithTimeout = fetchWithTimeout/.test(sharedScript)) {
   failures.push('script.js: bounded form-request helper is missing.');
 }
-if (!/const handoffAccepted = captured && automationAccepted/.test(leadIntake) || !/handoffAccepted \? 200 : 502/.test(leadIntake) || /success:\s+true/.test(leadIntake)) {
-  failures.push('lead-intake.js: failed handoffs can still be reported as successful.');
+if (!leadIntake.includes('/api/intake/inquiries') || !leadIntake.includes('captured: false') || !leadIntake.includes('pending-recovery') || !leadIntake.includes('ownerNotified: null')) {
+  failures.push('lead-intake.js: durable capture, pending recovery or truthful delivery state is missing.');
 }
 if (!/n8nOk \? 200 : 502/.test(subscribeLo) || /success:\s+true/.test(subscribeLo)) {
   failures.push('subscribe-lo.js: notification failures can still be reported as successful.');

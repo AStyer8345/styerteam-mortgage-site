@@ -479,6 +479,7 @@
               id="form-get-preapproved"
             >
               <input type="hidden" name="form-name" value="get-preapproved">
+<input type="hidden" name="inquiry_id" value="">
               <!-- Netlify honeypot must be part of the submitted form. -->
               <p style="display:none;" aria-hidden="true">
                 <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
@@ -861,6 +862,8 @@
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+              inquiry_id: data.get('inquiry_id'),
+              'form-name': data.get('form-name'),
               email:         data.get('email')        || '',
               fname:         data.get('first_name')   || '',
               lname:         data.get('last_name')    || '',
