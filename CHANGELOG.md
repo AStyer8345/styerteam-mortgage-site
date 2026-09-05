@@ -1,3 +1,12 @@
+## 2026-09-04 — styer-site-daily Thursday rotation: clean audit, near-miss investigated and killed
+
+**No commit — 0 site mutations.**
+
+- **Full 153-page internal link graph, live-fetched and parsed with `html.parser`:** 0 orphans, 0 pages under the 2-outbound-link bar. Funnel traced end to end (homepage → `/get-preapproved` ×5 → form → `/thank-you`; `contact.html` wiring confirmed).
+- **Near-miss investigated and closed, not surfaced as a defect:** live HTML for `contact`/`get-preapproved`/`refinance-quote` is missing the `netlify`/`netlify-honeypot` attributes present in the exact deployed commit's source — looked like a broken deploy dropping 3 core lead forms. Checked against Netlify's own Forms API via MCP instead of reporting it: all 3 forms are registered and actively capturing (`get-preapproved` received a live submission the same day, 14:05 UTC). Netlify's build-time form detection appears to consume its own marker attributes from served HTML once registered — not a defect.
+- PSI quota re-probed: 3rd consecutive confirmed-dead call (HTTP 429). Found a partial substitute: Netlify's own deploy record carries a homepage Lighthouse summary (Perf 80/A11y 90/BP 100/SEO 100/PWA 40).
+- Sitemap/robots/core 200, 153/153 `<loc>`/`<lastmod>`, conversion 10/10 — all re-verified live, no delta from 09-03.
+
 ## 2026-09-03 — styer-site-daily Wednesday rotation: Cedar Park AEO fix + tap-target resolved
 
 **Commit `c09be17`** — 1 file, `cedar-park-mortgage-lender.html`.
