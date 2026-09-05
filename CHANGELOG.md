@@ -5,6 +5,10 @@
 - Controlled internal tests skip Mailchimp. Existing approved acknowledgements remain on the durable worker; no new marketing sequence is introduced.
 - Validation: 216 tests, TypeScript, and the 44-form notification audit passed before release. Backend transaction checks distinguish retries, questionnaire continuations, and separate new inquiries from the same person.
 
+## 2026-09-04 — styer-blog-writer-weekly: published "What Is a Non-QM Loan?" pillar explainer
+
+Net-new blog post, Tier A/B backlog exhausted this run (DSCR cluster fully consumed; VA-basics Tier B item overlapped an existing 2026-03-29 post). Wrote a non-QM category explainer instead — CFPB QM/ATR definitions, Fannie Mae self-employed underwriting, IRS Schedule C — cross-linking the site's bank statement/DSCR/asset-depletion/1099 posts and the non-QM hub, responsive to competitive intel's finding that supporting-content breadth (not markup) is what's winning Phase A terms. Commit `551a99d`, live-verified 200. Detail: `run-logs/content-2026-09-04.md`.
+
 ## 2026-09-04 — styer-suburb-editor-daily Round 5 #12: dripping-springs — de-templated intro (fixed nonexistent "Arroyo Ranch"), DSISD FY26-27 proposed rate, Double L Ranch school/commercial land, fresh Aug 2026 median
 
 **Commits pending push** — 2 files, `dripping-springs-mortgage-lender.html` + `sitemap.xml`.
