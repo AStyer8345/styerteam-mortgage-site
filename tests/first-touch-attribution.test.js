@@ -138,6 +138,8 @@ test('lead intake sends normalized attribution in the live notification payload'
   try {
     envNames.forEach((name) => delete process.env[name]);
     process.env.N8N_WEB_LEAD_URL = 'https://example.test/web-lead';
+    process.env.LOANOS_URL = 'https://loanos.example.test';
+    process.env.LOANOS_AGENT_SECRET = 'test-only';
     global.fetch = async (url, options = {}) => {
       requests.push({ url: String(url), options });
       return { ok: true, json: async () => ({}) };
@@ -164,8 +166,9 @@ test('lead intake sends normalized attribution in the live notification payload'
     });
 
     assert.equal(response.statusCode, 200);
-    assert.equal(requests.length, 1);
-    const payload = JSON.parse(requests[0].options.body);
+    assert.equal(requests.length, 2);
+    const notification = requests.find((request) => request.url === 'https://example.test/web-lead');
+    const payload = JSON.parse(notification.options.body);
     assert.equal(payload.data.entry_referrer, 'https://styermortgage.com/bank-statement-loans.html');
     assert.equal(payload.data.first_touch_source, 'chatgpt');
     assert.equal(payload.data.first_touch_utm_source, 'chatgpt');

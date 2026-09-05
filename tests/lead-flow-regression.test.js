@@ -186,8 +186,8 @@ test('lead-intake restores the active web lead acknowledgment automation', () =>
 });
 
 test('owner notification failures are not reported as successful API responses', () => {
-  assert.match(leadIntake, /ownerNotified \? 200 : 502/);
-  assert.match(leadIntake, /success:\s+ownerNotified/);
+  assert.match(leadIntake, /handoffAccepted \? 200 : 502/);
+  assert.match(leadIntake, /success:\s+handoffAccepted/);
   assert.doesNotMatch(leadIntake, /return respond\(200, \{\s*success:\s+true/);
   assert.match(subscribeLo, /n8nOk \? 200 : 502/);
   assert.match(subscribeLo, /success:\s+n8nOk/);

@@ -108,8 +108,8 @@ if (!/window\.StyerCaptureNotificationBackup = captureNotificationBackup/.test(s
 if (!/window\.StyerFetchWithTimeout = fetchWithTimeout/.test(sharedScript)) {
   failures.push('script.js: bounded form-request helper is missing.');
 }
-if (!/ownerNotified \? 200 : 502/.test(leadIntake) || /success:\s+true/.test(leadIntake)) {
-  failures.push('lead-intake.js: notification failures can still be reported as successful.');
+if (!/const handoffAccepted = captured && automationAccepted/.test(leadIntake) || !/handoffAccepted \? 200 : 502/.test(leadIntake) || /success:\s+true/.test(leadIntake)) {
+  failures.push('lead-intake.js: failed handoffs can still be reported as successful.');
 }
 if (!/n8nOk \? 200 : 502/.test(subscribeLo) || /success:\s+true/.test(subscribeLo)) {
   failures.push('subscribe-lo.js: notification failures can still be reported as successful.');

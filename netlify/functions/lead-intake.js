@@ -137,7 +137,7 @@ exports.handler = async (event) => {
   leadPayload.qualificationTier = qualification.tier;
   leadPayload.qualificationScore = qualification.score;
 
-  // Run Mailchimp + LoanOS + active n8n Web Lead Automation in parallel; none is fatal.
+  // Run independent capture paths and request the active n8n notification workflow.
   const [mcResult, loResult, n8nResult] = await Promise.allSettled([
     addToMailchimp({ email, firstName, lastName, tag }),
     createLoanosContact(leadPayload),
@@ -154,20 +154,21 @@ exports.handler = async (event) => {
     console.error("[lead-intake] Web lead automation error (non-fatal):", n8nResult.reason?.message);
   }
 
-  const ownerNotified = n8nResult.status === "fulfilled";
+  const automationAccepted = n8nResult.status === "fulfilled";
   const captured = mcResult.status === "fulfilled" || loResult.status === "fulfilled";
 
-  // Notification is part of a successful lead handoff, not a best-effort side
-  // effect. Returning a non-2xx response prevents custom forms from treating
-  // this primary path as successful; those forms also run an independent
-  // Netlify owner-email capture.
-  return respond(ownerNotified ? 200 : 502, {
-    success:   ownerNotified,
+  // n8n acknowledges before downstream delivery. A 2xx confirms durable capture
+  // plus workflow acceptance, never a delivered email. Independent Netlify form
+  // capture remains available when this primary handoff fails.
+  const handoffAccepted = captured && automationAccepted;
+  return respond(handoffAccepted ? 200 : 502, {
+    success: handoffAccepted,
     captured,
-    ownerNotified,
+    automationAccepted,
+    ownerNotified: null, // Unknown until a downstream delivery receipt exists.
     mailchimp: mcResult.status === "fulfilled" ? "ok" : "failed",
     loanos:    loResult.status === "fulfilled" ? "ok" : "failed",
-    webLeadAutomation: ownerNotified ? "ok" : "failed",
+    webLeadAutomation: automationAccepted ? "accepted" : "failed",
     qualification: { tier: qualification.tier, score: qualification.score },
   });
 };
@@ -178,8 +179,7 @@ exports.handler = async (event) => {
 
 async function addToMailchimp({ email, firstName, lastName, tag }) {
   if (!_apiKey || !LIST_ID || !API_BASE) {
-    console.warn("[lead-intake] Mailchimp env missing — skipping list add");
-    return;
+    throw new Error("Mailchimp capture is not configured");
   }
 
   const authHeader = "Basic " + Buffer.from(`anystring:${_apiKey}`).toString("base64");
@@ -191,7 +191,6 @@ async function addToMailchimp({ email, firstName, lastName, tag }) {
     body: JSON.stringify({
       email_address: email,
       status_if_new: "subscribed",
-      status:        "subscribed",
       merge_fields:  { FNAME: firstName || "", LNAME: lastName || "" },
     }),
   });
@@ -218,8 +217,7 @@ async function addToMailchimp({ email, firstName, lastName, tag }) {
 
 async function createLoanosContact(p) {
   if (!LOANOS_URL || !LOANOS_SECRET) {
-    console.warn("[lead-intake] LOANOS_URL or LOANOS_AGENT_SECRET missing — skipping LoanOS POST");
-    return;
+    throw new Error("LoanOS capture is not configured");
   }
 
   const res = await fetch(`${LOANOS_URL}/api/contacts/web-lead`, {
@@ -303,8 +301,7 @@ async function createLoanosContact(p) {
 
 async function notifyWebLeadAutomation(p) {
   if (!N8N_WEB_LEAD_URL) {
-    console.warn("[lead-intake] N8N_WEB_LEAD_URL missing — skipping Web Lead Automation");
-    return;
+    throw new Error("Web lead automation is not configured");
   }
 
   const fullName = [p.firstName, p.lastName].filter(Boolean).join(" ");
