@@ -2370,3 +2370,7 @@ second shot; a transition frame is not a persistent state.
 - Environment quirk: bare `curl` / `which curl` returned "command not found" this session even
   though `/usr/bin/curl` exists and is on `PATH`. Full-path invocation worked immediately. Try
   the full path before concluding network tooling is broken in a future run.
+
+## 2026-09-05 (Saturday off-rotation)
+- An untracked `filename 2.ext` sitting next to a git-tracked file of the same base name is a macOS-style conflict-copy artifact (concurrent-write collision), not in-progress work. Diff it against the tracked file before deciding: if it's a strict subset (older timestamp, no unique content — everything it has is already in the tracked file or already trimmed into CHANGELOG.md), it's safe to remove without a commit (it was never tracked). Don't leave these to accumulate the way 7 of them piled up unaddressed in loanos-clone/tasks/.
+- Sitemap loc count can tick up between runs from a sibling task's work (suburb editor, content weekly) with no defect implied — only worth investigating if the delta is large or unexplained across multiple runs.

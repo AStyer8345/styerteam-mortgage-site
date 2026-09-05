@@ -1,3 +1,7 @@
+## 2026-09-05 — styer-site-daily: clean off-rotation audit, stray conflict-copy artifact cleared
+
+Saturday, no Step 4 rotation due. Non-negotiables green (sitemap 154/154/0 dupes, conversion 10/10). Found and removed an untracked `CONTEXT 2.md` — a macOS-style conflict-copy artifact, older than and strictly a subset of the tracked `CONTEXT.md`; diffed before deleting, no unique content, no commit needed. PSI quota: 5th consecutive confirmed-dead probe (HTTP 429), confirmatory only. Design spot-check (products.html + realtors.html): products clean; realtors.html's 3 "correspondent lender" mentions re-confirmed as the standing, already-flagged, Adam-gated defect. 0 site file changes. Detail: `run-logs/2026-09-05.md`.
+
 ## 2026-09-05 — Durable inquiry handoff and single owner notification
 
 - All registered forms retain one inquiry ID across Netlify capture and the website function. The function persists contact matching, inquiry, task, and notification work in LoanOS before dispatching; a retry returns the original receipt.
