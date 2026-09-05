@@ -5,6 +5,17 @@
 - Controlled internal tests skip Mailchimp. Existing approved acknowledgements remain on the durable worker; no new marketing sequence is introduced.
 - Validation: 216 tests, TypeScript, and the 44-form notification audit passed before release. Backend transaction checks distinguish retries, questionnaire continuations, and separate new inquiries from the same person.
 
+## 2026-09-04 PM — styer-site-daily Friday rotation: clean audit, PSI escalated, blog staleness worsened
+
+**No commit — 0 site mutations.**
+
+- **Blog CTA coverage re-confirmed 59/59** via full live fetch of every post (55 standard blog posts + 4 realtor-updates, both carrying the correct CTA pattern for their audience) — no regression.
+- **AEO audit on 2 posts, 0 defects:** newest case-study correctly has no FAQPage (narrative, not Q&A); jumbo-loan post's 5 FAQ answers are 0/5 hedged, extractable summary in the first paragraph.
+- **PSI quota escalated from "recurring" to "structurally gone without a dedicated key":** 4th consecutive confirmed-dead probe (HTTP 429). Netlify's Lighthouse substitute re-pulled (Perf 79/A11y 90/BP 100/SEO 100) — its `formFactor` field now confirms the score is mobile-scoped, closing 09-04 AM's "scope unconfirmed" caveat.
+- **Blog staleness worsened:** 14 days since last post (08-21), up from 10 days flagged 08-31 — re-flagged to `styer-content-weekly` with the updated number.
+- Sitemap/robots/core 200, 153/153 `<loc>`/`<lastmod>`, conversion 10/10 — all re-verified live, no delta.
+- CONTEXT.md trimmed from 151 → 131 lines (moved 12 archived pre-08-13 dated entries out; full detail already lives in this file).
+
 ## 2026-09-04 — styer-site-daily Thursday rotation: clean audit, near-miss investigated and killed
 
 **No commit — 0 site mutations.**
