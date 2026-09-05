@@ -2278,3 +2278,39 @@ requires-Adam-approval tier — and a license number with the licensee's name re
 thing the number is there to do. Re-trimmed to the identical 154 chars by cutting the adjective
 `real estate` instead. **When a length budget forces a cut, cut description, never identity** — and
 after any batch edit, re-grep your own diff for `NMLS|licens|Kyber|Equal Housing` to catch the class.
+
+## 2026-09-03 — Wednesday rotation (Suburb Deep Dive + AEO), Cedar Park
+
+**A hedged FAQ opener can hide behind good content.** Cedar Park's down-payment FAQ answer led with
+"It depends on the program and price [point/tier]:" in both the JSON-LD and the visible accordion —
+but everything after the colon was excellent, specific, extractable content (exact dollar ranges per
+tier). The defect wasn't the substance, it was word order: an AI assistant or featured-snippet
+extractor grabs the opening clause, and "it depends" is not an answer. **Fix by reordering, not
+rewriting** — move the concrete range (0%–20%) to the front, let the same breakdown follow unchanged.
+Four of five sibling FAQ answers on the same page already did this correctly, which is what made the
+fifth stand out on a pass through all five rather than sampling one.
+
+**A delegated event listener is invisible to a per-page grep, and that's correct, not a bug.** Checking
+`phone_click` tracking by grepping page HTML for the literal string returns 0 on every page — because
+the site wires it once, sitewide, as a single `document`-level listener in `script.js` matching
+`a[href^="tel:"]`, not as per-link markup. Before calling a tracking event "missing," check whether the
+site uses inline per-element tracking or a delegated listener in a shared script — grep the JS source
+for the event name, not just the HTML.
+
+**Live-fetching all sitemap URLs sidesteps a whole class of false positive.** The `.html`-vs-extensionless,
+trailing-slash-vs-`index.html` local-path normalization bug has produced false positives in this repo
+before (documented 08-29, 08-30). For any sitewide check that has a live equivalent (GTM coverage,
+JSON-LD validity, duplicate titles/descriptions), just `curl` all 153 sitemap URLs directly rather than
+trying to map each one back to a file on disk. Slower, but immune to that entire bug class.
+
+**A carried "unresolved" measurement should be re-attempted, not re-carried by default.** The tap-target
+height sat unresolved for 2 runs because the browser tool timed out both times. This run it worked on
+the first try — 45.5px and 50px on the two landing pages, both clearing the 44px minimum. The lesson
+isn't about the number; it's that "the tool was down last time" is not evidence the tool is still down.
+Retry once before re-carrying.
+
+**A mid-transition screenshot can look like a bug and not be one.** A CSS `reveal`-class fade-in caught
+mid-frame rendered a heading as faint/overlapping in one screenshot. `getComputedStyle` on the same
+element a moment later showed `opacity: 1`, correct color, `is-visible` class — and a second screenshot
+confirmed it. Before logging a visual defect from a single screenshot, check computed styles or take a
+second shot; a transition frame is not a persistent state.

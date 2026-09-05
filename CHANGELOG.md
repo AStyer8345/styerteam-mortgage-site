@@ -1,3 +1,13 @@
+## 2026-09-03 — styer-site-daily Wednesday rotation: Cedar Park AEO fix + tap-target resolved
+
+**Commit `c09be17`** — 1 file, `cedar-park-mortgage-lender.html`.
+
+- **Fixed a hedged FAQ answer opener.** The down-payment FAQ on Cedar Park's suburb page opened with "It depends on the program and price [point/tier]" in both the JSON-LD `acceptedAnswer.text` and the visible accordion — a non-extractable opener for AI-assistant/featured-snippet pickup. Reordered to lead with the concrete 0%–20% range; every dollar figure and program detail is unchanged. JSON-LD re-parsed 6/6 valid, live-verified both occurrences.
+- **Resolved the tap-target height carried unresolved since 09-01** (browser tool had timed out twice that run). Rendered both landing pages at 390px: `/get-preapproved` step CTA 45.5px, `/refinance-quote` submit 50px — both clear the 44px minimum. Closed, no longer carried.
+- Sitewide GTM/JSON-LD sweep (all 153 sitemap URLs, live-fetched): 153/153 GTM, 0 JSON-LD errors, 9 expected no-LD pages, 0 duplicate titles/descriptions — no delta from 09-01.
+- Verified `phone_click` tracking is wired via a delegated `script.js` listener (not per-link markup) — grepping page HTML alone would have false-flagged it as missing.
+- Design spot-check: mobile menu functionally verified (toggle → `aria-expanded` flips, full nav panel renders with CTA + phone).
+
 ## 2026-09-04 — styer-content-weekly: `investor-loans.html` citation pass
 
 **No commit hash yet — pending push.** 2 files: `investor-loans.html`, `sitemap.xml`.
