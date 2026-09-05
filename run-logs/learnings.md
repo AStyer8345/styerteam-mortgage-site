@@ -2351,3 +2351,22 @@ zero cost, no quota. Scope is narrower than PSI (homepage only here, no confirme
 breakdown, no historical trend), so it's a stand-in, not a replacement — but it beats reporting
 Core Web Vitals as fully dark for the third run running.
 second shot; a transition frame is not a persistent state.
+
+## 2026-09-04 PM — Friday rotation (Content Planning + AEO Review)
+
+- Blog CTA coverage re-confirmed 59/59 via full live fetch (not sampled) of every post —
+  55 standard blog posts + 4 realtor-updates, all carry the correct CTA pattern for their
+  audience.
+- Blog freshness worsening: 14 days stale (last post 08-21) vs 10 days flagged 08-31. Re-flagged
+  with updated number per the re-verify gate rule — don't carry a stale number forward.
+- AEO audit on 2 posts (newest case-study + jumbo-loan FAQPage post): 0 defects. Confirmed the
+  case-study correctly has no FAQPage (narrative, not Q&A) — same conclusion as 08-31's audit of
+  the identical post, useful cross-run confirmation that this isn't a fluke read.
+- PSI quota: 4th consecutive confirmed-dead probe. Escalating wording per 09-04 AM's own
+  instruction: from "recurring" to "structurally gone without Adam's dedicated key."
+- Netlify deploy record's `lighthouse.details.formFactor` field explicitly says `"mobile"` —
+  resolves the "scope unconfirmed" caveat from 09-04 AM's discovery of this substitute. Check
+  this field directly next time instead of treating scope as unknown.
+- Environment quirk: bare `curl` / `which curl` returned "command not found" this session even
+  though `/usr/bin/curl` exists and is on `PATH`. Full-path invocation worked immediately. Try
+  the full path before concluding network tooling is broken in a future run.
