@@ -1,5 +1,11 @@
 # styermortgage.com — Open Work
 
+## NEEDS ADAM
+
+- [ ] **NEEDS ADAM (NEW 2026-09-07, MEDIUM) — Phase 3 suburb backlink rotation blocked: Phase 2 is not completed.** The Monday Phase 3 trigger fired today (2026-09-07) and checked the pre-condition: Phase 2 must be `status: completed` before any backlink rotation runs. Current state: Phase 1c (Leander), 1d (Georgetown), 1e (Pflugerville), 1f (Dripping Springs) are all `status: pending`; Phase 2 (structural fixes + kill list) is also `status: pending`. No site files were modified this run. When Phases 1c–1f and Phase 2 are complete, the Phase 3 rotation will resume at index 0 (Round Rock).
+
+- [ ] **NEEDS ADAM (NEW 2026-09-07, HIGH) — the Phase 3 scheduled task's HARD CONSTRAINTS contain a prohibited business name.** The stored trigger text includes the line `Use 'Adam Styer | Mortgage Solutions LP'`. That entity name is **retired as of 2026-05-20** and CLAUDE.md explicitly prohibits it as a displayed business name. The Phase 3 trigger needs its HARD CONSTRAINTS line updated to `Use 'Adam Styer | HyperSmart Home Loans'` before the rotation resumes — otherwise the first GBP post drafted will carry the wrong entity name. (Note: the same drift was already flagged on the `gbp-weekly-optimization` SKILL.md on 2026-08-30; both sources need correction.)
+
 ## Now (this week)
 
 - [x] **Saturday off-rotation — clean audit, 0 mutations** — 2026-09-05 (styer-site-daily). Sitemap 154/154/0 dupes (+1 vs Friday, unexplained sibling-task bump, not a defect), conversion 10/10. PSI quota 5th consecutive confirmed-dead probe. Design spot-check (products.html + realtors.html) clean except the standing, already-flagged `realtors.html` correspondent-lender drift (re-confirmed, not new). Also cleared a stray untracked `CONTEXT 2.md` conflict-copy artifact (diffed first — strict subset, no unique content, no commit needed).
