@@ -1,3 +1,13 @@
+## 2026-09-07 — styer-gbp-weekly: Bank Statement Loan Spotlight published, Week 37
+
+- Auto-published GBP post (221 words) via Publer job `6a9ef0dd6365d0de97c13dad`, status complete/zero failures, destination-verified.
+- Angle: self-employed borrower whose CPA write-offs suppressed Schedule C income, qualified on 12/24-month bank statement deposit averaging instead. Every claim traces to the live `bank-statement-loans.html` pillar page.
+- Confirmed week 36 (Self-Employed Reality Check) never fired — a second gap incident on top of the 5 missed weeks flagged 2026-08-30. Updated the standing TODO item rather than adding a duplicate.
+- Re-verified two standing open issues live: `social_drafts.platform` still rejects `google` (used `all` workaround) and `social_drafts.stream` still doesn't exist (LoanOS content-inclusion step stays structurally skipped).
+- NotebookLM still auth-expired (re-verified live). No site file changes.
+
+Detail: `run-logs/gbp-posts/2026-09-07.md`.
+
 ## 2026-09-05 — styer-site-daily: clean off-rotation audit, stray conflict-copy artifact cleared
 
 Saturday, no Step 4 rotation due. Non-negotiables green (sitemap 154/154/0 dupes, conversion 10/10). Found and removed an untracked `CONTEXT 2.md` — a macOS-style conflict-copy artifact, older than and strictly a subset of the tracked `CONTEXT.md`; diffed before deleting, no unique content, no commit needed. PSI quota: 5th consecutive confirmed-dead probe (HTTP 429), confirmatory only. Design spot-check (products.html + realtors.html): products clean; realtors.html's 3 "correspondent lender" mentions re-confirmed as the standing, already-flagged, Adam-gated defect. 0 site file changes. Detail: `run-logs/2026-09-05.md`.
