@@ -22,7 +22,7 @@ const pages = [
 test('complex-income pages load the reusable modern program layout', () => {
   for (const file of pages) {
     const html = fs.readFileSync(file, 'utf8');
-    assert.match(html, /<body class="editorial-page loan-page program-page-modern">/, file);
+    assert.match(html, /<body class="editorial-page loan-page program-page-modern"[^>]*>/, file);
     assert.match(html, /\/js\/program-page-layout\.js\?v=20260830/, file);
     assert.match(html, /style\.css\?v=20260830-(?:program3|selfemp1)/, file);
   }
@@ -53,6 +53,11 @@ test('every warm editorial hero uses a visible navy secondary action', () => {
 test('modern loan heroes keep scenario review primary and scheduling secondary', () => {
   for (const file of pages) {
     const html = fs.readFileSync(file, 'utf8');
+    if (/data-situation-page=/.test(html)) {
+      assert.match(html, /journey-primary[^>]*>Send Your Scenario/);
+      assert.match(html, /journey-secondary[^>]*>Start a Secure Application/);
+      continue;
+    }
     const primary = html.match(/<a[^>]+class="btn btn-primary hero-cta-primary hero-cta-btn"[^>]*>([^<]+)<\/a>/);
     const secondary = html.match(/<a[^>]+class="btn btn-hero-ghost hero-cta-btn"[^>]*>([^<]+)<\/a>/);
     assert.ok(primary, `${file} must have a primary hero CTA`);

@@ -42,7 +42,7 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MortgageBroker",
+    "@type": "FinancialService",
     "name": "Adam Styer | HyperSmart Home Loans",
     "description": "Independent mortgage broker serving self-employed business owners, K-1 partners, real estate investors, and high-net-worth borrowers across Texas. Bank statement, P&L, 1099, asset depletion, DSCR, jumbo, and one-time-close construction programs.",
     "url": "https://styermortgage.com/mortgage-for-business-owners-austin.html",
@@ -64,7 +64,7 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LoanOrCreditService",
+    "@type": "Service",
     "name": "Self-Employed and Investor Mortgage Programs",
     "description": "Mortgage programs for self-employed business owners, K-1 and S-corp partners, real estate investors, and high-net-worth borrowers in Austin and statewide Texas. Includes bank statement, P&L only, 1099-only, asset depletion, DSCR, jumbo, and one-time-close construction lending.",
     "provider": {
@@ -302,8 +302,9 @@
   ]
 }
   </script>
+<link rel="stylesheet" href="/situation-journeys.css?v=20260909">
 </head>
-<body class="editorial-page loan-page program-page-modern">
+<body class="editorial-page loan-page program-page-modern" data-situation-page="business_owner">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
@@ -326,7 +327,7 @@
           <li class="nav-has-dropdown"><a href="/calculators.html">Calculators</a><ul class="nav-dropdown"><li><a href="/calculators.html">All Calculators</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li><li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li><li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li></ul></li>
           <li><a href="/testimonials.html">Testimonials</a></li>
           <li class="nav-has-dropdown"><a href="/contact.html">Contact</a><ul class="nav-dropdown"><li><a href="/about.html">About Adam</a></li></ul></li>
-          <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/get-preapproved.html?intent=scenario" class="nav-cta">Send Your Scenario</a></li>
+          <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="#scenario-review" class="nav-cta">Send Your Scenario</a></li>
         </ul>
       </nav>
     </div>
@@ -350,42 +351,64 @@
   </div>
 
   <!-- Hero -->
-  <section class="hero">
-    <picture><source srcset="assets/adam-cutout.webp" type="image/webp"><img
-      src="assets/adam-cutout.png"
-      alt="Adam Styer, Texas Mortgage Broker, NMLS #513013"
-      class="hero-cutout"
-      fetchpriority="high"
-      decoding="async"
-    ></picture>
-
-    <div class="container">
-      <div class="hero-glass-card">
-        <div class="hero-two-col">
-          <div class="hero-col hero-col-authority">
-            <div class="hero-authority-inner">
-              <h1>Mortgage for Business Owners in Austin, TX</h1>
-              <p class="hero-subtitle">Self-employed, K-1, S-corp, investor, or high-net-worth? Compare eligible documentation and asset-based paths across 40+ wholesale lenders, statewide in Texas.</p>
-            </div>
-            <div class="hero-ctas">
-              <a href="/scenario.html" class="btn btn-primary hero-cta-primary hero-cta-btn">Review My Business Scenario</a>
-              <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-hero-ghost hero-cta-btn" target="_blank" rel="noopener">Schedule Strategy Call</a>
-            </div>
-            <p class="hero-call-link">
-              <a href="tel:+15129566010" class="hero-call-link-a">
-                <svg class="hero-call-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                Call or Text (512) 956-6010
-              </a>
-            </p>
-          </div>
-
-        </div>
-        <p class="hero-legal">
-          NMLS#: 2653540 (Company) &middot; 513013 (Adam Styer)
-        </p>
-      </div>
+  <section class="journey-hero program-always-visible" aria-labelledby="journey-title">
+  <div class="container journey-grid">
+    <div class="journey-copy">
+      <p class="journey-eyebrow">Business owners &amp; self-employed borrowers</p>
+      <h1 id="journey-title">Mortgages for Texas business owners.</h1>
+      <p class="journey-intro">For Austin and Texas business owners, tax returns are one part of the picture. The right financing path depends on your income structure, business history, assets, and purchase or refinance goal.</p>
+      <div class="journey-actions"><a class="journey-button journey-primary" href="#scenario-review" data-track="send_scenario_click">Send Your Scenario</a><a class="journey-button journey-secondary" href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" data-track="secure_application_click" target="_blank" rel="noopener">Start a Secure Application</a></div>
+      <div class="journey-path-note"><p><strong>Short review:</strong> Share your plans here. No documents or credit pull.</p><p><strong>Ready to proceed?</strong> The secure My1003 application collects the details for a formal loan review.</p></div>
+      <p class="journey-contact">Prefer to talk? <a href="tel:+15129566010">Call</a> or <a href="sms:+15129566010">text (512) 956-6010</a></p>
+      <p class="journey-byline">Adam Styer · NMLS #513013<br>HyperSmart Home Loans · Licensed in Texas</p>
     </div>
-  </section>
+    <div class="journey-card" id="scenario-review" tabindex="-1">
+      <h2>Send Your Scenario</h2>
+      <p class="journey-form-intro">Estimates are fine. Leave unknown figures blank. Only fields marked * are required.</p>
+      <form name="business-owner-scenario" id="form-business-owner-scenario" class="journey-form" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" data-journey="business_owner">
+        <input type="hidden" name="utm_source" value="">
+<input type="hidden" name="utm_medium" value="">
+<input type="hidden" name="utm_campaign" value="">
+<input type="hidden" name="utm_term" value="">
+<input type="hidden" name="utm_content" value="">
+<input type="hidden" name="page_url" value="">
+<input type="hidden" name="entry_referrer" value="">
+<input type="hidden" name="first_touch_page" value="">
+<input type="hidden" name="first_touch_referrer" value="">
+<input type="hidden" name="first_touch_at" value="">
+<input type="hidden" name="first_touch_source" value="">
+<input type="hidden" name="first_touch_utm_source" value="">
+<input type="hidden" name="first_touch_utm_medium" value="">
+<input type="hidden" name="first_touch_utm_campaign" value="">
+<input type="hidden" name="first_touch_utm_term" value="">
+<input type="hidden" name="first_touch_utm_content" value="">
+<input type="hidden" name="source" value="">
+<input type="hidden" name="cta_source_page" value="">
+<input type="hidden" name="cta_label" value="">
+<input type="hidden" name="inquiry_id" value=""><input type="hidden" name="intent" value="business_owner"><input type="hidden" name="form-name" value="business-owner-scenario">
+        <p hidden aria-hidden="true"><label>Leave this blank<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <p class="journey-progress" aria-live="polite">Your scenario</p>
+        <fieldset data-journey-step="1"><legend>Your plans</legend><div class="journey-fields"><div class="journey-field"><label for="business_owner-loan_goal">What would you like to do? *</label><select id="business_owner-loan_goal" name="loan_goal" required><option value="">Choose…</option><option value="Purchase">Purchase</option><option value="Refinance">Refinance</option><option value="Cash-out refinance">Cash-out refinance</option><option value="Compare options">Compare options</option></select></div><div class="journey-field"><label for="business_owner-income_type">How is your income structured? *</label><select id="business_owner-income_type" name="income_type" required><option value="">Choose…</option><option value="Self-employed / business owner">Self-employed / business owner</option><option value="1099 / independent contractor">1099 / independent contractor</option><option value="S-corp / partnership / K-1">S-corp / partnership / K-1</option><option value="W-2 from my business">W-2 from my business</option><option value="Multiple income sources">Multiple income sources</option><option value="Assets / recent business sale">Assets / recent business sale</option></select></div><div class="journey-field"><label for="business_owner-time_in_business">Time in business</label><select id="business_owner-time_in_business" name="time_in_business"><option value="">Choose…</option><option value="Less than 1 year">Less than 1 year</option><option value="1–2 years">1–2 years</option><option value="2 or more years">2 or more years</option><option value="Not sure">Not sure</option></select></div><div class="journey-field"><label for="business_owner-property_value">Approximate price or property value</label><input id="business_owner-property_value" name="property_value" type="text" maxlength="120" placeholder="Estimate or leave blank" inputmode="decimal"></div></div>
+          <button type="button" class="journey-button journey-submit" data-journey-next hidden>Continue</button>
+        </fieldset>
+        <fieldset data-journey-step="2"><legend>How can Adam reach you?</legend>
+          <div class="journey-fields">
+            <div class="journey-field"><label for="business_owner-first">First name *</label><input id="business_owner-first" name="first_name" autocomplete="given-name" required maxlength="80"></div>
+            <div class="journey-field"><label for="business_owner-last">Last name *</label><input id="business_owner-last" name="last_name" autocomplete="family-name" required maxlength="80"></div>
+            <div class="journey-field"><label for="business_owner-email">Email *</label><input id="business_owner-email" name="email" type="email" autocomplete="email" required maxlength="160"></div>
+            <div class="journey-field"><label for="business_owner-phone">Phone (optional)</label><input id="business_owner-phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
+            <div class="journey-field journey-full"><label for="business_owner-context">Anything else Adam should know? (optional)</label><textarea id="business_owner-context" name="situation" rows="3" maxlength="2000" placeholder="Share your goals, questions, or anything that affects your plans."></textarea><p class="journey-hint">Please leave out Social Security numbers, account numbers, and sensitive documents.</p></div>
+          </div>
+          <label class="journey-consent"><input type="checkbox" name="tcpa_consent" required><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
+          <label class="journey-consent"><input type="checkbox" name="sms_opt_in"><span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span></label>
+          <div class="journey-form-actions"><button type="button" class="journey-back" data-journey-back hidden>Back</button><button type="submit" class="journey-button journey-submit">Send Your Scenario</button></div>
+        </fieldset>
+        <p class="journey-status" role="status" tabindex="-1" hidden></p>
+      </form>
+      <p class="journey-hint">This short review is not a loan application, pre-approval, or commitment to lend. <a href="/privacy.html">Privacy</a></p>
+    </div>
+  </div>
+</section>
 
   <!-- Byline + Definition -->
   <section class="section">
@@ -532,7 +555,7 @@
       <p>Every business owner asks this. The honest answer: non-QM rates run above comparable conventional rates. The premium covers the expanded documentation risk and varies by program, FICO, LTV, and lender. Exact spreads are deal-specific — no lender publishes a universal rate sheet for non-QM, and anyone who quotes you a one-line "non-QM rate" without seeing your file is guessing.</p>
       <!-- FLAG_FOR_ADAM: Research notes the industry-trade-reported non-QM rate premium is 75–200 bps over conventional, but this isn't from a primary lender disclosure. Kept hedged language here. Verify with current broker rate sheets before quoting a specific bps spread on this page. -->
       <p>Compare written quotes or Loan Estimates using the same borrower, property, loan amount, occupancy, term, lock period, and comparison date. A future refinance may be possible, but it is not guaranteed and should not be assumed when choosing the current loan.</p>
-      <p>If you want a real number, <a href="/scenario.html">send me the short version</a> of the file first. If statements, K-1s, or a full application are the right next step, I will tell you exactly what to send.</p>
+      <p>If you want a real number, <a href="#scenario-review">Send Your Scenario</a> of the file first. If statements, K-1s, or a full application are the right next step, I will tell you exactly what to send.</p>
     </div>
   </section>
 
@@ -540,7 +563,7 @@
   <section class="section">
     <div class="container content-narrow">
       <h2>Why Work With Me</h2>
-      <p>I'm an independent mortgage broker, not a retail loan officer at a bank. That distinction matters for business owners more than for any other borrower type. A retail LO has one product set — their employer's. I shop your file across 40+ wholesale Non-QM and agency lenders and pick the one that prices your deal correctly.</p>
+      <p>I'm an independent mortgage broker, not a retail loan officer at a bank. That distinction matters for business owners more than for any other borrower type. A retail LO has one product set — their employer's. I compare available wholesale Non-QM and agency options against your documentation, goals, and costs.</p>
       <p>Closed 1,000+ loans across Texas since 2017. Clear communication and proactive timeline management. 5-star average across client reviews. Licensed in Texas with NMLS <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" target="_blank" rel="noopener">#513013</a>; company NMLS #2653540. Office at 9050 N. Capital of Texas Hwy, Ste 390, Austin, Texas 78759.</p>
       <p>My specialty is the file that the big bank punts on: the K-1 partner the underwriter can't figure out, the founder with a $4M brokerage and no W-2, the Schedule C filer whose return reads like a charity case, the investor on his eleventh property. That's not a niche to me — that's most of my pipeline.</p>
     </div>
@@ -759,8 +782,8 @@
     <div class="container text-center">
       <h2 class="text-white">Run the Numbers on Your File</h2>
       <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Send the short version of the file first: business type, income shape, goal, and what the bank is struggling with. I will tell you which path is worth pursuing before asking for a full application.</p>
-      <a href="/scenario.html" class="btn btn-primary btn-lg">Review My Business Scenario</a>
-      <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-white btn-lg" style="margin-left:1rem;" target="_blank" rel="noopener">Book a 15-Minute Call →</a>
+      <a href="#scenario-review" class="btn btn-primary btn-lg">Send Your Scenario</a>
+      <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-white btn-lg" style="margin-left:1rem;" target="_blank" rel="noopener">Start a Secure Application</a>
       <p class="text-white" style="margin-top:1rem;opacity:0.7;font-size:0.9rem;">Or call <a href="tel:+15129566010" style="color:#fff;">(512) 956-6010</a> — NMLS #513013</p>
     </div>
   </section>
@@ -815,5 +838,7 @@
 <script src="/js/scroll-effects.js?v=20260429" defer></script>
 <script src="/analytics.js?v=20260417" defer></script>
 <script src="/js/program-page-layout.js?v=20260830" defer></script>
+<script src="/assets/utm.js?v=20260830-first-touch-v1" defer></script>
+<script src="/situation-journeys.js?v=20260909" defer></script>
 </body>
 </html>

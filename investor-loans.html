@@ -40,49 +40,49 @@
 
   <!-- LocalBusiness Schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MortgageBroker",
-    "name": "Adam Styer | HyperSmart Home Loans",
-    "description": "Independent mortgage broker financing real estate investors with DSCR, portfolio, blanket, fix-and-flip, BRRRR, and small multifamily loans across Texas.",
-    "url": "https://styermortgage.com/investor-loans.html",
-    "telephone": "+15129566010",
-    "email": "adam@thestyerteam.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "9050 N. Capital of Texas Hwy, Ste 390",
-      "addressLocality": "Austin",
-      "addressRegion": "TX",
-      "postalCode": "78759",
-      "addressCountry": "US"
-    },
-    "areaServed": {
-      "@type": "State",
-      "name": "Texas"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "name": "Adam Styer | HyperSmart Home Loans",
+  "description": "Independent mortgage broker financing real estate investors with DSCR, portfolio, blanket, fix-and-flip, BRRRR, and small multifamily loans across Texas.",
+  "url": "https://styermortgage.com/investor-loans.html",
+  "telephone": "+15129566010",
+  "email": "adam@thestyerteam.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "9050 N. Capital of Texas Hwy, Ste 390",
+    "addressLocality": "Austin",
+    "addressRegion": "TX",
+    "postalCode": "78759",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "State",
+    "name": "Texas"
   }
-  </script>
+}
+</script>
 
   <!-- LoanOrCreditService Schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LoanOrCreditService",
-    "name": "Real Estate Investor Loan Programs",
-    "description": "Loan programs for real estate investors: DSCR, portfolio/blanket, fix-and-flip bridge, BRRRR cash-out refinance, 5–8 unit small multifamily, and foreign national. Originated through 40+ wholesale lenders.",
-    "provider": {
-      "@type": "Organization",
-      "name": "Adam Styer | HyperSmart Home Loans",
-      "url": "https://styermortgage.com"
-    },
-    "areaServed": "United States",
-    "url": "https://styermortgage.com/investor-loans.html"
-  }
-  </script>
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Real Estate Investor Loan Programs",
+  "description": "Loan programs for real estate investors: DSCR, portfolio/blanket, fix-and-flip bridge, BRRRR cash-out refinance, 5–8 unit small multifamily, and foreign national. Originated through available wholesale lending options.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Adam Styer | HyperSmart Home Loans",
+    "url": "https://styermortgage.com"
+  },
+  "areaServed": "Texas",
+  "url": "https://styermortgage.com/investor-loans.html"
+}
+</script>
 
   <!-- FAQPage Schema -->
   <script type="application/ld+json">
-  {
+{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -91,7 +91,7 @@
       "name": "I'm at 10 conventional loans — what now?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You've hit Fannie Mae's 10-financed-property cap. Once you're at it, agency conventional is closed for new acquisitions. The path forward: DSCR (no property cap, qualifies on the rent), or portfolio loans (bundle 5–25 properties under one blanket loan). Most investors who scale past 10 do it through DSCR — every new deal stands alone on its own cash flow."
+        "text": "Financed-property counting depends on the program and underwriting method. Have the lender review ownership and mortgage obligations before concluding you reached a limit. DSCR or portfolio programs may offer alternatives, subject to their own limits."
       }
     },
     {
@@ -99,7 +99,7 @@
       "name": "Can I cash out to buy the next investment property?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Standard cash-out refinance LTV is 75% on a 1-unit investment property, 70% on a 2–4 unit. Most lenders require 6 months of seasoning from your purchase date — some require 12. The cash-out proceeds are yours to deploy into the next acquisition. This is exactly how the BRRRR strategy works, and DSCR cash-out is the most common refinance vehicle on the back end."
+        "text": "Possibly. Cash-out eligibility, maximum leverage, seasoning, and usable proceeds depend on the property and loan program. Subtract existing debt and costs from any proposed new loan amount before planning another acquisition."
       }
     },
     {
@@ -107,7 +107,7 @@
       "name": "How do I finance a fix-and-flip?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Hard money / bridge financing. 12–24 month term, interest-only, 10–14% rate, 2–3 points, up to 90% of purchase + 100% rehab, total capped at 70–75% of ARV. Rehab funds disbursed in draws. First-time flippers face tighter terms and lower leverage than experienced operators. Adam will tell you honestly if hard money is the right call or if a different structure (delayed-financing conventional, DSCR with a renovation rider) fits cleaner — and refer to a dedicated bridge lender when that's the right move."
+        "text": "A short-term renovation or bridge structure may fit a property needing work. Compare the budget, draw schedule, fees, interest, maturity, and repayment plan. Available terms depend on the property, experience, and lender."
       }
     },
     {
@@ -115,7 +115,7 @@
       "name": "What is BRRRR financing?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "BRRRR = Buy, Rehab, Rent, Refinance, Repeat. You buy distressed (cash or hard money), rehab it, place a tenant, then refinance into long-term DSCR financing at the new appraised after-repair value. Typical refi is 75% LTV after 6 months seasoning. The cash-out recovers your capital so you can repeat. The strategy lives or dies on the ARV appraisal — if your all-in (purchase + rehab + holding) stays below 75% of ARV, you walk out with all your money back. If not, you leave equity stuck in the deal."
+        "text": "BRRRR means Buy, Rehab, Rent, Refinance, Repeat. Refinancing is a separate underwriting decision, not a promised recovery of your cash. Value, rent, seasoning, costs, and loan limits can leave more capital in the project than planned."
       }
     },
     {
@@ -123,7 +123,7 @@
       "name": "Do you do blanket loans across 5+ properties?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Portfolio (blanket) loans bundle 5–25 properties under a single loan. Typical structure: 70% LTV aggregate, 7–10 year term, 30-year amortization, balloon at maturity, with release clauses to sell individual properties out of the pool. Best fit when you're consolidating a stack of separate DSCR loans, doing a 1031 into multiple replacements, or scaling past Fannie's 10-property cap."
+        "text": "A blanket loan may combine multiple properties. Ask about collateral, payment terms, guarantees, and release provisions. Whether an available lender can finance the proposed pool requires review."
       }
     },
     {
@@ -131,7 +131,7 @@
       "name": "What's the best loan type for my first investment property?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "If you have W-2 income and clean tax returns, conventional Fannie investment financing is usually cheapest — 20–25% down, lower rate than DSCR. If you're self-employed with heavy depreciation, or want to scale fast without your personal DTI getting in the way, start on DSCR. The right answer depends on your tax profile and the 24-month plan. Adam will run both quotes and you pick."
+        "text": "Compare conventional, DSCR, bank-statement, and asset-based paths based on income, rent, reserves, occupancy, and your plan. No program is automatically the best or cheapest choice for a first investment."
       }
     },
     {
@@ -139,7 +139,7 @@
       "name": "When does it make sense to switch from DSCR to a portfolio loan?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Around 5–8 properties. Once you have a stack of separate DSCR loans, the admin and balance-sheet drag start to matter. Portfolio loans consolidate the math, free up reserves treatment, and let you refi a whole pool at once if rates move. Investors targeting 15+ doors usually move to portfolio between deals 5 and 10."
+        "text": "Compare the administrative benefits with the costs and cross-collateral risks when your portfolio changes. There is no fixed property count that makes a blanket loan better than individual loans."
       }
     },
     {
@@ -147,7 +147,7 @@
       "name": "Can I finance a 5-unit or 6-unit property?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — 5–8 unit small multifamily is a tweener. Too big for residential 1–4 unit programs, too small for most full commercial lenders. Non-QM small-balance commercial fills it. Expect 25–30% down, 5/1 or 7/1 ARM, full-doc OR DSCR-style underwriting. Heavier reserves than 1–4 unit DSCR. Pricing reflects the smaller lender pool."
+        "text": "Properties with five or more units generally need a different financing review from one-to-four-unit residential properties. Available commercial or portfolio paths depend on the property, income, reserves, and lender."
       }
     },
     {
@@ -155,7 +155,7 @@
       "name": "Do investor loans show up on my personal credit report?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Conventional investment loans report to your personal credit. DSCR loans closed in your personal name typically report; DSCR loans closed in an LLC often don't (depends on the lender's reporting practices). Portfolio loans on entity-only typically don't hit personal credit. Foreign national and small-balance commercial loans generally don't report. If credit-report load matters to you for the next deal, raise it up front and we'll match programs."
+        "text": "Reporting and personal guarantees vary by lender, borrower, and entity structure. Ask for the actual lender policy; entity ownership does not automatically keep an obligation off your credit or out of another lender's analysis."
       }
     },
     {
@@ -163,16 +163,16 @@
       "name": "How many investment properties can I have financed at once?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Conventional: 10 financed 1–4 unit properties total (including your primary). Non-QM: no cap. DSCR and portfolio loans don't count against any agency limit. Adam has clients running 25, 40, 60+ doors entirely outside the agency framework."
+        "text": "There is no universal limit across all financing. Agency counting rules, lender exposure limits, reserves, debt obligations, and property performance affect how much additional financing may be available."
       }
     }
   ]
 }
-  </script>
+</script>
 
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
-  {
+{
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
@@ -196,9 +196,9 @@
     }
   ]
 }
-  </script>
+</script>
   <script type="application/ld+json">
-  {
+{
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": "https://styermortgage.com/#adam-styer",
@@ -246,9 +246,10 @@
     "url": "https://adobecreekranch.com/about"
   }
 }
-  </script>
+</script>
+<link rel="stylesheet" href="/situation-journeys.css?v=20260909">
 </head>
-<body class="editorial-page loan-page program-page-modern">
+<body class="editorial-page loan-page program-page-modern" data-situation-page="investment">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
@@ -271,7 +272,7 @@
           <li class="nav-has-dropdown"><a href="/calculators.html">Calculators</a><ul class="nav-dropdown"><li><a href="/calculators.html">All Calculators</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li><li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li><li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li></ul></li>
           <li><a href="/testimonials.html">Testimonials</a></li>
           <li class="nav-has-dropdown"><a href="/contact.html">Contact</a><ul class="nav-dropdown"><li><a href="/about.html">About Adam</a></li></ul></li>
-          <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/get-preapproved.html?intent=scenario" class="nav-cta">Send Your Scenario</a></li>
+          <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="#scenario-review" class="nav-cta">Send Your Scenario</a></li>
         </ul>
       </nav>
     </div>
@@ -295,49 +296,75 @@
   </div>
 
   <!-- Hero -->
-  <section class="hero">
-    <picture><source srcset="assets/adam-cutout.webp" type="image/webp"><img
-      src="assets/adam-cutout.png"
-      alt="Adam Styer, Austin TX mortgage broker specializing in DSCR, portfolio, and BRRRR investor loans, NMLS #513013"
-      class="hero-cutout"
-      fetchpriority="high"
-      decoding="async"
-    ></picture>
-
-    <div class="container">
-      <div class="hero-glass-card">
-        <div class="hero-two-col">
-
-          <div class="hero-col hero-col-authority">
-            <div class="hero-authority-inner">
-              <h1>Investor Loans — From First Rental to 50-Property Portfolio</h1>
-              <p class="hero-subtitle">DSCR. Portfolio. Fix-and-flip. BRRRR. 5–8 unit. Whatever play you're running, there's a non-QM program that funds it. 40+ wholesale lenders, one application.</p>
-            </div>
-            <div class="hero-ctas">
-              <a href="/scenario.html" class="btn btn-primary hero-cta-primary hero-cta-btn">Review My Investor Scenario</a>
-              <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-hero-ghost hero-cta-btn" target="_blank" rel="noopener">Schedule Strategy Call</a>
-            </div>
-            <p class="hero-call-link">
-              <a href="tel:+15129566010" class="hero-call-link-a">
-                <svg class="hero-call-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                Call or Text (512) 956-6010
-              </a>
-            </p>
-          </div>
-
-
-        </div>
-        <p class="hero-legal">
-          NMLS#: 2653540 (Company) &middot; 513013 (Adam Styer)
-        </p>
-      </div>
+  <section class="journey-hero program-always-visible" aria-labelledby="journey-title">
+  <div class="container journey-grid">
+    <div class="journey-copy">
+      <p class="journey-eyebrow">Investment property financing in Texas</p>
+      <h1 id="journey-title">Investment property financing in Texas.</h1>
+      <p class="journey-intro">An investment property does not automatically call for a DSCR loan. Compare conventional, rental-income, bank-statement, and asset-based paths around your property, finances, and investment strategy.</p>
+      <div class="journey-actions"><a class="journey-button journey-primary" href="#scenario-review" data-track="send_scenario_click">Send Your Scenario</a><a class="journey-button journey-secondary" href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" data-track="secure_application_click" target="_blank" rel="noopener">Start a Secure Application</a></div>
+      <div class="journey-path-note"><p><strong>Short review:</strong> Share your plans here. No documents or credit pull.</p><p><strong>Ready to proceed?</strong> The secure My1003 application collects the details for a formal loan review.</p></div>
+      <p class="journey-contact">Prefer to talk? <a href="tel:+15129566010">Call</a> or <a href="sms:+15129566010">text (512) 956-6010</a></p>
+      <p class="journey-byline">Adam Styer · NMLS #513013<br>HyperSmart Home Loans · Licensed in Texas</p>
     </div>
-  </section>
+    <div class="journey-card" id="scenario-review" tabindex="-1">
+      <h2>Send Your Scenario</h2>
+      <p class="journey-form-intro">Estimates are fine. Leave unknown figures blank. Only fields marked * are required.</p>
+      <form name="investment-property-scenario" id="form-investment-property-scenario" class="journey-form" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" data-journey="investment">
+        <input type="hidden" name="utm_source" value="">
+<input type="hidden" name="utm_medium" value="">
+<input type="hidden" name="utm_campaign" value="">
+<input type="hidden" name="utm_term" value="">
+<input type="hidden" name="utm_content" value="">
+<input type="hidden" name="page_url" value="">
+<input type="hidden" name="entry_referrer" value="">
+<input type="hidden" name="first_touch_page" value="">
+<input type="hidden" name="first_touch_referrer" value="">
+<input type="hidden" name="first_touch_at" value="">
+<input type="hidden" name="first_touch_source" value="">
+<input type="hidden" name="first_touch_utm_source" value="">
+<input type="hidden" name="first_touch_utm_medium" value="">
+<input type="hidden" name="first_touch_utm_campaign" value="">
+<input type="hidden" name="first_touch_utm_term" value="">
+<input type="hidden" name="first_touch_utm_content" value="">
+<input type="hidden" name="source" value="">
+<input type="hidden" name="cta_source_page" value="">
+<input type="hidden" name="cta_label" value="">
+<input type="hidden" name="inquiry_id" value=""><input type="hidden" name="intent" value="investment"><input type="hidden" name="form-name" value="investment-property-scenario"><input type="hidden" name="property_use" value="Investment">
+        <p hidden aria-hidden="true"><label>Leave this blank<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <p class="journey-progress" aria-live="polite">Your scenario</p>
+        <fieldset data-journey-step="1"><legend>Your plans</legend><div class="journey-fields"><div class="journey-field"><label for="investment-loan_goal">What would you like to do? *</label><select id="investment-loan_goal" name="loan_goal" required><option value="">Choose…</option><option value="Purchase">Purchase</option><option value="Refinance">Refinance</option><option value="Cash-out refinance">Cash-out refinance</option></select></div><div class="journey-field"><label for="investment-property_type">What type of property? *</label><select id="investment-property_type" name="property_type" required><option value="">Choose…</option><option value="Single-family rental">Single-family rental</option><option value="Condo or townhome">Condo or townhome</option><option value="2–4 units">2–4 units</option><option value="5+ units / commercial">5+ units / commercial</option><option value="Not sure yet">Not sure yet</option></select></div><div class="journey-field"><label for="investment-property_value">Approximate price or value</label><input id="investment-property_value" name="property_value" type="text" maxlength="120" placeholder="Estimate or leave blank" inputmode="decimal"></div><div class="journey-field"><label for="investment-monthly_rent">Expected or current monthly rent</label><input id="investment-monthly_rent" name="monthly_rent" type="text" maxlength="120" placeholder="Estimate or leave blank" inputmode="decimal"></div><div class="journey-field"><label for="investment-investment_strategy">What is your investment strategy?</label><select id="investment-investment_strategy" name="investment_strategy"><option value="">Choose…</option><option value="Long-term rental">Long-term rental</option><option value="Short-term rental">Short-term rental</option><option value="Fix and flip">Fix and flip</option><option value="BRRRR / renovate and rent">BRRRR / renovate and rent</option><option value="Portfolio growth">Portfolio growth</option><option value="Still deciding">Still deciding</option></select></div></div>
+          <button type="button" class="journey-button journey-submit" data-journey-next hidden>Continue</button>
+        </fieldset>
+        <fieldset data-journey-step="2"><legend>How can Adam reach you?</legend>
+          <div class="journey-fields">
+            <div class="journey-field"><label for="investment-first">First name *</label><input id="investment-first" name="first_name" autocomplete="given-name" required maxlength="80"></div>
+            <div class="journey-field"><label for="investment-last">Last name *</label><input id="investment-last" name="last_name" autocomplete="family-name" required maxlength="80"></div>
+            <div class="journey-field"><label for="investment-email">Email *</label><input id="investment-email" name="email" type="email" autocomplete="email" required maxlength="160"></div>
+            <div class="journey-field"><label for="investment-phone">Phone (optional)</label><input id="investment-phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
+            <div class="journey-field journey-full"><label for="investment-context">Anything else Adam should know? (optional)</label><textarea id="investment-context" name="situation" rows="3" maxlength="2000" placeholder="Share your goals, questions, or anything that affects your plans."></textarea><p class="journey-hint">Please leave out Social Security numbers, account numbers, and sensitive documents.</p></div>
+          </div>
+          <label class="journey-consent"><input type="checkbox" name="tcpa_consent" required><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
+          <label class="journey-consent"><input type="checkbox" name="sms_opt_in"><span>Yes, I also consent to receive automated text messages from Adam Styer at the number I provided. This is separate and optional. Message frequency varies. Reply STOP to cancel.</span></label>
+          <div class="journey-form-actions"><button type="button" class="journey-back" data-journey-back hidden>Back</button><button type="submit" class="journey-button journey-submit">Send Your Scenario</button></div>
+        </fieldset>
+        <p class="journey-status" role="status" tabindex="-1" hidden></p>
+      </form>
+      <p class="journey-hint">This short review is not a loan application, pre-approval, or commitment to lend. <a href="/privacy.html">Privacy</a></p>
+    </div>
+  </div>
+</section>
+<section class="journey-education program-always-visible"><h2>Which investment-property financing path fits?</h2><div class="journey-education-grid">
+<article><h3>Conventional investment financing</h3><p>Review qualifying personal income, credit, down payment, reserves, and eligible rental income. This can suit a first rental or an established investor when agency requirements fit. <a href="/loans/investment.html">Conventional investment guide</a>.</p></article>
+<article><h3>DSCR financing</h3><p>Rental cash flow is central to the debt-service-coverage review. Property use, rent evidence, reserves, leverage, and lender rules still matter. <a href="/dscr-loans-texas.html">Read the DSCR guide</a> or <a href="/dscr-calculator.html">use the DSCR calculator</a>.</p></article>
+<article><h3>Bank-statement or asset-based review</h3><p>Business owners and investors with substantial assets may have alternative documentation paths. Investment occupancy and eligible-income calculations vary by program. Read about <a href="/bank-statement-loans.html">bank-statement loans</a> and <a href="/asset-depletion-mortgage-texas.html">asset depletion</a>.</p></article>
+<article><h3>Bridge, renovation, or portfolio financing</h3><p>A property needing work or a larger portfolio may call for a different structure. Compare total cost, reserves, prepayment terms, and a realistic repayment or refinance plan. Availability is property- and lender-specific.</p></article>
+</div><p>No path is automatically best. The review above starts with your investment, not a preselected loan product.</p></section>
 
   <!-- Loan Options Overview -->
   <section class="section">
     <div class="container content-narrow">
-      <p><strong>If you're buying real estate to rent, flip, or hold, your loan stack matters as much as the deal itself. The wrong loan type at the wrong stage will stall a portfolio that should be doubling.</strong> Adam Styer (NMLS #513013) brokers DSCR, portfolio, blanket, fix-and-flip bridge, BRRRR refi, and 5–8 unit small multifamily loans across Texas — through a wholesale shelf of 40+ investor lenders.</p>
+      <p><strong>If you're buying real estate to rent, flip, or hold, your loan stack matters as much as the deal itself. Match the financing to the property and a realistic plan for income, costs, and reserves.</strong> Adam Styer (NMLS #513013) brokers DSCR, portfolio, blanket, fix-and-flip bridge, BRRRR refi, and 5–8 unit small multifamily loans across Texas — subject to the available lender programs and property review.</p>
 
       <div class="card" id="firsthand-investor-experience" style="margin:2rem 0;">
         <p class="text-muted" style="font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.5rem;">Financing from both sides of the table</p>
@@ -364,9 +391,9 @@
         <li><strong>Portfolio / blanket</strong> — one loan against 5–25 properties. Use when you want to consolidate, refi a stack at once, or scale past the agency cap.</li>
         <li><strong>Bank statement</strong> — for the self-employed investor whose tax returns understate cash flow. Used on the personal-residence side or for owner-occupied investor purchases like house-hack 2–4 units.</li>
         <li><strong>Fix-and-flip / hard money bridge</strong> — short-term, asset-based, 12–24 months, draw-funded rehab. Adam doesn't directly originate every flip — but he knows who does and refers when it's the right tool.</li>
-        <li><strong>BRRRR refi</strong> — the cash-out side of the strategy. DSCR refi at 75% LTV of after-repair value, after 6+ months seasoning.</li>
+        <li><strong>BRRRR refi</strong> — the cash-out side of the strategy. Eligible value, leverage, and seasoning depend on the program.</li>
         <li><strong>5–8 unit small multifamily</strong> — non-QM small-balance commercial. Sits between residential 4-unit and full commercial.</li>
-        <li><strong>Foreign national</strong> — non-US borrower with no SSN. ITIN or passport, 30–40% down, source-of-funds documentation.</li>
+        <li><strong>Foreign national</strong> — documentation and financing eligibility depend on the borrower, property, and lender.</li>
       </ul>
     </div>
   </section>
@@ -374,11 +401,11 @@
   <!-- DSCR -->
   <section class="section bg-light">
     <div class="container content-narrow">
-      <h2>DSCR loans — the workhorse</h2>
-      <p>If you're holding rentals long-term, DSCR is the loan you'll use most. The math: gross monthly rent ÷ monthly PITIA. Hit 1.0 or higher and the property qualifies itself. Personal W-2 or tax-return income may not need to be the primary qualifying path. Traditional DTI may not drive the approval on some DSCR programs.</p>
-      <p>The reason it dominates the investor playbook: <strong>no property cap</strong>. Fannie Mae limits you to 10 financed 1–4 unit properties — that includes your primary. Once you hit it, conventional is done. DSCR doesn't count, doesn't care, and stacks indefinitely.</p>
-      <p>The legal reason DSCR can skip your personal tax returns and DTI: a loan on a non-owner-occupied rental property is treated as extended for a business purpose, which Regulation Z exempts from the consumer Ability-to-Repay and Qualified Mortgage rules that govern owner-occupied lending (<a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/3/" target="_blank" rel="noopener">12 CFR § 1026.3, Exempt Transactions</a>). That's not a workaround — it's the rule working as written. The property's cash flow carries the underwriting instead of your W-2.</p>
-      <p>Standard terms: 20–25% down, 680+ FICO (700+ for best pricing), 6 months PITIA reserves, non-owner occupied only, market rent established by Form 1007 appraisal or signed lease. Cash-out refi maxes at 75% LTV on a 1-unit, 70% on a 2–4 unit. Closeable in an LLC at most lenders.</p>
+      <h2>How do DSCR loans work?</h2>
+      <p>DSCR financing focuses on rental income relative to the property's housing payment. A common calculation is monthly rent divided by principal, interest, taxes, insurance, and association dues (PITIA). A ratio alone does not approve a loan; property use, credit, reserves, leverage, and lender requirements still apply.</p>
+      <p>DSCR may be worth comparing when personal-income documentation or existing financed properties constrain an agency loan. Lenders still set exposure and property limits; there is no promise of unlimited borrowing.</p>
+      <p>Business-purpose treatment depends on the actual transaction and occupancy. <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/3/">Regulation Z section 1026.3</a> and its official commentary address exemptions. A DSCR label or LLC does not by itself establish an exemption; obtain the appropriate legal and lender review.</p>
+      <p>Down payment, credit, reserves, rental documentation, cash-out limits, seasoning, and entity vesting vary by investor and transaction. Ask for written terms using your actual property and intended occupancy.</p>
       <p>If you want the full DSCR breakdown, start here:</p>
       <ul>
         <li><a href="/dscr-loan-austin-tx.html">DSCR loans in Austin, TX</a> — local market, ratio examples, STR scenarios</li>
@@ -391,27 +418,16 @@
 
   <!-- Portfolio / Blanket -->
   
-      <aside style="margin:1.75rem 0;padding:1.25rem 1.5rem;background:linear-gradient(135deg,#F7F8FA 0%,#fff 100%);border:1px solid #E5E7EB;border-left:4px solid #8B6E24;border-radius:10px;"><p style="margin:0 0 .5rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:#8B6E24;font-weight:700;">Run your own numbers</p><p style="margin:0 0 .9rem;font-size:.95rem;line-height:1.55;color:#1F2937;">Check any deal in 60 seconds: rent ÷ PITIA with real Texas tax numbers. Under 1.0? The calculator shows how far off you are — and no-ratio programs exist.</p><a href="/dscr-calculator.html" style="display:inline-block;background:#0A1F3F;color:#fff;padding:.65rem 1.15rem;border-radius:8px;font-weight:700;font-size:.85rem;text-decoration:none;">Open the DSCR Calculator →</a></aside>
+      <aside style="margin:1.75rem 0;padding:1.25rem 1.5rem;background:linear-gradient(135deg,#F7F8FA 0%,#fff 100%);border:1px solid #E5E7EB;border-left:4px solid #8B6E24;border-radius:10px;"><p style="margin:0 0 .5rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:#8B6E24;font-weight:700;">Run your own numbers</p><p style="margin:0 0 .9rem;font-size:.95rem;line-height:1.55;color:#1F2937;">Estimate rent divided by PITIA using your own tax, insurance, and payment assumptions. The result is an illustration, not a qualification decision.</p><a href="/dscr-calculator.html" style="display:inline-block;background:#0A1F3F;color:#fff;padding:.65rem 1.15rem;border-radius:8px;font-weight:700;font-size:.85rem;text-decoration:none;">Open the DSCR Calculator →</a></aside>
   <section class="section">
     <div class="container content-narrow">
       <h2>Portfolio and blanket loans — when to bundle properties under one loan</h2>
-      <p>A portfolio loan (also called a blanket loan) is a single mortgage secured by 5–25 properties at once. One loan, one payment, one closing, one set of covenants. The whole pool of real estate collateralizes the debt.</p>
-      <p><strong>Typical structure:</strong></p>
-      <ul>
-        <li>70% LTV on the aggregate appraised value of the pool</li>
-        <li>7-year or 10-year term, 30-year amortization, balloon at maturity</li>
-        <li>Rate fixed for the term, or 5/1 / 7/1 ARM depending on lender</li>
-        <li>Release clauses — sell individual properties out of the pool by paying down a release amount (usually 110–120% of the property's allocated loan balance)</li>
-        <li>Cross-collateralized — every property is on the hook for the full loan</li>
-      </ul>
+      <p>A blanket loan can secure multiple properties under one loan. The combined collateral, release provisions, covenants, and maturity deserve careful review before replacing separate mortgages.</p>
+      <p><strong>Structure to review:</strong></p>
+      <ul><li>Maximum leverage and how the lender values the collateral pool</li><li>Loan term, amortization, and any balloon payment</li><li>Fixed or adjustable rate and how payments can change</li><li>Release terms when you sell or refinance one property</li><li>Cross-collateralization and default provisions</li></ul>
       <p><strong>When portfolio loans win:</strong></p>
-      <ul>
-        <li>You have a stack of 5–10 separate DSCR loans and want to consolidate the admin (one payment, one servicer, one tax escrow account)</li>
-        <li>You're doing a 1031 exchange and rolling proceeds into multiple replacement properties — close them on one blanket loan</li>
-        <li>You want to refinance 8 properties at once at a better aggregate rate than the individual DSCR loans they currently carry</li>
-        <li>You're past the Fannie 10-property cap and want a single instrument for the next chunk of acquisitions</li>
-      </ul>
-      <p><strong>When portfolio loans lose:</strong> early in your career. If you're at 1–3 doors, the cross-collateralization risk isn't worth it — one bad property can drag the whole pool. Stay on individual DSCR until you've got a stable base.</p>
+      <ul><li>Compare consolidated servicing with the flexibility of separate mortgages</li><li>Discuss any exchange strategy with your qualified tax and legal advisers</li><li>Price a portfolio refinance against separate loans using current written terms</li><li>Review lender exposure limits and the plan for future acquisitions</li></ul>
+      <p><strong>What are the tradeoffs?</strong> Cross-collateralization can connect risks across properties. Compare individual loans with a blanket structure, including how a future sale or refinance of one property would work.</p>
     </div>
   </section>
 
@@ -419,29 +435,25 @@
   <section class="section bg-light">
     <div class="container content-narrow">
       <h2>Cash-out refinance for the BRRRR strategy</h2>
-      <p>BRRRR — Buy, Rehab, Rent, Refinance, Repeat — is the most common scaling playbook in residential investing. The refinance step is where the math actually has to work, and that's where most BRRRRs break.</p>
+      <p>BRRRR means Buy, Rehab, Rent, Refinance, Repeat. The refinance depends on completed work, eligible value, rental income, seasoning, credit, and the terms available at that time.</p>
       <p>Here's the mechanics, with the numbers investors actually need to know:</p>
-      <p><strong>LTV limits:</strong> Cash-out refinance on an investment property tops out at <strong>75% LTV on a 1-unit</strong> and <strong>70% LTV on a 2–4 unit</strong> at most DSCR and conventional lenders. Some non-QM lenders will do 75% on a 2–4 unit for premium pricing. If you have 5+ financed properties on the title (or in a related LLC pool), several lenders cap you at 70% across the board.</p>
-      <p><strong>Seasoning:</strong> Most lenders require <strong>6 months of seasoning</strong> from the original purchase date before you can refinance at the new appraised after-repair value (ARV). A handful of programs allow 90-day delayed financing, but only if you bought all-cash, can document the rehab spend, and the new loan amount doesn't exceed your total purchase + rehab cost. If you bought with hard money, you'll typically wait the full 6 months and refi at ARV. Some portfolio lenders want 12 months.</p>
-      <p><strong>The math that actually matters:</strong> ARV × 75% = max cash-out loan amount. Subtract your bridge/hard-money payoff and closing costs. What's left is your recovered capital. If your all-in (purchase + rehab + holding cost) is below 75% of ARV, you walk out of the refi with all your money back and a cash-flowing rental. That's a clean BRRRR. If your all-in is 80–85% of ARV, you leave money in the deal — still works, just less elegant. If your all-in exceeds 75% of ARV, the refi caps below your basis and you're stuck.</p>
-      <p><strong>Where BRRRRs go wrong:</strong> rehab cost overruns and ARV appraisal shortfalls. The number you sketched on a napkin isn't the number the appraiser is going to write. Pad your rehab budget by 20% and underwrite at a conservative ARV — not the optimistic comp.</p>
-      <p>DSCR is the dominant refinance product on the back end of BRRRR. Property has a tenant in place, lease is signed, and the DSCR ratio is established off the actual rent. Tax-return income may not need to be the primary qualifying factor. Timeline depends on program, property, appraisal, title, and documentation.</p>
+      <p><strong>LTV limits:</strong> The maximum loan-to-value depends on the program, units, occupancy, and whether the transaction is cash-out. Confirm which property value the lender can use.</p>
+      <p><strong>Seasoning:</strong> Ownership and existing-loan seasoning requirements vary. Delayed financing has separate conditions and should not be assumed equivalent to a standard cash-out refinance.</p>
+      <p><strong>Illustration only:</strong> If an eligible program permits 75% of a $400,000 value, the gross loan would be $300,000 before subtracting existing debt and closing costs. This assumed ratio is not a program offer. A lower appraisal, higher costs, or a different limit can leave more of your capital in the property.</p>
+      <p><strong>What can go wrong?</strong> Renovation overruns, rental shortfalls, appraisal differences, and sale or refinance delays can change the result. Budget for an adverse case and adequate carrying reserves.</p>
+      <p>DSCR is one possible refinance path after renovation and rental stabilization. Conventional or other financing may also fit; compare documentation, cost, prepayment terms, and exit flexibility.</p>
     </div>
   </section>
 
   <!-- 10-property cap -->
   <section class="section">
     <div class="container content-narrow">
-      <h2>Bypassing the 10-property Fannie limit</h2>
-      <p>Every scaling investor hits this wall. Fannie Mae's Selling Guide caps a borrower at <strong>10 financed 1–4 unit residential properties</strong>, including the primary residence (<a href="https://selling-guide.fanniemae.com/sel/b2-2-03/multiple-financed-properties-same-borrower" target="_blank" rel="noopener">B2-2-03, Multiple Financed Properties for the Same Borrower</a>). That means you get 9 financed rentals plus your house. After that, agency conventional is closed to you.</p>
-      <p>Most investors don't even get to 10 — Fannie's pricing adjustments (LLPAs) on properties 5–10 are punishing, and some lenders cap themselves at 4 or 6 financed properties internally regardless of what Fannie allows. You can be technically eligible and still get told no.</p>
+      <h2>How do financed-property limits affect your next loan?</h2>
+      <p>For qualifying second-home and investment transactions, Fannie Mae has financed-property limits and counting rules that can depend on underwriting method. Review <a href="https://selling-guide.fanniemae.com/sel/b2-2-03/multiple-financed-properties-same-borrower">B2-2-03</a> using all relevant ownership and mortgage obligations. An LLC loan does not automatically disappear from that analysis.</p>
+      <p>Lender overlays, reserves, income analysis, and aggregate exposure can constrain borrowing before an agency maximum is reached.</p>
       <p><strong>How non-QM solves it:</strong></p>
-      <ul>
-        <li><strong>DSCR has no property cap.</strong> Every DSCR loan stands alone, qualified on the rent of that specific property. You can have 50 of them.</li>
-        <li><strong>Portfolio loans aggregate.</strong> Bundle properties 11 through 35 into a single blanket loan and the agency math doesn't apply.</li>
-        <li><strong>Small-balance commercial</strong> for 5+ unit properties moves you out of residential underwriting entirely.</li>
-      </ul>
-      <p>The transition usually looks like this: deals 1–4 on conventional (cheap rate), deal 5–10 in DSCR (skip the LLPA hit), deals 10+ entirely in DSCR or rolled into portfolio. Plenty of investors run their first 4 deals on Fannie, then convert everything new to DSCR and never look back.</p>
+      <ul><li>DSCR programs use their own exposure limits and property review</li><li>Blanket structures can combine properties, with cross-collateral risks</li><li>Larger multifamily properties may require commercial financing</li></ul>
+      <p>There is no universal property number at which to switch programs. Compare conventional, DSCR, and portfolio structures at each acquisition or refinance based on actual costs and constraints.</p>
     </div>
   </section>
 
@@ -449,8 +461,8 @@
   <section class="section bg-light">
     <div class="container content-narrow">
       <h2>Why Austin investors keep circling back</h2>
-      <p>The Austin–Round Rock–San Marcos metro median sat at <strong>$435,000 in July 2026</strong>, up just 1% year-over-year, with <strong>13,796 active listings</strong> and homes averaging <strong>63 days on market</strong> (<a href="https://austin.culturemap.com/news/real-estate/august-2026-real-estate-report/" target="_blank" rel="noopener">Unlock MLS / Austin Board of Realtors, July 2026</a>). That's a flatter, more patient market than the 2021–2022 bidding wars — and it's the kind of environment where DSCR and BRRRR investors do their best work: less competition on offers, more room to negotiate seller concessions into a rehab budget.</p>
-      <p>Travis County carries the largest share of that inventory and the highest price tag; Williamson and Caldwell counties price meaningfully lower with similar rent fundamentals — which is where a lot of the DSCR cash-flow math pencils cleanest right now.</p>
+      <p>Austin-area property economics vary by neighborhood, property condition, taxes, insurance, and achievable rent. Use current comparable sales and realistic rental evidence for the specific property rather than treating a metro average as its value.</p>
+      <p>Compare vacancy, repairs, management costs, and cash reserves across the locations you are considering. A lower purchase price does not by itself establish better cash flow.</p>
     </div>
   </section>
 
@@ -458,19 +470,11 @@
   <section class="section bg-light">
     <div class="container content-narrow">
       <h2>Fix-and-flip and bridge financing</h2>
-      <p>Different animal entirely from long-term hold loans. Fix-and-flip lending is short-term, asset-based, and priced for speed — not for cheapness.</p>
-      <p><strong>Standard terms in 2026:</strong></p>
-      <ul>
-        <li>12–24 month term, interest-only payments</li>
-        <li>Up to 90% of purchase price (LTC) plus 100% of rehab budget</li>
-        <li>Total loan capped at 70–75% of after-repair value (ARV)</li>
-        <li>Rate: 10–14% depending on experience and credit</li>
-        <li>Points: 2–3 at origination, sometimes a 1-point exit fee</li>
-        <li>Rehab funds disbursed in draws as work is inspected</li>
-        <li>660+ FICO floor, experience tier matters — first flip vs. fifth gets priced very differently</li>
-      </ul>
-      <p><strong>When to use it:</strong> the property is uninhabitable or doesn't pencil at current condition (won't appraise, won't qualify for DSCR, has structural or major-system issues). You buy fast, rehab, and either flip or refi into DSCR (BRRRR).</p>
-      <p><strong>Honest framing:</strong> Adam doesn't originate every fix-and-flip directly — hard money is its own world, and the right call is sometimes to plug you into a dedicated bridge lender we trust rather than force a residential broker fit. If hard money is the right tool for your deal, you'll get the introduction to a lender who actually does this every day. If a different structure (DSCR with a renovation rider, or a delayed-financing conventional) is cleaner for you, we'll go that direction instead.</p>
+      <p>A renovation or fix-and-flip project may need short-term financing because the property or planned work does not fit a permanent mortgage. A shorter term can create repayment pressure if construction or sale takes longer.</p>
+      <p><strong>Terms to verify:</strong></p>
+      <ul><li>Term, payment schedule, and any balloon or extension fee</li><li>Purchase and renovation amounts the lender will finance</li><li>As-is versus completed-value appraisal requirements</li><li>Interest, points, and other fees in written terms</li><li>Draw timing, inspections, and contingency funding</li><li>Credit, liquidity, and experience requirements</li></ul>
+      <p><strong>When might it fit?</strong> Review the property condition, budget, contractor, draw process, and sale or refinance plan. The future appraisal and permanent financing must not be assumed.</p>
+      <p><strong>Who can help?</strong> Adam can review the financing problem and identify whether an available mortgage path or a specialist lender is appropriate. A specific bridge product or referral is not guaranteed.</p>
     </div>
   </section>
 
@@ -478,48 +482,36 @@
   <section class="section">
     <div class="container content-narrow">
       <h2>Conventional investment property loans</h2>
-      <p>Don't write off conventional just because you're an investor. For deals 1 through 4–6, if you have W-2 income and clean tax returns, conventional Fannie/Freddie investment financing is almost always the cheapest money you'll ever borrow.</p>
-      <p><strong>Standard terms:</strong></p>
-      <ul>
-        <li>20% down minimum on a single-family rental (15% with PMI on some programs)</li>
-        <li>25% down on 2–4 unit investment</li>
-        <li>620 FICO floor, 720+ for best pricing</li>
-        <li>Income qualifies via W-2s, 1040s, and 75% of Schedule E rental income (lender uses 75% of gross rent to account for vacancy and maintenance, per <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-08/rental-income" target="_blank" rel="noopener">Fannie Mae B3-3.1-08</a>)</li>
-        <li>Counts against the 10-financed-property Fannie cap</li>
-        <li>Rate is typically 0.5–1.0% below DSCR for the same scenario — the 30-year conventional benchmark was <strong>6.71%</strong> the week of September 3, 2026 (<a href="https://www.freddiemac.com/pmms" target="_blank" rel="noopener">Freddie Mac PMMS</a>); DSCR pricing runs above that baseline</li>
-      </ul>
-      <p><strong>When conventional still wins:</strong> first-time investors with strong W-2 income, clean returns, and only 1–2 properties in mind. The rate savings over DSCR are real — sometimes $200–$400/mo on a typical loan. Don't let a non-QM broker steer you out of conventional just because non-QM pays more in commission.</p>
-      <p><strong>When to skip conventional:</strong> heavy depreciation on returns, more than 4 financed properties already, planning to scale aggressively in the next 24 months. The LLPAs and DTI calc will start working against you fast.</p>
+      <p>Conventional financing should be part of an investment-loan comparison when your documented income, reserves, property, and total obligations fit. Compare actual Loan Estimates or written terms; no program is always the least expensive.</p>
+      <p><strong>What to review:</strong></p>
+      <ul><li>Down payment and reserves for the unit count and transaction</li><li>Credit and total debt-to-income review</li><li>Documented qualifying income, including eligible rental income</li><li>Financed-property counting and additional-reserve rules</li><li>Written rate and fee comparison for the actual file</li></ul>
+      <p><strong>When should you compare it?</strong> A first-time or experienced investor with verifiable qualifying income and sufficient funds may have a conventional path worth reviewing alongside DSCR.</p>
+      <p><strong>What can change the fit?</strong> Business income, depreciation, ownership structure, financed-property count, and plans for additional borrowing require a file-specific review.</p>
     </div>
   </section>
 
   <!-- What we look at when underwriting investors -->
   <section class="section bg-light">
     <div class="container content-narrow">
-      <h2>What we look at when underwriting investors</h2>
+      <p>Agency rental-income calculations depend on the documentation method. Schedule E cash-flow analysis differs from using eligible lease or appraisal rent with an adjustment. See <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-08/rental-income">Fannie Mae rental-income guidance</a>.</p><h2>What do lenders review for investment properties?</h2>
       <p>The criteria shift as you move from conventional to DSCR to portfolio. Here's what every program is looking for, in priority order:</p>
 
       <h3>Credit</h3>
-      <p>FICO drives pricing more than any other variable on investor loans. 700+ is the breakpoint where DSCR pricing tightens up significantly. 740+ and you're at the best non-QM pricing tier. Below 680 and your options narrow fast — fix-and-flip and a few aggressive DSCR shops still play, but rates climb.</p>
+      <p>Credit history can affect eligibility, pricing, and required equity. Score thresholds and price tiers vary; there is no universal investor-loan score that guarantees the best terms.</p>
 
       <h3>Reserves</h3>
-      <p>Liquid post-close reserves matter more on investor loans than on owner-occupied. Standard:</p>
-      <ul>
-        <li>DSCR long-term rental: 6 months PITIA on the subject property</li>
-        <li>DSCR short-term rental: 6–12 months PITIA</li>
-        <li>Portfolio loan: 6 months on each property in the pool</li>
-        <li>Fix-and-flip: 6+ months of carrying cost on the subject deal</li>
-      </ul>
-      <p>Reserves can sit in checking, savings, brokerage, or retirement accounts. They don't get spent — just verified.</p>
+      <p>Lenders may require verified reserves after closing. The amount and eligible assets depend on the loan and other financed properties. Also plan for your own operating costs beyond the lender minimum.</p>
+      <p>Review both lender-required reserves and an operating buffer for vacancy, repairs, and delayed exits.</p>
+      <p>Cash, investments, or retirement assets may be eligible with adjustments and documentation. Confirm accessibility, valuation, and any restrictions before counting them as reserves.</p>
 
       <h3>Experience</h3>
-      <p>How many investment properties have you owned and operated? On DSCR it's a soft factor — first-time investors qualify routinely. On fix-and-flip, experience is priced explicitly: a first-flip borrower pays more, gets less leverage, and faces tighter draw schedules than a 10-flip operator. On portfolio loans, experience determines whether the lender will even quote.</p>
+      <p>Experience can affect which programs are available and how a lender reviews renovation, rental, and portfolio risks. First-time investors should describe their plan rather than assume they are ineligible.</p>
 
       <h3>Property cash flow</h3>
-      <p>This is the deal-killer or deal-maker on DSCR. Rent ÷ PITIA. If the math works, you're in. If it doesn't, no FICO score saves you. The exception: no-ratio DSCR programs that let you go below 1.0 with extra down payment (typically 30%) and a pricing hit. Worth knowing about, but plan to hit 1.0+ if you can.</p>
+      <p>Cash flow is central to a DSCR review but is not the only requirement. Some programs may consider lower coverage with different terms; availability, costs, and required equity must be verified.</p>
 
       <h3>Title and entity structure</h3>
-      <p>Most DSCR and portfolio lenders allow LLC vesting — useful for liability protection and entity-level tax treatment. The borrower personally guarantees the loan in nearly every case. Expect to provide articles of organization, operating agreement, and EIN. Texas LLC formation is straightforward and the lender flexibility is one of the underrated reasons DSCR is the dominant investor product.</p>
+      <p>Some DSCR and portfolio programs permit entity vesting. Ownership, guaranty, title, insurance, and documentation requirements depend on the loan. Obtain legal and tax advice before choosing or transferring an ownership structure; an LLC does not automatically create a particular protection or tax result.</p>
     </div>
   </section>
 
@@ -532,70 +524,70 @@
         <div class="accordion-item">
           <button class="accordion-button" aria-expanded="false">I'm at 10 conventional loans — what now?</button>
           <div class="accordion-content">
-            <p>You've hit Fannie Mae's 10-financed-property cap. Once you're at it, agency conventional is closed for new acquisitions. The path forward: DSCR (no property cap, qualifies on the rent), or portfolio loans (bundle 5–25 properties under one blanket loan). Most investors who scale past 10 do it through DSCR — every new deal stands alone on its own cash flow.</p>
+            <p>Financed-property counting depends on the program and underwriting method. Have the lender review ownership and mortgage obligations before concluding you reached a limit. DSCR or portfolio programs may offer alternatives, subject to their own limits.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-button" aria-expanded="false">Can I cash out to buy the next investment property?</button>
           <div class="accordion-content">
-            <p>Yes. Standard cash-out refinance LTV is 75% on a 1-unit investment property, 70% on a 2–4 unit. Most lenders require 6 months of seasoning from your purchase date — some require 12. The cash-out proceeds are yours to deploy into the next acquisition. This is exactly how the BRRRR strategy works, and DSCR cash-out is the most common refinance vehicle on the back end.</p>
+            <p>Possibly. Cash-out eligibility, maximum leverage, seasoning, and usable proceeds depend on the property and loan program. Subtract existing debt and costs from any proposed new loan amount before planning another acquisition.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-button" aria-expanded="false">How do I finance a fix-and-flip?</button>
           <div class="accordion-content">
-            <p>Hard money / bridge financing. 12–24 month term, interest-only, 10–14% rate, 2–3 points, up to 90% of purchase + 100% rehab, total capped at 70–75% of ARV. Rehab funds disbursed in draws. First-time flippers face tighter terms and lower leverage than experienced operators. Adam will tell you honestly if hard money is the right call or if a different structure (delayed-financing conventional, DSCR with a renovation rider) fits cleaner — and refer to a dedicated bridge lender when that's the right move.</p>
+            <p>A short-term renovation or bridge structure may fit a property needing work. Compare the budget, draw schedule, fees, interest, maturity, and repayment plan. Available terms depend on the property, experience, and lender.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-button" aria-expanded="false">What is BRRRR financing?</button>
           <div class="accordion-content">
-            <p>BRRRR = Buy, Rehab, Rent, Refinance, Repeat. You buy distressed (cash or hard money), rehab it, place a tenant, then refinance into long-term DSCR financing at the new appraised after-repair value. Typical refi is 75% LTV after 6 months seasoning. The cash-out recovers your capital so you can repeat. The strategy lives or dies on the ARV appraisal — if your all-in (purchase + rehab + holding) stays below 75% of ARV, you walk out with all your money back. If not, you leave equity stuck in the deal.</p>
+            <p>BRRRR means Buy, Rehab, Rent, Refinance, Repeat. Refinancing is a separate underwriting decision, not a promised recovery of your cash. Value, rent, seasoning, costs, and loan limits can leave more capital in the project than planned.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-button" aria-expanded="false">Do you do blanket loans across 5+ properties?</button>
           <div class="accordion-content">
-            <p>Yes. Portfolio (blanket) loans bundle 5–25 properties under a single loan. Typical structure: 70% LTV aggregate, 7–10 year term, 30-year amortization, balloon at maturity, with release clauses to sell individual properties out of the pool. Best fit when you're consolidating a stack of separate DSCR loans, doing a 1031 into multiple replacements, or scaling past Fannie's 10-property cap.</p>
+            <p>A blanket loan may combine multiple properties. Ask about collateral, payment terms, guarantees, and release provisions. Whether an available lender can finance the proposed pool requires review.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-button" aria-expanded="false">What's the best loan type for my first investment property?</button>
           <div class="accordion-content">
-            <p>If you have W-2 income and clean tax returns, conventional Fannie investment financing is usually cheapest — 20–25% down, lower rate than DSCR. If you're self-employed with heavy depreciation, or want to scale fast without your personal DTI getting in the way, start on DSCR. The right answer depends on your tax profile and the 24-month plan. Adam will run both quotes and you pick.</p>
+            <p>Compare conventional, DSCR, bank-statement, and asset-based paths based on income, rent, reserves, occupancy, and your plan. No program is automatically the best or cheapest choice for a first investment.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-button" aria-expanded="false">When does it make sense to switch from DSCR to a portfolio loan?</button>
           <div class="accordion-content">
-            <p>Around 5–8 properties. Once you have a stack of separate DSCR loans, the admin and balance-sheet drag start to matter. Portfolio loans consolidate the math, free up reserves treatment, and let you refi a whole pool at once if rates move. Investors targeting 15+ doors usually move to portfolio between deals 5 and 10.</p>
+            <p>Compare the administrative benefits with the costs and cross-collateral risks when your portfolio changes. There is no fixed property count that makes a blanket loan better than individual loans.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-button" aria-expanded="false">Can I finance a 5-unit or 6-unit property?</button>
           <div class="accordion-content">
-            <p>Yes — 5–8 unit small multifamily is a tweener. Too big for residential 1–4 unit programs, too small for most full commercial lenders. Non-QM small-balance commercial fills it. Expect 25–30% down, 5/1 or 7/1 ARM, full-doc OR DSCR-style underwriting. Heavier reserves than 1–4 unit DSCR. Pricing reflects the smaller lender pool.</p>
+            <p>Properties with five or more units generally need a different financing review from one-to-four-unit residential properties. Available commercial or portfolio paths depend on the property, income, reserves, and lender.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-button" aria-expanded="false">Do investor loans show up on my personal credit report?</button>
           <div class="accordion-content">
-            <p>Conventional investment loans report to your personal credit. DSCR loans closed in your personal name typically report; DSCR loans closed in an LLC often don't (depends on the lender's reporting practices). Portfolio loans on entity-only typically don't hit personal credit. Foreign national and small-balance commercial loans generally don't report. If credit-report load matters to you for the next deal, raise it up front and we'll match programs.</p>
+            <p>Reporting and personal guarantees vary by lender, borrower, and entity structure. Ask for the actual lender policy; entity ownership does not automatically keep an obligation off your credit or out of another lender's analysis.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-button" aria-expanded="false">How many investment properties can I have financed at once?</button>
           <div class="accordion-content">
-            <p>Conventional: 10 financed 1–4 unit properties total (including your primary). Non-QM: no cap. DSCR and portfolio loans don't count against any agency limit. Adam has clients running 25, 40, 60+ doors entirely outside the agency framework.</p>
+            <p>There is no universal limit across all financing. Agency counting rules, lender exposure limits, reserves, debt obligations, and property performance affect how much additional financing may be available.</p>
           </div>
         </div>
 
@@ -633,9 +625,9 @@
   <section class="section bg-navy cta-spotlight">
     <div class="container text-center">
       <h2 class="text-white">Run your investor scenario</h2>
-      <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Tell me where you are — first deal or 25 doors deep — and what you're trying to do next. I'll map the right loan stack and quote it across 40+ wholesale lenders. Usually same day.</p>
-      <a href="/scenario.html" class="btn btn-primary btn-lg">Review My Investor Scenario</a>
-      <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-white btn-lg" style="margin-left:1rem;" target="_blank" rel="noopener">Book a 15-minute call</a>
+      <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Share the property, goal, rent assumptions, and strategy. Adam can identify financing paths worth reviewing and what additional information is needed.</p>
+      <a href="#scenario-review" class="btn btn-primary btn-lg">Send Your Scenario</a>
+      <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-white btn-lg" style="margin-left:1rem;" target="_blank" rel="noopener">Start a Secure Application</a>
       <p class="text-white" style="margin-top:1rem;opacity:0.7;font-size:0.9rem;">Or call <a href="tel:+15129566010" style="color:#fff;">(512) 956-6010</a> — NMLS #513013</p>
     </div>
   </section>
@@ -690,5 +682,7 @@
 <script src="/js/scroll-effects.js?v=20260429" defer></script>
 <script src="/analytics.js?v=20260417" defer></script>
 <script src="/js/program-page-layout.js?v=20260830" defer></script>
+<script src="/assets/utm.js?v=20260830-first-touch-v1" defer></script>
+<script src="/situation-journeys.js?v=20260909" defer></script>
 </body>
 </html>

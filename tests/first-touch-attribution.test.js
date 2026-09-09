@@ -76,19 +76,19 @@ test('form attribution reuses first touch and recovers the clicked CTA without P
   assert.equal(fields.get('intent').value, 'scenario');
 });
 
-test('pre-approval keeps the proven visible form while adding reliable attribution', () => {
+test('purchase journey preserves attribution and uses shared capture', () => {
   assert.doesNotMatch(preapprovalPage, /name="referrer"/);
   assert.match(preapprovalPage, /name="entry_referrer"/);
   assert.match(preapprovalPage, /name="first_touch_page"/);
   assert.match(preapprovalPage, /name="cta_source_page"/);
   assert.match(preapprovalPage, /name="cta_label"/);
   assert.match(preapprovalPage, /<form[\s\S]*name="bot-field"[\s\S]*<\/form>/);
-  assert.match(preapprovalPage, /attributionEvent\('qualification_funnel_view'\)/);
-  assert.match(preapprovalPage, /attributionEvent\('form_start'\)/);
-  assert.match(preapprovalPage, /attributionEvent\('step_1_complete'\)/);
-  assert.match(preapprovalPage, /attributionEvent\('accepted_submit'\)/);
-  assert.match(preapprovalPage, /styer:qualification-contact/);
-  assert.match(preapprovalPage, /Talk With Adam &rarr;/);
+  assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('qualification_funnel_view'\)/);
+  assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('form_start'\)/);
+  assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('step_1_complete'\)/);
+  assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('accepted_submit'\)/);
+  assert.match(preapprovalPage, /situation-journeys\.js/);
+  assert.match(preapprovalPage, /Send Your Scenario<\/button>/);
 });
 
 test('sitewide analytics records first touch and CTA context for later submission', () => {

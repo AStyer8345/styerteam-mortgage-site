@@ -1,3 +1,9 @@
+## 2026-09-09 — Coordinated situation journeys and complete tenant purchase guide
+
+- Added one shared intake design and handler to purchase, refinance/equity, business-owner, investment-property, and move-up journeys. Standardized the two review/application actions.
+- Preserved existing capture, attribution, stable inquiry IDs, educational sections, canonical URLs, and downstream DSCR resources. Expanded the existing landlord-purchase guide rather than duplicating it.
+- Validated 220 tests, TypeScript, build/form/knowledge checks, SEO/schema, desktop/mobile layouts, and local mocked capture/validation; no test leads sent. See `run-logs/situation-journeys-2026-09-09.md`.
+
 ## 2026-09-07 — styer-gbp-weekly: Bank Statement Loan Spotlight published, Week 37
 
 - Auto-published GBP post (221 words) via Publer job `6a9ef0dd6365d0de97c13dad`, status complete/zero failures, destination-verified.

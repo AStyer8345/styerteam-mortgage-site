@@ -1,0 +1,54 @@
+/* Shared, scoped presentation for the five situation journeys. */
+body[data-situation-page] .journey-hero{background:#102440;padding:clamp(1.5rem,4vw,3.5rem) 0;color:#fff}
+body[data-situation-page] .journey-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1.5rem,4vw,3.5rem);max-width:1200px;width:100%;margin:0 auto;align-items:start;padding-inline:24px}
+.journey-copy{min-width:0;padding-top:.7rem}
+body[data-situation-page] .journey-copy h1{color:#fff;font-size:clamp(2rem,3.2vw,2.8rem);line-height:1.12;margin:0 0 1.1rem;max-width:18ch}
+.journey-hero .journey-eyebrow{color:#e6c67b;text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;font-weight:700;margin:0 0 1rem}
+.journey-hero .journey-intro{color:#e0e6ef;font-size:1rem;line-height:1.65;margin-bottom:1.5rem}
+.journey-actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.journey-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.8rem 1.05rem;border:1px solid transparent;border-radius:6px;font:600 .92rem/1.3 var(--font-body,Inter,sans-serif);text-align:center;text-decoration:none;cursor:pointer;transition:background .15s}
+.journey-hero .journey-primary{background:#e6c67b;color:#102440}
+.journey-hero .journey-primary:hover{background:#f2dba2;color:#102440}
+.journey-hero .journey-secondary{background:transparent;border-color:#bbc9dc;color:#fff}
+.journey-hero .journey-secondary:hover{background:#223c5d;color:#fff}
+.journey-button:focus-visible,.journey-back:focus-visible,.journey-hero a:focus-visible{outline:3px solid #c08c29;outline-offset:4px}
+.journey-path-note{margin:1.4rem 0 1rem;border-top:1px solid #43546b;padding-top:1.2rem}
+.journey-hero .journey-path-note p{font-size:.88rem;line-height:1.6;color:#dce3ed;margin-bottom:.6rem}
+.journey-hero .journey-contact{font-size:.88rem;color:#dce3ed;margin:1rem 0}
+.journey-hero .journey-contact a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.journey-hero .journey-byline{font-size:.78rem;color:#c4cfdd;line-height:1.65;margin:1.4rem 0 0}
+.journey-card{background:#fbfaf7;color:#182a43;border:1px solid #e6dcc6;border-top:3px solid #c49b43;border-radius:9px;padding:clamp(1.2rem,2.5vw,1.8rem);box-shadow:0 12px 32px #05132738;scroll-margin-top:110px;min-width:0}
+body[data-situation-page] .journey-card h2{font-size:1.55rem;line-height:1.2;margin:0 0 .6rem;color:#102440}
+.journey-card .journey-form-intro{font-size:.83rem;color:#536174;line-height:1.5;margin:0 0 1rem}
+.journey-form fieldset{border:0;padding:0;margin:0;min-width:0}
+.journey-form legend{font-size:1rem;font-weight:600;padding:0;margin-bottom:.8rem;color:#102440}
+.journey-card .journey-progress{color:#5f4c22;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid #c49b43;padding-bottom:.65rem;margin:0 0 1rem}
+.journey-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem .9rem}
+.journey-field{display:flex;flex-direction:column;min-width:0;gap:.35rem}
+.journey-full{grid-column:1/-1}
+.journey-field label{color:#24374d;font-size:.8rem;line-height:1.45;font-weight:600;margin:0}
+.journey-field input,.journey-field select,.journey-field textarea{box-sizing:border-box;width:100%;max-width:100%;min-width:0;min-height:46px;margin:0;border:1px solid #b9c2cf;border-radius:5px;background:#fff;color:#182a43;padding:.65rem .7rem;font:400 16px/1.4 var(--font-body,Inter,sans-serif)}
+.journey-field input::placeholder,.journey-field textarea::placeholder{color:#697486;opacity:1}
+.journey-field input:focus,.journey-field select:focus,.journey-field textarea:focus{outline:2px solid #8b6926;outline-offset:2px}
+.journey-field textarea{resize:vertical}
+.journey-card .journey-hint{font-size:.75rem;line-height:1.55;color:#586576;margin:.75rem 0 0}
+.journey-card .journey-hint a{color:#263d59;text-decoration:underline}
+.journey-consent{display:flex;align-items:flex-start;gap:.65rem;font-size:.75rem;font-weight:400;line-height:1.55;color:#465366;margin:1rem 0}
+.journey-consent input{flex:0 0 18px;width:18px;height:18px;margin:.2rem 0 0;accent-color:#102440}
+.journey-form-actions{display:flex;gap:1rem;align-items:center}
+.journey-submit{background:#102440;color:#fff;margin-top:1.1rem;flex:1;width:100%}
+.journey-submit:hover{background:#243f63;color:#fff}
+.journey-submit:disabled{opacity:.7;cursor:wait}
+.journey-back{background:none;border:0;padding:.8rem 0;margin-top:1.1rem;min-height:48px;color:#102440;text-decoration:underline;font:inherit;cursor:pointer}
+.journey-status{padding:1rem;border:1px solid #9a762d;border-radius:5px;background:#fff6df;color:#392a0b;font-size:.9rem;line-height:1.5}
+.journey-form [hidden]{display:none!important}
+.journey-related{max-width:760px;margin:1.5rem auto;padding:0 24px}
+body[data-situation-page="move_up"] .article-body{max-width:860px;margin-inline:auto;line-height:1.75}
+body[data-situation-page="move_up"] .article-body h2{margin-top:2rem}
+body[data-situation-page] .journey-education{max-width:1000px;margin:auto;padding:2.5rem 24px}
+.journey-education-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.journey-education-grid article{padding:1.2rem;background:#f6f4ee;border:1px solid #e1ddd1;border-radius:7px}
+.journey-education-grid h3{font-size:1.1rem;margin-top:0}
+@media(min-width:1000px){.journey-fields .journey-field label{min-height:2.9em}.journey-full label{min-height:0!important}}
+@media(max-width:999px){body[data-situation-page] .journey-grid{grid-template-columns:1fr;max-width:740px;gap:1.4rem}.journey-copy{padding-top:0}.journey-hero .journey-path-note{margin-top:1rem}.journey-hero .journey-byline{margin-top:.75rem}body[data-situation-page] .journey-copy h1{max-width:24ch}}
+@media(max-width:540px){body[data-situation-page] .journey-grid{padding-inline:18px}.journey-actions{flex-direction:column;align-items:stretch}.journey-fields,.journey-education-grid{grid-template-columns:1fr}.journey-card{padding:1.2rem}.journey-field label{min-height:0}.journey-hero .journey-intro{font-size:.94rem}.journey-card{scroll-margin-top:90px}}

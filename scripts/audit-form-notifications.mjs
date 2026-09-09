@@ -148,7 +148,8 @@ for (const [file, backupPattern] of requiredOwnerEmailCaptures) {
 
 for (const file of ['get-preapproved.html', 'refinance-quote.html']) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
-  if (!/Promise\.allSettled/.test(html) || !/netlifyAccepted/.test(html) || !/leadAccepted/.test(html)) {
+  const capture = /situation-journeys\.js/.test(html) ? fs.readFileSync(path.join(root, 'situation-journeys.js'), 'utf8') : html;
+  if (!/Promise\.allSettled/.test(capture) || !/netlifyAccepted/.test(capture) || !/leadAccepted/.test(capture)) {
     failures.push(`${file}: dual capture does not verify that at least one endpoint accepted the lead.`);
   }
 }

@@ -1,0 +1,258 @@
+[
+  {
+    "file": "get-preapproved.html",
+    "intent": "purchase",
+    "fields": [
+      [
+        "loan_goal",
+        "What are you planning?",
+        [
+          "Purchase",
+          "Not Sure Yet"
+        ],
+        "Purchase"
+      ],
+      [
+        "property_value",
+        "Approximate purchase price",
+        null,
+        ""
+      ],
+      [
+        "down_payment",
+        "Estimated down payment",
+        null,
+        ""
+      ],
+      [
+        "target_city",
+        "City or area",
+        null,
+        ""
+      ],
+      [
+        "timeline",
+        "Where are you in the process?",
+        [
+          "Exploring",
+          "Actively looking",
+          "Making offers",
+          "Under contract",
+          "Buying from my landlord"
+        ],
+        ""
+      ]
+    ]
+  },
+  {
+    "file": "refinance-quote.html",
+    "intent": "refinance",
+    "fields": [
+      [
+        "loan_goal",
+        "What is your refinance or equity goal?",
+        [
+          "Lower payment or rate",
+          "Change loan term",
+          "Cash-out refinance",
+          "HELOC or home equity loan",
+          "Compare options"
+        ],
+        "",
+        true
+      ],
+      [
+        "property_value",
+        "Approximate property value",
+        null,
+        ""
+      ],
+      [
+        "current_balance",
+        "Current mortgage balance",
+        null,
+        ""
+      ],
+      [
+        "current_rate",
+        "Current interest rate, if known",
+        null,
+        ""
+      ]
+    ]
+  },
+  {
+    "file": "mortgage-for-business-owners-austin.html",
+    "intent": "business_owner",
+    "fields": [
+      [
+        "loan_goal",
+        "What would you like to do?",
+        [
+          "Purchase",
+          "Refinance",
+          "Cash-out refinance",
+          "Compare options"
+        ],
+        "",
+        true
+      ],
+      [
+        "income_type",
+        "How is your income structured?",
+        [
+          "Self-employed / business owner",
+          "1099 / independent contractor",
+          "S-corp / partnership / K-1",
+          "W-2 from my business",
+          "Multiple income sources",
+          "Assets / recent business sale"
+        ],
+        "",
+        true
+      ],
+      [
+        "time_in_business",
+        "Time in business",
+        [
+          "Less than 1 year",
+          "1\u20132 years",
+          "2 or more years",
+          "Not sure"
+        ],
+        "",
+        false
+      ],
+      [
+        "property_value",
+        "Approximate price or property value",
+        null,
+        ""
+      ]
+    ]
+  },
+  {
+    "file": "investor-loans.html",
+    "intent": "investment",
+    "fields": [
+      [
+        "loan_goal",
+        "What would you like to do?",
+        [
+          "Purchase",
+          "Refinance",
+          "Cash-out refinance"
+        ],
+        "",
+        true
+      ],
+      [
+        "property_type",
+        "What type of property?",
+        [
+          "Single-family rental",
+          "Condo or townhome",
+          "2\u20134 units",
+          "5+ units / commercial",
+          "Not sure yet"
+        ],
+        "",
+        true
+      ],
+      [
+        "property_value",
+        "Approximate price or value",
+        null,
+        ""
+      ],
+      [
+        "monthly_rent",
+        "Expected or current monthly rent",
+        null,
+        ""
+      ],
+      [
+        "investment_strategy",
+        "What is your investment strategy?",
+        [
+          "Long-term rental",
+          "Short-term rental",
+          "Fix and flip",
+          "BRRRR / renovate and rent",
+          "Portfolio growth",
+          "Still deciding"
+        ],
+        "",
+        false
+      ]
+    ]
+  },
+  {
+    "file": "buy-before-you-sell-austin.html",
+    "intent": "move_up",
+    "fields": [
+      [
+        "property_value",
+        "Desired new purchase price",
+        null,
+        ""
+      ],
+      [
+        "target_city",
+        "New-home city or area",
+        null,
+        ""
+      ],
+      [
+        "current_home_value",
+        "Approximate current-home value",
+        null,
+        ""
+      ],
+      [
+        "current_balance",
+        "Current-home mortgage balance",
+        null,
+        ""
+      ],
+      [
+        "listing_status",
+        "Is your current home listed?",
+        [
+          "Not listed",
+          "Preparing to list",
+          "Listed for sale",
+          "Under contract"
+        ],
+        "",
+        true
+      ],
+      [
+        "timeline",
+        "When would you like to move?",
+        [
+          "As soon as practical",
+          "Within 3 months",
+          "3\u20136 months",
+          "Flexible / exploring"
+        ],
+        "",
+        false
+      ],
+      [
+        "primary_constraint",
+        "What is the main constraint?",
+        [
+          "Down payment tied up in equity",
+          "Qualifying with both payments",
+          "Avoiding two moves",
+          "Avoiding a sale contingency",
+          "Uncertain timing",
+          "Something else"
+        ],
+        "",
+        false
+      ]
+    ]
+  }
+]

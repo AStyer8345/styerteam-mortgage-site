@@ -90,9 +90,9 @@ test('homepage prioritizes the short scenario review and preserves the secure ap
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
   assert.match(homepage, /href="\/get-preapproved\.html\?intent=scenario&amp;source=homepage_hero"[^>]*data-source="homepage_hero"[^>]*>Send Your Scenario<\/a>/);
-  assert.match(homepage, /data-track="secure_application_click"[^>]*data-source="homepage_hero_secondary"[^>]*>Start Secure Application<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Start Secure Application']);
-  assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Start Secure Application']);
+  assert.match(homepage, /data-track="secure_application_click"[^>]*data-source="homepage_hero_secondary"[^>]*>Start a Secure Application<\/a>/);
+  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Start a Secure Application']);
+  assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Start a Secure Application']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.doesNotMatch(homepage, /name="quick-scenario"/);
   assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);
