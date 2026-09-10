@@ -135,6 +135,11 @@
     .home-pilot .home-hero-photo{display:block;width:88px;height:96px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 8px 12px rgba(13,31,60,.13))}
     .home-pilot .home-hero-panel-intro h2{margin:0 0 .25rem}
     .home-pilot .home-hero-panel-intro p{margin:0;color:#687483;font-size:.87rem;line-height:1.5}
+    .home-pilot .home-other-paths{margin:1rem 0 0;font-size:.82rem;line-height:1.7;color:#687483}
+    .home-pilot .home-other-paths a{color:#0d1f3c;text-decoration:underline;text-underline-offset:3px}
+    .home-pilot .home-service-area{padding:1.5rem 0;border-top:1px solid #dce1e9;border-bottom:1px solid #dce1e9}
+    .home-pilot .home-service-area p{margin:0;text-align:center;font-size:.95rem;line-height:1.8}
+    .home-pilot .home-service-area a{display:inline-block;margin-left:.5rem}
     @media(max-width:900px){.home-pilot .home-hero-layout{grid-template-columns:1fr}.home-pilot .home-hero-panel{max-width:700px}}
     @media(max-width:768px){.home-pilot .hero{padding:2.75rem 0}.home-pilot .hero h1{font-size:clamp(2.25rem,10vw,3.15rem)}.home-pilot .hero-ctas{align-items:stretch}.home-pilot .hero-cta-btn{width:100%;max-width:none}.home-pilot .home-hero-panel-intro{grid-template-columns:72px minmax(0,1fr);gap:.85rem}.home-pilot .home-hero-photo{width:72px;height:80px}.home-pilot>header .nav-links.active{background:#fff}.home-pilot>header .nav-links.active>li>a:not(.nav-cta){color:#0d1f3c}.home-pilot>header .nav-links.active .nav-cta{margin:.5rem 1rem}}
   </style>
@@ -420,8 +425,9 @@
               <p class="hero-call-link" style="margin-top:0.5rem;">
                 <a href="tel:+15129566010" class="hero-call-link-a">
                   <svg class="hero-call-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  Or call (512) 956-6010
+                  Call (512) 956-6010
                 </a>
+                <span aria-hidden="true"> · </span><a href="sms:+15129566010" class="hero-call-link-a">Text Adam</a>
               </p>
               <p class="hero-legal">NMLS#: 2653540 (Company) &middot; 513013 (Adam Styer)</p>
           </div>
@@ -434,21 +440,22 @@
                 <p>You do not need to know the loan program before reaching out.</p>
               </div>
             </div>
-            <a class="home-path" data-track="situation_choice" href="/get-preapproved.html?intent=purchase&amp;source=homepage_situations">
-              <span class="home-path-number">01</span><span><strong>I’m buying a home</strong><small>First-time and repeat buyers are welcome</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
-            </a>
-            <a class="home-path" data-track="situation_choice" href="/refinance-quote.html?intent=refinance&amp;source=homepage_situations">
-              <span class="home-path-number">02</span><span><strong>I want to refinance or use my equity</strong><small>Review your rate, payment, or cash-out options</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
-            </a>
             <a class="home-path" data-track="situation_choice" href="/mortgage-for-business-owners-austin.html?intent=business_owner&amp;source=homepage_situations">
-              <span class="home-path-number">03</span><span><strong>I own a business</strong><small>Bank statements, 1099, P&amp;L, K-1, or assets</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
+              <span class="home-path-number">01</span><span><strong>I’m self-employed</strong><small>My tax returns don’t show what I earn</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="home-path" data-track="situation_choice" href="/bank-statement-loans.html?intent=bank_statement&amp;source=homepage_situations">
+              <span class="home-path-number">02</span><span><strong>I need a bank statement loan</strong><small>Explore qualifying with business or personal statements</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="home-path" data-track="situation_choice" href="/one-time-close-construction-loan-texas.html?intent=construction&amp;source=homepage_situations">
+              <span class="home-path-number">03</span><span><strong>I’m building a home</strong><small>Review the lot, builder, budget, and financing</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
             </a>
             <a class="home-path" data-track="situation_choice" href="/investor-loans.html?intent=investment&amp;source=homepage_situations">
-              <span class="home-path-number">04</span><span><strong>I’m buying an investment</strong><small>Compare financing around your investment plan</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
+              <span class="home-path-number">04</span><span><strong>I’m buying an investment property</strong><small>Compare financing around your investment plan</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
             </a>
             <a class="home-path" data-track="situation_choice" href="/buy-before-you-sell-austin.html?intent=move_up&amp;source=homepage_situations">
-              <span class="home-path-number">05</span><span><strong>I need to move before I sell</strong><small>Bridge and buy-before-you-sell strategies</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
+              <span class="home-path-number">05</span><span><strong>I need to buy before I sell</strong><small>Explore bridge and buy-before-you-sell options</small></span><span class="home-path-arrow" aria-hidden="true">→</span>
             </a>
+            <p class="home-other-paths"><a data-track="situation_choice" href="/get-preapproved.html?intent=purchase&amp;source=homepage_situations">Buying a home</a><span aria-hidden="true"> · </span><a data-track="situation_choice" href="/refinance-quote.html?intent=refinance&amp;source=homepage_situations">Refinancing or using equity</a></p>
           </aside>
         </div>
       </div>
@@ -722,44 +729,33 @@
       </div>
     </section>
 
-    <!-- MORTGAGE RESOURCES PREVIEW -->
-    <section class="bg-light">
+    <!-- CURATED MORTGAGE GUIDES -->
+    <section class="bg-light" id="mortgage-guides" aria-labelledby="mortgage-guides-title">
       <div class="container">
-        <h2 class="text-center mb-3xl">Mortgage Resources &amp; Guides</h2>
+        <h2 id="mortgage-guides-title" class="text-center mb-md">Practical answers before you apply</h2>
+        <p class="text-center content-medium mx-auto mb-3xl">Understand your income options, plan a build, or compare a loan offer.</p>
         <div class="grid grid-3">
-          <a href="/resources/first-time-buyer-guide/" class="card blog-card" data-animate>
-            <span class="blog-card-category">First-Time Buyers</span>
-            <h3 class="blog-card-title">First-Time Home Buyer's Guide to Getting a Mortgage</h3>
-            <p class="blog-card-excerpt">Everything you need to know about the mortgage process, from pre-approval to closing day.</p>
-            <div class="blog-card-meta">
-              <span>February 19, 2026</span>
-              <span>8 min read</span>
-            </div>
+          <a href="/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html" class="card blog-card" data-animate>
+            <span class="blog-card-category">Self-Employed Income</span>
+            <h3 class="blog-card-title">How lenders review self-employed income</h3>
+            <p class="blog-card-excerpt">Understand the difference between business revenue and qualifying income, and the documentation a lender may review.</p>
+            <span class="text-link">Read the income guide &rarr;</span>
           </a>
-          <a href="fixed-vs-adjustable.html" class="card blog-card" data-animate>
-            <span class="blog-card-category">Loan Types</span>
-            <h3 class="blog-card-title">Fixed-Rate vs. Adjustable-Rate Mortgages: Which Is Right for You?</h3>
-            <p class="blog-card-excerpt">Understand the key differences between fixed and adjustable rates to make a confident decision.</p>
-            <div class="blog-card-meta">
-              <span>February 19, 2026</span>
-              <span>6 min read</span>
-            </div>
+          <a href="/one-time-close-construction-loan-texas.html" class="card blog-card" data-animate>
+            <span class="blog-card-category">Construction Financing</span>
+            <h3 class="blog-card-title">Plan the financing before you build</h3>
+            <p class="blog-card-excerpt">Explore how one-time-close construction financing works and what to gather about your lot, builder, and project budget.</p>
+            <span class="text-link">Read the construction guide &rarr;</span>
           </a>
-          <a href="improve-credit-score.html" class="card blog-card" data-animate>
-            <span class="blog-card-category">Credit Tips</span>
-            <h3 class="blog-card-title">How to Improve Your Credit Score Before Applying for a Mortgage</h3>
-            <p class="blog-card-excerpt">Practical steps to boost your credit and qualify for better mortgage rates.</p>
-            <div class="blog-card-meta">
-              <span>February 19, 2026</span>
-              <span>5 min read</span>
-            </div>
+          <a href="/blog/how-to-compare-two-mortgage-offers.html" class="card blog-card" data-animate>
+            <span class="blog-card-category">Comparing Loan Offers</span>
+            <h3 class="blog-card-title">Compare more than the interest rate</h3>
+            <p class="blog-card-excerpt">Make sense of points, lender fees, credits, and cash to close when reviewing two mortgage offers.</p>
+            <span class="text-link">Read the comparison guide &rarr;</span>
           </a>
         </div>
-        <p class="text-center mt-xl" style="font-size:var(--font-size-sm);">
-          <strong>Buying in Austin?</strong> Read the complete guide: <a href="/how-to-buy-a-house-in-austin-tx.html" class="text-link">How to Buy a House in Austin TX &rarr;</a>
-        </p>
         <div class="text-center mt-xl">
-          <a href="blog.html" class="btn btn-outline">View All Articles</a>
+          <a href="/resources/" class="btn btn-outline">Browse All Resources</a>
         </div>
       </div>
     </section>
@@ -815,155 +811,10 @@
       </div>
     </section>
 
-    <!-- SERVICE AREAS -->
-    <section>
+    <!-- SERVICE AREA DIRECTORY -->
+    <section class="home-service-area" aria-label="Service area">
       <div class="container">
-        <h2 class="text-center mb-3xl">Austin Area Mortgage Lender</h2>
-        <p class="text-center text-lg content-medium mx-auto mb-3xl">
-          Adam Styer serves the entire Greater Austin metro. Click your city for local market insights and loan options specific to your area.
-        </p>
-        <p class="text-center content-medium mx-auto mb-3xl" style="margin-top:-1.5rem;">
-          In Williamson County, <a href="/round-rock-mortgage-lender.html">Round Rock's Teravista and Forest Creek neighborhoods represent two very different loan conversations</a> — new construction builder financing vs. established resale. An independent broker makes sure you know which strategy serves you before you sign a contract. In Cedar Park, <a href="/cedar-park-mortgage-lender.html">Leander ISD's 1.86% combined property tax rate is the most important number to understand before you set your purchase price target</a> — it directly shapes which loan program fits your income.
-        </p>
-        <div class="loan-program-grid">
-          <a href="/round-rock-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Round Rock</h3>
-            <p>Round Rock ISD. Tech corridor. $350K–$550K.</p>
-            <span class="loan-program-cta">Explore Round Rock &rarr;</span>
-          </a>
-          <a href="/leander-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Leander</h3>
-            <p>Crystal Falls. Bryson. Top-rated LISD schools.</p>
-            <span class="loan-program-cta">Explore Leander &rarr;</span>
-          </a>
-          <a href="/cedar-park-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Cedar Park</h3>
-            <p>Brushy Creek. Crossing at Carriage Hills. $350K–$550K.</p>
-            <span class="loan-program-cta">Explore Cedar Park &rarr;</span>
-          </a>
-          <a href="/pflugerville-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Pflugerville</h3>
-            <p>Blackhawk. Pfluger Crossing. Affordable starter homes.</p>
-            <span class="loan-program-cta">Explore Pflugerville &rarr;</span>
-          </a>
-          <a href="/georgetown-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Georgetown</h3>
-            <p>Sun City. Wolf Ranch. Historic downtown. $350K–$650K.</p>
-            <span class="loan-program-cta">Explore Georgetown &rarr;</span>
-          </a>
-          <a href="/kyle-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Kyle</h3>
-            <p>Hays CISD. New builds and fast-growing neighborhoods from $280K.</p>
-            <span class="loan-program-cta">Explore Kyle &rarr;</span>
-          </a>
-          <a href="/san-marcos-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">San Marcos</h3>
-            <p>Texas State University town. Entry and move-up options from $250K–$360K.</p>
-            <span class="loan-program-cta">Explore San Marcos &rarr;</span>
-          </a>
-          <a href="/westlake-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Westlake</h3>
-            <p>Eanes ISD. Jumbo loans. Luxury from $800K–$2M+.</p>
-            <span class="loan-program-cta">Explore Westlake &rarr;</span>
-          </a>
-          <a href="/buda-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Buda</h3>
-            <p>Tesla corridor. Sunfield. Garlic Creek. $300K–$440K.</p>
-            <span class="loan-program-cta">Explore Buda &rarr;</span>
-          </a>
-        </div>
-        <div id="city-cards-overflow" class="loan-program-grid" style="display:none;margin-top:1.5rem;">
-          <a href="/dripping-springs-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Dripping Springs</h3>
-            <p>Hill Country wine trail. Headwaters. Caliterra. $500K–$900K+.</p>
-            <span class="loan-program-cta">Explore Dripping Springs &rarr;</span>
-          </a>
-          <a href="/hutto-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Hutto</h3>
-            <p>Star Ranch. New construction. Samsung corridor. $280K–$450K.</p>
-            <span class="loan-program-cta">Explore Hutto &rarr;</span>
-          </a>
-          <a href="/liberty-hill-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Liberty Hill</h3>
-            <p>Santa Rita Ranch. SH-29 growth corridor. $350K–$600K.</p>
-            <span class="loan-program-cta">Explore Liberty Hill &rarr;</span>
-          </a>
-          <a href="/manor-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Manor</h3>
-            <p>Tesla proximity. ShadowGlen. Most affordable Austin metro. $270K–$400K.</p>
-            <span class="loan-program-cta">Explore Manor &rarr;</span>
-          </a>
-          <a href="/lakeway-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Lakeway</h3>
-            <p>Lake Travis luxury. Rough Hollow. Jumbo loans. $600K–$2M+.</p>
-            <span class="loan-program-cta">Explore Lakeway &rarr;</span>
-          </a>
-          <a href="/bee-cave-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Bee Cave</h3>
-            <p>Hill Country Galleria. Spanish Oaks. Lake Travis ISD. $500K–$1.2M+.</p>
-            <span class="loan-program-cta">Explore Bee Cave &rarr;</span>
-          </a>
-          <a href="/new-braunfels-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">New Braunfels</h3>
-            <p>Gruene. Vintage Oaks. River living. $280K–$500K.</p>
-            <span class="loan-program-cta">Explore New Braunfels &rarr;</span>
-          </a>
-          <a href="/taylor-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Taylor</h3>
-            <p>Samsung semiconductor hub. Historic downtown. $250K–$420K.</p>
-            <span class="loan-program-cta">Explore Taylor &rarr;</span>
-          </a>
-          <a href="/bastrop-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Bastrop</h3>
-            <p>Lost Pines. Colorado River. Small-town options from $250K–$450K.</p>
-            <span class="loan-program-cta">Explore Bastrop &rarr;</span>
-          </a>
-          <a href="/spicewood-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Spicewood</h3>
-            <p>Lake Travis waterfront. Hill Country estates. $450K–$1.2M+.</p>
-            <span class="loan-program-cta">Explore Spicewood &rarr;</span>
-          </a>
-          <a href="/smithville-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Smithville</h3>
-            <p>Small-town charm. Acreage and rural-edge properties from $200K–$380K.</p>
-            <span class="loan-program-cta">Explore Smithville &rarr;</span>
-          </a>
-          <a href="/elgin-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Elgin</h3>
-            <p>Sausage Capital. US-290 corridor. $230K–$400K.</p>
-            <span class="loan-program-cta">Explore Elgin &rarr;</span>
-          </a>
-          <a href="/jarrell-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Jarrell</h3>
-            <p>I-35 north corridor. New builds. Williamson County. $270K–$420K.</p>
-            <span class="loan-program-cta">Explore Jarrell &rarr;</span>
-          </a>
-          <a href="/florence-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Florence</h3>
-            <p>Rural acreage. Small-town Texas. $250K–$400K.</p>
-            <span class="loan-program-cta">Explore Florence &rarr;</span>
-          </a>
-          <a href="/marble-falls-mortgage-lender.html" class="loan-program-card" data-animate>
-            <h3 class="heading-sm">Marble Falls</h3>
-            <p>Highland Lakes. Hill Country gateway. Retirement destination. $300K–$600K.</p>
-            <span class="loan-program-cta">Explore Marble Falls &rarr;</span>
-          </a>
-        </div>
-        <div class="text-center" style="margin-top:1.5rem;">
-          <button type="button" id="show-all-cities" class="btn btn-outline" style="cursor:pointer;">Show All 24 Cities &darr;</button>
-        </div>
-        <div class="text-center" style="margin-top:1rem;">
-          <a href="/austin-area-mortgage-lender.html" class="text-link">View all 24 cities with local market details &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- RECENTLY UPDATED (auto-generated from git history at deploy; hidden until feed loads) -->
-    <section id="recent-updates-section" hidden>
-      <div class="container">
-        <h2 class="text-center mb-md">Recently Updated</h2>
-        <p class="text-center content-medium mx-auto mb-3xl">Fresh rate data, new guides, and refreshed local detail &mdash; this site is worked on continuously. Here's what changed most recently.</p>
-        <div id="recent-updates-grid" class="loan-program-grid"></div>
+        <p><strong>Based in Austin. Serving borrowers across Texas.</strong> <a href="/austin-area-mortgage-lender.html" class="text-link">Explore Austin-area communities &rarr;</a></p>
       </div>
     </section>
 
@@ -1152,36 +1003,6 @@
         button.closest('.home-case-card').classList.toggle('is-expanded', !expanded);
         button.textContent = expanded ? 'Continue' : 'Show less';
       });
-    })();
-  </script>
-  <script>
-    /* Recently Updated strip — feed is auto-generated from git history at deploy.
-       Renders nothing (section stays hidden) if the feed is missing or empty. */
-    (function () {
-      var section = document.getElementById("recent-updates-section");
-      var grid = document.getElementById("recent-updates-grid");
-      if (!section || !grid) return;
-      function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
-      fetch("/recent-updates.json")
-        .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-        .then(function (data) {
-          var items = (data && data.items) || [];
-          if (!items.length) return;
-          items.slice(0, 8).forEach(function (it) {
-            if (!it.url || !it.title || !it.date) return;
-            var d = new Date(it.date + "T12:00:00");
-            var ds = d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-            var a = document.createElement("a");
-            a.href = it.url;
-            a.className = "card";
-            a.innerHTML =
-              '<span class="blog-card-category">Updated ' + esc(ds) + '</span>' +
-              '<h3 class="blog-card-title">' + esc(it.title) + '</h3>';
-            grid.appendChild(a);
-          });
-          if (grid.children.length) section.hidden = false;
-        })
-        .catch(function () {});
     })();
   </script>
 </body>
