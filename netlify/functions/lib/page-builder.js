@@ -1,3 +1,4 @@
+const { refineLongform } = require('./refine-longform');
 /**
  * Builds a full HTML page for /updates/ from AI-generated content.
  * These pages use noindex — the canonical SEO version lives at /blog/.
@@ -10,7 +11,7 @@ function buildWebPage({ title, description, date, content }) {
   const pageUrl = `https://styermortgage.com/updates/${date}-${slug}.html`;
   const canonicalUrl = `https://styermortgage.com/blog/${date}-${slug}.html`;
 
-  return `<!DOCTYPE html>
+  return refineLongform(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google Tag Manager -->
@@ -59,8 +60,8 @@ function buildWebPage({ title, description, date, content }) {
   <header>
     <div class="container">
       <nav>
-        <a href="index.html" class="nav-brand">
-          <img src="assets/logo-light.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
+        <a href="/index.html" class="nav-brand">
+          <img src="/assets/logo-light.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -198,7 +199,7 @@ function buildWebPage({ title, description, date, content }) {
   <script src="../script.js" defer></script>
 <script src="/experience.js" defer></script>
 </body>
-</html>`;
+</html>`);
 }
 
 function formatDate(dateStr) {

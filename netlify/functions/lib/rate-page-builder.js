@@ -1,3 +1,4 @@
+const { refineLongform } = require('./refine-longform');
 /**
  * Builds a full HTML page for /rates/ from rate data + AI commentary.
  * The rate table is the star — built server-side, not by the AI.
@@ -9,7 +10,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
   const rateTable = buildRateTable(rates);
   const directionBadge = buildDirectionBadge(direction);
 
-  return `<!DOCTYPE html>
+  return refineLongform(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google Tag Manager -->
@@ -225,8 +226,8 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
   <header>
     <div class="container">
       <nav>
-        <a href="index.html" class="nav-brand">
-          <img src="assets/logo-light.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
+        <a href="/index.html" class="nav-brand">
+          <img src="/assets/logo-light.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -368,7 +369,7 @@ ${rateTable}
   <script src="../script.js" defer></script>
 <script src="/experience.js" defer></script>
 </body>
-</html>`;
+</html>`);
 }
 
 // ══════════════════════════════════════════════════════════════

@@ -1,3 +1,4 @@
+const { refineLongform } = require('./refine-longform');
 /**
  * Builds a full SEO-optimized HTML page for /realtor-updates/ from AI-generated content.
  * Parallel to blog-page-builder.js but targeted at realtors:
@@ -48,7 +49,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
     }
   }, null, 2);
 
-  return `<!DOCTYPE html>
+  return refineLongform(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google Tag Manager -->
@@ -101,8 +102,8 @@ function buildRealtorPage({ title, description, date, slug, content, category })
   <header>
     <div class="container">
       <nav>
-        <a href="index.html" class="nav-brand">
-          <img src="assets/logo-light.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
+        <a href="/index.html" class="nav-brand">
+          <img src="/assets/logo-light.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -244,7 +245,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
   <script src="../script.js" defer></script>
 <script src="/experience.js" defer></script>
 </body>
-</html>`;
+</html>`);
 }
 
 function formatDate(dateStr) {

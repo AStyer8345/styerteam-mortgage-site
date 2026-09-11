@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { refineLongform } from '../netlify/functions/lib/refine-longform.js';
 
 // Additive, repeatable publishing rule. Keeps the page body, URLs and SEO intact.
 const application = 'https://hypersmart.my1003app.com/513013/register?time=1779291829279';
@@ -12,10 +13,25 @@ const files = execFileSync('git', ['ls-files','-z'], { encoding:'utf8' }).split(
 let changed = 0;
 export function refine(html) {
   if (!/class="nav-links"|class="site-header lp-header"/.test(html)) return html;
+  if(html.includes('blog-dual-cta')){
+    const withoutDuplicate=html.replace(/<section class="section bg-primary"[^>]*>[\s\S]*?<\/section>\s*/g,'');
+    if(withoutDuplicate!==html)html=withoutDuplicate.replace(/\s*<nav class="page-contents"[^>]*>[\s\S]*?<\/nav>\s*/g,'\n');
+    html=html.replace(/<section class="section bg-dark"[^>]*>/g,'<section class="article-next-step">');
+  }
+  html=html.replace(/(<section\b[^>]*class="[^"]*blog-dual-cta[^>]*>)([\s\S]*?)(<\/section>)/g,(_,open,content,close)=>{
+    let seen=false;
+    content=content.replace(/<a\b([^>]*href="\/get-preapproved.html(?:\?[^"]*)?"[^>]*)>([^<]*)<\/a>/g,(_,attrs)=>{
+      if(!seen){seen=true;return `<a${attrs}>Send Your Scenario</a>`;}
+      return '<a href="https://calendly.com/adamstyer/15minutes" class="btn btn-outline-light" target="_blank" rel="noopener">Book a Call</a>';
+    });
+    content=content.replace(/(<a\b[^>]*href="tel:[^"]+"[^>]*class=")btn btn-outline-light"/g,'$1cta-phone-link"');
+    return open+content+close;
+  });
   html=html.replace(/<header\b[^>]*>[\s\S]*?<\/header>/,sharedHeader);
   if(!html.includes('fonts.googleapis.com/css2?family=Inter'))html=html.replace('</head>','<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap">\n</head>');
   if (!html.includes('/experience.css')) html = html.replace('</head>', style+'\n</head>');
   if (!html.includes('/experience.js')) html = html.replace('</body>', behavior+'\n</body>');
+  if (!/<script\b[^>]*src="(?:[^\"]*\/)?script\.js(?:\?[^\"]*)?"/.test(html)) html = html.replace('</body>', '<script src="/script.js" defer></script>\n</body>');
   html = html.replace(/<a\b([^>]*href="https:\/\/[^" ]*my1003app\.com[^" ]*"[^>]*)>([\s\S]*?)<\/a>/g, (_, attrs, content) => `<a${attrs.replace(/aria-label="[^"]*"/g,'').trimEnd()} aria-label="Apply Now — opens the secure application portal">${/<h3/.test(content)?content.replace(/(<h3[^>]*>)[\s\S]*?(<\/h3>)/,'$1Apply Now$2').replace(/(<span class="ty-alt-card-cta">)[\s\S]*?(<\/span>)/,'$1Open secure portal →$2'):'Apply Now'}</a>`);
   html = html.replace(/<a\b([^>]*href="https:\/\/calendly\.com\/adamstyer\/15minutes[^" ]*"[^>]*)>([\s\S]*?)<\/a>/g, (_, attrs, content) => `<a${attrs}>${/<h3/.test(content)?content.replace(/(<h3[^>]*>)[\s\S]*?(<\/h3>)/,'$1Book a Call$2'):'Book a Call'}</a>`);
   html = html.replace(/(<a\b[^>]*href="tel:[^"]+"[^>]*>)([\s\S]*?)(<\/a>)/g, (_,a,b,c)=>a+b.replace(/Call or Text/gi,'Call')+c);
@@ -28,7 +44,7 @@ export function refine(html) {
   if (html.includes('class="site-header lp-header"') && !html.includes('class="experience-header-actions"')) {
     html=html.replace('</nav>',`<div class="experience-header-actions"><a href="tel:+15129566010">Call Adam</a><a href="${application}" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></div></nav>`);
   }
-  return html;
+  return refineLongform(html);
 }
 for(const file of files){const original=fs.readFileSync(file,'utf8');const updated=refine(original);if(original!==updated){changed++;if(!process.argv.includes('--check'))fs.writeFileSync(file,updated);}}
 if(process.argv.includes('--check') && changed){console.error(`${changed} public pages or templates need experience sync`);process.exitCode=1;}

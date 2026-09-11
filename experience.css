@@ -18,6 +18,64 @@ body .lp-footer .lp-nmls,body .lp-footer .lp-nmls a{color:#e2e8f0!important;font
 body main :is(.article-body,.blog-content,.pro-section) p{font-size:1rem!important;line-height:1.75}
 .article-body>p,.article-body>ul,.article-body>ol,.blog-content>p{max-width:var(--experience-measure)}
 .article-body :is(h2,h3){margin-top:1.8em}
+/* Long-form pages use a comfortable reading measure and visible section breaks. */
+body main .container-narrow{width:100%;max-width:840px;margin-inline:auto;padding-inline:24px}
+body main .article-body{max-width:76ch;margin-inline:auto}
+body main .blog-post-header{position:static;background:transparent;color:#25374c;padding:0 0 24px;margin:0 0 28px;border-bottom:1px solid #d8d9d4;box-shadow:none}
+body main .blog-post-header h1{font-size:clamp(2rem,1.5rem + 1.4vw,2.75rem)!important;margin:0 0 20px;text-wrap:balance}
+body main .blog-post-meta{color:#526174;font-size:.9375rem;line-height:1.6}
+body main .blog-post-intro{padding:20px 24px;margin:24px 0;background:#f3f0e8;border-left:3px solid #b7974e;border-radius:0 8px 8px 0;color:#25374c;font-size:1.0625rem;line-height:1.7}
+body main .blog-post-intro strong{font-weight:600}
+body main .blog-post :is(h2,h3){margin-top:1.3em;margin-bottom:.6em;text-wrap:balance}
+body main :is(.blog-post,.article-body) h2{font-size:clamp(1.5rem,1.25rem + .7vw,1.875rem);line-height:1.25}
+body main :is(.blog-post,.article-body) h3{font-size:1.25rem;line-height:1.35}
+body main :is(.blog-post,.article-body) :is(p,li){line-height:1.75}
+body main .blog-related a{color:#735719!important;text-decoration:underline;text-underline-offset:3px}
+body main .newsletter-issue-badge{background:#f3e7c7;color:#59430f;border:1px solid #d5bd78}
+body main .hero-trust-badge{background:#102440;color:#fff;border-color:#b7974e;font-size:.875rem}
+body main .hero-rating-chip{background:#f3e7c7;color:#59430f;font-size:.875rem}
+body main .rate-direction-badge{color:#25374c!important;font-size:.9375rem}
+body .journey-hero .journey-intro strong{color:inherit!important}
+body .journey-hero #review-title{color:#102440!important}
+body .lp-program-badge{background:#e6c67b;color:#102440}
+body .dpa-program-name,body .ty-phone-cta a{color:#e6c67b}
+body .dpa-programs-disclaimer,body .cta-or{color:#dce3ed;opacity:1;font-size:.875rem}
+body .eq-kicker,body .eq-hero p a,body .eq-note a,body .scenario-tag{color:#735719}
+body.equity-page .eq-kicker,body.equity-page main p a{color:#735719!important}
+body .guide-final-cta .cta-or{color:#dce3ed}
+body :is(.bd-comp-cost,.bd-comp-savings-label,.bd-comp-vs){color:#526174;font-size:.9375rem}
+body .footer-nmls a{text-decoration:underline;text-underline-offset:3px}
+body .ty-schedule-btn{background:#e6c67b;color:#102440}
+body main .bg-navy .text-gold{color:#e6c67b}
+body main .bg-navy .text-lg{color:#dce3ed}
+body.legacy-loan-page .hero-quick-form-glass{background:#102440}
+body.legacy-loan-page .hero-quick-form-title,body.legacy-loan-page .hero-quick-form-field label{color:#fff;font-size:.9375rem}
+body.legacy-loan-page .hero-quick-form-field :is(input,select){background:#fff;color:#25374c;font-size:1rem;border:1px solid #bcc6d1}
+body.legacy-loan-page .hero-quick-form-field input::placeholder{color:#526174}
+body.location-page main p{max-width:76ch}
+.page-contents{display:block;margin:28px 0 36px;padding:20px 24px;border:1px solid #d8d9d4;border-top:3px solid #b7974e;border-radius:8px;background:#faf9f6}
+.page-contents .page-contents-title{font:700 .8125rem/1.5 var(--font-primary,'Inter',sans-serif);letter-spacing:.09em;text-transform:uppercase;color:#526174;margin:0 0 12px}
+.page-contents ol{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin:0;padding:0;list-style:none}
+.page-contents li{margin:0;font-size:.9375rem;line-height:1.5}
+.page-contents a{display:block;color:#25374c;text-decoration:underline;text-decoration-color:#b7974e;text-underline-offset:4px;padding:5px 0}
+.page-contents a:hover{color:#735719}
+body main .bg-dark{background:#102440;color:#fff}
+body main .bg-dark :is(h2,h3){color:#fff}
+body main .bg-dark p{color:#dce3ed}
+body main .btn-light{background:#e6c67b;color:#102440;border:1px solid #e6c67b}
+body main .btn-outline-light{background:transparent;color:#fff;border:1px solid #b5c0ce}
+body main .cta-phone-link{flex-basis:100%;color:#e6c67b;text-decoration:underline;text-underline-offset:3px}
+body main .blog-dual-cta p:last-child{font-size:.875rem!important;color:#dce3ed!important}
+body main .article-next-step{max-width:840px;margin:32px auto;padding:24px!important;background:#f3f0e8;border-left:3px solid #b7974e;border-radius:0 8px 8px 0}
+body main .article-next-step :is(h2,p){color:#25374c!important}
+body main .article-next-step h2{font-size:1.4rem;margin:0 0 12px}
+body main .article-next-step .btn{background:#102440;color:#fff;border-color:#102440}
+body main .bg-primary{background:#f3f0e8;color:#25374c}
+body main .bg-primary .btn-primary{background:#102440;color:#fff;border-color:#102440}
+body main .bg-primary :is(.btn-secondary,.btn-outline-light){background:transparent;color:#102440;border:1px solid #8190a3}
+@media(prefers-reduced-motion:no-preference){.page-contents a,.btn{transition:background-color .18s ease,color .18s ease,box-shadow .18s ease}.page-contents a:hover{background:#f3f0e8}.btn:hover{box-shadow:0 4px 12px #10244020}}
+main :is(h2,h3)[id]{scroll-margin-top:115px}
+@media(max-width:600px){body main .container-narrow{padding-inline:20px}.page-contents{padding:18px 20px}.page-contents ol{grid-template-columns:1fr;gap:6px}body main .blog-post-intro{padding:18px 20px}main :is(h2,h3)[id]{scroll-margin-top:95px}}
 main :is(.article-body,.blog-content,.journey-education) a{text-decoration:underline;text-underline-offset:3px}
 :is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid #a67c20;outline-offset:4px}
 .skip-link{top:0!important;transform:translateY(-200%)}
@@ -104,6 +162,8 @@ body header:where(body > header) nav{padding-block:12px;min-height:88px}
 body header:where(body > header) .nav-brand{flex-shrink:0}
 body header:where(body > header) .nav-logo-img{content:url('/assets/logo-light.svg');filter:none!important}
 body header:where(body > header) .nav-links>li>a{color:#fff}
+body header:where(body > header) .nav-links>li>a.nav-phone{color:#fff!important}
+@media(max-width:1280px){body header:where(body > header) .nav-links>li>a.nav-phone{color:#102440!important}}
 body header:where(body > header) .mobile-menu-toggle span{background:#fff}
 body main>.breadcrumb{margin:0;padding:0;background:#faf9f6;border-bottom:1px solid #e5e3dc}
 body main>.breadcrumb>.container{max-width:1280px;margin-inline:auto;padding:0 24px}
@@ -195,4 +255,39 @@ body.professional-page .pro-field label{font-size:.9375rem;line-height:1.5}
  body.professional-page .pro-hero{padding:28px 0 36px}
  body.professional-page .pro-form-card{padding:22px 18px}
  body.professional-page .pro-hero h1{font-size:2.125rem!important;line-height:1.15!important}
+}
+
+/* Supporting copy remains comfortably readable alongside the main text. */
+body main label{font-size:.9375rem!important;line-height:1.55}
+body main :is(.hero-legal,.pro-privacy,.pro-form-status,.rc-form-disclaimer,.lp-form-disclaimer,.guide-form-privacy,.form-trust-line,.rate-widget-disclaimer,.dscr-hint,.move-note,.calc-rule-note,.bsl-reviewed,.home-other-paths,.adc-card-desc,.adc-hero-sub){font-size:.875rem!important;line-height:1.6}
+body.bsl-page main p.reveal{font-size:1rem!important}
+body main .hero-legal{color:#526174}
+body.legacy-loan-page main .hero-legal{color:#dce3ed}
+
+body main .closing-costs-hero{background:#f3f0e8;padding:40px 24px;color:#102440}
+body main .closing-costs-hero h1{color:#102440;max-width:1000px;margin:0 auto 14px}
+body main .closing-costs-hero p{color:#526174;font-size:1.0625rem}
+
+/* Legacy city quote forms share the same measured, two-column introduction. */
+body.location-page main .city-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:64px;background:#f3f0e8;padding:56px max(24px,calc((100vw - 1140px)/2));}
+body.location-page .city-hero h1{color:#102440;max-width:23ch;margin-bottom:24px}
+body.location-page .city-subtitle{font-size:1.0625rem;color:#526174;line-height:1.7}
+body.location-page .hero-trust{display:flex;flex-wrap:wrap;gap:8px;font-size:.875rem;color:#526174;margin-top:24px}
+body.location-page main .hero-two-col:has(.quick-quote-form){display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:64px;align-items:center}
+body.location-page main .quick-quote-form{padding:28px;background:#fff;border:1px solid #d8d9d4;border-top:3px solid #b7974e;border-radius:10px;box-shadow:0 12px 28px #1024400d;color:#25374c;width:100%;}
+body.location-page main .quick-quote-form h3{color:#102440;margin:0 0 20px}
+body.location-page main .quick-quote-form .form-group{margin-bottom:16px}
+body.location-page main .quick-quote-form label{display:block;color:#25374c}
+body.location-page main .quick-quote-form :is(input:not([type=checkbox]):not([type=hidden]),select){width:100%;min-height:46px;padding:10px 12px;background:#fff;color:#25374c;border:1px solid #bcc6d1;border-radius:6px;font-size:1rem}
+body.location-page main .quick-quote-form .btn-full{width:100%;margin-top:12px;min-height:48px}
+body main .scenario-card .scenario-tag{color:#735719;font-size:.875rem}
+body main .ty-phone-cta a{text-decoration:underline;text-underline-offset:3px}
+body main .bg-navy h1{color:#fff}
+body main .blog-article>.container{max-width:840px;padding-inline:24px;margin-inline:auto}
+body main .blog-article-title{font-size:clamp(2rem,1.5rem + 1.4vw,2.75rem)!important;margin-bottom:20px}
+body main .blog-article-body h2{font-size:clamp(1.5rem,1.25rem + .7vw,1.875rem)}
+@media(max-width:900px){
+ body.location-page main .city-hero{grid-template-columns:1fr;padding:36px 24px;gap:28px}
+ body.location-page main .hero-two-col:has(.quick-quote-form){grid-template-columns:1fr;gap:28px}
+ body.location-page main .quick-quote-form{padding:24px 20px}
 }

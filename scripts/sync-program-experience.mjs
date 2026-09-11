@@ -36,7 +36,7 @@ for(const page of pages){
  let html=original.replace(/<section class="(?:hero|journey-hero program-always-visible program-experience)"[^>]*>[\s\S]*?<\/section>/,hero);
  html=html.replace(/<body([^>]*)>/,(_,attrs)=>`<body${attrs.replace(/ data-situation-page="[^"]*"/,'')} data-situation-page="${page.context}">`);
  if(!html.includes('href="/situation-journeys.css"'))html=html.replace('<link rel="stylesheet" href="/experience.css">','<link rel="stylesheet" href="/situation-journeys.css">\n<link rel="stylesheet" href="/experience.css">');
- for(const src of ['/js/utm-capture.js','/situation-journeys.js'])if(!html.includes(`src="${src}"`))html=html.replace('<script src="/experience.js"',`<script src="${src}" defer></script>\n<script src="/experience.js"`);
+ for(const src of ['/assets/utm.js','/situation-journeys.js'])if(!html.includes(`src="${src}"`))html=html.replace('<script src="/experience.js"',`<script src="${src}" defer></script>\n<script src="/experience.js"`);
  if(html!==original){count++;if(!process.argv.includes('--check'))fs.writeFileSync(page.file,html);}
 }
 if(process.argv.includes('--check')&&count)throw new Error(`${count} loan pages need layout sync`);
