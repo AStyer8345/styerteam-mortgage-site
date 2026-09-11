@@ -35,7 +35,7 @@
     var netlifyAccepted = results[0].status === 'fulfilled' && results[0].value.ok;
     var leadAccepted = results[1].status === 'fulfilled' && results[1].value && results[1].value.captured === true;
     if (!netlifyAccepted && !leadAccepted) throw new Error('No capture accepted');
-    return { captured: true, primary: Boolean(leadAccepted) };
+    return { captured: true, primary: Boolean(leadAccepted), receipt: leadAccepted ? results[1].value : null };
   }
 
   if (typeof module !== 'undefined' && module.exports) module.exports = { makePayload: makePayload, capture: capture };
@@ -54,6 +54,58 @@
     var busy = false;
     var started = false;
     var completed = false;
+    var params = new URLSearchParams(root.location.search);
+    var goal = form.elements.loan_goal;
+    var situation = form.elements.income_type;
+    function setKnown(field, value) {
+      if (field && value && Array.from(field.options || []).some(function(o) { return o.value === value; })) field.value = value;
+    }
+    setKnown(goal, ({purchase:'Purchase',refinance:'Refinance',investment:'Invest',construction:'Build',move_up:'Buy before selling'})[params.get('intent')]);
+    setKnown(goal, params.get('goal'));
+    setKnown(situation, params.get('situation'));
+    var draftKey = 'styer:journey-draft:' + form.name;
+    var analysis = null;
+    function storageRead(key) { try { return JSON.parse(root.sessionStorage.getItem(key) || 'null'); } catch (_) { return null; } }
+    var draft = storageRead(draftKey);
+    // Explicit entry context wins over a prior journey; Back and reload restore it.
+    if (draft && Date.now() - draft.at < 2 * 60 * 60 * 1000 && draft.entry === root.location.search) {
+      Object.keys(draft.values).forEach(function(name) { var field=form.elements[name]; if(field && field.type!=='checkbox') field.value=draft.values[name]; });
+    }
+    function remember() {
+      var values={};Array.from(form.elements).forEach(function(field) { if(field.name && field.type!=='checkbox' && field.type!=='submit') values[field.name]=field.value; });
+      try { root.sessionStorage.setItem(draftKey,JSON.stringify({at:Date.now(),entry:root.location.search,values:values})); } catch (_) {}
+    }
+    function conditions() {
+      first.querySelectorAll('[data-goals],[data-situations]').forEach(function(wrapper) {
+        var show=(!wrapper.dataset.goals || wrapper.dataset.goals.split('|').includes(goal.value)) && (!wrapper.dataset.situations || wrapper.dataset.situations.split('|').includes(situation.value));
+        wrapper.hidden=!show;wrapper.querySelectorAll('input,select').forEach(function(field) { field.disabled=!show; });
+      });
+      intent = ({Purchase:'purchase',Refinance:'refinance','Access equity':'equity',Invest:'investment',Build:'construction','Buy before selling':'move_up'})[goal.value] || 'general';
+      form.elements.intent.value=intent;
+    }
+    if (goal && situation) {
+      conditions(); goal.addEventListener('change',conditions); situation.addEventListener('change',conditions);
+    }
+    form.addEventListener('input',remember);form.addEventListener('change',remember);
+    // Calculator details travel through same-tab storage, never query strings.
+    if (params.get('context') === 'calculator') {
+      analysis=storageRead('styer:calculator-review');
+      if (!analysis || Date.now()-analysis.at > 2*60*60*1000 || !['dscr','refinance'].includes(analysis.kind)) analysis=null;
+      if (analysis && root.StyerAnalysis) { try { analysis=root.StyerAnalysis.normalize(analysis); } catch (_) { analysis=null; } }
+    }
+    if (analysis && root.StyerAnalysis) {
+      var panel=root.document.createElement('div');panel.className='journey-summary';
+      root.StyerAnalysis.render(panel,analysis);
+      var edit=root.document.createElement('a');edit.href=analysis.kind==='dscr'?'/dscr-calculator.html?restore=review':'/calculator-refinance-breakeven.html?restore=review';edit.textContent='Edit these numbers';panel.appendChild(edit);
+      var remove=root.document.createElement('button');remove.type='button';remove.className='journey-back';remove.textContent='Remove analysis';remove.addEventListener('click',function(){analysis=null;panel.remove();try{root.sessionStorage.removeItem('styer:calculator-review');}catch(_){}});panel.appendChild(remove);
+      first.before(panel);
+      var mapped=analysis.kind==='dscr'?{property_value:analysis.inputs.price,down_payment:analysis.inputs.down+(analysis.inputs.downMode==='pct'?'%':' dollars'),monthly_rent:analysis.inputs.rent}:{current_balance:analysis.inputs.balance,current_rate:analysis.inputs.currentRate};
+      Object.keys(mapped).forEach(function(name){if(form.elements[name]) form.elements[name].value=String(mapped[name]);});
+      // These answers are already in the editable calculator summary.
+      Object.keys(mapped).forEach(function(name){if(form.elements[name]) form.elements[name].closest('.journey-field').hidden=true;});
+    } else if (params.get('context') === 'calculator') {
+      var missing=root.document.createElement('p');missing.className='journey-hint';missing.textContent='Your calculator numbers could not be restored. Go back to the calculator and choose review again, or share the estimates you know below.';first.before(missing);
+    }
     function reconcileSource() {
       // The five homepage choices are not legacy preapproval CTA clicks. Do not
       // let a stale saved click from another page replace this entry point.
@@ -73,9 +125,9 @@
 
     // Events deliberately contain only fixed intent/form identifiers and a clean
     // page path. Financial answers, contact data and arbitrary URL text stay out.
-    function attributionEvent(name) {
+    function attributionEvent(name, inquiryId) {
       root.dataLayer = root.dataLayer || [];
-      root.dataLayer.push({ event: name, form_name: form.name, intent: intent, page_path: root.location.pathname });
+      root.dataLayer.push({ event: name, form_name: form.name, intent: intent, page_path: root.location.pathname, ...(inquiryId ? {inquiry_id:inquiryId}: {}) });
     }
     function showStep(value, focus) {
       step = value;
@@ -117,6 +169,9 @@
       if (step === 1) { advance(); return; }
       if (!valid(first)) { showStep(1, true); return; }
       if (!valid(second)) return;
+      if (form.elements.preferred_follow_up && form.elements.preferred_follow_up.value === 'Phone' && !form.elements.phone.value.trim()) {
+        form.elements.phone.setCustomValidity('Add your phone number or choose email.');form.elements.phone.reportValidity();return;
+      }
       busy = true;
       submit.disabled = true;
       back.disabled = true;
@@ -125,23 +180,37 @@
       try {
         // Reuse the site's stable ID and bounded transport for both captures.
         form.elements.inquiry_id.value = root.StyerInquiryId(form);
+        remember();
         var data = new FormData(form);
         var payload = makePayload(data, questions, intent, cleanUrl(root.location.href));
+        if (analysis && root.StyerAnalysis) payload.situation += '\n\n' + root.StyerAnalysis.summary(analysis);
+        if (payload.preferred_follow_up) payload.situation += '\nPreferred follow-up: ' + payload.preferred_follow_up;
         ['page_url', 'entry_referrer', 'first_touch_page', 'first_touch_referrer', 'cta_source_page'].forEach(function (key) {
           payload[key] = payload[key] ? cleanUrl(payload[key]) : '';
           data.set(key, payload[key]);
         });
         data.set('intent', intent);
         data.set('situation', payload.situation);
-        await capture(payload, data, root.StyerFetchWithTimeout);
-        attributionEvent('accepted_submit');
-        attributionEvent('generate_lead');
+        var result=await capture(payload, data, root.StyerFetchWithTimeout);
+        delete status.dataset.tone;
+        var receiptKey='styer:accepted:'+payload.inquiry_id;
+        if (!storageRead(receiptKey)) {
+          attributionEvent('accepted_submit',payload.inquiry_id);
+          attributionEvent('generate_lead',payload.inquiry_id);
+          try { root.sessionStorage.setItem(receiptKey,'true'); } catch (_) {}
+        }
+        try { root.sessionStorage.removeItem(draftKey); } catch (_) {}
         form.querySelectorAll('fieldset').forEach(function (fieldset) { fieldset.hidden = true; });
         progress.hidden = true;
-        status.textContent = 'Your scenario has been saved for review. Adam or his team will follow up using the contact details you provided. This is not a loan approval.';
+        status.textContent = (result.primary ? 'Your scenario and contact details are saved for review.' : 'Your scenario is saved in our backup inbox. Delivery to the review system is still pending.') + (analysis ? ' Your calculator assumptions and results are included.' : '') + ' I’ll review what you shared and follow up using your contact details. I aim to respond within one business day. This is not a loan approval.';
+        if (result.receipt && result.receipt.preview) status.textContent='Preview only: your scenario was accepted by the test service. No lead, email, or marketing subscription was created.';
+        var actions=root.document.createElement('div');actions.className='journey-next-actions';
+        var book=root.document.createElement('a');book.href='https://calendly.com/adamstyer/15minutes';book.target='_blank';book.rel='noopener';book.textContent='Book a Call';actions.appendChild(book);
+        var helper=root.document.createElement('p');helper.textContent='You can choose a time to discuss this scenario. If timing is tight, call or text (512) 956-6010. Apply Now remains available above when you’re ready for the secure application.';actions.appendChild(helper);status.appendChild(actions);
         status.hidden = false;
         status.focus();
       } catch (_) {
+        status.dataset.tone='error';
         status.textContent = 'We could not confirm that your scenario was saved. Please try again, or call (512) 956-6010. Your answers are still here.';
         status.hidden = false;
         submit.disabled = false;
@@ -151,6 +220,8 @@
         status.focus();
       }
     });
+    form.elements.phone.addEventListener('input',function(){this.setCustomValidity('');});
+    if(form.elements.preferred_follow_up) form.elements.preferred_follow_up.addEventListener('change',function(){form.elements.phone.setCustomValidity('');});
   }
   root.document.querySelectorAll('form[data-journey]').forEach(init);
 })(typeof window !== 'undefined' ? window : globalThis);

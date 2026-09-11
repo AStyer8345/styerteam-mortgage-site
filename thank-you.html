@@ -420,6 +420,7 @@
       .ty-hero { padding: var(--spacing-2xl) 0; }
     }
   </style>
+<link rel="stylesheet" href="/experience.css">
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -430,7 +431,7 @@
       <a href="/" class="nav-brand">
         <img src="/assets/logo.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
       </a>
-    </nav>
+    <div class="experience-header-actions"><a href="tel:+15129566010">Call Adam</a><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></div></nav>
   </header>
 
   <main id="main">
@@ -443,7 +444,7 @@
         <div class="ty-cta-row">
           <p class="ty-phone-cta">Call / text now: <a href="tel:+15129566010">(512) 956-6010</a></p>
           <span class="ty-cta-divider">|</span>
-          <a href="#ty-calendly" class="ty-schedule-btn" id="ty-schedule-btn" hidden>Schedule a 15-min Call</a>
+          <a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener" class="ty-schedule-btn" id="ty-schedule-btn" hidden>Book a Call</a>
         </div>
       </div>
     </section>
@@ -696,15 +697,11 @@
       <div class="container">
         <p class="ty-alt-paths-heading">Or choose another path</p>
         <div class="ty-alt-paths-grid">
-          <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="ty-alt-card" target="_blank" rel="noopener">
-            <h3>Answer a few questions in my secure online portal</h3>
-            <p>Ready to move faster? It usually takes 7-9 minutes and helps make our first call more efficient.</p>
-            <span class="ty-alt-card-cta">Open secure portal →</span>
-          </a>
-          <a href="#ty-calendly" class="ty-alt-card">
-            <h3>Pick a time to talk</h3>
-            <p>Lock in a specific slot. Adam comes to the call with current rate options ready.</p>
-            <span class="ty-alt-card-cta">Schedule 15 min →</span>
+          <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="ty-alt-card" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal"><h3>Apply Now</h3><p>Answer the detailed questions in the secure application portal to prepare for a formal loan review and make our first call more useful.</p><span class="ty-alt-card-cta">Open secure portal →</span></a>
+          <a href="https://calendly.com/adamstyer/15minutes" class="ty-alt-card" target="_blank" rel="noopener">
+            <h3>Book a Call</h3>
+            <p>Choose an available time to discuss your scenario and the next step.</p>
+            <span class="ty-alt-card-cta">Choose a time →</span>
           </a>
         </div>
         <p class="ty-wait-note">Or just wait — Adam will reach out shortly.</p>
@@ -733,15 +730,9 @@
   <script src="/js/scroll-effects.js?v=20260429" defer></script>
   <script src="/analytics.js?v=20260810-qualified-funnel-v1" defer></script>
   <script>
-    // Fire thank-you page view event for Google Ads conversion tracking (GTM relay)
+    // Navigation alone cannot prove a lead was captured. Submit handlers own it.
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'thank_you_page_view' });
-
-    // Fire Google Ads conversion directly (belt-and-suspenders — GTM tag pending config)
-    // Conversion ID: AW-18028490942 | Label: XYcDCMqh64wcEL7h05RD
-    gtag('event', 'conversion', {
-      'send_to': 'AW-18028490942/XYcDCMqh64wcEL7h05RD'
-    });
+    window.dataLayer.push({ event: 'confirmation_page_view', page_path: '/thank-you.html' });
   </script>
   <script>
     (function () {
@@ -860,7 +851,7 @@
       if (type === 'ftb-dpa-guide') {
         if (h1) h1.textContent = 'Your Austin DPA Guide Is On Its Way';
         if (paras.length > 0) paras[0].textContent = 'Check your inbox \u2014 it\u2019ll arrive in the next few minutes. If you don\u2019t see it, check your spam folder and mark us as \u201cnot spam.\u201d';
-        if (phoneCta) phoneCta.innerHTML = 'Ready to find out which programs you qualify for? Book a free 15-minute call with Adam \u2014 no credit pull, no obligation. <br><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" style="font-size:0.9em;opacity:0.8;">Or answer a few portal questions &rarr;</a>';
+        if (phoneCta) phoneCta.innerHTML = 'Ready to find out which programs you qualify for? Book a free 15-minute call with Adam \u2014 no credit pull, no obligation. <br><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" style="font-size:0.9em;opacity:0.8;" aria-label="Apply Now — opens the secure application portal">Apply Now</a>';
       } else if (type === 'rate-alert') {
         if (h1) h1.textContent = "You're on the Austin Rate Watch List";
         if (paras.length > 0) paras[0].textContent = "Check your inbox \u2014 your first rate update arrives this Friday. If you don\u2019t see it, check your spam folder and mark us as \u201cnot spam.\u201d";
@@ -972,5 +963,6 @@
       }
     })();
   </script>
+<script src="/experience.js" defer></script>
 </body>
 </html>

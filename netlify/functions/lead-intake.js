@@ -147,15 +147,18 @@ exports.handler = async (event) => {
   let captured;
   try { captured = await createLoanosContact(leadPayload); }
   catch (error) { return respond(502, { success: false, captured: false, ownerNotified: null, error: "Primary capture unavailable; the independent form backup remains available" }); }
+  // Requested scenario contact is separate from optional marketing enrollment.
+  // Preserve an existing unsubscribe; a duplicate inquiry cannot enroll twice.
+  const marketingAllowed = (body.marketing_opt_in === true || body.marketing_opt_in === "on") && !captured.duplicate;
   const [marketing, delivery] = await Promise.allSettled([
-    isTest ? Promise.resolve("skipped-test") : addToMailchimp({ email, firstName, lastName, tag }),
+    isTest || !marketingAllowed ? Promise.resolve("skipped") : addToMailchimp({ email, firstName, lastName, tag }),
     fetch(N8N_WEB_LEAD_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ dispatch_inquiry_id: captured.inquiry_id }) }).then(response => { if (!response.ok) throw new Error("Delivery dispatch unavailable"); }),
   ]);
   // Captured work remains recoverable even if the immediate dispatcher fails.
   return respond(200, { success: true, captured: true, inquiry_id: captured.inquiry_id,
     contact_id: captured.contact_id, task_id: captured.task_id, duplicate: captured.duplicate,
     automationAccepted: delivery.status === "fulfilled", ownerNotified: null,
-    mailchimp: isTest ? "skipped-test" : marketing.status === "fulfilled" ? "ok" : "failed",
+    mailchimp: isTest ? "skipped-test" : !marketingAllowed ? "skipped-no-new-consent" : marketing.status === "fulfilled" ? "ok" : "failed",
     loanos: "ok", webLeadAutomation: delivery.status === "fulfilled" ? "accepted" : "pending-recovery",
     qualification: { tier: qualification.tier, score: qualification.score } });
 };

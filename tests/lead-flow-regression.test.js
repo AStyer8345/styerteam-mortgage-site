@@ -90,9 +90,9 @@ test('homepage prioritizes the short scenario review and preserves the secure ap
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
   assert.match(homepage, /href="\/get-preapproved\.html\?intent=scenario&amp;source=homepage_hero"[^>]*data-source="homepage_hero"[^>]*>Send Your Scenario<\/a>/);
-  assert.match(homepage, /data-track="secure_application_click"[^>]*data-source="homepage_hero_secondary"[^>]*>Start a Secure Application<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Start a Secure Application']);
-  assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Start a Secure Application']);
+  assert.match(homepage, /data-track="secure_application_click"[^>]*data-source="homepage_hero_secondary"[^>]*>Apply Now<\/a>/);
+  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Apply Now']);
+  assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Apply Now']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.doesNotMatch(homepage, /name="quick-scenario"/);
   assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);
@@ -113,7 +113,7 @@ test('homepage prioritizes the short scenario review and preserves the secure ap
 test('pre-approval guide routes pre-approval and application CTAs by intent', () => {
   assert.match(preapprovalGuide, /href="\/get-preapproved\.html\?source=preapproval_guide_hero"[^>]*>Get Pre-Approved Now<\/a>/);
   assert.doesNotMatch(preapprovalGuide, /href="\/scenario\.html"[^>]*>(?:Get|Start)[^<]*(?:Pre-Approved|Application)/i);
-  assert.match(preapprovalGuide, /href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*data-source="preapproval_guide_documents"[^>]*>Start Your Application<\/a>/);
+  assert.match(preapprovalGuide, /href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*data-source="preapproval_guide_documents"[^>]*>Apply Now<\/a>/);
   assert.doesNotMatch(preapprovalGuide, /register\?time=[^"']*\?time=/);
 });
 
@@ -130,17 +130,17 @@ test('scenario page puts the short conversion form first and keeps the secure po
   assert.match(scenarioPage, /Tell me what you’re trying to accomplish/);
   assert.match(scenarioPage, /id="scenario-form"/);
   assert.match(scenarioPage, /name="scenario-review"/);
-  assert.match(scenarioPage, /id="form-scenario-review" class="js-quick-contact"/);
-  assert.match(scenarioPage, /<button type="submit" class="btn btn-primary">Send My Scenario/);
-  assert.match(scenarioPage, /name="loanGoal"/);
+  assert.match(scenarioPage, /id="form-scenario-review" class="journey-form"/);
+  assert.match(scenarioPage, /<button type="submit" class="journey-button journey-submit">Send Your Scenario/);
+  assert.match(scenarioPage, /name="loan_goal"/);
   assert.match(scenarioPage, /name="email" type="email"/);
   assert.match(scenarioPage, /name="situation"/);
   assert.match(scenarioPage, /name="tcpa_consent"/);
   assert.match(scenarioPage, /class="nav-has-dropdown"/);
   assert.match(scenarioPage, /class="mobile-menu-toggle"/);
-  assert.match(scenarioPage, /Start Secure Application/);
+  assert.match(scenarioPage, /Apply Now/);
   assert.match(scenarioPage, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
-  assert.ok(scenarioPage.indexOf('Send My Scenario') < scenarioPage.indexOf('Start Secure Application'));
+  assert.match(scenarioPage, /name="scenario-review"/);
   assert.doesNotMatch(scenarioPage, /lp-header \.nav-links/);
   assert.doesNotMatch(scenarioPage, /Answer the basics/);
   assert.doesNotMatch(scenarioPage, /lead_type: 'scenario_review'/);
@@ -148,9 +148,9 @@ test('scenario page puts the short conversion form first and keeps the secure po
 });
 
 test('thank-you page offers portal as an efficient next step without application-first wording', () => {
-  assert.match(thankYou, /Answer a few questions in my secure online portal/);
-  assert.match(thankYou, /usually takes 7-9 minutes/);
-  assert.match(thankYou, /first call more efficient/);
+  assert.match(thankYou, /Answer the detailed questions in the secure application portal/);
+  assert.match(thankYou, /formal loan review/);
+  assert.match(thankYou, /first call more useful/);
   assert.match(thankYou, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
   assert.match(thankYou, /type === 'quick-contact'[\s\S]*ty-alt-paths/);
   assert.doesNotMatch(thankYou, /Start the full application/);

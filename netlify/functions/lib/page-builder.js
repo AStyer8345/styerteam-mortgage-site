@@ -47,6 +47,7 @@ function buildWebPage({ title, description, date, content }) {
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+<link rel="stylesheet" href="/experience.css">
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -73,8 +74,9 @@ function buildWebPage({ title, description, date, content }) {
           <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li><li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li><li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li><li><a href="/resources/first-time-buyer-guide/">Buyer Guide</a></li><li><a href="/scenarios.html">Scenarios</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/rate-check.html">Rate Check</a></li><li><a href="/realtors.html">For Realtors</a></li></ul></li>
           <li><a href="/testimonials.html">Testimonials</a></li>
           <li class="nav-has-dropdown"><a href="/contact.html">Contact</a><ul class="nav-dropdown"><li><a href="/about.html">About Adam</a></li></ul></li>
-          <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/scenario.html" class="nav-cta">Send Your Scenario</a></li>
-        </ul>
+          <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/get-preapproved.html?intent=scenario" class="nav-cta">Send Your Scenario</a></li>
+        <li><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></li>
+</ul>
       </nav>
     </div>
   </header>
@@ -193,6 +195,7 @@ function buildWebPage({ title, description, date, content }) {
   </footer>
 
   <script src="../script.js" defer></script>
+<script src="/experience.js" defer></script>
 </body>
 </html>`;
 }

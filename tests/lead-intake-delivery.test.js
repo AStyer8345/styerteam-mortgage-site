@@ -40,7 +40,7 @@ test('handoff supplies one stored inquiry ID and never claims delivered email', 
   assert.equal(dispatch.length, 1); assert.deepEqual(dispatch[0].body, {dispatch_inquiry_id:'stored-inquiry-123'});
 });
 test('marketing failure cannot erase the stored inquiry', async () => {
-  const r = await submit({ failures: ['mailchimp.com'] });
+  const r = await submit({ failures: ['mailchimp.com'], body: {inquiry_id:'fixture-inquiry-123',email:'fixture@example.com',marketing_opt_in:true} });
   assert.equal(r.result.captured, true); assert.equal(r.result.mailchimp, 'failed');
 });
 test('internal tests skip every marketing request', async () => {
@@ -51,8 +51,8 @@ test('test mode cannot target a borrower', async () => {
   const r = await submit({body:{inquiry_id:'internal-test-1234',email:'borrower@example.com',test_mode:true}});
   assert.equal(r.statusCode,400); assert.equal(r.calls.length,0);
 });
-test('resubmission does not overwrite an existing Mailchimp unsubscribe', async () => {
-  const r = await submit();
+test('explicit marketing consent does not overwrite an existing Mailchimp unsubscribe', async () => {
+  const r = await submit({body:{inquiry_id:'fixture-inquiry-123',email:'fixture@example.com',marketing_opt_in:true}});
   const member = r.calls.find(c => c.url.includes('/members/') && !c.url.endsWith('/tags'));
   assert.equal(member.body.status_if_new, 'subscribed');
   assert.equal(Object.hasOwn(member.body, 'status'), false);
@@ -62,3 +62,5 @@ test('honeypot exits without calling any external service', async () => {
   assert.equal(r.statusCode, 200);
   assert.equal(r.calls.length, 0);
 });
+
+test('scenario contact without marketing consent never enrolls a borrower', async()=>{const r=await submit();assert.equal(r.result.mailchimp,'skipped-no-new-consent');assert.equal(r.calls.some(c=>c.url.includes('mailchimp.com')),false);});

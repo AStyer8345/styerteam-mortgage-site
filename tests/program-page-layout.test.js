@@ -55,14 +55,14 @@ test('modern loan heroes keep scenario review primary and scheduling secondary',
     const html = fs.readFileSync(file, 'utf8');
     if (/data-situation-page=/.test(html)) {
       assert.match(html, /journey-primary[^>]*>Send Your Scenario/);
-      assert.match(html, /journey-secondary[^>]*>Start a Secure Application/);
+      assert.match(html, /journey-secondary[^>]*>Apply Now/);
       continue;
     }
     const primary = html.match(/<a[^>]+class="btn btn-primary hero-cta-primary hero-cta-btn"[^>]*>([^<]+)<\/a>/);
     const secondary = html.match(/<a[^>]+class="btn btn-hero-ghost hero-cta-btn"[^>]*>([^<]+)<\/a>/);
     assert.ok(primary, `${file} must have a primary hero CTA`);
     assert.ok(secondary, `${file} must have a secondary hero CTA`);
-    assert.match(secondary[1], /Schedule Strategy Call/);
+    assert.match(secondary[1], /Book a Call/);
   }
 });
 

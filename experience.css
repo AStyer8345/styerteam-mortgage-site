@@ -1,0 +1,96 @@
+/* Shared public-site refinement. Keep the existing Inter / Playfair brand. */
+:root{--experience-navy:#102440;--experience-gold:#e6c67b;--experience-ink:#25374c;--experience-muted:#526174;--experience-border:#bcc6d1;--experience-measure:70ch}
+body{line-height:1.7}
+body main h1{font-size:clamp(2rem,1.35rem + 2.2vw,3.25rem)!important;line-height:1.12!important}
+body main h2{font-size:clamp(1.65rem,1.25rem + 1.2vw,2.35rem);line-height:1.2}
+body main h3{font-size:clamp(1.2rem,1.05rem + .5vw,1.5rem);line-height:1.3}
+.article-body,.blog-content,.content-narrow{line-height:1.75}
+/* Essential answers remain readable without waiting for scroll animation. */
+main .reveal,main [data-animate]{opacity:1!important;transform:none!important;transition:none!important}
+main p a{text-decoration:underline;text-underline-offset:3px}
+body .journey-education a{color:#735719}
+body .dscr-disclaimer,body.calculator-page main>section:last-of-type p{color:#526174!important;font-size:.9375rem!important;line-height:1.65}
+body.home-pilot .loan-programs-intro>p,body.home-pilot .text-lg.mb-xl{color:#526174!important}
+body .blog-card-category,body .loan-program-cta,body[data-situation-page] .content-narrow p a{color:#735719!important}
+body footer a[href="/texas-complaint-notice.html"]{color:#e6c67b!important;text-decoration:underline}
+body .lp-footer .lp-nmls,body .lp-footer .lp-nmls a{color:#e2e8f0!important;font-size:.875rem;line-height:1.65}
+body main :is(.article-body,.blog-content,.pro-section) p{font-size:1rem!important;line-height:1.75}
+.article-body>p,.article-body>ul,.article-body>ol,.blog-content>p{max-width:var(--experience-measure)}
+.article-body :is(h2,h3){margin-top:1.8em}
+main :is(.article-body,.blog-content,.journey-education) a{text-decoration:underline;text-underline-offset:3px}
+:is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid #a67c20;outline-offset:4px}
+.skip-link{top:0!important;transform:translateY(-200%)}
+.skip-link:focus{transform:translateY(0)}
+body :is(.btn,.journey-button,.dscr-btn){min-height:48px;font-size:1rem;line-height:1.4;text-wrap:balance}
+body :is(input,select,textarea){font-size:1rem}
+body :is(.journey-field label,.journey-card .journey-form-intro,.journey-card .journey-hint,.journey-consent,.journey-hero .journey-path-note p,.journey-hero .journey-contact,.dscr-helper){font-size:.9375rem;line-height:1.55}
+body .journey-hero .journey-intro{font-size:1.0625rem;line-height:1.65}
+body .journey-hero .journey-byline{font-size:.875rem}
+body .journey-hero .journey-eyebrow,body .journey-card .journey-progress{font-size:.8125rem}
+.journey-card :is(p,label,legend){text-shadow:none}
+.journey-card .journey-fields{gap:1.1rem}
+.journey-card .journey-consent{padding-block:.4rem}
+.journey-card .journey-field label{min-height:0!important}
+.journey-card .journey-status{font-size:1rem;overflow-wrap:anywhere}
+.journey-summary{margin:1rem 0;padding:1rem;background:#f0f3f6;border:1px solid var(--experience-border);border-radius:6px}
+.journey-summary h3{font:600 1.05rem/1.4 var(--font-primary);margin:0 0 .5rem}
+.journey-summary dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.4rem 1rem;font-size:.9375rem}
+.journey-summary dt{color:var(--experience-muted)}
+.journey-summary dd{margin:0;overflow-wrap:anywhere;font-weight:600}
+.journey-summary p{font-size:.9375rem;line-height:1.6;margin:.8rem 0 0}
+.journey-summary a{display:inline-block;margin-top:.7rem;text-decoration:underline}
+.journey-next-actions{margin-top:1rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.journey-next-actions a{text-decoration:underline}
+.journey-status[data-tone="error"]{border-color:#a32b24;background:#fff4f2;color:#69251f}
+.experience-portal-note{font-size:.875rem;line-height:1.5;margin:.6rem 0 0;color:inherit}
+header nav{gap:1rem}
+body header .nav-logo-img{height:64px;width:auto;max-width:180px}
+body header .nav-links{gap:.7rem}
+body header .nav-links>li>a{min-height:44px;display:inline-flex;align-items:center;font-size:.875rem}
+body header .nav-links a.nav-cta{background:var(--experience-navy);color:#fff!important;padding:.7rem .9rem;border:1px solid #8190a3}
+body header .nav-links a.nav-apply,body .experience-header-actions .nav-apply{background:var(--experience-gold);color:var(--experience-navy)!important;font-weight:700;border-color:var(--experience-gold)}
+body header .nav-dropdown a{min-height:44px;display:flex;align-items:center}
+.nav-has-dropdown:focus-within>.nav-dropdown{display:block}
+.experience-header-actions{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.experience-header-actions a{display:inline-flex;min-height:44px;align-items:center;padding:.6rem .85rem;border-radius:6px;font-weight:600}
+.experience-header-actions .nav-cta{background:var(--experience-navy);color:#fff}
+body .lp-header .experience-header-actions .nav-cta{display:inline-flex!important}
+body .lp-header .experience-header-actions>a:not(.nav-apply){color:#fff}
+body .lp-header .nav-container{padding:1rem 24px;max-width:1280px;margin:auto}
+.experience-mobile-text{display:none}
+.experience-calculator-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin:1.2rem 0}
+.experience-calculator-note{font-size:.9375rem;line-height:1.6;max-width:65ch;margin:.8rem 0}
+.experience-calculator-error{color:#922920;font-size:1rem}
+.experience-table-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;margin:1rem 0;border:1px solid #d6dde5;border-radius:6px}
+.experience-table-scroll table{margin:0;min-width:560px}
+.experience-table-scroll th,.experience-table-scroll td{padding:.8rem 1rem;font-size:1rem;line-height:1.5;vertical-align:top}
+@media(max-width:1180px){
+ body header .mobile-menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;min-height:48px;min-width:48px;padding:10px;background:transparent}
+ body header nav{position:relative;flex-wrap:wrap}
+ body header .nav-links{display:none;position:static;transform:none;width:100%;flex-basis:100%;padding:.5rem 0 1rem;max-height:calc(100dvh - 110px);overflow-y:auto;background:#fff;box-shadow:none;gap:.3rem}
+ body header .nav-links.active{display:flex;flex-direction:column;align-items:stretch}
+ body header .nav-links>li{width:100%}
+ body header .nav-links>li>a{display:flex;min-height:48px;padding:.7rem 1rem}
+ body header .nav-links a:not(.nav-cta){color:#102440!important}
+ body header .nav-dropdown{position:static;transform:none;box-shadow:none;border-top:0;min-width:0;width:100%;margin:0;padding:0 0 .5rem 1rem}
+ body header .nav-dropdown a{white-space:normal}
+ body header .nav-has-dropdown:hover>.nav-dropdown,body header .nav-has-dropdown:focus-within>.nav-dropdown{display:none}
+ body header .nav-has-dropdown.open>.nav-dropdown{display:block}
+ body header .nav-links .nav-phone-li{display:block}
+ .experience-mobile-text{display:block}
+}
+@media(max-width:600px){
+ body header .nav-logo-img{height:54px;max-width:155px}
+ .experience-header-actions{gap:.3rem}
+ .experience-header-actions a{padding:.5rem .65rem;font-size:.875rem}
+ body .lp-header .nav-container{padding:.6rem 1rem}
+ .experience-calculator-actions{flex-direction:column}
+ .experience-calculator-actions>*{width:100%;text-align:center}
+ .journey-summary dl{grid-template-columns:1fr 1fr;font-size:.875rem}
+ body .journey-hero .journey-byline{margin-top:1rem}
+ body .dscr-calculator-module .dscr-cashflow-label{max-width:18ch;white-space:normal}
+ body:has(.sticky-mobile-bar) .mortgage-assistant{bottom:calc(86px + env(safe-area-inset-bottom))}
+ body:has(.journey-form) .sticky-mobile-bar{display:none}
+}
+@media(min-width:601px){body .journey-card .journey-field label{min-height:3.1em!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important}}

@@ -599,6 +599,7 @@
       border-radius: 4px;
     }
   </style>
+<link rel="stylesheet" href="/experience.css">
 </head>
 <body class="editorial-page calculator-page">
   <!-- Google Tag Manager (noscript) -->
@@ -628,6 +629,7 @@
           <li><a href="/testimonials.html">Testimonials</a></li>
           <li class="nav-has-dropdown"><a href="/contact.html">Contact</a><ul class="nav-dropdown"><li><a href="/about.html">About Adam</a></li></ul></li>
           <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/get-preapproved.html?intent=scenario" class="nav-cta">Send Your Scenario</a></li>
+        <li><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></li>
         </ul>
       </nav>
     </div>
@@ -642,7 +644,7 @@
         <p class="subtitle">Estimate whether the rent covers the payment, see the PITIA breakdown, and send the scenario to Adam if the deal deserves a closer look.</p>
         <div class="dscr-hero-ctas">
           <a href="#dscr-calculator" class="btn btn-primary">Start Calculating</a>
-          <a href="/get-preapproved.html?intent=scenario" class="btn btn-ghost">Send Your Scenario</a>
+          <a href="/investor-loans.html?goal=Invest&amp;context=calculator" class="btn btn-ghost" data-review-calculator>Have Adam Review These Numbers</a>
         </div>
       </div>
     </section>
@@ -774,7 +776,7 @@
               </div>
 
               <div class="dscr-cashflow">
-                <span class="dscr-cashflow-label">Monthly Cash Flow</span>
+                <span class="dscr-cashflow-label">Rent remaining after PITIA</span>
                 <span class="dscr-cashflow-value positive" id="dscr-cashflow">$0</span>
               </div>
             </div>
@@ -799,7 +801,9 @@
 
         </div><!-- /.dscr-grid -->
 
-        <!-- Lead capture (hidden unless WEBHOOK_URL set) -->
+        <p class="experience-calculator-note">Rent remaining after PITIA excludes vacancy, repairs, management, utilities, capital expenses and other operating costs. It is not net operating cash flow.</p>
+<div class="experience-calculator-actions" data-calculator-actions><a href="/investor-loans.html?goal=Invest&amp;context=calculator" class="dscr-btn dscr-btn-primary" data-review-calculator>Have Adam Review These Numbers</a><button type="button" class="dscr-btn dscr-btn-secondary" data-save-analysis>Save This Analysis</button></div><p class="experience-calculator-note">Save an encrypted analysis with a private return link and a downloadable copy. No account or marketing signup needed.</p>
+<!-- Legacy email delivery remains disabled. -->
         <div class="dscr-lead" id="dscr-lead" hidden>
           <h4>Email me this analysis</h4>
           <p style="font-size:0.88rem;color:var(--dscr-muted);margin:0 0 0.8rem;">Adam will receive your numbers along with the calculation. No obligation.</p>
@@ -833,10 +837,10 @@
           <h3>Want Adam to review the real scenario?</h3>
           <p>Send the property, rent, and rough numbers. I'll tell you whether the deal has a DSCR path before asking you to complete a full application.</p>
           <div class="dscr-cta-buttons">
-            <a href="/get-preapproved.html?intent=scenario" class="dscr-btn dscr-btn-primary">Send Your Scenario</a>
-            <a href="https://calendly.com/adamstyer/15minutes" class="dscr-btn dscr-btn-secondary" target="_blank" rel="noopener">Book 15-Min Call</a>
+            <a href="/investor-loans.html?goal=Invest&amp;context=calculator" class="dscr-btn dscr-btn-primary" data-review-calculator>Have Adam Review These Numbers</a>
+            <a href="https://calendly.com/adamstyer/15minutes" class="dscr-btn dscr-btn-secondary" target="_blank" rel="noopener">Book a Call</a>
           </div>
-          <a href="#" class="dscr-tertiary" id="dscr-app-link" hidden>Already talked with Adam? Start Full Loan Application</a>
+          <a href="#" class="dscr-tertiary" id="dscr-app-link" aria-label="Apply Now — opens the secure application portal" hidden>Apply Now</a>
         </div>
 
       </div>
@@ -868,8 +872,8 @@
       <div class="container text-center">
         <h2 class="text-white">Ready for Adam to review the real scenario?</h2>
         <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Send the property, rent estimate, and your rough plan. I'll come back with whether there's a DSCR path — usually same day.</p>
-        <a href="/get-preapproved.html?intent=scenario" class="btn btn-primary btn-lg">Send Your Scenario</a>
-        <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-white btn-lg" target="_blank" rel="noopener" style="margin-left:1rem;">Book 15-Min Call</a>
+        <a href="/investor-loans.html?goal=Invest&amp;context=calculator" class="btn btn-primary btn-lg" data-review-calculator>Have Adam Review These Numbers</a>
+        <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-white btn-lg" target="_blank" rel="noopener" style="margin-left:1rem;">Book a Call</a>
         <p class="text-white" style="margin-top:1rem;opacity:0.7;font-size:0.9rem;">Adam Styer — NMLS #513013 — <a href="tel:+15129566010" style="color:#fff;">(512) 956-6010</a></p>
       </div>
     </section>
@@ -1306,5 +1310,8 @@ window.styerMoney = (function () {
 })();
 window.styerMoney.attach(["dscr-price", "dscr-down", "dscr-tax", "dscr-ins", "dscr-hoa", "dscr-rent"]);
 </script>
+<script src="/experience.js" defer></script>
+<script src="/analysis.js" defer></script>
+<script src="/calculator-journey.js" defer></script>
 </body>
 </html>

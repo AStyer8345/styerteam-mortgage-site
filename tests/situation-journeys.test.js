@@ -53,11 +53,11 @@ test('homepage choices target the five short journeys without retiring indexed p
   for (const journey of journeys) {
     assert.ok(home.includes(`/${journey.file}?intent=${journey.intent}&amp;source=homepage_situations`));
     const html = fs.readFileSync(journey.file, 'utf8');
-    assert.ok(html.includes(`name="intent" value="${journey.intent}"`));
+    assert.ok(html.includes(`name="intent" value="${journey.file === 'get-preapproved.html' ? 'general' : journey.intent}"`));
     assert.ok(html.includes(`https://styermortgage.com/${journey.file}`));
     assert.ok(html.includes('situation-journeys.js'));
     assert.ok(html.includes('assets/utm.js'));
-    assert.ok(html.includes('Start a Secure Application'));
+    assert.ok(html.includes('Apply Now'));
     assert.doesNotMatch(html, /Get My Free Quote|Talk With Adam|Run My DSCR Scenario/);
     journey.fields.forEach(([name]) => assert.ok(html.includes(`name="${name}"`), `${journey.file}: ${name}`));
   }

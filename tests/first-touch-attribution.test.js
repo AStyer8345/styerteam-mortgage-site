@@ -86,7 +86,7 @@ test('purchase journey preserves attribution and uses shared capture', () => {
   assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('qualification_funnel_view'\)/);
   assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('form_start'\)/);
   assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('step_1_complete'\)/);
-  assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('accepted_submit'\)/);
+  assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('accepted_submit',payload.inquiry_id\)/);
   assert.match(preapprovalPage, /situation-journeys\.js/);
   assert.match(preapprovalPage, /Send Your Scenario<\/button>/);
 });

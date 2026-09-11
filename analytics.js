@@ -114,25 +114,11 @@
     var link = event.target.closest('a,button');
     if (!link) return;
     rememberQualificationCta(link);
-    if (link.matches('a[href*="calendly.com"]') && !link.hasAttribute('data-qualified-calendar')) {
-      event.preventDefault();
-      safeWrite(getStorage('sessionStorage'), LAST_CTA_KEY, {
-        cta_source_page: cleanUrl(window.location.href),
-        cta_label: (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 160),
-        intent: 'schedule',
-        source: window.location.pathname.slice(0, 300),
-        at: new Date().toISOString()
-      });
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'qualification_started',
-        source_page: window.location.pathname,
-        original_cta: (link.textContent || '').trim(),
-      });
-      window.location.href = '/get-preapproved.html?intent=schedule&source=' + encodeURIComponent(window.location.pathname);
-      return;
-    }
     var eventName = link.getAttribute('data-track');
+    // A calendar click is navigation, never a booking or an intake redirect.
+    if (link.matches('a[href*="calendly.com"]')) eventName = 'book_call_click';
+    if (link.matches('a[href*="my1003app.com"]')) eventName = 'secure_application_click';
+    if (link.matches('a[href^="sms:"]')) eventName = 'text_click';
     if (!eventName && link.matches('a[href^="mailto:"]')) eventName = 'email_click';
     if (!eventName && link.matches('a[href*="my1003app.com"]')) eventName = 'secure_application_click';
     if (!eventName && link.matches('a[href*="scenario"]')) eventName = 'send_scenario_click';
@@ -140,32 +126,4 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: eventName, page_path: window.location.pathname });
   });
-  'use strict';
-
-  function track(eventData) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-  }
-
-  function initTracking() {
-    // ── Calendly link clicks ───────────────────────────────────────
-    document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        track({ event: 'book_call_click', page_path: window.location.pathname });
-      });
-    });
-
-    // ── Apply Now / loan application clicks ────────────────────────
-    document.querySelectorAll('a[href*="my1003app.com"]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        track({ event: 'apply_now_click', destination: link.href });
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTracking);
-  } else {
-    initTracking();
-  }
 })();
