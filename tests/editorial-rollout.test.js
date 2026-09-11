@@ -68,11 +68,11 @@ test('every indexable nested loan page receives the header-only treatment', () =
 });
 
 test('the shared stylesheet owns the approved public header treatment', () => {
-  assert.match(stylesheet, /\.editorial-page>header\{background:#0d2342/);
+  assert.match(stylesheet, /\.editorial-page>header:where\(body > header\)\{background:#0d2342/);
   assert.match(stylesheet, /content:url\('\/assets\/logo-light\.svg'\)/);
-  assert.match(stylesheet, /\.editorial-page>header \.nav-cta\{background:#d1b568/);
-  assert.match(stylesheet, /\.editorial-page>header \.nav-links\.active\{background:#fff/);
-  assert.match(stylesheet, /\.public-header-page>header\{background:#0d2342/);
+  assert.match(stylesheet, /\.editorial-page>header:where\(body > header\) \.nav-cta\{background:#d1b568/);
+  assert.match(stylesheet, /\.editorial-page>header:where\(body > header\) \.nav-links\.active\{background:#fff/);
+  assert.match(stylesheet, /\.public-header-page>header:where\(body > header\)\{background:#0d2342/);
   assert.match(stylesheet, /\.legacy-loan-page \.hero-two-col\{display:grid/);
 });
 
