@@ -12,7 +12,7 @@
   if(/asset-depletion|high-net-worth/.test(path))return {situation:'Substantial assets'};
   return {};
  }
- document.querySelectorAll('a[href*="get-preapproved"]').forEach(function(a){
+ document.querySelectorAll('a[href*="get-preapproved"],a[href="/scenario.html"]').forEach(function(a){
   var url=new URL(a.href,location.href);if(url.origin!==location.origin)return;
   var defaults=suggestion();Object.keys(defaults).forEach(function(k){if(!url.searchParams.has(k))url.searchParams.set(k,defaults[k]);});
   a.href=url.pathname+url.search+url.hash;

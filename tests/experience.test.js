@@ -11,7 +11,7 @@ test('saved analysis strips unrecognized and contact data from its format',()=>{
 });
 test('established sitemap, robots and canonical destinations are preserved',()=>{
  for(const file of ['sitemap.xml','robots.txt'])assert.equal(fs.readFileSync(file,'utf8'),cp.execFileSync('git',['show','4ba6c443a8f34972b15d38c5a399a5c74dcb5ed2:'+file],{encoding:'utf8'}));
- const changed=cp.execFileSync('git',['diff','4ba6c443a8f34972b15d38c5a399a5c74dcb5ed2','--name-only'],{encoding:'utf8'}).trim().split('\n').filter(f=>f.endsWith('.html'));for(const file of changed){const before=cp.execFileSync('git',['show','4ba6c443a8f34972b15d38c5a399a5c74dcb5ed2:'+file],{encoding:'utf8'});const after=fs.readFileSync(file,'utf8');const canonical=before.match(/<link[^>]*rel="canonical"[^>]*>/)?.[0];if(canonical)assert.ok(after.includes(canonical),file);}
+ const changed=cp.execFileSync('git',['diff','4ba6c443a8f34972b15d38c5a399a5c74dcb5ed2','--name-only','--diff-filter=M'],{encoding:'utf8'}).trim().split('\n').filter(f=>f.endsWith('.html'));for(const file of changed){const before=cp.execFileSync('git',['show','4ba6c443a8f34972b15d38c5a399a5c74dcb5ed2:'+file],{encoding:'utf8'});const after=fs.readFileSync(file,'utf8');const canonical=before.match(/<link[^>]*rel="canonical"[^>]*>/)?.[0];if(canonical)assert.ok(after.includes(canonical),file);}
 });
 test('private page never loads analytics or public assistant and blocks injected third-party scripts',()=>{
  const html=fs.readFileSync('saved-analysis.html','utf8');assert.match(html,/noindex, nofollow/);assert.match(html,/script-src 'self'/);assert.doesNotMatch(html,/analytics\.js|script\.js|googletagmanager|assistant-widget|experience\.js/);assert.doesNotMatch(fs.readFileSync('sitemap.xml','utf8'),/saved-analysis/);

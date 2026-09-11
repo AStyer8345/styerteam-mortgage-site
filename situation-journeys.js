@@ -63,7 +63,7 @@
     setKnown(goal, ({purchase:'Purchase',refinance:'Refinance',investment:'Invest',construction:'Build',move_up:'Buy before selling'})[params.get('intent')]);
     setKnown(goal, params.get('goal'));
     setKnown(situation, params.get('situation'));
-    var draftKey = 'styer:journey-draft:' + form.name;
+    var draftKey = 'styer:journey-draft:' + form.name + ':' + root.location.pathname;
     var analysis = null;
     function storageRead(key) { try { return JSON.parse(root.sessionStorage.getItem(key) || 'null'); } catch (_) { return null; } }
     var draft = storageRead(draftKey);
@@ -118,6 +118,21 @@
     }
     reconcileSource();
     root.document.addEventListener('styer:attribution-ready', reconcileSource, { once: true });
+    // Keep the first decision short; estimates stay available without obscuring
+    // the goal, situation and readiness choices. Values survive Back and edits.
+    var grid = first.querySelector('.journey-fields');
+    if (grid && !first.querySelector('.journey-estimates')) {
+      var estimates = root.document.createElement('details');
+      estimates.className = 'journey-estimates';
+      var summary = root.document.createElement('summary');
+      summary.textContent = 'Add estimates or details (optional)';
+      var extraFields = root.document.createElement('div');
+      extraFields.className = 'journey-fields';
+      Array.from(grid.children).forEach(function (wrapper) {
+        if (!wrapper.querySelector('[name="loan_goal"],[name="income_type"],[name="readiness"]')) extraFields.appendChild(wrapper);
+      });
+      estimates.appendChild(summary); estimates.appendChild(extraFields); grid.after(estimates);
+    }
     var questions = Array.from(first.querySelectorAll('input,select')).filter(function (field) { return field.type !== 'hidden'; }).map(function (field) {
       var label = first.querySelector('label[for="' + field.id + '"]');
       return { name: field.name, label: label.textContent.replace(/ \*$/, '') };

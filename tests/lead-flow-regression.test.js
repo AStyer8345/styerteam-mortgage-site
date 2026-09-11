@@ -46,11 +46,8 @@ test('legacy hero quote flow binds only explicitly designated quote forms', () =
 
   const intendedQuotePages = [
     'austin-area-mortgage-lender.html',
-    'bank-statement-loans.html',
     'buda-mortgage-lender.html',
     'cedar-park-mortgage-lender.html',
-    'dscr-loan-austin-tx.html',
-    'high-net-worth-mortgage.html',
     'kyle-mortgage-lender.html',
     'westlake-mortgage-lender.html',
     'loans/construction.html',
@@ -76,10 +73,11 @@ test('FAQ accordions toggle hidden panels open and closed', () => {
   assert.match(script, /nextElementSibling\.hidden = isActive/);
 });
 
-test('Non-QM quote form uses primary notification capture path', () => {
-  assert.match(nonQmPage, /<form[^>]+name="non-qm-quote"[^>]+class="[^"]*\bjs-quick-contact\b[^"]*"/);
+test('Non-QM keeps its capture identity through the shared scenario form', () => {
+  assert.match(nonQmPage, /<form[^>]+name="non-qm-quote"[^>]+class="[^"]*\bjourney-form\b[^"]*"/);
   assert.match(nonQmPage, /<input type="hidden" name="form-name" value="non-qm-quote">/);
-  assert.match(nonQmPage, /\/script\.js\?v=20260721-assistant-main-v1/);
+  assert.match(nonQmPage, /\/situation-journeys\.js/);
+  assert.doesNotMatch(nonQmPage, /class="js-quick-contact"/);
   assert.match(script, /'form-name': formData\.get\('form-name'\) \|\| form\.getAttribute\('name'\) \|\| ''/);
 });
 

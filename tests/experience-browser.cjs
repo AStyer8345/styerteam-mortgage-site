@@ -17,7 +17,7 @@ const output=process.env.REVIEW_OUTPUT||'/tmp/styer-experience-tests';fs.mkdirSy
   assert.equal(await field('loan_goal').inputValue(),'Not Sure Yet');
   assert.equal(await page.locator('header a.nav-apply').isVisible(),true);
   assert.match(await page.locator('header a.nav-apply').getAttribute('href'),/^https:\/\/hypersmart.my1003app.com\/513013\/register\?time=1779291829279$/);
-  await field('loan_goal').selectOption('Refinance');await field('current_balance').fill('350000');await field('income_type').selectOption('Self-employed / business owner');
+  await page.locator('.journey-estimates summary').click();await field('loan_goal').selectOption('Refinance');await field('current_balance').fill('350000');await field('income_type').selectOption('Self-employed / business owner');
   assert.equal(await field('time_in_business').isVisible(),true);
   await field('loan_goal').selectOption('Purchase');assert.equal(await field('current_balance').isVisible(),false);
   await field('loan_goal').selectOption('Refinance');assert.equal(await field('current_balance').inputValue(),'350000');
@@ -39,12 +39,13 @@ const output=process.env.REVIEW_OUTPUT||'/tmp/styer-experience-tests';fs.mkdirSy
    ['/one-time-close-construction-loan-texas.html','Build','No special circumstance']]){
    await go(entry);const a=page.locator('a[href*="get-preapproved"]').first();await a.click();await page.waitForURL('**/get-preapproved.html**');await page.waitForTimeout(100);
    assert.equal(await field('loan_goal').inputValue(),goal);assert.equal(await field('income_type').inputValue(),situation);
+   if(goal==='Build'||situation==='Difficulty with another lender')await page.locator('.journey-estimates summary').click();
    if(goal==='Build')assert.equal(await field('lot_status').isVisible(),true);
    if(situation==='Difficulty with another lender')assert.equal(await field('closing_date').isVisible(),true);
   }
   mark('Bank-statement, switching-lender and construction entry suggestions passed.');
-  await go('/buy-before-you-sell-austin.html');assert.equal(await field('loan_goal').inputValue(),'Buy before selling');assert.equal(await field('listing_status').isVisible(),true);
-  await go('/investor-loans.html');assert.equal(await field('loan_goal').inputValue(),'Invest');assert.equal(await field('investment_action').isVisible(),true);
+  await go('/buy-before-you-sell-austin.html');await page.locator('.journey-estimates summary').click();assert.equal(await field('loan_goal').inputValue(),'Buy before selling');assert.equal(await field('listing_status').isVisible(),true);
+  await go('/investor-loans.html');await page.locator('.journey-estimates summary').click();assert.equal(await field('loan_goal').inputValue(),'Invest');assert.equal(await field('investment_action').isVisible(),true);
   await go('/referral-partners-self-employed-clients.html');assert.equal(await page.locator('form.professional-referral-form').count(),1);
   await page.locator('#p-name').fill('Preview Partner');await page.locator('#p-email').fill('partner@example.invalid');await page.locator('#p-role').selectOption('CPA / tax advisor');await page.locator('#p-state').selectOption('Texas');await page.locator('#p-goal').selectOption('Purchase');await page.locator('#p-time').selectOption('Exploring');await page.locator('#p-cat').selectOption('Tax returns / self-employed income');
   let partnerPayload;await page.route('**/.netlify/functions/lead-intake',async route=>{partnerPayload=route.request().postDataJSON();await route.fulfill({json:{captured:true,preview:true}});});await page.locator('.professional-referral-form [type=submit]').click();await page.waitForURL('**/thank-you.html?type=professional-referral');assert.equal(partnerPayload.partner_role,'CPA / tax advisor');assert.equal(partnerPayload.email,'partner@example.invalid');assert.ok(partnerPayload.inquiry_id);await page.unroute('**/.netlify/functions/lead-intake');

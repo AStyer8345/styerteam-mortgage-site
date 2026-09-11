@@ -136,7 +136,7 @@ function initNavigation() {
   if (navLinks) {
     navLinks.addEventListener('click', (e) => {
       const dropdownParent = e.target.closest('.nav-has-dropdown');
-      if (dropdownParent && window.innerWidth <= 1180) {
+      if (dropdownParent && window.innerWidth <= 1280) {
         // Only intercept the parent <a> click, not the child dropdown links
         if (e.target.closest('.nav-dropdown')) return;
         e.preventDefault();

@@ -7,10 +7,13 @@ const application = 'https://hypersmart.my1003app.com/513013/register?time=17792
 const apply = `<li><a href="${application}" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></li>`;
 const style = '<link rel="stylesheet" href="/experience.css">';
 const behavior = '<script src="/experience.js" defer></script>';
+const sharedHeader=fs.readFileSync('index.html','utf8').match(/<header\b[^>]*>[\s\S]*?<\/header>/)[0];
 const files = execFileSync('git', ['ls-files','-z'], { encoding:'utf8' }).split('\0').filter(f=>f.endsWith('.html') || /netlify\/functions\/lib\/(blog|realtor|rate)?-?page-builder\.js$/.test(f));
 let changed = 0;
 export function refine(html) {
   if (!/class="nav-links"|class="site-header lp-header"/.test(html)) return html;
+  html=html.replace(/<header\b[^>]*>[\s\S]*?<\/header>/,sharedHeader);
+  if(!html.includes('fonts.googleapis.com/css2?family=Inter'))html=html.replace('</head>','<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap">\n</head>');
   if (!html.includes('/experience.css')) html = html.replace('</head>', style+'\n</head>');
   if (!html.includes('/experience.js')) html = html.replace('</body>', behavior+'\n</body>');
   html = html.replace(/<a\b([^>]*href="https:\/\/[^" ]*my1003app\.com[^" ]*"[^>]*)>([\s\S]*?)<\/a>/g, (_, attrs, content) => `<a${attrs.replace(/aria-label="[^"]*"/g,'').trimEnd()} aria-label="Apply Now — opens the secure application portal">${/<h3/.test(content)?content.replace(/(<h3[^>]*>)[\s\S]*?(<\/h3>)/,'$1Apply Now$2').replace(/(<span class="ty-alt-card-cta">)[\s\S]*?(<\/span>)/,'$1Open secure portal →$2'):'Apply Now'}</a>`);

@@ -136,7 +136,7 @@
 
   function init() {
     if (!document.body.classList.contains('program-page-modern')) return;
-    document.querySelectorAll('main section:not(.hero)').forEach(function (section) {
+    document.querySelectorAll('main section:not(.hero):not(.journey-hero)').forEach(function (section) {
       var container = section.querySelector(':scope > .container');
       if (!container || section.classList.contains('cta-spotlight')) return;
       section.classList.add('program-content-section');

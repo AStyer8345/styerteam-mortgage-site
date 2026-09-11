@@ -1,7 +1,8 @@
 /* Shared public-site refinement. Keep the existing Inter / Playfair brand. */
 :root{--experience-navy:#102440;--experience-gold:#e6c67b;--experience-ink:#25374c;--experience-muted:#526174;--experience-border:#bcc6d1;--experience-measure:70ch}
-body{line-height:1.7}
-body main h1{font-size:clamp(2rem,1.35rem + 2.2vw,3.25rem)!important;line-height:1.12!important}
+html{font-size:16px}
+body{line-height:1.7;--color-gray:#526174;--color-text-muted:#526174}
+body h1,body main h1{font-family:var(--font-display,'Playfair Display',serif);font-size:clamp(2.125rem,1.35rem + 2.2vw,3.25rem)!important;line-height:1.12!important}
 body main h2{font-size:clamp(1.65rem,1.25rem + 1.2vw,2.35rem);line-height:1.2}
 body main h3{font-size:clamp(1.2rem,1.05rem + .5vw,1.5rem);line-height:1.3}
 .article-body,.blog-content,.content-narrow{line-height:1.75}
@@ -64,7 +65,7 @@ body .lp-header .nav-container{padding:1rem 24px;max-width:1280px;margin:auto}
 .experience-table-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;margin:1rem 0;border:1px solid #d6dde5;border-radius:6px}
 .experience-table-scroll table{margin:0;min-width:560px}
 .experience-table-scroll th,.experience-table-scroll td{padding:.8rem 1rem;font-size:1rem;line-height:1.5;vertical-align:top}
-@media(max-width:1180px){
+@media(max-width:1280px){
  body header .mobile-menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;min-height:48px;min-width:48px;padding:10px;background:transparent}
  body header nav{position:relative;flex-wrap:wrap}
  body header .nav-links{display:none;position:static;transform:none;width:100%;flex-basis:100%;padding:.5rem 0 1rem;max-height:calc(100dvh - 110px);overflow-y:auto;background:#fff;box-shadow:none;gap:.3rem}
@@ -94,3 +95,91 @@ body .lp-header .nav-container{padding:1rem 24px;max-width:1280px;margin:auto}
 }
 @media(min-width:601px){body .journey-card .journey-field label{min-height:3.1em!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important}}
+
+/* One public shell. Page-specific legacy hero rules must not move the content
+   edge or switch the visual language when a visitor follows the main menu. */
+body header,body header.scrolled{background:#102440;border-bottom:1px solid #283d58;color:#fff;top:0}
+body header>.container,body .lp-header .nav-container{width:100%;max-width:1280px;margin-inline:auto;padding-inline:24px}
+body header nav{padding-block:12px;min-height:88px}
+body header .nav-brand{flex-shrink:0}
+body header .nav-logo-img{content:url('/assets/logo-light.svg');filter:none!important}
+body header .nav-links>li>a{color:#fff}
+body header .mobile-menu-toggle span{background:#fff}
+body main>.breadcrumb{margin:0;padding:0;background:#faf9f6;border-bottom:1px solid #e5e3dc}
+body main>.breadcrumb>.container{max-width:1280px;margin-inline:auto;padding:0 24px}
+body .breadcrumb nav{padding:18px 0;min-height:0;justify-content:flex-start}
+body .breadcrumb ol{margin:0;gap:0;line-height:1.6}
+body .breadcrumb li{margin:0;color:#526174}
+body .breadcrumb li[aria-hidden="true"]{display:none}
+body .breadcrumb li::after{content:none!important}
+body .breadcrumb li+li::before{content:'›';color:#788393;margin:0 10px}
+body .breadcrumb a{color:#735719}
+body[data-situation-page] main .journey-hero{background:#f3f0e8;color:#25374c;padding:56px 0;min-height:0;height:auto;max-height:none;overflow:visible}
+body[data-situation-page] .journey-grid{max-width:1280px;padding:0 24px;margin:0 auto;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:64px;align-items:start}
+body[data-situation-page] .journey-copy{padding-top:10px;text-align:left}
+body[data-situation-page] .journey-copy h1{color:#102440;max-width:23ch;text-shadow:none;letter-spacing:-.025em;margin:0 0 24px}
+body[data-situation-page] .journey-hero .journey-eyebrow{color:#735719;margin-bottom:16px;line-height:1.5}
+body[data-situation-page] .journey-hero .journey-intro{color:#526174;font-size:1.0625rem;line-height:1.7;max-width:60ch;margin:0 0 24px;text-shadow:none}
+body[data-situation-page] .journey-hero .journey-actions{gap:12px;margin:0}
+body[data-situation-page] .journey-hero .journey-primary{background:#e6c67b;color:#102440;border-color:#b7974e}
+body[data-situation-page] .journey-hero .journey-secondary{background:transparent;color:#102440;border-color:#7b8999}
+body[data-situation-page] .journey-hero .journey-secondary:hover{background:#e8e3d7}
+body[data-situation-page] .journey-hero .journey-contact,body[data-situation-page] .journey-hero .journey-contact a{color:#314963}
+body[data-situation-page] .journey-hero .journey-contact{margin:20px 0}
+body[data-situation-page] .journey-hero .journey-path-note{border-color:#c9c9c3;padding-top:20px;margin:24px 0}
+body[data-situation-page] .journey-hero .journey-path-note p,body[data-situation-page] .journey-hero .journey-byline{color:#526174}
+body[data-situation-page] .journey-card{background:#fff;border:1px solid #d8d9d4;border-top:3px solid #b7974e;padding:28px;border-radius:10px;box-shadow:0 8px 24px #1024400a}
+body[data-situation-page] .journey-card h2{font-family:var(--font-display);font-size:1.75rem!important;line-height:1.25;margin:0 0 12px}
+body .journey-card .journey-field label{min-height:0!important;font-size:.9375rem;line-height:1.5}
+body .journey-card fieldset>.journey-fields{grid-template-columns:1fr}
+body .journey-card .journey-progress{font-size:.8125rem}
+body .journey-estimates{border-top:1px solid #d8d9d4;margin:20px 0 0;padding-top:4px}
+body .journey-estimates summary{cursor:pointer;padding:12px 0;color:#314963;font-size:.9375rem;font-weight:600;line-height:1.5;min-height:48px}
+body .journey-estimates .journey-fields{margin-top:12px;grid-template-columns:1fr 1fr}
+body .journey-card .journey-submit{margin-top:20px}
+/* Align older article/location heroes to the same public content edge. */
+body:not(.home-pilot) main .hero>.container{margin-inline:auto;max-width:1280px;padding-inline:24px}
+body:not(.home-pilot) main .hero{height:auto;min-height:0;max-height:none;display:block;background:#f3f0e8;padding:56px 0;color:#25374c}
+body:not(.home-pilot) main .hero::before{display:none}
+body:not(.home-pilot) main .hero .hero-cutout{display:none}
+body:not(.home-pilot) main .hero :is(.hero-subtitle,.hero-call-link-a,.hero-legal){color:#526174;text-shadow:none}
+body:not(.home-pilot) main .hero h1{color:#102440}
+body:not(.home-pilot) main .hero .btn-hero-ghost{background:transparent;color:#102440;border-color:#7b8999}
+body :is(.btn-primary,.journey-primary){background:#e6c67b;color:#102440;border-color:#b7974e}
+body .calc-layout-bd>*{min-width:0}
+body .calc-layout-bd input{min-width:0;max-width:100%}
+body .bd-chart-wrap{max-width:100%;overflow:hidden}
+body .contact-value a{color:#e6c67b}
+body .contact-ctas a{background:#e6c67b;color:#102440}
+body .card-icon{color:#735719}
+body main :is(.pro-hero,.lp-hero,.page-hero)>.container{max-width:1280px;margin-inline:auto;padding-inline:24px}
+body.professional-page .pro-hero{background:#f3f0e8;padding:56px 0}
+body.professional-page .pro-hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:64px}
+body.professional-page .pro-kicker{color:#735719;font-size:.8125rem;line-height:1.5;margin:10px 0 16px}
+body.professional-page .pro-hero h1{color:#102440;margin:0 0 24px;letter-spacing:-.025em;max-width:23ch}
+body.professional-page .pro-answer{font-size:1.0625rem;line-height:1.7;color:#526174}
+body.professional-page .pro-form-card{border:1px solid #d8d9d4;border-top:3px solid #b7974e;border-radius:10px;padding:28px;box-shadow:0 8px 24px #1024400a}
+body.professional-page .pro-form-card h2{font-size:1.75rem;line-height:1.25;margin:0 0 12px}
+body.professional-page .pro-field label{font-size:.9375rem;line-height:1.5}
+@media(max-width:1280px){body header .nav-links{border-radius:6px}body header nav{min-height:80px}body header .mobile-menu-toggle{position:static;margin:0;transform:none;flex:0 0 48px;width:48px;height:48px;right:auto;top:auto}}
+@media(max-width:900px){
+ body[data-situation-page] .journey-grid{grid-template-columns:1fr;gap:32px}
+ body[data-situation-page] main .journey-hero{padding:36px 0}
+ body[data-situation-page] .journey-copy h1{max-width:25ch}
+ body[data-situation-page] .journey-card{width:100%;max-width:680px}
+ body.professional-page .pro-hero-grid{grid-template-columns:1fr;gap:32px}
+ body.professional-page .pro-hero{padding:36px 0}
+}
+@media(max-width:600px){
+ body header>.container,body .lp-header .nav-container,body main>.breadcrumb>.container,body[data-situation-page] .journey-grid{padding-inline:20px}
+ body header nav{padding-block:8px;min-height:70px}
+ body .breadcrumb nav{padding:14px 0;min-height:72px}
+ body[data-situation-page] main .journey-hero{padding:28px 0 36px}
+ body[data-situation-page] .journey-copy h1{font-size:2.125rem!important;line-height:1.15!important}
+ body[data-situation-page] .journey-hero .journey-actions>*{flex:none;min-height:50px;width:100%}
+ body[data-situation-page] .journey-card{padding:22px 18px}
+ body .journey-estimates .journey-fields{grid-template-columns:1fr}
+ body.professional-page .pro-hero{padding:28px 0 36px}
+ body.professional-page .pro-form-card{padding:22px 18px}
+ body.professional-page .pro-hero h1{font-size:2.125rem!important;line-height:1.15!important}
+}
