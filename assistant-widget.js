@@ -58,14 +58,14 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260830-merged-v1';
+    stylesheet.href = '/assistant-widget.css?v=20260911-accessible-launcher-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
     root.className = 'mortgage-assistant';
     var professionalMode = /^(advisor|advisor_reverse|cpa)$/.test(state.assistantMode);
     root.innerHTML = [
-      '<button class="ma-launcher" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="mortgage-assistant-panel">',
+      '<button class="ma-launcher" type="button" aria-label="Explore your mortgage options" aria-haspopup="dialog" aria-expanded="false" aria-controls="mortgage-assistant-panel">',
       '  <span class="ma-launcher-icon" aria-hidden="true">✦</span>',
       '  <span>' + (professionalMode ? 'Explore a client scenario' : 'Explore your mortgage options') + '</span>',
       '</button>',
