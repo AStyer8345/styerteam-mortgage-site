@@ -10,7 +10,8 @@ test('saved analysis strips unrecognized and contact data from its format',()=>{
  const a=analysis.normalize({kind:'dscr',email:'private@example.invalid',inputs:{price:500000,down:20,downMode:'pct',rate:7.5,years:30,tax:9000,ins:2500,hoa:0,rent:4500,email:'private@example.invalid'}});assert.equal(JSON.stringify(a).includes('private@example.invalid'),false);
 });
 test('established sitemap, robots and canonical destinations are preserved',()=>{
- for(const file of ['sitemap.xml','robots.txt'])assert.equal(fs.readFileSync(file,'utf8'),cp.execFileSync('git',['show','4ba6c443a8f34972b15d38c5a399a5c74dcb5ed2:'+file],{encoding:'utf8'}));
+ const baseline='51b16fb745133bd7919f6528a2291d428427bffb';
+ for(const file of ['sitemap.xml','robots.txt']){const before=cp.execFileSync('git',['show',baseline+':'+file],{encoding:'utf8'}),after=fs.readFileSync(file,'utf8');const structural=s=>s.replace(/<lastmod>[^<]+<\/lastmod>/g,'<lastmod/>');assert.equal(structural(after),structural(before),file+' must preserve destinations and crawl controls');}
  const changed=cp.execFileSync('git',['diff','4ba6c443a8f34972b15d38c5a399a5c74dcb5ed2','--name-only','--diff-filter=M'],{encoding:'utf8'}).trim().split('\n').filter(f=>f.endsWith('.html'));for(const file of changed){const before=cp.execFileSync('git',['show','4ba6c443a8f34972b15d38c5a399a5c74dcb5ed2:'+file],{encoding:'utf8'});const after=fs.readFileSync(file,'utf8');const canonical=before.match(/<link[^>]*rel="canonical"[^>]*>/)?.[0];if(canonical)assert.ok(after.includes(canonical),file);}
 });
 test('private page never loads analytics or public assistant and blocks injected third-party scripts',()=>{

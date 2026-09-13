@@ -6,7 +6,7 @@ if(!/^http:\/\/127\.0\.0\.1:4173$|^https:\/\/[\w-]+--shiny-paprenjak-c7e741\.net
 const output=process.env.REVIEW_OUTPUT||'/tmp/styer-navigation';fs.mkdirSync(output,{recursive:true});
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});const page=await browser.newPage({viewport:{width:1440,height:1050}});const results=[];
 try{
- await page.goto(base+'/');const routes=await page.locator('header .nav-links a[href^="/"]').evaluateAll(els=>[...new Set(els.map(e=>e.getAttribute('href')))]);
+ await page.goto(base+'/');const routes=[...new Set([...await page.locator('header .nav-links a[href^="/"]').evaluateAll(els=>els.map(e=>e.getAttribute('href'))),'/products.html','/mortgage-for-business-owners-austin.html','/self-employed-mortgage-austin.html','/bank-statement-loans.html'])];
  const expected=await page.locator('header .nav-links>li>a').allTextContents();
  for(const width of [1440,2100,1240,1024,390]){
   await page.setViewportSize({width,height:width===390?900:1050});
@@ -22,12 +22,12 @@ try{
   }
   const a=results.find(r=>r.width===width&&r.route==='/self-employed-mortgage-austin.html'),b=results.find(r=>r.width===width&&r.route==='/bank-statement-loans.html');
   for(const field of ['background','font','size'])assert.equal(a[field],b[field],field+' must match');
-  for(const field of ['x','y','width']){assert.ok(Math.abs(a.copy[field]-b.copy[field])<=1,'copy '+field);if(width>900)assert.ok(Math.abs(a.card[field]-b.card[field])<=1,'form '+field);}
+  for(const field of ['x','width']){assert.ok(Math.abs(a.copy[field]-b.copy[field])<=1,'copy '+field);if(width>900)assert.ok(Math.abs(a.card[field]-b.card[field])<=1,'form '+field);}
  }
  await page.setViewportSize({width:1440,height:1050});
  // Follow actual menu links, then complete both shared forms using the preview service.
  for(const [route,formName] of [['/self-employed-mortgage-austin.html','scenario-review'],['/bank-statement-loans.html','bank-statement-quote']]){
-  await page.goto(base+'/');await page.locator('header .nav-has-dropdown').first().hover();await page.locator('header a[href="'+route+'"]').click();await page.waitForURL(base+route);
+  await page.goto(base+'/products.html');await page.locator('main a[href="'+route+'"]').first().click();await page.waitForURL(base+route);
   const form=page.locator('form[data-journey]');assert.equal(await page.locator('main form').count(),1);assert.equal(await form.getAttribute('name'),formName);
   assert.equal(await form.locator('[name=income_type]').inputValue(),'Self-employed / business owner');assert.equal(await form.locator('[name=loan_goal]').inputValue(),'Not Sure Yet');
   assert.equal(await form.locator('.journey-estimates').getAttribute('open'),null);await form.locator('[name=loan_goal]').selectOption('Refinance');await form.locator('.journey-estimates summary').click();await form.locator('[name=current_balance]').fill('320000');

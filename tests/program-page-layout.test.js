@@ -67,22 +67,18 @@ test('modern loan heroes keep scenario review primary and scheduling secondary',
   }
 });
 
-test('self-employed program cards link to their full guides and use a scenario-first CTA', () => {
+test('self-employed qualification paths link to full guides and preserve scenario intake', () => {
   const html = fs.readFileSync('self-employed-mortgage-austin.html', 'utf8');
-
-  for (const href of [
-    '/bank-statement-loans.html',
-    '/1099-only-mortgage-texas.html',
-    '/p-and-l-mortgage-texas.html',
-    '/asset-depletion-mortgage-texas.html'
-  ]) {
-    assert.match(html, new RegExp(`<a class="feature-item program-link-card" href="${href.replaceAll('.', '\\.')}">`), href);
+  const main = html.match(/<main\b[\s\S]*?<\/main>/)[0];
+  for (const href of ['/bank-statement-loans.html', '/1099-only-mortgage-texas.html', '/p-and-l-mortgage-texas.html', '/asset-depletion-mortgage-texas.html']) {
+    assert.ok(main.includes('href="' + href + '"'), href);
   }
-  assert.match(html, /Not sure which income path fits\?/);
-  assert.match(html, /<section class="section bg-light program-always-visible">/);
-  assert.match(html, /href="\/get-preapproved\.html\?intent=scenario" class="btn btn-primary">Send My Scenario/);
-  assert.doesNotMatch(html, /Get Your Self-Employed Rate Quote/);
-  assert.doesNotMatch(html, /name="self-employed-quote"/);
-  const script = fs.readFileSync('js/program-page-layout.js', 'utf8');
-  assert.match(script, /container\.closest\('\.program-always-visible'\)/);
+  assert.match(main, /href="\/mortgage-for-business-owners-austin\.html"/);
+  assert.match(main, /id="income-documents"/);
+  assert.match(main, /id="prepare-your-file"/);
+  assert.match(main, /id="qualification-steps"/);
+  assert.match(main, /href="#scenario-review" class="btn btn-primary">Send Your Scenario/);
+  assert.match(main, /name="scenario-review"/);
+  assert.equal((main.match(/<form\b/g) || []).length, 1);
+  assert.doesNotMatch(main, /name="self-employed-quote"/);
 });
