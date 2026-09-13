@@ -38,11 +38,12 @@
 | GBP Place ID | ChIJYy5uEFPKRIYRmF-k_5gPk74 |
 
 ### Reviews
+Verified on the public Google and Zillow profiles on September 13, 2026. Ratings are platform-specific; the combined figure is a review count.
 | Platform | Stars | Count |
 |----------|-------|-------|
-| Google | 5.0 | 96 |
+| Google | 5.0 | 98 |
 | Zillow | 4.98 | 45 |
-| Combined | 5.0 | 141 |
+| Combined | — | 143 |
 
 **Homepage stats strip (verbatim, current):** `1,000+ Loans Closed | 5.0 ★ Google rating | 4.98 ★ Zillow rating | 40+ Wholesale Lenders Shopped`
 
