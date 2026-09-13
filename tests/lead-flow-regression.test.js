@@ -87,10 +87,10 @@ test('homepage prioritizes the short conversation and preserves the secure appli
   const introActions = homepage.match(/<div id="quick-scenario-form" class="quick-contact-actions"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
-  assert.match(homepage, /href="\/contact\.html\?source=homepage_hero#contact-form"[^>]*data-source="homepage_hero"[^>]*>Talk through my options<\/a>/);
+  assert.match(homepage, /href="\/contact\.html\?source=homepage_hero#contact-form"[^>]*data-source="homepage_hero"[^>]*>Get My Mortgage Options<\/a>/);
   assert.match(homepage, /data-track="secure_application_click"[^>]*data-source="homepage_hero_secondary"[^>]*>Apply Now<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Talk through my options', 'Apply Now']);
-  assert.deepEqual(introActionLabels, ['Talk through my options', 'Apply Now']);
+  assert.deepEqual(heroButtonLabels, ['Get My Mortgage Options', 'Apply Now']);
+  assert.deepEqual(introActionLabels, ['Get My Mortgage Options', 'Apply Now']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.doesNotMatch(homepage, /name="quick-scenario"/);
   assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);

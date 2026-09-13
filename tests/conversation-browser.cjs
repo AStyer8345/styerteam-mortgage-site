@@ -55,7 +55,7 @@ global.fetch=async(url,options)=>{
   assert.equal(primary[0].first_name,'Preview');assert.equal(primary[0].last_name,'Borrower');
   assert.equal(primary[0]['form-name'],'contact');assert.equal(primary[0].intent,'general');
   assert.equal(primary[0].source,'homepage_options');assert.equal(primary[0].cta_source_page,base+'/');
-  assert.equal(primary[0].cta_label,'Talk through my options');assert.equal(primary[0].first_touch_utm_source,'google');
+  assert.equal(primary[0].cta_label,'Get My Mortgage Options');assert.equal(primary[0].first_touch_utm_source,'google');
   assert.equal(primary[0].sms_opt_in,false);assert.ok(primary[0].situation.includes(message));assert.ok(primary[0].situation.includes('Preferred follow-up: Phone'));
   assert.equal(backup[0].situation,primary[0].situation);assert.equal(backup[0].message,message);assert.equal(backup[0].inquiry_id,id);
   assert.equal(await page.evaluate(()=>dataLayer.filter(e=>e.event==='generate_lead').length),0);

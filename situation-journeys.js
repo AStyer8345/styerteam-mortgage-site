@@ -119,7 +119,7 @@
     function reconcileSource() {
       if (singleStep && /^homepage_(hero|options|case_studies|scenario_section|footer|sticky_mobile)$/.test(params.get('source') || '')) {
         form.elements.cta_source_page.value = root.location.origin + '/';
-        form.elements.cta_label.value = 'Talk through my options';
+        form.elements.cta_label.value = 'Get My Mortgage Options';
         return;
       }
       // The five homepage choices are not legacy preapproval CTA clicks. Do not
