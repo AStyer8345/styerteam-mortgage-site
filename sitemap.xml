@@ -12,7 +12,7 @@
   <url><loc>https://styermortgage.com/rate-alert.html</loc><lastmod>2026-08-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/get-preapproved.html</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://styermortgage.com/scenario.html</loc><lastmod>2026-08-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://styermortgage.com/scenarios.html</loc><lastmod>2026-05-31</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/scenarios.html</loc><lastmod>2026-09-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/scenarios/oil-gas-royalty-asset-depletion.html</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://styermortgage.com/refinance-quote.html</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://styermortgage.com/contact.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -34,7 +34,7 @@
 
   <!-- Resources hub -->
   <url><loc>https://styermortgage.com/resources/</loc><lastmod>2026-06-27</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://styermortgage.com/resources/first-time-buyer-guide/</loc><lastmod>2026-06-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/resources/first-time-buyer-guide/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Loan program pages -->
   <url><loc>https://styermortgage.com/loans/conventional.html</loc><lastmod>2026-08-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -48,20 +48,20 @@
 
   <!-- Non-QM cluster (added 2026-05-05) -->
   <url><loc>https://styermortgage.com/non-qm-loans.html</loc><lastmod>2026-06-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://styermortgage.com/dscr-loans-texas.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/dscr-loans-texas.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/dscr-loans-fredericksburg-tx.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/dscr-loans-dripping-springs.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/bank-statement-loans.html</loc><lastmod>2026-07-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/bank-statement-loans.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/high-net-worth-mortgage.html</loc><lastmod>2026-07-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/investor-loans.html</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Non-QM expansion (added 2026-05-17 — private-wealth repositioning) -->
   <url><loc>https://styermortgage.com/mortgage-for-business-owners-austin.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://styermortgage.com/asset-depletion-mortgage-texas.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/asset-depletion-mortgage-texas.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/k1-income-mortgage-austin.html</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/1099-only-mortgage-texas.html</loc><lastmod>2026-07-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://styermortgage.com/p-and-l-mortgage-texas.html</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://styermortgage.com/one-time-close-construction-loan-texas.html</loc><lastmod>2026-08-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://styermortgage.com/one-time-close-construction-loan-texas.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
 
   <!-- Product + location complex-income pages (added 2026-05-17) -->
@@ -192,4 +192,9 @@
 
   <url><loc>https://styermortgage.com/home-equity-loans-texas.html</loc><lastmod>2026-09-06</lastmod></url>
   <url><loc>https://styermortgage.com/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://styermortgage.com/scenarios/self-employed-refinance-deposit-review.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/scenarios/two-rental-properties-cash-out-review.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/scenarios/buying-current-rental-gift-funds.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/scenarios/build-on-owned-land-before-selling.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://styermortgage.com/scenarios/assets-limited-income-history.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

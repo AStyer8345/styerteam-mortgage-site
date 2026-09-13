@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mortgage Scenarios | Real Borrower Files | Adam Styer | NMLS #513013</title>
-  <meta name="description" content="A library of mortgage scenarios — self-employed, DSCR, jumbo, and previously-declined files Adam Styer has worked in Texas. Hedged, anonymized, educational.">
+  <meta name="description" content="A library of mortgage scenarios — self-employed, DSCR, jumbo, and previously-declined files Adam Styer has worked in Texas. Anonymized stories and strategy reviews.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Mortgage Scenarios | Real Borrower Files | Adam Styer">
@@ -125,7 +125,7 @@
     }
     .scenario-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
       gap: var(--spacing-xl);
     }
     .scenario-card {
@@ -172,6 +172,8 @@
     }
   </style>
 <link rel="stylesheet" href="/experience.css">
+<link rel="stylesheet" href="/scenarios.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Real mortgage scenarios", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://styermortgage.com/scenarios/oil-gas-royalty-asset-depletion.html"}, {"@type": "ListItem", "position": 2, "url": "https://styermortgage.com/scenarios/self-employed-refinance-deposit-review.html"}, {"@type": "ListItem", "position": 3, "url": "https://styermortgage.com/scenarios/two-rental-properties-cash-out-review.html"}, {"@type": "ListItem", "position": 4, "url": "https://styermortgage.com/scenarios/buying-current-rental-gift-funds.html"}, {"@type": "ListItem", "position": 5, "url": "https://styermortgage.com/scenarios/build-on-owned-land-before-selling.html"}, {"@type": "ListItem", "position": 6, "url": "https://styermortgage.com/scenarios/assets-limited-income-history.html"}]}</script>
 </head>
 <body class="editorial-page guide-page">
 <!-- Google Tag Manager (noscript) -->
@@ -221,9 +223,9 @@
   <!-- Hero -->
   <section class="section">
     <div class="container content-narrow text-center">
-      <h1>Mortgage Scenarios</h1>
-      <p style="font-size:1.15rem;color:var(--color-dark-gray);line-height:1.6;margin-top:1rem;">A library of representative borrower files — situation, obstacle, strategy, outcome. Anonymized for privacy. Texas only.</p>
-      <p style="font-size:0.95rem;color:var(--color-gray);margin-top:1rem;">Each scenario tells the story of one file: what the borrower was trying to do, what made it hard, how it was structured, and what happened. Outcomes vary by file. Use these as illustrations, not predictions.</p>
+      <p class="scenario-eyebrow">Real questions. Real financing work.</p><h1>Find a situation that sounds like yours.</h1>
+      <p style="font-size:1.15rem;color:var(--color-dark-gray);line-height:1.6;margin-top:1rem;">Self-employed income. Rental-property equity. Family help with a purchase. Building before selling. See how a financing review connects the details to the decision.</p>
+      <p style="font-size:0.95rem;color:var(--color-gray);margin-top:1rem;">Each story explains the situation, the obstacle, and the approach. “Strategy review” means the page describes documented planning or underwriting work; it does not claim a closed loan. Borrower details are anonymized. Texas financing only.</p>
     </div>
   </section>
 
@@ -231,41 +233,17 @@
   <section class="section bg-light">
     <div class="container">
 
-      <!--
-        FILTER CHIPS — only categories with at least one live scenario render.
-        When new categories ship, add the matching chip here.
-      -->
-      <div class="scenario-filter">
-        <button class="btn btn-outline testimonial-filter-btn active" data-filter="all">All</button>
-        <button class="btn btn-outline testimonial-filter-btn" data-filter="jumbo-hnw">Jumbo / High Net Worth</button>
-        <button class="btn btn-outline testimonial-filter-btn" data-filter="declined">Denied Elsewhere</button>
-        <!--
-          Additional chips — uncomment when the first scenario in each category ships:
-          <button class="btn btn-outline testimonial-filter-btn" data-filter="self-employed">Self-Employed / Bank Statement</button>
-          <button class="btn btn-outline testimonial-filter-btn" data-filter="dscr">DSCR / Investor</button>
-        -->
-      </div>
-
+<div class="scenario-filter" role="group" aria-label="Filter scenarios by situation"><button type="button" class="btn btn-outline testimonial-filter-btn active" data-filter="all" aria-pressed="true">All scenarios</button><button type="button" class="btn btn-outline testimonial-filter-btn" data-filter="self-employed" aria-pressed="false">Self-employed</button><button type="button" class="btn btn-outline testimonial-filter-btn" data-filter="dscr" aria-pressed="false">Rental investors</button><button type="button" class="btn btn-outline testimonial-filter-btn" data-filter="assets" aria-pressed="false">Qualifying with assets</button><button type="button" class="btn btn-outline testimonial-filter-btn" data-filter="buying" aria-pressed="false">Buying a home</button><button type="button" class="btn btn-outline testimonial-filter-btn" data-filter="construction" aria-pressed="false">Building a home</button></div><p id="scenario-result-count" class="scenario-result-count" role="status" aria-live="polite">6 scenarios</p>
       <div class="scenario-grid">
 
-        <article class="card scenario-card" data-category="jumbo-hnw declined">
-          <span class="scenario-tag">Jumbo / HNW · Denied Elsewhere</span>
+        <article class="card scenario-card" data-category="assets">
+          <span class="scenario-tag">Qualifying with assets</span><p class="scenario-stage">Closed-loan story</p>
           <h3>Oil &amp; Gas Royalty Income, Two Bank Declines, and an Asset-Depletion Solution</h3>
           <p>A Texas borrower with oil and gas royalty income was declined by two banks before an asset-depletion loan qualified her from verified investment and retirement balances. She closed on the home she wanted.</p>
           <a href="/scenarios/oil-gas-royalty-asset-depletion.html" class="scenario-link">Read the scenario →</a>
         </article>
 
-        <!--
-          SCENARIO CARD STUB — copy when the next scenario ships.
-          data-category values: self-employed | dscr | jumbo-hnw | declined (multiple allowed, space-separated).
-
-          <article class="card scenario-card" data-category="[category]">
-            <span class="scenario-tag">[Category Label]</span>
-            <h3>[Scenario Title]</h3>
-            <p>[1-sentence summary. Hedged. No specific numbers.]</p>
-            <a href="/scenarios/[slug].html" class="scenario-link">Read the scenario →</a>
-          </article>
-        -->
+<article class="card scenario-card" data-category="self-employed"><span class="scenario-tag">Self-employed</span><p class="scenario-stage">Strategy review</p><h3>Strong deposits. A different qualifying-income figure.</h3><p>A self-employed refinance review shows why a large business payment and documented expenses can change the mortgage income calculation.</p><a href="/scenarios/self-employed-refinance-deposit-review.html" class="scenario-link" aria-label="Read: A Self-Employed Refinance: Which Deposits Count as Income?">Read the scenario →</a></article><article class="card scenario-card" data-category="dscr"><span class="scenario-tag">Rental investors</span><p class="scenario-stage">Strategy review</p><h3>Two rentals. One cash-out goal. Two separate reviews.</h3><p>A Texas investor’s two-property cash-out review compares rent, payments, payoffs, and costs to understand the cash each rental might provide.</p><a href="/scenarios/two-rental-properties-cash-out-review.html" class="scenario-link" aria-label="Read: Cash-Out on Two Rentals: Equity Was Only Part of the Answer">Read the scenario →</a></article><article class="card scenario-card" data-category="buying"><span class="scenario-tag">Buying a home</span><p class="scenario-stage">Strategy review</p><h3>A family gift. A familiar home. A payment to plan around.</h3><p>Renters planning to buy their home compare gift-funded down payment options, debt payoff, closing costs, and the total monthly budget.</p><a href="/scenarios/buying-current-rental-gift-funds.html" class="scenario-link" aria-label="Read: Buying the Home You Rent: A Better Plan for Gift Funds">Read the scenario →</a></article><article class="card scenario-card" data-category="construction"><span class="scenario-tag">Building a home</span><p class="scenario-stage">Strategy review</p><h3>Own the land. Build first. Plan the sale proceeds.</h3><p>A Texas construction consultation connects owned land, staying in the current home, and a plan to apply sale proceeds after the move.</p><a href="/scenarios/build-on-owned-land-before-selling.html" class="scenario-link" aria-label="Read: Building on Land You Own Before Selling Your Current Home">Read the scenario →</a></article><article class="card scenario-card" data-category="assets"><span class="scenario-tag">Qualifying with assets</span><p class="scenario-stage">Strategy review</p><h3>Substantial assets. An income-history obstacle.</h3><p>An asset-rich buyer inquiry shows what to review when limited income history blocks a traditional mortgage path.</p><a href="/scenarios/assets-limited-income-history.html" class="scenario-link" aria-label="Read: Plenty of Assets, Limited Income History: What to Review Next">Read the scenario →</a></article>
 
       </div>
     </div>
@@ -274,8 +252,8 @@
   <!-- CTA -->
   <section class="section bg-navy cta-spotlight">
     <div class="container text-center">
-      <h2 class="text-white">Have a File That Belongs Here?</h2>
-      <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Send me the details. I'll tell you what's workable, what isn't, and which program family fits — before you formally apply.</p>
+      <h2 class="text-white">Does one of these sound familiar?</h2>
+      <p class="text-white" style="margin-bottom:2rem;opacity:0.9;">Tell me what you want to do and where you’re getting stuck. Let’s take a look at the options.</p>
       <a href="/get-preapproved.html?intent=scenario" class="btn btn-primary btn-lg">Send My Scenario</a>
       <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-white btn-lg" style="margin-left:1rem;" target="_blank" rel="noopener">Book a Call</a>
       <p class="text-white" style="margin-top:1rem;opacity:0.7;font-size:0.9rem;">Or call <a href="tel:+15129566010" style="color:#fff;">(512) 956-6010</a> — NMLS #513013</p>
@@ -353,8 +331,9 @@
   filterContainer.addEventListener('click', function(e) {
     var btn = e.target.closest('.testimonial-filter-btn');
     if (!btn) return;
-    filterContainer.querySelectorAll('.testimonial-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    filterContainer.querySelectorAll('.testimonial-filter-btn').forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
     var filter = btn.dataset.filter;
     cards.forEach(function(card) {
       var categories = card.dataset.category || '';
@@ -364,6 +343,8 @@
         card.classList.add('hidden');
       }
     });
+    var visible = Array.prototype.filter.call(cards, function(card) { return !card.classList.contains('hidden'); }).length;
+    document.getElementById('scenario-result-count').textContent = visible + (visible === 1 ? ' scenario' : ' scenarios');
   });
 
   filterContainer.addEventListener('keydown', function(e) {
