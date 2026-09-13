@@ -48,10 +48,10 @@ test('network errors reject capture and leave retries to the same inquiry', asyn
   await assert.rejects(capture({}, new URLSearchParams(), async () => { throw new Error('offline'); }), /No capture accepted/);
 });
 
-test('homepage choices target the five short journeys without retiring indexed paths', () => {
+test('homepage conversation replaces product choices without retiring specialist journeys', () => {
   const home = fs.readFileSync('index.html', 'utf8');
+  assert.ok(home.includes('/contact.html?source=homepage_options#contact-form'));
   for (const journey of journeys) {
-    assert.ok(home.includes(`/${journey.file}?intent=${journey.intent}&amp;source=homepage_situations`));
     const html = fs.readFileSync(journey.file, 'utf8');
     assert.ok(html.includes(`name="intent" value="${journey.file === 'get-preapproved.html' ? 'general' : journey.intent}"`));
     assert.ok(html.includes(`https://styermortgage.com/${journey.file}`));

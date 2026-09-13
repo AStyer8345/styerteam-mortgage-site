@@ -92,7 +92,7 @@
   }
 
   function rememberQualificationCta(link) {
-    if (!link.matches('a[href*="get-preapproved"]')) return;
+    if (!link.matches('a[href*="get-preapproved"],a[href*="contact.html"]')) return;
     var href;
     try {
       href = new URL(link.href, window.location.href);

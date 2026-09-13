@@ -12,14 +12,22 @@
   // travel in its supported situation field, so no backend rollout is needed.
   function makePayload(data, questions, intent, pageUrl) {
     var payload = Object.fromEntries(data.entries());
+    // The Contact form keeps its established name/message fields for Forms.
+    // Normalize them for the same primary intake used by the specialist forms.
+    if (data.get('name') && !payload.first_name) {
+      var names = data.get('name').trim().split(/\s+/);
+      payload.first_name = names.shift();
+      payload.last_name = names.join(' ');
+    }
     var details = questions.filter(function (q) { return data.get(q.name); }).map(function (q) {
       return q.label + ': ' + data.get(q.name);
     });
     if (data.get('situation')) details.push('Additional context: ' + data.get('situation'));
+    else if (data.get('message')) details.push('What I am trying to accomplish: ' + data.get('message').trim());
     payload.situation = details.join('\n');
     payload.intent = intent;
     payload.page_url = pageUrl;
-    payload.lead_source = 'Website Situation Review';
+    payload.lead_source = data.get('form-name') === 'contact' ? 'Website Contact' : 'Website Situation Review';
     payload.tag = 'scenario-review';
     payload.tcpa_consent = data.get('tcpa_consent') === 'on';
     payload.sms_opt_in = data.get('sms_opt_in') === 'on';
@@ -42,14 +50,16 @@
   if (!root.document) return;
 
   function init(form) {
+    var singleStep = form.dataset.journeyMode === 'conversation';
     var intent = form.dataset.journey;
-    var first = form.querySelector('[data-journey-step="1"]');
+    var first = form.querySelector('[data-journey-step="1"]') || form.querySelector('[data-journey-step="2"]');
     var second = form.querySelector('[data-journey-step="2"]');
     var next = form.querySelector('[data-journey-next]');
     var back = form.querySelector('[data-journey-back]');
     var progress = form.querySelector('.journey-progress');
     var status = form.querySelector('.journey-status');
     var submit = form.querySelector('[type="submit"]');
+    var submitLabel = submit.textContent;
     var step = 1;
     var busy = false;
     var started = false;
@@ -107,6 +117,11 @@
       var missing=root.document.createElement('p');missing.className='journey-hint';missing.textContent='Your calculator numbers could not be restored. Go back to the calculator and choose review again, or share the estimates you know below.';first.before(missing);
     }
     function reconcileSource() {
+      if (singleStep && /^homepage_(hero|options|case_studies|scenario_section|footer|sticky_mobile)$/.test(params.get('source') || '')) {
+        form.elements.cta_source_page.value = root.location.origin + '/';
+        form.elements.cta_label.value = 'Talk through my options';
+        return;
+      }
       // The five homepage choices are not legacy preapproval CTA clicks. Do not
       // let a stale saved click from another page replace this entry point.
       if (new URLSearchParams(root.location.search).get('source') === 'homepage_situations') {
@@ -121,7 +136,7 @@
     // Keep the first decision short; estimates stay available without obscuring
     // the goal, situation and readiness choices. Values survive Back and edits.
     var grid = first.querySelector('.journey-fields');
-    if (grid && !first.querySelector('.journey-estimates')) {
+    if (!singleStep && grid && !first.querySelector('.journey-estimates')) {
       var estimates = root.document.createElement('details');
       estimates.className = 'journey-estimates';
       var summary = root.document.createElement('summary');
@@ -133,7 +148,7 @@
       });
       estimates.appendChild(summary); estimates.appendChild(extraFields); grid.after(estimates);
     }
-    var questions = Array.from(first.querySelectorAll('input,select')).filter(function (field) { return field.type !== 'hidden'; }).map(function (field) {
+    var questions = singleStep ? [] : Array.from(first.querySelectorAll('input,select')).filter(function (field) { return field.type !== 'hidden'; }).map(function (field) {
       var label = first.querySelector('label[for="' + field.id + '"]');
       return { name: field.name, label: label.textContent.replace(/ \*$/, '') };
     });
@@ -145,6 +160,7 @@
       root.dataLayer.push({ event: name, form_name: form.name, intent: intent, page_path: root.location.pathname, ...(inquiryId ? {inquiry_id:inquiryId}: {}) });
     }
     function showStep(value, focus) {
+      if (singleStep) { step = 2; second.hidden = false; progress.hidden = true; return; }
       step = value;
       first.hidden = step !== 1;
       second.hidden = step !== 2;
@@ -158,7 +174,7 @@
       var fields = Array.from(section.querySelectorAll('input,select,textarea'));
       for (var field of fields) {
         // Native required checks allow whitespace-only names; reject those too.
-        if (field.required && field.type === 'text') field.setCustomValidity(field.value.trim() ? '' : 'Please complete this field.');
+        if (field.required && (field.type === 'text' || field.tagName === 'TEXTAREA')) field.setCustomValidity(field.value.trim() ? '' : 'Please complete this field.');
         if (!field.checkValidity()) { field.reportValidity(); return false; }
       }
       return true;
@@ -168,20 +184,34 @@
       if (!completed) { attributionEvent('step_1_complete'); completed = true; }
       showStep(2, true);
     }
-    next.hidden = false;
-    back.hidden = false;
+    if (next) next.hidden = false;
+    if (back) back.hidden = false;
     form.noValidate = true;
     showStep(1, false);
     attributionEvent('qualification_funnel_view');
     form.addEventListener('focusin', function () {
       if (!started) { attributionEvent('form_start'); started = true; }
     });
-    next.addEventListener('click', advance);
-    back.addEventListener('click', function () { showStep(1, true); });
+    if (next) next.addEventListener('click', advance);
+    if (back) back.addEventListener('click', function () { showStep(1, true); });
+    if (singleStep) {
+      function contactPreference() {
+        var phone = form.elements.phone;
+        phone.required = form.elements.preferred_follow_up.value === 'Phone';
+        form.querySelector('label[for="' + phone.id + '"]').textContent = phone.required ? 'Phone *' : 'Phone (optional)';
+        phone.setCustomValidity('');
+      }
+      form.elements.preferred_follow_up.addEventListener('change', contactPreference);
+      contactPreference();
+    }
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
       if (busy) return;
       if (step === 1) { advance(); return; }
+      if (singleStep && form.elements.phone.value.trim()) {
+        var digits = form.elements.phone.value.replace(/\D/g, '');
+        form.elements.phone.setCustomValidity(digits.length >= 10 && digits.length <= 15 ? '' : 'Please enter a phone number with area code.');
+      }
       if (!valid(first)) { showStep(1, true); return; }
       if (!valid(second)) return;
       if (form.elements.preferred_follow_up && form.elements.preferred_follow_up.value === 'Phone' && !form.elements.phone.value.trim()) {
@@ -189,7 +219,7 @@
       }
       busy = true;
       submit.disabled = true;
-      back.disabled = true;
+      if (back) back.disabled = true;
       submit.textContent = 'Sending…';
       status.hidden = true;
       try {
@@ -218,19 +248,23 @@
         form.querySelectorAll('fieldset').forEach(function (fieldset) { fieldset.hidden = true; });
         progress.hidden = true;
         status.textContent = (result.primary ? 'Your scenario and contact details are saved for review.' : 'Your scenario is saved in our backup inbox. Delivery to the review system is still pending.') + (analysis ? ' Your calculator assumptions and results are included.' : '') + ' I’ll review what you shared and follow up using your contact details. I aim to respond within one business day. This is not a loan approval.';
+        if (singleStep) status.textContent = (result.primary ? 'Your message and contact details are saved for Adam to review.' : 'Your message is saved in our backup inbox. Delivery to the review system is still pending.') + ' I aim to reply within one business day using your preferred contact method.';
         if (result.receipt && result.receipt.preview) status.textContent='Preview only: your scenario was accepted by the test service. No lead, email, or marketing subscription was created.';
         var actions=root.document.createElement('div');actions.className='journey-next-actions';
         var book=root.document.createElement('a');book.href='https://calendly.com/adamstyer/15minutes';book.target='_blank';book.rel='noopener';book.textContent='Book a Call';actions.appendChild(book);
         var helper=root.document.createElement('p');helper.textContent='You can choose a time to discuss this scenario. If timing is tight, call or text (512) 956-6010. Apply Now remains available above when you’re ready for the secure application.';actions.appendChild(helper);status.appendChild(actions);
+        if (singleStep) helper.textContent='You can also choose a time to talk. If timing is tight, call or text me directly.';
+        if (singleStep) ['Call Adam','Text Adam'].forEach(function(label,index){var link=root.document.createElement('a');link.href=(index?'sms:':'tel:')+'+15129566010';link.textContent=label;actions.appendChild(link);});
         status.hidden = false;
         status.focus();
       } catch (_) {
         status.dataset.tone='error';
         status.textContent = 'We could not confirm that your scenario was saved. Please try again, or call (512) 956-6010. Your answers are still here.';
+        if (singleStep) status.textContent = 'We could not confirm that your message was saved. Please try again, or call (512) 956-6010. Your message is still here.';
         status.hidden = false;
         submit.disabled = false;
-        back.disabled = false;
-        submit.textContent = 'Send Your Scenario';
+        if (back) back.disabled = false;
+        submit.textContent = submitLabel;
         busy = false;
         status.focus();
       }

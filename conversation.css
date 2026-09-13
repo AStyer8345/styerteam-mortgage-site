@@ -1,0 +1,19 @@
+/* The homepage invitation and its existing Contact destination. */
+body.home-pilot main .home-conversation{align-self:start;border:1px solid #d8d3c8;border-top:3px solid #b99642;border-radius:8px;background:#faf9f6;padding:clamp(1.25rem,2.5vw,2rem);min-width:0}
+body.home-pilot main .home-conversation h2{font-family:var(--font-primary,Inter,sans-serif);font-size:clamp(1.5rem,1.2rem + .7vw,1.875rem)!important;font-weight:650;line-height:1.25;letter-spacing:-.025em;margin:0 0 1rem;max-width:23ch;color:#102440;text-wrap:balance}
+body.home-pilot main .home-conversation>p{font-size:1rem;line-height:1.65;color:#526174;margin:0 0 1.4rem;max-width:47ch}
+body.home-pilot main .home-conversation-button{display:flex;width:100%;min-height:50px;align-items:center;justify-content:center;font-size:1rem;line-height:1.4;text-align:center;white-space:normal}
+body.home-pilot main .home-conversation-contact{display:flex;align-items:center;gap:1rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #d8d3c8}
+body.home-pilot main .home-conversation-contact img{display:block;width:64px;height:72px;object-fit:contain;flex-shrink:0}
+body.home-pilot main .home-conversation-contact p{font-size:.875rem;line-height:1.5;color:#526174;margin:0}
+.home-conversation-links{display:flex;flex-wrap:wrap;gap:0 1.25rem}
+body.home-pilot main .home-conversation-links a{display:inline-flex;align-items:center;min-height:44px;color:#102440;font-size:.9375rem;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+body main .conversation-card{box-shadow:none;scroll-margin-top:115px}
+body.contact-conversation .contact-grid>*{min-width:0}
+body.contact-conversation .contact-info,body.contact-conversation .info-box{overflow-wrap:anywhere}
+body main .conversation-card h2{font-family:var(--font-primary,Inter,sans-serif);font-size:1.6rem!important;line-height:1.3;margin:0 0 .75rem}
+body main .conversation-card .journey-field label{min-height:0!important}
+body main .conversation-card .journey-hint{margin:.25rem 0 0}
+body main .conversation-card> .journey-hint{margin-top:1rem}
+.conversation-legend{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:600px){body main .conversation-card{scroll-margin-top:96px}.home-conversation-contact{gap:.75rem}body.home-pilot .sticky-mobile-bar .smb-btn-apply{font-size:.875rem;white-space:normal;line-height:1.25}}

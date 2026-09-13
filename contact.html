@@ -79,8 +79,10 @@
   })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
   <!-- End Google Tag Manager -->
 <link rel="stylesheet" href="/experience.css">
+<link rel="stylesheet" href="/situation-journeys.css?v=20260909">
+<link rel="stylesheet" href="/conversation.css?v=20260913">
 </head>
-<body class="editorial-page lead-page">
+<body class="contact-conversation editorial-page lead-page">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -133,8 +135,8 @@
 
                 <div class="hero-col hero-col-authority">
                   <div class="hero-authority-inner">
-                    <h1>Get in Touch</h1>
-                    <p class="hero-subtitle">Questions about a scenario, rates, or pre-approval? Call, text, or send the form — I answer directly.</p>
+                    <h1>Tell me what you’re trying to do.</h1>
+                    <p class="hero-subtitle">Buying, refinancing, building—or having trouble getting approved? You don’t need to know which loan to ask for. I’ll help you understand your options.</p>
                   </div>
                   <div class="hero-ctas">
                     <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-primary hero-cta-primary hero-cta-btn" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a>
@@ -165,56 +167,51 @@
         <div class="contact-grid">
           <!-- CONTACT FORM -->
           <div>
-            <h2 class="mb-lg" data-animate>Send Us a Message</h2>
-
-            <form name="contact" method="POST" action="/thank-you" netlify netlify-honeypot="bot-field" id="form-contact">
+            <div class="journey-card conversation-card" id="contact-form" tabindex="-1">
+            <h2>Let’s talk through your options.</h2>
+            <p class="journey-form-intro">A sentence or two is enough to get started. Fields marked * are required.</p>
+            <form name="contact" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" id="form-contact" class="journey-form" data-journey="general" data-journey-mode="conversation">
               <input type="hidden" name="form-name" value="contact">
-<input type="hidden" name="inquiry_id" value="">
-              <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
-              <div class="form-group floating">
-                <input type="text" id="name" name="name" required autocomplete="name" placeholder=" ">
-                <label for="name">Your Name</label>
-              </div>
+              <input type="hidden" name="inquiry_id" value="">
+              <input type="hidden" name="intent" value="general">
+              <input type="hidden" name="situation" value="">
+        <input type="hidden" name="utm_source" value="">
+<input type="hidden" name="utm_medium" value="">
+<input type="hidden" name="utm_campaign" value="">
+<input type="hidden" name="utm_term" value="">
+<input type="hidden" name="utm_content" value="">
+<input type="hidden" name="page_url" value="">
+<input type="hidden" name="entry_referrer" value="">
+<input type="hidden" name="first_touch_page" value="">
+<input type="hidden" name="first_touch_referrer" value="">
+<input type="hidden" name="first_touch_at" value="">
+<input type="hidden" name="first_touch_source" value="">
+<input type="hidden" name="first_touch_utm_source" value="">
+<input type="hidden" name="first_touch_utm_medium" value="">
+<input type="hidden" name="first_touch_utm_campaign" value="">
+<input type="hidden" name="first_touch_utm_term" value="">
+<input type="hidden" name="first_touch_utm_content" value="">
+<input type="hidden" name="source" value="">
+<input type="hidden" name="cta_source_page" value="">
+<input type="hidden" name="cta_label" value="">
 
-              <div class="form-group floating">
-                <input type="email" id="email" name="email" required autocomplete="email" placeholder=" ">
-                <label for="email">Email Address</label>
-              </div>
-
-              <div class="form-group floating">
-                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder=" ">
-                <label for="phone">Phone Number</label>
-              </div>
-
-              <div class="form-group floating">
-                <select id="loan-type" name="loan-type">
-                  <option value="">Select one...</option>
-                  <option value="purchase">Home Purchase</option>
-                  <option value="refinance">Refinance</option>
-                  <option value="fha">FHA Loan</option>
-                  <option value="va">VA Loan</option>
-                  <option value="jumbo">Jumbo Loan</option>
-                  <option value="investor">Investment Property</option>
-                  <option value="other">Other</option>
-                </select>
-                <label for="loan-type">Loan Type (Optional)</label>
-              </div>
-
-              <div class="form-group floating">
-                <textarea id="message" name="message" required placeholder=" "></textarea>
-                <label for="message">Message</label>
-              </div>
-
-              <!-- TCPA consent -->
-              <div class="hero-quick-form-field" style="grid-column:1/-1;margin-top:4px;">
-                <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.75rem;font-weight:400;color:var(--color-gray);cursor:pointer;line-height:1.5;">
-                  <input type="checkbox" name="tcpa_consent" required style="margin-top:3px;flex-shrink:0;width:16px;height:16px;">
-                  <span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
-                </label>
-              </div>
-              <button type="submit" class="btn btn-primary btn-lg btn-block">Send Message</button>
-              <p style="font-size:0.8rem; color:var(--color-gray); margin-top:0.75rem; line-height:1.5;">I respond within 1 business day. Or skip the form — <a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener" style="color:var(--color-navy);">Book a Call</a>.</p>
+              <p hidden aria-hidden="true"><label>Leave this blank<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+              <p class="journey-progress" hidden>Your message</p>
+              <fieldset data-journey-step="2"><legend class="conversation-legend">Your question and contact details</legend>
+                <div class="journey-fields">
+                  <div class="journey-field journey-full"><label for="message">What are you trying to accomplish? *</label><textarea id="message" name="message" rows="4" maxlength="2000" required aria-describedby="message-hint" placeholder="Tell me about your plans or the question you’re trying to answer."></textarea><p class="journey-hint" id="message-hint">Please leave out Social Security numbers, account numbers, and sensitive documents.</p></div>
+                  <div class="journey-field journey-full"><label for="name">Your name *</label><input type="text" id="name" name="name" required autocomplete="name" maxlength="160"></div>
+                  <div class="journey-field"><label for="email">Email *</label><input type="email" id="email" name="email" required autocomplete="email" maxlength="160"></div>
+                  <div class="journey-field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="30"></div>
+                  <div class="journey-field journey-full"><label for="contact-follow-up">How would you prefer to hear from me?</label><select id="contact-follow-up" name="preferred_follow_up"><option value="Email">Email</option><option value="Phone">Phone</option></select><p class="journey-hint">For a phone reply, include your number. Prefer texting? <a href="sms:+15129566010">Text Adam directly</a>.</p></div>
+                </div>
+                <label class="journey-consent"><input type="checkbox" name="tcpa_consent" required><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
+                <button type="submit" class="journey-button journey-submit">Send my message</button>
+              </fieldset>
+              <div class="journey-status" role="status" tabindex="-1" hidden></div>
             </form>
+            <p class="journey-hint">I aim to reply within one business day. You can also <a href="tel:+15129566010">call</a>, <a href="sms:+15129566010">text</a>, or <a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Book a Call</a>. <a href="/privacy.html">Privacy</a></p>
+            </div>
           </div>
 
           <!-- CONTACT INFO SIDEBAR -->
@@ -238,7 +235,7 @@
                   <a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a>
                 </div>
                 <p class="contact-detail">
-                  Typically reply within 1 hour
+                  I aim to reply within one business day
                 </p>
               </div>
 
@@ -366,7 +363,7 @@
               <div class="accordion-content">
                 <div class="accordion-body">
                   <p>
-                    Phone calls are answered during business hours. Emails typically get a response within 1 hour during business hours. Contact forms are checked multiple times daily. If you need urgent assistance, call us directly at (512) 956-6010.
+                    I aim to reply to messages within one business day. If timing is tight, call or text me directly at (512) 956-6010.
                   </p>
                 </div>
               </div>
@@ -524,17 +521,10 @@
 
   <script src="script.js?v=20260721-assistant-main-v1" defer></script>
   <script src="/js/scroll-effects.js?v=20260429" defer></script>
-  <script src="/analytics.js?v=20260417" defer></script>
-  <script>
-    (function () {
-      var form = document.getElementById('form-contact');
-      if (!form) return;
-      form.addEventListener('submit', function () {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'generate_lead', lead_type: 'contact_form' });
-      });
-    })();
-  </script>
+  <script src="/analytics.js?v=20260913" defer></script>
+
 <script src="/experience.js" defer></script>
+<script src="/assets/utm.js" defer></script>
+<script src="/situation-journeys.js?v=20260913" defer></script>
 </body>
 </html>

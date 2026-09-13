@@ -81,16 +81,16 @@ test('Non-QM keeps its capture identity through the shared scenario form', () =>
   assert.match(script, /'form-name': formData\.get\('form-name'\) \|\| form\.getAttribute\('name'\) \|\| ''/);
 });
 
-test('homepage prioritizes the short scenario review and preserves the secure application', () => {
+test('homepage prioritizes the short conversation and preserves the secure application', () => {
   const heroCtas = homepage.match(/<div class="hero-ctas">([\s\S]*?)<\/div>/)?.[1] || '';
   const heroButtonLabels = Array.from(heroCtas.matchAll(/class="[^"]*\bhero-cta-btn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
   const introActions = homepage.match(/<div id="quick-scenario-form" class="quick-contact-actions"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
-  assert.match(homepage, /href="\/get-preapproved\.html\?intent=scenario&amp;source=homepage_hero"[^>]*data-source="homepage_hero"[^>]*>Send Your Scenario<\/a>/);
+  assert.match(homepage, /href="\/contact\.html\?source=homepage_hero#contact-form"[^>]*data-source="homepage_hero"[^>]*>Talk through my options<\/a>/);
   assert.match(homepage, /data-track="secure_application_click"[^>]*data-source="homepage_hero_secondary"[^>]*>Apply Now<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Send Your Scenario', 'Apply Now']);
-  assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Apply Now']);
+  assert.deepEqual(heroButtonLabels, ['Talk through my options', 'Apply Now']);
+  assert.deepEqual(introActionLabels, ['Talk through my options', 'Apply Now']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.doesNotMatch(homepage, /name="quick-scenario"/);
   assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);
@@ -102,7 +102,7 @@ test('homepage prioritizes the short scenario review and preserves the secure ap
   assert.match(homepage, /Complex mortgage\. Clear path forward\./);
   assert.match(homepage, /Austin business owners · investors · move-up buyers/);
   assert.match(homepage, /href="tel:\+15129566010"/);
-  assert.match(homepage, /href="\/get-preapproved\.html\?intent=scenario&amp;source=homepage_sticky_mobile"[^>]*data-source="homepage_sticky_mobile"/);
+  assert.match(homepage, /href="\/contact\.html\?source=homepage_sticky_mobile#contact-form"[^>]*data-source="homepage_sticky_mobile"/);
   assert.match(homepage, /document\.body\.classList\.add\('sticky-mobile-bar-active'\)/);
   assert.match(stylesheet, /\.home-pilot\.sticky-mobile-bar-active \.mortgage-assistant\{bottom:calc\(5\.75rem \+ env\(safe-area-inset-bottom\)\)\}/);
   assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
@@ -117,11 +117,11 @@ test('pre-approval guide routes pre-approval and application CTAs by intent', ()
 
 test('homepage hero keeps Adam’s portrait compact and avoids the oversized photo treatment', () => {
   const hero = homepage.match(/<section class="hero">([\s\S]*?)<\/section>/)?.[1] || '';
-  assert.match(hero, /<img class="home-hero-photo"[^>]*src="\/assets\/adam-cutout-900\.webp"[^>]*width="88"[^>]*height="96"/);
+  assert.match(hero, /<img[^>]*src="\/assets\/adam-cutout-900\.webp"[^>]*width="64"[^>]*height="72"/);
   assert.doesNotMatch(hero, /<picture/);
   assert.match(homepage, /class="hero-glass-card home-hero-layout"/);
   assert.match(homepage, /\.home-pilot \.hero\{[^}]*background-image:none/);
-  assert.match(homepage, /\.home-pilot \.home-hero-photo\{[^}]*width:88px;[^}]*height:96px/);
+  assert.match(fs.readFileSync('conversation.css', 'utf8'), /width:64px;height:72px/);
 });
 
 test('scenario page puts the short conversion form first and keeps the secure portal secondary', () => {
