@@ -36,18 +36,19 @@
 
   async function capture(payload, data, request) {
     // Confirm immediately on the first durable acceptance. The other transport
-    // continues independently with the same ID; LoanOS deduplicates that ID.
+    // continues with the same ID, including during navigation after confirmation.
+    // LoanOS deduplicates that ID.
     return new Promise(function (resolve, reject) {
       var accepted = false;
       function accept(result) { accepted = true; resolve(result); }
       var netlify = Promise.resolve().then(function () {
-        return request('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() }, 20000);
+        return request('/', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() }, 20000);
       }).then(function (response) {
         var netlifyAccepted = response.ok && !response.redirected;
         if (netlifyAccepted) accept({ captured: true, primary: false, receipt: null });
       });
       var primary = Promise.resolve().then(function () {
-        return request('/.netlify/functions/lead-intake', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }, 20000);
+        return request('/.netlify/functions/lead-intake', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }, 20000);
       }).then(async function (response) {
         var receipt = response.ok ? await response.json() : null;
         var leadAccepted = receipt && receipt.captured === true;
