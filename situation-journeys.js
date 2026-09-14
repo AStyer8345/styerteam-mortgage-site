@@ -35,21 +35,39 @@
   }
 
   async function capture(payload, data, request) {
-    var results = await Promise.allSettled([
-      request('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() }, 20000),
-      request('/.netlify/functions/lead-intake', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }, 20000)
-        .then(async function (response) { return response.ok ? response.json() : null; })
-    ]);
-    var netlifyAccepted = results[0].status === 'fulfilled' && results[0].value.ok;
-    var leadAccepted = results[1].status === 'fulfilled' && results[1].value && results[1].value.captured === true;
-    if (!netlifyAccepted && !leadAccepted) throw new Error('No capture accepted');
-    return { captured: true, primary: Boolean(leadAccepted), receipt: leadAccepted ? results[1].value : null };
+    // Confirm immediately on the first durable acceptance. The other transport
+    // continues independently with the same ID; LoanOS deduplicates that ID.
+    return new Promise(function (resolve, reject) {
+      var accepted = false;
+      function accept(result) { accepted = true; resolve(result); }
+      var netlify = Promise.resolve().then(function () {
+        return request('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() }, 20000);
+      }).then(function (response) {
+        var netlifyAccepted = response.ok && !response.redirected;
+        if (netlifyAccepted) accept({ captured: true, primary: false, receipt: null });
+      });
+      var primary = Promise.resolve().then(function () {
+        return request('/.netlify/functions/lead-intake', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }, 20000);
+      }).then(async function (response) {
+        var receipt = response.ok ? await response.json() : null;
+        var leadAccepted = receipt && receipt.captured === true;
+        if (leadAccepted) accept({ captured: true, primary: true, receipt: receipt });
+      });
+      Promise.allSettled([netlify, primary]).then(function () {
+        if (!accepted) reject(new Error('No capture accepted'));
+      });
+    });
   }
 
   if (typeof module !== 'undefined' && module.exports) module.exports = { makePayload: makePayload, capture: capture };
   if (!root.document) return;
 
   function init(form) {
+    // If shared JavaScript failed to load, leave the native POST operational.
+    if (typeof root.StyerInquiryId !== 'function' || typeof root.StyerFetchWithTimeout !== 'function') return;
+    if (form.dataset.journeyBound) return;
+    form.dataset.journeyBound = 'true';
+    var formName = form.getAttribute('name');
     var singleStep = form.dataset.journeyMode === 'conversation';
     var intent = form.dataset.journey;
     var first = form.querySelector('[data-journey-step="1"]') || form.querySelector('[data-journey-step="2"]');
@@ -73,7 +91,7 @@
     setKnown(goal, ({purchase:'Purchase',refinance:'Refinance',investment:'Invest',construction:'Build',move_up:'Buy before selling'})[params.get('intent')]);
     setKnown(goal, params.get('goal'));
     setKnown(situation, params.get('situation'));
-    var draftKey = 'styer:journey-draft:' + form.name + ':' + root.location.pathname;
+    var draftKey = 'styer:journey-draft:' + formName + ':' + root.location.pathname;
     var analysis = null;
     function storageRead(key) { try { return JSON.parse(root.sessionStorage.getItem(key) || 'null'); } catch (_) { return null; } }
     var draft = storageRead(draftKey);
@@ -157,7 +175,7 @@
     // page path. Financial answers, contact data and arbitrary URL text stay out.
     function attributionEvent(name, inquiryId) {
       root.dataLayer = root.dataLayer || [];
-      root.dataLayer.push({ event: name, form_name: form.name, intent: intent, page_path: root.location.pathname, ...(inquiryId ? {inquiry_id:inquiryId}: {}) });
+      root.dataLayer.push({ event: name, form_name: formName, intent: intent, page_path: root.location.pathname, ...(inquiryId ? {inquiry_id:inquiryId}: {}) });
     }
     function showStep(value, focus) {
       if (singleStep) { step = 2; second.hidden = false; progress.hidden = true; return; }
@@ -204,6 +222,30 @@
       form.elements.preferred_follow_up.addEventListener('change', contactPreference);
       contactPreference();
     }
+    function showConfirmation(result) {
+      busy = true;
+      delete status.dataset.tone;
+      form.querySelectorAll('fieldset').forEach(function (fieldset) { fieldset.hidden = true; });
+      progress.hidden = true;
+      status.textContent = (result.primary ? 'Your scenario and contact details are saved for review.' : 'Your scenario is saved in our backup inbox. Delivery to the review system is still pending.') + (analysis ? ' Your calculator assumptions and results are included.' : '') + ' I’ll review what you shared and follow up using your contact details. I aim to respond within one business day. This is not a loan approval.';
+      if (singleStep) status.textContent = (result.primary ? 'Thank you — your mortgage options request is received.' : 'Thank you — your mortgage options request is received in our contact inbox.') + ' I aim to reply within one business day using your preferred contact method.';
+      if (result.receipt && result.receipt.preview) status.textContent='Preview only: your scenario was accepted by the test service. No lead, email, or marketing subscription was created.';
+      var actions=root.document.createElement('div');actions.className='journey-next-actions';
+      var book=root.document.createElement('a');book.href='https://calendly.com/adamstyer/15minutes';book.target='_blank';book.rel='noopener';book.textContent='Book a Call';actions.appendChild(book);
+      var helper=root.document.createElement('p');helper.textContent='You can choose a time to discuss this scenario. If timing is tight, call or text (512) 956-6010. Apply Now remains available above when you’re ready for the secure application.';actions.appendChild(helper);status.appendChild(actions);
+      if (singleStep) helper.textContent='You can also choose a time to talk. If timing is tight, call or text me directly.';
+      if (singleStep) ['Call Adam','Text Adam'].forEach(function(label,index){var link=root.document.createElement('a');link.href=(index?'sms:':'tel:')+'+15129566010';link.textContent=label;actions.appendChild(link);});
+      var another = root.document.createElement('button');
+      another.type = 'button'; another.className = 'journey-back'; another.textContent = 'Send another request';
+      another.addEventListener('click', function () {
+        try { root.sessionStorage.removeItem(draftKey + ':receipt'); root.sessionStorage.removeItem(draftKey); } catch (_) {}
+        form.reset(); root.location.reload();
+      });
+      actions.appendChild(another);
+      status.hidden = false;
+      status.focus({ preventScroll: true });
+      status.scrollIntoView({ block: 'center', behavior: 'instant' });
+    }
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
       if (busy) return;
@@ -221,7 +263,9 @@
       submit.disabled = true;
       if (back) back.disabled = true;
       submit.textContent = 'Sending…';
-      status.hidden = true;
+      status.dataset.tone = 'sending';
+      status.textContent = 'Sending your request… Please keep this page open.';
+      status.hidden = false;
       try {
         // Reuse the site's stable ID and bounded transport for both captures.
         form.elements.inquiry_id.value = root.StyerInquiryId(form);
@@ -237,26 +281,23 @@
         data.set('intent', intent);
         data.set('situation', payload.situation);
         var result=await capture(payload, data, root.StyerFetchWithTimeout);
-        delete status.dataset.tone;
-        var receiptKey='styer:accepted:'+payload.inquiry_id;
+        // Persist only a receipt, never contact details. Back/reload must not
+        // submit an already accepted inquiry or fire another conversion.
+        try {
+          root.sessionStorage.setItem(draftKey + ':receipt', JSON.stringify({ at: Date.now(), inquiryId: payload.inquiry_id, primary: result.primary }));
+          root.sessionStorage.removeItem(draftKey);
+        } catch (_) {}
+        showConfirmation(result);
+        var receiptKey = 'styer:accepted:' + payload.inquiry_id;
         if (!storageRead(receiptKey)) {
-          attributionEvent('accepted_submit',payload.inquiry_id);
-          attributionEvent('generate_lead',payload.inquiry_id);
-          try { root.sessionStorage.setItem(receiptKey,'true'); } catch (_) {}
+          try {
+            root.sessionStorage.setItem(receiptKey, 'true');
+          } catch (_) {}
+          try {
+            attributionEvent('accepted_submit', payload.inquiry_id);
+            attributionEvent('generate_lead', payload.inquiry_id);
+          } catch (_) { /* Analytics must not hide a saved request. */ }
         }
-        try { root.sessionStorage.removeItem(draftKey); } catch (_) {}
-        form.querySelectorAll('fieldset').forEach(function (fieldset) { fieldset.hidden = true; });
-        progress.hidden = true;
-        status.textContent = (result.primary ? 'Your scenario and contact details are saved for review.' : 'Your scenario is saved in our backup inbox. Delivery to the review system is still pending.') + (analysis ? ' Your calculator assumptions and results are included.' : '') + ' I’ll review what you shared and follow up using your contact details. I aim to respond within one business day. This is not a loan approval.';
-        if (singleStep) status.textContent = (result.primary ? 'Your message and contact details are saved for Adam to review.' : 'Your message is saved in our backup inbox. Delivery to the review system is still pending.') + ' I aim to reply within one business day using your preferred contact method.';
-        if (result.receipt && result.receipt.preview) status.textContent='Preview only: your scenario was accepted by the test service. No lead, email, or marketing subscription was created.';
-        var actions=root.document.createElement('div');actions.className='journey-next-actions';
-        var book=root.document.createElement('a');book.href='https://calendly.com/adamstyer/15minutes';book.target='_blank';book.rel='noopener';book.textContent='Book a Call';actions.appendChild(book);
-        var helper=root.document.createElement('p');helper.textContent='You can choose a time to discuss this scenario. If timing is tight, call or text (512) 956-6010. Apply Now remains available above when you’re ready for the secure application.';actions.appendChild(helper);status.appendChild(actions);
-        if (singleStep) helper.textContent='You can also choose a time to talk. If timing is tight, call or text me directly.';
-        if (singleStep) ['Call Adam','Text Adam'].forEach(function(label,index){var link=root.document.createElement('a');link.href=(index?'sms:':'tel:')+'+15129566010';link.textContent=label;actions.appendChild(link);});
-        status.hidden = false;
-        status.focus();
       } catch (_) {
         status.dataset.tone='error';
         status.textContent = 'We could not confirm that your scenario was saved. Please try again, or call (512) 956-6010. Your answers are still here.';
@@ -266,9 +307,15 @@
         if (back) back.disabled = false;
         submit.textContent = submitLabel;
         busy = false;
-        status.focus();
+        status.focus({ preventScroll: true });
+        status.scrollIntoView({ block: 'center', behavior: 'instant' });
       }
     });
+    var savedReceipt = storageRead(draftKey + ':receipt');
+    if (savedReceipt && Date.now() - savedReceipt.at < 2 * 60 * 60 * 1000) {
+      form.elements.inquiry_id.value = savedReceipt.inquiryId;
+      showConfirmation({ primary: savedReceipt.primary });
+    }
     form.elements.phone.addEventListener('input',function(){this.setCustomValidity('');});
     if(form.elements.preferred_follow_up) form.elements.preferred_follow_up.addEventListener('change',function(){form.elements.phone.setCustomValidity('');});
   }

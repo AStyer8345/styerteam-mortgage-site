@@ -52,3 +52,8 @@ body[data-situation-page] .journey-education{max-width:1000px;margin:auto;paddin
 @media(min-width:1000px){.journey-fields .journey-field label{min-height:2.9em}.journey-full label{min-height:0!important}}
 @media(max-width:999px){body[data-situation-page] .journey-grid{grid-template-columns:1fr;max-width:740px;gap:1.4rem}.journey-copy{padding-top:0}.journey-hero .journey-path-note{margin-top:1rem}.journey-hero .journey-byline{margin-top:.75rem}body[data-situation-page] .journey-copy h1{max-width:24ch}}
 @media(max-width:540px){body[data-situation-page] .journey-grid{padding-inline:18px}.journey-actions{flex-direction:column;align-items:stretch}.journey-fields,.journey-education-grid{grid-template-columns:1fr}.journey-card{padding:1.2rem}.journey-field label{min-height:0}.journey-hero .journey-intro{font-size:.94rem}.journey-card{scroll-margin-top:90px}}
+
+/* Submission feedback stays readable and clear on narrow screens. */
+.journey-status[data-tone="sending"]{background:#edf4fb;border-color:#50739a;color:#102440}
+.journey-status[data-tone="error"]{background:#fff0ef;border:2px solid #ad2929;color:#751c1c}
+.journey-status:focus{outline:3px solid #9a762d;outline-offset:4px}

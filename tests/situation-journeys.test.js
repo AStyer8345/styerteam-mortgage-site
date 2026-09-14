@@ -64,3 +64,23 @@ test('homepage conversation replaces product choices without retiring specialist
   assert.ok(fs.existsSync('loans/refinance.html'));
   assert.ok(fs.existsSync('dscr-loan-austin-tx.html'));
 });
+
+test('backup acceptance is immediate even while the primary is pending', async () => {
+  let finishPrimary;
+  const pending = new Promise(resolve => { finishPrimary = resolve; });
+  const result = await capture({inquiry_id:'test-pending-123'}, new URLSearchParams({inquiry_id:'test-pending-123'}), url => url === '/' ? Promise.resolve({ok:true}) : pending);
+  assert.equal(result.primary, false);
+  finishPrimary({ok:false});
+});
+
+test('primary acceptance is immediate even while the backup is pending', async () => {
+  let finishBackup;
+  const pending = new Promise(resolve => { finishBackup = resolve; });
+  const result = await capture({}, new URLSearchParams(), url => url === '/' ? pending : Promise.resolve({ok:true,json:async()=>({captured:true})}));
+  assert.equal(result.primary, true);
+  finishBackup({ok:false});
+});
+
+test('redirected HTML and malformed primary receipts are not capture proof', async () => {
+  await assert.rejects(capture({}, new URLSearchParams(), async url => url==='/' ? {ok:true,redirected:true} : {ok:true,json:async()=>{throw Error('HTML response');}}), /No capture accepted/);
+});

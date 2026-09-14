@@ -171,9 +171,10 @@
             <div class="journey-card conversation-card" id="contact-form" tabindex="-1">
             <h2>Tell me about your mortgage goals.</h2>
             <p class="journey-form-intro">A sentence or two is enough to get started. I’ll personally review your situation and help you understand which options are worth considering. Fields marked * are required.</p>
-            <form name="contact" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" id="form-contact" class="journey-form" data-journey="general" data-journey-mode="conversation">
+            <form name="contact" method="POST" action="/contact-thank-you.html" data-netlify="true" netlify-honeypot="bot-field" id="form-contact" class="journey-form" data-journey="general" data-journey-mode="conversation">
               <input type="hidden" name="form-name" value="contact">
               <input type="hidden" name="inquiry_id" value="">
+              <input type="hidden" name="test_mode" value="false">
               <input type="hidden" name="intent" value="general">
               <input type="hidden" name="situation" value="">
         <input type="hidden" name="utm_source" value="">
@@ -209,7 +210,7 @@
                 <label class="journey-consent"><input type="checkbox" name="tcpa_consent" required><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
                 <button type="submit" class="journey-button journey-submit">Request My Options</button>
               </fieldset>
-              <div class="journey-status" role="status" tabindex="-1" hidden></div>
+              <div class="journey-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></div>
             </form>
             <p class="journey-hint">I aim to reply within one business day. You can also <a href="tel:+15129566010">call</a>, <a href="sms:+15129566010">text</a>, or <a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Book a Call</a>. <a href="/privacy.html">Privacy</a></p>
             </div>
@@ -530,6 +531,6 @@
 
 <script src="/experience.js" defer></script>
 <script src="/assets/utm.js" defer></script>
-<script src="/situation-journeys.js?v=20260913-options" defer></script>
+<script src="/situation-journeys.js?v=20260914-capture" defer></script>
 </body>
 </html>

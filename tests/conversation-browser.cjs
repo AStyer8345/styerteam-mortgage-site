@@ -69,9 +69,10 @@ global.fetch=async(url,options)=>{
   mark('Homepage → simple form → real intake handler → controlled LoanOS/dispatch passed with exact message, name, reply preference and attribution.');
   mark('Required/whitespace/email/phone-choice validation, no premature conversion, failed capture, same-ID retry and duplicate-click protection passed.');
   // Backup-only is acknowledged honestly and email does not require a phone.
+  await page.getByRole('button',{name:'Send another request'}).click();
   mode='backup';await page.goto(base+'/contact.html?source=homepage_hero#contact-form');
   await f('message').fill('Can you help me understand what I can afford?');await f('name').fill('Preview Email');await f('email').fill('email@example.invalid');await f('tcpa_consent').check();
-  await submit.click();await page.getByText('Your message is saved in our backup inbox.',{exact:false}).waitFor();
+  await submit.click();await page.getByText('Thank you — your mortgage options request is received in our contact inbox.',{exact:false}).waitFor();
   assert.equal(primary.at(-1).preferred_follow_up,'Email');assert.equal(primary.at(-1).phone,'');
   mark('Backup-only confirmation is distinct; email-first inquiry works without a phone number.');
   for(const width of [1440,1024,390,320]){
@@ -93,8 +94,8 @@ global.fetch=async(url,options)=>{
   // Native HTML remains a usable backup when scripts are unavailable.
   const native=await browser.newContext({javaScriptEnabled:false,reducedMotion:'reduce'});const nojs=await native.newPage();let nativeData;
   await nojs.route(base+'/contact.html',r=>r.fulfill({contentType:'text/html',body:fs.readFileSync('contact.html','utf8')}));
-  await nojs.route(base+'/thank-you',r=>{nativeData=Object.fromEntries(new URLSearchParams(r.request().postData()));return r.fulfill({body:'Controlled native form capture'});});
-  await nojs.goto(base+'/contact.html');await nojs.locator('[name=message]').fill('Native fallback inquiry');await nojs.locator('[name=name]').fill('Preview Native');await nojs.locator('[name=email]').fill('native@example.invalid');await nojs.locator('[name=tcpa_consent]').check();await nojs.locator('#form-contact [type=submit]').click();await nojs.waitForURL('**/thank-you');
+  await nojs.route(base+'/contact-thank-you.html',r=>{nativeData=Object.fromEntries(new URLSearchParams(r.request().postData()));return r.fulfill({body:'Controlled native form capture'});});
+  await nojs.goto(base+'/contact.html');await nojs.locator('[name=message]').fill('Native fallback inquiry');await nojs.locator('[name=name]').fill('Preview Native');await nojs.locator('[name=email]').fill('native@example.invalid');await nojs.locator('[name=tcpa_consent]').check();await nojs.locator('#form-contact [type=submit]').click();await nojs.waitForURL('**/contact-thank-you.html');
   assert.equal(nativeData['form-name'],'contact');assert.equal(nativeData.message,'Native fallback inquiry');assert.equal(nativeData.name,'Preview Native');await native.close();
   mark('JavaScript-disabled form submits its registered contact schema and message to the native fallback.');
   assert.deepEqual(errors,[]);fs.writeFileSync(output+'/conversation-results.json',JSON.stringify({findings,errors},null,2));
