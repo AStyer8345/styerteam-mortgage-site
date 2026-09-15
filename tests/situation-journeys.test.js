@@ -50,7 +50,10 @@ test('network errors reject capture and leave retries to the same inquiry', asyn
 
 test('homepage conversation replaces product choices without retiring specialist journeys', () => {
   const home = fs.readFileSync('index.html', 'utf8');
-  assert.ok(home.includes('/contact.html?source=homepage_options#contact-form'));
+  assert.ok(home.includes('id="form-homepage-contact"'));
+  assert.ok(home.includes('href="#contact-form"'));
+  assert.ok(home.includes('/products.html'));
+  assert.ok(home.includes('/situation-journeys.js'));
   for (const journey of journeys) {
     const html = fs.readFileSync(journey.file, 'utf8');
     assert.ok(html.includes(`name="intent" value="${journey.file === 'get-preapproved.html' ? 'general' : journey.intent}"`));

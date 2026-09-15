@@ -136,6 +136,10 @@
       var missing=root.document.createElement('p');missing.className='journey-hint';missing.textContent='Your calculator numbers could not be restored. Go back to the calculator and choose review again, or share the estimates you know below.';first.before(missing);
     }
     function reconcileSource() {
+      if (form.id === 'form-homepage-contact') {
+        form.elements.cta_source_page.value = cleanUrl(root.location.href);
+        return;
+      }
       if (singleStep && /^homepage_(hero|options|case_studies|scenario_section|footer|sticky_mobile)$/.test(params.get('source') || '')) {
         form.elements.cta_source_page.value = root.location.origin + '/';
         form.elements.cta_label.value = 'Get My Mortgage Options';

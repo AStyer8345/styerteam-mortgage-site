@@ -87,7 +87,7 @@ test('homepage prioritizes the short conversation and preserves the secure appli
   const introActions = homepage.match(/<div id="quick-scenario-form" class="quick-contact-actions"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
-  assert.match(homepage, /href="\/contact\.html\?source=homepage_hero#contact-form"[^>]*data-source="homepage_hero"[^>]*>Get My Mortgage Options<\/a>/);
+  assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"[^>]*>Get My Mortgage Options<\/a>/);
   assert.match(homepage, /data-track="secure_application_click"[^>]*data-source="homepage_hero_secondary"[^>]*>Apply Now<\/a>/);
   assert.deepEqual(heroButtonLabels, ['Get My Mortgage Options', 'Apply Now']);
   assert.deepEqual(introActionLabels, ['Get My Mortgage Options', 'Apply Now']);
@@ -102,7 +102,7 @@ test('homepage prioritizes the short conversation and preserves the secure appli
   assert.match(homepage, /Complex mortgage\. Clear path forward\./);
   assert.match(homepage, /Austin business owners · investors · move-up buyers/);
   assert.match(homepage, /href="tel:\+15129566010"/);
-  assert.match(homepage, /href="\/contact\.html\?source=homepage_sticky_mobile#contact-form"[^>]*data-source="homepage_sticky_mobile"/);
+  assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_sticky_mobile"/);
   assert.match(homepage, /document\.body\.classList\.add\('sticky-mobile-bar-active'\)/);
   assert.match(stylesheet, /\.home-pilot\.sticky-mobile-bar-active \.mortgage-assistant\{bottom:calc\(5\.75rem \+ env\(safe-area-inset-bottom\)\)\}/);
   assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
