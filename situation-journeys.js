@@ -229,23 +229,40 @@
       form.querySelectorAll('fieldset').forEach(function (fieldset) { fieldset.hidden = true; });
       progress.hidden = true;
       status.textContent = (result.primary ? 'Your scenario and contact details are saved for review.' : 'Your scenario is saved in our backup inbox. Delivery to the review system is still pending.') + (analysis ? ' Your calculator assumptions and results are included.' : '') + ' I’ll review what you shared and follow up using your contact details. I aim to respond within one business day. This is not a loan approval.';
-      if (singleStep) status.textContent = (result.primary ? 'Thank you — your mortgage options request is received.' : 'Thank you — your mortgage options request is received in our contact inbox.') + ' I aim to reply within one business day using your preferred contact method.';
+      if (singleStep) {
+        var card = form.closest('.journey-card');
+        if (card) {
+          card.classList.add('journey-confirmed');
+          var heading = card.querySelector('h2');
+          if (heading) heading.textContent = 'Thank you — your message is received.';
+          card.querySelectorAll('.journey-form-intro, .journey-hint').forEach(function (element) { element.hidden = true; });
+        }
+        status.textContent = 'Adam has received your message and will be in touch soon, typically within one business day. He’ll reach out directly using your contact details.';
+      }
       if (result.receipt && result.receipt.preview) status.textContent='Preview only: your scenario was accepted by the test service. No lead, email, or marketing subscription was created.';
+      status.classList.add('journey-confirmation');
+      var helper=root.document.createElement('p');helper.className='journey-confirmation-intro';helper.textContent='Want to connect sooner? Call or text Adam at (512) 956-6010, or choose a time that works for you.';status.appendChild(helper);
       var actions=root.document.createElement('div');actions.className='journey-next-actions';
-      var book=root.document.createElement('a');book.href='https://calendly.com/adamstyer/15minutes';book.target='_blank';book.rel='noopener';book.textContent='Book a Call';actions.appendChild(book);
-      var helper=root.document.createElement('p');helper.textContent='You can choose a time to discuss this scenario. If timing is tight, call or text (512) 956-6010. Apply Now remains available above when you’re ready for the secure application.';actions.appendChild(helper);status.appendChild(actions);
-      if (singleStep) helper.textContent='You can also choose a time to talk. If timing is tight, call or text me directly.';
-      if (singleStep) ['Call Adam','Text Adam'].forEach(function(label,index){var link=root.document.createElement('a');link.href=(index?'sms:':'tel:')+'+15129566010';link.textContent=label;actions.appendChild(link);});
+      [['Call Adam','tel:+15129566010'],['Text Adam','sms:+15129566010'],['Schedule a Call','https://calendly.com/adamstyer/15minutes']].forEach(function(item){
+        var link=root.document.createElement('a');link.href=item[1];link.textContent=item[0];
+        if(item[1].indexOf('https:')===0){link.target='_blank';link.rel='noopener';}
+        actions.appendChild(link);
+      });
+      status.appendChild(actions);
+      var application=root.document.createElement('div');application.className='journey-application';
+      var title=root.document.createElement('h3');title.textContent='Want to get a head start?';application.appendChild(title);
+      var detail=root.document.createElement('p');detail.textContent='You can complete a secure online loan application to help make your first conversation more efficient. Your credit will not be run automatically. This step is entirely optional — it’s fine to wait and talk with Adam first.';application.appendChild(detail);
+      var apply=root.document.createElement('a');apply.href='https://hypersmart.my1003app.com/513013/register?time=1779291829279';apply.target='_blank';apply.rel='noopener';apply.className='journey-application-link';apply.textContent='Start a Secure Loan Application';application.appendChild(apply);status.appendChild(application);
       var another = root.document.createElement('button');
       another.type = 'button'; another.className = 'journey-back'; another.textContent = 'Send another request';
       another.addEventListener('click', function () {
         try { root.sessionStorage.removeItem(draftKey + ':receipt'); root.sessionStorage.removeItem(draftKey); } catch (_) {}
         form.reset(); root.location.reload();
       });
-      actions.appendChild(another);
+      status.appendChild(another);
       status.hidden = false;
       status.focus({ preventScroll: true });
-      status.scrollIntoView({ block: 'center', behavior: 'instant' });
+      (form.closest('.journey-card') || status).scrollIntoView({ block: 'start', behavior: 'instant' });
     }
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
@@ -309,7 +326,7 @@
         submit.textContent = submitLabel;
         busy = false;
         status.focus({ preventScroll: true });
-        status.scrollIntoView({ block: 'center', behavior: 'instant' });
+        (form.closest('.journey-card') || status).scrollIntoView({ block: 'start', behavior: 'instant' });
       }
     });
     var savedReceipt = storageRead(draftKey + ':receipt');

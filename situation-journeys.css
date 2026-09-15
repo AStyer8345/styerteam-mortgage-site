@@ -57,3 +57,18 @@ body[data-situation-page] .journey-education{max-width:1000px;margin:auto;paddin
 .journey-status[data-tone="sending"]{background:#edf4fb;border-color:#50739a;color:#102440}
 .journey-status[data-tone="error"]{background:#fff0ef;border:2px solid #ad2929;color:#751c1c}
 .journey-status:focus{outline:3px solid #9a762d;outline-offset:4px}
+
+/* Completed requests have their own layout and optional next steps. */
+.journey-confirmation{background:#fff;border-color:#d8dfe6;color:#24364b;padding:1.25rem;line-height:1.65}
+.journey-confirmation-intro{margin:1rem 0 .75rem}
+.journey-confirmation .journey-next-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin:0 0 1.4rem}
+.journey-confirmation .journey-next-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.65rem 1rem;border:1px solid #b8c3cf;border-radius:6px;color:#102440;font-weight:600;text-decoration:none}
+.journey-next-actions a:hover{background:#edf2f7}
+.journey-application{border-top:1px solid #d8dfe6;padding-top:1.2rem;margin-bottom:1.2rem}
+.journey-application h3{font-size:1.15rem;margin:0 0 .5rem;color:#102440}
+.journey-application p{margin:0 0 1rem}
+.journey-application-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.75rem 1.1rem;background:#102440;color:#fff!important;border-radius:6px;font-weight:600;text-align:center;text-decoration:none}
+.journey-application-link:hover{background:#243e60}
+.journey-confirmation>.journey-back{display:block;margin:0;padding:.4rem 0;min-height:44px}
+.journey-confirmed [hidden]{display:none!important}
+@media(max-width:540px){.journey-confirmation .journey-next-actions{flex-direction:column;align-items:stretch}.journey-application-link{display:flex;width:100%;box-sizing:border-box}.journey-confirmation{padding:1rem}}
