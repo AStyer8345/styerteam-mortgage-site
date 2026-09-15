@@ -12,6 +12,7 @@ const instructionPatterns = [
   /reveal (?:the )?(?:prompt|secret|credential)/i,
 ];
 const errors = [];
+const allowExpired = process.argv.includes('--allow-expired');
 
 if (!manifest.version || !Array.isArray(manifest.files) || manifest.files.length < 1) {
   errors.push('manifest.json must define a version and at least one approved filename');
@@ -42,7 +43,11 @@ for (const filename of manifest.files || []) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(metadata.reviewed_on || '') || !/^\d{4}-\d{2}-\d{2}$/.test(metadata.review_expires_on || '')) {
       errors.push(`${filename}: approved files require review dates`);
     } else if (metadata.review_expires_on < new Date().toISOString().slice(0, 10)) {
-      errors.push(`${filename}: approval is expired`);
+      const message = `${filename}: approval is expired`;
+      // Publishing layout changes must not renew knowledge approvals. The runtime
+      // independently excludes expired files; strict validation remains the default.
+      if (allowExpired) console.warn(`Warning: ${message} (excluded by assistant runtime)`);
+      else errors.push(message);
     }
     if (/\b(?:guarantee|guaranteed|will qualify|will be approved|preapproved)\b/i.test(body)) errors.push(`${filename}: contains a prohibited outcome claim`);
   } else {
