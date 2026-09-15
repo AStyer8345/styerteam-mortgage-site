@@ -356,25 +356,33 @@
   </style>
 <link rel="stylesheet" href="/experience.css">
 <link rel="stylesheet" href="/situation-journeys.css?v=20260915">
-<style>
-.home-pilot .home-hero-layout{align-items:start}
-.home-pilot .home-conversation.journey-card{padding:clamp(1.2rem,2.5vw,1.8rem);box-shadow:0 8px 28px #1024400d}
-.home-pilot .home-conversation h2{font-size:1.6rem;line-height:1.2;margin:0 0 .65rem}
-.home-conversation .journey-fields{grid-template-columns:1fr;gap:.7rem}
-.home-conversation .journey-field label{min-height:0}
-.home-conversation .journey-field .journey-hint{margin:0;font-size:.75rem}
-body.home-pilot main .home-conversation>.journey-form-intro{font-size:.9rem;line-height:1.5;margin-bottom:1rem}
-body.home-pilot main .home-conversation>.journey-hint{font-size:.75rem;line-height:1.5;margin:.75rem 0 0}
-.home-conversation .journey-submit{margin-top:.25rem}
-.home-conversation .journey-consent{margin:.85rem 0;font-size:.75rem}
-.home-conversation .conversation-legend{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.home-conversation [hidden]{display:none!important}
-.home-conversation .home-conversation-programs{font-size:.85rem;margin-top:1rem}
-.home-pilot .hero-col-authority>.home-conversation-contact{margin-top:1rem}
-@media(max-width:900px){.home-pilot .home-hero-layout{gap:1.5rem}}
-</style>
+
 <link rel="stylesheet" href="/conversation.css?v=20260913">
   <link rel="stylesheet" href="/review-proof.css?v=20260913">
+
+<style>
+body.home-pilot main .hero{padding:2.5rem 0}
+body.home-pilot main .home-hero-layout{grid-template-columns:minmax(0,1.15fr) minmax(400px,1fr);gap:3rem;align-items:start}
+body.home-pilot main .home-conversation.journey-card{padding:1.25rem;box-shadow:0 8px 28px #1024400d}
+body.home-pilot main .home-conversation h2{font-size:1.35rem!important;line-height:1.2;margin:0 0 .4rem;max-width:none;text-wrap:initial}
+body.home-pilot main .home-conversation>.journey-form-intro{font-size:.875rem;line-height:1.45;margin:0 0 .8rem}
+body.home-pilot main .home-conversation .journey-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem .75rem}
+body.home-pilot main .home-conversation .journey-field{gap:.25rem}
+body.home-pilot main .home-conversation .journey-field label{font-size:.8125rem;line-height:1.4;min-height:0!important}
+body.home-pilot main .home-conversation .journey-field input{min-height:42px;padding:.5rem .65rem}
+body.home-pilot main .home-conversation .journey-field textarea{height:66px;min-height:66px;padding:.5rem .65rem}
+body.home-pilot main .home-conversation .journey-field .journey-hint{font-size:.75rem;line-height:1.35;margin:0}
+body.home-pilot main .home-conversation .journey-consent{font-size:.8125rem!important;line-height:1.4!important;margin:.75rem 0;padding:0;gap:.5rem}
+body.home-pilot main .home-conversation .journey-submit{min-height:44px;margin:0;padding:.65rem 1rem}
+body.home-pilot main .home-conversation>.journey-hint{font-size:.75rem;line-height:1.4;margin:.5rem 0 0}
+body.home-pilot main .home-conversation>.home-conversation-programs{font-size:.8125rem;line-height:1.4;margin:.5rem 0 0}
+body.home-pilot main .home-conversation-programs a{min-height:32px}
+.home-conversation .conversation-legend{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.home-conversation [hidden]{display:none!important}
+body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.75rem;padding-top:.75rem}
+@media(max-width:900px){body.home-pilot main .home-hero-layout{grid-template-columns:1fr;gap:1.5rem}body.home-pilot main .hero{padding:1.75rem 0}}
+@media(max-width:380px){body.home-pilot main .home-conversation .journey-fields{grid-template-columns:1fr}}
+</style>
 </head>
 <body class="editorial-page home-pilot">
   <!-- Google Tag Manager (noscript) -->
@@ -435,11 +443,12 @@ body.home-pilot main .home-conversation>.journey-hint{font-size:.75rem;line-heig
               <div><p>Adam Styer · Your mortgage advisor</p><div class="home-conversation-links"><a href="tel:+15129566010">Call Adam</a><a href="sms:+15129566010">Text Adam</a></div></div>
             </div>
               <p class="hero-legal">NMLS#: 2653540 (Company) &middot; 513013 (Adam Styer)</p>
+            <p class="home-conversation-programs">Exploring first? <a href="/products.html" data-track="browse_loan_programs_click">Browse loan programs <span aria-hidden="true">→</span></a></p>
           </div>
 
           <aside class="home-conversation journey-card" id="contact-form" tabindex="-1" aria-labelledby="home-conversation-title">
             <h2 id="home-conversation-title">What can I help you with?</h2>
-            <p class="journey-form-intro">Share a little about your plans. Adam will personally review your message and follow up, typically within one business day. Fields marked * are required.</p>
+            <p class="journey-form-intro">A quick question is enough. Adam typically replies within one business day.</p>
 <form name="contact" method="POST" action="/contact-thank-you.html" data-netlify="true" netlify-honeypot="bot-field" id="form-homepage-contact" class="journey-form" data-journey="general" data-journey-mode="conversation">
               <input type="hidden" name="form-name" value="contact">
               <input type="hidden" name="inquiry_id" value="">
@@ -473,7 +482,7 @@ body.home-pilot main .home-conversation>.journey-hint{font-size:.75rem;line-heig
                   <div class="journey-field journey-full"><label for="name">Your name *</label><input type="text" id="name" name="name" required autocomplete="name" maxlength="160"></div>
                   <div class="journey-field"><label for="email">Email *</label><input type="email" id="email" name="email" required autocomplete="email" maxlength="160"></div>
                   <div class="journey-field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="30"></div>
-                  <div class="journey-field journey-full"><label for="message">Your question or plans *</label><textarea id="message" name="message" rows="3" maxlength="2000" required aria-describedby="message-hint" placeholder="Tell me about your plans or the question you’re trying to answer."></textarea><p class="journey-hint" id="message-hint">Please leave out Social Security numbers, account numbers, and sensitive documents.</p></div>
+                  <div class="journey-field journey-full"><label for="message">Your question or plans *</label><textarea id="message" name="message" rows="2" maxlength="2000" required aria-describedby="message-hint" placeholder="A little about your plans…"></textarea><p class="journey-hint" id="message-hint">Please leave out sensitive financial information.</p></div>
                   <input type="hidden" name="preferred_follow_up" value="">
                 </div>
                 <label class="journey-consent"><input type="checkbox" name="tcpa_consent" required><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
@@ -481,8 +490,7 @@ body.home-pilot main .home-conversation>.journey-hint{font-size:.75rem;line-heig
               </fieldset>
               <div class="journey-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></div>
             </form>
-            <p class="journey-hint">No application needed to start a conversation. <a href="/privacy.html">Privacy</a></p>
-            <p class="home-conversation-programs">Already know what you need? <a href="/products.html" data-track="browse_loan_programs_click">Browse loan programs <span aria-hidden="true">→</span></a></p>
+            <p class="journey-hint">* Required. No application needed. <a href="/privacy.html">Privacy</a></p>
           </aside>
         </div>
       </div>
@@ -608,7 +616,7 @@ body.home-pilot main .home-conversation>.journey-hint{font-size:.75rem;line-heig
     </section>
 
     <!-- QUICK CONTACT (Smart Form) -->
-    <section class="quick-contact-section" id="contact-form" style="scroll-margin-top:90px;">
+    <section class="quick-contact-section" id="homepage-next-steps" style="scroll-margin-top:90px;">
       <div class="container">
         <div class="quick-contact-card" data-animate>
           <h2 class="quick-contact-title">Ready to Get Started?</h2>
