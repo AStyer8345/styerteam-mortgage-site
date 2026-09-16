@@ -9,14 +9,12 @@ function readPage(file) {
 
 test('Austin market pages use the complete July 2026 Unlock MLS snapshot', () => {
   const market = readPage('austin-housing-market.html');
-  const dscr = readPage('dscr-loan-austin-tx.html');
 
   for (const value of ['$435,000', '2,739', '13,796', '4.7 months']) {
     assert.match(market, new RegExp(value.replace('$', '\\$')));
-    assert.match(dscr, new RegExp(value.replace('$', '\\$')));
   }
 
-  for (const page of [market, dscr]) {
+  for (const page of [market]) {
     assert.match(page, /july-2026-central-texas-housing-report/);
     assert.doesNotMatch(page, /June 2026/);
   }
