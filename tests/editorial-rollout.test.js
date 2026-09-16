@@ -84,15 +84,11 @@ test('wide guide tables use accessible horizontal scroll regions', () => {
   assert.match(stylesheet, /\.editorial-table-scroll\{max-width:100%;overflow-x:auto/);
 });
 
-test('homepage case studies align and expose the long third story on demand', () => {
+test('homepage planning examples preserve paths to specialist financing', () => {
   const homepage = fs.readFileSync('index.html', 'utf8');
-
-  assert.equal((homepage.match(/class="card home-case-card/g) || []).length, 3);
-  assert.match(homepage, /id="move-up-case-rest" class="home-case-rest" hidden/);
-  assert.match(homepage, /class="home-case-continue" aria-expanded="false" aria-controls="move-up-case-rest">Continue/);
-  assert.match(homepage, /button\.setAttribute\('aria-expanded', String\(!expanded\)\)/);
-  assert.match(stylesheet, /\.home-case-card\{display:flex;flex-direction:column;width:100%\}/);
-  assert.match(homepage, /classList\.toggle\('is-expanded', !expanded\)/);
+  assert.match(homepage, /id="case-studies"/);
+  for (const target of ['mortgage-for-business-owners-austin.html', 'high-net-worth-mortgage.html', 'buy-before-you-sell-austin.html']) assert.ok(homepage.includes(target));
+  assert.doesNotMatch(homepage, /Deals Banks Said No To|3 banks declined|Closed at a rate within/);
 });
 
 test('homepage reviews move directly below case studies with compact spacing', () => {

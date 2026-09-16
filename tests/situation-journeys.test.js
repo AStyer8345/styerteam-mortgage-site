@@ -87,3 +87,11 @@ test('primary acceptance is immediate even while the backup is pending', async (
 test('redirected HTML and malformed primary receipts are not capture proof', async () => {
   await assert.rejects(capture({}, new URLSearchParams(), async url => url==='/' ? {ok:true,redirected:true} : {ok:true,json:async()=>{throw Error('HTML response');}}), /No capture accepted/);
 });
+
+ test('goal-only homepage inquiries retain their purpose without a required message', () => {
+  const data = new URLSearchParams({name:'Local Test',email:'local@example.invalid',loan_goal:'Build','form-name':'contact',message:''});
+  const payload = makePayload(data, [], 'construction', 'https://styermortgage.com/');
+  assert.equal(payload.loan_goal, 'Build');
+  assert.equal(payload.situation, 'Financing goal: Build');
+  assert.equal(payload.intent, 'construction');
+ });

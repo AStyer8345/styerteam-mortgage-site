@@ -1,0 +1,77 @@
+/* Homepage-only presentation; shared program pages retain their established layout. */
+body.home-pilot {--modern-ink:#102b43;--modern-muted:#526273;--modern-gold:#8b6e24;}
+body.home-pilot main .hero {background:#f4f2eb;padding:3.1rem 0 2.75rem;}
+body.home-pilot main .home-hero-layout {grid-template-columns:minmax(0,1.12fr) minmax(365px,.88fr);gap:3.5rem;align-items:center;}
+body.home-pilot main .hero h1 {font-family:var(--font-display);font-size:clamp(2.5rem,4.1vw,3.9rem);letter-spacing:-.035em;line-height:1.12;margin:.7rem 0 1rem;max-width:680px;}
+body.home-pilot .modern-hero-accent {color:#80652b;}
+body.home-pilot main .hero-eyebrow,.modern-eyebrow {font-family:var(--font-primary);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#80652b;margin-bottom:.9rem;}
+body.home-pilot main .hero-subtitle {font-size:1.08rem;line-height:1.65;margin-bottom:.8rem;max-width:590px;}
+.modern-hero-detail {font-size:.94rem;color:var(--modern-muted);line-height:1.65;max-width:550px;}
+body.home-pilot main .hero-ctas {margin-top:1.4rem;gap:1rem;align-items:center;flex-wrap:wrap;}
+body.home-pilot main .hero-cta-btn {font-size:.86rem;min-height:46px;padding:.8rem 1rem;}
+.modern-browse-link {font-size:.85rem;font-weight:600;color:var(--modern-ink);text-decoration:none;display:inline-flex;gap:.5rem;align-items:center;min-height:44px;}
+body.home-pilot main .home-conversation.journey-card {border:1px solid #deddd5;border-radius:12px;padding:1.5rem;box-shadow:0 14px 44px #1630470a;background:#fff;}
+body.home-pilot main .home-conversation h2 {font-family:var(--font-display);font-size:1.75rem!important;}
+body.home-pilot main .home-conversation .journey-field select {width:100%;min-height:44px;border:1px solid #bdc6cc;border-radius:6px;background:#fff;color:#20374c;font:inherit;font-size:.875rem;padding:.55rem .65rem;}
+body.home-pilot main .home-conversation .journey-field input,body.home-pilot main .home-conversation .journey-field textarea {border-color:#bdc6cc;font-size:1rem;}
+body.home-pilot main .home-conversation .journey-consent {font-size:.75rem!important;line-height:1.45!important;}
+body.home-pilot main .home-conversation .journey-submit {background:#102b43;color:#fff;border-radius:6px;min-height:46px;font-size:.9rem;}
+body.home-pilot main .home-conversation .journey-submit:hover {background:#244961;}
+body.home-pilot main .home-conversation-contact img {width:68px;height:78px;object-fit:contain;object-position:bottom;background:#e9e5d9;border-radius:6px;}
+body.home-pilot header .nav-links {gap:1.35rem;}
+body.home-pilot header .modern-secure-link {font-size:.75rem;opacity:.9;}
+.modern-section-heading {max-width:700px;margin:0 auto 2rem;text-align:center;}
+.modern-section-heading h2 {font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.2;}
+.modern-section-heading>p:last-child {color:#526273;font-size:1rem;line-height:1.7;}
+.modern-goal-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}
+.modern-goal-grid>a {display:flex;flex-direction:column;text-decoration:none;color:#102b43;padding:1.6rem;border:1px solid #e0e4e6;border-radius:9px;background:#fff;transition:border-color .15s,background .15s;}
+.modern-goal-grid>a:hover {background:#f7f6f0;border-color:#a89057;}
+.modern-card-number {font-size:.64rem;font-weight:700;letter-spacing:.12em;color:#7a632a;margin-bottom:1.1rem;}
+.modern-goal-grid h3,.modern-scenario-grid h3 {font-size:1.35rem;margin-bottom:.65rem;}
+.modern-goal-grid p,.modern-scenario-grid p {font-size:.9rem;line-height:1.65;color:#526273;margin-bottom:1rem;}
+.modern-card-link {font-size:.8rem;font-weight:600;margin-top:auto;}
+body.home-pilot main .modern-intelligence {background:#102b43;color:#d9e1e7;padding:4rem 0;}
+.modern-intelligence-layout {display:grid;grid-template-columns:1.15fr 1fr;gap:5rem;align-items:center;}
+.modern-intelligence .modern-eyebrow {color:#d8be83;}
+.modern-intelligence h2 {color:#fff;font-size:clamp(2rem,3vw,2.8rem);line-height:1.15;}
+.modern-intelligence p {font-size:.95rem;line-height:1.8;}
+.modern-intelligence .modern-intelligence-lede {font-size:1.15rem;color:#fff;line-height:1.6;}
+.modern-light-link {display:inline-flex;align-items:center;min-height:44px;color:#e2c789;font-weight:600;font-size:.9rem;margin-top:.75rem;}
+.modern-principles>div {position:relative;border-bottom:1px solid #ffffff26;padding:1.25rem 0 1.25rem 2.5rem;}
+.modern-principles>div:first-child {padding-top:0;}
+.modern-principles span {position:absolute;left:0;color:#ddc68d;font-size:.75rem;}
+.modern-principles h3 {color:#fff;font-family:var(--font-primary);font-size:1rem;margin-bottom:.4rem;}
+.modern-principles p {font-size:.875rem;margin:0;}
+.modern-scenario-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;}
+.modern-scenario-grid article {border-top:2px solid #b69b64;padding-top:1.3rem;}
+.modern-scenario-grid a {font-size:.86rem;font-weight:600;color:#183c53;min-height:44px;display:inline-flex;align-items:center;}
+body.home-pilot main .modern-goals,body.home-pilot main .modern-scenarios {padding:3.75rem 0;}
+body.home-pilot :is(a,button,input,select,textarea):focus-visible {outline:3px solid #ac873a;outline-offset:4px;}
+@media(max-width:1100px) {body.home-pilot header .nav-links {gap:.75rem;}body.home-pilot header .nav-links>li>a {font-size:.75rem;}body.home-pilot main .home-hero-layout {gap:2rem;}}
+@media(max-width:900px) {body.home-pilot main .home-hero-layout {grid-template-columns:1fr;gap:1.5rem;}body.home-pilot main .hero {padding:2rem 0;}body.home-pilot main .hero h1 {font-size:clamp(2.25rem,7vw,3.8rem);}body.home-pilot main .home-conversation.journey-card {max-width:none;} .modern-intelligence-layout {grid-template-columns:1fr;gap:2rem;}.modern-goal-grid {grid-template-columns:repeat(2,minmax(0,1fr));}.modern-scenario-grid {gap:1rem;}}
+@media(max-width:600px) {body.home-pilot main .hero h1 {font-size:2.6rem;}body.home-pilot main .hero-subtitle {font-size:1rem;}body.home-pilot main .hero-ctas {flex-direction:row;align-items:center;}body.home-pilot main .hero-cta-btn {width:auto;}body.home-pilot main .home-conversation.journey-card {padding:1.1rem;}.modern-goal-grid,.modern-scenario-grid {grid-template-columns:1fr;}.modern-goal-grid>a {padding:1.25rem;}.modern-card-number {margin-bottom:.6rem;}body.home-pilot main .modern-goals,body.home-pilot main .modern-scenarios,body.home-pilot main .modern-intelligence {padding:2.5rem 0;}.modern-section-heading {text-align:left;}body.home-pilot header .nav-links>li>a {font-size:.9rem;}body.home-pilot header .modern-secure-link {min-height:44px;display:flex;align-items:center;}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.modern-goal-grid>a{transition:none;}}
+@media(min-width:1050px){
+ body.home-pilot header .mobile-menu-toggle{display:none!important;}
+ body.home-pilot header .nav-links{display:flex!important;position:static;flex-direction:row;align-items:center;flex-basis:auto;width:auto;max-height:none;overflow:visible;background:transparent;padding:0;gap:1.1rem;}
+ body.home-pilot header .nav-links>li{width:auto;}
+ body.home-pilot header .nav-links>li>a{padding:.6rem 0;font-size:.8rem;color:#fff!important;}
+ body.home-pilot header .nav-links>li>a.nav-cta{padding:.65rem .9rem;}
+ body.home-pilot header .nav-links .experience-mobile-text{display:none;}
+ body.home-pilot header .nav-dropdown{background:#fff;}
+ body.home-pilot header .nav-dropdown a{color:#102440!important;}
+}
+@media(max-width:600px){
+ body.home-pilot main .hero {padding:1.5rem 0;}
+ body.home-pilot main .hero-authority-inner {margin-bottom:.3rem;}
+ body.home-pilot main .hero h1 {font-size:clamp(1.95rem,8.6vw,2.6rem);}
+ body.home-pilot main .hero-eyebrow {font-size:.61rem;}
+ body.home-pilot main .hero-subtitle {line-height:1.55;margin-bottom:.65rem;}
+ body.home-pilot main .modern-hero-detail {font-size:.875rem;line-height:1.5;}
+ body.home-pilot main .hero-ctas {margin:.7rem 0 .2rem;gap:.25rem;align-items:flex-start;}
+ body.home-pilot main .hero-ctas .btn.hero-cta-btn {width:100%;max-width:none;height:auto;min-height:46px;white-space:nowrap;text-align:center;justify-content:center;padding:.65rem 1rem;}
+ body.home-pilot main .hero-ctas .modern-browse-link {min-height:40px;}
+ body.home-pilot main .home-conversation-contact {margin-top:.35rem;padding-top:.5rem;}
+ body.home-pilot main .home-conversation-contact img {width:46px;height:52px;}
+ body.home-pilot main .hero-legal {margin-top:.3rem;font-size:.62rem;}
+}

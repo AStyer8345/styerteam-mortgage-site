@@ -87,10 +87,10 @@ test('homepage prioritizes the short conversation and preserves the secure appli
   const introActions = homepage.match(/<div id="quick-scenario-form" class="quick-contact-actions"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
-  assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"[^>]*>Get My Mortgage Options<\/a>/);
-  assert.match(homepage, /data-track="secure_application_click"[^>]*data-source="homepage_hero_secondary"[^>]*>Apply Now<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Get My Mortgage Options', 'Apply Now']);
-  assert.deepEqual(introActionLabels, ['Get My Mortgage Options', 'Apply Now']);
+  assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"[^>]*>Structure My Financing<\/a>/);
+  assert.match(homepage, /class="modern-secure-link"[^>]*>Secure Application ↗<\/a>/);
+  assert.deepEqual(heroButtonLabels, ['Structure My Financing']);
+  assert.deepEqual(introActionLabels, ['Structure My Financing', 'Apply Now']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.doesNotMatch(homepage, /name="quick-scenario"/);
   assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);
@@ -99,8 +99,8 @@ test('homepage prioritizes the short conversation and preserves the secure appli
   assert.doesNotMatch(homepage, /Start Full Loan Application/);
   assert.doesNotMatch(homepage, /Start Loan Application/);
   assert.doesNotMatch(homepage, /Start Here/);
-  assert.match(homepage, /Complex mortgage\. Clear path forward\./);
-  assert.match(homepage, /Austin business owners · investors · move-up buyers/);
+  assert.match(homepage, /Your next move\./);
+  assert.match(homepage, /Home purchases, refinancing, and investment-property financing/);
   assert.match(homepage, /href="tel:\+15129566010"/);
   assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_sticky_mobile"/);
   assert.match(homepage, /document\.body\.classList\.add\('sticky-mobile-bar-active'\)/);

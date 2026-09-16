@@ -22,6 +22,7 @@
     var details = questions.filter(function (q) { return data.get(q.name); }).map(function (q) {
       return q.label + ': ' + data.get(q.name);
     });
+    if (data.get('loan_goal') && !questions.some(function (q) { return q.name === 'loan_goal'; })) details.unshift('Financing goal: ' + data.get('loan_goal'));
     if (data.get('situation')) details.push('Additional context: ' + data.get('situation'));
     else if (data.get('message')) details.push('What I am trying to accomplish: ' + data.get('message').trim());
     payload.situation = details.join('\n');
@@ -106,14 +107,14 @@
     }
     function conditions() {
       first.querySelectorAll('[data-goals],[data-situations]').forEach(function(wrapper) {
-        var show=(!wrapper.dataset.goals || wrapper.dataset.goals.split('|').includes(goal.value)) && (!wrapper.dataset.situations || wrapper.dataset.situations.split('|').includes(situation.value));
+        var show=(!wrapper.dataset.goals || wrapper.dataset.goals.split('|').includes(goal.value)) && (!wrapper.dataset.situations || wrapper.dataset.situations.split('|').includes(situation ? situation.value : ''));
         wrapper.hidden=!show;wrapper.querySelectorAll('input,select').forEach(function(field) { field.disabled=!show; });
       });
       intent = ({Purchase:'purchase',Refinance:'refinance','Access equity':'equity',Invest:'investment',Build:'construction','Buy before selling':'move_up'})[goal.value] || 'general';
       form.elements.intent.value=intent;
     }
-    if (goal && situation) {
-      conditions(); goal.addEventListener('change',conditions); situation.addEventListener('change',conditions);
+    if (goal) {
+      conditions(); goal.addEventListener('change',conditions); if (situation) situation.addEventListener('change',conditions);
     }
     form.addEventListener('input',remember);form.addEventListener('change',remember);
     // Calculator details travel through same-tab storage, never query strings.
@@ -241,7 +242,7 @@
           if (heading) heading.textContent = 'Thank you — your message is received.';
           card.querySelectorAll('.journey-form-intro, .journey-hint').forEach(function (element) { element.hidden = true; });
         }
-        status.textContent = 'Adam has received your message and will be in touch soon, typically within one business day. He’ll reach out directly using your contact details.';
+        status.textContent = result.primary ? 'Your request is saved for Adam to review. He’ll follow up using your contact details, typically within one business day.' : 'Your request is saved in our backup inbox. Delivery to Adam’s review system is still pending. You can also call or text Adam using the links below.';
       }
       if (result.receipt && result.receipt.preview) status.textContent='Preview only: your scenario was accepted by the test service. No lead, email, or marketing subscription was created.';
       status.classList.add('journey-confirmation');
