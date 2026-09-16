@@ -93,3 +93,7 @@ body.home-pilot main .modern-programs{background:#fff;padding:4rem 0;border-top:
 @media(max-width:900px){.modern-programs-heading{align-items:flex-start;flex-direction:column;gap:1.2rem;}.modern-programs-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:600px){body.home-pilot main .modern-programs{padding:2.5rem 0;}.modern-programs-grid{grid-template-columns:1fr;gap:.85rem;}.modern-program-tile{padding:1.25rem;}.modern-all-programs{width:100%;}.modern-program-action{font-size:.875rem;}}
 @media(prefers-reduced-motion:reduce){.modern-program-tile{transition:none;}}
+.modern-specialty-links{display:flex;flex-wrap:wrap;gap:.4rem .9rem;margin:.3rem 0 .9rem;}
+.modern-specialty-links a{display:inline-flex;align-items:center;gap:.4rem;min-height:36px;font-size:.8rem;font-weight:700;color:#123e58;text-decoration:underline;text-underline-offset:4px;}
+.modern-specialty-links a:hover{color:#765b1d;}
+@media(max-width:600px){.modern-specialty-links{gap:0 .85rem;margin:.15rem 0 .7rem;}.modern-specialty-links a{min-height:40px;font-size:.78rem;}}

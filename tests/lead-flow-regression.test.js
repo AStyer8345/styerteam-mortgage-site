@@ -100,7 +100,7 @@ test('homepage prioritizes the short conversation and preserves the secure appli
   assert.doesNotMatch(homepage, /Start Loan Application/);
   assert.doesNotMatch(homepage, /Start Here/);
   assert.match(homepage, /Your next move\./);
-  assert.match(homepage, /Home purchases, refinancing, and investment-property financing/);
+  assert.match(homepage, /Mortgage strategies for business owners, real estate investors/);
   assert.match(homepage, /href="tel:\+15129566010"/);
   assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_sticky_mobile"/);
   assert.match(homepage, /document\.body\.classList\.add\('sticky-mobile-bar-active'\)/);
