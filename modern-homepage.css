@@ -97,3 +97,5 @@ body.home-pilot main .modern-programs{background:#fff;padding:4rem 0;border-top:
 .modern-specialty-links a{display:inline-flex;align-items:center;gap:.4rem;min-height:36px;font-size:.8rem;font-weight:700;color:#123e58;text-decoration:underline;text-underline-offset:4px;}
 .modern-specialty-links a:hover{color:#765b1d;}
 @media(max-width:600px){.modern-specialty-links{gap:0 .85rem;margin:.15rem 0 .7rem;}.modern-specialty-links a{min-height:40px;font-size:.78rem;}}
+
+body.home-pilot main .modern-equity-feature{padding:3rem 0;background:#faf7ee;border-top:1px solid #e4d6b4;}.modern-equity-feature .modern-programs-heading>div{max-width:720px;}.modern-equity-feature h2{font-size:clamp(1.8rem,3vw,2.5rem);}@media(max-width:600px){body.home-pilot main .modern-equity-feature{padding:2.5rem 0;}}
