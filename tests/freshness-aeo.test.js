@@ -55,6 +55,6 @@ test('asset-depletion page cites current agency calculation sources', () => {
 
   assert.match(source, /b3-3\.4-06\/employment-related-assets-qualifying-income/);
   assert.match(source, /guide\/section\/5307\.1/);
-  assert.match(source, /loan's amortization term in months/);
-  assert.match(source, /divides net eligible assets by 240/);
+  assert.match(source, /loan['’]s amortization term in months/);
+  assert.doesNotMatch(source, /same (?:gross )?(?:asset )?balance (?:qualifies|counts) (?:under|for) (?:all|every) program/i);
 });

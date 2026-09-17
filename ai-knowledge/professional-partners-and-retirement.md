@@ -18,6 +18,16 @@ Start by evaluating the applicable conventional or agency tax-return calculation
 
 Depending on the facts and available programs, legitimate alternatives may include bank statement, 1099, profit-and-loss, asset-depletion, DSCR investment-property, jumbo, or other non-QM structures. These are not automatic approvals or ways around underwriting. Each has its own credit, property, asset, reserve, documentation, and pricing requirements.
 
+# Complex compensation, ownership, and financial relationships
+
+Eligible vested and distributed RSU or restricted-stock compensation may be considered under conventional guidelines as well as other applicable programs. Fannie Mae's policy distinguishes award types and requires supporting history, documentation, and publicly traded stock. Unvested awards are not current qualifying income under that policy. Do not describe equity compensation as exclusively Non-QM.
+
+An eligible inter vivos revocable trust may hold title under Fannie Mae guidelines while the individual borrower qualifies for the loan. Trust vesting, trust income, and the borrower's credit and income qualification are separate questions. Trust documents, lender requirements, applicable state law, and title review control; not every trust is eligible.
+
+A private-bank mortgage, an account relationship discount, an asset transfer, a securities-backed line, and paid investment management are different arrangements. Compare the actual offer's mortgage costs, account requirements, collateral pledge, restrictions, any incremental fees, and duration. Do not assume every relationship requires a 1% advisory fee, securities collateral, or moving away from the borrower's existing advisor.
+
+Sources for these distinctions: https://selling-guide.fanniemae.com/sel/b3-3.3-07/restricted-stock-units-and-restricted-stock-employment-income; https://selling-guide.fanniemae.com/sel/b2-2-05/inter-vivos-revocable-trusts; https://www.schwab.com/legal/investor-advantage-pricing-disclosure; https://www.schwab.com/pledged-asset-line. Other institutions' terms illustrate distinctions and do not establish products available through Adam.
+
 # Retirement assets and distributions
 
 Depending on the program, eligible retirement assets may support mortgage qualification without requiring withdrawals. An asset-depletion calculation is an underwriting method and does not necessarily require the borrower to withdraw assets on the calculation schedule.

@@ -253,8 +253,8 @@ test('required complex-mortgage routes and metadata exist', () => {
   const notFound = fs.readFileSync('404.html', 'utf8');
   assert.match(buyBeforeSell, /<link rel="canonical" href="https:\/\/styermortgage\.com\/buy-before-you-sell-austin\.html">/);
   assert.match(buyBeforeSell, /Bridge financing/);
-  assert.match(businessOwner, /"@type":"Article"/);
-  assert.match(businessOwner, /Bank-statement programs/);
+  assert.match(businessOwner, /"@type"\s*:\s*"Article"/);
+  assert.match(businessOwner, /href="\/bank-statement-loans\.html"/);
   assert.match(realtor, /name="realtor-scenario"/);
   assert.match(realtor, /netlify-honeypot="bot-field"/);
   assert.doesNotMatch(realtor, /license nationwide/i);

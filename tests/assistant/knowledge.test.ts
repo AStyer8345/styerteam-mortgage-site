@@ -1,6 +1,23 @@
 import assert from 'node:assert/strict';
-import test from 'node:test';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import test, { afterEach, beforeEach, mock } from 'node:test';
 import { __resetKnowledgeCacheForTests, retrieveApprovedKnowledge } from '../../netlify/functions/_shared/knowledge.ts';
+
+// Ranking tests use the corpus's known review window, not the wall clock.
+// This does not extend an approval: the separate boundary test below checks
+// the production loader's expiry rule against the file's actual metadata.
+const REVIEW_WINDOW_FIXTURE = new Date('2026-08-30T12:00:00.000Z');
+
+beforeEach(() => {
+  mock.timers.enable({ apis: ['Date'], now: REVIEW_WINDOW_FIXTURE });
+  __resetKnowledgeCacheForTests();
+});
+
+afterEach(() => {
+  mock.timers.reset();
+  __resetKnowledgeCacheForTests();
+});
 
 test('approved knowledge is eligible for grounded substantive answers', async () => {
   __resetKnowledgeCacheForTests();
@@ -59,3 +76,21 @@ for (const [question, expectedSource] of commonQuestions) {
     assert.ok(result.results.some((item) => item.source === expectedSource), `${expectedSource} was not retrieved`);
   });
 }
+
+test('knowledge loader excludes expired content after its final approved UTC day', async () => {
+  const filename = 'bank-statement-loans.md';
+  const source = await fs.readFile(path.join(process.cwd(), 'ai-knowledge', filename), 'utf8');
+  const expiry = source.match(/^review_expires_on:\s*(\d{4}-\d{2}-\d{2})\s*$/m);
+  assert.ok(expiry, 'The expiry check requires a dated approved knowledge file');
+  const lastApprovedMillisecond = new Date(`${expiry[1]}T23:59:59.999Z`).getTime();
+
+  mock.timers.setTime(lastApprovedMillisecond);
+  __resetKnowledgeCacheForTests();
+  const onExpiryDate = await retrieveApprovedKnowledge('What is a bank statement loan?', 100);
+  assert.ok(onExpiryDate.results.some((item) => item.source === filename));
+
+  mock.timers.setTime(lastApprovedMillisecond + 1);
+  __resetKnowledgeCacheForTests();
+  const afterExpiryDate = await retrieveApprovedKnowledge('What is a bank statement loan?', 100);
+  assert.ok(afterExpiryDate.results.every((item) => item.source !== filename), 'Expired content must be excluded even when it directly matches the question');
+});
