@@ -190,10 +190,12 @@ function initNavigation() {
 
     const href = anchor.getAttribute('href');
     if (href !== '#') {
-      const target = document.querySelector(href);
+      let target;
+      try { target = document.getElementById(decodeURIComponent(href.slice(1))); } catch (_) { return; }
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        revealAnchorTarget(target);
+        target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
       }
     }
   });
@@ -210,13 +212,13 @@ function initAccordion() {
       const panel = button.nextElementSibling;
       if (!panel) return;
 
-      const id = `accordion-${aIdx}-panel-${bIdx}`;
+      const id = panel.id || `accordion-${aIdx}-panel-${bIdx}`;
       panel.id = id;
       panel.setAttribute('role', 'region');
-      panel.setAttribute('aria-labelledby', `${id}-btn`);
-
-      button.id = `${id}-btn`;
-      button.setAttribute('aria-expanded', 'false');
+      button.id = button.id || `${id}-btn`;
+      panel.setAttribute('aria-labelledby', button.id);
+      button.setAttribute('aria-expanded', String(button.classList.contains('active')));
+      panel.hidden = !button.classList.contains('active');
       button.setAttribute('aria-controls', id);
     });
   });
@@ -275,6 +277,44 @@ function initAccordion() {
       next.focus();
     }
   });
+}
+
+// Keep incoming links usable when their answer lives inside a disclosure.
+function revealAnchorTarget(target) {
+  for (let parent = target; parent; parent = parent.parentElement) {
+    if (parent.tagName === 'DETAILS') parent.open = true;
+    if (parent.classList.contains('accordion-content')) {
+      const button = parent.previousElementSibling;
+      parent.hidden = false;
+      parent.classList.add('active');
+      if (button && button.classList.contains('accordion-button')) {
+        button.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+      }
+    }
+  }
+  const button = target.closest('.accordion-button');
+  if (button && button.nextElementSibling) {
+    button.classList.add('active');
+    button.setAttribute('aria-expanded', 'true');
+    button.nextElementSibling.hidden = false;
+    button.nextElementSibling.classList.add('active');
+  }
+}
+
+function initDisclosureNavigation() {
+  document.querySelectorAll('.advisory-contents').forEach(details => {
+    details.open = window.matchMedia('(min-width: 900px)').matches;
+  });
+  function revealHash() {
+    let target;
+    try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (_) { return; }
+    if (!target) return;
+    revealAnchorTarget(target);
+    requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+  }
+  revealHash();
+  window.addEventListener('hashchange', revealHash);
 }
 
 // ========================================================================
@@ -1074,6 +1114,7 @@ function initPrequalForm() {
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initAccordion();
+  initDisclosureNavigation();
   initTabs();
   initFormValidation();
   initHeroQuickForm();

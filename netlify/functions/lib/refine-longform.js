@@ -1,8 +1,9 @@
+const { refineAdvisoryDesign } = require('./refine-advisory-design');
 // Publishing refinement: preserve all words and existing anchors while adding
 // useful navigation to long articles and breaking up unusually dense paragraphs.
 const text = value => value.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim();
 function refineLongform(html) {
-  return html.replace(/(<main\b[^>]*>)([\s\S]*?)(<\/main>)/, (_, open, content, close) => {
+  return refineAdvisoryDesign(html.replace(/(<main\b[^>]*>)([\s\S]*?)(<\/main>)/, (_, open, content, close) => {
     content = content.replace(/<p>([\s\S]*?)<\/p>/g, (original, body) => {
       if (text(body).split(/\s+/).length < 120) return original;
       // Only split between complete sentences outside inline HTML elements.
@@ -41,7 +42,7 @@ function refineLongform(html) {
     if(header)content=content.replace(header[0],header[0]+'\n'+nav);
     else content=content.replace(/<h2\b/,nav+'<h2');
     return open+content+close;
-  });
+  }));
 }
 
 module.exports = { refineLongform };

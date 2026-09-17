@@ -1,0 +1,175 @@
+/* Approved advisory system. Rules are scoped to public pages and semantic page families.
+   Existing loan content, calculators and lead workflows keep their own behavior. */
+body.advisory-site {
+  --advisory-ink:#182e3e; --advisory-paper:#f6f3ed; --advisory-muted:#59636c;
+  --advisory-accent:#7c6345; --advisory-rule:#d8d4cd; --advisory-control:#7e8589;
+  --color-navy:var(--advisory-ink); --color-gold:var(--advisory-accent);
+  --color-gray:var(--advisory-muted); --color-text:var(--advisory-ink);
+  --color-text-muted:var(--advisory-muted); --color-light-gray:var(--advisory-paper);
+  --color-border:var(--advisory-rule); --color-error:#9b2c2c;
+  --radius-sm:4px; --radius-md:6px; --radius-lg:6px; --radius-xl:6px;
+  --experience-navy:var(--advisory-ink); --experience-ink:var(--advisory-ink);
+  --experience-muted:var(--advisory-muted); --experience-measure:68ch;
+  --editorial-prose:720px; --editorial-warm:var(--advisory-paper);
+  color:var(--advisory-ink); line-height:1.65;
+}
+.advisory-site main :is(h1,h2,h3,h4,p){text-shadow:none!important}
+.advisory-site main h2{font-size:clamp(1.75rem,1.3rem + 1.1vw,2.125rem);line-height:1.25}
+.advisory-site main h3{font-family:var(--font-primary);font-size:clamp(1.25rem,1.1rem + .4vw,1.375rem);line-height:1.35}
+.advisory-site main .container{max-width:1200px}
+.advisory-site main .content-narrow{max-width:768px}
+.advisory-site main>section:where(:not(.breadcrumb)){padding-block:clamp(3rem,5.5vw,5rem)}
+.advisory-site :is(input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea){border-color:var(--advisory-control);border-radius:4px;font-size:16px;min-width:0}
+.advisory-site :is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid var(--advisory-accent);outline-offset:4px}
+.advisory-site main .btn-primary{background:var(--advisory-ink);border:1px solid var(--advisory-ink);color:#fff;box-shadow:none;border-radius:4px}
+.advisory-site main :is(.bg-navy,.bg-dark,.guide-final-cta) .btn-primary{background:#fff;border-color:#fff;color:var(--advisory-ink)}
+.advisory-site main :is(.btn,.journey-button):hover{transform:none;box-shadow:none}
+.advisory-site header:where(body > header){background:var(--advisory-ink)}
+.advisory-site header:where(body > header) .container{max-width:1360px}
+.advisory-site header:where(body > header) .nav-links{gap:.8rem}
+.advisory-site header:where(body > header) .nav-links a.nav-cta:not(.nav-apply){background:#fff;border-color:#fff;color:var(--advisory-ink)!important;border-radius:4px}
+.advisory-site header:where(body > header) .nav-links a.nav-apply{background:transparent;border:0;color:#fff!important;text-decoration:underline;text-underline-offset:4px;font-weight:400;padding-inline:.3rem}
+.advisory-site header:where(body > header) .nav-dropdown{border-top:1px solid var(--advisory-rule)}
+.advisory-site footer{background:var(--advisory-ink)}
+.advisory-site main .accordion-item{box-shadow:none;border:0;border-bottom:1px solid var(--advisory-rule);border-radius:0}
+.advisory-site main .accordion-button{background:transparent;border-radius:0;padding:20px 0;font-family:var(--font-primary);font-size:17px}
+.advisory-site main .accordion-content{border:0;background:transparent}
+.advisory-site main .experience-table-scroll{border:0;border-radius:0}
+.advisory-site main .experience-table-scroll td{border-bottom:1px solid var(--advisory-rule)}
+.advisory-site main .experience-table-scroll th{background:var(--advisory-paper);color:var(--advisory-ink)}
+.advisory-site main :is(.journey-education,.content-narrow) p{font-size:18px;line-height:1.65}
+/* Reading families: one prose measure, quieter summary and optional contents. */
+.advisory-article main :is(.container-narrow,.article-body){max-width:768px}
+.advisory-article main :is(.blog-post,.article-body,.blog-content) p{font-size:18px!important;line-height:1.65}
+.advisory-article main :is(.blog-post,.article-body) li{font-size:18px;line-height:1.65}
+.advisory-article main .blog-post-header h1{font-size:clamp(2rem,1.5rem + 1.5vw,2.75rem)!important}
+.advisory-article main .blog-post-intro{border:0;border-left:2px solid var(--advisory-accent);border-radius:0;background:transparent;padding:4px 0 4px 24px}
+.advisory-article main .newsletter-author-bar{border-block:1px solid var(--advisory-rule);background:transparent;padding:16px 0;margin-bottom:32px}
+.advisory-author-image{width:48px;height:48px;object-fit:cover;object-position:center 25%;border-radius:50%;flex-shrink:0}
+.advisory-contents{border-block:1px solid var(--advisory-rule);padding:16px 0;margin:24px 0 32px}
+.advisory-contents>summary{font:600 15px/1.5 var(--font-primary);cursor:pointer;padding:4px 0}
+.advisory-site .advisory-contents .page-contents{border:0;border-radius:0;background:transparent;padding:16px 0 0;margin:0}
+.advisory-site .advisory-contents .page-contents ol{grid-template-columns:1fr;gap:4px}
+/* Loan explanations retain the complete quote form after the opening explanation. */
+.advisory-product main .hero{height:auto;min-height:0;max-height:none;background:var(--advisory-paper);color:var(--advisory-ink);padding:48px 0}
+.advisory-product main .hero::before,.advisory-product main .hero-cutout{display:none}
+.advisory-product main .hero-glass-card{padding:0;background:transparent;border:0;box-shadow:none;backdrop-filter:none;max-width:850px}
+.advisory-product main .hero-two-col{display:block}
+.advisory-product main .hero-col-authority{align-items:flex-start;text-align:left}
+.advisory-product main .hero :is(h1,p,a){text-shadow:none;color:var(--advisory-ink)}
+.advisory-product main .hero .hero-subtitle{max-width:68ch;font-size:18px;line-height:1.65}
+.advisory-product main .hero h1{font-size:clamp(2rem,1.5rem + 1.5vw,2.75rem)!important;line-height:1.2!important}
+.advisory-product main .hero .btn-primary{color:#fff}
+.advisory-product main .hero .btn-hero-ghost{border:1px solid var(--advisory-control);background:transparent}
+.advisory-product .advisory-quote{background:var(--advisory-paper)}
+.advisory-product .advisory-quote .hero-col-form{max-width:560px;margin:auto}
+.advisory-product .advisory-quote .hero-quick-form-glass{padding:24px;background:#fff;color:var(--advisory-ink);border:1px solid var(--advisory-rule);border-radius:6px;box-shadow:none}
+.advisory-product .advisory-quote :is(.hero-quick-form-title,.hero-quick-form-field label){color:var(--advisory-ink)}
+.advisory-product .advisory-quote .hero-trust-badge{background:transparent;color:var(--advisory-muted);border:0;white-space:normal;padding:0 0 16px;font-size:14px}
+.advisory-product main .grid:has(>.feature-item){grid-template-columns:1fr;gap:0;max-width:900px;margin-inline:auto}
+.advisory-product main .feature-item{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;box-shadow:none;border:0;border-bottom:1px solid var(--advisory-rule);border-radius:0;background:transparent;padding:24px 0}
+.advisory-product main .feature-item::before,.advisory-product main .feature-item>.feature-icon{display:none}
+.advisory-product main .feature-item h4{margin:0;font:600 18px/1.4 var(--font-primary)}
+.advisory-product main .feature-item p{margin:0;font-size:17px}
+/* Contact begins the task; other ways to connect remain alongside the form. */
+.advisory-contact main .advisory-contact-intro{padding:32px 0 20px;background:var(--advisory-paper)}
+.advisory-contact main .advisory-contact-intro h1{font-size:clamp(2rem,1.5rem + 1.3vw,2.75rem)!important;max-width:800px}
+.advisory-contact main .advisory-contact-intro p{max-width:68ch;font-size:17px;margin:0}
+.advisory-contact main .advisory-contact-intro+section{padding-top:24px}
+.advisory-contact main .conversation-card{border:1px solid var(--advisory-rule);border-radius:6px;padding:24px}
+.advisory-contact main .conversation-card .journey-form-intro{font-size:16px}
+.advisory-contact main .contact-grid{align-items:start;gap:40px}
+.advisory-contact .advisory-contact-options{display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;font-size:15px}
+/* Blog discovery uses a lead article and dated reading rows. */
+.advisory-blog-index main .advisory-blog-intro{padding:40px 0 24px;background:var(--advisory-paper)}
+.advisory-blog-index main .advisory-blog-intro p{max-width:65ch;font-size:18px;margin:0}
+.advisory-blog-index #blog-grid{display:block;max-width:960px;margin:auto}
+.advisory-blog-index #blog-grid .blog-card{display:grid;grid-template-columns:155px minmax(0,1fr);gap:8px 32px;padding:28px 0;border:0;border-bottom:1px solid var(--advisory-rule);border-radius:0;box-shadow:none;background:transparent;transform:none}
+.advisory-blog-index #blog-grid .blog-card:before{display:none}
+.advisory-blog-index #blog-grid .blog-card-category{grid-column:1;font-size:14px;line-height:1.5}
+.advisory-blog-index #blog-grid .blog-card-title{grid-column:2;grid-row:1;font:600 23px/1.35 var(--font-primary);margin:0;color:var(--advisory-ink)}
+.advisory-blog-index #blog-grid .blog-card-excerpt{grid-column:2;font-size:17px;display:block;-webkit-line-clamp:unset;margin:0}
+.advisory-blog-index #blog-grid .blog-card-meta{grid-column:1;grid-row:2;font-size:14px;margin:0;border:0;padding:0;color:var(--advisory-muted)}
+.advisory-blog-index #blog-grid .blog-card:first-child{padding:32px;background:var(--advisory-paper);border:0;margin-bottom:8px}
+.advisory-blog-index #blog-grid .blog-card:first-child .blog-card-title{font-family:var(--font-display);font-size:30px}
+.advisory-blog-index #blog-filters{gap:8px;margin-bottom:20px}
+.advisory-blog-index .blog-filter-btn{background:transparent;color:var(--advisory-ink);border:1px solid var(--advisory-rule);border-radius:4px;box-shadow:none}
+.advisory-blog-index .blog-filter-btn.active{background:var(--advisory-ink);color:#fff}
+/* Calculator controls and outputs are working surfaces, not elevated cards. */
+.advisory-calculator .calc-suite{--calc-navy:var(--advisory-ink);--calc-blue:var(--advisory-ink)}
+.advisory-calculator main .calc-tool-hero{background:var(--advisory-paper);padding:28px 0;color:var(--advisory-ink);text-align:left}
+.advisory-calculator main .calc-tool-hero h1{color:var(--advisory-ink)}
+.advisory-calculator main .calc-tool-hero p{margin:0;max-width:65ch}
+.advisory-calculator main .calc-tool-hero+.section{padding-top:12px}
+.advisory-calculator .calc-card{border:1px solid var(--advisory-rule);border-radius:6px;background:#fff;box-shadow:none;backdrop-filter:none;transform:none}
+.advisory-calculator .calc-card:hover{box-shadow:none;transform:none}
+.advisory-calculator .calc-hero-wrap{text-align:left;border-bottom:1px solid var(--advisory-rule)}
+.advisory-calculator .calc-hero-number{font-size:40px}
+.advisory-calculator .calc-hero-label{text-transform:none;letter-spacing:0;font-size:16px}
+.advisory-calculator .calc-result-list{margin-top:20px}
+.advisory-calculator .calc-result-row{padding:12px 0}
+.advisory-calculator .calc-result-label{font-size:16px}
+.advisory-calculator .calc-input-number{display:block;width:100%;padding:10px 12px;min-height:48px;border:1px solid var(--advisory-control);margin:8px 0 12px;font:600 18px/1.4 var(--font-primary);font-variant-numeric:tabular-nums}
+.calc-input-error{color:#9b2c2c;font-size:14px;margin:4px 0}
+.calc-input-error[hidden]{display:none}
+.advisory-calculator .calc-result-note{font-size:15px;line-height:1.55;margin:16px 0 0;color:var(--advisory-muted)}
+.calc-mobile-summary{display:none}
+@media(max-width:1280px){.advisory-site header:where(body > header) .nav-links a.nav-apply{color:var(--advisory-ink)!important}}
+@media(max-width:600px){
+ .advisory-site:has(main :is(input:not([type=hidden]),textarea,select):focus) .mortgage-assistant{display:none}
+ .advisory-calculator.calc-editing-visible .mortgage-assistant{display:none}
+ .advisory-calculator.calc-editing-visible .calc-mobile-summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center;position:fixed;inset:auto 0 0;z-index:100;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--advisory-ink);color:white;border-top:1px solid var(--advisory-rule);text-decoration:none}
+ .calc-mobile-summary span{font-size:13px;line-height:1.4}
+ .calc-mobile-summary strong{font:600 24px/1.2 var(--font-primary);font-variant-numeric:tabular-nums}
+ .calc-mobile-summary small{grid-column:1/-1;font-size:12px;text-decoration:underline;text-underline-offset:3px}
+ .advisory-site main .container{padding-inline:20px}
+ .advisory-site main :is(.journey-education,.content-narrow) p,.advisory-article main :is(.blog-post,.article-body,.blog-content) p,.advisory-article main :is(.blog-post,.article-body) li{font-size:17px!important}
+ .advisory-product main .hero{padding-block:32px}
+ .advisory-product main .feature-item{grid-template-columns:1fr;gap:8px}
+ .advisory-contact main .conversation-card{padding:20px 16px}
+ .advisory-contact main .advisory-contact-intro h1{font-size:32px!important}
+ .advisory-contact main .advisory-contact-intro p{font-size:16px}
+ .advisory-contact main .contact-grid{gap:24px}
+ .advisory-blog-index #blog-grid .blog-card{display:block;padding:24px 0}
+ .advisory-blog-index #blog-grid .blog-card:first-child{padding:24px 18px}
+ .advisory-blog-index #blog-grid .blog-card-title{font-size:22px;margin:8px 0}
+ .advisory-blog-index #blog-grid .blog-card:first-child .blog-card-title{font-size:26px}
+ .advisory-blog-index #blog-grid .blog-card-meta{margin-top:12px}
+ .advisory-calculator .calc-hero-number{font-size:32px}
+ .advisory-calculator .calc-layout{padding-top:12px;gap:24px}
+}
+@media(max-width:360px){.advisory-site main .container{padding-inline:16px}}
+@media print{.advisory-contents{display:none}.advisory-site main section{padding-block:16px}}
+/* Real scenarios are reading entries, with the status visible before the story. */
+.advisory-site main .advisory-cases{border-block:1px solid var(--advisory-rule);background:#fff}
+.advisory-case-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:32px}
+.advisory-case-list article{border-top:1px solid var(--advisory-rule);padding-top:20px}
+.advisory-case-status{font-size:14px!important;color:var(--advisory-muted)}
+.advisory-case-list h3 a{color:var(--advisory-ink);text-decoration:underline;text-underline-offset:4px}
+.advisory-case-list p{font-size:17px;line-height:1.65}
+.advisory-case-note{font-size:14px;margin-top:24px;max-width:85ch;color:var(--advisory-muted)}
+body.advisory-site[data-complex-income] .advisory-situation-list{display:block;margin-block:24px}
+body.advisory-site[data-complex-income] .advisory-situation-list .ci-card{display:grid;grid-template-columns:260px minmax(0,1fr);gap:32px;padding:24px 0;border:0;border-top:1px solid var(--advisory-rule);border-radius:0;background:transparent}
+body.advisory-site[data-complex-income] .advisory-situation-list :is(h3,p){margin:0}
+.advisory-essay main .hero{background:var(--advisory-paper);min-height:0;height:auto;padding:40px 0;color:var(--advisory-ink)}
+.advisory-essay main .hero:before{display:none}
+.advisory-essay main .hero h1{color:var(--advisory-ink);font-size:clamp(2rem,1.5rem + 1.5vw,2.75rem)!important}
+.advisory-essay main .newsletter-issue-badge{background:transparent;border:0;padding:0;color:var(--advisory-muted)}
+.advisory-calculator .dscr-meter{display:none}
+.advisory-calculator .dscr-status{background:var(--advisory-paper);border-color:var(--advisory-rule);color:var(--advisory-ink)}
+.advisory-calculator main .dscr-hero{padding:28px 0;background:var(--advisory-paper);color:var(--advisory-ink);text-align:left}
+.advisory-calculator main .dscr-hero::before{display:none}
+.advisory-calculator main .dscr-hero h1{color:var(--advisory-ink);font-size:clamp(2rem,1.5rem + 1.5vw,2.75rem)!important;line-height:1.2!important}
+.advisory-calculator main .dscr-hero p.subtitle{color:var(--advisory-muted);font-size:17px;line-height:1.6;margin:16px 0}
+.advisory-calculator main .dscr-hero-ctas{margin-top:0;justify-content:flex-start}
+.advisory-calculator .dscr-start-link{display:inline-flex;align-items:center;min-height:44px;color:var(--advisory-ink);font-size:16px;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.advisory-calculator main .dscr-hero .btn-ghost{color:var(--advisory-ink);border-color:var(--advisory-control)}
+.advisory-calculator main .dscr-calculator-module{padding-block:24px 48px}
+.advisory-calculator .dscr-inner{padding-inline:20px;max-width:1200px}
+.advisory-calculator main .dscr-section-title{text-align:left;font-size:24px;margin-bottom:8px}
+.advisory-calculator main .dscr-section-sub{text-align:left;font-size:16px;margin-bottom:24px}
+.advisory-calculator .dscr-card{background:#fff;border:1px solid var(--advisory-rule);border-radius:6px;box-shadow:none}
+.advisory-calculator .dscr-band-tag{display:none}
+.advisory-calculator .dscr-score-number{color:var(--advisory-ink)!important}
+@media(max-width:700px){.advisory-case-list{grid-template-columns:1fr;gap:12px}}
+@media(max-width:700px){body.advisory-site[data-complex-income] .advisory-situation-list .ci-card{grid-template-columns:1fr;gap:8px}}

@@ -13,7 +13,7 @@ let changed = 0;
 
 function files(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
-    if (['node_modules', '.git', '.netlify'].includes(entry.name)) return [];
+    if (['node_modules', '.git', '.netlify', '.site-dist'].includes(entry.name)) return [];
     const file = path.join(dir, entry.name);
     return entry.isDirectory() ? files(file) : file.endsWith('.html') ? [file] : [];
   });

@@ -23,7 +23,8 @@ const pages = [
 test('complex-income pages load the reusable modern program layout', () => {
   for (const file of pages) {
     const html = fs.readFileSync(file, 'utf8');
-    assert.match(html, /<body class="editorial-page loan-page program-page-modern"[^>]*>/, file);
+    const classes = new Set(html.match(/<body[^>]*class="([^"]*)"/)[1].split(/\s+/));
+    for (const name of ['editorial-page', 'loan-page', 'program-page-modern']) assert.ok(classes.has(name), `${file}: ${name}`);
     if (file === 'dscr-loan-austin-tx.html') {
       assert.match(html, /dscr-investor\.css/);
       assert.doesNotMatch(html, /src="\/js\/program-page-layout/);

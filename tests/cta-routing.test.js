@@ -7,7 +7,7 @@ const MY1003 = 'https://hypersmart.my1003app.com/513013/register?time=1779291829
 
 function listHtmlFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if (['.git', '_deliverables', 'node_modules'].includes(entry.name)) return [];
+    if (['.git', '.netlify', '.site-dist', '_deliverables', 'node_modules'].includes(entry.name)) return [];
     const file = path.join(directory, entry.name);
     return entry.isDirectory() ? listHtmlFiles(file) : file.endsWith('.html') ? [file] : [];
   });
@@ -41,7 +41,9 @@ test('public conversion CTA labels route to the matching destination', () => {
       const label = visibleLabel(match[2]);
       const line = html.slice(0, match.index).split('\n').length;
 
-      if (scenarioLabel.test(label) && (scenarioPage.test(href) || href === '#contact-form')) {
+      const homepageInquiry = file === 'index.html' && href === '#contact-form' &&
+        /id="contact-form"/.test(html) && /id="form-homepage-contact"/.test(html);
+      if (scenarioLabel.test(label) && (scenarioPage.test(href) || (href === '#contact-form' && !homepageInquiry))) {
         failures.push(`${file}:${line} scenario CTA routes to ${href}`);
       }
       if (preapprovalLabel.test(label) && (scenarioPage.test(href) || href.startsWith('https://hypersmart.my1003app.com/'))) {
@@ -55,4 +57,3 @@ test('public conversion CTA labels route to the matching destination', () => {
 
   assert.deepEqual(failures, []);
 });
-

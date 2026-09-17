@@ -163,8 +163,9 @@
   }
   </script>
 <link rel="stylesheet" href="/experience.css">
+<link rel="stylesheet" href="/advisory-design.css?v=20260917">
 </head>
-<body class="editorial-page guide-page">
+<body class="editorial-page guide-page advisory-site advisory-blog-index">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -199,46 +200,7 @@
 
   <main id="main">
     <!-- Hero Section -->
-    <section class="hero">
-
-          <picture><source srcset="assets/adam-cutout.webp" type="image/webp"><img
-            src="assets/adam-cutout.png"
-            alt="Adam Styer, Austin TX Mortgage Broker, NMLS #513013"
-            class="hero-cutout"
-            fetchpriority="high"
-            decoding="async"
-          ></picture>
-
-          <div class="container">
-            <div class="hero-glass-card">
-              <div class="hero-two-col">
-
-                <div class="hero-col hero-col-authority">
-                  <div class="hero-authority-inner">
-                    <h1>Mortgage Tips & Austin Market Insights</h1>
-                    <p class="hero-subtitle">Expert guides, rate updates, and home financing advice from Austin broker Adam Styer. Written for buyers, owners, and investors.</p>
-                  </div>
-                  <div class="hero-ctas">
-                    <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-primary hero-cta-primary hero-cta-btn" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a>
-                    <a href="https://calendly.com/adamstyer/15minutes" class="btn btn-hero-ghost hero-cta-btn" target="_blank" rel="noopener">Book a Call</a>
-                  </div>
-                  <p class="hero-call-link">
-                    <a href="tel:+15129566010" class="hero-call-link-a">
-                      <svg class="hero-call-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                      Call (512) 956-6010
-                    </a>
-                  </p>
-                </div>
-
-
-              </div>
-              <p class="hero-legal">
-                NMLS#: 2653540 (Company) &middot; 513013 (Adam Styer)
-              </p>
-            </div>
-          </div>
-
-        </section>
+    <section class="advisory-blog-intro"><div class="container"><h1>Mortgage Tips & Austin Market Insights</h1><p>Expert guides, rate updates, and home financing advice from Austin broker Adam Styer. Written for buyers, owners, and investors.</p></div></section>
 
 
     <!-- Category Filters -->
@@ -436,7 +398,7 @@
         </div>
 
         <div class="footer-section">
-          <h4>Awards &amp; Recognition</h4>
+          <h4>Client Reviews</h4>
           <p>
             <a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener" style="color:inherit;">&#11088; 5.0 Google</a> &middot; <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener" style="color:inherit;">4.98 Zillow</a><br><a href="/testimonials.html" style="color:inherit;">140+ Reviews</a> &middot; Licensed in Texas
           </p>
@@ -481,6 +443,9 @@
     function runWithPosts(posts) {
       if (!posts || !posts.length) return;
 
+      // Normalize display labels without altering article URLs or source records.
+      const labelMap = {'Home Buying':'Homebuying','Market Intel':'Market Updates','Market Update':'Market Updates','Investment':'Investment Properties'};
+      posts = posts.map(p => ({...p, category: labelMap[p.category] || p.category}));
       // Build category filter buttons
       var categories = [];
       posts.forEach(function (p) {
@@ -521,7 +486,13 @@
         });
       }
 
-      renderPosts("all");
+      var initialCategory = new URLSearchParams(location.search).get('category') || 'all';
+      if (initialCategory !== 'all' && !categories.includes(initialCategory)) initialCategory = 'all';
+      renderPosts(initialCategory);
+      if (filtersBar) filtersBar.querySelectorAll('.blog-filter-btn').forEach(function(button){
+        const active = button.getAttribute('data-category') === initialCategory;
+        button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active));
+      });
 
       if (filtersBar) {
         filtersBar.addEventListener("click", function (e) {
@@ -529,7 +500,12 @@
           if (!btn) return;
           filtersBar.querySelectorAll(".blog-filter-btn").forEach(function (b) { b.classList.remove("active"); });
           btn.classList.add("active");
-          renderPosts(btn.getAttribute("data-category"));
+          const selected = btn.getAttribute('data-category');
+          filtersBar.querySelectorAll('.blog-filter-btn').forEach(b => b.setAttribute('aria-pressed',String(b === btn)));
+          const url = new URL(location.href);
+          if(selected === 'all') url.searchParams.delete('category'); else url.searchParams.set('category',selected);
+          history.replaceState(null,'',url.pathname+url.search+url.hash);
+          renderPosts(selected);
         });
       }
     }

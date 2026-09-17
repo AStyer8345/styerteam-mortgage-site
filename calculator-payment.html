@@ -45,8 +45,9 @@
   })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
   <!-- End Google Tag Manager -->
 <link rel="stylesheet" href="/experience.css">
+<link rel="stylesheet" href="/advisory-design.css?v=20260917">
 </head>
-<body class="editorial-page calculator-page">
+<body class="editorial-page calculator-page advisory-site advisory-calculator">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -84,7 +85,7 @@
     <section class="calc-tool-hero">
       <div class="container">
         <h1>Payment Calculator</h1>
-        <p>Estimate your monthly P&amp;I — add taxes and insurance for full PITI. Results update as you move the sliders.</p>
+        <p>Estimate your monthly P&amp;I — add taxes and insurance for full PITI. Enter exact amounts or use the sliders. Results update as you make changes.</p>
       </div>
     </section>
 
@@ -97,11 +98,13 @@
               <div id="payment-sliders"></div>
               <div class="calc-slider-group">
                 <div class="calc-slider-label"><span>Monthly tax (optional)</span><span class="calc-slider-value" id="tax-value">$0</span></div>
+                <input type="number" inputmode="decimal" class="calc-input-number" id="tax-exact" aria-label="Monthly property tax exact amount" min="0" max="1500" step="any" value="0">
                 <input type="range" class="calc-slider-input" id="tax-slider" aria-label="Monthly property tax" min="0" max="1500" step="25" value="0">
                 <p class="calc-rule-note"><strong>Rule of thumb:</strong> ~2% of purchase price ÷ 12.</p>
               </div>
               <div class="calc-slider-group">
                 <div class="calc-slider-label"><span>Monthly insurance (optional)</span><span class="calc-slider-value" id="ins-value">$0</span></div>
+                <input type="number" inputmode="decimal" class="calc-input-number" id="ins-exact" aria-label="Monthly insurance exact amount" min="0" max="500" step="any" value="0">
                 <input type="range" class="calc-slider-input" id="ins-slider" aria-label="Monthly insurance" min="0" max="500" step="25" value="0">
               </div>
             </div>
@@ -109,9 +112,10 @@
           <div>
             <div class="calc-card calc-card--solid">
               <div class="calc-hero-wrap" aria-live="polite" aria-atomic="true">
-                <div class="calc-hero-label">Total monthly payment (PITI)</div>
+                <div class="calc-hero-label" id="payment-result-label">Estimated principal &amp; interest</div>
                 <div class="calc-hero-number" id="hero-payment">—</div>
               </div>
+              <p class="calc-result-note" id="payment-cost-note">Taxes and insurance are set to zero. This is not a complete housing payment; mortgage insurance and HOA dues are also excluded.</p>
               <div class="calc-donut-wrap">
                 <canvas id="payment-donut" width="280" height="260"></canvas>
               </div>
@@ -182,6 +186,8 @@
     var total = pi + tax + ins;
 
     heroEl.textContent = formatCurr(total);
+    document.getElementById('payment-result-label').textContent = tax > 0 && ins > 0 ? 'Estimated monthly PITI' : 'Estimated payment with costs entered';
+    document.getElementById('payment-cost-note').textContent = (tax === 0 || ins === 0 ? 'Taxes or insurance are set to zero. This is not a complete housing payment. ' : '') + 'Mortgage insurance and HOA dues are excluded. Illustrative estimate, not a loan quote.';
     outPi.textContent = formatCurr(pi);
     outTax.textContent = formatCurr(tax);
     outIns.textContent = formatCurr(ins);
@@ -195,7 +201,7 @@
       donutChart = Suite.createDonutChart('payment-donut', {
         labels: labels,
         values: values,
-        colors: ['#2563eb', '#059669', '#9A7B2D']
+        colors: ['#182e3e', '#7c6345', '#8b949a']
       });
     }
   }
@@ -222,6 +228,7 @@
   });
   Suite.createSlider(container, {
     id: 'term',
+    numericStep: 1,
     label: 'Loan term (years)',
     min: 10,
     max: 30,
@@ -231,15 +238,19 @@
     onChange: function (v) { state.years = v; update(); }
   });
 
-  taxSlider.addEventListener('input', function () {
-    state.tax = parseFloat(taxSlider.value);
-    taxValue.textContent = formatCurr(state.tax);
-    update();
-  });
-  insSlider.addEventListener('input', function () {
-    state.ins = parseFloat(insSlider.value);
-    insValue.textContent = formatCurr(state.ins);
-    update();
+  [['tax', taxSlider, taxValue], ['ins', insSlider, insValue]].forEach(function (field) {
+    var number = document.getElementById(field[0] + '-exact');
+    field[1].addEventListener('input', function () {
+      number.value = field[1].value;
+      state[field[0]] = parseFloat(number.value); field[2].textContent = formatCurr(state[field[0]]); update();
+    });
+    number.addEventListener('input', function () {
+      var v = parseFloat(number.value);
+      var valid = Number.isFinite(v) && v >= 0 && v <= Number(number.max);
+      number.setAttribute('aria-invalid', String(!valid));
+      if (!valid) return;
+      state[field[0]] = v; field[1].value = v; field[2].textContent = formatCurr(v); update();
+    });
   });
 
   update();

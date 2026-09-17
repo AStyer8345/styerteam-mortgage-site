@@ -226,7 +226,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     decorateReveals();
     initNavState();
-    initCounters();
+    if (!document.body.classList.contains('advisory-site')) initCounters();
     initReveals();
     initDividerDraw();
   });

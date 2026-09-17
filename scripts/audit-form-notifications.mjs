@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const ignoredDirectories = new Set(['.git', 'node_modules']);
+const ignoredDirectories = new Set(['.git', '.netlify', '.site-dist', 'node_modules']);
 const operationalPages = new Set(['dashboard.html', 'marketing-command-center.html', 'ops.html', 'forms.html']);
 const failures = [];
 let auditedForms = 0;

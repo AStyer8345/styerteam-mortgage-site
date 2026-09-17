@@ -12,7 +12,7 @@ const leadingItems = [mortgageOptions, toolsAndGuides, '<li><a href="/scenarios.
 
 function htmlFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if (entry.name === '.git' || ['node_modules', '.netlify'].includes(entry.name)) return [];
+    if (entry.name === '.git' || ['node_modules', '.netlify', '.site-dist'].includes(entry.name)) return [];
     const absolute = path.join(directory, entry.name);
     if (entry.isDirectory()) return htmlFiles(absolute);
     return entry.isFile() && entry.name.endsWith('.html') ? [absolute] : [];
@@ -27,17 +27,6 @@ let navigationCount = 0;
 const templateFiles = ['blog-page-builder.js', 'realtor-page-builder.js', 'page-builder.js', 'rate-page-builder.js'].map(file => 'netlify/functions/lib/' + file).map(file => path.join(root, file));
 for (const file of [...htmlFiles(root), ...templateFiles]) {
   const html = fs.readFileSync(file, 'utf8');
-  // The homepage keeps its compact header and inline contact action.
-  // Only its Mortgage Options dropdown shares the directory hierarchy.
-  if (path.relative(root, file) === 'index.html') {
-    const updated = html.replace(/<li class="nav-has-dropdown"><a href="\/products\.html">Mortgage Options<\/a><ul class="nav-dropdown">[\s\S]*?<\/ul><\/li>/, mortgageOptions);
-    navigationCount += 1;
-    if (updated !== html) {
-      changed.push(path.relative(root, file));
-      if (!checkOnly) fs.writeFileSync(file, updated);
-    }
-    continue;
-  }
   const navStart = html.indexOf('<ul class="nav-links"');
   if (navStart === -1) continue;
   navigationCount += 1;

@@ -7,7 +7,7 @@ function findHtmlFiles(directory = '.') {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const file = `${directory}/${entry.name}`;
     if (entry.isDirectory()) {
-      return ['.git', '.netlify', 'node_modules'].includes(entry.name) ? [] : findHtmlFiles(file);
+      return ['.git', '.netlify', '.site-dist', 'node_modules'].includes(entry.name) ? [] : findHtmlFiles(file);
     }
     return entry.isFile() && entry.name.endsWith('.html') ? [file.replace(/^\.\//, '')] : [];
   });
@@ -50,7 +50,7 @@ test('internal and noindex utility pages remain outside the editorial rollout', 
   assert.doesNotMatch(fs.readFileSync('loans/usda.html', 'utf8'), /\beditorial-page\b/);
 });
 
-test('every indexable nested loan page receives the header-only treatment', () => {
+test('every indexable nested loan page retains its public header and loan identity', () => {
   for (const file of [
     'loans/construction.html',
     'loans/conventional.html',
@@ -61,7 +61,8 @@ test('every indexable nested loan page receives the header-only treatment', () =
     'loans/va.html'
   ]) {
     const html = fs.readFileSync(file, 'utf8');
-    assert.match(html, /<body class="public-header-page legacy-loan-page">/, file);
+    const classes = new Set(html.match(/<body[^>]*class="([^"]*)"/)[1].split(/\s+/));
+    for (const name of ['public-header-page', 'legacy-loan-page']) assert.ok(classes.has(name), `${file}: ${name}`);
     assert.match(html, /style\.css\?v=20260830-loanfix1/, file);
     assert.doesNotMatch(html, /\beditorial-page\b/, file);
   }

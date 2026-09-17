@@ -63,39 +63,36 @@
       var id = config.id || ('slider-' + Math.random().toString(36).slice(2, 9));
       var formatter = config.formatter || function (v) { return v; };
       var value = config.value != null ? config.value : config.min;
-
       var wrap = document.createElement('div');
       wrap.className = 'calc-slider-group';
-      wrap.innerHTML =
-        '<div class="calc-slider-label">' +
-          '<label for="' + id + '">' + (config.label || '') + '</label>' +
-          '<span class="calc-slider-value" data-value></span>' +
-        '</div>' +
-        '<input type="range" class="calc-slider-input" id="' + id + '" aria-label="' + (config.label || '') + '" min="' + config.min + '" max="' + config.max + '" step="' + (config.step != null ? config.step : 1) + '" value="' + value + '">';
-
+      wrap.innerHTML = '<div class="calc-slider-label"><label for="' + id + '-exact">' + config.label + '</label><span class="calc-slider-value" data-value></span></div>' +
+        '<input type="number" inputmode="decimal" class="calc-input-number" id="' + id + '-exact" min="' + config.min + '" max="' + config.max + '" step="' + (config.numericStep || 'any') + '" value="' + value + '" aria-describedby="' + id + '-error">' +
+        '<input type="range" class="calc-slider-input" id="' + id + '" aria-label="' + config.label + ' slider" min="' + config.min + '" max="' + config.max + '" step="' + (config.step || 1) + '" value="' + value + '">' +
+        '<p class="calc-input-error" id="' + id + '-error" hidden>Enter a value from ' + config.min + ' to ' + config.max + '.</p>';
+      var number = wrap.querySelector('input[type="number"]');
+      var input = wrap.querySelector('input[type="range"]');
       var valueEl = wrap.querySelector('[data-value]');
-      var input = wrap.querySelector('input');
-
-      function updateDisplay() {
-        var v = parseFloat(input.value);
+      var error = wrap.querySelector('.calc-input-error');
+      function publish(v) {
+        value = v;
         valueEl.textContent = formatter(v);
+        input.value = v;
+        number.setAttribute('aria-invalid', 'false');
+        error.hidden = true;
         if (typeof config.onChange === 'function') config.onChange(v);
       }
-
-      input.addEventListener('input', updateDisplay);
-      updateDisplay();
-
+      input.addEventListener('input', function () { number.value = input.value; publish(parseFloat(input.value)); });
+      number.addEventListener('input', function () {
+        var v = parseFloat(number.value);
+        var valid = Number.isFinite(v) && v >= config.min && v <= config.max && number.validity.valid;
+        number.setAttribute('aria-invalid', String(!valid)); error.hidden = valid;
+        if (valid) publish(v); // Keep exact typed values instead of rounding them to a slider step.
+      });
       if (container && container.appendChild) container.appendChild(wrap);
-
-      return {
-        el: wrap,
-        input: input,
-        valueEl: valueEl,
-        setValue: function (v) {
-          input.value = v;
-          updateDisplay();
-        },
-        getValue: function () { return parseFloat(input.value); }
+      publish(value);
+      return { el: wrap, input: input, valueEl: valueEl,
+        setValue: function (v) { number.value = v; publish(v); },
+        getValue: function () { return value; }
       };
     },
 
@@ -263,4 +260,44 @@
       };
     }
   };
+
+  // On phones keep the live answer reachable while editing a long input group.
+  // The full result and assumptions remain in their original, ungated location.
+  function initCompactResult() {
+    var main = document.querySelector('.advisory-calculator main.calc-suite');
+    if (!main || typeof IntersectionObserver === 'undefined' || typeof MutationObserver === 'undefined') return;
+    var inputs = main.querySelector('.calc-inputs-col');
+    var result = main.querySelector('.calc-hero-wrap');
+    if (!inputs || !result) return;
+    if (!result.id) result.id = 'calculator-result';
+    var summary = document.createElement('a');
+    summary.className = 'calc-mobile-summary';
+    summary.href = '#' + result.id;
+    var label = document.createElement('span');
+    var amount = document.createElement('strong');
+    var detail = document.createElement('small');
+    detail.textContent = 'View result & assumptions →';
+    summary.append(label, amount, detail);
+    main.appendChild(summary);
+    function refresh() {
+      label.textContent = result.querySelector('.calc-hero-label').textContent;
+      amount.textContent = result.querySelector('.calc-hero-number').textContent;
+    }
+    refresh();
+    new MutationObserver(refresh).observe(result, { childList: true, subtree: true, characterData: true });
+    var editingVisible = false, resultVisible = false;
+    var visibility = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.target === inputs) editingVisible = entry.isIntersecting;
+        if (entry.target === result) resultVisible = entry.isIntersecting;
+      });
+      document.body.classList.toggle('calc-editing-visible', editingVisible && !resultVisible);
+    });
+    visibility.observe(inputs);
+    visibility.observe(result);
+  }
+  if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCompactResult);
+    else initCompactResult();
+  }
 })();

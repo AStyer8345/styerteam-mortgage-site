@@ -87,10 +87,10 @@ test('homepage prioritizes the short conversation and preserves the secure appli
   const introActions = homepage.match(/<div id="quick-scenario-form" class="quick-contact-actions"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
-  assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"[^>]*>Structure My Financing<\/a>/);
-  assert.match(homepage, /class="modern-secure-link"[^>]*>Secure Application ↗<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Structure My Financing']);
-  assert.deepEqual(introActionLabels, ['Structure My Financing', 'Apply Now']);
+  assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"[^>]*>Send Your Scenario<\/a>/);
+  assert.match(homepage, /href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279" class="nav-cta nav-apply"[^>]*>Apply Now<\/a>/);
+  assert.deepEqual(heroButtonLabels, ['Send Your Scenario']);
+  assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Apply Now']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.doesNotMatch(homepage, /name="quick-scenario"/);
   assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);
@@ -115,13 +115,14 @@ test('pre-approval guide routes pre-approval and application CTAs by intent', ()
   assert.doesNotMatch(preapprovalGuide, /register\?time=[^"']*\?time=/);
 });
 
-test('homepage hero keeps Adam’s portrait compact and avoids the oversized photo treatment', () => {
+test('homepage hero uses Adam’s existing photograph and retains the direct inquiry', () => {
   const hero = homepage.match(/<section class="hero">([\s\S]*?)<\/section>/)?.[1] || '';
-  assert.match(hero, /<img[^>]*src="\/assets\/adam-cutout-900\.webp"[^>]*width="64"[^>]*height="72"/);
+  assert.match(hero, /<img[^>]*src="\/assets\/headshot\.webp"[^>]*width="1600"[^>]*height="1600"/);
   assert.doesNotMatch(hero, /<picture/);
   assert.match(homepage, /class="hero-glass-card home-hero-layout"/);
   assert.match(homepage, /\.home-pilot \.hero\{[^}]*background-image:none/);
-  assert.match(fs.readFileSync('conversation.css', 'utf8'), /width:64px;height:72px/);
+  assert.match(hero, /id="form-homepage-contact"/);
+  assert.match(fs.readFileSync('modern-homepage.css', 'utf8'), /width:144px;height:160px/);
 });
 
 test('scenario page puts the short conversion form first and keeps the secure portal secondary', () => {
