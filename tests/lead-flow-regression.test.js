@@ -117,7 +117,7 @@ test('pre-approval guide routes pre-approval and application CTAs by intent', ()
 
 test('homepage hero uses Adam’s existing photograph and retains the direct inquiry', () => {
   const hero = homepage.match(/<section class="hero">([\s\S]*?)<\/section>/)?.[1] || '';
-  assert.match(hero, /<img[^>]*src="\/assets\/headshot\.webp"[^>]*width="1600"[^>]*height="1600"/);
+  assert.match(hero, /<img[^>]*src="\/assets\/adam-cutout\.webp"[^>]*width="1200"[^>]*height="1200"/);
   assert.doesNotMatch(hero, /<picture/);
   assert.match(homepage, /class="hero-glass-card home-hero-layout"/);
   assert.match(homepage, /\.home-pilot \.hero\{[^}]*background-image:none/);

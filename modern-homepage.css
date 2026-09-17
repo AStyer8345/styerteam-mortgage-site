@@ -19,7 +19,9 @@ body.home-pilot main .home-conversation .journey-field label{font-size:14px}
 body.home-pilot main .home-conversation .journey-consent{font-size:14px!important;line-height:1.55!important}
 body.home-pilot main .home-conversation .journey-submit{background:#182e3e;color:#fff;border-radius:4px;min-height:48px;font-size:16px}
 body.home-pilot main .home-conversation-contact{border-top:1px solid #d8d4cd;margin-top:24px;padding-top:24px;gap:20px}
-body.home-pilot main .home-conversation-contact img{width:144px;height:160px;object-fit:cover;object-position:center 24%;background:#fff;border-radius:4px}
+/* Frame the original transparent portrait closer without altering the photograph. */
+body.home-pilot main .home-advisor-portrait{display:block;position:relative;flex-shrink:0;width:144px;height:160px;overflow:hidden}
+body.home-pilot main .home-conversation-contact img{position:absolute;top:-8%;left:-36%;width:172%;height:auto;max-width:none;object-fit:contain;background:transparent;border-radius:0}
 body.home-pilot main .home-conversation-contact p{font-size:16px;max-width:24ch}
 body.home-pilot main .hero-legal{margin-top:16px;font-size:13px;color:var(--modern-muted)}
 .modern-section-heading{max-width:720px;margin:0 0 32px;text-align:left}
@@ -79,7 +81,7 @@ body.home-pilot .stat-strip-item .stat-number{font-family:var(--font-primary);fo
  body.home-pilot main .hero-eyebrow{font-size:12px}
  body.home-pilot main .hero-ctas{gap:8px;margin-top:20px}
  body.home-pilot main .home-conversation-contact{gap:16px;margin-top:16px;padding-top:16px}
- body.home-pilot main .home-conversation-contact img{width:104px;height:116px}
+ body.home-pilot main .home-advisor-portrait{width:104px;height:116px}
  body.home-pilot main .home-conversation.journey-card{padding:20px 16px}
  .modern-goal-grid,.modern-programs-grid,.modern-scenario-grid,.testimonial-marquee-track{grid-template-columns:1fr!important;gap:0}
  .modern-section-heading h2{font-size:28px}
