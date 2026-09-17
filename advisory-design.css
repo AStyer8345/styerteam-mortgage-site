@@ -173,3 +173,109 @@ body.advisory-site[data-complex-income] .advisory-situation-list :is(h3,p){margi
 .advisory-calculator .dscr-score-number{color:var(--advisory-ink)!important}
 @media(max-width:700px){.advisory-case-list{grid-template-columns:1fr;gap:12px}}
 @media(max-width:700px){body.advisory-site[data-complex-income] .advisory-situation-list .ci-card{grid-template-columns:1fr;gap:8px}}
+
+/* ── Punch list 2026-09-17 ─────────────────────────────────────────────────
+   Shared fixes: compact text-only heroes, card grids as ruled lists, one FAQ
+   and one table treatment, no gap before the footer. Content stays in HTML. */
+/* Heroes without a form or tool: a compact typographic opening, not a half-empty band. */
+.advisory-site main .hero:not(:has(form)){height:auto;min-height:0;max-height:none;padding:clamp(2.25rem,4vw,3.25rem) 0;background:var(--advisory-paper);color:var(--advisory-ink)}
+.advisory-site main .hero:not(:has(form))::before,.advisory-site main .hero:not(:has(form)) .hero-cutout{display:none}
+.advisory-site main .hero:not(:has(form)) .hero-glass-card{max-width:860px;padding:0;background:transparent;border:0;box-shadow:none;backdrop-filter:none}
+.advisory-site main .hero:not(:has(form)) .hero-col-authority{align-items:flex-start;text-align:left}
+.advisory-site main .hero:not(:has(form)) .hero-subtitle{max-width:68ch}
+.advisory-site main .hero:not(:has(form)) .hero-legal{margin-top:1rem}
+/* Feature, audience and market grids read as ruled lists. No icons, boxes or lift. */
+.advisory-site main .card-icon,.advisory-site main .card-icon-lg{display:none}
+.advisory-site main .grid>.card{background:transparent;border:0;border-top:1px solid var(--advisory-rule);border-radius:0;box-shadow:none;padding:20px 0 4px;transform:none}
+.advisory-site main .grid>.card:hover{transform:none;box-shadow:none;border-color:var(--advisory-rule)}
+.advisory-site main .grid>a.card:hover h3{text-decoration:underline;text-underline-offset:4px}
+.advisory-site main .grid>.card h3{font-size:1.125rem;margin-bottom:6px}
+.advisory-site main .grid>.card p{font-size:1rem;line-height:1.6;color:var(--advisory-muted);max-width:44ch}
+.advisory-site main .grid:has(>.card){gap:8px clamp(2rem,4vw,3.5rem)}
+/* One FAQ treatment: hairline rows, no outer box, room for the marker. */
+.advisory-site main .accordion{border:0;border-top:1px solid var(--advisory-rule);border-radius:0;overflow:visible;background:transparent}
+.advisory-site main .accordion-button{gap:24px;padding-inline:0 4px}
+.advisory-site main .accordion-button:hover{background:transparent}
+.advisory-site main .accordion-button.active{color:var(--advisory-ink)}
+.advisory-site main .accordion-button::after{flex:none;width:1em;text-align:center}
+.advisory-site main .accordion-body{padding:0 0 24px;max-width:68ch}
+.advisory-site main details:not(.advisory-contents)>summary{list-style:none;display:flex;justify-content:space-between;gap:24px;cursor:pointer}
+.advisory-site main details:not(.advisory-contents)>summary::-webkit-details-marker{display:none}
+.advisory-site main details:not(.advisory-contents)>summary::after{content:'+';flex:none;width:1em;text-align:center;font-weight:400}
+.advisory-site main details:not(.advisory-contents)[open]>summary::after{content:'\2212'}
+/* One table treatment: unboxed, paper header, hairline rows. */
+body.advisory-site:not(.advisory-calculator) main table{border-collapse:collapse;width:100%;border:0;border-radius:0;box-shadow:none;background:transparent}
+body.advisory-site:not(.advisory-calculator) main table :is(th,td){border:0;border-bottom:1px solid var(--advisory-rule);background:transparent;padding:12px 16px 12px 0;text-align:left;vertical-align:top;font-variant-numeric:tabular-nums lining-nums}
+body.advisory-site:not(.advisory-calculator) main table thead th{background:transparent;color:var(--advisory-ink);font:600 .8125rem/1.4 var(--font-primary);letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--advisory-ink)}
+body.advisory-site:not(.advisory-calculator) main table tbody tr:nth-child(n){background:transparent}
+body.advisory-site:not(.advisory-calculator) main table tbody :is(th,td:first-child){font-weight:600;color:var(--advisory-ink)}
+/* The closing band meets the footer. */
+.advisory-site footer{margin-top:0}
+/* Tables on specialty pages follow the same unboxed treatment. */
+body.advisory-site main :is(.ci-table-wrap,.experience-table-scroll,.table-wrap,.table-responsive){background:transparent;border:0;border-radius:0;box-shadow:none;padding:0}
+body.advisory-site:not(.advisory-calculator) main table :is(th,td){border:0;border-bottom:1px solid var(--advisory-rule);background:transparent;color:var(--advisory-ink);padding:12px 16px 12px 0}
+body.advisory-site:not(.advisory-calculator) main table thead th{background:transparent;color:var(--advisory-ink);font:600 .8125rem/1.4 var(--font-primary);letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--advisory-ink)}
+body.advisory-site:not(.advisory-calculator) main table tbody th{background:transparent;color:var(--advisory-ink);font-weight:600}
+body.advisory-site:not(.advisory-calculator) main table caption{padding:0 0 12px;text-align:left;font:600 1rem/1.5 var(--font-primary);color:var(--advisory-ink);caption-side:top}
+/* One primary button: ink on paper, white on dark. No gold fills. */
+body.advisory-site main :is(.btn-primary,.journey-primary,.btn-light,.btn-gold),body.advisory-site main .journey-hero .journey-primary{background:var(--advisory-ink);border:1px solid var(--advisory-ink);color:#fff;border-radius:4px;box-shadow:none}
+body.advisory-site main :is(.btn-primary,.journey-primary,.btn-light,.btn-gold):hover{background:#0f2230;color:#fff}
+body.advisory-site main :is(.bg-navy,.bg-dark,.guide-final-cta,.journey-final) :is(.btn-primary,.journey-primary,.btn-light,.btn-gold){background:#fff;border-color:#fff;color:var(--advisory-ink)}
+body.advisory-site main :is(.bg-navy,.bg-dark) :is(p,.text-white-90){color:rgba(255,255,255,.92)}
+/* Contact sidebar: direct lines as links, not a stack of buttons. */
+body.advisory-site .contact-ctas{gap:0;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,.18)}
+body.advisory-site .contact-ctas a{background:transparent;color:#fff;border-radius:0;box-shadow:none;transform:none;text-align:left;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.18);font-weight:600;text-decoration:underline;text-underline-offset:4px;display:flex;justify-content:space-between}
+body.advisory-site .contact-ctas a::after{content:'\2192';text-decoration:none}
+body.advisory-site .contact-ctas a:hover{background:transparent;box-shadow:none;transform:none;color:#fff}
+/* Reviews: no letter avatars, one quiet star treatment. */
+.advisory-site main .testimonial-avatar{display:none}
+.advisory-site main .testimonial-stars{color:var(--advisory-accent);letter-spacing:2px;font-size:.9375rem}
+.advisory-site main .grid>.card.testimonial-card{border-top:0;border-left:2px solid var(--advisory-accent);padding:4px 0 4px 20px}
+/* Plain figures in place of stat tiles. */
+.advisory-figure{border-top:1px solid var(--advisory-rule);padding:16px 0 4px}
+.advisory-figure-number{font:700 2.25rem/1.1 var(--font-display);color:var(--advisory-ink);margin:0 0 4px;font-variant-numeric:lining-nums}
+.advisory-site main .advisory-figure h4{font:600 1rem/1.4 var(--font-primary);margin:0 0 4px}
+.advisory-site main .advisory-figure p:not(.advisory-figure-number){font-size:.9375rem;color:var(--advisory-muted);margin:0}
+/* Homepage: the mid-page prompt is a plain block, not a floating card. */
+body.advisory-site .quick-contact-card.quick-contact-card{max-width:640px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;text-align:center}
+body.advisory-site .quick-contact-section{border-block:1px solid var(--advisory-rule)}
+@media (max-width:640px){
+ /* Homepage indexes collapse to one tappable line per destination; descriptions stay for wider screens. */
+ body.home-pilot main :is(.modern-goal-grid>a,.modern-program-tile){padding:14px 0}
+ body.home-pilot main :is(.modern-goal-grid>a,.modern-program-tile)>p,body.home-pilot main :is(.modern-card-link,.modern-program-action){display:none}
+ body.home-pilot main :is(.modern-goal-grid,.modern-program-tile) h3{font-size:18px;margin:0;display:flex;justify-content:space-between;gap:16px}
+ body.home-pilot main :is(.modern-goal-grid,.modern-program-tile) h3::after{content:'\2192';color:var(--advisory-accent);font-weight:400}
+ .advisory-site main .grid>.card p{max-width:none}
+}
+/* Calculators: a plain title block, then the tool. Inline hero styling from older builds is overridden. */
+.advisory-calculator main :is(.calc-tool-hero,.dscr-hero){background:var(--advisory-paper)!important;color:var(--advisory-ink)!important;text-align:left!important;padding:28px 0!important}
+.advisory-calculator main :is(.calc-tool-hero,.dscr-hero) :is(h1,p){color:var(--advisory-ink)!important;margin-left:0!important;margin-right:0!important;text-align:left}
+.advisory-calculator main :is(.calc-tool-hero,.dscr-hero) p:first-child{color:var(--advisory-accent)!important}
+.advisory-calculator main :is(.calc-tool-hero,.dscr-hero) div:has(>.btn){justify-content:flex-start!important}
+.advisory-calculator main :is(.calc-tool-hero,.dscr-hero) .btn-primary{background:var(--advisory-ink)!important;color:#fff!important;border-radius:4px!important}
+.advisory-calculator main :is(.calc-tool-hero,.dscr-hero) :is(.btn-hero-ghost,.btn-ghost){background:transparent!important;color:var(--advisory-ink)!important;border:1px solid var(--advisory-control)!important;border-radius:4px!important}
+.advisory-site main .testimonial-author strong{margin-right:6px}
+.advisory-site main .grid>.card.testimonial-card{align-self:start}
+@media (max-width:640px){
+ /* The tool comes first on a phone: no hero buttons, cautions after the fields. */
+ .advisory-calculator main :is(.calc-tool-hero,.dscr-hero){padding:20px 0!important}
+ .advisory-calculator main :is(.calc-tool-hero,.dscr-hero) div:has(>.btn),.advisory-calculator main .dscr-hero-ctas{display:none!important}
+ .advisory-calculator main :is(.calc-tool-hero,.dscr-hero) p{font-size:16px!important;margin-bottom:0!important}
+ .advisory-calculator main :is(.adc-heading,.dscr-section-title){font-size:22px;margin-bottom:4px}
+ .advisory-calculator main #adc-calculator header{margin-bottom:12px!important;text-align:left!important}
+ .advisory-calculator main #adc-calculator{padding-top:20px}
+ .advisory-calculator main .adc-grid>div:first-child>.adc-card{display:flex;flex-direction:column}
+ .advisory-calculator main .adc-grid>div:first-child>.adc-card>.adc-card-desc{order:99;margin-top:16px}
+ /* Homepage proof band: two by two. */
+ body.home-pilot .stats-grid-4{grid-template-columns:repeat(2,1fr)!important;gap:0}
+ body.home-pilot .stats-strip .stat-item{padding:14px 8px}
+}
+@media (max-width:640px){#adc-main .calc-mobile-summary strong{font-size:19px;white-space:nowrap}#adc-main .calc-mobile-summary span{font-size:12px}}
+/* Consent text must stay readable once the quote form sits on a white panel. */
+body.advisory-product .advisory-quote .hero-quick-form-field>label[style],body.advisory-product .advisory-quote .hero-quick-form-field label{color:var(--advisory-ink)!important}
+body.advisory-product .advisory-quote .hero-trust-badge{display:none}
+/* Text-only heroes use the full text column. */
+.advisory-site main .hero:not(:has(form)) .hero-authority-inner{max-width:none}
+.advisory-site main .hero:not(:has(form)) h1{max-width:22ch}
+/* Copy on dark bands is always light. */
+body.advisory-site main :is(.bg-navy,.bg-dark,.cta-spotlight) :is(p,p.text-lg,.text-white-90){color:rgba(255,255,255,.92)!important}
