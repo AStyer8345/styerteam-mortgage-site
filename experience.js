@@ -26,8 +26,8 @@
  document.addEventListener('keydown',function(event){if(event.key==='Escape'&&nav&&nav.classList.contains('active')){nav.classList.remove('active');nav.querySelectorAll('.open').forEach(function(el){el.classList.remove('open');});menu.setAttribute('aria-expanded','false');menu.focus();}});
  document.querySelectorAll('header .nav-has-dropdown>a').forEach(function(a){a.setAttribute('aria-expanded','false');a.addEventListener('click',function(){a.setAttribute('aria-expanded',String(a.parentElement.classList.contains('open')));});});
  document.querySelectorAll('main table').forEach(function(table){
-  if(table.closest('.experience-table-scroll'))return;
+  if(table.closest('.experience-table-scroll, .program-table-scroll, .ci-table-wrap'))return;
   var wrapper=document.createElement('div');wrapper.className='experience-table-scroll';wrapper.tabIndex=0;wrapper.setAttribute('role','region');wrapper.setAttribute('aria-label',(table.caption&&table.caption.textContent)||'Comparison table — scroll horizontally if needed');table.before(wrapper);wrapper.appendChild(table);
  });
- document.querySelectorAll('.journey-actions').forEach(function(actions){if(actions.parentElement.querySelector('.journey-path-note'))return;var p=document.createElement('p');p.className='experience-portal-note';p.textContent='Apply Now opens the secure application portal.';actions.after(p);});
+ document.querySelectorAll('.journey-actions').forEach(function(actions){if(!actions.querySelector('a[href*="my1003app"]')||actions.parentElement.querySelector('.journey-path-note'))return;var p=document.createElement('p');p.className='experience-portal-note';p.textContent='Apply Now opens the secure application portal.';actions.after(p);});
 })();

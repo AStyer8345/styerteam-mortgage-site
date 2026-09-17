@@ -1,6 +1,6 @@
 {
   "site": "https://styermortgage.com",
-  "generatedAt": "2026-08-10T21:02:29.447Z",
+  "generatedAt": "2026-09-17T19:59:15.018Z",
   "pages": [
     {
       "url": "https://styermortgage.com/buy-before-you-sell-austin.html",
@@ -8,7 +8,7 @@
       "queryGroup": "buy before you sell austin",
       "pageType": "resource",
       "owner": "Adam Styer",
-      "reviewed": "2026-07-11",
+      "reviewed": "2026-09-11",
       "consolidationStatus": "canonical"
     },
     {
@@ -17,7 +17,7 @@
       "queryGroup": "mortgage options for business owners",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-07-11",
+      "reviewed": "2026-09-17",
       "consolidationStatus": "canonical"
     },
     {
@@ -80,7 +80,7 @@
       "queryGroup": "get preapproved",
       "pageType": "resource",
       "owner": "Adam Styer",
-      "reviewed": "2026-05-18",
+      "reviewed": "2026-09-09",
       "consolidationStatus": "canonical"
     },
     {
@@ -89,7 +89,7 @@
       "queryGroup": "scenario",
       "pageType": "resource",
       "owner": "Adam Styer",
-      "reviewed": "2026-05-18",
+      "reviewed": null,
       "consolidationStatus": "canonical"
     },
     {
@@ -287,7 +287,7 @@
       "queryGroup": "conventional",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-02-25",
+      "reviewed": "2026-08-14",
       "consolidationStatus": "canonical"
     },
     {
@@ -296,7 +296,7 @@
       "queryGroup": "fha",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-02-25",
+      "reviewed": "2026-08-14",
       "consolidationStatus": "canonical"
     },
     {
@@ -323,7 +323,7 @@
       "queryGroup": "construction",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-04-11",
+      "reviewed": "2026-08-28",
       "consolidationStatus": "canonical"
     },
     {
@@ -341,7 +341,7 @@
       "queryGroup": "refinance",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-04-21",
+      "reviewed": "2026-09-13",
       "consolidationStatus": "canonical"
     },
     {
@@ -350,7 +350,7 @@
       "queryGroup": "dscr loan austin",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-06-05",
+      "reviewed": "2026-09-16",
       "consolidationStatus": "canonical"
     },
     {
@@ -359,7 +359,7 @@
       "queryGroup": "non qm loans",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-06-26",
+      "reviewed": "2026-09-13",
       "consolidationStatus": "canonical"
     },
     {
@@ -395,7 +395,7 @@
       "queryGroup": "bank statement loans",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-07-03",
+      "reviewed": "2026-09-17",
       "consolidationStatus": "canonical"
     },
     {
@@ -404,7 +404,7 @@
       "queryGroup": "high net worth mortgage",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-07-15",
+      "reviewed": "2026-09-17",
       "consolidationStatus": "canonical"
     },
     {
@@ -422,7 +422,7 @@
       "queryGroup": "mortgage for business owners austin",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-05-17",
+      "reviewed": "2026-09-17",
       "consolidationStatus": "canonical"
     },
     {
@@ -431,7 +431,7 @@
       "queryGroup": "asset depletion mortgage",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-07-17",
+      "reviewed": "2026-09-17",
       "consolidationStatus": "canonical"
     },
     {
@@ -440,7 +440,7 @@
       "queryGroup": "k1 income mortgage austin",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-05-17",
+      "reviewed": "2026-08-14",
       "consolidationStatus": "canonical"
     },
     {
@@ -467,7 +467,7 @@
       "queryGroup": "one time close construction loan",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-05-17",
+      "reviewed": "2026-08-28",
       "consolidationStatus": "canonical"
     },
     {
@@ -476,7 +476,61 @@
       "queryGroup": "referral partners self employed clients",
       "pageType": "resource",
       "owner": "Adam Styer",
-      "reviewed": null,
+      "reviewed": "2026-08-30",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/mortgage-strategies-financial-advisors-texas.html",
+      "intent": "mortgage strategies financial advisors",
+      "queryGroup": "mortgage strategies financial advisors",
+      "pageType": "service",
+      "owner": "Adam Styer",
+      "reviewed": "2026-08-30",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/mortgage-resources-for-cpas-texas.html",
+      "intent": "mortgage resources for cpas",
+      "queryGroup": "mortgage resources for cpas",
+      "pageType": "service",
+      "owner": "Adam Styer",
+      "reviewed": "2026-08-30",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/reverse-mortgage-texas.html",
+      "intent": "reverse mortgage",
+      "queryGroup": "reverse mortgage",
+      "pageType": "service",
+      "owner": "Adam Styer",
+      "reviewed": "2026-08-30",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/reverse-mortgage-financial-advisors-texas.html",
+      "intent": "reverse mortgage financial advisors",
+      "queryGroup": "reverse mortgage financial advisors",
+      "pageType": "service",
+      "owner": "Adam Styer",
+      "reviewed": "2026-08-30",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/mortgage-case-studies-for-advisors-cpas.html",
+      "intent": "mortgage case studies for advisors cpas",
+      "queryGroup": "mortgage case studies for advisors cpas",
+      "pageType": "service",
+      "owner": "Adam Styer",
+      "reviewed": "2026-08-30",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/construction-loan-scenario-review.html",
+      "intent": "construction loan scenario review",
+      "queryGroup": "construction loan scenario review",
+      "pageType": "service",
+      "owner": "Adam Styer",
+      "reviewed": "2026-08-30",
       "consolidationStatus": "canonical"
     },
     {
@@ -485,7 +539,7 @@
       "queryGroup": "self employed mortgage austin",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-06-20",
+      "reviewed": "2026-09-17",
       "consolidationStatus": "canonical"
     },
     {
@@ -494,7 +548,7 @@
       "queryGroup": "how to buy a house in austin",
       "pageType": "resource",
       "owner": "Adam Styer",
-      "reviewed": "2026-04-03",
+      "reviewed": "2026-08-14",
       "consolidationStatus": "canonical"
     },
     {
@@ -503,7 +557,7 @@
       "queryGroup": "mortgage glossary",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-04-07",
+      "reviewed": "2026-08-14",
       "consolidationStatus": "canonical"
     },
     {
@@ -521,7 +575,7 @@
       "queryGroup": "austin mortgage rates",
       "pageType": "service",
       "owner": "Adam Styer",
-      "reviewed": "2026-05-31",
+      "reviewed": "2026-08-28",
       "consolidationStatus": "canonical"
     },
     {
@@ -530,7 +584,7 @@
       "queryGroup": "austin housing market",
       "pageType": "resource",
       "owner": "Adam Styer",
-      "reviewed": "2026-05-06",
+      "reviewed": "2026-08-28",
       "consolidationStatus": "canonical"
     },
     {
@@ -593,7 +647,7 @@
       "queryGroup": "pflugerville mortgage lender",
       "pageType": "location",
       "owner": "Adam Styer",
-      "reviewed": "2026-06-26",
+      "reviewed": "2026-08-14",
       "consolidationStatus": "canonical"
     },
     {
@@ -629,7 +683,7 @@
       "queryGroup": "buda mortgage lender",
       "pageType": "location",
       "owner": "Adam Styer",
-      "reviewed": "2026-06-27",
+      "reviewed": "2026-08-16",
       "consolidationStatus": "canonical"
     },
     {
@@ -638,7 +692,7 @@
       "queryGroup": "hutto mortgage lender",
       "pageType": "location",
       "owner": "Adam Styer",
-      "reviewed": "2026-06-28",
+      "reviewed": "2026-08-27",
       "consolidationStatus": "canonical"
     },
     {
@@ -647,7 +701,7 @@
       "queryGroup": "manor mortgage lender",
       "pageType": "location",
       "owner": "Adam Styer",
-      "reviewed": "2026-06-30",
+      "reviewed": "2026-08-20",
       "consolidationStatus": "canonical"
     },
     {
@@ -674,7 +728,7 @@
       "queryGroup": "bee cave mortgage lender",
       "pageType": "location",
       "owner": "Adam Styer",
-      "reviewed": "2026-07-02",
+      "reviewed": "2026-08-31",
       "consolidationStatus": "canonical"
     },
     {
@@ -683,7 +737,7 @@
       "queryGroup": "lakeway mortgage lender",
       "pageType": "location",
       "owner": "Adam Styer",
-      "reviewed": "2026-07-01",
+      "reviewed": "2026-08-30",
       "consolidationStatus": "canonical"
     },
     {
@@ -692,7 +746,7 @@
       "queryGroup": "dripping springs mortgage lender",
       "pageType": "location",
       "owner": "Adam Styer",
-      "reviewed": "2026-07-03",
+      "reviewed": "2026-09-04",
       "consolidationStatus": "canonical"
     },
     {
@@ -701,7 +755,7 @@
       "queryGroup": "liberty hill mortgage lender",
       "pageType": "location",
       "owner": "Adam Styer",
-      "reviewed": "2026-06-29",
+      "reviewed": "2026-08-19",
       "consolidationStatus": "canonical"
     },
     {
@@ -836,7 +890,7 @@
       "queryGroup": "how much house can i afford austin",
       "pageType": "resource",
       "owner": "Adam Styer",
-      "reviewed": "2026-02-25",
+      "reviewed": "2026-09-13",
       "consolidationStatus": "canonical"
     },
     {
@@ -864,6 +918,51 @@
       "pageType": "service",
       "owner": "Adam Styer",
       "reviewed": "2026-04-22",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html",
+      "intent": "2026 09 09 buy house you rent from landlord",
+      "queryGroup": "2026 09 09 buy house you rent from landlord",
+      "pageType": "article",
+      "owner": "Adam Styer",
+      "reviewed": "2026-09-09",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/blog/2026-09-04-what-is-a-non-qm-loan-texas.html",
+      "intent": "2026 09 04 what is a non qm loan",
+      "queryGroup": "2026 09 04 what is a non qm loan",
+      "pageType": "article",
+      "owner": "Adam Styer",
+      "reviewed": "2026-09-04",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/blog/2026-08-21-veteran-asset-depletion-mortgage-case-study.html",
+      "intent": "2026 08 21 veteran asset depletion mortgage case study",
+      "queryGroup": "2026 08 21 veteran asset depletion mortgage case study",
+      "pageType": "article",
+      "owner": "Adam Styer",
+      "reviewed": "2026-08-21",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/blog/2026-08-18-jumbo-loan-requirements-texas-2026.html",
+      "intent": "2026 08 18 jumbo loan requirements texas 2026",
+      "queryGroup": "2026 08 18 jumbo loan requirements texas 2026",
+      "pageType": "article",
+      "owner": "Adam Styer",
+      "reviewed": "2026-08-18",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/blog/2026-08-10-austin-housing-market-report-august-2026.html",
+      "intent": "2026 08 10 austin housing market report august 2026",
+      "queryGroup": "2026 08 10 austin housing market report august 2026",
+      "pageType": "article",
+      "owner": "Adam Styer",
+      "reviewed": "2026-08-10",
       "consolidationStatus": "canonical"
     },
     {
@@ -998,7 +1097,7 @@
       "queryGroup": "2026 06 30 bank statement loans",
       "pageType": "article",
       "owner": "Adam Styer",
-      "reviewed": "2026-06-30",
+      "reviewed": "2026-09-17",
       "consolidationStatus": "canonical"
     },
     {
@@ -1088,7 +1187,7 @@
       "queryGroup": "2026 04 10 fha loan requirements texas 2026",
       "pageType": "article",
       "owner": "Adam Styer",
-      "reviewed": "2026-04-10",
+      "reviewed": "2026-08-14",
       "consolidationStatus": "canonical"
     },
     {
@@ -1097,7 +1196,7 @@
       "queryGroup": "2026 04 06 mortgage document checklist austin",
       "pageType": "article",
       "owner": "Adam Styer",
-      "reviewed": "2026-04-06",
+      "reviewed": "2026-09-13",
       "consolidationStatus": "canonical"
     },
     {
@@ -1106,7 +1205,7 @@
       "queryGroup": "2026 04 04 austin housing market report april 2026",
       "pageType": "article",
       "owner": "Adam Styer",
-      "reviewed": "2026-05-08",
+      "reviewed": "2026-08-12",
       "consolidationStatus": "canonical"
     },
     {
@@ -1124,7 +1223,7 @@
       "queryGroup": "2026 04 02 self employed mortgage austin",
       "pageType": "article",
       "owner": "Adam Styer",
-      "reviewed": "2026-04-02",
+      "reviewed": "2026-09-17",
       "consolidationStatus": "canonical"
     },
     {
@@ -1151,7 +1250,7 @@
       "queryGroup": "2026 03 31 dscr loans austin tx 2026",
       "pageType": "article",
       "owner": "Adam Styer",
-      "reviewed": "2026-04-28",
+      "reviewed": "2026-09-13",
       "consolidationStatus": "canonical"
     },
     {
@@ -1296,6 +1395,69 @@
       "pageType": "resource",
       "owner": "Adam Styer",
       "reviewed": "2026-06-08",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/home-equity-loans-texas.html",
+      "intent": "home equity loans",
+      "queryGroup": "home equity loans",
+      "pageType": "service",
+      "owner": "Adam Styer",
+      "reviewed": "2026-09-16",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html",
+      "intent": "2026 09 10 the conversation behind a lower mortgage rate",
+      "queryGroup": "2026 09 10 the conversation behind a lower mortgage rate",
+      "pageType": "article",
+      "owner": "Adam Styer",
+      "reviewed": "2026-09-10",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/scenarios/self-employed-refinance-deposit-review.html",
+      "intent": "self employed refinance deposit review",
+      "queryGroup": "self employed refinance deposit review",
+      "pageType": "resource",
+      "owner": "Adam Styer",
+      "reviewed": "2026-09-13",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/scenarios/two-rental-properties-cash-out-review.html",
+      "intent": "two rental properties cash out review",
+      "queryGroup": "two rental properties cash out review",
+      "pageType": "resource",
+      "owner": "Adam Styer",
+      "reviewed": "2026-09-13",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/scenarios/buying-current-rental-gift-funds.html",
+      "intent": "buying current rental gift funds",
+      "queryGroup": "buying current rental gift funds",
+      "pageType": "resource",
+      "owner": "Adam Styer",
+      "reviewed": "2026-09-13",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/scenarios/build-on-owned-land-before-selling.html",
+      "intent": "build on owned land before selling",
+      "queryGroup": "build on owned land before selling",
+      "pageType": "resource",
+      "owner": "Adam Styer",
+      "reviewed": "2026-09-13",
+      "consolidationStatus": "canonical"
+    },
+    {
+      "url": "https://styermortgage.com/scenarios/assets-limited-income-history.html",
+      "intent": "assets limited income history",
+      "queryGroup": "assets limited income history",
+      "pageType": "resource",
+      "owner": "Adam Styer",
+      "reviewed": "2026-09-13",
       "consolidationStatus": "canonical"
     }
   ]

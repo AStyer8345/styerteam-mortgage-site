@@ -286,6 +286,10 @@ body main .bg-navy h1{color:#fff}
 body main .blog-article>.container{max-width:840px;padding-inline:24px;margin-inline:auto}
 body main .blog-article-title{font-size:clamp(2rem,1.5rem + 1.4vw,2.75rem)!important;margin-bottom:20px}
 body main .blog-article-body h2{font-size:clamp(1.5rem,1.25rem + .7vw,1.875rem)}
+/* Keep text links legible on the warm backgrounds used by guide introductions. */
+body .journey-copy>p>a[href="#dscr-cash-out"],
+body .borrower-followup>a,
+body :is(.map-source,.map-byline)>a{color:#735719}
 @media(max-width:900px){
  body.location-page main .city-hero{grid-template-columns:1fr;padding:36px 24px;gap:28px}
  body.location-page main .hero-two-col:has(.quick-quote-form){grid-template-columns:1fr;gap:28px}
