@@ -449,7 +449,7 @@
                 <div class="bd-card">
                   <div class="bd-card-label">Seller Credit Balance</div>
                   <div class="bd-card-val" id="bd-out-credit-balance">—</div>
-                  <div class="bd-card-sub">After funding buydown</div>
+                  <div class="bd-card-sub">After funding buydown; a negative amount is the funding shortfall</div>
                 </div>
               </div>
 
@@ -530,8 +530,8 @@
                   <th scope="col">Date</th>
                   <th scope="col">Rate</th>
                   <th scope="col">Payment</th>
-                  <th scope="col">Principal</th>
                   <th scope="col">Interest</th>
+                  <th scope="col">Principal</th>
                   <th scope="col">Subsidy</th>
                   <th scope="col">Balance</th>
                 </tr>
@@ -753,7 +753,7 @@
         return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       }
       function fmtDollarInt(n) {
-        return '$' + Math.round(n).toLocaleString();
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
       }
       function fmtPct(n) { return n.toFixed(3).replace(/\.?0+$/, '') + '%'; }
 

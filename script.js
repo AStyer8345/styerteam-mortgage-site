@@ -114,11 +114,31 @@ function initNavigation() {
     mobileMenuToggle.setAttribute('aria-controls', navLinks.id);
   }
 
+  // One owner updates both the visible dropdown and its accessibility state.
+  function syncDropdownStates() {
+    if (!navLinks) return;
+    navLinks.querySelectorAll('.nav-has-dropdown').forEach(item => {
+      const link = item.querySelector(':scope > a');
+      if (link) link.setAttribute('aria-expanded', String(item.classList.contains('open')));
+    });
+  }
+  syncDropdownStates();
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !navLinks || !navLinks.classList.contains('active')) return;
+    navLinks.classList.remove('active');
+    navLinks.querySelectorAll('.open').forEach(item => item.classList.remove('open'));
+    syncDropdownStates();
+    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    mobileMenuToggle.focus();
+  });
+
   // Mobile menu toggle
   if (mobileMenuToggle) {
     mobileMenuToggle.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('active');
       mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+      if (!isOpen) navLinks.querySelectorAll('.open').forEach(item => item.classList.remove('open'));
+      syncDropdownStates();
     });
 
     // Close menu when a link is clicked (event delegation)
@@ -127,6 +147,7 @@ function initNavigation() {
       if (e.target.matches('a') && !e.target.closest('.nav-has-dropdown > a')) {
         navLinks.classList.remove('active');
         navLinks.querySelectorAll('.nav-has-dropdown').forEach(el => el.classList.remove('open'));
+        syncDropdownStates();
         mobileMenuToggle.setAttribute('aria-expanded', 'false');
       }
     });
@@ -145,6 +166,7 @@ function initNavigation() {
         navLinks.querySelectorAll('.nav-has-dropdown').forEach(el => {
           if (el !== dropdownParent) el.classList.remove('open');
         });
+        syncDropdownStates();
       }
     });
   }
@@ -154,6 +176,7 @@ function initNavigation() {
     if (!e.target.closest('nav') && navLinks && navLinks.classList.contains('active')) {
       navLinks.classList.remove('active');
       navLinks.querySelectorAll('.nav-has-dropdown').forEach(el => el.classList.remove('open'));
+        syncDropdownStates();
       if (mobileMenuToggle) {
         mobileMenuToggle.setAttribute('aria-expanded', 'false');
       }

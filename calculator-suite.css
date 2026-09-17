@@ -99,8 +99,8 @@
 .calc-result-row--highlight { background: var(--calc-emerald-light); margin: 0 calc(-1 * var(--spacing-md)); padding: var(--spacing-md); border-radius: var(--radius-md); border: none; }
 .calc-result-row--highlight .calc-result-value { color: var(--calc-emerald); font-size: var(--font-size-lg); }
 
-.calc-layout { display: grid; grid-template-columns: 360px 1fr; gap: var(--spacing-2xl); align-items: start; padding: var(--spacing-xl) 0; }
-@media (max-width: 900px) { .calc-layout { grid-template-columns: 1fr; } }
+.calc-layout { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: var(--spacing-2xl); align-items: start; padding: var(--spacing-xl) 0; }
+@media (max-width: 900px) { .calc-layout { grid-template-columns: minmax(0, 1fr); } }
 .calc-inputs-col { position: sticky; top: 88px; }
 @media (max-width: 900px) { .calc-inputs-col { position: static; } }
 
@@ -239,3 +239,9 @@
   margin-bottom: 0;
 }
 .calc-rule-note strong { color: var(--calc-navy, #1e293b); }
+
+/* Reflow working controls; a graph must not set the page's minimum width. */
+.calc-layout > *, .calc-slider-group, .calc-card { min-width: 0; }
+.calc-donut-wrap canvas { max-width: 100%; }
+.calc-slider-label { flex-wrap: wrap; }
+@media(max-width: 400px) { .calc-card { padding: 20px 16px; } }

@@ -295,3 +295,6 @@ body :is(.map-source,.map-byline)>a{color:#735719}
  body.location-page main .hero-two-col:has(.quick-quote-form){grid-template-columns:1fr;gap:28px}
  body.location-page main .quick-quote-form{padding:24px 20px}
 }
+
+/* Keep the public assistant out of an expanded navigation task. */
+body:has(header .nav-links.active) .mortgage-assistant { visibility: hidden; pointer-events: none; }

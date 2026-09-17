@@ -22,9 +22,7 @@
  if(nav&&!nav.querySelector('a[href^="sms:"]')){
   var li=document.createElement('li');li.className='experience-mobile-text';var text=document.createElement('a');text.href='sms:+15129566010';text.textContent='Text Adam';li.appendChild(text);nav.appendChild(li);
  }
- var menu=document.querySelector('.mobile-menu-toggle');
- document.addEventListener('keydown',function(event){if(event.key==='Escape'&&nav&&nav.classList.contains('active')){nav.classList.remove('active');nav.querySelectorAll('.open').forEach(function(el){el.classList.remove('open');});menu.setAttribute('aria-expanded','false');menu.focus();}});
- document.querySelectorAll('header .nav-has-dropdown>a').forEach(function(a){a.setAttribute('aria-expanded','false');a.addEventListener('click',function(){a.setAttribute('aria-expanded',String(a.parentElement.classList.contains('open')));});});
+ // Navigation state and Escape handling are owned by script.js.
  document.querySelectorAll('main table').forEach(function(table){
   if(table.closest('.experience-table-scroll, .program-table-scroll, .ci-table-wrap'))return;
   var wrapper=document.createElement('div');wrapper.className='experience-table-scroll';wrapper.tabIndex=0;wrapper.setAttribute('role','region');wrapper.setAttribute('aria-label',(table.caption&&table.caption.textContent)||'Comparison table — scroll horizontally if needed');table.before(wrapper);wrapper.appendChild(table);
