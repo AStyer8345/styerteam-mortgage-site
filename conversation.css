@@ -1,6 +1,6 @@
 /* The homepage invitation and its existing Contact destination. */
 body.home-pilot main .home-conversation{align-self:start;border:1px solid #d8d3c8;border-top:3px solid #b99642;border-radius:8px;background:#faf9f6;padding:clamp(1.25rem,2.5vw,2rem);min-width:0}
-body.home-pilot main .home-conversation h2{font-family:var(--font-primary,Inter,sans-serif);font-size:clamp(1.5rem,1.2rem + .7vw,1.875rem)!important;font-weight:650;line-height:1.25;letter-spacing:-.025em;margin:0 0 1rem;max-width:23ch;color:#102440;text-wrap:balance}
+body.home-pilot main .home-conversation h2{font-family:var(--font-primary,Inter,sans-serif);font-size:clamp(1.5rem,1.2rem + .7vw,1.875rem)!important;font-weight:650;line-height:1.25;letter-spacing:-.025em;margin:0 0 1rem;max-width:23ch;color:#182e3e;text-wrap:balance}
 body.home-pilot main .home-conversation>p{font-size:1rem;line-height:1.65;color:#526174;margin:0 0 1.4rem;max-width:47ch}
 body.home-pilot main .home-conversation-button{display:flex;width:100%;min-height:50px;align-items:center;justify-content:center;font-size:1rem;line-height:1.4;text-align:center;white-space:normal}
 body.home-pilot main .home-conversation-contact{display:flex;align-items:center;gap:1rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #d8d3c8}
@@ -8,8 +8,8 @@ body.home-pilot main .home-conversation-contact img{display:block;width:64px;hei
 body.home-pilot main .home-conversation-contact p{font-size:.875rem;line-height:1.5;color:#526174;margin:0}
 .home-conversation-links{display:flex;flex-wrap:wrap;gap:0 1.25rem}
 body.home-pilot main .home-conversation>p.home-conversation-programs{font-size:.9375rem;line-height:1.55;margin:1rem 0 0}
-body.home-pilot main .home-conversation-programs a{display:inline-flex;align-items:center;gap:.35rem;min-height:44px;color:#102440;font-weight:600;text-decoration:underline;text-underline-offset:4px}
-body.home-pilot main .home-conversation-links a{display:inline-flex;align-items:center;min-height:44px;color:#102440;font-size:.9375rem;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+body.home-pilot main .home-conversation-programs a{display:inline-flex;align-items:center;gap:.35rem;min-height:44px;color:#182e3e;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+body.home-pilot main .home-conversation-links a{display:inline-flex;align-items:center;min-height:44px;color:#182e3e;font-size:.9375rem;font-weight:600;text-decoration:underline;text-underline-offset:4px}
 body main .conversation-card{box-shadow:none;scroll-margin-top:115px}
 body.contact-conversation .contact-grid>*{min-width:0}
 body.contact-conversation .contact-info,body.contact-conversation .info-box{overflow-wrap:anywhere}

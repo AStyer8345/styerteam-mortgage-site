@@ -1,5 +1,5 @@
 /* Authored reading order for the complex-income guides. */
-body[data-complex-income]{--ci-ink:#102440;--ci-muted:#526174;--ci-line:#d8dfe5;--ci-paper:#f7f5ef}
+body[data-complex-income]{--ci-ink:#182e3e;--ci-muted:#526174;--ci-line:#d8dfe5;--ci-paper:#f7f5ef}
 body[data-complex-income] main{color:var(--ci-ink)}
 body[data-complex-income] main>.ci-section,body[data-complex-income] main>.ci-form-section{padding:clamp(2rem,4vw,3.5rem) 0}
 body[data-complex-income] main .container{width:100%;max-width:1100px;margin-inline:auto;padding-inline:24px}
@@ -25,7 +25,7 @@ body[data-complex-income] .ci-card{min-width:0;background:white;border:1px solid
 body[data-complex-income] .ci-card p:last-child{margin-bottom:0}
 body[data-complex-income] .ci-note{padding:1.1rem 1.25rem;margin:1.25rem 0;background:#f1f4f7;border-left:3px solid #6c8299;border-radius:0 6px 6px 0}
 body[data-complex-income] .ci-note p:last-child{margin-bottom:0}
-body[data-complex-income] .ci-example{background:#102440;border-radius:9px;padding:clamp(1.25rem,3vw,2rem);margin:1.5rem 0;color:white}
+body[data-complex-income] .ci-example{background:#182e3e;border-radius:9px;padding:clamp(1.25rem,3vw,2rem);margin:1.5rem 0;color:white}
 body[data-complex-income] .ci-example :is(p,h3,h4,strong,span,li){color:inherit}
 body[data-complex-income] .ci-example a{color:#f0d597}
 body[data-complex-income] .ci-example p:last-child{margin-bottom:0}
@@ -33,19 +33,19 @@ body[data-complex-income] .ci-example .ci-result{font-size:clamp(1.5rem,4vw,2.2r
 body[data-complex-income] .ci-table-wrap{max-width:100%;overflow-x:auto;background:white;border:1px solid var(--ci-line);border-radius:8px;margin:1.4rem 0}
 body[data-complex-income] .ci-table{width:100%;min-width:660px;border-collapse:collapse;text-align:left;font-size:.96rem;line-height:1.6}
 body[data-complex-income] .ci-table th,body[data-complex-income] .ci-table td{padding:1rem;vertical-align:top;border-bottom:1px solid var(--ci-line)}
-body[data-complex-income] .ci-table th{background:#102440;color:white;font-weight:600}
+body[data-complex-income] .ci-table th{background:#182e3e;color:white;font-weight:600}
 body[data-complex-income] .ci-table td{color:#25374c}
-body[data-complex-income] .ci-table th[scope=row]{background:#edf1f5;color:#102440}
+body[data-complex-income] .ci-table th[scope=row]{background:#f6f3ed;color:#182e3e}
 body[data-complex-income] .ci-table caption{padding:1rem;text-align:left;font-weight:600}
 body[data-complex-income] .ci-proof{border-left:3px solid #b18e43;padding:1.1rem 1.4rem;margin:1.5rem 0;background:white;color:#25374c}
 body[data-complex-income] .ci-proof blockquote{padding:0;margin:0 0 .75rem;font-size:1.1rem}
 body[data-complex-income] .ci-proof p:last-child{margin-bottom:0}
 body[data-complex-income] details.ci-faq{border-bottom:1px solid #c9d2db;padding:0}
-body[data-complex-income] .ci-faq summary{cursor:pointer;padding:1.1rem .25rem;color:#102440;font-weight:600;line-height:1.5}
+body[data-complex-income] .ci-faq summary{cursor:pointer;padding:1.1rem .25rem;color:#182e3e;font-weight:600;line-height:1.5}
 body[data-complex-income] .ci-faq>:not(summary){padding:0 .25rem .75rem}
 body[data-complex-income] .ci-faq>p{margin:0;padding-bottom:1.15rem}
-body[data-complex-income] .ci-form-section{background:#edf1f5}
-body[data-complex-income] .ci-form-section .journey-card{width:100%;max-width:780px;margin:1.5rem auto 0;box-shadow:0 8px 26px #1024400c}
+body[data-complex-income] .ci-form-section{background:#f6f3ed}
+body[data-complex-income] .ci-form-section .journey-card{width:100%;max-width:780px;margin:1.5rem auto 0;box-shadow:0 8px 26px #182e3e0c}
 body[data-complex-income] .ci-form-section>.container>:is(h2,p){max-width:780px;margin-inline:auto}
 body[data-complex-income] .ci-section :is(a,summary,[tabindex]):focus-visible{outline:3px solid #9d7b2a;outline-offset:4px}
 body[data-complex-income] main [id]{scroll-margin-top:115px}
@@ -62,9 +62,9 @@ body[data-complex-income] .ci-example .ci-note{background:#203a58;border-color:#
 body[data-answer-first] .journey-hero .journey-grid{display:block;max-width:1100px}
 body[data-answer-first] .journey-hero .journey-copy{max-width:850px;margin:0}
 body[data-answer-first] .journey-hero .journey-intro{max-width:70ch}
-body[data-answer-first] .ci-form-section{padding:3rem 0;background:#edf1f5}
+body[data-answer-first] .ci-form-section{padding:3rem 0;background:#f6f3ed}
 body[data-answer-first] .ci-form-section>.container{width:100%;max-width:850px;margin-inline:auto;padding-inline:24px}
-body[data-answer-first] .ci-form-section .journey-card{margin:0;box-shadow:0 8px 26px #1024400c}
+body[data-answer-first] .ci-form-section .journey-card{margin:0;box-shadow:0 8px 26px #182e3e0c}
 body[data-answer-first] .journey-hero .journey-byline a{color:inherit}
 @media(max-width:600px){body[data-answer-first] .journey-hero{padding:1.75rem 0}body[data-answer-first] .journey-hero .journey-actions{flex-direction:row}body[data-answer-first] .journey-actions a{flex:1 1 145px;padding:.7rem;font-size:.9375rem}body[data-answer-first] .ci-form-section>.container{padding-inline:20px}}
 
