@@ -1,3 +1,8 @@
+## 2026-09-18 — IndexNow for Bing / ChatGPT / Copilot
+
+- Self-issued IndexNow key hosted at `/31a45519eb8335e7c25e45e696e834c6.txt`; `scripts/indexnow-submit.mjs` runs at the end of `npm run build` on production deploys and submits the public pages changed since the last built commit (never fails the build). Manual: `npm run indexnow -- /page.html` or `--all`. Google ignores IndexNow; it covers Bing and the engines that read Bing's index.
+- Sitemap `lastmod` set to 2026-09-18 on the eight rewritten pages.
+
 ## 2026-09-18 — Quotable rewrite on eight product pages (AEO pass 1)
 
 - P&L, bank statement, asset depletion, high-net-worth, K-1, 1099-only and the jumbo and DSCR requirement posts: new declarative openings with concrete figures (ranges across the programs Adam places; no investor names), one collapsed `<details class="advisory-inside">` block per page ("What actually moves the file" / "From a real file") linking to existing scenario and case-study pages, and tightened FAQ answers under unchanged questions. FAQPage JSON-LD updated to match. `dateModified` bumped.
