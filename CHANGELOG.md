@@ -3122,3 +3122,13 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Verified that first-touch page/source and CTA page/label already flow through `assets/utm.js`, `/get-preapproved.html`, and `netlify/functions/lead-intake.js` into LoanOS. Preserved this implementation; new CTAs use explicit `source=tenant_purchase_article` and `source=new_braunfels` values.
 - Verification: 101 site tests + 115 assistant tests passed; TypeScript passed; the knowledge, form-notification, and build checks passed; SEO audit reported 156 sitemap URLs and 0 issues. Preview and production HTTP checks passed for all changed public surfaces.
 - Released commit `5df09ac` to GitHub `main`. Netlify production deploy `6aa18c13d8e80700080e3424` is ready on the full matching commit, with mobile Lighthouse Performance 83, Accessibility 90, Best Practices 100, and SEO 100.
+
+
+## 2026-09-18 — Focus the bank-statement page on borrower inquiries
+
+- Lead with the self-employed cash-flow question and explain the personal scenario review and next step.
+- Clarify that financial documents are not needed for the initial inquiry; make the optional message prompt specific to income, deposits, and financing plans.
+- Align search, social, Article, and MortgageLoan descriptions with the same invitation.
+- Preserve all headings, qualification details, FAQ questions and answers, internal links, form/capture/consent/attribution contracts, shared assets, and legal language.
+- Validation: 125 site tests and 119 assistant tests passed; TypeScript, 162-URL SEO audit, and all build audits passed. Local browser checks passed at 390/768/1440px, including mocked acceptance, failed-submit recovery, duplicate prevention, attribution, and the native no-JavaScript form. No live test lead was submitted.
+- Matching borrower, realtor, and CPA drafts with campaign tracking links were prepared separately; no outreach was sent or paid campaign activated.
