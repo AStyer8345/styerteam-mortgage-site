@@ -21,8 +21,8 @@
   <link rel="stylesheet" href="calculator-suite.css">
   <link rel="stylesheet" href="/editorial-system.css?v=20260829">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -45,8 +45,8 @@
   })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
   <!-- End Google Tag Manager -->
 <link rel="stylesheet" href="/experience.css">
-<link rel="stylesheet" href="/advisory-design.css?v=20260917">
-<script src="/advisory-contact.js?v=20260917" defer></script>
+<link rel="stylesheet" href="/advisory-design.css?v=20260918">
+<script src="/advisory-contact.js?v=20260918" defer></script>
 </head>
 <body class="editorial-page calculator-page advisory-site advisory-calculator">
   <!-- Google Tag Manager (noscript) -->
@@ -283,14 +283,17 @@
     var values = [Math.round(pi), Math.round(tax), Math.round(ins)];
     if (tax === 0 && ins === 0) { labels = ['Principal & interest']; values = [Math.round(pi)]; }
 
-    if (typeof Chart !== 'undefined') {
+    // A one-slice chart says nothing; show the breakdown only once taxes or insurance are entered.
+    var donutWrap = document.querySelector('.calc-donut-wrap');
+    if (donutWrap) donutWrap.hidden = values.length < 2;
+    if (typeof Chart !== 'undefined' && values.length >= 2) {
       if (donutChart) donutChart.destroy();
       donutChart = Suite.createDonutChart('payment-donut', {
         labels: labels,
         values: values,
         colors: ['#182e3e', '#7c6345', '#8b949a']
       });
-    }
+    } else if (donutChart) { donutChart.destroy(); donutChart = null; }
   }
 
   Suite.createSlider(container, {

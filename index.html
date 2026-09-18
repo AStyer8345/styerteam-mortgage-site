@@ -55,12 +55,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fonts load async — eliminates render-blocking -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
 
   <!-- Critical CSS — inlined for instant first paint (hero + header + nav) -->
   <style>
-    :root{--color-navy:#0A1F3F;--color-gold:#8B6E24;--color-white:#FFFFFF;--color-light-gray:#F7F7F7;--color-gray:#6B7280;--color-text:#1F2937;--color-text-muted:#6B7280;--color-border:#E5E7EB;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--font-display:'Playfair Display',serif;--font-size-xs:0.75rem;--font-size-sm:0.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:clamp(1.125rem,1.05rem + 0.3vw,1.25rem);--font-size-2xl:clamp(1.25rem,1.1rem + 0.6vw,1.5rem);--font-size-3xl:clamp(1.5rem,1.2rem + 1.2vw,1.875rem);--font-size-5xl:clamp(1.9rem,1.35rem + 2.1vw,2.7rem);--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--line-height-tight:1.2;--spacing-xs:0.25rem;--spacing-sm:0.5rem;--spacing-md:1rem;--spacing-lg:1.5rem;--spacing-xl:2rem;--spacing-2xl:2.5rem;--spacing-3xl:3rem;--radius-sm:0.375rem;--radius-lg:0.75rem;--radius-2xl:1.5rem;--shadow-md:0 4px 6px -1px rgba(0,0,0,0.1);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1);--transition-fast:150ms ease-in-out;--transition-base:200ms ease-in-out;--z-dropdown:1000}
+    :root{--color-navy:#0A1F3F;--color-gold:#8B6E24;--color-white:#FFFFFF;--color-light-gray:#F7F7F7;--color-gray:#6B7280;--color-text:#1F2937;--color-text-muted:#6B7280;--color-border:#E5E7EB;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--font-display:var(--font-display,'Source Serif 4',Georgia,serif);--font-size-xs:0.75rem;--font-size-sm:0.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:clamp(1.125rem,1.05rem + 0.3vw,1.25rem);--font-size-2xl:clamp(1.25rem,1.1rem + 0.6vw,1.5rem);--font-size-3xl:clamp(1.5rem,1.2rem + 1.2vw,1.875rem);--font-size-5xl:clamp(1.9rem,1.35rem + 2.1vw,2.7rem);--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--line-height-tight:1.2;--spacing-xs:0.25rem;--spacing-sm:0.5rem;--spacing-md:1rem;--spacing-lg:1.5rem;--spacing-xl:2rem;--spacing-2xl:2.5rem;--spacing-3xl:3rem;--radius-sm:0.375rem;--radius-lg:0.75rem;--radius-2xl:1.5rem;--shadow-md:0 4px 6px -1px rgba(0,0,0,0.1);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1);--transition-fast:150ms ease-in-out;--transition-base:200ms ease-in-out;--z-dropdown:1000}
     *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--font-primary);font-size:var(--font-size-base);line-height:1.75;color:var(--color-text);background-color:var(--color-white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
     h1,h2,h3,h4,h5,h6{font-family:var(--font-display);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight);color:var(--color-navy);margin-bottom:var(--spacing-md);text-wrap:balance}h1{font-size:var(--font-size-5xl)}
     a{color:var(--color-gold);text-decoration:none;transition:color var(--transition-fast)}img{max-width:100%;height:auto;display:block}
@@ -384,8 +384,8 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
 @media(max-width:600px){body.home-pilot main .home-conversation .journey-fields{grid-template-columns:1fr}}
 </style>
   <link rel="stylesheet" href="/modern-homepage.css?v=20260916">
-<link rel="stylesheet" href="/advisory-design.css?v=20260917">
-<script src="/advisory-contact.js?v=20260917" defer></script>
+<link rel="stylesheet" href="/advisory-design.css?v=20260918">
+<script src="/advisory-contact.js?v=20260918" defer></script>
 </head>
 <body class="editorial-page home-pilot advisory-site">
   <!-- Google Tag Manager (noscript) -->
@@ -502,7 +502,7 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
     </section>
 
     <!-- SOCIAL PROOF STATS STRIP -->
-    <section class="bg-navy stats-strip">
+    <section class="stats-strip home-proof-strip" aria-label="Track record">
       <div class="container">
         <div class="stats-grid stats-grid-4">
           <div class="stat-item stat-strip-item" data-animate>
@@ -525,7 +525,7 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
       </div>
     </section>
 
-    <section class="modern-goals" aria-labelledby="modern-goals-title"><div class="container">
+    <section class="modern-goals home-index home-index-first" aria-labelledby="modern-goals-title"><div class="container">
       <div class="modern-section-heading"><p class="modern-eyebrow">A clear place to start</p><h2 id="modern-goals-title">Financing for what comes next.</h2><p>Start with your goal. Explore the options at your own pace.</p></div>
       <div class="modern-goal-grid">
         <a href="/first-time-home-buyer.html"><span class="modern-card-number">01 / PURCHASE</span><h3>Buy a home</h3><p>Your first home, your next home, or room for a new chapter.</p><span class="modern-card-link">Explore home financing →</span></a>
@@ -536,11 +536,23 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
         <a href="/products.html"><span class="modern-card-number">06 / EXPLORE</span><h3>Find your starting point</h3><p>Browse programs or talk with Adam about where to begin.</p><span class="modern-card-link">See mortgage options →</span></a>
       </div>
     </div></section>
-    <section class="modern-equity-feature" aria-labelledby="equity-feature-title"><div class="container"><div class="modern-programs-heading"><div><p class="modern-eyebrow">Your property. Your next priority.</p><h2 id="equity-feature-title">Access your equity. Keep your goals in view.</h2><p>Explore financing for your home or rental property with a clear view of the costs.</p></div><a href="/home-equity-loans-texas.html#compare-equity-options" class="modern-all-programs">Compare equity options ↗</a></div><div class="modern-programs-grid">
+    <section class="modern-equity-feature home-index home-index-group" aria-labelledby="equity-feature-title"><div class="container"><div class="modern-programs-heading"><div><p class="modern-eyebrow">Your property. Your next priority.</p><h2 id="equity-feature-title">Access your equity. Keep your goals in view.</h2><p>Explore financing for your home or rental property with a clear view of the costs.</p></div><a href="/home-equity-loans-texas.html#compare-equity-options" class="modern-all-programs">Compare equity options ↗</a></div><div class="modern-programs-grid">
 <a class="modern-program-tile" href="/home-equity-loans-texas.html#cash-out-refinance"><h3>Cash-out refinance</h3><p>Review replacing your current mortgage to access equity, with new terms on the full loan.</p><span class="modern-program-action">Explore cash-out refinancing <span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
 <a class="modern-program-tile" href="/dscr-loan-austin-tx.html#dscr-cash-out"><h3>DSCR cash-out</h3><p>Explore rental-property equity with financing that evaluates the property's rental income.</p><span class="modern-program-action">Explore rental-property cash-out <span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
 <a class="modern-program-tile" href="/home-equity-loans-texas.html#heloan"><h3>Home equity loans</h3><p>A separate loan may let you access funds while keeping your first mortgage in place.</p><span class="modern-program-action">Explore HELOANs &amp; HELOCs <span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
 </div></div></section>
+    <!-- LOAN PROGRAMS PREVIEW -->
+    <section class="modern-programs home-index home-index-group home-index-last" id="mortgage-programs" aria-labelledby="mortgage-programs-title"><div class="container">
+      <div class="modern-programs-heading"><div><p class="modern-eyebrow">Explore your options</p><h2 id="mortgage-programs-title">Find your financing fit.</h2><p>Know what you’re looking for? Take a closer look at the programs.</p></div><a href="/products.html" class="modern-all-programs">View all mortgage options <span aria-hidden="true">↗</span></a></div>
+      <div class="modern-programs-grid">
+        <a class="modern-program-tile" href="/loans/conventional.html"><h3>Conventional</h3><p>A familiar starting point for home purchases and refinancing.</p><span class="modern-program-action">Explore conventional loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
+        <a class="modern-program-tile" href="/loans/fha.html"><h3>FHA</h3><p>Explore government-backed financing for your home purchase.</p><span class="modern-program-action">Explore FHA loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
+        <a class="modern-program-tile" href="/loans/va.html"><h3>VA</h3><p>Home financing for eligible veterans, service members, and surviving spouses.</p><span class="modern-program-action">Explore VA loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
+        <a class="modern-program-tile" href="/loans/jumbo.html"><h3>Jumbo</h3><p>Explore financing options for a higher-priced home.</p><span class="modern-program-action">Explore jumbo loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
+        <a class="modern-program-tile" href="/products.html#non-qm"><h3>Specialty & Non-QM</h3><p>Explore alternatives for self-employed income and more complex finances.</p><span class="modern-program-action">Explore specialty loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
+        <a class="modern-program-tile" href="/dscr-loan-austin-tx.html"><h3>Investor & DSCR</h3><p>Explore rental-property financing and property cash-flow options.</p><span class="modern-program-action">Explore investor loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
+      </div>
+    </div></section>
     <section class="modern-intelligence" aria-labelledby="modern-intelligence-title"><div class="container modern-intelligence-layout">
       <div><p class="modern-eyebrow">The people. The thinking. The technology.</p><h2 id="modern-intelligence-title">Personal expertise.<br>Modern technology.</h2><p class="modern-intelligence-lede">A thoughtful mortgage starts with understanding the person behind it.</p><p>HyperSmart brings lending experience together with artificial intelligence and modern automation. As your mortgage advisor, I bring the personal conversation: what you’re planning, what matters to you, and which financing options are worth exploring.</p><a href="/about.html" class="modern-light-link">Meet Adam →</a></div>
       <div class="modern-principles"><div><span>01</span><h3>Your goals come first</h3><p>We start with your plans, timeline, and financial picture.</p></div><div><span>02</span><h3>Understand your options</h3><p>Talk through loan structure, costs, and the tradeoffs that matter to you.</p></div><div><span>03</span><h3>A person to talk to</h3><p>Work directly with Adam for guidance and a clear next step.</p></div></div>
@@ -555,18 +567,6 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
 <article><p class="advisory-case-status">Investor · Cash-out review</p><h3><a href="/scenarios/two-rental-properties-cash-out-review.html">Equity was only part of the answer.</a></h3><p>Two rentals needed separate reviews of value, existing debt, rent, proposed payment, and costs. The proposal showed less estimated cash out than requested, with conditions still to resolve.</p></article>
 <article><p class="advisory-case-status">Assets · Strategy review</p><h3><a href="/scenarios/assets-limited-income-history.html">Substantial assets. Limited income history.</a></h3><p>Review the questions that matter when the balance sheet is stronger than the conventional income history.</p></article>
 </div><p class="advisory-case-note">These are consultation and file-review examples, not promises of approval or closed-loan results. <a href="/scenarios.html">Explore all scenarios →</a></p></div></section>
-    <!-- LOAN PROGRAMS PREVIEW -->
-    <section class="modern-programs" id="mortgage-programs" aria-labelledby="mortgage-programs-title"><div class="container">
-      <div class="modern-programs-heading"><div><p class="modern-eyebrow">Explore your options</p><h2 id="mortgage-programs-title">Find your financing fit.</h2><p>Know what you’re looking for? Take a closer look at the programs.</p></div><a href="/products.html" class="modern-all-programs">View all mortgage options <span aria-hidden="true">↗</span></a></div>
-      <div class="modern-programs-grid">
-        <a class="modern-program-tile" href="/loans/conventional.html"><h3>Conventional</h3><p>A familiar starting point for home purchases and refinancing.</p><span class="modern-program-action">Explore conventional loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
-        <a class="modern-program-tile" href="/loans/fha.html"><h3>FHA</h3><p>Explore government-backed financing for your home purchase.</p><span class="modern-program-action">Explore FHA loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
-        <a class="modern-program-tile" href="/loans/va.html"><h3>VA</h3><p>Home financing for eligible veterans, service members, and surviving spouses.</p><span class="modern-program-action">Explore VA loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
-        <a class="modern-program-tile" href="/loans/jumbo.html"><h3>Jumbo</h3><p>Explore financing options for a higher-priced home.</p><span class="modern-program-action">Explore jumbo loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
-        <a class="modern-program-tile" href="/products.html#non-qm"><h3>Specialty & Non-QM</h3><p>Explore alternatives for self-employed income and more complex finances.</p><span class="modern-program-action">Explore specialty loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
-        <a class="modern-program-tile" href="/dscr-loan-austin-tx.html"><h3>Investor & DSCR</h3><p>Explore rental-property financing and property cash-flow options.</p><span class="modern-program-action">Explore investor loans<span class="modern-program-arrow" aria-hidden="true">→</span></span></a>
-      </div>
-    </div></section>
 
     <!-- QUICK CONTACT (Smart Form) -->
     <section class="quick-contact-section" id="homepage-next-steps" style="scroll-margin-top:90px;">

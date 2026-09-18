@@ -26,6 +26,16 @@
     return;
   }
 
+  // Reading measure: paragraphs are capped at 68ch by advisory-design.css.
+  // A capped paragraph inside centered copy is re-centered here, since CSS
+  // cannot see computed text-align.
+  try {
+    var main = d.querySelector('main');
+    if (main) main.querySelectorAll('p').forEach(function (p) {
+      if (getComputedStyle(p).textAlign === 'center') p.classList.add('advisory-centered');
+    });
+  } catch (e) {}
+
   // Pages that ARE the form get no bar and no panel.
   var formPages = /^\/(get-preapproved|contact|scenario|prequal|refinance-quote|rate-check[^/]*|rate-alert)\.html$/;
   if (formPages.test(location.pathname)) return;

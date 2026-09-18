@@ -3,6 +3,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 // One footer for every public page. Edit site-footer.html, then run
 // `node scripts/sync-advisory-design.mjs` to propagate it.
+// Bump when advisory-design.css, advisory-contact.js or calculator-sticky-result.js change.
+const ASSET_VERSION = '20260918';
 const SITE_FOOTER = fs.readFileSync(path.join(__dirname, 'site-footer.html'), 'utf8').trim();
 function refineAdvisoryDesign(html) {
   if (!/class="nav-links"|class="site-header lp-header"/.test(html)) return html;
@@ -17,8 +19,11 @@ function refineAdvisoryDesign(html) {
     const combined = [...new Set([...(present ? present[1].split(/\s+/) : []), ...classes])].filter(Boolean).join(' ');
     return '<body' + (present ? attributes.replace(present[0], `class="${combined}"`) : attributes + ` class="${combined}"`) + '>';
   });
-  if (!html.includes('/advisory-design.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/advisory-design.css?v=20260917">\n</head>');
-  if (!html.includes('/advisory-contact.js')) html = html.replace('</head>', '<script src="/advisory-contact.js?v=20260917" defer></script>\n</head>');
+  if (!html.includes('/advisory-design.css')) html = html.replace('</head>', `<link rel="stylesheet" href="/advisory-design.css?v=${ASSET_VERSION}">\n</head>`);
+  if (!html.includes('/advisory-contact.js')) html = html.replace('</head>', `<script src="/advisory-contact.js?v=${ASSET_VERSION}" defer></script>\n</head>`);
+  html = html.replace(/\/(advisory-design\.css|advisory-contact\.js|calculator-sticky-result\.js)\?v=\d+/g, `/$1?v=${ASSET_VERSION}`);
+  // The display serif is self-hosted (advisory-design.css). Google Fonts serves Inter only.
+  html = html.replace(/(&amp;|&)family=Playfair\+Display:[^&"']*/g, '');
   html = html.replace(/Awards &amp; Recognition|Awards & Recognition/g, 'Client Reviews');
   html = html.replace(/<footer\b[\s\S]*?<\/footer>/, () => SITE_FOOTER);
   // A mobile contents disclosure retains all links; script.js opens it on desktop.

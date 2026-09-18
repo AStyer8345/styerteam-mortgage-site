@@ -1,5 +1,5 @@
 // Keeps the live answer reachable on phones while someone edits a long input group.
-// Used by the DSCR and asset-depletion calculators; the payment and affordability
+// Used by the DSCR, asset-depletion, rate-buydown and WRAP calculators; the payment and affordability
 // calculators have the same behavior built into calculator-suite.js.
 // The full result, assumptions and disclaimers stay in their original location.
 (function () {
@@ -8,7 +8,11 @@
     { main: '#dscr-calc-main', inputs: '.dscr-grid > .dscr-card', result: '.dscr-score-card',
       label: 'Estimated DSCR', value: '#dscr-score', suffix: 'x' },
     { main: '#adc-main', inputs: '.adc-grid > div:first-child', result: '.adc-hero',
-      label: 'Illustrative monthly asset income', value: '#adc-hero-amount', detail: '#adc-hero-period' }
+      label: 'Illustrative monthly asset income', value: '#adc-hero-amount', detail: '#adc-hero-period' },
+    { main: '#calc-main', inputs: '.bd-inputs-panel', result: '.bd-summary-cards',
+      label: 'Year 1 payment', value: '#bd-out-yr1-pmt' },
+    { main: '#wrap-calc', inputs: '.calc-inputs-col', result: '.wrap-dual-cards',
+      label: 'Buyer monthly P&I', value: '#w-out-buyer-payment' }
   ];
   function init() {
     if (typeof IntersectionObserver === 'undefined' || typeof MutationObserver === 'undefined') return;

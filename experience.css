@@ -1,8 +1,8 @@
-/* Shared public-site refinement. Keep the existing Inter / Playfair brand. */
+/* Shared public-site refinement. Inter for UI, Source Serif 4 (self-hosted via advisory-design.css) for display. */
 :root{--experience-navy:#182e3e;--experience-gold:#e6c67b;--experience-ink:#25374c;--experience-muted:#526174;--experience-border:#bcc6d1;--experience-measure:70ch}
 html{font-size:16px}
 body{line-height:1.7;--color-gray:#526174;--color-text-muted:#526174}
-body h1,body main h1{font-family:var(--font-display,'Playfair Display',serif);font-size:clamp(2.125rem,1.35rem + 2.2vw,3.25rem)!important;line-height:1.12!important}
+body h1,body main h1{font-family:var(--font-display,var(--font-display,'Source Serif 4',Georgia,serif));font-size:clamp(2.125rem,1.35rem + 2.2vw,3.25rem)!important;line-height:1.12!important}
 body main h2{font-size:clamp(1.65rem,1.25rem + 1.2vw,2.35rem);line-height:1.2}
 body main h3{font-size:clamp(1.2rem,1.05rem + .5vw,1.5rem);line-height:1.3}
 .article-body,.blog-content,.content-narrow{line-height:1.75}
