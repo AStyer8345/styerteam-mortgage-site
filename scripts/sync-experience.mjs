@@ -28,7 +28,7 @@ export function refine(html) {
     return open+content+close;
   });
   html=html.replace(/<header\b[^>]*>[\s\S]*?<\/header>/,sharedHeader);
-  if(!html.includes('fonts.googleapis.com/css2?family=Inter'))html=html.replace('</head>','<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap">\n</head>');
+  if(!html.includes('fonts.googleapis.com/css2?family=Inter'))html=html.replace('</head>','<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">\n</head>');
   if (!html.includes('/experience.css')) html = html.replace('</head>', style+'\n</head>');
   if (!html.includes('/experience.js')) html = html.replace('</body>', behavior+'\n</body>');
   if (!/<script\b[^>]*src="(?:[^\"]*\/)?script\.js(?:\?[^\"]*)?"/.test(html)) html = html.replace('</body>', '<script src="/script.js" defer></script>\n</body>');

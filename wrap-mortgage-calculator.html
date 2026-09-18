@@ -32,8 +32,8 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css?v=20260830-cta1">
@@ -96,7 +96,7 @@
   <style>
     /* ── Hero ── */
     .wrap-hero { background: var(--color-navy); color: #fff; padding: 3rem 0 2rem; text-align: center; }
-    .wrap-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem,4.5vw,3rem); margin-bottom: .75rem; color: #fff; }
+    .wrap-hero h1 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: clamp(1.9rem,4.5vw,3rem); margin-bottom: .75rem; color: #fff; }
     .wrap-hero .hero-sub { font-size: 1.1rem; opacity: .85; max-width: 620px; margin: 0 auto 1.5rem; }
     .wrap-hero .hero-badges { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
     .wrap-hero .badge { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 99px; padding: .3rem .9rem; font-size: .8rem; color: #fff; }
@@ -145,7 +145,7 @@
 
     /* ── Output panel ── */
     .wrap-output-panel { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 1.75rem; box-shadow: var(--shadow-premium); }
-    .wrap-output-panel h2 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--color-navy); margin-bottom: 1.25rem; }
+    .wrap-output-panel h2 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: 1.35rem; color: var(--color-navy); margin-bottom: 1.25rem; }
     .wrap-output-row { display: flex; justify-content: space-between; align-items: baseline; padding: .65rem 0; border-bottom: 1px solid #f0f4f8; gap: 1rem; }
     .wrap-output-row:last-of-type { border-bottom: none; }
     .wrap-output-label { font-size: .88rem; color: var(--color-gray); }
@@ -164,7 +164,7 @@
 
     /* ── CTA ── */
     .wrap-cta { background: var(--color-navy); color: #fff; padding: 4rem 0; text-align: center; }
-    .wrap-cta h2 { font-family: 'Playfair Display', serif; font-size: 1.85rem; color: #fff; margin-bottom: .75rem; }
+    .wrap-cta h2 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: 1.85rem; color: #fff; margin-bottom: .75rem; }
     .wrap-cta p { opacity: .85; max-width: 540px; margin: 0 auto 2rem; }
 
     /* ── For realtors callout ── */
@@ -250,8 +250,8 @@
   })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
   <!-- End Google Tag Manager -->
 <link rel="stylesheet" href="/experience.css">
-<link rel="stylesheet" href="/advisory-design.css?v=20260917">
-<script src="/advisory-contact.js?v=20260917" defer></script>
+<link rel="stylesheet" href="/advisory-design.css?v=20260918">
+<script src="/advisory-contact.js?v=20260918" defer></script>
 </head>
 <body class="editorial-page calculator-page advisory-site advisory-calculator">
   <!-- Google Tag Manager (noscript) -->
@@ -964,6 +964,7 @@
     calcWrap();
   }());
   </script>
+<script src="/calculator-sticky-result.js?v=20260918" defer></script>
 <script src="/experience.js" defer></script>
 </body>
 </html>

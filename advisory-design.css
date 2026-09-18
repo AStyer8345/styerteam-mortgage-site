@@ -120,7 +120,7 @@ body.advisory-site {
  .advisory-calculator.calc-editing-visible .mortgage-assistant{display:none}
  .advisory-calculator.calc-editing-visible .calc-mobile-summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center;position:fixed;inset:auto 0 0;z-index:100;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--advisory-ink);color:white;border-top:1px solid var(--advisory-rule);text-decoration:none}
  .calc-mobile-summary span{font-size:13px;line-height:1.4}
- .calc-mobile-summary strong{font:600 24px/1.2 var(--font-primary);font-variant-numeric:tabular-nums}
+ .calc-mobile-summary strong{font:600 22px/1.2 var(--font-primary);font-variant-numeric:tabular-nums;white-space:nowrap}
  .calc-mobile-summary small{grid-column:1/-1;font-size:12px;text-decoration:underline;text-underline-offset:3px}
  .advisory-site main .container{padding-inline:20px}
  .advisory-site main :is(.journey-education,.content-narrow) p,.advisory-article main :is(.blog-post,.article-body,.blog-content) p,.advisory-article main :is(.blog-post,.article-body) li{font-size:17px!important}
@@ -346,3 +346,104 @@ body.advisory-site main :is(.bg-navy,.bg-dark,.cta-spotlight) :is(p,p.text-lg,.t
 /* Last paper variants and decorative gradients collapse to the system values. */
 .advisory-site main :is(.bg-light,.bg-gray,.bg-muted,[class*="bg-slate"]){background:var(--advisory-paper)!important}
 .advisory-site main :is(.dscr-cta-block,.testimonial--featured){background-image:none!important}
+/* Typography 2026-09-18: one serif (self-hosted Source Serif 4, regular weight), Inter for UI, one scale, 68ch measure. */
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/source-serif-4-roman-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/source-serif-4-roman-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/source-serif-4-italic-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/source-serif-4-italic-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+body.advisory-site{--font-display:'Source Serif 4',Georgia,'Times New Roman',serif}
+.advisory-site main :is(h1,h2),.advisory-site .hero h1,.advisory-site [class*="hero"] h1{font-family:var(--font-display)!important;font-weight:400!important;letter-spacing:-.012em}
+.advisory-site main h1{font-size:clamp(2.25rem,1.7rem + 1.8vw,3.25rem)!important;line-height:1.12}
+/* Section headings share one size; component titles (cards, panels, list items) keep theirs. */
+.advisory-site main h2:not(:is(li,aside,form,article,[class*="card"],[class*="panel"],[class*="widget"],[class*="grid"]>*,.newsletter-section,.newsletter-signup) h2){font-size:clamp(1.75rem,1.3rem + 1.1vw,2.125rem)!important;line-height:1.22}
+.advisory-article main :is(.article-body,.blog-post,.blog-content) h2{font-size:clamp(1.75rem,1.3rem + 1.1vw,2.125rem)!important;line-height:1.22;margin-top:2.5rem}
+.advisory-site main h3,.advisory-site main h4{font-family:var(--font-primary)!important;font-weight:600!important;letter-spacing:0}
+.advisory-site main :is(h2,h3,h4,p,li) strong{font-weight:600}
+/* One reading measure. Centered copy stays centered. */
+.advisory-site main :is(p,.hero-subtitle,.lead,.section-subtitle){max-width:var(--experience-measure,68ch)}
+.advisory-site main :is(.text-center,[style*="text-align:center"],[style*="text-align: center"],.section-header,.lp-sec-title,.quick-contact-card) p,
+.advisory-site main p:is(.text-center,.section-subtitle,[style*="text-align:center"],[style*="text-align: center"]){margin-inline:auto}
+.advisory-site main :is(.article-body,.blog-post,.content-narrow,.journey-education) li{max-width:var(--experience-measure,68ch)}
+.advisory-site main :is(table,td,th,figure,.stats-grid,.stats-grid-4) p{max-width:none}
+.advisory-site main p.advisory-centered{margin-inline:auto}
+.advisory-site main :is(.ci-lead,.rate-widget-disclaimer,blockquote p){max-width:var(--experience-measure,68ch)!important}
+.advisory-article main .hero.hero-short .container{max-width:768px}
+.advisory-article main .newsletter-issue-badge{background:transparent;border:0;padding:0;color:var(--advisory-muted);font-weight:400}
+/* Blog index 2026-09-18: dated list, plain labels, serif titles, one-row filters. */
+.advisory-blog-index #blog-grid .blog-card-category{background:transparent;border:0;padding:0;border-radius:0;color:var(--advisory-accent);font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;display:block;margin:0 0 4px}
+.advisory-blog-index #blog-grid .blog-card-title{font:400 26px/1.25 var(--font-display)!important;letter-spacing:-.01em}
+.advisory-blog-index #blog-grid .blog-card:first-child .blog-card-title{font-size:32px}
+.advisory-blog-index #blog-grid .blog-card:hover .blog-card-title{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.advisory-blog-index #blog-filters{display:flex;flex-wrap:wrap;gap:0 22px;justify-content:flex-start;max-width:960px;margin:0 auto 28px;overflow-x:auto;padding:0 0 10px;border-bottom:1px solid var(--advisory-rule);scrollbar-width:none}
+.advisory-blog-index #blog-filters::-webkit-scrollbar{display:none}
+.advisory-blog-index .blog-filter-btn,.advisory-blog-index .blog-filter-btn.active{background:transparent;border:0;border-radius:0;padding:6px 0;font:500 15px/1.4 var(--font-primary);color:var(--advisory-muted);white-space:nowrap;box-shadow:none}
+.advisory-blog-index .blog-filter-btn.active{color:var(--advisory-ink);text-decoration:underline;text-underline-offset:10px;text-decoration-thickness:2px}
+.advisory-blog-index .blog-filter-btn:hover{color:var(--advisory-ink)}
+@media (max-width:640px){
+ .advisory-blog-index #blog-grid .blog-card-title{font-size:23px}
+ .advisory-blog-index #blog-grid .blog-card:first-child .blog-card-title{font-size:26px}
+ .advisory-blog-index #blog-filters{flex-wrap:nowrap;margin-inline:-16px;padding-inline:16px;max-width:none}
+}
+.advisory-article main .blog-post-header{border-bottom:0;margin-bottom:8px}
+/* The one post on the blog-article template gets the same header treatment as the rest. */
+.advisory-article main .blog-article{padding-top:48px}
+.advisory-article main .blog-article>.container{max-width:768px}
+.advisory-article main .blog-article-meta{display:flex;gap:8px;color:var(--advisory-muted);font-size:15px;margin-bottom:16px}
+.advisory-article main .blog-article-meta .blog-article-category::after{content:"·";margin-left:8px}
+.advisory-article main .blog-article-subtitle{font-size:20px;line-height:1.55;color:var(--advisory-muted);margin:0 0 24px}
+.advisory-article main .blog-article-author{display:flex;align-items:center;gap:14px;border-block:1px solid var(--advisory-rule);padding:16px 0;margin-bottom:32px}
+.advisory-article main .blog-article-author>div{display:flex;flex-direction:column;gap:2px;font-size:15px}
+.advisory-article main .blog-article-author .blog-author-img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 25%}
+.advisory-article main .blog-article-author .blog-author-title{color:var(--advisory-muted)}
+.advisory-article main .blog-article-body h2{font-size:clamp(1.75rem,1.3rem + 1.1vw,2.125rem)!important}
+/* Homepage 2026-09-18: one index (goals, equity, programs) instead of three menus; quiet proof line; no gold outlines. */
+body.home-pilot main .home-index.home-index-first{padding-bottom:8px!important}
+body.home-pilot main .home-index.home-index-group{padding-top:28px!important;padding-bottom:8px!important;background:#fff}
+body.home-pilot main .home-index.home-index-last{padding-bottom:clamp(3rem,5.5vw,5rem)!important}
+body.home-pilot main .home-index-group .modern-programs-heading{margin-bottom:8px;align-items:baseline}
+body.home-pilot main .home-index-group .modern-programs-heading h2{font-size:1.5rem!important;line-height:1.3}
+body.home-pilot main .home-index-group .modern-programs-heading p{display:none}
+body.home-pilot main .home-index-group .modern-eyebrow{display:none}
+body.home-pilot main :is(.modern-goal-grid,.modern-programs-grid){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px}
+body.home-pilot main :is(.modern-goal-grid>a,.modern-program-tile){padding:18px 0}
+body.home-pilot main :is(.modern-goal-grid>a,.modern-program-tile) h3{font-size:18px;margin:0 0 4px}
+body.home-pilot main :is(.modern-goal-grid>a,.modern-program-tile) p{font-size:15px;line-height:1.5;margin:0 0 6px;max-width:none}
+body.home-pilot main .modern-card-number{display:none}
+body.home-pilot main :is(.modern-card-link,.modern-program-action){font-size:14px}
+body.home-pilot main .home-proof-strip{background:var(--advisory-paper);padding:0 0 36px;border:0}
+body.home-pilot main .home-proof-strip .container{max-width:1180px}
+body.home-pilot main .home-proof-strip .stats-grid-4{display:flex!important;flex-wrap:wrap;gap:6px 28px;border-top:1px solid var(--advisory-rule);padding-top:18px}
+body.home-pilot main .home-proof-strip .stat-item{display:flex;align-items:baseline;gap:6px;padding:0;text-align:left;background:transparent;border:0}
+body.home-pilot main .home-proof-strip .stat-number{font:600 15px/1.4 var(--font-primary);color:var(--advisory-ink);margin:0}
+body.home-pilot main .home-proof-strip .stat-label{font-size:15px;color:var(--advisory-muted);margin:0;text-transform:none;letter-spacing:0}
+body.home-pilot main .home-proof-strip a.stat-item:hover .stat-label{text-decoration:underline}
+body.advisory-site main .btn-outline{color:var(--advisory-ink);border:1px solid var(--advisory-ink);background:transparent;border-radius:4px}
+body.advisory-site main .btn-outline:hover{background:var(--advisory-ink);color:#fff}
+body.advisory-site main .cta-spotlight::before{display:none}
+body.home-pilot main #mortgage-guides .blog-card-category{background:transparent;border:0;padding:0;color:var(--advisory-accent);font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+body.home-pilot main #mortgage-guides .grid>.card{padding:20px 0 0;border:0;border-top:1px solid var(--advisory-rule)}
+@media (max-width:900px){body.home-pilot main :is(.modern-goal-grid,.modern-programs-grid){grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+ body.home-pilot main :is(.modern-goal-grid,.modern-programs-grid){grid-template-columns:1fr;gap:0}
+ body.home-pilot main .home-proof-strip .stats-grid-4{display:grid!important;grid-template-columns:1fr 1fr;gap:8px 16px}
+}
+/* Calculators 2026-09-18: thin slider tracks, plain thumbs. */
+.advisory-site main input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px!important;padding:0!important;border:0!important;background:var(--advisory-rule)!important;border-radius:2px;outline:none;margin:14px 0}
+.advisory-site main input[type=range]::-webkit-slider-runnable-track{height:3px;background:transparent}
+.advisory-site main input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-7.5px;border-radius:50%;background:var(--advisory-ink);border:2px solid #fff;box-shadow:0 0 0 1px var(--advisory-ink);transition:none}
+.advisory-site main input[type=range]::-moz-range-track{height:3px;background:var(--advisory-rule)}
+.advisory-site main input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--advisory-ink);border:2px solid #fff;box-shadow:0 0 0 1px var(--advisory-ink)}
+.advisory-site main input[type=range]::-webkit-slider-thumb:hover{transform:none}
+.advisory-site main .calc-slider-value{color:var(--advisory-ink)}
+/* Calculators index: a ruled list with a plain paper title block. */
+.advisory-calculator main .calc-hub-hero{background:var(--advisory-paper)!important;color:var(--advisory-ink)!important;text-align:left;padding:48px 0!important}
+.advisory-calculator main .calc-hub-hero :is(h1,p){color:var(--advisory-ink)!important;margin-left:0;margin-right:0;text-align:left}
+.advisory-calculator main .calc-hub-hero p{color:var(--advisory-muted)!important;font-size:18px;max-width:68ch}
+.advisory-calculator main .calc-hub-grid{display:block;max-width:900px;margin:0 auto}
+.advisory-calculator main .calc-hub-grid>.calc-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 32px;align-items:baseline;padding:24px 0;border:0;border-bottom:1px solid var(--advisory-rule);border-radius:0;background:transparent;box-shadow:none;text-decoration:none;color:var(--advisory-ink)}
+.advisory-calculator main .calc-hub-grid>.calc-card:first-child{border-top:1px solid var(--advisory-rule)}
+.advisory-calculator main .calc-hub-grid>.calc-card:hover{transform:none;box-shadow:none;border-color:var(--advisory-rule)}
+.advisory-calculator main .calc-hub-grid .calc-card-title{font-size:24px!important;margin:0}
+.advisory-calculator main .calc-hub-grid .calc-card-desc{grid-column:1;margin:0;color:var(--advisory-muted);font-size:16px;max-width:60ch}
+.advisory-calculator main .calc-hub-grid .calc-card-cta{grid-column:2;grid-row:1/3;align-self:center;font:600 15px/1.4 var(--font-primary);color:var(--advisory-ink);white-space:nowrap;text-decoration:underline;text-underline-offset:4px}
+@media (max-width:640px){.advisory-calculator main .calc-hub-grid>.calc-card{grid-template-columns:1fr}.advisory-calculator main .calc-hub-grid .calc-card-cta{grid-column:1;grid-row:auto}}

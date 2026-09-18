@@ -32,8 +32,8 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css?v=20260830-cta1">
@@ -100,7 +100,7 @@
       <style>
         /* ── Page-scoped overrides ── */
         .bd-hero { background: var(--color-navy); color: #fff; padding: 2rem 0 1.5rem; text-align: center; }
-        .bd-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem,4vw,2.75rem); margin-bottom: .75rem; color: #fff; }
+        .bd-hero h1 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: clamp(1.75rem,4vw,2.75rem); margin-bottom: .75rem; color: #fff; }
         .bd-hero .hero-sub { font-size: 1.05rem; opacity: .85; max-width: 600px; margin: 0 auto 1.5rem; }
         .bd-hero .hero-badges { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
         .bd-hero .badge { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 99px; padding: .3rem .9rem; font-size: .8rem; color: #fff; }
@@ -166,7 +166,7 @@
 
         /* ── Charts section ── */
         .bd-charts-section { padding: 1.25rem 0 0.75rem; }
-        .bd-charts-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--color-navy); margin-bottom: 1rem; }
+        .bd-charts-section h2 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: 1.5rem; color: var(--color-navy); margin-bottom: 1rem; }
         .bd-chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         @media (max-width: 700px) { .bd-chart-grid { grid-template-columns: 1fr; } }
         .bd-chart-wrap { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.85rem; }
@@ -175,7 +175,7 @@
 
         /* ── Full schedule ── */
         .bd-schedule-section { padding: 1rem 0 1.5rem; }
-        .bd-schedule-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--color-navy); margin-bottom: .25rem; }
+        .bd-schedule-section h2 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: 1.5rem; color: var(--color-navy); margin-bottom: .25rem; }
         .bd-schedule-section .section-sub { font-size: .88rem; color: #64748b; margin-bottom: 1.25rem; }
         .schedule-table-wrap { overflow-x: auto; }
         .bd-schedule-table { width: 100%; border-collapse: collapse; font-size: .82rem; min-width: 620px; }
@@ -189,7 +189,7 @@
 
         /* ── Explainer grid ── */
         .bd-explainer { padding: 3rem 0; background: var(--bg-light, #f8fafc); }
-        .bd-explainer h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--color-navy); text-align: center; margin-bottom: .5rem; }
+        .bd-explainer h2 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: 1.75rem; color: var(--color-navy); text-align: center; margin-bottom: .5rem; }
         .bd-explainer .section-sub { text-align: center; color: #64748b; margin-bottom: 2rem; }
         .explainer-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
         @media (max-width: 700px) { .explainer-grid { grid-template-columns: 1fr; } }
@@ -200,7 +200,7 @@
 
         /* ── CTA section ── */
         .bd-cta { background: var(--color-navy); color: #fff; padding: 3.5rem 0; text-align: center; }
-        .bd-cta h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #fff; margin-bottom: .75rem; }
+        .bd-cta h2 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: 1.75rem; color: #fff; margin-bottom: .75rem; }
         .bd-cta p { opacity: .85; max-width: 520px; margin: 0 auto 1.75rem; }
         .bd-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
         .btn-gold { background: var(--color-gold); color: #fff; border: none; padding: .75rem 1.75rem; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block; transition: opacity .15s; }
@@ -215,7 +215,7 @@
 
         /* ── Buydown vs Price Reduction Comparison ── */
         .bd-comparison-panel { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
-        .bd-comparison-panel h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--color-navy); margin-bottom: .35rem; }
+        .bd-comparison-panel h2 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: 1.2rem; color: var(--color-navy); margin-bottom: .35rem; }
         .bd-comp-intro { font-size: .85rem; color: #64748b; margin-bottom: 1.25rem; }
         .bd-comparison-cards { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; margin-bottom: 1rem; }
         .bd-comp-card { background: #fff; border-radius: 10px; padding: 1.25rem; text-align: center; border: 2px solid #e2e8f0; transition: border-color .2s; }
@@ -255,8 +255,8 @@
   })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
   <!-- End Google Tag Manager -->
 <link rel="stylesheet" href="/experience.css">
-<link rel="stylesheet" href="/advisory-design.css?v=20260917">
-<script src="/advisory-contact.js?v=20260917" defer></script>
+<link rel="stylesheet" href="/advisory-design.css?v=20260918">
+<script src="/advisory-contact.js?v=20260918" defer></script>
 </head>
     <body class="editorial-page calculator-page advisory-site advisory-calculator">
   <!-- Google Tag Manager (noscript) -->
@@ -479,7 +479,7 @@
 
               <!-- Year-by-year breakdown -->
               <div>
-                <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--color-navy);margin-bottom:1rem;">Year-by-Year Comparison</h2>
+                <h2 style="font-family:var(--font-display,'Source Serif 4',Georgia,serif);font-size:1.3rem;color:var(--color-navy);margin-bottom:1rem;">Year-by-Year Comparison</h2>
                 <div style="overflow-x:auto;">
                   <table class="bd-year-table" aria-label="Year-by-year payment comparison">
                     <thead>
@@ -1325,6 +1325,7 @@ window.styerMoney = (function () {
 })();
 window.styerMoney.attach(["bd-loan-input", "bd-tax-input", "bd-ins-input", "bd-hoa", "bd-seller-credit"]);
 </script>
+<script src="/calculator-sticky-result.js?v=20260918" defer></script>
 <script src="/experience.js" defer></script>
 </body>
 </html>

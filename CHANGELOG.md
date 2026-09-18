@@ -1,3 +1,12 @@
+## 2026-09-18 — Typography, blog index, homepage index, calculator polish (design pass 4)
+
+- Display serif is now self-hosted Source Serif 4 at regular weight (`assets/fonts/`, `@font-face` in `advisory-design.css`); Playfair Display removed from every Google Fonts link, page builder and stylesheet. Inter stays for UI. One H2 size site-wide (34px desktop), H3/H4 in Inter 600, body copy capped at 68ch (`advisory-contact.js` re-centers capped paragraphs in centered sections).
+- Blog index: plain category labels, serif titles, one-row text filters (horizontal scroll on phones). Article headers share the 768px prose column; the lone `blog-article` template post is styled like the rest.
+- Homepage: the goals, equity and programs menus are one three-column index (programs section moved up beside the others; headings, links and copy unchanged). Proof band is a quiet one-line strip under the hero. Calculator band is flat ink; gold outline buttons are ink; guide pills are plain labels.
+- Calculators: payment donut hidden until a second slice exists; range sliders are 3px tracks with ink thumbs; sticky mobile result added to the rate-buydown and WRAP calculators (`calculator-sticky-result.js`); calculators index is a ruled list.
+- `refine-advisory-design.js` now stamps one `ASSET_VERSION` on the shared CSS/JS links and strips Playfair from font links. Validation: `audit:design`, `audit:navigation`, `audit:forms`, `audit:schema`, tests 124/125 (the git-history test is skipped in the container), 24 pages × 2 viewports: no overflow, no page errors, serif loaded, one footer.
+- Untouched on purpose: headshot, broker/legal language, "since 2017" copy, rates table.
+
 ## 2026-09-09 — Coordinated situation journeys and complete tenant purchase guide
 
 - Added one shared intake design and handler to purchase, refinance/equity, business-owner, investment-property, and move-up journeys. Standardized the two review/application actions.

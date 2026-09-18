@@ -25,8 +25,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/style.css?v=20260830-cta1">
 
   <script>window.dataLayer = window.dataLayer || [];</script>
@@ -98,7 +98,7 @@
     .adc-container { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
 
     .adc-heading {
-      font-family: var(--font-display, 'Playfair Display', serif);
+      font-family: var(--font-display, var(--font-display,'Source Serif 4',Georgia,serif));
       color: var(--adc-navy);
       font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
       margin: 0 0 .25rem;
@@ -129,7 +129,7 @@
     .adc-card + .adc-card { margin-top: 1.25rem; }
 
     .adc-card-title {
-      font-family: var(--font-display, 'Playfair Display', serif);
+      font-family: var(--font-display, var(--font-display,'Source Serif 4',Georgia,serif));
       font-size: 1.15rem;
       color: var(--adc-navy);
       margin: 0 0 .25rem;
@@ -308,7 +308,7 @@
       font-weight: 600;
     }
     .adc-hero-number {
-      font-family: var(--font-display, 'Playfair Display', serif);
+      font-family: var(--font-display, var(--font-display,'Source Serif 4',Georgia,serif));
       font-size: clamp(2.1rem, 1.4rem + 3vw, 3.25rem);
       font-weight: 700;
       line-height: 1.1;
@@ -365,7 +365,7 @@
       font-weight: 700;
     }
     .adc-period-months {
-      font-family: var(--font-display, 'Playfair Display', serif);
+      font-family: var(--font-display, var(--font-display,'Source Serif 4',Georgia,serif));
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--adc-navy);
@@ -503,7 +503,7 @@
       margin: 0 0 .25rem;
     }
     .adc-status-title {
-      font-family: var(--font-display, 'Playfair Display', serif);
+      font-family: var(--font-display, var(--font-display,'Source Serif 4',Georgia,serif));
       font-size: 1.1rem;
       color: var(--adc-navy);
       margin: 0 0 .35rem;
@@ -533,7 +533,7 @@
       text-align: center;
     }
     .adc-cta h3 {
-      font-family: var(--font-display, 'Playfair Display', serif);
+      font-family: var(--font-display, var(--font-display,'Source Serif 4',Georgia,serif));
       color: #fff;
       font-size: clamp(1.25rem, 1rem + 1vw, 1.65rem);
       margin: 0 0 .65rem;
@@ -602,7 +602,7 @@
     }
     .adc-email[hidden] { display: none; }
     .adc-email h4 {
-      font-family: var(--font-display, 'Playfair Display', serif);
+      font-family: var(--font-display, var(--font-display,'Source Serif 4',Georgia,serif));
       color: var(--adc-navy);
       margin: 0 0 .85rem;
       font-size: 1.05rem;
@@ -629,13 +629,13 @@
       padding: 0 1.25rem;
     }
     .adc-edu h2 {
-      font-family: var(--font-display, 'Playfair Display', serif);
+      font-family: var(--font-display, var(--font-display,'Source Serif 4',Georgia,serif));
       color: var(--adc-navy);
       font-size: clamp(1.4rem, 1.1rem + 1vw, 1.8rem);
       margin: 0 0 .75rem;
     }
     .adc-edu h3 {
-      font-family: var(--font-display, 'Playfair Display', serif);
+      font-family: var(--font-display, var(--font-display,'Source Serif 4',Georgia,serif));
       color: var(--adc-navy);
       font-size: 1.1rem;
       margin: 1.5rem 0 .5rem;
@@ -668,8 +668,8 @@
   </style>
   <!-- END ASSET DEPLETION CALCULATOR MODULE — STYLES -->
 <link rel="stylesheet" href="/experience.css">
-<link rel="stylesheet" href="/advisory-design.css?v=20260917">
-<script src="/advisory-contact.js?v=20260917" defer></script>
+<link rel="stylesheet" href="/advisory-design.css?v=20260918">
+<script src="/advisory-contact.js?v=20260918" defer></script>
 </head>
 <body class="editorial-page calculator-page advisory-site advisory-calculator">
   <!-- Google Tag Manager (noscript) -->
@@ -724,7 +724,7 @@
     <section class="calc-tool-hero" style="background:linear-gradient(135deg,#0A1F3F 0%,#0d2847 100%);color:#fff;padding:clamp(2.5rem,5vw,4rem) 0;text-align:center;">
       <div class="container">
         <p style="font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#C49B46;margin:0 0 .5rem;font-weight:600;">Asset-Based Mortgage Planning</p>
-        <h1 style="font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.9rem,1.4rem + 2vw,2.6rem);line-height:1.15;margin:0 0 .75rem;max-width:780px;margin-left:auto;margin-right:auto;">Turn Assets Into a Mortgage Planning Number</h1>
+        <h1 style="font-family:var(--font-display,'Source Serif 4',Georgia,serif);color:#fff;font-size:clamp(1.9rem,1.4rem + 2vw,2.6rem);line-height:1.15;margin:0 0 .75rem;max-width:780px;margin-left:auto;margin-right:auto;">Turn Assets Into a Mortgage Planning Number</h1>
         <p style="font-size:1.05rem;color:rgba(255,255,255,0.88);max-width:680px;margin:0 auto 1.5rem;line-height:1.55;">Explore how asset balances and calculation assumptions change a monthly income illustration. Adam can then review which assets and mortgage options fit your situation.</p>
         <div style="display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;">
           <a href="#adc-calculator" class="btn btn-primary" style="background:#F2C840;color:#0D1F3C;padding:.85rem 1.6rem;border-radius:10px;font-weight:700;text-decoration:none;">Start Calculating</a>
@@ -1025,7 +1025,7 @@
     <!-- Related pages -->
     <section style="padding:clamp(2rem,4vw,3rem) 0;background:#F7F8FA;">
       <div class="container" style="max-width:1180px;margin:0 auto;padding:0 1.25rem;">
-        <h2 style="font-family:'Playfair Display',serif;color:#0A1F3F;font-size:1.4rem;text-align:center;margin:0 0 1.5rem;">Related asset-based mortgage pages</h2>
+        <h2 style="font-family:var(--font-display,'Source Serif 4',Georgia,serif);color:#0A1F3F;font-size:1.4rem;text-align:center;margin:0 0 1.5rem;">Related asset-based mortgage pages</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
           <a href="/asset-depletion-mortgage-texas.html" style="display:block;background:#fff;padding:1.25rem;border-radius:12px;border:1px solid #E5E7EB;text-decoration:none;color:#0A1F3F;">
             <strong style="display:block;margin-bottom:.35rem;">Asset Depletion Mortgages — Texas</strong>
@@ -1526,7 +1526,7 @@ window.styerMoney = (function () {
 })();
 window.styerMoney.attach(["adc-checking", "adc-brokerage", "adc-retirement", "adc-other", "adc-other-income", "adc-target"]);
 </script>
-<script src="/calculator-sticky-result.js?v=20260917" defer></script>
+<script src="/calculator-sticky-result.js?v=20260918" defer></script>
 <script src="/experience.js" defer></script>
 </body>
 </html>
