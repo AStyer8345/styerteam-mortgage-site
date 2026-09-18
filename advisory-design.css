@@ -450,3 +450,12 @@ body.home-pilot main #mortgage-guides .grid>.card{padding:20px 0 0;border:0;bord
 /* Wide tables scroll inside their wrapper on phones instead of widening the page. */
 .advisory-site main .table-responsive{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
 @media (max-width:640px){.advisory-site main table:not(.table-responsive table):not(.experience-table-scroll table){display:block;overflow-x:auto;max-width:100%}}
+/* 2026-09-18: one collapsed "inside the file" block on product pages. Content is in the HTML; closed by default. */
+.advisory-site main .advisory-inside{border-block:1px solid var(--advisory-rule);padding:4px 0;margin:28px 0 32px;max-width:68ch}
+.advisory-site main .advisory-inside>summary{font:600 16px/1.5 var(--font-primary);color:var(--advisory-ink);cursor:pointer;padding:12px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.advisory-site main .advisory-inside>summary::-webkit-details-marker{display:none}
+.advisory-site main .advisory-inside>summary::after{content:"+";font-weight:400;font-size:22px;line-height:1;color:var(--advisory-accent)}
+.advisory-site main .advisory-inside[open]>summary::after{content:"\2212"}
+.advisory-site main .advisory-inside-body{padding:0 0 16px}
+.advisory-site main .advisory-inside-body p{font-size:17px;line-height:1.65;margin:0 0 14px}
+.advisory-site main .advisory-inside-body p:last-child{margin-bottom:0}

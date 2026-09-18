@@ -1,3 +1,9 @@
+## 2026-09-18 — Quotable rewrite on eight product pages (AEO pass 1)
+
+- P&L, bank statement, asset depletion, high-net-worth, K-1, 1099-only and the jumbo and DSCR requirement posts: new declarative openings with concrete figures (ranges across the programs Adam places; no investor names), one collapsed `<details class="advisory-inside">` block per page ("What actually moves the file" / "From a real file") linking to existing scenario and case-study pages, and tightened FAQ answers under unchanged questions. FAQPage JSON-LD updated to match. `dateModified` bumped.
+- Retired figures the guideline review contradicted: P&L 660 / $2.5M / 3-month reserves / ±25% tolerance / 25% ownership; 1099 "10–20%" and "below 660 possible"; named competitor removed. Jumbo post notes lenders' early-adopted $845k–$850k conforming ceiling ahead of FHFA's 2027 announcement.
+- Script: `scripts/quotable-rewrite-20260918.py` (anchored, one-shot). Baseline for the AEO re-test in 3–4 weeks: `Claude Output/2026-09-18_styermortgage-aeo-test/`.
+
 ## 2026-09-18 — Typography, blog index, homepage index, calculator polish (design pass 4)
 
 - Display serif is now self-hosted Source Serif 4 at regular weight (`assets/fonts/`, `@font-face` in `advisory-design.css`); Playfair Display removed from every Google Fonts link, page builder and stylesheet. Inter stays for UI. One H2 size site-wide (34px desktop), H3/H4 in Inter 600, body copy capped at 68ch (`advisory-contact.js` re-centers capped paragraphs in centered sections).
