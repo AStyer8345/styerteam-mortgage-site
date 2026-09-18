@@ -13,6 +13,7 @@ function refineAdvisoryDesign(html) {
     return '<body' + (present ? attributes.replace(present[0], `class="${combined}"`) : attributes + ` class="${combined}"`) + '>';
   });
   if (!html.includes('/advisory-design.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/advisory-design.css?v=20260917">\n</head>');
+  if (!html.includes('/advisory-contact.js')) html = html.replace('</head>', '<script src="/advisory-contact.js?v=20260917" defer></script>\n</head>');
   html = html.replace(/Awards &amp; Recognition|Awards & Recognition/g, 'Client Reviews');
   // A mobile contents disclosure retains all links; script.js opens it on desktop.
   html = html.replace(/<nav class="page-contents"([^>]*)><p class="page-contents-title">On this page<\/p>([\s\S]*?)<\/nav>/g,

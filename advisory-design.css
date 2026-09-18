@@ -279,3 +279,39 @@ body.advisory-product .advisory-quote .hero-trust-badge{display:none}
 .advisory-site main .hero:not(:has(form)) h1{max-width:22ch}
 /* Copy on dark bands is always light. */
 body.advisory-site main :is(.bg-navy,.bg-dark,.cta-spotlight) :is(p,p.text-lg,.text-white-90){color:rgba(255,255,255,.92)!important}
+
+/* ── Contact layer: mobile bar + scenario slide-over ───────────────────────── */
+.advisory-contact-bar{display:none}
+@media (max-width:640px){
+ .has-advisory-contact-bar{padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+ .advisory-contact-bar{position:fixed;inset:auto 0 0;z-index:110;display:grid;grid-template-columns:1fr 1fr 2fr;background:var(--advisory-ink);color:#fff;border-top:1px solid rgba(255,255,255,.15);padding-bottom:env(safe-area-inset-bottom)}
+ .advisory-contact-bar a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:56px;color:#fff;text-decoration:none;font:600 15px/1 var(--font-primary);border-right:1px solid rgba(255,255,255,.15)}
+ .advisory-contact-bar a:last-child{border-right:0;background:#fff;color:var(--advisory-ink)}
+ .advisory-contact-bar svg{width:16px;height:16px;fill:currentColor}
+ /* One bar at a time: hide while typing, while a calculator summary is pinned, or while the panel is open. */
+ .advisory-site:has(main :is(input:not([type=hidden]),textarea,select):focus) .advisory-contact-bar,
+ .advisory-calculator.calc-editing-visible .advisory-contact-bar,
+ .advisory-panel-open .advisory-contact-bar{display:none}
+ .has-advisory-contact-bar .mortgage-assistant{display:none}
+}
+.advisory-panel{position:fixed;inset:0;z-index:120}
+.advisory-panel[hidden]{display:none}
+.advisory-panel-backdrop{position:absolute;inset:0;background:rgba(24,46,62,.55);opacity:0;transition:opacity .2s}
+.advisory-panel-sheet{position:absolute;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--advisory-paper);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .22s ease;box-shadow:none;border-left:1px solid var(--advisory-rule)}
+.advisory-panel.is-open .advisory-panel-backdrop{opacity:1}
+.advisory-panel.is-open .advisory-panel-sheet{transform:none}
+.advisory-panel-head span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.advisory-panel-head{display:flex;justify-content:flex-end;align-items:center;padding:14px 20px;border-bottom:1px solid var(--advisory-rule);font:600 16px/1.3 var(--font-primary);color:var(--advisory-ink)}
+.advisory-panel-close{background:transparent;border:0;font:400 28px/1 var(--font-primary);color:var(--advisory-ink);cursor:pointer;padding:0 4px}
+.advisory-panel-frame{flex:1;width:100%;border:0;background:var(--advisory-paper)}
+.advisory-panel-foot{margin:0;padding:12px 20px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--advisory-rule);font-size:14px;color:var(--advisory-muted)}
+.advisory-panel-foot a{color:var(--advisory-ink)}
+.advisory-panel-open{overflow:hidden}
+@media (prefers-reduced-motion:reduce){.advisory-panel-sheet,.advisory-panel-backdrop{transition:none}}
+/* Embedded form: only the form section is shown inside the panel. */
+.advisory-embed header,.advisory-embed footer,.advisory-embed .breadcrumb,.advisory-embed main>:not(.journey-hero),.advisory-embed .mortgage-assistant,.advisory-embed .advisory-contact-bar{display:none!important}
+.advisory-embed main .journey-hero{padding:20px 0!important;background:var(--advisory-paper)}
+.advisory-embed main .journey-hero .container{padding-inline:20px}
+.advisory-embed main .journey-grid{display:block}
+.advisory-embed main .journey-grid>:not(.journey-card){display:none}
+.advisory-embed main .journey-card{max-width:none;margin:0;border:0;box-shadow:none;background:transparent;padding:0}
