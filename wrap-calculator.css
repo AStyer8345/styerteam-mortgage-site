@@ -89,10 +89,11 @@
 }
 #wrap-calc .wrap-metric-headline-label { font-size: .8125rem; }
 #wrap-calc .wrap-metric-headline-value { font-size: clamp(1.8rem, 3vw, 2.25rem); }
+#wrap-calc .wrap-total-note { margin: .65rem 0 0; color: var(--color-gray); font-size: .8125rem; line-height: 1.5; }
+#wrap-calc .wrap-metric-help { font-size: .8125rem; }
 #wrap-calc .wrap-metric { gap: 1rem; padding: .55rem 0; }
 #wrap-calc .wrap-metric-label { min-width: 0; font-size: .875rem; }
 #wrap-calc .wrap-metric-value { font-size: .9375rem; }
-#wrap-calc .wrap-inline-rate { width: 70px; min-height: 36px; font-size: .875rem; }
 #wrap-calc .wrap-action-row button { min-height: 44px; font-size: .875rem; }
 #wrap-calc .wrap-amort-wrap { max-width: 100%; }
 
@@ -122,6 +123,7 @@
   #wrap-calc .wrap-card-header { font-size: 1rem; }
   #wrap-calc .wrap-metric { padding: .35rem 0; gap: .5rem; }
   #wrap-calc .wrap-metric-label { font-size: .75rem; }
+  #wrap-calc .wrap-total-note, #wrap-calc .wrap-metric-help { font-size: .6875rem; }
   #wrap-calc .wrap-metric-value { font-size: .8rem; }
   #wrap-calc .wrap-amort-wrap, #wrap-calc .experience-table-scroll { overflow: visible; }
   #wrap-calc .wrap-amort-table { width: 100%; min-width: 0; table-layout: fixed; }

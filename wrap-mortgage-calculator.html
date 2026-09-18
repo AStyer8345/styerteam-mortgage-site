@@ -193,9 +193,6 @@
     .wrap-metric-value--highlight { color: #059669; }
     .wrap-metric--hidden { display: none; }
 
-    /* ── Inline market rate input ── */
-    .wrap-inline-rate { width: 54px; padding: .15rem .35rem; border: 1px solid var(--color-border); border-radius: 5px; font-size: .78rem; color: var(--color-navy); font-weight: 600; text-align: center; vertical-align: baseline; }
-
     /* ── Balloon segmented buttons ── */
     .wrap-balloon-btns { display: inline-flex; border-radius: 10px; background: var(--color-border); padding: 3px; gap: 0; }
     .wrap-balloon-btn { padding: .4rem .85rem; border: none; border-radius: 8px; font-size: .78rem; font-weight: 500; cursor: pointer; background: transparent; color: var(--color-gray); transition: background .2s, color .2s; }
@@ -384,11 +381,12 @@
               <div class="wrap-result-card wrap-result-card--seller">
                 <h2 class="wrap-card-header">Seller Analysis</h2>
                 <div class="wrap-metric-headline">
-                  <div class="wrap-metric-headline-label">Total Cash Out</div>
-                  <div class="wrap-metric-headline-value" id="w-seller-total">—</div>
+                  <div class="wrap-metric-headline-label">Total Cash Out<span aria-hidden="true">*</span></div>
+                  <div class="wrap-metric-headline-value" id="w-seller-total" aria-describedby="w-seller-total-note">—</div>
+                  <p class="wrap-total-note" id="w-seller-total-note">* Estimated total over 5 years: cash at closing + cumulative monthly cash flow + net balloon proceeds (buyer payoff minus your remaining mortgage balance).</p>
                 </div>
                 <div class="wrap-metric">
-                  <span class="wrap-metric-label">Cash at Closing</span>
+                  <span class="wrap-metric-label">Cash at Closing <span class="wrap-metric-help">(down payment - closing costs)</span></span>
                   <span class="wrap-metric-value" id="w-out-net-cash">—</span>
                 </div>
                 <div class="wrap-metric">
@@ -431,14 +429,6 @@
                 <div class="wrap-metric">
                   <span class="wrap-metric-label">Wrap Loan Amount</span>
                   <span class="wrap-metric-value" id="w-out-new-loan">—</span>
-                </div>
-                <div class="wrap-metric">
-                  <span class="wrap-metric-label">Market Rate Pmt <input type="number" id="w-market-rate" aria-label="Market comparison rate percent" class="wrap-inline-rate" value="7.25" min="1" max="20" step="0.125">%</span>
-                  <span class="wrap-metric-value" id="w-out-market-pmt">—</span>
-                </div>
-                <div class="wrap-metric">
-                  <span class="wrap-metric-label">Monthly Savings vs. Market</span>
-                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-savings">—</span>
                 </div>
                 <div class="wrap-metric wrap-metric--hidden" id="w-metric-bal-due">
                   <span class="wrap-metric-label">Balance Due at Balloon</span>
@@ -794,16 +784,14 @@
       var salePrice    = val('w-sale-price');
       var closingPct   = val('w-closing-pct');
       var appreciation = val('w-appreciation');
-      var marketRateEl = document.getElementById('w-market-rate');
-      var marketRate   = marketRateEl ? (parseFloat(marketRateEl.value) || 7.25) : 7.25;
       var downPct      = Math.min(100, Math.max(0, val('w-down-pct')));
       updateDownPaymentDisplay(salePrice, downPct);
 
       if (salePrice <= 0) {
         ['w-seller-total','w-out-net-cash','w-out-monthly-income','w-out-cume-spread',
          'w-out-exist-paydown','w-out-existing-bal','w-out-wrap-bal','w-out-equity-capture',
-         'w-out-buyer-payment','w-out-down','w-out-new-loan','w-out-market-pmt',
-         'w-out-savings','w-out-bal-due','w-out-home-val','w-out-buyer-equity']
+         'w-out-buyer-payment','w-out-down','w-out-new-loan',
+         'w-out-bal-due','w-out-home-val','w-out-buyer-equity']
           .forEach(function(id) { set(id, '—'); });
         return;
       }
@@ -814,12 +802,14 @@
       var cashAtClosing = downPayment - closingCosts;
       var wrapMonthly   = Suite.monthlyPayment(wrapLoan, wrapRate, wrapTerm);
       var monthlySpread = wrapMonthly - existingPmt;
-      var marketPmt     = Suite.monthlyPayment(wrapLoan, marketRate, wrapTerm);
-      var savings       = marketPmt - wrapMonthly;
 
       var hasBalloon   = selectedBalloon !== null;
       var spreadMonths = hasBalloon ? selectedBalloon * 12 : wrapTerm * 12;
       var cumeSpread   = monthlySpread * spreadMonths;
+
+      set('w-seller-total-note', hasBalloon
+        ? '* Estimated total over ' + selectedBalloon + ' years: cash at closing + cumulative monthly cash flow + net balloon proceeds (buyer payoff minus your remaining mortgage balance).'
+        : '* Estimated total over the ' + wrapTerm + '-year wrap term: cash at closing + cumulative monthly cash flow. No balloon payment is included.');
 
       if (hasBalloon) {
         var balloonMo      = selectedBalloon * 12;
@@ -852,8 +842,6 @@
       set('w-out-buyer-payment',  Suite.formatCurrency(wrapMonthly) + '/mo');
       set('w-out-down',           Suite.formatCurrency(downPayment));
       set('w-out-new-loan',       Suite.formatCurrency(wrapLoan));
-      set('w-out-market-pmt',     Suite.formatCurrency(marketPmt) + '/mo');
-      set('w-out-savings',        Suite.formatCurrency(savings) + '/mo');
 
       var netCashEl = document.getElementById('w-out-net-cash');
       if (netCashEl) netCashEl.style.color = cashAtClosing < 0 ? '#dc2626' : '';
@@ -935,7 +923,7 @@
 
     /* Input listeners */
     ['w-balance','w-existing-rate','w-existing-payment',
-     'w-sale-price','w-down-pct','w-closing-pct','w-wrap-rate','w-term','w-appreciation','w-market-rate']
+     'w-sale-price','w-down-pct','w-closing-pct','w-wrap-rate','w-term','w-appreciation']
       .forEach(function(id) {
         var el = document.getElementById(id);
         if (el) el.addEventListener('input', calcWrap);
