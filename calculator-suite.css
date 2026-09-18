@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .calc-suite {
-  --calc-navy: var(--color-navy, #0A1F3F);
+  --calc-navy: var(--color-navy, #182e3e);
   --calc-charcoal: #1e293b;
   --calc-emerald: #047857;
   --calc-emerald-light: rgba(5, 150, 105, 0.12);

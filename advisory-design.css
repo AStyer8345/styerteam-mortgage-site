@@ -315,3 +315,34 @@ body.advisory-site main :is(.bg-navy,.bg-dark,.cta-spotlight) :is(p,p.text-lg,.t
 .advisory-embed main .journey-grid{display:block}
 .advisory-embed main .journey-grid>:not(.journey-card){display:none}
 .advisory-embed main .journey-card{max-width:none;margin:0;border:0;box-shadow:none;background:transparent;padding:0}
+
+/* ── One footer ───────────────────────────────────────────────────────────── */
+.advisory-site footer.site-footer{background:var(--advisory-ink);color:rgba(255,255,255,.82);padding:56px 0 32px;margin-top:0;font-size:14px;line-height:1.6}
+.site-footer .container{max-width:1200px}
+.site-footer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 40px}
+.site-footer h2{font:600 12px/1.4 var(--font-primary);letter-spacing:.08em;text-transform:uppercase;color:#fff;margin:0 0 12px}
+.site-footer h2+ul+h2{margin-top:28px}
+.site-footer ul{list-style:none;margin:0;padding:0}
+.site-footer li{margin:0 0 6px}
+.site-footer a{color:rgba(255,255,255,.82);text-decoration:none}
+.site-footer a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.site-footer-contact p{margin:0 0 12px}
+.site-footer-name{color:#fff;font-weight:600}
+.site-footer-hours,.site-footer-social{color:rgba(255,255,255,.7)}
+.site-footer-proof{margin:40px 0 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);color:#fff}
+.site-footer-proof a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.site-footer-areas{margin:12px 0 0;color:rgba(255,255,255,.7)}
+.site-footer-areas strong{color:rgba(255,255,255,.85);font-weight:600}
+.site-footer-legal{margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);font-size:12px;line-height:1.6;color:rgba(255,255,255,.6)}
+.site-footer-legal p{margin:0 0 8px}
+.site-footer-legal a{color:rgba(255,255,255,.75);text-decoration:underline;text-underline-offset:2px}
+@media (max-width:900px){.site-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.site-footer-grid{grid-template-columns:1fr;gap:24px}.site-footer li{margin-bottom:8px}}
+/* No decorative gradients on heroes; flat ink or paper only. Dark heroes stay dark so their text stays readable. */
+.advisory-site main :is(.resources-hero,.guide-hero,.guide-about-photo,.lp-hero){background:var(--advisory-ink)!important}
+.advisory-site main :is(.hero,.journey-hero,.calc-tool-hero,.dscr-hero){background-image:none!important}
+.advisory-site main .hero::before{background:none!important}
+.advisory-site main .lp-program-card.featured{background:#fff!important}
+/* Last paper variants and decorative gradients collapse to the system values. */
+.advisory-site main :is(.bg-light,.bg-gray,.bg-muted,[class*="bg-slate"]){background:var(--advisory-paper)!important}
+.advisory-site main :is(.dscr-cta-block,.testimonial--featured){background-image:none!important}
