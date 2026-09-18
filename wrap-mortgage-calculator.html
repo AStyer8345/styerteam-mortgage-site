@@ -251,9 +251,10 @@
   <!-- End Google Tag Manager -->
 <link rel="stylesheet" href="/experience.css">
 <link rel="stylesheet" href="/advisory-design.css?v=20260918">
+<link rel="stylesheet" href="/wrap-calculator.css?v=20260918">
 <script src="/advisory-contact.js?v=20260918" defer></script>
 </head>
-<body class="editorial-page calculator-page advisory-site advisory-calculator">
+<body class="editorial-page calculator-page advisory-site advisory-calculator wrap-calculator-page">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -292,17 +293,208 @@
   <section class="wrap-hero">
     <div class="container">
       <h1>WRAP Mortgage Calculator</h1>
-      <p class="hero-sub">You bought at 3%. Today's market is 7%. That rate gap is worth thousands per month — if you know how to use it.</p>
-      <div class="hero-badges">
-        <span class="badge">For Sellers with Sub-4% Rates</span>
-        <span class="badge">Monthly Passive Income</span>
-        <span class="badge">Premium Sale Price</span>
-        <span class="badge">Cash at Closing</span>
-      </div>
+      <p class="hero-sub">Compare seller cash flow and buyer payments using your existing loan and proposed wrap terms. Results update as you type.</p>
     </div>
   </section>
 
   <main>
+    <!-- CALCULATOR -->
+    <section class="wrap-calc-section calc-suite" id="wrap-calc" aria-label="Wrap mortgage calculator">
+      <div class="container">
+        <div class="calc-layout">
+          <!-- Loan inputs span the page above the seller and buyer analyses. -->
+          <div class="calc-inputs-col">
+            <div class="calc-card calc-card--solid">
+              <h2 class="calc-card-title">Your existing loan</h2>
+              <div class="wrap-fields-grid wrap-fields-grid--existing">
+                <div class="calc-slider-group">
+                  <label class="calc-slider-label" for="w-balance">Balance ($)</label>
+                  <input type="text" inputmode="numeric" class="wrap-money-input" id="w-balance" value="200,000" data-min="0" data-step="1000" aria-label="Existing loan balance">
+                </div>
+                <div class="calc-slider-group">
+                  <label class="calc-slider-label" for="w-existing-rate">Rate (%)</label>
+                  <input type="number" id="w-existing-rate" aria-label="Existing loan rate (%)" value="3" min="0" max="15" step="0.125">
+                </div>
+                <div class="calc-slider-group">
+                  <label class="calc-slider-label" for="w-existing-payment">Monthly P&amp;I ($)</label>
+                  <input type="text" inputmode="numeric" class="wrap-money-input" id="w-existing-payment" value="843" data-min="0" data-step="1" aria-label="Monthly principal and interest payment">
+                </div>
+              </div>
+            </div>
+            <div class="calc-card calc-card--solid">
+              <h2 class="calc-card-title">Wrap terms (buyer)</h2>
+              <div class="wrap-fields-grid">
+                <div class="calc-slider-group">
+                  <label class="calc-slider-label" for="w-sale-price">Sale price ($)</label>
+                  <input type="text" inputmode="numeric" class="wrap-money-input" id="w-sale-price" value="450,000" data-min="0" data-step="1000" aria-label="Sale price">
+                </div>
+                <div class="calc-slider-group wrap-field--down">
+                  <label class="calc-slider-label" for="w-down-pct">Down payment</label>
+                  <div class="wrap-down-payment-fields">
+                    <div class="wrap-down-field">
+                      <input type="number" id="w-down-pct" value="10" min="0" max="100" step="0.5" aria-label="Down payment percentage">
+                      <span class="wrap-down-affix">%</span>
+                    </div>
+                    <div class="wrap-down-field wrap-down-field--amount">
+                      <input type="text" id="w-down-amount" value="45,000" readonly aria-label="Calculated down payment amount">
+                      <span class="wrap-down-affix">$</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="calc-slider-group">
+                  <label class="calc-slider-label" for="w-closing-pct">Closing costs (%)</label>
+                  <input type="number" id="w-closing-pct" aria-label="Closing costs (%)" value="8" min="0" max="15" step="0.5">
+                </div>
+                <div class="calc-slider-group">
+                  <label class="calc-slider-label" for="w-wrap-rate">Wrap rate (%)</label>
+                  <input type="number" id="w-wrap-rate" aria-label="Wrap rate (%)" value="6.5" min="0" max="15" step="0.125">
+                </div>
+                <div class="calc-slider-group">
+                  <label class="calc-slider-label" for="w-term">Wrap term (years)</label>
+                  <input type="number" id="w-term" aria-label="Wrap term (years)" value="30" min="5" max="30" step="1">
+                </div>
+                <div class="calc-slider-group">
+                  <label class="calc-slider-label" for="w-appreciation">Annual appreciation (%)</label>
+                  <input type="number" id="w-appreciation" aria-label="Annual appreciation (%)" value="3.0" min="0" max="10" step="0.1">
+                </div>
+                <div class="calc-slider-group wrap-balloon-field">
+                  <span class="calc-slider-label" id="w-balloon-label">Balloon term</span>
+                  <div class="wrap-balloon-btns" role="group" aria-labelledby="w-balloon-label">
+                    <button type="button" class="wrap-balloon-btn" data-balloon="3" aria-pressed="false">3 Years</button>
+                    <button type="button" class="wrap-balloon-btn active" data-balloon="5" aria-pressed="true">5 Years</button>
+                    <button type="button" class="wrap-balloon-btn" data-balloon="null" aria-pressed="false">None</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- OUTPUT PANEL -->
+          <div class="wrap-results" id="wrap-results">
+            <!-- Print header (hidden on screen) -->
+            <div class="print-only print-header" id="print-header">
+              <div style="font-size:1.1rem; font-weight:700; color:var(--color-navy);">WRAP Mortgage Analysis</div>
+              <div id="print-scenario" style="font-size:.8rem; color:var(--color-gray); margin-top:.25rem;"></div>
+            </div>
+
+            <!-- Dual result cards -->
+            <div class="wrap-dual-cards">
+
+              <!-- Seller card -->
+              <div class="wrap-result-card wrap-result-card--seller">
+                <h2 class="wrap-card-header">Seller Analysis</h2>
+                <div class="wrap-metric-headline">
+                  <div class="wrap-metric-headline-label">Total Cash Out</div>
+                  <div class="wrap-metric-headline-value" id="w-seller-total">—</div>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Cash at Closing</span>
+                  <span class="wrap-metric-value" id="w-out-net-cash">—</span>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Monthly Cash Flow</span>
+                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-monthly-income">—</span>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label" id="w-cume-spread-label">Cumulative Spread to Balloon</span>
+                  <span class="wrap-metric-value" id="w-out-cume-spread">—</span>
+                </div>
+                <div class="wrap-metric" id="w-metric-exist-paydown">
+                  <span class="wrap-metric-label" id="w-exist-paydown-label">Existing Loan Paid Down to Balloon</span>
+                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-exist-paydown">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-existing-bal">
+                  <span class="wrap-metric-label">Existing Loan Bal. at Balloon</span>
+                  <span class="wrap-metric-value" id="w-out-existing-bal">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-wrap-bal">
+                  <span class="wrap-metric-label">Wrap Loan Bal. at Balloon</span>
+                  <span class="wrap-metric-value" id="w-out-wrap-bal">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-equity-capture">
+                  <span class="wrap-metric-label">Equity Capture at Balloon</span>
+                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-equity-capture">—</span>
+                </div>
+              </div>
+
+              <!-- Buyer card -->
+              <div class="wrap-result-card wrap-result-card--buyer">
+                <h2 class="wrap-card-header">Buyer Analysis</h2>
+                <div class="wrap-metric-headline">
+                  <div class="wrap-metric-headline-label">Monthly P&amp;I</div>
+                  <div class="wrap-metric-headline-value" id="w-out-buyer-payment">—</div>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Down Payment</span>
+                  <span class="wrap-metric-value" id="w-out-down">—</span>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Wrap Loan Amount</span>
+                  <span class="wrap-metric-value" id="w-out-new-loan">—</span>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Market Rate Pmt <input type="number" id="w-market-rate" aria-label="Market comparison rate percent" class="wrap-inline-rate" value="7.25" min="1" max="20" step="0.125">%</span>
+                  <span class="wrap-metric-value" id="w-out-market-pmt">—</span>
+                </div>
+                <div class="wrap-metric">
+                  <span class="wrap-metric-label">Monthly Savings vs. Market</span>
+                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-savings">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-bal-due">
+                  <span class="wrap-metric-label">Balance Due at Balloon</span>
+                  <span class="wrap-metric-value" id="w-out-bal-due">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-home-val">
+                  <span class="wrap-metric-label">Est. Home Value at Balloon</span>
+                  <span class="wrap-metric-value" id="w-out-home-val">—</span>
+                </div>
+                <div class="wrap-metric wrap-metric--hidden" id="w-metric-buyer-equity">
+                  <span class="wrap-metric-label">Est. Buyer Equity at Balloon</span>
+                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-buyer-equity">—</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action row -->
+            <div class="wrap-action-row no-print">
+              <button type="button" class="wrap-btn-pdf" id="w-btn-pdf"> Download as PDF</button>
+              <button type="button" class="wrap-btn-amort" id="w-btn-amort" aria-expanded="false" aria-controls="w-amort-wrap">Show Amortization Table</button>
+            </div>
+
+            <!-- Amortization table (hidden by default) -->
+            <div class="wrap-amort-wrap" id="w-amort-wrap" role="region" aria-label="Amortization table" tabindex="0" hidden>
+              <table class="wrap-amort-table" id="w-amort-table">
+                <thead>
+                  <tr>
+                    <th style="text-align:left;">Year</th>
+                    <th>Wrap Loan Balance</th>
+                    <th>Existing Loan Balance</th>
+                    <th>Monthly Spread</th>
+                    <th>Cumulative Seller Income</th>
+                  </tr>
+                </thead>
+                <tbody id="w-amort-tbody"></tbody>
+              </table>
+            </div>
+
+            <p class="no-print" style="margin-top: 1rem; font-size: .8rem; color: var(--color-gray);">
+              Gross spread only — ignores escrow, reserves, servicing. Estimates only. <a href="tel:+15129566010">Call Adam</a> to discuss structure and due-on-sale risk.
+            </p>
+
+            <!-- Print footer (hidden on screen) -->
+            <div class="print-only print-footer" style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid #e5e7eb; font-size:.8rem; color:var(--color-gray); text-align:center;">
+              Adam Styer | HyperSmart Home Loans &middot; (512) 956-6010 &middot; styermortgage.com<br>
+              <span style="font-size:.7rem;">Gross spread only — ignores escrow, reserves, servicing. Estimates only. Not a commitment to lend. Consult a real estate attorney before proceeding with owner financing.</span>
+            </div>
+
+            <div class="calc-referral-footer no-print">
+              <strong>Referral network:</strong> Use a real estate attorney experienced in Texas owner financing to draft the note and deed of trust, and a title company or servicer to collect payments and forward your mortgage. <strong>Why Styer Mortgage?</strong> Adam structures WRAPs and can connect you with attorney and title partners — <a href="tel:+15129566010">(512) 956-6010</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- EDUCATIONAL EXPLAINER -->
     <section style="padding: 3.5rem 0;">
       <div class="container">
@@ -350,211 +542,6 @@
             <div class="wrap-step-num">4</div>
             <h4>You Stay Out of the Middle</h4>
             <p>Buyers and sellers never communicate directly; the seller never has to hunt for a payment. The servicer handles it all.</p>
-          </div>
-        </div>
-
-        <div class="realtor-callout" style="max-width: 720px; margin: 2rem auto 0;">
-          <h4>Why Styer Mortgage?</h4>
-          <p>I have extensive experience with wraparound financing. I provide a full ecosystem: specialized attorneys, title companies, and insurance referrals so your WRAP is structured and closed correctly. If you're considering seller financing — or you're a realtor with a seller who has a sub-4% loan — call me at (512) 956-6010 to talk through the deal.</p>
-        </div>
-
-        <div class="realtor-callout" style="margin-top: 1.5rem;">
-          <h4>A Note for Realtors</h4>
-          <p>A WRAP can save a deal that won't survive current rate conditions. If your seller has a sub-4% loan and is struggling to attract offers at their price, seller financing eliminates the buyer's rate barrier entirely. Call Adam at (512) 956-6010 to talk through the structure for a specific listing.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CALCULATOR (EquityEdge logic + glassmorphism UI) -->
-    <section class="wrap-calc-section calc-suite" id="wrap-calc">
-      <div class="container">
-        <h2 class="text-center" style="margin-bottom: .5rem;">Run the Numbers</h2>
-        <p class="text-center" style="color: var(--color-gray); margin-bottom: 2rem;">Dual-note amortization. Results update as you type. Cash at closing and net payoff at balloon are the two key seller wins.</p>
-
-        <div class="calc-layout">
-          <!-- INPUT PANEL -->
-          <div class="calc-inputs-col">
-            <div class="calc-card calc-card--solid">
-              <h2 class="calc-card-title" style="margin-bottom: 1rem;">Your existing loan</h2>
-              <div class="calc-slider-group">
-                <div class="calc-slider-label"><span>Balance ($)</span><span class="calc-slider-value" id="w-balance-val">$200,000</span></div>
-                <input type="text" inputmode="numeric" class="wrap-money-input" id="w-balance" value="200,000" data-min="0" data-step="1000" aria-label="Existing loan balance" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
-              </div>
-              <div class="calc-slider-group">
-                <div class="calc-slider-label"><span>Rate (%)</span><span class="calc-slider-value" id="w-existing-rate-val">3%</span></div>
-                <input type="number" id="w-existing-rate" aria-label="Existing loan rate (%)" value="3" min="0" max="15" step="0.125" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
-              </div>
-              <div class="calc-slider-group">
-                <div class="calc-slider-label"><span>Monthly P&amp;I ($)</span><span class="calc-slider-value" id="w-existing-payment-val">$843</span></div>
-                <input type="text" inputmode="numeric" class="wrap-money-input" id="w-existing-payment" value="843" data-min="0" data-step="1" aria-label="Monthly principal and interest payment" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
-              </div>
-
-              <h2 class="calc-card-title" style="margin: 1.25rem 0 .75rem;">Wrap terms (buyer)</h2>
-              <div class="calc-slider-group">
-                <div class="calc-slider-label"><span>Sale price ($)</span><span class="calc-slider-value" id="w-sale-price-val">$450,000</span></div>
-                <input type="text" inputmode="numeric" class="wrap-money-input" id="w-sale-price" value="450,000" data-min="0" data-step="1000" aria-label="Sale price" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
-              </div>
-              <div class="calc-slider-group">
-                <div class="calc-slider-label"><span>Down payment</span><span class="calc-slider-value" id="w-down-pct-val">10%</span></div>
-                <div class="wrap-down-payment-fields">
-                  <div class="wrap-down-field">
-                    <input type="number" id="w-down-pct" value="10" min="0" max="100" step="0.5" aria-label="Down payment percentage">
-                    <span class="wrap-down-affix">%</span>
-                  </div>
-                  <div class="wrap-down-field wrap-down-field--amount">
-                    <input type="text" id="w-down-amount" value="45,000" readonly aria-label="Calculated down payment amount">
-                    <span class="wrap-down-affix">$</span>
-                  </div>
-                </div>
-              </div>
-              <div class="calc-slider-group">
-                <div class="calc-slider-label"><span>Closing costs (%)</span><span class="calc-slider-value" id="w-closing-pct-val">8%</span></div>
-                <input type="number" id="w-closing-pct" aria-label="Closing costs (%)" value="8" min="0" max="15" step="0.5" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
-              </div>
-              <div class="calc-slider-group">
-                <div class="calc-slider-label"><span>Wrap rate (%)</span><span class="calc-slider-value" id="w-wrap-rate-val">6.5%</span></div>
-                <input type="number" id="w-wrap-rate" aria-label="Wrap rate (%)" value="6.5" min="0" max="15" step="0.125" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
-              </div>
-              <div class="calc-slider-group">
-                <label class="calc-slider-label" style="margin-bottom: .25rem;">Wrap term (years)</label>
-                <input type="number" id="w-term" aria-label="Wrap term (years)" value="30" min="5" max="30" step="1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
-              </div>
-              <div class="calc-slider-group">
-                <label class="calc-slider-label" style="margin-bottom: .5rem;">Balloon term</label>
-                <div class="wrap-balloon-btns" role="group" aria-label="Balloon term">
-                  <button type="button" class="wrap-balloon-btn" data-balloon="3">3 Years</button>
-                  <button type="button" class="wrap-balloon-btn active" data-balloon="5">5 Years</button>
-                  <button type="button" class="wrap-balloon-btn" data-balloon="null">None</button>
-                </div>
-              </div>
-              <div class="calc-slider-group">
-                <label class="calc-slider-label" style="margin-bottom: .25rem;">Annual appreciation (%)</label>
-                <input type="number" id="w-appreciation" aria-label="Annual appreciation (%)" value="3.0" min="0" max="10" step="0.1" style="width:100%; padding: .5rem; border: 1px solid var(--color-border); border-radius: 8px;">
-              </div>
-            </div>
-          </div>
-
-          <!-- OUTPUT PANEL -->
-          <div>
-            <!-- Print header (hidden on screen) -->
-            <div class="print-only print-header" id="print-header">
-              <div style="font-size:1.1rem; font-weight:700; color:var(--color-navy);">WRAP Mortgage Analysis</div>
-              <div id="print-scenario" style="font-size:.8rem; color:var(--color-gray); margin-top:.25rem;"></div>
-            </div>
-
-            <!-- Dual result cards -->
-            <div class="wrap-dual-cards">
-
-              <!-- Seller card -->
-              <div class="wrap-result-card wrap-result-card--seller">
-                <div class="wrap-card-header">Seller Analysis</div>
-                <div class="wrap-metric-headline">
-                  <div class="wrap-metric-headline-label">Total Cash Out</div>
-                  <div class="wrap-metric-headline-value" id="w-seller-total">—</div>
-                </div>
-                <div class="wrap-metric">
-                  <span class="wrap-metric-label">Cash at Closing</span>
-                  <span class="wrap-metric-value" id="w-out-net-cash">—</span>
-                </div>
-                <div class="wrap-metric">
-                  <span class="wrap-metric-label">Monthly Cash Flow</span>
-                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-monthly-income">—</span>
-                </div>
-                <div class="wrap-metric">
-                  <span class="wrap-metric-label" id="w-cume-spread-label">Cumulative Spread to Balloon</span>
-                  <span class="wrap-metric-value" id="w-out-cume-spread">—</span>
-                </div>
-                <div class="wrap-metric" id="w-metric-exist-paydown">
-                  <span class="wrap-metric-label" id="w-exist-paydown-label">Existing Loan Paid Down to Balloon</span>
-                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-exist-paydown">—</span>
-                </div>
-                <div class="wrap-metric wrap-metric--hidden" id="w-metric-existing-bal">
-                  <span class="wrap-metric-label">Existing Loan Bal. at Balloon</span>
-                  <span class="wrap-metric-value" id="w-out-existing-bal">—</span>
-                </div>
-                <div class="wrap-metric wrap-metric--hidden" id="w-metric-wrap-bal">
-                  <span class="wrap-metric-label">Wrap Loan Bal. at Balloon</span>
-                  <span class="wrap-metric-value" id="w-out-wrap-bal">—</span>
-                </div>
-                <div class="wrap-metric wrap-metric--hidden" id="w-metric-equity-capture">
-                  <span class="wrap-metric-label">Equity Capture at Balloon</span>
-                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-equity-capture">—</span>
-                </div>
-              </div>
-
-              <!-- Buyer card -->
-              <div class="wrap-result-card wrap-result-card--buyer">
-                <div class="wrap-card-header">Buyer Analysis</div>
-                <div class="wrap-metric-headline">
-                  <div class="wrap-metric-headline-label">Monthly P&amp;I</div>
-                  <div class="wrap-metric-headline-value" id="w-out-buyer-payment">—</div>
-                </div>
-                <div class="wrap-metric">
-                  <span class="wrap-metric-label">Down Payment</span>
-                  <span class="wrap-metric-value" id="w-out-down">—</span>
-                </div>
-                <div class="wrap-metric">
-                  <span class="wrap-metric-label">Wrap Loan Amount</span>
-                  <span class="wrap-metric-value" id="w-out-new-loan">—</span>
-                </div>
-                <div class="wrap-metric">
-                  <span class="wrap-metric-label">Market Rate Pmt <input type="number" id="w-market-rate" aria-label="Market comparison rate percent" class="wrap-inline-rate" value="7.25" min="1" max="20" step="0.125">%</span>
-                  <span class="wrap-metric-value" id="w-out-market-pmt">—</span>
-                </div>
-                <div class="wrap-metric">
-                  <span class="wrap-metric-label">Monthly Savings vs. Market</span>
-                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-savings">—</span>
-                </div>
-                <div class="wrap-metric wrap-metric--hidden" id="w-metric-bal-due">
-                  <span class="wrap-metric-label">Balance Due at Balloon</span>
-                  <span class="wrap-metric-value" id="w-out-bal-due">—</span>
-                </div>
-                <div class="wrap-metric wrap-metric--hidden" id="w-metric-home-val">
-                  <span class="wrap-metric-label">Est. Home Value at Balloon</span>
-                  <span class="wrap-metric-value" id="w-out-home-val">—</span>
-                </div>
-                <div class="wrap-metric wrap-metric--hidden" id="w-metric-buyer-equity">
-                  <span class="wrap-metric-label">Est. Buyer Equity at Balloon</span>
-                  <span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-buyer-equity">—</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Action row -->
-            <div class="wrap-action-row no-print">
-              <button type="button" class="wrap-btn-pdf" id="w-btn-pdf"> Download as PDF</button>
-              <button type="button" class="wrap-btn-amort" id="w-btn-amort">Show Amortization Table</button>
-            </div>
-
-            <!-- Amortization table (hidden by default) -->
-            <div class="wrap-amort-wrap" id="w-amort-wrap" hidden>
-              <table class="wrap-amort-table" id="w-amort-table">
-                <thead>
-                  <tr>
-                    <th style="text-align:left;">Year</th>
-                    <th>Wrap Loan Balance</th>
-                    <th>Existing Loan Balance</th>
-                    <th>Monthly Spread</th>
-                    <th>Cumulative Seller Income</th>
-                  </tr>
-                </thead>
-                <tbody id="w-amort-tbody"></tbody>
-              </table>
-            </div>
-
-            <p class="no-print" style="margin-top: 1rem; font-size: .8rem; color: var(--color-gray);">
-              Gross spread only — ignores escrow, reserves, servicing. Estimates only. <a href="tel:+15129566010">Call Adam</a> to discuss structure and due-on-sale risk.
-            </p>
-
-            <!-- Print footer (hidden on screen) -->
-            <div class="print-only print-footer" style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid #e5e7eb; font-size:.8rem; color:var(--color-gray); text-align:center;">
-              Adam Styer | HyperSmart Home Loans &middot; (512) 956-6010 &middot; styermortgage.com<br>
-              <span style="font-size:.7rem;">Gross spread only — ignores escrow, reserves, servicing. Estimates only. Not a commitment to lend. Consult a real estate attorney before proceeding with owner financing.</span>
-            </div>
-
-            <div class="calc-referral-footer no-print">
-              <strong>Referral network:</strong> Use a real estate attorney experienced in Texas owner financing to draft the note and deed of trust, and a title company or servicer to collect payments and forward your mortgage. <strong>Why Styer Mortgage?</strong> Adam structures WRAPs and can connect you with attorney and title partners — <a href="tel:+15129566010">(512) 956-6010</a>.
-            </div>
           </div>
         </div>
       </div>
@@ -751,9 +738,7 @@
     }
     function updateDownPaymentDisplay(salePrice, downPct) {
       var amountEl = document.getElementById('w-down-amount');
-      var pctValEl = document.getElementById('w-down-pct-val');
       if (amountEl) amountEl.value = Math.round(salePrice * downPct / 100).toLocaleString('en-US');
-      if (pctValEl) pctValEl.textContent = downPct.toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%';
     }
 
     var downToggle = null;
@@ -787,8 +772,12 @@
     /* Balloon segmented buttons */
     document.querySelectorAll('.wrap-balloon-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
-        document.querySelectorAll('.wrap-balloon-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.querySelectorAll('.wrap-balloon-btn').forEach(function(b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         var raw = btn.getAttribute('data-balloon');
         selectedBalloon = (raw === 'null') ? null : parseInt(raw, 10);
         updateBalloonVisibility();
@@ -921,9 +910,11 @@
         if (amortWrap.hasAttribute('hidden')) {
           amortWrap.removeAttribute('hidden');
           amortBtn.textContent = 'Hide Amortization Table';
+          amortBtn.setAttribute('aria-expanded', 'true');
         } else {
           amortWrap.setAttribute('hidden', '');
           amortBtn.textContent = 'Show Amortization Table';
+          amortBtn.setAttribute('aria-expanded', 'false');
         }
       });
     }
