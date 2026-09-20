@@ -1,3 +1,12 @@
+## 2026-09-20 — styer-gbp-weekly: DSCR / Investor Strategy published, Week 38
+
+- Auto-published GBP post (246 words) via Publer job `6ab02198387ea68825b80e89`, status complete/zero failures, destination-verified in the GBP scheduled queue.
+- Angle: a rental does not have to cover its own payment to get financed. Sub-0.75 and no-ratio DSCR programs exist, and the tradeoff is more equity in the deal. Built off the 2026-09-16 rewrite of `dscr-loan-austin-tx.html`; every claim traces to that page. No client story asserted (none available to source).
+- Weeks 37 and 38 both fired since the schedule resumed at week 35; week 36 remains the only missed slot after the resume. Updated the standing TODO item rather than adding a duplicate.
+- Re-verified live: `social_drafts.platform` still rejects `google` (used `all`), Publer GBP/IG/FB account names still carry the retired entity, NotebookLM still auth-expired (source refresh skipped so the existing source is not deleted without a working re-add). No site file changes.
+
+Detail: `run-logs/gbp-posts/2026-09-20.md`.
+
 ## 2026-09-18 — IndexNow for Bing / ChatGPT / Copilot
 
 - Self-issued IndexNow key hosted at `/31a45519eb8335e7c25e45e696e834c6.txt`; `scripts/indexnow-submit.mjs` runs at the end of `npm run build` on production deploys and submits the public pages changed since the last built commit (never fails the build). Manual: `npm run indexnow -- /page.html` or `--all`. Google ignores IndexNow; it covers Bing and the engines that read Bing's index.
