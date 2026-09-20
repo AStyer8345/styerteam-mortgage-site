@@ -64,3 +64,16 @@ test('honeypot exits without calling any external service', async () => {
 });
 
 test('scenario contact without marketing consent never enrolls a borrower', async()=>{const r=await submit();assert.equal(r.result.mailchimp,'skipped-no-new-consent');assert.equal(r.calls.some(c=>c.url.includes('mailchimp.com')),false);});
+
+test('authoritative capture retains independent self-reported discovery without changing automatic source or inquiry identity', async () => {
+  for (const answer of ['', 'Gemini']) {
+    const r = await submit({ body: { inquiry_id: 'fixture-inquiry-source-123', email: 'fixture@example.invalid', self_reported_source: answer, first_touch_source: 'google', source: 'homepage_options', situation: 'Asset qualification question' } });
+    assert.equal(r.statusCode, 200);
+    const captured = r.calls.find(call => call.url.includes('/api/intake/inquiries')).body;
+    assert.equal(captured.self_reported_source, answer);
+    assert.equal(captured.first_touch_source, 'google');
+    assert.equal(captured.source, 'homepage_options');
+    assert.equal(captured.situation, 'Asset qualification question');
+    assert.equal(captured.inquiry_id, 'fixture-inquiry-source-123');
+  }
+});

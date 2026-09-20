@@ -4,8 +4,9 @@
   "private": true,
   "description": "Adam Styer | HyperSmart Home Loans website with newsletter automation",
   "scripts": {
-    "build": "npm run validate:knowledge -- --allow-expired && npm run audit:forms && npm run audit:schema && npm run audit:navigation && npm run audit:design && (node scripts/gen-recent-updates.js || true) && node scripts/package-public-site.mjs && (node scripts/indexnow-submit.mjs || true)",
+    "build": "npm run validate:knowledge -- --allow-expired && npm run audit:forms && npm run audit:attribution && npm run audit:schema && npm run audit:navigation && npm run audit:design && (node scripts/gen-recent-updates.js || true) && node scripts/package-public-site.mjs && (node scripts/indexnow-submit.mjs || true)",
     "test": "node --test tests/*.test.js && tsx --test tests/assistant/*.test.ts",
+    "audit:attribution": "node scripts/sync-inquiry-attribution.mjs --check",
     "audit:forms": "node scripts/audit-form-notifications.mjs",
     "seo:audit": "node scripts/seo-audit.mjs",
     "seo:registry": "node scripts/generate-seo-registry.mjs",

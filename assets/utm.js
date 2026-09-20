@@ -80,12 +80,13 @@
     try {
       var hostname = new URL(referrer).hostname.toLowerCase();
       if (hostname === window.location.hostname.toLowerCase()) return 'site_navigation';
+      // Gemini and legacy Bard use Google subdomains; classify them first.
+      if (hostname.indexOf('gemini.') !== -1 || hostname.indexOf('bard.') !== -1) return 'gemini';
       if (hostname.indexOf('google.') !== -1) return 'google';
       if (hostname.indexOf('bing.') !== -1) return 'bing';
       if (hostname.indexOf('chatgpt.') !== -1 || hostname.indexOf('openai.') !== -1) return 'chatgpt';
       if (hostname.indexOf('perplexity.') !== -1) return 'perplexity';
       if (hostname.indexOf('claude.') !== -1 || hostname.indexOf('anthropic.') !== -1) return 'claude';
-      if (hostname.indexOf('gemini.') !== -1 || hostname.indexOf('bard.') !== -1) return 'gemini';
       if (hostname.indexOf('facebook.') !== -1 || hostname.indexOf('fb.') !== -1) return 'facebook';
       if (hostname.indexOf('instagram.') !== -1) return 'instagram';
       return 'referral';

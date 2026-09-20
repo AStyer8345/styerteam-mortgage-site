@@ -95,3 +95,15 @@ test('redirected HTML and malformed primary receipts are not capture proof', asy
   assert.equal(payload.situation, 'Financing goal: Build');
   assert.equal(payload.intent, 'construction');
  });
+
+test('self-reported discovery stays separate from automatic attribution and enters owner notes only when answered', () => {
+  for (const answer of ['', 'ChatGPT', 'Gemini']) {
+    const data = new URLSearchParams({ self_reported_source: answer, first_touch_source: 'google', source: 'homepage_options', message: 'Use my assets', 'form-name': 'contact' });
+    const payload = makePayload(data, [], 'general', 'https://styermortgage.com/contact.html');
+    assert.equal(payload.self_reported_source, answer);
+    assert.equal(payload.first_touch_source, 'google');
+    assert.equal(payload.source, 'homepage_options');
+    assert.equal(payload.situation.includes('How I first heard about Adam (self-reported):'), Boolean(answer));
+    if (answer) assert.ok(payload.situation.includes('How I first heard about Adam (self-reported): ' + answer));
+  }
+});

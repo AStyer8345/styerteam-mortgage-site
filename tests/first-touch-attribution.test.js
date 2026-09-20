@@ -183,3 +183,24 @@ test('lead intake sends normalized attribution in the live notification payload'
     });
   }
 });
+
+test('both first-touch writers distinguish Gemini and Bard from Google and preserve earlier evidence', () => {
+  for (const script of [analyticsScript, attributionScript]) {
+    for (const [referrer, expected] of [
+      ['https://gemini.google.com/app/private-query', 'gemini'],
+      ['https://bard.google.com/', 'gemini'],
+      ['https://www.google.com/search?q=private', 'google'],
+      ['https://chatgpt.com/', 'chatgpt'], ['', 'direct'],
+    ]) {
+      const sessionStorage = memoryStorage(), localStorage = memoryStorage();
+      const window = { location: new URL('https://styermortgage.com/contact.html'), sessionStorage, localStorage };
+      const document = { readyState: 'complete', referrer, addEventListener() {}, querySelectorAll() { return []; }, dispatchEvent() {} };
+      vm.runInNewContext(script, { window, document, URL, URLSearchParams, Date, CustomEvent: function () {} });
+      const first = JSON.parse(sessionStorage.getItem('styer:first-touch:v1'));
+      assert.equal(first.first_touch_source, expected);
+      document.referrer = 'https://www.google.com/search';
+      vm.runInNewContext(script, { window, document, URL, URLSearchParams, Date, CustomEvent: function () {} });
+      assert.deepEqual(JSON.parse(sessionStorage.getItem('styer:first-touch:v1')), first);
+    }
+  }
+});

@@ -55,12 +55,13 @@
     try {
       var host = new URL(referrer).hostname.toLowerCase();
       if (host === window.location.hostname.toLowerCase()) return 'site_navigation';
+      // Gemini and legacy Bard use Google subdomains; classify them first.
+      if (host.indexOf('gemini.') !== -1 || host.indexOf('bard.') !== -1) return 'gemini';
       if (host.indexOf('google.') !== -1) return 'google';
       if (host.indexOf('bing.') !== -1) return 'bing';
       if (host.indexOf('chatgpt.') !== -1 || host.indexOf('openai.') !== -1) return 'chatgpt';
       if (host.indexOf('perplexity.') !== -1) return 'perplexity';
       if (host.indexOf('claude.') !== -1 || host.indexOf('anthropic.') !== -1) return 'claude';
-      if (host.indexOf('gemini.') !== -1 || host.indexOf('bard.') !== -1) return 'gemini';
       return 'referral';
     } catch (_) {
       return 'referral';

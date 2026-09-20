@@ -599,8 +599,17 @@ function showQuickContactError(form) {
   errorMessage.textContent = 'Something went wrong. Please try again or call Adam at (512) 956-6010.';
 }
 
+function appendSelfReportedSource(formData) {
+  const answer = formData.get('self_reported_source');
+  if (!answer) return;
+  const line = 'How I first heard about Adam (self-reported): ' + answer;
+  const situation = String(formData.get('situation') || formData.get('notes') || '');
+  formData.set('situation', [situation, line].filter(Boolean).join('\n'));
+}
+
 async function submitForm(form) {
   const formData = new FormData(form);
+  appendSelfReportedSource(formData);
   const fullName = (formData.get('name') || '').trim();
   const nameParts = fullName.split(' ');
   const fname = nameParts[0] || '';
@@ -635,6 +644,7 @@ async function submitForm(form) {
         timeline: formData.get('timeline') || '',
         lender_status: formData.get('lender_status') || '',
         documentation_issue: formData.get('documentation_issue') || '',
+        self_reported_source: formData.get('self_reported_source') || '',
         situation: formData.get('situation') || formData.get('notes') || '',
         tcpa_consent: formData.get('tcpa_consent') === 'on',
         sms_opt_in: formData.get('sms_opt_in') === 'on',
@@ -747,6 +757,7 @@ function initHeroQuickForm() {
     if (!isValid) return;
 
     const formData = new FormData(form);
+    appendSelfReportedSource(formData);
     const formValue = (...names) => {
       for (const name of names) {
         const value = formData.get(name);
@@ -799,6 +810,7 @@ function initHeroQuickForm() {
           timeline: formValue('timeline'),
           lender_status: formValue('lender_status'),
           documentation_issue: formValue('documentation_issue'),
+          self_reported_source: formValue('self_reported_source'),
           situation: formValue('situation', 'notes'),
           tcpa_consent: formData.get('tcpa_consent') === 'on',
           sms_opt_in: formData.get('sms_opt_in') === 'on',
