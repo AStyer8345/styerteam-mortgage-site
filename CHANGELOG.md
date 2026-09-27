@@ -1,3 +1,12 @@
+## 2026-09-27 — styer-gbp-weekly: Non-QM Misconception Buster published, Week 39
+
+- Auto-published GBP post (249 words) via Publer job `6ab9522b00cdb6ac6f7a33a6`, status complete/zero failures, destination-verified in the GBP scheduled queue (post `6ab9522bf457afb74a3b52a4`).
+- Angle: being self-employed doesn't automatically mean non-QM. Check conventional first, then compare both paths side by side with written quotes. Different from Week 29's "non-QM isn't subprime" post. Every claim traces to the live `non-qm-loans.html` (updated 2026-09-13).
+- Weeks 37, 38, 39 all fired; week 36 remains the only missed slot since the resume.
+- Re-verified live: `social_drafts.platform` still rejects `google` (used `all`), NotebookLM still auth-expired (source refresh skipped). No site file changes.
+
+Detail: `run-logs/gbp-posts/2026-09-27.md`.
+
 ## 2026-09-20 — styer-gbp-weekly: DSCR / Investor Strategy published, Week 38
 
 - Auto-published GBP post (246 words) via Publer job `6ab02198387ea68825b80e89`, status complete/zero failures, destination-verified in the GBP scheduled queue.
