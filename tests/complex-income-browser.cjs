@@ -161,11 +161,12 @@ async function go(page, file, query = '') {
         if (spec.rewritten || spec.answerFirst) await check(`${width}px ${spec.file}: anchor and keyboard disclosure`, async () => {
           const summary = page.locator('details.ci-faq > summary').first();
           if (await summary.count()) {
+            const initiallyOpen = await summary.evaluate(node => node.parentElement.open);
             await summary.focus();
             await page.keyboard.press('Enter');
-            assert.equal(await summary.evaluate(node => node.parentElement.open), true);
+            assert.equal(await summary.evaluate(node => node.parentElement.open), !initiallyOpen);
             await page.keyboard.press('Space');
-            assert.equal(await summary.evaluate(node => node.parentElement.open), false);
+            assert.equal(await summary.evaluate(node => node.parentElement.open), initiallyOpen);
           } else {
             const question = page.locator('main #faq .accordion-button').first();
             await question.focus();
