@@ -134,3 +134,17 @@ body.home-pilot .about-adam-grid{display:grid;grid-template-columns:260px 1fr;ga
 body.home-pilot .about-adam-figure{margin:0}
 body.home-pilot .about-adam-figure img{width:100%;height:auto;border-radius:8px;display:block}
 @media (max-width:760px){body.home-pilot .about-adam-grid{grid-template-columns:1fr;gap:20px}body.home-pilot .about-adam-figure{max-width:260px}}
+
+/* Ticker fix: animate `translate` (older rules pin `transform:none!important`) */
+@keyframes review-ticker{from{translate:0 0}to{translate:-50% 0}}
+body.home-pilot .is-ticker .testimonial-marquee-track{animation:review-ticker 60s linear infinite!important}
+body.home-pilot .is-ticker:hover .testimonial-marquee-track{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){body.home-pilot .is-ticker .testimonial-marquee-track{animation:none!important}}
+
+/* Meet Adam: casual cutout on navy panel + family inset */
+body.home-pilot .about-adam-grid{grid-template-columns:360px 1fr!important}
+body.home-pilot .about-adam-figure{position:relative;margin:0 0 30px}
+body.home-pilot .about-adam-portrait{background:linear-gradient(160deg,#20384d,#182e3e);border-radius:12px;padding:24px 16px 0;overflow:hidden;aspect-ratio:1/1.02;display:flex;align-items:flex-end;justify-content:center}
+body.home-pilot .about-adam-portrait img{width:100%;height:auto;display:block;border-radius:0!important}
+body.home-pilot .about-adam-family{position:absolute;right:-18px;bottom:-30px;width:120px!important;height:auto;border-radius:8px;border:4px solid #fff;box-shadow:0 6px 18px rgba(23,43,61,.18)}
+@media (max-width:760px){body.home-pilot .about-adam-grid{grid-template-columns:1fr!important}body.home-pilot .about-adam-figure{max-width:300px}body.home-pilot .about-adam-family{right:-10px;width:96px!important}}
