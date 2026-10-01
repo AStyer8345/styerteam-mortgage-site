@@ -9,8 +9,14 @@ import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 
 const HOST = 'styermortgage.com';
-const KEY = fs.readdirSync('.').find(f => /^[a-f0-9]{32}\.txt$/.test(f))?.replace('.txt', '');
-if (!KEY) { console.log('IndexNow: no key file found, skipping.'); process.exit(0); }
+// Use the established key accepted by IndexNow. Choosing the first key file
+// can select a different, unverified key when multiple public key files exist.
+const KEY = 'acd320ce4aaac882bfb455892bdcf208';
+const keyFile = `${KEY}.txt`;
+if (!fs.existsSync(keyFile) || fs.readFileSync(keyFile, 'utf8').trim() !== KEY) {
+  console.log('IndexNow: established key file missing or mismatched, skipping.');
+  process.exit(0);
+}
 
 const args = process.argv.slice(2);
 const sitemap = fs.readFileSync('sitemap.xml', 'utf8');
