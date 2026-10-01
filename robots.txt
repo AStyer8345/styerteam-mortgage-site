@@ -1,36 +1,22 @@
-# AI crawlers — explicit allow for AEO citations
-User-agent: GPTBot
-Allow: /
+# One policy for every crawler (2026-10-01).
+# Search, AI-answer and training crawlers are all welcome on public pages;
+# internal tools, tests and data files are excluded for every agent.
+# Note: robots.txt is a crawl request, not access control.
 
+User-agent: Googlebot
+User-agent: Bingbot
 User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
 User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot
 User-agent: Applebot-Extended
-Allow: /
-
+User-agent: Google-Extended
 User-agent: *
-Allow: /
 Disallow: /dashboard.html
 Disallow: /loanos.html
 Disallow: /ops.html
@@ -52,5 +38,6 @@ Disallow: /updates/2026-03-10-temp-placeholder.html
 Disallow: /updates/2026-03-30-temp-placeholder.html
 Disallow: /updates/2026-04-01-test.html
 Disallow: /scenarios/_TEMPLATE.html
+Disallow: /task-reports.json
 
 Sitemap: https://styermortgage.com/sitemap.xml

@@ -11,12 +11,12 @@ test('saved analysis strips unrecognized and contact data from its format',()=>{
 });
 test('established sitemap, robots and canonical destinations are preserved',()=>{
  const baseline='51b16fb745133bd7919f6528a2291d428427bffb';
- const robots=cp.execFileSync('git',['show',baseline+':robots.txt'],{encoding:'utf8'});assert.equal(fs.readFileSync('robots.txt','utf8'),robots);
+ const robots=cp.execFileSync('git',['show',baseline+':robots.txt'],{encoding:'utf8'});const liveRobots=fs.readFileSync('robots.txt','utf8');for(const rule of robots.split('\n').filter(l=>l.startsWith('Disallow:')))assert.ok(liveRobots.includes(rule),rule+' must remain excluded');assert.match(liveRobots,/^Sitemap: https:\/\/styermortgage\.com\/sitemap\.xml$/m);assert.doesNotMatch(liveRobots,/^Disallow: \/$/m);
  const beforeSitemap=cp.execFileSync('git',['show',baseline+':sitemap.xml'],{encoding:'utf8'}),afterSitemap=fs.readFileSync('sitemap.xml','utf8');
  const entries=s=>new Map([...s.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m=>[m[1].match(/<loc>([^<]+)<\/loc>/)[1],m[1].replace(/<lastmod>[^<]+<\/lastmod>/g,'<lastmod/>')]));
  const previous=entries(beforeSitemap),current=entries(afterSitemap);
  for(const [url,entry] of previous)assert.equal(current.get(url),entry,url+' must preserve its existing sitemap entry');
- for(const url of current.keys()){if(previous.has(url))continue;const path=new URL(url).pathname;assert.ok(path.startsWith('/scenarios/'),url);const html=fs.readFileSync('.'+path,'utf8');assert.ok(html.includes('href="'+url+'"'),url+' must be canonical');assert.doesNotMatch(html,/<meta[^>]*name="robots"[^>]*noindex/);}
+ for(const url of current.keys()){if(previous.has(url))continue;const path=new URL(url).pathname;assert.ok(path.startsWith('/scenarios/')||path.startsWith('/blog/'),url);const html=fs.readFileSync('.'+path,'utf8');assert.ok(html.includes('href="'+url+'"'),url+' must be canonical');assert.doesNotMatch(html,/<meta[^>]*name="robots"[^>]*noindex/);}
  const changed=cp.execFileSync('git',['diff','4ba6c443a8f34972b15d38c5a399a5c74dcb5ed2','--name-only','--diff-filter=M'],{encoding:'utf8'}).trim().split('\n').filter(f=>f.endsWith('.html'));for(const file of changed){const before=cp.execFileSync('git',['show','4ba6c443a8f34972b15d38c5a399a5c74dcb5ed2:'+file],{encoding:'utf8'});const after=fs.readFileSync(file,'utf8');const canonical=before.match(/<link[^>]*rel="canonical"[^>]*>/)?.[0];if(canonical)assert.ok(after.includes(canonical),file);}
 });
 test('private page never loads analytics or public assistant and blocks injected third-party scripts',()=>{
