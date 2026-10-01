@@ -71,3 +71,12 @@ body .key-facts-hero .key-facts-grid dd{font-size:.95rem}
   body .hero-quick .journey-hint{font-size:.72rem!important;margin:8px 0 0!important;line-height:1.35!important}
   body .hero-quick fieldset{margin:0!important;padding:0!important}
 }
+
+/* Jumbo (legacy hero layout): form beside the headline on desktop */
+@media (min-width:1000px){
+  body.advisory-product main .hero-two-col:has(.hero-col-quick){display:grid!important;grid-template-columns:minmax(0,1fr) 420px!important;gap:48px!important;align-items:start!important}
+}
+body .hero-col-quick .hero-quick{margin:0 auto}
+@media (min-width:1000px){
+  body.advisory-product main .hero-glass-card:has(.hero-col-quick){max-width:1180px!important;margin-inline:auto!important}
+}

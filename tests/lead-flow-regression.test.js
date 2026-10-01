@@ -54,7 +54,6 @@ test('legacy hero quote flow binds only explicitly designated quote forms', () =
     'loans/conventional.html',
     'loans/fha.html',
     'loans/investment.html',
-    'loans/jumbo.html',
     'loans/refinance.html',
     'loans/usda.html',
     'loans/va.html',
