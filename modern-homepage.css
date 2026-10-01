@@ -96,3 +96,41 @@ body.home-pilot .stat-strip-item .stat-number{font-family:var(--font-primary);fo
 .hero-signature p{margin:0;font-size:.9rem;line-height:1.5;color:var(--color-navy,#172b3d)}
 .hero-signature span{font-size:.8rem;color:#5b6672}
 .hero-signature a{color:inherit}
+
+/* ===== 2026-10-01 polish: proof band, bank-said-no, ticker, Meet Adam photo ===== */
+body.home-pilot .proof-band{background:#182e3e;color:#fff;padding:44px 0}
+body.home-pilot .proof-band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1080px;margin:0 auto;text-align:center}
+body.home-pilot .proof-stat{display:flex;flex-direction:column;gap:6px;color:#fff;text-decoration:none}
+body.home-pilot .proof-num{font-family:var(--font-display,'Source Serif 4',Georgia,serif);font-size:clamp(2.2rem,3.6vw,3.1rem);line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+body.home-pilot .proof-label{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:#d9c48f}
+body.home-pilot a.proof-stat:hover .proof-label{text-decoration:underline}
+@media (max-width:760px){body.home-pilot .proof-band-grid{grid-template-columns:1fr 1fr;gap:28px 12px}body.home-pilot .proof-band{padding:32px 0}}
+
+body.home-pilot .said-no{padding:72px 0 64px;background:#f5f2ec}
+body.home-pilot .said-no .container{max-width:1180px}
+body.home-pilot .said-no-kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#7a6326;margin:0 0 8px}
+body.home-pilot .said-no h2{margin:0 0 10px}
+body.home-pilot .said-no-intro{max-width:680px;color:#4a5562;margin:0 0 28px}
+body.home-pilot .said-no-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+body.home-pilot .said-no-card{background:#fff;border-top:3px solid #8b6e24;border-radius:6px;padding:24px 22px;box-shadow:0 1px 2px rgba(23,43,61,.06)}
+body.home-pilot .said-no-tag{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#7a6326;margin:0 0 8px}
+body.home-pilot .said-no-card h3{font-size:1.12rem;line-height:1.35;margin:0 0 12px}
+body.home-pilot .said-no-card p{font-size:.93rem;line-height:1.6;margin:0 0 10px}
+body.home-pilot .said-no-result{font-weight:600;color:#172b3d;border-top:1px solid #e6e0d4;padding-top:10px;margin-top:12px!important}
+body.home-pilot .said-no-note{font-size:.78rem;color:#6b7580;margin:18px 0 0}
+body.home-pilot .said-no-cta{margin:20px 0 0;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+@media (max-width:900px){body.home-pilot .said-no-grid{grid-template-columns:1fr}}
+
+/* moving review ticker */
+body.home-pilot .testimonial-marquee-wrap.is-ticker{overflow:hidden!important;max-width:none!important;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)!important;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)!important}
+body.home-pilot .is-ticker .testimonial-marquee-track{display:flex!important;gap:24px!important;width:max-content!important;animation:marquee-scroll 55s linear infinite!important}
+body.home-pilot .is-ticker:hover .testimonial-marquee-track{animation-play-state:paused!important}
+body.home-pilot .is-ticker .testimonial-marquee-card{flex:0 0 340px!important;max-width:340px!important;background:#fff!important;border:0!important;border-top:3px solid #8b6e24!important;border-radius:6px!important;padding:22px!important;grid-column:auto!important}
+body.home-pilot .is-ticker .testimonial-marquee-card:first-child>p:first-of-type{font-size:.9rem!important}
+@media (prefers-reduced-motion:reduce){body.home-pilot .is-ticker .testimonial-marquee-track{animation:none!important;flex-wrap:wrap;width:auto!important}body.home-pilot .is-ticker .testimonial-marquee-card[aria-hidden]{display:none}}
+
+/* Meet Adam with photo */
+body.home-pilot .about-adam-grid{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:center;max-width:980px}
+body.home-pilot .about-adam-figure{margin:0}
+body.home-pilot .about-adam-figure img{width:100%;height:auto;border-radius:8px;display:block}
+@media (max-width:760px){body.home-pilot .about-adam-grid{grid-template-columns:1fr;gap:20px}body.home-pilot .about-adam-figure{max-width:260px}}

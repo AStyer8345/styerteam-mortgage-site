@@ -80,3 +80,8 @@ body .hero-col-quick .hero-quick{margin:0 auto}
 @media (min-width:1000px){
   body.advisory-product main .hero-glass-card:has(.hero-col-quick){max-width:1180px!important;margin-inline:auto!important}
 }
+
+/* HNW three-method cards */
+body .hnw-methods{grid-template-columns:repeat(3,minmax(0,1fr))!important;margin:18px 0 16px}
+@media (max-width:760px){ body .hnw-methods{grid-template-columns:1fr!important} }
+body .hnw-methods .ci-card h3{margin:0 0 6px}

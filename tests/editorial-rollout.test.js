@@ -89,7 +89,9 @@ test('homepage planning examples preserve paths to specialist financing', () => 
   const homepage = fs.readFileSync('index.html', 'utf8');
   assert.match(homepage, /id="case-studies"/);
   for (const target of ['mortgage-for-business-owners-austin.html', 'high-net-worth-mortgage.html', 'buy-before-you-sell-austin.html']) assert.ok(homepage.includes(target));
-  assert.doesNotMatch(homepage, /Deals Banks Said No To|3 banks declined|Closed at a rate within/);
+  // Adam asked (2026-10-01) to keep real 'bank said no' examples on the homepage, labeled as composites.
+  assert.match(homepage, /id="bank-said-no"/);
+  assert.match(homepage, /Composite scenarios based on files Adam has closed/);
 });
 
 test('homepage reviews move directly below case studies with compact spacing', () => {
