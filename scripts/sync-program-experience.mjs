@@ -24,7 +24,7 @@ for(const page of pages){
    <p class="journey-eyebrow">Texas mortgage options · Adam Styer</p>
    <h1 id="journey-title">${page.title}</h1>
    ${page.paragraphs.map(p=>`<p class="journey-intro">${p}</p>`).join('\n   ')}
-   <div class="journey-actions"><a class="journey-button journey-primary" href="#scenario-review" data-track="send_scenario_click">Send Your Scenario</a><a class="journey-button journey-secondary" href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Book a Call</a></div>
+   <div class="journey-actions"><a class="journey-button journey-primary" href="#scenario-review" data-track="send_scenario_click">See My Options</a><a class="journey-button journey-secondary" href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Book a Call</a></div>
    <p class="journey-contact"><a href="tel:+15129566010">Call (512) 956-6010</a> <span aria-hidden="true">·</span> <a href="sms:+15129566010">Text Adam</a></p>
    <div class="journey-path-note"><p>Tell me what you’re trying to do. I’ll review your goal, income situation, and timing. You don’t need to choose a loan program first.</p></div>
    <p class="journey-byline">Adam Styer · NMLS #513013<br>HyperSmart Home Loans · Company NMLS #2653540${page.updated?`<br>Last updated: ${page.updated}`:''}</p>

@@ -21,7 +21,7 @@ export function refine(html) {
   html=html.replace(/(<section\b[^>]*class="[^"]*blog-dual-cta[^>]*>)([\s\S]*?)(<\/section>)/g,(_,open,content,close)=>{
     let seen=false;
     content=content.replace(/<a\b([^>]*href="\/get-preapproved.html(?:\?[^"]*)?"[^>]*)>([^<]*)<\/a>/g,(_,attrs)=>{
-      if(!seen){seen=true;return `<a${attrs}>Send Your Scenario</a>`;}
+      if(!seen){seen=true;return `<a${attrs}>See My Options</a>`;}
       return '<a href="https://calendly.com/adamstyer/15minutes" class="btn btn-outline-light" target="_blank" rel="noopener">Book a Call</a>';
     });
     content=content.replace(/(<a\b[^>]*href="tel:[^"]+"[^>]*class=")btn btn-outline-light"/g,'$1cta-phone-link"');
@@ -36,7 +36,7 @@ export function refine(html) {
   html = html.replace(/<a\b([^>]*href="https:\/\/calendly\.com\/adamstyer\/15minutes[^" ]*"[^>]*)>([\s\S]*?)<\/a>/g, (_, attrs, content) => `<a${attrs}>${/<h3/.test(content)?content.replace(/(<h3[^>]*>)[\s\S]*?(<\/h3>)/,'$1Book a Call$2'):'Book a Call'}</a>`);
   html = html.replace(/(<a\b[^>]*href="tel:[^"]+"[^>]*>)([\s\S]*?)(<\/a>)/g, (_,a,b,c)=>a+b.replace(/Call or Text/gi,'Call')+c);
   html = html.replace(/aria-label="Call or Text Adam"/g,'aria-label="Call Adam"');
-  html = html.replace(/<a href="\/scenario.html" class="nav-cta">Send Your Scenario<\/a>/g,'<a href="/get-preapproved.html?intent=scenario" class="nav-cta">Send Your Scenario</a>');
+  html = html.replace(/<a href="\/scenario.html" class="nav-cta">See My Options<\/a>/g,'<a href="/get-preapproved.html?intent=scenario" class="nav-cta">See My Options</a>');
   if (html.includes('class="nav-links"') && !html.includes('class="nav-cta nav-apply"')) {
     const start=html.indexOf('<ul class="nav-links"'), end=html.indexOf('</nav>',start), close=html.lastIndexOf('</ul>',end);
     html=html.slice(0,close)+apply+'\n'+html.slice(close);

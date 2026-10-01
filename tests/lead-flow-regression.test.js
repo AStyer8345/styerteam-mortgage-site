@@ -87,10 +87,10 @@ test('homepage prioritizes the short conversation and preserves the secure appli
   const introActions = homepage.match(/<div id="quick-scenario-form" class="quick-contact-actions"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
-  assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"[^>]*>Send Your Scenario<\/a>/);
+  assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"[^>]*>See My Options<\/a>/);
   assert.match(homepage, /href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279" class="nav-cta nav-apply"[^>]*>Apply Now<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['Send Your Scenario']);
-  assert.deepEqual(introActionLabels, ['Send Your Scenario', 'Apply Now']);
+  assert.deepEqual(heroButtonLabels, ['See My Options']);
+  assert.deepEqual(introActionLabels, ['See My Options', 'Apply Now']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.doesNotMatch(homepage, /name="quick-scenario"/);
   assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);
@@ -130,7 +130,7 @@ test('scenario page puts the short conversion form first and keeps the secure po
   assert.match(scenarioPage, /id="scenario-form"/);
   assert.match(scenarioPage, /name="scenario-review"/);
   assert.match(scenarioPage, /id="form-scenario-review" class="journey-form"/);
-  assert.match(scenarioPage, /<button type="submit" class="journey-button journey-submit">Send Your Scenario/);
+  assert.match(scenarioPage, /<button type="submit" class="journey-button journey-submit">See My Options/);
   assert.match(scenarioPage, /name="loan_goal"/);
   assert.match(scenarioPage, /name="email" type="email"/);
   assert.match(scenarioPage, /name="situation"/);

@@ -47,8 +47,8 @@ for (const file of [...htmlFiles(root), ...templateFiles]) {
   }
   const rawTail = existingItems.slice(actionStart).trim();
   const tail = rawTail.replaceAll(
-    '<a href="/scenario.html" class="nav-cta">Send Your Scenario</a>',
-    '<a href="/get-preapproved.html?intent=scenario" class="nav-cta">Send Your Scenario</a>',
+    '<a href="/scenario.html" class="nav-cta">See My Options</a>',
+    '<a href="/get-preapproved.html?intent=scenario" class="nav-cta">See My Options</a>',
   );
   const replacement = `\n${leadingItems.map((item) => `          ${item}`).join('\n')}\n          ${tail}\n        `;
   const updated = `${html.slice(0, openEnd + 1)}${replacement}${html.slice(listEnd)}`

@@ -31,7 +31,7 @@ test('form attribution reuses first touch and recovers the clicked CTA without P
   };
   const lastCta = {
     cta_source_page: 'https://styermortgage.com/bank-statement-loans.html',
-    cta_label: 'Send Your Scenario',
+    cta_label: 'See My Options',
     intent: 'scenario',
     source: '/bank-statement-loans.html',
     at: now,
@@ -72,7 +72,7 @@ test('form attribution reuses first touch and recovers the clicked CTA without P
   assert.equal(fields.get('utm_source').value, 'google');
   assert.equal(fields.get('entry_referrer').value, 'https://styermortgage.com/bank-statement-loans.html');
   assert.equal(fields.get('cta_source_page').value, lastCta.cta_source_page);
-  assert.equal(fields.get('cta_label').value, 'Send Your Scenario');
+  assert.equal(fields.get('cta_label').value, 'See My Options');
   assert.equal(fields.get('intent').value, 'scenario');
 });
 
@@ -88,7 +88,7 @@ test('purchase journey preserves attribution and uses shared capture', () => {
   assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('step_1_complete'\)/);
   assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /attributionEvent\('accepted_submit',\s*payload.inquiry_id\)/);
   assert.match(preapprovalPage, /situation-journeys\.js/);
-  assert.match(preapprovalPage, /Send Your Scenario<\/button>/);
+  assert.match(preapprovalPage, /See My Options<\/button>/);
 });
 
 test('sitewide analytics records first touch and CTA context for later submission', () => {
@@ -162,7 +162,7 @@ test('lead intake sends normalized attribution in the live notification payload'
         intent: 'scenario',
         source: '/bank-statement-loans.html',
         cta_source_page: 'https://styermortgage.com/bank-statement-loans.html',
-        cta_label: 'Send Your Scenario',
+        cta_label: 'See My Options',
       }),
     });
 
@@ -174,7 +174,7 @@ test('lead intake sends normalized attribution in the live notification payload'
     assert.equal(payload.first_touch_source, 'chatgpt');
     assert.equal(payload.first_touch_utm_source, 'chatgpt');
     assert.equal(payload.intent, 'scenario');
-    assert.equal(payload.cta_label, 'Send Your Scenario');
+    assert.equal(payload.cta_label, 'See My Options');
   } finally {
     global.fetch = previousFetch;
     envNames.forEach((name) => {

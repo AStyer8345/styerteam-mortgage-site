@@ -16,3 +16,16 @@ body .key-facts .key-facts-title{font-size:.78rem!important;font-family:inherit!
   .key-facts-grid>div:nth-child(2n){padding-left:14px;border-left:1px solid rgba(23,43,61,.14)}
   .key-facts-grid dd{font-size:.95rem}
 }
+
+/* Short inline form under the key facts (2026-10-01) */
+body .quick-options{padding-top:32px!important;padding-bottom:16px!important}
+.quick-options-card{max-width:760px;margin:0 auto;padding:28px 28px 20px}
+.quick-options-card h2{margin:0 0 6px}
+.quick-options-card .journey-form-intro{margin:0 0 16px}
+.quick-options-card .conversation-legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (min-width:761px){
+  body .quick-options-card .journey-fields{display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px 16px!important}
+  body .quick-options-card .journey-fields>.journey-field{grid-column:span 1!important;margin:0!important}
+}
+
+body .quick-options-card .self-reported-source-field{margin-top:14px}

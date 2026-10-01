@@ -96,7 +96,7 @@
   }
 
   function inferredCtaLabel(intent) {
-    if (intent === 'scenario') return 'Send Your Scenario';
+    if (intent === 'scenario') return 'See My Options';
     if (intent === 'schedule') return 'Schedule Strategy Call';
     return '';
   }

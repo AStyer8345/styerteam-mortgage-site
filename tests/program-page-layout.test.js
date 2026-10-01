@@ -165,7 +165,7 @@ test('modern loan heroes keep scenario review primary and scheduling secondary',
   for (const file of pages) {
     const html = fs.readFileSync(file, 'utf8');
     if (/data-situation-page=/.test(html)) {
-      assert.match(html, /journey-primary[^>]*>(?:Send Your Scenario|Structure My Financing)/);
+      assert.match(html, /journey-primary[^>]*>(?:See My Options|Structure My Financing)/);
       assert.match(html, /journey-secondary[^>]*>(?:Book a Call|Apply Now)/);
       assert.match(html, /nav-cta nav-apply/);
       continue;
@@ -188,8 +188,10 @@ test('self-employed qualification paths link to full guides and preserve scenari
   assert.match(main, /id="income-documents"/);
   assert.match(main, /id="prepare-your-file"/);
   assert.match(main, /id="qualification-steps"/);
-  assert.match(main, /<a\b[^>]*href="#scenario-review"[^>]*>Send Your Scenario<\/a>/);
+  assert.match(main, /<a\b[^>]*href="#(?:scenario-review|quick-options)"[^>]*>See My Options<\/a>/);
   assert.match(main, /name="scenario-review"/);
-  assert.equal((main.match(/<form\b/g) || []).length, 1);
+  // One detailed intake form, plus the optional short form under the key facts.
+  assert.equal((main.match(/<form\b(?![^>]*data-quick-form)/g) || []).length, 1);
+  assert.ok((main.match(/<form\b[^>]*data-quick-form/g) || []).length <= 1);
   assert.doesNotMatch(main, /name="self-employed-quote"/);
 });
