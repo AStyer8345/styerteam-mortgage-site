@@ -26,6 +26,7 @@ body .quick-options{padding-top:32px!important;padding-bottom:16px!important}
 @media (min-width:761px){
   body .quick-options-card .journey-fields{display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px 16px!important}
   body .quick-options-card .journey-fields>.journey-field{grid-column:span 1!important;margin:0!important}
+  body .quick-options-card .journey-fields>.journey-field.journey-full:has(textarea){grid-column:1/-1!important}
 }
 
 body .quick-options-card .self-reported-source-field{margin-top:14px}
