@@ -292,7 +292,9 @@ body.advisory-site main :is(.bg-navy,.bg-dark,.cta-spotlight) :is(p,p.text-lg,.t
  .advisory-site:has(main :is(input:not([type=hidden]),textarea,select):focus) .advisory-contact-bar,
  .advisory-calculator.calc-editing-visible .advisory-contact-bar,
  .advisory-panel-open .advisory-contact-bar{display:none}
- .has-advisory-contact-bar .mortgage-assistant{display:none}
+ /* Keep chat reachable above the contact bar; typing rules above still hide it. */
+ .advisory-site.has-advisory-contact-bar .mortgage-assistant{bottom:calc(104px + env(safe-area-inset-bottom))}
+ .advisory-panel-open .mortgage-assistant{display:none}
 }
 .advisory-panel{position:fixed;inset:0;z-index:120}
 .advisory-panel[hidden]{display:none}
