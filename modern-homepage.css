@@ -89,3 +89,10 @@ body.home-pilot .stat-strip-item .stat-number{font-family:var(--font-primary);fo
  body.home-pilot main :is(.modern-goals,.modern-scenarios,.modern-programs,.modern-equity-feature){padding:48px 0}
  body.home-pilot .testimonial-marquee-card:first-child{grid-column:auto}
 }
+
+/* 2026-10-01 simplify: compact advisor signature replaces portrait card + pills */
+.hero-signature{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:20px;border-top:1px solid rgba(23,43,61,.12);max-width:440px}
+.hero-signature img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;background:#e9e4da;flex:none}
+.hero-signature p{margin:0;font-size:.9rem;line-height:1.5;color:var(--color-navy,#172b3d)}
+.hero-signature span{font-size:.8rem;color:#5b6672}
+.hero-signature a{color:inherit}
