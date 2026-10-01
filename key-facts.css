@@ -30,3 +30,26 @@ body .quick-options{padding-top:32px!important;padding-bottom:16px!important}
 }
 
 body .quick-options-card .self-reported-source-field{margin-top:14px}
+
+/* Short form in the hero, right column on desktop (2026-10-01) */
+@media (min-width:1000px){
+  body .journey-hero .journey-grid.has-hero-quick{display:grid!important;grid-template-columns:minmax(0,1fr) 420px!important;gap:48px!important;align-items:start!important;max-width:1180px!important}
+  body .journey-hero .has-hero-quick .journey-copy{max-width:none!important}
+}
+body .hero-quick{max-width:520px;margin:28px auto 0;padding:24px 24px 16px}
+@media (min-width:1000px){ body .hero-quick{margin:0} }
+body .hero-quick .quick-options-heading{font-size:1.45rem;line-height:1.25;margin:0 0 4px}
+body .hero-quick .journey-form-intro{font-size:.88rem;margin:0 0 14px}
+body .hero-quick .journey-fields{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px 12px!important}
+body .hero-quick .journey-fields>.journey-field{grid-column:span 1!important;margin:0!important}
+body .hero-quick .journey-fields>.journey-field.journey-full{grid-column:1/-1!important}
+body .hero-quick textarea{min-height:64px}
+body .hero-quick .journey-hint{font-size:.8rem}
+@media (max-width:480px){ body .hero-quick .journey-fields{grid-template-columns:1fr!important} }
+
+/* Key facts inside the hero, under the opening copy */
+body .key-facts-hero{padding:0!important;margin-top:28px}
+body .key-facts-hero .key-facts-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+body .key-facts-hero .key-facts-grid>div{padding:12px 14px 12px 0!important;border-left:0!important}
+body .key-facts-hero .key-facts-grid>div:nth-child(2n){padding-left:14px!important;border-left:1px solid rgba(23,43,61,.14)!important}
+body .key-facts-hero .key-facts-grid dd{font-size:.95rem}
