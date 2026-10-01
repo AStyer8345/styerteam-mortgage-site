@@ -5,7 +5,14 @@ const path = require('node:path');
 // `node scripts/sync-advisory-design.mjs` to propagate it.
 // Bump when advisory-design.css, advisory-contact.js or calculator-sticky-result.js change.
 const ASSET_VERSION = '20260918';
-const SITE_FOOTER = fs.readFileSync(path.join(__dirname, 'site-footer.html'), 'utf8').trim();
+// esbuild places this module inside the function entry bundle; __dirname then
+// points to netlify/functions rather than netlify/functions/lib.
+const footerPath = [
+  path.join(__dirname, 'site-footer.html'),
+  path.join(__dirname, 'lib', 'site-footer.html'),
+].find(candidate => fs.existsSync(candidate));
+if (!footerPath) throw new Error('Shared site footer is missing from the function bundle');
+const SITE_FOOTER = fs.readFileSync(footerPath, 'utf8').trim();
 function refineAdvisoryDesign(html) {
   if (!/class="nav-links"|class="site-header lp-header"/.test(html)) return html;
   const classes = ['advisory-site'];

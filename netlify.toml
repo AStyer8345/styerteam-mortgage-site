@@ -23,6 +23,7 @@
   SECRETS_SCAN_OMIT_KEYS = "BUFFER_ACCESS_TOKEN,BUFFER_FACEBOOK_PROFILE_ID,BUFFER_LINKEDIN_PROFILE_ID,Github_repo"
 
 [functions]
+  included_files = ["netlify/functions/lib/site-footer.html"]
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
