@@ -158,3 +158,43 @@ body.home-pilot .hero-signature{flex-direction:column;justify-content:center;tex
 body.home-pilot .hero-signature img{width:200px;height:200px;border-width:4px}
 body.home-pilot .hero-signature p{font-size:1.05rem}
 @media (max-width:760px){body.home-pilot .hero-signature img{width:160px;height:160px}}
+
+/* Aesthetic pass (2026-10-02) */
+/* 1. Review ticker: wider stage, softer edge fade, no dead space inside cards */
+body.home-pilot .testimonial-marquee-wrap.is-ticker{width:100vw!important;margin-left:calc(50% - 50vw)!important;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)!important;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)!important}
+body.home-pilot .is-ticker .testimonial-marquee-track{align-items:stretch!important}
+body.home-pilot .is-ticker .testimonial-marquee-card{display:flex!important;flex-direction:column!important;flex-basis:320px!important;max-width:320px!important;padding:20px 22px!important}
+body.home-pilot .is-ticker .testimonial-marquee-card>p[style*="italic"]{flex:0 0 auto!important;margin:10px 0 0!important;font-size:.95rem!important;line-height:1.55!important;color:#24384a}
+body.home-pilot .is-ticker .testimonial-marquee-card>div[style*="display:flex"]{margin-top:auto!important;padding-top:16px}
+body.home-pilot .is-ticker .testimonial-marquee-card .review-proof-links{margin-top:10px!important}
+@media (max-width:760px){body.home-pilot .is-ticker .testimonial-marquee-card{flex-basis:280px!important;max-width:280px!important}body.home-pilot .testimonial-marquee-wrap.is-ticker{-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)!important;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)!important}}
+
+/* 2. One primary action in the hero on desktop: the form sits right beside it */
+@media (min-width:901px){body.home-pilot .hero-ctas .hero-cta-btn{display:none!important}body.home-pilot .hero-ctas .modern-browse-link{font-size:1rem}}
+
+/* 3. Bank-said-no: results line up at the bottom as the payoff */
+body.home-pilot .said-no-card{display:flex;flex-direction:column}
+body.home-pilot .said-no-result{margin-top:auto!important;border-top:0!important;background:#f6f0e1;border-left:3px solid #8b6e24;border-radius:4px;padding:10px 12px!important}
+body.home-pilot .said-no-card p.said-no-result{margin-bottom:0!important}
+
+/* 4. Fit cards: one consistent link list */
+body.home-pilot main .modern-goal-grid article{display:flex;flex-direction:column}
+body.home-pilot main .modern-goal-grid article h3::after{content:none!important}
+body.home-pilot .goal-links{list-style:none;margin:auto 0 0;padding:0;border-top:1px solid #e6e0d4}
+body.home-pilot .goal-links li{border-bottom:1px solid #eee9de}
+body.home-pilot .goal-links li:last-child{border-bottom:0}
+body.home-pilot .goal-links a{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-weight:600;font-size:.95rem;color:#172b3d;text-decoration:none}
+body.home-pilot .goal-links a::after{content:'\2192';color:#8b6e24;transition:transform .15s}
+body.home-pilot .goal-links a:hover{color:#8b6e24}
+body.home-pilot .goal-links a:hover::after{transform:translateX(3px)}
+
+/* 5. Meet Adam photo centered on phones */
+@media (max-width:760px){body.home-pilot .about-adam-figure{margin-left:auto!important;margin-right:auto!important}}
+
+/* 6. Wider FAQ on desktop */
+@media (min-width:901px){body.home-pilot #faq .accordion{max-width:860px!important}}
+body.home-pilot .is-ticker .testimonial-marquee-card>div[style*="display:flex"]{margin-top:0!important}
+body.home-pilot .is-ticker .testimonial-marquee-card .review-proof-links{margin-top:auto!important;padding-top:12px}
+body.home-pilot .is-ticker .testimonial-marquee-track{align-items:flex-start!important}
+body.home-pilot .is-ticker .testimonial-marquee-card .review-proof-links{margin-top:12px!important;padding-top:0}
+@media (min-width:901px){body.home-pilot .hero-ctas{margin-top:-28px!important;margin-bottom:4px!important}}
