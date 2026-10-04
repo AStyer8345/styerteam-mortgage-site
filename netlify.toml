@@ -31,6 +31,9 @@
   included_files = ["ai-knowledge/**"]
   external_node_modules = ["@netlify/blobs"]
 
+[functions."assistant-transcript-retry"]
+  external_node_modules = ["@netlify/blobs"]
+
 [functions."saved-analysis"]
   external_node_modules = ["@netlify/blobs"]
 

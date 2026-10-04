@@ -314,11 +314,13 @@ test('complex assessment explains paths, obstacles, facts, documents, and applyi
   const state = deriveStrategyState('I need to buy before I sell', { ...EMPTY_STRATEGY_STATE, path: 'complex', pendingQuestion: 'complex_description' });
   const reply = strategyConversationReply('I need to buy before I sell', state, runtime)!;
   assert.equal(reply.responseKind, 'scenario_assessment');
-  assert.match(reply.message, /What may potentially work/);
-  assert.match(reply.message, /What could be the obstacle/);
-  assert.match(reply.message, /Facts that change the answer/);
-  assert.match(reply.message, /What Adam would need to review/);
-  assert.match(reply.message, /Does applying now appear reasonable/);
+  assert.match(reply.message, /Bridge|strategies/);
+  assert.match(reply.message, /main uncertainty/);
+  assert.match(reply.message, /equity|reserves|sale timing/);
+  assert.match(reply.message, /review.*securely/);
+  assert.match(reply.message, /scenario review/);
+  assert.equal((reply.message.match(/\?/g) || []).length, 1);
+  assert.equal(reply.suggestedReplies.length, 3);
   assert.doesNotMatch(reply.message, /you qualify|you are approved/i);
 });
 

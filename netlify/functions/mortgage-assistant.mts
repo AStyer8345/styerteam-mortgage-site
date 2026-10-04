@@ -4,6 +4,7 @@ import { scanSensitiveInput, isPromptInjection, safeSensitiveNotice, safeUnsuppo
 import { retrieveApprovedKnowledge } from './_shared/knowledge.ts';
 import { createGeneralMortgageResponse, createMortgageResponse, createSalesConversationResponse } from './_shared/openai-responses.ts';
 import { createSessionToken, verifySessionToken } from './_shared/session.ts';
+import { persistTranscript } from './_shared/transcript-store.ts';
 import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
 import { conversionResources, recommendApprovedResources, resolveAssistantActions } from './_shared/assistant-resources.ts';
@@ -20,7 +21,13 @@ const POLICY_VERSION = 'privacy-contact-2026-07-15-v1';
 
 export default async function handler(request: Request, context: Context): Promise<Response> {
   const correlationId = context.requestId || randomUUID();
-  const headers = { 'Cache-Control': 'no-store', 'Content-Type': 'application/json', 'X-Correlation-Id': correlationId };
+  const headers: Record<string, string> = { 'Cache-Control': 'no-store', 'Content-Type': 'application/json', 'X-Correlation-Id': correlationId };
+
+  const recordTurn = async (...args: Parameters<typeof persistTurn>) => {
+    const result = await persistTurn(...args);
+    headers['X-Conversation-Storage'] = result.storageStatus;
+    return result;
+  };
 
   if (request.method === 'GET') return handleConfig(context, headers);
   if (request.method !== 'POST') return json({ error: { code: 'method_not_allowed', message: 'Method not allowed.' } }, 405, headers);
@@ -83,7 +90,7 @@ export default async function handler(request: Request, context: Context): Promi
 
   if (/\b(?:adam(?:['’]s)?|his)\s+(?:team\s+)?(?:to\s+)?(?:review|look at)|\b(?:have|ask)\s+adam\b|\bcontact me\b|\bsend (?:this|it|my scenario) to adam\b|\bsend adam (?:this|it|my scenario)\b/i.test(message)) {
     const name = salesState.visitorName ? `, ${salesState.visitorName}` : '';
-    const answer = `Absolutely${name}. Add an email address or phone number below so Adam’s team has a way to respond. You’ll review the privacy notice before anything is saved. The conversation will stay attached to this request, so you won’t need to repeat the scenario.`;
+    const answer = `Absolutely${name}. Add an email address or phone number below so Adam’s team has a way to respond. You’ll review the privacy notice before your contact request is submitted. Adam can review the saved conversation with your request.`;
     await recordTurn(conversationId, correlationId, session.id, message, answer, [], { contact_details_requested: true }, undefined, sequenceStart, sourcePage);
     return json({ conversationId, message: answer, sources: [], collectContactDetails: true, salesState }, 200, headers);
   }
@@ -133,7 +140,7 @@ export default async function handler(request: Request, context: Context): Promi
       conversationId,
       message: strategyReply.message,
       sources: [],
-      resources: [],
+      resources: recommendApprovedResources(message, assistantMode),
       actions: resolveAssistantActions(strategyReply.actions),
       suggestedReplies: strategyReply.suggestedReplies,
       salesState: nextState,
@@ -185,7 +192,7 @@ export default async function handler(request: Request, context: Context): Promi
       const policy = checkGeneralAnswerLanguage(model.text, followUp.question);
       if (!policy.safe) throw new Error(`General answer policy violation: ${policy.reason}`);
       await recordTurn(conversationId, correlationId, session.id, message, model.text, [], { general_educational_answer: true }, model.responseId, sequenceStart, sourcePage, retrieval.version);
-      return json({ conversationId, message: model.text, sources: [], resources: [...(allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : []), ...conversionResources(salesState.stage, message)].slice(0, 3), suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
+      return json({ conversationId, message: model.text, sources: [], resources: [...(allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery, assistantMode).slice(0, 1) : []), ...conversionResources(salesState.stage, message)].slice(0, 3), suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     } catch (error) {
       console.error('[mortgage-assistant] general answer failed', { correlationId, reason: error instanceof Error ? error.message.slice(0, 240) : 'unknown_error' });
       const answer = `Let’s work through it from the decision you’re trying to make.\n\n${followUp.question}`;
@@ -231,7 +238,7 @@ export default async function handler(request: Request, context: Context): Promi
     const validation = validateAssistantOutput(model.text);
     if (!validation.safe) throw new Error(`Unsafe model output: ${validation.reason}`);
     await recordTurn(conversationId, correlationId, session.id, message, model.text, model.citedSources, { grounded: true }, model.responseId, sequenceStart, sourcePage, retrieval.version);
-    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: allowResourceRecommendation(message) ? model.recommendedResources.slice(0, 1) : [], suggestedReplies: model.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
+    return json({ conversationId, message: model.text, sources: model.citedSources.map(parseSourceRef), resources: recommendApprovedResources(contextualQuery, assistantMode).length ? recommendApprovedResources(contextualQuery, assistantMode).slice(0, 2) : (allowResourceRecommendation(message) ? model.recommendedResources.slice(0, 1) : []), suggestedReplies: model.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
   } catch (error) {
     console.error('[mortgage-assistant] response generation failed', {
       correlationId,
@@ -246,7 +253,7 @@ export default async function handler(request: Request, context: Context): Promi
       const policy = checkGeneralAnswerLanguage(general.text, followUp.question);
       if (!policy.safe) throw new Error(`General answer policy violation: ${policy.reason}`);
       await recordTurn(conversationId, correlationId, session.id, message, general.text, [], { grounded_fallback_to_general: true }, general.responseId, sequenceStart, sourcePage, retrieval.version);
-      return json({ conversationId, message: general.text, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery).slice(0, 1) : [], suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
+      return json({ conversationId, message: general.text, sources: [], resources: allowResourceRecommendation(message) ? recommendApprovedResources(contextualQuery, assistantMode).slice(0, 1) : [], suggestedReplies: followUp.suggestedReplies, salesState, responseKind: 'useful_answer' }, 200, headers);
     } catch (generalError) {
       console.error('[mortgage-assistant] general fallback failed', { correlationId, reason: generalError instanceof Error ? generalError.message.slice(0, 240) : 'unknown_error' });
       const answer = `Here’s the useful way to approach it: start with the decision and the tradeoffs, then add only the numbers that change the answer.\n\n${followUp.question}`;
@@ -301,11 +308,13 @@ async function handleConfirmedAction(token: string, body: Record<string, unknown
   // cache. Use the widget's running turn count so the confirmation and result
   // land after the visible conversation.
   const confirmationSequence = computeSequenceStart(body.turnCount, 0);
-  const recordedConfirmation = await recordTurn(conversationId, correlationId, sessionId, '[CONFIRMED_ACTION]', 'The visitor confirmed the requested action.', [], { confirmed_tool: confirmation.name, confirmation_recorded: true }, undefined, confirmationSequence);
+  const recordedConfirmation = await persistTurn(conversationId, correlationId, sessionId, '[CONFIRMED_ACTION]', 'The visitor confirmed the requested action.', [], { confirmed_tool: confirmation.name, confirmation_recorded: true }, undefined, confirmationSequence);
+  headers['X-Conversation-Storage'] = recordedConfirmation.storageStatus;
   if (!recordedConfirmation.ok) return json({ error: { code: 'conversation_unavailable', message: 'The request could not be safely recorded. Please try again.' } }, 502, headers);
   const result = await executeTool(confirmation.name, confirmation.args, conversationId, correlationId, body, confirmation.toolCallId);
   const answer = toolResultMessage(confirmation.name, result);
-  await recordTurn(conversationId, correlationId, sessionId, '[ACTION_RESULT]', answer, [], { confirmed_tool: confirmation.name, tool_status: result.status }, undefined, confirmationSequence + 2);
+  const recordedResult = await persistTurn(conversationId, correlationId, sessionId, '[ACTION_RESULT]', answer, [], { confirmed_tool: confirmation.name, tool_status: result.status }, undefined, confirmationSequence + 2);
+  headers['X-Conversation-Storage'] = recordedResult.storageStatus;
   return json({ conversationId, message: answer, sources: [], toolResult: result }, result.ok ? 200 : 502, headers);
 }
 
@@ -320,14 +329,14 @@ async function executeTool(name: string, args: Record<string, unknown>, conversa
   return callLoanOs(name, payload, { idempotencyKey: `${conversationId}:${toolCallId}` });
 }
 
-async function recordTurn(conversationId: string, correlationId: string, sessionId: string, visitorMessage: string, assistantMessage: string, sources: string[], policyOutcome: Record<string, boolean | string>, modelRequestId: string | undefined, sequenceStart: number, sourcePage?: string, knowledgeVersion?: string) {
+async function persistTurn(conversationId: string, correlationId: string, sessionId: string, visitorMessage: string, assistantMessage: string, sources: string[], policyOutcome: Record<string, boolean | string>, modelRequestId: string | undefined, sequenceStart: number, sourcePage?: string, knowledgeVersion?: string) {
   const sessionHash = createHash('sha256').update(sessionId).digest('hex');
   const sequence = Math.max(1, sequenceStart);
-  return callLoanOs('record_conversation_turn', {
+  return persistTranscript({
     conversationId, correlationId, sessionHash, visitorMessage, assistantMessage,
     sequenceStart: sequence, knowledgeVersion, sourceRefs: sources,
     policyOutcome, modelRequestId, sourcePage,
-  }, { idempotencyKey: `${conversationId}:turn:${sequence}` });
+  }, `${conversationId}:turn:${sequence}`);
 }
 
 function sameOrigin(request: Request): boolean {
@@ -409,6 +418,10 @@ function boundedText(value: unknown, max: number, required = true) {
   const clean = value.trim();
   return clean && clean.length <= max && !/[\u0000-\u001F]/.test(clean) ? clean : null;
 }
-function json(body: unknown, status: number, headers: Record<string, string>) { return new Response(JSON.stringify(body), { status, headers }); }
+function json(body: unknown, status: number, headers: Record<string, string>) {
+  const storageStatus = headers['X-Conversation-Storage'];
+  const responseBody = storageStatus && body && typeof body === 'object' ? { ...body, storageStatus } : body;
+  return new Response(JSON.stringify(responseBody), { status, headers });
+}
 
 export const config: Config = { path: '/api/mortgage-assistant', method: ['GET', 'POST'] };

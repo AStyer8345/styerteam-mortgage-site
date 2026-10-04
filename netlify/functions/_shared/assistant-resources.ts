@@ -2,6 +2,11 @@ export type AssistantResource = { label: string; url: string; use: string };
 export type AssistantAction = { type: 'contact' | 'application' | 'schedule' | 'rate_review'; label: string; url?: string };
 
 export const APPROVED_RESOURCES: readonly AssistantResource[] = [
+  { label: 'Self-employed mortgage guide', url: 'https://styermortgage.com/self-employed-mortgage-austin.html', use: 'borrowers comparing tax-return and alternative income documentation' },
+  { label: 'Bank statement loan guide', url: 'https://styermortgage.com/bank-statement-loans.html', use: 'business owners whose tax-return income differs from cash flow' },
+  { label: 'DSCR loan guide', url: 'https://styermortgage.com/dscr-loans-texas.html', use: 'borrowers exploring rental-property financing' },
+  { label: 'Asset-based mortgage guide', url: 'https://styermortgage.com/asset-depletion-mortgage-texas.html', use: 'borrowers exploring assets as a possible income documentation path' },
+  { label: 'Buy before you sell guide', url: 'https://styermortgage.com/buy-before-you-sell-austin.html', use: 'borrowers planning a move before their current home sells' },
   { label: 'Mortgage payment calculator', url: 'https://styermortgage.com/calculator-payment.html', use: 'estimating principal, interest, taxes, insurance, or a monthly housing payment' },
   { label: 'Home affordability calculator', url: 'https://styermortgage.com/calculator-affordability.html', use: 'exploring a comfortable price range based on income and monthly debts' },
   { label: 'Refinance break-even calculator', url: 'https://styermortgage.com/calculator-refinance-breakeven.html', use: 'comparing refinance costs, monthly savings, and estimated break-even time' },
@@ -48,16 +53,22 @@ export function resolveAssistantActions(actions: Array<'contact' | 'application'
   return [...new Set(actions)].map((action) => definitions[action]);
 }
 
-export function recommendApprovedResources(question: string): Array<{ label: string; url: string }> {
+export function recommendApprovedResources(question: string, mode = 'consumer'): Array<{ label: string; url: string }> {
   const value = question.toLowerCase();
+  const professional = mode !== 'consumer' || /\b(?:i(?:’m|'m| am) (?:a |an )?(?:cpa|financial advisor|wealth manager)|my client)\b/.test(value);
   const matches = [
+    [/self[ -]?employ|business owner|tax returns?|write[ -]?offs?/, 'Self-employed mortgage guide'],
+    [/bank[ -]?statement|low (?:taxable )?income|tax returns?.*(?:low|cash flow)/, 'Bank statement loan guide'],
+    [/\bdscr\b|rental property|investment property/, 'DSCR loan guide'],
+    [/asset depletion|asset utilization|retire|substantial assets/, 'Asset-based mortgage guide'],
+    [/buy before|before.{0,12}sell|bridge loan/, 'Buy before you sell guide'],
     [/\b(?:afford|affordability|price range|how much house|home budget)\b/, 'Home affordability calculator'],
     [/\b(?:monthly payment|mortgage payment|piti|payment estimate)\b/, 'Mortgage payment calculator'],
     [/\b(?:refinance|refi)\b.*\b(?:break.?even|saving|worth|cost)\b|\bbreak.?even\b.*\b(?:refinance|refi)\b/, 'Refinance break-even calculator'],
     [/\bdscr\b|debt service coverage/, 'DSCR calculator'],
     [/asset depletion|asset utilization/, 'Asset depletion calculator'],
     [/financial advisor|wealth manager|portfolio liquidity/, 'Financial advisor mortgage strategies'],
-    [/\bcpa\b|tax advisor|tax return.*self.?employed/, 'CPA mortgage resources'],
+    [/\bcpa\b|tax advisor/, 'CPA mortgage resources'],
     [/reverse mortgage|\bhecm\b/, 'Texas reverse mortgage guide'],
     [/case stud|client example/, 'Mortgage case studies for advisors and CPAs'],
     [/\b(?:2[- ]?1|3[- ]?2[- ]?1|temporary)\b.*buydown|rate buydown/, 'Temporary rate buydown calculator'],
@@ -65,7 +76,9 @@ export function recommendApprovedResources(question: string): Array<{ label: str
     [/\b(?:calculator|calculators|tools)\b/, 'All mortgage calculators'],
     [/\b(?:current|today|right now|quote|loan estimate)\b.*\b(?:rate|rates|pricing)\b|\b(?:rate|rates|pricing)\b.*\b(?:current|today|right now|quote|loan estimate)\b|\byour rates?\b/, 'Request a rate review'],
   ] as const;
-  const labels = matches.filter(([pattern]) => pattern.test(value)).map(([, label]) => label);
+  const labels = matches.filter(([pattern, label]) => pattern.test(value) && (professional || !/advisor|CPA|case studies/i.test(label))).map(([, label]) => label);
+  // An explicit tool/rate request takes precedence over a topical guide.
+  if (/calculator|calculate|afford|payment|rate|pricing/.test(value)) labels.sort((a, b) => Number(/calculator|rate review/i.test(b)) - Number(/calculator|rate review/i.test(a)));
   return labels.slice(0, 2).flatMap((label) => {
     const resource = APPROVED_RESOURCES.find((item) => item.label === label);
     return resource ? [{ label: resource.label, url: resource.url }] : [];

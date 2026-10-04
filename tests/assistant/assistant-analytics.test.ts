@@ -29,3 +29,28 @@ test('conversation abandonment is emitted only after a conversation and before c
   assert.match(browser, /window\.setTimeout\(trackAbandonment, 120000\)/);
   assert.doesNotMatch(browser, /pagehide.*trackAbandonment/);
 });
+
+// Exercise the actual dispatcher: a plain custom dataLayer object is not a
+// Google Analytics event until it is forwarded by a tag or a gtag command.
+import vm from 'node:vm';
+test('production assistant events reach the existing Google tag without transcript data', () => {
+  const events: unknown[] = [];
+  const context = { state: { analyticsSeen: {}, salesState: {}, turns: [] }, window: { location: { pathname: '/bank-statement-loans.html', hostname: 'styermortgage.com', search: '' }, dataLayer: events } };
+  const functions = browser.slice(browser.indexOf('function trackAssistant'), browser.indexOf('function openingChoiceValue'));
+  vm.runInNewContext(functions + '\ntrackAssistant("assistant_opened");', context);
+  assert.equal(events.length, 2);
+  const command = events[1] as IArguments;
+  assert.equal(command[0], 'event');
+  assert.equal(command[1], 'assistant_opened');
+  assert.equal(command[2].send_to, 'G-DDY0H0319S');
+  assert.equal(command[2].source_page, '/bank-statement-loans.html');
+  assert.equal(command[2].event, undefined);
+});
+
+test('synthetic tests are excluded from production Google Analytics', () => {
+  const events: unknown[] = [];
+  const context = { state: { analyticsSeen: {}, salesState: {}, turns: [] }, window: { location: { pathname: '/', hostname: 'styermortgage.com', search: '?assistant_test=1' }, dataLayer: events } };
+  const functions = browser.slice(browser.indexOf('function trackAssistant'), browser.indexOf('function openingChoiceValue'));
+  vm.runInNewContext(functions + '\ntrackAssistant("assistant_opened");', context);
+  assert.equal(events.length, 1);
+});

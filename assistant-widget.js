@@ -58,7 +58,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20260911-accessible-launcher-v1';
+    stylesheet.href = '/assistant-widget.css?v=20261004-reliable-chat-v1';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -228,8 +228,24 @@
     if (data.collectContactDetails === true) openLeadForm();
     if (data.toolResult && data.toolResult.data && data.toolResult.data.applicationUrl) addTrustedLink(data.toolResult.data.applicationUrl, 'Open secure application');
     if (data.confirmation) showConfirmation(data.confirmation);
+    if (data.storageStatus) trackAssistant('conversation_storage_' + data.storageStatus);
+    if (data.storageStatus === 'queued' || data.storageStatus === 'unavailable') {
+      showStorageNotice(data.storageStatus === 'queued' ? 'Your answer is ready. Saving this chat is delayed; we’ll retry automatically. If you need help now, call or text Adam at (512) 956-6010.' : 'Your answer is ready, but this chat could not be saved. Please call or text Adam at (512) 956-6010 if you need a review.');
+    }
+    else if (data.storageStatus === 'saved') showStorageNotice('');
     trackResponse(data);
     scheduleAbandonment();
+  }
+
+  function showStorageNotice(message) {
+    if (!ui.storageNotice) {
+      ui.storageNotice = document.createElement('p');
+      ui.storageNotice.className = 'ma-sensitive-notice';
+      ui.storageNotice.setAttribute('role', 'status');
+      ui.form.parentNode.insertBefore(ui.storageNotice, ui.form);
+    }
+    ui.storageNotice.textContent = message;
+    ui.storageNotice.hidden = !message;
   }
 
   function handleError(error) {
@@ -578,7 +594,7 @@
   }
 
   function trackAssistant(eventName, extra) {
-    var allowedEvents = ['assistant_impression', 'assistant_opened', 'conversation_started', 'opening_choice_selected', 'useful_answer_delivered', 'estimate_started', 'estimate_completed', 'pricing_range_viewed', 'complex_scenario_started', 'scenario_assessment_completed', 'contact_form_opened', 'contact_submitted', 'preapproval_clicked', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'assistant_error', 'conversation_abandoned'];
+    var allowedEvents = ['assistant_impression', 'assistant_opened', 'conversation_started', 'opening_choice_selected', 'useful_answer_delivered', 'estimate_started', 'estimate_completed', 'pricing_range_viewed', 'complex_scenario_started', 'scenario_assessment_completed', 'contact_form_opened', 'contact_submitted', 'preapproval_clicked', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'assistant_error', 'conversation_storage_saved', 'conversation_storage_queued', 'conversation_storage_unavailable', 'conversation_abandoned'];
     if (allowedEvents.indexOf(eventName) < 0) return;
     var oncePerConversation = ['conversation_started', 'opening_choice_selected', 'estimate_started', 'estimate_completed', 'pricing_range_viewed', 'complex_scenario_started', 'scenario_assessment_completed', 'contact_submitted', 'preapproval_clicked', 'application_clicked', 'scheduling_clicked', 'rate_review_clicked', 'conversation_abandoned'];
     if (oncePerConversation.indexOf(eventName) >= 0 && state.analyticsSeen[eventName]) return;
@@ -598,6 +614,14 @@
     Object.keys(payload).forEach(function (key) { if (payload[key] === null || payload[key] === '' || payload[key] === 'unknown') delete payload[key]; });
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(payload);
+    // GTM's published container only forwards generate_lead. Send these
+    // non-sensitive funnel events through the existing Google tag directly.
+    // Audit/preview activity stays out of production analytics.
+    if (/^(www\.)?styermortgage\.com$/.test(window.location.hostname) && !/[?&]assistant_test=1(?:&|$)/.test(window.location.search)) {
+      var parameters = Object.assign({}, payload, { send_to: 'G-DDY0H0319S' });
+      delete parameters.event;
+      (function () { window.dataLayer.push(arguments); })('event', eventName, parameters);
+    }
   }
 
   function safeAnalyticsValue(value) {

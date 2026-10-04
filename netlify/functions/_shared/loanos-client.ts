@@ -1,8 +1,8 @@
 import { createHash, createHmac, randomBytes, randomUUID } from 'node:crypto';
 
-type LoanOsResult = { ok: boolean; status: string; data?: Record<string, unknown>; error?: { code: string; message: string; retryable: boolean } };
+export type LoanOsResult = { ok: boolean; status: string; data?: Record<string, unknown>; error?: { code: string; message: string; retryable: boolean } };
 
-export async function callLoanOs(operation: string, payload: Record<string, unknown>, options?: { idempotencyKey?: string }): Promise<LoanOsResult> {
+export async function callLoanOs(operation: string, payload: Record<string, unknown>, options?: { idempotencyKey?: string; timeoutMs?: number }): Promise<LoanOsResult> {
   const baseUrl = Netlify.env.get('LOANOS_ASSISTANT_URL')?.replace(/\/$/, '');
   const keyId = Netlify.env.get('LOANOS_ASSISTANT_KEY_ID');
   const secret = Netlify.env.get('LOANOS_ASSISTANT_SIGNING_SECRET');
@@ -17,7 +17,7 @@ export async function callLoanOs(operation: string, payload: Record<string, unkn
   const canonical = ['POST', path, timestamp, nonce, digest].join('\n');
   const signature = `sha256=${createHmac('sha256', secret).update(canonical, 'utf8').digest('hex')}`;
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 8_000);
+  const timer = setTimeout(() => controller.abort(), options?.timeoutMs ?? 8_000);
   try {
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
@@ -37,7 +37,8 @@ export async function callLoanOs(operation: string, payload: Record<string, unkn
       signal: controller.signal,
     });
     const result = await response.json().catch(() => null) as LoanOsResult | null;
-    if (!result) return { ok: false, status: 'invalid_response', error: { code: 'invalid_response', message: 'LoanOS returned an invalid response.', retryable: true } };
+    if (!result || typeof result.ok !== 'boolean' || typeof result.status !== 'string') return { ok: false, status: 'invalid_response', error: { code: 'invalid_response', message: 'LoanOS returned an invalid response.', retryable: true } };
+    if (!response.ok && result.ok) return { ok: false, status: 'http_error', error: { code: `http_${response.status}`, message: 'LoanOS could not save the request.', retryable: response.status >= 500 || response.status === 429 } };
     return result;
   } catch {
     return { ok: false, status: 'unavailable', error: { code: 'loanos_unavailable', message: 'LoanOS is temporarily unavailable.', retryable: true } };

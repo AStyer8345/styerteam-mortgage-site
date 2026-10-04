@@ -30,5 +30,5 @@ export function checkGeneralAnswerLanguage(text: string, requiredQuestion: strin
 }
 
 export function allowsResourceRecommendation(message: string): boolean {
-  return /\b(?:calculator|calculate|estimate (?:my|the|a)|run the numbers|what would (?:my|the) payment|how much (?:house|home) can i afford|break.?even calculator|dscr calculator)\b/i.test(message);
+  return /\b(?:guide|resource|learn more|read more|current|rates?|pricing|self[ -]?employed|bank[ -]?statement|dscr|asset depletion|calculator|calculate|estimate (?:my|the|a)|run the numbers|what would (?:my|the) payment|how much (?:house|home) can i afford|break.?even calculator|dscr calculator)\b/i.test(message);
 }

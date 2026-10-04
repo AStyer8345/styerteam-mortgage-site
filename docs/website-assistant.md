@@ -196,3 +196,43 @@ The widget uses a labeled dialog, status and conversation live regions, Escape-t
 - Obtain final advertising, fair-lending, privacy, consent, and licensing review.
 
 Production deployment requires explicit approval after the complete diff and staging evidence are reviewed.
+
+## October 4 reliability and navigation release
+
+Every answer now returns `storageStatus` (`saved`, `queued`, or `unavailable`).
+`queued` is not a successful LoanOS save. The gateway retries a transient save
+once with the original idempotency key and then writes the redacted turn to the
+private, site-scoped `mortgage-assistant-transcript-retries` Blobs store. The
+`assistant-transcript-retry` scheduled function replays pending entries every
+five minutes on the published deployment; it deletes an entry only after LoanOS
+confirms success. Queue failures and replay failures log correlation identifiers
+and status codes, without logging conversation text or credentials. Review
+function logs if `conversation_storage_queued` or `conversation_storage_unavailable`
+events increase. There is no automatic owner email alert in this release.
+
+The widget sends its non-sensitive funnel events through the existing Google
+tag for `G-DDY0H0319S`; plain dataLayer events remain available to existing
+integrations. Do not add duplicate GTM forwarding rules for these same events.
+Use `?assistant_test=1` for browser verification to exclude Google Analytics
+commands. Live endpoint test sources `/live-eval`, `/audit-test`, and that query
+flag are marked `synthetic_test` in transcript policy metadata. Transcript
+source URLs are stored without query strings or fragments.
+
+Borrower-topic links now include self-employed, bank-statement, DSCR, asset-based,
+and buy-before-selling guides. Professional resources are reserved for explicit
+professional intent or a professional page mode. Rate requests recognize both
+“current mortgage rates” and “mortgage rates today”; switching to rates preserves
+existing scenario facts. Expired rate snapshots remain unavailable.
+
+Self-employed, bank-statement, DSCR, and asset-depletion knowledge was reviewed
+against the linked primary sources October 4 and refreshed through December 3.
+Other expired approvals remain excluded until their facts are reviewed. A warm
+function reloads its knowledge corpus when the UTC review day changes, and logs
+which files need review. Keep model answers concise and link to relevant public
+guides instead of using professional-partner material for ordinary borrowers.
+
+Knowledge source files are bundled into the function by
+`scripts/bundle-assistant-knowledge.mjs` during the build. This avoids runtime
+filesystem dependence, which failed in a hosted preview even though the source
+files appeared in the local function archive. The approval and expiry checks
+still apply to the bundled content. Regenerate the bundle after source edits.

@@ -133,8 +133,8 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
   else if (/^(?:monthly payment|payment estimate|estimate (?:my |the )?payment|what would (?:my |the )?payment be)$/i.test(current) && (!state.path || state.valueDelivered)) {
     state = { ...EMPTY_STRATEGY_STATE, path: 'payment' };
   }
-  else if (/\b(?:rates?|pricing).{0,20}(?:today|right now|current|estimate|average|ballpark)|\b(?:average|current|today(?:'s)?)\s+(?:30|15)[- ]year\b|\b(?:30|15)[- ]year fixed(?: rate)?\b|\bwhat are (?:your|the) rates\b/i.test(current) && (!state.path || state.valueDelivered)) {
-    state = { ...EMPTY_STRATEGY_STATE, path: 'pricing' };
+  else if (/\b(?:rates?|pricing).{0,20}(?:today|right now|current|estimate|average|ballpark)|\b(?:current|today(?:'s)?|average|ballpark)\s+(?:mortgage |home loan )?(?:rates?|pricing)\b|\b(?:average|current|today(?:'s)?)\s+(?:30|15)[- ]year\b|\b(?:30|15)[- ]year fixed(?: rate)?\b|\bwhat are (?:your|the) rates\b/i.test(current) && (!state.path || state.valueDelivered)) {
+    state = { ...state, path: 'pricing', pendingQuestion: null, valueDelivered: false, clarificationRequested: false };
   }
   else if (!state.path && /\b(?:estimate|calculate|what would).{0,30}(?:payment|cash to close)|\bpayment estimate\b/i.test(current)) state.path = 'payment';
   else if (!state.path && detectedComplex.length && /\b(?:i|i'm|im|my|we|our|situation|need|have|am)\b/i.test(current)) state.path = 'complex';
@@ -143,6 +143,8 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
     if (detectedComplex.length) state.complexFlags = [...new Set([...state.complexFlags, ...detectedComplex])].slice(0, 8);
     state = absorbVolunteeredComplexFacts(state, current);
   }
+
+  if (state.path === 'pricing' && state.transactionPurpose === 'purchase' && state.propertyValue === null && state.targetPrice !== null) state.propertyValue = state.targetPrice;
 
   const pending = state.pendingQuestion;
   if (pending && isClarificationRequest(current)) {
@@ -367,9 +369,15 @@ function complexReply(state: StrategyState): StrategyReply {
   const timingAdvice = state.timeline === 'within_30_days' || state.timeline === '31_to_90_days'
     ? 'Because your timing is within about 90 days, getting a secure scenario review now is reasonable; it can identify the documentation path before you rely on the target price or write an offer.'
     : 'If you are still exploring, a short scenario review can identify the best documentation path before a full application.';
-  const message = `Here’s the initial strategy read${knownFacts ? ` for ${knownFacts}` : ''}. The relevant issues are ${labels}.\n\n- What may potentially work: ${scenarios.map((item) => item.potential).join(' ')}\n- What could be the obstacle: ${scenarios.map((item) => item.obstacle).join(' ')}\n- Facts that change the answer: ${scenarios.map((item) => item.facts).join('; ')}.\n- What Adam would need to review securely: ${scenarios.map((item) => item.documents).join('; ')}. Do not send those documents in chat.\n- Does applying now appear reasonable? ${timingAdvice}\n\nThis is an initial strategy assessment, not an approval or a promise that a program is available.`;
-  const actions: StrategyReply['actions'] = state.timeline === 'within_30_days' || state.timeline === '31_to_90_days' ? ['contact', 'application'] : ['contact'];
-  return { message, suggestedReplies: [], strategy: next, responseKind: 'scenario_assessment', actions };
+  const question = state.propertyUse === 'unknown' ? 'Will this be your primary home, a second home, or an investment property?'
+    : state.transactionPurpose === 'unknown' ? 'Are you buying or refinancing?'
+    : state.timeline === 'unknown' ? 'When are you hoping to make this move?' : '';
+  const message = `For ${knownFacts || "this scenario"}, the main issue is ${labels}. The next step is comparing financing paths.\n\n${scenarios.map((item) => item.potential).join(' ')}\n\nThe main uncertainty: ${scenarios.map((item) => item.obstacle).join(' ')}\n\nAdam can review ${scenarios.map((item) => item.documents).join('; ')} securely; don’t send documents in chat.\n\n${timingAdvice} This is an initial assessment; final eligibility depends on document review and underwriting.${question ? `\n\n${question}` : ''}`;
+  const suggestedReplies = state.propertyUse === 'unknown' ? ['Primary home', 'Second home', 'Investment property']
+    : state.transactionPurpose === 'unknown' ? ['Buying', 'Refinancing']
+    : state.timeline === 'unknown' ? ['Within 30 days', '31–90 days', 'More than 90 days'] : [];
+  return { message, suggestedReplies, strategy: next, responseKind: 'scenario_assessment', actions: state.timeline === 'within_30_days' || state.timeline === '31_to_90_days' ? ['contact', 'application'] : ['contact'] };
+
 }
 
 function complexKnownFacts(state: StrategyState): string {

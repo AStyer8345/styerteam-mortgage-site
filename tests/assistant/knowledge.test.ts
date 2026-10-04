@@ -94,3 +94,13 @@ test('knowledge loader excludes expired content after its final approved UTC day
   const afterExpiryDate = await retrieveApprovedKnowledge('What is a bank statement loan?', 100);
   assert.ok(afterExpiryDate.results.every((item) => item.source !== filename), 'Expired content must be excluded even when it directly matches the question');
 });
+
+test('a warm function stops using knowledge when its approval expires', async () => {
+  const source = await fs.readFile(path.join(process.cwd(), 'ai-knowledge/bank-statement-loans.md'), 'utf8');
+  const expiry = source.match(/^review_expires_on:\s*(\d{4}-\d{2}-\d{2})\s*$/m)!;
+  const boundary = new Date(`${expiry[1]}T23:59:59.999Z`).getTime();
+  mock.timers.setTime(boundary);
+  assert.ok((await retrieveApprovedKnowledge('bank statement', 100)).results.some(item => item.source === 'bank-statement-loans.md'));
+  mock.timers.setTime(boundary + 1); // Deliberately keep the cached corpus.
+  assert.ok((await retrieveApprovedKnowledge('bank statement', 100)).results.every(item => item.source !== 'bank-statement-loans.md'));
+});

@@ -2,8 +2,8 @@
 title: Bank statement loans
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-15
-review_expires_on: 2026-09-13
+reviewed_on: 2026-10-04
+review_expires_on: 2026-12-03
 ---
 
 # Bank statement loans

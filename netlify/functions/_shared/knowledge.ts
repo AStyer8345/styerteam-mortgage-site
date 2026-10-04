@@ -1,14 +1,16 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import { knowledgeBundle } from './knowledge-bundle.ts';
 
 type KnowledgeChunk = { source: string; title: string; section: string; text: string; score: number };
 type Metadata = { title: string; status: string; reviewed_on: string | null; review_expires_on: string | null };
 
 const STOP = new Set(['about', 'after', 'also', 'and', 'are', 'can', 'does', 'for', 'from', 'have', 'how', 'into', 'loan', 'mortgage', 'that', 'the', 'their', 'this', 'what', 'when', 'where', 'which', 'with', 'would', 'your']);
+let cachedDay = '';
 let cached: { version: string; chunks: Array<Omit<KnowledgeChunk, 'score'>> } | null = null;
 
 export async function retrieveApprovedKnowledge(question: string, limit = 4): Promise<{ version: string; results: KnowledgeChunk[] }> {
-  const index = cached ?? await loadKnowledge();
+  const day = new Date().toISOString().slice(0, 10);
+  const index = cached && cachedDay === day ? cached : await loadKnowledge();
+  cachedDay = day;
   cached = index;
   const terms = tokenize(question);
   const results = index.chunks
@@ -20,17 +22,17 @@ export async function retrieveApprovedKnowledge(question: string, limit = 4): Pr
 }
 
 async function loadKnowledge() {
-  const root = process.cwd();
-  const directory = path.join(root, 'ai-knowledge');
-  const manifest = JSON.parse(await fs.readFile(path.join(directory, 'manifest.json'), 'utf8')) as { version: string; files: string[] };
+  const manifest = knowledgeBundle;
   const chunks: Array<Omit<KnowledgeChunk, 'score'>> = [];
+  const expired: string[] = [];
   for (const filename of manifest.files) {
-    const source = await fs.readFile(path.join(directory, filename), 'utf8');
+    const source = knowledgeBundle.sources[filename];
     const parsed = parseFrontMatter(source);
     if (!parsed || parsed.metadata.status !== 'approved') continue;
-    if (!parsed.metadata.review_expires_on || parsed.metadata.review_expires_on < new Date().toISOString().slice(0, 10)) continue;
+    if (!parsed.metadata.review_expires_on || parsed.metadata.review_expires_on < new Date().toISOString().slice(0, 10)) { expired.push(filename); continue; }
     chunks.push(...splitSections(filename, parsed.metadata.title, parsed.body));
   }
+  if (expired.length) console.warn('[mortgage-assistant] knowledge review needed', { version: manifest.version, expiredFiles: expired });
   return { version: manifest.version, chunks };
 }
 
@@ -100,4 +102,5 @@ function score(query: Set<string>, heading: Set<string>, body: Set<string>): num
 
 export function __resetKnowledgeCacheForTests() {
   cached = null;
+  cachedDay = '';
 }
