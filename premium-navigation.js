@@ -4,7 +4,7 @@
   if(!document.body.classList.contains('premium-interior'))return;
   // The shared smooth-scroll handler owns scrolling. Move keyboard focus to
   // the existing focusable review panel without changing attribution or fields.
-  document.querySelectorAll('.journey-actions a[href^="#"], .premium-legacy .hero-ctas a[href^="#"], .premium-partner .pro-actions a[href^="#"]').forEach(function(link){
+  document.querySelectorAll('.journey-actions a[href^="#"], .premium-legacy .hero-ctas a[href^="#"], .premium-partner .pro-actions a[href^="#"], .premium-secondary .rc-hero-ctas a[href^="#"], .premium-secondary .eq-actions a[href^="#"]').forEach(function(link){
     link.addEventListener('click',function(){
       var target=document.getElementById(link.getAttribute('href').slice(1));
       if(target&&target.hasAttribute('tabindex'))target.focus({preventScroll:true});

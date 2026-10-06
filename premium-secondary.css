@@ -1,0 +1,46 @@
+/* Inspected remaining public templates. Additive presentation, no capture or content ownership. */
+body.premium-secondary main{color:var(--premium-ink)}
+body.premium-secondary main :is(.hero,.city-hero,.lp-hero,.rc-hero,.eq-hero){background:var(--premium-paper)!important;color:var(--premium-ink);padding-block:56px!important;text-align:left}
+body.premium-secondary main :is(.hero,.lp-hero,.rc-hero)::before{display:none}
+body.premium-secondary main :is(.hero,.city-hero,.lp-hero,.rc-hero,.eq-hero) h1{color:var(--premium-ink)!important;font-size:52px!important;line-height:1.12!important;text-shadow:none;max-width:24ch;margin:0 0 24px!important}
+body.premium-secondary main :is(.hero-subtitle,.lp-subhead,.rc-subhead,.eq-lead){color:var(--premium-muted)!important;font-size:19px!important;line-height:1.7!important;max-width:760px;opacity:1}
+body.premium-secondary main :is(.rc-body,.lp-hero-copy p,.city-hero-content p){color:var(--premium-muted);line-height:1.75}
+body.premium-secondary main :is(.lp-hero-inner,.eq-hero-grid){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:64px;align-items:start}
+body.premium-secondary main .city-hero{align-items:start;gap:64px}
+body.premium-secondary main .city-hero-content{padding:0}
+body.premium-secondary main :is(.lp-form-card,.rc-form-card,.quick-quote-form,.prequal-card){padding:32px;border:1px solid var(--premium-rule);border-top:3px solid #A8864E;border-radius:4px;background:#fff;box-shadow:none;color:var(--premium-ink)}
+body.premium-secondary main :is(.lp-form-card,.rc-form-card,.quick-quote-form) h2{font:400 32px/1.2 'Source Serif 4',Georgia,serif;margin:0 0 16px;color:var(--premium-ink)}
+body.premium-secondary main :is(.lp-trust-chip,.scenario-proof-item){background:transparent;color:var(--premium-muted);border:0;border-radius:0;padding:0 16px 0 0;font-size:13px;white-space:normal}
+body.premium-secondary main :is(.lp-trust-chip,.scenario-proof-item) .stars{color:var(--premium-brass)}
+body.premium-secondary main :is(.lp-form-card,.rc-form-card,.quick-quote-form,.prequal-card) :is(input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([type=file]),select,textarea){min-height:50px;font-size:16px;border:1px solid #7B878D;border-radius:4px;background:#fff;color:var(--premium-ink);padding:12px;max-width:100%}
+body.premium-secondary main :is(.lp-form-card,.rc-form-card,.quick-quote-form,.prequal-card) label{font-size:14px;line-height:1.6}
+body.premium-secondary main :is(.lp-form-submit,.rc-submit-btn){min-height:50px;border-radius:4px;background:var(--premium-ink);color:#fff;white-space:normal}
+body.premium-secondary main :is(.rc-steps,.rc-faq,.lp-programs,.lp-what-you-get,.eq-section){padding-block:64px}
+body.premium-secondary main :is(.lp-program-card,.wyg-card,.loan-option-card,.stat-card){box-shadow:none;border:1px solid var(--premium-rule);border-radius:4px;transform:none}
+body.premium-secondary main :is(.rc-step-number,.lp-program-tag){background:var(--premium-paper);color:var(--premium-brass)}
+body.premium-secondary main .rc-hero-ctas{justify-content:flex-start}
+body.premium-secondary main .eq-wrap{max-width:1256px;padding-inline:28px}
+body.premium-secondary main .eq-band{background:var(--premium-paper)}
+body.premium-secondary main .eq-button{border-radius:4px;min-height:50px;background:var(--premium-ink);color:#fff}
+body.premium-secondary main .eq-button-ghost{background:transparent;color:var(--premium-ink);border-color:#7B878D}
+body.premium-secondary main .hero-quick-form-glass{box-shadow:none!important;border:1px solid var(--premium-rule)!important;border-top:3px solid #A8864E!important;border-radius:4px!important}
+body.premium-secondary.premium-reading main>section.bg-navy:first-child{padding:56px 0;background:var(--premium-paper);color:var(--premium-ink)}
+body.premium-secondary.premium-reading main>section.bg-navy:first-child .btn-primary{background:var(--premium-ink)!important;color:#fff!important}
+body.premium-secondary .blog-article>.container{max-width:856px}
+body.premium-secondary .blog-article-header{background:var(--premium-paper);padding:32px;margin-bottom:32px}
+body.premium-secondary .blog-article-title{max-width:none!important}
+body.premium-secondary .blog-article-content{font-size:18px;line-height:1.8}
+body.premium-secondary .blog-article-author img{object-fit:cover}
+body.premium-secondary:has(main form :is(input,textarea,select):focus) .advisory-contact-bar{display:none}
+@media(min-width:1000px){body.premium-secondary .site-footer-grid:not(:has(>:nth-child(5))){grid-template-columns:1fr 1fr 1fr 1.4fr}}
+@media(max-width:1100px){body.premium-secondary main :is(.lp-hero-inner,.eq-hero-grid,.city-hero){gap:36px}}
+@media(max-width:999px){body.premium-secondary main :is(.lp-hero-inner,.eq-hero-grid,.city-hero){grid-template-columns:1fr;max-width:780px;margin-inline:auto}}
+@media(max-width:760px){body.premium-secondary main :is(.hero,.city-hero,.lp-hero,.rc-hero,.eq-hero){padding-block:36px!important}body.premium-secondary main :is(.hero,.city-hero,.lp-hero,.rc-hero,.eq-hero) h1{font-size:40px!important}body.premium-secondary main :is(.hero-subtitle,.lp-subhead,.rc-subhead,.eq-lead){font-size:17px!important}body.premium-secondary main :is(.lp-form-card,.rc-form-card,.quick-quote-form,.prequal-card){padding:24px}body.premium-secondary main .eq-wrap{padding-inline:20px}body.premium-secondary .blog-article-header{padding:24px 0;background:transparent}body.premium-secondary main :is(.rc-steps,.rc-faq,.lp-programs,.lp-what-you-get,.eq-section){padding-block:48px}}
+@media(max-width:360px){body.premium-secondary main :is(.hero,.city-hero,.lp-hero,.rc-hero,.eq-hero) h1{font-size:36px!important}body.premium-secondary main :is(.lp-form-card,.rc-form-card,.quick-quote-form,.prequal-card){padding:20px}body.premium-secondary main .eq-wrap{padding-inline:16px}}
+/* Rendered repairs: old white-on-navy variants now sit on paper. */
+body.premium-secondary main .rc-hero-ctas .btn-ghost{color:var(--premium-ink)!important;border:1px solid #7B878D!important;background:transparent!important;box-shadow:none}
+body.premium-secondary.premium-reading main>section.bg-navy:first-child p{color:var(--premium-muted)!important}
+body.premium-secondary.premium-reading main>section.bg-navy:first-child p.text-gold{color:var(--premium-brass)!important}
+body.premium-secondary main .prequal-card{max-width:856px;margin-inline:auto}
+body.premium-secondary>header{transition:none!important}
+@media(max-width:999px){body.premium-secondary main .lp-hero-inner>.lp-hero-copy{order:0}body.premium-secondary main .lp-hero-inner>.lp-form-card{order:1}}
