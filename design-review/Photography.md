@@ -31,3 +31,7 @@ Select images at meaningful editorial breaks in program/directory/resource pages
 ## Directory/program placement checkpoint — October 5 evening
 
 Reused the same licensed local files in the mortgage-options hero (contemporary home), conventional guide hero (porch home), and investment guide hero (home at dusk). Responsive source selection, dimensions and descriptive non-geographic alt text are present. These remain illustrative stock houses, not evidence of Texas locations or transactions financed by Adam. No new license or source assumptions were introduced.
+
+## Cash-out placement checkpoint — October 5 late evening
+
+The distinct DSCR cash-out hero reuses rental-home-dusk at 480/800 widths with reserved 3:2 dimensions and a descriptive, non-geographic alt. Desktop and 320/390 mobile crops reviewed. This is the same licensed illustrative property from Utah; no claim of Texas location or an Adam-financed transaction. No additional image dependency or licensing assumption.

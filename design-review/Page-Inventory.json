@@ -2033,6 +2033,11 @@
       "path": "san-antonio-mortgage-lender.html",
       "family": "city-guide",
       "reviewStatus": "New local-preview city guide; original pages preserved separately. Checked 320/390/768/1440, schema and visible FAQ parity, local links and existing inquiry modal."
+    },
+    {
+      "path": "dscr-cash-out-refinance-texas.html",
+      "family": "cashout-calculator-inquiry",
+      "reviewStatus": "Distinct local-preview cash-out journey. Geometry and labels checked at 320/390/768/1024/1440. Hero, desktop calculator/inquiry, mobile calculator and extreme results visually reviewed. See Cashout-Preview-Verification.md; whole-site final gate remains pending."
     }
   ]
 }

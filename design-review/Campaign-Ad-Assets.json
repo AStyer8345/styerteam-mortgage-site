@@ -1,0 +1,107 @@
+{
+  "dscr": {
+    "name": "DSCR cash-out",
+    "query": "dscr cash out refinance",
+    "path": "rental-property \u203a cash-out",
+    "url": "/dscr-cash-out-refinance-texas.html",
+    "heads": [
+      "Texas DSCR Cash-Out Refinance",
+      "Access Rental Property Equity",
+      "See Cash-Out & Payment",
+      "Rental Equity, Clear Numbers",
+      "Review Your Rental Cash-Out",
+      "Work Directly With Adam Styer",
+      "Rental Property Refinance",
+      "Compare Cash & Rental Coverage"
+    ],
+    "descs": [
+      "Estimate cash after payoff and costs. Compare the new payment and rental coverage.",
+      "Own a Texas rental? Explore DSCR cash-out options with a personal review from Adam.",
+      "See the tradeoffs before refinancing. Estimates depend on lender and property review.",
+      "Estimate your rental cash-out first. Share the scenario when you want a personal review."
+    ],
+    "links": [
+      "Cash-Out Calculator",
+      "Review My Rental Scenario"
+    ],
+    "pinHeadline1": "Texas DSCR Cash-Out Refinance",
+    "sitelinks": [
+      {
+        "label": "Cash-Out Calculator",
+        "url": "/dscr-cash-out-refinance-texas.html#calculator"
+      },
+      {
+        "label": "Review My Rental Scenario",
+        "url": "/dscr-cash-out-refinance-texas.html#review"
+      }
+    ]
+  },
+  "bank": {
+    "name": "Self-employed",
+    "query": "bank statement loans texas",
+    "path": "self-employed \u203a bank-statements",
+    "url": "/bank-statement-loans.html",
+    "heads": [
+      "Self-Employed Mortgage Options",
+      "Texas Bank-Statement Options",
+      "Your Business. Your Mortgage.",
+      "Review Your Income Scenario",
+      "Work Directly With Adam Styer",
+      "Income Beyond The Tax Return"
+    ],
+    "descs": [
+      "Explore mortgage options for self-employed borrowers. Review your scenario with Adam.",
+      "Your deposits need context. Compare income documentation and lender requirements.",
+      "Bank statements may support qualifying income. Eligibility requires lender review."
+    ],
+    "links": [
+      "Income Documents",
+      "Review My Business Income"
+    ],
+    "pinHeadline1": null,
+    "sitelinks": [
+      {
+        "label": "Income Documents",
+        "url": "/bank-statement-loans.html#faq"
+      },
+      {
+        "label": "Review My Business Income",
+        "url": "/bank-statement-loans.html#quick-options"
+      }
+    ]
+  },
+  "assets": {
+    "name": "Asset qualification",
+    "query": "asset depletion mortgage",
+    "path": "asset-options \u203a options",
+    "url": "/asset-depletion-mortgage-texas.html",
+    "heads": [
+      "Explore Asset Qualification",
+      "Mortgage Options Using Assets",
+      "Substantial Assets? Start Here",
+      "Review Your Asset Scenario",
+      "Work Directly With Adam Styer",
+      "Your Assets. Your Next Step."
+    ],
+    "descs": [
+      "Limited income and substantial assets? Explore mortgage qualification options with Adam.",
+      "Review eligible assets, documentation and financing goals. Lender requirements vary.",
+      "See whether eligible assets could support qualification. Start with a personal review."
+    ],
+    "links": [
+      "Asset Options",
+      "Review My Asset Scenario"
+    ],
+    "pinHeadline1": null,
+    "sitelinks": [
+      {
+        "label": "Asset Options",
+        "url": "/asset-depletion-mortgage-texas.html#faq"
+      },
+      {
+        "label": "Review My Asset Scenario",
+        "url": "/asset-depletion-mortgage-texas.html#quick-options"
+      }
+    ]
+  }
+}

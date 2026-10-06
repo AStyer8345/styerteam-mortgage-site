@@ -1,0 +1,80 @@
+[
+  {
+    "name": "baseline",
+    "attached": false,
+    "cash": "$137,250",
+    "cashLabel": "Estimated cash received",
+    "change": "+$1,446",
+    "desired": "100000",
+    "dscr": "1.22×",
+    "pi": "$3,146",
+    "pitia": "$3,946",
+    "valid": true,
+    "warning": ""
+  },
+  {
+    "name": "zero-rate",
+    "attached": false,
+    "cash": "$137,250",
+    "cashLabel": "Estimated cash received",
+    "change": "−$450",
+    "desired": "100000",
+    "dscr": "2.34×",
+    "pi": "$1,250",
+    "pitia": "$2,050",
+    "valid": true,
+    "warning": ""
+  },
+  {
+    "name": "zero-rent",
+    "attached": false,
+    "cash": "$137,250",
+    "cashLabel": "Estimated cash received",
+    "change": "+$1,446",
+    "desired": "100000",
+    "dscr": "0.00×",
+    "pi": "$3,146",
+    "pitia": "$3,946",
+    "valid": true,
+    "warning": ""
+  },
+  {
+    "name": "zero-loan",
+    "attached": false,
+    "cash": "$0",
+    "cashLabel": "Estimated cash received",
+    "change": "No new loan modeled",
+    "desired": "0",
+    "dscr": "Unavailable",
+    "pi": "$0",
+    "pitia": "$0",
+    "valid": true,
+    "warning": "No new loan modeled"
+  },
+  {
+    "name": "target-cash-carried",
+    "attached": true,
+    "cash": "$200,000",
+    "cashLabel": "Estimated cash received",
+    "change": "+$1,896",
+    "desired": "200000",
+    "dscr": "1.09×",
+    "pi": "$3,596",
+    "pitia": "$4,396",
+    "valid": true,
+    "warning": "Target exceeds selected LTV assumption. This is a mathematical target, not an available loan amount."
+  },
+  {
+    "name": "removed",
+    "attached": false,
+    "cash": "$200,000",
+    "cashLabel": "Estimated cash received",
+    "change": "+$1,896",
+    "desired": "200000",
+    "dscr": "1.09×",
+    "pi": "$3,596",
+    "pitia": "$4,396",
+    "valid": true,
+    "warning": "Target exceeds selected LTV assumption. This is a mathematical target, not an available loan amount."
+  }
+]

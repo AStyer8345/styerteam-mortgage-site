@@ -85,3 +85,8 @@ Before a future release: obtain the user's concrete design approval; inspect the
 ## Review and resume commands
 
 From this worktree, `python3 design-review/serve-preview.py` serves the prepared `.site-dist` package on loopback port 8767. To refresh the package, run `node scripts/package-public-site.mjs` after including new public assets in Git's index. `CONTEXT=deploy-preview npm run build` performs the established build without production indexing submission. Preserve the committed recent-updates fallback if the history-based generator changes it incidentally during local review. Run `npm test`, `npm run seo:audit`, `npm run typecheck` and `git diff --check` before any release.
+
+
+## Cash-out campaign preview checkpoint
+
+The distinct rental cash-out journey and internal ad-review dashboard are implemented locally. Review `Cashout-Preview-Verification.md` for exact rendered versus automated coverage and `Campaign-Launch-Brief.md` for evidence, assumptions, measurement and separate release/spend approvals. The whole-site final repair gate remains pending; this addition does not replace the broad company homepage or authorize publishing.
