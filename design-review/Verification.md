@@ -23,12 +23,12 @@ Metadata/canonical/JSON-LD, header, footer, FAQ and the inquiry form were checke
 | --- | --- | --- | --- |
 | 320px | 36px | None | 6 |
 | 390px | 40px | None | 6 |
-| 768px | 48px | None | 6 |
+| 768px | 37px | None | 6 |
 | 1024px | 56px | None | 6 |
 | 1280px | 56px | None | 6 |
 | 1440px | 64px | None | 6 |
 
-At 390×844, primary hero CTA ends at y=530px and identity/NMLS at y=695px, including the preview-only banner and navigation. Message and identity precede the portrait. The mobile contact bar is one shared Call/Text/inquiry bar, with the inquiry targeting the original inline contact form. It hides while form inputs have focus.
+After the hero alignment revision, at 390×844 the primary hero CTA ends at y=530px, including the preview-only banner and navigation. Message and actions precede the portrait; one identity/NMLS caption is placed beneath the portrait. Equal outer grid margins were verified at 320, 390, 768, 1024, 1280, 1440 and 1920px. Desktop column centers match within 0.004px; the mobile columns stack intentionally. No horizontal overflow at any checked width. The targeted preservation/lead-flow/editorial suite passed again: 35 checks. The full-suite result above predates this presentation-only revision. The mobile contact bar is one shared Call/Text/inquiry bar, with the inquiry targeting the original inline contact form. It hides while form inputs have focus.
 
 Mobile menu opens; its mortgage submenu expands; Escape closes the menu. Desktop Tab exposes the submenu, and Escape closes it and returns focus to its parent. FAQ opens with matching visible/ARIA state. Clicking the hero inquiry focuses `#contact-form`. Original CTA source/label fields remain present and are updated by the existing handler.
 
