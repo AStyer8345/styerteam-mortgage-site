@@ -1,0 +1,2026 @@
+{
+  "baseline": "f7e9391fc608ac9cd43b965c257e0df2a24b36cd",
+  "pages": [
+    {
+      "path": "1099-only-mortgage-texas.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "1099-Only Mortgage Austin TX | Texas Contractor Home Loan | Adam Styer | NMLS #513013",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "404.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site",
+      "robots": [
+        "noindex"
+      ],
+      "title": "Page Not Found | Adam Styer Mortgage",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "about.html",
+      "family": "trust",
+      "bodyClasses": "editorial-page trust-page advisory-site",
+      "robots": [],
+      "title": "About Adam Styer | Austin Complex Mortgage Broker",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "asset-depletion-calculator.html",
+      "family": "tool",
+      "bodyClasses": "editorial-page calculator-page advisory-site advisory-calculator",
+      "robots": [],
+      "title": "Asset Depletion Income Calculator | Estimate Monthly Asset Utilization | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "asset-depletion-mortgage-texas.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "Asset Depletion Mortgages in Austin &amp; Texas | Adam Styer",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "austin-area-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Austin Area Mortgage Lender | 24 Cities | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "austin-down-payment-assistance.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Down Payment Assistance Austin TX | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "austin-housing-market.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Austin Housing Market | July 2026 Data &amp; Buyer Guide | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "austin-mortgage-rates.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site",
+      "robots": [],
+      "title": "Austin Mortgage Rates Today | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "bank-statement-loans.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page bsl-page advisory-site",
+      "robots": [],
+      "title": "Bank Statement Loans Austin &amp; Texas | Self-Employed Mortgage | Adam Styer",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "bastrop-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Bastrop TX Mortgage Lender: Acreage &amp; Rural OK | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "bee-cave-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Bee Cave TX Home Loans: Luxury &amp; Jumbo Expert | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-blog-index",
+      "robots": [],
+      "title": "Mortgage Blog | Home Loan Tips Austin TX | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Oil Prices, Jobs Report & Rate Volatility | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "When You Can't Control It, Surrender It | Adam Styer | Austin Mortgage Broker",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-18-the-ai-trap-i-walked-right-into.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article advisory-essay",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "The AI Trap I Walked Right Into | Adam Styer | Austin Mortgage Broker",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-20-austin-mortgage-rates-march-2026.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Austin Mortgage Rates \u2014 March 2026 Update | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-24-cash-out-refinance-austin-tx.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Cash-Out Refinance in Austin TX \u2014 Is It Worth It in 2026? | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-27-down-payment-assistance-texas-2026.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "2026 Texas Down Payment Assistance Programs: TSAHC, TDHCA & City of Austin | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "FHA vs Conventional Loans Texas: When Each Wins | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "How Long Does Mortgage Pre-Approval Take? Austin TX Timeline | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-29-va-loan-eligibility-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "VA Loan Eligibility Texas 2026 | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "First-Time Buyer Assistance Programs Austin TX (2026): TSAHC, TDHCA & MCC | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Why Rates Improved Today | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-03-31-dscr-loans-austin-tx-2026.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "How DSCR Loans Work in Austin TX \u2014 2026 Investor's Guide | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "How to Choose a Lender Austin TX | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-04-01-spring-market-update.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Austin Mortgage Market Update: Spring 2026 | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-04-02-self-employed-mortgage-austin-tx.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Self-Employed Mortgage Preparation in Austin | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-04-03-condo-mortgage-austin-tx.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Condo Mortgage Austin TX 2026 | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-04-04-austin-housing-market-report-april-2026.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Austin Housing Market April 2026: $440K Median Price",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-04-06-mortgage-document-checklist-austin-tx.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Mortgage Document Checklist Austin TX | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-04-10-fha-loan-requirements-texas-2026.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "FHA Loan Requirements Texas 2026 | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Should I Refinance in 2026? Austin Guide | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-04-27-why-home-prices-arent-crashing.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Why Home Prices Aren't Crashing | Adam Styer | Austin Mortgage Broker",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-05-30-physician-mortgage-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Physician Mortgage Loans in Texas 2026 | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-06-05-dscr-airbnb-str-loan-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "DSCR Loans for Airbnb / Short-Term Rentals in Texas (2026) | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "DSCR Cash-Out Refinance Texas (BRRRR Guide 2026) | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-06-14-buy-before-you-sell-austin-tx.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "How to Buy Before You Sell in Austin, TX | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "DSCR vs Conventional Investment Property Loan in Texas (2026) | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-06-15-mortgage-rates-inflation-iran-peace-deal.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Mortgage Rates, Inflation &amp; the Iran Peace Deal | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-06-16-dscr-loan-requirements-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "DSCR Loan Requirements Texas 2026 | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-06-23-no-ratio-low-dscr-loans-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "No-Ratio &amp; Low-DSCR Loans in Texas (2026) | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-06-30-bank-statement-loans-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "How Lenders Review Bank Statements for a Mortgage | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "How Underwriters Calculate Self-Employed Income (2026) | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-07-21-itin-mortgage-loans-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "ITIN Mortgage Loans in Texas: Buying Without an SSN | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Asset Depletion Loan Case Study: No W-2, No Problem | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-08-10-austin-housing-market-report-august-2026.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Austin Housing Market Report \u2014 August 2026 | Adam Styer | Austin Mortgage Broker",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-08-18-jumbo-loan-requirements-texas-2026.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Jumbo Loan Requirements Texas 2026 | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-08-21-veteran-asset-depletion-mortgage-case-study.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Veteran Between Jobs Uses Retirement Assets to Qualify | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-09-04-what-is-a-non-qm-loan-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "What Is a Non-QM Loan? Texas Guide 2026 | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Buy the House You Rent From Your Landlord in Texas | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "The Conversation Behind \u201cI Want a Lower Rate\u201d | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/2026-10-01-why-mortgage-rates-are-rising.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Why Are Mortgage Rates Rising\u2014and What Would Make Them Fall? | Adam Styer | Texas Mortgage",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/apr-vs-interest-rate-what-actually-matters.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "APR vs Interest Rate \u2014 What Actually Matters When Comparing Mortgages | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/are-mortgage-lender-fees-negotiable.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Are Mortgage Lender Fees Negotiable? What You Can (and Can't) Change | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/can-i-switch-lenders-after-going-under-contract-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Can I Switch Lenders After Going Under Contract in Texas? | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/how-many-mortgage-quotes-should-i-get.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "How Many Mortgage Quotes Should You Get? The Real Answer | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/how-to-compare-two-mortgage-offers.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "How to Compare Two Mortgage Offers Side by Side | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/how-to-read-a-loan-estimate.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "How to Read a Loan Estimate \u2014 The 5 Numbers That Actually Matter | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/is-the-lowest-rate-the-cheapest-loan.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Is the Lowest Rate the Cheapest Loan? Not Always \u2014 Here's Why | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/local-lender-vs-online-lender-austin-central-texas.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Local Lender vs Online Lender \u2014 Which Is Better for Austin Buyers? | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/what-delays-closing-when-you-switch-lenders.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "What Delays Closing When You Switch Lenders? | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "blog/what-to-compare-besides-mortgage-rate.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "What to Compare Besides Mortgage Rate \u2014 6 Things Most Buyers Miss | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "buda-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Buda TX Home Loans: FHA, VA &amp; New Builds | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "buy-before-you-sell-austin.html",
+      "family": "inquiry",
+      "bodyClasses": "advisory-site",
+      "robots": [],
+      "title": "Buy Before You Sell in Austin | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "calculator-affordability.html",
+      "family": "tool",
+      "bodyClasses": "editorial-page calculator-page advisory-site advisory-calculator",
+      "robots": [],
+      "title": "Affordability Calculator | Mortgage Calculators | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "calculator-payment.html",
+      "family": "tool",
+      "bodyClasses": "editorial-page calculator-page advisory-site advisory-calculator",
+      "robots": [],
+      "title": "Payment Calculator | Mortgage Calculators | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "calculator-refinance-breakeven.html",
+      "family": "tool",
+      "bodyClasses": "editorial-page calculator-page advisory-site advisory-calculator",
+      "robots": [],
+      "title": "Refinance Break-Even Calculator | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "calculators.html",
+      "family": "tool",
+      "bodyClasses": "editorial-page calculator-page advisory-site advisory-calculator",
+      "robots": [],
+      "title": "Mortgage Calculators Austin TX | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "cedar-park-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Cedar Park Mortgage Lender: Leander ISD Tax Premium Guide | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "closing-costs-texas.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Texas Closing Costs 2026 | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "construction-loan-scenario-review.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page professional-page advisory-site",
+      "robots": [],
+      "title": "Texas Construction Loan Scenario Review | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "contact-thank-you.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [
+        "noindex,follow"
+      ],
+      "title": "Request received | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "contact.html",
+      "family": "trust",
+      "bodyClasses": "contact-conversation editorial-page lead-page advisory-site advisory-contact",
+      "robots": [],
+      "title": "Contact Adam Styer | Austin Mortgage Broker",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "dashboard.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Content Dashboard | Adam Styer | HyperSmart Home Loans",
+      "forms": 3,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "dripping-springs-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Dripping Springs TX Home Loans: Acreage OK | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "dscr-calculator.html",
+      "family": "tool",
+      "bodyClasses": "editorial-page calculator-page advisory-site advisory-calculator",
+      "robots": [],
+      "title": "DSCR Calculator | Investor Loan Math | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "dscr-loan-austin-tx.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "DSCR Loans Austin TX | Rental &amp; Cash-Out Financing | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "dscr-loans-dripping-springs.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "DSCR Loans Dripping Springs TX | Wedding Venue STR | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "dscr-loans-fredericksburg-tx.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "DSCR Loans Fredericksburg TX | Wine Country Airbnb &amp; STR Financing | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "dscr-loans-texas.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "DSCR Loans Texas | Investor Mortgage No State Income Tax Advantage | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "elgin-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Elgin TX Home Loans: FHA, TSAHC &amp; Rural Land OK | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "first-time-home-buyer.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page loan-page advisory-site",
+      "robots": [],
+      "title": "First-Time Home Buyer Loans in Austin TX | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "fixed-vs-adjustable.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Fixed vs. Adjustable Mortgage Austin TX | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "florence-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Florence TX Home Loans: Rural Land &amp; Acreage OK | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "forms.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Forms Registry",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "ftb-dpa-guide.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site",
+      "robots": [
+        "noindex, follow"
+      ],
+      "title": "Austin Down Payment Assistance Guide | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "georgetown-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Georgetown Mortgage Lender: Sun City Financing | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "get-preapproved.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Mortgage Scenario &amp; Pre-Approval Review in Texas | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "googlea3d746ce1ceb4bff.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [],
+      "title": "",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "high-net-worth-mortgage.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "High-Net-Worth Mortgage Austin TX | Assets &amp; Complex Income",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "home-equity-loans-texas.html",
+      "family": "guide-directory",
+      "bodyClasses": "public-header-page equity-page advisory-site",
+      "robots": [],
+      "title": "Texas Home Equity Loans | Self-Employed &amp; Non-QM Options | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "how-much-house-can-i-afford-austin.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "How Much House Can I Afford in Austin TX? | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "how-to-buy-a-house-in-austin-tx.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "How to Buy a House in Austin TX 2026 | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "hutto-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Hutto Mortgage Lender &amp; Home Loans | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "improve-credit-score.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Improve Your Credit Score for a Mortgage | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "index.html",
+      "family": "homepage",
+      "bodyClasses": "editorial-page home-pilot advisory-site premium-homepage",
+      "robots": [],
+      "title": "Self-Employed &amp; Investor Mortgage Broker Austin TX | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "homepage complete"
+    },
+    {
+      "path": "investor-loans.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "Investor Loans Austin TX | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "jarrell-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Jarrell TX Home Loans: Beat Builder Rates | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "k1-income-mortgage-austin.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "K-1 Income Mortgage Austin TX | Partner &amp; S-Corp Loans",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "kyle-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Kyle TX Mortgage Lender: 3% Down, New Builds | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "lakeway-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Lakeway TX Home Loans: Jumbo &amp; Luxury Specialist | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "leander-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Leander TX Mortgage Lender: Beat Builder Rates | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "liberty-hill-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Liberty Hill TX Home Loans: New Construction OK | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loan-dashboard.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "2026 Loan Dashboard | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loanos-waitlist.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "LoanOS Waitlist | Built for Loan Officers | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loanos.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "LoanOS \u2014 Internal Build Tracker",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loans/construction.html",
+      "family": "program",
+      "bodyClasses": "public-header-page legacy-loan-page advisory-site advisory-product",
+      "robots": [],
+      "title": "Construction Loans Austin TX | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loans/conventional.html",
+      "family": "program",
+      "bodyClasses": "public-header-page legacy-loan-page advisory-site advisory-product",
+      "robots": [],
+      "title": "Conventional Loans Austin TX | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loans/fha.html",
+      "family": "program",
+      "bodyClasses": "public-header-page legacy-loan-page advisory-site advisory-product",
+      "robots": [],
+      "title": "Austin FHA Loans: Broker, Not a Call Center | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loans/investment.html",
+      "family": "program",
+      "bodyClasses": "public-header-page legacy-loan-page advisory-site advisory-product",
+      "robots": [],
+      "title": "Investment Property Loans Austin TX | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loans/jumbo.html",
+      "family": "program",
+      "bodyClasses": "public-header-page legacy-loan-page advisory-site advisory-product",
+      "robots": [],
+      "title": "Jumbo Loan Austin TX: 10% Down to $1.5M, Portfolio Options | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loans/refinance.html",
+      "family": "program",
+      "bodyClasses": "public-header-page legacy-loan-page advisory-site advisory-product",
+      "robots": [],
+      "title": "Cash-Out Refinance Austin TX | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loans/usda.html",
+      "family": "program",
+      "bodyClasses": "public-header-page legacy-loan-page advisory-site advisory-product",
+      "robots": [
+        "noindex, follow"
+      ],
+      "title": "USDA Loans Near Austin TX | Zero Down | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "loans/va.html",
+      "family": "program",
+      "bodyClasses": "public-header-page legacy-loan-page advisory-site advisory-product",
+      "robots": [],
+      "title": "VA Loans Austin TX | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "manor-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Manor TX Home Loans: FHA &amp; TSAHC East Austin | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "marble-falls-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Marble Falls TX: Hill Country &amp; Lake LBJ Home Loans | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "marketing-command-center.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Marketing Command Center | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "marketing-content.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Marketing Content | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "mortgage-broker-vs-bank.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Mortgage Broker vs. Bank Austin TX | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "mortgage-case-studies-for-advisors-cpas.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page professional-page advisory-site",
+      "robots": [],
+      "title": "Mortgage Case Studies for Financial Advisors and CPAs | Texas",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "mortgage-for-business-owners-austin.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "Mortgage Strategies for Business Owners Austin TX | Adam Styer",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "mortgage-glossary.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Mortgage Glossary Austin TX | Terms Explained | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "mortgage-pre-approval-austin.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Mortgage Pre-Approval Austin TX | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "mortgage-resources-for-cpas-texas.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page professional-page advisory-site",
+      "robots": [],
+      "title": "Mortgage Resources for CPAs in Texas | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "mortgage-strategies-financial-advisors-texas.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page professional-page advisory-site",
+      "robots": [],
+      "title": "Mortgage Strategies for Financial Advisors in Texas | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "netlify/functions/lib/site-footer.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [],
+      "title": "",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "new-braunfels-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "New Braunfels Mortgage Broker | Comal County Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "non-qm-loans.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "Non-QM Loans in Texas: Find Your Mortgage Options | Adam Styer",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "one-time-close-construction-loan-texas.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "One-Time-Close Construction Loans Texas | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "ops.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "styermortgage.com/ops",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "p-and-l-mortgage-texas.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "P&amp;L Only Mortgage Texas | CPA Profit &amp; Loss Home Loan | Adam Styer | NMLS #513013",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "pflugerville-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Pflugerville TX Mortgage: FHA &amp; VA Expert | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "prequal.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [],
+      "title": "Mortgage Pre-Qualification Austin TX | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "privacy.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Privacy Policy | HyperSmart Home Loans | NMLS #2653540",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "products.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site",
+      "robots": [],
+      "title": "Mortgage Options Austin TX | Business Owners, Investors &amp; Buyers",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rate-alert.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [],
+      "title": "Austin Rate Watch | Mortgage Rate Alerts | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rate-buydown-calculator.html",
+      "family": "tool",
+      "bodyClasses": "editorial-page calculator-page advisory-site advisory-calculator",
+      "robots": [],
+      "title": "Rate Buydown Calculator | 2/1 Buydown | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rate-check-buda-kyle.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [],
+      "title": "Compare Your Mortgage Rate \u2014 Buda, Kyle &amp; San Marcos TX | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rate-check-cedar-park.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [],
+      "title": "Compare Your Mortgage Rate \u2014 Cedar Park &amp; Leander TX | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rate-check-georgetown.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [],
+      "title": "Compare Your Mortgage Rate \u2014 Georgetown &amp; Hutto TX | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rate-check-new-braunfels.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [],
+      "title": "Compare Your Mortgage Rate &mdash; New Braunfels TX | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rate-check-round-rock.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [],
+      "title": "Compare Your Mortgage Rate \u2014 Round Rock &amp; Pflugerville TX | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rate-check.html",
+      "family": "tool",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [],
+      "title": "Get a Second Opinion on Your Mortgage Rate | Austin, TX | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rates/2026-02-25.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Weekly Rate Update \u2014 February 25, 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rates/2026-03-03.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Weekly Rate Update \u2014 March 3, 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rates/2026-03-13.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Weekly Rate Update \u2014 March 13, 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rates/2026-03-19.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Weekly Rate Update \u2014 March 19, 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rates/2026-03-24.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Weekly Rate Update \u2014 March 24, 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rates/2026-04-01.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Weekly Rate Update \u2014 April 1, 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rates/2026-04-03.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Weekly Rate Update \u2014 April 3, 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rates/2026-04-14.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Weekly Rate Update \u2014 April 14, 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rates/2026-04-24.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Weekly Rate Update \u2014 April 24, 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "rates/2026-05-18.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Weekly Rate Update \u2014 May 18, 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "realtor-resources.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page trust-page advisory-site",
+      "robots": [],
+      "title": "Realtor Partner Resources | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "AI Tools &amp; Rate Cuts Below 6% for Austin Realtors | Adam Styer | Austin Mortgage Broker",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "The Crash That Isn't Coming \u2014 Data for Your Buyers | Adam Styer | Austin Mortgage Broker",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "realtor-updates/2026-06-08-when-other-lenders-say-no.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "When Other Lenders Say No, That's Usually When I Get Interested | Adam Styer | Austin Mortgage Broker",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "When Strong Buyers Don't Fit Conventional: 6 Scenarios & the Loans That Solve Them | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "realtors.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page trust-page advisory-site",
+      "robots": [],
+      "title": "For Austin Realtors | Adam Styer | NMLS #513013",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "referral-partners-self-employed-clients.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page professional-page advisory-site",
+      "robots": [],
+      "title": "Mortgage Resources for Financial Advisors and CPAs | Texas",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "refinance-calculator.html",
+      "family": "tool",
+      "bodyClasses": "editorial-page calculator-page advisory-site advisory-calculator",
+      "robots": [],
+      "title": "Refinance Cost Calculator Austin TX | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "refinance-quote.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Texas Refinance &amp; Home Equity Review | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "resources/blog/2026-03-04-wait-for-rates-realtor.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "The \"Wait for Rates\" Objection &mdash; Here's How to Handle It | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "resources/blog/2026-03-04-wait-for-rates.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Should You Wait for Rates to Drop Before You Sell and Buy? | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "resources/first-time-buyer-guide/index.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site",
+      "robots": [],
+      "title": "First-Time Homebuyer Guide Austin TX | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "resources/index.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site",
+      "robots": [],
+      "title": "Free Mortgage Resources Austin TX | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "resources/mortgage-options-for-business-owners.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [],
+      "title": "Business-Owner Mortgage Preparation Checklist | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "reverse-mortgage-financial-advisors-texas.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page professional-page advisory-site",
+      "robots": [],
+      "title": "Reverse Mortgage Planning for Texas Financial Advisors | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "reverse-mortgage-texas.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page professional-page advisory-site",
+      "robots": [],
+      "title": "Reverse Mortgage in Texas: Options and Tradeoffs | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "round-rock-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Round Rock Mortgage Lender: Teravista vs. Forest Creek Loan Guide | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "san-marcos-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "San Marcos TX Mortgage Lender: TXST Area Expert | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "saved-analysis.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Your private property analysis | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "scenario.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page lead-page advisory-site",
+      "robots": [
+        "index, follow"
+      ],
+      "title": "Start Here | Adam Styer Mortgage",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "scenarios.html",
+      "family": "scenario",
+      "bodyClasses": "editorial-page guide-page advisory-site",
+      "robots": [],
+      "title": "Mortgage Scenarios | Real Borrower Files | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "scenarios/_TEMPLATE.html",
+      "family": "scenario",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex"
+      ],
+      "title": "[Scenario Title] | Mortgage Scenario | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "scenarios/assets-limited-income-history.html",
+      "family": "scenario",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Plenty of Assets, Limited Income History: What to Review Next | Mortgage Scenario | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "scenarios/build-on-owned-land-before-selling.html",
+      "family": "scenario",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Building on Land You Own Before Selling Your Current Home | Mortgage Scenario | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "scenarios/buying-current-rental-gift-funds.html",
+      "family": "scenario",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Buying the Home You Rent: A Better Plan for Gift Funds | Mortgage Scenario | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "scenarios/oil-gas-royalty-asset-depletion.html",
+      "family": "scenario",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [],
+      "title": "Oil &amp; Gas Royalty Income, Two Bank Declines, and an Asset-Depletion Solution | Mortgage Scenario | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "scenarios/self-employed-refinance-deposit-review.html",
+      "family": "scenario",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "A Self-Employed Refinance: Which Deposits Count as Income? | Mortgage Scenario | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "scenarios/two-rental-properties-cash-out-review.html",
+      "family": "scenario",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Cash-Out on Two Rentals: Equity Was Only Part of the Answer | Mortgage Scenario | Adam Styer | NMLS #513013",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "self-employed-mortgage-austin.html",
+      "family": "inquiry",
+      "bodyClasses": "editorial-page loan-page program-page-modern advisory-site",
+      "robots": [],
+      "title": "Self-Employed Mortgage Austin TX | Qualification &amp; Documents",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "smithville-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Smithville TX Home Loans: Rural &amp; Acreage Land OK | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "spicewood-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Spicewood TX Loans: Rural Land &amp; Lake Travis | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "task-dashboard.html",
+      "family": "utility",
+      "bodyClasses": "",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Task Command Center",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "taylor-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Taylor TX Home Loans: New Builds &amp; Samsung Area | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "terms.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site advisory-article",
+      "robots": [],
+      "title": "Terms &amp; Conditions | HyperSmart Home Loans | NMLS #2653540",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "testimonials.html",
+      "family": "trust",
+      "bodyClasses": "editorial-page trust-page advisory-site",
+      "robots": [],
+      "title": "Adam Styer Reviews | Austin Mortgage Broker",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "texas-complaint-notice.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page guide-page advisory-site",
+      "robots": [],
+      "title": "Texas Consumer Complaint Notice | HyperSmart Home Loans | NMLS #2653540",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "thank-you.html",
+      "family": "guide-directory",
+      "bodyClasses": "advisory-site",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Request Received | Adam Styer | NMLS #513013",
+      "forms": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "updates/2025-02-19-market-update.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Austin Market Update: What Buyers and Sellers Need to Know This Spring | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "updates/2026-02-19-austin-buyer-window.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Austin's Buyer Window Is Wide Open &mdash; Here's the Data to Prove It | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "updates/2026-02-20-fast-closes-teamwork-and-spring-market-momentum.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Fast Closes and Spring Market Momentum | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "updates/2026-03-06-temp-placeholder.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Newsletter | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "updates/2026-03-10-temp-placeholder.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Newsletter | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "updates/2026-03-30-temp-placeholder.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Newsletter | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "updates/2026-04-01-spring-market-update.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Spring Market Update: Austin Mortgage Rates &amp; Inventory | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "updates/2026-04-01-test.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "What You Need to Know About Rates Right Now | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "updates/2026-04-27-why-home-prices-arent-crashing.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Why Home Prices Aren't Crashing | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "updates/2026-08-10-austin-housing-market-report-august-2026.html",
+      "family": "article",
+      "bodyClasses": "advisory-site advisory-article",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "title": "Austin Housing Market Report \u2014 August 2026 | Adam Styer | HyperSmart Home Loans",
+      "forms": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "westlake-mortgage-lender.html",
+      "family": "guide-directory",
+      "bodyClasses": "editorial-page location-page advisory-site",
+      "robots": [],
+      "title": "Westlake Hills TX: Jumbo &amp; Eanes ISD Home Loans | Adam Styer",
+      "forms": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "wrap-mortgage-calculator.html",
+      "family": "tool",
+      "bodyClasses": "editorial-page calculator-page advisory-site advisory-calculator wrap-calculator-page",
+      "robots": [],
+      "title": "WRAP Mortgage Calculator | Seller Financing | Adam Styer",
+      "forms": 0,
+      "reviewStatus": "pending"
+    }
+  ]
+}
