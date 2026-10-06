@@ -1,0 +1,17 @@
+{
+  "scope": [
+    "products.html",
+    "resources/index.html",
+    "calculators.html",
+    "loans/construction.html",
+    "loans/conventional.html",
+    "loans/jumbo.html",
+    "loans/usda.html",
+    "loans/refinance.html",
+    "loans/va.html",
+    "loans/fha.html",
+    "loans/investment.html"
+  ],
+  "checkedLinks": 1639,
+  "issues": []
+}

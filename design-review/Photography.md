@@ -27,3 +27,7 @@ Select images at meaningful editorial breaks in program/directory/resource pages
 - All three images loaded at 320, 390, 768 and 1440 pixels; no horizontal overflow and one H1 at each width. Desktop frames have equal widths and matching aspect ratios. Reviewed desktop and mobile screenshots.
 - Six existing homepage/interior preservation checks passed, including original prose, links, metadata, JSON-LD and form/navigation contracts. SEO audit: 163 sitemap URLs, zero issues. No form or calculator behavior changed.
 - Screenshots: stock-photos-desktop.jpg and stock-photos-mobile.jpg. DOM geometry: stock-photos-checks.json. Additional page photography remains part of the overnight template review; this pass changes the homepage only.
+
+## Directory/program placement checkpoint — October 5 evening
+
+Reused the same licensed local files in the mortgage-options hero (contemporary home), conventional guide hero (porch home), and investment guide hero (home at dusk). Responsive source selection, dimensions and descriptive non-geographic alt text are present. These remain illustrative stock houses, not evidence of Texas locations or transactions financed by Adam. No new license or source assumptions were introduced.
