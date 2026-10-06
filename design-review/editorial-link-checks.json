@@ -1,0 +1,6 @@
+{
+  "pages": 62,
+  "internalLinkOccurrences": 8360,
+  "issues": [],
+  "note": "Static same-origin relative/root links and HTML fragments. External destinations and dynamic anchors are outside this check."
+}

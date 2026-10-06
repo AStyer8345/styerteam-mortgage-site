@@ -35,3 +35,7 @@ Reused the same licensed local files in the mortgage-options hero (contemporary 
 ## Cash-out placement checkpoint — October 5 late evening
 
 The distinct DSCR cash-out hero reuses rental-home-dusk at 480/800 widths with reserved 3:2 dimensions and a descriptive, non-geographic alt. Desktop and 320/390 mobile crops reviewed. This is the same licensed illustrative property from Utah; no claim of Texas location or an Adam-financed transaction. No additional image dependency or licensing assumption.
+
+## Blog directory placement — October 6
+
+The inspected blog directory now reuses `porch-home` beside its existing introductory copy. Reserved 800×533 dimensions, 480/800 WebP srcset, async decoding; this above-fold image is not lazy loaded. The alt text describes the residential porch and mature trees without claiming a Texas location or borrower connection. Desktop/mobile crops were viewed. No new asset download or license assumption; source/license record above applies. The six actual scenario stories retain their original evidence without stock-property decoration.
