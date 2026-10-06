@@ -5,6 +5,7 @@ import { retrieveApprovedKnowledge } from './_shared/knowledge.ts';
 import { createGeneralMortgageResponse, createMortgageResponse, createSalesConversationResponse } from './_shared/openai-responses.ts';
 import { createSessionToken, verifySessionToken } from './_shared/session.ts';
 import { persistTranscript } from './_shared/transcript-store.ts';
+import { buildHandoffDetails, captureAssistantHandoff } from './_shared/assistant-handoff.ts';
 import { callLoanOs } from './_shared/loanos-client.ts';
 import { checkPersistentRateLimit } from './_shared/rate-limit.ts';
 import { conversionResources, recommendApprovedResources, resolveAssistantActions } from './_shared/assistant-resources.ts';
@@ -35,7 +36,7 @@ export default async function handler(request: Request, context: Context): Promi
   if (!sameOrigin(request)) return json({ error: { code: 'invalid_origin', message: 'Request origin is not allowed.' } }, 403, headers);
   if (!(request.headers.get('content-type') || '').toLowerCase().startsWith('application/json')) return json({ error: { code: 'invalid_content_type', message: 'JSON is required.' } }, 415, headers);
   const length = Number(request.headers.get('content-length') || 0);
-  if (length > 24_000) return json({ error: { code: 'request_too_large', message: 'Request is too large.' } }, 413, headers);
+  if (length > 160_000) return json({ error: { code: 'request_too_large', message: 'Request is too large.' } }, 413, headers);
 
   const secret = Netlify.env.get('MORTGAGE_ASSISTANT_SESSION_SECRET');
   if (!secret) return json({ error: { code: 'not_configured', message: 'Assistant configuration is incomplete.' } }, 503, headers);
@@ -57,7 +58,7 @@ export default async function handler(request: Request, context: Context): Promi
     return json({ error: { code: 'safety_service_unavailable', message: 'The assistant is temporarily unavailable.' } }, 503, headers);
   }
 
-  if (typeof body.confirmAction === 'string') return handleConfirmedAction(body.confirmAction, body, secret, conversationId, correlationId, session.id, headers);
+  if (typeof body.confirmAction === 'string') return handleConfirmedAction(body.confirmAction, body, secret, conversationId, correlationId, session.id, headers, context);
   if (body.leadRequest && typeof body.leadRequest === 'object') return handleLeadRequest(body.leadRequest as Record<string, unknown>, secret, conversationId, headers, body);
 
   const message = typeof body.message === 'string' ? body.message.trim() : '';
@@ -293,13 +294,16 @@ function handleLeadRequest(value: Record<string, unknown>, secret: string, conve
   const timeline = leadSalesState.timeline === 'unknown' ? 'unsure' : leadSalesState.timeline;
   const structuredContext = buildStructuredLeadContext(leadSalesState, typeof requestBody.sourcePage === 'string' ? requestBody.sourcePage : undefined);
   structuredContext.assistantMode = typeof requestBody.assistantMode === 'string' ? requestBody.assistantMode.slice(0, 32) : 'consumer';
-  const conversationSummary = JSON.stringify(structuredContext).slice(0, 1000);
-  const args = { firstName, lastName: null, email: email || null, phone: phone || null, leadIntent, timeline, preferredContact, conversationSummary };
+  let handoffDetails: string;
+  try { handoffDetails = buildHandoffDetails(structuredContext, value.conversation); }
+  catch (error) { return json({ error: { code: 'handoff_too_large', message: (error as Error).message } }, 413, headers); }
+  const conversationSummary = handoffDetails.slice(0, 1000);
+  const args = { firstName, lastName: null, email: email || null, phone: phone || null, leadIntent, timeline, preferredContact, conversationSummary, handoffDetails };
   const token = createConfirmationToken(secret, { name: 'create_or_update_website_lead', args, conversationId, toolCallId: `structured-lead-${randomUUID()}`, expiresAt: Date.now() + 10 * 60_000 });
-  return json({ conversationId, message: 'Please review the privacy notice and confirm before I save this contact request.', sources: [], confirmation: { token, operation: 'create_or_update_website_lead', summary: `Save a contact request for ${firstName}` } }, 200, headers);
+  return json({ conversationId, handoffDetails, message: 'Please review the privacy notice and confirm before I save this contact request.', sources: [], confirmation: { token, operation: 'create_or_update_website_lead', summary: `Save a contact request for ${firstName}` } }, 200, headers);
 }
 
-async function handleConfirmedAction(token: string, body: Record<string, unknown>, secret: string, conversationId: string, correlationId: string, sessionId: string, headers: Record<string, string>) {
+async function handleConfirmedAction(token: string, body: Record<string, unknown>, secret: string, conversationId: string, correlationId: string, sessionId: string, headers: Record<string, string>, context: Context) {
   const confirmation = verifyConfirmationToken(secret, token);
   if (!confirmation || confirmation.conversationId !== conversationId || !MUTATING.has(confirmation.name)) return json({ error: { code: 'invalid_confirmation', message: 'That confirmation expired or is invalid.' } }, 400, headers);
   if (confirmation.name === 'create_or_update_website_lead' && body.consentAccepted !== true) return json({ error: { code: 'consent_required', message: 'Please review and accept the privacy notice before submitting contact information.' } }, 400, headers);
@@ -308,13 +312,22 @@ async function handleConfirmedAction(token: string, body: Record<string, unknown
   // cache. Use the widget's running turn count so the confirmation and result
   // land after the visible conversation.
   const confirmationSequence = computeSequenceStart(body.turnCount, 0);
-  const recordedConfirmation = await persistTurn(conversationId, correlationId, sessionId, '[CONFIRMED_ACTION]', 'The visitor confirmed the requested action.', [], { confirmed_tool: confirmation.name, confirmation_recorded: true }, undefined, confirmationSequence);
-  headers['X-Conversation-Storage'] = recordedConfirmation.storageStatus;
-  if (!recordedConfirmation.ok) return json({ error: { code: 'conversation_unavailable', message: 'The request could not be safely recorded. Please try again.' } }, 502, headers);
+  const hasSnapshot = confirmation.name === 'create_or_update_website_lead' && typeof confirmation.args.handoffDetails === 'string';
+  const recordConfirmation = () => persistTurn(conversationId, correlationId, sessionId, '[CONFIRMED_ACTION]', 'The visitor confirmed the requested action.', [], { confirmed_tool: confirmation.name, confirmation_recorded: true }, undefined, confirmationSequence);
+  if (hasSnapshot) context.waitUntil(recordConfirmation());
+  else {
+    const recordedConfirmation = await recordConfirmation();
+    headers['X-Conversation-Storage'] = recordedConfirmation.storageStatus;
+    if (!recordedConfirmation.ok) return json({ error: { code: 'conversation_unavailable', message: 'The request could not be safely recorded. Please try again.' } }, 502, headers);
+  }
   const result = await executeTool(confirmation.name, confirmation.args, conversationId, correlationId, body, confirmation.toolCallId);
   const answer = toolResultMessage(confirmation.name, result);
-  const recordedResult = await persistTurn(conversationId, correlationId, sessionId, '[ACTION_RESULT]', answer, [], { confirmed_tool: confirmation.name, tool_status: result.status }, undefined, confirmationSequence + 2);
-  headers['X-Conversation-Storage'] = recordedResult.storageStatus;
+  const recordResult = () => persistTurn(conversationId, correlationId, sessionId, '[ACTION_RESULT]', answer, [], { confirmed_tool: confirmation.name, tool_status: result.status }, undefined, confirmationSequence + 2);
+  if (hasSnapshot) context.waitUntil(recordResult());
+  else {
+    const recordedResult = await recordResult();
+    headers['X-Conversation-Storage'] = recordedResult.storageStatus;
+  }
   return json({ conversationId, message: answer, sources: [], toolResult: result }, result.ok ? 200 : 502, headers);
 }
 
@@ -324,6 +337,7 @@ async function executeTool(name: string, args: Record<string, unknown>, conversa
     payload.consents = [{ type: 'privacy', status: requestBody.consentAccepted === true ? 'granted' : 'denied', policyVersion: POLICY_VERSION, consentedAt: requestBody.consentAccepted === true ? new Date().toISOString() : undefined }];
     payload.sourcePage = typeof requestBody.sourcePage === 'string' ? requestBody.sourcePage.slice(0, 500) : undefined;
     payload.assistantMode = typeof requestBody.assistantMode === 'string' ? requestBody.assistantMode.slice(0, 32) : 'consumer';
+    if (typeof payload.handoffDetails === 'string') return captureAssistantHandoff(payload, conversationId, POLICY_VERSION);
     if (typeof payload.conversationSummary !== 'string') payload.conversationSummary = salesStateSummary(deriveSalesState('', [], requestBody.salesState));
   }
   return callLoanOs(name, payload, { idempotencyKey: `${conversationId}:${toolCallId}` });
@@ -380,7 +394,7 @@ export function toolResultMessage(name: string, result: { ok: boolean; status: s
   if (name === 'send_application_link' && typeof result.data?.applicationUrl === 'string') return `Here is the approved secure application link: ${result.data.applicationUrl}`;
   if (name === 'create_or_update_website_lead') {
     const saved = result.status === 'existing' ? 'Your request was added to the existing contact record.' : 'Your contact request was saved.';
-    if (result.data?.notificationsQueued === true) return `${saved} It is in Adam’s team’s follow-up queue.`;
+    if (result.data?.notificationsQueued === true) return `${saved} Your scenario and conversation are in Adam’s team’s follow-up queue. Email delivery is pending.`;
     if (result.data?.ownerNotified !== true) return `${saved} The email notification could not be sent, so Adam may not see it immediately. Please call or text (512) 956-6010.`;
     if (result.data?.visitorAcknowledged === true) return `${saved} Adam was notified, and a confirmation email is on its way.`;
     return `${saved} Adam was notified, but the confirmation email could not be sent.`;

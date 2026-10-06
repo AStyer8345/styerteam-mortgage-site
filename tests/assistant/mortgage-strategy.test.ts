@@ -343,3 +343,16 @@ test('structured lead context contains strategy facts and transcript attachment 
   assert.equal(context.transcriptRedacted, true);
   assert.equal(context.leadIntentScore, 8);
 });
+
+test('an income answer containing a borrower question is answered before intake advances', () => {
+  const message = 'I make about $300,000 a year all 1099 income and have done it for four years but write a bunch off, so my net income is $60,000 a month. Is there any other options?';
+  const derived = deriveStrategyState(message, { ...EMPTY_STRATEGY_STATE, path: 'qualification', pendingQuestion: 'gross_income', incomeType: '1099_variable' });
+  assert.equal(derived.grossMonthlyIncome, 25000);
+  const answer = strategyConversationReply(message, derived, runtime)!;
+  assert.match(answer.message, /bank-statement program/);
+  assert.match(answer.message, /net per year or per month/);
+  assert.doesNotMatch(answer.message, /monthly debts total/);
+  // Intake can resume on a later answer; facts supplied with the question stay.
+  const resumed = strategyConversationReply('About $2000 in monthly debts', deriveStrategyState('About $2000 in monthly debts', { ...derived, pendingQuestion: 'monthly_debts' }), runtime)!;
+  assert.equal(resumed.strategy.monthlyDebts, 2000);
+});

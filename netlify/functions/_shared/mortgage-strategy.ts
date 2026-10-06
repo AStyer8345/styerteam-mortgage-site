@@ -191,11 +191,18 @@ export function deriveStrategyState(message: string, supplied: unknown): Strateg
 export function strategyConversationReply(message: string, strategy: StrategyState, runtime: StrategyRuntime): StrategyReply | null {
   if (!strategy.path) return null;
   if (strategy.clarificationRequested && strategy.pendingQuestion) return pendingQuestionClarification(strategy, message);
-  const directQuestion = /\?$/.test(message.trim()) || /^(?:what|why|how|can|could|should|is|are|do|does|will)\b/i.test(message.trim());
+  const directQuestion = /\?/.test(message) || /\b(?:is there|are there|what are|can i|could i|how do i|do i|does that|would it)\b/i.test(message) || /^(?:what|why|how|can|could|should|is|are|do|does|will)\b/i.test(message.trim());
   const openingChoice = /^(?:estimate payment and cash|see what may qualify|explain my situation|compare estimated pricing)$/i.test(message.trim());
   if (strategy.valueDelivered && !openingChoice) return null;
-  const startingPath = strategy.pendingQuestion === null && !strategy.valueDelivered;
-  if (directQuestion && !openingChoice && !startingPath) return null;
+  // Derivation consumes the previous pending answer before routing. A question
+  // in that answer must still go to the knowledge path, not the next intake step.
+  if (strategy.path === 'qualification' && directQuestion && !openingChoice && ['self_employed', '1099_variable'].includes(strategy.incomeType) && /other options?|alternatives?|write.{0,8}offs?|write.{0,8}off|deductions?|tax returns?/i.test(message)) {
+    const net = message.match(/net(?: income)?[^$\d]{0,20}\$?([\d,]+)\s*(?:a|per)?\s*month/i);
+    const inconsistent = net && strategy.grossMonthlyIncome !== null && Number(net[1].replaceAll(',', '')) > strategy.grossMonthlyIncome;
+    const answer = 'Yes—tax-return income is not the only possible path. A bank-statement program may use eligible deposits with an expense adjustment instead of relying only on taxable income. Some programs may also consider 1099 income or other alternative documentation, depending on the lender and your business. Adam can also review whether any permitted tax-return adjustments change the conventional income calculation.\n\nThese options still require verified income, credit, down payment, and reserves; rates and costs may differ from conventional financing.';
+    return { message: answer + (inconsistent ? '\n\nYour annual gross and monthly net figures do not line up. Did you mean $' + Number(net![1].replaceAll(',', '')).toLocaleString('en-US') + ' net per year or per month?' : '\n\nIs the amount you mentioned gross revenue, take-home cash flow, or the net income on your tax return?'), suggestedReplies: [], strategy: { ...strategy, valueDelivered: true, recommendedNextAction: 'scenario_review' }, responseKind: 'scenario_assessment', actions: ['contact'] };
+  }
+  if (directQuestion && !openingChoice && strategy.path !== 'complex' && strategy.path !== 'pricing') return null;
   if (strategy.path === 'payment') return paymentReply(strategy, runtime);
   if (strategy.path === 'qualification') return qualificationReply(strategy);
   if (strategy.path === 'complex') return complexReply(strategy);

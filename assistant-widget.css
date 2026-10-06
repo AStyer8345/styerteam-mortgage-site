@@ -16,3 +16,10 @@
 @media(max-width:640px){.ma-suggested-replies{display:grid;grid-template-columns:1fr;width:100%;max-width:none}.ma-suggested-replies button{width:100%;max-width:none;text-align:center}}
 @media(prefers-reduced-motion:reduce){.mortgage-assistant *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 @media(forced-colors:active){.ma-launcher,.ma-send,.ma-confirm{border:2px solid ButtonText}.ma-message,.ma-panel{border:1px solid CanvasText}}
+/* Keep contact review and receipts usable when the mobile keyboard is open. */
+.mortgage-assistant .ma-header h2{font-size:1.08rem!important;line-height:1.25!important}
+.ma-header,.ma-disclosure,.ma-next-actions,.ma-form,.ma-sensitive-notice{flex-shrink:0}
+.ma-confirmation{flex-shrink:0;max-height:40dvh;overflow-y:auto}
+.ma-consent{font-size:.875rem}
+.ma-confirmation-summary{font-size:.875rem}
+.ma-sensitive-notice[role="status"]{display:block;font-size:.875rem;max-height:5rem;overflow:auto}

@@ -540,7 +540,7 @@ async function captureNotificationBackup(options = {}) {
     email: text(options.email, 254),
     phone: text(options.phone, 40),
     subject: text(options.subject || 'New website form submission', 180),
-    details: text(details, 4000),
+    details: text(details, options.sourceForm === 'mortgage-assistant-contact' ? 60000 : 4000),
     source_page: text(options.sourcePage || window.location.href, 1000),
     failed_endpoint: text(options.failedEndpoint, 500),
     submitted_at: new Date().toISOString(),
@@ -1142,7 +1142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMortgageAssistant() {
   if (document.querySelector('script[data-mortgage-assistant]')) return;
   var script = document.createElement('script');
-  script.src = '/assistant-widget.js?v=20261004-reliable-chat-v1';
+  script.src = '/assistant-widget.js?v=20261006-answer-handoff-v2';
   script.defer = true;
   script.dataset.mortgageAssistant = 'true';
   document.head.appendChild(script);

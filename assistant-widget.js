@@ -39,7 +39,7 @@
     try {
       window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
         conversationId: state.conversationId,
-        turns: state.turns.slice(-24),
+        turns: state.turns,
         turnCount: state.turnCount,
         salesState: state.salesState,
       }));
@@ -58,7 +58,7 @@
   function renderWidget() {
     var stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20261004-reliable-chat-v1';
+    stylesheet.href = '/assistant-widget.css?v=20261006-answer-handoff-v2';
     document.head.appendChild(stylesheet);
 
     var root = document.createElement('div');
@@ -217,6 +217,7 @@
   function handleResponse(data) {
     if (data.conversationId) state.conversationId = data.conversationId;
     if (data.salesState) state.salesState = data.salesState;
+    if (data.sensitiveInputDetected && state.turns.length) state.turns[state.turns.length - 1].text = '[Sensitive information removed]';
     addMessage('assistant', data.message || 'I could not complete that request.');
     persistConversation();
     if (Array.isArray(data.sources) && data.sources.length) addSources(data.sources);
@@ -257,6 +258,14 @@
     var fetchRequest = timeoutMs && typeof window.StyerFetchWithTimeout === 'function'
       ? window.StyerFetchWithTimeout
       : fetch;
+    if (typeof window.StyerFetchWithTimeout !== 'function' && timeoutMs) {
+      fetchRequest = function (url, options) {
+        var controller = new AbortController();
+        var timer = window.setTimeout(function () { controller.abort(); }, timeoutMs);
+        options.signal = controller.signal;
+        return fetch(url, options).finally(function () { window.clearTimeout(timer); });
+      };
+    }
     return fetchRequest(endpoint, {
       method: 'POST',
       credentials: 'same-origin',
@@ -278,6 +287,8 @@
     ui.consentInput.checked = false;
     ui.consentText.textContent = state.config.consentText;
     ui.confirmation.hidden = false;
+    ui.confirm.textContent = needsConsent ? 'Send to Adam' : 'Confirm';
+    ui.confirmation.scrollIntoView({ block: 'nearest' });
     ui.confirm.focus();
   }
 
@@ -306,6 +317,7 @@
       clearConfirmation();
       state.turnCount += 3;
       handleResponse(data);
+      if (needsConsent && data.toolResult && data.toolResult.ok === true) showStorageNotice(data.message);
     }).catch(function (error) {
       if (!approvedNotification || typeof window.StyerCaptureNotificationBackup !== 'function') {
         handleError(error); return;
@@ -313,7 +325,9 @@
       return window.StyerCaptureNotificationBackup(approvedNotification).then(function () {
         clearConfirmation();
         state.turnCount += 3;
-        addMessage('assistant', 'Your contact details were saved in our backup for Adam’s team to review. The primary request could not be confirmed.');
+        var receipt = 'Your contact request and conversation were received in Adam’s backup inbox. The primary request could not be confirmed.';
+        addMessage('assistant', receipt);
+        showStorageNotice(receipt);
         state.converted = true;
         trackAssistant('contact_submitted', { cta_type: 'contact', recovery: true });
       }).catch(function () { handleError(error); });
@@ -347,14 +361,7 @@
       email: String(data.get('email') || '').trim(),
       phone: String(data.get('phone') || '').trim(),
       subject: 'New mortgage assistant contact request',
-      details: {
-        preferred_contact: preferredContact,
-        assistant_mode: state.assistantMode,
-        conversation_id: state.conversationId,
-        goal: state.salesState && state.salesState.goal ? state.salesState.goal : '',
-        timeline: state.salesState && state.salesState.timeline ? state.salesState.timeline : '',
-        property_state: state.salesState && state.salesState.propertyState ? state.salesState.propertyState : ''
-      },
+      details: '', // Filled with the server-redacted snapshot before consent.
       sourcePage: window.location.href.split('#')[0]
     };
     setBusy(true, 'Preparing your contact request for review.');
@@ -363,10 +370,12 @@
       leadRequest: {
         firstName: data.get('firstName'), email: data.get('email'), phone: data.get('phone'), preferredContact: preferredContact,
         salesState: state.salesState,
+        conversation: state.turns,
       },
       sourcePage: window.location.href.split('#')[0],
       assistantMode: state.assistantMode,
     }, 15000).then(function (response) {
+      if (state.pendingLeadNotification && response.handoffDetails) state.pendingLeadNotification.details = response.handoffDetails;
       closeLeadForm();
       handleResponse(response);
     }).catch(function (error) {
@@ -411,7 +420,6 @@
     ui.messages.scrollTop = ui.messages.scrollHeight;
     state.turns.push({ role: role, text: text });
     state.turnCount += 1;
-    if (state.turns.length > 24) state.turns = state.turns.slice(-24);
     persistConversation();
   }
 

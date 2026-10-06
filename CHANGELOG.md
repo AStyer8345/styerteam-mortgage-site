@@ -3157,3 +3157,12 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Preserve all headings, qualification details, FAQ questions and answers, internal links, form/capture/consent/attribution contracts, shared assets, and legal language.
 - Validation: 125 site tests and 119 assistant tests passed; TypeScript, 162-URL SEO audit, and all build audits passed. Local browser checks passed at 390/768/1440px, including mocked acceptance, failed-submit recovery, duplicate prevention, attribution, and the native no-JavaScript form. No live test lead was submitted.
 - Matching borrower, realtor, and CPA drafts with campaign tracking links were prepared separately; no outreach was sent or paid campaign activated.
+
+
+## 2026-10-06 — Assistant answers and complete scenario handoff
+
+- Answer borrower questions embedded in qualification replies before advancing to the next intake field; explain alternative documentation for the reported 1099/write-off case and clarify inconsistent income figures.
+- Retain the browser conversation beyond the short model context window. Prepare one server-redacted scenario/transcript snapshot for both the durable contact inquiry and independent Netlify notification backup.
+- Decouple contact capture from delayed transcript recording; use the established LoanOS inquiry/outbox pipeline, snapshot-specific retry identity, visible delivery-state receipts, and bounded requests.
+- Keep mobile confirmation controls usable with a scrollable privacy review and compact heading.
+- Validation: 174 site tests and 133 assistant tests passed; TypeScript, SEO audit (166 URLs / zero issues), build and whitespace checks passed. No live test submissions. Chromium installation failed, so visual browser QA remains unverified.
