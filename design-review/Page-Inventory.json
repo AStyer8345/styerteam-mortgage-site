@@ -2022,5 +2022,17 @@
       "forms": 0,
       "reviewStatus": "pending"
     }
+  ],
+  "previewAdditions": [
+    {
+      "path": "dallas-mortgage-lender.html",
+      "family": "city-guide",
+      "reviewStatus": "New local-preview city guide; original pages preserved separately. Checked 320/390/768/1440, schema and visible FAQ parity, local links and existing inquiry modal."
+    },
+    {
+      "path": "san-antonio-mortgage-lender.html",
+      "family": "city-guide",
+      "reviewStatus": "New local-preview city guide; original pages preserved separately. Checked 320/390/768/1440, schema and visible FAQ parity, local links and existing inquiry modal."
+    }
   ]
 }
