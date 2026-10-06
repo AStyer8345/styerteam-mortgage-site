@@ -1,0 +1,25 @@
+# Final re-audit — in progress
+
+October 6, approximately 4:12 a.m. Chicago. This is a saved continuation record, NOT the final morning report. No whole-site completion claim. Deadline remains 7 a.m.
+
+## Completed fresh pass
+
+Homepage desktop 1440 opening and every major section through footer: centered hero/portrait, borrower photography/pathways, case studies, calculator teaser, reviews, inquiry, resource cards, biography/family photograph, city links, FAQ and footer. Mobile 390 opening, navigation and inquiry interaction inspected. No claim of every lower section at mobile yet. Screenshots: final-audit/homepage-*.png.
+
+Found/fixed three issues:
+1. Static review grid still inherited white gradient ::before/::after overlays from the old marquee, fading the first/last quotes and source links. Removed both overlays; also explicitly disables any future inherited ticker mask. Rechecked computed pseudo display=none, mask=none, and visually confirmed fully readable quotations in homepage-1440-reviews-fixed.png. Earlier pre-fix screenshot filenames remain historical evidence; that fixed screenshot is authoritative.
+2. Homepage lower contact actions were centered under left-aligned copy. Scoped CSS now aligns them to the copy edge; original HTML/actions unchanged. Needs final visual capture of that contact alignment on the next pass.
+3. Mobile navigation styled both actions as navy and left-aligned the full application label. Both actions are now centered, with the full application a clear secondary outline. Rechecked the rendered homepage and Get Preapproved menus at 390 and Escape dismissal. Saved homepage-390-menu-fixed.png and inquiry-390-menu-fixed.png.
+
+Browser journeys: homepage FAQ DSCR question expands using keyboard Enter and aria-expanded=true. Primary hero action focuses the existing contact-form panel. Synthetic .test homepage inquiry was intercepted by the preview guard with the accurate no-inquiry-sent notice; values and consent cleared. No production submission or portal navigation. Mobile menu opens, has aria-expanded=true, and Escape closes it.
+
+After the last repairs: homepage and Get Preapproved rechecked at 320/390/768/1024/1440/1920: 12 combinations, no overflow, one H1, visible opening images loaded. Data: final-audit/homepage-inquiry-responsive.json. 291 tests pass (164 site +127 assistant), safe deploy-preview build, typecheck and 166-URL SEO audit pass. Existing source/form/meta/schema preservation tests pass. Incidental recent-updates.json restored and package rebuilt. Viewport override reset; preview tab 7 preserved.
+
+## Resume here; do not repeat implementation batches
+
+1. Fresh interior audit of representative LONG and SHORT pages across every changed family, including meaningful lower sections. Use the existing family reports/lists rather than inventing scope. Priority sequence: Get Preapproved/bank statements or asset guide → products/legacy conventional+jumbo → DSCR cash-out landing and internal campaign dashboard → existing tools (payment/DSCR/refinance plus lower results/exports) → blog/long article/scenario → About/Reviews/Contact/partner → Dallas/San Antonio and remaining city/rate/lead variants. Source/automated coverage is not a substitute for viewing actual pixels.
+2. Finish mobile homepage lower-section view and contact-action alignment verification. Check inquiry/FAQ/table/card contrasts and keyboard handoffs at representative desktop/mobile/tablet sizes; ensure no clipped content, hidden labels or awkward controls. Review reduced-motion behavior and image reservations. No new decorative scope.
+3. Resolve material findings. Keep original valuable copy/meta/schema/forms/URLs protected. Existing program, pricing, review-count and historic market claims remain separate release accuracy issues; do not invent replacements or silently remove them. Current content evidence research, where needed, must use primary sources and remain separate from product eligibility promises.
+4. Perform final cross-site baseline comparison including internal link graph, crawlability, sitemap, redirects and protected form/attribution/tracking source. Existing tests cover many but report exact coverage. Rerun relevant calculator/forms/tests/build/typecheck/SEO after the last repair, and affected browser journeys.
+5. Write concise Morning-Review.md with review links (homepage, Get Preapproved, DSCR cash-out, Dallas, San Antonio, internal /__review/campaign/), actual visual versus automated coverage, fixed issues, release blockers/limitations and practical separately authorized launch sequence. The actual-data campaign report controls allocation/ranking. No ad activation or publication.
+6. Update inventory final coverage/status; commit intended files only. If full scoped preview gate passes, pause overnight-mortgage-audit-and-preview using automation_update. Otherwise continue from a precise checkpoint and stop/pause by 7 a.m. Chicago with honest partial completion. Do not mark complete merely because all source tests pass.

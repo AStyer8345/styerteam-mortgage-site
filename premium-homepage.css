@@ -232,3 +232,10 @@ body.premium-homepage main .modern-hero-detail{margin-bottom:0}
 /* Illustrative licensed residential photos; never presented as client properties. */
 body.premium-homepage .recovery-specialty-grid .premium-path-photo{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;margin:0 0 24px;border-radius:2px;background:var(--premium-paper)}
 @media(min-width:761px){body.premium-homepage .recovery-specialty-grid{gap:32px}body.premium-homepage .recovery-specialty-grid article{padding:28px 0}body.premium-homepage .recovery-specialty-grid article+article{border-left:0}body.premium-homepage .recovery-specialty-grid h3{min-height:2.8em}}
+/* Final audit: remove the inherited ticker edge mask from the static review grid. */
+body.premium-homepage .testimonial-marquee-wrap.is-ticker{mask-image:none!important;-webkit-mask-image:none!important}
+body.premium-homepage .testimonial-marquee-wrap::before,body.premium-homepage .testimonial-marquee-wrap::after{display:none!important;content:none!important}
+body.premium-homepage .premium-contact-copy .quick-contact-actions{justify-content:flex-start!important}
+
+/* Final audit: align mobile actions and distinguish the full application portal. */
+@media(max-width:1280px){body.premium-homepage>header .nav-links.active .nav-cta{display:flex;align-items:center;justify-content:center;text-align:center;min-height:50px;padding:12px 15px!important;text-decoration:none}body.premium-homepage>header .nav-links.active .nav-apply{background:#fff!important;color:var(--premium-ink)!important;border:1px solid #7B878D!important}}

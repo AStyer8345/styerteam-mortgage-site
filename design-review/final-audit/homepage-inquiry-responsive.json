@@ -1,0 +1,116 @@
+[
+  {
+    "file": "index.html",
+    "h1": 1,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/assets/adam-cutout-900.webp"
+      }
+    ],
+    "overflow": false,
+    "width": 320
+  },
+  {
+    "file": "index.html",
+    "h1": 1,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/assets/adam-cutout-900.webp"
+      }
+    ],
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "file": "index.html",
+    "h1": 1,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/assets/adam-cutout-900.webp"
+      }
+    ],
+    "overflow": false,
+    "width": 768
+  },
+  {
+    "file": "index.html",
+    "h1": 1,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/assets/adam-cutout-900.webp"
+      }
+    ],
+    "overflow": false,
+    "width": 1024
+  },
+  {
+    "file": "index.html",
+    "h1": 1,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/assets/adam-cutout-900.webp"
+      }
+    ],
+    "overflow": false,
+    "width": 1440
+  },
+  {
+    "file": "index.html",
+    "h1": 1,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/assets/adam-cutout-900.webp"
+      }
+    ],
+    "overflow": false,
+    "width": 1920
+  },
+  {
+    "file": "get-preapproved.html",
+    "h1": 1,
+    "images": [],
+    "overflow": false,
+    "width": 320
+  },
+  {
+    "file": "get-preapproved.html",
+    "h1": 1,
+    "images": [],
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "file": "get-preapproved.html",
+    "h1": 1,
+    "images": [],
+    "overflow": false,
+    "width": 768
+  },
+  {
+    "file": "get-preapproved.html",
+    "h1": 1,
+    "images": [],
+    "overflow": false,
+    "width": 1024
+  },
+  {
+    "file": "get-preapproved.html",
+    "h1": 1,
+    "images": [],
+    "overflow": false,
+    "width": 1440
+  },
+  {
+    "file": "get-preapproved.html",
+    "h1": 1,
+    "images": [],
+    "overflow": false,
+    "width": 1920
+  }
+]

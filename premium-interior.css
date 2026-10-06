@@ -108,3 +108,6 @@ body.premium-inquiry .hero-quick .journey-consent{font-size:13px!important;line-
 @media(max-width:360px){body.premium-inquiry .hero-quick{padding:18px!important}}
 
 @media(max-width:360px){body.premium-inquiry .journey-actions .journey-button{font-size:14px!important;white-space:nowrap}}
+
+/* Final audit: align mobile actions and distinguish the full application portal. */
+@media(max-width:1280px){body.premium-interior>header .nav-links.active .nav-cta{display:flex;align-items:center;justify-content:center;text-align:center;min-height:50px;padding:12px 15px!important;text-decoration:none}body.premium-interior>header .nav-links.active .nav-apply{background:#fff!important;color:var(--premium-ink)!important;border:1px solid #7B878D!important}}
