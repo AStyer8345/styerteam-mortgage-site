@@ -1,0 +1,6 @@
+{
+  "pages": 10,
+  "internalLinkOccurrences": 1256,
+  "issues": [],
+  "note": "Static same-origin links and HTML fragments; external destinations and dynamic anchors outside scope."
+}

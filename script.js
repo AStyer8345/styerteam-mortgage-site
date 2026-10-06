@@ -875,14 +875,16 @@ function initTestimonialFilter() {
 
   const testimonials = document.querySelectorAll('.testimonials-grid .testimonial');
   if (!testimonials.length) return;
+  filterContainer.querySelectorAll('.testimonial-filter-btn').forEach(b => b.setAttribute('aria-pressed', String(b.classList.contains('active'))));
 
   filterContainer.addEventListener('click', (e) => {
     const btn = e.target.closest('.testimonial-filter-btn');
     if (!btn) return;
 
     // Update active button
-    filterContainer.querySelectorAll('.testimonial-filter-btn').forEach(b => b.classList.remove('active'));
+    filterContainer.querySelectorAll('.testimonial-filter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
 
     const filter = btn.dataset.filter;
 

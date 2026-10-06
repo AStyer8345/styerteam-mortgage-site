@@ -62,8 +62,10 @@
 <link rel="stylesheet" href="/experience.css">
 <link rel="stylesheet" href="/advisory-design.css?v=20260918">
 <script src="/advisory-contact.js?v=20260918" defer></script>
+<link rel="stylesheet" href="/premium-interior.css">
+<link rel="stylesheet" href="/premium-trust.css">
 </head>
-<body class="editorial-page trust-page advisory-site">
+<body class="premium-interior premium-trust premium-partner editorial-page trust-page advisory-site">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -144,7 +146,7 @@
     <section class="section" style="padding-bottom: 0;">
       <div class="container">
         <div id="realtor-filters" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
-          <button class="btn btn-sm blog-filter-btn active" data-category="all">All</button>
+          <button class="btn btn-sm blog-filter-btn active" data-category="all" aria-pressed="true">All</button>
         </div>
       </div>
     </section>
@@ -310,6 +312,7 @@
           var btn = document.createElement("button");
           btn.className = "btn btn-sm blog-filter-btn";
           btn.setAttribute("data-category", cat);
+          btn.setAttribute("aria-pressed", "false");
           btn.textContent = cat;
           filtersBar.appendChild(btn);
         });
@@ -343,8 +346,9 @@
         filtersBar.addEventListener("click", function (e) {
           var btn = e.target.closest(".blog-filter-btn");
           if (!btn) return;
-          filtersBar.querySelectorAll(".blog-filter-btn").forEach(function (b) { b.classList.remove("active"); });
+          filtersBar.querySelectorAll(".blog-filter-btn").forEach(function (b) { b.classList.remove("active"); b.setAttribute("aria-pressed", "false"); });
           btn.classList.add("active");
+          btn.setAttribute("aria-pressed", "true");
           renderPosts(btn.getAttribute("data-category"));
         });
       })
@@ -361,5 +365,6 @@
   })();
   </script>
 <script src="/experience.js" defer></script>
+<script src="/premium-navigation.js" defer></script>
 </body>
 </html>
