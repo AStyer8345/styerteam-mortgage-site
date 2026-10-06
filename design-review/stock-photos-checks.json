@@ -1,0 +1,126 @@
+[
+  {
+    "h1Count": 1,
+    "overflow": false,
+    "photos": [
+      {
+        "alt": "A light-colored home with a wraparound porch and garden",
+        "height": 248.8828125,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/porch-home-480.webp",
+        "width": 373.328125
+      },
+      {
+        "alt": "Contemporary home with broad windows and a pool",
+        "height": 248.890625,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/contemporary-home-480.webp",
+        "width": 373.3359375
+      },
+      {
+        "alt": "Modern residential exterior with a warmly lit entrance at dusk",
+        "height": 248.890625,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/rental-home-dusk-480.webp",
+        "width": 373.3359375
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "h1Count": 1,
+    "overflow": false,
+    "photos": [
+      {
+        "alt": "A light-colored home with a wraparound porch and garden",
+        "height": 224,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/porch-home-480.webp",
+        "width": 336
+      },
+      {
+        "alt": "Contemporary home with broad windows and a pool",
+        "height": 224,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/contemporary-home-480.webp",
+        "width": 336
+      },
+      {
+        "alt": "Modern residential exterior with a warmly lit entrance at dusk",
+        "height": 224,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/rental-home-dusk-480.webp",
+        "width": 336
+      }
+    ],
+    "width": 768
+  },
+  {
+    "h1Count": 1,
+    "overflow": false,
+    "photos": [
+      {
+        "alt": "A light-colored home with a wraparound porch and garden",
+        "height": 233.328125,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/porch-home-480.webp",
+        "width": 350
+      },
+      {
+        "alt": "Contemporary home with broad windows and a pool",
+        "height": 233.328125,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/contemporary-home-480.webp",
+        "width": 350
+      },
+      {
+        "alt": "Modern residential exterior with a warmly lit entrance at dusk",
+        "height": 233.328125,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/rental-home-dusk-480.webp",
+        "width": 350
+      }
+    ],
+    "width": 390
+  },
+  {
+    "h1Count": 1,
+    "overflow": false,
+    "photos": [
+      {
+        "alt": "A light-colored home with a wraparound porch and garden",
+        "height": 192,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/porch-home-480.webp",
+        "width": 288
+      },
+      {
+        "alt": "Contemporary home with broad windows and a pool",
+        "height": 192,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/contemporary-home-480.webp",
+        "width": 288
+      },
+      {
+        "alt": "Modern residential exterior with a warmly lit entrance at dusk",
+        "height": 192,
+        "loaded": true,
+        "loading": "lazy",
+        "src": "http://127.0.0.1:8767/assets/stock/rental-home-dusk-480.webp",
+        "width": 288
+      }
+    ],
+    "width": 320
+  }
+]

@@ -228,3 +228,7 @@ body.premium-homepage main .hero-subtitle{max-width:565px}
 body.premium-homepage main .modern-hero-detail{margin-bottom:0}
 @media(min-width:761px) and (max-width:1000px){body.premium-homepage main .home-hero-layout{grid-template-columns:minmax(0,1.22fr) minmax(0,1fr);gap:28px}body.premium-homepage.home-pilot main .hero h1{font-size:clamp(37px,4.8vw,48px)!important}.premium-portrait>img{height:340px}.premium-portrait figcaption{padding:14px}}
 @media(max-width:760px){body.premium-homepage main .home-hero-layout{gap:32px}.premium-portrait{margin-inline:auto;justify-self:center}body.premium-homepage main .hero-col-authority{justify-self:center}.premium-portrait .hero-signature{display:block}}
+
+/* Illustrative licensed residential photos; never presented as client properties. */
+body.premium-homepage .recovery-specialty-grid .premium-path-photo{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;margin:0 0 24px;border-radius:2px;background:var(--premium-paper)}
+@media(min-width:761px){body.premium-homepage .recovery-specialty-grid{gap:32px}body.premium-homepage .recovery-specialty-grid article{padding:28px 0}body.premium-homepage .recovery-specialty-grid article+article{border-left:0}body.premium-homepage .recovery-specialty-grid h3{min-height:2.8em}}
