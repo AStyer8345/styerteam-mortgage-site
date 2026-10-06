@@ -2,7 +2,7 @@
  'use strict';
  var dscrFields=[['price','Purchase price','$'],['down','Down payment','down'],['rate','Interest rate','%'],['years','Loan term','years'],['tax','Annual property taxes','$'],['ins','Annual insurance','$'],['hoa','Monthly HOA','$'],['rent','Monthly gross rent','$']];
  var refiFields=[['balance','Current balance','$'],['currentRate','Current rate','%'],['currentYears','Current term','years'],['newRate','New rate','%'],['newYears','New term','years'],['costs','Closing costs paid in cash','$']];
- function payment(loan,rate,years){var n=years*12;if(loan<=0||n<=0)return 0;if(rate===0)return loan/n;var r=rate/1200,p=Math.pow(1+r,n);return loan*r*p/(p-1);}
+ function payment(loan,rate,years){var n=years*12;if(loan<=0||n<=0)return 0;if(rate===0)return loan/n;var r=rate/1200;return r===0?loan/n:loan*r/-Math.expm1(-n*Math.log1p(r));}
  function calculate(inputs,kind){
   if(kind==='dscr'){var loan=inputs.price-(inputs.downMode==='pct'?inputs.price*inputs.down/100:inputs.down);var pi=payment(loan,inputs.rate,inputs.years);var pitia=pi+inputs.tax/12+inputs.ins/12+inputs.hoa;return {loan:loan,pi:pi,pitia:pitia,dscr:pitia>0?inputs.rent/pitia:0,remaining:inputs.rent-pitia};}
   var current=payment(inputs.balance,inputs.currentRate,inputs.currentYears),proposed=payment(inputs.balance,inputs.newRate,inputs.newYears),savings=current-proposed;return {current:current,proposed:proposed,savings:savings,months:savings>0?Math.ceil(inputs.costs/savings):null};

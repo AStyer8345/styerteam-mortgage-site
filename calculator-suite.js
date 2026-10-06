@@ -27,7 +27,7 @@
       var n = years * 12;
       if (principal <= 0) return 0;
       if (r === 0) return principal / n;
-      return (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      return principal * r / -Math.expm1(-n * Math.log1p(r));
     },
 
     /**

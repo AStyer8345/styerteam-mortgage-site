@@ -1,0 +1,33 @@
+[
+  {
+    "tool": "affordability",
+    "income": 12000,
+    "result": "$4,360"
+  },
+  {
+    "tool": "payment",
+    "addedMonthlyTax": 500,
+    "result": "$3,028"
+  },
+  {
+    "tool": "buydown",
+    "mode": "3-2-1",
+    "subsidy": "$17,535"
+  },
+  {
+    "tool": "wrap",
+    "rate": 0,
+    "payment": "$1,125/mo"
+  },
+  {
+    "tool": "assets",
+    "checking": 350000,
+    "income": "$31,250"
+  },
+  {
+    "tool": "refinance",
+    "newRate": "10",
+    "paymentDifference": "—",
+    "breakEven": "—"
+  }
+]

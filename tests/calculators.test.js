@@ -166,3 +166,42 @@ test('wrap calculator money inputs keep their existing comma formatting', () => 
   const wrap = fs.readFileSync('wrap-mortgage-calculator.html', 'utf8');
   assert.match(wrap, /wrap-money-input/);
 });
+
+test('shared monthlyPayment stays accurate for tiny positive rates',()=>{
+ for(const rate of [0,1e-15,1e-10,.01,6.5,20])for(const years of [15,30]){
+  let factor=0;for(let month=1;month<=years*12;month++)factor+=Math.pow(1+rate/1200,-month);
+  assert.ok(Math.abs(Suite.monthlyPayment(400000,rate,years)-400000/factor)<.000001);
+ }
+});
+// Exercise the actual standalone DSCR helpers without a second implementation.
+function dscrFunction(name){const start=dscrPage.indexOf('function '+name+'(');assert.ok(start>=0);let end=dscrPage.indexOf('{',start),depth=1;while(depth){end++;if(dscrPage[end]==='{')depth++;if(dscrPage[end]==='}')depth--;}return dscrPage.slice(start,end+1);}
+const dscrHelpers={Math,Number,Intl,isFinite,errors:{},setError(id,msg){this;dscrHelpers.errors[id]=msg;}};
+vm.createContext(dscrHelpers);vm.runInContext(['num','monthlyPI','validate'].map(dscrFunction).join('\n'),dscrHelpers);
+test('DSCR parser rejects blank, malformed, partial and nonfinite inputs',()=>{
+ for(const value of ['', ' ', '12bad', '1.2.3', 'Infinity', '1e999'])assert.ok(Number.isNaN(dscrHelpers.num({value})),value);
+ for(const [value,expected]of [['500,000',500000],['0',0],['-10',-10],['1e-15',1e-15]])assert.equal(dscrHelpers.num({value}),expected);
+});
+test('DSCR validation rejects missing costs and out-of-range rate without discarding valid zero expenses',()=>{
+ const i={price:500000,downRaw:20,downAmount:100000,rate:7.5,years:30,tax:9000,ins:2500,hoa:0,rent:3500,loan:400000};
+ assert.equal(dscrHelpers.validate(i),true);
+ for(const patch of [{tax:NaN},{hoa:NaN},{downRaw:NaN},{rate:21},{price:0},{downAmount:500001},{rent:-1}])assert.equal(dscrHelpers.validate({...i,...patch}),false);
+ assert.equal(dscrHelpers.validate({...i,tax:0,ins:0,hoa:0,rent:0,rate:0}),true);
+});
+test('inline DSCR payment matches independent amortizing payment oracle including near zero',()=>{
+ for(const rate of [0,1e-15,7.5,20])for(const years of [15,30]){let factor=0;for(let month=1;month<=years*12;month++)factor+=Math.pow(1+rate/1200,-month);assert.ok(Math.abs(dscrHelpers.monthlyPI(400000,rate,years)-400000/factor)<.000001);}
+});
+test('DSCR currency formatter preserves invalid signs/text and exact fractional input',()=>{
+ const box={document:{activeElement:null}};vm.createContext(box);vm.runInContext(dscrFunction('fmtEl'),box);
+ for(const value of ['-100','12bad','1.2.3']){const el={value};box.fmtEl(el);assert.equal(el.value,value);}
+ const el={value:'1234.567'};box.fmtEl(el);assert.equal(el.value,'1,234.567');
+});
+test('carried DSCR and refinance analysis agrees with stable on-page payments',()=>{
+ const analysis=require('../analysis.js');
+ for(const rate of [0,1e-15,7.5]){
+  const d=analysis.normalize({kind:'dscr',inputs:{price:500000,down:20,downMode:'pct',rate,years:30,tax:9000,ins:2500,hoa:0,rent:3500}});
+  assert.ok(Math.abs(d.results.pi-Suite.monthlyPayment(400000,rate,30))<.000001);
+  const r=analysis.normalize({kind:'refinance',inputs:{balance:400000,currentRate:7.5,currentYears:30,newRate:rate,newYears:30,costs:6000}});
+  assert.ok(Math.abs(r.results.proposed-Suite.monthlyPayment(400000,rate,30))<.000001);
+  assert.ok(Number.isFinite(r.results.savings));
+ }
+});

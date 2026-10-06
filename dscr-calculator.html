@@ -602,8 +602,10 @@
 <link rel="stylesheet" href="/experience.css">
 <link rel="stylesheet" href="/advisory-design.css?v=20260918">
 <script src="/advisory-contact.js?v=20260918" defer></script>
+<link rel="stylesheet" href="/premium-interior.css">
+<link rel="stylesheet" href="/premium-tools.css">
 </head>
-<body class="editorial-page calculator-page advisory-site advisory-calculator">
+<body class="editorial-page calculator-page premium-interior premium-tool advisory-site advisory-calculator">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -1038,9 +1040,11 @@
     if (!root) return;
     function $(id) { return root.querySelector("#" + id); }
     function num(el) {
-      if (!el) return 0;
-      var v = parseFloat(String(el.value).replace(/[$,]/g, ""));
-      return isFinite(v) ? v : 0;
+      if (!el) return NaN;
+      var raw = String(el.value).replace(/[$,]/g, "").trim();
+      if (!raw || !/^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i.test(raw)) return NaN;
+      var v = Number(raw);
+      return Number.isFinite(v) ? v : NaN;
     }
     var fmtCurrency = new Intl.NumberFormat("en-US", {
       style: "currency", currency: "USD", maximumFractionDigits: 0
@@ -1053,8 +1057,7 @@
       if (loan <= 0 || n <= 0) return 0;
       if (annualRatePct === 0) return loan / n;
       var r = (annualRatePct / 100) / 12;
-      var pow = Math.pow(1 + r, n);
-      return loan * (r * pow) / (pow - 1);
+      return r === 0 ? loan / n : loan * r / -Math.expm1(-n * Math.log1p(r));
     }
 
     function bandFor(ratio) {
@@ -1116,12 +1119,22 @@
     function setError(id, msg) {
       var el = $(id + "-err");
       if (el) el.textContent = msg || "";
+      var input = $(id);
+      if (input) input.setAttribute("aria-invalid", String(!!msg));
     }
     function validate(inputs) {
       var ok = true;
       setError("dscr-price", ""); setError("dscr-down", ""); setError("dscr-rate", "");
       setError("dscr-tax", ""); setError("dscr-ins", ""); setError("dscr-hoa", ""); setError("dscr-rent", "");
 
+      var fields = {price:'dscr-price', downRaw:'dscr-down', rate:'dscr-rate', tax:'dscr-tax', ins:'dscr-ins', hoa:'dscr-hoa', rent:'dscr-rent'};
+      Object.keys(fields).forEach(function(key) {
+        if (!Number.isFinite(inputs[key])) { setError(fields[key], 'Enter a complete number. Use 0 when a cost does not apply.'); ok = false; }
+      });
+      if (!ok) return false;
+      if (inputs.price === 0) { setError('dscr-price', 'Enter a purchase price greater than zero.'); ok = false; }
+      if (inputs.rate > 20) { setError('dscr-rate', 'Enter a rate from 0 to 20%.'); ok = false; }
+      if (![15,30].includes(inputs.years)) ok = false;
       if (inputs.price < 0) { setError("dscr-price", "Purchase price cannot be negative."); ok = false; }
       if (inputs.rate < 0)  { setError("dscr-rate",  "Interest rate cannot be negative."); ok = false; }
       if (inputs.tax < 0)   { setError("dscr-tax",   "Taxes cannot be negative."); ok = false; }
@@ -1179,7 +1192,7 @@
       var valid = validate(inputs);
 
       // Live "loan amount" helper text
-      loanAmtEl.textContent = $currency(loan);
+      loanAmtEl.textContent = valid ? $currency(loan) : "—";
 
       if (!valid) {
         setInvalidState();
@@ -1236,6 +1249,7 @@
       if (mode === downMode) return;
       var price = num(priceEl);
       var current = num(downEl);
+      if (!Number.isFinite(price) || !Number.isFinite(current)) { compute(); return; }
       downMode = mode;
       pctBtn.classList.toggle("is-active", mode === "pct");
       dollarBtn.classList.toggle("is-active", mode === "dollar");
@@ -1334,11 +1348,13 @@ window.styerMoney = (function () {
   function fmtEl(el) {
     if (!el) return;
     var s = el.value;
-    var c = String(s).replace(/[^0-9.]/g, '');
+    var c = String(s).replace(/[$,]/g, '').trim();
+    // Never turn malformed or negative input into a different valid amount.
+    if (!/^\d*(?:\.\d*)?$/.test(c)) return;
     if (c === '') { if (s !== '') el.value = ''; return; }
     var dot = c.indexOf('.');
     var intp = dot === -1 ? c : c.slice(0, dot);
-    var frac = dot === -1 ? '' : '.' + c.slice(dot + 1).replace(/\./g, '').slice(0, 2);
+    var frac = dot === -1 ? '' : '.' + c.slice(dot + 1);
     var out = (intp ? Number(intp).toLocaleString('en-US') : '0') + frac;
     if (out === s) return;
     var fromEnd = s.length - (el.selectionStart == null ? s.length : el.selectionStart);
@@ -1365,5 +1381,6 @@ window.styerMoney.attach(["dscr-price", "dscr-down", "dscr-tax", "dscr-ins", "ds
 <script src="/experience.js" defer></script>
 <script src="/analysis.js" defer></script>
 <script src="/calculator-journey.js" defer></script>
+<script src="/premium-navigation.js" defer></script>
 </body>
 </html>
