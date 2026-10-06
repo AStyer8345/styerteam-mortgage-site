@@ -94,11 +94,15 @@ test('homepage planning examples preserve paths to specialist financing', () => 
   assert.match(homepage, /Composite scenarios based on files Adam has closed/);
 });
 
-test('homepage reviews move directly below case studies with compact spacing', () => {
+test('premium homepage renders proof, tools and attributed reviews in a stable order', () => {
   const homepage = fs.readFileSync('index.html', 'utf8');
-
-  assert.match(homepage, /id="case-studies"/);
-  assert.match(homepage, /class="home-reviews-section" id="client-reviews"/);
-  assert.match(homepage, /caseStudies\.insertAdjacentElement\('afterend', reviews\)/);
-  assert.match(stylesheet, /\.home-pilot \.home-reviews-section\{padding:clamp\(3rem,4\.5vw,4\.5rem\) 0\}/);
+  const programs = homepage.indexOf('id="case-studies"');
+  const scenarios = homepage.indexOf('id="bank-said-no"');
+  const tools = homepage.indexOf('id="homepage-tools"');
+  const reviews = homepage.indexOf('id="client-reviews"');
+  const contact = homepage.indexOf('<section class="premium-contact">');
+  assert.ok(programs > 0 && programs < scenarios && scenarios < tools && tools < reviews && reviews < contact);
+  assert.doesNotMatch(homepage, /caseStudies\.insertAdjacentElement/);
+  assert.equal((homepage.match(/class="testimonial-marquee-card"/g) || []).length, 6);
+  assert.doesNotMatch(homepage, /class="testimonial-marquee-wrap is-ticker"/);
 });

@@ -114,14 +114,17 @@ test('pre-approval guide routes pre-approval and application CTAs by intent', ()
   assert.doesNotMatch(preapprovalGuide, /register\?time=[^"']*\?time=/);
 });
 
-test('homepage hero uses Adam’s existing photograph and retains the direct inquiry', () => {
-  const hero = homepage.match(/<section class="hero">([\s\S]*?)<\/section>/)?.[1] || '';
-  assert.match(hero, /<img[^>]*src="\/assets\/adam-(?:cutout|casual-avatar)\.webp"/);
-  assert.doesNotMatch(hero, /<picture/);
+test('premium homepage uses the authentic photo and preserves the direct inquiry contract', () => {
+  const hero = homepage.match(/<section class="hero"[^>]*>([\s\S]*?)<\/section>/)?.[1] || '';
+  assert.match(hero, /<img[^>]*src="\/assets\/adam-cutout-900\.webp"/);
+  assert.match(hero, /href="#contact-form"[^>]*data-track="scenario_review_click"/);
+  assert.match(homepage, /<aside[^>]*id="contact-form"[^>]*tabindex="-1"/);
+  assert.match(homepage, /<form name="contact"[^>]*id="form-homepage-contact"/);
+  assert.match(homepage, /name="tcpa_consent" required/);
   assert.match(homepage, /class="hero-glass-card home-hero-layout"/);
-  assert.match(homepage, /\.home-pilot \.hero\{[^}]*background-image:none/);
-  assert.match(hero, /id="form-homepage-contact"/);
-  assert.match(fs.readFileSync('modern-homepage.css', 'utf8'), /width:144px;height:160px/);
+  const css = fs.readFileSync('premium-homepage.css', 'utf8');
+  assert.match(css, /\.premium-portrait>img\{[^}]*object-fit:contain/);
+  assert.match(css, /body\.premium-homepage\.home-pilot main \.hero-cta-btn\{display:inline-flex!important/);
 });
 
 test('scenario page puts the short conversion form first and keeps the secure portal secondary', () => {

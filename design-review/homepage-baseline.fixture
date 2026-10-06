@@ -59,12 +59,76 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
 
   <!-- Critical CSS — inlined for instant first paint (hero + header + nav) -->
-
+  <style>
+    :root{--color-navy:#0A1F3F;--color-gold:#8B6E24;--color-white:#FFFFFF;--color-light-gray:#F7F7F7;--color-gray:#6B7280;--color-text:#1F2937;--color-text-muted:#6B7280;--color-border:#E5E7EB;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--font-display:var(--font-display,'Source Serif 4',Georgia,serif);--font-size-xs:0.75rem;--font-size-sm:0.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:clamp(1.125rem,1.05rem + 0.3vw,1.25rem);--font-size-2xl:clamp(1.25rem,1.1rem + 0.6vw,1.5rem);--font-size-3xl:clamp(1.5rem,1.2rem + 1.2vw,1.875rem);--font-size-5xl:clamp(1.9rem,1.35rem + 2.1vw,2.7rem);--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--line-height-tight:1.2;--spacing-xs:0.25rem;--spacing-sm:0.5rem;--spacing-md:1rem;--spacing-lg:1.5rem;--spacing-xl:2rem;--spacing-2xl:2.5rem;--spacing-3xl:3rem;--radius-sm:0.375rem;--radius-lg:0.75rem;--radius-2xl:1.5rem;--shadow-md:0 4px 6px -1px rgba(0,0,0,0.1);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1);--transition-fast:150ms ease-in-out;--transition-base:200ms ease-in-out;--z-dropdown:1000}
+    *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--font-primary);font-size:var(--font-size-base);line-height:1.75;color:var(--color-text);background-color:var(--color-white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,h4,h5,h6{font-family:var(--font-display);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight);color:var(--color-navy);margin-bottom:var(--spacing-md);text-wrap:balance}h1{font-size:var(--font-size-5xl)}
+    a{color:var(--color-gold);text-decoration:none;transition:color var(--transition-fast)}img{max-width:100%;height:auto;display:block}
+    .container{width:100%;max-width:1280px;margin:0 auto;padding:0 var(--spacing-lg)}section{padding:clamp(5rem,7vw,7.5rem) 0}
+    .skip-link{position:absolute;top:-40px;left:0;background:var(--color-navy);color:var(--color-white);padding:var(--spacing-md);text-decoration:none;border-radius:var(--radius-lg);z-index:100}.skip-link:focus{top:var(--spacing-lg)}
+    header{background-color:var(--color-white);border-bottom:1px solid var(--color-border);position:sticky;top:0;z-index:100;transition:box-shadow var(--transition-fast)}header.scrolled{box-shadow:var(--shadow-md);background-color:rgba(255,255,255,0.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%)}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:var(--spacing-lg) 0}
+    .nav-brand{display:flex;align-items:center;gap:var(--spacing-md);font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);color:var(--color-navy);text-decoration:none}.nav-logo-img{height:90px;width:auto}
+    .nav-links{display:flex;gap:var(--spacing-md);list-style:none;align-items:center}.nav-links a{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--color-text);text-decoration:none}
+    .nav-cta{background-color:#3F2F0F;color:var(--color-white)!important;padding:var(--spacing-sm) var(--spacing-lg);border-radius:var(--radius-lg);font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);white-space:nowrap}
+    .nav-has-dropdown{position:relative}.nav-dropdown{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--color-white);border-top:2px solid var(--color-gold);border-radius:0 0 0.5rem 0.5rem;box-shadow:var(--shadow-lg);list-style:none;min-width:190px;z-index:var(--z-dropdown);padding:var(--spacing-xs) 0}
+    .mobile-menu-toggle{display:none;flex-direction:column;gap:var(--spacing-xs);background:none;border:none;cursor:pointer;padding:var(--spacing-md)}.mobile-menu-toggle span{width:24px;height:3px;background-color:var(--color-navy);border-radius:var(--radius-sm)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--spacing-sm);padding:var(--spacing-md) var(--spacing-xl);font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);border-radius:var(--radius-lg);transition:background-color var(--transition-base),color var(--transition-base),box-shadow var(--transition-base),border-color var(--transition-base),opacity var(--transition-base);text-decoration:none;border:2px solid transparent;cursor:pointer}
+    .btn-primary{background-color:#F2C840;color:#0D1F3C;position:relative;overflow:hidden}.btn-hero-ghost{background-color:transparent;color:var(--color-navy);border:1px solid rgba(10,31,63,.45)}.btn-hero-ghost:hover{background-color:rgba(10,31,63,.06)}
+    .hero{position:relative;width:100%;height:auto;min-height:0;display:block;overflow:hidden;color:var(--color-text);background:#f3f0e8;padding:clamp(3.5rem,6vw,5.5rem) 0}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.4),transparent 55%);pointer-events:none}
+    .hero>.container{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding-top:0;padding-bottom:0}
+    .hero-glass-card{max-width:none;width:100%;padding:0;position:relative}
+    .home-hero-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.75fr);gap:clamp(2.5rem,6vw,5.25rem);align-items:center}
+    .hero-col-authority{display:flex;flex-direction:column;align-items:flex-start;gap:0}.hero-authority-inner{max-width:620px;margin-bottom:1.25rem}
+    .hero-eyebrow{margin:0 0 .75rem;color:#F2C840;font-family:var(--font-primary);font-size:.76rem;font-weight:700;letter-spacing:.11em;line-height:1.4;text-transform:uppercase}
+    .hero h1{color:var(--color-navy);font-size:clamp(2.5rem,4.4vw,4.35rem);line-height:1.02;letter-spacing:-.035em;margin:0 0 1.15rem;max-width:700px}
+    .hero-subtitle{font-size:clamp(1rem,1.15vw,1.12rem);color:#536172;line-height:1.65;margin-bottom:1.45rem;max-width:650px}
+    .hero-rating-chip{display:inline-flex;align-items:center;gap:0.45rem;background:transparent;border:0;border-left:2px solid #B99642;color:var(--color-navy);font-size:0.78rem;font-weight:600;padding:.15rem 0 .15rem .7rem;border-radius:0;margin-bottom:1rem;letter-spacing:0.01em;max-width:100%}
+    .hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;justify-content:flex-start;margin-bottom:.7rem}
+    .hero-cta-btn{width:auto;min-width:190px;min-height:50px;font-size:.875rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:.8rem 1.25rem;border-radius:.7rem}
+    .hero-call-link{margin:0;font-size:var(--font-size-sm)}.hero-call-link-a{display:inline-flex;align-items:center;gap:0.35rem;color:#536172;text-decoration:none}
+    .hero-legal{font-size:0.72rem;color:#7a8490;margin-top:0.85rem;letter-spacing:0.02em}
+    .hero-form-trust{margin-top:.85rem;font-size:.82rem;line-height:1.5;color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.5);text-align:left}
+    .form-trust-line{margin-top:.75rem;font-size:.82rem;color:var(--color-gray);text-align:center;line-height:1.4}
+    .hero-gradient-text{background:linear-gradient(135deg,#ffffff 0%,#f0e6c8 40%,#d4b254 70%,#ffffff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .star-svg{display:inline-block;flex-shrink:0}
+    @media(max-width:900px){.home-hero-layout{grid-template-columns:1fr}.home-hero-panel{max-width:700px}}
+    @media(max-width:768px){:root{--font-size-3xl:1.5rem;--spacing-3xl:3rem}html{font-size:15px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background-color:var(--color-white);border-top:1px solid var(--color-border);padding:var(--spacing-lg) 0;z-index:var(--z-dropdown)}.nav-links.active{display:flex}.nav-links a{display:block;padding:var(--spacing-md) var(--spacing-lg)}.nav-cta{display:none}.mobile-menu-toggle{display:flex}.nav-logo-img{height:55px}h1{font-size:var(--font-size-3xl)}section{padding:var(--spacing-3xl) 0}.hero{padding:2.75rem 0}.hero h1{font-size:clamp(2.25rem,10vw,3.15rem);line-height:1.02}.hero>.container{margin-left:auto;margin-right:auto}.hero-col-authority{align-items:flex-start;text-align:left}.hero-authority-inner{max-width:100%}.hero-ctas{justify-content:flex-start;flex-direction:column;width:100%}.hero-cta-btn{width:100%;max-width:none}.hero-glass-card{max-width:100%;padding:0;overflow:visible;background:none}.hero-rating-chip{white-space:normal;text-align:left;justify-content:flex-start}.hero-eyebrow{text-align:left;font-size:.68rem}.btn{padding:var(--spacing-md) var(--spacing-lg);font-size:var(--font-size-xs)}.container{padding:0 var(--spacing-lg)}}
+  </style>
   <!-- Full stylesheet — loads async, applies after critical CSS is already painted -->
   <link rel="preload" href="style.css?v=20260830-reviews1" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="style.css?v=20260830-reviews1"></noscript>
   <link rel="stylesheet" href="/editorial-system.css?v=20260829">
-
+  <style>
+    /* Latest pilot-specific homepage refinements remain authoritative. */
+    .home-pilot .hero{height:auto;min-height:0;max-height:none;display:block;overflow:hidden;color:var(--color-text);background:#f3f0e8;background-image:none;padding:clamp(3.5rem,6vw,5.5rem) 0}
+    .home-pilot .hero::before{background:linear-gradient(90deg,rgba(255,255,255,.4),transparent 55%);z-index:1}
+    .home-pilot .hero>.container{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding-top:0;padding-bottom:0}
+    .home-pilot .hero-glass-card{max-width:none;width:100%;padding:0;background:none;box-shadow:none;backdrop-filter:none;border:0;overflow:visible}
+    .home-pilot .home-hero-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.75fr);gap:clamp(2.5rem,6vw,5.25rem);align-items:center}
+    .home-pilot .hero-col-authority{align-items:flex-start;text-align:left}
+    .home-pilot .hero h1{color:var(--color-navy);font-size:clamp(2.5rem,4.4vw,4.35rem);line-height:1.02;letter-spacing:-.035em;margin:0 0 1.15rem;max-width:700px;text-shadow:none}
+    .home-pilot .hero-subtitle{font-size:clamp(1rem,1.15vw,1.12rem);color:#536172;line-height:1.65;margin-bottom:1.45rem;max-width:650px;text-shadow:none}
+    .home-pilot .hero-rating-chip{background:transparent;border:0;border-left:2px solid #B99642;color:var(--color-navy);padding:.15rem 0 .15rem .7rem;border-radius:0;margin-bottom:1rem}
+    .home-pilot .hero-eyebrow{color:#7A5F1F}
+    .home-pilot .btn-hero-ghost{background:transparent;color:var(--color-navy);border:1px solid rgba(10,31,63,.45)}
+    .home-pilot .hero-call-link-a{color:#536172}
+    .home-pilot .hero-legal{color:#7a8490}
+    .home-pilot>header{background:#0d2342;border-bottom:1px solid rgba(209,181,104,.4);box-shadow:0 5px 18px rgba(13,35,66,.12)}
+    .home-pilot>header .nav-links>li>a:not(.nav-cta){color:#fff}
+    .home-pilot>header .nav-links>li>a:not(.nav-cta):hover{color:#e5ca7c}
+    .home-pilot>header .nav-cta{background:#d1b568;color:#0d2342}
+    .home-pilot>header .nav-cta:hover{background:#e0c77f;color:#0d2342}
+    .home-pilot>header .mobile-menu-toggle span{background:#fff}
+    .home-pilot>header .nav-dropdown a{color:#0d1f3c}
+    .home-pilot>header .nav-dropdown a:hover{color:#7a5f1f}
+    .home-pilot .home-service-area{padding:1.5rem 0;border-top:1px solid #dce1e9;border-bottom:1px solid #dce1e9}
+    .home-pilot .home-service-area p{margin:0;text-align:center;font-size:.95rem;line-height:1.8}
+    .home-pilot .home-service-area a{display:inline-block;margin-left:.5rem}
+    @media(max-width:900px){.home-pilot .home-hero-layout{grid-template-columns:1fr}.home-pilot .home-hero-panel{max-width:700px}}
+    @media(max-width:768px){.home-pilot .hero{padding:2.75rem 0}.home-pilot .hero h1{font-size:clamp(2.25rem,10vw,3.15rem)}.home-pilot .hero-ctas{align-items:stretch}.home-pilot .hero-cta-btn{width:100%;max-width:none}.home-pilot>header .nav-links.active{background:#fff}.home-pilot>header .nav-links.active>li>a:not(.nav-cta){color:#0d1f3c}.home-pilot>header .nav-links.active .nav-cta{margin:.5rem 1rem}}
+  </style>
 
   <!-- Schema.org LocalBusiness -->
   <script type="application/ld+json">
@@ -284,19 +348,48 @@
   <!-- Homepage surface tuning: deepen the light bands so the page isn't a white wash,
        and give white cards a real edge so they read as distinct surfaces.
        Scoped to the homepage; double-class selectors win over the async global sheet. -->
-
+  <style>
+    section.bg-light { background-color: #f6f3ed; }
+    .card.card { border: 1px solid #DCE1E9; }
+    .testimonial-marquee-card.testimonial-marquee-card { border: 1px solid #DCE1E9; }
+    .quick-contact-card.quick-contact-card { background: var(--color-white); border: 1px solid #DCE1E9; }
+  </style>
 <link rel="stylesheet" href="/experience.css">
 <link rel="stylesheet" href="/situation-journeys.css?v=20260915">
 
 <link rel="stylesheet" href="/conversation.css?v=20260913">
   <link rel="stylesheet" href="/review-proof.css?v=20260913">
+
+<style>
+body.home-pilot main .hero{padding:2.5rem 0}
+body.home-pilot main .home-hero-layout{grid-template-columns:minmax(0,1.15fr) minmax(400px,1fr);gap:3rem;align-items:start}
+body.home-pilot main .home-conversation.journey-card{padding:1.25rem;box-shadow:0 8px 28px #1024400d}
+body.home-pilot main .home-conversation h2{font-size:1.35rem!important;line-height:1.2;margin:0 0 .4rem;max-width:none;text-wrap:initial}
+body.home-pilot main .home-conversation>.journey-form-intro{font-size:.875rem;line-height:1.45;margin:0 0 .8rem}
+body.home-pilot main .home-conversation .journey-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem .75rem}
+body.home-pilot main .home-conversation .journey-field{gap:.25rem}
+body.home-pilot main .home-conversation .journey-field label{font-size:.8125rem;line-height:1.4;min-height:0!important}
+body.home-pilot main .home-conversation .journey-field input{min-height:42px;padding:.5rem .65rem}
+body.home-pilot main .home-conversation .journey-field textarea{height:66px;min-height:66px;padding:.5rem .65rem}
+body.home-pilot main .home-conversation .journey-field .journey-hint{font-size:.75rem;line-height:1.35;margin:0}
+body.home-pilot main .home-conversation .journey-consent{font-size:.8125rem!important;line-height:1.4!important;margin:.75rem 0;padding:0;gap:.5rem}
+body.home-pilot main .home-conversation .journey-submit{min-height:44px;margin:0;padding:.65rem 1rem}
+body.home-pilot main .home-conversation>.journey-hint{font-size:.75rem;line-height:1.4;margin:.5rem 0 0}
+body.home-pilot main .home-conversation>.home-conversation-programs{font-size:.8125rem;line-height:1.4;margin:.5rem 0 0}
+body.home-pilot main .home-conversation-programs a{min-height:32px}
+.home-conversation .conversation-legend{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.home-conversation [hidden]{display:none!important}
+body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.75rem;padding-top:.75rem}
+@media(max-width:900px){body.home-pilot main .home-hero-layout{grid-template-columns:1fr;gap:1.5rem}body.home-pilot main .hero{padding:1.75rem 0}}
+@media(max-width:600px){body.home-pilot main .home-conversation .journey-fields{grid-template-columns:1fr}}
+</style>
+  <link rel="stylesheet" href="/modern-homepage.css?v=20261002">
 <link rel="stylesheet" href="/advisory-design.css?v=20260918">
 <script src="/advisory-contact.js?v=20260918" defer></script>
-<link rel="stylesheet" href="/premium-homepage.css?v=20261006">
-<script src="/calculator-suite.js" defer></script>
-<script src="/premium-homepage.js?v=20261006" defer></script>
-</head>
-<body class="editorial-page home-pilot advisory-site premium-homepage">
+<style>
+.recovery-specialty-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}.recovery-specialty-grid article{padding:1.5rem;border:1px solid #dbe3eb;border-radius:16px;background:#fff}.recovery-specialty-grid h3{font-size:1.25rem;margin-bottom:.75rem}.recovery-specialty-grid article>p{margin:.75rem 0}.recovery-specialty-grid a{color:#163c64;font-weight:600}.recovery-specialty-grid+p{margin-top:1.5rem}@media(max-width:768px){.recovery-specialty-grid{grid-template-columns:1fr}}
+</style></head>
+<body class="editorial-page home-pilot advisory-site">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -331,7 +424,9 @@
     </div>
   </header>
 
-  <main id="main"><section class="hero" aria-label="Mortgage guidance from Adam Styer">
+  <main id="main">
+    <!-- HERO SECTION -->
+    <section class="hero">
       <div class="container">
         <div class="hero-glass-card home-hero-layout">
           <div class="hero-col hero-col-authority">
@@ -352,29 +447,70 @@
               <div class="hero-signature"><img src="/assets/adam-casual-avatar.webp" width="400" height="400" alt="Adam Styer" decoding="async"><p><strong>Adam Styer</strong> · Senior Loan Officer<br><span>NMLS #513013 · Company NMLS #2653540</span></p></div>
           </div>
 
-          <figure class="premium-portrait"><img src="/assets/adam-cutout-900.webp" width="900" height="900" alt="Adam Styer, Austin mortgage broker and Senior Loan Officer" fetchpriority="high" decoding="async"><figcaption><strong>Adam Styer</strong><span>Senior Loan Officer · NMLS #513013</span></figcaption></figure>
+          <aside class="home-conversation journey-card" id="contact-form" tabindex="-1" aria-labelledby="home-conversation-title">
+            <h2 id="home-conversation-title">What are you planning?</h2>
+            <p class="journey-form-intro">Choose your goal. I’ll help you explore the next step.</p>
+<form name="contact" method="POST" action="/contact-thank-you.html" data-netlify="true" netlify-honeypot="bot-field" id="form-homepage-contact" class="journey-form" data-journey="general" data-journey-mode="conversation">
+              <input type="hidden" name="form-name" value="contact">
+              <input type="hidden" name="inquiry_id" value="">
+              <input type="hidden" name="test_mode" value="false">
+              <input type="hidden" name="intent" value="general">
+              <input type="hidden" name="situation" value="">
+        <input type="hidden" name="utm_source" value="">
+<input type="hidden" name="utm_medium" value="">
+<input type="hidden" name="utm_campaign" value="">
+<input type="hidden" name="utm_term" value="">
+<input type="hidden" name="utm_content" value="">
+<input type="hidden" name="page_url" value="">
+<input type="hidden" name="entry_referrer" value="">
+<input type="hidden" name="first_touch_page" value="">
+<input type="hidden" name="first_touch_referrer" value="">
+<input type="hidden" name="first_touch_at" value="">
+<input type="hidden" name="first_touch_source" value="">
+<input type="hidden" name="first_touch_utm_source" value="">
+<input type="hidden" name="first_touch_utm_medium" value="">
+<input type="hidden" name="first_touch_utm_campaign" value="">
+<input type="hidden" name="first_touch_utm_term" value="">
+<input type="hidden" name="first_touch_utm_content" value="">
+<input type="hidden" name="source" value="homepage_options">
+<input type="hidden" name="cta_source_page" value="https://styermortgage.com/">
+<input type="hidden" name="cta_label" value="See My Options">
+
+              <p hidden aria-hidden="true"><label>Leave this blank<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+              <p class="journey-progress" hidden>Your message</p>
+              <fieldset data-journey-step="2"><legend class="conversation-legend">Your financing goal and contact details</legend>
+                <div class="journey-fields">
+                  <div class="journey-field journey-full"><label for="loan-goal">I’m looking to… *</label><select id="loan-goal" name="loan_goal" required><option value="">Choose a financing goal</option><option value="Purchase">Buy a home</option><option value="Refinance">Refinance</option><option value="Invest">Finance an investment property</option><option value="Access equity">Access home equity</option><option value="Explore options">Explore my options</option></select></div>
+                  <div class="journey-field journey-full"><label for="name">Your name *</label><input type="text" id="name" name="name" required autocomplete="name" maxlength="160"></div>
+                  <div class="journey-field"><label for="email">Email *</label><input type="email" id="email" name="email" required autocomplete="email" maxlength="160"></div>
+                  <div class="journey-field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="30"></div>
+                  <div class="journey-field journey-full"><label for="message">Anything you’d like me to know? (optional)</label><textarea id="message" name="message" rows="2" maxlength="2000" aria-describedby="message-hint" placeholder="Share a question or a little about your plans…"></textarea><p class="journey-hint" id="message-hint">Please leave out sensitive financial information.</p></div>
+                  <input type="hidden" name="preferred_follow_up" value="">
+                </div>
+                <div class="journey-field journey-full form-group self-reported-source-field"><label for="contact-heard-about">How did you first hear about Adam? (optional)</label><select id="contact-heard-about" name="self_reported_source"><option value="">Choose if you remember</option><option value="ChatGPT">ChatGPT</option><option value="Gemini">Gemini</option><option value="Other AI assistant">Other AI assistant</option><option value="Google Search">Google Search</option><option value="Referral">Referral</option><option value="Other / not sure">Other / not sure</option></select></div>
+<label class="journey-consent"><input type="checkbox" name="tcpa_consent" required><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
+                <button type="submit" class="journey-button journey-submit">See My Options</button>
+              </fieldset>
+              <div class="journey-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></div>
+            </form>
+            <p class="journey-hint">Adam replies personally, usually within one business day. No application, no credit pull. <a href="/privacy.html">Privacy</a></p>
+          </aside>
         </div>
       </div>
     </section>
-<section class="proof-band" aria-label="Track record">
+
+    <!-- SOCIAL PROOF STATS STRIP -->
+    <section class="proof-band" aria-label="Track record">
       <div class="container">
         <div class="proof-band-grid">
-          <div class="proof-stat"><span class="proof-num">1,000+</span><span class="proof-label">Loans closed</span></div>
-          <a class="proof-stat" href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener"><span class="proof-num">5.0 ★</span><span class="proof-label">Google · 99 reviews</span></a>
-          <a class="proof-stat" href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener"><span class="proof-num">4.98 ★</span><span class="proof-label">Zillow · 45 reviews</span></a>
-          <div class="proof-stat"><span class="proof-num">40+</span><span class="proof-label">Capital partners</span></div>
+          <div class="proof-stat"><span class="proof-num" data-count="1000" data-suffix="+">1,000+</span><span class="proof-label">Loans closed</span></div>
+          <a class="proof-stat" href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener"><span class="proof-num" data-count="5.0" data-decimals="1" data-suffix=" ★">5.0 ★</span><span class="proof-label">Google · 99 reviews</span></a>
+          <a class="proof-stat" href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener"><span class="proof-num" data-count="4.98" data-decimals="2" data-suffix=" ★">4.98 ★</span><span class="proof-label">Zillow · 45 reviews</span></a>
+          <div class="proof-stat"><span class="proof-num" data-count="40" data-suffix="+">40+</span><span class="proof-label">Capital partners</span></div>
         </div>
       </div>
     </section>
-<section class="modern-goals home-index" id="case-studies" aria-labelledby="modern-goals-title"><div class="container" id="mortgage-programs">
-<div class="modern-section-heading"><h2 id="modern-goals-title">A mortgage that fits your financial picture.</h2></div>
-<div class="modern-goal-grid recovery-specialty-grid">
-<article><h3>Business owners &amp; self-employed</h3><p>Compare tax returns, eligible deposits, 1099 income and P&amp;L documentation.</p><ul class="goal-links"><li><a href="/bank-statement-loans.html">Bank statement loans</a></li><li><a href="/self-employed-mortgage-austin.html">Self-employed mortgages</a></li><li><a href="/mortgage-for-business-owners-austin.html">Business-owner financing</a></li></ul></article>
-<article><h3>Substantial assets &amp; complex income</h3><p>Finance your home with a review of eligible investments, retirement assets and income.</p><ul class="goal-links"><li><a href="/high-net-worth-mortgage.html">High-net-worth mortgages</a></li><li><a href="/asset-depletion-mortgage-texas.html">Asset-based qualification</a></li><li><a href="/loans/jumbo.html">Jumbo loans</a></li></ul></article>
-<article><h3>Real estate investors</h3><p>Use property rental income to review purchase, refinance and cash-out financing.</p><ul class="goal-links"><li><a href="/dscr-loan-austin-tx.html">Austin DSCR loans</a></li><li><a href="/investor-loans.html">Investor financing</a></li><li><a href="/dscr-calculator.html">DSCR calculator</a></li></ul></article>
-</div><p class="text-center">Buying a home or refinancing with traditional income? <a href="/products.html">See all mortgage options</a>. <a href="/home-equity-loans-texas.html">Compare home equity financing</a> · <a href="/buy-before-you-sell-austin.html">Buying before you sell</a>.</p>
-</div></section>
-<section class="said-no" id="bank-said-no" aria-labelledby="said-no-title">
+    <section class="said-no" id="bank-said-no" aria-labelledby="said-no-title">
       <div class="container">
         <p class="said-no-kicker">Real files · Austin</p>
         <h2 id="said-no-title">Mortgages your bank said no to.</h2>
@@ -406,8 +542,28 @@
         <p class="said-no-cta"><a class="btn btn-primary" href="#contact-form" data-track="scenario_review_click" data-source="homepage_said_no">See My Options</a> <a href="/scenarios.html">More real scenarios →</a></p>
       </div>
     </section>
-<section class="premium-tools" id="homepage-tools" aria-labelledby="homepage-tools-title"><div class="container premium-tools-grid"><div><p class="premium-eyebrow">Clarity before commitment</p><h2 id="homepage-tools-title">Make the numbers<br>make sense.</h2><p class="premium-lead">Explore the payment, qualifying income, and financing tradeoffs before deciding on your next step.</p><div class="premium-tool-links"><a href="/calculator-payment.html">Mortgage payment calculator <span aria-hidden="true">↗</span></a><a href="/dscr-calculator.html">DSCR investment calculator <span aria-hidden="true">↗</span></a><a href="/asset-depletion-calculator.html">Asset-based qualification calculator <span aria-hidden="true">↗</span></a><a href="/rate-check.html">Compare a mortgage offer <span aria-hidden="true">↗</span></a></div></div><div class="premium-payment"><div class="premium-payment-heading"><h3>Payment at a glance</h3><span>Illustrative estimate</span></div><div class="premium-payment-fields"><div><label for="home-loan">Loan amount ($)</label><input id="home-loan" type="number" min="1" max="100000000" step="any" value="400000" inputmode="decimal"></div><div><label for="home-rate">Interest rate (%)</label><input id="home-rate" type="number" min="0" max="30" step="any" value="6.5" inputmode="decimal"></div><div><label for="home-term">Loan term</label><select id="home-term"><option value="30">30 years</option><option value="15">15 years</option><option value="20">20 years</option></select></div></div><p class="premium-payment-error" id="home-payment-error" role="status" hidden>Enter a loan amount above zero and an interest rate from 0% to 30%.</p><div class="premium-payment-result" aria-live="polite" aria-atomic="true"><span>Estimated principal &amp; interest</span><strong id="home-payment-output">$2,528<span> / month</span></strong></div><p class="premium-payment-note">Principal and interest only. Taxes, insurance, HOA dues, mortgage insurance, and fees are excluded. Example rate is not a quote or an offer to lend.</p><a href="/calculator-payment.html" class="premium-tool-detail">Add taxes &amp; insurance in the full calculator →</a></div></div></section>
-<section class="home-reviews-section" id="client-reviews">
+
+    <section class="modern-goals home-index" id="case-studies" aria-labelledby="modern-goals-title"><div class="container" id="mortgage-programs">
+<div class="modern-section-heading"><h2 id="modern-goals-title">A mortgage that fits your financial picture.</h2></div>
+<div class="modern-goal-grid recovery-specialty-grid">
+<article><h3>Business owners &amp; self-employed</h3><p>Compare tax returns, eligible deposits, 1099 income and P&amp;L documentation.</p><ul class="goal-links"><li><a href="/bank-statement-loans.html">Bank statement loans</a></li><li><a href="/self-employed-mortgage-austin.html">Self-employed mortgages</a></li><li><a href="/mortgage-for-business-owners-austin.html">Business-owner financing</a></li></ul></article>
+<article><h3>Substantial assets &amp; complex income</h3><p>Finance your home with a review of eligible investments, retirement assets and income.</p><ul class="goal-links"><li><a href="/high-net-worth-mortgage.html">High-net-worth mortgages</a></li><li><a href="/asset-depletion-mortgage-texas.html">Asset-based qualification</a></li><li><a href="/loans/jumbo.html">Jumbo loans</a></li></ul></article>
+<article><h3>Real estate investors</h3><p>Use property rental income to review purchase, refinance and cash-out financing.</p><ul class="goal-links"><li><a href="/dscr-loan-austin-tx.html">Austin DSCR loans</a></li><li><a href="/investor-loans.html">Investor financing</a></li><li><a href="/dscr-calculator.html">DSCR calculator</a></li></ul></article>
+</div><p class="text-center">Buying a home or refinancing with traditional income? <a href="/products.html">See all mortgage options</a>. <a href="/home-equity-loans-texas.html">Compare home equity financing</a> · <a href="/buy-before-you-sell-austin.html">Buying before you sell</a>.</p>
+</div></section>
+
+    <!-- LOAN PROGRAMS PREVIEW -->
+
+
+
+
+
+
+    <!-- QUICK CONTACT (Smart Form) -->
+
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="home-reviews-section" id="client-reviews">
       <div class="container">
         <h2 class="text-center mb-xl">Client and Partner Reviews</h2>
         <div class="review-aggregate-bar">
@@ -434,7 +590,7 @@
           </a>
         </div>
 
-        <div class="testimonial-marquee-wrap" aria-label="Client reviews">
+        <div class="testimonial-marquee-wrap is-ticker" aria-label="Client reviews">
                     <div class="testimonial-marquee-track">
             <!-- Latest Google Review - Mary Cairnie -->
             <div class="testimonial-marquee-card">
@@ -533,12 +689,45 @@
 </div>
             <!-- Duplicate set for seamless infinite scroll -->
             <!-- Duplicate - Mary Cairnie -->
-
-
-
-
-
-
+            <div class="testimonial-marquee-card" aria-hidden="true">
+              <div class="stars" role="img" aria-label="5 out of 5 stars">
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+              </div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam came highly recommended and he was exceptional to work with! He was incredibly responsive and helpful throughout the entire mortgage process."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">M</div>
+                <div><strong style="font-size:0.85rem;">Mary Cairnie</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Google &bull; 5 Stars</span></div>
+              </div>
+            </div>
+            <div class="testimonial-marquee-card" aria-hidden="true">
+              <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">“I am self-employed and my loan was not straight forward. Adam worked with me weekly and sometimes daily to get all of the documents I needed.”</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">S</div><div><strong style="font-size:0.85rem;">Sherita Steffe</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Google &bull; Self-employed</span></div></div>
+            </div>
+            <div class="testimonial-marquee-card" aria-hidden="true">
+              <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">“I’m self-employed and when other lenders declined to underwrite a mortgage, Adam saved the day!”</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">E</div><div><strong style="font-size:0.85rem;">Ellery Wren</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Google &bull; Non-QM</span></div></div>
+            </div>
+            <div class="testimonial-marquee-card" aria-hidden="true">
+              <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">“He walked us through multiple paths, explained the tradeoffs honestly, and let us make the decision from a place of clarity instead of pressure.”</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">C</div><div><strong style="font-size:0.85rem;">Chelsea Wise</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Google &bull; Options without pressure</span></div></div>
+            </div>
+            <div class="testimonial-marquee-card" aria-hidden="true">
+              <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"I've known Adam Styer for the past four years, and he has consistently proven to be one of the most knowledgeable, reliable, and supportive mortgage professionals I've worked with."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">J</div><div><strong style="font-size:0.85rem;">Jeanne Miller</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Google &bull; Realtor Partner</span></div></div>
+            </div>
+            <div class="testimonial-marquee-card" aria-hidden="true">
+              <div class="stars"><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star-svg" width="14" height="14" viewBox="0 0 24 24" fill="#9A7B2D" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+              <p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam is awesome - he works to understand your needs, presents multiple and often creative financing options to meet them, and supports you throughout the whole home purchase."</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">M</div><div><strong style="font-size:0.85rem;">Matthew Latimer</strong><br><span style="font-size:0.75rem;color:var(--color-gray);">Google &bull; Purchase</span></div></div>
+            </div>
           </div>
         </div>
 
@@ -550,65 +739,12 @@
 
       </div>
     </section>
-<section class="premium-contact"><div class="container premium-contact-grid"><div class="premium-contact-copy"><p class="premium-eyebrow">A real person. A clear next step.</p>
-        <h2 class="mb-md">Let’s plan your next move.</h2>
-        <p class="text-lg content-medium mx-auto mb-xl">
-          Start with your financing goal. I’ll help you understand your options and decide what comes next.
-        </p>
-        <div id="quick-scenario-form" class="quick-contact-actions" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="#contact-form" class="btn btn-primary btn-lg" data-track="scenario_review_click" data-source="homepage_footer">See My Options</a>
-          <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-outline btn-lg" data-track="apply_click" data-source="homepage_footer">Apply Now</a>
-        </div>
-        <p class="text-sm mt-md">Prefer to talk? Call or text <a href="tel:+15129566010">(512) 956-6010</a>.</p>
-      </div><aside class="home-conversation journey-card" id="contact-form" tabindex="-1" aria-labelledby="home-conversation-title">
-            <h2 id="home-conversation-title">What are you planning?</h2>
-            <p class="journey-form-intro">Choose your goal. I’ll help you explore the next step.</p>
-<form name="contact" method="POST" action="/contact-thank-you.html" data-netlify="true" netlify-honeypot="bot-field" id="form-homepage-contact" class="journey-form" data-journey="general" data-journey-mode="conversation">
-              <input type="hidden" name="form-name" value="contact">
-              <input type="hidden" name="inquiry_id" value="">
-              <input type="hidden" name="test_mode" value="false">
-              <input type="hidden" name="intent" value="general">
-              <input type="hidden" name="situation" value="">
-        <input type="hidden" name="utm_source" value="">
-<input type="hidden" name="utm_medium" value="">
-<input type="hidden" name="utm_campaign" value="">
-<input type="hidden" name="utm_term" value="">
-<input type="hidden" name="utm_content" value="">
-<input type="hidden" name="page_url" value="">
-<input type="hidden" name="entry_referrer" value="">
-<input type="hidden" name="first_touch_page" value="">
-<input type="hidden" name="first_touch_referrer" value="">
-<input type="hidden" name="first_touch_at" value="">
-<input type="hidden" name="first_touch_source" value="">
-<input type="hidden" name="first_touch_utm_source" value="">
-<input type="hidden" name="first_touch_utm_medium" value="">
-<input type="hidden" name="first_touch_utm_campaign" value="">
-<input type="hidden" name="first_touch_utm_term" value="">
-<input type="hidden" name="first_touch_utm_content" value="">
-<input type="hidden" name="source" value="homepage_options">
-<input type="hidden" name="cta_source_page" value="https://styermortgage.com/">
-<input type="hidden" name="cta_label" value="See My Options">
 
-              <p hidden aria-hidden="true"><label>Leave this blank<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-              <p class="journey-progress" hidden>Your message</p>
-              <fieldset data-journey-step="2"><legend class="conversation-legend">Your financing goal and contact details</legend>
-                <div class="journey-fields">
-                  <div class="journey-field journey-full"><label for="loan-goal">I’m looking to… *</label><select id="loan-goal" name="loan_goal" required><option value="">Choose a financing goal</option><option value="Purchase">Buy a home</option><option value="Refinance">Refinance</option><option value="Invest">Finance an investment property</option><option value="Access equity">Access home equity</option><option value="Explore options">Explore my options</option></select></div>
-                  <div class="journey-field journey-full"><label for="name">Your name *</label><input type="text" id="name" name="name" required autocomplete="name" maxlength="160"></div>
-                  <div class="journey-field"><label for="email">Email *</label><input type="email" id="email" name="email" required autocomplete="email" maxlength="160"></div>
-                  <div class="journey-field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="30"></div>
-                  <div class="journey-field journey-full"><label for="message">Anything you’d like me to know? (optional)</label><textarea id="message" name="message" rows="2" maxlength="2000" aria-describedby="message-hint" placeholder="Share a question or a little about your plans…"></textarea><p class="journey-hint" id="message-hint">Please leave out sensitive financial information.</p></div>
-                  <input type="hidden" name="preferred_follow_up" value="">
-                </div>
-                <div class="journey-field journey-full form-group self-reported-source-field"><label for="contact-heard-about">How did you first hear about Adam? (optional)</label><select id="contact-heard-about" name="self_reported_source"><option value="">Choose if you remember</option><option value="ChatGPT">ChatGPT</option><option value="Gemini">Gemini</option><option value="Other AI assistant">Other AI assistant</option><option value="Google Search">Google Search</option><option value="Referral">Referral</option><option value="Other / not sure">Other / not sure</option></select></div>
-<label class="journey-consent"><input type="checkbox" name="tcpa_consent" required><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
-                <button type="submit" class="journey-button journey-submit">See My Options</button>
-              </fieldset>
-              <div class="journey-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></div>
-            </form>
-            <p class="journey-hint">Adam replies personally, usually within one business day. No application, no credit pull. <a href="/privacy.html">Privacy</a></p>
-          </aside></div></section>
-<section class="bg-light premium-guides" id="mortgage-guides" aria-labelledby="mortgage-guides-title">
+    <!-- CALCULATORS CTA -->
+
+
+    <!-- CURATED MORTGAGE GUIDES -->
+    <section class="bg-light" id="mortgage-guides" aria-labelledby="mortgage-guides-title">
       <div class="container">
         <h2 id="mortgage-guides-title" class="text-center mb-md">Practical answers before you apply</h2>
         <p class="text-center content-medium mx-auto mb-3xl">Understand your income options, explore rental-property equity, or compare a loan offer.</p>
@@ -637,13 +773,22 @@
         </div>
       </div>
     </section>
+
+    <!-- ABOUT ADAM PREVIEW -->
 <section id="about-adam" class="about-adam-photo"><div class="container about-adam-grid"><figure class="about-adam-figure"><div class="about-adam-portrait"><img src="/assets/adam-casual-cutout.webp" width="900" height="854" loading="lazy" decoding="async" alt="Adam Styer, Senior Loan Officer in Austin, Texas"></div><img class="about-adam-family" src="/assets/family.webp" width="600" height="800" loading="lazy" decoding="async" alt="Adam with his wife and kids on a Hill Country hike"></figure><div><h2>Meet Adam Styer</h2><p>Adam is an Austin mortgage broker with HyperSmart Home Loans, serving borrowers across Texas. He compares income documentation, financing structure and lender options for business owners, investors and borrowers with substantial assets.</p><p>Husband, dad of three, and an Austinite for 16+ years. Faith, family, fitness and finance drive everything he does.</p><p><a href="/about.html">Meet Adam</a> · <a href="/scenarios.html">Read real scenario reviews</a> · <a href="/realtors.html">Realtor partners</a></p></div></div></section>
-<section class="home-service-area" aria-label="Service area">
+
+    <!-- FOR REALTORS -->
+
+
+    <!-- SERVICE AREA DIRECTORY -->
+    <section class="home-service-area" aria-label="Service area">
       <div class="container">
         <p><strong>Based in Austin. Serving borrowers across Texas.</strong> <a href="/austin-area-mortgage-lender.html" class="text-link">Explore Austin-area communities &rarr;</a></p>
       </div>
     </section>
-<section id="faq" class="bg-light">
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="bg-light">
       <div class="container">
         <h2 class="text-center mb-3xl">Frequently Asked Questions</h2>
         <div class="accordion content-medium mx-auto">
@@ -669,7 +814,23 @@
           </div>
         </div>
       </div>
-    </section></main>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section>
+      <div class="container text-center">
+        <h2 class="mb-md">Let’s plan your next move.</h2>
+        <p class="text-lg content-medium mx-auto mb-xl">
+          Start with your financing goal. I’ll help you understand your options and decide what comes next.
+        </p>
+        <div id="quick-scenario-form" class="quick-contact-actions" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="#contact-form" class="btn btn-primary btn-lg" data-track="scenario_review_click" data-source="homepage_footer">See My Options</a>
+          <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-outline btn-lg" data-track="apply_click" data-source="homepage_footer">Apply Now</a>
+        </div>
+        <p class="text-sm mt-md">Prefer to talk? Call or text <a href="tel:+15129566010">(512) 956-6010</a>.</p>
+      </div>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="site-footer" id="site-footer">
@@ -801,7 +962,13 @@
       setTimeout(reveal, 2000);
     });
   </script>
-
+  <script>
+    (function () {
+      var caseStudies = document.getElementById('case-studies');
+      var reviews = document.getElementById('client-reviews');
+      if (caseStudies && reviews) caseStudies.insertAdjacentElement('afterend', reviews);
+    })();
+  </script>
   <script>
     (function () {
       var button = document.querySelector('.home-case-continue');
@@ -834,6 +1001,11 @@
     form.elements.source.value = link.dataset.source || 'homepage_options';
   });
 </script>
-
+<script>
+(function(){var els=document.querySelectorAll('.proof-num[data-count]');if(!els.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+function run(el){var t=parseFloat(el.dataset.count),d=+(el.dataset.decimals||0),s=el.dataset.suffix||'',start=null,dur=1400;
+function f(ts){if(!start)start=ts;var k=Math.min(1,(ts-start)/dur),v=t*(1-Math.pow(1-k,3));el.textContent=(d?v.toFixed(d):Math.round(v).toLocaleString())+s;if(k<1)requestAnimationFrame(f);}requestAnimationFrame(f);}
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){run(x.target);io.unobserve(x.target);}});},{threshold:.4});els.forEach(function(el){io.observe(el);});})();
+</script>
 </body>
 </html>
