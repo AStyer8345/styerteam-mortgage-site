@@ -1,0 +1,187 @@
+[
+  {
+    "file": "get-preapproved.html",
+    "findings": []
+  },
+  {
+    "file": "bank-statement-loans.html",
+    "findings": [
+      {
+        "bg": [
+          246,
+          244,
+          238
+        ],
+        "cls": "key-facts-note",
+        "color": "rgb(107, 117, 128)",
+        "ratio": 4.26,
+        "size": "12.48px",
+        "tag": "P",
+        "text": "Figures reflect programs Adam currently places. Your terms depend on the full file."
+      }
+    ]
+  },
+  {
+    "file": "asset-depletion-mortgage-texas.html",
+    "findings": [
+      {
+        "bg": [
+          246,
+          244,
+          238
+        ],
+        "cls": "key-facts-note",
+        "color": "rgb(107, 117, 128)",
+        "ratio": 4.26,
+        "size": "12.48px",
+        "tag": "P",
+        "text": "Figures reflect programs Adam currently places. Your terms depend on the full file."
+      }
+    ]
+  },
+  {
+    "file": "products.html",
+    "findings": []
+  },
+  {
+    "file": "loans/conventional.html",
+    "findings": []
+  },
+  {
+    "file": "loans/jumbo.html",
+    "findings": []
+  },
+  {
+    "file": "dscr-cash-out-refinance-texas.html",
+    "findings": []
+  },
+  {
+    "file": "calculator-payment.html",
+    "findings": []
+  },
+  {
+    "file": "dscr-calculator.html",
+    "findings": [
+      {
+        "bg": [
+          246,
+          244,
+          238
+        ],
+        "cls": "dscr-section-sub",
+        "color": "rgb(107, 114, 128)",
+        "ratio": 4.4,
+        "size": "16px",
+        "tag": "P",
+        "text": "Defaults are placeholders. Adjust the numbers to match the property."
+      },
+      {
+        "bg": [
+          241,
+          241,
+          237
+        ],
+        "cls": "",
+        "color": "rgb(107, 114, 128)",
+        "ratio": 4.27,
+        "size": "12.48px",
+        "tag": "BUTTON",
+        "text": "$"
+      }
+    ]
+  },
+  {
+    "file": "refinance-calculator.html",
+    "findings": []
+  },
+  {
+    "file": "blog.html",
+    "findings": [
+      {
+        "bg": [
+          20,
+          43,
+          58
+        ],
+        "cls": "btn btn-outline-light",
+        "color": "rgb(24, 46, 62)",
+        "ratio": 1.04,
+        "size": "15px",
+        "tag": "A",
+        "text": "Contact Adam"
+      }
+    ]
+  },
+  {
+    "file": "blog/how-to-read-a-loan-estimate.html",
+    "findings": []
+  },
+  {
+    "file": "scenarios/two-rental-properties-cash-out-review.html",
+    "findings": []
+  },
+  {
+    "file": "about.html",
+    "findings": []
+  },
+  {
+    "file": "testimonials.html",
+    "findings": [
+      {
+        "bg": [
+          246,
+          244,
+          238
+        ],
+        "cls": "advisory-centered",
+        "color": "rgb(107, 114, 128)",
+        "ratio": 4.4,
+        "size": "18px",
+        "tag": "P",
+        "text": "Start with a low-pressure scenario review. Send the price range, down payment, income type, and what is unusua"
+      }
+    ]
+  },
+  {
+    "file": "contact.html",
+    "findings": []
+  },
+  {
+    "file": "mortgage-strategies-financial-advisors-texas.html",
+    "findings": []
+  },
+  {
+    "file": "dallas-mortgage-lender.html",
+    "findings": []
+  },
+  {
+    "file": "san-antonio-mortgage-lender.html",
+    "findings": []
+  },
+  {
+    "file": "buda-mortgage-lender.html",
+    "findings": [
+      {
+        "bg": [
+          121,
+          93,
+          49
+        ],
+        "cls": "step-number",
+        "color": "rgb(20, 43, 58)",
+        "ratio": 2.38,
+        "size": "20px",
+        "tag": "SPAN",
+        "text": "1"
+      }
+    ]
+  },
+  {
+    "file": "rate-check.html",
+    "findings": []
+  },
+  {
+    "file": "resources/mortgage-options-for-business-owners.html",
+    "findings": []
+  }
+]

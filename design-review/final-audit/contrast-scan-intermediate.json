@@ -1,0 +1,104 @@
+[
+  {
+    "file": "get-preapproved.html",
+    "findings": []
+  },
+  {
+    "file": "bank-statement-loans.html",
+    "findings": []
+  },
+  {
+    "file": "asset-depletion-mortgage-texas.html",
+    "findings": []
+  },
+  {
+    "file": "products.html",
+    "findings": []
+  },
+  {
+    "file": "loans/conventional.html",
+    "findings": []
+  },
+  {
+    "file": "loans/jumbo.html",
+    "findings": []
+  },
+  {
+    "file": "dscr-cash-out-refinance-texas.html",
+    "findings": []
+  },
+  {
+    "file": "calculator-payment.html",
+    "findings": []
+  },
+  {
+    "file": "dscr-calculator.html",
+    "findings": [
+      {
+        "bg": [
+          246,
+          244,
+          238
+        ],
+        "cls": "dscr-tertiary",
+        "color": "rgb(107, 114, 128)",
+        "ratio": 4.4,
+        "size": "13.6px",
+        "tag": "A",
+        "text": "Apply Now"
+      }
+    ]
+  },
+  {
+    "file": "refinance-calculator.html",
+    "findings": []
+  },
+  {
+    "file": "blog.html",
+    "findings": []
+  },
+  {
+    "file": "blog/how-to-read-a-loan-estimate.html",
+    "findings": []
+  },
+  {
+    "file": "scenarios/two-rental-properties-cash-out-review.html",
+    "findings": []
+  },
+  {
+    "file": "about.html",
+    "findings": []
+  },
+  {
+    "file": "testimonials.html",
+    "findings": []
+  },
+  {
+    "file": "contact.html",
+    "findings": []
+  },
+  {
+    "file": "mortgage-strategies-financial-advisors-texas.html",
+    "findings": []
+  },
+  {
+    "file": "dallas-mortgage-lender.html",
+    "findings": []
+  },
+  {
+    "file": "san-antonio-mortgage-lender.html",
+    "findings": []
+  },
+  {
+    "file": "buda-mortgage-lender.html",
+    "findings": []
+  },
+  {
+    "file": "rate-check.html",
+    "findings": []
+  },
+  {
+    "file": "resources/mortgage-options-for-business-owners.html",
+    "findings": []
+  }
+]

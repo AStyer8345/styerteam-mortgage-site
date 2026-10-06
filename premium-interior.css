@@ -111,3 +111,12 @@ body.premium-inquiry .hero-quick .journey-consent{font-size:13px!important;line-
 
 /* Final audit: align mobile actions and distinguish the full application portal. */
 @media(max-width:1280px){body.premium-interior>header .nav-links.active .nav-cta{display:flex;align-items:center;justify-content:center;text-align:center;min-height:50px;padding:12px 15px!important;text-decoration:none}body.premium-interior>header .nav-links.active .nav-apply{background:#fff!important;color:var(--premium-ink)!important;border:1px solid #7B878D!important}}
+/* Small supporting notes must remain readable against warm paper. */
+body.premium-interior main .key-facts-note{color:var(--premium-muted)!important}
+/* Final family sweep: table headers and dark conversion sections use one contrast contract. */
+body.premium-interior main table th{background:#142B3A!important;color:#fff!important}
+body.premium-interior main table th a{color:#fff!important}
+body.premium-interior main :is(.bg-navy,.bg-primary,.bg-dark,.cta-spotlight,.wrap-cta)>.container>p{color:#E0E6E9!important}
+body.premium-interior main :is(.bg-navy,.bg-primary,.bg-dark,.cta-spotlight,.wrap-cta) :is(.btn-outline,.btn-outline-light,.cta-call-link){color:#fff!important;border-color:#8A989F!important;background:transparent!important}
+body.premium-interior main :is(.bg-navy,.bg-primary,.bg-dark,.cta-spotlight,.wrap-cta) .btn-light{background:#fff!important;color:#142B3A!important;border-color:#fff!important}
+body.premium-legacy main .hero-quick-form-title{color:var(--premium-ink)!important}

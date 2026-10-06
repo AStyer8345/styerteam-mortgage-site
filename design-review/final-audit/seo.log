@@ -1,0 +1,5 @@
+
+> styerteam-mortgage-site@1.0.0 seo:audit
+> node scripts/seo-audit.mjs
+
+SEO audit: 166 sitemap URLs, 0 issue(s)

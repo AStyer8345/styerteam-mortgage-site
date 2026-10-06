@@ -63,3 +63,9 @@ body.premium-tool .closing-costs-layout .summary-total .sl-value{flex-shrink:0}
 body.premium-tool .adc-container>header .adc-sub{margin-left:0!important;margin-right:0!important}
 @media(max-width:640px){body.premium-tool.calc-editing-visible #adc-main .calc-mobile-summary{grid-template-columns:1fr;gap:4px}body.premium-tool #adc-main .calc-mobile-summary span{font-size:12px}body.premium-tool #adc-main .calc-mobile-summary strong{font-size:19px}}
 }
+body.premium-tool .dscr-calculator-module .dscr-section-sub,body.premium-tool .dscr-calculator-module .dscr-toggle button:not(.is-active){color:var(--premium-muted)}
+body.premium-tool .dscr-tertiary{color:var(--premium-muted)!important}
+body.premium-tool .adc-sub{color:var(--premium-muted)!important}
+body.premium-tool .wrap-balloon-btn:not(.active){color:var(--premium-ink)}
+body.premium-tool .asset-depletion-calculator-module{--adc-muted:var(--premium-muted)}
+body.premium-tool .adc-disclaimer{color:var(--premium-muted)!important}

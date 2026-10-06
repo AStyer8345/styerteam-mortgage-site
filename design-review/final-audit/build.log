@@ -1,0 +1,50 @@
+
+> styerteam-mortgage-site@1.0.0 build
+> npm run validate:knowledge -- --allow-expired && node scripts/bundle-assistant-knowledge.mjs && npm run audit:forms && npm run audit:attribution && npm run audit:schema && npm run audit:navigation && npm run audit:design && (node scripts/gen-recent-updates.js || true) && node scripts/package-public-site.mjs && (node scripts/indexnow-submit.mjs || true)
+
+
+> styerteam-mortgage-site@1.0.0 validate:knowledge
+> node scripts/validate-ai-knowledge.mjs --allow-expired
+
+Warning: purchase-process.md: approval is expired (excluded by assistant runtime)
+Warning: refinance-process.md: approval is expired (excluded by assistant runtime)
+Warning: document-requirements.md: approval is expired (excluded by assistant runtime)
+Warning: physician-loans.md: approval is expired (excluded by assistant runtime)
+Warning: bridge-loans.md: approval is expired (excluded by assistant runtime)
+Warning: faqs.md: approval is expired (excluded by assistant runtime)
+Warning: core-loan-programs.md: approval is expired (excluded by assistant runtime)
+Warning: mortgage-basics.md: approval is expired (excluded by assistant runtime)
+Warning: credit-income-and-underwriting.md: approval is expired (excluded by assistant runtime)
+Warning: funds-closing-and-escrow.md: approval is expired (excluded by assistant runtime)
+Warning: refinance-and-home-equity.md: approval is expired (excluded by assistant runtime)
+Warning: common-borrower-scenarios.md: approval is expired (excluded by assistant runtime)
+Validated 20 knowledge files (approved-2026-10-04-specialty-refresh-v5).
+Bundled 20 knowledge files for serverless deployment.
+
+> styerteam-mortgage-site@1.0.0 audit:forms
+> node scripts/audit-form-notifications.mjs
+
+Form notification audit passed: 68 contact forms (60 Netlify, 8 approved custom).
+
+> styerteam-mortgage-site@1.0.0 audit:attribution
+> node scripts/sync-inquiry-attribution.mjs --check
+
+Inquiry attribution: 47 forms checked; 0 pending files.
+
+> styerteam-mortgage-site@1.0.0 audit:schema
+> node scripts/audit-structured-data.mjs
+
+Validated 478 JSON-LD blocks against Schema.org classes checked 2026-09-17; corrected 0 files.
+
+> styerteam-mortgage-site@1.0.0 audit:navigation
+> node scripts/sync-navigation.mjs --check
+
+Navigation check passed for 198 HTML files.
+
+> styerteam-mortgage-site@1.0.0 audit:design
+> node scripts/sync-advisory-design.mjs --check
+
+Advisory design: 0 pending pages.
+recent-updates.json: wrote 10 items
+Packaged 322 public website files. Functions, source, reports and metadata excluded.
+IndexNow: no public page changes to submit.

@@ -1,0 +1,24 @@
+{
+  "pages": 166,
+  "internalLinkOccurrences": 22225,
+  "unresolved": [],
+  "baselineSitemapUrls": 163,
+  "currentSitemapUrls": 166,
+  "removedSitemapUrls": [],
+  "addedSitemapUrls": [
+    "https://styermortgage.com/dallas-mortgage-lender.html",
+    "https://styermortgage.com/dscr-cash-out-refinance-texas.html",
+    "https://styermortgage.com/san-antonio-mortgage-lender.html"
+  ],
+  "protectedInfrastructureFilesCompared": 47,
+  "changedProtectedInfrastructure": [],
+  "configuredRedirects": [
+    {
+      "page": "non-qm-loans.html",
+      "href": "/apply-now/",
+      "status": 301,
+      "destination": "https://hypersmart.my1003app.com/513013/register?time=1779291829279",
+      "evidence": "unchanged netlify.toml lines 231-234; destination not opened or submitted"
+    }
+  ]
+}

@@ -123,3 +123,6 @@ body.premium-directory main .resource-card :is(.resource-card-tag,.resource-tag)
 body.premium-directory main .resource-card::before{display:none}
 body.premium-directory main .bg-primary .btn-light{background:#fff!important;color:var(--premium-ink)!important;border:1px solid #fff}
 @media(min-width:1000px){body:is(.premium-directory,.premium-legacy) .site-footer-grid:not(:has(>.site-footer-col:nth-child(5))){grid-template-columns:1fr 1fr 1fr 1.4fr}}
+/* Final audit: legacy location quote forms inherit old white-on-dark field colors. */
+body.premium-legacy main .hero-quick-form-glass .hero-quick-form-field label,body.premium-legacy main .hero-quick-form-glass :is(input,select,textarea){color:var(--premium-ink)!important}
+body.premium-legacy main .hero-quick-form-glass .hero-quick-form-title{font:400 28px/1.25 'Source Serif 4',Georgia,serif!important;color:var(--premium-ink)!important}

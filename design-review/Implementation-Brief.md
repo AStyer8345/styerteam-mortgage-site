@@ -1,4 +1,4 @@
-# Styer Mortgage premium homepage — Codex implementation handoff
+# Styer Mortgage premium website — Codex implementation handoff
 
 The homepage should communicate a sophisticated, personal mortgage advisory practice within seconds. The implementation combines warm ivory, deep ink, an authentic portrait, clear typography, real scenario evidence, useful tools, and a direct inquiry path. It retains the current company identity and the complete existing homepage content.
 
@@ -12,7 +12,7 @@ Branch: `codex/premium-homepage-preview`
 
 Base: production commit `f7e9391fc608ac9cd43b965c257e0df2a24b36cd`. Netlify's published deployment was verified as `6ac2c4ce9295b20008466b5c`, ready, for that commit on October 5, 2026. The dirty primary checkout is a different branch and is not the release source.
 
-This review implements the homepage and now the inspected 18 inquiry/program template pages, including Get Preapproved. Existing article, directory, contact and calculator destinations remain available; their further visual refinement and DSCR cash-out campaign integration are in the authorized overnight queue. See Overnight-Work-Plan.md and Interior-Preview-Verification.md for current coverage rather than assuming the entire site is finished. Nothing has been pushed or deployed.
+The local preview now applies the shared design system to 166 public pages, including all inspected loan, tool, editorial, trust, partner and city families. Forty source-inspected legal/operational/archive/utility exceptions remain outside the cosmetic rollout. Dallas, San Antonio and the distinct DSCR cash-out journey are additive pages. The final local repair/verification gate is complete; see Final-Reaudit.md and Morning-Review.md for exact visual versus automated coverage and remaining release checks. Nothing has been pushed or deployed.
 
 ## Files and responsibilities
 
@@ -23,6 +23,12 @@ This review implements the homepage and now the inspected 18 inquiry/program tem
 | premium-homepage.js | Payment teaser using CalcSuite, mobile inquiry target, desktop keyboard submenu behavior |
 | premium-interior.css | Opt-in public primitives and the inspected inquiry/program template family |
 | premium-navigation.js | Interior desktop keyboard menus and focus for existing inquiry panels |
+| premium-guides.css / premium-reading.css | Legacy programs, directories, articles and scenarios |
+| premium-tools.css / premium-trust.css / premium-secondary.css | Calculator, trust/partner and remaining city/lead template presentation |
+| premium-city.css | Additive Dallas/San Antonio guide presentation |
+| cashout-calculator-core.js / cashout-preview.js / cashout-preview.css | Deterministic cash-out assumptions, results and identity-free inquiry context |
+| design-review/Photography.md | Licensed residential imagery sources, delivery assets and use rules |
+| design-review/Final-Reaudit.md / Morning-Review.md | Final evidence, review order and separately authorized release sequence |
 | tests/premium-site-preservation.test.js | Protected contracts/content across 190 interior public pages |
 | tests/premium-homepage.test.js | Metadata, JSON-LD, header, footer, FAQ, form, paragraph, link and script preservation |
 | tests/editorial-rollout.test.js | Updated assertion for the deliberately new static homepage order |
@@ -31,7 +37,7 @@ This review implements the homepage and now the inspected 18 inquiry/program tem
 | design-review/homepage-baseline.fixture | Unmodified source homepage baseline for review; not a public page |
 | design-review/Design-Strategy.md | Complete creative direction, audit, references, and sitewide design system |
 
-No changes to existing capture functions, routing, application portal, assistant, attribution library, calculator suite, redirects, sitemap, or other public pages.
+Existing capture functions, consent, routing, application portal, assistant, attribution library and redirects remain protected. The sitemap adds three routes without removing the original 163. Numeric stability fixes in calculator-suite.js and analysis.js, inline DSCR input validation, selected-state accessibility in script.js, and static-counter opt-in in js/scroll-effects.js are documented in the family reports. No new transport or lead-routing owner was introduced.
 
 ## Final homepage composition
 
@@ -47,7 +53,7 @@ No changes to existing capture functions, routing, application portal, assistant
 10. **Meet Adam.** Preserve professional and personal biography and both original casual/family photos. These are existing real assets, not fabricated meetings or scenes.
 11. **Service area.** Preserve Austin/Texas statement and directory link.
 12. **FAQ.** Preserve five complete question/answer pairs and linked specialist routes, with the existing accordion behavior and JSON-LD.
-13. **Footer.** Exact shared footer markup and disclosures remain. Use the new visual treatment only on the homepage. Keep the complete mortgage/tools/partners/location directory; do not replace it with a sparse footer.
+13. **Footer.** Exact shared footer markup and disclosures remain. Use opt-in family styling while preserving shared footer markup. Keep the complete mortgage/tools/partners/location directory; do not replace it with a sparse footer.
 
 ## Visual system applied
 
@@ -55,7 +61,7 @@ Ink `#142B3A`; deep `#0E202C`; ivory `#F6F4EE`; white `#FFFFFF`; body `#263844`;
 
 Source Serif 4 for display headings and testimonial quotations, Inter for body and UI. Existing self-hosted serif files are reused. Desktop hero 64px, tablet 37–48px below 1000px, mobile 40px/36px at 320; section titles 40px/32px; body 17–19px; input text 16px. Primary content: 1200px usable width within 1256px including 28px gutters; mobile 20px, 16px at 320. Section spacing 80px desktop/52px mobile. Buttons 50px and 4px corners; input controls 48px; real panels 6px corners. Full design system, loan/article/tool families, imagery rules and references are in Design-Strategy.md.
 
-No glass, blobs, decorative moving backgrounds, oversized pill cards, autoplay carousel or page-intro gate. Content is visible on first paint. Hover changes are short color/border changes. Existing reveal decorations are neutralized only on the homepage. Reduced motion remains supported.
+No glass, blobs, decorative moving backgrounds, oversized pill cards, autoplay carousel or page-intro gate. Content is visible on first paint. Hover changes are short color/border changes. Existing reveal decorations are neutralized within the opted-in premium presentation. Reduced motion remains supported.
 
 ## Authentic photograph
 
@@ -69,14 +75,14 @@ Automated comparisons against the exact base confirm:
 - Header, footer, contact form and FAQ markup byte-identical.
 - Every original homepage paragraph and existing destination retained. The obsolete homepage stylesheet reference is intentionally replaced; it is not a content destination.
 - Every existing external/local capture and tracking script reference retained.
-- One H1. All 163 sitemap routes, redirects and existing page families unchanged.
-- New code has no transport, contact-data storage or added third-party library. The new teaser uses the existing calculator suite.
+- One H1 per redesigned page. All 163 baseline sitemap routes and redirects retained; Dallas, San Antonio and DSCR cash-out add three routes.
+- The homepage teaser uses the existing calculator suite. The additive cash-out journey stores versioned, identity-free estimate context in session storage and passes a formatted narrative into established inquiry capture. No new submission transport, contact-data store or third-party library was added.
 
 Check source contracts separately from local review behavior: the preview server injects noindex, removes analytics loaders and blocks submission/chat mutations. Those protections are not written into production index.html. The production form still has its original Netlify and custom capture contracts. Do not copy injected preview HTML into a release.
 
 ## Verification and remaining release boundary
 
-See Verification.md for results, screenshots and limits. Existing tests include lead routing, attribution, capture behavior, calculator mathematics, and assistant safety. Browser checks cover desktop/mobile fit, original images, navigation, CTA focus, local form interaction, FAQ and teaser edge cases.
+See Final-Reaudit.md for final results, screenshots and limits; Verification.md and the per-family reports retain earlier detailed evidence. Existing tests include lead routing, attribution, capture behavior, calculator mathematics, and assistant safety. Browser checks cover desktop/mobile fit, original images, navigation, CTA focus, local form interaction, FAQ and teaser edge cases.
 
 Local verification does not prove production delivery, owner alerts, inbox receipt or conversion lift. Field Core Web Vitals are not measurable from this isolated review. The source is ready for design review, not a claim of a production business result.
 
@@ -89,4 +95,4 @@ From this worktree, `python3 design-review/serve-preview.py` serves the prepared
 
 ## Cash-out campaign preview checkpoint
 
-The distinct rental cash-out journey and internal ad-review dashboard are implemented locally. Review `Cashout-Preview-Verification.md` for exact rendered versus automated coverage and `Campaign-Launch-Brief.md` for evidence, assumptions, measurement and separate release/spend approvals. The whole-site final repair gate remains pending; this addition does not replace the broad company homepage or authorize publishing.
+The distinct rental cash-out journey and internal ad-review dashboard are implemented locally. Review `Cashout-Preview-Verification.md` for exact rendered versus automated coverage and `Campaign-Launch-Brief.md` for evidence, assumptions, measurement and separate release/spend approvals. The final local repair gate is complete. This addition does not replace the broad company homepage or authorize publishing.

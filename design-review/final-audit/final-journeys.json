@@ -1,0 +1,32 @@
+{
+  "dscr": {
+    "inputs": {
+      "price": 500000,
+      "downPercent": 20,
+      "rate": 7.5,
+      "term": 30,
+      "taxAnnual": 9000,
+      "insuranceAnnual": 2500,
+      "hoa": 0,
+      "rent": 5000
+    },
+    "displayed": {
+      "loan": 400000,
+      "principalInterest": 2797,
+      "pitia": 3755,
+      "dscr": 1.33,
+      "rentRemaining": 1245
+    },
+    "blankRent": {
+      "ariaInvalid": true,
+      "result": "—",
+      "message": "Enter a complete number. Use 0 when a cost does not apply."
+    },
+    "restoredRent": 3500
+  },
+  "austinQuote": {
+    "syntheticOnly": true,
+    "guardStatus": "Preview only. No inquiry was sent. Entries may remain in this browser tab.",
+    "liveSubmission": false
+  }
+}

@@ -44,3 +44,11 @@ body.premium-secondary.premium-reading main>section.bg-navy:first-child p.text-g
 body.premium-secondary main .prequal-card{max-width:856px;margin-inline:auto}
 body.premium-secondary>header{transition:none!important}
 @media(max-width:999px){body.premium-secondary main .lp-hero-inner>.lp-hero-copy{order:0}body.premium-secondary main .lp-hero-inner>.lp-form-card{order:1}}
+body.premium-secondary main .step-number{color:#fff}
+/* Final mobile city review: keep copy clear of newly visible card borders. */
+body.premium-secondary main .loan-option-card{padding:24px}
+body.premium-secondary main .loan-option-card h3{margin-top:0}
+body.premium-secondary main .loan-options-grid{display:grid;gap:20px}
+body.premium-secondary main .why-city-stats{display:grid;gap:16px}
+body.premium-secondary main .stat-card{padding:20px}
+body.premium-secondary main .stat-card :is(.stat-number,.stat-label){display:block}

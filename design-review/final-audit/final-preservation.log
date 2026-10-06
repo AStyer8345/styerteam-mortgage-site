@@ -1,0 +1,14 @@
+✔ premium homepage preserves every existing metadata tag and JSON-LD block (0.9835ms)
+✔ navigation, footer, inquiry markup and FAQ answers remain byte-identical (0.345375ms)
+✔ homepage retains every original link destination, paragraph and capture script (1.47575ms)
+✔ teaser reuses established calculator math and explains excluded costs (0.316542ms)
+✔ interior design rollout preserves metadata, structured data, lead forms and shared navigation (2051.972042ms)
+✔ interior design rollout retains original prose, headings, destinations and capture script references (1826.186917ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3915.807792
