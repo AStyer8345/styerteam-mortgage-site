@@ -41,7 +41,7 @@
   if (formPages.test(location.pathname)) return;
 
   // ── Slide-over panel ───────────────────────────────────────────────────────
-  var panel = null, frame = null, lastFocus = null;
+  var panel = null, frame = null, lastFocus = null, backgroundState = [], closeTimer = null, backgroundObserver = null;
   function buildPanel() {
     panel = d.createElement('div');
     panel.className = 'advisory-panel';
@@ -55,16 +55,43 @@
         '<p class="advisory-panel-foot">Prefer to talk? <a href="tel:' + PHONE + '">Call</a> or <a href="sms:' + PHONE + '">text</a> (512) 956-6010.</p>' +
       '</div>';
     frame = panel.querySelector('iframe');
+    // Escape also works while the visitor is typing in the same-origin embed.
+    frame.addEventListener('load', function () {
+      try { frame.contentDocument.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !panel.hidden) { e.preventDefault(); closePanel(); }
+      }); } catch (_) {}
+    });
+    panel.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var first = panel.querySelector('.advisory-panel-close');
+      var links = panel.querySelectorAll('.advisory-panel-foot a');
+      var last = links[links.length - 1];
+      if (e.shiftKey && d.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && d.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
     panel.addEventListener('click', function (e) { if (e.target.closest('[data-close]')) closePanel(); });
     d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) closePanel(); });
     b.appendChild(panel);
+  }
+  function isolateBackground(element) {
+    if (element === panel || backgroundState.some(function (item) { return item.element === element; })) return;
+    backgroundState.push({ element: element, inert: element.inert });
+    element.inert = true;
   }
   function openPanel(href) {
     if (!panel) buildPanel();
     var url = new URL(href, location.origin);
     url.searchParams.set('embed', '1');
     if (frame.getAttribute('src') !== url.pathname + url.search) frame.src = url.pathname + url.search;
+    clearTimeout(closeTimer);
     lastFocus = d.activeElement;
+    if (!backgroundState.length) {
+      Array.prototype.forEach.call(b.children, isolateBackground);
+      backgroundObserver = new MutationObserver(function () {
+        Array.prototype.forEach.call(b.children, isolateBackground);
+      });
+      backgroundObserver.observe(b, { childList: true });
+    }
     panel.hidden = false;
     b.classList.add('advisory-panel-open');
     requestAnimationFrame(function () { panel.classList.add('is-open'); panel.querySelector('.advisory-panel-close').focus(); });
@@ -73,7 +100,10 @@
   function closePanel() {
     panel.classList.remove('is-open');
     b.classList.remove('advisory-panel-open');
-    setTimeout(function () { panel.hidden = true; }, 220);
+    if (backgroundObserver) backgroundObserver.disconnect();
+    backgroundState.forEach(function (item) { item.element.inert = item.inert; });
+    backgroundState = [];
+    closeTimer = setTimeout(function () { panel.hidden = true; }, 220);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
   d.addEventListener('click', function (e) {

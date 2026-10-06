@@ -52,6 +52,10 @@ exports.handler = async (event) => {
     return respond(405, { error: "Method not allowed" });
   }
 
+  if (Buffer.byteLength(event.body || '', 'utf8') > 65536) {
+    return respond(413, { error: 'Body too large' });
+  }
+
   let body;
   try {
     const ctype = (event.headers["content-type"] || event.headers["Content-Type"] || "").toLowerCase();
@@ -64,9 +68,16 @@ exports.handler = async (event) => {
     return respond(400, { error: "Invalid body" });
   }
 
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return respond(400, { error: 'Body must be an object' });
+  }
   // Honeypot — silently succeed
   if (body["bot-field"] || body.honeypot) {
     return respond(200, { ok: true });
+  }
+
+  if (typeof body.email !== 'string' || body.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())) {
+    return respond(400, { error: 'Valid email required' });
   }
 
   // Normalize field names (plan shape + legacy shape)

@@ -424,4 +424,8 @@ function json(body: unknown, status: number, headers: Record<string, string>) {
   return new Response(JSON.stringify(responseBody), { status, headers });
 }
 
-export const config: Config = { path: '/api/mortgage-assistant', method: ['GET', 'POST'] };
+export const config: Config = {
+  path: '/api/mortgage-assistant', method: ['GET', 'POST'],
+  // Supplement per-session counters with platform-level abuse protection.
+  rateLimit: { action: 'rate_limit', aggregateBy: 'ip', windowLimit: 30, windowSize: 60 },
+};

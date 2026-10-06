@@ -77,3 +77,11 @@ test('authoritative capture retains independent self-reported discovery without 
     assert.equal(captured.inquiry_id, 'fixture-inquiry-source-123');
   }
 });
+
+for (const body of [null, [], { email: 42 }, { email: 'invalid' }, { email: 'a@example.com', situation: 'x'.repeat(65536) }]) {
+  test('invalid lead input is rejected before external requests: ' + JSON.stringify(body).slice(0,60), async () => {
+    const r = await submit({ body });
+    assert.ok([400, 413].includes(r.statusCode));
+    assert.equal(r.calls.length, 0);
+  });
+}

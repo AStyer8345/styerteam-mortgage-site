@@ -1,3 +1,4 @@
+const { requireDispatchAuth } = require("./lib/dispatch-auth");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 const CORRECTION_HTML = `
@@ -17,7 +18,7 @@ const CORRECTION_HTML = `
 exports.handler = async (event) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Content-Type": "application/json",
   };
 
@@ -28,6 +29,9 @@ exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, headers, body: JSON.stringify({ error: "Method not allowed" }) };
   }
+
+  const authError = requireDispatchAuth(event);
+  if (authError) return { statusCode: authError.statusCode, headers, body: JSON.stringify({ error: authError.message }) };
 
   try {
     const mcApiKey = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key;
