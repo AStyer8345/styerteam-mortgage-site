@@ -263,9 +263,10 @@ test('required complex-mortgage routes and metadata exist', () => {
 
 test('direct rate publishing endpoint requires the dispatch secret', () => {
   assert.match(generateRateUpdate, /requireDispatchAuth\(event\)/);
-  assert.match(generateRateUpdate, /DISPATCH_SECRET/);
-  assert.match(generateRateUpdate, /Unauthorized/);
-  assert.match(generateRateUpdate, /timingSafeEqual/);
+  const guard = fs.readFileSync('netlify/functions/lib/dispatch-auth.js', 'utf8');
+  assert.match(guard, /DISPATCH_SECRET/);
+  assert.match(guard, /Unauthorized/);
+  assert.match(guard, /timingSafeEqual/);
   assert.match(generateRateUpdate, /Content-Type, Authorization/);
 });
 

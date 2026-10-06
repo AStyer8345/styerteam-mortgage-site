@@ -1,3 +1,29 @@
+# Remediation follow-through — October 5, 2026
+
+This section supersedes the initial audit's pending recommendations below. Work is isolated from the dirty primary checkout and based on production commit `f7e9391fc608ac9cd43b965c257e0df2a24b36cd`. The final live deployment record will be saved in the external audit report after release.
+
+| Area | Completed change and evidence |
+|---|---|
+| Administrative access | Nine administrative HTML/JS/CSS/JSON files are excluded from the public package and served through a server-verified gateway. Existing MCC access code is preserved. Signed, eight-hour, HttpOnly/Secure/SameSite cookies replace public password hashes and browser-stored passwords. Anonymous files return 401; authenticated files return 200 with no-store; logout clears access. |
+| Publishing endpoints | Newsletter, realtor, rate, correction and unified dispatch accept the signed same-origin administrative session or the existing server bearer contract. Authorization runs before provider work. The current site has no DISPATCH_SECRET configured; anonymous requests fail closed with 503, while the operator session remains functional. No new credential was created. Generated previews render in opaque sandboxed frames; local malicious script/event-handler fixtures did not alter the parent dashboard. |
+| Deployment packaging | Shared publishing footer is compiled into the function bundle; a preview caught and resolved its Lambda filesystem-path failure. |
+| Command center cloud storage | Legacy handlers initialize Netlify Blobs context before opening the existing mcc-state store. Authenticated preview GET returns 200/null; no stored cloud state existed at that key. Existing local browser state is preserved. No production state was written during verification. |
+| Assistant guidance | Twelve expired files reviewed against current primary sources and existing owner-reviewed specialty content. Review attribution is explicitly Codex, with the previous owner review date retained. Updated DU credit guidance, cautious Freddie Mac guidance, Closing Disclosure timing and source records. All 20 files now pass strict date validation. Personalized eligibility and pricing remain with the licensed team. |
+| Rate limiting | Assistant, saved-analysis and admin use explicit IP/domain arrays. The generated Netlify manifest confirms both aggregation keys, avoiding a bundler quirk that treated a single string as domain aggregation. No production load test was performed. |
+| Public accessibility/performance | Modal keyboard containment and restoration repaired. Homepage disclosure contrast corrected. Above-fold text no longer waits for a reveal animation, and initial mobile CTA geometry matches final CSS. Before-change PageSpeed mobile lab: performance 58, accessibility 97, LCP 6.9s, TBT 410ms, CLS 0. After the stable-CTA correction, preview lab LCP was 2.9s, CLS 0.001 and accessibility 100. Overall score remained 58 because that run recorded 3.81s TBT; an earlier preview recorded score 69 and 230ms TBT. This variability prevents a claim of overall score improvement. No CrUX field data available. |
+| Lead capture | Existing durable capture/attribution/consent contracts preserved, with bounded payload/object/email validation. Two October 5 inquiry IDs were confirmed in LoanOS and matched to delivered owner-notification emails. One inquiry was vendor outreach; delivery evidence is not qualified-lead evidence. No fake production lead was submitted. |
+| Build/dependencies/cache | Lockfile committed, clean install and audit passed, stable asset cache corrected and local malformed-URI handling repaired. |
+
+Local checks: 268 automated checks pass (138 JavaScript, 130 assistant/TypeScript), typecheck, build, form/attribution/navigation/design/schema audits and diff check. SEO audit: 163 sitemap URLs, zero issues. Native preview verified login, private asset denial, signed operator requests, cloud reads and logout. Preview noindex is intentional and is not a production SEO regression.
+
+Remaining operational limit: the older n8n Web Lead Automation recovery executions most recently recorded on September 26 failed at the account execution limit. Recent notification delivery is independently evidenced, but this does not establish that the old recovery workflow is healthy. Restoring account execution capacity requires an account/billing decision outside the website release; no upgrade or workflow replay was performed.
+
+Remaining measurement limits: Lighthouse tests are single-session lab observations, not real-user Core Web Vitals or an SLA. Google tags contribute substantial transfer/CPU cost; the existing GTM/Ads/GA tracking contract is preserved. Full assistive-technology testing and Safari/Firefox coverage remain unverified. No campaigns, social posts or application accounts were created.
+
+---
+
+# Initial audit snapshot (before follow-through)
+
 # StyerMortgage technical audit — October 5, 2026
 
 The public site's crawl and core journeys are healthy in the checks performed. The highest-priority confirmed defects are unauthenticated content/email HTTP handlers, weak input handling, and incomplete keyboard isolation in the shared contact dialog. Seven focused corrections are implemented locally. They have not been deployed.

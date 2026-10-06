@@ -1,18 +1,9 @@
 // Shared by the migration and every publishing template. Content stays in HTML.
-const fs = require('node:fs');
-const path = require('node:path');
 // One footer for every public page. Edit site-footer.html, then run
 // `node scripts/sync-advisory-design.mjs` to propagate it.
 // Bump when advisory-design.css, advisory-contact.js or calculator-sticky-result.js change.
 const ASSET_VERSION = '20260918';
-// esbuild places this module inside the function entry bundle; __dirname then
-// points to netlify/functions rather than netlify/functions/lib.
-const footerPath = [
-  path.join(__dirname, 'site-footer.html'),
-  path.join(__dirname, 'lib', 'site-footer.html'),
-].find(candidate => fs.existsSync(candidate));
-if (!footerPath) throw new Error('Shared site footer is missing from the function bundle');
-const SITE_FOOTER = fs.readFileSync(footerPath, 'utf8').trim();
+const SITE_FOOTER = require('./site-footer-content');
 function refineAdvisoryDesign(html) {
   if (!/class="nav-links"|class="site-header lp-header"/.test(html)) return html;
   const classes = ['advisory-site'];

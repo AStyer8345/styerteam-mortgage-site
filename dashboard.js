@@ -295,7 +295,7 @@ function initNewsletterAutomation() {
 
         // Web content
         const webEl = document.getElementById('preview-web-content');
-        if (webEl && p.webContent) webEl.innerHTML = p.webContent;
+        if (webEl && p.webContent) renderPreviewHTML(webEl, p.webContent);
 
         // Borrower email
         const borrowerSection = document.getElementById('preview-borrower-section');
@@ -306,7 +306,7 @@ function initNewsletterAutomation() {
           const bPreheaderEl = document.getElementById('preview-borrower-preheader');
           if (bPreheaderEl) bPreheaderEl.value = p.borrowerPreheader || '';
           const bEl = document.getElementById('preview-borrower-html');
-          if (bEl) bEl.innerHTML = p.borrowerEmailHtml;
+          if (bEl) renderPreviewHTML(bEl, p.borrowerEmailHtml);
         } else {
           borrowerSection.classList.add('hidden');
         }
@@ -320,7 +320,7 @@ function initNewsletterAutomation() {
           const rPreheaderEl = document.getElementById('preview-realtor-preheader');
           if (rPreheaderEl) rPreheaderEl.value = p.realtorPreheader || '';
           const rEl = document.getElementById('preview-realtor-html');
-          if (rEl) rEl.innerHTML = p.realtorEmailHtml;
+          if (rEl) renderPreviewHTML(rEl, p.realtorEmailHtml);
         } else {
           realtorSection.classList.add('hidden');
         }
@@ -619,7 +619,7 @@ function initRateBuilder() {
         setText('rt-preview-page-url', data.pageUrl);
 
         const webEl = document.getElementById('rt-preview-web-content');
-        if (webEl && p.webContent) webEl.innerHTML = p.webContent;
+        if (webEl && p.webContent) renderPreviewHTML(webEl, p.webContent);
 
         // Borrower email
         const borrowerSection = document.getElementById('rt-preview-borrower-section');
@@ -628,7 +628,7 @@ function initRateBuilder() {
           setText('rt-preview-borrower-subject', p.borrowerSubject || '');
           setText('rt-preview-borrower-preheader', p.borrowerPreheader || '');
           const bEl = document.getElementById('rt-preview-borrower-html');
-          if (bEl) bEl.innerHTML = p.borrowerEmailHtml;
+          if (bEl) renderPreviewHTML(bEl, p.borrowerEmailHtml);
         } else {
           borrowerSection.classList.add('hidden');
         }
@@ -640,7 +640,7 @@ function initRateBuilder() {
           setText('rt-preview-realtor-subject', p.realtorSubject || '');
           setText('rt-preview-realtor-preheader', p.realtorPreheader || '');
           const rEl = document.getElementById('rt-preview-realtor-html');
-          if (rEl) rEl.innerHTML = p.realtorEmailHtml;
+          if (rEl) renderPreviewHTML(rEl, p.realtorEmailHtml);
         } else {
           realtorSection.classList.add('hidden');
         }
@@ -932,7 +932,7 @@ function initRealtorBuilder() {
 
         // Web content
         const webEl = document.getElementById('rl-preview-web-content');
-        if (webEl && p.webContent) webEl.innerHTML = p.webContent;
+        if (webEl && p.webContent) renderPreviewHTML(webEl, p.webContent);
 
         // Realtor email
         const emailSection = document.getElementById('rl-preview-email-section');
@@ -941,7 +941,7 @@ function initRealtorBuilder() {
           setText('rl-preview-email-subject', p.realtorSubject || '');
           setText('rl-preview-email-preheader', p.realtorPreheader || '');
           const eEl = document.getElementById('rl-preview-email-html');
-          if (eEl) eEl.innerHTML = p.realtorEmailHtml;
+          if (eEl) renderPreviewHTML(eEl, p.realtorEmailHtml);
         } else {
           emailSection.classList.add('hidden');
         }
@@ -1256,4 +1256,15 @@ function persistForm({ storageKey, formId, textFields, selectFields, checkboxNam
 
   form.addEventListener('input', saveForm);
   form.addEventListener('change', saveForm);
+}
+
+// Generated HTML must never execute in the privileged administrative document.
+function renderPreviewHTML(container, html) {
+  const frame = document.createElement('iframe');
+  frame.title = 'Generated content preview';
+  frame.setAttribute('sandbox', '');
+  frame.referrerPolicy = 'no-referrer';
+  frame.style.cssText = 'width:100%;height:36rem;border:0;background:white';
+  frame.srcdoc = '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:15px/1.6 system-ui,sans-serif;margin:16px;overflow-wrap:anywhere}img{max-width:100%;height:auto}</style></head><body>' + String(html || '') + '</body></html>';
+  container.replaceChildren(frame);
 }

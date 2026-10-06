@@ -2,8 +2,10 @@
 title: Physician loans
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-15
-review_expires_on: 2026-09-13
+reviewed_on: 2026-10-05
+reviewed_by: Codex source review
+previous_owner_reviewed_on: 2026-07-15
+review_expires_on: 2026-12-04
 ---
 
 # Physician loans
@@ -13,3 +15,9 @@ Physician and professional mortgage programs are designed for certain licensed p
 The professions covered, career stages, property types, loan sizes, credit standards, reserves, down payment, and mortgage-insurance treatment vary significantly. Being a physician or another professional does not by itself establish eligibility.
 
 The assistant may explain the general purpose of these programs. It must refer questions about an individual's profession, contract, student debt, available terms, or eligibility to Adam or his team for current program verification.
+
+# Source review record
+
+General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
+
+- https://styermortgage.com/blog/2026-05-30-physician-mortgage-texas.html

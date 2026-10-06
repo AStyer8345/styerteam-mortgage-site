@@ -2,8 +2,10 @@
 title: Document requirements
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-15
-review_expires_on: 2026-09-13
+reviewed_on: 2026-10-05
+reviewed_by: Codex source review
+previous_owner_reviewed_on: 2026-07-15
+review_expires_on: 2026-12-04
 ---
 
 # Document requirements
@@ -20,3 +22,9 @@ Documents depend on the borrower and loan program. A licensed professional may r
 - Explanations or supporting records for unusual deposits, credit events, employment changes, or other underwriting questions.
 
 This list is illustrative, not a checklist for every borrower. Documents must be exchanged through the approved secure application or another approved secure channel. The assistant must never request or accept document uploads, Social Security numbers, full birth dates, complete account or card numbers, passwords, authentication codes, or identity documents in chat.
+
+# Source review record
+
+General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
+
+- https://www.consumerfinance.gov/ask-cfpb/what-do-i-have-to-do-to-apply-for-a-mortgage-loan-en-144/

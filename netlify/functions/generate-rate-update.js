@@ -201,20 +201,7 @@ async function generateRateUpdate(formData) {
 exports.generateRateUpdate = generateRateUpdate;
 
 function requireDispatchAuth(event) {
-  const secret = process.env.DISPATCH_SECRET;
-  if (!secret) {
-    console.error("DISPATCH_SECRET env var is not set");
-    return { statusCode: 500, message: "Server misconfiguration: DISPATCH_SECRET not set" };
-  }
-
-  const authHeader = event.headers?.authorization || event.headers?.Authorization || "";
-  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : null;
-
-  if (!token || !safeTokenEquals(token, secret)) {
-    return { statusCode: 401, message: "Unauthorized" };
-  }
-
-  return null;
+  return require('./lib/dispatch-auth').requireDispatchAuth(event);
 }
 exports.requireDispatchAuth = requireDispatchAuth;
 

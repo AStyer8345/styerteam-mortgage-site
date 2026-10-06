@@ -1,8 +1,10 @@
+const { sessionAuthorization } = require('./admin-session');
 const { timingSafeEqual } = require('node:crypto');
 
 // All externally callable content/email handlers must authorize before parsing
 // input or invoking providers. Internal dispatcher/cron calls use core exports.
 function requireDispatchAuth(event) {
+  if (sessionAuthorization(event)) return null;
   const secret = process.env.DISPATCH_SECRET;
   if (!secret) return { statusCode: 503, message: 'Service unavailable' };
   const header = event.headers?.authorization || event.headers?.Authorization || '';

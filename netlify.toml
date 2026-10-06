@@ -12,10 +12,8 @@
   pretty_urls = false
 
 # ─── Secrets Scanning ─────────────────────────────────────────────────────────
-# marketing-command-center.html contains a SHA256 password hash (PASS_HASH) for
-# client-side auth on this internal tool page — not a real API secret.
-# ops.html is an internal dashboard — no real secrets, but may contain IDs that
-# pattern-match. Both pages are noindexed and not publicly linked.
+# Administrative source files contain operational IDs that may pattern-match.
+# They are excluded from the public package and served only by the admin gateway.
 # BUFFER_* env vars are vestigial (social posting migrated to direct LinkedIn/
 # Facebook APIs) — their values don't appear in active code.
 [build.environment]

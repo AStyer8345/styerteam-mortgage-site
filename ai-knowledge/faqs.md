@@ -2,8 +2,10 @@
 title: Frequently asked questions
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-15
-review_expires_on: 2026-09-13
+reviewed_on: 2026-10-05
+reviewed_by: Codex source review
+previous_owner_reviewed_on: 2026-07-15
+review_expires_on: 2026-12-04
 ---
 
 # Frequently asked questions
@@ -43,3 +45,10 @@ No. The assistant provides general information from reviewed website materials. 
 ## How do I reach Adam?
 
 Call or text (512) 956-6010, email adam@thestyerteam.com, schedule a short call, or use the secure application. Adam or his team will respond as soon as possible.
+
+# Source review record
+
+General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
+
+- https://www.consumerfinance.gov/owning-a-home/
+- https://styermortgage.com/contact.html

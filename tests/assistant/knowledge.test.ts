@@ -7,7 +7,7 @@ import { __resetKnowledgeCacheForTests, retrieveApprovedKnowledge } from '../../
 // Ranking tests use the corpus's known review window, not the wall clock.
 // This does not extend an approval: the separate boundary test below checks
 // the production loader's expiry rule against the file's actual metadata.
-const REVIEW_WINDOW_FIXTURE = new Date('2026-08-30T12:00:00.000Z');
+const REVIEW_WINDOW_FIXTURE = new Date('2026-10-05T12:00:00.000Z');
 
 beforeEach(() => {
   mock.timers.enable({ apis: ['Date'], now: REVIEW_WINDOW_FIXTURE });
@@ -104,3 +104,11 @@ test('a warm function stops using knowledge when its approval expires', async ()
   mock.timers.setTime(boundary + 1); // Deliberately keep the cached corpus.
   assert.ok((await retrieveApprovedKnowledge('bank statement', 100)).results.every(item => item.source !== 'bank-statement-loans.md'));
 });
+
+ test('current conventional knowledge distinguishes DU credit assessment from a universal score cutoff', async () => {
+ const result=await retrieveApprovedKnowledge('What is the minimum conventional credit score?',100);
+ const guidance=result.results.find(item=>item.source==='core-loan-programs.md' && item.section==='Conventional loans');
+ assert.ok(guidance);
+ assert.match(guidance.text,/does not require a minimum credit score/);
+ assert.match(guidance.text,/lender overlays/);
+ });

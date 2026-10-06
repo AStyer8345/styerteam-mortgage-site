@@ -427,5 +427,5 @@ function json(body: unknown, status: number, headers: Record<string, string>) {
 export const config: Config = {
   path: '/api/mortgage-assistant', method: ['GET', 'POST'],
   // Supplement per-session counters with platform-level abuse protection.
-  rateLimit: { action: 'rate_limit', aggregateBy: 'ip', windowLimit: 30, windowSize: 60 },
+  rateLimit: { action: 'rate_limit', aggregateBy: ['ip', 'domain'], windowLimit: 30, windowSize: 60 },
 };

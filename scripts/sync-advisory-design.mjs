@@ -1,3 +1,4 @@
+import './bundle-site-footer.mjs';
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { refineAdvisoryDesign } from '../netlify/functions/lib/refine-advisory-design.js';

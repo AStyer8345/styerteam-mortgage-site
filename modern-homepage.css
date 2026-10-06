@@ -117,7 +117,7 @@ body.home-pilot .said-no-tag{font-size:.72rem;letter-spacing:.1em;text-transform
 body.home-pilot .said-no-card h3{font-size:1.12rem;line-height:1.35;margin:0 0 12px}
 body.home-pilot .said-no-card p{font-size:.93rem;line-height:1.6;margin:0 0 10px}
 body.home-pilot .said-no-result{font-weight:600;color:#172b3d;border-top:1px solid #e6e0d4;padding-top:10px;margin-top:12px!important}
-body.home-pilot .said-no-note{font-size:.78rem;color:#6b7580;margin:18px 0 0}
+body.home-pilot .said-no-note{font-size:.78rem;color:#4a5562;margin:18px 0 0}
 body.home-pilot .said-no-cta{margin:20px 0 0;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
 @media (max-width:900px){body.home-pilot .said-no-grid{grid-template-columns:1fr}}
 

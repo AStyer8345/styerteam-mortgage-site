@@ -12,7 +12,7 @@ test('content auth fails closed and accepts only the configured bearer', async (
       assert.equal(requireDispatchAuth({ headers }).statusCode, 401);
     }
     assert.equal(requireDispatchAuth({ headers: { Authorization: 'Bearer test-only-dispatch-key' } }), null);
-    for (const name of ['generate-newsletter', 'generate-realtor-content', 'send-correction']) {
+    for (const name of ['generate-newsletter', 'generate-realtor-content', 'generate-rate-update', 'send-correction', 'dispatch']) {
       const { handler } = require('../netlify/functions/' + name);
       // Malformed body would cause 500/provider work if auth were bypassed.
       const response = await handler({ httpMethod: 'POST', headers: {}, body: '{' });

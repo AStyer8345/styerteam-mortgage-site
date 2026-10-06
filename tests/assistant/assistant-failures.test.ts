@@ -40,5 +40,5 @@ test('a saved notification queue is not reported as failed delivery', () => {
 
 
 test('assistant declares a platform limit in addition to stored session limits', () => {
-  assert.deepEqual(config.rateLimit, { action: 'rate_limit', aggregateBy: 'ip', windowLimit: 30, windowSize: 60 });
+  assert.deepEqual(config.rateLimit, { action: 'rate_limit', aggregateBy: ['ip', 'domain'], windowLimit: 30, windowSize: 60 });
 });

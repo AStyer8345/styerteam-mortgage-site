@@ -30,18 +30,8 @@ exports.handler = async (event) => {
   }
 
   // ── Auth ────────────────────────────────────────────────────────────────────
-  const secret = process.env.DISPATCH_SECRET;
-  if (!secret) {
-    console.error("DISPATCH_SECRET env var is not set");
-    return respond(500, { error: "Server misconfiguration: DISPATCH_SECRET not set" });
-  }
-
-  const authHeader = event.headers["authorization"] || event.headers["Authorization"] || "";
-  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : null;
-
-  if (!token || token !== secret) {
-    return respond(401, { error: "Unauthorized" });
-  }
+  const authError = require('./lib/dispatch-auth').requireDispatchAuth(event);
+  if (authError) return respond(authError.statusCode, {error:authError.message});
 
   // ── Parse body ──────────────────────────────────────────────────────────────
   let body;
@@ -51,6 +41,7 @@ exports.handler = async (event) => {
     return respond(400, { error: "Invalid JSON body" });
   }
 
+  if (!body || typeof body !== 'object' || Array.isArray(body)) return respond(400, {error:'Invalid JSON body'});
   const { type, ...formData } = body;
 
   if (!type) {
