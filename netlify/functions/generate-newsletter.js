@@ -1,3 +1,4 @@
+const { requireDispatchAuth } = require("./lib/dispatch-auth");
 const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildPrompt } = require("./lib/prompt-builder");
@@ -13,11 +14,14 @@ const { createGitHubFile, updateGitHubFile, addSitemapEntry, createAndSendCampai
 exports.handler = async (event) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Content-Type": "application/json",
   };
   if (event.httpMethod === "OPTIONS") return { statusCode: 204, headers, body: "" };
   if (event.httpMethod !== "POST") return { statusCode: 405, headers, body: JSON.stringify({ error: "Method not allowed" }) };
+  const authError = requireDispatchAuth(event);
+  if (authError) return { statusCode: authError.statusCode, headers, body: JSON.stringify({ error: authError.message }) };
+
   try {
     const formData = JSON.parse(event.body);
     const result = await generateNewsletter(formData);

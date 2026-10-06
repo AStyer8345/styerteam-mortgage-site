@@ -6,6 +6,12 @@ Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/
 
 Website forms and the assistant use LoanOS durable inquiry/outbox capture. Netlify is an independent capture transport using the same inquiry ID. Follow-up questionnaires retain the parent inquiry ID; backup alerts are failure-only. Do not restore the old parallel raw-webhook/contact writers.
 
+## Administrative access and generated runtime assets
+
+Administrative pages and task reports are served by `netlify/functions/admin.mts` after validating the existing Netlify `MCC_PASS`. `scripts/admin-paths.json` defines the exact private files; the public packager excludes them. The gateway issues an eight-hour secure HttpOnly cookie. Browser operator requests use that session; external automation retains the server bearer contract. Never embed either access secret in JavaScript or browser storage.
+
+Build compiles private admin assets, the canonical shared footer and reviewed assistant knowledge into their function bundles. After changing `site-footer.html`, run the build or advisory-design sync so the compiled footer stays current. Preserve local command-center browser state and the existing `mcc-state` cloud store.
+
 ## Repository
 
 | Item | Value |

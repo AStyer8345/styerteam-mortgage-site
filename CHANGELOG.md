@@ -1,3 +1,10 @@
+## 2026-10-05 — Technical audit remediation
+
+- Added server-side administrative access using the existing MCC code and secure session cookies; private administrative files no longer ship in the public package.
+- Hardened publishing and lead inputs, repaired the shared footer bundle and legacy Blobs initialization, restored reviewed assistant knowledge and corrected native rate-limit aggregation.
+- Repaired modal keyboard handling, stable-asset caching, first-screen reveal delay and homepage disclosure contrast. Existing forms, tracking, calculators and application destinations retained.
+- Validated 268 automated checks, typecheck, build and 163-URL SEO audit; hosted preview checks precede production release. See `audits/2026-10-05-technical-audit.md` for evidence and limitations.
+
 ## 2026-09-27 — styer-gbp-weekly: Non-QM Misconception Buster published, Week 39
 
 - Auto-published GBP post (249 words) via Publer job `6ab9522b00cdb6ac6f7a33a6`, status complete/zero failures, destination-verified in the GBP scheduled queue (post `6ab9522bf457afb74a3b52a4`).

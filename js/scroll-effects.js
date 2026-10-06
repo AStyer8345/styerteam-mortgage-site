@@ -10,7 +10,10 @@
   var isMobile = window.matchMedia('(max-width: 768px)').matches;
 
   function addReveal(el) {
-    if (el) el.classList.add('reveal');
+    if (!el) return;
+    // First-screen text must stay painted while deferred scripts initialize.
+    if (el.closest('.hero, .city-hero, .page-hero, .product-hero, main > section:first-of-type')) return;
+    el.classList.add('reveal');
   }
 
   function addRevealAll(selector, root) {

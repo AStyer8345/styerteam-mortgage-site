@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
-import { toolResultMessage } from '../../netlify/functions/mortgage-assistant.mts';
+import { config, toolResultMessage } from '../../netlify/functions/mortgage-assistant.mts';
 
 test('LoanOS failures never produce a success claim', () => {
   const message = toolResultMessage('create_or_update_website_lead', { ok: false, status: 'unavailable', error: { message: 'LoanOS is temporarily unavailable.' } });
@@ -36,4 +36,9 @@ test('a saved notification queue is not reported as failed delivery', () => {
   const message = toolResultMessage('create_or_update_website_lead', { ok: true, status: 'created', data: { notificationsQueued: true, ownerNotified: null } });
   assert.match(message, /follow-up queue/);
   assert.doesNotMatch(message, /could not|was notified|email.*sent/);
+});
+
+
+test('assistant declares a platform limit in addition to stored session limits', () => {
+  assert.deepEqual(config.rateLimit, { action: 'rate_limit', aggregateBy: ['ip', 'domain'], windowLimit: 30, windowSize: 60 });
 });

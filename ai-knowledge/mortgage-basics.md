@@ -2,8 +2,10 @@
 title: Mortgage basics, payments, rates, and costs
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-16
-review_expires_on: 2026-09-14
+reviewed_on: 2026-10-05
+reviewed_by: Codex source review
+previous_owner_reviewed_on: 2026-07-16
+review_expires_on: 2026-12-04
 ---
 
 # What is a mortgage?
@@ -81,3 +83,10 @@ The loan term is the scheduled repayment period. Amortization is the process of 
 # Prequalification and preapproval
 
 These terms are not used identically by every lender. A prequalification may be based on preliminary or unverified information. A preapproval generally involves a more complete application and review, but it is still conditional and is not a final loan approval or assurance of closing. Property, documentation, credit, program, and underwriting conditions remain.
+
+# Source review record
+
+General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
+
+- https://www.consumerfinance.gov/ask-cfpb/whats-a-lock-in-or-a-rate-lock-en-143/
+- https://www.consumerfinance.gov/owning-a-home/loan-estimate/

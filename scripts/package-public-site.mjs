@@ -9,8 +9,10 @@ const destination = path.join(root, '.site-dist');
 const publicDirectories = new Set(['assets', 'css', 'js', 'blog', 'loans', 'rates', 'realtor-updates', 'resources', 'scenarios', 'updates', 'downloads']);
 const publicExtensions = /\.(html|css|js|svg|png|jpe?g|webp|ico|json|xml|txt|woff2?|pdf)$/i;
 const rootData = new Set(['rates.json', 'recent-updates.json', 'task-reports.json', 'robots.txt', 'llms.txt', 'acd320ce4aaac882bfb455892bdcf208.txt', 'sitemap.xml', '_redirects', '_headers', '31a45519eb8335e7c25e45e696e834c6.txt']);
+const privateFiles = new Set(JSON.parse(fs.readFileSync(path.join(root, 'scripts/admin-paths.json'), 'utf8')));
 const tracked = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);
 const files = tracked.filter(file => {
+  if (privateFiles.has(file)) return false;
   if (file.startsWith('.') || file.includes('/originals/') || file.includes('_TEMPLATE')) return false;
   const parts = file.split('/');
   if (parts.length === 1) return rootData.has(file) || (/\.(html|css|js|svg|png|ico|pdf)$/i.test(file) && file !== 'server.js');

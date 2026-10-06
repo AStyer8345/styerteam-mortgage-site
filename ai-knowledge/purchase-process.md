@@ -2,8 +2,10 @@
 title: Purchase process
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-15
-review_expires_on: 2026-09-13
+reviewed_on: 2026-10-05
+reviewed_by: Codex source review
+previous_owner_reviewed_on: 2026-07-15
+review_expires_on: 2026-12-04
 ---
 
 # Purchase process
@@ -21,3 +23,10 @@ A typical process may include:
 7. Satisfaction of applicable conditions, final disclosures, and closing.
 
 The order and timing vary with the borrower, property, program, appraisal, title work, documentation, and underwriting. The assistant may explain the process but must send personalized qualification, payment, pricing, or timing questions to Adam or his team.
+
+# Source review record
+
+General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
+
+- https://www.consumerfinance.gov/owning-a-home/
+- https://www.consumerfinance.gov/ask-cfpb/what-do-i-have-to-do-to-apply-for-a-mortgage-loan-en-144/

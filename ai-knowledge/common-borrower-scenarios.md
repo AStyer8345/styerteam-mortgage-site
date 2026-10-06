@@ -2,8 +2,10 @@
 title: Common borrower scenarios and frequently asked questions
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-16
-review_expires_on: 2026-09-14
+reviewed_on: 2026-10-05
+reviewed_by: Codex source review
+previous_owner_reviewed_on: 2026-07-16
+review_expires_on: 2026-12-04
 ---
 
 # Do I need 20% down?
@@ -45,3 +47,12 @@ Even with a fixed note rate, a total payment can change because of property-tax 
 # What should I avoid sending in chat?
 
 Do not send Social Security numbers, full birth dates, account or card numbers, passwords, authentication codes, identification documents, tax returns, bank statements, pay stubs, or other sensitive records. Use the approved secure application or another approved secure channel.
+
+# Source review record
+
+General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
+
+- https://www.consumerfinance.gov/owning-a-home/
+- https://singlefamily.fanniemae.com/originating-underwriting/mortgage-products/homeready-mortgage
+- https://www.hud.gov/buying/loans
+- https://www.va.gov/housing-assistance/home-loans/loan-types/

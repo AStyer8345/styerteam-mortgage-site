@@ -810,9 +810,8 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
 
 <script>
 // ═══════════════════════════════════════════════════════════════
-// CONFIG — change password here
+// Access is verified by the server before this document is served.
 // ═══════════════════════════════════════════════════════════════
-const PASS_HASH = '4e0b03f3d3e2d57646ade134211c3516a2c0f7af971a36cdf8f4ad2dd0b74bec';
 
 // ═══════════════════════════════════════════════════════════════
 // SCHEDULE DATA
@@ -899,13 +898,11 @@ function setSyncStatus(state) {
 
 // ── CLOUD SAVE (fire-and-forget) ─────────────────────────────────────────────
 async function cloudSave() {
-  const pass = sessionStorage.getItem('mcc_pass');
-  if (!pass) return;
   setSyncStatus('saving');
   try {
     const res = await fetch('/.netlify/functions/mcc-data', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-mcc-auth': pass },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(S)
     });
     setSyncStatus(res.ok ? 'saved' : 'error');
@@ -914,12 +911,10 @@ async function cloudSave() {
 
 // ── CLOUD LOAD (called on init) ───────────────────────────────────────────────
 async function cloudLoad() {
-  const pass = sessionStorage.getItem('mcc_pass');
-  if (!pass) return; // not logged in this tab session — keep localStorage data
   setSyncStatus('loading');
   try {
     const res = await fetch('/.netlify/functions/mcc-data', {
-      headers: { 'x-mcc-auth': pass }
+      credentials: 'same-origin'
     });
     if (res.ok) {
       const data = await res.json();
@@ -952,27 +947,13 @@ function save() {
 // ═══════════════════════════════════════════════════════════════
 // AUTH
 // ═══════════════════════════════════════════════════════════════
-async function checkPass() {
-  const v = document.getElementById('lock-input').value;
-  const enc = new TextEncoder().encode(v);
-  const buf = await crypto.subtle.digest('SHA-256', enc);
-  const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
-  if (hash === PASS_HASH) {
-    sessionStorage.setItem('mcc_auth', '1');
-    sessionStorage.setItem('mcc_pass', v); // used as auth header for cloud API calls
-    document.getElementById('lock-screen').classList.add('hidden');
-    document.getElementById('app').classList.add('visible');
-    init();
-  } else {
-    document.getElementById('lock-error').textContent = 'Incorrect code.';
-    document.getElementById('lock-input').value = '';
-  }
-}
-function lockApp() {
-  sessionStorage.removeItem('mcc_auth');
+sessionStorage.removeItem('mcc_pass');
+function checkPass() { location.reload(); }
+async function lockApp() {
+  await fetch('/api/admin-session', {method:'DELETE'});
   location.reload();
 }
-if (sessionStorage.getItem('mcc_auth') === '1') {
+{
   document.getElementById('lock-screen').classList.add('hidden');
   document.getElementById('app').classList.add('visible');
 }

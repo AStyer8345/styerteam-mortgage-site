@@ -2,8 +2,10 @@
 title: Funds, closing costs, disclosures, and escrow
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-16
-review_expires_on: 2026-09-14
+reviewed_on: 2026-10-05
+reviewed_by: Codex source review
+previous_owner_reviewed_on: 2026-07-16
+review_expires_on: 2026-12-04
 ---
 
 # Down payment, closing costs, and cash to close
@@ -16,7 +18,7 @@ For covered transactions, the Loan Estimate presents estimated loan terms, proje
 
 # Closing Disclosure
 
-The Closing Disclosure presents final loan terms, projected payments, and closing figures for covered transactions. Borrowers generally receive it before closing so they can compare it with the Loan Estimate and ask questions. A material discrepancy should be raised with the lender or settlement provider before signing.
+The Closing Disclosure presents final loan terms, projected payments, and closing figures for covered transactions. For covered transactions, borrowers must receive the Closing Disclosure at least three business days before closing, so they can compare it with the Loan Estimate and ask questions. Applicable disclosure and waiting-period rules require lender review. A material discrepancy should be raised with the lender or settlement provider before signing.
 
 # Gift funds
 
@@ -37,3 +39,10 @@ Reserves are eligible assets remaining after closing, often measured in months o
 # Escrow accounts
 
 An escrow account holds funds collected with the mortgage payment for items such as property taxes and homeowners insurance. The servicer pays covered bills when due. Escrow shortages or changes in taxes and insurance can change the total payment even on a fixed-rate loan. Whether escrow can be waived depends on law, program, loan-to-value, lender policy, and transaction details.
+
+# Source review record
+
+General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
+
+- https://www.consumerfinance.gov/owning-a-home/loan-estimate/
+- https://www.consumerfinance.gov/owning-a-home/closing-disclosure/

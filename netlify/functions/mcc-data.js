@@ -9,12 +9,14 @@
 //
 // Netlify Blobs is built into Netlify — no separate database needed.
 
-const { getStore } = require("@netlify/blobs");
+const { getStore, connectLambda } = require("@netlify/blobs");
 
+const { equal, sessionAuthorization } = require('./lib/admin-session');
 const HEADERS = {
   "Access-Control-Allow-Origin":  "*",
   "Access-Control-Allow-Headers": "Content-Type, x-mcc-auth",
   "Content-Type": "application/json",
+  "Cache-Control": "private, no-store",
 };
 
 function respond(statusCode, body) {
@@ -31,16 +33,23 @@ exports.handler = async (event) => {
   const pass = process.env.MCC_PASS;
   if (!pass) {
     console.error("MCC_PASS env var is not set");
-    return respond(500, { error: "Server misconfiguration: MCC_PASS not set" });
+    return respond(503, { error: "Service unavailable" });
   }
 
   const incoming = event.headers["x-mcc-auth"] || event.headers["X-Mcc-Auth"] || "";
-  if (incoming !== pass) {
+  if (!sessionAuthorization(event) && !equal(incoming, pass)) {
     return respond(401, { error: "Unauthorized" });
   }
 
   // ── Storage ───────────────────────────────────────────────────────────────
-  const store = getStore("mcc-state");
+  let store;
+  try {
+    // Legacy Lambda handlers receive Blobs context on the event, not ambient globals.
+    if (event.blobs) connectLambda(event);
+    store = getStore({ name: 'mcc-state' });
+  } catch {
+    return respond(503, {error:'Cloud storage unavailable'});
+  }
 
   // GET — return stored state
   if (event.httpMethod === "GET") {
@@ -48,7 +57,7 @@ exports.handler = async (event) => {
       const data = await store.get("current");
       return { statusCode: 200, headers: HEADERS, body: data || "null" };
     } catch (err) {
-      console.error("Blob GET failed:", err);
+      console.error("MCC cloud read failed");
       return respond(500, { error: "Failed to read data" });
     }
   }
@@ -57,14 +66,15 @@ exports.handler = async (event) => {
   if (event.httpMethod === "POST") {
     const body = event.body || "";
     // Validate JSON before storing
-    try { JSON.parse(body); } catch {
+    if (Buffer.byteLength(body, 'utf8') > 1048576) return respond(413, {error:'Body too large'});
+    try { const data = JSON.parse(body); if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Invalid shape'); } catch {
       return respond(400, { error: "Invalid JSON body" });
     }
     try {
       await store.set("current", body);
       return respond(200, { ok: true });
     } catch (err) {
-      console.error("Blob SET failed:", err);
+      console.error("MCC cloud save failed");
       return respond(500, { error: "Failed to save data" });
     }
   }

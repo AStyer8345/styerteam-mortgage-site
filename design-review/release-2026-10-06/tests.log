@@ -1,0 +1,382 @@
+
+> styerteam-mortgage-site@1.0.0 test
+> node --test tests/*.test.js && tsx --test tests/assistant/*.test.ts
+
+✔ admin sessions reject tampering, expiry, changed access code and cross-origin writes (3.663042ms)
+✔ private files are explicitly excluded from public packaging and browser credentials removed (2.729792ms)
+✔ buydown schedule labels match actual principal and interest, including print (123.535292ms)
+✔ all four publishing builders inherit the advisory shell without rewriting dates or destinations (8.695541ms)
+✔ refinance handoff carries exact typed inputs, calculated results and date (1.349708ms)
+✔ refinance handoff does not send an invalid entry or silently substitute a rounded slider value (0.40225ms)
+✔ thin AEO overlap pages redirect into canonical hubs (2.42725ms)
+✔ legacy buyer and housing URLs are removed from sitemap (0.131875ms)
+✔ rolling Austin housing market page self-canonicalizes (0.0675ms)
+✔ paid DPA guide is isolated from organic indexation (0.314167ms)
+✔ llms.txt exposes canonical answer-engine paths (0.167917ms)
+✔ CalcSuite is exposed with the core math helpers (0.95675ms)
+✔ monthlyPayment: standard 30-year case (0.210542ms)
+✔ monthlyPayment: zero-rate loan divides evenly (0.151542ms)
+✔ monthlyPayment: 15-year case (0.1175ms)
+✔ amortize matches closed-form remaining balance (0.205917ms)
+✔ DSCR reference case: rent / PITIA at the documented defaults (0.124417ms)
+✔ refinance break-even reference case (0.219125ms)
+✔ buydown reference cases (payment on reduced rate, full term) (0.178541ms)
+✔ asset depletion divisors reference case (0.143708ms)
+✔ affordability: max price accounts for taxes and insurance, not P&I alone (0.381083ms)
+✔ affordability: corrected closed-form gives ~416,483 at documented defaults (0.144167ms)
+✔ buydown: annual tax/insurance frequency still divides by 12 (12x PITI regression net) (0.238417ms)
+✔ buydown: share URL round-trips escrow fields individually (0.350917ms)
+✔ dscr page: no flattering static placeholder before JS runs (0.206209ms)
+✔ asset depletion: coverage target marker sits where the fill maps 100% (50%) (0.239584ms)
+✔ calculators hub schema lists all 8 calculators including DSCR + asset depletion (0.127542ms)
+✔ wrap calculator has no dead inputs (0.934625ms)
+✔ currency inputs use comma formatting with comma-tolerant parsers (2.364875ms)
+✔ wrap calculator money inputs keep their existing comma formatting (0.279084ms)
+✔ shared monthlyPayment stays accurate for tiny positive rates (0.201625ms)
+✔ DSCR parser rejects blank, malformed, partial and nonfinite inputs (0.23125ms)
+✔ DSCR validation rejects missing costs and out-of-range rate without discarding valid zero expenses (0.157541ms)
+✔ inline DSCR payment matches independent amortizing payment oracle including near zero (0.132917ms)
+✔ DSCR currency formatter preserves invalid signs/text and exact fractional input (22.603416ms)
+✔ carried DSCR and refinance analysis agrees with stable on-page payments (2.133958ms)
+✔ cash proceeds reconcile and PITIA uses annual taxes/insurance (2.753334ms)
+✔ zero interest uses principal divided by number of payments (0.777958ms)
+✔ near-zero positive rates stay finite and match zero-rate limit (0.141917ms)
+✔ target-cash scenario solves after percentage closing charges (0.074667ms)
+✔ cash target above LTV assumption remains visibly flagged (0.064834ms)
+✔ negative proceeds retain cash needed to close (0.056209ms)
+✔ existing penalty and other costs reduce proceeds dollar for dollar (0.210709ms)
+✔ monthly HOA counts in PITIA and current payment, not closing costs (0.070917ms)
+✔ zero rent is retained, not treated as a missing field (0.0815ms)
+✔ blank, negative and nonfinite values do not produce available results (0.339542ms)
+✔ no desired cash is necessary in selected-LTV mode (0.2295ms)
+✔ ad field limits are respected (0.765292ms)
+✔ cash-out payments match independent discounted-payment oracle across terms and rates (2.952625ms)
+✔ whitespace, malformed numbers and booleans are invalid rather than zero (0.191458ms)
+✔ snapshot retains every editable input and calculated result without identity data (0.945959ms)
+✔ stored results are recomputed and invalid/expired snapshots cannot restore (0.222125ms)
+✔ cash needed and zero-loan target have neutral explicit warnings (0.118917ms)
+✔ cash-out FAQ markup matches visible answers and retains established form contracts (2.628ms)
+✔ cash-out and ad destinations resolve to local public pages and valid anchors (4.168583ms)
+✔ internal campaign dashboard cannot enter the public package or sitemap (0.517375ms)
+✔ dallas guide is discoverable and has accurate, visible structured answers (2.859709ms)
+✔ dallas guide keeps a valid path to existing intake and real local content targets (3.211041ms)
+✔ san-antonio guide is discoverable and has accurate, visible structured answers (0.286459ms)
+✔ san-antonio guide keeps a valid path to existing intake and real local content targets (3.3005ms)
+✔ content auth fails closed and accepts only the configured bearer (120.899958ms)
+✔ public conversion CTA labels route to the matching destination (786.606792ms)
+✔ editorial public pages load the current rollout stylesheet (83.0335ms)
+✔ internal and noindex utility pages remain outside the editorial rollout (1.802209ms)
+✔ every indexable nested loan page retains its public header and loan identity (1.603459ms)
+✔ the shared stylesheet owns the approved public header treatment (0.157ms)
+✔ wide guide tables use accessible horizontal scroll regions (0.237ms)
+✔ homepage planning examples preserve paths to specialist financing (0.578958ms)
+✔ premium homepage renders proof, tools and attributed reviews in a stable order (0.290209ms)
+✔ saved DSCR preserves calculator math including zero interest and dollar down payments (15.878417ms)
+✔ refinance review preserves comparison and does not invent a break-even with negative savings (0.553167ms)
+✔ saved analysis strips unrecognized and contact data from its format (0.2635ms)
+✔ established sitemap, robots and canonical destinations are preserved (2534.065125ms)
+✔ private page never loads analytics or public assistant and blocks injected third-party scripts (0.200458ms)
+✔ public templates include shared styling, behavior and Apply Now (0.262667ms)
+✔ form attribution reuses first touch and recovers the clicked CTA without PII (3.134666ms)
+✔ purchase journey preserves attribution and uses shared capture (1.043458ms)
+✔ sitewide analytics records first touch and CTA context for later submission (0.070708ms)
+✔ every sitemap landing page loads first-touch analytics (33.091125ms)
+✔ lead intake propagates first-touch and CTA attribution to downstream systems (0.150042ms)
+✔ lead intake sends normalized attribution in the live notification payload (2.904666ms)
+✔ both first-touch writers distinguish Gemini and Bard from Google and preserve earlier evidence (9.265417ms)
+✔ Austin market pages use the complete July 2026 Unlock MLS snapshot (0.892708ms)
+✔ priority pages keep approved conditional product language (4.581208ms)
+✔ asset-depletion page cites current agency calculation sources (0.327083ms)
+✔ quick quote redirect does not put contact details in the URL (0.906875ms)
+✔ lead forms only report success after a capture endpoint accepts the lead (0.092209ms)
+✔ legacy hero quote flow binds only explicitly designated quote forms (7.029625ms)
+✔ FAQ accordions toggle hidden panels open and closed (0.1235ms)
+✔ Non-QM keeps its capture identity through the shared scenario form (0.262792ms)
+✔ homepage prioritizes the short conversation and preserves the secure application (0.950958ms)
+✔ pre-approval guide routes pre-approval and application CTAs by intent (0.425834ms)
+✔ premium homepage uses the authentic photo and preserves the direct inquiry contract (1.237625ms)
+✔ scenario page puts the short conversion form first and keeps the secure portal secondary (0.213375ms)
+✔ thank-you page offers portal as an efficient next step without application-first wording (0.56725ms)
+✔ thank-you page lets GTM load the Google Ads library (0.197042ms)
+✔ thank-you page strips legacy contact parameters before GTM initializes (0.179792ms)
+✔ lead intake dispatches the durable outbox through the existing automation (0.190041ms)
+✔ owner delivery is explicitly distinct from capture and recoverable dispatch (0.09825ms)
+✔ custom notification routes have a registered Netlify email fallback (0.592167ms)
+✔ custom owner-notification requests have bounded network waits (0.408959ms)
+✔ owner notification routes default to the forwarding-safe Styer Team inbox (0.169833ms)
+✔ inline lead handlers reject non-2xx responses before redirecting (0.174708ms)
+✔ subscription funnels distinguish confirmed enrollment from manual recovery (0.166375ms)
+✔ analytics.js does not duplicate lead or phone events already emitted by script.js (0.06225ms)
+✔ required complex-mortgage routes and metadata exist (0.668166ms)
+✔ direct rate publishing endpoint requires the dispatch secret (0.181791ms)
+✔ rate JSON updater refuses to stamp incomplete pasted rates as fresh (0.103791ms)
+✔ Austin rates page handles stale public rate data honestly (0.140542ms)
+✔ unconfigured durable capture cannot report success or notify (4.525791ms)
+✔ capture failure stops all downstream effects (2.825208ms)
+✔ failed immediate dispatch leaves a captured, recoverable outbox (2.12325ms)
+✔ handoff supplies one stored inquiry ID and never claims delivered email (1.208875ms)
+✔ marketing failure cannot erase the stored inquiry (1.102333ms)
+✔ internal tests skip every marketing request (0.530708ms)
+✔ test mode cannot target a borrower (0.337958ms)
+✔ explicit marketing consent does not overwrite an existing Mailchimp unsubscribe (0.659125ms)
+✔ honeypot exits without calling any external service (0.682ms)
+✔ scenario contact without marketing consent never enrolls a borrower (1.443667ms)
+✔ authoritative capture retains independent self-reported discovery without changing automatic source or inquiry identity (2.776ms)
+✔ invalid lead input is rejected before external requests: null (0.599208ms)
+✔ invalid lead input is rejected before external requests: [] (0.463333ms)
+✔ invalid lead input is rejected before external requests: {"email":42} (0.359458ms)
+✔ invalid lead input is rejected before external requests: {"email":"invalid"} (0.359167ms)
+✔ invalid lead input is rejected before external requests: {"email":"a@example.com","situation":"xxxxxxxxxxxxxxxxxxxxxx (0.386625ms)
+✔ routes a large bank-statement business-owner scenario to priority (1.244125ms)
+✔ does not reject a lower-credit but economically strong investor scenario (0.413458ms)
+✔ routes the low-loan low-income distressed combination to specialized review (0.1885ms)
+✔ keeps a middle scenario in human review (0.17175ms)
+✔ calendar labels reach scheduling directly without claiming a booking (1.577125ms)
+✔ scoring uses only legitimate mortgage and transaction fields (0.366666ms)
+✔ long guides gain working jump links without changing existing heading IDs (1.817541ms)
+✔ paragraph splitting preserves every word and keeps inline links intact (1.380709ms)
+✔ newly published articles receive the same readability treatment (13.938542ms)
+✔ MCC connects legacy Blobs after auth and preserves state through cookie reads (3.584875ms)
+✔ shared publishing footer is compiled from the canonical HTML (0.719542ms)
+✔ premium homepage preserves every existing metadata tag and JSON-LD block (1.041958ms)
+✔ navigation, footer, inquiry markup and FAQ answers remain byte-identical (0.339292ms)
+✔ homepage retains every original link destination, paragraph and capture script (1.667375ms)
+✔ teaser reuses established calculator math and explains excluded costs (0.383292ms)
+✔ interior design rollout preserves metadata, structured data, lead forms and shared navigation (2442.628083ms)
+✔ interior design rollout retains original prose, headings, destinations and capture script references (2053.91125ms)
+✔ professional referral cluster exposes complete metadata and safe Texas licensing copy (1.404708ms)
+✔ professional forms collect routing metadata and protect sensitive data (0.978458ms)
+✔ advisor and CPA pages link every alternative documentation path (0.338583ms)
+✔ professional assistant modes are wired through widget and server retrieval (0.733ms)
+✔ new indexable cluster pages are present in sitemap and llms registry (0.155542ms)
+✔ complex-income pages load the reusable modern program layout (3.962166ms)
+✔ legacy program enhancements preserve full answers, later FAQs and related links (2.255916ms)
+✔ comparison scroll regions wrap only tables and expose a keyboard label (1.824667ms)
+✔ authored complex-income guides keep their chosen structure and native disclosures (0.332583ms)
+✔ every warm editorial hero uses a visible navy secondary action (0.459667ms)
+✔ modern loan heroes keep scenario review primary and scheduling secondary (2.439167ms)
+✔ self-employed qualification paths link to full guides and preserve scenario intake (0.315333ms)
+✔ pre-approval enrichment happens only after the primary lead is captured (1.017458ms)
+✔ optional enrichment captures attribution without adding sensitive document requests (0.35625ms)
+✔ qualification follow-up analytics do not include contact PII (0.123917ms)
+✔ legacy quote forms normalize field-name variants before lead intake (0.5385ms)
+✔ legacy quote forms pass persisted first-touch attribution without contact PII in analytics (0.108ms)
+✔ generated page footers use the approved 140+ review floor (0.706084ms)
+✔ canonical extensionless variants are force-redirected (1.0905ms)
+✔ Search Console legacy 404 routes resolve to current canonical pages (0.481083ms)
+✔ qualified conversion events use the shared measurement vocabulary (0.190625ms)
+✔ recent updates never promotes error or noindex pages (0.192625ms)
+✔ recent updates ignores bulk sitewide HTML rollouts (0.129834ms)
+✔ all five journeys retain intent and every initial answer in the existing intake contract (14.96775ms)
+✔ both transports use the same inquiry and never accept false primary receipts (0.530584ms)
+✔ network errors reject capture and leave retries to the same inquiry (0.124208ms)
+✔ homepage conversation replaces product choices without retiring specialist journeys (1.187792ms)
+✔ backup acceptance is immediate even while the primary is pending (0.110958ms)
+✔ primary acceptance is immediate even while the backup is pending (0.08475ms)
+✔ redirected HTML and malformed primary receipts are not capture proof (0.125458ms)
+✔ goal-only homepage inquiries retain their purpose without a required message (0.126166ms)
+✔ self-reported discovery stays separate from automatic attribution and enters owner notes only when answered (0.122958ms)
+ℹ tests 174
+ℹ suites 0
+ℹ pass 174
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4747.250292
+✔ private gateway hides assets, issues secure sessions and supports logout without external work (15.742083ms)
+✔ assistant analytics includes the required funnel events (2.0265ms)
+✔ analytics payload contains only non-sensitive conversation properties (0.322209ms)
+✔ conversation abandonment is emitted only after a conversation and before conversion (0.138791ms)
+✔ production assistant events reach the existing Google tag without transcript data (2.519375ms)
+✔ synthetic tests are excluded from production Google Analytics (0.794541ms)
+✔ LoanOS failures never produce a success claim (0.405083ms)
+✔ lead success reports notification failures honestly (0.080083ms)
+✔ gateway has deterministic fallbacks for model failures (0.13575ms)
+✔ gateway enforces persistent rate limiting and lead consent (0.107583ms)
+✔ a saved notification queue is not reported as failed delivery (0.063083ms)
+✔ assistant declares a platform limit in addition to stored session limits (0.341959ms)
+✔ a short purchase reply retains the visitor previous mortgage topic (0.517417ms)
+✔ a complete new question is not contaminated by old turns (0.073583ms)
+✔ identity questions receive a direct and friendly disclosure (0.949583ms)
+✔ company and credential questions receive guaranteed factual answers (1.100833ms)
+✔ thanks and goodbyes receive a warm close instead of the knowledge fallback (0.574583ms)
+✔ sequence numbers come from the widget turn count and never regress (0.163292ms)
+✔ approved knowledge is eligible for grounded substantive answers (6.794208ms)
+✔ company identity is retrievable for natural employer questions (4.714042ms)
+✔ core FHA credit-score guidance is retrievable (4.476708ms)
+✔ conventional DTI guidance is retrievable using the failed live wording (3.79675ms)
+✔ VA credit guidance is retrievable using conversational wording (11.503542ms)
+✔ retrieves approved guidance for: What's the difference between interest rate and APR? (18.196459ms)
+✔ retrieves approved guidance for: What is debt-to-income ratio? (1.688291ms)
+✔ retrieves approved guidance for: Can I use gift funds for my down payment? (2.868208ms)
+✔ retrieves approved guidance for: What happens if the appraisal is low? (1.640584ms)
+✔ retrieves approved guidance for: How does a cash-out refinance work? (1.550625ms)
+✔ retrieves approved guidance for: Do I need 20% down? (4.380667ms)
+✔ retrieves approved guidance for: Why did mortgage rates change today? (2.685542ms)
+✔ retrieves approved guidance for: Should I lock my mortgage rate or float? (1.315083ms)
+✔ retrieves approved guidance for: What happens if my rate lock expires? (4.888666ms)
+✔ retrieves approved guidance for: Why is APR different from the interest rate? (1.393167ms)
+[mortgage-assistant] knowledge review needed {
+  version: 'approved-2026-10-05-source-review-v6',
+  expiredFiles: [
+    'company-information.md',
+    'compliance-boundaries.md',
+    'property-appraisal-and-insurance.md',
+    'professional-partners-and-retirement.md'
+  ]
+}
+[mortgage-assistant] knowledge review needed {
+  version: 'approved-2026-10-05-source-review-v6',
+  expiredFiles: [
+    'company-information.md',
+    'self-employed-borrowers.md',
+    'bank-statement-loans.md',
+    'dscr-loans.md',
+    'asset-depletion.md',
+    'compliance-boundaries.md',
+    'property-appraisal-and-insurance.md',
+    'professional-partners-and-retirement.md'
+  ]
+}
+✔ knowledge loader excludes expired content after its final approved UTC day (8.786125ms)
+[mortgage-assistant] knowledge review needed {
+  version: 'approved-2026-10-05-source-review-v6',
+  expiredFiles: [
+    'company-information.md',
+    'compliance-boundaries.md',
+    'property-appraisal-and-insurance.md',
+    'professional-partners-and-retirement.md'
+  ]
+}
+[mortgage-assistant] knowledge review needed {
+  version: 'approved-2026-10-05-source-review-v6',
+  expiredFiles: [
+    'company-information.md',
+    'self-employed-borrowers.md',
+    'bank-statement-loans.md',
+    'dscr-loans.md',
+    'asset-depletion.md',
+    'compliance-boundaries.md',
+    'property-appraisal-and-insurance.md',
+    'professional-partners-and-retirement.md'
+  ]
+}
+✔ a warm function stops using knowledge when its approval expires (4.969416ms)
+✔ current conventional knowledge distinguishes DU credit assessment from a universal score cutoff (2.021792ms)
+✔ monthly principal and interest uses deterministic amortization math (0.607542ms)
+✔ payment estimate returns itemized payment and cash-to-close range (0.123292ms)
+✔ payment path asks one question at a time, never asks for a name, and does not repeat known facts (2.44575ms)
+✔ qualification clarification explains monthly debts without losing the pending question or looping (0.373625ms)
+✔ qualification accepts no recurring monthly debts as zero and advances (0.095ms)
+✔ completed payment estimate identifies every assumption and compares down-payment approaches (13.134ms)
+✔ pricing refuses missing or expired configuration and never invents a rate (1.327416ms)
+✔ missing market snapshot still provides value and gathers a short pricing scenario one question at a time (1.077542ms)
+✔ a short monthly-payment reply after another completed path starts the payment flow without inventing a scenario (0.318875ms)
+✔ configured pricing uses only an illustrative midpoint, required disclosure, and no APR calculation (0.628125ms)
+✔ Freddie Mac PMMS answers current-rate questions immediately as a national ballpark (0.508958ms)
+✔ Texas planning estimate uses the 2% annual tax shortcut without inventing other costs (0.802959ms)
+✔ payment strategy refuses to model a clearly out-of-state property (0.696208ms)
+✔ detects all required complex-situation families (0.375333ms)
+✔ the failed live S-corp scenario is understood in one turn and never repeats the prompt (1.33825ms)
+✔ a pasted S-corp scenario routes directly to complex strategy without requiring an opening choice (0.716958ms)
+✔ urgent flip-completion financing gets a useful assessment and contact handoff (0.610542ms)
+✔ a detailed unrecognized complex description advances instead of repeating itself (0.3225ms)
+✔ complex assessment explains paths, obstacles, facts, documents, and applying now (0.313667ms)
+✔ qualification result is explicitly an initial assessment, not a preapproval (0.18975ms)
+✔ structured lead context contains strategy facts and transcript attachment instructions (0.31475ms)
+✔ accepts complete date-stamped market configuration and selects by loan type (2.724083ms)
+✔ rejects missing, disabled, malformed, and expired market configuration (0.118375ms)
+✔ estimate assumptions require reviewed non-expired server configuration (0.108084ms)
+✔ accepts a date-stamped Freddie Mac PMMS benchmark and rejects stale or unapproved sources (0.106125ms)
+✔ accepts the reviewed Texas-only property-tax planning rate (0.077083ms)
+✔ blocks and redacts prohibited sensitive information before the model (0.946875ms)
+✔ flags common prompt injection patterns (0.242291ms)
+✔ rejects prohibited outcome claims in model output (0.353375ms)
+✔ allows a clear statement that program guidance does not guarantee approval (0.172875ms)
+✔ unsupported rate questions receive a useful, time-sensitive explanation (0.18ms)
+✔ other unsupported questions invite useful, non-sensitive context (0.195917ms)
+✔ unsupported replies offer buttons that answer their own final question (0.436417ms)
+✔ unsupported replies never re-ask a question the visitor already answered (0.247792ms)
+✔ the plain notice stays available for callers that only need text (0.061333ms)
+✔ rate questions about "your rates" route to the rate review page (0.762125ms)
+✔ unsupported questions still recommend the right approved calculator (0.839791ms)
+✔ short reviews and pre-approval requests use the proven contact form while explicit full applications use My1003 (1.125792ms)
+✔ derives a high-intent purchase state without using protected characteristics (4.400833ms)
+✔ derives urgency and investment intent from a flip-completion request (8.136209ms)
+✔ merges validated prior state when early details leave the recent transcript (1.034083ms)
+✔ tracks an explicitly stated property state and lets a newer Texas correction replace it (0.442917ms)
+✔ selects value-first playbook guidance by stage and concern (0.715958ms)
+✔ conversation evaluator catches repeated and interrogating answers (0.342042ms)
+✔ high-intent next-step questions produce a direct handoff instead of a fallback (0.5715ms)
+✔ purchase discovery advances one question at a time without assuming a program or calculator (2.68125ms)
+✔ high-price high-cash discovery explores strategy instead of minimum down payment (1.459916ms)
+✔ cash choices advance and direct mortgage questions escape guided discovery (0.585208ms)
+✔ a goal answer to a topical question stays with the knowledge path (0.124375ms)
+✔ the assumption checker blocks products, calculators, CTAs, and invented rates during discovery (1.010958ms)
+✔ general answers must use the director question and cannot invent a rate-and-payment illustration (0.366833ms)
+✔ calculator gate opens only when the visitor asks for numbers (1.001041ms)
+✔ refinance and investment use separate deterministic discovery maps (0.731ms)
+✔ private analysis accepts ciphertext only, restores by capability, expires and deletes (14.851459ms)
+✔ missing capabilities, cross-origin writes and plaintext are rejected (0.838917ms)
+✔ storage failure never reports a saved result (0.257833ms)
+✔ scripted evaluation: first-time buyer payment (16.394125ms)
+✔ scripted evaluation: self-employed low taxable income (1.730958ms)
+✔ scripted evaluation: buy before sell (0.193584ms)
+✔ scripted evaluation: physician future job (0.086209ms)
+✔ scripted evaluation: investor DSCR (0.081875ms)
+✔ scripted evaluation: rates today (0.7475ms)
+✔ scripted evaluation: ten versus twenty down (0.846917ms)
+✔ scripted evaluation: under contract urgent (0.274875ms)
+✔ scripted evaluation: general education (0.119416ms)
+✔ scripted evaluation: prohibited sensitive information (0.337292ms)
+✔ session tokens are signed and expire (1.193959ms)
+[mortgage-assistant] transcript save failed {
+  correlationId: 'test-request',
+  conversationId: 'test',
+  code: 'unavailable'
+}
+[mortgage-assistant] transcript retry health { saved: 1, pending: 0, queued: 1 }
+[mortgage-assistant] transcript save failed {
+  correlationId: 'test-request',
+  conversationId: 'test',
+  code: 'unavailable'
+}
+[mortgage-assistant] transcript retry queue unavailable { correlationId: 'test-request' }
+[mortgage-assistant] transcript replay failed { correlationId: 'test-request', code: 'unavailable' }
+[mortgage-assistant] transcript retry health { saved: 0, pending: 1, queued: 1 }
+✔ successful save does not queue; transient retry keeps the same idempotency key (1.732208ms)
+✔ failed save queues redacted text and replays without changing the key (0.698458ms)
+✔ unavailable queue is reported honestly; unsuccessful replays retain entries (0.240042ms)
+✔ natural current-rate questions switch paths while preserving known scenario facts (0.903375ms)
+✔ borrowers get relevant clickable guides rather than CPA pages (1.460041ms)
+✔ assistant gateway is server-side and feature-gated (1.037417ms)
+✔ browser code never contains privileged credential names (0.146292ms)
+✔ confirmed chatbot leads report LoanOS notification and acknowledgment failures (0.127167ms)
+✔ assistant contact confirmations use backup only when the primary request fails (0.170916ms)
+✔ the first recorded chat turn forwards its website source page to LoanOS (0.096ms)
+✔ assistant keeps contact and pre-approval actions available without sending short reviews to the full application (0.1285ms)
+✔ assistant renders readable paragraphs, lists, and collapsible sources safely (0.129459ms)
+✔ assistant can recommend only approved website resources as safe links (0.145041ms)
+✔ assistant permits the approved Calendly scheduling link (0.089917ms)
+✔ review requests collect contact details before proposing a lead write (0.170167ms)
+✔ transcript sequencing uses the widget turn count end to end (0.134083ms)
+✔ conversations persist across page navigation in the same tab (0.082084ms)
+✔ assistant links remain on styermortgage.com and public direct-contact email uses Adam portable inbox (1.399042ms)
+✔ the widget loader and stylesheet share one cache-busting version (0.228375ms)
+✔ the assistant panel is isolated from global section and header layout rules (0.33625ms)
+✔ website pages use an approved cache-busted script loader (106.969417ms)
+✔ the widget shows an accessible animated typing indicator while requests are pending (0.222125ms)
+✔ prior turns are redacted again before reaching the model (0.075083ms)
+✔ outcome-driven opening offers four strategy paths and no early name request (0.102667ms)
+✔ market ranges and estimate assumptions remain server-side (0.125416ms)
+✔ lead form asks only for missing identity and contact details (0.08925ms)
+✔ widget traps keyboard focus and restores launcher focus on close (0.070917ms)
+ℹ tests 130
+ℹ suites 0
+ℹ pass 130
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 412.310083

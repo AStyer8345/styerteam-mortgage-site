@@ -2,8 +2,10 @@
 title: Core mortgage programs
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-16
-review_expires_on: 2026-09-14
+reviewed_on: 2026-10-05
+reviewed_by: Codex source review
+previous_owner_reviewed_on: 2026-07-16
+review_expires_on: 2026-12-04
 ---
 
 # FHA loans
@@ -22,7 +24,7 @@ Some conventional purchase programs permit down payments as low as 3%, but the a
 
 There is no single credit score that ensures conventional approval. Automated underwriting evaluates the overall application, and current agency rules, lender overlays, loan purpose, property type, down payment, reserves, debts, and credit history can affect the result. Adam or his team must review an individual scenario before discussing eligibility.
 
-For a useful general answer, a score around 620 is a common starting point for many conforming conventional programs, not a universal promise or a definition of “good.” Higher scores can improve pricing or mortgage-insurance options, while the full credit profile and automated-underwriting result still matter. The assistant should present 620 as a common reference point rather than saying the visitor qualifies.
+Fannie Mae's current published guidance does not require a minimum credit score for Desktop Underwriter (DU) loan casefiles. This does not remove DU's credit-risk assessment or other eligibility requirements. Manually underwritten loans, Freddie Mac execution, individual programs, mortgage insurance, and lender overlays can have different score requirements. Do not present 620 as a universal conventional minimum or use a score alone to infer approval.
 
 # VA loans
 
@@ -47,3 +49,13 @@ In Texas, programs may be available through organizations such as TSAHC or TDHCA
 # Credit-score and eligibility questions
 
 When asked for a program's minimum credit score, distinguish the government or agency baseline from a lender's current minimum and from an approval decision. A credit score alone does not determine eligibility. The assistant may explain an approved baseline, but it must not tell a visitor that they qualify, predict approval, or request detailed credit-report information in chat.
+
+# Source review record
+
+General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
+
+- https://guide-selling.fanniemae.com/sel/b3-5.1-01/general-requirements-credit-scores
+- https://www.hud.gov/buying/loans
+- https://www.hud.gov/sites/dfiles/OCHCO/documents/40001-hsgh-update16-5.pdf
+- https://singlefamily.fanniemae.com/originating-underwriting/mortgage-products/homeready-mortgage
+- https://www.va.gov/housing-assistance/home-loans/loan-types/

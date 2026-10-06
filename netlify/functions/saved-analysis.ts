@@ -40,4 +40,4 @@ export default async (request:Request, context:Context) => {
  const name=production?'saved-analyses-v1':'saved-analyses-preview-'+context.deploy.id;
  return createHandler(getStore({name,consistency:'strong'}))(request);
 };
-export const config:Config={path:'/api/saved-analysis',rateLimit:{action:'rate_limit',aggregateBy:'ip',windowLimit:30,windowSize:60}};
+export const config:Config={path:'/api/saved-analysis',rateLimit:{action:'rate_limit',aggregateBy:['ip','domain'],windowLimit:30,windowSize:60}};

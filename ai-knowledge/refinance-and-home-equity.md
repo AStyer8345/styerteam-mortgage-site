@@ -2,8 +2,10 @@
 title: Refinancing and home equity
 status: approved
 owner: Adam Styer
-reviewed_on: 2026-07-16
-review_expires_on: 2026-09-14
+reviewed_on: 2026-10-05
+reviewed_by: Codex source review
+previous_owner_reviewed_on: 2026-07-16
+review_expires_on: 2026-12-04
 ---
 
 # Rate-and-term refinance
@@ -33,3 +35,11 @@ A closed-end home-equity loan generally advances a set amount with scheduled rep
 # Refinance break-even
 
 A simple break-even estimate divides relevant upfront costs by expected monthly savings, but a sound comparison may also consider points, credits, term reset, principal reduction, mortgage insurance, taxes, cash received, opportunity cost, and how long the loan will be kept. The assistant must not recommend refinancing or calculate a personalized break-even from chat data.
+
+# Source review record
+
+General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
+
+- https://www.va.gov/housing-assistance/home-loans/loan-types/interest-rate-reduction-loan/
+- https://statutes.capitol.texas.gov/Docs/CN/htm/CN.16.htm
+- https://www.hud.gov/program_offices/housing/sfh/ins/streamline

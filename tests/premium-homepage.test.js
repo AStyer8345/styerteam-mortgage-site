@@ -3,7 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const { execFileSync } = require('node:child_process');
 const html = fs.readFileSync('index.html', 'utf8');
-const baseline = execFileSync('git',['show','f7e9391fc608ac9cd43b965c257e0df2a24b36cd:index.html'],{encoding:'utf8'});
+const inventory = JSON.parse(fs.readFileSync('design-review/Page-Inventory.json', 'utf8'));
+const baseline = execFileSync('git',['show',`${inventory.releaseBaseline || inventory.baseline}:index.html`],{encoding:'utf8'});
 const match = (text,pattern) => text.match(pattern)?.[0];
 test('premium homepage preserves every existing metadata tag and JSON-LD block', () => {
   for (const pattern of [/<title[^>]*>[\s\S]*?<\/title>/g,/<meta\b[^>]*>/g,/<link rel="canonical"[^>]*>/g,/<script type="application\/ld\+json">[\s\S]*?<\/script>/g]) {

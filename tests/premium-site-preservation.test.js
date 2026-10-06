@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const { execFileSync } = require('node:child_process');
 const inventory = JSON.parse(fs.readFileSync('design-review/Page-Inventory.json', 'utf8'));
 const pages = inventory.pages.filter(page => page.family !== 'utility' && page.path !== 'index.html');
-const baseline = file => execFileSync('git', ['show', `${inventory.baseline}:${file}`], { encoding: 'utf8' });
+const baseline = file => execFileSync('git', ['show', `${inventory.releaseBaseline || inventory.baseline}:${file}`], { encoding: 'utf8' });
 const blocks = (html, pattern) => [...html.matchAll(pattern)].map(match => match[0]);
 const text = html => html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
