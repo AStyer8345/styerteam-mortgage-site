@@ -12,7 +12,7 @@ Branch: `codex/premium-homepage-preview`
 
 Base: production commit `f7e9391fc608ac9cd43b965c257e0df2a24b36cd`. Netlify's published deployment was verified as `6ac2c4ce9295b20008466b5c`, ready, for that commit on October 5, 2026. The dirty primary checkout is a different branch and is not the release source.
 
-This review implements the homepage. Existing loan, article, resource, contact, and calculator destinations remain available in the local package; their existing designs and calculations are retained. A wider visual rollout is specified in Design-Strategy.md and requires its own scoped implementation. Nothing has been pushed or deployed.
+This review implements the homepage and now the inspected 18 inquiry/program template pages, including Get Preapproved. Existing article, directory, contact and calculator destinations remain available; their further visual refinement and DSCR cash-out campaign integration are in the authorized overnight queue. See Overnight-Work-Plan.md and Interior-Preview-Verification.md for current coverage rather than assuming the entire site is finished. Nothing has been pushed or deployed.
 
 ## Files and responsibilities
 
@@ -21,6 +21,9 @@ This review implements the homepage. Existing loan, article, resource, contact, 
 | index.html | Server-rendered section order, original copy and contracts, original portrait, new tool entry point |
 | premium-homepage.css | Opt-in homepage tokens, typography, layout, components, mobile and focus states |
 | premium-homepage.js | Payment teaser using CalcSuite, mobile inquiry target, desktop keyboard submenu behavior |
+| premium-interior.css | Opt-in public primitives and the inspected inquiry/program template family |
+| premium-navigation.js | Interior desktop keyboard menus and focus for existing inquiry panels |
+| tests/premium-site-preservation.test.js | Protected contracts/content across 190 interior public pages |
 | tests/premium-homepage.test.js | Metadata, JSON-LD, header, footer, FAQ, form, paragraph, link and script preservation |
 | tests/editorial-rollout.test.js | Updated assertion for the deliberately new static homepage order |
 | tests/lead-flow-regression.test.js | Updated assertion for authentic larger portrait and relocated unchanged inquiry |
