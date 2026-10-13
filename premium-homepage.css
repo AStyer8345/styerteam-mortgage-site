@@ -344,3 +344,51 @@ body.premium-homepage .recovery-specialty-grid h3{font:400 24px/1.2 'Source Seri
 body.premium-homepage .recovery-specialty-grid article>p{font-size:15px;line-height:1.5}
 @media(min-width:901px){body.premium-homepage main .homepage-quick-inquiry h2{white-space:nowrap;font-size:23px!important}}
 @media(max-width:900px){body.premium-homepage.home-pilot main .hero{background-image:none!important;background-color:#f8f6f0!important}}
+/* Reference-image proportions and typography. */
+body.premium-homepage.home-pilot main .hero{background-image:linear-gradient(90deg,rgba(255,253,247,.88),rgba(255,253,247,.7) 30%,rgba(255,253,247,.12) 58%,transparent 76%),url('/assets/austin-skyline-mockup-20261013.webp')!important;background-position:center!important;padding:36px 0!important}
+body.premium-homepage.home-pilot main .home-hero-layout{grid-template-columns:minmax(0,1fr) 400px;gap:90px!important}
+body.premium-homepage.home-pilot main .hero h1{font-family:Georgia,'Times New Roman',serif!important;font-weight:600!important;font-size:60px!important;line-height:1.06!important;letter-spacing:-.035em!important;margin:20px 0 22px}
+body.premium-homepage main .hero-subtitle{max-width:535px;font-size:21px;line-height:1.4}
+body.premium-homepage main .hero-col-authority{align-self:center}
+body.premium-homepage main .modern-hero-detail{font-size:17px;margin:22px 0}
+body.premium-homepage .mockup-hero-signature{padding-top:18px;margin:18px 0 0}
+body.premium-homepage main .home-conversation.journey-card.homepage-quick-inquiry{padding:28px}
+body.premium-homepage main .homepage-quick-inquiry .journey-fields{gap:14px}
+body.premium-homepage main .homepage-quick-inquiry .journey-field label{font-size:12px;line-height:1.3}
+body.premium-homepage main .homepage-quick-inquiry .journey-field textarea{height:94px;min-height:94px}
+body.premium-homepage main .homepage-quick-inquiry .journey-submit{background:linear-gradient(110deg,#102e42,#153b54);margin-top:16px}
+body.premium-homepage main .homepage-quick-inquiry>.journey-hint{font-size:10px;margin:16px 0 0}
+body.premium-homepage main .homepage-quick-inquiry h2{font-family:Georgia,'Times New Roman',serif!important;font-size:24px!important}
+@media(max-width:1100px) and (min-width:901px){body.premium-homepage.home-pilot main .home-hero-layout{grid-template-columns:minmax(0,1fr) 360px;gap:36px!important}body.premium-homepage.home-pilot main .hero h1{font-size:48px!important}}
+@media(max-width:900px){
+body.premium-homepage.home-pilot main .hero{background-image:none!important;padding:32px 0!important}
+body.premium-homepage.home-pilot main .home-hero-layout{grid-template-columns:1fr;gap:28px!important}
+body.premium-homepage.home-pilot main .hero h1{font-size:36px!important;font-weight:500!important;line-height:1.04!important;letter-spacing:-.035em!important}
+body.premium-homepage main .hero-subtitle{font-size:16px;line-height:1.5}
+body.premium-homepage main .modern-hero-detail{font-size:15px;margin:14px 0}
+body.premium-homepage main .home-conversation.journey-card.homepage-quick-inquiry{padding:20px}
+body.premium-homepage main .homepage-quick-inquiry h2{font-size:22px!important;letter-spacing:-.04em!important}
+}
+/* Neutralize inherited advisory styles that distorted the reference spacing. */
+body.premium-homepage>header nav{min-height:72px!important;padding:12px 0!important}
+body.premium-homepage>header .nav-brand{height:48px}
+body.premium-homepage .container{padding-inline:44px}
+body.premium-homepage.home-pilot main .home-hero-layout{grid-template-columns:minmax(0,1fr) clamp(360px,31vw,400px);gap:70px!important}
+body.premium-homepage.home-pilot main .hero h1{font-family:'Source Serif 4',Georgia,serif!important;font-weight:600!important;font-size:60px!important;letter-spacing:-.035em!important}
+body.premium-homepage main .hero-subtitle{max-width:470px}
+body.premium-homepage main .home-conversation.journey-card.homepage-quick-inquiry{padding:24px}
+body.premium-homepage main .homepage-quick-inquiry .journey-field label{font-size:12px!important;line-height:1.25!important;font-weight:400!important}
+body.premium-homepage main .homepage-quick-inquiry .journey-field :is(input,textarea){min-height:36px!important;padding:7px 10px!important;font-size:16px!important;line-height:1.2!important}
+body.premium-homepage main .homepage-quick-inquiry .journey-field textarea{height:86px!important;min-height:86px!important}
+body.premium-homepage main .homepage-quick-inquiry .journey-submit{min-height:40px!important;padding:10px!important;font-size:14px!important}
+body.premium-homepage main .homepage-quick-inquiry>.journey-form-intro{font-size:13px!important;line-height:1.4!important;margin-bottom:16px!important}
+body.premium-homepage main .homepage-quick-inquiry>.journey-hint{font-size:10px!important;line-height:1.4!important}
+body.premium-homepage .recovery-specialty-grid h3{font:400 22px/1.25 Georgia,serif!important}
+body.premium-homepage .modern-section-heading h2{font:400 36px/1.2 Georgia,serif!important;margin-bottom:12px}
+@media(max-width:900px){
+body.premium-homepage .container{padding-inline:20px}
+body.premium-homepage.home-pilot main .home-hero-layout{grid-template-columns:1fr;gap:24px!important}
+body.premium-homepage.home-pilot main .hero h1{font-size:36px!important;font-weight:600!important}
+body.premium-homepage main .hero-subtitle{font-size:16px!important}
+}
+body.premium-homepage main .homepage-quick-inquiry>.journey-hint{max-width:none!important;width:100%}
