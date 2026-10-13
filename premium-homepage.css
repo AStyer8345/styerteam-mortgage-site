@@ -255,3 +255,14 @@ body.premium-homepage .homepage-bottom-contact .premium-contact-copy{max-width:7
 
 body.premium-homepage main .hero{padding-top:32px}
 body.premium-homepage main .homepage-quick-inquiry .journey-field{gap:5px}
+/* Warm skyline hero matching the approved photographic concept. */
+body.premium-homepage.home-pilot main .hero{
+  background-color:#f5f1e9!important;
+  background-image:linear-gradient(90deg,rgba(250,247,239,.94) 0%,rgba(250,247,239,.86) 32%,rgba(250,247,239,.38) 58%,rgba(250,247,239,.08) 100%),url('/assets/austin-skyline-hero-20261013.webp')!important;
+  background-size:cover!important;background-position:center 54%!important;background-repeat:no-repeat!important;
+}
+body.premium-homepage main .home-conversation.journey-card.homepage-quick-inquiry{background:#fff;border-color:rgba(24,46,62,.15);box-shadow:0 12px 36px rgba(24,46,62,.12)}
+body.premium-homepage main .hero-subtitle,body.premium-homepage main .modern-hero-detail{color:#344957}
+@media(max-width:760px){
+  body.premium-homepage.home-pilot main .hero{background-image:linear-gradient(180deg,rgba(250,247,239,.86) 0%,rgba(250,247,239,.78) 40%,rgba(250,247,239,.28) 70%,rgba(250,247,239,.18) 100%),url('/assets/austin-skyline-hero-20261013.webp')!important;background-position:61% center!important}
+}
