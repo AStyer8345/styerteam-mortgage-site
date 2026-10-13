@@ -412,3 +412,18 @@ body.premium-homepage>header .nav-links>li{width:100%!important;display:block!im
 body.premium-homepage>header .nav-links>li>a{font-size:16px!important;padding:8px 0!important;white-space:normal}
 body.premium-homepage>header .nav-dropdown{position:static;box-shadow:none}
 }
+
+/* Four clear audiences, with one next step per card. */
+body.premium-homepage .four-audience-options{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:20px!important}
+body.premium-homepage .four-audience-options article{display:flex;flex-direction:column;padding:24px!important}
+body.premium-homepage .four-audience-options .mockup-category-icon{float:none;margin:0 0 16px;width:40px;height:40px}
+body.premium-homepage .four-audience-options h3{min-height:56px;margin-bottom:16px;font-size:23px!important}
+body.premium-homepage .four-audience-options p{font-size:15px;line-height:1.55;margin-bottom:22px;flex:1}
+body.premium-homepage .audience-option-link{font-size:14px;font-weight:600;line-height:1.5;color:#142b3a;text-decoration:underline;text-underline-offset:4px}
+body.premium-homepage .homepage-pricing{display:grid;grid-template-columns:1fr 1.35fr;gap:56px;margin:36px 0 28px;padding:36px;background:#fff;border:1px solid #deddd7;border-top:3px solid #95732c;border-radius:6px}
+body.premium-homepage .homepage-pricing h2{font-size:34px;line-height:1.15;margin:12px 0 0}
+body.premium-homepage .pricing-eyebrow{font-size:11px;line-height:1.6;letter-spacing:.09em;text-transform:uppercase;color:#795d31;margin:0}
+body.premium-homepage .homepage-pricing>div>p:not(.pricing-eyebrow){font-size:16px;line-height:1.6;margin:0 0 14px}
+body.premium-homepage .homepage-pricing>div>.pricing-note{font-size:12px!important;line-height:1.5!important;color:#52616b;margin:18px 0 0}
+@media(max-width:1100px){body.premium-homepage .four-audience-options{grid-template-columns:repeat(2,minmax(0,1fr))!important}body.premium-homepage .homepage-pricing{grid-template-columns:1fr;gap:24px}}
+@media(max-width:600px){body.premium-homepage .four-audience-options{grid-template-columns:1fr!important}body.premium-homepage .four-audience-options h3{min-height:0}body.premium-homepage .homepage-pricing{padding:24px}body.premium-homepage .homepage-pricing h2{font-size:30px}}
