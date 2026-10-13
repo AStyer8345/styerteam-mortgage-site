@@ -266,3 +266,81 @@ body.premium-homepage main .hero-subtitle,body.premium-homepage main .modern-her
 @media(max-width:760px){
   body.premium-homepage.home-pilot main .hero{background-image:linear-gradient(180deg,rgba(250,247,239,.86) 0%,rgba(250,247,239,.78) 40%,rgba(250,247,239,.28) 70%,rgba(250,247,239,.18) 100%),url('/assets/austin-skyline-hero-20261013.webp')!important;background-position:61% center!important}
 }
+/* Match the approved mockup: white navigation, editorial hero and compact card. */
+body.premium-homepage>header,body.premium-homepage>header.scrolled{background:#fff!important;border-bottom:0}
+body.premium-homepage>header nav{min-height:88px;padding:18px 0}
+body.premium-homepage>header .nav-brand{position:relative;display:block;width:280px;height:52px;flex-shrink:0;text-decoration:none}
+body.premium-homepage>header .nav-logo-img{opacity:0;width:280px;height:52px}
+body.premium-homepage>header .nav-brand::before{content:'ADAM STYER';position:absolute;left:0;top:0;font:400 28px/1.25 Georgia,serif;letter-spacing:.17em;color:#0d263e;white-space:nowrap}
+body.premium-homepage>header .nav-brand::after{content:'HYPERSMART HOME LOANS';position:absolute;left:0;top:37px;font:500 10px/1.2 var(--font-primary);letter-spacing:.25em;color:#795d31;white-space:nowrap}
+body.premium-homepage>header .nav-links>li>a{color:#0d263e!important}
+body.premium-homepage>header .nav-apply{background:#102d43!important;color:#fff!important;border:0}
+body.premium-homepage>header .mobile-menu-toggle{border:0;padding:8px}
+body.premium-homepage>header .mobile-menu-toggle span{background:#102d43}
+body.premium-homepage.home-pilot main .hero{padding:40px 0!important;background-image:linear-gradient(90deg,rgba(255,253,247,.93),rgba(255,253,247,.75) 30%,rgba(255,253,247,.12) 63%,rgba(255,253,247,0)),url('/assets/austin-skyline-hero-20261013.webp')!important;background-position:center 52%!important}
+body.premium-homepage.home-pilot main .home-hero-layout{grid-template-columns:minmax(0,1.55fr) minmax(350px,.85fr);gap:48px!important}
+body.premium-homepage.home-pilot main .hero h1{font-size:clamp(48px,5.1vw,70px)!important;line-height:1.05!important;font-weight:400;margin:20px 0 24px;letter-spacing:-.025em}
+body.premium-homepage main .hero-rating-chip,body.premium-homepage main .hero-ctas{display:none!important}
+body.premium-homepage main .hero-subtitle{font-size:20px;line-height:1.5;max-width:565px;color:#0d263e}
+body.premium-homepage main .modern-hero-detail{font-size:16px;line-height:1.5;margin:24px 0;color:#0d263e}
+body.premium-homepage .mockup-hero-signature{font:400 14px/1.5 var(--font-primary);color:#0d263e;margin:24px 0 0;padding-top:20px;position:relative}
+body.premium-homepage .mockup-hero-signature::before{content:'';position:absolute;top:0;left:0;width:42px;height:2px;background:#96752d}
+body.premium-homepage main .home-conversation.journey-card.homepage-quick-inquiry{padding:26px;border-radius:6px;box-shadow:0 8px 24px #122a3b20}
+body.premium-homepage main .homepage-quick-inquiry h2{font-size:27px!important;font-weight:400!important;line-height:1.2;margin-bottom:10px}
+body.premium-homepage main .homepage-quick-inquiry .journey-fields{gap:16px}
+body.premium-homepage main .homepage-quick-inquiry .journey-field{gap:7px}
+body.premium-homepage main .homepage-quick-inquiry .journey-field label{font-size:13px;font-weight:400}
+body.premium-homepage main .homepage-quick-inquiry .journey-field :is(input,textarea){border-color:#cbd3db;min-height:42px}
+body.premium-homepage main .homepage-quick-inquiry .journey-field textarea{height:86px;min-height:86px}
+body.premium-homepage main .homepage-quick-inquiry .journey-submit{min-height:44px}
+body.premium-homepage main .homepage-quick-inquiry .journey-hint{font-size:11px;line-height:1.5}
+body.premium-homepage main .proof-band{display:none}
+body.premium-homepage .modern-section-heading h2{text-align:center;font-size:38px!important}
+body.premium-homepage .recovery-specialty-grid{gap:24px}
+body.premium-homepage .recovery-specialty-grid article{background:white!important;border:1px solid #deddd7!important;padding:28px!important;border-radius:6px}
+body.premium-homepage .recovery-specialty-grid .premium-path-photo{height:120px;object-fit:cover;margin-bottom:20px;border-radius:3px}
+@media(min-width:901px){
+body.premium-homepage>header .nav-links{display:flex!important;position:static;flex-direction:row;background:white;gap:30px;padding:0;border:0;max-height:none;overflow:visible}
+body.premium-homepage>header .mobile-menu-toggle{display:none!important}
+body.premium-homepage>header .nav-links>li:nth-child(3),body.premium-homepage>header .nav-links>li:nth-child(4),body.premium-homepage>header .nav-phone-li,body.premium-homepage>header .nav-links>li:has(>.nav-cta:not(.nav-apply)){display:none}
+body.premium-homepage>header .nav-links .nav-apply{color:white!important;background:#102d43!important;padding:10px 20px!important}
+}
+@media(max-width:900px){
+body.premium-homepage.home-pilot main .home-hero-layout{grid-template-columns:1fr;gap:28px!important}
+body.premium-homepage>header .nav-brand{width:220px;height:46px}
+body.premium-homepage>header .nav-brand::before{font-size:22px}
+body.premium-homepage>header .nav-brand::after{font-size:8px;top:30px}
+body.premium-homepage.home-pilot main .hero{background-image:linear-gradient(180deg,rgba(255,253,247,.92),rgba(255,253,247,.84) 45%,rgba(255,253,247,.4)),url('/assets/austin-skyline-hero-20261013.webp')!important;padding:32px 0!important}
+body.premium-homepage.home-pilot main .hero h1{font-size:40px!important;margin:14px 0 18px}
+body.premium-homepage main .hero-subtitle{font-size:17px;line-height:1.5}
+body.premium-homepage main .modern-hero-detail{font-size:15px;margin:14px 0}
+body.premium-homepage .mockup-hero-signature{margin:16px 0 0;padding-top:16px}
+body.premium-homepage main .home-conversation.journey-card.homepage-quick-inquiry{padding:22px}
+}
+@media(min-width:901px){
+body.premium-homepage>header nav{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;justify-content:space-between!important;align-items:center!important;gap:32px!important}
+body.premium-homepage>header .nav-links{width:auto!important;flex:0 1 auto!important;justify-content:flex-end!important;margin:0!important;gap:28px!important}
+body.premium-homepage>header .nav-links>li{flex:0 0 auto!important;width:auto!important}
+body.premium-homepage>header .nav-links>li>a{font-size:13px!important}
+body.premium-homepage>header .nav-links>li:has(>a[href^="sms:"]){display:none!important}
+}
+body.premium-homepage.home-pilot main .home-hero-layout{grid-template-columns:minmax(0,1.55fr) minmax(390px,.9fr)}
+body.premium-homepage main .homepage-quick-inquiry h2{font-size:24px!important;letter-spacing:-.02em!important}
+body.premium-homepage main .homepage-quick-inquiry .journey-fields{gap:12px}
+body.premium-homepage main .homepage-quick-inquiry .journey-field{gap:5px}
+body.premium-homepage main .homepage-quick-inquiry .journey-field :is(input,textarea){padding:8px 10px;min-height:40px}
+body.premium-homepage main .homepage-quick-inquiry>.journey-form-intro{font-size:13px;margin-bottom:14px}
+body.premium-homepage main .homepage-quick-inquiry .journey-submit{min-height:42px;margin-top:10px}
+body.premium-homepage main .homepage-quick-inquiry>.journey-hint{margin-top:10px}
+@media(max-width:900px){body.premium-homepage.home-pilot main .home-hero-layout{grid-template-columns:minmax(0,1fr)}}
+body.premium-homepage main .homepage-quick-inquiry h2{max-width:none!important;width:100%;text-wrap:initial}
+body.premium-homepage>header .nav-links>.nav-has-dropdown>a::after{display:none}
+body.premium-homepage>header .nav-apply{text-decoration:none!important}
+body.premium-homepage main .homepage-quick-inquiry .journey-field textarea::placeholder{color:transparent}
+body.premium-homepage main .modern-goals{padding:44px 0!important;background:#faf9f5}
+body.premium-homepage .recovery-specialty-grid .premium-path-photo{display:none}
+body.premium-homepage .mockup-category-icon{width:44px;height:44px;color:#95732c;float:left;margin:0 16px 16px 0}
+body.premium-homepage .recovery-specialty-grid h3{font:400 24px/1.2 'Source Serif 4',Georgia,serif;min-height:58px;margin:0 0 20px}
+body.premium-homepage .recovery-specialty-grid article>p{font-size:15px;line-height:1.5}
+@media(min-width:901px){body.premium-homepage main .homepage-quick-inquiry h2{white-space:nowrap;font-size:23px!important}}
+@media(max-width:900px){body.premium-homepage.home-pilot main .hero{background-image:none!important;background-color:#f8f6f0!important}}
