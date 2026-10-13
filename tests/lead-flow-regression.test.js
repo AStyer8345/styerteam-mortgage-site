@@ -114,13 +114,15 @@ test('pre-approval guide routes pre-approval and application CTAs by intent', ()
   assert.doesNotMatch(preapprovalGuide, /register\?time=[^"']*\?time=/);
 });
 
-test('premium homepage uses the authentic photo and preserves the direct inquiry contract', () => {
+test('premium homepage puts the simple inquiry in the hero and preserves capture', () => {
   const hero = homepage.match(/<section class="hero"[^>]*>([\s\S]*?)<\/section>/)?.[1] || '';
-  assert.match(hero, /<img[^>]*src="\/assets\/adam-cutout-900\.webp"/);
+  assert.match(hero, /id="form-homepage-contact"/);
   assert.match(hero, /href="#contact-form"[^>]*data-track="scenario_review_click"/);
   assert.match(homepage, /<aside[^>]*id="contact-form"[^>]*tabindex="-1"/);
   assert.match(homepage, /<form name="contact"[^>]*id="form-homepage-contact"/);
-  assert.match(homepage, /name="tcpa_consent" required/);
+  assert.match(homepage, /type="hidden" name="tcpa_consent" value="false"/);
+  assert.doesNotMatch(hero, /<select|type="checkbox"/);
+  assert.equal((hero.match(/ required/g) || []).length, 2);
   assert.match(homepage, /class="hero-glass-card home-hero-layout"/);
   const css = fs.readFileSync('premium-homepage.css', 'utf8');
   assert.match(css, /\.premium-portrait>img\{[^}]*object-fit:contain/);

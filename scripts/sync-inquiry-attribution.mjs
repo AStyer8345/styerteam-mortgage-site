@@ -21,6 +21,8 @@ for (const file of walk('.').filter(file => file.endsWith('.html') || file === '
     const start = form.match(/<form\b[^>]*>/i)[0];
     if (!/class="[^"]*\b(?:journey-form|js-hero-quote|js-quick-contact)\b/.test(start) || /\bhidden(?:\s|>)/.test(start)) return form;
     count++;
+    // This approved quick form keeps automatic attribution and a blank legacy field.
+    if (/data-simple-inquiry="true"/.test(start) && /type="hidden" name="self_reported_source"/.test(form)) return form;
     // Legacy JS also includes the labeled answer in situation; register that
     // summary with Netlify so its independent capture does not discard it.
     if (/\b(?:js-hero-quote|js-quick-contact)\b/.test(start) && !/name="situation"/.test(form)) form = form.replace(start, start + '\n<input type="hidden" name="situation" value="">');

@@ -239,3 +239,19 @@ body.premium-homepage .premium-contact-copy .quick-contact-actions{justify-conte
 
 /* Final audit: align mobile actions and distinguish the full application portal. */
 @media(max-width:1280px){body.premium-homepage>header .nav-links.active .nav-cta{display:flex;align-items:center;justify-content:center;text-align:center;min-height:50px;padding:12px 15px!important;text-decoration:none}body.premium-homepage>header .nav-links.active .nav-apply{background:#fff!important;color:var(--premium-ink)!important;border:1px solid #7B878D!important}}
+
+/* Simple homepage inquiry: only name and email are required. */
+body.premium-homepage main .home-conversation.journey-card.homepage-quick-inquiry{padding:24px;scroll-margin-top:100px;min-width:0}
+body.premium-homepage main .homepage-quick-inquiry h2{font-family:'Source Serif 4',Georgia,serif!important;font-size:27px!important}
+body.premium-homepage main .homepage-quick-inquiry>.journey-form-intro{margin-bottom:16px;font-size:14px}
+body.premium-homepage main .homepage-quick-inquiry .journey-fields{grid-template-columns:1fr;gap:12px}
+body.premium-homepage main .homepage-quick-inquiry .journey-field :is(input,textarea){min-height:42px;padding:8px 10px}
+body.premium-homepage main .homepage-quick-inquiry .journey-field textarea{height:72px;min-height:72px}
+body.premium-homepage main .homepage-quick-inquiry .journey-submit{width:100%;margin-top:14px}
+body.premium-homepage main .homepage-quick-inquiry>.journey-hint{font-size:12px;line-height:1.5;margin-top:12px}
+body.premium-homepage .homepage-bottom-contact{grid-template-columns:1fr}
+body.premium-homepage .homepage-bottom-contact .premium-contact-copy{max-width:700px;padding-top:0}
+@media(max-width:1000px){body.premium-homepage main .home-hero-layout{grid-template-columns:1fr;gap:24px}body.premium-homepage main .home-conversation.journey-card.homepage-quick-inquiry{width:100%;max-width:600px}}
+
+body.premium-homepage main .hero{padding-top:32px}
+body.premium-homepage main .homepage-quick-inquiry .journey-field{gap:5px}

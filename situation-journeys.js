@@ -223,7 +223,7 @@
       function contactPreference() {
         var phone = form.elements.phone;
         phone.required = form.elements.preferred_follow_up.value === 'Phone';
-        form.querySelector('label[for="' + phone.id + '"]').textContent = phone.required ? 'Phone *' : 'Phone (optional)';
+        form.querySelector('label[for="' + phone.id + '"]').textContent = phone.required ? 'Phone *' : form.dataset.simpleInquiry === 'true' ? 'Phone number (optional)' : 'Phone (optional)';
         phone.setCustomValidity('');
       }
       form.elements.preferred_follow_up.addEventListener('change', contactPreference);
