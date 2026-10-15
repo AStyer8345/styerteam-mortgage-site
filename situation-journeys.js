@@ -234,20 +234,20 @@
       delete status.dataset.tone;
       form.querySelectorAll('fieldset').forEach(function (fieldset) { fieldset.hidden = true; });
       progress.hidden = true;
-      status.textContent = (result.primary ? 'Your scenario and contact details are saved for review.' : 'Your scenario is saved in our backup inbox. Delivery to the review system is still pending.') + (analysis ? ' Your calculator assumptions and results are included.' : '') + ' I’ll review what you shared and follow up using your contact details. I aim to respond within one business day. This is not a loan approval.';
+      status.textContent = (result.primary ? 'Your scenario and contact details are saved for review.' : 'Your scenario has been saved. You can also contact Adam directly below.') + (analysis ? ' Your calculator assumptions and results are included.' : '') + ' I’ll review what you shared and follow up using your contact details. I aim to respond within one business day. This is not a loan approval.';
       if (singleStep) {
         var card = form.closest('.journey-card');
         if (card) {
           card.classList.add('journey-confirmed');
           var heading = card.querySelector('h2');
-          if (heading) heading.textContent = 'Thank you — your message is received.';
+          if (heading) heading.textContent = 'Thank you!';
           card.querySelectorAll('.journey-form-intro, .journey-hint').forEach(function (element) { element.hidden = true; });
         }
-        status.textContent = result.primary ? 'Your request is saved for Adam to review. He’ll follow up using your contact details, typically within one business day.' : 'Your request is saved in our backup inbox. Delivery to Adam’s review system is still pending. You can also call or text Adam using the links below.';
+        status.textContent = result.primary ? 'Your message has been received. Adam typically replies within one business day.' : 'Your message has been saved. You can also reach Adam directly below.';
       }
       if (result.receipt && result.receipt.preview) status.textContent='Preview only: your scenario was accepted by the test service. No lead, email, or marketing subscription was created.';
       status.classList.add('journey-confirmation');
-      var helper=root.document.createElement('p');helper.className='journey-confirmation-intro';helper.textContent='Want to connect sooner? Call or text Adam at (512) 956-6010, or choose a time that works for you.';status.appendChild(helper);
+      var helper=root.document.createElement('p');helper.className='journey-confirmation-intro';helper.textContent='Want to connect sooner?';if (result.primary) status.appendChild(helper);
       var actions=root.document.createElement('div');actions.className='journey-next-actions';
       [['Call Adam','tel:+15129566010'],['Text Adam','sms:+15129566010'],['Schedule a Call','https://calendly.com/adamstyer/15minutes']].forEach(function(item){
         var link=root.document.createElement('a');link.href=item[1];link.textContent=item[0];
@@ -255,10 +255,12 @@
         actions.appendChild(link);
       });
       status.appendChild(actions);
-      var application=root.document.createElement('div');application.className='journey-application';
-      var title=root.document.createElement('h3');title.textContent='Want to get a head start?';application.appendChild(title);
-      var detail=root.document.createElement('p');detail.textContent='You can complete a secure online loan application to help make your first conversation more efficient. Your credit will not be run automatically. This step is entirely optional — it’s fine to wait and talk with Adam first.';application.appendChild(detail);
-      var apply=root.document.createElement('a');apply.href='https://hypersmart.my1003app.com/513013/register?time=1779291829279';apply.target='_blank';apply.rel='noopener';apply.className='journey-application-link';apply.textContent='Start a Secure Loan Application';application.appendChild(apply);status.appendChild(application);
+      if (!singleStep) {
+        var application=root.document.createElement('div');application.className='journey-application';
+        var title=root.document.createElement('h3');title.textContent='Want to get a head start?';application.appendChild(title);
+        var detail=root.document.createElement('p');detail.textContent='You can complete a secure online loan application to help make your first conversation more efficient. Your credit will not be run automatically. This step is entirely optional — it’s fine to wait and talk with Adam first.';application.appendChild(detail);
+        var apply=root.document.createElement('a');apply.href='https://hypersmart.my1003app.com/513013/register?time=1779291829279';apply.target='_blank';apply.rel='noopener';apply.className='journey-application-link';apply.textContent='Start a Secure Loan Application';application.appendChild(apply);status.appendChild(application);
+      }
       var another = root.document.createElement('button');
       another.type = 'button'; another.className = 'journey-back'; another.textContent = 'Send another request';
       another.addEventListener('click', function () {
