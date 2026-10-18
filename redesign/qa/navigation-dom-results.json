@@ -1,6 +1,7 @@
 {
   "passed": 11,
   "pagesChecked": 200,
+  "headerScope": "body.orchestration-page header.site-header.sm-header",
   "integrationIssues": [],
   "checks": [
     "Original mobile toggle opens and closes exactly once",
