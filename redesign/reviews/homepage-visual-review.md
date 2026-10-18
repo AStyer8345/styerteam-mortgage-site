@@ -27,3 +27,8 @@ No new review/rating schema or endorsement claims were added.
 The homepage-only stylesheet loads after the existing design system. Deep guides,
 calculator code, the 173-route ledger, and live inquiry routing are unchanged.
 Build and browser checks run through the existing private Netlify preview.
+
+The preview CSP permits Netlify's own review-tool iframe at app.netlify.com so
+its injected collaboration drawer does not render as a broken browser frame.
+The main page still uses connect-src 'none' and form-action 'none'; inquiry
+transport, analytics and production headers are not changed.
