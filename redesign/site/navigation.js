@@ -37,8 +37,6 @@
         event.preventDefault();event.stopPropagation();setGroup(group,false);parent.focus();
       });
       group.addEventListener('focusout',event=>{if(desktop.matches&&!group.contains(event.relatedTarget))setGroup(group,false);});
-      group.addEventListener('mouseenter',()=>{if(desktop.matches)openGroup(group);});
-      group.addEventListener('mouseleave',()=>{if(desktop.matches&&!group.contains(document.activeElement))setGroup(group,false);});
     }
     document.addEventListener('pointerdown',event=>{if(desktop.matches&&!header.contains(event.target))closeGroups();});
     document.addEventListener('focusin',event=>{if(desktop.matches&&!header.contains(event.target))closeGroups();});

@@ -1090,3 +1090,9 @@ body.orchestration-page :is(.situation-card, #scenarios .scenario-card, .dual-co
 body.orchestration-page :is(.situation-card, #scenarios .scenario-card) { transition: transform 180ms ease, box-shadow 180ms ease; }
 body.orchestration-page :is(.situation-card, #scenarios .scenario-card):hover { transform: translateY(-2px); box-shadow: var(--sm-shadow-raised); }
 @media (max-width:899px) { body.orchestration-page main .sm-hnw-opening { grid-template-columns: minmax(0,1fr); gap: 28px; } }
+/* Keep specialty openings white and center the short contact dialog. */
+body.orchestration-page.legacy-page main .ci-hero:has(.sm-hnw-opening) { background: var(--sm-canvas) !important; }
+body.orchestration-page dialog.or-contact-dialog {
+  margin: auto; inset: 0; width: min(580px,calc(100% - 32px));
+  max-height: calc(100dvh - 32px); padding: 40px 28px 28px;
+}
