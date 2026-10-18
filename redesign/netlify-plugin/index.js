@@ -10,7 +10,7 @@ module.exports = {
     }
     // The production defaults stay in netlify.toml. Only this preview replaces
     // server functions and routing with its audited static, non-transmitting site.
-    netlifyConfig.functions = { directory: path.resolve(__dirname, '../empty-functions'), node_bundler: 'esbuild' };
+    netlifyConfig.functions.directory = path.resolve(__dirname, '../empty-functions');
     netlifyConfig.edge_functions = [];
     netlifyConfig.build.edge_functions = path.resolve(__dirname, '../empty-edge-functions');
     netlifyConfig.redirects = fs.readFileSync(path.resolve(__dirname, '../site/_redirects'), 'utf8')
@@ -24,7 +24,8 @@ module.exports = {
       if (colon !== -1) values[line.slice(0, colon).trim()] = line.slice(colon + 1).trim();
     }
     netlifyConfig.headers = [{ for: '/*', values }];
-    netlifyConfig.build.processing = { skip_processing: true, html: { pretty_urls: false } };
+    netlifyConfig.build.processing.skip_processing = true;
+    netlifyConfig.build.processing.html.pretty_urls = false;
     console.log('Private redesign preview: static site, no server or edge functions, preview-only routes and headers.');
   },
 };
