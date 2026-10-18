@@ -163,6 +163,13 @@ for path in sorted(OUT.rglob('*.html')):
     text=str(s).replace('adam@styerteam.com','adam@thestyerteam.com')
     path.write_text(text);files.append(path.relative_to(OUT).as_posix())
 
+shutil.copy2(C/'homepage-visual.css', OUT/'homepage-visual.css')
+home_path=OUT/'index.html'
+home_doc=parse(home_path.read_text())
+if not home_doc.select_one('link[href="/homepage-visual.css"]'):
+    append_html(home_doc.head, '<link rel="stylesheet" href="/homepage-visual.css">')
+home_path.write_text(str(home_doc))
+
 for path in OUT.rglob('*.css'):
     if path.name not in ['styer-visual-overhaul.css','navigation.css']:
         css=path.read_text()
