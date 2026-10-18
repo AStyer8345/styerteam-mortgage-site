@@ -1,7 +1,6 @@
 # Netlify preview routing. Production configuration remains in the repository root.
 # Browser inquiries and applications stay inside this non-transmitting preview.
 /api/* /404.html 404!
-/.netlify/functions/* /404.html 404!
 /loans/conventional /loans/conventional.html 301
 /loans/fha /loans/fha.html 301
 /loans/va /loans/va.html 301
