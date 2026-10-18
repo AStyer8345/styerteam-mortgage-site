@@ -3,7 +3,7 @@
   "verificationFiles": [
     "googlea3d746ce1ceb4bff.html"
   ],
-  "scriptsParsed": 211,
+  "scriptsParsed": 212,
   "schemaBlocksParsed": 567,
   "issues": [],
   "scope": "Static source parse and component safety; no computed rendering or browser runtime claims."

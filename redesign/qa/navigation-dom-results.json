@@ -1,15 +1,29 @@
 {
-  "passed": 7,
+  "passed": 11,
+  "pagesChecked": 200,
+  "integrationIssues": [],
   "checks": [
-    "Mobile open reveals navigation and requests first-link/summary focus",
-    "Opening one navigation category closes the other category",
-    "Escape closes category then drawer and requests corresponding focus return",
-    "Outside pointer closes mobile navigation",
-    "Breakpoint changes preserve visible focus requests",
-    "Mobile link selection closes navigation with focus return",
-    "Header/footer/contact coexist once; navigation does not access network or storage"
+    "Original mobile toggle opens and closes exactly once",
+    "Original mobile dropdown delegation has one owner and closes siblings",
+    "Original Escape and child-link actions close mobile menu",
+    "Original outside-click closes mobile menu",
+    "899-to-900 breakpoint clears mobile state",
+    "Desktop click works once at 900, 1024, 1280 and 1440 despite original <=1280 branch",
+    "Desktop ArrowDown opens/focuses; Escape closes/returns focus",
+    "Modified desktop parent-link clicks retain normal navigation",
+    "Outside pointer and desktop-to-mobile transition clear state/focus",
+    "Combined scripts: original accordion toggles without scrolling; deep-answer link scrolls exactly once",
+    "Original hooks, logo, phone and four groups present; no construction promo/assistant injection/network/storage"
+  ],
+  "source": "Actual assembled homepage header and all five shared scripts in emitted order",
+  "coreOrder": [
+    "preview-safety.js",
+    "script.js",
+    "interaction.js",
+    "navigation.js",
+    "ui-polish.js"
   ],
   "networkCalls": 0,
   "storageCalls": 0,
-  "limitations": "Native details toggle, focus, viewport and geometry are simulated. Actual keyboard behavior and rendering require a browser."
+  "limitations": "DOM fixture simulates focus/media; the assembled preview guard prevents assistant injection. Browser rendering, native keyboard activation, contrast and live transport are not certified."
 }

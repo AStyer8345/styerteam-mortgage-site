@@ -1,0 +1,11 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';import {parseHTML,packagePath} from './runtime.mjs';
+const {document,window}=parseHTML(fs.readFileSync(packagePath('site','index.html'),'utf8'));
+const ctx={document,window:{matchMedia:()=>({matches:false})}};
+vm.runInNewContext(fs.readFileSync(packagePath('site','ui-polish.js'),'utf8'),ctx);
+const track=document.querySelector('.sm-review-track'),button=document.querySelector('[data-reviews-pause]');
+assert.equal(track.querySelectorAll('.sm-review-set').length,2);
+const copy=track.querySelector('[data-review-clone]');assert.equal(copy.getAttribute('aria-hidden'),'true');assert.ok(copy.hasAttribute('inert'));assert.ok([...copy.querySelectorAll('a')].every(a=>a.getAttribute('tabindex')==='-1'));
+const click=()=>button.dispatchEvent(new window.Event('click',{bubbles:true}));click();assert.ok(track.hasAttribute('data-paused'));assert.equal(button.getAttribute('aria-pressed'),'true');click();assert.ok(!track.hasAttribute('data-paused'));
+assert.equal(document.querySelectorAll('main > section').length,6);assert.equal(document.querySelectorAll('#scenarios .scenario-card').length,4);assert.ok(!document.querySelector('#scenarios a[href*=construction]'));assert.equal(document.querySelectorAll('#preview-contact input:not([type=hidden]), #preview-contact textarea').length,4);
+assert.match(document.querySelector('#scenarios .scenario-card').textContent,/tax returns/);assert.ok(!document.body.textContent.includes('Strategy before paperwork'));
+const report={passed:5,checks:['Review clones are hidden from assistive technology and excluded from keyboard order','Pause and play update animation state and accessible label','Exactly six homepage sections and four proof cards; no construction proof card','Shared inquiry has only four visible fields','Corrected 1099 obstacle and no rejected slogan'],limitations:'DOM controller checks; animation and native disclosure layout require browser verification.'};fs.writeFileSync(packagePath('qa','polish-dom-results.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));

@@ -10,7 +10,7 @@ if (process.env.NETLIFY !== 'true' || branch !== 'preview-redesign' ||
 }
 const root = path.dirname(fileURLToPath(import.meta.url));
 for (const script of ['static-verify.mjs', 'assembled-verify.mjs', 'asset-verify.mjs',
-  'calculator-numerics.mjs', 'interaction-dom.mjs', 'preview-safety-dom.mjs', 'navigation-dom.mjs']) {
+  'calculator-numerics.mjs', 'interaction-dom.mjs', 'preview-safety-dom.mjs', 'navigation-dom.mjs', 'polish-dom.mjs', 'css-syntax.mjs']) {
   const result = spawnSync(process.execPath, [path.join(root, 'qa', script)], { stdio: 'inherit' });
   if (result.error || result.status !== 0) throw new Error(`Preview verification failed: ${script}`);
 }

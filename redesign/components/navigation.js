@@ -1,101 +1,52 @@
-/* Shared progressive navigation. Independent of .mobile-menu / #nav in interaction.js.
-   Native details and all links remain available when this script does not run. */
+/* Original script.js owns .mobile-menu-toggle and .nav-links below 900px.
+   This enhancement owns only desktop dropdowns and breakpoint/focus cleanup. */
 (() => {
   'use strict';
-  const header = document.querySelector('.site-header');
-  const drawer = header?.querySelector('#site-nav-drawer');
-  const toggle = header?.querySelector('.nav-toggle');
-  if (!header || !drawer || !toggle || header.dataset.navigationReady === 'true') return;
-  header.dataset.navigationReady = 'true';
-  const groups = [...drawer.querySelectorAll('.sm-nav-group')];
-  const desktop = window.matchMedia('(min-width: 1101px)');
-
-  const closeGroup = (group, restoreFocus = false) => {
-    group.open = false;
-    if (restoreFocus) group.querySelector('summary')?.focus();
-  };
-  const closeGroups = () => groups.forEach(group => closeGroup(group));
-  const closeDrawer = (restoreFocus = false) => {
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
-    drawer.hidden = !desktop.matches;
-    closeGroups();
-    if (restoreFocus && !desktop.matches) toggle.focus();
-  };
-  const openDrawer = () => {
-    drawer.hidden = false;
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close navigation');
-    drawer.querySelector('summary, a')?.focus();
-  };
-  const measureHeader = () => {
-    const height = header.getBoundingClientRect().height;
-    header.style.setProperty('--sm-header-height', `${height}px`);
-    document.documentElement.style.setProperty('--sm-nav-scroll-offset', `${height + 16}px`);
-  };
-  const syncViewport = () => {
-    const activeInDrawer = drawer.contains(document.activeElement);
-    const activeWasToggle = document.activeElement === toggle;
-    toggle.hidden = desktop.matches;
-    closeDrawer(!desktop.matches && activeInDrawer);
-    if (desktop.matches && activeWasToggle) drawer.querySelector('summary, a')?.focus();
-    measureHeader();
-  };
-
-  header.classList.add('nav-enhanced');
-  syncViewport();
-  desktop.addEventListener('change', syncViewport);
-  if ('ResizeObserver' in window) {
-    new ResizeObserver(measureHeader).observe(header);
-  }
-  toggle.addEventListener('click', () => {
-    if (toggle.getAttribute('aria-expanded') === 'true') closeDrawer(true);
-    else openDrawer();
-  });
-  for (const group of groups) {
-    group.addEventListener('toggle', () => {
-      if (group.open) groups.filter(other => other !== group).forEach(other => closeGroup(other));
-    });
-  }
-  header.addEventListener('keydown', event => {
-    if (event.key !== 'Escape') return;
-    const group = event.target.closest('.sm-nav-group[open]');
-    if (group) {
-      event.preventDefault();
-      closeGroup(group, true);
-    } else if (!desktop.matches && toggle.getAttribute('aria-expanded') === 'true') {
-      event.preventDefault();
-      closeDrawer(true);
+  function init() {
+    const header=document.querySelector('header.sm-header');
+    if(!header||header.dataset.navigationReady==='true')return;
+    const links=header.querySelector('.nav-links'),toggle=header.querySelector('.mobile-menu-toggle');
+    if(!links||!toggle)return;
+    header.dataset.navigationReady='true';header.classList.add('navigation-enhanced');
+    const desktop=window.matchMedia('(min-width: 900px)');
+    const groups=[...links.querySelectorAll('.nav-has-dropdown')];
+    const parentOf=group=>group.querySelector(':scope > a');
+    const setGroup=(group,open)=>{group.classList.toggle('open',open);parentOf(group)?.setAttribute('aria-expanded',String(open));};
+    const closeGroups=()=>groups.forEach(group=>setGroup(group,false));
+    function openGroup(group){groups.forEach(other=>setGroup(other,other===group));}
+    function closeMobile(){links.classList.remove('active');toggle.setAttribute('aria-expanded','false');}
+    function sync(){const activeInMenu=links.contains(document.activeElement),activeWasToggle=document.activeElement===toggle;closeMobile();closeGroups();if(!desktop.matches&&activeInMenu)toggle.focus();else if(desktop.matches&&activeWasToggle)parentOf(groups[0])?.focus();}
+    desktop.addEventListener('change',sync);sync();
+    // Listen on the parent link, before the original delegated ul handler. This
+    // prevents the original <=1280 mobile branch from double-toggling at 900–1280.
+    for(const group of groups){
+      const parent=parentOf(group);if(!parent)continue;
+      parent.addEventListener('click',event=>{
+        if(!desktop.matches)return;
+        if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey){event.stopPropagation();return;}
+        event.preventDefault();event.stopPropagation();
+        const open=!group.classList.contains('open');closeGroups();setGroup(group,open);
+      });
+      parent.addEventListener('keydown',event=>{
+        if(!desktop.matches||!['ArrowDown','ArrowUp',' '].includes(event.key))return;
+        event.preventDefault();event.stopPropagation();openGroup(group);
+        if(event.key!==' '){const items=[...group.querySelectorAll('.nav-dropdown a')];(event.key==='ArrowUp'?items.at(-1):items[0])?.focus();}
+      });
+      group.addEventListener('keydown',event=>{
+        if(!desktop.matches||event.key!=='Escape')return;
+        event.preventDefault();event.stopPropagation();setGroup(group,false);parent.focus();
+      });
+      group.addEventListener('focusout',event=>{if(desktop.matches&&!group.contains(event.relatedTarget))setGroup(group,false);});
+      group.addEventListener('mouseenter',()=>{if(desktop.matches)openGroup(group);});
+      group.addEventListener('mouseleave',()=>{if(desktop.matches&&!group.contains(document.activeElement))setGroup(group,false);});
     }
-  });
-  document.addEventListener('pointerdown', event => {
-    if (header.contains(event.target)) {
-      groups.filter(group => !group.contains(event.target)).forEach(group => closeGroup(group));
-    } else closeDrawer();
-  });
-  document.addEventListener('focusin', event => {
-    groups.filter(group => !group.contains(event.target)).forEach(group => closeGroup(group));
-    if (!header.contains(event.target)) closeDrawer();
-  });
-  drawer.addEventListener('click', event => {
-    const link = event.target.closest('a[href]');
-    if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    // A mobile contact link can leave the document in place; return focus to the control.
-    closeDrawer(!desktop.matches);
-  });
-
-  const canonicalPath = path => {
-    let result = path.replace(/\/index\.html$/, '/');
-    if (result === '/apply.html') result = '/apply-now/';
-    return result === '/' ? result : result.replace(/\/$/, '');
-  };
-  const currentPath = canonicalPath(window.location.pathname);
-  let activeGroup = header.dataset.activeNav || document.body.dataset.activeNav;
-  for (const link of header.querySelectorAll('a[href^="/"]')) {
-    const target = new URL(link.getAttribute('href'), window.location.href);
-    if (canonicalPath(target.pathname) !== currentPath) continue;
-    link.setAttribute('aria-current', 'page');
-    activeGroup ||= link.closest('[data-nav-section]')?.dataset.navSection;
+    document.addEventListener('pointerdown',event=>{if(desktop.matches&&!header.contains(event.target))closeGroups();});
+    document.addEventListener('focusin',event=>{if(desktop.matches&&!header.contains(event.target))closeGroups();});
+    const canonical=pathname=>pathname==='/index.html'?'/':pathname==='/apply.html'?'/apply-now':pathname.replace(/\/$/,'')||'/';
+    for(const a of links.querySelectorAll('a[href]')){
+      const url=new URL(a.getAttribute('href'),location.href);
+      if(canonical(url.pathname)===canonical(location.pathname)){a.setAttribute('aria-current','page');a.closest('.nav-has-dropdown')?.classList.add('is-current');}
+    }
   }
-  groups.forEach(group => group.classList.toggle('is-current', group.dataset.navSection === activeGroup));
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();

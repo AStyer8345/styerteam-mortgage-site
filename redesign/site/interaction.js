@@ -40,7 +40,7 @@
     if(!contact||!form)return;
     resetContact();
     const field=form.elements.namedItem('goal');
-    field.value=[...field.options].some(x=>x.value===goal)?goal:'Review my scenario';
+    field.value=goal||'Review my scenario';
     const live=window.StyerInquiryTransport?.mode==='live';
     contact.querySelector('#contact-preview-note').textContent=live?'This is a request to discuss your situation. It is not a loan application or a credit authorization.':'Preview only. Use sample details. Nothing is sent or saved.';
     form.querySelector('[data-inquiry-submit]').textContent=live?'Send my scenario review →':'Preview my scenario review →';
@@ -64,7 +64,7 @@
   const topics={
     'Refinance & Equity':'Start with what you want to change: the payment, loan term, or access to equity. We’ll compare costs and the time needed to recover them.',
     'Invest':'We’ll review the property’s rent, expenses, financing costs, and your plans before comparing loan options.',
-    'About the Team':'Adam handles loan strategy and lender comparison. Tiffany manages documents, file execution, and client communication.',
+    'About the Team':'Work with an Austin mortgage broker. Compare the available lenders, costs, and next steps.',
     'Resources':'Use the resource hub for complete loan guides, calculators, and borrower scenarios.'
   };
   document.addEventListener('click',event=>{

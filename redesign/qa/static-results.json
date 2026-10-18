@@ -1,6 +1,6 @@
 {
-  "build": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site",
-  "ledger": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/styer-mortgage-migration-ledger-1.md",
+  "build": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site",
+  "ledger": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/styer-mortgage-migration-ledger-1.md",
   "routeCount": 173,
   "resolved": 173,
   "issueCount": 0,
@@ -14,7 +14,7 @@
       "parent": "/",
       "anchor": "Self-employed mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/self-employed-mortgage-austin.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/self-employed-mortgage-austin.html",
       "canonical": "https://styermortgage.com/self-employed-mortgage-austin.html"
     },
     {
@@ -23,7 +23,7 @@
       "parent": "/self-employed-mortgage-austin.html",
       "anchor": "Mortgage planning for business owners",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/mortgage-for-business-owners-austin.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/mortgage-for-business-owners-austin.html",
       "canonical": "https://styermortgage.com/mortgage-for-business-owners-austin.html"
     },
     {
@@ -32,7 +32,7 @@
       "parent": "/self-employed-mortgage-austin.html",
       "anchor": "Bank statement loans in Texas",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/bank-statement-loans.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/bank-statement-loans.html",
       "canonical": "https://styermortgage.com/bank-statement-loans.html"
     },
     {
@@ -41,7 +41,7 @@
       "parent": "/self-employed-mortgage-austin.html",
       "anchor": "P&L mortgage loans in Texas",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/p-and-l-mortgage-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/p-and-l-mortgage-texas.html",
       "canonical": "https://styermortgage.com/p-and-l-mortgage-texas.html"
     },
     {
@@ -50,7 +50,7 @@
       "parent": "/self-employed-mortgage-austin.html",
       "anchor": "1099-only mortgage loans in Texas",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/1099-only-mortgage-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/1099-only-mortgage-texas.html",
       "canonical": "https://styermortgage.com/1099-only-mortgage-texas.html"
     },
     {
@@ -59,7 +59,7 @@
       "parent": "/self-employed-mortgage-austin.html",
       "anchor": "Qualifying for a mortgage with K-1 income",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/k1-income-mortgage-austin.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/k1-income-mortgage-austin.html",
       "canonical": "https://styermortgage.com/k1-income-mortgage-austin.html"
     },
     {
@@ -68,7 +68,7 @@
       "parent": "/mortgage-for-business-owners-austin.html",
       "anchor": "Business-owner mortgage preparation checklist",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/resources/mortgage-options-for-business-owners.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/resources/mortgage-options-for-business-owners.html",
       "canonical": "https://styermortgage.com/resources/mortgage-options-for-business-owners.html"
     },
     {
@@ -77,7 +77,7 @@
       "parent": "/bank-statement-loans.html",
       "anchor": "How lenders review bank statements",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-06-30-bank-statement-loans-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-06-30-bank-statement-loans-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-06-30-bank-statement-loans-texas.html"
     },
     {
@@ -86,7 +86,7 @@
       "parent": "/self-employed-mortgage-austin.html",
       "anchor": "Self-employed tax-return income: add-backs and averaging",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html"
     },
     {
@@ -95,7 +95,7 @@
       "parent": "/self-employed-mortgage-austin.html",
       "anchor": "Preparing for a self-employed mortgage",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-04-02-self-employed-mortgage-austin-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-04-02-self-employed-mortgage-austin-tx.html",
       "canonical": "https://styermortgage.com/blog/2026-04-02-self-employed-mortgage-austin-tx.html"
     },
     {
@@ -104,7 +104,7 @@
       "parent": "/",
       "anchor": "Mortgages for asset-rich borrowers",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/high-net-worth-mortgage.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/high-net-worth-mortgage.html",
       "canonical": "https://styermortgage.com/high-net-worth-mortgage.html"
     },
     {
@@ -113,7 +113,7 @@
       "parent": "/high-net-worth-mortgage.html",
       "anchor": "Asset depletion mortgages in Texas",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/asset-depletion-mortgage-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/asset-depletion-mortgage-texas.html",
       "canonical": "https://styermortgage.com/asset-depletion-mortgage-texas.html"
     },
     {
@@ -122,7 +122,7 @@
       "parent": "/high-net-worth-mortgage.html",
       "anchor": "Reverse mortgages in Texas",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/reverse-mortgage-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/reverse-mortgage-texas.html",
       "canonical": "https://styermortgage.com/reverse-mortgage-texas.html"
     },
     {
@@ -131,7 +131,7 @@
       "parent": "/",
       "anchor": "Investment property financing",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/investor-loans.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/investor-loans.html",
       "canonical": "https://styermortgage.com/investor-loans.html"
     },
     {
@@ -140,7 +140,7 @@
       "parent": "/investor-loans.html",
       "anchor": "DSCR loans in Texas",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/dscr-loans-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/dscr-loans-texas.html",
       "canonical": "https://styermortgage.com/dscr-loans-texas.html"
     },
     {
@@ -149,7 +149,7 @@
       "parent": "/dscr-loans-texas.html",
       "anchor": "DSCR loans in Austin",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/dscr-loan-austin-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/dscr-loan-austin-tx.html",
       "canonical": "https://styermortgage.com/dscr-loan-austin-tx.html"
     },
     {
@@ -158,7 +158,7 @@
       "parent": "/dscr-loans-texas.html",
       "anchor": "DSCR loans in Fredericksburg",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/dscr-loans-fredericksburg-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/dscr-loans-fredericksburg-tx.html",
       "canonical": "https://styermortgage.com/dscr-loans-fredericksburg-tx.html"
     },
     {
@@ -167,7 +167,7 @@
       "parent": "/dscr-loans-texas.html",
       "anchor": "DSCR loans in Dripping Springs",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/dscr-loans-dripping-springs.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/dscr-loans-dripping-springs.html",
       "canonical": "https://styermortgage.com/dscr-loans-dripping-springs.html"
     },
     {
@@ -176,7 +176,7 @@
       "parent": "/investor-loans.html",
       "anchor": "DSCR cash-out refinance in Texas",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/dscr-cash-out-refinance-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/dscr-cash-out-refinance-texas.html",
       "canonical": "https://styermortgage.com/dscr-cash-out-refinance-texas.html"
     },
     {
@@ -185,7 +185,7 @@
       "parent": "/investor-loans.html",
       "anchor": "Investment property loan requirements",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/loans/investment.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/investment.html",
       "canonical": "https://styermortgage.com/loans/investment.html"
     },
     {
@@ -194,7 +194,7 @@
       "parent": "/investor-loans.html",
       "anchor": "DSCR vs conventional investment property loans",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html"
     },
     {
@@ -203,7 +203,7 @@
       "parent": "/dscr-loans-texas.html",
       "anchor": "Low-DSCR and no-ratio rental loans",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-06-23-no-ratio-low-dscr-loans-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-06-23-no-ratio-low-dscr-loans-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-06-23-no-ratio-low-dscr-loans-texas.html"
     },
     {
@@ -212,7 +212,7 @@
       "parent": "/dscr-cash-out-refinance-texas.html",
       "anchor": "DSCR cash-out refinance and BRRRR",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr.html",
       "canonical": "https://styermortgage.com/blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr.html"
     },
     {
@@ -221,7 +221,7 @@
       "parent": "/dscr-loans-texas.html",
       "anchor": "DSCR loans for Airbnb and short-term rentals",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-06-05-dscr-airbnb-str-loan-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-06-05-dscr-airbnb-str-loan-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-06-05-dscr-airbnb-str-loan-texas.html"
     },
     {
@@ -230,7 +230,7 @@
       "parent": "/dscr-loans-texas.html",
       "anchor": "DSCR loan requirements in Texas",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-06-16-dscr-loan-requirements-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-06-16-dscr-loan-requirements-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-06-16-dscr-loan-requirements-texas.html"
     },
     {
@@ -239,7 +239,7 @@
       "parent": "/dscr-loan-austin-tx.html",
       "anchor": "How DSCR loans work in Austin",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-31-dscr-loans-austin-tx-2026.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-31-dscr-loans-austin-tx-2026.html",
       "canonical": "https://styermortgage.com/blog/2026-03-31-dscr-loans-austin-tx-2026.html"
     },
     {
@@ -248,7 +248,7 @@
       "parent": "/",
       "anchor": "Buying a home",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/first-time-home-buyer.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/first-time-home-buyer.html",
       "canonical": "https://styermortgage.com/first-time-home-buyer.html"
     },
     {
@@ -257,7 +257,7 @@
       "parent": "/",
       "anchor": "Refinancing and cash-out options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/loans/refinance.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/refinance.html",
       "canonical": "https://styermortgage.com/loans/refinance.html"
     },
     {
@@ -266,7 +266,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Conventional home loans",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/loans/conventional.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/conventional.html",
       "canonical": "https://styermortgage.com/loans/conventional.html"
     },
     {
@@ -275,7 +275,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Jumbo mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/loans/jumbo.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/jumbo.html",
       "canonical": "https://styermortgage.com/loans/jumbo.html"
     },
     {
@@ -284,7 +284,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "FHA loans in Austin",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/loans/fha.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/fha.html",
       "canonical": "https://styermortgage.com/loans/fha.html"
     },
     {
@@ -293,7 +293,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "VA home loans in Texas",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/loans/va.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/va.html",
       "canonical": "https://styermortgage.com/loans/va.html"
     },
     {
@@ -302,7 +302,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "USDA home loans near Austin",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/loans/usda.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/usda.html",
       "canonical": "https://styermortgage.com/loans/usda.html"
     },
     {
@@ -311,7 +311,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Construction loan options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/loans/construction.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/construction.html",
       "canonical": "https://styermortgage.com/loans/construction.html"
     },
     {
@@ -320,7 +320,7 @@
       "parent": "/loans/construction.html",
       "anchor": "One-time-close construction loans in Texas",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/one-time-close-construction-loan-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/one-time-close-construction-loan-texas.html",
       "canonical": "https://styermortgage.com/one-time-close-construction-loan-texas.html"
     },
     {
@@ -329,7 +329,7 @@
       "parent": "/loans/construction.html",
       "anchor": "Review my construction project",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/construction-loan-scenario-review.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/construction-loan-scenario-review.html",
       "canonical": "https://styermortgage.com/construction-loan-scenario-review.html"
     },
     {
@@ -338,7 +338,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Buy before you sell in Austin",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/buy-before-you-sell-austin.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/buy-before-you-sell-austin.html",
       "canonical": "https://styermortgage.com/buy-before-you-sell-austin.html"
     },
     {
@@ -347,7 +347,7 @@
       "parent": "/loans/refinance.html",
       "anchor": "Texas home equity loans and HELOCs",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/home-equity-loans-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/home-equity-loans-texas.html",
       "canonical": "https://styermortgage.com/home-equity-loans-texas.html"
     },
     {
@@ -356,7 +356,7 @@
       "parent": "/products.html",
       "anchor": "Non-QM mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/non-qm-loans.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/non-qm-loans.html",
       "canonical": "https://styermortgage.com/non-qm-loans.html"
     },
     {
@@ -365,7 +365,7 @@
       "parent": "/non-qm-loans.html",
       "anchor": "What is a Non-QM loan?",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-09-04-what-is-a-non-qm-loan-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-09-04-what-is-a-non-qm-loan-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-09-04-what-is-a-non-qm-loan-texas.html"
     },
     {
@@ -374,7 +374,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Buying the home you rent in Texas",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html"
     },
     {
@@ -383,7 +383,7 @@
       "parent": "/loans/jumbo.html",
       "anchor": "Texas jumbo loan requirements",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-08-18-jumbo-loan-requirements-texas-2026.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-08-18-jumbo-loan-requirements-texas-2026.html",
       "canonical": "https://styermortgage.com/blog/2026-08-18-jumbo-loan-requirements-texas-2026.html"
     },
     {
@@ -392,7 +392,7 @@
       "parent": "/loans/refinance.html",
       "anchor": "Should I refinance? Break-even and costs",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
       "canonical": "https://styermortgage.com/blog/2026-04-17-should-i-refinance-austin-tx-2026.html"
     },
     {
@@ -401,7 +401,7 @@
       "parent": "/loans/va.html",
       "anchor": "VA loan eligibility in Texas",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-29-va-loan-eligibility-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-29-va-loan-eligibility-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-03-29-va-loan-eligibility-texas.html"
     },
     {
@@ -410,7 +410,7 @@
       "parent": "/loans/refinance.html",
       "anchor": "Cash-out refinance costs and trade-offs",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-24-cash-out-refinance-austin-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-24-cash-out-refinance-austin-tx.html",
       "canonical": "https://styermortgage.com/blog/2026-03-24-cash-out-refinance-austin-tx.html"
     },
     {
@@ -419,7 +419,7 @@
       "parent": "/mortgage-pre-approval-austin.html",
       "anchor": "How long mortgage pre-approval takes",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html",
       "canonical": "https://styermortgage.com/blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html"
     },
     {
@@ -428,7 +428,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "FHA vs conventional loans",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html",
       "canonical": "https://styermortgage.com/blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html"
     },
     {
@@ -437,7 +437,7 @@
       "parent": "/austin-down-payment-assistance.html",
       "anchor": "Texas down payment assistance programs",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-27-down-payment-assistance-texas-2026.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-27-down-payment-assistance-texas-2026.html",
       "canonical": "https://styermortgage.com/blog/2026-03-27-down-payment-assistance-texas-2026.html"
     },
     {
@@ -446,7 +446,7 @@
       "parent": "/buy-before-you-sell-austin.html",
       "anchor": "How to buy before selling your current home",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-06-14-buy-before-you-sell-austin-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-06-14-buy-before-you-sell-austin-tx.html",
       "canonical": "https://styermortgage.com/blog/2026-06-14-buy-before-you-sell-austin-tx.html"
     },
     {
@@ -455,7 +455,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Physician mortgage options in Texas",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-05-30-physician-mortgage-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-05-30-physician-mortgage-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-05-30-physician-mortgage-texas.html"
     },
     {
@@ -464,7 +464,7 @@
       "parent": "/non-qm-loans.html",
       "anchor": "ITIN mortgage qualification in Texas",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-07-21-itin-mortgage-loans-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-07-21-itin-mortgage-loans-texas.html",
       "canonical": "https://styermortgage.com/blog/2026-07-21-itin-mortgage-loans-texas.html"
     },
     {
@@ -473,7 +473,7 @@
       "parent": "/austin-down-payment-assistance.html",
       "anchor": "First-time homebuyer assistance in Austin",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html",
       "canonical": "https://styermortgage.com/blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html"
     },
     {
@@ -482,7 +482,7 @@
       "parent": "/loans/fha.html",
       "anchor": "FHA loan requirements in Texas",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-04-10-fha-loan-requirements-texas-2026.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-04-10-fha-loan-requirements-texas-2026.html",
       "canonical": "https://styermortgage.com/blog/2026-04-10-fha-loan-requirements-texas-2026.html"
     },
     {
@@ -491,7 +491,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Condo mortgage requirements in Austin",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-04-03-condo-mortgage-austin-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-04-03-condo-mortgage-austin-tx.html",
       "canonical": "https://styermortgage.com/blog/2026-04-03-condo-mortgage-austin-tx.html"
     },
     {
@@ -500,7 +500,7 @@
       "parent": "/resources/",
       "anchor": "Mortgage scenarios and case studies",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/scenarios.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/scenarios.html",
       "canonical": "https://styermortgage.com/scenarios.html"
     },
     {
@@ -509,7 +509,7 @@
       "parent": "/scenarios.html",
       "anchor": "Asset depletion after two bank declines",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/scenarios/oil-gas-royalty-asset-depletion.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/scenarios/oil-gas-royalty-asset-depletion.html",
       "canonical": "https://styermortgage.com/scenarios/oil-gas-royalty-asset-depletion.html"
     },
     {
@@ -518,7 +518,7 @@
       "parent": "/scenarios.html",
       "anchor": "1099 bank-statement cash-out refinance scenario",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/scenarios/self-employed-refinance-deposit-review.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/scenarios/self-employed-refinance-deposit-review.html",
       "canonical": "https://styermortgage.com/scenarios/self-employed-refinance-deposit-review.html"
     },
     {
@@ -527,7 +527,7 @@
       "parent": "/scenarios.html",
       "anchor": "Two-rental-property cash-out review",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/scenarios/two-rental-properties-cash-out-review.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/scenarios/two-rental-properties-cash-out-review.html",
       "canonical": "https://styermortgage.com/scenarios/two-rental-properties-cash-out-review.html"
     },
     {
@@ -536,7 +536,7 @@
       "parent": "/scenarios.html",
       "anchor": "Buying your rental home with gift funds",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/scenarios/buying-current-rental-gift-funds.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/scenarios/buying-current-rental-gift-funds.html",
       "canonical": "https://styermortgage.com/scenarios/buying-current-rental-gift-funds.html"
     },
     {
@@ -545,7 +545,7 @@
       "parent": "/scenarios.html",
       "anchor": "Building on owned land before selling",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/scenarios/build-on-owned-land-before-selling.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/scenarios/build-on-owned-land-before-selling.html",
       "canonical": "https://styermortgage.com/scenarios/build-on-owned-land-before-selling.html"
     },
     {
@@ -554,7 +554,7 @@
       "parent": "/scenarios.html",
       "anchor": "Asset-rich buyer with limited income history",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/scenarios/assets-limited-income-history.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/scenarios/assets-limited-income-history.html",
       "canonical": "https://styermortgage.com/scenarios/assets-limited-income-history.html"
     },
     {
@@ -563,7 +563,7 @@
       "parent": "/scenarios.html",
       "anchor": "Former CFO asset-depletion case study",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html",
       "canonical": "https://styermortgage.com/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html"
     },
     {
@@ -572,7 +572,7 @@
       "parent": "/scenarios.html",
       "anchor": "Veteran retirement-asset qualification case study",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-08-21-veteran-asset-depletion-mortgage-case-study.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-08-21-veteran-asset-depletion-mortgage-case-study.html",
       "canonical": "https://styermortgage.com/blog/2026-08-21-veteran-asset-depletion-mortgage-case-study.html"
     },
     {
@@ -581,7 +581,7 @@
       "parent": "/resources/",
       "anchor": "Mortgage calculators",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/calculators.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/calculators.html",
       "canonical": "https://styermortgage.com/calculators.html"
     },
     {
@@ -590,7 +590,7 @@
       "parent": "/calculators.html",
       "anchor": "Mortgage payment calculator",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/calculator-payment.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/calculator-payment.html",
       "canonical": "https://styermortgage.com/calculator-payment.html"
     },
     {
@@ -599,7 +599,7 @@
       "parent": "/calculators.html",
       "anchor": "Home affordability calculator",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/calculator-affordability.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/calculator-affordability.html",
       "canonical": "https://styermortgage.com/calculator-affordability.html"
     },
     {
@@ -608,7 +608,7 @@
       "parent": "/calculators.html",
       "anchor": "DSCR rental property calculator",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/dscr-calculator.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/dscr-calculator.html",
       "canonical": "https://styermortgage.com/dscr-calculator.html"
     },
     {
@@ -617,7 +617,7 @@
       "parent": "/calculators.html",
       "anchor": "Asset depletion income calculator",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/asset-depletion-calculator.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/asset-depletion-calculator.html",
       "canonical": "https://styermortgage.com/asset-depletion-calculator.html"
     },
     {
@@ -626,7 +626,7 @@
       "parent": "/calculators.html",
       "anchor": "Refinance break-even calculator",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/calculator-refinance-breakeven.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/calculator-refinance-breakeven.html",
       "canonical": "https://styermortgage.com/calculator-refinance-breakeven.html"
     },
     {
@@ -635,7 +635,7 @@
       "parent": "/calculators.html",
       "anchor": "Refinance closing-cost calculator",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/refinance-calculator.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/refinance-calculator.html",
       "canonical": "https://styermortgage.com/refinance-calculator.html"
     },
     {
@@ -644,7 +644,7 @@
       "parent": "/calculators.html",
       "anchor": "Temporary rate buydown calculator",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/rate-buydown-calculator.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/rate-buydown-calculator.html",
       "canonical": "https://styermortgage.com/rate-buydown-calculator.html"
     },
     {
@@ -653,7 +653,7 @@
       "parent": "/calculators.html",
       "anchor": "Wraparound mortgage calculator",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/wrap-mortgage-calculator.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/wrap-mortgage-calculator.html",
       "canonical": "https://styermortgage.com/wrap-mortgage-calculator.html"
     },
     {
@@ -662,7 +662,7 @@
       "parent": null,
       "anchor": "Styer Mortgage",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/index.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/index.html",
       "canonical": "https://styermortgage.com/"
     },
     {
@@ -671,7 +671,7 @@
       "parent": "/",
       "anchor": "All mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/products.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/products.html",
       "canonical": "https://styermortgage.com/products.html"
     },
     {
@@ -680,7 +680,7 @@
       "parent": "/",
       "anchor": "Mortgage resources and guides",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/resources/index.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/resources/index.html",
       "canonical": "https://styermortgage.com/resources/"
     },
     {
@@ -689,7 +689,7 @@
       "parent": "/resources/",
       "anchor": "Mortgage articles and market updates",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog.html",
       "canonical": "https://styermortgage.com/blog.html"
     },
     {
@@ -698,7 +698,7 @@
       "parent": "/",
       "anchor": "About Adam and the team",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/about.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/about.html",
       "canonical": "https://styermortgage.com/about.html"
     },
     {
@@ -707,7 +707,7 @@
       "parent": "/about.html",
       "anchor": "Client and partner reviews",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/testimonials.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/testimonials.html",
       "canonical": "https://styermortgage.com/testimonials.html"
     },
     {
@@ -716,7 +716,7 @@
       "parent": "/",
       "anchor": "Contact Adam Styer",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/contact.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/contact.html",
       "canonical": "https://styermortgage.com/contact.html"
     },
     {
@@ -725,7 +725,7 @@
       "parent": "/",
       "anchor": "Review my mortgage scenario",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/scenario.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/scenario.html",
       "canonical": "https://styermortgage.com/scenario.html"
     },
     {
@@ -734,7 +734,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Request a mortgage pre-approval review",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/get-preapproved.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/get-preapproved.html",
       "canonical": "https://styermortgage.com/get-preapproved.html"
     },
     {
@@ -743,7 +743,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Mortgage pre-qualification",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/prequal.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/prequal.html",
       "canonical": "https://styermortgage.com/prequal.html"
     },
     {
@@ -752,7 +752,7 @@
       "parent": "/loans/refinance.html",
       "anchor": "Review my refinance scenario",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/refinance-quote.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/refinance-quote.html",
       "canonical": "https://styermortgage.com/refinance-quote.html"
     },
     {
@@ -761,7 +761,7 @@
       "parent": "/resources/",
       "anchor": "Compare my mortgage offer",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/rate-check.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/rate-check.html",
       "canonical": "https://styermortgage.com/rate-check.html"
     },
     {
@@ -770,7 +770,7 @@
       "parent": "/austin-mortgage-rates.html",
       "anchor": "Mortgage rate alerts",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/rate-alert.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/rate-alert.html",
       "canonical": "https://styermortgage.com/rate-alert.html"
     },
     {
@@ -779,7 +779,7 @@
       "parent": "/resources/",
       "anchor": "Austin mortgage rates",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/austin-mortgage-rates.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/austin-mortgage-rates.html",
       "canonical": "https://styermortgage.com/austin-mortgage-rates.html"
     },
     {
@@ -788,7 +788,7 @@
       "parent": "/resources/",
       "anchor": "Austin housing market",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/austin-housing-market.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/austin-housing-market.html",
       "canonical": "https://styermortgage.com/austin-housing-market.html"
     },
     {
@@ -797,7 +797,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "How to buy a house in Austin",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/how-to-buy-a-house-in-austin-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/how-to-buy-a-house-in-austin-tx.html",
       "canonical": "https://styermortgage.com/how-to-buy-a-house-in-austin-tx.html"
     },
     {
@@ -806,7 +806,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Mortgage pre-approval in Austin",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/mortgage-pre-approval-austin.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/mortgage-pre-approval-austin.html",
       "canonical": "https://styermortgage.com/mortgage-pre-approval-austin.html"
     },
     {
@@ -815,7 +815,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "How much house can I afford in Austin?",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/how-much-house-can-i-afford-austin.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/how-much-house-can-i-afford-austin.html",
       "canonical": "https://styermortgage.com/how-much-house-can-i-afford-austin.html"
     },
     {
@@ -824,7 +824,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "Austin down payment assistance programs",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/austin-down-payment-assistance.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/austin-down-payment-assistance.html",
       "canonical": "https://styermortgage.com/austin-down-payment-assistance.html"
     },
     {
@@ -833,7 +833,7 @@
       "parent": "/resources/",
       "anchor": "Texas closing costs explained",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/closing-costs-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/closing-costs-texas.html",
       "canonical": "https://styermortgage.com/closing-costs-texas.html"
     },
     {
@@ -842,7 +842,7 @@
       "parent": "/resources/",
       "anchor": "Fixed vs adjustable-rate mortgages",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/fixed-vs-adjustable.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/fixed-vs-adjustable.html",
       "canonical": "https://styermortgage.com/fixed-vs-adjustable.html"
     },
     {
@@ -851,7 +851,7 @@
       "parent": "/resources/",
       "anchor": "Improve your credit score for a mortgage",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/improve-credit-score.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/improve-credit-score.html",
       "canonical": "https://styermortgage.com/improve-credit-score.html"
     },
     {
@@ -860,7 +860,7 @@
       "parent": "/resources/",
       "anchor": "Mortgage broker vs bank",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/mortgage-broker-vs-bank.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/mortgage-broker-vs-bank.html",
       "canonical": "https://styermortgage.com/mortgage-broker-vs-bank.html"
     },
     {
@@ -869,7 +869,7 @@
       "parent": "/resources/",
       "anchor": "Mortgage terms explained",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/mortgage-glossary.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/mortgage-glossary.html",
       "canonical": "https://styermortgage.com/mortgage-glossary.html"
     },
     {
@@ -878,7 +878,7 @@
       "parent": "/austin-down-payment-assistance.html",
       "anchor": "First-time-buyer down payment help",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/ftb-dpa-guide.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/ftb-dpa-guide.html",
       "canonical": "https://styermortgage.com/ftb-dpa-guide.html"
     },
     {
@@ -887,7 +887,7 @@
       "parent": "/first-time-home-buyer.html",
       "anchor": "First-time homebuyer guide",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/resources/first-time-buyer-guide/index.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/resources/first-time-buyer-guide/index.html",
       "canonical": "https://styermortgage.com/resources/first-time-buyer-guide/"
     },
     {
@@ -896,7 +896,7 @@
       "parent": "/austin-mortgage-rates.html",
       "anchor": "Why mortgage rates are rising",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-10-01-why-mortgage-rates-are-rising.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-10-01-why-mortgage-rates-are-rising.html",
       "canonical": "https://styermortgage.com/blog/2026-10-01-why-mortgage-rates-are-rising.html"
     },
     {
@@ -905,7 +905,7 @@
       "parent": "/blog.html",
       "anchor": "When you can’t control it, surrender it",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
       "canonical": "https://styermortgage.com/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
     },
     {
@@ -914,7 +914,7 @@
       "parent": "/blog.html",
       "anchor": "The AI trap I walked right into",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-18-the-ai-trap-i-walked-right-into.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-18-the-ai-trap-i-walked-right-into.html",
       "canonical": "https://styermortgage.com/blog/2026-03-18-the-ai-trap-i-walked-right-into.html"
     },
     {
@@ -923,7 +923,7 @@
       "parent": "/austin-mortgage-rates.html",
       "anchor": "Oil prices, jobs and mortgage rate volatility",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
       "canonical": "https://styermortgage.com/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
     },
     {
@@ -932,7 +932,7 @@
       "parent": "/austin-mortgage-rates.html",
       "anchor": "Mortgage rates and inflation: June 2026",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-06-15-mortgage-rates-inflation-iran-peace-deal.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-06-15-mortgage-rates-inflation-iran-peace-deal.html",
       "canonical": "https://styermortgage.com/blog/2026-06-15-mortgage-rates-inflation-iran-peace-deal.html"
     },
     {
@@ -941,7 +941,7 @@
       "parent": "/austin-housing-market.html",
       "anchor": "Why home prices aren’t crashing",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-04-27-why-home-prices-arent-crashing.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-04-27-why-home-prices-arent-crashing.html",
       "canonical": "https://styermortgage.com/blog/2026-04-27-why-home-prices-arent-crashing.html"
     },
     {
@@ -950,7 +950,7 @@
       "parent": "/rate-check.html",
       "anchor": "Switching mortgage lenders under contract",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/can-i-switch-lenders-after-going-under-contract-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/can-i-switch-lenders-after-going-under-contract-texas.html",
       "canonical": "https://styermortgage.com/blog/can-i-switch-lenders-after-going-under-contract-texas.html"
     },
     {
@@ -959,7 +959,7 @@
       "parent": "/austin-mortgage-rates.html",
       "anchor": "Why mortgage rates improved: March 30, 2026",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
       "canonical": "https://styermortgage.com/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
     },
     {
@@ -968,7 +968,7 @@
       "parent": "/austin-housing-market.html",
       "anchor": "Austin spring housing market update",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-04-01-spring-market-update.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-04-01-spring-market-update.html",
       "canonical": "https://styermortgage.com/blog/2026-04-01-spring-market-update.html"
     },
     {
@@ -977,7 +977,7 @@
       "parent": "/rate-check.html",
       "anchor": "How to choose a mortgage lender in Austin",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html",
       "canonical": "https://styermortgage.com/blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html"
     },
     {
@@ -986,7 +986,7 @@
       "parent": "/rate-check.html",
       "anchor": "How to compare two mortgage offers",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/how-to-compare-two-mortgage-offers.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/how-to-compare-two-mortgage-offers.html",
       "canonical": "https://styermortgage.com/blog/how-to-compare-two-mortgage-offers.html"
     },
     {
@@ -995,7 +995,7 @@
       "parent": "/mortgage-pre-approval-austin.html",
       "anchor": "Mortgage document checklist by income type",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-04-06-mortgage-document-checklist-austin-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-04-06-mortgage-document-checklist-austin-tx.html",
       "canonical": "https://styermortgage.com/blog/2026-04-06-mortgage-document-checklist-austin-tx.html"
     },
     {
@@ -1004,7 +1004,7 @@
       "parent": "/rate-check.html",
       "anchor": "APR vs interest rate",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/apr-vs-interest-rate-what-actually-matters.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/apr-vs-interest-rate-what-actually-matters.html",
       "canonical": "https://styermortgage.com/blog/apr-vs-interest-rate-what-actually-matters.html"
     },
     {
@@ -1013,7 +1013,7 @@
       "parent": "/rate-check.html",
       "anchor": "Are mortgage lender fees negotiable?",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/are-mortgage-lender-fees-negotiable.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/are-mortgage-lender-fees-negotiable.html",
       "canonical": "https://styermortgage.com/blog/are-mortgage-lender-fees-negotiable.html"
     },
     {
@@ -1022,7 +1022,7 @@
       "parent": "/rate-check.html",
       "anchor": "Is the lowest rate the cheapest loan?",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/is-the-lowest-rate-the-cheapest-loan.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/is-the-lowest-rate-the-cheapest-loan.html",
       "canonical": "https://styermortgage.com/blog/is-the-lowest-rate-the-cheapest-loan.html"
     },
     {
@@ -1031,7 +1031,7 @@
       "parent": "/rate-check.html",
       "anchor": "How many mortgage quotes should I get?",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/how-many-mortgage-quotes-should-i-get.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/how-many-mortgage-quotes-should-i-get.html",
       "canonical": "https://styermortgage.com/blog/how-many-mortgage-quotes-should-i-get.html"
     },
     {
@@ -1040,7 +1040,7 @@
       "parent": "/rate-check.html",
       "anchor": "How to read a Loan Estimate",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/how-to-read-a-loan-estimate.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/how-to-read-a-loan-estimate.html",
       "canonical": "https://styermortgage.com/blog/how-to-read-a-loan-estimate.html"
     },
     {
@@ -1049,7 +1049,7 @@
       "parent": "/rate-check.html",
       "anchor": "Local lender vs online lender",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/local-lender-vs-online-lender-austin-central-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/local-lender-vs-online-lender-austin-central-texas.html",
       "canonical": "https://styermortgage.com/blog/local-lender-vs-online-lender-austin-central-texas.html"
     },
     {
@@ -1058,7 +1058,7 @@
       "parent": "/rate-check.html",
       "anchor": "What delays closing when switching lenders?",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/what-delays-closing-when-you-switch-lenders.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/what-delays-closing-when-you-switch-lenders.html",
       "canonical": "https://styermortgage.com/blog/what-delays-closing-when-you-switch-lenders.html"
     },
     {
@@ -1067,7 +1067,7 @@
       "parent": "/rate-check.html",
       "anchor": "What to compare besides mortgage rate",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/what-to-compare-besides-mortgage-rate.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/what-to-compare-besides-mortgage-rate.html",
       "canonical": "https://styermortgage.com/blog/what-to-compare-besides-mortgage-rate.html"
     },
     {
@@ -1076,7 +1076,7 @@
       "parent": "/rate-check.html",
       "anchor": "The financing goal behind a lower rate",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html",
       "canonical": "https://styermortgage.com/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html"
     },
     {
@@ -1085,7 +1085,7 @@
       "parent": "/austin-mortgage-rates.html",
       "anchor": "Austin mortgage rates: March 2026 archive",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-03-20-austin-mortgage-rates-march-2026.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-03-20-austin-mortgage-rates-march-2026.html",
       "canonical": "https://styermortgage.com/austin-mortgage-rates.html"
     },
     {
@@ -1094,7 +1094,7 @@
       "parent": "/austin-housing-market.html",
       "anchor": "Austin housing market report: August 2026",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-08-10-austin-housing-market-report-august-2026.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-08-10-austin-housing-market-report-august-2026.html",
       "canonical": "https://styermortgage.com/blog/2026-08-10-austin-housing-market-report-august-2026.html"
     },
     {
@@ -1103,7 +1103,7 @@
       "parent": "/austin-housing-market.html",
       "anchor": "Austin housing market report: April 2026",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-04-04-austin-housing-market-report-april-2026.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-04-04-austin-housing-market-report-april-2026.html",
       "canonical": "https://styermortgage.com/blog/2026-04-04-austin-housing-market-report-april-2026.html"
     },
     {
@@ -1112,7 +1112,7 @@
       "parent": "/buy-before-you-sell-austin.html",
       "anchor": "Should you wait for mortgage rates before moving?",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/resources/blog/2026-03-04-wait-for-rates.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/resources/blog/2026-03-04-wait-for-rates.html",
       "canonical": "https://styermortgage.com/resources/blog/2026-03-04-wait-for-rates.html"
     },
     {
@@ -1121,7 +1121,7 @@
       "parent": "/resources/",
       "anchor": "Austin and Central Texas mortgage service areas",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/austin-area-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/austin-area-mortgage-lender.html",
       "canonical": "https://styermortgage.com/austin-area-mortgage-lender.html"
     },
     {
@@ -1130,7 +1130,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Pflugerville mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/pflugerville-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/pflugerville-mortgage-lender.html",
       "canonical": "https://styermortgage.com/pflugerville-mortgage-lender.html"
     },
     {
@@ -1139,7 +1139,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Leander mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/leander-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/leander-mortgage-lender.html",
       "canonical": "https://styermortgage.com/leander-mortgage-lender.html"
     },
     {
@@ -1148,7 +1148,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Georgetown mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/georgetown-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/georgetown-mortgage-lender.html",
       "canonical": "https://styermortgage.com/georgetown-mortgage-lender.html"
     },
     {
@@ -1157,7 +1157,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Round Rock mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/round-rock-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/round-rock-mortgage-lender.html",
       "canonical": "https://styermortgage.com/round-rock-mortgage-lender.html"
     },
     {
@@ -1166,7 +1166,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Cedar Park mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/cedar-park-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/cedar-park-mortgage-lender.html",
       "canonical": "https://styermortgage.com/cedar-park-mortgage-lender.html"
     },
     {
@@ -1175,7 +1175,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Liberty Hill mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/liberty-hill-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/liberty-hill-mortgage-lender.html",
       "canonical": "https://styermortgage.com/liberty-hill-mortgage-lender.html"
     },
     {
@@ -1184,7 +1184,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Kyle mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/kyle-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/kyle-mortgage-lender.html",
       "canonical": "https://styermortgage.com/kyle-mortgage-lender.html"
     },
     {
@@ -1193,7 +1193,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Bastrop mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/bastrop-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/bastrop-mortgage-lender.html",
       "canonical": "https://styermortgage.com/bastrop-mortgage-lender.html"
     },
     {
@@ -1202,7 +1202,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "San Marcos mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/san-marcos-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/san-marcos-mortgage-lender.html",
       "canonical": "https://styermortgage.com/san-marcos-mortgage-lender.html"
     },
     {
@@ -1211,7 +1211,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Buda mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/buda-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/buda-mortgage-lender.html",
       "canonical": "https://styermortgage.com/buda-mortgage-lender.html"
     },
     {
@@ -1220,7 +1220,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Bee Cave mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/bee-cave-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/bee-cave-mortgage-lender.html",
       "canonical": "https://styermortgage.com/bee-cave-mortgage-lender.html"
     },
     {
@@ -1229,7 +1229,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Hutto mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/hutto-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/hutto-mortgage-lender.html",
       "canonical": "https://styermortgage.com/hutto-mortgage-lender.html"
     },
     {
@@ -1238,7 +1238,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Westlake Hills mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/westlake-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/westlake-mortgage-lender.html",
       "canonical": "https://styermortgage.com/westlake-mortgage-lender.html"
     },
     {
@@ -1247,7 +1247,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "New Braunfels mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/new-braunfels-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/new-braunfels-mortgage-lender.html",
       "canonical": "https://styermortgage.com/new-braunfels-mortgage-lender.html"
     },
     {
@@ -1256,7 +1256,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Lakeway mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/lakeway-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/lakeway-mortgage-lender.html",
       "canonical": "https://styermortgage.com/lakeway-mortgage-lender.html"
     },
     {
@@ -1265,7 +1265,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Manor mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/manor-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/manor-mortgage-lender.html",
       "canonical": "https://styermortgage.com/manor-mortgage-lender.html"
     },
     {
@@ -1274,7 +1274,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Dripping Springs mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/dripping-springs-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/dripping-springs-mortgage-lender.html",
       "canonical": "https://styermortgage.com/dripping-springs-mortgage-lender.html"
     },
     {
@@ -1283,7 +1283,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Smithville mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/smithville-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/smithville-mortgage-lender.html",
       "canonical": "https://styermortgage.com/smithville-mortgage-lender.html"
     },
     {
@@ -1292,7 +1292,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Jarrell mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/jarrell-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/jarrell-mortgage-lender.html",
       "canonical": "https://styermortgage.com/jarrell-mortgage-lender.html"
     },
     {
@@ -1301,7 +1301,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Florence mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/florence-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/florence-mortgage-lender.html",
       "canonical": "https://styermortgage.com/florence-mortgage-lender.html"
     },
     {
@@ -1310,7 +1310,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Spicewood mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/spicewood-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/spicewood-mortgage-lender.html",
       "canonical": "https://styermortgage.com/spicewood-mortgage-lender.html"
     },
     {
@@ -1319,7 +1319,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Elgin mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/elgin-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/elgin-mortgage-lender.html",
       "canonical": "https://styermortgage.com/elgin-mortgage-lender.html"
     },
     {
@@ -1328,7 +1328,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Marble Falls mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/marble-falls-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/marble-falls-mortgage-lender.html",
       "canonical": "https://styermortgage.com/marble-falls-mortgage-lender.html"
     },
     {
@@ -1337,7 +1337,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Taylor mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/taylor-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/taylor-mortgage-lender.html",
       "canonical": "https://styermortgage.com/taylor-mortgage-lender.html"
     },
     {
@@ -1346,7 +1346,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "Dallas mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/dallas-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/dallas-mortgage-lender.html",
       "canonical": "https://styermortgage.com/dallas-mortgage-lender.html"
     },
     {
@@ -1355,7 +1355,7 @@
       "parent": "/austin-area-mortgage-lender.html",
       "anchor": "San Antonio mortgage options",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/san-antonio-mortgage-lender.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/san-antonio-mortgage-lender.html",
       "canonical": "https://styermortgage.com/san-antonio-mortgage-lender.html"
     },
     {
@@ -1364,7 +1364,7 @@
       "parent": "/round-rock-mortgage-lender.html",
       "anchor": "Compare a mortgage offer in Round Rock and Pflugerville",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/rate-check-round-rock.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/rate-check-round-rock.html",
       "canonical": "https://styermortgage.com/rate-check-round-rock.html"
     },
     {
@@ -1373,7 +1373,7 @@
       "parent": "/cedar-park-mortgage-lender.html",
       "anchor": "Compare a mortgage offer in Cedar Park and Leander",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/rate-check-cedar-park.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/rate-check-cedar-park.html",
       "canonical": "https://styermortgage.com/rate-check-cedar-park.html"
     },
     {
@@ -1382,7 +1382,7 @@
       "parent": "/georgetown-mortgage-lender.html",
       "anchor": "Compare a mortgage offer in Georgetown and Hutto",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/rate-check-georgetown.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/rate-check-georgetown.html",
       "canonical": "https://styermortgage.com/rate-check-georgetown.html"
     },
     {
@@ -1391,7 +1391,7 @@
       "parent": "/buda-mortgage-lender.html",
       "anchor": "Compare a mortgage offer in Buda, Kyle and San Marcos",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/rate-check-buda-kyle.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/rate-check-buda-kyle.html",
       "canonical": "https://styermortgage.com/rate-check-buda-kyle.html"
     },
     {
@@ -1400,7 +1400,7 @@
       "parent": "/new-braunfels-mortgage-lender.html",
       "anchor": "Compare a mortgage offer in New Braunfels",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/rate-check-new-braunfels.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/rate-check-new-braunfels.html",
       "canonical": "https://styermortgage.com/rate-check-new-braunfels.html"
     },
     {
@@ -1409,7 +1409,7 @@
       "parent": "/resources/",
       "anchor": "Mortgage resources for professional partners",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/referral-partners-self-employed-clients.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/referral-partners-self-employed-clients.html",
       "canonical": "https://styermortgage.com/referral-partners-self-employed-clients.html"
     },
     {
@@ -1418,7 +1418,7 @@
       "parent": "/referral-partners-self-employed-clients.html",
       "anchor": "Mortgage resources for Realtors",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/realtors.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/realtors.html",
       "canonical": "https://styermortgage.com/realtors.html"
     },
     {
@@ -1427,7 +1427,7 @@
       "parent": "/referral-partners-self-employed-clients.html",
       "anchor": "Mortgage resources for Texas CPAs",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/mortgage-resources-for-cpas-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/mortgage-resources-for-cpas-texas.html",
       "canonical": "https://styermortgage.com/mortgage-resources-for-cpas-texas.html"
     },
     {
@@ -1436,7 +1436,7 @@
       "parent": "/referral-partners-self-employed-clients.html",
       "anchor": "Mortgage strategies for financial advisors",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/mortgage-strategies-financial-advisors-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/mortgage-strategies-financial-advisors-texas.html",
       "canonical": "https://styermortgage.com/mortgage-strategies-financial-advisors-texas.html"
     },
     {
@@ -1445,7 +1445,7 @@
       "parent": "/referral-partners-self-employed-clients.html",
       "anchor": "Mortgage case studies for advisors and CPAs",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/mortgage-case-studies-for-advisors-cpas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/mortgage-case-studies-for-advisors-cpas.html",
       "canonical": "https://styermortgage.com/mortgage-case-studies-for-advisors-cpas.html"
     },
     {
@@ -1454,7 +1454,7 @@
       "parent": "/mortgage-strategies-financial-advisors-texas.html",
       "anchor": "Reverse mortgage planning for financial advisors",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/reverse-mortgage-financial-advisors-texas.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/reverse-mortgage-financial-advisors-texas.html",
       "canonical": "https://styermortgage.com/reverse-mortgage-financial-advisors-texas.html"
     },
     {
@@ -1463,7 +1463,7 @@
       "parent": "/realtors.html",
       "anchor": "Realtor tools and market updates",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/realtor-resources.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/realtor-resources.html",
       "canonical": "https://styermortgage.com/realtor-resources.html"
     },
     {
@@ -1472,7 +1472,7 @@
       "parent": "/realtor-resources.html",
       "anchor": "Helping buyers with the wait-for-rates objection",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/resources/blog/2026-03-04-wait-for-rates-realtor.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/resources/blog/2026-03-04-wait-for-rates-realtor.html",
       "canonical": "https://styermortgage.com/resources/blog/2026-03-04-wait-for-rates-realtor.html"
     },
     {
@@ -1481,7 +1481,7 @@
       "parent": "/realtor-resources.html",
       "anchor": "Mortgage options when other lenders say no",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/realtor-updates/2026-06-08-when-other-lenders-say-no.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/realtor-updates/2026-06-08-when-other-lenders-say-no.html",
       "canonical": "https://styermortgage.com/realtor-updates/2026-06-08-when-other-lenders-say-no.html"
     },
     {
@@ -1490,7 +1490,7 @@
       "parent": "/realtor-resources.html",
       "anchor": "AI tools and mortgage rate update: February 2026",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6.html",
       "canonical": "https://styermortgage.com/realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6.html"
     },
     {
@@ -1499,7 +1499,7 @@
       "parent": "/realtor-resources.html",
       "anchor": "Six financing scenarios for nontraditional buyers",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html",
       "canonical": "https://styermortgage.com/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html"
     },
     {
@@ -1508,7 +1508,7 @@
       "parent": "/realtor-resources.html",
       "anchor": "Housing market data for buyer conversations",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers.html",
       "canonical": "https://styermortgage.com/realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers.html"
     },
     {
@@ -1517,7 +1517,7 @@
       "parent": "/",
       "anchor": "Privacy policy",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/privacy.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/privacy.html",
       "canonical": "https://styermortgage.com/privacy.html"
     },
     {
@@ -1526,7 +1526,7 @@
       "parent": "/",
       "anchor": "Terms and conditions",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/terms.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/terms.html",
       "canonical": "https://styermortgage.com/terms.html"
     },
     {
@@ -1535,7 +1535,7 @@
       "parent": "/",
       "anchor": "Texas consumer complaint notice",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/texas-complaint-notice.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/texas-complaint-notice.html",
       "canonical": "https://styermortgage.com/texas-complaint-notice.html"
     },
     {
@@ -1544,7 +1544,7 @@
       "parent": "/",
       "anchor": "Styer Mortgage home",
       "action": "Streamline Overview & Retain Full Depth",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/index.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/index.html",
       "canonical": "https://styermortgage.com/"
     },
     {
@@ -1553,7 +1553,7 @@
       "parent": "/",
       "anchor": "Start full mortgage application",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/apply.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/apply.html",
       "canonical": "https://styermortgage.com/apply.html"
     },
     {
@@ -1562,7 +1562,7 @@
       "parent": "/buy-before-you-sell-austin.html",
       "anchor": "How to buy before selling your current home",
       "action": "Keep As-Is",
-      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/full-site-buildout/site/blog/2026-06-14-buy-before-you-sell-austin-tx.html",
+      "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/blog/2026-06-14-buy-before-you-sell-austin-tx.html",
       "canonical": "https://styermortgage.com/blog/2026-06-14-buy-before-you-sell-austin-tx.html"
     }
   ]

@@ -1059,3 +1059,34 @@ body.orchestration-page .full-site-footer .footer-equal-housing img {
     outline-color: Highlight !important;
   }
 }
+
+/* Component repairs: deliberate surface/text pairs, never rewritten colors. */
+body.orchestration-page.legacy-page main th {
+  color: var(--sm-ink) !important; background: var(--sm-badge) !important;
+}
+body.orchestration-page main .accordion-button {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+  min-height: 52px; padding: 18px 0; text-align: left; border: 0;
+  border-bottom: 1px solid var(--sm-line); background: transparent;
+  color: var(--sm-ink); font: 600 16px/1.6 Arial,sans-serif;
+}
+body.orchestration-page main .accordion-content { color: var(--sm-copy); padding: 18px 0; }
+body.orchestration-page main .accordion-content[hidden] { display: none; }
+body.orchestration-page :is(#faq, .editorial-faq) details { overflow-anchor: none; }
+body.orchestration-page main .sm-hnw-opening { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center; }
+body.orchestration-page main .ci-hero:has(.sm-hnw-opening) { background: #fff !important; padding-block: 44px; }
+body.orchestration-page main .sm-hnw-opening h1 { font-size: clamp(36px,4vw,56px) !important; line-height: 1.1 !important; max-width: 20ch !important; }
+body.orchestration-page main .sm-hnw-paths { padding: 28px; border: 1px solid var(--sm-line); border-radius: 5px; background: #fff; box-shadow: var(--sm-shadow); }
+body.orchestration-page main .sm-hnw-paths a { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; border-bottom: 1px solid var(--sm-line); font-size: 16px; text-decoration: none; }
+body.orchestration-page main .sm-hnw-paths p:last-child { font-size: 14px; margin-top: 20px; }
+body.orchestration-page main .sm-program-depth { max-width: 1168px; margin: 0 auto; padding-inline: 24px; border-bottom: 1px solid var(--sm-line); }
+body.orchestration-page main .sm-program-depth > summary { padding: 24px 0; color: var(--sm-ink); font: 600 18px/1.5 Arial,sans-serif; cursor: pointer; min-height: 56px; }
+body.orchestration-page main .sm-program-depth > section { padding-block: 20px 40px; }
+body.orchestration-page main .journey-form:not([data-journey]) { display: grid; gap: 12px; }
+body.orchestration-page main .journey-form:not([data-journey]) :is(input,textarea) { width: 100%; padding: 12px; border: 1px solid var(--sm-control-line); border-radius: 3px; color: var(--sm-ink); background: #fff; font: 16px/1.7 Arial,sans-serif; }
+body.orchestration-page.home .sm-review-track[data-keyboard-review] { transform: none; animation: none; }
+body.orchestration-page.home .sm-review-window:has([data-keyboard-review]) { overflow-x: auto; }
+body.orchestration-page :is(.situation-card, #scenarios .scenario-card, .dual-contact .contact-card) { background: #fff; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,.05),0 4px 12px rgba(0,0,0,.03); }
+body.orchestration-page :is(.situation-card, #scenarios .scenario-card) { transition: transform 180ms ease, box-shadow 180ms ease; }
+body.orchestration-page :is(.situation-card, #scenarios .scenario-card):hover { transform: translateY(-2px); box-shadow: var(--sm-shadow-raised); }
+@media (max-width:899px) { body.orchestration-page main .sm-hnw-opening { grid-template-columns: minmax(0,1fr); gap: 28px; } }

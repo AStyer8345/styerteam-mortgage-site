@@ -1,0 +1,11 @@
+{
+  "passed": 5,
+  "checks": [
+    "Review clones are hidden from assistive technology and excluded from keyboard order",
+    "Pause and play update animation state and accessible label",
+    "Exactly six homepage sections and four proof cards; no construction proof card",
+    "Shared inquiry has only four visible fields",
+    "Corrected 1099 obstacle and no rejected slogan"
+  ],
+  "limitations": "DOM controller checks; animation and native disclosure layout require browser verification."
+}

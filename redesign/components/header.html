@@ -1,70 +1,39 @@
-<!-- Load navigation.css after the site styles; load navigation.js with defer.
-     Optional per-page hint: data-active-nav="buy|refinance|invest|resources". -->
-<header class="site-header" data-active-nav="">
-  <div class="sm-nav-shell">
-    <a class="sm-nav-brand" href="/" aria-label="Styer Mortgage home">
-      <span>STYER MORTGAGE</span>
-      <small>Austin &amp; Central Texas</small>
-    </a>
-
-    <nav id="site-nav-drawer" aria-label="Main navigation">
-      <div class="sm-nav-groups">
-        <details class="sm-nav-group" data-nav-section="buy">
-          <summary>Buy <span class="sm-nav-chevron" aria-hidden="true"></span></summary>
-          <div class="sm-nav-panel">
-            <a href="/first-time-home-buyer.html">Buying a home</a>
-            <a href="/self-employed-mortgage-austin.html">Self-employed mortgage options</a>
-            <a href="/high-net-worth-mortgage.html">Mortgages for asset-rich borrowers</a>
-            <a href="/loans/jumbo.html">Jumbo loans</a>
-            <a href="/one-time-close-construction-loan-texas.html">Build a home</a>
-            <a href="/products.html">All mortgage options</a>
-          </div>
-        </details>
-
-        <details class="sm-nav-group" data-nav-section="refinance">
-          <summary>Refinance <span class="sm-nav-chevron" aria-hidden="true"></span></summary>
-          <div class="sm-nav-panel">
-            <a href="/loans/refinance.html">Refinancing options</a>
-            <a href="/home-equity-loans-texas.html">Home equity &amp; cash-out</a>
-            <a href="/calculator-refinance-breakeven.html">Refinance break-even calculator</a>
-            <a href="/rate-check.html">Compare a loan offer</a>
-          </div>
-        </details>
-
-        <details class="sm-nav-group" data-nav-section="invest">
-          <summary>Invest <span class="sm-nav-chevron" aria-hidden="true"></span></summary>
-          <div class="sm-nav-panel">
-            <a href="/investor-loans.html">Investment property financing</a>
-            <a href="/dscr-loans-texas.html">DSCR loans in Texas</a>
-            <a href="/dscr-cash-out-refinance-texas.html">DSCR cash-out refinance</a>
-            <a href="/dscr-calculator.html">DSCR calculator</a>
-          </div>
-        </details>
-
-        <details class="sm-nav-group" data-nav-section="resources">
-          <summary>Resources <span class="sm-nav-chevron" aria-hidden="true"></span></summary>
-          <div class="sm-nav-panel">
-            <a href="/resources/">All resources &amp; guides</a>
-            <a href="/calculators.html">Mortgage calculators</a>
-            <a href="/scenarios.html">Borrower scenarios</a>
-            <a href="/blog.html">Articles &amp; market updates</a>
-            <a href="/about.html">Meet Adam &amp; Tiffany</a>
-            <a href="/testimonials.html">Client reviews</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="sm-nav-contact" aria-label="Contact Adam directly">
-        <a href="tel:+15129566010" aria-label="Call Adam at 512-956-6010">Call</a>
-        <span aria-hidden="true">/</span>
-        <a href="sms:+15129566010" aria-label="Text Adam at 512-956-6010">Text</a>
-      </div>
+<!-- Original script.js owns mobile navigation; navigation.js adds desktop keyboard support. -->
+<header class="site-header sm-header">
+  <div class="container">
+    <nav aria-label="Main navigation">
+      <a class="nav-brand" href="/" aria-label="Styer Mortgage home"><img class="nav-logo-img" src="/assets/logo.svg" alt="Styer Mortgage" width="210" height="64"></a>
+      <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav-links"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+      <ul class="nav-links" id="site-nav-links">
+        <li class="nav-has-dropdown" data-nav-section="buy"><a href="/first-time-home-buyer.html" aria-haspopup="true" aria-expanded="false">Buy</a><ul class="nav-dropdown">
+          <li><a href="/first-time-home-buyer.html">Buying a home</a></li>
+          <li><a href="/self-employed-mortgage-austin.html">Self-employed mortgage options</a></li>
+          <li><a href="/high-net-worth-mortgage.html">Mortgages for asset-rich borrowers</a></li>
+          <li><a href="/loans/jumbo.html">Jumbo loans</a></li>
+          <li><a href="/products.html">All mortgage options</a></li>
+        </ul></li>
+        <li class="nav-has-dropdown" data-nav-section="refinance"><a href="/loans/refinance.html" aria-haspopup="true" aria-expanded="false">Refinance</a><ul class="nav-dropdown">
+          <li><a href="/loans/refinance.html">Refinancing options</a></li>
+          <li><a href="/home-equity-loans-texas.html">Home equity &amp; cash-out</a></li>
+          <li><a href="/calculator-refinance-breakeven.html">Refinance break-even calculator</a></li>
+          <li><a href="/rate-check.html">Compare a loan offer</a></li>
+        </ul></li>
+        <li class="nav-has-dropdown" data-nav-section="invest"><a href="/investor-loans.html" aria-haspopup="true" aria-expanded="false">Invest</a><ul class="nav-dropdown">
+          <li><a href="/investor-loans.html">Investment property financing</a></li>
+          <li><a href="/dscr-loans-texas.html">DSCR loans in Texas</a></li>
+          <li><a href="/dscr-cash-out-refinance-texas.html">DSCR cash-out refinance</a></li>
+          <li><a href="/dscr-calculator.html">DSCR calculator</a></li>
+        </ul></li>
+        <li class="nav-has-dropdown" data-nav-section="resources"><a href="/resources/" aria-haspopup="true" aria-expanded="false">Resources</a><ul class="nav-dropdown">
+          <li><a href="/resources/">All resources &amp; guides</a></li>
+          <li><a href="/calculators.html">Mortgage calculators</a></li>
+          <li><a href="/scenarios.html">Borrower scenarios</a></li>
+          <li><a href="/blog.html">Articles &amp; market updates</a></li>
+          <li><a href="/about.html">Meet Adam &amp; Tiffany</a></li>
+          <li><a href="/testimonials.html">Client reviews</a></li>
+        </ul></li>
+      </ul>
+      <div class="sm-header-actions"><a class="sm-header-phone" href="tel:+15129566010">Call (512) 956-6010</a><a class="nav-cta nav-apply" href="/apply-now/">Apply Online <span aria-hidden="true">↗</span></a></div>
     </nav>
-
-    <a class="sm-nav-apply" href="/apply-now/">Apply Online <span aria-hidden="true">↗</span></a>
-    <button class="nav-toggle" type="button" aria-controls="site-nav-drawer" aria-expanded="false" aria-label="Open navigation" hidden>
-      <svg class="sm-nav-menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      <svg class="sm-nav-close-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
-    </button>
   </div>
 </header>

@@ -1,5 +1,6 @@
 // One ID survives primary/fallback transport and retry; a reset starts a new inquiry.
 function styerInquiryId(form) {
+  if (document.body?.dataset.previewOnly === 'true') return '';
   let field = form.querySelector('input[name="inquiry_id"]');
   if (!field) { field = document.createElement('input'); field.type = 'hidden'; field.name = 'inquiry_id'; form.appendChild(field); }
   if (!field.value) field.value = crypto.randomUUID();
@@ -186,7 +187,7 @@ function initNavigation() {
   // Smooth scroll for anchor links (event delegation on document)
   document.addEventListener('click', (e) => {
     const anchor = e.target.closest('a[href^="#"]');
-    if (!anchor) return;
+    if (!anchor || e.defaultPrevented) return;
 
     const href = anchor.getAttribute('href');
     if (href !== '#') {
@@ -1140,6 +1141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initMortgageAssistant() {
+  if (document.body?.dataset.previewOnly === 'true') return;
   if (document.querySelector('script[data-mortgage-assistant]')) return;
   var script = document.createElement('script');
   script.src = '/assistant-widget.js?v=20261006-answer-handoff-v2';

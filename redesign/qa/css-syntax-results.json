@@ -1,5 +1,5 @@
 {
-  "stylesheetsAndInlineBlocks": 70,
+  "stylesheetsAndInlineBlocks": 75,
   "errors": [],
-  "scope": "CSSOM parse only, not browser cascade or layout"
+  "scope": "CSS syntax parsing; browser review verifies cascade and layout."
 }
