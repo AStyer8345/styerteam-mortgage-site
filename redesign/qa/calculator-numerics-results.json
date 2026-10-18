@@ -1,0 +1,95 @@
+{
+  "scope": "Actual local calculator JS executed in linkedom/vm; no browser rendering/native validity certification",
+  "passed": 22,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "Shared P&I formula — 6.5%, 30 years",
+      "status": "pass"
+    },
+    {
+      "name": "Shared zero interest, zero principal, invalid term/rate",
+      "status": "pass"
+    },
+    {
+      "name": "Shared negative amortization and early payoff",
+      "status": "pass"
+    },
+    {
+      "name": "Payment DOM: P&I plus monthly tax and insurance",
+      "status": "pass"
+    },
+    {
+      "name": "Payment invalid exact input retains explicitly labeled last valid result",
+      "status": "pass"
+    },
+    {
+      "name": "Affordability independent budget and price inversion",
+      "status": "pass"
+    },
+    {
+      "name": "Affordability zero available budget and invalid income",
+      "status": "pass"
+    },
+    {
+      "name": "Break-even independent savings and ceiling",
+      "status": "pass"
+    },
+    {
+      "name": "Break-even zero costs, zero new rate, negative savings, invalid",
+      "status": "pass"
+    },
+    {
+      "name": "Asset weighted pool and monthly periods",
+      "status": "pass"
+    },
+    {
+      "name": "Asset period switch, zero pool, invalid percentage/empty input",
+      "status": "pass"
+    },
+    {
+      "name": "DSCR PITIA, ratio and rent remaining independent vector",
+      "status": "pass"
+    },
+    {
+      "name": "DSCR zero rate, zero denominator and invalid input",
+      "status": "pass"
+    },
+    {
+      "name": "Closing-cost date, per diem, escrow and total independent vector",
+      "status": "pass"
+    },
+    {
+      "name": "Closing-cost points reset, manual override, invalid date/amount",
+      "status": "pass"
+    },
+    {
+      "name": "Buydown schedule and subsidy independently summed at full note amortization",
+      "status": "pass"
+    },
+    {
+      "name": "Buydown zero-rate, floor, no example substitution, invalid custom term",
+      "status": "pass"
+    },
+    {
+      "name": "Wrap 5-year cash flow and balloon from independent schedules",
+      "status": "pass"
+    },
+    {
+      "name": "Wrap early payoff cumulative table, decimal amounts and invalid signs",
+      "status": "pass"
+    },
+    {
+      "name": "Wrap negative amortization, term horizon and residual debt",
+      "status": "pass"
+    },
+    {
+      "name": "Calculator disclosure controls keep ARIA state and local content in sync",
+      "status": "pass"
+    },
+    {
+      "name": "All eight engines run without network or storage",
+      "status": "pass"
+    }
+  ]
+}

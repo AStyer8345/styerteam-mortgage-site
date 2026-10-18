@@ -1,0 +1,1977 @@
+{
+  "mode": "LOCAL ONLY \u2014 ZERO DEPLOYMENT",
+  "routes": 173,
+  "html_files": 200,
+  "baseline": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/orchestration/site",
+  "excluded_nonledger_utilities": [
+    "loanos.html",
+    "forms.html"
+  ],
+  "removed_non_calculator_scripts": [
+    {
+      "file": "/1099-only-mortgage-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/1099-only-mortgage-texas.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/1099-only-mortgage-texas.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/1099-only-mortgage-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/404.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/about.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/about.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/about.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/asset-depletion-calculator.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/asset-depletion-calculator.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/asset-depletion-calculator.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/asset-depletion-mortgage-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/asset-depletion-mortgage-texas.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/asset-depletion-mortgage-texas.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/asset-depletion-mortgage-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/austin-area-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/austin-area-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/austin-area-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/austin-down-payment-assistance.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/austin-down-payment-assistance.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/austin-down-payment-assistance.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/austin-housing-market.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/austin-housing-market.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/austin-housing-market.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/austin-mortgage-rates.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/austin-mortgage-rates.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/austin-mortgage-rates.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/bastrop-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/bastrop-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/bastrop-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/bee-cave-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/bee-cave-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/bee-cave-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-18-the-ai-trap-i-walked-right-into.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-18-the-ai-trap-i-walked-right-into.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-20-austin-mortgage-rates-march-2026.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-20-austin-mortgage-rates-march-2026.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-24-cash-out-refinance-austin-tx.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-24-cash-out-refinance-austin-tx.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-27-down-payment-assistance-texas-2026.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-27-down-payment-assistance-texas-2026.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-29-va-loan-eligibility-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-29-va-loan-eligibility-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-03-31-dscr-loans-austin-tx-2026.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-03-31-dscr-loans-austin-tx-2026.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-04-01-spring-market-update.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-04-01-spring-market-update.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-04-02-self-employed-mortgage-austin-tx.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-04-02-self-employed-mortgage-austin-tx.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-04-03-condo-mortgage-austin-tx.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-04-03-condo-mortgage-austin-tx.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-04-04-austin-housing-market-report-april-2026.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-04-04-austin-housing-market-report-april-2026.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-04-06-mortgage-document-checklist-austin-tx.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-04-06-mortgage-document-checklist-austin-tx.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-04-10-fha-loan-requirements-texas-2026.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-04-10-fha-loan-requirements-texas-2026.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-04-27-why-home-prices-arent-crashing.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-04-27-why-home-prices-arent-crashing.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-05-30-physician-mortgage-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-05-30-physician-mortgage-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-06-05-dscr-airbnb-str-loan-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-06-05-dscr-airbnb-str-loan-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-06-14-buy-before-you-sell-austin-tx.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-06-14-buy-before-you-sell-austin-tx.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-06-15-mortgage-rates-inflation-iran-peace-deal.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-06-15-mortgage-rates-inflation-iran-peace-deal.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-06-16-dscr-loan-requirements-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-06-16-dscr-loan-requirements-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-06-23-no-ratio-low-dscr-loans-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-06-23-no-ratio-low-dscr-loans-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-06-30-bank-statement-loans-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-06-30-bank-statement-loans-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-07-21-itin-mortgage-loans-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-07-21-itin-mortgage-loans-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-08-10-austin-housing-market-report-august-2026.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-08-10-austin-housing-market-report-august-2026.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-08-18-jumbo-loan-requirements-texas-2026.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-08-18-jumbo-loan-requirements-texas-2026.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-08-21-veteran-asset-depletion-mortgage-case-study.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-08-21-veteran-asset-depletion-mortgage-case-study.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-09-04-what-is-a-non-qm-loan-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-09-04-what-is-a-non-qm-loan-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/2026-10-01-why-mortgage-rates-are-rising.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/2026-10-01-why-mortgage-rates-are-rising.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/apr-vs-interest-rate-what-actually-matters.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/apr-vs-interest-rate-what-actually-matters.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/are-mortgage-lender-fees-negotiable.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/are-mortgage-lender-fees-negotiable.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/can-i-switch-lenders-after-going-under-contract-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/can-i-switch-lenders-after-going-under-contract-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/how-many-mortgage-quotes-should-i-get.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/how-many-mortgage-quotes-should-i-get.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/how-to-compare-two-mortgage-offers.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/how-to-compare-two-mortgage-offers.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/how-to-read-a-loan-estimate.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/how-to-read-a-loan-estimate.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/is-the-lowest-rate-the-cheapest-loan.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/is-the-lowest-rate-the-cheapest-loan.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/local-lender-vs-online-lender-austin-central-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/local-lender-vs-online-lender-austin-central-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/what-delays-closing-when-you-switch-lenders.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/what-delays-closing-when-you-switch-lenders.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog/what-to-compare-besides-mortgage-rate.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog/what-to-compare-besides-mortgage-rate.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/blog.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/blog.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/blog.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/buda-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/buda-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/buda-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/buy-before-you-sell-austin.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/buy-before-you-sell-austin.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/buy-before-you-sell-austin.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/calculator-affordability.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/calculator-affordability.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/calculator-affordability.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/calculator-payment.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/calculator-payment.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/calculator-payment.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/calculator-refinance-breakeven.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/calculator-refinance-breakeven.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/calculator-refinance-breakeven.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/calculators.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/calculators.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/calculators.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/cedar-park-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/cedar-park-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/cedar-park-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/closing-costs-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/closing-costs-texas.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/closing-costs-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/construction-loan-scenario-review.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/construction-loan-scenario-review.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/construction-loan-scenario-review.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/contact.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/contact.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/contact.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/contact.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/dallas-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/dallas-mortgage-lender.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/dallas-mortgage-lender.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/dripping-springs-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/dripping-springs-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/dripping-springs-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/dscr-calculator.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/dscr-calculator.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/dscr-calculator.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/dscr-cash-out-refinance-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/dscr-cash-out-refinance-texas.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/dscr-cash-out-refinance-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/dscr-loan-austin-tx.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/dscr-loan-austin-tx.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/dscr-loan-austin-tx.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/dscr-loan-austin-tx.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/dscr-loans-dripping-springs.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/dscr-loans-dripping-springs.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/dscr-loans-dripping-springs.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/dscr-loans-dripping-springs.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/dscr-loans-fredericksburg-tx.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/dscr-loans-fredericksburg-tx.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/dscr-loans-fredericksburg-tx.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/dscr-loans-fredericksburg-tx.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/dscr-loans-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/dscr-loans-texas.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/dscr-loans-texas.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/dscr-loans-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/elgin-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/elgin-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/elgin-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/first-time-home-buyer.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/first-time-home-buyer.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/fixed-vs-adjustable.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/fixed-vs-adjustable.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/fixed-vs-adjustable.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/florence-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/florence-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/florence-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/ftb-dpa-guide.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/ftb-dpa-guide.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/ftb-dpa-guide.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/georgetown-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/georgetown-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/georgetown-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/get-preapproved.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/get-preapproved.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/get-preapproved.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/get-preapproved.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/high-net-worth-mortgage.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/high-net-worth-mortgage.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/high-net-worth-mortgage.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/high-net-worth-mortgage.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/home-equity-loans-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/home-equity-loans-texas.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/home-equity-loans-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/home-equity-loans-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/how-much-house-can-i-afford-austin.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/how-much-house-can-i-afford-austin.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/how-much-house-can-i-afford-austin.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/how-to-buy-a-house-in-austin-tx.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/how-to-buy-a-house-in-austin-tx.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/how-to-buy-a-house-in-austin-tx.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/hutto-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/hutto-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/hutto-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/improve-credit-score.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/improve-credit-score.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/improve-credit-score.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/investor-loans.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/investor-loans.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/investor-loans.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/investor-loans.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/jarrell-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/jarrell-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/jarrell-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/k1-income-mortgage-austin.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/k1-income-mortgage-austin.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/k1-income-mortgage-austin.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/k1-income-mortgage-austin.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/kyle-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/kyle-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/kyle-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/lakeway-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/lakeway-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/lakeway-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/leander-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/leander-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/leander-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/liberty-hill-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/liberty-hill-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/liberty-hill-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/loanos-waitlist.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/loanos-waitlist.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/loans/construction.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/loans/construction.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/loans/construction.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/loans/conventional.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/loans/conventional.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/loans/conventional.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/loans/fha.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/loans/fha.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/loans/fha.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/loans/investment.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/loans/investment.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/loans/investment.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/loans/jumbo.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/loans/jumbo.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/loans/jumbo.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/loans/jumbo.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/loans/refinance.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/loans/refinance.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/loans/refinance.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/loans/usda.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/loans/usda.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/loans/usda.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/loans/va.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/loans/va.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/loans/va.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/manor-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/manor-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/manor-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/marble-falls-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/marble-falls-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/marble-falls-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/mortgage-broker-vs-bank.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/mortgage-broker-vs-bank.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/mortgage-broker-vs-bank.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/mortgage-case-studies-for-advisors-cpas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/mortgage-case-studies-for-advisors-cpas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/mortgage-for-business-owners-austin.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/mortgage-for-business-owners-austin.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/mortgage-for-business-owners-austin.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/mortgage-for-business-owners-austin.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/mortgage-glossary.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/mortgage-glossary.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/mortgage-glossary.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/mortgage-pre-approval-austin.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/mortgage-pre-approval-austin.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/mortgage-pre-approval-austin.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/mortgage-resources-for-cpas-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/mortgage-resources-for-cpas-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/mortgage-resources-for-cpas-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/mortgage-strategies-financial-advisors-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/mortgage-strategies-financial-advisors-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/mortgage-strategies-financial-advisors-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/new-braunfels-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/new-braunfels-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/new-braunfels-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/non-qm-loans.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/non-qm-loans.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/non-qm-loans.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/non-qm-loans.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/one-time-close-construction-loan-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/one-time-close-construction-loan-texas.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/one-time-close-construction-loan-texas.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/one-time-close-construction-loan-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/p-and-l-mortgage-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/p-and-l-mortgage-texas.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/p-and-l-mortgage-texas.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/p-and-l-mortgage-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/pflugerville-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/pflugerville-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/pflugerville-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/prequal.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/prequal.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/prequal.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/privacy.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/privacy.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/products.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/products.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/products.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/rate-alert.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rate-alert.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/rate-alert.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/rate-alert.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/rate-buydown-calculator.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rate-buydown-calculator.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/rate-buydown-calculator.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/rate-check-buda-kyle.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rate-check-buda-kyle.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/rate-check-buda-kyle.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/rate-check-cedar-park.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rate-check-cedar-park.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/rate-check-cedar-park.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/rate-check-georgetown.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rate-check-georgetown.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/rate-check-georgetown.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/rate-check-new-braunfels.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rate-check-new-braunfels.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/rate-check-new-braunfels.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/rate-check-round-rock.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rate-check-round-rock.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/rate-check-round-rock.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/rate-check.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rate-check.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/rate-check.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/rates/2026-02-25.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rates/2026-03-03.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rates/2026-03-13.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rates/2026-03-19.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rates/2026-03-24.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rates/2026-04-01.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rates/2026-04-03.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rates/2026-04-14.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rates/2026-04-24.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/rates/2026-05-18.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/realtor-resources.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/realtor-resources.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/realtor-resources.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/realtor-updates/2026-06-08-when-other-lenders-say-no.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/realtor-updates/2026-06-08-when-other-lenders-say-no.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/realtors.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/realtors.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/realtors.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/referral-partners-self-employed-clients.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/referral-partners-self-employed-clients.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/referral-partners-self-employed-clients.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/refinance-calculator.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/refinance-calculator.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/refinance-quote.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/refinance-quote.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/refinance-quote.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/refinance-quote.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/resources/blog/2026-03-04-wait-for-rates-realtor.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/resources/blog/2026-03-04-wait-for-rates-realtor.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/resources/blog/2026-03-04-wait-for-rates.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/resources/blog/2026-03-04-wait-for-rates.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/resources/first-time-buyer-guide/",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/resources/first-time-buyer-guide/",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/resources/first-time-buyer-guide/",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/resources/first-time-buyer-guide/",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/resources/",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/resources/",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/resources/",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/resources/mortgage-options-for-business-owners.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/resources/mortgage-options-for-business-owners.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/reverse-mortgage-financial-advisors-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/reverse-mortgage-financial-advisors-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/reverse-mortgage-financial-advisors-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/reverse-mortgage-texas.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/reverse-mortgage-texas.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/reverse-mortgage-texas.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/round-rock-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/round-rock-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/san-antonio-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/san-antonio-mortgage-lender.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/san-antonio-mortgage-lender.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/san-marcos-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/san-marcos-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/san-marcos-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/scenario.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/scenario.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/scenario.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/scenarios/assets-limited-income-history.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/scenarios/assets-limited-income-history.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/scenarios/assets-limited-income-history.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/scenarios/build-on-owned-land-before-selling.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/scenarios/build-on-owned-land-before-selling.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/scenarios/build-on-owned-land-before-selling.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/scenarios/buying-current-rental-gift-funds.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/scenarios/buying-current-rental-gift-funds.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/scenarios/buying-current-rental-gift-funds.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/scenarios/oil-gas-royalty-asset-depletion.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/scenarios/oil-gas-royalty-asset-depletion.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/scenarios/oil-gas-royalty-asset-depletion.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/scenarios/self-employed-refinance-deposit-review.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/scenarios/self-employed-refinance-deposit-review.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/scenarios/self-employed-refinance-deposit-review.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/scenarios/two-rental-properties-cash-out-review.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/scenarios/two-rental-properties-cash-out-review.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/scenarios/two-rental-properties-cash-out-review.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/scenarios.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/scenarios.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/scenarios.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/self-employed-mortgage-austin.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/self-employed-mortgage-austin.html",
+      "script": "/premium-navigation.js?v=20261006"
+    },
+    {
+      "file": "/self-employed-mortgage-austin.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/self-employed-mortgage-austin.html",
+      "script": "/assets/utm.js?v=20260920"
+    },
+    {
+      "file": "/smithville-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/smithville-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/smithville-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/spicewood-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/spicewood-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/spicewood-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/taylor-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/taylor-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/taylor-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/terms.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/terms.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/testimonials.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/testimonials.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/testimonials.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/texas-complaint-notice.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/texas-complaint-notice.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/thank-you.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/thank-you.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/updates/2025-02-19-market-update.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/updates/2026-02-19-austin-buyer-window.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/updates/2026-02-20-fast-closes-teamwork-and-spring-market-momentum.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/updates/2026-03-06-temp-placeholder.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/updates/2026-03-10-temp-placeholder.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/updates/2026-03-30-temp-placeholder.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/updates/2026-04-01-spring-market-update.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/updates/2026-04-01-test.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/updates/2026-04-27-why-home-prices-arent-crashing.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/updates/2026-08-10-austin-housing-market-report-august-2026.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/westlake-mortgage-lender.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/westlake-mortgage-lender.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/westlake-mortgage-lender.html",
+      "script": "/premium-navigation.js"
+    },
+    {
+      "file": "/wrap-mortgage-calculator.html",
+      "script": "/advisory-contact.js?v=20260918"
+    },
+    {
+      "file": "/wrap-mortgage-calculator.html",
+      "script": "/js/scroll-effects.js?v=20260429"
+    },
+    {
+      "file": "/wrap-mortgage-calculator.html",
+      "script": "/premium-navigation.js"
+    }
+  ],
+  "legacy_css_fix": "Removed one inherited unmatched closing brace after hero-gradient-text in style.css",
+  "palette": "navy-bronze",
+  "live_routing_changed": false,
+  "components": {
+    "styer-visual-overhaul.css": "0ef57cf84f27ff54e4bc444602a2417d825321d5cbe0274c0daa465d1bf5fcb0",
+    "home.html": "c3ab38c0f63724e17ba1272e18ec10eadaf91e9fcc548404688b7301c618e3d6",
+    "contact.html": "3a88c36bd186b1cfab0992a440b8a4d94b85ade3af9bed6ade09f3182ff899ce",
+    "bank-calculation.html": "a2cee307487e7792c565e18954761f61d993111bfd89c80eb82c751e65bc56c4",
+    "bank-statement.html": "80cbb8115176142a0104d1f1f11279969cc5ce30eaa0fc3d73a7881fa103b782",
+    "navigation.js": "9d5e2fe3d8eaef30c951eaaea7701ac7a3c0112fda3505238407b3dc32ea67af",
+    "orchestration.css": "8254a5674bd480ad90b622a4575460b89c53ae7aba1cf816f6b5e8d8e410d60f",
+    "navigation.css": "36105284207a7cbaf165748010d17ad7037a60e68a96e3c575ea3dc1973d27d7",
+    "calculator.html": "e6edd8f7611332820218e5fa943a2ff7c3f5c7c39a6b765d9581961fc0456239",
+    "footer.html": "daac72cf3cdb03aab0ee4f5dc23488f15c994e3037bd0a77a611d5ae98f8f564",
+    "faq-schema-updates.json": "8f6ff8b2d62aabc3c0c10cd4bae358f482ae5cf2266985d46fded01d4816eb57",
+    "header.html": "28b862d379fccbc96a3cd74dcd5928a6bcb4d6ee69db57f3a31834630658c250"
+  }
+}

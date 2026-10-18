@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 65 560 205">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Cormorant+Garamond:wght@400;500&amp;display=swap');
+    </style>
+  </defs>
+  <g transform="translate(300, 120)">
+    <polyline points="-80,0 0,-45 80,0" fill="none" stroke="#D1B568" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="300" y="195" text-anchor="middle" font-family="'Playfair Display', 'Georgia', serif" font-weight="700" font-size="62" fill="#FFFFFF" letter-spacing="6">ADAM STYER</text>
+  <line x1="160" y1="218" x2="440" y2="218" stroke="#D1B568" stroke-width="1.5"/>
+  <text x="300" y="255" text-anchor="middle" font-family="'Cormorant Garamond', 'Georgia', serif" font-weight="400" font-size="24" fill="#D1B568" letter-spacing="3">HyperSmart Home Loans</text>
+</svg>

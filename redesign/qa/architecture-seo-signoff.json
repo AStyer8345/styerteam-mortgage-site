@@ -1,0 +1,24 @@
+{
+  "decision": "PASS \u2014 offline architecture and SEO/AEO preservation scope",
+  "audit_date_utc": "2026-10-18T19:02:35.507444+00:00",
+  "ledger_routes": 173,
+  "source_html_files": 170,
+  "tested_content_nodes": 10907,
+  "faq_questions_and_answers": 760,
+  "deployment_verified": false,
+  "browser_rendering_verified": false,
+  "live_integrations_verified": false,
+  "ranking_guarantee": false,
+  "ledger_sha256": "71b02eba8724e19b6bf1e224ba20f40194ffdad1d2c0f9965217c9ccbf938cc7",
+  "site_config_sha256": "6e4a5cff6beea7597980b4279bf18c908b28b4fa0248f1f142e4a5fa12e691a5",
+  "build_record_sha256": "b1712a5a2ba484760be29b7d59d9c27eb455832b30054a96944c2f57391d52ea",
+  "evidence_sha256": {
+    "architecture-route-audit.json": "e60e21a10c486b6a667a4682362c43111e2c560b53a6ed3a8245ebf17a239550",
+    "seo-aeo-audit.json": "ec4bd7c8ae426ff9ef863294e381ba607d22daf3b04b6e9d195d486d0af12951",
+    "content-preservation-audit.json": "1fbb92406b0aa08086265b77778b314e5a21597cd58610ac86975effa4284acf",
+    "historical-route-audit.json": "4c612f5b30eeec5e6c3ef76c4d85c5d97acf103ff96650cb7ac1a0d8495f8b15",
+    "nonfaq-schema-comparison.json": "e5da018312093f7f51a84964452803c4461f9b64b9f717ce98e828a6a06d52ab",
+    "faq-original-schema-archive.json": "fe3454f1a034ae881ef4295ded09f9925a47fa7cdede36e4ad6ab5ce685811c4",
+    "faq-sync-apply-log.json": "3273ae8d6f5a106280263b036901ade6b0fcae331eec77013bbe4c727431428a"
+  }
+}

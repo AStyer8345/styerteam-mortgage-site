@@ -1,0 +1,15 @@
+{
+  "passed": 7,
+  "checks": [
+    "Mobile open reveals navigation and requests first-link/summary focus",
+    "Opening one navigation category closes the other category",
+    "Escape closes category then drawer and requests corresponding focus return",
+    "Outside pointer closes mobile navigation",
+    "Breakpoint changes preserve visible focus requests",
+    "Mobile link selection closes navigation with focus return",
+    "Header/footer/contact coexist once; navigation does not access network or storage"
+  ],
+  "networkCalls": 0,
+  "storageCalls": 0,
+  "limitations": "Native details toggle, focus, viewport and geometry are simulated. Actual keyboard behavior and rendering require a browser."
+}

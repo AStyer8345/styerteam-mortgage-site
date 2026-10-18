@@ -1,0 +1,1106 @@
+[
+  {
+    "source": "/asset-depletion-calculator.html inline stylesheet",
+    "property": "--adc-success",
+    "before": "#047857",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/asset-depletion-calculator.html inline stylesheet",
+    "property": "--adc-success-soft",
+    "before": "rgba(4, 120, 87, 0.10)",
+    "after": "rgba(15,23,42,0.1)"
+  },
+  {
+    "source": "/asset-depletion-calculator.html inline stylesheet",
+    "property": "background",
+    "before": "#10B981",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/blog/2026-03-31-dscr-loans-austin-tx-2026.html style attribute",
+    "property": "background",
+    "before": "#f0f7f0",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "/contact-thank-you.html inline stylesheet",
+    "property": "color",
+    "before": "#356044",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/dscr-calculator.html inline stylesheet",
+    "property": "background-image",
+    "before": "rgba(16,185,129,0.12)",
+    "after": "rgba(15,23,42,0.12)"
+  },
+  {
+    "source": "/dscr-calculator.html inline stylesheet",
+    "property": "--dscr-green",
+    "before": "#10B981",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/dscr-calculator.html inline stylesheet",
+    "property": "background",
+    "before": "#0E9E70",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/dscr-calculator.html inline stylesheet",
+    "property": "background",
+    "before": "#10B981",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/dscr-calculator.html inline stylesheet",
+    "property": "color",
+    "before": "#4CE5AE",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/dscr-calculator.html inline stylesheet",
+    "property": "background",
+    "before": "#ECFDF5",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "/ftb-dpa-guide.html inline stylesheet",
+    "property": "background",
+    "before": "#dcfce7",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "/ftb-dpa-guide.html inline stylesheet",
+    "property": "border",
+    "before": "#16a34a",
+    "after": "#64748b"
+  },
+  {
+    "source": "/ftb-dpa-guide.html inline stylesheet",
+    "property": "color",
+    "before": "#16a34a",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/rate-buydown-calculator.html inline stylesheet",
+    "property": "color",
+    "before": "#16a34a",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/rate-buydown-calculator.html inline stylesheet",
+    "property": "background",
+    "before": "#dcfce7",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "/rate-buydown-calculator.html inline stylesheet",
+    "property": "border",
+    "before": "#86efac",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "/rate-buydown-calculator.html inline stylesheet",
+    "property": "color",
+    "before": "#166534",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/rate-buydown-calculator.html inline stylesheet",
+    "property": "color",
+    "before": "#16a34a",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/rate-buydown-calculator.html inline stylesheet",
+    "property": "background",
+    "before": "rgba(16,185,129,.1)",
+    "after": "rgba(15,23,42,0.1)"
+  },
+  {
+    "source": "/rate-buydown-calculator.html inline stylesheet",
+    "property": "color",
+    "before": "#065f46",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/rate-check-buda-kyle.html inline stylesheet",
+    "property": "background",
+    "before": "rgba(16,185,129,0.1)",
+    "after": "rgba(15,23,42,0.1)"
+  },
+  {
+    "source": "/rate-check-cedar-park.html inline stylesheet",
+    "property": "background",
+    "before": "rgba(16,185,129,0.1)",
+    "after": "rgba(15,23,42,0.1)"
+  },
+  {
+    "source": "/rate-check-georgetown.html inline stylesheet",
+    "property": "background",
+    "before": "rgba(16,185,129,0.1)",
+    "after": "rgba(15,23,42,0.1)"
+  },
+  {
+    "source": "/rate-check-new-braunfels.html inline stylesheet",
+    "property": "background",
+    "before": "rgba(16,185,129,0.1)",
+    "after": "rgba(15,23,42,0.1)"
+  },
+  {
+    "source": "/rate-check-round-rock.html inline stylesheet",
+    "property": "background",
+    "before": "rgba(16,185,129,0.1)",
+    "after": "rgba(15,23,42,0.1)"
+  },
+  {
+    "source": "/rate-check.html inline stylesheet",
+    "property": "background",
+    "before": "rgba(16,185,129,0.1)",
+    "after": "rgba(15,23,42,0.1)"
+  },
+  {
+    "source": "/rates/2026-02-25.html style attribute",
+    "property": "background",
+    "before": "#ECFDF5",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "/rates/2026-02-25.html style attribute",
+    "property": "color",
+    "before": "#059669",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html style attribute",
+    "property": "background",
+    "before": "#f0fdf4",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html style attribute",
+    "property": "border-left",
+    "before": "#16a34a",
+    "after": "#64748b"
+  },
+  {
+    "source": "/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html style attribute",
+    "property": "color",
+    "before": "#166534",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html style attribute",
+    "property": "color",
+    "before": "#166534",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/refinance-calculator.html inline stylesheet",
+    "property": "--green",
+    "before": "#047857",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/refinance-calculator.html inline stylesheet",
+    "property": "--green-bg",
+    "before": "#ecfdf5",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "/thank-you.html inline stylesheet",
+    "property": "background",
+    "before": "#f0fdf4",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "/thank-you.html inline stylesheet",
+    "property": "border",
+    "before": "#86efac",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "/thank-you.html inline stylesheet",
+    "property": "color",
+    "before": "#166534",
+    "after": "#0f172a"
+  },
+  {
+    "source": "/wrap-mortgage-calculator.html inline stylesheet",
+    "property": "color",
+    "before": "#059669",
+    "after": "#0f172a"
+  },
+  {
+    "source": "migration-navigation.css",
+    "property": "background",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#17251f",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#2d443d",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#1d302a",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-color",
+    "before": "#7c8b87",
+    "after": "#64748b"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "rgba(25,43,37,.98)",
+    "after": "rgba(15,23,42,0.98)"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "rgba(25,43,37,.89)",
+    "after": "rgba(15,23,42,0.89)"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "rgba(25,43,37,.48)",
+    "after": "rgba(15,23,42,0.48)"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#182325",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#2b4037",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#1b302a",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#d1d6cb",
+    "after": "#ffffff"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#fafbf9",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "box-shadow",
+    "before": "#21312904",
+    "after": "rgba(15,23,42,0.01569)"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#eaece7",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#c6c9c2",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#4f5f55",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#1d302a",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#10231dd1",
+    "after": "rgba(15,23,42,0.8196)"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#b8c0b9",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#1b302a",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#d1d7d1",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "background-image",
+    "before": "#192b25f5",
+    "after": "rgba(15,23,42,0.9608)"
+  },
+  {
+    "source": "styles.css",
+    "property": "background-image",
+    "before": "#192b25d9",
+    "after": "rgba(15,23,42,0.851)"
+  },
+  {
+    "source": "styles.css",
+    "property": "background-image",
+    "before": "#192b2555",
+    "after": "rgba(15,23,42,0.3333)"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#fafbf9",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#f8f9f6",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#f8f9f6",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#f8f9f600",
+    "after": "rgba(248,250,252,0)"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#535b57",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#6a746c",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#57605b",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#57605b",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#57605b",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-bottom",
+    "before": "#d7dcd5",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#57605b",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#f8f9f6",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#57605b",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#505c55",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#2b4037",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#1b302a",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-bottom",
+    "before": "#b5b8a9",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#2b4439",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#59635c",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#2b4037",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#1b302a",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#eaece7",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#aab2ad",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-top",
+    "before": "#d3d8d2",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-top",
+    "before": "#cdd2c8",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-bottom",
+    "before": "#cdd2c8",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#2f3b35",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#555f56",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#dce0d7",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#647068",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-bottom",
+    "before": "#d2d4ca",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#515b55",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#172b25",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "box-shadow",
+    "before": "#243a3125",
+    "after": "rgba(15,23,42,0.1451)"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#c5cbbf",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#e3e9e2",
+    "after": "#ffffff"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#30483c",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#637463",
+    "after": "#64748b"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#3c5849",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#eef1e9",
+    "after": "#ffffff"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#e3e9e2",
+    "after": "#ffffff"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-top-color",
+    "before": "#243a31",
+    "after": "#64748b"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#e7ece3",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#acb9a8",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-color",
+    "before": "#243a31",
+    "after": "#64748b"
+  },
+  {
+    "source": "styles.css",
+    "property": "outline-color",
+    "before": "#243a31",
+    "after": "#64748b"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-top",
+    "before": "#d7dfd2",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#c3cebf",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#e7ece3",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-color",
+    "before": "#536c57",
+    "after": "#64748b"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#4e5c51",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#e7ece3",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#acb9a8",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-color",
+    "before": "#243a31",
+    "after": "#64748b"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#4e5c51",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#e7ece3",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#e7ece3",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#243a31",
+    "after": "#64748b"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#e3e9e2",
+    "after": "#ffffff"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#365343",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#e7ece3",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#acb9a8",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "styles.css",
+    "property": "border-color",
+    "before": "#243a31",
+    "after": "#64748b"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#4e5c51",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#e7ece3",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#e7ece3",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "border",
+    "before": "#243a31",
+    "after": "#64748b"
+  },
+  {
+    "source": "styles.css",
+    "property": "color",
+    "before": "#e3e9e2",
+    "after": "#ffffff"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#365343",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#e7ece3",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "styles.css",
+    "property": "background",
+    "before": "#365343",
+    "after": "#0f172a"
+  },
+  {
+    "source": "premium-homepage.css",
+    "property": "--premium-rule",
+    "before": "#D8DCD9",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "premium-homepage.css",
+    "property": "--premium-focus",
+    "before": "#176B73",
+    "after": "#0f172a"
+  },
+  {
+    "source": "buy-before-you-sell.css",
+    "property": "background",
+    "before": "#eaf3ec",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "buy-before-you-sell.css",
+    "property": "border",
+    "before": "#a9c9b2",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "experience.css",
+    "property": "border-bottom",
+    "before": "#d8d9d4",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "experience.css",
+    "property": "border",
+    "before": "#d8d9d4",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "experience.css",
+    "property": "border",
+    "before": "#d8d9d4",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "experience.css",
+    "property": "border-top",
+    "before": "#d8d9d4",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "experience.css",
+    "property": "color",
+    "before": "#047857",
+    "after": "#0f172a"
+  },
+  {
+    "source": "experience.css",
+    "property": "color",
+    "before": "#047857",
+    "after": "#0f172a"
+  },
+  {
+    "source": "experience.css",
+    "property": "border",
+    "before": "#d8d9d4",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "experience.css",
+    "property": "border",
+    "before": "#d8d9d4",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "cashout-preview.css",
+    "property": "border",
+    "before": "#C9CECC",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "premium-tools.css",
+    "property": "outline",
+    "before": "#176B73",
+    "after": "#64748b"
+  },
+  {
+    "source": "premium-interior.css",
+    "property": "--premium-rule",
+    "before": "#D8DCD9",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "premium-interior.css",
+    "property": "outline",
+    "before": "#176B73",
+    "after": "#64748b"
+  },
+  {
+    "source": "style.css",
+    "property": "--color-success",
+    "before": "#10B981",
+    "after": "#0f172a"
+  },
+  {
+    "source": "style.css",
+    "property": "color",
+    "before": "#10B981",
+    "after": "#0f172a"
+  },
+  {
+    "source": "style.css",
+    "property": "background-color",
+    "before": "#10B981",
+    "after": "#0f172a"
+  },
+  {
+    "source": "style.css",
+    "property": "background-color",
+    "before": "#D1FAE5",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "style.css",
+    "property": "color",
+    "before": "#065F46",
+    "after": "#0f172a"
+  },
+  {
+    "source": "style.css",
+    "property": "border-left",
+    "before": "#10B981",
+    "after": "#64748b"
+  },
+  {
+    "source": "orchestration.css",
+    "property": "background-image",
+    "before": "rgba(25,43,37,.98)",
+    "after": "rgba(15,23,42,0.98)"
+  },
+  {
+    "source": "orchestration.css",
+    "property": "background-image",
+    "before": "rgba(25,43,37,.89)",
+    "after": "rgba(15,23,42,0.89)"
+  },
+  {
+    "source": "orchestration.css",
+    "property": "background-image",
+    "before": "rgba(25,43,37,.89)",
+    "after": "rgba(15,23,42,0.89)"
+  },
+  {
+    "source": "orchestration.css",
+    "property": "color",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "orchestration.css",
+    "property": "background",
+    "before": "#243a31",
+    "after": "#0f172a"
+  },
+  {
+    "source": "orchestration.css",
+    "property": "border",
+    "before": "#b8c0b9",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "orchestration.css",
+    "property": "color",
+    "before": "#1b302a",
+    "after": "#0f172a"
+  },
+  {
+    "source": "self-employed-comparison.css",
+    "property": "background",
+    "before": "#f7f8f7",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "saved-analysis.css",
+    "property": "background",
+    "before": "#edf3ed",
+    "after": "#f8fafc"
+  },
+  {
+    "source": "saved-analysis.css",
+    "property": "border",
+    "before": "#a9bea8",
+    "after": "#e2e8f0"
+  },
+  {
+    "source": "premium-guides.css",
+    "property": "color",
+    "before": "#176B73",
+    "after": "#0f172a"
+  },
+  {
+    "source": "calculator-suite.css",
+    "property": "--calc-emerald",
+    "before": "#047857",
+    "after": "#0f172a"
+  },
+  {
+    "source": "calculator-suite.css",
+    "property": "--calc-emerald-light",
+    "before": "rgba(5, 150, 105, 0.12)",
+    "after": "rgba(15,23,42,0.12)"
+  }
+]

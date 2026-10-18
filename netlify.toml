@@ -393,3 +393,18 @@
   from = "/wp-login.php"
   to = "/"
   status = 301
+
+# Navy/bronze redesign: isolated Netlify preview only. Never changes production build defaults.
+[context.deploy-preview]
+  command = "node redesign/build-netlify-preview.mjs"
+  publish = "redesign/site"
+
+[[context.deploy-preview.plugins]]
+  package = "./redesign/netlify-plugin"
+
+[context.preview-redesign]
+  command = "node redesign/build-netlify-preview.mjs"
+  publish = "redesign/site"
+
+[[context.preview-redesign.plugins]]
+  package = "./redesign/netlify-plugin"

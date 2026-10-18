@@ -1,0 +1,31 @@
+<dialog id="contact" class="or-contact-dialog" aria-labelledby="contact-title" aria-describedby="contact-intro contact-preview-note">
+  <button type="button" class="close" aria-label="Close scenario review">×</button>
+  <div data-contact-entry>
+    <p class="eyebrow">START WITH YOUR SITUATION</p>
+    <h2 id="contact-title" tabindex="-1">What are you trying to do?</h2>
+    <p id="contact-intro" class="dialog-intro">Tell me your goal and what needs a closer look. A few sentences are enough.</p>
+    <p id="contact-preview-note" class="preview-notice">Preview only. Use sample details. Nothing is sent or saved.</p>
+    <form id="preview-contact" method="post" name="contact" data-inquiry-form>
+      <fieldset disabled>
+        <label for="inquiry-goal">Your goal</label>
+        <select id="inquiry-goal" name="goal">
+          <option>Review my scenario</option><option>Buy a home</option><option>Refinance or access equity</option><option>Finance an investment property</option><option>Bank statement loan review</option><option>Talk through my options</option><option>Talk with Adam</option><option>Talk with Tiffany</option>
+        </select>
+        <div class="or-form-row">
+          <div><label for="inquiry-name">Your name <span aria-hidden="true">*</span></label><input id="inquiry-name" name="name" autocomplete="off" required maxlength="160"></div>
+          <div><label for="inquiry-email">Email <span aria-hidden="true">*</span></label><input id="inquiry-email" name="email" type="email" autocomplete="off" required maxlength="160"></div>
+        </div>
+        <label for="inquiry-phone">Phone (optional)</label><input id="inquiry-phone" name="phone" type="tel" autocomplete="off" maxlength="30">
+        <label for="inquiry-message">What should I know? (optional)</label><textarea id="inquiry-message" name="message" maxlength="2000" rows="3" aria-describedby="inquiry-privacy"></textarea>
+        <p id="inquiry-privacy" class="or-form-hint">Please leave out Social Security numbers, account numbers, and documents. Fields marked * are required.</p>
+        <button class="button green" type="submit" data-inquiry-submit>Preview my scenario review <span aria-hidden="true">→</span></button>
+        <p data-form-status role="status" aria-live="polite"></p><p data-form-error role="alert" tabindex="-1"></p>
+      </fieldset>
+      <noscript><p>JavaScript is required for the preview form. You can still read every guide and use the contact links on the page.</p></noscript>
+    </form>
+  </div>
+  <div class="confirmation" data-contact-confirmation hidden tabindex="-1" role="status">
+    <h3>Preview complete.</h3><p data-confirmation-copy>Nothing was sent or saved. This shows the next step after a scenario review request.</p><button type="button" class="button green close-action">Back to the page <span aria-hidden="true">→</span></button>
+  </div>
+</dialog>
+<dialog id="info" aria-labelledby="info-title"><button type="button" class="close" aria-label="Close details">×</button><div id="info-content"></div></dialog>

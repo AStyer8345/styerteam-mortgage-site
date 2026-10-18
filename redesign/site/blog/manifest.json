@@ -1,0 +1,508 @@
+{
+  "posts": [
+    {
+      "slug": "2026-10-01-why-mortgage-rates-are-rising",
+      "title": "Why Are Mortgage Rates Rising—and What Would Make Them Fall?",
+      "description": "Why mortgage rates are rising, how the 10-year Treasury affects them, and what could bring relief. Adam Styer shares a practical plan for Texas Realtors.",
+      "date": "2026-10-01",
+      "category": "Market Update",
+      "url": "/blog/2026-10-01-why-mortgage-rates-are-rising.html"
+    },
+    {
+      "slug": "2026-09-10-the-conversation-behind-a-lower-mortgage-rate",
+      "title": "The Conversation Behind “I Want a Lower Rate”",
+      "description": "A buyer wanted 6%. The payment difference was $87 a month. Adam Styer explains rate expectations and how to find the financing goal behind the requested rate.",
+      "date": "2026-09-10",
+      "category": "Market Update",
+      "url": "/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html"
+    },
+    {
+      "slug": "2026-09-09-buy-house-you-rent-from-landlord-texas",
+      "title": "Can You Buy the House You Rent From Your Landlord in Texas?",
+      "description": "Buying your rental home in Texas? Review representation, price, inspections, title, closing costs, seller credits, lease handling, and financing.",
+      "date": "2026-09-09",
+      "category": "Home Buying",
+      "url": "/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html"
+    },
+    {
+      "slug": "2026-09-04-what-is-a-non-qm-loan-texas",
+      "title": "What Is a Non-QM Loan? Why Your Bank Said No and What Actually Qualifies in Texas",
+      "description": "Non-QM doesn't mean bad credit — it means your income gets documented differently. A plain-English breakdown of bank statement, DSCR, asset depletion, 1099/ITIN, and jumbo non-QM loans for Texas borrowers.",
+      "date": "2026-09-04",
+      "category": "Loan Programs",
+      "url": "/blog/2026-09-04-what-is-a-non-qm-loan-texas.html"
+    },
+    {
+      "slug": "2026-08-21-veteran-asset-depletion-mortgage-case-study",
+      "title": "How a Veteran Between Jobs Used Retirement Assets to Qualify for a Mortgage",
+      "description": "A veteran and experienced real estate investor had no current employment income, but military income and substantial retirement assets created another path to mortgage qualification.",
+      "date": "2026-08-21",
+      "category": "Loan Programs",
+      "url": "/blog/2026-08-21-veteran-asset-depletion-mortgage-case-study.html"
+    },
+    {
+      "slug": "2026-08-18-jumbo-loan-requirements-texas-2026",
+      "title": "Jumbo Loan Requirements in Texas (2026): Where the Line Is, and What It Takes to Cross It",
+      "description": "Travis County sits at the 2026 baseline conforming limit of $832,750 — Austin has no high-balance tier, so it's a cliff, not a ramp. What changes above the line, what every jumbo lender must verify under the ability-to-repay rule, and where self-employed files stall.",
+      "date": "2026-08-18",
+      "category": "Loan Programs",
+      "url": "/blog/2026-08-18-jumbo-loan-requirements-texas-2026.html"
+    },
+    {
+      "slug": "2026-08-10-austin-housing-market-report-august-2026",
+      "title": "Austin Housing Market Report — August 2026",
+      "description": "Austin housing market August 2026: $450K median, 13,245 active listings, and 6.69% mortgage rates. See what the latest data means.",
+      "date": "2026-08-10",
+      "category": "Market Update",
+      "url": "/blog/2026-08-10-austin-housing-market-report-august-2026.html"
+    },
+    {
+      "slug": "2026-08-06-asset-depletion-loan-case-study-former-cfo",
+      "title": "Asset Depletion Loan Case Study: How a Former CFO on Sabbatical Got to Closing With No W-2 Income",
+      "description": "A former CFO on sabbatical after a company liquidity event had zero W-2 income but significant retirement assets. How an asset depletion loan converted those assets into qualifying income and got the file to closing.",
+      "date": "2026-08-06",
+      "category": "Loan Programs",
+      "url": "/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html"
+    },
+    {
+      "slug": "2026-07-21-itin-mortgage-loans-texas",
+      "title": "ITIN Mortgage Loans in Texas: How to Buy a Home Without a Social Security Number",
+      "description": "An ITIN by itself doesn't disqualify you — Fannie Mae accepts a valid SSN or an ITIN, and non-permanent residents get the same terms as citizens. What actually gates the file, when a portfolio ITIN program fits, and the expiration trap that stalls closings.",
+      "date": "2026-07-21",
+      "category": "Loan Programs",
+      "url": "/blog/2026-07-21-itin-mortgage-loans-texas.html"
+    },
+    {
+      "slug": "2026-07-16-self-employed-income-calculation-underwriting-texas",
+      "title": "How Underwriters Actually Calculate Self-Employed Income: Add-Backs, Averaging, and the Two-Year Rule",
+      "description": "Underwriters rebuild your income from tax returns — net income plus add-backs like depreciation, averaged over two years. The declining income rule, the one-year exception, and how to fix a qualifying-income gap before you buy.",
+      "date": "2026-07-16",
+      "category": "Loan Programs",
+      "url": "/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html"
+    },
+    {
+      "slug": "2026-06-30-bank-statement-loans-texas",
+      "title": "Bank Statement Loans in Texas: How Self-Employed Borrowers Qualify in 2026",
+      "description": "A bank statement loan qualifies self-employed Texas borrowers on business deposits instead of tax-return net income. How the deposit math works, what it costs, the documentation involved, and when a conventional loan is still the better choice.",
+      "date": "2026-06-30",
+      "category": "Loan Programs",
+      "url": "/blog/2026-06-30-bank-statement-loans-texas.html"
+    },
+    {
+      "slug": "2026-06-23-no-ratio-low-dscr-loans-texas",
+      "title": "No-Ratio & Low-DSCR Loans in Texas: Financing a Rental That Cash-Flows Under 1.0",
+      "description": "How to finance a Texas rental that cash-flows under 1.0: low-DSCR programs down to about 0.75, no-ratio loans that skip the ratio, what you trade in rate and down payment, and when a sub-1.0 deal actually pencils.",
+      "date": "2026-06-23",
+      "category": "Investment",
+      "url": "/blog/2026-06-23-no-ratio-low-dscr-loans-texas.html"
+    },
+    {
+      "slug": "2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin",
+      "title": "When Strong Buyers Don't Fit Conventional: 6 Scenarios and the Loans That Solve Them",
+      "description": "Strong buyers get stuck when conventional guidelines weren't built for how they manage money. Six scenarios — buy before you sell, bridge, DSCR, asset depletion, bank statement loans — and how we structure around each.",
+      "date": "2026-06-22",
+      "category": "Loan Programs",
+      "url": "/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html"
+    },
+    {
+      "slug": "2026-06-16-dscr-loan-requirements-texas",
+      "title": "DSCR Loan Requirements in Texas: What It Actually Takes to Qualify in 2026",
+      "description": "What it takes to qualify for a DSCR loan in Texas in 2026: credit score, down payment and LTV, reserves, the DSCR ratio, eligible property types, LLC titling, and why no personal income or DTI is checked.",
+      "date": "2026-06-16",
+      "category": "Investment",
+      "url": "/blog/2026-06-16-dscr-loan-requirements-texas.html"
+    },
+    {
+      "slug": "2026-06-15-mortgage-rates-inflation-iran-peace-deal",
+      "title": "Mortgage Rates, Inflation, and the Iran Peace Deal: What Homebuyers Need to Know",
+      "description": "Mortgage rates climbed back into the mid-6% range on an energy-driven inflation shock. Here's what the new U.S.-Iran peace deal means for rates and homebuyers through 2026.",
+      "date": "2026-06-15",
+      "category": "Market Update",
+      "url": "/blog/2026-06-15-mortgage-rates-inflation-iran-peace-deal.html"
+    },
+    {
+      "slug": "2026-06-14-buy-before-you-sell-austin-tx",
+      "title": "How to Buy Your Next Home Before Selling Your Current One (Austin, TX)",
+      "description": "Buying a new home before your current one sells is a timing and DTI problem with real solutions: the pending-sale rule, bridge financing, and home-sale contingency strategy — and how an Austin mover picks the right one in 2026.",
+      "date": "2026-06-14",
+      "category": "Home Buying",
+      "url": "/blog/2026-06-14-buy-before-you-sell-austin-tx.html"
+    },
+    {
+      "slug": "2026-06-14-dscr-vs-conventional-investment-property-loan-texas",
+      "title": "DSCR vs Conventional Investment Property Loan in Texas: How to Pick",
+      "description": "DSCR qualifies on the property's rent; conventional qualifies on your personal income and DTI. How a Texas investor picks between them in 2026 — cost, down payment, the 10-property cap, and LLC titling.",
+      "date": "2026-06-14",
+      "category": "Investment",
+      "url": "/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html"
+    },
+    {
+      "slug": "2026-06-08-when-other-lenders-say-no",
+      "title": "When Other Lenders Say No, That's Usually When I Get Interested",
+      "description": "When a buyer gets declined, the deal usually isn't dead. The loan options that exist for self-employed, investor, and high-net-worth clients who don't fit conventional guidelines.",
+      "date": "2026-06-08",
+      "category": "Loan Programs",
+      "url": "/realtor-updates/2026-06-08-when-other-lenders-say-no.html"
+    },
+    {
+      "slug": "2026-06-05-dscr-cash-out-refinance-texas-brrrr",
+      "title": "DSCR Cash-Out Refinance Texas (2026): The BRRRR Investor's Guide",
+      "description": "How DSCR cash-out refinances work for Texas investors: LTV caps, seasoning, why Texas A6 doesn't apply to investment property, and how to make BRRRR actually pencil in 2026.",
+      "date": "2026-06-05",
+      "category": "Investment",
+      "url": "/blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr.html"
+    },
+    {
+      "slug": "2026-06-05-dscr-airbnb-str-loan-texas",
+      "title": "DSCR Loans for Short-Term Rentals (Airbnb/VRBO) in Texas (2026)",
+      "description": "How DSCR lenders calculate income on a Texas short-term rental, which non-QM programs accept STR income, and how city STR ordinances change the deal.",
+      "date": "2026-06-05",
+      "category": "Investment",
+      "url": "/blog/2026-06-05-dscr-airbnb-str-loan-texas.html"
+    },
+    {
+      "slug": "2026-05-30-physician-mortgage-texas",
+      "title": "Physician Mortgage Loans in Texas: How Doctors Qualify in 2026",
+      "description": "How Texas doctors qualify with an employment contract instead of paystubs, how deferred student debt is handled, and when a physician loan beats conventional financing.",
+      "date": "2026-05-30",
+      "category": "Physician",
+      "url": "/blog/2026-05-30-physician-mortgage-texas.html"
+    },
+    {
+      "slug": "2026-04-27-why-home-prices-arent-crashing",
+      "title": "Why Home Prices Aren't Crashing — And What the Data Actually Says",
+      "description": "I pulled the actual data — the lock-in effect, equity levels, why this isn't 2008, and what it really means if you're thinking about buying.",
+      "date": "2026-04-27",
+      "category": "Market Update",
+      "url": "/blog/2026-04-27-why-home-prices-arent-crashing.html"
+    },
+    {
+      "slug": "2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers",
+      "title": "The Crash That Isn't Coming — Data for Your Buyers",
+      "description": "Real data to walk fence-sitters through — the lock-in effect, equity, why this isn't 2008, and the negotiating window your buyers have right now.",
+      "date": "2026-04-27",
+      "category": "Market Intel",
+      "url": "/realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers.html"
+    },
+    {
+      "slug": "2026-04-17-should-i-refinance-austin-tx-2026",
+      "title": "Should I Refinance in 2026? A Decision Guide for Austin Homeowners",
+      "description": "Refinance only if your break-even is shorter than the time you'll stay. Break-even math, rate thresholds, and when to wait — the honest refi guide for Austin homeowners.",
+      "date": "2026-04-17",
+      "category": "Refinance",
+      "url": "/blog/2026-04-17-should-i-refinance-austin-tx-2026.html"
+    },
+    {
+      "slug": "can-i-switch-lenders-after-going-under-contract-texas",
+      "title": "Can I Switch Lenders After Going Under Contract in Texas?",
+      "description": "Yes — Texas buyers can switch lenders after going under contract. Here's how the timeline works, what delays to expect, and when it's worth it.",
+      "date": "2026-04-12",
+      "category": "Rate Shopping",
+      "url": "/blog/can-i-switch-lenders-after-going-under-contract-texas.html"
+    },
+    {
+      "slug": "how-to-compare-two-mortgage-offers",
+      "title": "How to Compare Two Mortgage Offers Side by Side",
+      "description": "A step-by-step guide to comparing Loan Estimates — rates, fees, APR, and total cost — so you pick the offer that actually saves you money.",
+      "date": "2026-04-12",
+      "category": "Rate Shopping",
+      "url": "/blog/how-to-compare-two-mortgage-offers.html"
+    },
+    {
+      "slug": "apr-vs-interest-rate-what-actually-matters",
+      "title": "APR vs Interest Rate — What Actually Matters",
+      "description": "APR includes fees, interest rate doesn't. But APR can be misleading. Here's how to use both numbers to compare mortgage offers.",
+      "date": "2026-04-12",
+      "category": "Rate Shopping",
+      "url": "/blog/apr-vs-interest-rate-what-actually-matters.html"
+    },
+    {
+      "slug": "are-mortgage-lender-fees-negotiable",
+      "title": "Are Mortgage Lender Fees Negotiable?",
+      "description": "Some mortgage fees are negotiable, others aren't. Here's which ones to push back on and how to ask without killing your deal.",
+      "date": "2026-04-12",
+      "category": "Rate Shopping",
+      "url": "/blog/are-mortgage-lender-fees-negotiable.html"
+    },
+    {
+      "slug": "how-many-mortgage-quotes-should-i-get",
+      "title": "How Many Mortgage Quotes Should I Get?",
+      "description": "Research says 3–5 quotes saves the average buyer thousands. Here's how to shop efficiently without tanking your credit score.",
+      "date": "2026-04-12",
+      "category": "Rate Shopping",
+      "url": "/blog/how-many-mortgage-quotes-should-i-get.html"
+    },
+    {
+      "slug": "local-lender-vs-online-lender-austin-central-texas",
+      "title": "Local Lender vs Online Lender — Austin & Central Texas",
+      "description": "Big bank rate vs. local broker service? Here's how to decide between online lenders and local mortgage brokers in the Austin market.",
+      "date": "2026-04-12",
+      "category": "Rate Shopping",
+      "url": "/blog/local-lender-vs-online-lender-austin-central-texas.html"
+    },
+    {
+      "slug": "what-delays-closing-when-you-switch-lenders",
+      "title": "What Delays Closing When You Switch Lenders?",
+      "description": "Switching lenders mid-transaction can add 1–3 weeks. Here's what causes delays, how to minimize them, and when it's still worth it.",
+      "date": "2026-04-12",
+      "category": "Rate Shopping",
+      "url": "/blog/what-delays-closing-when-you-switch-lenders.html"
+    },
+    {
+      "slug": "how-to-read-a-loan-estimate",
+      "title": "How to Read a Loan Estimate",
+      "description": "Page-by-page breakdown of the 3-page Loan Estimate form — what each number means and which ones actually matter when comparing offers.",
+      "date": "2026-04-12",
+      "category": "Rate Shopping",
+      "url": "/blog/how-to-read-a-loan-estimate.html"
+    },
+    {
+      "slug": "what-to-compare-besides-mortgage-rate",
+      "title": "What to Compare Besides Mortgage Rate",
+      "description": "Rate isn't everything. Lender fees, closing speed, lock terms, and servicing all affect your real cost. Here's what else to compare.",
+      "date": "2026-04-12",
+      "category": "Rate Shopping",
+      "url": "/blog/what-to-compare-besides-mortgage-rate.html"
+    },
+    {
+      "slug": "is-the-lowest-rate-the-cheapest-loan",
+      "title": "Is the Lowest Rate the Cheapest Loan?",
+      "description": "A lower rate with high points can cost more than a slightly higher rate with no points. Here's how to calculate the real cost.",
+      "date": "2026-04-12",
+      "category": "Rate Shopping",
+      "url": "/blog/is-the-lowest-rate-the-cheapest-loan.html"
+    },
+    {
+      "slug": "2026-04-10-fha-loan-requirements-texas-2026",
+      "title": "FHA Loan Requirements Texas 2026",
+      "description": "FHA loan minimum credit score, down payment, loan limits, and appraisal requirements for Texas buyers in 2026. NMLS #513013.",
+      "date": "2026-04-10",
+      "category": "Home Buying",
+      "url": "/blog/2026-04-10-fha-loan-requirements-texas-2026.html"
+    },
+    {
+      "slug": "2026-04-06-mortgage-document-checklist-austin-tx",
+      "title": "Mortgage Document Checklist Austin TX 2026",
+      "description": "What documents do you need for a mortgage in Austin TX? W-2s, tax returns, bank statements, and more — organized by loan type. NMLS #513013.",
+      "date": "2026-04-06",
+      "category": "Home Buying",
+      "url": "/blog/2026-04-06-mortgage-document-checklist-austin-tx.html"
+    },
+    {
+      "slug": "2026-04-04-austin-housing-market-report-april-2026",
+      "title": "Austin Housing Market Report — April 2026",
+      "description": "Austin home prices, inventory, rates, and what the April 2026 tariff bond rally means for buyers right now. Adam Styer, NMLS #513013.",
+      "date": "2026-04-04",
+      "category": "Market Update",
+      "url": "/blog/2026-04-04-austin-housing-market-report-april-2026.html"
+    },
+    {
+      "slug": "2026-04-03-condo-mortgage-austin-tx",
+      "title": "Condo Mortgage Austin TX: What Buyers Need to Know in 2026",
+      "description": "Warrantable vs. non-warrantable condos, HOA questionnaire process, FHA and VA condo approval, and how to get a condo mortgage in Austin TX.",
+      "date": "2026-04-03",
+      "category": "Homebuying",
+      "url": "/blog/2026-04-03-condo-mortgage-austin-tx.html"
+    },
+    {
+      "slug": "2026-04-02-self-employed-mortgage-austin-tx",
+      "title": "Self-Employed Mortgage Austin TX: How to Qualify in 2026",
+      "description": "What lenders look at, why tax write-offs hurt your qualifying income, and which loan programs actually work for business owners in Austin.",
+      "date": "2026-04-02",
+      "category": "Homebuying",
+      "url": "/blog/2026-04-02-self-employed-mortgage-austin-tx.html"
+    },
+    {
+      "slug": "2026-04-01-spring-market-update",
+      "title": "Austin Mortgage Market Update: Spring 2026",
+      "description": "Austin housing market spring 2026 — pending sales up 13.9%, 10K+ active listings, median $412K. What it means if you're buying now.",
+      "date": "2026-04-01",
+      "category": "Market Update",
+      "url": "/blog/2026-04-01-spring-market-update.html"
+    },
+    {
+      "slug": "2026-04-01-how-to-choose-a-mortgage-lender-austin-tx",
+      "title": "How to Choose a Mortgage Lender in Austin TX",
+      "description": "Five questions every Austin buyer should ask before choosing a mortgage lender — and why the answer matters more than the rate.",
+      "date": "2026-04-01",
+      "category": "Homebuying",
+      "url": "/blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html"
+    },
+    {
+      "slug": "2026-03-31-dscr-loans-austin-tx-2026",
+      "title": "How DSCR Loans Work in Austin TX — 2026 Investor's Guide",
+      "description": "How DSCR loans work, how the ratio is calculated, current requirements in Texas, and who this product makes sense for in 2026.",
+      "date": "2026-03-31",
+      "category": "Investment Properties",
+      "url": "/blog/2026-03-31-dscr-loans-austin-tx-2026.html"
+    },
+    {
+      "slug": "2026-03-30-why-rates-improved-today-bond-rally",
+      "title": "Rates Improved Today — But Not for the Reasons You Think",
+      "description": "Rates improved this morning thanks to a bond rally driven by technical factors — Fed futures correction, month-end positioning, and hedging unwinds. Not fundamentals. Here's what moved us and what to tell clients about timing.",
+      "date": "2026-03-30",
+      "category": "Market Update",
+      "url": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+    },
+    {
+      "slug": "2026-03-30-first-time-home-buyer-programs-austin-tx-2026",
+      "title": "First-Time Buyer Assistance Programs Austin TX (2026): TSAHC, TDHCA & MCC",
+      "description": "TSAHC grants, TDHCA down payment assistance, MCC tax credits, and how to combine programs to minimize your out-of-pocket costs in Austin in 2026.",
+      "date": "2026-03-30",
+      "category": "Homebuying",
+      "url": "/blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html"
+    },
+    {
+      "slug": "2026-03-29-va-loan-eligibility-texas",
+      "title": "VA Loan Eligibility in Texas — Who Qualifies and How to Use Your Benefit",
+      "description": "Service requirements, surviving spouse eligibility, the Certificate of Eligibility, and how to use your VA benefit to buy a home in Texas with no down payment.",
+      "date": "2026-03-29",
+      "category": "Veterans & Military",
+      "url": "/blog/2026-03-29-va-loan-eligibility-texas.html"
+    },
+    {
+      "slug": "2026-03-28-fha-vs-conventional-loan-austin-tx",
+      "title": "FHA vs Conventional Loan Austin TX — Which Is Right for You?",
+      "description": "The real-world breakdown: credit scores, down payments, mortgage insurance, and how to know which loan wins for your situation.",
+      "date": "2026-03-28",
+      "category": "Homebuying",
+      "url": "/blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html"
+    },
+    {
+      "slug": "2026-03-28-how-long-does-mortgage-pre-approval-take",
+      "title": "How Long Does Mortgage Pre-Approval Take in Austin TX?",
+      "description": "Same-day to 3 business days — here's exactly what drives the timeline and how to get pre-approved fast in Austin's competitive market.",
+      "date": "2026-03-28",
+      "category": "Homebuying",
+      "url": "/blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html"
+    },
+    {
+      "slug": "2026-03-27-down-payment-assistance-texas-2026",
+      "title": "2026 Texas Down Payment Assistance Programs: TSAHC, TDHCA & City of Austin",
+      "description": "Texas down payment assistance programs still available in 2026 — grants, forgivable loans, and DPA options for first-time buyers in Austin and beyond.",
+      "date": "2026-03-27",
+      "category": "Homebuying",
+      "url": "/blog/2026-03-27-down-payment-assistance-texas-2026.html"
+    },
+    {
+      "slug": "2026-03-24-cash-out-refinance-austin-tx",
+      "title": "Cash-Out Refinance in Austin TX — Is It Worth It in 2026?",
+      "description": "How cash-out refinance works in Austin TX, current requirements, real costs, and when tapping your equity actually makes sense.",
+      "date": "2026-03-24",
+      "category": "Tips & Guides",
+      "url": "/blog/2026-03-24-cash-out-refinance-austin-tx.html"
+    },
+    {
+      "slug": "2026-03-20-austin-mortgage-rates-march-2026",
+      "title": "Austin Mortgage Rates — March 2026 Update",
+      "description": "Where Austin mortgage rates stand in March 2026, what's driving them, and how to decide whether to lock now or wait.",
+      "date": "2026-03-20",
+      "category": "Market Update",
+      "url": "/blog/2026-03-20-austin-mortgage-rates-march-2026.html"
+    },
+    {
+      "slug": "2026-03-18-the-ai-trap-i-walked-right-into",
+      "title": "The AI Trap I Walked Right Into",
+      "description": "I built a full CRM with AI. Then my business started slipping. Here's what I figured out about the line between using AI as a tool and letting it replace your thinking.",
+      "date": "2026-03-18",
+      "category": "Market Update",
+      "url": "/blog/2026-03-18-the-ai-trap-i-walked-right-into.html"
+    },
+    {
+      "slug": "2026-03-10-when-you-cant-control-it-surrender-it",
+      "title": "When You Can't Control It, Surrender It",
+      "description": "My car got stolen at 2:47am. I wasn't stressed about the car. Here's what that taught me about financial pressure — and why it might help you too.",
+      "date": "2026-03-10",
+      "category": "Mindset",
+      "url": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+    },
+    {
+      "slug": "2026-03-06-oil-prices-jobs-report-rate-volatility",
+      "title": "Oil Prices, Jobs Report & Rate Volatility",
+      "description": "Oil prices spiked, the jobs report came in soft, and rates whipsawed. Here's what it means for your buyers this week. Austin mortgage update.",
+      "date": "2026-03-06",
+      "category": "Market Update",
+      "url": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+    },
+    {
+      "slug": "2026-03-04-wait-for-rates",
+      "title": "Should You Wait for Rates to Drop Before You Buy?",
+      "description": "Most people think waiting for rates is the safe play. The math says otherwise. Here's the framework I use with every client facing this exact decision.",
+      "date": "2026-03-04",
+      "category": "Market Updates",
+      "url": "/resources/blog/2026-03-04-wait-for-rates.html"
+    },
+    {
+      "slug": "2026-03-04-wait-for-rates-realtor",
+      "title": "The \"Wait for Rates\" Objection — Here's How to Handle It",
+      "description": "The single biggest friction point in the move-up market. Here's the framework that turns fence-sitters into closings, plus an AI Playbook to save you time.",
+      "date": "2026-03-04",
+      "category": "Market Intel",
+      "url": "/resources/blog/2026-03-04-wait-for-rates-realtor.html"
+    },
+    {
+      "slug": "2026-02-27-ai-for-realtors-rates-drop-below-6",
+      "title": "AI Tools & Rate Cuts Below 6% for Austin Realtors",
+      "description": "Mortgage rates dropped below 6%. Plus: how AI automation is changing realtor workflows. Read what's happening this week in Austin.",
+      "date": "2026-02-27",
+      "category": "Tech & Tools",
+      "url": "/realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6.html"
+    },
+    {
+      "slug": "mortgage-broker-vs-bank",
+      "title": "Mortgage Broker vs. Bank: Which Is Right for You?",
+      "description": "Should you use a mortgage broker or go directly to a bank? Honest comparison of rates, options, service, and closing speed.",
+      "date": "2026-02-26",
+      "category": "Tips & Guides",
+      "url": "/mortgage-broker-vs-bank.html"
+    },
+    {
+      "slug": "how-much-house-can-i-afford-austin",
+      "title": "How Much House Can I Afford in Austin TX?",
+      "description": "Calculate your real home buying budget with Austin-specific costs, taxes, and practical budgeting tips from a local mortgage expert.",
+      "date": "2026-02-25",
+      "category": "Homebuying",
+      "url": "/how-much-house-can-i-afford-austin.html"
+    },
+    {
+      "slug": "austin-down-payment-assistance",
+      "title": "Austin TX Down Payment Assistance Programs (2026)",
+      "description": "Grants, forgivable loans, and DPA options for first-time home buyers in Travis County, Williamson County, and beyond.",
+      "date": "2026-02-25",
+      "category": "Homebuying",
+      "url": "/austin-down-payment-assistance.html"
+    },
+    {
+      "slug": "mortgage-pre-approval-austin",
+      "title": "Mortgage Pre-Approval in Austin, TX",
+      "description": "Why pre-approval is essential in Austin's market, what documents you need, and how to get started fast.",
+      "date": "2026-02-25",
+      "category": "Homebuying",
+      "url": "/mortgage-pre-approval-austin.html"
+    },
+    {
+      "slug": "closing-costs-texas",
+      "title": "Closing Costs in Texas: What to Expect",
+      "description": "Complete breakdown of buyer and seller closing costs in Texas with real numbers and strategies to reduce fees.",
+      "date": "2026-02-25",
+      "category": "Tips & Guides",
+      "url": "/closing-costs-texas.html"
+    },
+    {
+      "slug": "fixed-vs-adjustable",
+      "title": "Fixed vs. Adjustable Rate Mortgages",
+      "description": "Understanding the key differences between fixed-rate and adjustable-rate mortgages can save you thousands.",
+      "date": "2026-02-19",
+      "category": "Tips & Guides",
+      "url": "/fixed-vs-adjustable.html"
+    },
+    {
+      "slug": "improve-credit-score",
+      "title": "How to Improve Your Credit Score for a Mortgage",
+      "description": "Your credit score directly impacts your mortgage rate and buying power. Discover proven strategies to strengthen your score.",
+      "date": "2026-02-19",
+      "category": "Tips & Guides",
+      "url": "/improve-credit-score.html"
+    }
+  ]
+}
