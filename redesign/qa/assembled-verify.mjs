@@ -7,6 +7,7 @@ for(const file of walk(root)){
  const rel=path.relative(root,file);
  if(file.endsWith('.js')){syntax(fs.readFileSync(file,'utf8'),rel);continue;}
  if(!file.endsWith('.html'))continue;const html=fs.readFileSync(file,'utf8');if(/^google-site-verification:/.test(html.trim())){verificationFiles.push(rel);continue;}pages++;const d=parseHTML(html).document;
+ if(d.querySelector('form[data-netlify],form[netlify]'))issues.push({type:'preview-form-registration',file:rel});
  const ids=new Set();for(const e of d.querySelectorAll('[id]')){if(ids.has(e.id))issues.push({type:'duplicate-id',file:rel,id:e.id});ids.add(e.id);}
  for(const selector of ['.site-header','.site-footer','#contact']){const n=d.querySelectorAll(selector).length;if(n!==1)issues.push({type:'shared-component-count',file:rel,selector,count:n});}
  const csp=d.querySelector('meta[http-equiv="Content-Security-Policy"]')?.getAttribute('content')||'';
