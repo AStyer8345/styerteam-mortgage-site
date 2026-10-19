@@ -92,7 +92,7 @@ body.hi-page{background:#fff;container-type:inline-size}
 .home .hi-contact-tools .eyebrow{width:100%}
 .home .hi-contact-tools a{font:15px/1.7 Arial,sans-serif;min-height:44px;display:inline-flex;align-items:center}
 /* Programme mega-menu retains the tested original click and keyboard hooks. */
-body.orchestration-page header.sm-header .hi-program-menu.open>.nav-dropdown{display:grid!important;grid-template-columns:1fr 1fr;gap:14px 24px;width:560px!important;padding:24px!important;max-height:calc(100dvh - 110px)!important;overflow-y:auto!important}
+body.orchestration-page header.site-header.sm-header .nav-has-dropdown.hi-program-menu.open>.nav-dropdown{display:grid!important;grid-template-columns:1fr 1fr;gap:14px 24px;width:560px!important;padding:24px!important;max-height:calc(100dvh - 110px)!important;overflow-y:auto!important}
 body.orchestration-page header.sm-header .nav-dropdown .hi-nav-group-title{display:block;font:600 11px/1.5 Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#845022;margin-bottom:5px}
 body.orchestration-page header.sm-header .nav-dropdown .hi-nav-group>ul{list-style:none;margin:0;padding:0}
 body.orchestration-page header.sm-header .nav-dropdown .hi-nav-group li{margin:0;padding:0}
@@ -114,7 +114,14 @@ body.orchestration-page header.sm-header .nav-dropdown .hi-nav-group a{white-spa
  .hi-card-copy{padding:23px}
  .home .home-hero .hero-copy{width:100%;padding:32px 24px 24px}
  .home .home-hero .intro{width:100%;font-size:17px;max-width:42ch}
- .home .home-hero h1{font-size:40px;line-height:1.06}
+ .home .home-hero h1{font-size:38px;line-height:1.06}
+ .home .home-hero h1 br{display:none}
+ .home .hero-platforms{flex-direction:row;flex-wrap:nowrap;gap:16px}
+ .home .hero-platform{min-width:0;gap:7px}
+ .home .hero-platform img{width:46px;height:24px}
+ .home .hero-platform strong{font-size:13px}
+ .home .hero-platform .stars{font-size:10px}
+ .home .hero-platform small{font-size:10px}
  .home .home-hero{min-height:0;padding-bottom:200px}
  .home .hi-home-section{padding:36px 24px}
  .home .hi-home-audiences{grid-template-columns:1fr}
@@ -122,6 +129,8 @@ body.orchestration-page header.sm-header .nav-dropdown .hi-nav-group a{white-spa
  .home .hi-card h3{font-size:25px}
  .home .hi-home-reviews .review-marquee-heading h2{font-size:28px}
  .home .hi-compact-proof .proof-grid{grid-template-columns:1fr}
- body.orchestration-page header.sm-header .hi-program-menu.open>.nav-dropdown{grid-template-columns:1fr;width:auto!important;padding:12px 0 12px 16px!important;max-height:none!important}
+ body.orchestration-page header.site-header.sm-header .nav-links{overflow-x:hidden!important}
+ body.orchestration-page header.site-header.sm-header .nav-dropdown a{white-space:normal!important}
+ body.orchestration-page header.site-header.sm-header .nav-has-dropdown.hi-program-menu.open>.nav-dropdown{grid-template-columns:1fr;width:auto!important;padding:12px 0 12px 16px!important;max-height:none!important}
 }
 @media(prefers-reduced-motion:reduce){.hi-card{transition:none}.hi-card:hover{transform:none}}
