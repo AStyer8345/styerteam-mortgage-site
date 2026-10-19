@@ -26,7 +26,7 @@ body.premium-tool :is(.calc-inputs-col,.bd-inputs-panel){top:24px}
 body.premium-tool :is(.calc-result-row,.dscr-pitia li,.adc-result-row){gap:16px;font-size:14px;line-height:1.7}
 body.premium-tool :is(.calc-result-value,.dscr-pitia .val,.adc-result-value){font-variant-numeric:tabular-nums;flex-shrink:0}
 body.premium-tool :is(.dscr-btn,.adc-btn,.calc-btn,.bd-action-btn){border-radius:4px;min-height:44px;box-shadow:none}
-body.premium-tool .type-grid input:focus-visible+label,body.premium-tool .freq-toggle input:focus-visible+label{outline:3px solid #64748b;outline-offset:3px}
+body.premium-tool .type-grid input:focus-visible+label,body.premium-tool .freq-toggle input:focus-visible+label{outline:3px solid #176B73;outline-offset:3px}
 body.premium-tool .type-grid label,body.premium-tool .freq-toggle label{border-radius:4px;min-height:44px;display:flex;align-items:center;justify-content:center}
 body.premium-tool .adc-container>header{position:static;background:transparent;text-align:left!important;max-width:none!important;margin-bottom:28px!important}
 body.premium-tool .closing-costs-hero{max-width:1200px;margin-inline:auto}

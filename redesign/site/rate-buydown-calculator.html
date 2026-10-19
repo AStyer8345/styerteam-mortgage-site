@@ -92,12 +92,12 @@
         .bd-year-table td { padding: .5rem .75rem; border-bottom: 1px solid #f1f5f9; text-align: right; }
         .bd-year-table td:first-child { text-align: left; font-weight: 600; color: var(--color-navy); }
         .bd-year-table tr:last-child td { border-bottom: none; }
-        .bd-year-table .savings-cell { color: #0f172a; font-weight: 600; }
+        .bd-year-table .savings-cell { color: #16a34a; font-weight: 600; }
         .bd-year-table .note-row td { background: #f8fafc; color: #475569; font-style: italic; font-weight: 400; }
 
         /* ── Alerts ── */
         .bd-alert { padding: .85rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; display: none; margin-bottom: .75rem; }
-        .bd-alert.surplus { background: #f8fafc; border: 1px solid #e2e8f0; color: #0f172a; }
+        .bd-alert.surplus { background: #dcfce7; border: 1px solid #86efac; color: #166534; }
         .bd-alert.shortfall { background: #fef9c3; border: 1px solid #fde047; color: #713f12; }
 
         /* ── Charts section ── */
@@ -146,7 +146,7 @@
 
         /* ── Share / Print ── */
         .bd-share-row { display: flex; gap: .75rem; flex-wrap: wrap; }
-        .bd-share-confirm { font-size: .82rem; color: #0f172a; font-weight: 600; display: none; }
+        .bd-share-confirm { font-size: .82rem; color: #16a34a; font-weight: 600; display: none; }
         #bd-print-summary { display: none; }
 
         /* ── Buydown vs Price Reduction Comparison ── */
@@ -163,7 +163,7 @@
         .bd-comp-vs { font-size: .9rem; font-weight: 700; color: #cbd5e1; text-align: center; }
         .bd-comp-verdict { text-align: center; font-size: .88rem; font-weight: 600; padding: .7rem 1rem; border-radius: 8px; background: #f0f9ff; color: #0369a1; }
         .bd-comp-verdict--buydown { background: rgba(201,168,76,.15); color: #7c4a00; }
-        .bd-comp-verdict--price   { background: rgba(15,23,42,0.1);  color: #0f172a; }
+        .bd-comp-verdict--price   { background: rgba(16,185,129,.1);  color: #065f46; }
         .bd-comp-verdict--tie     { background: #f1f5f9; color: #475569; }
         @media (max-width: 500px) {
           .bd-comparison-cards { grid-template-columns: 1fr; }
@@ -189,8 +189,8 @@
 <link href="/advisory-design.css?v=20260918" rel="stylesheet"/>
 <link href="/premium-interior.css" rel="stylesheet"/>
 <link href="/premium-tools.css" rel="stylesheet"/>
-<meta content="noindex,nofollow,noarchive" name="robots"/><meta content="connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/><link href="/migration-navigation.css" rel="stylesheet"/><link href="/styles.css" rel="stylesheet"/><link href="/orchestration.css" rel="stylesheet"/><link href="/styer-visual-overhaul.css" rel="stylesheet"/><link href="/navigation.css" rel="stylesheet"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Mortgage resources and guides", "item": "https://styermortgage.com/resources/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage calculators", "item": "https://styermortgage.com/calculators.html"}, {"@type": "ListItem", "position": 4, "name": "Temporary rate buydown calculator", "item": "https://styermortgage.com/rate-buydown-calculator.html"}]}</script></head>
-<body class="editorial-page calculator-page premium-interior premium-tool advisory-site advisory-calculator orchestration-page legacy-page" data-active-nav="resources" data-palette="navy-bronze" data-preview-only="true"><a class="skip" href="#calc-main">Skip to content</a>
+<meta content="noindex,nofollow,noarchive" name="robots"/><meta content="connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/><link href="/migration-navigation.css" rel="stylesheet"/><link href="/styles.css" rel="stylesheet"/><link href="/orchestration.css" rel="stylesheet"/><link href="/navigation.css" rel="stylesheet"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Mortgage resources and guides", "item": "https://styermortgage.com/resources/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage calculators", "item": "https://styermortgage.com/calculators.html"}, {"@type": "ListItem", "position": 4, "name": "Temporary rate buydown calculator", "item": "https://styermortgage.com/rate-buydown-calculator.html"}]}</script></head>
+<body class="editorial-page calculator-page premium-interior premium-tool advisory-site advisory-calculator orchestration-page legacy-page" data-active-nav="resources" data-palette="tiffany-original" data-preview-only="true"><a class="skip" href="#calc-main">Skip to content</a>
 <!-- Google Tag Manager (noscript) -->
 <noscript></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -212,7 +212,7 @@
 <header class="site-header sm-header">
 <div class="container">
 <nav aria-label="Main navigation">
-<a aria-label="Styer Mortgage home" class="nav-brand" href="/"><img alt="Styer Mortgage" class="nav-logo-img" height="64" src="/assets/logo.svg" width="210"/></a>
+<a aria-label="The Styer Team home" class="brand nav-brand" href="/"><span>THE STYER TEAM</span><small>Adam Styer · NMLS #513013</small></a>
 <button aria-controls="site-nav-links" aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle" type="button"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
 <ul class="nav-links" id="site-nav-links">
 <li class="nav-has-dropdown" data-nav-section="buy"><a aria-expanded="false" aria-haspopup="true" href="/first-time-home-buyer.html">Buy</a><ul class="nav-dropdown">
@@ -243,7 +243,7 @@
 <li><a href="/testimonials.html">Client reviews</a></li>
 </ul></li>
 </ul>
-<div class="sm-header-actions"><a class="sm-header-phone" href="tel:+15129566010">Call (512) 956-6010</a><a class="nav-cta nav-apply" href="/apply-now/">Apply Online <span aria-hidden="true">↗</span></a></div>
+<div class="sm-header-actions"><a class="phone sm-header-phone" href="tel:+15129566010">Call (512) 956-6010</a><a class="button green" data-header-apply="" href="/apply-now/">Apply Online <span aria-hidden="true">↗</span></a></div>
 </nav>
 </div>
 </header><main id="calc-main"><nav aria-label="Breadcrumb" class="ledger-breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/resources/">Mortgage resources and guides</a></li><li><a href="/calculators.html">Mortgage calculators</a></li><li aria-current="page">Temporary rate buydown calculator</li></ol></nav>
@@ -1223,7 +1223,6 @@ window.styerMoney.attach(["bd-loan-input", "bd-tax-input", "bd-ins-input", "bd-h
 <script defer="" src="/calculator-sticky-result.js?v=20260918"></script>
 
 
-
 <dialog aria-describedby="contact-intro contact-preview-note" aria-labelledby="contact-title" class="or-contact-dialog" id="contact">
 <button aria-label="Close scenario review" class="close" type="button">×</button>
 <div data-contact-entry="">
@@ -1241,7 +1240,7 @@ window.styerMoney.attach(["bd-loan-input", "bd-tax-input", "bd-ins-input", "bd-h
 <label for="inquiry-phone">Phone (optional)</label><input autocomplete="off" id="inquiry-phone" maxlength="30" name="phone" type="tel"/>
 <label for="inquiry-message">What should I know? (optional)</label><textarea aria-describedby="inquiry-privacy" id="inquiry-message" maxlength="2000" name="message" rows="3"></textarea>
 <p class="or-form-hint" id="inquiry-privacy">Please leave out Social Security numbers, account numbers, and documents. Fields marked * are required.</p>
-<button class="button button--primary" data-inquiry-submit="" type="submit">Preview my scenario review <span aria-hidden="true">→</span></button>
+<button class="button button--primary gold" data-inquiry-submit="" type="submit">Preview my scenario review <span aria-hidden="true">→</span></button>
 <p aria-live="polite" data-form-status="" role="status"></p><p data-form-error="" role="alert" tabindex="-1"></p>
 </fieldset>
 <noscript><p>JavaScript is required for the preview form. You can still read every guide and use the contact links on the page.</p></noscript>

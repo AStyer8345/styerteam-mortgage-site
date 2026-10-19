@@ -5,8 +5,8 @@
 .calc-suite {
   --calc-navy: var(--color-navy, #182e3e);
   --calc-charcoal: #1e293b;
-  --calc-emerald: #0f172a;
-  --calc-emerald-light: rgba(15,23,42,0.12);
+  --calc-emerald: #047857;
+  --calc-emerald-light: rgba(5, 150, 105, 0.12);
   --calc-blue: #2563eb;
   --calc-blue-light: rgba(37, 99, 235, 0.12);
   --calc-glass-bg: rgba(255, 255, 255, 0.12);

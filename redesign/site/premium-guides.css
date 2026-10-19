@@ -52,7 +52,7 @@ body.premium-directory .calc-card{display:flex;flex-direction:column;align-items
 body.premium-directory .calc-card-title{font:600 23px/1.4 Inter,Arial,sans-serif!important;margin:0!important}
 body.premium-directory .calc-card-desc{margin:0 0 12px!important;font-size:17px;color:var(--premium-muted)}
 body.premium-directory .calc-card-cta{margin-top:auto;font-size:15px;white-space:normal;text-decoration:underline;text-underline-offset:4px}
-body.premium-directory .calc-card:hover .calc-card-cta{color:#0f172a}
+body.premium-directory .calc-card:hover .calc-card-cta{color:#176B73}
 body:is(.premium-directory,.premium-legacy) main :is(.bg-primary,.cta-spotlight){background:var(--premium-ink)!important;color:#fff}
 body:is(.premium-directory,.premium-legacy) main :is(.bg-primary,.cta-spotlight,.resources-cta-band) h2{color:#fff}
 body:is(.premium-directory,.premium-legacy) main :is(.bg-primary,.cta-spotlight,.resources-cta-band) .btn-primary{background:#fff!important;border-color:#fff;color:var(--premium-ink)!important}

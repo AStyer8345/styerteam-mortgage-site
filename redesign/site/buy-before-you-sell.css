@@ -34,7 +34,7 @@
 .move-page .move-compare span { display:block; font-size:.78rem; color:#536174; }
 .move-page .move-compare > span { font-size:1.4rem; line-height:1.5; }
 .move-page .move-compare strong { display:block; color:#182e3e; margin-top:.25rem; }
-.move-page .move-compare .move-outcome { background:#f8fafc; border:1px solid #e2e8f0; }
+.move-page .move-compare .move-outcome { background:#eaf3ec; border:1px solid #a9c9b2; }
 .move-page .move-money { list-style:none; padding:0; margin:1.5rem 0; text-align:center; }
 .move-page .move-money li { padding:.75rem; background:#f5f1e5; border:1px solid #e2d3ad; border-radius:7px; color:#182e3e; font-weight:600; margin:0; }
 .move-page .move-money li + li { margin-top:1.3rem; position:relative; }

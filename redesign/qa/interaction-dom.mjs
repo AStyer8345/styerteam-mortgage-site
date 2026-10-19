@@ -6,7 +6,7 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {parseHTML,packagePath} from './runtime.mjs';
-const html=fs.readFileSync(packagePath('site','index.html'),'utf8');
+const html=fs.readFileSync(packagePath('site','bank-statement-loans.html'),'utf8');
 const {document,window:native}=parseHTML(html);
 let active=document.body;
 Object.defineProperty(document,'activeElement',{get:()=>active});

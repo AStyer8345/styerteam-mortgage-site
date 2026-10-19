@@ -8,25 +8,25 @@
     "forms.html"
   ],
   "removed_non_calculator_scripts": [],
-  "legacy_css_fix": "Original styles retained; component CSS defines palette without rewriting source colors",
-  "palette": "navy-bronze",
+  "legacy_css_fix": "Original Tiffany reference stylesheet copied byte-for-byte; authored page CSS restored",
+  "palette": "tiffany-original",
   "live_routing_changed": false,
   "components": {
-    "styer-visual-overhaul.css": "11d4e81cdec14cd22f695e2c691cd870d7ccb31dab5c48fda0f0deafd55d646a",
-    "home.html": "0afbbfe0afdc3a41313d696b093070ad905de4b9ca7fd9524fc7786d0be6062e",
+    "tiffany-style-provenance.json": "327d62cdd082070ef82e8290ba5a8eb7bd28b53f8bcce74d4cb5c8d8046c210c",
+    "home.html": "679c79f8741ca188fa291f2e7b3c71085cd4c42c551467f26bbcf93600bac7e1",
     "contact.html": "459e5e9e04ab8e5d41130f054e738a9109bd2b53d33f5eb7d538bab4bec0bc8d",
+    "tiffany-reference.css": "86188ce5a704c04322d970e998136d170dbebf2c41cf0252e65708fe665ccbcd",
     "ui-polish.js": "fa1048ce13b40bdd0367d39842ca4f0e2ad32a17bf8e7539ebf4db6c2296eeed",
     "bank-calculation.html": "a2cee307487e7792c565e18954761f61d993111bfd89c80eb82c751e65bc56c4",
     "high-net-worth.html": "f25ae3c66c36f8cbb616101b75fcd3cc64ab37141c9ba5dab3bc2400aec461b5",
-    "bank-statement.html": "04da2f75020d22de4827153e78e250defabc251acf29282566223176302a5377",
-    "navigation.js": "e6fac38b699b2309f5da549ec8e04aad6e4cbcbd9c9ffbe15104ea2e90ca32aa",
-    "home-opening.html": "8c784689233dd7f72acbc12f8e7cc10b18b2f9a1265439f0f8d06dc4d8e0e71c",
-    "orchestration.css": "8254a5674bd480ad90b622a4575460b89c53ae7aba1cf816f6b5e8d8e410d60f",
-    "navigation.css": "21a483a66a49601e5c99f34ccddde1fd7eb0c9f5eae0d9b72e6d830f07c0147a",
+    "bank-statement.html": "b81bb4994ecab972c23ba9541c231efe557f32251531a4dab1f6e6fb8dc9fb39",
+    "navigation.js": "dcee17a00a83af6e512fe31d181fd45e5564db6ebe4adfd78a1d49942c72498e",
+    "home-opening.html": "5dcf5339a6bc9fda0ca6a5ce01ab78bc6a08b93190ccaa8ee0427783267bc701",
+    "orchestration.css": "ab32f281aff6cf420aeb968788a15ffce9e1bb0d938b4d3bf3668c6665f2794a",
+    "navigation.css": "e688b15ddb50c26ae89cb377e4ea053b7b083e21b5edc1c3a659cef649d0d5d2",
     "calculator.html": "c1eedf7120373cb1841a3bc68924f0e3c29dce5d06fdf4389fa6c123e50ea92c",
     "footer.html": "9d9613acbf382c909e9bac59275f7ddb585b3fe2aed2463c7bc6562774e2abdd",
     "faq-schema-updates.json": "8f6ff8b2d62aabc3c0c10cd4bae358f482ae5cf2266985d46fded01d4816eb57",
-    "homepage-visual.css": "cbf42df281feadf9d1fe5e6fa60775898bca1c468369beb6aaa9804f0b8b0fca",
-    "header.html": "98e320e3ac37999cd78c67a9bc07f9ba96b98d84c3c6fc82e2eb648def581f4e"
+    "header.html": "5e74b87e7e8cc47b0abf0b00f87484b012452d2d11bea7696ab22dd88159ae15"
   }
 }

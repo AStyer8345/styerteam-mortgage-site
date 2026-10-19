@@ -10,7 +10,7 @@ body.premium-interior #income-documents .ci-table thead th:nth-child(3){width:31
 body.premium-interior #income-documents .ci-table thead th:nth-child(4){width:18%}
 body.premium-interior #income-documents .ci-table tbody th{background:transparent!important;color:#142b3a!important;font-size:15px;line-height:1.5;font-weight:600}
 body.premium-interior #income-documents .ci-table tbody td{background:transparent;color:#52616b;font-size:14px;line-height:1.6}
-body.premium-interior #income-documents .ci-table tbody tr:nth-child(odd){background:#f8fafc!important}
+body.premium-interior #income-documents .ci-table tbody tr:nth-child(odd){background:#f7f8f7!important}
 body.premium-interior #income-documents .ci-table tbody tr:nth-child(even){background:white!important}
 body.premium-interior #income-documents .ci-table tbody tr:last-child :is(th,td){border-bottom:0}
 body.premium-interior #income-documents .ci-table td:last-child a{display:inline-block;color:#142b3a;font-size:13px;font-weight:600;line-height:1.45;text-decoration:underline;text-decoration-color:#a58a52;text-underline-offset:5px}

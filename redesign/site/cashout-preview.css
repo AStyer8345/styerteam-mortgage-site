@@ -31,7 +31,7 @@ body.premium-cashout .co-field [aria-invalid=true]{border:2px solid #9F3324}
 body.premium-cashout .co-error{font-size:13px;line-height:1.5;color:#9F3324}
 body.premium-cashout .co-input-note{font-size:13px;color:var(--premium-muted);margin:24px 0 32px;padding-bottom:20px;border-bottom:1px solid var(--premium-rule)}
 body.premium-cashout .co-input-note:last-child{border:0;padding:0;margin-bottom:0}
-body.premium-cashout .co-results{position:sticky;top:24px;border:1px solid #e2e8f0;border-top:3px solid #A8864E;border-radius:4px;background:#fff;padding:32px;min-width:0}
+body.premium-cashout .co-results{position:sticky;top:24px;border:1px solid #C9CECC;border-top:3px solid #A8864E;border-radius:4px;background:#fff;padding:32px;min-width:0}
 body.premium-cashout .co-cash{display:flex;flex-direction:column;gap:10px;margin:26px 0}
 body.premium-cashout .co-cash>span{font-size:16px}
 body.premium-cashout .co-cash>strong{font:400 52px/1.1 'Source Serif 4',Georgia,serif;letter-spacing:-.03em;overflow-wrap:anywhere}
