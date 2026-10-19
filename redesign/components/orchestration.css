@@ -6,6 +6,7 @@
 .orchestration-page main { min-width: 0; }
 .orchestration-page main [id] { scroll-margin-top: 150px; }
 .home-opening { padding: 0; }
+.home .home-hero h1 { font-size: 4.9cqw; }
 .home .home-hero .hero-copy { position: relative; z-index: 2; padding-bottom: 38px; }
 .home .home-hero { min-height: 620px; height: auto; }
 .home .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
@@ -64,7 +65,8 @@
 .or-contact-dialog .close { min-height: 44px; min-width: 44px; }
 .or-contact-dialog [hidden] { display: none; }
 /* Reviews use the reference review-slide typography and retain motion controls. */
-.home .review-marquee { overflow: hidden; padding: 28px 0 30px; background: #faf9f6; }
+.home .review-marquee { overflow: hidden; padding: 28px 0 30px; background: #faf9f6; color: #12202b; }
+.home .team-section .review-marquee { grid-column: 1 / -1; width: 100%; margin-top: 24px; border-radius: 3px; }
 .home .review-marquee-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; padding: 0 5.5cqw 20px; }
 .home .review-marquee-heading h2 { font-size: 28px; margin-right: auto; letter-spacing: -.5px; }
 .home .review-marquee-heading a { font-size: 14px; }
@@ -143,9 +145,9 @@
  .home .home-hero { min-height: 0; padding-bottom: 220px; }
  .home .home-hero .hero-copy { padding: 36px 24px 24px; width: 100%; }
  .home .home-hero h1 { font-size: clamp(40px,8vw,58px); letter-spacing: -1.3px; }
- .home .hero-platforms { gap: 20px; }
+ .home .hero-platforms { gap: 12px; }
  .home .hero-platform { gap: 8px; }
- .home .hero-platform img { width: 62px; height: 24px; }
+ .home .hero-platform img { width: 58px; height: 24px; }
  .home .hero-platform strong { font-size: 14px; }
  .home .hero-platform small { font-size: 11px; }
  .home .hero-cutout { right: 6%; width: 210px; max-width: 58%; }
