@@ -1,0 +1,33 @@
+{
+  "tested_commit": "1b54550a22e9dcbac0a7ed907fe3c0feb278fc4c",
+  "netlify_deploy": "6ad662b4323028ef5f46e583",
+  "url": "https://deploy-preview-28--shiny-paprenjak-c7e741.netlify.app/",
+  "desktop": [
+    1440,
+    1000
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "breakpoint": [
+    900,
+    900
+  ],
+  "checks": [
+    "Explicit broker hero, source-linked ratings and scrolling reviews render",
+    "Five Who We Serve paths and six featured program cards render",
+    "Four menu headings separate products, audiences, resources and team information",
+    "Program menu uses two columns at 900px without horizontal overflow",
+    "Mobile audience drawer opens, closes and closes after child navigation",
+    "Native program FAQ expands and collapses",
+    "Program scenario dialog opens with four fields and heading focus",
+    "Homepage sample inquiry confirms nothing was sent or saved",
+    "Bank-statement overview links to the preserved 2932-word guide with a return link",
+    "Home, bank statement, asset depletion, asset-rich borrower and bank guide fit the checked viewports",
+    "Review pause sets aria-pressed and pauses the animation",
+    "No error-level console messages observed on the checked program page"
+  ],
+  "automated_checks": "All ten Netlify gates passed, including 173 original URLs, 1256 retained prose blocks, 17253 internal links, eight calculator engines and 22 numeric/disclosure groups.",
+  "scope": "Browser samples and static/numeric gates; preview inquiry is intentionally non-transmitting. Production remains unchanged."
+}
