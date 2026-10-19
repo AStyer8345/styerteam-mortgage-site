@@ -16,6 +16,9 @@ for(const line of fs.readFileSync(ledgerArg,'utf8').split('\n')){
  rows.push({route:new URL(url).pathname,role:cols[2],parent:parent?new URL(parent).pathname:null,anchor:cols[5],action:cols[4]});
 }
 if(rows.length!==173)issues.push({type:'ledger-count',expected:173,actual:rows.length});
+// The ledger retains historical URLs; the approved hierarchy supersedes its proposed parents.
+const hierarchyPath=packagePath('hierarchy-manifest.json');
+if(fs.existsSync(hierarchyPath)){const hierarchy=JSON.parse(fs.readFileSync(hierarchyPath,'utf8'));for(const row of rows){if(hierarchy.parents[row.route]){row.parent=hierarchy.parents[row.route];row.anchor=hierarchy.labels[row.route]||row.anchor;}}}
 const duplicateRoutes=rows.map(x=>x.route).filter((x,i,a)=>a.indexOf(x)!==i);
 if(duplicateRoutes.length)issues.push({type:'duplicate-ledger-routes',routes:duplicateRoutes});
 const config=fs.existsSync(path.join(root,'vercel.json'))?JSON.parse(fs.readFileSync(path.join(root,'vercel.json'),'utf8')):{};

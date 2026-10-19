@@ -10,6 +10,7 @@ for(const file of walk(root)){
  if(d.querySelector('form[data-netlify],form[netlify]'))issues.push({type:'preview-form-registration',file:rel});
  const ids=new Set();for(const e of d.querySelectorAll('[id]')){if(ids.has(e.id))issues.push({type:'duplicate-id',file:rel,id:e.id});ids.add(e.id);}
  for(const selector of ['.site-header','.site-footer','#contact']){const n=d.querySelectorAll(selector).length;if(n!==1)issues.push({type:'shared-component-count',file:rel,selector,count:n});}
+ const breadcrumbCount=d.querySelectorAll('main nav.ledger-breadcrumb').length;if(d.querySelector('main')&&breadcrumbCount!==(rel==='index.html'?0:1))issues.push({type:'breadcrumb-count',file:rel,count:breadcrumbCount});
  const csp=d.querySelector('meta[http-equiv="Content-Security-Policy"]')?.getAttribute('content')||'';
  if(!csp.includes("connect-src 'none'")||!csp.includes("form-action 'none'"))issues.push({type:'preview-network-policy',file:rel});
  for(const script of d.querySelectorAll('script')){

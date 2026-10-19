@@ -1,6 +1,6 @@
 {
   "passed": 11,
-  "pagesChecked": 200,
+  "pagesChecked": 226,
   "headerScope": "body.orchestration-page header.site-header.sm-header",
   "referenceStylesSha256": "86188ce5a704c04322d970e998136d170dbebf2c41cf0252e65708fe665ccbcd",
   "actualStylesSha256": "86188ce5a704c04322d970e998136d170dbebf2c41cf0252e65708fe665ccbcd",

@@ -1,0 +1,127 @@
+/* Layout adapters for the approved content hierarchy. The original Tiffany
+   stylesheet remains unchanged and supplies the brand typography and buttons. */
+body.hi-page{background:#fff;container-type:inline-size}
+.hi-main{max-width:1600px;margin:auto;background:#fff;color:#12202b;font:16px/1.7 Arial,Helvetica,sans-serif}
+.hi-main :is(p,li,summary){font-size:16px;line-height:1.7}
+.hi-main :is(h1,h2,h3){font-family:Georgia,'Times New Roman',serif;letter-spacing:-.025em;font-weight:400}
+.hi-main h1{font-size:clamp(38px,4.2vw,64px);line-height:1.06;margin:14px 0 22px}
+.hi-main h2{font-size:clamp(29px,2.5vw,40px);line-height:1.16}
+.hi-main h3{font-size:25px;line-height:1.2}
+.hi-main .eyebrow,.home .hi-home-section .eyebrow{font:600 12px/1.6 Arial,sans-serif;letter-spacing:.12em;color:#845022}
+.hi-main .button,.home .hi-home-section .button{font-size:15px;min-height:48px;padding:15px 24px}
+.hi-hero{display:grid;grid-template-columns:1.25fr 1fr;align-items:center;gap:clamp(28px,5vw,80px);padding:clamp(32px,4.5vw,70px) 6%;background:#faf9f6}
+.hi-hero .hi-intro{font-size:18px;line-height:1.7;max-width:62ch;color:#46514e}
+.hi-hero figure{margin:0;min-width:0}
+.hi-hero figure img{display:block;width:100%;height:clamp(260px,28vw,400px);object-fit:cover;border-radius:3px;box-shadow:0 12px 30px #12202b12}
+.hi-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:24px}
+.hi-trust{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:24px;color:#46514e}
+.hi-trust,.hi-main .hi-trust a{font-size:13px}
+.hi-trust a span{color:#845022;letter-spacing:1px}
+.hi-section{padding:40px 6%}
+.hi-section-heading{margin-bottom:22px}
+.hi-band{background:#faf9f6}
+.hi-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 48px;list-style:none;padding:0;margin:0;max-width:1100px}
+.hi-facts li{position:relative;padding:0 0 0 21px;color:#46514e}
+.hi-facts li::before{position:absolute;left:0;top:0;content:'—';color:#94723a}
+.hi-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:0;padding:0}
+.hi-steps li{border-top:1px solid #c3cebf;padding-top:16px}
+.hi-steps li span{display:block;font:26px/1.2 Georgia,serif;color:#845022;margin-bottom:12px}
+.hi-steps p{color:#46514e}
+.hi-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.hi-card{display:flex;flex-direction:column;min-width:0;text-decoration:none;background:#fff;border:1px solid #c3cebf;border-radius:3px;overflow:hidden;box-shadow:0 3px 20px #2131290c;transition:transform .18s,box-shadow .18s}
+.hi-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px #2131291a}
+.hi-card-copy{padding:26px;display:flex;flex-direction:column;flex:1;gap:14px}
+.hi-card-copy p{font:16px/1.7 Arial,sans-serif;color:#46514e;max-width:60ch}
+.hi-card-link{display:block;margin-top:auto;padding-top:4px;font:600 14px/1.6 Arial,sans-serif;text-decoration:underline;text-underline-offset:4px;color:#243a31}
+.hi-card-image{height:170px;overflow:hidden}
+.hi-card-image img{display:block;width:100%;height:100%;object-fit:cover}
+.hi-faq{max-width:900px}
+.hi-faq details{border-bottom:1px solid #c3cebf;overflow-anchor:none;padding:0}
+.hi-faq summary{cursor:pointer;min-height:56px;padding:14px 28px 14px 0;font-weight:600}
+.hi-faq details p{max-width:75ch;padding:0 0 22px;color:#46514e}
+.hi-reading{margin:0;padding:0;list-style:none;max-width:1000px}
+.hi-reading li{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #dce1d9;padding:0}
+.hi-main .hi-reading a{display:flex;align-items:center;min-height:48px;padding:10px 0;text-decoration:underline;text-underline-offset:4px;white-space:normal}
+.hi-reading li>span{align-self:center;flex-shrink:0}
+.hi-related{margin-top:24px;font-size:15px}
+.hi-related a{display:inline-flex;align-items:center;min-height:44px}
+.hi-cta{display:grid;grid-template-columns:1.3fr 1fr;gap:12px 32px;border-top:1px solid #c3cebf}
+.hi-cta .hi-actions{align-self:center;margin:0}
+.hi-cta p{margin-top:12px;color:#46514e}
+.hi-example{max-width:900px;border-left:2px solid #b9a16a;padding:4px 0 4px 24px;margin-top:32px}
+.hi-example p{margin-bottom:14px}
+.hi-guide-return,.hi-legacy-notice{padding:20px 6%;background:#faf9f6;border-bottom:1px solid #c3cebf;font:16px/1.7 Arial,sans-serif}
+.hi-guide-return p{font:16px/1.7 Arial,sans-serif}
+.hi-original-directory{padding:24px 6%}
+.hi-original-directory>summary{min-height:48px;cursor:pointer;font-weight:600}
+.hi-page .migration-links{max-width:1168px;margin:20px auto;padding:20px 24px}
+.hi-page .hi-legacy-links{margin-top:0}
+/* Clear homepage categories without adding a second visual system. */
+.home .home-hero .hero-copy{width:62%;padding-top:44px}
+.home .home-hero h1{font-size:clamp(42px,4.35cqw,70px);line-height:1.03;letter-spacing:-.035em}
+.home .home-hero .intro{font:18px/1.7 Arial,sans-serif;max-width:53ch;width:85%}
+.home .home-hero{min-height:580px}
+.home .hi-trust-section{padding:0;background:#faf9f6}
+.home .hi-home-reviews{padding-top:28px;padding-bottom:28px}
+.home .hi-home-reviews .review-marquee-heading h2{font-size:32px}
+.home .hi-home-section{padding:52px 5.5%;background:#fff}
+.home .hi-home-band{background:#f7f6f3}
+.home .hi-home-heading{margin-bottom:28px;max-width:800px}
+.home .hi-home-heading h2{font-size:clamp(32px,3.2cqw,48px);line-height:1.12;letter-spacing:-.025em;margin:10px 0 14px}
+.home .hi-home-heading>p:not(.eyebrow){font:17px/1.7 Arial,sans-serif;color:#46514e}
+.home .hi-home-audiences{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px}
+.home .hi-home-audiences .hi-card{grid-column:span 2}
+.home .hi-home-audiences .hi-card:nth-last-child(-n+2){grid-column:span 3}
+.home .hi-card h3{font:27px/1.18 Georgia,serif;letter-spacing:-.025em}
+.home .hi-card p{font:16px/1.7 Arial,sans-serif}
+.home .hi-home-more{margin-top:26px;font:600 15px/1.7 Arial,sans-serif}
+.home .hi-home-more>a:not(.button){display:inline-flex;align-items:center;min-height:44px}
+.home .hi-program-list{max-width:85ch;font:14px/1.9 Arial,sans-serif;color:#46514e;margin-top:14px}
+.home .hi-program-list a{display:inline-flex;align-items:center;min-height:44px}
+.home .team-section{padding-top:52px;padding-bottom:40px}
+.home .team-section .expertise-copy>p:not(.eyebrow){font:17px/1.7 Arial,sans-serif}
+.home .hi-compact-proof{grid-column:1/-1;width:100%;padding:0;margin-top:32px}
+.home .hi-compact-proof .proof-grid{gap:22px}
+.home .hi-compact-proof .scenario-card{padding:26px;background:#fff;color:#12202b}
+.home .hi-compact-proof .scenario-card h3{font:28px/1.2 Georgia,serif;margin-bottom:16px}
+.home .hi-compact-proof .scenario-card p{font:16px/1.7 Arial,sans-serif;margin-bottom:16px;color:#46514e}
+.home .hi-compact-proof .scenario-card .case-status{font-size:13px;margin:8px 0 18px}
+.home .hi-compact-proof .scenario-card .editorial-number{font:600 12px/1.5 Arial,sans-serif;color:#845022}
+.home .hi-compact-proof .text-link{font-size:14px;color:#243a31}
+.home .hi-contact-tools{display:flex;align-items:center;flex-wrap:wrap;gap:12px 26px;border-top:1px solid #c3cebf;padding-top:24px;margin-top:30px}
+.home .hi-contact-tools .eyebrow{width:100%}
+.home .hi-contact-tools a{font:15px/1.7 Arial,sans-serif;min-height:44px;display:inline-flex;align-items:center}
+/* Programme mega-menu retains the tested original click and keyboard hooks. */
+body.orchestration-page header.sm-header .hi-program-menu.open>.nav-dropdown{display:grid!important;grid-template-columns:1fr 1fr;gap:14px 24px;width:560px!important;padding:24px!important;max-height:calc(100dvh - 110px)!important;overflow-y:auto!important}
+body.orchestration-page header.sm-header .nav-dropdown .hi-nav-group-title{display:block;font:600 11px/1.5 Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#845022;margin-bottom:5px}
+body.orchestration-page header.sm-header .nav-dropdown .hi-nav-group>ul{list-style:none;margin:0;padding:0}
+body.orchestration-page header.sm-header .nav-dropdown .hi-nav-group li{margin:0;padding:0}
+body.orchestration-page header.sm-header .nav-dropdown .hi-nav-group a{white-space:normal!important;min-height:40px!important;padding:7px 0!important;font-size:14px!important}
+@media(min-width:900px) and (max-width:1200px){body.orchestration-page header.site-header.sm-header>.container{padding-inline:24px!important}body.orchestration-page header.site-header.sm-header nav{gap:18px!important}body.orchestration-page header.site-header.sm-header .brand.nav-brand{font-size:21px!important}body.orchestration-page header.site-header.sm-header .brand small{font-size:9px!important}}
+@media(max-width:899px){
+ .hi-hero{grid-template-columns:1fr;gap:28px;padding:32px 24px}
+ .hi-hero figure img{height:200px}
+ .hi-main h1{font-size:40px}
+ .hi-main .hi-hero .hi-intro{font-size:17px}
+ .hi-section{padding:32px 24px}
+ .hi-facts,.hi-steps,.hi-card-grid,.hi-cta{grid-template-columns:1fr}
+ .hi-facts{gap:14px}
+ .hi-steps{gap:22px}
+ .hi-cta .hi-actions{margin-top:12px}
+ .hi-hero .hi-actions{align-items:stretch}
+ .hi-actions .button{flex:1 1 220px}
+ .hi-main .hi-trust{gap:8px}
+ .hi-card-copy{padding:23px}
+ .home .home-hero .hero-copy{width:100%;padding:32px 24px 24px}
+ .home .home-hero .intro{width:100%;font-size:17px;max-width:42ch}
+ .home .home-hero h1{font-size:40px;line-height:1.06}
+ .home .home-hero{min-height:0;padding-bottom:200px}
+ .home .hi-home-section{padding:36px 24px}
+ .home .hi-home-audiences{grid-template-columns:1fr}
+ .home .hi-home-audiences .hi-card,.home .hi-home-audiences .hi-card:nth-last-child(-n+2){grid-column:auto}
+ .home .hi-card h3{font-size:25px}
+ .home .hi-home-reviews .review-marquee-heading h2{font-size:28px}
+ .home .hi-compact-proof .proof-grid{grid-template-columns:1fr}
+ body.orchestration-page header.sm-header .hi-program-menu.open>.nav-dropdown{grid-template-columns:1fr;width:auto!important;padding:12px 0 12px 16px!important;max-height:none!important}
+}
+@media(prefers-reduced-motion:reduce){.hi-card{transition:none}.hi-card:hover{transform:none}}

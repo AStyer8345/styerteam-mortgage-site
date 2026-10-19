@@ -11,8 +11,8 @@
     {
       "route": "/self-employed-mortgage-austin.html",
       "role": "Hub",
-      "parent": "/",
-      "anchor": "Self-employed mortgage options",
+      "parent": "/who-we-serve.html",
+      "anchor": "Self-Employed & Business Owners",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/self-employed-mortgage-austin.html",
       "canonical": "https://styermortgage.com/self-employed-mortgage-austin.html"
@@ -21,7 +21,7 @@
       "route": "/mortgage-for-business-owners-austin.html",
       "role": "Spoke",
       "parent": "/self-employed-mortgage-austin.html",
-      "anchor": "Mortgage planning for business owners",
+      "anchor": "Mortgages for Business Owners",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/mortgage-for-business-owners-austin.html",
       "canonical": "https://styermortgage.com/mortgage-for-business-owners-austin.html"
@@ -29,8 +29,8 @@
     {
       "route": "/bank-statement-loans.html",
       "role": "Spoke",
-      "parent": "/self-employed-mortgage-austin.html",
-      "anchor": "Bank statement loans in Texas",
+      "parent": "/products.html",
+      "anchor": "Bank Statement Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/bank-statement-loans.html",
       "canonical": "https://styermortgage.com/bank-statement-loans.html"
@@ -38,8 +38,8 @@
     {
       "route": "/p-and-l-mortgage-texas.html",
       "role": "Spoke",
-      "parent": "/self-employed-mortgage-austin.html",
-      "anchor": "P&L mortgage loans in Texas",
+      "parent": "/products.html",
+      "anchor": "P&L Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/p-and-l-mortgage-texas.html",
       "canonical": "https://styermortgage.com/p-and-l-mortgage-texas.html"
@@ -47,8 +47,8 @@
     {
       "route": "/1099-only-mortgage-texas.html",
       "role": "Spoke",
-      "parent": "/self-employed-mortgage-austin.html",
-      "anchor": "1099-only mortgage loans in Texas",
+      "parent": "/products.html",
+      "anchor": "1099 Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/1099-only-mortgage-texas.html",
       "canonical": "https://styermortgage.com/1099-only-mortgage-texas.html"
@@ -101,8 +101,8 @@
     {
       "route": "/high-net-worth-mortgage.html",
       "role": "Hub",
-      "parent": "/",
-      "anchor": "Mortgages for asset-rich borrowers",
+      "parent": "/who-we-serve.html",
+      "anchor": "High-Net-Worth & Asset-Rich Borrowers",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/high-net-worth-mortgage.html",
       "canonical": "https://styermortgage.com/high-net-worth-mortgage.html"
@@ -110,8 +110,8 @@
     {
       "route": "/asset-depletion-mortgage-texas.html",
       "role": "Spoke",
-      "parent": "/high-net-worth-mortgage.html",
-      "anchor": "Asset depletion mortgages in Texas",
+      "parent": "/products.html",
+      "anchor": "Asset Depletion Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/asset-depletion-mortgage-texas.html",
       "canonical": "https://styermortgage.com/asset-depletion-mortgage-texas.html"
@@ -119,8 +119,8 @@
     {
       "route": "/reverse-mortgage-texas.html",
       "role": "Spoke",
-      "parent": "/high-net-worth-mortgage.html",
-      "anchor": "Reverse mortgages in Texas",
+      "parent": "/products.html",
+      "anchor": "Reverse Mortgages",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/reverse-mortgage-texas.html",
       "canonical": "https://styermortgage.com/reverse-mortgage-texas.html"
@@ -128,8 +128,8 @@
     {
       "route": "/investor-loans.html",
       "role": "Hub",
-      "parent": "/",
-      "anchor": "Investment property financing",
+      "parent": "/who-we-serve.html",
+      "anchor": "Real Estate Investors",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/investor-loans.html",
       "canonical": "https://styermortgage.com/investor-loans.html"
@@ -137,8 +137,8 @@
     {
       "route": "/dscr-loans-texas.html",
       "role": "Spoke",
-      "parent": "/investor-loans.html",
-      "anchor": "DSCR loans in Texas",
+      "parent": "/products.html",
+      "anchor": "DSCR Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/dscr-loans-texas.html",
       "canonical": "https://styermortgage.com/dscr-loans-texas.html"
@@ -173,8 +173,8 @@
     {
       "route": "/dscr-cash-out-refinance-texas.html",
       "role": "Spoke",
-      "parent": "/investor-loans.html",
-      "anchor": "DSCR cash-out refinance in Texas",
+      "parent": "/products.html",
+      "anchor": "DSCR Cash-Out Refinance",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/dscr-cash-out-refinance-texas.html",
       "canonical": "https://styermortgage.com/dscr-cash-out-refinance-texas.html"
@@ -182,8 +182,8 @@
     {
       "route": "/loans/investment.html",
       "role": "Spoke",
-      "parent": "/investor-loans.html",
-      "anchor": "Investment property loan requirements",
+      "parent": "/products.html",
+      "anchor": "Conventional Investment Property Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/investment.html",
       "canonical": "https://styermortgage.com/loans/investment.html"
@@ -245,8 +245,8 @@
     {
       "route": "/first-time-home-buyer.html",
       "role": "Hub",
-      "parent": "/",
-      "anchor": "Buying a home",
+      "parent": "/who-we-serve.html",
+      "anchor": "First-Time Homebuyers",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/first-time-home-buyer.html",
       "canonical": "https://styermortgage.com/first-time-home-buyer.html"
@@ -254,8 +254,8 @@
     {
       "route": "/loans/refinance.html",
       "role": "Hub",
-      "parent": "/",
-      "anchor": "Refinancing and cash-out options",
+      "parent": "/products.html",
+      "anchor": "Mortgage Refinance",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/refinance.html",
       "canonical": "https://styermortgage.com/loans/refinance.html"
@@ -263,8 +263,8 @@
     {
       "route": "/loans/conventional.html",
       "role": "Spoke",
-      "parent": "/first-time-home-buyer.html",
-      "anchor": "Conventional home loans",
+      "parent": "/products.html",
+      "anchor": "Conventional Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/conventional.html",
       "canonical": "https://styermortgage.com/loans/conventional.html"
@@ -272,8 +272,8 @@
     {
       "route": "/loans/jumbo.html",
       "role": "Spoke",
-      "parent": "/first-time-home-buyer.html",
-      "anchor": "Jumbo mortgage options",
+      "parent": "/products.html",
+      "anchor": "Jumbo Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/jumbo.html",
       "canonical": "https://styermortgage.com/loans/jumbo.html"
@@ -281,8 +281,8 @@
     {
       "route": "/loans/fha.html",
       "role": "Spoke",
-      "parent": "/first-time-home-buyer.html",
-      "anchor": "FHA loans in Austin",
+      "parent": "/products.html",
+      "anchor": "FHA Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/fha.html",
       "canonical": "https://styermortgage.com/loans/fha.html"
@@ -290,8 +290,8 @@
     {
       "route": "/loans/va.html",
       "role": "Spoke",
-      "parent": "/first-time-home-buyer.html",
-      "anchor": "VA home loans in Texas",
+      "parent": "/products.html",
+      "anchor": "VA Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/va.html",
       "canonical": "https://styermortgage.com/loans/va.html"
@@ -299,8 +299,8 @@
     {
       "route": "/loans/usda.html",
       "role": "Spoke",
-      "parent": "/first-time-home-buyer.html",
-      "anchor": "USDA home loans near Austin",
+      "parent": "/resources/full-directory.html",
+      "anchor": "USDA loans — legacy educational page",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/usda.html",
       "canonical": "https://styermortgage.com/loans/usda.html"
@@ -308,8 +308,8 @@
     {
       "route": "/loans/construction.html",
       "role": "Hub",
-      "parent": "/first-time-home-buyer.html",
-      "anchor": "Construction loan options",
+      "parent": "/resources/full-directory.html",
+      "anchor": "Construction loans — legacy educational page",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/loans/construction.html",
       "canonical": "https://styermortgage.com/loans/construction.html"
@@ -317,8 +317,8 @@
     {
       "route": "/one-time-close-construction-loan-texas.html",
       "role": "Spoke",
-      "parent": "/loans/construction.html",
-      "anchor": "One-time-close construction loans in Texas",
+      "parent": "/resources/full-directory.html",
+      "anchor": "One-time-close construction — legacy educational page",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/one-time-close-construction-loan-texas.html",
       "canonical": "https://styermortgage.com/one-time-close-construction-loan-texas.html"
@@ -335,8 +335,8 @@
     {
       "route": "/buy-before-you-sell-austin.html",
       "role": "Spoke",
-      "parent": "/first-time-home-buyer.html",
-      "anchor": "Buy before you sell in Austin",
+      "parent": "/products.html",
+      "anchor": "Buy Before You Sell",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/buy-before-you-sell-austin.html",
       "canonical": "https://styermortgage.com/buy-before-you-sell-austin.html"
@@ -344,8 +344,8 @@
     {
       "route": "/home-equity-loans-texas.html",
       "role": "Spoke",
-      "parent": "/loans/refinance.html",
-      "anchor": "Texas home equity loans and HELOCs",
+      "parent": "/products.html",
+      "anchor": "Home Equity Loans",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/home-equity-loans-texas.html",
       "canonical": "https://styermortgage.com/home-equity-loans-texas.html"
@@ -354,7 +354,7 @@
       "route": "/non-qm-loans.html",
       "role": "Hub",
       "parent": "/products.html",
-      "anchor": "Non-QM mortgage options",
+      "anchor": "Alternative Income & Specialty Options",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/non-qm-loans.html",
       "canonical": "https://styermortgage.com/non-qm-loans.html"
@@ -669,7 +669,7 @@
       "route": "/products.html",
       "role": "Hub",
       "parent": "/",
-      "anchor": "All mortgage options",
+      "anchor": "Loan Programs",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/products.html",
       "canonical": "https://styermortgage.com/products.html"
@@ -678,7 +678,7 @@
       "route": "/resources/",
       "role": "Hub",
       "parent": "/",
-      "anchor": "Mortgage resources and guides",
+      "anchor": "Resources",
       "action": "Streamline Overview & Retain Full Depth",
       "file": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site/resources/index.html",
       "canonical": "https://styermortgage.com/resources/"

@@ -3,9 +3,9 @@
   "checks": [
     "Review clones are hidden from assistive technology and excluded from keyboard order",
     "Pause and play update animation state and accessible label",
-    "Exactly six homepage sections and four proof cards; no construction proof card",
+    "Six homepage sections; reviews second, five borrower paths and six featured programs",
     "Both inline and shared inquiries have only four visible fields",
-    "Exact hero, three situation paths, four structured examples, disclosed jumbo illustration, and corrected 1099 obstacle"
+    "Explicit broker hero, two funded examples, corrected 1099 obstacle, USDA and construction excluded from promotion"
   ],
   "limitations": "DOM controller checks; animation and native disclosure layout require browser verification."
 }
