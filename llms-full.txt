@@ -1,0 +1,118 @@
+# Adam Styer Mortgage — Extended Topic Summaries
+
+> Structured summaries of the main educational topics on styermortgage.com, for readers and AI assistants that want more context than the link index in [llms.txt](https://styermortgage.com/llms.txt). Each section summarizes what the linked pages explain and points to the canonical page for full detail. This file does not reproduce the website, and it does not describe current program availability, pricing, or any individual's eligibility.
+
+## How to use this file
+
+- Content is general education, not individualized mortgage, tax, legal, or financial advice.
+- Program names describe documentation methods offered by various lenders. Requirements (credit, down payment, reserves, documentation periods, property types, pricing) vary by lender and change over time. Another lender's published terms do not establish what is available through Adam Styer.
+- Eligibility is determined only through an application, document verification, and underwriting.
+- When the linked page and this summary differ, the linked page is the authoritative source.
+
+## Who this site is from
+
+Adam Styer is a Texas-licensed mortgage loan originator and mortgage broker (NMLS #513013) with Kyber Mortgage Corporation dba HyperSmart Home Loans (company NMLS #2653540). The office is at 9050 N. Capital of Texas Hwy, Suite 390, Austin, Texas 78759. Phone and text: (512) 956-6010. Email: adam@thestyerteam.com. As a broker, Adam can compare options from multiple wholesale lenders rather than offering only one lender's products. The site serves Texas mortgage scenarios.
+
+Canonical pages: [About](https://styermortgage.com/about.html) · [Contact](https://styermortgage.com/contact.html) · [Texas complaint notice](https://styermortgage.com/texas-complaint-notice.html) · [Privacy](https://styermortgage.com/privacy.html) · [Terms](https://styermortgage.com/terms.html)
+
+## Self-employed and business-owner income
+
+Taxable income on a return can differ from business cash flow because of deductions, depreciation, ownership structure, and other factors. Conventional tax-return analysis starts with reported income and applies required adjustments: some deductions, such as depreciation, may be added back, while non-recurring income may be removed. Not every deduction can be added back, and an alternative-documentation calculation does not automatically produce a better result; supported income, cost, cash needed, and full loan terms should be compared.
+
+Common documentation paths include personal and business tax returns, K-1 income, W-2 wages from the borrower's own business, bank statements, 1099s, a profit-and-loss statement, or eligible assets. Business age and the number of statements or returns requested are separate questions. Fannie Mae can consider certain borrowers with less than two years of self-employment under specific conditions; this is not a general one-year rule.
+
+- [Self-employed mortgages](https://styermortgage.com/self-employed-mortgage-austin.html) — primary hub for comparing documentation paths.
+- [Mortgage strategies for business owners](https://styermortgage.com/mortgage-for-business-owners-austin.html) — income documentation, liquidity, and property goals.
+- [How underwriters calculate self-employed income](https://styermortgage.com/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html) — add-backs, averaging, and history.
+- [Business-owner preparation checklist](https://styermortgage.com/resources/mortgage-options-for-business-owners.html)
+
+### Bank statement loans
+
+Alternative-documentation mortgages that may use eligible deposits as the primary evidence for a self-employment income calculation, typically over 12 or 24 months of personal or business statements depending on the program. The analysis identifies recurring business income and excludes duplicate transfers and non-income deposits such as borrowed funds. Business expenses, account use, and ownership share affect the amount used; gross deposits are not automatically qualifying income. A 12-month statement period does not mean a 12-month-old business is accepted. Other business, asset, credit, and property records can still be required.
+
+- [Bank statement loans](https://styermortgage.com/bank-statement-loans.html)
+- [How lenders review bank statements](https://styermortgage.com/blog/2026-06-30-bank-statement-loans-texas.html)
+
+### P&L, 1099, and K-1 documentation
+
+- **P&L-only:** Some programs may qualify sole proprietors, LLC, and S-corp owners using a CPA-prepared profit-and-loss statement. [P&L-only mortgages](https://styermortgage.com/p-and-l-mortgage-texas.html)
+- **1099-only:** Some programs for independent contractors use one or two years of 1099s instead of full tax returns, while still requiring items such as payer or industry history and year-to-date income evidence. [1099-only mortgages](https://styermortgage.com/1099-only-mortgage-texas.html)
+- **K-1:** K-1 is an income document, not automatically a separate loan category. Ownership percentage, distributions, and business liquidity affect how it is used. [K-1 income mortgages](https://styermortgage.com/k1-income-mortgage-austin.html)
+
+## Non-QM loans
+
+Non-QM ("non-qualified mortgage") loans are alternative-documentation or specialty structures outside standard agency guidelines, such as bank statement, 1099, P&L, asset-depletion, and DSCR loans. They are not automatic approvals or ways around underwriting; each has its own credit, property, asset, reserve, documentation, and pricing requirements, and costs can differ from conventional financing. The site recommends evaluating the applicable conventional or agency calculation first and identifying why it does not support the goal before comparing alternatives.
+
+- [Non-QM loans in Texas](https://styermortgage.com/non-qm-loans.html)
+- [What is a non-QM loan?](https://styermortgage.com/blog/2026-09-04-what-is-a-non-qm-loan-texas.html)
+
+## DSCR and investment-property financing
+
+A debt-service-coverage-ratio (DSCR) loan is an investment-property mortgage that generally evaluates the property's rental income relative to its housing expense, rather than qualifying primarily from the borrower's personal employment income. The lender determines which rent evidence (lease, market-rent estimate, short-term-rental data) and expenses (taxes, insurance, association dues, proposed payment) apply. Some programs permit ownership through an eligible business entity. Minimum ratios, credit, down payment, reserves, short-term-rental treatment, prepayment terms, and pricing differ by lender. DSCR is for investment property, not the borrower's own home.
+
+- [Investor loans](https://styermortgage.com/investor-loans.html) — investor hub.
+- [DSCR loans in Austin](https://styermortgage.com/dscr-loan-austin-tx.html) · [DSCR loans in Texas](https://styermortgage.com/dscr-loans-texas.html)
+- [DSCR cash-out refinance](https://styermortgage.com/dscr-cash-out-refinance-texas.html) — includes an editable estimate tool.
+- [DSCR vs. conventional investment loans](https://styermortgage.com/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html)
+- [DSCR calculator](https://styermortgage.com/dscr-calculator.html)
+
+## Asset depletion and high-net-worth borrowers
+
+An asset-depletion (or asset-utilization) method may convert a portion of eligible assets into qualifying monthly income. It may suit retirees, investors, business owners, or others whose assets are stronger than their documented recurring income. Programs differ in which assets count and how they treat liquidity, market value, penalties, obligations, and reserves; funds for down payment and closing are separated from the qualifying pool. The calculation is an underwriting method and does not necessarily require withdrawing assets on that schedule. Fannie Mae's employment-related asset method divides net documented assets by the loan's amortization term (360 months for a 30-year loan); other programs use different methods, so a shorter divisor alone is not a fair comparison. A securities-backed line of credit that pledges investments is a separate arrangement.
+
+Other high-net-worth topics on the site include eligible vested RSU income (which may be considered under conventional guidelines, not only non-QM), trust vesting, retirement distributions, and comparing private-bank mortgage offers.
+
+- [High-net-worth mortgages](https://styermortgage.com/high-net-worth-mortgage.html) — hub.
+- [Asset depletion mortgages](https://styermortgage.com/asset-depletion-mortgage-texas.html)
+- [Asset depletion calculator](https://styermortgage.com/asset-depletion-calculator.html) — illustrative only; defaults are not lender rules, and results are not verified qualifying income.
+
+## Conventional, government, and jumbo loans
+
+- **Conventional:** Not insured by FHA or backed by VA; conforming loans generally follow Fannie Mae or Freddie Mac rules plus lender requirements. Some purchase programs allow down payments as low as 3% depending on program and borrower; 20% is not universally required. Mortgage insurance generally applies above the applicable loan-to-value threshold. No single credit score ensures approval. [Conventional loans](https://styermortgage.com/loans/conventional.html)
+- **FHA:** Government-insured, generally for a principal residence; FHA baseline guidelines associate a 580 decision score with the 3.5% minimum investment and 500–579 with 10%, though lenders may set higher minimums. Mortgage insurance applies. [FHA loans](https://styermortgage.com/loans/fha.html)
+- **VA:** For eligible veterans, service members, and certain surviving spouses with a Certificate of Eligibility. VA sets no universal minimum score; lenders may. A down payment is generally not required with sufficient entitlement; no monthly mortgage insurance, though a funding fee may apply. [VA loans](https://styermortgage.com/loans/va.html)
+- **Jumbo:** Loans above the applicable conforming limit; not one uniform program. Files often receive closer review of assets, reserves, and income stability. [Jumbo loans](https://styermortgage.com/loans/jumbo.html)
+
+## Buying a home
+
+Topics include pre-approval, affordability and debt-to-income, offers, closing costs, down payment assistance, and comparing loan offers. Down payment assistance can be a grant, forgivable or deferred loan, or repayable second lien, and may carry income, occupancy, price, or education conditions.
+
+- [Buying a home / first-time buyers](https://styermortgage.com/first-time-home-buyer.html) — buyer hub.
+- [First-time buyer guide](https://styermortgage.com/resources/first-time-buyer-guide/)
+- [How to buy a house in Austin](https://styermortgage.com/how-to-buy-a-house-in-austin-tx.html) · [Mortgage pre-approval](https://styermortgage.com/mortgage-pre-approval-austin.html) · [How much house can I afford?](https://styermortgage.com/how-much-house-can-i-afford-austin.html)
+- [Texas closing costs](https://styermortgage.com/closing-costs-texas.html) · [Austin down payment assistance](https://styermortgage.com/austin-down-payment-assistance.html)
+- [How to read a Loan Estimate](https://styermortgage.com/blog/how-to-read-a-loan-estimate.html) · [Mortgage offer review](https://styermortgage.com/rate-check.html)
+
+## Refinancing, home equity, bridge, and construction
+
+- **Refinance:** Rate-and-term, cash-out, and government streamline options; break-even compares savings against costs. [Refinancing](https://styermortgage.com/loans/refinance.html) · [Refinance break-even calculator](https://styermortgage.com/calculator-refinance-breakeven.html)
+- **Home equity:** Second-lien options that keep an existing first mortgage. Texas home-equity lending has specific rules on combined loan-to-value, draws, repayment, and fees. [Texas home equity loans](https://styermortgage.com/home-equity-loans-texas.html)
+- **Buy before you sell:** A bridge loan is short-term financing for a timing gap between transactions; it adds debt, liens, interest, fees, and deadlines, and carries risk if the existing home sells slowly. A guaranteed backup contract is a different structure. [Buy before you sell](https://styermortgage.com/buy-before-you-sell-austin.html)
+- **Construction:** Staged-draw financing with one-time- or two-time-close structures; payment, lock, draw, and conversion terms vary by program. [Construction loans](https://styermortgage.com/loans/construction.html) · [One-time-close construction](https://styermortgage.com/one-time-close-construction-loan-texas.html)
+
+## Reverse mortgages (educational)
+
+A reverse mortgage lets an eligible homeowner borrow against home equity; interest and charges accrue, the balance generally grows, and the homeowner remains responsible for taxes, insurance, maintenance, and occupancy. FHA-insured HECM borrowers are generally 62 or older and must complete counseling. The site encourages comparison with forward mortgages, asset depletion, documented retirement income, home-equity loans, refinancing, or downsizing. These pages are educational and do not represent that Adam originates reverse mortgages.
+
+- [Reverse mortgage guide](https://styermortgage.com/reverse-mortgage-texas.html) · [For financial advisors](https://styermortgage.com/reverse-mortgage-financial-advisors-texas.html)
+
+## Scenarios and case studies
+
+The scenario library presents anonymized borrower situations: the original constraint, the structure reviewed, and limitations. Borrower details are anonymized for privacy, and outcomes depend on each file and full underwriting.
+
+- [Mortgage scenarios](https://styermortgage.com/scenarios.html) — library hub.
+- [Case studies for advisors and CPAs](https://styermortgage.com/mortgage-case-studies-for-advisors-cpas.html)
+- Individual scenarios: [oil and gas royalty income and asset depletion](https://styermortgage.com/scenarios/oil-gas-royalty-asset-depletion.html) · [1099 and bank-statement cash-out refinance](https://styermortgage.com/scenarios/self-employed-refinance-deposit-review.html) · [cash-out on two rentals](https://styermortgage.com/scenarios/two-rental-properties-cash-out-review.html) · [buying the home you rent with gift funds](https://styermortgage.com/scenarios/buying-current-rental-gift-funds.html) · [building on owned land before selling](https://styermortgage.com/scenarios/build-on-owned-land-before-selling.html) · [assets with limited income history](https://styermortgage.com/scenarios/assets-limited-income-history.html)
+
+## Calculators
+
+All calculators produce illustrative estimates from user inputs; they do not determine qualification, pricing, or approval.
+
+- [Calculator hub](https://styermortgage.com/calculators.html)
+- [Payment](https://styermortgage.com/calculator-payment.html) · [Affordability](https://styermortgage.com/calculator-affordability.html) · [Refinance break-even](https://styermortgage.com/calculator-refinance-breakeven.html) · [Rate buydown](https://styermortgage.com/rate-buydown-calculator.html) · [Wraparound mortgage](https://styermortgage.com/wrap-mortgage-calculator.html) · [DSCR](https://styermortgage.com/dscr-calculator.html) · [Asset depletion](https://styermortgage.com/asset-depletion-calculator.html)
+
+## Professional partners
+
+Resources for financial advisors, CPAs, and real estate agents explain how tax presentation, assets, and documentation choices can affect client mortgage options. They do not replace tax, legal, estate-planning, or investment advice.
+
+- [Professional referral hub](https://styermortgage.com/referral-partners-self-employed-clients.html) · [Financial advisors](https://styermortgage.com/mortgage-strategies-financial-advisors-texas.html) · [CPAs](https://styermortgage.com/mortgage-resources-for-cpas-texas.html) · [Realtors](https://styermortgage.com/realtors.html)
