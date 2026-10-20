@@ -794,104 +794,146 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 }
 
 /* ==========================================================================
-   SECTION 3: WHO WE SERVE & CAPABILITIES — Editorial Index & Ruled Matrix
+   SECTION 3: WHO WE SERVE & CAPABILITIES — Architectural Contrast Cards
    ========================================================================== */
 .pwe-serve {
-  background-color: var(--pwe-paper) !important;
-  padding: clamp(72px, 9vw, 128px) 0 !important;
+  background-color: #EAE4D7 !important;
+  background-image: radial-gradient(circle at 15% 0%, rgba(154, 119, 64, 0.10), transparent 55%) !important;
+  padding: clamp(64px, 7.5vw, 104px) 0 !important;
   border-bottom: 1px solid var(--pwe-rule);
 }
 
 .pwe-serve-header {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 48px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
   align-items: end;
-  margin-bottom: clamp(48px, 6vw, 72px);
+  margin-bottom: clamp(36px, 4.5vw, 52px);
 }
 
 .pwe-serve-header p {
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 17px;
+  line-height: 1.55;
   color: var(--pwe-slate);
   margin: 0;
 }
 
-/* 4-Audience Editorial Index */
+/* 4-Audience Dark Architectural Cards (No Wall of White) */
 .pwe-audience-index {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 0 !important;
-  border-top: 2px solid var(--pwe-ink);
-  border-bottom: 1px solid var(--pwe-rule);
+  gap: 18px !important;
+  border: 0 !important;
 }
 
 .pwe-audience-col {
-  padding: 36px 28px 36px 0;
-  border-right: 1px solid var(--pwe-rule);
+  background: linear-gradient(165deg, #102131 0%, #0A141D 100%) !important;
+  border: 1px solid rgba(245, 196, 67, 0.22) !important;
+  border-top: 3px solid #F5C443 !important;
+  border-radius: 4px;
+  padding: 26px 24px 22px !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 28px;
+  gap: 20px;
+  box-shadow: 0 18px 38px rgba(11, 21, 29, 0.16);
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
 }
 
 .pwe-audience-col:not(:first-child) {
-  padding-left: 28px;
+  padding-left: 24px !important;
 }
 
 .pwe-audience-col:last-child {
-  border-right: 0;
-  padding-right: 0;
+  padding-right: 24px !important;
+}
+
+.pwe-audience-col:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 196, 67, 0.65) !important;
+  box-shadow: 0 24px 48px rgba(11, 21, 29, 0.26);
+}
+
+.pwe-audience-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .pwe-audience-num {
   font-family: var(--pwe-sans);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--pwe-brass);
-  display: block;
-  margin-bottom: 16px;
+  color: #F5C443;
+  display: inline-block;
+  margin: 0;
 }
 
 .pwe-audience-col .mockup-category-icon {
-  display: none !important;
+  display: block !important;
+  width: 30px;
+  height: 30px;
+  color: #F5C443;
+  opacity: 0.9;
+  flex-shrink: 0;
 }
 
 .pwe-audience-col h3 {
   font-family: var(--pwe-serif) !important;
-  font-size: 25px !important;
+  font-size: 24px !important;
   font-weight: 400 !important;
-  line-height: 1.2 !important;
+  line-height: 1.18 !important;
   letter-spacing: -0.015em !important;
-  color: var(--pwe-ink) !important;
-  margin: 0 0 12px !important;
+  color: var(--pwe-alabaster) !important;
+  margin: 0 0 10px !important;
 }
 
 .pwe-audience-col p {
-  font-size: 15.5px !important;
-  line-height: 1.6 !important;
-  color: var(--pwe-slate) !important;
-  margin: 0 !important;
+  font-size: 14.5px !important;
+  line-height: 1.5 !important;
+  color: rgba(246, 244, 239, 0.80) !important;
+  margin: 0 0 16px !important;
+}
+
+.pwe-audience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pwe-audience-tags span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #F5C443;
+  background: rgba(245, 196, 67, 0.11);
+  border: 1px solid rgba(245, 196, 67, 0.28);
+  padding: 4px 9px;
+  border-radius: 2px;
 }
 
 .pwe-audience-col .audience-option-link {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--pwe-ink);
+  color: #F5C443 !important;
   text-decoration: none !important;
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
   gap: 8px;
-  padding-top: 12px;
-  border-top: 1px solid var(--pwe-rule);
+  padding-top: 14px;
+  border-top: 1px solid rgba(246, 244, 239, 0.14);
 }
 
 .pwe-audience-col .audience-option-link:hover {
-  color: var(--pwe-brass);
+  color: #FFFFFF !important;
 }
 
 /* Capabilities Matrix & Pricing Architecture */
@@ -1807,20 +1849,6 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
-  body.private-wealth-editorial .pwe-audience-col:nth-child(2) {
-    border-right: 0 !important;
-    padding-right: 0 !important;
-  }
-
-  body.private-wealth-editorial .pwe-audience-col:nth-child(3) {
-    padding-left: 0 !important;
-    border-top: 1px solid var(--pwe-rule) !important;
-  }
-
-  body.private-wealth-editorial .pwe-audience-col:nth-child(4) {
-    border-top: 1px solid var(--pwe-rule) !important;
-  }
-
   body.private-wealth-editorial .pwe-mandate-ledger,
   body.private-wealth-editorial .pwe-reviews .testimonial-marquee-track,
   body.private-wealth-editorial .pwe-briefings .grid-3 {
@@ -1891,9 +1919,7 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
 
   body.private-wealth-editorial .pwe-audience-col,
   body.private-wealth-editorial .pwe-audience-col:not(:first-child) {
-    padding: 28px 0 !important;
-    border-right: 0 !important;
-    border-bottom: 1px solid var(--pwe-rule) !important;
+    padding: 24px 20px !important;
   }
 
   body.private-wealth-editorial .pwe-cap-row {
