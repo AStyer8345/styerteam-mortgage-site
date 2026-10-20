@@ -11,6 +11,7 @@ function harness() {
     requestIdleCallback: fn => idle.push(fn),
     addEventListener: (event, fn) => { listeners[event] = fn; } };
   vm.runInNewContext(code, { window, document: {
+    addEventListener: (event, fn) => { listeners[event] = fn; },
     getElementsByTagName: () => [{ parentNode: { insertBefore: node => scripts.push(node) } }],
     createElement: () => ({})
   }, requestAnimationFrame: fn => frames.push(fn),
@@ -20,6 +21,8 @@ function harness() {
 test('GTM yields for paint, keeps queued conversions and loads only once', () => {
   const h = harness();
   assert.equal(h.scripts.length, 0);
+  assert.equal(h.frames.length, 0);
+  h.listeners.DOMContentLoaded();
   h.frames.shift()();
   assert.equal(h.idle.length, 0);
   h.frames.shift()();
