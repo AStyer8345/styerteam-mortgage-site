@@ -30,7 +30,9 @@
   // A capped paragraph inside centered copy is re-centered here, since CSS
   // cannot see computed text-align.
   try {
-    var main = d.querySelector('main');
+    // The premium homepage owns paragraph alignment in its CSS and has no
+    // centered paragraphs to repair. Avoid a full-page style read there.
+    var main = b.classList.contains('premium-homepage') ? null : d.querySelector('main');
     // Finish style reads before any class writes to avoid repeated layout flushes.
     if (main) Array.prototype.filter.call(main.querySelectorAll('p'), function (p) {
       return getComputedStyle(p).textAlign === 'center';
