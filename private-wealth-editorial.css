@@ -426,16 +426,21 @@ body.private-wealth-editorial > header .nav-dropdown li a:hover {
 }
 
 /* ==========================================================================
-   SECTION 1: HERO — Architectural Private Wealth Opening (Obsidian)
+   SECTION 1: HERO — Full-Bleed Austin Skyline + Private Wealth Opening
    ========================================================================== */
 body.private-wealth-editorial main .hero.pwe-hero,
 .pwe-hero {
   position: relative;
-  background: radial-gradient(circle at 78% 22%, rgba(198, 164, 108, 0.14), transparent 46%), linear-gradient(180deg, #0B151D 0%, #101E2B 100%) !important;
   background-color: var(--pwe-obsidian) !important;
-  background-image: radial-gradient(circle at 78% 22%, rgba(198, 164, 108, 0.14), transparent 46%), linear-gradient(180deg, #0B151D 0%, #101E2B 100%) !important;
+  background-image:
+    linear-gradient(96deg, rgba(8, 16, 23, 0.90) 0%, rgba(8, 16, 23, 0.74) 42%, rgba(8, 16, 23, 0.26) 72%, rgba(8, 16, 23, 0.46) 100%),
+    linear-gradient(180deg, rgba(8, 16, 23, 0.32) 0%, rgba(8, 16, 23, 0.08) 55%, rgba(8, 16, 23, 0.88) 100%),
+    url('/assets/austin-skyline-mockup-20261013.webp') !important;
+  background-size: cover !important;
+  background-position: center 46% !important;
+  background-repeat: no-repeat !important;
   color: var(--pwe-alabaster) !important;
-  padding: clamp(56px, 7vw, 108px) 0 0 !important;
+  padding: clamp(28px, 3.5vw, 48px) 0 0 !important;
   border-bottom: 1px solid var(--pwe-rule-dark);
   overflow: hidden;
   min-height: 0 !important;
@@ -454,9 +459,9 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
 .pwe-hero-grid {
   display: grid;
   grid-template-columns: 1.18fr 0.82fr;
-  gap: clamp(40px, 6vw, 96px);
+  gap: clamp(32px, 5vw, 80px);
   align-items: end;
-  padding-bottom: clamp(56px, 7vw, 96px);
+  padding-bottom: clamp(28px, 3.5vw, 44px);
 }
 
 .pwe-hero-editorial {
@@ -474,19 +479,25 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
 .pwe-hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: rgba(246, 244, 239, 0.82);
+  color: rgba(246, 244, 239, 0.94);
   text-decoration: none;
-  padding: 6px 12px;
-  border: 1px solid var(--pwe-rule-dark);
-  background: rgba(255, 255, 255, 0.03);
+  padding: 7px 14px;
+  border: 1px solid rgba(245, 196, 67, 0.42);
+  background: rgba(8, 16, 23, 0.68);
+  backdrop-filter: blur(8px);
+}
+
+.pwe-hero-badge strong {
+  color: #F5C443;
+  font-weight: 700;
 }
 
 .pwe-hero-badge:hover {
-  border-color: var(--pwe-brass-light);
+  border-color: #F5C443;
   color: #FFFFFF;
 }
 
@@ -499,22 +510,24 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
   color: var(--pwe-alabaster) !important;
   margin: 0 0 28px !important;
   max-width: 14ch !important;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.45) !important;
 }
 
 .pwe-hero h1 em,
 .pwe-hero h1 .modern-hero-accent {
   font-style: italic;
   font-weight: 400;
-  color: var(--pwe-brass-light) !important;
+  color: #F5C443 !important;
 }
 
 .pwe-hero-lead {
   font-family: var(--pwe-sans);
   font-size: clamp(18px, 1.35vw, 21px) !important;
   line-height: 1.6 !important;
-  color: rgba(246, 244, 239, 0.78) !important;
+  color: rgba(246, 244, 239, 0.90) !important;
   max-width: 54ch !important;
   margin: 0 0 36px !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
 }
 
 .pwe-hero-actions {
@@ -530,14 +543,14 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
   flex-wrap: wrap;
   gap: 8px 24px;
   padding-top: 24px;
-  border-top: 1px solid var(--pwe-rule-dark);
+  border-top: 1px solid rgba(246, 244, 239, 0.22);
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(246, 244, 239, 0.58);
+  color: rgba(246, 244, 239, 0.76);
 }
 
-/* Hero Architectural Portrait Column */
+/* Hero Architectural Portrait Column (Translucent over Full-Bleed Skyline) */
 .pwe-hero-visual {
   position: relative;
   display: grid;
@@ -547,26 +560,21 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
 
 .pwe-hero-frame {
   position: relative;
-  background: linear-gradient(165deg, #162836 0%, #0D1922 100%);
-  border: 1px solid var(--pwe-rule-dark);
-  padding: 32px 32px 0;
+  background: linear-gradient(180deg, rgba(11, 21, 29, 0.14) 0%, rgba(11, 21, 29, 0.68) 100%);
+  border: 1px solid rgba(246, 244, 239, 0.24);
+  backdrop-filter: blur(2px);
+  padding: 24px 28px 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 490px;
+  min-height: 420px;
   overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
 }
 
 .pwe-hero-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('/assets/austin-skyline-mockup-20261013.webp');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.14;
-  mix-blend-mode: luminosity;
-  pointer-events: none;
+  display: none !important;
+  content: none !important;
 }
 
 .pwe-hero-frame picture,
@@ -575,21 +583,22 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
   z-index: 2;
   display: block;
   width: 100%;
-  max-width: 420px;
+  max-width: 390px;
   height: auto;
-  max-height: 440px;
+  max-height: 390px;
   margin-inline: auto;
   object-fit: contain;
   object-position: bottom center;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.45));
 }
 
 .pwe-hero-caption {
   position: relative;
   z-index: 3;
-  margin: 0 -32px;
+  margin: 0 -28px;
   padding: 18px 28px;
-  background: rgba(11, 21, 29, 0.92);
-  border-top: 1px solid var(--pwe-rule-dark);
+  background: rgba(8, 16, 23, 0.92);
+  border-top: 1px solid rgba(246, 244, 239, 0.2);
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -607,13 +616,14 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--pwe-brass-light);
+  color: #F5C443;
 }
 
-/* Institutional Metrics Ledger Bar (Bottom of Hero) */
+/* Institutional Metrics Ledger Bar (Bottom of Hero — Gold Count-Up & 5-Star Sequence) */
 .pwe-ledger-bar {
-  border-top: 1px solid var(--pwe-rule-dark);
-  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid rgba(245, 196, 67, 0.28);
+  background: rgba(8, 16, 23, 0.82);
+  backdrop-filter: blur(12px);
 }
 
 .pwe-ledger-grid {
@@ -623,12 +633,12 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
 
 .pwe-ledger-cell {
   padding: 28px 32px 28px 0;
-  border-right: 1px solid var(--pwe-rule-dark);
+  border-right: 1px solid rgba(246, 244, 239, 0.16);
   text-decoration: none !important;
   color: var(--pwe-alabaster) !important;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .pwe-ledger-cell:not(:first-child) {
@@ -640,26 +650,70 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
   padding-right: 0;
 }
 
-.pwe-ledger-num {
+.pwe-ledger-stat-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pwe-ledger-num,
+.pwe-gold-stat {
   font-family: var(--pwe-serif);
-  font-size: clamp(28px, 2.6vw, 38px);
-  font-weight: 400;
-  line-height: 1.05;
+  font-size: clamp(30px, 2.8vw, 42px);
+  font-weight: 500;
+  line-height: 1.02;
   letter-spacing: -0.02em;
-  color: var(--pwe-alabaster);
+  color: #F5C443 !important;
+  text-shadow: 0 2px 18px rgba(245, 196, 67, 0.28);
   font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* 5-Star Sequential Illumination (1 -> 2 -> 3 -> 4 -> 5) */
+.pwe-star-sequence {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.pwe-seq-star {
+  fill: rgba(245, 196, 67, 0.22);
+  opacity: 0.35;
+  transform: scale(0.76);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), fill 180ms ease, opacity 180ms ease, filter 220ms ease;
+}
+
+.pwe-seq-star.is-lit {
+  fill: #F5C443;
+  opacity: 1;
+  transform: scale(1);
+  filter: drop-shadow(0 0 6px rgba(245, 196, 67, 0.52));
+}
+
+.pwe-seq-star.is-popping {
+  transform: scale(1.28);
+  filter: drop-shadow(0 0 10px rgba(245, 196, 67, 0.85));
+}
+
+.pwe-verified-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #F5C443;
+  font-weight: 700;
+  margin-right: 4px;
 }
 
 .pwe-ledger-label {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(246, 244, 239, 0.62);
+  color: rgba(246, 244, 239, 0.88);
 }
 
 a.pwe-ledger-cell:hover .pwe-ledger-label {
-  color: var(--pwe-brass-light);
+  color: #F5C443;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
