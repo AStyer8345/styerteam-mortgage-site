@@ -51,16 +51,22 @@
     .then(function (config) {
       if (!config || config.enabled !== true) return;
       state.config = config;
-      renderWidget();
+      // Fetch optional widget styles without blocking the page's next paint.
+      // Mount only when styled, so there is no unstyled launcher or false impression.
+      var stylesheet = document.createElement('link');
+      stylesheet.rel = 'stylesheet';
+      stylesheet.media = 'print';
+      stylesheet.href = '/assistant-widget.css?v=20261006-answer-handoff-v2';
+      stylesheet.onload = function () {
+        stylesheet.onload = null;
+        stylesheet.media = 'all';
+        renderWidget();
+      };
+      document.head.appendChild(stylesheet);
     })
     .catch(function () {});
 
   function renderWidget() {
-    var stylesheet = document.createElement('link');
-    stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20261006-answer-handoff-v2';
-    document.head.appendChild(stylesheet);
-
     var root = document.createElement('div');
     root.className = 'mortgage-assistant';
     var professionalMode = /^(advisor|advisor_reverse|cpa)$/.test(state.assistantMode);
