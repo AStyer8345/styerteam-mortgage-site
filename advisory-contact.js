@@ -31,9 +31,10 @@
   // cannot see computed text-align.
   try {
     var main = d.querySelector('main');
-    if (main) main.querySelectorAll('p').forEach(function (p) {
-      if (getComputedStyle(p).textAlign === 'center') p.classList.add('advisory-centered');
-    });
+    // Finish style reads before any class writes to avoid repeated layout flushes.
+    if (main) Array.prototype.filter.call(main.querySelectorAll('p'), function (p) {
+      return getComputedStyle(p).textAlign === 'center';
+    }).forEach(function (p) { p.classList.add('advisory-centered'); });
   } catch (e) {}
 
   // Pages that ARE the form get no bar and no panel.
