@@ -1,0 +1,1878 @@
+/* ==========================================================================
+   STYER MORTGAGE — DESIGN CONCEPT A
+   Private Wealth Editorial × Modern Fintech
+   Inspired by Rothschild & Co (editorial authority & architectural rhythm),
+   Mercury (fintech clarity & purposeful negative space),
+   and Ramp (bold typographic scale & high-contrast section transitions).
+   ========================================================================== */
+
+body.private-wealth-editorial {
+  --pwe-obsidian: #0B151D;
+  --pwe-navy: #11212E;
+  --pwe-alabaster: #F6F4EF;
+  --pwe-stone: #EDE8DF;
+  --pwe-paper: #FAF9F6;
+  --pwe-ink: #0E1B24;
+  --pwe-slate: #4A5761;
+  --pwe-muted: #6C7881;
+  --pwe-brass: #9A7844;
+  --pwe-brass-light: #C6A46C;
+  --pwe-rule: #DAD4C8;
+  --pwe-rule-dark: rgba(246, 244, 239, 0.14);
+  --pwe-focus: #1B6B73;
+  --pwe-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --pwe-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  background-color: var(--pwe-alabaster);
+  color: var(--pwe-ink);
+  font-family: var(--pwe-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+body.private-wealth-editorial *,
+body.private-wealth-editorial *::before,
+body.private-wealth-editorial *::after {
+  box-sizing: border-box;
+}
+
+/* Override legacy reveal / animation hides so content paints immediately */
+body.private-wealth-editorial :is(.reveal, [data-animate]) {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* Layout Containers */
+body.private-wealth-editorial .container,
+body.private-wealth-editorial .pwe-container {
+  width: min(1320px, calc(100% - 64px));
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+@media (max-width: 768px) {
+  body.private-wealth-editorial .container,
+  body.private-wealth-editorial .pwe-container {
+    width: calc(100% - 40px);
+  }
+}
+
+/* Focus Accessibility */
+body.private-wealth-editorial :is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--pwe-brass) !important;
+  outline-offset: 4px !important;
+}
+
+/* Typography Primitives */
+.pwe-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--pwe-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pwe-brass);
+  margin: 0 0 20px;
+}
+
+.pwe-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background-color: currentColor;
+}
+
+.pwe-dark .pwe-kicker {
+  color: var(--pwe-brass-light);
+}
+
+/* Buttons & Microinteractions */
+.pwe-btn-primary,
+body.private-wealth-editorial .pwe-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 52px;
+  padding: 14px 28px;
+  background-color: var(--pwe-ink) !important;
+  color: var(--pwe-alabaster) !important;
+  border: 1px solid var(--pwe-ink) !important;
+  border-radius: 2px !important;
+  font-family: var(--pwe-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  cursor: pointer;
+}
+
+.pwe-btn-primary:hover {
+  background-color: #1B3346 !important;
+  border-color: #1B3346 !important;
+}
+
+.pwe-dark .pwe-btn-primary,
+body.private-wealth-editorial .pwe-dark .pwe-btn-primary {
+  background-color: var(--pwe-alabaster) !important;
+  color: var(--pwe-obsidian) !important;
+  border-color: var(--pwe-alabaster) !important;
+}
+
+.pwe-dark .pwe-btn-primary:hover {
+  background-color: var(--pwe-brass-light) !important;
+  border-color: var(--pwe-brass-light) !important;
+  color: var(--pwe-obsidian) !important;
+}
+
+.pwe-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 14px 4px;
+  background: transparent !important;
+  color: inherit !important;
+  border: none !important;
+  border-bottom: 1px solid currentColor !important;
+  border-radius: 0 !important;
+  font-family: var(--pwe-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none !important;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.pwe-btn-secondary .pwe-arrow,
+.pwe-inline-link .pwe-arrow {
+  display: inline-block;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pwe-btn-secondary:hover .pwe-arrow,
+.pwe-inline-link:hover .pwe-arrow {
+  transform: translate(3px, -2px);
+}
+
+.pwe-inline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--pwe-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--pwe-ink);
+  text-decoration: none !important;
+  border-bottom: 1px solid var(--pwe-rule);
+  padding-bottom: 4px;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.pwe-inline-link:hover {
+  border-color: var(--pwe-ink);
+}
+
+.pwe-dark .pwe-inline-link {
+  color: var(--pwe-alabaster);
+  border-bottom-color: var(--pwe-rule-dark);
+}
+
+.pwe-dark .pwe-inline-link:hover {
+  border-bottom-color: var(--pwe-brass-light);
+  color: var(--pwe-brass-light);
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION (Rothschild & Co Restraint + Mercury Precision)
+   ========================================================================== */
+body.private-wealth-editorial > header,
+body.private-wealth-editorial > header.scrolled {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+  background-color: rgba(11, 21, 29, 0.96) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid var(--pwe-rule-dark) !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+body.private-wealth-editorial > header .container {
+  width: min(1320px, calc(100% - 64px));
+  max-width: 1320px;
+  padding-inline: 0;
+}
+
+body.private-wealth-editorial > header nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 84px !important;
+  padding: 14px 0 !important;
+  gap: 24px !important;
+}
+
+body.private-wealth-editorial > header .nav-brand {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  width: auto !important;
+  height: auto !important;
+  text-decoration: none !important;
+}
+
+body.private-wealth-editorial > header .nav-brand::before,
+body.private-wealth-editorial > header .nav-brand::after {
+  content: none !important;
+  display: none !important;
+}
+
+body.private-wealth-editorial > header .nav-logo-img {
+  opacity: 1 !important;
+  width: 164px !important;
+  height: auto !important;
+  max-height: 48px !important;
+  display: block !important;
+}
+
+@media (min-width: 1200px) {
+  body.private-wealth-editorial > header .mobile-menu-toggle {
+    display: none !important;
+  }
+  body.private-wealth-editorial > header .nav-links {
+    display: flex !important;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  body.private-wealth-editorial > header .container {
+    width: calc(100% - 40px);
+  }
+  body.private-wealth-editorial > header .mobile-menu-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: transparent !important;
+    border: 1px solid var(--pwe-rule-dark) !important;
+    border-radius: 2px !important;
+    padding: 10px !important;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  body.private-wealth-editorial > header .mobile-menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background-color: var(--pwe-alabaster) !important;
+  }
+  body.private-wealth-editorial > header .nav-links {
+    display: none !important;
+    position: absolute !important;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    list-style: none;
+    margin: 0;
+    background-color: var(--pwe-obsidian) !important;
+    border-top: 1px solid var(--pwe-rule-dark) !important;
+    border-bottom: 1px solid var(--pwe-rule-dark) !important;
+    padding: 20px 24px !important;
+    gap: 8px !important;
+    max-height: calc(100dvh - 84px);
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  body.private-wealth-editorial > header .nav-links.active {
+    display: flex !important;
+  }
+  body.private-wealth-editorial > header .nav-links.active > li > a {
+    color: var(--pwe-alabaster) !important;
+  }
+  body.private-wealth-editorial > header .nav-dropdown {
+    position: static !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-left: 1px solid var(--pwe-brass) !important;
+  }
+}
+
+body.private-wealth-editorial > header .nav-links > li > a:not(.nav-cta) {
+  font-family: var(--pwe-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(246, 244, 239, 0.86) !important;
+  text-decoration: none !important;
+  padding: 8px 0;
+  transition: color 160ms ease;
+}
+
+body.private-wealth-editorial > header .nav-links > li > a:not(.nav-cta):hover {
+  color: #FFFFFF !important;
+}
+
+body.private-wealth-editorial > header .nav-phone {
+  font-variant-numeric: tabular-nums;
+  color: rgba(246, 244, 239, 0.72) !important;
+}
+
+body.private-wealth-editorial > header .nav-cta:not(.nav-apply) {
+  background-color: var(--pwe-alabaster) !important;
+  color: var(--pwe-obsidian) !important;
+  border: 1px solid var(--pwe-alabaster) !important;
+  border-radius: 2px !important;
+  padding: 10px 18px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+}
+
+body.private-wealth-editorial > header .nav-cta:not(.nav-apply):hover {
+  background-color: var(--pwe-brass-light) !important;
+  border-color: var(--pwe-brass-light) !important;
+}
+
+body.private-wealth-editorial > header .nav-apply {
+  background: transparent !important;
+  color: rgba(246, 244, 239, 0.88) !important;
+  border: 1px solid rgba(246, 244, 239, 0.28) !important;
+  border-radius: 2px !important;
+  padding: 10px 15px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+}
+
+body.private-wealth-editorial > header .nav-apply:hover {
+  border-color: var(--pwe-alabaster) !important;
+  color: #FFFFFF !important;
+}
+
+body.private-wealth-editorial > header .nav-dropdown {
+  background-color: var(--pwe-obsidian) !important;
+  border: 1px solid var(--pwe-rule-dark) !important;
+  border-top: 2px solid var(--pwe-brass) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45) !important;
+  min-width: 250px;
+  padding: 10px 0 !important;
+}
+
+body.private-wealth-editorial > header .nav-dropdown li a {
+  color: rgba(246, 244, 239, 0.84) !important;
+  font-size: 13px !important;
+  padding: 9px 20px !important;
+  text-decoration: none !important;
+  display: block;
+}
+
+body.private-wealth-editorial > header .nav-dropdown li a:hover {
+  background-color: rgba(246, 244, 239, 0.06) !important;
+  color: var(--pwe-brass-light) !important;
+}
+
+@media (max-width: 1280px) {
+  body.private-wealth-editorial > header .container {
+    width: calc(100% - 40px);
+  }
+  body.private-wealth-editorial > header .nav-links.active {
+    background-color: var(--pwe-obsidian) !important;
+    border-top: 1px solid var(--pwe-rule-dark) !important;
+    padding: 24px !important;
+  }
+  body.private-wealth-editorial > header .nav-links.active > li > a {
+    color: var(--pwe-alabaster) !important;
+  }
+  body.private-wealth-editorial > header .nav-dropdown {
+    background: rgba(255, 255, 255, 0.03) !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-left: 1px solid var(--pwe-brass) !important;
+  }
+}
+
+/* ==========================================================================
+   SECTION 1: HERO — Architectural Private Wealth Opening (Obsidian)
+   ========================================================================== */
+body.private-wealth-editorial main .hero.pwe-hero,
+.pwe-hero {
+  position: relative;
+  background: radial-gradient(circle at 78% 22%, rgba(198, 164, 108, 0.14), transparent 46%), linear-gradient(180deg, #0B151D 0%, #101E2B 100%) !important;
+  background-color: var(--pwe-obsidian) !important;
+  background-image: radial-gradient(circle at 78% 22%, rgba(198, 164, 108, 0.14), transparent 46%), linear-gradient(180deg, #0B151D 0%, #101E2B 100%) !important;
+  color: var(--pwe-alabaster) !important;
+  padding: clamp(56px, 7vw, 108px) 0 0 !important;
+  border-bottom: 1px solid var(--pwe-rule-dark);
+  overflow: hidden;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+body.private-wealth-editorial main .hero.pwe-hero::before,
+body.private-wealth-editorial main .hero.pwe-hero::after,
+.pwe-hero::before,
+.pwe-hero::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
+.pwe-hero-grid {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: end;
+  padding-bottom: clamp(56px, 7vw, 96px);
+}
+
+.pwe-hero-editorial {
+  max-width: 720px;
+}
+
+.pwe-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-bottom: 28px;
+}
+
+.pwe-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(246, 244, 239, 0.82);
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid var(--pwe-rule-dark);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.pwe-hero-badge:hover {
+  border-color: var(--pwe-brass-light);
+  color: #FFFFFF;
+}
+
+.pwe-hero h1 {
+  font-family: var(--pwe-serif) !important;
+  font-size: clamp(44px, 5.6vw, 82px) !important;
+  font-weight: 400 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--pwe-alabaster) !important;
+  margin: 0 0 28px !important;
+  max-width: 14ch !important;
+}
+
+.pwe-hero h1 em,
+.pwe-hero h1 .modern-hero-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--pwe-brass-light) !important;
+}
+
+.pwe-hero-lead {
+  font-family: var(--pwe-sans);
+  font-size: clamp(18px, 1.35vw, 21px) !important;
+  line-height: 1.6 !important;
+  color: rgba(246, 244, 239, 0.78) !important;
+  max-width: 54ch !important;
+  margin: 0 0 36px !important;
+}
+
+.pwe-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 32px;
+  margin-bottom: 36px;
+}
+
+.pwe-hero-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--pwe-rule-dark);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(246, 244, 239, 0.58);
+}
+
+/* Hero Architectural Portrait Column */
+.pwe-hero-visual {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-self: stretch;
+}
+
+.pwe-hero-frame {
+  position: relative;
+  background: linear-gradient(165deg, #162836 0%, #0D1922 100%);
+  border: 1px solid var(--pwe-rule-dark);
+  padding: 32px 32px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 490px;
+  overflow: hidden;
+}
+
+.pwe-hero-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/austin-skyline-mockup-20261013.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.14;
+  mix-blend-mode: luminosity;
+  pointer-events: none;
+}
+
+.pwe-hero-frame picture,
+.pwe-hero-frame img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  max-height: 440px;
+  margin-inline: auto;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+.pwe-hero-caption {
+  position: relative;
+  z-index: 3;
+  margin: 0 -32px;
+  padding: 18px 28px;
+  background: rgba(11, 21, 29, 0.92);
+  border-top: 1px solid var(--pwe-rule-dark);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pwe-hero-caption strong {
+  font-family: var(--pwe-serif);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--pwe-alabaster);
+}
+
+.pwe-hero-caption span {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pwe-brass-light);
+}
+
+/* Institutional Metrics Ledger Bar (Bottom of Hero) */
+.pwe-ledger-bar {
+  border-top: 1px solid var(--pwe-rule-dark);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.pwe-ledger-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pwe-ledger-cell {
+  padding: 28px 32px 28px 0;
+  border-right: 1px solid var(--pwe-rule-dark);
+  text-decoration: none !important;
+  color: var(--pwe-alabaster) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pwe-ledger-cell:not(:first-child) {
+  padding-left: 32px;
+}
+
+.pwe-ledger-cell:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.pwe-ledger-num {
+  font-family: var(--pwe-serif);
+  font-size: clamp(28px, 2.6vw, 38px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--pwe-alabaster);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.pwe-ledger-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(246, 244, 239, 0.62);
+}
+
+a.pwe-ledger-cell:hover .pwe-ledger-label {
+  color: var(--pwe-brass-light);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================================================
+   SECTION 2: POSITIONING — Private Wealth Thesis vs. Retail Bank Box
+   ========================================================================== */
+.pwe-positioning {
+  background-color: var(--pwe-alabaster) !important;
+  padding: clamp(72px, 9vw, 128px) 0 !important;
+  border-bottom: 1px solid var(--pwe-rule);
+}
+
+.pwe-positioning-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.pwe-section-title {
+  font-family: var(--pwe-serif) !important;
+  font-size: clamp(34px, 3.8vw, 54px) !important;
+  font-weight: 400 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.025em !important;
+  color: var(--pwe-ink) !important;
+  margin: 0 0 24px !important;
+}
+
+.pwe-dark .pwe-section-title {
+  color: var(--pwe-alabaster) !important;
+}
+
+.pwe-positioning-copy p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--pwe-slate);
+  margin: 0 0 20px;
+  max-width: 58ch;
+}
+
+.pwe-pillars {
+  border-top: 1px solid var(--pwe-ink);
+  margin-top: 8px;
+}
+
+.pwe-pillar-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--pwe-rule);
+}
+
+.pwe-pillar-index {
+  font-family: var(--pwe-serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--pwe-brass);
+  padding-top: 2px;
+}
+
+.pwe-pillar-row h3 {
+  font-family: var(--pwe-serif) !important;
+  font-size: 23px !important;
+  font-weight: 400 !important;
+  line-height: 1.25 !important;
+  color: var(--pwe-ink) !important;
+  margin: 0 0 8px !important;
+}
+
+.pwe-pillar-row p {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: var(--pwe-slate) !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   SECTION 3: WHO WE SERVE & CAPABILITIES — Editorial Index & Ruled Matrix
+   ========================================================================== */
+.pwe-serve {
+  background-color: var(--pwe-paper) !important;
+  padding: clamp(72px, 9vw, 128px) 0 !important;
+  border-bottom: 1px solid var(--pwe-rule);
+}
+
+.pwe-serve-header {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+
+.pwe-serve-header p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--pwe-slate);
+  margin: 0;
+}
+
+/* 4-Audience Editorial Index */
+.pwe-audience-index {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border-top: 2px solid var(--pwe-ink);
+  border-bottom: 1px solid var(--pwe-rule);
+}
+
+.pwe-audience-col {
+  padding: 36px 28px 36px 0;
+  border-right: 1px solid var(--pwe-rule);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.pwe-audience-col:not(:first-child) {
+  padding-left: 28px;
+}
+
+.pwe-audience-col:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.pwe-audience-num {
+  font-family: var(--pwe-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pwe-brass);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.pwe-audience-col .mockup-category-icon {
+  display: none !important;
+}
+
+.pwe-audience-col h3 {
+  font-family: var(--pwe-serif) !important;
+  font-size: 25px !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.015em !important;
+  color: var(--pwe-ink) !important;
+  margin: 0 0 12px !important;
+}
+
+.pwe-audience-col p {
+  font-size: 15.5px !important;
+  line-height: 1.6 !important;
+  color: var(--pwe-slate) !important;
+  margin: 0 !important;
+}
+
+.pwe-audience-col .audience-option-link {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pwe-ink);
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--pwe-rule);
+}
+
+.pwe-audience-col .audience-option-link:hover {
+  color: var(--pwe-brass);
+}
+
+/* Capabilities Matrix & Pricing Architecture */
+.pwe-capabilities-band {
+  margin-top: clamp(56px, 7vw, 88px);
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+}
+
+.pwe-capabilities-matrix {
+  border-top: 1px solid var(--pwe-ink);
+}
+
+.pwe-cap-row {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: 20px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--pwe-rule);
+  text-decoration: none !important;
+  color: var(--pwe-ink) !important;
+  transition: padding-left 180ms ease;
+}
+
+.pwe-cap-row:hover {
+  padding-left: 6px;
+}
+
+.pwe-cap-row strong {
+  font-family: var(--pwe-serif);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--pwe-ink);
+}
+
+.pwe-cap-row span {
+  font-size: 14.5px;
+  color: var(--pwe-slate);
+}
+
+.pwe-cap-row em {
+  font-style: normal;
+  font-size: 13px;
+  color: var(--pwe-brass);
+}
+
+.pwe-pricing-editorial {
+  background-color: var(--pwe-stone);
+  padding: clamp(28px, 4vw, 44px);
+  border-left: 2px solid var(--pwe-brass);
+}
+
+.pwe-pricing-editorial h2 {
+  font-family: var(--pwe-serif) !important;
+  font-size: clamp(26px, 2.5vw, 34px) !important;
+  line-height: 1.18 !important;
+  margin: 8px 0 16px !important;
+}
+
+.pwe-pricing-editorial p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--pwe-slate);
+  margin: 0 0 14px;
+}
+
+.pwe-pricing-editorial .pricing-note {
+  font-size: 13px;
+  color: var(--pwe-muted);
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.pwe-secondary-routes {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--pwe-rule);
+  font-size: 14px;
+  color: var(--pwe-slate);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+
+.pwe-secondary-routes a {
+  color: var(--pwe-ink);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================================================
+   SECTION 4: EXECUTED MANDATES — "Mortgages Your Bank Said No To" (Dark)
+   ========================================================================== */
+.pwe-mandates {
+  background-color: var(--pwe-obsidian) !important;
+  color: var(--pwe-alabaster) !important;
+  padding: clamp(72px, 9vw, 128px) 0 !important;
+}
+
+.pwe-mandates-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: end;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--pwe-rule-dark);
+}
+
+.pwe-mandates-head .said-no-intro {
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(246, 244, 239, 0.76) !important;
+  margin: 0;
+}
+
+.pwe-mandate-ledger {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-bottom: 1px solid var(--pwe-rule-dark);
+}
+
+.pwe-mandate-item {
+  padding: 40px 36px 40px 0;
+  border-right: 1px solid var(--pwe-rule-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pwe-mandate-item:not(:first-child) {
+  padding-left: 36px;
+}
+
+.pwe-mandate-item:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.pwe-mandate-item .said-no-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pwe-brass-light) !important;
+  margin: 0 0 16px;
+}
+
+.pwe-mandate-item h3 {
+  font-family: var(--pwe-serif) !important;
+  font-size: 26px !important;
+  font-weight: 400 !important;
+  line-height: 1.22 !important;
+  color: var(--pwe-alabaster) !important;
+  margin: 0 0 20px !important;
+}
+
+.pwe-mandate-item p {
+  font-size: 15.5px !important;
+  line-height: 1.65 !important;
+  color: rgba(246, 244, 239, 0.75) !important;
+  margin: 0 0 14px !important;
+}
+
+.pwe-mandate-item p strong {
+  color: var(--pwe-alabaster);
+  font-weight: 600;
+}
+
+.pwe-mandate-item .said-no-result {
+  margin-top: 20px !important;
+  padding-top: 16px;
+  border-top: 1px solid var(--pwe-rule-dark);
+  font-family: var(--pwe-serif);
+  font-style: italic;
+  font-size: 18px !important;
+  color: var(--pwe-brass-light) !important;
+}
+
+.pwe-mandates-foot {
+  padding-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+}
+
+.pwe-mandates-foot .said-no-note {
+  font-size: 13px;
+  color: rgba(246, 244, 239, 0.56) !important;
+  margin: 0;
+  max-width: 64ch;
+}
+
+.pwe-mandates-foot .said-no-cta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   SECTION 5: QUANTITATIVE CLARITY — Mercury Fintech Workbench
+   ========================================================================== */
+.pwe-workbench {
+  background-color: var(--pwe-alabaster) !important;
+  padding: clamp(72px, 9vw, 124px) 0 !important;
+  border-bottom: 1px solid var(--pwe-rule);
+}
+
+.pwe-workbench-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+}
+
+.pwe-workbench-lead {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--pwe-slate);
+  margin: 0 0 32px;
+}
+
+.pwe-tool-directory {
+  border-top: 1px solid var(--pwe-ink);
+}
+
+.pwe-tool-directory a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--pwe-rule);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--pwe-ink) !important;
+  text-decoration: none !important;
+  transition: padding-left 160ms ease, color 160ms ease;
+}
+
+.pwe-tool-directory a:hover {
+  padding-left: 6px;
+  color: var(--pwe-brass) !important;
+}
+
+/* Calculator Instrument Panel */
+.pwe-instrument {
+  background-color: var(--pwe-paper);
+  border: 1px solid var(--pwe-ink);
+  padding: clamp(28px, 4vw, 44px);
+}
+
+.pwe-instrument-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--pwe-rule);
+  margin-bottom: 28px;
+}
+
+.pwe-instrument-head h3 {
+  font-family: var(--pwe-serif) !important;
+  font-size: 24px !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
+}
+
+.pwe-instrument-head span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pwe-brass);
+}
+
+.pwe-instrument-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.pwe-instrument-fields label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pwe-slate);
+  margin-bottom: 8px;
+}
+
+.pwe-instrument-fields input,
+.pwe-instrument-fields select {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--pwe-rule) !important;
+  border-radius: 2px !important;
+  font-family: var(--pwe-sans);
+  font-size: 17px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--pwe-ink);
+}
+
+.pwe-instrument-fields input:focus,
+.pwe-instrument-fields select:focus {
+  border-color: var(--pwe-ink) !important;
+}
+
+.pwe-instrument-output {
+  background-color: var(--pwe-obsidian);
+  color: var(--pwe-alabaster);
+  padding: 24px 28px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.pwe-instrument-output > span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(246, 244, 239, 0.7);
+}
+
+.pwe-instrument-output strong {
+  font-family: var(--pwe-serif);
+  font-size: clamp(32px, 3vw, 44px);
+  font-weight: 400;
+  color: var(--pwe-alabaster);
+  font-variant-numeric: tabular-nums;
+}
+
+.pwe-instrument-output strong span {
+  font-family: var(--pwe-sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(246, 244, 239, 0.65);
+}
+
+.pwe-instrument-note {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--pwe-muted);
+  margin: 0 0 14px;
+}
+
+/* ==========================================================================
+   SECTION 6: THE PEOPLE — Advisory Leadership & Roots in Austin
+   ========================================================================== */
+.pwe-people {
+  background-color: var(--pwe-stone) !important;
+  padding: clamp(72px, 9vw, 128px) 0 !important;
+  border-bottom: 1px solid var(--pwe-rule);
+}
+
+.pwe-people-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
+}
+
+.pwe-people-composition {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 20px;
+  align-items: end;
+  margin: 0;
+}
+
+.pwe-portrait-primary {
+  background: linear-gradient(180deg, #D9D3C7 0%, #C6BFAF 100%);
+  border: 1px solid var(--pwe-rule);
+  padding: 24px 16px 0;
+}
+
+.pwe-portrait-primary img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.pwe-portrait-secondary {
+  background: var(--pwe-paper);
+  padding: 10px;
+  border: 1px solid var(--pwe-rule);
+}
+
+.pwe-portrait-secondary img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.pwe-portrait-secondary figcaption {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pwe-muted);
+  padding-top: 8px;
+}
+
+.pwe-people-copy p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--pwe-slate);
+  margin: 0 0 18px;
+}
+
+.pwe-role-ledger {
+  margin: 28px 0;
+  border-top: 1px solid var(--pwe-ink);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding-top: 20px;
+}
+
+.pwe-role-item strong {
+  display: block;
+  font-family: var(--pwe-serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--pwe-ink);
+  margin-bottom: 4px;
+}
+
+.pwe-role-item span {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pwe-brass);
+  margin-bottom: 6px;
+}
+
+.pwe-role-item p {
+  font-size: 14.5px !important;
+  line-height: 1.55 !important;
+  color: var(--pwe-slate) !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   SECTION 7: CLIENT & PARTNER PROOF — Editorial Testimonials
+   ========================================================================== */
+.pwe-reviews {
+  background-color: var(--pwe-paper) !important;
+  padding: clamp(72px, 9vw, 124px) 0 !important;
+  border-bottom: 1px solid var(--pwe-rule);
+}
+
+.pwe-reviews-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 36px;
+  border-bottom: 2px solid var(--pwe-ink);
+  margin-bottom: 0;
+}
+
+.pwe-reviews .review-aggregate-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0 !important;
+  padding: 10px 18px;
+  background: var(--pwe-alabaster);
+  border: 1px solid var(--pwe-rule);
+}
+
+.pwe-reviews .testimonial-marquee-wrap {
+  overflow: visible !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+}
+
+.pwe-reviews .testimonial-marquee-wrap::before,
+.pwe-reviews .testimonial-marquee-wrap::after {
+  display: none !important;
+  content: none !important;
+}
+
+.pwe-reviews .testimonial-marquee-track {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  width: 100% !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+.pwe-reviews .testimonial-marquee-card {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 36px 32px 36px 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-right: 1px solid var(--pwe-rule) !important;
+  border-bottom: 1px solid var(--pwe-rule) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.pwe-reviews .testimonial-marquee-card:nth-child(3n+2),
+.pwe-reviews .testimonial-marquee-card:nth-child(3n) {
+  padding-left: 32px !important;
+}
+
+.pwe-reviews .testimonial-marquee-card:nth-child(3n) {
+  border-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+.pwe-reviews .testimonial-marquee-card p[style*="italic"] {
+  font-family: var(--pwe-serif) !important;
+  font-style: normal !important;
+  font-size: 18px !important;
+  line-height: 1.55 !important;
+  color: var(--pwe-ink) !important;
+  margin: 14px 0 20px !important;
+}
+
+.pwe-reviews .review-proof-links {
+  margin: 14px 0 0 !important;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pwe-reviews .review-proof-links a {
+  color: var(--pwe-brass) !important;
+  text-decoration: none !important;
+}
+
+.pwe-reviews .review-proof-links a:hover {
+  text-decoration: underline !important;
+}
+
+/* ==========================================================================
+   SECTION 8: EDITORIAL BRIEFINGS & TECHNICAL FAQ (Progressive Disclosure)
+   ========================================================================== */
+.pwe-briefings {
+  background-color: var(--pwe-alabaster) !important;
+  padding: clamp(64px, 8vw, 108px) 0 !important;
+  border-bottom: 1px solid var(--pwe-rule);
+}
+
+.pwe-briefings-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.pwe-briefings .grid-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border-top: 1px solid var(--pwe-ink);
+  border-bottom: 1px solid var(--pwe-rule);
+}
+
+.pwe-briefings .blog-card {
+  padding: 32px 32px 32px 0 !important;
+  border: 0 !important;
+  border-right: 1px solid var(--pwe-rule) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.pwe-briefings .blog-card:not(:first-child) {
+  padding-left: 32px !important;
+}
+
+.pwe-briefings .blog-card:last-child {
+  border-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+.pwe-briefings .blog-card-category {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--pwe-brass) !important;
+  margin-bottom: 12px !important;
+}
+
+.pwe-briefings .blog-card-title {
+  font-family: var(--pwe-serif) !important;
+  font-size: 24px !important;
+  font-weight: 400 !important;
+  line-height: 1.25 !important;
+  color: var(--pwe-ink) !important;
+  margin: 0 0 12px !important;
+}
+
+.pwe-briefings .blog-card:hover .blog-card-title {
+  color: var(--pwe-brass) !important;
+}
+
+/* FAQ Technical Reference */
+.pwe-faq {
+  background-color: var(--pwe-paper) !important;
+  padding: clamp(64px, 8vw, 108px) 0 !important;
+  border-bottom: 1px solid var(--pwe-rule);
+}
+
+.pwe-faq .accordion {
+  max-width: 920px;
+  margin-inline: auto;
+  border-top: 2px solid var(--pwe-ink) !important;
+}
+
+.pwe-faq .accordion-button {
+  font-family: var(--pwe-serif) !important;
+  font-size: 21px !important;
+  font-weight: 400 !important;
+  color: var(--pwe-ink) !important;
+  padding: 22px 0 !important;
+}
+
+/* ==========================================================================
+   SECTION 9: PRIVATE CONSULTATION DESK (Closing CTA & Protected Form)
+   ========================================================================== */
+body.private-wealth-editorial .premium-contact {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.pwe-consultation {
+  background-color: var(--pwe-obsidian) !important;
+  color: var(--pwe-alabaster) !important;
+  padding: clamp(72px, 9vw, 128px) 0 !important;
+  border-bottom: 1px solid var(--pwe-rule-dark);
+}
+
+.pwe-consultation-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+}
+
+.pwe-consultation-copy p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(246, 244, 239, 0.78) !important;
+  margin: 0 0 24px;
+}
+
+.pwe-direct-channels {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--pwe-rule-dark);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.pwe-direct-channels div span {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pwe-brass-light);
+  margin-bottom: 6px;
+}
+
+.pwe-direct-channels a {
+  font-family: var(--pwe-serif);
+  font-size: 22px;
+  color: var(--pwe-alabaster) !important;
+  text-decoration: none !important;
+}
+
+.pwe-direct-channels a:hover {
+  color: var(--pwe-brass-light) !important;
+}
+
+/* Consultation Card (Houses Protected #contact-form) */
+.pwe-consultation .homepage-quick-inquiry {
+  background-color: var(--pwe-paper) !important;
+  color: var(--pwe-ink) !important;
+  border: 1px solid var(--pwe-rule) !important;
+  border-top: 3px solid var(--pwe-brass) !important;
+  border-radius: 2px !important;
+  padding: clamp(28px, 4vw, 44px) !important;
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.32) !important;
+}
+
+.pwe-consultation .homepage-quick-inquiry h2 {
+  font-family: var(--pwe-serif) !important;
+  font-size: 30px !important;
+  font-weight: 400 !important;
+  color: var(--pwe-ink) !important;
+  margin: 0 0 6px !important;
+}
+
+.pwe-consultation .homepage-quick-inquiry .journey-form-intro {
+  font-size: 15.5px !important;
+  color: var(--pwe-slate) !important;
+  margin: 0 0 24px !important;
+}
+
+.pwe-consultation .homepage-quick-inquiry fieldset {
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.pwe-consultation .homepage-quick-inquiry .conversation-legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.pwe-consultation .homepage-quick-inquiry .journey-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.pwe-consultation .homepage-quick-inquiry .journey-full {
+  grid-column: 1 / -1;
+}
+
+.pwe-consultation .homepage-quick-inquiry label {
+  display: block;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--pwe-ink) !important;
+  margin-bottom: 6px !important;
+}
+
+.pwe-consultation .homepage-quick-inquiry input:not([type="hidden"]),
+.pwe-consultation .homepage-quick-inquiry textarea {
+  width: 100%;
+  padding: 12px 14px !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #BFC6CA !important;
+  border-radius: 2px !important;
+  font-family: var(--pwe-sans);
+  font-size: 16px !important;
+  color: var(--pwe-ink) !important;
+}
+
+.pwe-consultation .homepage-quick-inquiry .journey-submit {
+  width: 100%;
+  margin-top: 18px;
+  min-height: 52px;
+  background-color: var(--pwe-obsidian) !important;
+  color: var(--pwe-alabaster) !important;
+  border: 1px solid var(--pwe-obsidian) !important;
+  border-radius: 2px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.pwe-consultation .homepage-quick-inquiry .journey-submit:hover {
+  background-color: #1B3346 !important;
+}
+
+.pwe-consultation .homepage-quick-inquiry .journey-hint {
+  font-size: 12.5px !important;
+  color: var(--pwe-muted) !important;
+  margin: 14px 0 0 !important;
+}
+
+/* Service Area Bar */
+.pwe-service-band {
+  background-color: var(--pwe-obsidian) !important;
+  color: rgba(246, 244, 239, 0.72) !important;
+  padding: 28px 0 !important;
+  border-bottom: 1px solid var(--pwe-rule-dark);
+  font-size: 14px;
+}
+
+.pwe-service-band .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 32px;
+}
+
+.pwe-service-band p {
+  margin: 0 !important;
+  color: rgba(246, 244, 239, 0.72) !important;
+}
+
+.pwe-service-band strong {
+  color: var(--pwe-alabaster);
+}
+
+.pwe-service-band a {
+  color: var(--pwe-brass-light) !important;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Footer & Mobile Contact Bar harmonization */
+body.private-wealth-editorial footer.site-footer {
+  background-color: var(--pwe-obsidian) !important;
+  color: rgba(246, 244, 239, 0.78) !important;
+  border-top: 0 !important;
+  padding: 64px 0 36px !important;
+}
+
+body.private-wealth-editorial footer.site-footer h2 {
+  font-family: var(--pwe-sans) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--pwe-brass-light) !important;
+  margin-bottom: 16px !important;
+}
+
+body.private-wealth-editorial footer.site-footer a {
+  color: rgba(246, 244, 239, 0.78) !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+}
+
+body.private-wealth-editorial footer.site-footer a:hover {
+  color: var(--pwe-alabaster) !important;
+  text-decoration: underline !important;
+}
+
+body.private-wealth-editorial .sticky-mobile-bar {
+  display: none !important;
+}
+
+body.private-wealth-editorial .advisory-contact-bar {
+  background-color: var(--pwe-obsidian) !important;
+  border-top: 1px solid var(--pwe-rule-dark) !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
+body.private-wealth-editorial .advisory-contact-bar a {
+  color: var(--pwe-alabaster) !important;
+  font-size: 13px !important;
+  min-width: 0 !important;
+}
+
+body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-primary {
+  background-color: var(--pwe-alabaster) !important;
+  color: var(--pwe-obsidian) !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN — Intentional Tablet & Mobile Architecture
+   ========================================================================== */
+@media (max-width: 1080px) {
+  body.private-wealth-editorial .pwe-hero-grid,
+  body.private-wealth-editorial .pwe-positioning-layout,
+  body.private-wealth-editorial .pwe-serve-header,
+  body.private-wealth-editorial .pwe-capabilities-band,
+  body.private-wealth-editorial .pwe-mandates-head,
+  body.private-wealth-editorial .pwe-workbench-grid,
+  body.private-wealth-editorial .pwe-people-grid,
+  body.private-wealth-editorial .pwe-consultation-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 44px !important;
+  }
+
+  body.private-wealth-editorial .pwe-audience-index {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.private-wealth-editorial .pwe-audience-col:nth-child(2) {
+    border-right: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  body.private-wealth-editorial .pwe-audience-col:nth-child(3) {
+    padding-left: 0 !important;
+    border-top: 1px solid var(--pwe-rule) !important;
+  }
+
+  body.private-wealth-editorial .pwe-audience-col:nth-child(4) {
+    border-top: 1px solid var(--pwe-rule) !important;
+  }
+
+  body.private-wealth-editorial .pwe-mandate-ledger,
+  body.private-wealth-editorial .pwe-reviews .testimonial-marquee-track,
+  body.private-wealth-editorial .pwe-briefings .grid-3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.private-wealth-editorial .pwe-mandate-item,
+  body.private-wealth-editorial .pwe-reviews .testimonial-marquee-card,
+  body.private-wealth-editorial .pwe-briefings .blog-card {
+    padding: 28px 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--pwe-rule) !important;
+  }
+
+  body.private-wealth-editorial .pwe-mandate-item {
+    border-bottom-color: var(--pwe-rule-dark) !important;
+  }
+}
+
+@media (max-width: 680px) {
+  body.private-wealth-editorial .pwe-hero {
+    padding-top: 36px !important;
+  }
+
+  body.private-wealth-editorial .pwe-hero h1 {
+    font-size: clamp(34px, 9.5vw, 46px) !important;
+  }
+
+  body.private-wealth-editorial .pwe-hero-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  body.private-wealth-editorial .pwe-hero-actions .pwe-btn-primary {
+    width: 100% !important;
+  }
+
+  body.private-wealth-editorial .pwe-hero-frame {
+    min-height: 340px !important;
+    padding: 20px 16px 0 !important;
+  }
+
+  body.private-wealth-editorial .pwe-hero-caption {
+    margin: 0 -16px !important;
+    padding: 14px 16px !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+
+  body.private-wealth-editorial .pwe-ledger-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.private-wealth-editorial .pwe-ledger-cell {
+    padding: 20px 12px 20px 0 !important;
+    border-bottom: 1px solid var(--pwe-rule-dark) !important;
+  }
+
+  body.private-wealth-editorial .pwe-ledger-cell:nth-child(2n) {
+    border-right: 0 !important;
+    padding-left: 12px !important;
+    padding-right: 0 !important;
+  }
+
+  body.private-wealth-editorial .pwe-audience-index {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.private-wealth-editorial .pwe-audience-col,
+  body.private-wealth-editorial .pwe-audience-col:not(:first-child) {
+    padding: 28px 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--pwe-rule) !important;
+  }
+
+  body.private-wealth-editorial .pwe-cap-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  body.private-wealth-editorial .pwe-pricing-panel {
+    padding: 24px 20px !important;
+  }
+
+  body.private-wealth-editorial .pwe-instrument {
+    padding: 24px 20px !important;
+  }
+
+  body.private-wealth-editorial .pwe-instrument-fields {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.private-wealth-editorial .pwe-instrument-output {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    padding: 20px !important;
+  }
+
+  body.private-wealth-editorial .pwe-people-composition {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.private-wealth-editorial .pwe-role-ledger,
+  body.private-wealth-editorial .pwe-direct-channels,
+  body.private-wealth-editorial .pwe-consultation .homepage-quick-inquiry .journey-fields {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
