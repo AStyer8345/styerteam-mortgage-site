@@ -227,8 +227,9 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    decorateReveals();
+    // Read scroll position before reveal classes invalidate page styles.
     initNavState();
+    decorateReveals();
     if (!document.body.classList.contains('advisory-site')) initCounters();
     initReveals();
     initDividerDraw();
