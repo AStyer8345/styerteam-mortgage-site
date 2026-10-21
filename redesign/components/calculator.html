@@ -1,0 +1,306 @@
+<main id="adc-main">
+<!-- Breadcrumb -->
+<div class="breadcrumb bg-light">
+<div class="container">
+<nav aria-label="Breadcrumb">
+<ol class="breadcrumb-list" style="list-style:none;display:flex;gap:.5rem;padding:.75rem 0;margin:0;font-size:.85rem;">
+<li><a href="/index.html">Home</a></li>
+<li aria-hidden="true">›</li>
+<li><a href="/calculators.html">Calculators</a></li>
+<li aria-hidden="true">›</li>
+<li aria-current="page">Asset Depletion Calculator</li>
+</ol>
+</nav>
+</div>
+</div>
+<!-- Hero -->
+<section class="specialty-hero editorial-section" aria-labelledby="calculator-title">
+  <p class="eyebrow">Asset depletion calculator · Austin &amp; Texas</p>
+  <h1 id="calculator-title">See what your assets could contribute.</h1>
+  <p class="intro">Start with the balances you want to model. Change the inclusion percentages and calculation period to see how the monthly income illustration moves.</p>
+  <p>The calculation runs here, without a name, email, or phone number. It does not determine mortgage eligibility.</p>
+  <div class="actions"><a class="button button--secondary" href="#adc-calculator">Use the calculator</a><a class="button button--primary" href="/#scenario-review" data-contact="Review my asset scenario">Review my scenario</a></div>
+  <p class="hero-contact">Have a question about the numbers? Talk with Adam before choosing a program.</p>
+</section>
+<!-- ==========================================================================
+         START ASSET DEPLETION CALCULATOR MODULE
+         Copy this entire <section> (and the matching styles + script blocks)
+         into another page to embed the calculator. The wrapper class
+         .asset-depletion-calculator-module scopes everything.
+         ========================================================================== -->
+<section class="asset-depletion-calculator-module" id="adc-calculator">
+<div class="adc-container">
+<header style="text-align:center;max-width:680px;margin:0 auto 1.5rem;">
+<h2 class="adc-heading">Asset Depletion Income Calculator</h2>
+<p class="adc-sub">Compare illustrative calculation periods. The percentages and periods below are adjustable examples, not verified lender terms or a qualification decision.</p>
+</header>
+<div class="adc-grid">
+<!-- INPUTS ============================================== -->
+<div>
+<div class="adc-card">
+<h3 class="adc-card-title">Assets &amp; Income</h3>
+<p class="adc-card-desc">All starting balances are examples. The starting percentages include 100% of checking, brokerage, and other liquid assets, and 70% of retirement assets. These are illustrative assumptions, not lender eligibility rules.</p>
+<p class="adc-card-desc">Enter only the balances you want to model after setting aside funds for the down payment, closing costs, and reserves. This calculator does not subtract those amounts, taxes, penalties, or existing claims against the accounts automatically.</p>
+<div class="adc-field">
+<label class="adc-label" for="adc-checking">Checking / savings balance</label>
+<div class="adc-input-wrap">
+<span class="adc-input-prefix">$</span>
+<input class="adc-input" id="adc-checking" inputmode="decimal" min="0" step="1000" type="text" value="250000"/>
+</div>
+</div>
+<div class="adc-field">
+<label class="adc-label" for="adc-brokerage">Brokerage / non-retirement investments</label>
+<div class="adc-input-wrap">
+<span class="adc-input-prefix">$</span>
+<input class="adc-input" id="adc-brokerage" inputmode="decimal" min="0" step="1000" type="text" value="1000000"/>
+</div>
+</div>
+<div class="adc-field">
+<label class="adc-label" for="adc-retirement">Retirement accounts</label>
+<div class="adc-input-wrap">
+<span class="adc-input-prefix">$</span>
+<input class="adc-input" id="adc-retirement" inputmode="decimal" min="0" step="1000" type="text" value="750000"/>
+</div>
+</div>
+<div class="adc-field">
+<label class="adc-label" for="adc-other">Other liquid assets</label>
+<div class="adc-input-wrap">
+<span class="adc-input-prefix">$</span>
+<input class="adc-input" id="adc-other" inputmode="decimal" min="0" step="1000" type="text" value="0"/>
+</div>
+</div>
+<div class="adc-field">
+<label class="adc-label" for="adc-other-income">Existing monthly income <span style="font-weight:400;color:var(--adc-muted)">(optional)</span></label>
+<div class="adc-input-wrap">
+<span class="adc-input-prefix">$</span>
+<input class="adc-input" id="adc-other-income" inputmode="decimal" min="0" step="100" type="text" value="0"/>
+</div>
+<span class="adc-help">Optional income for this illustration, subject to lender review. Do not count the same assets both here as income and above as a balance.</span>
+</div>
+<div class="adc-field">
+<label class="adc-label" for="adc-target">Target monthly housing payment <span style="font-weight:400;color:var(--adc-muted)">(optional)</span></label>
+<div class="adc-input-wrap">
+<span class="adc-input-prefix">$</span>
+<input class="adc-input" id="adc-target" inputmode="decimal" min="0" step="100" type="text" value="10000"/>
+</div>
+<span class="adc-help">For an arithmetic comparison only. Include principal, interest, taxes, insurance, and HOA dues. Other debts and lender debt-to-income limits are not calculated.</span>
+</div>
+<div class="adc-field">
+<span class="adc-label">Illustrative calculation period</span>
+<div aria-label="Depletion period in months" class="adc-segmented" role="tablist">
+<button class="adc-seg-btn" data-period="36" role="tab" type="button">36 mo</button>
+<button aria-selected="true" class="adc-seg-btn is-active" data-period="60" role="tab" type="button">60 mo</button>
+<button class="adc-seg-btn" data-period="84" role="tab" type="button">84 mo</button>
+</div>
+<div aria-label="Reference longer depletion periods" class="adc-segmented" role="tablist" style="margin-top:.4rem;">
+<button class="adc-seg-btn adc-seg-btn--alt" data-period="120" role="tab" type="button">120 mo</button>
+<button class="adc-seg-btn adc-seg-btn--alt" data-period="240" role="tab" type="button">240 mo</button>
+<button class="adc-seg-btn adc-seg-btn--alt" data-period="360" role="tab" type="button">360 mo</button>
+</div>
+<span class="adc-help">All periods are illustrations. Changing the divisor does not establish that a program using it is available or that the same assets would qualify.</span>
+</div>
+<!-- Advanced assumptions accordion -->
+<div class="adc-accordion">
+<button aria-controls="adc-advanced" aria-expanded="false" class="adc-accordion-toggle" type="button">
+                  Adjust illustrative asset percentages
+                </button>
+<div class="adc-accordion-body" id="adc-advanced" role="region">
+<p class="adc-card-desc" style="margin-bottom:.85rem;">
+                    Adjust the percentage of each entered balance included in the illustration. These percentages do not establish eligibility. The applicable program may use a different asset pool, percentage, deduction, or calculation entirely.
+                  </p>
+<div class="adc-grid-2">
+<div class="adc-field">
+<label class="adc-label" for="adc-pct-checking">Checking / savings %</label>
+<div class="adc-input-wrap">
+<input class="adc-input adc-input--no-prefix" id="adc-pct-checking" inputmode="decimal" max="100" min="0" step="1" type="number" value="100"/>
+<span class="adc-input-suffix">%</span>
+</div>
+</div>
+<div class="adc-field">
+<label class="adc-label" for="adc-pct-brokerage">Brokerage %</label>
+<div class="adc-input-wrap">
+<input class="adc-input adc-input--no-prefix" id="adc-pct-brokerage" inputmode="decimal" max="100" min="0" step="1" type="number" value="100"/>
+<span class="adc-input-suffix">%</span>
+</div>
+</div>
+<div class="adc-field">
+<label class="adc-label" for="adc-pct-retirement">Retirement %</label>
+<div class="adc-input-wrap">
+<input class="adc-input adc-input--no-prefix" id="adc-pct-retirement" inputmode="decimal" max="100" min="0" step="1" type="number" value="70"/>
+<span class="adc-input-suffix">%</span>
+</div>
+</div>
+<div class="adc-field">
+<label class="adc-label" for="adc-pct-other">Other liquid %</label>
+<div class="adc-input-wrap">
+<input class="adc-input adc-input--no-prefix" id="adc-pct-other" inputmode="decimal" max="100" min="0" step="1" type="number" value="100"/>
+<span class="adc-input-suffix">%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RESULTS ============================================ -->
+<div>
+<div class="adc-card">
+<div aria-atomic="true" aria-live="polite" class="adc-hero">
+<p class="adc-hero-label">Illustrative Monthly Asset Income</p>
+<p class="adc-hero-number">
+<span id="adc-hero-amount">$0</span><span class="adc-hero-number-period" id="adc-hero-period">/mo @ 60 mo</span>
+</p>
+<p class="adc-hero-sub">Entered balances × assumed inclusion percentages ÷ selected months. This is not verified qualifying income.</p>
+</div>
+<div aria-label="Compare depletion periods" class="adc-period-cards" role="group">
+<button class="adc-period" data-period-card="36" type="button">
+<span class="adc-period-label">Shorter example</span>
+<div class="adc-period-months">36 mo</div>
+<div class="adc-period-income" id="adc-period-36">$0</div>
+<div class="adc-period-meta">per month</div>
+</button>
+<button aria-pressed="true" class="adc-period is-selected" data-period-card="60" type="button">
+<span class="adc-period-label">Middle example</span>
+<div class="adc-period-months">60 mo</div>
+<div class="adc-period-income" id="adc-period-60">$0</div>
+<div class="adc-period-meta">per month</div>
+</button>
+<button class="adc-period" data-period-card="84" type="button">
+<span class="adc-period-label">Longer example</span>
+<div class="adc-period-months">84 mo</div>
+<div class="adc-period-income" id="adc-period-84">$0</div>
+<div class="adc-period-meta">per month</div>
+</button>
+</div>
+<ul aria-live="polite" class="adc-result-list">
+<li class="adc-result-row">
+<span class="adc-result-label">Total assets entered</span>
+<span class="adc-result-value" id="adc-out-total-assets">$0</span>
+</li>
+<li class="adc-result-row">
+<span class="adc-result-label">Balances after assumed percentages</span>
+<span class="adc-result-value" id="adc-out-eligible">$0</span>
+</li>
+<li class="adc-result-row">
+<span class="adc-result-label">Illustrative asset income (selected period)</span>
+<span class="adc-result-value" id="adc-out-asset-income">$0</span>
+</li>
+<li class="adc-result-row" hidden="" id="adc-out-existing-row">
+<span class="adc-result-label">Other monthly income entered</span>
+<span class="adc-result-value" id="adc-out-existing">$0</span>
+</li>
+<li class="adc-result-row adc-result-row--total">
+<span class="adc-result-label">Combined monthly income illustration</span>
+<span class="adc-result-value" id="adc-out-total-income">$0</span>
+</li>
+</ul>
+<!-- Coverage meter (only when target payment entered) -->
+<div class="adc-coverage" hidden="" id="adc-coverage">
+<div class="adc-coverage-head">
+<span class="adc-coverage-title">Income illustration vs entered payment</span>
+<span class="adc-coverage-ratio" id="adc-coverage-ratio">—</span>
+</div>
+<div aria-hidden="true" class="adc-bar">
+<div class="adc-bar-fill" id="adc-bar-fill"></div>
+<div class="adc-bar-marker" id="adc-bar-marker" style="left:50%"></div>
+</div>
+<div class="adc-coverage-foot">
+<span>Illustrative income: <strong id="adc-coverage-income">$0</strong></span>
+<span>Target payment: <strong id="adc-coverage-target">$0</strong></span>
+</div>
+<p class="adc-result-row" style="border:none;padding:.5rem 0 0;margin:0;">
+<span class="adc-result-label" id="adc-surplus-label">Difference from entered payment</span>
+<span class="adc-result-value" id="adc-surplus-value">$0</span>
+</p>
+<p class="adc-help">This ratio is not a debt-to-income calculation or an affordability test. The difference is not spendable cash or an approved housing allowance.</p>
+</div>
+<!-- Status card -->
+<div aria-live="polite" class="adc-status" id="adc-status" role="status">
+<p class="adc-status-label">How to read this illustration</p>
+<h4 class="adc-status-title" id="adc-status-title">Planning estimate</h4>
+<p class="adc-status-msg" id="adc-status-msg">Enter balances and an optional payment to compare assumptions. A lender must separately determine eligible assets, qualifying income, debts, and the permitted housing payment.</p>
+</div>
+<p class="adc-disclaimer">
+                Estimates only. Not a quote, loan offer, approval, commitment to lend, or Loan Estimate.
+                Asset-utilization treatment varies by program, asset type, account ownership, liquidity,
+                seasoning, credit profile, property, and full underwriting review.
+              </p>
+</div>
+<!-- CTA inside module -->
+<div class="adc-cta">
+<h3>Want Adam to review the real asset picture?</h3>
+<p>Start with your broad asset mix, income situation, property goal, and timeline. Adam can explain which documentation and mortgage approaches are worth reviewing. Send financial statements only through the secure process.</p>
+<div class="adc-cta-row">
+<a class="adc-btn adc-btn-primary" href="/get-preapproved.html?intent=scenario">See My Options</a>
+<a class="adc-btn adc-btn-ghost" href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a Call</a>
+</div>
+<a class="adc-cta-link" hidden="" href="#" id="adc-app-link">Already talked with Adam? Start Full Loan Application</a>
+</div>
+<!-- Email-me-this-analysis (hidden unless WEBHOOK_URL set) -->
+<div class="adc-email" hidden="" id="adc-email">
+<h4>Email me this analysis</h4>
+<form action="#" data-preview-inquiry="true" data-preview-only="true" id="adc-email-form" novalidate="">
+<div class="adc-email-grid">
+<div class="adc-field" style="margin:0;">
+<label class="adc-label" for="adc-email-name">Name</label>
+<input autocomplete="name" class="adc-input adc-input--no-prefix" id="adc-email-name" required="" type="text"/>
+</div>
+<div class="adc-field" style="margin:0;">
+<label class="adc-label" for="adc-email-addr">Email</label>
+<input autocomplete="email" class="adc-input adc-input--no-prefix" id="adc-email-addr" required="" type="email"/>
+</div>
+<div class="adc-field adc-email-full" style="margin:0;">
+<label class="adc-label" for="adc-email-notes">Notes (optional)</label>
+<textarea class="adc-input adc-input--no-prefix" id="adc-email-notes" rows="3" style="resize:vertical;min-height:80px;"></textarea>
+</div>
+</div>
+<div style="display:flex;gap:.65rem;align-items:center;margin-top:.85rem;flex-wrap:wrap;">
+<button class="adc-btn adc-btn-primary" type="submit">Email me the analysis</button>
+<span aria-live="polite" class="adc-email-msg" id="adc-email-msg" role="status"></span>
+</div>
+</form>
+</div>
+</div>
+</div>
+<p class="adc-disclaimer" style="text-align:center;max-width:780px;margin:1.5rem auto 0;">
+          This calculator is for educational planning only. It does not determine whether any borrower qualifies for a mortgage.
+        </p>
+</div>
+</section>
+<!-- END ASSET DEPLETION CALCULATOR MODULE -->
+<!-- Educational section -->
+<section style="padding:clamp(2.5rem,5vw,4rem) 0;background:#fff;">
+<div class="adc-edu">
+<h2>What asset depletion income actually means</h2>
+<p>An asset-depletion calculation may convert eligible assets into monthly qualifying income under a lender's rules. The lender determines the eligible asset pool and required adjustments before applying the formula. This calculation does not by itself require monthly withdrawals. Names such as asset utilization can describe different methods at different lenders; a securities-backed line that pledges investments is a separate arrangement.</p>
+<h3>What changing the calculation period shows</h3>
+<p>Dividing the same assumed balance by fewer months produces a larger number. It does not show that the shorter-period option is available, less expensive, or a better fit. The 36-, 60-, and 84-month views are examples. Actual programs can accept different assets and apply different deductions, so changing only the divisor is not a complete program comparison.</p>
+<p>For example, <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-06/employment-related-assets-qualifying-income" rel="noopener" target="_blank">Fannie Mae's employment-related asset method</a> uses a defined eligible asset pool and divides net documented assets by the loan's amortization term. A 30-year loan uses 360 months. Selecting 360 here does not reproduce that method or its eligibility requirements.</p>
+<h3>Which borrowers use this?</h3>
+<p>This can be useful for retirees, founders after a liquidity event, high-net-worth borrowers, investors, business owners with low taxable income, and borrowers whose assets tell a stronger story than their tax returns.</p>
+<h3>Which assets usually need a closer review</h3>
+<p>Retirement accounts, business accounts, recently deposited funds, gifted balances, and accounts in trust or LLC ownership often need additional review. Account ownership, seasoning, liquidity restrictions, and tax treatment can all change how an asset is counted — or whether it is counted at all.</p>
+<p style="font-size:.78rem;color:var(--adc-muted,#6B7280);margin-top:2rem;">
+          Estimates only. Not a quote, loan offer, approval, commitment to lend, or Loan Estimate.
+          Asset-utilization treatment varies by program, asset type, account ownership, liquidity, seasoning,
+          credit profile, property, and full underwriting review.
+        </p>
+</div>
+</section>
+<!-- Related pages -->
+<section style="padding:clamp(2rem,4vw,3rem) 0;background:#F7F8FA;">
+<div class="container" style="max-width:1180px;margin:0 auto;padding:0 1.25rem;">
+<h2 style="font-family:var(--font-display,'Source Serif 4',Georgia,serif);color:#0A1F3F;font-size:1.4rem;text-align:center;margin:0 0 1.5rem;">Related asset-based mortgage pages</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
+<a href="/asset-depletion-mortgage-texas.html" style="display:block;background:#fff;padding:1.25rem;border-radius:12px;border:1px solid #E5E7EB;text-decoration:none;color:#0A1F3F;">
+<strong style="display:block;margin-bottom:.35rem;">Asset Depletion Mortgages — Texas</strong>
+<span style="font-size:.85rem;color:#6B7280;">Statewide overview of asset-based qualification programs.</span>
+</a>
+<a href="/high-net-worth-mortgage.html" style="display:block;background:#fff;padding:1.25rem;border-radius:12px;border:1px solid #E5E7EB;text-decoration:none;color:#0A1F3F;">
+<strong style="display:block;margin-bottom:.35rem;">High-Net-Worth Mortgage</strong>
+<span style="font-size:.85rem;color:#6B7280;">Private-wealth structures for complex balance sheets.</span>
+</a>
+</div>
+</div>
+</section>
+<p class="migration-parent"><a href="/calculators.html">Mortgage calculators</a></p></main>

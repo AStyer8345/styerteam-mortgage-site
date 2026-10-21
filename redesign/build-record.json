@@ -1,0 +1,33 @@
+{
+  "mode": "LOCAL ONLY \u2014 ZERO DEPLOYMENT",
+  "routes": 173,
+  "html_files": 226,
+  "baseline": "/Users/adamstyer/.codex/.chatgpt-projects/g-p-6acfab91c7208191ba422fed0760f633/work/preview-redesign/redesign/site",
+  "excluded_nonledger_utilities": [
+    "loanos.html",
+    "forms.html"
+  ],
+  "removed_non_calculator_scripts": [],
+  "legacy_css_fix": "Original Tiffany reference stylesheet copied byte-for-byte; authored page CSS restored",
+  "palette": "tiffany-original",
+  "live_routing_changed": false,
+  "components": {
+    "tiffany-style-provenance.json": "327d62cdd082070ef82e8290ba5a8eb7bd28b53f8bcce74d4cb5c8d8046c210c",
+    "home.html": "f9d7d4b2ddf4852353bc9aaee180b8060aa5e497303aa3980bf75a320e09a003",
+    "contact.html": "459e5e9e04ab8e5d41130f054e738a9109bd2b53d33f5eb7d538bab4bec0bc8d",
+    "tiffany-reference.css": "86188ce5a704c04322d970e998136d170dbebf2c41cf0252e65708fe665ccbcd",
+    "ui-polish.js": "fa1048ce13b40bdd0367d39842ca4f0e2ad32a17bf8e7539ebf4db6c2296eeed",
+    "bank-calculation.html": "a2cee307487e7792c565e18954761f61d993111bfd89c80eb82c751e65bc56c4",
+    "high-net-worth.html": "f25ae3c66c36f8cbb616101b75fcd3cc64ab37141c9ba5dab3bc2400aec461b5",
+    "bank-statement.html": "4f987623d97d8b09ff48a5667b910165fe17e78a11d81856df143782780b8c17",
+    "navigation.js": "dcee17a00a83af6e512fe31d181fd45e5564db6ebe4adfd78a1d49942c72498e",
+    "home-opening.html": "16c350827de6acf599d5763cdf99a0e3ae537372d9ba10dcf9593a40f982f51d",
+    "orchestration.css": "1767ac16841e5fe2784c5f199fc60b503d22f2f06dc5ec2c26edaf58d484ef68",
+    "navigation.css": "e688b15ddb50c26ae89cb377e4ea053b7b083e21b5edc1c3a659cef649d0d5d2",
+    "calculator.html": "c1eedf7120373cb1841a3bc68924f0e3c29dce5d06fdf4389fa6c123e50ea92c",
+    "footer.html": "85b1a6cccb5d683fdb867c5f4fc8a439169259714efe2150531a5b10977eac4c",
+    "faq-schema-updates.json": "8f6ff8b2d62aabc3c0c10cd4bae358f482ae5cf2266985d46fded01d4816eb57",
+    "header.html": "139852ab82996047bcd5b63586d2dbd7b08062c7c321e42bf7c04a7261eb415b",
+    "hierarchy.css": "55ff2a39a614e95e3758b1cf881bd791a0c6118d446eae8b6f6c993370a360ba"
+  }
+}

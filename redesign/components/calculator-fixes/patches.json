@@ -1,0 +1,40 @@
+{
+  "assets": [
+    {
+      "path": "/calculator-suite.js",
+      "replacementFile": "components/calculator-fixes/calculator-suite.js"
+    }
+  ],
+  "inlineScripts": [
+    {
+      "route": "/asset-depletion-calculator.html",
+      "originalScriptSha256": "63a83ccb0e49842eddd5e281dd1f37271d08c5b79364cbd1371616999a0a1c67",
+      "replacementFile": "components/calculator-fixes/asset-depletion-calculator.js"
+    },
+    {
+      "route": "/calculator-refinance-breakeven.html",
+      "originalScriptSha256": "c1e76c9d7be7f752fff10d743b9ed4d430f395c2e477071fc994e98e2d1bab2c",
+      "replacementFile": "components/calculator-fixes/calculator-refinance-breakeven.js"
+    },
+    {
+      "route": "/refinance-calculator.html",
+      "originalScriptSha256": "0ad4535cc23f6232d848fd8b961491bd47ae81466abfb555cf37c692baa08165",
+      "replacementFile": "components/calculator-fixes/refinance-calculator.js"
+    },
+    {
+      "route": "/dscr-calculator.html",
+      "originalScriptSha256": "fe9bc8c27815608fe579c9f0387f43d8e54dfa3a076eb1e21a6371a44785b840",
+      "replacementFile": "components/calculator-fixes/dscr-calculator.js"
+    },
+    {
+      "route": "/rate-buydown-calculator.html",
+      "originalScriptSha256": "b3b55ba1f5285a82555184f371d301a6186a4b069b5f4bf645e7e2cfeb903612",
+      "replacementFile": "components/calculator-fixes/rate-buydown-calculator.js"
+    },
+    {
+      "route": "/wrap-mortgage-calculator.html",
+      "originalScriptSha256": "ac1d123420cdac51b4db64cec4bcf8d040477dd62e1c33e9ac7c88bbc4752cf6",
+      "replacementFile": "components/calculator-fixes/wrap-mortgage-calculator.js"
+    }
+  ]
+}

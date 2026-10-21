@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Austin Rate Watch | Mortgage Rate Alerts | NMLS #513013</title>
+<meta content="Get Austin TX mortgage rates delivered every Friday — know when to lock or wait. Free weekly updates from mortgage broker Adam Styer, NMLS #513013." name="description"/>
+<link href="https://styermortgage.com/rate-alert.html" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="Austin Rate Watch | Free Weekly Mortgage Rate Updates" property="og:title"/>
+<meta content="Get Austin mortgage rates delivered every Friday. Know when to lock. Mortgage broker, 40+ capital partners. Free — no spam ever." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://styermortgage.com/rate-alert.html" property="og:url"/>
+<meta content="https://styermortgage.com/assets/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<!-- Favicon -->
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-180.png" rel="apple-touch-icon" sizes="180x180"/>
+<!-- Fonts -->
+<noscript></noscript>
+<!-- Stylesheet -->
+<link href="/style.css?v=20260830-cta1" rel="stylesheet"/>
+<!-- Google Tag Manager -->
+<!-- Google Ads Global Site Tag -->
+<style>
+    /* ── Landing page nav overrides ────────────────────────── */
+    .lp-header .nav-links,
+    .lp-header .mobile-menu-toggle,
+    .lp-header .nav-cta { display: none !important; }
+
+    /* ── Hero ──────────────────────────────────────────────── */
+    .lp-hero {
+      background: var(--color-navy);
+      padding: var(--spacing-4xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .lp-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: var(--spacing-4xl);
+      align-items: center;
+    }
+    .lp-hero-copy h1 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-5xl);
+      color: var(--color-white);
+      line-height: var(--line-height-tight);
+      margin-bottom: var(--spacing-lg);
+    }
+    .lp-hero-copy .lp-subhead {
+      font-size: var(--font-size-lg);
+      color: rgba(255,255,255,0.85);
+      margin-bottom: var(--spacing-xl);
+      line-height: var(--line-height-relaxed);
+    }
+    .lp-trust-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      align-items: center;
+    }
+    .lp-trust-chip {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 2rem;
+      padding: 6px 14px;
+      font-size: var(--font-size-sm);
+      color: rgba(255,255,255,0.9);
+      white-space: nowrap;
+    }
+    .lp-trust-chip .stars { color: #F59E0B; }
+
+    /* ── Lead Form ─────────────────────────────────────────── */
+    .lp-form-card {
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+      padding: var(--spacing-2xl);
+    }
+    .lp-form-card h2 {
+      font-size: var(--font-size-2xl);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-sm);
+      font-weight: var(--font-weight-bold);
+    }
+    .lp-form-card .lp-form-tagline {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray);
+      margin-bottom: var(--spacing-lg);
+      line-height: var(--line-height-relaxed);
+    }
+    .lp-form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: var(--spacing-md);
+    }
+    .lp-form-field label {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-dark-gray);
+    }
+    .lp-form-field input {
+      padding: 12px 14px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-base);
+      font-family: var(--font-primary);
+      color: var(--color-text);
+      background: var(--color-white);
+      transition: border-color var(--transition-base);
+      width: 100%;
+    }
+    .lp-form-field input:focus {
+      outline: none;
+      border-color: var(--color-navy);
+    }
+    .lp-form-submit {
+      margin-top: var(--spacing-lg);
+    }
+    .lp-form-submit .btn {
+      width: 100%;
+      padding: 14px;
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      justify-content: center;
+    }
+    .lp-form-disclaimer {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray);
+      text-align: center;
+      margin-top: var(--spacing-md);
+      line-height: var(--line-height-relaxed);
+    }
+    .lp-form-error {
+      display: none;
+      background: #FEF2F2;
+      border: 1px solid #FCA5A5;
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md);
+      font-size: var(--font-size-sm);
+      color: #B91C1C;
+      margin-top: var(--spacing-md);
+      text-align: center;
+    }
+
+    /* ── What You Get section ──────────────────────────────── */
+    .lp-what-you-get {
+      padding: var(--spacing-4xl) 0;
+      background: var(--color-white);
+    }
+    .lp-what-you-get h2 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-3xl);
+      color: var(--color-navy);
+      text-align: center;
+      margin-bottom: var(--spacing-2xl);
+    }
+    .lp-wyg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-3xl);
+    }
+    .lp-wyg-card {
+      background: var(--color-light-gray);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      border-left: 4px solid var(--color-gold);
+    }
+    .lp-wyg-card .lp-wyg-icon {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-md);
+    }
+    .lp-wyg-card h3 {
+      font-size: var(--font-size-lg);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-sm);
+      font-weight: var(--font-weight-bold);
+    }
+    .lp-wyg-card p {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray);
+      line-height: var(--line-height-relaxed);
+    }
+
+    /* ── Sample Email Preview ──────────────────────────────── */
+    .lp-sample-email {
+      background: var(--color-light-gray);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-2xl);
+      max-width: 560px;
+      margin: 0 auto;
+      border: 1px solid var(--color-border);
+    }
+    .lp-sample-email .sample-label {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-md);
+    }
+    .lp-sample-email .sample-subject {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-sm);
+    }
+    .lp-sample-email .sample-preview {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray);
+      margin-bottom: var(--spacing-lg);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--spacing-lg);
+    }
+    .lp-sample-email .sample-rate-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--font-size-sm);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      color: var(--color-dark-gray);
+    }
+    .lp-sample-email .sample-rate-row .rate-label { color: var(--color-gray); }
+    .lp-sample-email .sample-rate-row .rate-value { font-weight: var(--font-weight-semibold); color: var(--color-navy); }
+    .lp-sample-email .sample-insight {
+      margin-top: var(--spacing-md);
+      font-size: var(--font-size-sm);
+      color: var(--color-dark-gray);
+      font-style: italic;
+      line-height: var(--line-height-relaxed);
+    }
+
+    /* ── Credibility ──────────────────────────────────────── */
+    .lp-credibility {
+      padding: var(--spacing-4xl) 0;
+      background: var(--color-light-gray);
+    }
+    .lp-cred-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-4xl);
+      align-items: center;
+    }
+    .lp-cred-copy h2 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-3xl);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-lg);
+    }
+    .lp-cred-copy p {
+      font-size: var(--font-size-base);
+      color: var(--color-gray);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--spacing-md);
+    }
+    .lp-cred-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+    }
+    .lp-stat-box {
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-lg);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .lp-stat-box .stat-number {
+      font-family: var(--font-display);
+      font-size: var(--font-size-4xl);
+      color: var(--color-gold);
+      font-weight: var(--font-weight-bold);
+      line-height: 1;
+      margin-bottom: var(--spacing-sm);
+    }
+    .lp-stat-box .stat-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray);
+      line-height: var(--line-height-relaxed);
+    }
+
+    /* ── Minimal footer ─────────────────────────────────────── */
+    .lp-footer {
+      background: var(--color-dark-gray);
+      padding: var(--spacing-xl) 0;
+    }
+    .lp-nmls {
+      font-size: var(--font-size-xs);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      line-height: var(--line-height-relaxed);
+    }
+    .lp-nmls a { color: rgba(255,255,255,0.5); text-decoration: underline; }
+
+    /* ── Mobile ─────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .lp-hero-inner {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+      }
+      .lp-form-card { order: -1; }
+      .lp-hero-copy h1 { font-size: var(--font-size-4xl); }
+      .lp-wyg-grid { grid-template-columns: 1fr; }
+      .lp-cred-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .lp-hero { padding: var(--spacing-2xl) 0; }
+      .lp-cred-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+<link href="/experience.css" rel="stylesheet"/>
+<link href="/advisory-design.css?v=20260918" rel="stylesheet"/>
+<link href="/premium-interior.css" rel="stylesheet"/>
+<link href="/premium-secondary.css" rel="stylesheet"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/><meta content="connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/><link href="/migration-navigation.css" rel="stylesheet"/><link href="/styles.css" rel="stylesheet"/><link href="/orchestration.css" rel="stylesheet"/><link href="/navigation.css" rel="stylesheet"/><link href="/hierarchy.css" rel="stylesheet"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://styermortgage.com/resources/"}, {"@type": "ListItem", "position": 3, "name": "Austin mortgage rates", "item": "https://styermortgage.com/austin-mortgage-rates.html"}, {"@type": "ListItem", "position": 4, "name": "Mortgage rate alerts", "item": "https://styermortgage.com/rate-alert.html"}]}</script></head>
+<body class="premium-interior premium-secondary premium-inquiry editorial-page lead-page advisory-site orchestration-page legacy-page" data-active-nav="resources" data-palette="tiffany-original" data-preview-only="true"><a class="skip" href="#main">Skip to content</a>
+<!-- Google Tag Manager (noscript) -->
+<noscript></noscript>
+<!-- Logo-only header -->
+<header class="site-header sm-header">
+<div class="container">
+<nav aria-label="Main navigation">
+<a aria-label="The Styer Team home" class="brand nav-brand" href="/"><span>THE STYER TEAM</span><small>Adam Styer · NMLS #513013</small></a>
+<button aria-controls="site-nav-links" aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle" type="button"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+<ul class="nav-links" id="site-nav-links"><li class="nav-has-dropdown hi-program-menu" data-nav-section="programs"><a aria-expanded="false" aria-haspopup="true" href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li class="hi-nav-group"><span class="hi-nav-group-title">Conventional &amp; Government</span><ul><li><a href="/loans/conventional.html">Conventional Loans</a></li><li><a href="/loans/jumbo.html">Jumbo Loans</a></li><li><a href="/loans/fha.html">FHA Loans</a></li><li><a href="/loans/va.html">VA Loans</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Income &amp; Asset Qualification</span><ul><li><a href="/bank-statement-loans.html">Bank Statement Loans</a></li><li><a href="/1099-only-mortgage-texas.html">1099 Loans</a></li><li><a href="/p-and-l-mortgage-texas.html">P&amp;L Loans</a></li><li><a href="/asset-depletion-mortgage-texas.html">Asset Depletion Loans</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Investment Property</span><ul><li><a href="/dscr-loans-texas.html">DSCR Loans</a></li><li><a href="/loans/investment.html">Conventional Investment Property Loans</a></li><li><a href="/dscr-cash-out-refinance-texas.html">DSCR Cash-Out Refinance</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Refinance &amp; Equity</span><ul><li><a href="/loans/refinance.html">Mortgage Refinance</a></li><li><a href="/home-equity-loans-texas.html">Home Equity Loans</a></li><li><a href="/reverse-mortgage-texas.html">Reverse Mortgages</a></li><li><a href="/buy-before-you-sell-austin.html">Buy Before You Sell</a></li></ul></li><li><a href="/products.html">View all loan programs →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="audiences"><a aria-expanded="false" aria-haspopup="true" href="/who-we-serve.html">Who We Serve</a><ul class="nav-dropdown"><li><a href="/self-employed-mortgage-austin.html">Self-Employed &amp; Business Owners</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth &amp; Asset-Rich Borrowers</a></li><li><a href="/investor-loans.html">Real Estate Investors</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li><a href="/move-up-buyers.html">Repeat &amp; Move-Up Buyers</a></li><li><a href="/who-we-serve.html">View who we serve →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="resources"><a aria-expanded="false" aria-haspopup="true" href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Mortgage calculators</a></li><li><a href="/mortgage-guides.html">Mortgage guides</a></li><li><a href="/scenarios.html">Borrower scenarios</a></li><li><a href="/austin-area-mortgage-lender.html">Austin &amp; Central Texas</a></li><li><a href="/blog.html">Articles &amp; updates</a></li><li><a href="/referral-partners-self-employed-clients.html">Professional partners</a></li><li><a href="/resources/">All resources →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="about"><a aria-expanded="false" aria-haspopup="true" href="/about.html">About</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam &amp; Tiffany</a></li><li><a href="/testimonials.html">Client reviews</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/mortgage-broker-vs-bank.html">Working with a mortgage broker</a></li></ul></li></ul>
+<div class="sm-header-actions"><a class="phone sm-header-phone" href="tel:+15129566010">Call (512) 956-6010</a><a class="button green" data-header-apply="" href="/apply-now/">Apply Online <span aria-hidden="true">↗</span></a></div>
+</nav>
+</div>
+</header><main id="main"><nav aria-label="Breadcrumb" class="ledger-breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/resources/">Resources</a></li><li><a href="/austin-mortgage-rates.html">Austin mortgage rates</a></li><li aria-current="page">Mortgage rate alerts</li></ol></nav>
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="lp-hero">
+<div class="container">
+<div class="lp-hero-inner">
+<!-- Copy column -->
+<div class="lp-hero-copy">
+<h1>Rate Watch: Know When Austin Mortgage Rates Drop</h1>
+<p class="lp-subhead">Free weekly rate intel from a mortgage broker with access to 40+ capital partners — delivered every Friday morning.</p>
+<div class="lp-trust-bar">
+<span class="lp-trust-chip"><span class="stars">★★★★★</span> 5.0 (140+ Reviews)</span>
+<span class="lp-trust-chip">NMLS #513013</span>
+<span class="lp-trust-chip">Austin, TX</span>
+<span class="lp-trust-chip">40+ Capital Partners</span>
+</div>
+</div>
+<!-- Form column -->
+<div class="lp-form-card">
+<h2>Join Austin Rate Watch</h2>
+<p class="lp-form-tagline">Free. Weekly. No spam. Unsubscribe anytime.</p>
+<!-- Netlify honeypot -->
+<p style="display:none;">
+<label>Don't fill this out if you're human: <input name="bot-field"/></label>
+</p>
+<form action="#" data-preview-inquiry="true" data-preview-only="true" id="form-rate-alert" method="POST" name="rate-alert-form">
+<input name="form-name" type="hidden" value="rate-alert-form"/>
+<input name="inquiry_id" type="hidden" value=""/>
+<!-- Hidden tracking fields — populated by JS before submit -->
+<input id="ra-tag" name="tag" type="hidden" value="rate-alert"/>
+<input id="ra-lead-source" name="lead_source" type="hidden" value="Rate Alert Funnel"/>
+<input id="ra-page-url" name="page_url" type="hidden"/>
+<input id="ra-utm-source" name="utm_source" type="hidden"/>
+<input id="ra-utm-medium" name="utm_medium" type="hidden"/>
+<input id="ra-utm-campaign" name="utm_campaign" type="hidden"/>
+<input id="ra-utm-term" name="utm_term" type="hidden"/>
+<input id="ra-utm-content" name="utm_content" type="hidden"/>
+<input id="ra-referrer" name="referrer" type="hidden"/>
+<div class="lp-form-field">
+<label for="ra-fname">First Name</label>
+<input autocomplete="given-name" id="ra-fname" name="fname" placeholder="First Name" required="" type="text"/>
+</div>
+<div class="lp-form-field">
+<label for="ra-email">Email Address</label>
+<input autocomplete="email" id="ra-email" name="email" placeholder="Your Email" required="" type="email"/>
+</div>
+<!-- TCPA consent -->
+<div class="hero-quick-form-field" style="grid-column:1/-1;margin-top:4px;">
+<label style="display:flex;align-items:flex-start;gap:8px;font-size:0.75rem;font-weight:400;color:var(--color-gray);cursor:pointer;line-height:1.5;">
+<input name="tcpa_consent" required="" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;" type="checkbox"/>
+<span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+</label>
+</div>
+<div class="lp-form-submit">
+<button class="btn btn-primary" id="ra-submit-btn" type="submit">Get My Weekly Rate Updates →</button>
+</div>
+<div class="lp-form-error" id="ra-form-error">
+                Something went wrong. Please try again or call (512) 956-6010.
+              </div>
+</form>
+<p class="lp-form-disclaimer">No spam. Unsubscribe anytime.<br/>Join Austin homebuyers watching rates.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ══ WHAT YOU GET ═══════════════════════════════════════ -->
+<section class="lp-what-you-get">
+<div class="container">
+<h2>What lands in your inbox every Friday</h2>
+<div class="lp-wyg-grid">
+<div class="lp-wyg-card">
+<div class="lp-wyg-icon"></div>
+<h3>Austin Rate Snapshot</h3>
+<p>30yr, 15yr, FHA, and VA rates for the Austin market — not national averages. Real numbers from 40+ capital partners.</p>
+</div>
+<div class="lp-wyg-card">
+<div class="lp-wyg-icon"></div>
+<h3>Rate Move Alerts</h3>
+<p>When rates shift more than 0.25% in a week, you'll know first. Timing a rate lock can save you thousands — this is how you stay ahead.</p>
+</div>
+<div class="lp-wyg-card">
+<div class="lp-wyg-icon"></div>
+<h3>Lock or Wait?</h3>
+<p>One honest sentence from me each week: "lock now" or "still watching." No hedging. No generic analysis. Just my read on the Austin market.</p>
+</div>
+</div>
+<!-- Sample email preview -->
+<div class="lp-sample-email">
+<p class="sample-label">Sample Friday Rate Update</p>
+<p class="sample-subject">Austin Rate Watch — Week of March 28</p>
+<p class="sample-preview">From: Adam Styer &lt;adam@thestyerteam.com&gt;  ·  Subject: Austin Rate Watch — this week's numbers</p>
+<div class="sample-rate-row">
+<span class="rate-label">30-Year Fixed</span>
+<span class="rate-value">6.875% (6.92% APR)</span>
+</div>
+<div class="sample-rate-row">
+<span class="rate-label">15-Year Fixed</span>
+<span class="rate-value">6.125% (6.18% APR)</span>
+</div>
+<div class="sample-rate-row">
+<span class="rate-label">FHA 30-Year</span>
+<span class="rate-value">6.375% (7.14% APR)</span>
+</div>
+<div class="sample-rate-row">
+<span class="rate-label">VA 30-Year</span>
+<span class="rate-value">6.250% (6.49% APR)</span>
+</div>
+<p class="sample-insight">"My take: rates are sticky near 7%. If you're closing in 30 days, lock now. If you're 60+ days out, floating still makes sense — but set a lock trigger at 6.75%." — Adam</p>
+</div>
+<p class="text-center" style="margin-top:var(--spacing-xl);font-size:var(--font-size-sm);color:var(--color-gray);">Rates above are illustrative examples. Actual rates vary based on credit score, loan amount, and property type. APR shown for illustration only.</p>
+</div>
+</section>
+<!-- ══ CREDIBILITY ════════════════════════════════════════ -->
+<section class="lp-credibility">
+<div class="container">
+<div class="lp-cred-inner">
+<div class="lp-cred-copy">
+<h2>Why get rates from a broker instead of a bank</h2>
+<p>Banks give you one rate. Their rate. I work with 40+ capital partners — which means I shop your loan and bring you the best combination of rate, fees, and terms.</p>
+<p>Wholesale rates are generally lower than retail bank rates because there's no branch overhead baked in. I make my margin from the lender — not from marking up your rate.</p>
+<p>The Rate Watch isn't a sales funnel. It's how I show up for Austin buyers who are paying attention. When you're ready to lock — I'll be the first call you want to make.</p>
+</div>
+<div class="lp-cred-stats">
+<div class="lp-stat-box">
+<div class="stat-number">40+</div>
+<div class="stat-label">Capital partners in my network</div>
+</div>
+<div class="lp-stat-box">
+<div class="stat-number">1,000+</div>
+<div class="stat-label">Loans closed in Austin</div>
+</div>
+<div class="lp-stat-box">
+<div class="stat-number">5.0</div>
+<div class="stat-label">Google · Zillow · 140+ reviews</div>
+</div>
+<div class="lp-stat-box">
+<div class="stat-number">21</div>
+<div class="stat-label">Average days to close</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<p class="migration-parent"><a href="/austin-mortgage-rates.html">Austin mortgage rates</a></p></main><footer class="site-footer full-site-footer" id="site-footer">
+<div class="footer-intro">
+<div>
+<p class="eyebrow">Adam Styer · Austin &amp; Central Texas</p>
+<h2>Your Austin mortgage broker.</h2>
+<p>Compare lenders, ask questions, and understand your mortgage options.</p>
+</div>
+<ul class="footer-contact-list">
+<li><a href="tel:+15129566010">Call Adam: (512) 956-6010</a></li>
+<li><a href="sms:+15129566010">Text Adam</a></li>
+<li><a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a></li>
+<li><a href="mailto:tiffanyw@gorascal.com">Email Tiffany</a></li>
+</ul>
+</div>
+<div aria-label="Mortgage resource directory" class="footer-directory" role="navigation"><section aria-labelledby="footer-group-0"><h3 id="footer-group-0">Loan Programs</h3><ul><li><a href="/products.html">All loan programs</a></li><li><a href="/loans/conventional.html">Conventional &amp; jumbo</a></li><li><a href="/non-qm-loans.html">Income &amp; asset qualification</a></li><li><a href="/dscr-loans-texas.html">DSCR &amp; investment property</a></li><li><a href="/loans/refinance.html">Refinance &amp; home equity</a></li></ul></section><section aria-labelledby="footer-group-1"><h3 id="footer-group-1">Who We Serve</h3><ul><li><a href="/self-employed-mortgage-austin.html">Self-Employed &amp; Business Owners</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth &amp; Asset-Rich Borrowers</a></li><li><a href="/investor-loans.html">Real Estate Investors</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li><a href="/move-up-buyers.html">Repeat &amp; Move-Up Buyers</a></li></ul></section><section aria-labelledby="footer-group-2"><h3 id="footer-group-2">Resources</h3><ul><li><a href="/calculators.html">Mortgage calculators</a></li><li><a href="/mortgage-guides.html">Detailed mortgage guides</a></li><li><a href="/scenarios.html">Borrower scenarios</a></li><li><a href="/resources/">All resources</a></li><li><a href="/resources/full-directory.html">Complete resource directory</a></li></ul></section><section aria-labelledby="footer-group-3"><h3 id="footer-group-3">About &amp; Contact</h3><ul><li><a href="/about.html">Adam &amp; Tiffany</a></li><li><a href="/testimonials.html">Client reviews</a></li><li><a href="/contact.html">Contact Adam</a></li><li><a href="/austin-area-mortgage-lender.html">Austin &amp; Central Texas</a></li><li><a href="/referral-partners-self-employed-clients.html">Professional partners</a></li></ul></section></div>
+<div aria-label="Licensing and consumer information" class="footer-disclosures">
+<p><strong>Adam Styer · NMLS #513013</strong> · <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener">NMLS Consumer Access</a></p>
+<!-- LOCAL-REVIEW RELEASE GATE: verify and insert the current sponsoring company's
+         approved legal/DBA name, NMLS ID and website; confirm team-name presentation,
+         applicable company/banker notice and current licensing before publication.
+         Do not infer an affiliation or company NMLS number from legacy source pages. -->
+<p class="footer-equal-housing"><strong>Equal Housing Opportunity.</strong> We support fair access to housing and mortgage financing.</p>
+<p>Mortgage options depend on the lender’s requirements and the complete file. Information on this site is not a loan approval, rate lock, or commitment to lend. Calculator results are estimates.</p>
+<div aria-label="Legal and consumer notices" class="footer-legal-links" role="navigation">
+<a href="/texas-complaint-notice.html">Texas Consumer Complaint and Recovery Fund Notice</a>
+<a href="/privacy.html">Privacy policy</a>
+<a href="/terms.html">Terms and conditions</a>
+</div>
+<p>For Texas mortgage complaint information, visit the <a href="https://www.sml.texas.gov/consumers/complaints/" rel="noopener">Texas Department of Savings and Mortgage Lending</a> or call <a href="tel:+18772765550">1-877-276-5550</a>.</p>
+<p>Send financial documents through the secure channel provided by the team.</p>
+</div>
+</footer>
+<!-- Minimal NMLS footer -->
+<script>
+    // Populate UTM + tracking hidden fields on page load
+    (function () {
+      var p = new URLSearchParams(window.location.search);
+      var utmFields = { source: 'utm_source', medium: 'utm_medium', campaign: 'utm_campaign', term: 'utm_term', content: 'utm_content' };
+      for (var key in utmFields) {
+        var el = document.getElementById('ra-utm-' + key);
+        if (el) el.value = p.get('utm_' + key) || (key === 'source' ? 'direct' : (key === 'medium' ? 'web' : (key === 'campaign' ? 'rate-alert-funnel' : '')));
+      }
+      var urlEl = document.getElementById('ra-page-url');
+      if (urlEl) urlEl.value = window.location.href;
+    })();
+  </script>
+
+
+<dialog aria-describedby="contact-intro contact-preview-note" aria-labelledby="contact-title" class="or-contact-dialog" id="contact">
+<button aria-label="Close scenario review" class="close" type="button">×</button>
+<div data-contact-entry="">
+<p class="eyebrow">START WITH YOUR SITUATION</p>
+<h2 id="contact-title" tabindex="-1">What are you trying to do?</h2>
+<p class="dialog-intro" id="contact-intro">Tell me your goal and what needs a closer look. A few sentences are enough.</p>
+<p class="preview-notice" id="contact-preview-note">Preview only. Use sample details. Nothing is sent or saved.</p>
+<form data-inquiry-form="" id="preview-contact" method="post" name="contact">
+<fieldset disabled="">
+<input id="inquiry-goal" name="goal" type="hidden" value="Review my scenario"/>
+<div class="or-form-row">
+<div><label for="inquiry-name">Your name <span aria-hidden="true">*</span></label><input autocomplete="off" id="inquiry-name" maxlength="160" name="name" required=""/></div>
+<div><label for="inquiry-email">Email <span aria-hidden="true">*</span></label><input autocomplete="off" id="inquiry-email" maxlength="160" name="email" required="" type="email"/></div>
+</div>
+<label for="inquiry-phone">Phone (optional)</label><input autocomplete="off" id="inquiry-phone" maxlength="30" name="phone" type="tel"/>
+<label for="inquiry-message">What should I know? (optional)</label><textarea aria-describedby="inquiry-privacy" id="inquiry-message" maxlength="2000" name="message" rows="3"></textarea>
+<p class="or-form-hint" id="inquiry-privacy">Please leave out Social Security numbers, account numbers, and documents. Fields marked * are required.</p>
+<button class="button button--primary gold" data-inquiry-submit="" type="submit">Preview my scenario review <span aria-hidden="true">→</span></button>
+<p aria-live="polite" data-form-status="" role="status"></p><p data-form-error="" role="alert" tabindex="-1"></p>
+</fieldset>
+<noscript><p>JavaScript is required for the preview form. You can still read every guide and use the contact links on the page.</p></noscript>
+</form>
+</div>
+<div class="confirmation" data-contact-confirmation="" hidden="" role="status" tabindex="-1">
+<h3>Preview complete.</h3><p data-confirmation-copy="">Nothing was sent or saved. This shows the next step after a scenario review request.</p><button class="button green close-action" type="button">Back to the page <span aria-hidden="true">→</span></button>
+</div>
+</dialog>
+<dialog aria-labelledby="info-title" id="info"><button aria-label="Close details" class="close" type="button">×</button><div id="info-content"></div></dialog>
+<script defer="" src="/preview-safety.js"></script><script defer="" src="/script.js"></script><script defer="" src="/interaction.js"></script><script defer="" src="/navigation.js"></script><script defer="" src="/ui-polish.js"></script></body>
+</html>

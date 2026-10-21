@@ -1,0 +1,60 @@
+{
+  "scope": "Static local configuration only; no server, deployment or network requests",
+  "source_path_patterns": 247,
+  "missing": [],
+  "intentional_application_gate_overrides": [
+    {
+      "route": "/apply-now/",
+      "original": "https://hypersmart.my1003app.com/513013/register?time=1779291829279",
+      "local_preview": "/apply.html"
+    },
+    {
+      "route": "/apply-now",
+      "original": "https://hypersmart.my1003app.com/513013/register?time=1779291829279",
+      "local_preview": "/apply.html"
+    }
+  ],
+  "production_host_aliases_not_applicable_to_local_preview": [
+    {
+      "source": "_redirects",
+      "line": 3,
+      "from": "https://adamstyer.com/*",
+      "to": "https://styermortgage.com/:splat",
+      "status": 301,
+      "force": true,
+      "conditions": [],
+      "raw": "https://adamstyer.com/*      https://styermortgage.com/:splat  301!"
+    },
+    {
+      "source": "_redirects",
+      "line": 4,
+      "from": "https://www.adamstyer.com/*",
+      "to": "https://styermortgage.com/:splat",
+      "status": 301,
+      "force": true,
+      "conditions": [],
+      "raw": "https://www.adamstyer.com/*  https://styermortgage.com/:splat  301!"
+    },
+    {
+      "source": "_redirects",
+      "line": 5,
+      "from": "http://adamstyer.com/*",
+      "to": "https://styermortgage.com/:splat",
+      "status": 301,
+      "force": true,
+      "conditions": [],
+      "raw": "http://adamstyer.com/*       https://styermortgage.com/:splat  301!"
+    },
+    {
+      "source": "_redirects",
+      "line": 6,
+      "from": "http://www.adamstyer.com/*",
+      "to": "https://styermortgage.com/:splat",
+      "status": 301,
+      "force": true,
+      "conditions": [],
+      "raw": "http://www.adamstyer.com/*   https://styermortgage.com/:splat  301!"
+    }
+  ],
+  "config_sha256": "6e4a5cff6beea7597980b4279bf18c908b28b4fa0248f1f142e4a5fa12e691a5"
+}

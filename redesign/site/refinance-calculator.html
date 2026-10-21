@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script>window.dataLayer = window.dataLayer || [];</script>
+<!-- Google Tag Manager -->
+<!-- End Google Tag Manager -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Refinance Cost Calculator Austin TX | Adam Styer</title>
+<link href="https://styermortgage.com/refinance-calculator.html" rel="canonical"/>
+<meta content="Estimate refinance closing costs and break-even timeline for your Austin TX mortgage. Free tool from Adam Styer, mortgage broker, NMLS #513013." name="description"/>
+<!-- Open Graph -->
+<meta content="Refinance Closing Costs Quick Calculator | Adam Styer | HyperSmart Home Loans" property="og:title"/>
+<meta content="Quick calculator to estimate refinance closing costs and break-even timeline." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://styermortgage.com/refinance-calculator.html" property="og:url"/>
+<meta content="Adam Styer | HyperSmart Home Loans" property="og:site_name"/>
+<meta content="https://styermortgage.com/assets/og-image.png" property="og:image"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Refinance Closing Costs Quick Calculator | Adam Styer | HyperSmart Home Loans" name="twitter:title"/>
+<meta content="Quick calculator to estimate refinance closing costs and break-even timeline." name="twitter:description"/>
+<meta content="https://styermortgage.com/assets/og-image.png" name="twitter:image"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="calculator-suite.css" rel="stylesheet"/>
+<link href="/editorial-system.css?v=20260829-audit1" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Refinance Closing Cost Calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "url": "https://styermortgage.com/refinance-calculator.html", "description": "Free refinance closing cost calculator for estimating lender fees, third-party fees, escrow setup, credits, and cash to close.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "provider": {"@type": "Person", "name": "Adam Styer", "identifier": "NMLS #513013"}}</script>
+<style>
+/* ===== CSS VARIABLES & RESET ===== */
+:root {
+  --navy: #1e3a5f;
+  --blue: #2563eb;
+  --blue-light: #dbeafe;
+  --green: #047857;
+  --green-bg: #ecfdf5;
+  --red: #dc2626;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  --radius: 10px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ===== DISCLAIMER ===== */
+.disclaimer {
+  background: #fffbeb;
+  border-bottom: 1px solid #fde68a;
+  padding: 10px 24px;
+  font-size: 0.8rem;
+  color: #92400e;
+  text-align: center;
+}
+
+/* ===== HEADER ===== */
+.closing-costs-hero {
+  background: var(--navy);
+  color: #fff;
+  padding: 20px 24px;
+  text-align: center;
+}
+.closing-costs-hero h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em; }
+.closing-costs-hero p { font-size: 0.875rem; color: #cbd5e1; margin-top: 2px; }
+
+/* ===== LAYOUT ===== */
+.closing-costs-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px;
+  align-items: start;
+}
+.inputs { display: flex; flex-direction: column; gap: 16px; }
+.summary-col {
+  position: sticky;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.card-header {
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  border-bottom: 1px solid var(--border);
+  background: #f8fafc;
+}
+.card-body { padding: 16px; }
+
+/* ===== FORM FIELDS ===== */
+.field { margin-bottom: 12px; }
+.field:last-child { margin-bottom: 0; }
+.field label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+.field input[type="number"],
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--text);
+  background: #fff;
+  transition: border-color 0.15s;
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+.field input::placeholder { color: var(--text-light); }
+.field .hint {
+  font-size: 0.8125rem;
+  color: #526174;
+  margin-top: 2px;
+}
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+/* ===== FEE LINE ITEMS ===== */
+.fee-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f5f9;
+  gap: 12px;
+}
+.fee-row:last-child { border-bottom: none; }
+.fee-row label {
+  font-size: 0.82rem;
+  color: var(--text);
+  flex: 1;
+  white-space: nowrap;
+}
+.fee-row input {
+  width: 110px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  text-align: right;
+  color: var(--text);
+}
+.fee-row input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+/* ===== TOGGLE SWITCH ===== */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.toggle-row span { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+.toggle-label { font-size: 0.78rem; color: var(--text-muted); margin-left: 8px; }
+.switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  display: inline-block;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #cbd5e1;
+  border-radius: 26px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.switch input:checked + .slider { background: var(--blue); }
+.switch input:checked + .slider::before { transform: translateX(22px); }
+
+/* ===== CHECKBOXES ===== */
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+.check-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+.check-row label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+/* ===== SUMMARY CARD ===== */
+.summary-card .card-header {
+  background: var(--navy);
+  color: #fff;
+  border-bottom: none;
+}
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  font-size: 0.85rem;
+}
+.summary-line .sl-label { color: var(--text-muted); }
+.summary-line .sl-value { font-weight: 600; font-variant-numeric: tabular-nums; }
+.summary-divider {
+  border: none;
+  border-top: 1px dashed var(--border);
+  margin: 6px 0;
+}
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 0 4px;
+  border-top: 2px solid var(--navy);
+  margin-top: 8px;
+}
+.summary-total .sl-label { font-size: 0.82rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.03em; }
+.summary-total .sl-value { font-size: 1.3rem; font-weight: 800; color: var(--green); }
+.summary-total .sl-value.negative { color: var(--red); }
+
+/* ===== BREAKDOWN TABLE ===== */
+.breakdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.breakdown-toggle .arrow { transition: transform 0.2s; }
+.breakdown-toggle.open .arrow { transform: rotate(180deg); }
+.breakdown-content { display: none; }
+.breakdown-content.open { display: block; }
+.bd-section { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; }
+.bd-section:last-child { border-bottom: none; }
+.bd-section-title { font-size: 0.75rem; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+.bd-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  padding: 2px 0;
+}
+.bd-line .bd-label { color: var(--text-muted); }
+.bd-line .bd-val { font-variant-numeric: tabular-nums; }
+.bd-line.subtotal { font-weight: 600; border-top: 1px solid var(--border); margin-top: 4px; padding-top: 4px; }
+.bd-note { font-size: 0.7rem; color: var(--text-light); font-style: italic; margin-top: 4px; }
+
+/* ===== ACTION BUTTONS ===== */
+.actions { display: flex; gap: 8px; }
+.btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn:active { transform: scale(0.98); }
+.btn-outline {
+  background: var(--card);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.btn-outline:hover { background: #f8fafc; }
+.btn-primary {
+  background: var(--navy);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+.btn-primary:hover { background: #152e4d; }
+.copied { background: var(--green) !important; color: #fff !important; border-color: var(--green) !important; }
+
+/* ===== ESCROW DETAIL POPUP ===== */
+.escrow-detail-link {
+  font-size: 0.72rem;
+  color: var(--blue);
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline-block;
+  margin-top: 2px;
+}
+.escrow-detail-box {
+  display: none;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.escrow-detail-box.open { display: block; }
+.escrow-detail-box .ed-row { display: flex; justify-content: space-between; }
+.escrow-detail-box .ed-label { flex: 1; }
+.escrow-detail-box .ed-val { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* ===== HIDDEN SECTIONS ===== */
+.hidden { display: none !important; }
+.dimmed { opacity: 0.45; pointer-events: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 820px) {
+  .closing-costs-layout {
+    grid-template-columns: 1fr;
+    padding: 12px;
+    gap: 12px;
+  }
+  .summary-col {
+    position: static;
+    order: -1;
+  }
+  .fee-row input { width: 90px; }
+  html { font-size: 14px; }
+}
+</style>
+<link href="/experience.css" rel="stylesheet"/>
+<link href="/advisory-design.css?v=20260918" rel="stylesheet"/>
+<link href="/premium-interior.css" rel="stylesheet"/>
+<link href="/premium-tools.css" rel="stylesheet"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/><meta content="connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/><link href="/migration-navigation.css" rel="stylesheet"/><link href="/styles.css" rel="stylesheet"/><link href="/orchestration.css" rel="stylesheet"/><link href="/navigation.css" rel="stylesheet"/><link href="/hierarchy.css" rel="stylesheet"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://styermortgage.com/resources/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage calculators", "item": "https://styermortgage.com/calculators.html"}, {"@type": "ListItem", "position": 4, "name": "Refinance closing-cost calculator", "item": "https://styermortgage.com/refinance-calculator.html"}]}</script></head>
+<body class="editorial-page calculator-page premium-interior premium-tool advisory-site advisory-calculator orchestration-page legacy-page" data-active-nav="resources" data-palette="tiffany-original" data-preview-only="true"><a class="skip" href="#main">Skip to content</a>
+<!-- Google Tag Manager (noscript) -->
+<noscript></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header class="site-header sm-header">
+<div class="container">
+<nav aria-label="Main navigation">
+<a aria-label="The Styer Team home" class="brand nav-brand" href="/"><span>THE STYER TEAM</span><small>Adam Styer · NMLS #513013</small></a>
+<button aria-controls="site-nav-links" aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle" type="button"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+<ul class="nav-links" id="site-nav-links"><li class="nav-has-dropdown hi-program-menu" data-nav-section="programs"><a aria-expanded="false" aria-haspopup="true" href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li class="hi-nav-group"><span class="hi-nav-group-title">Conventional &amp; Government</span><ul><li><a href="/loans/conventional.html">Conventional Loans</a></li><li><a href="/loans/jumbo.html">Jumbo Loans</a></li><li><a href="/loans/fha.html">FHA Loans</a></li><li><a href="/loans/va.html">VA Loans</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Income &amp; Asset Qualification</span><ul><li><a href="/bank-statement-loans.html">Bank Statement Loans</a></li><li><a href="/1099-only-mortgage-texas.html">1099 Loans</a></li><li><a href="/p-and-l-mortgage-texas.html">P&amp;L Loans</a></li><li><a href="/asset-depletion-mortgage-texas.html">Asset Depletion Loans</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Investment Property</span><ul><li><a href="/dscr-loans-texas.html">DSCR Loans</a></li><li><a href="/loans/investment.html">Conventional Investment Property Loans</a></li><li><a href="/dscr-cash-out-refinance-texas.html">DSCR Cash-Out Refinance</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Refinance &amp; Equity</span><ul><li><a href="/loans/refinance.html">Mortgage Refinance</a></li><li><a href="/home-equity-loans-texas.html">Home Equity Loans</a></li><li><a href="/reverse-mortgage-texas.html">Reverse Mortgages</a></li><li><a href="/buy-before-you-sell-austin.html">Buy Before You Sell</a></li></ul></li><li><a href="/products.html">View all loan programs →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="audiences"><a aria-expanded="false" aria-haspopup="true" href="/who-we-serve.html">Who We Serve</a><ul class="nav-dropdown"><li><a href="/self-employed-mortgage-austin.html">Self-Employed &amp; Business Owners</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth &amp; Asset-Rich Borrowers</a></li><li><a href="/investor-loans.html">Real Estate Investors</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li><a href="/move-up-buyers.html">Repeat &amp; Move-Up Buyers</a></li><li><a href="/who-we-serve.html">View who we serve →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="resources"><a aria-expanded="false" aria-haspopup="true" href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Mortgage calculators</a></li><li><a href="/mortgage-guides.html">Mortgage guides</a></li><li><a href="/scenarios.html">Borrower scenarios</a></li><li><a href="/austin-area-mortgage-lender.html">Austin &amp; Central Texas</a></li><li><a href="/blog.html">Articles &amp; updates</a></li><li><a href="/referral-partners-self-employed-clients.html">Professional partners</a></li><li><a href="/resources/">All resources →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="about"><a aria-expanded="false" aria-haspopup="true" href="/about.html">About</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam &amp; Tiffany</a></li><li><a href="/testimonials.html">Client reviews</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/mortgage-broker-vs-bank.html">Working with a mortgage broker</a></li></ul></li></ul>
+<div class="sm-header-actions"><a class="phone sm-header-phone" href="tel:+15129566010">Call (512) 956-6010</a><a class="button green" data-header-apply="" href="/apply-now/">Apply Online <span aria-hidden="true">↗</span></a></div>
+</nav>
+</div>
+</header><main id="main"><nav aria-label="Breadcrumb" class="ledger-breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/resources/">Resources</a></li><li><a href="/calculators.html">Mortgage calculators</a></li><li aria-current="page">Refinance closing-cost calculator</li></ol></nav>
+<!-- ===== DISCLAIMER ===== -->
+<div class="disclaimer">
+  Estimates only; confirm with title/escrow and lender requirements. Aggregate adjustment methodology varies by servicer.
+</div>
+<!-- ===== HEADER ===== -->
+<div class="closing-costs-hero">
+<h1>Refinance Closing Costs Calculator</h1>
+<p>Rate &amp; Term Refinance — Enter your numbers, get instant estimates</p>
+</div>
+<!-- ===== MAIN LAYOUT ===== -->
+<div class="closing-costs-layout">
+<!-- ===== LEFT: INPUTS ===== -->
+<div class="inputs">
+<!-- LOAN INFO -->
+<div class="card">
+<div class="card-header">Loan Info</div>
+<div class="card-body">
+<div class="row2">
+<div class="field">
+<label for="loan-amount">Loan Amount ($)</label>
+<input id="loan-amount" inputmode="decimal" min="0" placeholder="250000" step="1000" type="text"/>
+<div class="hint">Optional; used for per-diem &amp; points calc</div>
+</div>
+<div class="field">
+<label for="closing-date">Estimated Closing Date</label>
+<input id="closing-date" type="date"/>
+</div>
+</div>
+<div class="row3">
+<div class="field">
+<label for="note-rate">Note Rate (%)</label>
+<input id="note-rate" min="0" placeholder="6.5" step="0.125" type="number"/>
+</div>
+<div class="field">
+<label for="manual-perdiem">Manual Per-Diem Override ($)</label>
+<input id="manual-perdiem" inputmode="decimal" min="0" placeholder="0.00" step="0.01" type="text"/>
+<div class="hint">If entered, overrides rate calc</div>
+</div>
+<div class="field">
+<label for="computed-perdiem">Computed Per-Diem</label>
+<input id="computed-perdiem" readonly="" style="background:#f8fafc;color:var(--text-muted);" tabindex="-1" type="text"/>
+</div>
+</div>
+<!-- Escrow toggle -->
+<div class="toggle-row">
+<div>
+<span>Escrows</span>
+<span class="toggle-label" id="escrow-label">ON</span>
+</div>
+<label class="switch">
+<input aria-label="Include escrows" checked="" id="escrow-toggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+</div>
+</div>
+</div>
+<!-- TAXES & INSURANCE -->
+<div class="card" id="tax-insurance-card">
+<div class="card-header">Taxes &amp; Insurance</div>
+<div class="card-body">
+<div class="row2">
+<div class="field">
+<label for="annual-taxes">Annual Property Taxes ($)</label>
+<input id="annual-taxes" inputmode="decimal" min="0" placeholder="4800" step="100" type="text"/>
+<p class="calc-rule-note calc-tax-hint"><strong>Rule of thumb:</strong> ~2% of home value ÷ 12.</p>
+</div>
+<div class="field">
+<label for="annual-hazard">Annual Hazard Insurance ($)</label>
+<input id="annual-hazard" inputmode="decimal" min="0" placeholder="1800" step="100" type="text"/>
+</div>
+</div>
+<div class="field">
+<label for="monthly-hoa">Monthly HOA ($)</label>
+<input id="monthly-hoa" inputmode="decimal" min="0" placeholder="0" step="10" type="text"/>
+<div class="hint">Optional; not escrowed unless checked below</div>
+</div>
+<!-- Escrow-specific checkboxes -->
+<div id="escrow-options">
+<div class="check-row">
+<input id="escrow-hoa" type="checkbox"/>
+<label for="escrow-hoa">Escrow HOA</label>
+</div>
+<div class="check-row">
+<input id="collect-full-premium" type="checkbox"/>
+<label for="collect-full-premium">Collect full annual hazard premium at closing (prepaid, not escrowed)</label>
+</div>
+</div>
+<!-- Non-escrow option -->
+<div class="hidden" id="noescrow-options">
+<div class="check-row">
+<input id="collect-prepaid-anyway" type="checkbox"/>
+<label for="collect-prepaid-anyway">Collect taxes &amp; insurance as prepaids anyway</label>
+</div>
+</div>
+</div>
+</div>
+<!-- LENDER FEES -->
+<div class="card">
+<div class="card-header">Lender Fees</div>
+<div class="card-body">
+<div class="fee-row"><label for="fee-origination-fee">Origination Fee</label><input class="lender-fee" data-name="Origination Fee" id="fee-origination-fee" inputmode="decimal" min="0" step="50" type="text" value="0"/></div>
+<div class="fee-row"><label for="fee-underwriting-fee">Underwriting Fee</label><input class="lender-fee" data-name="Underwriting Fee" id="fee-underwriting-fee" inputmode="decimal" min="0" step="50" type="text" value="1295"/></div>
+<div class="fee-row"><label for="fee-processing-fee">Processing Fee</label><input class="lender-fee" data-name="Processing Fee" id="fee-processing-fee" inputmode="decimal" min="0" step="50" type="text" value="995"/></div>
+<div class="fee-row"><label for="fee-application-fee">Application Fee</label><input class="lender-fee" data-name="Application Fee" id="fee-application-fee" inputmode="decimal" min="0" step="50" type="text" value="0"/></div>
+<div class="fee-row"><label for="fee-admin-fee">Admin Fee</label><input class="lender-fee" data-name="Admin Fee" id="fee-admin-fee" inputmode="decimal" min="0" step="50" type="text" value="0"/></div>
+<hr style="border:none;border-top:1px solid #f1f5f9;margin:6px 0;"/>
+<div class="row2" style="margin-top:8px;">
+<div class="field">
+<label for="points-pct">Discount Points (%)</label>
+<input id="points-pct" min="0" placeholder="0" step="0.125" type="number"/>
+</div>
+<div class="field">
+<label for="points-dollar">Discount Points ($)</label>
+<input id="points-dollar" inputmode="decimal" min="0" placeholder="0" step="100" type="text"/>
+<div class="hint">Auto-computed from % if loan amount entered</div>
+</div>
+</div>
+</div>
+</div>
+<!-- THIRD-PARTY FEES -->
+<div class="card">
+<div class="card-header">Third-Party Fees</div>
+<div class="card-body">
+<div class="fee-row"><label for="fee-appraisal">Appraisal</label><input class="tp-fee" data-name="Appraisal" id="fee-appraisal" inputmode="decimal" min="0" step="25" type="text" value="795"/></div>
+<div class="fee-row"><label for="fee-credit-report">Credit Report</label><input class="tp-fee" data-name="Credit Report" id="fee-credit-report" inputmode="decimal" min="0" step="5" type="text" value="110"/></div>
+<div class="fee-row"><label for="fee-doc-preparation-fee">Doc Preparation Fee</label><input class="tp-fee" data-name="Doc Preparation Fee" id="fee-doc-preparation-fee" inputmode="decimal" min="0" step="25" type="text" value="495"/></div>
+<div class="fee-row"><label for="fee-flood-certification">Flood Certification</label><input class="tp-fee" data-name="Flood Certification" id="fee-flood-certification" inputmode="decimal" min="0" step="1" type="text" value="15"/></div>
+<div class="fee-row"><label for="fee-tx-attorney-fee">TX Attorney Fee</label><input class="tp-fee" data-name="TX Attorney Fee" id="fee-tx-attorney-fee" inputmode="decimal" min="0" step="25" type="text" value="125"/></div>
+<div class="fee-row"><label for="fee-settlement-agent-fee">Settlement Agent Fee</label><input class="tp-fee" data-name="Settlement Agent Fee" id="fee-settlement-agent-fee" inputmode="decimal" min="0" step="25" type="text" value="550"/></div>
+<div class="fee-row"><label for="fee-title-search">Title Search</label><input class="tp-fee" data-name="Title Search" id="fee-title-search" inputmode="decimal" min="0" step="25" type="text" value="125"/></div>
+<div class="fee-row"><label for="fee-title-endorsements">Title Endorsements</label><input class="tp-fee" data-name="Title Endorsements" id="fee-title-endorsements" inputmode="decimal" min="0" step="1" type="text" value="12"/></div>
+<div class="fee-row"><label for="fee-recording-fee">Recording Fee</label><input class="tp-fee" data-name="Recording Fee" id="fee-recording-fee" inputmode="decimal" min="0" step="10" type="text" value="200"/></div>
+</div>
+</div>
+<!-- TITLE -->
+<div class="card">
+<div class="card-header">Title</div>
+<div class="card-body">
+<div class="field">
+<label for="lenders-title">Lender's Title Policy ($)</label>
+<input id="lenders-title" inputmode="decimal" min="0" step="50" type="text" value="2119"/>
+<div class="hint">Enter manually; rate-table lookup can be plugged in later</div>
+</div>
+</div>
+</div>
+<!-- CREDITS -->
+<div class="card">
+<div class="card-header">Credits</div>
+<div class="card-body">
+<div class="row2">
+<div class="field">
+<label for="lender-credit">Lender Credit ($)</label>
+<input id="lender-credit" inputmode="decimal" min="0" placeholder="0" step="100" type="text"/>
+<div class="hint">Enter as positive; applied as reduction</div>
+</div>
+<div class="field">
+<label for="seller-credit">Seller / Other Credits ($)</label>
+<input id="seller-credit" inputmode="decimal" min="0" placeholder="0" step="100" type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /inputs -->
+<!-- ===== RIGHT: SUMMARY ===== -->
+<div class="summary-col">
+<!-- SUMMARY CARD -->
+<div class="card summary-card">
+<div class="card-header">Closing Costs Summary</div>
+<div class="card-body">
+<div class="summary-line"><span class="sl-label">Lender Fees</span><span class="sl-value" id="sum-lender">$0.00</span></div>
+<div class="summary-line"><span class="sl-label">Third-Party Fees</span><span class="sl-value" id="sum-tp">$0.00</span></div>
+<div class="summary-line"><span class="sl-label">Lender's Title Policy</span><span class="sl-value" id="sum-title">$0.00</span></div>
+<div class="summary-line"><span class="sl-label">Prepaids</span><span class="sl-value" id="sum-prepaids">$0.00</span></div>
+<div class="summary-line" id="sum-escrow-row"><span class="sl-label">Initial Escrow Deposit</span><span class="sl-value" id="sum-escrow">$0.00</span></div>
+<hr class="summary-divider"/>
+<div class="summary-line"><span class="sl-label">Total Costs</span><span class="sl-value" id="sum-total-costs">$0.00</span></div>
+<div class="summary-line"><span class="sl-label">Credits</span><span class="sl-value" id="sum-credits" style="color:var(--green)">-$0.00</span></div>
+<div class="summary-total">
+<span class="sl-label">Est. Cash to Close</span>
+<span class="sl-value" id="sum-cash-to-close">$0.00</span>
+</div>
+</div>
+</div>
+<!-- BREAKDOWN -->
+<div class="card">
+<button class="breakdown-toggle" id="bd-toggle" type="button">
+      Detailed Breakdown
+      <span class="arrow">▼</span>
+</button>
+<div class="breakdown-content" id="bd-content"></div>
+</div>
+<!-- ACTIONS -->
+<div class="actions">
+<button class="btn btn-outline" id="btn-reset" type="button">Reset</button>
+<button class="btn btn-primary" id="btn-copy" type="button">Copy Breakdown</button>
+</div>
+</div><!-- /summary-col -->
+</div><!-- /container -->
+<!-- CTA -->
+<section style="background:var(--color-navy,#0A1F3F);padding:3rem 1.5rem;text-align:center;margin-top:2rem;">
+<div style="max-width:600px;margin:0 auto;">
+<h2 style="color:#fff;font-size:1.5rem;margin-bottom:0.5rem;">Ready to Refinance?</h2>
+<p style="color:rgba(255,255,255,0.8);margin-bottom:1.5rem;">Get a personalized refinance quote from Adam Styer.</p>
+<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+<a href="/refinance-quote.html" style="display:inline-block;background:#735719;color:#fff;padding:0.75rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;">Get My Refi Quote</a>
+<a href="tel:+15129566010" style="display:inline-block;color:#fff;padding:0.75rem 1.5rem;border:1px solid rgba(255,255,255,0.3);border-radius:6px;text-decoration:none;">Call (512) 956-6010</a>
+</div>
+<p style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:1rem;"><a href="/calculators.html" style="color:rgba(255,255,255,0.6);">← All Calculators</a> · <a href="/" style="color:rgba(255,255,255,0.6);">styermortgage.com</a></p>
+</div>
+</section>
+<p class="migration-parent"><a href="/calculators.html">Mortgage calculators</a></p></main><footer class="site-footer full-site-footer" id="site-footer">
+<div class="footer-intro">
+<div>
+<p class="eyebrow">Adam Styer · Austin &amp; Central Texas</p>
+<h2>Your Austin mortgage broker.</h2>
+<p>Compare lenders, ask questions, and understand your mortgage options.</p>
+</div>
+<ul class="footer-contact-list">
+<li><a href="tel:+15129566010">Call Adam: (512) 956-6010</a></li>
+<li><a href="sms:+15129566010">Text Adam</a></li>
+<li><a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a></li>
+<li><a href="mailto:tiffanyw@gorascal.com">Email Tiffany</a></li>
+</ul>
+</div>
+<div aria-label="Mortgage resource directory" class="footer-directory" role="navigation"><section aria-labelledby="footer-group-0"><h3 id="footer-group-0">Loan Programs</h3><ul><li><a href="/products.html">All loan programs</a></li><li><a href="/loans/conventional.html">Conventional &amp; jumbo</a></li><li><a href="/non-qm-loans.html">Income &amp; asset qualification</a></li><li><a href="/dscr-loans-texas.html">DSCR &amp; investment property</a></li><li><a href="/loans/refinance.html">Refinance &amp; home equity</a></li></ul></section><section aria-labelledby="footer-group-1"><h3 id="footer-group-1">Who We Serve</h3><ul><li><a href="/self-employed-mortgage-austin.html">Self-Employed &amp; Business Owners</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth &amp; Asset-Rich Borrowers</a></li><li><a href="/investor-loans.html">Real Estate Investors</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li><a href="/move-up-buyers.html">Repeat &amp; Move-Up Buyers</a></li></ul></section><section aria-labelledby="footer-group-2"><h3 id="footer-group-2">Resources</h3><ul><li><a href="/calculators.html">Mortgage calculators</a></li><li><a href="/mortgage-guides.html">Detailed mortgage guides</a></li><li><a href="/scenarios.html">Borrower scenarios</a></li><li><a href="/resources/">All resources</a></li><li><a href="/resources/full-directory.html">Complete resource directory</a></li></ul></section><section aria-labelledby="footer-group-3"><h3 id="footer-group-3">About &amp; Contact</h3><ul><li><a href="/about.html">Adam &amp; Tiffany</a></li><li><a href="/testimonials.html">Client reviews</a></li><li><a href="/contact.html">Contact Adam</a></li><li><a href="/austin-area-mortgage-lender.html">Austin &amp; Central Texas</a></li><li><a href="/referral-partners-self-employed-clients.html">Professional partners</a></li></ul></section></div>
+<div aria-label="Licensing and consumer information" class="footer-disclosures">
+<p><strong>Adam Styer · NMLS #513013</strong> · <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener">NMLS Consumer Access</a></p>
+<!-- LOCAL-REVIEW RELEASE GATE: verify and insert the current sponsoring company's
+         approved legal/DBA name, NMLS ID and website; confirm team-name presentation,
+         applicable company/banker notice and current licensing before publication.
+         Do not infer an affiliation or company NMLS number from legacy source pages. -->
+<p class="footer-equal-housing"><strong>Equal Housing Opportunity.</strong> We support fair access to housing and mortgage financing.</p>
+<p>Mortgage options depend on the lender’s requirements and the complete file. Information on this site is not a loan approval, rate lock, or commitment to lend. Calculator results are estimates.</p>
+<div aria-label="Legal and consumer notices" class="footer-legal-links" role="navigation">
+<a href="/texas-complaint-notice.html">Texas Consumer Complaint and Recovery Fund Notice</a>
+<a href="/privacy.html">Privacy policy</a>
+<a href="/terms.html">Terms and conditions</a>
+</div>
+<p>For Texas mortgage complaint information, visit the <a href="https://www.sml.texas.gov/consumers/complaints/" rel="noopener">Texas Department of Savings and Mortgage Lending</a> or call <a href="tel:+18772765550">1-877-276-5550</a>.</p>
+<p>Send financial documents through the secure channel provided by the team.</p>
+</div>
+</footer>
+<script>
+/* =========================================================================
+   REFINANCE CLOSING COSTS CALCULATOR — Pure JS, no dependencies
+   ========================================================================= */
+
+// ===== UTILITY FUNCTIONS =====
+
+/** Format number as USD currency string */
+function fmt(n) {
+  if (n == null || isNaN(n)) return '$0.00';
+  const abs = Math.abs(n);
+  const str = abs.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  return n < 0 ? '-' + str : str;
+}
+
+/** Parse a numeric value from an input element by ID; returns 0 if empty/NaN */
+function num(id) {
+  const v = parseFloat(String(document.getElementById(id).value).replace(/[$,]/g, ''));
+  return isNaN(v) ? 0 : v;
+}
+
+/** Parse the closing date input; returns a Date or null */
+function getClosingDate() {
+  const val = document.getElementById('closing-date').value;
+  if (!val) return null;
+  // Input type="date" returns YYYY-MM-DD; parse as local date
+  const parts = val.split('-');
+  return new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+}
+
+/** Get checked state of a checkbox by ID */
+function isChecked(id) {
+  return document.getElementById(id).checked;
+}
+
+/** Set text content of element by ID */
+function setText(id, text) {
+  document.getElementById(id).textContent = text;
+}
+
+// ===== PURE CALCULATION FUNCTIONS =====
+
+/**
+ * Compute per-diem interest amount.
+ * @param {number} loanAmt - Loan amount in dollars
+ * @param {number} noteRate - Note rate as a percentage (e.g. 6.5 for 6.5%)
+ * @param {number} manualPerDiem - Manual per-diem override (0 = use computed)
+ * @returns {number} per-diem interest in dollars
+ */
+function calcPerDiem(loanAmt, noteRate, manualPerDiem) {
+  if (manualPerDiem > 0) return manualPerDiem;
+  if (loanAmt <= 0 || noteRate <= 0) return 0;
+  return (loanAmt * (noteRate / 100)) / 365;
+}
+
+/**
+ * Compute number of prepaid interest days (closing day through end of month).
+ * @param {Date} closingDate
+ * @returns {number} number of days
+ */
+function calcPrepaidDays(closingDate) {
+  if (!closingDate) return 0;
+  const lastDay = new Date(closingDate.getFullYear(), closingDate.getMonth() + 1, 0).getDate();
+  return lastDay - closingDate.getDate() + 1;
+}
+
+/**
+ * Determine the first mortgage payment month and year.
+ * Illustration assumption: first payment is the first day of the second month after closing.
+ * @param {Date} closingDate
+ * @returns {{month: number, year: number}} 0-indexed month, full year
+ */
+function calcFirstPaymentDate(closingDate) {
+  if (!closingDate) return { month: 0, year: 2026 };
+  // Standard refi convention: first payment is due the 1st of the SECOND month
+  // after closing, regardless of closing day (interim interest covers the gap).
+  const offset = 2;
+  let m = closingDate.getMonth() + offset;
+  let y = closingDate.getFullYear();
+  if (m > 11) { m -= 12; y++; }
+  return { month: m, year: y };
+}
+
+/**
+ * Calculate the initial escrow deposit for property taxes.
+ * Taxes are due once per year on December 31.
+ *
+ * Returns an object with every intermediate value for transparency.
+ *
+ * @param {number} annualTax
+ * @param {Date} closingDate
+ * @returns {object} breakdown of the tax escrow calculation
+ */
+function calcTaxEscrow(annualTax, closingDate) {
+  if (!closingDate || annualTax <= 0) {
+    return { monthlyTax: 0, escrowDeposits: 0, baseTaxNeeded: 0,
+             cushion: 0, projectedAfterPay: 0, additionalForCushion: 0,
+             aggregateAdj: 0, finalDeposit: 0, firstPmtMonth: 0, firstPmtYear: 0 };
+  }
+
+  const monthlyTax = annualTax / 12;
+
+  // Step 1: Next tax due date — always Dec 31
+  const closingYear = closingDate.getFullYear();
+  let taxDueYear = closingYear;
+  const nextDue = new Date(closingYear, 11, 31); // Dec 31
+  if (closingDate > nextDue) {
+    taxDueYear = closingYear + 1; // edge case
+  }
+
+  // Step 2: First escrow deposit month = first payment month
+  const fp = calcFirstPaymentDate(closingDate);
+  const firstM = fp.month; // 0-indexed
+  const firstY = fp.year;
+
+  // Step 3: Count monthly escrow deposits from firstEscrow through November of tax due year (inclusive)
+  // November is month 10 (0-indexed)
+  const totalFirst = firstY * 12 + firstM;
+  const totalNov = taxDueYear * 12 + 10; // November of due year
+  const escrowDeposits = Math.max(0, totalNov - totalFirst + 1);
+
+  // Step 4: Base tax needed at closing
+  const baseTaxNeeded = Math.max(0, annualTax - (escrowDeposits * monthlyTax));
+
+  // Step 5: 2-month cushion
+  const cushion = 2 * monthlyTax;
+
+  // Step 6: Projected balance after paying tax bill
+  const projectedAfterPay = (baseTaxNeeded + (escrowDeposits * monthlyTax)) - annualTax;
+
+  // Step 7: Additional needed for cushion
+  const additionalForCushion = Math.max(0, cushion - projectedAfterPay);
+
+  // Step 8: Aggregate adjustment — conservative negative, capped at 1 monthly payment
+  const aggregateAdj = -Math.min(baseTaxNeeded, monthlyTax);
+
+  // Step 9: Final deposit
+  const finalDeposit = Math.max(0, baseTaxNeeded + additionalForCushion + aggregateAdj);
+
+  return {
+    monthlyTax,
+    escrowDeposits,
+    baseTaxNeeded,
+    cushion,
+    projectedAfterPay,
+    additionalForCushion,
+    aggregateAdj,
+    finalDeposit,
+    firstPmtMonth: firstM + 1, // 1-indexed for display
+    firstPmtYear: firstY,
+    taxDueYear
+  };
+}
+
+/**
+ * Calculate insurance escrow deposit.
+ * @param {number} annualHazard
+ * @param {boolean} collectFullPremium - if true, annual premium is a prepaid, not escrowed
+ * @returns {{monthlyIns: number, deposit: number, prepaidPremium: number}}
+ */
+function calcInsuranceEscrow(annualHazard, collectFullPremium) {
+  if (annualHazard <= 0) return { monthlyIns: 0, deposit: 0, prepaidPremium: 0 };
+  const monthlyIns = annualHazard / 12;
+  if (collectFullPremium) {
+    // Full premium is prepaid; no escrow deposit for insurance
+    return { monthlyIns, deposit: 0, prepaidPremium: annualHazard };
+  }
+  // Standard: 2-month cushion
+  return { monthlyIns, deposit: 2 * monthlyIns, prepaidPremium: 0 };
+}
+
+/**
+ * Calculate HOA escrow deposit (simple: 2 months if escrowed).
+ */
+function calcHoaEscrow(monthlyHoa, escrowHoa) {
+  if (!escrowHoa || monthlyHoa <= 0) return 0;
+  return 2 * monthlyHoa;
+}
+
+// ===== SUM HELPERS =====
+
+/** Sum all inputs with a given CSS class */
+function sumClass(cls) {
+  let total = 0;
+  document.querySelectorAll('.' + cls).forEach(function(el) {
+    const v = parseFloat(String(el.value).replace(/[$,]/g, ''));
+    if (!isNaN(v)) total += v;
+  });
+  return total;
+}
+
+/** Collect named fee items from a class for the breakdown */
+function collectFeeItems(cls) {
+  const items = [];
+  document.querySelectorAll('.' + cls).forEach(function(el) {
+    const v = parseFloat(String(el.value).replace(/[$,]/g, '')) || 0;
+    items.push({ name: el.getAttribute('data-name'), amount: v });
+  });
+  return items;
+}
+
+// ===== MASTER CALCULATION =====
+
+function validateCostInputs() {
+  const fields=[...document.querySelectorAll('.inputs input')].filter(el=>!el.readOnly&&!['checkbox','date','radio','hidden'].includes(el.type)&&el.id!=='computed-perdiem');
+  let valid=true;
+  fields.forEach(el=>{const raw=String(el.value).replace(/[$,]/g,'').trim(),n=Number(raw);const ok=raw===''||(/^(?:\d+\.?\d*|\.\d+)$/.test(raw)&&Number.isFinite(n)&&n>=0);el.setAttribute('aria-invalid',String(!ok));if(!ok)valid=false;});
+  const dateEl=document.getElementById('closing-date'),dateValue=getClosingDate(),dateOk=!!dateValue&&Number.isFinite(dateValue.getTime());
+  dateEl.setAttribute('aria-invalid',String(!dateOk));if(!dateOk)valid=false;
+  let message=document.getElementById('refi-input-error');if(!message){message=document.createElement('p');message.id='refi-input-error';message.setAttribute('role','status');document.querySelector('.inputs').prepend(message);}
+  message.textContent=valid?'':'Correct the highlighted amount or date. Enter a nonnegative number, or leave an optional amount blank. A closing date is needed for interest and escrow estimates.';
+  if(!valid){document.querySelectorAll('[id^="sum-"]').forEach(el=>{if(!el.children.length)el.textContent='—';});window._lastResult=null;document.getElementById('bd-content').textContent='Correct the highlighted inputs to see the breakdown.';}
+  return valid;
+}
+function calculateAll() {
+  if(!validateCostInputs())return;
+  const loanAmt = num('loan-amount');
+  const noteRate = num('note-rate');
+  const manualPerDiem = num('manual-perdiem');
+  const closingDate = getClosingDate();
+  const annualTax = num('annual-taxes');
+  const annualHazard = num('annual-hazard');
+  const monthlyHoa = num('monthly-hoa');
+  const escrowsOn = isChecked('escrow-toggle');
+  const escrowHoa = isChecked('escrow-hoa');
+  const collectFullPremium = isChecked('collect-full-premium');
+  const collectPrepaidAnyway = isChecked('collect-prepaid-anyway');
+  const lendersTitle = num('lenders-title');
+  const lenderCredit = num('lender-credit');
+  const sellerCredit = num('seller-credit');
+
+  // --- Per-diem ---
+  const perDiem = calcPerDiem(loanAmt, noteRate, manualPerDiem);
+  document.getElementById('computed-perdiem').value = perDiem > 0 ? fmt(perDiem) + '/day' : '—';
+
+  // --- Prepaid interest ---
+  const prepaidDays = calcPrepaidDays(closingDate);
+  const prepaidInterest = perDiem * prepaidDays;
+
+  // --- Discount Points ---
+  const pointsPct = num('points-pct');
+  let pointsDollar = num('points-dollar');
+  if(!document.getElementById('points-dollar').dataset.manual && pointsPct===0){pointsDollar=0;document.getElementById('points-dollar').value='0.00';}
+  // Auto-compute from % if loan amount is available and % is entered
+  if (pointsPct > 0 && loanAmt > 0) {
+    const computed = loanAmt * (pointsPct / 100);
+    // Only auto-fill if user hasn't manually typed a $ amount
+    if (!document.getElementById('points-dollar').dataset.manual) {
+      pointsDollar = computed;
+      document.getElementById('points-dollar').value = computed.toFixed(2);
+      if (window.styerMoney) window.styerMoney.fmtEl('points-dollar');
+    }
+  }
+
+  // --- Lender Fees ---
+  const lenderFeeItems = collectFeeItems('lender-fee');
+  const lenderFeesBase = sumClass('lender-fee');
+  const totalLenderFees = lenderFeesBase + pointsDollar;
+
+  // --- Third-Party Fees ---
+  const tpFeeItems = collectFeeItems('tp-fee');
+  const totalTPFees = sumClass('tp-fee');
+
+  // --- Prepaids ---
+  const prepaidItems = [];
+  prepaidItems.push({ name: 'Prepaid Interest (' + prepaidDays + ' days @ ' + fmt(perDiem) + '/day)', amount: prepaidInterest });
+
+  // Insurance prepaid (if collecting full premium at closing and escrows on)
+  let insurancePrepaid = 0;
+  if (escrowsOn && collectFullPremium && annualHazard > 0) {
+    insurancePrepaid = annualHazard;
+    prepaidItems.push({ name: 'Annual Hazard Insurance Premium', amount: insurancePrepaid });
+  }
+
+  // Non-escrow prepaids (taxes/insurance collected as prepaids when escrows off)
+  if (!escrowsOn && collectPrepaidAnyway) {
+    if (annualTax > 0) prepaidItems.push({ name: 'Property Taxes (prepaid)', amount: annualTax });
+    if (annualHazard > 0) prepaidItems.push({ name: 'Hazard Insurance (prepaid)', amount: annualHazard });
+  }
+
+  const totalPrepaids = prepaidItems.reduce(function(s, i) { return s + i.amount; }, 0);
+
+  // --- Escrow Deposits ---
+  let taxEscrow = { finalDeposit: 0 };
+  let insEscrow = { deposit: 0 };
+  let hoaEscrowAmt = 0;
+  let totalEscrow = 0;
+
+  if (escrowsOn) {
+    taxEscrow = calcTaxEscrow(annualTax, closingDate);
+    insEscrow = calcInsuranceEscrow(annualHazard, collectFullPremium);
+    hoaEscrowAmt = calcHoaEscrow(monthlyHoa, escrowHoa);
+    totalEscrow = taxEscrow.finalDeposit + insEscrow.deposit + hoaEscrowAmt;
+  }
+
+  // --- Credits ---
+  const totalCredits = lenderCredit + sellerCredit;
+
+  // --- Totals ---
+  const totalCosts = totalLenderFees + totalTPFees + lendersTitle + totalPrepaids + totalEscrow;
+  const cashToClose = totalCosts - totalCredits;
+
+  // ===== RENDER SUMMARY =====
+  setText('sum-lender', fmt(totalLenderFees));
+  setText('sum-tp', fmt(totalTPFees));
+  setText('sum-title', fmt(lendersTitle));
+  setText('sum-prepaids', fmt(totalPrepaids));
+  setText('sum-escrow', fmt(totalEscrow));
+  setText('sum-total-costs', fmt(totalCosts));
+  setText('sum-credits', totalCredits > 0 ? '-' + fmt(totalCredits) : fmt(0));
+  const cashEl = document.getElementById('sum-cash-to-close');
+  cashEl.textContent = fmt(cashToClose);
+  cashEl.className = 'sl-value' + (cashToClose < 0 ? ' negative' : '');
+
+  // Show/hide escrow row in summary
+  document.getElementById('sum-escrow-row').style.display = escrowsOn ? '' : 'none';
+
+  // ===== RENDER BREAKDOWN =====
+  renderBreakdown({
+    lenderFeeItems, pointsDollar, totalLenderFees,
+    tpFeeItems, totalTPFees,
+    lendersTitle,
+    prepaidItems, totalPrepaids,
+    escrowsOn, taxEscrow, insEscrow, hoaEscrowAmt, monthlyHoa, totalEscrow,
+    lenderCredit, sellerCredit, totalCredits,
+    totalCosts, cashToClose,
+    closingDate, prepaidDays, perDiem
+  });
+
+  // Store result for clipboard
+  window._lastResult = {
+    lenderFeeItems, pointsDollar, totalLenderFees,
+    tpFeeItems, totalTPFees,
+    lendersTitle,
+    prepaidItems, totalPrepaids,
+    escrowsOn, taxEscrow, insEscrow, hoaEscrowAmt, monthlyHoa, totalEscrow,
+    lenderCredit, sellerCredit, totalCredits,
+    totalCosts, cashToClose,
+    closingDate, loanAmt, prepaidDays, perDiem
+  };
+}
+
+// ===== RENDER BREAKDOWN =====
+
+function renderBreakdown(r) {
+  let html = '';
+
+  // Lender Fees
+  html += '<div class="bd-section"><div class="bd-section-title">Lender Fees</div>';
+  r.lenderFeeItems.forEach(function(item) {
+    if (item.amount > 0) html += bdLine(item.name, item.amount);
+  });
+  if (r.pointsDollar > 0) html += bdLine('Discount Points', r.pointsDollar);
+  html += bdLine('Subtotal', r.totalLenderFees, true);
+  html += '</div>';
+
+  // Third-Party Fees
+  html += '<div class="bd-section"><div class="bd-section-title">Third-Party Fees</div>';
+  r.tpFeeItems.forEach(function(item) {
+    if (item.amount > 0) html += bdLine(item.name, item.amount);
+  });
+  html += bdLine('Subtotal', r.totalTPFees, true);
+  html += '</div>';
+
+  // Title
+  html += '<div class="bd-section"><div class="bd-section-title">Title</div>';
+  html += bdLine("Lender's Title Policy", r.lendersTitle);
+  html += '</div>';
+
+  // Prepaids
+  html += '<div class="bd-section"><div class="bd-section-title">Prepaids</div>';
+  r.prepaidItems.forEach(function(item) {
+    html += bdLine(item.name, item.amount);
+  });
+  html += bdLine('Subtotal', r.totalPrepaids, true);
+  html += '</div>';
+
+  // Escrow Deposit (only if on)
+  if (r.escrowsOn) {
+    html += '<div class="bd-section"><div class="bd-section-title">Initial Escrow Deposit</div>';
+
+    // Tax escrow with detail
+    html += bdLine('Tax Escrow Deposit', r.taxEscrow.finalDeposit);
+    if (r.taxEscrow.finalDeposit > 0) {
+      html += '<div class="bd-note">';
+      html += 'Monthly tax: ' + fmt(r.taxEscrow.monthlyTax);
+      html += ' &middot; Deposits before due: ' + r.taxEscrow.escrowDeposits;
+      html += ' &middot; Base: ' + fmt(r.taxEscrow.baseTaxNeeded);
+      html += ' &middot; Cushion add: ' + fmt(r.taxEscrow.additionalForCushion);
+      html += ' &middot; Agg. adj.: ' + fmt(r.taxEscrow.aggregateAdj);
+      html += ' (estimate)</div>';
+    }
+
+    // Insurance escrow
+    html += bdLine('Insurance Escrow Deposit', r.insEscrow.deposit);
+    if (r.insEscrow.deposit > 0) {
+      html += '<div class="bd-note">2-month cushion (estimate)</div>';
+    }
+
+    // HOA escrow
+    if (r.hoaEscrowAmt > 0) {
+      html += bdLine('HOA Escrow Deposit', r.hoaEscrowAmt);
+      html += '<div class="bd-note">2 months × ' + fmt(r.monthlyHoa) + '/mo</div>';
+    }
+
+    html += bdLine('Subtotal', r.totalEscrow, true);
+    html += '</div>';
+  }
+
+  // Credits
+  if (r.totalCredits > 0) {
+    html += '<div class="bd-section"><div class="bd-section-title">Credits</div>';
+    if (r.lenderCredit > 0) html += bdLine('Lender Credit', -r.lenderCredit);
+    if (r.sellerCredit > 0) html += bdLine('Seller / Other Credits', -r.sellerCredit);
+    html += bdLine('Subtotal', -r.totalCredits, true);
+    html += '</div>';
+  }
+
+  // Grand total
+  html += '<div class="bd-section" style="background:#f8fafc;">';
+  html += '<div class="bd-line subtotal" style="border:none;font-size:0.95rem;">';
+  html += '<span class="bd-label" style="color:var(--navy);font-weight:700;">ESTIMATED CASH TO CLOSE</span>';
+  html += '<span class="bd-val" style="color:var(--green);font-weight:800;">' + fmt(r.cashToClose) + '</span>';
+  html += '</div></div>';
+
+  document.getElementById('bd-content').innerHTML = html;
+}
+
+/** Helper: generate a breakdown line */
+function bdLine(label, amount, isSubtotal) {
+  const cls = isSubtotal ? 'bd-line subtotal' : 'bd-line';
+  return '<div class="' + cls + '"><span class="bd-label">' + label + '</span><span class="bd-val">' + fmt(amount) + '</span></div>';
+}
+
+// ===== CLIPBOARD EXPORT =====
+
+function copyBreakdown() {
+  const r = window._lastResult;
+  if (!r) return;
+  const pad = function(label, val, width) {
+    width = width || 40;
+    const valStr = fmt(val);
+    const gap = Math.max(1, width - label.length - valStr.length);
+    return '  ' + label + ' '.repeat(gap) + valStr;
+  };
+  let lines = [];
+  lines.push('REFINANCE CLOSING COSTS ESTIMATE');
+  lines.push('================================');
+  if (r.closingDate) {
+    lines.push('Closing Date: ' + (r.closingDate.getMonth()+1) + '/' + r.closingDate.getDate() + '/' + r.closingDate.getFullYear());
+  }
+  if (r.loanAmt > 0) lines.push('Loan Amount:  ' + fmt(r.loanAmt));
+  lines.push('');
+
+  lines.push('LENDER FEES');
+  r.lenderFeeItems.forEach(function(item) {
+    if (item.amount > 0) lines.push(pad(item.name, item.amount));
+  });
+  if (r.pointsDollar > 0) lines.push(pad('Discount Points', r.pointsDollar));
+  lines.push(pad('Subtotal', r.totalLenderFees));
+  lines.push('');
+
+  lines.push('THIRD-PARTY FEES');
+  r.tpFeeItems.forEach(function(item) {
+    if (item.amount > 0) lines.push(pad(item.name, item.amount));
+  });
+  lines.push(pad('Subtotal', r.totalTPFees));
+  lines.push('');
+
+  lines.push('TITLE');
+  lines.push(pad("Lender's Title Policy", r.lendersTitle));
+  lines.push('');
+
+  lines.push('PREPAIDS');
+  r.prepaidItems.forEach(function(item) {
+    lines.push(pad(item.name, item.amount));
+  });
+  lines.push(pad('Subtotal', r.totalPrepaids));
+  lines.push('');
+
+  if (r.escrowsOn) {
+    lines.push('INITIAL ESCROW DEPOSIT');
+    lines.push(pad('Tax Escrow', r.taxEscrow.finalDeposit));
+    lines.push(pad('Insurance Escrow', r.insEscrow.deposit));
+    if (r.hoaEscrowAmt > 0) lines.push(pad('HOA Escrow', r.hoaEscrowAmt));
+    lines.push(pad('Subtotal', r.totalEscrow));
+    lines.push('');
+  }
+
+  if (r.totalCredits > 0) {
+    lines.push('CREDITS');
+    if (r.lenderCredit > 0) lines.push(pad('Lender Credit', -r.lenderCredit));
+    if (r.sellerCredit > 0) lines.push(pad('Seller / Other', -r.sellerCredit));
+    lines.push(pad('Subtotal', -r.totalCredits));
+    lines.push('');
+  }
+
+  lines.push('================================');
+  lines.push('ESTIMATED CASH TO CLOSE: ' + fmt(r.cashToClose));
+  lines.push('');
+  lines.push('(Estimates only; confirm with title/escrow and lender.)');
+
+  const text = lines.join('\n');
+  navigator.clipboard.writeText(text).then(function() {
+    const btn = document.getElementById('btn-copy');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy Breakdown';
+      btn.classList.remove('copied');
+    }, 1800);
+  });
+}
+
+// ===== ESCROW TOGGLE UI =====
+
+function updateEscrowUI() {
+  const on = isChecked('escrow-toggle');
+  document.getElementById('escrow-label').textContent = on ? 'ON' : 'OFF (Waived)';
+  document.getElementById('escrow-options').classList.toggle('hidden', !on);
+  document.getElementById('noescrow-options').classList.toggle('hidden', on);
+}
+
+// ===== POINTS % AUTO-COMPUTE =====
+
+function handlePointsPctChange() {
+  const pct = num('points-pct');
+  const loanAmt = num('loan-amount');
+  const dollarInput = document.getElementById('points-dollar');
+  if (pct > 0 && loanAmt > 0) {
+    dollarInput.value = (loanAmt * (pct / 100)).toFixed(2);
+    if (window.styerMoney) window.styerMoney.fmtEl(dollarInput);
+    delete dollarInput.dataset.manual;
+  }
+}
+
+// Mark manual entry on points dollar
+document.getElementById('points-dollar').addEventListener('input', function() {
+  this.dataset.manual = '1';
+});
+document.getElementById('points-pct').addEventListener('input', handlePointsPctChange);
+document.getElementById('loan-amount').addEventListener('input', handlePointsPctChange);
+
+// ===== RESET =====
+
+function resetAll() {
+  // Reset to defaults
+  document.getElementById('loan-amount').value = '';
+  document.getElementById('note-rate').value = '';
+  document.getElementById('manual-perdiem').value = '';
+  document.getElementById('annual-taxes').value = '';
+  document.getElementById('annual-hazard').value = '';
+  document.getElementById('monthly-hoa').value = '';
+  document.getElementById('escrow-toggle').checked = true;
+  document.getElementById('escrow-hoa').checked = false;
+  document.getElementById('collect-full-premium').checked = false;
+  document.getElementById('collect-prepaid-anyway').checked = false;
+  document.getElementById('points-pct').value = '';
+  document.getElementById('points-dollar').value = '';
+  document.getElementById('lenders-title').value = '2,119';
+  document.getElementById('lender-credit').value = '';
+  document.getElementById('seller-credit').value = '';
+
+  // Reset lender fees to defaults
+  var lenderDefaults = [0, 1295, 995, 0, 0];
+  document.querySelectorAll('.lender-fee').forEach(function(el, i) {
+    el.value = lenderDefaults[i] !== undefined ? lenderDefaults[i] : 0;
+  });
+
+  // Reset TP fees to defaults
+  var tpDefaults = [795, 110, 495, 15, 125, 550, 125, 12, 200];
+  document.querySelectorAll('.tp-fee').forEach(function(el, i) {
+    el.value = tpDefaults[i] !== undefined ? tpDefaults[i] : 0;
+  });
+
+  // Set today's date
+  setDefaultDate();
+
+  updateEscrowUI();
+  calculateAll();
+}
+
+// ===== SET DEFAULT DATE =====
+
+function setDefaultDate() {
+  var today = new Date();
+  var yyyy = today.getFullYear();
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var dd = String(today.getDate()).padStart(2, '0');
+  document.getElementById('closing-date').value = yyyy + '-' + mm + '-' + dd;
+}
+
+// ===== BREAKDOWN TOGGLE =====
+
+document.getElementById('bd-toggle').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('bd-content').classList.toggle('open');
+});
+
+// ===== EVENT BINDING =====
+
+// Delegate input/change events on all input areas
+document.querySelector('.inputs').addEventListener('input', function() {
+  calculateAll();
+});
+document.querySelector('.inputs').addEventListener('change', function() {
+  updateEscrowUI();
+  calculateAll();
+});
+
+// Buttons
+document.getElementById('btn-reset').addEventListener('click', resetAll);
+document.getElementById('btn-copy').addEventListener('click', copyBreakdown);
+
+// ===== INIT =====
+(function init() {
+  setDefaultDate();
+  updateEscrowUI();
+  calculateAll();
+  // Auto-open breakdown on desktop
+  if (window.innerWidth > 820) {
+    document.getElementById('bd-toggle').classList.add('open');
+    document.getElementById('bd-content').classList.add('open');
+  }
+})();
+</script>
+<script>
+/* Comma formatting for currency inputs (values are parsed comma-tolerantly) */
+window.styerMoney = (function () {
+  function fmtEl(el) {
+    if (!el) return;
+    var s = el.value;
+    var c = String(s).replace(/[^0-9.]/g, '');
+    if (c === '') { if (s !== '') el.value = ''; return; }
+    var dot = c.indexOf('.');
+    var intp = dot === -1 ? c : c.slice(0, dot);
+    var frac = dot === -1 ? '' : '.' + c.slice(dot + 1).replace(/\./g, '').slice(0, 2);
+    var out = (intp ? Number(intp).toLocaleString('en-US') : '0') + frac;
+    if (out === s) return;
+    var fromEnd = s.length - (el.selectionStart == null ? s.length : el.selectionStart);
+    el.value = out;
+    if (el === document.activeElement) {
+      var pos = Math.max(0, out.length - fromEnd);
+      try { el.setSelectionRange(pos, pos); } catch (e) {}
+    }
+  }
+  function attach(ids) {
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', function () { fmtEl(el); });
+      el.addEventListener('blur', function () { fmtEl(el); });
+      fmtEl(el);
+    });
+  }
+  return { attach: attach, fmtEl: function (x) { fmtEl(typeof x === 'string' ? document.getElementById(x) : x); } };
+})();
+window.styerMoney.attach(["loan-amount", "manual-perdiem", "annual-taxes", "annual-hazard", "monthly-hoa", "fee-origination-fee", "fee-underwriting-fee", "fee-processing-fee", "fee-application-fee", "fee-admin-fee", "points-dollar", "fee-appraisal", "fee-credit-report", "fee-doc-preparation-fee", "fee-flood-certification", "fee-tx-attorney-fee", "fee-settlement-agent-fee", "fee-title-search", "fee-title-endorsements", "fee-recording-fee", "lenders-title", "lender-credit", "seller-credit"]);
+</script>
+
+
+<dialog aria-describedby="contact-intro contact-preview-note" aria-labelledby="contact-title" class="or-contact-dialog" id="contact">
+<button aria-label="Close scenario review" class="close" type="button">×</button>
+<div data-contact-entry="">
+<p class="eyebrow">START WITH YOUR SITUATION</p>
+<h2 id="contact-title" tabindex="-1">What are you trying to do?</h2>
+<p class="dialog-intro" id="contact-intro">Tell me your goal and what needs a closer look. A few sentences are enough.</p>
+<p class="preview-notice" id="contact-preview-note">Preview only. Use sample details. Nothing is sent or saved.</p>
+<form data-inquiry-form="" id="preview-contact" method="post" name="contact">
+<fieldset disabled="">
+<input id="inquiry-goal" name="goal" type="hidden" value="Review my scenario"/>
+<div class="or-form-row">
+<div><label for="inquiry-name">Your name <span aria-hidden="true">*</span></label><input autocomplete="off" id="inquiry-name" maxlength="160" name="name" required=""/></div>
+<div><label for="inquiry-email">Email <span aria-hidden="true">*</span></label><input autocomplete="off" id="inquiry-email" maxlength="160" name="email" required="" type="email"/></div>
+</div>
+<label for="inquiry-phone">Phone (optional)</label><input autocomplete="off" id="inquiry-phone" maxlength="30" name="phone" type="tel"/>
+<label for="inquiry-message">What should I know? (optional)</label><textarea aria-describedby="inquiry-privacy" id="inquiry-message" maxlength="2000" name="message" rows="3"></textarea>
+<p class="or-form-hint" id="inquiry-privacy">Please leave out Social Security numbers, account numbers, and documents. Fields marked * are required.</p>
+<button class="button button--primary gold" data-inquiry-submit="" type="submit">Preview my scenario review <span aria-hidden="true">→</span></button>
+<p aria-live="polite" data-form-status="" role="status"></p><p data-form-error="" role="alert" tabindex="-1"></p>
+</fieldset>
+<noscript><p>JavaScript is required for the preview form. You can still read every guide and use the contact links on the page.</p></noscript>
+</form>
+</div>
+<div class="confirmation" data-contact-confirmation="" hidden="" role="status" tabindex="-1">
+<h3>Preview complete.</h3><p data-confirmation-copy="">Nothing was sent or saved. This shows the next step after a scenario review request.</p><button class="button green close-action" type="button">Back to the page <span aria-hidden="true">→</span></button>
+</div>
+</dialog>
+<dialog aria-labelledby="info-title" id="info"><button aria-label="Close details" class="close" type="button">×</button><div id="info-content"></div></dialog>
+<script defer="" src="/preview-safety.js"></script><script defer="" src="/script.js"></script><script defer="" src="/interaction.js"></script><script defer="" src="/navigation.js"></script><script defer="" src="/ui-polish.js"></script></body>
+</html>

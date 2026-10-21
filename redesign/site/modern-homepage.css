@@ -1,0 +1,200 @@
+/* Homepage composition: advisor, clear directories, attributable evidence.
+   The inquiry stays in its established location for this release. */
+body.home-pilot{--modern-ink:#182e3e;--modern-muted:#59636c;--modern-gold:#7c6345}
+body.home-pilot main .hero{background:#f6f3ed;padding:48px 0}
+body.home-pilot main .home-hero-layout{grid-template-columns:minmax(0,1.1fr) minmax(340px,.9fr);gap:56px;align-items:start}
+body.home-pilot main .hero h1{font-family:var(--font-display);font-size:clamp(2.125rem,1.35rem + 2.2vw,3.25rem);letter-spacing:-.025em;line-height:1.12;margin:16px 0 24px;max-width:660px}
+body.home-pilot .modern-hero-accent{color:#182e3e}
+body.home-pilot main .hero-eyebrow,.modern-eyebrow{font:600 13px/1.5 var(--font-primary);letter-spacing:.08em;text-transform:uppercase;color:#7c6345;margin-bottom:12px}
+body.home-pilot main .hero-subtitle{font-size:18px;line-height:1.65;margin-bottom:16px;max-width:65ch}
+.modern-hero-detail{font-size:17px;color:var(--modern-muted);line-height:1.65;max-width:65ch}
+body.home-pilot main .hero-ctas{margin-top:24px;gap:16px;align-items:center;flex-wrap:wrap}
+body.home-pilot main .hero-cta-btn{font-size:16px;min-height:48px;padding:12px 20px}
+.modern-browse-link{font-size:16px;font-weight:600;color:var(--modern-ink);text-decoration:underline;text-underline-offset:4px;display:inline-flex;gap:8px;align-items:center;min-height:44px}
+body.home-pilot main .home-conversation.journey-card{border:1px solid #d8d4cd;border-radius:6px;padding:24px;box-shadow:none;background:#fff}
+body.home-pilot main .home-conversation h2{font-family:var(--font-primary);font-size:24px!important;line-height:1.3}
+body.home-pilot main .home-conversation .journey-field select{width:100%;min-height:48px;border:1px solid #7e8589;border-radius:4px;background:#fff;color:#182e3e;font:16px/1.5 var(--font-primary);padding:10px 12px}
+body.home-pilot main .home-conversation .journey-field :is(input,textarea){border-color:#7e8589;font-size:16px;min-height:48px}
+body.home-pilot main .home-conversation .journey-field label{font-size:14px}
+body.home-pilot main .home-conversation .journey-consent{font-size:14px!important;line-height:1.55!important}
+body.home-pilot main .home-conversation .journey-submit{background:#182e3e;color:#fff;border-radius:4px;min-height:48px;font-size:16px}
+body.home-pilot main .home-conversation-contact{border-top:1px solid #d8d4cd;margin-top:24px;padding-top:24px;gap:20px}
+/* Frame the original transparent portrait closer without altering the photograph. */
+body.home-pilot main .home-advisor-portrait{display:block;position:relative;flex-shrink:0;width:144px;height:160px;overflow:hidden}
+body.home-pilot main .home-conversation-contact img{position:absolute;top:-8%;left:-36%;width:172%;height:auto;max-width:none;object-fit:contain;background:transparent;border-radius:0}
+body.home-pilot main .home-conversation-contact p{font-size:16px;max-width:24ch}
+body.home-pilot main .hero-legal{margin-top:16px;font-size:13px;color:var(--modern-muted)}
+.modern-section-heading{max-width:720px;margin:0 0 32px;text-align:left}
+.modern-section-heading h2{font-size:34px;line-height:1.25}
+.modern-section-heading>p:last-child{color:var(--modern-muted);font-size:18px;line-height:1.65}
+.modern-goal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.modern-goal-grid>a{display:flex;flex-direction:column;text-decoration:none;color:var(--modern-ink);padding:24px 0;border:0;border-bottom:1px solid #d8d4cd;border-radius:0;background:transparent}
+.modern-goal-grid>a:hover h3{text-decoration:underline;text-underline-offset:4px}
+.modern-card-number{display:none}
+.modern-goal-grid h3,.modern-scenario-grid h3{font:600 22px/1.35 var(--font-primary);margin:0 0 8px}
+.modern-goal-grid p,.modern-scenario-grid p{font-size:17px;line-height:1.65;color:var(--modern-muted);margin-bottom:12px}
+.modern-card-link{font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:4px;margin-top:auto}
+body.home-pilot main .modern-intelligence{background:#f6f3ed;color:#182e3e;padding:48px 0;border-block:1px solid #d8d4cd}
+.modern-intelligence-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.modern-intelligence h2{color:#182e3e;line-height:1.25}
+.modern-intelligence p{font-size:17px;line-height:1.65}
+.modern-intelligence .modern-intelligence-lede{font-size:18px;color:#182e3e}
+.modern-light-link{display:inline-flex;align-items:center;min-height:44px;color:#182e3e;font-weight:600;font-size:16px;text-decoration:underline}
+.modern-principles>div{position:relative;border-bottom:1px solid #d8d4cd;padding:16px 0 16px 32px}
+.modern-principles>div:first-child{padding-top:0}
+.modern-principles span{position:absolute;left:0;color:#7c6345;font-size:14px}
+.modern-principles h3{color:#182e3e;font-family:var(--font-primary);font-size:18px;margin-bottom:8px}
+.modern-principles p{font-size:16px;margin:0}
+.modern-scenario-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.modern-scenario-grid article{border-top:1px solid #d8d4cd;padding-top:24px}
+.modern-scenario-grid a{font-size:16px;font-weight:600;color:#182e3e;min-height:44px;display:inline-flex;align-items:center;text-decoration:underline;text-underline-offset:4px}
+body.home-pilot main :is(.modern-goals,.modern-scenarios,.modern-programs,.modern-equity-feature){padding:64px 0;background:#fff}
+.modern-programs-heading{display:flex;justify-content:space-between;align-items:start;gap:32px;margin-bottom:32px}
+.modern-programs-heading>div{max-width:720px}
+.modern-programs-heading h2{margin-bottom:16px}
+.modern-programs-heading p:last-child{color:var(--modern-muted);font-size:18px;margin:0}
+.modern-all-programs{display:inline-flex;align-items:center;justify-content:center;gap:12px;flex-shrink:0;min-height:48px;padding:12px 0;color:#182e3e!important;text-decoration:underline;font-size:16px;font-weight:600}
+.modern-programs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.modern-program-tile{display:flex;flex-direction:column;background:transparent;border:0;border-bottom:1px solid #d8d4cd;border-radius:0;padding:24px 0;text-decoration:none!important;box-shadow:none}
+.modern-program-tile h3{font:600 22px/1.35 var(--font-primary);color:#182e3e;margin:0 0 8px}
+.modern-program-tile>p{font-size:17px;line-height:1.65;color:var(--modern-muted);margin:0 0 12px}
+.modern-program-action{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:auto;color:#182e3e;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.modern-program-arrow{font-size:20px;color:#7c6345;background:transparent}
+.modern-program-tile:hover h3{text-decoration:underline;text-underline-offset:4px}
+.modern-specialty-links{display:flex;flex-wrap:wrap;gap:0 16px;margin:20px 0 16px}
+.modern-specialty-links a{display:inline-flex;align-items:center;gap:4px;min-height:40px;font-size:14px;font-weight:600;color:#182e3e;text-decoration:underline;text-underline-offset:4px}
+/* The originals remain readable; the repeated animation-only copies are removed. */
+body.home-pilot .testimonial-marquee-wrap{overflow:visible;mask-image:none;-webkit-mask-image:none;max-width:960px;margin:auto}
+body.home-pilot .testimonial-marquee-wrap::before,body.home-pilot .testimonial-marquee-wrap::after{display:none}
+body.home-pilot .testimonial-marquee-track{display:grid;grid-template-columns:1fr 1fr;gap:24px;width:auto;animation:none!important;transform:none!important}
+body.home-pilot .testimonial-marquee-card{min-width:0;width:auto;max-width:none;background:transparent;border:0!important;border-top:1px solid #d8d4cd!important;border-radius:0;box-shadow:none;padding:24px 0;flex:none}
+body.home-pilot .testimonial-marquee-card:first-child{grid-column:1/-1;max-width:720px}
+body.home-pilot .testimonial-marquee-card:first-child>p:first-of-type{font-size:21px!important}
+body.home-pilot .stats-strip{padding-block:24px}
+body.home-pilot .stat-strip-item .stat-number{font-family:var(--font-primary);font-size:26px}
+@media(max-width:1000px){body.home-pilot main .home-hero-layout{gap:32px}.modern-programs-heading{flex-direction:column;gap:12px}}
+@media(max-width:900px){body.home-pilot main .home-hero-layout{grid-template-columns:1fr;gap:32px}body.home-pilot main .home-conversation.journey-card{max-width:560px}.modern-intelligence-layout{grid-template-columns:1fr;gap:24px}.modern-scenario-grid{gap:24px}}
+@media(max-width:600px){
+ body.home-pilot main .hero{padding:32px 0}
+ body.home-pilot main .hero h1{font-size:34px}
+ body.home-pilot main .hero-subtitle{font-size:17px}
+ body.home-pilot main .hero-eyebrow{font-size:12px}
+ body.home-pilot main .hero-ctas{gap:8px;margin-top:20px}
+ body.home-pilot main .home-conversation-contact{gap:16px;margin-top:16px;padding-top:16px}
+ body.home-pilot main .home-advisor-portrait{width:104px;height:116px}
+ body.home-pilot main .home-conversation.journey-card{padding:20px 16px}
+ .modern-goal-grid,.modern-programs-grid,.modern-scenario-grid,.testimonial-marquee-track{grid-template-columns:1fr!important;gap:0}
+ .modern-section-heading h2{font-size:28px}
+ .modern-section-heading>p:last-child,.modern-programs-heading p:last-child{font-size:17px}
+ body.home-pilot main :is(.modern-goals,.modern-scenarios,.modern-programs,.modern-equity-feature){padding:48px 0}
+ body.home-pilot .testimonial-marquee-card:first-child{grid-column:auto}
+}
+
+/* 2026-10-01 simplify: compact advisor signature replaces portrait card + pills */
+.hero-signature{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:20px;border-top:1px solid rgba(23,43,61,.12);max-width:440px}
+.hero-signature img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;background:#e9e4da;flex:none}
+.hero-signature p{margin:0;font-size:.9rem;line-height:1.5;color:var(--color-navy,#172b3d)}
+.hero-signature span{font-size:.8rem;color:#5b6672}
+.hero-signature a{color:inherit}
+
+/* ===== 2026-10-01 polish: proof band, bank-said-no, ticker, Meet Adam photo ===== */
+body.home-pilot .proof-band{background:#182e3e;color:#fff;padding:44px 0}
+body.home-pilot .proof-band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1080px;margin:0 auto;text-align:center}
+body.home-pilot .proof-stat{display:flex;flex-direction:column;gap:6px;color:#fff;text-decoration:none}
+body.home-pilot .proof-num{font-family:var(--font-display,'Source Serif 4',Georgia,serif);font-size:clamp(2.2rem,3.6vw,3.1rem);line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+body.home-pilot .proof-label{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:#d9c48f}
+body.home-pilot a.proof-stat:hover .proof-label{text-decoration:underline}
+@media (max-width:760px){body.home-pilot .proof-band-grid{grid-template-columns:1fr 1fr;gap:28px 12px}body.home-pilot .proof-band{padding:32px 0}}
+
+body.home-pilot .said-no{padding:72px 0 64px;background:#f5f2ec}
+body.home-pilot .said-no .container{max-width:1180px}
+body.home-pilot .said-no-kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#7a6326;margin:0 0 8px}
+body.home-pilot .said-no h2{margin:0 0 10px}
+body.home-pilot .said-no-intro{max-width:680px;color:#4a5562;margin:0 0 28px}
+body.home-pilot .said-no-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+body.home-pilot .said-no-card{background:#fff;border-top:3px solid #8b6e24;border-radius:6px;padding:24px 22px;box-shadow:0 1px 2px rgba(23,43,61,.06)}
+body.home-pilot .said-no-tag{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#7a6326;margin:0 0 8px}
+body.home-pilot .said-no-card h3{font-size:1.12rem;line-height:1.35;margin:0 0 12px}
+body.home-pilot .said-no-card p{font-size:.93rem;line-height:1.6;margin:0 0 10px}
+body.home-pilot .said-no-result{font-weight:600;color:#172b3d;border-top:1px solid #e6e0d4;padding-top:10px;margin-top:12px!important}
+body.home-pilot .said-no-note{font-size:.78rem;color:#4a5562;margin:18px 0 0}
+body.home-pilot .said-no-cta{margin:20px 0 0;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+@media (max-width:900px){body.home-pilot .said-no-grid{grid-template-columns:1fr}}
+
+/* moving review ticker */
+body.home-pilot .testimonial-marquee-wrap.is-ticker{overflow:hidden!important;max-width:none!important;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)!important;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)!important}
+body.home-pilot .is-ticker .testimonial-marquee-track{display:flex!important;gap:24px!important;width:max-content!important;animation:marquee-scroll 55s linear infinite!important}
+body.home-pilot .is-ticker:hover .testimonial-marquee-track{animation-play-state:paused!important}
+body.home-pilot .is-ticker .testimonial-marquee-card{flex:0 0 340px!important;max-width:340px!important;background:#fff!important;border:0!important;border-top:3px solid #8b6e24!important;border-radius:6px!important;padding:22px!important;grid-column:auto!important}
+body.home-pilot .is-ticker .testimonial-marquee-card:first-child>p:first-of-type{font-size:.9rem!important}
+@media (prefers-reduced-motion:reduce){body.home-pilot .is-ticker .testimonial-marquee-track{animation:none!important;flex-wrap:wrap;width:auto!important}body.home-pilot .is-ticker .testimonial-marquee-card[aria-hidden]{display:none}}
+
+/* Meet Adam with photo */
+body.home-pilot .about-adam-grid{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:center;max-width:980px}
+body.home-pilot .about-adam-figure{margin:0}
+body.home-pilot .about-adam-figure img{width:100%;height:auto;border-radius:8px;display:block}
+@media (max-width:760px){body.home-pilot .about-adam-grid{grid-template-columns:1fr;gap:20px}body.home-pilot .about-adam-figure{max-width:260px}}
+
+/* Ticker fix: animate `translate` (older rules pin `transform:none!important`) */
+@keyframes review-ticker{from{translate:0 0}to{translate:-50% 0}}
+body.home-pilot .is-ticker .testimonial-marquee-track{animation:review-ticker 60s linear infinite!important}
+body.home-pilot .is-ticker:hover .testimonial-marquee-track{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){body.home-pilot .is-ticker .testimonial-marquee-track{animation:none!important}}
+
+/* Meet Adam: casual cutout on navy panel + family inset */
+body.home-pilot .about-adam-grid{grid-template-columns:360px 1fr!important}
+body.home-pilot .about-adam-figure{position:relative;margin:0 0 30px}
+body.home-pilot .about-adam-portrait{background:linear-gradient(160deg,#20384d,#182e3e);border-radius:12px;padding:24px 16px 0;overflow:hidden;aspect-ratio:1/1.02;display:flex;align-items:flex-end;justify-content:center}
+body.home-pilot .about-adam-portrait img{width:100%;height:auto;display:block;border-radius:0!important}
+body.home-pilot .about-adam-family{position:absolute;right:-18px;bottom:-30px;width:120px!important;height:auto;border-radius:8px;border:4px solid #fff;box-shadow:0 6px 18px rgba(23,43,61,.18)}
+@media (max-width:760px){body.home-pilot .about-adam-grid{grid-template-columns:1fr!important}body.home-pilot .about-adam-figure{max-width:300px}body.home-pilot .about-adam-family{right:-10px;width:96px!important}}
+/* Bigger hero headshot (2026-10-01) */
+body.home-pilot .hero-signature{gap:20px;max-width:520px}
+body.home-pilot .hero-signature img{width:128px;height:128px;box-shadow:0 6px 18px rgba(23,43,61,.14);border:3px solid #fff}
+body.home-pilot .hero-signature p{font-size:1rem}
+@media (max-width:760px){body.home-pilot .hero-signature img{width:96px;height:96px}}
+/* Hero headshot: larger, centered, stacked (2026-10-01) */
+body.home-pilot .hero-signature{flex-direction:column;justify-content:center;text-align:center;gap:14px;max-width:none;width:100%;margin-top:32px;padding-top:28px}
+body.home-pilot .hero-signature img{width:200px;height:200px;border-width:4px}
+body.home-pilot .hero-signature p{font-size:1.05rem}
+@media (max-width:760px){body.home-pilot .hero-signature img{width:160px;height:160px}}
+
+/* Aesthetic pass (2026-10-02) */
+/* 1. Review ticker: wider stage, softer edge fade, no dead space inside cards */
+body.home-pilot .testimonial-marquee-wrap.is-ticker{width:100vw!important;margin-left:calc(50% - 50vw)!important;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)!important;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)!important}
+body.home-pilot .is-ticker .testimonial-marquee-track{align-items:stretch!important}
+body.home-pilot .is-ticker .testimonial-marquee-card{display:flex!important;flex-direction:column!important;flex-basis:320px!important;max-width:320px!important;padding:20px 22px!important}
+body.home-pilot .is-ticker .testimonial-marquee-card>p[style*="italic"]{flex:0 0 auto!important;margin:10px 0 0!important;font-size:.95rem!important;line-height:1.55!important;color:#24384a}
+body.home-pilot .is-ticker .testimonial-marquee-card>div[style*="display:flex"]{margin-top:auto!important;padding-top:16px}
+body.home-pilot .is-ticker .testimonial-marquee-card .review-proof-links{margin-top:10px!important}
+@media (max-width:760px){body.home-pilot .is-ticker .testimonial-marquee-card{flex-basis:280px!important;max-width:280px!important}body.home-pilot .testimonial-marquee-wrap.is-ticker{-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)!important;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)!important}}
+
+/* 2. One primary action in the hero on desktop: the form sits right beside it */
+@media (min-width:901px){body.home-pilot .hero-ctas .hero-cta-btn{display:none!important}body.home-pilot .hero-ctas .modern-browse-link{font-size:1rem}}
+
+/* 3. Bank-said-no: results line up at the bottom as the payoff */
+body.home-pilot .said-no-card{display:flex;flex-direction:column}
+body.home-pilot .said-no-result{margin-top:auto!important;border-top:0!important;background:#f6f0e1;border-left:3px solid #8b6e24;border-radius:4px;padding:10px 12px!important}
+body.home-pilot .said-no-card p.said-no-result{margin-bottom:0!important}
+
+/* 4. Fit cards: one consistent link list */
+body.home-pilot main .modern-goal-grid article{display:flex;flex-direction:column}
+body.home-pilot main .modern-goal-grid article h3::after{content:none!important}
+body.home-pilot .goal-links{list-style:none;margin:auto 0 0;padding:0;border-top:1px solid #e6e0d4}
+body.home-pilot .goal-links li{border-bottom:1px solid #eee9de}
+body.home-pilot .goal-links li:last-child{border-bottom:0}
+body.home-pilot .goal-links a{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-weight:600;font-size:.95rem;color:#172b3d;text-decoration:none}
+body.home-pilot .goal-links a::after{content:'\2192';color:#8b6e24;transition:transform .15s}
+body.home-pilot .goal-links a:hover{color:#8b6e24}
+body.home-pilot .goal-links a:hover::after{transform:translateX(3px)}
+
+/* 5. Meet Adam photo centered on phones */
+@media (max-width:760px){body.home-pilot .about-adam-figure{margin-left:auto!important;margin-right:auto!important}}
+
+/* 6. Wider FAQ on desktop */
+@media (min-width:901px){body.home-pilot #faq .accordion{max-width:860px!important}}
+body.home-pilot .is-ticker .testimonial-marquee-card>div[style*="display:flex"]{margin-top:0!important}
+body.home-pilot .is-ticker .testimonial-marquee-card .review-proof-links{margin-top:auto!important;padding-top:12px}
+body.home-pilot .is-ticker .testimonial-marquee-track{align-items:flex-start!important}
+body.home-pilot .is-ticker .testimonial-marquee-card .review-proof-links{margin-top:12px!important;padding-top:0}
+@media (min-width:901px){body.home-pilot .hero-ctas{margin-top:-28px!important;margin-bottom:4px!important}}

@@ -1,0 +1,304 @@
+{
+  "preserved_routes": 173,
+  "programs": [
+    "/loans/conventional.html",
+    "/loans/jumbo.html",
+    "/loans/fha.html",
+    "/loans/va.html",
+    "/bank-statement-loans.html",
+    "/1099-only-mortgage-texas.html",
+    "/p-and-l-mortgage-texas.html",
+    "/asset-depletion-mortgage-texas.html",
+    "/dscr-loans-texas.html",
+    "/loans/investment.html",
+    "/dscr-cash-out-refinance-texas.html",
+    "/loans/refinance.html",
+    "/home-equity-loans-texas.html",
+    "/reverse-mortgage-texas.html",
+    "/buy-before-you-sell-austin.html"
+  ],
+  "audiences": [
+    "/self-employed-mortgage-austin.html",
+    "/high-net-worth-mortgage.html",
+    "/investor-loans.html",
+    "/first-time-home-buyer.html",
+    "/move-up-buyers.html",
+    "/mortgage-for-business-owners-austin.html"
+  ],
+  "excluded_from_promotion": [
+    "/loans/usda.html",
+    "/loans/construction.html",
+    "/one-time-close-construction-loan-texas.html"
+  ],
+  "preserved_depth": [
+    {
+      "route": "/loans/conventional.html",
+      "guide": "/guides/loans-conventional-guide.html",
+      "title": "Conventional loan qualification and costs",
+      "sha256": "c31aa71ed6d486c39fb2be393219275cc1529b9bc1fbe4d010717067e6c17301",
+      "preserved_file": "components/preserved-depth/loans-conventional.html"
+    },
+    {
+      "route": "/loans/jumbo.html",
+      "guide": "/guides/loans-jumbo-guide.html",
+      "title": "Jumbo loan income, assets and reserve requirements",
+      "sha256": "cfb3869406e95e652cd73d1b9effd908a838df6a7a3137730e530eeb23169346",
+      "preserved_file": "components/preserved-depth/loans-jumbo.html"
+    },
+    {
+      "route": "/loans/fha.html",
+      "guide": "/guides/loans-fha-guide.html",
+      "title": "FHA eligibility, mortgage insurance and property requirements",
+      "sha256": "468edf5cb35ef4d4b9e35714c2e26596dd23e9f96fbb97628edda753eb75c3a8",
+      "preserved_file": "components/preserved-depth/loans-fha.html"
+    },
+    {
+      "route": "/loans/va.html",
+      "guide": "/guides/loans-va-guide.html",
+      "title": "VA eligibility, entitlement and loan costs",
+      "sha256": "a0329db1a632412bcdbc6bba1372108231884660b2cd31d0c9c65c0db079a55b",
+      "preserved_file": "components/preserved-depth/loans-va.html"
+    },
+    {
+      "route": "/bank-statement-loans.html",
+      "guide": "/guides/bank-statement-loans-guide.html",
+      "title": "Bank statement income calculations and documentation",
+      "sha256": "a6cd23048ee705fbde760ba0c6c5752c42e73b293a71f8c1f6e57abadad9503a",
+      "preserved_file": "components/preserved-depth/bank-statement-loans.html"
+    },
+    {
+      "route": "/1099-only-mortgage-texas.html",
+      "guide": "/guides/1099-only-mortgage-texas-guide.html",
+      "title": "1099 income qualification and documentation",
+      "sha256": "b2474deecaf255c8dcf008048dd0b1696330815b1dcaf3073b5a6c94ddf2e165",
+      "preserved_file": "components/preserved-depth/1099-only-mortgage-texas.html"
+    },
+    {
+      "route": "/p-and-l-mortgage-texas.html",
+      "guide": "/guides/p-and-l-mortgage-texas-guide.html",
+      "title": "P&L mortgage documentation and income review",
+      "sha256": "186001212b1c12afe688afa861351979086f32429ec609715f3313d1ef4188c5",
+      "preserved_file": "components/preserved-depth/p-and-l-mortgage-texas.html"
+    },
+    {
+      "route": "/asset-depletion-mortgage-texas.html",
+      "guide": "/guides/asset-depletion-mortgage-texas-guide.html",
+      "title": "Asset depletion calculations, eligible accounts and pledged assets",
+      "sha256": "a011b483d30046303779f910898a4c0303c15972abb5954f6313084f1dcb6bff",
+      "preserved_file": "components/preserved-depth/asset-depletion-mortgage-texas.html"
+    },
+    {
+      "route": "/dscr-loans-texas.html",
+      "guide": "/guides/dscr-loans-texas-guide.html",
+      "title": "DSCR calculations, rental income and lender requirements",
+      "sha256": "a6b565581b2830aa8e56a60cf443048a574e05e857a66ce7fe60962ca95b9e1d",
+      "preserved_file": "components/preserved-depth/dscr-loans-texas.html"
+    },
+    {
+      "route": "/loans/investment.html",
+      "guide": "/guides/loans-investment-guide.html",
+      "title": "Conventional rental-property financing requirements",
+      "sha256": "a32b19a2f938f1c9dd58d66bbaa6952f4d056cf53bb85859ccd469f17d6299f8",
+      "preserved_file": "components/preserved-depth/loans-investment.html"
+    },
+    {
+      "route": "/dscr-cash-out-refinance-texas.html",
+      "guide": "/guides/dscr-cash-out-refinance-texas-guide.html",
+      "title": "DSCR cash-out limits, costs and rental-coverage review",
+      "sha256": "b7bc5d588931629b241d22248f3a2b868f84bd4a5e1fae793165b134a57c983c",
+      "preserved_file": "components/preserved-depth/dscr-cash-out-refinance-texas.html"
+    },
+    {
+      "route": "/loans/refinance.html",
+      "guide": "/guides/loans-refinance-guide.html",
+      "title": "Refinance costs, break-even and cash-out options",
+      "sha256": "08fde53e051d38c4275ffdc722e8e3ab423e927a9dd0e76a4653729d2135ffe9",
+      "preserved_file": "components/preserved-depth/loans-refinance.html"
+    },
+    {
+      "route": "/home-equity-loans-texas.html",
+      "guide": "/guides/home-equity-loans-texas-guide.html",
+      "title": "Texas home-equity rules and financing comparisons",
+      "sha256": "fdebe2bbe1d8d5c46bf6eb1932454d9e526ae435f2e477d55a13927f9e3a5a44",
+      "preserved_file": "components/preserved-depth/home-equity-loans-texas.html"
+    },
+    {
+      "route": "/reverse-mortgage-texas.html",
+      "guide": "/guides/reverse-mortgage-texas-guide.html",
+      "title": "Reverse mortgage obligations, costs and alternatives",
+      "sha256": "5b32fc6abe4d9a2fe80d84205cd1651e5f122a913e308215174cb0951667f0ec",
+      "preserved_file": "components/preserved-depth/reverse-mortgage-texas.html"
+    },
+    {
+      "route": "/buy-before-you-sell-austin.html",
+      "guide": "/guides/buy-before-you-sell-austin-guide.html",
+      "title": "Buying before selling: qualification and timing",
+      "sha256": "fbd3799785ca7665e85d64f9cfdd642d29274c46f2f45af38b26cd3e51bfade1",
+      "preserved_file": "components/preserved-depth/buy-before-you-sell-austin.html"
+    },
+    {
+      "route": "/self-employed-mortgage-austin.html",
+      "guide": "/guides/self-employed-mortgage-austin-guide.html",
+      "title": "Self-employed mortgage income and documentation",
+      "sha256": "0871659918dc93d27f769a6f63e4446ce887d519efbd8c69b221d6945ca3a82b",
+      "preserved_file": "components/preserved-depth/self-employed-mortgage-austin.html"
+    },
+    {
+      "route": "/high-net-worth-mortgage.html",
+      "guide": "/guides/high-net-worth-mortgage-guide.html",
+      "title": "Asset-rich borrower financing: income, liquidity and loan comparisons",
+      "sha256": "73c4b2366c179ebd2cc7c0b889102c720976b02683a94871f9b0e6923ecd6b61",
+      "preserved_file": "components/preserved-depth/high-net-worth-mortgage.html"
+    },
+    {
+      "route": "/investor-loans.html",
+      "guide": "/guides/investor-loans-guide.html",
+      "title": "Investment-property financing and rental cash-flow review",
+      "sha256": "b45bf0b749f7be5dd8c44881b1dbaca4abba308196f57f66a1ec8f15be4db461",
+      "preserved_file": "components/preserved-depth/investor-loans.html"
+    },
+    {
+      "route": "/first-time-home-buyer.html",
+      "guide": "/guides/first-time-home-buyer-guide.html",
+      "title": "First-time buyer planning, qualification and closing costs",
+      "sha256": "2259017dc19b98f4f5458c3983ee3424ccbf80d7706ff8bbaf0b7cb462acd4e1",
+      "preserved_file": "components/preserved-depth/first-time-home-buyer.html"
+    },
+    {
+      "route": "/mortgage-for-business-owners-austin.html",
+      "guide": "/guides/mortgage-for-business-owners-austin-guide.html",
+      "title": "Business-owner income, compensation and liquidity planning",
+      "sha256": "615c00c5e9a828ca05b84c0e5fad3a3efef7f7a3feb7bd35bc038579ce155fdb",
+      "preserved_file": "components/preserved-depth/mortgage-for-business-owners-austin.html"
+    },
+    {
+      "route": "/non-qm-loans.html",
+      "guide": "/guides/non-qm-loans-guide.html",
+      "title": "Alternative income and Non-QM documentation",
+      "sha256": "f5c4d02ec5ad99f9e8376a8117943ff9a8727b592b828d1c1b63ebddb804d7b9",
+      "preserved_file": "components/preserved-depth/non-qm-loans.html"
+    },
+    {
+      "route": "/resources/",
+      "guide": "/resources/full-directory.html",
+      "title": "Complete Mortgage Resource Directory",
+      "sha256": "59ccefcc882902b0c57dabd32e7467595d1f3eb79b072687078b2045fa69ec84",
+      "preserved_file": "components/preserved-depth/resources.html"
+    },
+    {
+      "route": "/products.html",
+      "guide": "/guides/mortgage-options-reference.html",
+      "title": "Mortgage options and Texas lending reference",
+      "sha256": "9b752c54188f3e7f3ee123c9ef776bf7d3d519fbdb877c9fb533700c32335771",
+      "preserved_file": "components/preserved-depth/products.html"
+    }
+  ],
+  "parents": {
+    "/loans/conventional.html": "/products.html",
+    "/loans/jumbo.html": "/products.html",
+    "/loans/fha.html": "/products.html",
+    "/loans/va.html": "/products.html",
+    "/bank-statement-loans.html": "/products.html",
+    "/1099-only-mortgage-texas.html": "/products.html",
+    "/p-and-l-mortgage-texas.html": "/products.html",
+    "/asset-depletion-mortgage-texas.html": "/products.html",
+    "/dscr-loans-texas.html": "/products.html",
+    "/loans/investment.html": "/products.html",
+    "/dscr-cash-out-refinance-texas.html": "/products.html",
+    "/loans/refinance.html": "/products.html",
+    "/home-equity-loans-texas.html": "/products.html",
+    "/reverse-mortgage-texas.html": "/products.html",
+    "/buy-before-you-sell-austin.html": "/products.html",
+    "/self-employed-mortgage-austin.html": "/who-we-serve.html",
+    "/high-net-worth-mortgage.html": "/who-we-serve.html",
+    "/investor-loans.html": "/who-we-serve.html",
+    "/first-time-home-buyer.html": "/who-we-serve.html",
+    "/move-up-buyers.html": "/who-we-serve.html",
+    "/mortgage-for-business-owners-austin.html": "/self-employed-mortgage-austin.html",
+    "/guides/loans-conventional-guide.html": "/loans/conventional.html",
+    "/guides/loans-jumbo-guide.html": "/loans/jumbo.html",
+    "/guides/loans-fha-guide.html": "/loans/fha.html",
+    "/guides/loans-va-guide.html": "/loans/va.html",
+    "/guides/bank-statement-loans-guide.html": "/bank-statement-loans.html",
+    "/guides/1099-only-mortgage-texas-guide.html": "/1099-only-mortgage-texas.html",
+    "/guides/p-and-l-mortgage-texas-guide.html": "/p-and-l-mortgage-texas.html",
+    "/guides/asset-depletion-mortgage-texas-guide.html": "/asset-depletion-mortgage-texas.html",
+    "/guides/dscr-loans-texas-guide.html": "/dscr-loans-texas.html",
+    "/guides/loans-investment-guide.html": "/loans/investment.html",
+    "/guides/dscr-cash-out-refinance-texas-guide.html": "/dscr-cash-out-refinance-texas.html",
+    "/guides/loans-refinance-guide.html": "/loans/refinance.html",
+    "/guides/home-equity-loans-texas-guide.html": "/home-equity-loans-texas.html",
+    "/guides/reverse-mortgage-texas-guide.html": "/reverse-mortgage-texas.html",
+    "/guides/buy-before-you-sell-austin-guide.html": "/buy-before-you-sell-austin.html",
+    "/guides/self-employed-mortgage-austin-guide.html": "/self-employed-mortgage-austin.html",
+    "/guides/high-net-worth-mortgage-guide.html": "/high-net-worth-mortgage.html",
+    "/guides/investor-loans-guide.html": "/investor-loans.html",
+    "/guides/first-time-home-buyer-guide.html": "/first-time-home-buyer.html",
+    "/guides/mortgage-for-business-owners-austin-guide.html": "/mortgage-for-business-owners-austin.html",
+    "/guides/non-qm-loans-guide.html": "/non-qm-loans.html",
+    "/resources/full-directory.html": "/resources/",
+    "/guides/mortgage-options-reference.html": "/products.html",
+    "/who-we-serve.html": "/",
+    "/products.html": "/",
+    "/resources/": "/",
+    "/mortgage-guides.html": "/resources/",
+    "/non-qm-loans.html": "/products.html",
+    "/loans/usda.html": "/resources/full-directory.html",
+    "/loans/construction.html": "/resources/full-directory.html",
+    "/one-time-close-construction-loan-texas.html": "/resources/full-directory.html"
+  },
+  "labels": {
+    "/loans/conventional.html": "Conventional Loans",
+    "/loans/jumbo.html": "Jumbo Loans",
+    "/loans/fha.html": "FHA Loans",
+    "/loans/va.html": "VA Loans",
+    "/bank-statement-loans.html": "Bank Statement Loans",
+    "/1099-only-mortgage-texas.html": "1099 Loans",
+    "/p-and-l-mortgage-texas.html": "P&L Loans",
+    "/asset-depletion-mortgage-texas.html": "Asset Depletion Loans",
+    "/dscr-loans-texas.html": "DSCR Loans",
+    "/loans/investment.html": "Conventional Investment Property Loans",
+    "/dscr-cash-out-refinance-texas.html": "DSCR Cash-Out Refinance",
+    "/loans/refinance.html": "Mortgage Refinance",
+    "/home-equity-loans-texas.html": "Home Equity Loans",
+    "/reverse-mortgage-texas.html": "Reverse Mortgages",
+    "/buy-before-you-sell-austin.html": "Buy Before You Sell",
+    "/self-employed-mortgage-austin.html": "Self-Employed & Business Owners",
+    "/high-net-worth-mortgage.html": "High-Net-Worth & Asset-Rich Borrowers",
+    "/investor-loans.html": "Real Estate Investors",
+    "/first-time-home-buyer.html": "First-Time Homebuyers",
+    "/move-up-buyers.html": "Repeat & Move-Up Buyers",
+    "/mortgage-for-business-owners-austin.html": "Mortgages for Business Owners",
+    "/guides/loans-conventional-guide.html": "Conventional loan qualification and costs",
+    "/guides/loans-jumbo-guide.html": "Jumbo loan income, assets and reserve requirements",
+    "/guides/loans-fha-guide.html": "FHA eligibility, mortgage insurance and property requirements",
+    "/guides/loans-va-guide.html": "VA eligibility, entitlement and loan costs",
+    "/guides/bank-statement-loans-guide.html": "Bank statement income calculations and documentation",
+    "/guides/1099-only-mortgage-texas-guide.html": "1099 income qualification and documentation",
+    "/guides/p-and-l-mortgage-texas-guide.html": "P&L mortgage documentation and income review",
+    "/guides/asset-depletion-mortgage-texas-guide.html": "Asset depletion calculations, eligible accounts and pledged assets",
+    "/guides/dscr-loans-texas-guide.html": "DSCR calculations, rental income and lender requirements",
+    "/guides/loans-investment-guide.html": "Conventional rental-property financing requirements",
+    "/guides/dscr-cash-out-refinance-texas-guide.html": "DSCR cash-out limits, costs and rental-coverage review",
+    "/guides/loans-refinance-guide.html": "Refinance costs, break-even and cash-out options",
+    "/guides/home-equity-loans-texas-guide.html": "Texas home-equity rules and financing comparisons",
+    "/guides/reverse-mortgage-texas-guide.html": "Reverse mortgage obligations, costs and alternatives",
+    "/guides/buy-before-you-sell-austin-guide.html": "Buying before selling: qualification and timing",
+    "/guides/self-employed-mortgage-austin-guide.html": "Self-employed mortgage income and documentation",
+    "/guides/high-net-worth-mortgage-guide.html": "Asset-rich borrower financing: income, liquidity and loan comparisons",
+    "/guides/investor-loans-guide.html": "Investment-property financing and rental cash-flow review",
+    "/guides/first-time-home-buyer-guide.html": "First-time buyer planning, qualification and closing costs",
+    "/guides/mortgage-for-business-owners-austin-guide.html": "Business-owner income, compensation and liquidity planning",
+    "/guides/non-qm-loans-guide.html": "Alternative income and Non-QM documentation",
+    "/resources/full-directory.html": "Complete Mortgage Resource Directory",
+    "/guides/mortgage-options-reference.html": "Mortgage options and Texas lending reference",
+    "/who-we-serve.html": "Who We Serve",
+    "/products.html": "Loan Programs",
+    "/resources/": "Resources",
+    "/mortgage-guides.html": "Mortgage Guides",
+    "/non-qm-loans.html": "Alternative Income & Specialty Options",
+    "/loans/usda.html": "USDA loans \u2014 legacy educational page",
+    "/loans/construction.html": "Construction loans \u2014 legacy educational page",
+    "/one-time-close-construction-loan-texas.html": "One-time-close construction \u2014 legacy educational page"
+  }
+}

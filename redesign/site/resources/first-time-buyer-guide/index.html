@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>First-Time Homebuyer Guide Austin TX | Adam Styer</title>
+<meta content="12 things every first-time buyer in Austin needs to know before they sign anything. Free guide from Adam Styer, Senior Loan Officer. NMLS #513013." name="description"/>
+<!-- Open Graph -->
+<meta content="The First-Time Homebuyer Guide | Adam Styer" property="og:title"/>
+<meta content="12 things every first-time buyer in Austin needs to know before they sign anything. Credit scores, down payment myths, seller concessions, deal-killing mistakes, and Texas-specific programs." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://styermortgage.com/resources/first-time-buyer-guide/" property="og:url"/>
+<meta content="Adam Styer | HyperSmart Home Loans" property="og:site_name"/>
+<meta content="https://styermortgage.com/assets/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="The First-Time Homebuyer Guide | Adam Styer" name="twitter:title"/>
+<meta content="12 things every first-time buyer in Austin needs to know before they sign anything. Free guide from Adam Styer." name="twitter:description"/>
+<meta content="https://styermortgage.com/assets/og-image.png" name="twitter:image"/>
+<!-- Favicon -->
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-180.png" rel="apple-touch-icon" sizes="180x180"/>
+<!-- Canonical -->
+<link href="https://styermortgage.com/resources/first-time-buyer-guide/" rel="canonical"/>
+<!-- Fonts (same as main site) -->
+<noscript></noscript>
+<!-- Main site stylesheet -->
+<link href="/style.css" rel="stylesheet"/>
+<!-- Page-specific styles -->
+<style>
+    /* ── Landing Hero ── */
+    .guide-hero {
+      background: linear-gradient(135deg, var(--color-navy) 0%, #1a3a5c 100%);
+      color: var(--color-white);
+      padding: var(--spacing-6xl) 0 var(--spacing-5xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .guide-hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -15%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .guide-hero .container {
+      position: relative;
+      z-index: 10;
+    }
+    .guide-hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: var(--spacing-4xl);
+      align-items: center;
+    }
+    .guide-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      background: rgba(255, 255, 255, 0.1);
+      padding: var(--spacing-sm) var(--spacing-lg);
+      border-radius: 100px;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-gold);
+      margin-bottom: var(--spacing-xl);
+      letter-spacing: 0.02em;
+    }
+    .guide-hero h1 {
+      color: var(--color-white);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: var(--spacing-lg);
+    }
+    .guide-hero-sub {
+      font-size: var(--font-size-lg);
+      color: rgba(255, 255, 255, 0.75);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--spacing-2xl);
+      max-width: 520px;
+    }
+    .guide-hero-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+    .guide-hero-bullets li {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      font-size: var(--font-size-sm);
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .guide-hero-bullets li::before {
+      content: '✓';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.2);
+      color: var(--color-gold);
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── Email Capture Form ── */
+    .guide-form-card {
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-3xl);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    .guide-form-card h2 {
+      color: var(--color-navy);
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--spacing-xs);
+    }
+    .guide-form-card .form-sub {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-2xl);
+    }
+    .guide-form-group {
+      margin-bottom: var(--spacing-lg);
+    }
+    .guide-form-group label {
+      display: block;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-xs);
+    }
+    .guide-form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-base);
+      font-family: inherit;
+      color: var(--color-text);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+      box-sizing: border-box;
+    }
+    .guide-form-group input:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+    }
+    .guide-form-group input::placeholder {
+      color: var(--color-text-muted);
+    }
+    .guide-form-submit {
+      width: 100%;
+      padding: 14px;
+      background: #F2C840;
+      color: var(--color-navy);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-bold);
+      font-family: inherit;
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+    .guide-form-submit:hover {
+      background: var(--color-navy);
+      color: #F2C840;
+      transform: translateY(-1px);
+    }
+    .guide-form-privacy {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      text-align: center;
+      margin-top: var(--spacing-md);
+      line-height: 1.4;
+    }
+
+    /* ── What's Inside Section ── */
+    .guide-inside {
+      padding: var(--spacing-5xl) 0;
+      background: var(--color-white);
+    }
+    .guide-inside-header {
+      text-align: center;
+      margin-bottom: var(--spacing-4xl);
+    }
+    .guide-inside-header .section-label {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-gold);
+      margin-bottom: var(--spacing-md);
+    }
+    .guide-inside-header h2 {
+      margin-bottom: var(--spacing-md);
+    }
+    .guide-inside-header p {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .guide-topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--spacing-2xl);
+    }
+    .guide-topic {
+      display: flex;
+      gap: var(--spacing-lg);
+      align-items: flex-start;
+    }
+    .guide-topic-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-lg);
+      background: rgba(201, 168, 76, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .guide-topic h4 {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-navy);
+      margin-bottom: 4px;
+    }
+    .guide-topic p {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    /* ── Social Proof Section ── */
+    .guide-proof {
+      padding: var(--spacing-5xl) 0;
+      background: var(--color-bg);
+    }
+    .guide-proof-header {
+      text-align: center;
+      margin-bottom: var(--spacing-4xl);
+    }
+    .guide-proof-header .section-label {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-gold);
+      margin-bottom: var(--spacing-md);
+    }
+    .guide-proof-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-2xl);
+      margin-bottom: var(--spacing-4xl);
+    }
+    .guide-stat {
+      text-align: center;
+      padding: var(--spacing-2xl);
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+    }
+    .guide-stat-number {
+      font-family: var(--font-display,'Source Serif 4',Georgia,serif);
+      font-size: clamp(2rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--color-navy);
+      line-height: 1;
+      margin-bottom: var(--spacing-xs);
+    }
+    .guide-stat-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+    }
+    .guide-testimonial {
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-3xl);
+      border: 1px solid var(--color-border);
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .guide-testimonial::before {
+      content: '\201C';
+      position: absolute;
+      top: -10px;
+      left: var(--spacing-2xl);
+      font-family: var(--font-display,'Source Serif 4',Georgia,serif);
+      font-size: 64px;
+      color: var(--color-gold);
+      line-height: 1;
+      opacity: 0.4;
+    }
+    .guide-testimonial blockquote {
+      font-size: var(--font-size-lg);
+      color: var(--color-text);
+      line-height: var(--line-height-relaxed);
+      font-style: italic;
+      margin: 0 0 var(--spacing-lg);
+    }
+    .guide-testimonial cite {
+      font-style: normal;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-semibold);
+    }
+    .guide-testimonial .stars {
+      color: var(--color-gold);
+      margin-bottom: var(--spacing-md);
+      font-size: var(--font-size-lg);
+    }
+
+    /* ── About Adam Section ── */
+    .guide-about {
+      padding: var(--spacing-5xl) 0;
+      background: var(--color-white);
+    }
+    .guide-about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-4xl);
+      align-items: center;
+    }
+    .guide-about-content .section-label {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-gold);
+      margin-bottom: var(--spacing-md);
+    }
+    .guide-about-content h2 {
+      margin-bottom: var(--spacing-lg);
+    }
+    .guide-about-content p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-muted);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--spacing-lg);
+    }
+    .guide-about-creds {
+      list-style: none;
+      padding: 0;
+      margin: var(--spacing-xl) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+    .guide-about-creds li {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      font-size: var(--font-size-sm);
+      color: var(--color-text);
+      font-weight: var(--font-weight-medium);
+    }
+    .guide-about-creds li::before {
+      content: '★';
+      font-size: 14px;
+    }
+    .guide-about-photo {
+      background: linear-gradient(135deg, var(--color-navy) 0%, #1a3a5c 100%);
+      border-radius: var(--radius-xl);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .guide-about-photo::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .guide-about-photo-placeholder {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: var(--font-size-sm);
+      z-index: 1;
+    }
+    .guide-about-photo-placeholder .initials {
+      font-family: var(--font-display,'Source Serif 4',Georgia,serif);
+      font-size: 3rem;
+      color: var(--color-gold);
+      opacity: 0.6;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    /* ── Final CTA Section ── */
+    .guide-final-cta {
+      background: var(--color-navy);
+      padding: var(--spacing-5xl) 0;
+      text-align: center;
+    }
+    .guide-final-cta h2 {
+      color: var(--color-white);
+      margin-bottom: var(--spacing-md);
+    }
+    .guide-final-cta p {
+      font-size: var(--font-size-base);
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: var(--spacing-2xl);
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .guide-final-cta .cta-row {
+      display: flex;
+      gap: var(--spacing-lg);
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .guide-final-cta .cta-or {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--font-size-sm);
+    }
+    .guide-final-cta .btn-secondary-outline {
+      padding: 14px 28px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: var(--color-white);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      text-decoration: none;
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+    .guide-final-cta .btn-secondary-outline:hover {
+      border-color: var(--color-gold);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .guide-hero-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .guide-hero-sub {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .guide-hero-bullets {
+        align-items: center;
+      }
+      .guide-form-card {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      .guide-about-layout {
+        grid-template-columns: 1fr;
+      }
+      .guide-about-photo {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+    }
+    @media (max-width: 768px) {
+      .guide-proof-stats {
+        grid-template-columns: 1fr;
+      }
+      .guide-topics {
+        grid-template-columns: 1fr;
+      }
+      .guide-hero {
+        padding: var(--spacing-5xl) 0 var(--spacing-4xl);
+      }
+    }
+  </style>
+<script>window.dataLayer = window.dataLayer || [];</script>
+<!-- Google Tag Manager -->
+<!-- End Google Tag Manager -->
+<link href="/experience.css" rel="stylesheet"/>
+<link href="/advisory-design.css?v=20260918" rel="stylesheet"/>
+<link href="/premium-interior.css" rel="stylesheet"/>
+<link href="/premium-reading.css" rel="stylesheet"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/><meta content="connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/><link href="/migration-navigation.css" rel="stylesheet"/><link href="/styles.css" rel="stylesheet"/><link href="/orchestration.css" rel="stylesheet"/><link href="/navigation.css" rel="stylesheet"/><link href="/hierarchy.css" rel="stylesheet"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Who We Serve", "item": "https://styermortgage.com/who-we-serve.html"}, {"@type": "ListItem", "position": 3, "name": "First-Time Homebuyers", "item": "https://styermortgage.com/first-time-home-buyer.html"}, {"@type": "ListItem", "position": 4, "name": "First-time homebuyer guide", "item": "https://styermortgage.com/resources/first-time-buyer-guide/"}]}</script></head>
+<body class="premium-interior premium-reading premium-download advisory-site orchestration-page legacy-page" data-active-nav="resources" data-palette="tiffany-original" data-preview-only="true"><a class="skip" href="#main">Skip to content</a>
+<!-- Google Tag Manager (noscript) -->
+<noscript></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- ── HEADER (matches main site) ── -->
+<header class="site-header sm-header">
+<div class="container">
+<nav aria-label="Main navigation">
+<a aria-label="The Styer Team home" class="brand nav-brand" href="/"><span>THE STYER TEAM</span><small>Adam Styer · NMLS #513013</small></a>
+<button aria-controls="site-nav-links" aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle" type="button"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+<ul class="nav-links" id="site-nav-links"><li class="nav-has-dropdown hi-program-menu" data-nav-section="programs"><a aria-expanded="false" aria-haspopup="true" href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li class="hi-nav-group"><span class="hi-nav-group-title">Conventional &amp; Government</span><ul><li><a href="/loans/conventional.html">Conventional Loans</a></li><li><a href="/loans/jumbo.html">Jumbo Loans</a></li><li><a href="/loans/fha.html">FHA Loans</a></li><li><a href="/loans/va.html">VA Loans</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Income &amp; Asset Qualification</span><ul><li><a href="/bank-statement-loans.html">Bank Statement Loans</a></li><li><a href="/1099-only-mortgage-texas.html">1099 Loans</a></li><li><a href="/p-and-l-mortgage-texas.html">P&amp;L Loans</a></li><li><a href="/asset-depletion-mortgage-texas.html">Asset Depletion Loans</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Investment Property</span><ul><li><a href="/dscr-loans-texas.html">DSCR Loans</a></li><li><a href="/loans/investment.html">Conventional Investment Property Loans</a></li><li><a href="/dscr-cash-out-refinance-texas.html">DSCR Cash-Out Refinance</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Refinance &amp; Equity</span><ul><li><a href="/loans/refinance.html">Mortgage Refinance</a></li><li><a href="/home-equity-loans-texas.html">Home Equity Loans</a></li><li><a href="/reverse-mortgage-texas.html">Reverse Mortgages</a></li><li><a href="/buy-before-you-sell-austin.html">Buy Before You Sell</a></li></ul></li><li><a href="/products.html">View all loan programs →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="audiences"><a aria-expanded="false" aria-haspopup="true" href="/who-we-serve.html">Who We Serve</a><ul class="nav-dropdown"><li><a href="/self-employed-mortgage-austin.html">Self-Employed &amp; Business Owners</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth &amp; Asset-Rich Borrowers</a></li><li><a href="/investor-loans.html">Real Estate Investors</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li><a href="/move-up-buyers.html">Repeat &amp; Move-Up Buyers</a></li><li><a href="/who-we-serve.html">View who we serve →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="resources"><a aria-expanded="false" aria-haspopup="true" href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Mortgage calculators</a></li><li><a href="/mortgage-guides.html">Mortgage guides</a></li><li><a href="/scenarios.html">Borrower scenarios</a></li><li><a href="/austin-area-mortgage-lender.html">Austin &amp; Central Texas</a></li><li><a href="/blog.html">Articles &amp; updates</a></li><li><a href="/referral-partners-self-employed-clients.html">Professional partners</a></li><li><a href="/resources/">All resources →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="about"><a aria-expanded="false" aria-haspopup="true" href="/about.html">About</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam &amp; Tiffany</a></li><li><a href="/testimonials.html">Client reviews</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/mortgage-broker-vs-bank.html">Working with a mortgage broker</a></li></ul></li></ul>
+<div class="sm-header-actions"><a class="phone sm-header-phone" href="tel:+15129566010">Call (512) 956-6010</a><a class="button green" data-header-apply="" href="/apply-now/">Apply Online <span aria-hidden="true">↗</span></a></div>
+</nav>
+</div>
+</header><main id="main"><nav aria-label="Breadcrumb" class="ledger-breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/who-we-serve.html">Who We Serve</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li aria-current="page">First-time homebuyer guide</li></ol></nav>
+<!-- ── HERO + EMAIL CAPTURE ── -->
+<section class="guide-hero">
+<div class="container">
+<div class="guide-hero-layout">
+<div class="guide-hero-content">
+<div class="guide-hero-badge"> Free Guide</div>
+<h1>The First-Time Homebuyer Guide</h1>
+<p class="guide-hero-sub">12 things every first-time buyer in Austin needs to know before they sign anything. No fluff. No sales pitch. Just the stuff that actually matters.</p>
+<ul class="guide-hero-bullets">
+<li>Down payment myths that cost buyers thousands</li>
+<li>Seller concessions: make the seller pay your costs</li>
+<li>Texas-specific programs most agents don't mention</li>
+<li>5 deal-killing mistakes to avoid</li>
+</ul>
+</div>
+<!-- Email Capture Form -->
+<div class="guide-form-card">
+<h2>Get the Free Guide</h2>
+<p class="form-sub">Instant access. No spam. Unsubscribe anytime.</p>
+<form action="#" data-preview-inquiry="true" data-preview-only="true" id="guide-signup-form" method="POST" name="first-time-buyer-guide">
+<input name="form-name" type="hidden" value="first-time-buyer-guide"/>
+<input name="inquiry_id" type="hidden" value=""/>
+<p hidden=""><label>Leave this blank: <input name="bot-field"/></label></p>
+<div class="guide-form-group">
+<label for="guide-fname">First Name</label>
+<input id="guide-fname" name="first_name" placeholder="Your first name" type="text"/>
+</div>
+<div class="guide-form-group">
+<label for="guide-email">Email Address</label>
+<input id="guide-email" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<button class="guide-form-submit" id="guide-submit-btn" type="submit">Send Me the Guide →</button>
+<p class="guide-form-privacy" id="guide-form-status">No spam, ever. Just the guide and occasional mortgage tips.</p>
+<p id="guide-form-error" style="display:none;margin-top:10px;padding:10px 14px;background:#fef2f2;border:1px solid #fecaca;border-radius:6px;font-size:13px;color:#b91c1c;text-align:center;"></p>
+</form>
+<script>
+              document.getElementById('guide-signup-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                var form = e.currentTarget;
+                var btn    = document.getElementById('guide-submit-btn');
+                var status = document.getElementById('guide-form-status');
+                var errBox = document.getElementById('guide-form-error');
+                var email  = document.getElementById('guide-email').value.trim();
+                var fname  = document.getElementById('guide-fname').value.trim();
+
+                btn.disabled = true;
+                btn.textContent = 'Sending\u2026';
+                status.textContent = '';
+                errBox.style.display = 'none';
+
+                var primaryNotification = window.StyerFetchWithTimeout('/.netlify/functions/lead-intake', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ inquiry_id: window.StyerInquiryId(form), 'form-name': form.getAttribute('name'), email: email, fname: fname, tag: 'ftb-lead' })
+                }, 15000).then(async function (res) {
+                  if (!res.ok) throw new Error('lead-intake returned ' + res.status);
+                  var data = await res.json();
+                  if (!data.success) throw new Error(data.error || 'Lead intake did not confirm success');
+                  return data;
+                });
+
+                var ownerEmailNotification = primaryNotification.then(function () { return false; }, function () {
+                  return window.StyerCaptureNotificationBackup({
+                      sourceForm: 'first-time-buyer-guide',
+                      name: fname,
+                      email: email,
+                      subject: 'New first-time buyer guide request',
+                      details: 'The visitor requested the first-time buyer guide.'
+                    });
+                });
+
+                var results = await Promise.allSettled([primaryNotification, ownerEmailNotification]);
+                var primaryAccepted = results[0].status === 'fulfilled';
+                var ownerEmailAccepted = results[1].status === 'fulfilled' && results[1].value !== false;
+
+                if (!primaryAccepted && !ownerEmailAccepted) {
+                  btn.disabled = false;
+                  btn.textContent = 'Send Me the Guide \u2192';
+                  errBox.textContent = 'Something went wrong \u2014 please try again or email adam@thestyerteam.com.';
+                  errBox.style.display = 'block';
+                  console.error(results[0].reason, results[1].reason);
+                  return;
+                }
+
+                btn.textContent = '\u2713 Guide ready — opening now!';
+                btn.style.background = '#16a34a';
+                btn.style.color = '#fff';
+                status.textContent = primaryAccepted
+                  ? 'Check your email too — a copy is on its way.'
+                  : 'The guide is opening now. Adam also received your request for follow-up.';
+                window.open('https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9', '_blank');
+                form.reset();
+                document.getElementById('guide-fname').value = '';
+                document.getElementById('guide-email').value = '';
+              });
+            </script>
+</div>
+</div>
+</div>
+</section>
+<!-- ── WHAT'S INSIDE ── -->
+<section class="guide-inside">
+<div class="container">
+<div class="guide-inside-header">
+<div class="section-label">What's Inside</div>
+<h2>Everything You Need to Buy with Confidence</h2>
+<p>This isn't a pamphlet from 2015. It's built for Austin buyers navigating today's market.</p>
+</div>
+<div class="guide-topics">
+<div class="guide-topic">
+<div class="guide-topic-icon"></div>
+<div>
+<h4>Credit Score Reality Check</h4>
+<p>The actual minimum scores for each loan type — and what to do if you're not there yet.</p>
+</div>
+</div>
+<div class="guide-topic">
+<div class="guide-topic-icon"></div>
+<div>
+<h4>Down Payment Myths</h4>
+<p>You don't need 20% down. We break down the real numbers for conventional loans and how PMI tiers actually work.</p>
+</div>
+</div>
+<div class="guide-topic">
+<div class="guide-topic-icon"></div>
+<div>
+<h4>Texas-Specific Programs</h4>
+<p>TDHCA assistance, My First Texas Home, and other programs most agents never mention.</p>
+</div>
+</div>
+<div class="guide-topic">
+<div class="guide-topic-icon"></div>
+<div>
+<h4>5 Deal-Killing Mistakes</h4>
+<p>The moves that tank loans every week — and how to avoid every single one of them.</p>
+</div>
+</div>
+<div class="guide-topic">
+<div class="guide-topic-icon"></div>
+<div>
+<h4>Pre-Approval vs. Pre-Qualification</h4>
+<p>Why one makes sellers take you seriously and the other gets your offer ignored.</p>
+</div>
+</div>
+<div class="guide-topic">
+<div class="guide-topic-icon"></div>
+<div>
+<h4>Seller Concessions &amp; Rate Buydowns</h4>
+<p>How to make the seller pay your closing costs — and use leftover dollars to buy down your rate.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ── SOCIAL PROOF ── -->
+<section class="guide-proof">
+<div class="container">
+<div class="guide-proof-header">
+<div class="section-label">Why Work with Adam</div>
+<h2>Trusted by Austin Homebuyers</h2>
+</div>
+<div class="guide-proof-stats">
+<div class="guide-stat">
+<div class="guide-stat-number">1,000+</div>
+<div class="guide-stat-label">Loans closed since 2013</div>
+</div>
+<div class="guide-stat">
+<div class="guide-stat-number">5.0 ★</div>
+<div class="guide-stat-label">Google rating · 91 reviews</div>
+</div>
+<div class="guide-stat">
+<div class="guide-stat-number">4.98 ★</div>
+<div class="guide-stat-label">Zillow rating · 45 reviews</div>
+</div>
+</div>
+<div class="guide-testimonial">
+<div class="stars">★★★★★</div>
+<blockquote>Adam made our first home purchase so much less stressful. He explained everything clearly, responded fast, and genuinely cared about getting us the best deal. We closed ahead of schedule.</blockquote>
+<cite>— First-time homebuyer, Austin TX (Google Review)</cite>
+</div>
+</div>
+</section>
+<!-- ── ABOUT ADAM ── -->
+<section class="guide-about">
+<div class="container">
+<div class="guide-about-layout">
+<div class="guide-about-content">
+<div class="section-label">Your Guide</div>
+<h2>Adam Styer, Senior Loan Officer</h2>
+<p>I wrote this guide because I was tired of watching first-time buyers get bad advice. Every week I see the same preventable mistakes cost people thousands of dollars — or kill their deal entirely.</p>
+<p>This guide is the same conversation I have with every buyer who sits across from me. No sales pitch. Just the truth about what it takes to buy a home in Austin right now.</p>
+<ul class="guide-about-creds">
+<li>NMLS #513013 · Licensed in Texas</li>
+<li>1,000+ loans closed since 2013</li>
+<li>5.0 stars on Google · 4.98 on Zillow</li>
+<li>Specializing in first-time buyers &amp; Austin market</li>
+</ul>
+</div>
+<div class="guide-about-photo">
+<img alt="Adam Styer, mortgage advisor, NMLS #513013" decoding="async" height="1600" loading="lazy" src="/assets/headshot.webp" style="width:100%;height:100%;object-fit:cover;object-position:center 28%;" width="1600"/>
+</div>
+</div>
+</div>
+</section>
+<!-- ── FINAL CTA ── -->
+<section class="guide-final-cta">
+<div class="container">
+<h2>First-Time Buyer With a Non-Standard File?</h2>
+<p>If you are self-employed, paid on 1099, using gift funds, comparing builder incentives, or just not sure where to start, send the short version before you complete a full application.</p>
+<div class="cta-row">
+<a class="btn btn-primary btn-lg" href="#main" onclick="document.getElementById('guide-fname').focus(); return false;">Get the Free Guide ↑</a>
+<span class="cta-or">or</span>
+<a class="btn-secondary-outline" href="/scenario.html">Send Your First-Time Buyer Scenario</a>
+</div>
+</div>
+</section>
+<section class="section bg-light"><div class="container content-narrow"><h2>A real scenario to explore</h2><p>Renters planning to buy their home compare gift-funded down payment options, debt payoff, closing costs, and the total monthly budget.</p><p><a href="/scenarios/buying-current-rental-gift-funds.html">Buying the Home You Rent: A Better Plan for Gift Funds →</a></p><p>Strategy review. Identifying borrower details are omitted. Outcomes vary by individual circumstances and are not a prediction or guarantee.</p></div></section>
+<p class="migration-parent"><a href="/first-time-home-buyer.html">Buying a home</a></p></main><footer class="site-footer full-site-footer" id="site-footer">
+<div class="footer-intro">
+<div>
+<p class="eyebrow">Adam Styer · Austin &amp; Central Texas</p>
+<h2>Your Austin mortgage broker.</h2>
+<p>Compare lenders, ask questions, and understand your mortgage options.</p>
+</div>
+<ul class="footer-contact-list">
+<li><a href="tel:+15129566010">Call Adam: (512) 956-6010</a></li>
+<li><a href="sms:+15129566010">Text Adam</a></li>
+<li><a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a></li>
+<li><a href="mailto:tiffanyw@gorascal.com">Email Tiffany</a></li>
+</ul>
+</div>
+<div aria-label="Mortgage resource directory" class="footer-directory" role="navigation"><section aria-labelledby="footer-group-0"><h3 id="footer-group-0">Loan Programs</h3><ul><li><a href="/products.html">All loan programs</a></li><li><a href="/loans/conventional.html">Conventional &amp; jumbo</a></li><li><a href="/non-qm-loans.html">Income &amp; asset qualification</a></li><li><a href="/dscr-loans-texas.html">DSCR &amp; investment property</a></li><li><a href="/loans/refinance.html">Refinance &amp; home equity</a></li></ul></section><section aria-labelledby="footer-group-1"><h3 id="footer-group-1">Who We Serve</h3><ul><li><a href="/self-employed-mortgage-austin.html">Self-Employed &amp; Business Owners</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth &amp; Asset-Rich Borrowers</a></li><li><a href="/investor-loans.html">Real Estate Investors</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li><a href="/move-up-buyers.html">Repeat &amp; Move-Up Buyers</a></li></ul></section><section aria-labelledby="footer-group-2"><h3 id="footer-group-2">Resources</h3><ul><li><a href="/calculators.html">Mortgage calculators</a></li><li><a href="/mortgage-guides.html">Detailed mortgage guides</a></li><li><a href="/scenarios.html">Borrower scenarios</a></li><li><a href="/resources/">All resources</a></li><li><a href="/resources/full-directory.html">Complete resource directory</a></li></ul></section><section aria-labelledby="footer-group-3"><h3 id="footer-group-3">About &amp; Contact</h3><ul><li><a href="/about.html">Adam &amp; Tiffany</a></li><li><a href="/testimonials.html">Client reviews</a></li><li><a href="/contact.html">Contact Adam</a></li><li><a href="/austin-area-mortgage-lender.html">Austin &amp; Central Texas</a></li><li><a href="/referral-partners-self-employed-clients.html">Professional partners</a></li></ul></section></div>
+<div aria-label="Licensing and consumer information" class="footer-disclosures">
+<p><strong>Adam Styer · NMLS #513013</strong> · <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener">NMLS Consumer Access</a></p>
+<!-- LOCAL-REVIEW RELEASE GATE: verify and insert the current sponsoring company's
+         approved legal/DBA name, NMLS ID and website; confirm team-name presentation,
+         applicable company/banker notice and current licensing before publication.
+         Do not infer an affiliation or company NMLS number from legacy source pages. -->
+<p class="footer-equal-housing"><strong>Equal Housing Opportunity.</strong> We support fair access to housing and mortgage financing.</p>
+<p>Mortgage options depend on the lender’s requirements and the complete file. Information on this site is not a loan approval, rate lock, or commitment to lend. Calculator results are estimates.</p>
+<div aria-label="Legal and consumer notices" class="footer-legal-links" role="navigation">
+<a href="/texas-complaint-notice.html">Texas Consumer Complaint and Recovery Fund Notice</a>
+<a href="/privacy.html">Privacy policy</a>
+<a href="/terms.html">Terms and conditions</a>
+</div>
+<p>For Texas mortgage complaint information, visit the <a href="https://www.sml.texas.gov/consumers/complaints/" rel="noopener">Texas Department of Savings and Mortgage Lending</a> or call <a href="tel:+18772765550">1-877-276-5550</a>.</p>
+<p>Send financial documents through the secure channel provided by the team.</p>
+</div>
+</footer>
+<!-- ── FOOTER (matches main site) ── -->
+<!-- Main site script (for mobile menu, scroll behavior) -->
+
+
+<dialog aria-describedby="contact-intro contact-preview-note" aria-labelledby="contact-title" class="or-contact-dialog" id="contact">
+<button aria-label="Close scenario review" class="close" type="button">×</button>
+<div data-contact-entry="">
+<p class="eyebrow">START WITH YOUR SITUATION</p>
+<h2 id="contact-title" tabindex="-1">What are you trying to do?</h2>
+<p class="dialog-intro" id="contact-intro">Tell me your goal and what needs a closer look. A few sentences are enough.</p>
+<p class="preview-notice" id="contact-preview-note">Preview only. Use sample details. Nothing is sent or saved.</p>
+<form data-inquiry-form="" id="preview-contact" method="post" name="contact">
+<fieldset disabled="">
+<input id="inquiry-goal" name="goal" type="hidden" value="Review my scenario"/>
+<div class="or-form-row">
+<div><label for="inquiry-name">Your name <span aria-hidden="true">*</span></label><input autocomplete="off" id="inquiry-name" maxlength="160" name="name" required=""/></div>
+<div><label for="inquiry-email">Email <span aria-hidden="true">*</span></label><input autocomplete="off" id="inquiry-email" maxlength="160" name="email" required="" type="email"/></div>
+</div>
+<label for="inquiry-phone">Phone (optional)</label><input autocomplete="off" id="inquiry-phone" maxlength="30" name="phone" type="tel"/>
+<label for="inquiry-message">What should I know? (optional)</label><textarea aria-describedby="inquiry-privacy" id="inquiry-message" maxlength="2000" name="message" rows="3"></textarea>
+<p class="or-form-hint" id="inquiry-privacy">Please leave out Social Security numbers, account numbers, and documents. Fields marked * are required.</p>
+<button class="button button--primary gold" data-inquiry-submit="" type="submit">Preview my scenario review <span aria-hidden="true">→</span></button>
+<p aria-live="polite" data-form-status="" role="status"></p><p data-form-error="" role="alert" tabindex="-1"></p>
+</fieldset>
+<noscript><p>JavaScript is required for the preview form. You can still read every guide and use the contact links on the page.</p></noscript>
+</form>
+</div>
+<div class="confirmation" data-contact-confirmation="" hidden="" role="status" tabindex="-1">
+<h3>Preview complete.</h3><p data-confirmation-copy="">Nothing was sent or saved. This shows the next step after a scenario review request.</p><button class="button green close-action" type="button">Back to the page <span aria-hidden="true">→</span></button>
+</div>
+</dialog>
+<dialog aria-labelledby="info-title" id="info"><button aria-label="Close details" class="close" type="button">×</button><div id="info-content"></div></dialog>
+<script defer="" src="/preview-safety.js"></script><script defer="" src="/script.js"></script><script defer="" src="/interaction.js"></script><script defer="" src="/navigation.js"></script><script defer="" src="/ui-polish.js"></script></body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "passed": 11,
+  "pagesChecked": 226,
+  "headerScope": "body.orchestration-page header.site-header.sm-header",
+  "referenceStylesSha256": "86188ce5a704c04322d970e998136d170dbebf2c41cf0252e65708fe665ccbcd",
+  "actualStylesSha256": "86188ce5a704c04322d970e998136d170dbebf2c41cf0252e65708fe665ccbcd",
+  "integrationIssues": [],
+  "checks": [
+    "Original mobile toggle opens and closes exactly once",
+    "Original mobile dropdown delegation has one owner and closes siblings",
+    "Original Escape and child-link actions close mobile menu",
+    "Original outside-click closes mobile menu",
+    "899-to-900 breakpoint clears mobile state",
+    "Desktop pointer-entry then first click opens once at 900, 1024, 1280 and 1440; second click closes",
+    "Desktop ArrowDown opens/focuses; Escape closes/returns focus",
+    "Modified desktop parent-link clicks retain normal navigation",
+    "Outside pointer and desktop-to-mobile transition clear state/focus",
+    "Combined scripts: original accordion toggles without scrolling; deep-answer link scrolls exactly once",
+    "Reference text brand and green Apply class, visible phone and four original-hook groups; no outdated brand, assistant injection, network or storage"
+  ],
+  "source": "Actual assembled homepage header and all five shared scripts in emitted order",
+  "coreOrder": [
+    "preview-safety.js",
+    "script.js",
+    "interaction.js",
+    "navigation.js",
+    "ui-polish.js"
+  ],
+  "networkCalls": 0,
+  "storageCalls": 0,
+  "limitations": "DOM fixture simulates focus/media; the assembled preview guard prevents assistant injection. Browser rendering, native keyboard activation, contrast and live transport are not certified."
+}

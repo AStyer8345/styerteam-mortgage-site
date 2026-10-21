@@ -1,0 +1,21 @@
+{
+  "checks": [
+    "Controller opens dialog and requests heading focus",
+    "Cancel handler closes dialog and requests opener focus",
+    "Whitespace-only name rejected before transport",
+    "Native validity false result prevents transport/confirmation",
+    "Concurrent submits call adapter once and payload strings are trimmed",
+    "Rejected capture preserves input and requests error focus",
+    "Retry reuses inquiry ID, confirms preview honestly, and clears contact fields",
+    "Close/reopen resets temporary state and restores entry view",
+    "Closing an in-flight request aborts it without false success",
+    "Live mode without a callable adapter fails closed and retains input",
+    "Malformed live adapter cannot produce false success",
+    "Explicit preview fallback remains non-transmitting and honest",
+    "No network or persistent storage access by controller"
+  ],
+  "passed": 13,
+  "networkCalls": 0,
+  "storageCalls": 0,
+  "limitations": "Dialog/form/focus native methods mocked. This does not test actual browser focus containment, CSS, native validation behavior, or accessibility conformance."
+}

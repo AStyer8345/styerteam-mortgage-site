@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LoanOS Waitlist | Built for Loan Officers | Adam Styer</title>
+<meta content="LoanOS is a mortgage CRM built by an active loan officer. No VC. No SaaS bloat. Get on the waitlist." name="description"/>
+<link href="https://styermortgage.com/loanos-waitlist.html" rel="canonical"/>
+<!-- Favicon -->
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-180.png" rel="apple-touch-icon" sizes="180x180"/>
+<!-- Fonts -->
+<noscript></noscript>
+<!-- Stylesheet -->
+<link href="/style.css?v=20260531" rel="stylesheet"/>
+<!-- Google Tag Manager -->
+<style>
+    /* ── Landing page nav overrides ────────────────────────── */
+    .lp-header .nav-links,
+    .lp-header .mobile-menu-toggle,
+    .lp-header .nav-cta { display: none !important; }
+
+    /* ── Hero ──────────────────────────────────────────────── */
+    .lp-hero {
+      background: var(--color-navy);
+      padding: var(--spacing-4xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .lp-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: var(--spacing-4xl);
+      align-items: start;
+    }
+    .lp-hero-copy h1 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-5xl);
+      color: var(--color-white);
+      line-height: var(--line-height-tight);
+      margin-bottom: var(--spacing-lg);
+    }
+    .lp-hero-copy .lp-subhead {
+      font-size: var(--font-size-lg);
+      color: rgba(255,255,255,0.85);
+      margin-bottom: var(--spacing-xl);
+      line-height: var(--line-height-relaxed);
+    }
+    .lp-raw-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--spacing-xl);
+    }
+    .lp-raw-list li {
+      color: rgba(255,255,255,0.8);
+      font-size: var(--font-size-base);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lp-raw-list li::before {
+      content: '→';
+      color: var(--color-gold);
+      font-size: 0.9em;
+      flex-shrink: 0;
+    }
+    .lp-raw-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* ── Form Card ─────────────────────────────────────────── */
+    .lp-form-card {
+      background: var(--color-white);
+      border-radius: 12px;
+      padding: var(--spacing-xl);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+    }
+    .lp-form-card h2 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-2xl);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-xs);
+    }
+    .lp-form-card .form-subtitle {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray);
+      margin-bottom: var(--spacing-lg);
+    }
+    .lp-form-field {
+      margin-bottom: var(--spacing-md);
+    }
+    .lp-form-field label {
+      display: block;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--color-navy);
+      margin-bottom: 6px;
+    }
+    .lp-form-field label .optional {
+      font-weight: 400;
+      color: var(--color-gray);
+      font-size: 0.85em;
+    }
+    .lp-form-field input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #D0D0D0;
+      border-radius: 4px;
+      font-size: 16px;
+      font-family: var(--font-body);
+      color: var(--color-navy);
+      background: #FAFAFA;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .lp-form-field input:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      background: var(--color-white);
+    }
+    .lp-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+    }
+    .lp-form-submit {
+      margin-top: var(--spacing-lg);
+    }
+    .lp-form-submit button {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--color-gold);
+      color: var(--color-navy);
+      font-size: var(--font-size-base);
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: opacity 0.2s;
+    }
+    .lp-form-submit button:hover { opacity: 0.9; }
+    .lp-form-submit button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .lp-form-error {
+      display: none;
+      margin-top: var(--spacing-sm);
+      color: #C0392B;
+      font-size: var(--font-size-sm);
+    }
+    .lp-form-disclaimer {
+      margin-top: var(--spacing-sm);
+      font-size: 0.75rem;
+      color: var(--color-gray);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ── Who This Is For ──────────────────────────────────── */
+    .lp-who {
+      padding: var(--spacing-4xl) 0;
+      background: var(--color-light-gray);
+    }
+    .lp-who h2 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-3xl);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-xl);
+      text-align: center;
+    }
+    .lp-who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+    }
+    .lp-who-card {
+      background: var(--color-white);
+      border-radius: 8px;
+      padding: var(--spacing-lg);
+      border-left: 4px solid var(--color-gold);
+    }
+    .lp-who-card h3 {
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-sm);
+    }
+    .lp-who-card p {
+      font-size: var(--font-size-base);
+      color: #555;
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    /* ── About the Builder ────────────────────────────────── */
+    .lp-builder {
+      padding: var(--spacing-4xl) 0;
+      background: var(--color-white);
+    }
+    .lp-builder-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .lp-builder-inner h2 {
+      font-family: var(--font-display);
+      font-size: var(--font-size-3xl);
+      color: var(--color-navy);
+      margin-bottom: var(--spacing-lg);
+    }
+    .lp-builder-inner p {
+      font-size: var(--font-size-lg);
+      color: #444;
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--spacing-md);
+    }
+    .lp-builder-stat {
+      display: inline-block;
+      background: var(--color-navy);
+      color: var(--color-white);
+      border-radius: 6px;
+      padding: 6px 16px;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      margin: 4px;
+    }
+
+    /* ── Mobile ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .lp-hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .lp-form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<link href="/experience.css" rel="stylesheet"/>
+<link href="/advisory-design.css?v=20260918" rel="stylesheet"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/><meta content="connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/><link href="/migration-navigation.css" rel="stylesheet"/><link href="/styles.css" rel="stylesheet"/><link href="/orchestration.css" rel="stylesheet"/><link href="/navigation.css" rel="stylesheet"/><link href="/hierarchy.css" rel="stylesheet"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "loanos waitlist", "item": "https://styermortgage.com/loanos-waitlist.html"}]}</script></head>
+<body class="advisory-site orchestration-page legacy-page" data-active-nav="resources" data-palette="tiffany-original" data-preview-only="true"><a class="skip" href="#main">Skip to content</a>
+<!-- Google Tag Manager (noscript) -->
+<noscript></noscript>
+<!-- Header (minimal — no nav links on landing pages) -->
+<header class="site-header sm-header">
+<div class="container">
+<nav aria-label="Main navigation">
+<a aria-label="The Styer Team home" class="brand nav-brand" href="/"><span>THE STYER TEAM</span><small>Adam Styer · NMLS #513013</small></a>
+<button aria-controls="site-nav-links" aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle" type="button"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+<ul class="nav-links" id="site-nav-links"><li class="nav-has-dropdown hi-program-menu" data-nav-section="programs"><a aria-expanded="false" aria-haspopup="true" href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li class="hi-nav-group"><span class="hi-nav-group-title">Conventional &amp; Government</span><ul><li><a href="/loans/conventional.html">Conventional Loans</a></li><li><a href="/loans/jumbo.html">Jumbo Loans</a></li><li><a href="/loans/fha.html">FHA Loans</a></li><li><a href="/loans/va.html">VA Loans</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Income &amp; Asset Qualification</span><ul><li><a href="/bank-statement-loans.html">Bank Statement Loans</a></li><li><a href="/1099-only-mortgage-texas.html">1099 Loans</a></li><li><a href="/p-and-l-mortgage-texas.html">P&amp;L Loans</a></li><li><a href="/asset-depletion-mortgage-texas.html">Asset Depletion Loans</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Investment Property</span><ul><li><a href="/dscr-loans-texas.html">DSCR Loans</a></li><li><a href="/loans/investment.html">Conventional Investment Property Loans</a></li><li><a href="/dscr-cash-out-refinance-texas.html">DSCR Cash-Out Refinance</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Refinance &amp; Equity</span><ul><li><a href="/loans/refinance.html">Mortgage Refinance</a></li><li><a href="/home-equity-loans-texas.html">Home Equity Loans</a></li><li><a href="/reverse-mortgage-texas.html">Reverse Mortgages</a></li><li><a href="/buy-before-you-sell-austin.html">Buy Before You Sell</a></li></ul></li><li><a href="/products.html">View all loan programs →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="audiences"><a aria-expanded="false" aria-haspopup="true" href="/who-we-serve.html">Who We Serve</a><ul class="nav-dropdown"><li><a href="/self-employed-mortgage-austin.html">Self-Employed &amp; Business Owners</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth &amp; Asset-Rich Borrowers</a></li><li><a href="/investor-loans.html">Real Estate Investors</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li><a href="/move-up-buyers.html">Repeat &amp; Move-Up Buyers</a></li><li><a href="/who-we-serve.html">View who we serve →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="resources"><a aria-expanded="false" aria-haspopup="true" href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Mortgage calculators</a></li><li><a href="/mortgage-guides.html">Mortgage guides</a></li><li><a href="/scenarios.html">Borrower scenarios</a></li><li><a href="/austin-area-mortgage-lender.html">Austin &amp; Central Texas</a></li><li><a href="/blog.html">Articles &amp; updates</a></li><li><a href="/referral-partners-self-employed-clients.html">Professional partners</a></li><li><a href="/resources/">All resources →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="about"><a aria-expanded="false" aria-haspopup="true" href="/about.html">About</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam &amp; Tiffany</a></li><li><a href="/testimonials.html">Client reviews</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/mortgage-broker-vs-bank.html">Working with a mortgage broker</a></li></ul></li></ul>
+<div class="sm-header-actions"><a class="phone sm-header-phone" href="tel:+15129566010">Call (512) 956-6010</a><a class="button green" data-header-apply="" href="/apply-now/">Apply Online <span aria-hidden="true">↗</span></a></div>
+</nav>
+</div>
+</header><main id="main"><nav aria-label="Breadcrumb" class="ledger-breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">loanos waitlist</li></ol></nav>
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="lp-hero">
+<div class="container">
+<div class="lp-hero-inner">
+<!-- Copy -->
+<div class="lp-hero-copy">
+<h1>Building software loan officers actually want.</h1>
+<p class="lp-subhead">LoanOS is a mortgage CRM built by an active LO — not a SaaS company that's never closed a loan. No VC money. No bloated features nobody asked for. Just the tools I wish existed when I was grinding pipelines manually.</p>
+<ul class="lp-raw-list">
+<li>Arive sync — pipeline updates without the manual entry</li>
+<li>Automated milestone emails — borrowers stay informed, you stop writing the same update twice a day</li>
+<li>Lead routing that fires in under 5 minutes</li>
+<li>Past client reactivation on autopilot</li>
+<li>Built in Next.js + Supabase — not some CRM wrapper</li>
+</ul>
+<p style="color:rgba(255,255,255,0.6);font-size:var(--font-size-sm);">Not public yet. Waitlist gets first access + honest build updates.</p>
+</div>
+<!-- Form Card -->
+<div class="lp-form-card">
+<h2>Get on the waitlist.</h2>
+<p class="form-subtitle">I'll reach out personally when LoanOS is ready for other LOs.</p>
+<form action="#" data-preview-inquiry="true" data-preview-only="true" id="form-lo-waitlist" method="POST" name="loanos-waitlist" novalidate="">
+<input name="form-name" type="hidden" value="loanos-waitlist"/>
+<input name="inquiry_id" type="hidden" value=""/>
+<p hidden=""><label>Leave this blank: <input name="bot-field"/></label></p>
+<input id="lw-page-url" name="page_url" type="hidden"/>
+<input id="lw-utm-source" name="utm_source" type="hidden"/>
+<input id="lw-utm-medium" name="utm_medium" type="hidden"/>
+<input id="lw-utm-campaign" name="utm_campaign" type="hidden"/>
+<div class="lp-form-row">
+<div class="lp-form-field">
+<label for="lw-fname">First Name</label>
+<input autocomplete="given-name" id="lw-fname" name="fname" placeholder="First" required="" type="text"/>
+</div>
+<div class="lp-form-field">
+<label for="lw-lname">Last Name</label>
+<input autocomplete="family-name" id="lw-lname" name="lname" placeholder="Last" required="" type="text"/>
+</div>
+</div>
+<div class="lp-form-field">
+<label for="lw-email">Email Address</label>
+<input autocomplete="email" id="lw-email" name="email" placeholder="your@email.com" required="" type="email"/>
+</div>
+<div class="lp-form-field">
+<label for="lw-nmls">NMLS# <span class="optional">(optional)</span></label>
+<input autocomplete="off" id="lw-nmls" name="nmls" placeholder="123456" type="text"/>
+</div>
+<div class="lp-form-field">
+<label for="lw-company">Company / Brokerage <span class="optional">(optional)</span></label>
+<input autocomplete="organization" id="lw-company" name="company" placeholder="Your brokerage" type="text"/>
+</div>
+<div class="lp-form-submit">
+<button id="lw-submit-btn" type="submit">Join the Waitlist →</button>
+</div>
+<div class="lp-form-error" id="lw-form-error">
+                Something went wrong. Please try again.
+              </div>
+</form>
+<p class="lp-form-disclaimer">No spam. No sales pitch.<br/>Just honest build updates from one LO to another.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ══ WHO THIS IS FOR ════════════════════════════════════ -->
+<section class="lp-who">
+<div class="container">
+<h2>Who this is for</h2>
+<div class="lp-who-grid">
+<div class="lp-who-card">
+<h3>The LO who's tired of manual work</h3>
+<p>You close loans. You shouldn't be copy-pasting borrower data, chasing conditions in email threads, or manually updating a spreadsheet pipeline. LoanOS automates the repetitive stuff so you can close more loans with the same headcount.</p>
+</div>
+<div class="lp-who-card">
+<h3>The broker who wants to scale without hiring</h3>
+<p>Adding headcount is expensive. LoanOS replaces the manual work without adding a processor. I replaced a full-time admin role in early 2025 and the pipeline didn't miss a beat. The system runs it.</p>
+</div>
+<div class="lp-who-card">
+<h3>The LO who's building something</h3>
+<p>If you're a producer who thinks like an operator — LoanOS is built for you. Not for the LO who wants a shiny dashboard. For the one who wants fewer fires and more closed loans.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ══ ABOUT THE BUILDER ══════════════════════════════════ -->
+<section class="lp-builder">
+<div class="container">
+<div class="lp-builder-inner">
+<h2>Built by someone still in the trenches.</h2>
+<p>I'm Adam Styer. Senior Loan Officer, Austin TX. Mortgage broker. I built LoanOS because no CRM I tried was built by anyone who actually closes loans.</p>
+<p>I'm not raising money. I'm building the system I wish I had — and when it's stable enough that I'd stake my pipeline on it, I'll open it to other LOs.</p>
+<div style="margin-top: var(--spacing-lg);">
+<span class="lp-builder-stat">1,000+ loans closed</span>
+<span class="lp-builder-stat">Austin, TX</span>
+<span class="lp-builder-stat">NMLS #513013</span>
+<span class="lp-builder-stat">Mortgage broker</span>
+</div>
+</div>
+</div>
+</section>
+</main><footer class="site-footer full-site-footer" id="site-footer">
+<div class="footer-intro">
+<div>
+<p class="eyebrow">Adam Styer · Austin &amp; Central Texas</p>
+<h2>Your Austin mortgage broker.</h2>
+<p>Compare lenders, ask questions, and understand your mortgage options.</p>
+</div>
+<ul class="footer-contact-list">
+<li><a href="tel:+15129566010">Call Adam: (512) 956-6010</a></li>
+<li><a href="sms:+15129566010">Text Adam</a></li>
+<li><a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a></li>
+<li><a href="mailto:tiffanyw@gorascal.com">Email Tiffany</a></li>
+</ul>
+</div>
+<div aria-label="Mortgage resource directory" class="footer-directory" role="navigation"><section aria-labelledby="footer-group-0"><h3 id="footer-group-0">Loan Programs</h3><ul><li><a href="/products.html">All loan programs</a></li><li><a href="/loans/conventional.html">Conventional &amp; jumbo</a></li><li><a href="/non-qm-loans.html">Income &amp; asset qualification</a></li><li><a href="/dscr-loans-texas.html">DSCR &amp; investment property</a></li><li><a href="/loans/refinance.html">Refinance &amp; home equity</a></li></ul></section><section aria-labelledby="footer-group-1"><h3 id="footer-group-1">Who We Serve</h3><ul><li><a href="/self-employed-mortgage-austin.html">Self-Employed &amp; Business Owners</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth &amp; Asset-Rich Borrowers</a></li><li><a href="/investor-loans.html">Real Estate Investors</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li><a href="/move-up-buyers.html">Repeat &amp; Move-Up Buyers</a></li></ul></section><section aria-labelledby="footer-group-2"><h3 id="footer-group-2">Resources</h3><ul><li><a href="/calculators.html">Mortgage calculators</a></li><li><a href="/mortgage-guides.html">Detailed mortgage guides</a></li><li><a href="/scenarios.html">Borrower scenarios</a></li><li><a href="/resources/">All resources</a></li><li><a href="/resources/full-directory.html">Complete resource directory</a></li></ul></section><section aria-labelledby="footer-group-3"><h3 id="footer-group-3">About &amp; Contact</h3><ul><li><a href="/about.html">Adam &amp; Tiffany</a></li><li><a href="/testimonials.html">Client reviews</a></li><li><a href="/contact.html">Contact Adam</a></li><li><a href="/austin-area-mortgage-lender.html">Austin &amp; Central Texas</a></li><li><a href="/referral-partners-self-employed-clients.html">Professional partners</a></li></ul></section></div>
+<div aria-label="Licensing and consumer information" class="footer-disclosures">
+<p><strong>Adam Styer · NMLS #513013</strong> · <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener">NMLS Consumer Access</a></p>
+<!-- LOCAL-REVIEW RELEASE GATE: verify and insert the current sponsoring company's
+         approved legal/DBA name, NMLS ID and website; confirm team-name presentation,
+         applicable company/banker notice and current licensing before publication.
+         Do not infer an affiliation or company NMLS number from legacy source pages. -->
+<p class="footer-equal-housing"><strong>Equal Housing Opportunity.</strong> We support fair access to housing and mortgage financing.</p>
+<p>Mortgage options depend on the lender’s requirements and the complete file. Information on this site is not a loan approval, rate lock, or commitment to lend. Calculator results are estimates.</p>
+<div aria-label="Legal and consumer notices" class="footer-legal-links" role="navigation">
+<a href="/texas-complaint-notice.html">Texas Consumer Complaint and Recovery Fund Notice</a>
+<a href="/privacy.html">Privacy policy</a>
+<a href="/terms.html">Terms and conditions</a>
+</div>
+<p>For Texas mortgage complaint information, visit the <a href="https://www.sml.texas.gov/consumers/complaints/" rel="noopener">Texas Department of Savings and Mortgage Lending</a> or call <a href="tel:+18772765550">1-877-276-5550</a>.</p>
+<p>Send financial documents through the secure channel provided by the team.</p>
+</div>
+</footer>
+<!-- Footer -->
+<!-- Populate hidden tracking fields -->
+<script>
+    (function () {
+      var p = new URLSearchParams(window.location.search);
+      ['source','medium','campaign'].forEach(function(k) {
+        var el = document.getElementById('lw-utm-' + k);
+        if (el) el.value = p.get('utm_' + k) || (k === 'source' ? 'direct' : (k === 'medium' ? 'web' : 'loanos-waitlist'));
+      });
+      var urlEl = document.getElementById('lw-page-url');
+      if (urlEl) urlEl.value = window.location.href;
+    })();
+  </script>
+<!-- Form submit handler -->
+<script>
+    (function () {
+      var form      = document.getElementById('form-lo-waitlist');
+      var submitBtn = document.getElementById('lw-submit-btn');
+      var errorEl   = document.getElementById('lw-form-error');
+      if (!form) return;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errorEl.style.display = 'none';
+        submitBtn.disabled    = true;
+        submitBtn.textContent = 'Joining…';
+
+        var fname   = (document.getElementById('lw-fname').value   || '').trim();
+        var lname   = (document.getElementById('lw-lname').value   || '').trim();
+        var email   = (document.getElementById('lw-email').value   || '').trim();
+        var nmls    = (document.getElementById('lw-nmls').value    || '').trim();
+        var company = (document.getElementById('lw-company').value || '').trim();
+
+        if (!fname || !lname || !email) {
+          errorEl.textContent    = 'Please fill in your first name, last name, and email.';
+          errorEl.style.display  = 'block';
+          submitBtn.disabled     = false;
+          submitBtn.textContent  = 'Join the Waitlist →';
+          return;
+        }
+
+        // GTM event
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', lead_type: 'lo_waitlist_signup' });
+
+        var primaryNotification = window.StyerFetchWithTimeout('/.netlify/functions/subscribe-lo', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fname:        fname,
+            lname:        lname,
+            email:        email,
+            nmls:         nmls,
+            company:      company,
+            tag:          'loanos-waitlist',
+            lead_source:  'LoanOS Waitlist',
+            page_url:     document.getElementById('lw-page-url').value   || window.location.href,
+            utm_source:   document.getElementById('lw-utm-source').value   || 'direct',
+            utm_medium:   document.getElementById('lw-utm-medium').value   || 'web',
+            utm_campaign: document.getElementById('lw-utm-campaign').value || 'loanos-waitlist',
+          }),
+        }, 15000).then(function(res) {
+          if (!res.ok) throw new Error('Server error ' + res.status);
+          return res.json();
+        }).then(function(data) {
+          if (!data.success) throw new Error(data.error || 'Waitlist did not confirm success');
+          return data;
+        });
+
+        var ownerEmailNotification = Promise.resolve().then(function () {
+          return window.StyerCaptureNotificationBackup({
+            sourceForm: 'loanos-waitlist',
+            name: [fname, lname].filter(Boolean).join(' '),
+            email: email,
+            subject: 'New LoanOS waitlist request',
+            details: { nmls: nmls, company: company }
+          });
+        });
+
+        var results = await Promise.allSettled([primaryNotification, ownerEmailNotification]);
+        if (results[0].status === 'fulfilled') {
+          window.location.href = '/thank-you.html?type=lo-waitlist';
+          return;
+        }
+        if (results[1].status === 'fulfilled') {
+          window.location.href = '/thank-you.html?type=form-recovery&request=loanos-waitlist';
+          return;
+        }
+
+        console.error('[lo-waitlist notifications]', results[0].reason, results[1].reason);
+        errorEl.textContent   = 'Something went wrong. Please try again or email adam@thestyerteam.com.';
+        errorEl.style.display = 'block';
+        submitBtn.disabled    = false;
+        submitBtn.textContent = 'Join the Waitlist →';
+      });
+    })();
+  </script>
+
+
+<dialog aria-describedby="contact-intro contact-preview-note" aria-labelledby="contact-title" class="or-contact-dialog" id="contact">
+<button aria-label="Close scenario review" class="close" type="button">×</button>
+<div data-contact-entry="">
+<p class="eyebrow">START WITH YOUR SITUATION</p>
+<h2 id="contact-title" tabindex="-1">What are you trying to do?</h2>
+<p class="dialog-intro" id="contact-intro">Tell me your goal and what needs a closer look. A few sentences are enough.</p>
+<p class="preview-notice" id="contact-preview-note">Preview only. Use sample details. Nothing is sent or saved.</p>
+<form data-inquiry-form="" id="preview-contact" method="post" name="contact">
+<fieldset disabled="">
+<input id="inquiry-goal" name="goal" type="hidden" value="Review my scenario"/>
+<div class="or-form-row">
+<div><label for="inquiry-name">Your name <span aria-hidden="true">*</span></label><input autocomplete="off" id="inquiry-name" maxlength="160" name="name" required=""/></div>
+<div><label for="inquiry-email">Email <span aria-hidden="true">*</span></label><input autocomplete="off" id="inquiry-email" maxlength="160" name="email" required="" type="email"/></div>
+</div>
+<label for="inquiry-phone">Phone (optional)</label><input autocomplete="off" id="inquiry-phone" maxlength="30" name="phone" type="tel"/>
+<label for="inquiry-message">What should I know? (optional)</label><textarea aria-describedby="inquiry-privacy" id="inquiry-message" maxlength="2000" name="message" rows="3"></textarea>
+<p class="or-form-hint" id="inquiry-privacy">Please leave out Social Security numbers, account numbers, and documents. Fields marked * are required.</p>
+<button class="button button--primary gold" data-inquiry-submit="" type="submit">Preview my scenario review <span aria-hidden="true">→</span></button>
+<p aria-live="polite" data-form-status="" role="status"></p><p data-form-error="" role="alert" tabindex="-1"></p>
+</fieldset>
+<noscript><p>JavaScript is required for the preview form. You can still read every guide and use the contact links on the page.</p></noscript>
+</form>
+</div>
+<div class="confirmation" data-contact-confirmation="" hidden="" role="status" tabindex="-1">
+<h3>Preview complete.</h3><p data-confirmation-copy="">Nothing was sent or saved. This shows the next step after a scenario review request.</p><button class="button green close-action" type="button">Back to the page <span aria-hidden="true">→</span></button>
+</div>
+</dialog>
+<dialog aria-labelledby="info-title" id="info"><button aria-label="Close details" class="close" type="button">×</button><div id="info-content"></div></dialog>
+<script defer="" src="/preview-safety.js"></script><script defer="" src="/script.js"></script><script defer="" src="/interaction.js"></script><script defer="" src="/navigation.js"></script><script defer="" src="/ui-polish.js"></script></body>
+</html><li><a aria-label="Apply Now — opens the secure application portal" class="nav-cta nav-apply" href="/apply.html" rel="noopener">Apply Now</a></li>

@@ -1,0 +1,22 @@
+/* Pre-approval guide: roadmap + step cards (2026-10-01) */
+.roadmap{margin:28px 0 20px}
+.roadmap-bar{list-style:none;display:flex;justify-content:space-between;gap:6px;margin:0 0 34px;padding:0;position:relative}
+.roadmap-bar::before{content:"";position:absolute;left:4%;right:4%;top:17px;height:3px;background:linear-gradient(90deg,#8b6e24,#d9c48f);border-radius:3px}
+.roadmap-bar li{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#4a5562;flex:1;text-align:center}
+.roadmap-bar li span{width:36px;height:36px;border-radius:50%;background:#fff;border:3px solid #8b6e24;color:#172b3d;display:grid;place-items:center;font-size:.9rem;position:relative;z-index:1}
+.roadmap-bar .roadmap-keys span{background:#8b6e24;color:#fff}
+.roadmap-track{list-style:none;margin:0;padding:0 0 0 0;position:relative}
+.roadmap-track::before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:3px;background:#e4dccb;border-radius:3px}
+.roadmap-stop{position:relative;padding:0 0 22px 60px}
+.roadmap-dot{position:absolute;left:0;top:4px;width:40px;height:40px;border-radius:50%;background:#182e3e;color:#fff;font-weight:700;display:grid;place-items:center;box-shadow:0 0 0 5px #f5f2ec}
+.roadmap-card{background:#fff;border:1px solid #e6e0d4;border-radius:8px;padding:18px 20px;box-shadow:0 1px 2px rgba(23,43,61,.05)}
+.roadmap-when{display:inline-block;margin:0 0 6px;padding:3px 10px;border-radius:999px;background:#f3ecd9;color:#7a6326;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.roadmap-card h3{margin:0 0 6px;font-size:1.12rem}
+.roadmap-card p:last-child{margin:0;font-size:.95rem;line-height:1.65}
+@media (max-width:700px){.roadmap-bar{display:none}.roadmap-stop{padding-left:52px}.roadmap-dot{width:34px;height:34px}.roadmap-track::before{left:16px}}
+
+ol.step-cards{list-style:none;counter-reset:step;display:grid;grid-template-columns:1fr;gap:14px;padding:0;margin:20px 0 8px}
+ol.step-cards>li{counter-increment:step;position:relative;background:#fff;border:1px solid #e6e0d4;border-radius:8px;padding:18px 18px 16px 62px;font-size:.95rem;line-height:1.6}
+ol.step-cards>li::before{content:counter(step);position:absolute;left:18px;top:16px;width:30px;height:30px;border-radius:50%;background:#8b6e24;color:#fff;font-weight:700;display:grid;place-items:center;font-size:.9rem}
+ol.step-cards>li strong{display:block;color:#172b3d;font-size:1.02rem;margin-bottom:2px}
+@media (max-width:700px){ol.step-cards{grid-template-columns:1fr}}

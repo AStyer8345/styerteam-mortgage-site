@@ -1,0 +1,18 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';import {createRequire} from 'node:module';
+import {parseHTML,packagePath} from './runtime.mjs';
+const {document,window}=parseHTML(fs.readFileSync(packagePath('site','dscr-calculator.html'),'utf8'));
+const values=()=>[...document.querySelectorAll('input')].map(x=>[x.id,x.value]);const before=values();
+let writes=0,storage=0;
+const context={document,location:{},WeakMap,fetch(){writes++;throw Error('No network permitted');}};
+for(const key of ['localStorage','sessionStorage'])Object.defineProperty(context,key,{get(){storage++;throw Error('No storage permitted');}});
+vm.runInNewContext(fs.readFileSync(packagePath('site','preview-safety.js'),'utf8'),context);
+document.dispatchEvent(new window.Event('DOMContentLoaded'));
+const button=document.querySelector('[data-save-analysis]');assert.ok(button);
+const note=document.querySelector('[data-preview-save-note]');assert.ok(note);assert.match(note.textContent,/Saving is unavailable/);assert.equal(button.getAttribute('aria-describedby'),note.id);assert.equal(note.getAttribute('role'),'status');
+assert.ok(!document.body.textContent.includes('Save an encrypted analysis with a private return link'));
+button.dispatchEvent(new window.Event('click',{bubbles:true,cancelable:true}));assert.match(note.textContent,/Nothing was saved/);assert.deepEqual(values(),before);assert.equal(document.querySelectorAll('[data-preview-save-note]').length,1);
+const numericForm=document.createElement('form');document.body.append(numericForm);const numericEvent=new window.Event('submit',{bubbles:true,cancelable:true});numericForm.dispatchEvent(numericEvent);assert.equal(numericEvent.defaultPrevented,false);
+const inquiry=document.createElement('form');inquiry.setAttribute('data-preview-inquiry','');inquiry.reportValidity=()=>true;document.body.append(inquiry);const inquiryEvent=new window.Event('submit',{bubbles:true,cancelable:true});inquiry.dispatchEvent(inquiryEvent);assert.equal(inquiryEvent.defaultPrevented,true);assert.match(inquiry.querySelector('[role=status]').textContent,/Nothing was sent or saved/);
+assert.equal(writes,0);assert.equal(storage,0);
+const report={checks:['Unavailable-save explanation appears beside the button and is its accessible description','Save click updates one live status without changing calculator inputs','Unmarked calculator form submits pass through','Marked inquiry form receives honest local-only confirmation','No network or storage access'],passed:5,networkCalls:writes,storageCalls:storage,limitation:'DOM fixture; does not establish rendered/native-browser behavior.'};
+fs.writeFileSync(packagePath('qa','preview-safety-dom-results.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));

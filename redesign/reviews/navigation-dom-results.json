@@ -1,0 +1,18 @@
+{
+  "passed": 12,
+  "checks": [
+    "No-JS markup leaves navigation available and uses native disclosure summaries",
+    "All 22 internal navigation destinations resolve in the 173-route ledger; call/text use verified source phone",
+    "Component does not share old mobile-menu class or nav ID",
+    "Mobile open updates visibility/expanded label and requests first-summary focus",
+    "Opening one disclosure closes its sibling",
+    "Escape closes current disclosure first, then mobile drawer, restoring the relevant control",
+    "Outside pointer and outside focus close navigation without stealing outside focus",
+    "Contact link closes mobile panel and returns focus while preserving default link action",
+    "Breakpoint changes expose desktop navigation and avoid focus remaining inside hidden mobile content",
+    "Exact paths, current-section build hint, and application alias mark current navigation",
+    "Repeated script evaluation does not duplicate listeners",
+    "Navigation controller makes no network request"
+  ],
+  "limitations": "DOM-controller checks only. Native details toggle, media queries, focus methods, and geometry are mocked. No rendered 390px/1440px or WCAG pass claimed."
+}

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WRAP Mortgage Calculator | Seller Financing | Adam Styer</title>
+<meta content="Free wraparound mortgage calculator — estimate income, cash at closing, and equity spread when you seller-finance. Adam Styer, NMLS #513013." name="description"/>
+<meta content="wrap mortgage calculator, wraparound mortgage, seller financing calculator, owner financing Texas, seller carryback, wrap loan, passive income real estate" name="keywords"/>
+<!-- Open Graph -->
+<meta content="WRAP Mortgage Calculator | Seller Financing | Adam Styer | HyperSmart Home Loans" property="og:title"/>
+<meta content="Turn your sub-4% mortgage into passive income. See monthly spread, cash at closing, and buyer payment in seconds." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://styermortgage.com/wrap-mortgage-calculator.html" property="og:url"/>
+<meta content="https://styermortgage.com/assets/og-image.png" property="og:image"/>
+<meta content="Adam Styer | HyperSmart Home Loans" property="og:site_name"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="WRAP Mortgage Calculator | Seller Financing | Adam Styer" name="twitter:title"/>
+<meta content="Turn your sub-4% mortgage into passive income. Calculate your monthly spread and cash at closing instantly." name="twitter:description"/>
+<meta content="https://styermortgage.com/assets/og-image.png" name="twitter:image"/>
+<!-- Favicon -->
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-180.png" rel="apple-touch-icon" sizes="180x180"/>
+<!-- Canonical URL -->
+<link href="https://styermortgage.com/wrap-mortgage-calculator.html" rel="canonical"/>
+<!-- Fonts -->
+<noscript></noscript>
+<!-- Stylesheet -->
+<link href="style.css?v=20260830-cta1" rel="stylesheet"/>
+<link href="calculator-suite.css" rel="stylesheet"/>
+<!-- Schema: WebApplication -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "WRAP Mortgage Calculator", "description": "Calculate monthly passive income, cash at closing, and equity spread for a wraparound seller-financing arrangement.", "url": "https://styermortgage.com/wrap-mortgage-calculator.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "provider": {"@type": "FinancialService", "name": "Adam Styer | HyperSmart Home Loans", "url": "https://styermortgage.com/"}}</script>
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is a wraparound mortgage legal in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "Owner financing is fully legal in Texas and is governed by Chapter 5 of the Texas Property Code (Sections 5.061–5.086). Texas has some of the most detailed seller-finance laws in the country, including required disclosures, balloon payment restrictions, and mandatory annual accounting statements to the buyer. You'll want a real estate attorney experienced in Texas owner financing — not a generalist — to draft the promissory note and deed of trust correctly."}}, {"@type": "Question", "name": "What is the due-on-sale clause risk?", "acceptedAnswer": {"@type": "Answer", "text": "Almost all conventional mortgages originated in the last 30 years include a due-on-sale clause — technically allowing the lender to demand full repayment when the property transfers. In a WRAP, you're keeping your mortgage in place without lender approval, which triggers this clause. The practical risk: lenders rarely enforce it when payments are current, especially on well-performing loans. But the risk is real and should be understood. Some sellers mitigate this through a land trust structure. Talk to an attorney."}}, {"@type": "Question", "name": "What happens if the buyer stops paying me?", "acceptedAnswer": {"@type": "Answer", "text": "If the buyer defaults, your existing mortgage payment is still your obligation — the bank doesn't care about your arrangement with the buyer. You must keep paying to protect your credit and avoid foreclosure. You can then foreclose on the buyer through the Texas owner-finance process. This is why a substantial down payment matters: it gives the buyer real skin in the game and gives you a financial cushion. A good attorney will also require mortgage insurance and an escrow account for taxes and insurance."}}, {"@type": "Question", "name": "How do I find buyers for seller financing?", "acceptedAnswer": {"@type": "Answer", "text": "Owner-finance buyers are everywhere right now — self-employed borrowers who can't document income the conventional way, buyers rebuilding credit, entrepreneurs, and investors. \"Owner financing available\" in your listing description will generate significant inquiries. You can also list on sites that specialize in owner-finance properties. Unlike traditional buyers, these buyers often close faster with fewer contingencies because they're not dependent on bank approval."}}, {"@type": "Question", "name": "Should I use a servicer to manage payments?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A loan servicer (such as a title company or specialized mortgage servicer) collects the buyer's payment, forwards your underlying mortgage payment, and provides annual statements — which Texas law requires. The cost is usually $25–$50/month and is worth every penny. It keeps the transaction arm's-length, creates a paper trail for both parties, and protects you if there's ever a dispute."}}]}</script>
+<style>
+    /* ── Hero ── */
+    .wrap-hero { background: var(--color-navy); color: #fff; padding: 3rem 0 2rem; text-align: center; }
+    .wrap-hero h1 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: clamp(1.9rem,4.5vw,3rem); margin-bottom: .75rem; color: #fff; }
+    .wrap-hero .hero-sub { font-size: 1.1rem; opacity: .85; max-width: 620px; margin: 0 auto 1.5rem; }
+    .wrap-hero .hero-badges { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+    .wrap-hero .badge { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 99px; padding: .3rem .9rem; font-size: .8rem; color: #fff; }
+
+    /* ── Explainer cards ── */
+    .wrap-benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin: 2.5rem 0; }
+    @media (max-width: 768px) { .wrap-benefits { grid-template-columns: 1fr; } }
+    .wrap-benefit-card { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 1.75rem; box-shadow: var(--shadow-premium); }
+    .wrap-benefit-card .benefit-icon { font-size: 2rem; margin-bottom: .75rem; }
+    .wrap-benefit-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--color-navy); margin-bottom: .5rem; }
+    .wrap-benefit-card p { font-size: .9rem; color: var(--color-gray); line-height: 1.6; margin: 0; }
+
+    /* ── How it works steps ── */
+    .wrap-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin: 2rem 0; }
+    @media (max-width: 900px) { .wrap-steps { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 500px) { .wrap-steps { grid-template-columns: 1fr; } }
+    .wrap-step { text-align: center; }
+    .wrap-step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--color-gold); color: #fff; font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; margin: 0 auto .75rem; }
+    .wrap-step h4 { font-size: .9rem; font-weight: 700; color: var(--color-navy); margin-bottom: .35rem; }
+    .wrap-step p { font-size: .83rem; color: var(--color-gray); line-height: 1.5; margin: 0; }
+
+    /* ── Calculator layout ── */
+    .wrap-calc-section { background: var(--color-light-gray); padding: 3.5rem 0; }
+    .wrap-calc-inner { display: grid; grid-template-columns: 380px 1fr; gap: 2rem; align-items: start; }
+    @media (max-width: 960px) { .wrap-calc-inner { grid-template-columns: 1fr; } }
+
+    /* ── Input panel ── */
+    .wrap-input-panel { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 1.5rem; position: sticky; top: 84px; box-shadow: var(--shadow-premium); }
+    .wrap-input-panel h2 { font-size: .8rem; font-weight: 700; color: var(--color-navy); margin-bottom: 1.1rem; text-transform: uppercase; letter-spacing: .07em; }
+    .wrap-input-section-label { font-size: .75rem; font-weight: 600; color: var(--color-gold); text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid #f0f0f0; padding-bottom: .4rem; margin: 1.1rem 0 .85rem; }
+    .wrap-field { margin-bottom: .75rem; }
+    .wrap-field label { display: block; font-size: .82rem; font-weight: 600; color: var(--color-dark-gray); margin-bottom: .3rem; }
+    .wrap-field input[type=number] { width: 100%; padding: .55rem .85rem; border: 1px solid var(--color-border); border-radius: 8px; font-size: .95rem; color: var(--color-navy); background: #fff; box-sizing: border-box; }
+    .wrap-field input[type=number]:focus { outline: 2px solid var(--color-gold); border-color: var(--color-gold); }
+
+    /* ── Formatted currency and down-payment fields ── */
+    .wrap-money-input { font-variant-numeric: tabular-nums; }
+    .wrap-down-payment-fields { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: .65rem; }
+    .wrap-down-field { position: relative; }
+    .wrap-down-field input { width: 100%; box-sizing: border-box; padding: .5rem 2rem .5rem .65rem; border: 1px solid var(--color-border); border-radius: 8px; font-size: .95rem; color: var(--color-navy); background: #fff; font-variant-numeric: tabular-nums; }
+    .wrap-down-field input:focus { outline: 2px solid var(--color-gold); border-color: var(--color-gold); }
+    .wrap-down-field input[readonly] { color: #64748b; background: #f1f5f9; cursor: default; }
+    .wrap-down-affix { position: absolute; right: .7rem; top: 50%; transform: translateY(-50%); color: #64748b; font-size: .85rem; pointer-events: none; }
+    .wrap-down-field--amount input { padding-left: 1.55rem; padding-right: .65rem; }
+    .wrap-down-field--amount .wrap-down-affix { left: .7rem; right: auto; }
+
+    /* ── Output panel ── */
+    .wrap-output-panel { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 1.75rem; box-shadow: var(--shadow-premium); }
+    .wrap-output-panel h2 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: 1.35rem; color: var(--color-navy); margin-bottom: 1.25rem; }
+    .wrap-output-row { display: flex; justify-content: space-between; align-items: baseline; padding: .65rem 0; border-bottom: 1px solid #f0f4f8; gap: 1rem; }
+    .wrap-output-row:last-of-type { border-bottom: none; }
+    .wrap-output-label { font-size: .88rem; color: var(--color-gray); }
+    .wrap-output-value { font-size: 1rem; font-weight: 600; color: var(--color-navy); text-align: right; }
+    .wrap-output-row--highlight { background: #f8f5ee; border-radius: 8px; padding: .75rem 1rem; margin: .5rem -1rem; border: none; }
+    .wrap-output-row--highlight .wrap-output-label { font-weight: 600; color: var(--color-navy); font-size: .9rem; }
+    .wrap-output-row--highlight .wrap-output-value { font-size: 1.5rem; font-weight: 700; color: var(--color-gold); }
+    .wrap-output-divider { border: none; border-top: 2px solid var(--color-border); margin: 1rem 0; }
+    .wrap-disclaimer { font-size: .78rem; color: #94a3b8; margin-top: 1.25rem; line-height: 1.5; }
+    .wrap-disclaimer a { color: var(--color-navy); }
+
+    /* ── Scenario box ── */
+    .wrap-scenario { background: #f0f6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 1.25rem 1.5rem; margin-top: 1.5rem; }
+    .wrap-scenario h4 { font-size: .85rem; font-weight: 700; color: #1e40af; margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .05em; }
+    .wrap-scenario p { font-size: .85rem; color: #1e3a8a; margin: 0; line-height: 1.5; }
+
+    /* ── CTA ── */
+    .wrap-cta { background: var(--color-navy); color: #fff; padding: 4rem 0; text-align: center; }
+    .wrap-cta h2 { font-family: var(--font-display,'Source Serif 4',Georgia,serif); font-size: 1.85rem; color: #fff; margin-bottom: .75rem; }
+    .wrap-cta p { opacity: .85; max-width: 540px; margin: 0 auto 2rem; }
+
+    /* ── For realtors callout ── */
+    .realtor-callout { background: #f8f5ee; border-left: 4px solid var(--color-gold); border-radius: 0 10px 10px 0; padding: 1.25rem 1.5rem; margin: 2rem 0; }
+    .realtor-callout h4 { font-size: 1rem; font-weight: 700; color: var(--color-navy); margin-bottom: .4rem; }
+    .realtor-callout p { font-size: .9rem; color: var(--color-dark-gray); margin: 0; line-height: 1.6; }
+
+    /* ── Dual result cards ── */
+    .wrap-dual-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 780px) { .wrap-dual-cards { grid-template-columns: 1fr; } }
+    .wrap-result-card { border-radius: var(--radius-xl); padding: 1.5rem; background: #fff; }
+    .wrap-result-card--seller { border: 2px solid var(--color-gold); }
+    .wrap-result-card--buyer { border: 2px solid #2563eb; }
+    .wrap-card-header { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; margin-bottom: .75rem; padding-bottom: .5rem; border-bottom: 1px solid var(--color-border); }
+    .wrap-result-card--seller .wrap-card-header { color: var(--color-gold); }
+    .wrap-result-card--buyer .wrap-card-header { color: #2563eb; }
+    .wrap-metric-headline { margin-bottom: .9rem; }
+    .wrap-metric-headline-label { font-size: .7rem; color: var(--color-gray); text-transform: uppercase; letter-spacing: .05em; font-weight: 500; }
+    .wrap-metric-headline-value { font-size: 1.9rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .wrap-result-card--seller .wrap-metric-headline-value { color: var(--color-gold); }
+    .wrap-result-card--buyer .wrap-metric-headline-value { color: #2563eb; }
+    .wrap-metric { display: flex; justify-content: space-between; align-items: baseline; padding: .45rem 0; border-bottom: 1px solid #f0f4f8; gap: .5rem; }
+    .wrap-metric:last-child { border-bottom: none; }
+    .wrap-metric-label { font-size: .8rem; color: var(--color-gray); flex: 1; }
+    .wrap-metric-value { font-size: .9rem; font-weight: 600; color: var(--color-navy); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+    .wrap-metric-value--highlight { color: #059669; }
+    .wrap-metric--hidden { display: none; }
+
+    /* ── Balloon segmented buttons ── */
+    .wrap-balloon-btns { display: inline-flex; border-radius: 10px; background: var(--color-border); padding: 3px; gap: 0; }
+    .wrap-balloon-btn { padding: .4rem .85rem; border: none; border-radius: 8px; font-size: .78rem; font-weight: 500; cursor: pointer; background: transparent; color: var(--color-gray); transition: background .2s, color .2s; }
+    .wrap-balloon-btn.active { background: var(--color-navy); color: #fff; }
+
+    /* ── Action row ── */
+    .wrap-action-row { display: flex; gap: .75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+    .wrap-btn-pdf { padding: .5rem 1rem; border: 1px solid var(--color-gold); border-radius: 8px; background: transparent; color: var(--color-gold); font-size: .8rem; font-weight: 600; cursor: pointer; transition: background .2s, color .2s; }
+    .wrap-btn-pdf:hover { background: var(--color-gold); color: #fff; }
+    .wrap-btn-amort { padding: .5rem 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: transparent; color: var(--color-navy); font-size: .8rem; font-weight: 600; cursor: pointer; transition: background .2s; }
+    .wrap-btn-amort:hover { background: var(--color-light-gray); }
+
+    /* ── Amortization table ── */
+    .wrap-amort-wrap { margin-top: 1.5rem; overflow-x: auto; }
+    .wrap-amort-wrap[hidden] { display: none; }
+    .wrap-amort-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    .wrap-amort-table th { background: var(--color-navy); color: #fff; padding: .55rem .7rem; text-align: right; font-weight: 600; font-size: .72rem; white-space: nowrap; }
+    .wrap-amort-table th:first-child { text-align: left; }
+    .wrap-amort-table td { padding: .45rem .7rem; text-align: right; font-variant-numeric: tabular-nums; border-bottom: 1px solid #f0f4f8; }
+    .wrap-amort-table td:first-child { text-align: left; font-weight: 600; color: var(--color-navy); }
+    .wrap-amort-table tr:nth-child(even) td { background: #f8fafc; }
+    .wrap-amort-table tr.wrap-amort-balloon td { background: #fef9ee; color: var(--color-gold); font-weight: 700; border-top: 2px solid var(--color-gold); font-style: italic; }
+
+    /* ── Print ── */
+    .print-only { display: none; }
+    .no-print { /* visible on screen */ }
+    @media print {
+      header, .wrap-hero, section:not(.wrap-calc-section), footer, .skip-link,
+      .wrap-calc-section .container > h2, .wrap-calc-section .container > p,
+      .wrap-calc-section .calc-inputs-col, .wrap-action-row, .calc-referral-footer { display: none !important; }
+      body { margin: 0; font-size: 11pt; }
+      .wrap-calc-section { background: #fff !important; padding: 0 !important; }
+      .calc-layout { display: block !important; }
+      .wrap-dual-cards { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+      .wrap-amort-wrap, .wrap-amort-wrap[hidden] { display: block !important; }
+      .print-only { display: block !important; }
+      .no-print { display: none !important; }
+      .print-header { text-align: center; margin-bottom: 1.25rem; padding-bottom: .75rem; border-bottom: 2px solid var(--color-navy); }
+      .print-header h1 { font-size: 1.2rem; color: var(--color-navy); margin: 0 0 .2rem; }
+      .print-header p { font-size: .8rem; color: var(--color-gray); margin: 0; }
+      .print-input-summary { margin-bottom: 1rem; padding: .6rem .9rem; background: #f8fafc; border-radius: 6px; font-size: .8rem; }
+      .print-input-summary strong { color: var(--color-navy); }
+      .print-footer { margin-top: 1.25rem; padding-top: .75rem; border-top: 1px solid var(--color-border); font-size: .75rem; color: var(--color-gray); text-align: center; }
+    }
+  </style>
+<script>window.dataLayer = window.dataLayer || [];</script>
+<!-- Google Tag Manager -->
+<!-- End Google Tag Manager -->
+<link href="/experience.css" rel="stylesheet"/>
+<link href="/advisory-design.css?v=20260918" rel="stylesheet"/>
+<link href="/wrap-calculator.css?v=20260918" rel="stylesheet"/>
+<link href="/premium-interior.css" rel="stylesheet"/>
+<link href="/premium-tools.css" rel="stylesheet"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/><meta content="connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/><link href="/migration-navigation.css" rel="stylesheet"/><link href="/styles.css" rel="stylesheet"/><link href="/orchestration.css" rel="stylesheet"/><link href="/navigation.css" rel="stylesheet"/><link href="/hierarchy.css" rel="stylesheet"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://styermortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://styermortgage.com/resources/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage calculators", "item": "https://styermortgage.com/calculators.html"}, {"@type": "ListItem", "position": 4, "name": "Wraparound mortgage calculator", "item": "https://styermortgage.com/wrap-mortgage-calculator.html"}]}</script></head>
+<body class="editorial-page calculator-page premium-interior premium-tool advisory-site advisory-calculator wrap-calculator-page orchestration-page legacy-page" data-active-nav="resources" data-palette="tiffany-original" data-preview-only="true"><a class="skip" href="#main">Skip to content</a>
+<!-- Google Tag Manager (noscript) -->
+<noscript></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- HEADER / NAV -->
+<!-- HERO -->
+<section class="wrap-hero">
+<div class="container">
+<h1>WRAP Mortgage Calculator</h1>
+<p class="hero-sub">Compare seller cash flow and buyer payments using your existing loan and proposed wrap terms. Results update as you type.</p>
+</div>
+</section>
+<header class="site-header sm-header">
+<div class="container">
+<nav aria-label="Main navigation">
+<a aria-label="The Styer Team home" class="brand nav-brand" href="/"><span>THE STYER TEAM</span><small>Adam Styer · NMLS #513013</small></a>
+<button aria-controls="site-nav-links" aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle" type="button"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+<ul class="nav-links" id="site-nav-links"><li class="nav-has-dropdown hi-program-menu" data-nav-section="programs"><a aria-expanded="false" aria-haspopup="true" href="/products.html">Loan Programs</a><ul class="nav-dropdown"><li class="hi-nav-group"><span class="hi-nav-group-title">Conventional &amp; Government</span><ul><li><a href="/loans/conventional.html">Conventional Loans</a></li><li><a href="/loans/jumbo.html">Jumbo Loans</a></li><li><a href="/loans/fha.html">FHA Loans</a></li><li><a href="/loans/va.html">VA Loans</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Income &amp; Asset Qualification</span><ul><li><a href="/bank-statement-loans.html">Bank Statement Loans</a></li><li><a href="/1099-only-mortgage-texas.html">1099 Loans</a></li><li><a href="/p-and-l-mortgage-texas.html">P&amp;L Loans</a></li><li><a href="/asset-depletion-mortgage-texas.html">Asset Depletion Loans</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Investment Property</span><ul><li><a href="/dscr-loans-texas.html">DSCR Loans</a></li><li><a href="/loans/investment.html">Conventional Investment Property Loans</a></li><li><a href="/dscr-cash-out-refinance-texas.html">DSCR Cash-Out Refinance</a></li></ul></li><li class="hi-nav-group"><span class="hi-nav-group-title">Refinance &amp; Equity</span><ul><li><a href="/loans/refinance.html">Mortgage Refinance</a></li><li><a href="/home-equity-loans-texas.html">Home Equity Loans</a></li><li><a href="/reverse-mortgage-texas.html">Reverse Mortgages</a></li><li><a href="/buy-before-you-sell-austin.html">Buy Before You Sell</a></li></ul></li><li><a href="/products.html">View all loan programs →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="audiences"><a aria-expanded="false" aria-haspopup="true" href="/who-we-serve.html">Who We Serve</a><ul class="nav-dropdown"><li><a href="/self-employed-mortgage-austin.html">Self-Employed &amp; Business Owners</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth &amp; Asset-Rich Borrowers</a></li><li><a href="/investor-loans.html">Real Estate Investors</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li><a href="/move-up-buyers.html">Repeat &amp; Move-Up Buyers</a></li><li><a href="/who-we-serve.html">View who we serve →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="resources"><a aria-expanded="false" aria-haspopup="true" href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Mortgage calculators</a></li><li><a href="/mortgage-guides.html">Mortgage guides</a></li><li><a href="/scenarios.html">Borrower scenarios</a></li><li><a href="/austin-area-mortgage-lender.html">Austin &amp; Central Texas</a></li><li><a href="/blog.html">Articles &amp; updates</a></li><li><a href="/referral-partners-self-employed-clients.html">Professional partners</a></li><li><a href="/resources/">All resources →</a></li></ul></li><li class="nav-has-dropdown" data-nav-section="about"><a aria-expanded="false" aria-haspopup="true" href="/about.html">About</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam &amp; Tiffany</a></li><li><a href="/testimonials.html">Client reviews</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/mortgage-broker-vs-bank.html">Working with a mortgage broker</a></li></ul></li></ul>
+<div class="sm-header-actions"><a class="phone sm-header-phone" href="tel:+15129566010">Call (512) 956-6010</a><a class="button green" data-header-apply="" href="/apply-now/">Apply Online <span aria-hidden="true">↗</span></a></div>
+</nav>
+</div>
+</header><main id="main"><nav aria-label="Breadcrumb" class="ledger-breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/resources/">Resources</a></li><li><a href="/calculators.html">Mortgage calculators</a></li><li aria-current="page">Wraparound mortgage calculator</li></ol></nav>
+<!-- CALCULATOR -->
+<section aria-label="Wrap mortgage calculator" class="wrap-calc-section calc-suite" id="wrap-calc">
+<div class="container">
+<div class="calc-layout">
+<!-- Loan inputs span the page above the seller and buyer analyses. -->
+<div class="calc-inputs-col">
+<div class="calc-card calc-card--solid">
+<h2 class="calc-card-title">Your existing loan</h2>
+<div class="wrap-fields-grid wrap-fields-grid--existing">
+<div class="calc-slider-group">
+<label class="calc-slider-label" for="w-balance">Balance ($)</label>
+<input aria-label="Existing loan balance" class="wrap-money-input" data-min="0" data-step="1000" id="w-balance" inputmode="numeric" type="text" value="200,000"/>
+</div>
+<div class="calc-slider-group">
+<label class="calc-slider-label" for="w-existing-rate">Rate (%)</label>
+<input aria-label="Existing loan rate (%)" id="w-existing-rate" max="15" min="0" step="0.125" type="number" value="3"/>
+</div>
+<div class="calc-slider-group">
+<label class="calc-slider-label" for="w-existing-payment">Monthly P&amp;I ($)</label>
+<input aria-label="Monthly principal and interest payment" class="wrap-money-input" data-min="0" data-step="1" id="w-existing-payment" inputmode="numeric" type="text" value="843"/>
+</div>
+</div>
+</div>
+<div class="calc-card calc-card--solid">
+<h2 class="calc-card-title">Wrap terms (buyer)</h2>
+<div class="wrap-fields-grid">
+<div class="calc-slider-group">
+<label class="calc-slider-label" for="w-sale-price">Sale price ($)</label>
+<input aria-label="Sale price" class="wrap-money-input" data-min="0" data-step="1000" id="w-sale-price" inputmode="numeric" type="text" value="450,000"/>
+</div>
+<div class="calc-slider-group wrap-field--down">
+<label class="calc-slider-label" for="w-down-pct">Down payment</label>
+<div class="wrap-down-payment-fields">
+<div class="wrap-down-field">
+<input aria-label="Down payment percentage" id="w-down-pct" max="100" min="0" step="0.5" type="number" value="10"/>
+<span class="wrap-down-affix">%</span>
+</div>
+<div class="wrap-down-field wrap-down-field--amount">
+<input aria-label="Calculated down payment amount" id="w-down-amount" readonly="" type="text" value="45,000"/>
+<span class="wrap-down-affix">$</span>
+</div>
+</div>
+</div>
+<div class="calc-slider-group">
+<label class="calc-slider-label" for="w-closing-pct">Closing costs (%)</label>
+<input aria-label="Closing costs (%)" id="w-closing-pct" max="15" min="0" step="0.5" type="number" value="8"/>
+</div>
+<div class="calc-slider-group">
+<label class="calc-slider-label" for="w-wrap-rate">Wrap rate (%)</label>
+<input aria-label="Wrap rate (%)" id="w-wrap-rate" max="15" min="0" step="0.125" type="number" value="6.5"/>
+</div>
+<div class="calc-slider-group">
+<label class="calc-slider-label" for="w-term">Wrap term (years)</label>
+<input aria-label="Wrap term (years)" id="w-term" max="30" min="5" step="1" type="number" value="30"/>
+</div>
+<div class="calc-slider-group">
+<label class="calc-slider-label" for="w-appreciation">Annual appreciation (%)</label>
+<input aria-label="Annual appreciation (%)" id="w-appreciation" max="10" min="0" step="0.1" type="number" value="3.0"/>
+</div>
+<div class="calc-slider-group wrap-balloon-field">
+<span class="calc-slider-label" id="w-balloon-label">Balloon term</span>
+<div aria-labelledby="w-balloon-label" class="wrap-balloon-btns" role="group">
+<button aria-pressed="false" class="wrap-balloon-btn" data-balloon="3" type="button">3 Years</button>
+<button aria-pressed="true" class="wrap-balloon-btn active" data-balloon="5" type="button">5 Years</button>
+<button aria-pressed="false" class="wrap-balloon-btn" data-balloon="null" type="button">None</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- OUTPUT PANEL -->
+<div class="wrap-results" id="wrap-results">
+<!-- Print header (hidden on screen) -->
+<div class="print-only print-header" id="print-header">
+<div style="font-size:1.1rem; font-weight:700; color:var(--color-navy);">WRAP Mortgage Analysis</div>
+<div id="print-scenario" style="font-size:.8rem; color:var(--color-gray); margin-top:.25rem;"></div>
+</div>
+<!-- Dual result cards -->
+<div class="wrap-dual-cards">
+<!-- Seller card -->
+<div class="wrap-result-card wrap-result-card--seller">
+<h2 class="wrap-card-header">Seller Analysis</h2>
+<div class="wrap-metric-headline">
+<div class="wrap-metric-headline-label">Total Cash Out<span aria-hidden="true">*</span></div>
+<div aria-describedby="w-seller-total-note" class="wrap-metric-headline-value" id="w-seller-total">—</div>
+<p class="wrap-total-note" id="w-seller-total-note">* Estimated total over 5 years: cash at closing + cumulative monthly cash flow + net balloon proceeds (buyer payoff minus your remaining mortgage balance).</p>
+</div>
+<div class="wrap-metric">
+<span class="wrap-metric-label">Cash at Closing <span class="wrap-metric-help">(down payment - closing costs)</span></span>
+<span class="wrap-metric-value" id="w-out-net-cash">—</span>
+</div>
+<div class="wrap-metric">
+<span class="wrap-metric-label">Monthly Cash Flow</span>
+<span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-monthly-income">—</span>
+</div>
+<div class="wrap-metric">
+<span class="wrap-metric-label" id="w-cume-spread-label">Cumulative Spread to Balloon</span>
+<span class="wrap-metric-value" id="w-out-cume-spread">—</span>
+</div>
+<div class="wrap-metric" id="w-metric-exist-paydown">
+<span class="wrap-metric-label" id="w-exist-paydown-label">Existing Loan Paid Down to Balloon</span>
+<span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-exist-paydown">—</span>
+</div>
+<div class="wrap-metric wrap-metric--hidden" id="w-metric-existing-bal">
+<span class="wrap-metric-label">Existing Loan Bal. at Balloon</span>
+<span class="wrap-metric-value" id="w-out-existing-bal">—</span>
+</div>
+<div class="wrap-metric wrap-metric--hidden" id="w-metric-wrap-bal">
+<span class="wrap-metric-label">Wrap Loan Bal. at Balloon</span>
+<span class="wrap-metric-value" id="w-out-wrap-bal">—</span>
+</div>
+<div class="wrap-metric wrap-metric--hidden" id="w-metric-equity-capture">
+<span class="wrap-metric-label">Equity Capture at Balloon</span>
+<span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-equity-capture">—</span>
+</div>
+</div>
+<!-- Buyer card -->
+<div class="wrap-result-card wrap-result-card--buyer">
+<h2 class="wrap-card-header">Buyer Analysis</h2>
+<div class="wrap-metric-headline">
+<div class="wrap-metric-headline-label">Monthly P&amp;I</div>
+<div class="wrap-metric-headline-value" id="w-out-buyer-payment">—</div>
+</div>
+<div class="wrap-metric">
+<span class="wrap-metric-label">Down Payment</span>
+<span class="wrap-metric-value" id="w-out-down">—</span>
+</div>
+<div class="wrap-metric">
+<span class="wrap-metric-label">Wrap Loan Amount</span>
+<span class="wrap-metric-value" id="w-out-new-loan">—</span>
+</div>
+<div class="wrap-metric wrap-metric--hidden" id="w-metric-bal-due">
+<span class="wrap-metric-label">Balance Due at Balloon</span>
+<span class="wrap-metric-value" id="w-out-bal-due">—</span>
+</div>
+<div class="wrap-metric wrap-metric--hidden" id="w-metric-home-val">
+<span class="wrap-metric-label">Est. Home Value at Balloon</span>
+<span class="wrap-metric-value" id="w-out-home-val">—</span>
+</div>
+<div class="wrap-metric wrap-metric--hidden" id="w-metric-buyer-equity">
+<span class="wrap-metric-label">Est. Buyer Equity at Balloon</span>
+<span class="wrap-metric-value wrap-metric-value--highlight" id="w-out-buyer-equity">—</span>
+</div>
+</div>
+</div>
+<!-- Action row -->
+<div class="wrap-action-row no-print">
+<button class="wrap-btn-pdf" id="w-btn-pdf" type="button"> Download as PDF</button>
+<button aria-controls="w-amort-wrap" aria-expanded="false" class="wrap-btn-amort" id="w-btn-amort" type="button">Show Amortization Table</button>
+</div>
+<!-- Amortization table (hidden by default) -->
+<div aria-label="Amortization table" class="wrap-amort-wrap" hidden="" id="w-amort-wrap" role="region" tabindex="0">
+<table class="wrap-amort-table" id="w-amort-table">
+<thead>
+<tr>
+<th style="text-align:left;">Year</th>
+<th>Wrap Loan Balance</th>
+<th>Existing Loan Balance</th>
+<th>Monthly Spread</th>
+<th>Cumulative Seller Income</th>
+</tr>
+</thead>
+<tbody id="w-amort-tbody"></tbody>
+</table>
+</div>
+<p class="no-print" style="margin-top: 1rem; font-size: .8rem; color: var(--color-gray);">
+              Gross spread only — ignores escrow, reserves, servicing. Estimates only. <a href="tel:+15129566010">Call Adam</a> to discuss structure and due-on-sale risk.
+            </p>
+<!-- Print footer (hidden on screen) -->
+<div class="print-only print-footer" style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid #e5e7eb; font-size:.8rem; color:var(--color-gray); text-align:center;">
+              Adam Styer | HyperSmart Home Loans · (512) 956-6010 · styermortgage.com<br/>
+<span style="font-size:.7rem;">Gross spread only — ignores escrow, reserves, servicing. Estimates only. Not a commitment to lend. Consult a real estate attorney before proceeding with owner financing.</span>
+</div>
+<div class="calc-referral-footer no-print">
+<strong>Referral network:</strong> Use a real estate attorney experienced in Texas owner financing to draft the note and deed of trust, and a title company or servicer to collect payments and forward your mortgage. <strong>Why Styer Mortgage?</strong> Adam structures WRAPs and can connect you with attorney and title partners — <a href="tel:+15129566010">(512) 956-6010</a>.
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- EDUCATIONAL EXPLAINER -->
+<section style="padding: 3.5rem 0;">
+<div class="container">
+<h2 class="text-center" style="margin-bottom: .75rem;">What Is a Wraparound Mortgage?</h2>
+<p class="text-center content-medium mx-auto" style="color: var(--color-gray); margin-bottom: 2.5rem;">
+          A WRAP is owner financing: you sell your home, keep your existing low-rate mortgage, and a new note is issued to the buyer at a higher rate. A <strong>mortgage servicer</strong> handles all payments — you stay hands-off and receive the delta (your passive income) every month.
+        </p>
+<div class="wrap-benefits">
+<div class="wrap-benefit-card">
+<div class="benefit-icon"></div>
+<h3>Hands-Off for You</h3>
+<p>A servicer is hired to manage the loan. The buyer pays the servicer. The servicer pays your original mortgage and sends the <em>delta</em> (the spread) to you. You never chase a payment — buyers and sellers never have to communicate directly.</p>
+</div>
+<div class="wrap-benefit-card">
+<div class="benefit-icon"></div>
+<h3>Premium on Your Price</h3>
+<p>Buyers pay full price — even above market — for below-market financing. When conventional rates are 7%+, offering 5–6% financing is a massive advantage that commands a higher sale price.</p>
+</div>
+<div class="wrap-benefit-card">
+<div class="benefit-icon"></div>
+<h3>Cash at Closing</h3>
+<p>The buyer's down payment hits your pocket at closing, minus transaction costs. You get a lump sum upfront plus ongoing income — without listing commissions eating into both.</p>
+</div>
+</div>
+<h3 style="text-align:center; margin-bottom: 1.5rem; color: var(--color-navy);">How the Payment Flow Works</h3>
+<div class="wrap-steps">
+<div class="wrap-step">
+<div class="wrap-step-num">1</div>
+<h4>Buyer Pays Servicer</h4>
+<p>The buyer sends their monthly payment to the mortgage servicer — not to you. One point of contact, one payment.</p>
+</div>
+<div class="wrap-step">
+<div class="wrap-step-num">2</div>
+<h4>Servicer Pays Your Mortgage</h4>
+<p>The servicer pays your original lender (underlying note) on time, every time. Your credit stays clean; the loan stays current.</p>
+</div>
+<div class="wrap-step">
+<div class="wrap-step-num">3</div>
+<h4>Delta Goes to You</h4>
+<p>After paying the bank, the servicer sends you the <strong>delta</strong> — the spread between the buyer's payment and your payment. That's your passive income.</p>
+</div>
+<div class="wrap-step">
+<div class="wrap-step-num">4</div>
+<h4>You Stay Out of the Middle</h4>
+<p>Buyers and sellers never communicate directly; the seller never has to hunt for a payment. The servicer handles it all.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section style="padding: 3.5rem 0; background: var(--color-light-gray);">
+<div class="container">
+<h2 class="text-center" style="margin-bottom: 2.5rem;">Frequently Asked Questions</h2>
+<div class="content-narrow">
+<div class="accordion">
+<div class="accordion-item">
+<button class="accordion-button">
+<span>Is a wraparound mortgage legal in Texas?</span>
+</button>
+<div class="accordion-content">
+<div class="accordion-body">
+<p>Owner financing is fully legal in Texas and is governed by Chapter 5 of the Texas Property Code (Sections 5.061–5.086). Texas has some of the most detailed seller-finance laws in the country, including required disclosures, balloon payment restrictions, and mandatory annual accounting statements to the buyer. You'll want a real estate attorney experienced in Texas owner financing — not a generalist — to draft the promissory note and deed of trust correctly.</p>
+</div>
+</div>
+</div>
+<div class="accordion-item">
+<button class="accordion-button">
+<span>What is the due-on-sale clause risk?</span>
+</button>
+<div class="accordion-content">
+<div class="accordion-body">
+<p>Almost all conventional mortgages originated in the last 30 years include a due-on-sale clause — technically allowing the lender to demand full repayment when the property transfers. In a WRAP, you're keeping your mortgage in place without lender approval, which triggers this clause. The practical risk: lenders rarely enforce it when payments are current, especially on well-performing loans. But the risk is real and should be understood. Some sellers mitigate this through a land trust structure. Talk to an attorney.</p>
+</div>
+</div>
+</div>
+<div class="accordion-item">
+<button class="accordion-button">
+<span>What happens if the buyer stops paying me?</span>
+</button>
+<div class="accordion-content">
+<div class="accordion-body">
+<p>If the buyer defaults, your existing mortgage payment is still your obligation — the bank doesn't care about your arrangement with the buyer. You must keep paying to protect your credit and avoid foreclosure. You can then foreclose on the buyer through the Texas owner-finance process. This is why a substantial down payment matters: it gives the buyer real skin in the game and gives you a financial cushion. A good attorney will also require mortgage insurance and an escrow account for taxes and insurance.</p>
+</div>
+</div>
+</div>
+<div class="accordion-item">
+<button class="accordion-button">
+<span>How do I find buyers for seller financing?</span>
+</button>
+<div class="accordion-content">
+<div class="accordion-body">
+<p>Owner-finance buyers are everywhere right now — self-employed borrowers who can't document income the conventional way, buyers rebuilding credit, entrepreneurs, and investors. "Owner financing available" in your listing description will generate significant inquiries. You can also list on sites that specialize in owner-finance properties. Unlike traditional buyers, these buyers often close faster with fewer contingencies because they're not dependent on bank approval.</p>
+</div>
+</div>
+</div>
+<div class="accordion-item">
+<button class="accordion-button">
+<span>Should I use a servicer to manage payments?</span>
+</button>
+<div class="accordion-content">
+<div class="accordion-body">
+<p>Yes. A loan servicer (such as a title company or specialized mortgage servicer) collects the buyer's payment, forwards your underlying mortgage payment, and provides annual statements — which Texas law requires. The cost is usually $25–$50/month and is worth every penny. It keeps the transaction arm's-length, creates a paper trail for both parties, and protects you if there's ever a dispute.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="wrap-cta">
+<div class="container">
+<h2>Thinking About Seller Financing?</h2>
+<p>This calculator gives you the math. Adam can give you the strategy — structuring, risk, attorney referrals, and whether it makes sense for your specific situation.</p>
+<div class="cta-group">
+<a class="btn btn-primary btn-lg" href="/get-preapproved.html?intent=scenario">See My Options</a>
+<a class="btn btn-outline btn-lg" href="https://calendly.com/adamstyer/15minutes" rel="noopener" style="color:#fff;border-color:rgba(255,255,255,.55);" target="_blank">Book a Call</a>
+<a class="btn btn-outline btn-lg" href="tel:+15129566010" style="color:#fff;border-color:rgba(255,255,255,.55);">Call (512) 956-6010</a>
+</div>
+</div>
+</section>
+<p class="migration-parent"><a href="/calculators.html">Mortgage calculators</a></p></main><footer class="site-footer full-site-footer" id="site-footer">
+<div class="footer-intro">
+<div>
+<p class="eyebrow">Adam Styer · Austin &amp; Central Texas</p>
+<h2>Your Austin mortgage broker.</h2>
+<p>Compare lenders, ask questions, and understand your mortgage options.</p>
+</div>
+<ul class="footer-contact-list">
+<li><a href="tel:+15129566010">Call Adam: (512) 956-6010</a></li>
+<li><a href="sms:+15129566010">Text Adam</a></li>
+<li><a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a></li>
+<li><a href="mailto:tiffanyw@gorascal.com">Email Tiffany</a></li>
+</ul>
+</div>
+<div aria-label="Mortgage resource directory" class="footer-directory" role="navigation"><section aria-labelledby="footer-group-0"><h3 id="footer-group-0">Loan Programs</h3><ul><li><a href="/products.html">All loan programs</a></li><li><a href="/loans/conventional.html">Conventional &amp; jumbo</a></li><li><a href="/non-qm-loans.html">Income &amp; asset qualification</a></li><li><a href="/dscr-loans-texas.html">DSCR &amp; investment property</a></li><li><a href="/loans/refinance.html">Refinance &amp; home equity</a></li></ul></section><section aria-labelledby="footer-group-1"><h3 id="footer-group-1">Who We Serve</h3><ul><li><a href="/self-employed-mortgage-austin.html">Self-Employed &amp; Business Owners</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth &amp; Asset-Rich Borrowers</a></li><li><a href="/investor-loans.html">Real Estate Investors</a></li><li><a href="/first-time-home-buyer.html">First-Time Homebuyers</a></li><li><a href="/move-up-buyers.html">Repeat &amp; Move-Up Buyers</a></li></ul></section><section aria-labelledby="footer-group-2"><h3 id="footer-group-2">Resources</h3><ul><li><a href="/calculators.html">Mortgage calculators</a></li><li><a href="/mortgage-guides.html">Detailed mortgage guides</a></li><li><a href="/scenarios.html">Borrower scenarios</a></li><li><a href="/resources/">All resources</a></li><li><a href="/resources/full-directory.html">Complete resource directory</a></li></ul></section><section aria-labelledby="footer-group-3"><h3 id="footer-group-3">About &amp; Contact</h3><ul><li><a href="/about.html">Adam &amp; Tiffany</a></li><li><a href="/testimonials.html">Client reviews</a></li><li><a href="/contact.html">Contact Adam</a></li><li><a href="/austin-area-mortgage-lender.html">Austin &amp; Central Texas</a></li><li><a href="/referral-partners-self-employed-clients.html">Professional partners</a></li></ul></section></div>
+<div aria-label="Licensing and consumer information" class="footer-disclosures">
+<p><strong>Adam Styer · NMLS #513013</strong> · <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener">NMLS Consumer Access</a></p>
+<!-- LOCAL-REVIEW RELEASE GATE: verify and insert the current sponsoring company's
+         approved legal/DBA name, NMLS ID and website; confirm team-name presentation,
+         applicable company/banker notice and current licensing before publication.
+         Do not infer an affiliation or company NMLS number from legacy source pages. -->
+<p class="footer-equal-housing"><strong>Equal Housing Opportunity.</strong> We support fair access to housing and mortgage financing.</p>
+<p>Mortgage options depend on the lender’s requirements and the complete file. Information on this site is not a loan approval, rate lock, or commitment to lend. Calculator results are estimates.</p>
+<div aria-label="Legal and consumer notices" class="footer-legal-links" role="navigation">
+<a href="/texas-complaint-notice.html">Texas Consumer Complaint and Recovery Fund Notice</a>
+<a href="/privacy.html">Privacy policy</a>
+<a href="/terms.html">Terms and conditions</a>
+</div>
+<p>For Texas mortgage complaint information, visit the <a href="https://www.sml.texas.gov/consumers/complaints/" rel="noopener">Texas Department of Savings and Mortgage Lending</a> or call <a href="tel:+18772765550">1-877-276-5550</a>.</p>
+<p>Send financial documents through the secure channel provided by the team.</p>
+</div>
+</footer>
+<!-- FOOTER -->
+<script src="calculator-suite.js"></script>
+<script>
+  (function() {
+    'use strict';
+    var Suite = window.CalcSuite;
+    if (!Suite) return;
+
+    function val(id) {
+      var el = document.getElementById(id);
+      return el ? (parseFloat(String(el.value).replace(/,/g, '')) || 0) : 0;
+    }
+    function set(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; }
+    function formatInputNumber(value) {
+      var raw=String(value).replace(/[$,]/g,'').trim();
+      if(!/^(?:\d+\.?\d*|\.\d+)$/.test(raw))return raw;
+      var parts=raw.split('.'),integer=parts[0]||'0';
+      return Number(integer).toLocaleString('en-US')+(parts.length>1?'.'+parts[1]:'');
+    }
+    function updateDownPaymentDisplay(salePrice, downPct) {
+      var amountEl = document.getElementById('w-down-amount');
+      if (amountEl) amountEl.value = Math.round(salePrice * downPct / 100).toLocaleString('en-US');
+    }
+
+    var downToggle = null;
+    var selectedBalloon = 5; /* 3, 5, or null */
+
+    /* Closed-form remaining balance after k payments on a NEW loan of P.
+       Works for wrap loan (starts fresh). For existing loan, use Suite.amortize from current balance. */
+    function remainingBalance(P, annualRatePct, n, k) {
+      if (P <= 0 || n <= 0 || k >= n) return 0;
+      var r = annualRatePct / 100 / 12;
+      if (r === 0) return P * (1 - k / n);
+      var pow_n = Math.pow(1 + r, n);
+      var pow_k = Math.pow(1 + r, k);
+      return Math.max(0, P * (pow_n - pow_k) / (pow_n - 1));
+    }
+
+    function updateBalloonVisibility() {
+      var ids = ['w-metric-existing-bal','w-metric-wrap-bal','w-metric-equity-capture',
+                 'w-metric-bal-due','w-metric-home-val','w-metric-buyer-equity'];
+      var hasBalloon = selectedBalloon !== null;
+      ids.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.toggle('wrap-metric--hidden', !hasBalloon);
+      });
+      var lbl = document.getElementById('w-cume-spread-label');
+      if (lbl) lbl.textContent = hasBalloon ? 'Cumulative Spread to Balloon' : 'Cumulative Spread (lifetime)';
+      var pdlbl = document.getElementById('w-exist-paydown-label');
+      if (pdlbl) pdlbl.textContent = hasBalloon ? 'Existing Loan Paid Down to Balloon' : 'Existing Loan Paid Down (lifetime)';
+    }
+
+    /* Balloon segmented buttons */
+    document.querySelectorAll('.wrap-balloon-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.wrap-balloon-btn').forEach(function(b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        var raw = btn.getAttribute('data-balloon');
+        selectedBalloon = (raw === 'null') ? null : parseInt(raw, 10);
+        updateBalloonVisibility();
+        calcWrap();
+      });
+    });
+
+    function validateWrapInputs(){
+      var ids=['w-balance','w-existing-rate','w-existing-payment','w-sale-price','w-down-pct','w-closing-pct','w-wrap-rate','w-term','w-appreciation'],invalid=[];
+      ids.forEach(function(id){var el=document.getElementById(id),raw=String(el.value).replace(/[$,]/g,'').trim(),value=Number(raw),ok=/^(?:\d+\.?\d*|\.\d+)$/.test(raw)&&Number.isFinite(value)&&value>=0;
+        if(id==='w-sale-price'||id==='w-term')ok=ok&&value>0;var min=el.getAttribute('min'),max=el.getAttribute('max');if(min!==null)ok=ok&&value>=Number(min);if(max!==null)ok=ok&&value<=Number(max);if(id==='w-down-pct'||id==='w-closing-pct')ok=ok&&value<=100;if(id==='w-term')ok=ok&&value<=50&&Number.isInteger(value);if(id.indexOf('rate')>=0)ok=ok&&value<=20;
+        el.setAttribute('aria-invalid',String(!ok));if(!ok)invalid.push(id);
+      });
+      var message=document.getElementById('wrap-input-error');if(!message){message=document.createElement('p');message.id='wrap-input-error';message.setAttribute('role','status');document.getElementById('w-sale-price').parentElement.before(message);}
+      message.textContent=invalid.length?'Correct the highlighted numbers. Enter a positive sale price and term; rates and other amounts cannot be negative.':'';
+      if(invalid.length){document.querySelectorAll('[id^="w-out-"],#w-seller-total').forEach(function(el){el.textContent='—';});document.getElementById('w-amort-tbody').textContent='';document.getElementById('print-scenario').textContent='Correct the highlighted inputs before using this illustration.';return false;}return true;
+    }
+    function calcWrap() {
+      if(!validateWrapInputs())return;
+      var balance      = val('w-balance');
+      var existingRate = val('w-existing-rate');
+      var existingPmt  = val('w-existing-payment');
+      var wrapRate     = val('w-wrap-rate');
+      var wrapTerm     = val('w-term') || 30;
+      var salePrice    = val('w-sale-price');
+      var closingPct   = val('w-closing-pct');
+      var appreciation = val('w-appreciation');
+      var downPct      = Math.min(100, Math.max(0, val('w-down-pct')));
+      updateDownPaymentDisplay(salePrice, downPct);
+
+      if (salePrice <= 0) {
+        ['w-seller-total','w-out-net-cash','w-out-monthly-income','w-out-cume-spread',
+         'w-out-exist-paydown','w-out-existing-bal','w-out-wrap-bal','w-out-equity-capture',
+         'w-out-buyer-payment','w-out-down','w-out-new-loan',
+         'w-out-bal-due','w-out-home-val','w-out-buyer-equity']
+          .forEach(function(id) { set(id, '—'); });
+        return;
+      }
+
+      var downPayment   = salePrice * downPct / 100;
+      var wrapLoan      = salePrice - downPayment;
+      var closingCosts  = salePrice * closingPct / 100;
+      var cashAtClosing = downPayment - closingCosts;
+      var wrapMonthly   = Suite.monthlyPayment(wrapLoan, wrapRate, wrapTerm);
+      var monthlySpread = wrapMonthly - existingPmt;
+
+      var hasBalloon   = selectedBalloon !== null;
+      var spreadMonths = hasBalloon ? selectedBalloon * 12 : wrapTerm * 12;
+      spreadMonths=Math.min(spreadMonths,wrapTerm*12);
+      var wrapCash=Suite.amortize(wrapLoan,wrapRate,wrapMonthly,spreadMonths);
+      var existingCash=Suite.amortize(balance,existingRate,existingPmt,spreadMonths);
+      var cumeSpread=wrapCash.totalPaid-existingCash.totalPaid;
+      var notice=document.getElementById('wrap-input-error');if(existingPmt<balance*existingRate/1200)notice.textContent='The existing payment is below its first month’s interest. This illustration capitalizes unpaid interest, so the existing balance grows.';
+
+      set('w-seller-total-note', hasBalloon
+        ? '* Estimated total over ' + selectedBalloon + ' years: cash at closing + cumulative monthly cash flow + net balloon proceeds (buyer payoff minus your remaining mortgage balance).'
+        : '* Estimated total over the ' + wrapTerm + '-year wrap term: cash at closing + cumulative monthly cash flow. No balloon payment is included.');
+
+      if (hasBalloon) {
+        var balloonMo      = Math.min(selectedBalloon * 12,wrapTerm * 12);
+        var wrapBalBalloon = remainingBalance(wrapLoan, wrapRate, wrapTerm * 12, balloonMo);
+        var existBalloon   = Suite.amortize(balance, existingRate, existingPmt, balloonMo).balance;
+        var existPaydown   = balance - existBalloon;
+        var equityCapture  = wrapBalBalloon - existBalloon;
+        var homeVal        = salePrice * Math.pow(1 + appreciation / 100, balloonMo / 12);
+        var buyerEquity    = homeVal - wrapBalBalloon;
+        var sellerTotal    = cashAtClosing + cumeSpread + equityCapture;
+
+        set('w-out-exist-paydown',  Suite.formatCurrency(existPaydown));
+        set('w-out-existing-bal',   Suite.formatCurrency(existBalloon));
+        set('w-out-wrap-bal',       Suite.formatCurrency(wrapBalBalloon));
+        set('w-out-equity-capture', Suite.formatCurrency(equityCapture));
+        set('w-out-bal-due',        Suite.formatCurrency(wrapBalBalloon));
+        set('w-out-home-val',       Suite.formatCurrency(homeVal));
+        set('w-out-buyer-equity',   Suite.formatCurrency(buyerEquity));
+        set('w-seller-total',       Suite.formatCurrency(sellerTotal));
+      } else {
+        var existAtTerm  = Suite.amortize(balance, existingRate, existingPmt, wrapTerm * 12).balance;
+        var existPaydown = balance - existAtTerm;
+        set('w-out-exist-paydown', Suite.formatCurrency(existPaydown));
+        set('w-seller-total', Suite.formatCurrency(cashAtClosing + cumeSpread - existAtTerm));
+        set('w-seller-total-note','* Estimated net over the '+wrapTerm+'-year wrap term: cash at closing + cumulative cash flow − any existing loan balance still owed at term end ('+Suite.formatCurrency(existAtTerm)+').');
+      }
+
+      set('w-out-cume-spread',    Suite.formatCurrency(cumeSpread));
+      set('w-out-net-cash',       Suite.formatCurrency(cashAtClosing));
+      set('w-out-monthly-income', Suite.formatCurrency(monthlySpread) + '/mo');
+      set('w-out-buyer-payment',  Suite.formatCurrency(wrapMonthly) + '/mo');
+      set('w-out-down',           Suite.formatCurrency(downPayment));
+      set('w-out-new-loan',       Suite.formatCurrency(wrapLoan));
+
+      var netCashEl = document.getElementById('w-out-net-cash');
+      if (netCashEl) netCashEl.style.color = cashAtClosing < 0 ? '#dc2626' : '';
+
+      buildAmortTable(wrapLoan, wrapRate, wrapTerm, existingPmt, balance, existingRate);
+      updatePrintSummary(salePrice, downPct, wrapRate, wrapTerm);
+    }
+
+    function buildAmortTable(wrapLoan, wrapRate, wrapTerm, existingPmt, existingBal0, existingRate) {
+      var tbody = document.getElementById('w-amort-tbody');
+      if (!tbody) return;
+
+      var displayYears = Math.min(selectedBalloon !== null ? selectedBalloon : wrapTerm,wrapTerm);
+      var wrapMonthly  = Suite.monthlyPayment(wrapLoan, wrapRate, wrapTerm);
+      var wrapN        = wrapTerm * 12;
+      var existBal     = existingBal0;
+      var cume         = 0;
+      var priorWrapBalance=wrapLoan;
+      var headings=document.querySelectorAll('#w-amort-table th');if(headings[3])headings[3].textContent='Average Monthly Spread in Year';
+      var spread       = wrapMonthly - existingPmt;
+      var rows         = '';
+
+      for (var yr = 1; yr <= displayYears; yr++) {
+        var wrapBal = remainingBalance(wrapLoan, wrapRate, wrapN, yr * 12);
+        var am = Suite.amortize(existBal, existingRate, existingPmt, 12);
+        existBal = am.balance;
+        var wrapYear=Suite.amortize(priorWrapBalance,wrapRate,wrapMonthly,12);
+        priorWrapBalance=wrapYear.balance;
+        var annualSpread=wrapYear.totalPaid-am.totalPaid;
+        spread=annualSpread/12;cume+=annualSpread;
+        var isBalloon = (selectedBalloon !== null && yr === selectedBalloon);
+        rows += '<tr' + (isBalloon ? ' class="wrap-amort-balloon"' : '') + '>';
+        rows += '<td style="text-align:left;">' + yr + (isBalloon ? ' ★' : '') + '</td>';
+        rows += '<td>' + Suite.formatCurrency(wrapBal) + '</td>';
+        rows += '<td>' + Suite.formatCurrency(existBal) + '</td>';
+        rows += '<td>' + Suite.formatCurrency(spread) + '/mo</td>';
+        rows += '<td>' + Suite.formatCurrency(cume) + '</td>';
+        rows += '</tr>';
+      }
+      tbody.innerHTML = rows;
+    }
+
+    function updatePrintSummary(salePrice, downPct, wrapRate, wrapTerm) {
+      var el = document.getElementById('print-scenario');
+      if (!el) return;
+      var balloonStr = selectedBalloon !== null ? selectedBalloon + '-yr balloon' : 'no balloon';
+      el.textContent = 'Sale price ' + Suite.formatCurrency(salePrice) +
+        ' · ' + downPct.toFixed(1) + '% down' +
+        ' · ' + wrapRate.toFixed(2) + '% wrap' +
+        ' · ' + wrapTerm + '-yr term' +
+        ' · ' + balloonStr;
+    }
+
+    /* Amort toggle */
+    var amortWrap = document.getElementById('w-amort-wrap');
+    var amortBtn  = document.getElementById('w-btn-amort');
+    if (amortBtn && amortWrap) {
+      amortBtn.addEventListener('click', function() {
+        if (amortWrap.hasAttribute('hidden')) {
+          amortWrap.removeAttribute('hidden');
+          amortBtn.textContent = 'Hide Amortization Table';
+          amortBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          amortWrap.setAttribute('hidden', '');
+          amortBtn.textContent = 'Show Amortization Table';
+          amortBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    /* PDF print */
+    var pdfBtn = document.getElementById('w-btn-pdf');
+    if (pdfBtn) pdfBtn.addEventListener('click', function() { window.print(); });
+
+    /* Format currency inputs with thousands separators while preserving numeric calculations. */
+    document.querySelectorAll('.wrap-money-input').forEach(function(el) {
+      el.addEventListener('input', function() {
+        el.value = formatInputNumber(el.value);
+      });
+      el.addEventListener('blur', function() {
+        el.value = formatInputNumber(el.value);
+      });
+    });
+
+    /* Input listeners */
+    ['w-balance','w-existing-rate','w-existing-payment',
+     'w-sale-price','w-down-pct','w-closing-pct','w-wrap-rate','w-term','w-appreciation']
+      .forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('input', calcWrap);
+      });
+
+    /* Accordion */
+    document.querySelectorAll('.accordion-button').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item   = btn.closest('.accordion-item');
+        var isOpen = item && item.classList.contains('open');
+        document.querySelectorAll('.accordion-item').forEach(function(i) { i.classList.remove('open'); });
+        if (item && !isOpen) item.classList.add('open');
+      });
+    });
+
+    updateBalloonVisibility();
+    calcWrap();
+  }());
+  </script>
+<script defer="" src="/calculator-sticky-result.js?v=20260918"></script>
+
+
+<dialog aria-describedby="contact-intro contact-preview-note" aria-labelledby="contact-title" class="or-contact-dialog" id="contact">
+<button aria-label="Close scenario review" class="close" type="button">×</button>
+<div data-contact-entry="">
+<p class="eyebrow">START WITH YOUR SITUATION</p>
+<h2 id="contact-title" tabindex="-1">What are you trying to do?</h2>
+<p class="dialog-intro" id="contact-intro">Tell me your goal and what needs a closer look. A few sentences are enough.</p>
+<p class="preview-notice" id="contact-preview-note">Preview only. Use sample details. Nothing is sent or saved.</p>
+<form data-inquiry-form="" id="preview-contact" method="post" name="contact">
+<fieldset disabled="">
+<input id="inquiry-goal" name="goal" type="hidden" value="Review my scenario"/>
+<div class="or-form-row">
+<div><label for="inquiry-name">Your name <span aria-hidden="true">*</span></label><input autocomplete="off" id="inquiry-name" maxlength="160" name="name" required=""/></div>
+<div><label for="inquiry-email">Email <span aria-hidden="true">*</span></label><input autocomplete="off" id="inquiry-email" maxlength="160" name="email" required="" type="email"/></div>
+</div>
+<label for="inquiry-phone">Phone (optional)</label><input autocomplete="off" id="inquiry-phone" maxlength="30" name="phone" type="tel"/>
+<label for="inquiry-message">What should I know? (optional)</label><textarea aria-describedby="inquiry-privacy" id="inquiry-message" maxlength="2000" name="message" rows="3"></textarea>
+<p class="or-form-hint" id="inquiry-privacy">Please leave out Social Security numbers, account numbers, and documents. Fields marked * are required.</p>
+<button class="button button--primary gold" data-inquiry-submit="" type="submit">Preview my scenario review <span aria-hidden="true">→</span></button>
+<p aria-live="polite" data-form-status="" role="status"></p><p data-form-error="" role="alert" tabindex="-1"></p>
+</fieldset>
+<noscript><p>JavaScript is required for the preview form. You can still read every guide and use the contact links on the page.</p></noscript>
+</form>
+</div>
+<div class="confirmation" data-contact-confirmation="" hidden="" role="status" tabindex="-1">
+<h3>Preview complete.</h3><p data-confirmation-copy="">Nothing was sent or saved. This shows the next step after a scenario review request.</p><button class="button green close-action" type="button">Back to the page <span aria-hidden="true">→</span></button>
+</div>
+</dialog>
+<dialog aria-labelledby="info-title" id="info"><button aria-label="Close details" class="close" type="button">×</button><div id="info-content"></div></dialog>
+<script defer="" src="/preview-safety.js"></script><script defer="" src="/script.js"></script><script defer="" src="/interaction.js"></script><script defer="" src="/navigation.js"></script><script defer="" src="/ui-polish.js"></script></body>
+</html>

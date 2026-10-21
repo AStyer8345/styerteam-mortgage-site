@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "Unavailable-save explanation appears beside the button and is its accessible description",
+    "Save click updates one live status without changing calculator inputs",
+    "Unmarked calculator form submits pass through",
+    "Marked inquiry form receives honest local-only confirmation",
+    "No network or storage access"
+  ],
+  "passed": 5,
+  "networkCalls": 0,
+  "storageCalls": 0,
+  "limitation": "DOM fixture; does not establish rendered/native-browser behavior."
+}

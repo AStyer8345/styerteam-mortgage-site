@@ -1,0 +1,1748 @@
+{
+  "ledger": "styer-mortgage-migration-ledger.md",
+  "route_count": 173,
+  "clusters": {
+    "Cluster 1: Self-Employed & Business Owner Financing": 10,
+    "Cluster 2: Asset-Based & High-Net-Worth Lending": 3,
+    "Cluster 3: Real Estate Investor Financing": 13,
+    "Cluster 4: Conventional, Jumbo & Specialized Products": 28,
+    "Cluster 5: Case Study & Scenario Library": 9,
+    "Cluster 6: Standalone Calculators & Tools": 9,
+    "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes": 51,
+    "Additional Coverage B: Local Service Pages & Local Offer Reviews": 32,
+    "Additional Coverage C: Professional Partners & Realtor Updates": 12,
+    "Additional Coverage D: Legal Pages, Legacy Routes & Aliases": 6
+  },
+  "routes": [
+    {
+      "route": "/self-employed-mortgage-austin.html",
+      "cluster": "Cluster 1: Self-Employed & Business Owner Financing",
+      "topic": "Self-Employed Mortgage in Austin, TX",
+      "role": "Hub",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Homepage: Self-Employed card; Main Nav: Buy dropdown; Resource Hub",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Self-employed mortgage options"
+    },
+    {
+      "route": "/mortgage-for-business-owners-austin.html",
+      "cluster": "Cluster 1: Self-Employed & Business Owner Financing",
+      "topic": "Mortgages for Texas business owners.",
+      "role": "Spoke",
+      "primary_parent": "/self-employed-mortgage-austin.html",
+      "placements": "Parent: [/self-employed-mortgage-austin.html](https://styermortgage.com/self-employed-mortgage-austin.html); Contextual Link: HNW hub; preserve business liquidity and compensation planning",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgage planning for business owners"
+    },
+    {
+      "route": "/bank-statement-loans.html",
+      "cluster": "Cluster 1: Self-Employed & Business Owner Financing",
+      "topic": "Bank Statement Loans in Texas",
+      "role": "Spoke",
+      "primary_parent": "/self-employed-mortgage-austin.html",
+      "placements": "Parent: [/self-employed-mortgage-austin.html](https://styermortgage.com/self-employed-mortgage-austin.html); Homepage: bank-statement case; Contextual Link: business-owner planning",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Bank statement loans in Texas"
+    },
+    {
+      "route": "/p-and-l-mortgage-texas.html",
+      "cluster": "Cluster 1: Self-Employed & Business Owner Financing",
+      "topic": "P&L Only Mortgages in Texas \u2014 Qualify on Your CPA-Prepared Profit & Loss",
+      "role": "Spoke",
+      "primary_parent": "/self-employed-mortgage-austin.html",
+      "placements": "Parent: [/self-employed-mortgage-austin.html](https://styermortgage.com/self-employed-mortgage-austin.html)",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "P&L mortgage loans in Texas"
+    },
+    {
+      "route": "/1099-only-mortgage-texas.html",
+      "cluster": "Cluster 1: Self-Employed & Business Owner Financing",
+      "topic": "1099-Only Mortgages in Texas \u2014 Qualify Without Tax Returns",
+      "role": "Spoke",
+      "primary_parent": "/self-employed-mortgage-austin.html",
+      "placements": "Parent: [/self-employed-mortgage-austin.html](https://styermortgage.com/self-employed-mortgage-austin.html)",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "1099-only mortgage loans in Texas"
+    },
+    {
+      "route": "/k1-income-mortgage-austin.html",
+      "cluster": "Cluster 1: Self-Employed & Business Owner Financing",
+      "topic": "K-1 Income Mortgages in Austin TX \u2014 Partners, S-Corp Owners & Pass-Through Borrowers",
+      "role": "Spoke",
+      "primary_parent": "/self-employed-mortgage-austin.html",
+      "placements": "Parent: [/self-employed-mortgage-austin.html](https://styermortgage.com/self-employed-mortgage-austin.html); Contextual Link: jumbo and business-owner planning",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Qualifying for a mortgage with K-1 income"
+    },
+    {
+      "route": "/resources/mortgage-options-for-business-owners.html",
+      "cluster": "Cluster 1: Self-Employed & Business Owner Financing",
+      "topic": "Prepare Your Business Records for a Mortgage Review",
+      "role": "Guide",
+      "primary_parent": "/mortgage-for-business-owners-austin.html",
+      "placements": "Parent: [/mortgage-for-business-owners-austin.html](https://styermortgage.com/mortgage-for-business-owners-austin.html); Resource Hub; Contextual Link: self-employed hub",
+      "content_action": "Keep As-Is",
+      "anchor": "Business-owner mortgage preparation checklist"
+    },
+    {
+      "route": "/blog/2026-06-30-bank-statement-loans-texas.html",
+      "cluster": "Cluster 1: Self-Employed & Business Owner Financing",
+      "topic": "How Lenders Review Bank Statements for a Texas Mortgage",
+      "role": "Guide",
+      "primary_parent": "/bank-statement-loans.html",
+      "placements": "Parent: [/bank-statement-loans.html](https://styermortgage.com/bank-statement-loans.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "How lenders review bank statements"
+    },
+    {
+      "route": "/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html",
+      "cluster": "Cluster 1: Self-Employed & Business Owner Financing",
+      "topic": "How Underwriters Actually Calculate Self-Employed Income: Add-Backs, Averaging, and the Two-Year Rule",
+      "role": "Guide",
+      "primary_parent": "/self-employed-mortgage-austin.html",
+      "placements": "Parent: [/self-employed-mortgage-austin.html](https://styermortgage.com/self-employed-mortgage-austin.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Self-employed tax-return income: add-backs and averaging"
+    },
+    {
+      "route": "/blog/2026-04-02-self-employed-mortgage-austin-tx.html",
+      "cluster": "Cluster 1: Self-Employed & Business Owner Financing",
+      "topic": "Preparing for a Self-Employed Mortgage in Austin, TX",
+      "role": "Guide",
+      "primary_parent": "/self-employed-mortgage-austin.html",
+      "placements": "Parent: [/self-employed-mortgage-austin.html](https://styermortgage.com/self-employed-mortgage-austin.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Preparing for a self-employed mortgage"
+    },
+    {
+      "route": "/high-net-worth-mortgage.html",
+      "cluster": "Cluster 2: Asset-Based & High-Net-Worth Lending",
+      "topic": "High-Net-Worth Mortgages in Austin, TX",
+      "role": "Hub",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Homepage: Assets / HNW card; Main Nav: Buy dropdown",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgages for asset-rich borrowers"
+    },
+    {
+      "route": "/asset-depletion-mortgage-texas.html",
+      "cluster": "Cluster 2: Asset-Based & High-Net-Worth Lending",
+      "topic": "Qualify for a Mortgage Using Your Assets",
+      "role": "Spoke",
+      "primary_parent": "/high-net-worth-mortgage.html",
+      "placements": "Parent: [/high-net-worth-mortgage.html](https://styermortgage.com/high-net-worth-mortgage.html); Contextual Link: Self-Employed hub; retain pledged-asset comparison on this URL",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Asset depletion mortgages in Texas"
+    },
+    {
+      "route": "/reverse-mortgage-texas.html",
+      "cluster": "Cluster 2: Asset-Based & High-Net-Worth Lending",
+      "topic": "Is a Reverse Mortgage the Right Use of Your Home Equity?",
+      "role": "Spoke",
+      "primary_parent": "/high-net-worth-mortgage.html",
+      "placements": "Parent: [/high-net-worth-mortgage.html](https://styermortgage.com/high-net-worth-mortgage.html); Contextual Link: asset depletion comparison; advisor reverse-mortgage guide",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Reverse mortgages in Texas"
+    },
+    {
+      "route": "/investor-loans.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "Investment property financing in Texas.",
+      "role": "Hub",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Main Nav: Invest; Homepage: Investor / DSCR card",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Investment property financing"
+    },
+    {
+      "route": "/dscr-loans-texas.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "DSCR Loans in Texas \u2014 Where the Cash-Flow Math Just Works Better",
+      "role": "Spoke",
+      "primary_parent": "/investor-loans.html",
+      "placements": "Parent: [/investor-loans.html](https://styermortgage.com/investor-loans.html); Homepage: investor case; Contextual Link: investment loan comparison",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "DSCR loans in Texas"
+    },
+    {
+      "route": "/dscr-loan-austin-tx.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "DSCR Loans in Austin, TX",
+      "role": "Spoke",
+      "primary_parent": "/dscr-loans-texas.html",
+      "placements": "Parent: [/dscr-loans-texas.html](https://styermortgage.com/dscr-loans-texas.html); Contextual Link: Austin-area hub; keep local examples distinct from statewide program page",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "DSCR loans in Austin"
+    },
+    {
+      "route": "/dscr-loans-fredericksburg-tx.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "DSCR Loans for Fredericksburg STR Investors \u2014 Wine Country Cash-Flow, Funded",
+      "role": "Spoke",
+      "primary_parent": "/dscr-loans-texas.html",
+      "placements": "Parent: [/dscr-loans-texas.html](https://styermortgage.com/dscr-loans-texas.html); Contextual Link: short-term-rental guide",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "DSCR loans in Fredericksburg"
+    },
+    {
+      "route": "/dscr-loans-dripping-springs.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "DSCR Loans in Dripping Springs \u2014 Where Wedding Capital Meets Hill Country STR",
+      "role": "Spoke",
+      "primary_parent": "/dscr-loans-texas.html",
+      "placements": "Parent: [/dscr-loans-texas.html](https://styermortgage.com/dscr-loans-texas.html); Contextual Link: Dripping Springs service page; STR guide",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "DSCR loans in Dripping Springs"
+    },
+    {
+      "route": "/dscr-cash-out-refinance-texas.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "Your rental equity. The full picture.",
+      "role": "Spoke",
+      "primary_parent": "/investor-loans.html",
+      "placements": "Parent: [/investor-loans.html](https://styermortgage.com/investor-loans.html); Contextual Link: DSCR page and Refinance hub; retain purchase-vs-refinance distinctions",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "DSCR cash-out refinance in Texas"
+    },
+    {
+      "route": "/loans/investment.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "Investment Property Loans in Austin, Texas",
+      "role": "Spoke",
+      "primary_parent": "/investor-loans.html",
+      "placements": "Parent: [/investor-loans.html](https://styermortgage.com/investor-loans.html); Contextual Link: conventional-vs-DSCR guide; preserve traditional investment documentation detail",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Investment property loan requirements"
+    },
+    {
+      "route": "/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "DSCR vs Conventional Investment Property Loan in Texas: How to Pick",
+      "role": "Guide",
+      "primary_parent": "/investor-loans.html",
+      "placements": "Parent: [/investor-loans.html](https://styermortgage.com/investor-loans.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "DSCR vs conventional investment property loans"
+    },
+    {
+      "route": "/blog/2026-06-23-no-ratio-low-dscr-loans-texas.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "No-Ratio & Low-DSCR Loans in Texas: Financing a Rental That Cash-Flows Under 1.0",
+      "role": "Guide",
+      "primary_parent": "/dscr-loans-texas.html",
+      "placements": "Parent: [/dscr-loans-texas.html](https://styermortgage.com/dscr-loans-texas.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Low-DSCR and no-ratio rental loans"
+    },
+    {
+      "route": "/blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "DSCR Cash-Out Refinance Texas (2026): The BRRRR Investor's Guide",
+      "role": "Guide",
+      "primary_parent": "/dscr-cash-out-refinance-texas.html",
+      "placements": "Parent: [/dscr-cash-out-refinance-texas.html](https://styermortgage.com/dscr-cash-out-refinance-texas.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "DSCR cash-out refinance and BRRRR"
+    },
+    {
+      "route": "/blog/2026-06-05-dscr-airbnb-str-loan-texas.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "DSCR Loans for Short-Term Rentals (Airbnb/VRBO) in Texas (2026)",
+      "role": "Guide",
+      "primary_parent": "/dscr-loans-texas.html",
+      "placements": "Parent: [/dscr-loans-texas.html](https://styermortgage.com/dscr-loans-texas.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "DSCR loans for Airbnb and short-term rentals"
+    },
+    {
+      "route": "/blog/2026-06-16-dscr-loan-requirements-texas.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "DSCR Loan Requirements in Texas: What It Actually Takes to Qualify in 2026",
+      "role": "Guide",
+      "primary_parent": "/dscr-loans-texas.html",
+      "placements": "Parent: [/dscr-loans-texas.html](https://styermortgage.com/dscr-loans-texas.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "DSCR loan requirements in Texas"
+    },
+    {
+      "route": "/blog/2026-03-31-dscr-loans-austin-tx-2026.html",
+      "cluster": "Cluster 3: Real Estate Investor Financing",
+      "topic": "How DSCR Loans Work in Austin TX \u2014 The 2026 Investor's Guide",
+      "role": "Guide",
+      "primary_parent": "/dscr-loan-austin-tx.html",
+      "placements": "Parent: [/dscr-loan-austin-tx.html](https://styermortgage.com/dscr-loan-austin-tx.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "How DSCR loans work in Austin"
+    },
+    {
+      "route": "/first-time-home-buyer.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Buy Your First Home in Austin With Confidence",
+      "role": "Hub",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Main Nav: Buy; retain complete first-time-buyer content below the overview",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Buying a home"
+    },
+    {
+      "route": "/loans/refinance.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Refinance Your Mortgage in Austin, Texas",
+      "role": "Hub",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Main Nav: Refinance; cross-link investor cash-out and home-equity page",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Refinancing and cash-out options"
+    },
+    {
+      "route": "/loans/conventional.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Conventional Loans in Austin, Texas",
+      "role": "Spoke",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Homepage: quiet conventional / jumbo escape link",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Conventional home loans"
+    },
+    {
+      "route": "/loans/jumbo.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Jumbo Loans in Austin, Texas",
+      "role": "Spoke",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Homepage: quiet conventional / jumbo link; HNW and self-employed hubs",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Jumbo mortgage options"
+    },
+    {
+      "route": "/loans/fha.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "FHA Loans in Austin, Texas",
+      "role": "Spoke",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html)",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "FHA loans in Austin"
+    },
+    {
+      "route": "/loans/va.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "VA Home Loans in Austin, Texas",
+      "role": "Spoke",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html)",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "VA home loans in Texas"
+    },
+    {
+      "route": "/loans/usda.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "USDA Home Loans Near Austin, Texas",
+      "role": "Spoke",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Resource Hub; retain current noindex pending explicit indexing review",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "USDA home loans near Austin"
+    },
+    {
+      "route": "/loans/construction.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Construction Loans in Austin, Texas",
+      "role": "Hub",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Main Nav: Buy dropdown; retain builder and project requirements",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Construction loan options"
+    },
+    {
+      "route": "/one-time-close-construction-loan-texas.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "One-Time-Close Construction Loans in Texas \u2014 Custom Builds in Austin & Hill Country",
+      "role": "Spoke",
+      "primary_parent": "/loans/construction.html",
+      "placements": "Parent: [/loans/construction.html](https://styermortgage.com/loans/construction.html); Contextual Link: self-employed and business-owner hubs",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "One-time-close construction loans in Texas"
+    },
+    {
+      "route": "/construction-loan-scenario-review.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Is Your Construction Project Ready for a Loan Review?",
+      "role": "Tool",
+      "primary_parent": "/loans/construction.html",
+      "placements": "Parent: [/loans/construction.html](https://styermortgage.com/loans/construction.html); Contextual Link: OTC guide; retain specialized project-intake fields",
+      "content_action": "Keep As-Is",
+      "anchor": "Review my construction project"
+    },
+    {
+      "route": "/buy-before-you-sell-austin.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Buy your next home before selling this one.",
+      "role": "Spoke",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Contextual Link: Refinance hub; construction and transition scenarios",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Buy before you sell in Austin"
+    },
+    {
+      "route": "/home-equity-loans-texas.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Texas Home Equity Loans: Keep Your Low Rate",
+      "role": "Spoke",
+      "primary_parent": "/loans/refinance.html",
+      "placements": "Parent: [/loans/refinance.html](https://styermortgage.com/loans/refinance.html); Contextual Link: business-owner planning; distinguish owner-occupied equity from rental cash-out",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Texas home equity loans and HELOCs"
+    },
+    {
+      "route": "/non-qm-loans.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Mortgage Options When Your Income Doesn\u2019t Fit the Usual Formula",
+      "role": "Hub",
+      "primary_parent": "/products.html",
+      "placements": "Parent: [/products.html](https://styermortgage.com/products.html); Contextual Link: self-employed, HNW and Invest hubs; retain program directory",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Non-QM mortgage options"
+    },
+    {
+      "route": "/blog/2026-09-04-what-is-a-non-qm-loan-texas.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "What Is a Non-QM Loan? Why Your Bank Said No and What Actually Qualifies in Texas",
+      "role": "Guide",
+      "primary_parent": "/non-qm-loans.html",
+      "placements": "Parent: [/non-qm-loans.html](https://styermortgage.com/non-qm-loans.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "What is a Non-QM loan?"
+    },
+    {
+      "route": "/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Can You Buy the House You Rent From Your Landlord in Texas?",
+      "role": "Guide",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Buying the home you rent in Texas"
+    },
+    {
+      "route": "/blog/2026-08-18-jumbo-loan-requirements-texas-2026.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Jumbo Loan Requirements in Texas (2026): Where the Line Is, and What It Takes to Cross It",
+      "role": "Guide",
+      "primary_parent": "/loans/jumbo.html",
+      "placements": "Parent: [/loans/jumbo.html](https://styermortgage.com/loans/jumbo.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Texas jumbo loan requirements"
+    },
+    {
+      "route": "/blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Should I Refinance in 2026? A Decision Guide for Austin Homeowners",
+      "role": "Guide",
+      "primary_parent": "/loans/refinance.html",
+      "placements": "Parent: [/loans/refinance.html](https://styermortgage.com/loans/refinance.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Should I refinance? Break-even and costs"
+    },
+    {
+      "route": "/blog/2026-03-29-va-loan-eligibility-texas.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "VA Loan Eligibility in Texas \u2014 Who Qualifies and How to Use Your Benefit",
+      "role": "Guide",
+      "primary_parent": "/loans/va.html",
+      "placements": "Parent: [/loans/va.html](https://styermortgage.com/loans/va.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "VA loan eligibility in Texas"
+    },
+    {
+      "route": "/blog/2026-03-24-cash-out-refinance-austin-tx.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Cash-Out Refinance in Austin TX \u2014 Is It Worth It in 2026?",
+      "role": "Guide",
+      "primary_parent": "/loans/refinance.html",
+      "placements": "Parent: [/loans/refinance.html](https://styermortgage.com/loans/refinance.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Cash-out refinance costs and trade-offs"
+    },
+    {
+      "route": "/blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "How Long Does Mortgage Pre-Approval Take in Austin TX?",
+      "role": "Guide",
+      "primary_parent": "/mortgage-pre-approval-austin.html",
+      "placements": "Parent: [/mortgage-pre-approval-austin.html](https://styermortgage.com/mortgage-pre-approval-austin.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "How long mortgage pre-approval takes"
+    },
+    {
+      "route": "/blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "FHA vs Conventional Loan in Austin TX \u2014 Which Is Right for You?",
+      "role": "Guide",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "FHA vs conventional loans"
+    },
+    {
+      "route": "/blog/2026-03-27-down-payment-assistance-texas-2026.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "2026 Texas Down Payment Assistance Programs: TSAHC, TDHCA & City of Austin",
+      "role": "Guide",
+      "primary_parent": "/austin-down-payment-assistance.html",
+      "placements": "Parent: [/austin-down-payment-assistance.html](https://styermortgage.com/austin-down-payment-assistance.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Texas down payment assistance programs"
+    },
+    {
+      "route": "/blog/2026-06-14-buy-before-you-sell-austin-tx.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "How to Buy Your Next Home Before Selling Your Current One",
+      "role": "Guide",
+      "primary_parent": "/buy-before-you-sell-austin.html",
+      "placements": "Parent: [/buy-before-you-sell-austin.html](https://styermortgage.com/buy-before-you-sell-austin.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "How to buy before selling your current home"
+    },
+    {
+      "route": "/blog/2026-05-30-physician-mortgage-texas.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Physician Mortgage Loans in Texas: How Doctors Qualify in 2026",
+      "role": "Guide",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Physician mortgage options in Texas"
+    },
+    {
+      "route": "/blog/2026-07-21-itin-mortgage-loans-texas.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "ITIN Mortgage Loans in Texas: How to Buy a Home Without a Social Security Number",
+      "role": "Guide",
+      "primary_parent": "/non-qm-loans.html",
+      "placements": "Parent: [/non-qm-loans.html](https://styermortgage.com/non-qm-loans.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "ITIN mortgage qualification in Texas"
+    },
+    {
+      "route": "/blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "First-Time Buyer Assistance Programs in Austin TX (2026): TSAHC, TDHCA & MCC",
+      "role": "Guide",
+      "primary_parent": "/austin-down-payment-assistance.html",
+      "placements": "Parent: [/austin-down-payment-assistance.html](https://styermortgage.com/austin-down-payment-assistance.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "First-time homebuyer assistance in Austin"
+    },
+    {
+      "route": "/blog/2026-04-10-fha-loan-requirements-texas-2026.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "FHA Loan Requirements Texas 2026",
+      "role": "Guide",
+      "primary_parent": "/loans/fha.html",
+      "placements": "Parent: [/loans/fha.html](https://styermortgage.com/loans/fha.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "FHA loan requirements in Texas"
+    },
+    {
+      "route": "/blog/2026-04-03-condo-mortgage-austin-tx.html",
+      "cluster": "Cluster 4: Conventional, Jumbo & Specialized Products",
+      "topic": "Condo Mortgage Austin TX: What Buyers Need to Know in 2026",
+      "role": "Guide",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Condo mortgage requirements in Austin"
+    },
+    {
+      "route": "/scenarios.html",
+      "cluster": "Cluster 5: Case Study & Scenario Library",
+      "topic": "Find a situation that sounds like yours.",
+      "role": "Hub",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Homepage: full scenario library link; Resource Hub",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgage scenarios and case studies"
+    },
+    {
+      "route": "/scenarios/oil-gas-royalty-asset-depletion.html",
+      "cluster": "Cluster 5: Case Study & Scenario Library",
+      "topic": "Oil & Gas Royalty Income, Two Bank Declines, and an Asset-Depletion Solution",
+      "role": "Case Study",
+      "primary_parent": "/scenarios.html",
+      "placements": "Parent: [/scenarios.html](https://styermortgage.com/scenarios.html); Contextual Link from /asset-depletion-mortgage-texas.html; retain actual closed/funded/strategy-review status",
+      "content_action": "Keep As-Is",
+      "anchor": "Asset depletion after two bank declines"
+    },
+    {
+      "route": "/scenarios/self-employed-refinance-deposit-review.html",
+      "cluster": "Cluster 5: Case Study & Scenario Library",
+      "topic": "1099 Income, Bank Statements: A Funded Cash-Out Refinance",
+      "role": "Case Study",
+      "primary_parent": "/scenarios.html",
+      "placements": "Parent: [/scenarios.html](https://styermortgage.com/scenarios.html); Contextual Link from /bank-statement-loans.html; retain actual closed/funded/strategy-review status",
+      "content_action": "Keep As-Is",
+      "anchor": "1099 bank-statement cash-out refinance scenario"
+    },
+    {
+      "route": "/scenarios/two-rental-properties-cash-out-review.html",
+      "cluster": "Cluster 5: Case Study & Scenario Library",
+      "topic": "Cash-Out on Two Rentals: Equity Was Only Part of the Answer",
+      "role": "Case Study",
+      "primary_parent": "/scenarios.html",
+      "placements": "Parent: [/scenarios.html](https://styermortgage.com/scenarios.html); Contextual Link from /dscr-cash-out-refinance-texas.html; retain actual closed/funded/strategy-review status",
+      "content_action": "Keep As-Is",
+      "anchor": "Two-rental-property cash-out review"
+    },
+    {
+      "route": "/scenarios/buying-current-rental-gift-funds.html",
+      "cluster": "Cluster 5: Case Study & Scenario Library",
+      "topic": "Buying the Home You Rent: A Better Plan for Gift Funds",
+      "role": "Case Study",
+      "primary_parent": "/scenarios.html",
+      "placements": "Parent: [/scenarios.html](https://styermortgage.com/scenarios.html); Contextual Link from /first-time-home-buyer.html; retain actual closed/funded/strategy-review status",
+      "content_action": "Keep As-Is",
+      "anchor": "Buying your rental home with gift funds"
+    },
+    {
+      "route": "/scenarios/build-on-owned-land-before-selling.html",
+      "cluster": "Cluster 5: Case Study & Scenario Library",
+      "topic": "Building on Land You Own Before Selling Your Current Home",
+      "role": "Case Study",
+      "primary_parent": "/scenarios.html",
+      "placements": "Parent: [/scenarios.html](https://styermortgage.com/scenarios.html); Contextual Link from /loans/construction.html; retain actual closed/funded/strategy-review status",
+      "content_action": "Keep As-Is",
+      "anchor": "Building on owned land before selling"
+    },
+    {
+      "route": "/scenarios/assets-limited-income-history.html",
+      "cluster": "Cluster 5: Case Study & Scenario Library",
+      "topic": "Plenty of Assets, Limited Income History: What to Review Next",
+      "role": "Case Study",
+      "primary_parent": "/scenarios.html",
+      "placements": "Parent: [/scenarios.html](https://styermortgage.com/scenarios.html); Contextual Link from /asset-depletion-mortgage-texas.html; retain actual closed/funded/strategy-review status",
+      "content_action": "Keep As-Is",
+      "anchor": "Asset-rich buyer with limited income history"
+    },
+    {
+      "route": "/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html",
+      "cluster": "Cluster 5: Case Study & Scenario Library",
+      "topic": "No W-2, No Problem: How a Liquidity Event, a Sabbatical, and an Asset Depletion Loan Got a Former CFO to Closing",
+      "role": "Case Study",
+      "primary_parent": "/scenarios.html",
+      "placements": "Parent: [/scenarios.html](https://styermortgage.com/scenarios.html); Contextual Link: HNW, asset depletion and partner cases; Blog archive",
+      "content_action": "Keep As-Is",
+      "anchor": "Former CFO asset-depletion case study"
+    },
+    {
+      "route": "/blog/2026-08-21-veteran-asset-depletion-mortgage-case-study.html",
+      "cluster": "Cluster 5: Case Study & Scenario Library",
+      "topic": "How a Veteran Between Jobs Used Retirement Assets to Qualify for a Mortgage",
+      "role": "Case Study",
+      "primary_parent": "/scenarios.html",
+      "placements": "Parent: [/scenarios.html](https://styermortgage.com/scenarios.html); Contextual Link: HNW, asset depletion and partner cases; Blog archive; preserve preliminary vs final outcome wording",
+      "content_action": "Keep As-Is",
+      "anchor": "Veteran retirement-asset qualification case study"
+    },
+    {
+      "route": "/calculators.html",
+      "cluster": "Cluster 6: Standalone Calculators & Tools",
+      "topic": "Mortgage Calculators",
+      "role": "Hub",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Main Nav: Resources dropdown; Homepage: calculator directory",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgage calculators"
+    },
+    {
+      "route": "/calculator-payment.html",
+      "cluster": "Cluster 6: Standalone Calculators & Tools",
+      "topic": "Payment Calculator",
+      "role": "Tool",
+      "primary_parent": "/calculators.html",
+      "placements": "Parent: [/calculators.html](https://styermortgage.com/calculators.html); Homepage: calculator card; Buy and Refinance hubs",
+      "content_action": "Keep As-Is",
+      "anchor": "Mortgage payment calculator"
+    },
+    {
+      "route": "/calculator-affordability.html",
+      "cluster": "Cluster 6: Standalone Calculators & Tools",
+      "topic": "Affordability Calculator",
+      "role": "Tool",
+      "primary_parent": "/calculators.html",
+      "placements": "Parent: [/calculators.html](https://styermortgage.com/calculators.html); Contextual Link: Buy hub and affordability guide",
+      "content_action": "Keep As-Is",
+      "anchor": "Home affordability calculator"
+    },
+    {
+      "route": "/dscr-calculator.html",
+      "cluster": "Cluster 6: Standalone Calculators & Tools",
+      "topic": "Run the DSCR Math Before You Write the Offer",
+      "role": "Tool",
+      "primary_parent": "/calculators.html",
+      "placements": "Parent: [/calculators.html](https://styermortgage.com/calculators.html); Homepage: calculator card; DSCR and investor hubs",
+      "content_action": "Keep As-Is",
+      "anchor": "DSCR rental property calculator"
+    },
+    {
+      "route": "/asset-depletion-calculator.html",
+      "cluster": "Cluster 6: Standalone Calculators & Tools",
+      "topic": "Turn Assets Into a Mortgage Planning Number",
+      "role": "Tool",
+      "primary_parent": "/calculators.html",
+      "placements": "Parent: [/calculators.html](https://styermortgage.com/calculators.html); Homepage: calculator card; HNW and asset depletion pages",
+      "content_action": "Keep As-Is",
+      "anchor": "Asset depletion income calculator"
+    },
+    {
+      "route": "/calculator-refinance-breakeven.html",
+      "cluster": "Cluster 6: Standalone Calculators & Tools",
+      "topic": "Refinance: Break-Even & Monthly Savings",
+      "role": "Tool",
+      "primary_parent": "/calculators.html",
+      "placements": "Parent: [/calculators.html](https://styermortgage.com/calculators.html); Contextual Link: Refinance hub and refinance decision guide",
+      "content_action": "Keep As-Is",
+      "anchor": "Refinance break-even calculator"
+    },
+    {
+      "route": "/refinance-calculator.html",
+      "cluster": "Cluster 6: Standalone Calculators & Tools",
+      "topic": "Refinance Closing Costs Calculator",
+      "role": "Tool",
+      "primary_parent": "/calculators.html",
+      "placements": "Parent: [/calculators.html](https://styermortgage.com/calculators.html); Contextual Link: Refinance hub and closing-cost guide; robots.txt currently blocks crawling",
+      "content_action": "Keep As-Is",
+      "anchor": "Refinance closing-cost calculator"
+    },
+    {
+      "route": "/rate-buydown-calculator.html",
+      "cluster": "Cluster 6: Standalone Calculators & Tools",
+      "topic": "Temporary Rate Buydown Calculator",
+      "role": "Tool",
+      "primary_parent": "/calculators.html",
+      "placements": "Parent: [/calculators.html](https://styermortgage.com/calculators.html); Contextual Link: Buy hub and concession discussions",
+      "content_action": "Keep As-Is",
+      "anchor": "Temporary rate buydown calculator"
+    },
+    {
+      "route": "/wrap-mortgage-calculator.html",
+      "cluster": "Cluster 6: Standalone Calculators & Tools",
+      "topic": "WRAP Mortgage Calculator",
+      "role": "Tool",
+      "primary_parent": "/calculators.html",
+      "placements": "Parent: [/calculators.html](https://styermortgage.com/calculators.html); Contextual Link: investor hub and seller-financing discussion",
+      "content_action": "Keep As-Is",
+      "anchor": "Wraparound mortgage calculator"
+    },
+    {
+      "route": "/",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Complex mortgage. Clear path forward.",
+      "role": "Hub",
+      "primary_parent": null,
+      "placements": "Main Nav: logo / root homepage; Main Nav: logo; consolidate homepage summaries; retain detailed material on the existing linked URLs",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Styer Mortgage"
+    },
+    {
+      "route": "/products.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Mortgage options for the way you earn, own and move.",
+      "role": "Hub",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Main Nav: Buy dropdown; cross-link from Refinance and Invest",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "All mortgage options"
+    },
+    {
+      "route": "/resources/",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Free Mortgage Resources & Tools",
+      "role": "Hub",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Main Nav: Resources",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgage resources and guides"
+    },
+    {
+      "route": "/blog.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Mortgage Tips & Austin Market Insights",
+      "role": "Hub",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Resource Hub: complete crawlable archive by topic and date",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgage articles and market updates"
+    },
+    {
+      "route": "/about.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Hi, I'm Adam Styer. I close the loans your bank can't.",
+      "role": "Guide",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Homepage: advisory team; footer",
+      "content_action": "Keep As-Is",
+      "anchor": "About Adam and the team"
+    },
+    {
+      "route": "/testimonials.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "What Clients and Partners Say",
+      "role": "Guide",
+      "primary_parent": "/about.html",
+      "placements": "Parent: [/about.html](https://styermortgage.com/about.html); Homepage: trust links; Resource Hub",
+      "content_action": "Keep As-Is",
+      "anchor": "Client and partner reviews"
+    },
+    {
+      "route": "/contact.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Tell me what you\u2019re trying to do.",
+      "role": "Tool",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Homepage: next steps; footer",
+      "content_action": "Keep As-Is",
+      "anchor": "Contact Adam Styer"
+    },
+    {
+      "route": "/scenario.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Tell me what you\u2019re trying to accomplish.",
+      "role": "Tool",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Homepage: hero and final CTA; contextual CTA on every specialty page",
+      "content_action": "Keep As-Is",
+      "anchor": "Review my mortgage scenario"
+    },
+    {
+      "route": "/get-preapproved.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Tell me what you\u2019re working toward.",
+      "role": "Tool",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Contextual Link: qualification and document guides; preserve form route",
+      "content_action": "Keep As-Is",
+      "anchor": "Request a mortgage pre-approval review"
+    },
+    {
+      "route": "/prequal.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Get Pre-Qualified",
+      "role": "Tool",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Contextual Link: pre-approval guide; retain distinction from verified pre-approval",
+      "content_action": "Keep As-Is",
+      "anchor": "Mortgage pre-qualification"
+    },
+    {
+      "route": "/refinance-quote.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Refinance or use your home equity.",
+      "role": "Tool",
+      "primary_parent": "/loans/refinance.html",
+      "placements": "Parent: [/loans/refinance.html](https://styermortgage.com/loans/refinance.html); Contextual Link: refinance and equity guides",
+      "content_action": "Keep As-Is",
+      "anchor": "Review my refinance scenario"
+    },
+    {
+      "route": "/rate-check.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "You're Under Contract. Before You Lock \u2014 Get a Second Opinion.",
+      "role": "Tool",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Main Nav: Resources dropdown; context from comparison guides",
+      "content_action": "Keep As-Is",
+      "anchor": "Compare my mortgage offer"
+    },
+    {
+      "route": "/rate-alert.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Rate Watch: Know When Austin Mortgage Rates Drop",
+      "role": "Tool",
+      "primary_parent": "/austin-mortgage-rates.html",
+      "placements": "Parent: [/austin-mortgage-rates.html](https://styermortgage.com/austin-mortgage-rates.html); Resource Hub; Refinance hub",
+      "content_action": "Keep As-Is",
+      "anchor": "Mortgage rate alerts"
+    },
+    {
+      "route": "/austin-mortgage-rates.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Austin Mortgage Rates Today",
+      "role": "Guide",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Contextual Link: rate comparison and local service pages",
+      "content_action": "Keep As-Is",
+      "anchor": "Austin mortgage rates"
+    },
+    {
+      "route": "/austin-housing-market.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Austin Housing Market: July 2026 Data & Buyer Guide",
+      "role": "Guide",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Contextual Link: local service hub; dated market archive",
+      "content_action": "Keep As-Is",
+      "anchor": "Austin housing market"
+    },
+    {
+      "route": "/how-to-buy-a-house-in-austin-tx.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "How to Buy a House in Austin TX",
+      "role": "Guide",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Resource Hub",
+      "content_action": "Keep As-Is",
+      "anchor": "How to buy a house in Austin"
+    },
+    {
+      "route": "/mortgage-pre-approval-austin.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Mortgage Pre-Approval in Austin, TX",
+      "role": "Guide",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Resource Hub; distinguish educational guide from intake endpoint",
+      "content_action": "Keep As-Is",
+      "anchor": "Mortgage pre-approval in Austin"
+    },
+    {
+      "route": "/how-much-house-can-i-afford-austin.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "How Much House Can I Afford in Austin, TX?",
+      "role": "Guide",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Resource Hub; affordability calculator",
+      "content_action": "Keep As-Is",
+      "anchor": "How much house can I afford in Austin?"
+    },
+    {
+      "route": "/austin-down-payment-assistance.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Austin TX Down Payment Assistance Programs (2026)",
+      "role": "Guide",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Resource Hub; FHA, VA and conventional pages",
+      "content_action": "Keep As-Is",
+      "anchor": "Austin down payment assistance programs"
+    },
+    {
+      "route": "/closing-costs-texas.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Texas Closing Costs: What Buyers Actually Pay",
+      "role": "Guide",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Contextual Link: Buy and Refinance hubs",
+      "content_action": "Keep As-Is",
+      "anchor": "Texas closing costs explained"
+    },
+    {
+      "route": "/fixed-vs-adjustable.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Fixed vs. Adjustable Rate Mortgages",
+      "role": "Guide",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Contextual Link: conventional and jumbo pages",
+      "content_action": "Keep As-Is",
+      "anchor": "Fixed vs adjustable-rate mortgages"
+    },
+    {
+      "route": "/improve-credit-score.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "How to Improve Your Credit Score for a Mortgage",
+      "role": "Guide",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Contextual Link: Buy hub; qualification pages",
+      "content_action": "Keep As-Is",
+      "anchor": "Improve your credit score for a mortgage"
+    },
+    {
+      "route": "/mortgage-broker-vs-bank.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Mortgage Broker vs. Bank: Which Is Right for You?",
+      "role": "Guide",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Contextual Link: rate-check page; About Adam",
+      "content_action": "Keep As-Is",
+      "anchor": "Mortgage broker vs bank"
+    },
+    {
+      "route": "/mortgage-glossary.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Mortgage Glossary \u2014 30+ Terms Explained in Plain English",
+      "role": "Guide",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Contextual Link: term-specific anchors from guides",
+      "content_action": "Keep As-Is",
+      "anchor": "Mortgage terms explained"
+    },
+    {
+      "route": "/ftb-dpa-guide.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Austin First-Time Buyers: You May Qualify for Up to $25,000 in Down Payment Help",
+      "role": "Guide",
+      "primary_parent": "/austin-down-payment-assistance.html",
+      "placements": "Parent: [/austin-down-payment-assistance.html](https://styermortgage.com/austin-down-payment-assistance.html); Contextual Link: buyer guide; preserve current noindex pending review",
+      "content_action": "Keep As-Is",
+      "anchor": "First-time-buyer down payment help"
+    },
+    {
+      "route": "/resources/first-time-buyer-guide/",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "The First-Time Homebuyer Guide",
+      "role": "Guide",
+      "primary_parent": "/first-time-home-buyer.html",
+      "placements": "Parent: [/first-time-home-buyer.html](https://styermortgage.com/first-time-home-buyer.html); Resource Hub; preserve any guide delivery and signup workflow",
+      "content_action": "Keep As-Is",
+      "anchor": "First-time homebuyer guide"
+    },
+    {
+      "route": "/blog/2026-10-01-why-mortgage-rates-are-rising.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Why Are Mortgage Rates Rising\u2014and What Would Make Them Fall?",
+      "role": "Guide",
+      "primary_parent": "/austin-mortgage-rates.html",
+      "placements": "Parent: [/austin-mortgage-rates.html](https://styermortgage.com/austin-mortgage-rates.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Why mortgage rates are rising"
+    },
+    {
+      "route": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "When You Can't Control It, Surrender It",
+      "role": "Guide",
+      "primary_parent": "/blog.html",
+      "placements": "Parent: [/blog.html](https://styermortgage.com/blog.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "When you can\u2019t control it, surrender it"
+    },
+    {
+      "route": "/blog/2026-03-18-the-ai-trap-i-walked-right-into.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "The AI Trap I Walked Right Into",
+      "role": "Guide",
+      "primary_parent": "/blog.html",
+      "placements": "Parent: [/blog.html](https://styermortgage.com/blog.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "The AI trap I walked right into"
+    },
+    {
+      "route": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Oil Prices, Jobs Report & Rate Volatility",
+      "role": "Guide",
+      "primary_parent": "/austin-mortgage-rates.html",
+      "placements": "Parent: [/austin-mortgage-rates.html](https://styermortgage.com/austin-mortgage-rates.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Oil prices, jobs and mortgage rate volatility"
+    },
+    {
+      "route": "/blog/2026-06-15-mortgage-rates-inflation-iran-peace-deal.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Mortgage Rates, Inflation, and the Iran Peace Deal: What Homebuyers Need to Know",
+      "role": "Guide",
+      "primary_parent": "/austin-mortgage-rates.html",
+      "placements": "Parent: [/austin-mortgage-rates.html](https://styermortgage.com/austin-mortgage-rates.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Mortgage rates and inflation: June 2026"
+    },
+    {
+      "route": "/blog/2026-04-27-why-home-prices-arent-crashing.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Why Home Prices Aren't Crashing",
+      "role": "Guide",
+      "primary_parent": "/austin-housing-market.html",
+      "placements": "Parent: [/austin-housing-market.html](https://styermortgage.com/austin-housing-market.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Why home prices aren\u2019t crashing"
+    },
+    {
+      "route": "/blog/can-i-switch-lenders-after-going-under-contract-texas.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Can I Switch Lenders After Going Under Contract in Texas?",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Switching mortgage lenders under contract"
+    },
+    {
+      "route": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Rates Improved Today \u2014 But Not for the Reasons You Think",
+      "role": "Guide",
+      "primary_parent": "/austin-mortgage-rates.html",
+      "placements": "Parent: [/austin-mortgage-rates.html](https://styermortgage.com/austin-mortgage-rates.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Why mortgage rates improved: March 30, 2026"
+    },
+    {
+      "route": "/blog/2026-04-01-spring-market-update.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Spring Market Update: Austin Mortgage Rates & Inventory",
+      "role": "Guide",
+      "primary_parent": "/austin-housing-market.html",
+      "placements": "Parent: [/austin-housing-market.html](https://styermortgage.com/austin-housing-market.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Austin spring housing market update"
+    },
+    {
+      "route": "/blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "How to Choose a Mortgage Lender in Austin TX",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "How to choose a mortgage lender in Austin"
+    },
+    {
+      "route": "/blog/how-to-compare-two-mortgage-offers.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "How to Compare Two Mortgage Offers Side by Side",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "How to compare two mortgage offers"
+    },
+    {
+      "route": "/blog/2026-04-06-mortgage-document-checklist-austin-tx.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Mortgage Document Checklist Austin TX 2026",
+      "role": "Guide",
+      "primary_parent": "/mortgage-pre-approval-austin.html",
+      "placements": "Parent: [/mortgage-pre-approval-austin.html](https://styermortgage.com/mortgage-pre-approval-austin.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Mortgage document checklist by income type"
+    },
+    {
+      "route": "/blog/apr-vs-interest-rate-what-actually-matters.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "APR vs Interest Rate \u2014 What Actually Matters?",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "APR vs interest rate"
+    },
+    {
+      "route": "/blog/are-mortgage-lender-fees-negotiable.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Are Mortgage Lender Fees Negotiable?",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Are mortgage lender fees negotiable?"
+    },
+    {
+      "route": "/blog/is-the-lowest-rate-the-cheapest-loan.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Is the Lowest Rate the Cheapest Loan?",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Is the lowest rate the cheapest loan?"
+    },
+    {
+      "route": "/blog/how-many-mortgage-quotes-should-i-get.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "How Many Mortgage Quotes Should You Get?",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "How many mortgage quotes should I get?"
+    },
+    {
+      "route": "/blog/how-to-read-a-loan-estimate.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "How to Read a Loan Estimate \u2014 The 5 Numbers That Actually Matter",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "How to read a Loan Estimate"
+    },
+    {
+      "route": "/blog/local-lender-vs-online-lender-austin-central-texas.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Local Lender vs Online Lender \u2014 Which Is Better for Central Texas Buyers?",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Local lender vs online lender"
+    },
+    {
+      "route": "/blog/what-delays-closing-when-you-switch-lenders.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "What Delays Closing When You Switch Lenders?",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "What delays closing when switching lenders?"
+    },
+    {
+      "route": "/blog/what-to-compare-besides-mortgage-rate.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "What to Compare Besides Your Mortgage Rate",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "What to compare besides mortgage rate"
+    },
+    {
+      "route": "/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "The Conversation Behind \u201cI Want a Lower Rate\u201d",
+      "role": "Guide",
+      "primary_parent": "/rate-check.html",
+      "placements": "Parent: [/rate-check.html](https://styermortgage.com/rate-check.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "The financing goal behind a lower rate"
+    },
+    {
+      "route": "/blog/2026-03-20-austin-mortgage-rates-march-2026.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Austin Mortgage Rates \u2014 March 2026 Update",
+      "role": "Guide",
+      "primary_parent": "/austin-mortgage-rates.html",
+      "placements": "Parent: [/austin-mortgage-rates.html](https://styermortgage.com/austin-mortgage-rates.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Austin mortgage rates: March 2026 archive"
+    },
+    {
+      "route": "/blog/2026-08-10-austin-housing-market-report-august-2026.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Austin Housing Market Report \u2014 August 2026",
+      "role": "Guide",
+      "primary_parent": "/austin-housing-market.html",
+      "placements": "Parent: [/austin-housing-market.html](https://styermortgage.com/austin-housing-market.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Austin housing market report: August 2026"
+    },
+    {
+      "route": "/blog/2026-04-04-austin-housing-market-report-april-2026.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Austin Housing Market Report \u2014 April 2026",
+      "role": "Guide",
+      "primary_parent": "/austin-housing-market.html",
+      "placements": "Parent: [/austin-housing-market.html](https://styermortgage.com/austin-housing-market.html); Resource Hub: /blog.html archive; Contextual Link from parent; retain complete article and original date",
+      "content_action": "Keep As-Is",
+      "anchor": "Austin housing market report: April 2026"
+    },
+    {
+      "route": "/resources/blog/2026-03-04-wait-for-rates.html",
+      "cluster": "Additional Coverage A: Site Hubs, Guides, Articles & Conversion Routes",
+      "topic": "Should You Wait for Rates to Drop Before You Sell and Buy?",
+      "role": "Guide",
+      "primary_parent": "/buy-before-you-sell-austin.html",
+      "placements": "Parent: [/buy-before-you-sell-austin.html](https://styermortgage.com/buy-before-you-sell-austin.html); Resource Hub: Blog archive; Contextual Link: partner pages; keep original dated edition",
+      "content_action": "Keep As-Is",
+      "anchor": "Should you wait for mortgage rates before moving?"
+    },
+    {
+      "route": "/austin-area-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Austin Area Mortgage Lender \u2014 24 Cities Served",
+      "role": "Hub",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Footer: service areas; Resource Hub",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Austin and Central Texas mortgage service areas"
+    },
+    {
+      "route": "/pflugerville-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender in Pflugerville, TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Pflugerville mortgage options"
+    },
+    {
+      "route": "/leander-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender in Leander, TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Leander mortgage options"
+    },
+    {
+      "route": "/georgetown-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender in Georgetown, TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Georgetown mortgage options"
+    },
+    {
+      "route": "/round-rock-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender Round Rock TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Round Rock mortgage options"
+    },
+    {
+      "route": "/cedar-park-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender Cedar Park TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Cedar Park mortgage options"
+    },
+    {
+      "route": "/liberty-hill-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender Liberty Hill TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Liberty Hill mortgage options"
+    },
+    {
+      "route": "/kyle-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender Kyle TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Kyle mortgage options"
+    },
+    {
+      "route": "/bastrop-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender Bastrop TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Bastrop mortgage options"
+    },
+    {
+      "route": "/san-marcos-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender San Marcos TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "San Marcos mortgage options"
+    },
+    {
+      "route": "/buda-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender in Buda, TX \u2014 Garlic Creek, Sunfield & Beyond",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Buda mortgage options"
+    },
+    {
+      "route": "/bee-cave-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender Bee Cave TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Bee Cave mortgage options"
+    },
+    {
+      "route": "/hutto-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Hutto Mortgage Lender for Home Buyers",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Hutto mortgage options"
+    },
+    {
+      "route": "/westlake-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Jumbo & Luxury Mortgage Lender in Westlake Hills, TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Westlake Hills mortgage options"
+    },
+    {
+      "route": "/new-braunfels-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "New Braunfels and Comal County Mortgage Broker",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "New Braunfels mortgage options"
+    },
+    {
+      "route": "/lakeway-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender Lakeway TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Lakeway mortgage options"
+    },
+    {
+      "route": "/manor-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Manor TX Mortgage Broker & Home Loan Guide",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Manor mortgage options"
+    },
+    {
+      "route": "/dripping-springs-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender Dripping Springs TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Dripping Springs mortgage options"
+    },
+    {
+      "route": "/smithville-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender in Smithville, TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Smithville mortgage options"
+    },
+    {
+      "route": "/jarrell-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender in Jarrell, TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Jarrell mortgage options"
+    },
+    {
+      "route": "/florence-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender in Florence, TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Florence mortgage options"
+    },
+    {
+      "route": "/spicewood-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender in Spicewood, TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Spicewood mortgage options"
+    },
+    {
+      "route": "/elgin-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender in Elgin, TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Elgin mortgage options"
+    },
+    {
+      "route": "/marble-falls-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender in Marble Falls, TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Marble Falls mortgage options"
+    },
+    {
+      "route": "/taylor-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Mortgage Lender Taylor TX",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Taylor mortgage options"
+    },
+    {
+      "route": "/dallas-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Dallas home loans. A clearer plan for complex income.",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples; statewide service links from /contact.html as well",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Dallas mortgage options"
+    },
+    {
+      "route": "/san-antonio-mortgage-lender.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "San Antonio home loans. Built around your next move.",
+      "role": "Guide",
+      "primary_parent": "/austin-area-mortgage-lender.html",
+      "placements": "Parent: [/austin-area-mortgage-lender.html](https://styermortgage.com/austin-area-mortgage-lender.html); Resource Hub: service-area directory; Contextual Link: relevant programs; preserve city-specific taxes, neighborhoods and examples; statewide service links from /contact.html as well",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "San Antonio mortgage options"
+    },
+    {
+      "route": "/rate-check-round-rock.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Buying in Round Rock or Pflugerville? Get a Second Opinion Before You Lock.",
+      "role": "Tool",
+      "primary_parent": "/round-rock-mortgage-lender.html",
+      "placements": "Parent: [/round-rock-mortgage-lender.html](https://styermortgage.com/round-rock-mortgage-lender.html); Contextual Link: /rate-check.html local-review directory; preserve local copy and intake route",
+      "content_action": "Keep As-Is",
+      "anchor": "Compare a mortgage offer in Round Rock and Pflugerville"
+    },
+    {
+      "route": "/rate-check-cedar-park.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Cedar Park or Leander Buyer? Compare Your Rate Before You Commit.",
+      "role": "Tool",
+      "primary_parent": "/cedar-park-mortgage-lender.html",
+      "placements": "Parent: [/cedar-park-mortgage-lender.html](https://styermortgage.com/cedar-park-mortgage-lender.html); Contextual Link: /rate-check.html local-review directory; preserve local copy and intake route",
+      "content_action": "Keep As-Is",
+      "anchor": "Compare a mortgage offer in Cedar Park and Leander"
+    },
+    {
+      "route": "/rate-check-georgetown.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Georgetown or Hutto Buyer? Don't Lock Your Rate Without a Second Look.",
+      "role": "Tool",
+      "primary_parent": "/georgetown-mortgage-lender.html",
+      "placements": "Parent: [/georgetown-mortgage-lender.html](https://styermortgage.com/georgetown-mortgage-lender.html); Contextual Link: /rate-check.html local-review directory; preserve local copy and intake route",
+      "content_action": "Keep As-Is",
+      "anchor": "Compare a mortgage offer in Georgetown and Hutto"
+    },
+    {
+      "route": "/rate-check-buda-kyle.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Buying South of Austin? Get a Second Opinion on Your Mortgage Rate.",
+      "role": "Tool",
+      "primary_parent": "/buda-mortgage-lender.html",
+      "placements": "Parent: [/buda-mortgage-lender.html](https://styermortgage.com/buda-mortgage-lender.html); Contextual Link: /rate-check.html local-review directory; preserve local copy and intake route",
+      "content_action": "Keep As-Is",
+      "anchor": "Compare a mortgage offer in Buda, Kyle and San Marcos"
+    },
+    {
+      "route": "/rate-check-new-braunfels.html",
+      "cluster": "Additional Coverage B: Local Service Pages & Local Offer Reviews",
+      "topic": "Buying in New Braunfels? Compare Your Rate Before You Lock.",
+      "role": "Tool",
+      "primary_parent": "/new-braunfels-mortgage-lender.html",
+      "placements": "Parent: [/new-braunfels-mortgage-lender.html](https://styermortgage.com/new-braunfels-mortgage-lender.html); Contextual Link: /rate-check.html local-review directory; preserve local copy and intake route",
+      "content_action": "Keep As-Is",
+      "anchor": "Compare a mortgage offer in New Braunfels"
+    },
+    {
+      "route": "/referral-partners-self-employed-clients.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "A Clear Mortgage Path for the Client Who Does Not Fit the Standard Box",
+      "role": "Hub",
+      "primary_parent": "/resources/",
+      "placements": "Parent: [/resources/](https://styermortgage.com/resources/); Footer: Partners; Resource Hub",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgage resources for professional partners"
+    },
+    {
+      "route": "/realtors.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "Give Your Complex Buyers a Clear Path Forward",
+      "role": "Hub",
+      "primary_parent": "/referral-partners-self-employed-clients.html",
+      "placements": "Parent: [/referral-partners-self-employed-clients.html](https://styermortgage.com/referral-partners-self-employed-clients.html)",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgage resources for Realtors"
+    },
+    {
+      "route": "/mortgage-resources-for-cpas-texas.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "When the Tax Return Does Not Tell the Whole Lending Story",
+      "role": "Spoke",
+      "primary_parent": "/referral-partners-self-employed-clients.html",
+      "placements": "Parent: [/referral-partners-self-employed-clients.html](https://styermortgage.com/referral-partners-self-employed-clients.html)",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgage resources for Texas CPAs"
+    },
+    {
+      "route": "/mortgage-strategies-financial-advisors-texas.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "Mortgage Strategy That Works With the Financial Plan",
+      "role": "Spoke",
+      "primary_parent": "/referral-partners-self-employed-clients.html",
+      "placements": "Parent: [/referral-partners-self-employed-clients.html](https://styermortgage.com/referral-partners-self-employed-clients.html); Contextual Link: HNW hub",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgage strategies for financial advisors"
+    },
+    {
+      "route": "/mortgage-case-studies-for-advisors-cpas.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "Mortgage Case Studies for Advisors and CPAs",
+      "role": "Hub",
+      "primary_parent": "/referral-partners-self-employed-clients.html",
+      "placements": "Parent: [/referral-partners-self-employed-clients.html](https://styermortgage.com/referral-partners-self-employed-clients.html); Contextual Link: advisor, CPA and Realtor pages; retain five case summaries",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Mortgage case studies for advisors and CPAs"
+    },
+    {
+      "route": "/reverse-mortgage-financial-advisors-texas.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "Put Home Equity Into the Retirement Planning Conversation",
+      "role": "Guide",
+      "primary_parent": "/mortgage-strategies-financial-advisors-texas.html",
+      "placements": "Parent: [/mortgage-strategies-financial-advisors-texas.html](https://styermortgage.com/mortgage-strategies-financial-advisors-texas.html); Contextual Link: reverse-mortgage product page",
+      "content_action": "Keep As-Is",
+      "anchor": "Reverse mortgage planning for financial advisors"
+    },
+    {
+      "route": "/realtor-resources.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "Resources for Austin Realtors",
+      "role": "Hub",
+      "primary_parent": "/realtors.html",
+      "placements": "Parent: [/realtors.html](https://styermortgage.com/realtors.html); Resource Hub: complete Realtor-update archive",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Realtor tools and market updates"
+    },
+    {
+      "route": "/resources/blog/2026-03-04-wait-for-rates-realtor.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "The \"Wait for Rates\" Objection \u2014 Here\u2019s How to Handle It",
+      "role": "Guide",
+      "primary_parent": "/realtor-resources.html",
+      "placements": "Parent: [/realtor-resources.html](https://styermortgage.com/realtor-resources.html); Resource Hub: Blog archive; Contextual Link: partner pages; keep original dated edition",
+      "content_action": "Keep As-Is",
+      "anchor": "Helping buyers with the wait-for-rates objection"
+    },
+    {
+      "route": "/realtor-updates/2026-06-08-when-other-lenders-say-no.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "When Other Lenders Say No, That's Usually When I Get Interested",
+      "role": "Guide",
+      "primary_parent": "/realtor-resources.html",
+      "placements": "Parent: [/realtor-resources.html](https://styermortgage.com/realtor-resources.html); Resource Hub: Blog archive; Contextual Link: partner pages; keep original dated edition",
+      "content_action": "Keep As-Is",
+      "anchor": "Mortgage options when other lenders say no"
+    },
+    {
+      "route": "/realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "AI Tools & Rate Cuts Below 6% for Austin Realtors",
+      "role": "Guide",
+      "primary_parent": "/realtor-resources.html",
+      "placements": "Parent: [/realtor-resources.html](https://styermortgage.com/realtor-resources.html); Resource Hub: Blog archive; Contextual Link: partner pages; keep original dated edition",
+      "content_action": "Keep As-Is",
+      "anchor": "AI tools and mortgage rate update: February 2026"
+    },
+    {
+      "route": "/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "When Strong Buyers Don't Fit Conventional: 6 Scenarios and the Loans That Solve Them",
+      "role": "Guide",
+      "primary_parent": "/realtor-resources.html",
+      "placements": "Parent: [/realtor-resources.html](https://styermortgage.com/realtor-resources.html); Resource Hub: Blog archive; Contextual Link: partner pages; keep original dated edition",
+      "content_action": "Keep As-Is",
+      "anchor": "Six financing scenarios for nontraditional buyers"
+    },
+    {
+      "route": "/realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers.html",
+      "cluster": "Additional Coverage C: Professional Partners & Realtor Updates",
+      "topic": "The Crash That Isn't Coming \u2014 Data for Your Buyers",
+      "role": "Guide",
+      "primary_parent": "/realtor-resources.html",
+      "placements": "Parent: [/realtor-resources.html](https://styermortgage.com/realtor-resources.html); Resource Hub: Blog archive; Contextual Link: partner pages; keep original dated edition",
+      "content_action": "Keep As-Is",
+      "anchor": "Housing market data for buyer conversations"
+    },
+    {
+      "route": "/privacy.html",
+      "cluster": "Additional Coverage D: Legal Pages, Legacy Routes & Aliases",
+      "topic": "Privacy Policy",
+      "role": "Guide",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Footer: persistent legal link; preserve URL; update approved entity details when affiliation changes",
+      "content_action": "Keep As-Is",
+      "anchor": "Privacy policy"
+    },
+    {
+      "route": "/terms.html",
+      "cluster": "Additional Coverage D: Legal Pages, Legacy Routes & Aliases",
+      "topic": "Terms & Conditions",
+      "role": "Guide",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Footer: persistent legal link; preserve URL; update approved entity details when affiliation changes",
+      "content_action": "Keep As-Is",
+      "anchor": "Terms and conditions"
+    },
+    {
+      "route": "/texas-complaint-notice.html",
+      "cluster": "Additional Coverage D: Legal Pages, Legacy Routes & Aliases",
+      "topic": "Texas Consumer Complaint and Recovery Fund Notice",
+      "role": "Guide",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Footer: persistent legal link; preserve URL; update approved entity details when affiliation changes",
+      "content_action": "Keep As-Is",
+      "anchor": "Texas consumer complaint notice"
+    },
+    {
+      "route": "/index.html",
+      "cluster": "Additional Coverage D: Legal Pages, Legacy Routes & Aliases",
+      "topic": "Legacy homepage alias; canonical points to /",
+      "role": "Hub",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Alias: retain working legacy route and canonical to /; use / for all new links",
+      "content_action": "Streamline Overview & Retain Full Depth",
+      "anchor": "Styer Mortgage home"
+    },
+    {
+      "route": "/apply-now/",
+      "cluster": "Additional Coverage D: Legal Pages, Legacy Routes & Aliases",
+      "topic": "Existing full-application redirect to external lender platform",
+      "role": "Tool",
+      "primary_parent": "/",
+      "placements": "Parent: [/](https://styermortgage.com/); Main Nav: Apply Online; existing external redirect route; verify approved destination before changing",
+      "content_action": "Keep As-Is",
+      "anchor": "Start full mortgage application"
+    },
+    {
+      "route": "/blog/2026-06-14-buy-before-you-sell-austin-tx",
+      "cluster": "Additional Coverage D: Legal Pages, Legacy Routes & Aliases",
+      "topic": "How to Buy Your Next Home Before Selling Your Current One",
+      "role": "Guide",
+      "primary_parent": "/buy-before-you-sell-austin.html",
+      "placements": "Parent: [/buy-before-you-sell-austin.html](https://styermortgage.com/buy-before-you-sell-austin.html); Search-discovered extensionless alias; preserve route; use .html canonical link in parent",
+      "content_action": "Keep As-Is",
+      "anchor": "How to buy before selling your current home"
+    }
+  ]
+}

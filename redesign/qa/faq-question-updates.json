@@ -1,0 +1,290 @@
+[
+  {
+    "file": "smithville-mortgage-lender.html",
+    "before": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Smithville TX qualify for USDA loans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most of Smithville sits inside USDA's rural eligibility map, but I don't originate USDA loans. For most buyers here the same ground is covered by FHA 3.5% down, conventional from 3% down, VA zero down, or Texas down payment assistance — often with more property flexibility. Send me the scenario and I'll show you the real numbers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are average home prices in Smithville TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Smithville home prices typically range from $200,000 to $380,000. Downtown Smithville offers charming older homes with character, while newer subdivisions like Smithville Estates provide modern floor plans. Properties with acreage are common throughout the area and can range higher depending on land size. Compared to Austin, Round Rock, or Cedar Park, Smithville offers significantly more house for the money."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I finance acreage in Smithville TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — acreage properties are one of Smithville's biggest draws. Conventional loans typically allow up to 10 acres with a primary residence, and properties with more land may need specialized lenders. I work with investors experienced in rural Texas properties, including homes on well water and septic systems. The key is matching the right lender to the property."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Smithville compare to Bastrop for homebuyers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Smithville sits about 15 minutes southeast of Bastrop on SH-71 and offers a quieter, more affordable alternative. Bastrop has more retail, restaurants, and commercial development. Smithville has true small-town character — a historic downtown, arts community, and Colorado River access at lower price points. Both towns share Bastrop County's lower property tax rates compared to Travis County."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What first-time buyer programs are available in Smithville TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Smithville buyers can access TSAHC and TDHCA down payment assistance programs offering 3-5% toward down payment or closing costs. These layer on top of FHA (3.5% down) or conventional (3% down) loans, and eligible veterans can buy with zero down through VA. Income limits apply, but at Smithville's price points, many buyers qualify. I'll run every option and show you which combination costs the least."
+          }
+        }
+      ]
+    },
+    "after": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Smithville TX qualify for USDA loans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most of Smithville sits inside USDA's rural eligibility map, but I don't originate USDA loans. For most buyers here the same ground is covered by FHA 3.5% down, conventional from 3% down, VA zero down, or Texas down payment assistance — often with more property flexibility. Send me the scenario and I'll show you the real numbers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are average home prices in Smithville TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Smithville home prices typically range from $200,000 to $380,000. Downtown Smithville offers charming older homes with character, while newer subdivisions like Smithville Estates provide modern floor plans. Properties with acreage are common throughout the area and can range higher depending on land size. Compared to Austin, Round Rock, or Cedar Park, Smithville offers significantly more house for the money."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I finance a home with acreage in Smithville?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — acreage properties are one of Smithville's biggest draws. Conventional loans typically allow up to 10 acres with a primary residence, and properties with more land may need specialized lenders. I work with investors experienced in rural Texas properties, including homes on well water and septic systems. The key is matching the right lender to the property."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Smithville compare to Bastrop for homebuyers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Smithville sits about 15 minutes southeast of Bastrop on SH-71 and offers a quieter, more affordable alternative. Bastrop has more retail, restaurants, and commercial development. Smithville has true small-town character — a historic downtown, arts community, and Colorado River access at lower price points. Both towns share Bastrop County's lower property tax rates compared to Travis County."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What first-time buyer programs are available in Smithville TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Smithville buyers can access TSAHC and TDHCA down payment assistance programs offering 3-5% toward down payment or closing costs. These layer on top of FHA (3.5% down) or conventional (3% down) loans, and eligible veterans can buy with zero down through VA. Income limits apply, but at Smithville's price points, many buyers qualify. I'll run every option and show you which combination costs the least."
+          }
+        }
+      ]
+    },
+    "reason": "Align the FAQ question name with its exact existing visible heading; answer and body unchanged. Original complete schema is retained in faq-original-schema-archive.json."
+  },
+  {
+    "file": "jarrell-mortgage-lender.html",
+    "before": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are average home prices in Jarrell TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jarrell home prices typically range from $270,000 to $420,000, making it one of the most affordable communities in Williamson County. Master-planned neighborhoods like Sonterra, Carmel Creek, and Bryson offer new construction from national builders at price points well below Georgetown or Round Rock. For buyers who want Williamson County without the premium price tag, Jarrell delivers serious value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do homes in Jarrell TX qualify for USDA loans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Parts of Jarrell meet USDA's rural eligibility map, though that footprint shrinks as the area grows — and I don't originate USDA loans. For most Jarrell buyers the same ground is covered by FHA 3.5% down, conventional from 3% down, VA zero down, or Texas down payment assistance. Send me the scenario and I'll show you the real numbers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does financing work for new construction in Jarrell TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "New construction in Jarrell follows the same loan process as resale, with some key differences. You can lock a rate with a builder float-down option, and the appraisal is based on plans and specs rather than an existing home. Builder lenders often offer incentives like closing cost credits to use their preferred lender, but those rates are not always the best deal once you compare apples to apples. I run a side-by-side comparison so you can see the real numbers before committing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Jarrell compare to Georgetown for homebuyers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jarrell offers significantly lower entry prices than Georgetown — often $50,000 to $100,000 less for comparable square footage and new construction. Both are in Williamson County, but Jarrell is served by Jarrell ISD rather than Georgetown ISD. Jarrell is about 10 minutes north of Georgetown on I-35 and is growing rapidly as buyers seek affordability without leaving the corridor. If your budget is tight but you want new construction in Williamson County, Jarrell deserves a hard look."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What first-time buyer programs are available in Jarrell TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jarrell buyers have access to TSAHC (Texas State Affordable Housing Corporation) and TDHCA (Texas Department of Housing and Community Affairs) down payment assistance programs. These can provide 3-5% toward your down payment or closing costs as a grant or forgivable loan. Combined with FHA financing at 3.5% down, many first-time Jarrell buyers get into a home with very little cash out of pocket. I run the eligibility check as part of every pre-approval."
+          }
+        }
+      ]
+    },
+    "after": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are average home prices in Jarrell TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jarrell home prices typically range from $270,000 to $420,000, making it one of the most affordable communities in Williamson County. Master-planned neighborhoods like Sonterra, Carmel Creek, and Bryson offer new construction from national builders at price points well below Georgetown or Round Rock. For buyers who want Williamson County without the premium price tag, Jarrell delivers serious value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do homes in Jarrell TX qualify for USDA loans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Parts of Jarrell meet USDA's rural eligibility map, though that footprint shrinks as the area grows — and I don't originate USDA loans. For most Jarrell buyers the same ground is covered by FHA 3.5% down, conventional from 3% down, VA zero down, or Texas down payment assistance. Send me the scenario and I'll show you the real numbers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does financing work for new construction in Jarrell?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "New construction in Jarrell follows the same loan process as resale, with some key differences. You can lock a rate with a builder float-down option, and the appraisal is based on plans and specs rather than an existing home. Builder lenders often offer incentives like closing cost credits to use their preferred lender, but those rates are not always the best deal once you compare apples to apples. I run a side-by-side comparison so you can see the real numbers before committing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Jarrell compare to Georgetown for homebuyers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jarrell offers significantly lower entry prices than Georgetown — often $50,000 to $100,000 less for comparable square footage and new construction. Both are in Williamson County, but Jarrell is served by Jarrell ISD rather than Georgetown ISD. Jarrell is about 10 minutes north of Georgetown on I-35 and is growing rapidly as buyers seek affordability without leaving the corridor. If your budget is tight but you want new construction in Williamson County, Jarrell deserves a hard look."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What first-time buyer programs are available in Jarrell TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jarrell buyers have access to TSAHC (Texas State Affordable Housing Corporation) and TDHCA (Texas Department of Housing and Community Affairs) down payment assistance programs. These can provide 3-5% toward your down payment or closing costs as a grant or forgivable loan. Combined with FHA financing at 3.5% down, many first-time Jarrell buyers get into a home with very little cash out of pocket. I run the eligibility check as part of every pre-approval."
+          }
+        }
+      ]
+    },
+    "reason": "Align the FAQ question name with its exact existing visible heading; answer and body unchanged. Original complete schema is retained in faq-original-schema-archive.json."
+  },
+  {
+    "file": "elgin-mortgage-lender.html",
+    "before": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Elgin TX qualify for USDA loans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Parts of Elgin fall inside USDA's rural eligibility map, but I don't originate USDA loans. For most Elgin buyers the same ground is covered by FHA 3.5% down, conventional from 3% down, VA zero down, or Texas down payment assistance — often with more property flexibility. Send me the scenario and I'll show you the real numbers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are average home prices in Elgin TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Elgin home prices typically range from $230,000 to $400,000. Old Town Elgin offers established homes with historic character. Heritage Park and Elgin Crossing provide newer construction with modern floor plans. Properties with acreage are available on the outskirts. Compared to closer-in Austin suburbs like Pflugerville or Manor, Elgin delivers more house and more land for the money."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What first-time buyer down payment assistance programs are available in Elgin TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TSAHC and TDHCA offer 3-5% in down payment or closing cost assistance for qualifying Texas buyers. These programs layer on top of FHA (3.5% down) or conventional (3% down) loans, so many Elgin first-time buyers can purchase with minimal cash out of pocket. Income limits apply, but at Elgin's price points, many buyers qualify. I run every eligible program and show you which combination produces the lowest total cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Elgin compare to Manor for homebuyers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Elgin is about 10 minutes east of Manor on US-290. Manor has grown rapidly as an Austin bedroom community with more suburban master-planned neighborhoods and higher price points. Elgin offers a more authentic small-town feel — historic downtown, the famous sausage industry, and a tighter community identity — at generally lower prices. Both communities benefit from Samsung's nearby Taylor facility and 290-corridor growth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there new construction options in Elgin TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — Elgin has active new construction in communities like Heritage Park and Elgin Crossing. National and regional builders are developing new lots as demand along the US-290 corridor continues to grow. New builds offer modern floor plans, energy-efficient features, and builder warranties. Builder lenders often advertise closing cost incentives, but their interest rates aren't always competitive. I compare builder financing against my capital partner network and show you the real side-by-side numbers so you choose the option that actually costs less over the life of the loan."
+          }
+        }
+      ]
+    },
+    "after": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Elgin TX qualify for USDA loans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Parts of Elgin fall inside USDA's rural eligibility map, but I don't originate USDA loans. For most Elgin buyers the same ground is covered by FHA 3.5% down, conventional from 3% down, VA zero down, or Texas down payment assistance — often with more property flexibility. Send me the scenario and I'll show you the real numbers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are average home prices in Elgin TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Elgin home prices typically range from $230,000 to $400,000. Old Town Elgin offers established homes with historic character. Heritage Park and Elgin Crossing provide newer construction with modern floor plans. Properties with acreage are available on the outskirts. Compared to closer-in Austin suburbs like Pflugerville or Manor, Elgin delivers more house and more land for the money."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What first-time buyer DPA programs work in Elgin TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TSAHC and TDHCA offer 3-5% in down payment or closing cost assistance for qualifying Texas buyers. These programs layer on top of FHA (3.5% down) or conventional (3% down) loans, so many Elgin first-time buyers can purchase with minimal cash out of pocket. Income limits apply, but at Elgin's price points, many buyers qualify. I run every eligible program and show you which combination produces the lowest total cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Elgin compare to Manor for homebuyers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Elgin is about 10 minutes east of Manor on US-290. Manor has grown rapidly as an Austin bedroom community with more suburban master-planned neighborhoods and higher price points. Elgin offers a more authentic small-town feel — historic downtown, the famous sausage industry, and a tighter community identity — at generally lower prices. Both communities benefit from Samsung's nearby Taylor facility and 290-corridor growth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there new construction options in Elgin TX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — Elgin has active new construction in communities like Heritage Park and Elgin Crossing. National and regional builders are developing new lots as demand along the US-290 corridor continues to grow. New builds offer modern floor plans, energy-efficient features, and builder warranties. Builder lenders often advertise closing cost incentives, but their interest rates aren't always competitive. I compare builder financing against my capital partner network and show you the real side-by-side numbers so you choose the option that actually costs less over the life of the loan."
+          }
+        }
+      ]
+    },
+    "reason": "Align the FAQ question name with its exact existing visible heading; answer and body unchanged. Original complete schema is retained in faq-original-schema-archive.json."
+  }
+]

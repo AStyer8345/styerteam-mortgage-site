@@ -1,0 +1,94 @@
+{
+  "programPages": 15,
+  "audiencePages": 6,
+  "preservedGuides": 23,
+  "preservedProseBlocks": 1256,
+  "internalLinksChecked": 17253,
+  "pages": [
+    {
+      "route": "/loans/conventional.html",
+      "words": 250
+    },
+    {
+      "route": "/loans/jumbo.html",
+      "words": 255
+    },
+    {
+      "route": "/loans/fha.html",
+      "words": 252
+    },
+    {
+      "route": "/loans/va.html",
+      "words": 248
+    },
+    {
+      "route": "/bank-statement-loans.html",
+      "words": 264
+    },
+    {
+      "route": "/1099-only-mortgage-texas.html",
+      "words": 256
+    },
+    {
+      "route": "/p-and-l-mortgage-texas.html",
+      "words": 250
+    },
+    {
+      "route": "/asset-depletion-mortgage-texas.html",
+      "words": 266
+    },
+    {
+      "route": "/dscr-loans-texas.html",
+      "words": 268
+    },
+    {
+      "route": "/loans/investment.html",
+      "words": 254
+    },
+    {
+      "route": "/dscr-cash-out-refinance-texas.html",
+      "words": 265
+    },
+    {
+      "route": "/loans/refinance.html",
+      "words": 272
+    },
+    {
+      "route": "/home-equity-loans-texas.html",
+      "words": 261
+    },
+    {
+      "route": "/reverse-mortgage-texas.html",
+      "words": 261
+    },
+    {
+      "route": "/buy-before-you-sell-austin.html",
+      "words": 269
+    },
+    {
+      "route": "/self-employed-mortgage-austin.html",
+      "words": 271
+    },
+    {
+      "route": "/high-net-worth-mortgage.html",
+      "words": 259
+    },
+    {
+      "route": "/investor-loans.html",
+      "words": 292
+    },
+    {
+      "route": "/first-time-home-buyer.html",
+      "words": 228
+    },
+    {
+      "route": "/move-up-buyers.html",
+      "words": 265
+    },
+    {
+      "route": "/mortgage-for-business-owners-austin.html",
+      "words": 244
+    }
+  ],
+  "issues": []
+}
