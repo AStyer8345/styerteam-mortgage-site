@@ -65,7 +65,7 @@ test('assistant keeps contact and pre-approval actions available without sending
   assert.match(browser, /get-preapproved\.html\?intent=scenario/);
   assert.match(browser, /ui\.leadToggle\.addEventListener\('click', openLeadForm\)/);
   assert.match(browser, /addContextActions/);
-  assert.match(resources, /Start secure application/);
+  assert.match(resources, /Contact Adam about applying/);
   assert.match(resources, /Compare current rate options/);
   assert.match(browser, /rel = 'noopener noreferrer'/);
 });
