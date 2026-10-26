@@ -33,21 +33,21 @@ export function computeSequenceStart(reportedTurnCount: unknown, priorTurnCount:
 
 export function fixedConversationReply(message: string): { message: string; suggestedReplies?: string[] } | null {
   const value = normalize(message);
-  if (/\b(?:who does adam work for|where does adam work|who is adam (?:with|affiliated with)|what (?:company|lender|brokerage) does adam work for|what (?:company|lender|brokerage) is adam with|what (?:company|mortgage company|brokerage) is this|who is your (?:company|brokerage)|who employs adam|adam s employer|is this hypersmart(?: home loans)?)\b/.test(value)) {
+  if (/\b(?:who does adam work for|where does adam work|who is adam (?:with|affiliated with)|what (?:company|lender|brokerage) does adam work for|what (?:company|lender|brokerage) is adam with|what (?:company|mortgage company|brokerage) is this|who is your (?:company|brokerage)|who employs adam|adam s employer|is this (?:.+ )?(?:home loans|mortgage company|your company))\b/.test(value)) {
     return {
-      message: 'Adam Styer is a Texas-licensed mortgage loan originator with Kyber Mortgage Corporation, doing business as HyperSmart Home Loans. Adam’s NMLS number is 513013, and the company NMLS number is 2653540. He works as a mortgage broker, so he can compare options from multiple wholesale lenders rather than offering only one lender’s products.',
+      message: 'This is Adam Styer\u2019s website. His NMLS number is 513013. Current company details are being updated; contact Adam at (512) 956-6010 or adam@thestyerteam.com to confirm his current affiliation.',
       suggestedReplies: ['What loans do you offer?', 'How do I contact Adam?'],
     };
   }
   if (/^(?:who is adam|tell me about adam|who is adam styer|is adam a (?:broker|lender|loan officer|mortgage broker))$/.test(value)) {
     return {
-      message: 'Adam Styer is a Texas-licensed mortgage loan originator and mortgage broker with Kyber Mortgage Corporation dba HyperSmart Home Loans. His NMLS number is 513013. He helps Texas borrowers compare mortgage strategies and loan options, including conventional, government-backed, self-employed, investor, and other complex-income scenarios.',
+      message: 'Adam Styer is a mortgage loan originator, NMLS number 513013. He helps Texas borrowers understand mortgage strategies, including self-employed, investor, and complex-income scenarios.',
       suggestedReplies: ['What loans do you offer?', 'How do I contact Adam?'],
     };
   }
   if (/\b(?:what is|whats|what s|give me|verify|show me).{0,18}(?:adam s|adams|company|your) nmls\b|\b(?:nmls|license number).{0,18}(?:adam|company|yours?)\b/.test(value)) {
     return {
-      message: 'Adam Styer’s NMLS number is 513013. Kyber Mortgage Corporation dba HyperSmart Home Loans has NMLS number 2653540. Adam is licensed to help with Texas mortgage scenarios through this website.',
+      message: 'Adam Styer’s NMLS number is 513013. For current company details, contact Adam directly at (512) 956-6010 or adam@thestyerteam.com.',
     };
   }
   if (/\b(?:what states? (?:does|can) adam|where (?:does|can) adam (?:lend|work|do loans)|are you licensed|do you lend outside texas|what areas? do you serve)\b/.test(value)) {

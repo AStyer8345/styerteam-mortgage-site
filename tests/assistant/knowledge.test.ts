@@ -32,9 +32,9 @@ test('company identity is retrievable for natural employer questions', async () 
   const result = await retrieveApprovedKnowledge('Who does Adam work for and what company is this?');
   const company = result.results.find((item) => item.source === 'company-information.md');
   assert.ok(company);
-  assert.match(company!.text, /Kyber Mortgage Corporation/i);
-  assert.match(company!.text, /HyperSmart Home Loans/i);
-  assert.match(company!.text, /Do not say that his company or employer is unknown/i);
+  assert.match(company!.text, /Current company details are being updated/i);
+  assert.doesNotMatch(company!.text, /Kyber|HyperSmart|2653540/i);
+  assert.match(company!.text, /do not name an employer or company NMLS number/i);
 });
 
 test('core FHA credit-score guidance is retrievable', async () => {

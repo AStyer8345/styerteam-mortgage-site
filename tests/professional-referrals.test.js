@@ -55,7 +55,7 @@ test('professional assistant modes are wired through widget and server retrieval
     assert.match(server, new RegExp(mode));
   }
   assert.match(widget, /assistantMode: state\.assistantMode/);
-  assert.match(fs.readFileSync('thank-you.html', 'utf8'), /appropriately licensed loan originator is available for that state/);
+  assert.match(fs.readFileSync('thank-you.html', 'utf8'), /contact a mortgage loan originator licensed for that state/i);
   assert.match(fs.readFileSync('js\/professional-referrals.js', 'utf8'), /styer:professional-referral/);
 });
 

@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 
-const MY1003 = 'https://hypersmart.my1003app.com/513013/register?time=1779291829279';
+const APPLICATION_CONTACT = 'https://styermortgage.com/contact.html';
 
 function listHtmlFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -50,7 +50,7 @@ test('public conversion CTA labels route to the matching destination', () => {
         failures.push(`${file}:${line} pre-approval CTA routes to ${href}`);
       }
       if (applicationLabel.test(label) && scenarioPage.test(href)) {
-        failures.push(`${file}:${line} application CTA routes to ${href} instead of ${MY1003}`);
+        failures.push(`${file}:${line} application CTA routes to ${href} instead of ${APPLICATION_CONTACT}`);
       }
     }
   });

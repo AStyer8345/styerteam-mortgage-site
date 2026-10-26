@@ -22,7 +22,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(title)} | Adam Styer | HyperSmart Home Loans</title>
+  <title>${escapeHtml(title)} | Adam Styer</title>
   <meta name="description" content="${escapeHtml(description)}">
   <link rel="canonical" href="https://styermortgage.com/rates/${date}.html">
 
@@ -31,7 +31,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Adam Styer | HyperSmart Home Loans">
+  <meta property="og:site_name" content="Adam Styer">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${escapeHtml(title)}">
@@ -227,7 +227,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <img src="/assets/logo-light.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
+          <img src="/assets/logo-light.svg" alt="Adam Styer" class="nav-logo-img" width="180" height="40">
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -243,7 +243,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
           <li class="nav-has-dropdown"><a href="/referral-partners-self-employed-clients.html">For Partners</a><ul class="nav-dropdown"><li><a href="/realtors.html">For Realtors</a></li><li><a href="/mortgage-resources-for-cpas-texas.html">For CPAs</a></li><li><a href="/mortgage-strategies-financial-advisors-texas.html">For Financial Advisors</a></li><li><a href="/mortgage-case-studies-for-advisors-cpas.html">Partner Case Studies</a></li></ul></li>
           <li class="nav-has-dropdown"><a href="/about.html">About Adam</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam</a></li><li><a href="/testimonials.html">Client Reviews</a></li><li><a href="/contact.html">Contact Adam</a></li></ul></li>
           <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/get-preapproved.html?intent=scenario" class="nav-cta">See My Options</a></li>
-        <li><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></li>
+        <li><a href="https://styermortgage.com/contact.html" class="nav-cta nav-apply" rel="noopener" aria-label="Contact Adam about applying">Contact Adam</a></li>
         </ul>
       </nav>
     </div>
@@ -254,7 +254,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
       <div class="container">
         <div class="newsletter-issue-badge">${formattedDate}</div>
         <h1 data-animate>${escapeHtml(title)}</h1>
-        <p class="hero-subtitle" data-animate>Current mortgage rates from Adam Styer at Kyber Mortgage Corporation dba HyperSmart Home Loans</p>
+        <p class="hero-subtitle" data-animate>Current mortgage rates from Adam Styer</p>
       </div>
     </section>
 
@@ -285,12 +285,12 @@ ${rateTable}
             </div>
           </div>
 
-          <p>Talk soon,<br><strong>Adam Styer</strong><br>Adam Styer | HyperSmart Home Loans<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
+          <p>Talk soon,<br><strong>Adam Styer</strong><br>Adam Styer<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
 
           <div class="rate-compliance">
             <p><strong>Rate Assumptions:</strong> Rates shown assume a 20% down payment, 740+ credit score, owner-occupied primary residence, single-family home, and are based on a 30-day lock period. Rates are subject to change without notice and may vary based on individual circumstances.</p>
             <p><strong>Disclaimer:</strong> Rates shown are for informational purposes only and do not constitute a loan commitment or guarantee. Actual rates, terms, and availability depend on credit score, loan amount, loan-to-value ratio, property type, occupancy, and other underwriting factors. APR reflects the total cost of the loan including certain fees. Contact Adam Styer for a personalized rate quote and full disclosure of terms and costs.</p>
-            <p>Kyber Mortgage Corporation dba HyperSmart Home Loans &middot; NMLS# 2653540 &middot; Adam Styer NMLS# 513013 &middot; Texas Licensed Mortgage Broker &middot; <a href="../texas-complaint-notice.html">TX Consumer Complaint Notice</a></p>
+            <p>Adam Styer &middot; Adam Styer NMLS# 513013 &middot; Texas Licensed Mortgage Broker &middot; <a href="../texas-complaint-notice.html">TX Consumer Complaint Notice</a></p>
           </div>
 
         </div>
@@ -328,8 +328,8 @@ ${rateTable}
         <div class="footer-section">
           <h4>Contact</h4>
           <p>
-            <strong>Adam Styer | HyperSmart Home Loans</strong><br>
-            Kyber Mortgage Corporation dba HyperSmart Home Loans
+            <strong>Adam Styer</strong><br>
+            Adam Styer
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
@@ -356,10 +356,10 @@ ${rateTable}
 
       <div class="footer-bottom">
         <div>
-          <p>&copy; ${new Date().getFullYear()} Kyber Mortgage Corporation dba HyperSmart Home Loans. All rights reserved.</p>
+          <p>&copy; ${new Date().getFullYear()} Adam Styer. All rights reserved.</p>
           <div class="footer-nmls">
-            <strong>NMLS#:</strong> 2653540 (Company) | 513013 (Adam Styer)<br>
-            Kyber Mortgage Corporation dba HyperSmart Home Loans is a Licensed Mortgage Broker in Texas.
+            <strong>NMLS#:</strong> 513013 (Adam Styer)<br>
+            Adam Styer is a Licensed Mortgage Broker in Texas.
           </div>
         </div>
       </div>

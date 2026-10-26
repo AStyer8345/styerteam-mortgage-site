@@ -79,12 +79,12 @@ test('unsupported questions still recommend the right approved calculator', () =
   assert.deepEqual(recommendApprovedResources('What is an FHA loan?'), []);
 });
 
-test('short reviews and pre-approval requests use the proven contact form while explicit full applications use My1003', () => {
+test('short reviews and pre-approval requests use the proven contact form while full applications request current instructions from Adam', () => {
   const scenarioUrl = 'https://styermortgage.com/get-preapproved.html?intent=scenario';
   for (const message of ['I want to get pre-approved', 'Can Adam review my scenario?', 'I want to apply', 'I need a short review']) {
     assert.deepEqual(conversionResources('ready', message), [{ label: 'Send Adam my scenario', url: scenarioUrl }]);
   }
   for (const message of ['I am ready to complete the full application', 'Open the secure portal', 'Send me the My1003']) {
-    assert.deepEqual(conversionResources('ready', message), [{ label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register' }]);
+    assert.deepEqual(conversionResources('ready', message), [{ label: 'Contact Adam about applying', url: 'https://styermortgage.com/contact.html' }]);
   }
 });

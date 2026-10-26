@@ -1,3 +1,5 @@
+> October 26, 2026: Public branding is Adam Styer, individual NMLS #513013. Former company affiliation, company license, office, email and application links are retired. Until current company and secure application details are confirmed, route application requests to https://styermortgage.com/contact.html. This instruction supersedes older company branding instructions below.
+
 # styermortgage.com — Architecture
 
 ## Tech Stack
