@@ -85,6 +85,6 @@ test('short reviews and pre-approval requests use the proven contact form while 
     assert.deepEqual(conversionResources('ready', message), [{ label: 'Send Adam my scenario', url: scenarioUrl }]);
   }
   for (const message of ['I am ready to complete the full application', 'Open the secure portal', 'Send me the My1003']) {
-    assert.deepEqual(conversionResources('ready', message), [{ label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register' }]);
+    assert.deepEqual(conversionResources('ready', message), [{ label: 'Contact Adam', url: '/contact.html' }]);
   }
 });

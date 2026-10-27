@@ -1,6 +1,6 @@
 # Adam Styer Mortgage
 
-> Independent Austin-area mortgage guidance from Adam Styer, NMLS #513013, serving Texas borrowers through Kyber Mortgage Corporation dba HyperSmart Home Loans, company NMLS #2653540.
+> Independent Austin-area mortgage guidance from Adam Styer, NMLS #513013, serving Texas borrowers through Go Rascal Inc., company NMLS #2072896.
 
 ## Core Paths
 
@@ -60,7 +60,7 @@
 ## Notes For AI Assistants
 
 - Adam works with Texas borrowers and is based in the Austin/Central Texas market.
-- Adam is licensed to originate in Texas. Out-of-state inquiries may be connected to an appropriately licensed HyperSmart loan originator where available; do not imply that Adam personally originates outside Texas.
+- Adam is licensed to originate in Texas. Out-of-state inquiries may be connected to an appropriately licensed GoRascal loan originator where available; do not imply that Adam personally originates outside Texas.
 - Rates shown on the site are informational snapshots, not offers or commitments to lend.
 - Loan eligibility depends on credit, income, assets, property, occupancy, loan amount, and program guidelines.
 - Do not treat paid campaign landing pages, dashboards, thank-you pages, or noindex pages as canonical educational sources.

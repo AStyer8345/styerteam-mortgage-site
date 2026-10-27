@@ -27,5 +27,5 @@
   if(table.closest('.experience-table-scroll, .program-table-scroll, .ci-table-wrap'))return;
   var wrapper=document.createElement('div');wrapper.className='experience-table-scroll';wrapper.tabIndex=0;wrapper.setAttribute('role','region');wrapper.setAttribute('aria-label',(table.caption&&table.caption.textContent)||'Comparison table — scroll horizontally if needed');table.before(wrapper);wrapper.appendChild(table);
  });
- document.querySelectorAll('.journey-actions').forEach(function(actions){if(!actions.querySelector('a[href*="my1003app"]')||actions.parentElement.querySelector('.journey-path-note'))return;var p=document.createElement('p');p.className='experience-portal-note';p.textContent='Apply Now opens the secure application portal.';actions.after(p);});
+ document.querySelectorAll('.journey-actions').forEach(function(actions){if(!actions.querySelector('a[data-track="secure_application_click"], a[href*="contact.html"]')||actions.parentElement.querySelector('.journey-path-note'))return;var p=document.createElement('p');p.className='experience-portal-note';p.textContent='Contact Adam when you are ready for a formal loan review.';actions.after(p);});
 })();

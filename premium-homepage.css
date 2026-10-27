@@ -272,7 +272,7 @@ body.premium-homepage>header nav{min-height:88px;padding:18px 0}
 body.premium-homepage>header .nav-brand{position:relative;display:block;width:280px;height:52px;flex-shrink:0;text-decoration:none}
 body.premium-homepage>header .nav-logo-img{opacity:0;width:280px;height:52px}
 body.premium-homepage>header .nav-brand::before{content:'ADAM STYER';position:absolute;left:0;top:0;font:400 28px/1.25 Georgia,serif;letter-spacing:.17em;color:#0d263e;white-space:nowrap}
-body.premium-homepage>header .nav-brand::after{content:'HYPERSMART HOME LOANS';position:absolute;left:0;top:37px;font:500 10px/1.2 var(--font-primary);letter-spacing:.25em;color:#795d31;white-space:nowrap}
+body.premium-homepage>header .nav-brand::after{content:'THE STYER TEAM · GORASCAL';position:absolute;left:0;top:37px;font:500 10px/1.2 var(--font-primary);letter-spacing:.12em;color:#795d31;white-space:nowrap}
 body.premium-homepage>header .nav-links>li>a{color:#0d263e!important}
 body.premium-homepage>header .nav-apply{background:#102d43!important;color:#fff!important;border:0}
 body.premium-homepage>header .mobile-menu-toggle{border:0;padding:8px}

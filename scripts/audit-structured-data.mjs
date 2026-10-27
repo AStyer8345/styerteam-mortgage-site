@@ -24,7 +24,7 @@ function walk(value, file) {
   if (Array.isArray(value)) return value.forEach(item => walk(item, file));
   if (fix && typeof value['@type'] === 'string' && replacements[value['@type']]) {
     value['@type'] = replacements[value['@type']];
-    if (value['@type'] === 'FinancialService' && !value['@id'] && /Adam Styer|HyperSmart|Styer Team/.test(value.name || '')) {
+    if (value['@type'] === 'FinancialService' && !value['@id'] && /Adam Styer|GoRascal|Styer Team/.test(value.name || '')) {
       value['@id'] = 'https://styermortgage.com/#organization';
     }
   }

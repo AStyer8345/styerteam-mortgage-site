@@ -2,7 +2,7 @@
 
 | Item | Evidence | Action required |
 |---|---|---|
-| Preferred public email | Repository docs list both `adam@thestyerteam.com` and `adam.styer@hypersmart.loan`; both appear publicly | Confirm one preferred lead-facing address and whether the older address should redirect |
+| Preferred public email | Repository docs list both `adam@thestyerteam.com` and `adam@thestyerteam.com`; both appear publicly | Confirm one preferred lead-facing address and whether the older address should redirect |
 | Display brand wording | “HyperSmart Loans” and “HyperSmart Home Loans” coexist; legal disclosure uses “Kyber Mortgage Corporation dba HyperSmart Home Loans” | Compliance/brand owner to approve exact display name; keep legal name unchanged meanwhile |
 | Personal vs company NMLS in MortgageBroker schema | Homepage schema may use Adam's personal identifier for the business entity | Compliance owner to approve whether business schema must use 2653540 exclusively |
 | Performance language | “same-day,” “within one business day/hour,” and historic testimonial timing claims remain in public content | Approve substantiation and permitted wording; remove unsubstantiated non-quoted claims sitewide |

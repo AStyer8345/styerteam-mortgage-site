@@ -39,15 +39,15 @@
     stroke-width="1.5"
   />
 
-  <!-- HyperSmart Home Loans -->
+  <!-- The Styer Team · Powered by GoRascal -->
   <text
     x="300"
     y="255"
     text-anchor="middle"
     font-family="'Cormorant Garamond', 'Georgia', serif"
     font-weight="400"
-    font-size="24"
+    font-size="18"
     fill="#C4A962"
-    letter-spacing="3"
-  >HyperSmart Home Loans</text>
+    letter-spacing="1.5"
+  >The Styer Team · Powered by GoRascal</text>
 </svg>

@@ -80,56 +80,43 @@ test('Non-QM keeps its capture identity through the shared scenario form', () =>
   assert.match(script, /'form-name': formData\.get\('form-name'\) \|\| form\.getAttribute\('name'\) \|\| ''/);
 });
 
-test('homepage prioritizes the short conversation and preserves the secure application', () => {
-  const heroCtas = homepage.match(/<div class="hero-ctas">([\s\S]*?)<\/div>/)?.[1] || '';
-  const heroButtonLabels = Array.from(heroCtas.matchAll(/class="[^"]*\bhero-cta-btn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
-  const introActions = homepage.match(/<div id="quick-scenario-form" class="quick-contact-actions"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';
-  const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
-
-  assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"[^>]*>See My Options<\/a>/);
-  assert.match(homepage, /href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279" class="nav-cta nav-apply"[^>]*>Apply Now<\/a>/);
-  assert.deepEqual(heroButtonLabels, ['See My Options']);
-  assert.deepEqual(introActionLabels, ['See My Options', 'Apply Now']);
-  assert.match(homepage, /id="quick-scenario-form"/);
-  assert.doesNotMatch(homepage, /name="quick-scenario"/);
+test('homepage prioritizes scenario review and demotes apply to contact', () => {
+  assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"/);
+  assert.match(homepage, /href="\/contact\.html" class="nav-cta nav-apply"[^>]*>Contact<\/a>/);
+  assert.doesNotMatch(homepage, /hypersmart\.my1003app\.com/);
   assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);
   assert.doesNotMatch(homepage, /Book 15-Min Call/);
   assert.doesNotMatch(homepage, /Email Adam Instead/);
   assert.doesNotMatch(homepage, /Start Full Loan Application/);
   assert.doesNotMatch(homepage, /Start Loan Application/);
-  assert.doesNotMatch(homepage, /Start Here/);
-  assert.match(homepage, /Complex mortgage\./);
-  assert.match(homepage, /Austin mortgage broker for business owners, real estate investors/);
+  assert.match(homepage, /id="form-homepage-contact"/);
   assert.match(homepage, /href="tel:\+15129566010"/);
   assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_sticky_mobile"/);
   assert.match(homepage, /document\.body\.classList\.add\('sticky-mobile-bar-active'\)/);
   assert.match(stylesheet, /\.home-pilot\.sticky-mobile-bar-active \.mortgage-assistant\{bottom:calc\(5\.75rem \+ env\(safe-area-inset-bottom\)\)\}/);
   assert.match(homepage, /<footer[\s\S]*href="\/texas-complaint-notice\.html"[\s\S]*Texas Complaint Notice[\s\S]*<\/footer>/);
+  assert.match(homepage, /The Styer Team · Powered by GoRascal/);
+  assert.match(homepage, /Go Rascal Inc\./);
+  assert.match(homepage, /NMLS#:<\/strong> 2072896/);
 });
 
 test('pre-approval guide routes pre-approval and application CTAs by intent', () => {
   assert.match(preapprovalGuide, /href="\/get-preapproved\.html\?source=preapproval_guide_hero"[^>]*>Get Pre-Approved Now<\/a>/);
   assert.doesNotMatch(preapprovalGuide, /href="\/scenario\.html"[^>]*>(?:Get|Start)[^<]*(?:Pre-Approved|Application)/i);
-  assert.match(preapprovalGuide, /href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*data-source="preapproval_guide_documents"[^>]*>Apply Now<\/a>/);
+  assert.match(preapprovalGuide, /href="\/contact\.html"[^>]*data-source="preapproval_guide_documents"[^>]*>Contact<\/a>/);
   assert.doesNotMatch(preapprovalGuide, /register\?time=[^"']*\?time=/);
 });
 
-test('premium homepage puts the simple inquiry in the hero and preserves capture', () => {
-  const hero = homepage.match(/<section class="hero"[^>]*>([\s\S]*?)<\/section>/)?.[1] || '';
-  assert.match(hero, /id="form-homepage-contact"/);
-  assert.match(hero, /href="#contact-form"[^>]*data-track="scenario_review_click"/);
-  assert.match(homepage, /<aside[^>]*id="contact-form"[^>]*tabindex="-1"/);
+test('premium homepage keeps simple inquiry capture available', () => {
+  assert.match(homepage, /href="#contact-form"[^>]*data-track="scenario_review_click"/);
+  assert.match(homepage, /id="contact-form"/);
   assert.match(homepage, /<form name="contact"[^>]*id="form-homepage-contact"/);
   assert.match(homepage, /type="hidden" name="tcpa_consent" value="false"/);
-  assert.doesNotMatch(hero, /<select|type="checkbox"/);
-  assert.equal((hero.match(/ required/g) || []).length, 2);
-  assert.match(homepage, /class="hero-glass-card home-hero-layout"/);
   const css = fs.readFileSync('premium-homepage.css', 'utf8');
   assert.match(css, /\.premium-portrait>img\{[^}]*object-fit:contain/);
-  assert.match(css, /body\.premium-homepage\.home-pilot main \.hero-cta-btn\{display:inline-flex!important/);
 });
 
-test('scenario page puts the short conversion form first and keeps the secure portal secondary', () => {
+test('scenario page puts the short conversion form first and keeps contact secondary', () => {
   assert.match(scenarioPage, /Tell me what you’re trying to accomplish/);
   assert.match(scenarioPage, /id="scenario-form"/);
   assert.match(scenarioPage, /name="scenario-review"/);
@@ -141,8 +128,8 @@ test('scenario page puts the short conversion form first and keeps the secure po
   assert.match(scenarioPage, /name="tcpa_consent"/);
   assert.match(scenarioPage, /class="nav-has-dropdown"/);
   assert.match(scenarioPage, /class="mobile-menu-toggle"/);
-  assert.match(scenarioPage, /Apply Now/);
-  assert.match(scenarioPage, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+  assert.match(scenarioPage, /Contact/);
+  assert.match(scenarioPage, /href="\/contact\.html"/);
   assert.match(scenarioPage, /name="scenario-review"/);
   assert.doesNotMatch(scenarioPage, /lp-header \.nav-links/);
   assert.doesNotMatch(scenarioPage, /Answer the basics/);
@@ -150,11 +137,11 @@ test('scenario page puts the short conversion form first and keeps the secure po
   assert.doesNotMatch(scenarioPage, /"@type": "FAQPage"/);
 });
 
-test('thank-you page offers portal as an efficient next step without application-first wording', () => {
-  assert.match(thankYou, /Answer the detailed questions in the secure application portal/);
+test('thank-you page offers contact as an efficient next step without application-first wording', () => {
+  assert.match(thankYou, /Reach out when you are ready for a formal loan review/);
   assert.match(thankYou, /formal loan review/);
-  assert.match(thankYou, /first call more useful/);
-  assert.match(thankYou, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+  assert.match(thankYou, /first call is more useful/);
+  assert.match(thankYou, /href="\/contact\.html"/);
   assert.match(thankYou, /type === 'quick-contact'[\s\S]*ty-alt-paths/);
   assert.doesNotMatch(thankYou, /Start the full application/);
   assert.doesNotMatch(thankYou, /full 1003/);

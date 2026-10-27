@@ -259,7 +259,7 @@
         var application=root.document.createElement('div');application.className='journey-application';
         var title=root.document.createElement('h3');title.textContent='Want to get a head start?';application.appendChild(title);
         var detail=root.document.createElement('p');detail.textContent='You can complete a secure online loan application to help make your first conversation more efficient. Your credit will not be run automatically. This step is entirely optional — it’s fine to wait and talk with Adam first.';application.appendChild(detail);
-        var apply=root.document.createElement('a');apply.href='https://hypersmart.my1003app.com/513013/register?time=1779291829279';apply.target='_blank';apply.rel='noopener';apply.className='journey-application-link';apply.textContent='Start a Secure Loan Application';application.appendChild(apply);status.appendChild(application);
+        var apply=root.document.createElement('a');apply.href='/contact.html';apply.target='_blank';apply.rel='noopener';apply.className='journey-application-link';apply.textContent='Start a Secure Loan Application';application.appendChild(apply);status.appendChild(application);
       }
       var another = root.document.createElement('button');
       another.type = 'button'; another.className = 'journey-back'; another.textContent = 'Send another request';

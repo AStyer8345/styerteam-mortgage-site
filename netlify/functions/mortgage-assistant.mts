@@ -107,7 +107,7 @@ export default async function handler(request: Request, context: Context): Promi
           : /\b(?:schedule|book|calendly|call)\b/i.test(message)
             ? 'Absolutely—you can choose a convenient time on Adam’s calendar below. You can also call or text him at (512) 956-6010.'
             : fullApplication
-              ? 'When you are ready to complete the full application, use the secure HyperSmart portal below. If you would rather talk first, text Adam at (512) 956-6010 or email adam@thestyerteam.com.'
+              ? 'When you are ready to complete the full application, use the secure GoRascal portal below. If you would rather talk first, text Adam at (512) 956-6010 or email adam@thestyerteam.com.'
               : 'Use the short pre-approval and scenario form below to give Adam your contact information and the details he should review. You do not need to complete the full application first.';
       await recordTurn(conversationId, correlationId, session.id, message, answer, [], { direct_conversion_option: true }, undefined, sequenceStart, sourcePage);
       return json({ conversationId, message: answer, sources: [], resources, salesState }, 200, headers);

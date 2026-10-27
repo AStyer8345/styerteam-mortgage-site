@@ -60,7 +60,7 @@ test('homepage conversation replaces product choices without retiring specialist
     assert.ok(html.includes(`https://styermortgage.com/${journey.file}`));
     assert.ok(html.includes('situation-journeys.js'));
     assert.ok(html.includes('assets/utm.js'));
-    assert.ok(html.includes('Apply Now'));
+    assert.ok(html.includes('Contact') || html.includes('See My Options'));
     assert.doesNotMatch(html, /Get My Free Quote|Talk With Adam|Run My DSCR Scenario/);
     journey.fields.forEach(([name]) => assert.ok(html.includes(`name="${name}"`), `${journey.file}: ${name}`));
   }

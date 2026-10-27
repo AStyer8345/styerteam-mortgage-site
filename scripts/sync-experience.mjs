@@ -4,8 +4,8 @@ import { execFileSync } from 'node:child_process';
 import { refineLongform } from '../netlify/functions/lib/refine-longform.js';
 
 // Additive, repeatable publishing rule. Keeps the page body, URLs and SEO intact.
-const application = 'https://hypersmart.my1003app.com/513013/register?time=1779291829279';
-const apply = `<li><a href="${application}" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></li>`;
+const application = '/contact.html';
+const apply = `<li><a href="${application}" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam Styer">Apply Now</a></li>`;
 const style = '<link rel="stylesheet" href="/experience.css">';
 const behavior = '<script src="/experience.js" defer></script>';
 const sharedHeader=fs.readFileSync('index.html','utf8').match(/<header\b[^>]*>[\s\S]*?<\/header>/)[0];
@@ -32,7 +32,7 @@ export function refine(html) {
   if (!html.includes('/experience.css')) html = html.replace('</head>', style+'\n</head>');
   if (!html.includes('/experience.js')) html = html.replace('</body>', behavior+'\n</body>');
   if (!/<script\b[^>]*src="(?:[^\"]*\/)?script\.js(?:\?[^\"]*)?"/.test(html)) html = html.replace('</body>', '<script src="/script.js" defer></script>\n</body>');
-  html = html.replace(/<a\b([^>]*href="https:\/\/[^" ]*my1003app\.com[^" ]*"[^>]*)>([\s\S]*?)<\/a>/g, (_, attrs, content) => `<a${attrs.replace(/aria-label="[^"]*"/g,'').trimEnd()} aria-label="Apply Now — opens the secure application portal">${/<h3/.test(content)?content.replace(/(<h3[^>]*>)[\s\S]*?(<\/h3>)/,'$1Apply Now$2').replace(/(<span class="ty-alt-card-cta">)[\s\S]*?(<\/span>)/,'$1Open secure portal →$2'):'Apply Now'}</a>`);
+  html = html.replace(/href="https:\/\/[^" ]*my1003app\.com[^" ]*"/g, 'href="/contact.html"');
   html = html.replace(/<a\b([^>]*href="https:\/\/calendly\.com\/adamstyer\/15minutes[^" ]*"[^>]*)>([\s\S]*?)<\/a>/g, (_, attrs, content) => `<a${attrs}>${/<h3/.test(content)?content.replace(/(<h3[^>]*>)[\s\S]*?(<\/h3>)/,'$1Book a Call$2'):'Book a Call'}</a>`);
   html = html.replace(/(<a\b[^>]*href="tel:[^"]+"[^>]*>)([\s\S]*?)(<\/a>)/g, (_,a,b,c)=>a+b.replace(/Call or Text/gi,'Call')+c);
   html = html.replace(/aria-label="Call or Text Adam"/g,'aria-label="Call Adam"');
@@ -42,7 +42,7 @@ export function refine(html) {
     html=html.slice(0,close)+apply+'\n'+html.slice(close);
   }
   if (html.includes('class="site-header lp-header"') && !html.includes('class="experience-header-actions"')) {
-    html=html.replace('</nav>',`<div class="experience-header-actions"><a href="tel:+15129566010">Call Adam</a><a href="${application}" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></div></nav>`);
+    html=html.replace('</nav>',`<div class="experience-header-actions"><a href="tel:+15129566010">Call Adam</a><a href="${application}" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam Styer">Apply Now</a></div></nav>`);
   }
   return refineLongform(html);
 }

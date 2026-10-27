@@ -2,7 +2,7 @@
 
 ## Current State
 
-Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/JS on Netlify with automatic production deploys from GitHub `main`.
+Public mortgage website for The Styer Team · Powered by GoRascal. Static HTML/CSS/JS on Netlify with automatic production deploys from GitHub `main`.
 
 Website forms and the assistant use LoanOS durable inquiry/outbox capture. Netlify is an independent capture transport using the same inquiry ID. Follow-up questionnaires retain the parent inquiry ID; backup alerts are failure-only. Do not restore the old parallel raw-webhook/contact writers.
 
@@ -23,6 +23,8 @@ Build compiles private admin assets, the canonical shared footer and reviewed as
 | Production branch | `main` |
 
 ## Last Worked On
+
+**2026-10-27 — GoRascal entity + chrome pass (P0).** Display brand The Styer Team · Powered by GoRascal; legal Go Rascal Inc. NMLS #2072896; Brooklyn corp + Austin branch addresses; HyperSmart/Kyber/2653540/9050 HQ/hypersmart.my1003app scrubbed from public HTML. Apply CTAs demoted to `/contact.html` until a confirmed GoRascal/1003 URL exists. Voice polish and homepage photo cards remain out of scope.
 
 **2026-10-06 — assistant question routing and complete contact handoff.** Qualification questions embedded in an income answer now receive an answer before intake continues. The reported 1099/write-off scenario gets conditional alternative-documentation guidance and clarification of conflicting annual gross/monthly net figures. Contact review carries a server-redacted snapshot of the full browser conversation through consent into the established LoanOS inquiry/outbox endpoint; independent Netlify backup receives the same readable snapshot. Transcript storage runs separately and cannot delay capture. Retries reuse a snapshot-specific inquiry ID; additional facts get a new inquiry. Mobile review controls and capture/queued/backup receipts remain visible. Validation: 174 site tests, 133 assistant tests, TypeScript, 166-URL SEO audit and build passed. Browser QA was unavailable because the Chromium download failed; no live test leads were submitted. Production verification follows the release commit.
 
@@ -45,11 +47,11 @@ Validation: 101 site tests + 115 assistant tests passed, TypeScript passed, buil
 - Protect production and inspect current state before changing it.
 - The primary checkout often contains unrelated work. Use an isolated worktree for releases and never deploy a dirty mixed checkout.
 - Match existing HTML/CSS and preserve GTM, form fields, LoanOS capture, and Netlify configuration.
-- Use the business name `Adam Styer | HyperSmart Home Loans`; legal entity `Kyber Mortgage Corporation dba HyperSmart Home Loans`; NMLS 2653540 / 513013.
+- Use the business name `The Styer Team · Powered by GoRascal`; legal entity `Go Rascal Inc.`; NMLS 2072896 / 513013.
 - Adam is licensed to originate in Texas. Do not imply personal origination outside Texas.
 - Keep eligibility, rate, cost, appraisal, credit, program, and closing statements conditional on current written terms and file review.
 - No USDA promotion and no 21-day-close or invented performance claims.
-- Use the secure application only behind descriptive anchor text; scenario/review CTAs use the proven short form.
+- GoRascal/1003 apply URL is not confirmed — do not invent a portal domain; demote Apply CTAs to `/contact.html` or scenario paths. Scenario/review CTAs use the proven short form.
 - New blog posts must be registered in `blog/manifest.json`, `blog.html` CollectionPage schema and noscript list, `sitemap.xml`, and when appropriate `llms.txt`.
 - Use an answer-first paragraph before the first H2 and keep visible FAQs synchronized with FAQPage JSON-LD.
 - Run `npm test`, `npm run typecheck`, `npm run seo:audit`, and `npm run build`; verify the exact production commit and live HTTP content after release.

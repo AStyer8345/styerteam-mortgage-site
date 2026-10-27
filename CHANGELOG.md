@@ -1,3 +1,10 @@
+## 2026-10-27 — GoRascal entity + chrome pass (P0)
+
+- Replaced HyperSmart / Kyber / company NMLS 2653540 / 9050 N Capital HQ across public HTML, footers, logos, OG/JSON-LD, builders, and assistant knowledge with **The Styer Team · Powered by GoRascal** / **Go Rascal Inc.** / NMLS **2072896**.
+- Corp address set to 185 Wythe Ave, Suite A2, Brooklyn, NY 11249; Austin branch 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731.
+- Removed `hypersmart.my1003app.com` Apply CTAs (no confirmed GoRascal/1003 URL); demoted to `/contact.html` / scenario paths. Blocker: apply portal URL TBD.
+- Adam personal NMLS #513013 unchanged. Voice polish and homepage photo cards out of scope.
+
 ## 2026-10-05 — Technical audit remediation
 
 - Added server-side administrative access using the existing MCC code and secure session cookies; private administrative files no longer ship in the public package.

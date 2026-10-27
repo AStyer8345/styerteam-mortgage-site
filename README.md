@@ -1,6 +1,6 @@
 # styermortgage.com
 
-Public mortgage website for Adam Styer | HyperSmart Home Loans (NMLS #513013). Austin, TX.
+Public mortgage website for The Styer Team · Powered by GoRascal (Adam Styer, NMLS #513013; Go Rascal Inc., NMLS #2072896). Austin, TX.
 
 ## Stack
 
