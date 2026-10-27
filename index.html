@@ -292,7 +292,7 @@
   <link rel="stylesheet" href="/review-proof.css?v=20260913">
 <link rel="stylesheet" href="/advisory-design.css?v=20260918">
 <script src="/advisory-contact.js?v=20260918" defer></script>
-<link rel="stylesheet" href="/private-wealth-editorial.css?v=20261020-cards2">
+<link rel="stylesheet" href="/private-wealth-editorial.css?v=20261027-entrances1">
 <script src="/calculator-suite.js" defer></script>
 <script src="/premium-homepage.js?v=20261006" defer></script>
 <link rel="preload" as="image" href="/assets/austin-skyline-mockup-20261013.webp">
@@ -1182,6 +1182,48 @@
     form.elements.cta_label.value = link.textContent.trim();
     form.elements.source.value = link.dataset.source || 'homepage_options';
   });
+</script>
+<script>
+  // Mandate section fade — arm only after paint, and only if still below the fold.
+  // Without JS (or with reduced motion) content stays fully visible; no opacity:0 gate on first paint.
+  (function () {
+    if (!document.body.classList.contains('private-wealth-editorial')) return;
+    var section = document.querySelector('.pwe-mandates');
+    if (!section) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    function armMandateEntrance() {
+      var rect = section.getBoundingClientRect();
+      var viewport = window.innerHeight || document.documentElement.clientHeight;
+      var alreadyInView = rect.top < viewport * 0.9 && rect.bottom > 40;
+      if (alreadyInView) {
+        section.classList.add('pwe-inview');
+        return;
+      }
+      section.classList.add('pwe-motion-ready');
+      if (!('IntersectionObserver' in window)) {
+        section.classList.add('pwe-inview');
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          section.classList.add('pwe-inview');
+          io.disconnect();
+        });
+      }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
+      io.observe(section);
+    }
+
+    function schedule() {
+      requestAnimationFrame(armMandateEntrance);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', schedule, { once: true });
+    } else {
+      schedule();
+    }
+  })();
 </script>
 <script>
   // Fast Hero Count-Up & Sequential 1->2->3->4->5 Gold Star Illumination
