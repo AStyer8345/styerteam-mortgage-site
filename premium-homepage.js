@@ -2,11 +2,12 @@
 (function () {
   'use strict';
   if (!document.body.classList.contains('premium-homepage')) return;
-  // Reuse the shared Call / Text bar, but point its homepage inquiry to the
-  // existing inline form. No new lead form or capture owner is introduced.
+  // The phone bar’s primary action is the same scenario review as the nav.
+  // Call and text stay on the bar as secondary. The note form on this page
+  // is not the primary path.
   var mobileInquiry = document.querySelector('.advisory-contact-bar-primary');
   if (mobileInquiry) {
-    mobileInquiry.href = '#contact-form';
+    mobileInquiry.href = '/get-preapproved.html?intent=scenario';
     mobileInquiry.textContent = 'See My Options';
     mobileInquiry.setAttribute('data-track','scenario_review_click');
     mobileInquiry.setAttribute('data-source','homepage_sticky_mobile');
