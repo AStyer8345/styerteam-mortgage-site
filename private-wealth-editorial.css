@@ -1319,56 +1319,34 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 
 .pwe-people-grid {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(40px, 6vw, 88px);
   align-items: center;
 }
 
-.pwe-people-composition {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 20px;
-  align-items: end;
+.pwe-people-portrait {
   margin: 0;
+  min-width: 0;
 }
 
-.pwe-portrait-primary {
-  background: linear-gradient(180deg, #DFD9CD 0%, #CBC3B3 100%);
+.pwe-people-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
   border: 1px solid var(--pwe-rule);
   border-top: 3px solid var(--pwe-brass);
-  padding: 24px 16px 0;
-  box-shadow: 0 18px 40px rgba(11, 21, 29, 0.08);
+  box-shadow: 0 22px 48px rgba(11, 21, 29, 0.1);
 }
 
-.pwe-portrait-primary img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.pwe-portrait-secondary {
-  background: var(--pwe-paper);
-  padding: 12px;
-  border: 1px solid var(--pwe-rule);
-  border-top: 3px solid var(--pwe-ink);
-  box-shadow: 0 14px 32px rgba(11, 21, 29, 0.06);
-}
-
-.pwe-portrait-secondary img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-}
-
-.pwe-portrait-secondary figcaption {
-  font-size: 11px;
-  letter-spacing: 0.08em;
+.pwe-people-portrait figcaption {
+  margin: 0;
+  padding-top: 14px;
+  font-family: var(--pwe-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--pwe-muted);
-  padding-top: 8px;
 }
 
 .pwe-people-copy p {
@@ -1928,8 +1906,9 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
     width: 100%;
   }
 
-  body.private-wealth-editorial .pwe-people-composition {
-    max-width: 640px;
+  body.private-wealth-editorial .pwe-people-portrait {
+    max-width: 560px;
+    margin-inline: auto;
   }
 
   body.private-wealth-editorial .pwe-audience-index {
@@ -2033,10 +2012,6 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
     align-items: flex-start !important;
     gap: 8px !important;
     padding: 20px !important;
-  }
-
-  body.private-wealth-editorial .pwe-people-composition {
-    grid-template-columns: minmax(0, 1fr) !important;
   }
 
   body.private-wealth-editorial .pwe-role-ledger,
