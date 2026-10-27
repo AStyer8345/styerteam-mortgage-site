@@ -232,7 +232,7 @@
 <link href="/review-proof.css?v=20260913" rel="stylesheet"/>
 <link href="/advisory-design.css?v=20260918" rel="stylesheet"/>
 <script defer="" src="/advisory-contact.js?v=20260918"></script>
-<link href="/private-wealth-editorial.css?v=20261020-cards2" rel="stylesheet"/>
+<link href="/private-wealth-editorial.css?v=20261027-entrances1" rel="stylesheet"/>
 <script defer="" src="/calculator-suite.js"></script>
 <script defer="" src="/premium-homepage.js?v=20261027-cta"></script>
 <link as="image" href="/assets/austin-skyline-mockup-20261013.webp" rel="preload"/>
@@ -268,8 +268,7 @@ body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-ty
 body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-type(2)>article:nth-of-type(3)>div:nth-of-type(1)>div:nth-of-type(1)>span:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-type(2)>article:nth-of-type(3)>a:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(9)>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(1){color:#70531f !important;}
-main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style><link href="/final-editorial.css" rel="stylesheet"/><link href="/personal-forms.css" rel="stylesheet"/><link rel="preload" as="image" href="/assets/austin-skyline-mockup-20261013.webp" fetchpriority="high">
-</head>
+main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style><link href="/final-editorial.css" rel="stylesheet"/><link href="/personal-forms.css" rel="stylesheet"/><link rel="preload" as="image" href="/assets/austin-skyline-mockup-20261013.webp" fetchpriority="high"></head>
 <body class="editorial-page home-pilot advisory-site premium-homepage private-wealth-editorial">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR" style="display:none;visibility:hidden" width="0"></iframe></noscript>
@@ -1312,6 +1311,48 @@ Read Full Case Study
     form.elements.cta_label.value = link.textContent.trim();
     form.elements.source.value = link.dataset.source || 'homepage_options';
   });
+</script>
+<script>
+  // Mandate section fade — arm only after paint, and only if still below the fold.
+  // Without JS (or with reduced motion) content stays fully visible; no opacity:0 gate on first paint.
+  (function () {
+    if (!document.body.classList.contains('private-wealth-editorial')) return;
+    var section = document.querySelector('.pwe-mandates');
+    if (!section) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    function armMandateEntrance() {
+      var rect = section.getBoundingClientRect();
+      var viewport = window.innerHeight || document.documentElement.clientHeight;
+      var alreadyInView = rect.top < viewport * 0.9 && rect.bottom > 40;
+      if (alreadyInView) {
+        section.classList.add('pwe-inview');
+        return;
+      }
+      section.classList.add('pwe-motion-ready');
+      if (!('IntersectionObserver' in window)) {
+        section.classList.add('pwe-inview');
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          section.classList.add('pwe-inview');
+          io.disconnect();
+        });
+      }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
+      io.observe(section);
+    }
+
+    function schedule() {
+      requestAnimationFrame(armMandateEntrance);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', schedule, { once: true });
+    } else {
+      schedule();
+    }
+  })();
 </script>
 <script>
   // Fast Hero Count-Up & Sequential 1->2->3->4->5 Gold Star Illumination
