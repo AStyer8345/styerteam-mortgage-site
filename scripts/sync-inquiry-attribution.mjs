@@ -4,7 +4,7 @@ import path from 'node:path';
 // Render the optional question in HTML so Netlify and browsers without JS retain
 // the same answer. Never preselect or infer it from automatic attribution.
 const check = process.argv.includes('--check');
-const ignored = new Set(['.git', '.netlify', '.site-dist', 'node_modules', 'Claude outputs']);
+const ignored = new Set(['.git', '.netlify', '.site-dist', '.snapshots', 'node_modules', 'Claude outputs']);
 const options = ['ChatGPT', 'Gemini', 'Other AI assistant', 'Google Search', 'Referral', 'Other / not sure'];
 const version = '20260920';
 function walk(dir) {
@@ -21,13 +21,17 @@ for (const file of walk('.').filter(file => file.endsWith('.html') || file === '
     const start = form.match(/<form\b[^>]*>/i)[0];
     if (!/class="[^"]*\b(?:journey-form|js-hero-quote|js-quick-contact)\b/.test(start) || /\bhidden(?:\s|>)/.test(start)) return form;
     count++;
-    // This approved quick form keeps automatic attribution and a blank legacy field.
-    if (/data-simple-inquiry="true"/.test(start) && /type="hidden" name="self_reported_source"/.test(form)) return form;
+    // Preserve existing simple forms with automatic attribution and a blank legacy field.
+    // Attribute order is not part of the form contract.
+    if (/<input\b(?=[^>]*\btype="hidden")(?=[^>]*\bname="self_reported_source")[^>]*>/.test(form)) return form;
     // Legacy JS also includes the labeled answer in situation; register that
     // summary with Netlify so its independent capture does not discard it.
     if (/\b(?:js-hero-quote|js-quick-contact)\b/.test(start) && !/name="situation"/.test(form)) form = form.replace(start, start + '\n<input type="hidden" name="situation" value="">');
+    // Retain equivalent, labeled controls rather than rewriting their IDs or layout.
+    const existingQuestion = form.match(/<select\b[^>]*\bname="self_reported_source"[^>]*>[\s\S]*?<\/select>/i)?.[0];
+    if (existingQuestion && options.every(value => existingQuestion.includes(`value="${value}"`)) && !/<option\b(?=[^>]*\bselected)(?=[^>]*\bvalue="[^"]+")/.test(existingQuestion)) return form;
     form = form.replace(/<div class="journey-field journey-full form-group self-reported-source-field">[\s\S]*?<\/div>\n?/, '');
-    const name = start.match(/\b(?:id|name)="([^"]+)"/)[1];
+    const name = start.match(/\bname="([^"]+)"/)?.[1] || start.match(/\bid="([^"]+)"/)[1];
     const id = name + '-heard-about';
     const question = `<div class="journey-field journey-full form-group self-reported-source-field"><label for="${id}">How did you first hear about Adam? (optional)</label><select id="${id}" name="self_reported_source"><option value="">Choose if you remember</option>${options.map(value => `<option value="${value}">${value}</option>`).join('')}</select></div>\n`;
     if (/<label class="journey-consent"/.test(form)) return form.replace(/<label class="journey-consent"/, question + '<label class="journey-consent"');

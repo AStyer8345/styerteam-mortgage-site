@@ -6,7 +6,7 @@ Rules applied:
 - Titles: 50–60 chars, keyword-led, broker take, specific
 - Descriptions: 140–155 chars, answer the implicit question, specific hook, no filler
 - Never "nestled", "picture-perfect", "in today's market", "discover", "explore"
-- Business name: Adam Styer | HyperSmart Home Loans (never "The Styer Team")
+- Business name: The Styer Team · Powered by GoRascal (never "The Styer Team")
 
 ---
 

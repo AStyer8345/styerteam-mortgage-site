@@ -1,0 +1,8 @@
+/* Final borrower-flow refinements. */
+.pwe-audience-col .path-intro{color:#f6f4ef!important;font-size:17px;line-height:1.65;margin:14px 0 20px;max-width:48ch}
+.pwe-audience-col .editorial-details{margin:10px 0 18px}.pwe-audience-num{font-size:12px!important}
+.u-hero .intro-support{max-width:780px;margin:18px auto;text-align:left;background:#faf8f3;color:#243740;border:1px solid #c9b999;padding:14px 18px}
+:root body .u-hero .intro-support p{color:#243740!important;font-size:17px!important;line-height:1.7!important;text-align:left!important}
+.intro-support summary{cursor:pointer;font-weight:600;color:#243740;line-height:1.5}
+:root body .u-hero p.u-hero-lead[style*="brass-light"]{color:#765522!important}
+:root body #case-studies a.u-btn-secondary,:root body #case-studies a[class*="btn"]{color:#705018!important;border-color:#8a6833!important}

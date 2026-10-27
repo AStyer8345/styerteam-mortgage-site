@@ -12,7 +12,7 @@ const leadingItems = [mortgageOptions, toolsAndGuides, '<li><a href="/scenarios.
 
 function htmlFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if (entry.name === '.git' || ['node_modules', '.netlify', '.site-dist'].includes(entry.name)) return [];
+    if (entry.name === '.git' || ['node_modules', '.netlify', '.site-dist', '.snapshots'].includes(entry.name)) return [];
     const absolute = path.join(directory, entry.name);
     if (entry.isDirectory()) return htmlFiles(absolute);
     return entry.isFile() && entry.name.endsWith('.html') ? [absolute] : [];

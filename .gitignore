@@ -19,3 +19,10 @@ linkedin-oauth.js
 
 # Generated public deployment package
 .site-dist/
+
+# Local snapshots and visual review screenshots
+.snapshots/
+.batch1-snapshots/
+screenshots/
+audit-reports/
+*.bak-*

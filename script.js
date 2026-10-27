@@ -21,7 +21,7 @@ document.addEventListener('formdata', event => { event.formData.set('inquiry_id'
 document.addEventListener('reset', event => { const field = event.target.querySelector('input[name="inquiry_id"]'); if (field) field.value = ''; }, true);
 
 /* ==========================================================================
-   HyperSmart Home Loans - Main JavaScript
+   The Styer Team · Powered by GoRascal - Main JavaScript
    ========================================================================== */
 
 // ========================================================================
@@ -124,12 +124,33 @@ function initNavigation() {
   }
   syncDropdownStates();
   document.addEventListener('keydown', event => {
-    if (event.key !== 'Escape' || !navLinks || !navLinks.classList.contains('active')) return;
+    if (event.key !== 'Escape' || !navLinks) return;
+    if (window.innerWidth > 1280) {
+      const item = document.activeElement && document.activeElement.closest('.nav-has-dropdown');
+      if (item && navLinks.contains(item)) {
+        item.setAttribute('data-dismissed', '');
+        item.classList.remove('open');
+        syncDropdownStates();
+        item.querySelector(':scope > a').focus();
+      }
+      return;
+    }
+    if (!navLinks.classList.contains('active')) return;
     navLinks.classList.remove('active');
     navLinks.querySelectorAll('.open').forEach(item => item.classList.remove('open'));
     syncDropdownStates();
     mobileMenuToggle.setAttribute('aria-expanded', 'false');
     mobileMenuToggle.focus();
+  });
+
+  // Allow desktop dropdowns to reopen after keyboard dismissal.
+  if (navLinks) navLinks.querySelectorAll('.nav-has-dropdown').forEach(item => {
+    item.addEventListener('mouseenter', () => item.removeAttribute('data-dismissed'));
+    item.addEventListener('focusout', event => {
+      if (window.innerWidth > 1280 && !item.contains(event.relatedTarget)) {
+        item.removeAttribute('data-dismissed');
+      }
+    });
   });
 
   // Mobile menu toggle

@@ -1,0 +1,44 @@
+# Cursor AI Rules & Project Context — The Styer Team · Powered by GoRascal
+
+## 1. Project Overview & Business Context
+You are working on the production website codebase for **The Styer Team · Powered by GoRascal** (`styermortgage.com`).
+- **Loan Officer**: Adam Styer, Individual NMLS #513013
+- **Company / Corporate Entity**: Go Rascal Inc., Company NMLS #2072896, 185 Wythe Ave, Suite A2, Brooklyn, NY 11249
+- **Austin Office**: 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731
+- **Target Market**: Central Texas / Austin high-intent homebuyers, self-employed business owners (bank statements/1099/P&L), real estate investors (DSCR), jumbo/luxury buyers, and asset-depletion borrowers.
+- **Tone & Voice**: Authentic, direct, personal, and authoritative first-person singular ("I structure...", "my team..."). Strictly avoid marketing fluff, hollow slogans, or stock-mortgage clichés.
+
+---
+
+## 2. Technical Stack & Architecture
+- **Framework**: Static HTML5, modern vanilla CSS, and vanilla ES modules. Hosted on Netlify with continuous deployment from GitHub `main`.
+- **Backend / Intake**: Netlify Functions (`netlify/functions/lead-intake.js`, `netlify/functions/admin.mts`, etc.) with LoanOS durable outbox capture.
+- **Distribution Build**:
+  - Source files are packaged into `.site-dist/` using: `node scripts/package-public-site.mjs`
+  - Tests verify packaging integrity: `node tests/public-package.test.js`
+  - Browser tests verify responsive forms and menus: `node tests/technical-repairs-browser.cjs`
+- **Active Git Branch**: `design/private-wealth-editorial`
+  - Main GitHub repository: `AStyer8345/styerteam-mortgage-site`
+
+---
+
+## 3. Key Recent Milestones (October 2026)
+1. **Company & Brand Migration Complete**:
+   - Replaced all obsolete corporate entities (Kyber Mortgage, HyperSmart) and old NMLS #2653540 with **Go Rascal Inc.** and **Company NMLS #2072896**.
+   - Updated Austin branch office address across all HTML files, footer bundles, and assistant knowledge bases.
+   - Rerouted stale application links to `/get-preapproved.html?intent=scenario`.
+2. **Homepage Visual Hierarchy & Card Refinements**:
+   - Removed awkward `<details>` accordion containers from the Hero, 6-card audience grid, and Case Studies sections.
+   - Redesigned 6 audience cards with authentic **Texas Hill Country architectural photography** (no generic stock people), making the entire card clickable.
+   - Redesigned "Mortgages your bank said no to" into interactive **Case Dossier Cards**, with the entire card linked directly to deep scenario write-ups (`/scenarios/...`).
+   - Refined the "Specialty & Asset Financing" band into clean, high-contrast interactive chips.
+3. **Spacing Bug Fix**:
+   - Fixed an inherited `padding: clamp(...)` defect in detail drawers (`.b3-details section`) that previously created ~200px of dead vertical space.
+
+---
+
+## 4. Strict Guardrails & Working Rules
+- **No Live Lead Submissions**: NEVER submit live leads or test forms to production endpoints during automated or manual browser QA.
+- **Deep Guides Constraint**: Retain `noindex,follow` on the 34 detailed guides in `resources/detailed-guides/` per Adam's explicit instruction.
+- **Asset Packaging**: Any image, script, or stylesheet added to public HTML must be tracked in Git or explicitly listed in `scripts/public-release-files.json`.
+- **Preserve Legal Compliance**: All disclosures must cite Go Rascal Inc. (NMLS #2072896) and Adam Styer (NMLS #513013). Texas origination boundaries apply (do not imply personal origination outside Texas).

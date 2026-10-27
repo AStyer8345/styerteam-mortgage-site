@@ -199,7 +199,7 @@ async function generateRealtorContent(formData) {
 
         const campaignResult = await createAndSendCampaign({
           listId: realtorListId,
-          subject: parsed.realtorSubject || `${effectiveTopic} - Adam Styer | HyperSmart Home Loans`,
+          subject: parsed.realtorSubject || `${effectiveTopic} - The Styer Team · Powered by GoRascal`,
           preheader: parsed.realtorPreheader || "",
           html: wrapEmailHtml(injectPageLink(parsed.realtorEmail, pageUrl)),
           fromName: "Adam Styer",

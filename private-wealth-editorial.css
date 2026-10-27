@@ -14,8 +14,8 @@ body.private-wealth-editorial {
   --pwe-paper: #FAF9F6;
   --pwe-ink: #0E1B24;
   --pwe-slate: #4A5761;
-  --pwe-muted: #6C7881;
-  --pwe-brass: #9A7844;
+  --pwe-muted: #62707A;
+  --pwe-brass: #806234;
   --pwe-brass-light: #C6A46C;
   --pwe-rule: #DAD4C8;
   --pwe-rule-dark: rgba(246, 244, 239, 0.14);
@@ -426,15 +426,15 @@ body.private-wealth-editorial > header .nav-dropdown li a:hover {
 }
 
 /* ==========================================================================
-   SECTION 1: HERO — Full-Bleed Austin Skyline + Private Wealth Opening
+   SECTION 1: HERO — Luminous Austin Skyline + Clean Natural Portrait
    ========================================================================== */
 body.private-wealth-editorial main .hero.pwe-hero,
 .pwe-hero {
   position: relative;
-  background-color: var(--pwe-obsidian) !important;
+  background-color: #142330 !important;
   background-image:
-    linear-gradient(96deg, rgba(8, 16, 23, 0.90) 0%, rgba(8, 16, 23, 0.74) 42%, rgba(8, 16, 23, 0.26) 72%, rgba(8, 16, 23, 0.46) 100%),
-    linear-gradient(180deg, rgba(8, 16, 23, 0.32) 0%, rgba(8, 16, 23, 0.08) 55%, rgba(8, 16, 23, 0.88) 100%),
+    linear-gradient(96deg, rgba(16, 32, 46, 0.68) 0%, rgba(16, 32, 46, 0.44) 42%, rgba(16, 32, 46, 0.16) 72%, rgba(16, 32, 46, 0.36) 100%),
+    linear-gradient(180deg, rgba(16, 32, 46, 0.18) 0%, rgba(16, 32, 46, 0.04) 55%, rgba(16, 32, 46, 0.60) 100%),
     url('/assets/austin-skyline-mockup-20261013.webp') !important;
   background-size: cover !important;
   background-position: center 46% !important;
@@ -560,16 +560,16 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
 
 .pwe-hero-frame {
   position: relative;
-  background: linear-gradient(180deg, rgba(11, 21, 29, 0.14) 0%, rgba(11, 21, 29, 0.68) 100%);
-  border: 1px solid rgba(246, 244, 239, 0.24);
-  backdrop-filter: blur(2px);
-  padding: 24px 28px 0;
+  background: transparent !important; /* Tint completely removed */
+  border: 1px solid rgba(246, 244, 239, 0.20);
+  border-radius: 4px;
+  padding: 32px 32px 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   min-height: 420px;
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.20);
 }
 
 .pwe-hero-frame::before {
@@ -583,22 +583,23 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
   z-index: 2;
   display: block;
   width: 100%;
-  max-width: 390px;
+  max-width: 320px; /* Zoomed out so Adam has natural breathing room */
   height: auto;
-  max-height: 390px;
+  max-height: 380px;
   margin-inline: auto;
   object-fit: contain;
   object-position: bottom center;
-  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.28));
+  transform: scale(0.96);
 }
 
 .pwe-hero-caption {
   position: relative;
   z-index: 3;
-  margin: 0 -28px;
-  padding: 18px 28px;
-  background: rgba(8, 16, 23, 0.92);
-  border-top: 1px solid rgba(246, 244, 239, 0.2);
+  margin: 0 -32px;
+  padding: 16px 28px;
+  background: rgba(14, 28, 38, 0.88);
+  border-top: 1px solid rgba(246, 244, 239, 0.18);
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -632,29 +633,34 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
 }
 
 .pwe-ledger-cell {
-  padding: 28px 32px 28px 0;
+  padding: 26px 20px !important;
   border-right: 1px solid rgba(246, 244, 239, 0.16);
   text-decoration: none !important;
   color: var(--pwe-alabaster) !important;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  justify-content: center !important;
+  gap: 8px;
 }
 
 .pwe-ledger-cell:not(:first-child) {
-  padding-left: 32px;
+  padding-left: 20px !important;
 }
 
 .pwe-ledger-cell:last-child {
   border-right: 0;
-  padding-right: 0;
+  padding-right: 20px !important;
 }
 
 .pwe-ledger-stat-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
+  width: 100%;
 }
 
 .pwe-ledger-num,
@@ -677,9 +683,10 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
 }
 
 .pwe-seq-star {
-  fill: rgba(245, 196, 67, 0.22);
-  opacity: 0.35;
-  transform: scale(0.76);
+  fill: #F5C443;
+  opacity: 1;
+  transform: scale(1);
+  filter: drop-shadow(0 0 5px rgba(245, 196, 67, 0.38));
   transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), fill 180ms ease, opacity 180ms ease, filter 220ms ease;
 }
 
@@ -705,11 +712,16 @@ body.private-wealth-editorial main .hero.pwe-hero::after,
 }
 
 .pwe-ledger-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(246, 244, 239, 0.88);
+  width: 100%;
 }
 
 a.pwe-ledger-cell:hover .pwe-ledger-label {
@@ -818,11 +830,11 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
   margin: 0;
 }
 
-/* 4-Audience Dark Architectural Cards (No Wall of White) */
+/* 6-Audience Distinct Architectural Cards (Balancing Business, Investors, Veterans, Luxury, First-Time & Assets) */
 .pwe-audience-index {
   display: grid !important;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 18px !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 20px !important;
   border: 0 !important;
 }
 
@@ -1319,9 +1331,11 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 }
 
 .pwe-portrait-primary {
-  background: linear-gradient(180deg, #D9D3C7 0%, #C6BFAF 100%);
+  background: linear-gradient(180deg, #DFD9CD 0%, #CBC3B3 100%);
   border: 1px solid var(--pwe-rule);
+  border-top: 3px solid var(--pwe-brass);
   padding: 24px 16px 0;
+  box-shadow: 0 18px 40px rgba(11, 21, 29, 0.08);
 }
 
 .pwe-portrait-primary img {
@@ -1333,8 +1347,10 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 
 .pwe-portrait-secondary {
   background: var(--pwe-paper);
-  padding: 10px;
+  padding: 12px;
   border: 1px solid var(--pwe-rule);
+  border-top: 3px solid var(--pwe-ink);
+  box-shadow: 0 14px 32px rgba(11, 21, 29, 0.06);
 }
 
 .pwe-portrait-secondary img {
@@ -1845,6 +1861,15 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
     gap: 44px !important;
   }
 
+  body.private-wealth-editorial .pwe-hero-visual {
+    max-width: 540px;
+    width: 100%;
+  }
+
+  body.private-wealth-editorial .pwe-people-composition {
+    max-width: 640px;
+  }
+
   body.private-wealth-editorial .pwe-audience-index {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
@@ -1903,14 +1928,16 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
   }
 
   body.private-wealth-editorial .pwe-ledger-cell {
-    padding: 20px 12px 20px 0 !important;
+    padding: 20px 12px !important;
     border-bottom: 1px solid var(--pwe-rule-dark) !important;
+    align-items: center !important;
+    text-align: center !important;
   }
 
   body.private-wealth-editorial .pwe-ledger-cell:nth-child(2n) {
     border-right: 0 !important;
     padding-left: 12px !important;
-    padding-right: 0 !important;
+    padding-right: 12px !important;
   }
 
   body.private-wealth-editorial .pwe-audience-index {

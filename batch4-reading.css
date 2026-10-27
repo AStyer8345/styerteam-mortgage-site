@@ -1,0 +1,21 @@
+/* Batch 4: scoped reading and topic browsing. */
+.batch4-reading .b4-back,.batch4-reading .b4-history{max-width:860px;margin:20px auto;padding:0 24px;font-size:15px;line-height:1.6}
+.batch4-reading .b4-contents{max-width:820px;margin:24px auto;padding:16px 20px;border:1px solid var(--pwe-rule,#d9d4ca);border-radius:4px;background:var(--pwe-bg-warm,#f6f4ef)}
+.batch4-reading .b4-contents summary,.batch4-reading .b4-topic>summary{cursor:pointer;font-weight:600;color:var(--pwe-obsidian,#222)}
+.batch4-reading .b4-contents ul{padding-left:20px;line-height:1.65}.batch4-reading .b4-contents li{margin:8px 0}
+.batch4-reading #topic-browsing{position:static!important}.batch4-reading #topic-browsing>.u-container{white-space:normal!important;flex-wrap:wrap;overflow:visible!important}
+.batch4-reading section[id^="topic-"],.batch4-reading #full-archive{padding:20px 0!important}
+.batch4-reading .b4-topic>summary{padding:16px 0}.batch4-reading .b4-topic>summary h2{display:inline;font-size:24px!important}
+.batch4-reading .b4-topic[open]>summary{margin-bottom:20px}
+.batch4-reading [id]{scroll-margin-top:120px}
+.batch4-reading .b4-search{margin:20px 0}.batch4-reading .b4-search label{display:block;font-weight:600;margin-bottom:8px}.batch4-reading .b4-search input{box-sizing:border-box;width:100%;padding:14px;font:inherit;border:1px solid #777;border-radius:4px}.batch4-reading [hidden]{display:none!important}
+.batch4-reading main p,.batch4-reading main li{overflow-wrap:anywhere}.batch4-reading main img{max-width:100%;height:auto}
+@media(max-width:700px){.batch4-reading #featured-articles .u-container>div:last-child,.batch4-reading .b4-topic div[style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}.batch4-reading .b4-contents{margin:20px 0}.batch4-reading table{display:block;max-width:100%;overflow-x:auto}.batch4-reading .b4-topic>summary h2{font-size:22px!important}}
+
+body.batch4-reading section[aria-label="Blog Header"]{background:var(--pwe-obsidian,#142028)!important;padding:56px 24px!important;color:#fff!important}
+body.batch4-reading section[aria-label="Blog Header"] h1,body.batch4-reading section[aria-label="Blog Header"] .u-hero-badge{color:#fff!important}
+body.batch4-reading section[aria-label="Blog Header"] .u-hero-lead{color:#e6e0d5!important}
+body.batch4-reading #featured-articles,body.batch4-reading section[id^="topic-"],body.batch4-reading #full-archive{padding-left:24px!important;padding-right:24px!important;box-sizing:border-box}
+body.batch4-reading #featured-articles{padding-top:40px!important;padding-bottom:40px!important}
+body.batch4-reading .b4-topic h2{line-height:1.5!important}
+@media(max-width:700px){body.batch4-reading section[aria-label="Blog Header"]{padding:36px 20px!important}body.batch4-reading #featured-articles,body.batch4-reading section[id^="topic-"],body.batch4-reading #full-archive{padding-left:20px!important;padding-right:20px!important}body.batch4-reading section[aria-label="Blog Header"] h1{font-size:34px!important;line-height:1.15!important}}

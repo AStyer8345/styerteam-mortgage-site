@@ -39,20 +39,18 @@
       var bal = balance;
       var interestPaid = 0;
       var principalPaid = 0;
+      var paymentsMade = 0;
       for (var i = 0; i < months; i++) {
         if (bal <= 0) { bal = 0; break; }
         var interest = r * bal;
-        var principal = payment - interest;
-        if (principal <= 0) {
-          interestPaid += interest;
-          continue;
-        }
-        if (principal > bal) principal = bal;
-        bal -= principal;
+        var actualPayment = Math.min(payment, bal + interest);
+        var principal = actualPayment - interest;
+        bal -= principal; // Unpaid interest increases the remaining balance.
+        paymentsMade += actualPayment;
         interestPaid += interest;
         principalPaid += principal;
       }
-      return { balance: bal, interestPaid: interestPaid, principalPaid: principalPaid };
+      return { balance: bal, interestPaid: interestPaid, principalPaid: principalPaid, paymentsMade: paymentsMade };
     },
 
     /**
@@ -68,7 +66,7 @@
       wrap.innerHTML = '<div class="calc-slider-label"><label for="' + id + '-exact">' + config.label + '</label><span class="calc-slider-value" data-value></span></div>' +
         '<input type="number" inputmode="decimal" class="calc-input-number" id="' + id + '-exact" min="' + config.min + '" max="' + config.max + '" step="' + (config.numericStep || 'any') + '" value="' + value + '" aria-describedby="' + id + '-error">' +
         '<input type="range" class="calc-slider-input" id="' + id + '" aria-label="' + config.label + ' slider" min="' + config.min + '" max="' + config.max + '" step="' + (config.step || 1) + '" value="' + value + '">' +
-        '<p class="calc-input-error" id="' + id + '-error" hidden>Enter a value from ' + config.min + ' to ' + config.max + '.</p>';
+        '<p class="calc-input-error" id="' + id + '-error" hidden>Enter a value from ' + config.min + ' to ' + config.max + '. Results still use the last valid value.</p>';
       var number = wrap.querySelector('input[type="number"]');
       var input = wrap.querySelector('input[type="range"]');
       var valueEl = wrap.querySelector('[data-value]');

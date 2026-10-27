@@ -148,7 +148,7 @@ Replace the current "Already talked with Adam..." copy with:
 <p class="form-trust-line"><strong>Ready to move faster?</strong></p>
 <p class="text-center" style="margin-top:var(--spacing-sm);">
   Answer a few questions in my secure online portal. It usually takes 7-9 minutes and helps make our first call more efficient.<br>
-  <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" target="_blank" rel="noopener">Open Secure Portal</a>
+  <a href="/get-preapproved.html?intent=scenario" target="_blank" rel="noopener">Open Secure Portal</a>
 </p>
 ```
 

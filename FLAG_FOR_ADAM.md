@@ -207,7 +207,7 @@ Per the original spec, no sitewide nav change. When you're ready to surface scen
 
 ## 4. Loan app URL mismatch in the original prompt
 
-The Prompt A spec referenced `https://mslp.my1003app.com/513013/register` — that's the old MSLP URL. CLAUDE.md / CONTEXT.md / every live page uses `https://hypersmart.my1003app.com/513013/register?time=1779291829279`. I used the live one. If `mslp.my1003app.com` is still live and you want both URLs supported, let me know.
+The Prompt A spec referenced `https://mslp.my1003app.com/513013/register` — that's the old MSLP URL. CLAUDE.md / CONTEXT.md / every live page uses `/get-preapproved.html?intent=scenario`. I used the live one. If `mslp.my1003app.com` is still live and you want both URLs supported, let me know.
 
 ## 5. Next-up: scenarios #2 and #3 to light up the remaining filter chips
 

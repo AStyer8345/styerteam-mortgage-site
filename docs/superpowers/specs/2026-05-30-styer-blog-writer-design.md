@@ -55,8 +55,8 @@ New `styer-blog-writer-weekly/SKILL.md`, scheduler-run, sibling to the untouched
 
 Post does not publish unless every check passes. On failure → log it, skip the commit, fire an FYI ("skipped this week, here's why"), exit clean. A skip is the only acceptable non-publish, and it is loud.
 
-1. **Brand name** — "Adam Styer | HyperSmart Home Loans" present; zero "The Styer Team" / "Mortgage Solutions LP".
-2. **NMLS / entity** — Adam 513013, company 2653540, Kyber Mortgage Corporation dba HyperSmart Home Loans (if cited).
+1. **Brand name** — "The Styer Team · Powered by GoRascal" present; zero "The Styer Team" / "Mortgage Solutions LP".
+2. **NMLS / entity** — Adam 513013, company 2072896, The Styer Team · Powered by GoRascal (if cited).
 3. **No performance-metric marketing** — no "24-hour," "same-day," "fastest"; gate defaults to **strip**.
 4. **No raw 1003 URL** — application link anchor-text only.
 5. **Title lint** — `grep "<title>" blog/*.html | grep -v "Adam Styer"` clean for the new file.
@@ -75,7 +75,7 @@ Post does not publish unless every check passes. On failure → log it, skip the
 - **Double-fire guard:** skip if net-new post <5 days old.
 - **Missed-fire safety net:** daily-briefing flags if no net-new post in 8+ days (catches a silently dead writer within a week, not six).
 - **Editor coexistence:** writer (Tuesday, creates) and editor (Friday, polishes existing, forbidden from creating) are separate SKILLs that never touch each other's files mid-run. Editor's hard-stop stays — now an actual writer satisfies the need.
-- **Latent-bug fix rolled in:** editor `styer-content-weekly/SKILL.md` line 53 currently names the prohibited "Mortgage Solutions LP" as the brand — fix to "Adam Styer | HyperSmart Home Loans".
+- **Latent-bug fix rolled in:** editor `styer-content-weekly/SKILL.md` line 53 currently names the prohibited "Mortgage Solutions LP" as the brand — fix to "The Styer Team · Powered by GoRascal".
 
 ## Verification
 

@@ -28,13 +28,13 @@
 
 | Field | Value |
 |-------|-------|
-| Name | Adam Styer \| Kyber Mortgage Corporation dba HyperSmart Home Loans |
-| NMLS | 513013 (Adam) / 2653540 (Company) |
+| Name | Adam Styer \| The Styer Team · Powered by GoRascal |
+| NMLS | 513013 (Adam) / 2072896 (Company) |
 | Phone | (512) 956-6010 |
 | Email | adam@thestyerteam.com |
-| Address | 9050 N. Capital of Texas Hwy, Ste 390, Austin, Texas 78759 |
+| Address | 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731 |
 | Calendly | https://calendly.com/adamstyer/15minutes |
-| Loan app | https://hypersmart.my1003app.com/513013/register?time=1779291829279 |
+| Loan app | /get-preapproved.html?intent=scenario |
 | GBP Place ID | ChIJYy5uEFPKRIYRmF-k_5gPk74 |
 
 ### Reviews
@@ -246,9 +246,9 @@ All website content auto-distributes to GBP + FB + IG + LI:
 
 ## NMLS Legal Disclaimer
 
-**Three variants are in use.** Company NMLS `2653540` coverage is **146/146 live URLs** — there is no
+**Three variants are in use.** Company NMLS `2072896` coverage is **146/146 live URLs** — there is no
 page without a disclaimer. Verified 2026-08-20 by fetching all 146 sitemap URLs.
-**Match on `2653540` for coverage, never on prose.** A grep for the phrase
+**Match on `2072896` for coverage, never on prose.** A grep for the phrase
 `Licensed Mortgage Broker in Texas` returns 40 false "missing disclaimer" hits.
 
 | Variant | URLs | Contents |
@@ -273,7 +273,7 @@ calculators carry A or B. Whether C is thin-by-design or drift is **Adam-gated**
 ### Variant A (verbatim)
 
 ```
-© 2026 Kyber Mortgage Corporation dba HyperSmart Home Loans. All rights reserved.
-NMLS# 2653540 (Company) | 513013 (Adam Styer) | NMLS Consumer Access: https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2653540
-Kyber Mortgage Corporation dba HyperSmart Home Loans is a Licensed Mortgage Broker in Texas. This is not an offer to enter into an agreement. Not all customers will qualify. Information, rates and programs are subject to change without notice. All products are subject to credit and property approval. The property must be appraised at a value sufficient to support the loan requested. Additional restrictions and limitations may apply. Equal Housing Opportunity.
+© 2026 The Styer Team · Powered by GoRascal. All rights reserved.
+NMLS# 2072896 (Company) | 513013 (Adam Styer) | NMLS Consumer Access: https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896
+The Styer Team · Powered by GoRascal is a Licensed Mortgage Broker in Texas. This is not an offer to enter into an agreement. Not all customers will qualify. Information, rates and programs are subject to change without notice. All products are subject to credit and property approval. The property must be appraised at a value sufficient to support the loan requested. Additional restrictions and limitations may apply. Equal Housing Opportunity.
 ```

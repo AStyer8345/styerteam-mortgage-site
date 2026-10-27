@@ -17,7 +17,7 @@
       "page": "non-qm-loans.html",
       "href": "/apply-now/",
       "status": 301,
-      "destination": "https://hypersmart.my1003app.com/513013/register?time=1779291829279",
+      "destination": "/get-preapproved.html?intent=scenario",
       "evidence": "unchanged netlify.toml lines 231-234; destination not opened or submitted"
     }
   ]

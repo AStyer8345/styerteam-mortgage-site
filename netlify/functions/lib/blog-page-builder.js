@@ -35,12 +35,12 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
       "jobTitle": "Senior Loan Officer",
       "worksFor": {
         "@type": "Organization",
-        "name": "Kyber Mortgage Corporation dba HyperSmart Home Loans"
+        "name": "The Styer Team · Powered by GoRascal"
       }
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Kyber Mortgage Corporation dba HyperSmart Home Loans",
+      "name": "The Styer Team · Powered by GoRascal",
       "url": "https://styermortgage.com",
       "logo": {
         "@type": "ImageObject",
@@ -75,7 +75,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${pageUrl}">
-  <meta property="og:site_name" content="Adam Styer | HyperSmart Home Loans">
+  <meta property="og:site_name" content="The Styer Team · Powered by GoRascal">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(title)}">
@@ -107,7 +107,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <img src="/assets/logo-light.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
+          <img src="/assets/logo-light.svg" alt="The Styer Team · Powered by GoRascal" class="nav-logo-img" width="180" height="40">
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -123,7 +123,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
           <li class="nav-has-dropdown"><a href="/referral-partners-self-employed-clients.html">For Partners</a><ul class="nav-dropdown"><li><a href="/realtors.html">For Realtors</a></li><li><a href="/mortgage-resources-for-cpas-texas.html">For CPAs</a></li><li><a href="/mortgage-strategies-financial-advisors-texas.html">For Financial Advisors</a></li><li><a href="/mortgage-case-studies-for-advisors-cpas.html">Partner Case Studies</a></li></ul></li>
           <li class="nav-has-dropdown"><a href="/about.html">About Adam</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam</a></li><li><a href="/testimonials.html">Client Reviews</a></li><li><a href="/contact.html">Contact Adam</a></li></ul></li>
           <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/get-preapproved.html?intent=scenario" class="nav-cta">See My Options</a></li>
-        <li><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></li>
+        <li><a href="/get-preapproved.html?intent=scenario" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></li>
         </ul>
       </nav>
     </div>
@@ -158,7 +158,7 @@ ${rateBox}
 
           <p>Have questions? Want to know what your options look like right now? Give me a call or shoot me a text. Happy to run the numbers for you.</p>
 
-          <p>Talk soon,<br><strong>Adam Styer</strong><br>Adam Styer | HyperSmart Home Loans<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
+          <p>Talk soon,<br><strong>Adam Styer</strong><br>The Styer Team · Powered by GoRascal<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
 
         </div>
 
@@ -210,8 +210,8 @@ ${rateBox}
         <div class="footer-section">
           <h4>Contact</h4>
           <p>
-            <strong>Adam Styer | HyperSmart Home Loans</strong><br>
-            Kyber Mortgage Corporation dba HyperSmart Home Loans
+            <strong>The Styer Team · Powered by GoRascal</strong><br>
+            The Styer Team · Powered by GoRascal
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
@@ -238,10 +238,10 @@ ${rateBox}
 
       <div class="footer-bottom">
         <div>
-          <p>&copy; ${new Date().getFullYear()} Kyber Mortgage Corporation dba HyperSmart Home Loans. All rights reserved.</p>
+          <p>&copy; ${new Date().getFullYear()} The Styer Team · Powered by GoRascal. All rights reserved.</p>
           <div class="footer-nmls">
-            <strong>NMLS#:</strong> 2653540 (Company) | 513013 (Adam Styer)<br>
-            Kyber Mortgage Corporation dba HyperSmart Home Loans is a Licensed Mortgage Broker in Texas.
+            <strong>NMLS#:</strong> 2072896 (Company) | 513013 (Adam Styer)<br>
+            The Styer Team · Powered by GoRascal is a Licensed Mortgage Broker in Texas.
           </div>
         </div>
       </div>

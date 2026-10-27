@@ -32,8 +32,8 @@ test('company identity is retrievable for natural employer questions', async () 
   const result = await retrieveApprovedKnowledge('Who does Adam work for and what company is this?');
   const company = result.results.find((item) => item.source === 'company-information.md');
   assert.ok(company);
-  assert.match(company!.text, /Kyber Mortgage Corporation/i);
-  assert.match(company!.text, /HyperSmart Home Loans/i);
+  assert.match(company!.text, /Go Rascal Inc\.|GoRascal/i);
+  assert.match(company!.text, /The Styer Team/i);
   assert.match(company!.text, /Do not say that his company or employer is unknown/i);
 });
 

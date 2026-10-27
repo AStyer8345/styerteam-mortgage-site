@@ -16,9 +16,9 @@
 
 **Standing constraints (apply to every task):**
 - Stage git changes by explicit filename. NEVER `git add -A` (the editor and Adam commit to this repo concurrently).
-- Display name: "Adam Styer | HyperSmart Home Loans". Never "The Styer Team" or "Mortgage Solutions LP".
-- Legal entity if cited: Kyber Mortgage Corporation dba HyperSmart Home Loans. Adam NMLS 513013, company NMLS 2653540, phone (512) 956-6010.
-- Loan application link anchor-text only, never the raw URL: `https://hypersmart.my1003app.com/513013/register?time=1779291829279`.
+- Display name: "The Styer Team · Powered by GoRascal". Never "The Styer Team" or "Mortgage Solutions LP".
+- Legal entity if cited: The Styer Team · Powered by GoRascal. Adam NMLS 513013, company NMLS 2072896, phone (512) 956-6010.
+- Loan application link anchor-text only, never the raw URL: `/get-preapproved.html?intent=scenario`.
 - TX-licensed only; no USDA product surface.
 - Commits co-authored: `Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>`.
 - Do NOT commit unless the human has approved (this plan's execution is the approval for plan-driven commits).
@@ -210,9 +210,9 @@ Use the NotebookLM CLI (`/Users/adamstyer/.local/bin/notebooklm`, always `--json
 
 Run every check against the new file. ANY failure → do NOT commit; go to STEP 6 (loud skip).
 
-1. **Brand name** — "Adam Styer | HyperSmart Home Loans" present; ZERO occurrences of "The Styer Team" or "Mortgage Solutions LP".
-   `grep -c "HyperSmart Home Loans" blog/NEWFILE.html` (>=1) and `grep -Ec "The Styer Team|Mortgage Solutions LP" blog/NEWFILE.html` (==0).
-2. **NMLS / entity** — if cited, Adam 513013 / company 2653540 / Kyber Mortgage Corporation dba HyperSmart Home Loans are correct.
+1. **Brand name** — "The Styer Team · Powered by GoRascal" present; ZERO occurrences of "The Styer Team" or "Mortgage Solutions LP".
+   `grep -c "The Styer Team · Powered by GoRascal" blog/NEWFILE.html` (>=1) and `grep -Ec "The Styer Team|Mortgage Solutions LP" blog/NEWFILE.html` (==0).
+2. **NMLS / entity** — if cited, Adam 513013 / company 2072896 / The Styer Team · Powered by GoRascal are correct.
 3. **No performance-metric marketing** — default to STRIP. No "24-hour", "same-day", "fastest", "guaranteed approval". `grep -Eic "24-hour|same.day|fastest|guaranteed approval" blog/NEWFILE.html` (==0).
 4. **No raw 1003 URL** — application link is anchor text only. `grep -c "my1003app.com" blog/NEWFILE.html` may be >0 ONLY inside an `<a href>`; the visible text must never be the bare URL.
 5. **Title lint** — `grep "<title>" blog/*.html | grep -v "Adam Styer"` returns nothing for the new file.
@@ -314,7 +314,7 @@ head -4 SKILL.md
 grep -c "git add -A" SKILL.md            # expect 0 occurrences as an instruction to DO it (only appears in "Never git add -A")
 grep -c "slug-substring" SKILL.md         # expect >=1
 grep -c "BLOG SKIPPED THIS WEEK" SKILL.md # expect 1 (loud skip path present)
-grep -c "HyperSmart Home Loans" SKILL.md  # expect >=1
+grep -c "The Styer Team · Powered by GoRascal" SKILL.md  # expect >=1
 grep -Ec "Mortgage Solutions LP" SKILL.md # expect 0 except inside the prohibition line
 ```
 
@@ -373,13 +373,13 @@ Edit line 53. Replace:
 ```
 with:
 ```
-- Business name: "Adam Styer | HyperSmart Home Loans" — NEVER "The Styer Team" or "Mortgage Solutions LP"
+- Business name: "The Styer Team · Powered by GoRascal" — NEVER "The Styer Team" or "Mortgage Solutions LP"
 ```
 
 - [ ] **Step 3: Verify**
 
 ```bash
-grep -c "Adam Styer | HyperSmart Home Loans" /Users/adamstyer/.claude/scheduled-tasks/styer-content-weekly/SKILL.md   # expect 1
+grep -c "The Styer Team · Powered by GoRascal" /Users/adamstyer/.claude/scheduled-tasks/styer-content-weekly/SKILL.md   # expect 1
 grep -Ec 'Business name: "Adam Styer \| Mortgage Solutions LP"' /Users/adamstyer/.claude/scheduled-tasks/styer-content-weekly/SKILL.md  # expect 0
 ```
 
@@ -463,7 +463,7 @@ cd /Users/adamstyer/Documents/Claude/styerteam-mortgage-site
 NEW=$(git log --diff-filter=A --name-only --pretty=format: -1 -- 'blog/2*.html' | grep -E 'blog/2.*\.html' | head -1)
 echo "New post: $NEW"
 test -f "$NEW" && wc -w "$NEW"                                  # 1200-1600 words
-grep -c "HyperSmart Home Loans" "$NEW"                          # >=1
+grep -c "The Styer Team · Powered by GoRascal" "$NEW"                          # >=1
 grep -Ec "The Styer Team|Mortgage Solutions LP" "$NEW"          # ==0
 grep -c "FAQPage" "$NEW"; grep -c "BreadcrumbList" "$NEW"       # both >=1
 SLUG=$(basename "$NEW" .html)
@@ -495,4 +495,4 @@ Confirm Task 5's check would fire: if the most recent net-new post were ≥8 day
 
 **Placeholder scan:** Runtime-only values (`NEWFILE`, `<slug>`, `<SHA>`, `<post title>`) are intentional fill-ins the running task computes — not plan gaps. All static content (backlog file, full SKILL.md, edit strings, grep assertions) is concrete.
 
-**Type/name consistency:** `styer-blog-writer-weekly` taskId, `run-logs/content-backlog.md`, `run-logs/content-YYYY-MM-DD.md`, cron `0 8 * * 2`, and the brand string "Adam Styer | HyperSmart Home Loans" are used identically across Tasks 1–6 and match the spec. Slug verification uses substring match everywhere. ✓
+**Type/name consistency:** `styer-blog-writer-weekly` taskId, `run-logs/content-backlog.md`, `run-logs/content-YYYY-MM-DD.md`, cron `0 8 * * 2`, and the brand string "The Styer Team · Powered by GoRascal" are used identically across Tasks 1–6 and match the spec. Slug verification uses substring match everywhere. ✓

@@ -1,0 +1,7 @@
+(()=>{
+'use strict';
+function reveal(){let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}if(!id)return;const target=document.getElementById(id);if(!target)return;for(let p=target;p;p=p.parentElement){if(p.tagName==='DETAILS')p.open=true;}const child=target.querySelector('details.b4-topic');if(child)child.open=true;requestAnimationFrame(()=>target.scrollIntoView({block:'start',behavior:'instant'}));}
+window.addEventListener('hashchange',reveal);document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a&&a.hash===location.hash)setTimeout(reveal,0);});
+function init(){reveal();const input=document.getElementById('b4-query');if(!input)return;input.closest('.b4-search').hidden=false;const rows=[...document.querySelectorAll('#full-archive ul>li')];function filter(){const query=input.value.trim().toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ');let count=0;rows.forEach(row=>{row.hidden=!query.split(/\s+/).every(word=>(row.textContent+' '+[...row.querySelectorAll('a')].map(a=>a.getAttribute('href')).join(' ')).toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').includes(word));if(!row.hidden)count++;});document.getElementById('b4-results').textContent=count+' of '+rows.length+' articles'+(count?'':' — try a different search.');}input.addEventListener('input',filter);filter();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();

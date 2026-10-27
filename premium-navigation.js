@@ -19,6 +19,8 @@
       }
     });
     item.addEventListener('focusout',function(event){
+      // Mobile dropdown state belongs to the shared tap handler.
+      if(window.innerWidth<=1280)return;
       if(!item.contains(event.relatedTarget)){
         item.removeAttribute('data-dismissed');item.classList.remove('open');parent.setAttribute('aria-expanded','false');
       }

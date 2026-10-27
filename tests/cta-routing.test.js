@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 
-const MY1003 = 'https://hypersmart.my1003app.com/513013/register?time=1779291829279';
+const MY1003 = '/get-preapproved.html?intent=scenario';
 
 function listHtmlFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {

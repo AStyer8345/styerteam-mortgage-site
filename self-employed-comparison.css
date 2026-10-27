@@ -1,32 +1,32 @@
 /* Scoped styling for the self-employed income comparison. */
-body.premium-interior #income-documents .ci-table-wrap{margin:28px 0;overflow:hidden;border:1px solid #dce1e3;border-radius:10px;background:white;box-shadow:0 6px 24px #142b3a06}
-body.premium-interior #income-documents .ci-table{width:100%;min-width:0;table-layout:fixed;border-collapse:separate;border-spacing:0;background:white;font-size:15px;line-height:1.55}
-body.premium-interior #income-documents .ci-table caption{caption-side:top;background:white;padding:20px 24px;text-align:left;font-size:13px;font-weight:600;letter-spacing:.02em;color:#52616b;border-bottom:1px solid #dce1e3}
-body.premium-interior #income-documents .ci-table :is(th,td){padding:22px 24px!important;border:0;border-bottom:1px solid #e2e6e7;vertical-align:top;overflow-wrap:break-word;text-align:left}
-body.premium-interior #income-documents .ci-table thead th{background:#142b3a!important;color:white!important;padding:16px 24px!important;font-size:11px;line-height:1.4;letter-spacing:.08em;font-weight:600;text-transform:uppercase;border:0}
+body.premium-interior #income-documents .ci-table-wrap{margin:28px 0;overflow:hidden;border:1px solid #DAD4C8;border-top:2px solid #0E1B24;border-radius:2px;background:#FAF9F6;box-shadow:0 12px 32px rgba(14,27,36,.04)}
+body.premium-interior #income-documents .ci-table{width:100%;min-width:0;table-layout:fixed;border-collapse:separate;border-spacing:0;background:#FAF9F6;font-size:15px;line-height:1.55}
+body.premium-interior #income-documents .ci-table caption{caption-side:top;background:#FAF9F6;padding:18px 24px;text-align:left;font-size:13px;font-weight:600;letter-spacing:.03em;color:#4A5761;border-bottom:1px solid #DAD4C8}
+body.premium-interior #income-documents .ci-table :is(th,td){padding:20px 24px!important;border:0;border-bottom:1px solid #DAD4C8;vertical-align:top;overflow-wrap:break-word;text-align:left}
+body.premium-interior #income-documents .ci-table thead th{background:#0B151D!important;color:#F6F4EF!important;padding:16px 24px!important;font-size:11px;line-height:1.4;letter-spacing:.1em;font-weight:600;text-transform:uppercase;border:0;border-bottom:2px solid #9A7844}
 body.premium-interior #income-documents .ci-table thead th:nth-child(1){width:23%}
 body.premium-interior #income-documents .ci-table thead th:nth-child(2){width:28%}
 body.premium-interior #income-documents .ci-table thead th:nth-child(3){width:31%}
 body.premium-interior #income-documents .ci-table thead th:nth-child(4){width:18%}
-body.premium-interior #income-documents .ci-table tbody th{background:transparent!important;color:#142b3a!important;font-size:15px;line-height:1.5;font-weight:600}
-body.premium-interior #income-documents .ci-table tbody td{background:transparent;color:#52616b;font-size:14px;line-height:1.6}
-body.premium-interior #income-documents .ci-table tbody tr:nth-child(odd){background:#f7f8f7!important}
-body.premium-interior #income-documents .ci-table tbody tr:nth-child(even){background:white!important}
+body.premium-interior #income-documents .ci-table tbody th{background:transparent!important;color:#0E1B24!important;font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.4;font-weight:500}
+body.premium-interior #income-documents .ci-table tbody td{background:transparent;color:#4A5761;font-size:14.5px;line-height:1.6}
+body.premium-interior #income-documents .ci-table tbody tr:nth-child(odd){background:#F6F4EF!important}
+body.premium-interior #income-documents .ci-table tbody tr:nth-child(even){background:#FAF9F6!important}
 body.premium-interior #income-documents .ci-table tbody tr:last-child :is(th,td){border-bottom:0}
-body.premium-interior #income-documents .ci-table td:last-child a{display:inline-block;color:#142b3a;font-size:13px;font-weight:600;line-height:1.45;text-decoration:underline;text-decoration-color:#a58a52;text-underline-offset:5px}
-body.premium-interior #income-documents .ci-table td:last-child a:hover{color:#795d31}
+body.premium-interior #income-documents .ci-table td:last-child a{display:inline-block;color:#0E1B24;font-size:13px;font-weight:600;line-height:1.45;text-decoration:underline;text-decoration-color:#9A7844;text-underline-offset:5px}
+body.premium-interior #income-documents .ci-table td:last-child a:hover{color:#9A7844}
 @media(max-width:900px){
 body.premium-interior #income-documents .ci-table-wrap{overflow:visible;background:none;border:0;border-radius:0;box-shadow:none}
 body.premium-interior #income-documents .ci-table{display:block;background:none}
 body.premium-interior #income-documents .ci-table caption{display:block;padding:0 0 16px;border:0;background:none}
 body.premium-interior #income-documents .ci-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 body.premium-interior #income-documents .ci-table tbody{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-body.premium-interior #income-documents .ci-table tbody tr{display:flex;flex-direction:column;min-width:0;border:1px solid #dce1e3;border-radius:8px;overflow:hidden;background:white!important}
-body.premium-interior #income-documents .ci-table tbody th{display:block;background:#edf1f2!important;padding:20px!important;font-size:16px}
-body.premium-interior #income-documents .ci-table tbody td{display:block;padding:16px 20px!important;border-bottom:0}
-body.premium-interior #income-documents .ci-table tbody td::before{content:attr(data-label);display:block;margin-bottom:6px;color:#142b3a;font-size:10px;line-height:1.4;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
-body.premium-interior #income-documents .ci-table tbody td:last-child{margin-top:auto;padding-top:6px!important}
+body.premium-interior #income-documents .ci-table tbody tr{display:flex;flex-direction:column;min-width:0;border:1px solid #DAD4C8;border-top:3px solid #9A7844;border-radius:2px;overflow:hidden;background:#FAF9F6!important}
+body.premium-interior #income-documents .ci-table tbody th{display:block;background:#F6F4EF!important;padding:18px 20px!important;font-size:18px;border-bottom:1px solid #DAD4C8}
+body.premium-interior #income-documents .ci-table tbody td{display:block;padding:14px 20px!important;border-bottom:0}
+body.premium-interior #income-documents .ci-table tbody td::before{content:attr(data-label);display:block;margin-bottom:6px;color:#9A7844;font-size:10px;line-height:1.4;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+body.premium-interior #income-documents .ci-table tbody td:last-child{margin-top:auto;padding-top:6px!important;padding-bottom:18px!important}
 body.premium-interior #income-documents .ci-table tbody td:last-child::before{display:none}
-body.premium-interior #income-documents .ci-table td:last-child a{padding:10px 14px;border-radius:4px;background:#edf1f2;text-decoration:none}
+body.premium-interior #income-documents .ci-table td:last-child a{padding:10px 14px;border-radius:2px;background:#EDE8DF;border:1px solid #DAD4C8;text-decoration:none}
 }
 @media(max-width:600px){body.premium-interior #income-documents .ci-table tbody{grid-template-columns:1fr}}

@@ -207,7 +207,7 @@ These rules come from the 2026-05-17 site audit. They exist because publishing t
 
 **Texas scope only.** Adam is licensed in Texas. Never imply origination outside Texas.
 
-**Entity strings exact.** Display name "Adam Styer | HyperSmart Home Loans". Legal name (where disclaimers/NMLS lines appear) "Kyber Mortgage Corporation dba HyperSmart Home Loans". Company NMLS 2653540. Adam's personal NMLS 513013. Never use "The Styer Team" or "Mortgage Solutions LP" as a display name — the legacy entity was fully retired 2026-05-20. (Exception: `/styerteam/` URL handles on Facebook/Instagram/Nextdoor are retained personal-brand social identities and are unaffected.)
+**Entity strings exact.** Display name "The Styer Team · Powered by GoRascal". Legal name (where disclaimers/NMLS lines appear) "The Styer Team · Powered by GoRascal". Company NMLS 2072896. Adam's personal NMLS 513013. Never use "The Styer Team" or "Mortgage Solutions LP" as a display name — the legacy entity was fully retired 2026-05-20. (Exception: `/styerteam/` URL handles on Facebook/Instagram/Nextdoor are retained personal-brand social identities and are unaffected.)
 
 **CTA routing.** All loan-app CTAs route to `/scenario.html` (the tracked landing page). Never the raw 1003 URL (`hypersmart.my1003app.com/513013/register`) as visible link text, even though the nav uses it directly. Calendly link is `https://calendly.com/adamstyer/15minutes`. Phone is `tel:+15129566010`.
 

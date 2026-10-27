@@ -2,7 +2,7 @@
 
 ## Current State
 
-Public mortgage website for Adam Styer | HyperSmart Home Loans. Static HTML/CSS/JS on Netlify with automatic production deploys from GitHub `main`.
+Public mortgage website for The Styer Team · Powered by GoRascal. Static HTML/CSS/JS on Netlify with automatic production deploys from GitHub `main`.
 
 Website forms and the assistant use LoanOS durable inquiry/outbox capture. Netlify is an independent capture transport using the same inquiry ID. Follow-up questionnaires retain the parent inquiry ID; backup alerts are failure-only. Do not restore the old parallel raw-webhook/contact writers.
 
@@ -45,7 +45,7 @@ Validation: 101 site tests + 115 assistant tests passed, TypeScript passed, buil
 - Protect production and inspect current state before changing it.
 - The primary checkout often contains unrelated work. Use an isolated worktree for releases and never deploy a dirty mixed checkout.
 - Match existing HTML/CSS and preserve GTM, form fields, LoanOS capture, and Netlify configuration.
-- Use the business name `Adam Styer | HyperSmart Home Loans`; legal entity `Kyber Mortgage Corporation dba HyperSmart Home Loans`; NMLS 2653540 / 513013.
+- Use the business name `The Styer Team · Powered by GoRascal`; legal entity `The Styer Team · Powered by GoRascal`; NMLS 2072896 / 513013.
 - Adam is licensed to originate in Texas. Do not imply personal origination outside Texas.
 - Keep eligibility, rate, cost, appraisal, credit, program, and closing statements conditional on current written terms and file review.
 - No USDA promotion and no 21-day-close or invented performance claims.
@@ -59,3 +59,7 @@ Validation: 101 site tests + 115 assistant tests passed, TypeScript passed, buil
 - Existing low-priority blog-index `ItemList` position values are non-sequential; this predates the 2026-09-09 article and does not block discovery.
 - `prequal.html` analytics behavior, paid-page positioning, and several legal-copy consistency items remain separate Adam-gated work.
 - Do not make live form submissions for testing; use source, test-suite, Netlify form-registration, and existing non-PII diagnostics.
+
+## October 26 redesign technical pass
+
+See `audits/2026-10-26-technical-handoff.md` for the scoped repairs, test results and Antigravity work still open. Public packaging now uses an explicit reviewed-file manifest in addition to Git-tracked files; all manifest entries must be committed before a remote release. The mixed checkout's navigation/design sync drift and affiliation/application inconsistencies remain release-review items. Do not overwrite the current redesign with a mass sync. No production push/deploy was performed.

@@ -11,13 +11,32 @@ const publicExtensions = /\.(html|css|js|svg|png|jpe?g|webp|ico|json|xml|txt|wof
 const rootData = new Set(['rates.json', 'recent-updates.json', 'task-reports.json', 'robots.txt', 'llms.txt', 'acd320ce4aaac882bfb455892bdcf208.txt', 'sitemap.xml', '_redirects', '_headers', '31a45519eb8335e7c25e45e696e834c6.txt']);
 const privateFiles = new Set(JSON.parse(fs.readFileSync(path.join(root, 'scripts/admin-paths.json'), 'utf8')));
 const tracked = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);
-const files = tracked.filter(file => {
+const releaseFiles = JSON.parse(fs.readFileSync(path.join(root, 'scripts/public-release-files.json'), 'utf8'));
+const candidates = [...new Set([...tracked, ...releaseFiles])];
+const files = candidates.filter(file => {
   if (privateFiles.has(file)) return false;
   if (file.startsWith('.') || file.includes('/originals/') || file.includes('_TEMPLATE')) return false;
   const parts = file.split('/');
   if (parts.length === 1) return rootData.has(file) || (/\.(html|css|js|svg|png|ico|pdf)$/i.test(file) && file !== 'server.js');
   return publicDirectories.has(parts[0]) && publicExtensions.test(file);
 });
+// Fail before replacing the previous package if a reviewed release file is unavailable.
+for (const file of releaseFiles) {
+  if (!files.includes(file) || !fs.existsSync(path.join(root, file))) {
+    throw new Error(`Required public release file is missing or excluded: ${file}`);
+  }
+}
+const published = new Set(files);
+for (const file of files.filter(file => file.endsWith('.html'))) {
+  const html = fs.readFileSync(path.join(root, file), 'utf8');
+  const assets = html.matchAll(/<(?:script|link|img|source)\b[^>]*?\b(?:src|href)=["']([^"']+)["']/gi);
+  for (const [, raw] of assets) {
+    if (/^(?:[a-z]+:|\/\/|#|data:)/i.test(raw)) continue;
+    const asset = path.posix.normalize(path.posix.join(raw.startsWith('/') ? '' : path.posix.dirname(file), raw.split(/[?#]/)[0])).replace(/^\//, '');
+    if (!/\.(?:css|js|png|jpe?g|webp|svg|ico|woff2?)$/i.test(asset)) continue;
+    if (!published.has(asset)) throw new Error(`Public asset missing from package: ${file} -> ${raw}`);
+  }
+}
 fs.rmSync(destination, { recursive: true, force: true });
 fs.mkdirSync(destination, { recursive: true });
 for (const file of files) {

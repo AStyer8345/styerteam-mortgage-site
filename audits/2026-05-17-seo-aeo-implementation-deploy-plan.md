@@ -2,7 +2,7 @@
 
 Date: 2026-05-17
 Site: styermortgage.com
-Owner: Adam Styer | HyperSmart Home Loans
+Owner: The Styer Team · Powered by GoRascal
 
 ## Positioning Guardrails
 

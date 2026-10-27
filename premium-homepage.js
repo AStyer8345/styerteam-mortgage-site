@@ -20,6 +20,8 @@
       }
     });
     item.addEventListener('focusout',function (event) {
+      // Keep mobile tap targets stable until the shared click handler runs.
+      if (window.innerWidth <= 1280) return;
       if (!item.contains(event.relatedTarget)) {
         item.removeAttribute('data-dismissed');item.classList.remove('open');parent.setAttribute('aria-expanded','false');
       }
@@ -52,4 +54,62 @@
     field.addEventListener('change',function () {clearTimeout(timer);update();});
   });
   update();
+})();
+
+/* Fast, smooth count-up animation for ledger metrics (1,000+ and 150+) */
+(function () {
+  'use strict';
+  function initCounters() {
+    var counters = document.querySelectorAll('.pwe-ledger-num[data-count-to]');
+    if (!counters.length) return;
+
+    function runCounter(el) {
+      if (el.dataset.animating || el.dataset.counted) return;
+      el.dataset.animating = 'true';
+      var target = parseInt(el.getAttribute('data-count-to'), 10);
+      var suffix = el.getAttribute('data-count-suffix') || '';
+      if (isNaN(target)) return;
+
+      var duration = 750; // fast & crisp ~750ms
+      var startTime = performance.now();
+
+      function tick(now) {
+        var elapsed = now - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+        // easeOutCubic curve for rapid initial acceleration and clean snap
+        var ease = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(ease * target);
+        var formatted = target >= 1000 ? current.toLocaleString('en-US') : current;
+        el.textContent = formatted + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          var finalFormatted = target >= 1000 ? target.toLocaleString('en-US') : target;
+          el.textContent = finalFormatted + suffix;
+          el.dataset.counted = 'true';
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            runCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      counters.forEach(function (c) { observer.observe(c); });
+    } else {
+      counters.forEach(runCounter);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCounters);
+  } else {
+    initCounters();
+  }
 })();
