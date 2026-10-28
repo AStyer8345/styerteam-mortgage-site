@@ -1,3 +1,13 @@
+## 2026-10-28 — Shorter footer and a guides hub
+
+- Footer link groups are now Loans, Guides, About & Contact, and Legal. NMLS, Equal Housing, and licensing text stay under the links.
+- `/guides.html` lists the guides and calculators so those pages keep an internal link. Existing guide robots tags were not changed.
+
+## 2026-10-28 — One short intake form
+
+- `contact.html` is the only intake page: name, phone, email, purchase or refinance, timeline, optional loan type, plus call, text, and book-a-call. It still posts through the Netlify form and `lead-intake` (n8n dispatch and Mailchimp opt-in).
+- Old intake URLs 301 to that form with the loan goal or loan type in the query string. Pre-approval, refinance, and rate-shopping explanations moved onto the matching guide or city page.
+
 ## 2026-10-28 — One business phone and aligned public counts
 
 - Replaced the retired Austin business number with (512) 956-6010, including `tel:` links.

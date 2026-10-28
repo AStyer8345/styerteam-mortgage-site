@@ -335,6 +335,16 @@
   force = true
 
 [[redirects]]
+  from = "/guides"
+  to = "/guides.html"
+  status = 301
+
+[[redirects]]
+  from = "/guides/"
+  to = "/guides.html"
+  status = 301
+
+[[redirects]]
   from = "/apply-now/"
   to = "https://styermortgage.com/contact.html"
   status = 301
