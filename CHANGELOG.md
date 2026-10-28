@@ -1,3 +1,9 @@
+## 2026-10-28 — Preview: GoRascal compliance package
+
+- Personal websites must be approved in writing by GoRascal Compliance before publishing. Typical approval time is 3–5 business days. Do not launch until written approval is received.
+- Insert GoRascal-approved logo once received. The header now uses a text wordmark. The files in `assets/logo.svg`, `assets/logo-light.svg`, and `assets/logo.png` are self-made marks and are not an official GoRascal logo. They were left in the repo and taken off the header.
+- The public team name is "The Styer Team, Powered by Go Rascal Inc." The footer states company NMLS# 2072896, Adam Styer NMLS# 513013, Licensed in: Texas, and Local Office: [LOCAL OFFICE ADDRESS PENDING]. Not merged.
+
 ## 2026-10-28 — Preview: no jumbo dollar figure on the homepage
 
 - The homepage jumbo card and the matching FAQ no longer state $832,750. Both say a jumbo loan is anything above the conforming limit. Other pages were not edited.

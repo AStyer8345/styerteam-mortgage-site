@@ -22,7 +22,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(title)} | The Styer Team · Powered by GoRascal</title>
+  <title>${escapeHtml(title)} | The Styer Team, Powered by Go Rascal Inc.</title>
   <meta name="description" content="${escapeHtml(description)}">
   <link rel="canonical" href="https://styermortgage.com/rates/${date}.html">
 
@@ -31,7 +31,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="The Styer Team · Powered by GoRascal">
+  <meta property="og:site_name" content="The Styer Team, Powered by Go Rascal Inc.">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${escapeHtml(title)}">
@@ -227,7 +227,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <img src="/assets/logo-light.svg" alt="The Styer Team · Powered by GoRascal" class="nav-logo-img" width="180" height="40">
+          <span class="nav-wordmark">The Styer Team, Powered by Go Rascal Inc.</span>
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -254,7 +254,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
       <div class="container">
         <div class="newsletter-issue-badge">${formattedDate}</div>
         <h1 data-animate>${escapeHtml(title)}</h1>
-        <p class="hero-subtitle" data-animate>Current mortgage rates from Adam Styer at The Styer Team · Powered by GoRascal</p>
+        <p class="hero-subtitle" data-animate>Current mortgage rates from Adam Styer at The Styer Team, Powered by Go Rascal Inc.</p>
       </div>
     </section>
 
@@ -285,12 +285,12 @@ ${rateTable}
             </div>
           </div>
 
-          <p>Talk soon,<br><strong>Adam Styer</strong><br>The Styer Team · Powered by GoRascal<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
+          <p>Talk soon,<br><strong>Adam Styer</strong><br>The Styer Team, Powered by Go Rascal Inc.<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
 
           <div class="rate-compliance">
             <p><strong>Rate Assumptions:</strong> Rates shown assume a 20% down payment, 740+ credit score, owner-occupied primary residence, single-family home, and are based on a 30-day lock period. Rates are subject to change without notice and may vary based on individual circumstances.</p>
             <p><strong>Disclaimer:</strong> Rates shown are for informational purposes only and do not constitute a loan commitment or guarantee. Actual rates, terms, and availability depend on credit score, loan amount, loan-to-value ratio, property type, occupancy, and other underwriting factors. APR reflects the total cost of the loan including certain fees. Contact Adam Styer for a personalized rate quote and full disclosure of terms and costs.</p>
-            <p>The Styer Team · Powered by GoRascal &middot; NMLS# 2072896 &middot; Adam Styer NMLS# 513013 &middot; Texas Licensed Mortgage Broker &middot; <a href="../texas-complaint-notice.html">TX Consumer Complaint Notice</a></p>
+            <p>The Styer Team, Powered by Go Rascal Inc. &middot; NMLS# 2072896 &middot; Adam Styer NMLS# 513013 &middot; Texas Licensed Mortgage Broker &middot; <a href="../texas-complaint-notice.html">TX Consumer Complaint Notice</a></p>
           </div>
 
         </div>
@@ -328,8 +328,8 @@ ${rateTable}
         <div class="footer-section">
           <h4>Contact</h4>
           <p>
-            <strong>The Styer Team · Powered by GoRascal</strong><br>
-            The Styer Team · Powered by GoRascal
+            <strong>The Styer Team, Powered by Go Rascal Inc.</strong><br>
+            The Styer Team, Powered by Go Rascal Inc.
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
@@ -356,11 +356,9 @@ ${rateTable}
 
       <div class="footer-bottom">
         <div>
-          <p>&copy; ${new Date().getFullYear()} The Styer Team · Powered by GoRascal. All rights reserved.</p>
-          <div class="footer-nmls">
-            <strong>NMLS#:</strong> 2072896 (Company) | 513013 (Adam Styer)<br>
-            The Styer Team · Powered by GoRascal is a Licensed Mortgage Broker in Texas.
-          </div>
+          <!-- TODO: Replace [LOCAL OFFICE ADDRESS PENDING] with the confirmed local office address before publish. -->
+          <p>The Styer Team, Powered by Go Rascal Inc. | Company NMLS# 2072896 | Adam Styer NMLS# 513013 | Licensed in: Texas</p>
+          <p>Local Office: [LOCAL OFFICE ADDRESS PENDING]</p>
         </div>
       </div>
     </div>

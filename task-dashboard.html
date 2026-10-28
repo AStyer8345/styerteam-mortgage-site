@@ -324,7 +324,7 @@ input.form-input:focus,textarea.form-input:focus,select.form-input:focus{border-
 
 <nav class="tabs-bar">
   <button class="tab-btn active" data-tab="feed">Activity Feed</button>
-  <button class="tab-btn" data-tab="styer">Styer Mortgage</button>
+  <button class="tab-btn" data-tab="styer">The Styer Team, Powered by Go Rascal Inc.</button>
   <button class="tab-btn" data-tab="loanos">LoanOS</button>
   <button class="tab-btn" data-tab="output">Output</button>
   <button class="tab-btn" data-tab="inbox">
@@ -346,7 +346,7 @@ input.form-input:focus,textarea.form-input:focus,select.form-input:focus{border-
     <div class="section-sub" id="feed-sub">All reports across both projects</div>
     <div class="filter-bar">
       <button class="filter-btn active" data-feed-proj="all">All</button>
-      <button class="filter-btn" data-feed-proj="styer-mortgage">Styer Mortgage</button>
+      <button class="filter-btn" data-feed-proj="styer-mortgage">The Styer Team, Powered by Go Rascal Inc.</button>
       <button class="filter-btn" data-feed-proj="loanos">LoanOS</button>
       <div class="filter-sep"></div>
       <button class="filter-btn active" data-feed-type="all">All Types</button>
@@ -359,7 +359,7 @@ input.form-input:focus,textarea.form-input:focus,select.form-input:focus{border-
 
   <!-- STYER MORTGAGE -->
   <div class="tab-panel" id="tab-styer">
-    <div class="section-title">Styer Mortgage</div>
+    <div class="section-title">The Styer Team, Powered by Go Rascal Inc.</div>
     <div class="section-sub">styermortgage.com · Austin TX</div>
     <div class="metrics-panel" id="styer-metrics"></div>
     <div class="action-rollup" id="styer-actions">
@@ -417,7 +417,7 @@ input.form-input:focus,textarea.form-input:focus,select.form-input:focus{border-
           <div class="form-label" style="margin-bottom:8px">Project</div>
           <div class="msg-project-row" id="msg-project-row">
             <button class="msg-project-btn active" data-proj="all">All Projects</button>
-            <button class="msg-project-btn" data-proj="styer-mortgage">Styer Mortgage</button>
+            <button class="msg-project-btn" data-proj="styer-mortgage">The Styer Team, Powered by Go Rascal Inc.</button>
             <button class="msg-project-btn" data-proj="loanos">LoanOS</button>
           </div>
         </div>
@@ -456,7 +456,7 @@ input.form-input:focus,textarea.form-input:focus,select.form-input:focus{border-
           <div class="form-group">
             <div class="form-label">Project</div>
             <select class="form-input" id="idea-project">
-              <option value="styer-mortgage">Styer Mortgage</option>
+              <option value="styer-mortgage">The Styer Team, Powered by Go Rascal Inc.</option>
               <option value="loanos">LoanOS</option>
             </select>
           </div>
@@ -792,7 +792,7 @@ function getTaskFreq(taskId) {
 function buildFeedCard(r) {
   const dotCls = r.status === 'complete' ? 'dot-complete' : r.status === 'in-progress' ? 'dot-in-progress' : 'dot-failed';
   const projBadge = r.project === 'styer-mortgage'
-    ? '<span class="badge badge-styer">Styer Mortgage</span>'
+    ? '<span class="badge badge-styer">The Styer Team, Powered by Go Rascal Inc.</span>'
     : '<span class="badge badge-loanos">LoanOS</span>';
   const freq = getTaskFreq(r.taskId);
   const freqBadge = freq === 'daily' ? '<span class="badge badge-daily">Daily</span>'
@@ -874,7 +874,7 @@ function renderStyer() {
 
   // Task cards
   document.getElementById('styer-tasks').innerHTML = tasks.map(t => buildTaskCard(t, reports)).join('') ||
-    '<div class="empty-state">No Styer Mortgage tasks found.</div>';
+    '<div class="empty-state">No The Styer Team, Powered by Go Rascal Inc. tasks found.</div>';
 }
 
 // ─── LOANOS ───────────────────────────────────────────────────────────────────
@@ -1117,7 +1117,7 @@ function renderMessages() {
   }
   el.innerHTML = messages.map(m => {
     const dotCls = m.status === 'pending' ? 'dot-msg-pending' : m.status === 'picked-up' ? 'dot-msg-picked-up' : 'dot-msg-completed';
-    const projLabel = m.project === 'all' ? 'All Projects' : m.project === 'styer-mortgage' ? 'Styer Mortgage' : 'LoanOS';
+    const projLabel = m.project === 'all' ? 'All Projects' : m.project === 'styer-mortgage' ? 'The Styer Team, Powered by Go Rascal Inc.' : 'LoanOS';
     return `<div class="msg-history-item">
       <div class="msg-history-dot ${dotCls}"></div>
       <div class="msg-history-body">
@@ -1194,5 +1194,12 @@ function generateIdea() {
 // ─── BOOT ─────────────────────────────────────────────────────────────────────
 init();
 </script>
+
+<footer class="site-footer" style="background:#0d2342;color:#F6F4EF;padding:28px 16px;font:14px/1.5 system-ui,sans-serif">
+<!-- TODO: Replace [LOCAL OFFICE ADDRESS PENDING] with the confirmed local office address before publish. -->
+<p style="color:#F6F4EF;margin:0 0 8px">The Styer Team, Powered by Go Rascal Inc. | Company NMLS# 2072896 | Adam Styer NMLS# 513013 | Licensed in: Texas</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Local Office: [LOCAL OFFICE ADDRESS PENDING]</p>
+<p style="color:#F6F4EF;margin:0">Equal Housing Opportunity. <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" style="color:#F5C443">NMLS Consumer Access</a></p>
+</footer>
 </body>
 </html>

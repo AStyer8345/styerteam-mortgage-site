@@ -9,7 +9,7 @@ const CORRECTION_HTML = `
   <p>Sorry about that. Talk soon,</p>
   <p>
     Adam Styer<br>
-    The Styer Team · Powered by GoRascal<br>
+    The Styer Team, Powered by Go Rascal Inc.<br>
     NMLS# 513013 | (512) 956-6010
   </p>
 </div>

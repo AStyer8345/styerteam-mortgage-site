@@ -1,6 +1,6 @@
-# Adam Styer Mortgage
+# The Styer Team, Powered by Go Rascal Inc.
 
-> Austin-area mortgage guidance from Adam Styer, Individual NMLS #513013, leading The Styer Team, powered by GoRascal (Go Rascal Inc., company NMLS #2072896).
+> Austin-area mortgage guidance from Adam Styer, Individual NMLS #513013, leading The Styer Team, Powered by Go Rascal Inc. (Go Rascal Inc., company NMLS #2072896).
 
 ## Core Paths
 

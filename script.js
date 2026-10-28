@@ -21,7 +21,7 @@ document.addEventListener('formdata', event => { event.formData.set('inquiry_id'
 document.addEventListener('reset', event => { const field = event.target.querySelector('input[name="inquiry_id"]'); if (field) field.value = ''; }, true);
 
 /* ==========================================================================
-   The Styer Team · Powered by GoRascal - Main JavaScript
+   The Styer Team, Powered by Go Rascal Inc. - Main JavaScript
    ========================================================================== */
 
 // ========================================================================

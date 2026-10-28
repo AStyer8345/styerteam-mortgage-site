@@ -102,7 +102,7 @@ async function generateRateUpdate(formData) {
     // ----------------------------------------------------------------
     const fullPageHtml = buildRatePage({
       title: parsed.pageTitle || `Weekly Rate Update - ${formatDateForTitle(today)}`,
-      description: parsed.pageDescription || "This week's mortgage rates from Adam Styer at The Styer Team · Powered by GoRascal",
+      description: parsed.pageDescription || "This week's mortgage rates from Adam Styer at The Styer Team, Powered by Go Rascal Inc.",
       date: today,
       rates,
       direction: formData.direction || null,

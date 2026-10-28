@@ -35,12 +35,12 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
       "jobTitle": "Senior Loan Officer",
       "worksFor": {
         "@type": "Organization",
-        "name": "The Styer Team · Powered by GoRascal"
+        "name": "The Styer Team, Powered by Go Rascal Inc."
       }
     },
     "publisher": {
       "@type": "Organization",
-      "name": "The Styer Team · Powered by GoRascal",
+      "name": "The Styer Team, Powered by Go Rascal Inc.",
       "url": "https://styermortgage.com",
       "logo": {
         "@type": "ImageObject",
@@ -75,7 +75,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${pageUrl}">
-  <meta property="og:site_name" content="The Styer Team · Powered by GoRascal">
+  <meta property="og:site_name" content="The Styer Team, Powered by Go Rascal Inc.">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(title)}">
@@ -107,7 +107,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <img src="/assets/logo-light.svg" alt="The Styer Team · Powered by GoRascal" class="nav-logo-img" width="180" height="40">
+          <span class="nav-wordmark">The Styer Team, Powered by Go Rascal Inc.</span>
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -158,7 +158,7 @@ ${rateBox}
 
           <p>Have questions? Want to know what your options look like right now? Give me a call or shoot me a text. Happy to run the numbers for you.</p>
 
-          <p>Talk soon,<br><strong>Adam Styer</strong><br>The Styer Team · Powered by GoRascal<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
+          <p>Talk soon,<br><strong>Adam Styer</strong><br>The Styer Team, Powered by Go Rascal Inc.<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
 
         </div>
 
@@ -210,8 +210,8 @@ ${rateBox}
         <div class="footer-section">
           <h4>Contact</h4>
           <p>
-            <strong>The Styer Team · Powered by GoRascal</strong><br>
-            The Styer Team · Powered by GoRascal
+            <strong>The Styer Team, Powered by Go Rascal Inc.</strong><br>
+            The Styer Team, Powered by Go Rascal Inc.
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
@@ -238,11 +238,9 @@ ${rateBox}
 
       <div class="footer-bottom">
         <div>
-          <p>&copy; ${new Date().getFullYear()} The Styer Team · Powered by GoRascal. All rights reserved.</p>
-          <div class="footer-nmls">
-            <strong>NMLS#:</strong> 2072896 (Company) | 513013 (Adam Styer)<br>
-            The Styer Team · Powered by GoRascal is a Licensed Mortgage Broker in Texas.
-          </div>
+          <!-- TODO: Replace [LOCAL OFFICE ADDRESS PENDING] with the confirmed local office address before publish. -->
+          <p>The Styer Team, Powered by Go Rascal Inc. | Company NMLS# 2072896 | Adam Styer NMLS# 513013 | Licensed in: Texas</p>
+          <p>Local Office: [LOCAL OFFICE ADDRESS PENDING]</p>
         </div>
       </div>
     </div>

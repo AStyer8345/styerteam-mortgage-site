@@ -19,7 +19,11 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-**2026-10-28 — homepage niche reposition, PR #42, not merged.** The homepage hero is “Complex income. / Clear path forward.” The six cards point at bank statements, 1099s, P&L, asset depletion, DSCR, and jumbo / non-QM. The homepage does not state a jumbo dollar figure. Conventional, FHA, and VA stay linked in the footer, the nav’s last column, and one quiet line. Claims fixes, the readable hero, case cards, and the GoRascal apply link stay. Do not deploy.
+**2026-10-28 — GoRascal compliance preview, PR #42, not merged.** Team name is “The Styer Team, Powered by Go Rascal Inc.” Footer states company NMLS# 2072896, Adam Styer NMLS# 513013, Licensed in: Texas, and Local Office: [LOCAL OFFICE ADDRESS PENDING]. Header is a text wordmark until a GoRascal-approved logo arrives. Do not deploy.
+
+Personal websites must be approved in writing by GoRascal Compliance before publishing. Typical approval time is 3–5 business days. Do not launch until written approval is received.
+
+Insert GoRascal-approved logo once received.
 
 ## Working Rules
 
