@@ -1,6 +1,6 @@
 ## 2026-10-28 — One business phone and aligned public counts
 
-- Replaced (512) 956-6565 with (512) 956-6010, including `tel:` links.
+- Replaced the retired Austin business number with (512) 956-6010, including `tel:` links.
 - Where the same public claim disagreed, used the About page: 40+ lenders instead of 150+, and 144 published reviews (99 Google and 45 Zillow) instead of 140+ or 144+. The first-time buyer guide now says loans closed since September 2015 and 99 Google reviews.
 - Company NMLS 2072896 and licensing text were left as written. Pre-approval and closing-time wording still differs by page because About does not set one number.
 
