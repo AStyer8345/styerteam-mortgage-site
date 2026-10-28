@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-**2026-10-28 — search titles and 404s.** Old newsletter and test URLs that 404 now 301 to the closest post. Switch-lender, closing-cost, non-QM, construction, and calculator titles were rewritten for the queries in Search Console. Sitemap URLs are indexable 200s. Phone stays (512) 956-6010. Jumbo stays above $832,750. No Netlify preview on PR #41.
+**2026-10-28 — claims preview, not published.** Branch `preview/claims-docpaths-source-2026-10-28` is off `design/private-wealth-editorial` at f1369288. It is not merged and has no pull request. Homepage, Non-QM, bank-statement, and self-employed pages drop unsourced program percentages, 14–21 day close lines, and unsourced case results. The homepage keeps 24-hour pre-approval, 150+ wholesale lenders, and the $832,750 jumbo limit, and the short form has one optional `self_reported_source` select. The preserved Non-QM guide is a separate commit. Guides stay indexed. Company NMLS lines were not edited.
 
 ## Working Rules
 

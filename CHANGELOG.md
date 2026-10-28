@@ -1,3 +1,10 @@
+## 2026-10-28 — Preview: claims, document paths, homepage source
+
+- Not published. Branch `preview/claims-docpaths-source-2026-10-28` only. No merge and no pull request.
+- Homepage, Non-QM, bank-statement, and self-employed copy no longer states a 14–21 day close or unsourced credit, down-payment, expense, or price figures. Visible FAQs match FAQPage schema.
+- The homepage short form keeps its fields and adds one optional "how did you first hear about Adam" select. 24-hour pre-approval, 150+ wholesale lenders, and the $832,750 jumbo limit stay.
+- The preserved Non-QM guide, in a separate commit, drops the single credit, down-payment, expense, and asset-depletion figures. It stays indexed.
+
 ## 2026-10-28 — Search titles and old 404s
 
 - Old newsletter, truncated, and test URLs that 404 on the live site now 301 to the closest published post, or to the blog index for the April 28 publish tests. A hero test URL 301s home.
