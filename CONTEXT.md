@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-**2026-10-28 — intake, footer, and homepage speed on the redesign branch.** One short form at `/contact.html` (name, phone, email, purchase or refinance, timeline, optional loan type, call/text/book). Old intake URLs 301 to that form with `goal` or `loan` set. Program explanations moved onto the pre-approval guide, refinance page, rates page, and city lender pages. Footer columns are Loans, Guides, About & Contact, and Legal. `/guides.html` is indexable and lists the guides. Homepage styles are bundled, hero and card images are WebP/AVIF, fonts are self-hosted. `npm run build` passed. No Netlify preview on PR #41. Guide robots tags were not changed.
+**2026-10-28 — full guides are indexable.** The 34 reference guides in `/resources/detailed-guides/` no longer carry noindex and are in the sitemap. Five short public stubs 301 to the matching guide. `/guides.html` links every reference guide. Loan pages link to the related guides. `npm run build` is the check before this note is committed. No Netlify preview on PR #41.
 
 ## Working Rules
 

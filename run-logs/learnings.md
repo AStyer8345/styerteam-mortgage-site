@@ -847,7 +847,7 @@
 ## 2026-03-27 — Weekly Content: Down Payment Assistance Texas 2026
 
 ### Patterns
-- **NotebookLM recommendation vs. keyword gap**: NotebookLM recommended Spring Market + Pre-Approval. Pivoted to DPA keyword gap instead because the existing /austin-down-payment-assistance.html is dated 2025 and the 2026 version is an uncontested search target. When NotebookLM recommendation overlaps with an existing page, favor the keyword gap.
+- **NotebookLM recommendation vs. keyword gap**: NotebookLM recommended Spring Market + Pre-Approval. Pivoted to DPA keyword gap instead because the existing /resources/detailed-guides/austin-down-payment-assistance.html is dated 2025 and the 2026 version is an uncontested search target. When NotebookLM recommendation overlaps with an existing page, favor the keyword gap.
 - **DPA content drives pre-approval submissions**: Down payment assistance posts are high-intent — someone reading about DPA is ready to apply. CTA to /contact.html?goal=Purchase is the natural next step; include it prominently.
 - **Meta description 160-char limit is easy to miss**: Wrote 176-char meta initially. Always count before publishing. Trim the attribution ("Adam Styer, NMLS #513013") from the meta desc — the title tag already carries that.
 - **NotebookLM import must happen after deploy**: URL-based source import fails if the page isn't live yet. Flag for follow-up import once Netlify builds (usually 2-4 min after push).
@@ -1053,7 +1053,7 @@ Newest entries at the top.
 ## 2026-05-02 — Netlify pretty-URL strips `.html` in served HTML; gate grep must be path-agnostic
 
 ### Pattern
-- **Netlify "pretty URLs" rewrite internal links in the served HTML to remove `.html`**, but the local source files keep the `.html` extension. This breaks naive Re-Verify Gate grep checks. Today's near-miss: an initial `curl https://styermortgage.com/how-to-buy-a-house-in-austin-tx.html | grep -c '/loans/usda.html'` returned 0, which read like the HIGH USDA-in-loan-table blocker had auto-resolved. Widening to `grep -ci usda` revealed 6 live mentions including the loan table cell as `<a href="/loans/usda">USDA</a>` (no `.html`).
+- **Netlify "pretty URLs" rewrite internal links in the served HTML to remove `.html`**, but the local source files keep the `.html` extension. This breaks naive Re-Verify Gate grep checks. Today's near-miss: an initial `curl https://styermortgage.com/resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html | grep -c '/loans/usda.html'` returned 0, which read like the HIGH USDA-in-loan-table blocker had auto-resolved. Widening to `grep -ci usda` revealed 6 live mentions including the loan table cell as `<a href="/loans/usda">USDA</a>` (no `.html`).
 - **Rule for Re-Verify Gate grep on live Netlify HTML:** search by resource name (`usda`, `prequal`, `get-preapproved`), not literal local file path. The local-file vs. served-HTML mismatch is structural, not a one-off.
 - **Diagnostic when an auto-resolve seems too easy:** if a HIGH blocker that's been carried for multiple runs appears to clear in a single live grep, widen the pattern before logging RESOLVED. False-clears are worse than false-opens — they remove urgency from a real problem.
 - **The Re-Verify Gate self-corrected today.** The gate exists exactly to catch claims-against-live-state errors; today it caught its own pattern bug. Logging the lesson is what keeps the gate honest in future runs.

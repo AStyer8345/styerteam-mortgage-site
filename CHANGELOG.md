@@ -1,3 +1,9 @@
+## 2026-10-28 — Index the full guides
+
+- Removed noindex from the 34 reference guides under `/resources/detailed-guides/` and added their canonical URLs to the sitemap. Pages that already had questions and answers now include FAQ and Article structured data.
+- The five short public stubs (about 240 words) 301 to the matching reference guide. Their lead paragraphs were copied onto those guides first.
+- Loan pages link to the related reference guides. `/guides.html` lists every reference guide.
+
 ## 2026-10-28 — Homepage speed
 
 - Skyline and card photos are WebP and AVIF, with width/height, srcset on the portrait and cards, and a high-priority preload on the hero image. Below-fold photos stay lazy.
@@ -1612,7 +1618,7 @@ to the .html URL.
 - **Same fix pattern as 2026-04-24 DPA editor run** (`"broker" → correspondent lender`). Adam's flexibility — "can also broker deals when wholesale pricing wins" — preserved as a beat in the positioning.
 - **3 of 5 SKILL.md improvements:**
   - Austin data point: $445K Austin–RR–SM MSA median (April 2026, Unlock MLS) + 16K+ active listings — added to "Why Austin Buyers" section with inline citation.
-  - Updated rate/program data: Freddie Mac PMMS mid-6% range with `freddiemac.com/pmms` citation; LLPA matrix cited to `singlefamily.fanniemae.com`; TSAHC + TDHCA URLs added (replacing un-linked program names); internal links added to `/austin-down-payment-assistance.html`, `/dscr-loan-austin-tx.html`, `/bank-statement-loans.html`, `/non-qm-loans.html`.
+  - Updated rate/program data: Freddie Mac PMMS mid-6% range with `freddiemac.com/pmms` citation; LLPA matrix cited to `singlefamily.fanniemae.com`; TSAHC + TDHCA URLs added (replacing un-linked program names); internal links added to `/resources/detailed-guides/austin-down-payment-assistance.html`, `/dscr-loan-austin-tx.html`, `/bank-statement-loans.html`, `/non-qm-loans.html`.
   - Tighter CTA in Adam's voice: signature reworded to "Got a quote from an online lender or a bank? Send it over. I'll line it up against my pricing... Same-day pre-approval if you want to move on it." Same-day pre-approval differentiator per voice guide.
 - **NOT done (skipped per SKILL.md "never fabricate" rule):** No `/Users/adamstyer/.claude/projects/-Users-adamstyer-Documents/memory/people/` directory exists — no verifiable borrower anecdote available, did not invent one. Photo addition deferred (no verified asset path).
 - **Related Guides anchor updated:** `Mortgage Broker vs Bank` → `Correspondent Lender vs Broker vs Bank` (URL `/mortgage-broker-vs-bank.html` preserved; future redirect/rename is Adam's call).

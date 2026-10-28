@@ -335,6 +335,66 @@
   force = true
 
 [[redirects]]
+  from = "/austin-down-payment-assistance"
+  to = "/resources/detailed-guides/austin-down-payment-assistance.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/austin-down-payment-assistance.html"
+  to = "/resources/detailed-guides/austin-down-payment-assistance.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/closing-costs-texas"
+  to = "/resources/detailed-guides/closing-costs-texas.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/closing-costs-texas.html"
+  to = "/resources/detailed-guides/closing-costs-texas.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/fixed-vs-adjustable"
+  to = "/resources/detailed-guides/fixed-vs-adjustable.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/fixed-vs-adjustable.html"
+  to = "/resources/detailed-guides/fixed-vs-adjustable.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-to-buy-a-house-in-austin-tx"
+  to = "/resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-to-buy-a-house-in-austin-tx.html"
+  to = "/resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/improve-credit-score"
+  to = "/resources/detailed-guides/improve-credit-score.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/improve-credit-score.html"
+  to = "/resources/detailed-guides/improve-credit-score.html"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/guides"
   to = "/guides.html"
   status = 301

@@ -922,14 +922,14 @@ In `resources/index.html`, after the existing First-Time Buyer Guide card (line 
           </a>
 
           <!-- Down Payment Assistance -->
-          <a href="/austin-down-payment-assistance.html" class="resource-card">
+          <a href="/resources/detailed-guides/austin-down-payment-assistance.html" class="resource-card">
             <span class="resource-tag">Guide</span>
             <h2>Down Payment Assistance Programs</h2>
             <p>Texas and Austin-area programs that can cover your down payment and closing costs.</p>
           </a>
 
           <!-- Closing Costs Guide -->
-          <a href="/closing-costs-texas.html" class="resource-card">
+          <a href="/resources/detailed-guides/closing-costs-texas.html" class="resource-card">
             <span class="resource-tag">Guide</span>
             <h2>Texas Closing Costs Guide</h2>
             <p>What to expect for buyer and seller closing costs in Texas, with strategies to reduce them.</p>

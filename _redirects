@@ -93,20 +93,25 @@ http://www.adamstyer.com/*   https://styermortgage.com/:splat  301!
 
 # Additional public root pages (added 2026-05-25 — were duplicate-serving with no rule at all)
 /austin-area-mortgage-lender  /austin-area-mortgage-lender.html  301!
-/austin-down-payment-assistance  /austin-down-payment-assistance.html  301!
+/austin-down-payment-assistance  /resources/detailed-guides/austin-down-payment-assistance.html  301!
+/austin-down-payment-assistance.html  /resources/detailed-guides/austin-down-payment-assistance.html  301!
 /austin-housing-market  /austin-housing-market.html  301!
 /austin-housing-market-2025  /austin-housing-market.html  301!
 /austin-housing-market-2025.html  /austin-housing-market.html  301!
 /austin-mortgage-rates  /austin-mortgage-rates.html  301!
-/closing-costs-texas  /closing-costs-texas.html  301!
+/closing-costs-texas  /resources/detailed-guides/closing-costs-texas.html  301!
+/closing-costs-texas.html  /resources/detailed-guides/closing-costs-texas.html  301!
 /first-time-buyer-guide  /resources/first-time-buyer-guide/  301!
 /first-time-buyer-guide.html  /resources/first-time-buyer-guide/  301!
 /ftb-dpa-guide  /ftb-dpa-guide.html  301!
 /get-preapproved  /get-preapproved.html  301!
 /how-much-house-can-i-afford-austin  /how-much-house-can-i-afford-austin.html  301!
-/how-to-buy-a-house-in-austin-tx  /how-to-buy-a-house-in-austin-tx.html  301!
-/improve-credit-score  /improve-credit-score.html  301!
-/fixed-vs-adjustable  /fixed-vs-adjustable.html  301!
+/how-to-buy-a-house-in-austin-tx  /resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html  301!
+/how-to-buy-a-house-in-austin-tx.html  /resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html  301!
+/improve-credit-score  /resources/detailed-guides/improve-credit-score.html  301!
+/improve-credit-score.html  /resources/detailed-guides/improve-credit-score.html  301!
+/fixed-vs-adjustable  /resources/detailed-guides/fixed-vs-adjustable.html  301!
+/fixed-vs-adjustable.html  /resources/detailed-guides/fixed-vs-adjustable.html  301!
 /mortgage-broker-vs-bank  /mortgage-broker-vs-bank.html  301!
 /mortgage-glossary  /mortgage-glossary.html  301!
 /realtor-resources  /realtor-resources.html  301!
