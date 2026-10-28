@@ -35,7 +35,7 @@ export function fixedConversationReply(message: string): { message: string; sugg
   const value = normalize(message);
   if (/\b(?:who does adam work for|where does adam work|who is adam (?:with|affiliated with)|what (?:company|lender|brokerage) does adam work for|what (?:company|lender|brokerage) is adam with|what (?:company|mortgage company|brokerage) is this|who is your (?:company|brokerage)|who employs adam|adam s employer|is this gorascal|is this go rascal)\b/.test(value)) {
     return {
-      message: 'Adam Styer is a Texas-licensed senior loan officer leading The Styer Team, powered by GoRascal (Go Rascal Inc.). Adam’s individual NMLS number is 513013, and the company NMLS number is 2072896. He works as a mortgage broker, comparing options across 150+ wholesale lenders rather than offering only one retail bank’s products.',
+      message: 'Adam Styer is a Texas-licensed senior loan officer leading The Styer Team, powered by GoRascal (Go Rascal Inc.). Adam’s individual NMLS number is 513013, and the company NMLS number is 2072896. He works as a mortgage broker, comparing options across 40+ wholesale lenders rather than offering only one retail bank’s products.',
       suggestedReplies: ['What loans do you offer?', 'How do I contact Adam?'],
     };
   }

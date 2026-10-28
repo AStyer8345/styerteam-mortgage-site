@@ -62,4 +62,4 @@ Validation: 101 site tests + 115 assistant tests passed, TypeScript passed, buil
 
 ## October 28 — main merged into the redesign
 
-`main` through `c602e86d` is merged into the private-wealth editorial redesign. Conflicted pages keep the redesign’s layout and copy, including The Styer Team · Powered by GoRascal. Former-employer names, logos, and the retired application host are removed. `/apply-now` and Apply Now controls use `https://styermortgage.com/contact.html`. Lead-intake wiring is unchanged. No production deploy from this branch.
+`main` through `c602e86d` is merged into the private-wealth editorial redesign. The homepage copy is in Adam's voice, with Romans 1:16-17 (ESV) by the About section. The only business phone on the site is (512) 956-6010. Public lender and review counts follow the About page: 40+ lenders, 144 published reviews. `/apply-now` uses `https://styermortgage.com/contact.html`. No production deploy from this branch.
