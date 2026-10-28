@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-**2026-10-28 — visible homepage sections and contact note.** The family photo loads with the page (`/assets/family.webp`, JPEG fallback). Case studies stay painted. Scroll fades no longer start at opacity 0. Homepage and contact forms include an optional message field that lead-intake maps into the LoanOS situation. GTM-PQQ6PGLR loads in the head on public pages. Phone stays (512) 956-6010. Jumbo stays above $832,750. No Netlify preview on PR #41.
+**2026-10-28 — search titles and 404s.** Old newsletter and test URLs that 404 now 301 to the closest post. Switch-lender, closing-cost, non-QM, construction, and calculator titles were rewritten for the queries in Search Console. Sitemap URLs are indexable 200s. Phone stays (512) 956-6010. Jumbo stays above $832,750. No Netlify preview on PR #41.
 
 ## Working Rules
 

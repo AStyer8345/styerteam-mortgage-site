@@ -1,3 +1,9 @@
+## 2026-10-28 — Search titles and old 404s
+
+- Old newsletter, truncated, and test URLs that 404 on the live site now 301 to the closest published post, or to the blog index for the April 28 publish tests. A hero test URL 301s home.
+- Titles and descriptions were rewritten for the switch-lender posts, Texas closing costs, asset depletion, one-time-close, non-QM, construction, and the three calculator pages. Each calculator has a one-line intro and a contact link under the result.
+- The sitemap lists 185 URLs. None of them are a 301 or a noindex page.
+
 ## 2026-10-28 — Visible sections, situation note, and tag manager
 
 - The About photo was blank in a full-page capture because `loading="lazy"` waits until the image nears the viewport. It now loads with the page, WebP with a JPEG fallback. The file was already in the repo at `/assets/family.webp`.

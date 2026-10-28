@@ -526,6 +526,247 @@
   to = "/loans/refinance.html"
   status = 301
 
+# Old newsletter and test URLs that return 404
+[[redirects]]
+  from = "/blog/2026-03-06-newsletter.html"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-06-newsletter"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-06-newsletter.html"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-06-newsletter"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-06-temp-placeholder.html"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-06-temp-placeholder"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-10-newsletter.html"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-10-newsletter"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-10-newsletter.html"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-10-newsletter"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-10-temp-placeholder.html"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-10-temp-placeholder"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-30-newsletter.html"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-30-newsletter"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-30-newsletter.html"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-30-newsletter"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-30-temp-placeholder.html"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-30-temp-placeholder"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-spring-market-update-austin-mortgage-rates-invento.html"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-spring-market-update-austin-mortgage-rates-invento"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-01-spring-market-update-austin-mortgage-rates-invento.html"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-01-spring-market-update-austin-mortgage-rates-invento"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-what-you-need-to-know-about-rates-right-now.html"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-what-you-need-to-know-about-rates-right-now"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-01-what-you-need-to-know-about-rates-right-now.html"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-01-what-you-need-to-know-about-rates-right-now"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-test.html"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-test"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hero-test.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hero-test"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-2-post-deploy-verification.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-2-post-deploy-verification"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-3-retry-fix-verification.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-3-retry-fix-verification"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-verifying-end-to-end.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-verifying-end-to-end"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-28-publish-only-test-3-retry-fix-verification.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-28-publish-only-test-3-retry-fix-verification"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-28-publish-only-test-verifying-end-to-end.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-28-publish-only-test-verifying-end-to-end"
+  to = "/blog.html"
+  status = 301
+  force = true
+
 # WordPress cruft — catch-all patterns
 [[redirects]]
   from = "/wp-content/*"
