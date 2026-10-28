@@ -1,3 +1,7 @@
+## 2026-10-28 — Homepage copy in Adam's voice
+
+- Rewrote the homepage wording in the first person, using the About page as the voice. Layout, components, reviews, and existing figures stayed. Added Romans 1:16-17 (ESV) beside the About Adam section.
+
 ## 2026-10-28 — Merge main and remove the former employer
 
 - Merged `main` (`c602e86d`) into the private-wealth editorial redesign. Kept the redesign’s layout and copy where the two branches conflicted, and kept `main`’s removal of the former employer plus its contact-page application destination.
