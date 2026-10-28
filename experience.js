@@ -27,5 +27,5 @@
   if(table.closest('.experience-table-scroll, .program-table-scroll, .ci-table-wrap'))return;
   var wrapper=document.createElement('div');wrapper.className='experience-table-scroll';wrapper.tabIndex=0;wrapper.setAttribute('role','region');wrapper.setAttribute('aria-label',(table.caption&&table.caption.textContent)||'Comparison table — scroll horizontally if needed');table.before(wrapper);wrapper.appendChild(table);
  });
- document.querySelectorAll('.journey-actions').forEach(function(actions){if(!actions.querySelector('a.nav-apply')||actions.parentElement.querySelector('.journey-path-note'))return;var p=document.createElement('p');p.className='experience-portal-note';p.textContent='Apply Now contacts Adam about the next step.';actions.after(p);});
+ document.querySelectorAll('.journey-actions').forEach(function(actions){if(!actions.querySelector('a.nav-apply')||actions.parentElement.querySelector('.journey-path-note'))return;var p=document.createElement('p');p.className='experience-portal-note';p.textContent='Apply Now opens the secure application.';actions.after(p);});
 })();

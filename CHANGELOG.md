@@ -1,3 +1,7 @@
+## 2026-10-28 — Preview: GoRascal application link
+
+- Apply Now and Start a Secure Application hrefs now go to `https://gorascal.my1003app.com/513013/register`. See My Options stays on the contact form. `/apply-now` redirects to the same application link.
+
 ## 2026-10-28 — Preview: case cards say what we did
 
 - Homepage “What happened” lines now say how the file was solved: bank-statement deposits, rent on each house, or an offer that did not wait on the sale. Titles no longer carry a price or “they still closed.”
