@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-**2026-10-28 — full guides are indexable.** The 34 reference guides in `/resources/detailed-guides/` no longer carry noindex and are in the sitemap. Five short public stubs 301 to the matching guide. `/guides.html` links every reference guide. Loan pages link to the related guides. `npm run build` is the check before this note is committed. No Netlify preview on PR #41.
+**2026-10-28 — homepage LCP and two copy fixes.** The hero skyline is an image in the HTML. Simulated mobile Lighthouse median moved from performance 62 and LCP 7.1 s to performance 70 and LCP 5.2 s. Unthrottled LCP on this machine is about 140–180 ms. The remaining simulated wait is the large stylesheet before first paint. Georgetown and Hutto rate notes open on a full sentence. Homepage jumbo copy uses $832,750, and that FAQ says 40+ wholesale lenders. No Netlify preview on PR #41.
 
 ## Working Rules
 

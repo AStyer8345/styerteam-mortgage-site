@@ -1,3 +1,16 @@
+## 2026-10-28 — Homepage speed, again
+
+- The mobile LCP element was the hero section. Its skyline was a CSS background discovered from the large stylesheet. Median of three simulated mobile runs before this change: performance 62, LCP 7.1 s (TTFB about 450 ms, load delay about 1.8 s, load time about 60 ms, render delay about 4.8 s).
+- The skyline is now an image in the HTML, with the hero layout in the first style block. Tag scripts, the assistant, experience.js, and blueprint-interactions.js load after the page loads. Median of three runs after: performance 70, LCP 5.2 s (TTFB about 450 ms, load delay 0, load time about 170 ms, render delay about 4.6 s). Unthrottled LCP on this machine was about 140–180 ms. Simulated slow 4G still waits on the 270 KB stylesheet before first paint.
+
+## 2026-10-28 — Georgetown and Hutto rate note
+
+- The moved rate-shopping paragraph now starts on a complete sentence. The Hutto communities are named in a sentence. No new facts.
+
+## 2026-10-28 — Homepage figures
+
+- Jumbo on the homepage is above $832,750 in both the body and the FAQ. "40+ capital partners" in that FAQ is now "40+ wholesale lenders."
+
 ## 2026-10-28 — Index the full guides
 
 - Removed noindex from the 34 reference guides under `/resources/detailed-guides/` and added their canonical URLs to the sitemap. Pages that already had questions and answers now include FAQ and Article structured data.
