@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-**2026-10-28 — homepage niche reposition, PR #42, not merged.** The homepage hero is “Complex income. / Clear path forward.” The six cards point at bank statements, 1099s, P&L, asset depletion, DSCR, and jumbo / non-QM. Conventional, FHA, and VA stay linked in the footer, the nav’s last column, and one quiet line. Claims fixes, the readable hero, case cards, and the GoRascal apply link stay. Do not deploy.
+**2026-10-28 — homepage niche reposition, PR #42, not merged.** The homepage hero is “Complex income. / Clear path forward.” The six cards point at bank statements, 1099s, P&L, asset depletion, DSCR, and jumbo / non-QM. The homepage does not state a jumbo dollar figure. Conventional, FHA, and VA stay linked in the footer, the nav’s last column, and one quiet line. Claims fixes, the readable hero, case cards, and the GoRascal apply link stay. Do not deploy.
 
 ## Working Rules
 

@@ -1,3 +1,7 @@
+## 2026-10-28 — Preview: no jumbo dollar figure on the homepage
+
+- The homepage jumbo card and the matching FAQ no longer state $832,750. Both say a jumbo loan is anything above the conforming limit. Other pages were not edited.
+
 ## 2026-10-28 — Preview: homepage niche positioning
 
 - The homepage hero is “Complex income.” and “Clear path forward.” The six cards point at bank statements, 1099s, a CPA profit and loss, asset depletion, DSCR, and jumbo / non-QM. Conventional, FHA, and VA stay in the footer, the last nav column, and one quiet line. Title, description, and homepage schema match that positioning. Not merged.
