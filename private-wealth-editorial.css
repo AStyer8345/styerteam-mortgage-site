@@ -468,9 +468,25 @@ body.private-wealth-editorial main .hero.pwe-hero::before,
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background-image:
-    linear-gradient(96deg, rgba(16, 32, 46, 0.68) 0%, rgba(16, 32, 46, 0.44) 42%, rgba(16, 32, 46, 0.16) 72%, rgba(16, 32, 46, 0.36) 100%),
-    linear-gradient(180deg, rgba(16, 32, 46, 0.18) 0%, rgba(16, 32, 46, 0.04) 55%, rgba(16, 32, 46, 0.60) 100%) !important;
+  background: linear-gradient(100deg, rgba(8, 16, 26, 0.86) 0%, rgba(8, 16, 26, 0.74) 36%, rgba(8, 16, 26, 0.34) 54%, rgba(8, 16, 26, 0.08) 72%, rgba(8, 16, 26, 0) 100%) !important;
+}
+
+.pwe-hero-editorial {
+  position: relative;
+  isolation: isolate;
+  opacity: 1 !important;
+}
+
+.pwe-hero-editorial::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: -36px -28px -28px -16px;
+  border-radius: 20px;
+  background: rgba(8, 16, 26, 0.82);
+  box-shadow: 0 0 48px 22px rgba(8, 16, 26, 0.58);
 }
 
 .pwe-hero > .container,
@@ -547,7 +563,8 @@ body.private-wealth-editorial main .hero.pwe-hero::before,
   font-family: var(--pwe-sans);
   font-size: clamp(18px, 1.35vw, 21px) !important;
   line-height: 1.6 !important;
-  color: rgba(246, 244, 239, 0.90) !important;
+  color: #f6f4ef !important;
+  opacity: 1 !important;
   max-width: 54ch !important;
   margin: 0 0 36px !important;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
@@ -570,7 +587,8 @@ body.private-wealth-editorial main .hero.pwe-hero::before,
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(246, 244, 239, 0.76);
+  color: #f6f4ef;
+  opacity: 1;
 }
 
 /* Hero Architectural Portrait Column (Translucent over Full-Bleed Skyline) */
@@ -1853,11 +1871,9 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
    ========================================================================== */
 @keyframes pwe-hero-enter {
   from {
-    opacity: 1;
     transform: translate3d(0, 16px, 0);
   }
   to {
-    opacity: 1;
     transform: translate3d(0, 0, 0);
   }
 }
