@@ -1,3 +1,8 @@
+## 2026-10-28 — Preview: case cards say what we did
+
+- Homepage “What happened” lines now say how the file was solved: bank-statement deposits, rent on each house, or an offer that did not wait on the sale. Titles no longer carry a price or “they still closed.”
+- The same refusal lines came off the Non-QM, bank-statement, and self-employed examples.
+
 ## 2026-10-28 — Preview: claims, document paths, homepage source
 
 - Not published. Branch `preview/claims-docpaths-source-2026-10-28` only. No merge and no pull request.
