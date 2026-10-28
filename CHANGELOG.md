@@ -1,3 +1,13 @@
+## 2026-10-28 — Homepage speed
+
+- Skyline and card photos are WebP and AVIF, with width/height, srcset on the portrait and cards, and a high-priority preload on the hero image. Below-fold photos stay lazy.
+- Homepage styles load as one async bundle plus `style.css`. Inter and Source Serif are self-hosted with `font-display: swap`. Tag scripts stay deferred.
+- Local mobile Lighthouse on this machine: performance 63 before the image and CSS work (2,675 KiB, about 1,950 ms of render-blocking CSS) and 61 after (1,541 KiB, no render-blocking resources). LCP stayed about 6 to 7 seconds on this CPU.
+
+## 2026-10-28 — Restore text cut off by the intake link pass
+
+- Sentences that followed old intake URLs were put back. The links still point at `/contact.html`. The contact form keeps the optional "how did you hear about Adam" question.
+
 ## 2026-10-28 — Shorter footer and a guides hub
 
 - Footer link groups are now Loans, Guides, About & Contact, and Legal. NMLS, Equal Housing, and licensing text stay under the links.

@@ -2,64 +2,28 @@
 
 ## Current State
 
-Public mortgage website for The Styer Team · Powered by GoRascal. Static HTML/CSS/JS on Netlify with automatic production deploys from GitHub `main`.
+Public mortgage website for The Styer Team · Powered by GoRascal. Static HTML/CSS/JS on Netlify. Production deploys from GitHub `main`. This work is on `cursor/merge-main-strip-hypersmart-9952`, PR #41, based on `design/private-wealth-editorial`. Do not push `main`.
 
-Website forms and the assistant use LoanOS durable inquiry/outbox capture. Netlify is an independent capture transport using the same inquiry ID. Follow-up questionnaires retain the parent inquiry ID; backup alerts are failure-only. Do not restore the old parallel raw-webhook/contact writers.
+Legal entity is Go Rascal Inc. Company NMLS 2072896. Adam Styer NMLS 513013. The only business phone is (512) 956-6010. Apply and intake CTAs go to `/contact.html`. `/apply-now` 301s to `https://styermortgage.com/contact.html`.
 
-## Administrative access and generated runtime assets
-
-Administrative pages and task reports are served by `netlify/functions/admin.mts` after validating the existing Netlify `MCC_PASS`. `scripts/admin-paths.json` defines the exact private files; the public packager excludes them. The gateway issues an eight-hour secure HttpOnly cookie. Browser operator requests use that session; external automation retains the server bearer contract. Never embed either access secret in JavaScript or browser storage.
-
-Build compiles private admin assets, the canonical shared footer and reviewed assistant knowledge into their function bundles. After changing `site-footer.html`, run the build or advisory-design sync so the compiled footer stays current. Preserve local command-center browser state and the existing `mcc-state` cloud store.
+Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatches the n8n web-lead webhook. Mailchimp runs only when `marketing_opt_in` is on. Do not rename those fields.
 
 ## Repository
 
 | Item | Value |
 |------|-------|
 | Repo | `AStyer8345/styerteam-mortgage-site` |
-| Primary local checkout | `/Users/adamstyer/Documents/styermortgage.com` |
-| Hosting | Netlify |
+| Hosting | Netlify, publish `.site-dist` |
 | Domain | `https://styermortgage.com` |
 | Production branch | `main` |
 
 ## Last Worked On
 
-**2026-10-06 — assistant question routing and complete contact handoff.** Qualification questions embedded in an income answer now receive an answer before intake continues. The reported 1099/write-off scenario gets conditional alternative-documentation guidance and clarification of conflicting annual gross/monthly net figures. Contact review carries a server-redacted snapshot of the full browser conversation through consent into the established LoanOS inquiry/outbox endpoint; independent Netlify backup receives the same readable snapshot. Transcript storage runs separately and cannot delay capture. Retries reuse a snapshot-specific inquiry ID; additional facts get a new inquiry. Mobile review controls and capture/queued/backup receipts remain visible. Validation: 174 site tests, 133 assistant tests, TypeScript, 166-URL SEO audit and build passed. Browser QA was unavailable because the Chromium download failed; no live test leads were submitted. Production verification follows the release commit.
-
-**2026-09-18 — bank-statement inquiry copy.** The bank-statement page now opens with the self-employed borrower's cash-flow question and explains Adam's personal scenario review. The inquiry introduction makes clear that financial documents are not needed to start. Search/social and Article/MortgageLoan descriptions use the same invitation. Existing headings, qualification content, FAQs, internal links, form identity, consent, attribution, capture code, shared design, and legal language remain intact. Local validation: 125 site tests, 119 assistant tests, TypeScript, the 162-URL SEO audit, build checks, and mocked browser form checks at 390/768/1440px passed. Borrower, realtor, and CPA campaign copy was prepared separately as unsent drafts.
-
-**2026-09-09 — coordinated situation journeys.** Five homepage choices now share `situation-journeys.css` and `situation-journeys.js`, with static Netlify forms, intent-specific questions, stable inquiry IDs, and existing attribution/capture. Standard actions are “Send Your Scenario” and “Start a Secure Application.” Refinance goes directly to `/contact.html?goal=Refinance`; investment goes to `/investor-loans.html`. The existing landlord-purchase article now covers the full direct-purchase checklist and 12 FAQs. No indexed URL was retired. Release details and primary sources: `run-logs/situation-journeys-2026-09-09.md`.
-
-**2026-09-09 — tenant-to-owner article and recommended SEO changes released.** Published `/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html` from official TREC, Texas Property Code, CFPB, TDI, Fannie Mae, and HUD/FHA guidance. The page has answer-first copy, Article and FAQPage structured data, canonical/social metadata, internal links, sitemap/blog-manifest/blog-index/`llms.txt` registration, and source-labeled scenario CTAs. It explains that an unrepresented Texas buyer is allowed, while clearly separating the lender's financing role from agent or attorney representation.
-
-Reworked `/new-braunfels-mortgage-lender.html` around the actual Search Console opportunity: New Braunfels/Comal County intent, conditional rate language, scenario-first CTA, self-employed/investor relevance, and synchronized visible/schema FAQs. Removed unsupported price, school, commute, lender-count, speed, credit-score, down-payment, and testimonial claims. Shortened `/k1-income-mortgage-austin.html` title and meta description for the observed impression/CTR opportunity.
-
-Attribution was verified as already implemented rather than rewritten: `assets/utm.js`, the scenario form, and `netlify/functions/lead-intake.js` preserve first-touch page/source and CTA page/label into LoanOS. New CTAs add `source=tenant_purchase_article` or `source=new_braunfels` and use the proven `/contact.html?goal=Purchase path.
-
-Commit `5df09ac` is live from GitHub `main`. Netlify production deploy `6aa18c13d8e80700080e3424` is ready and matches the full commit `5df09ac4bb809c2950c43cf8e95cdca4c01a6446`. Live verification returned 200 for the article, blog index/manifest, New Braunfels page, K-1 page, sitemap, and `llms.txt`. Netlify mobile Lighthouse summary: Performance 83, Accessibility 90, Best Practices 100, SEO 100.
-
-Validation: 101 site tests + 115 assistant tests passed, TypeScript passed, build/form/knowledge checks passed, and the SEO audit reported 156 sitemap URLs with 0 issues.
+**2026-10-28 — intake, footer, and homepage speed on the redesign branch.** One short form at `/contact.html` (name, phone, email, purchase or refinance, timeline, optional loan type, call/text/book). Old intake URLs 301 to that form with `goal` or `loan` set. Program explanations moved onto the pre-approval guide, refinance page, rates page, and city lender pages. Footer columns are Loans, Guides, About & Contact, and Legal. `/guides.html` is indexable and lists the guides. Homepage styles are bundled, hero and card images are WebP/AVIF, fonts are self-hosted. `npm run build` passed. No Netlify preview on PR #41. Guide robots tags were not changed.
 
 ## Working Rules
 
-- Protect production and inspect current state before changing it.
-- The primary checkout often contains unrelated work. Use an isolated worktree for releases and never deploy a dirty mixed checkout.
-- Match existing HTML/CSS and preserve GTM, form fields, LoanOS capture, and Netlify configuration.
-- Use the business name `The Styer Team · Powered by GoRascal`; legal entity `The Styer Team · Powered by GoRascal`; NMLS 2072896 / 513013.
-- Adam is licensed to originate in Texas. Do not imply personal origination outside Texas.
-- Keep eligibility, rate, cost, appraisal, credit, program, and closing statements conditional on current written terms and file review.
-- No USDA promotion and no 21-day-close or invented performance claims.
-- Use the secure application only behind descriptive anchor text; scenario/review CTAs use the proven short form.
-- New blog posts must be registered in `blog/manifest.json`, `blog.html` CollectionPage schema and noscript list, `sitemap.xml`, and when appropriate `llms.txt`.
-- Use an answer-first paragraph before the first H2 and keep visible FAQs synchronized with FAQPage JSON-LD.
-- Run `npm test`, `npm run typecheck`, `npm run seo:audit`, and `npm run build`; verify the exact production commit and live HTTP content after release.
-
-## Open Items
-
-- Existing low-priority blog-index `ItemList` position values are non-sequential; this predates the 2026-09-09 article and does not block discovery.
-- `prequal.html` analytics behavior, paid-page positioning, and several legal-copy consistency items remain separate Adam-gated work.
-- Do not make live form submissions for testing; use source, test-suite, Netlify form-registration, and existing non-PII diagnostics.
-
-## October 28 — main merged into the redesign
-
-`main` through `c602e86d` is merged into the private-wealth editorial redesign. The homepage copy is in Adam's voice, with Romans 1:16-17 (ESV) by the About section. The only business phone on the site is (512) 956-6010. Public lender and review counts follow the About page: 40+ lenders, 144 published reviews. `/apply-now` uses `https://styermortgage.com/contact.html`. No production deploy from this branch.
+- Match existing HTML/CSS. Do not add a CSS framework or npm package without approval.
+- Keep GTM, form field names, LoanOS capture, and the lead-intake webhook.
+- New blog posts belong in `blog/manifest.json`, `blog.html`, and the sitemap. Realtor updates stay under `/realtor-updates/` and are also registered in the blog index.
+- Do not mark a briefing ticket done unless every file for it is committed in the same session.
