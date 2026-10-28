@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-**2026-10-28 — homepage LCP and two copy fixes.** The hero skyline is an image in the HTML. Simulated mobile Lighthouse median moved from performance 62 and LCP 7.1 s to performance 70 and LCP 5.2 s. Unthrottled LCP on this machine is about 140–180 ms. The remaining simulated wait is the large stylesheet before first paint. Georgetown and Hutto rate notes open on a full sentence. Homepage jumbo copy uses $832,750, and that FAQ says 40+ wholesale lenders. No Netlify preview on PR #41.
+**2026-10-28 — 24-hour pre-approval, 150+ wholesale lenders, team voice.** Public pre-approval timing is "24-hour pre-approval" / "Pre-approval in 24 hours." The lender count is 150+ wholesale lenders. Review count stays 144 (99 Google and 45 Zillow). Homepage process, service, and form lines use "my team and I" / "we." Adam's family, faith, and closed-file notes stay first person. Romans 1:16-17 (ESV) is unchanged. "How we price your loan" is a short section under the loan options. Phone stays (512) 956-6010. Jumbo stays above $832,750. No Netlify preview on PR #41.
 
 ## Working Rules
 

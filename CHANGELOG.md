@@ -1,3 +1,13 @@
+## 2026-10-28 — 24-hour pre-approval and 150+ wholesale lenders
+
+- Public pre-approval timing now says 24 hours, including FAQ and structured data. Reply-time lines and the Loan Estimate's 3-business-day rule were left as they were.
+- Lender counts now say 150+ wholesale lenders, including the About page, homepage, and schema. The 144 reviews figure is unchanged.
+
+## 2026-10-28 — Homepage and About voice
+
+- Homepage process, service, and contact lines now say "my team and I" or "we." Adam's name, family, licensed-since line, closed files, and Romans 1:16-17 (ESV) stay in the first person.
+- "How we price your loan" is four sentences in its own section, under the loan options.
+
 ## 2026-10-28 — Homepage speed, again
 
 - The mobile LCP element was the hero section. Its skyline was a CSS background discovered from the large stylesheet. Median of three simulated mobile runs before this change: performance 62, LCP 7.1 s (TTFB about 450 ms, load delay about 1.8 s, load time about 60 ms, render delay about 4.8 s).
