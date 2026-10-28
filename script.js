@@ -1146,7 +1146,9 @@ function initPrequalForm() {
 // INIT - Single DOMContentLoaded entry point
 // ========================================================================
 
-document.addEventListener('DOMContentLoaded', () => {
+function bootSite() {
+  if (window.__styerSiteBooted) return;
+  window.__styerSiteBooted = true;
   initNavigation();
   initAccordion();
   initDisclosureNavigation();
@@ -1158,7 +1160,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initPrequalForm();
   initCityToggle();
   initMortgageAssistant();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootSite);
+} else {
+  bootSite();
+}
 
 function initMortgageAssistant() {
   if (document.querySelector('script[data-mortgage-assistant]')) return;
