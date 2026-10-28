@@ -1,3 +1,10 @@
+## 2026-10-28 — Visible sections, situation note, and tag manager
+
+- The About photo was blank in a full-page capture because `loading="lazy"` waits until the image nears the viewport. It now loads with the page, WebP with a JPEG fallback. The file was already in the repo at `/assets/family.webp`.
+- The Austin files section was blank because JavaScript added a class that set opacity to 0 until the section scrolled into view. That gate is gone. Scroll-reveal defaults in the main stylesheet also stay visible, including when motion is reduced.
+- Homepage and contact forms have an optional "Tell us a little about your situation" note named `message`. Lead intake copies that text into the LoanOS situation field when it is not already there.
+- Public pages load GTM-PQQ6PGLR in the head, the same container as the rest of the site.
+
 ## 2026-10-28 — 24-hour pre-approval and 150+ wholesale lenders
 
 - Public pre-approval timing now says 24 hours, including FAQ and structured data. Reply-time lines and the Loan Estimate's 3-business-day rule were left as they were.

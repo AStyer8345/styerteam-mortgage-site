@@ -535,25 +535,12 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
   }
   </script>
 <script>window.dataLayer = window.dataLayer || [];</script>
-<!-- Google Tag Manager (deferred to idle-time to keep main thread clear during LCP) -->
-<script>
-  (function(){
-    var loaded = false;
-    function loadGTM(){
-      if (loaded) return; loaded = true;
-      // Container snippet preserved verbatim — only the invocation is deferred.
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-PQQ6PGLR');
-    }
-    // Fire on first user interaction OR after idle, whichever comes first.
-    var events = ['scroll','mousemove','touchstart','keydown','click'];
-    events.forEach(function(ev){ window.addEventListener(ev, loadGTM, { once:true, passive:true }); });
-    window.addEventListener('load', function () { setTimeout(loadGTM, 5000); }, { once: true });
-  })();
-  </script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
 <!-- End Google Tag Manager -->
 <!-- Homepage surface tuning: deepen the light bands so the page isn't a white wash,
        and give white cards a real edge so they read as distinct surfaces.
@@ -964,14 +951,17 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div class="container">
 <p class="pwe-kicker">How we price your loan</p>
 <h2 class="pwe-section-title" id="how-we-price-title">A bank can only sell you its own loan.</h2>
-<p>My team and I are mortgage brokers in Austin. We take your file to 150+ wholesale lenders we already work with, compare the price and the guidelines, and you can still reach Adam on the phone.</p>
+<p>My team and I are mortgage brokers in Austin. We take your file to 150+ wholesale lenders we already work with, compare the price and the guidelines, and you'll still have Adam's cell.</p>
 <p>W-2 wages start with a conventional, FHA, or VA loan, self-employed income can use bank statements, 1099s, or a profit and loss statement, and a rental is looked at from the rent. We stay on the file from the first call through closing.</p>
 </div>
 </section>
 <section aria-labelledby="pwe-people-title" class="about-adam-photo pwe-people" id="about-adam">
 <div class="container pwe-people-grid">
 <figure class="pwe-people-portrait">
-<img alt="Adam Styer with his wife Britney Jo and their three children in the Texas Hill Country" decoding="async" height="800" loading="lazy" src="/assets/family.webp" width="600"/>
+<picture>
+<source srcset="/assets/family.webp" type="image/webp"/>
+<img alt="Adam Styer with his wife Britney Jo and their three children in the Texas Hill Country" height="800" src="/assets/family.jpg" width="600"/>
+</picture>
 <figcaption>Adam, Britney Jo &amp; family · Austin, TX</figcaption>
 </figure>
 <div class="pwe-people-copy">
@@ -1170,7 +1160,7 @@ Read Full Case Study
 <div>
 <p class="pwe-kicker">Reviews</p>
 <h2 class="pwe-section-title" id="pwe-reviews-title" style="margin-bottom:8px !important;">What clients and Realtors wrote.</h2>
-<p style="margin:0;font-size:16px;color:var(--pwe-slate);">These are Google reviews. We did not write them.</p>
+<p style="margin:0;font-size:16px;color:var(--pwe-slate);">These are Google and Zillow reviews. We did not write them.</p>
 </div>
 <div class="review-aggregate-bar">
 <a aria-label="Read Adam Styer's Google reviews" class="review-aggregate-item" href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" rel="noopener" style="color:inherit;text-decoration:none;" target="_blank">
@@ -1347,7 +1337,7 @@ Read Full Case Study
 <div class="journey-field journey-full"><label for="name">Name *</label><input autocomplete="name" id="name" maxlength="160" name="name" required="" type="text"/></div>
 <div class="journey-field"><label for="phone">Phone (optional)</label><input autocomplete="tel" id="phone" maxlength="30" name="phone" type="tel"/></div>
 <div class="journey-field"><label for="email">Email *</label><input autocomplete="email" id="email" maxlength="160" name="email" required="" type="email"/></div>
-<div class="journey-field journey-full"><label for="message">Tell us about your situation (optional)</label><textarea aria-describedby="homepage-form-hint" id="message" maxlength="2000" name="message" placeholder="Purchase price, property type, income structure, or question…" rows="2"></textarea></div>
+<div class="journey-field journey-full"><label for="message">Tell us a little about your situation (optional)</label><textarea aria-describedby="homepage-form-hint" id="message" maxlength="2000" name="message" placeholder="Purchase price, property type, income structure, or question…" rows="4"></textarea></div>
 <input name="preferred_follow_up" type="hidden" value="Email"/>
 </div>
 <input name="self_reported_source" type="hidden" value=""/>
@@ -1582,48 +1572,6 @@ Read Full Case Study
     form.elements.cta_label.value = link.textContent.trim();
     form.elements.source.value = link.dataset.source || 'homepage_options';
   });
-</script>
-<script>
-  // Mandate section fade — arm only after paint, and only if still below the fold.
-  // Without JS (or with reduced motion) content stays fully visible; no opacity:0 gate on first paint.
-  (function () {
-    if (!document.body.classList.contains('private-wealth-editorial')) return;
-    var section = document.querySelector('.pwe-mandates');
-    if (!section) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    function armMandateEntrance() {
-      var rect = section.getBoundingClientRect();
-      var viewport = window.innerHeight || document.documentElement.clientHeight;
-      var alreadyInView = rect.top < viewport * 0.9 && rect.bottom > 40;
-      if (alreadyInView) {
-        section.classList.add('pwe-inview');
-        return;
-      }
-      section.classList.add('pwe-motion-ready');
-      if (!('IntersectionObserver' in window)) {
-        section.classList.add('pwe-inview');
-        return;
-      }
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          section.classList.add('pwe-inview');
-          io.disconnect();
-        });
-      }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
-      io.observe(section);
-    }
-
-    function schedule() {
-      requestAnimationFrame(armMandateEntrance);
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', schedule, { once: true });
-    } else {
-      schedule();
-    }
-  })();
 </script>
 <script>
   // Fast Hero Count-Up & Sequential 1->2->3->4->5 Gold Star Illumination

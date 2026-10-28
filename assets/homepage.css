@@ -2763,37 +2763,10 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
   }
 }
 
-@keyframes pwe-mandate-fade {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 18px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  /* ONE hero entrance — editorial column rises; opacity stays at 1 throughout */
+  /* Hero copy rises. Opacity stays at 1 so the first paint is readable. */
   body.private-wealth-editorial .pwe-hero-editorial {
     animation: pwe-hero-enter 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  /* ONE mandate fade — armed by JS only when section starts below the fold */
-  body.private-wealth-editorial .pwe-mandates.pwe-motion-ready:not(.pwe-inview) .pwe-mandates-head,
-  body.private-wealth-editorial .pwe-mandates.pwe-motion-ready:not(.pwe-inview) .pwe-mandate-ledger {
-    opacity: 0;
-    transform: translate3d(0, 18px, 0);
-  }
-
-  body.private-wealth-editorial .pwe-mandates.pwe-inview .pwe-mandates-head,
-  body.private-wealth-editorial .pwe-mandates.pwe-inview .pwe-mandate-ledger {
-    animation: pwe-mandate-fade 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  body.private-wealth-editorial .pwe-mandates.pwe-inview .pwe-mandate-ledger {
-    animation-delay: 90ms;
   }
 }
 

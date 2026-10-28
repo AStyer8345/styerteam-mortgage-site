@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-**2026-10-28 — 24-hour pre-approval, 150+ wholesale lenders, team voice.** Public pre-approval timing is "24-hour pre-approval" / "Pre-approval in 24 hours." The lender count is 150+ wholesale lenders. Review count stays 144 (99 Google and 45 Zillow). Homepage process, service, and form lines use "my team and I" / "we." Adam's family, faith, and closed-file notes stay first person. Romans 1:16-17 (ESV) is unchanged. "How we price your loan" is a short section under the loan options. Phone stays (512) 956-6010. Jumbo stays above $832,750. No Netlify preview on PR #41.
+**2026-10-28 — visible homepage sections and contact note.** The family photo loads with the page (`/assets/family.webp`, JPEG fallback). Case studies stay painted. Scroll fades no longer start at opacity 0. Homepage and contact forms include an optional message field that lead-intake maps into the LoanOS situation. GTM-PQQ6PGLR loads in the head on public pages. Phone stays (512) 956-6010. Jumbo stays above $832,750. No Netlify preview on PR #41.
 
 ## Working Rules
 

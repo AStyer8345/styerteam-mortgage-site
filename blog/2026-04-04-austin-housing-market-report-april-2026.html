@@ -3,29 +3,12 @@
 <html lang="en">
 <head>
 <script>window.dataLayer = window.dataLayer || [];</script>
-<!-- Google Tag Manager (deferred to idle-time to keep main thread clear during LCP) -->
-<script>
-  (function(){
-    var loaded = false;
-    function loadGTM(){
-      if (loaded) return; loaded = true;
-      // Container snippet preserved verbatim — only the invocation is deferred.
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-PQQ6PGLR');
-    }
-    // Fire on first user interaction OR after idle, whichever comes first.
-    var events = ['scroll','mousemove','touchstart','keydown','click'];
-    events.forEach(function(ev){ window.addEventListener(ev, loadGTM, { once:true, passive:true }); });
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(loadGTM, { timeout: 3500 });
-    } else {
-      setTimeout(loadGTM, 3500);
-    }
-  })();
-  </script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
 <!-- End Google Tag Manager -->
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
