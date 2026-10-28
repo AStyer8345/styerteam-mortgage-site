@@ -1,5 +1,5 @@
 // netlify/functions/subscribe-lead.js
-// Called by the JS submit handler on /get-preapproved and /refinance-quote.
+// Called by the JS submit handler on /contact.html?goal=Purchase and /refinance-quote.
 //
 // POST /.netlify/functions/subscribe-lead
 // Body: { email, fname, lname, phone, tag, loan_goal, utm_source, utm_medium, utm_campaign, page_url }

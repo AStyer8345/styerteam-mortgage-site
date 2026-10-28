@@ -96,19 +96,15 @@ n8n `Web Lead Automation` workflow (`PiuIsQpBuydtFM4m`) is in place. The decisio
 
 | ID | Issue | File(s) | State |
 |---|---|---|---|
-| P2-A | `/get-preapproved.html` legacy href; affordability page already canonicalized to `/get-preapproved` | calculator-payment.html:104, calculator-refinance-breakeven.html:110 | unchanged |
-| P2-B | Stripped footer omits `Adam Styer | Mortgage Solutions LP` brand line | the three small calc pages | unchanged |
-| P2-C | Buydown frequency label vs radio mismatch | rate-buydown-calculator.html | implicitly fixed by P0-A patch |
-| P2-D | WRAP — no validation against negative-am inputs | wrap-mortgage-calculator.html | unchanged |
-| P2-E | Refi closing-cost — Lender's Title Policy default ($2,119) unexplained (Texas TDI-regulated) | refinance-calculator.html:544 | unchanged |
+| P2-A | `/contact.html?goal=Purchase's Title Policy default ($2,119) unexplained (Texas TDI-regulated) | refinance-calculator.html:544 | unchanged |
 | P2-F | Hub uses full 4-column footer; calc pages use stripped footer | calculators.html vs others | unchanged |
 
 P2-A verified this run:
 
 ```text
-calculator-payment.html:104:          <a href="/get-preapproved.html" ...
-calculator-refinance-breakeven.html:110:          <a href="/get-preapproved.html" ...
-calculator-affordability.html:98:          <a href="/get-preapproved" ...   ← canonical
+calculator-payment.html:104:          <a href="/contact.html?goal=Purchase" ...
+calculator-refinance-breakeven.html:110:          <a href="/contact.html?goal=Purchase" ...
+calculator-affordability.html:98:          <a href="/contact.html?goal=Purchase" ...   ← canonical
 ```
 
 ---
@@ -206,11 +202,4 @@ Wider site this week shipped (none of which touched calc pages):
 
 1. **Apply `patches/calculator-2026-04-20-P0.diff`** — 15 min total. Order: P0-A (2 lines) → P0-B (2 lines) → P0-E (move 1 script tag) → P0-D (14 id/for pairs) → P0-C (regress-test 4 pages after).
 2. **Decide on P1-A inline lead capture** — render location + which 1–3 calcs ship first. Now disproportionately costly given the site shipped smart forms + prequal funnel + `/scenario` this week and calc pages are still passive.
-3. **P2-A** — 2-line `/get-preapproved.html` → `/get-preapproved` href fix.
-4. **P2-B** — agree on canonical footer brand line for the 3 stripped-footer calc pages, apply.
-
-P3 (analytics event, Texas-specific gaps) → TODO.md backlog. Not blocking.
-
----
-
-*No calculator HTML or JS was modified by this audit. No new patch file was written; the existing `patches/calculator-2026-04-20-P0.diff` (28 days old, applies cleanly to today's source) covers every P0 surfaced here.*
+3. **P2-A** — 2-line `/contact.html?goal=Purchase's source) covers every P0 surfaced here.*

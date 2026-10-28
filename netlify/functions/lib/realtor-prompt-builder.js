@@ -43,9 +43,7 @@ Write as Adam — peer to peer with a realtor he works with regularly. Professio
 - Include 3-5 internal links to relevant site pages (use "../" prefix):
   ../realtors.html (Partner With Adam), ../realtor-resources.html (More Partner Resources),
   ../products.html (Loan Programs), ../calculators.html (Calculators),
-  ../prequal.html (Pre-Qualification), ../contact.html (Contact),
-  ../about.html (About Adam), ../testimonials.html (Testimonials)
-${category ? `- PAGE_CATEGORY: ${category}` : "- Choose a PAGE_CATEGORY from: Market Intel, Co-Marketing, Deal Flow, Tech & Tools, Lending Insights"}
+  ../contact.html?goal=Purchase"- Choose a PAGE_CATEGORY from: Market Intel, Co-Marketing, Deal Flow, Tech & Tools, Lending Insights"}
 
 ## ARTICLE URL
 The full article lives at this exact URL: ${pageUrl}
@@ -106,10 +104,7 @@ DO NOT output <!DOCTYPE>, <html>, <head>, <body>, <style>, <title>, or <meta> ta
 ### Main Content
 Cover the topic with real substance. Focus on what realtors can DO with this information.
 - HTML: <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>
-- Links use "../" prefix (../realtors.html, ../realtor-resources.html, ../products.html, ../calculators.html, ../prequal.html, ../contact.html)
-- Use 3-5 descriptive <h2> subheadings that break up the content
-- Include at least 3 internal links to other site pages where relevant
-- Keep it practical: "Here's what this means for your clients" / "Here's how to talk about this"
+- Links use "../" prefix (../realtors.html, ../realtor-resources.html, ../products.html, ../calculators.html, ../contact.html?goal=Purchase"Here's what this means for your clients" / "Here's how to talk about this"
 ${aiTool ? '- Include a "Tech Edge" or "AI Corner" section about the AI tool tip' : ""}
 ${story ? `
 ### Personal Note

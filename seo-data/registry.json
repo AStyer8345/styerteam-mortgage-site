@@ -57,7 +57,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/rate-check.html",
+      "url": "https://styermortgage.com/contact.html?goal=Refinance&loan=second-look",
       "intent": "rate check",
       "queryGroup": "rate check",
       "pageType": "resource",
@@ -66,7 +66,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/rate-alert.html",
+      "url": "https://styermortgage.com/contact.html",
       "intent": "rate alert",
       "queryGroup": "rate alert",
       "pageType": "resource",
@@ -75,7 +75,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/get-preapproved.html",
+      "url": "/contact.html?goal=Purchase",
       "intent": "get preapproved",
       "queryGroup": "get preapproved",
       "pageType": "resource",
@@ -84,7 +84,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/scenario.html",
+      "url": "https://styermortgage.com/contact.html",
       "intent": "scenario",
       "queryGroup": "scenario",
       "pageType": "resource",
@@ -111,7 +111,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/refinance-quote.html",
+      "url": "https://styermortgage.com/contact.html?goal=Refinance",
       "intent": "refinance quote",
       "queryGroup": "refinance quote",
       "pageType": "resource",
@@ -156,7 +156,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/prequal.html",
+      "url": "https://styermortgage.com/contact.html?goal=Purchase",
       "intent": "prequal",
       "queryGroup": "prequal",
       "pageType": "resource",
@@ -822,7 +822,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/rate-check-round-rock.html",
+      "url": "https://styermortgage.com/contact.html?goal=Refinance&loan=second-look",
       "intent": "rate check round rock",
       "queryGroup": "rate check round rock",
       "pageType": "resource",
@@ -831,7 +831,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/rate-check-cedar-park.html",
+      "url": "https://styermortgage.com/contact.html?goal=Refinance&loan=second-look",
       "intent": "rate check cedar park",
       "queryGroup": "rate check cedar park",
       "pageType": "resource",
@@ -840,7 +840,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/rate-check-georgetown.html",
+      "url": "https://styermortgage.com/contact.html?goal=Refinance&loan=second-look",
       "intent": "rate check georgetown",
       "queryGroup": "rate check georgetown",
       "pageType": "resource",
@@ -849,7 +849,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/rate-check-buda-kyle.html",
+      "url": "https://styermortgage.com/contact.html?goal=Refinance&loan=second-look",
       "intent": "rate check buda kyle",
       "queryGroup": "rate check buda kyle",
       "pageType": "resource",
@@ -858,7 +858,7 @@
       "consolidationStatus": "canonical"
     },
     {
-      "url": "https://styermortgage.com/rate-check-new-braunfels.html",
+      "url": "https://styermortgage.com/contact.html?goal=Refinance&loan=second-look",
       "intent": "rate check new braunfels",
       "queryGroup": "rate check new braunfels",
       "pageType": "resource",

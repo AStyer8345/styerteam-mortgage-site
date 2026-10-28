@@ -80,9 +80,7 @@ If you're starting to think seriously about buying in the next 6-12 months, the 
 
 Takes about 15 minutes:
 [GET PRE-APPROVED →]
-/get-preapproved.html?intent=scenario
-
-Or just reply to this email with your questions. I'm here.
+/contact.html?goal=Purchase'm here.
 
 Adam Styer
 Senior Loan Officer | NMLS #513013
@@ -118,30 +116,7 @@ That's what I do at The Styer Team · Powered by GoRascal. We're not a big bank 
 If you're ready to find out where you stand, here are two ways to take the next step:
 
 [GET PRE-APPROVED ONLINE →]
-/get-preapproved.html?intent=scenario
-
-Or call/text me directly: (512) 956-6010
-
-No pressure. No obligation. Just clarity.
-
-Adam Styer
-Senior Loan Officer | NMLS #513013
-The Styer Team · Powered by GoRascal
-(512) 956-6010
-adam@thestyerteam.com
-
-
-============================================================
-SEQUENCE NOTES
-============================================================
-
-TIMING:
-  - Email 1: Immediate (triggered by opt-in)
-  - Email 2: 3 days after Email 1
-  - Email 3: 5 days after Email 2 (8 days total from opt-in)
-
-MAILCHIMP SETUP:
-  - Create automation: "First-Time Buyer Guide Drip"
+/contact.html?goal=Purchase"First-Time Buyer Guide Drip"
   - Trigger: Subscriber joins the guide opt-in audience/tag
   - 3 emails with time delays as noted above
   - From name: Adam Styer
@@ -155,10 +130,4 @@ SUBJECT LINE A/B TEST IDEAS:
 
 CTA LINKS:
   - Guide download: https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9
-  - Pre-approval: /get-preapproved.html?intent=scenario
-
-COMPLIANCE:
-  - All emails must include physical mailing address and unsubscribe link
-    (handled automatically by Mailchimp)
-  - NMLS #513013 included in every email signature
-  - No guaranteed rate promises — all examples use illustrative language
+  - Pre-approval: /contact.html?goal=Purchase

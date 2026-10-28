@@ -50,7 +50,7 @@ test('form attribution reuses first touch and recovers the clicked CTA without P
     'first_touch_utm_content', 'intent', 'source', 'cta_source_page', 'cta_label',
   ].forEach((name) => fields.set(name, { value: '' }));
 
-  const location = new URL('https://styermortgage.com/get-preapproved.html?intent=scenario');
+  const location = new URL('/contact.html?goal=Purchase');
   const document = {
     readyState: 'complete',
     referrer: 'https://styermortgage.com/bank-statement-loans.html?private=discarded',

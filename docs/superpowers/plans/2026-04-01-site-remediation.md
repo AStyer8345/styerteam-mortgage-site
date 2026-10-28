@@ -226,7 +226,7 @@ This block will be inserted on each calculator page before the `<footer>` tag:
         <h2 style="color:#fff;font-size:1.5rem;margin-bottom:0.5rem;">Ready to Make It Real?</h2>
         <p style="color:rgba(255,255,255,0.8);margin-bottom:1.5rem;">Get a personalized quote from Adam Styer — no obligation, no credit impact.</p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="/get-preapproved.html" class="btn btn-primary" style="background:var(--color-gold,#C9A84C);color:#fff;padding:0.75rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;">Get Pre-Approved</a>
+          <a href="/contact.html?goal=Purchase" class="btn btn-primary" style="background:var(--color-gold,#C9A84C);color:#fff;padding:0.75rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;">Get Pre-Approved</a>
           <a href="tel:+15129566010" style="color:#fff;padding:0.75rem 1.5rem;border:1px solid rgba(255,255,255,0.3);border-radius:6px;text-decoration:none;">Call (512) 956-6010</a>
         </div>
       </div>
@@ -256,7 +256,7 @@ This page has no nav and no footer. Add a minimal header link and CTA. After the
         <h2 style="color:#fff;font-size:1.5rem;margin-bottom:0.5rem;">Ready to Refinance?</h2>
         <p style="color:rgba(255,255,255,0.8);margin-bottom:1.5rem;">Get a personalized refinance quote from Adam Styer.</p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="/refinance-quote.html" style="background:var(--color-gold,#C9A84C);color:#fff;padding:0.75rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;">Get My Refi Quote</a>
+          <a href="/contact.html?goal=Refinance" style="background:var(--color-gold,#C9A84C);color:#fff;padding:0.75rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;">Get My Refi Quote</a>
           <a href="tel:+15129566010" style="color:#fff;padding:0.75rem 1.5rem;border:1px solid rgba(255,255,255,0.3);border-radius:6px;text-decoration:none;">Call (512) 956-6010</a>
         </div>
         <p style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:1rem;"><a href="/calculators.html" style="color:rgba(255,255,255,0.6);">← All Calculators</a> · <a href="/" style="color:rgba(255,255,255,0.6);">styermortgage.com</a></p>
@@ -678,8 +678,7 @@ Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
 ### Task 10: Unblock prequal.html in robots.txt and Add noindex to hero-test.html
 
 **Files:**
-- Modify: `robots.txt:13` — remove `Disallow: /prequal.html`
-- Modify: `hero-test.html` — add `<meta name="robots" content="noindex, nofollow">`
+- Modify: `robots.txt:13` — remove `Disallow: /contact.html?goal=Purchase"robots" content="noindex, nofollow">`
 
 **Context:** `prequal.html` is blocked in robots.txt but linked as a CTA from multiple pages (testimonials, blog, footer). Either unblock it or change all CTAs. Since it's a legitimate lead capture page, unblock it. `hero-test.html` is a prototype page that should not be indexed.
 
@@ -687,12 +686,7 @@ Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
 
 In `robots.txt`, remove line 13:
 ```
-Disallow: /prequal.html
-```
-
-- [ ] **Step 2: Add noindex to hero-test.html**
-
-In `hero-test.html`, after `<meta name="viewport"...>` (line 5), add:
+Disallow: /contact.html?goal=Purchase"viewport"...>` (line 5), add:
 ```html
   <meta name="robots" content="noindex, nofollow">
 ```

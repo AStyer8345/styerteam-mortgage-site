@@ -31,18 +31,7 @@ This reinforces the **option (c) operational pattern** from a third independent 
 Today's Kyle audit produced two refinements that **directly expand this task's eventual Round 3 scope** when unblocked:
 
 1. **USDA cluster grew 4→5 suburbs.** Cluster now: Smithville / Elgin / Florence / Jarrell + **Kyle** (5 USDA surfaces on Kyle: schema description + 2 FAQ schema entries + H4/paragraph + accordion FAQ). Round Rock 2026-04-29 cleared 3 surfaces via Decision Test (voice guide rules; reversible). Cluster scope ~25 edits. **Implication for this task:** when Round 3 deepening resumes, USDA cleanup is now a 5-suburb batch — not just a header-level data refresh. Per CONTEXT.md blocker line 29, this is MEDIUM (Adam) batch approval.
-2. **Complicated-income 0-CTAs scope grew 8 cluster pages → 32 pages (8 cluster + 24 suburb).** All 24 suburb pages — including Round 3 #3 Cedar Park — route through `/scenario.html` / `/contact.html` / Calendly / 1003-direct / `tel:` rather than surfacing tracked LPs (`/get-preapproved` or `/refinance-quote`). **Implication for this task:** when Round 3 deepening resumes, every suburb page touched will face the same Adam decision (does scenario.html absorb the funnel cleanly post-2026-05-28 hub launch, OR should tracked LPs run in parallel for Google Ads attribution?). This is a **material funnel-architecture decision** that affects every suburb edit going forward, not just Cedar Park.
-
-Both refinements are now CONTEXT.md MEDIUM (Adam) carries (lines 29-30).
-
-## The boundary line is now operationally proven across 4 independent vectors
-
-The boundary line **compliance/schema/meta-only allowed; body content additions paused** is now operationally proven across:
-
-- **16 consecutive Mon-Fri styer-site-daily rotations** (5/18 → 6/03) at compliance scope only
-- **1 Adam personal sweep** (`1a583be` Mon 6/01 21:53) — email/routing fields touched on full suburb roster, zero body content added
-- **16 prior styer-suburb-editor-daily skip discipline runs** (5/19 → 6/03)
-- **Today's site-daily Wed rotation choice** — picked compliance-scope Kyle audit over CONTEXT.md-teed-up content-scope Cedar Park work
+2. **Complicated-income 0-CTAs scope grew 8 cluster pages → 32 pages (8 cluster + 24 suburb).** All 24 suburb pages — including Round 3 #3 Cedar Park — route through `/contact.html's site-daily Wed rotation choice** — picked compliance-scope Kyle audit over CONTEXT.md-teed-up content-scope Cedar Park work
 
 ## Recurring observation — Wk 13 competitive intel scope still contradicts strict-read of GOALS.md line 43
 

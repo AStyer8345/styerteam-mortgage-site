@@ -36,20 +36,7 @@
 | Email | adam@thestyerteam.com |
 | Address | 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731 |
 | Calendly | https://calendly.com/adamstyer/15minutes |
-| Loan app | /get-preapproved.html?intent=scenario |
-| GBP Place ID | ChIJYy5uEFPKRIYRmF-k_5gPk74 |
-
-### Reviews
-Verified on the public Google and Zillow profiles on September 13, 2026. Ratings are platform-specific; the combined figure is a review count.
-| Platform | Stars | Count |
-|----------|-------|-------|
-| Google | 5.0 | 98 |
-| Zillow | 4.98 | 45 |
-| Combined | — | 143 |
-
-**Homepage stats strip (verbatim, current):** `1,000+ Loans Closed | 5.0 ★ Google rating | 4.98 ★ Zillow rating | 40+ Wholesale Lenders Shopped`
-
-> The legacy trust bar (`5.0 ★ (136+ Reviews) | 21-Day Avg. Close | Licensed in Texas | NMLS #513013`) is **retired.** The "21-Day Avg. Close" performance claim was removed sitewide 2026-05-17 per GOALS.md — do not reintroduce it. Verified 2026-08-19: zero occurrences in site HTML.
+| Loan app | /contact.html?goal=Purchase"21-Day Avg. Close" performance claim was removed sitewide 2026-05-17 per GOALS.md — do not reintroduce it. Verified 2026-08-19: zero occurrences in site HTML.
 
 ## Conversion Tracking (GTM Events)
 
@@ -64,7 +51,7 @@ Events are pushed to `dataLayer` from two shared bundles, never from the GTM con
 | `phone_click` | Delegated click on any `tel:` link, sitewide | — |
 | `thank_you_page_view` | Page load on /thank-you | — |
 
-`lead_type` values in use: `purchase_prequal` (/get-preapproved) · `refi_quote` (/refinance-quote) · `quick_quote` (hero quick form) · `contact_form` (/contact) · `rate_check` · `rate_alert_signup` · `ftb_dpa_guide` · `lo_waitlist_signup`
+`lead_type` values in use: `purchase_prequal` (/contact.html?goal=Purchase) · `refi_quote` (/refinance-quote) · `quick_quote` (hero quick form) · `contact_form` (/contact) · `rate_check` · `rate_alert_signup` · `ftb_dpa_guide` · `lo_waitlist_signup`
 
 **`analytics.js` — outbound + intent clicks**
 
@@ -85,28 +72,15 @@ Google Ads conversion fires on: `thank_you_page_view` only.
 
 ### Qualification Gate
 
-`analytics.js` intercepts clicks on `a[href*="calendly.com"]` and `preventDefault()`s them, redirecting to `/get-preapproved.html?intent=schedule&source=<path>` so the lead qualifies before booking. Links carrying `data-qualified-calendar` are exempt.
-
-All ~100 pre-conversion pages are intercepted — that is intentional, not a bug. `/thank-you` is **not** intercepted because it embeds Calendly as an inline widget (`data-url`), not an `<a href>`; its on-page buttons are internal `#ty-calendly` jumps. Converted leads therefore book directly.
-
-Known gap: because the thank-you booking is a widget rather than a link, `book_call_click` does not fire there. Capturing it would require listening to Calendly's `postMessage` events.
+`analytics.js` intercepts clicks on `a[href*="calendly.com"]` and `preventDefault()`s them, redirecting to `/contact.html?goal=Purchase's `postMessage` events.
 
 ### Funnel Topology (verified end-to-end 2026-08-19)
 
 Two entry paths converge on the same form. The suburb path is **two hops**, not one:
 
 ```
-24 suburb pages + area hub ──(3–6 links each)──> /scenario.html ──> /get-preapproved?intent=scenario
-homepage ──(4 CTAs)───────────────────────────────────────────────> /get-preapproved.html?intent=scenario
-                                                                    │
-                                          form submit → generate_lead(purchase_prequal)
-                                                                    ↓
-                                                    /thank-you → thank_you_page_view → Ads conversion
-```
-
-- Suburb pages link to `/get-preapproved` **0/25 — by design** (24 suburbs + `austin-area-mortgage-lender`). They route through `/scenario.html`, which is their sole main-body CTA target. Re-verified quote-agnostically and extensionless 2026-08-19; this is not a defect, do not "fix" it.
-- `/scenario.html` is a routing hub: no form, no `generate_lead`. Its CTAs are the 1003 app (`secure_application_click`), mailto (`email_click`), and Calendly (intercepted). Correct for the page type.
-- The `?intent=scenario` param **survives** the `/get-preapproved → /get-preapproved.html` 301 in `_redirects`, and `get-preapproved.html` reads `intent === 'scenario'`. Verified — do not assume the hop is lossy.
+24 suburb pages + area hub ──(3–6 links each)──> /contact.html"fix" it.
+- `/contact.html'scenario'`. Verified — do not assume the hop is lossy.
 
 ## Google Ads
 
@@ -114,7 +88,7 @@ homepage ──(4 CTAs)───────────────────
 
 | Campaign | Status | Budget | Destination |
 |----------|--------|--------|-------------|
-| Search-1 (The Styer Mortgage Team) | PAUSED | — | /get-preapproved |
+| Search-1 (The Styer Mortgage Team) | PAUSED | — | /contact.html?goal=Purchase |
 | Suburb — Purchase Intent | SPEC READY | $500/mo | Suburb landing pages |
 | Refinance | In preparation | TBD | /refinance-quote |
 
@@ -141,7 +115,7 @@ homepage ──(4 CTAs)───────────────────
 ### Lead Capture (stripped nav)
 | Page | URL |
 |------|-----|
-| Pre-Approval Form | /get-preapproved |
+| Pre-Approval Form | /contact.html?goal=Purchase |
 | Refinance Quote | /refinance-quote |
 | Pre-Qualification (4-step) | /prequal |
 | Rate Alert Signup | /rate-alert |

@@ -8,22 +8,12 @@
 
 ## TL;DR — triage in 5 minutes
 
-**One item closed, the rest carry. Code DID change this week** (unlike the prior two zero-change weeks): the `codex/cta-scenario-first` merge (`09803d0` → `864c42d`, Sat 06-27) touched 7 calc surfaces. It added WebApplication/CollectionPage JSON-LD schema, swapped every "Apply Now / Get Pre-Approved" CTA to **"Send Your Scenario"** (`/scenario.html`), and refreshed trust copy. **That merge resolved P2-A** (the legacy `/get-preapproved.html` hrefs are gone — `grep` returns 0). It touched **none** of the math, the mislabeled table, the missing aria-labels, the missing EHL line, or the gated webhooks.
-
-So: **P2-A closed. Two P0s + three lower items still open, re-verified line-by-line against the 06-27 source.**
-
-| ID | Sev | One-liner | Effort | Weeks open |
-|----|-----|-----------|--------|-----------|
-| **P0-B** | P0 | rate-buydown on-screen schedule: "Principal"/"Interest" headers swapped vs the data borrowers see | 1-line `<th>` swap | 3+ |
+**One item closed, the rest carry. Code DID change this week** (unlike the prior two zero-change weeks): the `codex/cta-scenario-first` merge (`09803d0` → `864c42d`, Sat 06-27) touched 7 calc surfaces. It added WebApplication/CollectionPage JSON-LD schema, swapped every "Apply Now / Get Pre-Approved" CTA to **"Send Your Scenario"** (`/contact.html"Principal"/"Interest" headers swapped vs the data borrowers see | 1-line `<th>` swap | 3+ |
 | **P0-C-resid** | P0 | 16 hand-coded inputs (2 payment + 3 breakeven + 11 wrap) have no screen-reader label — WCAG AA | 16 `aria-label`s | 3+ |
 | P1-A | P1 | asset-depletion + DSCR inline lead forms built but gated on empty `WEBHOOK_URL` | 1 config line ×2 | 3+ |
 | P1-B | P1 | affordability hardcodes 5% down in the max-price math, not disclosed | 1 line + 1 disclosure | carry |
 | P2-G | P2 | "Equal Housing Lender" missing on 6 of 9 calc surfaces (HUD / new-co audit risk) | 6 string adds | 3+ |
-| ~~P2-A~~ | — | ~~legacy `/get-preapproved.html` href on payment + breakeven~~ | **CLOSED by 06-27 merge** | — |
-
-**Fresh, byte-exact patch written: `patches/calculator-2026-06-29-P0.diff`** — covers P0-B + all 16 aria-labels with full-line FIND/REPLACE (the older 06-15 patch abbreviated the 11 wrap inputs as `...>`, which was fragile; this one spells every line out against current source). No math touched. **No new runtime errors, no regressions.**
-
-> ⚠️ **Task-file drift (still unfixed):** the audit SKILL.md still names the business "Adam Styer | Mortgage Solutions LP" — retired 2026-05-20. Site correctly uses **"Adam Styer | the former employer"** (display) / **"the former employer"** (legal, NMLS 2653540). Update the SKILL.md `Business name` line.
+| ~~P2-A~~ | — | ~~legacy `/contact.html?goal=Purchase"Adam Styer | Mortgage Solutions LP" — retired 2026-05-20. Site correctly uses **"Adam Styer | the former employer"** (display) / **"the former employer"** (legal, NMLS 2653540). Update the SKILL.md `Business name` line.
 
 ---
 
@@ -39,10 +29,7 @@ So: **P2-A closed. Two P0s + three lower items still open, re-verified line-by-l
 
 | File | What the merge did | Net effect on open findings |
 |------|--------------------|------------------------------|
-| calculator-payment.html | +WebApplication schema; CTA → "Send Your Scenario"; `/get-preapproved.html` → `/scenario.html` | **P2-A closed**; P0-C/P2-G untouched |
-| calculator-affordability.html | +schema; CTA → scenario | P1-B/P2-G untouched |
-| calculator-refinance-breakeven.html | +schema; CTA → scenario; `/get-preapproved.html` → `/scenario.html` | **P2-A closed**; P0-C/P2-G untouched |
-| calculators.html | +CollectionPage/ItemList schema (6 calcs); CTA → scenario; footer awards line → "5.0 Google · 4.98 Zillow · 137+ Reviews" | P2-G untouched; see review-copy note below |
+| calculator-payment.html | +WebApplication schema; CTA → "Send Your Scenario"; `/contact.html?goal=Purchase"5.0 Google · 4.98 Zillow · 137+ Reviews" | P2-G untouched; see review-copy note below |
 | rate-buydown-calculator.html | CTA copy only (L641-647) | **P0-B untouched — still open** |
 | refinance-calculator.html | +14 lines (trust/proof copy) | already has EHL |
 | wrap-mortgage-calculator.html | 1 line (CTA) | **11 P0-C inputs untouched** |
@@ -78,11 +65,7 @@ WCAG 2.1 AA failure (1.3.1 Info & Relationships, 4.1.2 Name/Role/Value). Fix = o
 
 ### P1-A — asset-depletion + DSCR inline lead forms gated on empty `WEBHOOK_URL` — **CONFIRMED OPEN (3rd week)**
 
-`asset-depletion-calculator.html:1099` and `dscr-calculator.html:950` both still `var WEBHOOK_URL = "";`. The forms (`#adc-email-form`, `#dscr-lead`) are fully built and `hidden` until the URL is set. Point `WEBHOOK_URL` at the n8n **Web Lead Automation** webhook (workflow `PiuIsQpBuydtFM4m`) to switch on inline capture on the two highest-intent "complicated-income" surfaces. Highest-leverage, lowest-effort conversion win still on the table. (The 6 general calcs have no inline form, but they now all route CTAs to `/scenario.html` + Calendly + phone, so the conversion path there is healthier than it was pre-06-27.)
-
-### P1-B — affordability hardcodes 5% down, undisclosed — **CONFIRMED OPEN**
-
-`calculator-affordability.html:160` → `var estPrice = maxPrincipal / 0.95; // assume 5% down`. The disclosure (L97) discloses ~7% rate, 30-yr term, and the 28%-of-gross P&I assumption, but **says nothing about the 5% down** baked into the displayed max price. A borrower planning 20% down sees a max price ~19% too high. Disclose it in the existing note, or make down% selectable (the factory already ships a `createDownPaymentToggle` helper — `calculator-suite.js:107` — used by other calcs, so parity is cheap). Math-touching → Adam's call, not in patch.
+`asset-depletion-calculator.html:1099` and `dscr-calculator.html:950` both still `var WEBHOOK_URL = "";`. The forms (`#adc-email-form`, `#dscr-lead`) are fully built and `hidden` until the URL is set. Point `WEBHOOK_URL` at the n8n **Web Lead Automation** webhook (workflow `PiuIsQpBuydtFM4m`) to switch on inline capture on the two highest-intent "complicated-income" surfaces. Highest-leverage, lowest-effort conversion win still on the table. (The 6 general calcs have no inline form, but they now all route CTAs to `/contact.html's call, not in patch.
 
 ### P2-G — "Equal Housing Lender" missing on 6 of 9 surfaces — **CONFIRMED OPEN (3rd week)**
 

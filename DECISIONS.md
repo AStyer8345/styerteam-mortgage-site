@@ -19,15 +19,14 @@
 ## [2026-06-09] — Batch-memo decisions: USDA 1=b, speed claims 2=a, funnel attribution via /thank-you
 
 **Chose:** (1) Reposition all 8 Class-A rural suburb pages OFF USDA — Adam does not originate USDA; pages now lead with conventional/FHA/VA/DPA + OTC construction, keeping the USDA FAQ question with an honest "I don't originate USDA" answer. (2) Kill "24-hour" speed-claim variants sitewide (non-blog), keep "same-day pre-approval" — reconciles GOALS.md ("no performance-metric marketing") with the voice guide (same-day is a true differentiator). (3) Resolve the 0-tracked-LP question at the form layer instead of the link layer: every lead form now lands on /thank-you where the Ads conversion fires, so organic submissions attribute without adding tracked-LP links to 34 pages. /scenarios.html remains the canonical organic LP.
-**Over:** (1a) claiming Adam brokers rural USDA, or (1c) soft "ask me" reframe — both leave an advertised product he doesn't originate as page lead. (2b) killing all speed claims — strips a true differentiator. (3b) adding /get-preapproved links across the 34-page cluster — extra nav surface for a problem attribution plumbing already solves.
+**Over:** (1a) claiming Adam brokers rural USDA, or (1c) soft "ask me" reframe — both leave an advertised product he doesn't originate as page lead. (2b) killing all speed claims — strips a true differentiator. (3b) adding /contact.html?goal=Purchase links across the 34-page cluster — extra nav surface for a problem attribution plumbing already solves.
 **Why:** Accuracy/compliance first (TDSML advertising exposure on USDA promotion), then conversion attribution with the smallest content footprint.
 **Trade-off:** 8 rural pages may shed some "USDA loans [city]" long-tail rankings; the honest FAQ answer retains the query surface with a redirect-to-strength answer. Client testimonial quotes containing speed claims were left verbatim (2) or removed when product-false (2 USDA quotes) — never rewritten.
 **Context:** Decisions captured live from Adam in the 2026-06-09 interactive session, answering run-logs/adam-batch-memo-2026-06-05.md.
 
 ## [2026-05-28] — Scenarios are a separate content type from pillar/product pages
 
-**Chose:** Build `/scenarios/` as a parallel content type with its own hub, template, and silo. Scenario pages tell the story of one borrower file (Situation → Obstacle → Strategy → Outcome). They link UP to the relevant pillar page (e.g. `/self-employed-mortgage-austin.html`) and back to `/scenario.html` for conversion. They do not replace, fork, or compete with the existing pillar/product pages.
-**Over:** Adding "real borrower story" sections inside the existing pillar pages, or treating scenarios as blog posts under `/blog/`.
+**Chose:** Build `/scenarios/` as a parallel content type with its own hub, template, and silo. Scenario pages tell the story of one borrower file (Situation → Obstacle → Strategy → Outcome). They link UP to the relevant pillar page (e.g. `/self-employed-mortgage-austin.html`) and back to `/contact.html"real borrower story" sections inside the existing pillar pages, or treating scenarios as blog posts under `/blog/`.
 **Why:** Pillars are evergreen "what is X" program guides written for organic SERP capture. Scenarios are narrative case-style content written for AEO citation and conversion. Mixing them dilutes both — a pillar page with a long anecdote loses the answer-first structure that wins featured snippets; a scenario inside the blog gets buried by date-based archives and competes with rate-update posts. Keeping the silo strict (scenarios link UP to pillars, not laterally to other scenarios via an automated widget) preserves the topical-authority signal of the pillar cluster while letting scenarios accrue their own AEO surface.
 **Trade-off:** Adds maintenance surface (hub + template + each scenario). Requires Adam to supply anonymized facts for every scenario — slower content velocity than a generic blog post. The "no cross-category auto-widget" rule defers a likely-useful "related scenarios" feature until ≥15 scenarios exist; that's a v2 problem.
 **Context:** Adam supplied a detailed Prompt A spec calling out the separation explicitly. The CONTEXT.md complicated-income SERP gap (0/5 ranking on self-employed / bank statement / non-QM / DSCR / 1099 Austin) is the motivating SEO context — scenarios are a credibility + AEO play targeting "examples / case studies / stories" intent that the pillar pages currently don't satisfy.
@@ -94,7 +93,7 @@
 
 ## [2026-03] — Landing Pages: Stripped Nav (Logo Only)
 
-**Chose:** /get-preapproved, /refinance-quote, /thank-you show logo only — no site navigation.
+**Chose:** /contact.html?goal=Purchase, /refinance-quote, /thank-you show logo only — no site navigation.
 **Over:** Full nav on all pages.
 **Why:** Conversion optimization — remove exit paths from ad-driven traffic. Once someone is on a lead capture page, the only actions should be: fill the form, call, or book Calendly.
 

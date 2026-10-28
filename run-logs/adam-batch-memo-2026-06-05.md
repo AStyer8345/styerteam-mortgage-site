@@ -46,7 +46,7 @@ Your voice guide and CONTEXT both say **"Does NOT do: USDA loans"** / **"No USDA
 So a sweep would either violate GOALS.md (keep the claims) or strip a differentiator your voice guide explicitly endorses (remove them). I can't safely resolve that for you.
 
 **Live footprint (suburb cluster):** ~89 instances across 25/25 suburb pages — mostly "same-day pre-approval" and "24-hour" / "pre-approval in 24 hours." Note: **"21-day close" is already 0 sitewide** — that win condition is met. The remaining claims are the speed-of-service ones.
-**Plus:** 3 headline-page title carries (homepage, /get-preapproved "24-Hour Turnaround", /hutto "Same-Day Pre-Approval") + thank-you.html lines 459/468/469.
+**Plus:** 3 headline-page title carries (homepage, /contact.html?goal=Purchase "24-Hour Turnaround", /hutto "Same-Day Pre-Approval") + thank-you.html lines 459/468/469.
 
 **Pick one:**
 - **(a)** Keep "same-day pre-approval" (it's true and a differentiator), but kill "24-hour turnaround" closing-style metrics → I sweep the "24-hour" variants only (~53 instances), leave "same-day."
@@ -59,11 +59,11 @@ So a sweep would either violate GOALS.md (keep the claims) or strip a differenti
 
 ## DECISION 3 — Organic funnel architecture (0 tracked-LP links)
 
-**State:** 34 surfaces (8 loan-type cluster + 25 suburbs + homepage) have **0 links to `/get-preapproved` or `/refinance-quote`.** All organic traffic routes through `/scenarios.html` and `/contact.html` instead. This is by design (your 2026-05-28 scenarios architecture) — it's not a bug. The cost is that organic visitors never hit the Google-Ads-attributed landing pages.
+**State:** 34 surfaces (8 loan-type cluster + 25 suburbs + homepage) have **0 links to `/contact.html?goal=Purchase` or `/refinance-quote`.** All organic traffic routes through `/scenarios.html` and `/contact.html` instead. This is by design (your 2026-05-28 scenarios architecture) — it's not a bug. The cost is that organic visitors never hit the Google-Ads-attributed landing pages.
 
 **The question isn't "should suburbs link to tracked LPs" — it's:**
 - **(a)** `/scenarios.html` is the canonical organic LP → leave it, accept that tracked LPs are paid-traffic-only. Close carry.
-- **(b)** Tracked LPs should ALSO be surfaced on organic pages for attribution coverage → I add `/get-preapproved` + `/refinance-quote` links to the cluster (mechanical, ~34 pages, ZERO risk once you say go).
+- **(b)** Tracked LPs should ALSO be surfaced on organic pages for attribution coverage → I add `/contact.html?goal=Purchase` + `/refinance-quote` links to the cluster (mechanical, ~34 pages, ZERO risk once you say go).
 
 ---
 

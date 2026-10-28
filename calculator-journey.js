@@ -11,6 +11,6 @@
  var params=new URLSearchParams(location.search);
  if(params.get('restore')==='review'){try{var saved=JSON.parse(sessionStorage.getItem(key)||'null');if(saved)restore(window.StyerAnalysis.normalize(saved));}catch(_){status.textContent='The previous numbers could not be restored. You can still enter new estimates.';}}
  function transfer(destination,storageKey){try{var a=snapshot();sessionStorage.setItem(storageKey,JSON.stringify(a));location.href=destination;}catch(error){status.textContent=error instanceof DOMException?'Your browser cannot carry these numbers to the next page. Allow site storage, or contact Adam with your estimates.':error.message;}}
- document.querySelectorAll('[data-review-calculator]').forEach(function(link){link.addEventListener('click',function(e){e.preventDefault();transfer(dscr?'/investor-loans.html?goal=Invest&context=calculator':'/refinance-quote.html?goal=Refinance&context=calculator',key);});});
+ document.querySelectorAll('[data-review-calculator]').forEach(function(link){link.addEventListener('click',function(e){e.preventDefault();transfer(dscr?'/investor-loans.html?goal=Invest&context=calculator':'/contact.html?goal=Refinance',key);});});
  var save=document.querySelector('[data-save-analysis]');if(save)save.addEventListener('click',function(){transfer('/saved-analysis.html','styer:analysis-to-save');});
 })();

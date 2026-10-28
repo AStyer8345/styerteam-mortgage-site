@@ -23,6 +23,8 @@
       return q.label + ': ' + data.get(q.name);
     });
     if (data.get('loan_goal') && !questions.some(function (q) { return q.name === 'loan_goal'; })) details.unshift('Financing goal: ' + data.get('loan_goal'));
+    if (data.get('timeline') && !questions.some(function (q) { return q.name === 'timeline'; })) details.push('Timeline: ' + data.get('timeline'));
+    if (data.get('loan_type') && !questions.some(function (q) { return q.name === 'loan_type'; })) details.push('Loan type: ' + data.get('loan_type'));
     if (data.get('situation')) details.push('Additional context: ' + data.get('situation'));
     else if (data.get('message')) details.push('What I am trying to accomplish: ' + data.get('message').trim());
     if (data.get('self_reported_source')) details.push('How I first heard about Adam (self-reported): ' + data.get('self_reported_source'));

@@ -121,8 +121,7 @@ On-page disclosure at line 76 only mentions "~7% rate, 30-year term, P&I ~28% of
 
 | ID | Issue | File(s) | State |
 |---|---|---|---|
-| P2-A | `/get-preapproved.html` legacy href (affordability already canonicalized) | calculator-payment.html:102, calculator-refinance-breakeven.html:108 | unchanged |
-| P2-B | Stripped footer the former company/the former employer compliance line | the 3 small calc pages | **RESOLVED** — `c427b15` entity rebrand seeded all 3 stripped-footer pages with "© 2026 the former employer. NMLS# 2653540 (Company) \| 513013 (Adam Styer)." Verified `grep -c "the former company"` returns ≥1 on every calc file. |
+| P2-A | `/contact.html?goal=Purchase"© 2026 the former employer. NMLS# 2653540 (Company) \| 513013 (Adam Styer)." Verified `grep -c "the former company"` returns ≥1 on every calc file. |
 | **P2-G** | **NEW: Equal Housing Lender (EHL) tag missing on 6 of 7 calc surfaces** | calculator-payment.html, calculator-affordability.html, calculator-refinance-breakeven.html, rate-buydown-calculator.html, wrap-mortgage-calculator.html, calculators.html | **NEW this run** |
 | P2-C | Buydown frequency label vs radio mismatch | rate-buydown-calculator.html | implicitly fixed by P0-A patch |
 | P2-D | WRAP — no validation against negative-am inputs | wrap-mortgage-calculator.html | unchanged |
@@ -132,9 +131,9 @@ On-page disclosure at line 76 only mentions "~7% rate, 30-year term, P&I ~28% of
 P2-A verified this run:
 
 ```text
-calculator-payment.html:102:          <a href="/get-preapproved.html" ...
-calculator-refinance-breakeven.html:108:          <a href="/get-preapproved.html" ...
-calculator-affordability.html: canonical /get-preapproved (no .html)
+calculator-payment.html:102:          <a href="/contact.html?goal=Purchase" ...
+calculator-refinance-breakeven.html:108:          <a href="/contact.html?goal=Purchase" ...
+calculator-affordability.html: canonical /contact.html?goal=Purchase (no .html)
 ```
 
 ### NEW finding — P2-G: Equal Housing Lender (EHL) tag missing
@@ -276,10 +275,4 @@ Wider site commits this week (informational):
 1. **Apply `patches/calculator-2026-04-20-P0.diff`** — 15 min, text find/replace. Order: P0-A (2 lines) → P0-B (2 lines) → P0-E (move 1 script tag) → P0-D (14 id/for pairs) → P0-C (regress-test 4 pages after). **Bundle the 5 inline sliders** on calculator-payment.html + calculator-refinance-breakeven.html in the same session — same pattern, ~5 more edits.
 2. **NEW: Apply P2-G (Equal Housing Lender)** — 6 files, 1 string each. FIND `513013 (Adam Styer).` → REPLACE `513013 (Adam Styer). Equal Housing Lender.`. ~3 minutes. HUD compliance + new-company-audit risk.
 3. **Decide P1-A inline lead capture** — disproportionately costly post-`generate_lead`-sitewide wiring. Add income-type field (W-2 / 1099 / self-employed / asset-based) to route inbound to the right Adam template. With Wk 13 confirming Phase A complicated-income SERPs flipped to 5/7 top-10, the form should match the audience now arriving.
-4. **P2-A** — 2-line `/get-preapproved.html` → `/get-preapproved` href fix on calculator-payment.html:102 + calculator-refinance-breakeven.html:108.
-
-P3 items (analytics event, PMI math, Texas defaults, complicated-income toggle) → TODO.md backlog. Not blocking. PMI auto-drop and the complicated-income toggle have the highest strategic weight given the GOALS.md pivot.
-
----
-
-*No calculator HTML or JS was modified by this audit. No new patch file was written; the existing `patches/calculator-2026-04-20-P0.diff` (42 days old, text-based find/replace document — not a git unified diff) still text-matches every P0 surfaced here and covers them all. P2-G (EHL) is a 6-file string addition handled separately in the same triage session.*
+4. **P2-A** — 2-line `/contact.html?goal=Purchase

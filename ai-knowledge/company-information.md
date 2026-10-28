@@ -23,7 +23,4 @@ Public contact information:
 - Email: adam@thestyerteam.com
 - Austin office: 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731
 - Corporate office: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249
-- Scenario review: styermortgage.com/get-preapproved.html?intent=scenario
-- Scheduling: calendly.com/adamstyer/15minutes
-
-Adam or his team will reach out as soon as possible. A visitor may also text Adam at (512) 956-6010. Do not promise a specific response time.
+- Scenario review: styermortgage.com/contact.html?goal=Purchase

@@ -16,7 +16,7 @@ test('canonical extensionless variants are force-redirected', () => {
 
 test('Search Console legacy 404 routes resolve to current canonical pages', () => {
   const expected = new Map([
-    ['/purchase', '/get-preapproved.html'],
+    ['/purchase', '/contact.html?goal=Purchase'],
     ['/construction', '/loans/construction.html'],
     ['/dscr-purchase', '/dscr-loans-texas.html'],
     ['/privacy-policy', '/privacy.html'],

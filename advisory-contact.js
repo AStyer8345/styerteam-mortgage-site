@@ -1,17 +1,11 @@
 // Contact layer shared by every public page.
 // 1. On phones, a slim bar pinned to the bottom: Call · Text · Send scenario.
 // 2. "See My Options" links open the real scenario form in a slide-over
-//    panel instead of leaving the page. The panel embeds /get-preapproved.html
-//    (the Netlify form, its JS, attribution and confirmation stay unchanged),
-//    so no form markup is duplicated and the link still works without JS.
-// 3. When this script runs inside that embed (?embed=1), it trims the page to
-//    the form itself.
-(function () {
-  'use strict';
+//    panel instead of leaving the page. The panel embeds /contact.html?goal=Purchase'use strict';
   var d = document, b = d.body;
   if (!b || !b.classList.contains('advisory-site')) return;
   var params = new URLSearchParams(location.search);
-  var FORM_PATH = '/get-preapproved.html';
+  var FORM_PATH = '/contact.html?goal=Purchase';
   var PHONE = '+15129566010';
 
   // ── Embedded mode ──────────────────────────────────────────────────────────

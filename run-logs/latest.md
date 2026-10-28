@@ -30,7 +30,7 @@ unaddressed in `loanos-clone/tasks/`). Untracked file, not a `git rm` — no com
 |---|---|---|
 | `sitemap.xml` | 200 | ✅ **154** `<loc>` / **154** `<lastmod>` / **0** duplicates |
 | `robots.txt` | 200 | ✅ |
-| `/` · `/get-preapproved` · `/refinance-quote` · `/thank-you` · `/blog` · `/contact` · `/calculators` · `/about` | 200 (`-L`, full-path curl) | ✅ |
+| `/` · `/contact.html?goal=Purchase` · `/refinance-quote` · `/thank-you` · `/blog` · `/contact` · `/calculators` · `/about` | 200 (`-L`, full-path curl) | ✅ |
 
 Sitemap count moved **153 → 154** since Friday PM — one page added by another agent between runs
 (not investigated further; 0 dupes and lastmods all present, so not a defect on its face). Full-path
@@ -43,7 +43,7 @@ Status: **10/10 ✅.** HTML-token matrix, identical shape to prior runs:
 | Page | GTM | generate_lead | lead_type | thank_you_page_view | tel: | h1 |
 |---|---|---|---|---|---|---|
 | `/` | 2 | — | — | — | 6 | 1 |
-| `/get-preapproved` | 2 | 1 | `purchase_prequal` | — | 2 | 1 |
+| `/contact.html?goal=Purchase` | 2 | 1 | `purchase_prequal` | — | 2 | 1 |
 | `/refinance-quote` | 2 | 1 | `refi_quote` | — | 2 | 1 |
 | `/thank-you` | 2 | — | — | 1 | 2 | 1 |
 
@@ -72,16 +72,7 @@ without Adam's key" last run; not re-escalating further on an identical result.
 ## STEP 4B — SEO/SEM BACKLOG (read-only)
 
 `loanos-clone` **not mutated** — standing guard. `backlog.md` + `BLOCKERS.md` re-read: same 2 open,
-Adam-gated items as the last 7 runs (`products.html` 7-card 1003 routing; `/prequal.html`
-`generate_lead` parity). SEOSEM-001 stays closed at the evidence level per standing memory
-instruction — not re-measured.
-
-## STEP 5 — DESIGN AUDIT
-
-Rotated to `products.html` + `realtors.html` — both un-checked in recent spot-check history
-(09-03 was homepage/about, 09-04 AM contact/get-preapproved, 09-04 PM blog/calculators).
-
-| Page | GTM | Legacy brand strings | "21-day"/"24-48hr" | NMLS personal (513013) | NMLS company (2653540) | "correspondent lender" |
+Adam-gated items as the last 7 runs (`products.html` 7-card 1003 routing; `/contact.html?goal=Purchase"21-day"/"24-48hr" | NMLS personal (513013) | NMLS company (2653540) | "correspondent lender" |
 |---|---|---|---|---|---|---|
 | `/products` | 2 | 0 | 0 | 14 | 3 | 0 |
 | `/realtors` | 2 | 0 | 0 | 6 | 3 | **3** |
@@ -104,7 +95,7 @@ here (Adam-gated per that blocker's own note).
 
 ## METRICS
 
-- Mobile PageSpeed `/get-preapproved` / `/refinance-quote`: **UNVERIFIED — quota drained, 5th
+- Mobile PageSpeed `/contact.html?goal=Purchase` / `/refinance-quote`: **UNVERIFIED — quota drained, 5th
   confirmed-dead probe, 2026-09-05**
 - Conversion Tracking: **10/10**
 - Landing Page Mobile UX: **10/10** (nothing carried unresolved)

@@ -20,7 +20,7 @@ Condition holds. Skip stands.
 
 2. **Today's sister-task contribution adds two relevant cross-task data points** (CONTEXT.md lines 58-59):
    - **NEW 2026-05-28: Complicated-income cluster 0 funnel CTAs to tracked LPs.** 8 cluster pages route conversion only through raw 1003 / Calendly / contact.html / tel:. Generalizes the homepage 0-CTAs blocker to the cluster Adam is positioning around per GOALS.md.
-   - **NEW 2026-05-28: thank-you.html performance-metric claims.** Same GOALS.md "no performance-metric marketing" vs voice-guide "Same-day PA is real differentiator" tension as the existing /get-preapproved title blocker.
+   - **NEW 2026-05-28: thank-you.html performance-metric claims.** Same GOALS.md "no performance-metric marketing" vs voice-guide "Same-day PA is real differentiator" tension as the existing /contact.html?goal=Purchase title blocker.
    
    Both new items are MEDIUM (Adam) — they reinforce that the operational policy questions Adam needs to answer aren't going away. The same tension class as `styer-suburb-editor-daily`'s 4-carry status: an active Adam-decision blocker that other tasks keep tripping over.
 

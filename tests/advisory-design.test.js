@@ -83,7 +83,7 @@ test('refinance handoff carries exact typed inputs, calculated results and date'
   assert.equal(saved.version, 1);
   assert.ok(saved.at > 0);
   assert.equal(saved.results.current, analysis.calculate(saved.inputs, 'refinance').current);
-  assert.equal(location.href, '/refinance-quote.html?goal=Refinance&context=calculator');
+  assert.equal(location.href, '/contact.html?goal=Refinance');
 });
 test('refinance handoff does not send an invalid entry or silently substitute a rounded slider value', () => {
   const { saved, status, location } = handoffFixture(true);

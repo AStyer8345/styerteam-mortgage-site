@@ -32,8 +32,7 @@ fallback against approved-source domains only.
 - [PASS] Brand "the former employer" present (10×); ZERO "The Styer Team" / "Mortgage Solutions LP" / "Styer Mortgage".
 - [PASS] NMLS/entity correct — Adam 513013, company 2653540, the former employer.
 - [PASS] No performance-metric marketing ("24-hour", "same-day", "fastest", "guaranteed approval") — 0.
-- [PASS] No raw 1003 URL (contact.com count = 0; CTAs route to /scenario.html + /get-preapproved.html).
-- [PASS] Title lint — `<title>` contains "Adam Styer"; grep -v returns empty.
+- [PASS] No raw 1003 URL (contact.com count = 0; CTAs route to /contact.html"Adam Styer"; grep -v returns empty.
 - [PASS] TX-only / no USDA — 0 USDA occurrences; TX-only origination framing.
 - [PASS] Cluster wiring — 5 in-body internal links (get-preapproved, scenario, loans/refinance, cash-out refi guide, refi decision guide); all targets verified to exist. No bridge-loan hub page exists, so none was invented.
 - [PASS] Schema — all 3 JSON-LD blocks parse (Article + FAQPage[5 Q&As] + BreadcrumbList pos-3 → new post).

@@ -72,11 +72,11 @@ function buildWebPage({ title, description, date, content }) {
 
         <ul class="nav-links">
           <li class="nav-has-dropdown"><a href="/products.html">Mortgage Options</a><ul class="nav-dropdown"><li><a href="/asset-depletion-mortgage-texas.html">Qualify Using Your Assets</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth Mortgages</a></li><li><a href="/self-employed-mortgage-austin.html">Self-Employed Mortgages</a></li><li><a href="/dscr-loan-austin-tx.html">DSCR Loans</a></li><li><a href="/investor-loans.html">Investment Property Loans</a></li><li><a href="/home-equity-loans-texas.html">Access Your Equity</a></li><li><a href="/mortgage-for-business-owners-austin.html">Business-Owner Planning</a></li><li><a href="/first-time-home-buyer.html">Buying a Home</a></li><li><a href="/buy-before-you-sell-austin.html">Buy Before You Sell</a></li><li><a href="/loans/refinance.html">Refinancing</a></li><li><a href="/products.html">All Mortgage Options</a></li></ul></li>
-          <li class="nav-has-dropdown"><a href="/resources/">Tools &amp; Guides</a><ul class="nav-dropdown"><li><a href="/resources/">All Tools &amp; Guides</a></li><li><a href="/calculators.html">All Calculators</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li><li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/self-employed-mortgage-austin.html">Self-Employed Qualification Guide</a></li><li><a href="/resources/first-time-buyer-guide/">First-Time Buyer Guide</a></li><li><a href="/rate-check.html">Compare a Mortgage Offer</a></li><li><a href="/blog.html">Articles &amp; Market Updates</a></li><li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li></ul></li>
+          <li class="nav-has-dropdown"><a href="/resources/">Tools &amp; Guides</a><ul class="nav-dropdown"><li><a href="/resources/">All Tools &amp; Guides</a></li><li><a href="/calculators.html">All Calculators</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li><li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/self-employed-mortgage-austin.html">Self-Employed Qualification Guide</a></li><li><a href="/resources/first-time-buyer-guide/">First-Time Buyer Guide</a></li><li><a href="/contact.html?goal=Refinance&loan=second-look">Compare a Mortgage Offer</a></li><li><a href="/blog.html">Articles &amp; Market Updates</a></li><li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li></ul></li>
           <li><a href="/scenarios.html">Real Scenarios</a></li>
           <li class="nav-has-dropdown"><a href="/referral-partners-self-employed-clients.html">For Partners</a><ul class="nav-dropdown"><li><a href="/realtors.html">For Realtors</a></li><li><a href="/mortgage-resources-for-cpas-texas.html">For CPAs</a></li><li><a href="/mortgage-strategies-financial-advisors-texas.html">For Financial Advisors</a></li><li><a href="/mortgage-case-studies-for-advisors-cpas.html">Partner Case Studies</a></li></ul></li>
           <li class="nav-has-dropdown"><a href="/about.html">About Adam</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam</a></li><li><a href="/testimonials.html">Client Reviews</a></li><li><a href="/contact.html">Contact Adam</a></li></ul></li>
-          <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/get-preapproved.html?intent=scenario" class="nav-cta">See My Options</a></li>
+          <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/contact.html?goal=Purchase" class="nav-cta">See My Options</a></li>
         <li><a href="https://styermortgage.com/contact.html" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>
         </ul>
       </nav>
@@ -121,7 +121,7 @@ function buildWebPage({ title, description, date, content }) {
         <h2 data-animate>Ready to Make a Move?</h2>
         <p data-animate>Whether you're buying, refinancing, or just exploring your options, Adam Styer is here to help.</p>
         <div class="cta-buttons" data-animate>
-          <a href="../prequal.html" class="btn btn-light">Get Pre-Qualified</a>
+          <a href="../contact.html?goal=Purchase" class="btn btn-light">Get Pre-Qualified</a>
           <a href="../contact.html" class="btn btn-outline-light">Contact Adam</a>
         </div>
       </div>
@@ -148,7 +148,7 @@ function buildWebPage({ title, description, date, content }) {
           <ul>
             <li><a href="../blog.html">Mortgage Resources</a></li>
             <li><a href="../realtors.html">For Realtors</a></li>
-            <li><a href="../prequal.html">Pre-Qualification</a></li>
+            <li><a href="../contact.html?goal=Purchase">Pre-Qualification</a></li>
             <li><a href="../texas-complaint-notice.html">TX Consumer Notice</a></li>
             <li><a href="../calculators.html">Payment Calculator</a></li>
             <li><a href="../products.html#faq">FAQ</a></li>

@@ -96,11 +96,7 @@ Below the table: italic disclaimer "Program availability and guidelines change b
 
 **FAQ — 4–6 questions** — Mirror exactly between the visible accordion and the `FAQPage` JSON-LD schema. Answers 40–80 words, answer-first phrasing. Each question should be one a real borrower might ask after reading the page.
 
-**Related** — Link UP to the relevant pillar page(s) for the strategy used (e.g. `/self-employed-mortgage-austin.html`, `/high-net-worth-mortgage.html`, `/dscr-loan-austin-tx.html`, `/asset-depletion-mortgage-texas.html`, `/bank-statement-loans.html`, `/non-qm-loans.html`). Plus a link back to `/scenario.html` for conversion. Leave the `<!-- RELATED: link sibling scenarios when available -->` comment in place for future use.
-
-**CTA** — Keep the existing CTA block exactly as it appears in `_TEMPLATE.html`. Primary button to `/scenario.html`, secondary to Calendly, tertiary tel link. Never the raw 1003 URL as visible link text.
-
-**Schema blocks — all four** — Article (NOT TechArticle/TechReport), FAQPage, BreadcrumbList, Person. The Person block with the NMLS #513013 `sameAs` is mandatory on every scenario page. Update each block's URLs, titles, and dates to match the new file.
+**Related** — Link UP to the relevant pillar page(s) for the strategy used (e.g. `/self-employed-mortgage-austin.html`, `/high-net-worth-mortgage.html`, `/dscr-loan-austin-tx.html`, `/asset-depletion-mortgage-texas.html`, `/bank-statement-loans.html`, `/non-qm-loans.html`). Plus a link back to `/contact.html's URLs, titles, and dates to match the new file.
 
 ### 5. Remove the DRAFT artifacts
 
@@ -209,9 +205,7 @@ These rules come from the 2026-05-17 site audit. They exist because publishing t
 
 **Entity strings exact.** Display name "The Styer Team · Powered by GoRascal". Legal name (where disclaimers/NMLS lines appear) "The Styer Team · Powered by GoRascal". Company NMLS 2072896. Adam's personal NMLS 513013. Never use "The Styer Team" or "Mortgage Solutions LP" as a display name — the legacy entity was fully retired 2026-05-20. (Exception: `/styerteam/` URL handles on Facebook/Instagram/Nextdoor are retained personal-brand social identities and are unaffected.)
 
-**CTA routing.** All loan-app CTAs route to `/scenario.html` (the tracked landing page). Never the raw 1003 URL (`the former employer.contact.com/513013/register`) as visible link text, even though the nav uses it directly. Calendly link is `https://calendly.com/adamstyer/15minutes`. Phone is `tel:+15129566010`.
-
-**Article schema only.** Not TechArticle. Not TechReport. The rest of the site's entity graph uses Article — stay consistent.
+**CTA routing.** All loan-app CTAs route to `/contact.html's entity graph uses Article — stay consistent.
 
 ## What Adam controls; what you control
 

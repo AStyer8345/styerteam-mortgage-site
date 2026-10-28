@@ -13,8 +13,7 @@
 
 This run re-confirmed each prior P0 against current source (mtimes show files were re-touched 2026-04-28 but only for unrelated changes — the buggy lines are still present at the same line numbers). Two new P2 items were identified:
 
-1. **Inconsistent CTA href normalization.** `calculator-affordability.html` was corrected on 2026-04-30 from `/get-preapproved.html` → `/get-preapproved`, but `calculator-payment.html` (line 104) and `calculator-refinance-breakeven.html` (line 110) still use the legacy `/get-preapproved.html`.
-2. **Footer drift on stripped-footer pages.** Three calc pages render `© 2026 Mortgage Solutions, LP. NMLS# 2526130 | 513013 (Adam Styer)` without the `Adam Styer | Mortgage Solutions LP` brand line that hub + buydown + WRAP carry. CLAUDE.md rule: "Never use 'The Styer Team' — always 'Adam Styer | Mortgage Solutions LP'." The current stripped footer omits the brand entirely.
+1. **Inconsistent CTA href normalization.** `calculator-affordability.html` was corrected on 2026-04-30 from `/contact.html?goal=Purchase"Never use 'The Styer Team' — always 'Adam Styer | Mortgage Solutions LP'." The current stripped footer omits the brand entirely.
 
 **Recommendation:** Apply the existing P0 patch this Monday before any new calculator work. The buydown math bug has now been live for at least 14 days. P0-A is the one that actively misleads users; P0-B is a display-only swap; P0-C/D are accessibility blockers; P0-E is a perf hit on mobile.
 
@@ -175,15 +174,10 @@ The shown disclaimer ("Estimate assumes ~7% rate, 30-year term, and that P&I is 
 
 ### P2-A: CTA href normalization not applied site-wide (NEW)
 
-`calculator-affordability.html` line 98 already uses `/get-preapproved` (normalized 2026-04-30 per Step 4B in that day's run-log).
+`calculator-affordability.html` line 98 already uses `/contact.html?goal=Purchase` (normalized 2026-04-30 per Step 4B in that day's run-log).
 
 But:
-- `calculator-payment.html` line 104 → still `/get-preapproved.html`
-- `calculator-refinance-breakeven.html` line 110 → still `/get-preapproved.html`
-
-Both pages should match the normalized canonical extensionless path. Two-line fix; no logic changes.
-
-### P2-B: Stripped footer omits "Adam Styer | Mortgage Solutions LP" brand line (NEW)
+- `calculator-payment.html` line 104 → still `/contact.html?goal=Purchase"Adam Styer | Mortgage Solutions LP" brand line (NEW)
 
 The three small calc pages (`calculator-payment.html` 110–116, `calculator-affordability.html` 104–110, `calculator-refinance-breakeven.html` 116–122) carry a single-line footer:
 

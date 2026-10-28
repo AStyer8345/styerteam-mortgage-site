@@ -178,8 +178,7 @@ Previously waited until 30% page scroll. Now effectively persistent — first sc
 
 ### 7. `/scenario` page — Netlify Forms config required
 
-The new `/scenario.html` posts to a Netlify form named `scenario`. Netlify will auto-detect it on next deploy (the hidden form template at the top of `scenario.html` ensures detection). **After the first deploy, verify**:
-- Form appears in Netlify dashboard under "Forms"
+The new `/contact.html"Forms"
 - Test submission with a file upload arrives in your inbox
 - File attachment links work from the notification email
 
@@ -207,9 +206,5 @@ Per the original spec, no sitewide nav change. When you're ready to surface scen
 
 ## 4. Loan app URL mismatch in the original prompt
 
-The Prompt A spec referenced `https://styermortgage.com/contact.html — that's the old MSLP URL. CLAUDE.md / CONTEXT.md / every live page uses `/get-preapproved.html?intent=scenario`. I used the live one. If `mslp.contact.com` is still live and you want both URLs supported, let me know.
-
-## 5. Next-up: scenarios #2 and #3 to light up the remaining filter chips
-
-When you have anonymized facts for them, send me one Self-Employed / Bank-Statement file and one DSCR / Investor file and I'll write each in the same hedged, compliance-baked pattern. That'll flip on all 4 filter chips and make the hub a fully functional category navigator.
+The Prompt A spec referenced `https://styermortgage.com/contact.html — that's the old MSLP URL. CLAUDE.md / CONTEXT.md / every live page uses `/contact.html?goal=Purchase'll write each in the same hedged, compliance-baked pattern. That'll flip on all 4 filter chips and make the hub a fully functional category navigator.
 

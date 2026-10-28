@@ -108,7 +108,7 @@ test('homepage prioritizes the short conversation and routes application questio
 });
 
 test('pre-approval guide routes pre-approval and application CTAs by intent', () => {
-  assert.match(preapprovalGuide, /href="\/get-preapproved\.html\?source=preapproval_guide_hero"[^>]*>Get Pre-Approved Now<\/a>/);
+  assert.match(preapprovalGuide, /href="\/contact.html?goal=Purchase\.html\?source=preapproval_guide_hero"[^>]*>Get Pre-Approved Now<\/a>/);
   assert.doesNotMatch(preapprovalGuide, /href="\/scenario\.html"[^>]*>(?:Get|Start)[^<]*(?:Pre-Approved|Application)/i);
   assert.match(preapprovalGuide, /href="https:\/\/styermortgage\.com\/contact\.html"[^>]*data-source="preapproval_guide_documents"[^>]*>Contact Adam<\/a>/);
   assert.doesNotMatch(preapprovalGuide, /register\?time=[^"']*\?time=/);

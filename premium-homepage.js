@@ -7,7 +7,7 @@
   // is not the primary path.
   var mobileInquiry = document.querySelector('.advisory-contact-bar-primary');
   if (mobileInquiry) {
-    mobileInquiry.href = '/get-preapproved.html?intent=scenario';
+    mobileInquiry.href = '/contact.html?goal=Purchase';
     mobileInquiry.textContent = 'See My Options';
     mobileInquiry.setAttribute('data-track','scenario_review_click');
     mobileInquiry.setAttribute('data-source','homepage_sticky_mobile');

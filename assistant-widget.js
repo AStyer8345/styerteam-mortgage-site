@@ -84,7 +84,7 @@
       '  <div class="ma-messages" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Conversation"></div>',
       '  <div class="ma-next-actions" aria-label="Contact and pre-approval options">',
       '    <button type="button" class="ma-lead-toggle">Send this to Adam</button>',
-      '    <a class="ma-application-link" href="https://styermortgage.com/get-preapproved.html?intent=scenario">Get pre-approved</a>',
+      '    <a class="ma-application-link" href="/contact.html?goal=Purchase">Get pre-approved</a>',
       '  </div>',
       '  <div class="ma-confirmation" hidden>',
       '    <p class="ma-confirmation-summary"></p>',
@@ -603,7 +603,7 @@
   function trackLinkClick(url) {
     if (/^\/contact\.html$/.test(url.pathname)) { state.converted = true; trackAssistant('contact_clicked', { cta_type: 'contact' }); }
     else if (url.hostname === 'calendly.com') { state.converted = true; trackAssistant('scheduling_clicked', { cta_type: 'schedule' }); }
-    else if (/get-preapproved\.html$/.test(url.pathname)) { state.converted = true; trackAssistant('preapproval_clicked', { cta_type: 'preapproval' }); }
+    else if (/contact.html?goal=Purchase\.html$/.test(url.pathname)) { state.converted = true; trackAssistant('preapproval_clicked', { cta_type: 'preapproval' }); }
     else if (/rate-check/.test(url.pathname)) { state.converted = true; trackAssistant('rate_review_clicked', { cta_type: 'rate_review' }); }
   }
 

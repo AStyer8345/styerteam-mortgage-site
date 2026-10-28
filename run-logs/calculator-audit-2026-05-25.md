@@ -104,19 +104,15 @@ Disclosure on the page does not mention the 5% down assumption. User sees a "max
 
 | ID | Issue | File(s) | State |
 |---|---|---|---|
-| P2-A | `/get-preapproved.html` legacy href (affordability already canonicalized) | calculator-payment.html:102, calculator-refinance-breakeven.html:108 | unchanged |
-| P2-B | Stripped footer omits the former employer brand line (now needs the former company legal entity line post-2026-05-20 rebrand) | the 3 small calc pages | unchanged — and **NEW URGENCY** post compliance rebrand |
-| P2-C | Buydown frequency label vs radio mismatch | rate-buydown-calculator.html | implicitly fixed by P0-A patch |
-| P2-D | WRAP — no validation against negative-am inputs | wrap-mortgage-calculator.html | unchanged |
-| P2-E | Refi closing-cost — Lender's Title Policy default ($2,119) unexplained (TX TDI-regulated) | refinance-calculator.html:544 | unchanged |
+| P2-A | `/contact.html?goal=Purchase's Title Policy default ($2,119) unexplained (TX TDI-regulated) | refinance-calculator.html:544 | unchanged |
 | P2-F | Hub uses full 4-column footer; calc pages use stripped footer | calculators.html vs others | unchanged |
 
 P2-A verified this run:
 
 ```text
-calculator-payment.html:102:          <a href="/get-preapproved.html" ...
-calculator-refinance-breakeven.html:108:          <a href="/get-preapproved.html" ...
-calculator-affordability.html: canonical /get-preapproved (no .html)
+calculator-payment.html:102:          <a href="/contact.html?goal=Purchase" ...
+calculator-refinance-breakeven.html:108:          <a href="/contact.html?goal=Purchase" ...
+calculator-affordability.html: canonical /contact.html?goal=Purchase (no .html)
 ```
 
 **P2-B note added this audit:** Per `CLAUDE.md` post-2026-05-20 entity rebrand, every footer/disclaimer surface now needs "the former employer, NMLS 2653540, Adam NMLS #513013, 9050 N. Capital of Texas Hwy, Ste 390, Austin TX 78759". The 3 stripped-footer calc pages currently omit this. Likely a compliance audit finding when the new company reviews the site. **Recommend bundling P2-B fix with the P0 patch run for the same 15-min session.**
@@ -221,9 +217,7 @@ Wider site commits this week:
 
 1. **Apply `patches/calculator-2026-04-20-P0.diff`** — 15 min. Order: P0-A (2 lines) → P0-B (2 lines) → P0-E (move 1 script tag) → P0-D (14 id/for pairs) → P0-C (regress-test 4 pages after). **Apply P2-B in the same session** — add the canonical the former company/the former employer compliance footer line to the 3 stripped-footer calc pages. ~3 extra minutes. Bundles the calc-page compliance fix in with the math fix.
 2. **Decide P1-A inline lead capture** — disproportionately costly post-pivot. Add income-type field (W-2 / 1099 / self-employed / asset-based) to route inbound to the right Adam template.
-3. **P2-A** — 2-line `/get-preapproved.html` → `/get-preapproved` href fix.
-
-P3 items (analytics event, Texas defaults, complicated-income toggle) → TODO.md backlog. Not blocking. The "complicated-income toggle" is the only P3 with new strategic weight given the GOALS.md pivot.
+3. **P2-A** — 2-line `/contact.html?goal=Purchase"complicated-income toggle" is the only P3 with new strategic weight given the GOALS.md pivot.
 
 ---
 

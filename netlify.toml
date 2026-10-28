@@ -218,13 +218,121 @@
 
 [[redirects]]
   from = "/pre-qualification/"
-  to = "/prequal.html"
+  to = "/contact.html?goal=Purchase"
   status = 301
 
 [[redirects]]
   from = "/pre-qualification"
-  to = "/prequal.html"
+  to = "/contact.html?goal=Purchase"
   status = 301
+
+[[redirects]]
+  from = "/get-preapproved"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/get-preapproved/"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/get-preapproved.html"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/scenario"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/scenario.html"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/prequal"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/prequal.html"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/refinance-quote"
+  to = "/contact.html?goal=Refinance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/refinance-quote.html"
+  to = "/contact.html?goal=Refinance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check-round-rock.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check-cedar-park.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check-georgetown.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check-buda-kyle.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check-new-braunfels.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-alert"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-alert.html"
+  to = "/contact.html"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/apply-now/"
