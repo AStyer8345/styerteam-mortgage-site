@@ -1,3 +1,7 @@
+## 2026-10-28 — Preview: specialty page depth restored
+
+- DSCR Texas, high-net-worth, bank statement, and self-employed pages take the live FAQ sets and direct answers back, inside the current layout. Titles and descriptions use the Austin and Texas framing. Rate quotes, close-day promises, lender counts, and case dollar amounts were rewritten. Not merged.
+
 ## 2026-10-28 — Preview: no specific lender count
 
 - Public pages, JSON-LD, and the assistant company note no longer state a number of wholesale lenders. The homepage pricing line says many wholesale lenders and “my cell.” Historical notes were left as written.
