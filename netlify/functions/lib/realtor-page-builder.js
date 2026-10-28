@@ -232,9 +232,9 @@ function buildRealtorPage({ title, description, date, slug, content, category })
 
       <div class="footer-bottom">
         <div>
-          <!-- TODO: Replace [LOCAL OFFICE ADDRESS PENDING] with the confirmed local office address before publish. -->
+          
           <p>The Styer Team, Powered by Go Rascal Inc. | Company NMLS# 2072896 | Adam Styer NMLS# 513013 | Licensed in: Texas</p>
-          <p>Local Office: [LOCAL OFFICE ADDRESS PENDING]</p>
+          <p>Local Office: 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731</p>
         </div>
       </div>
     </div>

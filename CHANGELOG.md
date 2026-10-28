@@ -1,3 +1,8 @@
+## 2026-10-28 — Preview: local office address and no 24-hour pre-approval
+
+- The local office line is 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731. The placeholder and the Brooklyn corporate-office line are gone.
+- The homepage stat tile says Texas / Licensed. Pre-approval sentences no longer promise 24 hours, same day, or a fast letter. Not merged.
+
 ## 2026-10-28 — Preview: GoRascal compliance package
 
 - Personal websites must be approved in writing by GoRascal Compliance before publishing. Typical approval time is 3–5 business days. Do not launch until written approval is received.

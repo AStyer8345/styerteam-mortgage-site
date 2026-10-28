@@ -84,7 +84,7 @@ Verdict: 6 of 10 are **first-party lender sites with a Round Rock branch or dedi
 For each suburb, add the following in this order (this is what Kyle does that Round Rock doesn't):
 
 1. **Rewrite the AEO opener (first paragraph after hero) to name two program advantages tied to the suburb.** Template:
-   > *"To get a mortgage in [Suburb] TX, work with an independent broker like Adam Styer (NMLS #513013) who shops 40+ wholesale lenders — including [Program #1 relevant to this suburb, e.g., USDA zero-down for eligible [County] addresses] and [Program #2, e.g., jumbo options for the $[X]K+ range common in [Named Neighborhood]] — with pre-approval in 24 hours and a 21-day average close."*
+   > *"To get a mortgage in [Suburb] TX, work with an independent broker like Adam Styer (NMLS #513013) who shops 40+ wholesale lenders — including [Program #1 relevant to this suburb, e.g., USDA zero-down for eligible [County] addresses] and [Program #2, e.g., jumbo options for the $[X]K+ range common in [Named Neighborhood]] — with a pre-approval letter once the documents are in and a 21-day average close."*
    Round Rock's version should name **VA (Fort Hood/Cavazos veterans migrating to RRISD schools) + conventional high-balance for homes near the $832,750 conforming line**.
 
 2. **Add a "[Suburb] at a Glance" bolded lede sentence inside the "Why" section,** with five concrete facts in one run-on sentence: county + property tax rate range + ISD name + 2–3 named employers with distances + 3–5 named neighborhoods + typical commute time + price range. Kyle does this in one sentence. Source tax rate from the Hays/Williamson/Travis CAD site; employers from city economic-development pages; neighborhoods from city's HOA/MLS area names.

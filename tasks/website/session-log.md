@@ -109,7 +109,7 @@ Replace the emoji HTML entities (&#128203; clipboard, &#128176; money bag, &#127
 
 **What changed:**
 1. Added `.hero-rating-chip` above the H1 in the hero — gold-bordered pill showing "5.0 · 136 Google Reviews · Austin's Top-Rated Broker" with a gold star SVG. Answers visitor's trust question before they even read the headline.
-2. Rewrote hero subtitle from feature-list ("Independent broker. 40+ lenders. Pre-approved in 24 hours.") to outcome statement ("Get wholesale rates from 40+ lenders — pre-approved in 24 hours, closed in 21 days.") — shifts from what Adam is to what the buyer gets.
+2. Rewrote hero subtitle from feature-list ("Independent broker. 40+ lenders. A pre-approval letter once the documents are in.") to outcome statement ("Get wholesale rates from 40+ lenders — pre-approved in 24 hours, closed in 21 days.") — shifts from what Adam is to what the buyer gets.
 3. Replaced all 3 testimonial emoji star blocks (`&#11088;` × 5) with 5 × inline gold SVG stars (#C9A84C). Emoji stars render yellow/inconsistently on Windows — brand-accurate gold SVG renders identically everywhere.
 4. Added Google logo SVG + "Google Review" text attribution below each testimonial author — standard trust pattern that anchors the reviews to a third-party platform.
 5. Added `.hero-rating-chip`, `.star-svg`, `.review-source` CSS rules to style.css.
