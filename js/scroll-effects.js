@@ -6,6 +6,10 @@
 (function () {
   'use strict';
 
+  // Premium homepage CSS explicitly disables reveals, counters and divider
+  // motion, and its header stays in normal flow. Do not decorate hidden effects.
+  if (document.body.classList.contains('premium-homepage')) return;
+
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var isMobile = window.matchMedia('(max-width: 768px)').matches;
 
@@ -227,8 +231,9 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    decorateReveals();
+    // Read scroll position before reveal classes invalidate page styles.
     initNavState();
+    decorateReveals();
     if (!document.body.classList.contains('advisory-site')) initCounters();
     initReveals();
     initDividerDraw();

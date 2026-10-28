@@ -1,3 +1,82 @@
+## 2026-10-28 — Search titles and old 404s
+
+- Old newsletter, truncated, and test URLs that 404 on the live site now 301 to the closest published post, or to the blog index for the April 28 publish tests. A hero test URL 301s home.
+- Titles and descriptions were rewritten for the switch-lender posts, Texas closing costs, asset depletion, one-time-close, non-QM, construction, and the three calculator pages. Each calculator has a one-line intro and a contact link under the result.
+- The sitemap lists 185 URLs. None of them are a 301 or a noindex page.
+
+## 2026-10-28 — Visible sections, situation note, and tag manager
+
+- The About photo was blank in a full-page capture because `loading="lazy"` waits until the image nears the viewport. It now loads with the page, WebP with a JPEG fallback. The file was already in the repo at `/assets/family.webp`.
+- The Austin files section was blank because JavaScript added a class that set opacity to 0 until the section scrolled into view. That gate is gone. Scroll-reveal defaults in the main stylesheet also stay visible, including when motion is reduced.
+- Homepage and contact forms have an optional "Tell us a little about your situation" note named `message`. Lead intake copies that text into the LoanOS situation field when it is not already there.
+- Public pages load GTM-PQQ6PGLR in the head, the same container as the rest of the site.
+
+## 2026-10-28 — 24-hour pre-approval and 150+ wholesale lenders
+
+- Public pre-approval timing now says 24 hours, including FAQ and structured data. Reply-time lines and the Loan Estimate's 3-business-day rule were left as they were.
+- Lender counts now say 150+ wholesale lenders, including the About page, homepage, and schema. The 144 reviews figure is unchanged.
+
+## 2026-10-28 — Homepage and About voice
+
+- Homepage process, service, and contact lines now say "my team and I" or "we." Adam's name, family, licensed-since line, closed files, and Romans 1:16-17 (ESV) stay in the first person.
+- "How we price your loan" is four sentences in its own section, under the loan options.
+
+## 2026-10-28 — Homepage speed, again
+
+- The mobile LCP element was the hero section. Its skyline was a CSS background discovered from the large stylesheet. Median of three simulated mobile runs before this change: performance 62, LCP 7.1 s (TTFB about 450 ms, load delay about 1.8 s, load time about 60 ms, render delay about 4.8 s).
+- The skyline is now an image in the HTML, with the hero layout in the first style block. Tag scripts, the assistant, experience.js, and blueprint-interactions.js load after the page loads. Median of three runs after: performance 70, LCP 5.2 s (TTFB about 450 ms, load delay 0, load time about 170 ms, render delay about 4.6 s). Unthrottled LCP on this machine was about 140–180 ms. Simulated slow 4G still waits on the 270 KB stylesheet before first paint.
+
+## 2026-10-28 — Georgetown and Hutto rate note
+
+- The moved rate-shopping paragraph now starts on a complete sentence. The Hutto communities are named in a sentence. No new facts.
+
+## 2026-10-28 — Homepage figures
+
+- Jumbo on the homepage is above $832,750 in both the body and the FAQ. "40+ capital partners" in that FAQ is now "40+ wholesale lenders."
+
+## 2026-10-28 — Index the full guides
+
+- Removed noindex from the 34 reference guides under `/resources/detailed-guides/` and added their canonical URLs to the sitemap. Pages that already had questions and answers now include FAQ and Article structured data.
+- The five short public stubs (about 240 words) 301 to the matching reference guide. Their lead paragraphs were copied onto those guides first.
+- Loan pages link to the related reference guides. `/guides.html` lists every reference guide.
+
+## 2026-10-28 — Homepage speed
+
+- Skyline and card photos are WebP and AVIF, with width/height, srcset on the portrait and cards, and a high-priority preload on the hero image. Below-fold photos stay lazy.
+- Homepage styles load as one async bundle plus `style.css`. Inter and Source Serif are self-hosted with `font-display: swap`. Tag scripts stay deferred.
+- Local mobile Lighthouse on this machine: performance 63 before the image and CSS work (2,675 KiB, about 1,950 ms of render-blocking CSS) and 61 after (1,541 KiB, no render-blocking resources). LCP stayed about 6 to 7 seconds on this CPU.
+
+## 2026-10-28 — Restore text cut off by the intake link pass
+
+- Sentences that followed old intake URLs were put back. The links still point at `/contact.html`. The contact form keeps the optional "how did you hear about Adam" question.
+
+## 2026-10-28 — Shorter footer and a guides hub
+
+- Footer link groups are now Loans, Guides, About & Contact, and Legal. NMLS, Equal Housing, and licensing text stay under the links.
+- `/guides.html` lists the guides and calculators so those pages keep an internal link. Existing guide robots tags were not changed.
+
+## 2026-10-28 — One short intake form
+
+- `contact.html` is the only intake page: name, phone, email, purchase or refinance, timeline, optional loan type, plus call, text, and book-a-call. It still posts through the Netlify form and `lead-intake` (n8n dispatch and Mailchimp opt-in).
+- Old intake URLs 301 to that form with the loan goal or loan type in the query string. Pre-approval, refinance, and rate-shopping explanations moved onto the matching guide or city page.
+
+## 2026-10-28 — One business phone and aligned public counts
+
+- Replaced the retired Austin business number with (512) 956-6010, including `tel:` links.
+- Where the same public claim disagreed, used the About page: 40+ lenders instead of 150+, and 144 published reviews (99 Google and 45 Zillow) instead of 140+ or 144+. The first-time buyer guide now says loans closed since September 2015 and 99 Google reviews.
+- Company NMLS 2072896 and licensing text were left as written. Pre-approval and closing-time wording still differs by page because About does not set one number.
+
+## 2026-10-28 — Homepage copy in Adam's voice
+
+- Rewrote the homepage wording in the first person, using the About page as the voice. Layout, components, reviews, and existing figures stayed. Added Romans 1:16-17 (ESV) beside the About Adam section.
+
+## 2026-10-28 — Merge main and remove the former employer
+
+- Merged `main` (`c602e86d`) into the private-wealth editorial redesign. Kept the redesign’s layout and copy where the two branches conflicted, and kept `main`’s removal of the former employer plus its contact-page application destination.
+- Removed remaining former-employer names, logos, and retired application-host links from pages, legal files, guides, schema, redirects, and repo docs.
+- `/apply-now` and Apply Now controls go to `https://styermortgage.com/contact.html`. Scenario-review links stay on the short form. Lead intake was not rewired.
+- Public logos match the open GoRascal wordmark swap.
+
 ## 2026-10-26 — Redesign technical repairs
 
 - Repair eight mobile-menu initializers and the jumbo/self-employed conversation-form initializer.
@@ -383,7 +462,7 @@ Net-new blog post, Tier A/B backlog exhausted this run (DSCR cluster fully consu
 
 ## 2026-07-22 — SEO/AEO audit session (interactive): /home 301 + blog manifest cleanup
 
-- **Full SEO+AEO audit run** (repo + live). Verdict: technical/schema foundation strong; gaps are off-page (old-brand Nextdoor/Yelp/Birdeye listings, zero presence on "HyperSmart Loans" query) and EEAT (no author bio blocks on blog posts). Full findings delivered in session; on-site quick fixes shipped here.
+- **Full SEO+AEO audit run** (repo + live). Verdict: technical/schema foundation strong; gaps are off-page (old-brand Nextdoor/Yelp/Birdeye listings, zero presence on "the former employer" query) and EEAT (no author bio blocks on blog posts). Full findings delivered in session; on-site quick fixes shipped here.
 - **`_redirects`: added `/home  /  301`** — `styermortgage.com/home` is in Google's index (site: query, verified live 2026-07-22) but returned 404. Legacy-URL section, plain 301 (no file shadowing, `!` not needed).
 - **`blog/manifest.json`: removed 2 dead entries** — `/austin-housing-market-2025.html` and `/first-time-buyer-guide.html` (neither file exists; both rendered broken cards in the blog grid). FTB guide already has a correct static card + noscript + schema entry in `blog.html` pointing at `/resources/first-time-buyer-guide/`, so removal (not repoint) avoids a duplicate card. 55 posts remain, JSON validated.
 - **Sitemap calculator fix NOT duplicated** — audit independently flagged missing `dscr-calculator.html` + `asset-depletion-calculator.html`, but the morning styer-site-daily run (commit `bba4de3`) had already shipped it. Verified on origin/main before editing; local redundant edit discarded.
@@ -403,7 +482,7 @@ Net-new blog post, Tier A/B backlog exhausted this run (DSCR cluster fully consu
 
 - **New post `blog/2026-07-21-itin-mortgage-loans-texas.html`** (commit `ce5c83d`, live HTTP 200, 1,273 prose words). Closes the SEO-AUDIT Phase 3 `itin mortgage texas` gap — zero prior site coverage. Thesis inverts the category: most competing articles claim ITIN = portfolio-only, but **Fannie Mae B2-2-01 accepts "a valid Social Security number or Individual Taxpayer Identification Number (ITIN)"** and B2-2-02 finances non-permanent residents on citizen terms — so the real gate is lawful presence, which B2-2-02 delegates to lender discretion (the wholesale-shop advantage). 6 approved-source citations (IRS ITIN/W-7/renew, Fannie B2-2-01 + B2-2-02, CFPB 12 CFR 1026.43). NotebookLM auth still expired → WebSearch fallback on approved domains. No anecdote (no `memory/people/` available — written from principle, nothing invented).
 - **Tier A produced no net-new post this week:** competitive 07-15 opportunities are all defend-existing-page plays (non-QM internal linking, bank-statement depth — and a bank-statement post already exists, failing dedup; DSCR explicitly deprioritized). Post still serves Opportunity #1 as a **new spoke into the non-QM hub** (2 in-body links to `/non-qm-loans.html`, 5 in-body cluster links total). Tier B "VA basics" rejected by dedup gate vs existing `2026-03-29-va-loan-eligibility-texas`.
-- **All 7 compliance gates pass:** HyperSmart ×10 / legacy entity 0 · NMLS 513013+2072896 correct · 0 performance-metric phrases · 0 raw 1003 URL · title lint clean · 0 USDA / 0 rate quotes / TX-only · registered in all 4 surfaces. All 3 JSON-LD blocks (Article + FAQPage + BreadcrumbList) valid and confirmed live. manifest.json parseable (57 posts); sitemap.xml well-formed.
+- **All 7 compliance gates pass:** the former employer ×10 / legacy entity 0 · NMLS 513013+2072896 correct · 0 performance-metric phrases · 0 raw 1003 URL · title lint clean · 0 USDA / 0 rate quotes / TX-only · registered in all 4 surfaces. All 3 JSON-LD blocks (Article + FAQPage + BreadcrumbList) valid and confirmed live. manifest.json parseable (57 posts); sitemap.xml well-formed.
 - Staged by explicit filename only — ~9 concurrent-session files left untouched.
 
 ## 2026-07-18 — styer-suburb-editor-daily (Round 5 #3): cedar-park — Silverado West value spotlight + Vista Ridge feeder rated + Enovis employer + FHA de-template
@@ -421,7 +500,7 @@ Net-new blog post, Tier A/B backlog exhausted this run (DSCR cluster fully consu
 
 - **Non-negotiables green:** sitemap.xml / robots.txt / homepage all HTTP 200 (sandbox-disabled curl, absolute binaries). Conversion tracking 10/10 via HTML-token matrix — matches 07-17 exactly (GTM ×2 all 3 pages; get-preapproved gen_lead=1/purchase_prequal; refinance-quote gen_lead=1/refi_quote; thank-you thank_you_page_view=1; `action='/thank-you'` single-quote form still in effect). No live-submit (avoids fake CRM/n8n leads).
 - **Off-rotation Saturday** — no assigned Step 4 weekday rotation (Mon–Fri). Ran non-negotiables + read-only backlog + design spot-check only; no manufactured rotation work.
-- **Design spot-check clean** (about + dscr): GTM ×2, NMLS 513013 (11/15) + company 2072896 (6/7), 0 legacy entity ("The Styer Team"/"Mortgage Solutions LP"), 0 "21-day"/"24-48", HyperSmart brand + header nav present.
+- **Design spot-check clean** (about + dscr): GTM ×2, NMLS 513013 (11/15) + company 2072896 (6/7), 0 legacy entity ("The Styer Team"/"Mortgage Solutions LP"), 0 "21-day"/"24-48", the former employer brand + header nav present.
 - **Backlog + BLOCKERS read-only** (writing loanos-clone triggers Vercel build of paused LoanOS): BLOCKERS clean `[No active blockers]`; 3 open backlog items all content-creation (Adam-gated new-page / styer-content-weekly blog+PDF) — no un-gated site work remaining. loanos-clone untouched.
 - Scheduler fired today (07-18) — 4th clean day in a row (07-15/16/17/18) after the 07-06→07-14 10-day outage. Doc-only writes; 0 site mutations; self-review PASS.
 
@@ -455,7 +534,7 @@ Net-new blog post, Tier A/B backlog exhausted this run (DSCR cluster fully consu
 - **Blog fresh:** latest post 2026-07-16 = 1 day old → no weekly-content flag.
 - **Borrower blog CTA 40/40:** scanned 45 posts; the 4 "missing /get-preapproved|/refinance-quote" are all `realtor-updates/` carrying the correct realtor CTA ("Send Your Scenario" → /scenario.html + phone + Contact). Per voice guide, realtor content is positioning/scenario, not borrower pre-approval — NOT defects, 0 manufactured edits.
 - **AEO audit — 2 posts, both excellent, 0 defects:** `2026-07-16-self-employed-income-calculation-underwriting-texas` (NEW, first audit — extractable E-E-A-T + "$250K vs $91K" problem lead; 5 conversational-question FAQPage; every answer answer-first) + `2026-06-30-bank-statement-loans-texas` (extractable lead; 5 Q; answer-first). Narrative statement-form body H2s + dedicated FAQPage block = site's established AEO-valid pattern.
-- **Design spot-check clean** (index.html + self-employed-mortgage-austin.html): GTM PQQ6PGLR ×2, NMLS 513013 + company 2072896 present, 0 legacy entity, 0 "21-day"/"24-48hr", HyperSmart brand + header nav present.
+- **Design spot-check clean** (index.html + self-employed-mortgage-austin.html): GTM PQQ6PGLR ×2, NMLS 513013 + company 2072896 present, 0 legacy entity, 0 "21-day"/"24-48hr", the former employer brand + header nav present.
 - **No un-gated site work:** backlog residue is Adam-gated (new-page creation, products.html 7-card 1003 routing, prequal.html conversion parity, FHA/Jumbo title NMLS) or sister-task-owned (suburb city data → styer-suburb-editor-daily). `loanos-clone` untouched (paused-LoanOS Vercel guard).
 - **Scheduler:** fired 07-17 — 3rd clean day in a row (07-15/16/17) after the 07-06→07-14 10-day outage.
 
@@ -512,7 +591,7 @@ Niche-first queue "do next" page. Re-verified live before selecting: **0 authori
 
 - Non-negotiables green: `sitemap.xml` + `robots.txt` HTTP **200**; conversion tracking **10/10** (HTML-token matrix via `curl -L` — GTM ×2, `generate_lead`/`lead_type` correct on both LPs, `thank_you_page_view` on /thank-you, tel/TCPA/`action="/thank-you"` all present).
 - SEO/SEM `BLOCKERS.md` clean; `backlog.md` remaining open items all Adam-gated new-page creation or sister-task-owned — no un-gated site work. `loanos-clone` untouched (paused-LoanOS guard).
-- Design spot-check (index + dscr-loan-austin-tx): GTM ×2, 0 legacy-entity drift, NMLS 513013 + header nav present, 0 "21-day" close claim, HyperSmart brand live. No site-HTML commit / no deploy (0 mutations). NotebookLM advisor script absent (87th).
+- Design spot-check (index + dscr-loan-austin-tx): GTM ×2, 0 legacy-entity drift, NMLS 513013 + header nav present, 0 "21-day" close claim, the former employer brand live. No site-HTML commit / no deploy (0 mutations). NotebookLM advisor script absent (87th).
 
 ## 2026-07-04 — styer-suburb-editor-daily (Round 4 #13, ROUND 4 COMPLETE): westlake — Rollingwood as the missing 78746 municipality + its own city tax rate + Barton Creek Elementary "A" + fresh Zillow ZHVI print
 
@@ -782,7 +861,7 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
 ## 2026-06-17 — styer-site-daily (Wednesday): Georgetown suburb deep-dive audit — clean, 0 mutations
 
 - **Non-negotiables:** sitemap.xml + robots.txt 200; conversion tracking 10/10 (HTML-token via `curl -L`, redirects followed — no live-submit pipeline pollution). Absolute tool paths used (PATH-drop learning re-confirmed in `for`-loop subshell).
-- **Wednesday rotation — Georgetown suburb deep dive + AEO.** Picked over strict order because Wk-15 competitive intel flagged it NEW #7 ★ (only rising keyword amid a 4-of-5 pullback). On-page **excellent, 0 defects:** city-specific H1, answer-first AEO intro, question-phrased H2s, 4 valid JSON-LD blocks (LocalBusiness/FAQPage/BreadcrumbList/WebPage — all parse via python json.loads), internal links to /calculators + /rate-check-georgetown, NMLS 513013/2072896 + Kyber entity correct, 0 legacy entity names.
+- **Wednesday rotation — Georgetown suburb deep dive + AEO.** Picked over strict order because Wk-15 competitive intel flagged it NEW #7 ★ (only rising keyword amid a 4-of-5 pullback). On-page **excellent, 0 defects:** city-specific H1, answer-first AEO intro, question-phrased H2s, 4 valid JSON-LD blocks (LocalBusiness/FAQPage/BreadcrumbList/WebPage — all parse via python json.loads), internal links to /calculators + /rate-check-georgetown, NMLS 513013/2072896 + the former company entity correct, 0 legacy entity names.
 - **Systemic finding surfaced (not edited):** only 5 of 25 suburb pages carry an inline Netlify quick-quote form (austin-area, buda, cedar-park, kyle, westlake); the other 20 incl. Georgetown lack the on-page `/thank-you`-landing form pattern. Not unilaterally added — form changes are an Adam-approval gate + create unmapped Netlify form-names (silent-lead-loss risk) + deep suburb edits are styer-suburb-editor-daily's domain. Flagged for coordination.
 - **SEO/SEM:** BLOCKERS.md clean; backlog 0 site-eligible items; loanos-clone NOT mutated (paused-LoanOS deploy guard). Blog fresh (06-16). **0 site-HTML mutations — clean verification run.** Committed only this task's run-log + session docs (file-specific add; sister-task untracked gbp-posts file left alone).
 
@@ -827,7 +906,7 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
 
 - **Sitemap/robots 200; conversion 10/10** (HTML-token via live `curl -L`, redirects followed; live-submit avoided). Both LPs: GTM `PQQ6PGLR`, `generate_lead` + correct `lead_type` (purchase_prequal / refi_quote), `action→/thank-you`; `/thank-you` fires `thank_you_page_view`. Used absolute tool paths after subshell PATH-drop (cached learning).
 - **Monday schema audit:** homepage **3/3 ld+json blocks VALID** (live Python `json.loads` — Re-Verify fallback, no Rich Results key). Coverage: homepage `MortgageBroker`×2 + `Person` + `FAQPage` + NMLS `EducationalOccupationalCredential` + OfferCatalog; about `LocalBusiness` + `Person` + `Organization` + `FAQPage`; DSCR `Article` + `FAQPage` + `FinancialProduct` + `BreadcrumbList`.
-- **AEO entity audit:** Person (Adam Styer) consistent homepage↔about. Entity-name hygiene clean — `Mortgage Solutions LP`=0, `The Styer Team`=0, old company NMLS `2526130`=0, HyperSmart×9, Kyber×4, company NMLS 2072896 + personal 513013 present. Homepage lede = NEW "complicated income" positioning (H1 *"The loans your bank said no to. The pricing your bank can't match."*) — **positioning pivot LIVE**, no 21-day/performance claim in lede. AggregateRating still absent from homepage JSON-LD (Adam-gated; self-serve homepage review markup carries Google policy risk).
+- **AEO entity audit:** Person (Adam Styer) consistent homepage↔about. Entity-name hygiene clean — `Mortgage Solutions LP`=0, `The Styer Team`=0, old company NMLS `2526130`=0, the former employer×9, the former company×4, company NMLS 2072896 + personal 513013 present. Homepage lede = NEW "complicated income" positioning (H1 *"The loans your bank said no to. The pricing your bank can't match."*) — **positioning pivot LIVE**, no 21-day/performance claim in lede. AggregateRating still absent from homepage JSON-LD (Adam-gated; self-serve homepage review markup carries Google policy risk).
 - **🟢 Blog freshness RESOLVED** (re-verify auto-clear): `styer-content-weekly` shipped two 2026-06-14 posts (`buy-before-you-sell-austin-tx`, `dscr-vs-conventional-investment-property-loan-texas`) — both HTTP 200, in sitemap; latest now 1 day old. Stale "blog 9 days overdue" flag removed from RECURRING_ISSUES. DSCR investor post CTA routes to `/scenario.html` (Send-Your-Scenario canonical LP) + DSCR calculator — resolved-by-design funnel, not a CTA gap.
 - **SEO/SEM backlog 0 site-eligible; BLOCKERS.md clean; loanos-clone not mutated** (paused-LoanOS deploy guard). NotebookLM advisor script absent (74th). No commits — clean tree respected (untracked sister-task `run-logs/gbp-posts/2026-06-07.md` left alone). New FLAG: Monday weekly GSC sitemap-Success reminder.
 
@@ -844,7 +923,7 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
 ## 2026-06-14 — styer-site-daily Sunday (weekend recovery fire): clean verification day, 0 site mutations
 
 - **Sitemap/robots 200; conversion 10/10** (HTML-token via live `curl -L`, redirects followed; live-submit avoided to prevent fake CRM/n8n leads). Both LP forms confirmed `action='/thank-you'` (single-quoted — quote-agnostic grep), GTM `PQQ6PGLR`, `generate_lead` + correct `lead_type` (purchase_prequal / refi_quote), `/thank-you` fires `thank_you_page_view`.
-- **Design spot-check (homepage):** navy `#0A1F3F` intact, HyperSmart branding (13×), personal NMLS 513013 (15×) + company 2072896 (3×), old company 2526130 = 0, zero legacy display names (`styerteam` ×6 = retained social URLs only). Hero CTAs route `#contact-form` (Decision Q10).
+- **Design spot-check (homepage):** navy `#0A1F3F` intact, the former employer branding (13×), personal NMLS 513013 (15×) + company 2072896 (3×), old company 2526130 = 0, zero legacy display names (`styerteam` ×6 = retained social URLs only). Hero CTAs route `#contact-form` (Decision Q10).
 - **Re-Verify Gate on lone "21-day" token:** line 493 `Closed in 21 days at a rate within 0.25% of conventional pricing` = scenario-outcome card (real closed file), NOT the banned trust-strip claim → kept per Decision-2, no edit.
 - **Blog freshness 9 days stale** (latest 2026-06-05) — re-surfaced to `styer-content-weekly` (2nd consecutive; content task owns authoring, not a FLAG).
 - **SEO/SEM backlog 0 site-eligible; BLOCKERS.md clean; loanos-clone not mutated** (paused-LoanOS deploy guard). NotebookLM advisor script absent (73rd). No commits — clean tree respected.
@@ -860,7 +939,7 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
 
 - **Sitemap/robots 200; conversion 10/10** (HTML-token via live `curl -L`, redirects followed; live-submit avoided). Confirmed both LP forms `action='/thank-you'` (single-quoted in source — quote-agnostic grep required) + JS redirect → Ads conversion fires.
 - **LP light compliance pass:** TCPA consent + personal NMLS 513013 + company NMLS 2072896 all present on both LPs; zero legacy display names; zero banned "21-day" trust claims.
-- **Design spot-check (homepage):** navy `#0A1F3F` intact, HyperSmart branding present, no legacy names; hero CTAs route `#contact-form` (Decision Q10). Gold renders `#8B6E24` (known hex-drift carry, Adam-gated SKILL.md sync).
+- **Design spot-check (homepage):** navy `#0A1F3F` intact, the former employer branding present, no legacy names; hero CTAs route `#contact-form` (Decision Q10). Gold renders `#8B6E24` (known hex-drift carry, Adam-gated SKILL.md sync).
 - **Net-new LOW awareness:** one "Closed in 21 days" token = a real scenario-outcome card, NOT the banned sitewide "21-Day Avg. Close" performance claim — kept per Decision-2 precedent (real outcome facts retained; "quotes can't be honestly rewritten"). No edit.
 - **Blog freshness 8 days (PAST window)** — hard-surfaced to `styer-content-weekly` (latest 2026-06-05; content task owns publishing, not a FLAG).
 - **SEO/SEM backlog: 0 site-eligible**; BLOCKERS.md clean; loanos-clone NOT mutated (paused-LoanOS deploy guard).
@@ -1083,7 +1162,7 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
 - **New scheduled SKILL task** `styer-blog-writer-weekly` (`/Users/adamstyer/.claude/scheduled-tasks/styer-blog-writer-weekly/SKILL.md`, cron `0 8 * * 2` = Tue 8am CT, machine-local/not git-tracked). Auto-publishes ONE net-new, compliance-gated blog post per week. Sibling to the Friday editor (`styer-content-weekly`), which only refreshes existing posts — the writer is the only task that creates URLs. Guarantee: a post ships weekly unless a hard gate fails; a failed week is a loud skip, never silent. FYI-only notification + one-command revert (no approval gate).
 - **First run (inline, supervised):** published **"Physician Mortgage Loans in Texas: How Doctors Qualify in 2026"** — `blog/2026-05-30-physician-mortgage-texas.html`, 1,387 words (target band 1,200–1,600), Tier B (SEO-AUDIT Phase 3 physician cluster gap). Dedup gate PASS (no existing physician page/post). Written from principle (no fabricated borrower anecdote on hand).
 - **Citations (4, all approved sources, inline):** Fannie Mae Selling Guide B3-3.3-03 (future-employment qualifying), B3-6-05 (deferred student-loan treatment), B3-3.1-01 (income continuity); CFPB ATR/QM 12 CFR 1026.43. No rate quotes, no performance-time claims.
-- **All 7 compliance gates PASS:** brand name (HyperSmart present, legacy entity absent); NMLS/entity correct; performance-metric STRIP (removed "Pre-approval in 24 hours / same day" from dual-CTA + a body "within 24 hours"); no raw 1003 URL as visible text; title lint clean; TX-only / no USDA; cluster wiring + 4-surface registration.
+- **All 7 compliance gates PASS:** brand name (the former employer present, legacy entity absent); NMLS/entity correct; performance-metric STRIP (removed "Pre-approval in 24 hours / same day" from dual-CTA + a body "within 24 hours"); no raw 1003 URL as visible text; title lint clean; TX-only / no USDA; cluster wiring + 4-surface registration.
 - **Registered across 4 surfaces:** blog.html noscript list + CollectionPage `itemListElement` JSON-LD; blog/manifest.json (valid JSON); sitemap.xml (`.html` `<loc>`, valid XML). 5 in-body cluster links (jumbo ×2, self-employed, 1099-only, non-qm).
 - **Three commits:** `4876d86` atomic publish (post + 4 surfaces — the clean single revert target), `d850436` bookkeeping (run brief `run-logs/content-2026-05-30.md` + content-backlog consumed log + this changelog), `f7e14c5` added BreadcrumbList JSON-LD (post now ships all three: Article + FAQPage + BreadcrumbList). Live verified HTTP 200 + BreadcrumbList present on the deployed page.
 - **SKILL.md corrections baked in during the run** (machine-local file, not git): manifest path is `blog/manifest.json` not repo root; sitemap uses full `.html` `<loc>` URLs (match existing pattern, not generic pretty-URL); two-commit publish flow documented (run brief needs the publish SHA, so a single all-inclusive commit is logically impossible); schema-mirror instruction now points at the canonical 3-block template `2026-04-17-should-i-refinance-austin-tx-2026.html` (most siblings omit BreadcrumbList — don't mirror a random recent post for schema).
@@ -1234,7 +1313,7 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
   - Mandatory privacy / outcomes-vary block renders in the page footer.
 - **AEO surface:** 5-question FAQ (1 more than template minimum) mirrored exactly between visible accordion and FAQPage JSON-LD. Article schema `about` and `abstract` fields populated. Direct Answer block 75 words, well within 40–80 target. Person schema with NMLS sameAs present.
 - **Related links** point UP to `/high-net-worth-mortgage.html` and `/asset-depletion-mortgage-texas.html` (the pillar guides for the strategy used in this file) + back to `/scenario.html` for conversion. No lateral auto-widget.
-- **Loan app URL spec mismatch.** Adam's original Prompt A referenced `mslp.my1003app.com/513013/register` — I used the live `hypersmart.my1003app.com/513013/register?time=1779291829279` per CLAUDE.md and CONTEXT.md across all 3 scenario files. Surfaced in FLAG_FOR_ADAM.md (Q2 session).
+- **Loan app URL spec mismatch.** Adam's original Prompt A referenced `mslp.contact.com/513013/register` — I used the live `the former employer.contact.com/513013/register?time=1779291829279` per CLAUDE.md and CONTEXT.md across all 3 scenario files. Surfaced in FLAG_FOR_ADAM.md (Q2 session).
 
 ## 2026-05-28 PM Q2 (user-initiated, Adam) — Internal-linking audit + Tier-1 product-page cluster fix (3 files, 10 edits)
 
@@ -1267,7 +1346,7 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
   - Texas-only scope.
   - Article schema (not TechArticle/TechReport) for consistency with the rest of the site.
   - Entity strings verified: display name "The Styer Team · Powered by GoRascal"; legal "The Styer Team · Powered by GoRascal"; NMLS #2072896 / #513013; corp address + phone match CLAUDE.md.
-- **Loan app URL:** template + new pages use `/get-preapproved.html?intent=scenario` per CLAUDE.md / CONTEXT.md, not the `mslp.my1003app.com` URL referenced in the spec prompt (prompt referenced a stale URL).
+- **Loan app URL:** template + new pages use `/get-preapproved.html?intent=scenario` per CLAUDE.md / CONTEXT.md, not the `mslp.contact.com` URL referenced in the spec prompt (prompt referenced a stale URL).
 - **Verified:** files written, sitemap + robots updated, no edits to `style.css`, no new CSS variables/frameworks/libraries, no edits to existing pillar/product pages, no sitewide nav change. Filter chip + card markup left commented out and discoverable for Adam when scenario #1 is filled in.
 
 ## 2026-05-28 AM (styer-site-daily, Thursday — scheduled fire) — Internal Linking + Funnel Flow rotation + sitemap lastmod ZERO_RISK fix
@@ -1275,7 +1354,7 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
 - **Thursday rotation = Internal Linking + Funnel Flow per SKILL.md.** First scheduled fire since 2026-05-26 PM (Wed 2026-05-27 = NO FIRE, scheduler-anomaly carry bumps to 12+ instances). Adam ran an interactive Phase 4.2 session on 2026-05-27 PM that updated `/non-qm-loans.html` in-page `dateModified` to 2026-05-27 but missed sitemap.xml.
 - **Site change shipped — 1 file, 1 line.** `sitemap.xml:45` `<lastmod>2026-05-18</lastmod>` → `<lastmod>2026-05-27</lastmod>` for `/non-qm-loans.html`. ZERO_RISK mechanical fix bringing sitemap.xml lastmod into sync with the page's actual JSON-LD `dateModified` after Adam's 2026-05-27 PM commits `1486a01` / `e81269a` / `db10ccf` / `6b64ebf`. Reversible via git; no copy/voice/positioning change. Other 2026-05-27 commits only touched `non-qm-loans.html` + CONTEXT/CHANGELOG, so drift was contained to this URL.
 - **Funnel-flow audit complete (3-page deep + cluster scan + full funnel trace).** Audited `non-qm-loans.html` (45 unique internal links), `bank-statement-loans-austin-tx.html` (28), `1099-only-mortgage-texas.html` (41). All 3 satisfy "2+ relevant internal links" SKILL.md requirement (16, 9, 9 cluster cross-links respectively). Hub-spoke topology solid. Contact.html form wiring verified: Netlify attribute + `form-name=contact` + dataLayer `generate_lead` + `lead_type: 'contact_form'` + all required fields (name/email/phone/loan-type/message/tcpa_consent/bot-field). Thank-you.html verified: embedded Calendly widget + 3-step "What Happens Next" + tel: link.
-- **NEW finding — complicated-income cluster 0 funnel CTAs to tracked LPs.** All 8 audited cluster pages (non-qm-loans, bank-statement-loans-austin-tx, 1099-only-mortgage-texas, self-employed-mortgage-austin, asset-depletion-mortgage-austin-tx, high-net-worth-mortgage, investor-loans, dscr-loan-austin-tx) route conversion CTAs ONLY through raw 1003 (`hypersmart.my1003app.com/513013/register`) + Calendly + `/contact.html` + `tel:`. Zero direct links to `/get-preapproved` or `/refinance-quote`. Generalizes the existing CONTEXT.md homepage-CTA MEDIUM blocker to the cluster Adam is currently positioning around per GOALS.md. Adam-decision territory (funnel architecture) — surfaced via FLAG_FOR_ADAM, not auto-actioned.
+- **NEW finding — complicated-income cluster 0 funnel CTAs to tracked LPs.** All 8 audited cluster pages (non-qm-loans, bank-statement-loans-austin-tx, 1099-only-mortgage-texas, self-employed-mortgage-austin, asset-depletion-mortgage-austin-tx, high-net-worth-mortgage, investor-loans, dscr-loan-austin-tx) route conversion CTAs ONLY through raw 1003 (`the former employer.contact.com/513013/register`) + Calendly + `/contact.html` + `tel:`. Zero direct links to `/get-preapproved` or `/refinance-quote`. Generalizes the existing CONTEXT.md homepage-CTA MEDIUM blocker to the cluster Adam is currently positioning around per GOALS.md. Adam-decision territory (funnel architecture) — surfaced via FLAG_FOR_ADAM, not auto-actioned.
 - **NEW finding — thank-you.html performance-metric claims tension.** Lines 442-443 ("Same-day review during business hours. He reads every submission personally.") + 452-453 ("Letter or quote in 24 hrs" / "Pre-approval letter or rate quote delivered within one business day.") GOALS.md (2026-05-18): "No more performance-metric marketing." Voice guide: "Same-day pre-approvals — Adam does these routinely; it's a real differentiator." Same tension class as the existing /get-preapproved title `24-Hour Turnaround` blocker. Surfaced via FLAG_FOR_ADAM, not auto-actioned. Adam-decision; suggested batch with the /get-preapproved title pivot.
 - **Re-Verify Gate auto-correction — leander Audit Issue #5 line number.** 2026-05-26 PM agent "refined" the carry from "line 276" (AM correct) to "line 280" and called AM imprecise. Today's `grep -n` returns line **276** — AM was right. Carry text reverts to 276. Leander hasn't been touched since `db7ab16` 2026-05-25 (meta trim), so no edits could have shifted the line. PM agent miscounted. Logged as a learnings entry: PM gate should always `grep -n`, never eyeball line counts.
 - **Re-Verify Gate confirms:** sitemap 200, robots 200, conversion 10/10, sitemap entry count 134 (no drift), Mortgage Solutions LP / Styer Team / NMLS 2526130 all 0 files, title-tag pipe-format 34/2 (Adam-pivot deferred), Audit Issue #5 surface inventory holds (3 locations / 2 files).
@@ -1310,7 +1389,7 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
 - **Auto-resolution 1 (major):** Audit Issue #5 superlative sweep dropped **11→2 occurrences** between AM run and PM run (sister task or Adam batch resolved 9/11). Only homepage `index.html:362` H1 hero "bank can't match" + `leander-mortgage-lender.html:276` "beat builder rates" framing remain. Phase A "superlatives cleanup" weekly priority per GOALS.md is **~95% complete**. Both remaining occurrences require Adam pivot copy decision.
 - **Auto-resolution 2 (major):** Tuesday's planned 6-suburb meta-trim batch already done via sister task `db7ab16 seo: trim 24 over-length meta descriptions to <=160 chars`. All 7 AM-flagged pages now compliant: cedar-park 276→156, liberty-hill 200→146, manor 199→143, dripping-springs 194→136, leander 168→135, new-braunfels 163→141, bee-cave 162-src/158-visible (`&amp;` HTML entity decodes to 1 char). **23/24 suburb pages now ≤160 char SERP compliant.** Tuesday rotation needs new priority.
 - **Tooling gotcha captured:** Commit `e24b973 seo: force flag on _redirects rules` (today PM) made `/get-preapproved`, `/refinance-quote`, `/thank-you` 301 force-redirects. Initial conversion verification without `-L` returned 0 token matches on all 3 pages (looks like total tracking breakage). Required `curl -s -L` to follow redirect and verify the actual served HTML. Conversion 10/10 confirmed with `-L`. **Going forward**: Step 2 conversion checks must use `curl -L`. AM run already correct.
-- **Re-Verify Gate (13 claims):** sitemap 200 + robots 200 (134 `<loc>`, was 135 AM — redirect/DSCR consolidation), conversion 10/10 (with `-L`), legacy entity scrub 0/0/0, 21-day MARKETING claim 0 (7 prose hits are case-study/edu/admin — legitimate), AM `e05f134` titles hold, Kyber footers 2× both, AggregateRating in ops.html only (dashboard status indicator, not active schema — known carry).
+- **Re-Verify Gate (13 claims):** sitemap 200 + robots 200 (134 `<loc>`, was 135 AM — redirect/DSCR consolidation), conversion 10/10 (with `-L`), legacy entity scrub 0/0/0, 21-day MARKETING claim 0 (7 prose hits are case-study/edu/admin — legitimate), AM `e05f134` titles hold, the former company footers 2× both, AggregateRating in ops.html only (dashboard status indicator, not active schema — known carry).
 - **Sister-task activity between AM and PM:** 12 commits in seo-* program — DSCR consolidation (`dd18a5a`), email normalization (`90c9c3b`), HSTS upgrade (`4343a9a`), 24-meta-trim sweep (`db7ab16`), USDA nav demotion (`55a997e`), force-redirect (`e24b973`), and more. File-specific `git add` discipline preserved working tree.
 - NotebookLM 54th dead-check; PSI 20/20 drain (both carry).
 
@@ -1324,25 +1403,25 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
 ## 2026-05-25 (styer-site-daily, Monday — scheduled fire) — Schema + AEO Entity Audit + suburb meta trim batch
 
 - **Monday rotation: Schema + Google Ads Quality Factors + AEO Entity Audit.** Homepage schema audit confirmed MortgageBroker × 2 + Person + 12 Service + 12 Offer + FAQPage + EducationalOccupationalCredential + City + State + GeoCoordinates. About page: Person + LocalBusiness + 2 Organization. DSCR Austin: FAQPage with 6 Questions. Cedar Park (sister-task rebuilt 2026-05-24 `1b4d028`): verified HTTP 200, strong schema integrity (BreadcrumbList + FAQPage 5Qs + LocalBusiness + Person + SpeakableSpecification + 12 more entity types).
-- **Audit finding auto-resolved (2026-04-27 AM):** homepage MortgageBroker address (was `5718 Sam Houston Circle`) and about.html LocalBusiness address (was `5900 Balcones Drive`) now both consistently use HyperSmart corp `7600 N Capital of Texas Hwy, Suite 230, Office 105 / 78759`. Resolved by 2026-05-20 entity transition. Removed from active blockers.
+- **Audit finding auto-resolved (2026-04-27 AM):** homepage MortgageBroker address (was `5718 Sam Houston Circle`) and about.html LocalBusiness address (was `5900 Balcones Drive`) now both consistently use the former employer corp `7600 N Capital of Texas Hwy, Suite 230, Office 105 / 78759`. Resolved by 2026-05-20 entity transition. Removed from active blockers.
 - **AEO entity check passed:** homepage first-150-words extractability strong — H1 (specialist positioning) + P1 32-word concise value prop with all key entities (self-employed, jumbo, DSCR, 40+ wholesale, NMLS #513013). Person + LocalBusiness schemas consistent across homepage + about.
 - **Commit `e05f134` — 4 suburb meta description trims to ≤160 chars:** westlake 254→154, buda 235→143, hutto 234→158, round-rock 212→155. All within Google SERP truncation window. Cedar Park (276) excluded — sister-task fresh territory. All 4 live verified HTTP 200 after Netlify deploy. 6 additional suburb pages >160 chars queued for Tuesday rotation: liberty-hill, manor, dripping-springs, leander, new-braunfels, bee-cave.
 - **Audit Issue #5 superlative sweep drift:** count 12→11 occurrences between Sat PM and Mon (self-resolved). 8 files, 11 occurrences still gated on Adam batch approval. Full file:line in `run-logs/2026-05-23-pm.md`.
-- **Re-Verify Gate (12 claims):** all hold. Sitemap + robots 200, conversion 10/10, legacy entity scrub 0/0/0, 21-day claim 0, Kyber footers hold, titles hold, HNW resolution holds, AggregateRating scrub holds.
+- **Re-Verify Gate (12 claims):** all hold. Sitemap + robots 200, conversion 10/10, legacy entity scrub 0/0/0, 21-day claim 0, the former company footers hold, titles hold, HNW resolution holds, AggregateRating scrub holds.
 - NotebookLM 53rd dead-check; PSI 19/19 drain (carries).
 
 ## 2026-05-24 (styer-site-daily, Sunday — 4th unscheduled weekend fire in 9 days) — Re-verify gate only
 
 - **0 site files modified.** Per yesterday PM's TOMORROW_PRIORITY #1: Sunday unscheduled fire = re-verify gate only. Per GOALS.md "no new content beyond repositioning + compliance fixes" + Decision Test (brand positioning copy is Adam territory).
-- **Re-Verify Gate (11 claims):** sitemap.xml 200 (135 `<loc>` entries), robots.txt 200, conversion 10/10 (GTM + dataLayer + lead tokens live on /get-preapproved, /refinance-quote, /thank-you), legacy entity scrub 0/0/0 (Mortgage Solutions LP / Styer Team / NMLS 2526130), 21-day marketing claim 0 occurrences, 2026-05-22 title fixes (investor-loans + high-net-worth-mortgage) hold, 2026-05-23 AM Kyber footer fixes (buda + ftb-dpa-guide) hold 2× each, HNW "~30 states" stays resolved, Audit Issue #5 superlative sweep (9 files, 12 edits) all still actionable. 0 claims auto-resolved this run.
-- **Sister-task cross-awareness:** suburb-editor shipped 3 commits today before daily-opt fired — `34b0712` HyperSmart cutover sweep on draft assets, `ed3f670` IndexNow HTTP 403 → TODO.md NEEDS ADAM, `1b4d028` cedar-park-mortgage-lender rebuild with unique structure + AEO-compliant schema. Cedar Park verified live HTTP 200. Working tree pollution from sister task (7 untracked + 2 modified) NOT staged.
+- **Re-Verify Gate (11 claims):** sitemap.xml 200 (135 `<loc>` entries), robots.txt 200, conversion 10/10 (GTM + dataLayer + lead tokens live on /get-preapproved, /refinance-quote, /thank-you), legacy entity scrub 0/0/0 (Mortgage Solutions LP / Styer Team / NMLS 2526130), 21-day marketing claim 0 occurrences, 2026-05-22 title fixes (investor-loans + high-net-worth-mortgage) hold, 2026-05-23 AM the former company footer fixes (buda + ftb-dpa-guide) hold 2× each, HNW "~30 states" stays resolved, Audit Issue #5 superlative sweep (9 files, 12 edits) all still actionable. 0 claims auto-resolved this run.
+- **Sister-task cross-awareness:** suburb-editor shipped 3 commits today before daily-opt fired — `34b0712` the former employer cutover sweep on draft assets, `ed3f670` IndexNow HTTP 403 → TODO.md NEEDS ADAM, `1b4d028` cedar-park-mortgage-lender rebuild with unique structure + AEO-compliant schema. Cedar Park verified live HTTP 200. Working tree pollution from sister task (7 untracked + 2 modified) NOT staged.
 - **4th weekend fire in 9 days flagged.** Pattern is now steady-state, not anomaly. Either document expected cadence in SKILL.md or tune scheduler.
 - NotebookLM 52nd dead-check; PSI 18/18 drain (both carry).
 
 ## 2026-05-23 PM (styer-site-daily, Saturday — SECOND unscheduled fire) — Re-verify gate + audit sweep surfacing
 
 - **0 site files modified** — second-fire discipline: re-verify only, no piling sweeping copy changes on AM commit. Per CONTEXT.md TOMORROW_PRIORITY for weekend fires + Decision Test (brand positioning is Adam territory).
-- **Re-Verify Gate** — sitemap 200, robots 200, conversion 10/10, AM Kyber fixes (buda + ftb-dpa-guide) both still 2× live, legacy entity scrub holds (0/0/0 for "Mortgage Solutions LP" / "Styer Team" / NMLS 2526130).
+- **Re-Verify Gate** — sitemap 200, robots 200, conversion 10/10, AM the former company fixes (buda + ftb-dpa-guide) both still 2× live, legacy entity scrub holds (0/0/0 for "Mortgage Solutions LP" / "Styer Team" / NMLS 2526130).
 - **1 audit finding auto-resolved:** 2026-05-17 audit Issue #6 (HNW "~30 states") — 0 occurrences live, likely Adam-cleared between audit publication and now. Removed from future surface.
 - **NEW finding for Adam batch approval:** Audit Issue #5 "bank can't match" + "beat builder rates" superlative sweep — 9 files, 12 edits, full file:line table in `run-logs/2026-05-23-pm.md`. Includes index.html H1 + hero subtitle, about.html hero subtitle, 5 suburb pages (georgetown, kyle, leander×2, round-rock×2, taylor×2). Will unblock Phase A "superlatives cleanup" weekly priority.
 - **3rd unscheduled weekend fire flagged** — 2026-05-22 PM, 2026-05-23 AM, 2026-05-23 PM. Pattern not anomaly; document expected cadence in SKILL.md.
@@ -1350,8 +1429,8 @@ Root-caused the self-employed money page's SERP slip (#2→#5, now ranking behin
 
 ## 2026-05-23 (styer-site-daily, Saturday — unscheduled fire) — Phase A entity coverage gap sweep
 
-- **Phase A EHL/NMLS coverage compliance:** `83ad1d4` fixed 2 public-facing footer disclosures missing the new "The Styer Team · Powered by GoRascal" legal entity name (post-2026-05-20 entity transition). `buda-mortgage-lender.html` (in sitemap, ranked) — copyright + `.footer-disclaimer` rewritten to match site-wide pattern; added NMLS Consumer Access link. `ftb-dpa-guide.html` (DPA landing page) — `.lp-nmls` rewritten with Kyber legal entity in copyright + Consumer Access link in same one-line landing-page footer style.
-- **Gap audit via `comm -23`:** identified 7 pages with `The Styer Team · Powered by GoRascal` but missing `Kyber Mortgage`. Triaged via `noindex` + sitemap intersection — 5 admin/internal pages (dashboard, loan-dashboard, marketing-command-center, marketing-content, loanos-waitlist, thank-you) are noindexed and out of sitemap, so not crawler-facing — deferred. 2 public pages fixed.
+- **Phase A EHL/NMLS coverage compliance:** `83ad1d4` fixed 2 public-facing footer disclosures missing the new "The Styer Team · Powered by GoRascal" legal entity name (post-2026-05-20 entity transition). `buda-mortgage-lender.html` (in sitemap, ranked) — copyright + `.footer-disclaimer` rewritten to match site-wide pattern; added NMLS Consumer Access link. `ftb-dpa-guide.html` (DPA landing page) — `.lp-nmls` rewritten with the former company legal entity in copyright + Consumer Access link in same one-line landing-page footer style.
+- **Gap audit via `comm -23`:** identified 7 pages with `The Styer Team · Powered by GoRascal` but missing `the former company Mortgage`. Triaged via `noindex` + sitemap intersection — 5 admin/internal pages (dashboard, loan-dashboard, marketing-command-center, marketing-content, loanos-waitlist, thank-you) are noindexed and out of sitemap, so not crawler-facing — deferred. 2 public pages fixed.
 - **Re-Verify Gate:** legacy entity "Mortgage Solutions LP" + "Styer Team" + legacy NMLS 2526130 all 0 occurrences sitewide. Yesterday's `a8d565c` Phase B title fixes (/investor-loans + /high-net-worth-mortgage) still hold live.
 - **Health:** sitemap.xml 200, robots.txt 200, conversion tracking 10/10 (GTM-PQQ6PGLR + generate_lead + purchase_prequal/refi_quote + thank_you_page_view all verified live).
 - **Sister-task working-tree changes** (TODO.md, run-logs/suburb-editor-queue.md, 4 untracked suburb-editor run logs) intentionally NOT staged — file-specific `git add` only, per orphan-file rule from 2026-05-06 learnings.
@@ -1575,7 +1654,7 @@ to the .html URL.
 - **Same fix pattern as 2026-04-24 DPA editor run** (`"broker" → correspondent lender`). Adam's flexibility — "can also broker deals when wholesale pricing wins" — preserved as a beat in the positioning.
 - **3 of 5 SKILL.md improvements:**
   - Austin data point: $445K Austin–RR–SM MSA median (April 2026, Unlock MLS) + 16K+ active listings — added to "Why Austin Buyers" section with inline citation.
-  - Updated rate/program data: Freddie Mac PMMS mid-6% range with `freddiemac.com/pmms` citation; LLPA matrix cited to `singlefamily.fanniemae.com`; TSAHC + TDHCA URLs added (replacing un-linked program names); internal links added to `/austin-down-payment-assistance.html`, `/dscr-loan-austin-tx.html`, `/bank-statement-loans.html`, `/non-qm-loans.html`.
+  - Updated rate/program data: Freddie Mac PMMS mid-6% range with `freddiemac.com/pmms` citation; LLPA matrix cited to `singlefamily.fanniemae.com`; TSAHC + TDHCA URLs added (replacing un-linked program names); internal links added to `/resources/detailed-guides/austin-down-payment-assistance.html`, `/dscr-loan-austin-tx.html`, `/bank-statement-loans.html`, `/non-qm-loans.html`.
   - Tighter CTA in Adam's voice: signature reworded to "Got a quote from an online lender or a bank? Send it over. I'll line it up against my pricing... Same-day pre-approval if you want to move on it." Same-day pre-approval differentiator per voice guide.
 - **NOT done (skipped per SKILL.md "never fabricate" rule):** No `/Users/adamstyer/.claude/projects/-Users-adamstyer-Documents/memory/people/` directory exists — no verifiable borrower anecdote available, did not invent one. Photo addition deferred (no verified asset path).
 - **Related Guides anchor updated:** `Mortgage Broker vs Bank` → `Correspondent Lender vs Broker vs Bank` (URL `/mortgage-broker-vs-bank.html` preserved; future redirect/rename is Adam's call).
@@ -3018,7 +3097,7 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 ## 2026-05-21 (styer-site-daily — Thursday rotation)
 
 - **Phase B residual scrub:** Removed last "Styer Team" wording sitewide. `realtors.html:189` team-office.jpg alt attribute now reads "Adam Styer at his The Styer Team · Powered by GoRascal office in Austin, Texas". Commit `276b894` deployed; verified live in ~1s, HTTP 200.
-- **Site-wide entity scrub confirmed clean:** 0 "Mortgage Solutions LP", 0 NMLS 2526130, 0 "Styer Team" sitewide. Adoption of HyperSmart + Kyber + NMLS #2072896 healthy across homepage + /get-preapproved + /refinance-quote + /thank-you.
+- **Site-wide entity scrub confirmed clean:** 0 "Mortgage Solutions LP", 0 NMLS 2526130, 0 "Styer Team" sitewide. Adoption of the former employer + the former company + NMLS #2072896 healthy across homepage + /get-preapproved + /refinance-quote + /thank-you.
 - **Thursday rotation — Internal Linking + Funnel Flow:** 3 complicated-income pages audited (self-employed, DSCR, bank-statement). All hit ≥2 high-intent CTAs (/scenarios + /calculators + /contact). thank-you.html structure intact (Calendly + tel + 3 next-step markers). contact.html wiring intact (Netlify + form-name + dataLayer).
 - **New finding:** homepage has 0 direct CTAs to `/get-preapproved` or `/refinance-quote` post-`71b8590` hero cleanup. Routes go direct to loan-app URL + tel:. Flagged for Adam.
 - **Sitemap + robots 200 ✅. Conversion tracking 10/10 ✅.**

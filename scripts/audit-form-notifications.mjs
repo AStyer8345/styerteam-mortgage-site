@@ -94,7 +94,6 @@ customForms += 1;
 
 const requiredOwnerEmailCaptures = new Map([
   ['ftb-dpa-guide.html', /StyerCaptureNotificationBackup\(\{[\s\S]*sourceForm: 'ftb-dpa-guide-form'/],
-  ['rate-alert.html', /StyerCaptureNotificationBackup\(\{[\s\S]*sourceForm: 'rate-alert-form'/],
   ['resources/first-time-buyer-guide/index.html', /StyerCaptureNotificationBackup\(\{[\s\S]*sourceForm: 'first-time-buyer-guide'/],
   ['loanos-waitlist.html', /StyerCaptureNotificationBackup\(\{[\s\S]*sourceForm: 'loanos-waitlist'/],
 ]);
@@ -146,7 +145,7 @@ for (const [file, backupPattern] of requiredOwnerEmailCaptures) {
   if (!/if \(!res\.ok\) throw/.test(html)) failures.push(`${file}: custom submit handler does not reject a non-2xx primary response.`);
 }
 
-for (const file of ['index.html', 'get-preapproved.html', 'refinance-quote.html', 'contact.html']) {
+for (const file of ['index.html', 'contact.html']) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
   const capture = /situation-journeys\.js/.test(html) ? fs.readFileSync(path.join(root, 'situation-journeys.js'), 'utf8') : html;
   if (!/Promise\.allSettled/.test(capture) || !/netlifyAccepted/.test(capture) || !/leadAccepted/.test(capture)) {

@@ -1,7 +1,7 @@
 // Contact layer shared by every public page.
 // 1. On phones, a slim bar pinned to the bottom: Call · Text · Send scenario.
 // 2. "See My Options" links open the real scenario form in a slide-over
-//    panel instead of leaving the page. The panel embeds /get-preapproved.html
+//    panel instead of leaving the page. The panel embeds /contact.html?goal=Purchase
 //    (the Netlify form, its JS, attribution and confirmation stay unchanged),
 //    so no form markup is duplicated and the link still works without JS.
 // 3. When this script runs inside that embed (?embed=1), it trims the page to
@@ -11,7 +11,7 @@
   var d = document, b = d.body;
   if (!b || !b.classList.contains('advisory-site')) return;
   var params = new URLSearchParams(location.search);
-  var FORM_PATH = '/get-preapproved.html';
+  var FORM_PATH = '/contact.html?goal=Purchase';
   var PHONE = '+15129566010';
 
   // ── Embedded mode ──────────────────────────────────────────────────────────
@@ -30,10 +30,13 @@
   // A capped paragraph inside centered copy is re-centered here, since CSS
   // cannot see computed text-align.
   try {
-    var main = d.querySelector('main');
-    if (main) main.querySelectorAll('p').forEach(function (p) {
-      if (getComputedStyle(p).textAlign === 'center') p.classList.add('advisory-centered');
-    });
+    // The premium homepage owns paragraph alignment in its CSS and has no
+    // centered paragraphs to repair. Avoid a full-page style read there.
+    var main = b.classList.contains('premium-homepage') ? null : d.querySelector('main');
+    // Finish style reads before any class writes to avoid repeated layout flushes.
+    if (main) Array.prototype.filter.call(main.querySelectorAll('p'), function (p) {
+      return getComputedStyle(p).textAlign === 'center';
+    }).forEach(function (p) { p.classList.add('advisory-centered'); });
   } catch (e) {}
 
   // Pages that ARE the form get no bar and no panel.

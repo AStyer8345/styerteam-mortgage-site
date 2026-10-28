@@ -1,3 +1,5 @@
+> October 26, 2026: Public branding is Adam Styer, individual NMLS #513013. Former company affiliation, company license, office, email and application links are retired. Until current company and secure application details are confirmed, route application requests to https://styermortgage.com/contact.html. This instruction supersedes older company branding instructions below.
+
 # styermortgage.com — Architecture
 
 ## Tech Stack
@@ -34,7 +36,7 @@
 | Email | adam@thestyerteam.com |
 | Address | 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731 |
 | Calendly | https://calendly.com/adamstyer/15minutes |
-| Loan app | /get-preapproved.html?intent=scenario |
+| Loan app | /contact.html?goal=Purchase |
 | GBP Place ID | ChIJYy5uEFPKRIYRmF-k_5gPk74 |
 
 ### Reviews
@@ -62,7 +64,7 @@ Events are pushed to `dataLayer` from two shared bundles, never from the GTM con
 | `phone_click` | Delegated click on any `tel:` link, sitewide | — |
 | `thank_you_page_view` | Page load on /thank-you | — |
 
-`lead_type` values in use: `purchase_prequal` (/get-preapproved) · `refi_quote` (/refinance-quote) · `quick_quote` (hero quick form) · `contact_form` (/contact) · `rate_check` · `rate_alert_signup` · `ftb_dpa_guide` · `lo_waitlist_signup`
+`lead_type` values in use: `purchase_prequal` (/contact.html?goal=Purchase) · `refi_quote` (/contact.html?goal=Refinance) · `quick_quote` (hero quick form) · `contact_form` (/contact) · `rate_check` · `rate_alert_signup` · `ftb_dpa_guide` · `lo_waitlist_signup`
 
 **`analytics.js` — outbound + intent clicks**
 
@@ -70,8 +72,8 @@ Events are pushed to `dataLayer` from two shared bundles, never from the GTM con
 |-------|---------|
 | `book_call_click` | Click on `a[href*="calendly.com"]` |
 | `qualification_started` | Calendly click **intercepted** — see Qualification Gate below |
-| `secure_application_click` | Click on `a[href*="my1003app.com"]` |
-| `apply_now_click` | Also fires on `a[href*="my1003app.com"]` |
+| `secure_application_click` | Click on `a[href*="contact.com"]` |
+| `apply_now_click` | Also fires on `a[href*="contact.com"]` |
 | `send_scenario_click` | Click on `a[href*="scenario"]` |
 | `email_click` | Click on `a[href^="mailto:"]` |
 
@@ -83,7 +85,7 @@ Google Ads conversion fires on: `thank_you_page_view` only.
 
 ### Qualification Gate
 
-`analytics.js` intercepts clicks on `a[href*="calendly.com"]` and `preventDefault()`s them, redirecting to `/get-preapproved.html?intent=schedule&source=<path>` so the lead qualifies before booking. Links carrying `data-qualified-calendar` are exempt.
+`analytics.js` intercepts clicks on `a[href*="calendly.com"]` and `preventDefault()`s them, redirecting to `/contact.html?goal=Purchase<path>` so the lead qualifies before booking. Links carrying `data-qualified-calendar` are exempt.
 
 All ~100 pre-conversion pages are intercepted — that is intentional, not a bug. `/thank-you` is **not** intercepted because it embeds Calendly as an inline widget (`data-url`), not an `<a href>`; its on-page buttons are internal `#ty-calendly` jumps. Converted leads therefore book directly.
 
@@ -94,17 +96,17 @@ Known gap: because the thank-you booking is a widget rather than a link, `book_c
 Two entry paths converge on the same form. The suburb path is **two hops**, not one:
 
 ```
-24 suburb pages + area hub ──(3–6 links each)──> /scenario.html ──> /get-preapproved?intent=scenario
-homepage ──(4 CTAs)───────────────────────────────────────────────> /get-preapproved.html?intent=scenario
+24 suburb pages + area hub ──(3–6 links each)──> /contact.html ──> /contact.html?goal=Purchase
+homepage ──(4 CTAs)───────────────────────────────────────────────> /contact.html?goal=Purchase
                                                                     │
                                           form submit → generate_lead(purchase_prequal)
                                                                     ↓
                                                     /thank-you → thank_you_page_view → Ads conversion
 ```
 
-- Suburb pages link to `/get-preapproved` **0/25 — by design** (24 suburbs + `austin-area-mortgage-lender`). They route through `/scenario.html`, which is their sole main-body CTA target. Re-verified quote-agnostically and extensionless 2026-08-19; this is not a defect, do not "fix" it.
-- `/scenario.html` is a routing hub: no form, no `generate_lead`. Its CTAs are the 1003 app (`secure_application_click`), mailto (`email_click`), and Calendly (intercepted). Correct for the page type.
-- The `?intent=scenario` param **survives** the `/get-preapproved → /get-preapproved.html` 301 in `_redirects`, and `get-preapproved.html` reads `intent === 'scenario'`. Verified — do not assume the hop is lossy.
+- Suburb pages link to `/contact.html?goal=Purchase` **0/25 — by design** (24 suburbs + `austin-area-mortgage-lender`). They route through `/contact.html`, which is their sole main-body CTA target. Re-verified quote-agnostically and extensionless 2026-08-19; this is not a defect, do not "fix" it.
+- `/contact.html` is a routing hub: no form, no `generate_lead`. Its CTAs are the 1003 app (`secure_application_click`), mailto (`email_click`), and Calendly (intercepted). Correct for the page type.
+- The `?intent=scenario` param **survives** the `/contact.html?goal=Purchase → /contact.html?goal=Purchase` 301 in `_redirects`, and `get-preapproved.html` reads `intent === 'scenario'`. Verified — do not assume the hop is lossy.
 
 ## Google Ads
 
@@ -112,9 +114,9 @@ homepage ──(4 CTAs)───────────────────
 
 | Campaign | Status | Budget | Destination |
 |----------|--------|--------|-------------|
-| Search-1 (The Styer Mortgage Team) | PAUSED | — | /get-preapproved |
+| Search-1 (The Styer Mortgage Team) | PAUSED | — | /contact.html?goal=Purchase |
 | Suburb — Purchase Intent | SPEC READY | $500/mo | Suburb landing pages |
-| Refinance | In preparation | TBD | /refinance-quote |
+| Refinance | In preparation | TBD | /contact.html?goal=Refinance |
 
 **Suburb campaign spec:** `/Users/adamstyer/Documents/loanos-clone/tasks/seo-sem/specs/google-ads-suburb-campaigns.md`
 
@@ -139,10 +141,10 @@ homepage ──(4 CTAs)───────────────────
 ### Lead Capture (stripped nav)
 | Page | URL |
 |------|-----|
-| Pre-Approval Form | /get-preapproved |
-| Refinance Quote | /refinance-quote |
-| Pre-Qualification (4-step) | /prequal |
-| Rate Alert Signup | /rate-alert |
+| Pre-Approval Form | /contact.html?goal=Purchase |
+| Refinance Quote | /contact.html?goal=Refinance |
+| Pre-Qualification (4-step) | /contact.html?goal=Purchase |
+| Rate Alert Signup | /contact.html |
 | Thank You / Conversion | /thank-you |
 
 ### Loan Product Pages (8)
@@ -254,8 +256,8 @@ page without a disclaimer. Verified 2026-08-20 by fetching all 146 sitemap URLs.
 | Variant | URLs | Contents |
 |---|---|---|
 | **A** — full block (quoted below) | 106 | *"is a Licensed Mortgage Broker in Texas"* · *"Equal Housing Opportunity"* |
-| **B** — long-form footer | 33 | Kyber legal name · **principal address** · **Texas Consumer Complaint Notice** · *"Licensed in Texas"* · *"Equal Housing **Lender**"* · product-specific disclosure where one applies (e.g. "DSCR loans are for investment properties only"). Used on loan-product, DSCR, suburb, and lead-capture pages. |
-| **C** — thin footer | 5 | Kyber legal name + both NMLS IDs only. **No address, no Consumer Complaint Notice.** |
+| **B** — long-form footer | 33 | the former company legal name · **principal address** · **Texas Consumer Complaint Notice** · *"Licensed in Texas"* · *"Equal Housing **Lender**"* · product-specific disclosure where one applies (e.g. "DSCR loans are for investment properties only"). Used on loan-product, DSCR, suburb, and lead-capture pages. |
+| **C** — thin footer | 5 | the former company legal name + both NMLS IDs only. **No address, no Consumer Complaint Notice.** |
 | *(legal pages)* | 2 | `privacy.html`, `terms.html` — address present, no Consumer Complaint Notice. Different document type. |
 
 **Variant C pages:** `calculator-payment`, `calculator-affordability`, `calculator-refinance-breakeven`,

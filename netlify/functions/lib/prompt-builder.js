@@ -49,7 +49,7 @@ ${voiceSection}
 - Use descriptive <h2> and <h3> subheadings that someone might actually search for.
 - Include 3-5 internal links to relevant site pages (use "../" prefix):
   ../products.html (Loan Programs), ../calculators.html (Payment Calculator),
-  ../prequal.html (Pre-Qualification), ../contact.html (Contact),
+  ../contact.html?goal=Purchase (Pre-Qualification), ../contact.html (Contact),
   ../about.html (About Adam), ../realtors.html (For Realtors),
   ../blog.html (More Articles), ../testimonials.html (Testimonials)
 - ⚠️ CALCULATOR LINK RULES: ../calculators.html is a PAYMENT calculator — it estimates monthly payments based on numbers the user enters. It does NOT show rates, look up rates, or tell anyone what their rate would be. NEVER say "see your rate", "find your rate", "what your rate would be", or anything implying the calculator shows rates. Correct usage: "Run your payment numbers", "See what your monthly payment could look like", "Estimate your monthly cost". If someone wants to know their actual rate, they need to contact Adam directly.
@@ -119,7 +119,7 @@ DO NOT output <!DOCTYPE>, <html>, <head>, <body>, <style>, <title>, or <meta> ta
 ### Section 1: The Main Article
 Cover the topic with real substance and depth. Use Adam's voice.
 - HTML: <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>
-- Links use "../" prefix (../products.html, ../calculators.html, ../prequal.html, ../contact.html, ../blog.html)
+- Links use "../" prefix (../products.html, ../calculators.html, ../contact.html?goal=Purchase, ../contact.html, ../blog.html)
 - Use 3-5 descriptive <h2> subheadings that break up the content
 - Include at least 3 internal links to other site pages where relevant
 - Write 600-900 words in this section — enough depth that Google considers it valuable

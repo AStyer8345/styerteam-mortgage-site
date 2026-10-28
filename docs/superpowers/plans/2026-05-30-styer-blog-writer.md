@@ -18,7 +18,7 @@
 - Stage git changes by explicit filename. NEVER `git add -A` (the editor and Adam commit to this repo concurrently).
 - Display name: "The Styer Team · Powered by GoRascal". Never "The Styer Team" or "Mortgage Solutions LP".
 - Legal entity if cited: The Styer Team · Powered by GoRascal. Adam NMLS 513013, company NMLS 2072896, phone (512) 956-6010.
-- Loan application link anchor-text only, never the raw URL: `/get-preapproved.html?intent=scenario`.
+- Loan application link anchor-text only, never the raw URL: `/contact.html?goal=Purchase
 - TX-licensed only; no USDA product surface.
 - Commits co-authored: `Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>`.
 - Do NOT commit unless the human has approved (this plan's execution is the approval for plan-driven commits).
@@ -214,7 +214,7 @@ Run every check against the new file. ANY failure → do NOT commit; go to STEP 
    `grep -c "The Styer Team · Powered by GoRascal" blog/NEWFILE.html` (>=1) and `grep -Ec "The Styer Team|Mortgage Solutions LP" blog/NEWFILE.html` (==0).
 2. **NMLS / entity** — if cited, Adam 513013 / company 2072896 / The Styer Team · Powered by GoRascal are correct.
 3. **No performance-metric marketing** — default to STRIP. No "24-hour", "same-day", "fastest", "guaranteed approval". `grep -Eic "24-hour|same.day|fastest|guaranteed approval" blog/NEWFILE.html` (==0).
-4. **No raw 1003 URL** — application link is anchor text only. `grep -c "my1003app.com" blog/NEWFILE.html` may be >0 ONLY inside an `<a href>`; the visible text must never be the bare URL.
+4. **No raw 1003 URL** — application link is anchor text only. `grep -c "contact.com" blog/NEWFILE.html` may be >0 ONLY inside an `<a href>`; the visible text must never be the bare URL.
 5. **Title lint** — `grep "<title>" blog/*.html | grep -v "Adam Styer"` returns nothing for the new file.
 6. **TX-only / no USDA** — no out-of-state origination implication; no USDA product surface.
 7. **Cluster wiring + registration** — ≥2 in-body contextual links into relevant hub/spoke pages, AND the post is registered in all four surfaces (STEP 5). Missing any registration = FAIL (an orphaned post is worse than no post).

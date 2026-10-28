@@ -226,7 +226,7 @@ This block will be inserted on each calculator page before the `<footer>` tag:
         <h2 style="color:#fff;font-size:1.5rem;margin-bottom:0.5rem;">Ready to Make It Real?</h2>
         <p style="color:rgba(255,255,255,0.8);margin-bottom:1.5rem;">Get a personalized quote from Adam Styer — no obligation, no credit impact.</p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="/get-preapproved.html" class="btn btn-primary" style="background:var(--color-gold,#C9A84C);color:#fff;padding:0.75rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;">Get Pre-Approved</a>
+          <a href="/contact.html?goal=Purchase" class="btn btn-primary" style="background:var(--color-gold,#C9A84C);color:#fff;padding:0.75rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;">Get Pre-Approved</a>
           <a href="tel:+15129566010" style="color:#fff;padding:0.75rem 1.5rem;border:1px solid rgba(255,255,255,0.3);border-radius:6px;text-decoration:none;">Call (512) 956-6010</a>
         </div>
       </div>
@@ -256,7 +256,7 @@ This page has no nav and no footer. Add a minimal header link and CTA. After the
         <h2 style="color:#fff;font-size:1.5rem;margin-bottom:0.5rem;">Ready to Refinance?</h2>
         <p style="color:rgba(255,255,255,0.8);margin-bottom:1.5rem;">Get a personalized refinance quote from Adam Styer.</p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="/refinance-quote.html" style="background:var(--color-gold,#C9A84C);color:#fff;padding:0.75rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;">Get My Refi Quote</a>
+          <a href="/contact.html?goal=Refinance" style="background:var(--color-gold,#C9A84C);color:#fff;padding:0.75rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;">Get My Refi Quote</a>
           <a href="tel:+15129566010" style="color:#fff;padding:0.75rem 1.5rem;border:1px solid rgba(255,255,255,0.3);border-radius:6px;text-decoration:none;">Call (512) 956-6010</a>
         </div>
         <p style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:1rem;"><a href="/calculators.html" style="color:rgba(255,255,255,0.6);">← All Calculators</a> · <a href="/" style="color:rgba(255,255,255,0.6);">styermortgage.com</a></p>
@@ -296,7 +296,7 @@ Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
 **Files:**
 - Modify: `analytics.js:28-32` — add click tracking for loan application links
 
-**Context:** The highest-value conversion action (clicking through to `mslp.my1003app.com`) is completely unmeasured. Phone clicks, form submits, and Calendly clicks are tracked, but not the actual application link.
+**Context:** The highest-value conversion action (clicking through to `mslp.contact.com`) is completely unmeasured. Phone clicks, form submits, and Calendly clicks are tracked, but not the actual application link.
 
 - [ ] **Step 1: Add Apply Now tracking to analytics.js**
 
@@ -305,7 +305,7 @@ In `analytics.js`, after the Calendly click tracking block (after line 38), add:
 ```javascript
 
     // ── Apply Now / loan application clicks ────────────────────────
-    document.querySelectorAll('a[href*="mslp.my1003app.com"]').forEach(function (link) {
+    document.querySelectorAll('a[href*="mslp.contact.com"]').forEach(function (link) {
       link.addEventListener('click', function () {
         track({ event: 'apply_now_click', destination: link.href });
       });
@@ -326,7 +326,7 @@ Expected: The new line appears.
 git add analytics.js
 git commit -m "feat: track Apply Now clicks to loan application
 
-Adds dataLayer event for clicks to mslp.my1003app.com so Google Ads
+Adds dataLayer event for clicks to mslp.contact.com so Google Ads
 can measure the highest-value conversion action on the site.
 
 Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
@@ -678,7 +678,7 @@ Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
 ### Task 10: Unblock prequal.html in robots.txt and Add noindex to hero-test.html
 
 **Files:**
-- Modify: `robots.txt:13` — remove `Disallow: /prequal.html`
+- Modify: `robots.txt:13` — remove `Disallow: /contact.html?goal=Purchase`
 - Modify: `hero-test.html` — add `<meta name="robots" content="noindex, nofollow">`
 
 **Context:** `prequal.html` is blocked in robots.txt but linked as a CTA from multiple pages (testimonials, blog, footer). Either unblock it or change all CTAs. Since it's a legitimate lead capture page, unblock it. `hero-test.html` is a prototype page that should not be indexed.
@@ -687,7 +687,7 @@ Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
 
 In `robots.txt`, remove line 13:
 ```
-Disallow: /prequal.html
+Disallow: /contact.html?goal=Purchase
 ```
 
 - [ ] **Step 2: Add noindex to hero-test.html**
@@ -922,14 +922,14 @@ In `resources/index.html`, after the existing First-Time Buyer Guide card (line 
           </a>
 
           <!-- Down Payment Assistance -->
-          <a href="/austin-down-payment-assistance.html" class="resource-card">
+          <a href="/resources/detailed-guides/austin-down-payment-assistance.html" class="resource-card">
             <span class="resource-tag">Guide</span>
             <h2>Down Payment Assistance Programs</h2>
             <p>Texas and Austin-area programs that can cover your down payment and closing costs.</p>
           </a>
 
           <!-- Closing Costs Guide -->
-          <a href="/closing-costs-texas.html" class="resource-card">
+          <a href="/resources/detailed-guides/closing-costs-texas.html" class="resource-card">
             <span class="resource-tag">Guide</span>
             <h2>Texas Closing Costs Guide</h2>
             <p>What to expect for buyer and seller closing costs in Texas, with strategies to reduce them.</p>

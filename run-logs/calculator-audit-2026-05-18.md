@@ -13,7 +13,7 @@
 
 **The only calc-file edits since the 2026-05-11 audit:** single-line footer copy swap (`21-Day Avg. Close` → `1,000+ Loans Closed`) on `wrap-mortgage-calculator.html` and `calculators.html`, part of the sitewide 2026-05-17 "private-wealth pivot" commit (`e76a214`). Two-character change. No math, no a11y, no nav.
 
-The wider site shipped a substantial UX/conversion overhaul this week (smart forms, hero redesign, `/scenario` page, quick prequal funnel — commits `0fbee10`, `9954660`, `6238a67`). **None of it touched calc pages.** Calc pages are still the highest-traffic surfaces on the site with no inline lead capture, and they're now visibly out of step with the rest of the site's new conversion posture.
+The wider site shipped a substantial UX/conversion overhaul this week (smart forms, hero redesign, `/contact.html` page, quick prequal funnel — commits `0fbee10`, `9954660`, `6238a67`). **None of it touched calc pages.** Calc pages are still the highest-traffic surfaces on the site with no inline lead capture, and they're now visibly out of step with the rest of the site's new conversion posture.
 
 **No new P0 or P1 items this week. No new patch written.**
 
@@ -79,12 +79,12 @@ Full descriptions and fixes documented in 2026-04-20, 2026-05-04, and 2026-05-11
 
 Verified 2026-05-18: `grep -c "<form\|netlify" *calculator*.html` returns **0** on all 6 calc pages.
 
-The site shipped major conversion work this week — smart forms on `/scenario`, quick prequal funnel, hero conversion overhaul. The calc pages remain the deepest-engagement surfaces on the site with no capture. This is now the single biggest gap between what calc visitors do (deep intent) and what the site captures (nothing).
+The site shipped major conversion work this week — smart forms on `/contact.html`, quick prequal funnel, hero conversion overhaul. The calc pages remain the deepest-engagement surfaces on the site with no capture. This is now the single biggest gap between what calc visitors do (deep intent) and what the site captures (nothing).
 
 n8n `Web Lead Automation` workflow (`PiuIsQpBuydtFM4m`) is in place. The decision still pending is product, not infrastructure:
 - Where on the page (below result card vs sticky footer vs modal)
 - Which 1–3 calcs ship first (suggested order unchanged: payment → affordability → buydown)
-- Whether to mirror the new `/scenario` form pattern or use a slim 3-field capture
+- Whether to mirror the new `/contact.html` form pattern or use a slim 3-field capture
 
 ### P1-B: calculator-affordability — 5% down hardcoded, undisclosed (CARRY-OVER)
 
@@ -96,7 +96,7 @@ n8n `Web Lead Automation` workflow (`PiuIsQpBuydtFM4m`) is in place. The decisio
 
 | ID | Issue | File(s) | State |
 |---|---|---|---|
-| P2-A | `/get-preapproved.html` legacy href; affordability page already canonicalized to `/get-preapproved` | calculator-payment.html:104, calculator-refinance-breakeven.html:110 | unchanged |
+| P2-A | `/contact.html?goal=Purchase` legacy href; affordability page already canonicalized to `/contact.html?goal=Purchase` | calculator-payment.html:104, calculator-refinance-breakeven.html:110 | unchanged |
 | P2-B | Stripped footer omits `Adam Styer | Mortgage Solutions LP` brand line | the three small calc pages | unchanged |
 | P2-C | Buydown frequency label vs radio mismatch | rate-buydown-calculator.html | implicitly fixed by P0-A patch |
 | P2-D | WRAP — no validation against negative-am inputs | wrap-mortgage-calculator.html | unchanged |
@@ -106,9 +106,9 @@ n8n `Web Lead Automation` workflow (`PiuIsQpBuydtFM4m`) is in place. The decisio
 P2-A verified this run:
 
 ```text
-calculator-payment.html:104:          <a href="/get-preapproved.html" ...
-calculator-refinance-breakeven.html:110:          <a href="/get-preapproved.html" ...
-calculator-affordability.html:98:          <a href="/get-preapproved" ...   ← canonical
+calculator-payment.html:104:          <a href="/contact.html?goal=Purchase" ...
+calculator-refinance-breakeven.html:110:          <a href="/contact.html?goal=Purchase" ...
+calculator-affordability.html:98:          <a href="/contact.html?goal=Purchase" ...   ← canonical
 ```
 
 ---
@@ -177,7 +177,7 @@ No new runtime issues observed.
 **No calculator math, accessibility, or form code was modified between 2026-05-11 and 2026-05-18.**
 
 Wider site this week shipped (none of which touched calc pages):
-- `9954660` UX/conversion overhaul — smart forms, case studies, `/scenario` page
+- `9954660` UX/conversion overhaul — smart forms, case studies, `/contact.html` page
 - `6238a67` Quick prequal funnel
 - `2b62704` Hero form: optional scenario textarea
 - `0fbee10` Hero redesign: remove form, shrink cutout, single-column
@@ -205,8 +205,8 @@ Wider site this week shipped (none of which touched calc pages):
 4th consecutive Monday. The patch is on disk. Reviewed in 3 prior audits. Suggested order with rough time:
 
 1. **Apply `patches/calculator-2026-04-20-P0.diff`** — 15 min total. Order: P0-A (2 lines) → P0-B (2 lines) → P0-E (move 1 script tag) → P0-D (14 id/for pairs) → P0-C (regress-test 4 pages after).
-2. **Decide on P1-A inline lead capture** — render location + which 1–3 calcs ship first. Now disproportionately costly given the site shipped smart forms + prequal funnel + `/scenario` this week and calc pages are still passive.
-3. **P2-A** — 2-line `/get-preapproved.html` → `/get-preapproved` href fix.
+2. **Decide on P1-A inline lead capture** — render location + which 1–3 calcs ship first. Now disproportionately costly given the site shipped smart forms + prequal funnel + `/contact.html` this week and calc pages are still passive.
+3. **P2-A** — 2-line `/contact.html?goal=Purchase` → `/contact.html?goal=Purchase` href fix.
 4. **P2-B** — agree on canonical footer brand line for the 3 stripped-footer calc pages, apply.
 
 P3 (analytics event, Texas-specific gaps) → TODO.md backlog. Not blocking.

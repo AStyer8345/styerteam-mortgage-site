@@ -145,7 +145,7 @@ The reader has ALREADY seen all the rates in the table above, so DO NOT repeat o
 ${depth === "indepth" ? "- Go deeper: explain what's driving rates, what it means for buyers, sellers, and people on the fence about refinancing." : ""}
 - End with something casual like "Give me a call if you want to talk numbers" or "Happy to run the numbers for you."
 - Output ONLY simple HTML: <p> and <strong> tags. Nothing else. No <div>, no <style>, no wrappers.
-- For any links use "../" prefix (../contact.html, ../prequal.html)
+- For any links use "../" prefix (../contact.html, ../contact.html?goal=Purchase)
 - ⚠️ ../calculators.html is a PAYMENT calculator — it estimates monthly payments based on numbers the user enters. It does NOT show rates or look up rates. NEVER say "see your rate", "find your rate", or "what your rate would be" when linking to the calculator. Correct: "Run your payment numbers", "Estimate your monthly cost". To know their actual rate, readers must contact Adam directly.
 
 ## OUTPUT FORMAT — use these EXACT delimiters

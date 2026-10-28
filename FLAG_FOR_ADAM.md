@@ -130,12 +130,12 @@ Everything else is clean. Bylines, schemas, internal links, NMLS/GTM/CSS/phone/a
 
 # 2026-05-17 (afternoon) — UX/Conversion overhaul
 
-Major homepage + new `/scenario` page changes. Needs your eyes on a few things:
+Major homepage + new `/contact.html` page changes. Needs your eyes on a few things:
 
 ### 1. Brand-name conflict (UNRESOLVED — needs decision)
 
 Your **global** `/Users/adamstyer/Documents/CLAUDE.md` says:
-> Business name: HyperSmart Loans (never "The Styer Team", **never "Adam Styer | Mortgage Solutions LP"**)
+> Business name: the former employer (never "The Styer Team", **never "Adam Styer | Mortgage Solutions LP"**)
 
 But this site's **project** `CLAUDE.md` (and `.claude/CLAUDE.md`) says:
 > Never use "The Styer Team" — **always "Adam Styer | Mortgage Solutions LP"**
@@ -162,7 +162,7 @@ Stats strip and trust lines use these numbers. **If those counts change, find/re
 The mid-page Quick Contact form (Netlify form name `quick-contact`) now posts these additional fields:
 - `employment_type`, `property_use`, `credit_score`, `timeline`, `loan_amount`, `income_range`, `notes`
 
-The new `/scenario` form (Netlify form name `scenario`) posts everything above + `bank_said`, `situation`, and `documents` (file upload, multipart).
+The new `/contact.html` form (Netlify form name `scenario`) posts everything above + `bank_said`, `situation`, and `documents` (file upload, multipart).
 
 **Action items:**
 - Make sure your n8n inbound webhook for new lead notifications surfaces these new fields, otherwise they'll be invisible in your alerts.
@@ -176,9 +176,9 @@ Added a small circular headshot (96px) at the top of the mobile hero, using the 
 
 Previously waited until 30% page scroll. Now effectively persistent — first scroll past 120px OR a 2-second timeout reveals it. Test on your own phone and tell me if it feels too aggressive.
 
-### 7. `/scenario` page — Netlify Forms config required
+### 7. `/contact.html` page — Netlify Forms config required
 
-The new `/scenario.html` posts to a Netlify form named `scenario`. Netlify will auto-detect it on next deploy (the hidden form template at the top of `scenario.html` ensures detection). **After the first deploy, verify**:
+The new `/contact.html` posts to a Netlify form named `scenario`. Netlify will auto-detect it on next deploy (the hidden form template at the top of `scenario.html` ensures detection). **After the first deploy, verify**:
 - Form appears in Netlify dashboard under "Forms"
 - Test submission with a file upload arrives in your inbox
 - File attachment links work from the notification email
@@ -207,7 +207,7 @@ Per the original spec, no sitewide nav change. When you're ready to surface scen
 
 ## 4. Loan app URL mismatch in the original prompt
 
-The Prompt A spec referenced `https://mslp.my1003app.com/513013/register` — that's the old MSLP URL. CLAUDE.md / CONTEXT.md / every live page uses `/get-preapproved.html?intent=scenario`. I used the live one. If `mslp.my1003app.com` is still live and you want both URLs supported, let me know.
+The Prompt A spec referenced `https://styermortgage.com/contact.html — that's the old MSLP URL. CLAUDE.md / CONTEXT.md / every live page uses `/contact.html?goal=Purchase I used the live one. If `mslp.contact.com` is still live and you want both URLs supported, let me know.
 
 ## 5. Next-up: scenarios #2 and #3 to light up the remaining filter chips
 

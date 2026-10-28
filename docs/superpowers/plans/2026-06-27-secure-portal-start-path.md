@@ -4,7 +4,7 @@
 
 **Goal:** Add a clearer secure portal path that invites ready borrowers to answer questions online while preserving the lower-friction scenario path.
 
-**Architecture:** This is a static-site content and layout update. The existing `/scenario.html` page becomes the two-path start page, while `index.html` and `thank-you.html` add stronger portal prompts using the existing portal URL and button/card patterns.
+**Architecture:** This is a static-site content and layout update. The existing `/contact.html` page becomes the two-path start page, while `index.html` and `thank-you.html` add stronger portal prompts using the existing portal URL and button/card patterns.
 
 **Tech Stack:** Static HTML, existing CSS utility classes, existing Node test file `tests/lead-flow-regression.test.js`, local `python3 -m http.server`, Playwright browser verification.
 
@@ -25,7 +25,7 @@ assert.match(scenarioPage, /Send Adam the short version/);
 assert.match(scenarioPage, /Answer a few questions in my secure online portal/);
 assert.match(scenarioPage, /usually takes 7-9 minutes/);
 assert.match(scenarioPage, /make our first call more efficient/);
-assert.match(scenarioPage, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+assert.match(scenarioPage, /https:\/\/the former employer\.contact\.com\/513013\/register\?time=1779291829279/);
 assert.match(scenarioPage, /id="scenario-note-form"/);
 assert.match(scenarioPage, /name="scenario-note"/);
 assert.doesNotMatch(scenarioPage, /Start Secure Loan Application/);
@@ -41,7 +41,7 @@ In `homepage leads with lightweight scenario contact paths before the full appli
 assert.match(homepage, /Answer a few questions in my secure online portal/);
 assert.match(homepage, /usually takes 7-9 minutes/);
 assert.match(homepage, /make our first call more efficient/);
-assert.match(homepage, /<a href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*target="_blank"[^>]*>Open Secure Portal<\/a>/);
+assert.match(homepage, /<a href="https:\/\/the former employer\.contact\.com\/513013\/register\?time=1779291829279"[^>]*target="_blank"[^>]*>Open Secure Portal<\/a>/);
 assert.doesNotMatch(homepage, /Start Full Loan Application/);
 assert.doesNotMatch(homepage, /Start Loan Application/);
 ```
@@ -55,7 +55,7 @@ test('thank-you page offers portal as an efficient next step without application
   assert.match(thankYou, /Answer a few questions in my secure online portal/);
   assert.match(thankYou, /usually takes 7-9 minutes/);
   assert.match(thankYou, /first call more efficient/);
-  assert.match(thankYou, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+  assert.match(thankYou, /https:\/\/the former employer\.contact\.com\/513013\/register\?time=1779291829279/);
   assert.doesNotMatch(thankYou, /Start the full application/);
   assert.doesNotMatch(thankYou, /full 1003/);
 });
@@ -73,7 +73,7 @@ Expected: FAIL on the new portal wording assertions until the HTML is updated.
 
 ---
 
-### Task 2: Reframe `/scenario.html` As A Two-Path Start Page
+### Task 2: Reframe `/contact.html` As A Two-Path Start Page
 
 **Files:**
 - Modify: `scenario.html`
@@ -148,7 +148,7 @@ Replace the current "Already talked with Adam..." copy with:
 <p class="form-trust-line"><strong>Ready to move faster?</strong></p>
 <p class="text-center" style="margin-top:var(--spacing-sm);">
   Answer a few questions in my secure online portal. It usually takes 7-9 minutes and helps make our first call more efficient.<br>
-  <a href="/get-preapproved.html?intent=scenario" target="_blank" rel="noopener">Open Secure Portal</a>
+  <a href="/contact.html?goal=Purchase" target="_blank" rel="noopener">Open Secure Portal</a>
 </p>
 ```
 
@@ -216,7 +216,7 @@ python3 -m http.server 8092
 Open:
 
 ```text
-http://localhost:8092/scenario.html
+http://localhost:8092/contact.html
 http://localhost:8092/index.html#contact-form
 http://localhost:8092/thank-you.html?type=quick-contact
 ```

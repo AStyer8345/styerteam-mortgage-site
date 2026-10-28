@@ -108,8 +108,8 @@ PSI quota is still drained (CONTEXT blocker), but the chrome-devtools MCP now pr
 **Inline lead capture is still 0 of 9 calculators** — the known gap, and the two forms that already exist remain dark:
 
 - **P1-A (12+ weeks):** `asset-depletion-calculator.html:1100` and `dscr-calculator.html:951` still read `var WEBHOOK_URL = "";`. Fully-built email-capture forms stay `hidden` on the two highest-intent complicated-income surfaces. One line each pointed at the n8n **Web Lead Automation** webhook (`PiuIsQpBuydtFM4m`) turns them on. Given GOALS' "close loans, build the pipeline," this remains the highest-leverage single edit in the calculator family. *(Caveat: n8n execution-cap outage is an active memory item — verify quota health before flipping these on, or the leads will fire into a capped instance.)*
-- **P1-C (carry, decision needed):** `refinance-calculator.html` — the richest refi tool — has **no** scenario link, **no** Calendly, one `tel:` and one `/refinance-quote.html` link, **and** is `robots.txt`-Disallowed while being the hub's featured solid card. Either unblock + add the standard CTA block, or demote the card. (Already an Adam-gated CONTEXT.md item; calculator-side effect re-confirmed.)
-- Every other calc routes CTA → `/scenario.html` (+ tel, + Calendly on 4) — the 06-27 pattern held through the redesign.
+- **P1-C (carry, decision needed):** `refinance-calculator.html` — the richest refi tool — has **no** scenario link, **no** Calendly, one `tel:` and one `/contact.html?goal=Refinance` link, **and** is `robots.txt`-Disallowed while being the hub's featured solid card. Either unblock + add the standard CTA block, or demote the card. (Already an Adam-gated CONTEXT.md item; calculator-side effect re-confirmed.)
+- Every other calc routes CTA → `/contact.html` (+ tel, + Calendly on 4) — the 06-27 pattern held through the redesign.
 
 ---
 

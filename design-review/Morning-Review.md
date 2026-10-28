@@ -5,7 +5,7 @@ October 6, 2026. The redesign and final local re-audit are finished. Your live w
 ## Start here
 
 1. [Homepage](http://127.0.0.1:8767/) — centered composition, your authentic portrait against the hero background, clearer action hierarchy, residential photography, static reviews and useful tools. Check the opening on desktop, then phone width.
-2. [See My Options / Get Preapproved](http://127.0.0.1:8767/get-preapproved.html) — clearer inquiry presentation and next steps; established fields and consent preserved.
+2. [See My Options / Get Preapproved](http://127.0.0.1:8767/contact.html?goal=Purchase) — clearer inquiry presentation and next steps; established fields and consent preserved.
 3. [Rental cash-out journey](http://127.0.0.1:8767/dscr-cash-out-refinance-texas.html) — replacement-loan payment, estimated cash after payoff/costs, rental coverage and an inquiry handoff with the assumptions intact.
 4. [Dallas](http://127.0.0.1:8767/dallas-mortgage-lender.html) and [San Antonio](http://127.0.0.1:8767/san-antonio-mortgage-lender.html) — distinct local planning pages with useful source links, FAQs and additive SEO; no invented local offices.
 5. [Internal campaign review](http://127.0.0.1:8767/__review/campaign/) — proposed ads, keyword evidence, test phases and release decisions. This is private local review material, excluded from the public site package.

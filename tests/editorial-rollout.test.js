@@ -78,7 +78,7 @@ test('the shared stylesheet owns the approved public header treatment', () => {
 });
 
 test('wide guide tables use accessible horizontal scroll regions', () => {
-  const guide = fs.readFileSync('how-to-buy-a-house-in-austin-tx.html', 'utf8');
+  const guide = fs.readFileSync('resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html', 'utf8');
   const regions = guide.match(/class="editorial-table-scroll" role="region"[^>]+tabindex="0"/g) || [];
 
   assert.equal(regions.length, 3);

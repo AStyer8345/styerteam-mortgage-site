@@ -20,7 +20,7 @@ File mtimes show the calc pages were edited 2026-05-05 (nav redesign — see bel
 - P0-A through P0-E — see "Status" table below
 - P1-A inline lead capture (unchanged; still highest-leverage conversion fix)
 - P1-B 5% down hardcoded disclosure (`calculator-affordability.html` line 141, 78)
-- P2-A `/get-preapproved.html` legacy href on payment + break-even (still drifted from affordability)
+- P2-A `/contact.html?goal=Purchase` legacy href on payment + break-even (still drifted from affordability)
 - P2-B Footer brand line missing on stripped-footer pages
 - P2-C Buydown frequency label ↔ radio value mismatch (fixed by P0-A patch)
 - P2-D WRAP no validation against negative-am
@@ -110,14 +110,14 @@ Prior audit (2026-05-04) flagged this page's `Loan Programs` dropdown as missing
 
 ## P2 — Polish
 
-### P2-A: `/get-preapproved.html` legacy href not normalized (CARRY-OVER)
+### P2-A: `/contact.html?goal=Purchase` legacy href not normalized (CARRY-OVER)
 
 Same state as 2026-05-04. Two pages still drifted from canonical extensionless path:
 
 ```text
-calculator-payment.html:104:          <a href="/get-preapproved.html" ...>Get Pre-Approved</a>
-calculator-refinance-breakeven.html:110:          <a href="/get-preapproved.html" ...>Get Pre-Approved</a>
-calculator-affordability.html:98:          <a href="/get-preapproved" ...>Get Pre-Approved</a>   ← canonical
+calculator-payment.html:104:          <a href="/contact.html?goal=Purchase" ...>Get Pre-Approved</a>
+calculator-refinance-breakeven.html:110:          <a href="/contact.html?goal=Purchase" ...>Get Pre-Approved</a>
+calculator-affordability.html:98:          <a href="/contact.html?goal=Purchase" ...>Get Pre-Approved</a>   ← canonical
 ```
 
 Two-line fix. No logic change.

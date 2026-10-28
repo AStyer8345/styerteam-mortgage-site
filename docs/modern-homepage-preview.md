@@ -7,7 +7,7 @@ Based on production commit 0a46dc8 and Netlify deploy 6aa98ab4cbc0c7000869f4aa. 
 - Three navigation groups, financing CTA, and secure application link.
 - Existing contact form identity, transport endpoints, consent, attribution, and receipt handling retained.
 - Required financing goal; message and phone optional. Goal is included in normalized situation text and both submission payloads.
-- Original HyperSmart technology section and positive, illustrative planning examples replace composite success claims.
+- Original the former employer technology section and positive, illustrative planning examples replace composite success claims.
 - Existing specialist URLs, review evidence, application destination, and legal footer preserved.
 - Backup-only confirmation accurately identifies pending primary delivery.
 

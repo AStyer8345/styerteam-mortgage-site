@@ -218,22 +218,200 @@
 
 [[redirects]]
   from = "/pre-qualification/"
-  to = "/prequal.html"
+  to = "/contact.html?goal=Purchase"
   status = 301
 
 [[redirects]]
   from = "/pre-qualification"
-  to = "/prequal.html"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+
+[[redirects]]
+  from = "/get-preapproved"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/get-preapproved/"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/get-preapproved.html"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/scenario"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/scenario.html"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/prequal"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/prequal.html"
+  to = "/contact.html?goal=Purchase"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/refinance-quote"
+  to = "/contact.html?goal=Refinance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/refinance-quote.html"
+  to = "/contact.html?goal=Refinance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check-round-rock.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check-cedar-park.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check-georgetown.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check-buda-kyle.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-check-new-braunfels.html"
+  to = "/contact.html?goal=Refinance&loan=second-look"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-alert"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rate-alert.html"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/austin-down-payment-assistance"
+  to = "/resources/detailed-guides/austin-down-payment-assistance.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/austin-down-payment-assistance.html"
+  to = "/resources/detailed-guides/austin-down-payment-assistance.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/closing-costs-texas"
+  to = "/resources/detailed-guides/closing-costs-texas.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/closing-costs-texas.html"
+  to = "/resources/detailed-guides/closing-costs-texas.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/fixed-vs-adjustable"
+  to = "/resources/detailed-guides/fixed-vs-adjustable.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/fixed-vs-adjustable.html"
+  to = "/resources/detailed-guides/fixed-vs-adjustable.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-to-buy-a-house-in-austin-tx"
+  to = "/resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-to-buy-a-house-in-austin-tx.html"
+  to = "/resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/improve-credit-score"
+  to = "/resources/detailed-guides/improve-credit-score.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/improve-credit-score.html"
+  to = "/resources/detailed-guides/improve-credit-score.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guides"
+  to = "/guides.html"
+  status = 301
+
+[[redirects]]
+  from = "/guides/"
+  to = "/guides.html"
   status = 301
 
 [[redirects]]
   from = "/apply-now/"
-  to = "https://hypersmart.my1003app.com/513013/register?time=1779291829279"
+  to = "https://styermortgage.com/contact.html"
   status = 301
 
 [[redirects]]
   from = "/apply-now"
-  to = "https://hypersmart.my1003app.com/513013/register?time=1779291829279"
+  to = "https://styermortgage.com/contact.html"
   status = 301
 
 # ─── 301 Redirects: Old WordPress Loan Pages ───
@@ -347,6 +525,247 @@
   from = "/refinance"
   to = "/loans/refinance.html"
   status = 301
+
+# Old newsletter and test URLs that return 404
+[[redirects]]
+  from = "/blog/2026-03-06-newsletter.html"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-06-newsletter"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-06-newsletter.html"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-06-newsletter"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-06-temp-placeholder.html"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-06-temp-placeholder"
+  to = "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-10-newsletter.html"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-10-newsletter"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-10-newsletter.html"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-10-newsletter"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-10-temp-placeholder.html"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-10-temp-placeholder"
+  to = "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-30-newsletter.html"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-30-newsletter"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-30-newsletter.html"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-03-30-newsletter"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-30-temp-placeholder.html"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-03-30-temp-placeholder"
+  to = "/blog/2026-03-30-why-rates-improved-today-bond-rally.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-spring-market-update-austin-mortgage-rates-invento.html"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-spring-market-update-austin-mortgage-rates-invento"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-01-spring-market-update-austin-mortgage-rates-invento.html"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-01-spring-market-update-austin-mortgage-rates-invento"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-what-you-need-to-know-about-rates-right-now.html"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-what-you-need-to-know-about-rates-right-now"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-01-what-you-need-to-know-about-rates-right-now.html"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-01-what-you-need-to-know-about-rates-right-now"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-test.html"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-01-test"
+  to = "/blog/2026-04-01-spring-market-update.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hero-test.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hero-test"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-2-post-deploy-verification.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-2-post-deploy-verification"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-3-retry-fix-verification.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-3-retry-fix-verification"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-verifying-end-to-end.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/2026-04-28-publish-only-test-verifying-end-to-end"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-28-publish-only-test-3-retry-fix-verification.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-28-publish-only-test-3-retry-fix-verification"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-28-publish-only-test-verifying-end-to-end.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/updates/2026-04-28-publish-only-test-verifying-end-to-end"
+  to = "/blog.html"
+  status = 301
+  force = true
 
 # WordPress cruft — catch-all patterns
 [[redirects]]

@@ -170,7 +170,7 @@ ${wantsRealtor ? `### REALTOR EMAIL
 
 ## INTERNAL LINK RULES
 - ../calculators.html is a PAYMENT calculator — it estimates monthly payments. It does NOT show rates or look up rates. NEVER say "see your rate", "find your rate", or "what your rate would be" when linking to the calculator. Correct: "Run your payment numbers", "Estimate your monthly cost". To know their actual rate, readers must contact Adam.
-- ../prequal.html — Pre-Qualification page
+- ../contact.html?goal=Purchase — Pre-Qualification page
 - ../contact.html — Contact Adam
 - ../products.html — Loan Programs
 

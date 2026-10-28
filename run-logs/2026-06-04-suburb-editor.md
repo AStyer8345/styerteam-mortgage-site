@@ -24,7 +24,7 @@ Cedar Park spot-check via grep this morning:
 |---|---|---|
 | USDA cluster | **1 USDA mention** | `grep -c -i "USDA" cedar-park-mortgage-lender.html` |
 | Performance-metric ban | **3 perf-claim surfaces** ("21-day close" / "Same-Day Pre-Approval" / "24-hour" variants) | `grep -c` on `21-day close\|Same-Day Pre-Approval\|24-hour` |
-| 0-tracked-LP architecture | All suburb CTAs route to scenario.html / contact.html / Calendly / tel:, not `/get-preapproved` or `/refinance-quote` | CONTEXT.md line 31 confirms homepage now in same architecture |
+| 0-tracked-LP architecture | All suburb CTAs route to scenario.html / contact.html / Calendly / tel:, not `/contact.html?goal=Purchase` or `/refinance-quote` | CONTEXT.md line 31 confirms homepage now in same architecture |
 
 Mapping these onto today's site-daily refinements (CONTEXT.md lines 29-31):
 - **USDA cluster grew 5 → 12 suburbs / 143 mentions** → Cedar Park is in the new 7 (its 1 mention is part of the 143). Round Rock 2026-04-29 cleanup playbook is precedent. Adam batch decision pending — MEDIUM (Adam).

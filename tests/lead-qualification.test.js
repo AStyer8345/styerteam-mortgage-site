@@ -41,7 +41,7 @@ test('calendar labels reach scheduling directly without claiming a booking', () 
   const analytics = fs.readFileSync('analytics.js', 'utf8');
   const thankYou = fs.readFileSync('thank-you.html', 'utf8');
   assert.doesNotMatch(analytics, /qualification_started/);
-  assert.doesNotMatch(analytics, /get-preapproved\.html\?intent=schedule/);
+  assert.doesNotMatch(analytics, /contact.html?goal=Purchase\.html\?intent=schedule/);
   assert.match(thankYou, /qualification\.tier === 'priority'/);
   assert.match(thankYou, /id="ty-calendly" hidden/);
 });

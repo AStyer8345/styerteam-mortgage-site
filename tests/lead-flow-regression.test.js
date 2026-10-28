@@ -80,16 +80,16 @@ test('Non-QM keeps its capture identity through the shared scenario form', () =>
   assert.match(script, /'form-name': formData\.get\('form-name'\) \|\| form\.getAttribute\('name'\) \|\| ''/);
 });
 
-test('homepage prioritizes the short conversation and preserves the secure application', () => {
+test('homepage prioritizes the short conversation and routes application questions to Adam', () => {
   const heroCtas = homepage.match(/<div class="hero-ctas">([\s\S]*?)<\/div>/)?.[1] || '';
   const heroButtonLabels = Array.from(heroCtas.matchAll(/class="[^"]*\bhero-cta-btn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
   const introActions = homepage.match(/<div id="quick-scenario-form" class="quick-contact-actions"[^>]*>([\s\S]*?)<\/div>/)?.[1] || '';
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
   assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"[^>]*>See My Options<\/a>/);
-  assert.match(homepage, /href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279" class="nav-cta nav-apply"[^>]*>Apply Now<\/a>/);
+  assert.match(homepage, /href="https:\/\/styermortgage\.com\/contact\.html" class="nav-cta nav-apply"[^>]*>Contact Adam<\/a>/);
   assert.deepEqual(heroButtonLabels, ['See My Options']);
-  assert.deepEqual(introActionLabels, ['See My Options', 'Apply Now']);
+  assert.deepEqual(introActionLabels, ['See My Options', 'Contact Adam']);
   assert.match(homepage, /id="quick-scenario-form"/);
   assert.doesNotMatch(homepage, /name="quick-scenario"/);
   assert.doesNotMatch(homepage, /Strong-fit scenarios can schedule immediately/);
@@ -108,9 +108,9 @@ test('homepage prioritizes the short conversation and preserves the secure appli
 });
 
 test('pre-approval guide routes pre-approval and application CTAs by intent', () => {
-  assert.match(preapprovalGuide, /href="\/get-preapproved\.html\?source=preapproval_guide_hero"[^>]*>Get Pre-Approved Now<\/a>/);
+  assert.match(preapprovalGuide, /href="\/contact.html?goal=Purchase\.html\?source=preapproval_guide_hero"[^>]*>Get Pre-Approved Now<\/a>/);
   assert.doesNotMatch(preapprovalGuide, /href="\/scenario\.html"[^>]*>(?:Get|Start)[^<]*(?:Pre-Approved|Application)/i);
-  assert.match(preapprovalGuide, /href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*data-source="preapproval_guide_documents"[^>]*>Apply Now<\/a>/);
+  assert.match(preapprovalGuide, /href="https:\/\/styermortgage\.com\/contact\.html"[^>]*data-source="preapproval_guide_documents"[^>]*>Contact Adam<\/a>/);
   assert.doesNotMatch(preapprovalGuide, /register\?time=[^"']*\?time=/);
 });
 
@@ -129,7 +129,7 @@ test('premium homepage puts the simple inquiry in the hero and preserves capture
   assert.match(css, /body\.premium-homepage\.home-pilot main \.hero-cta-btn\{display:inline-flex!important/);
 });
 
-test('scenario page puts the short conversion form first and keeps the secure portal secondary', () => {
+test('scenario page puts the short conversion form first and keeps direct contact secondary', () => {
   assert.match(scenarioPage, /Tell me what you’re trying to accomplish/);
   assert.match(scenarioPage, /id="scenario-form"/);
   assert.match(scenarioPage, /name="scenario-review"/);
@@ -141,8 +141,8 @@ test('scenario page puts the short conversion form first and keeps the secure po
   assert.match(scenarioPage, /name="tcpa_consent"/);
   assert.match(scenarioPage, /class="nav-has-dropdown"/);
   assert.match(scenarioPage, /class="mobile-menu-toggle"/);
-  assert.match(scenarioPage, /Apply Now/);
-  assert.match(scenarioPage, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+  assert.match(scenarioPage, /Contact Adam/);
+  assert.match(scenarioPage, /https:\/\/styermortgage\.com\/contact\.html/);
   assert.match(scenarioPage, /name="scenario-review"/);
   assert.doesNotMatch(scenarioPage, /lp-header \.nav-links/);
   assert.doesNotMatch(scenarioPage, /Answer the basics/);
@@ -150,11 +150,11 @@ test('scenario page puts the short conversion form first and keeps the secure po
   assert.doesNotMatch(scenarioPage, /"@type": "FAQPage"/);
 });
 
-test('thank-you page offers portal as an efficient next step without application-first wording', () => {
-  assert.match(thankYou, /Answer the detailed questions in the secure application portal/);
+test('thank-you page offers direct contact as the next step for a formal application', () => {
+  assert.match(thankYou, /Ask Adam about the next step for a formal loan review/);
   assert.match(thankYou, /formal loan review/);
-  assert.match(thankYou, /first call more useful/);
-  assert.match(thankYou, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+  assert.match(thankYou, /leave sensitive financial information out of the contact form/);
+  assert.match(thankYou, /https:\/\/styermortgage\.com\/contact\.html/);
   assert.match(thankYou, /type === 'quick-contact'[\s\S]*ty-alt-paths/);
   assert.doesNotMatch(thankYou, /Start the full application/);
   assert.doesNotMatch(thankYou, /full 1003/);

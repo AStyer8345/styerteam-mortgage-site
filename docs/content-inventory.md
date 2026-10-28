@@ -5,8 +5,8 @@
 | Content | Route | Role | Primary CTA | Status |
 |---|---|---|---|---|
 | Homepage | `/` | Positioning and routing | Send Your Scenario | Revised |
-| Scenario intake | `/scenario.html` | Lightweight initial review | Send My Scenario | Revised |
-| Secure application | External HyperSmart/Arive portal | Full application/documents | Start a Secure Application | Preserved |
+| Scenario intake | `/contact.html` | Lightweight initial review | Send My Scenario | Revised |
+| Secure application | External the former employer/Arive portal | Full application/documents | Start a Secure Application | Preserved |
 | Realtor partners | `/realtors.html` | Difficult-deal referral intake | Submit a Difficult Scenario | Rebuilt |
 | Contact | `/contact.html` | General inquiry | Contact Adam | Retained |
 

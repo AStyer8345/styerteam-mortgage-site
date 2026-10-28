@@ -80,7 +80,7 @@ If you're starting to think seriously about buying in the next 6-12 months, the 
 
 Takes about 15 minutes:
 [GET PRE-APPROVED →]
-/get-preapproved.html?intent=scenario
+/contact.html?goal=Purchase
 
 Or just reply to this email with your questions. I'm here.
 
@@ -118,7 +118,7 @@ That's what I do at The Styer Team · Powered by GoRascal. We're not a big bank 
 If you're ready to find out where you stand, here are two ways to take the next step:
 
 [GET PRE-APPROVED ONLINE →]
-/get-preapproved.html?intent=scenario
+/contact.html?goal=Purchase
 
 Or call/text me directly: (512) 956-6010
 
@@ -155,7 +155,7 @@ SUBJECT LINE A/B TEST IDEAS:
 
 CTA LINKS:
   - Guide download: https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9
-  - Pre-approval: /get-preapproved.html?intent=scenario
+  - Pre-approval: /contact.html?goal=Purchase
 
 COMPLIANCE:
   - All emails must include physical mailing address and unsubscribe link

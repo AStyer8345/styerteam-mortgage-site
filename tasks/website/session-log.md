@@ -99,7 +99,7 @@ Replace the emoji HTML entities (&#128203; clipboard, &#128176; money bag, &#127
 
 **Result:** /austin-mortgage-rates now has 2 high-relevance inbound internal links. Google should crawl the new page faster. Topical signal (rates content → rates page) is clean. Link equity flows from published blog content that already has some index history.
 
-**Next run suggestion:** Design/visual audit of the homepage hero. Headline "Your Austin Home Loan Simplified" is generic — doesn't answer "why Adam over a bank" in 5 seconds. Consider testing a more benefit-specific headline and evaluating whether the primary CTA should point to /get-preapproved instead of directly to the loan application.
+**Next run suggestion:** Design/visual audit of the homepage hero. Headline "Your Austin Home Loan Simplified" is generic — doesn't answer "why Adam over a bank" in 5 seconds. Consider testing a more benefit-specific headline and evaluating whether the primary CTA should point to /contact.html?goal=Purchase instead of directly to the loan application.
 ---
 ---
 ## [2026-03-28 1 AM] — Hero Rating Chip + Outcome Subtitle + SVG Testimonial Stars

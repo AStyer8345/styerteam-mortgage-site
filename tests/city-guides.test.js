@@ -27,7 +27,7 @@ for (const city of ['dallas','san-antonio']) {
     assert.ok(html.includes('Austin-based'));
   });
   test(`${city} guide keeps a valid path to existing intake and real local content targets`, () => {
-    assert.ok(html.includes('href="/get-preapproved.html?intent=scenario"'));
+    assert.ok(html.includes('href="/contact.html?goal=Purchase"'));
     assert.equal((html.match(/<form\b/g)||[]).length,0,'Reuse established intake rather than creating an unverified form');
     const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
     for(const [,href] of html.matchAll(/href="([^"]+)"/g)) {

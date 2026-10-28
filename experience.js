@@ -12,7 +12,7 @@
   if(/asset-depletion|high-net-worth/.test(path))return {situation:'Substantial assets'};
   return {};
  }
- document.querySelectorAll('a[href*="get-preapproved"],a[href="/scenario.html"]').forEach(function(a){
+ document.querySelectorAll('a[href*="get-preapproved"],a[href="/contact.html"]').forEach(function(a){
   var url=new URL(a.href,location.href);if(url.origin!==location.origin)return;
   var defaults=suggestion();Object.keys(defaults).forEach(function(k){if(!url.searchParams.has(k))url.searchParams.set(k,defaults[k]);});
   a.href=url.pathname+url.search+url.hash;
@@ -27,5 +27,5 @@
   if(table.closest('.experience-table-scroll, .program-table-scroll, .ci-table-wrap'))return;
   var wrapper=document.createElement('div');wrapper.className='experience-table-scroll';wrapper.tabIndex=0;wrapper.setAttribute('role','region');wrapper.setAttribute('aria-label',(table.caption&&table.caption.textContent)||'Comparison table — scroll horizontally if needed');table.before(wrapper);wrapper.appendChild(table);
  });
- document.querySelectorAll('.journey-actions').forEach(function(actions){if(!actions.querySelector('a[href*="my1003app"]')||actions.parentElement.querySelector('.journey-path-note'))return;var p=document.createElement('p');p.className='experience-portal-note';p.textContent='Apply Now opens the secure application portal.';actions.after(p);});
+ document.querySelectorAll('.journey-actions').forEach(function(actions){if(!actions.querySelector('a.nav-apply')||actions.parentElement.querySelector('.journey-path-note'))return;var p=document.createElement('p');p.className='experience-portal-note';p.textContent='Apply Now contacts Adam about the next step.';actions.after(p);});
 })();

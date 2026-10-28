@@ -101,7 +101,7 @@ For each suburb, add the following in this order (this is what Kyle does that Ro
 
 7. **Fill the HTML image placeholder comment** (`<!-- IMAGE: Aerial view of... -->`) with a real photo (city-licensed stock or Unsplash CC0), named `assets/[suburb]-aerial.jpg`, with descriptive alt text containing the city name. Round Rock and Dripping Springs both have stale placeholder comments with no image. Image file names and alt text are crawlable.
 
-8. **Add one city-specific internal link** beyond `/calculators`. Examples: to `rate-check-[suburb].html` if it exists (Round Rock has one — `/rate-check-round-rock.html` — but the suburb page doesn't link to it), to relevant blog posts, or to a loan program page.
+8. **Add one city-specific internal link** beyond `/calculators`. Examples: to `rate-check-[suburb].html` if it exists (Round Rock has one — `/contact.html?goal=Refinance&loan=second-look't link to it), to relevant blog posts, or to a loan program page.
 
 9. **Append a suburb-specific closing-cost example** (single paragraph, no recommendation/badge — per CLAUDE.md voice rules). Example: *"Typical [Suburb] closing cost on a $[median-price] home: roughly $[X]–$[Y] (title, lender fees, prepaids, first year insurance, and 3–4 months property taxes at the [County] ~2.X% rate)."* Source: Adam's own recent CDs. This is genuinely first-party.
 

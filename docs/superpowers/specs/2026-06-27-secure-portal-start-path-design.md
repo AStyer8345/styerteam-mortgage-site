@@ -6,7 +6,7 @@ Increase the number of ready borrowers who answer questions in Adam's secure onl
 
 ## Positioning
 
-Use `/scenario.html` as the main start page with two clear paths:
+Use `/contact.html` as the main start page with two clear paths:
 
 1. Send Adam the short version.
 2. Answer a few questions in Adam's secure online portal.
@@ -27,7 +27,7 @@ Avoid leading with "complete a loan application" or "apply now" as the primary l
 
 ### Scenario Page
 
-Make the upper section of `/scenario.html` a two-path start area:
+Make the upper section of `/contact.html` a two-path start area:
 
 - Primary path: send the scenario.
 - Secondary but visually strong path: answer questions in the secure portal.
@@ -52,7 +52,7 @@ This design creates a clearer application path for ready borrowers while preserv
 
 ## Implementation Scope
 
-- Update `/scenario.html` copy and layout to make the two-path choice clearer.
+- Update `/contact.html` copy and layout to make the two-path choice clearer.
 - Strengthen the secure portal option in the homepage contact section.
 - Strengthen the portal next step on `/thank-you.html`.
 - Add or update regression checks for the portal wording and placement.

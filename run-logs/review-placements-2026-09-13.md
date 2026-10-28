@@ -10,7 +10,7 @@ Each excerpt retains the reviewer’s wording. No loan program is assigned unles
 | Sherita Steffe | August 2026 | /self-employed-mortgage-austin.html | https://maps.app.goo.gl/ughgbRiuP1adsbiz7 |
 | Kim Bennett | August 2026 | /scenarios.html | https://maps.app.goo.gl/sHkrm6hgESnFgKtx5 |
 | Matthew Latimer | July 2026 | /mortgage-broker-vs-bank.html | https://maps.app.goo.gl/u1aybDHYPwdj4aPe7 |
-| Josh Barron | July 2026 | /how-to-buy-a-house-in-austin-tx.html | https://maps.app.goo.gl/dtyNUruhThaFyic66 |
+| Josh Barron | July 2026 | /resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html | https://maps.app.goo.gl/dtyNUruhThaFyic66 |
 | Ellery Wren | July 2026 | /non-qm-loans.html | https://maps.app.goo.gl/RLT2Z1jAJEo4oevL6 |
 | Jeanne Miller | June 2026 | /realtors.html | https://maps.app.goo.gl/QTPpwdVw1tFv855F8 |
 | Chelsea Wise | April 2026 | /about.html | https://maps.app.goo.gl/ZDgkwnRHi1jukHmx9 |

@@ -238,12 +238,12 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
 
         <ul class="nav-links">
           <li class="nav-has-dropdown"><a href="/products.html">Mortgage Options</a><ul class="nav-dropdown"><li><a href="/asset-depletion-mortgage-texas.html">Qualify Using Your Assets</a></li><li><a href="/high-net-worth-mortgage.html">High-Net-Worth Mortgages</a></li><li><a href="/self-employed-mortgage-austin.html">Self-Employed Mortgages</a></li><li><a href="/dscr-loan-austin-tx.html">DSCR Loans</a></li><li><a href="/investor-loans.html">Investment Property Loans</a></li><li><a href="/home-equity-loans-texas.html">Access Your Equity</a></li><li><a href="/mortgage-for-business-owners-austin.html">Business-Owner Planning</a></li><li><a href="/first-time-home-buyer.html">Buying a Home</a></li><li><a href="/buy-before-you-sell-austin.html">Buy Before You Sell</a></li><li><a href="/loans/refinance.html">Refinancing</a></li><li><a href="/products.html">All Mortgage Options</a></li></ul></li>
-          <li class="nav-has-dropdown"><a href="/resources/">Tools &amp; Guides</a><ul class="nav-dropdown"><li><a href="/resources/">All Tools &amp; Guides</a></li><li><a href="/calculators.html">All Calculators</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li><li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/self-employed-mortgage-austin.html">Self-Employed Qualification Guide</a></li><li><a href="/resources/first-time-buyer-guide/">First-Time Buyer Guide</a></li><li><a href="/rate-check.html">Compare a Mortgage Offer</a></li><li><a href="/blog.html">Articles &amp; Market Updates</a></li><li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li></ul></li>
+          <li class="nav-has-dropdown"><a href="/resources/">Tools &amp; Guides</a><ul class="nav-dropdown"><li><a href="/resources/">All Tools &amp; Guides</a></li><li><a href="/calculators.html">All Calculators</a></li><li><a href="/dscr-calculator.html">DSCR Calculator</a></li><li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/self-employed-mortgage-austin.html">Self-Employed Qualification Guide</a></li><li><a href="/resources/first-time-buyer-guide/">First-Time Buyer Guide</a></li><li><a href="/contact.html?goal=Refinance&loan=second-look">Compare a Mortgage Offer</a></li><li><a href="/blog.html">Articles &amp; Market Updates</a></li><li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li></ul></li>
           <li><a href="/scenarios.html">Real Scenarios</a></li>
           <li class="nav-has-dropdown"><a href="/referral-partners-self-employed-clients.html">For Partners</a><ul class="nav-dropdown"><li><a href="/realtors.html">For Realtors</a></li><li><a href="/mortgage-resources-for-cpas-texas.html">For CPAs</a></li><li><a href="/mortgage-strategies-financial-advisors-texas.html">For Financial Advisors</a></li><li><a href="/mortgage-case-studies-for-advisors-cpas.html">Partner Case Studies</a></li></ul></li>
           <li class="nav-has-dropdown"><a href="/about.html">About Adam</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam</a></li><li><a href="/testimonials.html">Client Reviews</a></li><li><a href="/contact.html">Contact Adam</a></li></ul></li>
-          <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/get-preapproved.html?intent=scenario" class="nav-cta">See My Options</a></li>
-        <li><a href="/get-preapproved.html?intent=scenario" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></li>
+          <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/contact.html?goal=Purchase" class="nav-cta">See My Options</a></li>
+        <li><a href="https://styermortgage.com/contact.html" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>
         </ul>
       </nav>
     </div>
@@ -280,7 +280,7 @@ ${rateTable}
             <h3>Want to Know Your Rate?</h3>
             <p>Every borrower is different. Let me run the numbers for your specific situation &mdash; no obligation, no pressure.</p>
             <div class="rate-cta-buttons">
-              <a href="../prequal.html" class="btn btn-primary">Get Pre-Qualified</a>
+              <a href="../contact.html?goal=Purchase" class="btn btn-primary">Get Pre-Qualified</a>
               <a href="../contact.html" class="btn btn-outline">Contact Adam</a>
             </div>
           </div>
@@ -318,7 +318,7 @@ ${rateTable}
           <ul>
             <li><a href="../blog.html">Mortgage Resources</a></li>
             <li><a href="../realtors.html">For Realtors</a></li>
-            <li><a href="../prequal.html">Pre-Qualification</a></li>
+            <li><a href="../contact.html?goal=Purchase">Pre-Qualification</a></li>
             <li><a href="../texas-complaint-notice.html">TX Consumer Notice</a></li>
             <li><a href="../calculators.html">Payment Calculator</a></li>
             <li><a href="../products.html#faq">FAQ</a></li>
@@ -341,7 +341,7 @@ ${rateTable}
         <div class="footer-section">
           <h4>Awards &amp; Recognition</h4>
           <p>
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener" style="color:inherit;">&#11088; 5.0 Google</a> &middot; <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener" style="color:inherit;">4.98 Zillow</a><br><a href="/testimonials.html" style="color:inherit;">140+ Reviews</a> &middot; Licensed in Texas
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener" style="color:inherit;">&#11088; 5.0 Google</a> &middot; <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener" style="color:inherit;">4.98 Zillow</a><br><a href="/testimonials.html" style="color:inherit;">144 Reviews</a> &middot; Licensed in Texas
           </p>
           <div class="social-links">
             <a href="https://www.facebook.com/styerteam/" target="_blank" rel="noopener" aria-label="Facebook">f</a>

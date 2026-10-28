@@ -83,10 +83,10 @@ Phase 3 build subagents must match this exactly. Tokens are defined in `style.cs
         <li class="nav-has-dropdown"><a href="/resources/">Resources</a><ul class="nav-dropdown"><li><a href="/calculators.html">Calculators</a></li><li><a href="/rate-buydown-calculator.html">Buydown Calculator</a></li><li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li><li><a href="/resources/first-time-buyer-guide/">Buyer Guide</a></li></ul></li>
         <li><a href="/testimonials.html">Testimonials</a></li>
         <li><a href="/about.html">About Adam</a></li>
-        <li><a href="/rate-check.html">Rate Check</a></li>
+        <li><a href="/contact.html?goal=Refinance&loan=second-look">Rate Check</a></li>
         <li class="nav-has-dropdown"><a href="/realtors.html">For Realtors</a><ul class="nav-dropdown"><li><a href="/realtor-resources">Realtor Blog</a></li></ul></li>
         <li><a href="/contact.html">Contact</a></li>
-        <li><a href="https://mslp.my1003app.com/513013/register" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
+        <li><a href="https://styermortgage.com/contact.html" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
       </ul>
     </nav>
   </div>
@@ -131,7 +131,7 @@ Standardized: 4-column grid (Company / Service Areas / Contact / Awards). Awards
 </body></html>
 ```
 
-**Lead-capture pages (/get-preapproved, /refinance-quote, /thank-you) use stripped nav — logo only, no nav links** (per DECISIONS.md 2026-03).
+**Lead-capture pages (/contact.html?goal=Purchase, /contact.html?goal=Refinance, /thank-you) use stripped nav — logo only, no nav links** (per DECISIONS.md 2026-03).
 
 ---
 
@@ -271,13 +271,13 @@ Every suburb page sampled has the **full schema stack**: `LocalBusiness + Aggreg
 
 **Footer service-area block** lists all 24 suburb pages site-wide — strong distributed equity to suburbs. Confirmed in `index.html` lines 1024–1048.
 
-**Suburb pages cross-link** at least to `/rate-check.html` (per CONTEXT.md Dripping Springs, Round Rock notes) but mostly funnel up to `/get-preapproved` and `/refinance-quote`.
+**Suburb pages cross-link** at least to `/contact.html?goal=Refinance&loan=second-look` (per CONTEXT.md Dripping Springs, Round Rock notes) but mostly funnel up to `/contact.html?goal=Purchase` and `/contact.html?goal=Refinance`.
 
 **DSCR + self-employed pages link to:**
 - All 8 `/loans/*.html` products
 - 5+ suburb pages each
 - Their topical blog post (2026-03-31, 2026-04-02)
-- `/contact.html`, `/get-preapproved`, `/products.html`, `/calculators.html`, `/blog.html`
+- `/contact.html`, `/contact.html?goal=Purchase`, `/products.html`, `/calculators.html`, `/blog.html`
 
 This is dense and good. Per CONTEXT.md daily-opt 2026-04-30: DSCR has 28+ links, Round Rock 30+, calculators 17+ — all well above the 2+ threshold.
 

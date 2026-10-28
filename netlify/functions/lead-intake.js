@@ -38,6 +38,17 @@ const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
 const N8N_WEB_LEAD_URL = process.env.N8N_WEB_LEAD_URL || "https://styer.app.n8n.cloud/webhook/web-lead";
 const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam@thestyerteam.com";
 
+function firstText(...values) {
+  const parts = [];
+  for (const value of values) {
+    if (typeof value !== "string") continue;
+    const text = value.trim();
+    if (!text || parts.some((part) => part.includes(text))) continue;
+    parts.push(text.slice(0, 4000));
+  }
+  return parts.join("\n") || null;
+}
+
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
   "Access-Control-Allow-Headers": "Content-Type",
@@ -95,7 +106,7 @@ exports.handler = async (event) => {
   }
 
   const isTest = body.test_mode === true || body.test_mode === "true";
-  if (isTest && !["adam@thestyerteam.com", "adam.styer@hypersmart.loan", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
+  if (isTest && !["adam@thestyerteam.com", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
   const inquiryId = String(body.inquiry_id || "");
   if (!/^[A-Za-z0-9:_-]{8,200}$/.test(inquiryId)) return respond(400, { error: "A stable inquiry_id is required" });
 
@@ -117,7 +128,7 @@ exports.handler = async (event) => {
     timeline:      body.timeline ?? null,
     lenderStatus:  body.lender_status ?? null,
     documentationIssue: body.documentation_issue ?? null,
-    situation:     body.situation ?? body.notes ?? null,
+    situation:     firstText(body.situation, body.notes, body.message),
     tcpaConsent:   body.tcpa_consent ?? null,
     smsOptIn:      body.sms_opt_in ?? null,
     sourcePage:    body.page_url ?? body.source_page ?? null,

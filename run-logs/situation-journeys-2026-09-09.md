@@ -5,7 +5,7 @@
 The five homepage choices now open a shared scenario-intake pattern with the exact actions **Send Your Scenario** and **Start a Secure Application**. The first action opens an in-page, two-step review with no documents or credit pull. The second opens the established secure My1003 registration. Call and text remain smaller alternatives.
 
 - Purchase: purchase is preselected; a scenario review is clearly distinguished from formal preapproval.
-- Refinance/equity: homepage links directly to `/refinance-quote.html`; goal, estimated value, balance, and optional current rate are captured. Refinance and equity education remains below.
+- Refinance/equity: homepage links directly to `/contact.html?goal=Refinance`; goal, estimated value, balance, and optional current rate are captured. Refinance and equity education remains below.
 - Business owner: income structure, time in business, goal, and estimated property value are visible at the top, above the program content.
 - Investment: homepage links to the broader `/investor-loans.html` journey, with purpose, property type/value, monthly rent, and strategy. Conventional, DSCR, bank-statement, asset-based, bridge, and portfolio paths remain available; DSCR calculator and guides remain downstream.
 - Move-up: readable white headline on navy; new purchase, current value/balance, listing status, timing, and constraint precede bridge, HELOC, carry-both, contingency, leaseback, and recast education.

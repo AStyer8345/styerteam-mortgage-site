@@ -7,7 +7,7 @@ import { execFileSync } from 'node:child_process';
 const root = process.cwd();
 const destination = path.join(root, '.site-dist');
 const publicDirectories = new Set(['assets', 'css', 'js', 'blog', 'loans', 'rates', 'realtor-updates', 'resources', 'scenarios', 'updates', 'downloads']);
-const publicExtensions = /\.(html|css|js|svg|png|jpe?g|webp|ico|json|xml|txt|woff2?|pdf)$/i;
+const publicExtensions = /\.(html|css|js|svg|png|jpe?g|webp|avif|ico|json|xml|txt|woff2?|pdf)$/i;
 const rootData = new Set(['rates.json', 'recent-updates.json', 'task-reports.json', 'robots.txt', 'llms.txt', 'acd320ce4aaac882bfb455892bdcf208.txt', 'sitemap.xml', '_redirects', '_headers', '31a45519eb8335e7c25e45e696e834c6.txt']);
 const privateFiles = new Set(JSON.parse(fs.readFileSync(path.join(root, 'scripts/admin-paths.json'), 'utf8')));
 const tracked = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);
@@ -33,7 +33,7 @@ for (const file of files.filter(file => file.endsWith('.html'))) {
   for (const [, raw] of assets) {
     if (/^(?:[a-z]+:|\/\/|#|data:)/i.test(raw)) continue;
     const asset = path.posix.normalize(path.posix.join(raw.startsWith('/') ? '' : path.posix.dirname(file), raw.split(/[?#]/)[0])).replace(/^\//, '');
-    if (!/\.(?:css|js|png|jpe?g|webp|svg|ico|woff2?)$/i.test(asset)) continue;
+    if (!/\.(?:css|js|png|jpe?g|webp|avif|svg|ico|woff2?)$/i.test(asset)) continue;
     if (!published.has(asset)) throw new Error(`Public asset missing from package: ${file} -> ${raw}`);
   }
 }
@@ -45,3 +45,4 @@ for (const file of files) {
   fs.copyFileSync(path.join(root, file), output);
 }
 console.log(`Packaged ${files.length} public website files. Functions, source, reports and metadata excluded.`);
+await import('./optimize-homepage.mjs');

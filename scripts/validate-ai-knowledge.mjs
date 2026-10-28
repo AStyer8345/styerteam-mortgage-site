@@ -49,7 +49,8 @@ for (const filename of manifest.files || []) {
       if (allowExpired) console.warn(`Warning: ${message} (excluded by assistant runtime)`);
       else errors.push(message);
     }
-    if (/\b(?:guarantee|guaranteed|will qualify|will be approved|preapproved)\b/i.test(body)) errors.push(`${filename}: contains a prohibited outcome claim`);
+    const claimBody = body.replace(/(?:https?:\/\/|\/)[^\s)]+/g, ' ');
+    if (/\b(?:guarantee|guaranteed|will qualify|will be approved|preapproved)\b/i.test(claimBody)) errors.push(`${filename}: contains a prohibited outcome claim`);
   } else {
     if (/https?:\/\//i.test(body)) errors.push(`${filename}: placeholder content may not contain URLs`);
   }

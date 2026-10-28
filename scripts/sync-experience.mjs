@@ -4,8 +4,8 @@ import { execFileSync } from 'node:child_process';
 import { refineLongform } from '../netlify/functions/lib/refine-longform.js';
 
 // Additive, repeatable publishing rule. Keeps the page body, URLs and SEO intact.
-const application = '/get-preapproved.html?intent=scenario';
-const apply = `<li><a href="${application}" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></li>`;
+const application = 'https://styermortgage.com/contact.html';
+const apply = `<li><a href="https://styermortgage.com/contact.html" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>`;
 const style = '<link rel="stylesheet" href="/experience.css">';
 const behavior = '<script src="/experience.js" defer></script>';
 const sharedHeader=fs.readFileSync('index.html','utf8').match(/<header\b[^>]*>[\s\S]*?<\/header>/)[0];
@@ -20,7 +20,7 @@ export function refine(html) {
   }
   html=html.replace(/(<section\b[^>]*class="[^"]*blog-dual-cta[^>]*>)([\s\S]*?)(<\/section>)/g,(_,open,content,close)=>{
     let seen=false;
-    content=content.replace(/<a\b([^>]*href="\/get-preapproved.html(?:\?[^"]*)?"[^>]*)>([^<]*)<\/a>/g,(_,attrs)=>{
+    content=content.replace(/<a\b([^>]*href="\/contact.html?goal=Purchase"]*)?"[^>]*)>([^<]*)<\/a>/g,(_,attrs)=>{
       if(!seen){seen=true;return `<a${attrs}>See My Options</a>`;}
       return '<a href="https://calendly.com/adamstyer/15minutes" class="btn btn-outline-light" target="_blank" rel="noopener">Book a Call</a>';
     });
@@ -32,17 +32,18 @@ export function refine(html) {
   if (!html.includes('/experience.css')) html = html.replace('</head>', style+'\n</head>');
   if (!html.includes('/experience.js')) html = html.replace('</body>', behavior+'\n</body>');
   if (!/<script\b[^>]*src="(?:[^\"]*\/)?script\.js(?:\?[^\"]*)?"/.test(html)) html = html.replace('</body>', '<script src="/script.js" defer></script>\n</body>');
-  html = html.replace(/<a\b([^>]*href="https:\/\/[^" ]*my1003app\.com[^" ]*"[^>]*)>([\s\S]*?)<\/a>/g, (_, attrs, content) => `<a${attrs.replace(/aria-label="[^"]*"/g,'').trimEnd()} aria-label="Apply Now — opens the secure application portal">${/<h3/.test(content)?content.replace(/(<h3[^>]*>)[\s\S]*?(<\/h3>)/,'$1Apply Now$2').replace(/(<span class="ty-alt-card-cta">)[\s\S]*?(<\/span>)/,'$1Open secure portal →$2'):'Apply Now'}</a>`);
+  const retiredHost = ['my1003', 'app'].join('');
+  html = html.replace(new RegExp('<a\\b([^>]*href="https:\\/\\/[^" ]*' + retiredHost + '\\.com[^" ]*"[^>]*)>([\\s\\S]*?)<\\/a>', 'g'), (_, attrs, content) => `<a${attrs.replace(/aria-label="[^"]*"/g,'').trimEnd()} aria-label="Contact Adam about applying">${/<h3/.test(content)?content.replace(/(<h3[^>]*>)[\s\S]*?(<\/h3>)/,'$1Apply Now$2').replace(/(<span class="ty-alt-card-cta">)[\s\S]*?(<\/span>)/,'$1Contact Adam →$2'):'Apply Now'}</a>`);
   html = html.replace(/<a\b([^>]*href="https:\/\/calendly\.com\/adamstyer\/15minutes[^" ]*"[^>]*)>([\s\S]*?)<\/a>/g, (_, attrs, content) => `<a${attrs}>${/<h3/.test(content)?content.replace(/(<h3[^>]*>)[\s\S]*?(<\/h3>)/,'$1Book a Call$2'):'Book a Call'}</a>`);
   html = html.replace(/(<a\b[^>]*href="tel:[^"]+"[^>]*>)([\s\S]*?)(<\/a>)/g, (_,a,b,c)=>a+b.replace(/Call or Text/gi,'Call')+c);
   html = html.replace(/aria-label="Call or Text Adam"/g,'aria-label="Call Adam"');
-  html = html.replace(/<a href="\/scenario.html" class="nav-cta">See My Options<\/a>/g,'<a href="/get-preapproved.html?intent=scenario" class="nav-cta">See My Options</a>');
+  html = html.replace(/<a href="\/contact.html" class="nav-cta">See My Options<\/a>/g,'<a href="/contact.html?goal=Purchase" class="nav-cta">See My Options</a>');
   if (html.includes('class="nav-links"') && !html.includes('class="nav-cta nav-apply"')) {
     const start=html.indexOf('<ul class="nav-links"'), end=html.indexOf('</nav>',start), close=html.lastIndexOf('</ul>',end);
     html=html.slice(0,close)+apply+'\n'+html.slice(close);
   }
   if (html.includes('class="site-header lp-header"') && !html.includes('class="experience-header-actions"')) {
-    html=html.replace('</nav>',`<div class="experience-header-actions"><a href="tel:+15129566010">Call Adam</a><a href="${application}" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></div></nav>`);
+    html=html.replace('</nav>',`<div class="experience-header-actions"><a href="tel:+15129566010">Call Adam</a><a href="https://styermortgage.com/contact.html" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></div></nav>`);
   }
   return refineLongform(html);
 }

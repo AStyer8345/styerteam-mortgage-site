@@ -434,13 +434,7 @@ body.private-wealth-editorial main .hero.pwe-hero,
 .pwe-hero {
   position: relative;
   background-color: #142330 !important;
-  background-image:
-    linear-gradient(96deg, rgba(16, 32, 46, 0.68) 0%, rgba(16, 32, 46, 0.44) 42%, rgba(16, 32, 46, 0.16) 72%, rgba(16, 32, 46, 0.36) 100%),
-    linear-gradient(180deg, rgba(16, 32, 46, 0.18) 0%, rgba(16, 32, 46, 0.04) 55%, rgba(16, 32, 46, 0.60) 100%),
-    url('/assets/austin-skyline-mockup-20261013.webp') !important;
-  background-size: cover !important;
-  background-position: center 46% !important;
-  background-repeat: no-repeat !important;
+  background-image: none !important;
   color: var(--pwe-alabaster) !important;
   padding: clamp(28px, 3.5vw, 48px) 0 0 !important;
   border-bottom: 1px solid var(--pwe-rule-dark);
@@ -450,12 +444,39 @@ body.private-wealth-editorial main .hero.pwe-hero,
 }
 
 body.private-wealth-editorial main .hero.pwe-hero::before,
-body.private-wealth-editorial main .hero.pwe-hero::after,
-.pwe-hero::before,
-.pwe-hero::after {
+.pwe-hero::before {
   display: none !important;
   content: none !important;
   background: none !important;
+}
+
+.pwe-hero-skyline,
+.pwe-hero-skyline img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+  z-index: 0;
+}
+
+.pwe-hero::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(96deg, rgba(16, 32, 46, 0.68) 0%, rgba(16, 32, 46, 0.44) 42%, rgba(16, 32, 46, 0.16) 72%, rgba(16, 32, 46, 0.36) 100%),
+    linear-gradient(180deg, rgba(16, 32, 46, 0.18) 0%, rgba(16, 32, 46, 0.04) 55%, rgba(16, 32, 46, 0.60) 100%) !important;
+}
+
+.pwe-hero > .container,
+.pwe-hero > .pwe-ledger-bar {
+  position: relative;
+  z-index: 2;
 }
 
 .pwe-hero-grid {
@@ -1841,37 +1862,10 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
   }
 }
 
-@keyframes pwe-mandate-fade {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 18px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  /* ONE hero entrance — editorial column rises; opacity stays at 1 throughout */
+  /* Hero copy rises. Opacity stays at 1 so the first paint is readable. */
   body.private-wealth-editorial .pwe-hero-editorial {
     animation: pwe-hero-enter 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  /* ONE mandate fade — armed by JS only when section starts below the fold */
-  body.private-wealth-editorial .pwe-mandates.pwe-motion-ready:not(.pwe-inview) .pwe-mandates-head,
-  body.private-wealth-editorial .pwe-mandates.pwe-motion-ready:not(.pwe-inview) .pwe-mandate-ledger {
-    opacity: 0;
-    transform: translate3d(0, 18px, 0);
-  }
-
-  body.private-wealth-editorial .pwe-mandates.pwe-inview .pwe-mandates-head,
-  body.private-wealth-editorial .pwe-mandates.pwe-inview .pwe-mandate-ledger {
-    animation: pwe-mandate-fade 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  body.private-wealth-editorial .pwe-mandates.pwe-inview .pwe-mandate-ledger {
-    animation-delay: 90ms;
   }
 }
 

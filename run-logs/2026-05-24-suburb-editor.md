@@ -11,7 +11,7 @@ Per `memory/feedback_stale_flags.md` ("Re-verify any flag that's appeared 2+ run
 1. **GOALS.md (read fresh today):** Line still reads *"No new content on the site beyond the repositioning + compliance fixes."* `Last updated: 2026-05-18` unchanged. Adam's next planned GOALS.md refresh is Monday 2026-05-25 (tomorrow).
 2. **GOALS.md task lists:** `styer-suburb-editor-daily` still in **neither** Pause List nor Keep-Running list. Unchanged.
 3. **TODO.md line 6:** still open at `(4th RUN CARRY)`, no (a/b/c) resolution recorded.
-4. **CONTEXT.md unblock:** none. Saturday 2026-05-23 `styer-site-daily` AM run (commit `83ad1d4`) added "Kyber Mortgage Corporation" footer entity coverage to buda + ftb-dpa-guide; PM run was re-verify only + surfaced superlative-sweep batch for Adam approval — all compliance-only, no suburb-editor unblock.
+4. **CONTEXT.md unblock:** none. Saturday 2026-05-23 `styer-site-daily` AM run (commit `83ad1d4`) added "the former company Mortgage Corporation" footer entity coverage to buda + ftb-dpa-guide; PM run was re-verify only + surfaced superlative-sweep batch for Adam approval — all compliance-only, no suburb-editor unblock.
 
 Condition holds. Skip stands.
 

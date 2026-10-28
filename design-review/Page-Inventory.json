@@ -3710,5 +3710,6 @@
     "internalCampaignDashboard": "desktop/mobile reviewed separately; excluded from public inventory/package",
     "productionReady": false
   },
-  "releaseBaseline": "a5ca0dc8d5481a77cbbcd4a57d3dc3fe51c196e7"
+  "releaseBaseline": "beb550a32738fd6ee75487bda2278c245e1f789f",
+  "releaseBaselineReason": "2026-10-26 approved former-affiliation removal; individual branding and direct contact replace old company identity and portal."
 }

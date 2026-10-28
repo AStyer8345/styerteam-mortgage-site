@@ -16,7 +16,7 @@ const output=process.env.REVIEW_OUTPUT||'/tmp/styer-experience-tests';fs.mkdirSy
   await go('/get-preapproved.html?intent=scenario');
   assert.equal(await field('loan_goal').inputValue(),'Not Sure Yet');
   assert.equal(await page.locator('header a.nav-apply').isVisible(),true);
-  assert.match(await page.locator('header a.nav-apply').getAttribute('href'),/^https:\/\/hypersmart.my1003app.com\/513013\/register\?time=1779291829279$/);
+  assert.match(await page.locator('header a.nav-apply').getAttribute('href'),/^https:\/\/styermortgage.com\/contact.html$/);
   await page.locator('.journey-estimates summary').click();await field('loan_goal').selectOption('Refinance');await field('current_balance').fill('350000');await field('income_type').selectOption('Self-employed / business owner');
   assert.equal(await field('time_in_business').isVisible(),true);
   await field('loan_goal').selectOption('Purchase');assert.equal(await field('current_balance').isVisible(),false);
