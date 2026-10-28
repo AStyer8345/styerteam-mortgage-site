@@ -17,7 +17,8 @@ function refineAdvisoryDesign(html) {
     const combined = [...new Set([...(present ? present[1].split(/\s+/) : []), ...classes])].filter(Boolean).join(' ');
     return '<body' + (present ? attributes.replace(present[0], `class="${combined}"`) : attributes + ` class="${combined}"`) + '>';
   });
-  if (!html.includes('/advisory-design.css')) html = html.replace('</head>', `<link rel="stylesheet" href="/advisory-design.css?v=${ASSET_VERSION}">\n</head>`);
+  // The homepage ships advisory-design.css inside /assets/homepage.css.
+  if (!html.includes('/advisory-design.css') && !html.includes('/assets/homepage.css')) html = html.replace('</head>', `<link rel="stylesheet" href="/advisory-design.css?v=${ASSET_VERSION}">\n</head>`);
   if (!html.includes('/advisory-contact.js')) html = html.replace('</head>', `<script src="/advisory-contact.js?v=${ASSET_VERSION}" defer></script>\n</head>`);
   html = html.replace(/\/(advisory-design\.css|advisory-contact\.js|calculator-sticky-result\.js)\?v=\d+/g, `/$1?v=${ASSET_VERSION}`);
   // The display serif is self-hosted (advisory-design.css). Google Fonts serves Inter only.
