@@ -94,11 +94,11 @@ Ranks for: "round rock mortgage lender" (20.4), "mortgage rates in round rock"
 RECOMMEND: #1 — Round Rock is heavy new construction (Teravista, Paloma Lake, etc). Builder rate buydown beating is the differentiator. Anchors to a local loan-type advantage exactly as Kyle does.
 
 ### Description options (chars)
-1. Round Rock is new-build country. I beat preferred-builder rates in Teravista, Paloma Lake, and Siena more weeks than not. A pre-approval letter once the documents are in. NMLS #513013. (158 — trim) — local neighborhoods, specific advantage, speed
-2. Buying new construction in Round Rock? Builder-preferred lenders aren't always the best deal. 40+ wholesale lenders, 136 five-star reviews, a pre-approval letter once the documents are in. (156) — question hook, social proof
+1. Round Rock is new-build country. I beat preferred-builder rates in Teravista, Paloma Lake, and Siena more weeks than not. Pre-approved in 24 hours. NMLS #513013. (158 — trim) — local neighborhoods, specific advantage, speed
+2. Buying new construction in Round Rock? Builder-preferred lenders aren't always the best deal. 40+ wholesale lenders, 136 five-star reviews, 24-hour pre-approval. (156) — question hook, social proof
 3. Round Rock mortgage broker Adam Styer — 40+ lenders, 136+ five-star reviews, and I beat builder rate buydowns in Teravista and Paloma Lake most weeks. (150) — credentials + local specificity
 RECOMMEND: #1 — leads with the differentiated service Round Rock buyers actually need. Trim to 155.
-FINAL: "Round Rock is new-build country. I beat preferred-builder rates in Teravista, Paloma Lake, and Siena most weeks. A pre-approval letter once the documents are in." (142)
+FINAL: "Round Rock is new-build country. I beat preferred-builder rates in Teravista, Paloma Lake, and Siena most weeks. Pre-approved in 24 hours." (142)
 
 ---
 
@@ -118,7 +118,7 @@ RECOMMEND: #1 — Sun City (Del Webb) is the single biggest Georgetown mortgage 
 ### Description options (chars)
 1. Sun City buyer? Asset-depletion qualifying, reverse mortgages, and cash-out refis that retail banks fumble. Plus new-build rate beating in Wolf Ranch. NMLS #513013. (163 — trim) — two Georgetown niches in one
 2. Georgetown mortgage broker for Sun City retirees and Wolf Ranch buyers. 40+ lenders including asset-depletion programs most banks don't offer. 136 reviews. (151) — specific niches + proof
-3. Retiring to Sun City or buying new in Wolf Ranch? Two very different loans. I do both well — 40+ lenders, a pre-approval letter once the documents are in, local since 2017. NMLS #513013. (155) — addresses two distinct buyer types
+3. Retiring to Sun City or buying new in Wolf Ranch? Two very different loans. I do both well — 40+ lenders, 24-hour pre-approval, local since 2017. NMLS #513013. (155) — addresses two distinct buyer types
 RECOMMEND: #2 — specific niches beat generic suburb copy, names programs banks don't offer (asset depletion), social proof.
 
 ---
@@ -139,7 +139,7 @@ RECOMMEND: #1 — top-ranking query is "cedar park fha loans" at 18.67. Exact-ma
 ### Description options (chars)
 1. Cedar Park FHA loans with 3.5% down, 580+ credit, and gift funds OK. Leander ISD buyers, Apple-campus workers, first-time purchases — I do these weekly. (152) — niches + frequency
 2. FHA in Cedar Park: 3.5% down, 580+ credit, seller concessions up to 6%. I close these weekly for Leander ISD buyers and Apple-area tech workers. (145) — specific program details
-3. The Cedar Park FHA answer: 3.5% down, 580+ credit score, and yes — gift funds, seller concessions, and Leander ISD neighborhoods all qualify. A pre-approval letter once the documents are in. (162 — trim) — answers implicit questions
+3. The Cedar Park FHA answer: 3.5% down, 580+ credit score, and yes — gift funds, seller concessions, and Leander ISD neighborhoods all qualify. Pre-approved in 24 hours. (162 — trim) — answers implicit questions
 RECOMMEND: #2 — tight, specific numbers, local anchors, weekly cadence implies volume/competence.
 
 ---

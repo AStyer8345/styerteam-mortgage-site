@@ -45,7 +45,7 @@ Your voice guide and CONTEXT both say **"Does NOT do: USDA loans"** / **"No USDA
 
 So a sweep would either violate GOALS.md (keep the claims) or strip a differentiator your voice guide explicitly endorses (remove them). I can't safely resolve that for you.
 
-**Live footprint (suburb cluster):** ~89 instances across 25/25 suburb pages — mostly "same-day pre-approval" and "24-hour" / "a pre-approval letter once the documents are in." Note: **"21-day close" is already 0 sitewide** — that win condition is met. The remaining claims are the speed-of-service ones.
+**Live footprint (suburb cluster):** ~89 instances across 25/25 suburb pages — mostly "same-day pre-approval" and "24-hour" / "pre-approval in 24 hours." Note: **"21-day close" is already 0 sitewide** — that win condition is met. The remaining claims are the speed-of-service ones.
 **Plus:** 3 headline-page title carries (homepage, /contact.html?goal=Purchase "24-Hour Turnaround", /hutto "Same-Day Pre-Approval") + thank-you.html lines 459/468/469.
 
 **Pick one:**
