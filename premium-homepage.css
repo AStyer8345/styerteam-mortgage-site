@@ -343,7 +343,7 @@ body.premium-homepage .recovery-specialty-grid article>p{font-size:15px;line-hei
 @media(min-width:901px){body.premium-homepage main .homepage-quick-inquiry h2{white-space:nowrap;font-size:23px!important}}
 @media(max-width:900px){body.premium-homepage.home-pilot main .hero{background-image:none!important;background-color:#f8f6f0!important}}
 /* Reference-image proportions and typography. */
-body.premium-homepage.home-pilot main .hero{background-image:linear-gradient(90deg,rgba(255,253,247,.88),rgba(255,253,247,.7) 30%,rgba(255,253,247,.12) 58%,transparent 76%),url('/assets/austin-skyline-mockup-20261013.webp')!important;background-position:center!important;padding:36px 0!important}
+body.premium-homepage.home-pilot main .hero{background-image:linear-gradient(90deg,rgba(255,253,247,.88),rgba(255,253,247,.7) 30%,rgba(255,253,247,.12) 58%,transparent 76%),url('/assets/austin-skyline-hero.webp')!important;background-position:center!important;padding:36px 0!important}
 body.premium-homepage.home-pilot main .home-hero-layout{grid-template-columns:minmax(0,1fr) 400px;gap:90px!important}
 body.premium-homepage.home-pilot main .hero h1{font-family:Georgia,'Times New Roman',serif!important;font-weight:600!important;font-size:60px!important;line-height:1.06!important;letter-spacing:-.035em!important;margin:20px 0 22px}
 body.premium-homepage main .hero-subtitle{max-width:535px;font-size:21px;line-height:1.4}

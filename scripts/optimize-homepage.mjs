@@ -6,6 +6,13 @@ import path from 'node:path';
 const root = process.cwd();
 const target = path.join(root, '.site-dist/index.html');
 let html = fs.readFileSync(target, 'utf8');
+if (html.includes('/assets/homepage.css')) {
+  if (!fs.existsSync(path.join(root, 'assets/homepage.css'))) {
+    throw new Error('Homepage bundle missing: assets/homepage.css');
+  }
+  fs.writeFileSync(target, html);
+  console.log('Homepage: kept the bundled stylesheet, async style.css, and self-hosted fonts.');
+} else {
 html = html.replace(/  <!-- Fonts -->[\s\S]*?(?=  <!-- Critical CSS)/, `  <!-- Same fonts, discovered directly without a third-party CSS round trip. -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/source-serif-4-600-latin.woff2" crossorigin>
   <style data-homepage-fonts>${fs.readFileSync('assets/fonts/inter.css', 'utf8')}</style>
@@ -34,3 +41,4 @@ body.premium-homepage.home-pilot main .hero h1{font-family:'Homepage Serif','Sou
 </style></head>`);
 fs.writeFileSync(target, html);
 console.log(`Homepage: inlined ${styles.length} stylesheets in original cascade order; self-hosted Inter.`);
+}

@@ -437,8 +437,22 @@ body.private-wealth-editorial main .hero.pwe-hero,
   background-image:
     linear-gradient(96deg, rgba(16, 32, 46, 0.68) 0%, rgba(16, 32, 46, 0.44) 42%, rgba(16, 32, 46, 0.16) 72%, rgba(16, 32, 46, 0.36) 100%),
     linear-gradient(180deg, rgba(16, 32, 46, 0.18) 0%, rgba(16, 32, 46, 0.04) 55%, rgba(16, 32, 46, 0.60) 100%),
-    url('/assets/austin-skyline-mockup-20261013.webp') !important;
+    url('/assets/austin-skyline-hero.webp') !important;
   background-size: cover !important;
+
+@supports (background-image: image-set(url('/assets/austin-skyline-hero.avif') type('image/avif'))) {
+  body.private-wealth-editorial main .hero.pwe-hero,
+  .pwe-hero {
+    background-image:
+      linear-gradient(96deg, rgba(16, 32, 46, 0.68) 0%, rgba(16, 32, 46, 0.44) 42%, rgba(16, 32, 46, 0.16) 72%, rgba(16, 32, 46, 0.36) 100%),
+      linear-gradient(180deg, rgba(16, 32, 46, 0.18) 0%, rgba(16, 32, 46, 0.04) 55%, rgba(16, 32, 46, 0.60) 100%),
+      image-set(
+        url('/assets/austin-skyline-hero.avif') type('image/avif'),
+        url('/assets/austin-skyline-hero.webp') type('image/webp')
+      ) !important;
+  }
+}
+
   background-position: center 46% !important;
   background-repeat: no-repeat !important;
   color: var(--pwe-alabaster) !important;

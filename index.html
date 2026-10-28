@@ -47,16 +47,22 @@
   }
   </script>
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<!-- Fonts load async — eliminates render-blocking -->
-<link as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet"/></noscript>
+<link rel="preload" href="/assets/fonts/inter-normal-6.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="/assets/fonts/source-serif-4-roman-latin.woff2" as="font" type="font/woff2" crossorigin/>
+<style>body{margin:0}.pwe-hero{background:#102033 url("/assets/austin-skyline-hero.webp") center/cover no-repeat}@supports (background-image:image-set(url("/assets/austin-skyline-hero.avif") type("image/avif"))){.pwe-hero{background-image:image-set(url("/assets/austin-skyline-hero.avif") type("image/avif"),url("/assets/austin-skyline-hero.webp") type("image/webp"))}}</style>
+<link rel="preload" href="/assets/austin-skyline-hero.avif" as="image" type="image/avif" fetchpriority="high"/>
+<style>
+@font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/inter-normal-6.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Inter;font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/inter-normal-6.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/source-serif-4-roman-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/source-serif-4-600-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+</style>
 <!-- Critical CSS — inlined for instant first paint (hero + header + nav) -->
 <!-- Full stylesheet — loads async, applies after critical CSS is already painted -->
+<link rel="preload" href="/assets/homepage.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link href="/assets/homepage.css" rel="stylesheet"/></noscript>
 <link as="style" href="style.css?v=20260830-reviews1" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
 <noscript><link href="style.css?v=20260830-reviews1" rel="stylesheet"/></noscript>
-<link href="/editorial-system.css?v=20260829" rel="stylesheet"/>
 <!-- Schema.org LocalBusiness -->
 <script type="application/ld+json">
   {
@@ -226,19 +232,12 @@
 <!-- Homepage surface tuning: deepen the light bands so the page isn't a white wash,
        and give white cards a real edge so they read as distinct surfaces.
        Scoped to the homepage; double-class selectors win over the async global sheet. -->
-<link href="/experience.css" rel="stylesheet"/>
-<link href="/situation-journeys.css?v=20260915" rel="stylesheet"/>
-<link href="/conversation.css?v=20260913" rel="stylesheet"/>
-<link href="/review-proof.css?v=20260913" rel="stylesheet"/>
-<link href="/advisory-design.css?v=20260918" rel="stylesheet"/>
 <script defer="" src="/advisory-contact.js?v=20260918"></script>
-<link href="/private-wealth-editorial.css?v=20261027-family" rel="stylesheet"/>
 <script defer="" src="/calculator-suite.js"></script>
 <script defer="" src="/premium-homepage.js?v=20261027-cta"></script>
-<link as="image" href="/assets/austin-skyline-mockup-20261013.webp" rel="preload"/>
-<link href="/blueprint-refinements.css" rel="stylesheet"/>
+
 <script defer="" src="/blueprint-interactions.js"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can self-employed business owners get a mortgage without tax returns in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If you are self-employed in Austin, I can look at 12 or 24 months of bank statements, a 1099-only program, a P&L your CPA prepares, or assets you already have. These are non-QM loans. They start from the money the business brings in, not the income left after write-offs. On the strongest bank-statement purchases, the loan can go to 90% of the value, and the minimum credit score is usually 620 to 660."}}, {"@type": "Question", "name": "What is a DSCR loan and who qualifies in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "A DSCR loan is for a rental. I qualify it on the rent, not your paycheck or tax return. DSCR is the rent divided by the full housing payment: principal, interest, taxes, insurance, and any association dues. Many programs want 1.0 or higher. Some allow a ratio below 0.75, and some do not use a ratio. Down payments usually start at 20% to 25%. There is no limit on how many properties you can finance this way, and the property can be held in an LLC."}}, {"@type": "Question", "name": "How does asset depletion qualify high-net-worth borrowers in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "Asset depletion turns money you already have into a monthly income number. The lender divides the eligible assets by 36, 60, or 84 months, depending on the program. Cash is usually counted in full. Stocks and similar investments are often counted at 80% to 90%. Retirement accounts are often counted at 70% if you are under 59 and a half. I use this when someone has retired, sold a business, or has more saved than a W-2 shows."}}, {"@type": "Question", "name": "What loan programs are available for complex-income borrowers in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "If you are self-employed, you get K-1 income, you own rentals, or your savings are stronger than your wages, I look at bank statements, 1099s, a P&L, asset depletion, DSCR, and jumbo loans. In Travis County in 2026, a jumbo loan is one above $832,750. I compare those programs across 40+ capital partners."}}, {"@type": "Question", "name": "How fast can a self-employed buyer get pre-approved in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "Most pre-approvals go out within one business day after the file is complete. How long a bank-statement or DSCR loan takes to close depends on the program, the appraisal, title, and how fast the documents come in. You can send me the situation or call (512) 956-6010."}}]}</script><link href="/editorial-polish.css" rel="stylesheet"/><style id="readability-corrections">body>main:nth-of-type(1)>section:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>details:nth-of-type(1)>p:nth-of-type(1){color:#243740 !important;}
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can self-employed business owners get a mortgage without tax returns in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If you are self-employed in Austin, I can look at 12 or 24 months of bank statements, a 1099-only program, a P&L your CPA prepares, or assets you already have. These are non-QM loans. They start from the money the business brings in, not the income left after write-offs. On the strongest bank-statement purchases, the loan can go to 90% of the value, and the minimum credit score is usually 620 to 660."}}, {"@type": "Question", "name": "What is a DSCR loan and who qualifies in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "A DSCR loan is for a rental. I qualify it on the rent, not your paycheck or tax return. DSCR is the rent divided by the full housing payment: principal, interest, taxes, insurance, and any association dues. Many programs want 1.0 or higher. Some allow a ratio below 0.75, and some do not use a ratio. Down payments usually start at 20% to 25%. There is no limit on how many properties you can finance this way, and the property can be held in an LLC."}}, {"@type": "Question", "name": "How does asset depletion qualify high-net-worth borrowers in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "Asset depletion turns money you already have into a monthly income number. The lender divides the eligible assets by 36, 60, or 84 months, depending on the program. Cash is usually counted in full. Stocks and similar investments are often counted at 80% to 90%. Retirement accounts are often counted at 70% if you are under 59 and a half. I use this when someone has retired, sold a business, or has more saved than a W-2 shows."}}, {"@type": "Question", "name": "What loan programs are available for complex-income borrowers in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "If you are self-employed, you get K-1 income, you own rentals, or your savings are stronger than your wages, I look at bank statements, 1099s, a P&L, asset depletion, DSCR, and jumbo loans. In Travis County in 2026, a jumbo loan is one above $832,750. I compare those programs across 40+ capital partners."}}, {"@type": "Question", "name": "How fast can a self-employed buyer get pre-approved in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "Most pre-approvals go out within one business day after the file is complete. How long a bank-statement or DSCR loan takes to close depends on the program, the appraisal, title, and how fast the documents come in. You can send me the situation or call (512) 956-6010."}}]}</script><style id="readability-corrections">body>main:nth-of-type(1)>section:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>details:nth-of-type(1)>p:nth-of-type(1){color:#243740 !important;}
 body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(1)>span:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(2)>span:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(3)>span:nth-of-type(1){color:#70531f !important;}
@@ -268,7 +267,7 @@ body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-ty
 body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-type(2)>article:nth-of-type(3)>div:nth-of-type(1)>div:nth-of-type(1)>span:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-type(2)>article:nth-of-type(3)>a:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(9)>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(1){color:#70531f !important;}
-main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style><link href="/final-editorial.css" rel="stylesheet"/><link href="/personal-forms.css" rel="stylesheet"/><link rel="preload" as="image" href="/assets/austin-skyline-mockup-20261013.webp" fetchpriority="high"></head>
+main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style></head>
 <body class="editorial-page home-pilot advisory-site premium-homepage private-wealth-editorial">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR" style="display:none;visibility:hidden" width="0"></iframe></noscript>
@@ -410,8 +409,9 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div class="pwe-hero-visual">
 <div class="pwe-hero-frame">
 <picture>
-<source srcset="/assets/adam-cutout-900.webp" type="image/webp"/>
-<img alt="Adam Styer, Senior Loan Officer and Mortgage Advisor in Austin, Texas" decoding="async" fetchpriority="high" height="900" src="/assets/adam-cutout-900.webp" width="900"/>
+<source sizes="(max-width: 700px) 72vw, 400px" srcset="/assets/adam-cutout-480.avif 480w, /assets/adam-cutout-900.avif 900w" type="image/avif"/>
+<source sizes="(max-width: 700px) 72vw, 400px" srcset="/assets/adam-cutout-480.webp 480w, /assets/adam-cutout-900.webp 900w" type="image/webp"/>
+<img alt="Adam Styer, Senior Loan Officer and Mortgage Advisor in Austin, Texas" decoding="async" fetchpriority="high" height="900" sizes="(max-width: 700px) 72vw, 400px" src="/assets/adam-cutout-900.webp" srcset="/assets/adam-cutout-480.webp 480w, /assets/adam-cutout-900.webp 900w" width="900"/>
 </picture>
 <div class="pwe-hero-caption">
 <strong>Adam Styer</strong>
@@ -508,7 +508,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <!-- 01: Self-Employed & 1099 -->
 <article class="pwe-audience-col">
 <div class="pwe-card-media">
-<img alt="Modern Texas Hill Country architectural home studio and creative workspace in Austin" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-hill-country-studio.jpg" width="480"/>
+<img alt="Modern Texas Hill Country architectural home studio and creative workspace in Austin" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-hill-country-studio-card.webp" srcset="/assets/austin-hill-country-studio-card-480.webp 480w, /assets/austin-hill-country-studio-card.webp 800w" sizes="(max-width: 700px) 92vw, 480px" width="480"/>
 <span class="pwe-card-badge">Self-Employed</span>
 </div>
 <div class="pwe-card-content">
@@ -530,7 +530,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <!-- 02: Real Estate Investors & DSCR -->
 <article class="pwe-audience-col">
 <div class="pwe-card-media">
-<img alt="Modern Texas Hill Country luxury retreat and short-term rental property in Dripping Springs" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-dscr-hill-country-retreat.jpg" width="480"/>
+<img alt="Modern Texas Hill Country luxury retreat and short-term rental property in Dripping Springs" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-dscr-hill-country-retreat-card.webp" srcset="/assets/austin-dscr-hill-country-retreat-card-480.webp 480w, /assets/austin-dscr-hill-country-retreat-card.webp 800w" sizes="(max-width: 700px) 92vw, 480px" width="480"/>
 <span class="pwe-card-badge">Investors &amp; DSCR</span>
 </div>
 <div class="pwe-card-content">
@@ -552,7 +552,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <!-- 03: Jumbo & Luxury -->
 <article class="pwe-audience-col">
 <div class="pwe-card-media">
-<img alt="Contemporary luxury architectural estate in Westlake Hills overlooking Lake Austin" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-jumbo-westlake-estate.jpg" width="480"/>
+<img alt="Contemporary luxury architectural estate in Westlake Hills overlooking Lake Austin" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-jumbo-westlake-estate-card.webp" srcset="/assets/austin-jumbo-westlake-estate-card-480.webp 480w, /assets/austin-jumbo-westlake-estate-card.webp 800w" sizes="(max-width: 700px) 92vw, 480px" width="480"/>
 <span class="pwe-card-badge">Luxury &amp; Move-Up</span>
 </div>
 <div class="pwe-card-content">
@@ -574,7 +574,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <!-- 04: Buying a Home (Conforming & FHA) -->
 <article class="pwe-audience-col">
 <div class="pwe-card-media">
-<img alt="Welcoming Austin Craftsman Hill Country family home with shaded porch and live oaks" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-craftsman-homebuyer.jpg" width="480"/>
+<img alt="Welcoming Austin Craftsman Hill Country family home with shaded porch and live oaks" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-craftsman-homebuyer-card.webp" srcset="/assets/austin-craftsman-homebuyer-card-480.webp 480w, /assets/austin-craftsman-homebuyer-card.webp 800w" sizes="(max-width: 700px) 92vw, 480px" width="480"/>
 <span class="pwe-card-badge">Homebuyers</span>
 </div>
 <div class="pwe-card-content">
@@ -596,7 +596,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <!-- 05: Buy Before You Sell -->
 <article class="pwe-audience-col">
 <div class="pwe-card-media">
-<img alt="Upscale transitional family estate in Rollingwood and Tarrytown with live oak canopy" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-move-up-estate.jpg" width="480"/>
+<img alt="Upscale transitional family estate in Rollingwood and Tarrytown with live oak canopy" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-move-up-estate-card.webp" srcset="/assets/austin-move-up-estate-card-480.webp 480w, /assets/austin-move-up-estate-card.webp 800w" sizes="(max-width: 700px) 92vw, 480px" width="480"/>
 <span class="pwe-card-badge">Moving</span>
 </div>
 <div class="pwe-card-content">
@@ -618,7 +618,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <!-- 06: Refinance & Texas Equity -->
 <article class="pwe-audience-col">
 <div class="pwe-card-media">
-<img alt="Sprawling Texas Hill Country modern ranch estate with limestone masonry and timber posts" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-texas-hill-country-ranch.jpg" width="480"/>
+<img alt="Sprawling Texas Hill Country modern ranch estate with limestone masonry and timber posts" class="pwe-card-img" height="360" loading="lazy" src="/assets/austin-texas-hill-country-ranch-card.webp" srcset="/assets/austin-texas-hill-country-ranch-card-480.webp 480w, /assets/austin-texas-hill-country-ranch-card.webp 800w" sizes="(max-width: 700px) 92vw, 480px" width="480"/>
 <span class="pwe-card-badge">Refinance &amp; Equity</span>
 </div>
 <div class="pwe-card-content">
@@ -1151,8 +1151,8 @@ Read Full Case Study
 <section aria-label="Related mortgage resources" class="blueprint-section blueprint-directory"><div class="blueprint-wrap"><h2>If you want to read more</h2><ul class="blueprint-links"><li><a href="/self-employed-mortgage-austin.html">Self-employed mortgage options</a></li><li><a href="/high-net-worth-mortgage.html">Mortgages for asset-rich borrowers</a></li><li><a href="/investor-loans.html">Investment property financing</a></li><li><a href="/first-time-home-buyer.html">Buying a home</a></li><li><a href="/loans/refinance.html">Refinancing and cash-out options</a></li><li><a href="/products.html">All mortgage options</a></li><li><a href="/resources/">Mortgage resources and guides</a></li><li><a href="/about.html">About Adam and the team</a></li><li><a href="/contact.html">Contact Adam Styer</a></li><li><a href="/contact.html">Review my mortgage scenario</a></li><li><a href="/privacy.html">Privacy policy</a></li><li><a href="/terms.html">Terms and conditions</a></li><li><a href="/texas-complaint-notice.html">Texas consumer complaint notice</a></li><li><a href="/">Styer Mortgage home</a></li><li><a href="/contact.html?goal=Purchase">Start loan scenario review</a></li></ul></div></section></main>
 <!-- FOOTER -->
 <footer class="site-footer" id="site-footer">
-<div class="container">
-<div class="site-footer-grid">
+  <div class="container">
+    <div class="site-footer-grid">
 <div class="site-footer-col"><h2>Loans</h2><ul>
 <li><a href="/loans/conventional.html">Conventional</a></li>
 <li><a href="/loans/fha.html">FHA</a></li>
@@ -1182,14 +1182,14 @@ Read Full Case Study
 <li><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS Consumer Access</a></li>
 </ul></div>
 </div>
-<p class="site-footer-proof"><a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" rel="noopener" target="_blank">5.0 on Google</a> · <a href="https://www.zillow.com/lender-profile/adamstyer/" rel="noopener" target="_blank">4.98 on Zillow</a> · <a href="/testimonials.html">144 published reviews</a> · Licensed in Texas · NMLS #513013</p>
-<p class="site-footer-areas"><strong>Serving Central Texas:</strong> <a href="/austin-area-mortgage-lender.html">Austin</a> · <a href="/round-rock-mortgage-lender.html">Round Rock</a> · <a href="/cedar-park-mortgage-lender.html">Cedar Park</a> · <a href="/leander-mortgage-lender.html">Leander</a> · <a href="/georgetown-mortgage-lender.html">Georgetown</a> · <a href="/pflugerville-mortgage-lender.html">Pflugerville</a> · <a href="/kyle-mortgage-lender.html">Kyle</a> · <a href="/buda-mortgage-lender.html">Buda</a> · <a href="/san-marcos-mortgage-lender.html">San Marcos</a> · <a href="/westlake-mortgage-lender.html">Westlake</a> · <a href="/lakeway-mortgage-lender.html">Lakeway</a> · <a href="/bee-cave-mortgage-lender.html">Bee Cave</a> · <a href="/dripping-springs-mortgage-lender.html">Dripping Springs</a> · <a href="/spicewood-mortgage-lender.html">Spicewood</a> · <a href="/marble-falls-mortgage-lender.html">Marble Falls</a> · <a href="/hutto-mortgage-lender.html">Hutto</a> · <a href="/taylor-mortgage-lender.html">Taylor</a> · <a href="/manor-mortgage-lender.html">Manor</a> · <a href="/elgin-mortgage-lender.html">Elgin</a> · <a href="/bastrop-mortgage-lender.html">Bastrop</a> · <a href="/smithville-mortgage-lender.html">Smithville</a> · <a href="/liberty-hill-mortgage-lender.html">Liberty Hill</a> · <a href="/jarrell-mortgage-lender.html">Jarrell</a> · <a href="/florence-mortgage-lender.html">Florence</a> · <a href="/new-braunfels-mortgage-lender.html">New Braunfels</a></p>
-<div class="site-footer-legal">
-<p>© 2026 The Styer Team · Powered by GoRascal. All rights reserved. <strong>NMLS#:</strong> 2072896 (Company) | 513013 (Adam Styer) | <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank">NMLS Consumer Access</a> | <a href="/texas-complaint-notice.html">Texas Complaint Notice</a> | <a href="/privacy.html">Privacy</a> | <a href="/terms.html">Terms</a></p>
-<p>Go Rascal Inc. is a Licensed Mortgage Broker in Texas, NMLS ID #2072896. Corporate office: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249. Adam Styer, Senior Loan Officer, Individual NMLS #513013. Austin office: 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731. This is not an offer for extension of credit or commitment to lend. All loans must satisfy underwriting guidelines. Not all applicants qualify. Information and pricing are subject to change at any time and without notice. Products not available in all areas. Equal Housing Lender.</p>
-<p>⌂ <strong>Equal Housing Opportunity</strong> — We are pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity throughout the Nation.</p>
-</div>
-</div>
+    <p class="site-footer-proof"><a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener">5.0 on Google</a> · <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener">4.98 on Zillow</a> · <a href="/testimonials.html">144 published reviews</a> · Licensed in Texas · NMLS #513013</p>
+    <p class="site-footer-areas"><strong>Serving Central Texas:</strong> <a href="/austin-area-mortgage-lender.html">Austin</a> · <a href="/round-rock-mortgage-lender.html">Round Rock</a> · <a href="/cedar-park-mortgage-lender.html">Cedar Park</a> · <a href="/leander-mortgage-lender.html">Leander</a> · <a href="/georgetown-mortgage-lender.html">Georgetown</a> · <a href="/pflugerville-mortgage-lender.html">Pflugerville</a> · <a href="/kyle-mortgage-lender.html">Kyle</a> · <a href="/buda-mortgage-lender.html">Buda</a> · <a href="/san-marcos-mortgage-lender.html">San Marcos</a> · <a href="/westlake-mortgage-lender.html">Westlake</a> · <a href="/lakeway-mortgage-lender.html">Lakeway</a> · <a href="/bee-cave-mortgage-lender.html">Bee Cave</a> · <a href="/dripping-springs-mortgage-lender.html">Dripping Springs</a> · <a href="/spicewood-mortgage-lender.html">Spicewood</a> · <a href="/marble-falls-mortgage-lender.html">Marble Falls</a> · <a href="/hutto-mortgage-lender.html">Hutto</a> · <a href="/taylor-mortgage-lender.html">Taylor</a> · <a href="/manor-mortgage-lender.html">Manor</a> · <a href="/elgin-mortgage-lender.html">Elgin</a> · <a href="/bastrop-mortgage-lender.html">Bastrop</a> · <a href="/smithville-mortgage-lender.html">Smithville</a> · <a href="/liberty-hill-mortgage-lender.html">Liberty Hill</a> · <a href="/jarrell-mortgage-lender.html">Jarrell</a> · <a href="/florence-mortgage-lender.html">Florence</a> · <a href="/new-braunfels-mortgage-lender.html">New Braunfels</a></p>
+    <div class="site-footer-legal">
+      <p>&copy; 2026 The Styer Team · Powered by GoRascal. All rights reserved. <strong>NMLS#:</strong> 2072896 (Company) | 513013 (Adam Styer) | <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" target="_blank" rel="noopener">NMLS Consumer Access</a> | <a href="/texas-complaint-notice.html">Texas Complaint Notice</a> | <a href="/privacy.html">Privacy</a> | <a href="/terms.html">Terms</a></p>
+      <p>Go Rascal Inc. is a Licensed Mortgage Broker in Texas, NMLS ID #2072896. Corporate office: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249. Adam Styer, Senior Loan Officer, Individual NMLS #513013. Austin office: 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731. This is not an offer for extension of credit or commitment to lend. All loans must satisfy underwriting guidelines. Not all applicants qualify. Information and pricing are subject to change at any time and without notice. Products not available in all areas. Equal Housing Lender.</p>
+      <p>&#x2302; <strong>Equal Housing Opportunity</strong> &mdash; We are pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity throughout the Nation.</p>
+    </div>
+  </div>
 </footer>
 <script defer="" src="script.js?v=20260721-assistant-main-v1"></script>
 <script defer="" src="/js/scroll-effects.js?v=20260429"></script>
