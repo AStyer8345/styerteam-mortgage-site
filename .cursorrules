@@ -24,7 +24,7 @@ You are working on the production website codebase for **The Styer Team · Power
 
 ## 3. Key Recent Milestones (October 2026)
 1. **Company & Brand Migration Complete**:
-   - Replaced all obsolete corporate entities (Kyber Mortgage, HyperSmart) and old NMLS #2653540 with **Go Rascal Inc.** and **Company NMLS #2072896**.
+   - Replaced all obsolete corporate entities (the former company Mortgage, the former employer) and old NMLS #2653540 with **Go Rascal Inc.** and **Company NMLS #2072896**.
    - Updated Austin branch office address across all HTML files, footer bundles, and assistant knowledge bases.
    - Rerouted stale application links to `/get-preapproved.html?intent=scenario`.
 2. **Homepage Visual Hierarchy & Card Refinements**:

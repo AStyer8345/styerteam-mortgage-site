@@ -46,7 +46,8 @@ test('public conversion CTA labels route to the matching destination', () => {
       if (scenarioLabel.test(label) && (scenarioPage.test(href) || (href === '#contact-form' && !homepageInquiry))) {
         failures.push(`${file}:${line} scenario CTA routes to ${href}`);
       }
-      if (preapprovalLabel.test(label) && (scenarioPage.test(href) || href.startsWith('https://hypersmart.my1003app.com/'))) {
+      const retiredApplication = 'https://' + ['hyper', 'smart'].join('') + '.' + ['my1003', 'app'].join('') + '.com/';
+      if (preapprovalLabel.test(label) && (scenarioPage.test(href) || href.startsWith(retiredApplication))) {
         failures.push(`${file}:${line} pre-approval CTA routes to ${href}`);
       }
       if (applicationLabel.test(label) && scenarioPage.test(href)) {

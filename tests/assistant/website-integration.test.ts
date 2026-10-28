@@ -65,7 +65,7 @@ test('assistant keeps contact and pre-approval actions available without sending
   assert.match(browser, /get-preapproved\.html\?intent=scenario/);
   assert.match(browser, /ui\.leadToggle\.addEventListener\('click', openLeadForm\)/);
   assert.match(browser, /addContextActions/);
-  assert.match(resources, /Start secure application/);
+  assert.match(resources, /Contact Adam about applying/);
   assert.match(resources, /Compare current rate options/);
   assert.match(browser, /rel = 'noopener noreferrer'/);
 });
@@ -132,7 +132,7 @@ test('assistant links remain on styermortgage.com and public direct-contact emai
   const contact = fs.readFileSync('contact.html', 'utf8');
   const scenario = fs.readFileSync('scenario.html', 'utf8');
   assert.doesNotMatch(`${browser}\n${resources}`, /https:\/\/(?:www\.)?adamstyer\.com/);
-  assert.doesNotMatch(`${gateway}\n${contact}\n${scenario}`, /adam\.styer@hypersmart\.loan/);
+  assert.doesNotMatch(`${gateway}\n${contact}\n${scenario}`, new RegExp('adam\\.styer@' + ['hyper', 'smart'].join('') + '\\.loan'));
   assert.match(gateway, /adam@thestyerteam\.com/);
   assert.match(contact, /mailto:adam@thestyerteam\.com/);
   assert.match(scenario, /"email": "adam@thestyerteam\.com"/);

@@ -1,3 +1,5 @@
+> October 26, 2026: Public branding is Adam Styer, individual NMLS #513013. Former company affiliation, company license, office, email and application links are retired. Until current company and secure application details are confirmed, route application requests to https://styermortgage.com/contact.html. This instruction supersedes older company branding instructions below.
+
 # styermortgage.com — Architecture
 
 ## Tech Stack
@@ -70,8 +72,8 @@ Events are pushed to `dataLayer` from two shared bundles, never from the GTM con
 |-------|---------|
 | `book_call_click` | Click on `a[href*="calendly.com"]` |
 | `qualification_started` | Calendly click **intercepted** — see Qualification Gate below |
-| `secure_application_click` | Click on `a[href*="my1003app.com"]` |
-| `apply_now_click` | Also fires on `a[href*="my1003app.com"]` |
+| `secure_application_click` | Click on `a[href*="contact.com"]` |
+| `apply_now_click` | Also fires on `a[href*="contact.com"]` |
 | `send_scenario_click` | Click on `a[href*="scenario"]` |
 | `email_click` | Click on `a[href^="mailto:"]` |
 
@@ -254,8 +256,8 @@ page without a disclaimer. Verified 2026-08-20 by fetching all 146 sitemap URLs.
 | Variant | URLs | Contents |
 |---|---|---|
 | **A** — full block (quoted below) | 106 | *"is a Licensed Mortgage Broker in Texas"* · *"Equal Housing Opportunity"* |
-| **B** — long-form footer | 33 | Kyber legal name · **principal address** · **Texas Consumer Complaint Notice** · *"Licensed in Texas"* · *"Equal Housing **Lender**"* · product-specific disclosure where one applies (e.g. "DSCR loans are for investment properties only"). Used on loan-product, DSCR, suburb, and lead-capture pages. |
-| **C** — thin footer | 5 | Kyber legal name + both NMLS IDs only. **No address, no Consumer Complaint Notice.** |
+| **B** — long-form footer | 33 | the former company legal name · **principal address** · **Texas Consumer Complaint Notice** · *"Licensed in Texas"* · *"Equal Housing **Lender**"* · product-specific disclosure where one applies (e.g. "DSCR loans are for investment properties only"). Used on loan-product, DSCR, suburb, and lead-capture pages. |
+| **C** — thin footer | 5 | the former company legal name + both NMLS IDs only. **No address, no Consumer Complaint Notice.** |
 | *(legal pages)* | 2 | `privacy.html`, `terms.html` — address present, no Consumer Complaint Notice. Different document type. |
 
 **Variant C pages:** `calculator-payment`, `calculator-affordability`, `calculator-refinance-breakeven`,

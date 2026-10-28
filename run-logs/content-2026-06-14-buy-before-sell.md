@@ -29,10 +29,10 @@ fallback against approved-source domains only.
 3 inline citations, all anchor-linked to approved-source URLs.
 
 ## Compliance & quality gate results (STEP 4)
-- [PASS] Brand "HyperSmart Home Loans" present (10×); ZERO "The Styer Team" / "Mortgage Solutions LP" / "Styer Mortgage".
-- [PASS] NMLS/entity correct — Adam 513013, company 2653540, Kyber Mortgage Corporation dba HyperSmart Home Loans.
+- [PASS] Brand "the former employer" present (10×); ZERO "The Styer Team" / "Mortgage Solutions LP" / "Styer Mortgage".
+- [PASS] NMLS/entity correct — Adam 513013, company 2653540, the former employer.
 - [PASS] No performance-metric marketing ("24-hour", "same-day", "fastest", "guaranteed approval") — 0.
-- [PASS] No raw 1003 URL (my1003app.com count = 0; CTAs route to /scenario.html + /get-preapproved.html).
+- [PASS] No raw 1003 URL (contact.com count = 0; CTAs route to /scenario.html + /get-preapproved.html).
 - [PASS] Title lint — `<title>` contains "Adam Styer"; grep -v returns empty.
 - [PASS] TX-only / no USDA — 0 USDA occurrences; TX-only origination framing.
 - [PASS] Cluster wiring — 5 in-body internal links (get-preapproved, scenario, loans/refinance, cash-out refi guide, refi decision guide); all targets verified to exist. No bridge-loan hub page exists, so none was invented.
@@ -49,6 +49,6 @@ fallback against approved-source domains only.
 
 ## Could-not-verify / notes
 - Voice guide file (`adam-voice-and-workflow.md`) still shows the legacy entity name in one line;
-  CLAUDE.md override is authoritative and was followed (HyperSmart display name throughout).
+  CLAUDE.md override is authoritative and was followed (the former employer display name throughout).
 - Bridge-loan pricing/cost intentionally NOT quoted (compliance: no live rates, no named proprietary
   programs). Mechanics grounded only; product specifics framed as "evaluate which fits."

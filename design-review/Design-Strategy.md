@@ -85,7 +85,7 @@ Use three recurring visual modes:
 
 They share typography, navigation, spacing, color, and component behavior. Each has a purpose-specific composition.
 
-Brand hierarchy should remain Adam Styer with the existing HyperSmart affiliation and current legal identity. Do not invent a team, imply private-banking services, introduce a new DBA, or elevate a prospective company transition into current branding. Any later rebrand requires its own verified brief.
+Brand hierarchy should remain Adam Styer with the existing the former employer affiliation and current legal identity. Do not invent a team, imply private-banking services, introduce a new DBA, or elevate a prospective company transition into current branding. Any later rebrand requires its own verified brief.
 
 ## B Visual changes ranked by expected impact
 

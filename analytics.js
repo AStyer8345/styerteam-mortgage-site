@@ -118,10 +118,9 @@
     var eventName = link.getAttribute('data-track');
     // A calendar click is navigation, never a booking or an intake redirect.
     if (link.matches('a[href*="calendly.com"]')) eventName = 'book_call_click';
-    if (link.matches('a[href*="my1003app.com"]')) eventName = 'secure_application_click';
+    if (link.matches('a.nav-apply')) eventName = 'secure_application_click';
     if (link.matches('a[href^="sms:"]')) eventName = 'text_click';
     if (!eventName && link.matches('a[href^="mailto:"]')) eventName = 'email_click';
-    if (!eventName && link.matches('a[href*="my1003app.com"]')) eventName = 'secure_application_click';
     if (!eventName && link.matches('a[href*="scenario"]')) eventName = 'send_scenario_click';
     if (!eventName) return;
     window.dataLayer = window.dataLayer || [];

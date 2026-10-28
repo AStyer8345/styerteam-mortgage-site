@@ -51,16 +51,22 @@
     .then(function (config) {
       if (!config || config.enabled !== true) return;
       state.config = config;
-      renderWidget();
+      // Fetch optional widget styles without blocking the page's next paint.
+      // Mount only when styled, so there is no unstyled launcher or false impression.
+      var stylesheet = document.createElement('link');
+      stylesheet.rel = 'stylesheet';
+      stylesheet.media = 'print';
+      stylesheet.href = '/assistant-widget.css?v=20261006-answer-handoff-v2';
+      stylesheet.onload = function () {
+        stylesheet.onload = null;
+        stylesheet.media = 'all';
+        renderWidget();
+      };
+      document.head.appendChild(stylesheet);
     })
     .catch(function () {});
 
   function renderWidget() {
-    var stylesheet = document.createElement('link');
-    stylesheet.rel = 'stylesheet';
-    stylesheet.href = '/assistant-widget.css?v=20261006-answer-handoff-v2';
-    document.head.appendChild(stylesheet);
-
     var root = document.createElement('div');
     root.className = 'mortgage-assistant';
     var professionalMode = /^(advisor|advisor_reverse|cpa)$/.test(state.assistantMode);
@@ -530,7 +536,7 @@
   function addTrustedLink(value, label) {
     try {
       var url = new URL(value);
-      var approvedHost = url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'hypersmart.my1003app.com' || url.hostname === 'calendly.com';
+      var approvedHost = url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'calendly.com';
       if (url.protocol !== 'https:' || !approvedHost) return;
       var wrapper = document.createElement('div');
       wrapper.className = 'ma-trusted-link';
@@ -562,7 +568,7 @@
       if (typeof action.url !== 'string') return;
       try {
         var url = new URL(action.url);
-        var approved = url.protocol === 'https:' && (url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'hypersmart.my1003app.com' || url.hostname === 'calendly.com');
+        var approved = url.protocol === 'https:' && (url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'calendly.com');
         if (!approved) return;
         var link = document.createElement('a');
         link.href = url.href;
@@ -595,7 +601,7 @@
   }
 
   function trackLinkClick(url) {
-    if (url.hostname === 'hypersmart.my1003app.com') { state.converted = true; trackAssistant('application_clicked', { cta_type: 'application' }); }
+    if (/^\/contact\.html$/.test(url.pathname)) { state.converted = true; trackAssistant('contact_clicked', { cta_type: 'contact' }); }
     else if (url.hostname === 'calendly.com') { state.converted = true; trackAssistant('scheduling_clicked', { cta_type: 'schedule' }); }
     else if (/get-preapproved\.html$/.test(url.pathname)) { state.converted = true; trackAssistant('preapproval_clicked', { cta_type: 'preapproval' }); }
     else if (/rate-check/.test(url.pathname)) { state.converted = true; trackAssistant('rate_review_clicked', { cta_type: 'rate_review' }); }

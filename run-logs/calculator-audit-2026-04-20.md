@@ -141,7 +141,7 @@ This affects: Origination Fee, Underwriting Fee, Processing Fee, Application Fee
 **Affected:** All 6 calculator pages  
 **Status:** Known gap per CONTEXT.md
 
-None of the calculators have a form that captures name/email/phone directly on the page after the user gets a result. Current CTAs link away to a full application (`mslp.my1003app.com`) or contact page.
+None of the calculators have a form that captures name/email/phone directly on the page after the user gets a result. Current CTAs link away to a full application (`mslp.contact.com`) or contact page.
 
 The highest-converting pattern in the market: after a result renders, display a 3-field form (Name, Phone/Email, "Get a quote with these numbers →"). The user has already engaged with their numbers — this is the moment of peak intent.
 

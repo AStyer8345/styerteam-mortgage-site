@@ -23,7 +23,7 @@ The actionable headline is the same one as last Monday, now carried a second wee
 
 Both P0s and P2-G are pre-written in the existing patch. **No P0 surprises, no regressions, no new runtime errors.**
 
-> ⚠️ **Task-file drift (unchanged, still worth one fix):** the audit SKILL.md still names the business "Adam Styer | Mortgage Solutions LP" — retired 2026-05-20. Site correctly uses **"Adam Styer | HyperSmart Home Loans"** (display) / **"Kyber Mortgage Corporation dba HyperSmart Home Loans"** (legal, NMLS 2653540). Update the SKILL.md.
+> ⚠️ **Task-file drift (unchanged, still worth one fix):** the audit SKILL.md still names the business "Adam Styer | Mortgage Solutions LP" — retired 2026-05-20. Site correctly uses **"Adam Styer | the former employer"** (display) / **"the former employer"** (legal, NMLS 2653540). Update the SKILL.md.
 
 ---
 

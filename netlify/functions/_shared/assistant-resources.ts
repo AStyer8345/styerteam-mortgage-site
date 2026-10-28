@@ -17,7 +17,7 @@ export const APPROVED_RESOURCES: readonly AssistantResource[] = [
   { label: 'All mortgage calculators', url: 'https://styermortgage.com/calculators.html', use: 'when the visitor broadly asks what calculators or tools are available' },
   { label: 'Request a rate review', url: 'https://styermortgage.com/rate-check.html', use: 'reviewing a current Loan Estimate or getting scenario-specific live pricing' },
   { label: 'Request pre-approval or a scenario review', url: 'https://styermortgage.com/get-preapproved.html?intent=scenario', use: 'when the visitor wants pre-approval, a short scenario review, or to give Adam contact details before completing a full application' },
-  { label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register', use: 'only when the visitor explicitly wants to complete the full secure mortgage application' },
+  { label: 'Contact Adam about applying', url: 'https://styermortgage.com/contact.html', use: 'when the visitor wants a full application; the contact page lets Adam arrange the current secure application' },
   { label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes', use: 'when the visitor wants to schedule time with Adam' },
   { label: 'Send Adam my scenario', url: 'https://styermortgage.com/get-preapproved.html?intent=scenario', use: 'when the visitor wants Adam to review a scenario or provide contact details' },
   { label: 'Financial advisor mortgage strategies', url: 'https://styermortgage.com/mortgage-strategies-financial-advisors-texas.html', use: 'financial advisors comparing liquidity, retirement income, asset depletion, reverse mortgage, or complex-income client options' },
@@ -34,7 +34,7 @@ export function isApprovedResource(resource: { label?: unknown; url?: unknown })
 export function conversionResources(stage: string, message = ''): Array<{ label: string; url: string }> {
   const value = message.toLowerCase();
   const fullApplicationIntent = /\b(?:1003|my1003|secure portal)\b|\b(?:full|complete|formal|secure)\s+(?:online\s+)?application\b|\bready to (?:start|complete|submit) (?:the |my |a )?(?:full |secure )?application\b/;
-  if (fullApplicationIntent.test(value)) return [{ label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register' }];
+  if (fullApplicationIntent.test(value)) return [{ label: 'Contact Adam about applying', url: 'https://styermortgage.com/contact.html' }];
   if (/\b(?:schedule|book|calendly|appointment|call)\b/.test(value)) return [{ label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes' }];
   if (/\b(?:apply|application|pre[- ]?approv(?:e|ed|al)?|get started|contact|reach|email|text|scenario)\b|\bshort review\b|\breview (?:my|this|the) (?:file|situation|scenario)\b/.test(value)) {
     return [{ label: 'Send Adam my scenario', url: 'https://styermortgage.com/get-preapproved.html?intent=scenario' }];
@@ -46,7 +46,7 @@ export function conversionResources(stage: string, message = ''): Array<{ label:
 export function resolveAssistantActions(actions: Array<'contact' | 'application' | 'schedule' | 'rate_review'>): AssistantAction[] {
   const definitions: Record<AssistantAction['type'], AssistantAction> = {
     contact: { type: 'contact', label: 'Have Adam review this' },
-    application: { type: 'application', label: 'Start secure application', url: 'https://hypersmart.my1003app.com/513013/register' },
+    application: { type: 'application', label: 'Contact Adam about applying', url: 'https://styermortgage.com/contact.html' },
     schedule: { type: 'schedule', label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes' },
     rate_review: { type: 'rate_review', label: 'Compare current rate options', url: 'https://styermortgage.com/rate-check.html' },
   };

@@ -23,7 +23,7 @@
 
 Both remaining P0s are in `patches/calculator-2026-06-15-P0.diff` (find/replace doc, not applied).
 
-> ⚠️ **Task-file drift, not a site issue:** the audit task definition still says the business name is "Adam Styer | Mortgage Solutions LP." That entity was **retired 2026-05-20**. The site correctly uses **"Adam Styer | HyperSmart Home Loans"** (display) / **"Kyber Mortgage Corporation dba HyperSmart Home Loans"** (legal, NMLS 2653540). No site copy uses the old name. The SKILL.md task file should be updated.
+> ⚠️ **Task-file drift, not a site issue:** the audit task definition still says the business name is "Adam Styer | Mortgage Solutions LP." That entity was **retired 2026-05-20**. The site correctly uses **"Adam Styer | the former employer"** (display) / **"the former employer"** (legal, NMLS 2653540). No site copy uses the old name. The SKILL.md task file should be updated.
 
 ---
 
@@ -108,7 +108,7 @@ Both shipped since the last audit. **Both are high quality — no P0 or P1.**
 - ✅ a11y: every input has `<label for>`; segmented controls use `role="tablist"`/`role="group"` + `aria-label`; coverage meter uses `aria-live`
 - ✅ math guarded: `num()` clamps negatives to 0, `pct()` clamps 0–100, `monthlyFromAssets()` guards `periodMonths <= 0`, coverage ratio guards `target > 0`
 - ✅ haircuts editable per asset class (checking 100 / brokerage 100 / retirement 70 / other 100 defaults); selectable depletion periods (36/60/84 primary + longer reference) — **this already covers the competitor scan's "selectable term" suggestion**
-- ✅ CTAs: "Send Your Scenario" + "Book 15-Min Call" (Calendly); EHL + full Kyber/HyperSmart compliance footer present
+- ✅ CTAs: "Send Your Scenario" + "Book 15-Min Call" (Calendly); EHL + full the former company/the former employer compliance footer present
 - ◽ inline email form built but `hidden` (`WEBHOOK_URL=""`) — see P1-A
 
 **dscr-calculator.html (1275 lines)**
@@ -174,7 +174,7 @@ Strategic read (from scan): don't out-polish the aggregators on commodity calcs;
 5. **P1-B (your call):** affordability 5% down — disclose it or make down % selectable.
 6. P3 backlog → TODO.md: PMI auto-drop, amortization schedule on Payment, income-type toggle, `calc_complete` analytics, TX tax defaults.
 
-*Also: update the audit SKILL.md business name from the retired "Mortgage Solutions LP" to "Adam Styer | HyperSmart Home Loans."*
+*Also: update the audit SKILL.md business name from the retired "Mortgage Solutions LP" to "Adam Styer | the former employer."*
 
 ---
 

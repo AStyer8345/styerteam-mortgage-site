@@ -60,6 +60,6 @@ Validation: 101 site tests + 115 assistant tests passed, TypeScript passed, buil
 - `prequal.html` analytics behavior, paid-page positioning, and several legal-copy consistency items remain separate Adam-gated work.
 - Do not make live form submissions for testing; use source, test-suite, Netlify form-registration, and existing non-PII diagnostics.
 
-## October 26 redesign technical pass
+## October 28 — main merged into the redesign
 
-See `audits/2026-10-26-technical-handoff.md` for the scoped repairs, test results and Antigravity work still open. Public packaging now uses an explicit reviewed-file manifest in addition to Git-tracked files; all manifest entries must be committed before a remote release. The mixed checkout's navigation/design sync drift and affiliation/application inconsistencies remain release-review items. Do not overwrite the current redesign with a mass sync. No production push/deploy was performed.
+`main` through `c602e86d` is merged into the private-wealth editorial redesign. Conflicted pages keep the redesign’s layout and copy, including The Styer Team · Powered by GoRascal. Former-employer names, logos, and the retired application host are removed. `/apply-now` and Apply Now controls use `https://styermortgage.com/contact.html`. Lead-intake wiring is unchanged. No production deploy from this branch.

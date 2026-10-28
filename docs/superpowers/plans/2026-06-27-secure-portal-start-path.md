@@ -25,7 +25,7 @@ assert.match(scenarioPage, /Send Adam the short version/);
 assert.match(scenarioPage, /Answer a few questions in my secure online portal/);
 assert.match(scenarioPage, /usually takes 7-9 minutes/);
 assert.match(scenarioPage, /make our first call more efficient/);
-assert.match(scenarioPage, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+assert.match(scenarioPage, /https:\/\/the former employer\.contact\.com\/513013\/register\?time=1779291829279/);
 assert.match(scenarioPage, /id="scenario-note-form"/);
 assert.match(scenarioPage, /name="scenario-note"/);
 assert.doesNotMatch(scenarioPage, /Start Secure Loan Application/);
@@ -41,7 +41,7 @@ In `homepage leads with lightweight scenario contact paths before the full appli
 assert.match(homepage, /Answer a few questions in my secure online portal/);
 assert.match(homepage, /usually takes 7-9 minutes/);
 assert.match(homepage, /make our first call more efficient/);
-assert.match(homepage, /<a href="https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279"[^>]*target="_blank"[^>]*>Open Secure Portal<\/a>/);
+assert.match(homepage, /<a href="https:\/\/the former employer\.contact\.com\/513013\/register\?time=1779291829279"[^>]*target="_blank"[^>]*>Open Secure Portal<\/a>/);
 assert.doesNotMatch(homepage, /Start Full Loan Application/);
 assert.doesNotMatch(homepage, /Start Loan Application/);
 ```
@@ -55,7 +55,7 @@ test('thank-you page offers portal as an efficient next step without application
   assert.match(thankYou, /Answer a few questions in my secure online portal/);
   assert.match(thankYou, /usually takes 7-9 minutes/);
   assert.match(thankYou, /first call more efficient/);
-  assert.match(thankYou, /https:\/\/hypersmart\.my1003app\.com\/513013\/register\?time=1779291829279/);
+  assert.match(thankYou, /https:\/\/the former employer\.contact\.com\/513013\/register\?time=1779291829279/);
   assert.doesNotMatch(thankYou, /Start the full application/);
   assert.doesNotMatch(thankYou, /full 1003/);
 });

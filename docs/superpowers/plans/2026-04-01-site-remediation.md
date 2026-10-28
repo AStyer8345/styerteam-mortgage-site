@@ -296,7 +296,7 @@ Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
 **Files:**
 - Modify: `analytics.js:28-32` — add click tracking for loan application links
 
-**Context:** The highest-value conversion action (clicking through to `mslp.my1003app.com`) is completely unmeasured. Phone clicks, form submits, and Calendly clicks are tracked, but not the actual application link.
+**Context:** The highest-value conversion action (clicking through to `mslp.contact.com`) is completely unmeasured. Phone clicks, form submits, and Calendly clicks are tracked, but not the actual application link.
 
 - [ ] **Step 1: Add Apply Now tracking to analytics.js**
 
@@ -305,7 +305,7 @@ In `analytics.js`, after the Calendly click tracking block (after line 38), add:
 ```javascript
 
     // ── Apply Now / loan application clicks ────────────────────────
-    document.querySelectorAll('a[href*="mslp.my1003app.com"]').forEach(function (link) {
+    document.querySelectorAll('a[href*="mslp.contact.com"]').forEach(function (link) {
       link.addEventListener('click', function () {
         track({ event: 'apply_now_click', destination: link.href });
       });
@@ -326,7 +326,7 @@ Expected: The new line appears.
 git add analytics.js
 git commit -m "feat: track Apply Now clicks to loan application
 
-Adds dataLayer event for clicks to mslp.my1003app.com so Google Ads
+Adds dataLayer event for clicks to mslp.contact.com so Google Ads
 can measure the highest-value conversion action on the site.
 
 Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"

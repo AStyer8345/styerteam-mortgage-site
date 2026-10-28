@@ -95,7 +95,7 @@ exports.handler = async (event) => {
   }
 
   const isTest = body.test_mode === true || body.test_mode === "true";
-  if (isTest && !["adam@thestyerteam.com", "adam.styer@hypersmart.loan", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
+  if (isTest && !["adam@thestyerteam.com", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
   const inquiryId = String(body.inquiry_id || "");
   if (!/^[A-Za-z0-9:_-]{8,200}$/.test(inquiryId)) return respond(400, { error: "A stable inquiry_id is required" });
 

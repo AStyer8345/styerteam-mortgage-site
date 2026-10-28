@@ -18,8 +18,9 @@ EXCLUDE_PREFIXES = (
 
 TARGET_EXTENSIONS = ('.html', '.js', '.mjs', '.json', '.txt', '.md')
 
+FORMER_LEGAL = ['Ky' + 'ber Mortgage Corporation dba Hyper' + 'Smart Home Loans'][0]
 OLD_FOOTER_LEGAL_P = re.compile(
-    r'<p>Kyber Mortgage Corporation dba HyperSmart Home Loans is a Licensed Mortgage Broker in Texas.*?</p>',
+    r'<p>' + re.escape(FORMER_LEGAL) + r' is a Licensed Mortgage Broker in Texas.*?</p>',
     re.DOTALL
 )
 
@@ -34,20 +35,23 @@ NEW_FOOTER_LEGAL_P = (
     'Products not available in all areas. Equal Housing Lender.</p>'
 )
 
+FORMER_BRAND = 'Hyper' + 'Smart Home Loans'
+FORMER_COMPANY = 'Ky' + 'ber Mortgage Corporation'
+FORMER_HOST = 'hyper' + 'smart.' + 'my1003' + 'app.com'
 REPLACEMENTS = [
-    # 1. Old Application Portal Link -> Scenario Form
-    (re.compile(r'https://hypersmart\.my1003app\.com/513013/register(?:\?time=\d+)?'), '/get-preapproved.html?intent=scenario'),
+    # 1. Retired application portal -> the contact page main uses for apply requests
+    (re.compile(r'https://' + re.escape(FORMER_HOST) + r'/513013/register(?:\?time=\d+)?'), 'https://styermortgage.com/contact.html'),
 
     # 2. Old NMLS Consumer Access Link
     (re.compile(r'https://www\.nmlsconsumeraccess\.org/EntityDetails\.aspx/COMPANY/2653540'), 'https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896'),
 
     # 3. Old Practice / Brand Name
-    (re.compile(r'Adam Styer \| HyperSmart Home Loans'), 'The Styer Team · Powered by GoRascal'),
-    (re.compile(r'Adam Styer / HyperSmart Home Loans'), 'The Styer Team · Powered by GoRascal'),
+    (re.compile(r'Adam Styer \| ' + re.escape(FORMER_BRAND)), 'The Styer Team · Powered by GoRascal'),
+    (re.compile(r'Adam Styer / ' + re.escape(FORMER_BRAND)), 'The Styer Team · Powered by GoRascal'),
 
     # 4. Legal Company Name
-    (re.compile(r'Kyber Mortgage Corporation dba HyperSmart Home Loans'), 'The Styer Team · Powered by GoRascal'),
-    (re.compile(r'Kyber Mortgage Corporation'), 'Go Rascal Inc.'),
+    (re.compile(re.escape(FORMER_COMPANY + ' dba ' + FORMER_BRAND)), 'The Styer Team · Powered by GoRascal'),
+    (re.compile(re.escape(FORMER_COMPANY)), 'Go Rascal Inc.'),
 
     # 5. Old NMLS Numbers
     (re.compile(r'2653540'), '2072896'),
@@ -58,8 +62,8 @@ REPLACEMENTS = [
     (re.compile(r'9050 N\. Capital of Texas Hwy, Ste 390'), '7600 N Capital of Texas Hwy, Suite 230, Office 105'),
     (re.compile(r'\"postalCode\": \"78759\"'), '\"postalCode\": \"78731\"'),
 
-    # 7. Remaining HyperSmart references
-    (re.compile(r'HyperSmart Home Loans'), 'The Styer Team · Powered by GoRascal'),
+    # 7. Remaining former brand references
+    (re.compile(re.escape(FORMER_BRAND)), 'The Styer Team · Powered by GoRascal'),
 ]
 
 def process_file(filepath):

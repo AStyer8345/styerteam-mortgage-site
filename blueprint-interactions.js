@@ -17,7 +17,7 @@
     if(url.protocol==='tel:') record('click_call');
     if(url.protocol==='sms:') record('click_text');
     if(url.hostname==='calendly.com') record('booking_click');
-    if(url.pathname==='/apply-now/' || url.hostname.endsWith('my1003app.com')) record('application_click');
+    if(url.pathname==='/apply-now/' || url.pathname==='/apply-now' || url.pathname==='/contact.html') record('application_click');
   });
   const started=new WeakSet();
   document.addEventListener('input',e=>{

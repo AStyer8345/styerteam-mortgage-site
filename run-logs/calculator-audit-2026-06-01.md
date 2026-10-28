@@ -122,7 +122,7 @@ On-page disclosure at line 76 only mentions "~7% rate, 30-year term, P&I ~28% of
 | ID | Issue | File(s) | State |
 |---|---|---|---|
 | P2-A | `/get-preapproved.html` legacy href (affordability already canonicalized) | calculator-payment.html:102, calculator-refinance-breakeven.html:108 | unchanged |
-| P2-B | Stripped footer Kyber/HyperSmart compliance line | the 3 small calc pages | **RESOLVED** — `c427b15` entity rebrand seeded all 3 stripped-footer pages with "© 2026 Kyber Mortgage Corporation dba HyperSmart Home Loans. NMLS# 2653540 (Company) \| 513013 (Adam Styer)." Verified `grep -c "Kyber"` returns ≥1 on every calc file. |
+| P2-B | Stripped footer the former company/the former employer compliance line | the 3 small calc pages | **RESOLVED** — `c427b15` entity rebrand seeded all 3 stripped-footer pages with "© 2026 the former employer. NMLS# 2653540 (Company) \| 513013 (Adam Styer)." Verified `grep -c "the former company"` returns ≥1 on every calc file. |
 | **P2-G** | **NEW: Equal Housing Lender (EHL) tag missing on 6 of 7 calc surfaces** | calculator-payment.html, calculator-affordability.html, calculator-refinance-breakeven.html, rate-buydown-calculator.html, wrap-mortgage-calculator.html, calculators.html | **NEW this run** |
 | P2-C | Buydown frequency label vs radio mismatch | rate-buydown-calculator.html | implicitly fixed by P0-A patch |
 | P2-D | WRAP — no validation against negative-am inputs | wrap-mortgage-calculator.html | unchanged |

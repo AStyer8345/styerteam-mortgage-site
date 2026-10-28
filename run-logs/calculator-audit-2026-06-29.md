@@ -23,7 +23,7 @@ So: **P2-A closed. Two P0s + three lower items still open, re-verified line-by-l
 
 **Fresh, byte-exact patch written: `patches/calculator-2026-06-29-P0.diff`** — covers P0-B + all 16 aria-labels with full-line FIND/REPLACE (the older 06-15 patch abbreviated the 11 wrap inputs as `...>`, which was fragile; this one spells every line out against current source). No math touched. **No new runtime errors, no regressions.**
 
-> ⚠️ **Task-file drift (still unfixed):** the audit SKILL.md still names the business "Adam Styer | Mortgage Solutions LP" — retired 2026-05-20. Site correctly uses **"Adam Styer | HyperSmart Home Loans"** (display) / **"Kyber Mortgage Corporation dba HyperSmart Home Loans"** (legal, NMLS 2653540). Update the SKILL.md `Business name` line.
+> ⚠️ **Task-file drift (still unfixed):** the audit SKILL.md still names the business "Adam Styer | Mortgage Solutions LP" — retired 2026-05-20. Site correctly uses **"Adam Styer | the former employer"** (display) / **"the former employer"** (legal, NMLS 2653540). Update the SKILL.md `Business name` line.
 
 ---
 

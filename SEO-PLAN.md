@@ -60,7 +60,7 @@ Reference `dscr-loan-austin-tx.html` lines 1–200 for `<head>`. Reference any d
 - Phone: (512) 956-6010 / `+15129566010`
 - Email: Adam@thestyerteam.com
 - Business name: Adam Styer | Mortgage Solutions LP
-- Apply: https://mslp.my1003app.com/513013/register
+- Apply: https://styermortgage.com/contact.html
 - Calendly: https://calendly.com/adamstyer/15minutes
 - Address (canonical): 5718 Sam Houston Circle, Austin, TX 78731
 - AggregateRating: 5.0, 136 reviews
@@ -98,7 +98,7 @@ Reference `dscr-loan-austin-tx.html` lines 1–200 for `<head>`. Reference any d
   <li><a href="/rate-check.html">Rate Check</a></li>
   <li class="nav-has-dropdown"><a href="/realtors.html">For Realtors</a><ul class="nav-dropdown"><li><a href="/realtor-resources">Realtor Blog</a></li></ul></li>
   <li><a href="/contact.html">Contact</a></li>
-  <li><a href="https://mslp.my1003app.com/513013/register" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
+  <li><a href="https://styermortgage.com/contact.html" class="nav-cta" target="_blank" rel="noopener">Apply Now</a></li>
 </ul>
 ```
 

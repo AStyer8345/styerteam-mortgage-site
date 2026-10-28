@@ -16,7 +16,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Adam Styer, Austin mortgage broker: mortgages built for complex income">
-  <meta property="og:site_name" content="Adam Styer | HyperSmart Home Loans">
+  <meta property="og:site_name" content="Adam Styer | the former employer">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -136,7 +136,7 @@
     "@context": "https://schema.org",
     "@type": "FinancialService",
     "@id": "https://styermortgage.com/#business",
-    "name": "Adam Styer | HyperSmart Home Loans",
+    "name": "Adam Styer | the former employer",
     "image": "https://styermortgage.com/assets/logo.svg",
     "description": "Austin mortgage broker specializing in self-employed, investor, and complex-income financing, with options for traditional home purchases and refinancing. Specialist in bank statement loans, DSCR, asset depletion, P&L, 1099, jumbo, non-QM, and one-time-close construction mortgages. NMLS #513013.",
     "address": {
@@ -306,8 +306,8 @@
     "worksFor": {
       "@type": "FinancialService",
       "@id": "https://styermortgage.com/#business",
-      "name": "Adam Styer | HyperSmart Home Loans",
-      "legalName": "Kyber Mortgage Corporation dba HyperSmart Home Loans",
+      "name": "Adam Styer | the former employer",
+      "legalName": "the former employer",
       "url": "https://styermortgage.com"
     },
     "address": {
@@ -402,7 +402,7 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <img src="/assets/logo-light.svg" alt="Adam Styer | HyperSmart Home Loans" class="nav-logo-img" width="180" height="40">
+          <img src="/assets/logo-light.svg" alt="Adam Styer | the former employer" class="nav-logo-img" width="180" height="40">
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -418,7 +418,7 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
           <li class="nav-has-dropdown"><a href="/referral-partners-self-employed-clients.html">For Partners</a><ul class="nav-dropdown"><li><a href="/realtors.html">For Realtors</a></li><li><a href="/mortgage-resources-for-cpas-texas.html">For CPAs</a></li><li><a href="/mortgage-strategies-financial-advisors-texas.html">For Financial Advisors</a></li><li><a href="/mortgage-case-studies-for-advisors-cpas.html">Partner Case Studies</a></li></ul></li>
           <li class="nav-has-dropdown"><a href="/about.html">About Adam</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam</a></li><li><a href="/testimonials.html">Client Reviews</a></li><li><a href="/contact.html">Contact Adam</a></li></ul></li>
           <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="#contact-form" class="nav-cta">See My Options</a></li>
-          <li><a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now — opens the secure application portal">Apply Now</a></li>
+          <li><a href="https://styermortgage.com/contact.html" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>
         </ul>
       </nav>
     </div>
@@ -775,7 +775,7 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
     </section>
 
     <!-- ABOUT ADAM PREVIEW -->
-<section id="about-adam" class="about-adam-photo"><div class="container about-adam-grid"><figure class="about-adam-figure"><div class="about-adam-portrait"><img src="/assets/adam-casual-cutout.webp" width="900" height="854" loading="lazy" decoding="async" alt="Adam Styer, Senior Loan Officer in Austin, Texas"></div><img class="about-adam-family" src="/assets/family.webp" width="600" height="800" loading="lazy" decoding="async" alt="Adam with his wife and kids on a Hill Country hike"></figure><div><h2>Meet Adam Styer</h2><p>Adam is an Austin mortgage broker with HyperSmart Home Loans, serving borrowers across Texas. He compares income documentation, financing structure and lender options for business owners, investors and borrowers with substantial assets.</p><p>Husband, dad of three, and an Austinite for 16+ years. Faith, family, fitness and finance drive everything he does.</p><p><a href="/about.html">Meet Adam</a> · <a href="/scenarios.html">Read real scenario reviews</a> · <a href="/realtors.html">Realtor partners</a></p></div></div></section>
+<section id="about-adam" class="about-adam-photo"><div class="container about-adam-grid"><figure class="about-adam-figure"><div class="about-adam-portrait"><img src="/assets/adam-casual-cutout.webp" width="900" height="854" loading="lazy" decoding="async" alt="Adam Styer, Senior Loan Officer in Austin, Texas"></div><img class="about-adam-family" src="/assets/family.webp" width="600" height="800" loading="lazy" decoding="async" alt="Adam with his wife and kids on a Hill Country hike"></figure><div><h2>Meet Adam Styer</h2><p>Adam is an Austin mortgage broker with the former employer, serving borrowers across Texas. He compares income documentation, financing structure and lender options for business owners, investors and borrowers with substantial assets.</p><p>Husband, dad of three, and an Austinite for 16+ years. Faith, family, fitness and finance drive everything he does.</p><p><a href="/about.html">Meet Adam</a> · <a href="/scenarios.html">Read real scenario reviews</a> · <a href="/realtors.html">Realtor partners</a></p></div></div></section>
 
     <!-- FOR REALTORS -->
 
@@ -825,7 +825,7 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
         </p>
         <div id="quick-scenario-form" class="quick-contact-actions" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
           <a href="#contact-form" class="btn btn-primary btn-lg" data-track="scenario_review_click" data-source="homepage_footer">See My Options</a>
-          <a href="https://hypersmart.my1003app.com/513013/register?time=1779291829279" class="btn btn-outline btn-lg" data-track="apply_click" data-source="homepage_footer">Apply Now</a>
+          <a href="https://styermortgage.com/contact.html" class="btn btn-outline btn-lg" data-track="apply_click" data-source="homepage_footer">Apply Now</a>
         </div>
         <p class="text-sm mt-md">Prefer to talk? Call or text <a href="tel:+15129566010">(512) 956-6010</a>.</p>
       </div>
@@ -893,7 +893,7 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
           <li><a href="/get-preapproved.html?intent=scenario">See my options</a></li>
           <li><a href="/get-preapproved.html">Get pre-approved</a></li>
           <li><a href="/prequal.html">Pre-qualification</a></li>
-          <li><a href="https://hypersmart.my1003app.com/513013/register" rel="noopener">Secure application</a></li>
+          <li><a href="https://styermortgage.com/contact.html" rel="noopener">Secure application</a></li>
           <li><a href="https://calendly.com/adamstyer/15minutes" target="_blank" rel="noopener">Book a call</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
@@ -910,7 +910,7 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
       </div>
       <div class="site-footer-col site-footer-contact">
         <h2>Contact</h2>
-        <p class="site-footer-name">Adam Styer | HyperSmart Home Loans</p>
+        <p class="site-footer-name">Adam Styer | the former employer</p>
         <p><a href="tel:+15129566010">(512) 956-6010</a><br><a href="sms:+15129566010">Text (512) 956-6010</a><br><a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a></p>
         <p>9050 N. Capital of Texas Hwy, Ste 390<br>Austin, Texas 78759</p>
         <p class="site-footer-hours">Monday to Friday 8:00 AM to 6:00 PM<br>Saturday 9:00 AM to 3:00 PM</p>
@@ -920,8 +920,8 @@ body.home-pilot main .hero-col-authority>.home-conversation-contact{margin-top:.
     <p class="site-footer-proof"><a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener">5.0 on Google</a> · <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener">4.98 on Zillow</a> · <a href="/testimonials.html">144 published reviews</a> · Licensed in Texas · NMLS #513013</p>
     <p class="site-footer-areas"><strong>Serving Central Texas:</strong> <a href="/austin-area-mortgage-lender.html">Austin</a> · <a href="/round-rock-mortgage-lender.html">Round Rock</a> · <a href="/cedar-park-mortgage-lender.html">Cedar Park</a> · <a href="/leander-mortgage-lender.html">Leander</a> · <a href="/georgetown-mortgage-lender.html">Georgetown</a> · <a href="/pflugerville-mortgage-lender.html">Pflugerville</a> · <a href="/kyle-mortgage-lender.html">Kyle</a> · <a href="/buda-mortgage-lender.html">Buda</a> · <a href="/san-marcos-mortgage-lender.html">San Marcos</a> · <a href="/westlake-mortgage-lender.html">Westlake</a> · <a href="/lakeway-mortgage-lender.html">Lakeway</a> · <a href="/bee-cave-mortgage-lender.html">Bee Cave</a> · <a href="/dripping-springs-mortgage-lender.html">Dripping Springs</a> · <a href="/spicewood-mortgage-lender.html">Spicewood</a> · <a href="/marble-falls-mortgage-lender.html">Marble Falls</a> · <a href="/hutto-mortgage-lender.html">Hutto</a> · <a href="/taylor-mortgage-lender.html">Taylor</a> · <a href="/manor-mortgage-lender.html">Manor</a> · <a href="/elgin-mortgage-lender.html">Elgin</a> · <a href="/bastrop-mortgage-lender.html">Bastrop</a> · <a href="/smithville-mortgage-lender.html">Smithville</a> · <a href="/liberty-hill-mortgage-lender.html">Liberty Hill</a> · <a href="/jarrell-mortgage-lender.html">Jarrell</a> · <a href="/florence-mortgage-lender.html">Florence</a> · <a href="/new-braunfels-mortgage-lender.html">New Braunfels</a></p>
     <div class="site-footer-legal">
-      <p>&copy; 2026 Kyber Mortgage Corporation dba HyperSmart Home Loans. All rights reserved. <strong>NMLS#:</strong> 2653540 (Company) | 513013 (Adam Styer) | <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2653540" target="_blank" rel="noopener">NMLS Consumer Access</a> | <a href="/texas-complaint-notice.html">Texas Complaint Notice</a> | <a href="/privacy.html">Privacy</a> | <a href="/terms.html">Terms</a></p>
-      <p>Kyber Mortgage Corporation dba HyperSmart Home Loans is a Licensed Mortgage Broker in Texas. Kyber Mortgage Corporation dba HyperSmart Home Loans, NMLS ID 2653540. Adam Styer, NMLS #513013. Principal address 9050 N. Capital of Texas Hwy, Ste 390, Austin, Texas 78759. This is not an offer for extension of credit or commitment to lend. All loans must satisfy underwriting guidelines. Not all applicants qualify. Information and pricing are subject to change at any time and without notice. Products not available in all areas. Equal Housing Lender.</p>
+      <p>&copy; 2026 the former employer. All rights reserved. <strong>NMLS#:</strong> 2653540 (Company) | 513013 (Adam Styer) | <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2653540" target="_blank" rel="noopener">NMLS Consumer Access</a> | <a href="/texas-complaint-notice.html">Texas Complaint Notice</a> | <a href="/privacy.html">Privacy</a> | <a href="/terms.html">Terms</a></p>
+      <p>the former employer is a Licensed Mortgage Broker in Texas. the former employer, NMLS ID 2653540. Adam Styer, NMLS #513013. Principal address 9050 N. Capital of Texas Hwy, Ste 390, Austin, Texas 78759. This is not an offer for extension of credit or commitment to lend. All loans must satisfy underwriting guidelines. Not all applicants qualify. Information and pricing are subject to change at any time and without notice. Products not available in all areas. Equal Housing Lender.</p>
       <p>&#x2302; <strong>Equal Housing Opportunity</strong> &mdash; We are pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity throughout the Nation.</p>
     </div>
   </div>

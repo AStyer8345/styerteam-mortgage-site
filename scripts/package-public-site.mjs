@@ -45,3 +45,4 @@ for (const file of files) {
   fs.copyFileSync(path.join(root, file), output);
 }
 console.log(`Packaged ${files.length} public website files. Functions, source, reports and metadata excluded.`);
+await import('./optimize-homepage.mjs');

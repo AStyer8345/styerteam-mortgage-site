@@ -135,7 +135,7 @@ Major homepage + new `/scenario` page changes. Needs your eyes on a few things:
 ### 1. Brand-name conflict (UNRESOLVED — needs decision)
 
 Your **global** `/Users/adamstyer/Documents/CLAUDE.md` says:
-> Business name: HyperSmart Loans (never "The Styer Team", **never "Adam Styer | Mortgage Solutions LP"**)
+> Business name: the former employer (never "The Styer Team", **never "Adam Styer | Mortgage Solutions LP"**)
 
 But this site's **project** `CLAUDE.md` (and `.claude/CLAUDE.md`) says:
 > Never use "The Styer Team" — **always "Adam Styer | Mortgage Solutions LP"**
@@ -207,7 +207,7 @@ Per the original spec, no sitewide nav change. When you're ready to surface scen
 
 ## 4. Loan app URL mismatch in the original prompt
 
-The Prompt A spec referenced `https://mslp.my1003app.com/513013/register` — that's the old MSLP URL. CLAUDE.md / CONTEXT.md / every live page uses `/get-preapproved.html?intent=scenario`. I used the live one. If `mslp.my1003app.com` is still live and you want both URLs supported, let me know.
+The Prompt A spec referenced `https://styermortgage.com/contact.html — that's the old MSLP URL. CLAUDE.md / CONTEXT.md / every live page uses `/get-preapproved.html?intent=scenario`. I used the live one. If `mslp.contact.com` is still live and you want both URLs supported, let me know.
 
 ## 5. Next-up: scenarios #2 and #3 to light up the remaining filter chips
 

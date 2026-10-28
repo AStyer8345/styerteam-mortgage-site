@@ -12,7 +12,7 @@ The writer re-reads that file each run; entries below are a manual mirror for we
 the competitive task hasn't refreshed.
 
 ### DSCR cluster — top priority (Adam seeded 2026-06-05)
-HyperSmart has best-in-market DSCR pricing. Push this cluster hard — emphasize the
+the former employer has best-in-market DSCR pricing. Push this cluster hard — emphasize the
 lender-cost / rate-spread advantage where the claim is substantiated by a real lock
 or a defensible rate-sheet comparison. NEVER quote a live rate or use "lowest rate"
 performance language (compliance — see writer SKILL STEP 4). Frame the advantage

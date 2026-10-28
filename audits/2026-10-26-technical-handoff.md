@@ -48,7 +48,7 @@ CSS consolidation, technical accessibility fixes, performance remediation, schem
 3. Address the legacy `/loanos.html` utility-page overflow and recheck responsive behavior after the final design.
 4. Reduce render-blocking CSS and re-measure performance on a hosted preview. The hero preload alone does not establish a production Core Web Vitals improvement.
 5. Reconcile the existing build/sync-check drift without mass-overwriting the redesign. Rerun packaging, mocked form delivery, navigation, structured-data and regression checks before release.
-6. Implement verified affiliation, licensing, application and routing details when supplied. The current mixed GoRascal/HyperSmart source is unresolved; do not infer replacement legal facts.
+6. Implement verified affiliation, licensing, application and routing details when supplied. The current mixed GoRascal/the former employer source is unresolved; do not infer replacement legal facts.
 
 ## Decisions requiring Adam's input before release
 

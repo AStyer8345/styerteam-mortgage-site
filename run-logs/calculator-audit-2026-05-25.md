@@ -12,8 +12,8 @@
 **Week 5 — same 5 P0 issues from 2026-04-20 still UNFIXED. Now live 35 days.** The patch file `patches/calculator-2026-04-20-P0.diff` is still on disk, still applies cleanly to today's source, still covers every P0 surfaced here.
 
 **Calc-file activity since 2026-05-18 audit (text-only — no math, a11y, or form changes):**
-- `c427b15` (2026-05-20) — Sitewide compliance entity rebrand (Mortgage Solutions LP → Kyber Mortgage Corporation dba HyperSmart Home Loans, NMLS 2526130 → 2653540, address swap). Touched all 7 calc files for footer/disclosure copy only. **Line numbers shifted slightly on rate-buydown-calculator.html — P0-A is now lines 1032-1033 (was 1035-1036). Patch still applies by text match.**
-- `efd26fe` — loan app URL swap (mslp → hypersmart subdomain)
+- `c427b15` (2026-05-20) — Sitewide compliance entity rebrand (Mortgage Solutions LP → the former employer, NMLS 2526130 → 2653540, address swap). Touched all 7 calc files for footer/disclosure copy only. **Line numbers shifted slightly on rate-buydown-calculator.html — P0-A is now lines 1032-1033 (was 1035-1036). Patch still applies by text match.**
+- `efd26fe` — loan app URL swap (mslp → the former employer subdomain)
 - `6e27eb5` — nav consolidation (8 items → 5)
 - `71b8590` — sitewide hero cleanup
 
@@ -105,7 +105,7 @@ Disclosure on the page does not mention the 5% down assumption. User sees a "max
 | ID | Issue | File(s) | State |
 |---|---|---|---|
 | P2-A | `/get-preapproved.html` legacy href (affordability already canonicalized) | calculator-payment.html:102, calculator-refinance-breakeven.html:108 | unchanged |
-| P2-B | Stripped footer omits HyperSmart brand line (now needs Kyber legal entity line post-2026-05-20 rebrand) | the 3 small calc pages | unchanged — and **NEW URGENCY** post compliance rebrand |
+| P2-B | Stripped footer omits the former employer brand line (now needs the former company legal entity line post-2026-05-20 rebrand) | the 3 small calc pages | unchanged — and **NEW URGENCY** post compliance rebrand |
 | P2-C | Buydown frequency label vs radio mismatch | rate-buydown-calculator.html | implicitly fixed by P0-A patch |
 | P2-D | WRAP — no validation against negative-am inputs | wrap-mortgage-calculator.html | unchanged |
 | P2-E | Refi closing-cost — Lender's Title Policy default ($2,119) unexplained (TX TDI-regulated) | refinance-calculator.html:544 | unchanged |
@@ -119,7 +119,7 @@ calculator-refinance-breakeven.html:108:          <a href="/get-preapproved.html
 calculator-affordability.html: canonical /get-preapproved (no .html)
 ```
 
-**P2-B note added this audit:** Per `CLAUDE.md` post-2026-05-20 entity rebrand, every footer/disclaimer surface now needs "Kyber Mortgage Corporation dba HyperSmart Home Loans, NMLS 2653540, Adam NMLS #513013, 9050 N. Capital of Texas Hwy, Ste 390, Austin TX 78759". The 3 stripped-footer calc pages currently omit this. Likely a compliance audit finding when the new company reviews the site. **Recommend bundling P2-B fix with the P0 patch run for the same 15-min session.**
+**P2-B note added this audit:** Per `CLAUDE.md` post-2026-05-20 entity rebrand, every footer/disclaimer surface now needs "the former employer, NMLS 2653540, Adam NMLS #513013, 9050 N. Capital of Texas Hwy, Ste 390, Austin TX 78759". The 3 stripped-footer calc pages currently omit this. Likely a compliance audit finding when the new company reviews the site. **Recommend bundling P2-B fix with the P0 patch run for the same 15-min session.**
 
 ---
 
@@ -192,8 +192,8 @@ No new runtime issues observed.
 **No calculator math, accessibility, or form code was modified between 2026-05-18 and 2026-05-25.**
 
 Wider site commits this week:
-- `c427b15` Compliance: full Kyber/HyperSmart entity rebrand sitewide (180 files)
-- `efd26fe` Loan application URL: mslp → hypersmart subdomain
+- `c427b15` Compliance: full the former company/the former employer entity rebrand sitewide (180 files)
+- `efd26fe` Loan application URL: mslp → the former employer subdomain
 - `6e27eb5` Nav: 8 items → 5 (dropdown consolidation)
 - `71b8590` Sitewide hero cleanup
 - Various Monday daily-site rotation commits (suburb meta trims, etc.)
@@ -219,7 +219,7 @@ Wider site commits this week:
 
 5th consecutive Monday. Patch on disk. Reviewed in 4 prior audits.
 
-1. **Apply `patches/calculator-2026-04-20-P0.diff`** — 15 min. Order: P0-A (2 lines) → P0-B (2 lines) → P0-E (move 1 script tag) → P0-D (14 id/for pairs) → P0-C (regress-test 4 pages after). **Apply P2-B in the same session** — add the canonical Kyber/HyperSmart compliance footer line to the 3 stripped-footer calc pages. ~3 extra minutes. Bundles the calc-page compliance fix in with the math fix.
+1. **Apply `patches/calculator-2026-04-20-P0.diff`** — 15 min. Order: P0-A (2 lines) → P0-B (2 lines) → P0-E (move 1 script tag) → P0-D (14 id/for pairs) → P0-C (regress-test 4 pages after). **Apply P2-B in the same session** — add the canonical the former company/the former employer compliance footer line to the 3 stripped-footer calc pages. ~3 extra minutes. Bundles the calc-page compliance fix in with the math fix.
 2. **Decide P1-A inline lead capture** — disproportionately costly post-pivot. Add income-type field (W-2 / 1099 / self-employed / asset-based) to route inbound to the right Adam template.
 3. **P2-A** — 2-line `/get-preapproved.html` → `/get-preapproved` href fix.
 

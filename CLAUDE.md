@@ -1,3 +1,5 @@
+> October 26, 2026: The former employer affiliation, company license, office, email, and application portal are retired. Public brand is The Styer Team · Powered by GoRascal. Route application requests to https://styermortgage.com/contact.html. This instruction supersedes older company branding instructions below.
+
 Read /Users/adamstyer/Documents/GOALS.md before starting any session. Interactive sessions must serve current goals — if your task conflicts, log it to TODO.md under NEEDS ADAM and stop. Automated/scheduled tasks continue unless GOALS.md explicitly pauses them.
 
 # styermortgage.com — Claude Code Instructions
@@ -41,8 +43,8 @@ Top-of-hierarchy reads:
 - Company NMLS: 2072896 (was 2526130 under prior entity)
 - Adam's personal NMLS: 513013 (unchanged)
 - Corp address: 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731
-- Corp phone: (877) 876-3956 | Adam's direct: (512) 956-6010
-- Corp licensing email: licensing@hypersmart.loan | Adam's direct: adam@thestyerteam.com
+- Adam's direct phone: (512) 956-6010
+- Public email: adam@thestyerteam.com
 - Never display raw loan application URL — use anchor text
 - Run blog title lint before publish: `grep "<title>" blog/*.html | grep -v "Adam Styer"`
 - New blog posts must be added to `blog.html` noscript block + CollectionPage schema

@@ -99,7 +99,7 @@ export default async function handler(request: Request, context: Context): Promi
   if (/\b(?:text|email|schedule|book|calendly|apply|application|contact|pre[- ]?approv(?:e|ed|al)?|scenario)\b|\bshort review\b|\breview (?:my|this|the) (?:file|situation|scenario)\b|\bsend (?:this|it) to adam\b/i.test(message)) {
     const resources = conversionResources(salesState.stage, message);
     if (resources.length) {
-      const fullApplication = resources.some((resource) => resource.url.includes('my1003app.com'));
+      const fullApplication = resources.some((resource) => resource.url === 'https://styermortgage.com/contact.html');
       const answer = /\btext\b/i.test(message)
         ? 'You can text Adam directly at (512) 956-6010. You can also email adam@thestyerteam.com, schedule a 15-minute call, or send the short pre-approval and scenario form below.'
         : /\bemail\b/i.test(message)
@@ -107,7 +107,7 @@ export default async function handler(request: Request, context: Context): Promi
           : /\b(?:schedule|book|calendly|call)\b/i.test(message)
             ? 'Absolutely—you can choose a convenient time on Adam’s calendar below. You can also call or text him at (512) 956-6010.'
             : fullApplication
-              ? 'When you are ready to complete the full application, use the secure HyperSmart portal below. If you would rather talk first, text Adam at (512) 956-6010 or email adam@thestyerteam.com.'
+              ? 'Contact Adam to arrange the current secure application. You can call or text (512) 956-6010 or email adam@thestyerteam.com. The contact form is for inquiries; please leave sensitive financial information out of it.'
               : 'Use the short pre-approval and scenario form below to give Adam your contact information and the details he should review. You do not need to complete the full application first.';
       await recordTurn(conversationId, correlationId, session.id, message, answer, [], { direct_conversion_option: true }, undefined, sequenceStart, sourcePage);
       return json({ conversationId, message: answer, sources: [], resources, salesState }, 200, headers);
