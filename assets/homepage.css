@@ -784,6 +784,7 @@ body.advisory-site main :is(.bg-navy,.bg-dark,.cta-spotlight) :is(p,p.text-lg,.t
 .advisory-site main :is(.bg-light,.bg-gray,.bg-muted,[class*="bg-slate"]){background:var(--advisory-paper)!important}
 .advisory-site main :is(.dscr-cta-block,.testimonial--featured){background-image:none!important}
 /* Typography 2026-09-18: one serif (self-hosted Source Serif 4, regular weight), Inter for UI, one scale, 68ch measure. */
+@font-face{font-family:Inter;font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/inter-normal-6.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/source-serif-4-roman-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/source-serif-4-roman-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/source-serif-4-italic-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -1334,27 +1335,7 @@ body.private-wealth-editorial main .hero.pwe-hero,
 .pwe-hero {
   position: relative;
   background-color: #142330 !important;
-  background-image:
-    linear-gradient(96deg, rgba(16, 32, 46, 0.68) 0%, rgba(16, 32, 46, 0.44) 42%, rgba(16, 32, 46, 0.16) 72%, rgba(16, 32, 46, 0.36) 100%),
-    linear-gradient(180deg, rgba(16, 32, 46, 0.18) 0%, rgba(16, 32, 46, 0.04) 55%, rgba(16, 32, 46, 0.60) 100%),
-    url('/assets/austin-skyline-hero.webp') !important;
-  background-size: cover !important;
-
-@supports (background-image: image-set(url('/assets/austin-skyline-hero.avif') type('image/avif'))) {
-  body.private-wealth-editorial main .hero.pwe-hero,
-  .pwe-hero {
-    background-image:
-      linear-gradient(96deg, rgba(16, 32, 46, 0.68) 0%, rgba(16, 32, 46, 0.44) 42%, rgba(16, 32, 46, 0.16) 72%, rgba(16, 32, 46, 0.36) 100%),
-      linear-gradient(180deg, rgba(16, 32, 46, 0.18) 0%, rgba(16, 32, 46, 0.04) 55%, rgba(16, 32, 46, 0.60) 100%),
-      image-set(
-        url('/assets/austin-skyline-hero.avif') type('image/avif'),
-        url('/assets/austin-skyline-hero.webp') type('image/webp')
-      ) !important;
-  }
-}
-
-  background-position: center 46% !important;
-  background-repeat: no-repeat !important;
+  background-image: none !important;
   color: var(--pwe-alabaster) !important;
   padding: clamp(28px, 3.5vw, 48px) 0 0 !important;
   border-bottom: 1px solid var(--pwe-rule-dark);
@@ -1364,12 +1345,39 @@ body.private-wealth-editorial main .hero.pwe-hero,
 }
 
 body.private-wealth-editorial main .hero.pwe-hero::before,
-body.private-wealth-editorial main .hero.pwe-hero::after,
-.pwe-hero::before,
-.pwe-hero::after {
+.pwe-hero::before {
   display: none !important;
   content: none !important;
   background: none !important;
+}
+
+.pwe-hero-skyline,
+.pwe-hero-skyline img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+  z-index: 0;
+}
+
+.pwe-hero::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(96deg, rgba(16, 32, 46, 0.68) 0%, rgba(16, 32, 46, 0.44) 42%, rgba(16, 32, 46, 0.16) 72%, rgba(16, 32, 46, 0.36) 100%),
+    linear-gradient(180deg, rgba(16, 32, 46, 0.18) 0%, rgba(16, 32, 46, 0.04) 55%, rgba(16, 32, 46, 0.60) 100%) !important;
+}
+
+.pwe-hero > .container,
+.pwe-hero > .pwe-ledger-bar {
+  position: relative;
+  z-index: 2;
 }
 
 .pwe-hero-grid {

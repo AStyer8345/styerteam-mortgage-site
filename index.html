@@ -46,23 +46,353 @@
     }
   }
   </script>
-<!-- Fonts -->
-<link rel="preload" href="/assets/fonts/inter-normal-6.woff2" as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href="/assets/fonts/source-serif-4-roman-latin.woff2" as="font" type="font/woff2" crossorigin/>
-<style>body{margin:0}.pwe-hero{background:#102033 url("/assets/austin-skyline-hero.webp") center/cover no-repeat}@supports (background-image:image-set(url("/assets/austin-skyline-hero.avif") type("image/avif"))){.pwe-hero{background-image:image-set(url("/assets/austin-skyline-hero.avif") type("image/avif"),url("/assets/austin-skyline-hero.webp") type("image/webp"))}}</style>
 <link rel="preload" href="/assets/austin-skyline-hero.avif" as="image" type="image/avif" fetchpriority="high"/>
 <style>
-@font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/inter-normal-6.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:Inter;font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/inter-normal-6.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/source-serif-4-roman-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/source-serif-4-600-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+body{margin:0}
+:root{--pwe-serif:'Source Serif 4',Georgia,'Times New Roman',serif;--pwe-alabaster:#f6f4ef}
+header nav{min-height:80px}
+body.private-wealth-editorial main .hero.pwe-hero,
+.pwe-hero {
+  position: relative;
+  background-color: #142330 !important;
+  background-image: none !important;
+  color: var(--pwe-alabaster) !important;
+  padding: clamp(28px, 3.5vw, 48px) 0 0 !important;
+  border-bottom: 1px solid var(--pwe-rule-dark);
+  overflow: hidden;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+body.private-wealth-editorial main .hero.pwe-hero::before,
+body.private-wealth-editorial main .hero.pwe-hero::after,
+.pwe-hero::before,
+.pwe-hero::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
+.pwe-hero-skyline,
+.pwe-hero-skyline img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+  z-index: 0;
+}
+
+.pwe-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(96deg, rgba(16, 32, 46, 0.68) 0%, rgba(16, 32, 46, 0.44) 42%, rgba(16, 32, 46, 0.16) 72%, rgba(16, 32, 46, 0.36) 100%),
+    linear-gradient(180deg, rgba(16, 32, 46, 0.18) 0%, rgba(16, 32, 46, 0.04) 55%, rgba(16, 32, 46, 0.60) 100%);
+}
+
+.pwe-hero > .container,
+.pwe-hero > .pwe-ledger-bar {
+  position: relative;
+  z-index: 2;
+}
+
+.pwe-hero-grid {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+  padding-bottom: clamp(28px, 3.5vw, 44px);
+}
+
+.pwe-hero-editorial {
+  max-width: 720px;
+}
+
+.pwe-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-bottom: 28px;
+}
+
+.pwe-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(246, 244, 239, 0.94);
+  text-decoration: none;
+  padding: 7px 14px;
+  border: 1px solid rgba(245, 196, 67, 0.42);
+  background: rgba(8, 16, 23, 0.68);
+  backdrop-filter: blur(8px);
+}
+
+.pwe-hero-badge strong {
+  color: #F5C443;
+  font-weight: 700;
+}
+
+.pwe-hero-badge:hover {
+  border-color: #F5C443;
+  color: #FFFFFF;
+}
+
+.pwe-hero h1 {
+  font-family: var(--pwe-serif) !important;
+  font-size: clamp(44px, 5.6vw, 82px) !important;
+  font-weight: 400 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--pwe-alabaster) !important;
+  margin: 0 0 28px !important;
+  max-width: 14ch !important;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.45) !important;
+}
+
+.pwe-hero h1 em,
+.pwe-hero h1 .modern-hero-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: #F5C443 !important;
+}
+
+.pwe-hero-lead {
+  font-family: var(--pwe-sans);
+  font-size: clamp(18px, 1.35vw, 21px) !important;
+  line-height: 1.6 !important;
+  color: rgba(246, 244, 239, 0.90) !important;
+  max-width: 54ch !important;
+  margin: 0 0 36px !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+}
+
+.pwe-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 32px;
+  margin-bottom: 36px;
+}
+
+.pwe-hero-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(246, 244, 239, 0.22);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(246, 244, 239, 0.76);
+}
+
+/* Hero Architectural Portrait Column (Translucent over Full-Bleed Skyline) */
+.pwe-hero-visual {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-self: stretch;
+}
+
+.pwe-hero-frame {
+  position: relative;
+  background: transparent !important; /* Tint completely removed */
+  border: 1px solid rgba(246, 244, 239, 0.20);
+  border-radius: 4px;
+  padding: 32px 32px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 420px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.20);
+}
+
+.pwe-hero-frame::before {
+  display: none !important;
+  content: none !important;
+}
+
+.pwe-hero-frame picture,
+.pwe-hero-frame img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  max-width: 320px; /* Zoomed out so Adam has natural breathing room */
+  height: auto;
+  max-height: 380px;
+  margin-inline: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.28));
+  transform: scale(0.96);
+}
+
+.pwe-hero-caption {
+  position: relative;
+  z-index: 3;
+  margin: 0 -32px;
+  padding: 16px 28px;
+  background: rgba(14, 28, 38, 0.88);
+  border-top: 1px solid rgba(246, 244, 239, 0.18);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pwe-hero-caption strong {
+  font-family: var(--pwe-serif);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--pwe-alabaster);
+}
+
+.pwe-hero-caption span {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F5C443;
+}
+
+/* Institutional Metrics Ledger Bar (Bottom of Hero — Gold Count-Up & 5-Star Sequence) */
+.pwe-ledger-bar {
+  border-top: 1px solid rgba(245, 196, 67, 0.28);
+  background: rgba(8, 16, 23, 0.82);
+  backdrop-filter: blur(12px);
+}
+
+.pwe-ledger-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pwe-ledger-cell {
+  padding: 26px 20px !important;
+  border-right: 1px solid rgba(246, 244, 239, 0.16);
+  text-decoration: none !important;
+  color: var(--pwe-alabaster) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  justify-content: center !important;
+  gap: 8px;
+}
+
+.pwe-ledger-cell:not(:first-child) {
+  padding-left: 20px !important;
+}
+
+.pwe-ledger-cell:last-child {
+  border-right: 0;
+  padding-right: 20px !important;
+}
+
+.pwe-ledger-stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.pwe-ledger-num,
+.pwe-gold-stat {
+  font-family: var(--pwe-serif);
+  font-size: clamp(30px, 2.8vw, 42px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: #F5C443 !important;
+  text-shadow: 0 2px 18px rgba(245, 196, 67, 0.28);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* 5-Star Sequential Illumination (1 -> 2 -> 3 -> 4 -> 5) */
+.pwe-star-sequence {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.pwe-seq-star {
+  fill: #F5C443;
+  opacity: 1;
+  transform: scale(1);
+  filter: drop-shadow(0 0 5px rgba(245, 196, 67, 0.38));
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), fill 180ms ease, opacity 180ms ease, filter 220ms ease;
+}
+
+.pwe-seq-star.is-lit {
+  fill: #F5C443;
+  opacity: 1;
+  transform: scale(1);
+  filter: drop-shadow(0 0 6px rgba(245, 196, 67, 0.52));
+}
+
+.pwe-seq-star.is-popping {
+  transform: scale(1.28);
+  filter: drop-shadow(0 0 10px rgba(245, 196, 67, 0.85));
+}
+
+.pwe-verified-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #F5C443;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.pwe-ledger-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(246, 244, 239, 0.88);
+  width: 100%;
+}
+
+a.pwe-ledger-cell:hover .pwe-ledger-label {
+  color: #F5C443;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 680px) {
+  body.private-wealth-editorial main .hero.pwe-hero { padding-top: 36px !important; min-height: 1606px !important; }
+  body.private-wealth-editorial .pwe-hero h1 { font-size: clamp(34px, 9.5vw, 46px) !important; }
+  body.private-wealth-editorial .pwe-hero-actions { flex-direction: column !important; align-items: stretch !important; }
+  body.private-wealth-editorial .pwe-hero-actions .pwe-btn-primary { width: 100% !important; }
+  body.private-wealth-editorial .pwe-hero-frame { min-height: 340px !important; padding: 20px 16px 0 !important; }
+  body.private-wealth-editorial .pwe-hero-caption { margin: 0 -16px !important; padding: 14px 16px !important; flex-direction: column !important; gap: 4px !important; }
+  body.private-wealth-editorial .pwe-ledger-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  body.private-wealth-editorial .pwe-ledger-cell { padding: 20px 12px !important; border-bottom: 1px solid rgba(246,244,239,.16) !important; }
+  body.private-wealth-editorial .pwe-ledger-cell:nth-child(2n) { border-right: 0 !important; padding-left: 12px !important; padding-right: 12px !important; }
+  body.private-wealth-editorial main .hero.pwe-hero > .container { width: calc(100% - 40px) !important; margin-inline: auto !important; padding-inline: 0 !important; }
+  body.private-wealth-editorial .pwe-hero-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 44px !important; }
+}
+
 </style>
-<!-- Critical CSS — inlined for instant first paint (hero + header + nav) -->
-<!-- Full stylesheet — loads async, applies after critical CSS is already painted -->
-<link rel="preload" href="/assets/homepage.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript><link href="/assets/homepage.css" rel="stylesheet"/></noscript>
-<link as="style" href="style.css?v=20260830-reviews1" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="style.css?v=20260830-reviews1" rel="stylesheet"/></noscript>
+<!-- Fonts are declared in the main stylesheet with font-display: swap, so they do not queue ahead of the hero image. -->
+<link href="/assets/homepage.css" rel="stylesheet"/>
+<link href="style.css?v=20260830-reviews1" rel="stylesheet"/>
 <!-- Schema.org LocalBusiness -->
 <script type="application/ld+json">
   {
@@ -221,22 +551,14 @@
     // Fire on first user interaction OR after idle, whichever comes first.
     var events = ['scroll','mousemove','touchstart','keydown','click'];
     events.forEach(function(ev){ window.addEventListener(ev, loadGTM, { once:true, passive:true }); });
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(loadGTM, { timeout: 3500 });
-    } else {
-      setTimeout(loadGTM, 3500);
-    }
+    window.addEventListener('load', function () { setTimeout(loadGTM, 5000); }, { once: true });
   })();
   </script>
 <!-- End Google Tag Manager -->
 <!-- Homepage surface tuning: deepen the light bands so the page isn't a white wash,
        and give white cards a real edge so they read as distinct surfaces.
        Scoped to the homepage; double-class selectors win over the async global sheet. -->
-<script defer="" src="/advisory-contact.js?v=20260918"></script>
-<script defer="" src="/calculator-suite.js"></script>
-<script defer="" src="/premium-homepage.js?v=20261027-cta"></script>
-
-<script defer="" src="/blueprint-interactions.js"></script>
+<!-- Non-critical scripts load after the page load event, on idle or the first interaction. -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can self-employed business owners get a mortgage without tax returns in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If you are self-employed in Austin, I can look at 12 or 24 months of bank statements, a 1099-only program, a P&L your CPA prepares, or assets you already have. These are non-QM loans. They start from the money the business brings in, not the income left after write-offs. On the strongest bank-statement purchases, the loan can go to 90% of the value, and the minimum credit score is usually 620 to 660."}}, {"@type": "Question", "name": "What is a DSCR loan and who qualifies in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "A DSCR loan is for a rental. I qualify it on the rent, not your paycheck or tax return. DSCR is the rent divided by the full housing payment: principal, interest, taxes, insurance, and any association dues. Many programs want 1.0 or higher. Some allow a ratio below 0.75, and some do not use a ratio. Down payments usually start at 20% to 25%. There is no limit on how many properties you can finance this way, and the property can be held in an LLC."}}, {"@type": "Question", "name": "How does asset depletion qualify high-net-worth borrowers in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "Asset depletion turns money you already have into a monthly income number. The lender divides the eligible assets by 36, 60, or 84 months, depending on the program. Cash is usually counted in full. Stocks and similar investments are often counted at 80% to 90%. Retirement accounts are often counted at 70% if you are under 59 and a half. I use this when someone has retired, sold a business, or has more saved than a W-2 shows."}}, {"@type": "Question", "name": "What loan programs are available for complex-income borrowers in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "If you are self-employed, you get K-1 income, you own rentals, or your savings are stronger than your wages, I look at bank statements, 1099s, a P&L, asset depletion, DSCR, and jumbo loans. In Travis County in 2026, a jumbo loan is one above $832,750. I compare those programs across 40+ capital partners."}}, {"@type": "Question", "name": "How fast can a self-employed buyer get pre-approved in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "Most pre-approvals go out within one business day after the file is complete. How long a bank-statement or DSCR loan takes to close depends on the program, the appraisal, title, and how fast the documents come in. You can send me the situation or call (512) 956-6010."}}]}</script><style id="readability-corrections">body>main:nth-of-type(1)>section:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>details:nth-of-type(1)>p:nth-of-type(1){color:#243740 !important;}
 body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(1)>span:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(2)>span:nth-of-type(1){color:#70531f !important;}
@@ -378,6 +700,10 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <main id="main">
 <!-- SECTION 1: HERO — Architectural Private Wealth Opening -->
 <section aria-label="Mortgage guidance from Adam Styer" class="hero pwe-hero pwe-dark">
+<picture class="pwe-hero-skyline">
+<source srcset="/assets/austin-skyline-hero.avif" type="image/avif"/>
+<img alt="" fetchpriority="high" height="700" src="/assets/austin-skyline-hero.webp" width="1400"/>
+</picture>
 <div class="container">
 <div class="pwe-hero-grid">
 <div class="pwe-hero-editorial">
@@ -411,7 +737,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <picture>
 <source sizes="(max-width: 700px) 72vw, 400px" srcset="/assets/adam-cutout-480.avif 480w, /assets/adam-cutout-900.avif 900w" type="image/avif"/>
 <source sizes="(max-width: 700px) 72vw, 400px" srcset="/assets/adam-cutout-480.webp 480w, /assets/adam-cutout-900.webp 900w" type="image/webp"/>
-<img alt="Adam Styer, Senior Loan Officer and Mortgage Advisor in Austin, Texas" decoding="async" fetchpriority="high" height="900" sizes="(max-width: 700px) 72vw, 400px" src="/assets/adam-cutout-900.webp" srcset="/assets/adam-cutout-480.webp 480w, /assets/adam-cutout-900.webp 900w" width="900"/>
+<img alt="Adam Styer, Senior Loan Officer and Mortgage Advisor in Austin, Texas" decoding="async" fetchpriority="low" height="320" sizes="(max-width: 700px) 72vw, 320px" src="/assets/adam-cutout-900.webp" srcset="/assets/adam-cutout-480.webp 480w, /assets/adam-cutout-900.webp 900w" width="320"/>
 </picture>
 <div class="pwe-hero-caption">
 <strong>Adam Styer</strong>
@@ -1191,9 +1517,6 @@ Read Full Case Study
     </div>
   </div>
 </footer>
-<script defer="" src="script.js?v=20260721-assistant-main-v1"></script>
-<script defer="" src="/js/scroll-effects.js?v=20260429"></script>
-<script defer="" src="/analytics.js?v=20260913"></script>
 <!-- Sticky Mobile CTA Bar -->
 <div aria-hidden="true" class="sticky-mobile-bar" id="sticky-mobile-bar" inert="">
 <a aria-label="Call Adam" class="smb-btn smb-btn-call" href="tel:+15129566010">
@@ -1239,9 +1562,37 @@ Read Full Case Study
       });
     })();
   </script>
-<script defer="" src="/experience.js"></script>
-<script defer="" src="/assets/utm.js?v=20260920"></script>
-<script defer="" src="/situation-journeys.js?v=20261013"></script>
+<script>
+  (function () {
+    var sources = [
+      '/advisory-contact.js?v=20260918',
+      '/calculator-suite.js',
+      '/premium-homepage.js?v=20261027-cta',
+      '/blueprint-interactions.js',
+      'script.js?v=20260721-assistant-main-v1',
+      '/js/scroll-effects.js?v=20260429',
+      '/analytics.js?v=20260913',
+      '/experience.js',
+      '/assets/utm.js?v=20260920',
+      '/situation-journeys.js?v=20261013'
+    ];
+    var started = false;
+    function load() {
+      if (started) return;
+      started = true;
+      sources.forEach(function (src) {
+        var s = document.createElement('script');
+        s.src = src;
+        s.defer = true;
+        document.body.appendChild(s);
+      });
+    }
+    ['pointerdown', 'keydown', 'scroll'].forEach(function (ev) {
+      window.addEventListener(ev, load, { once: true, passive: true });
+    });
+    window.addEventListener('load', function () { setTimeout(load, 5000); }, { once: true });
+  })();
+</script>
 <script>
   // Same-page calls to action retain keyboard focus and their source label.
   document.addEventListener('click', function (event) {
