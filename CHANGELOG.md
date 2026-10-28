@@ -1,3 +1,7 @@
+## 2026-10-28 — Preview: homepage niche positioning
+
+- The homepage hero is “Complex income.” and “Clear path forward.” The six cards point at bank statements, 1099s, a CPA profit and loss, asset depletion, DSCR, and jumbo / non-QM. Conventional, FHA, and VA stay in the footer, the last nav column, and one quiet line. Title, description, and homepage schema match that positioning. Not merged.
+
 ## 2026-10-28 — Preview: GoRascal application link
 
 - Apply Now and Start a Secure Application hrefs now go to `https://gorascal.my1003app.com/513013/register`. See My Options stays on the contact form. `/apply-now` redirects to the same application link.

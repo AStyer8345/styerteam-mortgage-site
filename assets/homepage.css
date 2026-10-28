@@ -6853,6 +6853,21 @@ main :is(.callout,.callout-tip) a{text-decoration:underline;text-underline-offse
 .pwe-chip:hover .pwe-chip-arrow {
   transform: translateX(4px) !important;
 }
+.pwe-specialty-chips.is-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+.pwe-classic-quiet {
+  margin: 2px 0 0 !important;
+  text-align: center !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #E4DDD2 !important;
+}
+.pwe-classic-quiet a {
+  color: #F5C443 !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 @media (max-width: 900px) {
   .pwe-specialty-chips {
     grid-template-columns: repeat(2, 1fr) !important;

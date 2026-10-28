@@ -2,7 +2,7 @@
 
 ## Current State
 
-Public mortgage website for The Styer Team · Powered by GoRascal. Static HTML/CSS/JS on Netlify. Production deploys from GitHub `main`. This work is on the redesign pull request (PR #41) against `design/private-wealth-editorial`. Do not push `main`.
+Public mortgage website for The Styer Team · Powered by GoRascal. Static HTML/CSS/JS on Netlify. Production deploys from GitHub `main`. The open preview is PR #42, from `preview/claims-docpaths-source-2026-10-28` into `design/private-wealth-editorial`. Do not merge it and do not push `main`.
 
 Legal entity is Go Rascal Inc. Company NMLS 2072896. Adam Styer NMLS 513013. The only business phone is (512) 956-6010. Apply Now goes to `https://gorascal.my1003app.com/513013/register`. See My Options and the short form stay on `/contact.html`. `/apply-now` 301s to the application link.
 
@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-**2026-10-28 — claims preview, not published.** Branch `preview/claims-docpaths-source-2026-10-28` is off `design/private-wealth-editorial` at f1369288. It is not merged and has no pull request. Homepage, Non-QM, bank-statement, and self-employed pages drop unsourced program percentages, 14–21 day close lines, and unsourced case results. The homepage keeps 24-hour pre-approval, 150+ wholesale lenders, and the $832,750 jumbo limit, and the short form has one optional `self_reported_source` select. The preserved Non-QM guide is a separate commit. Guides stay indexed. Company NMLS lines were not edited.
+**2026-10-28 — homepage niche reposition, PR #42, not merged.** The homepage hero is “Complex income. / Clear path forward.” The six cards point at bank statements, 1099s, P&L, asset depletion, DSCR, and jumbo / non-QM. Conventional, FHA, and VA stay linked in the footer, the nav’s last column, and one quiet line. Claims fixes, the readable hero, case cards, and the GoRascal apply link stay. Do not deploy.
 
 ## Working Rules
 
