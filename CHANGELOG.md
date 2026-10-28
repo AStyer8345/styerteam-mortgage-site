@@ -1,3 +1,8 @@
+## 2026-10-28 — Preview: hero stagger and FAQ accordion
+
+- Homepage headline: “Complex income.” stays on one line at desktop. “Clear path forward.” sits on the next line, indented. Still one h1.
+- Homepage FAQs open again. The accordion script was loading after the page was ready, so it never started. Open answers are no longer cut off at 500px.
+
 ## 2026-10-28 — Preview: local office address and no 24-hour pre-approval
 
 - The local office line is 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731. The placeholder and the Brooklyn corporate-office line are gone.
