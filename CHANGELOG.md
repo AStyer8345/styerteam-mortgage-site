@@ -1,3 +1,7 @@
+## 2026-10-28 — Preview: Go Rascal main office in the footer
+
+- The footer compliance block lists Go Rascal Inc. Main Office: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249, above the Austin local office. JSON-LD still uses the Austin office. Licensing stays Texas only.
+
 ## 2026-10-28 — Preview: hero stagger and FAQ accordion
 
 - Homepage headline: “Complex income.” stays on one line at desktop. “Clear path forward.” sits on the next line, indented. Still one h1.

@@ -234,6 +234,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
         <div>
           
           <p>The Styer Team, Powered by Go Rascal Inc. | Company NMLS# 2072896 | Adam Styer NMLS# 513013 | Licensed in: Texas</p>
+          <p>Go Rascal Inc. Main Office: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
           <p>Local Office: 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731</p>
         </div>
       </div>
