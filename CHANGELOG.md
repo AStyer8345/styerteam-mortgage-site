@@ -1,3 +1,7 @@
+## 2026-10-28 — Preview: no specific lender count
+
+- Public pages, JSON-LD, and the assistant company note no longer state a number of wholesale lenders. The homepage pricing line says many wholesale lenders and “my cell.” Historical notes were left as written.
+
 ## 2026-10-28 — Preview: Go Rascal main office in the footer
 
 - The footer compliance block lists Go Rascal Inc. Main Office: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249, above the Austin local office. JSON-LD still uses the Austin office. Licensing stays Texas only.
