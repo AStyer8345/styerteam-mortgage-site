@@ -19,7 +19,11 @@ The actionable headline is the same one as last Monday, now carried a second wee
 | P1-A | P1 | 2 new calcs have inline lead forms built but gated on empty `WEBHOOK_URL` | 1 config line | 2+ |
 | P1-B | P1 | affordability hardcodes 5% down, not disclosed | 1 line + 1 disclosure | carry |
 | P2-G | P2 | "Equal Housing Lender" missing on 6 of 9 calc surfaces (HUD / new-co audit risk) | 6 string adds | 2+ |
-| P2-A | P2 | legacy `/contact.html?goal=Purchase"Adam Styer | Mortgage Solutions LP" — retired 2026-05-20. Site correctly uses **"Adam Styer | the former employer"** (display) / **"the former employer"** (legal, NMLS 2653540). Update the SKILL.md.
+| P2-A | P2 | legacy `/contact.html?goal=Purchase` href on payment + breakeven | 2 hrefs | 2+ |
+
+Both P0s and P2-G are pre-written in the existing patch. **No P0 surprises, no regressions, no new runtime errors.**
+
+> ⚠️ **Task-file drift (unchanged, still worth one fix):** the audit SKILL.md still names the business "Adam Styer | Mortgage Solutions LP" — retired 2026-05-20. Site correctly uses **"Adam Styer | the former employer"** (display) / **"the former employer"** (legal, NMLS 2653540). Update the SKILL.md.
 
 ---
 
@@ -51,7 +55,7 @@ WCAG 2.1 AA failure (1.3.1, 4.1.2). Fix = one `aria-label` per input. All 16 in 
 
 ### P1-A — inline lead forms gated on empty `WEBHOOK_URL` — **CONFIRMED OPEN**
 
-`asset-depletion-calculator.html:1099` and `dscr-calculator.html:950` both still `var WEBHOOK_URL = "";`. The forms (`#adc-email-form`, `#dscr-lead`) are fully built and `hidden`. Setting `WEBHOOK_URL` to the n8n **Web Lead Automation** webhook (workflow `PiuIsQpBuydtFM4m`) switches on inline capture on the two highest-intent "complicated-income" surfaces. Highest-leverage, lowest-effort conversion win on the site. (No inline form on the 6 original calcs — CTAs to `/scenario` + Calendly do exist, so this is the weaker half of the finding.)
+`asset-depletion-calculator.html:1099` and `dscr-calculator.html:950` both still `var WEBHOOK_URL = "";`. The forms (`#adc-email-form`, `#dscr-lead`) are fully built and `hidden`. Setting `WEBHOOK_URL` to the n8n **Web Lead Automation** webhook (workflow `PiuIsQpBuydtFM4m`) switches on inline capture on the two highest-intent "complicated-income" surfaces. Highest-leverage, lowest-effort conversion win on the site. (No inline form on the 6 original calcs — CTAs to `/contact.html` + Calendly do exist, so this is the weaker half of the finding.)
 
 ### P1-B — affordability hardcodes 5% down, undisclosed — **CONFIRMED OPEN**
 
@@ -66,7 +70,15 @@ refinance:1  asset-depletion:1  dscr:1                                          
 
 HUD/FHEO advertising rule (24 CFR §110.10) — calculators are advertising surfaces, and the new-company compliance review will flag this. 6-file string add (`513013 (Adam Styer).` → `513013 (Adam Styer). Equal Housing Lender.`). In patch.
 
-### P2-A — legacy `/contact.html?goal=Purchase"—". New calcs: DSCR `dscr = pitia > 0 ? rent/pitia : 0` (div-by-zero safe); asset-depletion clamps negatives and guards `periodMonths<=0`. **No new edge cases. No PMI auto-cancellation logic anywhere (P3, carry). No TX-specific property-tax or homestead defaults (P3, carry).**
+### P2-A — legacy `/contact.html?goal=Purchase` href — **CONFIRMED OPEN**
+
+`calculator-payment.html:110` and `calculator-refinance-breakeven.html:116` still link `/contact.html?goal=Purchase` (canonical is extension-less `/contact.html?goal=Purchase`). affordability already fixed. 2 hrefs.
+
+---
+
+## Math correctness — spot re-verification
+
+No engine change since 06-15, so the prior full pass stands. Re-confirmed the load-bearing guards still present in `calculator-suite.js`: `monthlyPayment()` guards `principal<=0` and `r===0`; `amortize()` guards `bal<=0` / `principal<=0`; `computeWrap()` renders `coverage` NaN as "—". New calcs: DSCR `dscr = pitia > 0 ? rent/pitia : 0` (div-by-zero safe); asset-depletion clamps negatives and guards `periodMonths<=0`. **No new edge cases. No PMI auto-cancellation logic anywhere (P3, carry). No TX-specific property-tax or homestead defaults (P3, carry).**
 
 ## Accessibility / console / mobile perf
 
@@ -99,7 +111,10 @@ Affordability commodity gaps unchanged: front-end vs back-end DTI split, itemize
 1. **Apply `patches/calculator-2026-06-15-P0.diff`** — 2 P0s, ~17 lines, find/replace, no math. (P0-B header swap + 16 `aria-label`s.) This has now carried 2 weeks unapplied.
 2. **Bundle P2-G** in the same session — 6 files, 1 string each (`Equal Housing Lender`). HUD + new-company audit risk.
 3. **One-line conversion win:** set `WEBHOOK_URL` on asset-depletion + DSCR → n8n `Web Lead Automation` webhook (`PiuIsQpBuydtFM4m`) to turn on the inline forms already built into those pages.
-4. **P2-A:** `/contact.html?goal=Purchase"Mortgage Solutions LP."
+4. **P2-A:** `/contact.html?goal=Purchase` → `/contact.html?goal=Purchase` on calculator-payment.html:110 + calculator-refinance-breakeven.html:116.
+5. **P1-B (your call):** affordability 5% down — disclose it or make down% selectable.
+6. **P3 backlog → TODO.md:** HOA field + PMI line (under-20% display, not auto-drop) + amortization schedule on Payment; income-type toggle; `calc_complete` analytics; TX tax defaults.
+7. **Housekeeping:** update the audit SKILL.md business name off the retired "Mortgage Solutions LP."
 
 ---
 

@@ -108,8 +108,14 @@ PSI quota is still drained (CONTEXT blocker), but the chrome-devtools MCP now pr
 **Inline lead capture is still 0 of 9 calculators** — the known gap, and the two forms that already exist remain dark:
 
 - **P1-A (12+ weeks):** `asset-depletion-calculator.html:1100` and `dscr-calculator.html:951` still read `var WEBHOOK_URL = "";`. Fully-built email-capture forms stay `hidden` on the two highest-intent complicated-income surfaces. One line each pointed at the n8n **Web Lead Automation** webhook (`PiuIsQpBuydtFM4m`) turns them on. Given GOALS' "close loans, build the pipeline," this remains the highest-leverage single edit in the calculator family. *(Caveat: n8n execution-cap outage is an active memory item — verify quota health before flipping these on, or the leads will fire into a capped instance.)*
-- **P1-C (carry, decision needed):** `refinance-calculator.html` — the richest refi tool — has **no** scenario link, **no** Calendly, one `tel:` and one `/contact.html?goal=Refinance's featured solid card. Either unblock + add the standard CTA block, or demote the card. (Already an Adam-gated CONTEXT.md item; calculator-side effect re-confirmed.)
-- Every other calc routes CTA → `/contact.html"Equal Housing" appears on only refinance / asset-depletion / DSCR (all as "Equal Housing **Lender**"). Missing on the other 6 calc surfaces. Sitewide the split is 85 files "Lender" / 12 "Opportunity" — worth settling the correct term for a **licensed broker** with compliance counsel during the new-company review, then sweeping once. The 6 calc adds can ride that sweep.
+- **P1-C (carry, decision needed):** `refinance-calculator.html` — the richest refi tool — has **no** scenario link, **no** Calendly, one `tel:` and one `/contact.html?goal=Refinance` link, **and** is `robots.txt`-Disallowed while being the hub's featured solid card. Either unblock + add the standard CTA block, or demote the card. (Already an Adam-gated CONTEXT.md item; calculator-side effect re-confirmed.)
+- Every other calc routes CTA → `/contact.html` (+ tel, + Calendly on 4) — the 06-27 pattern held through the redesign.
+
+---
+
+## Compliance (feeds the pre-audit cleanup in GOALS)
+
+- **P2-G carry:** "Equal Housing" appears on only refinance / asset-depletion / DSCR (all as "Equal Housing **Lender**"). Missing on the other 6 calc surfaces. Sitewide the split is 85 files "Lender" / 12 "Opportunity" — worth settling the correct term for a **licensed broker** with compliance counsel during the new-company review, then sweeping once. The 6 calc adds can ride that sweep.
 - Disclaimer Variant C split (3 short-form calc footers lack address + TX Complaint Notice vs the full Variant B on asset-depletion/DSCR/refinance) — already an Adam-gated CONTEXT.md item; unchanged.
 - NMLS ID coverage: **9/9** calc surfaces carry company NMLS 2653540 ✓. GTM container: **9/9** at ×2 ✓ (the 08-31 sitewide 153/153 holds on calcs).
 

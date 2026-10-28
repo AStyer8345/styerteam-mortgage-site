@@ -4,7 +4,29 @@
 
 **Goal:** Add a clearer secure portal path that invites ready borrowers to answer questions online while preserving the lower-friction scenario path.
 
-**Architecture:** This is a static-site content and layout update. The existing `/contact.html"scenario-note-form"/);
+**Architecture:** This is a static-site content and layout update. The existing `/contact.html` page becomes the two-path start page, while `index.html` and `thank-you.html` add stronger portal prompts using the existing portal URL and button/card patterns.
+
+**Tech Stack:** Static HTML, existing CSS utility classes, existing Node test file `tests/lead-flow-regression.test.js`, local `python3 -m http.server`, Playwright browser verification.
+
+---
+
+### Task 1: Add Regression Coverage
+
+**Files:**
+- Modify: `tests/lead-flow-regression.test.js`
+
+- [ ] **Step 1: Update scenario page test expectations**
+
+Replace the existing `scenario page uses portal language and keeps a short note fallback` assertions with checks for:
+
+```js
+assert.match(scenarioPage, /Choose the easiest way to start/);
+assert.match(scenarioPage, /Send Adam the short version/);
+assert.match(scenarioPage, /Answer a few questions in my secure online portal/);
+assert.match(scenarioPage, /usually takes 7-9 minutes/);
+assert.match(scenarioPage, /make our first call more efficient/);
+assert.match(scenarioPage, /https:\/\/the former employer\.contact\.com\/513013\/register\?time=1779291829279/);
+assert.match(scenarioPage, /id="scenario-note-form"/);
 assert.match(scenarioPage, /name="scenario-note"/);
 assert.doesNotMatch(scenarioPage, /Start Secure Loan Application/);
 assert.doesNotMatch(scenarioPage, /Start Your Loan Application/);
@@ -51,7 +73,18 @@ Expected: FAIL on the new portal wording assertions until the HTML is updated.
 
 ---
 
-### Task 2: Reframe `/contact.html"lp-subhead">Send me the short version if you want guidance first, or answer a few questions in my secure online portal if you are ready to move. The portal usually takes 7-9 minutes and helps make our first call more efficient.</p>
+### Task 2: Reframe `/contact.html` As A Two-Path Start Page
+
+**Files:**
+- Modify: `scenario.html`
+
+- [ ] **Step 1: Update hero copy**
+
+Change the hero heading and subhead to:
+
+```html
+<h1>Choose the easiest way to start.</h1>
+<p class="lp-subhead">Send me the short version if you want guidance first, or answer a few questions in my secure online portal if you are ready to move. The portal usually takes 7-9 minutes and helps make our first call more efficient.</p>
 ```
 
 - [ ] **Step 2: Update portal card copy**
@@ -183,5 +216,18 @@ python3 -m http.server 8092
 Open:
 
 ```text
-http://localhost:8092/contact.html"Add secure portal start path"
+http://localhost:8092/contact.html
+http://localhost:8092/index.html#contact-form
+http://localhost:8092/thank-you.html?type=quick-contact
+```
+
+Expected: the scenario page shows both start paths, the homepage keeps scenario/call primary with a portal option below the form, and the thank-you page uses the softer portal wording.
+
+- [ ] **Step 4: Commit**
+
+Run:
+
+```bash
+git add scenario.html index.html thank-you.html tests/lead-flow-regression.test.js docs/superpowers/plans/2026-06-27-secure-portal-start-path.md
+git commit -m "Add secure portal start path"
 ```

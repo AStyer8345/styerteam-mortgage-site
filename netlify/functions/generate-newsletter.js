@@ -170,7 +170,16 @@ ${wantsRealtor ? `### REALTOR EMAIL
 
 ## INTERNAL LINK RULES
 - ../calculators.html is a PAYMENT calculator — it estimates monthly payments. It does NOT show rates or look up rates. NEVER say "see your rate", "find your rate", or "what your rate would be" when linking to the calculator. Correct: "Run your payment numbers", "Estimate your monthly cost". To know their actual rate, readers must contact Adam.
-- ../contact.html?goal=Purchase"Talk soon,<br>Adam Styer<br>The Styer Team · Powered by GoRascal<br>NMLS# 513013 | (512) 956-6010"
+- ../contact.html?goal=Purchase — Pre-Qualification page
+- ../contact.html — Contact Adam
+- ../products.html — Loan Programs
+
+## WEB ARTICLE
+800-1200 words. Two sections: main article + Personal Corner (separated by <hr>).
+Output ONLY body HTML fragments: <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>, <hr>.
+NO <!DOCTYPE>, <html>, <head>, <body>, <style>, or <meta> tags.
+
+End the article with: "Talk soon,<br>Adam Styer<br>The Styer Team · Powered by GoRascal<br>NMLS# 513013 | (512) 956-6010"
 
 ## OUTPUT FORMAT — use these EXACT delimiters
 PAGE_TITLE: [max 60 chars]

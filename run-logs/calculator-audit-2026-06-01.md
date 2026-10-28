@@ -98,13 +98,13 @@ Verified 2026-06-01: `grep -c "<form"` returns **0** on all 6 calc pages.
 Three reasons this is now disproportionately costly:
 
 1. **`generate_lead` GA4 event wired sitewide last week** (`14935a5`) — every other lead surface now pushes a Google Ads conversion. Calc pages still emit zero (no forms = no `dispatchLeadSubmitted()` call). Highest-intent surfaces on the site are off the conversion graph.
-2. **Site-wide conversion overhaul live** — `/scenario`, smart hero forms, quick prequal funnel. Calc pages are the *only* deep-engagement surfaces with no inline capture.
+2. **Site-wide conversion overhaul live** — `/contact.html`, smart hero forms, quick prequal funnel. Calc pages are the *only* deep-engagement surfaces with no inline capture.
 3. **`GOALS.md` complicated-income pivot** — driving self-employed / 1099 / bank-statement / DSCR audiences to calc pages. They want to model unusual scenarios with nowhere to submit.
 
 Infrastructure ready: n8n `Web Lead Automation` workflow `PiuIsQpBuydtFM4m`. Pending decisions are product:
 - Where on the page (below result card vs sticky footer vs modal)
 - Which 1–3 calcs ship first (suggested order: payment → affordability → buydown)
-- Mirror new `/scenario` smart-form pattern OR slim 3-field capture
+- Mirror new `/contact.html` smart-form pattern OR slim 3-field capture
 - **Add income-type field** (W-2 / 1099 / self-employed / asset-based) to route inbound to the right Adam template — Phase A complicated-income SERPs flipped 2/7 → 5/7 in 14 days per Wk 13 competitive run, so the form should match the traffic now landing
 
 ### P1-B: calculator-affordability — 5% down hardcoded, undisclosed (CARRY-OVER)
@@ -121,7 +121,8 @@ On-page disclosure at line 76 only mentions "~7% rate, 30-year term, P&I ~28% of
 
 | ID | Issue | File(s) | State |
 |---|---|---|---|
-| P2-A | `/contact.html?goal=Purchase"© 2026 the former employer. NMLS# 2653540 (Company) \| 513013 (Adam Styer)." Verified `grep -c "the former company"` returns ≥1 on every calc file. |
+| P2-A | `/contact.html?goal=Purchase` legacy href (affordability already canonicalized) | calculator-payment.html:102, calculator-refinance-breakeven.html:108 | unchanged |
+| P2-B | Stripped footer the former company/the former employer compliance line | the 3 small calc pages | **RESOLVED** — `c427b15` entity rebrand seeded all 3 stripped-footer pages with "© 2026 the former employer. NMLS# 2653540 (Company) \| 513013 (Adam Styer)." Verified `grep -c "the former company"` returns ≥1 on every calc file. |
 | **P2-G** | **NEW: Equal Housing Lender (EHL) tag missing on 6 of 7 calc surfaces** | calculator-payment.html, calculator-affordability.html, calculator-refinance-breakeven.html, rate-buydown-calculator.html, wrap-mortgage-calculator.html, calculators.html | **NEW this run** |
 | P2-C | Buydown frequency label vs radio mismatch | rate-buydown-calculator.html | implicitly fixed by P0-A patch |
 | P2-D | WRAP — no validation against negative-am inputs | wrap-mortgage-calculator.html | unchanged |
@@ -275,4 +276,10 @@ Wider site commits this week (informational):
 1. **Apply `patches/calculator-2026-04-20-P0.diff`** — 15 min, text find/replace. Order: P0-A (2 lines) → P0-B (2 lines) → P0-E (move 1 script tag) → P0-D (14 id/for pairs) → P0-C (regress-test 4 pages after). **Bundle the 5 inline sliders** on calculator-payment.html + calculator-refinance-breakeven.html in the same session — same pattern, ~5 more edits.
 2. **NEW: Apply P2-G (Equal Housing Lender)** — 6 files, 1 string each. FIND `513013 (Adam Styer).` → REPLACE `513013 (Adam Styer). Equal Housing Lender.`. ~3 minutes. HUD compliance + new-company-audit risk.
 3. **Decide P1-A inline lead capture** — disproportionately costly post-`generate_lead`-sitewide wiring. Add income-type field (W-2 / 1099 / self-employed / asset-based) to route inbound to the right Adam template. With Wk 13 confirming Phase A complicated-income SERPs flipped to 5/7 top-10, the form should match the audience now arriving.
-4. **P2-A** — 2-line `/contact.html?goal=Purchase
+4. **P2-A** — 2-line `/contact.html?goal=Purchase` → `/contact.html?goal=Purchase` href fix on calculator-payment.html:102 + calculator-refinance-breakeven.html:108.
+
+P3 items (analytics event, PMI math, Texas defaults, complicated-income toggle) → TODO.md backlog. Not blocking. PMI auto-drop and the complicated-income toggle have the highest strategic weight given the GOALS.md pivot.
+
+---
+
+*No calculator HTML or JS was modified by this audit. No new patch file was written; the existing `patches/calculator-2026-04-20-P0.diff` (42 days old, text-based find/replace document — not a git unified diff) still text-matches every P0 surfaced here and covers them all. P2-G (EHL) is a 6-file string addition handled separately in the same triage session.*

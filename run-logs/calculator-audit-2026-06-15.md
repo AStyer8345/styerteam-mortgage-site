@@ -8,7 +8,7 @@
 
 ## TL;DR — triage in 5 minutes
 
-**Big change since the last audit (2026-06-01).** Commit `f6c4080` (2026-06-09) finally shipped the long-stalled P0 patch and resolved **3 of the 5** P0s that had been live 42+ days. Two **new, well-built calculators** (asset-depletion, DSCR) also shipped — both are clean (good a11y, guarded math, working CTAs). The conversion picture improved too: every calc page now routes to `/scenario` + Calendly.
+**Big change since the last audit (2026-06-01).** Commit `f6c4080` (2026-06-09) finally shipped the long-stalled P0 patch and resolved **3 of the 5** P0s that had been live 42+ days. Two **new, well-built calculators** (asset-depletion, DSCR) also shipped — both are clean (good a11y, guarded math, working CTAs). The conversion picture improved too: every calc page now routes to `/contact.html` + Calendly.
 
 **What's actually left:**
 
@@ -19,7 +19,11 @@
 | P1-A | P1 | No inline lead form on the 6 original calcs (CTAs now exist, so less severe). 2 new calcs have form scaffolding **gated on an empty `WEBHOOK_URL`** | 1 config line to activate |
 | P1-B | P1 | affordability hardcodes 5% down, undisclosed | 1 line + 1 disclosure |
 | P2-G | P2 | "Equal Housing Lender" missing on 6 of 9 calc surfaces (HUD/new-co audit risk) | 6 string adds |
-| P2-A | P2 | legacy `/contact.html?goal=Purchase"Adam Styer | Mortgage Solutions LP." That entity was **retired 2026-05-20**. The site correctly uses **"Adam Styer | the former employer"** (display) / **"the former employer"** (legal, NMLS 2653540). No site copy uses the old name. The SKILL.md task file should be updated.
+| P2-A | P2 | legacy `/contact.html?goal=Purchase` href on payment + breakeven | 2 hrefs |
+
+Both remaining P0s are in `patches/calculator-2026-06-15-P0.diff` (find/replace doc, not applied).
+
+> ⚠️ **Task-file drift, not a site issue:** the audit task definition still says the business name is "Adam Styer | Mortgage Solutions LP." That entity was **retired 2026-05-20**. The site correctly uses **"Adam Styer | the former employer"** (display) / **"the former employer"** (legal, NMLS 2653540). No site copy uses the old name. The SKILL.md task file should be updated.
 
 ---
 
@@ -66,7 +70,8 @@ WCAG 2.1 AA failure (1.3.1 Info & Relationships, 4.1.2 Name/Role/Value). Fix = a
 ### P1-A — Inline lead capture (severity REDUCED, not closed)
 
 - `grep -c "<form"` = **0** on all 6 original calc pages (payment, affordability, breakeven, buydown, refinance, wrap). Still no inline capture there.
-- **But the "unclear CTA" half of this finding is now resolved:** every calc page has visible CTAs — nav "Send Your Scenario" → `/contact.html""`. **Activating inline capture on those two is a one-line config change** (set `WEBHOOK_URL` to the n8n `Web Lead Automation` webhook, workflow `PiuIsQpBuydtFM4m`). Lowest-effort, highest-intent capture win on the site.
+- **But the "unclear CTA" half of this finding is now resolved:** every calc page has visible CTAs — nav "Send Your Scenario" → `/contact.html`, plus in-page buttons. Calc CTAs were rerouted off the raw 1003 to `/contact.html` + Calendly in `35336e4`.
+- **The two NEW calcs already have inline lead-form scaffolding** (`#adc-email-form`, `#dscr-lead`) — but both are `hidden` because `WEBHOOK_URL = ""`. **Activating inline capture on those two is a one-line config change** (set `WEBHOOK_URL` to the n8n `Web Lead Automation` webhook, workflow `PiuIsQpBuydtFM4m`). Lowest-effort, highest-intent capture win on the site.
 
 Recommended order if Adam wants inline forms: turn on the two existing ones (asset-dep, DSCR — the complicated-income surfaces) first, then add to payment/affordability/buydown.
 
@@ -81,7 +86,8 @@ Recommended order if Adam wants inline forms: turn on the two existing ones (ass
 | ID | Issue | Files | State |
 |----|-------|-------|-------|
 | **P2-G** | "Equal Housing Lender" missing | affordability, payment, breakeven, rate-buydown, wrap, calculators (6 of 9) | **OPEN** — refinance, asset-depletion, dscr have it |
-| P2-A | legacy `/contact.html?goal=Purchase"Lender's Title Policy" default unexplained (TX TDI-regulated rate) | refinance-calculator.html | OPEN (unchanged) |
+| P2-A | legacy `/contact.html?goal=Purchase` href (canonical is `/contact.html?goal=Purchase`) | calculator-payment.html:110, calculator-refinance-breakeven.html:116 | **OPEN** (affordability already fixed → `/contact.html`) |
+| P2-E1 | Refi "Lender's Title Policy" default unexplained (TX TDI-regulated rate) | refinance-calculator.html | OPEN (unchanged) |
 | P2-E2 | Chart.js synchronous mid-body — add `defer` (was P0-E, now de-escalated) | rate-buydown-calculator.html:725 | NEW state — no longer head-blocking, still blocks ~500 lines below it |
 | P2-D | WRAP no validation against negative-am inputs | wrap-mortgage-calculator.html | OPEN — does **not** crash (amortize() handles it; coverage NaN → "—"), just allows odd scenarios |
 
@@ -164,7 +170,11 @@ Strategic read (from scan): don't out-polish the aggregators on commodity calcs;
    - P0-C-resid: add `aria-label` to 5 inline sliders + 11 wrap inputs
 2. **Bundle P2-G (Equal Housing Lender)** in the same session — 6 files, 1 string each, ~3 min. HUD + new-company-audit risk.
 3. **One-line conversion win:** set `WEBHOOK_URL` on asset-depletion + DSCR to the n8n `Web Lead Automation` webhook (`PiuIsQpBuydtFM4m`) to switch on the inline lead forms already built into those pages.
-4. **P2-A:** `/contact.html?goal=Purchase"Mortgage Solutions LP" to "Adam Styer | the former employer."*
+4. **P2-A:** `/contact.html?goal=Purchase` → `/contact.html?goal=Purchase` on calculator-payment.html:110 + calculator-refinance-breakeven.html:116.
+5. **P1-B (your call):** affordability 5% down — disclose it or make down % selectable.
+6. P3 backlog → TODO.md: PMI auto-drop, amortization schedule on Payment, income-type toggle, `calc_complete` analytics, TX tax defaults.
+
+*Also: update the audit SKILL.md business name from the retired "Mortgage Solutions LP" to "Adam Styer | the former employer."*
 
 ---
 

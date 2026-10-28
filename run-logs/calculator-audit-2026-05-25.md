@@ -81,13 +81,13 @@ Verified 2026-05-25: `grep -c "<form\|netlify"` returns **0** on all 6 calc page
 
 Two reasons this is now disproportionately costly:
 
-1. **Site-wide conversion overhaul shipped last 2 weeks** — `/scenario` page, smart hero forms, quick prequal funnel. Calc pages are now the *only* deep-engagement surfaces with no inline capture.
+1. **Site-wide conversion overhaul shipped last 2 weeks** — `/contact.html` page, smart hero forms, quick prequal funnel. Calc pages are now the *only* deep-engagement surfaces with no inline capture.
 2. **`GOALS.md` repositioning pivot to "complicated income"** — drives higher-intent traffic to calc pages from self-employed / 1099 / bank-statement / DSCR audiences. These users want to model unusual scenarios but have nowhere to submit one.
 
 Infrastructure ready: n8n `Web Lead Automation` workflow `PiuIsQpBuydtFM4m`. Pending decisions are product:
 - Where on the page (below result card vs sticky footer vs modal)
 - Which 1–3 calcs ship first (suggested order: payment → affordability → buydown)
-- Mirror new `/scenario` smart-form pattern OR slim 3-field capture
+- Mirror new `/contact.html` smart-form pattern OR slim 3-field capture
 - **NEW consideration:** given the "complicated income" pivot, the calc capture form should ask for income type (W-2 / 1099 / self-employed / asset-based) to route the inbound to the right Adam-response template
 
 ### P1-B: calculator-affordability — 5% down hardcoded, undisclosed (CARRY-OVER)
@@ -104,7 +104,11 @@ Disclosure on the page does not mention the 5% down assumption. User sees a "max
 
 | ID | Issue | File(s) | State |
 |---|---|---|---|
-| P2-A | `/contact.html?goal=Purchase's Title Policy default ($2,119) unexplained (TX TDI-regulated) | refinance-calculator.html:544 | unchanged |
+| P2-A | `/contact.html?goal=Purchase` legacy href (affordability already canonicalized) | calculator-payment.html:102, calculator-refinance-breakeven.html:108 | unchanged |
+| P2-B | Stripped footer omits the former employer brand line (now needs the former company legal entity line post-2026-05-20 rebrand) | the 3 small calc pages | unchanged — and **NEW URGENCY** post compliance rebrand |
+| P2-C | Buydown frequency label vs radio mismatch | rate-buydown-calculator.html | implicitly fixed by P0-A patch |
+| P2-D | WRAP — no validation against negative-am inputs | wrap-mortgage-calculator.html | unchanged |
+| P2-E | Refi closing-cost — Lender's Title Policy default ($2,119) unexplained (TX TDI-regulated) | refinance-calculator.html:544 | unchanged |
 | P2-F | Hub uses full 4-column footer; calc pages use stripped footer | calculators.html vs others | unchanged |
 
 P2-A verified this run:
@@ -217,7 +221,9 @@ Wider site commits this week:
 
 1. **Apply `patches/calculator-2026-04-20-P0.diff`** — 15 min. Order: P0-A (2 lines) → P0-B (2 lines) → P0-E (move 1 script tag) → P0-D (14 id/for pairs) → P0-C (regress-test 4 pages after). **Apply P2-B in the same session** — add the canonical the former company/the former employer compliance footer line to the 3 stripped-footer calc pages. ~3 extra minutes. Bundles the calc-page compliance fix in with the math fix.
 2. **Decide P1-A inline lead capture** — disproportionately costly post-pivot. Add income-type field (W-2 / 1099 / self-employed / asset-based) to route inbound to the right Adam template.
-3. **P2-A** — 2-line `/contact.html?goal=Purchase"complicated-income toggle" is the only P3 with new strategic weight given the GOALS.md pivot.
+3. **P2-A** — 2-line `/contact.html?goal=Purchase` → `/contact.html?goal=Purchase` href fix.
+
+P3 items (analytics event, Texas defaults, complicated-income toggle) → TODO.md backlog. Not blocking. The "complicated-income toggle" is the only P3 with new strategic weight given the GOALS.md pivot.
 
 ---
 

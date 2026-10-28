@@ -23,7 +23,17 @@ Page already had the right angle (jumbo + Eanes ISD), but was thin on first-part
    - Barton Creek 78735/78746 (16 sub-neighborhoods each gated, Barton Creek Country Club at 8212 Barton Club Drive 78735, four golf courses incl. Crenshaw/Coore, austinrealestatehomesblog.com cite)
 2. **Eanes ISD Schools** — Westlake HS 9/10, Hill Country MS 10/10, Eanes Elementary 10/10 (all GreatSchools links). Honest disclosure: 5 elementary feeders (Forest Trail, Barton Creek, Bridge Point, Cedar Creek, Valley View) all feed Westlake HS.
 3. **Major Employers** — Eanes ISD ~7,700 students at 9 schools (Wikipedia + Westlake Chamber); 3 country clubs (Austin CC inside Davenport, Lost Creek CC, Barton Creek CC at 8212 Barton Club Dr 78735); HEB Westlake (Westlake Chamber listing); honest disclosure that 78746 is bedroom community for downtown Austin (10 mi); Data USA cite for Professional/Scientific/Technical Services as #1 industry.
-4. **Property Tax & Closing Costs** — Eanes ISD $0.8322/$100 ($0.7122 M&O + $0.12 I&S, Aug 19 2025 adoption per Community Impact Aug 27 2025); City of West Lake Hills $0.176783/$100 (down 1.02% per the city's Notice of Tax Rates document); Travis County effective 1.65% per Ownwell. Closing-cost example at $1.6M w/ 20% down ($320K → $1.28M loan): $20K–$28K itemized (title/escrow/lender fees/survey/HOI/3-4mo escrow at 1.65%) + 6–12mo PITI reserve callout for jumbo at 10% down. Internal links to /contact.html?goal=Refinance&loan=second-look"What is the median home price" + refreshed with tiered ranges (Davenport/Lost Creek $1.5M–$3M; Rob Roy/Barton Creek $4.5M–$15M+) + Westlake HS 9/10 + Hill Country MS 10/10.
+4. **Property Tax & Closing Costs** — Eanes ISD $0.8322/$100 ($0.7122 M&O + $0.12 I&S, Aug 19 2025 adoption per Community Impact Aug 27 2025); City of West Lake Hills $0.176783/$100 (down 1.02% per the city's Notice of Tax Rates document); Travis County effective 1.65% per Ownwell. Closing-cost example at $1.6M w/ 20% down ($320K → $1.28M loan): $20K–$28K itemized (title/escrow/lender fees/survey/HOI/3-4mo escrow at 1.65%) + 6–12mo PITI reserve callout for jumbo at 10% down. Internal links to /contact.html?goal=Refinance&loan=second-look and /loans/jumbo.html.
+
+**Stat card refresh**
+- `$1.2M+` Median → `$1.6M Median (Redfin Mar 2026)` — `+40.9% YoY` per Redfin city/19594.
+
+**Templated paragraph removed**
+- Portfolio loan card description (`Held by the lender on their books — more flexible underwriting. Ideal for self-employed borrowers...`) was verbatim w/ Spicewood. Rewrote Westlake-specific: business owners + HNW buyers in Rob Roy / Davenport Ranch / Barton Creek; bank-statement (12–24 mo) and asset-depletion programs.
+
+**Accordion FAQ refresh**
+- Jumbo limit body — `(2025 conforming limit)` corrected to `(2026 FHFA conforming limit, all Texas counties)`; cited $1.6M Redfin Mar 2026.
+- Home prices Q renamed "What is the median home price" + refreshed with tiered ranges (Davenport/Lost Creek $1.5M–$3M; Rob Roy/Barton Creek $4.5M–$15M+) + Westlake HS 9/10 + Hill Country MS 10/10.
 
 **Footer standardized to canonical pattern** (this page was the **last** suburb still on the legacy footer)
 - Replaced `Top Producing Broker — Austin 2023 / 5-Star Zillow Reviews / Google Rating: 5.0 ⭐ / 1,000+ Loans Closed` with `⭐ 5.0 Stars · 136+ Reviews / 21-Day Avg. Close · Licensed in Texas`.

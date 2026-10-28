@@ -49,7 +49,10 @@ ${voiceSection}
 - Use descriptive <h2> and <h3> subheadings that someone might actually search for.
 - Include 3-5 internal links to relevant site pages (use "../" prefix):
   ../products.html (Loan Programs), ../calculators.html (Payment Calculator),
-  ../contact.html?goal=Purchase"see your rate", "find your rate", "what your rate would be", or anything implying the calculator shows rates. Correct usage: "Run your payment numbers", "See what your monthly payment could look like", "Estimate your monthly cost". If someone wants to know their actual rate, they need to contact Adam directly.
+  ../contact.html?goal=Purchase (Pre-Qualification), ../contact.html (Contact),
+  ../about.html (About Adam), ../realtors.html (For Realtors),
+  ../blog.html (More Articles), ../testimonials.html (Testimonials)
+- ⚠️ CALCULATOR LINK RULES: ../calculators.html is a PAYMENT calculator — it estimates monthly payments based on numbers the user enters. It does NOT show rates, look up rates, or tell anyone what their rate would be. NEVER say "see your rate", "find your rate", "what your rate would be", or anything implying the calculator shows rates. Correct usage: "Run your payment numbers", "See what your monthly payment could look like", "Estimate your monthly cost". If someone wants to know their actual rate, they need to contact Adam directly.
 ${category ? `- PAGE_CATEGORY: ${category}` : "- Choose a PAGE_CATEGORY from: Market Update, Homebuying, Refinancing, Rates, Tips & Guides, Austin Market"}
 
 ## ARTICLE URL
@@ -116,7 +119,14 @@ DO NOT output <!DOCTYPE>, <html>, <head>, <body>, <style>, <title>, or <meta> ta
 ### Section 1: The Main Article
 Cover the topic with real substance and depth. Use Adam's voice.
 - HTML: <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>
-- Links use "../" prefix (../products.html, ../calculators.html, ../contact.html?goal=Purchase"Personal Corner" or "Off the Clock" or "This Week Outside of Work"
+- Links use "../" prefix (../products.html, ../calculators.html, ../contact.html?goal=Purchase, ../contact.html, ../blog.html)
+- Use 3-5 descriptive <h2> subheadings that break up the content
+- Include at least 3 internal links to other site pages where relevant
+- Write 600-900 words in this section — enough depth that Google considers it valuable
+
+### Section 2: Personal Corner
+${story ? `A separate section with an <hr> divider and <h2> header.
+- Header should be something like "Personal Corner" or "Off the Clock" or "This Week Outside of Work"
 - USE ADAM'S EXACT STORY provided above about: ${story.substring(0, 100)}...
 - Write it in Adam's voice — casual, real, like he's sharing with a friend` : `⚠️ NO PERSONAL STORY WAS PROVIDED — SKIP THIS SECTION ENTIRELY.
 Do NOT write a Personal Corner section. Do NOT invent personal anecdotes, family stories, or activities.

@@ -678,7 +678,8 @@ Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
 ### Task 10: Unblock prequal.html in robots.txt and Add noindex to hero-test.html
 
 **Files:**
-- Modify: `robots.txt:13` — remove `Disallow: /contact.html?goal=Purchase"robots" content="noindex, nofollow">`
+- Modify: `robots.txt:13` — remove `Disallow: /contact.html?goal=Purchase`
+- Modify: `hero-test.html` — add `<meta name="robots" content="noindex, nofollow">`
 
 **Context:** `prequal.html` is blocked in robots.txt but linked as a CTA from multiple pages (testimonials, blog, footer). Either unblock it or change all CTAs. Since it's a legitimate lead capture page, unblock it. `hero-test.html` is a prototype page that should not be indexed.
 
@@ -686,7 +687,12 @@ Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
 
 In `robots.txt`, remove line 13:
 ```
-Disallow: /contact.html?goal=Purchase"viewport"...>` (line 5), add:
+Disallow: /contact.html?goal=Purchase
+```
+
+- [ ] **Step 2: Add noindex to hero-test.html**
+
+In `hero-test.html`, after `<meta name="viewport"...>` (line 5), add:
 ```html
   <meta name="robots" content="noindex, nofollow">
 ```

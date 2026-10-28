@@ -18,7 +18,10 @@
 - Stage git changes by explicit filename. NEVER `git add -A` (the editor and Adam commit to this repo concurrently).
 - Display name: "The Styer Team · Powered by GoRascal". Never "The Styer Team" or "Mortgage Solutions LP".
 - Legal entity if cited: The Styer Team · Powered by GoRascal. Adam NMLS 513013, company NMLS 2072896, phone (512) 956-6010.
-- Loan application link anchor-text only, never the raw URL: `/contact.html?goal=Purchase's execution is the approval for plan-driven commits).
+- Loan application link anchor-text only, never the raw URL: `/contact.html?goal=Purchase
+- TX-licensed only; no USDA product surface.
+- Commits co-authored: `Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>`.
+- Do NOT commit unless the human has approved (this plan's execution is the approval for plan-driven commits).
 
 ---
 

@@ -6,7 +6,10 @@ Increase the number of ready borrowers who answer questions in Adam's secure onl
 
 ## Positioning
 
-Use `/contact.html's secure online portal.
+Use `/contact.html` as the main start page with two clear paths:
+
+1. Send Adam the short version.
+2. Answer a few questions in Adam's secure online portal.
 
 The portal should not be framed as the only correct next step. The site should keep the consultative message: Adam can review the situation first, then direct the borrower to the cleanest path. For ready borrowers, the portal is a helpful way to make the first call more efficient.
 
@@ -24,7 +27,16 @@ Avoid leading with "complete a loan application" or "apply now" as the primary l
 
 ### Scenario Page
 
-Make the upper section of `/contact.html"Send Your Scenario" and "Book 15-Min Call." Add a clear portal option in the existing contact/start section so ready borrowers see it after the lower-friction introduction.
+Make the upper section of `/contact.html` a two-path start area:
+
+- Primary path: send the scenario.
+- Secondary but visually strong path: answer questions in the secure portal.
+
+Both paths should be visible without scrolling on desktop and near the top on mobile. The portal card should mention the 7-9 minute estimate and first-call efficiency.
+
+### Homepage
+
+Keep the homepage hero focused on "Send Your Scenario" and "Book 15-Min Call." Add a clear portal option in the existing contact/start section so ready borrowers see it after the lower-friction introduction.
 
 ### Thank-You Page
 
@@ -40,4 +52,14 @@ This design creates a clearer application path for ready borrowers while preserv
 
 ## Implementation Scope
 
-- Update `/contact.html"Apply Now" the dominant site-wide CTA.
+- Update `/contact.html` copy and layout to make the two-path choice clearer.
+- Strengthen the secure portal option in the homepage contact section.
+- Strengthen the portal next step on `/thank-you.html`.
+- Add or update regression checks for the portal wording and placement.
+
+## Non-Goals
+
+- Do not add a new multi-step wizard.
+- Do not replace scenario submission with the portal.
+- Do not change Netlify form handling or lead notification logic.
+- Do not make "Apply Now" the dominant site-wide CTA.
