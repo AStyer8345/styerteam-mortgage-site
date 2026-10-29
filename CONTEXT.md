@@ -19,9 +19,9 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-The NMLS licensed location is 185 Wythe Ave, Suite A2, Brooklyn, NY 11249. It is the footer and schema address, not a Texas office. areaServed stays Texas. Close-day, savings, and guarantee marketing lines are stripped. Rate pages are unchanged. Do not merge this preview.
+The NMLS licensed location is 185 Wythe Ave, Suite A2, Brooklyn, NY 11249. It is the footer and schema address, not a Texas office. areaServed stays Texas. Close-day, savings, and guarantee marketing lines are stripped. Rate pages are unchanged.
 
-Insert GoRascal-approved logo once received.
+GoRascal’s approved files are in assets/brand/gorascal/. The header and homepage hero use the wordmark on a white chip. The footer uses the navy seal. The outline seal and the brownstone illustration are stored and not displayed. Do not merge this preview.
 
 ## Working Rules
 

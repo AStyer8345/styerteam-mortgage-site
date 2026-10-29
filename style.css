@@ -160,5 +160,19 @@ main header,article header{position:static;z-index:auto}
 .nav-wordmark{display:inline;max-width:none;color:#fff;font:600 12.5px/1.25 Inter,system-ui,sans-serif}
 .nav-brand{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:10px;row-gap:2px}
 .nav-powered{display:inline;color:#fff;font:600 12.5px/1.25 Inter,system-ui,sans-serif;letter-spacing:.01em;white-space:nowrap}
-.pwe-hero-powered{margin:0 0 18px;font-family:Inter,system-ui,sans-serif;font-size:clamp(20px,2.2vw,32px);font-weight:600;letter-spacing:.03em;line-height:1.2;color:#F5C443}
+.pwe-hero-powered{display:flex;align-items:center;gap:10px;margin:0 0 16px;font:600 13px/1.2 Inter,system-ui,sans-serif;letter-spacing:.04em;color:rgba(246,244,239,.88)}
+.nav-powered-mark{display:inline-flex;align-items:center;gap:6px}
+.nav-powered-label{color:#fff;font:600 12.5px/1.25 Inter,system-ui,sans-serif}
+.gorascal-wordmark-chip{display:inline-flex;align-items:center;background:#fff;border-radius:6px;padding:2px 7px;line-height:0}
+.gorascal-wordmark-chip img{height:26px;width:auto;display:block}
+.gorascal-wordmark-chip-hero img{height:22px}
+.gorascal-seal{height:64px;width:auto;flex:none}
+.site-footer-legal{display:flex;align-items:flex-start;gap:18px}
+.site-footer-legal-copy{min-width:0;flex:1}
+.gorascal-visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media (max-width:768px){
+  .gorascal-wordmark-chip img{height:18px}
+  .gorascal-wordmark-chip-hero img{height:16px}
+  .gorascal-seal{height:56px}
+}
 .site-footer-compliance{color:#F6F4EF}

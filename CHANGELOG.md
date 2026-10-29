@@ -1,3 +1,7 @@
+## 2026-10-29 — Preview: GoRascal approved logos
+
+- The four approved files are stored byte-for-byte in assets/brand/gorascal/. The header and homepage hero show the wordmark on a white chip, sized by height. The footer shows the navy seal beside the licensing block. The outline seal and the brownstone illustration are not displayed. Organization schema points at the wordmark URL. Not merged.
+
 ## 2026-10-29 — Preview: NMLS licensed location in the footer
 
 - The footer and /licensing.html show the NMLS licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249. Organization, LocalBusiness, and FinancialService schema use that postal address. areaServed stays Texas. Not merged.

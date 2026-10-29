@@ -45,7 +45,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
       "url": siteOrigin(),
       "logo": {
         "@type": "ImageObject",
-        "url": siteOrigin() + '/assets/logo.png'
+        "url": siteOrigin() + '/assets/brand/gorascal/gorascal-wordmark.png'
       }
     },
     "mainEntityOfPage": {
@@ -108,8 +108,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <span class="nav-wordmark">The Styer Team</span><span class="nav-powered">Powered by Go Rascal Inc.</span>
-<!-- TODO(compliance): Powered by Go Rascal Inc. approved mark. Empty until Compliance provides the file. Do not draw a logo. -->
+          <span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -239,7 +238,9 @@ ${rateBox}
       <div class="footer-divider"></div>
 
       <div class="footer-bottom">
-        <div>                    <!-- TODO(compliance): Powered by Go Rascal Inc. approved mark in the footer. Empty until Compliance provides the file. Do not draw a logo. -->
+        <div class="site-footer-legal">
+          <img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy.png" alt="Go Rascal Inc." height="64">
+          <div class="site-footer-legal-copy">
           <p>Adam Styer | Mortgage Loan Originator</p>
           <p><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS ID #513013</a></p>
           <p><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)</a></p>
@@ -249,7 +250,7 @@ ${rateBox}
           <p>Licensed in: TX</p>
           <p>Loans are arranged through third party lenders.</p>
           <p><a href="/licensing.html">State-specific consumer disclosures available on the Licensing &amp; Disclosures page.</a></p>
-
+          </div>
         </div>
       </div>
     </div>
