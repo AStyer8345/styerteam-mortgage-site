@@ -1,4 +1,5 @@
 const { requireDispatchAuth } = require("./lib/dispatch-auth");
+const { siteOrigin } = require('../scripts/site-origin.cjs');
 const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildRealtorPrompt } = require("./lib/realtor-prompt-builder");
@@ -71,7 +72,7 @@ async function generateRealtorContent(formData) {
       .replace(/-+$/, "");
     const fullSlug = `${today}-${slug}`;
     const filename = `${fullSlug}.html`;
-    const pageUrl = `https://styermortgage.com/realtor-updates/${filename}`;
+    const pageUrl = `${siteOrigin()}/realtor-updates/${filename}`;
 
     // ----------------------------------------------------------------
     // STEP 1: Generate or assemble content

@@ -9,14 +9,14 @@ for (const city of ['dallas','san-antonio']) {
   const filename = `${city}-mortgage-lender.html`;
   const html = fs.readFileSync(filename,'utf8');
   test(`${city} guide is discoverable and has accurate, visible structured answers`, () => {
-    const url = `https://styermortgage.com/${filename}`;
+    const url = `https://thestyerteam.com/${filename}`;
     assert.ok(home.includes(`href="/${filename}"`));
     assert.ok(sitemap.includes(`<loc>${url}</loc>`));
     assert.ok(html.includes(`<link rel="canonical" href="${url}">`));
     assert.equal((html.match(/<h1\b/g)||[]).length,1);
     const graph = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
     const service = graph.find(n=>n['@type']==='Service');
-    assert.equal(service.provider['@id'],'https://styermortgage.com/#business');
+    assert.equal(service.provider['@id'],'https://thestyerteam.com/#business');
     assert.equal(service.areaServed['@type'],'City');
     assert.equal(service.address,undefined);
     assert.equal(service.geo,undefined);
@@ -33,7 +33,7 @@ for (const city of ['dallas','san-antonio']) {
     for(const [,href] of html.matchAll(/href="([^"]+)"/g)) {
       if(href.startsWith('#')) {assert.ok(ids.has(href.slice(1)),`Missing anchor ${href}`);continue;}
       if(!href.startsWith('/'))continue;
-      const pathname = new URL(decode(href),'https://styermortgage.com').pathname;
+      const pathname = new URL(decode(href),'https://thestyerteam.com').pathname;
       const file = pathname.endsWith('/') ? pathname+'index.html' : pathname;
       assert.ok(fs.existsSync(path.join(process.cwd(),file.slice(1))),`Missing local destination ${href}`);
     }

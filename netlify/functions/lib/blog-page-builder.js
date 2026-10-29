@@ -1,4 +1,5 @@
 const { refineLongform } = require('./refine-longform');
+const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
  * Builds a full SEO-optimized HTML page for /blog/ from AI-generated content.
  * Unlike page-builder.js (used for /updates/), this version:
@@ -11,7 +12,7 @@ const { refineLongform } = require('./refine-longform');
 function buildBlogPage({ title, description, date, slug, content, rates, category }) {
   const formattedDate = formatDate(date);
   const isoDate = date; // Already YYYY-MM-DD
-  const pageUrl = `https://styermortgage.com/blog/${slug}.html`;
+  const pageUrl = `${siteOrigin()}/blog/${slug}.html`;
 
   // Build optional rate box
   let rateBox = "";
@@ -31,7 +32,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
     "author": {
       "@type": "Person",
       "name": "Adam Styer",
-      "url": "https://styermortgage.com/about.html",
+      "url": siteOrigin() + '/about.html',
       "jobTitle": "Senior Loan Officer",
       "worksFor": {
         "@type": "Organization",
@@ -41,10 +42,10 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
     "publisher": {
       "@type": "Organization",
       "name": "The Styer Team, Powered by Go Rascal Inc.",
-      "url": "https://styermortgage.com",
+      "url": siteOrigin(),
       "logo": {
         "@type": "ImageObject",
-        "url": "https://styermortgage.com/assets/logo.png"
+        "url": siteOrigin() + '/assets/logo.png'
       }
     },
     "mainEntityOfPage": {

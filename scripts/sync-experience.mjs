@@ -4,7 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { refineLongform } from '../netlify/functions/lib/refine-longform.js';
 
 // Additive, repeatable publishing rule. Keeps the page body, URLs and SEO intact.
-const application = 'https://styermortgage.com/contact.html';
+const application = 'https://thestyerteam.com/contact.html';
 const apply = `<li><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>`;
 const style = '<link rel="stylesheet" href="/experience.css">';
 const behavior = '<script src="/experience.js" defer></script>';

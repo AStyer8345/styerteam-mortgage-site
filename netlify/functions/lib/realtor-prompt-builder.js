@@ -19,7 +19,7 @@ function buildRealtorPrompt(formData, pageUrl) {
 
   let prompt = `You write weekly content for Adam Styer, mortgage loan originator at The Styer Team, Powered by Go Rascal Inc. in Austin, TX (NMLS# 513013, Company NMLS# 2072896).
 
-This content targets REALTORS — Adam's #1 referral partners. It will be published as an article on styermortgage.com and indexed by Google.
+This content targets REALTORS — Adam's #1 referral partners. It will be published as an article on thestyerteam.com and indexed by Google.
 
 ## AUDIENCE: REAL ESTATE AGENTS
 You are writing to experienced real estate professionals. NOT homebuyers. NOT consumers.

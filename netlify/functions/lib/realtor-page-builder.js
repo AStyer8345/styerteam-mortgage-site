@@ -1,4 +1,5 @@
 const { refineLongform } = require('./refine-longform');
+const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
  * Builds a full SEO-optimized HTML page for /realtor-updates/ from AI-generated content.
  * Parallel to blog-page-builder.js but targeted at realtors:
@@ -13,7 +14,7 @@ const { refineLongform } = require('./refine-longform');
 function buildRealtorPage({ title, description, date, slug, content, category }) {
   const formattedDate = formatDate(date);
   const isoDate = date; // Already YYYY-MM-DD
-  const pageUrl = `https://styermortgage.com/realtor-updates/${slug}.html`;
+  const pageUrl = `${siteOrigin()}/realtor-updates/${slug}.html`;
 
   // Article structured data for Google rich results
   const articleSchema = JSON.stringify({
@@ -27,7 +28,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
     "author": {
       "@type": "Person",
       "name": "Adam Styer",
-      "url": "https://styermortgage.com/about.html",
+      "url": siteOrigin() + '/about.html',
       "jobTitle": "Senior Loan Officer",
       "worksFor": {
         "@type": "Organization",
@@ -37,10 +38,10 @@ function buildRealtorPage({ title, description, date, slug, content, category })
     "publisher": {
       "@type": "Organization",
       "name": "The Styer Team, Powered by Go Rascal Inc.",
-      "url": "https://styermortgage.com",
+      "url": siteOrigin(),
       "logo": {
         "@type": "ImageObject",
-        "url": "https://styermortgage.com/assets/logo.png"
+        "url": siteOrigin() + '/assets/logo.png'
       }
     },
     "mainEntityOfPage": {

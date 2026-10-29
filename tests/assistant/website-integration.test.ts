@@ -125,7 +125,7 @@ test('conversations persist across page navigation in the same tab', () => {
   assert.match(browser, /if \(!state\.conversationStarted\) addSuggestedReplies\(starterSuggestedReplies\(professionalMode\)\)/);
 });
 
-test('assistant links remain on styermortgage.com and public direct-contact email uses Adam portable inbox', () => {
+test('assistant links remain on thestyerteam.com and public direct-contact email uses Adam portable inbox', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
   const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
   const resources = fs.readFileSync('netlify/functions/_shared/assistant-resources.ts', 'utf8');

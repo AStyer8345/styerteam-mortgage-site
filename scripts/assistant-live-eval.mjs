@@ -6,7 +6,7 @@
 // --lead additionally exercises the full contact-request flow through
 // confirmation, which creates a clearly-labeled test lead in LoanOS staging
 // and may notify Adam — only pass it intentionally.
-const BASE = process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : 'https://styermortgage.com';
+const BASE = process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : 'https://thestyerteam.com';
 const ONLY = (() => { const i = process.argv.indexOf('--case'); return i > -1 ? process.argv[i + 1] : null; })();
 const RUN_LEAD = process.argv.includes('--lead');
 const ENDPOINT = `${BASE}/api/mortgage-assistant`;

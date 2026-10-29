@@ -1,4 +1,5 @@
 const { requireDispatchAuth } = require("./lib/dispatch-auth");
+const { siteOrigin } = require('../scripts/site-origin.cjs');
 const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildPrompt } = require("./lib/prompt-builder");
@@ -81,7 +82,7 @@ async function generateNewsletter(formData) {
       .replace(/-+$/, "");
     const blogSlug = `${today}-${slug}`;
     const filename = `${blogSlug}.html`;
-    const pageUrl = `https://styermortgage.com/blog/${filename}`;
+    const pageUrl = `${siteOrigin()}/blog/${filename}`;
 
     // ----------------------------------------------------------------
     // STEP 1: Generate or assemble content
@@ -243,7 +244,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
           .replace(/-+$/, "");
         const realBlogSlug = `${today}-${realSlug}`;
         const realFilename = `${realBlogSlug}.html`;
-        const realPageUrl = `https://styermortgage.com/blog/${realFilename}`;
+        const realPageUrl = `${siteOrigin()}/blog/${realFilename}`;
 
         // Swap temp URL for real URL in all generated content
         const swapUrl = (s) => s ? s.split(pageUrl).join(realPageUrl) : s;
@@ -547,7 +548,7 @@ async function updateBlogManifest({ slug, title, description, date, category }) 
 
 async function updateBlogHtmlIndex({ slug, title }) {
   const relUrl = `/blog/${slug}.html`;
-  const fullUrl = `https://styermortgage.com${relUrl}`;
+  const fullUrl = `${siteOrigin()}${relUrl}`;
   // Escape for HTML/JSON contexts. Title is plain text from form/AI — sanitize defensively.
   const htmlSafe = title
     .replace(/&/g, "&amp;")

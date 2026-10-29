@@ -14,7 +14,7 @@ test('all five journeys retain intent and every initial answer in the existing i
     data.set('situation', 'Additional information');
     data.set('tcpa_consent', 'on');
     data.set('inquiry_id', 'mock-inquiry-1234');
-    const payload = makePayload(data, questions, journey.intent, `https://styermortgage.com/${journey.file}`);
+    const payload = makePayload(data, questions, journey.intent, `https://thestyerteam.com/${journey.file}`);
     questions.forEach(({ name, label }) => assert.ok(payload.situation.includes(`${label}: ${data.get(name)}`)));
     assert.ok(payload.situation.includes('Additional context: Additional information'));
     assert.equal(payload.intent, journey.intent);
@@ -57,7 +57,7 @@ test('homepage conversation replaces product choices without retiring specialist
   for (const journey of journeys) {
     const html = fs.readFileSync(journey.file, 'utf8');
     assert.ok(html.includes(`name="intent" value="${journey.file === 'get-preapproved.html' ? 'general' : journey.intent}"`));
-    assert.ok(html.includes(`https://styermortgage.com/${journey.file}`));
+    assert.ok(html.includes(`https://thestyerteam.com/${journey.file}`));
     assert.ok(html.includes('situation-journeys.js'));
     assert.ok(html.includes('assets/utm.js'));
     assert.ok(html.includes('Contact Adam'));
@@ -90,7 +90,7 @@ test('redirected HTML and malformed primary receipts are not capture proof', asy
 
  test('goal-only homepage inquiries retain their purpose without a required message', () => {
   const data = new URLSearchParams({name:'Local Test',email:'local@example.invalid',loan_goal:'Build','form-name':'contact',message:''});
-  const payload = makePayload(data, [], 'construction', 'https://styermortgage.com/');
+  const payload = makePayload(data, [], 'construction', 'https://thestyerteam.com/');
   assert.equal(payload.loan_goal, 'Build');
   assert.equal(payload.situation, 'Financing goal: Build');
   assert.equal(payload.intent, 'construction');
@@ -99,7 +99,7 @@ test('redirected HTML and malformed primary receipts are not capture proof', asy
 test('self-reported discovery stays separate from automatic attribution and enters owner notes only when answered', () => {
   for (const answer of ['', 'ChatGPT', 'Gemini']) {
     const data = new URLSearchParams({ self_reported_source: answer, first_touch_source: 'google', source: 'homepage_options', message: 'Use my assets', 'form-name': 'contact' });
-    const payload = makePayload(data, [], 'general', 'https://styermortgage.com/contact.html');
+    const payload = makePayload(data, [], 'general', 'https://thestyerteam.com/contact.html');
     assert.equal(payload.self_reported_source, answer);
     assert.equal(payload.first_touch_source, 'google');
     assert.equal(payload.source, 'homepage_options');

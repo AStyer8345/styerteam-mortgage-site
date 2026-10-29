@@ -23,7 +23,7 @@ test('public pages, assets and publishing responses do not restore the former af
   assert.deepEqual(issues, []);
   for (const file of ['index.html','contact.html','scenario.html','thank-you.html']) {
     const html=fs.readFileSync(file,'utf8');
-    assert.ok(html.includes('https://styermortgage.com/contact.html'),file);
+    assert.ok(html.includes('https://thestyerteam.com/contact.html'),file);
     assert.ok(html.includes('513013'),file);
   }
 });

@@ -67,24 +67,24 @@ test('the plain notice stays available for callers that only need text', () => {
 test('rate questions about "your rates" route to the rate review page', () => {
   assert.deepEqual(recommendApprovedResources('what are your rates?'), [{
     label: 'Request a rate review',
-    url: 'https://styermortgage.com/rate-check.html',
+    url: 'https://thestyerteam.com/rate-check.html',
   }]);
 });
 
 test('unsupported questions still recommend the right approved calculator', () => {
   assert.deepEqual(recommendApprovedResources('How much house can I afford?'), [{
     label: 'Home affordability calculator',
-    url: 'https://styermortgage.com/calculator-affordability.html',
+    url: 'https://thestyerteam.com/calculator-affordability.html',
   }]);
   assert.deepEqual(recommendApprovedResources('What is an FHA loan?'), []);
 });
 
 test('short reviews and pre-approval requests use the proven contact form while full applications request current instructions from Adam', () => {
-  const scenarioUrl = 'https://styermortgage.com/get-preapproved.html?intent=scenario';
+  const scenarioUrl = 'https://thestyerteam.com/get-preapproved.html?intent=scenario';
   for (const message of ['I want to get pre-approved', 'Can Adam review my scenario?', 'I want to apply', 'I need a short review']) {
     assert.deepEqual(conversionResources('ready', message), [{ label: 'Send Adam my scenario', url: scenarioUrl }]);
   }
   for (const message of ['I am ready to complete the full application', 'Open the secure portal', 'Send me the My1003']) {
-    assert.deepEqual(conversionResources('ready', message), [{ label: 'Contact Adam about applying', url: 'https://styermortgage.com/contact.html' }]);
+    assert.deepEqual(conversionResources('ready', message), [{ label: 'Contact Adam about applying', url: 'https://thestyerteam.com/contact.html' }]);
   }
 });

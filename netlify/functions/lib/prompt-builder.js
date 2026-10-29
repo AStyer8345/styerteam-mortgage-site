@@ -38,7 +38,7 @@ TONE: Casual, direct, like a text or quick email to someone you actually know.
 
   let prompt = `You write weekly blog content for Adam Styer, mortgage loan originator at The Styer Team, Powered by Go Rascal Inc. in Austin, TX (NMLS# 513013, Company NMLS# 2072896).
 
-This content will be published as a blog article on styermortgage.com and indexed by Google. Write for BOTH human readers AND search engines.
+This content will be published as a blog article on thestyerteam.com and indexed by Google. Write for BOTH human readers AND search engines.
 
 ${voiceSection}
 

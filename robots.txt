@@ -40,4 +40,4 @@ Disallow: /updates/2026-04-01-test.html
 Disallow: /scenarios/_TEMPLATE.html
 Disallow: /task-reports.json
 
-Sitemap: https://styermortgage.com/sitemap.xml
+Sitemap: https://thestyerteam.com/sitemap.xml

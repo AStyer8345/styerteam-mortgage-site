@@ -1,4 +1,5 @@
 const { refineLongform } = require('./refine-longform');
+const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
  * Builds a full HTML page for /updates/ from AI-generated content.
  * These pages use noindex — the canonical SEO version lives at /blog/.
@@ -8,8 +9,8 @@ const { refineLongform } = require('./refine-longform');
 function buildWebPage({ title, description, date, content }) {
   const formattedDate = formatDate(date);
   const slug = slugify(title);
-  const pageUrl = `https://styermortgage.com/updates/${date}-${slug}.html`;
-  const canonicalUrl = `https://styermortgage.com/blog/${date}-${slug}.html`;
+  const pageUrl = `${siteOrigin()}/updates/${date}-${slug}.html`;
+  const canonicalUrl = `${siteOrigin()}/blog/${date}-${slug}.html`;
 
   return refineLongform(`<!DOCTYPE html>
 <html lang="en">

@@ -1,4 +1,5 @@
 const { refineLongform } = require('./refine-longform');
+const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
  * Builds a full HTML page for /rates/ from rate data + AI commentary.
  * The rate table is the star — built server-side, not by the AI.
@@ -24,7 +25,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escapeHtml(title)} | The Styer Team, Powered by Go Rascal Inc.</title>
   <meta name="description" content="${escapeHtml(description)}">
-  <link rel="canonical" href="https://styermortgage.com/rates/${date}.html">
+  <link rel="canonical" href="${siteOrigin()}/rates/${date}.html">
 
   <meta name="robots" content="noindex, nofollow">
 

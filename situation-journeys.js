@@ -262,7 +262,7 @@
         var application=root.document.createElement('div');application.className='journey-application';
         var title=root.document.createElement('h3');title.textContent='Want to get a head start?';application.appendChild(title);
         var detail=root.document.createElement('p');detail.textContent='Contact Adam to arrange the current secure application. Your credit will not be run automatically. This step is entirely optional — it’s fine to wait and talk with Adam first.';application.appendChild(detail);
-        var apply=root.document.createElement('a');apply.href='https://styermortgage.com/contact.html';apply.rel='noopener';apply.className='journey-application-link';apply.textContent='Contact Adam about applying';application.appendChild(apply);status.appendChild(application);
+        var apply=root.document.createElement('a');apply.href='https://thestyerteam.com/contact.html';apply.rel='noopener';apply.className='journey-application-link';apply.textContent='Contact Adam about applying';application.appendChild(apply);status.appendChild(application);
       }
       var another = root.document.createElement('button');
       another.type = 'button'; another.className = 'journey-back'; another.textContent = 'Send another request';

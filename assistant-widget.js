@@ -536,7 +536,7 @@
   function addTrustedLink(value, label) {
     try {
       var url = new URL(value);
-      var approvedHost = url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'calendly.com';
+      var approvedHost = url.hostname === 'thestyerteam.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'calendly.com';
       if (url.protocol !== 'https:' || !approvedHost) return;
       var wrapper = document.createElement('div');
       wrapper.className = 'ma-trusted-link';
@@ -568,7 +568,7 @@
       if (typeof action.url !== 'string') return;
       try {
         var url = new URL(action.url);
-        var approved = url.protocol === 'https:' && (url.hostname === 'styermortgage.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'calendly.com');
+        var approved = url.protocol === 'https:' && (url.hostname === 'thestyerteam.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'calendly.com');
         if (!approved) return;
         var link = document.createElement('a');
         link.href = url.href;

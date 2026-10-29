@@ -1,4 +1,5 @@
 const Anthropic = require("@anthropic-ai/sdk");
+const { siteOrigin } = require('../scripts/site-origin.cjs');
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const crypto = require("crypto");
 const { buildRatePrompt } = require("./lib/rate-prompt-builder");
@@ -47,7 +48,7 @@ async function generateRateUpdate(formData) {
     // ----------------------------------------------------------------
     const today = new Date().toISOString().split("T")[0];
     const filename = `${today}.html`;
-    const pageUrl = `https://styermortgage.com/rates/${filename}`;
+    const pageUrl = `${siteOrigin()}/rates/${filename}`;
     let ratesJsonBody = null;
 
     if (!isPreview) {
