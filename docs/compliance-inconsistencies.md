@@ -11,4 +11,3 @@
 | Form retention/notifications | Netlify UI configuration and LoanOS/n8n retention are not represented fully in source | Confirm recipients, access controls, retention, deletion, and consent logging |
 | Accessibility statement | Privacy/terms/Equal Housing pages exist; no dedicated accessibility statement was identified | Decide whether counsel/compliance wants a public accessibility statement and contact path |
 
-Values treated as verified for this implementation: company NMLS 2072896, Adam NMLS 513013, legal entity The Styer Team · Powered by GoRascal, principal address 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78759, direct phone (512) 956-6010, and the current `the former employer.contact.com` secure application URL.

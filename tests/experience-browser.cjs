@@ -3,7 +3,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const base=process.env.PREVIEW_URL || 'http://127.0.0.1:4173';
-if(!/127\.0\.0\.1|--shiny-paprenjak-c7e741\.netlify\.app/.test(base)||base.includes('styermortgage.com'))throw new Error('Controlled preview required');
+if(!/127\.0\.0\.1|--shiny-paprenjak-c7e741\.netlify\.app/.test(base)||base.includes('thestyerteam.com'))throw new Error('Controlled preview required');
 const output=process.env.REVIEW_OUTPUT||'/tmp/styer-experience-tests';fs.mkdirSync(output,{recursive:true});
 (async()=>{
  const browser=await chromium.launch({channel:'chrome',headless:true});

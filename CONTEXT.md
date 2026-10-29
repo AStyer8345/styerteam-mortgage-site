@@ -19,8 +19,6 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-**2026-10-29 — Claims preview, PR #42, not merged.** The DSCR rate answer now names what sets the price. High-net-worth and self-employed no longer carry a line about a number the page will not give. DSCR Texas, high-net-worth, bank statement, and self-employed pages have the live FAQ sets and direct answers back, without rate quotes, close-day promises, or a lender count. Public copy no longer states a specific wholesale-lender count. The homepage pricing line says many wholesale lenders and “my cell.” Team name is “The Styer Team, Powered by Go Rascal Inc.” Footer states company NMLS# 2072896, Adam Styer NMLS# 513013, Licensed in: Texas, Go Rascal Inc. Main Office in Brooklyn, and Local Office: 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731. The homepage stat tile says Texas / Licensed. Pre-approval copy does not promise a time. Header is a text wordmark until a GoRascal-approved logo arrives. Do not deploy.
-
 Personal websites must be approved in writing by GoRascal Compliance before publishing. Typical approval time is 3–5 business days. Do not launch until written approval is received.
 
 Insert GoRascal-approved logo once received.

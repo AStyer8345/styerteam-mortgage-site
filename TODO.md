@@ -185,7 +185,6 @@ On `self-employed-mortgage-austin.html` specifically it appears in three places:
 
 **Decision needed:** site-wide sweep to "correspondent lender," leave as-is, or a hybrid (correspondent in positioning copy, broker retained only where it is the legal designation). Note the Texas regulatory footer language "Licensed Mortgage Broker" is a legal designation and must be preserved either way per `CLAUDE.md`.
 
-
 Items auto-appended by scheduled remote agents land here. Glance weekly.
 
 - [ ] **NEEDS ADAM (NEW 2026-08-20, from styer-site-daily, MEDIUM — license-type copy) — 3 pages advertise you as a "correspondent lender" while their own footer says you're a Licensed Mortgage Broker.** Most explicit is `blog/local-lender-vs-online-lender-austin-central-texas.html`: **"I'm a correspondent lender in Austin — fund in my own name"**, three times. Also `realtors.html` (×3 — "As a correspondent lender, we have access to numerous lending partners", which actually describes broker behavior) and `blog/2026-03-27-down-payment-assistance-texas-2026.html`. Every page's own NMLS footer reads *"The Styer Team · Powered by GoRascal is a **Licensed Mortgage Broker** in Texas."* **The upstream cause is your voice guide** — `loanos-clone/tasks/social-media/adam-voice-and-workflow.md`, last updated **2026-03-29 (pre-the former company)**, instructs in four places that you're a correspondent lender "not a broker" and calls it a differentiator to use. Every content agent reads it first, so this regenerates. I did not touch either: license-type copy is Adam-gated, and the guide lives in paused `loanos-clone`. **Directly in scope for the GOALS.md pre-audit compliance cleanup** — which is correct for the the former company entity?
@@ -220,7 +219,6 @@ Items auto-appended by scheduled remote agents land here. Glance weekly.
 
 - [ ] **Cedar Park rebuild live (2026-05-24).** Submit https://styermortgage.com/cedar-park-mortgage-lender.html to GSC → Request Indexing. Also submit https://styermortgage.com/index.html and https://styermortgage.com/austin-area-mortgage-lender.html (internal links added to both).
 
-
 - [x] **USDA in how-to-buy loan table (2026-04-23)** — DONE 2026-06-09: table row replaced with DPA programs (TSAHC/TDHCA) linking /resources/detailed-guides/austin-down-payment-assistance.html. Informational VA/USDA 0%-down comparisons in body/schema kept (educational, no origination claim). Full Decision 1(b) USDA repositioning executed on all 8 Class-A suburb pages same session.
 
 - [ ] **NotebookLM script path broken (2026-04-23)** — `/Users/adamstyer/loanos/scripts/notebook_advisor.py` not found (loanos/ dir abandoned). Either locate the correct path or retire the NotebookLM step from the daily scheduled task.
@@ -252,7 +250,7 @@ Items auto-appended by scheduled remote agents land here. Glance weekly.
 - [x] **Phase 3** — Build 7 new non-QM/DSCR pages (hub + 6 spokes)
 - [x] **Phase 4** — Site-wide nav restructure (Loan Programs dropdown across 66 files); USDA noindex; about.html NAP fix; internal hub-and-spoke linking
 - [x] **Phase 5** — CONTEXT/CHANGELOG/DECISIONS/TODO/sitemap updates + deployment checklist
-- [x] **about.html canonical address resolved** — aligned to 7600 N Capital of Texas Hwy, Suite 230, Office 105 (closes 12+ run blocker)
+
 - [x] **USDA cascade decision** — noindex + remove from nav + product card; reversible
 - [ ] **Round Rock rebuild live (2026-05-17 — Phase 1a).** Submit https://styermortgage.com/round-rock-mortgage-lender.html to Google Search Console via URL Inspection → Request Indexing.
 

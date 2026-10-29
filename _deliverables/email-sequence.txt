@@ -45,7 +45,6 @@ The Styer Team, Powered by Go Rascal Inc.
 (512) 956-6010
 adam@thestyerteam.com
 
-
 ============================================================
 EMAIL 2 — SEND 3 DAYS AFTER EMAIL 1
 ============================================================
@@ -90,7 +89,6 @@ The Styer Team, Powered by Go Rascal Inc.
 (512) 956-6010
 adam@thestyerteam.com
 
-
 ============================================================
 EMAIL 3 — SEND 5 DAYS AFTER EMAIL 2
 ============================================================
@@ -129,7 +127,6 @@ Senior Loan Officer | NMLS #513013
 The Styer Team, Powered by Go Rascal Inc.
 (512) 956-6010
 adam@thestyerteam.com
-
 
 ============================================================
 SEQUENCE NOTES
