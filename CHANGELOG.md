@@ -1,3 +1,7 @@
+## 2026-10-29 — Preview: DSCR price answer states what sets the price
+
+- The DSCR rate answer names the factors that set the price and no longer says a number cannot be pinned in a paragraph. Two other withholding lines, on the high-net-worth and self-employed pages, now state the rule instead. Not merged.
+
 ## 2026-10-28 — Preview: specialty page depth restored
 
 - DSCR Texas, high-net-worth, bank statement, and self-employed pages take the live FAQ sets and direct answers back, inside the current layout. Titles and descriptions use the Austin and Texas framing. Rate quotes, close-day promises, lender counts, and case dollar amounts were rewritten. Not merged.
