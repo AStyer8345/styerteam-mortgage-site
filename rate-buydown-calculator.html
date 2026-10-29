@@ -476,7 +476,7 @@
 <!-- Buydown vs. Price Reduction Comparison -->
 <div class="bd-comparison-panel" id="bd-comparison-panel" style="display:none;">
 <h2>Buydown vs. Price Reduction</h2>
-<p class="bd-comp-intro">Given the same seller cost — which saves the buyer more in their first 2 years?</p>
+<p class="bd-comp-intro">Given the same seller cost, which changes the buyer's payment more in the first 2 years?</p>
 <div class="bd-comparison-cards">
 <div class="bd-comp-card" id="bd-comp-buydown-card">
 <div class="bd-comp-label">Seller-Paid Buydown</div>
@@ -1102,11 +1102,11 @@
           verdict.className = 'bd-comp-verdict bd-comp-verdict--tie';
         } else if (diff > 0) {
           buydownCard.classList.add('winner');
-          verdict.textContent = '\u2713 Buydown saves ' + fmtDollarInt(diff) + ' more over the first 2 years.';
+          verdict.textContent = '\u2713 Buydown changes the payment by ' + fmtDollarInt(diff) + ' more over the first 2 years.';
           verdict.className = 'bd-comp-verdict bd-comp-verdict--buydown';
         } else {
           priceCard.classList.add('winner');
-          verdict.textContent = '\u2713 Price reduction saves ' + fmtDollarInt(-diff) + ' more over the first 2 years.';
+          verdict.textContent = '\u2713 Price reduction changes the payment by ' + fmtDollarInt(-diff) + ' more over the first 2 years.';
           verdict.className = 'bd-comp-verdict bd-comp-verdict--price';
         }
       }

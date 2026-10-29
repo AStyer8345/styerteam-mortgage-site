@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-GoRascal footer format, Texas licensing rows, header and hero “Powered by Go Rascal Inc.”, marketing pre-qualification wording, and removal of Adam’s Founder job title. Close-time, rate, savings, and guarantee claims are inventoried in docs/compliance-flags-2026-10-29.md and were left in place. Personal websites still need written GoRascal approval before publishing. Do not merge this preview.
+Close-day, savings, and guarantee marketing lines are stripped on the preview. Rate pages and rate-commentary posts are unchanged. The inventory in docs/compliance-flags-2026-10-29.md now has a status column. Personal websites still need written GoRascal approval before publishing. Do not merge this preview.
 
 Insert GoRascal-approved logo once received.
 

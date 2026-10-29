@@ -1,3 +1,7 @@
+## 2026-10-29 — Preview: close-day, savings, and guarantee lines removed
+
+- Close-day claims, dollar savings claims, and “best rate” / “lowest rate” promises are rewritten or removed. Rate pages and the rate-commentary posts are unchanged. “Guaranteed Backup Contract” is now a backup purchase agreement. The HECM line-of-credit sentence no longer says guaranteed. Factual VA, USDA, and personal-guarantee wording stays. Not merged.
+
 ## 2026-10-29 — Preview: GoRascal footer, titles, and pre-qualification wording
 
 - The footer licensing block is the seven-line GoRascal format, including “Licensed in: TX” and the link to /licensing.html. The licensing page adds the Texas license row, regulator row, and the Texas Residents disclaimer at 2601 N. Lamar.

@@ -6,7 +6,7 @@ const CORRECTION_HTML = `
 <div style="font-family: Arial, Helvetica, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333; line-height: 1.6;">
   <p>Hey &mdash;</p>
   <p>I messed up the link in my last email. Technology, right?</p>
-  <p>Here's the actual article: <a href="${siteOrigin()}/updates/2026-02-20-fast-closes-teamwork-and-spring-market-momentum.html" style="color: #1a73e8; text-decoration: underline;">Fast Closes and Spring Market Momentum</a></p>
+  <p>Here's the actual article: <a href="${siteOrigin()}/updates/2026-02-20-fast-closes-teamwork-and-spring-market-momentum.html" style="color: #1a73e8; text-decoration: underline;">Teamwork and the Spring Market</a></p>
   <p>Sorry about that. Talk soon,</p>
   <p>
     Adam Styer<br>

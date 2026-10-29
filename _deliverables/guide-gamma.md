@@ -136,7 +136,7 @@ I see these kill deals every single week:
 2. **Making large deposits** without a paper trail (lenders will ask where it came from)
 3. **Changing jobs** during the mortgage process
 4. **Co-signing for someone else's loan** — this counts as your debt
-5. **Skipping the home inspection** to save $500 (this can cost you $50,000)
+5. **Skipping the home inspection** to avoid the inspection fee (a missed repair can cost far more)
 
 The golden rule: Don't change anything about your financial life between pre-qualification and closing. No new cars. No furniture on credit. No job changes if you can help it.
 
@@ -154,7 +154,7 @@ From first call to closing day, here's the timeline:
 - **Week 4 after contract**: Clear to close, final walkthrough
 - **Closing day**: Sign documents, get your keys
 
-Average timeline in Austin: **30–45 days** from accepted offer to closing. Cash purchases can close in 2–3 weeks.
+How long closing takes depends on the program, the appraisal, title, and when the documents come in. A cash purchase has fewer lender steps.
 
 ---
 
