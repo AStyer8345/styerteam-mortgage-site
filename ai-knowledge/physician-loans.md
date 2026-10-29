@@ -20,4 +20,4 @@ The assistant may explain the general purpose of these programs. It must refer q
 
 General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
 
-- https://styermortgage.com/blog/2026-05-30-physician-mortgage-texas.html
+- https://thestyerteam.com/blog/2026-05-30-physician-mortgage-texas.html

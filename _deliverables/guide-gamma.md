@@ -220,7 +220,7 @@ You've got the knowledge. Now let's put it to work.
 
 - **Get pre-approved**: Find out exactly what you qualify for — no obligation, no pressure
 - **Call or text Adam**: (512) 956-6010
-- **Email**: adam@thestyerteam.com
+- **Email**: adamstyer@gorascal.com
 - **Apply online**: [Start Your Application](/contact.html?goal=Purchase"I wrote this guide because I was tired of watching first-time buyers get bad advice. This is the same conversation I have with every buyer who sits across from me. No sales pitch. Just the truth about what it takes to buy a home in Austin."
 > — Adam Styer, NMLS #513013
 

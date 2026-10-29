@@ -43,7 +43,7 @@ Adam Styer
 Senior Loan Officer | NMLS #513013
 The Styer Team, Powered by Go Rascal Inc.
 (512) 956-6010
-adam@thestyerteam.com
+adamstyer@gorascal.com
 
 ============================================================
 EMAIL 2 — SEND 3 DAYS AFTER EMAIL 1
@@ -87,7 +87,7 @@ Adam Styer
 Senior Loan Officer | NMLS #513013
 The Styer Team, Powered by Go Rascal Inc.
 (512) 956-6010
-adam@thestyerteam.com
+adamstyer@gorascal.com
 
 ============================================================
 EMAIL 3 — SEND 5 DAYS AFTER EMAIL 2
@@ -126,7 +126,7 @@ Adam Styer
 Senior Loan Officer | NMLS #513013
 The Styer Team, Powered by Go Rascal Inc.
 (512) 956-6010
-adam@thestyerteam.com
+adamstyer@gorascal.com
 
 ============================================================
 SEQUENCE NOTES
@@ -142,8 +142,8 @@ MAILCHIMP SETUP:
   - Trigger: Subscriber joins the guide opt-in audience/tag
   - 3 emails with time delays as noted above
   - From name: Adam Styer
-  - From email: adam@thestyerteam.com
-  - Reply-to: adam@thestyerteam.com
+  - From email: adamstyer@gorascal.com
+  - Reply-to: adamstyer@gorascal.com
 
 SUBJECT LINE A/B TEST IDEAS:
   Email 1 Alt: "Here's your guide + the #1 mistake I see Austin buyers make"

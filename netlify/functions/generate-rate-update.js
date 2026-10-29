@@ -152,7 +152,7 @@ async function generateRateUpdate(formData) {
               preheader: parsed.borrowerPreheader || "",
               html: wrapEmailHtml(parsed.borrowerEmail),
               fromName: "Adam Styer",
-              replyTo: "adam@thestyerteam.com",
+              replyTo: "adamstyer@gorascal.com",
             });
             results.campaigns.push({ audience: "borrower", ...borrowerResult });
           } catch (err) {
@@ -169,7 +169,7 @@ async function generateRateUpdate(formData) {
               preheader: parsed.realtorPreheader || "",
               html: wrapEmailHtml(parsed.realtorEmail),
               fromName: "Adam Styer",
-              replyTo: "adam@thestyerteam.com",
+              replyTo: "adamstyer@gorascal.com",
             });
             results.campaigns.push({ audience: "realtor", ...realtorResult });
           } catch (err) {

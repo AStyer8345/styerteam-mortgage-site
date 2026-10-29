@@ -14,7 +14,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 |------|-------|
 | Repo | `AStyer8345/styerteam-mortgage-site` |
 | Hosting | Netlify, publish `.site-dist` |
-| Domain | `https://styermortgage.com` |
+| Domain | Preview origin `https://thestyerteam.com` (not live). Production host is still styermortgage.com until Compliance approves the cutover. |
 | Production branch | `main` |
 
 ## Last Worked On

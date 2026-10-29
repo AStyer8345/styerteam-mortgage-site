@@ -118,8 +118,8 @@ for (const [file, source] of [
   ['netlify/functions/subscribe-lo.js', subscribeLo],
   ['netlify/functions/subscribe-lead.js', subscribeLead],
 ]) {
-  if (!/ADAM_NOTIFICATION_EMAIL[\s\S]*adam@thestyerteam\.com/.test(source)) {
-    failures.push(`${file}: owner-notification fallback is not adam@thestyerteam.com.`);
+  if (!/ADAM_NOTIFICATION_EMAIL[\s\S]*adamstyer@gorascal\.com/.test(source)) {
+    failures.push(`${file}: owner-notification fallback is not adamstyer@gorascal.com.`);
   }
 }
 if (!/id="dscr-lead" hidden/.test(dscrCalculator) || !/var WEBHOOK_URL = "";/.test(dscrCalculator)) {

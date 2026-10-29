@@ -165,7 +165,7 @@ function buildWebPage({ title, description, date, content }) {
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
-            <a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a><br>
+            <a href="mailto:adamstyer@gorascal.com">adamstyer@gorascal.com</a><br>
             Austin, TX
           </p>
         </div>

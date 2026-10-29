@@ -536,7 +536,7 @@
   function addTrustedLink(value, label) {
     try {
       var url = new URL(value);
-      var approvedHost = url.hostname === 'thestyerteam.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'calendly.com';
+      var approvedHost = /^(www\.)?(thestyerteam\.com|styermortgage\.com)$/.test(url.hostname) || url.hostname === 'calendly.com';
       if (url.protocol !== 'https:' || !approvedHost) return;
       var wrapper = document.createElement('div');
       wrapper.className = 'ma-trusted-link';
@@ -568,7 +568,7 @@
       if (typeof action.url !== 'string') return;
       try {
         var url = new URL(action.url);
-        var approved = url.protocol === 'https:' && (url.hostname === 'thestyerteam.com' || url.hostname === 'www.styermortgage.com' || url.hostname === 'calendly.com');
+        var approved = url.protocol === 'https:' && (/^(www\.)?(thestyerteam\.com|styermortgage\.com)$/.test(url.hostname) || url.hostname === 'calendly.com');
         if (!approved) return;
         var link = document.createElement('a');
         link.href = url.href;
@@ -631,7 +631,7 @@
     // GTM's published container only forwards generate_lead. Send these
     // non-sensitive funnel events through the existing Google tag directly.
     // Audit/preview activity stays out of production analytics.
-    if (/^(www\.)?styermortgage\.com$/.test(window.location.hostname) && !/[?&]assistant_test=1(?:&|$)/.test(window.location.search)) {
+    if (/^(www\.)?(thestyerteam\.com|styermortgage\.com)$/.test(window.location.hostname) && !/[?&]assistant_test=1(?:&|$)/.test(window.location.search)) {
       var parameters = Object.assign({}, payload, { send_to: 'G-DDY0H0319S' });
       delete parameters.event;
       (function () { window.dataLayer.push(arguments); })('event', eventName, parameters);

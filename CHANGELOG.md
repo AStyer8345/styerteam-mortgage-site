@@ -1,3 +1,10 @@
+## 2026-10-29 — Preview: GoRascal compliance review
+
+- Public origin on this branch is https://thestyerteam.com. Redirects are written in docs/domain-migration-plan.md and are not enabled.
+- The Austin local office and the Brooklyn main office are removed. No replacement address is published.
+- Footer and /licensing.html name the team, both NMLS numbers, Texas, NMLS Consumer Access, Equal Housing Opportunity, and the Texas SML complaint and recovery fund notice.
+- Public email is adamstyer@gorascal.com. Apply links stay on the GoRascal application. Not merged.
+
 ## 2026-10-29 — Preview: shorter homepage DSCR example
 
 - The homepage DSCR card is four short beats: the tax return could not qualify, we used a DSCR loan, it qualified on the rent, and a link to the Texas DSCR page. Not merged.

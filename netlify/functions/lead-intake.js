@@ -36,7 +36,7 @@ const API_BASE  = DC ? `https://${DC}.api.mailchimp.com/3.0` : "";
 const LOANOS_URL    = process.env.LOANOS_URL || process.env.LOANOS_API_URL || "";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
 const N8N_WEB_LEAD_URL = process.env.N8N_WEB_LEAD_URL || "https://styer.app.n8n.cloud/webhook/web-lead";
-const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam@thestyerteam.com";
+const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adamstyer@gorascal.com";
 
 function firstText(...values) {
   const parts = [];
@@ -106,7 +106,7 @@ exports.handler = async (event) => {
   }
 
   const isTest = body.test_mode === true || body.test_mode === "true";
-  if (isTest && !["adam@thestyerteam.com", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
+  if (isTest && !["adamstyer@gorascal.com", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
   const inquiryId = String(body.inquiry_id || "");
   if (!/^[A-Za-z0-9:_-]{8,200}$/.test(inquiryId)) return respond(400, { error: "A stable inquiry_id is required" });
 

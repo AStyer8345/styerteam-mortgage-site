@@ -20,7 +20,7 @@ const crypto = require("crypto");
 
 // n8n webhook — LO Waitlist Intake workflow
 const N8N_LO_WAITLIST_URL = "https://styer.app.n8n.cloud/webhook/loanos-waitlist";
-const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam@thestyerteam.com";
+const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adamstyer@gorascal.com";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
