@@ -109,6 +109,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
       <nav>
         <a href="/index.html" class="nav-brand">
           <span class="nav-wordmark">The Styer Team, Powered by Go Rascal Inc.</span>
+<!-- TODO(compliance): Powered by Go Rascal Inc. approved mark. Empty until Compliance provides the file. Do not draw a logo. -->
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -240,7 +241,11 @@ ${rateBox}
       <div class="footer-bottom">
         <div>
           
-          <p>The Styer Team, Powered by Go Rascal Inc. | Company NMLS# 2072896 | Adam Styer NMLS# 513013 | Licensed in: Texas</p>
+          <p>The Styer Team, Powered by Go Rascal Inc. | Adam Styer, NMLS #513013 | Go Rascal Inc., Company NMLS #2072896</p>
+          <!-- TODO(compliance): licensed address per NMLS record, pending Adam -->
+          <!-- REVIEW(compliance): verify against GoRascal Social Media Compliance Requirements -->
+          <!-- Licensed states placeholder pending Adam's NMLS confirmation -->
+          <p>Licensed in: Texas. <a href="/licensing.html">Licensing &amp; Disclosures</a></p>
 
         </div>
       </div>
