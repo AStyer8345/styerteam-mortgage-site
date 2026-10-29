@@ -1,5 +1,5 @@
 const { requireDispatchAuth } = require("./lib/dispatch-auth");
-const { siteOrigin } = require('../scripts/site-origin.cjs');
+const { siteOrigin } = require('../../scripts/site-origin.cjs');
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 const CORRECTION_HTML = `

@@ -1,5 +1,5 @@
 const Anthropic = require("@anthropic-ai/sdk");
-const { siteOrigin } = require('../scripts/site-origin.cjs');
+const { siteOrigin } = require('../../scripts/site-origin.cjs');
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const crypto = require("crypto");
 const { buildRatePrompt } = require("./lib/rate-prompt-builder");
