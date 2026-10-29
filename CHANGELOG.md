@@ -1,3 +1,7 @@
+## 2026-10-29 — Preview: NMLS licensed location in the footer
+
+- The footer and /licensing.html show the NMLS licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249. Organization, LocalBusiness, and FinancialService schema use that postal address. areaServed stays Texas. Not merged.
+
 ## 2026-10-29 — Preview: close-day, savings, and guarantee lines removed
 
 - Close-day claims, dollar savings claims, and “best rate” / “lowest rate” promises are rewritten or removed. Rate pages and the rate-commentary posts are unchanged. “Guaranteed Backup Contract” is now a backup purchase agreement. The HECM line-of-credit sentence no longer says guaranteed. Factual VA, USDA, and personal-guarantee wording stays. Not merged.

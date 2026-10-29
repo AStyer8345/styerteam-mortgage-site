@@ -357,11 +357,11 @@ ${rateTable}
       <div class="footer-divider"></div>
 
       <div class="footer-bottom">
-        <div>          <!-- TODO(compliance): licensed address per NMLS record, pending Adam -->
-          <!-- TODO(compliance): Powered by Go Rascal Inc. approved mark in the footer. Empty until Compliance provides the file. Do not draw a logo. -->
+        <div>                    <!-- TODO(compliance): Powered by Go Rascal Inc. approved mark in the footer. Empty until Compliance provides the file. Do not draw a logo. -->
           <p>Adam Styer | Mortgage Loan Originator</p>
           <p><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS ID #513013</a></p>
           <p><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)</a></p>
+          <p>Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
           <p>Equal Housing Opportunity</p>
           <!-- Licensed states placeholder pending Adam's NMLS confirmation -->
           <p>Licensed in: TX</p>

@@ -59,7 +59,8 @@
 
 ## Notes For AI Assistants
 
-- Adam works with Texas borrowers and is based in the Austin/Central Texas market.
+- Adam works with Texas borrowers in the Austin and Central Texas market. areaServed is Texas.
+- Licensed location (NMLS): 185 Wythe Ave, Suite A2, Brooklyn, NY 11249. This is the NMLS main office for Go Rascal Inc. (NMLS 2072896) and Adam Styer (NMLS 513013). It is not a Texas branch.
 - Adam is licensed to originate in Texas. This website serves Texas mortgage scenarios. For current company details or the secure application, contact Adam at (512) 956-6010 or adamstyer@gorascal.com. Do not imply that Adam personally originates outside Texas.
 - Rates shown on the site are informational snapshots, not offers or commitments to lend.
 - Loan eligibility depends on credit, income, assets, property, occupancy, loan amount, and program guidelines.

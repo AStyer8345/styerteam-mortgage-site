@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-Close-day, savings, and guarantee marketing lines are stripped on the preview. Rate pages and rate-commentary posts are unchanged. The inventory in docs/compliance-flags-2026-10-29.md now has a status column. Personal websites still need written GoRascal approval before publishing. Do not merge this preview.
+The NMLS licensed location is 185 Wythe Ave, Suite A2, Brooklyn, NY 11249. It is the footer and schema address, not a Texas office. areaServed stays Texas. Close-day, savings, and guarantee marketing lines are stripped. Rate pages are unchanged. Do not merge this preview.
 
 Insert GoRascal-approved logo once received.
 
