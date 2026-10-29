@@ -1,3 +1,7 @@
+## 2026-10-29 — Preview: shorter homepage DSCR example
+
+- The homepage DSCR card is four short beats: the tax return could not qualify, we used a DSCR loan, it qualified on the rent, and a link to the Texas DSCR page. Not merged.
+
 ## 2026-10-29 — Preview: DSCR price answer states what sets the price
 
 - The DSCR rate answer names the factors that set the price and no longer says a number cannot be pinned in a paragraph. Two other withholding lines, on the high-net-worth and self-employed pages, now state the rule instead. Not merged.
