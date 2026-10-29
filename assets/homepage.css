@@ -997,6 +997,16 @@ body.private-wealth-editorial :is(a, button, input, select, textarea, summary):f
   color: var(--pwe-brass-light);
 }
 
+.pwe-hero-powered {
+  margin: 0 0 18px;
+  font-family: var(--pwe-sans);
+  font-size: clamp(20px, 2.2vw, 32px);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  color: var(--pwe-brass-light);
+}
+
 /* Buttons & Microinteractions */
 .pwe-btn-primary,
 body.private-wealth-editorial .pwe-btn-primary {

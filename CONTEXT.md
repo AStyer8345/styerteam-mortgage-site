@@ -19,7 +19,7 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 
 ## Last Worked On
 
-Personal websites must be approved in writing by GoRascal Compliance before publishing. Typical approval time is 3–5 business days. Do not launch until written approval is received.
+GoRascal footer format, Texas licensing rows, header and hero “Powered by Go Rascal Inc.”, marketing pre-qualification wording, and removal of Adam’s Founder job title. Close-time, rate, savings, and guarantee claims are inventoried in docs/compliance-flags-2026-10-29.md and were left in place. Personal websites still need written GoRascal approval before publishing. Do not merge this preview.
 
 Insert GoRascal-approved logo once received.
 

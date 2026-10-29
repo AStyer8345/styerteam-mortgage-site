@@ -40,14 +40,14 @@ Lenders pull all three bureaus (Equifax, Experian, TransUnion) and use the **mid
 
 ---
 
-## 3. Pre-Approval vs. Pre-Qualification
+## 3. Pre-Qualification vs. Pre-Approval
 
 These are not the same thing. One gets your offer accepted. The other gets it ignored.
 
 - **Pre-Qualification**: Quick estimate based on what you tell the lender. No verification. Sellers don't take it seriously.
 - **Pre-Approval**: Full application, credit pull, income and asset verification. A real commitment from a lender.
 
-In Austin's market, sellers with multiple offers will skip buyers who only have a pre-qualification letter. Get pre-approved before you start looking at homes.
+In Austin's market, sellers with multiple offers will skip buyers who only have a pre-qualification letter. Get pre-qualified before you start looking at homes.
 
 ---
 
@@ -138,7 +138,7 @@ I see these kill deals every single week:
 4. **Co-signing for someone else's loan** — this counts as your debt
 5. **Skipping the home inspection** to save $500 (this can cost you $50,000)
 
-The golden rule: Don't change anything about your financial life between pre-approval and closing. No new cars. No furniture on credit. No job changes if you can help it.
+The golden rule: Don't change anything about your financial life between pre-qualification and closing. No new cars. No furniture on credit. No job changes if you can help it.
 
 ---
 
@@ -148,7 +148,7 @@ From first call to closing day, here's the timeline:
 
 - **Week 1**: Pre-approval application, credit pull, document collection
 - **Weeks 2–6**: House hunting with your agent
-- **Day of offer**: Submit offer with pre-approval letter
+- **Day of offer**: Submit offer with pre-qualification letter
 - **Week 1 after contract**: Home inspection, earnest money deposit
 - **Weeks 2–3 after contract**: Appraisal, underwriting review
 - **Week 4 after contract**: Clear to close, final walkthrough
@@ -218,7 +218,7 @@ The cheapest rate on a website doesn't help if the lender can't close on time or
 
 You've got the knowledge. Now let's put it to work.
 
-- **Get pre-approved**: Find out exactly what you qualify for — no obligation, no pressure
+- **Get pre-qualified**: Find out exactly what you qualify for — no obligation, no pressure
 - **Call or text Adam**: (512) 956-6010
 - **Email**: adamstyer@gorascal.com
 - **Apply online**: [Start Your Application](/contact.html?goal=Purchase"I wrote this guide because I was tired of watching first-time buyers get bad advice. This is the same conversation I have with every buyer who sits across from me. No sales pitch. Just the truth about what it takes to buy a home in Austin."

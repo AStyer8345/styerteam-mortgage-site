@@ -254,7 +254,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
       <div class="stack-row"><div class="stack-layer">Frontend</div><div class="stack-tech">Next.js 14</div><div class="stack-why">Server components, SEO, fast deploys to Vercel</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
       <div class="stack-row"><div class="stack-layer">Auth</div><div class="stack-tech">Supabase Auth</div><div class="stack-why">Built-in magic link + OAuth, zero config</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
       <div class="stack-row"><div class="stack-layer">Database</div><div class="stack-tech">Supabase Postgres</div><div class="stack-why">RLS for multi-tenancy, real-time, contacts + loans + docs</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
-      <div class="stack-row"><div class="stack-layer">File Storage</div><div class="stack-tech">Supabase Storage</div><div class="stack-why">PDF uploads linked to loan records (contracts, CDs, pre-approvals)</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
+      <div class="stack-row"><div class="stack-layer">File Storage</div><div class="stack-tech">Supabase Storage</div><div class="stack-why">PDF uploads linked to loan records (contracts, CDs, pre-qualifications)</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
       <div class="stack-row"><div class="stack-layer">Automation</div><div class="stack-tech">n8n</div><div class="stack-why">Replaced Zapier. Self-hosted ~$15/mo. Native Supabase + Claude nodes.</div><div class="stack-status-cell"><span class="stack-badge sb-updated">Updated</span></div></div>
       <div class="stack-row"><div class="stack-layer">AI</div><div class="stack-tech">Claude API</div><div class="stack-why">Email drafting, doc extraction, calculator narratives, market commentary</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
       <div class="stack-row"><div class="stack-layer">Email</div><div class="stack-tech">Outlook via n8n</div><div class="stack-why">Drafts pushed to Outlook. Existing workflow migrated to n8n.</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
@@ -266,7 +266,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
     </div>
     <div style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:12px">Key Decisions</div>
     <div class="sn-grid">
-      <div class="sn-card"><div class="sn-card-title">Supabase = Memory Layer</div><div class="sn-card-body">Automations already fire (contract, CD, pre-approval). Supabase adds the record layer underneath every trigger &mdash; contact, loan, document, and activity log persist after each automation runs.</div></div>
+      <div class="sn-card"><div class="sn-card-title">Supabase = Memory Layer</div><div class="sn-card-body">Automations already fire (contract, CD, pre-qualification). Supabase adds the record layer underneath every trigger &mdash; contact, loan, document, and activity log persist after each automation runs.</div></div>
       <div class="sn-card"><div class="sn-card-title">n8n Replaces Zapier</div><div class="sn-card-body">Self-hosted n8n at ~$15/mo vs Zapier at $100-300/mo at automation volume. Native Supabase node + Claude API node = fewer moving parts, more control, no per-task billing.</div></div>
       <div class="sn-card"><div class="sn-card-title">Mortgage Coach Replacement</div><div class="sn-card-body">6 calculators replace Mortgage Coach entirely. Differentiator: Claude writes plain-English narrative summary per scenario. Output is branded PDF or shareable link integrated with loan records.</div></div>
       <div class="sn-card"><div class="sn-card-title">Build For Yourself First</div><div class="sn-card-body">Phase 1-2 = personal production tool replacing Jungo + Mortgage Coach. Phase 4 = offer it to other loan officers in Texas at $97-397/mo after personal build is proven and stable.</div></div>
@@ -307,7 +307,7 @@ var MODULES = [
    supabase:"contacts, pipelines, activity_log, tags, closed_loans"},
   {id:"marketing",icon:"&#11043;",label:"Marketing Command Center",color:"#4c7ec9",tag:"Revenue",priority:1,
    desc:"Weekly cadence engine. Schedule, draft, and deploy content to every channel from one dashboard. Mailchimp and Outlook via n8n.",
-   features:["Weekly schedule: Mon=Realtors, Tue=Leads, Wed=LIP, Thu=Pre-Approvals, Fri=Blast","Email campaign builder with saved HTML templates","Mailchimp and Outlook sync via n8n","Rate update publisher: auto-generates web page and email teaser","Call list panels segmented by contact group","Campaign analytics: opens, clicks, replies per segment","AI draft generator via Claude API"],
+   features:["Weekly schedule: Mon=Realtors, Tue=Leads, Wed=LIP, Thu=Pre-Qualifications, Fri=Blast","Email campaign builder with saved HTML templates","Mailchimp and Outlook sync via n8n","Rate update publisher: auto-generates web page and email teaser","Call list panels segmented by contact group","Campaign analytics: opens, clicks, replies per segment","AI draft generator via Claude API"],
    supabase:"campaigns, templates, call_lists, deployments"},
   {id:"calculator",icon:"&#9678;",label:"Mortgage Coach Replacement",color:"#c94c4c",tag:"Priority",priority:1,
    desc:"6-calculator suite replacing Mortgage Coach. Claude writes plain-English narrative summaries. Branded PDF or shareable link output per scenario.",
@@ -315,11 +315,11 @@ var MODULES = [
    supabase:"scenarios, calculations, rate_locks, shared_reports"},
   {id:"automation",icon:"&#8635;",label:"Automation Engine",color:"#4cc98a",tag:"Scale",priority:1,
    desc:"n8n workflows eliminating every repetitive LO task. Contract upload to extract to email drafts to Supabase record. Partially live already.",
-   features:["Contract: extract fields, create loan record, send ack email, build Arive checklist","Pre-approval: extract fields, draft borrower and agent emails, Outlook draft","Final CD: extract 10 fields, populate template, Outlook draft","New application: create CRM contact, send intro email, add to pipeline","Rate update: update website page and send Mailchimp teaser","Activity auto-log on every automation fired","Milestone alerts: LIP past 30 days, pre-approval expiring in 7 days"],
+   features:["Contract: extract fields, create loan record, send ack email, build Arive checklist","Pre-qualification: extract fields, draft borrower and agent emails, Outlook draft","Final CD: extract 10 fields, populate template, Outlook draft","New application: create CRM contact, send intro email, add to pipeline","Rate update: update website page and send Mailchimp teaser","Activity auto-log on every automation fired","Milestone alerts: LIP past 30 days, pre-qualification expiring in 7 days"],
    supabase:"automation_logs, webhook_events, triggers, documents"},
   {id:"funnels",icon:"&#9661;",label:"Lead Funnels",color:"#9b4cc9",tag:"Growth",priority:2,
    desc:"Embeddable landing pages and lead capture forms feeding directly into Supabase CRM.",
-   features:["Pre-approval landing page with form to CRM auto-creation","Rate alert signup: prospect enters info, gets weekly rate email","Realtor co-branded landing page generator","Mortgage calculator widget with embed code for realtors","UTM tracking on all form submissions","Lead scoring: auto-assign hot/warm/cold on engagement","Drip sequence triggers on form submission"],
+   features:["Pre-qualification landing page with form to CRM auto-creation","Rate alert signup: prospect enters info, gets weekly rate email","Realtor co-branded landing page generator","Mortgage calculator widget with embed code for realtors","UTM tracking on all form submissions","Lead scoring: auto-assign hot/warm/cold on engagement","Drip sequence triggers on form submission"],
    supabase:"leads, form_submissions, drip_sequences, utm_data"},
   {id:"research",icon:"&#9675;",label:"Market Intelligence",color:"#c9884c",tag:"Authority",priority:3,
    desc:"Real-time market data and AI commentary. Fed calendar, rate tracking, local market data. One-click publish to website and email.",
@@ -333,13 +333,13 @@ var MODULES = [
 var PHASES = [
   {number:"Phase 1",title:"Foundation",timeline:"4-6 weeks",color:"#9a7b2d",
    output:"Working CRM with real data. Contacts, loan records, documents in Supabase.",
-   items:["Supabase project setup: auth, RLS policies, core schema","Next.js frontend scaffold with brand system","Contacts and loans CRUD: create, view, edit, delete records","PDF upload interface: contract/CD/pre-approval stored in Supabase Storage","Auth: magic link login","Basic dashboard with navigation","Arive to n8n webhook: loan status syncs to Supabase"]},
+   items:["Supabase project setup: auth, RLS policies, core schema","Next.js frontend scaffold with brand system","Contacts and loans CRUD: create, view, edit, delete records","PDF upload interface: contract/CD/pre-qualification stored in Supabase Storage","Auth: magic link login","Basic dashboard with navigation","Arive to n8n webhook: loan status syncs to Supabase"]},
   {number:"Phase 2",title:"Automation Layer",timeline:"3-4 weeks",color:"#4c7ec9",
    output:"Full automation stack live. All Claude/Zapier skills rebuilt inside n8n and Supabase.",
-   items:["n8n setup (self-hosted or cloud)","Contract intake: upload to Claude extract to loan record to Outlook draft to Arive checklist","Pre-approval: upload to Claude extract to borrower and agent email drafts","Final CD: upload to Claude extract 10 fields to email draft","New application: create contact, send intro email, set pipeline stage","Rate update publisher: Supabase to website page and Mailchimp teaser","Activity auto-log on every automation fired"]},
+   items:["n8n setup (self-hosted or cloud)","Contract intake: upload to Claude extract to loan record to Outlook draft to Arive checklist","Pre-qualification: upload to Claude extract to borrower and agent email drafts","Final CD: upload to Claude extract 10 fields to email draft","New application: create contact, send intro email, set pipeline stage","Rate update publisher: Supabase to website page and Mailchimp teaser","Activity auto-log on every automation fired"]},
   {number:"Phase 3",title:"Calculator Suite + Funnels",timeline:"3-4 weeks",color:"#4cc98a",
    output:"Mortgage Coach fully replaced. Lead funnels live. Market intelligence publishing.",
-   items:["Loan Scenario Comparator with Claude narrative output","Refi Analyzer with break-even timeline","Rent vs. Buy calculator","Total Cost of Homeownership (5yr and 10yr view)","Max Purchase Price from income and debt inputs","Buy Now vs. Wait scenario","Branded PDF output and shareable link per scenario","Pre-approval and rate alert landing pages feeding Supabase CRM","Market intelligence: FRED API and Claude weekly commentary"]},
+   items:["Loan Scenario Comparator with Claude narrative output","Refi Analyzer with break-even timeline","Rent vs. Buy calculator","Total Cost of Homeownership (5yr and 10yr view)","Max Purchase Price from income and debt inputs","Buy Now vs. Wait scenario","Branded PDF output and shareable link per scenario","Pre-qualification and rate alert landing pages feeding Supabase CRM","Market intelligence: FRED API and Claude weekly commentary"]},
   {number:"Phase 4",title:"SaaS and Licensing",timeline:"4-5 weeks",color:"#9b4cc9",
    output:"License-ready platform. Deploy, market, sell to LOs nationally at $97-397/mo.",
    items:["Multi-tenant RLS architecture (full data isolation)","White-label theming engine (logo, colors, domain)","Stripe billing: Starter / Pro / Team subscriptions","Onboarding wizard for new LO tenants","Admin dashboard: manage subscribers, feature flags, usage","Go-to-market: beta with network LOs, LinkedIn build-in-public, LO forums"]},
@@ -352,7 +352,7 @@ var DECISIONS = [
    body:"Replaced Zapier with n8n. No per-task billing. Self-hosted at approximately $15/mo vs $100-300/mo at scale. Native Supabase node and Claude API node. More powerful workflow logic. n8n Cloud at $20/mo also viable.",
    tags:[{label:"Replaced: Zapier",type:"replaced"},{label:"Added: n8n",type:"added"}]},
   {date:"Mar 2026",title:"Supabase as Memory Layer",color:"#4c7ec9",
-   body:"Every automation that fires (contract, CD, pre-approval) now also creates or updates a contact record, loan record, and stores the PDF. This was the missing piece - automations fired but nothing was saved anywhere.",
+   body:"Every automation that fires (contract, CD, pre-qualification) now also creates or updates a contact record, loan record, and stores the PDF. This was the missing piece - automations fired but nothing was saved anywhere.",
    tags:[{label:"Confirmed",type:"confirmed"}]},
   {date:"Mar 2026",title:"Mortgage Coach replaced by Calculator Suite",color:"#c94c4c",
    body:"Goal: replace Mortgage Coach entirely with 6 built-in calculators. Key differentiator is Claude writing plain-English narrative per scenario. Output: branded PDF or shareable link integrated with Supabase loan records.",
@@ -551,11 +551,14 @@ updateProgress();
 
 <!-- TODO(compliance): licensed address per NMLS record, pending Adam -->
 <!-- TODO(compliance): Powered by Go Rascal Inc. approved mark in the footer. Empty until Compliance provides the file. Do not draw a logo. -->
-<p style="color:#F6F4EF;margin:0 0 8px">The Styer Team, Powered by Go Rascal Inc. | Adam Styer, NMLS #513013 | Go Rascal Inc., Company NMLS #2072896</p>
-<!-- REVIEW(compliance): verify against GoRascal Social Media Compliance Requirements -->
+<p style="color:#F6F4EF;margin:0 0 8px">Adam Styer | Mortgage Loan Originator</p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank" style="color:#F5C443">NMLS ID #513013</a></p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank" style="color:#F5C443">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)</a></p>
+<p style="color:#F6F4EF;margin:0 0 8px">Equal Housing Opportunity</p>
 <!-- Licensed states placeholder pending Adam's NMLS confirmation -->
-<p style="color:#F6F4EF;margin:0 0 8px">Licensed in: Texas. <a href="/licensing.html" style="color:#F5C443">Licensing &amp; Disclosures</a></p>
-<p style="color:#F6F4EF;margin:0">Equal Housing Opportunity. Texas Department of Savings and Mortgage Lending complaint notice: <a href="/licensing.html" style="color:#F5C443">Licensing &amp; Disclosures</a>. <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" style="color:#F5C443">NMLS Consumer Access</a></p>
+<p style="color:#F6F4EF;margin:0 0 8px">Licensed in: TX</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Loans are arranged through third party lenders.</p>
+<p style="color:#F6F4EF;margin:0"><a href="/licensing.html" style="color:#F5C443">State-specific consumer disclosures available on the Licensing &amp; Disclosures page.</a></p>
 </footer>
 </body>
 </html>

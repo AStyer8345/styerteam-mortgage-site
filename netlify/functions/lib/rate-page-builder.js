@@ -228,7 +228,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <span class="nav-wordmark">The Styer Team, Powered by Go Rascal Inc.</span>
+          <span class="nav-wordmark">The Styer Team</span><span class="nav-powered">Powered by Go Rascal Inc.</span>
 <!-- TODO(compliance): Powered by Go Rascal Inc. approved mark. Empty until Compliance provides the file. Do not draw a logo. -->
         </a>
 
@@ -357,13 +357,16 @@ ${rateTable}
       <div class="footer-divider"></div>
 
       <div class="footer-bottom">
-        <div>
-          
-          <p>The Styer Team, Powered by Go Rascal Inc. | Adam Styer, NMLS #513013 | Go Rascal Inc., Company NMLS #2072896</p>
-          <!-- TODO(compliance): licensed address per NMLS record, pending Adam -->
-          <!-- REVIEW(compliance): verify against GoRascal Social Media Compliance Requirements -->
+        <div>          <!-- TODO(compliance): licensed address per NMLS record, pending Adam -->
+          <!-- TODO(compliance): Powered by Go Rascal Inc. approved mark in the footer. Empty until Compliance provides the file. Do not draw a logo. -->
+          <p>Adam Styer | Mortgage Loan Originator</p>
+          <p><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS ID #513013</a></p>
+          <p><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)</a></p>
+          <p>Equal Housing Opportunity</p>
           <!-- Licensed states placeholder pending Adam's NMLS confirmation -->
-          <p>Licensed in: Texas. <a href="/licensing.html">Licensing &amp; Disclosures</a></p>
+          <p>Licensed in: TX</p>
+          <p>Loans are arranged through third party lenders.</p>
+          <p><a href="/licensing.html">State-specific consumer disclosures available on the Licensing &amp; Disclosures page.</a></p>
 
         </div>
       </div>

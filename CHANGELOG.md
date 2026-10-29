@@ -1,3 +1,9 @@
+## 2026-10-29 — Preview: GoRascal footer, titles, and pre-qualification wording
+
+- The footer licensing block is the seven-line GoRascal format, including “Licensed in: TX” and the link to /licensing.html. The licensing page adds the Texas license row, regulator row, and the Texas Residents disclaimer at 2601 N. Lamar.
+- “Powered by Go Rascal Inc.” is in the header lockup and the homepage hero. Marketing “pre-approval” wording is now “pre-qualification” except where the sentence describes a verified income, asset, and credit review. Adam’s “Founder” job titles are now “Mortgage Loan Originator.”
+- Close timelines, rate and APR figures, savings examples, and guarantee language are listed in docs/compliance-flags-2026-10-29.md and were not removed. Not merged.
+
 ## 2026-10-29 — Preview: GoRascal compliance review
 
 - Public origin on this branch is https://thestyerteam.com. Redirects are written in docs/domain-migration-plan.md and are not enabled.

@@ -544,7 +544,7 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
       <div class="cl-title">Call Lists</div>
       <div class="cl-tabs">
         <button class="cl-tab active" onclick="switchCL('realtors',this)">🏠 Realtors</button>
-        <button class="cl-tab" onclick="switchCL('preapprovals',this)">✅ Pre-Approvals</button>
+        <button class="cl-tab" onclick="switchCL('preapprovals',this)">✅ Pre-Qualifications</button>
         <button class="cl-tab" onclick="switchCL('inprocess',this)">📂 In Process</button>
         <button class="cl-tab" onclick="switchCL('hotleads',this)">🔥 Hot Leads</button>
       </div>
@@ -560,7 +560,7 @@ textarea.fi{resize:vertical;min-height:80px;font-family:'DM Mono',monospace;font
     </div>
     <div class="cl-panel" id="cp-preapprovals">
       <div class="cl-toolbar">
-        <input class="cl-search" placeholder="Search pre-approvals…" oninput="filterCL('preapprovals',this.value)">
+        <input class="cl-search" placeholder="Search pre-qualifications…" oninput="filterCL('preapprovals',this.value)">
         <span class="cl-count" id="cnt-preapprovals"></span>
         <button class="btn-import" onclick="openImport('preapprovals')">⬆ Import CSV</button>
         <button class="btn-add-c" onclick="openAddC('preapprovals')">+ Add Contact</button>
@@ -835,9 +835,9 @@ const DAYS = {
     {id:'w3',e:'📞',label:'Listing agent call — every active file',        type:'call'},
     {id:'w4',e:'📋',label:'Update Salesforce Last Touch on all active files',type:'admin'},
   ]},
-  4:{name:'Thursday', focus:'Pre-Approval Pipeline',sub:'Pre-approvals · Re-engage · Social', tasks:[
-    {id:'h1',e:'📞',label:'Call every active pre-approval — showings, timeline, offers',type:'call',tracker:'preapproval'},
-    {id:'h2',e:'📲',label:'Re-engage text/email to pre-approvals not actively shopping',type:'text'},
+  4:{name:'Thursday', focus:'Pre-Qualification Pipeline',sub:'Pre-qualifications · Re-engage · Social', tasks:[
+    {id:'h1',e:'📞',label:'Call every active pre-qualification — showings, timeline, offers',type:'call',tracker:'preapproval'},
+    {id:'h2',e:'📲',label:'Re-engage text/email to pre-qualifications not actively shopping',type:'text'},
     {id:'h3',e:'📱',label:'Post — LinkedIn + Facebook (first-time buyer or program content)',type:'social',tracker:'social-post'},
     {id:'h4',e:'🎥',label:'Optional: Video — what happens after your offer is accepted',type:'video',tracker:'video'},
   ]},
@@ -858,14 +858,14 @@ const TRACKERS = [
   {id:'social-post',  name:'Social Post',        channel:'LinkedIn + Meta',    freq:2},
   {id:'realtor-calls',name:'Realtor Calls',      channel:'Phone · Mon + Fri',  freq:7},
   {id:'past-client',  name:'Past Client Calls',  channel:'Phone · Tuesday',    freq:7},
-  {id:'preapproval',  name:'Pre-Approval Calls', channel:'Phone · Thursday',   freq:7},
+  {id:'preapproval',  name:'Pre-Qualification Calls', channel:'Phone · Thursday',   freq:7},
   {id:'in-process',   name:'In-Process Calls',   channel:'Phone · Wednesday',  freq:7},
   {id:'video',        name:'Short Video',        channel:'Video · Mon or Thu', freq:14},
 ];
 
 const LIST_META = {
   realtors:     {label:'Realtor',      badge:'b-realtor'},
-  preapprovals: {label:'Pre-Approval', badge:'b-preapproval'},
+  preapprovals: {label:'Pre-Qualification', badge:'b-preapproval'},
   inprocess:    {label:'Active File',  badge:'b-active'},
   hotleads:     {label:'Hot Lead',     badge:'b-hot'},
 };
@@ -1813,11 +1813,14 @@ if (document.getElementById('app').classList.contains('visible')) {
 
 <!-- TODO(compliance): licensed address per NMLS record, pending Adam -->
 <!-- TODO(compliance): Powered by Go Rascal Inc. approved mark in the footer. Empty until Compliance provides the file. Do not draw a logo. -->
-<p style="color:#F6F4EF;margin:0 0 8px">The Styer Team, Powered by Go Rascal Inc. | Adam Styer, NMLS #513013 | Go Rascal Inc., Company NMLS #2072896</p>
-<!-- REVIEW(compliance): verify against GoRascal Social Media Compliance Requirements -->
+<p style="color:#F6F4EF;margin:0 0 8px">Adam Styer | Mortgage Loan Originator</p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank" style="color:#F5C443">NMLS ID #513013</a></p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank" style="color:#F5C443">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)</a></p>
+<p style="color:#F6F4EF;margin:0 0 8px">Equal Housing Opportunity</p>
 <!-- Licensed states placeholder pending Adam's NMLS confirmation -->
-<p style="color:#F6F4EF;margin:0 0 8px">Licensed in: Texas. <a href="/licensing.html" style="color:#F5C443">Licensing &amp; Disclosures</a></p>
-<p style="color:#F6F4EF;margin:0">Equal Housing Opportunity. Texas Department of Savings and Mortgage Lending complaint notice: <a href="/licensing.html" style="color:#F5C443">Licensing &amp; Disclosures</a>. <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" style="color:#F5C443">NMLS Consumer Access</a></p>
+<p style="color:#F6F4EF;margin:0 0 8px">Licensed in: TX</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Loans are arranged through third party lenders.</p>
+<p style="color:#F6F4EF;margin:0"><a href="/licensing.html" style="color:#F5C443">State-specific consumer disclosures available on the Licensing &amp; Disclosures page.</a></p>
 </footer>
 </body>
 </html>
