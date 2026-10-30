@@ -47,8 +47,8 @@
     }
   }
   </script>
-<link rel="preload" as="image" href="/assets/austin-skyline-hero-640.avif" imagesrcset="/assets/austin-skyline-hero-640.avif 640w, /assets/austin-skyline-hero-960.avif 960w, /assets/austin-skyline-hero.avif 1400w" imagesizes="100vw" type="image/avif" fetchpriority="high"/>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/source-serif-4-roman-latin.woff2" crossorigin/>
+<link rel="preload" as="image" href="/assets/austin-skyline-hero-960.avif" imagesrcset="/assets/austin-skyline-hero-960.avif 960w, /assets/austin-skyline-hero.avif 1400w" imagesizes="100vw" media="(min-width: 769px)" type="image/avif" fetchpriority="high"/>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/source-serif-4-roman-latin.woff2" media="(min-width: 769px)" crossorigin/>
 <style>
 body{margin:0}
 :root{--pwe-serif:'Source Serif 4',Georgia,'Times New Roman',serif;--pwe-alabaster:#f6f4ef}
@@ -411,8 +411,24 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
   text-underline-offset: 4px;
 }
 
-@media (max-width: 680px) {
-  body.private-wealth-editorial main .hero.pwe-hero { padding-top: 28px !important; min-height: 0 !important; max-height: 100svh !important; overflow: hidden !important; }
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .mobile-menu-toggle { display: flex !important; min-width: 44px; min-height: 44px; }
+  body.private-wealth-editorial > header { min-height: 84px; background: rgba(11, 21, 29, 0.97); }
+  body.private-wealth-editorial > header nav { display: flex; align-items: center; justify-content: space-between; min-height: 84px; }
+  .gorascal-wordmark-chip img { height: 48px; width: auto; }
+  .pwe-hero-skyline,
+  .pwe-hero-visual { display: none !important; }
+  body.private-wealth-editorial main .hero.pwe-hero,
+  .pwe-hero {
+    padding: 28px 0 0 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    background-color: #142330 !important;
+    background-image: none !important;
+  }
   body.private-wealth-editorial .pwe-hero h1 { font-size: clamp(32px, 8.4vw, 42px) !important; }
   .pwe-hero-line,
   .pwe-hero h1 .modern-hero-accent { white-space: normal; }
@@ -430,9 +446,7 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 
 </style>
 <!-- Fonts are declared in the main stylesheet with font-display: swap, so they do not queue ahead of the hero image. -->
-<link rel="preload" href="/assets/homepage.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-<link rel="preload" href="style.css?v=20260830-reviews1" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript><link href="/assets/homepage.css" rel="stylesheet"/><link href="style.css?v=20260830-reviews1" rel="stylesheet"/></noscript>
+<!-- Full styles load after the hero so the headline can paint from the critical CSS above. -->
 <!-- Schema.org LocalBusiness -->
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -801,8 +815,8 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <!-- SECTION 1: HERO — Architectural Private Wealth Opening -->
 <section aria-label="Non-QM lending from Adam Styer" class="hero pwe-hero pwe-dark">
 <picture class="pwe-hero-skyline">
-<source sizes="100vw" srcset="/assets/austin-skyline-hero-640.avif 640w, /assets/austin-skyline-hero-960.avif 960w, /assets/austin-skyline-hero.avif 1400w" type="image/avif"/>
-<img alt="" fetchpriority="high" height="700" sizes="100vw" src="/assets/austin-skyline-hero-960.webp" srcset="/assets/austin-skyline-hero-640.webp 640w, /assets/austin-skyline-hero-960.webp 960w, /assets/austin-skyline-hero.webp 1400w" width="1400"/>
+<source media="(min-width: 769px)" sizes="100vw" srcset="/assets/austin-skyline-hero-960.avif 960w, /assets/austin-skyline-hero.avif 1400w" type="image/avif"/>
+<img alt="" decoding="async" height="700" width="1400" sizes="(max-width: 768px) 8px, 100vw" src="/assets/austin-skyline-hero.webp" srcset="/assets/hero-mobile-solid.webp 8w, /assets/austin-skyline-hero-960.webp 960w, /assets/austin-skyline-hero.webp 1400w"/>
 </picture>
 <div class="container">
 <div class="pwe-hero-grid">
@@ -1774,5 +1788,27 @@ Read Full Case Study
     });
   })();
 </script>
+<link data-deferred-href="/assets/homepage.css"/>
+<link data-deferred-href="style.css?v=20260830-reviews1"/>
+<script>
+(function () {
+  function loadCss() {
+    document.querySelectorAll('[data-deferred-href]').forEach(function (node) {
+      if (node.getAttribute('data-loaded')) return;
+      node.setAttribute('data-loaded', '1');
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = node.getAttribute('data-deferred-href');
+      document.head.appendChild(link);
+    });
+  }
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    window.addEventListener('load', function () { setTimeout(loadCss, 1000); });
+  } else {
+    loadCss();
+  }
+})();
+</script>
+<noscript><link href="/assets/homepage.css" rel="stylesheet"/><link href="style.css?v=20260830-reviews1" rel="stylesheet"/></noscript>
 </body>
 </html>

@@ -2866,9 +2866,18 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
   }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 768px) {
+  .pwe-hero-skyline,
+  .pwe-hero-visual { display: none !important; }
+  body.private-wealth-editorial main .hero.pwe-hero,
   body.private-wealth-editorial .pwe-hero {
-    padding-top: 36px !important;
+    padding-top: 28px !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    background-color: #142330 !important;
+    background-image: none !important;
   }
 
   body.private-wealth-editorial .pwe-hero h1 {
