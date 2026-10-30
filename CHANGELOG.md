@@ -1,3 +1,7 @@
+## 2026-10-30 — Preview: slash-less legacy redirects
+
+- Eleven WordPress paths that only had a trailing-slash redirect now also 301 without the slash. Sitemap entries for /resources and the first-time buyer guide no longer end in a slash. Not merged.
+
 ## 2026-10-30 — Preview: mobile portrait and Vercel port
 
 - Phones show a small compressed portrait above the homepage headline. Desktop still uses the skyline and the full cutout. Approved logo files are unchanged.

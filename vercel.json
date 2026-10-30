@@ -696,7 +696,17 @@
       "statusCode": 301
     },
     {
+      "source": "/mortgage-loan-refinance-options-austin/va-home-loan",
+      "destination": "/loans/va.html",
+      "statusCode": 301
+    },
+    {
       "source": "/mortgage-loan-refinance-options-austin/usda-loan/",
+      "destination": "/loans/usda.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-loan-refinance-options-austin/usda-loan",
       "destination": "/loans/usda.html",
       "statusCode": 301
     },
@@ -706,7 +716,17 @@
       "statusCode": 301
     },
     {
+      "source": "/mortgage-loan-refinance-options-austin/fha-loans-austin",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
       "source": "/mortgage-loan-refinance-options-austin/",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-loan-refinance-options-austin",
       "destination": "/products.html",
       "statusCode": 301
     },
@@ -716,7 +736,17 @@
       "statusCode": 301
     },
     {
+      "source": "/mortgage-loan-refinance-options-austin/jumbo-home-loans-austin",
+      "destination": "/loans/jumbo.html",
+      "statusCode": 301
+    },
+    {
       "source": "/mortgage-loan-refinance-options-austin/investment-vacation-home-loans-austin/",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-loan-refinance-options-austin/investment-vacation-home-loans-austin",
       "destination": "/products.html",
       "statusCode": 301
     },
@@ -726,7 +756,17 @@
       "statusCode": 301
     },
     {
+      "source": "/loan-options/refinance",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
       "source": "/cash-out-refinance/",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/cash-out-refinance",
       "destination": "/products.html",
       "statusCode": 301
     },
@@ -736,7 +776,17 @@
       "statusCode": 301
     },
     {
+      "source": "/what-is-an-fha-mortgage-insurance-premium",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
       "source": "/adam-styer/",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/adam-styer",
       "destination": "/about.html",
       "statusCode": 301
     },
@@ -747,6 +797,11 @@
     },
     {
       "source": "/how-long-does-it-take-to-buy-a-home/",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/how-long-does-it-take-to-buy-a-home",
       "destination": "/blog.html",
       "statusCode": 301
     },

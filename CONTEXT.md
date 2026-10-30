@@ -20,7 +20,7 @@ Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel those h
 
 ## Last Worked On
 
-Mobile homepage hero keeps the navy field and adds a small portrait above the headline under 768px. Desktop skyline and cutout are unchanged. Vercel redirects, headers, preview noindex, and the lead functions are ported. The assistant config stays `enabled: false`. Do not merge this preview and do not attach domains.
+Mobile homepage hero keeps the navy field and a small portrait above the headline under 768px. Vercel redirects include slash-less copies of the eleven legacy WordPress paths that 404 when the trailing slash is removed. Sitemap lists `/resources` and `/resources/first-time-buyer-guide` without a trailing slash. Do not merge this preview and do not attach domains.
 
 ## Working Rules
 
