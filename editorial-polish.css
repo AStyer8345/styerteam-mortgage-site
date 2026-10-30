@@ -71,7 +71,7 @@ main :is(.callout,.callout-tip) a{text-decoration:underline;text-underline-offse
   left: 16px;
   z-index: 2;
   font-family: var(--pwe-sans, sans-serif);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -112,7 +112,7 @@ main :is(.callout,.callout-tip) a{text-decoration:underline;text-underline-offse
   margin-bottom: 16px;
 }
 .pwe-card-tags span {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: #F5C443;
@@ -274,7 +274,7 @@ main :is(.callout,.callout-tip) a{text-decoration:underline;text-underline-offse
 }
 .pwe-mandate-tag {
   font-family: var(--pwe-sans, 'Inter', sans-serif) !important;
-  font-size: 11px !important;
+  font-size: 12px !important;
   font-weight: 700 !important;
   letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
@@ -318,7 +318,7 @@ main :is(.callout,.callout-tip) a{text-decoration:underline;text-underline-offse
 }
 .pwe-mandate-label {
   font-family: var(--pwe-sans, 'Inter', sans-serif) !important;
-  font-size: 11px !important;
+  font-size: 12px !important;
   font-weight: 700 !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;

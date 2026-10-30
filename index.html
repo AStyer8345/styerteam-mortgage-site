@@ -11,7 +11,7 @@
 <meta content="Self-Employed &amp; Non-QM Mortgages in Austin | The Styer Team, Powered by Go Rascal Inc." property="og:title"/>
 <meta content="Austin non-QM lending for business owners, self-employed borrowers, and investors. Bank statements, 1099s, assets, and DSCR. The Styer Team, Powered by Go Rascal Inc. NMLS #513013." property="og:description"/>
 <meta content="website" property="og:type"/>
-<meta content="https://thestyerteam.com/" property="og:url"/>
+<meta content="https://styerteam.com/" property="og:url"/>
 <meta content="https://thestyerteam.com/assets/adam-styer-banner-og.jpg" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
@@ -29,7 +29,7 @@
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-180.png" rel="apple-touch-icon" sizes="180x180"/>
 <!-- Canonical URL -->
-<link href="https://thestyerteam.com/" rel="canonical"/>
+<link href="https://styerteam.com/" rel="canonical"/>
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,7 +47,8 @@
     }
   }
   </script>
-<link rel="preload" href="/assets/austin-skyline-hero.avif" as="image" type="image/avif" fetchpriority="high"/>
+<link rel="preload" as="image" href="/assets/austin-skyline-hero-640.avif" imagesrcset="/assets/austin-skyline-hero-640.avif 640w, /assets/austin-skyline-hero-960.avif 960w, /assets/austin-skyline-hero.avif 1400w" imagesizes="100vw" type="image/avif" fetchpriority="high"/>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/source-serif-4-roman-latin.woff2" crossorigin/>
 <style>
 body{margin:0}
 :root{--pwe-serif:'Source Serif 4',Georgia,'Times New Roman',serif;--pwe-alabaster:#f6f4ef}
@@ -294,7 +295,7 @@ body.private-wealth-editorial .pwe-hero-editorial::before {
 }
 
 .pwe-hero-caption span {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #F5C443;
@@ -411,14 +412,14 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 }
 
 @media (max-width: 680px) {
-  body.private-wealth-editorial main .hero.pwe-hero { padding-top: 36px !important; min-height: 1606px !important; }
+  body.private-wealth-editorial main .hero.pwe-hero { padding-top: 28px !important; min-height: 0 !important; max-height: 100svh !important; overflow: hidden !important; }
   body.private-wealth-editorial .pwe-hero h1 { font-size: clamp(32px, 8.4vw, 42px) !important; }
   .pwe-hero-line,
   .pwe-hero h1 .modern-hero-accent { white-space: normal; }
   .pwe-hero h1 .modern-hero-accent { margin-left: 0.65em; }
   body.private-wealth-editorial .pwe-hero-actions { flex-direction: column !important; align-items: stretch !important; }
   body.private-wealth-editorial .pwe-hero-actions .pwe-btn-primary { width: 100% !important; }
-  body.private-wealth-editorial .pwe-hero-frame { min-height: 340px !important; padding: 20px 16px 0 !important; }
+  body.private-wealth-editorial .pwe-hero-frame { min-height: 200px !important; max-height: 240px; padding: 12px 16px 0 !important; }
   body.private-wealth-editorial .pwe-hero-caption { margin: 0 -16px !important; padding: 14px 16px !important; flex-direction: column !important; gap: 4px !important; }
   body.private-wealth-editorial .pwe-ledger-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
   body.private-wealth-editorial .pwe-ledger-cell { padding: 20px 12px !important; border-bottom: 1px solid rgba(246,244,239,.16) !important; }
@@ -429,8 +430,9 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 
 </style>
 <!-- Fonts are declared in the main stylesheet with font-display: swap, so they do not queue ahead of the hero image. -->
-<link href="/assets/homepage.css" rel="stylesheet"/>
-<link href="style.css?v=20260830-reviews1" rel="stylesheet"/>
+<link rel="preload" href="/assets/homepage.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<link rel="preload" href="style.css?v=20260830-reviews1" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link href="/assets/homepage.css" rel="stylesheet"/><link href="style.css?v=20260830-reviews1" rel="stylesheet"/></noscript>
 <!-- Schema.org LocalBusiness -->
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -649,21 +651,18 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 }</script>
 <script>window.dataLayer = window.dataLayer || [];</script>
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
+<script>(function(){var host=location.hostname;if(host!=="styerteam.com"&&host!=="www.styerteam.com")return;function load(){if(window.__styerTags)return;window.__styerTags=1;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-PQQ6PGLR");}if(document.readyState==="complete")load();else window.addEventListener("load",load,{once:true});["pointerdown","keydown","touchstart"].forEach(function(type){window.addEventListener(type,load,{once:true,passive:true});});})();</script>
 <!-- End Google Tag Manager -->
 <!-- Homepage surface tuning: deepen the light bands so the page isn't a white wash,
        and give white cards a real edge so they read as distinct surfaces.
        Scoped to the homepage; double-class selectors win over the async global sheet. -->
 <!-- Non-critical scripts load after the page load event, on idle or the first interaction. -->
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can self-employed business owners get a mortgage without tax returns in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If you are self-employed in Austin, we can look at 12 or 24 months of bank statements, a 1099-only program, a P&L your CPA prepares, or assets you already have. These are non-QM loans. Deposits and write-offs are not qualifying income. We match those records to a program that can use them."}}, {"@type": "Question", "name": "What is a DSCR loan and who qualifies in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "A DSCR loan is for a rental. We qualify it on the rent, not your paycheck or tax return. DSCR is the rent divided by the full housing payment: principal, interest, taxes, insurance, and any association dues. We compare the rent with the housing payment, and we ask if the homes can sit in an LLC."}}, {"@type": "Question", "name": "How does asset depletion qualify high-net-worth borrowers in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "Asset depletion turns money you already have into a monthly income number. We count the accounts the program allows, using that program's own months. We use this when someone has retired, sold a business, or has more saved than a W-2 shows."}}, {"@type": "Question", "name": "What loan programs are available for complex-income borrowers in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "If you are self-employed, you get K-1 income, you own rentals, or your savings are stronger than your wages, we look at bank statements, 1099s, a P&L, asset depletion, DSCR, and jumbo loans. A jumbo loan is anything above the conforming limit. A jumbo loan can use those documents too. We compare those programs across many wholesale lenders."}}, {"@type": "Question", "name": "How does a self-employed buyer get pre-qualified in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "Once your documents are in, we review them and issue a pre-approval letter. How long a bank-statement or DSCR loan takes to close depends on the program, the appraisal, title, and when the documents come in. Send us the situation or call (512) 956-6010."}}]}</script><style id="readability-corrections">body>main:nth-of-type(1)>section:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>details:nth-of-type(1)>p:nth-of-type(1){color:#243740 !important;}
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can self-employed business owners get a mortgage without tax returns in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If you are self-employed in Austin, we can look at 12 or 24 months of bank statements, a 1099-only program, a P&L your CPA prepares, or assets you already have. These are non-QM loans. Deposits and write-offs are not qualifying income. We match those records to a program that can use them."}}, {"@type": "Question", "name": "What is a DSCR loan and who qualifies in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "A DSCR loan is for a rental. We qualify it on the rent, not your paycheck or tax return. DSCR is the rent divided by the full housing payment: principal, interest, taxes, insurance, and any association dues. We compare the rent with the housing payment, and we ask if the homes can sit in an LLC."}}, {"@type": "Question", "name": "How does asset depletion qualify high-net-worth borrowers in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "Asset depletion turns money you already have into a monthly income number. We count the accounts the program allows, using that program's own months. We use this when someone has retired, sold a business, or has more saved than a W-2 shows."}}, {"@type": "Question", "name": "What loan programs are available for complex-income borrowers in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "If you are self-employed, you get K-1 income, you own rentals, or your savings are stronger than your wages, we look at bank statements, 1099s, a P&L, asset depletion, DSCR, and jumbo loans. A jumbo loan is anything above the conforming limit. A jumbo loan can use those documents too. We compare those programs across many wholesale lenders."}}, {"@type": "Question", "name": "How does a self-employed buyer get pre-qualified in Austin TX?", "acceptedAnswer": {"@type": "Answer", "text": "Once your documents are in, we review them and issue a pre-approval letter. How long a bank-statement or DSCR loan takes to close depends on the program, the appraisal, title, and when the documents come in. Send us the situation or call (512) 956-6010."}}]}</script><style id="readability-corrections">.readability-brass{color:#70531f !important}
+.readability-ink{color:#243740 !important}
+body>main:nth-of-type(1)>section:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>details:nth-of-type(1)>p:nth-of-type(1){color:#243740 !important;}
 body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(1)>span:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(2)>span:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(3)>span:nth-of-type(1){color:#70531f !important;}
-body>main:nth-of-type(1)>section:nth-of-type(4)>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(4)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(1)>span:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(4)>div:nth-of-type(1)>div:nth-of-type(2)>p:nth-of-type(2){color:#243740 !important;}
 body>main:nth-of-type(1)>section:nth-of-type(5)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>span:nth-of-type(1){color:#70531f !important;}
@@ -688,11 +687,11 @@ body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-ty
 body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-type(2)>article:nth-of-type(2)>a:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-type(2)>article:nth-of-type(3)>div:nth-of-type(1)>div:nth-of-type(1)>span:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-type(2)>article:nth-of-type(3)>a:nth-of-type(1){color:#70531f !important;}
-body>main:nth-of-type(1)>section:nth-of-type(9)>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(1){color:#70531f !important;}
-main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style></head>
+main p{overflow-wrap:break-word}
+details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style></head>
 <body class="editorial-page home-pilot advisory-site premium-homepage private-wealth-editorial">
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<noscript></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <a class="skip-link" href="#main">Skip to main content</a>
 <!-- HEADER & NAVIGATION -->
@@ -700,9 +699,9 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div class="container">
 <nav>
 <a class="nav-brand" href="/index.html">
-<span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
+<span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark-display.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
 </a>
-<button aria-label="Toggle navigation menu" class="mobile-menu-toggle">
+<button aria-label="Toggle navigation menu" class="mobile-menu-toggle" aria-expanded="false">
 <span></span>
 <span></span>
 <span></span>
@@ -793,6 +792,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </li>
 <li class="nav-phone-li"><a class="nav-phone" href="tel:+15129566010">(512) 956-6010</a></li>
 <li><a class="nav-cta" href="/contact.html?goal=Purchase">See My Options</a></li>
+<li><a aria-label="Contact Adam about applying" class="nav-cta nav-apply" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank">Apply Now</a></li>
 </ul>
 </nav>
 </div>
@@ -801,15 +801,15 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <!-- SECTION 1: HERO — Architectural Private Wealth Opening -->
 <section aria-label="Non-QM lending from Adam Styer" class="hero pwe-hero pwe-dark">
 <picture class="pwe-hero-skyline">
-<source srcset="/assets/austin-skyline-hero.avif" type="image/avif"/>
-<img alt="" fetchpriority="high" height="700" src="/assets/austin-skyline-hero.webp" width="1400"/>
+<source sizes="100vw" srcset="/assets/austin-skyline-hero-640.avif 640w, /assets/austin-skyline-hero-960.avif 960w, /assets/austin-skyline-hero.avif 1400w" type="image/avif"/>
+<img alt="" fetchpriority="high" height="700" sizes="100vw" src="/assets/austin-skyline-hero-960.webp" srcset="/assets/austin-skyline-hero-640.webp 640w, /assets/austin-skyline-hero-960.webp 960w, /assets/austin-skyline-hero.webp 1400w" width="1400"/>
 </picture>
 <div class="container">
 <div class="pwe-hero-grid">
 <div class="pwe-hero-editorial">
 <div class="pwe-hero-meta">
 <span class="pwe-kicker">Austin non-QM and self-employed lending</span>
-<p class="pwe-hero-powered"><span class="gorascal-wordmark-chip gorascal-wordmark-chip-hero"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="22"></span><span>Powered by Go Rascal Inc.</span></p>
+<p class="pwe-hero-powered"><span class="gorascal-wordmark-chip gorascal-wordmark-chip-hero"><img src="/assets/brand/gorascal/gorascal-wordmark-display.png" alt="Go Rascal Inc." height="22"></span><span>Powered by Go Rascal Inc.</span></p>
 <a aria-label="Read Adam Styer's 99 verified 5-star Google reviews" class="pwe-hero-badge" href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" rel="noopener" target="_blank">
 <span aria-hidden="true" class="pwe-star-sequence">
 <svg class="pwe-seq-star" height="13" viewbox="0 0 24 24" width="13"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
@@ -1060,7 +1060,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <figcaption>Adam, Britney Jo &amp; family · Austin, TX</figcaption>
 </figure>
 <div class="pwe-people-copy">
-<p class="pwe-kicker">About Adam</p>
+<p class="readability-brass pwe-kicker">About Adam</p>
 <h2 class="pwe-section-title" id="pwe-people-title">Hi, I'm Adam. I live here in Austin.</h2>
 <p>I'm married to Britney Jo, and we're raising three kids. Austin has been home for more than 16 years. I also own rental property, so I've been the borrower, not only the loan officer.</p>
 <p>You don't have to name the program before you call. Tell us how you earn and what's been confusing. We'll tell you what the options are, and what we'd do next.</p>
@@ -1454,7 +1454,7 @@ Read Full Case Study
 <p class="pwe-kicker">From the blog</p>
 <h2 class="pwe-section-title" id="intel-title">A few things we have written.</h2>
 </div>
-<p>Notes on rates, bank statements, and non-QM files.</p>
+<p class="readability-brass">Notes on rates, bank statements, and non-QM files.</p>
 </div>
 <div class="guide-grid pwe-guide-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; margin-top: 36px;">
 <article class="guide-card pwe-guide-card" style="background: #FFFFFF; border: 1px solid var(--pwe-rule); border-radius: 4px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
@@ -1572,7 +1572,7 @@ Read Full Case Study
     <p class="site-footer-proof"><a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener">5.0 on Google</a> · <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener">4.98 on Zillow</a> · <a href="/testimonials.html">144 published reviews</a> · Licensed in Texas · NMLS #513013</p>
     <p class="site-footer-areas"><strong>Serving Central Texas:</strong> <a href="/austin-area-mortgage-lender.html">Austin</a> · <a href="/round-rock-mortgage-lender.html">Round Rock</a> · <a href="/cedar-park-mortgage-lender.html">Cedar Park</a> · <a href="/leander-mortgage-lender.html">Leander</a> · <a href="/georgetown-mortgage-lender.html">Georgetown</a> · <a href="/pflugerville-mortgage-lender.html">Pflugerville</a> · <a href="/kyle-mortgage-lender.html">Kyle</a> · <a href="/buda-mortgage-lender.html">Buda</a> · <a href="/san-marcos-mortgage-lender.html">San Marcos</a> · <a href="/westlake-mortgage-lender.html">Westlake</a> · <a href="/lakeway-mortgage-lender.html">Lakeway</a> · <a href="/bee-cave-mortgage-lender.html">Bee Cave</a> · <a href="/dripping-springs-mortgage-lender.html">Dripping Springs</a> · <a href="/spicewood-mortgage-lender.html">Spicewood</a> · <a href="/marble-falls-mortgage-lender.html">Marble Falls</a> · <a href="/hutto-mortgage-lender.html">Hutto</a> · <a href="/taylor-mortgage-lender.html">Taylor</a> · <a href="/manor-mortgage-lender.html">Manor</a> · <a href="/elgin-mortgage-lender.html">Elgin</a> · <a href="/bastrop-mortgage-lender.html">Bastrop</a> · <a href="/smithville-mortgage-lender.html">Smithville</a> · <a href="/liberty-hill-mortgage-lender.html">Liberty Hill</a> · <a href="/jarrell-mortgage-lender.html">Jarrell</a> · <a href="/florence-mortgage-lender.html">Florence</a> · <a href="/new-braunfels-mortgage-lender.html">New Braunfels</a></p>
     <div class="site-footer-legal">
-      <img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy.png" alt="Go Rascal Inc." height="64">
+      <img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy-display.png" alt="Go Rascal Inc." height="64">
       <div class="site-footer-legal-copy">
       <p class="site-footer-compliance">Adam Styer | Mortgage Loan Originator</p>
       <p class="site-footer-compliance"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS ID #513013</a></p>
@@ -1608,14 +1608,35 @@ Read Full Case Study
         bar.removeAttribute('aria-hidden');
         bar.removeAttribute('inert');
         shown = true;
-        window.removeEventListener('scroll', onScroll);
       }
-      function onScroll() {
+      var heroCta = document.querySelector('.pwe-hero-actions .pwe-btn-primary');
+      function heroInView() {
+        if (!heroCta) return false;
+        var rect = heroCta.getBoundingClientRect();
+        return rect.bottom > 80 && rect.top < window.innerHeight;
+      }
+      function menuOpen() {
+        var nav = document.querySelector('.nav-links');
+        return !!(nav && nav.classList.contains('active'));
+      }
+      function update() {
+        document.body.classList.toggle('hero-cta-in-view', heroInView());
+        document.body.classList.toggle('nav-open', menuOpen());
+        if (heroInView() || menuOpen()) {
+          if (shown) {
+            shown = false;
+            bar.classList.remove('is-visible');
+            document.body.classList.remove('sticky-mobile-bar-active');
+            bar.setAttribute('aria-hidden', 'true');
+            bar.setAttribute('inert', '');
+          }
+          return;
+        }
         if (window.scrollY >= 120) reveal();
       }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      // Also reveal after 2s even without scroll — keeps CTA persistently available
-      setTimeout(reveal, 2000);
+      window.addEventListener('scroll', update, { passive: true });
+      document.addEventListener('click', function () { setTimeout(update, 0); });
+      update();
     });
   </script>
 <script>

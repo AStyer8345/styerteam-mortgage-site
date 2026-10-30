@@ -76,7 +76,7 @@ body.private-wealth-editorial :is(a, button, input, select, textarea, summary):f
   align-items: center;
   gap: 12px;
   font-family: var(--pwe-sans);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -663,7 +663,7 @@ body.private-wealth-editorial main .hero.pwe-hero::before,
 }
 
 .pwe-hero-caption span {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #F5C443;
@@ -925,7 +925,7 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 
 .pwe-audience-num {
   font-family: var(--pwe-sans);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -967,7 +967,7 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 }
 
 .pwe-audience-tags span {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.03em;
   color: #F5C443;
@@ -1139,7 +1139,7 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 }
 
 .pwe-mandate-item .said-no-tag {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1270,7 +1270,7 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 }
 
 .pwe-instrument-head span {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1590,7 +1590,7 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 }
 
 .pwe-briefings .blog-card-category {
-  font-size: 11px !important;
+  font-size: 12px !important;
   font-weight: 600 !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
@@ -1674,7 +1674,7 @@ body.private-wealth-editorial .premium-contact {
 
 .pwe-direct-channels div span {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;

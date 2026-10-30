@@ -14,14 +14,12 @@ Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatc
 |------|-------|
 | Repo | `AStyer8345/styerteam-mortgage-site` |
 | Hosting | Netlify, publish `.site-dist` |
-| Domain | Preview origin `https://thestyerteam.com` (not live). Production host is still styermortgage.com until Compliance approves the cutover. |
+| Domain | Canonical origin `https://styerteam.com`. Domains are not attached by this branch. Host redirects in `_redirects` wait until the domains are connected. |
 | Production branch | `main` |
 
 ## Last Worked On
 
-The NMLS licensed location is 185 Wythe Ave, Suite A2, Brooklyn, NY 11249. It is the footer and schema address, not a Texas office. areaServed stays Texas. Close-day, savings, and guarantee marketing lines are stripped. Rate pages are unchanged.
-
-GoRascal’s approved files are in assets/brand/gorascal/. The header and homepage hero use the wordmark on a white chip. The footer uses the navy seal. The outline seal and the brownstone illustration are stored and not displayed. Do not merge this preview.
+Review fixes on the preview branch. Public URLs in canonicals, og:url, the sitemap, robots, and site.config use https://styerteam.com. The email adam@thestyerteam.com is unchanged. Google tags are limited to styerteam.com and www.styerteam.com. The assistant config stays enabled only when `MORTGAGE_ASSISTANT_ENABLED` is the string true, which this repo does not set. Do not merge this preview and do not attach domains.
 
 ## Working Rules
 

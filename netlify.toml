@@ -62,6 +62,18 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
 
+# Preview and branch deploys must not be indexed. Production (CONTEXT=production)
+# does not set this header. Hostnames are not attached by this file.
+[[context.deploy-preview.headers]]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    X-Robots-Tag = "noindex"
+
+[[context.branch-deploy.headers]]
+  for = "/*"
+  [context.branch-deploy.headers.values]
+    X-Robots-Tag = "noindex"
+
 [[headers]]
   for = "/api/mortgage-assistant"
   [headers.values]
@@ -85,31 +97,53 @@
     Cache-Control = "private, no-store"
     Referrer-Policy = "no-referrer"
 
-# ─── Cache Headers for Static Assets ─────────────────────────────────────────
+# Published CSS, JS, and assets are referenced with a content hash query
+# (?v=) from the package step, so browsers can keep them for a year.
+# HTML is always revalidated.
 [[headers]]
-  for = "/assets/*"
+  for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Root-level JS/CSS do NOT have content-hashed filenames (e.g. /script.js, /style.css),
-# so `immutable` would pin old versions in returning visitors' browsers for a year.
-# Use must-revalidate so the browser always sends a conditional GET; Netlify's ETag
-# returns 304 when unchanged, so bandwidth cost is near zero.
-# Assets and favicons use stable filenames too; revalidate them after releases.
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 [[headers]]
   for = "/*.css"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/*.js"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/favicon*"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/dashboard.html"

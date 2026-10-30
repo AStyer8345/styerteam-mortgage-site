@@ -35,7 +35,7 @@ test('conversation abandonment is emitted only after a conversation and before c
 import vm from 'node:vm';
 test('production assistant events reach the existing Google tag without transcript data', () => {
   const events: unknown[] = [];
-  const context = { state: { analyticsSeen: {}, salesState: {}, turns: [] }, window: { location: { pathname: '/bank-statement-loans.html', hostname: 'thestyerteam.com', search: '' }, dataLayer: events } };
+  const context = { state: { analyticsSeen: {}, salesState: {}, turns: [] }, window: { location: { pathname: '/bank-statement-loans.html', hostname: 'styerteam.com', search: '' }, dataLayer: events } };
   const functions = browser.slice(browser.indexOf('function trackAssistant'), browser.indexOf('function openingChoiceValue'));
   vm.runInNewContext(functions + '\ntrackAssistant("assistant_opened");', context);
   assert.equal(events.length, 2);
@@ -49,7 +49,7 @@ test('production assistant events reach the existing Google tag without transcri
 
 test('synthetic tests are excluded from production Google Analytics', () => {
   const events: unknown[] = [];
-  const context = { state: { analyticsSeen: {}, salesState: {}, turns: [] }, window: { location: { pathname: '/', hostname: 'thestyerteam.com', search: '?assistant_test=1' }, dataLayer: events } };
+  const context = { state: { analyticsSeen: {}, salesState: {}, turns: [] }, window: { location: { pathname: '/', hostname: 'styerteam.com', search: '?assistant_test=1' }, dataLayer: events } };
   const functions = browser.slice(browser.indexOf('function trackAssistant'), browser.indexOf('function openingChoiceValue'));
   vm.runInNewContext(functions + '\ntrackAssistant("assistant_opened");', context);
   assert.equal(events.length, 1);

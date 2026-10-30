@@ -1,3 +1,10 @@
+## 2026-10-30 — Preview: review fixes, still not merged
+
+- Restored the dropped interior stylesheets on the bank-statement, self-employed, and high-net-worth pages. Situation-journey submit no longer assumes a progress element.
+- Canonicals, og:url, sitemap, robots, and site.config now use https://styerteam.com. adam@thestyerteam.com is unchanged. Host redirects to that origin are in `_redirects` and do not attach any domain.
+- Google tags load only on styerteam.com and www.styerteam.com, after load or the first interaction. Deploy-preview and branch-deploy send `X-Robots-Tag: noindex`.
+- Homepage hero, images, fonts, and caching are tightened for mobile. Display-size GoRascal copies were added; the approved originals are unchanged. Not merged.
+
 ## 2026-10-29 — Preview: GoRascal approved logos
 
 - The four approved files are stored byte-for-byte in assets/brand/gorascal/. The header and homepage hero show the wordmark on a white chip, sized by height. The footer shows the navy seal beside the licensing block. The outline seal and the brownstone illustration are not displayed. Organization schema points at the wordmark URL. Not merged.

@@ -175,9 +175,9 @@
       });
       estimates.appendChild(summary); estimates.appendChild(extraFields); grid.after(estimates);
     }
-    var questions = singleStep ? [] : Array.from(first.querySelectorAll('input,select')).filter(function (field) { return field.type !== 'hidden'; }).map(function (field) {
+      var questions = singleStep ? [] : Array.from(first.querySelectorAll('input,select')).filter(function (field) { return field.type !== 'hidden'; }).map(function (field) {
       var label = first.querySelector('label[for="' + field.id + '"]');
-      return { name: field.name, label: label.textContent.replace(/ \*$/, '') };
+      return { name: field.name, label: label ? label.textContent.replace(/ \*$/, '') : field.name };
     });
 
     // Events deliberately contain only fixed intent/form identifiers and a clean
@@ -187,11 +187,11 @@
       root.dataLayer.push({ event: name, form_name: formName, intent: intent, page_path: root.location.pathname, ...(inquiryId ? {inquiry_id:inquiryId}: {}) });
     }
     function showStep(value, focus) {
-      if (singleStep) { step = 2; second.hidden = false; progress.hidden = true; return; }
+      if (singleStep) { step = 2; if (second) second.hidden = false; if (progress) progress.hidden = true; return; }
       step = value;
-      first.hidden = step !== 1;
-      second.hidden = step !== 2;
-      progress.textContent = step === 1 ? 'Step 1 of 2 · Your plans' : 'Step 2 of 2 · Contact & context';
+      if (first) first.hidden = step !== 1;
+      if (second) second.hidden = step !== 2;
+      if (progress) progress.textContent = step === 1 ? 'Step 1 of 2 · Your plans' : 'Step 2 of 2 · Contact & context';
       if (focus) {
         var field = (step === 1 ? first : second).querySelector('input:not([type="hidden"]),select,textarea');
         if (field) field.focus();
@@ -233,10 +233,11 @@
       contactPreference();
     }
     function showConfirmation(result) {
+      if (!status) return;
       busy = true;
       delete status.dataset.tone;
       form.querySelectorAll('fieldset').forEach(function (fieldset) { fieldset.hidden = true; });
-      progress.hidden = true;
+      if (progress) progress.hidden = true;
       status.textContent = (result.primary ? 'Your scenario and contact details are saved for review.' : 'Your scenario has been saved. You can also contact Adam directly below.') + (analysis ? ' Your calculator assumptions and results are included.' : '') + ' I’ll review what you shared and follow up using your contact details. I aim to respond within one business day. This is not a loan approval.';
       if (singleStep) {
         var card = form.closest('.journey-card');

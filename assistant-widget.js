@@ -631,7 +631,7 @@
     // GTM's published container only forwards generate_lead. Send these
     // non-sensitive funnel events through the existing Google tag directly.
     // Audit/preview activity stays out of production analytics.
-    if (/^(www\.)?(thestyerteam\.com|styermortgage\.com)$/.test(window.location.hostname) && !/[?&]assistant_test=1(?:&|$)/.test(window.location.search)) {
+    if (/^(www\.)?styerteam\.com$/.test(window.location.hostname) && !/[?&]assistant_test=1(?:&|$)/.test(window.location.search)) {
       var parameters = Object.assign({}, payload, { send_to: 'G-DDY0H0319S' });
       delete parameters.event;
       (function () { window.dataLayer.push(arguments); })('event', eventName, parameters);
