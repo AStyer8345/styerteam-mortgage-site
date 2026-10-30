@@ -16,6 +16,20 @@ function header(headers, name) {
   return "";
 }
 
+// Match situation-journeys.js: a single name field becomes first and last
+// before LoanOS sees the backup, so it agrees with the JSON copy.
+function applyNameSplit(fields) {
+  const next = { ...fields };
+  const existingFirst = next.first_name || next["first-name"] || next.fname || "";
+  if (String(existingFirst).trim()) return next;
+  const source = next.name || next.full_name || "";
+  if (!String(source).trim()) return next;
+  const parts = String(source).trim().split(/\s+/);
+  next.first_name = parts.shift() || "";
+  next.last_name = parts.join(" ");
+  return next;
+}
+
 function stableId(fields) {
   const raw = [fields.email || "", fields["form-name"] || "", fields.phone || "", fields.name || "", fields.details || "", fields.submitted_at || ""].join("|");
   return "formbackup-" + crypto.createHash("sha256").update(raw).digest("hex").slice(0, 24);
@@ -48,7 +62,7 @@ async function handleFormPost(input, deps = {}) {
   const type = header(headers, "content-type").toLowerCase();
   if (!type.includes("application/x-www-form-urlencoded")) return json(415, { error: "Form body required" });
 
-  const fields = Object.fromEntries(new URLSearchParams(bodyText));
+  const fields = applyNameSplit(Object.fromEntries(new URLSearchParams(bodyText)));
   if (fields["bot-field"] || fields.honeypot) return json(200, { ok: true });
 
   const mode = (header(headers, "sec-fetch-mode") || "").toLowerCase();
@@ -56,7 +70,8 @@ async function handleFormPost(input, deps = {}) {
   const formName = fields["form-name"] || "";
   const hasInquiry = INQUIRY.test(fields.inquiry_id || "");
   // A page script that already calls lead-intake also posts the raw form here.
-  // Keep that second copy in LoanOS, and let the primary request send the auto-reply once.
+  // Both copies may dispatch the web-lead webhook. LoanOS treats the second
+  // claim for the same inquiry as a duplicate, which is still a success.
   const soleCapture = navigate || (!hasInquiry && formName !== "notification-backup");
   if (!hasInquiry) fields.inquiry_id = stableId(fields);
 
@@ -124,4 +139,4 @@ function defaultIntake(event) {
   return require("../../netlify/functions/lead-intake").handler(event);
 }
 
-module.exports = { handleFormPost, stableId };
+module.exports = { handleFormPost, stableId, applyNameSplit };

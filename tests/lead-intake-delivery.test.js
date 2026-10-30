@@ -9,7 +9,7 @@ const configured = { MAILCHIMP_API_KEY: 'test-us1', MAILCHIMP_BORROWER_LIST_ID: 
 
 async function submit({ env = configured, failures = [], body = { inquiry_id: 'fixture-inquiry-123', email: 'fixture@example.com', first_name: 'Fixture' } } = {}) {
   const calls = [];
-  const context = { exports: {}, require: createRequire(filename), process: { env }, Buffer, URLSearchParams,
+  const context = { exports: {}, require: createRequire(filename), process: { env }, Buffer, URLSearchParams, AbortSignal,
     console: { warn() {}, error() {} },
     fetch: async (url, options) => {
       calls.push({ url, body: JSON.parse(options.body) });
@@ -45,7 +45,55 @@ test('marketing failure cannot erase the stored inquiry', async () => {
 });
 test('internal tests skip every marketing request', async () => {
   const r = await submit({body:{inquiry_id:'internal-test-1234',email:'adam.styerassistant@gmail.com',test_mode:true}});
-  assert.equal(r.result.mailchimp, 'skipped-test'); assert.equal(r.calls.some(c=>c.url.includes('mailchimp.com')),false);
+  assert.equal(r.result.mailchimp, 'skipped-test');
+  assert.equal(r.result.webLeadAutomation, 'skipped-test');
+  assert.equal(r.calls.some(c=>c.url.includes('mailchimp.com')),false);
+  assert.equal(r.calls.some(c=>c.url==='https://automation.example'),false);
+});
+test('test mode can dispatch the web-lead webhook when that env flag is set', async () => {
+  const r = await submit({
+    env: { ...configured, N8N_SEND_TEST_LEADS: 'true' },
+    body: { inquiry_id: 'internal-test-1234', email: 'adam.styerassistant@gmail.com', test_mode: true, marketing_opt_in: true },
+  });
+  assert.equal(r.result.mailchimp, 'skipped-test');
+  assert.equal(r.result.webLeadAutomation, 'accepted');
+  assert.equal(r.calls.filter(c => c.url === 'https://automation.example').length, 1);
+  assert.equal(r.calls.some(c => c.url.includes('mailchimp.com')), false);
+});
+test('a single name field reaches LoanOS as first and last name', async () => {
+  const r = await submit({ body: { inquiry_id: 'fixture-inquiry-123', email: 'fixture@example.com', name: 'Pat Lee' } });
+  const captured = r.calls.find(call => call.url.includes('/api/intake/inquiries')).body;
+  assert.equal(captured.first_name, 'Pat');
+  assert.equal(captured.last_name, 'Lee');
+});
+test('a duplicate LoanOS claim is success and still dispatches the webhook', async () => {
+  const calls = [];
+  const filename = path.resolve(__dirname, '../netlify/functions/lead-intake.js');
+  const context = { exports: {}, require: createRequire(filename), process: { env: configured }, Buffer, URLSearchParams, AbortSignal,
+    console: { warn() {}, error() {} },
+    fetch: async (url, options) => {
+      calls.push({ url, body: JSON.parse(options.body), signal: options.signal });
+      if (String(url).includes('/api/intake/inquiries')) {
+        return { ok: false, status: 409, json: async () => ({ error: 'already exists', inquiry_id: 'fixture-inquiry-123' }) };
+      }
+      return { ok: true, status: 200, json: async () => ({}) };
+    },
+  };
+  vm.runInNewContext(fs.readFileSync(filename, 'utf8'), context, { filename });
+  const response = await context.exports.handler({
+    httpMethod: 'POST',
+    headers: { 'content-type': 'application/json', 'x-styer-internal-backup': '1' },
+    body: JSON.stringify({ inquiry_id: 'fixture-inquiry-123', email: 'fixture@example.com', first_name: 'Pat', last_name: 'Lee' }),
+  });
+  const result = JSON.parse(response.body);
+  assert.equal(response.statusCode, 200);
+  assert.equal(result.captured, true);
+  assert.equal(result.duplicate, true);
+  assert.equal(result.webLeadAutomation, 'accepted');
+  assert.equal(result.mailchimp, 'skipped-backup');
+  const webhook = calls.find(call => call.url === 'https://automation.example');
+  assert.deepEqual(webhook.body, { dispatch_inquiry_id: 'fixture-inquiry-123' });
+  assert.equal(typeof webhook.signal, 'object');
 });
 test('test mode cannot target a borrower', async () => {
   const r = await submit({body:{inquiry_id:'internal-test-1234',email:'borrower@example.com',test_mode:true}});

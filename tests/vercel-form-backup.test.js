@@ -19,7 +19,7 @@ function intakeSpy() {
   };
 }
 
-test('parallel form backup stores the inquiry and does not ask for a second auto-reply', async () => {
+test('parallel form backup stores the inquiry and notifies the form webhook', async () => {
   const spy = intakeSpy();
   const calls = [];
   const response = await handleFormPost({
@@ -83,7 +83,21 @@ test('honeypot and failed intake do not call a notification webhook', async () =
   assert.equal(rejected.status, 400);
 });
 
-test('lead-intake backup flag keeps LoanOS and skips the auto-reply webhook', async () => {
+test('a single name field is split the same way for the raw-form copy', async () => {
+  const spy = intakeSpy();
+  await handleFormPost({
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded', 'sec-fetch-mode': 'cors' },
+    body: 'form-name=contact&email=person@example.com&inquiry_id=inquiry-123456&name=Pat%20Lee',
+    url: 'https://styerteam.com/',
+  }, { intake: spy.intake, webhook: '' });
+  const sent = new URLSearchParams(spy.events[0].body);
+  assert.equal(sent.get('first_name'), 'Pat');
+  assert.equal(sent.get('last_name'), 'Lee');
+  assert.equal(sent.get('name'), 'Pat Lee');
+});
+
+test('lead-intake backup copy still dispatches the web-lead webhook', async () => {
   const filename = path.resolve('netlify/functions/lead-intake.js');
   const calls = [];
   const context = {
@@ -92,6 +106,7 @@ test('lead-intake backup flag keeps LoanOS and skips the auto-reply webhook', as
     process: { env: { LOANOS_URL: 'https://loanos.example', LOANOS_AGENT_SECRET: 'test-only', N8N_WEB_LEAD_URL: 'https://automation.example' } },
     Buffer,
     URLSearchParams,
+    AbortSignal,
     console: { warn() {}, error() {} },
     fetch: async (url, options) => {
       calls.push({ url, body: JSON.parse(options.body) });
@@ -102,16 +117,20 @@ test('lead-intake backup flag keeps LoanOS and skips the auto-reply webhook', as
   const response = await handleFormPost({
     method: 'POST',
     headers: { 'content-type': 'application/x-www-form-urlencoded', 'sec-fetch-mode': 'cors' },
-    body: 'form-name=contact&email=person@example.com&inquiry_id=inquiry-123456',
+    body: 'form-name=contact&email=person@example.com&inquiry_id=inquiry-123456&name=Pat%20Lee',
     url: 'https://styerteam.com/',
   }, { intake: context.exports.handler, webhook: '' });
   const result = await response.json();
   assert.equal(response.status, 200);
   assert.equal(result.captured, true);
-  assert.equal(result.webLeadAutomation, 'skipped-backup');
-  assert.equal(calls.length, 1);
-  assert.equal(calls[0].url, 'https://loanos.example/api/intake/inquiries');
-  assert.equal(calls.some((call) => call.url === 'https://automation.example'), false);
+  assert.equal(result.webLeadAutomation, 'accepted');
+  assert.equal(result.mailchimp, 'skipped-backup');
+  const loanos = calls.find((call) => call.url === 'https://loanos.example/api/intake/inquiries');
+  const webhook = calls.find((call) => call.url === 'https://automation.example');
+  assert.equal(loanos.body.first_name, 'Pat');
+  assert.equal(loanos.body.last_name, 'Lee');
+  assert.deepEqual(webhook.body, { dispatch_inquiry_id: 'stored-inquiry-123' });
+  assert.equal(webhook.optionsIgnored, undefined);
 });
 
 test('a sole follow-up post forwards to LoanOS and the web-lead auto-reply', async () => {
@@ -123,6 +142,7 @@ test('a sole follow-up post forwards to LoanOS and the web-lead auto-reply', asy
     process: { env: { LOANOS_URL: 'https://loanos.example', LOANOS_AGENT_SECRET: 'test-only', N8N_WEB_LEAD_URL: 'https://automation.example' } },
     Buffer,
     URLSearchParams,
+    AbortSignal,
     console: { warn() {}, error() {} },
     fetch: async (url, options) => {
       calls.push({ url, body: JSON.parse(options.body) });

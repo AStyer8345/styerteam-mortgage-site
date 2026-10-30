@@ -6,7 +6,7 @@ Public mortgage website for The Styer Team · Powered by GoRascal. Static HTML/C
 
 Legal entity is Go Rascal Inc. Company NMLS 2072896. Adam Styer NMLS 513013. The only business phone is (512) 956-6010. Apply Now goes to `https://gorascal.my1003app.com/513013/register`. See My Options and the short form stay on `/contact.html`. `/apply-now` 301s to the application link.
 
-Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel those hit `api/form-backup` and `api/lead-intake`, which call the same LoanOS intake and n8n web-lead webhook. Mailchimp runs only when `marketing_opt_in` is on. Do not rename those fields.
+Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel both copies call LoanOS. A single `name` field is split into first and last name on each copy. Either accepted copy, including a duplicate, calls the n8n web-lead webhook. Mailchimp runs only when `marketing_opt_in` is on. Do not rename those fields.
 
 ## Repository
 

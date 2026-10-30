@@ -1,3 +1,7 @@
+## 2026-10-30 — Preview: instant lead email after either LoanOS copy
+
+- The raw-form backup now splits a single name field into first and last name, matching the JSON copy. A duplicate LoanOS claim counts as success, and both copies call the web-lead webhook with a 5-second timeout. Test leads still skip that webhook unless N8N_SEND_TEST_LEADS=true. Not merged.
+
 ## 2026-10-30 — Preview: slash-less legacy redirects
 
 - Eleven WordPress paths that only had a trailing-slash redirect now also 301 without the slash. Sitemap entries for /resources and the first-time buyer guide no longer end in a slash. Not merged.
