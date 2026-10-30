@@ -1,15 +1,13 @@
 // Preview noindex, withheld pages, form posts, and the admin gate.
 // Production (VERCEL_ENV=production) does not add a sitewide X-Robots-Tag.
-import { createRequire } from 'node:module';
-import { readFileSync } from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const require = createRequire(import.meta.url);
+// Vercel compiles this file to CommonJS, where import.meta is a syntax error.
+// Use the CommonJS require and __dirname that the compiled module provides.
+const { readFileSync } = require('node:fs');
+const path = require('node:path');
 const { handleFormPost } = require('./api/lib/form-post.js');
 const auth = require('./netlify/functions/lib/admin-session.js');
 const blocked = new Set(require('./api/lib/blocked-paths.json'));
-const root = path.dirname(fileURLToPath(import.meta.url));
+const root = typeof __dirname === 'string' ? __dirname : process.cwd();
 
 const protectedPaths = new Set([
   '/dashboard.html', '/dashboard', '/dashboard.js', '/dashboard.css',
