@@ -1,3 +1,7 @@
+## 2026-10-30 — Preview: lighter mobile homepage hero
+
+- Under 768px the homepage hero is the brand navy and the copy, at content height. The skyline photo and portrait stay on desktop. Critical CSS paints the headline before the full stylesheets, which load after the page on small screens. Approved logo files are unchanged. Not merged.
+
 ## 2026-10-30 — Preview: review fixes, still not merged
 
 - Restored the dropped interior stylesheets on the bank-statement, self-employed, and high-net-worth pages. Situation-journey submit no longer assumes a progress element.
