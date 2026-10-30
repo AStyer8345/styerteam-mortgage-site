@@ -35,7 +35,7 @@ test('paid DPA guide is isolated from organic indexation', () => {
 });
 
 test('llms.txt exposes canonical answer-engine paths', () => {
-  assert.match(llms, /Adam Styer Mortgage/);
+  assert.match(llms, /The Styer Team, Powered by Go Rascal Inc\./);
   assert.match(llms, /mortgage-for-business-owners-austin\.html/);
   assert.match(llms, /non-qm-loans\.html/);
   assert.match(llms, /bank-statement-loans\.html/);

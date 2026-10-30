@@ -21,7 +21,7 @@ document.addEventListener('formdata', event => { event.formData.set('inquiry_id'
 document.addEventListener('reset', event => { const field = event.target.querySelector('input[name="inquiry_id"]'); if (field) field.value = ''; }, true);
 
 /* ==========================================================================
-   The Styer Team · Powered by GoRascal - Main JavaScript
+   The Styer Team, Powered by Go Rascal Inc. - Main JavaScript
    ========================================================================== */
 
 // ========================================================================
@@ -937,7 +937,6 @@ function initTestimonialFilter() {
   });
 }
 
-
 // ========================================================================
 // PRE-QUALIFICATION MULTI-STEP FORM
 // ========================================================================
@@ -1141,12 +1140,13 @@ function initPrequalForm() {
   });
 }
 
-
 // ========================================================================
 // INIT - Single DOMContentLoaded entry point
 // ========================================================================
 
-document.addEventListener('DOMContentLoaded', () => {
+function bootSite() {
+  if (window.__styerSiteBooted) return;
+  window.__styerSiteBooted = true;
   initNavigation();
   initAccordion();
   initDisclosureNavigation();
@@ -1158,7 +1158,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initPrequalForm();
   initCityToggle();
   initMortgageAssistant();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootSite);
+} else {
+  bootSite();
+}
 
 function initMortgageAssistant() {
   if (document.querySelector('script[data-mortgage-assistant]')) return;

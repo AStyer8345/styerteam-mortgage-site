@@ -6,7 +6,7 @@ test('admin sessions reject tampering, expiry, changed access code and cross-ori
  const previous = process.env.MCC_PASS; process.env.MCC_PASS='test-only-admin-code';
  try {
   const now=Date.now(),token=auth.issueSession(now);
-  const event={headers:{cookie:auth.cookieHeader(token),origin:'https://styermortgage.com'},rawUrl:'https://styermortgage.com/.netlify/functions/dispatch',httpMethod:'POST'};
+  const event={headers:{cookie:auth.cookieHeader(token),origin:'https://thestyerteam.com'},rawUrl:'https://thestyerteam.com/.netlify/functions/dispatch',httpMethod:'POST'};
   assert.equal(auth.validSession(event.headers,now),true);
   assert.equal(auth.sessionAuthorization(event),true);
   assert.equal(auth.sessionAuthorization({...event,headers:{...event.headers,origin:'https://attacker.invalid'}}),false);

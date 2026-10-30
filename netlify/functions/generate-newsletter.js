@@ -1,4 +1,5 @@
 const { requireDispatchAuth } = require("./lib/dispatch-auth");
+const { siteOrigin } = require('../../scripts/site-origin.cjs');
 const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildPrompt } = require("./lib/prompt-builder");
@@ -81,7 +82,7 @@ async function generateNewsletter(formData) {
       .replace(/-+$/, "");
     const blogSlug = `${today}-${slug}`;
     const filename = `${blogSlug}.html`;
-    const pageUrl = `https://styermortgage.com/blog/${filename}`;
+    const pageUrl = `${siteOrigin()}/blog/${filename}`;
 
     // ----------------------------------------------------------------
     // STEP 1: Generate or assemble content
@@ -154,7 +155,7 @@ Emails are SHORT teasers (100-150 words MAX) that drive the reader to click to t
 - Open with a personal hook or quick observation.
 - 2-3 bullet points previewing what's in the article.
 - One clear CTA link to: ${pageUrl}
-- Sign off: The Styer Team · Powered by GoRascal | NMLS# 513013 | (512) 956-6010
+- Sign off: The Styer Team, Powered by Go Rascal Inc. | NMLS# 513013 | (512) 956-6010
 
 ${wantsBorrower ? `### BORROWER EMAIL
 - Write like Adam emailing a past client
@@ -179,7 +180,7 @@ ${wantsRealtor ? `### REALTOR EMAIL
 Output ONLY body HTML fragments: <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a>, <hr>.
 NO <!DOCTYPE>, <html>, <head>, <body>, <style>, or <meta> tags.
 
-End the article with: "Talk soon,<br>Adam Styer<br>The Styer Team · Powered by GoRascal<br>NMLS# 513013 | (512) 956-6010"
+End the article with: "Talk soon,<br>Adam Styer<br>The Styer Team, Powered by Go Rascal Inc.<br>NMLS# 513013 | (512) 956-6010"
 
 ## OUTPUT FORMAT — use these EXACT delimiters
 PAGE_TITLE: [max 60 chars]
@@ -243,7 +244,7 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
           .replace(/-+$/, "");
         const realBlogSlug = `${today}-${realSlug}`;
         const realFilename = `${realBlogSlug}.html`;
-        const realPageUrl = `https://styermortgage.com/blog/${realFilename}`;
+        const realPageUrl = `${siteOrigin()}/blog/${realFilename}`;
 
         // Swap temp URL for real URL in all generated content
         const swapUrl = (s) => s ? s.split(pageUrl).join(realPageUrl) : s;
@@ -368,11 +369,11 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
           try {
             const borrowerResult = await createAndSendCampaign({
               listId: process.env.MAILCHIMP_BORROWER_LIST_ID,
-              subject: parsed.borrowerSubject || `${effectiveTopic} - The Styer Team · Powered by GoRascal`,
+              subject: parsed.borrowerSubject || `${effectiveTopic} - The Styer Team, Powered by Go Rascal Inc.`,
               preheader: parsed.borrowerPreheader || "",
               html: wrapEmailHtml(injectPageLink(parsed.borrowerEmail, finalPageUrl)),
               fromName: "Adam Styer",
-              replyTo: "adam@thestyerteam.com",
+              replyTo: "adamstyer@gorascal.com",
               scheduleTime: scheduleTime || null,
             });
             results.campaigns.push({ audience: "borrower", ...borrowerResult });
@@ -386,11 +387,11 @@ ${wantsRealtor ? `---REALTOR_EMAIL_START---\n[100-150 word teaser email for real
           try {
             const realtorResult = await createAndSendCampaign({
               listId: process.env.MAILCHIMP_REALTOR_LIST_ID,
-              subject: parsed.realtorSubject || `${effectiveTopic} - The Styer Team · Powered by GoRascal`,
+              subject: parsed.realtorSubject || `${effectiveTopic} - The Styer Team, Powered by Go Rascal Inc.`,
               preheader: parsed.realtorPreheader || "",
               html: wrapEmailHtml(injectPageLink(parsed.realtorEmail, finalPageUrl)),
               fromName: "Adam Styer",
-              replyTo: "adam@thestyerteam.com",
+              replyTo: "adamstyer@gorascal.com",
               scheduleTime: scheduleTime || null,
             });
             results.campaigns.push({ audience: "realtor", ...realtorResult });
@@ -547,7 +548,7 @@ async function updateBlogManifest({ slug, title, description, date, category }) 
 
 async function updateBlogHtmlIndex({ slug, title }) {
   const relUrl = `/blog/${slug}.html`;
-  const fullUrl = `https://styermortgage.com${relUrl}`;
+  const fullUrl = `${siteOrigin()}${relUrl}`;
   // Escape for HTML/JSON contexts. Title is plain text from form/AI — sanitize defensively.
   const htmlSafe = title
     .replace(/&/g, "&amp;")

@@ -1,4 +1,5 @@
 const { refineLongform } = require('./refine-longform');
+const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
  * Builds a full SEO-optimized HTML page for /blog/ from AI-generated content.
  * Unlike page-builder.js (used for /updates/), this version:
@@ -11,7 +12,7 @@ const { refineLongform } = require('./refine-longform');
 function buildBlogPage({ title, description, date, slug, content, rates, category }) {
   const formattedDate = formatDate(date);
   const isoDate = date; // Already YYYY-MM-DD
-  const pageUrl = `https://styermortgage.com/blog/${slug}.html`;
+  const pageUrl = `${siteOrigin()}/blog/${slug}.html`;
 
   // Build optional rate box
   let rateBox = "";
@@ -31,20 +32,20 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
     "author": {
       "@type": "Person",
       "name": "Adam Styer",
-      "url": "https://styermortgage.com/about.html",
+      "url": siteOrigin() + '/about.html',
       "jobTitle": "Senior Loan Officer",
       "worksFor": {
         "@type": "Organization",
-        "name": "The Styer Team · Powered by GoRascal"
+        "name": "The Styer Team, Powered by Go Rascal Inc."
       }
     },
     "publisher": {
       "@type": "Organization",
-      "name": "The Styer Team · Powered by GoRascal",
-      "url": "https://styermortgage.com",
+      "name": "The Styer Team, Powered by Go Rascal Inc.",
+      "url": siteOrigin(),
       "logo": {
         "@type": "ImageObject",
-        "url": "https://styermortgage.com/assets/logo.png"
+        "url": siteOrigin() + '/assets/brand/gorascal/gorascal-wordmark.png'
       }
     },
     "mainEntityOfPage": {
@@ -75,7 +76,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${pageUrl}">
-  <meta property="og:site_name" content="The Styer Team · Powered by GoRascal">
+  <meta property="og:site_name" content="The Styer Team, Powered by Go Rascal Inc.">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(title)}">
@@ -107,7 +108,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <img src="/assets/logo-light.svg" alt="The Styer Team · Powered by GoRascal" class="nav-logo-img" width="180" height="40">
+          <span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -123,7 +124,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
           <li class="nav-has-dropdown"><a href="/referral-partners-self-employed-clients.html">For Partners</a><ul class="nav-dropdown"><li><a href="/realtors.html">For Realtors</a></li><li><a href="/mortgage-resources-for-cpas-texas.html">For CPAs</a></li><li><a href="/mortgage-strategies-financial-advisors-texas.html">For Financial Advisors</a></li><li><a href="/mortgage-case-studies-for-advisors-cpas.html">Partner Case Studies</a></li></ul></li>
           <li class="nav-has-dropdown"><a href="/about.html">About Adam</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam</a></li><li><a href="/testimonials.html">Client Reviews</a></li><li><a href="/contact.html">Contact Adam</a></li></ul></li>
           <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/contact.html?goal=Purchase" class="nav-cta">See My Options</a></li>
-        <li><a href="https://styermortgage.com/contact.html" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>
+        <li><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>
         </ul>
       </nav>
     </div>
@@ -158,7 +159,7 @@ ${rateBox}
 
           <p>Have questions? Want to know what your options look like right now? Give me a call or shoot me a text. Happy to run the numbers for you.</p>
 
-          <p>Talk soon,<br><strong>Adam Styer</strong><br>The Styer Team · Powered by GoRascal<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
+          <p>Talk soon,<br><strong>Adam Styer</strong><br>The Styer Team, Powered by Go Rascal Inc.<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
 
         </div>
 
@@ -210,12 +211,12 @@ ${rateBox}
         <div class="footer-section">
           <h4>Contact</h4>
           <p>
-            <strong>The Styer Team · Powered by GoRascal</strong><br>
-            The Styer Team · Powered by GoRascal
+            <strong>The Styer Team, Powered by Go Rascal Inc.</strong><br>
+            The Styer Team, Powered by Go Rascal Inc.
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
-            <a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a><br>
+            <a href="mailto:adamstyer@gorascal.com">adamstyer@gorascal.com</a><br>
             Austin, TX
           </p>
         </div>
@@ -237,11 +238,18 @@ ${rateBox}
       <div class="footer-divider"></div>
 
       <div class="footer-bottom">
-        <div>
-          <p>&copy; ${new Date().getFullYear()} The Styer Team · Powered by GoRascal. All rights reserved.</p>
-          <div class="footer-nmls">
-            <strong>NMLS#:</strong> 2072896 (Company) | 513013 (Adam Styer)<br>
-            The Styer Team · Powered by GoRascal is a Licensed Mortgage Broker in Texas.
+        <div class="site-footer-legal">
+          <img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy.png" alt="Go Rascal Inc." height="64">
+          <div class="site-footer-legal-copy">
+          <p>Adam Styer | Mortgage Loan Originator</p>
+          <p><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS ID #513013</a></p>
+          <p><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)</a></p>
+          <p>Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
+          <p>Equal Housing Opportunity</p>
+          <!-- Licensed states placeholder pending Adam's NMLS confirmation -->
+          <p>Licensed in: TX</p>
+          <p>Loans are arranged through third party lenders.</p>
+          <p><a href="/licensing.html">State-specific consumer disclosures available on the Licensing &amp; Disclosures page.</a></p>
           </div>
         </div>
       </div>

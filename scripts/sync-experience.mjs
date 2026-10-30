@@ -4,8 +4,8 @@ import { execFileSync } from 'node:child_process';
 import { refineLongform } from '../netlify/functions/lib/refine-longform.js';
 
 // Additive, repeatable publishing rule. Keeps the page body, URLs and SEO intact.
-const application = 'https://styermortgage.com/contact.html';
-const apply = `<li><a href="https://styermortgage.com/contact.html" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>`;
+const application = 'https://thestyerteam.com/contact.html';
+const apply = `<li><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>`;
 const style = '<link rel="stylesheet" href="/experience.css">';
 const behavior = '<script src="/experience.js" defer></script>';
 const sharedHeader=fs.readFileSync('index.html','utf8').match(/<header\b[^>]*>[\s\S]*?<\/header>/)[0];
@@ -43,7 +43,7 @@ export function refine(html) {
     html=html.slice(0,close)+apply+'\n'+html.slice(close);
   }
   if (html.includes('class="site-header lp-header"') && !html.includes('class="experience-header-actions"')) {
-    html=html.replace('</nav>',`<div class="experience-header-actions"><a href="tel:+15129566010">Call Adam</a><a href="https://styermortgage.com/contact.html" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></div></nav>`);
+    html=html.replace('</nav>',`<div class="experience-header-actions"><a href="tel:+15129566010">Call Adam</a><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></div></nav>`);
   }
   return refineLongform(html);
 }

@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-const siteUrl = process.env.GSC_SITE_URL || 'https://styermortgage.com/';
+const siteUrl = process.env.GSC_SITE_URL || 'https://thestyerteam.com/';
 const credentialsFile = process.env.GSC_SERVICE_ACCOUNT_FILE
   || path.join(os.homedir(), '.config', 'styermortgage', 'gsc-service-account.json');
 const rawCredentials = process.env.GSC_SERVICE_ACCOUNT_JSON

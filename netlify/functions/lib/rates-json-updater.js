@@ -1,3 +1,4 @@
+const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 // netlify/functions/lib/rates-json-updater.js
 // Parses the rate string from LoanOS marketing tab, pulls current Freddie Mac
 // PMMS national averages + previous week's rates.json (for deltas), and returns
@@ -5,7 +6,7 @@
 //
 // Called from generate-rate-update.js before the dated rate page is published.
 
-const LIVE_RATES_URL = "https://styermortgage.com/rates.json";
+const LIVE_RATES_URL = siteOrigin() + '/rates.json';
 const PMMS_CSV_URL   = "https://www.freddiemac.com/pmms/docs/PMMS_history.csv";
 
 // LoanOS product label → rates.json key. Kept in this one place so the UI and

@@ -57,7 +57,7 @@
   update();
 })();
 
-/* Fast, smooth count-up animation for ledger metrics (1,000+ and 150+) */
+/* Fast, smooth count-up animation for ledger metrics (1,000+) */
 (function () {
   'use strict';
   function initCounters() {

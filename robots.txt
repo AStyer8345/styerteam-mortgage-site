@@ -19,6 +19,8 @@ User-agent: Google-Extended
 User-agent: *
 Disallow: /dashboard.html
 Disallow: /loanos.html
+Disallow: /loanos-waitlist.html
+Disallow: /forms.html
 Disallow: /ops.html
 Disallow: /marketing-command-center.html
 Disallow: /marketing-content.html
@@ -40,4 +42,4 @@ Disallow: /updates/2026-04-01-test.html
 Disallow: /scenarios/_TEMPLATE.html
 Disallow: /task-reports.json
 
-Sitemap: https://styermortgage.com/sitemap.xml
+Sitemap: https://styerteam.com/sitemap.xml

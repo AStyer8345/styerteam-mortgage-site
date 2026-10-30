@@ -205,7 +205,8 @@ function forceAbsoluteLinks(html, pageUrl) {
   let result = html.replace(/\[PAGE_URL\]/g, pageUrl);
 
   // Convert relative .html links to absolute by prepending the site origin
-  const siteOrigin = "https://styermortgage.com";
+  const { siteOrigin: configuredOrigin } = require("../../../scripts/site-origin.cjs");
+  const siteOrigin = configuredOrigin();
   result = result.replace(
     /href=["']([^"']*?\.html)["']/gi,
     (match, href) => {

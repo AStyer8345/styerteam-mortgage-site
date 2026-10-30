@@ -20,4 +20,4 @@ Adam or his team can review whether a currently available bridge program fits th
 
 General educational guidance reviewed on October 5, 2026 against the primary sources below and the existing owner-reviewed website materials. This review does not establish current specialty-program availability, investor terms, personal eligibility, or pricing. The original content owner remains Adam Styer; the review was performed by Codex.
 
-- https://styermortgage.com/buy-before-you-sell-austin.html
+- https://thestyerteam.com/buy-before-you-sell-austin.html

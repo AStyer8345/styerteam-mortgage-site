@@ -123,7 +123,7 @@ async function go(page, file, query = '') {
           assert.equal(current.formName, spec.form);
           assert.equal(current.hiddenName, spec.form);
           assert.equal(current.action, '/thank-you');
-          assert.equal(current.canonical, 'https://styermortgage.com/' + spec.file);
+          assert.equal(current.canonical, 'https://thestyerteam.com/' + spec.file);
           assert.deepEqual(current.fields.filter(field => field.required).map(field => field.name).sort(), requiredNames);
           const layout = await page.evaluate(() => {
             const heading = [...document.querySelectorAll('main section:not(.journey-hero):not(.ci-form-section) h2, main section:not(.journey-hero):not(.ci-form-section) p')]

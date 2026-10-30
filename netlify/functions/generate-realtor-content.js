@@ -1,4 +1,5 @@
 const { requireDispatchAuth } = require("./lib/dispatch-auth");
+const { siteOrigin } = require('../../scripts/site-origin.cjs');
 const Anthropic = require("@anthropic-ai/sdk");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const { buildRealtorPrompt } = require("./lib/realtor-prompt-builder");
@@ -71,7 +72,7 @@ async function generateRealtorContent(formData) {
       .replace(/-+$/, "");
     const fullSlug = `${today}-${slug}`;
     const filename = `${fullSlug}.html`;
-    const pageUrl = `https://styermortgage.com/realtor-updates/${filename}`;
+    const pageUrl = `${siteOrigin()}/realtor-updates/${filename}`;
 
     // ----------------------------------------------------------------
     // STEP 1: Generate or assemble content
@@ -199,11 +200,11 @@ async function generateRealtorContent(formData) {
 
         const campaignResult = await createAndSendCampaign({
           listId: realtorListId,
-          subject: parsed.realtorSubject || `${effectiveTopic} - The Styer Team · Powered by GoRascal`,
+          subject: parsed.realtorSubject || `${effectiveTopic} - The Styer Team, Powered by Go Rascal Inc.`,
           preheader: parsed.realtorPreheader || "",
           html: wrapEmailHtml(injectPageLink(parsed.realtorEmail, pageUrl)),
           fromName: "Adam Styer",
-          replyTo: "adam@thestyerteam.com",
+          replyTo: "adamstyer@gorascal.com",
           scheduleTime: scheduleTime || null,
         });
         results.campaigns.push({ audience: "realtor", ...campaignResult });

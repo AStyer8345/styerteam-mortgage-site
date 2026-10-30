@@ -15,6 +15,7 @@ linkedin-oauth.js
 
 # Local Netlify folder
 .netlify
+.vercel
 .superpowers/
 
 # Generated public deployment package

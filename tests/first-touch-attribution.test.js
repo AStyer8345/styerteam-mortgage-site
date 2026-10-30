@@ -19,7 +19,7 @@ function memoryStorage(initial = {}) {
 test('form attribution reuses first touch and recovers the clicked CTA without PII', () => {
   const now = new Date().toISOString();
   const firstTouch = {
-    first_touch_page: 'https://styermortgage.com/bank-statement-loans.html',
+    first_touch_page: 'https://thestyerteam.com/bank-statement-loans.html',
     first_touch_referrer: 'https://www.google.com/search',
     first_touch_at: now,
     first_touch_source: 'google',
@@ -30,7 +30,7 @@ test('form attribution reuses first touch and recovers the clicked CTA without P
     first_touch_utm_content: '',
   };
   const lastCta = {
-    cta_source_page: 'https://styermortgage.com/bank-statement-loans.html',
+    cta_source_page: 'https://thestyerteam.com/bank-statement-loans.html',
     cta_label: 'See My Options',
     intent: 'scenario',
     source: '/bank-statement-loans.html',
@@ -53,7 +53,7 @@ test('form attribution reuses first touch and recovers the clicked CTA without P
   const location = new URL('/contact.html?goal=Purchase');
   const document = {
     readyState: 'complete',
-    referrer: 'https://styermortgage.com/bank-statement-loans.html?private=discarded',
+    referrer: 'https://thestyerteam.com/bank-statement-loans.html?private=discarded',
     querySelectorAll(selector) {
       const name = selector.match(/input\[name="([^"]+)"\]/)?.[1];
       return name && fields.has(name) ? [fields.get(name)] : [];
@@ -70,7 +70,7 @@ test('form attribution reuses first touch and recovers the clicked CTA without P
   assert.equal(fields.get('first_touch_page').value, firstTouch.first_touch_page);
   assert.equal(fields.get('first_touch_source').value, 'google');
   assert.equal(fields.get('utm_source').value, 'google');
-  assert.equal(fields.get('entry_referrer').value, 'https://styermortgage.com/bank-statement-loans.html');
+  assert.equal(fields.get('entry_referrer').value, 'https://thestyerteam.com/bank-statement-loans.html');
   assert.equal(fields.get('cta_source_page').value, lastCta.cta_source_page);
   assert.equal(fields.get('cta_label').value, 'See My Options');
   assert.equal(fields.get('intent').value, 'scenario');
@@ -155,13 +155,13 @@ test('lead intake sends normalized attribution in the live notification payload'
         email: 'person@example.test',
         first_name: 'Test',
         'form-name': 'get-preapproved',
-        entry_referrer: 'https://styermortgage.com/bank-statement-loans.html',
-        first_touch_page: 'https://styermortgage.com/',
+        entry_referrer: 'https://thestyerteam.com/bank-statement-loans.html',
+        first_touch_page: 'https://thestyerteam.com/',
         first_touch_source: 'chatgpt',
         first_touch_utm_source: 'chatgpt',
         intent: 'scenario',
         source: '/bank-statement-loans.html',
-        cta_source_page: 'https://styermortgage.com/bank-statement-loans.html',
+        cta_source_page: 'https://thestyerteam.com/bank-statement-loans.html',
         cta_label: 'See My Options',
       }),
     });
@@ -170,7 +170,7 @@ test('lead intake sends normalized attribution in the live notification payload'
     assert.equal(requests.length, 2);
     const notification = requests.find((request) => request.url === 'https://loanos.example.test/api/intake/inquiries');
     const payload = JSON.parse(notification.options.body);
-    assert.equal(payload.entry_referrer, 'https://styermortgage.com/bank-statement-loans.html');
+    assert.equal(payload.entry_referrer, 'https://thestyerteam.com/bank-statement-loans.html');
     assert.equal(payload.first_touch_source, 'chatgpt');
     assert.equal(payload.first_touch_utm_source, 'chatgpt');
     assert.equal(payload.intent, 'scenario');
@@ -193,7 +193,7 @@ test('both first-touch writers distinguish Gemini and Bard from Google and prese
       ['https://chatgpt.com/', 'chatgpt'], ['', 'direct'],
     ]) {
       const sessionStorage = memoryStorage(), localStorage = memoryStorage();
-      const window = { location: new URL('https://styermortgage.com/contact.html'), sessionStorage, localStorage };
+      const window = { location: new URL('https://thestyerteam.com/contact.html'), sessionStorage, localStorage };
       const document = { readyState: 'complete', referrer, addEventListener() {}, querySelectorAll() { return []; }, dispatchEvent() {} };
       vm.runInNewContext(script, { window, document, URL, URLSearchParams, Date, CustomEvent: function () {} });
       const first = JSON.parse(sessionStorage.getItem('styer:first-touch:v1'));

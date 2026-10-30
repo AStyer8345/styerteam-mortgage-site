@@ -27,7 +27,7 @@ test('contact capture carries its own scenario despite unavailable transcript st
     throw new Error('Dispatcher offline');
   };
   try {
-    const args = { firstName: 'Test', email: 'test@example.invalid', handoffDetails: 'Visitor: $300,000 1099; $2,000 debts; 740 credit', sourcePage: 'https://styermortgage.com/' };
+    const args = { firstName: 'Test', email: 'test@example.invalid', handoffDetails: 'Visitor: $300,000 1099; $2,000 debts; 740 credit', sourcePage: 'https://thestyerteam.com/' };
     const first = await captureAssistantHandoff(args, 'test-conversation', 'policy-test');
     const second = await captureAssistantHandoff(args, 'test-conversation', 'policy-test');
     assert.equal(first.ok, true); assert.equal(first.data?.notificationsQueued, true);

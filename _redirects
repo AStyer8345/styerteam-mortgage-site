@@ -1,9 +1,22 @@
-# Primary-domain consolidation: preserve every path while moving both
-# adamstyer.com host variants permanently to styermortgage.com.
-https://adamstyer.com/*      https://styermortgage.com/:splat  301!
-https://www.adamstyer.com/*  https://styermortgage.com/:splat  301!
-http://adamstyer.com/*       https://styermortgage.com/:splat  301!
-http://www.adamstyer.com/*   https://styermortgage.com/:splat  301!
+# Primary-domain consolidation. One hop from adamstyer.com and styermortgage.com
+# onto https://styerteam.com. These rules apply only after those domains are
+# attached to this site. This change does not attach domains or edit DNS.
+https://adamstyer.com/*           https://styerteam.com/:splat  301!
+https://www.adamstyer.com/*       https://styerteam.com/:splat  301!
+http://adamstyer.com/*            https://styerteam.com/:splat  301!
+http://www.adamstyer.com/*        https://styerteam.com/:splat  301!
+https://styermortgage.com/*       https://styerteam.com/:splat  301!
+https://www.styermortgage.com/*   https://styerteam.com/:splat  301!
+http://styermortgage.com/*        https://styerteam.com/:splat  301!
+http://www.styermortgage.com/*    https://styerteam.com/:splat  301!
+
+# Keep internal drafts out of the published site. The package step also omits them.
+/loanos.html              /404.html  404
+/loanos                    /404.html  404
+/loanos-waitlist.html     /404.html  404
+/loanos-waitlist           /404.html  404
+/forms.html               /404.html  404
+/forms                     /404.html  404
 
 # 301 Redirects — extensionless → .html canonical
 # IMPORTANT: Netlify's default pretty-URL match means /about will serve /about.html with a 200
@@ -145,17 +158,28 @@ http://www.adamstyer.com/*   https://styermortgage.com/:splat  301!
 # 301 Redirects: Old WordPress URLs → New Pages (source paths don't match files — no force flag needed)
 
 /mortgage-loan-refinance-options-austin/va-home-loan/  /loans/va.html  301
+/mortgage-loan-refinance-options-austin/va-home-loan  /loans/va.html  301
 /mortgage-loan-refinance-options-austin/usda-loan/  /loans/usda.html  301
+/mortgage-loan-refinance-options-austin/usda-loan  /loans/usda.html  301
 /mortgage-loan-refinance-options-austin/fha-loans-austin/  /loans/fha.html  301
+/mortgage-loan-refinance-options-austin/fha-loans-austin  /loans/fha.html  301
 /mortgage-loan-refinance-options-austin/  /products.html  301
+/mortgage-loan-refinance-options-austin  /products.html  301
 /mortgage-loan-refinance-options-austin/jumbo-home-loans-austin/  /loans/jumbo.html  301
+/mortgage-loan-refinance-options-austin/jumbo-home-loans-austin  /loans/jumbo.html  301
 /mortgage-loan-refinance-options-austin/investment-vacation-home-loans-austin/  /products.html  301
+/mortgage-loan-refinance-options-austin/investment-vacation-home-loans-austin  /products.html  301
 /loan-options/refinance/  /products.html  301
+/loan-options/refinance  /products.html  301
 /cash-out-refinance/  /products.html  301
+/cash-out-refinance  /products.html  301
 /what-is-an-fha-mortgage-insurance-premium/  /loans/fha.html  301
+/what-is-an-fha-mortgage-insurance-premium  /loans/fha.html  301
 /adam-styer/  /about.html  301
+/adam-styer  /about.html  301
 /author/adam/  /about.html  301
 /how-long-does-it-take-to-buy-a-home/  /blog.html  301
+/how-long-does-it-take-to-buy-a-home  /blog.html  301
 /home  /  301
 
 # Legacy route cleanup from GSC Page Indexing report (2026-08-23)
