@@ -49,6 +49,7 @@
   </script>
 <link rel="preload" as="image" href="/assets/austin-skyline-hero-960.avif" imagesrcset="/assets/austin-skyline-hero-960.avif 960w, /assets/austin-skyline-hero.avif 1400w" imagesizes="100vw" media="(min-width: 769px)" type="image/avif" fetchpriority="high"/>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/source-serif-4-roman-latin.woff2" media="(min-width: 769px)" crossorigin/>
+<link rel="preload" as="image" href="/assets/adam-hero-mobile.avif" media="(max-width: 768px)" type="image/avif" fetchpriority="high"/>
 <style>
 body{margin:0}
 :root{--pwe-serif:'Source Serif 4',Georgia,'Times New Roman',serif;--pwe-alabaster:#f6f4ef}
@@ -411,6 +412,7 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
   text-underline-offset: 4px;
 }
 
+.pwe-hero-mobile-portrait { display: none; }
 @media (max-width: 768px) {
   .nav-links { display: none !important; }
   .mobile-menu-toggle { display: flex !important; min-width: 44px; min-height: 44px; }
@@ -419,6 +421,22 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
   .gorascal-wordmark-chip img { height: 48px; width: auto; }
   .pwe-hero-skyline,
   .pwe-hero-visual { display: none !important; }
+  .pwe-hero-mobile-portrait {
+    display: block !important;
+    width: 112px;
+    height: 119px;
+    margin: 0 0 18px;
+    border: 1px solid rgba(198, 161, 90, 0.72);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .pwe-hero-mobile-portrait img {
+    display: block;
+    width: 112px;
+    height: 119px;
+    object-fit: cover;
+    object-position: center 18%;
+  }
   body.private-wealth-editorial main .hero.pwe-hero,
   .pwe-hero {
     padding: 28px 0 0 !important;
@@ -835,6 +853,11 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <span><strong>5.0</strong> Google · 99 Verified Reviews</span>
 </a>
 </div>
+<picture class="pwe-hero-mobile-portrait">
+<source media="(max-width: 768px)" srcset="/assets/adam-hero-mobile.avif" type="image/avif"/>
+<source media="(max-width: 768px)" srcset="/assets/adam-hero-mobile.webp" type="image/webp"/>
+<img alt="Adam Styer, Senior Loan Officer and Mortgage Advisor in Austin, Texas" decoding="async" fetchpriority="high" height="119" src="/assets/hero-mobile-solid.webp" width="112"/>
+</picture>
 <h1><span class="pwe-hero-line">Complex income.</span><span class="modern-hero-accent">Clear path forward.</span></h1>
 <p class="pwe-hero-lead">My team and I work with business owners, self-employed borrowers and investors whose tax returns don't tell the whole story. Depending on the program, bank statements, 1099s, assets or rental income can show what you actually earn, and we shop many wholesale lenders to find the one that fits.</p>
 <div class="pwe-hero-actions">

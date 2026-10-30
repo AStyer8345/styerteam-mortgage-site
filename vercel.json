@@ -1,0 +1,1901 @@
+{
+  "buildCommand": "node scripts/vercel-build.mjs",
+  "outputDirectory": ".site-dist",
+  "framework": null,
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "adamstyer.com"
+        }
+      ],
+      "destination": "https://styerteam.com/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "adamstyer.com"
+        }
+      ],
+      "destination": "https://styerteam.com/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.adamstyer.com"
+        }
+      ],
+      "destination": "https://styerteam.com/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.adamstyer.com"
+        }
+      ],
+      "destination": "https://styerteam.com/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "styermortgage.com"
+        }
+      ],
+      "destination": "https://styerteam.com/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "styermortgage.com"
+        }
+      ],
+      "destination": "https://styerteam.com/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.styermortgage.com"
+        }
+      ],
+      "destination": "https://styerteam.com/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.styermortgage.com"
+        }
+      ],
+      "destination": "https://styerteam.com/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.styerteam.com"
+        }
+      ],
+      "destination": "https://styerteam.com/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.styerteam.com"
+        }
+      ],
+      "destination": "https://styerteam.com/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/loans/conventional",
+      "destination": "/loans/conventional.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loans/fha",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loans/va",
+      "destination": "/loans/va.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loans/usda",
+      "destination": "/loans/usda.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loans/jumbo",
+      "destination": "/loans/jumbo.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loans/construction",
+      "destination": "/loans/construction.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loans/investment",
+      "destination": "/loans/investment.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loans/refinance",
+      "destination": "/loans/refinance.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/round-rock-mortgage-lender",
+      "destination": "/round-rock-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/cedar-park-mortgage-lender",
+      "destination": "/cedar-park-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/leander-mortgage-lender",
+      "destination": "/leander-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/georgetown-mortgage-lender",
+      "destination": "/georgetown-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/pflugerville-mortgage-lender",
+      "destination": "/pflugerville-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/kyle-mortgage-lender",
+      "destination": "/kyle-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/san-marcos-mortgage-lender",
+      "destination": "/san-marcos-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/westlake-mortgage-lender",
+      "destination": "/westlake-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/buda-mortgage-lender",
+      "destination": "/buda-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/bastrop-mortgage-lender",
+      "destination": "/bastrop-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/bee-cave-mortgage-lender",
+      "destination": "/bee-cave-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dripping-springs-mortgage-lender",
+      "destination": "/dripping-springs-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/elgin-mortgage-lender",
+      "destination": "/elgin-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/florence-mortgage-lender",
+      "destination": "/florence-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/hutto-mortgage-lender",
+      "destination": "/hutto-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/jarrell-mortgage-lender",
+      "destination": "/jarrell-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/lakeway-mortgage-lender",
+      "destination": "/lakeway-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/liberty-hill-mortgage-lender",
+      "destination": "/liberty-hill-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/manor-mortgage-lender",
+      "destination": "/manor-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/marble-falls-mortgage-lender",
+      "destination": "/marble-falls-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/new-braunfels-mortgage-lender",
+      "destination": "/new-braunfels-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/smithville-mortgage-lender",
+      "destination": "/smithville-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/spicewood-mortgage-lender",
+      "destination": "/spicewood-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/taylor-mortgage-lender",
+      "destination": "/taylor-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/bank-statement-loans",
+      "destination": "/bank-statement-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/bank-statement-loans-austin-tx",
+      "destination": "/bank-statement-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/bank-statement-loans-austin-tx.html",
+      "destination": "/bank-statement-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-loans-texas",
+      "destination": "/dscr-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-loans-dripping-springs",
+      "destination": "/dscr-loans-dripping-springs.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-loans-fredericksburg-tx",
+      "destination": "/dscr-loans-fredericksburg-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/asset-depletion-mortgage-texas",
+      "destination": "/asset-depletion-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/asset-depletion-mortgage-austin-tx",
+      "destination": "/asset-depletion-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/asset-depletion-mortgage-austin-tx.html",
+      "destination": "/asset-depletion-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/1099-only-mortgage-texas",
+      "destination": "/1099-only-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/self-employed-mortgage-austin",
+      "destination": "/self-employed-mortgage-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/self-employed-mortgage-round-rock-tx",
+      "destination": "/self-employed-mortgage-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/self-employed-mortgage-round-rock-tx.html",
+      "destination": "/self-employed-mortgage-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/non-qm-loans",
+      "destination": "/non-qm-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/non-qm-loans-self-employed-austin",
+      "destination": "/non-qm-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/non-qm-loans-self-employed-austin.html",
+      "destination": "/non-qm-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/k1-income-mortgage-austin",
+      "destination": "/k1-income-mortgage-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-for-business-owners-austin",
+      "destination": "/mortgage-for-business-owners-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/investor-loans",
+      "destination": "/investor-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/high-net-worth-mortgage",
+      "destination": "/high-net-worth-mortgage.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/reverse-mortgage-texas",
+      "destination": "/reverse-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/referral-partners-self-employed-clients",
+      "destination": "/referral-partners-self-employed-clients.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/p-and-l-mortgage-texas",
+      "destination": "/p-and-l-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/one-time-close-construction-loan-texas",
+      "destination": "/one-time-close-construction-loan-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/one-time-close-construction-loans-texas-hill-country",
+      "destination": "/one-time-close-construction-loan-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/one-time-close-construction-loans-texas-hill-country.html",
+      "destination": "/one-time-close-construction-loan-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-loan-austin-tx",
+      "destination": "/dscr-loan-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-pre-approval-austin",
+      "destination": "/mortgage-pre-approval-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/first-time-home-buyer",
+      "destination": "/first-time-home-buyer.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/products",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/calculators",
+      "destination": "/calculators.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/testimonials",
+      "destination": "/testimonials.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/realtors",
+      "destination": "/realtors.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/prequal",
+      "destination": "/prequal.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/scenario",
+      "destination": "/scenario.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/austin-area-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/austin-down-payment-assistance",
+      "destination": "/resources/detailed-guides/austin-down-payment-assistance.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/austin-down-payment-assistance.html",
+      "destination": "/resources/detailed-guides/austin-down-payment-assistance.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/austin-housing-market",
+      "destination": "/austin-housing-market.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/austin-housing-market-2025",
+      "destination": "/austin-housing-market.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/austin-housing-market-2025.html",
+      "destination": "/austin-housing-market.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/austin-mortgage-rates",
+      "destination": "/austin-mortgage-rates.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/closing-costs-texas",
+      "destination": "/resources/detailed-guides/closing-costs-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/closing-costs-texas.html",
+      "destination": "/resources/detailed-guides/closing-costs-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/first-time-buyer-guide",
+      "destination": "/resources/first-time-buyer-guide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/first-time-buyer-guide.html",
+      "destination": "/resources/first-time-buyer-guide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ftb-dpa-guide",
+      "destination": "/ftb-dpa-guide.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/get-preapproved",
+      "destination": "/get-preapproved.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/how-much-house-can-i-afford-austin",
+      "destination": "/how-much-house-can-i-afford-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/how-to-buy-a-house-in-austin-tx",
+      "destination": "/resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/how-to-buy-a-house-in-austin-tx.html",
+      "destination": "/resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/improve-credit-score",
+      "destination": "/resources/detailed-guides/improve-credit-score.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/improve-credit-score.html",
+      "destination": "/resources/detailed-guides/improve-credit-score.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fixed-vs-adjustable",
+      "destination": "/resources/detailed-guides/fixed-vs-adjustable.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fixed-vs-adjustable.html",
+      "destination": "/resources/detailed-guides/fixed-vs-adjustable.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-broker-vs-bank",
+      "destination": "/mortgage-broker-vs-bank.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-glossary",
+      "destination": "/mortgage-glossary.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/realtor-resources",
+      "destination": "/realtor-resources.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/texas-complaint-notice",
+      "destination": "/texas-complaint-notice.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/thank-you.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-alert",
+      "destination": "/rate-alert.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-buydown-calculator",
+      "destination": "/rate-buydown-calculator.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check",
+      "destination": "/rate-check.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check-buda-kyle",
+      "destination": "/rate-check-buda-kyle.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check-cedar-park",
+      "destination": "/rate-check-cedar-park.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check-georgetown",
+      "destination": "/rate-check-georgetown.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check-new-braunfels",
+      "destination": "/rate-check-new-braunfels.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check-round-rock",
+      "destination": "/rate-check-round-rock.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/refinance-quote",
+      "destination": "/refinance-quote.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loanos-waitlist",
+      "destination": "/loanos-waitlist.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/calculator-affordability",
+      "destination": "/calculator-affordability.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/calculator-payment",
+      "destination": "/calculator-payment.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/calculator-refinance-breakeven",
+      "destination": "/calculator-refinance-breakeven.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-loans-central-texas",
+      "destination": "/dscr-loan-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-loans-central-texas.html",
+      "destination": "/dscr-loan-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-06-oil-prices-jobs-report-austin-mortgage.html",
+      "destination": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-30-why-rates-jumped-today-and-why-i-cant-predict-tomo.html",
+      "destination": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-loan-refinance-options-austin/va-home-loan/",
+      "destination": "/loans/va.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-loan-refinance-options-austin/usda-loan/",
+      "destination": "/loans/usda.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-loan-refinance-options-austin/fha-loans-austin/",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-loan-refinance-options-austin/",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-loan-refinance-options-austin/jumbo-home-loans-austin/",
+      "destination": "/loans/jumbo.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-loan-refinance-options-austin/investment-vacation-home-loans-austin/",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loan-options/refinance/",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/cash-out-refinance/",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/what-is-an-fha-mortgage-insurance-premium/",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/adam-styer/",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/adam/",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/how-long-does-it-take-to-buy-a-home/",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/reverse-refinance",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/calendar",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/purchase",
+      "destination": "/get-preapproved.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/home-equity",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/legal",
+      "destination": "/terms.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/construction",
+      "destination": "/loans/construction.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/conventional-refinance",
+      "destination": "/loans/refinance.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-purchase",
+      "destination": "/dscr-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/usda-purchase",
+      "destination": "/loans/usda.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/terms.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/reverse-purchase",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-appointment-confirmation",
+      "destination": "/thank-you.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/usda-refinance",
+      "destination": "/loans/usda.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-refinance",
+      "destination": "/dscr-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/YYYY-MM-DD.html",
+      "destination": "/austin-mortgage-rates.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/bank-statement-purchase",
+      "destination": "/bank-statement-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/homestyle-purchase",
+      "destination": "/loans/construction.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/conventional-purchase",
+      "destination": "/loans/conventional.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/203k-refinance",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/bank-statement-refinance",
+      "destination": "/bank-statement-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/no-income-refinance",
+      "destination": "/non-qm-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/our-team",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/va-purchase",
+      "destination": "/loans/va.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/va-refinance",
+      "destination": "/loans/va.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/203k-purchase",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/privacy.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fha-purchase",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/jumbo-purchase",
+      "destination": "/loans/jumbo.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-refinance-request",
+      "destination": "/thank-you.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-purchase-request",
+      "destination": "/thank-you.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/licensing",
+      "destination": "/texas-complaint-notice.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/homestyle-refinance",
+      "destination": "/loans/construction.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/itin-purchase",
+      "destination": "/blog/2026-07-21-itin-mortgage-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/itin-refinance",
+      "destination": "/blog/2026-07-21-itin-mortgage-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fha-refinance",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check/",
+      "destination": "/rate-check.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/scenarios",
+      "destination": "/scenarios.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/scenarios/oil-gas-royalty-asset-depletion",
+      "destination": "/scenarios/oil-gas-royalty-asset-depletion.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/wrap-mortgage-calculator",
+      "destination": "/wrap-mortgage-calculator.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/blog/2026-03-04-wait-for-rates",
+      "destination": "/resources/blog/2026-03-04-wait-for-rates.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/blog/2026-03-04-wait-for-rates-realtor",
+      "destination": "/resources/blog/2026-03-04-wait-for-rates-realtor.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility",
+      "destination": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-10-when-you-cant-control-it-surrender-it",
+      "destination": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-18-the-ai-trap-i-walked-right-into",
+      "destination": "/blog/2026-03-18-the-ai-trap-i-walked-right-into.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-20-austin-mortgage-rates-march-2026",
+      "destination": "/blog/2026-03-20-austin-mortgage-rates-march-2026.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-24-cash-out-refinance-austin-tx",
+      "destination": "/blog/2026-03-24-cash-out-refinance-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-27-down-payment-assistance-texas-2026",
+      "destination": "/blog/2026-03-27-down-payment-assistance-texas-2026.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-28-how-long-does-mortgage-pre-approval-take",
+      "destination": "/blog/2026-03-28-how-long-does-mortgage-pre-approval-take.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-28-fha-vs-conventional-loan-austin-tx",
+      "destination": "/blog/2026-03-28-fha-vs-conventional-loan-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-29-va-loan-eligibility-texas",
+      "destination": "/blog/2026-03-29-va-loan-eligibility-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-17-should-i-refinance-austin-tx-2026",
+      "destination": "/blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-05-30-physician-mortgage-texas",
+      "destination": "/blog/2026-05-30-physician-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-27-why-home-prices-arent-crashing",
+      "destination": "/blog/2026-04-27-why-home-prices-arent-crashing.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-10-fha-loan-requirements-texas-2026",
+      "destination": "/blog/2026-04-10-fha-loan-requirements-texas-2026.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-06-mortgage-document-checklist-austin-tx",
+      "destination": "/blog/2026-04-06-mortgage-document-checklist-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-04-austin-housing-market-report-april-2026",
+      "destination": "/blog/2026-04-04-austin-housing-market-report-april-2026.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-03-condo-mortgage-austin-tx",
+      "destination": "/blog/2026-04-03-condo-mortgage-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-02-self-employed-mortgage-austin-tx",
+      "destination": "/blog/2026-04-02-self-employed-mortgage-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-01-spring-market-update",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx",
+      "destination": "/blog/2026-04-01-how-to-choose-a-mortgage-lender-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-31-dscr-loans-austin-tx-2026",
+      "destination": "/blog/2026-03-31-dscr-loans-austin-tx-2026.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-30-why-rates-improved-today-bond-rally",
+      "destination": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026",
+      "destination": "/blog/2026-03-30-first-time-home-buyer-programs-austin-tx-2026.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/can-i-switch-lenders-after-going-under-contract-texas",
+      "destination": "/blog/can-i-switch-lenders-after-going-under-contract-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-compare-two-mortgage-offers",
+      "destination": "/blog/how-to-compare-two-mortgage-offers.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/apr-vs-interest-rate-what-actually-matters",
+      "destination": "/blog/apr-vs-interest-rate-what-actually-matters.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/are-mortgage-lender-fees-negotiable",
+      "destination": "/blog/are-mortgage-lender-fees-negotiable.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-many-mortgage-quotes-should-i-get",
+      "destination": "/blog/how-many-mortgage-quotes-should-i-get.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/local-lender-vs-online-lender-austin-central-texas",
+      "destination": "/blog/local-lender-vs-online-lender-austin-central-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/what-delays-closing-when-you-switch-lenders",
+      "destination": "/blog/what-delays-closing-when-you-switch-lenders.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-read-a-loan-estimate",
+      "destination": "/blog/how-to-read-a-loan-estimate.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/what-to-compare-besides-mortgage-rate",
+      "destination": "/blog/what-to-compare-besides-mortgage-rate.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/is-the-lowest-rate-the-cheapest-loan",
+      "destination": "/blog/is-the-lowest-rate-the-cheapest-loan.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6",
+      "destination": "/realtor-updates/2026-02-27-ai-for-realtors-rates-drop-below-6.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers",
+      "destination": "/realtor-updates/2026-04-27-the-crash-that-isnt-coming-data-for-your-buyers.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-06-newsletter.html",
+      "destination": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-06-newsletter",
+      "destination": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-06-newsletter.html",
+      "destination": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-06-newsletter",
+      "destination": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-06-temp-placeholder.html",
+      "destination": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-06-temp-placeholder",
+      "destination": "/blog/2026-03-06-oil-prices-jobs-report-rate-volatility.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-10-newsletter.html",
+      "destination": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-10-newsletter",
+      "destination": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-10-newsletter.html",
+      "destination": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-10-newsletter",
+      "destination": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-10-temp-placeholder.html",
+      "destination": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-10-temp-placeholder",
+      "destination": "/blog/2026-03-10-when-you-cant-control-it-surrender-it.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-30-newsletter.html",
+      "destination": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-30-newsletter",
+      "destination": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-30-newsletter.html",
+      "destination": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-30-newsletter",
+      "destination": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-30-temp-placeholder.html",
+      "destination": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-03-30-temp-placeholder",
+      "destination": "/blog/2026-03-30-why-rates-improved-today-bond-rally.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-01-spring-market-update-austin-mortgage-rates-invento.html",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-01-spring-market-update-austin-mortgage-rates-invento",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-01-spring-market-update-austin-mortgage-rates-invento.html",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-01-spring-market-update-austin-mortgage-rates-invento",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-01-what-you-need-to-know-about-rates-right-now.html",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-01-what-you-need-to-know-about-rates-right-now",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-01-what-you-need-to-know-about-rates-right-now.html",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-01-what-you-need-to-know-about-rates-right-now",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-01-test.html",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-01-test",
+      "destination": "/blog/2026-04-01-spring-market-update.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/hero-test.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/hero-test",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-28-publish-only-test-2-post-deploy-verification.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-28-publish-only-test-2-post-deploy-verification",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-28-publish-only-test-3-retry-fix-verification.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-28-publish-only-test-3-retry-fix-verification",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-28-publish-only-test-verifying-end-to-end.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-04-28-publish-only-test-verifying-end-to-end",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-28-publish-only-test-3-retry-fix-verification.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-28-publish-only-test-3-retry-fix-verification",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-28-publish-only-test-verifying-end-to-end.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-28-publish-only-test-verifying-end-to-end",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/about-me/",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/about-me",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loan-programs/",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/loan-programs",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-calculators/",
+      "destination": "/calculators.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-calculators",
+      "destination": "/calculators.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/testimonials-reviews/",
+      "destination": "/testimonials.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/testimonials-reviews",
+      "destination": "/testimonials.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact-us/",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/pre-qualification/",
+      "destination": "/contact.html?goal=Purchase",
+      "statusCode": 301
+    },
+    {
+      "source": "/pre-qualification",
+      "destination": "/contact.html?goal=Purchase",
+      "statusCode": 301
+    },
+    {
+      "source": "/get-preapproved",
+      "destination": "/contact.html?goal=Purchase",
+      "statusCode": 301
+    },
+    {
+      "source": "/get-preapproved/",
+      "destination": "/contact.html?goal=Purchase",
+      "statusCode": 301
+    },
+    {
+      "source": "/get-preapproved.html",
+      "destination": "/contact.html?goal=Purchase",
+      "statusCode": 301
+    },
+    {
+      "source": "/scenario",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/scenario.html",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/prequal",
+      "destination": "/contact.html?goal=Purchase",
+      "statusCode": 301
+    },
+    {
+      "source": "/prequal.html",
+      "destination": "/contact.html?goal=Purchase",
+      "statusCode": 301
+    },
+    {
+      "source": "/refinance-quote",
+      "destination": "/contact.html?goal=Refinance",
+      "statusCode": 301
+    },
+    {
+      "source": "/refinance-quote.html",
+      "destination": "/contact.html?goal=Refinance",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check",
+      "destination": "/contact.html?goal=Refinance&loan=second-look",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check.html",
+      "destination": "/contact.html?goal=Refinance&loan=second-look",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check-round-rock.html",
+      "destination": "/contact.html?goal=Refinance&loan=second-look",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check-cedar-park.html",
+      "destination": "/contact.html?goal=Refinance&loan=second-look",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check-georgetown.html",
+      "destination": "/contact.html?goal=Refinance&loan=second-look",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check-buda-kyle.html",
+      "destination": "/contact.html?goal=Refinance&loan=second-look",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-check-new-braunfels.html",
+      "destination": "/contact.html?goal=Refinance&loan=second-look",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-alert",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rate-alert.html",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/guides",
+      "destination": "/guides.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/guides/",
+      "destination": "/guides.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/apply-now/",
+      "destination": "https://gorascal.my1003app.com/513013/register",
+      "statusCode": 301
+    },
+    {
+      "source": "/apply-now",
+      "destination": "https://gorascal.my1003app.com/513013/register",
+      "statusCode": 301
+    },
+    {
+      "source": "/va-loans/",
+      "destination": "/loans/va.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/va-loans",
+      "destination": "/loans/va.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/va-home-loans/",
+      "destination": "/loans/va.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/va-home-loans",
+      "destination": "/loans/va.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/usda-loans/",
+      "destination": "/loans/usda.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/usda-loans",
+      "destination": "/loans/usda.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/usda-home-loans/",
+      "destination": "/loans/usda.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/usda-home-loans",
+      "destination": "/loans/usda.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fha-loans/",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fha-loans",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fha-home-loans/",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fha-home-loans",
+      "destination": "/loans/fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/conventional-loans/",
+      "destination": "/loans/conventional.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/conventional-loans",
+      "destination": "/loans/conventional.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/jumbo-loans/",
+      "destination": "/loans/jumbo.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/jumbo-loans",
+      "destination": "/loans/jumbo.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/construction-loans/",
+      "destination": "/loans/construction.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/construction-loans",
+      "destination": "/loans/construction.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/investment-property-loans/",
+      "destination": "/loans/investment.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/investment-property-loans",
+      "destination": "/loans/investment.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/refinance/",
+      "destination": "/loans/refinance.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/refinance",
+      "destination": "/loans/refinance.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/:path*",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/:path*",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/feed/",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/feed",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/xmlrpc.php",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-login.php",
+      "destination": "/",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/.netlify/functions/:name",
+      "destination": "/api/:name"
+    },
+    {
+      "source": "/resources/first-time-buyer-guide",
+      "destination": "/resources/first-time-buyer-guide/index.html"
+    },
+    {
+      "source": "/resources/first-time-buyer-guide/",
+      "destination": "/resources/first-time-buyer-guide/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        }
+      ]
+    },
+    {
+      "source": "/api/mortgage-assistant",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
+    },
+    {
+      "source": "/saved-analysis.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'"
+        }
+      ]
+    },
+    {
+      "source": "/api/saved-analysis",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/css/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/js/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/favicon(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/dashboard.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/marketing-command-center.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/refinance-calculator.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/loan-dashboard.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/marketing-content.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/loanos.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 30
+    }
+  }
+}

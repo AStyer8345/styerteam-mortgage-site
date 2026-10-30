@@ -1,3 +1,8 @@
+## 2026-10-30 — Preview: mobile portrait and Vercel port
+
+- Phones show a small compressed portrait above the homepage headline. Desktop still uses the skyline and the full cutout. Approved logo files are unchanged.
+- `vercel.json` publishes `.site-dist` and carries the Netlify redirects, rewrites, and headers. Preview deploys send `X-Robots-Tag: noindex` and skip IndexNow. Netlify config files stay. Not merged.
+
 ## 2026-10-30 — Preview: lighter mobile homepage hero
 
 - Under 768px the homepage hero is the brand navy and the copy, at content height. The skyline photo and portrait stay on desktop. Critical CSS paints the headline before the full stylesheets, which load after the page on small screens. Approved logo files are unchanged. Not merged.

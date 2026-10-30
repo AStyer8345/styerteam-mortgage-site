@@ -18,7 +18,7 @@ const files = candidates.filter(file => {
   if (privateFiles.has(file) || withheldFromProduction.has(file)) return false;
   if (file.startsWith('.') || file.includes('/originals/') || file.includes('_TEMPLATE')) return false;
   const parts = file.split('/');
-  if (parts.length === 1) return rootData.has(file) || (/\.(html|css|js|svg|png|ico|pdf)$/i.test(file) && file !== 'server.js');
+  if (parts.length === 1) return rootData.has(file) || (/\.(html|css|js|svg|png|ico|pdf)$/i.test(file) && file !== 'server.js' && file !== 'middleware.js');
   return publicDirectories.has(parts[0]) && publicExtensions.test(file);
 });
 // Fail before replacing the previous package if a reviewed release file is unavailable.
