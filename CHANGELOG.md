@@ -1,3 +1,7 @@
+## 2026-10-31 — Preview: do not send live leads from Vercel previews
+
+- When VERCEL_ENV is set and is not production, lead-intake forces test mode and skips Mailchimp and the n8n webhook unless ALLOW_PREVIEW_LIVE_LEADS=true. Netlify, where VERCEL_ENV is unset, and Vercel production stay on the live path.
+
 ## 2026-10-31 — Preview: WCAG review follow-up
 
 - The header logo stays at the production mobile size, 96 by 48. Narrow headers wrap the “Powered by” line and keep the menu button on that row.
