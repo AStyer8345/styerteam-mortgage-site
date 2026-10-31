@@ -115,8 +115,14 @@ exports.handler = async (event) => {
     return respond(400, { error: "email required" });
   }
 
-  const isTest = body.test_mode === true || body.test_mode === "true";
-  if (isTest && !["adamstyer@gorascal.com", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
+  // Vercel preview and development share production secrets. Sandbox those
+  // deploys unless someone explicitly opts in. Unset VERCEL_ENV (Netlify
+  // production) and VERCEL_ENV=production keep the live path.
+  const vercelEnv = process.env.VERCEL_ENV || "";
+  const previewSandbox = vercelEnv !== "" && vercelEnv !== "production" && process.env.ALLOW_PREVIEW_LIVE_LEADS !== "true";
+  const requestedTest = body.test_mode === true || body.test_mode === "true";
+  const isTest = previewSandbox || requestedTest;
+  if (requestedTest && !previewSandbox && !["adamstyer@gorascal.com", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
   const inquiryId = String(body.inquiry_id || "");
   if (!/^[A-Za-z0-9:_-]{8,200}$/.test(inquiryId)) return respond(400, { error: "A stable inquiry_id is required" });
 
@@ -186,7 +192,7 @@ exports.handler = async (event) => {
   // webhook, because either copy may be the one LoanOS accepts.
   const backupCapture = event.headers["x-styer-internal-backup"] === "1" || event.headers["X-Styer-Internal-Backup"] === "1";
   const sendTestLeads = process.env.N8N_SEND_TEST_LEADS === "true";
-  const skipN8n = isTest && !sendTestLeads;
+  const skipN8n = previewSandbox || (isTest && !sendTestLeads);
   const marketingAllowed = !backupCapture && (body.marketing_opt_in === true || body.marketing_opt_in === "on") && !captured.duplicate;
   const [marketing, delivery] = await Promise.allSettled([
     isTest || !marketingAllowed ? Promise.resolve("skipped") : addToMailchimp({ email, firstName, lastName, tag }),
