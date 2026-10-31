@@ -197,14 +197,65 @@
         if (field) field.focus();
       }
     }
+    function errorId(field) {
+      if (!field.id) field.id = (field.name || 'field') + '-' + Math.random().toString(36).slice(2, 8);
+      return field.id + '-error';
+    }
+    function clearFieldError(field) {
+      var id = field.id ? field.id + '-error' : '';
+      var node = id && root.document.getElementById(id);
+      if (node) node.remove();
+      field.removeAttribute('aria-invalid');
+      if (!id || !field.hasAttribute('aria-describedby')) return;
+      var rest = field.getAttribute('aria-describedby').split(/\s+/).filter(function (item) { return item && item !== id; });
+      if (rest.length) field.setAttribute('aria-describedby', rest.join(' '));
+      else field.removeAttribute('aria-describedby');
+    }
+    function showFieldError(field, message) {
+      var id = errorId(field);
+      var node = root.document.getElementById(id);
+      if (!node) {
+        node = root.document.createElement('p');
+        node.id = id;
+        node.className = 'field-error';
+        field.insertAdjacentElement('afterend', node);
+      }
+      node.textContent = message;
+      field.setAttribute('aria-invalid', 'true');
+      var described = (field.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
+      if (described.indexOf(id) === -1) described.push(id);
+      field.setAttribute('aria-describedby', described.join(' '));
+    }
+    function errorSummary(messages) {
+      var box = form.querySelector('.form-error-summary');
+      if (!box) {
+        box = root.document.createElement('div');
+        box.className = 'form-error-summary';
+        box.setAttribute('aria-live', 'polite');
+        box.setAttribute('aria-atomic', 'true');
+        form.insertBefore(box, form.firstChild);
+      }
+      box.textContent = messages.length ? (messages.length === 1 ? '1 field needs attention. ' + messages[0] : messages.length + ' fields need attention. ' + messages[0]) : '';
+      box.hidden = !messages.length;
+    }
     function valid(section) {
-      var fields = Array.from(section.querySelectorAll('input,select,textarea'));
-      for (var field of fields) {
+      var fields = Array.from(section.querySelectorAll('input,select,textarea')).filter(function (field) { return field.type !== 'hidden' && !field.disabled; });
+      var invalid = [];
+      fields.forEach(function (field) {
         // Native required checks allow whitespace-only names; reject those too.
         if (field.required && (field.type === 'text' || field.tagName === 'TEXTAREA')) field.setCustomValidity(field.value.trim() ? '' : 'Please complete this field.');
-        if (!field.checkValidity()) { field.reportValidity(); return false; }
+        if (!field.checkValidity()) {
+          showFieldError(field, field.validationMessage || 'Please complete this field.');
+          invalid.push(field);
+        } else clearFieldError(field);
+      });
+      if (!invalid.length) {
+        if (!Array.from(form.querySelectorAll('[aria-invalid="true"]')).length) errorSummary([]);
+        return true;
       }
-      return true;
+      errorSummary(invalid.map(function (field) { return field.validationMessage || 'Please complete this field.'; }));
+      invalid[0].focus();
+      return false;
     }
     function advance() {
       if (!valid(first)) return;
@@ -263,7 +314,7 @@
         var application=root.document.createElement('div');application.className='journey-application';
         var title=root.document.createElement('h3');title.textContent='Want to get a head start?';application.appendChild(title);
         var detail=root.document.createElement('p');detail.textContent='Contact Adam to arrange the current secure application. Your credit will not be run automatically. This step is entirely optional — it’s fine to wait and talk with Adam first.';application.appendChild(detail);
-        var apply=root.document.createElement('a');apply.href='https://thestyerteam.com/contact.html';apply.rel='noopener';apply.className='journey-application-link';apply.textContent='Contact Adam about applying';application.appendChild(apply);status.appendChild(application);
+        var apply=root.document.createElement('a');apply.href='https://gorascal.my1003app.com/513013/register';apply.target='_blank';apply.rel='noopener';apply.className='journey-application-link';apply.append('Start your application');var applyNote=root.document.createElement('span');applyNote.className='gorascal-visually-hidden';applyNote.textContent=' (opens in a new tab)';apply.appendChild(applyNote);application.appendChild(apply);status.appendChild(application);
       }
       var another = root.document.createElement('button');
       another.type = 'button'; another.className = 'journey-back'; another.textContent = 'Send another request';
@@ -287,7 +338,7 @@
       if (!valid(first)) { showStep(1, true); return; }
       if (!valid(second)) return;
       if (form.elements.preferred_follow_up && form.elements.preferred_follow_up.value === 'Phone' && !form.elements.phone.value.trim()) {
-        form.elements.phone.setCustomValidity('Add your phone number or choose email.');form.elements.phone.reportValidity();return;
+        form.elements.phone.setCustomValidity('Add your phone number or choose email.');showFieldError(form.elements.phone, form.elements.phone.validationMessage);errorSummary([form.elements.phone.validationMessage]);form.elements.phone.focus();return;
       }
       busy = true;
       submit.disabled = true;

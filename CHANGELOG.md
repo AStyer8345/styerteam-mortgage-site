@@ -1,3 +1,19 @@
+## 2026-10-31 — Preview: do not send live leads from Vercel previews
+
+- When VERCEL_ENV is set and is not production, lead-intake forces test mode and skips Mailchimp and the n8n webhook unless ALLOW_PREVIEW_LIVE_LEADS=true. Netlify, where VERCEL_ENV is unset, and Vercel production stay on the live path.
+
+## 2026-10-31 — Preview: WCAG review follow-up
+
+- The header logo stays at the production mobile size, 96 by 48. Narrow headers wrap the “Powered by” line and keep the menu button on that row.
+- Dark-panel placeholders use #b8c2ca. The homepage hero no longer widens the page at 320 or 390. Application links say “Start your application.” The compliance name stays available to screen readers.
+
+## 2026-10-31 — Preview: WCAG 2.2 AA fixes
+
+- Focus can scroll clear of the sticky header and the fixed mobile contact bar. The skip link sits above the header when focused.
+- Apply Now and other new-tab links say they open in a new tab, and the accessible name starts with the visible text. `rel="noopener"` is set.
+- Dark-panel placeholder and small text contrast is at least 4.5:1. The header logo scales at narrow widths; the artwork is unchanged.
+- Form errors show on the page, tied to each field, with `aria-invalid`, a polite summary, and focus on the first invalid field. The contact consent checkbox is marked required. The post-submit application link goes to the GoRascal register URL. Bank and DSCR pages have a skip link. Not merged.
+
 ## 2026-10-30 — Preview: instant lead email after either LoanOS copy
 
 - The raw-form backup now splits a single name field into first and last name, matching the JSON copy. A duplicate LoanOS claim counts as success, and both copies call the web-lead webhook with a 5-second timeout. Test leads still skip that webhook unless N8N_SEND_TEST_LEADS=true. Not merged.

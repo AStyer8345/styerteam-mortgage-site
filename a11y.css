@@ -1,0 +1,267 @@
+/* WCAG 2.2 AA adjustments. Logo artwork is unchanged; only its box size changes. */
+
+html {
+  scroll-padding-top: 96px;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 160px;
+    scroll-padding-bottom: calc(112px + env(safe-area-inset-bottom));
+  }
+  body {
+    padding-bottom: calc(112px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+:where(a, button, input, select, textarea, summary):focus {
+  scroll-margin-top: 96px;
+  scroll-margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  :where(a, button, input, select, textarea, summary):focus {
+    scroll-margin-top: 160px;
+    scroll-margin-bottom: calc(120px + env(safe-area-inset-bottom));
+  }
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  position: fixed !important;
+  top: 8px !important;
+  left: 8px !important;
+  transform: none !important;
+  z-index: 10050 !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  clip: auto !important;
+  clip-path: none !important;
+  overflow: visible !important;
+  scroll-margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .pwe-hero {
+    overflow-x: clip;
+  }
+  html body.private-wealth-editorial .pwe-hero-editorial::before,
+  .pwe-hero-editorial::before {
+    inset: -36px -16px -28px -16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  html body[class] > header nav {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+  body > header .container,
+  body.private-wealth-editorial > header .container {
+    width: calc(100% - 16px) !important;
+  }
+  html body[class] > header .nav-brand,
+  .nav-brand {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    column-gap: 6px !important;
+    row-gap: 0 !important;
+    width: auto !important;
+    max-width: calc(100% - 56px) !important;
+    height: auto !important;
+    flex: 0 1 auto !important;
+  }
+  .nav-wordmark {
+    flex: 1 1 100%;
+    white-space: normal !important;
+  }
+  .nav-powered-mark {
+    column-gap: 4px !important;
+    row-gap: 0 !important;
+  }
+  .nav-powered-label,
+  .nav-powered {
+    white-space: normal !important;
+  }
+  .gorascal-wordmark-chip {
+    flex: 0 0 auto;
+    padding: 2px 4px !important;
+  }
+  .gorascal-wordmark-chip img,
+  header .nav-brand .gorascal-wordmark-chip img {
+    height: 48px !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+  }
+  html body[class] > header .mobile-menu-toggle {
+    flex: 0 0 44px !important;
+    margin-left: 8px !important;
+  }
+  .pwe-hero-line,
+  .pwe-hero h1,
+  .pwe-hero h1 em,
+  .pwe-hero h1 .modern-hero-accent {
+    white-space: normal !important;
+  }
+}
+
+img,
+picture,
+video {
+  max-width: 100%;
+}
+
+.pwe-card-media,
+.pwe-people-portrait,
+.pwe-people-portrait picture {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.pwe-card-img,
+.pwe-people-portrait img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.u-cta-card :is(input, textarea)::placeholder,
+.u-cta-card .journey-field :is(input, textarea)::placeholder {
+  color: #b8c2ca !important;
+  opacity: 1;
+}
+
+.u-cta-card :is(.u-form-consent, .u-form-footer-note, .journey-hint, .personal-form-note) {
+  color: #f6f4ef !important;
+}
+
+.u-cta-card .u-form-footer-note a {
+  color: #f0d7a4;
+}
+
+.u-cta-card .u-form-submit,
+.u-cta-card .journey-submit {
+  color: #0b151d;
+  background: #e4c48a;
+}
+
+.pwe-people-portrait figcaption {
+  color: #24323c !important;
+}
+
+#form-contact label.journey-consent:has(input[name="tcpa_consent"][required]) span::after {
+  content: " (required)";
+  font-weight: 700;
+}
+
+.field-error,
+.error-message {
+  color: #7f1d1d;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin: 0.35rem 0 0;
+}
+
+.form-error-summary {
+  color: #7f1d1d;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1rem;
+}
+
+.u-cta-card :is(.field-error, .error-message, .form-error-summary) {
+  color: #ffd6d6;
+  background: transparent;
+}
+
+.gorascal-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.mobile-menu-toggle,
+.advisory-panel-close,
+.faq-question,
+.nav-links a,
+.site-footer a,
+footer a,
+.pwe-chip,
+.pwe-tool-directory a,
+.review-aggregate-item,
+.journey-button {
+  min-width: 24px !important;
+  min-height: 24px !important;
+}
+
+.advisory-panel-close,
+.faq-question {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.site-footer a,
+footer a {
+  padding: 4px 2px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  html body[class] > header nav {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  html body[class] > header nav .nav-links:not(.active) {
+    display: flex !important;
+    position: static !important;
+    inset: auto !important;
+    width: auto !important;
+    max-height: none !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 0 8px 0 auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+  html body[class] > header nav .nav-links:not(.active) > li:not(:has(> a.nav-apply)) {
+    display: none !important;
+  }
+  html body[class] > header nav .nav-links:not(.active) > li:has(> a.nav-apply) {
+    display: flex !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+  html body[class] > header nav .nav-links:not(.active) a.nav-apply,
+  html body[class] > header nav a.nav-apply {
+    display: inline-flex !important;
+    width: auto !important;
+    min-height: 44px !important;
+    margin: 0 !important;
+    color: #0e1b24 !important;
+    background: #f6f4ef !important;
+    border: 1px solid #f6f4ef !important;
+  }
+}

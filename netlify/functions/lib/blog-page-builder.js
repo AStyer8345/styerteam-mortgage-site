@@ -1,3 +1,4 @@
+const { stringifyBusinessGraph } = require('./business-schema');
 const { refineLongform } = require('./refine-longform');
 const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
@@ -21,7 +22,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
   }
 
   // Article structured data for Google rich results
-  const articleSchema = JSON.stringify({
+  const articleSchema = stringifyBusinessGraph({
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": title,
@@ -29,25 +30,6 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
     "url": pageUrl,
     "datePublished": isoDate,
     "dateModified": isoDate,
-    "author": {
-      "@type": "Person",
-      "name": "Adam Styer",
-      "url": siteOrigin() + '/about.html',
-      "jobTitle": "Senior Loan Officer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "The Styer Team, Powered by Go Rascal Inc."
-      }
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "The Styer Team, Powered by Go Rascal Inc.",
-      "url": siteOrigin(),
-      "logo": {
-        "@type": "ImageObject",
-        "url": siteOrigin() + '/assets/brand/gorascal/gorascal-wordmark.png'
-      }
-    },
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": pageUrl
@@ -108,7 +90,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
+          <span aria-hidden="true" class="nav-wordmark">The Styer Team</span><span aria-hidden="true" class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -124,7 +106,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
           <li class="nav-has-dropdown"><a href="/referral-partners-self-employed-clients.html">For Partners</a><ul class="nav-dropdown"><li><a href="/realtors.html">For Realtors</a></li><li><a href="/mortgage-resources-for-cpas-texas.html">For CPAs</a></li><li><a href="/mortgage-strategies-financial-advisors-texas.html">For Financial Advisors</a></li><li><a href="/mortgage-case-studies-for-advisors-cpas.html">Partner Case Studies</a></li></ul></li>
           <li class="nav-has-dropdown"><a href="/about.html">About Adam</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam</a></li><li><a href="/testimonials.html">Client Reviews</a></li><li><a href="/contact.html">Contact Adam</a></li></ul></li>
           <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/contact.html?goal=Purchase" class="nav-cta">See My Options</a></li>
-        <li><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>
+        <li><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now (opens in a new tab)">Apply Now</a></li>
         </ul>
       </nav>
     </div>
@@ -273,10 +255,9 @@ function buildRateBox(ratesString) {
     const match = line.match(/^\s*(.+?):\s*(.+)/);
     if (match) {
       const product = match[1].trim();
-      const rateInfo = match[2].trim();
       rows += `            <tr>
               <td style="padding: 0.5rem 1rem; border-bottom: 1px solid var(--color-border); font-weight: 500;">${escapeHtml(product)}</td>
-              <td style="padding: 0.5rem 1rem; border-bottom: 1px solid var(--color-border); text-align: center;">${escapeHtml(rateInfo)}</td>
+              <td style="padding: 0.5rem 1rem; border-bottom: 1px solid var(--color-border); text-align: center;">Request a quote</td>
             </tr>\n`;
     }
   }
@@ -285,7 +266,7 @@ function buildRateBox(ratesString) {
 
   return `
           <div class="newsletter-rate-box" style="margin: 2rem 0; padding: 1.5rem; background: var(--color-light-gray); border-radius: var(--radius-lg); border-left: 4px solid var(--color-gold);">
-            <h3 style="margin-bottom: 1rem; color: var(--color-navy);">This Week's Rates</h3>
+            <h3 style="margin-bottom: 1rem; color: var(--color-navy);">Mortgage Pricing Review</h3>
             <table style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>

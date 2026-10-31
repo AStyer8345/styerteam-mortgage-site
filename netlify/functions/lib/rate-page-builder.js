@@ -1,3 +1,4 @@
+const { articleSchema } = require('./business-schema');
 const { refineLongform } = require('./refine-longform');
 const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
@@ -216,6 +217,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
     }
   </style>
 <link rel="stylesheet" href="/experience.css">
+<script type="application/ld+json">${articleSchema({ url: `${siteOrigin()}/rates/${date}.html`, title, description, date })}</script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -228,7 +230,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
+          <span aria-hidden="true" class="nav-wordmark">The Styer Team</span><span aria-hidden="true" class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -244,7 +246,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
           <li class="nav-has-dropdown"><a href="/referral-partners-self-employed-clients.html">For Partners</a><ul class="nav-dropdown"><li><a href="/realtors.html">For Realtors</a></li><li><a href="/mortgage-resources-for-cpas-texas.html">For CPAs</a></li><li><a href="/mortgage-strategies-financial-advisors-texas.html">For Financial Advisors</a></li><li><a href="/mortgage-case-studies-for-advisors-cpas.html">Partner Case Studies</a></li></ul></li>
           <li class="nav-has-dropdown"><a href="/about.html">About Adam</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam</a></li><li><a href="/testimonials.html">Client Reviews</a></li><li><a href="/contact.html">Contact Adam</a></li></ul></li>
           <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/contact.html?goal=Purchase" class="nav-cta">See My Options</a></li>
-        <li><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>
+        <li><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now (opens in a new tab)">Apply Now</a></li>
         </ul>
       </nav>
     </div>
@@ -401,17 +403,10 @@ function buildRateTable(ratesString) {
     const match = line.match(/^\s*(.+?):\s*(.+)/);
     if (match) {
       const product = match[1].trim();
-      const rateInfo = match[2].trim();
-
-      // Split rate and APR if pipe-separated
-      const parts = rateInfo.split("|").map((s) => s.trim());
-      const rate = normalizeRateValue(parts[0] || "");
-      const apr = parts[1] ? normalizeRateValue(parts[1].replace(/^APR:\s*/i, "")) : "";
-
       rows += `              <tr>
                 <td class="rate-product">${escapeHtml(product)}</td>
-                <td class="rate-value">${escapeHtml(rate)}</td>
-                <td class="rate-apr">${apr ? escapeHtml(apr) : "&mdash;"}</td>
+                <td class="rate-value">Request a quote</td>
+                <td class="rate-apr">Request a quote</td>
               </tr>\n`;
     }
   }
@@ -421,7 +416,7 @@ function buildRateTable(ratesString) {
   return `
           <div class="rate-card">
             <div class="rate-card-header">
-              <h2>This Week&rsquo;s Rates</h2>
+              <h2>Mortgage Pricing Review</h2>
             </div>
             <table class="rate-table">
               <thead>

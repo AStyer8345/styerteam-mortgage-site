@@ -1,3 +1,4 @@
+const { stringifyBusinessGraph } = require('./business-schema');
 const { refineLongform } = require('./refine-longform');
 const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
@@ -17,7 +18,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
   const pageUrl = `${siteOrigin()}/realtor-updates/${slug}.html`;
 
   // Article structured data for Google rich results
-  const articleSchema = JSON.stringify({
+  const articleSchema = stringifyBusinessGraph({
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": title,
@@ -25,25 +26,6 @@ function buildRealtorPage({ title, description, date, slug, content, category })
     "url": pageUrl,
     "datePublished": isoDate,
     "dateModified": isoDate,
-    "author": {
-      "@type": "Person",
-      "name": "Adam Styer",
-      "url": siteOrigin() + '/about.html',
-      "jobTitle": "Senior Loan Officer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "The Styer Team, Powered by Go Rascal Inc."
-      }
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "The Styer Team, Powered by Go Rascal Inc.",
-      "url": siteOrigin(),
-      "logo": {
-        "@type": "ImageObject",
-        "url": siteOrigin() + '/assets/brand/gorascal/gorascal-wordmark.png'
-      }
-    },
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": pageUrl
@@ -104,7 +86,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
+          <span aria-hidden="true" class="nav-wordmark">The Styer Team</span><span aria-hidden="true" class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -120,7 +102,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
           <li class="nav-has-dropdown"><a href="/referral-partners-self-employed-clients.html">For Partners</a><ul class="nav-dropdown"><li><a href="/realtors.html">For Realtors</a></li><li><a href="/mortgage-resources-for-cpas-texas.html">For CPAs</a></li><li><a href="/mortgage-strategies-financial-advisors-texas.html">For Financial Advisors</a></li><li><a href="/mortgage-case-studies-for-advisors-cpas.html">Partner Case Studies</a></li></ul></li>
           <li class="nav-has-dropdown"><a href="/about.html">About Adam</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam</a></li><li><a href="/testimonials.html">Client Reviews</a></li><li><a href="/contact.html">Contact Adam</a></li></ul></li>
           <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/contact.html?goal=Purchase" class="nav-cta">See My Options</a></li>
-        <li><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>
+        <li><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now (opens in a new tab)">Apply Now</a></li>
         </ul>
       </nav>
     </div>

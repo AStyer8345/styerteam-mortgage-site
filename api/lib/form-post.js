@@ -65,6 +65,10 @@ async function handleFormPost(input, deps = {}) {
   const fields = applyNameSplit(Object.fromEntries(new URLSearchParams(bodyText)));
   if (fields["bot-field"] || fields.honeypot) return json(200, { ok: true });
 
+  const vercelEnv = process.env.VERCEL_ENV || "";
+  const previewSandbox = vercelEnv !== "" && vercelEnv !== "production" && process.env.ALLOW_PREVIEW_LIVE_LEADS !== "true";
+  if (previewSandbox) fields.test_mode = "true";
+
   const mode = (header(headers, "sec-fetch-mode") || "").toLowerCase();
   const navigate = mode === "navigate";
   const formName = fields["form-name"] || "";
@@ -94,7 +98,7 @@ async function handleFormPost(input, deps = {}) {
   }
 
   let webhookOk = false;
-  if (webhook) {
+  if (webhook && !previewSandbox) {
     const payload = { ...fields };
     delete payload["bot-field"];
     delete payload.honeypot;
