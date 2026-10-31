@@ -1240,12 +1240,58 @@
     },
     {
       "file": "blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
+      "oldLine": 284,
+      "newLine": 403,
+      "old": [
+        "Days 1–3:"
+      ],
+      "new": [
+        "Initial application:"
+      ]
+    },
+    {
+      "file": "blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
+      "oldLine": 285,
+      "newLine": 404,
+      "old": [
+        "Days 4–10:"
+      ],
+      "new": [
+        "Document review:"
+      ]
+    },
+    {
+      "file": "blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
+      "oldLine": 286,
+      "newLine": 405,
+      "old": [
+        "Days 10–20:"
+      ],
+      "new": [
+        "Appraisal and title review:"
+      ]
+    },
+    {
+      "file": "blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
+      "oldLine": 287,
+      "newLine": 406,
+      "old": [
+        "Days 20–30:"
+      ],
+      "new": [
+        "Underwriting conditions:"
+      ]
+    },
+    {
+      "file": "blog/2026-04-17-should-i-refinance-austin-tx-2026.html",
       "oldLine": 288,
       "newLine": 407,
       "old": [
+        "Days 30–40:",
         "Close and fund (add 12 days if A6 cash-out)"
       ],
       "new": [
+        "Final review and closing:",
         "Close and fund after final review and applicable statutory waiting periods"
       ]
     },

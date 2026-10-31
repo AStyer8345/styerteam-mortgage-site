@@ -2,7 +2,7 @@
 
 Compared with PR #43 at `9bcb2d8b`. This ledger includes every changed visible text node and description/title metadata value. URLs and entity fields are summarized in the Part 2 report. FAQ wording in JSON-LD is regenerated from the displayed answers; schema-only FAQ corrections are listed separately below. Line numbers refer to the before and after snapshots, respectively. Consecutive changed text nodes are grouped so removals are not lost.
 
-584 changed text groups across 151 pages.
+588 changed text groups across 151 pages.
 
 ## about.html
 
@@ -1405,15 +1405,65 @@ After, line 382:
 Mortgage pricing depends on the borrower, property, loan structure, and market conditions.
 ```
 
+Before, line 284:
+
+```text
+Days 1–3:
+```
+
+After, line 403:
+
+```text
+Initial application:
+```
+
+Before, line 285:
+
+```text
+Days 4–10:
+```
+
+After, line 404:
+
+```text
+Document review:
+```
+
+Before, line 286:
+
+```text
+Days 10–20:
+```
+
+After, line 405:
+
+```text
+Appraisal and title review:
+```
+
+Before, line 287:
+
+```text
+Days 20–30:
+```
+
+After, line 406:
+
+```text
+Underwriting conditions:
+```
+
 Before, line 288:
 
 ```text
+Days 30–40:
 Close and fund (add 12 days if A6 cash-out)
 ```
 
 After, line 407:
 
 ```text
+Final review and closing:
 Close and fund after final review and applicable statutory waiting periods
 ```
 
