@@ -1,0 +1,50 @@
+[
+  {
+    "page": "index.html",
+    "status": 200,
+    "inputSha256": "e5c45072b590d774d16807c2a2a7b6229e54dd37c46079b519cb8aba1eee9135",
+    "totalNumErrors": 0,
+    "totalNumWarnings": 0,
+    "numObjects": 3
+  },
+  {
+    "page": "bank-statement-loans.html",
+    "status": 200,
+    "inputSha256": "a9e90bccda04b40a419a17c2f7c1607d0e51322aedae0def5623f84f999cdaa3",
+    "totalNumErrors": 0,
+    "totalNumWarnings": 0,
+    "numObjects": 4
+  },
+  {
+    "page": "dscr-loans-texas.html",
+    "status": 200,
+    "inputSha256": "716f177f5293d32b6efeeccd07d7f996b4add317764bc3251666f1aeb47b1a2e",
+    "totalNumErrors": 0,
+    "totalNumWarnings": 0,
+    "numObjects": 4
+  },
+  {
+    "page": "self-employed-mortgage-austin.html",
+    "status": 200,
+    "inputSha256": "dc56f3738f5190d0f9b870c15fbb78574cbca511c707769a4efc7af31c6d117e",
+    "totalNumErrors": 0,
+    "totalNumWarnings": 0,
+    "numObjects": 4
+  },
+  {
+    "page": "high-net-worth-mortgage.html",
+    "status": 200,
+    "inputSha256": "3902b325d3c62e551c5c57067d6d6153c595a362cc1c701a02995cb79838374e",
+    "totalNumErrors": 0,
+    "totalNumWarnings": 0,
+    "numObjects": 4
+  },
+  {
+    "page": "loans/jumbo.html",
+    "status": 200,
+    "inputSha256": "895caa731570548ab4e61e3cf8a5fadbd991fb02afcb8de6657ce26a686516b1",
+    "totalNumErrors": 0,
+    "totalNumWarnings": 0,
+    "numObjects": 6
+  }
+]

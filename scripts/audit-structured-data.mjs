@@ -25,7 +25,7 @@ function walk(value, file) {
   if (fix && typeof value['@type'] === 'string' && replacements[value['@type']]) {
     value['@type'] = replacements[value['@type']];
     if (value['@type'] === 'FinancialService' && !value['@id'] && /Adam Styer|Adam Styer|Styer Team/.test(value.name || '')) {
-      value['@id'] = 'https://thestyerteam.com/#organization';
+      value['@id'] = 'https://styerteam.com/#organization';
     }
   }
   const types = Array.isArray(value['@type']) ? value['@type'] : value['@type'] ? [value['@type']] : [];

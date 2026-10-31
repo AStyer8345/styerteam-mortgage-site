@@ -1,0 +1,290 @@
+[
+  {
+    "root": "styer-production",
+    "page": "contact.html",
+    "invalidFirst": false,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=contact&cta_source_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&cta_label=Send+your+info&preferred_follow_up=Email&bot-field=&name=Pat+Lee&phone=%28512%29+555-0100&email=pat%40example.invalid&loan_goal=Purchase&timeline=&loan_type=&self_reported_source=&message=Fixture+only%3B+no+real+lead.&tcpa_consent=on&situation=Financing+goal%3A+Purchase%0AWhat+I+am+trying+to+accomplish%3A+Fixture+only%3B+no+real+lead.%0APreferred+follow-up%3A+Email"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/contact.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/contact.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"contact\",\"cta_source_page\":\"http://127.0.0.1:8766/contact.html\",\"cta_label\":\"Send your info\",\"preferred_follow_up\":\"Email\",\"bot-field\":\"\",\"name\":\"Pat Lee\",\"phone\":\"(512) 555-0100\",\"email\":\"pat@example.invalid\",\"loan_goal\":\"Purchase\",\"timeline\":\"\",\"loan_type\":\"\",\"self_reported_source\":\"\",\"message\":\"Fixture only; no real lead.\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"situation\":\"Financing goal: Purchase\\nWhat I am trying to accomplish: Fixture only; no real lead.\\nPreferred follow-up: Email\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-production",
+    "page": "contact.html",
+    "invalidFirst": true,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=contact&cta_source_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&cta_label=Send+your+info&preferred_follow_up=Email&bot-field=&name=Pat+Lee&phone=%28512%29+555-0100&email=pat%40example.invalid&loan_goal=Purchase&timeline=&loan_type=&self_reported_source=&message=Fixture+only%3B+no+real+lead.&tcpa_consent=on&situation=Financing+goal%3A+Purchase%0AWhat+I+am+trying+to+accomplish%3A+Fixture+only%3B+no+real+lead.%0APreferred+follow-up%3A+Email"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/contact.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/contact.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"contact\",\"cta_source_page\":\"http://127.0.0.1:8766/contact.html\",\"cta_label\":\"Send your info\",\"preferred_follow_up\":\"Email\",\"bot-field\":\"\",\"name\":\"Pat Lee\",\"phone\":\"(512) 555-0100\",\"email\":\"pat@example.invalid\",\"loan_goal\":\"Purchase\",\"timeline\":\"\",\"loan_type\":\"\",\"self_reported_source\":\"\",\"message\":\"Fixture only; no real lead.\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"situation\":\"Financing goal: Purchase\\nWhat I am trying to accomplish: Fixture only; no real lead.\\nPreferred follow-up: Email\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-production",
+    "page": "bank-statement-loans.html",
+    "invalidFirst": false,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=bank_statement_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fbank-statement-loans.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&preferred_follow_up=&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"bank_statement_quick\",\"cta_source_page\":\"https://thestyerteam.com/bank-statement-loans.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"preferred_follow_up\":\"\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-production",
+    "page": "bank-statement-loans.html",
+    "invalidFirst": true,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=bank_statement_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fbank-statement-loans.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&preferred_follow_up=&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"bank_statement_quick\",\"cta_source_page\":\"https://thestyerteam.com/bank-statement-loans.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"preferred_follow_up\":\"\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-production",
+    "page": "self-employed-mortgage-austin.html",
+    "invalidFirst": false,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=self_employed_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fself-employed-mortgage-austin.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"self_employed_quick\",\"cta_source_page\":\"https://thestyerteam.com/self-employed-mortgage-austin.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-production",
+    "page": "self-employed-mortgage-austin.html",
+    "invalidFirst": true,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=self_employed_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fself-employed-mortgage-austin.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"self_employed_quick\",\"cta_source_page\":\"https://thestyerteam.com/self-employed-mortgage-austin.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-wcag",
+    "page": "contact.html",
+    "invalidFirst": false,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=contact&cta_source_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&cta_label=Send+your+info&preferred_follow_up=Email&bot-field=&name=Pat+Lee&phone=%28512%29+555-0100&email=pat%40example.invalid&loan_goal=Purchase&timeline=&loan_type=&self_reported_source=&message=Fixture+only%3B+no+real+lead.&tcpa_consent=on&situation=Financing+goal%3A+Purchase%0AWhat+I+am+trying+to+accomplish%3A+Fixture+only%3B+no+real+lead.%0APreferred+follow-up%3A+Email"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/contact.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/contact.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"contact\",\"cta_source_page\":\"http://127.0.0.1:8766/contact.html\",\"cta_label\":\"Send your info\",\"preferred_follow_up\":\"Email\",\"bot-field\":\"\",\"name\":\"Pat Lee\",\"phone\":\"(512) 555-0100\",\"email\":\"pat@example.invalid\",\"loan_goal\":\"Purchase\",\"timeline\":\"\",\"loan_type\":\"\",\"self_reported_source\":\"\",\"message\":\"Fixture only; no real lead.\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"situation\":\"Financing goal: Purchase\\nWhat I am trying to accomplish: Fixture only; no real lead.\\nPreferred follow-up: Email\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-wcag",
+    "page": "contact.html",
+    "invalidFirst": true,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=contact&cta_source_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&cta_label=Send+your+info&preferred_follow_up=Email&bot-field=&name=Pat+Lee&phone=%28512%29+555-0100&email=pat%40example.invalid&loan_goal=Purchase&timeline=&loan_type=&self_reported_source=&message=Fixture+only%3B+no+real+lead.&tcpa_consent=on&situation=Financing+goal%3A+Purchase%0AWhat+I+am+trying+to+accomplish%3A+Fixture+only%3B+no+real+lead.%0APreferred+follow-up%3A+Email"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/contact.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/contact.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"contact\",\"cta_source_page\":\"http://127.0.0.1:8766/contact.html\",\"cta_label\":\"Send your info\",\"preferred_follow_up\":\"Email\",\"bot-field\":\"\",\"name\":\"Pat Lee\",\"phone\":\"(512) 555-0100\",\"email\":\"pat@example.invalid\",\"loan_goal\":\"Purchase\",\"timeline\":\"\",\"loan_type\":\"\",\"self_reported_source\":\"\",\"message\":\"Fixture only; no real lead.\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"situation\":\"Financing goal: Purchase\\nWhat I am trying to accomplish: Fixture only; no real lead.\\nPreferred follow-up: Email\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-wcag",
+    "page": "bank-statement-loans.html",
+    "invalidFirst": false,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=bank_statement_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fbank-statement-loans.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&preferred_follow_up=&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"bank_statement_quick\",\"cta_source_page\":\"https://thestyerteam.com/bank-statement-loans.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"preferred_follow_up\":\"\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-wcag",
+    "page": "bank-statement-loans.html",
+    "invalidFirst": true,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=bank_statement_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fbank-statement-loans.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&preferred_follow_up=&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"bank_statement_quick\",\"cta_source_page\":\"https://thestyerteam.com/bank-statement-loans.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"preferred_follow_up\":\"\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-wcag",
+    "page": "self-employed-mortgage-austin.html",
+    "invalidFirst": false,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=self_employed_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fself-employed-mortgage-austin.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"self_employed_quick\",\"cta_source_page\":\"https://thestyerteam.com/self-employed-mortgage-austin.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styer-wcag",
+    "page": "self-employed-mortgage-austin.html",
+    "invalidFirst": true,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=self_employed_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fself-employed-mortgage-austin.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"self_employed_quick\",\"cta_source_page\":\"https://thestyerteam.com/self-employed-mortgage-austin.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styerteam-mortgage-site",
+    "page": "contact.html",
+    "invalidFirst": false,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=contact&cta_source_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&cta_label=Send+your+info&preferred_follow_up=Email&bot-field=&name=Pat+Lee&phone=%28512%29+555-0100&email=pat%40example.invalid&loan_goal=Purchase&timeline=&loan_type=&self_reported_source=&message=Fixture+only%3B+no+real+lead.&tcpa_consent=on&situation=Financing+goal%3A+Purchase%0AWhat+I+am+trying+to+accomplish%3A+Fixture+only%3B+no+real+lead.%0APreferred+follow-up%3A+Email"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/contact.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/contact.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"contact\",\"cta_source_page\":\"http://127.0.0.1:8766/contact.html\",\"cta_label\":\"Send your info\",\"preferred_follow_up\":\"Email\",\"bot-field\":\"\",\"name\":\"Pat Lee\",\"phone\":\"(512) 555-0100\",\"email\":\"pat@example.invalid\",\"loan_goal\":\"Purchase\",\"timeline\":\"\",\"loan_type\":\"\",\"self_reported_source\":\"\",\"message\":\"Fixture only; no real lead.\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"situation\":\"Financing goal: Purchase\\nWhat I am trying to accomplish: Fixture only; no real lead.\\nPreferred follow-up: Email\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styerteam-mortgage-site",
+    "page": "contact.html",
+    "invalidFirst": true,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=contact&cta_source_page=http%3A%2F%2F127.0.0.1%3A8766%2Fcontact.html&cta_label=Send+your+info&preferred_follow_up=Email&bot-field=&name=Pat+Lee&phone=%28512%29+555-0100&email=pat%40example.invalid&loan_goal=Purchase&timeline=&loan_type=&self_reported_source=&message=Fixture+only%3B+no+real+lead.&tcpa_consent=on&situation=Financing+goal%3A+Purchase%0AWhat+I+am+trying+to+accomplish%3A+Fixture+only%3B+no+real+lead.%0APreferred+follow-up%3A+Email"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/contact.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/contact.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"contact\",\"cta_source_page\":\"http://127.0.0.1:8766/contact.html\",\"cta_label\":\"Send your info\",\"preferred_follow_up\":\"Email\",\"bot-field\":\"\",\"name\":\"Pat Lee\",\"phone\":\"(512) 555-0100\",\"email\":\"pat@example.invalid\",\"loan_goal\":\"Purchase\",\"timeline\":\"\",\"loan_type\":\"\",\"self_reported_source\":\"\",\"message\":\"Fixture only; no real lead.\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"situation\":\"Financing goal: Purchase\\nWhat I am trying to accomplish: Fixture only; no real lead.\\nPreferred follow-up: Email\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styerteam-mortgage-site",
+    "page": "bank-statement-loans.html",
+    "invalidFirst": false,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=bank_statement_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fbank-statement-loans.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&preferred_follow_up=&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"bank_statement_quick\",\"cta_source_page\":\"https://thestyerteam.com/bank-statement-loans.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"preferred_follow_up\":\"\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styerteam-mortgage-site",
+    "page": "bank-statement-loans.html",
+    "invalidFirst": true,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fbank-statement-loans.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=bank_statement_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fbank-statement-loans.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&preferred_follow_up=&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/bank-statement-loans.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"bank_statement_quick\",\"cta_source_page\":\"https://thestyerteam.com/bank-statement-loans.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"preferred_follow_up\":\"\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styerteam-mortgage-site",
+    "page": "self-employed-mortgage-austin.html",
+    "invalidFirst": false,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=self_employed_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fself-employed-mortgage-austin.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"self_employed_quick\",\"cta_source_page\":\"https://thestyerteam.com/self-employed-mortgage-austin.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  },
+  {
+    "root": "styerteam-mortgage-site",
+    "page": "self-employed-mortgage-austin.html",
+    "invalidFirst": true,
+    "calls": [
+      {
+        "url": "http://127.0.0.1:8766/",
+        "body": "form-name=contact&inquiry_id=fixture-inquiry-123456&test_mode=false&intent=general&situation=Financing+goal%3A+Purchase%0AAdditional+context%3A+Self-employed+%2F+business+owner&utm_source=&utm_medium=&utm_campaign=&utm_term=&utm_content=&page_url=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&entry_referrer=&first_touch_page=http%3A%2F%2F127.0.0.1%3A8766%2Fself-employed-mortgage-austin.html&first_touch_referrer=&first_touch_at=2026-10-31T00%3A00%3A00.000Z&first_touch_source=direct&first_touch_utm_source=&first_touch_utm_medium=&first_touch_utm_campaign=&first_touch_utm_term=&first_touch_utm_content=&source=self_employed_quick&cta_source_page=https%3A%2F%2Fthestyerteam.com%2Fself-employed-mortgage-austin.html&cta_label=See+My+Options&bot-field=&loan_goal=Purchase&name=Pat+Lee&email=pat%40example.invalid&phone=%28512%29+555-0100&message=Fixture+only%3B+no+real+lead.&self_reported_source=&tcpa_consent=on"
+      },
+      {
+        "url": "http://127.0.0.1:8766/.netlify/functions/lead-intake",
+        "body": "{\"form-name\":\"contact\",\"inquiry_id\":\"fixture-inquiry-123456\",\"test_mode\":\"false\",\"intent\":\"general\",\"situation\":\"Financing goal: Purchase\\nAdditional context: Self-employed / business owner\",\"utm_source\":\"\",\"utm_medium\":\"\",\"utm_campaign\":\"\",\"utm_term\":\"\",\"utm_content\":\"\",\"page_url\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"entry_referrer\":\"\",\"first_touch_page\":\"http://127.0.0.1:8766/self-employed-mortgage-austin.html\",\"first_touch_referrer\":\"\",\"first_touch_at\":\"2026-10-31T00:00:00.000Z\",\"first_touch_source\":\"direct\",\"first_touch_utm_source\":\"\",\"first_touch_utm_medium\":\"\",\"first_touch_utm_campaign\":\"\",\"first_touch_utm_term\":\"\",\"first_touch_utm_content\":\"\",\"source\":\"self_employed_quick\",\"cta_source_page\":\"https://thestyerteam.com/self-employed-mortgage-austin.html\",\"cta_label\":\"See My Options\",\"bot-field\":\"\",\"loan_goal\":\"Purchase\",\"name\":\"Pat Lee\",\"email\":\"pat@example.invalid\",\"phone\":\"(512) 555-0100\",\"message\":\"Fixture only; no real lead.\",\"self_reported_source\":\"\",\"tcpa_consent\":true,\"first_name\":\"Pat\",\"last_name\":\"Lee\",\"lead_source\":\"Website Contact\",\"tag\":\"scenario-review\",\"sms_opt_in\":false}"
+      }
+    ],
+    "errors": 0
+  }
+]

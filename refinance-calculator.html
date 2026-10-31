@@ -26,19 +26,7 @@
 <link href="/style.css" rel="stylesheet"/>
 <link href="calculator-suite.css" rel="stylesheet"/>
 <link href="/editorial-system.css?v=20260829-audit1" rel="stylesheet"/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Refinance Closing Cost Calculator",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Any",
-  "url": "https://thestyerteam.com/refinance-calculator.html",
-  "description": "Free refinance closing cost calculator for estimating lender fees, third-party fees, escrow setup, credits, and cash to close.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "provider": { "@type": "Person", "name": "Adam Styer", "identifier": "NMLS #513013" }
-}
-</script>
+
 <style>
 /* ===== CSS VARIABLES & RESET ===== */
 :root {
@@ -402,8 +390,130 @@ body {
 <link href="/premium-tools.css" rel="stylesheet"/>
 <link href="/blueprint-refinements.css" rel="stylesheet"/>
 <script defer="" src="/blueprint-interactions.js"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thestyerteam.com/"}, {"@type": "ListItem", "position": 2, "name": "Mortgage resources and guides", "item": "https://thestyerteam.com/resources/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage calculators", "item": "https://thestyerteam.com/calculators.html"}, {"@type": "ListItem", "position": 4, "name": "Refinance closing-cost calculator", "item": "https://thestyerteam.com/refinance-calculator.html"}]}</script><link href="/editorial-polish.css" rel="stylesheet"/><link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
+<link href="/editorial-polish.css" rel="stylesheet"/><link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
 <link href="/a11y.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "FinancialService"
+      ],
+      "@id": "https://styerteam.com/#organization",
+      "name": "The Styer Team, Powered by Go Rascal Inc.",
+      "legalName": "Go Rascal Inc.",
+      "url": "https://styerteam.com/",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "2072896"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "185 Wythe Ave, Suite A2",
+        "addressLocality": "Brooklyn",
+        "addressRegion": "NY",
+        "postalCode": "11249",
+        "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Texas"
+      },
+      "telephone": "+15129566010",
+      "email": "adamstyer@gorascal.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://styerteam.com/assets/brand/gorascal/gorascal-wordmark.png"
+      },
+      "description": "Loans are arranged through third party lenders."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://styerteam.com/#adam",
+      "name": "Adam Styer",
+      "jobTitle": "Senior Loan Officer",
+      "url": "https://styerteam.com/about.html",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "513013"
+      },
+      "worksFor": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://styerteam.com/#website",
+      "url": "https://styerteam.com/",
+      "name": "The Styer Team, Powered by Go Rascal Inc.",
+      "publisher": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Refinance Closing Cost Calculator",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "url": "https://styerteam.com/refinance-calculator.html",
+      "description": "Free refinance closing cost calculator for estimating lender fees, third-party fees, escrow setup, credits, and cash to close.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://styerteam.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mortgage resources and guides",
+          "item": "https://styerteam.com/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mortgage calculators",
+          "item": "https://styerteam.com/calculators.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Refinance closing-cost calculator",
+          "item": "https://styerteam.com/refinance-calculator.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://styerteam.com/refinance-calculator.html#webpage",
+      "url": "https://styerteam.com/refinance-calculator.html",
+      "name": "Refinance Closing Costs Calculator",
+      "isPartOf": {
+        "@id": "https://styerteam.com/#website"
+      },
+      "publisher": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="editorial-page calculator-page premium-interior premium-tool advisory-site advisory-calculator">
 <!-- Google Tag Manager (noscript) -->
