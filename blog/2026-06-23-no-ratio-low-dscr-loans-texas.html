@@ -114,6 +114,7 @@ body>main:nth-of-type(1)>article:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-ty
 body>main:nth-of-type(1)>article:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(4)>p:nth-of-type(3)>a:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>h2:nth-of-type(1){color:#f6f4ef !important;}
 main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style><link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
+<link href="/a11y.css" rel="stylesheet"/>
 </head>
 <body class="premium-interior premium-reading premium-article advisory-site advisory-article batch4-reading">
 <!-- Google Tag Manager (noscript) -->
@@ -124,7 +125,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div class="container">
 <nav>
 <a class="nav-brand" href="/index.html">
-<span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark-display.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
+<span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark-display.png" alt="Go Rascal Inc." height="26"></span></span><span aria-hidden="true" class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
 </a>
 <button aria-label="Toggle navigation menu" class="mobile-menu-toggle" aria-expanded="false">
 <span></span>
@@ -217,7 +218,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </li>
 <li class="nav-phone-li"><a class="nav-phone" href="tel:+15129566010">(512) 956-6010</a></li>
 <li><a class="nav-cta" href="/contact.html?goal=Purchase">See My Options</a></li>
-<li><a aria-label="Contact Adam about applying" class="nav-cta nav-apply" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank">Apply Now</a></li>
+<li><a class="nav-cta nav-apply" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank">Apply Now<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
 </ul>
 </nav>
 </div>
@@ -243,8 +244,8 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <p>So a 0.85 DSCR means the rent covers 85% of the payment and you're feeding the property the other 15% out of pocket. Standard DSCR programs treat 1.0 as the floor and price their best terms at 1.25 and up. The further below 1.0 you go, the lender pool narrows, but pricing is not always dramatically worse down to about 0.75 when the rest of the file is strong. For the full list of credit, reserve, and LTV requirements on a standard file, see <a href="/blog/2026-06-16-dscr-loan-requirements-texas.html">DSCR loan requirements in Texas</a>.</p>
 <h2 id="guide-why-these-loans-can-exist-at-all">Why These Loans Can Exist at All</h2>
 <p>Here's the part most investors don't know, and it's the whole reason a sub-1.0 loan is even possible.</p>
-<p>A conventional mortgage on your own home is consumer credit. The lender is legally required to prove you can repay it under the federal Ability-to-Repay rule (<a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" rel="noopener" target="_blank">Regulation Z, 12 CFR 1026.43</a>). That rule forces a hard look at your personal debt-to-income ratio. Too much debt, no loan.</p>
-<p>A DSCR loan is different. It's a loan made for a business purpose — buying an income-producing property — and business-purpose credit is exempt from those consumer protections under <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/3/" rel="noopener" target="_blank">12 CFR 1026.3</a>. Because the lender isn't bound to verify your personal ability to repay, it's free to underwrite the property and the structure instead. That's what makes a no-ratio loan legal: the lender can choose to ignore the property's cash flow because no rule requires it to count your income in the first place. The flexibility is a feature of the loan category, not a favor.</p>
+<p>A conventional mortgage on your own home is consumer credit. The lender is legally required to prove you can repay it under the federal Ability-to-Repay rule (<a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" rel="noopener" target="_blank">Regulation Z, 12 CFR 1026.43<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>). That rule forces a hard look at your personal debt-to-income ratio. Too much debt, no loan.</p>
+<p>A DSCR loan is different. It's a loan made for a business purpose — buying an income-producing property — and business-purpose credit is exempt from those consumer protections under <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/3/" rel="noopener" target="_blank">12 CFR 1026.3<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>. Because the lender isn't bound to verify your personal ability to repay, it's free to underwrite the property and the structure instead. That's what makes a no-ratio loan legal: the lender can choose to ignore the property's cash flow because no rule requires it to count your income in the first place. The flexibility is a feature of the loan category, not a favor.</p>
 <h2 id="guide-low-dscr-vs-no-ratio-vs-no-dscr-the-tiers">Low-DSCR vs. No-Ratio vs. No-DSCR — The Tiers</h2>
 <p>These terms get used loosely. Here's how I keep them straight for clients:</p>
 <ul>
@@ -254,7 +255,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </ul>
 <p>The move down each tier changes the structure, but it is not a cliff. A standard 1.20 DSCR file usually has the most lender options; a 0.80 file can still be very workable; a true no-ratio file is where LTV caps, reserves, and pricing usually become the bigger conversation. None of those are rate quotes — pricing changes daily — but the real answer is what your specific property, credit, equity, and reserves price out to.</p>
 <h2 id="guide-the-conventional-baseline-these-loans-replace">The Conventional Baseline These Loans Replace</h2>
-<p>It helps to see what you're skipping. On a conventional investment-property loan, Fannie Mae doesn't let you count the full rent. Its rental income rules apply a vacancy and maintenance haircut — you typically qualify on about 75% of gross rent, not 100% — and the leftover still has to fit inside <em>your personal</em> debt-to-income ratio (<a href="https://selling-guide.fanniemae.com/sel/b3-3.8-01/rental-income" rel="noopener" target="_blank">Fannie Mae Selling Guide B3-3.8-01, Rental Income</a>). Conventional investor loans also cap leverage by occupancy and credit (<a href="https://selling-guide.fanniemae.com/sel/b2-1.2-01/loan-value-ltv-ratios" rel="noopener" target="_blank">Fannie Mae B2-1.2-01, LTV Ratios</a>), and they count against the number of financed properties you can carry.</p>
+<p>It helps to see what you're skipping. On a conventional investment-property loan, Fannie Mae doesn't let you count the full rent. Its rental income rules apply a vacancy and maintenance haircut — you typically qualify on about 75% of gross rent, not 100% — and the leftover still has to fit inside <em>your personal</em> debt-to-income ratio (<a href="https://selling-guide.fanniemae.com/sel/b3-3.8-01/rental-income" rel="noopener" target="_blank">Fannie Mae Selling Guide B3-3.8-01, Rental Income<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>). Conventional investor loans also cap leverage by occupancy and credit (<a href="https://selling-guide.fanniemae.com/sel/b2-1.2-01/loan-value-ltv-ratios" rel="noopener" target="_blank">Fannie Mae B2-1.2-01, LTV Ratios<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>), and they count against the number of financed properties you can carry.</p>
 <p>That's three walls a serious investor hits fast: the income haircut, your own DTI, and the property-count cap. A DSCR loan knocks down all three by underwriting the asset. The sub-1.0 version just pushes that idea further — the property doesn't even have to cover itself, as long as you do. If you're weighing the two paths head to head, the <a href="/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html">DSCR vs. conventional investment loan comparison</a> walks through the qualifying differences in detail.</p>
 <h2 id="guide-what-you-give-up">What You Give Up</h2>
 <p>I'd be doing you no favors if I sold the flexibility without the bill. A sub-1.0 or no-ratio loan asks for:</p>
@@ -270,7 +271,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <p><strong>1. The BRRRR bridge.</strong> You're buying a rough property to renovate, rent, and refinance. Today's rent is low because the unit isn't finished. A no-ratio purchase loan gets you in; once the rehab is done and rents are real, you refinance into better terms. The <a href="/blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr.html">DSCR cash-out refinance and BRRRR guide</a> covers that exit in depth.</p>
 <p><strong>2. The short-term rental.</strong> A long-term lease might put the property at 0.9, but the Airbnb or VRBO projection blows past it. Lenders that allow short-term-rental income can re-rate the same property far higher — see <a href="/blog/2026-06-05-dscr-airbnb-str-loan-texas.html">DSCR loans for Airbnb and short-term rentals in Texas</a> for how that income gets documented.</p>
 <p><strong>3. The appreciation play.</strong> In supply-constrained Austin-area submarkets, an investor sometimes accepts flat cash flow to own the dirt in the path of growth. That's a real strategy — but only if you can fund the monthly carry without strain, and only if the appreciation thesis is grounded, not hoped.</p>
-<p><strong>4. The second-home conversion.</strong> A Hill Country or lake property you'll use now and rent later can start sub-1.0 and grow into coverage as rents climb. Texas vacancy matters here: statewide rental vacancy has run in the high-single-digit range in recent years (<a href="https://fred.stlouisfed.org/series/TXRVAC" rel="noopener" target="_blank">FRED, Rental Vacancy Rate for Texas, TXRVAC</a>), so build a vacancy cushion into your carry math instead of assuming 12 months of rent.</p>
+<p><strong>4. The second-home conversion.</strong> A Hill Country or lake property you'll use now and rent later can start sub-1.0 and grow into coverage as rents climb. Texas vacancy matters here: statewide rental vacancy has run in the high-single-digit range in recent years (<a href="https://fred.stlouisfed.org/series/TXRVAC" rel="noopener" target="_blank">FRED, Rental Vacancy Rate for Texas, TXRVAC<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>), so build a vacancy cushion into your carry math instead of assuming 12 months of rent.</p>
 <div class="callout callout-tip">
 <strong>The honest filter:</strong> A sub-1.0 loan should be a bridge to a better number — a finished rehab, real STR income, or genuine appreciation — not a permanent way to own a property that loses money. If the only reason the ratio is low is that you overpaid, loan structure will not turn a bad deal into a good one.
       </div>
@@ -357,7 +358,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <p style="color:rgba(255,255,255,0.8);margin-bottom:1.5rem;">Send the numbers. I'll shop low-DSCR and no-ratio programs across many wholesale lenders and give you the straight answer.</p>
 <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
 <a class="btn btn-light" href="/contact.html?goal=Purchase">See My Options</a>
-<a class="btn btn-outline-light" href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a Call</a>
+<a class="btn btn-outline-light" href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a Call<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
 </div>
 <p style="color:rgba(255,255,255,0.6);font-size:0.85rem;margin-top:1rem;margin-bottom:0;">The Styer Team, Powered by Go Rascal Inc. — NMLS #513013 · Licensed in Texas</p>
 </div>
@@ -400,24 +401,24 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <li><a href="/testimonials.html">Reviews</a></li>
 <li><a href="/contact.html">Contact</a></li>
 <li><a href="tel:+15129566010">(512) 956-6010</a></li>
-<li><a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a call</a></li>
+<li><a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a call<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
 </ul></div>
 <div class="site-footer-col"><h2>Legal</h2><ul>
 <li><a href="/privacy.html">Privacy</a></li>
 <li><a href="/terms.html">Terms</a></li>
 <li><a href="/licensing.html">Licensing &amp; Disclosures</a></li>
 <li><a href="/texas-complaint-notice.html">Texas complaint notice</a></li>
-<li><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS Consumer Access</a></li>
+<li><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS Consumer Access<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
 </ul></div>
 </div>
-    <p class="site-footer-proof"><a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener">5.0 on Google</a> · <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener">4.98 on Zillow</a> · <a href="/testimonials.html">144 published reviews</a> · Licensed in Texas · NMLS #513013</p>
+    <p class="site-footer-proof"><a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener">5.0 on Google<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a> · <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener">4.98 on Zillow<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a> · <a href="/testimonials.html">144 published reviews</a> · Licensed in Texas · NMLS #513013</p>
     <p class="site-footer-areas"><strong>Serving Central Texas:</strong> <a href="/austin-area-mortgage-lender.html">Austin</a> · <a href="/round-rock-mortgage-lender.html">Round Rock</a> · <a href="/cedar-park-mortgage-lender.html">Cedar Park</a> · <a href="/leander-mortgage-lender.html">Leander</a> · <a href="/georgetown-mortgage-lender.html">Georgetown</a> · <a href="/pflugerville-mortgage-lender.html">Pflugerville</a> · <a href="/kyle-mortgage-lender.html">Kyle</a> · <a href="/buda-mortgage-lender.html">Buda</a> · <a href="/san-marcos-mortgage-lender.html">San Marcos</a> · <a href="/westlake-mortgage-lender.html">Westlake</a> · <a href="/lakeway-mortgage-lender.html">Lakeway</a> · <a href="/bee-cave-mortgage-lender.html">Bee Cave</a> · <a href="/dripping-springs-mortgage-lender.html">Dripping Springs</a> · <a href="/spicewood-mortgage-lender.html">Spicewood</a> · <a href="/marble-falls-mortgage-lender.html">Marble Falls</a> · <a href="/hutto-mortgage-lender.html">Hutto</a> · <a href="/taylor-mortgage-lender.html">Taylor</a> · <a href="/manor-mortgage-lender.html">Manor</a> · <a href="/elgin-mortgage-lender.html">Elgin</a> · <a href="/bastrop-mortgage-lender.html">Bastrop</a> · <a href="/smithville-mortgage-lender.html">Smithville</a> · <a href="/liberty-hill-mortgage-lender.html">Liberty Hill</a> · <a href="/jarrell-mortgage-lender.html">Jarrell</a> · <a href="/florence-mortgage-lender.html">Florence</a> · <a href="/new-braunfels-mortgage-lender.html">New Braunfels</a></p>
     <div class="site-footer-legal">
       <img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy-display.png" alt="Go Rascal Inc." height="64">
       <div class="site-footer-legal-copy">
       <p class="site-footer-compliance">Adam Styer | Mortgage Loan Originator</p>
-      <p class="site-footer-compliance"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS ID #513013</a></p>
-      <p class="site-footer-compliance"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)</a></p>
+      <p class="site-footer-compliance"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS ID #513013<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+      <p class="site-footer-compliance"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
       <p class="site-footer-compliance">Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
       <p class="site-footer-compliance"><svg class="eho-mark" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M12 3 3 11h2v9h5v-6h4v6h5v-9h2L12 3z"/></svg> Equal Housing Opportunity</p>
       <!-- Licensed states placeholder pending Adam's NMLS confirmation -->

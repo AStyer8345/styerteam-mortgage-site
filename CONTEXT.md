@@ -20,7 +20,7 @@ Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel both co
 
 ## Last Worked On
 
-Mobile homepage hero keeps the navy field and a small portrait above the headline under 768px. Vercel redirects include slash-less copies of the eleven legacy WordPress paths that 404 when the trailing slash is removed. Sitemap lists `/resources` and `/resources/first-time-buyer-guide` without a trailing slash. Do not merge this preview and do not attach domains.
+WCAG 2.2 AA fixes are on a branch off `preview/claims-docpaths-source-2026-10-28`. Focus clearance, skip link, new-tab names, contrast, logo scaling, inline form errors, consent, the application confirmation link, and skip links on bank and DSCR pages. Do not merge this preview and do not deploy it to production.
 
 ## Working Rules
 

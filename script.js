@@ -443,6 +443,38 @@ function validatePhone(phone) {
   return /^(\+\d{1,2}\s?)?\(?-?\d{3}\)?-?\d{3}-?\d{4}$/.test(phone.replace(/\s/g, ''));
 }
 
+function fieldErrorId(input) {
+  if (!input.id) input.id = `${input.name || 'field'}-${Math.random().toString(36).slice(2, 8)}`;
+  return `${input.id}-error`;
+}
+
+function linkFieldError(input, errorContainer, isValid) {
+  errorContainer.id = errorContainer.id || fieldErrorId(input);
+  const described = new Set((input.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean));
+  if (isValid) described.delete(errorContainer.id);
+  else described.add(errorContainer.id);
+  if (described.size) input.setAttribute('aria-describedby', [...described].join(' '));
+  else input.removeAttribute('aria-describedby');
+}
+
+function formErrorSummary(form, messages) {
+  if (!form) return;
+  let summary = form.querySelector('.form-error-summary');
+  if (!summary) {
+    summary = document.createElement('div');
+    summary.className = 'form-error-summary';
+    summary.setAttribute('aria-live', 'polite');
+    summary.setAttribute('aria-atomic', 'true');
+    form.insertBefore(summary, form.firstChild);
+  }
+  summary.hidden = !messages.length;
+  summary.textContent = !messages.length
+    ? ''
+    : messages.length === 1
+      ? `1 field needs attention. ${messages[0]}`
+      : `${messages.length} fields need attention. ${messages[0]}`;
+}
+
 function validateField(input) {
   const value = typeof input.value === 'string' ? input.value.trim() : '';
   let errorContainer = input.parentElement.querySelector('.error-message');
@@ -450,7 +482,6 @@ function validateField(input) {
   if (!errorContainer) {
     errorContainer = document.createElement('div');
     errorContainer.className = 'error-message';
-    errorContainer.setAttribute('role', 'alert');
     input.parentElement.appendChild(errorContainer);
   }
 
@@ -485,6 +516,7 @@ function validateField(input) {
   input.classList.toggle('form-error', !isValid);
   input.setAttribute('aria-invalid', String(!isValid));
   errorContainer.textContent = isValid ? '' : errorMessage;
+  linkFieldError(input, errorContainer, isValid);
 
   return isValid;
 }
@@ -723,11 +755,19 @@ function bindQuickContactForm(form) {
     const inputs = form.querySelectorAll('input, textarea, select');
     let isValid = true;
 
+    const invalid = [];
     inputs.forEach(input => {
-      if (!validateField(input)) isValid = false;
+      if (!validateField(input)) invalid.push(input);
     });
 
-    if (isValid) submitForm(form);
+    if (!invalid.length) {
+      formErrorSummary(form, []);
+      submitForm(form);
+      return;
+    }
+    isValid = false;
+    formErrorSummary(form, invalid.map((input) => input.parentElement.querySelector('.error-message')?.textContent || 'Please complete this field.'));
+    invalid[0].focus();
   });
 }
 
@@ -771,11 +811,16 @@ function initHeroQuickForm() {
     e.preventDefault();
 
     const inputs = form.querySelectorAll('input, select, textarea');
-    let isValid = true;
+    const invalid = [];
     inputs.forEach((input) => {
-      if (!validateField(input)) isValid = false;
+      if (!validateField(input)) invalid.push(input);
     });
-    if (!isValid) return;
+    if (invalid.length) {
+      formErrorSummary(form, invalid.map((input) => input.parentElement.querySelector('.error-message')?.textContent || 'Please complete this field.'));
+      invalid[0].focus();
+      return;
+    }
+    formErrorSummary(form, []);
 
     const formData = new FormData(form);
     appendSelfReportedSource(formData);
@@ -1000,9 +1045,9 @@ function initPrequalForm() {
         field.setAttribute('aria-invalid', 'true');
         const error = document.createElement('span');
         error.className = 'error-message';
-        error.setAttribute('role', 'alert');
         error.textContent = 'This field is required';
         field.parentElement.appendChild(error);
+        linkFieldError(field, error, false);
       }
 
       // Email validation
@@ -1014,9 +1059,9 @@ function initPrequalForm() {
           field.setAttribute('aria-invalid', 'true');
           const error = document.createElement('span');
           error.className = 'error-message';
-          error.setAttribute('role', 'alert');
           error.textContent = 'Please enter a valid email address';
           field.parentElement.appendChild(error);
+          linkFieldError(field, error, false);
         }
       }
 
@@ -1029,13 +1074,20 @@ function initPrequalForm() {
           field.setAttribute('aria-invalid', 'true');
           const error = document.createElement('span');
           error.className = 'error-message';
-          error.setAttribute('role', 'alert');
           error.textContent = 'Please enter a valid phone number';
           field.parentElement.appendChild(error);
+          linkFieldError(field, error, false);
         }
       }
     });
 
+    if (!valid) {
+      const invalid = [...requiredFields].filter((field) => field.getAttribute('aria-invalid') === 'true');
+      formErrorSummary(form, invalid.map((field) => field.parentElement.querySelector('.error-message')?.textContent || 'Please complete this field.'));
+      if (invalid[0]) invalid[0].focus();
+    } else if (![...form.querySelectorAll('[aria-invalid="true"]')].length) {
+      formErrorSummary(form, []);
+    }
     return valid;
   }
 
@@ -1144,13 +1196,106 @@ function initPrequalForm() {
 // INIT - Single DOMContentLoaded entry point
 // ========================================================================
 
+function initNativeFormErrors() {
+  const pending = new Map();
+  document.addEventListener('invalid', (event) => {
+    const field = event.target;
+    if (!field || !field.matches || !field.matches('input, textarea, select')) return;
+    event.preventDefault();
+    const message = field.validationMessage || 'Please complete this field.';
+    let errorContainer = field.parentElement && field.parentElement.querySelector('.error-message, .field-error');
+    if (!errorContainer) {
+      errorContainer = document.createElement('p');
+      errorContainer.className = 'field-error';
+      field.insertAdjacentElement('afterend', errorContainer);
+    }
+    errorContainer.textContent = message;
+    field.classList.add('form-error');
+    field.setAttribute('aria-invalid', 'true');
+    linkFieldError(field, errorContainer, false);
+    const form = field.form;
+    if (!form) return;
+    const list = pending.get(form) || [];
+    list.push(field);
+    pending.set(form, list);
+    if (list.length === 1) {
+      queueMicrotask(() => {
+        const fields = pending.get(form) || [];
+        pending.delete(form);
+        formErrorSummary(form, fields.map((item) => item.validationMessage || 'Please complete this field.'));
+        if (fields[0]) fields[0].focus();
+      });
+    }
+  }, true);
+
+  document.addEventListener('input', (event) => {
+    const field = event.target;
+    if (!field || !field.matches || !field.matches('input, textarea, select')) return;
+    if (field.getAttribute('aria-invalid') !== 'true' || !field.checkValidity()) return;
+    const errorContainer = field.parentElement && field.parentElement.querySelector('.error-message, .field-error');
+    if (errorContainer) {
+      errorContainer.textContent = '';
+      linkFieldError(field, errorContainer, true);
+    }
+    field.removeAttribute('aria-invalid');
+    field.classList.remove('form-error');
+  });
+}
+
+function initAutocompleteHints() {
+  const rules = [
+    [/^(name|full_name|fullname)$/i, 'name'],
+    [/^(email|e-mail)$/i, 'email'],
+    [/^(phone|tel|mobile|phone_number)$/i, 'tel'],
+    [/first[-_ ]?name|fname/i, 'given-name'],
+    [/last[-_ ]?name|lname|surname/i, 'family-name'],
+  ];
+  document.querySelectorAll('input').forEach((input) => {
+    if (input.name === 'bot-field' || input.type === 'hidden' || input.type === 'checkbox' || input.type === 'radio') return;
+    if (input.name === 'tcpa_consent' && input.required) input.setAttribute('aria-required', 'true');
+    if (input.autocomplete) return;
+    if (input.type === 'email') { input.autocomplete = 'email'; return; }
+    if (input.type === 'tel') { input.autocomplete = 'tel'; return; }
+    const match = rules.find(([pattern]) => pattern.test(input.name || input.id || ''));
+    if (match) input.autocomplete = match[1];
+  });
+  document.querySelectorAll('input[name="tcpa_consent"][required]').forEach((input) => {
+    input.setAttribute('aria-required', 'true');
+  });
+}
+
+function initFaqAccordions() {
+  document.querySelectorAll('.faq-question').forEach((button, index) => {
+    const answer = button.nextElementSibling;
+    if (!answer) return;
+    if (!answer.id) answer.id = `faq-panel-${index}`;
+    button.setAttribute('aria-controls', answer.id);
+    if (button.getAttribute('aria-expanded') !== 'true' && !answer.hidden) button.setAttribute('aria-expanded', 'true');
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      answer.hidden = open;
+    });
+  });
+  document.querySelectorAll('details.u-faq-item, details.faq-item').forEach((details) => {
+    const summary = details.querySelector('summary');
+    if (!summary) return;
+    const sync = () => summary.setAttribute('aria-expanded', details.open ? 'true' : 'false');
+    sync();
+    details.addEventListener('toggle', sync);
+  });
+}
+
 function bootSite() {
   if (window.__styerSiteBooted) return;
   window.__styerSiteBooted = true;
   initNavigation();
   initAccordion();
+  initFaqAccordions();
   initDisclosureNavigation();
   initTabs();
+  initNativeFormErrors();
+  initAutocompleteHints();
   initFormValidation();
   initHeroQuickForm();
   // initQuickContactScroll(); — removed, no longer needed

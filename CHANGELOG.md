@@ -1,3 +1,10 @@
+## 2026-10-31 — Preview: WCAG 2.2 AA fixes
+
+- Focus can scroll clear of the sticky header and the fixed mobile contact bar. The skip link sits above the header when focused.
+- Apply Now and other new-tab links say they open in a new tab, and the accessible name starts with the visible text. `rel="noopener"` is set.
+- Dark-panel placeholder and small text contrast is at least 4.5:1. The header logo scales at narrow widths; the artwork is unchanged.
+- Form errors show on the page, tied to each field, with `aria-invalid`, a polite summary, and focus on the first invalid field. The contact consent checkbox is marked required. The post-submit application link goes to the GoRascal register URL. Bank and DSCR pages have a skip link. Not merged.
+
 ## 2026-10-30 — Preview: instant lead email after either LoanOS copy
 
 - The raw-form backup now splits a single name field into first and last name, matching the JSON copy. A duplicate LoanOS claim counts as success, and both copies call the web-lead webhook with a 5-second timeout. Test leads still skip that webhook unless N8N_SEND_TEST_LEADS=true. Not merged.

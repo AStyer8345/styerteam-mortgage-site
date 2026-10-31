@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="style.css?v=20260531">
   <link rel="stylesheet" href="dashboard.css">
 <link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
+<link href="/a11y.css" rel="stylesheet"/>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -45,7 +46,7 @@
     <div class="container">
       <nav>
         <a href="index.html" class="nav-brand">
-          <span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark-display.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
+          <span class="nav-wordmark">The Styer Team</span><span class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark-display.png" alt="Go Rascal Inc." height="26"></span></span><span aria-hidden="true" class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
         </a>
         <span class="dash-badge">Content Dashboard</span>
         <a href="/marketing-command-center.html" style="font-size:12px;color:#6B7280;text-decoration:none;margin-left:auto;padding:5px 11px;border:1px solid #E5E7EB;border-radius:6px;transition:all .15s;" onmouseover="this.style.borderColor='#9A7B2D';this.style.color='#9A7B2D'" onmouseout="this.style.borderColor='#E5E7EB';this.style.color='#6B7280'">📊 Marketing Command Center →</a>
@@ -269,7 +270,7 @@
               <div class="dash-result-card hidden" id="result-card-live">
                 <h3 style="color: var(--color-success); margin-bottom: 1rem;">Newsletter Sent Successfully</h3>
                 <div class="dash-result-details">
-                  <p><strong>Web Page:</strong> <a id="result-page-url" href="#" target="_blank" rel="noopener"></a></p>
+                  <p><strong>Web Page:</strong> <a id="result-page-url" href="#" target="_blank" rel="noopener"><span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
                   <div id="result-campaigns"></div>
                 </div>
                 <div id="result-social-section" class="hidden" style="margin-top: 1.5rem; border-top: 1px solid #E5E7EB; padding-top: 1.25rem;">
@@ -502,7 +503,7 @@
               <div class="dash-result-card hidden" id="rt-result-card-live">
                 <h3 style="color: var(--color-success); margin-bottom: 1rem;">Rate Update Sent Successfully</h3>
                 <div class="dash-result-details">
-                  <p><strong>Rate Page:</strong> <a id="rt-result-page-url" href="#" target="_blank" rel="noopener"></a></p>
+                  <p><strong>Rate Page:</strong> <a id="rt-result-page-url" href="#" target="_blank" rel="noopener"><span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
                   <div id="rt-result-campaigns"></div>
                 </div>
               </div>
@@ -745,7 +746,7 @@
               <div class="dash-result-card hidden" id="rl-result-card-live">
                 <h3 style="color: var(--color-success); margin-bottom: 1rem;">Realtor Content Published &amp; Sent</h3>
                 <div class="dash-result-details">
-                  <p><strong>Article:</strong> <a id="rl-result-page-url" href="#" target="_blank" rel="noopener"></a></p>
+                  <p><strong>Article:</strong> <a id="rl-result-page-url" href="#" target="_blank" rel="noopener"><span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
                   <div id="rl-result-campaigns"></div>
                 </div>
               </div>
@@ -812,8 +813,8 @@
 <img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy-display.png" alt="Go Rascal Inc." height="64">
 <div class="site-footer-legal-copy">
 <p style="color:#F6F4EF;margin:0 0 8px">Adam Styer | Mortgage Loan Originator</p>
-<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank" style="color:#F5C443">NMLS ID #513013</a></p>
-<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank" style="color:#F5C443">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)</a></p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank" style="color:#F5C443">NMLS ID #513013<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank" style="color:#F5C443">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
 <p style="color:#F6F4EF;margin:0 0 8px">Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
 <p style="color:#F6F4EF;margin:0 0 8px">Equal Housing Opportunity</p>
 <!-- Licensed states placeholder pending Adam's NMLS confirmation -->
