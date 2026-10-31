@@ -6731,16 +6731,26 @@ main :is(.callout,.callout-tip) a{text-decoration:underline;text-underline-offse
 .pwe-card-media {
   position: relative;
   width: 100%;
-  height: 180px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   overflow: hidden;
 }
 .pwe-card-media img {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
   object-fit: cover;
+  object-position: var(--card-focus, center 52%);
   display: block;
   transition: transform 400ms ease;
 }
+/* Each source photo is ~16:9 with the house below the canopy. These anchors keep walls and windows in frame if the box is a hair shorter than the file. */
+.pwe-card-img--studio { --card-focus: center 56%; }
+.pwe-card-img--craftsman { --card-focus: center 48%; }
+.pwe-card-img--estate { --card-focus: center 62%; }
+.pwe-card-img--ranch { --card-focus: center 54%; }
+.pwe-card-img--retreat { --card-focus: center 44%; }
+.pwe-card-img--westlake { --card-focus: center 40%; }
 .pwe-audience-col:hover .pwe-card-media img {
   transform: scale(1.05);
 }
@@ -6748,7 +6758,7 @@ main :is(.callout,.callout-tip) a{text-decoration:underline;text-underline-offse
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 28, 41, 0.05) 0%, rgba(15, 28, 41, 0.75) 100%);
+  background: linear-gradient(180deg, rgba(15, 28, 41, 0) 58%, rgba(15, 28, 41, 0.5) 100%);
   pointer-events: none;
 }
 .pwe-card-media .pwe-card-badge {

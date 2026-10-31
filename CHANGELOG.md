@@ -1,3 +1,8 @@
+## 2026-10-31 — Preview: program card photos show the house
+
+- Homepage program cards were a 180px strip. Accessibility CSS also forced those photos to `height: auto`, so the box cut off everything below the trees and roof.
+- The photo frame is now 16:9, matching the source files, with a focal point per card. Labels stay on the foreground. Copy, links, and forms are unchanged. Not merged and not deployed.
+
 ## 2026-10-31 — Preview: compliance copy and a version endpoint
 
 - The homepage no longer says more than 1,000 loans closed, and the Career Loans Closed stat is now “Licensed / Since September 2015.” The Austin DSCR closing step says quick closings. The listed rate lines on products, about, and the self-employed page are qualitative. Homepage and self-employed FAQ JSON-LD matches the visible answers.
