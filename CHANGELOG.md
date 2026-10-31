@@ -1,3 +1,8 @@
+## 2026-10-31 — Preview: WCAG review follow-up
+
+- The header logo stays at the production mobile size, 96 by 48. Narrow headers wrap the “Powered by” line and keep the menu button on that row.
+- Dark-panel placeholders use #b8c2ca. The homepage hero no longer widens the page at 320 or 390. Application links say “Start your application.” The compliance name stays available to screen readers.
+
 ## 2026-10-31 — Preview: WCAG 2.2 AA fixes
 
 - Focus can scroll clear of the sticky header and the fixed mobile contact bar. The skip link sits above the header when focused.
