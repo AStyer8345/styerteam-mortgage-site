@@ -27,3 +27,6 @@ linkedin-oauth.js
 screenshots/
 audit-reports/
 *.bak-*
+
+# Python schema maintenance helpers
+__pycache__/

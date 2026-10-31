@@ -1,3 +1,4 @@
+const { articleSchema } = require('./business-schema');
 const { refineLongform } = require('./refine-longform');
 const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
@@ -51,6 +52,7 @@ function buildWebPage({ title, description, date, content }) {
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 <link rel="stylesheet" href="/experience.css">
 <link rel="stylesheet" href="/a11y.css">
+<script type="application/ld+json">${articleSchema({ url: canonicalUrl, title, description, date })}</script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->

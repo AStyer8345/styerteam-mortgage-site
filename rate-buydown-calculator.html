@@ -30,36 +30,7 @@
 <!-- Stylesheet -->
 <link href="style.css?v=20260830-cta1" rel="stylesheet"/>
 <!-- Schema: WebApplication -->
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Temporary Rate Buydown Calculator",
-  "description": "Calculate how a 3/2/1, 2/1, 1/1, or 1/0 temporary rate buydown reduces your monthly mortgage payment. See the full payment schedule and total seller subsidy cost.",
-  "url": "https://thestyerteam.com/rate-buydown-calculator.html",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Web",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "provider": {
-    "@type": "FinancialService",
-    "name": "The Styer Team, Powered by Go Rascal Inc.",
-    "url": "https://thestyerteam.com/",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "185 Wythe Ave, Suite A2",
-      "addressLocality": "Brooklyn",
-      "addressRegion": "NY",
-      "postalCode": "11249"
-    },
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://thestyerteam.com/assets/brand/gorascal/gorascal-wordmark.png"
-    }
-  }
-}</script>
+
 <!-- Schema: FAQPage -->
 <style>
         /* ── Page-scoped overrides ── */
@@ -221,9 +192,188 @@
 <link href="/premium-tools.css" rel="stylesheet"/>
 <link href="/blueprint-refinements.css" rel="stylesheet"/>
 <script defer="" src="/blueprint-interactions.js"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thestyerteam.com/"}, {"@type": "ListItem", "position": 2, "name": "Mortgage resources and guides", "item": "https://thestyerteam.com/resources/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage calculators", "item": "https://thestyerteam.com/calculators.html"}, {"@type": "ListItem", "position": 4, "name": "Temporary rate buydown calculator", "item": "https://thestyerteam.com/rate-buydown-calculator.html"}]}</script><script src="/calculator-input-validation.js"></script>
+<script src="/calculator-input-validation.js"></script>
 <link href="/editorial-polish.css" rel="stylesheet"/><link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
 <link href="/a11y.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "FinancialService"
+      ],
+      "@id": "https://styerteam.com/#organization",
+      "name": "The Styer Team, Powered by Go Rascal Inc.",
+      "legalName": "Go Rascal Inc.",
+      "url": "https://styerteam.com/",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "2072896"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "185 Wythe Ave, Suite A2",
+        "addressLocality": "Brooklyn",
+        "addressRegion": "NY",
+        "postalCode": "11249",
+        "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Texas"
+      },
+      "telephone": "+15129566010",
+      "email": "adamstyer@gorascal.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://styerteam.com/assets/brand/gorascal/gorascal-wordmark.png"
+      },
+      "description": "Loans are arranged through third party lenders."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://styerteam.com/#adam",
+      "name": "Adam Styer",
+      "jobTitle": "Senior Loan Officer",
+      "url": "https://styerteam.com/about.html",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "513013"
+      },
+      "worksFor": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://styerteam.com/#website",
+      "url": "https://styerteam.com/",
+      "name": "The Styer Team, Powered by Go Rascal Inc.",
+      "publisher": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Temporary Rate Buydown Calculator",
+      "description": "Calculate how a 3/2/1, 2/1, 1/1, or 1/0 temporary rate buydown reduces your monthly mortgage payment. See the full payment schedule and total seller subsidy cost.",
+      "url": "https://styerteam.com/rate-buydown-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://styerteam.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mortgage resources and guides",
+          "item": "https://styerteam.com/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mortgage calculators",
+          "item": "https://styerteam.com/calculators.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Temporary rate buydown calculator",
+          "item": "https://styerteam.com/rate-buydown-calculator.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://styerteam.com/rate-buydown-calculator.html#webpage",
+      "url": "https://styerteam.com/rate-buydown-calculator.html",
+      "name": "2/1 and 3/2/1 rate buydown calculator",
+      "isPartOf": {
+        "@id": "https://styerteam.com/#website"
+      },
+      "publisher": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://styerteam.com/rate-buydown-calculator.html#faq",
+      "about": {
+        "@id": "https://styerteam.com/#organization"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a temporary rate buydown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A temporary rate buydown is a financing arrangement where the seller deposits a lump sum at closing that subsidizes the borrower's interest rate for the first 1–3 years. The loan is originated at the full note rate; the subsidy covers the payment difference each month."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who pays for the buydown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typically the seller or builder pays for the buydown as a seller concession. The funds go into a custodial escrow account and are released monthly to cover the payment difference between the reduced rate and the full note rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a 2/1 and a 3/2/1 buydown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 2/1 buydown reduces the rate by 2% in Year 1 and 1% in Year 2, then steps to the full note rate. A 3/2/1 reduces by 3% in Year 1, 2% in Year 2, 1% in Year 3. The 3/2/1 provides more relief upfront but requires a larger seller deposit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a buydown change my long-term interest rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A temporary buydown does not change your note rate, loan amount, or long-term amortization. After the buydown period ends you pay the full note rate. The loan always amortizes at the note rate; the subsidy only covers the payment difference during the reduced years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to leftover funds if I refinance or sell?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you refinance or sell before the buydown period ends, remaining escrow funds are typically applied as a principal reduction on your payoff. This makes buydowns attractive for buyers who plan to sell or refinance within a few years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a seller concession the same as a buydown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A seller concession is any contribution the seller makes toward the buyer's closing costs. A buydown is one specific use of a concession. Conventional loans cap concessions at 2–9% of purchase price depending on LTV; VA and FHA have separate limits."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="editorial-page calculator-page premium-interior premium-tool advisory-site advisory-calculator">
 <!-- Google Tag Manager (noscript) -->

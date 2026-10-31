@@ -28,24 +28,7 @@
 <script>(function(){var host=location.hostname;if(host!=="styerteam.com"&&host!=="www.styerteam.com")return;function load(){if(window.__styerTags)return;window.__styerTags=1;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-PQQ6PGLR");}if(document.readyState==="complete")load();else window.addEventListener("load",load,{once:true});["pointerdown","keydown","touchstart"].forEach(function(type){window.addEventListener(type,load,{once:true,passive:true});});})();</script>
 <!-- End Google Tag Manager -->
 <!-- WebPage / Calculator schema -->
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Asset Depletion Income Calculator",
-    "url": "https://thestyerteam.com/asset-depletion-calculator.html",
-    "description": "Educational calculator showing how assumed asset inclusion percentages and calculation periods affect a monthly income illustration. It does not determine eligible assets, qualifying income, or loan approval.",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "The Styer Team, Powered by Go Rascal Inc.",
-      "url": "https://thestyerteam.com"
-    },
-    "about": {
-      "@type": "FinancialProduct",
-      "name": "Asset Depletion Mortgage Planning"
-    }
-  }
-  </script>
+
 <!-- ==========================================================================
        START ASSET DEPLETION CALCULATOR MODULE — STYLES
        Scoped under .asset-depletion-calculator-module so this block can be
@@ -662,13 +645,123 @@
 <link href="/premium-tools.css" rel="stylesheet"/>
 <link href="/blueprint-refinements.css" rel="stylesheet"/>
 <script defer="" src="/blueprint-interactions.js"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thestyerteam.com/"}, {"@type": "ListItem", "position": 2, "name": "Mortgage resources and guides", "item": "https://thestyerteam.com/resources/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage calculators", "item": "https://thestyerteam.com/calculators.html"}, {"@type": "ListItem", "position": 4, "name": "Asset depletion income calculator", "item": "https://thestyerteam.com/asset-depletion-calculator.html"}]}</script><script src="/calculator-input-validation.js"></script>
+<script src="/calculator-input-validation.js"></script>
 <link href="/editorial-polish.css" rel="stylesheet"/><style id="readability-corrections">body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(2)>div:nth-of-type(1)>a:nth-of-type(1){color:#f6f4ef !important;}
 body>main:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>p:nth-of-type(3)>a:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(6)>div:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(1){color:#f6f4ef !important;}
 main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style><style>footer{background:#0e1b24!important;color:#f6f4ef!important}footer a,footer p,footer li{color:#f6f4ef!important}</style><style>:root body>main:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(2)>div:nth-of-type(1)>a:nth-of-type(1){color:#000000!important;}
 :root body>main:nth-of-type(1)>section:nth-of-type(6)>div:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(1){color:#000000!important;}</style><link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
 <link href="/a11y.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "FinancialService"
+      ],
+      "@id": "https://styerteam.com/#organization",
+      "name": "The Styer Team, Powered by Go Rascal Inc.",
+      "legalName": "Go Rascal Inc.",
+      "url": "https://styerteam.com/",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "2072896"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "185 Wythe Ave, Suite A2",
+        "addressLocality": "Brooklyn",
+        "addressRegion": "NY",
+        "postalCode": "11249",
+        "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Texas"
+      },
+      "telephone": "+15129566010",
+      "email": "adamstyer@gorascal.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://styerteam.com/assets/brand/gorascal/gorascal-wordmark.png"
+      },
+      "description": "Loans are arranged through third party lenders."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://styerteam.com/#adam",
+      "name": "Adam Styer",
+      "jobTitle": "Senior Loan Officer",
+      "url": "https://styerteam.com/about.html",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "513013"
+      },
+      "worksFor": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://styerteam.com/#website",
+      "url": "https://styerteam.com/",
+      "name": "The Styer Team, Powered by Go Rascal Inc.",
+      "publisher": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "name": "Asset Depletion Income Calculator",
+      "url": "https://styerteam.com/asset-depletion-calculator.html",
+      "description": "Educational calculator showing how assumed asset inclusion percentages and calculation periods affect a monthly income illustration. It does not determine eligible assets, qualifying income, or loan approval.",
+      "isPartOf": {
+        "@id": "https://styerteam.com/#website"
+      },
+      "about": {
+        "@type": "FinancialProduct",
+        "name": "Asset Depletion Mortgage Planning"
+      },
+      "publisher": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://styerteam.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mortgage resources and guides",
+          "item": "https://styerteam.com/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mortgage calculators",
+          "item": "https://styerteam.com/calculators.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Asset depletion income calculator",
+          "item": "https://styerteam.com/asset-depletion-calculator.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="editorial-page calculator-page premium-interior premium-tool advisory-site advisory-calculator">
 <!-- Google Tag Manager (noscript) -->

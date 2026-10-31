@@ -1,3 +1,4 @@
+const { stringifyBusinessGraph } = require('./business-schema');
 const { refineLongform } = require('./refine-longform');
 const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
@@ -17,7 +18,7 @@ function buildRealtorPage({ title, description, date, slug, content, category })
   const pageUrl = `${siteOrigin()}/realtor-updates/${slug}.html`;
 
   // Article structured data for Google rich results
-  const articleSchema = JSON.stringify({
+  const articleSchema = stringifyBusinessGraph({
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": title,
@@ -25,25 +26,6 @@ function buildRealtorPage({ title, description, date, slug, content, category })
     "url": pageUrl,
     "datePublished": isoDate,
     "dateModified": isoDate,
-    "author": {
-      "@type": "Person",
-      "name": "Adam Styer",
-      "url": siteOrigin() + '/about.html',
-      "jobTitle": "Senior Loan Officer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "The Styer Team, Powered by Go Rascal Inc."
-      }
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "The Styer Team, Powered by Go Rascal Inc.",
-      "url": siteOrigin(),
-      "logo": {
-        "@type": "ImageObject",
-        "url": siteOrigin() + '/assets/brand/gorascal/gorascal-wordmark.png'
-      }
-    },
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": pageUrl

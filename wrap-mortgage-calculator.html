@@ -31,36 +31,7 @@
 <link href="style.css?v=20260830-cta1" rel="stylesheet"/>
 <link href="calculator-suite.css" rel="stylesheet"/>
 <!-- Schema: WebApplication -->
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "WRAP Mortgage Calculator",
-  "description": "Calculate monthly passive income, cash at closing, and equity spread for a wraparound seller-financing arrangement.",
-  "url": "https://thestyerteam.com/wrap-mortgage-calculator.html",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Web",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "provider": {
-    "@type": "FinancialService",
-    "name": "The Styer Team, Powered by Go Rascal Inc.",
-    "url": "https://thestyerteam.com/",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "185 Wythe Ave, Suite A2",
-      "addressLocality": "Brooklyn",
-      "addressRegion": "NY",
-      "postalCode": "11249"
-    },
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://thestyerteam.com/assets/brand/gorascal/gorascal-wordmark.png"
-    }
-  }
-}</script>
+
 <!-- Schema: FAQPage -->
 <style>
     /* ── Hero ── */
@@ -219,11 +190,182 @@
 <link href="/premium-tools.css" rel="stylesheet"/>
 <link href="/blueprint-refinements.css" rel="stylesheet"/>
 <script defer="" src="/blueprint-interactions.js"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thestyerteam.com/"}, {"@type": "ListItem", "position": 2, "name": "Mortgage resources and guides", "item": "https://thestyerteam.com/resources/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage calculators", "item": "https://thestyerteam.com/calculators.html"}, {"@type": "ListItem", "position": 4, "name": "Wraparound mortgage calculator", "item": "https://thestyerteam.com/wrap-mortgage-calculator.html"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is a wraparound mortgage legal in Texas?", "acceptedAnswer": {"@type": "Answer", "text": "Owner financing is fully legal in Texas and is governed by Chapter 5 of the Texas Property Code (Sections 5.061–5.086). Texas has some of the most detailed seller-finance laws in the country, including required disclosures, balloon payment restrictions, and mandatory annual accounting statements to the buyer. You'll want a real estate attorney experienced in Texas owner financing — not a generalist — to draft the promissory note and deed of trust correctly."}}, {"@type": "Question", "name": "What is the due-on-sale clause risk?", "acceptedAnswer": {"@type": "Answer", "text": "Almost all conventional mortgages originated in the last 30 years include a due-on-sale clause — technically allowing the lender to demand full repayment when the property transfers. In a WRAP, you're keeping your mortgage in place without lender approval, which triggers this clause. The practical risk: lenders rarely enforce it when payments are current, especially on well-performing loans. But the risk is real and should be understood. Some sellers mitigate this through a land trust structure. Talk to an attorney."}}, {"@type": "Question", "name": "What happens if the buyer stops paying me?", "acceptedAnswer": {"@type": "Answer", "text": "If the buyer defaults, your existing mortgage payment is still your obligation — the bank doesn't care about your arrangement with the buyer. You must keep paying to protect your credit and avoid foreclosure. You can then foreclose on the buyer through the Texas owner-finance process. This is why a substantial down payment matters: it gives the buyer real skin in the game and gives you a financial cushion. A good attorney will also require mortgage insurance and an escrow account for taxes and insurance."}}, {"@type": "Question", "name": "How do I find buyers for seller financing?", "acceptedAnswer": {"@type": "Answer", "text": "Owner-finance buyers are everywhere right now — self-employed borrowers who can't document income the conventional way, buyers rebuilding credit, entrepreneurs, and investors. \"Owner financing available\" in your listing description will generate significant inquiries. You can also list on sites that specialize in owner-finance properties. Unlike traditional buyers, these buyers are not waiting on a bank approval, so the contract often has fewer lender conditions."}}, {"@type": "Question", "name": "Should I use a servicer to manage payments?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A loan servicer (such as a title company or specialized mortgage servicer) collects the buyer's payment, forwards your underlying mortgage payment, and provides annual statements — which Texas law requires. The cost is usually $25–$50/month and is worth every penny. It keeps the transaction arm's-length, creates a paper trail for both parties, and protects you if there's ever a dispute."}}]}</script><script src="/calculator-input-validation.js"></script>
+<script src="/calculator-input-validation.js"></script>
 <link href="/editorial-polish.css" rel="stylesheet"/><style id="readability-corrections">body>main:nth-of-type(1)>section:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(2)>div:nth-of-type(2)>div:nth-of-type(1)>h2:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(2)>p:nth-of-type(1)>a:nth-of-type(1){color:#70531f !important;}
 main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style><link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
 <link href="/a11y.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "FinancialService"
+      ],
+      "@id": "https://styerteam.com/#organization",
+      "name": "The Styer Team, Powered by Go Rascal Inc.",
+      "legalName": "Go Rascal Inc.",
+      "url": "https://styerteam.com/",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "2072896"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "185 Wythe Ave, Suite A2",
+        "addressLocality": "Brooklyn",
+        "addressRegion": "NY",
+        "postalCode": "11249",
+        "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Texas"
+      },
+      "telephone": "+15129566010",
+      "email": "adamstyer@gorascal.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://styerteam.com/assets/brand/gorascal/gorascal-wordmark.png"
+      },
+      "description": "Loans are arranged through third party lenders."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://styerteam.com/#adam",
+      "name": "Adam Styer",
+      "jobTitle": "Senior Loan Officer",
+      "url": "https://styerteam.com/about.html",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "513013"
+      },
+      "worksFor": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://styerteam.com/#website",
+      "url": "https://styerteam.com/",
+      "name": "The Styer Team, Powered by Go Rascal Inc.",
+      "publisher": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "WRAP Mortgage Calculator",
+      "description": "Calculate monthly passive income, cash at closing, and equity spread for a wraparound seller-financing arrangement.",
+      "url": "https://styerteam.com/wrap-mortgage-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://styerteam.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mortgage resources and guides",
+          "item": "https://styerteam.com/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mortgage calculators",
+          "item": "https://styerteam.com/calculators.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Wraparound mortgage calculator",
+          "item": "https://styerteam.com/wrap-mortgage-calculator.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://styerteam.com/wrap-mortgage-calculator.html#webpage",
+      "url": "https://styerteam.com/wrap-mortgage-calculator.html",
+      "name": "Wraparound mortgage calculator",
+      "isPartOf": {
+        "@id": "https://styerteam.com/#website"
+      },
+      "publisher": {
+        "@id": "https://styerteam.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://styerteam.com/wrap-mortgage-calculator.html#faq",
+      "about": {
+        "@id": "https://styerteam.com/#organization"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is a wraparound mortgage legal in Texas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Owner financing is fully legal in Texas and is governed by Chapter 5 of the Texas Property Code (Sections 5.061–5.086). Texas has some of the most detailed seller-finance laws in the country, including required disclosures, balloon payment restrictions, and mandatory annual accounting statements to the buyer. You'll want a real estate attorney experienced in Texas owner financing — not a generalist — to draft the promissory note and deed of trust correctly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the due-on-sale clause risk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Almost all conventional mortgages originated in the last 30 years include a due-on-sale clause — technically allowing the lender to demand full repayment when the property transfers. In a WRAP, you're keeping your mortgage in place without lender approval, which triggers this clause. The practical risk: lenders rarely enforce it when payments are current, especially on well-performing loans. But the risk is real and should be understood. Some sellers mitigate this through a land trust structure. Talk to an attorney."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the buyer stops paying me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If the buyer defaults, your existing mortgage payment is still your obligation — the bank doesn't care about your arrangement with the buyer. You must keep paying to protect your credit and avoid foreclosure. You can then foreclose on the buyer through the Texas owner-finance process. This is why a substantial down payment matters: it gives the buyer real skin in the game and gives you a financial cushion. A good attorney will also require mortgage insurance and an escrow account for taxes and insurance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find buyers for seller financing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Owner-finance buyers are everywhere right now — self-employed borrowers who can't document income the conventional way, buyers rebuilding credit, entrepreneurs, and investors. \"Owner financing available\" in your listing description will generate significant inquiries. You can also list on sites that specialize in owner-finance properties. Unlike traditional buyers, these buyers are not waiting on a bank approval, so the contract often has fewer lender conditions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use a servicer to manage payments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A loan servicer (such as a title company or specialized mortgage servicer) collects the buyer's payment, forwards your underlying mortgage payment, and provides annual statements — which Texas law requires. The cost is usually $25–$50/month and is worth every penny. It keeps the transaction arm's-length, creates a paper trail for both parties, and protects you if there's ever a dispute."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="editorial-page calculator-page premium-interior premium-tool advisory-site advisory-calculator wrap-calculator-page">
 <!-- Google Tag Manager (noscript) -->

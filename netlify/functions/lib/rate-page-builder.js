@@ -1,3 +1,4 @@
+const { articleSchema } = require('./business-schema');
 const { refineLongform } = require('./refine-longform');
 const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
@@ -216,6 +217,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
     }
   </style>
 <link rel="stylesheet" href="/experience.css">
+<script type="application/ld+json">${articleSchema({ url: `${siteOrigin()}/rates/${date}.html`, title, description, date })}</script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -401,17 +403,10 @@ function buildRateTable(ratesString) {
     const match = line.match(/^\s*(.+?):\s*(.+)/);
     if (match) {
       const product = match[1].trim();
-      const rateInfo = match[2].trim();
-
-      // Split rate and APR if pipe-separated
-      const parts = rateInfo.split("|").map((s) => s.trim());
-      const rate = normalizeRateValue(parts[0] || "");
-      const apr = parts[1] ? normalizeRateValue(parts[1].replace(/^APR:\s*/i, "")) : "";
-
       rows += `              <tr>
                 <td class="rate-product">${escapeHtml(product)}</td>
-                <td class="rate-value">${escapeHtml(rate)}</td>
-                <td class="rate-apr">${apr ? escapeHtml(apr) : "&mdash;"}</td>
+                <td class="rate-value">Request a quote</td>
+                <td class="rate-apr">Request a quote</td>
               </tr>\n`;
     }
   }
@@ -421,7 +416,7 @@ function buildRateTable(ratesString) {
   return `
           <div class="rate-card">
             <div class="rate-card-header">
-              <h2>This Week&rsquo;s Rates</h2>
+              <h2>Mortgage Pricing Review</h2>
             </div>
             <table class="rate-table">
               <thead>

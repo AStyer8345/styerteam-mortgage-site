@@ -7,7 +7,7 @@ Reviewed `9bcb2d8bb7f0e8aaf36d0ad22aaf570f501762cb` against production source `b
 ## Diff hygiene and compliance
 
 - 238 files changed, including 225 HTML files. DOM text comparison found no unexpected body-copy substitutions. The thank-you application CTA changes from “Contact Adam →” to “Start your application,” as intended.
-- Additional focus-visible copy to flag: “Skip to main content” was added on pages without a skip link, for example `bank-statement-loans.html:77` at the reviewed head. This is accessibility navigation, not a marketing-copy change.
+- Additional focus-visible copy to flag: “Skip to main content” was added on pages without a skip link, for example `bank-statement-loans.html:67` at the reviewed head. This is accessibility navigation, not a marketing-copy change.
 - Additional screen-reader-only copy to flag: “(opens in a new tab)” appears on external links generally, including NMLS and review links, not only Apply links. This does not alter the underlying compliance wording.
 - All 225 changed HTML footers have identical normalized text after excluding the new hidden new-tab hints. The team name, NMLS #2072896 and #513013, “Loans are arranged through third party lenders.”, Brooklyn address, disclosures, and Equal Housing Opportunity text are unchanged.
 - Header lockups expose “The Styer Team, Powered by Go Rascal Inc.” exactly once; the separate visible lockup is aria-hidden. GoRascal artwork has no file changes relative to production. Browser measurements on all six checked pages are 96×48 at both 320px and 390px.
@@ -15,7 +15,7 @@ Reviewed `9bcb2d8bb7f0e8aaf36d0ad22aaf570f501762cb` against production source `b
 
 ## Forms and backend
 
-`api/lib/form-post.js:68` and `netlify/functions/lead-intake.js:118` at the reviewed head contain only the preview-sandbox changes relative to production. A nonempty VERCEL_ENV other than production forces test mode and skips n8n/Mailchimp, unless ALLOW_PREVIEW_LIVE_LEADS is exactly true. Unset VERCEL_ENV and production retain the original branches and payload behavior. The six sandbox tests use injected/stubbed transports and pass.
+`api/lib/form-post.js:68` and `netlify/functions/lead-intake.js:121` at the reviewed head contain only the preview-sandbox changes relative to production. A nonempty VERCEL_ENV other than production forces test mode and skips n8n/Mailchimp, unless ALLOW_PREVIEW_LIVE_LEADS is exactly true. Unset VERCEL_ENV and production retain the original branches and payload behavior. The six sandbox tests use injected/stubbed transports and pass.
 
 Browser submission and invalid-then-corrected submission results are recorded in `forms-results.json`. Every POST was fulfilled by a local test stub; external requests were blocked. No form was submitted to a real endpoint.
 
@@ -28,3 +28,5 @@ Browser submission and invalid-then-corrected submission results are recorded in
 - The package test command uses && and stops on the known JS failures. The assistant TypeScript suite is also run separately for a complete comparison.
 
 See `wcag-browser.json`, `production-failures.json`, and `wcag-failures.json` for detailed evidence. These findings are reported here without posting a separate review or comment to PR #43.
+
+Assistant-suite comparison: production base, PR #43, and the final branch each report 147 tests, 130 passing and the same 17 failing names. The final branch retains the same 36 failing main-JS names as both baselines.

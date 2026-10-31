@@ -126,6 +126,8 @@ export function buildConfig({ redirectsText, tomlText } = {}) {
     framework: null,
     cleanUrls: false,
     trailingSlash: false,
+    // This review branch must never trigger a Vercel Git deployment.
+    git: { deploymentEnabled: { 'fix/consistent-compliant-schema': false } },
     redirects,
     rewrites,
     headers,

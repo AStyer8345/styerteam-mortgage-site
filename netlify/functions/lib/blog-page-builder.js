@@ -1,3 +1,4 @@
+const { stringifyBusinessGraph } = require('./business-schema');
 const { refineLongform } = require('./refine-longform');
 const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
@@ -21,7 +22,7 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
   }
 
   // Article structured data for Google rich results
-  const articleSchema = JSON.stringify({
+  const articleSchema = stringifyBusinessGraph({
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": title,
@@ -29,25 +30,6 @@ function buildBlogPage({ title, description, date, slug, content, rates, categor
     "url": pageUrl,
     "datePublished": isoDate,
     "dateModified": isoDate,
-    "author": {
-      "@type": "Person",
-      "name": "Adam Styer",
-      "url": siteOrigin() + '/about.html',
-      "jobTitle": "Senior Loan Officer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "The Styer Team, Powered by Go Rascal Inc."
-      }
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "The Styer Team, Powered by Go Rascal Inc.",
-      "url": siteOrigin(),
-      "logo": {
-        "@type": "ImageObject",
-        "url": siteOrigin() + '/assets/brand/gorascal/gorascal-wordmark.png'
-      }
-    },
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": pageUrl
@@ -273,10 +255,9 @@ function buildRateBox(ratesString) {
     const match = line.match(/^\s*(.+?):\s*(.+)/);
     if (match) {
       const product = match[1].trim();
-      const rateInfo = match[2].trim();
       rows += `            <tr>
               <td style="padding: 0.5rem 1rem; border-bottom: 1px solid var(--color-border); font-weight: 500;">${escapeHtml(product)}</td>
-              <td style="padding: 0.5rem 1rem; border-bottom: 1px solid var(--color-border); text-align: center;">${escapeHtml(rateInfo)}</td>
+              <td style="padding: 0.5rem 1rem; border-bottom: 1px solid var(--color-border); text-align: center;">Request a quote</td>
             </tr>\n`;
     }
   }
@@ -285,7 +266,7 @@ function buildRateBox(ratesString) {
 
   return `
           <div class="newsletter-rate-box" style="margin: 2rem 0; padding: 1.5rem; background: var(--color-light-gray); border-radius: var(--radius-lg); border-left: 4px solid var(--color-gold);">
-            <h3 style="margin-bottom: 1rem; color: var(--color-navy);">This Week's Rates</h3>
+            <h3 style="margin-bottom: 1rem; color: var(--color-navy);">Mortgage Pricing Review</h3>
             <table style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
