@@ -47,6 +47,9 @@ test('committed vercel.json matches the Netlify redirect and header sources', as
   const functionRewrite = matchRequest({ ...published, blocked }, { host: 'styerteam.com', path: '/.netlify/functions/lead-intake' });
   assert.equal(functionRewrite.destination, '/api/lead-intake');
 
+  const version = matchRequest({ ...published, blocked }, { host: 'styerteam.com', path: '/api/version' });
+  assert.equal(version, null);
+
   const htmlCache = published.headers.find((block) => block.source === '/(.*)\\.html');
   assert.equal(htmlCache.headers.find((header) => header.key === 'Cache-Control').value, 'public, max-age=0, must-revalidate');
   const security = published.headers.find((block) => block.source === '/(.*)');

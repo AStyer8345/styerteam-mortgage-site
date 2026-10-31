@@ -20,9 +20,9 @@ Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel both co
 
 ## Last Worked On
 
-Mobile homepage hero keeps the navy field and a small portrait above the headline under 768px. Vercel redirects include slash-less copies of the eleven legacy WordPress paths that 404 when the trailing slash is removed. Sitemap lists `/resources` and `/resources/first-time-buyer-guide` without a trailing slash. Do not merge this preview and do not attach domains.
+Compliance copy is on `cursor/compliance-copy-version-f4e1`, against `preview/claims-docpaths-source-2026-10-28`. Not merged and not deployed. The homepage no longer claims 1,000 loans closed. The Austin DSCR step says quick closings. The listed rate lines on products, about, and the self-employed page are qualitative. Link-preview images use https://styerteam.com except `loans/jumbo.html`. `/api/version` returns the Vercel commit fields with Cache-Control: no-store.
 
-WCAG 2.2 AA fixes are on a branch off `preview/claims-docpaths-source-2026-10-28`. Focus clearance, skip link, new-tab names, contrast, inline form errors, consent, the application confirmation link, and skip links on bank and DSCR pages. The header logo stays at its production mobile size. Preview deployments do not send live leads unless ALLOW_PREVIEW_LIVE_LEADS=true. Do not merge this preview and do not deploy it to production.
+Preview deployments do not send live leads unless ALLOW_PREVIEW_LIVE_LEADS=true. Do not merge this preview, do not push `main`, and do not deploy it to production.
 
 ## Working Rules
 

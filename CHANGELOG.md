@@ -1,3 +1,8 @@
+## 2026-10-31 — Preview: compliance copy and a version endpoint
+
+- The homepage no longer says more than 1,000 loans closed, and the Career Loans Closed stat is now “Licensed / Since September 2015.” The Austin DSCR closing step says quick closings. The listed rate lines on products, about, and the self-employed page are qualitative. Homepage and self-employed FAQ JSON-LD matches the visible answers.
+- Link-preview images use https://styerteam.com, except `loans/jumbo.html`. `/api/version` returns the Vercel commit, ref, deployment id, environment, and the time the function instance loaded. Cache-Control is no-store. Not merged and not deployed.
+
 ## 2026-10-31 — Preview: do not send live leads from Vercel previews
 
 - When VERCEL_ENV is set and is not production, lead-intake forces test mode and skips Mailchimp and the n8n webhook unless ALLOW_PREVIEW_LIVE_LEADS=true. Netlify, where VERCEL_ENV is unset, and Vercel production stay on the live path.
