@@ -175,36 +175,103 @@
       });
       estimates.appendChild(summary); estimates.appendChild(extraFields); grid.after(estimates);
     }
-    var questions = singleStep ? [] : Array.from(first.querySelectorAll('input,select')).filter(function (field) { return field.type !== 'hidden'; }).map(function (field) {
+      var questions = singleStep ? [] : Array.from(first.querySelectorAll('input,select')).filter(function (field) { return field.type !== 'hidden'; }).map(function (field) {
       var label = first.querySelector('label[for="' + field.id + '"]');
-      return { name: field.name, label: label.textContent.replace(/ \*$/, '') };
+      return { name: field.name, label: label ? label.textContent.replace(/ \*$/, '') : field.name };
     });
 
     // Events deliberately contain only fixed intent/form identifiers and a clean
     // page path. Financial answers, contact data and arbitrary URL text stay out.
     function attributionEvent(name, inquiryId) {
+      if (name === 'generate_lead' && typeof root.StyerTrackGenerateLead === 'function') {
+        root.StyerTrackGenerateLead({
+          lead_type: intent || 'situation_review',
+          form_name: formName,
+          form_id: form.id || formName,
+          inquiry_id: inquiryId || ''
+        }, { scenarioSubmit: false });
+        return;
+      }
       root.dataLayer = root.dataLayer || [];
-      root.dataLayer.push({ event: name, form_name: formName, intent: intent, page_path: root.location.pathname, ...(inquiryId ? {inquiry_id:inquiryId}: {}) });
+      root.dataLayer.push({
+        event: name,
+        form_name: formName,
+        intent: intent,
+        page_path: root.location.pathname,
+        page_location: (root.location.origin || '') + root.location.pathname,
+        ...(inquiryId ? { inquiry_id: inquiryId } : {})
+      });
     }
     function showStep(value, focus) {
-      if (singleStep) { step = 2; second.hidden = false; progress.hidden = true; return; }
+      if (singleStep) { step = 2; if (second) second.hidden = false; if (progress) progress.hidden = true; return; }
       step = value;
-      first.hidden = step !== 1;
-      second.hidden = step !== 2;
-      progress.textContent = step === 1 ? 'Step 1 of 2 · Your plans' : 'Step 2 of 2 · Contact & context';
+      if (first) first.hidden = step !== 1;
+      if (second) second.hidden = step !== 2;
+      if (progress) progress.textContent = step === 1 ? 'Step 1 of 2 · Your plans' : 'Step 2 of 2 · Contact & context';
       if (focus) {
         var field = (step === 1 ? first : second).querySelector('input:not([type="hidden"]),select,textarea');
         if (field) field.focus();
       }
     }
+    function errorId(field) {
+      if (!field.id) field.id = (field.name || 'field') + '-' + Math.random().toString(36).slice(2, 8);
+      return field.id + '-error';
+    }
+    function clearFieldError(field) {
+      var id = field.id ? field.id + '-error' : '';
+      var node = id && root.document.getElementById(id);
+      if (node) node.remove();
+      field.removeAttribute('aria-invalid');
+      if (!id || !field.hasAttribute('aria-describedby')) return;
+      var rest = field.getAttribute('aria-describedby').split(/\s+/).filter(function (item) { return item && item !== id; });
+      if (rest.length) field.setAttribute('aria-describedby', rest.join(' '));
+      else field.removeAttribute('aria-describedby');
+    }
+    function showFieldError(field, message) {
+      var id = errorId(field);
+      var node = root.document.getElementById(id);
+      if (!node) {
+        node = root.document.createElement('p');
+        node.id = id;
+        node.className = 'field-error';
+        field.insertAdjacentElement('afterend', node);
+      }
+      node.textContent = message;
+      field.setAttribute('aria-invalid', 'true');
+      var described = (field.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
+      if (described.indexOf(id) === -1) described.push(id);
+      field.setAttribute('aria-describedby', described.join(' '));
+    }
+    function errorSummary(messages) {
+      var box = form.querySelector('.form-error-summary');
+      if (!box) {
+        box = root.document.createElement('div');
+        box.className = 'form-error-summary';
+        box.setAttribute('aria-live', 'polite');
+        box.setAttribute('aria-atomic', 'true');
+        form.insertBefore(box, form.firstChild);
+      }
+      box.textContent = messages.length ? (messages.length === 1 ? '1 field needs attention. ' + messages[0] : messages.length + ' fields need attention. ' + messages[0]) : '';
+      box.hidden = !messages.length;
+    }
     function valid(section) {
-      var fields = Array.from(section.querySelectorAll('input,select,textarea'));
-      for (var field of fields) {
+      var fields = Array.from(section.querySelectorAll('input,select,textarea')).filter(function (field) { return field.type !== 'hidden' && !field.disabled; });
+      var invalid = [];
+      fields.forEach(function (field) {
         // Native required checks allow whitespace-only names; reject those too.
         if (field.required && (field.type === 'text' || field.tagName === 'TEXTAREA')) field.setCustomValidity(field.value.trim() ? '' : 'Please complete this field.');
-        if (!field.checkValidity()) { field.reportValidity(); return false; }
+        if (!field.checkValidity()) {
+          showFieldError(field, field.validationMessage || 'Please complete this field.');
+          invalid.push(field);
+        } else clearFieldError(field);
+      });
+      if (!invalid.length) {
+        if (!Array.from(form.querySelectorAll('[aria-invalid="true"]')).length) errorSummary([]);
+        return true;
       }
-      return true;
+      errorSummary(invalid.map(function (field) { return field.validationMessage || 'Please complete this field.'; }));
+      invalid[0].focus();
+      return false;
     }
     function advance() {
       if (!valid(first)) return;
@@ -233,10 +300,11 @@
       contactPreference();
     }
     function showConfirmation(result) {
+      if (!status) return;
       busy = true;
       delete status.dataset.tone;
       form.querySelectorAll('fieldset').forEach(function (fieldset) { fieldset.hidden = true; });
-      progress.hidden = true;
+      if (progress) progress.hidden = true;
       status.textContent = (result.primary ? 'Your scenario and contact details are saved for review.' : 'Your scenario has been saved. You can also contact Adam directly below.') + (analysis ? ' Your calculator assumptions and results are included.' : '') + ' I’ll review what you shared and follow up using your contact details. I aim to respond within one business day. This is not a loan approval.';
       if (singleStep) {
         var card = form.closest('.journey-card');
@@ -262,7 +330,7 @@
         var application=root.document.createElement('div');application.className='journey-application';
         var title=root.document.createElement('h3');title.textContent='Want to get a head start?';application.appendChild(title);
         var detail=root.document.createElement('p');detail.textContent='Contact Adam to arrange the current secure application. Your credit will not be run automatically. This step is entirely optional — it’s fine to wait and talk with Adam first.';application.appendChild(detail);
-        var apply=root.document.createElement('a');apply.href='https://styermortgage.com/contact.html';apply.rel='noopener';apply.className='journey-application-link';apply.textContent='Contact Adam about applying';application.appendChild(apply);status.appendChild(application);
+        var apply=root.document.createElement('a');apply.href='https://gorascal.my1003app.com/513013/register';apply.target='_blank';apply.rel='noopener';apply.className='journey-application-link';apply.append('Start your application');var applyNote=root.document.createElement('span');applyNote.className='gorascal-visually-hidden';applyNote.textContent=' (opens in a new tab)';apply.appendChild(applyNote);application.appendChild(apply);status.appendChild(application);
       }
       var another = root.document.createElement('button');
       another.type = 'button'; another.className = 'journey-back'; another.textContent = 'Send another request';
@@ -286,7 +354,7 @@
       if (!valid(first)) { showStep(1, true); return; }
       if (!valid(second)) return;
       if (form.elements.preferred_follow_up && form.elements.preferred_follow_up.value === 'Phone' && !form.elements.phone.value.trim()) {
-        form.elements.phone.setCustomValidity('Add your phone number or choose email.');form.elements.phone.reportValidity();return;
+        form.elements.phone.setCustomValidity('Add your phone number or choose email.');showFieldError(form.elements.phone, form.elements.phone.validationMessage);errorSummary([form.elements.phone.validationMessage]);form.elements.phone.focus();return;
       }
       busy = true;
       submit.disabled = true;

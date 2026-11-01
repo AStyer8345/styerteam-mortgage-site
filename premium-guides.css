@@ -44,7 +44,7 @@ body.premium-directory .resource-card :is(h2,h3){font:600 22px/1.4 Inter,Arial,s
 body.premium-directory .resource-card p{font-size:16px;margin:0 0 12px;color:var(--premium-muted)}
 body.premium-directory .resource-card :is(.card-icon,.resource-card-icon){display:none}
 body.premium-directory .resource-card-cta{font-size:15px;margin-top:auto;color:var(--premium-ink);border-bottom:1px solid currentColor;padding:0 0 3px}
-body.premium-directory .resource-card-tag{border-radius:2px;background:var(--premium-paper);color:var(--premium-brass);font-size:11px;padding:4px 8px}
+body.premium-directory .resource-card-tag{border-radius:2px;background:var(--premium-paper);color:var(--premium-brass);font-size: 12px;padding:4px 8px}
 body.premium-directory .resources-cta-band{background:var(--premium-ink);text-align:left}
 body.premium-directory .resources-cta-band p{opacity:1;color:#E0E6E9;max-width:720px}
 body.premium-directory .calc-hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 48px;max-width:none}

@@ -1,4 +1,6 @@
+const { articleSchema } = require('./business-schema');
 const { refineLongform } = require('./refine-longform');
+const { siteOrigin } = require('../../../scripts/site-origin.cjs');
 /**
  * Builds a full HTML page for /rates/ from rate data + AI commentary.
  * The rate table is the star — built server-side, not by the AI.
@@ -14,24 +16,20 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
 <html lang="en">
 <head>
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
+  <script>(function(){var host=location.hostname;if(host!=="styerteam.com"&&host!=="www.styerteam.com")return;if(window.__styerTags)return;window.__styerTags=1;window.dataLayer=window.dataLayer||[];window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});var j=document.createElement("script");j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id=GTM-PQQ6PGLR";var f=document.getElementsByTagName("script")[0];f.parentNode.insertBefore(j,f);window.StyerAfterGoogleTag=function(fn){var q=window.__styerTagQueue||(window.__styerTagQueue=[]);q.push(fn);if(window.__styerTagWait)return;window.__styerTagWait=setInterval(function(){var ready=(window.dataLayer||[]).some(function(entry){return entry&&entry.event==="gtm.load";});if(!ready)return;clearInterval(window.__styerTagWait);window.__styerTagWait=0;q.splice(0).forEach(function(item){item();});},50);};})();</script>
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(title)} | The Styer Team · Powered by GoRascal</title>
+  <title>${escapeHtml(title)} | The Styer Team, Powered by Go Rascal Inc.</title>
   <meta name="description" content="${escapeHtml(description)}">
-  <link rel="canonical" href="https://styermortgage.com/rates/${date}.html">
+  <link rel="canonical" href="${siteOrigin()}/rates/${date}.html">
 
   <meta name="robots" content="noindex, nofollow">
 
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="The Styer Team · Powered by GoRascal">
+  <meta property="og:site_name" content="The Styer Team, Powered by Go Rascal Inc.">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${escapeHtml(title)}">
@@ -215,6 +213,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
     }
   </style>
 <link rel="stylesheet" href="/experience.css">
+<script type="application/ld+json">${articleSchema({ url: `${siteOrigin()}/rates/${date}.html`, title, description, date })}</script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -227,7 +226,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
     <div class="container">
       <nav>
         <a href="/index.html" class="nav-brand">
-          <img src="/assets/logo-light.svg" alt="The Styer Team · Powered by GoRascal" class="nav-logo-img" width="180" height="40">
+          <span aria-hidden="true" class="nav-wordmark">The Styer Team</span><span aria-hidden="true" class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -243,7 +242,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
           <li class="nav-has-dropdown"><a href="/referral-partners-self-employed-clients.html">For Partners</a><ul class="nav-dropdown"><li><a href="/realtors.html">For Realtors</a></li><li><a href="/mortgage-resources-for-cpas-texas.html">For CPAs</a></li><li><a href="/mortgage-strategies-financial-advisors-texas.html">For Financial Advisors</a></li><li><a href="/mortgage-case-studies-for-advisors-cpas.html">Partner Case Studies</a></li></ul></li>
           <li class="nav-has-dropdown"><a href="/about.html">About Adam</a><ul class="nav-dropdown"><li><a href="/about.html">Meet Adam</a></li><li><a href="/testimonials.html">Client Reviews</a></li><li><a href="/contact.html">Contact Adam</a></li></ul></li>
           <li class="nav-phone-li"><a href="tel:+15129566010" class="nav-phone">(512) 956-6010</a></li><li><a href="/contact.html?goal=Purchase" class="nav-cta">See My Options</a></li>
-        <li><a href="https://styermortgage.com/contact.html" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Contact Adam about applying">Apply Now</a></li>
+        <li><a href="https://gorascal.my1003app.com/513013/register" class="nav-cta nav-apply" target="_blank" rel="noopener" aria-label="Apply Now (opens in a new tab)">Apply Now</a></li>
         </ul>
       </nav>
     </div>
@@ -254,7 +253,7 @@ function buildRatePage({ title, description, date, rates, direction, commentary 
       <div class="container">
         <div class="newsletter-issue-badge">${formattedDate}</div>
         <h1 data-animate>${escapeHtml(title)}</h1>
-        <p class="hero-subtitle" data-animate>Current mortgage rates from Adam Styer at The Styer Team · Powered by GoRascal</p>
+        <p class="hero-subtitle" data-animate>Current mortgage rates from Adam Styer at The Styer Team, Powered by Go Rascal Inc.</p>
       </div>
     </section>
 
@@ -285,12 +284,12 @@ ${rateTable}
             </div>
           </div>
 
-          <p>Talk soon,<br><strong>Adam Styer</strong><br>The Styer Team · Powered by GoRascal<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
+          <p>Talk soon,<br><strong>Adam Styer</strong><br>The Styer Team, Powered by Go Rascal Inc.<br>NMLS# 513013 | <a href="tel:+15129566010">(512) 956-6010</a></p>
 
           <div class="rate-compliance">
             <p><strong>Rate Assumptions:</strong> Rates shown assume a 20% down payment, 740+ credit score, owner-occupied primary residence, single-family home, and are based on a 30-day lock period. Rates are subject to change without notice and may vary based on individual circumstances.</p>
             <p><strong>Disclaimer:</strong> Rates shown are for informational purposes only and do not constitute a loan commitment or guarantee. Actual rates, terms, and availability depend on credit score, loan amount, loan-to-value ratio, property type, occupancy, and other underwriting factors. APR reflects the total cost of the loan including certain fees. Contact Adam Styer for a personalized rate quote and full disclosure of terms and costs.</p>
-            <p>The Styer Team · Powered by GoRascal &middot; NMLS# 2072896 &middot; Adam Styer NMLS# 513013 &middot; Texas Licensed Mortgage Broker &middot; <a href="../texas-complaint-notice.html">TX Consumer Complaint Notice</a></p>
+            <p>The Styer Team, Powered by Go Rascal Inc. &middot; NMLS# 2072896 &middot; Adam Styer NMLS# 513013 &middot; Texas Licensed Mortgage Broker &middot; <a href="../texas-complaint-notice.html">TX Consumer Complaint Notice</a></p>
           </div>
 
         </div>
@@ -328,12 +327,12 @@ ${rateTable}
         <div class="footer-section">
           <h4>Contact</h4>
           <p>
-            <strong>The Styer Team · Powered by GoRascal</strong><br>
-            The Styer Team · Powered by GoRascal
+            <strong>The Styer Team, Powered by Go Rascal Inc.</strong><br>
+            The Styer Team, Powered by Go Rascal Inc.
           </p>
           <p>
             <a href="tel:+15129566010">(512) 956-6010</a><br>
-            <a href="mailto:adam@thestyerteam.com">adam@thestyerteam.com</a><br>
+            <a href="mailto:adamstyer@gorascal.com">adamstyer@gorascal.com</a><br>
             Austin, TX
           </p>
         </div>
@@ -355,11 +354,18 @@ ${rateTable}
       <div class="footer-divider"></div>
 
       <div class="footer-bottom">
-        <div>
-          <p>&copy; ${new Date().getFullYear()} The Styer Team · Powered by GoRascal. All rights reserved.</p>
-          <div class="footer-nmls">
-            <strong>NMLS#:</strong> 2072896 (Company) | 513013 (Adam Styer)<br>
-            The Styer Team · Powered by GoRascal is a Licensed Mortgage Broker in Texas.
+        <div class="site-footer-legal">
+          <img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy.png" alt="Go Rascal Inc." height="64">
+          <div class="site-footer-legal-copy">
+          <p>Adam Styer | Mortgage Loan Originator</p>
+          <p><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS ID #513013</a></p>
+          <p><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)</a></p>
+          <p>Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
+          <p>Equal Housing Opportunity</p>
+          <!-- Licensed states placeholder pending Adam's NMLS confirmation -->
+          <p>Licensed in: TX</p>
+          <p>Loans are arranged through third party lenders.</p>
+          <p><a href="/licensing.html">State-specific consumer disclosures available on the Licensing &amp; Disclosures page.</a></p>
           </div>
         </div>
       </div>
@@ -393,17 +399,10 @@ function buildRateTable(ratesString) {
     const match = line.match(/^\s*(.+?):\s*(.+)/);
     if (match) {
       const product = match[1].trim();
-      const rateInfo = match[2].trim();
-
-      // Split rate and APR if pipe-separated
-      const parts = rateInfo.split("|").map((s) => s.trim());
-      const rate = normalizeRateValue(parts[0] || "");
-      const apr = parts[1] ? normalizeRateValue(parts[1].replace(/^APR:\s*/i, "")) : "";
-
       rows += `              <tr>
                 <td class="rate-product">${escapeHtml(product)}</td>
-                <td class="rate-value">${escapeHtml(rate)}</td>
-                <td class="rate-apr">${apr ? escapeHtml(apr) : "&mdash;"}</td>
+                <td class="rate-value">Request a quote</td>
+                <td class="rate-apr">Request a quote</td>
               </tr>\n`;
     }
   }
@@ -413,7 +412,7 @@ function buildRateTable(ratesString) {
   return `
           <div class="rate-card">
             <div class="rate-card-header">
-              <h2>This Week&rsquo;s Rates</h2>
+              <h2>Mortgage Pricing Review</h2>
             </div>
             <table class="rate-table">
               <thead>

@@ -21,7 +21,7 @@ The pages actually have plenty of city-specific prose. What they share is **stru
 |---|---|
 | 13/24 | "Loan Options for {CITY} Buyers" |
 | 13/24 | "Ready to Buy in {CITY}?" |
-| 11/24 | "How to Get Pre-Approved for a {CITY} Home" |
+| 11/24 | "How to Get Pre-Qualified for a {CITY} Home" |
 | 11/24 + 11/24 | "{CITY} Mortgage FAQ" / "{CITY} TX Mortgage FAQ" (22/24 combined) |
 | 10/24 | "Why {CITY} Buyers Work With an Independent Broker" |
 
@@ -99,7 +99,7 @@ No two Tier 1 pages should have the same H2 outline. Current shared H2s are the 
 - Cedar Park → lead with "Why Leander ISD Premium Changes Your Mortgage Math"
 - Leander → lead with "Buying New Construction in Leander: What Builder Lenders Don't Tell You"
 - Georgetown → lead with "Georgetown Water District and MUD Taxes: How They Affect Your DTI"
-- Pflugerville → lead with "Pflugerville Property Tax Rate and Why It Changes Your Pre-Approval"
+- Pflugerville → lead with "Pflugerville Property Tax Rate and Why It Changes Your Pre-Qualification"
 - Dripping Springs → lead with "Dripping Springs Well Water, Septic, and Rural Loans: What to Check Before You Close"
 
 Each outline genuinely different, not just city-substituted.

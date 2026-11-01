@@ -1,4 +1,5 @@
 const Anthropic = require("@anthropic-ai/sdk");
+const { siteOrigin } = require('../../scripts/site-origin.cjs');
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const crypto = require("crypto");
 const { buildRatePrompt } = require("./lib/rate-prompt-builder");
@@ -47,7 +48,7 @@ async function generateRateUpdate(formData) {
     // ----------------------------------------------------------------
     const today = new Date().toISOString().split("T")[0];
     const filename = `${today}.html`;
-    const pageUrl = `https://styermortgage.com/rates/${filename}`;
+    const pageUrl = `${siteOrigin()}/rates/${filename}`;
     let ratesJsonBody = null;
 
     if (!isPreview) {
@@ -102,7 +103,7 @@ async function generateRateUpdate(formData) {
     // ----------------------------------------------------------------
     const fullPageHtml = buildRatePage({
       title: parsed.pageTitle || `Weekly Rate Update - ${formatDateForTitle(today)}`,
-      description: parsed.pageDescription || "This week's mortgage rates from Adam Styer at The Styer Team · Powered by GoRascal",
+      description: parsed.pageDescription || "This week's mortgage rates from Adam Styer at The Styer Team, Powered by Go Rascal Inc.",
       date: today,
       rates,
       direction: formData.direction || null,
@@ -151,7 +152,7 @@ async function generateRateUpdate(formData) {
               preheader: parsed.borrowerPreheader || "",
               html: wrapEmailHtml(parsed.borrowerEmail),
               fromName: "Adam Styer",
-              replyTo: "adam@thestyerteam.com",
+              replyTo: "adamstyer@gorascal.com",
             });
             results.campaigns.push({ audience: "borrower", ...borrowerResult });
           } catch (err) {
@@ -168,7 +169,7 @@ async function generateRateUpdate(formData) {
               preheader: parsed.realtorPreheader || "",
               html: wrapEmailHtml(parsed.realtorEmail),
               fromName: "Adam Styer",
-              replyTo: "adam@thestyerteam.com",
+              replyTo: "adamstyer@gorascal.com",
             });
             results.campaigns.push({ audience: "realtor", ...realtorResult });
           } catch (err) {

@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>styermortgage.com/ops</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<title>thestyerteam.com/ops</title>
+<noscript></noscript>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -151,7 +149,7 @@ th {
   padding: 8px 12px;
   font-weight: 600;
   color: var(--text-muted);
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-bottom: 1px solid var(--border-strong);
@@ -218,7 +216,7 @@ tr.total-row td {
 
 .flag-date {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-dim);
   float: right;
 }
@@ -315,7 +313,7 @@ tr.total-row td {
 
 .build-card-date {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-dim);
 }
 
@@ -381,7 +379,7 @@ summary {
 
 summary::before {
   content: '▶';
-  font-size: 10px;
+  font-size: 12px;
   color: var(--text-dim);
   transition: transform 0.2s;
 }
@@ -428,7 +426,7 @@ summary::-webkit-details-marker { display: none; }
 
 .neg-date {
   color: var(--text-dim);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 /* === A/B TEST === */
@@ -474,7 +472,7 @@ summary::-webkit-details-marker { display: none; }
 
 .idea-date {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-dim);
   white-space: nowrap;
   flex-shrink: 0;
@@ -519,10 +517,12 @@ summary::-webkit-details-marker { display: none; }
 
 @media (max-width: 480px) {
   .status-items { gap: 8px; }
-  .status-item { font-size: 11px; }
+  .status-item { font-size: 12px; }
   .section-header { font-size: 16px; }
 }
 </style>
+<link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
+<link href="/a11y.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -664,7 +664,7 @@ const OPS_DATA = {
     active: [],
     ideas: [
       { idea: "Step 1 button copy — 'Buy a Home' vs 'I'm Buying a Home →'", added: "March 20, 2026" },
-      { idea: "H1 headline — 'Get Pre-Approved for an Austin Home Loan' vs 'Find Out What You Qualify For — In Minutes'", added: "March 20, 2026" },
+      { idea: "H1 headline — 'Get Pre-Qualified for an Austin Home Loan' vs 'Find Out What You Qualify For — In Minutes'", added: "March 20, 2026" },
       { idea: "Trust bar position — current (below subhead) vs above H1", added: "March 20, 2026" },
       { idea: "Testimonials with real names + loan details vs generic 'Austin Home Buyer'", added: "March 21, 2026" },
       { idea: "CTA button copy — 'Get My Free Quote →' vs 'See What I Qualify For →'", added: "March 23, 2026" },
@@ -902,7 +902,7 @@ const OPS_DATA = {
   }
 
   html += `<div class="status-bar">
-    <span class="status-bar-left">styermortgage.com/ops</span>
+    <span class="status-bar-left">thestyerteam.com/ops</span>
     <div class="status-items">${statusBarItems}</div>
     <span class="status-bar-right">Last Updated: ${d.lastUpdated}</span>
   </div>`;
@@ -967,7 +967,7 @@ const OPS_DATA = {
 
   // === SECTION 3: FUNNEL HEALTH ===
   html += `<div class="section" id="funnel">
-    <div class="section-header">Funnel Health <span class="sub">styermortgage.com</span></div>`;
+    <div class="section-header">Funnel Health <span class="sub">thestyerteam.com</span></div>`;
 
   // PageSpeed
   html += '<div class="subsection-header">PageSpeed Scores</div>';
@@ -1196,5 +1196,22 @@ const OPS_DATA = {
 })();
 </script>
 
+<footer class="site-footer" style="background:#0d2342;color:#F6F4EF;padding:28px 16px;font:14px/1.5 system-ui,sans-serif">
+
+<div class="site-footer-legal">
+<img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy-display.png" alt="Go Rascal Inc." height="64">
+<div class="site-footer-legal-copy">
+<p style="color:#F6F4EF;margin:0 0 8px">Adam Styer | Mortgage Loan Originator</p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank" style="color:#F5C443">NMLS ID #513013<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank" style="color:#F5C443">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p style="color:#F6F4EF;margin:0 0 8px">Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Equal Housing Opportunity</p>
+<!-- Licensed states placeholder pending Adam's NMLS confirmation -->
+<p style="color:#F6F4EF;margin:0 0 8px">Licensed in: TX</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Loans are arranged through third party lenders.</p>
+<p style="color:#F6F4EF;margin:0"><a href="/licensing.html" style="color:#F5C443">State-specific consumer disclosures available on the Licensing &amp; Disclosures page.</a></p>
+</div>
+</div>
+</footer>
 </body>
 </html>

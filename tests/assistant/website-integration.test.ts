@@ -125,7 +125,7 @@ test('conversations persist across page navigation in the same tab', () => {
   assert.match(browser, /if \(!state\.conversationStarted\) addSuggestedReplies\(starterSuggestedReplies\(professionalMode\)\)/);
 });
 
-test('assistant links remain on styermortgage.com and public direct-contact email uses Adam portable inbox', () => {
+test('assistant links remain on thestyerteam.com and public direct-contact email uses Adam portable inbox', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
   const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
   const resources = fs.readFileSync('netlify/functions/_shared/assistant-resources.ts', 'utf8');
@@ -160,9 +160,9 @@ test('website pages use an approved cache-busted script loader', () => {
     Array.from(fs.readFileSync(file, 'utf8').matchAll(/script\.js\?v=([\w-]+)/g), (match) => match[1]),
   );
   assert.ok(versions.length > 0, 'at least one page must load the shared site script');
-  assert.deepEqual(new Set(versions), new Set(['20260721-assistant-main-v1', '20260830-professional-v1']));
+  assert.deepEqual(new Set(versions), new Set(['20261101-ga4-lead']));
   for (const file of ['referral-partners-self-employed-clients.html', 'mortgage-strategies-financial-advisors-texas.html', 'mortgage-resources-for-cpas-texas.html', 'reverse-mortgage-financial-advisors-texas.html']) {
-    assert.match(fs.readFileSync(file, 'utf8'), /script\.js\?v=20260830-professional-v1/, file);
+    assert.match(fs.readFileSync(file, 'utf8'), /script\.js\?v=20261101-ga4-lead/, file);
   }
 });
 

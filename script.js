@@ -21,7 +21,7 @@ document.addEventListener('formdata', event => { event.formData.set('inquiry_id'
 document.addEventListener('reset', event => { const field = event.target.querySelector('input[name="inquiry_id"]'); if (field) field.value = ''; }, true);
 
 /* ==========================================================================
-   The Styer Team · Powered by GoRascal - Main JavaScript
+   The Styer Team, Powered by Go Rascal Inc. - Main JavaScript
    ========================================================================== */
 
 // ========================================================================
@@ -65,15 +65,42 @@ function copyToClipboard(text) {
   });
 }
 
+const LEAD_PARAM_KEYS = ['lead_type', 'form_name', 'form_id', 'inquiry_id'];
+
+function sanitizeLeadParams(detail) {
+  const source = detail && typeof detail === 'object' ? detail : {};
+  const clean = {};
+  LEAD_PARAM_KEYS.forEach((key) => {
+    const value = source[key];
+    if (typeof value !== 'string') return;
+    const trimmed = value.trim();
+    if (!trimmed || trimmed.length > 120 || trimmed.includes('@')) return;
+    clean[key] = trimmed;
+  });
+  const path = window.location.pathname || '/';
+  clean.page_path = path;
+  clean.page_location = (window.location.origin || '') + path;
+  return clean;
+}
+
 function dispatchLeadSubmitted(detail, options) {
-  document.dispatchEvent(new CustomEvent('styer:lead-submitted', { detail }));
-  // Feed GTM/Google Ads: standard GA4 lead conversion event. Pushes to the
-  // dataLayer (GTM's public input) — does NOT touch the GTM container snippet.
+  const params = sanitizeLeadParams(detail);
+  const inquiryKey = params.inquiry_id ? 'styer:generate-lead:' + params.inquiry_id : '';
+  if (inquiryKey) {
+    try {
+      if (sessionStorage.getItem(inquiryKey) === '1') return Promise.resolve();
+      sessionStorage.setItem(inquiryKey, '1');
+    } catch (_) { /* Emit once even when storage is blocked. */ }
+  }
+  document.dispatchEvent(new CustomEvent('styer:lead-submitted', { detail: params }));
+  // One GA4 lead event, after the caller has a confirmed capture. Parameters
+  // are form and page identifiers only. page_location is the path without a
+  // query string so a lead hit cannot blank the landing page or carry PII.
   window.dataLayer = window.dataLayer || [];
-  const eventPayload = Object.assign({ event: 'generate_lead' }, detail || {});
-  window.dataLayer.push(Object.assign({ event: 'scenario_submit' }, detail || {}, {
-    page_path: window.location.pathname
-  }));
+  if (!options || options.scenarioSubmit !== false) {
+    window.dataLayer.push(Object.assign({ event: 'scenario_submit' }, params));
+  }
+  const eventPayload = Object.assign({ event: 'generate_lead' }, params);
 
   if (!options || options.waitForTags !== true) {
     window.dataLayer.push(eventPayload);
@@ -98,6 +125,7 @@ function dispatchLeadSubmitted(detail, options) {
     setTimeout(done, timeoutMs + 250);
   });
 }
+window.StyerTrackGenerateLead = dispatchLeadSubmitted;
 
 // ========================================================================
 // 1. NAVIGATION & HEADER
@@ -443,6 +471,38 @@ function validatePhone(phone) {
   return /^(\+\d{1,2}\s?)?\(?-?\d{3}\)?-?\d{3}-?\d{4}$/.test(phone.replace(/\s/g, ''));
 }
 
+function fieldErrorId(input) {
+  if (!input.id) input.id = `${input.name || 'field'}-${Math.random().toString(36).slice(2, 8)}`;
+  return `${input.id}-error`;
+}
+
+function linkFieldError(input, errorContainer, isValid) {
+  errorContainer.id = errorContainer.id || fieldErrorId(input);
+  const described = new Set((input.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean));
+  if (isValid) described.delete(errorContainer.id);
+  else described.add(errorContainer.id);
+  if (described.size) input.setAttribute('aria-describedby', [...described].join(' '));
+  else input.removeAttribute('aria-describedby');
+}
+
+function formErrorSummary(form, messages) {
+  if (!form) return;
+  let summary = form.querySelector('.form-error-summary');
+  if (!summary) {
+    summary = document.createElement('div');
+    summary.className = 'form-error-summary';
+    summary.setAttribute('aria-live', 'polite');
+    summary.setAttribute('aria-atomic', 'true');
+    form.insertBefore(summary, form.firstChild);
+  }
+  summary.hidden = !messages.length;
+  summary.textContent = !messages.length
+    ? ''
+    : messages.length === 1
+      ? `1 field needs attention. ${messages[0]}`
+      : `${messages.length} fields need attention. ${messages[0]}`;
+}
+
 function validateField(input) {
   const value = typeof input.value === 'string' ? input.value.trim() : '';
   let errorContainer = input.parentElement.querySelector('.error-message');
@@ -450,7 +510,6 @@ function validateField(input) {
   if (!errorContainer) {
     errorContainer = document.createElement('div');
     errorContainer.className = 'error-message';
-    errorContainer.setAttribute('role', 'alert');
     input.parentElement.appendChild(errorContainer);
   }
 
@@ -485,6 +544,7 @@ function validateField(input) {
   input.classList.toggle('form-error', !isValid);
   input.setAttribute('aria-invalid', String(!isValid));
   errorContainer.textContent = isValid ? '' : errorMessage;
+  linkFieldError(input, errorContainer, isValid);
 
   return isValid;
 }
@@ -504,7 +564,12 @@ function showQuickContactSuccess(form) {
     successMessage.style.opacity = '1';
   });
 
-  dispatchLeadSubmitted({ lead_type: 'quick_contact', form_name: form.getAttribute('name') || form.id || 'quick-contact' });
+  dispatchLeadSubmitted({
+    lead_type: 'quick_contact',
+    form_name: form.getAttribute('name') || form.id || 'quick-contact',
+    form_id: form.id || form.getAttribute('name') || 'quick-contact',
+    inquiry_id: form.querySelector('[name="inquiry_id"]')?.value || ''
+  });
 
   setTimeout(() => {
     form.reset();
@@ -685,7 +750,12 @@ async function submitForm(form) {
   // Fire GA4 lead event (waits briefly for tags), then land on /thank-you so the
   // Google Ads conversion (thank_you_page_view) counts this submission.
   await dispatchLeadSubmitted(
-    { lead_type: 'quick_contact', form_name: form.getAttribute('name') || form.id || 'quick-contact' },
+    {
+      lead_type: 'quick_contact',
+      form_name: form.getAttribute('name') || form.id || 'quick-contact',
+      form_id: form.id || form.getAttribute('name') || 'quick-contact',
+      inquiry_id: form.querySelector('[name="inquiry_id"]')?.value || ''
+    },
     { waitForTags: true }
   );
   window.location.href = '/thank-you?type=quick-contact';
@@ -723,11 +793,19 @@ function bindQuickContactForm(form) {
     const inputs = form.querySelectorAll('input, textarea, select');
     let isValid = true;
 
+    const invalid = [];
     inputs.forEach(input => {
-      if (!validateField(input)) isValid = false;
+      if (!validateField(input)) invalid.push(input);
     });
 
-    if (isValid) submitForm(form);
+    if (!invalid.length) {
+      formErrorSummary(form, []);
+      submitForm(form);
+      return;
+    }
+    isValid = false;
+    formErrorSummary(form, invalid.map((input) => input.parentElement.querySelector('.error-message')?.textContent || 'Please complete this field.'));
+    invalid[0].focus();
   });
 }
 
@@ -771,11 +849,16 @@ function initHeroQuickForm() {
     e.preventDefault();
 
     const inputs = form.querySelectorAll('input, select, textarea');
-    let isValid = true;
+    const invalid = [];
     inputs.forEach((input) => {
-      if (!validateField(input)) isValid = false;
+      if (!validateField(input)) invalid.push(input);
     });
-    if (!isValid) return;
+    if (invalid.length) {
+      formErrorSummary(form, invalid.map((input) => input.parentElement.querySelector('.error-message')?.textContent || 'Please complete this field.'));
+      invalid[0].focus();
+      return;
+    }
+    formErrorSummary(form, []);
 
     const formData = new FormData(form);
     appendSelfReportedSource(formData);
@@ -800,11 +883,6 @@ function initHeroQuickForm() {
     } catch (_) {
       firstTouch = {};
     }
-
-    const leadTracking = dispatchLeadSubmitted(
-      { lead_type: 'quick_quote', form_name: form.getAttribute('name') || 'hero-quick-form' },
-      { waitForTags: true, timeoutMs: 1200 }
-    );
 
     const quoteCaptureResults = await Promise.allSettled([
       fetch('/', {
@@ -864,7 +942,15 @@ function initHeroQuickForm() {
       return;
     }
 
-    await leadTracking;
+    await dispatchLeadSubmitted(
+      {
+        lead_type: 'quick_quote',
+        form_name: form.getAttribute('name') || 'hero-quick-form',
+        form_id: form.id || form.getAttribute('name') || 'hero-quick-form',
+        inquiry_id: form.querySelector('[name="inquiry_id"]')?.value || ''
+      },
+      { waitForTags: true, timeoutMs: 1200 }
+    );
 
     var tyParams = new URLSearchParams({ type: 'quick-quote' });
     try {
@@ -937,7 +1023,6 @@ function initTestimonialFilter() {
   });
 }
 
-
 // ========================================================================
 // PRE-QUALIFICATION MULTI-STEP FORM
 // ========================================================================
@@ -1001,9 +1086,9 @@ function initPrequalForm() {
         field.setAttribute('aria-invalid', 'true');
         const error = document.createElement('span');
         error.className = 'error-message';
-        error.setAttribute('role', 'alert');
         error.textContent = 'This field is required';
         field.parentElement.appendChild(error);
+        linkFieldError(field, error, false);
       }
 
       // Email validation
@@ -1015,9 +1100,9 @@ function initPrequalForm() {
           field.setAttribute('aria-invalid', 'true');
           const error = document.createElement('span');
           error.className = 'error-message';
-          error.setAttribute('role', 'alert');
           error.textContent = 'Please enter a valid email address';
           field.parentElement.appendChild(error);
+          linkFieldError(field, error, false);
         }
       }
 
@@ -1030,13 +1115,20 @@ function initPrequalForm() {
           field.setAttribute('aria-invalid', 'true');
           const error = document.createElement('span');
           error.className = 'error-message';
-          error.setAttribute('role', 'alert');
           error.textContent = 'Please enter a valid phone number';
           field.parentElement.appendChild(error);
+          linkFieldError(field, error, false);
         }
       }
     });
 
+    if (!valid) {
+      const invalid = [...requiredFields].filter((field) => field.getAttribute('aria-invalid') === 'true');
+      formErrorSummary(form, invalid.map((field) => field.parentElement.querySelector('.error-message')?.textContent || 'Please complete this field.'));
+      if (invalid[0]) invalid[0].focus();
+    } else if (![...form.querySelectorAll('[aria-invalid="true"]')].length) {
+      formErrorSummary(form, []);
+    }
     return valid;
   }
 
@@ -1123,7 +1215,12 @@ function initPrequalForm() {
     // Fire GA4 lead event, then land on /thank-you so the Google Ads
     // conversion (thank_you_page_view) counts this submission.
     await dispatchLeadSubmitted(
-      { lead_type: 'prequal', form_name: form.getAttribute('name') || 'prequal' },
+      {
+        lead_type: 'prequal',
+        form_name: form.getAttribute('name') || 'prequal',
+        form_id: form.id || form.getAttribute('name') || 'prequal',
+        inquiry_id: form.querySelector('[name="inquiry_id"]')?.value || ''
+      },
       { waitForTags: true }
     );
     window.location.href = '/thank-you?type=prequal';
@@ -1141,32 +1238,194 @@ function initPrequalForm() {
   });
 }
 
-
 // ========================================================================
 // INIT - Single DOMContentLoaded entry point
 // ========================================================================
 
-document.addEventListener('DOMContentLoaded', () => {
+function initNativeFormErrors() {
+  const pending = new Map();
+  document.addEventListener('invalid', (event) => {
+    const field = event.target;
+    if (!field || !field.matches || !field.matches('input, textarea, select')) return;
+    event.preventDefault();
+    const message = field.validationMessage || 'Please complete this field.';
+    let errorContainer = field.parentElement && field.parentElement.querySelector('.error-message, .field-error');
+    if (!errorContainer) {
+      errorContainer = document.createElement('p');
+      errorContainer.className = 'field-error';
+      field.insertAdjacentElement('afterend', errorContainer);
+    }
+    errorContainer.textContent = message;
+    field.classList.add('form-error');
+    field.setAttribute('aria-invalid', 'true');
+    linkFieldError(field, errorContainer, false);
+    const form = field.form;
+    if (!form) return;
+    const list = pending.get(form) || [];
+    list.push(field);
+    pending.set(form, list);
+    if (list.length === 1) {
+      queueMicrotask(() => {
+        const fields = pending.get(form) || [];
+        pending.delete(form);
+        formErrorSummary(form, fields.map((item) => item.validationMessage || 'Please complete this field.'));
+        if (fields[0]) fields[0].focus();
+      });
+    }
+  }, true);
+
+  document.addEventListener('input', (event) => {
+    const field = event.target;
+    if (!field || !field.matches || !field.matches('input, textarea, select')) return;
+    if (field.getAttribute('aria-invalid') !== 'true' || !field.checkValidity()) return;
+    const errorContainer = field.parentElement && field.parentElement.querySelector('.error-message, .field-error');
+    if (errorContainer) {
+      errorContainer.textContent = '';
+      linkFieldError(field, errorContainer, true);
+    }
+    field.removeAttribute('aria-invalid');
+    field.classList.remove('form-error');
+  });
+}
+
+function initAutocompleteHints() {
+  const rules = [
+    [/^(name|full_name|fullname)$/i, 'name'],
+    [/^(email|e-mail)$/i, 'email'],
+    [/^(phone|tel|mobile|phone_number)$/i, 'tel'],
+    [/first[-_ ]?name|fname/i, 'given-name'],
+    [/last[-_ ]?name|lname|surname/i, 'family-name'],
+  ];
+  document.querySelectorAll('input').forEach((input) => {
+    if (input.name === 'bot-field' || input.type === 'hidden' || input.type === 'checkbox' || input.type === 'radio') return;
+    if (input.name === 'tcpa_consent' && input.required) input.setAttribute('aria-required', 'true');
+    if (input.autocomplete) return;
+    if (input.type === 'email') { input.autocomplete = 'email'; return; }
+    if (input.type === 'tel') { input.autocomplete = 'tel'; return; }
+    const match = rules.find(([pattern]) => pattern.test(input.name || input.id || ''));
+    if (match) input.autocomplete = match[1];
+  });
+  document.querySelectorAll('input[name="tcpa_consent"][required]').forEach((input) => {
+    input.setAttribute('aria-required', 'true');
+  });
+}
+
+function initFaqAccordions() {
+  document.querySelectorAll('.faq-question').forEach((button, index) => {
+    const answer = button.nextElementSibling;
+    if (!answer) return;
+    if (!answer.id) answer.id = `faq-panel-${index}`;
+    button.setAttribute('aria-controls', answer.id);
+    if (button.getAttribute('aria-expanded') !== 'true' && !answer.hidden) button.setAttribute('aria-expanded', 'true');
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      answer.hidden = open;
+    });
+  });
+  document.querySelectorAll('details.u-faq-item, details.faq-item').forEach((details) => {
+    const summary = details.querySelector('summary');
+    if (!summary) return;
+    const sync = () => summary.setAttribute('aria-expanded', details.open ? 'true' : 'false');
+    sync();
+    details.addEventListener('toggle', sync);
+  });
+}
+
+function bootSite() {
+  if (window.__styerSiteBooted) return;
+  window.__styerSiteBooted = true;
   initNavigation();
   initAccordion();
+  initFaqAccordions();
   initDisclosureNavigation();
   initTabs();
+  initNativeFormErrors();
+  initAutocompleteHints();
   initFormValidation();
   initHeroQuickForm();
   // initQuickContactScroll(); — removed, no longer needed
   initTestimonialFilter();
   initPrequalForm();
+  initNativeLeadForms();
   initCityToggle();
-  initMortgageAssistant();
-});
+  scheduleMortgageAssistant();
+}
+
+function initNativeLeadForms() {
+  const form = document.getElementById('form-ftb');
+  if (!form || form.dataset.leadBound === 'true') return;
+  form.dataset.leadBound = 'true';
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (form.dataset.sending === 'true') return;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    form.dataset.sending = 'true';
+    const button = form.querySelector('[type="submit"]');
+    const originalLabel = button ? button.textContent : '';
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Sending…';
+    }
+    try {
+      const response = await fetchWithTimeout(form.getAttribute('action') || '/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString(),
+      }, 20000);
+      if (!response.ok) throw new Error('capture failed');
+      await dispatchLeadSubmitted({
+        lead_type: 'first_time_buyer',
+        form_name: form.getAttribute('name') || 'first-time-buyer',
+        form_id: form.id,
+        inquiry_id: form.querySelector('[name="inquiry_id"]')?.value || ''
+      }, { waitForTags: true, scenarioSubmit: false });
+      window.location.href = form.getAttribute('action') || '/thank-you';
+    } catch (_) {
+      form.dataset.sending = 'false';
+      if (button) {
+        button.disabled = false;
+        button.textContent = originalLabel;
+      }
+      showQuickContactError(form);
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootSite);
+} else {
+  bootSite();
+}
 
 function initMortgageAssistant() {
   if (document.querySelector('script[data-mortgage-assistant]')) return;
   var script = document.createElement('script');
-  script.src = '/assistant-widget.js?v=20261006-answer-handoff-v2';
+  script.src = '/assistant-widget.js?v=20261101-ga4-lead';
   script.defer = true;
   script.dataset.mortgageAssistant = 'true';
   document.head.appendChild(script);
+}
+
+function scheduleMortgageAssistant() {
+  if (window.__styerAssistantScheduled) return;
+  window.__styerAssistantScheduled = true;
+  var started = false;
+  function start() {
+    if (started) return;
+    started = true;
+    initMortgageAssistant();
+  }
+  ['pointerdown', 'keydown', 'scroll'].forEach(function (eventName) {
+    window.addEventListener(eventName, start, { once: true, passive: true });
+  });
+  window.addEventListener('load', function () {
+    var idle = window.requestIdleCallback || function (fn) { return setTimeout(fn, 4000); };
+    idle(start, { timeout: 5000 });
+  }, { once: true });
 }
 
 function initCityToggle() {
@@ -1188,6 +1447,10 @@ document.addEventListener('click', (e) => {
   const link = e.target.closest('a[href^="tel:"]');
   if (link) {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'phone_click' });
+    window.dataLayer.push({
+      event: 'phone_click',
+      page_path: window.location.pathname,
+      page_location: window.location.origin + window.location.pathname
+    });
   }
 });

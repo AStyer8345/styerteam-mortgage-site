@@ -55,9 +55,29 @@ for (const absolute of htmlFiles) {
     }
 
     customForms += 1;
-    if (file === 'asset-depletion-calculator.html' && formName === 'adc-email-form') {
-      if (!/id="adc-email"\s+hidden/i.test(html) || !/var WEBHOOK_URL = "";/.test(html)) {
-        fail(file, formName, 'inactive calculator email form is unexpectedly visible or enabled.');
+    if (file === 'asset-depletion-calculator.html' && (formName === 'adc-email-form' || formName === 'asset-depletion-calculator')) {
+      if (!/name="bot-field"/.test(form)) fail(file, formName, 'calculator lead form is missing its honeypot.');
+      if (!/name="name"/.test(form) || !/name="email"/.test(form)) {
+        fail(file, formName, 'calculator lead form is missing name or email.');
+      }
+      if (/type="tel"|name="phone"/.test(form)) {
+        fail(file, formName, 'calculator lead form collects a phone number without the shared TCPA consent.');
+      }
+      const confirmedAt = html.indexOf('data.captured === true');
+      const trackedAt = html.indexOf('StyerTrackGenerateLead(');
+      if (!/LEAD_INTAKE_URL = "\/\.netlify\/functions\/lead-intake"/.test(html)
+        || !/requestLead\(LEAD_INTAKE_URL/.test(html)
+        || !/StyerFetchWithTimeout\(url, options, 20000\)/.test(html)) {
+        fail(file, formName, 'calculator lead form does not post through lead-intake with a bounded request.');
+      }
+      if (confirmedAt === -1 || trackedAt === -1 || confirmedAt > trackedAt) {
+        fail(file, formName, 'generate_lead is not waiting for a confirmed capture.');
+      }
+      if (!/lead_type:\s*'asset_depletion_calculator'/.test(html)) {
+        fail(file, formName, 'calculator lead event is missing its lead type.');
+      }
+      if (/var WEBHOOK_URL = ""/.test(html) || /dataLayer\.push\(\{\s*event:\s*'generate_lead'/.test(html)) {
+        fail(file, formName, 'calculator lead form is still on the empty webhook or a raw generate_lead push.');
       }
       continue;
     }
@@ -118,8 +138,8 @@ for (const [file, source] of [
   ['netlify/functions/subscribe-lo.js', subscribeLo],
   ['netlify/functions/subscribe-lead.js', subscribeLead],
 ]) {
-  if (!/ADAM_NOTIFICATION_EMAIL[\s\S]*adam@thestyerteam\.com/.test(source)) {
-    failures.push(`${file}: owner-notification fallback is not adam@thestyerteam.com.`);
+  if (!/ADAM_NOTIFICATION_EMAIL[\s\S]*adamstyer@gorascal\.com/.test(source)) {
+    failures.push(`${file}: owner-notification fallback is not adamstyer@gorascal.com.`);
   }
 }
 if (!/id="dscr-lead" hidden/.test(dscrCalculator) || !/var WEBHOOK_URL = "";/.test(dscrCalculator)) {

@@ -42,7 +42,7 @@ Top-of-hierarchy reads:
 - Never use "The Styer Team" or "Mortgage Solutions LP" as a **displayed business name** (legacy entity — fully retired 2026-05-20). EXCEPTION: the `/styerteam/` social handles on Facebook + Instagram + Nextdoor are the RETAINED personal-brand social identity — those URLs stay (`facebook.com/styerteam/`, `instagram.com/styerteam/`, etc.). The rule covers display copy, page headings, JSON-LD `name`/`legalName` fields, and footer/about strings — NOT the URL handles of retained social profiles.
 - Company NMLS: 2072896 (was 2526130 under prior entity)
 - Adam's personal NMLS: 513013 (unchanged)
-- Corp address: 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731
+
 - Adam's direct phone: (512) 956-6010
 - Public email: adam@thestyerteam.com
 - Never display raw loan application URL — use anchor text

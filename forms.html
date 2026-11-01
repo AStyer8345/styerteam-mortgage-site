@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Forms Registry</title>
   <meta name="robots" content="noindex, nofollow">
+<link href="/a11y.css" rel="stylesheet"/>
 </head>
 <body>
   <!--
@@ -75,14 +76,32 @@
 <input type="hidden" name="inquiry_id" value="">
     <input type="text" name="bot-field">
     <input type="text" name="source_form">
-    <input type="text" name="name">
-    <input type="email" name="email">
-    <input type="tel" name="phone">
+    <input autocomplete="name" type="text" name="name">
+    <input autocomplete="email" type="email" name="email">
+    <input autocomplete="tel" type="tel" name="phone">
     <input type="text" name="subject">
     <textarea name="details"></textarea>
     <input type="url" name="source_page">
     <input type="text" name="failed_endpoint">
     <input type="text" name="submitted_at">
   </form>
+
+<footer class="site-footer" style="background:#0d2342;color:#F6F4EF;padding:28px 16px;font:14px/1.5 system-ui,sans-serif">
+
+<div class="site-footer-legal">
+<img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy-display.png" alt="Go Rascal Inc." height="64">
+<div class="site-footer-legal-copy">
+<p style="color:#F6F4EF;margin:0 0 8px">Adam Styer | Mortgage Loan Originator</p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank" style="color:#F5C443">NMLS ID #513013<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank" style="color:#F5C443">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p style="color:#F6F4EF;margin:0 0 8px">Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Equal Housing Opportunity</p>
+<!-- Licensed states placeholder pending Adam's NMLS confirmation -->
+<p style="color:#F6F4EF;margin:0 0 8px">Licensed in: TX</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Loans are arranged through third party lenders.</p>
+<p style="color:#F6F4EF;margin:0"><a href="/licensing.html" style="color:#F5C443">State-specific consumer disclosures available on the Licensing &amp; Disclosures page.</a></p>
+</div>
+</div>
+</footer>
 </body>
 </html>

@@ -411,7 +411,7 @@
         "BUG FIXED: middleware onboarding redirect was commented out \u2014 uncommented, now active",
         "npm run build \u2014 0 TypeScript errors, 60 pages, /dashboard/getting-started confirmed in output",
         "NotebookLM PUSH+CURATE \u2014 3 stale system log copies removed, updated system log added",
-        "Daily digest sent to adam@thestyerteam.com \u2014 Zapier confirmed success"
+        "Daily digest sent to adamstyer@gorascal.com \u2014 Zapier confirmed success"
       ],
       "actionItems": [
         {
@@ -420,7 +420,7 @@
           "status": "open"
         },
         {
-          "text": "Run system_admins seed SQL: INSERT INTO system_admins (user_id) SELECT id FROM auth.users WHERE email = 'adam@thestyerteam.com'",
+          "text": "Run system_admins seed SQL: INSERT INTO system_admins (user_id) SELECT id FROM auth.users WHERE email = 'adamstyer@gorascal.com'",
           "priority": "medium",
           "status": "open"
         },
@@ -794,7 +794,7 @@
       "priority": "medium",
       "status": "pending",
       "createdAt": "2026-03-28T21:10:00Z",
-      "notes": "SQL: INSERT INTO system_admins (user_id) SELECT id FROM auth.users WHERE email = 'adam@thestyerteam.com'; Run in Supabase SQL editor on project uuqedsvjlkeszrbwzizl."
+      "notes": "SQL: INSERT INTO system_admins (user_id) SELECT id FROM auth.users WHERE email = 'adamstyer@gorascal.com'; Run in Supabase SQL editor on project uuqedsvjlkeszrbwzizl."
     },
     {
       "id": "inbox-005",

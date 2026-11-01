@@ -34,7 +34,7 @@
 | NMLS | 513013 (Adam) / 2072896 (Company) |
 | Phone | (512) 956-6010 |
 | Email | adam@thestyerteam.com |
-| Address | 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731 |
+
 | Calendly | https://calendly.com/adamstyer/15minutes |
 | Loan app | /contact.html?goal=Purchase |
 | GBP Place ID | ChIJYy5uEFPKRIYRmF-k_5gPk74 |

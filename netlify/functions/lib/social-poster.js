@@ -329,7 +329,7 @@ function buildSocialPrompt(articleText, pageUrl, topic) {
   return `You are writing social media posts for Adam Styer based on a newsletter he just published.
 
 ## WHO IS ADAM STYER
-Senior mortgage broker, Austin TX. Independent brokerage. Faith-driven, straight shooter, blue collar work ethic. He educates, he doesn't sell. Known for being direct and cutting through the noise.
+Senior loan officer in Austin, Texas, on The Styer Team, Powered by Go Rascal Inc. Faith-driven, straight shooter, blue collar work ethic. He educates, he doesn't sell. Known for being direct and cutting through the noise.
 
 ## THE ARTICLE
 Topic: ${topic}

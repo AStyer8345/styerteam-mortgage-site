@@ -2,28 +2,28 @@ export type AssistantResource = { label: string; url: string; use: string };
 export type AssistantAction = { type: 'contact' | 'application' | 'schedule' | 'rate_review'; label: string; url?: string };
 
 export const APPROVED_RESOURCES: readonly AssistantResource[] = [
-  { label: 'Self-employed mortgage guide', url: 'https://styermortgage.com/self-employed-mortgage-austin.html', use: 'borrowers comparing tax-return and alternative income documentation' },
-  { label: 'Bank statement loan guide', url: 'https://styermortgage.com/bank-statement-loans.html', use: 'business owners whose tax-return income differs from cash flow' },
-  { label: 'DSCR loan guide', url: 'https://styermortgage.com/dscr-loans-texas.html', use: 'borrowers exploring rental-property financing' },
-  { label: 'Asset-based mortgage guide', url: 'https://styermortgage.com/asset-depletion-mortgage-texas.html', use: 'borrowers exploring assets as a possible income documentation path' },
-  { label: 'Buy before you sell guide', url: 'https://styermortgage.com/buy-before-you-sell-austin.html', use: 'borrowers planning a move before their current home sells' },
-  { label: 'Mortgage payment calculator', url: 'https://styermortgage.com/calculator-payment.html', use: 'estimating principal, interest, taxes, insurance, or a monthly housing payment' },
-  { label: 'Home affordability calculator', url: 'https://styermortgage.com/calculator-affordability.html', use: 'exploring a comfortable price range based on income and monthly debts' },
-  { label: 'Refinance break-even calculator', url: 'https://styermortgage.com/calculator-refinance-breakeven.html', use: 'comparing refinance costs, monthly savings, and estimated break-even time' },
-  { label: 'DSCR calculator', url: 'https://styermortgage.com/dscr-calculator.html', use: 'estimating an investment property rent-to-PITIA ratio' },
-  { label: 'Asset depletion calculator', url: 'https://styermortgage.com/asset-depletion-calculator.html', use: 'exploring how eligible assets may translate into estimated monthly income' },
-  { label: 'Temporary rate buydown calculator', url: 'https://styermortgage.com/rate-buydown-calculator.html', use: 'comparing 2-1 or 3-2-1 buydown payments and subsidy costs' },
-  { label: 'Wrap mortgage calculator', url: 'https://styermortgage.com/wrap-mortgage-calculator.html', use: 'exploring seller-financing or wraparound mortgage cash flow' },
-  { label: 'All mortgage calculators', url: 'https://styermortgage.com/calculators.html', use: 'when the visitor broadly asks what calculators or tools are available' },
-  { label: 'Request a rate review', url: 'https://styermortgage.com/rate-check.html', use: 'reviewing a current Loan Estimate or getting scenario-specific live pricing' },
-  { label: 'Request pre-approval or a scenario review', url: 'https://styermortgage.com/get-preapproved.html?intent=scenario', use: 'when the visitor wants pre-approval, a short scenario review, or to give Adam contact details before completing a full application' },
-  { label: 'Contact Adam about applying', url: 'https://styermortgage.com/contact.html', use: 'when the visitor wants a full application; the contact page lets Adam arrange the current secure application' },
+  { label: 'Self-employed mortgage guide', url: 'https://thestyerteam.com/self-employed-mortgage-austin.html', use: 'borrowers comparing tax-return and alternative income documentation' },
+  { label: 'Bank statement loan guide', url: 'https://thestyerteam.com/bank-statement-loans.html', use: 'business owners whose tax-return income differs from cash flow' },
+  { label: 'DSCR loan guide', url: 'https://thestyerteam.com/dscr-loans-texas.html', use: 'borrowers exploring rental-property financing' },
+  { label: 'Asset-based mortgage guide', url: 'https://thestyerteam.com/asset-depletion-mortgage-texas.html', use: 'borrowers exploring assets as a possible income documentation path' },
+  { label: 'Buy before you sell guide', url: 'https://thestyerteam.com/buy-before-you-sell-austin.html', use: 'borrowers planning a move before their current home sells' },
+  { label: 'Mortgage payment calculator', url: 'https://thestyerteam.com/calculator-payment.html', use: 'estimating principal, interest, taxes, insurance, or a monthly housing payment' },
+  { label: 'Home affordability calculator', url: 'https://thestyerteam.com/calculator-affordability.html', use: 'exploring a comfortable price range based on income and monthly debts' },
+  { label: 'Refinance break-even calculator', url: 'https://thestyerteam.com/calculator-refinance-breakeven.html', use: 'comparing refinance costs, monthly savings, and estimated break-even time' },
+  { label: 'DSCR calculator', url: 'https://thestyerteam.com/dscr-calculator.html', use: 'estimating an investment property rent-to-PITIA ratio' },
+  { label: 'Asset depletion calculator', url: 'https://thestyerteam.com/asset-depletion-calculator.html', use: 'exploring how eligible assets may translate into estimated monthly income' },
+  { label: 'Temporary rate buydown calculator', url: 'https://thestyerteam.com/rate-buydown-calculator.html', use: 'comparing 2-1 or 3-2-1 buydown payments and subsidy costs' },
+  { label: 'Wrap mortgage calculator', url: 'https://thestyerteam.com/wrap-mortgage-calculator.html', use: 'exploring seller-financing or wraparound mortgage cash flow' },
+  { label: 'All mortgage calculators', url: 'https://thestyerteam.com/calculators.html', use: 'when the visitor broadly asks what calculators or tools are available' },
+  { label: 'Request a rate review', url: 'https://thestyerteam.com/rate-check.html', use: 'reviewing a current Loan Estimate or getting scenario-specific live pricing' },
+  { label: 'Request pre-approval or a scenario review', url: 'https://thestyerteam.com/get-preapproved.html?intent=scenario', use: 'when the visitor wants pre-approval, a short scenario review, or to give Adam contact details before completing a full application' },
+  { label: 'Contact Adam about applying', url: 'https://thestyerteam.com/contact.html', use: 'when the visitor wants a full application; the contact page lets Adam arrange the current secure application' },
   { label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes', use: 'when the visitor wants to schedule time with Adam' },
-  { label: 'Send Adam my scenario', url: 'https://styermortgage.com/get-preapproved.html?intent=scenario', use: 'when the visitor wants Adam to review a scenario or provide contact details' },
-  { label: 'Financial advisor mortgage strategies', url: 'https://styermortgage.com/mortgage-strategies-financial-advisors-texas.html', use: 'financial advisors comparing liquidity, retirement income, asset depletion, reverse mortgage, or complex-income client options' },
-  { label: 'CPA mortgage resources', url: 'https://styermortgage.com/mortgage-resources-for-cpas-texas.html', use: 'CPAs reviewing self-employed income, tax returns, bank statements, 1099, profit-and-loss, or asset-based qualification' },
-  { label: 'Texas reverse mortgage guide', url: 'https://styermortgage.com/reverse-mortgage-texas.html', use: 'general reverse mortgage eligibility, obligations, tradeoffs, and alternatives' },
-  { label: 'Mortgage case studies for advisors and CPAs', url: 'https://styermortgage.com/mortgage-case-studies-for-advisors-cpas.html', use: 'professional partners looking for anonymized examples of complex mortgage scenarios' },
+  { label: 'Send Adam my scenario', url: 'https://thestyerteam.com/get-preapproved.html?intent=scenario', use: 'when the visitor wants Adam to review a scenario or provide contact details' },
+  { label: 'Financial advisor mortgage strategies', url: 'https://thestyerteam.com/mortgage-strategies-financial-advisors-texas.html', use: 'financial advisors comparing liquidity, retirement income, asset depletion, reverse mortgage, or complex-income client options' },
+  { label: 'CPA mortgage resources', url: 'https://thestyerteam.com/mortgage-resources-for-cpas-texas.html', use: 'CPAs reviewing self-employed income, tax returns, bank statements, 1099, profit-and-loss, or asset-based qualification' },
+  { label: 'Texas reverse mortgage guide', url: 'https://thestyerteam.com/reverse-mortgage-texas.html', use: 'general reverse mortgage eligibility, obligations, tradeoffs, and alternatives' },
+  { label: 'Mortgage case studies for advisors and CPAs', url: 'https://thestyerteam.com/mortgage-case-studies-for-advisors-cpas.html', use: 'professional partners looking for anonymized examples of complex mortgage scenarios' },
 ] as const;
 
 export function isApprovedResource(resource: { label?: unknown; url?: unknown }): resource is { label: string; url: string } {
@@ -34,10 +34,10 @@ export function isApprovedResource(resource: { label?: unknown; url?: unknown })
 export function conversionResources(stage: string, message = ''): Array<{ label: string; url: string }> {
   const value = message.toLowerCase();
   const fullApplicationIntent = /\b(?:1003|my1003|secure portal)\b|\b(?:full|complete|formal|secure)\s+(?:online\s+)?application\b|\bready to (?:start|complete|submit) (?:the |my |a )?(?:full |secure )?application\b/;
-  if (fullApplicationIntent.test(value)) return [{ label: 'Contact Adam about applying', url: 'https://styermortgage.com/contact.html' }];
+  if (fullApplicationIntent.test(value)) return [{ label: 'Contact Adam about applying', url: 'https://thestyerteam.com/contact.html' }];
   if (/\b(?:schedule|book|calendly|appointment|call)\b/.test(value)) return [{ label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes' }];
   if (/\b(?:apply|application|pre[- ]?approv(?:e|ed|al)?|get started|contact|reach|email|text|scenario)\b|\bshort review\b|\breview (?:my|this|the) (?:file|situation|scenario)\b/.test(value)) {
-    return [{ label: 'Send Adam my scenario', url: 'https://styermortgage.com/get-preapproved.html?intent=scenario' }];
+    return [{ label: 'Send Adam my scenario', url: 'https://thestyerteam.com/get-preapproved.html?intent=scenario' }];
   }
   void stage;
   return [];
@@ -46,9 +46,9 @@ export function conversionResources(stage: string, message = ''): Array<{ label:
 export function resolveAssistantActions(actions: Array<'contact' | 'application' | 'schedule' | 'rate_review'>): AssistantAction[] {
   const definitions: Record<AssistantAction['type'], AssistantAction> = {
     contact: { type: 'contact', label: 'Have Adam review this' },
-    application: { type: 'application', label: 'Contact Adam about applying', url: 'https://styermortgage.com/contact.html' },
+    application: { type: 'application', label: 'Contact Adam about applying', url: 'https://thestyerteam.com/contact.html' },
     schedule: { type: 'schedule', label: 'Schedule a 15-minute call', url: 'https://calendly.com/adamstyer/15minutes' },
-    rate_review: { type: 'rate_review', label: 'Compare current rate options', url: 'https://styermortgage.com/rate-check.html' },
+    rate_review: { type: 'rate_review', label: 'Compare current rate options', url: 'https://thestyerteam.com/rate-check.html' },
   };
   return [...new Set(actions)].map((action) => definitions[action]);
 }

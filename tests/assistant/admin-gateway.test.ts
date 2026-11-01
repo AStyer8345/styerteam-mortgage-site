@@ -5,7 +5,7 @@ import auth from '../../netlify/functions/lib/admin-session.js';
 test('private gateway hides assets, issues secure sessions and supports logout without external work',async()=>{
  const previous=process.env.MCC_PASS;process.env.MCC_PASS='test-only-access-code';
  try {
-  const origin='https://styermortgage.com';
+  const origin='https://thestyerteam.com';
   const locked=await handler(new Request(origin+'/task-reports.json'));
   assert.equal(locked.status,401); assert.equal(await locked.text(),'Unauthorized');
   const login=await handler(new Request(origin+'/dashboard.html'));

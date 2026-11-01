@@ -1,3 +1,154 @@
+## 2026-11-01 — Preview: asset depletion calculator leads
+
+- The analysis form on `/asset-depletion-calculator.html` posted to an empty `WEBHOOK_URL`, so it stayed hidden and never created a LoanOS lead or a `generate_lead` event.
+- It now uses the same `lead-intake` function as the contact, quick-contact, and prequal forms. LoanOS stores the inquiry, then the web-lead webhook claims the borrower confirmation and Adam's alert. `generate_lead` fires once after `captured: true`. The form collects name and email only, so it does not add a phone field or TCPA checkbox. Not deployed to production.
+
+## 2026-11-01 — Preview: homepage layout shift
+
+- The homepage first paint now reserves the header, hero buttons, kicker, wordmark, and containers, so the deferred stylesheet no longer moves the hero. Desktop hides the dropdowns and keeps the nav on one row before that stylesheet arrives.
+- Inter uses a size-adjusted local fallback on mobile. Desktop preloads Inter and declares the hero faces immediately. The chat widget starts on idle or the first interaction. GTM still loads immediately, and direct tag commands still wait for `gtm.load`. Copy, forms, and schema are unchanged. Not deployed to production.
+
+## 2026-11-01 — Preview: GA4 landing page and extensionless URLs
+
+- GTM-PQQ6PGLR now loads in the head on styerteam.com instead of waiting for interaction. Chat and Ads events wait until the container’s page view has run, so they no longer open sessions with landing page `(not set)`.
+- `generate_lead` fires once after LoanOS or the waitlist endpoint confirms the lead, with form id and page path only. Hero quotes no longer fire before the server responds. The assistant, first-time buyer form, DPA guide, waitlist, and buyer guide were the paths that missed or raced the event.
+- `/asset-depletion-calculator` and 71 other sitemap pages that had an `.html` file but no extensionless 301 now redirect. `cleanUrls` stays off. Not merged and not deployed to production.
+
+## 2026-10-31 — Preview: program card photos show the house
+
+- Homepage program cards were a 180px strip. Accessibility CSS also forced those photos to `height: auto`, so the box cut off everything below the trees and roof.
+- The photo frame is now 16:9, matching the source files, with a focal point per card. Labels stay on the foreground. Copy, links, and forms are unchanged. Not merged and not deployed.
+
+## 2026-10-31 — Preview: compliance copy and a version endpoint
+
+- The homepage no longer says more than 1,000 loans closed, and the Career Loans Closed stat is now “Licensed / Since September 2015.” The Austin DSCR closing step says quick closings. The listed rate lines on products, about, and the self-employed page are qualitative. Homepage and self-employed FAQ JSON-LD matches the visible answers.
+- Link-preview images use https://styerteam.com, except `loans/jumbo.html`. `/api/version` returns the Vercel commit, ref, deployment id, environment, and the time the function instance loaded. Cache-Control is no-store. Not merged and not deployed.
+
+## 2026-10-31 — Preview: do not send live leads from Vercel previews
+
+- When VERCEL_ENV is set and is not production, lead-intake forces test mode and skips Mailchimp and the n8n webhook unless ALLOW_PREVIEW_LIVE_LEADS=true. Netlify, where VERCEL_ENV is unset, and Vercel production stay on the live path.
+
+## 2026-10-31 — Preview: WCAG review follow-up
+
+- The header logo stays at the production mobile size, 96 by 48. Narrow headers wrap the “Powered by” line and keep the menu button on that row.
+- Dark-panel placeholders use #b8c2ca. The homepage hero no longer widens the page at 320 or 390. Application links say “Start your application.” The compliance name stays available to screen readers.
+
+## 2026-10-31 — Preview: WCAG 2.2 AA fixes
+
+- Focus can scroll clear of the sticky header and the fixed mobile contact bar. The skip link sits above the header when focused.
+- Apply Now and other new-tab links say they open in a new tab, and the accessible name starts with the visible text. `rel="noopener"` is set.
+- Dark-panel placeholder and small text contrast is at least 4.5:1. The header logo scales at narrow widths; the artwork is unchanged.
+- Form errors show on the page, tied to each field, with `aria-invalid`, a polite summary, and focus on the first invalid field. The contact consent checkbox is marked required. The post-submit application link goes to the GoRascal register URL. Bank and DSCR pages have a skip link. Not merged.
+
+## 2026-10-30 — Preview: instant lead email after either LoanOS copy
+
+- The raw-form backup now splits a single name field into first and last name, matching the JSON copy. A duplicate LoanOS claim counts as success, and both copies call the web-lead webhook with a 5-second timeout. Test leads still skip that webhook unless N8N_SEND_TEST_LEADS=true. Not merged.
+
+## 2026-10-30 — Preview: slash-less legacy redirects
+
+- Eleven WordPress paths that only had a trailing-slash redirect now also 301 without the slash. Sitemap entries for /resources and the first-time buyer guide no longer end in a slash. Not merged.
+
+## 2026-10-30 — Preview: mobile portrait and Vercel port
+
+- Phones show a small compressed portrait above the homepage headline. Desktop still uses the skyline and the full cutout. Approved logo files are unchanged.
+- `vercel.json` publishes `.site-dist` and carries the Netlify redirects, rewrites, and headers. Preview deploys send `X-Robots-Tag: noindex` and skip IndexNow. Netlify config files stay. Not merged.
+
+## 2026-10-30 — Preview: lighter mobile homepage hero
+
+- Under 768px the homepage hero is the brand navy and the copy, at content height. The skyline photo and portrait stay on desktop. Critical CSS paints the headline before the full stylesheets, which load after the page on small screens. Approved logo files are unchanged. Not merged.
+
+## 2026-10-30 — Preview: review fixes, still not merged
+
+- Restored the dropped interior stylesheets on the bank-statement, self-employed, and high-net-worth pages. Situation-journey submit no longer assumes a progress element.
+- Canonicals, og:url, sitemap, robots, and site.config now use https://styerteam.com. adam@thestyerteam.com is unchanged. Host redirects to that origin are in `_redirects` and do not attach any domain.
+- Google tags load only on styerteam.com and www.styerteam.com, after load or the first interaction. Deploy-preview and branch-deploy send `X-Robots-Tag: noindex`.
+- Homepage hero, images, fonts, and caching are tightened for mobile. Display-size GoRascal copies were added; the approved originals are unchanged. Not merged.
+
+## 2026-10-29 — Preview: GoRascal approved logos
+
+- The four approved files are stored byte-for-byte in assets/brand/gorascal/. The header and homepage hero show the wordmark on a white chip, sized by height. The footer shows the navy seal beside the licensing block. The outline seal and the brownstone illustration are not displayed. Organization schema points at the wordmark URL. Not merged.
+
+## 2026-10-29 — Preview: NMLS licensed location in the footer
+
+- The footer and /licensing.html show the NMLS licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249. Organization, LocalBusiness, and FinancialService schema use that postal address. areaServed stays Texas. Not merged.
+
+## 2026-10-29 — Preview: close-day, savings, and guarantee lines removed
+
+- Close-day claims, dollar savings claims, and “best rate” / “lowest rate” promises are rewritten or removed. Rate pages and the rate-commentary posts are unchanged. “Guaranteed Backup Contract” is now a backup purchase agreement. The HECM line-of-credit sentence no longer says guaranteed. Factual VA, USDA, and personal-guarantee wording stays. Not merged.
+
+## 2026-10-29 — Preview: GoRascal footer, titles, and pre-qualification wording
+
+- The footer licensing block is the seven-line GoRascal format, including “Licensed in: TX” and the link to /licensing.html. The licensing page adds the Texas license row, regulator row, and the Texas Residents disclaimer at 2601 N. Lamar.
+- “Powered by Go Rascal Inc.” is in the header lockup and the homepage hero. Marketing “pre-approval” wording is now “pre-qualification” except where the sentence describes a verified income, asset, and credit review. Adam’s “Founder” job titles are now “Mortgage Loan Originator.”
+- Close timelines, rate and APR figures, savings examples, and guarantee language are listed in docs/compliance-flags-2026-10-29.md and were not removed. Not merged.
+
+## 2026-10-29 — Preview: GoRascal compliance review
+
+- Public origin on this branch is https://thestyerteam.com. Redirects are written in docs/domain-migration-plan.md and are not enabled.
+- The Austin local office and the Brooklyn main office are removed. No replacement address is published.
+- Footer and /licensing.html name the team, both NMLS numbers, Texas, NMLS Consumer Access, Equal Housing Opportunity, and the Texas SML complaint and recovery fund notice.
+- Public email is adamstyer@gorascal.com. Apply links stay on the GoRascal application. Not merged.
+
+## 2026-10-29 — Preview: shorter homepage DSCR example
+
+- The homepage DSCR card is four short beats: the tax return could not qualify, we used a DSCR loan, it qualified on the rent, and a link to the Texas DSCR page. Not merged.
+
+## 2026-10-29 — Preview: DSCR price answer states what sets the price
+
+- The DSCR rate answer names the factors that set the price and no longer says a number cannot be pinned in a paragraph. Two other withholding lines, on the high-net-worth and self-employed pages, now state the rule instead. Not merged.
+
+## 2026-10-28 — Preview: specialty page depth restored
+
+- DSCR Texas, high-net-worth, bank statement, and self-employed pages take the live FAQ sets and direct answers back, inside the current layout. Titles and descriptions use the Austin and Texas framing. Rate quotes, close-day promises, lender counts, and case dollar amounts were rewritten. Not merged.
+
+## 2026-10-28 — Preview: no specific lender count
+
+- Public pages, JSON-LD, and the assistant company note no longer state a number of wholesale lenders. The homepage pricing line says many wholesale lenders and “my cell.” Historical notes were left as written.
+
+## 2026-10-28 — Preview: Go Rascal main office in the footer
+
+- The footer compliance block lists Go Rascal Inc. Main Office: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249, above the Austin local office. JSON-LD still uses the Austin office. Licensing stays Texas only.
+
+## 2026-10-28 — Preview: hero stagger and FAQ accordion
+
+- Homepage headline: “Complex income.” stays on one line at desktop. “Clear path forward.” sits on the next line, indented. Still one h1.
+- Homepage FAQs open again. The accordion script was loading after the page was ready, so it never started. Open answers are no longer cut off at 500px.
+
+## 2026-10-28 — Preview: local office address and no 24-hour pre-approval
+
+- The local office line is 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731. The placeholder and the Brooklyn corporate-office line are gone.
+- The homepage stat tile says Texas / Licensed. Pre-approval sentences no longer promise 24 hours, same day, or a fast letter. Not merged.
+
+## 2026-10-28 — Preview: GoRascal compliance package
+
+- Personal websites must be approved in writing by GoRascal Compliance before publishing. Typical approval time is 3–5 business days. Do not launch until written approval is received.
+- Insert GoRascal-approved logo once received. The header now uses a text wordmark. The files in `assets/logo.svg`, `assets/logo-light.svg`, and `assets/logo.png` are self-made marks and are not an official GoRascal logo. They were left in the repo and taken off the header.
+- The public team name is "The Styer Team, Powered by Go Rascal Inc." The footer states company NMLS# 2072896, Adam Styer NMLS# 513013, Licensed in: Texas, and Local Office: [LOCAL OFFICE ADDRESS PENDING]. Not merged.
+
+## 2026-10-28 — Preview: no jumbo dollar figure on the homepage
+
+- The homepage jumbo card and the matching FAQ no longer state $832,750. Both say a jumbo loan is anything above the conforming limit. Other pages were not edited.
+
+## 2026-10-28 — Preview: homepage niche positioning
+
+- The homepage hero is “Complex income.” and “Clear path forward.” The six cards point at bank statements, 1099s, a CPA profit and loss, asset depletion, DSCR, and jumbo / non-QM. Conventional, FHA, and VA stay in the footer, the last nav column, and one quiet line. Title, description, and homepage schema match that positioning. Not merged.
+
+## 2026-10-28 — Preview: GoRascal application link
+
+- Apply Now and Start a Secure Application hrefs now go to `https://gorascal.my1003app.com/513013/register`. See My Options stays on the contact form. `/apply-now` redirects to the same application link.
+
+## 2026-10-28 — Preview: case cards say what we did
+
+- Homepage “What happened” lines now say how the file was solved: bank-statement deposits, rent on each house, or an offer that did not wait on the sale. Titles no longer carry a price or “they still closed.”
+- The same refusal lines came off the Non-QM, bank-statement, and self-employed examples.
+
+## 2026-10-28 — Preview: claims, document paths, homepage source
+
+- Not published. Branch `preview/claims-docpaths-source-2026-10-28` only. No merge and no pull request.
+- Homepage, Non-QM, bank-statement, and self-employed copy no longer states a 14–21 day close or unsourced credit, down-payment, expense, or price figures. Visible FAQs match FAQPage schema.
+- The homepage short form keeps its fields and adds one optional "how did you first hear about Adam" select. 24-hour pre-approval, 150+ wholesale lenders, and the $832,750 jumbo limit stay.
+- The preserved Non-QM guide, in a separate commit, drops the single credit, down-payment, expense, and asset-depletion figures. It stays indexed.
+
 ## 2026-10-28 — Search titles and old 404s
 
 - Old newsletter, truncated, and test URLs that 404 on the live site now 301 to the closest published post, or to the blog index for the April 28 publish tests. A hero test URL 301s home.

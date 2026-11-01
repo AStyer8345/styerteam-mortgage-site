@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const origin = 'https://styermortgage.com';
+const origin = 'https://thestyerteam.com';
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const redirects = fs.readFileSync(path.join(root, '_redirects'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);

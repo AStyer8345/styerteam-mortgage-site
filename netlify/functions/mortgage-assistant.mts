@@ -101,13 +101,13 @@ export default async function handler(request: Request, context: Context): Promi
     if (resources.length) {
       const fullApplication = resources.some((resource) => resource.url === 'https://styermortgage.com/contact.html');
       const answer = /\btext\b/i.test(message)
-        ? 'You can text Adam directly at (512) 956-6010. You can also email adam@thestyerteam.com, schedule a 15-minute call, or send the short pre-approval and scenario form below.'
+        ? 'You can text Adam directly at (512) 956-6010. You can also email adamstyer@gorascal.com, schedule a 15-minute call, or send the short pre-approval and scenario form below.'
         : /\bemail\b/i.test(message)
-          ? 'You can email Adam directly at adam@thestyerteam.com. If scheduling or sending the short pre-approval and scenario form is easier, those options are available too.'
+          ? 'You can email Adam directly at adamstyer@gorascal.com. If scheduling or sending the short pre-approval and scenario form is easier, those options are available too.'
           : /\b(?:schedule|book|calendly|call)\b/i.test(message)
             ? 'Absolutely—you can choose a convenient time on Adam’s calendar below. You can also call or text him at (512) 956-6010.'
             : fullApplication
-              ? 'Contact Adam to arrange the current secure application. You can call or text (512) 956-6010 or email adam@thestyerteam.com. The contact form is for inquiries; please leave sensitive financial information out of it.'
+              ? 'Contact Adam to arrange the current secure application. You can call or text (512) 956-6010 or email adamstyer@gorascal.com. The contact form is for inquiries; please leave sensitive financial information out of it.'
               : 'Use the short pre-approval and scenario form below to give Adam your contact information and the details he should review. You do not need to complete the full application first.';
       await recordTurn(conversationId, correlationId, session.id, message, answer, [], { direct_conversion_option: true }, undefined, sequenceStart, sourcePage);
       return json({ conversationId, message: answer, sources: [], resources, salesState }, 200, headers);

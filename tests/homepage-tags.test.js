@@ -2,44 +2,63 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
+
+const { gtmSnippet } = require('../scripts/gtm-snippet.cjs');
 const html = fs.readFileSync('index.html', 'utf8');
-const code = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)]
-  .find(match => match[1].includes('function loadGTM'))[1];
-function harness() {
-  const frames = [], idle = [], timers = [], listeners = {}, scripts = [];
-  const window = { dataLayer: [{ event: 'generate_lead', fixture: true }],
-    requestIdleCallback: fn => idle.push(fn),
-    addEventListener: (event, fn) => { listeners[event] = fn; } };
-  vm.runInNewContext(code, { window, document: {
-    addEventListener: (event, fn) => { listeners[event] = fn; },
-    getElementsByTagName: () => [{ parentNode: { insertBefore: node => scripts.push(node) } }],
-    createElement: () => ({})
-  }, requestAnimationFrame: fn => frames.push(fn),
-  requestIdleCallback: window.requestIdleCallback, setTimeout: (fn, delay) => timers.push({ fn, delay }) });
-  return { window, frames, idle, timers, listeners, scripts };
-}
-test('GTM yields for paint, keeps queued conversions and loads only once', () => {
-  const h = harness();
-  assert.equal(h.scripts.length, 0);
-  assert.equal(h.frames.length, 0);
-  h.listeners.DOMContentLoaded();
-  h.frames.shift()();
-  assert.equal(h.idle.length, 0);
-  h.frames.shift()();
-  h.idle.shift()();
-  h.listeners.click();
-  h.timers[0].fn();
-  assert.equal(h.scripts.length, 1);
-  assert.equal(h.scripts[0].src, 'https://www.googletagmanager.com/gtm.js?id=GTM-PQQ6PGLR');
-  assert.equal(h.window.dataLayer[0].event, 'generate_lead');
-  assert.equal(h.window.dataLayer[1].event, 'gtm.js');
+test('the shared GTM snippet is what production pages and page builders use', () => {
+  assert.ok(html.includes(gtmSnippet));
+  for (const file of ['netlify/functions/lib/page-builder.js', 'netlify/functions/lib/blog-page-builder.js', 'netlify/functions/lib/rate-page-builder.js', 'netlify/functions/lib/realtor-page-builder.js']) {
+    assert.ok(fs.readFileSync(file, 'utf8').includes(gtmSnippet), file);
+  }
 });
-test('first interaction loads immediately and background tabs retain the deadline', () => {
-  const interaction = harness();
-  interaction.listeners.touchstart();
-  assert.equal(interaction.scripts.length, 1);
-  const background = harness();
-  assert.equal(background.timers[0].delay, 3500);
-  background.timers[0].fn();
-  assert.equal(background.scripts.length, 1);
+const code = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)]
+  .map((match) => match[1])
+  .find((source) => source.includes('StyerAfterGoogleTag'));
+
+function run(hostname) {
+  const scripts = [];
+  const dataLayer = [];
+  const sandbox = {
+    location: { hostname },
+    window: {},
+    document: {
+      getElementsByTagName: () => [{ parentNode: { insertBefore: (node) => scripts.push(node) } }],
+      createElement: () => ({}),
+    },
+    setInterval,
+    clearInterval,
+  };
+  sandbox.window = sandbox;
+  sandbox.window.dataLayer = dataLayer;
+  vm.runInNewContext(code, sandbox);
+  return { scripts, dataLayer, window: sandbox.window };
+}
+
+test('production pages load GTM immediately and only once', () => {
+  const first = run('styerteam.com');
+  assert.equal(first.scripts.length, 1);
+  assert.equal(first.scripts[0].src, 'https://www.googletagmanager.com/gtm.js?id=GTM-PQQ6PGLR');
+  assert.equal(first.scripts[0].async, true);
+  assert.equal(first.dataLayer[0].event, 'gtm.js');
+  assert.equal(typeof first.window.StyerAfterGoogleTag, 'function');
+  vm.runInNewContext(code, first.window);
+  assert.equal(first.scripts.length, 1);
+});
+
+test('preview hosts do not load GTM or queue a bare Google tag', () => {
+  const preview = run('styerteam-site-git-preview.vercel.app');
+  assert.equal(preview.scripts.length, 0);
+  assert.equal(preview.dataLayer.length, 0);
+  assert.equal(preview.window.StyerAfterGoogleTag, undefined);
+});
+
+test('direct tag commands wait until GTM has finished the initial page view', async () => {
+  const page = run('www.styerteam.com');
+  let sent = 0;
+  page.window.StyerAfterGoogleTag(() => { sent += 1; });
+  await new Promise((resolve) => setTimeout(resolve, 70));
+  assert.equal(sent, 0);
+  page.dataLayer.push({ event: 'gtm.load' });
+  await new Promise((resolve) => setTimeout(resolve, 70));
+  assert.equal(sent, 1);
 });

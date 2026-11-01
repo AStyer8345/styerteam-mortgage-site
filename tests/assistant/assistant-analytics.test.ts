@@ -33,23 +33,37 @@ test('conversation abandonment is emitted only after a conversation and before c
 // Exercise the actual dispatcher: a plain custom dataLayer object is not a
 // Google Analytics event until it is forwarded by a tag or a gtag command.
 import vm from 'node:vm';
-test('production assistant events reach the existing Google tag without transcript data', () => {
+test('production assistant events reach the existing Google tag only after page_view', () => {
   const events: unknown[] = [];
-  const context = { state: { analyticsSeen: {}, salesState: {}, turns: [] }, window: { location: { pathname: '/bank-statement-loans.html', hostname: 'styermortgage.com', search: '' }, dataLayer: events } };
+  let queued: (() => void) | null = null;
+  const context = {
+    state: { analyticsSeen: {}, salesState: {}, turns: [] },
+    window: {
+      location: { pathname: '/bank-statement-loans.html', hostname: 'styerteam.com', origin: 'https://styerteam.com', search: '' },
+      dataLayer: events,
+      StyerAfterGoogleTag: (fn: () => void) => { queued = fn; },
+    },
+  };
   const functions = browser.slice(browser.indexOf('function trackAssistant'), browser.indexOf('function openingChoiceValue'));
   vm.runInNewContext(functions + '\ntrackAssistant("assistant_opened");', context);
+  assert.equal(events.length, 1);
+  assert.equal((events[0] as { event: string }).event, 'assistant_opened');
+  assert.equal(typeof queued, 'function');
+  queued!();
   assert.equal(events.length, 2);
   const command = events[1] as IArguments;
   assert.equal(command[0], 'event');
   assert.equal(command[1], 'assistant_opened');
   assert.equal(command[2].send_to, 'G-DDY0H0319S');
   assert.equal(command[2].source_page, '/bank-statement-loans.html');
+  assert.equal(command[2].page_location, 'https://styerteam.com/bank-statement-loans.html');
   assert.equal(command[2].event, undefined);
+  assert.equal(JSON.stringify(command[2]).includes('@'), false);
 });
 
 test('synthetic tests are excluded from production Google Analytics', () => {
   const events: unknown[] = [];
-  const context = { state: { analyticsSeen: {}, salesState: {}, turns: [] }, window: { location: { pathname: '/', hostname: 'styermortgage.com', search: '?assistant_test=1' }, dataLayer: events } };
+  const context = { state: { analyticsSeen: {}, salesState: {}, turns: [] }, window: { location: { pathname: '/', hostname: 'styerteam.com', origin: 'https://styerteam.com', search: '?assistant_test=1' }, dataLayer: events, StyerAfterGoogleTag: () => { throw new Error('preview events must not reach GA4'); } } };
   const functions = browser.slice(browser.indexOf('function trackAssistant'), browser.indexOf('function openingChoiceValue'));
   vm.runInNewContext(functions + '\ntrackAssistant("assistant_opened");', context);
   assert.equal(events.length, 1);

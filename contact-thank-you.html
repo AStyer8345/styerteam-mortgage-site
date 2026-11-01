@@ -3,11 +3,7 @@
 <head>
 <script>window.dataLayer = window.dataLayer || [];</script>
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PQQ6PGLR');</script>
+<script>(function(){var host=location.hostname;if(host!=="styerteam.com"&&host!=="www.styerteam.com")return;if(window.__styerTags)return;window.__styerTags=1;window.dataLayer=window.dataLayer||[];window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});var j=document.createElement("script");j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id=GTM-PQQ6PGLR";var f=document.getElementsByTagName("script")[0];f.parentNode.insertBefore(j,f);window.StyerAfterGoogleTag=function(fn){var q=window.__styerTagQueue||(window.__styerTagQueue=[]);q.push(fn);if(window.__styerTagWait)return;window.__styerTagWait=setInterval(function(){var ready=(window.dataLayer||[]).some(function(entry){return entry&&entry.event==="gtm.load";});if(!ready)return;clearInterval(window.__styerTagWait);window.__styerTagWait=0;q.splice(0).forEach(function(item){item();});},50);};})();</script>
 <!-- End Google Tag Manager -->
 
   <meta charset="utf-8">
@@ -17,13 +13,16 @@
   <style>
     *{box-sizing:border-box}body{margin:0;background:#f4f6f8;color:#102440;font:18px/1.6 system-ui,sans-serif;padding:24px}main{max-width:680px;margin:8vh auto;background:#fff;padding:clamp(24px,6vw,56px);border-top:6px solid #947333;border-radius:8px}h1{font-size:clamp(28px,5vw,40px);line-height:1.2}a{color:#173e6a;text-underline-offset:3px}nav{display:flex;flex-wrap:wrap;gap:20px;margin-top:28px}.receipt{font-weight:700;color:#356044}
   </style>
+<link href="/a11y.css" rel="stylesheet"/>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-PQQ6PGLR" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<noscript></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-  <main>
+  <main id="main">
     <p class="receipt">Request received</p>
     <h1>Thank you — your mortgage options request is received.</h1>
     <p>Your message was submitted to our contact inbox for Adam to review. I aim to reply within one business day using your preferred contact method.</p>
@@ -31,5 +30,23 @@
     <nav aria-label="Next steps"><a href="https://calendly.com/adamstyer/15minutes">Book a Call</a><a href="/">Return home</a></nav>
     <p><small>Adam Styer · NMLS #513013</small></p>
   </main>
+
+<footer class="site-footer" style="background:#0d2342;color:#F6F4EF;padding:28px 16px;font:14px/1.5 system-ui,sans-serif">
+
+<div class="site-footer-legal">
+<img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy-display.png" alt="Go Rascal Inc." height="64">
+<div class="site-footer-legal-copy">
+<p style="color:#F6F4EF;margin:0 0 8px">Adam Styer | Mortgage Loan Originator</p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank" style="color:#F5C443">NMLS ID #513013<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank" style="color:#F5C443">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p style="color:#F6F4EF;margin:0 0 8px">Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Equal Housing Opportunity</p>
+<!-- Licensed states placeholder pending Adam's NMLS confirmation -->
+<p style="color:#F6F4EF;margin:0 0 8px">Licensed in: TX</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Loans are arranged through third party lenders.</p>
+<p style="color:#F6F4EF;margin:0"><a href="/licensing.html" style="color:#F5C443">State-specific consumer disclosures available on the Licensing &amp; Disclosures page.</a></p>
+</div>
+</div>
+</footer>
 </body>
 </html>

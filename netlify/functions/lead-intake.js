@@ -36,7 +36,7 @@ const API_BASE  = DC ? `https://${DC}.api.mailchimp.com/3.0` : "";
 const LOANOS_URL    = process.env.LOANOS_URL || process.env.LOANOS_API_URL || "";
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
 const N8N_WEB_LEAD_URL = process.env.N8N_WEB_LEAD_URL || "https://styer.app.n8n.cloud/webhook/web-lead";
-const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adam@thestyerteam.com";
+const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adamstyer@gorascal.com";
 
 function firstText(...values) {
   const parts = [];
@@ -91,9 +91,19 @@ exports.handler = async (event) => {
     return respond(400, { error: 'Valid email required' });
   }
 
-  // Normalize field names (plan shape + legacy shape)
-  const firstName  = body.first_name ?? body["first-name"] ?? body.fname ?? "";
-  const lastName   = body.last_name  ?? body["last-name"]  ?? body.lname ?? "";
+  // Normalize field names (plan shape + legacy shape).
+  // A single `name` or `full_name` splits the same way situation-journeys.js does,
+  // so the JSON copy and the raw-form backup describe the same person.
+  let firstName = body.first_name ?? body["first-name"] ?? body.fname ?? "";
+  let lastName  = body.last_name  ?? body["last-name"]  ?? body.lname ?? "";
+  if (!String(firstName).trim()) {
+    const source = body.name || body.full_name || "";
+    if (String(source).trim()) {
+      const parts = String(source).trim().split(/\s+/);
+      firstName = parts.shift() || "";
+      lastName = parts.join(" ");
+    }
+  }
   const email      = (body.email || "").toLowerCase().trim();
   const phone      = body.phone ?? "";
   const loanGoal   = body.loan_goal ?? body.loan_type ?? body.goal ?? "";
@@ -105,8 +115,14 @@ exports.handler = async (event) => {
     return respond(400, { error: "email required" });
   }
 
-  const isTest = body.test_mode === true || body.test_mode === "true";
-  if (isTest && !["adam@thestyerteam.com", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
+  // Vercel preview and development share production secrets. Sandbox those
+  // deploys unless someone explicitly opts in. Unset VERCEL_ENV (Netlify
+  // production) and VERCEL_ENV=production keep the live path.
+  const vercelEnv = process.env.VERCEL_ENV || "";
+  const previewSandbox = vercelEnv !== "" && vercelEnv !== "production" && process.env.ALLOW_PREVIEW_LIVE_LEADS !== "true";
+  const requestedTest = body.test_mode === true || body.test_mode === "true";
+  const isTest = previewSandbox || requestedTest;
+  if (requestedTest && !previewSandbox && !["adamstyer@gorascal.com", "adam.styerassistant@gmail.com"].includes(email)) return respond(400, { error: "Test mode requires a verified internal mailbox" });
   const inquiryId = String(body.inquiry_id || "");
   if (!/^[A-Za-z0-9:_-]{8,200}$/.test(inquiryId)) return respond(400, { error: "A stable inquiry_id is required" });
 
@@ -172,19 +188,34 @@ exports.handler = async (event) => {
   catch (error) { return respond(502, { success: false, captured: false, ownerNotified: null, error: "Primary capture unavailable; the independent form backup remains available" }); }
   // Requested scenario contact is separate from optional marketing enrollment.
   // Preserve an existing unsubscribe; a duplicate inquiry cannot enroll twice.
-  const marketingAllowed = (body.marketing_opt_in === true || body.marketing_opt_in === "on") && !captured.duplicate;
+  // The raw-form backup sets this header. It still dispatches the web-lead
+  // webhook, because either copy may be the one LoanOS accepts.
+  const backupCapture = event.headers["x-styer-internal-backup"] === "1" || event.headers["X-Styer-Internal-Backup"] === "1";
+  const sendTestLeads = process.env.N8N_SEND_TEST_LEADS === "true";
+  const skipN8n = previewSandbox || (isTest && !sendTestLeads);
+  const marketingAllowed = !backupCapture && (body.marketing_opt_in === true || body.marketing_opt_in === "on") && !captured.duplicate;
   const [marketing, delivery] = await Promise.allSettled([
     isTest || !marketingAllowed ? Promise.resolve("skipped") : addToMailchimp({ email, firstName, lastName, tag }),
-    fetch(N8N_WEB_LEAD_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ dispatch_inquiry_id: captured.inquiry_id }) }).then(response => { if (!response.ok) throw new Error("Delivery dispatch unavailable"); }),
+    skipN8n ? Promise.resolve("skipped") : dispatchWebLead(captured.inquiry_id),
   ]);
   // Captured work remains recoverable even if the immediate dispatcher fails.
   return respond(200, { success: true, captured: true, inquiry_id: captured.inquiry_id,
     contact_id: captured.contact_id, task_id: captured.task_id, duplicate: captured.duplicate,
-    automationAccepted: delivery.status === "fulfilled", ownerNotified: null,
-    mailchimp: isTest ? "skipped-test" : !marketingAllowed ? "skipped-no-new-consent" : marketing.status === "fulfilled" ? "ok" : "failed",
-    loanos: "ok", webLeadAutomation: delivery.status === "fulfilled" ? "accepted" : "pending-recovery",
+    automationAccepted: !skipN8n && delivery.status === "fulfilled", ownerNotified: null,
+    mailchimp: isTest ? "skipped-test" : backupCapture ? "skipped-backup" : !marketingAllowed ? "skipped-no-new-consent" : marketing.status === "fulfilled" ? "ok" : "failed",
+    loanos: "ok", webLeadAutomation: skipN8n ? "skipped-test" : delivery.status === "fulfilled" ? "accepted" : "pending-recovery",
     qualification: { tier: qualification.tier, score: qualification.score } });
 };
+
+async function dispatchWebLead(inquiryId) {
+  const response = await fetch(N8N_WEB_LEAD_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ dispatch_inquiry_id: inquiryId }),
+    signal: AbortSignal.timeout(5000),
+  });
+  if (!response.ok) throw new Error("Delivery dispatch unavailable");
+}
 
 // ── Mailchimp ─────────────────────────────────────────────────────────────────
 // List add only. No PA/DPA journey tagging — Workflow DevKit owns drip content now.
@@ -306,13 +337,30 @@ async function createLoanosContact(p) {
     }),
   });
 
+  const payload = await res.json().catch(() => ({}));
+  const duplicate = acceptedDuplicate(res.status, payload, p.inquiryId);
+  if (duplicate) return duplicate;
   if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(`LoanOS API ${res.status}: ${err.error || "unknown"}`);
+    throw new Error(`LoanOS API ${res.status}: ${payload.error || "unknown"}`);
   }
-  const receipt = await res.json();
-  if (!receipt.captured || !receipt.inquiry_id) throw new Error("Capture receipt missing");
-  return receipt;
+  if (!payload.captured || !payload.inquiry_id) throw new Error("Capture receipt missing");
+  return payload;
+}
+
+function acceptedDuplicate(status, body, inquiryId) {
+  if (!body || typeof body !== "object" || Array.isArray(body)) return null;
+  const stated = body.inquiry_id || body.inquiryId || null;
+  if (stated && String(stated) !== String(inquiryId)) return null;
+  const text = `${body.error || ""} ${body.message || ""} ${body.detail || ""} ${body.code || ""}`.toLowerCase();
+  const flagged = body.duplicate === true || body.already_exists === true || /duplicate|already exists|already captured/.test(text) || (status === 409 && /conflict/.test(text));
+  if (!flagged) return null;
+  return {
+    captured: true,
+    duplicate: true,
+    inquiry_id: stated || inquiryId,
+    contact_id: body.contact_id || null,
+    task_id: body.task_id || null,
+  };
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────

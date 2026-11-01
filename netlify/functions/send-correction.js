@@ -1,15 +1,16 @@
 const { requireDispatchAuth } = require("./lib/dispatch-auth");
+const { siteOrigin } = require('../../scripts/site-origin.cjs');
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 const CORRECTION_HTML = `
 <div style="font-family: Arial, Helvetica, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333; line-height: 1.6;">
   <p>Hey &mdash;</p>
   <p>I messed up the link in my last email. Technology, right?</p>
-  <p>Here's the actual article: <a href="https://styermortgage.com/updates/2026-02-20-fast-closes-teamwork-and-spring-market-momentum.html" style="color: #1a73e8; text-decoration: underline;">Fast Closes and Spring Market Momentum</a></p>
+  <p>Here's the actual article: <a href="${siteOrigin()}/updates/2026-02-20-fast-closes-teamwork-and-spring-market-momentum.html" style="color: #1a73e8; text-decoration: underline;">Teamwork and the Spring Market</a></p>
   <p>Sorry about that. Talk soon,</p>
   <p>
     Adam Styer<br>
-    The Styer Team · Powered by GoRascal<br>
+    The Styer Team, Powered by Go Rascal Inc.<br>
     NMLS# 513013 | (512) 956-6010
   </p>
 </div>
@@ -55,7 +56,7 @@ exports.handler = async (event) => {
           subject_line: "That link didn't work — here's the right one",
           preview_text: "Sorry about that! Here's the correct article link.",
           from_name: "Adam Styer",
-          reply_to: "adam@thestyerteam.com",
+          reply_to: "adamstyer@gorascal.com",
         },
       });
       await mailchimp.campaigns.setContent(campaign.id, { html: CORRECTION_HTML });
@@ -73,7 +74,7 @@ exports.handler = async (event) => {
           subject_line: "That link didn't work — here's the right one",
           preview_text: "Sorry about that! Here's the correct article link.",
           from_name: "Adam Styer",
-          reply_to: "adam@thestyerteam.com",
+          reply_to: "adamstyer@gorascal.com",
         },
       });
       await mailchimp.campaigns.setContent(campaign.id, { html: CORRECTION_HTML });

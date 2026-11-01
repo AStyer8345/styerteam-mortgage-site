@@ -5,9 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LoanOS — Internal Build Tracker</title>
-<link rel="canonical" href="https://styermortgage.com/loanos.html">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap"></noscript>
+<link rel="canonical" href="https://styerteam.com/loanos.html">
+<noscript></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -24,29 +23,29 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
 .brand{display:flex;align-items:center;gap:12px}
 .brand-mark{background:var(--gold);color:#0a0a0c;width:36px;height:36px;font-family:var(--font-display);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
 .brand-name{font-family:var(--font-display);font-size:18px;font-weight:700}
-.brand-sub{color:var(--muted);font-size:11px;font-family:var(--font-mono);letter-spacing:.05em}
+.brand-sub{color:var(--muted);font-size: 12px;font-family:var(--font-mono);letter-spacing:.05em}
 .header-right{display:flex;align-items:center;gap:10px}
-.badge{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1px solid;padding:4px 10px}
+.badge{font-family:var(--font-mono);font-size: 12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid;padding:4px 10px}
 .badge-gold{color:var(--gold);border-color:#9a7b2d4d}
 .badge-green{color:var(--green);border-color:#4cc98a4d}
 .badge-red{color:var(--red);border-color:#c94c4c4d}
 .hero{z-index:1;position:relative;text-align:center;padding:56px 32px 44px;overflow:hidden}
 .hero::before{content:"";pointer-events:none;background:radial-gradient(#9a7b2d14 0%,transparent 70%);width:600px;height:400px;position:absolute;top:-100px;left:50%;transform:translate(-50%)}
 .hero-inner{max-width:900px;margin:0 auto}
-.hero-eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.hero-eyebrow{font-family:var(--font-mono);font-size: 12px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
 .hero-title{font-family:var(--font-display);font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:14px;background:linear-gradient(135deg,#f0ede8 0%,#9a7b2dcc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:32px}
 .progress-bar-wrap{background:var(--bg2);border:1px solid var(--border);max-width:560px;margin:0 auto 32px;padding:18px 24px}
 .progress-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.progress-label-text{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.progress-label-text{font-family:var(--font-mono);font-size: 12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .progress-pct{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gold)}
 .progress-track{background:#ffffff0a;height:5px;width:100%}
 .progress-fill{background:linear-gradient(90deg,var(--gold),#e8c86a);height:100%;width:0%;transition:width .5s}
-.progress-note{font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:6px}
+.progress-note{font-family:var(--font-mono);font-size: 12px;color:var(--muted);margin-top:6px}
 .hero-stats{display:inline-flex;flex-wrap:wrap;border:1px solid var(--border);overflow:hidden}
 .stat{text-align:center;padding:14px 24px}
 .stat-num{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gold)}
-.stat-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.stat-label{font-family:var(--font-mono);font-size: 12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:3px}
 .stat-divider{width:1px;background:var(--border);align-self:center;height:36px}
 .tabs-bar{z-index:90;position:sticky;top:65px;background:#0a0a0cf2;backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;padding:0 32px;overflow-x:auto}
 .tab-btn{background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:14px 20px;cursor:pointer;white-space:nowrap;transition:all .2s}
@@ -66,30 +65,30 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
 .module-card:hover,.module-card.active{background:var(--bg3);border-color:#ffffff26}
 .mc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
 .mc-icon{font-size:15px;color:var(--accent,var(--gold))}
-.mc-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent,var(--gold));border:1px solid var(--accent,var(--gold));opacity:.7;padding:2px 5px}
+.mc-tag{font-family:var(--font-mono);font-size: 12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent,var(--gold));border:1px solid var(--accent,var(--gold));opacity:.7;padding:2px 5px}
 .mc-label{font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:3px;line-height:1.3}
-.mc-priority{font-family:var(--font-mono);font-size:10px;color:var(--muted)}
+.mc-priority{font-family:var(--font-mono);font-size: 12px;color:var(--muted)}
 .mc-status-row{display:flex;align-items:center;gap:5px;margin-top:8px}
 .status-dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex-shrink:0}
 .dot-ns{background:#ffffff18}
 .dot-ip{background:var(--gold)}
 .dot-done{background:var(--green)}
-.mc-status-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.mc-status-label{font-family:var(--font-mono);font-size: 12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
 .module-detail{background:var(--bg2);border:1px solid var(--border);padding:22px;position:sticky;top:115px}
 .detail-border-top{height:3px;margin:-22px -22px 18px -22px}
 .detail-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
 .detail-icon{font-size:22px;line-height:1;margin-top:2px}
 .detail-title{font-family:var(--font-display);font-size:17px;font-weight:700;margin-bottom:3px}
-.detail-tag{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+.detail-tag{font-family:var(--font-mono);font-size: 12px;color:var(--muted)}
 .detail-desc{color:#f0ede8b3;font-size:13px;line-height:1.6;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:18px}
-.detail-section-title{font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.detail-section-title{font-family:var(--font-mono);font-size: 12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
 .detail-features{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
 .detail-features li{font-size:12px;line-height:1.5;color:#f0ede8cc;display:flex;align-items:flex-start;gap:7px}
 .detail-db{border:1px solid var(--border);background:#0000004d;padding:9px 13px;margin-bottom:14px}
-.db-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
-.db-value{font-family:var(--font-mono);font-size:11px;color:var(--gold)}
+.db-label{font-family:var(--font-mono);font-size: 12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.db-value{font-family:var(--font-mono);font-size: 12px;color:var(--gold)}
 .status-selector{display:flex;gap:7px;padding-top:14px;border-top:1px solid var(--border)}
-.status-btn{flex:1;font-family:var(--font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding:7px 4px;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;transition:all .2s}
+.status-btn{flex:1;font-family:var(--font-mono);font-size: 12px;letter-spacing:.07em;text-transform:uppercase;padding:7px 4px;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;transition:all .2s}
 .status-btn:hover{border-color:#ffffff30;color:var(--text)}
 .sbtn-ns.active{border-color:#ffffff30;color:var(--text);background:#ffffff08}
 .sbtn-ip.active{border-color:var(--gold);color:var(--gold);background:#9a7b2d10}
@@ -101,19 +100,19 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
 .phase-card{background:var(--bg2);border:1px solid var(--border);display:grid;grid-template-columns:240px 1fr;overflow:hidden}
 @media(max-width:768px){.phase-card{grid-template-columns:1fr}}
 .phase-left{background:#0003;border-right:1px solid var(--border);padding:22px}
-.phase-num{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.phase-num{font-family:var(--font-mono);font-size: 12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
 .phase-title{font-family:var(--font-display);font-size:19px;font-weight:800;margin-bottom:5px}
-.phase-timeline{font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:14px}
-.output-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.phase-timeline{font-family:var(--font-mono);font-size: 12px;color:var(--muted);margin-bottom:14px}
+.output-label{font-family:var(--font-mono);font-size: 12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .output-text{color:#f0ede8b3;font-size:12px;line-height:1.5;margin-bottom:14px}
 .phase-prog-row{display:flex;justify-content:space-between;margin-bottom:5px}
 .phase-prog-track{background:#ffffff0a;height:4px}
 .phase-prog-fill{height:100%;transition:width .4s}
-.phase-prog-label{font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px}
+.phase-prog-label{font-family:var(--font-mono);font-size: 12px;color:var(--muted);margin-top:4px}
 .phase-right{padding:22px;display:flex;flex-direction:column}
 .phase-item{color:#f0ede8cc;font-size:13px;line-height:1.5;display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
 .phase-item:last-child{border-bottom:none}
-.phase-check{flex-shrink:0;width:17px;height:17px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:1px;transition:all .2s}
+.phase-check{flex-shrink:0;width:17px;height:17px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size: 12px;margin-top:1px;transition:all .2s}
 .phase-check.checked{border-color:var(--green);background:var(--green);color:#0a0a0c}
 .phase-item:hover .phase-check:not(.checked){border-color:#ffffff40}
 .roadmap-footer{background:#9a7b2d0f;border:1px solid #9a7b2d33;padding:16px 20px;margin-top:14px}
@@ -122,11 +121,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
 .stack-row{display:grid;grid-template-columns:120px 200px 1fr 140px;border-bottom:1px solid var(--border);transition:background .15s}
 .stack-row:last-child{border-bottom:none}
 .stack-row:hover{background:#ffffff05}
-.stack-layer{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:13px 16px;display:flex;align-items:center;border-right:1px solid var(--border)}
+.stack-layer{font-family:var(--font-mono);font-size: 12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:13px 16px;display:flex;align-items:center;border-right:1px solid var(--border)}
 .stack-tech{font-family:var(--font-display);font-size:13px;font-weight:600;color:var(--gold);padding:13px 16px;display:flex;align-items:center;border-right:1px solid var(--border)}
 .stack-why{color:#f0ede8b3;font-size:12px;padding:13px 16px;display:flex;align-items:center;border-right:1px solid var(--border)}
 .stack-status-cell{padding:13px 16px;display:flex;align-items:center}
-.stack-badge{font-family:var(--font-mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;padding:3px 7px;border:1px solid}
+.stack-badge{font-family:var(--font-mono);font-size: 12px;letter-spacing:.07em;text-transform:uppercase;padding:3px 7px;border:1px solid}
 .sb-confirmed{color:var(--green);border-color:#4cc98a4d}
 .sb-updated{color:var(--gold);border-color:#9a7b2d4d}
 .sb-tbd{color:var(--muted);border-color:#ffffff20}
@@ -139,10 +138,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
 .decision-card{background:var(--bg2);border:1px solid var(--border);padding:18px 22px;border-left:3px solid #9a7b2d}
 .decision-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px}
 .decision-title{font-family:var(--font-display);font-size:14px;font-weight:700}
-.decision-date{font-family:var(--font-mono);font-size:10px;color:var(--muted)}
+.decision-date{font-family:var(--font-mono);font-size: 12px;color:var(--muted)}
 .decision-body{color:#f0ede8b3;font-size:12px;line-height:1.6;margin-bottom:9px}
 .decision-tags{display:flex;gap:5px;flex-wrap:wrap}
-.dtag{font-family:var(--font-mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border:1px solid var(--border);color:var(--muted)}
+.dtag{font-family:var(--font-mono);font-size: 12px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border:1px solid var(--border);color:var(--muted)}
 .dtag-replaced{color:var(--red);border-color:#c94c4c4d}
 .dtag-added{color:var(--green);border-color:#4cc98a4d}
 .dtag-planned{color:var(--gold);border-color:#9a7b2d4d}
@@ -152,8 +151,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
 .pricing-card{background:var(--bg2);border:1px solid var(--border);padding:24px 20px;position:relative;transition:transform .2s}
 .pricing-card:hover{transform:translateY(-2px)}
 .pricing-card.hl{background:#4c7ec90d;border-color:#4c7ec966}
-.hl-badge{position:absolute;top:-1px;left:50%;transform:translate(-50%);background:var(--blue);color:#fff;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;white-space:nowrap}
-.plan-name{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}
+.hl-badge{position:absolute;top:-1px;left:50%;transform:translate(-50%);background:var(--blue);color:#fff;font-family:var(--font-mono);font-size: 12px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;white-space:nowrap}
+.plan-name{font-family:var(--font-display);font-size: 12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}
 .plan-price{font-family:var(--font-display);font-size:40px;font-weight:800;line-height:1;margin-bottom:5px}
 .plan-per{font-size:15px;font-weight:400;color:var(--muted)}
 .plan-desc{color:var(--muted);font-size:12px;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:16px}
@@ -167,8 +166,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
 .footer{z-index:1;position:relative;border-top:1px solid var(--border);padding:18px 32px}
 .footer-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .footer-brand{font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--gold)}
-.footer-note{font-family:var(--font-mono);font-size:10px;color:var(--muted)}
+.footer-note{font-family:var(--font-mono);font-size: 12px;color:var(--muted)}
 </style>
+<link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
+<link href="/a11y.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="bg-grid"></div>
@@ -192,7 +193,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
   <div class="hero-inner">
     <div class="hero-eyebrow">Adam Styer &middot; Mortgage Intelligence Platform</div>
     <h1 class="hero-title">LoanOS Build Tracker</h1>
-    <p class="hero-sub">CRM &middot; Automation &middot; Mortgage Coach Replacement &middot; Marketing &middot; Calculators &middot; Market Intelligence<br>Built for yourself first. Licensed to LOs nationwide second.</p>
+    <p class="hero-sub">CRM &middot; Automation &middot; Mortgage Coach Replacement &middot; Marketing &middot; Calculators &middot; Market Intelligence<br>Built for yourself first. Offered to other loan officers in Texas later.</p>
     <div class="progress-bar-wrap">
       <div class="progress-label">
         <span class="progress-label-text">Overall Build Progress</span>
@@ -247,14 +248,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
     <div class="stack-table">
       <div class="stack-row" style="background:#ffffff03">
         <div class="stack-layer">Layer</div>
-        <div class="stack-tech" style="color:var(--muted);font-size:10px">Tool</div>
-        <div class="stack-why" style="color:var(--muted);font-size:10px">Why</div>
-        <div class="stack-status-cell" style="color:var(--muted);font-size:9px;font-family:var(--font-mono);letter-spacing:.06em;text-transform:uppercase">Status</div>
+        <div class="stack-tech" style="color:var(--muted);font-size: 12px">Tool</div>
+        <div class="stack-why" style="color:var(--muted);font-size: 12px">Why</div>
+        <div class="stack-status-cell" style="color:var(--muted);font-size: 12px;font-family:var(--font-mono);letter-spacing:.06em;text-transform:uppercase">Status</div>
       </div>
       <div class="stack-row"><div class="stack-layer">Frontend</div><div class="stack-tech">Next.js 14</div><div class="stack-why">Server components, SEO, fast deploys to Vercel</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
       <div class="stack-row"><div class="stack-layer">Auth</div><div class="stack-tech">Supabase Auth</div><div class="stack-why">Built-in magic link + OAuth, zero config</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
       <div class="stack-row"><div class="stack-layer">Database</div><div class="stack-tech">Supabase Postgres</div><div class="stack-why">RLS for multi-tenancy, real-time, contacts + loans + docs</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
-      <div class="stack-row"><div class="stack-layer">File Storage</div><div class="stack-tech">Supabase Storage</div><div class="stack-why">PDF uploads linked to loan records (contracts, CDs, pre-approvals)</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
+      <div class="stack-row"><div class="stack-layer">File Storage</div><div class="stack-tech">Supabase Storage</div><div class="stack-why">PDF uploads linked to loan records (contracts, CDs, pre-qualifications)</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
       <div class="stack-row"><div class="stack-layer">Automation</div><div class="stack-tech">n8n</div><div class="stack-why">Replaced Zapier. Self-hosted ~$15/mo. Native Supabase + Claude nodes.</div><div class="stack-status-cell"><span class="stack-badge sb-updated">Updated</span></div></div>
       <div class="stack-row"><div class="stack-layer">AI</div><div class="stack-tech">Claude API</div><div class="stack-why">Email drafting, doc extraction, calculator narratives, market commentary</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
       <div class="stack-row"><div class="stack-layer">Email</div><div class="stack-tech">Outlook via n8n</div><div class="stack-why">Drafts pushed to Outlook. Existing workflow migrated to n8n.</div><div class="stack-status-cell"><span class="stack-badge sb-confirmed">Confirmed</span></div></div>
@@ -266,10 +267,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
     </div>
     <div style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:12px">Key Decisions</div>
     <div class="sn-grid">
-      <div class="sn-card"><div class="sn-card-title">Supabase = Memory Layer</div><div class="sn-card-body">Automations already fire (contract, CD, pre-approval). Supabase adds the record layer underneath every trigger &mdash; contact, loan, document, and activity log persist after each automation runs.</div></div>
+      <div class="sn-card"><div class="sn-card-title">Supabase = Memory Layer</div><div class="sn-card-body">Automations already fire (contract, CD, pre-qualification). Supabase adds the record layer underneath every trigger &mdash; contact, loan, document, and activity log persist after each automation runs.</div></div>
       <div class="sn-card"><div class="sn-card-title">n8n Replaces Zapier</div><div class="sn-card-body">Self-hosted n8n at ~$15/mo vs Zapier at $100-300/mo at automation volume. Native Supabase node + Claude API node = fewer moving parts, more control, no per-task billing.</div></div>
       <div class="sn-card"><div class="sn-card-title">Mortgage Coach Replacement</div><div class="sn-card-body">6 calculators replace Mortgage Coach entirely. Differentiator: Claude writes plain-English narrative summary per scenario. Output is branded PDF or shareable link integrated with loan records.</div></div>
-      <div class="sn-card"><div class="sn-card-title">Build For Yourself First</div><div class="sn-card-body">Phase 1-2 = personal production tool replacing Jungo + Mortgage Coach. Phase 4 = license to LOs nationwide at $97-397/mo after personal build is proven and stable.</div></div>
+      <div class="sn-card"><div class="sn-card-title">Build For Yourself First</div><div class="sn-card-body">Phase 1-2 = personal production tool replacing Jungo + Mortgage Coach. Phase 4 = offer it to other loan officers in Texas at $97-397/mo after personal build is proven and stable.</div></div>
     </div>
   </div>
   <div id="tab-decisions" class="tab-panel">
@@ -293,7 +294,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">LoanOS &middot; Built by Adam Styer</div>
-    <div class="footer-note">The Styer Mortgage Team &middot; NMLS #513013 &middot; Austin, TX &middot; Internal Use Only</div>
+    <div class="footer-note">The Styer Team, Powered by Go Rascal Inc. &middot; NMLS #513013 &middot; Austin, TX &middot; Internal Use Only</div>
   </div>
 </footer>
 <script>
@@ -307,7 +308,7 @@ var MODULES = [
    supabase:"contacts, pipelines, activity_log, tags, closed_loans"},
   {id:"marketing",icon:"&#11043;",label:"Marketing Command Center",color:"#4c7ec9",tag:"Revenue",priority:1,
    desc:"Weekly cadence engine. Schedule, draft, and deploy content to every channel from one dashboard. Mailchimp and Outlook via n8n.",
-   features:["Weekly schedule: Mon=Realtors, Tue=Leads, Wed=LIP, Thu=Pre-Approvals, Fri=Blast","Email campaign builder with saved HTML templates","Mailchimp and Outlook sync via n8n","Rate update publisher: auto-generates web page and email teaser","Call list panels segmented by contact group","Campaign analytics: opens, clicks, replies per segment","AI draft generator via Claude API"],
+   features:["Weekly schedule: Mon=Realtors, Tue=Leads, Wed=LIP, Thu=Pre-Qualifications, Fri=Blast","Email campaign builder with saved HTML templates","Mailchimp and Outlook sync via n8n","Rate update publisher: auto-generates web page and email teaser","Call list panels segmented by contact group","Campaign analytics: opens, clicks, replies per segment","AI draft generator via Claude API"],
    supabase:"campaigns, templates, call_lists, deployments"},
   {id:"calculator",icon:"&#9678;",label:"Mortgage Coach Replacement",color:"#c94c4c",tag:"Priority",priority:1,
    desc:"6-calculator suite replacing Mortgage Coach. Claude writes plain-English narrative summaries. Branded PDF or shareable link output per scenario.",
@@ -315,11 +316,11 @@ var MODULES = [
    supabase:"scenarios, calculations, rate_locks, shared_reports"},
   {id:"automation",icon:"&#8635;",label:"Automation Engine",color:"#4cc98a",tag:"Scale",priority:1,
    desc:"n8n workflows eliminating every repetitive LO task. Contract upload to extract to email drafts to Supabase record. Partially live already.",
-   features:["Contract: extract fields, create loan record, send ack email, build Arive checklist","Pre-approval: extract fields, draft borrower and agent emails, Outlook draft","Final CD: extract 10 fields, populate template, Outlook draft","New application: create CRM contact, send intro email, add to pipeline","Rate update: update website page and send Mailchimp teaser","Activity auto-log on every automation fired","Milestone alerts: LIP past 30 days, pre-approval expiring in 7 days"],
+   features:["Contract: extract fields, create loan record, send ack email, build Arive checklist","Pre-qualification: extract fields, draft borrower and agent emails, Outlook draft","Final CD: extract 10 fields, populate template, Outlook draft","New application: create CRM contact, send intro email, add to pipeline","Rate update: update website page and send Mailchimp teaser","Activity auto-log on every automation fired","Milestone alerts: LIP past 30 days, pre-qualification expiring in 7 days"],
    supabase:"automation_logs, webhook_events, triggers, documents"},
   {id:"funnels",icon:"&#9661;",label:"Lead Funnels",color:"#9b4cc9",tag:"Growth",priority:2,
    desc:"Embeddable landing pages and lead capture forms feeding directly into Supabase CRM.",
-   features:["Pre-approval landing page with form to CRM auto-creation","Rate alert signup: prospect enters info, gets weekly rate email","Realtor co-branded landing page generator","Mortgage calculator widget with embed code for realtors","UTM tracking on all form submissions","Lead scoring: auto-assign hot/warm/cold on engagement","Drip sequence triggers on form submission"],
+   features:["Pre-qualification landing page with form to CRM auto-creation","Rate alert signup: prospect enters info, gets weekly rate email","Realtor co-branded landing page generator","Mortgage calculator widget with embed code for realtors","UTM tracking on all form submissions","Lead scoring: auto-assign hot/warm/cold on engagement","Drip sequence triggers on form submission"],
    supabase:"leads, form_submissions, drip_sequences, utm_data"},
   {id:"research",icon:"&#9675;",label:"Market Intelligence",color:"#c9884c",tag:"Authority",priority:3,
    desc:"Real-time market data and AI commentary. Fed calendar, rate tracking, local market data. One-click publish to website and email.",
@@ -333,13 +334,13 @@ var MODULES = [
 var PHASES = [
   {number:"Phase 1",title:"Foundation",timeline:"4-6 weeks",color:"#9a7b2d",
    output:"Working CRM with real data. Contacts, loan records, documents in Supabase.",
-   items:["Supabase project setup: auth, RLS policies, core schema","Next.js frontend scaffold with brand system","Contacts and loans CRUD: create, view, edit, delete records","PDF upload interface: contract/CD/pre-approval stored in Supabase Storage","Auth: magic link login","Basic dashboard with navigation","Arive to n8n webhook: loan status syncs to Supabase"]},
+   items:["Supabase project setup: auth, RLS policies, core schema","Next.js frontend scaffold with brand system","Contacts and loans CRUD: create, view, edit, delete records","PDF upload interface: contract/CD/pre-qualification stored in Supabase Storage","Auth: magic link login","Basic dashboard with navigation","Arive to n8n webhook: loan status syncs to Supabase"]},
   {number:"Phase 2",title:"Automation Layer",timeline:"3-4 weeks",color:"#4c7ec9",
    output:"Full automation stack live. All Claude/Zapier skills rebuilt inside n8n and Supabase.",
-   items:["n8n setup (self-hosted or cloud)","Contract intake: upload to Claude extract to loan record to Outlook draft to Arive checklist","Pre-approval: upload to Claude extract to borrower and agent email drafts","Final CD: upload to Claude extract 10 fields to email draft","New application: create contact, send intro email, set pipeline stage","Rate update publisher: Supabase to website page and Mailchimp teaser","Activity auto-log on every automation fired"]},
+   items:["n8n setup (self-hosted or cloud)","Contract intake: upload to Claude extract to loan record to Outlook draft to Arive checklist","Pre-qualification: upload to Claude extract to borrower and agent email drafts","Final CD: upload to Claude extract 10 fields to email draft","New application: create contact, send intro email, set pipeline stage","Rate update publisher: Supabase to website page and Mailchimp teaser","Activity auto-log on every automation fired"]},
   {number:"Phase 3",title:"Calculator Suite + Funnels",timeline:"3-4 weeks",color:"#4cc98a",
    output:"Mortgage Coach fully replaced. Lead funnels live. Market intelligence publishing.",
-   items:["Loan Scenario Comparator with Claude narrative output","Refi Analyzer with break-even timeline","Rent vs. Buy calculator","Total Cost of Homeownership (5yr and 10yr view)","Max Purchase Price from income and debt inputs","Buy Now vs. Wait scenario","Branded PDF output and shareable link per scenario","Pre-approval and rate alert landing pages feeding Supabase CRM","Market intelligence: FRED API and Claude weekly commentary"]},
+   items:["Loan Scenario Comparator with Claude narrative output","Refi Analyzer with break-even timeline","Rent vs. Buy calculator","Total Cost of Homeownership (5yr and 10yr view)","Max Purchase Price from income and debt inputs","Buy Now vs. Wait scenario","Branded PDF output and shareable link per scenario","Pre-qualification and rate alert landing pages feeding Supabase CRM","Market intelligence: FRED API and Claude weekly commentary"]},
   {number:"Phase 4",title:"SaaS and Licensing",timeline:"4-5 weeks",color:"#9b4cc9",
    output:"License-ready platform. Deploy, market, sell to LOs nationally at $97-397/mo.",
    items:["Multi-tenant RLS architecture (full data isolation)","White-label theming engine (logo, colors, domain)","Stripe billing: Starter / Pro / Team subscriptions","Onboarding wizard for new LO tenants","Admin dashboard: manage subscribers, feature flags, usage","Go-to-market: beta with network LOs, LinkedIn build-in-public, LO forums"]},
@@ -352,7 +353,7 @@ var DECISIONS = [
    body:"Replaced Zapier with n8n. No per-task billing. Self-hosted at approximately $15/mo vs $100-300/mo at scale. Native Supabase node and Claude API node. More powerful workflow logic. n8n Cloud at $20/mo also viable.",
    tags:[{label:"Replaced: Zapier",type:"replaced"},{label:"Added: n8n",type:"added"}]},
   {date:"Mar 2026",title:"Supabase as Memory Layer",color:"#4c7ec9",
-   body:"Every automation that fires (contract, CD, pre-approval) now also creates or updates a contact record, loan record, and stores the PDF. This was the missing piece - automations fired but nothing was saved anywhere.",
+   body:"Every automation that fires (contract, CD, pre-qualification) now also creates or updates a contact record, loan record, and stores the PDF. This was the missing piece - automations fired but nothing was saved anywhere.",
    tags:[{label:"Confirmed",type:"confirmed"}]},
   {date:"Mar 2026",title:"Mortgage Coach replaced by Calculator Suite",color:"#c94c4c",
    body:"Goal: replace Mortgage Coach entirely with 6 built-in calculators. Key differentiator is Claude writing plain-English narrative per scenario. Output: branded PDF or shareable link integrated with Supabase loan records.",
@@ -494,8 +495,8 @@ function renderRoadmap() {
       + '<div class="phase-timeline">' + phase.timeline + '</div>'
       + '<div class="output-label">Output</div>'
       + '<div class="output-text">' + phase.output + '</div>'
-      + '<div><div class="phase-prog-row"><span style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase">Progress</span>'
-      + '<span style="font-family:var(--font-mono);font-size:10px;color:' + phase.color + '">' + pct + '%</span></div>'
+      + '<div><div class="phase-prog-row"><span style="font-family:var(--font-mono);font-size: 12px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase">Progress</span>'
+      + '<span style="font-family:var(--font-mono);font-size: 12px;color:' + phase.color + '">' + pct + '%</span></div>'
       + '<div class="phase-prog-track"><div class="phase-prog-fill" style="width:' + pct + '%;background:' + phase.color + '"></div></div>'
       + '<div class="phase-prog-label">' + done + ' of ' + phase.items.length + ' tasks</div></div>'
       + '</div>'
@@ -546,5 +547,23 @@ renderDecisions();
 renderPricing();
 updateProgress();
 </script>
+
+<footer class="site-footer" style="background:#0d2342;color:#F6F4EF;padding:28px 16px;font:14px/1.5 system-ui,sans-serif">
+
+<div class="site-footer-legal">
+<img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy-display.png" alt="Go Rascal Inc." height="64">
+<div class="site-footer-legal-copy">
+<p style="color:#F6F4EF;margin:0 0 8px">Adam Styer | Mortgage Loan Originator</p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank" style="color:#F5C443">NMLS ID #513013<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p style="color:#F6F4EF;margin:0 0 8px"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank" style="color:#F5C443">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p style="color:#F6F4EF;margin:0 0 8px">Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Equal Housing Opportunity</p>
+<!-- Licensed states placeholder pending Adam's NMLS confirmation -->
+<p style="color:#F6F4EF;margin:0 0 8px">Licensed in: TX</p>
+<p style="color:#F6F4EF;margin:0 0 8px">Loans are arranged through third party lenders.</p>
+<p style="color:#F6F4EF;margin:0"><a href="/licensing.html" style="color:#F5C443">State-specific consumer disclosures available on the Licensing &amp; Disclosures page.</a></p>
+</div>
+</div>
+</footer>
 </body>
 </html>

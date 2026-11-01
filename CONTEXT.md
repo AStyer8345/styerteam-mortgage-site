@@ -1,29 +1,37 @@
-# styermortgage.com — Context
+# styerteam.com — Context
 
 ## Current State
 
-Public mortgage website for The Styer Team · Powered by GoRascal. Static HTML/CSS/JS on Netlify. Production deploys from GitHub `main`. This work is on the redesign pull request (PR #41) against `design/private-wealth-editorial`. Do not push `main`.
+Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). Production is commit fc629a1e on `cursor/ga4-landing-and-leads-dfa1` (PR #47, not merged). Do not deploy to production.
 
-Legal entity is Go Rascal Inc. Company NMLS 2072896. Adam Styer NMLS 513013. The only business phone is (512) 956-6010. Apply and intake CTAs go to `/contact.html`. `/apply-now` 301s to `https://styermortgage.com/contact.html`.
+Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel both copies call LoanOS. Do not rename fields or change that endpoint. Preview hosts do not send live leads unless ALLOW_PREVIEW_LIVE_LEADS=true.
 
-Forms post to Netlify (`/`) and `/.netlify/functions/lead-intake`, which dispatches the n8n web-lead webhook. Mailchimp runs only when `marketing_opt_in` is on. Do not rename those fields.
+GTM-PQQ6PGLR loads immediately on styerteam.com and www.styerteam.com only. Direct Google-tag events wait until `gtm.load`. `generate_lead` fires once after a confirmed capture, with form id and page path, and no contact fields.
+
+Homepage CLS: the first paint now reserves the header, hero, and ledger. Mobile keeps a metric-matched Inter fallback until the deferred stylesheet loads. Desktop declares Inter and Source Serif up front so the nav and ledger do not jump.
 
 ## Repository
 
 | Item | Value |
 |------|-------|
 | Repo | `AStyer8345/styerteam-mortgage-site` |
-| Hosting | Netlify, publish `.site-dist` |
-| Domain | `https://styermortgage.com` |
-| Production branch | `main` |
+| Hosting | Vercel project `styerteam-site`. Netlify config stays in the repo. |
+| Publish | `.site-dist` |
+| Domain | `https://styerteam.com` |
+| This branch | `cursor/asset-depletion-calculator-lead-5600` |
+| PR base | `preview/claims-docpaths-source-2026-10-28` |
 
 ## Last Worked On
 
-**2026-10-28 — search titles and 404s.** Old newsletter and test URLs that 404 now 301 to the closest post. Switch-lender, closing-cost, non-QM, construction, and calculator titles were rewritten for the queries in Search Console. Sitemap URLs are indexable 200s. Phone stays (512) 956-6010. Jumbo stays above $832,750. No Netlify preview on PR #41.
+The asset depletion calculator analysis form. It was hidden behind an empty `WEBHOOK_URL`, so submissions never reached LoanOS. It now posts through `lead-intake` with the calculator illustration in the inquiry note, and fires `generate_lead` only after `captured: true`. Not deployed to production.
+
+Homepage mobile CLS (PR #48). The hero and header were painted from critical CSS, then the deferred stylesheet restyled the kicker, buttons, wordmark, and nav. Desktop also showed the full menu in normal flow until that stylesheet arrived.
 
 ## Working Rules
 
 - Match existing HTML/CSS. Do not add a CSS framework or npm package without approval.
-- Keep GTM, form field names, LoanOS capture, and the lead-intake webhook.
+- Keep GTM container id, form field names, LoanOS capture, and the lead-intake webhook.
+- Do not submit real forms against production or preview. They create real leads.
+- Local builds need `CONTEXT=deploy-preview` so IndexNow does not submit.
 - New blog posts belong in `blog/manifest.json`, `blog.html`, and the sitemap. Realtor updates stay under `/realtor-updates/` and are also registered in the blog index.
 - Do not mark a briefing ticket done unless every file for it is committed in the same session.

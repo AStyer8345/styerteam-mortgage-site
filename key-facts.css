@@ -7,7 +7,7 @@ body .key-facts .key-facts-title{font-size:.75rem!important;font-family:inherit!
 .key-facts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0;border-top:1px solid #0E1B24}
 .key-facts-grid>div{padding:16px 18px 16px 0;border-bottom:1px solid #DAD4C8}
 .key-facts-grid>div:not(:nth-child(3n+1)){padding-left:18px;border-left:1px solid #DAD4C8}
-.key-facts-grid dt{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#4A5761;margin:0 0 6px;font-weight:600}
+.key-facts-grid dt{font-size: .75rem;letter-spacing:.08em;text-transform:uppercase;color:#4A5761;margin:0 0 6px;font-weight:600}
 .key-facts-grid dd{margin:0;font-size:1.04rem;line-height:1.4;color:#0E1B24;font-weight:600;font-variant-numeric:tabular-nums}
 .key-facts-note{font-size:.8125rem;color:#4A5761;margin:12px 0 0}
 @media (max-width:760px){

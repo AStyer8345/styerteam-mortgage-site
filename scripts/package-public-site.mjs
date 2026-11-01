@@ -10,14 +10,15 @@ const publicDirectories = new Set(['assets', 'css', 'js', 'blog', 'loans', 'rate
 const publicExtensions = /\.(html|css|js|svg|png|jpe?g|webp|avif|ico|json|xml|txt|woff2?|pdf)$/i;
 const rootData = new Set(['rates.json', 'recent-updates.json', 'task-reports.json', 'robots.txt', 'llms.txt', 'acd320ce4aaac882bfb455892bdcf208.txt', 'sitemap.xml', '_redirects', '_headers', '31a45519eb8335e7c25e45e696e834c6.txt']);
 const privateFiles = new Set(JSON.parse(fs.readFileSync(path.join(root, 'scripts/admin-paths.json'), 'utf8')));
+const withheldFromProduction = new Set(['loanos.html', 'loanos-waitlist.html', 'forms.html']);
 const tracked = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);
 const releaseFiles = JSON.parse(fs.readFileSync(path.join(root, 'scripts/public-release-files.json'), 'utf8'));
 const candidates = [...new Set([...tracked, ...releaseFiles])];
 const files = candidates.filter(file => {
-  if (privateFiles.has(file)) return false;
+  if (privateFiles.has(file) || withheldFromProduction.has(file)) return false;
   if (file.startsWith('.') || file.includes('/originals/') || file.includes('_TEMPLATE')) return false;
   const parts = file.split('/');
-  if (parts.length === 1) return rootData.has(file) || (/\.(html|css|js|svg|png|ico|pdf)$/i.test(file) && file !== 'server.js');
+  if (parts.length === 1) return rootData.has(file) || (/\.(html|css|js|svg|png|ico|pdf)$/i.test(file) && file !== 'server.js' && file !== 'middleware.js');
   return publicDirectories.has(parts[0]) && publicExtensions.test(file);
 });
 // Fail before replacing the previous package if a reviewed release file is unavailable.
@@ -46,3 +47,4 @@ for (const file of files) {
 }
 console.log(`Packaged ${files.length} public website files. Functions, source, reports and metadata excluded.`);
 await import('./optimize-homepage.mjs');
+await import('./optimize-published-assets.mjs');
