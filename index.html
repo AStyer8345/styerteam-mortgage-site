@@ -33,11 +33,26 @@
 
 <link rel="preload" as="image" href="/assets/austin-skyline-hero-960.avif" imagesrcset="/assets/austin-skyline-hero-960.avif 960w, /assets/austin-skyline-hero.avif 1400w" imagesizes="100vw" media="(min-width: 769px)" type="image/avif" fetchpriority="high"/>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/source-serif-4-roman-latin.woff2" media="(min-width: 769px)" crossorigin/>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-normal-6.woff2" media="(min-width: 769px)" crossorigin/>
 <link rel="preload" as="image" href="/assets/adam-hero-mobile.avif" media="(max-width: 768px)" type="image/avif" fetchpriority="high"/>
 <style>
 body{margin:0}
-:root{--pwe-serif:'Source Serif 4',Georgia,'Times New Roman',serif;--pwe-alabaster:#f6f4ef}
-header nav{min-height:80px}
+:root{--pwe-serif:'Source Serif 4',Georgia,'Times New Roman',serif;--pwe-sans:'Inter','Inter Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--pwe-alabaster:#f6f4ef}
+@font-face{font-family:'Inter Fallback';font-style:normal;font-weight:400 600;size-adjust:107%;ascent-override:90%;descent-override:22%;line-gap-override:0%;src:local('Liberation Sans'),local('Arial'),local('Nimbus Sans'),local('Segoe UI')}
+body.private-wealth-editorial{font-family:var(--pwe-sans);font-size:17px;line-height:1.65}
+body.private-wealth-editorial *,body.private-wealth-editorial *::before,body.private-wealth-editorial *::after{box-sizing:border-box}
+.skip-link{position:absolute;top:-40px;left:0}
+header nav{display:flex;align-items:center;justify-content:space-between;min-height:84px;padding:14px 0;gap:24px}
+.nav-links{display:flex;align-items:center;gap:20px;list-style:none;margin:0;padding:0}
+.nav-dropdown{display:none;position:absolute;top:100%;z-index:20}
+.gorascal-wordmark-chip{display:inline-flex;align-items:center;line-height:0;background:#fff;border-radius:6px;padding:2px 7px}
+.gorascal-wordmark-chip img{height:26px;width:52px;aspect-ratio:2/1;display:block}
+.gorascal-wordmark-chip-hero img{height:22px;width:44px}
+.nav-brand{display:flex;align-items:center;flex-wrap:wrap;column-gap:10px;row-gap:2px}
+.nav-wordmark{font:600 12.5px/1.25 'Inter','Inter Fallback',system-ui,sans-serif;color:#fff}
+.nav-powered-mark{display:inline-flex;align-items:center;gap:6px}
+.nav-powered-label{font:600 12.5px/1.25 'Inter','Inter Fallback',system-ui,sans-serif;color:#fff}
+body.private-wealth-editorial .container{width:min(1320px,calc(100% - 64px));max-width:1320px;margin-inline:auto;padding-inline:0}
 body.private-wealth-editorial main .hero.pwe-hero,
 .pwe-hero {
   position: relative;
@@ -396,13 +411,94 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
   text-underline-offset: 4px;
 }
 
+.pwe-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--pwe-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #C6A46C;
+  margin: 0 0 20px;
+}
+.pwe-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background-color: currentColor;
+}
+.pwe-hero-powered {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  font-family: var(--pwe-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: rgba(246, 244, 239, 0.88);
+}
+.pwe-btn-primary,
+body.private-wealth-editorial .pwe-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 52px;
+  padding: 14px 28px;
+  background: #0E1B24;
+  color: #f6f4ef;
+  border: 1px solid #0E1B24;
+  border-radius: 2px;
+  font-family: var(--pwe-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.pwe-dark .pwe-btn-primary,
+body.private-wealth-editorial .pwe-dark .pwe-btn-primary {
+  background: #f6f4ef;
+  color: #0B151D;
+  border-color: #f6f4ef;
+}
+.pwe-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 14px 4px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+  font-family: var(--pwe-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
 .pwe-hero-mobile-portrait { display: none; }
 @media (max-width: 768px) {
   .nav-links { display: none !important; }
   .mobile-menu-toggle { display: flex !important; min-width: 44px; min-height: 44px; }
   body.private-wealth-editorial > header { min-height: 84px; background: rgba(11, 21, 29, 0.97); }
   body.private-wealth-editorial > header nav { display: flex; align-items: center; justify-content: space-between; min-height: 84px; }
-  .gorascal-wordmark-chip img { height: 48px; width: auto; }
+  .gorascal-wordmark-chip img { height: 48px; width: 96px; }
+  .gorascal-wordmark-chip { padding: 2px 4px; }
+  .nav-brand { column-gap: 6px; row-gap: 0; max-width: calc(100% - 56px); }
+  .nav-wordmark { flex: 1 1 100%; font-size: 16px; line-height: 1.25; }
+  .nav-powered-mark { gap: 4px; }
+  .nav-powered-label { font-size: 13px; line-height: 1.25; }
+  body.private-wealth-editorial .container { width: calc(100% - 40px); }
+  .pwe-hero-powered,
+  .gorascal-wordmark-chip-hero { display: none !important; }
   .pwe-hero-skyline,
   .pwe-hero-visual { display: none !important; }
   .pwe-hero-mobile-portrait {
@@ -445,9 +541,28 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
   body.private-wealth-editorial main .hero.pwe-hero > .container { width: calc(100% - 40px) !important; margin-inline: auto !important; padding-inline: 0 !important; }
   body.private-wealth-editorial .pwe-hero-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 44px !important; }
 }
+@media (max-width: 1280px) {
+  .nav-links { display: none !important; }
+  .nav-links.active { display: flex !important; flex-direction: column; align-items: stretch; position: absolute; top: 100%; left: 0; right: 0; width: 100%; }
+  .mobile-menu-toggle { display: flex !important; min-width: 44px; min-height: 44px; }
+}
+@media (min-width: 1281px) {
+  .mobile-menu-toggle { display: none !important; }
+  .nav-links { display: flex !important; flex-wrap: nowrap; }
+  .nav-links > li > a { white-space: nowrap; }
+}
+@media (min-width: 1281px) and (max-width: 1440px) {
+  .nav-links { gap: 10px !important; }
+  .nav-links > li > a:not(.nav-cta) { font-size: 12px !important; }
+}
 
 </style>
-<!-- Fonts are declared in the main stylesheet with font-display: swap, so they do not queue ahead of the hero image. -->
+<!-- The hero uses a metric-matched Inter fallback until the stylesheet's web fonts load, so the swap does not move the paragraph. Desktop declares the same faces immediately so the ledger does not reflow. -->
+<style media="(min-width: 769px)">
+@font-face{font-family:Inter;font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/inter-normal-6.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/source-serif-4-roman-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/source-serif-4-italic-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+</style>
 <!-- Full styles load after the hero so the headline can paint from the critical CSS above. -->
 <!-- Schema.org LocalBusiness -->
 

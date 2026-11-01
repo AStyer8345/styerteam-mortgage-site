@@ -1349,7 +1349,7 @@ function bootSite() {
   initPrequalForm();
   initNativeLeadForms();
   initCityToggle();
-  initMortgageAssistant();
+  scheduleMortgageAssistant();
 }
 
 function initNativeLeadForms() {
@@ -1408,6 +1408,24 @@ function initMortgageAssistant() {
   script.defer = true;
   script.dataset.mortgageAssistant = 'true';
   document.head.appendChild(script);
+}
+
+function scheduleMortgageAssistant() {
+  if (window.__styerAssistantScheduled) return;
+  window.__styerAssistantScheduled = true;
+  var started = false;
+  function start() {
+    if (started) return;
+    started = true;
+    initMortgageAssistant();
+  }
+  ['pointerdown', 'keydown', 'scroll'].forEach(function (eventName) {
+    window.addEventListener(eventName, start, { once: true, passive: true });
+  });
+  window.addEventListener('load', function () {
+    var idle = window.requestIdleCallback || function (fn) { return setTimeout(fn, 4000); };
+    idle(start, { timeout: 5000 });
+  }, { once: true });
 }
 
 function initCityToggle() {
