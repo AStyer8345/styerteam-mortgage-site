@@ -34,8 +34,10 @@
       var accepted=(results[0].status==='fulfilled'&&results[0].value.ok)||(results[1].status==='fulfilled'&&results[1].value&&results[1].value.captured===true);
       if(!accepted)throw new Error('capture_failed');
       try{window.sessionStorage.setItem('styer:professional-referral',JSON.stringify({propertyState:String(data.get('property_state')||''),partnerRole:String(data.get('partner_role')||''),includeReferrer:data.get('include_referrer_in_follow_up')==='yes'}));}catch(ignore){}
-      track('accepted_submit',{form_name:form.getAttribute('name'),inquiry_id:data.get('inquiry_id')});
-      track('generate_lead',{lead_type:'professional_referral',form_name:form.getAttribute('name'),inquiry_id:data.get('inquiry_id')});
+      track('accepted_submit',{form_name:form.getAttribute('name'),inquiry_id:data.get('inquiry_id'),page_path:window.location.pathname,page_location:window.location.origin+window.location.pathname});
+      var leadParams={lead_type:'professional_referral',form_name:form.getAttribute('name')||'professional-referral',form_id:form.id||form.getAttribute('name')||'professional-referral',inquiry_id:String(data.get('inquiry_id')||'')};
+      if(window.StyerTrackGenerateLead) await window.StyerTrackGenerateLead(leadParams,{waitForTags:true,scenarioSubmit:false});
+      else track('generate_lead',Object.assign({page_path:window.location.pathname,page_location:window.location.origin+window.location.pathname},leadParams));
       window.location.href='/thank-you.html?type=professional-referral';
     }catch(error){
       form.dataset.sending='false';

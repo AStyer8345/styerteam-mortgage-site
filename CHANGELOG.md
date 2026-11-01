@@ -1,3 +1,24 @@
+## 2026-11-01 — Preview: homepage layout shift
+
+- The homepage first paint now reserves the header, hero buttons, kicker, wordmark, and containers, so the deferred stylesheet no longer moves the hero. Desktop hides the dropdowns and keeps the nav on one row before that stylesheet arrives.
+- Inter uses a size-adjusted local fallback on mobile. Desktop preloads Inter and declares the hero faces immediately. The chat widget starts on idle or the first interaction. GTM still loads immediately, and direct tag commands still wait for `gtm.load`. Copy, forms, and schema are unchanged. Not merged and not deployed to production.
+
+## 2026-11-01 — Preview: GA4 landing page and extensionless URLs
+
+- GTM-PQQ6PGLR now loads in the head on styerteam.com instead of waiting for interaction. Chat and Ads events wait until the container’s page view has run, so they no longer open sessions with landing page `(not set)`.
+- `generate_lead` fires once after LoanOS or the waitlist endpoint confirms the lead, with form id and page path only. Hero quotes no longer fire before the server responds. The assistant, first-time buyer form, DPA guide, waitlist, and buyer guide were the paths that missed or raced the event.
+- `/asset-depletion-calculator` and 71 other sitemap pages that had an `.html` file but no extensionless 301 now redirect. `cleanUrls` stays off. Not merged and not deployed to production.
+
+## 2026-10-31 — Preview: program card photos show the house
+
+- Homepage program cards were a 180px strip. Accessibility CSS also forced those photos to `height: auto`, so the box cut off everything below the trees and roof.
+- The photo frame is now 16:9, matching the source files, with a focal point per card. Labels stay on the foreground. Copy, links, and forms are unchanged. Not merged and not deployed.
+
+## 2026-10-31 — Preview: compliance copy and a version endpoint
+
+- The homepage no longer says more than 1,000 loans closed, and the Career Loans Closed stat is now “Licensed / Since September 2015.” The Austin DSCR closing step says quick closings. The listed rate lines on products, about, and the self-employed page are qualitative. Homepage and self-employed FAQ JSON-LD matches the visible answers.
+- Link-preview images use https://styerteam.com, except `loans/jumbo.html`. `/api/version` returns the Vercel commit, ref, deployment id, environment, and the time the function instance loaded. Cache-Control is no-store. Not merged and not deployed.
+
 ## 2026-10-31 — Preview: do not send live leads from Vercel previews
 
 - When VERCEL_ENV is set and is not production, lead-intake forces test mode and skips Mailchimp and the n8n webhook unless ALLOW_PREVIEW_LIVE_LEADS=true. Netlify, where VERCEL_ENV is unset, and Vercel production stay on the live path.

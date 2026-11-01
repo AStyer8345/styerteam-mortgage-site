@@ -48,6 +48,47 @@ test('saved analysis keeps the private-link checks without calling a store servi
   assert.equal((await saved.json()).saved, true);
 });
 
+test('version endpoint reports only the public deploy fields', () => {
+  const keys = ['VERCEL_GIT_COMMIT_SHA', 'VERCEL_GIT_COMMIT_REF', 'VERCEL_DEPLOYMENT_ID', 'VERCEL_ENV', 'MCC_PASS'];
+  const previous = Object.fromEntries(keys.map((key) => [key, process.env[key]]));
+  process.env.VERCEL_GIT_COMMIT_SHA = 'abc123';
+  process.env.VERCEL_GIT_COMMIT_REF = 'preview/claims-docpaths-source-2026-10-28';
+  process.env.VERCEL_DEPLOYMENT_ID = 'dpl_test';
+  process.env.VERCEL_ENV = 'preview';
+  process.env.MCC_PASS = 'do-not-leak';
+  try {
+    const version = require('../api/version');
+    const res = mockResponse();
+    version({ method: 'GET' }, res);
+    assert.equal(res.statusCode, 200);
+    assert.equal(res.headers['Cache-Control'], 'no-store');
+    assert.equal(res.headers['Content-Type'], 'application/json; charset=utf-8');
+    assert.equal(res.body.commit, 'abc123');
+    assert.equal(res.body.ref, 'preview/claims-docpaths-source-2026-10-28');
+    assert.equal(res.body.deploymentId, 'dpl_test');
+    assert.equal(res.body.env, 'preview');
+    assert.match(res.body.builtAt, /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
+    assert.deepEqual(Object.keys(res.body).sort(), ['builtAt', 'commit', 'deploymentId', 'env', 'ref']);
+    assert.equal(JSON.stringify(res.body).includes('do-not-leak'), false);
+
+    delete process.env.VERCEL_DEPLOYMENT_ID;
+    const missing = mockResponse();
+    version({ method: 'GET' }, missing);
+    assert.equal(missing.body.deploymentId, null);
+    assert.equal(missing.body.commit, 'abc123');
+
+    const denied = mockResponse();
+    version({ method: 'POST' }, denied);
+    assert.equal(denied.statusCode, 405);
+    assert.equal(denied.headers.Allow, 'GET, HEAD');
+  } finally {
+    for (const key of keys) {
+      if (previous[key] === undefined) delete process.env[key];
+      else process.env[key] = previous[key];
+    }
+  }
+});
+
 test('the public function bridge drops the internal backup header', async () => {
   let seen;
   const res = mockResponse();

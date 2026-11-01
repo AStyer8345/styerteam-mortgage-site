@@ -19,6 +19,7 @@
     conversationStarted: false,
     converted: false,
     abandonedTracked: false,
+    leadEventSent: false,
     abandonmentTimer: null,
     analyticsSeen: {},
     assistantMode: document.body && document.body.dataset ? (document.body.dataset.assistantMode || 'consumer') : 'consumer',
@@ -56,7 +57,7 @@
       var stylesheet = document.createElement('link');
       stylesheet.rel = 'stylesheet';
       stylesheet.media = 'print';
-      stylesheet.href = '/assistant-widget.css?v=20261006-answer-handoff-v2';
+      stylesheet.href = '/assistant-widget.css?v=20261101-ga4-lead';
       stylesheet.onload = function () {
         stylesheet.onload = null;
         stylesheet.media = 'all';
@@ -323,7 +324,10 @@
       clearConfirmation();
       state.turnCount += 3;
       handleResponse(data);
-      if (needsConsent && data.toolResult && data.toolResult.ok === true) showStorageNotice(data.message);
+      if (needsConsent && data.toolResult && data.toolResult.ok === true) {
+        showStorageNotice(data.message);
+        trackConfirmedWebsiteLead();
+      }
     }).catch(function (error) {
       if (!approvedNotification || typeof window.StyerCaptureNotificationBackup !== 'function') {
         handleError(error); return;
@@ -628,14 +632,39 @@
     Object.keys(payload).forEach(function (key) { if (payload[key] === null || payload[key] === '' || payload[key] === 'unknown') delete payload[key]; });
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(payload);
-    // GTM's published container only forwards generate_lead. Send these
-    // non-sensitive funnel events through the existing Google tag directly.
-    // Audit/preview activity stays out of production analytics.
+    // GTM's published container only forwards generate_lead. Other funnel
+    // events go to the Google tag after gtm.load, so they cannot open a
+    // session before page_view. Audit and preview activity stays out.
     if (/^(www\.)?styerteam\.com$/.test(window.location.hostname) && !/[?&]assistant_test=1(?:&|$)/.test(window.location.search)) {
       var parameters = Object.assign({}, payload, { send_to: 'G-DDY0H0319S' });
       delete parameters.event;
-      (function () { window.dataLayer.push(arguments); })('event', eventName, parameters);
+      var path = window.location.pathname || '/';
+      parameters.page_path = path;
+      parameters.page_location = (window.location.origin || '') + path;
+      var send = function () {
+        (function () { window.dataLayer.push(arguments); })('event', eventName, parameters);
+      };
+      if (typeof window.StyerAfterGoogleTag === 'function') window.StyerAfterGoogleTag(send);
     }
+  }
+
+  function trackConfirmedWebsiteLead() {
+    if (state.leadEventSent) return;
+    state.leadEventSent = true;
+    var path = window.location.pathname || '/';
+    var detail = {
+      lead_type: 'mortgage_assistant',
+      form_name: 'mortgage-assistant-contact',
+      form_id: 'mortgage-assistant-contact',
+      page_path: path,
+      page_location: (window.location.origin || '') + path
+    };
+    if (typeof window.StyerTrackGenerateLead === 'function') {
+      window.StyerTrackGenerateLead(detail, { scenarioSubmit: false });
+      return;
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: 'generate_lead' }, detail));
   }
 
   function safeAnalyticsValue(value) {

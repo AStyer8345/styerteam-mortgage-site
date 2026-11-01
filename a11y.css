@@ -95,7 +95,8 @@ html {
   .gorascal-wordmark-chip img,
   header .nav-brand .gorascal-wordmark-chip img {
     height: 48px !important;
-    width: auto !important;
+    width: 96px !important;
+    aspect-ratio: 2 / 1;
     max-width: none !important;
     max-height: none !important;
   }
@@ -124,11 +125,22 @@ video {
   min-width: 0;
 }
 
-.pwe-card-img,
 .pwe-people-portrait img {
   width: 100% !important;
   max-width: 100% !important;
   height: auto !important;
+}
+
+/* Card photos fill a 16:9 frame. height:auto here used to ignore object-fit and clip each house down to the roof. */
+.pwe-card-media {
+  aspect-ratio: 16 / 9;
+}
+.pwe-card-media .pwe-card-img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: var(--card-focus, center 52%);
 }
 
 .u-cta-card :is(input, textarea)::placeholder,

@@ -124,6 +124,10 @@
     if (!eventName && link.matches('a[href*="scenario"]')) eventName = 'send_scenario_click';
     if (!eventName) return;
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: eventName, page_path: window.location.pathname });
+    window.dataLayer.push({
+      event: eventName,
+      page_path: window.location.pathname,
+      page_location: window.location.origin + window.location.pathname
+    });
   });
 })();
