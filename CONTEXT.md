@@ -2,7 +2,7 @@
 
 ## Current State
 
-Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). Production is still commit dde482e3 on `cursor/card-photo-framing-d0ca` until this branch is reviewed. Do not merge and do not deploy to production.
+Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). Production is commit fc629a1e on `cursor/ga4-landing-and-leads-dfa1` (PR #47, not merged). This calculator change is not merged and is not deployed to production.
 
 Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel both copies call LoanOS. Do not rename fields or change that endpoint. Preview hosts do not send live leads unless ALLOW_PREVIEW_LIVE_LEADS=true.
 
@@ -16,12 +16,12 @@ GTM-PQQ6PGLR loads immediately on styerteam.com and www.styerteam.com only. Dire
 | Hosting | Vercel project `styerteam-site`. Netlify config stays in the repo. |
 | Publish | `.site-dist` |
 | Domain | `https://styerteam.com` |
-| This branch | `cursor/ga4-landing-and-leads-dfa1` |
+| This branch | `cursor/asset-depletion-calculator-lead-5600` |
 | PR base | `preview/claims-docpaths-source-2026-10-28` |
 
 ## Last Worked On
 
-GA4 landing-page `(not set)` and missing `generate_lead` events, plus 72 sitemap pages that 404 without `.html` (including `/asset-depletion-calculator`). Not merged and not deployed to production.
+The asset depletion calculator analysis form. It was hidden behind an empty `WEBHOOK_URL`, so submissions never reached LoanOS. It now posts through `lead-intake` with the calculator illustration in the inquiry note, and fires `generate_lead` only after `captured: true`. Not merged and not deployed to production.
 
 ## Working Rules
 

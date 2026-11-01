@@ -1,3 +1,8 @@
+## 2026-11-01 — Preview: asset depletion calculator leads
+
+- The analysis form on `/asset-depletion-calculator.html` posted to an empty `WEBHOOK_URL`, so it stayed hidden and never created a LoanOS lead or a `generate_lead` event.
+- It now uses the same `lead-intake` function as the contact, quick-contact, and prequal forms. LoanOS stores the inquiry, then the web-lead webhook claims the borrower confirmation and Adam's alert. `generate_lead` fires once after `captured: true`. The form collects name and email only, so it does not add a phone field or TCPA checkbox. Not merged and not deployed to production.
+
 ## 2026-11-01 — Preview: GA4 landing page and extensionless URLs
 
 - GTM-PQQ6PGLR now loads in the head on styerteam.com instead of waiting for interaction. Chat and Ads events wait until the container’s page view has run, so they no longer open sessions with landing page `(not set)`.

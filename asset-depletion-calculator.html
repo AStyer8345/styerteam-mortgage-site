@@ -563,7 +563,7 @@
     }
     .adc-cta-link:hover { color: #fff; }
 
-    /* Email form (only visible if WEBHOOK_URL set) */
+    /* Email form — posts through the site lead-intake function */
     .adc-email {
       margin-top: 1.25rem;
       background: var(--adc-white);
@@ -1101,22 +1101,49 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div>
 <a rel="noopener" target="_blank" class="adc-cta-link" hidden="" href="https://gorascal.my1003app.com/513013/register" id="adc-app-link">Already talked with Adam? Start Full Loan Application<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
 </div>
-<!-- Email-me-this-analysis (hidden unless WEBHOOK_URL set) -->
-<div class="adc-email" id="adc-email" hidden="">
+<!-- Email this analysis. Same lead-intake path as contact and prequal. -->
+<div class="adc-email" id="adc-email">
 <h4>Email me this analysis</h4>
-<form id="adc-email-form" novalidate="">
+<form action="/asset-depletion-calculator.html" id="adc-email-form" method="POST" name="asset-depletion-calculator" novalidate="">
+<input name="form-name" type="hidden" value="asset-depletion-calculator"/>
+<input name="inquiry_id" type="hidden" value=""/>
+<input id="adc-email-situation" name="situation" type="hidden" value=""/>
+<input name="lead_source" type="hidden" value="Asset Depletion Calculator"/>
+<input name="tag" type="hidden" value="asset-depletion-calculator"/>
+<input name="intent" type="hidden" value="asset_depletion_calculator"/>
+<input name="preferred_follow_up" type="hidden" value="Email"/>
+<input name="cta_label" type="hidden" value="Email me the analysis"/>
+<input name="page_url" type="hidden" value=""/>
+<input name="entry_referrer" type="hidden" value=""/>
+<input name="utm_source" type="hidden" value=""/>
+<input name="utm_medium" type="hidden" value=""/>
+<input name="utm_campaign" type="hidden" value=""/>
+<input name="utm_term" type="hidden" value=""/>
+<input name="utm_content" type="hidden" value=""/>
+<input name="first_touch_page" type="hidden" value=""/>
+<input name="first_touch_referrer" type="hidden" value=""/>
+<input name="first_touch_at" type="hidden" value=""/>
+<input name="first_touch_source" type="hidden" value=""/>
+<input name="first_touch_utm_source" type="hidden" value=""/>
+<input name="first_touch_utm_medium" type="hidden" value=""/>
+<input name="first_touch_utm_campaign" type="hidden" value=""/>
+<input name="first_touch_utm_term" type="hidden" value=""/>
+<input name="first_touch_utm_content" type="hidden" value=""/>
+<input name="source" type="hidden" value=""/>
+<input name="cta_source_page" type="hidden" value=""/>
+<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
 <div class="adc-email-grid">
 <div class="adc-field" style="margin:0;">
 <label class="adc-label" for="adc-email-name">Name</label>
-<input autocomplete="name" class="adc-input adc-input--no-prefix" id="adc-email-name" required="" type="text"/>
+<input autocomplete="name" class="adc-input adc-input--no-prefix" id="adc-email-name" name="name" required="" type="text"/>
 </div>
 <div class="adc-field" style="margin:0;">
 <label class="adc-label" for="adc-email-addr">Email</label>
-<input autocomplete="email" class="adc-input adc-input--no-prefix" id="adc-email-addr" required="" type="email"/>
+<input autocomplete="email" class="adc-input adc-input--no-prefix" id="adc-email-addr" name="email" required="" type="email"/>
 </div>
 <div class="adc-field adc-email-full" style="margin:0;">
 <label class="adc-label" for="adc-email-notes">Notes (optional)</label>
-<textarea class="adc-input adc-input--no-prefix" id="adc-email-notes" rows="3" style="resize:vertical;min-height:80px;"></textarea>
+<textarea class="adc-input adc-input--no-prefix" id="adc-email-notes" name="notes" rows="3" style="resize:vertical;min-height:80px;"></textarea>
 </div>
 </div>
 <div style="display:flex;gap:.65rem;align-items:center;margin-top:.85rem;flex-wrap:wrap;">
@@ -1258,6 +1285,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <script defer="" src="/script.js?v=20261101-ga4-lead"></script>
 <script defer="" src="/js/scroll-effects.js?v=20260429"></script>
 <script defer="" src="/analytics.js?v=20261101-ga4-lead"></script>
+<script defer="" src="/assets/utm.js?v=20260920"></script>
 <!-- ==========================================================================
        START ASSET DEPLETION CALCULATOR MODULE — SCRIPT
        Self-contained IIFE. Reads/writes only DOM within
@@ -1271,8 +1299,8 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
     // Active loan application URL. Set to "" to hide the tertiary link.
     var APPLICATION_URL = "https://gorascal.my1003app.com/513013/register";
 
-    // Webhook for the optional "Email me this analysis" form. Empty = hide.
-    var WEBHOOK_URL = "";
+    var LEAD_INTAKE_URL = "/.netlify/functions/lead-intake";
+    var LEAD_ERROR = "Something went wrong. Please try again or call Adam at (512) 956-6010.";
 
     // Primary depletion periods (visually emphasized cards)
     var PRIMARY_PERIODS = [36, 60, 84];
@@ -1368,9 +1396,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
       els.appLink.rel = "noopener";
       els.appLink.hidden = false;
     }
-    if (WEBHOOK_URL && els.emailWrap) {
-      els.emailWrap.hidden = false;
-    }
+    if (els.emailWrap) els.emailWrap.hidden = false;
 
     // ----- Core math ---------------------------------------------------------
     function readInputs() {
@@ -1533,6 +1559,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
         estimatedAssetIncome: Math.round(assetIncome),
         estimatedTotalIncome: Math.round(totalIncome)
       };
+      syncSituation();
     }
 
     var lastSnapshot = null;
@@ -1568,43 +1595,187 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
       });
     }
 
-    // ----- Email form (only active when WEBHOOK_URL is set) ------------------
-    if (WEBHOOK_URL && els.emailForm) {
-      els.emailForm.addEventListener('submit', function (e) {
+    // ----- Email form --------------------------------------------------------
+    // Same function as contact, quick contact, and prequal. The browser posts
+    // JSON to lead-intake with no secret. That function stores the inquiry in
+    // LoanOS and dispatches the web-lead webhook, which claims the borrower
+    // confirmation and Adam's alert. A urlencoded copy posts to this page so
+    // the middleware backup uses the same inquiry id.
+    var ATTRIBUTION_FIELDS = [
+      'page_url', 'entry_referrer', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+      'first_touch_page', 'first_touch_referrer', 'first_touch_at', 'first_touch_source',
+      'first_touch_utm_source', 'first_touch_utm_medium', 'first_touch_utm_campaign',
+      'first_touch_utm_term', 'first_touch_utm_content', 'source', 'cta_source_page', 'cta_label'
+    ];
+
+    function fieldValue(name) {
+      if (!els.emailForm) return '';
+      var field = els.emailForm.querySelector('[name="' + name + '"]');
+      return field ? String(field.value || '').trim() : '';
+    }
+
+    function sourcePage() {
+      var recorded = fieldValue('page_url');
+      if (recorded) return recorded;
+      return (window.location.origin || '') + (window.location.pathname || '/asset-depletion-calculator.html');
+    }
+
+    function buildSituation(userNotes) {
+      var lines = [
+        'Asset depletion calculator illustration. Not verified income, a quote, or an offer.',
+        'Source page: /asset-depletion-calculator.html'
+      ];
+      var snap = lastSnapshot;
+      if (snap && snap.inputs && snap.outputs) {
+        var entered = snap.inputs;
+        var outputs = snap.outputs;
+        var assumed = snap.assumptions || {};
+        lines.push(
+          'Entered balances: checking ' + money(entered.checking) + '; brokerage ' + money(entered.brokerage) + '; retirement ' + money(entered.retirement) + '; other liquid ' + money(entered.other) + '.',
+          'Assumed inclusion percentages: checking ' + assumed.checking + '; brokerage ' + assumed.brokerage + '; retirement ' + assumed.retirement + '; other liquid ' + assumed.other + '.',
+          'Selected illustration period: ' + snap.selectedDepletionPeriod + ' months.',
+          'Selected-period monthly illustration: ' + money(snap.estimatedAssetIncome) + '.',
+          'Combined monthly illustration, including other entered monthly income: ' + money(snap.estimatedTotalIncome) + '.',
+          'Other period illustrations: 36 months ' + money(outputs.income36mo) + '; 60 months ' + money(outputs.income60mo) + '; 84 months ' + money(outputs.income84mo) + '.'
+        );
+        if (entered.existingMonthlyIncome) lines.push('Other monthly income entered: ' + money(entered.existingMonthlyIncome) + '.');
+        if (entered.targetMonthlyPayment) lines.push('Entered housing payment, comparison only: ' + money(entered.targetMonthlyPayment) + '.');
+      } else {
+        lines.push('Calculator snapshot was not available.');
+      }
+      if (userNotes) lines.push('Visitor notes: ' + userNotes);
+      lines.push(DISCLAIMER);
+      return lines.join('\n').slice(0, 4000);
+    }
+
+    function syncSituation() {
+      var field = els.emailForm && els.emailForm.querySelector('[name="situation"]');
+      if (!field) return;
+      field.value = buildSituation((els.emailNotes && els.emailNotes.value || '').trim());
+    }
+
+    function leadPayload(inquiryId, name, email, userNotes) {
+      var payload = {
+        inquiry_id: inquiryId,
+        'form-name': 'asset-depletion-calculator',
+        name: name,
+        email: email,
+        notes: userNotes,
+        situation: buildSituation(userNotes),
+        lead_source: 'Asset Depletion Calculator',
+        tag: 'asset-depletion-calculator',
+        intent: 'asset_depletion_calculator',
+        preferred_follow_up: 'Email',
+        'bot-field': fieldValue('bot-field')
+      };
+      ATTRIBUTION_FIELDS.forEach(function (key) {
+        payload[key] = key === 'page_url' ? sourcePage() : fieldValue(key);
+      });
+      if (!payload.cta_label) payload.cta_label = 'Email me the analysis';
+      return payload;
+    }
+
+    function requestLead(url, options) {
+      if (window.StyerFetchWithTimeout) return window.StyerFetchWithTimeout(url, options, 20000);
+      return fetch(url, options);
+    }
+
+    function receiptConfirmed(response) {
+      if (!response || !response.ok) return Promise.resolve(false);
+      return response.json().then(function (data) {
+        return !!(data && data.captured === true);
+      }).catch(function () { return false; });
+    }
+
+    function showLeadError() {
+      els.emailMsg.textContent = LEAD_ERROR;
+      els.emailMsg.classList.add('adc-email-msg--err');
+      els.emailMsg.setAttribute('role', 'alert');
+    }
+
+    if (els.emailForm) {
+      var leadSending = false;
+      els.emailForm.addEventListener('submit', async function (e) {
         e.preventDefault();
+        if (leadSending) return;
+        if (fieldValue('bot-field')) return;
+
         var name = (els.emailName.value || '').trim();
         var email = (els.emailAddr.value || '').trim();
-        var notes = (els.emailNotes.value || '').trim();
+        var userNotes = (els.emailNotes.value || '').trim();
+        var submitBtn = els.emailForm.querySelector('[type="submit"]');
+        var submitLabel = submitBtn ? submitBtn.textContent : '';
         els.emailMsg.classList.remove('adc-email-msg--ok', 'adc-email-msg--err');
+        els.emailMsg.setAttribute('role', 'status');
 
-        if (!name || !email || email.indexOf('@') < 1) {
+        if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
           els.emailMsg.textContent = 'Please add your name and a valid email.';
           els.emailMsg.classList.add('adc-email-msg--err');
+          els.emailMsg.setAttribute('role', 'alert');
           return;
         }
 
-        var payload = Object.assign({
-          name: name,
-          email: email,
-          notes: notes,
-          page: 'asset-depletion-calculator',
-          disclaimer: DISCLAIMER
-        }, lastSnapshot || {});
+        var inquiryId = window.StyerInquiryId
+          ? window.StyerInquiryId(els.emailForm)
+          : (fieldValue('inquiry_id') || (window.crypto && crypto.randomUUID ? crypto.randomUUID() : ''));
+        var inquiryField = els.emailForm.querySelector('[name="inquiry_id"]');
+        if (inquiryField && inquiryId) inquiryField.value = inquiryId;
+        syncSituation();
+        var payload = leadPayload(inquiryId, name, email, userNotes);
+        var encoded = new URLSearchParams();
+        Object.keys(payload).forEach(function (key) {
+          encoded.set(key, payload[key] == null ? '' : String(payload[key]));
+        });
 
+        leadSending = true;
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
         els.emailMsg.textContent = 'Sending…';
-        fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }).then(function (res) {
-          if (!res.ok) throw new Error('http ' + res.status);
+
+        try {
+          var results = await Promise.allSettled([
+            requestLead('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: encoded.toString()
+            }),
+            requestLead(LEAD_INTAKE_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            })
+          ]);
+          var confirmed = await Promise.all(results.map(function (result) {
+            return result.status === 'fulfilled' ? receiptConfirmed(result.value) : Promise.resolve(false);
+          }));
+          if (!confirmed.some(Boolean)) throw new Error('lead not confirmed');
           els.emailMsg.textContent = 'Thanks — Adam will follow up shortly.';
           els.emailMsg.classList.add('adc-email-msg--ok');
+          var preserved = {};
+          ATTRIBUTION_FIELDS.concat(['lead_source', 'tag', 'intent', 'preferred_follow_up', 'form-name']).forEach(function (key) {
+            preserved[key] = fieldValue(key);
+          });
           els.emailForm.reset();
-        }).catch(function () {
-          els.emailMsg.textContent = "Couldn't send right now. Email adamstyer@gorascal.com and Adam will follow up.";
-          els.emailMsg.classList.add('adc-email-msg--err');
-        });
+          Object.keys(preserved).forEach(function (key) {
+            var field = els.emailForm.querySelector('[name="' + key + '"]');
+            if (field) field.value = preserved[key];
+          });
+          syncSituation();
+          if (window.StyerTrackGenerateLead) {
+            try {
+              window.StyerTrackGenerateLead({
+                lead_type: 'asset_depletion_calculator',
+                form_name: 'asset-depletion-calculator',
+                form_id: 'adc-email-form',
+                inquiry_id: inquiryId
+              }, { scenarioSubmit: false });
+            } catch (err) { /* A saved lead still stands when analytics fails. */ }
+          }
+        } catch (err) {
+          showLeadError();
+        } finally {
+          leadSending = false;
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitLabel; }
+        }
       });
     }
 
