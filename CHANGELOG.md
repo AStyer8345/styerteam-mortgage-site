@@ -1,3 +1,9 @@
+## 2026-11-01 — Preview: GA4 landing page and extensionless URLs
+
+- GTM-PQQ6PGLR now loads in the head on styerteam.com instead of waiting for interaction. Chat and Ads events wait until the container’s page view has run, so they no longer open sessions with landing page `(not set)`.
+- `generate_lead` fires once after LoanOS or the waitlist endpoint confirms the lead, with form id and page path only. Hero quotes no longer fire before the server responds. The assistant, first-time buyer form, DPA guide, waitlist, and buyer guide were the paths that missed or raced the event.
+- `/asset-depletion-calculator` and 71 other sitemap pages that had an `.html` file but no extensionless 301 now redirect. `cleanUrls` stays off. Not merged and not deployed to production.
+
 ## 2026-10-31 — Preview: program card photos show the house
 
 - Homepage program cards were a 180px strip. Accessibility CSS also forced those photos to `height: auto`, so the box cut off everything below the trees and roof.

@@ -21,6 +21,10 @@ test('committed vercel.json matches the Netlify redirect and header sources', as
   assert.equal(extensionless.status, 301);
   assert.equal(extensionless.destination, '/loans/conventional.html');
 
+  const calculator = matchRequest(published, { host: 'styerteam.com', path: '/asset-depletion-calculator' });
+  assert.equal(calculator.status, 301);
+  assert.equal(calculator.destination, '/asset-depletion-calculator.html');
+
   const forced = matchRequest(published, { host: 'styerteam.com', path: '/bank-statement-loans-austin-tx.html' });
   assert.equal(forced.destination, '/bank-statement-loans.html');
 
@@ -106,4 +110,14 @@ test('trailing-slash legacy rules and host redirects still resolve', async () =>
   assert.match(sitemap, /<loc>https:\/\/styerteam.com\/resources\/first-time-buyer-guide<\/loc>/);
   assert.doesNotMatch(sitemap, /<loc>https:\/\/styerteam.com\/resources\/<\/loc>/);
   assert.doesNotMatch(sitemap, /first-time-buyer-guide\/<\/loc>/);
+
+  const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
+  for (const loc of locs) {
+    if (loc === '/' || !loc.endsWith('.html')) continue;
+    const extless = loc.slice(0, -'.html'.length);
+    const hit = matchRequest(cfg, { host: 'styerteam.com', path: extless });
+    assert.equal(hit && hit.status, 301, extless);
+    const destination = hit.destination.split('?')[0];
+    assert.equal(fs.existsSync(destination.replace(/^\//, '')), true, `${extless} -> ${destination}`);
+  }
 });

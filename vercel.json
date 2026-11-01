@@ -4,6 +4,11 @@
   "framework": null,
   "cleanUrls": false,
   "trailingSlash": false,
+  "git": {
+    "deploymentEnabled": {
+      "fix/consistent-compliant-schema": false
+    }
+  },
   "redirects": [
     {
       "source": "/",
@@ -1396,6 +1401,366 @@
       "statusCode": 301
     },
     {
+      "source": "/asset-depletion-calculator",
+      "destination": "/asset-depletion-calculator.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-06-05-dscr-airbnb-str-loan-texas",
+      "destination": "/blog/2026-06-05-dscr-airbnb-str-loan-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr",
+      "destination": "/blog/2026-06-05-dscr-cash-out-refinance-texas-brrrr.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-06-14-buy-before-you-sell-austin-tx",
+      "destination": "/blog/2026-06-14-buy-before-you-sell-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas",
+      "destination": "/blog/2026-06-14-dscr-vs-conventional-investment-property-loan-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-06-15-mortgage-rates-inflation-iran-peace-deal",
+      "destination": "/blog/2026-06-15-mortgage-rates-inflation-iran-peace-deal.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-06-16-dscr-loan-requirements-texas",
+      "destination": "/blog/2026-06-16-dscr-loan-requirements-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-06-23-no-ratio-low-dscr-loans-texas",
+      "destination": "/blog/2026-06-23-no-ratio-low-dscr-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-06-30-bank-statement-loans-texas",
+      "destination": "/blog/2026-06-30-bank-statement-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-07-16-self-employed-income-calculation-underwriting-texas",
+      "destination": "/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-07-21-itin-mortgage-loans-texas",
+      "destination": "/blog/2026-07-21-itin-mortgage-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo",
+      "destination": "/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-08-10-austin-housing-market-report-august-2026",
+      "destination": "/blog/2026-08-10-austin-housing-market-report-august-2026.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-08-18-jumbo-loan-requirements-texas-2026",
+      "destination": "/blog/2026-08-18-jumbo-loan-requirements-texas-2026.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-08-21-veteran-asset-depletion-mortgage-case-study",
+      "destination": "/blog/2026-08-21-veteran-asset-depletion-mortgage-case-study.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-09-04-what-is-a-non-qm-loan-texas",
+      "destination": "/blog/2026-09-04-what-is-a-non-qm-loan-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-09-09-buy-house-you-rent-from-landlord-texas",
+      "destination": "/blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate",
+      "destination": "/blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-10-01-why-mortgage-rates-are-rising",
+      "destination": "/blog/2026-10-01-why-mortgage-rates-are-rising.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/buy-before-you-sell-austin",
+      "destination": "/buy-before-you-sell-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/construction-loan-scenario-review",
+      "destination": "/construction-loan-scenario-review.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dallas-mortgage-lender",
+      "destination": "/dallas-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-calculator",
+      "destination": "/dscr-calculator.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-cash-out-refinance-texas",
+      "destination": "/dscr-cash-out-refinance-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/home-equity-loans-texas",
+      "destination": "/home-equity-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-case-studies-for-advisors-cpas",
+      "destination": "/mortgage-case-studies-for-advisors-cpas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-resources-for-cpas-texas",
+      "destination": "/mortgage-resources-for-cpas-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mortgage-strategies-financial-advisors-texas",
+      "destination": "/mortgage-strategies-financial-advisors-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/realtor-updates/2026-06-08-when-other-lenders-say-no",
+      "destination": "/realtor-updates/2026-06-08-when-other-lenders-say-no.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin",
+      "destination": "/realtor-updates/2026-06-22-buyers-who-dont-fit-conventional-mortgage-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/1099-only-mortgage-texas",
+      "destination": "/resources/detailed-guides/1099-only-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/asset-depletion-mortgage-texas",
+      "destination": "/resources/detailed-guides/asset-depletion-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/austin-down-payment-assistance",
+      "destination": "/resources/detailed-guides/austin-down-payment-assistance.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/bank-statement-loans",
+      "destination": "/resources/detailed-guides/bank-statement-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/buy-before-you-sell-austin",
+      "destination": "/resources/detailed-guides/buy-before-you-sell-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/closing-costs-texas",
+      "destination": "/resources/detailed-guides/closing-costs-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/construction-loan-scenario-review",
+      "destination": "/resources/detailed-guides/construction-loan-scenario-review.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-cash-out-refinance-texas",
+      "destination": "/resources/detailed-guides/dscr-cash-out-refinance-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loan-austin-tx",
+      "destination": "/resources/detailed-guides/dscr-loan-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loans-dripping-springs",
+      "destination": "/resources/detailed-guides/dscr-loans-dripping-springs.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loans-fredericksburg-tx",
+      "destination": "/resources/detailed-guides/dscr-loans-fredericksburg-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loans-texas",
+      "destination": "/resources/detailed-guides/dscr-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/first-time-home-buyer",
+      "destination": "/resources/detailed-guides/first-time-home-buyer.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/fixed-vs-adjustable",
+      "destination": "/resources/detailed-guides/fixed-vs-adjustable.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/high-net-worth-mortgage",
+      "destination": "/resources/detailed-guides/high-net-worth-mortgage.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/home-equity-loans-texas",
+      "destination": "/resources/detailed-guides/home-equity-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/how-much-house-can-i-afford-austin",
+      "destination": "/resources/detailed-guides/how-much-house-can-i-afford-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/how-to-buy-a-house-in-austin-tx",
+      "destination": "/resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/improve-credit-score",
+      "destination": "/resources/detailed-guides/improve-credit-score.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/investor-loans",
+      "destination": "/resources/detailed-guides/investor-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/k1-income-mortgage-austin",
+      "destination": "/resources/detailed-guides/k1-income-mortgage-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/loans-construction",
+      "destination": "/resources/detailed-guides/loans-construction.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/loans-conventional",
+      "destination": "/resources/detailed-guides/loans-conventional.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/loans-fha",
+      "destination": "/resources/detailed-guides/loans-fha.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/loans-investment",
+      "destination": "/resources/detailed-guides/loans-investment.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/loans-refinance",
+      "destination": "/resources/detailed-guides/loans-refinance.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/loans-va",
+      "destination": "/resources/detailed-guides/loans-va.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/mortgage-for-business-owners-austin",
+      "destination": "/resources/detailed-guides/mortgage-for-business-owners-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/mortgage-pre-approval-austin",
+      "destination": "/resources/detailed-guides/mortgage-pre-approval-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/non-qm-loans",
+      "destination": "/resources/detailed-guides/non-qm-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/one-time-close-construction-loan-texas",
+      "destination": "/resources/detailed-guides/one-time-close-construction-loan-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/p-and-l-mortgage-texas",
+      "destination": "/resources/detailed-guides/p-and-l-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/products",
+      "destination": "/resources/detailed-guides/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/reverse-mortgage-texas",
+      "destination": "/resources/detailed-guides/reverse-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/mortgage-options-for-business-owners",
+      "destination": "/resources/mortgage-options-for-business-owners.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/reverse-mortgage-financial-advisors-texas",
+      "destination": "/reverse-mortgage-financial-advisors-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/san-antonio-mortgage-lender",
+      "destination": "/san-antonio-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/scenarios/assets-limited-income-history",
+      "destination": "/scenarios/assets-limited-income-history.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/scenarios/build-on-owned-land-before-selling",
+      "destination": "/scenarios/build-on-owned-land-before-selling.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/scenarios/buying-current-rental-gift-funds",
+      "destination": "/scenarios/buying-current-rental-gift-funds.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/scenarios/self-employed-refinance-deposit-review",
+      "destination": "/scenarios/self-employed-refinance-deposit-review.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/scenarios/two-rental-properties-cash-out-review",
+      "destination": "/scenarios/two-rental-properties-cash-out-review.html",
+      "statusCode": 301
+    },
+    {
       "source": "/about-me/",
       "destination": "/about.html",
       "statusCode": 301
@@ -1951,11 +2316,6 @@
   "functions": {
     "api/**/*.js": {
       "maxDuration": 30
-    }
-  },
-  "git": {
-    "deploymentEnabled": {
-      "fix/consistent-compliant-schema": false
     }
   }
 }

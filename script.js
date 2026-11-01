@@ -65,15 +65,42 @@ function copyToClipboard(text) {
   });
 }
 
+const LEAD_PARAM_KEYS = ['lead_type', 'form_name', 'form_id', 'inquiry_id'];
+
+function sanitizeLeadParams(detail) {
+  const source = detail && typeof detail === 'object' ? detail : {};
+  const clean = {};
+  LEAD_PARAM_KEYS.forEach((key) => {
+    const value = source[key];
+    if (typeof value !== 'string') return;
+    const trimmed = value.trim();
+    if (!trimmed || trimmed.length > 120 || trimmed.includes('@')) return;
+    clean[key] = trimmed;
+  });
+  const path = window.location.pathname || '/';
+  clean.page_path = path;
+  clean.page_location = (window.location.origin || '') + path;
+  return clean;
+}
+
 function dispatchLeadSubmitted(detail, options) {
-  document.dispatchEvent(new CustomEvent('styer:lead-submitted', { detail }));
-  // Feed GTM/Google Ads: standard GA4 lead conversion event. Pushes to the
-  // dataLayer (GTM's public input) — does NOT touch the GTM container snippet.
+  const params = sanitizeLeadParams(detail);
+  const inquiryKey = params.inquiry_id ? 'styer:generate-lead:' + params.inquiry_id : '';
+  if (inquiryKey) {
+    try {
+      if (sessionStorage.getItem(inquiryKey) === '1') return Promise.resolve();
+      sessionStorage.setItem(inquiryKey, '1');
+    } catch (_) { /* Emit once even when storage is blocked. */ }
+  }
+  document.dispatchEvent(new CustomEvent('styer:lead-submitted', { detail: params }));
+  // One GA4 lead event, after the caller has a confirmed capture. Parameters
+  // are form and page identifiers only. page_location is the path without a
+  // query string so a lead hit cannot blank the landing page or carry PII.
   window.dataLayer = window.dataLayer || [];
-  const eventPayload = Object.assign({ event: 'generate_lead' }, detail || {});
-  window.dataLayer.push(Object.assign({ event: 'scenario_submit' }, detail || {}, {
-    page_path: window.location.pathname
-  }));
+  if (!options || options.scenarioSubmit !== false) {
+    window.dataLayer.push(Object.assign({ event: 'scenario_submit' }, params));
+  }
+  const eventPayload = Object.assign({ event: 'generate_lead' }, params);
 
   if (!options || options.waitForTags !== true) {
     window.dataLayer.push(eventPayload);
@@ -98,6 +125,7 @@ function dispatchLeadSubmitted(detail, options) {
     setTimeout(done, timeoutMs + 250);
   });
 }
+window.StyerTrackGenerateLead = dispatchLeadSubmitted;
 
 // ========================================================================
 // 1. NAVIGATION & HEADER
@@ -536,7 +564,12 @@ function showQuickContactSuccess(form) {
     successMessage.style.opacity = '1';
   });
 
-  dispatchLeadSubmitted({ lead_type: 'quick_contact', form_name: form.getAttribute('name') || form.id || 'quick-contact' });
+  dispatchLeadSubmitted({
+    lead_type: 'quick_contact',
+    form_name: form.getAttribute('name') || form.id || 'quick-contact',
+    form_id: form.id || form.getAttribute('name') || 'quick-contact',
+    inquiry_id: form.querySelector('[name="inquiry_id"]')?.value || ''
+  });
 
   setTimeout(() => {
     form.reset();
@@ -717,7 +750,12 @@ async function submitForm(form) {
   // Fire GA4 lead event (waits briefly for tags), then land on /thank-you so the
   // Google Ads conversion (thank_you_page_view) counts this submission.
   await dispatchLeadSubmitted(
-    { lead_type: 'quick_contact', form_name: form.getAttribute('name') || form.id || 'quick-contact' },
+    {
+      lead_type: 'quick_contact',
+      form_name: form.getAttribute('name') || form.id || 'quick-contact',
+      form_id: form.id || form.getAttribute('name') || 'quick-contact',
+      inquiry_id: form.querySelector('[name="inquiry_id"]')?.value || ''
+    },
     { waitForTags: true }
   );
   window.location.href = '/thank-you?type=quick-contact';
@@ -846,11 +884,6 @@ function initHeroQuickForm() {
       firstTouch = {};
     }
 
-    const leadTracking = dispatchLeadSubmitted(
-      { lead_type: 'quick_quote', form_name: form.getAttribute('name') || 'hero-quick-form' },
-      { waitForTags: true, timeoutMs: 1200 }
-    );
-
     const quoteCaptureResults = await Promise.allSettled([
       fetch('/', {
         method: 'POST',
@@ -909,7 +942,15 @@ function initHeroQuickForm() {
       return;
     }
 
-    await leadTracking;
+    await dispatchLeadSubmitted(
+      {
+        lead_type: 'quick_quote',
+        form_name: form.getAttribute('name') || 'hero-quick-form',
+        form_id: form.id || form.getAttribute('name') || 'hero-quick-form',
+        inquiry_id: form.querySelector('[name="inquiry_id"]')?.value || ''
+      },
+      { waitForTags: true, timeoutMs: 1200 }
+    );
 
     var tyParams = new URLSearchParams({ type: 'quick-quote' });
     try {
@@ -1174,7 +1215,12 @@ function initPrequalForm() {
     // Fire GA4 lead event, then land on /thank-you so the Google Ads
     // conversion (thank_you_page_view) counts this submission.
     await dispatchLeadSubmitted(
-      { lead_type: 'prequal', form_name: form.getAttribute('name') || 'prequal' },
+      {
+        lead_type: 'prequal',
+        form_name: form.getAttribute('name') || 'prequal',
+        form_id: form.id || form.getAttribute('name') || 'prequal',
+        inquiry_id: form.querySelector('[name="inquiry_id"]')?.value || ''
+      },
       { waitForTags: true }
     );
     window.location.href = '/thank-you?type=prequal';
@@ -1301,8 +1347,52 @@ function bootSite() {
   // initQuickContactScroll(); — removed, no longer needed
   initTestimonialFilter();
   initPrequalForm();
+  initNativeLeadForms();
   initCityToggle();
   initMortgageAssistant();
+}
+
+function initNativeLeadForms() {
+  const form = document.getElementById('form-ftb');
+  if (!form || form.dataset.leadBound === 'true') return;
+  form.dataset.leadBound = 'true';
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (form.dataset.sending === 'true') return;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    form.dataset.sending = 'true';
+    const button = form.querySelector('[type="submit"]');
+    const originalLabel = button ? button.textContent : '';
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Sending…';
+    }
+    try {
+      const response = await fetchWithTimeout(form.getAttribute('action') || '/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString(),
+      }, 20000);
+      if (!response.ok) throw new Error('capture failed');
+      await dispatchLeadSubmitted({
+        lead_type: 'first_time_buyer',
+        form_name: form.getAttribute('name') || 'first-time-buyer',
+        form_id: form.id,
+        inquiry_id: form.querySelector('[name="inquiry_id"]')?.value || ''
+      }, { waitForTags: true, scenarioSubmit: false });
+      window.location.href = form.getAttribute('action') || '/thank-you';
+    } catch (_) {
+      form.dataset.sending = 'false';
+      if (button) {
+        button.disabled = false;
+        button.textContent = originalLabel;
+      }
+      showQuickContactError(form);
+    }
+  });
 }
 
 if (document.readyState === 'loading') {
@@ -1314,7 +1404,7 @@ if (document.readyState === 'loading') {
 function initMortgageAssistant() {
   if (document.querySelector('script[data-mortgage-assistant]')) return;
   var script = document.createElement('script');
-  script.src = '/assistant-widget.js?v=20261006-answer-handoff-v2';
+  script.src = '/assistant-widget.js?v=20261101-ga4-lead';
   script.defer = true;
   script.dataset.mortgageAssistant = 'true';
   document.head.appendChild(script);
@@ -1339,6 +1429,10 @@ document.addEventListener('click', (e) => {
   const link = e.target.closest('a[href^="tel:"]');
   if (link) {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'phone_click' });
+    window.dataLayer.push({
+      event: 'phone_click',
+      page_path: window.location.pathname,
+      page_location: window.location.origin + window.location.pathname
+    });
   }
 });

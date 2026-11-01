@@ -454,7 +454,7 @@ a.pwe-ledger-cell:hover .pwe-ledger-label {
 
 <script>window.dataLayer = window.dataLayer || [];</script>
 <!-- Google Tag Manager -->
-<script>(function(){var host=location.hostname;if(host!=="styerteam.com"&&host!=="www.styerteam.com")return;function load(){if(window.__styerTags)return;window.__styerTags=1;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-PQQ6PGLR");}if(document.readyState==="complete")load();else window.addEventListener("load",load,{once:true});["pointerdown","keydown","touchstart"].forEach(function(type){window.addEventListener(type,load,{once:true,passive:true});});})();</script>
+<script>(function(){var host=location.hostname;if(host!=="styerteam.com"&&host!=="www.styerteam.com")return;if(window.__styerTags)return;window.__styerTags=1;window.dataLayer=window.dataLayer||[];window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});var j=document.createElement("script");j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id=GTM-PQQ6PGLR";var f=document.getElementsByTagName("script")[0];f.parentNode.insertBefore(j,f);window.StyerAfterGoogleTag=function(fn){var q=window.__styerTagQueue||(window.__styerTagQueue=[]);q.push(fn);if(window.__styerTagWait)return;window.__styerTagWait=setInterval(function(){var ready=(window.dataLayer||[]).some(function(entry){return entry&&entry.event==="gtm.load";});if(!ready)return;clearInterval(window.__styerTagWait);window.__styerTagWait=0;q.splice(0).forEach(function(item){item();});},50);};})();</script>
 <!-- End Google Tag Manager -->
 <!-- Homepage surface tuning: deepen the light bands so the page isn't a white wash,
        and give white cards a real edge so they read as distinct surfaces.
@@ -1604,10 +1604,10 @@ Read Full Case Study
       '/premium-homepage.js?v=20261027-cta',
       '/blueprint-interactions.js',
       '/js/scroll-effects.js?v=20260429',
-      '/analytics.js?v=20260913',
+      '/analytics.js?v=20261101-ga4-lead',
       '/experience.js',
       '/assets/utm.js?v=20260920',
-      '/situation-journeys.js?v=20261013'
+      '/situation-journeys.js?v=20261101-ga4-lead'
     ];
     var started = false;
     function load() {
@@ -1626,7 +1626,7 @@ Read Full Case Study
     window.addEventListener('load', function () { setTimeout(load, 5000); }, { once: true });
   })();
 </script>
-<script defer src="/script.js?v=20261028-accordion"></script>
+<script defer src="/script.js?v=20261101-ga4-lead"></script>
 <script>
   // Same-page calls to action retain keyboard focus and their source label.
   document.addEventListener('click', function (event) {

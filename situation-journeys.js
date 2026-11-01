@@ -183,8 +183,24 @@
     // Events deliberately contain only fixed intent/form identifiers and a clean
     // page path. Financial answers, contact data and arbitrary URL text stay out.
     function attributionEvent(name, inquiryId) {
+      if (name === 'generate_lead' && typeof root.StyerTrackGenerateLead === 'function') {
+        root.StyerTrackGenerateLead({
+          lead_type: intent || 'situation_review',
+          form_name: formName,
+          form_id: form.id || formName,
+          inquiry_id: inquiryId || ''
+        }, { scenarioSubmit: false });
+        return;
+      }
       root.dataLayer = root.dataLayer || [];
-      root.dataLayer.push({ event: name, form_name: formName, intent: intent, page_path: root.location.pathname, ...(inquiryId ? {inquiry_id:inquiryId}: {}) });
+      root.dataLayer.push({
+        event: name,
+        form_name: formName,
+        intent: intent,
+        page_path: root.location.pathname,
+        page_location: (root.location.origin || '') + root.location.pathname,
+        ...(inquiryId ? { inquiry_id: inquiryId } : {})
+      });
     }
     function showStep(value, focus) {
       if (singleStep) { step = 2; if (second) second.hidden = false; if (progress) progress.hidden = true; return; }
