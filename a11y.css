@@ -95,7 +95,8 @@ html {
   .gorascal-wordmark-chip img,
   header .nav-brand .gorascal-wordmark-chip img {
     height: 48px !important;
-    width: auto !important;
+    width: 96px !important;
+    aspect-ratio: 2 / 1;
     max-width: none !important;
     max-height: none !important;
   }

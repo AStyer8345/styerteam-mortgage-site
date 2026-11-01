@@ -2,11 +2,13 @@
 
 ## Current State
 
-Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). Production is still commit dde482e3 on `cursor/card-photo-framing-d0ca` until this branch is reviewed. Do not merge and do not deploy to production.
+Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). Do not merge and do not deploy to production.
 
 Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel both copies call LoanOS. Do not rename fields or change that endpoint. Preview hosts do not send live leads unless ALLOW_PREVIEW_LIVE_LEADS=true.
 
 GTM-PQQ6PGLR loads immediately on styerteam.com and www.styerteam.com only. Direct Google-tag events wait until `gtm.load`. `generate_lead` fires once after a confirmed capture, with form id and page path, and no contact fields.
+
+Homepage CLS: the first paint now reserves the header, hero, and ledger. Mobile keeps a metric-matched Inter fallback until the deferred stylesheet loads. Desktop declares Inter and Source Serif up front so the nav and ledger do not jump.
 
 ## Repository
 
@@ -16,12 +18,12 @@ GTM-PQQ6PGLR loads immediately on styerteam.com and www.styerteam.com only. Dire
 | Hosting | Vercel project `styerteam-site`. Netlify config stays in the repo. |
 | Publish | `.site-dist` |
 | Domain | `https://styerteam.com` |
-| This branch | `cursor/ga4-landing-and-leads-dfa1` |
+| This branch | `cursor/mobile-hero-cls-8ad5` |
 | PR base | `preview/claims-docpaths-source-2026-10-28` |
 
 ## Last Worked On
 
-GA4 landing-page `(not set)` and missing `generate_lead` events, plus 72 sitemap pages that 404 without `.html` (including `/asset-depletion-calculator`). Not merged and not deployed to production.
+Homepage mobile CLS. The hero and header were painted from critical CSS, then the deferred stylesheet restyled the kicker, buttons, wordmark, and nav. Desktop also showed the full menu in normal flow until that stylesheet arrived. Not merged and not deployed to production.
 
 ## Working Rules
 

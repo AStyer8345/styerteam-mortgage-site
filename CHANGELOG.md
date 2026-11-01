@@ -1,3 +1,8 @@
+## 2026-11-01 — Preview: homepage layout shift
+
+- The homepage first paint now reserves the header, hero buttons, kicker, wordmark, and containers, so the deferred stylesheet no longer moves the hero. Desktop hides the dropdowns and keeps the nav on one row before that stylesheet arrives.
+- Inter uses a size-adjusted local fallback on mobile. Desktop preloads Inter and declares the hero faces immediately. The chat widget starts on idle or the first interaction. GTM still loads immediately, and direct tag commands still wait for `gtm.load`. Copy, forms, and schema are unchanged. Not merged and not deployed to production.
+
 ## 2026-11-01 — Preview: GA4 landing page and extensionless URLs
 
 - GTM-PQQ6PGLR now loads in the head on styerteam.com instead of waiting for interaction. Chat and Ads events wait until the container’s page view has run, so they no longer open sessions with landing page `(not set)`.
