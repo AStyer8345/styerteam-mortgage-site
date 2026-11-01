@@ -2,7 +2,7 @@
 
 ## Current State
 
-Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). Do not merge and do not deploy to production.
+Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). Production is commit fc629a1e on `cursor/ga4-landing-and-leads-dfa1` (PR #47, not merged). Do not deploy to production.
 
 Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel both copies call LoanOS. Do not rename fields or change that endpoint. Preview hosts do not send live leads unless ALLOW_PREVIEW_LIVE_LEADS=true.
 
@@ -18,12 +18,14 @@ Homepage CLS: the first paint now reserves the header, hero, and ledger. Mobile 
 | Hosting | Vercel project `styerteam-site`. Netlify config stays in the repo. |
 | Publish | `.site-dist` |
 | Domain | `https://styerteam.com` |
-| This branch | `cursor/mobile-hero-cls-8ad5` |
+| This branch | `cursor/asset-depletion-calculator-lead-5600` |
 | PR base | `preview/claims-docpaths-source-2026-10-28` |
 
 ## Last Worked On
 
-Homepage mobile CLS. The hero and header were painted from critical CSS, then the deferred stylesheet restyled the kicker, buttons, wordmark, and nav. Desktop also showed the full menu in normal flow until that stylesheet arrived. Not merged and not deployed to production.
+The asset depletion calculator analysis form. It was hidden behind an empty `WEBHOOK_URL`, so submissions never reached LoanOS. It now posts through `lead-intake` with the calculator illustration in the inquiry note, and fires `generate_lead` only after `captured: true`. Not deployed to production.
+
+Homepage mobile CLS (PR #48). The hero and header were painted from critical CSS, then the deferred stylesheet restyled the kicker, buttons, wordmark, and nav. Desktop also showed the full menu in normal flow until that stylesheet arrived.
 
 ## Working Rules
 

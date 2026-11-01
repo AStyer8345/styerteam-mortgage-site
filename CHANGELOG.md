@@ -1,7 +1,12 @@
+## 2026-11-01 — Preview: asset depletion calculator leads
+
+- The analysis form on `/asset-depletion-calculator.html` posted to an empty `WEBHOOK_URL`, so it stayed hidden and never created a LoanOS lead or a `generate_lead` event.
+- It now uses the same `lead-intake` function as the contact, quick-contact, and prequal forms. LoanOS stores the inquiry, then the web-lead webhook claims the borrower confirmation and Adam's alert. `generate_lead` fires once after `captured: true`. The form collects name and email only, so it does not add a phone field or TCPA checkbox. Not deployed to production.
+
 ## 2026-11-01 — Preview: homepage layout shift
 
 - The homepage first paint now reserves the header, hero buttons, kicker, wordmark, and containers, so the deferred stylesheet no longer moves the hero. Desktop hides the dropdowns and keeps the nav on one row before that stylesheet arrives.
-- Inter uses a size-adjusted local fallback on mobile. Desktop preloads Inter and declares the hero faces immediately. The chat widget starts on idle or the first interaction. GTM still loads immediately, and direct tag commands still wait for `gtm.load`. Copy, forms, and schema are unchanged. Not merged and not deployed to production.
+- Inter uses a size-adjusted local fallback on mobile. Desktop preloads Inter and declares the hero faces immediately. The chat widget starts on idle or the first interaction. GTM still loads immediately, and direct tag commands still wait for `gtm.load`. Copy, forms, and schema are unchanged. Not deployed to production.
 
 ## 2026-11-01 — Preview: GA4 landing page and extensionless URLs
 
