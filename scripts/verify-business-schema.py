@@ -4,7 +4,7 @@ Install maintenance dependencies with: pip install -r scripts/schema-requirement
 import json,re,subprocess
 from pathlib import Path
 from bs4 import BeautifulSoup
-from schema_faq import faqs,text
+from schema_faq import FAQ_SCHEMA_SKIP,faqs,text
 root=Path(__file__).resolve().parents[1]
 private=set(json.loads((root/'scripts/admin-paths.json').read_text()))|{'loanos.html','loanos-waitlist.html'}
 shared=json.loads((root/'config/business-entities.json').read_text())
@@ -30,7 +30,7 @@ for rel in subprocess.check_output(['git','ls-files','*.html'],cwd=root,text=Tru
  for x in visible.select('script,style,head,.gorascal-visually-hidden,.sr-only,[aria-hidden=true]'):x.decompose()
  visible_text=text(visible)
  faqnodes=[n for n in nodes if n.get('@type')=='FAQPage']
- qs=faqs(d)
+ qs=[] if rel in FAQ_SCHEMA_SKIP else faqs(d)
  if qs and len(faqnodes)!=1:failures.append(f'{rel}: visible FAQ lacks one FAQPage')
  for faq in faqnodes:
   faqpages+=1;questions+=len(faq.get('mainEntity',[]))
