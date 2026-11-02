@@ -18,12 +18,12 @@ Homepage CLS: the first paint now reserves the header, hero, and ledger. Mobile 
 | Hosting | Vercel project `styerteam-site`. Netlify config stays in the repo. |
 | Publish | `.site-dist` |
 | Domain | `https://styerteam.com` |
-| This branch | `cursor/asset-depletion-calculator-lead-5600` |
+| This branch | `cursor/blog-aeo-fixpack-2026-11-01` |
 | PR base | `preview/claims-docpaths-source-2026-10-28` |
 
 ## Last Worked On
 
-The asset depletion calculator analysis form. It was hidden behind an empty `WEBHOOK_URL`, so submissions never reached LoanOS. It now posts through `lead-intake` with the calculator illustration in the inquiry note, and fires `generate_lead` only after `captured: true`. Not deployed to production.
+Blog AEO fix pack, preview only. Thirty-one posts got the pack’s answer blocks, FAQ accordions, and FAQPage schema. The cash-out post’s schema is the five cash-out questions. The two personal essays were left without FAQs. Not merged and not deployed to production.
 
 Homepage mobile CLS (PR #48). The hero and header were painted from critical CSS, then the deferred stylesheet restyled the kicker, buttons, wordmark, and nav. Desktop also showed the full menu in normal flow until that stylesheet arrived.
 

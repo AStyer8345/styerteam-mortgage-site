@@ -1,3 +1,8 @@
+## 2026-11-02 — Preview: blog answer blocks and FAQ schema
+
+- Applied the 2026-11-01 blog AEO fix pack to 31 posts. New and replacement answer paragraphs, FAQ accordions, compliance FAQ rewrites, and one FAQPage node per page were added from the pack. Optional heading rewrites were skipped. Apply Now, down-payment labels, Wholesale Rates, nav, and footer were left as they are.
+- The cash-out refinance post keeps five cash-out questions in the visible FAQ and in FAQPage schema. The preserved home-equity FAQ block was removed from that post. The two personal essays were left without FAQs. Not merged and not deployed to production.
+
 ## 2026-11-01 — Preview: asset depletion calculator leads
 
 - The analysis form on `/asset-depletion-calculator.html` posted to an empty `WEBHOOK_URL`, so it stayed hidden and never created a LoanOS lead or a `generate_lead` event.
