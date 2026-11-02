@@ -496,34 +496,102 @@
     }
     .dscr-calculator-module .dscr-tertiary:hover { color: var(--dscr-navy); }
 
-    /* Lead capture form */
+    /* Lead capture form — light card, same readability as the review handoff */
     .dscr-calculator-module .dscr-lead {
       margin-top: 1.5rem;
       padding: 1.5rem;
-      background: #fff;
-      border: 1px solid var(--dscr-border);
-      border-radius: var(--dscr-radius);
+      background: #ffffff;
+      color: #1c2836;
+      border: 1px solid #d7d0c4;
+      border-top: 4px solid #8a5a12;
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(14, 27, 36, 0.06);
     }
     .dscr-calculator-module .dscr-lead h4 {
-      font-size: 1.05rem;
-      color: var(--dscr-navy);
-      margin: 0 0 0.8rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1c2836;
+      margin: 0 0 0.4rem;
+      letter-spacing: 0;
+      text-transform: none;
     }
+    .dscr-calculator-module .dscr-lead-intro {
+      margin: 0 0 1rem;
+      color: #3e4d5c;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .dscr-calculator-module .dscr-lead .dscr-label {
+      display: block;
+      margin: 0 0 0.35rem;
+      color: #1c2836;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 1.4;
+      text-transform: none;
+    }
+    .dscr-calculator-module .dscr-lead .dscr-input {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 48px;
+      margin: 0;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid #5c6b7a;
+      border-radius: 6px;
+      background: #ffffff;
+      color: #1c2836;
+      font: 400 1rem/1.4 Inter, Arial, sans-serif;
+    }
+    .dscr-calculator-module .dscr-lead .dscr-input::placeholder { color: #5c6b7a; }
     .dscr-calculator-module .dscr-lead-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
+      gap: 0.95rem;
     }
+    .dscr-calculator-module .dscr-lead-notes { margin-top: 0.95rem; }
     @media (max-width: 600px) {
       .dscr-calculator-module .dscr-lead-row { grid-template-columns: 1fr; }
+      .dscr-calculator-module .dscr-lead-submit { width: 100%; }
+    }
+    .dscr-calculator-module .dscr-lead-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      margin-top: 1rem;
+      padding: 0.8rem 1.4rem;
+      border: 2px solid #16324a;
+      border-radius: 6px;
+      background: #16324a;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-transform: none;
+      cursor: pointer;
+    }
+    .dscr-calculator-module .dscr-lead-submit:hover {
+      background: #0f2436;
+      border-color: #0f2436;
+      color: #ffffff;
+    }
+    .dscr-calculator-module .dscr-lead-submit:disabled { opacity: 0.7; cursor: progress; }
+    .dscr-calculator-module .dscr-lead :is(button, input):focus-visible {
+      outline: 3px solid #8a5a12;
+      outline-offset: 2px;
     }
     .dscr-calculator-module .dscr-lead-status {
-      margin-top: 0.6rem;
-      font-size: 0.85rem;
-      min-height: 1em;
+      margin-top: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      min-height: 1.4em;
+      color: #1c2836;
     }
-    .dscr-calculator-module .dscr-lead-status.ok { color: var(--dscr-green); }
-    .dscr-calculator-module .dscr-lead-status.err { color: var(--dscr-red); }
+    .dscr-calculator-module .dscr-lead-status.ok { color: #0b6b45; }
+    .dscr-calculator-module .dscr-lead-status.err { color: #8f1d14; }
     /* ============================================================
        END DSCR CALCULATOR MODULE — STYLES
        ============================================================ */
@@ -942,28 +1010,55 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div><!-- /.dscr-grid -->
 <p class="experience-calculator-note">Rent remaining after PITIA excludes vacancy, repairs, management, utilities, capital expenses and other operating costs. It is not net operating cash flow.</p>
 <div class="experience-calculator-actions" data-calculator-actions=""><a class="dscr-btn dscr-btn-primary" data-review-calculator="" href="/investor-loans.html?goal=Invest&amp;context=calculator#scenario-review">Have Adam Review These Numbers</a><button class="dscr-btn dscr-btn-secondary" data-save-analysis="" type="button">Save This Analysis</button></div><p class="experience-calculator-note">Save an encrypted analysis with a private return link and a downloadable copy. No account or marketing signup needed.</p>
-<!-- Legacy email delivery remains disabled. -->
-<div class="dscr-lead" id="dscr-lead" hidden="">
+<!-- Email this analysis. Same lead-intake path as the asset depletion calculator. -->
+<div class="dscr-lead" id="dscr-lead">
 <h4>Email me this analysis</h4>
-<p style="font-size:0.88rem;color:var(--dscr-muted);margin:0 0 0.8rem;">Adam will receive your numbers along with the calculation. No obligation.</p>
+<p class="dscr-lead-intro">Adam will receive your numbers along with the calculation. No obligation.</p>
+<form action="/dscr-calculator.html" id="dscr-lead-form" method="POST" name="dscr-calculator" novalidate="">
+<input name="form-name" type="hidden" value="dscr-calculator"/>
+<input name="inquiry_id" type="hidden" value=""/>
+<input id="dscr-lead-situation" name="situation" type="hidden" value=""/>
+<input name="lead_source" type="hidden" value="DSCR Calculator"/>
+<input name="tag" type="hidden" value="dscr-calculator"/>
+<input name="intent" type="hidden" value="dscr_calculator"/>
+<input name="preferred_follow_up" type="hidden" value="Email"/>
+<input name="cta_label" type="hidden" value="Send to Adam"/>
+<input name="page_url" type="hidden" value=""/>
+<input name="entry_referrer" type="hidden" value=""/>
+<input name="utm_source" type="hidden" value=""/>
+<input name="utm_medium" type="hidden" value=""/>
+<input name="utm_campaign" type="hidden" value=""/>
+<input name="utm_term" type="hidden" value=""/>
+<input name="utm_content" type="hidden" value=""/>
+<input name="first_touch_page" type="hidden" value=""/>
+<input name="first_touch_referrer" type="hidden" value=""/>
+<input name="first_touch_at" type="hidden" value=""/>
+<input name="first_touch_source" type="hidden" value=""/>
+<input name="first_touch_utm_source" type="hidden" value=""/>
+<input name="first_touch_utm_medium" type="hidden" value=""/>
+<input name="first_touch_utm_campaign" type="hidden" value=""/>
+<input name="first_touch_utm_term" type="hidden" value=""/>
+<input name="first_touch_utm_content" type="hidden" value=""/>
+<input name="source" type="hidden" value=""/>
+<input name="cta_source_page" type="hidden" value=""/>
+<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
 <div class="dscr-lead-row">
 <div>
 <label class="dscr-label" for="dscr-lead-name">Name</label>
-<input autocomplete="name" class="dscr-input" id="dscr-lead-name" type="text"/>
+<input autocomplete="name" class="dscr-input" id="dscr-lead-name" name="name" required="" type="text"/>
 </div>
 <div>
 <label class="dscr-label" for="dscr-lead-email">Email</label>
-<input autocomplete="email" class="dscr-input" id="dscr-lead-email" type="email"/>
+<input autocomplete="email" class="dscr-input" id="dscr-lead-email" name="email" required="" type="email"/>
 </div>
 </div>
-<div class="dscr-field" style="margin-top:0.75rem;">
+<div class="dscr-field dscr-lead-notes">
 <label class="dscr-label" for="dscr-lead-notes">Notes (optional)</label>
-<input class="dscr-input" id="dscr-lead-notes" placeholder="Address, scenario details, questions..." type="text"/>
+<input class="dscr-input" id="dscr-lead-notes" name="notes" placeholder="Address, scenario details, questions..." type="text"/>
 </div>
-<div style="margin-top:0.9rem;">
-<button class="dscr-btn dscr-btn-primary" id="dscr-lead-submit" type="button">Send to Adam</button>
-<div aria-live="polite" class="dscr-lead-status" id="dscr-lead-status"></div>
-</div>
+<button class="dscr-lead-submit" id="dscr-lead-submit" type="submit">Send to Adam</button>
+<div aria-live="polite" class="dscr-lead-status" id="dscr-lead-status" role="status"></div>
+</form>
 </div>
 <!-- Disclaimer (near result) -->
 <div class="dscr-disclaimer">
@@ -1093,6 +1188,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <script defer="" src="/script.js?v=20261101-ga4-lead"></script>
 <script defer="" src="/js/scroll-effects.js?v=20260429"></script>
 <script defer="" src="/analytics.js?v=20261101-ga4-lead"></script>
+<script defer="" src="/assets/utm.js?v=20260920"></script>
 <!-- ============================================================
        START DSCR CALCULATOR MODULE — JAVASCRIPT
        Self-contained. Reads/writes only #dscr-* elements inside
@@ -1107,10 +1203,8 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
     // Set APPLICATION_URL to enable the tertiary "Start Full Loan Application" link.
     // Site's current application URL pattern:
     var APPLICATION_URL = "https://gorascal.my1003app.com/513013/register";
-
-    // Set WEBHOOK_URL to enable the optional "Email me this analysis" form.
-    // Empty string keeps the form hidden.
-    var WEBHOOK_URL = "";
+    var LEAD_INTAKE_URL = "/.netlify/functions/lead-intake";
+    var LEAD_ERROR = "Something went wrong. Please try again or call Adam at (512) 956-6010.";
 
     // Ratio bands (edit cutoffs / labels / messages here)
     var BANDS = [
@@ -1203,21 +1297,17 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
     var pitiaOut = $("dscr-pitia");
 
     var appLink = $("dscr-app-link");
-    var leadBlock = $("dscr-lead");
-    var leadSubmit = $("dscr-lead-submit");
+    var leadForm = $("dscr-lead-form");
     var leadStatus = $("dscr-lead-status");
 
     var downMode = "pct"; // "pct" or "dollar"
 
-    // Show app link / lead form per config
+    // Show app link per config. The email form posts through lead-intake.
     if (APPLICATION_URL) {
       appLink.hidden = false;
       appLink.setAttribute("href", APPLICATION_URL);
       appLink.setAttribute("target", "_blank");
       appLink.setAttribute("rel", "noopener");
-    }
-    if (WEBHOOK_URL) {
-      leadBlock.hidden = false;
     }
 
     // ----- Validation --------------------------------------------
@@ -1375,68 +1465,190 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
     pctBtn.addEventListener("click", function () { setDownMode("pct"); });
     dollarBtn.addEventListener("click", function () { setDownMode("dollar"); });
 
-    // ----- Lead capture (only active if WEBHOOK_URL set) ----------
-    if (WEBHOOK_URL && leadSubmit) {
-      leadSubmit.addEventListener("click", function () {
+    // ----- Email form ----------------------------------------------------
+    // Same function as the asset depletion calculator, contact, and prequal.
+    // The browser posts JSON to lead-intake with no secret. That function
+    // stores the inquiry in LoanOS and dispatches the web-lead webhook.
+    // A urlencoded copy posts to this page so the backup uses the same inquiry id.
+    // The posted analysis uses the handoff summary, including rate and payment rows.
+    var ATTRIBUTION_FIELDS = [
+      'page_url', 'entry_referrer', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+      'first_touch_page', 'first_touch_referrer', 'first_touch_at', 'first_touch_source',
+      'first_touch_utm_source', 'first_touch_utm_medium', 'first_touch_utm_campaign',
+      'first_touch_utm_term', 'first_touch_utm_content', 'source', 'cta_source_page', 'cta_label'
+    ];
+
+    function fieldValue(name) {
+      if (!leadForm) return '';
+      var field = leadForm.querySelector('[name="' + name + '"]');
+      return field ? String(field.value || '').trim() : '';
+    }
+
+    function sourcePage() {
+      var recorded = fieldValue('page_url');
+      if (recorded) return recorded;
+      return (window.location.origin || '') + (window.location.pathname || '/dscr-calculator.html');
+    }
+
+    function calculatorInputs() {
+      return {
+        price: num(priceEl),
+        down: num(downEl),
+        downMode: downMode,
+        rate: num(rateEl),
+        years: parseInt(termEl.value, 10) || 30,
+        tax: num(taxEl),
+        ins: num(insEl),
+        hoa: num(hoaEl),
+        rent: num(rentEl)
+      };
+    }
+
+    function handoffSituation(userNotes) {
+      var lines = [
+        'DSCR calculator illustration. Not a quote, loan offer, approval, or commitment to lend.',
+        'Source page: /dscr-calculator.html'
+      ];
+      try {
+        if (window.StyerAnalysis) {
+          lines.push(window.StyerAnalysis.summary({ kind: 'dscr', at: Date.now(), inputs: calculatorInputs() }, 'handoff'));
+        } else {
+          lines.push('Calculator snapshot was not available.');
+        }
+      } catch (err) {
+        lines.push('Calculator snapshot was not available.');
+      }
+      if (userNotes) lines.push('Visitor notes: ' + userNotes);
+      return lines.join('\n').slice(0, 4000);
+    }
+
+    function syncSituation(userNotes) {
+      var field = leadForm && leadForm.querySelector('[name="situation"]');
+      if (field) field.value = handoffSituation(userNotes);
+    }
+
+    function leadPayload(inquiryId, name, email, userNotes) {
+      var payload = {
+        inquiry_id: inquiryId,
+        'form-name': 'dscr-calculator',
+        name: name,
+        email: email,
+        notes: userNotes,
+        situation: handoffSituation(userNotes),
+        lead_source: 'DSCR Calculator',
+        tag: 'dscr-calculator',
+        intent: 'dscr_calculator',
+        preferred_follow_up: 'Email',
+        'bot-field': fieldValue('bot-field')
+      };
+      ATTRIBUTION_FIELDS.forEach(function (key) {
+        payload[key] = key === 'page_url' ? sourcePage() : fieldValue(key);
+      });
+      if (!payload.cta_label) payload.cta_label = 'Send to Adam';
+      return payload;
+    }
+
+    function requestLead(url, options) {
+      if (window.StyerFetchWithTimeout) return window.StyerFetchWithTimeout(url, options, 20000);
+      return fetch(url, options);
+    }
+
+    function receiptConfirmed(response) {
+      if (!response || !response.ok) return Promise.resolve(false);
+      return response.json().then(function (data) {
+        return !!(data && data.captured === true);
+      }).catch(function () { return false; });
+    }
+
+    function showLeadError() {
+      leadStatus.textContent = LEAD_ERROR;
+      leadStatus.classList.add('err');
+      leadStatus.setAttribute('role', 'alert');
+    }
+
+    if (leadForm) {
+      var leadSending = false;
+      leadForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (leadSending) return;
+        if (fieldValue('bot-field')) return;
+
         var name = ($("dscr-lead-name").value || "").trim();
         var email = ($("dscr-lead-email").value || "").trim();
-        var notes = ($("dscr-lead-notes").value || "").trim();
-        leadStatus.className = "dscr-lead-status";
-        if (!name || !email || !/.+@.+\..+/.test(email)) {
-          leadStatus.textContent = "Please enter your name and a valid email.";
-          leadStatus.classList.add("err");
+        var userNotes = ($("dscr-lead-notes").value || "").trim();
+        var submitBtn = leadForm.querySelector('[type="submit"]');
+        var submitLabel = submitBtn ? submitBtn.textContent : '';
+        leadStatus.className = 'dscr-lead-status';
+        leadStatus.setAttribute('role', 'status');
+
+        if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          leadStatus.textContent = 'Please add your name and a valid email.';
+          leadStatus.classList.add('err');
+          leadStatus.setAttribute('role', 'alert');
           return;
         }
-        leadStatus.textContent = "Sending...";
 
-        var price = num(priceEl), downRaw = num(downEl), rate = num(rateEl);
-        var years = parseInt(termEl.value, 10) || 30;
-        var downAmount = downMode === "pct" ? price * (downRaw / 100) : downRaw;
-        var loan = Math.max(price - downAmount, 0);
-        var pi = monthlyPI(loan, rate, years);
-        var taxM = num(taxEl) / 12, insM = num(insEl) / 12, hoa = num(hoaEl);
-        var pitia = pi + taxM + insM + hoa;
-        var rent = num(rentEl);
-        var dscr = pitia > 0 ? rent / pitia : 0;
-        var cashflow = rent - pitia;
-
-        var payload = {
-          name: name, email: email, notes: notes,
-          inputs: {
-            purchasePrice: price, downPaymentMode: downMode,
-            downPaymentValue: downRaw, downPaymentAmount: downAmount,
-            loanAmount: loan, interestRate: rate, termYears: years,
-            annualTaxes: num(taxEl), annualInsurance: num(insEl),
-            monthlyHOA: hoa, monthlyRent: rent
-          },
-          outputs: {
-            dscr: +dscr.toFixed(4), monthlyPITIA: +pitia.toFixed(2),
-            monthlyCashFlow: +cashflow.toFixed(2)
-          },
-          dscr: +dscr.toFixed(4),
-          cashFlow: +cashflow.toFixed(2),
-          pitiaBreakout: {
-            principalInterest: +pi.toFixed(2),
-            taxes: +taxM.toFixed(2),
-            insurance: +insM.toFixed(2),
-            hoa: +hoa.toFixed(2),
-            total: +pitia.toFixed(2)
-          },
-          page: "dscr-calculator"
-        };
-
-        fetch(WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        }).then(function (res) {
-          if (!res.ok) throw new Error("Network");
-          leadStatus.textContent = "Sent. Adam will reply directly.";
-          leadStatus.classList.add("ok");
-        }).catch(function () {
-          leadStatus.textContent = "Could not send right now — please email adamstyer@gorascal.com.";
-          leadStatus.classList.add("err");
+        var inquiryId = window.StyerInquiryId
+          ? window.StyerInquiryId(leadForm)
+          : (fieldValue('inquiry_id') || (window.crypto && crypto.randomUUID ? crypto.randomUUID() : ''));
+        var inquiryField = leadForm.querySelector('[name="inquiry_id"]');
+        if (inquiryField && inquiryId) inquiryField.value = inquiryId;
+        syncSituation(userNotes);
+        var payload = leadPayload(inquiryId, name, email, userNotes);
+        var encoded = new URLSearchParams();
+        Object.keys(payload).forEach(function (key) {
+          encoded.set(key, payload[key] == null ? '' : String(payload[key]));
         });
+
+        leadSending = true;
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+        leadStatus.textContent = 'Sending…';
+
+        try {
+          var results = await Promise.allSettled([
+            requestLead('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: encoded.toString()
+            }),
+            requestLead(LEAD_INTAKE_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            })
+          ]);
+          var confirmed = await Promise.all(results.map(function (result) {
+            return result.status === 'fulfilled' ? receiptConfirmed(result.value) : Promise.resolve(false);
+          }));
+          if (!confirmed.some(Boolean)) throw new Error('lead not confirmed');
+          leadStatus.textContent = 'Thanks — Adam will follow up shortly.';
+          leadStatus.classList.add('ok');
+          var preserved = {};
+          ATTRIBUTION_FIELDS.concat(['lead_source', 'tag', 'intent', 'preferred_follow_up', 'form-name']).forEach(function (key) {
+            preserved[key] = fieldValue(key);
+          });
+          leadForm.reset();
+          Object.keys(preserved).forEach(function (key) {
+            var field = leadForm.querySelector('[name="' + key + '"]');
+            if (field) field.value = preserved[key];
+          });
+          syncSituation('');
+          if (window.StyerTrackGenerateLead) {
+            try {
+              window.StyerTrackGenerateLead({
+                lead_type: 'dscr_calculator',
+                form_name: 'dscr-calculator',
+                form_id: 'dscr-lead-form',
+                inquiry_id: inquiryId
+              }, { scenarioSubmit: false });
+            } catch (err) { /* A saved lead still stands when analytics fails. */ }
+          }
+        } catch (err) {
+          showLeadError();
+        } finally {
+          leadSending = false;
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitLabel; }
+        }
       });
     }
 

@@ -192,6 +192,15 @@ body > main:nth-of-type(1) > section#quick-options.calculator-review details > s
   line-height: 1.55;
 }
 
+#quick-options.calculator-review .journey-summary p.journey-summary-disclaimer {
+  margin: 0.45rem 0 0;
+  color: #3e4c59;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
 #quick-options.calculator-review .journey-summary-actions {
   display: flex;
   flex-wrap: wrap;

@@ -128,7 +128,7 @@
     }
     if (analysis && root.StyerAnalysis) {
       var panel=root.document.createElement('div');panel.className='journey-summary';panel.setAttribute('role','region');
-      root.StyerAnalysis.render(panel,analysis);
+      root.StyerAnalysis.render(panel,analysis,'handoff');
       var heading=panel.querySelector('h3');
       if(heading){heading.id=(form.id||formName)+'-calculator-numbers';heading.textContent='Your calculator numbers';panel.setAttribute('aria-labelledby',heading.id);}
       var actions=root.document.createElement('div');actions.className='journey-summary-actions';
@@ -136,7 +136,7 @@
       var remove=root.document.createElement('button');remove.type='button';remove.className='journey-back';remove.textContent='Remove analysis';remove.addEventListener('click',function(){analysis=null;panel.remove();try{root.sessionStorage.removeItem('styer:calculator-review');}catch(_){}});actions.appendChild(remove);
       panel.appendChild(actions);
       first.before(panel);
-      var mapped=analysis.kind==='dscr'?{property_value:analysis.inputs.price,down_payment:analysis.inputs.down+(analysis.inputs.downMode==='pct'?'%':' dollars'),monthly_rent:analysis.inputs.rent}:{current_balance:analysis.inputs.balance,current_rate:analysis.inputs.currentRate};
+      var mapped=analysis.kind==='dscr'?{property_value:analysis.inputs.price,down_payment:analysis.inputs.down+(analysis.inputs.downMode==='pct'?'%':' dollars'),monthly_rent:analysis.inputs.rent}:{current_balance:analysis.inputs.balance};
       Object.keys(mapped).forEach(function(name){if(form.elements[name]) form.elements[name].value=String(mapped[name]);});
       // These answers are already in the editable calculator summary.
       Object.keys(mapped).forEach(function(name){if(form.elements[name]) form.elements[name].closest('.journey-field').hidden=true;});
@@ -373,7 +373,7 @@
         remember();
         var data = new FormData(form);
         var payload = makePayload(data, questions, intent, cleanUrl(root.location.href));
-        if (analysis && root.StyerAnalysis) payload.situation += '\n\n' + root.StyerAnalysis.summary(analysis);
+        if (analysis && root.StyerAnalysis) payload.situation += '\n\n' + root.StyerAnalysis.summary(analysis, 'handoff');
         if (payload.preferred_follow_up) payload.situation += '\nPreferred follow-up: ' + payload.preferred_follow_up;
         ['page_url', 'entry_referrer', 'first_touch_page', 'first_touch_referrer', 'cta_source_page'].forEach(function (key) {
           payload[key] = payload[key] ? cleanUrl(payload[key]) : '';
