@@ -24,6 +24,7 @@
 
 const crypto = require("crypto");
 const { qualifyLead } = require("./lib/lead-qualification");
+const { spamDrop, turnstileToken, quietBody } = require("./lib/spam-guard");
 
 const LIST_ID   = process.env.MAILCHIMP_BORROWER_LIST_ID || "";
 const _apiKey   = process.env.MAILCHIMP_API_KEY || process.env.mailchimp_api_key || "";
@@ -82,9 +83,10 @@ exports.handler = async (event) => {
   if (!body || typeof body !== 'object' || Array.isArray(body)) {
     return respond(400, { error: 'Body must be an object' });
   }
-  // Honeypot — silently succeed
-  if (body["bot-field"] || body.honeypot) {
-    return respond(200, { ok: true });
+  // Honeypot, too-fast posts, and a failed Turnstile check succeed quietly.
+  // Nothing is forwarded to LoanOS, Mailchimp, or the web-lead webhook.
+  if (await spamDrop(body, fetch, process.env)) {
+    return respond(200, quietBody());
   }
 
   if (typeof body.email !== 'string' || body.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())) {
@@ -168,6 +170,7 @@ exports.handler = async (event) => {
     attributionSource: body.source ?? null,
     ctaSourcePage: body.cta_source_page ?? null,
     ctaLabel: body.cta_label ?? null,
+    turnstileToken: turnstileToken(body),
     audienceType:  body.audience_type ?? null,
     partnerRole:   body.partner_role ?? null,
     scenarioCategory: body.scenario_category ?? null,
@@ -334,6 +337,7 @@ async function createLoanosContact(p) {
       preferred_follow_up: p.preferredFollowUp,
       qualification_tier: p.qualificationTier,
       qualification_score: p.qualificationScore,
+      "cf-turnstile-response": p.turnstileToken || undefined,
     }),
   });
 

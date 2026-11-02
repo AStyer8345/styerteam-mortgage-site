@@ -300,7 +300,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <input name="cta_source_page" type="hidden" value=""/>
 <input name="cta_label" type="hidden" value="Send your info"/>
 <input name="preferred_follow_up" type="hidden" value="Email"/>
-<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
+<p class="styer-hp" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;"><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1" type="text" value=""/></label></p>
 <fieldset data-journey-step="2"><legend>Your details</legend>
 <div class="journey-fields">
 <div class="journey-field journey-full"><label for="name">Name *</label><input autocomplete="name" id="name" maxlength="160" name="name" required="" type="text"/></div>
@@ -387,6 +387,8 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
     </div>
   </div>
 </footer>
+<script defer="" src="/js/turnstile-config.js?v=20261102-spam"></script>
+<script defer="" src="/js/form-guard.js?v=20261102-spam"></script>
 <script defer="" src="script.js?v=20261101-ga4-lead"></script>
 <script defer="" src="/js/scroll-effects.js?v=20260429"></script>
 <script defer="" src="/analytics.js?v=20261101-ga4-lead"></script>

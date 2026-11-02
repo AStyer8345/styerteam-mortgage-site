@@ -583,8 +583,15 @@ function showQuickContactSuccess(form) {
   }, 2600);
 }
 
-function hasSuccessfulCapture(results) {
-  return results.some((result) => result.status === 'fulfilled' && result.value && result.value.ok);
+async function hasSuccessfulCapture(results) {
+  for (const result of results) {
+    if (result.status !== 'fulfilled' || !result.value || !result.value.ok || typeof result.value.json !== 'function') continue;
+    try {
+      const data = typeof result.value.clone === 'function' ? await result.value.clone().json() : await result.value.json();
+      if (data && data.captured === true) return true;
+    } catch (_) { /* A non-JSON backup is not a confirmed lead. */ }
+  }
+  return false;
 }
 
 async function fetchWithTimeout(resource, options = {}, timeoutMs = 15000) {
@@ -742,7 +749,7 @@ async function submitForm(form) {
     }),
   ]);
 
-  if (!hasSuccessfulCapture(captureResults)) {
+  if (!(await hasSuccessfulCapture(captureResults))) {
     showQuickContactError(form);
     return;
   }
@@ -937,7 +944,7 @@ function initHeroQuickForm() {
       }),
     ]);
 
-    if (!hasSuccessfulCapture(quoteCaptureResults)) {
+    if (!(await hasSuccessfulCapture(quoteCaptureResults))) {
       showQuickContactError(form);
       return;
     }
@@ -1204,7 +1211,7 @@ function initPrequalForm() {
           body: JSON.stringify(payload),
         }),
       ]);
-      if (!hasSuccessfulCapture(results)) throw new Error('all capture endpoints failed');
+      if (!(await hasSuccessfulCapture(results))) throw new Error('all capture endpoints failed');
     } catch (err) {
       console.error('[prequal] lead capture failed:', err);
       if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Pre-Qualification'; }
@@ -1377,6 +1384,8 @@ function initNativeLeadForms() {
         body: new URLSearchParams(new FormData(form)).toString(),
       }, 20000);
       if (!response.ok) throw new Error('capture failed');
+      const receipt = await response.json();
+      if (!receipt || receipt.captured !== true) throw new Error('capture failed');
       await dispatchLeadSubmitted({
         lead_type: 'first_time_buyer',
         form_name: form.getAttribute('name') || 'first-time-buyer',

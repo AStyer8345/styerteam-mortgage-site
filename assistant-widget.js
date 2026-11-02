@@ -98,6 +98,7 @@
       '    <button type="submit" class="ma-send">Send<span class="ma-visually-hidden"> message</span></button>',
       '  </form>',
       '  <form class="ma-lead-form" hidden>',
+      '    <p class="styer-hp" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;"><label>Leave this blank<input name="bot-field" type="text" tabindex="-1" autocomplete="off"></label></p>',
       '    <p class="ma-lead-intro">Adam will receive the strategy details already discussed. Just add the best way to reach you.</p>',
       '    <label>First name<input name="firstName" maxlength="80" autocomplete="given-name" required></label>',
       '    <label>Email<input name="email" type="email" maxlength="254" autocomplete="email"></label>',
@@ -357,6 +358,11 @@
     event.preventDefault();
     if (state.busy) return;
     var data = new FormData(ui.leadForm);
+    if (String(data.get('bot-field') || '').trim() || (window.StyerFormGuard && window.StyerFormGuard.tripped(ui.leadForm))) {
+      closeLeadForm();
+      addMessage('assistant', 'Your contact request was received.');
+      return;
+    }
     if (!String(data.get('email') || '').trim() && !String(data.get('phone') || '').trim()) {
       ui.status.textContent = 'Enter an email address or phone number.';
       ui.leadForm.querySelector('[name="email"]').focus();

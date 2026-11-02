@@ -1,3 +1,8 @@
+## 2026-11-02 — Preview: honeypot, timing, and optional Turnstile on lead forms
+
+- Every lead form has an off-screen honeypot (`bot-field`: aria-hidden, tabindex -1, autocomplete off). A filled honeypot or a submit under 3 seconds shows the normal success state and sends nothing. lead-intake and the raw-form backup return success and do not call LoanOS.
+- Cloudflare Turnstile is off unless `TURNSTILE_SITE_KEY` is set. The publish step writes that public key into `js/turnstile-config.js`. `TURNSTILE_SECRET_KEY` is the server secret; when it is unset, verification is skipped. A present token is forwarded to LoanOS as `cf-turnstile-response`. `generate_lead` still waits for `captured: true`. Marketing copy is unchanged. Not merged and not deployed to production.
+
 ## 2026-11-02 — Preview: restore calculator rates and payments on the handoff
 
 - The investor and refinance “Your calculator numbers” summaries show the interest rate and payment rows again, the same rows as before the compliance cut. A 12px line, “Not a quote or offer.”, sits under each of those summaries. The same rows and line are included in the review submission and in the DSCR email analysis. The DSCR email form still posts through lead-intake. Not merged and not deployed to production.

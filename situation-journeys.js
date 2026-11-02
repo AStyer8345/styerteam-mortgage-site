@@ -47,9 +47,13 @@
       function accept(result) { accepted = true; resolve(result); }
       var netlify = Promise.resolve().then(function () {
         return request('/', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() }, 20000);
-      }).then(function (response) {
+      }).then(async function (response) {
         var netlifyAccepted = response.ok && !response.redirected;
-        if (netlifyAccepted) accept({ captured: true, primary: false, receipt: null });
+        var receipt = null;
+        if (netlifyAccepted && typeof response.json === 'function') {
+          try { receipt = await response.json(); } catch (_) { receipt = null; }
+        }
+        if (netlifyAccepted) accept({ captured: true, primary: false, receipt: receipt });
       });
       var primary = Promise.resolve().then(function () {
         return request('/.netlify/functions/lead-intake', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }, 20000);
@@ -396,7 +400,7 @@
           } catch (_) {}
           try {
             attributionEvent('accepted_submit', payload.inquiry_id);
-            attributionEvent('generate_lead', payload.inquiry_id);
+            if (result.receipt && result.receipt.captured === true) attributionEvent('generate_lead', payload.inquiry_id);
           } catch (_) { /* Analytics must not hide a saved request. */ }
         }
       } catch (_) {
