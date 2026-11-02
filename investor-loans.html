@@ -60,6 +60,7 @@ body>main:nth-of-type(1)>section:nth-of-type(9)>div:nth-of-type(1)>div:nth-of-ty
 body>main:nth-of-type(1)>aside:nth-of-type(1)>a:nth-of-type(1){color:#70531f !important;}
 main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style><link href="/final-editorial.css" rel="stylesheet"/><link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
 <link href="/a11y.css" rel="stylesheet"/>
+<link href="/review-intake.css" rel="stylesheet"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -576,13 +577,13 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div>
 </section>
 <!-- SECTION 9: INTAKE FORM -->
-<section class="u-cta-section" id="quick-options" style="padding: 64px 0; background: var(--pwe-obsidian); color: #FFFFFF;">
+<section class="u-cta-section calculator-review" id="quick-options" style="padding: 64px 0; background: #f4f1ea; color: #1c2836;">
 <div class="u-container" id="scenario-review" style="max-width: 820px;"><div id="intake-form"></div>
 <div class="u-cta-card">
 <div class="u-cta-header" style="text-align: center; margin-bottom: 28px;">
-<p class="u-eyebrow" style="color: var(--pwe-brass-light);">Confidential Review</p>
-<h2 style="font-family: var(--pwe-serif); font-size: 28px; color: #FFFFFF; margin: 0 0 10px;">Structure Your Financing With Adam Styer</h2>
-<p style="color: rgba(246, 244, 239, 0.8); font-size: 15px; margin: 0 auto; max-width: 600px;">Estimates are fine. Leave unknown figures blank. Only fields marked * are required. No hard credit pull.</p>
+<p class="u-eyebrow" style="color: #6b5018;">Confidential review</p>
+<h2 style="font-family: var(--pwe-serif); font-size: 28px; color: #1c2836; margin: 0 0 10px;">Structure Your Financing With Adam Styer</h2>
+<p style="color: #3e4d5c; font-size: 15px; margin: 0 auto; max-width: 600px;">Estimates are fine. Leave unknown figures blank. Only fields marked * are required. No hard credit pull.</p>
 </div>
 <form action="/thank-you" class="journey-form" data-journey="investment" data-netlify="true" id="form-investment-property-scenario" method="POST" name="investment-property-scenario" netlify-honeypot="bot-field">
 <input name="utm_source" type="hidden" value=""/>
@@ -607,6 +608,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <input name="inquiry_id" type="hidden" value=""/><input name="intent" type="hidden" value="investment"/><input name="form-name" type="hidden" value="investment-property-scenario"/><input name="property_use" type="hidden" value="Investment"/>
 <p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
 <p aria-live="polite" class="journey-progress">Your scenario</p>
+<p class="journey-form-intro" id="investment-step-help">Choose the options that fit. You can add estimates or leave them blank, then continue to your contact details.</p>
 <fieldset data-journey-step="1"><legend>Your plans</legend><div class="journey-fields"><div class="journey-field"><label for="investment-loan_goal">What would you like to do?</label><select id="investment-loan_goal" name="loan_goal"><option value="Not Sure Yet">Not Sure Yet</option><option value="Purchase">Purchase</option><option value="Refinance">Refinance</option><option value="Access equity">Access equity</option><option selected="" value="Invest">Invest</option><option value="Build">Build</option><option value="Buy before selling">Buy before selling</option></select></div>
 <div class="journey-field"><label for="investment-income_type">What should I know about your situation?</label><select id="investment-income_type" name="income_type"><option value="No special circumstance">No special circumstance</option><option value="Self-employed / business owner">Self-employed / business owner</option><option selected="" value="Rental income">Rental income</option><option value="Substantial assets">Substantial assets</option><option value="Difficulty with another lender">Difficulty with another lender</option><option value="Another circumstance">Another circumstance</option><option value="Not sure yet">Not sure yet</option></select></div>
 <div class="journey-field"><label for="investment-readiness">Where are you in the process?</label><select id="investment-readiness" name="readiness"><option value="">Choose or leave unknown</option><option value="Exploring">Exploring</option><option value="Comparing options">Comparing options</option><option value="Property identified">Property identified</option><option value="Under contract">Under contract</option></select></div>
@@ -703,6 +705,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
   </div>
 </footer>
 <script src="/script.js?v=20261101-ga4-lead"></script>
+<script src="/analysis.js"></script>
 <script src="/situation-journeys.js"></script>
 <script src="/experience.js"></script>
 <script src="/assets/utm.js?v=20260920"></script>

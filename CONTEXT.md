@@ -2,13 +2,13 @@
 
 ## Current State
 
-Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). This schema branch is a preview on top of `463b22a7`. Do not merge it and do not deploy it to production.
+Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). This branch combines the schema preview and the DSCR calculator handoff on top of `463b22a7`. Do not merge it and do not deploy it to production.
+
+The DSCR calculator stores a review in `sessionStorage` (`styer:calculator-review`) and opens `/investor-loans.html?goal=Invest&context=calculator#scenario-review`. The investor form loads `analysis.js` and shows the saved numbers. The refinance comparison passes `context=calculator` into the contact form. The investor review form is the light `calculator-review` panel.
 
 Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel both copies call LoanOS. Do not rename fields or change that endpoint. Preview hosts do not send live leads unless ALLOW_PREVIEW_LIVE_LEADS=true.
 
 GTM-PQQ6PGLR loads immediately on styerteam.com and www.styerteam.com only. Direct Google-tag events wait until `gtm.load`. `generate_lead` fires once after a confirmed capture, with form id and page path, and no contact fields.
-
-Homepage CLS: the first paint now reserves the header, hero, and ledger. Mobile keeps a metric-matched Inter fallback until the deferred stylesheet loads. Desktop declares Inter and Source Serif up front so the nav and ledger do not jump.
 
 ## Repository
 
@@ -18,16 +18,12 @@ Homepage CLS: the first paint now reserves the header, hero, and ledger. Mobile 
 | Hosting | Vercel project `styerteam-site`. Netlify config stays in the repo. |
 | Publish | `.site-dist` |
 | Domain | `https://styerteam.com` |
-| This branch | `cursor/sitewide-schema-batch2` |
+| This branch | `cursor/release-2026-11-01-dscr-schema` |
 | PR base | `cursor/blog-aeo-fixpack-2026-11-01` |
 
 ## Last Worked On
 
-Sitewide schema batch 2, preview only. Verified `sameAs` profiles, stable BreadcrumbList / Article / WebPage `@id`s, and FAQ schema rebuilt from visible questions. All 31 AEO blog FAQPages remain. FAQPage stays off the March 2026 rates post, the Austin buying guide, and the August 10 market update because an answer states a rate, a down-payment percentage, or a dollar or percent cost. The closing-costs guide keeps its FAQPage. The home-equity reference link points at `#faq`. The business-owners LinkedIn href points at `/in/thestyerteam`. Visible copy is unchanged. Not merged and not deployed to production.
-
-Blog AEO fix pack, on the base branch. Thirty-one posts have the pack’s answer blocks and FAQPage schema. The cash-out post’s schema is the five cash-out questions. The two personal essays were left without FAQs.
-
-Homepage mobile CLS (PR #48). The hero and header were painted from critical CSS, then the deferred stylesheet restyled the kicker, buttons, wordmark, and nav. Desktop also showed the full menu in normal flow until that stylesheet arrived.
+Combined release branch, not deployed. Schema batch 2 keeps verified `sameAs`, stable `@id`s, and the 31 AEO blog FAQPages. FAQPage stays off the March 2026 rates post, the Austin buying guide, and the August 10 market update. The DSCR calculator review prefills the investor form, and the refinance comparison prefills contact. Visible copy from the schema batch is unchanged. Not merged and not deployed to production.
 
 ## Working Rules
 

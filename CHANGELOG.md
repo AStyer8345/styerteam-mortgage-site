@@ -8,6 +8,12 @@
 - BreadcrumbList, Article, and WebPage nodes use stable `@id` fragments (`#breadcrumb`, `#article`, `#webpage`). FAQ names drop a trailing accordion plus. A question whose only text is the question itself is left out of schema.
 - Regenerating structured data kept all 31 blog FAQPages from the AEO pack. Heading FAQs that are not the first heading in the article are read from the visible question and its first answer paragraph. Four older heading FAQs that had no FAQPage now have one. The home-equity reference link points at `#faq`. The business-owners LinkedIn href points at `/in/thestyerteam`. Visible copy is unchanged. Not merged and not deployed to production.
 
+## 2026-11-02 — Preview: DSCR calculator review handoff
+
+- The DSCR calculator already saved the review in session storage and opened the investor form with `context=calculator`. That page never loaded `analysis.js`, so the form said the numbers could not be restored and left the fields blank. The investor form now loads `analysis.js` first and shows “Your calculator numbers,” with Edit and Remove.
+- The refinance comparison stored the same key but opened contact without `context=calculator`, so those numbers never appeared. It now passes that context, and the contact page loads `analysis.js` too. The extensionless `/investor-loans` 301 still points at `/investor-loans.html` with no query of its own, so a query string is not replaced. The calculator links use the `.html` URL.
+- The investor review panel is light, with sentence-case labels, a visible step, a Continue button, and the fieldset border removed so the legend no longer sits on the line. Field names, the honeypot, and the LoanOS lead-intake post are unchanged. Calculator figures still travel in the existing situation text and the matching estimate fields. Not merged and not deployed to production.
+
 ## 2026-11-02 — Preview: blog answer blocks and FAQ schema
 
 - Applied the 2026-11-01 blog AEO fix pack to 31 posts. New and replacement answer paragraphs, FAQ accordions, compliance FAQ rewrites, and one FAQPage node per page were added from the pack. Optional heading rewrites were skipped. Apply Now, down-payment labels, Wholesale Rates, nav, and footer were left as they are.
