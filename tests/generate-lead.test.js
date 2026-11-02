@@ -68,15 +68,15 @@ test('the same inquiry emits generate_lead once', () => {
 
 test('a failed capture does not emit generate_lead and a confirmed one does', async () => {
   const hero = script.slice(script.indexOf('function initHeroQuickForm'), script.indexOf('function initTestimonialFilter'));
-  const failure = hero.indexOf('if (!hasSuccessfulCapture(quoteCaptureResults))');
+  const failure = hero.indexOf('hasSuccessfulCapture(quoteCaptureResults)');
   const track = hero.indexOf('dispatchLeadSubmitted');
   assert.ok(failure !== -1 && track !== -1 && failure < track);
 
   const quick = script.slice(script.indexOf('async function submitForm'), script.indexOf('function initFormValidation'));
-  assert.ok(quick.indexOf('if (!hasSuccessfulCapture(captureResults))') < quick.indexOf('dispatchLeadSubmitted'));
+  assert.ok(quick.indexOf('hasSuccessfulCapture(captureResults)') < quick.indexOf('dispatchLeadSubmitted'));
 
   const prequal = script.slice(script.indexOf('function initPrequalForm'), script.indexOf('function initNativeFormErrors'));
-  assert.ok(prequal.indexOf('if (!hasSuccessfulCapture(results))') < prequal.indexOf('dispatchLeadSubmitted'));
+  assert.ok(prequal.indexOf('hasSuccessfulCapture(results)') < prequal.indexOf('dispatchLeadSubmitted'));
 
   const native = script.slice(script.indexOf('function initNativeLeadForms'), script.indexOf('if (document.readyState'));
   assert.match(native, /if \(!response\.ok\) throw new Error\('capture failed'\)/);

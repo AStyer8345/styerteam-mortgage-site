@@ -63,7 +63,9 @@ async function handleFormPost(input, deps = {}) {
   if (!type.includes("application/x-www-form-urlencoded")) return json(415, { error: "Form body required" });
 
   const fields = applyNameSplit(Object.fromEntries(new URLSearchParams(bodyText)));
-  if (fields["bot-field"] || fields.honeypot) return json(200, { ok: true });
+  const fetchImpl = deps.fetch || globalThis.fetch;
+  const { spamDrop, quietBody } = require("../../netlify/functions/lib/spam-guard");
+  if (await spamDrop(fields, fetchImpl)) return json(200, quietBody());
 
   const vercelEnv = process.env.VERCEL_ENV || "";
   const previewSandbox = vercelEnv !== "" && vercelEnv !== "production" && process.env.ALLOW_PREVIEW_LIVE_LEADS !== "true";
@@ -80,7 +82,6 @@ async function handleFormPost(input, deps = {}) {
   if (!hasInquiry) fields.inquiry_id = stableId(fields);
 
   const intake = deps.intake || defaultIntake;
-  const fetchImpl = deps.fetch || globalThis.fetch;
   const webhook = deps.webhook === undefined ? (process.env.FORM_NOTIFICATION_WEBHOOK_URL || "") : deps.webhook;
 
   let intakeResult = { statusCode: 502, body: JSON.stringify({ captured: false }) };
@@ -97,11 +98,16 @@ async function handleFormPost(input, deps = {}) {
     intakeResult = { statusCode: 502, body: JSON.stringify({ captured: false, error: "Primary capture unavailable" }) };
   }
 
+  let intakeJson = {};
+  try { intakeJson = JSON.parse(intakeResult.body || "{}"); } catch { intakeJson = {}; }
+  const captured = intakeJson.captured === true;
   let webhookOk = false;
-  if (webhook && !previewSandbox) {
+  if (webhook && !previewSandbox && captured) {
     const payload = { ...fields };
     delete payload["bot-field"];
     delete payload.honeypot;
+    delete payload["cf-turnstile-response"];
+    delete payload.form_rendered_at;
     try {
       const response = await fetchImpl(webhook, {
         method: "POST",

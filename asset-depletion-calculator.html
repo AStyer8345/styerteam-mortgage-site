@@ -1144,7 +1144,8 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <input name="first_touch_utm_content" type="hidden" value=""/>
 <input name="source" type="hidden" value=""/>
 <input name="cta_source_page" type="hidden" value=""/>
-<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
+<p class="styer-hp" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;"><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1" type="text" value=""/></label></p>
+<input name="form_rendered_at" type="hidden" value=""/>
 <div class="adc-email-grid">
 <div class="adc-field" style="margin:0;">
 <label class="adc-label" for="adc-email-name">Name</label>
@@ -1295,6 +1296,8 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
     </div>
   </div>
 </footer>
+<script defer="" src="/js/turnstile-config.js?v=20261102-spam"></script>
+<script defer="" src="/js/form-guard.js?v=20261102-spam"></script>
 <script defer="" src="/script.js?v=20261101-ga4-lead"></script>
 <script defer="" src="/js/scroll-effects.js?v=20260429"></script>
 <script defer="" src="/analytics.js?v=20261101-ga4-lead"></script>
@@ -1679,8 +1682,11 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
         tag: 'asset-depletion-calculator',
         intent: 'asset_depletion_calculator',
         preferred_follow_up: 'Email',
-        'bot-field': fieldValue('bot-field')
+        'bot-field': fieldValue('bot-field'),
+        form_rendered_at: fieldValue('form_rendered_at')
       };
+      var turnstile = fieldValue('cf-turnstile-response');
+      if (turnstile) payload['cf-turnstile-response'] = turnstile;
       ATTRIBUTION_FIELDS.forEach(function (key) {
         payload[key] = key === 'page_url' ? sourcePage() : fieldValue(key);
       });
@@ -1707,11 +1713,23 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
     }
 
     if (els.emailForm) {
+      var renderedField = els.emailForm.querySelector('[name="form_rendered_at"]');
+      if (renderedField && !renderedField.value) {
+        renderedField.value = String(Date.now());
+        renderedField.defaultValue = renderedField.value;
+      }
       var leadSending = false;
       els.emailForm.addEventListener('submit', async function (e) {
         e.preventDefault();
         if (leadSending) return;
-        if (fieldValue('bot-field')) return;
+        var renderedAt = Number(fieldValue('form_rendered_at'));
+        var tooFast = Number.isFinite(renderedAt) && renderedAt > 0 && Date.now() - renderedAt >= 0 && Date.now() - renderedAt < 3000;
+        if (fieldValue('bot-field') || tooFast) {
+          els.emailMsg.textContent = 'Thanks — Adam will follow up shortly.';
+          els.emailMsg.classList.add('adc-email-msg--ok');
+          els.emailMsg.setAttribute('role', 'status');
+          return;
+        }
 
         var name = (els.emailName.value || '').trim();
         var email = (els.emailAddr.value || '').trim();
@@ -1764,7 +1782,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
           els.emailMsg.textContent = 'Thanks — Adam will follow up shortly.';
           els.emailMsg.classList.add('adc-email-msg--ok');
           var preserved = {};
-          ATTRIBUTION_FIELDS.concat(['lead_source', 'tag', 'intent', 'preferred_follow_up', 'form-name']).forEach(function (key) {
+          ATTRIBUTION_FIELDS.concat(['lead_source', 'tag', 'intent', 'preferred_follow_up', 'form-name', 'form_rendered_at']).forEach(function (key) {
             preserved[key] = fieldValue(key);
           });
           els.emailForm.reset();

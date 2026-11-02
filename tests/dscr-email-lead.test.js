@@ -218,6 +218,8 @@ async function submit(document, values) {
   if (values.notes != null) document.getElementById('dscr-lead-notes').value = values.notes;
   if (values.honeypot != null) form.querySelector('[name="bot-field"]').value = values.honeypot;
   if (values.utm != null) form.querySelector('[name="utm_source"]').value = values.utm;
+  const rendered = form.querySelector('[name="form_rendered_at"]');
+  if (rendered) rendered.value = String(values.fast ? Date.now() : Date.now() - 5000);
   await form.dispatchEvent({ type: 'submit', preventDefault() {}, target: form });
   return form;
 }
@@ -299,5 +301,11 @@ test('DSCR success waits for captured:true and a failed or empty receipt does no
   await submit(honeypot.document, { name: 'Ada Borrower', email: 'ada@example.com', honeypot: 'robot' });
   assert.equal(honeypot.calls.length, 0);
   assert.equal(honeypot.sandbox.dataLayer.length, 0);
-  assert.equal(honeypot.document.getElementById('dscr-lead-status').textContent, '');
+  assert.equal(honeypot.document.getElementById('dscr-lead-status').textContent, 'Thanks — Adam will follow up shortly.');
+
+  const tooFast = loadCalculator(async () => jsonResponse({ captured: true }));
+  await submit(tooFast.document, { name: 'Ada Borrower', email: 'ada@example.com', fast: true });
+  assert.equal(tooFast.calls.length, 0);
+  assert.equal(tooFast.sandbox.dataLayer.length, 0);
+  assert.equal(tooFast.document.getElementById('dscr-lead-status').textContent, 'Thanks — Adam will follow up shortly.');
 });

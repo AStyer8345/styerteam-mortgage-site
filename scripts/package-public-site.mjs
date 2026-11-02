@@ -40,10 +40,24 @@ for (const file of files.filter(file => file.endsWith('.html'))) {
 }
 fs.rmSync(destination, { recursive: true, force: true });
 fs.mkdirSync(destination, { recursive: true });
+function publishTurnstile(text) {
+  const siteKey = process.env.TURNSTILE_SITE_KEY || '';
+  if (!siteKey) return text;
+  if (!/^[A-Za-z0-9_-]{10,200}$/.test(siteKey)) {
+    console.warn('TURNSTILE_SITE_KEY was ignored because it is not a site-key token.');
+    return text;
+  }
+  return text.replaceAll('"" /* turnstile-site-key */', `${JSON.stringify(siteKey)} /* turnstile-site-key */`);
+}
+
 for (const file of files) {
   const output = path.join(destination, file);
   fs.mkdirSync(path.dirname(output), { recursive: true });
-  fs.copyFileSync(path.join(root, file), output);
+  if (file === 'js/turnstile-config.js' || file === 'js/form-guard.js') {
+    fs.writeFileSync(output, publishTurnstile(fs.readFileSync(path.join(root, file), 'utf8')));
+  } else {
+    fs.copyFileSync(path.join(root, file), output);
+  }
 }
 console.log(`Packaged ${files.length} public website files. Functions, source, reports and metadata excluded.`);
 await import('./optimize-homepage.mjs');

@@ -1,5 +1,26 @@
 /* WCAG 2.2 AA adjustments. Logo artwork is unchanged; only its box size changes. */
 
+/* Lead-form honeypot. Off-screen, not display:none, so fillers still see the
+   field. aria-hidden and tabindex -1 keep it out of reading order and tab order. */
+.styer-hp {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.styer-turnstile {
+  margin: 0.75rem 0 0;
+}
+.styer-turnstile:empty {
+  margin: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 html {
   scroll-padding-top: 96px;
 }

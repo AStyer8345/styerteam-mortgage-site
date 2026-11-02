@@ -31,13 +31,21 @@
         window.StyerFetchWithTimeout('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:encoded},20000),
         window.StyerFetchWithTimeout('/.netlify/functions/lead-intake',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)},20000).then(async function(response){return response.ok?response.json():null;})
       ]);
-      var accepted=(results[0].status==='fulfilled'&&results[0].value.ok)||(results[1].status==='fulfilled'&&results[1].value&&results[1].value.captured===true);
+      var leadJson=results[1].status==='fulfilled'?results[1].value:null;
+      var backupJson=null;
+      if(results[0].status==='fulfilled'&&results[0].value&&results[0].value.ok&&typeof results[0].value.json==='function'){
+        try{backupJson=await results[0].value.json();}catch(ignore){backupJson=null;}
+      }
+      var captured=(leadJson&&leadJson.captured===true)||(backupJson&&backupJson.captured===true);
+      var accepted=captured||(results[0].status==='fulfilled'&&results[0].value&&results[0].value.ok);
       if(!accepted)throw new Error('capture_failed');
       try{window.sessionStorage.setItem('styer:professional-referral',JSON.stringify({propertyState:String(data.get('property_state')||''),partnerRole:String(data.get('partner_role')||''),includeReferrer:data.get('include_referrer_in_follow_up')==='yes'}));}catch(ignore){}
       track('accepted_submit',{form_name:form.getAttribute('name'),inquiry_id:data.get('inquiry_id'),page_path:window.location.pathname,page_location:window.location.origin+window.location.pathname});
       var leadParams={lead_type:'professional_referral',form_name:form.getAttribute('name')||'professional-referral',form_id:form.id||form.getAttribute('name')||'professional-referral',inquiry_id:String(data.get('inquiry_id')||'')};
-      if(window.StyerTrackGenerateLead) await window.StyerTrackGenerateLead(leadParams,{waitForTags:true,scenarioSubmit:false});
-      else track('generate_lead',Object.assign({page_path:window.location.pathname,page_location:window.location.origin+window.location.pathname},leadParams));
+      if(captured){
+        if(window.StyerTrackGenerateLead) await window.StyerTrackGenerateLead(leadParams,{waitForTags:true,scenarioSubmit:false});
+        else track('generate_lead',Object.assign({page_path:window.location.pathname,page_location:window.location.origin+window.location.pathname},leadParams));
+      }
       window.location.href='/thank-you.html?type=professional-referral';
     }catch(error){
       form.dataset.sending='false';
