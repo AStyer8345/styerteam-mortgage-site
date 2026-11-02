@@ -1,3 +1,7 @@
+## 2026-11-02 — Preview: hold FAQ schema off three new heading FAQs
+
+- Three pages that first received a FAQPage in the schema batch state a down-payment percentage, a dollar cost, or an interest rate in an answer. FAQPage stays off for the March 2026 rates post ("3.5% down"), the Austin buying guide ("$100–$500", "2–3%", "$9,000–$13,500"), and the August 10 market update ("6.69%"). The closing-costs guide has none of those figures, so its FAQPage stays. Visible copy is unchanged. Not merged and not deployed to production.
+
 ## 2026-11-02 — Preview: sitewide schema batch 2
 
 - Organization and Person schema now list verified profiles only. The organization lists Google Maps, Facebook, Instagram, YouTube, and liinks.co. Adam lists LinkedIn and Zillow. Yelp stays out until the slug is confirmed.

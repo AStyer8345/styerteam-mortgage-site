@@ -23,7 +23,7 @@ Homepage CLS: the first paint now reserves the header, hero, and ledger. Mobile 
 
 ## Last Worked On
 
-Sitewide schema batch 2, preview only. Verified `sameAs` profiles, stable BreadcrumbList / Article / WebPage `@id`s, and FAQ schema rebuilt from visible questions. All 31 AEO blog FAQPages remain. The home-equity reference link points at `#faq`. The business-owners LinkedIn href points at `/in/thestyerteam`. Visible copy is unchanged. Not merged and not deployed to production.
+Sitewide schema batch 2, preview only. Verified `sameAs` profiles, stable BreadcrumbList / Article / WebPage `@id`s, and FAQ schema rebuilt from visible questions. All 31 AEO blog FAQPages remain. FAQPage stays off the March 2026 rates post, the Austin buying guide, and the August 10 market update because an answer states a rate, a down-payment percentage, or a dollar or percent cost. The closing-costs guide keeps its FAQPage. The home-equity reference link points at `#faq`. The business-owners LinkedIn href points at `/in/thestyerteam`. Visible copy is unchanged. Not merged and not deployed to production.
 
 Blog AEO fix pack, on the base branch. Thirty-one posts have the pack’s answer blocks and FAQPage schema. The cash-out post’s schema is the five cash-out questions. The two personal essays were left without FAQs.
 

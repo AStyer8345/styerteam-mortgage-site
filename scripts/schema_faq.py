@@ -1,6 +1,19 @@
 import re
 from bs4 import BeautifulSoup
 
+# FAQPage stays off when an answer states a rate, APR, payment, down-payment
+# percentage, or a dollar or percent cost or savings figure. Visible copy is
+# unchanged. sync-structured-data.py and verify-business-schema.py match these
+# file paths, not the canonical URL (two of them point at a different page):
+# - blog/2026-03-20-austin-mortgage-rates-march-2026.html ("3.5% down")
+# - resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html ("$100–$500", "2–3%", "$9,000–$13,500")
+# - updates/2026-08-10-austin-housing-market-report-august-2026.html ("6.69%")
+FAQ_SCHEMA_SKIP={
+ 'blog/2026-03-20-austin-mortgage-rates-march-2026.html',
+ 'resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html',
+ 'updates/2026-08-10-austin-housing-market-report-august-2026.html',
+}
+
 def text(el):
  if el is None:return ''
  el=BeautifulSoup(str(el),'html.parser')

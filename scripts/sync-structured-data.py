@@ -2,7 +2,7 @@ import sys,json,re,ast,subprocess
 # Install optional maintenance dependencies: pip install -r scripts/schema-requirements.txt
 from pathlib import Path
 from bs4 import BeautifulSoup
-from schema_faq import faqs, text
+from schema_faq import FAQ_SCHEMA_SKIP, faqs, text
 root=Path(__file__).resolve().parents[1]
 HOST='https://styerteam.com';ORG=HOST+'/#organization';ADAM=HOST+'/#adam';WEB=HOST+'/#website'
 shared=json.loads((root/'config/business-entities.json').read_text())
@@ -19,7 +19,7 @@ for rel in subprocess.check_output(['git','ls-files','*.html'],cwd=root,text=Tru
  for line in s.splitlines():
   if line.lstrip().startswith("['") and '<details' in line:
    s=s.replace(line,'\n'.join(ast.literal_eval(line.strip())))
- d=BeautifulSoup(s,'html.parser');qs=faqs(d);old=[]
+ d=BeautifulSoup(s,'html.parser');qs=[] if rel in FAQ_SCHEMA_SKIP else faqs(d);old=[]
  for m in script.finditer(s):
   data=json.loads(m[1]);old.extend(data if isinstance(data,list) else data.get('@graph',[data]))
  def clean(v,key=''):
