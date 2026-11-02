@@ -52,6 +52,10 @@ for rel in subprocess.check_output(['git','ls-files','*.html'],cwd=root,text=Tru
   if set(out)=={'@id'}:continue
   if out.get('@type') in ['Article','WebPage','CollectionPage','ContactPage','FinancialProduct','WebApplication','Service']:
    out['url']=canonical
+  t=out.get('@type')
+  if t=='BreadcrumbList':out.setdefault('@id',canonical+'#breadcrumb')
+  elif t=='Article':out.setdefault('@id',canonical+'#article')
+  elif t in ['WebPage','CollectionPage','ContactPage']:out.setdefault('@id',canonical+'#webpage')
   if out.get('@type')=='BreadcrumbList' and out.get('itemListElement'):
    out['itemListElement'][-1]['item']=canonical
   nodes.append(out)
