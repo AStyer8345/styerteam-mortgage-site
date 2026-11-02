@@ -1496,6 +1496,11 @@
       "statusCode": 301
     },
     {
+      "source": "/blog/2026-11-02-refinance-out-of-non-qm-loan-texas",
+      "destination": "/blog/2026-11-02-refinance-out-of-non-qm-loan-texas.html",
+      "statusCode": 301
+    },
+    {
       "source": "/buy-before-you-sell-austin",
       "destination": "/buy-before-you-sell-austin.html",
       "statusCode": 301
