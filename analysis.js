@@ -17,20 +17,14 @@
   return {version:1,kind:value.kind,at:Number.isFinite(value.at)?value.at:Date.now(),inputs:inputs,results:calculate(inputs,value.kind)};
  }
  function money(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n);}
- // Handoff summaries may show the ratio and the non-rate inputs. They must not
- // show an interest rate or a principal, PITIA, or total payment figure.
- function omittedFromHandoff(kind,label){
-  if(kind==='dscr')return label==='Interest rate'||label==='Monthly principal & interest'||label==='Monthly PITIA';
-  return label==='Current rate'||label==='New rate'||label==='Current monthly P&I'||label==='Proposed monthly P&I'||label==='Monthly payment difference';
- }
- function rows(value,mode){var a=normalize(value);var data=(a.kind==='dscr'?dscrFields:refiFields).map(function(f){var unit=f[2]==='down'?(a.inputs.downMode==='pct'?'%':'$'):f[2];return [f[1],unit==='$'?money(a.inputs[f[0]]):a.inputs[f[0]]+' '+unit];});
+ var offerLine='Not a quote or offer.';
+ function rows(value){var a=normalize(value);var data=(a.kind==='dscr'?dscrFields:refiFields).map(function(f){var unit=f[2]==='down'?(a.inputs.downMode==='pct'?'%':'$'):f[2];return [f[1],unit==='$'?money(a.inputs[f[0]]):a.inputs[f[0]]+' '+unit];});
   if(a.kind==='dscr')data.push(['Loan amount',money(a.results.loan)],['Monthly principal & interest',money(a.results.pi)],['Monthly PITIA',money(a.results.pitia)],['Estimated DSCR',a.results.dscr.toFixed(2)],['Rent remaining after PITIA',money(a.results.remaining)]);
   else data.push(['Current monthly P&I',money(a.results.current)],['Proposed monthly P&I',money(a.results.proposed)],['Monthly payment difference',money(a.results.savings)],['Simple break-even',a.results.months===null?'No payment-based break-even':a.results.months+' months']);
-  if(mode==='handoff')data=data.filter(function(row){return !omittedFromHandoff(a.kind,row[0]);});
   return data;
  }
  function caveat(kind){return kind==='dscr'?'PITIA includes principal, interest, property taxes, insurance and HOA. Rent remaining excludes vacancy, repairs, management, utilities, capital expenses and other operating costs. This is not net operating cash flow. Estimates only; no rate quote or loan approval.':'Compares principal and interest only. Assumes closing costs paid in cash. Excludes taxes, insurance and changes to mortgage insurance. A new term restarts amortization; lower payments can mean more total interest. Estimates only; no rate quote or loan approval.';}
- function summary(value,mode){var a=normalize(value);return (a.kind==='dscr'?'DSCR property analysis':'Refinance comparison')+' · '+new Date(a.at).toISOString()+'\n'+rows(a,mode).map(function(r){return r[0]+': '+r[1];}).join('\n')+'\n'+caveat(a.kind);}
- function render(el,value,mode){var a=normalize(value);el.replaceChildren();var title=root.document.createElement('h3');title.textContent=a.kind==='dscr'?'Your property analysis':'Your refinance comparison';el.appendChild(title);var dl=root.document.createElement('dl');rows(a,mode).forEach(function(row){var dt=root.document.createElement('dt'),dd=root.document.createElement('dd');dt.textContent=row[0];dd.textContent=row[1];dl.append(dt,dd);});el.appendChild(dl);var note=root.document.createElement('p');note.textContent=caveat(a.kind);el.appendChild(note);}
+ function summary(value,mode){var a=normalize(value);var text=(a.kind==='dscr'?'DSCR property analysis':'Refinance comparison')+' · '+new Date(a.at).toISOString()+'\n'+rows(a).map(function(r){return r[0]+': '+r[1];}).join('\n')+'\n'+caveat(a.kind);if(mode==='handoff')text+='\n'+offerLine;return text;}
+ function render(el,value,mode){var a=normalize(value);el.replaceChildren();var title=root.document.createElement('h3');title.textContent=a.kind==='dscr'?'Your property analysis':'Your refinance comparison';el.appendChild(title);var dl=root.document.createElement('dl');rows(a).forEach(function(row){var dt=root.document.createElement('dt'),dd=root.document.createElement('dd');dt.textContent=row[0];dd.textContent=row[1];dl.append(dt,dd);});el.appendChild(dl);var note=root.document.createElement('p');note.textContent=caveat(a.kind);el.appendChild(note);if(mode==='handoff'){var offer=root.document.createElement('p');offer.className='journey-summary-disclaimer';offer.textContent=offerLine;el.appendChild(offer);}}
  var api={normalize:normalize,calculate:calculate,rows:rows,summary:summary,render:render,fields:dscrFields,caveat:caveat};root.StyerAnalysis=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

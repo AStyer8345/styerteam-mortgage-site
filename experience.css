@@ -97,6 +97,7 @@ body .journey-hero .journey-eyebrow,body .journey-card .journey-progress{font-si
 .journey-summary dt{color:var(--experience-muted)}
 .journey-summary dd{margin:0;overflow-wrap:anywhere;font-weight:600}
 .journey-summary p{font-size:.9375rem;line-height:1.6;margin:.8rem 0 0}
+.journey-summary p.journey-summary-disclaimer{margin:.45rem 0 0;color:#3e4c59;font-size:12px;font-weight:400;line-height:1.35;letter-spacing:0}
 .journey-summary a{display:inline-block;margin-top:.7rem;text-decoration:underline}
 .journey-next-actions{margin-top:1rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
 .journey-next-actions a{text-decoration:underline}

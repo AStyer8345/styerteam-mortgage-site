@@ -1470,7 +1470,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
     // The browser posts JSON to lead-intake with no secret. That function
     // stores the inquiry in LoanOS and dispatches the web-lead webhook.
     // A urlencoded copy posts to this page so the backup uses the same inquiry id.
-    // The posted analysis uses the handoff summary, which omits rate and payment.
+    // The posted analysis uses the handoff summary, including rate and payment rows.
     var ATTRIBUTION_FIELDS = [
       'page_url', 'entry_referrer', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
       'first_touch_page', 'first_touch_referrer', 'first_touch_at', 'first_touch_source',

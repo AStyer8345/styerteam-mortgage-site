@@ -4,7 +4,7 @@
 
 Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). This branch is the DSCR handoff compliance and email-form change on top of `cursor/release-2026-11-01-dscr-schema` (`1a31b63f`). Do not merge it and do not deploy it to production.
 
-The calculator review still travels in `sessionStorage` (`styer:calculator-review`). The investor and refinance handoff summaries omit interest rate and payment rows. The stored snapshot still keeps the rate so Edit can restore the calculator. The DSCR email form posts to `/.netlify/functions/lead-intake` and does not include a rate or payment figure.
+The calculator review still travels in `sessionStorage` (`styer:calculator-review`). The investor and refinance handoff summaries show the interest rate and payment rows again, with a 12px line that reads “Not a quote or offer.” The DSCR email form posts to `/.netlify/functions/lead-intake` and includes those rows plus the same line.
 
 Forms still post to `/` and `/.netlify/functions/lead-intake`. On Vercel both copies call LoanOS. Do not rename fields or change that endpoint. Preview hosts do not send live leads unless ALLOW_PREVIEW_LIVE_LEADS=true. Do not submit the DSCR email form or the review form against a live host.
 
@@ -23,7 +23,7 @@ GTM-PQQ6PGLR loads immediately on styerteam.com and www.styerteam.com only. Dire
 
 ## Last Worked On
 
-Handoff summaries for DSCR and refinance no longer show an interest rate, principal and interest, PITIA, or a payment difference. The DSCR ratio, price, down payment, loan amount, rent, taxes, insurance, and HOA stay. The DSCR “Email me this analysis” form is visible and uses the same lead-intake path as the asset depletion calculator. The posted analysis uses the handoff summary. Not merged and not deployed to production.
+Rate and payment rows are back on the calculator handoff summaries, with “Not a quote or offer.” under them and in the posted analysis. The DSCR “Email me this analysis” form stays on the lead-intake path. Not merged and not deployed to production.
 
 ## Working Rules
 

@@ -82,29 +82,67 @@ test('DSCR review click stores the typed numbers for the investor form', () => {
   assert.equal(saved.value.inputs.rate, 7.5);
   assert.equal(saved.value.inputs.downMode, 'pct');
   assert.equal(context.location.href, '/investor-loans.html?goal=Invest&context=calculator#scenario-review');
-  const labels = analysis.rows(saved.value, 'handoff').map((row) => row[0]);
-  assert.equal(labels.includes('Purchase price'), true);
-  assert.equal(labels.includes('Loan amount'), true);
-  assert.equal(labels.includes('Monthly gross rent'), true);
-  assert.equal(labels.includes('Estimated DSCR'), true);
-  assert.equal(labels.includes('Interest rate'), false);
-  assert.equal(labels.includes('Monthly principal & interest'), false);
-  assert.equal(labels.includes('Monthly PITIA'), false);
+  const labels = analysis.rows(saved.value).map((row) => row[0]);
+  for (const label of ['Purchase price', 'Interest rate', 'Loan amount', 'Monthly principal & interest', 'Monthly PITIA', 'Monthly gross rent', 'Estimated DSCR']) {
+    assert.equal(labels.includes(label), true, label);
+  }
   const handoff = analysis.summary(saved.value, 'handoff');
+  assert.match(handoff, /Interest rate: 7\.5 %/);
+  assert.match(handoff, /Monthly principal & interest/);
+  assert.match(handoff, /Monthly PITIA/);
   assert.match(handoff, /Estimated DSCR/);
-  assert.doesNotMatch(handoff, /Interest rate|Monthly principal|Monthly PITIA|7\.5/);
+  assert.match(handoff, /Not a quote or offer\./);
   assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /render\(panel,analysis,'handoff'\)/);
   assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /summary\(analysis, 'handoff'\)/);
 });
 
-test('refinance handoff summary keeps the comparison inputs and omits rates and payments', () => {
+test('handoff summary renders the rate and payment rows with the disclaimer line', () => {
+  function element() {
+    return {
+      className: '',
+      textContent: '',
+      children: [],
+      append(...kids) { this.children.push(...kids); },
+      appendChild(node) { this.children.push(node); return node; },
+      replaceChildren() { this.children = []; }
+    };
+  }
+  const sandbox = {
+    document: { createElement: element },
+    Intl, Date, Math, Number, isFinite
+  };
+  sandbox.window = sandbox;
+  vm.runInNewContext(fs.readFileSync('analysis.js', 'utf8'), sandbox);
+  const panel = element();
+  sandbox.StyerAnalysis.render(panel, {
+    kind: 'dscr',
+    inputs: { price: 640000, down: 25, downMode: 'pct', rate: 7.5, years: 30, tax: 8100, ins: 2500, hoa: 0, rent: 4321 }
+  }, 'handoff');
+  const terms = panel.children.flatMap((node) => node.children.map((child) => child.textContent));
+  assert.equal(terms.includes('Interest rate'), true);
+  assert.equal(terms.includes('Monthly principal & interest'), true);
+  assert.equal(terms.includes('Monthly PITIA'), true);
+  const list = panel.children.find((node) => node.children.length > 2);
+  const disclaimer = panel.children.find((node) => node.className === 'journey-summary-disclaimer');
+  assert.equal(disclaimer.textContent, 'Not a quote or offer.');
+  assert.ok(panel.children.indexOf(disclaimer) > panel.children.indexOf(list));
+  for (const file of ['experience.css', 'review-intake.css']) {
+    assert.match(fs.readFileSync(file, 'utf8'), /\.journey-summary-disclaimer\{[^}]*font-size:12px|journey-summary-disclaimer \{[\s\S]*font-size: 12px/);
+  }
+});
+
+test('refinance handoff summary shows the rate and payment rows and the disclaimer', () => {
   const saved = analysis.normalize({
     kind: 'refinance',
     inputs: { balance: 350000, currentRate: 7, currentYears: 30, newRate: 6, newYears: 30, costs: 6000 }
   });
-  const labels = analysis.rows(saved, 'handoff').map((row) => row[0]);
-  assert.deepEqual(labels, ['Current balance', 'Current term', 'New term', 'Closing costs paid in cash', 'Simple break-even']);
+  const labels = analysis.rows(saved).map((row) => row[0]);
+  assert.deepEqual(labels, ['Current balance', 'Current rate', 'Current term', 'New rate', 'New term', 'Closing costs paid in cash', 'Current monthly P&I', 'Proposed monthly P&I', 'Monthly payment difference', 'Simple break-even']);
   const handoff = analysis.summary(saved, 'handoff');
-  assert.doesNotMatch(handoff, /Current rate|New rate|monthly P&I|payment difference|\$2,/);
-  assert.match(analysis.summary(saved), /Current rate/);
+  assert.match(handoff, /Current rate: 7 %/);
+  assert.match(handoff, /New rate: 6 %/);
+  assert.match(handoff, /Current monthly P&I/);
+  assert.match(handoff, /Proposed monthly P&I/);
+  assert.match(handoff, /Monthly payment difference/);
+  assert.match(handoff, /Not a quote or offer\./);
 });

@@ -1,3 +1,7 @@
+## 2026-11-02 — Preview: restore calculator rates and payments on the handoff
+
+- The investor and refinance “Your calculator numbers” summaries show the interest rate and payment rows again, the same rows as before the compliance cut. A 12px line, “Not a quote or offer.”, sits under each of those summaries. The same rows and line are included in the review submission and in the DSCR email analysis. The DSCR email form still posts through lead-intake. Not merged and not deployed to production.
+
 ## 2026-11-02 — Preview: DSCR handoff summary and email form
 
 - The calculator review summary on the investor and refinance handoff no longer shows an interest rate or a principal, PITIA, or payment figure. Purchase price, down payment, loan amount, term, taxes, insurance, HOA, rent, the DSCR ratio, and rent remaining stay. The calculator page still shows its own inputs, including rate and PITIA. The saved snapshot still carries the rate so Edit can restore it. The text added to the review submission uses that same handoff summary.

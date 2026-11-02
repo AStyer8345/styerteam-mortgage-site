@@ -222,7 +222,7 @@ async function submit(document, values) {
   return form;
 }
 
-test('a confirmed DSCR submission sends the intake payload without a rate or payment and one generate_lead', async () => {
+test('a confirmed DSCR submission sends the rate and payment rows, the disclaimer, and one generate_lead', async () => {
   const { document, sandbox, calls } = loadCalculator(async () => jsonResponse({
     success: true,
     captured: true,
@@ -257,12 +257,15 @@ test('a confirmed DSCR submission sends the intake payload without a rate or pay
   assert.match(payload.inquiry_id, /^[A-Za-z0-9:_-]{8,200}$/);
   assert.equal(backup.get('inquiry_id'), payload.inquiry_id);
   assert.match(payload.situation, /Purchase price: \$500,000/);
+  assert.match(payload.situation, /Interest rate: 7\.5 %/);
+  assert.match(payload.situation, /Monthly principal & interest/);
+  assert.match(payload.situation, /Monthly PITIA/);
   assert.match(payload.situation, /Monthly gross rent: \$3,500/);
   assert.match(payload.situation, /Estimated DSCR:/);
+  assert.match(payload.situation, /Not a quote or offer\./);
   assert.match(payload.situation, /Visitor notes: Hill Country rental/);
-  assert.doesNotMatch(payload.situation, /Interest rate|Monthly principal|Monthly PITIA|7\.5|secret@example.com/);
+  assert.doesNotMatch(payload.situation, /secret@example.com/);
   assert.equal(JSON.stringify(payload).includes('secret@'), false);
-  assert.equal(JSON.stringify(payload).includes('7.5'), false);
   const leadEvents = sandbox.dataLayer.filter((entry) => entry.event === 'generate_lead');
   assert.equal(leadEvents.length, 1);
   assert.equal(leadEvents[0].lead_type, 'dscr_calculator');
