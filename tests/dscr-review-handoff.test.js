@@ -79,6 +79,32 @@ test('DSCR review click stores the typed numbers for the investor form', () => {
   assert.equal(saved.value.inputs.price, 640000);
   assert.equal(saved.value.inputs.down, 25);
   assert.equal(saved.value.inputs.rent, 4321);
+  assert.equal(saved.value.inputs.rate, 7.5);
   assert.equal(saved.value.inputs.downMode, 'pct');
   assert.equal(context.location.href, '/investor-loans.html?goal=Invest&context=calculator#scenario-review');
+  const labels = analysis.rows(saved.value, 'handoff').map((row) => row[0]);
+  assert.equal(labels.includes('Purchase price'), true);
+  assert.equal(labels.includes('Loan amount'), true);
+  assert.equal(labels.includes('Monthly gross rent'), true);
+  assert.equal(labels.includes('Estimated DSCR'), true);
+  assert.equal(labels.includes('Interest rate'), false);
+  assert.equal(labels.includes('Monthly principal & interest'), false);
+  assert.equal(labels.includes('Monthly PITIA'), false);
+  const handoff = analysis.summary(saved.value, 'handoff');
+  assert.match(handoff, /Estimated DSCR/);
+  assert.doesNotMatch(handoff, /Interest rate|Monthly principal|Monthly PITIA|7\.5/);
+  assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /render\(panel,analysis,'handoff'\)/);
+  assert.match(fs.readFileSync('situation-journeys.js', 'utf8'), /summary\(analysis, 'handoff'\)/);
+});
+
+test('refinance handoff summary keeps the comparison inputs and omits rates and payments', () => {
+  const saved = analysis.normalize({
+    kind: 'refinance',
+    inputs: { balance: 350000, currentRate: 7, currentYears: 30, newRate: 6, newYears: 30, costs: 6000 }
+  });
+  const labels = analysis.rows(saved, 'handoff').map((row) => row[0]);
+  assert.deepEqual(labels, ['Current balance', 'Current term', 'New term', 'Closing costs paid in cash', 'Simple break-even']);
+  const handoff = analysis.summary(saved, 'handoff');
+  assert.doesNotMatch(handoff, /Current rate|New rate|monthly P&I|payment difference|\$2,/);
+  assert.match(analysis.summary(saved), /Current rate/);
 });

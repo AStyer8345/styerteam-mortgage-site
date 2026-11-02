@@ -55,7 +55,12 @@ for (const absolute of htmlFiles) {
     }
 
     customForms += 1;
-    if (file === 'asset-depletion-calculator.html' && (formName === 'adc-email-form' || formName === 'asset-depletion-calculator')) {
+    const calculatorLeads = {
+      'asset-depletion-calculator.html': { names: ['adc-email-form', 'asset-depletion-calculator'], leadType: 'asset_depletion_calculator' },
+      'dscr-calculator.html': { names: ['dscr-lead-form', 'dscr-calculator'], leadType: 'dscr_calculator' },
+    };
+    const calculatorLead = calculatorLeads[file];
+    if (calculatorLead && calculatorLead.names.includes(formName)) {
       if (!/name="bot-field"/.test(form)) fail(file, formName, 'calculator lead form is missing its honeypot.');
       if (!/name="name"/.test(form) || !/name="email"/.test(form)) {
         fail(file, formName, 'calculator lead form is missing name or email.');
@@ -73,7 +78,7 @@ for (const absolute of htmlFiles) {
       if (confirmedAt === -1 || trackedAt === -1 || confirmedAt > trackedAt) {
         fail(file, formName, 'generate_lead is not waiting for a confirmed capture.');
       }
-      if (!/lead_type:\s*'asset_depletion_calculator'/.test(html)) {
+      if (!new RegExp(`lead_type:\\s*'${calculatorLead.leadType}'`).test(html)) {
         fail(file, formName, 'calculator lead event is missing its lead type.');
       }
       if (/var WEBHOOK_URL = ""/.test(html) || /dataLayer\.push\(\{\s*event:\s*'generate_lead'/.test(html)) {
@@ -104,7 +109,6 @@ const sharedScript = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
 const leadIntake = fs.readFileSync(path.join(root, 'netlify/functions/lead-intake.js'), 'utf8');
 const subscribeLo = fs.readFileSync(path.join(root, 'netlify/functions/subscribe-lo.js'), 'utf8');
 const subscribeLead = fs.readFileSync(path.join(root, 'netlify/functions/subscribe-lead.js'), 'utf8');
-const dscrCalculator = fs.readFileSync(path.join(root, 'dscr-calculator.html'), 'utf8');
 const assistantWidget = fs.readFileSync(path.join(root, 'assistant-widget.js'), 'utf8');
 
 // The mortgage-assistant contact form is rendered at runtime, so it is not
@@ -141,9 +145,6 @@ for (const [file, source] of [
   if (!/ADAM_NOTIFICATION_EMAIL[\s\S]*adamstyer@gorascal\.com/.test(source)) {
     failures.push(`${file}: owner-notification fallback is not adamstyer@gorascal.com.`);
   }
-}
-if (!/id="dscr-lead" hidden/.test(dscrCalculator) || !/var WEBHOOK_URL = "";/.test(dscrCalculator)) {
-  failures.push('dscr-calculator.html: dormant lead capture is unexpectedly visible or enabled without notification coverage.');
 }
 if (!/class="ma-lead-form"/.test(assistantWidget)
   || !/pendingLeadNotification/.test(assistantWidget)
