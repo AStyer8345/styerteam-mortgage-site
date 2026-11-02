@@ -127,17 +127,21 @@
       if (analysis && root.StyerAnalysis) { try { analysis=root.StyerAnalysis.normalize(analysis); } catch (_) { analysis=null; } }
     }
     if (analysis && root.StyerAnalysis) {
-      var panel=root.document.createElement('div');panel.className='journey-summary';
+      var panel=root.document.createElement('div');panel.className='journey-summary';panel.setAttribute('role','region');
       root.StyerAnalysis.render(panel,analysis);
-      var edit=root.document.createElement('a');edit.href=analysis.kind==='dscr'?'/dscr-calculator.html?restore=review':'/calculator-refinance-breakeven.html?restore=review';edit.textContent='Edit these numbers';panel.appendChild(edit);
-      var remove=root.document.createElement('button');remove.type='button';remove.className='journey-back';remove.textContent='Remove analysis';remove.addEventListener('click',function(){analysis=null;panel.remove();try{root.sessionStorage.removeItem('styer:calculator-review');}catch(_){}});panel.appendChild(remove);
+      var heading=panel.querySelector('h3');
+      if(heading){heading.id=(form.id||formName)+'-calculator-numbers';heading.textContent='Your calculator numbers';panel.setAttribute('aria-labelledby',heading.id);}
+      var actions=root.document.createElement('div');actions.className='journey-summary-actions';
+      var edit=root.document.createElement('a');edit.className='journey-summary-edit';edit.href=analysis.kind==='dscr'?'/dscr-calculator.html?restore=review#dscr-calculator':'/calculator-refinance-breakeven.html?restore=review';edit.textContent='Edit these numbers';actions.appendChild(edit);
+      var remove=root.document.createElement('button');remove.type='button';remove.className='journey-back';remove.textContent='Remove analysis';remove.addEventListener('click',function(){analysis=null;panel.remove();try{root.sessionStorage.removeItem('styer:calculator-review');}catch(_){}});actions.appendChild(remove);
+      panel.appendChild(actions);
       first.before(panel);
       var mapped=analysis.kind==='dscr'?{property_value:analysis.inputs.price,down_payment:analysis.inputs.down+(analysis.inputs.downMode==='pct'?'%':' dollars'),monthly_rent:analysis.inputs.rent}:{current_balance:analysis.inputs.balance,current_rate:analysis.inputs.currentRate};
       Object.keys(mapped).forEach(function(name){if(form.elements[name]) form.elements[name].value=String(mapped[name]);});
       // These answers are already in the editable calculator summary.
       Object.keys(mapped).forEach(function(name){if(form.elements[name]) form.elements[name].closest('.journey-field').hidden=true;});
     } else if (params.get('context') === 'calculator') {
-      var missing=root.document.createElement('p');missing.className='journey-hint';missing.textContent='Your calculator numbers could not be restored. Go back to the calculator and choose review again, or share the estimates you know below.';first.before(missing);
+      var missing=root.document.createElement('p');missing.className='journey-hint';missing.setAttribute('role','status');missing.textContent='Your calculator numbers could not be restored. Go back to the calculator and choose review again, or share the estimates you know below.';first.before(missing);
     }
     function reconcileSource() {
       if (form.id === 'form-homepage-contact') {

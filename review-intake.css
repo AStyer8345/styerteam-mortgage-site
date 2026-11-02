@@ -1,0 +1,302 @@
+/* Light review intake for the calculator handoff on investor loans.
+   Scoped to this section so other dark program CTAs stay as they are. */
+
+#quick-options.calculator-review {
+  background: #f4f1ea !important;
+  color: #1c2836 !important;
+}
+
+#quick-options.calculator-review .u-cta-card {
+  background: #ffffff !important;
+  color: #1c2836 !important;
+  border: 1px solid #d7d0c4 !important;
+  border-top: 4px solid #8a5a12 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 28px rgba(14, 27, 36, 0.06) !important;
+}
+
+#quick-options.calculator-review .u-cta-header h2 {
+  color: #1c2836 !important;
+}
+
+#quick-options.calculator-review .u-cta-header p,
+#quick-options.calculator-review .journey-form-intro,
+#quick-options.calculator-review .journey-hint,
+#quick-options.calculator-review .journey-consent,
+#quick-options.calculator-review .journey-consent span {
+  color: #3e4d5c !important;
+}
+
+#quick-options.calculator-review .u-eyebrow {
+  color: #6b5018 !important;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+#quick-options.calculator-review .journey-progress {
+  display: inline-block;
+  margin: 0 0 0.85rem !important;
+  padding: 0.4rem 0.85rem !important;
+  border: 1px solid #d9c9a6 !important;
+  border-radius: 999px;
+  background: #efe6d4 !important;
+  color: #1c2836 !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+#quick-options.calculator-review .journey-form-intro {
+  margin: 0 0 1rem;
+  font-size: 1rem !important;
+  line-height: 1.5;
+}
+
+#quick-options.calculator-review .journey-form fieldset {
+  border: 0 !important;
+  margin: 0 0 0.25rem !important;
+  padding: 0 !important;
+  min-width: 0;
+}
+
+#quick-options.calculator-review .journey-form legend {
+  display: block;
+  float: none;
+  width: 100%;
+  margin: 0.15rem 0 0.85rem !important;
+  padding: 0 !important;
+  color: #1c2836 !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.3;
+  text-transform: none !important;
+}
+
+#quick-options.calculator-review .journey-fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.95rem;
+}
+
+#quick-options.calculator-review .journey-field {
+  min-width: 0;
+}
+
+#quick-options.calculator-review .journey-form label,
+#quick-options.calculator-review .u-cta-card label {
+  display: block;
+  margin: 0 0 0.35rem;
+  color: #1c2836 !important;
+  font-size: 1rem !important;
+  font-weight: 600;
+  letter-spacing: 0 !important;
+  line-height: 1.4;
+  text-transform: none !important;
+}
+
+#quick-options.calculator-review .u-cta-card :is(input, select, textarea) {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #5c6b7a !important;
+  border-radius: 6px !important;
+  background: #ffffff !important;
+  color: #1c2836 !important;
+  font: 400 1rem/1.4 Inter, Arial, sans-serif;
+  min-height: 48px;
+}
+
+#quick-options.calculator-review .u-cta-card select option {
+  background: #ffffff;
+  color: #1c2836;
+}
+
+#quick-options.calculator-review .u-cta-card :is(input, textarea)::placeholder {
+  color: #4d5c6b !important;
+  opacity: 1;
+}
+
+#quick-options.calculator-review .u-cta-card :is(input, select, textarea)[aria-invalid="true"] {
+  border: 2px solid #7f1d1d !important;
+}
+
+#quick-options.calculator-review :is(.field-error, .error-message, .form-error-summary) {
+  color: #7f1d1d !important;
+  background: #fff1f2 !important;
+  border-color: #fecdd3;
+}
+
+#quick-options.calculator-review .journey-estimates {
+  margin: 0.35rem 0 0.25rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #d7d0c4;
+  border-radius: 8px;
+  background: #faf8f4;
+}
+
+#quick-options.calculator-review .journey-estimates summary,
+body > main:nth-of-type(1) > section#quick-options.calculator-review details > summary {
+  color: #16324a !important;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+#quick-options.calculator-review .journey-summary {
+  margin: 0 0 1.15rem;
+  padding: 1rem 1rem 0.85rem;
+  border: 1px solid #d7d0c4;
+  border-radius: 8px;
+  background: #f7f4ee;
+  color: #1c2836;
+}
+
+#quick-options.calculator-review .journey-summary h3 {
+  margin: 0 0 0.7rem;
+  color: #1c2836;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+#quick-options.calculator-review .journey-summary dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.4rem 1rem;
+  margin: 0;
+}
+
+#quick-options.calculator-review .journey-summary dt {
+  color: #3e4d5c;
+  font-weight: 600;
+}
+
+#quick-options.calculator-review .journey-summary dd {
+  margin: 0;
+  color: #1c2836;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+#quick-options.calculator-review .journey-summary p {
+  margin: 0.85rem 0 0;
+  color: #3e4d5c;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+#quick-options.calculator-review .journey-summary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  align-items: center;
+  margin-top: 0.85rem;
+}
+
+#quick-options.calculator-review .journey-summary-edit,
+#quick-options.calculator-review .journey-summary .journey-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0;
+  padding: 0.35rem 0;
+  color: #16324a !important;
+  background: transparent;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+#quick-options.calculator-review .journey-form .journey-submit {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 1rem;
+  padding: 0.8rem 1.1rem;
+  border: 2px solid #16324a !important;
+  border-radius: 6px !important;
+  background: #16324a !important;
+  color: #ffffff !important;
+  font-size: 1.0625rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  cursor: pointer;
+}
+
+#quick-options.calculator-review .journey-form .journey-submit:hover {
+  background: #0f2436 !important;
+  border-color: #0f2436 !important;
+  color: #ffffff !important;
+}
+
+#quick-options.calculator-review .journey-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+#quick-options.calculator-review .journey-form-actions .journey-submit {
+  flex: 1 1 12rem;
+}
+
+#quick-options.calculator-review .journey-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 1rem 0;
+  font-size: 0.9375rem !important;
+  line-height: 1.5;
+}
+
+#quick-options.calculator-review .journey-consent input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.2rem;
+  accent-color: #16324a;
+  flex: 0 0 auto;
+}
+
+#quick-options.calculator-review :is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #16324a !important;
+  outline-offset: 2px !important;
+}
+
+@media (min-width: 720px) {
+  #quick-options.calculator-review [data-journey-step="2"] > .journey-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #quick-options.calculator-review .journey-full {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  /* The calculator lands on #scenario-review. Hide the fixed call bar so it
+     does not cover the summary or Continue while that form is the target. */
+  body:has(#scenario-review:target) .advisory-contact-bar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #quick-options.calculator-review .u-cta-card {
+    padding: 1.35rem 1rem !important;
+  }
+
+  #quick-options.calculator-review .u-cta-header h2 {
+    font-size: 1.6rem !important;
+  }
+
+  #quick-options.calculator-review .journey-submit {
+    scroll-margin-bottom: 6rem;
+  }
+}
