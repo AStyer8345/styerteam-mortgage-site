@@ -39,6 +39,10 @@ test('the business-owner page has one dark footer with the licensing notice, and
   const body = page.split('</body>')[0];
   assert.equal((body.match(/<footer\b/g) || []).length, 1);
   assert.match(body, /<footer class="site-footer" id="site-footer">[\s\S]*Licensing notice[\s\S]*href="tel:\+15129566010"[\s\S]*href="sms:\+15129566010"[\s\S]*<\/footer>/);
+  assert.match(body, /mailto:adamstyer@gorascal\.com/);
+  assert.match(body, /Mon–Fri: 8:00 AM – 6:00 PM/);
+  assert.match(body, /linkedin\.com\/in\/thestyerteam/);
+  assert.match(body, /facebook\.com\/styerteam\//);
   assert.doesNotMatch(body, /site-footer-details/);
   const usda = fs.readFileSync('loans/usda.html', 'utf8');
   assert.match(usda, /<form[^>]*id="hero-quick-form"[^>]*netlify-honeypot="bot-field"/);
