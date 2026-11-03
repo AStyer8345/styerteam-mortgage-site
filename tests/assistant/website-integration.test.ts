@@ -129,7 +129,8 @@ test('assistant link allowlists include styerteam.com and keep the older hosts',
   const widget = fs.readFileSync('assistant-widget.js', 'utf8');
   const trusted = widget.slice(widget.indexOf('function addTrustedLink'), widget.indexOf('function addContextActions'));
   const actions = widget.slice(widget.indexOf('function addContextActions'), widget.indexOf('function trackResponse'));
-  const allow = /\(www\\\.\)\?\(styerteam\\\.com\|thestyerteam\\\.com\|styermortgage\\\.com\)/;
+  const allow = /\(www\\\.\)\?\(styerteam\\\.com\|styermortgage\\\.com\)/;
+  assert.doesNotMatch(widget, /thestyerteam\\\.com/);
   for (const block of [trusted, actions]) {
     assert.match(block, allow);
     assert.match(block, /calendly\.com/);
@@ -146,6 +147,13 @@ test('assistant links remain on styerteam.com', () => {
   assert.match(resources, /https:\/\/styerteam\.com\//);
   assert.doesNotMatch(resources, /https:\/\/(?:www\.)?thestyerteam\.com\//);
   assert.match(contact, /https:\/\/styerteam\.com\/contact\.html/);
+  const company = fs.readFileSync('ai-knowledge/company-information.md', 'utf8');
+  const faqs = fs.readFileSync('ai-knowledge/faqs.md', 'utf8');
+  const bundle = fs.readFileSync('netlify/functions/_shared/knowledge-bundle.ts', 'utf8');
+  for (const source of [gateway, contact, company, faqs, bundle]) {
+    assert.match(source, /adamstyer@gorascal\.com/);
+    assert.doesNotMatch(source, /adam@thestyerteam\.com/);
+  }
 });
 
 test('the widget loader and stylesheet share one cache-busting version', () => {

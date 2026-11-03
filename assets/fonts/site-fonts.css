@@ -1,3 +1,14 @@
+/* Size-adjusted fallback so Inter's swap does not reflow a wrapping line. */
+@font-face {
+  font-family: 'Inter Fallback';
+  font-style: normal;
+  font-weight: 400 600;
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  src: local('Liberation Sans'), local('Arial'), local('Nimbus Sans'), local('Segoe UI');
+}
 /* Google Fonts Inter, self-hosted without changing weights or subsets. */
 /* cyrillic-ext */
 @font-face {
