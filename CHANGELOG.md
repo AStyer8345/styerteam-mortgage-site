@@ -1,3 +1,10 @@
+## 2026-11-03 — Preview: rates CLS, shared contrast, and contact email check
+
+- The rates page reserves two breadcrumb lines on small screens and preloads Inter, with a size-adjusted fallback in the site font stack.
+- Guides social images use the shared wordmark. The assistant allowlist no longer includes thestyerteam.com. The first-time buyer link in llms.txt has no trailing slash.
+- The business-owners page has one dark footer, with the licensing notice inside it. Phone and text links are at least 24px. The three March newsletter updates have distinct titles and descriptions.
+- The IdentityPxl opt-out address stays as text. The assistant knowledge, public contact copy, and the website integration test use adamstyer@gorascal.com. Not merged and not deployed to production.
+
 ## 2026-11-02 — Preview: restore calculator rates and payments on the handoff
 
 - The investor and refinance “Your calculator numbers” summaries show the interest rate and payment rows again, the same rows as before the compliance cut. A 12px line, “Not a quote or offer.”, sits under each of those summaries. The same rows and line are included in the review submission and in the DSCR email analysis. The DSCR email form still posts through lead-intake. Not merged and not deployed to production.
