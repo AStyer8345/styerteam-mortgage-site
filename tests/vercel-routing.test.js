@@ -60,7 +60,10 @@ test('committed vercel.json matches the Netlify redirect and header sources', as
   assert.equal(security.headers.find((header) => header.key === 'Strict-Transport-Security').value, 'max-age=31536000; includeSubDomains; preload');
   const saved = published.headers.find((block) => block.source === '/saved-analysis.html');
   assert.match(saved.headers.find((header) => header.key === 'Content-Security-Policy').value, /default-src 'none'/);
-  assert.equal(published.redirects.filter((rule) => rule.has).length, 10);
+  assert.equal(published.redirects.filter((rule) => rule.has).length, 12);
+  const about = matchRequest(published, { host: 'styermortgage.com', path: '/about' });
+  assert.equal(about.status, 301);
+  assert.equal(about.destination, 'https://styerteam.com/about.html');
   assert.ok(published.redirects.length > 100);
   assert.deepEqual(published.redirects.filter((rule) => !rule.has && ['/:path*', '/(.*)', '/*'].includes(rule.source)), []);
 });

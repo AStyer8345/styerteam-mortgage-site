@@ -17,6 +17,7 @@
     if (!el) return;
     // First-screen text must stay painted while deferred scripts initialize.
     if (el.closest('.hero, .city-hero, .page-hero, .product-hero, main > section:first-of-type')) return;
+    if (el.matches && el.matches('.pwe-hero-lead, .u-hero-lead')) return;
     el.classList.add('reveal');
   }
 
