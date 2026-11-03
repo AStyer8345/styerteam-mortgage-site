@@ -6,6 +6,19 @@ const test = require('node:test');
 const guide = fs.readFileSync('resources/detailed-guides/how-much-house-can-i-afford-austin.html', 'utf8');
 const sitemap = fs.readFileSync('sitemap.xml', 'utf8');
 
+test('the March 2026 rates post is indexed on its own URL', () => {
+  const post = fs.readFileSync('blog/2026-03-20-austin-mortgage-rates-march-2026.html', 'utf8');
+  const self = 'https://styerteam.com/blog/2026-03-20-austin-mortgage-rates-march-2026.html';
+  assert.match(post, new RegExp(`<link href="${self.replace(/[.]/g, '\\.')}" rel="canonical"/>`));
+  assert.match(post, new RegExp(`<meta content="${self.replace(/[.]/g, '\\.')}" property="og:url"/>`));
+  assert.match(post, /content="index, follow" name="robots"/);
+  assert.match(sitemap, /<loc>https:\/\/styerteam\.com\/blog\/2026-03-20-austin-mortgage-rates-march-2026\.html<\/loc>/);
+  assert.match(fs.readFileSync('ftb-dpa-guide.html', 'utf8'), /content="noindex, follow"/);
+  assert.match(fs.readFileSync('loans/usda.html', 'utf8'), /content="noindex, follow"/);
+  assert.doesNotMatch(sitemap, /ftb-dpa-guide\.html/);
+  assert.doesNotMatch(sitemap, /loans\/usda\.html/);
+});
+
 test('the affordability guide canonical points at the program page and leaves the sitemap', () => {
   assert.match(guide, /<link href="https:\/\/styerteam\.com\/how-much-house-can-i-afford-austin\.html" rel="canonical"\/>/);
   assert.doesNotMatch(guide, /rel="canonical"[^>]+detailed-guides\/how-much-house/);
