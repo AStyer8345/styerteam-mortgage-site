@@ -58,6 +58,12 @@ test('committed vercel.json matches the Netlify redirect and header sources', as
   assert.equal(htmlCache.headers.find((header) => header.key === 'Cache-Control').value, 'public, max-age=0, must-revalidate');
   const security = published.headers.find((block) => block.source === '/(.*)');
   assert.equal(security.headers.find((header) => header.key === 'Strict-Transport-Security').value, 'max-age=31536000; includeSubDomains; preload');
+  const reportOnly = security.headers.find((header) => header.key === 'Content-Security-Policy-Report-Only').value;
+  assert.match(reportOnly, /https:\/\/analytics\.google\.com/);
+  assert.match(reportOnly, /https:\/\/ad\.doubleclick\.net/);
+  assert.match(reportOnly, /https:\/\/googleads\.g\.doubleclick\.net/);
+  assert.match(reportOnly, /https:\/\/www\.googleadservices\.com/);
+  assert.equal(security.headers.some((header) => header.key === 'Content-Security-Policy'), false);
   const saved = published.headers.find((block) => block.source === '/saved-analysis.html');
   assert.match(saved.headers.find((header) => header.key === 'Content-Security-Policy').value, /default-src 'none'/);
   assert.equal(published.redirects.filter((rule) => rule.has).length, 12);

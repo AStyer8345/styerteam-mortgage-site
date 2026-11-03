@@ -21,6 +21,17 @@ function headings(html) {
   }));
 }
 
+test('the business-owner page has one footer landmark and the USDA quote form has a honeypot', () => {
+  const page = fs.readFileSync('resources/mortgage-options-for-business-owners.html', 'utf8');
+  const body = page.split('</body>')[0];
+  assert.equal((body.match(/<footer\b/g) || []).length, 1);
+  assert.match(body, /<footer class="site-footer" id="site-footer-details">[\s\S]*Licensing notice/);
+  assert.match(body, /<div class="site-footer" id="site-footer">/);
+  const usda = fs.readFileSync('loans/usda.html', 'utf8');
+  assert.match(usda, /<form[^>]*id="hero-quick-form"[^>]*netlify-honeypot="bot-field"/);
+  assert.match(usda, /name="bot-field"/);
+});
+
 test('every blog post has one H1 and it is the visible post title', () => {
   const dir = 'blog';
   const files = fs.readdirSync(dir).filter((name) => name.endsWith('.html'));

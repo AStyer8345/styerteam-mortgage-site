@@ -3964,6 +3964,7 @@ body.premium-tool .closing-costs-layout .summary-card .card-header {
 
 /* Unified Site Footer Chrome */
 body.advisory-site footer.site-footer,
+body.advisory-site div.site-footer,
 body.premium-interior footer.site-footer {
   background-color: var(--pwe-obsidian) !important;
   color: rgba(246, 244, 239, 0.80) !important;
@@ -3971,9 +3972,17 @@ body.premium-interior footer.site-footer {
 }
 
 body.advisory-site footer.site-footer h2,
+body.advisory-site div.site-footer h2,
 body.premium-interior footer.site-footer h2 {
   color: var(--pwe-brass-light) !important;
   letter-spacing: 0.12em !important;
+}
+
+body.advisory-site div.site-footer {
+  padding: 56px 0 32px;
+  margin-top: 0;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 /* Focus Visibility & Scroll Margin */
