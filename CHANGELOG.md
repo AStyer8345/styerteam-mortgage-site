@@ -1,3 +1,7 @@
+## 2026-11-03 — Preview: match font preload URLs to the shipped CSS
+
+- The published-asset build now adds the same `?v=` hash to a font file in both the preload and the `@font-face` `url()`. A preload whose URL is not in that page's shipped CSS fails the build. Not merged and not deployed to production.
+
 ## 2026-11-03 — Preview: rates CLS, shared contrast, and contact email check
 
 - The rates page reserves two breadcrumb lines on small screens and preloads Inter, with a size-adjusted fallback in the site font stack.
