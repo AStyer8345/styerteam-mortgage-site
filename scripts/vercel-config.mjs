@@ -66,6 +66,15 @@ function pathDestination(to) {
 
 function hostRules() {
   const rules = [];
+  // styermortgage.com/about otherwise hops to styerteam.com/about and then /about.html.
+  for (const host of ['styermortgage.com', 'www.styermortgage.com']) {
+    rules.push({
+      source: '/about',
+      has: [{ type: 'host', value: host }],
+      destination: 'https://styerteam.com/about.html',
+      statusCode: 301,
+    });
+  }
   for (const host of HOSTS) {
     for (const source of ['/', '/:path*']) {
       const destination = source === '/' ? 'https://styerteam.com/' : 'https://styerteam.com/:path*';

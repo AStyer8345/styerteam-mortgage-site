@@ -55,7 +55,7 @@ async function handleFormPost(input, deps = {}) {
       : "";
 
   if (method === "OPTIONS") {
-    return new Response(null, { status: 204, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Content-Type" } });
+    return new Response(null, { status: 204, headers: { "Access-Control-Allow-Origin": "https://styerteam.com", "Access-Control-Allow-Headers": "Content-Type" } });
   }
   if (method !== "POST") return json(405, { error: "Method not allowed" });
   if (Buffer.byteLength(bodyText, "utf8") > 65536) return json(413, { error: "Body too large" });

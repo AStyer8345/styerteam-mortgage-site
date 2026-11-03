@@ -362,3 +362,18 @@ input[type="button"] {
     min-height: 44px;
   }
 }
+
+
+/* Nov 2026 QA: contrast stays light, and the measured controls clear 4.5:1. */
+.pwe-kicker{color:#5c4318}
+.pwe-dark .pwe-kicker,.pwe-hero .pwe-kicker{color:#f0d7a4}
+.btn-hero-ghost,.btn.btn-hero-ghost{color:#10283f;border-color:#10283f}
+.hero-call-link-a{color:#16324a}
+a[href*="loan=second-look"]{color:#0c3f66;text-decoration:underline;text-underline-offset:2px}
+.rate-widget-table th,.rate-table th{color:#fff;background:#1e293b}
+.rate-widget-table-wrap{min-height:340px}
+.comparison-table:focus{outline:2px solid #1d4e89;outline-offset:3px}
+a.lp-trust-chip{text-decoration:underline;text-underline-offset:3px}
+main a[href^="tel:"],main a[href^="sms:"]{display:inline-block;min-height:24px;line-height:24px}
+.pwe-hero-lead,.u-hero .u-hero-lead{animation:none!important;opacity:1!important;transform:none!important}
+.gorascal-wordmark-chip-hero img{height:22px;width:44px;aspect-ratio:2/1}
