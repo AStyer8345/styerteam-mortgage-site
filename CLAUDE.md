@@ -44,7 +44,7 @@ Top-of-hierarchy reads:
 - Adam's personal NMLS: 513013 (unchanged)
 
 - Adam's direct phone: (512) 956-6010
-- Public email: adam@thestyerteam.com
+- Public email: adamstyer@gorascal.com
 - Never display raw loan application URL — use anchor text
 - Run blog title lint before publish: `grep "<title>" blog/*.html | grep -v "Adam Styer"`
 - New blog posts must be added to `blog.html` noscript block + CollectionPage schema

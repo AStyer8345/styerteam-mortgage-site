@@ -33,7 +33,7 @@
 | Name | Adam Styer \| The Styer Team · Powered by GoRascal |
 | NMLS | 513013 (Adam) / 2072896 (Company) |
 | Phone | (512) 956-6010 |
-| Email | adam@thestyerteam.com |
+| Email | adamstyer@gorascal.com |
 
 | Calendly | https://calendly.com/adamstyer/15minutes |
 | Loan app | /contact.html?goal=Purchase |
