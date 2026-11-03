@@ -2249,15 +2249,15 @@ body.advisory-article main h2 {
   scroll-margin-top: 110px !important;
 }
 
-/* The buying-power band sits on navy inside main, so the article h2 color must not win. */
-#quick-options h2,
-#quick-options .u-h2 {
+/* Only the navy bands marked .u-section. Other #quick-options blocks sit on light paper. */
+#quick-options.u-section h2,
+#quick-options.u-section .u-h2 {
   color: #fff !important;
 }
-#quick-options .u-eyebrow {
+#quick-options.u-section .u-eyebrow {
   color: var(--pwe-brass-light) !important;
 }
-#quick-options .u-btn-primary {
+#quick-options.u-section .u-btn-primary {
   border-color: var(--pwe-brass-light);
 }
 

@@ -42,7 +42,7 @@ test('the business-owner page has one dark footer with the licensing notice, and
   assert.match(body, /mailto:adamstyer@gorascal\.com/);
   assert.match(body, /Mon–Fri: 8:00 AM – 6:00 PM/);
   assert.match(body, /linkedin\.com\/in\/thestyerteam/);
-  assert.match(body, /facebook\.com\/styerteam\//);
+  assert.match(body, /facebook\.com\/StyerTeam\//);
   assert.doesNotMatch(body, /site-footer-details/);
   const usda = fs.readFileSync('loans/usda.html', 'utf8');
   assert.match(usda, /<form[^>]*id="hero-quick-form"[^>]*netlify-honeypot="bot-field"/);
