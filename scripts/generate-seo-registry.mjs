@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-const site = 'https://thestyerteam.com';
+const site = 'https://styerteam.com';
 const sitemap = fs.readFileSync('sitemap.xml', 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 

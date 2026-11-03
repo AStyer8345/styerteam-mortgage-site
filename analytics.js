@@ -1,5 +1,5 @@
 /**
- * analytics.js — Shared conversion tracking for thestyerteam.com
+ * analytics.js — Shared conversion tracking for styerteam.com
  * Fires dataLayer events for GTM / Google Ads.
  * Included on every page. Do not add page-specific events here.
  *

@@ -22,7 +22,7 @@ Public contact information:
 - Phone and text: (512) 956-6010
 - Email: adamstyer@gorascal.com
 
-- Scenario review: thestyerteam.com/contact.html?goal=Purchase
+- Scenario review: styerteam.com/contact.html?goal=Purchase
 - Scheduling: calendly.com/adamstyer/15minutes
 
 Adam or his team will reach out as soon as possible. A visitor may also text Adam at (512) 956-6010. Do not promise a specific response time.
