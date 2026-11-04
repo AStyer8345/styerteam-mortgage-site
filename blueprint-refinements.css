@@ -988,6 +988,19 @@ body.advisory-site :is(a, button, input, select, textarea, summary):focus-visibl
   outline-offset: 4px !important;
 }
 
+/* Brass #806234 is 2.9:1 on #11212E. Light brass clears 3:1 on navy and obsidian. */
+body.advisory-site :is(
+  .bg-navy,
+  .bg-dark,
+  .dscr-dark,
+  .dscr-navy-cta,
+  #quick-options.u-section,
+  .u-cta-section[style*="--pwe-obsidian"],
+  .u-section[style*="--pwe-obsidian"]
+) :is(a, button, input, select, textarea, summary):focus-visible {
+  outline-color: var(--pwe-brass-light) !important;
+}
+
 /* ==========================================================================
    5B. SELF-EMPLOYED HUB & COMPLEX INCOME COHESIVE SYSTEM
    ========================================================================== */

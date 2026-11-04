@@ -1,6 +1,7 @@
-## 2026-11-03 — Preview: match font preload URLs to the shipped CSS
+## 2026-11-03 — Live: pull request #60
 
-- The published-asset build now adds the same `?v=` hash to a font file in both the preload and the `@font-face` `url()`. A preload whose URL is not in that page's shipped CSS fails the build. Not merged and not deployed to production.
+- Live Nov 3, 2026, 6:58 PM CT. Merge `eeee418c` on `cursor/blog-2026-11-02-refi-out-of-non-qm`. Deploy `dpl_EfQqukGca2CqZU4HyM3Wm6KRwPcV`.
+- The published-asset build adds the same `?v=` hash to a font file in both the preload and the `@font-face` `url()`. A preload whose URL is not in that page's shipped CSS fails the build.
 
 ## 2026-11-03 — Live: QA pull requests #56, #57, #58, and #59
 

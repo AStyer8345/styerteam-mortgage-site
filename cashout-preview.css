@@ -60,6 +60,7 @@ body.premium-cashout .co-review-grid li{margin-bottom:18px;line-height:1.65}
 body.premium-cashout main .journey-card h2{font-size:32px}
 body.premium-cashout #cashout-carried{padding:0 0 24px;border-bottom:1px solid var(--premium-rule);margin-bottom:24px}
 body.premium-cashout #cashout-carried h3{font-size:18px}
+#quick-options.u-cta-section[style*="--pwe-obsidian"] #cashout-carried h3{color:#fff}
 body.premium-cashout #cashout-carried p,body.premium-cashout #cashout-carried summary{font-size:14px}
 body.premium-cashout .co-assumptions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;font-size:13px}
 body.premium-cashout .co-assumptions dd{margin:0;text-align:right;overflow-wrap:anywhere}
