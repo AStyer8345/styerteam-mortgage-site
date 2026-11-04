@@ -1,8 +1,8 @@
-> October 26, 2026: The former employer affiliation, company license, office, email, and application portal are retired. Public brand is The Styer Team · Powered by GoRascal. Route application requests to https://styermortgage.com/contact.html. This instruction supersedes older company branding instructions below.
+> Current migration contract (verified November 3, 2026): canonical origin `https://styerteam.com`; public brand **The Styer Team, Powered by Go Rascal Inc.**; legal entity **Go Rascal Inc.**, company NMLS **2072896**; Adam Styer, individual NMLS **513013**, **512-956-6010**, **adamstyer@gorascal.com**. Secure application: `https://gorascal.my1003app.com/513013/register`, verified to display Adam’s name, NMLS and phone. This contract supersedes older local/global branding and hosting notes. Do not restore retired affiliation, license, phone, email or application destinations.
 
 Read /Users/adamstyer/Documents/GOALS.md before starting any session. Interactive sessions must serve current goals — if your task conflicts, log it to TODO.md under NEEDS ADAM and stop. Automated/scheduled tasks continue unless GOALS.md explicitly pauses them.
 
-# styermortgage.com — Claude Code Instructions
+# styerteam.com — Claude Code Instructions
 
 ## Daily Operating System
 
@@ -27,20 +27,20 @@ Top-of-hierarchy reads:
 
 - Repo: `/Users/adamstyer/Documents/Claude/styerteam-mortgage-site`
 - Stack: Static HTML/CSS/JS — no framework, no CMS
-- Hosting: Netlify — auto-deploy on GitHub push
-- Domain: styermortgage.com
+- Hosting: Vercel project `styerteam-site` (`prj_oPet4IOgPuN9hDtBFYcfbEi3HJEg`); verify the current production deployment and Git ref before releasing.
+- Canonical domain: https://styerteam.com; retain both styermortgage.com host redirects, paths and query strings.
 - Dev server: `.claude/site-server.js` → port 8766
 
 ## Key Rules
 
 - Match existing HTML/CSS patterns exactly before writing new pages
-- Use Netlify Forms for all form capture (`netlify` attribute + hidden `form-name` input)
+- Preserve existing form names, fields, POST actions and attribution. Vercel bridges `/` form posts and `/.netlify/functions/lead-intake` to the existing LoanOS capture path; Netlify markup remains for compatibility.
 - Never add CSS frameworks, JS libraries, or npm packages without Adam's approval
 - Never modify GTM container snippet or form field names on landing pages
-- Display name: "The Styer Team · Powered by GoRascal" (footer/nav/OG meta)
-- Legal entity name (anywhere a disclaimer or NMLS line appears): "The Styer Team · Powered by GoRascal"
-- Never use "The Styer Team" or "Mortgage Solutions LP" as a **displayed business name** (legacy entity — fully retired 2026-05-20). EXCEPTION: the `/styerteam/` social handles on Facebook + Instagram + Nextdoor are the RETAINED personal-brand social identity — those URLs stay (`facebook.com/styerteam/`, `instagram.com/styerteam/`, etc.). The rule covers display copy, page headings, JSON-LD `name`/`legalName` fields, and footer/about strings — NOT the URL handles of retained social profiles.
-- Company NMLS: 2072896 (was 2526130 under prior entity)
+- Display name: "The Styer Team, Powered by Go Rascal Inc." (footer/nav/OG meta)
+- Legal entity name (disclaimers and JSON-LD legalName): "Go Rascal Inc."
+- Company NMLS: 2072896; keep separate from Adam’s individual NMLS.
+- Retain existing personal-brand social profile URLs; do not infer new profile links.
 - Adam's personal NMLS: 513013 (unchanged)
 
 - Adam's direct phone: (512) 956-6010
@@ -53,12 +53,14 @@ Top-of-hierarchy reads:
 
 ## Deploy Workflow
 
-1. Push to GitHub → Netlify auto-builds
-2. Verify pages are live after every push
+1. Inspect Vercel’s production deployment, connected repository and commit; do not assume the default branch is live.
+2. Run `CONTEXT=deploy-preview npm run build` and relevant routing, affiliation and form tests.
+3. Deploy the reviewed commit to Vercel and verify READY, `/api/version`, live pages and redirects.
+4. Never submit real or fake production leads during QA. Use mocked local form tests.
 
 ## End-of-Session
 
 1. Update `CONTEXT.md` — replace, don't append. Keep under 100 lines.
 2. Update `CHANGELOG.md` — append new dated entry
 3. `git add`, `git commit`, `git push`
-4. Verify Netlify deploy
+4. Verify Vercel production deploy and live contracts

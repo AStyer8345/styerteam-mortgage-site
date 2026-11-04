@@ -130,3 +130,17 @@ test('trailing-slash legacy rules and host redirects still resolve', async () =>
     assert.equal(fs.existsSync(destination.replace(/^\//, '')), true, `${extless} -> ${destination}`);
   }
 });
+
+// Host aliases must retain deep links and acquisition attribution across migration.
+test('both retired mortgage hosts preserve specialty paths and query strings', async () => {
+  const { buildConfig, publicConfig, matchRequest } = await import('../scripts/vercel-config.mjs');
+  const { published } = publicConfig(buildConfig());
+  for (const host of ['styermortgage.com', 'www.styermortgage.com']) {
+    for (const path of ['/', '/bank-statement-loans.html', '/dscr-loans-texas.html', '/asset-depletion-mortgage-texas.html', '/blog/2026-06-30-bank-statement-loans-texas.html']) {
+      const query = '?utm_source=migration-test&utm_campaign=income%20review';
+      const result = matchRequest(published, { host, path: path + query });
+      assert.equal(result.status, 301);
+      assert.equal(result.destination, 'https://styerteam.com' + path + query);
+    }
+  }
+});

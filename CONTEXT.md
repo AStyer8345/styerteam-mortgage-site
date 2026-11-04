@@ -2,7 +2,7 @@
 
 ## Current State
 
-Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). This branch is the DSCR handoff compliance and email-form change on top of `cursor/release-2026-11-01-dscr-schema` (`1a31b63f`). Do not merge it and do not deploy it to production.
+Public site for Adam Styer, NMLS #513013. Static HTML/CSS/JS. Canonical origin is https://styerteam.com. `cleanUrls` is off, so extensionless URLs exist only as explicit 301s in `_redirects` (compiled into `vercel.json`). Production source and current identity are documented in `docs/domain-migration-plan.md`. Inspect the live Vercel commit/ref before release; prior branch-only deployment cautions are historical and do not describe the deployed build.
 
 The calculator review still travels in `sessionStorage` (`styer:calculator-review`). The investor and refinance handoff summaries show the interest rate and payment rows again, with a 12px line that reads “Not a quote or offer.” The DSCR email form posts to `/.netlify/functions/lead-intake` and includes those rows plus the same line.
 
@@ -18,12 +18,12 @@ GTM-PQQ6PGLR loads immediately on styerteam.com and www.styerteam.com only. Dire
 | Hosting | Vercel project `styerteam-site`. Netlify config stays in the repo. |
 | Publish | `.site-dist` |
 | Domain | `https://styerteam.com` |
-| This branch | `cursor/dscr-summary-and-email-form` |
-| PR base | `cursor/release-2026-11-01-dscr-schema` |
+| Audit baseline ref | `cursor/blog-2026-11-02-refi-out-of-non-qm` |
+| Audit baseline commit | `eeee418c64ece1d90ccf4bc6c4a046e932a13d30` |
 
 ## Last Worked On
 
-Rate and payment rows are back on the calculator handoff summaries, with “Not a quote or offer.” under them and in the posted analysis. The DSCR “Email me this analysis” form stays on the lead-intake path. Not merged and not deployed to production.
+November 3 migration audit: all 187 live sitemap URLs returned successfully with self-referencing styerteam.com canonicals and no retired identity. Verified both old-host redirects, company licensing source and Adam’s existing secure application. Corrected stale repository maintenance instructions and affiliation regression expectations. Preserve the already-deployed content, forms and analytics.
 
 ## Working Rules
 

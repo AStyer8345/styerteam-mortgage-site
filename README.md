@@ -1,10 +1,10 @@
-# styermortgage.com
+# styerteam.com
 
 Public mortgage website for The Styer Team · Powered by GoRascal (NMLS #513013). Austin, TX.
 
 ## Stack
 
-Static HTML/CSS/JS on **Netlify**. No framework, no build step. Netlify Functions (Node.js) for content generation, email automation, and lead capture.
+Static HTML/CSS/JS on **Vercel**, project `styerteam-site`. `scripts/vercel-build.mjs` runs the audited build and packages `.site-dist`. Existing function implementations remain under `netlify/functions/`; Vercel adapters under `api/` preserve their public endpoints.
 
 ## Local Dev
 
@@ -16,9 +16,9 @@ node .claude/site-server.js  # port 8766 (with API proxy)
 
 ## Deploy
 
-Push to `main` → Netlify auto-builds and deploys.
+Inspect the current Vercel production commit/ref before release; the repository default branch is not proof of deployed source. Run `CONTEXT=deploy-preview npm run build` and relevant tests, deploy the reviewed commit, then verify READY and `/api/version`. See `docs/domain-migration-plan.md` for the current domain contract.
 
-## Environment Variables (Netlify)
+## Environment Variables (deployment platform)
 
 | Variable | Purpose |
 |----------|---------|

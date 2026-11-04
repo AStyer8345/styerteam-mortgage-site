@@ -1,18 +1,18 @@
-> October 26, 2026: Public branding is Adam Styer, individual NMLS #513013. Former company affiliation, company license, office, email and application links are retired. Until current company and secure application details are confirmed, route application requests to https://styermortgage.com/contact.html. This instruction supersedes older company branding instructions below.
+> Current migration contract (verified November 3, 2026): canonical origin `https://styerteam.com`; public brand **The Styer Team, Powered by Go Rascal Inc.**; legal entity **Go Rascal Inc.**, company NMLS **2072896**; Adam Styer, individual NMLS **513013**, **512-956-6010**, **adamstyer@gorascal.com**. Secure application: `https://gorascal.my1003app.com/513013/register`, verified to display Adam’s name, NMLS and phone. This contract supersedes older local/global branding and hosting notes. Do not restore retired affiliation, license, phone, email or application destinations.
 
-# styermortgage.com — Architecture
+# styerteam.com — Architecture
 
 ## Tech Stack
 
 | Item | Detail |
 |------|--------|
 | Stack | Custom HTML/CSS/JS — no framework, no CMS |
-| Hosting | Netlify |
-| Functions | Netlify Functions (Node.js + esbuild) |
+| Hosting | Vercel project `styerteam-site` |
+| Functions | Vercel `api/` adapters over existing `netlify/functions/` implementations |
 | Dependencies | `@anthropic-ai/sdk`, `@mailchimp/mailchimp_marketing`, `@netlify/blobs` |
 | Analytics | GA4 (G-DDY0H0319S) via GTM (GTM-PQQ6PGLR) |
 | Ads | Google Ads (758-138-2642) |
-| Domain | styermortgage.com |
+| Domain | styerteam.com |
 | Repo | GitHub: AStyer8345/styerteam-mortgage-site |
 
 ## Design System
@@ -36,7 +36,7 @@
 | Email | adamstyer@gorascal.com |
 
 | Calendly | https://calendly.com/adamstyer/15minutes |
-| Loan app | /contact.html?goal=Purchase |
+| Loan app | https://gorascal.my1003app.com/513013/register |
 | GBP Place ID | ChIJYy5uEFPKRIYRmF-k_5gPk74 |
 
 ### Reviews
@@ -207,7 +207,7 @@ are directory-style URLs (`/`, `/resources/`, `/resources/first-time-buyer-guide
 | `rates/2026-03-24.html` | 0 of 10 dated `rates/` pages are listed — uniform, by design (guard 4) |
 | `blog/2026-03-20-austin-mortgage-rates-march-2026.html` | canonical → `/austin-mortgage-rates.html` (guard 3) |
 | `googlea3d746ce1ceb4bff.html` | GSC site-verification file |
-| `index.html` | listed as `https://styermortgage.com/` (root form) |
+| `index.html` | listed as `https://styerteam.com/` (root form) |
 | `resources/index.html` | listed as `/resources/` (trailing-slash form) |
 | `resources/first-time-buyer-guide/index.html` | listed as `/resources/first-time-buyer-guide/` |
 

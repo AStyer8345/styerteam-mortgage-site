@@ -3445,3 +3445,12 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Decouple contact capture from delayed transcript recording; use the established LoanOS inquiry/outbox pipeline, snapshot-specific retry identity, visible delivery-state receipts, and bounded requests.
 - Keep mobile confirmation controls usable with a scrollable privacy review and compact heading.
 - Validation: 174 site tests and 133 assistant tests passed; TypeScript, SEO audit (166 URLs / zero issues), build and whitespace checks passed. No live test submissions. Chromium installation failed, so visual browser QA remains unverified.
+
+
+## 2026-11-03 — Canonical-domain migration verification and maintenance safeguards
+
+- Verified Vercel’s actual production source (eeee418c) and linked repository before editing; its branding and old-host 301s were already live. All 187 sitemap pages passed live canonical/retired-identity checks.
+- Corrected stale hosting, domain, legal-name and application instructions in maintainer docs and scenario authoring guidance; documented independently verified Go Rascal licensing and Adam’s secure application.
+- Updated affiliation checks to allow only the verified application destination, reject the retired contact phone, and assert the actual canonical origin. Added both-old-host deep-path/query redirect tests.
+- Made legacy `/purchase` redirect directly to its existing final contact destination, preserving purchase intent and removing an unnecessary hop. Recompiled Vercel config.
+- Updated packaging test fixtures to include the current shipped asset optimizers. No public content, analytics IDs, form fields, capture handlers, or sitemap paths changed.

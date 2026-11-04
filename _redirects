@@ -186,7 +186,7 @@ http://www.styermortgage.com/*    https://styerteam.com/:splat  301!
 # Product and intent routes from the prior site are mapped to the closest current canonical page.
 /reverse-refinance  /products.html  301
 /calendar  /contact.html  301
-/purchase  /get-preapproved.html  301
+/purchase  /contact.html?goal=Purchase  301
 /home-equity  /products.html  301
 /legal  /terms.html  301
 /construction  /loans/construction.html  301

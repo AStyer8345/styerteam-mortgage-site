@@ -849,7 +849,7 @@
     },
     {
       "source": "/purchase",
-      "destination": "/get-preapproved.html",
+      "destination": "/contact.html?goal=Purchase",
       "statusCode": 301
     },
     {
