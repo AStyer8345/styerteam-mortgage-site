@@ -988,17 +988,62 @@ body.advisory-site :is(a, button, input, select, textarea, summary):focus-visibl
   outline-offset: 4px !important;
 }
 
-/* Brass #806234 is 2.9:1 on #11212E. Light brass clears 3:1 on navy and obsidian. */
+/* Light brass is for a painted dark surface: 6.97:1 on #11212E, 7.84:1 on #0B151D, 5.96:1 on #182E3E.
+   Kept as separate rules so an #id in one selector does not raise the others.
+   .cta-spotlight and .preserved-detail .bg-navy are paper (#F6F4EF), not navy. */
 body.advisory-site :is(
-  .bg-navy,
   .bg-dark,
   .dscr-dark,
   .dscr-navy-cta,
-  #quick-options.u-section,
-  .u-cta-section[style*="--pwe-obsidian"],
-  .u-section[style*="--pwe-obsidian"]
+  .u-cta-section,
+  .u-cta-card,
+  .advisory-contact-bar
 ) :is(a, button, input, select, textarea, summary):focus-visible {
   outline-color: var(--pwe-brass-light) !important;
+}
+
+body.advisory-site footer.site-footer :is(a, button, input, select, textarea, summary):focus-visible {
+  outline-color: var(--pwe-brass-light) !important;
+}
+
+body.advisory-site .bg-navy:not(.cta-spotlight):not(.preserved-detail *) :is(a, button, input, select, textarea, summary):focus-visible,
+body.advisory-site .u-section[style*="--pwe-obsidian"] :is(a, button, input, select, textarea, summary):focus-visible,
+body.advisory-site #quick-options.u-section :is(a, button, input, select, textarea, summary):focus-visible {
+  outline-color: var(--pwe-brass-light) !important;
+}
+
+/* Paper cards inside a dark band. #806234 is 5.33:1 on #FAF8F3 and 5.65:1 on #fff.
+   The contact bar's white action keeps the light-brass ring: the 4px offset sits on the dark bar, not on the white fill. */
+body.advisory-site :is(
+  .personal-support,
+  .u-disclose,
+  .u-disclose-card,
+  .preserved-detail :is(.bg-navy, .bg-light, .cta-spotlight)
+) :is(a, button, input, select, textarea, summary):focus-visible,
+body.premium-interior .advisory-contact-bar :is(a, button):focus-visible,
+body.advisory-site :is(#quick-options, .u-cta-section, .u-cta-card) :is(.personal-support, .u-disclose, .u-disclose-card) :is(a, button, input, select, textarea, summary):focus-visible,
+body.advisory-site :is(.preserved-detail, .preserved-reference, .preserved-guide) .dscr-dark :is(a, button, input, select, textarea, summary):focus-visible {
+  outline-color: #806234 !important;
+}
+
+/* Dark heroes that are not navy-class sections. Light brass is 5.96:1 on #182E3E. */
+body.advisory-site .lp-hero :is(a, button):focus-visible {
+  outline-color: var(--pwe-brass-light) !important;
+}
+
+/* Navy cards. #F6F4EF is 14.92:1 on #11212E. The light calculator review keeps its own link color. */
+#quick-options:not(.calculator-review) .u-cta-card .journey-hint a {
+  color: #f6f4ef;
+}
+
+/* Filled buttons on the obsidian CTAs. White is 18:1 on #0B151D and 16.4:1 on #11212E.
+   The ring is offset onto the section. Light #quick-options pages are not in this list. */
+body.advisory-site :is(
+  #quick-options.u-section,
+  #quick-options.u-cta-section:not(.calculator-review),
+  .u-closing
+) :is(.u-btn-primary, .u-form-submit):focus-visible {
+  outline-color: #fff !important;
 }
 
 /* ==========================================================================
@@ -2650,7 +2695,7 @@ body.premium-partner .partner-card {
   text-decoration: none !important;
   border-radius: 4px;
   border: 1px solid var(--pwe-obsidian);
-  transition: all 180ms ease;
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
   box-shadow: 0 4px 14px rgba(11, 21, 29, 0.18);
 }
 
@@ -2675,7 +2720,7 @@ body.premium-partner .partner-card {
   text-decoration: none !important;
   border-radius: 4px;
   border: 1px solid var(--pwe-rule);
-  transition: all 180ms ease;
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .u-btn-secondary:hover {

@@ -1,3 +1,8 @@
+## 2026-11-04 — Preview: focus rings follow the painted background
+
+- The light-brass focus ring stays on surfaces that are actually dark (#11212E, #0B151D, #182E3E). `.cta-spotlight`, preserved-guide navy bands, and preserved `.dscr-dark` blocks are paper, so they keep #806234. The same reset covers `.personal-support` and the white scenario card.
+- Dark quick-ask fields on the jumbo and self-employed pages, the mobile contact bar, the homepage hero, and the guides footer use a ring that clears 3:1. “Text Adam” on the buy-before-you-sell and one-time-close navy cards is #F6F4EF. Filled buttons on the obsidian CTAs use a white ring. Not merged and not deployed.
+
 ## 2026-11-03 — Live: pull request #60
 
 - Live Nov 3, 2026, 6:58 PM CT. Merge `eeee418c` on `cursor/blog-2026-11-02-refi-out-of-non-qm`. Deploy `dpl_EfQqukGca2CqZU4HyM3Wm6KRwPcV`.
