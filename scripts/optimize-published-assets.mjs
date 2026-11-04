@@ -111,7 +111,10 @@ function stampFontUrls(css, fromRel = '') {
 
 function stampHtml(html, htmlRel) {
   html = html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, block => stampFontUrls(block, htmlRel));
-  html = html.replace(/<script\b(?![^>]*\b(?:defer|async)\b)([^>]*\bsrc=)/gi, '<script defer$1');
+  // Some inline initializers intentionally depend on the immediately preceding
+  // external script. Preserve that ordering when the source marks the script
+  // as synchronous; defer every other unannotated local script as before.
+  html = html.replace(/<script\b(?![^>]*\b(?:defer|async|data-styer-sync)\b)([^>]*\bsrc=)/gi, '<script defer$1');
   html = html.replace(/\bdata-deferred-href=(["'])([^"']+)\1/gi, (whole, quote, url) => {
     const next = stamp(url);
     return next === url ? whole : `data-deferred-href=${quote}${next}${quote}`;

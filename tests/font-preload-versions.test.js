@@ -51,3 +51,26 @@ test('published font preloads use the same versioned URL as the shipped CSS', ()
     fs.rmSync(temporary, { recursive: true, force: true });
   }
 });
+
+test('published assets preserve explicitly synchronous script dependencies', () => {
+  const root = process.cwd();
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'script-order-'));
+  const dist = path.join(temporary, '.site-dist');
+  try {
+    fs.mkdirSync(dist, { recursive: true });
+    fs.writeFileSync(path.join(dist, 'sync.js'), 'window.SyncDependency = true;');
+    fs.writeFileSync(path.join(dist, 'later.js'), 'window.LaterScript = true;');
+    fs.writeFileSync(path.join(dist, 'index.html'), `<!DOCTYPE html><html><body>
+<script data-styer-sync src="/sync.js"></script>
+<script src="/later.js"></script>
+</body></html>`);
+
+    execFileSync(process.execPath, [path.join(root, 'scripts/optimize-published-assets.mjs')], { cwd: temporary });
+
+    const html = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+    assert.match(html, /<script data-styer-sync src="\/sync\.js\?v=[0-9a-f]{10}"><\/script>/);
+    assert.match(html, /<script defer src="\/later\.js\?v=[0-9a-f]{10}"><\/script>/);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
