@@ -1,9 +1,14 @@
-## 2026-11-03 — Preview: rates CLS, shared contrast, and contact email check
+## 2026-11-03 — Preview: match font preload URLs to the shipped CSS
 
-- The rates page reserves two breadcrumb lines on small screens and preloads Inter, with a size-adjusted fallback in the site font stack.
-- Guides social images use the shared wordmark. The assistant allowlist no longer includes thestyerteam.com. The first-time buyer link in llms.txt has no trailing slash.
-- The business-owners page has one dark footer, with the licensing notice inside it. Phone and text links are at least 24px. The three March newsletter updates have distinct titles and descriptions.
-- The IdentityPxl opt-out address stays as text. The assistant knowledge, public contact copy, and the website integration test use adamstyer@gorascal.com. Not merged and not deployed to production.
+- The published-asset build now adds the same `?v=` hash to a font file in both the preload and the `@font-face` `url()`. A preload whose URL is not in that page's shipped CSS fails the build. Not merged and not deployed to production.
+
+## 2026-11-03 — Live: QA pull requests #56, #57, #58, and #59
+
+- Pull requests #56, #57, #58, and #59 are merged and live on `cursor/blog-2026-11-02-refi-out-of-non-qm`.
+- #56 moved public links to styerteam.com and let the assistant allow styerteam.com.
+- #57 shipped the technical fixes: honeypots, headers, canonicals, and the March rates post indexed on its own URL.
+- #58 shortened titles and descriptions. Social images, including `/guides.html`, use https://styerteam.com/assets/og-image.png.
+- #59 reserved the rates breadcrumb, preloaded Inter, and set `/guides.html` `og:image` and `twitter:image` to https://styerteam.com/assets/og-image.png. It dropped thestyerteam.com from the assistant allowlist, removed the slash from the first-time buyer URL, kept one business-owners footer, and gave the three March newsletters their own titles.
 
 ## 2026-11-02 — Preview: restore calculator rates and payments on the handoff
 

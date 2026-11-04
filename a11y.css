@@ -229,8 +229,16 @@ footer a,
 
 .site-footer a,
 footer a {
+  display: inline-block;
   padding: 4px 2px;
   box-sizing: border-box;
+}
+
+.preserved-detail a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  min-width: 24px;
 }
 
 @media (min-width: 1024px) and (max-width: 1280px) {
