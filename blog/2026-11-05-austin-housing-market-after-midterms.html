@@ -206,6 +206,26 @@
   ]
 }
 </script>
+<style id="market-faq-styles">
+  .market-faq { margin: 0 0 2rem; gap: 0.75rem; }
+  .market-faq .u-faq-item > summary {
+    padding: 0.875rem 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .market-faq .u-faq-item > summary:focus-visible { outline-offset: -4px; }
+  .market-faq .u-faq-answer {
+    padding: 0.875rem 1rem 1rem;
+    border-top: 1px solid var(--pwe-rule);
+    background: #f5f2eb;
+  }
+  body.advisory-article .article-body .market-faq .u-faq-answer > p {
+    margin: 0 !important;
+    color: var(--pwe-slate) !important;
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+  }
+</style>
 </head>
 <body class="premium-interior premium-reading premium-article advisory-site advisory-article batch4-reading">
 <!-- Google Tag Manager (noscript) -->
@@ -357,10 +377,24 @@
 <p>That's where I think good Realtors and mortgage advisors can separate themselves right now. Your Realtor can tell you what they see on that street and whether the seller might move. I can show you what that move is worth in dollars. If you've already got a mortgage and you're thinking about refinancing, we can do the same thing with your current loan and a fresh quote.</p>
 
 <h2 id="faq">Frequently asked questions</h2>
-<details><summary>Did mortgage rates drop after the 2026 midterm elections?</summary><p>Yes. Mortgage News Daily’s national 30-year fixed index fell from 7.30% on November 3 to 7.17% on November 5. Rates had already eased before the vote, and economic data and bond-market trading also mattered.</p></details>
-<details><summary>What was the median home price in Austin in September 2026?</summary><p>Unlock MLS reported $570,958 in the City of Austin and $421,000 across the Austin–Round Rock–San Marcos metro. The two figures cover different geographies.</p></details>
-<details><summary>Can Austin-area buyers negotiate seller credits right now?</summary><p>It depends on the house, the seller and the loan. Look at nearby sales, listing history and competing homes. Then compare a price reduction with an allowable credit toward closing costs using the same loan assumptions.</p></details>
-<details><summary>Should I refinance after this week&#x27;s rate drop?</summary><p>Start with a written quote and compare it with your current loan. Look at the rate, closing costs, remaining term, and how long you expect to keep the mortgage. That tells you more about the potential savings than a national average.</p></details>
+<div class="u-faq-wrap market-faq">
+<details class="u-faq-item">
+<summary>Did mortgage rates drop after the 2026 midterm elections?</summary>
+<div class="u-faq-answer"><p>Yes. Mortgage News Daily’s national 30-year fixed index fell from 7.30% on November 3 to 7.17% on November 5. Rates had already eased before the vote, and economic data and bond-market trading also mattered.</p></div>
+</details>
+<details class="u-faq-item">
+<summary>What was the median home price in Austin in September 2026?</summary>
+<div class="u-faq-answer"><p>Unlock MLS reported $570,958 in the City of Austin and $421,000 across the Austin–Round Rock–San Marcos metro. The two figures cover different geographies.</p></div>
+</details>
+<details class="u-faq-item">
+<summary>Can Austin-area buyers negotiate seller credits right now?</summary>
+<div class="u-faq-answer"><p>It depends on the house, the seller and the loan. Look at nearby sales, listing history and competing homes. Then compare a price reduction with an allowable credit toward closing costs using the same loan assumptions.</p></div>
+</details>
+<details class="u-faq-item">
+<summary>Should I refinance after this week&#x27;s rate drop?</summary>
+<div class="u-faq-answer"><p>Start with a written quote and compare it with your current loan. Look at the rate, closing costs, remaining term, and how long you expect to keep the mortgage. That tells you more about the potential savings than a national average.</p></div>
+</details>
+</div>
 
 <p>Have a listing or a mortgage quote you want to compare? <a href="/contact.html">Send it to me</a> and I’ll walk through it with you.</p>
 </div>
