@@ -144,6 +144,18 @@
     });
   }
 
+  // A prefilled absolute URL for this page is the no-JS fallback. Replace it
+  // with the live page so an old host cannot be submitted.
+  function samePageFallback(value) {
+    try {
+      var preset = new URL(value);
+      if (!/^https:$/.test(preset.protocol)) return false;
+      if (!/^(www\.)?(the)?styerteam\.com$/i.test(preset.hostname)) return false;
+      var here = window.location.pathname;
+      return preset.pathname === here || (preset.pathname === '/' && (here === '/' || here === '/index.html'));
+    } catch (_) { return false; }
+  }
+
   function populate() {
     var firstTouch = getFirstTouch();
     var lastCta = readLastCta();
@@ -155,6 +167,10 @@
     // /homepage_hero when the CTA click record is unavailable.
     var ctaSourcePage = cleanUrl(getParam('cta_source_page')) || cleanUrl(lastCta && lastCta.cta_source_page) || entryReferrer || firstTouch.first_touch_page || cleanUrl(window.location.href);
     var ctaLabel = getParam('cta_label') || cleanText(lastCta && lastCta.cta_label, 160) || inferredCtaLabel(intent);
+    var pageFallbacks = [];
+    document.querySelectorAll('input[name="cta_source_page"]').forEach(function (el) {
+      if (samePageFallback(el.value)) pageFallbacks.push(el);
+    });
 
     UTM_NAMES.forEach(function (name) {
       fill(name, getParam(name) || firstTouch['first_touch_' + name] || '');
@@ -173,6 +189,7 @@
     fill('source', source);
     fill('cta_source_page', ctaSourcePage);
     fill('cta_label', ctaLabel);
+    pageFallbacks.forEach(function (el) { el.value = cleanUrl(window.location.href); });
 
     window.StyerAttribution = {
       intent: intent,

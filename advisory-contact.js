@@ -35,6 +35,7 @@
     var main = b.classList.contains('premium-homepage') ? null : d.querySelector('main');
     // Finish style reads before any class writes to avoid repeated layout flushes.
     if (main) Array.prototype.filter.call(main.querySelectorAll('p'), function (p) {
+      if (p.closest('.u-hero, .pwe-hero, .hero')) return false;
       return getComputedStyle(p).textAlign === 'center';
     }).forEach(function (p) { p.classList.add('advisory-centered'); });
   } catch (e) {}

@@ -16,6 +16,7 @@ const releaseFiles = JSON.parse(fs.readFileSync(path.join(root, 'scripts/public-
 const candidates = [...new Set([...tracked, ...releaseFiles])];
 const files = candidates.filter(file => {
   if (privateFiles.has(file) || withheldFromProduction.has(file)) return false;
+  if (file === '.well-known/security.txt') return true;
   if (file.startsWith('.') || file.includes('/originals/') || file.includes('_TEMPLATE')) return false;
   const parts = file.split('/');
   if (parts.length === 1) return rootData.has(file) || (/\.(html|css|js|svg|png|ico|pdf)$/i.test(file) && file !== 'server.js' && file !== 'middleware.js');

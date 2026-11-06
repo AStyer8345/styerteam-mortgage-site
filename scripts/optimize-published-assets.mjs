@@ -8,11 +8,11 @@ import path from 'node:path';
 const root = process.cwd();
 const dist = path.join(root, '.site-dist');
 
-function walk(dir) {
+function walk(dir, extension = '.html') {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
     const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) return walk(full);
-    return full.endsWith('.html') ? [full] : [];
+    if (entry.isDirectory()) return walk(full, extension);
+    return full.endsWith(extension) ? [full] : [];
   });
 }
 
@@ -73,7 +73,7 @@ function bundleStyles(html) {
   const bundleAbs = path.join(dist, bundleRel);
   if (!fs.existsSync(bundleAbs)) {
     fs.mkdirSync(path.dirname(bundleAbs), { recursive: true });
-    const css = sheets.map(sheet => `/* ${sheet.rel} */\n${rewriteCss(sheet.rel, fs.readFileSync(path.join(dist, sheet.rel), 'utf8'))}`).join('\n');
+    const css = stampFontUrls(sheets.map(sheet => `/* ${sheet.rel} */\n${rewriteCss(sheet.rel, fs.readFileSync(path.join(dist, sheet.rel), 'utf8'))}`).join('\n'), bundleRel);
     fs.writeFileSync(bundleAbs, css);
   }
   let next = html;
@@ -93,8 +93,28 @@ function stamp(url) {
   return `${bare}?v=${hash}${hashPart ? `#${hashPart}` : ''}`;
 }
 
-function stampHtml(html) {
-  html = html.replace(/<script\b(?![^>]*\b(?:defer|async)\b)([^>]*\bsrc=)/gi, '<script defer$1');
+// Font preloads and @font-face src must be the same URL, including ?v=.
+// A version on only the preload makes the browser download the face twice.
+function stampFontUrls(css, fromRel = '') {
+  const dir = fromRel ? path.posix.dirname(fromRel) : '';
+  return css.replace(/url\(\s*(['"]?)([^'")]+)\1\s*\)/gi, (whole, quote, raw) => {
+    const target = raw.trim();
+    if (/^(?:data:|https?:|#)/i.test(target)) return whole;
+    const bare = target.split(/[?#]/)[0];
+    if (!/\.woff2?$/i.test(bare)) return whole;
+    const rel = bare.startsWith('/')
+      ? path.posix.normalize(bare).replace(/^\//, '')
+      : path.posix.normalize(path.posix.join(dir === '.' ? '' : dir, bare)).replace(/^\//, '');
+    return `url(${quote}${stamp(`/${rel}`)}${quote})`;
+  });
+}
+
+function stampHtml(html, htmlRel) {
+  html = html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, block => stampFontUrls(block, htmlRel));
+  // Some inline initializers intentionally depend on the immediately preceding
+  // external script. Preserve that ordering when the source marks the script
+  // as synchronous; defer every other unannotated local script as before.
+  html = html.replace(/<script\b(?![^>]*\b(?:defer|async|data-styer-sync)\b)([^>]*\bsrc=)/gi, '<script defer$1');
   html = html.replace(/\bdata-deferred-href=(["'])([^"']+)\1/gi, (whole, quote, url) => {
     const next = stamp(url);
     return next === url ? whole : `data-deferred-href=${quote}${next}${quote}`;
@@ -115,14 +135,51 @@ function stampHtml(html) {
   return html;
 }
 
+for (const file of walk(dist, '.css')) {
+  const rel = path.relative(dist, file).split(path.sep).join('/');
+  const before = fs.readFileSync(file, 'utf8');
+  const after = stampFontUrls(before, rel);
+  if (after !== before) fs.writeFileSync(file, after);
+}
+
 let bundled = 0;
 let stamped = 0;
 for (const file of walk(dist)) {
+  const rel = path.relative(dist, file).split(path.sep).join('/');
   const before = fs.readFileSync(file, 'utf8');
   let html = bundleStyles(before);
   if (html !== before) bundled += 1;
-  const after = stampHtml(html);
+  const after = stampHtml(html, rel);
   if (after !== html) stamped += 1;
   if (after !== before) fs.writeFileSync(file, after);
+}
+
+const mismatches = [];
+for (const file of walk(dist)) {
+  const html = fs.readFileSync(file, 'utf8');
+  const cssParts = [];
+  for (const match of html.matchAll(/<link\b[^>]*>/gi)) {
+    const tag = match[0];
+    const relValue = (tag.match(/\brel=(["'])(.*?)\1/i)?.[2] || '').toLowerCase();
+    if (!relValue.split(/\s+/).includes('stylesheet')) continue;
+    const href = tag.match(/\bhref=(["'])(.*?)\1/i)?.[2] || '';
+    const rel = localPath(href);
+    if (!rel) continue;
+    const abs = path.join(dist, rel);
+    if (fs.existsSync(abs)) cssParts.push(fs.readFileSync(abs, 'utf8'));
+  }
+  for (const style of html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)) cssParts.push(style[1]);
+  const urls = new Set([...cssParts.join('\n').matchAll(/url\(\s*(['"]?)([^'")]+)\1\s*\)/gi)].map(match => match[2].trim()));
+  for (const tag of html.matchAll(/<link\b[^>]*>/gi)) {
+    const relValue = (tag[0].match(/\brel=(["'])(.*?)\1/i)?.[2] || '').toLowerCase();
+    const asValue = (tag[0].match(/\bas=(["'])(.*?)\1/i)?.[2] || '').toLowerCase();
+    if (!relValue.split(/\s+/).includes('preload') || asValue !== 'font') continue;
+    const href = tag[0].match(/\bhref=(["'])(.*?)\1/i)?.[2] || '';
+    if (!href || /^(?:https?:|\/\/)/i.test(href) || !/\.woff2?(?:$|[?#])/i.test(href)) continue;
+    if (!urls.has(href)) mismatches.push(`${path.relative(dist, file).split(path.sep).join('/')}: ${href}`);
+  }
+}
+if (mismatches.length) {
+  throw new Error(`Font preload URL does not match a shipped CSS url():\n${mismatches.join('\n')}`);
 }
 console.log(`Published assets: bundled styles on ${bundled} pages, stamped ${stamped} pages with content hashes.`);

@@ -1,3 +1,15 @@
+## 2026-11-03 — Preview: match font preload URLs to the shipped CSS
+
+- The published-asset build now adds the same `?v=` hash to a font file in both the preload and the `@font-face` `url()`. A preload whose URL is not in that page's shipped CSS fails the build. Not merged and not deployed to production.
+
+## 2026-11-03 — Live: QA pull requests #56, #57, #58, and #59
+
+- Pull requests #56, #57, #58, and #59 are merged and live on `cursor/blog-2026-11-02-refi-out-of-non-qm`.
+- #56 moved public links to styerteam.com and let the assistant allow styerteam.com.
+- #57 shipped the technical fixes: honeypots, headers, canonicals, and the March rates post indexed on its own URL.
+- #58 shortened titles and descriptions. Social images, including `/guides.html`, use https://styerteam.com/assets/og-image.png.
+- #59 reserved the rates breadcrumb, preloaded Inter, and set `/guides.html` `og:image` and `twitter:image` to https://styerteam.com/assets/og-image.png. It dropped thestyerteam.com from the assistant allowlist, removed the slash from the first-time buyer URL, kept one business-owners footer, and gave the three March newsletters their own titles.
+
 ## 2026-11-02 — Preview: restore calculator rates and payments on the handoff
 
 - The investor and refinance “Your calculator numbers” summaries show the interest rate and payment rows again, the same rows as before the compliance cut. A 12px line, “Not a quote or offer.”, sits under each of those summaries. The same rows and line are included in the review submission and in the DSCR email analysis. The DSCR email form still posts through lead-intake. Not merged and not deployed to production.
@@ -3433,3 +3445,12 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Decouple contact capture from delayed transcript recording; use the established LoanOS inquiry/outbox pipeline, snapshot-specific retry identity, visible delivery-state receipts, and bounded requests.
 - Keep mobile confirmation controls usable with a scrollable privacy review and compact heading.
 - Validation: 174 site tests and 133 assistant tests passed; TypeScript, SEO audit (166 URLs / zero issues), build and whitespace checks passed. No live test submissions. Chromium installation failed, so visual browser QA remains unverified.
+
+
+## 2026-11-03 — Canonical-domain migration verification and maintenance safeguards
+
+- Verified Vercel’s actual production source (eeee418c) and linked repository before editing; its branding and old-host 301s were already live. All 187 sitemap pages passed live canonical/retired-identity checks.
+- Corrected stale hosting, domain, legal-name and application instructions in maintainer docs and scenario authoring guidance; documented independently verified Go Rascal licensing and Adam’s secure application.
+- Updated affiliation checks to allow only the verified application destination, reject the retired contact phone, and assert the actual canonical origin. Added both-old-host deep-path/query redirect tests.
+- Made legacy `/purchase` redirect directly to its existing final contact destination, preserving purchase intent and removing an unnecessary hop. Recompiled Vercel config.
+- Updated packaging test fixtures to include the current shipped asset optimizers. No public content, analytics IDs, form fields, capture handlers, or sitemap paths changed.

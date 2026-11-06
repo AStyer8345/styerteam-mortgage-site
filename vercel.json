@@ -11,6 +11,28 @@
   },
   "redirects": [
     {
+      "source": "/about",
+      "has": [
+        {
+          "type": "host",
+          "value": "styermortgage.com"
+        }
+      ],
+      "destination": "https://styerteam.com/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/about",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.styermortgage.com"
+        }
+      ],
+      "destination": "https://styerteam.com/about.html",
+      "statusCode": 301
+    },
+    {
       "source": "/",
       "has": [
         {
@@ -827,7 +849,7 @@
     },
     {
       "source": "/purchase",
-      "destination": "/get-preapproved.html",
+      "destination": "/contact.html?goal=Purchase",
       "statusCode": 301
     },
     {
@@ -1496,6 +1518,11 @@
       "statusCode": 301
     },
     {
+      "source": "/blog/2026-11-02-refinance-out-of-non-qm-loan-texas",
+      "destination": "/blog/2026-11-02-refinance-out-of-non-qm-loan-texas.html",
+      "statusCode": 301
+    },
+    {
       "source": "/buy-before-you-sell-austin",
       "destination": "/buy-before-you-sell-austin.html",
       "statusCode": 301
@@ -2111,6 +2138,14 @@
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' https: data:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://ad.doubleclick.net https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com; frame-src https://www.googletagmanager.com https://calendly.com; form-action 'self' https://gorascal.my1003app.com"
         },
         {
           "key": "Referrer-Policy",
