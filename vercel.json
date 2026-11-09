@@ -1523,6 +1523,11 @@
       "statusCode": 301
     },
     {
+      "source": "/blog/2026-11-09-mortgage-low-taxable-income-self-employed-texas",
+      "destination": "/blog/2026-11-09-mortgage-low-taxable-income-self-employed-texas.html",
+      "statusCode": 301
+    },
+    {
       "source": "/buy-before-you-sell-austin",
       "destination": "/buy-before-you-sell-austin.html",
       "statusCode": 301
