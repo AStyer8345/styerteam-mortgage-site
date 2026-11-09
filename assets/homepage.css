@@ -7295,3 +7295,57 @@ input[type="button"] {
     min-height: 44px;
   }
 }
+
+/* Borrower-first homepage cards: compact 3 by 2 desktop, 2-column tablet/mobile. */
+body.private-wealth-editorial .pwe-audience-index.pwe-borrower-cards{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:16px!important;
+}
+body.private-wealth-editorial .pwe-borrower-cards .pwe-audience-col,
+body.private-wealth-editorial .pwe-borrower-cards .pwe-audience-col:not(:first-child),
+body.private-wealth-editorial .pwe-borrower-cards .pwe-audience-col:last-child{
+  padding:0!important;
+  min-width:0;
+}
+body.private-wealth-editorial .pwe-borrower-cards .pwe-card-media{
+  height:120px!important;
+  aspect-ratio:auto!important;
+}
+body.private-wealth-editorial .pwe-borrower-cards .pwe-card-content{
+  padding:16px 18px 18px!important;
+  display:flex!important;
+  flex:1;
+  flex-direction:column;
+}
+body.private-wealth-editorial .pwe-borrower-cards h3{
+  font-size:21px!important;
+  line-height:1.25!important;
+  min-height:0!important;
+  margin:0 0 8px!important;
+}
+body.private-wealth-editorial .pwe-borrower-cards .pwe-card-content p{
+  font-size:14px!important;
+  line-height:1.45!important;
+  margin:0 0 14px!important;
+  flex:1;
+}
+body.private-wealth-editorial .pwe-borrower-cards .pwe-card-link{
+  margin-top:auto!important;
+  padding-top:10px!important;
+  font-size:13px!important;
+}
+@media(max-width:900px){
+  body.private-wealth-editorial .pwe-audience-index.pwe-borrower-cards{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+@media(max-width:440px){
+  body.private-wealth-editorial .pwe-borrower-cards .pwe-card-media{height:95px!important}
+  body.private-wealth-editorial .pwe-borrower-cards .pwe-card-content{padding:12px!important}
+  body.private-wealth-editorial .pwe-borrower-cards h3{font-size:17px!important}
+  body.private-wealth-editorial .pwe-borrower-cards .pwe-card-content p{font-size:12.5px!important}
+}
+@media(max-width:350px){
+  body.private-wealth-editorial .pwe-audience-index.pwe-borrower-cards{grid-template-columns:1fr!important}
+}
