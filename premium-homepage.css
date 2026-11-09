@@ -427,3 +427,13 @@ body.premium-homepage .homepage-pricing>div>p:not(.pricing-eyebrow){font-size:16
 body.premium-homepage .homepage-pricing>div>.pricing-note{font-size:12px!important;line-height:1.5!important;color:#52616b;margin:18px 0 0}
 @media(max-width:1100px){body.premium-homepage .four-audience-options{grid-template-columns:repeat(2,minmax(0,1fr))!important}body.premium-homepage .homepage-pricing{grid-template-columns:1fr;gap:24px}}
 @media(max-width:600px){body.premium-homepage .four-audience-options{grid-template-columns:1fr!important}body.premium-homepage .four-audience-options h3{min-height:0}body.premium-homepage .homepage-pricing{padding:24px}body.premium-homepage .homepage-pricing h2{font-size:30px}}
+
+/* Borrower-focused homepage audience grid: compact 3x2 desktop, responsive 2-up on mobile. */
+body.premium-homepage .borrower-audience-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important}
+body.premium-homepage .borrower-audience-grid article{display:flex;flex-direction:column;padding:18px!important;min-width:0}
+body.premium-homepage .borrower-audience-grid .mockup-category-icon{float:none;width:30px;height:30px;margin:0 0 10px}
+body.premium-homepage .borrower-audience-grid h3{font-size:20px!important;line-height:1.2;min-height:0;margin:0 0 8px}
+body.premium-homepage .borrower-audience-grid article>p{font-size:14px;line-height:1.45;margin:0 0 12px;flex:1}
+body.premium-homepage .borrower-audience-grid .audience-option-link{margin-top:auto;font-size:13px}
+@media(max-width:760px){body.premium-homepage .borrower-audience-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}body.premium-homepage .borrower-audience-grid article{padding:14px!important}body.premium-homepage .borrower-audience-grid h3{font-size:17px!important}body.premium-homepage .borrower-audience-grid article>p{font-size:13px}}
+@media(max-width:390px){body.premium-homepage .borrower-audience-grid{grid-template-columns:1fr!important}}
