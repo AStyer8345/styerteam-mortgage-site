@@ -717,6 +717,9 @@ body.advisory-site main :is(.bg-navy,.bg-dark,.cta-spotlight) :is(p,p.text-lg,.t
  .advisory-contact-bar{position:fixed;inset:auto 0 0;z-index:110;display:grid;grid-template-columns:1fr 1fr 2fr;background:var(--advisory-ink);color:#fff;border-top:1px solid rgba(255,255,255,.15);padding-bottom:env(safe-area-inset-bottom)}
  .advisory-contact-bar a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:56px;color:#fff;text-decoration:none;font:600 15px/1 var(--font-primary);border-right:1px solid rgba(255,255,255,.15)}
  .advisory-contact-bar a:last-child{border-right:0;background:#fff;color:var(--advisory-ink)}
+ /* #7C6345 is 2.49:1 on the ink bar. Light brass is 5.96:1. The white action stays on #806234 (5.65:1). */
+ body.advisory-site .advisory-contact-bar a:focus-visible{outline:2px solid #C6A46C !important;outline-offset:4px !important}
+ body.premium-interior .advisory-contact-bar a:focus-visible{outline-color:#806234 !important}
  .advisory-contact-bar svg{width:16px;height:16px;fill:currentColor}
  /* One bar at a time: hide while typing, while a calculator summary is pinned, or while the panel is open. */
  .advisory-site:has(main :is(input:not([type=hidden]),textarea,select):focus) .advisory-contact-bar,
@@ -3983,6 +3986,11 @@ body.premium-interior footer.site-footer h2 {
 body.advisory-site :is(a, button, input, select, textarea, summary):focus-visible {
   outline: 2px solid var(--pwe-brass) !important;
   outline-offset: 4px !important;
+}
+
+/* Homepage hero is rgb(20, 35, 48). #806234 is 2.83:1 there; light brass clears it. */
+body.advisory-site .pwe-hero :is(a, button):focus-visible {
+  outline-color: #C6A46C !important;
 }
 
 /* ==========================================================================
