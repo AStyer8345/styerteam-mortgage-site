@@ -769,55 +769,70 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
               document.getElementById('guide-signup-form').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 var form = e.currentTarget;
-                var btn = document.getElementById('guide-submit-btn');
+                var btn    = document.getElementById('guide-submit-btn');
                 var status = document.getElementById('guide-form-status');
                 var errBox = document.getElementById('guide-form-error');
-                var guideUrl = 'https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9';
+                var email  = document.getElementById('guide-email').value.trim();
+                var fname  = document.getElementById('guide-fname').value.trim();
+
                 btn.disabled = true;
-                btn.textContent = 'Please wait…';
+                btn.textContent = 'Sending\u2026';
                 status.textContent = '';
                 errBox.style.display = 'none';
 
-                try {
-                  var res = await window.StyerFetchWithTimeout('/api/lead-intake', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                      inquiry_id: window.StyerInquiryId(form),
-                      'form-name': form.getAttribute('name'),
-                      email: document.getElementById('guide-email').value.trim(),
-                      fname: document.getElementById('guide-fname').value.trim(),
-                      'bot-field': form.elements['bot-field'].value,
-                      page_url: window.location.href,
-                      tag: 'ftb-lead'
-                    })
-                  }, 15000);
+                var primaryNotification = window.StyerFetchWithTimeout('/api/lead-intake', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ inquiry_id: window.StyerInquiryId(form), 'form-name': form.getAttribute('name'), email: email, fname: fname, tag: 'ftb-lead', 'bot-field': form.elements['bot-field'].value, page_url: window.location.href })
+                }, 15000).then(async function (res) {
+                  if (!res.ok) throw new Error('lead-intake returned ' + res.status);
                   var data = await res.json();
-                  if (!res.ok || !data.success) throw new Error('Guide request could not be saved');
-                  btn.textContent = 'Guide ready';
-                  status.textContent = 'Your guide is ready: ';
-                  var link = document.createElement('a');
-                  link.href = guideUrl;
-                  link.target = '_blank';
-                  link.rel = 'noopener noreferrer';
-                  link.textContent = 'Open the First-Time Homebuyer Guide';
-                  status.appendChild(link);
+                  if (!data.success) throw new Error(data.error || 'Lead intake did not confirm success');
                   if (window.StyerTrackGenerateLead) {
                     Promise.resolve(window.StyerTrackGenerateLead({
                       lead_type: 'first_time_buyer_guide',
-                      form_name: form.getAttribute('name'),
-                      form_id: form.id,
+                      form_name: form.getAttribute('name') || 'first-time-buyer-guide',
+                      form_id: form.id || 'guide-signup-form',
                       inquiry_id: data.inquiry_id || ''
-                    }, { scenarioSubmit: false })).catch(function () {});
+                    }, { waitForTags: true, scenarioSubmit: false })).catch(function () {});
                   }
-                  form.reset();
-                } catch (err) {
+                  return data;
+                });
+
+                var ownerEmailNotification = primaryNotification.then(function () { return false; }, function () {
+                  return window.StyerCaptureNotificationBackup({
+                      sourceForm: 'first-time-buyer-guide',
+                      name: fname,
+                      email: email,
+                      subject: 'New first-time buyer guide request',
+                      details: 'The visitor requested the first-time buyer guide.'
+                    });
+                });
+
+                var results = await Promise.allSettled([primaryNotification, ownerEmailNotification]);
+                var primaryAccepted = results[0].status === 'fulfilled';
+                var ownerEmailAccepted = results[1].status === 'fulfilled' && results[1].value !== false;
+
+                if (!primaryAccepted) {
                   btn.disabled = false;
-                  btn.textContent = 'Send Me the Guide →';
-                  errBox.textContent = 'We could not save your request. Please try again or email adamstyer@gorascal.com.';
+                  btn.textContent = 'Send Me the Guide \u2192';
+                  errBox.textContent = 'Something went wrong \u2014 please try again or email adamstyer@gorascal.com.';
                   errBox.style.display = 'block';
-                  console.error(err);
+                  console.error(results[0].reason, results[1].reason);
+                  return;
                 }
+
+                btn.textContent = 'Guide ready';
+                status.textContent = 'Your guide is ready: ';
+                var guideLink = document.createElement('a');
+                guideLink.href = 'https://gamma.app/docs/The-First-Time-Homebuyer-Guide-z3bvbp9rn4qb2b9';
+                guideLink.target = '_blank';
+                guideLink.rel = 'noopener noreferrer';
+                guideLink.textContent = 'Open the First-Time Homebuyer Guide';
+                status.appendChild(guideLink);
+                form.reset();
+                document.getElementById('guide-fname').value = '';
+                document.getElementById('guide-email').value = '';
               });
             </script>
 </div>
