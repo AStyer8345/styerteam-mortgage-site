@@ -15,6 +15,7 @@ function fixture(fn) {
     }
     put('assets/homepage.css', 'body{margin:0}');
     put('scripts/admin-paths.json', '["dashboard.html"]');
+    put('scripts/retired-pages.json', '{}');
     put('scripts/public-release-files.json', '["editorial-polish.css"]');
     put('index.html', '<link href="/assets/homepage.css" rel="stylesheet"><link href="/editorial-polish.css" rel="stylesheet">');
     put('editorial-polish.css', 'body{color:black}');

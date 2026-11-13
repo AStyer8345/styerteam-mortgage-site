@@ -29,8 +29,17 @@ Mortgage website for Adam Styer, Senior Loan Officer, NMLS #513013, licensed in 
 * Host: Vercel, team `astyer8345's projects`, project `styerteam-site` (`prj_oPet4IOgPuN9hDtBFYcfbEi3HJEg`).
 * PRODUCTION BUILDS FROM BRANCH `cursor/blog-2026-11-02-refi-out-of-non-qm`, NOT `main`. `main` is behind and still has Netlify-era config. Do not set production to `main` until the live branch is merged into it.
 * Last known good production deploy: `dpl_8RHRKpec9EjUvqtFvTXsnZNdXLVB`, commit `01a8acf` (Nov 9, 2026). Use Vercel Instant Rollback to return to it.
-* Netlify is retired. `netlify.toml`, `_redirects` and `netlify/` are leftovers. Don't edit them; remove only in a dedicated cleanup PR.
+* Netlify hosting is retired. `netlify.toml` and `_redirects` are leftovers that still feed `vercel.json`. Don't edit them; remove only in a dedicated cleanup PR. `netlify/functions/` is live (see Release in progress).
 * A Vercel Security Checkpoint challenged automated requests on Nov 13. Firewall settings not yet reviewed.
+
+## Release in progress (Nov 2026 audit)
+
+* Integration branch: `release/2026-11-audit`, cut from production commit `01a8acf`. Each phase gets its own branch off it. Nothing is merged into production yet.
+* Phase 0 (clean start) and Phase 1 (`fix/quick-wins`) are done and on a Vercel preview. Phases 2–6 are not started.
+* Test gate, agreed Nov 13: no new failures versus `01a8acf`. That commit fails 32 of 202 tests and reports 30 `missing-description` findings in `npm run seo:audit`. Those are still open.
+* Run the build locally as `CONTEXT=deploy-preview npm run build`. A bare `npm run build` can submit URLs to IndexNow.
+* Retired pages: `scripts/retired-pages.json` lists pages kept in the repo but left out of the public build, each with one 301. The 10 `rates/` and 10 `updates/` pages are on it. A new rate page is published normally unless it is added to that list.
+* `api/*.js` loads its handlers from `netlify/functions/`, so that folder is live code, not a leftover. Only `netlify.toml` and `_redirects` are Netlify-era config, and `scripts/vercel-config.mjs` still reads both to build `vercel.json`.
 
 ## Leads
 
@@ -42,7 +51,7 @@ Mortgage website for Adam Styer, Senior Loan Officer, NMLS #513013, licensed in 
 ## SEO / AEO setup
 
 * `robots.txt` allows search and AI crawlers; admin pages disallowed.
-* `sitemap.xml`: 189 URLs on styerteam.com.
+* `sitemap.xml`: 189 URLs on styerteam.com. `lastmod` comes from git: run `npm run seo:lastmod` after committing page changes.
 * Every page has Organization + Person + WebSite JSON-LD. FAQPage only where the FAQ is visible on the page.
 * New blog posts must be added to `blog/manifest.json`, `blog.html`, `sitemap.xml`.
 * Search Console for styerteam.com: not yet set up. Last data is an Aug 2026 export for styermortgage.com in `seo-data/gsc/`.

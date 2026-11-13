@@ -1,3 +1,18 @@
+## 2026-11-13 — Preview: Phase 0 and Phase 1 of the November audit (`fix/quick-wins`)
+
+- Phase 0: created `release/2026-11-audit` from production commit `01a8acf`. Moved 11 outdated planning docs to `_archive/`. New root `CONTEXT.md`. Dropped the GOALS.md and Daily Operating System reads from `CLAUDE.md`.
+- Wording: "wholesale lenders" is now "many capital partners" on public pages, assistant knowledge and assistant training text (287 replacements, 75 files). Lender counts ("40+", "20 or more") removed. "Independent broker" removed from `products.html` and `reverse-mortgage-texas.html`.
+- Social image `assets/og-image.png` regenerated: STYERTEAM.COM and "Many capital partners" replace STYERMORTGAGE.COM and "40+ lenders".
+- Homepage hero: real space in the H1, badge reads "5.0 on Google · 99 reviews" and links to the Google profile in schema `sameAs`, second "Powered by Go Rascal Inc." badge removed. "Verified" removed from every review badge.
+- About H1 and its schema name: "Hi, I'm Adam Styer. I find the path when your file doesn't fit the box."
+- 33 pages now load `adam-cutout-900.webp` (47 KB, 900×900 set) instead of `adam-cutout.png` (1.1 MB).
+- 16 filler stat cards on 9 program pages replaced with a fact already stated on the same page. The "50-State Reach" card on the Austin DSCR page is gone.
+- 10 `rates/` pages and 10 `updates/` pages (all noindexed) left the public build. Each 301s to `/blog.html`. The list lives in `scripts/retired-pages.json`; `scripts/vercel-config.mjs` and `scripts/package-public-site.mjs` both read it. New test: `tests/retired-pages.test.js`.
+- `sitemap.xml` `lastmod` now comes from each file's last git commit: `npm run seo:lastmod` (`scripts/sync-sitemap-lastmod.mjs`). Run it locally after committing page changes.
+- `npm run seo:audit` no longer crashes on `/resources` and `/resources/first-time-buyer-guide`. It reports 30 `missing-description` findings, the same 30 as production.
+- `npm test`: 204 tests, 172 pass, 32 fail. The same 32 fail on untouched production commit `01a8acf`. No new failures.
+- Not deployed to production. Nothing merged into the production branch.
+
 ## 2026-11-03 — Preview: match font preload URLs to the shipped CSS
 
 - The published-asset build now adds the same `?v=` hash to a font file in both the preload and the `@font-face` `url()`. A preload whose URL is not in that page's shipped CSS fails the build. Not merged and not deployed to production.
