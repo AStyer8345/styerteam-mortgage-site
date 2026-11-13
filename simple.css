@@ -388,3 +388,26 @@ html body.simple-calc.simple-calc.simple-calc .calc-hub-more { margin: 20px 0 0 
 @media (max-width: 640px) { html body.simple-calc.simple-calc.simple-calc .calc-hub-cards { grid-template-columns: 1fr 1fr !important; } }
 html body.simple-calc.simple-calc.simple-calc .calc-panel:not([hidden]) { display: block !important; }
 html body.simple-calc.simple-calc.simple-calc .calc-panel[hidden] { display: none !important; }
+
+/* ---------- Menu v2: compact dark pill, "Loan Programs" label ---------- */
+@media (min-width: 1000px) {
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header { padding: 10px 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav {
+    width: fit-content !important; max-width: 100% !important; margin: 0 auto !important; gap: 22px !important;
+    background: rgba(255, 255, 255, 0.07) !important; border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    box-shadow: none !important; padding: 6px 8px 6px 18px !important;
+  }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-wordmark { color: #fff !important; font-size: 14px !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-powered-label { color: #9FB0BC !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .gorascal-wordmark-chip { border: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links { gap: 2px !important; margin: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li > a:not(.nav-cta):not(.nav-phone) { font-size: 14px !important; color: #D6DDE2 !important; padding: 8px 11px !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li > a:not(.nav-cta):not(.nav-phone):hover { color: #fff !important; background: rgba(255, 255, 255, 0.1) !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-cta.nav-cta.nav-cta { font-size: 14px !important; padding: 9px 16px !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-cta.nav-cta.nav-cta:not(.nav-apply) { background: rgba(255, 255, 255, 0.12) !important; color: #fff !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li.nav-phone-li { margin-left: 4px !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-phone { width: 38px !important; height: 38px !important; background-color: rgba(255, 255, 255, 0.14) !important; background-size: 17px !important; }
+  /* Shown as "Loan Programs" on these pages. The shared menu markup still says Mortgage Options. */
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone) { font-size: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone)::before { content: "Loan Programs"; font-size: 14px; }
+}
