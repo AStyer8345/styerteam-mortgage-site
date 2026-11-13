@@ -3,6 +3,7 @@
 - Every public page (171 with a menu) now loads `simple.css` and shows the dark pill menu.
 - 29 more program-layout pages use the full simple style (`<body class="simple">`). On 11 of them the existing short form moved into the hero; the long-form drawer on 8 stays in its own section lower down.
 - The other 138 pages (suburb pages, blog posts, guides, about, contact) get a lite layer (`<body class="simple-nav">`): same menu, gold main button, larger headline, plain FAQ rows. Their heroes stay light.
+- Cards pass on 26 program pages: the four "who this is for" cards are flip cards (title front, existing text back), the three options are real cards, the three steps are numbered cards with links underneath (short form, Calendly, pre-approval page). Plain lists render as checklists. All text stays in the HTML.
 - No copy was rewritten in this pass. The four page builders in `netlify/functions/lib/` are unchanged, so newly generated posts will not have the new menu until they are updated.
 - Not live.
 
