@@ -1,3 +1,16 @@
+## 2026-11-13 — Preview: Phase 5 schema, tracking and video (`feat/schema-tracking`)
+
+- About page Person schema: added `hasCredential` (NMLS mortgage loan originator license #513013, valid in Texas) and `knowsAbout` (self-employed mortgages, bank statement loans, DSCR, non-QM, jumbo, HELOAN). Organization stays Organization + FinancialService. No local address was added; a TODO comment marks where the Google Business Profile address goes.
+- New dataLayer events in `script.js`, on every page: `form_start`, `form_submit`, `call_click`, `text_click`, `calendly_click`, `apply_click`. Each carries `page_path`; form events also carry `form_name`. Nothing a visitor types is sent.
+- `form_submit` fires only after the capture path has accepted the lead, from the same function that already sends `generate_lead`.
+- Existing events are unchanged: `generate_lead`, `scenario_submit`, `book_call_click`, `secure_application_click`, `text_click` from `analytics.js`, and the journey forms' own `form_start`.
+- GTM still needs a trigger and a GA4 event tag for each new event name before they appear in GA4. That is a change in the GTM container, not in this repo.
+- YouTube: one embed existed, on `/non-qm-loans.html`. It is now a click-to-load player, so nothing loads from YouTube until a visitor presses play. VideoObject schema is on that page only. The other 220 YouTube references are footer links to the channel.
+- `npm run audit:schema`: 216 JSON-LD blocks valid. A local check of Article, FAQPage, VideoObject and BreadcrumbList fields found nothing missing on 168 public pages.
+- New tests: `tests/ga4-events.test.js`.
+- `npm test`: 214 tests, 183 pass, 31 fail, all 31 from before the audit. No new failures.
+- Not deployed to production.
+
 ## 2026-11-13 — Preview: Phase 4 content consolidation (`seo/consolidate`)
 
 - 23 preserved guides in `resources/detailed-guides/` that had a same-named root page now 301 to that root page. 47 FAQs with no rates, scores, percentages or day counts moved into the root pages and their FAQPage schema. Tables, worked examples and FAQs with hard figures stayed in the retired files, because each guide is marked "figures may have changed".
