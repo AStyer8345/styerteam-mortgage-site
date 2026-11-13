@@ -1,7 +1,5 @@
 > Current migration contract (verified November 3, 2026): canonical origin `https://styerteam.com`; public brand **The Styer Team, Powered by Go Rascal Inc.**; legal entity **Go Rascal Inc.**, company NMLS **2072896**; Adam Styer, individual NMLS **513013**, **512-956-6010**, **adamstyer@gorascal.com**. Secure application: `https://gorascal.my1003app.com/513013/register`, verified to display Adam’s name, NMLS and phone. This contract supersedes older local/global branding and hosting notes. Do not restore retired affiliation, license, phone, email or application destinations.
 
-Read /Users/adamstyer/Documents/GOALS.md before starting any session. Interactive sessions must serve current goals — if your task conflicts, log it to TODO.md under NEEDS ADAM and stop. Automated/scheduled tasks continue unless GOALS.md explicitly pauses them.
-
 # styerteam.com — Claude Code Instructions
 
 ## Daily Operating System
@@ -12,11 +10,6 @@ Sister projects in the network:
 - `loanos-clone` · `loanos-marketing` (the product Adam is building)
 - `rancho-moonrise` · `adobe-creek-ranch` (STR client sites)
 - `client-ops` (ops hub — Styer Mortgage is an active client in the registry)
-
-Top-of-hierarchy reads:
-- `/Users/adamstyer/Documents/GOALS.md` — weekly direction (symlink → DOS GOALS.md)
-- `/Users/adamstyer/Documents/Daily Operating System/CONTEXT.md` — master state
-- `/Users/adamstyer/Documents/Daily Operating System/TODO.md` — master task list
 
 ## Read First
 
