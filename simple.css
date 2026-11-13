@@ -626,3 +626,17 @@ body.simple .simple-flip:has(.simple-flip-link) { cursor: pointer; }
 .journey-field:has(> .name-split) ~ .journey-field.journey-full:has(> input[type="tel"]) { grid-column: auto !important; }
 div:has(> .name-split) { grid-column: 1 / -1 !important; }
 div:has(> .name-split) + div + .u-form-full:has(> input[type="tel"]) { grid-column: auto !important; }
+
+/* ---------- Footer: office address, phone and email as a contact block ---------- */
+.site-footer .site-footer-office { font-style: normal; display: flex; flex-direction: column; gap: 6px; margin: 0 0 28px; font-size: 15px; line-height: 1.5; }
+.site-footer .site-footer-office strong { font-size: 17px; color: #fff; margin-bottom: 2px; }
+.site-footer .site-footer-office a { color: #D6DDE2; text-decoration: none; width: fit-content; }
+.site-footer .site-footer-office a:hover { color: #fff; text-decoration: underline; }
+@media (min-width: 1100px) {
+  .site-footer > .container:has(> .site-footer-office) { display: grid; grid-template-columns: 290px minmax(0, 1fr); column-gap: 48px; }
+  .site-footer > .container:has(> .site-footer-office) > * { grid-column: 1 / -1; }
+  .site-footer > .container > .site-footer-office { grid-column: 1; margin: 0; }
+  html body .site-footer > .container > .site-footer-office + .site-footer-grid { grid-column: 2; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+}
+body.advisory-contact .contact-office { margin: 16px 0 0; font-size: 15px; }
+body.advisory-contact .contact-office a { color: var(--simple-ink, #11212E); }

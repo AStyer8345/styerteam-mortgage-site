@@ -15,16 +15,22 @@
     },
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "185 Wythe Ave, Suite A2",
-      "addressLocality": "Brooklyn",
-      "addressRegion": "NY",
-      "postalCode": "11249",
+      "streetAddress": "7600 N Capital of Texas Hwy, Suite 230 (Private Office #105)",
+      "addressLocality": "Austin",
+      "addressRegion": "TX",
+      "postalCode": "78731",
       "addressCountry": "US"
     },
-    "areaServed": {
-      "@type": "State",
-      "name": "Texas"
-    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Austin"
+      },
+      {
+        "@type": "State",
+        "name": "Texas"
+      }
+    ],
     "telephone": "+15129566010",
     "email": "adamstyer@gorascal.com",
     "logo": {

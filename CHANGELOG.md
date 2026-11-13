@@ -1,3 +1,10 @@
+## 2026-11-13 — Austin office address (`copy/program-pages`, preview only)
+
+- Footer on 218 pages and the shared footer template: new contact block with the Austin office (7600 N Capital of Texas Hwy, Suite 230 (Private Office #105), Austin, TX 78731), phone and email. The Brooklyn line now reads "Go Rascal Inc. corporate office".
+- Structured data on 215 pages and `config/business-entities.json`: business address is the Austin office; areaServed is Austin and Texas.
+- Contact page, licensing page, thank-you page and `llms.txt` show the Austin office.
+- Adam confirmed Go Rascal filed the Austin office with the NMLS. Not checked against NMLS Consumer Access.
+
 ## 2026-11-13 — Rollout live; copy pass batch 1 (`copy/program-pages`, preview only)
 
 - Production: deployed commit `02dd74ad` (sitewide new look, cards, pre-qualification rewrite, first/last name, Contact link) as `dpl_DYGq3xsvwJZf7oCHfhRmVrXqib7F`. Previous live: `dpl_8h4jMxLjw31iem8RfCFa23xZ2dMJ`.

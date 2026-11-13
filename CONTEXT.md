@@ -14,7 +14,8 @@ Mortgage website for Adam Styer, Senior Loan Officer, NMLS #513013, licensed in 
 
 * Live domain: https://styerteam.com
 * Old domains (301 to styerteam.com): styermortgage.com, www.styermortgage.com, adamstyer.com, www.adamstyer.com
-* Company: Go Rascal Inc., Company NMLS #2072896. Licensed location on file: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249.
+* Company: Go Rascal Inc., Company NMLS #2072896. Corporate office: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249.
+* Adam's Austin office (filed with the NMLS per Adam, Nov 13): 7600 N Capital of Texas Hwy, Suite 230 (Private Office #105), Austin, TX 78731. This is the address in the footer and the structured data. Source of truth: `config/business-entities.json`. Do not run `scripts/sync-structured-data.py` without reviewing its diff.
 
 ## Stack
 
@@ -79,7 +80,6 @@ Mortgage website for Adam Styer, Senior Loan Officer, NMLS #513013, licensed in 
 
 ## Open decisions (Adam)
 
-* Google Business Profile address / service area for local schema.
 * Go Rascal compliance answers on the flags in the audit doc (down-payment percentages, trade name, licensed location).
 
 ## Before every release
