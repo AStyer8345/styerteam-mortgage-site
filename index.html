@@ -733,6 +733,18 @@ body.simple-home .site-footer-areas{display:none!important}
 .v3-why-grid li{padding:18px!important}
 @media(max-width:1100px){.v3-why-grid{grid-template-columns:repeat(2,1fr)!important}}
 @media(max-width:560px){.v3-why-grid{grid-template-columns:1fr!important}.v3-pill{font-size:15px;padding:9px 16px}}
+
+/* v3 pill row, second pass: narrower, smaller, no white band */
+.v3-pills{background:#11212E!important;border:0!important;padding:14px 0!important}
+.v3-pills .v3-pill-track{animation-duration:60s}
+.v3-pills{max-width:none}
+.v3-pills>.v3-pill-track{margin:0}
+.v3-pills{-webkit-mask-image:none;mask-image:none}
+.v3-pill-wrap{max-width:980px;margin:0 auto;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.v3-pill-set{gap:10px!important;padding-right:10px!important}
+.v3-pill{border:1px solid rgba(255,255,255,.35)!important;background:transparent!important;color:#F6F4EF!important;font-size:14px!important;font-weight:500!important;padding:7px 14px!important}
+.v3-pill:hover,.v3-pill:focus-visible{background:#F5C443!important;border-color:#F5C443!important;color:#0B151D!important}
+@media(max-width:560px){.v3-pill{font-size:13px!important;padding:6px 12px!important}}
 </style>
 <!-- Schema.org LocalBusiness -->
 
@@ -1115,6 +1127,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 </section>
 <!-- SECTION 1B: PILL ROW -->
 <section aria-label="Quick ways to start" class="v3-pills">
+<div class="v3-pill-wrap">
 <div class="v3-pill-track">
 <div class="v3-pill-set">
 <a class="v3-pill" href="tel:+15129566010" data-track="call_click">Talk to a human. 👋</a>
@@ -1137,6 +1150,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <a class="v3-pill" href="/loans/va.html" tabindex="-1">I'm a veteran. 🇺🇸</a>
 <a class="v3-pill" href="https://calendly.com/adamstyer/15minutes" data-track="calendly_click" rel="noopener" target="_blank" tabindex="-1">Book 15 minutes. 📅</a>
 <a class="v3-pill" href="#contact-form" tabindex="-1">Show me my options. ✅</a>
+</div>
 </div>
 </div>
 </section>
