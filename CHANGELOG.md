@@ -1,3 +1,12 @@
+## 2026-11-13 — Rollout live; copy pass batch 1 (`copy/program-pages`, preview only)
+
+- Production: deployed commit `02dd74ad` (sitewide new look, cards, pre-qualification rewrite, first/last name, Contact link) as `dpl_DYGq3xsvwJZf7oCHfhRmVrXqib7F`. Previous live: `dpl_8h4jMxLjw31iem8RfCFa23xZ2dMJ`.
+- Bank statement page: plain-language hero, short version as a checklist, situation-based flip cards with links, options and steps rewritten. FAQ and schema untouched.
+- "The Wholesale Advantage" strip reworded on 15 pages. 45 pages still contain "wholesale" elsewhere.
+- Found: the chatbot is off on Vercel (`api/mortgage-assistant.js` returns `enabled: false` since the 2026-10-30 port).
+- Found: `/resources` is only linked from the hidden menu dropdown in the new look.
+- Checks: 32 failing tests, none new; SEO audit 0 issues; build passes.
+
 ## 2026-11-13 — First/last name boxes, Contact page, cleaner menu, linked flip cards (`design/rollout`, preview only)
 
 - 30 forms: the single name box is now First and Last. A hidden `name` field is kept in step by `script.js`, so every submit handler and the backup copy still get a full name; `first_name` and `last_name` are also sent.
