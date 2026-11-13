@@ -2,6 +2,8 @@
 
 - Adam approved going live on Nov 13. `release/2026-11-audit` (Phase 0, Phase 1 `fix/quick-wins`, Phase 2 `perf/mobile-lcp`) was fast-forwarded onto the production branch `cursor/blog-2026-11-02-refi-out-of-non-qm`. No other commits had landed there since `01a8acf`.
 - The two entries below describe what shipped. Their "not deployed" lines were true when written.
+- Live deployment: `dpl_CcWMj6BMwQm7UddzF4uaz7vQejYv`, commit `14eaa07a`, created as an explicit production deployment through the Vercel API. The push alone only built a preview. styerteam.com, www.styerteam.com and both styermortgage.com hosts now point at it.
+- Not checked on the live domain: the Vercel Security Checkpoint blocks automated requests, so page content, the 20 new 301s and GTM firing still need a look in a real browser.
 - Rollback: Vercel Instant Rollback to `dpl_8RHRKpec9EjUvqtFvTXsnZNdXLVB` (commit `01a8acf`).
 - Watch after release: GA4 page views (GTM now loads late) and Search Console coverage for the 20 retired `rates/` and `updates/` URLs.
 

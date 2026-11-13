@@ -28,7 +28,8 @@ Mortgage website for Adam Styer, Senior Loan Officer, NMLS #513013, licensed in 
 ## Hosting and deploys
 
 * Host: Vercel, team `astyer8345's projects`, project `styerteam-site` (`prj_oPet4IOgPuN9hDtBFYcfbEi3HJEg`).
-* PRODUCTION BUILDS FROM BRANCH `cursor/blog-2026-11-02-refi-out-of-non-qm`, NOT `main`. `main` is behind and still has Netlify-era config. Do not set production to `main` until the live branch is merged into it.
+* Production is built from branch `cursor/blog-2026-11-02-refi-out-of-non-qm`, NOT `main`. `main` is behind and still has Netlify-era config. Do not set production to `main` until the live branch is merged into it.
+* A push to that branch only builds a preview. Going live takes an explicit production deployment of the commit (Vercel dashboard "Redeploy to Production", or a production deployment through the Vercel API). Do not promote a preview build: previews run with `VERCEL_ENV=preview`, and lead intake treats that as a test environment.
 * Rollback target (last deploy before the November audit work): `dpl_8RHRKpec9EjUvqtFvTXsnZNdXLVB`, commit `01a8acf` (Nov 9, 2026). Use Vercel Instant Rollback to return to it.
 * Netlify hosting is retired. `netlify.toml` and `_redirects` are leftovers that still feed `vercel.json`. Don't edit them; remove only in a dedicated cleanup PR. `netlify/functions/` is live (see Release in progress).
 * A Vercel Security Checkpoint challenged automated requests on Nov 13. Firewall settings not yet reviewed.
