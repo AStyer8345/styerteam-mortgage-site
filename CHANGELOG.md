@@ -3624,3 +3624,13 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Facts and numbers unchanged. Numbered lists lose their numbers inside FAQ answers, so the one numbered list uses bullets.
 - Build passes, SEO audit 0 issues, no new test failures. Committed to `copy/program-pages` only.
 - Scan of 82 indexable top-level pages: 52 have three or more long paragraphs. Densest are the twelve long suburb pages, the glossary and About.
+
+## 2026-11-13 — Bullets pass, batch 2 (not live)
+
+- `bank-statement-loans.html`: six FAQ answers turned into lists (what moves the file, what it is, which deposits count, personal statements, expense statement, records).
+- `asset-depletion-mortgage-texas.html`: the account-percentage paragraph and the conventional-options FAQ turned into lists.
+- `p-and-l-mortgage-texas.html`: "How it works" and the "What is" FAQ turned into lists.
+- Removed the last "wholesale" wording on the asset depletion and P&L pages (scenario labels now "What we did", "Compare Capital Partners", "the best pricing"). Dropped "easily" and "a single stock share" from the asset depletion example.
+- FAQ schema text matches the visible answers on all five pages touched in batches 1 and 2.
+- Build passes, SEO audit 0 issues, no new test failures. Committed to `copy/program-pages` only.
+- Left for the copy pass, needs Adam: `mortgage-broker-vs-bank.html` (claims a broker "beats a bank on rate, loan options, and closing speed", says "wholesale rates"), and the jargon-heavy hero paragraphs on the P&L and asset depletion pages.
