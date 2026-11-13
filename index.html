@@ -564,6 +564,101 @@ body.private-wealth-editorial .pwe-dark .pwe-btn-primary {
 @font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/source-serif-4-italic-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 </style>
 <!-- Full styles load after the hero so the headline can paint from the critical CSS above. -->
+<style id="homepage-v2">
+.pwe-hero-also{margin:14px 0 0;max-width:56ch;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,.78)}
+p.pwe-hero-credentials{margin:20px 0 0;display:flex;flex-wrap:wrap;gap:6px 0;font-size:13px;letter-spacing:.02em;color:rgba(255,255,255,.82)}
+p.pwe-hero-credentials>*+*::before{content:"·";margin:0 9px;color:rgba(255,255,255,.45)}
+p.pwe-hero-credentials a{color:#e6c67b;text-decoration:underline;text-underline-offset:3px}
+.pwe-hero-actions{margin-top:22px;align-items:center}
+.pwe-hero-call{color:#fff;font-size:15.5px;font-weight:500;text-decoration:underline;text-underline-offset:4px;padding:12px 4px}
+.v2-steps,.v2-programs{padding:72px 0}
+.v2-step-list{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.v2-step-list li{border-top:2px solid #b7974e;padding-top:18px}
+.v2-step-num{display:block;font:400 34px/1 'Source Serif 4',Georgia,serif;color:#8B6E24;margin-bottom:10px}
+.v2-step-list h3{font:600 19px/1.3 'Source Serif 4',Georgia,serif;margin:0 0 8px;color:#182e3e}
+.v2-step-list p{margin:0;font-size:16px;line-height:1.6;color:#44525f}
+.v2-proof{padding:72px 0}
+.v2-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0 24px}
+.v2-review{margin:0;padding:24px;background:#fff;border:1px solid #e3ddd0;border-radius:6px;display:flex;flex-direction:column;gap:12px}
+.v2-review .stars{display:flex;gap:2px}
+.v2-review blockquote{margin:0;flex:1}
+.v2-review blockquote p{margin:0;font-size:16px;line-height:1.6;font-style:italic;color:#263645}
+.v2-review figcaption{display:flex;flex-direction:column;gap:2px;font-size:14px;color:#526174}
+.v2-review figcaption strong{color:#182e3e;font-size:15px}
+.v2-review figcaption a{margin-top:6px;color:#70531f;text-decoration:underline}
+.v2-proof-line{margin:0 0 14px;font-size:15.5px;color:#44525f}
+.v2-proof-line a{color:#70531f;text-decoration:underline}
+.v2-proof-links{margin:0;display:flex;flex-wrap:wrap;gap:12px 28px}
+.v2-programs{background:#fff}
+#programs table.v2-program-table{width:100%!important;border-collapse:collapse!important;margin-top:28px;font-size:16px;line-height:1.5;border:0!important;background:transparent!important;box-shadow:none!important;border-radius:0!important}
+#programs table.v2-program-table th,#programs table.v2-program-table td{text-align:left!important;vertical-align:top;padding:14px 16px!important;border:0!important;border-bottom:1px solid #e3ddd0!important;background:transparent!important}
+#programs table.v2-program-table tr{background:transparent!important}
+#programs table.v2-program-table thead th{font:600 13px/1.3 Inter,system-ui,sans-serif!important;letter-spacing:.06em!important;text-transform:uppercase!important;color:#526174!important;border-bottom:2px solid #182e3e!important}
+#programs table.v2-program-table tbody th{font:600 17px/1.4 'Source Serif 4',Georgia,serif!important;color:#182e3e!important;white-space:nowrap;text-transform:none!important;letter-spacing:0!important}
+#programs table.v2-program-table td{color:#33424f!important}
+#programs table.v2-program-table a{color:#70531f!important;text-decoration:underline;white-space:nowrap}
+.v2-table-note{margin:16px 0 0;font-size:14.5px;color:#526174}
+.v2-table-note a{color:#70531f;text-decoration:underline}
+.v2-verse{font-size:14.5px;line-height:1.6;font-style:italic;color:#526174}
+.v2-blog-link{max-width:920px;margin:28px auto 0}
+.v2-partners{background:#182e3e;padding:22px 0;text-align:center}
+.v2-partners p{margin:0;color:#fff;font-size:16px}
+.v2-partners a{color:#e6c67b;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:768px){
+body main .pwe-hero .pwe-hero-meta{margin-bottom:16px!important}
+body main .pwe-hero .pwe-hero-mobile-portrait{margin-bottom:12px!important}
+body main .pwe-hero h1{margin-bottom:14px!important}
+body main .pwe-hero .pwe-hero-lead{margin-bottom:0!important}
+body main .pwe-hero-also{margin:10px 0 0!important;font-size:14.5px!important;line-height:1.5!important}
+body main p.pwe-hero-credentials{margin:12px 0 0!important;padding-top:10px!important;font-size:12.5px!important;line-height:1.5!important;text-transform:none!important;letter-spacing:0!important;gap:0!important}
+body main .pwe-hero-actions{margin:14px 0 24px!important;gap:4px!important}
+body main .pwe-hero-call{text-align:center;padding:8px 4px!important}
+body main :is(.pwe-serve,.v2-steps,.v2-proof,.v2-programs,.pwe-people,.pwe-faq){padding-top:40px!important;padding-bottom:40px!important}
+body main .pwe-consultation{padding-top:40px!important;padding-bottom:40px!important}
+body main .pwe-serve .pwe-serve-header{margin-bottom:16px!important}
+#who-i-help .pwe-audience-index.pwe-borrower-cards{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+#who-i-help .pwe-borrower-cards .pwe-card-media{display:none!important}
+#who-i-help .pwe-borrower-cards .pwe-audience-col{min-height:0!important}
+#who-i-help .pwe-borrower-cards .pwe-card-content{padding:14px!important}
+#who-i-help .pwe-borrower-cards h3{font-size:16px!important;line-height:1.25!important;margin:0 0 6px!important;min-height:0!important}
+#who-i-help .pwe-borrower-cards p{font-size:13.5px!important;line-height:1.45!important;margin:0!important}
+#who-i-help .pwe-borrower-cards .pwe-card-link{font-size:0!important;padding:0!important;margin:0!important;border:0!important;min-height:0!important;height:0!important}
+#who-i-help .pwe-borrower-cards .pwe-card-link span{display:none!important}
+body main .v2-step-list{grid-template-columns:1fr!important;margin-top:18px;gap:12px}
+body main .v2-step-list li{padding-top:10px;display:grid;grid-template-columns:30px 1fr;column-gap:10px}
+body main .v2-step-num{font-size:26px;grid-row:span 2;margin:0}
+body main .v2-step-list h3{font-size:17px!important;margin:0 0 4px!important}
+body main .v2-step-list p{font-size:15px!important;line-height:1.5!important;margin:0!important}
+body main .v2-review-grid{grid-template-columns:1fr;margin:16px 0;gap:10px}
+body main .v2-review{padding:14px 16px;gap:6px}
+body main .v2-review blockquote p{font-size:14.5px!important;line-height:1.5!important;margin:0!important}
+body main .v2-review figcaption{flex-direction:row;flex-wrap:wrap;gap:2px 10px;align-items:baseline;font-size:13.5px}
+body main .v2-review figcaption a{margin-top:0}
+body main .v2-proof-line{font-size:14px!important;margin-bottom:10px!important}
+#programs table.v2-program-table{display:block!important;min-width:0!important;margin-top:14px!important}
+#programs table.v2-program-table thead{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important}
+#programs table.v2-program-table tbody,#programs table.v2-program-table tr,#programs table.v2-program-table tbody th,#programs table.v2-program-table td{display:block!important;width:auto!important;min-width:0!important}
+#programs table.v2-program-table tr{padding:10px 0!important;border-bottom:1px solid #e3ddd0!important}
+#programs table.v2-program-table tbody th,#programs table.v2-program-table td{border:0!important;padding:1px 0!important}
+#programs table.v2-program-table tbody th{font-size:16.5px!important;white-space:normal!important}
+#programs table.v2-program-table td{font-size:14px!important;line-height:1.45!important}
+#programs table.v2-program-table td::before{content:attr(data-label) ": ";font-weight:600;color:#526174}
+#programs table.v2-program-table a{white-space:normal}
+body main .v2-table-note{font-size:13.5px!important;margin-top:10px!important}
+body main .pwe-people .pwe-people-portrait img{max-height:210px!important;width:100%!important;object-fit:cover!important;object-position:50% 22%!important}
+body main .pwe-people .pwe-people-copy p{font-size:15.5px!important;line-height:1.55!important;margin-bottom:10px!important}
+body main .pwe-people .pwe-people-copy p.v2-verse{font-size:13px!important;line-height:1.5!important}
+body main .v2-blog-link{margin-top:16px}
+body main .pwe-consultation .pwe-consultation-copy p{font-size:15.5px!important;margin-bottom:14px!important}
+body main .homepage-quick-inquiry{padding:18px!important}
+body main .homepage-quick-inquiry .personal-form-note{display:none!important}
+body main .homepage-quick-inquiry textarea{min-height:76px!important;height:76px!important}
+body main .pwe-service-band{padding:16px 0!important}
+body main .pwe-service-band p{font-size:14px!important;margin:0 0 4px!important}
+body main .v2-partners{padding:16px 0!important}
+body main .v2-partners p{font-size:14.5px}
+}
+</style>
 <!-- Schema.org LocalBusiness -->
 
 
@@ -715,7 +810,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
           "name": "Can self-employed business owners get a mortgage without tax returns in Austin TX?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. If you are self-employed in Austin, we can look at 12 or 24 months of bank statements , a 1099-only program , a P&L your CPA prepares, or assets you already have . These are non-QM loans . Deposits and write-offs are not qualifying income. We match those records to a program that can use them."
+            "text": "Yes. If you are self-employed in Austin, we can look at 12 or 24 months of bank statements, a 1099-only program, a P&L your CPA prepares, or assets you already have. These are non-QM loans. Deposits and write-offs are not qualifying income. We match those records to a program that can use them."
           }
         },
         {
@@ -739,7 +834,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
           "name": "What loan programs are available for complex-income borrowers in Austin TX?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "If you are self-employed, you get K-1 income , you own rentals , or your savings are stronger than your wages, we look at bank statements , 1099s , a P&L , asset depletion, DSCR , and jumbo loans. A jumbo loan is anything above the conforming limit. A jumbo loan can use those documents too. We compare those programs across many capital partners."
+            "text": "If you are self-employed, you get K-1 income, you own rentals, or your savings are stronger than your wages, we look at bank statements, 1099s, a P&L, asset depletion, DSCR, and jumbo loans. A jumbo loan is anything above the conforming limit. A jumbo loan can use those documents too. We compare those programs across many capital partners."
           }
         },
         {
@@ -747,7 +842,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
           "name": "How does a self-employed buyer get pre-qualified in Austin TX?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We review your initial information to discuss pre-qualification and the documents needed for the next step. How long a bank-statement or DSCR loan takes to close depends on the program, the appraisal, title, and when the documents come in. Send us the situation or call (512) 956-6010 ."
+            "text": "We review your initial information to discuss pre-qualification and the documents needed for the next step. How long a bank-statement or DSCR loan takes to close depends on the program, the appraisal, title, and when the documents come in. Send us the situation or call (512) 956-6010."
           }
         }
       ]
@@ -876,16 +971,6 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <div class="pwe-hero-editorial">
 <div class="pwe-hero-meta">
 <span class="pwe-kicker">Austin non-QM and self-employed lending</span>
-<a class="pwe-hero-badge" href="https://www.google.com/maps?cid=13732336838581182360" rel="noopener" target="_blank">
-<span aria-hidden="true" class="pwe-star-sequence">
-<svg class="pwe-seq-star" height="13" viewbox="0 0 24 24" width="13"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg class="pwe-seq-star" height="13" viewbox="0 0 24 24" width="13"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg class="pwe-seq-star" height="13" viewbox="0 0 24 24" width="13"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg class="pwe-seq-star" height="13" viewbox="0 0 24 24" width="13"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg class="pwe-seq-star" height="13" viewbox="0 0 24 24" width="13"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-</span>
-<span><strong>5.0</strong> on Google · 99 reviews</span>
-<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
 </div>
 <picture class="pwe-hero-mobile-portrait">
 <source media="(max-width: 768px)" srcset="/assets/adam-hero-mobile.avif" type="image/avif"/>
@@ -893,15 +978,12 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <img alt="Adam Styer, Senior Loan Officer and Mortgage Advisor in Austin, Texas" decoding="async" fetchpriority="high" height="119" src="/assets/hero-mobile-solid.webp" width="112"/>
 </picture>
 <h1><span class="pwe-hero-line">Complex income.</span> <span class="modern-hero-accent">Clear path forward.</span></h1>
-<p class="pwe-hero-lead">My team and I work with business owners, self-employed borrowers and investors whose tax returns don't tell the whole story. Depending on the program, bank statements, 1099s, assets or rental income can show what you actually earn, and we shop many capital partners to find the one that fits.</p>
+<p class="pwe-hero-lead">I help self-employed borrowers, 1099 earners and investors qualify on what they actually earn. Depending on the program, that can be bank statements, assets or rental income.</p>
+<p class="pwe-hero-also">Buying or refinancing with a regular loan? I do those every day too: conventional, FHA and VA for veterans, with competitive pricing compared across many capital partners.</p>
+<p class="pwe-hero-credentials"><span>Adam Styer, Senior Loan Officer</span><span>NMLS #513013</span><span>Licensed in Texas</span><a href="https://www.google.com/maps?cid=13732336838581182360" rel="noopener" target="_blank">5.0 on Google (99 reviews)<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
 <div class="pwe-hero-actions">
-<a class="pwe-btn-primary" data-source="homepage_hero" data-track="scenario_review_click" href="/contact.html?goal=Purchase">See My Options</a>
-<a class="pwe-btn-secondary" data-track="browse_loan_programs_click" href="/products.html">Explore All Loan Programs <span aria-hidden="true" class="pwe-arrow">↗</span></a>
-</div>
-<div class="pwe-hero-credentials">
-<span>Adam Styer · NMLS #513013</span>
-<span>Many capital partners</span>
-<span>Bank statement · 1099 · DSCR</span>
+<a class="pwe-btn-primary" data-source="homepage_hero" data-track="scenario_review_click" href="#contact-form">Send your scenario</a>
+<a class="pwe-hero-call" data-track="call_click" href="tel:+15129566010">or call (512) 956-6010</a>
 </div>
 </div>
 <div class="pwe-hero-visual">
@@ -919,113 +1001,103 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 </div>
 </div>
 </div>
-<!-- Institutional Track Record Ledger -->
-<div aria-label="Track record" class="pwe-ledger-bar">
-<div class="container">
-<div class="pwe-ledger-grid">
-<div class="pwe-ledger-cell">
-<div class="pwe-ledger-stat-row">
-<span class="pwe-ledger-num pwe-gold-stat">Licensed</span>
-</div>
-<span class="pwe-ledger-label"><span aria-hidden="true" class="pwe-verified-check">✓</span> Since September 2015</span>
-</div>
-<a class="pwe-ledger-cell" href="#client-reviews">
-<div class="pwe-ledger-stat-row">
-<span class="pwe-ledger-num pwe-gold-stat" data-count-decimals="1" data-count-to="5">5.0</span>
-<span aria-label="5 out of 5 stars across 144 Google and Zillow reviews" class="pwe-star-sequence" role="img">
-<svg aria-hidden="true" class="pwe-seq-star" height="18" viewbox="0 0 24 24" width="18"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="pwe-seq-star" height="18" viewbox="0 0 24 24" width="18"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="pwe-seq-star" height="18" viewbox="0 0 24 24" width="18"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="pwe-seq-star" height="18" viewbox="0 0 24 24" width="18"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="pwe-seq-star" height="18" viewbox="0 0 24 24" width="18"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-</span>
-</div>
-<span class="pwe-ledger-label"><span aria-hidden="true" class="pwe-verified-check">✓</span> 144 Reviews · Google &amp; Zillow</span>
-</a>
-<div class="pwe-ledger-cell">
-<div class="pwe-ledger-stat-row">
-<span class="pwe-ledger-num pwe-gold-stat">Many</span>
-</div>
-<span class="pwe-ledger-label"><span aria-hidden="true" class="pwe-verified-check">✓</span> Capital partners</span>
-</div>
-<a class="pwe-ledger-cell" data-source="homepage_ledger_turnaround" data-track="scenario_review_click" href="/contact.html?goal=Purchase">
-<div class="pwe-ledger-stat-row">
-<span class="pwe-ledger-num pwe-gold-stat">Texas</span>
-</div>
-<span class="pwe-ledger-label"><span aria-hidden="true" class="pwe-verified-check">✓</span> Licensed</span>
-</a>
-</div>
-</div>
-</div>
 </section>
-<!-- SECTION 3: WHO WE SERVE & CAPABILITIES -->
-<section aria-labelledby="modern-goals-title" class="modern-goals home-index pwe-serve" id="case-studies">
+<!-- SECTION 2: WHO I HELP -->
+<section aria-labelledby="modern-goals-title" class="modern-goals home-index pwe-serve" id="who-i-help">
 <div class="container" id="mortgage-programs">
 <div class="pwe-serve-header">
 <div>
-<p class="pwe-kicker">Who we work with</p>
+<p class="pwe-kicker">Who I help</p>
 <h2 class="pwe-section-title" id="modern-goals-title">The right mortgage starts with your situation.</h2>
 </div>
-<p>Tell us who you are and what you're trying to accomplish. We'll compare the financing options that fit.</p>
 </div>
 <div class="modern-goal-grid recovery-specialty-grid six-audience-options pwe-audience-index pwe-borrower-cards">
 <article class="pwe-audience-col">
 <div class="pwe-card-media"><img alt="Hill Country home in Austin" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-hill-country-studio-card.webp" srcset="/assets/austin-hill-country-studio-card-480.webp 480w, /assets/austin-hill-country-studio-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>Self-Employed Borrowers</h3><p>Business owners, entrepreneurs, and independent professionals whose income doesn't always fit a standard tax return.</p><a class="pwe-card-link" href="/self-employed-mortgage-austin.html">Explore options <span aria-hidden="true">→</span></a></div>
+<div class="pwe-card-content"><h3>Self-Employed Borrowers</h3><p>Business owners and independent professionals whose income doesn't fit a standard tax return.</p><a class="pwe-card-link" href="/self-employed-mortgage-austin.html">Explore options <span aria-hidden="true">→</span></a></div>
 </article>
 <article class="pwe-audience-col">
 <div class="pwe-card-media"><img alt="Hill Country investment property" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-dscr-hill-country-retreat-card.webp" srcset="/assets/austin-dscr-hill-country-retreat-card-480.webp 480w, /assets/austin-dscr-hill-country-retreat-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>Real Estate Investors</h3><p>Financing for rental properties, portfolio growth, and accessing investment-property equity.</p><a class="pwe-card-link" href="/investor-loans.html">Explore options <span aria-hidden="true">→</span></a></div>
+<div class="pwe-card-content"><h3>Real Estate Investors</h3><p>Financing for rentals, portfolio growth and pulling equity out of investment property.</p><a class="pwe-card-link" href="/investor-loans.html">Explore options <span aria-hidden="true">→</span></a></div>
 </article>
 <article class="pwe-audience-col">
 <div class="pwe-card-media"><img alt="Austin home with welcoming front porch" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-craftsman-homebuyer-card.webp" srcset="/assets/austin-craftsman-homebuyer-card-480.webp 480w, /assets/austin-craftsman-homebuyer-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>First-Time Homebuyers</h3><p>Clear guidance on down payments, mortgage options, and the path to your first home.</p><a class="pwe-card-link" href="/resources/first-time-buyer-guide/">Explore options <span aria-hidden="true">→</span></a></div>
+<div class="pwe-card-content"><h3>First-Time Homebuyers</h3><p>Clear guidance on down payments, loan options and the path to your first home.</p><a class="pwe-card-link" href="/resources/first-time-buyer-guide/">Explore options <span aria-hidden="true">→</span></a></div>
 </article>
 <article class="pwe-audience-col">
 <div class="pwe-card-media"><img alt="Texas Hill Country home" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-texas-hill-country-ranch-card.webp" srcset="/assets/austin-texas-hill-country-ranch-card-480.webp 480w, /assets/austin-texas-hill-country-ranch-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>Veterans & Military Families</h3><p>VA home loan guidance for eligible veterans, service members, and military families.</p><a class="pwe-card-link" href="/loans/va.html">Explore options <span aria-hidden="true">→</span></a></div>
+<div class="pwe-card-content"><h3>Veterans &amp; Military Families</h3><p>VA home loan guidance for eligible veterans, service members and military families.</p><a class="pwe-card-link" href="/loans/va.html">Explore options <span aria-hidden="true">→</span></a></div>
 </article>
 <article class="pwe-audience-col">
 <div class="pwe-card-media"><img alt="Spacious Austin family home" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-move-up-estate-card.webp" srcset="/assets/austin-move-up-estate-card-480.webp 480w, /assets/austin-move-up-estate-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>Move-Up Homebuyers</h3><p>Make your next move with a plan for your existing home, equity, and purchase timing.</p><a class="pwe-card-link" href="/blog/2026-06-14-buy-before-you-sell-austin-tx.html">Explore options <span aria-hidden="true">→</span></a></div>
+<div class="pwe-card-content"><h3>Move-Up Homebuyers</h3><p>A plan for your current home, your equity and the timing of your next purchase.</p><a class="pwe-card-link" href="/buy-before-you-sell-austin.html">Explore options <span aria-hidden="true">→</span></a></div>
 </article>
 <article class="pwe-audience-col">
 <div class="pwe-card-media"><img alt="Luxury home near Lake Austin" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-jumbo-westlake-estate-card.webp" srcset="/assets/austin-jumbo-westlake-estate-card-480.webp 480w, /assets/austin-jumbo-westlake-estate-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>High-Net-Worth Borrowers</h3><p>Complex income, substantial assets, and larger home purchases deserve tailored financing.</p><a class="pwe-card-link" href="/loans/jumbo.html">Explore options <span aria-hidden="true">→</span></a></div>
+<div class="pwe-card-content"><h3>High-Net-Worth Borrowers</h3><p>Financing built around substantial assets, complex income and larger purchases.</p><a class="pwe-card-link" href="/loans/jumbo.html">Explore options <span aria-hidden="true">→</span></a></div>
 </article>
 </div>
-
-<div class="pwe-specialty-band">
-<div class="pwe-specialty-header">
-<span class="pwe-specialty-label">Also on the desk</span>
-<span class="pwe-specialty-sub">K-1 income and one-time-close builds</span>
-</div>
-<div class="pwe-specialty-chips is-two">
-<a class="pwe-chip" href="/k1-income-mortgage-austin.html">
-<span class="pwe-chip-text">K-1 and partnership income</span>
-<span aria-hidden="true" class="pwe-chip-arrow">→</span>
-</a>
-<a class="pwe-chip" href="/loans/construction.html">
-<span class="pwe-chip-text">One-time-close build</span>
-<span aria-hidden="true" class="pwe-chip-arrow">→</span>
-</a>
-</div>
-<p class="pwe-classic-quiet">Straightforward W-2 files can still use <a href="/loans/conventional.html">conventional</a>, <a href="/loans/fha.html">FHA</a>, and <a href="/loans/va.html">VA</a> loans.</p>
-</div>
-
-<div style="text-align: center; margin-top: 36px;">
-<a class="btn btn-outline" href="/products.html" style="border-color: var(--pwe-brass); color: var(--pwe-brass-light); padding: 14px 28px; font-size: 15px; font-weight: 500;">See all loan options →</a>
-</div>
 </div>
 </section>
-<section aria-labelledby="how-we-price-title" class="pwe-positioning" id="how-we-price">
+<!-- SECTION 3: HOW IT WORKS -->
+<section aria-labelledby="how-it-works-title" class="pwe-positioning v2-steps" id="how-it-works">
 <div class="container">
-<p class="pwe-kicker">How we price your loan</p>
-<h2 class="pwe-section-title" id="how-we-price-title">A bank can only sell you its own loan.</h2>
-<p>My team and I broker loans in Austin. We take your file to many capital partners we already work with, compare the price and the guidelines, and you'll still have my cell.</p>
-<p>Self-employed income can use bank statements, 1099s, or a profit and loss statement. A rental is looked at from the rent. We stay on the file from the first call through closing.</p>
+<p class="pwe-kicker">How it works</p>
+<h2 class="pwe-section-title" id="how-it-works-title">Three steps. No pressure.</h2>
+<ol class="v2-step-list">
+<li><span aria-hidden="true" class="v2-step-num">1</span><h3>A 15-minute conversation</h3><p>Tell me how you get paid and what you want to do. I don't pull credit unless you decide to apply.</p></li>
+<li><span aria-hidden="true" class="v2-step-num">2</span><h3>I review your documents and compare programs</h3><p>A bank can only sell you its own loan. I take your file to many capital partners and compare the guidelines and the price.</p></li>
+<li><span aria-hidden="true" class="v2-step-num">3</span><h3>You get a written plan</h3><p>Your options and the tradeoffs, in writing, so you can decide on your own time.</p></li>
+</ol>
 </div>
 </section>
+<!-- SECTION 4: PROOF -->
+<section aria-labelledby="pwe-reviews-title" class="home-reviews-section pwe-reviews v2-proof" id="client-reviews">
+<div class="container">
+<p class="pwe-kicker">Reviews</p>
+<h2 class="pwe-section-title" id="pwe-reviews-title">What clients and Realtors wrote.</h2>
+<div class="v2-review-grid">
+<figure class="v2-review">
+<div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
+<blockquote><p>“I am self-employed and my loan was not straight forward. Adam worked with me weekly and sometimes daily to get all of the documents I needed.”</p></blockquote>
+<figcaption><strong>Sherita Steffe</strong><span>Self-employed borrower</span><a href="https://maps.app.goo.gl/ughgbRiuP1adsbiz7" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></figcaption>
+</figure>
+<figure class="v2-review">
+<div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
+<blockquote><p>“I’m self-employed and when other lenders declined to underwrite a mortgage, Adam saved the day!”</p></blockquote>
+<figcaption><strong>Ellery Wren</strong><span>Non-QM borrower</span><a href="https://maps.app.goo.gl/RLT2Z1jAJEo4oevL6" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></figcaption>
+</figure>
+<figure class="v2-review">
+<div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
+<blockquote><p>“I've known Adam Styer for the past four years, and he has consistently proven to be one of the most knowledgeable, reliable, and supportive mortgage professionals I've worked with.”</p></blockquote>
+<figcaption><strong>Jeanne Miller</strong><span>Realtor partner</span><a href="https://maps.app.goo.gl/QTPpwdVw1tFv855F8" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></figcaption>
+</figure>
+</div>
+<p class="v2-proof-line">Licensed since September 2015 · 1,000+ loans closed · <a href="https://www.google.com/maps?cid=13732336838581182360" rel="noopener" target="_blank">Google reviews<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a> · <a href="https://www.zillow.com/lender-profile/adamstyer/" rel="noopener" target="_blank">Zillow reviews<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p class="v2-proof-links"><a class="pwe-inline-link" href="/testimonials.html">Read all 144 published reviews <span aria-hidden="true">→</span></a><a class="pwe-inline-link" href="/scenarios.html">See real borrower scenarios <span aria-hidden="true">→</span></a></p>
+</div>
+</section>
+<!-- SECTION 5: PROGRAMS -->
+<section aria-labelledby="programs-title" class="v2-programs" id="programs">
+<div class="container">
+<p class="pwe-kicker">Programs</p>
+<h2 class="pwe-section-title" id="programs-title">Which loan fits which situation.</h2>
+<table class="v2-program-table">
+<caption class="gorascal-visually-hidden">Mortgage programs, who each one fits and what you document</caption>
+<thead><tr><th scope="col">Program</th><th scope="col">Who it fits</th><th scope="col">What you document</th><th scope="col">Learn more</th></tr></thead>
+<tbody>
+<tr><th scope="row">Bank statement</th><td data-label="Who it fits">Self-employed borrowers with steady deposits</td><td data-label="What you document">12 or 24 months of personal or business bank statements</td><td data-label="Learn more"><a href="/bank-statement-loans.html">Bank statement loans</a></td></tr>
+<tr><th scope="row">P&amp;L / 1099</th><td data-label="Who it fits">Business owners with a CPA, and 1099 contractors</td><td data-label="What you document">A CPA-prepared profit and loss statement, or your 1099s</td><td data-label="Learn more"><a href="/p-and-l-mortgage-texas.html">P&amp;L loans</a> · <a href="/1099-only-mortgage-texas.html">1099 loans</a></td></tr>
+<tr><th scope="row">Asset depletion</th><td data-label="Who it fits">Retirees, business sellers and savers with more in assets than wages</td><td data-label="What you document">Statements for the accounts the program allows</td><td data-label="Learn more"><a href="/asset-depletion-mortgage-texas.html">Asset depletion</a></td></tr>
+<tr><th scope="row">DSCR</th><td data-label="Who it fits">Investors buying or refinancing a rental</td><td data-label="What you document">The rent and the full housing payment on the property</td><td data-label="Learn more"><a href="/dscr-loan-austin-tx.html">DSCR loans</a></td></tr>
+<tr><th scope="row">Jumbo</th><td data-label="Who it fits">Loan amounts above the conforming limit</td><td data-label="What you document">Income, assets and reserves, on tax returns or alternative documents</td><td data-label="Learn more"><a href="/loans/jumbo.html">Jumbo loans</a></td></tr>
+<tr><th scope="row">Conventional / FHA / VA</th><td data-label="Who it fits">W-2 buyers, first-time buyers and eligible veterans</td><td data-label="What you document">Pay stubs, W-2s and tax returns</td><td data-label="Learn more"><a href="/loans/conventional.html">Conventional</a> · <a href="/loans/fha.html">FHA</a> · <a href="/loans/va.html">VA</a></td></tr>
+</tbody>
+</table>
+<p class="v2-table-note">Which program you qualify for depends on the file and is subject to underwriting. <a href="/products.html">See all loan options</a>.</p>
+</div>
+</section>
+<!-- SECTION 6: MEET ADAM -->
 <section aria-labelledby="pwe-people-title" class="about-adam-photo pwe-people" id="about-adam">
 <div class="container pwe-people-grid">
 <figure class="pwe-people-portrait">
@@ -1036,339 +1108,62 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <figcaption>Adam, Britney Jo &amp; family · Austin, TX</figcaption>
 </figure>
 <div class="pwe-people-copy">
-<p class="readability-brass pwe-kicker">About Adam</p>
+<p class="readability-brass pwe-kicker">Meet Adam</p>
 <h2 class="pwe-section-title" id="pwe-people-title">Hi, I'm Adam. I live here in Austin.</h2>
 <p>I'm married to Britney Jo, and we're raising three kids. Austin has been home for more than 16 years. I also own rental property, so I've been the borrower, not only the loan officer.</p>
-<p>You don't have to name the program before you call. Tell us how you earn and what's been confusing. We'll tell you what the options are, and what we'd do next.</p>
-<p>I've been licensed since September 2015. Most people don't need another sales pitch. They need a team that will explain the file and stay with it until it funds.</p>
-<p>For I am not ashamed of the gospel, for it is the power of God for salvation to everyone who believes, to the Jew first and also to the Greek. For in it the righteousness of God is revealed from faith for faith, as it is written, "The righteous shall live by faith." Romans 1:16-17 (ESV)</p>
-<div class="pwe-role-ledger">
-<div class="pwe-role-item">
-<strong>Adam Styer</strong>
-<span>Senior Loan Officer · NMLS #513013</span>
-<p>I put the loan together, go through the income and the assets, pick the capital partner, and talk with you and your CPA.</p>
-</div>
-<div class="pwe-role-item">
-<strong>My closing team</strong>
-<span>Processing support</span>
-<p>They track the appraisal, title, and the conditions the lender asks for, from contract to closing.</p>
-</div>
-</div>
-
-<div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:24px;">
-<a class="pwe-inline-link" href="/about.html">More about me <span aria-hidden="true" class="pwe-arrow">↗</span></a>
-<a class="pwe-inline-link" href="/mortgage-case-studies-for-advisors-cpas.html">For CPAs &amp; financial advisors <span aria-hidden="true" class="pwe-arrow">↗</span></a>
-<a class="pwe-inline-link" href="/realtors.html">For real estate partners <span aria-hidden="true" class="pwe-arrow">↗</span></a>
-</div>
+<p class="v2-verse">For I am not ashamed of the gospel, for it is the power of God for salvation to everyone who believes, to the Jew first and also to the Greek. For in it the righteousness of God is revealed from faith for faith, as it is written, "The righteous shall live by faith." Romans 1:16-17 (ESV)</p>
+<p><a class="pwe-inline-link" href="/about.html">More about me <span aria-hidden="true" class="pwe-arrow">↗</span></a></p>
 </div>
 </div>
 </section>
-<!-- SECTION 4: PROOF — Executed Mandates ("Mortgages Your Bank Said No To") -->
-<section aria-labelledby="said-no-title" class="said-no pwe-mandates pwe-dark" id="bank-said-no">
+<!-- SECTION 7: QUESTIONS -->
+<section class="bg-light pwe-faq" id="faq">
 <div class="container">
-<div class="pwe-mandates-head">
-<div>
-<p class="pwe-kicker">A few Austin files</p>
-<h2 class="pwe-section-title" id="said-no-title">Loans a bank turned down.</h2>
+<div style="max-width:920px;margin-inline:auto;margin-bottom:32px;">
+<p class="pwe-kicker">Questions</p>
+<h2 class="pwe-section-title" style="margin-bottom:0 !important;">Questions about non-QM loans in Austin</h2>
 </div>
-<p class="said-no-intro">When a bank says no, the file missed that bank’s box. We look for a lender that can use the deposits, the 1099, or the rent.</p>
+<div class="accordion content-medium mx-auto">
+<div class="accordion-item">
+<button class="accordion-button"><span>Can self-employed business owners get a mortgage without tax returns in Austin TX?</span></button>
+<div class="accordion-content"><div class="accordion-body"><p>Yes. If you are self-employed in Austin, we can look at 12 or 24 months of <a href="/bank-statement-loans.html">bank statements</a>, a <a href="/1099-only-mortgage-texas.html">1099-only program</a>, a <a href="/p-and-l-mortgage-texas.html">P&amp;L</a> your CPA prepares, or <a href="/asset-depletion-mortgage-texas.html">assets you already have</a>. These are <a href="/non-qm-loans.html">non-QM loans</a>. Deposits and write-offs are not qualifying income. We match those records to a program that can use them.</p></div></div>
 </div>
-<div class="said-no-grid pwe-mandate-ledger">
-<!-- Case 01: Self-Employed Jumbo -->
-<article class="said-no-card pwe-mandate-item">
-<div>
-<div class="pwe-mandate-header">
-<span class="pwe-mandate-tag">Case 01 · Self-Employed</span>
-<span class="pwe-mandate-loc">Westlake, Austin</span>
+<div class="accordion-item">
+<button class="accordion-button"><span>What is a DSCR loan and who qualifies in Texas?</span></button>
+<div class="accordion-content"><div class="accordion-body"><p>A <a href="/dscr-loan-austin-tx.html">DSCR loan</a> is for a rental. We qualify it on the rent, not your paycheck or tax return. DSCR is the rent divided by the full housing payment: principal, interest, taxes, insurance, and any association dues. We compare the rent with the housing payment, and we ask if the homes can sit in an LLC.</p></div></div>
 </div>
-<h3>A Westlake purchase after three banks said no</h3>
-<div class="pwe-mandate-breakdown">
-<div class="pwe-mandate-row">
-<span class="pwe-mandate-label">What the bank saw</span>
-<p>Depreciation and write-offs made the tax return look thin. The banks counted W-2 wages only and said no.</p>
+<div class="accordion-item">
+<button class="accordion-button"><span>How does asset depletion qualify high-net-worth borrowers in Texas?</span></button>
+<div class="accordion-content"><div class="accordion-body"><p><a href="/asset-depletion-mortgage-texas.html">Asset depletion</a> turns money you already have into a monthly income number. We count the accounts the program allows, using that program's own months. We use this when someone has retired, sold a business, or has more saved than a W-2 shows.</p></div></div>
 </div>
-<div class="pwe-mandate-row solution">
-<span class="pwe-mandate-label">What I did</span>
-<p>I used 24 months of bank statements and qualified on the business deposits.</p>
+<div class="accordion-item">
+<button class="accordion-button"><span>What loan programs are available for complex-income borrowers in Austin TX?</span></button>
+<div class="accordion-content"><div class="accordion-body"><p>If you are self-employed, you get <a href="/k1-income-mortgage-austin.html">K-1 income</a>, you own <a href="/investor-loans.html">rentals</a>, or your savings are stronger than your wages, we look at <a href="/bank-statement-loans.html">bank statements</a>, <a href="/1099-only-mortgage-texas.html">1099s</a>, a <a href="/p-and-l-mortgage-texas.html">P&amp;L</a>, asset depletion, <a href="/dscr-loan-austin-tx.html">DSCR</a>, and <a href="/loans/jumbo.html">jumbo</a> loans. A jumbo loan is anything above the conforming limit. A jumbo loan can use those documents too. We compare those programs across many capital partners.</p></div></div>
 </div>
-</div>
-</div>
-<div>
-<div class="pwe-mandate-win">
-<span class="pwe-mandate-win-label">What happened</span>
-<p class="pwe-mandate-win-text">The purchase closed on those deposits, not the tax return.</p>
-</div>
-<a class="pwe-mandate-action" href="/scenarios/self-employed-refinance-deposit-review.html">
-Read Full Case Study
-<span aria-hidden="true">→</span>
-</a>
-</div>
-</article>
-
-<!-- Case 02: DSCR -->
-<article class="said-no-card pwe-mandate-item">
-<div>
-<div class="pwe-mandate-header">
-<span class="pwe-mandate-tag">Case 02 · DSCR</span>
-<span class="pwe-mandate-loc">Central Austin</span>
-</div>
-<h3>Investor whose tax returns didn't show enough income</h3>
-<div class="pwe-mandate-breakdown">
-<div class="pwe-mandate-row">
-<span class="pwe-mandate-label">What the bank saw</span>
-<p>Their personal income couldn't qualify on paper.</p>
-</div>
-<div class="pwe-mandate-row solution">
-<span class="pwe-mandate-label">What we did</span>
-<p>We used a DSCR loan, which needs no tax returns and no personal income documents.</p>
+<div class="accordion-item">
+<button class="accordion-button"><span>How does a self-employed buyer get pre-qualified in Austin TX?</span></button>
+<div class="accordion-content"><div class="accordion-body"><p>We review your initial information to discuss pre-qualification and the documents needed for the next step. How long a bank-statement or DSCR loan takes to close depends on the program, the appraisal, title, and when the documents come in. <a href="/contact.html?goal=Purchase">Send us the situation</a> or call <a href="tel:+15129566010">(512) 956-6010</a>.</p></div></div>
 </div>
 </div>
-</div>
-<div>
-<div class="pwe-mandate-win">
-<span class="pwe-mandate-win-label">What happened</span>
-<p class="pwe-mandate-win-text">The loan qualified on the property's rent.</p>
-</div>
-<a class="pwe-mandate-action" href="/dscr-loans-texas.html">
-Learn more about DSCR loans
-<span aria-hidden="true">→</span>
-</a>
-</div>
-</article>
-
-<!-- Case 03: Contingency Rescue -->
-<article class="said-no-card pwe-mandate-item">
-<div>
-<div class="pwe-mandate-header">
-<span class="pwe-mandate-tag">Case 03 · Contingency Rescue</span>
-<span class="pwe-mandate-loc">Barton Creek</span>
-</div>
-<h3>The sale of the house they were leaving fell through.</h3>
-<div class="pwe-mandate-breakdown">
-<div class="pwe-mandate-row">
-<span class="pwe-mandate-label">What the bank saw</span>
-<p>The buyers of the old house canceled. The cash they expected, and the plan to drop that payment, went away.</p>
-</div>
-<div class="pwe-mandate-row solution">
-<span class="pwe-mandate-label">What I did</span>
-<p>I used a backup contract on the old house and a second loan for the down payment.</p>
-</div>
-</div>
-</div>
-<div>
-<div class="pwe-mandate-win">
-<span class="pwe-mandate-win-label">What happened</span>
-<p class="pwe-mandate-win-text">They wrote the offer without waiting on the old house to sell.</p>
-</div>
-<a class="pwe-mandate-action" href="/scenarios/build-on-owned-land-before-selling.html">
-Read Full Case Study
-<span aria-hidden="true">→</span>
-</a>
-</div>
-</article>
-</div>
-<div class="pwe-mandates-foot">
-<p class="said-no-note">These are based on files I have closed. Names and exact figures are changed. A real file still has to pass underwriting.</p>
-<p class="said-no-cta">
-<a class="pwe-btn-primary" data-source="homepage_said_no" data-track="scenario_review_click" href="/contact.html?goal=Purchase">See My Options</a>
-<a class="pwe-inline-link" href="/scenarios.html">Read full case studies <span aria-hidden="true" class="pwe-arrow">→</span></a>
-</p>
-</div>
+<p class="v2-blog-link"><a class="pwe-inline-link" href="/blog.html">Latest from the blog <span aria-hidden="true">→</span></a></p>
 </div>
 </section>
-<!-- SECTION 5: QUANTITATIVE CLARITY — Mercury Fintech Workbench -->
-<section aria-labelledby="homepage-tools-title" class="premium-tools pwe-workbench" id="homepage-tools">
-<div class="container pwe-workbench-grid">
-<div>
-<p class="pwe-kicker">Calculators</p>
-<h2 class="pwe-section-title" id="homepage-tools-title">Run the numbers before you decide.</h2>
-<p class="pwe-workbench-lead">You can estimate a payment, a rental’s DSCR, or income from assets. The calculators show the assumptions. They are not a rate quote.</p>
-<div class="pwe-tool-directory">
-<a href="/calculator-payment.html"><span>Full PITI &amp; Amortization Calculator</span> <span aria-hidden="true">↗</span></a>
-<a href="/dscr-calculator.html"><span>DSCR Investment Property Analyzer</span> <span aria-hidden="true">↗</span></a>
-<a href="/asset-depletion-calculator.html"><span>Asset-Depletion Income Calculator</span> <span aria-hidden="true">↗</span></a>
-<a href="/contact.html?goal=Refinance&loan=second-look"><span>Side-by-Side Loan Estimate Audit</span> <span aria-hidden="true">↗</span></a>
-</div>
-</div>
-<div class="premium-payment pwe-instrument">
-<div class="pwe-instrument-head">
-<h3>Principal and interest</h3>
-<span>Example only</span>
-</div>
-<div class="pwe-instrument-fields">
-<div>
-<label for="home-loan">Loan amount ($)</label>
-<input id="home-loan" inputmode="decimal" max="100000000" min="1" step="any" type="number" value="750000"/>
-</div>
-<div>
-<label for="home-rate">Interest rate (%)</label>
-<input id="home-rate" inputmode="decimal" max="30" min="0" step="any" type="number" value="6.5"/>
-</div>
-<div>
-<label for="home-term">Amortization</label>
-<select id="home-term">
-<option value="30">30 years</option>
-<option value="15">15 years</option>
-<option value="20">20 years</option>
-</select>
-</div>
-</div>
-<p class="premium-payment-error" hidden="" id="home-payment-error" role="status">Compare written quotes for the same borrower, property, and loan structure; pricing varies by program and market conditions.</p>
-<div aria-atomic="true" aria-live="polite" class="pwe-instrument-output">
-<span>Estimated Principal &amp; Interest</span>
-<strong id="home-payment-output">$4,741<span> / month</span></strong>
-</div>
-<p class="pwe-instrument-note">Principal and interest only. Taxes, insurance, HOA dues, mortgage insurance, and fees are excluded. Example rate is not a quote or an offer to lend.</p>
-<a class="pwe-inline-link" href="/calculator-payment.html">Add taxes and insurance in the full calculator <span aria-hidden="true" class="pwe-arrow">→</span></a>
-</div>
-</div>
-</section>
-<!-- SECTION 6: THE PEOPLE — Advisory Leadership & Personal Roots -->
-<!-- SECTION 7: CLIENT & PARTNER REVIEWS -->
-<section aria-labelledby="pwe-reviews-title" class="home-reviews-section pwe-reviews" id="client-reviews">
-<div class="container">
-<div class="pwe-reviews-header">
-<div>
-<p class="pwe-kicker">Reviews</p>
-<h2 class="pwe-section-title" id="pwe-reviews-title" style="margin-bottom:8px !important;">What clients and Realtors wrote.</h2>
-<p style="margin:0;font-size:16px;color:var(--pwe-slate);">These are Google and Zillow reviews. We did not write them.</p>
-</div>
-<div class="review-aggregate-bar">
-<a class="review-aggregate-item" href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer%20Mortgage&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" rel="noopener" style="color:inherit;text-decoration:none;" target="_blank">
-<svg aria-label="Google" height="14" role="img" viewbox="0 0 24 24" width="14">
-<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
-<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
-<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
-<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
-</svg>
-<span class="review-aggregate-rating">5.0</span>
-<svg aria-hidden="true" fill="#9A7844" height="11" viewbox="0 0 24 24" width="11"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<span class="review-aggregate-count">99 Google reviews</span>
-<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
-<div aria-hidden="true" class="review-aggregate-divider"></div>
-<a class="review-aggregate-item" href="https://www.zillow.com/lender-profile/adamstyer/" rel="noopener" style="color:inherit;text-decoration:none;" target="_blank">
-<svg aria-label="Zillow" height="14" role="img" viewbox="0 0 20 20" width="14">
-<rect fill="#1277E1" height="20" rx="3" width="20"></rect>
-<text fill="white" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" x="10" y="15">Z</text>
-</svg>
-<span class="review-aggregate-rating">4.98</span>
-<svg aria-hidden="true" fill="#9A7844" height="11" viewbox="0 0 24 24" width="11"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<span class="review-aggregate-count">45 Zillow reviews</span>
-<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
-</div>
-</div>
-<div aria-label="Client reviews" class="testimonial-marquee-wrap">
-<div class="testimonial-marquee-track">
-<div class="testimonial-marquee-card">
-<div aria-label="5 out of 5 stars" class="stars" role="img">
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-</div>
-<p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam came highly recommended and he was exceptional to work with! He was incredibly responsive and helpful throughout the entire mortgage process."</p>
-<div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
-<div><strong style="font-size:0.9rem;">Mary Cairnie</strong><br/><span style="font-size:0.75rem;color:var(--pwe-muted);">Google • 5 Stars</span></div>
-</div>
-<p class="review-proof-links"><a href="https://maps.app.goo.gl/ZUVT7hiD675cbZCZ9" rel="noopener" target="_blank">Google Review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
-</div>
-<div class="testimonial-marquee-card">
-<div aria-label="5 out of 5 stars" class="stars" role="img">
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-</div>
-<p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">“I am self-employed and my loan was not straight forward. Adam worked with me weekly and sometimes daily to get all of the documents I needed.”</p>
-<div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
-<div><strong style="font-size:0.9rem;">Sherita Steffe</strong><br/><span style="font-size:0.75rem;color:var(--pwe-muted);">Google • Self-employed</span></div>
-</div>
-<p class="review-proof-links"><a href="https://maps.app.goo.gl/ughgbRiuP1adsbiz7" rel="noopener" target="_blank">Google Review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
-</div>
-<div class="testimonial-marquee-card">
-<div aria-label="5 out of 5 stars" class="stars" role="img">
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-</div>
-<p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">“I’m self-employed and when other lenders declined to underwrite a mortgage, Adam saved the day!”</p>
-<div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
-<div><strong style="font-size:0.9rem;">Ellery Wren</strong><br/><span style="font-size:0.75rem;color:var(--pwe-muted);">Google • Non-QM</span></div>
-</div>
-<p class="review-proof-links"><a href="https://maps.app.goo.gl/RLT2Z1jAJEo4oevL6" rel="noopener" target="_blank">Google Review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
-</div>
-<div class="testimonial-marquee-card">
-<div aria-label="5 out of 5 stars" class="stars" role="img">
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-</div>
-<p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">“He walked us through multiple paths, explained the tradeoffs honestly, and let us make the decision from a place of clarity instead of pressure.”</p>
-<div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
-<div><strong style="font-size:0.9rem;">Chelsea Wise</strong><br/><span style="font-size:0.75rem;color:var(--pwe-muted);">Google • Options without pressure</span></div>
-</div>
-<p class="review-proof-links"><a href="https://maps.app.goo.gl/ZDgkwnRHi1jukHmx9" rel="noopener" target="_blank">Google Review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
-</div>
-<div class="testimonial-marquee-card">
-<div aria-label="5 out of 5 stars" class="stars" role="img">
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-</div>
-<p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"I've known Adam Styer for the past four years, and he has consistently proven to be one of the most knowledgeable, reliable, and supportive mortgage professionals I've worked with."</p>
-<div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
-<div><strong style="font-size:0.9rem;">Jeanne Miller</strong><br/><span style="font-size:0.75rem;color:var(--pwe-muted);">Google • Realtor Partner</span></div>
-</div>
-<p class="review-proof-links"><a href="https://maps.app.goo.gl/QTPpwdVw1tFv855F8" rel="noopener" target="_blank">Google Review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
-</div>
-<div class="testimonial-marquee-card">
-<div aria-label="5 out of 5 stars" class="stars" role="img">
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-<svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg>
-</div>
-<p style="font-style:italic;font-size:0.9rem;line-height:1.6;flex:1;">"Adam is awesome - he works to understand your needs, presents multiple and often creative financing options to meet them, and supports you throughout the whole home purchase."</p>
-<div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
-<div><strong style="font-size:0.9rem;">Matthew Latimer</strong><br/><span style="font-size:0.75rem;color:var(--pwe-muted);">Google • Purchase</span></div>
-</div>
-<p class="review-proof-links"><a href="https://maps.app.goo.gl/u1aybDHYPwdj4aPe7" rel="noopener" target="_blank">Google Review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
-</div>
-</div>
-</div>
-<div style="margin-top:32px;display:flex;justify-content:flex-end;">
-<a class="pwe-inline-link" href="/testimonials.html">Read all 144 published reviews <span aria-hidden="true" class="pwe-arrow">→</span></a>
-</div>
-</div>
-</section>
-<!-- SECTION 8: CLOSING CTA & PRIVATE CONSULTATION DESK -->
+<!-- SECTION 8: FINAL ACTION -->
 <section class="premium-contact">
 <div aria-labelledby="home-consultation-title" class="pwe-consultation pwe-dark">
 <div class="container pwe-consultation-grid">
 <div class="pwe-consultation-copy">
-<p class="pwe-kicker">Send us the situation</p>
-<h2 class="pwe-section-title" id="home-consultation-title">Tell us how you get paid.</h2>
-<p>A business, a 1099, a rental, or a bank that already said no. Send us what you know. We'll tell you which records we need. We don't pull credit unless you decide to apply.</p>
-<div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;">
-<a class="pwe-btn-primary" data-source="homepage_footer" data-track="scenario_review_click" href="/contact.html?goal=Purchase">See My Options</a>
-</div>
+<p class="pwe-kicker">Send your scenario</p>
+<h2 class="pwe-section-title" id="home-consultation-title">Tell me how you get paid.</h2>
+<p>A business, a 1099, a rental, or a bank that already said no. Send what you know. I'll tell you which records I need. I don't pull credit unless you decide to apply.</p>
 <div class="pwe-direct-channels">
 <div>
 <span>Call or text</span>
-<a href="tel:+15129566010">(512) 956-6010</a>
+<a data-track="call_click" href="tel:+15129566010">(512) 956-6010</a>
 </div>
 <div>
 <span>Or book a time</span>
-<a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">15 minutes with Adam ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
+<a data-track="calendly_click" href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">15 minutes with Adam ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
 </div>
 </div>
 </div>
@@ -1422,107 +1217,6 @@ Read Full Case Study
 </div>
 </div>
 </section>
-<!-- SECTION 9: RESEARCH & BRIEFINGS -->
-<section aria-labelledby="intel-title" class="bg-light premium-guides pwe-briefings" id="market-intelligence" style="background: var(--pwe-bg-warm); padding: 72px 0; border-top: 1px solid var(--pwe-rule); border-bottom: 1px solid var(--pwe-rule);">
-<div class="container">
-<div class="pwe-serve-header">
-<div>
-<p class="pwe-kicker">From the blog</p>
-<h2 class="pwe-section-title" id="intel-title">A few things we have written.</h2>
-</div>
-<p class="readability-brass">Notes on rates, bank statements, and non-QM files.</p>
-</div>
-<div id="homepage-latest-articles" class="guide-grid pwe-guide-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; margin-top: 36px;">
-<article class="guide-card pwe-guide-card" style="background: #FFFFFF; border: 1px solid var(--pwe-rule); border-radius: 4px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
-<div><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-<span style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pwe-brass);">Self-Employed</span>
-<time datetime="2026-11-09" style="font-size: 13px; color: var(--pwe-slate-light);">Nov 9, 2026</time>
-</div><h3 style="font-family: var(--pwe-serif); font-size: 20px; line-height: 1.35; margin: 0 0 12px; color: var(--pwe-obsidian);"><a href="/blog/2026-11-09-mortgage-low-taxable-income-self-employed-texas.html" style="color: inherit; text-decoration: none;">Can You Get a Mortgage if Your Tax Returns Show Low Income?</a></h3>
-<p style="font-size: 14.5px; line-height: 1.6; color: var(--pwe-slate); margin: 0 0 16px;">Write-offs can shrink the income a lender counts. Here's how conventional loans read your tax returns, and how bank statement, P&amp;L, 1099 and asset-based loans differ.</p></div>
-<a href="/blog/2026-11-09-mortgage-low-taxable-income-self-employed-texas.html" style="font-size: 14px; font-weight: 600; color: var(--pwe-brass); text-decoration: none;">Read Article →</a></article>
-<article class="guide-card pwe-guide-card" style="background: #FFFFFF; border: 1px solid var(--pwe-rule); border-radius: 4px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
-<div><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-<span style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pwe-brass);">Market Update</span>
-<time datetime="2026-11-05" style="font-size: 13px; color: var(--pwe-slate-light);">Nov 5, 2026</time>
-</div><h3 style="font-family: var(--pwe-serif); font-size: 20px; line-height: 1.35; margin: 0 0 12px; color: var(--pwe-obsidian);"><a href="/blog/2026-11-05-austin-housing-market-after-midterms.html" style="color: inherit; text-decoration: none;">Austin Housing Market After the Midterms: Where I See Opportunity</a></h3>
-<p style="font-size: 14.5px; line-height: 1.6; color: var(--pwe-slate); margin: 0 0 16px;">Mortgage rates eased after Election Day. Adam Styer breaks down the November rate move, September Austin housing data, and what buyers and Realtors can do with it.</p></div>
-<a href="/blog/2026-11-05-austin-housing-market-after-midterms.html" style="font-size: 14px; font-weight: 600; color: var(--pwe-brass); text-decoration: none;">Read Article →</a></article>
-<article class="guide-card pwe-guide-card" style="background: #FFFFFF; border: 1px solid var(--pwe-rule); border-radius: 4px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
-<div><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-<span style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pwe-brass);">Refinance</span>
-<time datetime="2026-11-02" style="font-size: 13px; color: var(--pwe-slate-light);">Nov 2, 2026</time>
-</div><h3 style="font-family: var(--pwe-serif); font-size: 20px; line-height: 1.35; margin: 0 0 12px; color: var(--pwe-obsidian);"><a href="/blog/2026-11-02-refinance-out-of-non-qm-loan-texas.html" style="color: inherit; text-decoration: none;">Can You Refinance Out of a Bank Statement or DSCR Loan Later?</a></h3>
-<p style="font-size: 14.5px; line-height: 1.6; color: var(--pwe-slate); margin: 0 0 16px;">Yes, a non-QM loan doesn't have to be permanent. What it takes to refinance a bank statement or DSCR loan into a conventional loan, and what can get in the way.</p></div>
-<a href="/blog/2026-11-02-refinance-out-of-non-qm-loan-texas.html" style="font-size: 14px; font-weight: 600; color: var(--pwe-brass); text-decoration: none;">Read Article →</a></article>
-</div>
-<script>
-(function () {
-  var grid = document.getElementById('homepage-latest-articles');
-  if (!grid) return;
-  fetch('/blog/manifest.json').then(function (response) {
-    if (!response.ok) throw new Error('Could not load articles');
-    return response.json();
-  }).then(function (data) {
-    var posts = (Array.isArray(data.posts) ? data.posts : []).filter(function (post) {
-      return post && typeof post.title === 'string' && typeof post.description === 'string' &&
-        typeof post.category === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(post.date) &&
-        typeof post.url === 'string' && /^\/blog\/[a-z0-9-]+\.html$/.test(post.url);
-    }).sort(function (a, b) { return b.date.localeCompare(a.date); }).slice(0, 3);
-    if (!posts.length) return;
-    var template = grid.querySelector('.guide-card');
-    if (!template) return;
-    var cards = posts.map(function (post) {
-      var card = template.cloneNode(true);
-      var links = card.querySelectorAll('a');
-      card.querySelector('span').textContent = post.category;
-      var date = card.querySelector('time');
-      date.dateTime = post.date;
-      date.textContent = new Date(post.date + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
-      card.querySelector('h3 a').textContent = post.title;
-      card.querySelector('p').textContent = post.description;
-      links.forEach(function (link) { link.href = post.url; });
-      return card;
-    });
-    grid.replaceChildren.apply(grid, cards);
-  }).catch(function () {});
-}());
-</script>
-<div style="text-align: center; margin-top: 40px;">
-<a class="btn btn-outline" href="/blog.html" style="border: 2px solid var(--pwe-obsidian); color: var(--pwe-obsidian); padding: 14px 32px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 2px;">Browse Articles &amp; Market Updates →</a>
-</div>
-</div>
-</section>
-<!-- SECTION 10: TECHNICAL FAQ -->
-<section class="bg-light pwe-faq" id="faq">
-<div class="container">
-<div style="max-width:920px;margin-inline:auto;margin-bottom:32px;">
-<p class="pwe-kicker">Questions we get</p>
-<h2 class="pwe-section-title" style="margin-bottom:0 !important;">Questions about non-QM loans in Austin</h2>
-</div>
-<div class="accordion content-medium mx-auto">
-<div class="accordion-item">
-<button class="accordion-button"><span>Can self-employed business owners get a mortgage without tax returns in Austin TX?</span></button>
-<div class="accordion-content"><div class="accordion-body"><p>Yes. If you are self-employed in Austin, we can look at 12 or 24 months of <a href="/bank-statement-loans.html">bank statements</a>, a <a href="/1099-only-mortgage-texas.html">1099-only program</a>, a <a href="/p-and-l-mortgage-texas.html">P&amp;L</a> your CPA prepares, or <a href="/asset-depletion-mortgage-texas.html">assets you already have</a>. These are <a href="/non-qm-loans.html">non-QM loans</a>. Deposits and write-offs are not qualifying income. We match those records to a program that can use them.</p></div></div>
-</div>
-<div class="accordion-item">
-<button class="accordion-button"><span>What is a DSCR loan and who qualifies in Texas?</span></button>
-<div class="accordion-content"><div class="accordion-body"><p>A <a href="/dscr-loan-austin-tx.html">DSCR loan</a> is for a rental. We qualify it on the rent, not your paycheck or tax return. DSCR is the rent divided by the full housing payment: principal, interest, taxes, insurance, and any association dues. We compare the rent with the housing payment, and we ask if the homes can sit in an LLC.</p></div></div>
-</div>
-<div class="accordion-item">
-<button class="accordion-button"><span>How does asset depletion qualify high-net-worth borrowers in Texas?</span></button>
-<div class="accordion-content"><div class="accordion-body"><p><a href="/asset-depletion-mortgage-texas.html">Asset depletion</a> turns money you already have into a monthly income number. We count the accounts the program allows, using that program's own months. We use this when someone has retired, sold a business, or has more saved than a W-2 shows.</p></div></div>
-</div>
-<div class="accordion-item">
-<button class="accordion-button"><span>What loan programs are available for complex-income borrowers in Austin TX?</span></button>
-<div class="accordion-content"><div class="accordion-body"><p>If you are self-employed, you get <a href="/k1-income-mortgage-austin.html">K-1 income</a>, you own <a href="/investor-loans.html">rentals</a>, or your savings are stronger than your wages, we look at <a href="/bank-statement-loans.html">bank statements</a>, <a href="/1099-only-mortgage-texas.html">1099s</a>, a <a href="/p-and-l-mortgage-texas.html">P&amp;L</a>, asset depletion, <a href="/dscr-loan-austin-tx.html">DSCR</a>, and <a href="/loans/jumbo.html">jumbo</a> loans. A jumbo loan is anything above the conforming limit. A jumbo loan can use those documents too. We compare those programs across many capital partners.</p></div></div>
-</div>
-<div class="accordion-item">
-<button class="accordion-button"><span>How does a self-employed buyer get pre-qualified in Austin TX?</span></button>
-<div class="accordion-content"><div class="accordion-body"><p>We review your initial information to discuss pre-qualification and the documents needed for the next step. How long a bank-statement or DSCR loan takes to close depends on the program, the appraisal, title, and when the documents come in. <a href="/contact.html?goal=Purchase">Send us the situation</a> or call <a href="tel:+15129566010">(512) 956-6010</a>.</p></div></div>
-</div>
-</div>
-</div>
-</section>
 <!-- REGIONAL COVERAGE BAR -->
 <section aria-label="Service area" class="home-service-area pwe-service-band">
 <div class="container">
@@ -1530,7 +1224,13 @@ Read Full Case Study
 <p>We also work with buyers and investors in <a href="/dallas-mortgage-lender.html">Dallas</a> and <a href="/san-antonio-mortgage-lender.html">San Antonio</a>.</p>
 </div>
 </section>
-<section aria-label="Related mortgage resources" class="blueprint-section blueprint-directory"><div class="blueprint-wrap"><h2>If you want to read more</h2><ul class="blueprint-links"><li><a href="/self-employed-mortgage-austin.html">Self-employed mortgage options</a></li><li><a href="/high-net-worth-mortgage.html">Mortgages for asset-rich borrowers</a></li><li><a href="/investor-loans.html">Investment property financing</a></li><li><a href="/first-time-home-buyer.html">Buying a home</a></li><li><a href="/loans/refinance.html">Refinancing and cash-out options</a></li><li><a href="/products.html">All mortgage options</a></li><li><a href="/resources">Mortgage resources and guides</a></li><li><a href="/about.html">About Adam and the team</a></li><li><a href="/contact.html">Contact Adam Styer</a></li><li><a href="/contact.html">Review my mortgage scenario</a></li><li><a href="/privacy.html">Privacy policy</a></li><li><a href="/terms.html">Terms and conditions</a></li><li><a href="/texas-complaint-notice.html">Texas consumer complaint notice</a></li><li><a href="/">Home</a></li><li><a href="/contact.html?goal=Purchase">Start loan scenario review</a></li></ul></div></section></main>
+<!-- REFERRAL PARTNERS -->
+<section aria-label="For referral partners" class="v2-partners">
+<div class="container">
+<p>Realtors, CPAs and advisors <span aria-hidden="true">→</span> <a href="/referral-partners-self-employed-clients.html">how I work with your clients</a></p>
+</div>
+</section>
+</main>
 <!-- FOOTER -->
 <footer class="site-footer" id="site-footer">
   <div class="container">
@@ -1590,7 +1290,7 @@ Read Full Case Study
 <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       Call Adam
     </a>
-<a aria-label="See My Options" class="smb-btn smb-btn-apply" data-source="homepage_sticky_mobile" data-track="scenario_review_click" href="/contact.html?goal=Purchase">See My Options</a>
+<a aria-label="Send your scenario" class="smb-btn smb-btn-apply" data-source="homepage_sticky_mobile" data-track="scenario_review_click" href="#contact-form">Send your scenario</a>
 </div>
 <script>
     /* Deferred via requestIdleCallback — avoids forced reflow on initial paint */
@@ -1635,20 +1335,6 @@ Read Full Case Study
       document.addEventListener('click', function () { setTimeout(update, 0); });
       update();
     });
-  </script>
-<script>
-    (function () {
-      var button = document.querySelector('.home-case-continue');
-      var rest = document.getElementById('move-up-case-rest');
-      if (!button || !rest) return;
-      button.addEventListener('click', function () {
-        var expanded = button.getAttribute('aria-expanded') === 'true';
-        button.setAttribute('aria-expanded', String(!expanded));
-        rest.hidden = expanded;
-        button.closest('.home-case-card').classList.toggle('is-expanded', !expanded);
-        button.textContent = expanded ? 'Continue' : 'Show less';
-      });
-    })();
   </script>
 <script>
   (function () {

@@ -1,3 +1,20 @@
+## 2026-11-13 — Preview: Phase 3 homepage rebuild (`feat/homepage-v2`)
+
+- `index.html` now has 8 sections in this order: hero, who I help, how it works, proof, programs, meet Adam, questions, final action. A one-line service-area note and a referral-partner strip sit above the footer.
+- Hero: H1 unchanged. New lead paragraph (Adam's pick, option A2) plus a second line for regular loans (conventional, FHA, VA). Credentials line with the Google rating. One button, "Send your scenario", scrolls to the form. Call link beside it.
+- Who I help: the same 6 cards, one sentence each. Move-Up now links to `/buy-before-you-sell-austin.html`. On phones the cards drop their photos and sit two across.
+- How it works: three steps, with the "a bank can only sell you its own loan" line in step 2.
+- Proof: three existing Google reviews (self-employed, non-QM, Realtor), each linked to its source. One line with licensed-since date, 1,000+ loans closed, and Google and Zillow links. Links to all reviews and to `/scenarios.html`.
+- Programs: an HTML table of six rows (who it fits, what you document, link). No rates or down-payment percentages. Rows stack on phones.
+- Meet Adam: family photo, one paragraph, the Romans 1:16-17 verse, link to About.
+- Questions: the same 5 FAQs. FAQPage schema is regenerated from the visible text and now matches it exactly. One "Latest from the blog" link replaces the blog cards.
+- Final action: the existing short form, unchanged, with call/text and Calendly beside it.
+- Removed from the homepage: the four-stat band, the three case-study cards, the calculator block, the blog card row, the "If you want to read more" list, the K-1 / one-time-close chips, and extra "See My Options" buttons.
+- Page height at 390 px: 19,659 px before, 9,860 px after. Main content is 9.2 phone screens; the shared footer adds 2.3 more and was not changed.
+- Two tests that described the old homepage were updated to describe the new one (`tests/editorial-rollout.test.js`, `tests/premium-homepage.test.js`).
+- `npm test`: 210 tests, 178 pass, 32 fail, the same 32 as before the audit. No new failures.
+- Not deployed to production.
+
 ## 2026-11-13 — Live: Phases 1 and 2 of the November audit
 
 - Adam approved going live on Nov 13. `release/2026-11-audit` (Phase 0, Phase 1 `fix/quick-wins`, Phase 2 `perf/mobile-lcp`) was fast-forwarded onto the production branch `cursor/blog-2026-11-02-refi-out-of-non-qm`. No other commits had landed there since `01a8acf`.
