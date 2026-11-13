@@ -13,6 +13,8 @@
 - Calculators page: seven question cards that open each calculator in a panel below (`js/calc-hub.js`). The calculator pages still exist on their own URLs.
 - Menu on the simplified pages is now a floating white pill: Mortgage Options, Tools & Guides, About Adam, See My Options, Apply Now, round phone button (CSS only, 1000px and wider).
 - Homepage: scrolling row of nine pill links in Adam's words; fifth "Why work with me" point about keeping the Realtor and title company in the loop.
+- Long scenario forms removed from the self-employed page (`form-scenario-review`) and DSCR page (`form-dscr-quote`) at Adam's request; each is now an Apply block linking to the secure application. The short forms stay.
+- Homepage form now has the TCPA consent checkbox. Menu reads "Loan Programs" on the simplified pages (CSS label). Pill row restyled dark and narrower.
 - Not live. Not merged into `release/2026-11-audit`.
 
 ## 2026-11-13 — Phase 6 wrap-up of the November audit

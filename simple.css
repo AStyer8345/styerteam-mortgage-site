@@ -411,3 +411,18 @@ html body.simple-calc.simple-calc.simple-calc .calc-panel[hidden] { display: non
   html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone) { font-size: 0 !important; }
   html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone)::before { content: "Loan Programs"; font-size: 14px; }
 }
+
+/* ---------- Apply block (replaces the long scenario forms) ---------- */
+body.simple main .simple-apply,
+body.simple .simple-apply { background: var(--pwe-navy, #11212E) !important; text-align: center !important; padding: clamp(56px, 8vw, 96px) 0 !important; border: 0 !important; }
+body.simple .simple-apply > .container { max-width: 808px !important; margin: 0 auto !important; padding: 0 24px !important; }
+body.simple .simple-apply h2 { color: #fff !important; font-size: clamp(30px, 4vw, 44px) !important; line-height: 1.1 !important; margin: 0 0 14px !important; }
+body.simple .simple-apply p { color: #D6DDE2 !important; font-size: 18px !important; line-height: 1.6 !important; margin: 0 0 18px !important; }
+body.simple .simple-apply .u-btn-primary { display: inline-block !important; }
+body.simple .simple-apply .simple-apply-alt { font-size: 15px !important; margin: 6px 0 0 !important; }
+body.simple .simple-apply .simple-apply-alt a { color: #fff !important; text-decoration: underline !important; }
+
+@media (max-width: 999px) {
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone) { font-size: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone)::before { content: "Loan Programs"; font-size: 15px; letter-spacing: 0.04em; }
+}

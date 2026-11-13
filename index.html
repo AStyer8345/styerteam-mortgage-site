@@ -680,6 +680,8 @@ body main .v2-partners p{font-size:14.5px}
 #contact-form textarea{min-height:84px!important}
 #contact-form input,#contact-form textarea{background:#fff!important;color:#0B151D!important;border:1px solid #C9CFD4!important;border-radius:10px!important;font-size:16px!important;padding:12px 14px!important;width:100%!important;box-sizing:border-box!important}
 #contact-form .journey-submit,.premium-homepage .pwe-btn-primary,body.simple-home .pwe-hero .pwe-btn-primary{background:#F5C443!important;border:0!important;color:#0B151D!important;font-weight:700!important;border-radius:999px!important;text-transform:none!important;letter-spacing:0!important;box-shadow:0 6px 18px rgba(245,196,67,.3)!important}
+#contact-form .v3-consent{display:flex!important;gap:10px;align-items:flex-start;margin:14px 0 0!important;font-size:11.5px!important;font-weight:400!important;line-height:1.45!important;color:#62707A!important;text-transform:none!important;letter-spacing:0!important}
+#contact-form .v3-consent input{flex:0 0 auto;width:16px!important;height:16px!important;margin:2px 0 0!important;padding:0!important}
 #contact-form .journey-submit{width:100%!important;font-size:17px!important;padding:15px!important;margin-top:16px!important}
 .v3-contact-cta{margin:22px 0!important;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .v3-contact-secondary{display:inline-block;border:2px solid rgba(255,255,255,.55);color:#fff!important;font-weight:700;text-decoration:none!important;border-radius:999px;padding:11px 22px}
@@ -719,6 +721,7 @@ body.simple-home .site-footer-areas{display:none!important}
 @media(max-width:960px){#who-i-help .v3-flip-grid{grid-template-columns:repeat(2,1fr);gap:12px}#who-i-help .v3-flip{height:270px}#who-i-help .v3-flip-img{height:110px}#who-i-help .v3-flip-front h3{font-size:19px!important;margin:12px 14px 2px!important}#who-i-help .v3-flip-sub{margin:0 14px!important;font-size:12.5px!important}#who-i-help .v3-flip-hint{margin:auto 14px 12px}#who-i-help .v3-flip-back{padding:16px}#who-i-help .v3-flip-back p{font-size:14.5px!important;margin-bottom:12px!important}#who-i-help .v3-flip-link{font-size:13.5px;padding:9px 14px}#how-it-works .v3-steps-4,.v3-why-grid{grid-template-columns:1fr 1fr!important}}
 @media(max-width:560px){#how-it-works .v3-steps-4,.v3-why-grid{grid-template-columns:1fr!important}}
 @media(prefers-reduced-motion:reduce){#who-i-help .v3-flip-inner{transition:none}}
+@media(max-width:960px){#who-i-help .v3-flip{height:310px!important}#who-i-help .v3-flip-back{padding:14px!important;justify-content:flex-start!important}#who-i-help .v3-flip-back p{font-size:13.5px!important;line-height:1.45!important;margin-bottom:10px!important}#who-i-help .v3-flip-link{font-size:13px!important;padding:8px 12px!important}}
 
 /* v3: scrolling pill row */
 .v3-pills{background:#fff;border-bottom:1px solid #E4DED2;padding:18px 0;overflow:hidden}
@@ -1115,6 +1118,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 </div>
 <div class="journey-field journey-full form-group self-reported-source-field"><label for="home-heard-about">How did you first hear about Adam? (optional)</label><select id="home-heard-about" name="self_reported_source"><option value="">Choose if you remember</option><option value="ChatGPT">ChatGPT</option><option value="Gemini">Gemini</option><option value="Other AI assistant">Other AI assistant</option><option value="Google Search">Google Search</option><option value="Referral">Referral</option><option value="Other / not sure">Other / not sure</option></select></div>
 <input name="tcpa_consent" type="hidden" value="false"/>
+<label class="v3-consent"><input aria-required="true" name="tcpa_consent" required="" type="checkbox"/><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
 <button class="journey-button journey-submit" type="submit">Send it to Adam</button>
 </fieldset>
 <div aria-atomic="true" aria-live="polite" class="journey-status" hidden="" role="status" tabindex="-1"></div>

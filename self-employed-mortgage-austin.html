@@ -792,79 +792,12 @@ This sample uses 50% so the steps are easy to see. A CPA letter explains the bus
 </section>
 </main>
 <!-- Detailed Scenario Review Form Section (Blueprint Contract) -->
-<section class="u-section bg-light" id="detailed-review" style="padding: 64px 0; border-top: 1px solid var(--pwe-rule);">
-<div class="u-container" style="max-width: 880px;">
-<details class="u-disclose" id="detailed-scenario-drawer" style="background: #FFFFFF; border: 1px solid var(--pwe-rule); border-top: 3px solid var(--pwe-brass); border-radius: 4px;">
-<summary style="padding: 22px 28px; cursor: pointer; font-size: 18px; font-weight: 600; color: var(--pwe-obsidian); display: flex; justify-content: space-between; align-items: center;">
-<span>Prefer a Comprehensive File Review? Submit Your Full Scenario →</span>
-</summary>
-<div class="u-disclose-body" style="padding: 28px; border-top: 1px solid var(--pwe-rule);">
-<p style="font-size: 15px; color: var(--pwe-slate); margin-bottom: 24px;">For complex files, multiple business entities, or borrowers with tax documents ready for evaluation. Complete the detailed scenario review below for a comprehensive underwriting analysis.</p>
-<form action="/thank-you" class="journey-form" data-journey="business_owner" data-netlify="true" id="form-scenario-review" method="POST" name="scenario-review" netlify-honeypot="bot-field">
-<input name="utm_source" type="hidden" value=""/>
-<input name="utm_medium" type="hidden" value=""/>
-<input name="utm_campaign" type="hidden" value=""/>
-<input name="utm_term" type="hidden" value=""/>
-<input name="utm_content" type="hidden" value=""/>
-<input name="page_url" type="hidden" value=""/>
-<input name="entry_referrer" type="hidden" value=""/>
-<input name="first_touch_page" type="hidden" value=""/>
-<input name="first_touch_referrer" type="hidden" value=""/>
-<input name="first_touch_at" type="hidden" value=""/>
-<input name="first_touch_source" type="hidden" value=""/>
-<input name="first_touch_utm_source" type="hidden" value=""/>
-<input name="first_touch_utm_medium" type="hidden" value=""/>
-<input name="first_touch_utm_campaign" type="hidden" value=""/>
-<input name="first_touch_utm_term" type="hidden" value=""/>
-<input name="first_touch_utm_content" type="hidden" value=""/>
-<input name="source" type="hidden" value=""/>
-<input name="cta_source_page" type="hidden" value=""/>
-<input name="cta_label" type="hidden" value=""/>
-<input name="inquiry_id" type="hidden" value=""/><input name="intent" type="hidden" value="business_owner"/><input name="form-name" type="hidden" value="scenario-review"/>
-<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
-<p aria-live="polite" class="journey-progress">Your scenario</p>
-<fieldset data-journey-step="1"><legend>Your plans</legend><div class="journey-fields"><div class="journey-field"><label for="program-loan_goal">What would you like to do?</label><select id="program-loan_goal" name="loan_goal"><option selected="" value="Not Sure Yet">Not Sure Yet</option><option value="Purchase">Purchase</option><option value="Refinance">Refinance</option><option value="Access equity">Access equity</option><option value="Invest">Invest</option><option value="Build">Build</option><option value="Buy before selling">Buy before selling</option></select></div>
-<div class="journey-field"><label for="program-income_type">What should I know about your situation?</label><select id="program-income_type" name="income_type"><option value="No special circumstance">No special circumstance</option><option selected="" value="Self-employed / business owner">Self-employed / business owner</option><option value="Rental income">Rental income</option><option value="Substantial assets">Substantial assets</option><option value="Difficulty with another lender">Difficulty with another lender</option><option value="Another circumstance">Another circumstance</option><option value="Not sure yet">Not sure yet</option></select></div>
-<div class="journey-field"><label for="program-readiness">Where are you in the process?</label><select id="program-readiness" name="readiness"><option value="">Choose or leave unknown</option><option value="Exploring">Exploring</option><option value="Comparing options">Comparing options</option><option value="Property identified">Property identified</option><option value="Under contract">Under contract</option></select></div>
-<div class="journey-field"><label for="program-property_value">Approximate price or property value</label><input id="program-property_value" maxlength="160" name="property_value" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field"><label for="program-target_city">City or area</label><input id="program-target_city" maxlength="160" name="target_city" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Purchase|Invest|Build|Buy before selling"><label for="program-down_payment">Estimated down payment</label><input id="program-down_payment" maxlength="160" name="down_payment" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Refinance|Access equity|Buy before selling"><label for="program-current_balance">Current mortgage balance</label><input id="program-current_balance" maxlength="160" name="current_balance" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Refinance|Access equity"><label for="program-current_rate">Current interest rate (%)</label><input id="program-current_rate" maxlength="160" name="current_rate" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Refinance|Access equity"><label for="program-refinance_goal">What would you like to change?</label><select id="program-refinance_goal" name="refinance_goal"><option value="">Choose or leave unknown</option><option value="Lower payment">Lower payment</option><option value="Compare rate and costs">Compare rate and costs</option><option value="Change loan term">Change loan term</option><option value="Use equity">Use equity</option><option value="Still deciding">Still deciding</option></select></div>
-<div class="journey-field" data-goals="Invest"><label for="program-investment_action">What is the investment plan?</label><select id="program-investment_action" name="investment_action"><option value="">Choose or leave unknown</option><option value="Purchase">Purchase</option><option value="Refinance">Refinance</option><option value="Access equity">Access equity</option><option value="Still deciding">Still deciding</option></select></div>
-<div class="journey-field" data-goals="Invest"><label for="program-property_type">Property type</label><select id="program-property_type" name="property_type"><option value="">Choose or leave unknown</option><option value="Single-family rental">Single-family rental</option><option value="Condo or townhome">Condo or townhome</option><option value="2–4 units">2–4 units</option><option value="5+ units / commercial">5+ units / commercial</option><option value="Not sure yet">Not sure yet</option></select></div>
-<div class="journey-field" data-goals="Invest"><label for="program-monthly_rent">Expected or current monthly rent</label><input id="program-monthly_rent" maxlength="160" name="monthly_rent" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Invest"><label for="program-investment_strategy">Investment strategy</label><select id="program-investment_strategy" name="investment_strategy"><option value="">Choose or leave unknown</option><option value="Long-term rental">Long-term rental</option><option value="Short-term rental">Short-term rental</option><option value="Fix and flip">Fix and flip</option><option value="BRRRR / renovate and rent">BRRRR / renovate and rent</option><option value="Portfolio growth">Portfolio growth</option><option value="Still deciding">Still deciding</option></select></div>
-<div class="journey-field" data-situations="Self-employed / business owner"><label for="program-time_in_business">Time in business</label><select id="program-time_in_business" name="time_in_business"><option value="">Choose or leave unknown</option><option value="Less than 1 year">Less than 1 year</option><option value="1–2 years">1–2 years</option><option value="2 or more years">2 or more years</option><option value="Not sure">Not sure</option></select></div>
-<div class="journey-field" data-situations="Self-employed / business owner|Substantial assets"><label for="program-documentation_issue">Income or documentation question</label><input id="program-documentation_issue" maxlength="160" name="documentation_issue" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-situations="Difficulty with another lender"><label for="program-lender_status">Current loan stage</label><select id="program-lender_status" name="lender_status"><option value="">Choose or leave unknown</option><option value="Just started">Just started</option><option value="Application submitted">Application submitted</option><option value="Processing">Processing</option><option value="Underwriting">Underwriting</option><option value="Approved with conditions">Approved with conditions</option><option value="Clear to close">Clear to close</option><option value="Not sure">Not sure</option></select></div>
-<div class="journey-field" data-situations="Difficulty with another lender"><label for="program-closing_date">Closing date or deadline</label><input id="program-closing_date" maxlength="160" name="closing_date" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-situations="Difficulty with another lender"><label for="program-switch_reason">Reason for considering a different lender</label><input id="program-switch_reason" maxlength="160" name="switch_reason" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Build"><label for="program-lot_status">Where are you with the lot?</label><select id="program-lot_status" name="lot_status"><option value="">Choose or leave unknown</option><option value="Still looking">Still looking</option><option value="Lot identified">Lot identified</option><option value="Under contract">Under contract</option><option value="Already own the lot">Already own the lot</option><option value="Not sure">Not sure</option></select></div>
-<div class="journey-field" data-goals="Build"><label for="program-builder_status">Builder status</label><select id="program-builder_status" name="builder_status"><option value="">Choose or leave unknown</option><option value="Still comparing">Still comparing</option><option value="Builder selected">Builder selected</option><option value="Plans / bid in progress">Plans / bid in progress</option><option value="Contract signed">Contract signed</option><option value="Not sure">Not sure</option></select></div>
-<div class="journey-field" data-goals="Build"><label for="program-project_budget">Estimated total project budget</label><input id="program-project_budget" maxlength="160" name="project_budget" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Build"><label for="program-build_timing">When would you like to start building?</label><input id="program-build_timing" maxlength="160" name="build_timing" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Buy before selling"><label for="program-current_home_value">Approximate current-home value</label><input id="program-current_home_value" maxlength="160" name="current_home_value" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Buy before selling"><label for="program-listing_status">Current-home status</label><select id="program-listing_status" name="listing_status"><option value="">Choose or leave unknown</option><option value="Not listed">Not listed</option><option value="Preparing to list">Preparing to list</option><option value="Listed for sale">Listed for sale</option><option value="Under contract">Under contract</option><option value="Sold">Sold</option></select></div>
-<div class="journey-field" data-goals="Buy before selling"><label for="program-primary_constraint">What is the main constraint?</label><select id="program-primary_constraint" name="primary_constraint"><option value="">Choose or leave unknown</option><option value="Down payment tied up in equity">Down payment tied up in equity</option><option value="Qualifying with both payments">Qualifying with both payments</option><option value="Avoiding two moves">Avoiding two moves</option><option value="Avoiding a sale contingency">Avoiding a sale contingency</option><option value="Uncertain timing">Uncertain timing</option><option value="Something else">Something else</option></select></div>
-<div class="journey-field"><label for="program-timeline">Your timing or next milestone</label><input id="program-timeline" maxlength="160" name="timeline" placeholder="Estimate or leave unknown" type="text"/></div></div><button class="journey-button journey-submit" data-journey-next="" hidden="" type="button">Continue</button></fieldset>
-<fieldset data-journey-step="2"><legend>How can Adam reach you?</legend>
-<div class="journey-fields">
-<div class="journey-field"><label for="business_owner-first">First name *</label><input autocomplete="given-name" id="business_owner-first" maxlength="80" name="first_name" required=""/></div>
-<div class="journey-field"><label for="business_owner-last">Last name *</label><input autocomplete="family-name" id="business_owner-last" maxlength="80" name="last_name" required=""/></div>
-<div class="journey-field"><label for="business_owner-email">Email *</label><input autocomplete="email" id="business_owner-email" maxlength="160" name="email" required="" type="email"/></div>
-<div class="journey-field"><label for="business_owner-phone">Phone (optional)</label><input autocomplete="tel" id="business_owner-phone" maxlength="30" name="phone" type="tel"/></div>
-<div class="journey-field journey-full"><label for="business_owner-context">Anything else Adam should know? (optional)</label><textarea id="business_owner-context" maxlength="2000" name="situation" placeholder="Share your goals, questions, or anything that affects your plans." rows="3"></textarea><p class="journey-hint">Please leave out Social Security numbers, account numbers, and sensitive documents.</p></div>
-</div>
-<div class="journey-field journey-full form-group self-reported-source-field"><label for="scenario-review-heard-about">How did you first hear about Adam? (optional)</label><select id="scenario-review-heard-about" name="self_reported_source"><option value="">Choose if you remember</option><option value="ChatGPT">ChatGPT</option><option value="Gemini">Gemini</option><option value="Other AI assistant">Other AI assistant</option><option value="Google Search">Google Search</option><option value="Referral">Referral</option><option value="Other / not sure">Other / not sure</option></select></div>
-<label class="journey-consent"><input name="tcpa_consent" required="" type="checkbox" aria-required="true"><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
-<div class="journey-field"><label for="business_owner-follow-up">How would you prefer to hear from me?</label><select id="business_owner-follow-up" name="preferred_follow_up"><option value="Email">Email</option><option value="Phone">Phone</option></select><p class="journey-hint">For a time-sensitive question, you can also <a href="sms:+15129566010">text Adam</a>.</p></div><div class="journey-form-actions"><button class="journey-back" data-journey-back="" hidden="" type="button">Back</button><button class="journey-button journey-submit" type="submit">See My Options</button></div>
-</fieldset>
-<p class="journey-status" hidden="" role="status" tabindex="-1"></p>
-</form>
-</div>
-</details>
+<section class="u-section simple-apply" id="detailed-review">
+<div class="container">
+<h2>Ready to go further?</h2>
+<p>Start the secure application. I review it myself and call you.</p>
+<p><a class="u-btn-primary" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank">Start the application<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p class="simple-apply-alt">Not there yet? <a href="#quick-options">Send me a quick note instead</a>, or call <a href="tel:+15129566010">(512) 956-6010</a>.</p>
 </div>
 </section>
 <footer class="site-footer" id="site-footer">
