@@ -13,21 +13,21 @@ body.simple {
 }
 
 /* ---------- Short menu: Mortgage Options, About Adam, Apply Now ---------- */
-html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links > li:nth-child(2),
-html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links > li:nth-child(3),
-html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links > li:nth-child(4),
-html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links > li:nth-child(5),
-html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links > li.nav-phone-li,
-html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links > li:has(> .nav-cta:not(.nav-apply)),
-html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-dropdown {
+html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(2),
+html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(3),
+html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(4),
+html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(5),
+html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li.nav-phone-li,
+html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:has(> .nav-cta:not(.nav-apply)),
+html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-dropdown {
   display: none !important;
 }
-html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-has-dropdown > a::after { display: none !important; }
+html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-has-dropdown > a::after { display: none !important; }
 /* Three items fit on one line, so no hamburger above phone width. */
 @media (min-width: 720px) {
-  html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .mobile-menu-toggle { display: none !important; }
-  html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav { display: flex !important; align-items: center !important; justify-content: space-between !important; }
-  html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links {
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .mobile-menu-toggle { display: none !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav { display: flex !important; align-items: center !important; justify-content: space-between !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links {
     display: flex !important;
     position: static !important;
     flex-direction: row !important;
@@ -44,18 +44,18 @@ html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-h
     opacity: 1 !important;
     box-shadow: none !important;
   }
-  html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links > li:nth-child(1),
-  html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links > li:nth-child(6) { display: block !important; }
-  html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links > li > a:not(.nav-cta) { font-size: 15px !important; padding: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1),
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(6) { display: block !important; }
+  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li > a:not(.nav-cta) { font-size: 15px !important; padding: 0 !important; }
 }
-html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links .nav-apply {
+html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links .nav-apply {
   background: var(--simple-accent) !important;
   border-color: var(--simple-accent) !important;
   color: var(--simple-ink) !important;
   font-weight: 700 !important;
   border-radius: 999px !important;
 }
-html body:is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home):is(.simple,.simple-home) > header nav .nav-links .nav-apply:hover { background: var(--simple-accent-hover) !important; }
+html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links .nav-apply:hover { background: var(--simple-accent-hover) !important; }
 
 /* ---------- Hero: headline, one sentence, one obvious button ---------- */
 body.simple .blueprint-breadcrumb { display: none !important; }
@@ -347,3 +347,29 @@ body.simple main > .u-cta-section > .u-container { max-width: 820px !important; 
   body.simple .u-hero-grid { grid-template-columns: 1fr !important; }
 }
 body.simple .u-hero .u-cta-card textarea { min-height: 84px !important; width: 100% !important; box-sizing: border-box !important; }
+
+/* ---------- Calculators page: question cards that open a calculator below ---------- */
+html body.simple-calc.simple-calc.simple-calc .blueprint-breadcrumb { display: none !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-hub-hero { background: #11212E !important; padding: clamp(40px, 6vw, 72px) 0 !important; text-align: center !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-hub-hero h1 { color: #fff !important; font-size: clamp(36px, 5vw, 60px) !important; line-height: 1.05 !important; margin: 0 0 12px !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-hub-hero p { color: #D6DDE2 !important; font-size: 19px !important; margin: 0 !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-hub-section { padding: 36px 0 56px !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-hub-cards { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important; gap: 14px !important; margin: 0 0 24px !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-hub-cards .calc-card {
+  display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-start !important;
+  text-align: center !important; text-decoration: none !important;
+  background: #fff !important; border: 2px solid #E4DED2 !important; border-radius: 18px !important;
+  padding: 20px 12px !important; box-shadow: none !important; min-height: 0 !important; cursor: pointer !important;
+}
+html body.simple-calc.simple-calc.simple-calc .calc-hub-cards .calc-card:hover { border-color: #C6A46C !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-hub-cards .calc-card[aria-pressed="true"] { border-color: #11212E !important; box-shadow: inset 0 -5px 0 #F5C443 !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-card-icon { font-size: 26px !important; line-height: 1 !important; width: 56px !important; height: 56px !important; display: grid !important; place-items: center !important; background: #F6F4EF !important; border-radius: 14px !important; margin: 0 0 12px !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-hub-cards .calc-card-title { font-size: 17px !important; line-height: 1.2 !important; color: #0B151D !important; margin: 0 0 4px !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-hub-cards .calc-card-desc { font-size: 12.5px !important; color: #62707A !important; margin: 0 !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-panel { border: 1px solid #E4DED2 !important; border-radius: 18px !important; overflow: hidden !important; background: #fff !important; scroll-margin-top: 90px; }
+html body.simple-calc.simple-calc.simple-calc .calc-panel iframe { display: block !important; width: 100% !important; height: 900px; border: 0 !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-panel-full { margin: 0 !important; padding: 12px 18px !important; font-size: 14px !important; border-top: 1px solid #E4DED2 !important; text-align: right !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-hub-more { margin: 20px 0 0 !important; font-size: 16px !important; }
+@media (max-width: 640px) { html body.simple-calc.simple-calc.simple-calc .calc-hub-cards { grid-template-columns: 1fr 1fr !important; } }
+html body.simple-calc.simple-calc.simple-calc .calc-panel:not([hidden]) { display: block !important; }
+html body.simple-calc.simple-calc.simple-calc .calc-panel[hidden] { display: none !important; }

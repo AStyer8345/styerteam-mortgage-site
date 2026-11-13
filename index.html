@@ -686,6 +686,37 @@ body main .v2-partners p{font-size:14.5px}
 html body.simple-home.simple-home .pwe-hero .pwe-hero-actions .pwe-btn-primary{display:none!important}
 html body.simple-home.simple-home.simple-home .premium-contact .v3-contact-cta a.pwe-btn-primary{background:#F5C443!important;color:#0B151D!important;border:0!important;border-radius:999px!important;font-weight:700!important}
 @media(max-width:960px){.pwe-hero .v3-hero-form{max-width:none!important;margin:24px 0 0!important}}
+
+/* v3: flip cards, four steps, why grid */
+#who-i-help .v3-flip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+#who-i-help .v3-flip{perspective:1200px;height:300px;cursor:pointer;outline:0;border-radius:16px}
+#who-i-help .v3-flip-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+#who-i-help .v3-flip:hover .v3-flip-inner,#who-i-help .v3-flip:focus .v3-flip-inner,#who-i-help .v3-flip:focus-within .v3-flip-inner{transform:rotateY(180deg)}
+#who-i-help .v3-flip:focus-visible{box-shadow:0 0 0 3px #F5C443}
+#who-i-help .v3-flip-front,#who-i-help .v3-flip-back{position:absolute;inset:0;border-radius:16px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 10px 30px rgba(11,21,29,.12)}
+#who-i-help .v3-flip-front{background:#fff;display:flex;flex-direction:column}
+#who-i-help .v3-flip-img{width:100%;height:160px;object-fit:cover;display:block}
+#who-i-help .v3-flip-front h3{font-family:var(--pwe-serif,Georgia,serif)!important;font-size:24px!important;line-height:1.15!important;color:#0B151D!important;margin:18px 20px 4px!important}
+#who-i-help .v3-flip-sub{font-size:14px!important;color:#62707A!important;margin:0 20px!important}
+#who-i-help .v3-flip-hint{margin:auto 20px 16px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#806234}
+#who-i-help .v3-flip-back{background:#11212E;transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;padding:26px}
+#who-i-help .v3-flip-back p{color:#F6F4EF!important;font-size:17px!important;line-height:1.5!important;margin:0 0 18px!important}
+#who-i-help .v3-flip-link{align-self:flex-start;background:#F5C443;color:#0B151D!important;font-weight:700;font-size:15px;text-decoration:none!important;padding:11px 18px;border-radius:999px}
+#how-it-works .v3-steps-4{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:24px!important}
+#how-it-works .v3-steps-4>li{display:block!important;border-top:3px solid #F5C443!important;border-bottom:0!important;padding:16px 0 0!important;margin:0!important}
+#how-it-works .v3-steps-4 .v2-step-num{display:block!important;font-size:34px!important;line-height:1!important;margin:0 0 10px!important;position:static!important}
+#how-it-works .v3-steps-4 h3{margin:0 0 6px!important}
+.v3-why{background:#11212E;padding:clamp(56px,7vw,88px) 0}
+.v3-why .pwe-kicker{color:#C6A46C!important}
+.v3-why .pwe-section-title{color:#fff!important}
+.v3-why-grid{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.v3-why-grid li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px}
+.v3-why-grid h3{color:#fff!important;font-size:19px!important;line-height:1.25!important;margin:0 0 8px!important}
+.v3-why-grid p{color:#D6DDE2!important;font-size:15.5px!important;line-height:1.55!important;margin:0!important}
+body.simple-home .site-footer-areas{display:none!important}
+@media(max-width:960px){#who-i-help .v3-flip-grid{grid-template-columns:repeat(2,1fr);gap:12px}#who-i-help .v3-flip{height:270px}#who-i-help .v3-flip-img{height:110px}#who-i-help .v3-flip-front h3{font-size:19px!important;margin:12px 14px 2px!important}#who-i-help .v3-flip-sub{margin:0 14px!important;font-size:12.5px!important}#who-i-help .v3-flip-hint{margin:auto 14px 12px}#who-i-help .v3-flip-back{padding:16px}#who-i-help .v3-flip-back p{font-size:14.5px!important;margin-bottom:12px!important}#who-i-help .v3-flip-link{font-size:13.5px;padding:9px 14px}#how-it-works .v3-steps-4,.v3-why-grid{grid-template-columns:1fr 1fr!important}}
+@media(max-width:560px){#how-it-works .v3-steps-4,.v3-why-grid{grid-template-columns:1fr!important}}
+@media(prefers-reduced-motion:reduce){#who-i-help .v3-flip-inner{transition:none}}
 </style>
 <!-- Schema.org LocalBusiness -->
 
@@ -1075,30 +1106,42 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <h2 class="pwe-section-title" id="modern-goals-title">The right mortgage starts with your situation.</h2>
 </div>
 </div>
-<div class="modern-goal-grid recovery-specialty-grid six-audience-options pwe-audience-index pwe-borrower-cards">
-<article class="pwe-audience-col">
-<div class="pwe-card-media"><img alt="Hill Country home in Austin" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-hill-country-studio-card.webp" srcset="/assets/austin-hill-country-studio-card-480.webp 480w, /assets/austin-hill-country-studio-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>Self-Employed Borrowers</h3><p>Business owners and independent professionals whose income doesn't fit a standard tax return.</p><a class="pwe-card-link" href="/self-employed-mortgage-austin.html">Explore options <span aria-hidden="true">→</span></a></div>
+<div class="v3-flip-grid">
+<article class="v3-flip" tabindex="0">
+<div class="v3-flip-inner">
+<div class="v3-flip-front"><img alt="Hill Country home in Austin" class="v3-flip-img" height="447" loading="lazy" src="/assets/austin-hill-country-studio-card.webp" srcset="/assets/austin-hill-country-studio-card-480.webp 480w, /assets/austin-hill-country-studio-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/><h3>I own a business</h3><p class="v3-flip-sub">Self-employed borrowers</p><span aria-hidden="true" class="v3-flip-hint">Tap to flip</span></div>
+<div class="v3-flip-back"><p>Write-offs lower the income on your tax return. I can also look at 12 or 24 months of bank deposits, 1099s or a CPA-prepared P&amp;L.</p><a class="v3-flip-link" href="/self-employed-mortgage-austin.html">See how it works <span aria-hidden="true">→</span></a></div>
+</div>
 </article>
-<article class="pwe-audience-col">
-<div class="pwe-card-media"><img alt="Hill Country investment property" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-dscr-hill-country-retreat-card.webp" srcset="/assets/austin-dscr-hill-country-retreat-card-480.webp 480w, /assets/austin-dscr-hill-country-retreat-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>Real Estate Investors</h3><p>Financing for rentals, portfolio growth and pulling equity out of investment property.</p><a class="pwe-card-link" href="/investor-loans.html">Explore options <span aria-hidden="true">→</span></a></div>
+<article class="v3-flip" tabindex="0">
+<div class="v3-flip-inner">
+<div class="v3-flip-front"><img alt="Hill Country investment property" class="v3-flip-img" height="447" loading="lazy" src="/assets/austin-dscr-hill-country-retreat-card.webp" srcset="/assets/austin-dscr-hill-country-retreat-card-480.webp 480w, /assets/austin-dscr-hill-country-retreat-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/><h3>I own rentals</h3><p class="v3-flip-sub">Real estate investors</p><span aria-hidden="true" class="v3-flip-hint">Tap to flip</span></div>
+<div class="v3-flip-back"><p>A rental can qualify on its rent instead of your tax returns. That can work for long-term and short-term rentals, depending on the program.</p><a class="v3-flip-link" href="/investor-loans.html">See investor options <span aria-hidden="true">→</span></a></div>
+</div>
 </article>
-<article class="pwe-audience-col">
-<div class="pwe-card-media"><img alt="Austin home with welcoming front porch" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-craftsman-homebuyer-card.webp" srcset="/assets/austin-craftsman-homebuyer-card-480.webp 480w, /assets/austin-craftsman-homebuyer-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>First-Time Homebuyers</h3><p>Clear guidance on down payments, loan options and the path to your first home.</p><a class="pwe-card-link" href="/resources/first-time-buyer-guide/">Explore options <span aria-hidden="true">→</span></a></div>
+<article class="v3-flip" tabindex="0">
+<div class="v3-flip-inner">
+<div class="v3-flip-front"><img alt="Austin home with welcoming front porch" class="v3-flip-img" height="447" loading="lazy" src="/assets/austin-craftsman-homebuyer-card.webp" srcset="/assets/austin-craftsman-homebuyer-card-480.webp 480w, /assets/austin-craftsman-homebuyer-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/><h3>I'm buying my first home</h3><p class="v3-flip-sub">First-time homebuyers</p><span aria-hidden="true" class="v3-flip-hint">Tap to flip</span></div>
+<div class="v3-flip-back"><p>You may not need 20% down. I walk you through the down payment, the monthly payment and what you keep in the bank after closing.</p><a class="v3-flip-link" href="/resources/first-time-buyer-guide/">Read the first-time guide <span aria-hidden="true">→</span></a></div>
+</div>
 </article>
-<article class="pwe-audience-col">
-<div class="pwe-card-media"><img alt="Texas Hill Country home" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-texas-hill-country-ranch-card.webp" srcset="/assets/austin-texas-hill-country-ranch-card-480.webp 480w, /assets/austin-texas-hill-country-ranch-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>Veterans &amp; Military Families</h3><p>VA home loan guidance for eligible veterans, service members and military families.</p><a class="pwe-card-link" href="/loans/va.html">Explore options <span aria-hidden="true">→</span></a></div>
+<article class="v3-flip" tabindex="0">
+<div class="v3-flip-inner">
+<div class="v3-flip-front"><img alt="Texas Hill Country home" class="v3-flip-img" height="447" loading="lazy" src="/assets/austin-texas-hill-country-ranch-card.webp" srcset="/assets/austin-texas-hill-country-ranch-card-480.webp 480w, /assets/austin-texas-hill-country-ranch-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/><h3>I'm a veteran</h3><p class="v3-flip-sub">Veterans and military families</p><span aria-hidden="true" class="v3-flip-hint">Tap to flip</span></div>
+<div class="v3-flip-back"><p>Eligible veterans may be able to buy with no down payment and no monthly mortgage insurance. I check your eligibility first.</p><a class="v3-flip-link" href="/loans/va.html">See VA loans <span aria-hidden="true">→</span></a></div>
+</div>
 </article>
-<article class="pwe-audience-col">
-<div class="pwe-card-media"><img alt="Spacious Austin family home" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-move-up-estate-card.webp" srcset="/assets/austin-move-up-estate-card-480.webp 480w, /assets/austin-move-up-estate-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>Move-Up Homebuyers</h3><p>A plan for your current home, your equity and the timing of your next purchase.</p><a class="pwe-card-link" href="/buy-before-you-sell-austin.html">Explore options <span aria-hidden="true">→</span></a></div>
+<article class="v3-flip" tabindex="0">
+<div class="v3-flip-inner">
+<div class="v3-flip-front"><img alt="Spacious Austin family home" class="v3-flip-img" height="447" loading="lazy" src="/assets/austin-move-up-estate-card.webp" srcset="/assets/austin-move-up-estate-card-480.webp 480w, /assets/austin-move-up-estate-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/><h3>I need to buy before I sell</h3><p class="v3-flip-sub">Move-up homebuyers</p><span aria-hidden="true" class="v3-flip-hint">Tap to flip</span></div>
+<div class="v3-flip-back"><p>Sometimes you can buy the next home before the current one sells. I map out your equity and the timing with you.</p><a class="v3-flip-link" href="/buy-before-you-sell-austin.html">See how it works <span aria-hidden="true">→</span></a></div>
+</div>
 </article>
-<article class="pwe-audience-col">
-<div class="pwe-card-media"><img alt="Luxury home near Lake Austin" class="pwe-card-img" height="447" loading="lazy" src="/assets/austin-jumbo-westlake-estate-card.webp" srcset="/assets/austin-jumbo-westlake-estate-card-480.webp 480w, /assets/austin-jumbo-westlake-estate-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/></div>
-<div class="pwe-card-content"><h3>High-Net-Worth Borrowers</h3><p>Financing built around substantial assets, complex income and larger purchases.</p><a class="pwe-card-link" href="/loans/jumbo.html">Explore options <span aria-hidden="true">→</span></a></div>
+<article class="v3-flip" tabindex="0">
+<div class="v3-flip-inner">
+<div class="v3-flip-front"><img alt="Luxury home near Lake Austin" class="v3-flip-img" height="447" loading="lazy" src="/assets/austin-jumbo-westlake-estate-card.webp" srcset="/assets/austin-jumbo-westlake-estate-card-480.webp 480w, /assets/austin-jumbo-westlake-estate-card.webp 800w" sizes="(max-width: 700px) 50vw, 380px" width="800"/><h3>I have assets, not a big paycheck</h3><p class="v3-flip-sub">High-net-worth borrowers</p><span aria-hidden="true" class="v3-flip-hint">Tap to flip</span></div>
+<div class="v3-flip-back"><p>Strong savings or investments but modest income on paper? Some programs can count assets as income, including on larger loans.</p><a class="v3-flip-link" href="/loans/jumbo.html">See larger-loan options <span aria-hidden="true">→</span></a></div>
+</div>
 </article>
 </div>
 </div>
@@ -1107,12 +1150,26 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <section aria-labelledby="how-it-works-title" class="pwe-positioning v2-steps" id="how-it-works">
 <div class="container">
 <p class="pwe-kicker">How it works</p>
-<h2 class="pwe-section-title" id="how-it-works-title">Three steps. No pressure.</h2>
-<ol class="v2-step-list">
-<li><span aria-hidden="true" class="v2-step-num">1</span><h3>A 15-minute conversation</h3><p>Tell me how you get paid and what you want to do. I don't pull credit unless you decide to apply.</p></li>
-<li><span aria-hidden="true" class="v2-step-num">2</span><h3>I review your documents and compare programs</h3><p>A bank can only sell you its own loan. I take your file to many capital partners and compare the guidelines and the price.</p></li>
-<li><span aria-hidden="true" class="v2-step-num">3</span><h3>You get a written plan</h3><p>Your options and the tradeoffs, in writing, so you can decide on your own time.</p></li>
+<h2 class="pwe-section-title" id="how-it-works-title">Four steps, first call to closing.</h2>
+<ol class="v2-step-list v3-steps-4">
+<li><span aria-hidden="true" class="v2-step-num">1</span><h3>A free 15-minute call</h3><p>Tell me how you get paid and what you want to do. I don't pull credit unless you decide to apply.</p></li>
+<li><span aria-hidden="true" class="v2-step-num">2</span><h3>Get pre-approved</h3><p>I review your documents, compare programs across many capital partners, and put your options in writing.</p></li>
+<li><span aria-hidden="true" class="v2-step-num">3</span><h3>Lock your rate</h3><p>Once you are under contract or ready to refinance, we lock. I keep you posted through underwriting and the appraisal.</p></li>
+<li><span aria-hidden="true" class="v2-step-num">4</span><h3>Close</h3><p>You sign at a title company. Timing depends on the program, the appraisal and title work.</p></li>
 </ol>
+</div>
+</section>
+<!-- SECTION 3B: WHY ADAM -->
+<section aria-labelledby="why-adam-title" class="v3-why" id="why-adam">
+<div class="container">
+<p class="pwe-kicker">Why work with me</p>
+<h2 class="pwe-section-title" id="why-adam-title">I do the homework before I quote anything.</h2>
+<ul class="v3-why-grid">
+<li><h3>One person, start to finish</h3><p>You work with me and my team from the first call to closing. You get my cell number.</p></li>
+<li><h3>A plan built around your file</h3><p>A bank can only sell you its own loan. I compare many capital partners and fit the loan to how you actually get paid.</p></li>
+<li><h3>The numbers, in writing</h3><p>You see your options and the tradeoffs side by side, so you can decide on your own time.</p></li>
+<li><h3>I stay after closing</h3><p>I keep an eye on rates and your equity, and I call you when a change would actually help.</p></li>
+</ul>
 </div>
 </section>
 <!-- SECTION 4: PROOF -->

@@ -9,6 +9,8 @@
 - Jumbo wording corrected on public pages: jumbo is decided by loan amount, not purchase price.
 - Rolled out to `dscr-loan-austin-tx.html`: plain-language hero, new short form (`dscr_quick`), stray answer paragraph above the hero folded into a "What is a DSCR loan?" section, closing-speed and "seamless approval" wording removed.
 - Homepage: hero copy now names situations instead of loan programs; the contact form moved into the hero (name, phone, email); short menu; gold main button.
+- Homepage: six flip cards titled by situation, four-step process, new "Why work with me" section, suburb list hidden in the homepage footer.
+- Calculators page: seven question cards that open each calculator in a panel below (`js/calc-hub.js`). The calculator pages still exist on their own URLs.
 - Not live. Not merged into `release/2026-11-audit`.
 
 ## 2026-11-13 — Phase 6 wrap-up of the November audit
