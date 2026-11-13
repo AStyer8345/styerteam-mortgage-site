@@ -11,11 +11,13 @@ const publicExtensions = /\.(html|css|js|svg|png|jpe?g|webp|avif|ico|json|xml|tx
 const rootData = new Set(['rates.json', 'recent-updates.json', 'task-reports.json', 'robots.txt', 'llms.txt', 'acd320ce4aaac882bfb455892bdcf208.txt', 'sitemap.xml', '_redirects', '_headers', '31a45519eb8335e7c25e45e696e834c6.txt']);
 const privateFiles = new Set(JSON.parse(fs.readFileSync(path.join(root, 'scripts/admin-paths.json'), 'utf8')));
 const withheldFromProduction = new Set(['loanos.html', 'loanos-waitlist.html', 'forms.html']);
+// Retired pages stay in the repository but leave the public build; vercel.json 301s each one.
+const retiredPages = new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(root, 'scripts/retired-pages.json'), 'utf8'))).map(page => page.slice(1)));
 const tracked = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);
 const releaseFiles = JSON.parse(fs.readFileSync(path.join(root, 'scripts/public-release-files.json'), 'utf8'));
 const candidates = [...new Set([...tracked, ...releaseFiles])];
 const files = candidates.filter(file => {
-  if (privateFiles.has(file) || withheldFromProduction.has(file)) return false;
+  if (privateFiles.has(file) || withheldFromProduction.has(file) || retiredPages.has(file)) return false;
   if (file === '.well-known/security.txt') return true;
   if (file.startsWith('.') || file.includes('/originals/') || file.includes('_TEMPLATE')) return false;
   const parts = file.split('/');

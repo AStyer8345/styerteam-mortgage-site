@@ -124,6 +124,15 @@ export function buildConfig({ redirectsText, tomlText } = {}) {
     redirects.push({ source, destination, statusCode: rule.status });
   }
 
+  // Retired pages: one 301 each, added here so the Netlify-era files stay untouched.
+  const retired = JSON.parse(fs.readFileSync(path.join(root, 'scripts/retired-pages.json'), 'utf8'));
+  for (const [page, destination] of Object.entries(retired)) {
+    for (const source of [page, page.replace(/\.html$/, '')]) {
+      if (redirects.some((rule) => !rule.has && rule.source === source)) throw new Error(`Retired page already has a redirect: ${source}`);
+      redirects.push({ source, destination, statusCode: 301 });
+    }
+  }
+
   const headers = parseTomlHeaders(toml).map((block) => ({
     source: headerSource(block.source),
     headers: Object.entries(block.values).map(([key, value]) => ({ key, value })),

@@ -12,6 +12,8 @@ const localPathFor = (url) => {
   const pathname = new URL(url).pathname;
   if (pathname === '/') return 'index.html';
   if (pathname.endsWith('/')) return `${pathname.slice(1)}index.html`;
+  // Extensionless directory URLs such as /resources are served from their index.html.
+  if (fs.existsSync(path.join(root, pathname.slice(1), 'index.html'))) return `${pathname.slice(1)}/index.html`;
   return pathname.slice(1);
 };
 

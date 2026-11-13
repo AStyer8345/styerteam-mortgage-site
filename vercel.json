@@ -2116,6 +2116,206 @@
       "source": "/wp-login.php",
       "destination": "/",
       "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-02-25.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-02-25",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-03-03.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-03-03",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-03-13.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-03-13",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-03-19.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-03-19",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-03-24.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-03-24",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-04-01.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-04-01",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-04-03.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-04-03",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-04-14.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-04-14",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-04-24.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-04-24",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-05-18.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/rates/2026-05-18",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2025-02-19-market-update.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2025-02-19-market-update",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-02-19-austin-buyer-window.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-02-19-austin-buyer-window",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-02-20-fast-closes-teamwork-and-spring-market-momentum.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-02-20-fast-closes-teamwork-and-spring-market-momentum",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-06-temp-placeholder.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-06-temp-placeholder",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-10-temp-placeholder.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-10-temp-placeholder",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-30-temp-placeholder.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-03-30-temp-placeholder",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-01-spring-market-update.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-01-spring-market-update",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-01-test.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-01-test",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-27-why-home-prices-arent-crashing.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-04-27-why-home-prices-arent-crashing",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-08-10-austin-housing-market-report-august-2026.html",
+      "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/updates/2026-08-10-austin-housing-market-report-august-2026",
+      "destination": "/blog.html",
+      "statusCode": 301
     }
   ],
   "rewrites": [
