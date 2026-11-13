@@ -324,7 +324,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </ul>
 </li>
 <li class="nav-phone-li"><a class="nav-phone" href="tel:+15129566010">(512) 956-6010</a></li>
-<li><a class="nav-cta" href="/contact.html?goal=Purchase">See My Options</a></li>
+<li><a class="nav-cta" href="/contact.html">Contact</a></li>
 <li><a class="nav-cta nav-apply" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank">Apply Now<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
 </ul>
 </nav>
@@ -614,7 +614,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <p aria-hidden="true" class="hidden" hidden=""><label>Do not fill this out: <input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
 <div class="form-group">
 <label for="rc-name">Your Name</label>
-<input autocomplete="name" id="rc-name" name="name" placeholder="Jane Smith" required="" type="text"/>
+<span class="name-split"><input id="rc-name" aria-label="First name" autocomplete="given-name" maxlength="80" name="first_name" placeholder="First" required="" type="text"/><input aria-label="Last name" autocomplete="family-name" maxlength="80" name="last_name" placeholder="Last" required="" type="text"/><input data-full-name="" name="name" type="hidden" value=""/></span>
 </div>
 <div class="form-group">
 <label for="rc-brokerage">Company</label>

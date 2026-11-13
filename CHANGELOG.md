@@ -1,3 +1,12 @@
+## 2026-11-13 — First/last name boxes, Contact page, cleaner menu, linked flip cards (`design/rollout`, preview only)
+
+- 30 forms: the single name box is now First and Last. A hidden `name` field is kept in step by `script.js`, so every submit handler and the backup copy still get a full name; `first_name` and `last_name` are also sent.
+- Menu: "See My Options" pill replaced by a plain "Contact" link. Menu is now Loan Programs, Calculators, About Adam, Contact, Apply Now, phone.
+- Contact page: heading "Contact Adam" with three cards (call or text, email, book a call) above the existing form. Email shown is adamstyer@gorascal.com.
+- About page: photo aligned with the headline.
+- Self-employed page: each "who this is for" card links to its loan page; the whole flipped card is clickable. "Tap to flip" hint hidden on devices with a mouse.
+- Checks: 32 failing tests, none new; SEO audit 0 issues; build passes. No form was submitted.
+
 ## 2026-11-13 — Pre-qualification page rewrite and Calculators menu item (`design/rollout`, preview only)
 
 - Pre-qualification page: new hero and all eight FAQ answers rewritten in plain language with bullet lists; FAQ schema updated to match.

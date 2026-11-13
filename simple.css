@@ -588,3 +588,41 @@ body.simple main .u-section ul:not([class]) > li::before {
   body.simple .u-card.simple-flip { min-height: 150px; }
 }
 @media (prefers-reduced-motion: reduce) { body.simple .simple-flip-inner { transition: none; } }
+
+/* ---------- First and last name side by side ---------- */
+.name-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 10px; width: 100%; }
+.name-split > input { min-width: 0; width: 100%; box-sizing: border-box; }
+
+/* ---------- Menu: Contact is a plain link, Apply Now is the one button ---------- */
+@media (min-width: 1000px) {
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-cta.nav-cta.nav-cta.nav-cta:not(.nav-apply) {
+    background: none !important; color: #D6DDE2 !important; font-weight: 500 !important; padding: 8px 11px !important;
+  }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-cta.nav-cta.nav-cta.nav-cta:not(.nav-apply):hover { color: #fff !important; background: rgba(255, 255, 255, 0.1) !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:has(> .nav-apply) { margin-left: 6px !important; }
+}
+
+/* ---------- About page: photo lines up with the headline ---------- */
+body.premium-about.simple-nav .premium-trust-hero-layout { align-items: start !important; }
+body.premium-about.simple-nav .premium-trust-hero-layout > picture { align-self: start !important; }
+
+/* ---------- Contact page: form plus three ways to reach Adam ---------- */
+body.advisory-contact .contact-ways { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 12px; margin: 22px 0 0; padding: 0; list-style: none; }
+body.advisory-contact .contact-ways li { margin: 0; padding: 0; }
+body.advisory-contact .contact-ways li::before { content: none !important; }
+body.advisory-contact .contact-ways a { display: block; height: 100%; box-sizing: border-box; background: #fff; border: 1px solid var(--simple-line, #E4DED2); border-radius: 14px; padding: 14px 16px; text-decoration: none !important; color: var(--simple-ink, #11212E) !important; font-weight: 700; font-size: 15px; line-height: 1.35; overflow-wrap: anywhere; }
+body.advisory-contact main .advisory-contact-intro > .container { max-width: 720px !important; }
+body.advisory-contact .contact-ways a:hover { border-color: var(--simple-accent, #F5C443); box-shadow: 0 6px 18px rgba(17, 33, 46, 0.08); }
+body.advisory-contact .contact-ways a > span:first-child { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #62707A; margin-bottom: 4px; }
+@media (max-width: 700px) { body.advisory-contact .contact-ways { grid-template-columns: 1fr; } }
+
+/* ---------- Flip cards: the whole card is a link once it has one; no "tap" hint where hover works ---------- */
+body.simple .simple-flip-back a.simple-flip-link { display: inline-block; margin-top: 14px; font-size: 15px; font-weight: 700; text-decoration: none !important; }
+body.simple .simple-flip-back a.simple-flip-link::after { content: ""; position: absolute; inset: 0; }
+body.simple .simple-flip:has(.simple-flip-link) { cursor: pointer; }
+@media (hover: hover) { body.simple .simple-flip-hint { display: none !important; } }
+/* Name row spans the form; in the hero quick forms email and phone then share the next row. */
+:is(.journey-field, .form-group, .hqf-field):has(> .name-split) { grid-column: 1 / -1 !important; }
+.journey-field:has(> .name-split) ~ .journey-field.journey-full:has(> input[type="tel"]) { grid-column: auto !important; }
+div:has(> .name-split) { grid-column: 1 / -1 !important; }
+div:has(> .name-split) + div + .u-form-full:has(> input[type="tel"]) { grid-column: auto !important; }

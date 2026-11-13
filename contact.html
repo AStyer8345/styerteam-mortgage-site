@@ -262,7 +262,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </ul>
 </li>
 <li class="nav-phone-li"><a class="nav-phone" href="tel:+15129566010">(512) 956-6010</a></li>
-<li><a class="nav-cta" href="/contact.html?goal=Purchase">See My Options</a></li>
+<li><a class="nav-cta" href="/contact.html">Contact</a></li>
 <li><a class="nav-cta nav-apply" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank">Apply Now<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
 </ul>
 </nav>
@@ -271,10 +271,13 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <main id="main">
 <nav aria-label="Breadcrumb" class="blueprint-breadcrumb"><ol><li><a href="/">Home</a></li><li><span aria-current="page">Contact Adam Styer</span></li></ol></nav>
 <section class="advisory-contact-intro"><div class="container">
-<h1>Tell me what you are trying to do.</h1>
-<p>A purchase or a refinance in Austin and Central Texas. Send the short form, or call or text me. I read these myself.</p>
-
-<p class="hero-call-link"><a href="tel:+15129566010">(512) 956-6010</a> · <a href="sms:+15129566010">Text</a> · <a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a 15-minute call<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<h1>Contact Adam</h1>
+<p>Send the short form, or reach me directly. I read these myself.</p>
+<ul class="contact-ways">
+<li><a href="tel:+15129566010"><span>Call or text</span>(512) 956-6010</a></li>
+<li><a href="mailto:adamstyer@gorascal.com"><span>Email</span>adamstyer@gorascal.com</a></li>
+<li><a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank"><span>Book a call</span>Pick a 15-minute time<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
+</ul>
 </div></section>
 <section><div class="container" style="max-width:720px;">
 <aside class="home-conversation journey-card" id="contact-form">
@@ -307,7 +310,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
 <fieldset data-journey-step="2"><legend>Your details</legend>
 <div class="journey-fields">
-<div class="journey-field journey-full"><label for="name">Name *</label><input autocomplete="name" id="name" maxlength="160" name="name" required="" type="text"/></div>
+<div class="journey-field journey-full"><label for="name">Name *</label><span class="name-split"><input id="name" aria-label="First name" autocomplete="given-name" maxlength="80" name="first_name" placeholder="First" required="" type="text"/><input aria-label="Last name" autocomplete="family-name" maxlength="80" name="last_name" placeholder="Last" required="" type="text"/><input data-full-name="" name="name" type="hidden" value=""/></span></div>
 <div class="journey-field"><label for="phone">Phone *</label><input autocomplete="tel" id="phone" maxlength="30" name="phone" required="" type="tel"/></div>
 <div class="journey-field"><label for="email">Email *</label><input autocomplete="email" id="email" maxlength="160" name="email" required="" type="email"/></div>
 <div class="journey-field"><label for="loan_goal">Purchase or refinance *</label><select id="loan_goal" name="loan_goal" required=""><option value="">Choose one</option><option value="Purchase">Purchase</option><option value="Refinance">Refinance</option></select></div>

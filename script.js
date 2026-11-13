@@ -1503,3 +1503,27 @@ document.addEventListener('click', (e) => {
     });
   }
 });
+
+// First and last name boxes: keep the hidden "name" field current so every
+// existing submit handler and the backup copy still receive a full name.
+(function () {
+  function sync(wrap) {
+    var full = wrap.querySelector('input[data-full-name]');
+    if (!full) return;
+    var first = wrap.querySelector('input[name="first_name"]');
+    var last = wrap.querySelector('input[name="last_name"]');
+    full.value = ((first ? first.value : '') + ' ' + (last ? last.value : '')).trim();
+  }
+  function syncAll(root) { root.querySelectorAll('.name-split').forEach(sync); }
+  ['input', 'change'].forEach(function (type) {
+    document.addEventListener(type, function (event) {
+      var wrap = event.target.closest && event.target.closest('.name-split');
+      if (wrap) sync(wrap);
+    }, true);
+  });
+  document.addEventListener('submit', function (event) { syncAll(event.target); }, true);
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest && event.target.closest('button, input[type="submit"]');
+    if (button && button.form) syncAll(button.form);
+  }, true);
+})();
