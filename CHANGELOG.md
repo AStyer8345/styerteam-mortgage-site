@@ -3607,3 +3607,11 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Updated affiliation checks to allow only the verified application destination, reject the retired contact phone, and assert the actual canonical origin. Added both-old-host deep-path/query redirect tests.
 - Made legacy `/purchase` redirect directly to its existing final contact destination, preserving purchase intent and removing an unnecessary hop. Recompiled Vercel config.
 - Updated packaging test fixtures to include the current shipped asset optimizers. No public content, analytics IDs, form fields, capture handlers, or sitemap paths changed.
+
+## 2026-11-13 — Austin address matched to the NMLS record (not live yet)
+
+- Adam sent the NMLS Consumer Access office listing. The Austin branch is written "7600 N Capital of Texas Hwy Suite 230, #105", branch NMLS #2889346, start 11/05/2026.
+- Changed "Suite 230 (Private Office #105)" to "Suite 230, #105" in the footer, structured data, Contact, licensing, thank-you page, `llms.txt` and `config/business-entities.json` (223 files).
+- Licensing page now lists the Austin branch NMLS #2889346 under the office address. Not added to the footer.
+- Build passes, SEO audit 0 issues, no new test failures. One test failed until an iCloud-offloaded library file in `node_modules` was re-downloaded; unrelated to this change.
+- Committed to `copy/program-pages` only. Production still shows the old wording.

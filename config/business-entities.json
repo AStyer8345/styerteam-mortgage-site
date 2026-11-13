@@ -15,7 +15,7 @@
     },
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "7600 N Capital of Texas Hwy, Suite 230 (Private Office #105)",
+      "streetAddress": "7600 N Capital of Texas Hwy, Suite 230, #105",
       "addressLocality": "Austin",
       "addressRegion": "TX",
       "postalCode": "78731",
