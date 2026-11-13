@@ -10,7 +10,7 @@ function fixture(fn) {
   const put = (name, value) => { const file = path.join(root, name); fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, value); };
   try {
     put('scripts/package-public-site.mjs', packager);
-    for (const name of ['optimize-homepage.mjs', 'optimize-published-assets.mjs']) {
+    for (const name of ['optimize-homepage.mjs', 'optimize-published-assets.mjs', 'critical-css.mjs']) {
       put('scripts/' + name, fs.readFileSync(path.join(__dirname, '../scripts', name)));
     }
     put('assets/homepage.css', 'body{margin:0}');

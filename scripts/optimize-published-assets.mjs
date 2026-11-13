@@ -1,10 +1,13 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { criticalCss, minifyCss } from './critical-css.mjs';
 
 // Runs on the packaged site only. Source HTML stays readable.
 // Combines repeated local stylesheets, then stamps ?v=<hash> so the
 // immutable cache headers in netlify.toml can stay on for a year.
+// Bundled pages paint from an inline copy of their first-screen rules; the
+// full bundle then loads without blocking and cascades identically.
 const root = process.cwd();
 const dist = path.join(root, '.site-dist');
 
@@ -73,13 +76,44 @@ function bundleStyles(html) {
   const bundleAbs = path.join(dist, bundleRel);
   if (!fs.existsSync(bundleAbs)) {
     fs.mkdirSync(path.dirname(bundleAbs), { recursive: true });
-    const css = stampFontUrls(sheets.map(sheet => `/* ${sheet.rel} */\n${rewriteCss(sheet.rel, fs.readFileSync(path.join(dist, sheet.rel), 'utf8'))}`).join('\n'), bundleRel);
-    fs.writeFileSync(bundleAbs, css);
+    const css = stampFontUrls(sheets.map(sheet => rewriteCss(sheet.rel, fs.readFileSync(path.join(dist, sheet.rel), 'utf8'))).join('\n'), bundleRel);
+    fs.writeFileSync(bundleAbs, minifyCss(css));
   }
   let next = html;
   for (const sheet of sheets) next = next.replace(sheet.tag, '');
-  const link = `<link href="/${bundleRel}" rel="stylesheet"/>`;
-  if (next.includes('</head>')) next = next.replace('</head>', `${link}</head>`);
+  if (next.includes('</head>')) next = next.replace('</head>', () => `${styleTags(next, bundleRel)}</head>`);
+  return next;
+}
+
+// Fonts the first screen sets its headline and body copy in.
+const HERO_FONTS = ['assets/fonts/source-serif-4-roman-latin.woff2', 'assets/fonts/inter-normal-6.woff2'];
+
+function styleTags(html, bundleRel) {
+  const blocking = `<link href="/${bundleRel}" rel="stylesheet"/>`;
+  const critical = criticalCss(fs.readFileSync(path.join(dist, bundleRel), 'utf8'), html);
+  if (!critical || /<\/style/i.test(critical)) return blocking;
+  const preloads = HERO_FONTS
+    .filter(font => critical.includes(`/${font}`) && !html.includes(`href="/${font}`))
+    .map(font => `<link rel="preload" as="font" type="font/woff2" href="/${font}" crossorigin/>`).join('');
+  return `${preloads}<style data-critical-css>${critical}</style><link href="/${bundleRel}" rel="stylesheet" media="print" onload="this.media='all'"/><noscript>${blocking}</noscript>`;
+}
+
+// Late stylesheets change link and border colors after first paint. Without
+// this guard every such element runs its hover transition once on load.
+const TRANSITION_GUARD = '<style data-load-guard>html:not(.styer-ready) *,html:not(.styer-ready) *::before,html:not(.styer-ready) *::after{transition:none!important}</style><script>addEventListener("load",function(){requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.add("styer-ready");});});});</script>';
+
+// A tiny stylesheet in <head> costs a blocking request for a few hundred bytes.
+function inlineSmallHeadStyles(html) {
+  const head = html.slice(0, html.indexOf('</head>'));
+  let next = html;
+  for (const [tag] of head.matchAll(/<link\b[^>]*\brel=["']stylesheet["'][^>]*>/gi)) {
+    if (/\bmedia=/i.test(tag)) continue;
+    const rel = localPath(tag.match(/\bhref=["']([^"']+)["']/i)?.[1] || '');
+    if (!rel || !rel.endsWith('.css') || rel.startsWith('assets/bundles/') || rel.includes('/')) continue;
+    const abs = path.join(dist, rel);
+    if (!fs.existsSync(abs) || fs.statSync(abs).size > 16384 || !safeToBundle(rel)) continue;
+    next = next.replace(tag, () => `<style data-inlined="${rel}">${minifyCss(fs.readFileSync(abs, 'utf8'))}</style>`);
+  }
   return next;
 }
 
@@ -138,7 +172,7 @@ function stampHtml(html, htmlRel) {
 for (const file of walk(dist, '.css')) {
   const rel = path.relative(dist, file).split(path.sep).join('/');
   const before = fs.readFileSync(file, 'utf8');
-  const after = stampFontUrls(before, rel);
+  const after = minifyCss(stampFontUrls(before, rel));
   if (after !== before) fs.writeFileSync(file, after);
 }
 
@@ -149,6 +183,8 @@ for (const file of walk(dist)) {
   const before = fs.readFileSync(file, 'utf8');
   let html = bundleStyles(before);
   if (html !== before) bundled += 1;
+  else html = inlineSmallHeadStyles(html);
+  if (html.includes('</head>') && /<link\b[^>]*stylesheet/i.test(html)) html = html.replace('</head>', () => `${TRANSITION_GUARD}</head>`);
   const after = stampHtml(html, rel);
   if (after !== html) stamped += 1;
   if (after !== before) fs.writeFileSync(file, after);
