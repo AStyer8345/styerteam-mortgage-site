@@ -1,3 +1,12 @@
+## 2026-11-13 — Pre-qualification page rewrite and Calculators menu item (`design/rollout`, preview only)
+
+- Pre-qualification page: new hero and all eight FAQ answers rewritten in plain language with bullet lists; FAQ schema updated to match.
+- Corrected facts per Adam: soft credit check to pre-qualify, hard inquiry once under contract; renewing a letter is a document update, not a restart; bank statement loans may not need tax returns.
+- Removed the "listing agents call the lender on every offer" claim, the "24 to 48 hours" card and the broker-versus-bank line.
+- Menu item "Tools & Guides" is now "Calculators" and opens the calculators page (222 files, direct replacement).
+- `scripts/sync-navigation.mjs` is stale: running it rewrites every menu to an older layout. Do not run it without `--check` until it is rebuilt.
+- Checks: 32 failing tests, none new; SEO audit 0 issues; build passes.
+
 ## 2026-11-13 — New look rolled out to the rest of the site (`design/rollout`, preview only)
 
 - Every public page (171 with a menu) now loads `simple.css` and shows the dark pill menu.

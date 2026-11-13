@@ -16,7 +16,7 @@ body.simple-nav {
 }
 
 /* ---------- Floating pill menu ----------
-   Mortgage Options, Tools & Guides, About Adam, a Contact-style button
+   Mortgage Options, Calculators, About Adam, a Contact-style button
    (See My Options), Apply Now, and a round phone button. Blog, Borrower
    Stories, For Partners and every dropdown stay in the HTML but are hidden. */
 html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(3),
