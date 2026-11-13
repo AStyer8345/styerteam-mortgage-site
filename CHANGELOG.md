@@ -3634,3 +3634,8 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - FAQ schema text matches the visible answers on all five pages touched in batches 1 and 2.
 - Build passes, SEO audit 0 issues, no new test failures. Committed to `copy/program-pages` only.
 - Left for the copy pass, needs Adam: `mortgage-broker-vs-bank.html` (claims a broker "beats a bank on rate, loan options, and closing speed", says "wholesale rates"), and the jargon-heavy hero paragraphs on the P&L and asset depletion pages.
+
+## 2026-11-13 — Bullets batches 1 and 2 live
+
+- Production deployment `dpl_Ht7HHqxsUhbvUHccSTeWZf13mZEE`, commit `450ef0f0`; styerteam.com alias confirmed. Previous live `dpl_8fGDsVPm7MzZMRBPMqTWzHT5BK8P`.
+- Live pages not loaded (Vercel checkpoint). Next bullets pages: self-employed, business owners, K-1, home equity, construction, buy-before-you-sell.
