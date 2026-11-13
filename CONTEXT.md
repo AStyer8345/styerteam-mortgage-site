@@ -22,21 +22,21 @@ Mortgage website for Adam Styer, Senior Loan Officer, NMLS #513013, licensed in 
 * Build: `node scripts/vercel-build.mjs` → `npm run build` → output in `.site-dist/`
 * Serverless functions: `api/*.js` (lead-intake, mortgage-assistant, saved-analysis, etc.)
 * `vercel.json` rewrites `/.netlify/functions/:name` → `/api/:name`, so old function URLs in the front-end still work.
-* Analytics: GTM `GTM-PQQ6PGLR` (GA4 + Google Ads). The snippet is inline in every page; `scripts/gtm-snippet.cjs` is the source of truth. On the performance branch GTM loads 2.5 s after window load or on first interaction; thank-you pages load it at once. It only runs on styerteam.com, so previews and local builds never load it.
+* Analytics: GTM `GTM-PQQ6PGLR` (GA4 + Google Ads). The snippet is inline in every page; `scripts/gtm-snippet.cjs` is the source of truth. GTM loads 2.5 s after window load or on first interaction; thank-you pages load it at once. It only runs on styerteam.com, so previews and local builds never load it.
 * CSS: the build (`scripts/optimize-published-assets.mjs`) minifies CSS, inlines first-screen rules on interior pages and loads the full bundle without blocking. Edit source CSS as usual.
 
 ## Hosting and deploys
 
 * Host: Vercel, team `astyer8345's projects`, project `styerteam-site` (`prj_oPet4IOgPuN9hDtBFYcfbEi3HJEg`).
 * PRODUCTION BUILDS FROM BRANCH `cursor/blog-2026-11-02-refi-out-of-non-qm`, NOT `main`. `main` is behind and still has Netlify-era config. Do not set production to `main` until the live branch is merged into it.
-* Last known good production deploy: `dpl_8RHRKpec9EjUvqtFvTXsnZNdXLVB`, commit `01a8acf` (Nov 9, 2026). Use Vercel Instant Rollback to return to it.
+* Rollback target (last deploy before the November audit work): `dpl_8RHRKpec9EjUvqtFvTXsnZNdXLVB`, commit `01a8acf` (Nov 9, 2026). Use Vercel Instant Rollback to return to it.
 * Netlify hosting is retired. `netlify.toml` and `_redirects` are leftovers that still feed `vercel.json`. Don't edit them; remove only in a dedicated cleanup PR. `netlify/functions/` is live (see Release in progress).
 * A Vercel Security Checkpoint challenged automated requests on Nov 13. Firewall settings not yet reviewed.
 
 ## Release in progress (Nov 2026 audit)
 
-* Integration branch: `release/2026-11-audit`, cut from production commit `01a8acf`. Each phase gets its own branch off it. Nothing is merged into production yet.
-* Phase 0 (clean start), Phase 1 (`fix/quick-wins`) and Phase 2 (`perf/mobile-lcp`) are done and on Vercel previews. Phase 1 is merged into the integration branch locally. Phases 3–6 are not started.
+* Integration branch: `release/2026-11-audit`, cut from production commit `01a8acf`. Each phase gets its own branch off it.
+* Phases 0, 1 (`fix/quick-wins`) and 2 (`perf/mobile-lcp`) are LIVE. Adam approved on Nov 13 and the integration branch was fast-forwarded onto the production branch. Phases 3–6 are not started and still need Adam's approval before any production push.
 * Test gate, agreed Nov 13: no new failures versus `01a8acf`. That commit fails 32 of 202 tests and reports 30 `missing-description` findings in `npm run seo:audit`. Those are still open.
 * Run the build locally as `CONTEXT=deploy-preview npm run build`. A bare `npm run build` can submit URLs to IndexNow.
 * Retired pages: `scripts/retired-pages.json` lists pages kept in the repo but left out of the public build, each with one 301. The 10 `rates/` and 10 `updates/` pages are on it. A new rate page is published normally unless it is added to that list.

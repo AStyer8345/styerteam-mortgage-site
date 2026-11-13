@@ -1,3 +1,10 @@
+## 2026-11-13 — Live: Phases 1 and 2 of the November audit
+
+- Adam approved going live on Nov 13. `release/2026-11-audit` (Phase 0, Phase 1 `fix/quick-wins`, Phase 2 `perf/mobile-lcp`) was fast-forwarded onto the production branch `cursor/blog-2026-11-02-refi-out-of-non-qm`. No other commits had landed there since `01a8acf`.
+- The two entries below describe what shipped. Their "not deployed" lines were true when written.
+- Rollback: Vercel Instant Rollback to `dpl_8RHRKpec9EjUvqtFvTXsnZNdXLVB` (commit `01a8acf`).
+- Watch after release: GA4 page views (GTM now loads late) and Search Console coverage for the 20 retired `rates/` and `updates/` URLs.
+
 ## 2026-11-13 — Preview: Phase 2 performance (`perf/mobile-lcp`)
 
 - GTM `GTM-PQQ6PGLR` now loads 2.5 seconds after window load or on the first pointer, key, touch or scroll, whichever is first. `dataLayer` is created at once, so events pushed earlier still reach GTM in order. Thank-you pages load GTM immediately. Same container ID. Applied to 220 pages and the 4 page builders from `scripts/gtm-snippet.cjs`.
