@@ -1,3 +1,17 @@
+## 2026-11-13 — Preview: Phase 4 content consolidation (`seo/consolidate`)
+
+- 23 preserved guides in `resources/detailed-guides/` that had a same-named root page now 301 to that root page. 47 FAQs with no rates, scores, percentages or day counts moved into the root pages and their FAQPage schema. Tables, worked examples and FAQs with hard figures stayed in the retired files, because each guide is marked "figures may have changed".
+- DSCR: the Dripping Springs (35 impressions) and Fredericksburg (45) pages are now sections of `/dscr-loan-austin-tx.html` and 301 to its anchors. `/dscr-loans-texas.html` and the Austin page stay.
+- City pages: the top 8 by impressions stay (New Braunfels, Cedar Park, Pflugerville, Buda, Georgetown, Westlake, Lakeway, Kyle). 16 others are short sections of `/austin-area-mortgage-lender.html` and 301 to their anchors. Dallas and San Antonio stay; they are not Austin-area pages and have no data in the August export.
+- Retired files stay in the repo. `scripts/retired-pages.json` now lists 61 pages. 2,671 internal links were re-pointed, so no public page links to a redirect.
+- `scripts/vercel-config.mjs`: an older redirect for a retired URL gives way, and an older redirect that pointed at a retired page now points at its final destination. `tests/retired-pages.test.js` checks one hop per retired URL, that anchors exist, and that nothing links to a retired page.
+- Program pages (27): first paragraph answers the page's question in 40 to 60 words where it did not before (11 rewritten). Each shows "Reviewed by Adam Styer, NMLS #513013 · Updated November 13, 2026" and carries that date in Article schema. Three pages that had no Article schema now have it.
+- Asset depletion page: new title and meta description, and the page now opens with the formula and one labeled illustration.
+- `sitemap.xml`: 149 URLs. `npm run seo:lastmod` now ignores commits that touch more than 40 HTML files, so sitewide rollouts do not reset dates.
+- `npm run seo:audit`: 0 issues. The 30 old "missing description" findings were a bug in the audit (it stopped at an apostrophe).
+- `npm test`: 211 tests, 180 pass, 31 fail. All 31 also fail on the pre-audit production commit. No new failures.
+- Not deployed to production. Adam has not seen the city list or the merged pages yet.
+
 ## 2026-11-13 — Live: Phase 3 homepage rebuild (`feat/homepage-v2`)
 
 - `index.html` now has 8 sections in this order: hero, who I help, how it works, proof, programs, meet Adam, questions, final action. A one-line service-area note and a referral-partner strip sit above the footer.

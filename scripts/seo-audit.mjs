@@ -45,8 +45,9 @@ for (const url of urls) {
   const canonical = html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)/i)?.[1]
     || html.match(/<link\s+href=["']([^"']+)["']\s+rel=["']canonical["']/i)?.[1];
   const title = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1].replace(/\s+/g, ' ').trim();
-  const description = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)/i)?.[1]
-    || html.match(/<meta\s+content=["']([^"']*)["']\s+name=["']description["']/i)?.[1];
+  // The value may contain the other kind of quote (an apostrophe inside "..."), so match up to the opening quote.
+  const description = html.match(/<meta\s+name=["']description["']\s+content=(["'])(.*?)\1/i)?.[2]
+    || html.match(/<meta\s+content=(["'])(.*?)\1\s+name=["']description["']/i)?.[2];
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
   if (canonical !== url) issues.push({ type: 'canonical-mismatch', url, canonical: canonical || null });
   if (!title) issues.push({ type: 'missing-title', url });

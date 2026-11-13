@@ -37,11 +37,11 @@ Mortgage website for Adam Styer, Senior Loan Officer, NMLS #513013, licensed in 
 ## Release in progress (Nov 2026 audit)
 
 * Integration branch: `release/2026-11-audit`, cut from production commit `01a8acf`. Each phase gets its own branch off it.
-* Phases 0, 1 (`fix/quick-wins`) and 2 (`perf/mobile-lcp`) are LIVE. Adam approved on Nov 13 and the integration branch was fast-forwarded onto the production branch. Phase 3 (`feat/homepage-v2`, homepage rebuild) went live the same day at Adam's request. Phases 4–6 are preview-only until Adam reviews them. Every production push still needs Adam's approval.
+* Phases 0, 1 (`fix/quick-wins`) and 2 (`perf/mobile-lcp`) are LIVE. Adam approved on Nov 13 and the integration branch was fast-forwarded onto the production branch. Phase 3 (`feat/homepage-v2`, homepage rebuild) went live the same day at Adam's request. Phase 4 (`seo/consolidate`) is on a preview and waits for Adam's review before production: it retires 41 more pages. Phases 5–6 follow. Every production push still needs Adam's approval.
 * Homepage styles for the rebuilt sections live in `<style id="homepage-v2">` in `index.html`. They use `#who-i-help` and `#programs` prefixes on purpose, to outrank older rules in `assets/homepage.css`.
-* Test gate, agreed Nov 13: no new failures versus `01a8acf`. That commit fails 32 of 202 tests and reports 30 `missing-description` findings in `npm run seo:audit`. Those are still open.
+* Test gate, agreed Nov 13: no new failures versus `01a8acf`. That commit fails 32 of 202 tests; those are still open. `npm run seo:audit` is clean on the Phase 4 branch.
 * Run the build locally as `CONTEXT=deploy-preview npm run build`. A bare `npm run build` can submit URLs to IndexNow.
-* Retired pages: `scripts/retired-pages.json` lists pages kept in the repo but left out of the public build, each with one 301. The 10 `rates/` and 10 `updates/` pages are on it. A new rate page is published normally unless it is added to that list.
+* Retired pages: `scripts/retired-pages.json` lists pages kept in the repo but left out of the public build, each with one 301. It holds the 10 `rates/` and 10 `updates/` pages and, on the Phase 4 branch, 23 preserved guides, 2 Hill Country DSCR pages and 16 city pages. Never link to a retired URL; a test fails if a public page does. A new rate page is published normally unless it is added to that list.
 * `api/*.js` loads its handlers from `netlify/functions/`, so that folder is live code, not a leftover. Only `netlify.toml` and `_redirects` are Netlify-era config, and `scripts/vercel-config.mjs` still reads both to build `vercel.json`.
 
 ## Leads
@@ -54,7 +54,7 @@ Mortgage website for Adam Styer, Senior Loan Officer, NMLS #513013, licensed in 
 ## SEO / AEO setup
 
 * `robots.txt` allows search and AI crawlers; admin pages disallowed.
-* `sitemap.xml`: 189 URLs on styerteam.com. `lastmod` comes from git: run `npm run seo:lastmod` after committing page changes.
+* `sitemap.xml`: 189 URLs on styerteam.com (149 on the Phase 4 branch). `lastmod` comes from git: run `npm run seo:lastmod` after committing page changes.
 * Every page has Organization + Person + WebSite JSON-LD. FAQPage only where the FAQ is visible on the page.
 * New blog posts must be added to `blog/manifest.json`, `blog.html`, `sitemap.xml`.
 * Search Console for styerteam.com: not yet set up. Last data is an Aug 2026 export for styermortgage.com in `seo-data/gsc/`.
