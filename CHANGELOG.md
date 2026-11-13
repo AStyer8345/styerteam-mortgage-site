@@ -1,3 +1,168 @@
+## 2026-11-13 — Austin office address (live, `dpl_53R3R2iAxBY4aSgLCs5ZY9vzuhcb`)
+
+- Footer on 218 pages and the shared footer template: new contact block with the Austin office (7600 N Capital of Texas Hwy, Suite 230 (Private Office #105), Austin, TX 78731), phone and email. The Brooklyn line now reads "Go Rascal Inc. corporate office".
+- Structured data on 215 pages and `config/business-entities.json`: business address is the Austin office; areaServed is Austin and Texas.
+- Contact page, licensing page, thank-you page and `llms.txt` show the Austin office.
+- Adam confirmed Go Rascal filed the Austin office with the NMLS. Not checked against NMLS Consumer Access.
+
+## 2026-11-13 — Rollout live; copy pass batch 1 (`copy/program-pages`, preview only)
+
+- Production: deployed commit `02dd74ad` (sitewide new look, cards, pre-qualification rewrite, first/last name, Contact link) as `dpl_DYGq3xsvwJZf7oCHfhRmVrXqib7F`. Previous live: `dpl_8h4jMxLjw31iem8RfCFa23xZ2dMJ`.
+- Bank statement page: plain-language hero, short version as a checklist, situation-based flip cards with links, options and steps rewritten. FAQ and schema untouched.
+- "The Wholesale Advantage" strip reworded on 15 pages. 45 pages still contain "wholesale" elsewhere.
+- Found: the chatbot is off on Vercel (`api/mortgage-assistant.js` returns `enabled: false` since the 2026-10-30 port).
+- `/resources` was only linked from the hidden menu dropdown. Added "Free resources" to every footer (218 pages and the shared footer template) and a "Looking for guides instead?" link on the calculators page.
+- Checks: 32 failing tests, none new; SEO audit 0 issues; build passes.
+
+## 2026-11-13 — First/last name boxes, Contact page, cleaner menu, linked flip cards (`design/rollout`, preview only)
+
+- 30 forms: the single name box is now First and Last. A hidden `name` field is kept in step by `script.js`, so every submit handler and the backup copy still get a full name; `first_name` and `last_name` are also sent.
+- Menu: "See My Options" pill replaced by a plain "Contact" link. Menu is now Loan Programs, Calculators, About Adam, Contact, Apply Now, phone.
+- Contact page: heading "Contact Adam" with three cards (call or text, email, book a call) above the existing form. Email shown is adamstyer@gorascal.com.
+- About page: photo aligned with the headline.
+- Self-employed page: each "who this is for" card links to its loan page; the whole flipped card is clickable. "Tap to flip" hint hidden on devices with a mouse.
+- Checks: 32 failing tests, none new; SEO audit 0 issues; build passes. No form was submitted.
+
+## 2026-11-13 — Pre-qualification page rewrite and Calculators menu item (`design/rollout`, preview only)
+
+- Pre-qualification page: new hero and all eight FAQ answers rewritten in plain language with bullet lists; FAQ schema updated to match.
+- Corrected facts per Adam: soft credit check to pre-qualify, hard inquiry once under contract; renewing a letter is a document update, not a restart; bank statement loans may not need tax returns.
+- Removed the "listing agents call the lender on every offer" claim, the "24 to 48 hours" card and the broker-versus-bank line.
+- Menu item "Tools & Guides" is now "Calculators" and opens the calculators page (222 files, direct replacement).
+- `scripts/sync-navigation.mjs` is stale: running it rewrites every menu to an older layout. Do not run it without `--check` until it is rebuilt.
+- Checks: 32 failing tests, none new; SEO audit 0 issues; build passes.
+
+## 2026-11-13 — New look rolled out to the rest of the site (`design/rollout`, preview only)
+
+- Every public page (171 with a menu) now loads `simple.css` and shows the dark pill menu.
+- 29 more program-layout pages use the full simple style (`<body class="simple">`). On 11 of them the existing short form moved into the hero; the long-form drawer on 8 stays in its own section lower down.
+- The other 138 pages (suburb pages, blog posts, guides, about, contact) get a lite layer (`<body class="simple-nav">`): same menu, gold main button, larger headline, plain FAQ rows. Their heroes stay light.
+- Cards pass on 26 program pages: the four "who this is for" cards are flip cards (title front, existing text back), the three options are real cards, the three steps are numbered cards with links underneath (short form, Calendly, pre-approval page). Plain lists render as checklists. All text stays in the HTML.
+- No copy was rewritten in this pass. The four page builders in `netlify/functions/lib/` are unchanged, so newly generated posts will not have the new menu until they are updated.
+- Not live.
+
+## 2026-11-13 — Simpler page style pilot (`design/simplify`, preview only)
+
+- New `simple.css`, active only on `<body class="simple">`. Pilot page: `self-employed-mortgage-austin.html`.
+- Hero cut to headline, one sentence, one gold button. Stat cards and the repeated subhead removed.
+- Menu on the pilot shows Mortgage Options, About Adam, Apply Now. Markup unchanged; the rest is hidden by CSS for the pilot only.
+- "How it works" rewritten in plain words. Filler trust strip removed. "Wholesale" and a "retail banks" comparison removed.
+- Kept for search and AI answers: H1, title, the question-and-answer block, all 11 FAQs and their schema, every link in the body.
+- Pilot v2: dark hero with the page's existing short form moved beside the headline (goal, name, email, phone, consent). A closing section links back to it.
+- Jumbo wording corrected on public pages: jumbo is decided by loan amount, not purchase price.
+- Rolled out to `dscr-loan-austin-tx.html`: plain-language hero, new short form (`dscr_quick`), stray answer paragraph above the hero folded into a "What is a DSCR loan?" section, closing-speed and "seamless approval" wording removed.
+- Homepage: hero copy now names situations instead of loan programs; the contact form moved into the hero (name, phone, email); short menu; gold main button.
+- Homepage: six flip cards titled by situation, four-step process, new "Why work with me" section, suburb list hidden in the homepage footer.
+- Calculators page: seven question cards that open each calculator in a panel below (`js/calc-hub.js`). The calculator pages still exist on their own URLs.
+- Menu on the simplified pages is now a floating white pill: Mortgage Options, Tools & Guides, About Adam, See My Options, Apply Now, round phone button (CSS only, 1000px and wider).
+- Homepage: scrolling row of nine pill links in Adam's words; fifth "Why work with me" point about keeping the Realtor and title company in the loop.
+- Long scenario forms removed from the self-employed page (`form-scenario-review`) and DSCR page (`form-dscr-quote`) at Adam's request; each is now an Apply block linking to the secure application. The short forms stay.
+- Homepage form now has the TCPA consent checkbox. Menu reads "Loan Programs" on the simplified pages (CSS label). Pill row restyled dark and narrower.
+- The 16 suburb pages retired in Phase 4 are restored as landing pages (Adam's call): back in the build and sitemap, linked from their sections on the Austin-area page, jumbo wording corrected. 45 pages remain retired.
+- Went live Nov 13 with Phases 4 and 5 at Adam's direction.
+
+## 2026-11-13 — Phase 6 wrap-up of the November audit
+
+- `release/2026-11-audit` holds all five phases. Phases 0 to 3 are live. Phases 4 and 5 are on previews and wait for Adam's review.
+- Final local mobile Lighthouse, simulated throttling, median of 3, before → after: home 93 → 98, self-employed 89 → 95, bank statement 90 → 95, blog post 92 → 95, Cedar Park 88 → 92. Local numbers run well above live PageSpeed because GTM never loads off styerteam.com.
+- 61 retired URLs, each with one 301: 10 `rates/`, 10 `updates/`, 23 preserved guides, 2 Hill Country DSCR pages, 16 city pages. The list is `scripts/retired-pages.json`.
+- Checks on the release branch: `npm test` 214 tests, 183 pass, 31 fail (all 31 predate the audit); `npm run typecheck` pass; `npm run seo:audit` 0 issues; preview-mode build pass.
+- Still open for Adam: review Phase 4's city and guide merges before they go live; add GTM triggers for the six new events; Google Business Profile address; Go Rascal compliance answers; the 31 old failing tests; the footer's length on phones.
+
+## 2026-11-13 — Preview: Phase 5 schema, tracking and video (`feat/schema-tracking`)
+
+- About page Person schema: added `hasCredential` (NMLS mortgage loan originator license #513013, valid in Texas) and `knowsAbout` (self-employed mortgages, bank statement loans, DSCR, non-QM, jumbo, HELOAN). Organization stays Organization + FinancialService. No local address was added; a TODO comment marks where the Google Business Profile address goes.
+- New dataLayer events in `script.js`, on every page: `form_start`, `form_submit`, `call_click`, `text_click`, `calendly_click`, `apply_click`. Each carries `page_path`; form events also carry `form_name`. Nothing a visitor types is sent.
+- `form_submit` fires only after the capture path has accepted the lead, from the same function that already sends `generate_lead`.
+- Existing events are unchanged: `generate_lead`, `scenario_submit`, `book_call_click`, `secure_application_click`, `text_click` from `analytics.js`, and the journey forms' own `form_start`.
+- GTM still needs a trigger and a GA4 event tag for each new event name before they appear in GA4. That is a change in the GTM container, not in this repo.
+- YouTube: one embed existed, on `/non-qm-loans.html`. It is now a click-to-load player, so nothing loads from YouTube until a visitor presses play. VideoObject schema is on that page only. The other 220 YouTube references are footer links to the channel.
+- `npm run audit:schema`: 216 JSON-LD blocks valid. A local check of Article, FAQPage, VideoObject and BreadcrumbList fields found nothing missing on 168 public pages.
+- New tests: `tests/ga4-events.test.js`.
+- `npm test`: 214 tests, 183 pass, 31 fail, all 31 from before the audit. No new failures.
+- Not deployed to production.
+
+## 2026-11-13 — Preview: Phase 4 content consolidation (`seo/consolidate`)
+
+- 23 preserved guides in `resources/detailed-guides/` that had a same-named root page now 301 to that root page. 47 FAQs with no rates, scores, percentages or day counts moved into the root pages and their FAQPage schema. Tables, worked examples and FAQs with hard figures stayed in the retired files, because each guide is marked "figures may have changed".
+- DSCR: the Dripping Springs (35 impressions) and Fredericksburg (45) pages are now sections of `/dscr-loan-austin-tx.html` and 301 to its anchors. `/dscr-loans-texas.html` and the Austin page stay.
+- City pages: the top 8 by impressions stay (New Braunfels, Cedar Park, Pflugerville, Buda, Georgetown, Westlake, Lakeway, Kyle). 16 others are short sections of `/austin-area-mortgage-lender.html` and 301 to their anchors. Dallas and San Antonio stay; they are not Austin-area pages and have no data in the August export.
+- Retired files stay in the repo. `scripts/retired-pages.json` now lists 61 pages. 2,671 internal links were re-pointed, so no public page links to a redirect.
+- `scripts/vercel-config.mjs`: an older redirect for a retired URL gives way, and an older redirect that pointed at a retired page now points at its final destination. `tests/retired-pages.test.js` checks one hop per retired URL, that anchors exist, and that nothing links to a retired page.
+- Program pages (27): first paragraph answers the page's question in 40 to 60 words where it did not before (11 rewritten). Each shows "Reviewed by Adam Styer, NMLS #513013 · Updated November 13, 2026" and carries that date in Article schema. Three pages that had no Article schema now have it.
+- Asset depletion page: new title and meta description, and the page now opens with the formula and one labeled illustration.
+- `sitemap.xml`: 149 URLs. `npm run seo:lastmod` now ignores commits that touch more than 40 HTML files, so sitewide rollouts do not reset dates.
+- `npm run seo:audit`: 0 issues. The 30 old "missing description" findings were a bug in the audit (it stopped at an apostrophe).
+- `npm test`: 211 tests, 180 pass, 31 fail. All 31 also fail on the pre-audit production commit. No new failures.
+- Not deployed to production. Adam has not seen the city list or the merged pages yet.
+
+## 2026-11-13 — Live: Phase 3 homepage rebuild (`feat/homepage-v2`)
+
+- `index.html` now has 8 sections in this order: hero, who I help, how it works, proof, programs, meet Adam, questions, final action. A one-line service-area note and a referral-partner strip sit above the footer.
+- Hero: H1 unchanged. New lead paragraph (Adam's pick, option A2) plus a second line for regular loans (conventional, FHA, VA). Credentials line with the Google rating. One button, "Send your scenario", scrolls to the form. Call link beside it.
+- Who I help: the same 6 cards, one sentence each. Move-Up now links to `/buy-before-you-sell-austin.html`. On phones the cards drop their photos and sit two across.
+- How it works: three steps, with the "a bank can only sell you its own loan" line in step 2.
+- Proof: nine existing Google reviews in a strip that scrolls on its own, each linked to its source. It pauses on hover, touch or focus, has a Pause button, can be swiped by hand, and stays still for visitors who ask for reduced motion. One line with licensed-since date, 1,000+ loans closed, and Google and Zillow links. Links to all reviews and to `/scenarios.html`.
+- Programs: an HTML table of six rows (who it fits, what you document, link). No rates or down-payment percentages. Rows stack on phones.
+- Meet Adam: family photo, three paragraphs, the two team roles, the reference "Romans 1:16-17" (not the verse text), link to About.
+- Questions: the same 5 FAQs. FAQPage schema is regenerated from the visible text and now matches it exactly. One "Latest from the blog" link replaces the blog cards.
+- Final action: the existing short form, unchanged, with call/text and Calendly beside it.
+- Removed from the homepage: the four-stat band, the three case-study cards, the calculator block, the blog card row, the "If you want to read more" list, the K-1 / one-time-close chips, and extra "See My Options" buttons.
+- Page height at 390 px: 19,659 px before, about 10,060 px after (11.9 phone screens). The shared footer is 2.3 of those and was not changed.
+- Two tests that described the old homepage were updated to describe the new one (`tests/editorial-rollout.test.js`, `tests/premium-homepage.test.js`).
+- `npm test`: 210 tests, 178 pass, 32 fail, the same 32 as before the audit. No new failures.
+- Adam asked for this to be pushed and deployed on Nov 13. Released as an explicit production deployment after fast-forwarding the production branch. Rollback target for the homepage alone: `dpl_CcWMj6BMwQm7UddzF4uaz7vQejYv` (Phases 1 and 2).
+
+## 2026-11-13 — Live: Phases 1 and 2 of the November audit
+
+- Adam approved going live on Nov 13. `release/2026-11-audit` (Phase 0, Phase 1 `fix/quick-wins`, Phase 2 `perf/mobile-lcp`) was fast-forwarded onto the production branch `cursor/blog-2026-11-02-refi-out-of-non-qm`. No other commits had landed there since `01a8acf`.
+- The two entries below describe what shipped. Their "not deployed" lines were true when written.
+- Live deployment: `dpl_CcWMj6BMwQm7UddzF4uaz7vQejYv`, commit `14eaa07a`, created as an explicit production deployment through the Vercel API. The push alone only built a preview. styerteam.com, www.styerteam.com and both styermortgage.com hosts now point at it.
+- Not checked on the live domain: the Vercel Security Checkpoint blocks automated requests, so page content, the 20 new 301s and GTM firing still need a look in a real browser.
+- Rollback: Vercel Instant Rollback to `dpl_8RHRKpec9EjUvqtFvTXsnZNdXLVB` (commit `01a8acf`).
+- Watch after release: GA4 page views (GTM now loads late) and Search Console coverage for the 20 retired `rates/` and `updates/` URLs.
+
+## 2026-11-13 — Preview: Phase 2 performance (`perf/mobile-lcp`)
+
+- GTM `GTM-PQQ6PGLR` now loads 2.5 seconds after window load or on the first pointer, key, touch or scroll, whichever is first. `dataLayer` is created at once, so events pushed earlier still reach GTM in order. Thank-you pages load GTM immediately. Same container ID. Applied to 220 pages and the 4 page builders from `scripts/gtm-snippet.cjs`.
+- Interior pages (193) paint from an inline copy of their first-screen CSS. The full bundle loads without blocking and cascades the same way. New helper: `scripts/critical-css.mjs`, used by `scripts/optimize-published-assets.mjs`.
+- All published CSS is minified in the build. Source CSS is unchanged.
+- Interior pages preload the two hero fonts (Source Serif 4, Inter) at every width.
+- Homepage: `a11y.css` is inlined, so nothing in `<head>` blocks rendering. Font preloads stay desktop-only there: preloading them on mobile raised simulated LCP from 3.0 s to 3.9 s in testing.
+- A load guard stops hover transitions from firing when late stylesheets arrive. Homepage animated elements in Lighthouse: 137 before, 0 after.
+- Scroll reveals were already switched off in CSS, so no scroll animation was delaying paint.
+- Local mobile Lighthouse, simulated throttling, median of 3: home 93 → 93, self-employed 89 → 95, bank statement 90 → 95, blog post 92 → 95, Round Rock 88 → 92. First paint on interior pages 2.4 s → 1.0 s.
+- Looks the same: interior pages are pixel-identical before and after at 390 and 1440 px. The homepage matches element by element (946 elements: position, size, color, font) at both widths.
+- `npm test`: 210 tests, 178 pass, 32 fail, the same 32 as production. No new failures.
+- Not deployed to production.
+
+## 2026-11-13 — Preview: Phase 0 and Phase 1 of the November audit (`fix/quick-wins`)
+
+- Phase 0: created `release/2026-11-audit` from production commit `01a8acf`. Moved 11 outdated planning docs to `_archive/`. New root `CONTEXT.md`. Dropped the GOALS.md and Daily Operating System reads from `CLAUDE.md`.
+- Wording: "wholesale lenders" is now "many capital partners" on public pages, assistant knowledge and assistant training text (287 replacements, 75 files). Lender counts ("40+", "20 or more") removed. "Independent broker" removed from `products.html` and `reverse-mortgage-texas.html`.
+- Social image `assets/og-image.png` regenerated: STYERTEAM.COM and "Many capital partners" replace STYERMORTGAGE.COM and "40+ lenders".
+- Homepage hero: real space in the H1, badge reads "5.0 on Google · 99 reviews" and links to the Google profile in schema `sameAs`, second "Powered by Go Rascal Inc." badge removed. "Verified" removed from every review badge.
+- About H1 and its schema name: "Hi, I'm Adam Styer. I find the path when your file doesn't fit the box."
+- 33 pages now load `adam-cutout-900.webp` (47 KB, 900×900 set) instead of `adam-cutout.png` (1.1 MB).
+- 16 filler stat cards on 9 program pages replaced with a fact already stated on the same page. The "50-State Reach" card on the Austin DSCR page is gone.
+- 10 `rates/` pages and 10 `updates/` pages (all noindexed) left the public build. Each 301s to `/blog.html`. The list lives in `scripts/retired-pages.json`; `scripts/vercel-config.mjs` and `scripts/package-public-site.mjs` both read it. New test: `tests/retired-pages.test.js`.
+- `sitemap.xml` `lastmod` now comes from each file's last git commit: `npm run seo:lastmod` (`scripts/sync-sitemap-lastmod.mjs`). Run it locally after committing page changes.
+- `npm run seo:audit` no longer crashes on `/resources` and `/resources/first-time-buyer-guide`. It reports 30 `missing-description` findings, the same 30 as production.
+- `npm test`: 204 tests, 172 pass, 32 fail. The same 32 fail on untouched production commit `01a8acf`. No new failures.
+- Not deployed to production. Nothing merged into the production branch.
+
+## 2026-11-03 — Preview: match font preload URLs to the shipped CSS
+
+- The published-asset build now adds the same `?v=` hash to a font file in both the preload and the `@font-face` `url()`. A preload whose URL is not in that page's shipped CSS fails the build. Not merged and not deployed to production.
+
+## 2026-11-03 — Live: QA pull requests #56, #57, #58, and #59
+
+- Pull requests #56, #57, #58, and #59 are merged and live on `cursor/blog-2026-11-02-refi-out-of-non-qm`.
+- #56 moved public links to styerteam.com and let the assistant allow styerteam.com.
+- #57 shipped the technical fixes: honeypots, headers, canonicals, and the March rates post indexed on its own URL.
+- #58 shortened titles and descriptions. Social images, including `/guides.html`, use https://styerteam.com/assets/og-image.png.
+- #59 reserved the rates breadcrumb, preloaded Inter, and set `/guides.html` `og:image` and `twitter:image` to https://styerteam.com/assets/og-image.png. It dropped thestyerteam.com from the assistant allowlist, removed the slash from the first-time buyer URL, kept one business-owners footer, and gave the three March newsletters their own titles.
+
 ## 2026-11-02 — Preview: restore calculator rates and payments on the handoff
 
 - The investor and refinance “Your calculator numbers” summaries show the interest rate and payment rows again, the same rows as before the compliance cut. A 12px line, “Not a quote or offer.”, sits under each of those summaries. The same rows and line are included in the review submission and in the DSCR email analysis. The DSCR email form still posts through lead-intake. Not merged and not deployed to production.
@@ -3433,3 +3598,39 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Decouple contact capture from delayed transcript recording; use the established LoanOS inquiry/outbox pipeline, snapshot-specific retry identity, visible delivery-state receipts, and bounded requests.
 - Keep mobile confirmation controls usable with a scrollable privacy review and compact heading.
 - Validation: 174 site tests and 133 assistant tests passed; TypeScript, SEO audit (166 URLs / zero issues), build and whitespace checks passed. No live test submissions. Chromium installation failed, so visual browser QA remains unverified.
+
+
+## 2026-11-03 — Canonical-domain migration verification and maintenance safeguards
+
+- Verified Vercel’s actual production source (eeee418c) and linked repository before editing; its branding and old-host 301s were already live. All 187 sitemap pages passed live canonical/retired-identity checks.
+- Corrected stale hosting, domain, legal-name and application instructions in maintainer docs and scenario authoring guidance; documented independently verified Go Rascal licensing and Adam’s secure application.
+- Updated affiliation checks to allow only the verified application destination, reject the retired contact phone, and assert the actual canonical origin. Added both-old-host deep-path/query redirect tests.
+- Made legacy `/purchase` redirect directly to its existing final contact destination, preserving purchase intent and removing an unnecessary hop. Recompiled Vercel config.
+- Updated packaging test fixtures to include the current shipped asset optimizers. No public content, analytics IDs, form fields, capture handlers, or sitemap paths changed.
+
+## 2026-11-13 — Austin address matched to the NMLS record
+
+- Adam sent the NMLS Consumer Access office listing. The Austin branch is written "7600 N Capital of Texas Hwy Suite 230, #105", branch NMLS #2889346, start 11/05/2026.
+- Changed "Suite 230 (Private Office #105)" to "Suite 230, #105" in the footer, structured data, Contact, licensing, thank-you page, `llms.txt` and `config/business-entities.json` (223 files).
+- Licensing page now lists the Austin branch NMLS #2889346 under the office address. Not added to the footer.
+- Build passes, SEO audit 0 issues, no new test failures. One test failed until an iCloud-offloaded library file in `node_modules` was re-downloaded; unrelated to this change.
+- Live: production deployment `dpl_8fGDsVPm7MzZMRBPMqTWzHT5BK8P`, commit `8cdc591e`; styerteam.com alias confirmed. Live pages not loaded (Vercel checkpoint).
+
+## 2026-11-13 — Bullets pass, batch 1 (not live)
+
+- Adam's direction: more bullet points, fewer paragraphs, where it reads cleaner. Blog posts stay prose.
+- `dscr-loans-texas.html`: "How DSCR Loans Work", the break-even card and five FAQ answers turned into lists. FAQ schema text regenerated to match.
+- `high-net-worth-mortgage.html`: the "how they qualify" box and three FAQ answers turned into lists. "Wholesale vs. Private Bank Match" card renamed "Capital Partners vs. Private Bank".
+- Facts and numbers unchanged. Numbered lists lose their numbers inside FAQ answers, so the one numbered list uses bullets.
+- Build passes, SEO audit 0 issues, no new test failures. Committed to `copy/program-pages` only.
+- Scan of 82 indexable top-level pages: 52 have three or more long paragraphs. Densest are the twelve long suburb pages, the glossary and About.
+
+## 2026-11-13 — Bullets pass, batch 2 (not live)
+
+- `bank-statement-loans.html`: six FAQ answers turned into lists (what moves the file, what it is, which deposits count, personal statements, expense statement, records).
+- `asset-depletion-mortgage-texas.html`: the account-percentage paragraph and the conventional-options FAQ turned into lists.
+- `p-and-l-mortgage-texas.html`: "How it works" and the "What is" FAQ turned into lists.
+- Removed the last "wholesale" wording on the asset depletion and P&L pages (scenario labels now "What we did", "Compare Capital Partners", "the best pricing"). Dropped "easily" and "a single stock share" from the asset depletion example.
+- FAQ schema text matches the visible answers on all five pages touched in batches 1 and 2.
+- Build passes, SEO audit 0 issues, no new test failures. Committed to `copy/program-pages` only.
+- Left for the copy pass, needs Adam: `mortgage-broker-vs-bank.html` (claims a broker "beats a bank on rate, loan options, and closing speed", says "wholesale rates"), and the jargon-heavy hero paragraphs on the P&L and asset depletion pages.

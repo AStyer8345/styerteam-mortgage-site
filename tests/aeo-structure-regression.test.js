@@ -21,7 +21,8 @@ test('legacy buyer and housing URLs are removed from sitemap', () => {
   assert.doesNotMatch(sitemap, /first-time-buyer-guide\.html/);
   assert.doesNotMatch(sitemap, /austin-housing-market-2025\.html/);
   assert.match(sitemap, /austin-housing-market\.html/);
-  assert.match(sitemap, /resources\/first-time-buyer-guide\//);
+  assert.match(sitemap, /resources\/first-time-buyer-guide</);
+  assert.doesNotMatch(sitemap, /resources\/first-time-buyer-guide\//);
 });
 
 test('rolling Austin housing market page self-canonicalizes', () => {
@@ -40,6 +41,7 @@ test('llms.txt exposes canonical answer-engine paths', () => {
   assert.match(llms, /non-qm-loans\.html/);
   assert.match(llms, /bank-statement-loans\.html/);
   assert.match(llms, /dscr-loan-austin-tx\.html/);
-  assert.match(llms, /resources\/first-time-buyer-guide\//);
+  assert.match(llms, /https:\/\/styerteam\.com\/resources\/first-time-buyer-guide\)/);
+  assert.doesNotMatch(llms, /resources\/first-time-buyer-guide\//);
   assert.doesNotMatch(llms, /ftb-dpa-guide/);
 });

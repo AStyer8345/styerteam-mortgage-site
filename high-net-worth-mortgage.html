@@ -28,7 +28,7 @@
 <link href="/style.css?v=20260830-loanfix1" rel="stylesheet"/>
 <script>window.dataLayer = window.dataLayer || [];</script>
 <!-- Google Tag Manager -->
-<script>(function(){var host=location.hostname;if(host!=="styerteam.com"&&host!=="www.styerteam.com")return;if(window.__styerTags)return;window.__styerTags=1;window.dataLayer=window.dataLayer||[];window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});var j=document.createElement("script");j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id=GTM-PQQ6PGLR";var f=document.getElementsByTagName("script")[0];f.parentNode.insertBefore(j,f);window.StyerAfterGoogleTag=function(fn){var q=window.__styerTagQueue||(window.__styerTagQueue=[]);q.push(fn);if(window.__styerTagWait)return;window.__styerTagWait=setInterval(function(){var ready=(window.dataLayer||[]).some(function(entry){return entry&&entry.event==="gtm.load";});if(!ready)return;clearInterval(window.__styerTagWait);window.__styerTagWait=0;q.splice(0).forEach(function(item){item();});},50);};})();</script>
+<script>(function(){var host=location.hostname;if(host!=="styerteam.com"&&host!=="www.styerteam.com")return;if(window.__styerTags)return;window.__styerTags=1;window.dataLayer=window.dataLayer||[];var wake=["pointerdown","keydown","touchstart","scroll"];function start(){if(window.__styerTagsStarted)return;window.__styerTagsStarted=1;wake.forEach(function(type){window.removeEventListener(type,start,true);});window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});var j=document.createElement("script");j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id=GTM-PQQ6PGLR";var f=document.getElementsByTagName("script")[0];f.parentNode.insertBefore(j,f);}function later(){setTimeout(start,2500);}if(/thank-you/.test(location.pathname)){start();}else{wake.forEach(function(type){window.addEventListener(type,start,{capture:true,passive:true});});if(document.readyState==="complete"){later();}else{window.addEventListener("load",later);}}window.StyerAfterGoogleTag=function(fn){var q=window.__styerTagQueue||(window.__styerTagQueue=[]);q.push(fn);if(window.__styerTagWait)return;window.__styerTagWait=setInterval(function(){var ready=(window.dataLayer||[]).some(function(entry){return entry&&entry.event==="gtm.load";});if(!ready)return;clearInterval(window.__styerTagWait);window.__styerTagWait=0;q.splice(0).forEach(function(item){item();});},50);};})();</script>
 <!-- FinancialService Schema -->
 
 <link href="/experience.css" rel="stylesheet"/>
@@ -57,6 +57,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <script src="/advisory-contact.js?v=20260918" defer></script>
 <link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
 <link href="/a11y.css" rel="stylesheet"/>
+<link href="/simple.css?v=20261113" rel="stylesheet"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -77,16 +78,13 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
       },
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "185 Wythe Ave, Suite A2",
-        "addressLocality": "Brooklyn",
-        "addressRegion": "NY",
-        "postalCode": "11249",
+        "streetAddress": "7600 N Capital of Texas Hwy, Suite 230, #105",
+        "addressLocality": "Austin",
+        "addressRegion": "TX",
+        "postalCode": "78731",
         "addressCountry": "US"
       },
-      "areaServed": {
-        "@type": "State",
-        "name": "Texas"
-      },
+      "areaServed": [{"@type": "City", "name": "Austin"}, {"@type": "State", "name": "Texas"}],
       "telephone": "+15129566010",
       "email": "adamstyer@gorascal.com",
       "logo": {
@@ -99,7 +97,8 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
         "https://www.facebook.com/StyerTeam/",
         "https://www.instagram.com/styerteam/",
         "https://www.youtube.com/channel/UCj7QNDf7kxLu1Kv67uf_avw",
-        "https://www.liinks.co/styerteam"
+        "https://www.liinks.co/styerteam",
+        "https://www.youtube.com/@thestyerteamtx"
       ]
     },
     {
@@ -118,7 +117,9 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
       },
       "sameAs": [
         "https://www.linkedin.com/in/thestyerteam",
-        "https://www.zillow.com/lender-profile/adamstyer/"
+        "https://www.zillow.com/lender-profile/adamstyer/",
+        "https://www.youtube.com/channel/UCj7QNDf7kxLu1Kv67uf_avw",
+        "https://www.youtube.com/@thestyerteamtx"
       ]
     },
     {
@@ -140,7 +141,12 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
       },
       "publisher": {
         "@id": "https://styerteam.com/#organization"
-      }
+      },
+      "reviewedBy": {
+        "@id": "https://styerteam.com/#adam"
+      },
+      "lastReviewed": "2026-11-13",
+      "dateModified": "2026-11-13"
     },
     {
       "@type": "BreadcrumbList",
@@ -210,7 +216,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
           "name": "Can my RSUs count as income for a jumbo mortgage?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "They may, depending on the lender's rules and the compensation history you can document. We look at vested and distributed awards, what you have actually received, the vesting schedule, and any employment or marketability limits. Restricted-stock income is also addressed in conventional guidelines. It is not only a non-QM option. Shares you already hold as assets are a separate review, and we do not count them twice."
+            "text": "They may, depending on the lender's rules and the compensation history you can document. We look at: Vested and distributed awards. What you have actually received. The vesting schedule. Any employment or marketability limits. Restricted-stock income is also addressed in conventional guidelines. It is not only a non-QM option. Shares you already hold as assets are a separate review, and we do not count them twice."
           }
         },
         {
@@ -294,19 +300,39 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
           }
         }
       ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://styerteam.com/high-net-worth-mortgage.html#article",
+      "headline": "High-Net-Worth Mortgages in Austin, Texas",
+      "description": "Austin and Texas mortgages for borrowers with substantial assets and limited W-2 income. Compare asset-based qualification with Adam Styer, NMLS #513013.",
+      "author": {
+        "@id": "https://styerteam.com/#adam"
+      },
+      "publisher": {
+        "@id": "https://styerteam.com/#organization"
+      },
+      "url": "https://styerteam.com/high-net-worth-mortgage.html",
+      "datePublished": "2026-05-05",
+      "dateModified": "2026-11-13",
+      "image": "https://styerteam.com/assets/og-image.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://styerteam.com/high-net-worth-mortgage.html"
+      }
     }
   ]
 }
 </script>
 </head>
-<body class="premium-interior advisory-site private-wealth-editorial">
+<body class="premium-interior advisory-site private-wealth-editorial simple">
 <!-- Google Tag Manager (noscript) -->
 <noscript></noscript>
 <a class="skip-link" href="#main">Skip to main content</a>
 <header>
 <div class="container">
-<nav>
-<a class="nav-brand" href="/index.html">
+<nav aria-label="Primary">
+<a class="nav-brand" href="/">
 <span aria-hidden="true" class="nav-wordmark">The Styer Team</span><span aria-hidden="true" class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark-display.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
 </a>
 <button aria-label="Toggle navigation menu" class="mobile-menu-toggle" aria-expanded="false">
@@ -367,15 +393,15 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div>
 </div>
 </li>
-<li class="nav-has-dropdown"><a href="/resources/">Tools &amp; Guides</a>
+<li class="nav-has-dropdown"><a href="/calculators.html">Calculators</a>
 <ul class="nav-dropdown">
-<li><a href="/resources/">All Tools &amp; Guides</a></li>
+<li><a href="/resources">Guides</a></li>
 <li><a href="/calculators.html">All Calculators</a></li>
 <li><a href="/dscr-calculator.html">DSCR Calculator</a></li>
 <li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li>
 <li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li>
 <li><a href="/calculator-payment.html">Payment Calculator</a></li>
-<li><a href="/resources/first-time-buyer-guide/">First-Time Buyer Guide</a></li>
+<li><a href="/resources/first-time-buyer-guide">First-Time Buyer Guide</a></li>
 <li><a href="/contact.html?goal=Refinance&loan=second-look">Compare a Mortgage Offer</a></li>
 <li><a href="/austin-area-mortgage-lender.html">Texas Communities Directory</a></li>
 <li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li>
@@ -399,7 +425,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </ul>
 </li>
 <li class="nav-phone-li"><a class="nav-phone" href="tel:+15129566010">(512) 956-6010</a></li>
-<li><a class="nav-cta" href="/contact.html?goal=Purchase">See My Options</a></li>
+<li><a class="nav-cta" href="/contact.html">Contact</a></li>
 <li><a class="nav-cta nav-apply" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank">Apply Now<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
 </ul>
 </nav>
@@ -423,6 +449,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
             </a>
 </div>
 <p class="u-hero-byline">By <a href="/about.html">Adam Styer</a>, Senior Loan Officer • NMLS #513013 • Company NMLS #2072896</p>
+<p class="u-hero-reviewed" style="margin:6px 0 0;font-size:13px;opacity:.85">Reviewed by Adam Styer, NMLS #513013 · Updated <time datetime="2026-11-13">November 13, 2026</time></p>
 <div class="u-metrics-grid">
 <div class="u-metric-card">
 <div class="u-metric-label">Asset Qualification</div>
@@ -446,6 +473,59 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div>
 </div>
 </div>
+<section class="u-cta-section" id="quick-options" style="padding: 64px 0; background: var(--pwe-obsidian); color: #FFFFFF;">
+<div class="u-container" id="scenario-review" style="max-width: 820px;"><div id="intake-form"></div>
+<div class="u-cta-card">
+<div class="u-cta-header" style="text-align: center; margin-bottom: 28px;">
+<p class="u-eyebrow" style="color: var(--pwe-brass-light);">Fast Scenario Review</p>
+<h2 style="font-family: var(--pwe-serif); font-size: 28px; color: #FFFFFF; margin: 0 0 10px;">Check Your Options in 60 Seconds</h2>
+<p style="color: rgba(246, 244, 239, 0.8); font-size: 15px; margin: 0 auto; max-width: 600px;">Tell me about your scenario. No hard credit pull, no application fees, and no spam. I review the numbers personally.</p>
+</div>
+<form action="/contact-thank-you.html" class="journey-form" data-journey="general" data-journey-mode="conversation" data-netlify="true" data-quick-form="true" id="form-quick-high-net-worth-mortgage" method="POST" name="contact" netlify-honeypot="bot-field"><p class="personal-form-note">You don’t need to know which loan to ask for. Tell me what you’re trying to do, and we can start there.</p>
+<input name="form-name" type="hidden" value="contact"/>
+<input name="inquiry_id" type="hidden" value=""/>
+<input name="test_mode" type="hidden" value="false"/>
+<input name="intent" type="hidden" value="general"/>
+<input name="situation" type="hidden" value="Substantial assets"/>
+<input name="utm_source" type="hidden" value=""/>
+<input name="utm_medium" type="hidden" value=""/>
+<input name="utm_campaign" type="hidden" value=""/>
+<input name="utm_term" type="hidden" value=""/>
+<input name="utm_content" type="hidden" value=""/>
+<input name="page_url" type="hidden" value=""/>
+<input name="entry_referrer" type="hidden" value=""/>
+<input name="first_touch_page" type="hidden" value=""/>
+<input name="first_touch_referrer" type="hidden" value=""/>
+<input name="first_touch_at" type="hidden" value=""/>
+<input name="first_touch_source" type="hidden" value=""/>
+<input name="first_touch_utm_source" type="hidden" value=""/>
+<input name="first_touch_utm_medium" type="hidden" value=""/>
+<input name="first_touch_utm_campaign" type="hidden" value=""/>
+<input name="first_touch_utm_term" type="hidden" value=""/>
+<input name="first_touch_utm_content" type="hidden" value=""/>
+<input name="source" type="hidden" value="hnw_quick"/>
+<input name="cta_source_page" type="hidden" value="https://styerteam.com/high-net-worth-mortgage.html"/>
+<input name="cta_label" type="hidden" value="See My Options"/>
+<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
+<p class="journey-progress" hidden="">Your message</p>
+<fieldset data-journey-step="2"><legend class="conversation-legend">Your financing goal and contact details</legend>
+<div class="journey-fields">
+<div class="journey-field journey-full"><label for="qf-loan-goal">I’m looking to… *</label><select id="qf-loan-goal" name="loan_goal" required=""><option value="">Choose a financing goal</option><option value="Purchase">Buy a home</option><option value="Refinance">Refinance</option><option value="Invest">Finance an investment property</option><option value="Access equity">Access home equity</option><option value="Explore options">Explore my options</option></select></div>
+<div class="journey-field journey-full"><label for="qf-name">Your name *</label><span class="name-split"><input id="qf-name" aria-label="First name" autocomplete="given-name" maxlength="80" name="first_name" placeholder="First" required="" type="text"/><input aria-label="Last name" autocomplete="family-name" maxlength="80" name="last_name" placeholder="Last" required="" type="text"/><input data-full-name="" name="name" type="hidden" value=""/></span></div>
+<div class="journey-field"><label for="qf-email">Email *</label><input autocomplete="email" id="qf-email" maxlength="160" name="email" required="" type="email"/></div>
+<div class="journey-field"><label for="qf-phone">Phone (optional)</label><input autocomplete="tel" id="qf-phone" maxlength="30" name="phone" type="tel"/></div><div class="journey-field journey-full"><label for="qf-message">Tell me more about your situation (optional)</label><textarea aria-describedby="qf-message-hint" id="qf-message" maxlength="2000" name="message" placeholder="Share a question or a little about your plans…" rows="3"></textarea><p class="journey-hint" id="qf-message-hint">Please leave out sensitive financial information.</p></div>
+<input name="preferred_follow_up" type="hidden" value=""/>
+</div>
+<details class="personal-support"><summary>One optional question: how did you find me?</summary><div class="journey-field journey-full form-group self-reported-source-field"><label for="contact-heard-about">How did you first hear about Adam? (optional)</label><select id="contact-heard-about" name="self_reported_source"><option value="">Choose if you remember</option><option value="ChatGPT">ChatGPT</option><option value="Gemini">Gemini</option><option value="Other AI assistant">Other AI assistant</option><option value="Google Search">Google Search</option><option value="Referral">Referral</option><option value="Other / not sure">Other / not sure</option></select></div></details>
+<label class="journey-consent"><input name="tcpa_consent" required="" type="checkbox" aria-required="true"><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
+<button class="journey-button journey-submit" type="submit">Ask Adam About My Options</button>
+</fieldset>
+<div aria-atomic="true" aria-live="polite" class="journey-status" hidden="" role="status" tabindex="-1"></div>
+</form>
+
+</div>
+</div>
+</section>
 </div>
 </section>
 <!-- SECTION 2: DIRECT ANSWER -->
@@ -454,8 +534,15 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div style="background: var(--pwe-bg-warm); border-left: 3px solid var(--pwe-brass); padding: 28px 32px; border-radius: 2px;">
 <span style="font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--pwe-brass); display: block; margin-bottom: 8px;">What should I know about this option?</span>
 <h2 style="font-family: var(--pwe-serif); font-size: 24px; color: var(--pwe-obsidian); margin: 0 0 14px;">How Do High-Net-Worth Borrowers Qualify Without W-2 Income?</h2>
-<p style="font-size: 16px; line-height: 1.7; color: var(--pwe-slate); margin: 0 0 14px;">In Austin, a retail bank usually wants two years of personal and business tax returns. If your wealth is in brokerage accounts, equity compensation, or proceeds from a business sale, that tax-return picture often misses what you can pay.</p>
-<p style="font-size: 16px; line-height: 1.7; color: var(--pwe-slate); margin: 0;">The programs I place turn eligible assets into monthly income by dividing them by 36, 60, or 84 months. Cash counts at 100%, and marketable securities at 80% to 90%. Some programs use a coverage test instead: the assets need to cover the loan, closing costs, and 60 months of your other obligations. We verify the statements. You do not move the accounts or pledge them. A jumbo loan above the conforming limit is still the first comparison when documented income already supports the payment.</p>
+<p style="font-size: 16px; line-height: 1.7; color: var(--pwe-slate); margin: 0 0 14px;">They qualify on assets. An asset depletion loan converts eligible account balances into a monthly income figure, so the file does not depend on a paycheck. A retail bank usually wants two years of tax returns, which often miss wealth held in brokerage accounts, equity compensation or proceeds from a business sale.</p>
+<p style="font-size: 16px; line-height: 1.7; color: var(--pwe-slate); margin: 0;">The programs I place turn eligible assets into monthly income by dividing them by 36, 60, or 84 months.</p>
+<ul>
+<li>Cash counts at 100%.</li>
+<li>Marketable securities count at 80% to 90%.</li>
+<li>Some programs use a coverage test instead: the assets need to cover the loan, closing costs, and 60 months of your other obligations.</li>
+<li>We verify the statements. You do not move the accounts or pledge them.</li>
+</ul>
+<p style="font-size: 16px; line-height: 1.7; color: var(--pwe-slate); margin: 0;">A jumbo loan above the conforming limit is still the first comparison when documented income already supports the payment.</p>
 </div>
 </div>
 </section>
@@ -467,23 +554,11 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <h2 style="font-family: var(--pwe-serif); font-size: clamp(26px, 3vw, 36px); color: var(--pwe-obsidian); margin: 0 0 12px;">Who This Program Is Built For</h2>
 <p style="font-size: 16.5px; color: var(--pwe-slate); max-width: 720px; margin: 0 auto; line-height: 1.6;">Clear borrower profiles where this financing structure solves real friction and delivers superior results.</p>
 </div>
-<div class="u-grid-4">
-<div class="u-card">
-<h3>Entrepreneurs Post-Exit</h3>
-<p>Founders who recently sold a company and hold substantial cash and securities, but currently show zero active W-2 salary.</p>
-</div>
-<div class="u-card">
-<h3>Tech Executives with RSUs</h3>
-<p>Leadership at companies like Apple, Google, or Tesla whose wealth consists of unvested and vested restricted stock units, bonuses, and investment accounts.</p>
-</div>
-<div class="u-card">
-<h3>Retirees &amp; Private Wealth Families</h3>
-<p>Borrowers living off investment dividends, trust distributions, or municipal bond interest where income varies year to year.</p>
-</div>
-<div class="u-card">
-<h3>Trust Ownership &amp; Estate Planning</h3>
-<p>Purchasing luxury residences through Revocable Living Trusts or family LLCs for privacy and generational estate management.</p>
-</div>
+<div class="u-grid-4 simple-flip-grid">
+<div class="u-card simple-flip" tabindex="0"><div class="simple-flip-inner"><div class="simple-flip-front"><h3>Entrepreneurs Post-Exit</h3><span aria-hidden="true" class="simple-flip-hint">Tap to flip</span></div><div class="simple-flip-back"><p>Founders who recently sold a company and hold substantial cash and securities, but currently show zero active W-2 salary.</p></div></div></div>
+<div class="u-card simple-flip" tabindex="0"><div class="simple-flip-inner"><div class="simple-flip-front"><h3>Tech Executives with RSUs</h3><span aria-hidden="true" class="simple-flip-hint">Tap to flip</span></div><div class="simple-flip-back"><p>Leadership at companies like Apple, Google, or Tesla whose wealth consists of unvested and vested restricted stock units, bonuses, and investment accounts.</p></div></div></div>
+<div class="u-card simple-flip" tabindex="0"><div class="simple-flip-inner"><div class="simple-flip-front"><h3>Retirees &amp; Private Wealth Families</h3><span aria-hidden="true" class="simple-flip-hint">Tap to flip</span></div><div class="simple-flip-back"><p>Borrowers living off investment dividends, trust distributions, or municipal bond interest where income varies year to year.</p></div></div></div>
+<div class="u-card simple-flip" tabindex="0"><div class="simple-flip-inner"><div class="simple-flip-front"><h3>Trust Ownership &amp; Estate Planning</h3><span aria-hidden="true" class="simple-flip-hint">Tap to flip</span></div><div class="simple-flip-back"><p>Purchasing luxury residences through Revocable Living Trusts or family LLCs for privacy and generational estate management.</p></div></div></div>
 </div>
 </div>
 </section>
@@ -520,8 +595,8 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div>
 <div class="u-step-card">
 <div class="u-step-num">02</div>
-<h3>Wholesale vs. Private Bank Match</h3>
-<p>We compare wholesale asset depletion pricing against private bank relationship quotes, clearly spelling out whether moving funds is genuinely cost-effective.</p>
+<h3>Capital Partners vs. Private Bank</h3>
+<p>We compare asset depletion pricing from many capital partners against private bank relationship quotes, and spell out whether moving funds actually costs less.</p>
 </div>
 <div class="u-step-card">
 <div class="u-step-num">03</div>
@@ -529,6 +604,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <p>We coordinate directly with your CPA, wealth manager, or estate attorney to ensure documentation is handled discreetly and efficiently.</p>
 </div>
 </div>
+<p class="simple-steps-links"><a href="#quick-options">Send me a quick note</a><a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book 15 minutes<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a><a href="/mortgage-pre-approval-austin.html">How pre-approval works</a></p>
 </div>
 </section>
 <!-- SECTION 5: ONE SHORT EXAMPLE -->
@@ -613,13 +689,25 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <details class="u-faq-item">
 <summary>I just sold my company. How do I qualify for a mortgage with no W-2?</summary>
 <div class="u-faq-answer">
-<p>On the sale proceeds, once they have sat in your account for about four to six months. The programs I place turn eligible assets into income by dividing by 36, 60, or 84 months, or they test whether the assets cover the loan plus 60 months of your other obligations. Cash counts at 100%. Marketable securities count at 80% to 90%. Business assets, restricted stock, and money still inside the sold company do not count until they are in your name.</p>
+<p>On the sale proceeds, once they have sat in your account for about four to six months. The programs I place turn eligible assets into income by dividing by 36, 60, or 84 months, or they test whether the assets cover the loan plus 60 months of your other obligations.</p>
+<ul>
+<li>Cash counts at 100%.</li>
+<li>Marketable securities count at 80% to 90%.</li>
+<li>Business assets, restricted stock, and money still inside the sold company do not count until they are in your name.</li>
+</ul>
 </div>
 </details>
 <details class="u-faq-item">
 <summary>Can my RSUs count as income for a jumbo mortgage?</summary>
 <div class="u-faq-answer">
-<p>They may, depending on the lender's rules and the compensation history you can document. We look at vested and distributed awards, what you have actually received, the vesting schedule, and any employment or marketability limits. Restricted-stock income is also addressed in conventional guidelines. It is not only a non-QM option. Shares you already hold as assets are a separate review, and we do not count them twice.</p>
+<p>They may, depending on the lender's rules and the compensation history you can document. We look at:</p>
+<ul>
+<li>Vested and distributed awards.</li>
+<li>What you have actually received.</li>
+<li>The vesting schedule.</li>
+<li>Any employment or marketability limits.</li>
+</ul>
+<p>Restricted-stock income is also addressed in conventional guidelines. It is not only a non-QM option. Shares you already hold as assets are a separate review, and we do not count them twice.</p>
 </div>
 </details>
 <details class="u-faq-item">
@@ -667,7 +755,12 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <details class="u-faq-item">
 <summary>How does the 60- or 84-month divisor actually work?</summary>
 <div class="u-faq-answer">
-<p>The program divides your eligible assets by a fixed number of months and treats the result as monthly income. The programs I place use 36, 60, or 84 months. A shorter divisor turns the same assets into more income. Some programs use a coverage test instead: the assets have to equal the loan, the closing costs, and 60 months of your other obligations.</p>
+<p>The program divides your eligible assets by a fixed number of months and treats the result as monthly income.</p>
+<ul>
+<li>The programs I place use 36, 60, or 84 months.</li>
+<li>A shorter divisor turns the same assets into more income.</li>
+<li>Some programs use a coverage test instead: the assets have to equal the loan, the closing costs, and 60 months of your other obligations.</li>
+</ul>
 </div>
 </details>
 <details class="u-faq-item">
@@ -689,64 +782,24 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <section class="u-section bg-white" id="why-adam" style="padding: 28px 0; border-top: 1px solid var(--pwe-rule); border-bottom: 1px solid var(--pwe-rule);">
 <div class="container">
 <div style="display: flex; justify-content: center; align-items: center; gap: 32px; flex-wrap: wrap; text-align: center;">
-<span style="font-size: 13.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pwe-brass);">The Wholesale Advantage</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• Many wholesale lenders</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• Wholesale Pricing Without Corporate Bank Margins</span>
+<span style="font-size: 13.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pwe-brass);">Why work with me</span>
+<span style="font-size: 14.5px; color: var(--pwe-slate);">• Many capital partners</span>
+<span style="font-size: 14.5px; color: var(--pwe-slate);">• You deal with me directly</span>
 <span style="font-size: 14.5px; color: var(--pwe-slate);">• A clear path to closing</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• Direct 1-on-1 Strategy from Adam Styer</span>
+<span style="font-size: 14.5px; color: var(--pwe-slate);">• Straight answers, no runaround</span>
 </div>
 </div>
 </section>
 <!-- SECTION 9: INTAKE FORM -->
-<section class="u-cta-section" id="quick-options" style="padding: 64px 0; background: var(--pwe-obsidian); color: #FFFFFF;">
-<div class="u-container" id="scenario-review" style="max-width: 820px;"><div id="intake-form"></div>
-<div class="u-cta-card">
-<div class="u-cta-header" style="text-align: center; margin-bottom: 28px;">
-<p class="u-eyebrow" style="color: var(--pwe-brass-light);">Fast Scenario Review</p>
-<h2 style="font-family: var(--pwe-serif); font-size: 28px; color: #FFFFFF; margin: 0 0 10px;">Check Your Options in 60 Seconds</h2>
-<p style="color: rgba(246, 244, 239, 0.8); font-size: 15px; margin: 0 auto; max-width: 600px;">Tell me about your scenario. No hard credit pull, no application fees, and no spam. I review the numbers personally.</p>
+<section class="u-section simple-close" id="next-step">
+<div class="container">
+<h2>Not sure which path fits? That is my job.</h2>
+<p>Send me what you have. I will tell you what I see.</p>
+<p><a class="u-btn-primary" href="#quick-options">See My Options</a></p>
 </div>
-<form action="/contact-thank-you.html" class="journey-form" data-journey="general" data-journey-mode="conversation" data-netlify="true" data-quick-form="true" id="form-quick-high-net-worth-mortgage" method="POST" name="contact" netlify-honeypot="bot-field"><p class="personal-form-note">You don’t need to know which loan to ask for. Tell me what you’re trying to do, and we can start there.</p>
-<input name="form-name" type="hidden" value="contact"/>
-<input name="inquiry_id" type="hidden" value=""/>
-<input name="test_mode" type="hidden" value="false"/>
-<input name="intent" type="hidden" value="general"/>
-<input name="situation" type="hidden" value="Substantial assets"/>
-<input name="utm_source" type="hidden" value=""/>
-<input name="utm_medium" type="hidden" value=""/>
-<input name="utm_campaign" type="hidden" value=""/>
-<input name="utm_term" type="hidden" value=""/>
-<input name="utm_content" type="hidden" value=""/>
-<input name="page_url" type="hidden" value=""/>
-<input name="entry_referrer" type="hidden" value=""/>
-<input name="first_touch_page" type="hidden" value=""/>
-<input name="first_touch_referrer" type="hidden" value=""/>
-<input name="first_touch_at" type="hidden" value=""/>
-<input name="first_touch_source" type="hidden" value=""/>
-<input name="first_touch_utm_source" type="hidden" value=""/>
-<input name="first_touch_utm_medium" type="hidden" value=""/>
-<input name="first_touch_utm_campaign" type="hidden" value=""/>
-<input name="first_touch_utm_term" type="hidden" value=""/>
-<input name="first_touch_utm_content" type="hidden" value=""/>
-<input name="source" type="hidden" value="hnw_quick"/>
-<input name="cta_source_page" type="hidden" value="https://thestyerteam.com/high-net-worth-mortgage.html"/>
-<input name="cta_label" type="hidden" value="See My Options"/>
-<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
-<p class="journey-progress" hidden="">Your message</p>
-<fieldset data-journey-step="2"><legend class="conversation-legend">Your financing goal and contact details</legend>
-<div class="journey-fields">
-<div class="journey-field journey-full"><label for="qf-loan-goal">I’m looking to… *</label><select id="qf-loan-goal" name="loan_goal" required=""><option value="">Choose a financing goal</option><option value="Purchase">Buy a home</option><option value="Refinance">Refinance</option><option value="Invest">Finance an investment property</option><option value="Access equity">Access home equity</option><option value="Explore options">Explore my options</option></select></div>
-<div class="journey-field journey-full"><label for="qf-name">Your name *</label><input autocomplete="name" id="qf-name" maxlength="160" name="name" required="" type="text"/></div>
-<div class="journey-field"><label for="qf-email">Email *</label><input autocomplete="email" id="qf-email" maxlength="160" name="email" required="" type="email"/></div>
-<div class="journey-field"><label for="qf-phone">Phone (optional)</label><input autocomplete="tel" id="qf-phone" maxlength="30" name="phone" type="tel"/></div><div class="journey-field journey-full"><label for="qf-message">Tell me more about your situation (optional)</label><textarea aria-describedby="qf-message-hint" id="qf-message" maxlength="2000" name="message" placeholder="Share a question or a little about your plans…" rows="3"></textarea><p class="journey-hint" id="qf-message-hint">Please leave out sensitive financial information.</p></div>
-<input name="preferred_follow_up" type="hidden" value=""/>
-</div>
-<details class="personal-support"><summary>One optional question: how did you find me?</summary><div class="journey-field journey-full form-group self-reported-source-field"><label for="contact-heard-about">How did you first hear about Adam? (optional)</label><select id="contact-heard-about" name="self_reported_source"><option value="">Choose if you remember</option><option value="ChatGPT">ChatGPT</option><option value="Gemini">Gemini</option><option value="Other AI assistant">Other AI assistant</option><option value="Google Search">Google Search</option><option value="Referral">Referral</option><option value="Other / not sure">Other / not sure</option></select></div></details>
-<label class="journey-consent"><input name="tcpa_consent" required="" type="checkbox" aria-required="true"><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
-<button class="journey-button journey-submit" type="submit">Ask Adam About My Options</button>
-</fieldset>
-<div aria-atomic="true" aria-live="polite" class="journey-status" hidden="" role="status" tabindex="-1"></div>
-</form>
+</section>
+<section class="u-section simple-drawer" id="detailed-review-drawer">
+<div class="container">
 <details class="u-disclose-card" style="margin-top: 32px; background: #FFFFFF; border: 1px solid var(--pwe-rule); border-radius: 4px;">
 <summary style="padding: 20px 24px; font-weight: 600; color: var(--pwe-obsidian); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
 <span>Prefer a Comprehensive File Review? Submit Your Full Scenario →</span>
@@ -819,11 +872,16 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div>
 </details>
 </div>
-</div>
 </section>
-<aside class="preserved-guide-link" style="max-width:1040px;width:calc(100% - 40px);margin:24px auto;padding:20px;border-top:1px solid #dad4c8"><span id="advisor-coordination" style="display:block;scroll-margin-top:110px"></span><span id="blueprint-options-title" style="display:block;scroll-margin-top:110px"></span><span id="business-sale-rsus" style="display:block;scroll-margin-top:110px"></span><span id="complex-income" style="display:block;scroll-margin-top:110px"></span><span id="financing-approaches" style="display:block;scroll-margin-top:110px"></span><span id="journey-title" style="display:block;scroll-margin-top:110px"></span><span id="mortgage-strategy" style="display:block;scroll-margin-top:110px"></span><span id="private-bank-comparison" style="display:block;scroll-margin-top:110px"></span><span id="quick-options-title" style="display:block;scroll-margin-top:110px"></span><a href="/resources/detailed-guides/high-net-worth-mortgage.html">Read the detailed reference guide →</a></aside></main>
+<aside class="preserved-guide-link" style="max-width:1040px;width:calc(100% - 40px);margin:24px auto;padding:20px;border-top:1px solid #dad4c8"><span id="advisor-coordination" style="display:block;scroll-margin-top:110px"></span><span id="blueprint-options-title" style="display:block;scroll-margin-top:110px"></span><span id="business-sale-rsus" style="display:block;scroll-margin-top:110px"></span><span id="complex-income" style="display:block;scroll-margin-top:110px"></span><span id="financing-approaches" style="display:block;scroll-margin-top:110px"></span><span id="journey-title" style="display:block;scroll-margin-top:110px"></span><span id="mortgage-strategy" style="display:block;scroll-margin-top:110px"></span><span id="private-bank-comparison" style="display:block;scroll-margin-top:110px"></span><span id="quick-options-title" style="display:block;scroll-margin-top:110px"></span></aside></main>
 <footer class="site-footer" id="site-footer">
   <div class="container">
+    <address class="site-footer-office">
+<strong>The Styer Team</strong>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=7600+N+Capital+of+Texas+Hwy+Suite+230+Austin+TX+78731" rel="noopener" target="_blank">7600 N Capital of Texas Hwy, Suite 230, #105<br/>Austin, TX 78731<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
+<a href="tel:+15129566010">(512) 956-6010</a>
+<a href="mailto:adamstyer@gorascal.com">adamstyer@gorascal.com</a>
+</address>
     <div class="site-footer-grid">
 <div class="site-footer-col"><h2>Loans</h2><ul>
 <li><a href="/loans/conventional.html">Conventional</a></li>
@@ -835,6 +893,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </ul></div>
 <div class="site-footer-col"><h2>Guides</h2><ul>
 <li><a href="/guides.html">All guides</a></li>
+<li><a href="/resources">Free resources</a></li>
 <li><a href="/calculators.html">Calculators</a></li>
 <li><a href="/blog.html">Blog</a></li>
 <li><a href="/resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html">Buying in Austin</a></li>
@@ -846,6 +905,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <li><a href="/contact.html">Contact</a></li>
 <li><a href="tel:+15129566010">(512) 956-6010</a></li>
 <li><a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a call<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
+<li><a href="https://www.youtube.com/@thestyerteamtx" rel="noopener" target="_blank">YouTube<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
 </ul></div>
 <div class="site-footer-col"><h2>Legal</h2><ul>
 <li><a href="/privacy.html">Privacy</a></li>
@@ -856,14 +916,14 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </ul></div>
 </div>
     <p class="site-footer-proof"><a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener">5.0 on Google<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a> · <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener">4.98 on Zillow<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a> · <a href="/testimonials.html">144 published reviews</a> · Licensed in Texas · NMLS #513013</p>
-    <p class="site-footer-areas"><strong>Serving Central Texas:</strong> <a href="/austin-area-mortgage-lender.html">Austin</a> · <a href="/round-rock-mortgage-lender.html">Round Rock</a> · <a href="/cedar-park-mortgage-lender.html">Cedar Park</a> · <a href="/leander-mortgage-lender.html">Leander</a> · <a href="/georgetown-mortgage-lender.html">Georgetown</a> · <a href="/pflugerville-mortgage-lender.html">Pflugerville</a> · <a href="/kyle-mortgage-lender.html">Kyle</a> · <a href="/buda-mortgage-lender.html">Buda</a> · <a href="/san-marcos-mortgage-lender.html">San Marcos</a> · <a href="/westlake-mortgage-lender.html">Westlake</a> · <a href="/lakeway-mortgage-lender.html">Lakeway</a> · <a href="/bee-cave-mortgage-lender.html">Bee Cave</a> · <a href="/dripping-springs-mortgage-lender.html">Dripping Springs</a> · <a href="/spicewood-mortgage-lender.html">Spicewood</a> · <a href="/marble-falls-mortgage-lender.html">Marble Falls</a> · <a href="/hutto-mortgage-lender.html">Hutto</a> · <a href="/taylor-mortgage-lender.html">Taylor</a> · <a href="/manor-mortgage-lender.html">Manor</a> · <a href="/elgin-mortgage-lender.html">Elgin</a> · <a href="/bastrop-mortgage-lender.html">Bastrop</a> · <a href="/smithville-mortgage-lender.html">Smithville</a> · <a href="/liberty-hill-mortgage-lender.html">Liberty Hill</a> · <a href="/jarrell-mortgage-lender.html">Jarrell</a> · <a href="/florence-mortgage-lender.html">Florence</a> · <a href="/new-braunfels-mortgage-lender.html">New Braunfels</a></p>
+    <p class="site-footer-areas"><strong>Serving Central Texas:</strong> <a href="/austin-area-mortgage-lender.html">Austin</a> · <a href="/austin-area-mortgage-lender.html#round-rock">Round Rock</a> · <a href="/cedar-park-mortgage-lender.html">Cedar Park</a> · <a href="/austin-area-mortgage-lender.html#leander">Leander</a> · <a href="/georgetown-mortgage-lender.html">Georgetown</a> · <a href="/pflugerville-mortgage-lender.html">Pflugerville</a> · <a href="/kyle-mortgage-lender.html">Kyle</a> · <a href="/buda-mortgage-lender.html">Buda</a> · <a href="/austin-area-mortgage-lender.html#san-marcos">San Marcos</a> · <a href="/westlake-mortgage-lender.html">Westlake</a> · <a href="/lakeway-mortgage-lender.html">Lakeway</a> · <a href="/austin-area-mortgage-lender.html#bee-cave">Bee Cave</a> · <a href="/austin-area-mortgage-lender.html#dripping-springs">Dripping Springs</a> · <a href="/austin-area-mortgage-lender.html#spicewood">Spicewood</a> · <a href="/austin-area-mortgage-lender.html#marble-falls">Marble Falls</a> · <a href="/austin-area-mortgage-lender.html#hutto">Hutto</a> · <a href="/austin-area-mortgage-lender.html#taylor">Taylor</a> · <a href="/austin-area-mortgage-lender.html#manor">Manor</a> · <a href="/austin-area-mortgage-lender.html#elgin">Elgin</a> · <a href="/austin-area-mortgage-lender.html#bastrop">Bastrop</a> · <a href="/austin-area-mortgage-lender.html#smithville">Smithville</a> · <a href="/austin-area-mortgage-lender.html#liberty-hill">Liberty Hill</a> · <a href="/austin-area-mortgage-lender.html#jarrell">Jarrell</a> · <a href="/austin-area-mortgage-lender.html#florence">Florence</a> · <a href="/new-braunfels-mortgage-lender.html">New Braunfels</a></p>
     <div class="site-footer-legal">
       <img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy-display.png" alt="Go Rascal Inc." height="64">
       <div class="site-footer-legal-copy">
       <p class="site-footer-compliance">Adam Styer | Mortgage Loan Originator</p>
       <p class="site-footer-compliance"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS ID #513013<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
       <p class="site-footer-compliance"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
-      <p class="site-footer-compliance">Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
+      <p class="site-footer-compliance">Go Rascal Inc. corporate office: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
       <p class="site-footer-compliance"><svg class="eho-mark" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M12 3 3 11h2v9h5v-6h4v6h5v-9h2L12 3z"/></svg> Equal Housing Opportunity</p>
       <!-- Licensed states placeholder pending Adam's NMLS confirmation -->
       <p class="site-footer-compliance">Licensed in: TX</p>

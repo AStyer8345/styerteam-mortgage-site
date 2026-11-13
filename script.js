@@ -93,6 +93,10 @@ function dispatchLeadSubmitted(detail, options) {
     } catch (_) { /* Emit once even when storage is blocked. */ }
   }
   document.dispatchEvent(new CustomEvent('styer:lead-submitted', { detail: params }));
+  // GA4 form_submit: fires only here, after the capture path has accepted the
+  // lead. Form name and page path only.
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'form_submit', form_name: params.form_name || '', page_path: params.page_path });
   // One GA4 lead event, after the caller has a confirmed capture. Parameters
   // are form and page identifiers only. page_location is the path without a
   // query string so a lead hit cannot blank the landing page or carry PII.
@@ -126,6 +130,51 @@ function dispatchLeadSubmitted(detail, options) {
   });
 }
 window.StyerTrackGenerateLead = dispatchLeadSubmitted;
+
+// Click-to-load video. Nothing is requested from YouTube until a visitor presses play.
+document.addEventListener('click', function (event) {
+  const button = event.target.closest && event.target.closest('.video-facade-play');
+  const box = button && button.closest('.video-facade');
+  if (!box || !/^[\w-]{6,20}$/.test(box.dataset.videoId || '')) return;
+  const frame = document.createElement('iframe');
+  frame.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.videoId + '?autoplay=1';
+  frame.title = box.dataset.videoTitle || 'Video';
+  frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+  frame.allowFullscreen = true;
+  frame.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0';
+  box.replaceChildren(frame);
+  frame.focus();
+});
+
+// GA4 contact-intent events for every page. Each carries the page path and,
+// for forms, the form name. Nothing a visitor types is ever sent.
+(function () {
+  function send(name, extra) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: name, page_path: window.location.pathname || '/' }, extra || {}));
+  }
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest && event.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) send('call_click');
+    // analytics.js already sends text_click on the pages that load it.
+    else if (href.indexOf('sms:') === 0) { if (!document.querySelector('script[src*="analytics.js"]')) send('text_click'); }
+    else if (href.indexOf('calendly.com') !== -1) send('calendly_click');
+    else if (href.indexOf('my1003app.com') !== -1) send('apply_click');
+  }, true);
+  const started = new WeakSet();
+  function formStart(event) {
+    const form = event.target && event.target.closest && event.target.closest('form');
+    // Journey forms report their own form_start from situation-journeys.js.
+    if (!form || started.has(form) || form.classList.contains('journey-form')) return;
+    if (!event.target.matches('input:not([type=hidden]), textarea, select')) return;
+    started.add(form);
+    send('form_start', { form_name: form.getAttribute('name') || form.id || '' });
+  }
+  document.addEventListener('focusin', formStart, true);
+  document.addEventListener('input', formStart, true);
+})();
 
 // ========================================================================
 // 1. NAVIGATION & HEADER
@@ -1454,3 +1503,27 @@ document.addEventListener('click', (e) => {
     });
   }
 });
+
+// First and last name boxes: keep the hidden "name" field current so every
+// existing submit handler and the backup copy still receive a full name.
+(function () {
+  function sync(wrap) {
+    var full = wrap.querySelector('input[data-full-name]');
+    if (!full) return;
+    var first = wrap.querySelector('input[name="first_name"]');
+    var last = wrap.querySelector('input[name="last_name"]');
+    full.value = ((first ? first.value : '') + ' ' + (last ? last.value : '')).trim();
+  }
+  function syncAll(root) { root.querySelectorAll('.name-split').forEach(sync); }
+  ['input', 'change'].forEach(function (type) {
+    document.addEventListener(type, function (event) {
+      var wrap = event.target.closest && event.target.closest('.name-split');
+      if (wrap) sync(wrap);
+    }, true);
+  });
+  document.addEventListener('submit', function (event) { syncAll(event.target); }, true);
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest && event.target.closest('button, input[type="submit"]');
+    if (button && button.form) syncAll(button.form);
+  }, true);
+})();

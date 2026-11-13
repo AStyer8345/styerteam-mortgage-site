@@ -58,9 +58,18 @@ test('committed vercel.json matches the Netlify redirect and header sources', as
   assert.equal(htmlCache.headers.find((header) => header.key === 'Cache-Control').value, 'public, max-age=0, must-revalidate');
   const security = published.headers.find((block) => block.source === '/(.*)');
   assert.equal(security.headers.find((header) => header.key === 'Strict-Transport-Security').value, 'max-age=31536000; includeSubDomains; preload');
+  const reportOnly = security.headers.find((header) => header.key === 'Content-Security-Policy-Report-Only').value;
+  assert.match(reportOnly, /https:\/\/analytics\.google\.com/);
+  assert.match(reportOnly, /https:\/\/ad\.doubleclick\.net/);
+  assert.match(reportOnly, /https:\/\/googleads\.g\.doubleclick\.net/);
+  assert.match(reportOnly, /https:\/\/www\.googleadservices\.com/);
+  assert.equal(security.headers.some((header) => header.key === 'Content-Security-Policy'), false);
   const saved = published.headers.find((block) => block.source === '/saved-analysis.html');
   assert.match(saved.headers.find((header) => header.key === 'Content-Security-Policy').value, /default-src 'none'/);
-  assert.equal(published.redirects.filter((rule) => rule.has).length, 10);
+  assert.equal(published.redirects.filter((rule) => rule.has).length, 12);
+  const about = matchRequest(published, { host: 'styermortgage.com', path: '/about' });
+  assert.equal(about.status, 301);
+  assert.equal(about.destination, 'https://styerteam.com/about.html');
   assert.ok(published.redirects.length > 100);
   assert.deepEqual(published.redirects.filter((rule) => !rule.has && ['/:path*', '/(.*)', '/*'].includes(rule.source)), []);
 });
@@ -119,5 +128,19 @@ test('trailing-slash legacy rules and host redirects still resolve', async () =>
     assert.equal(hit && hit.status, 301, extless);
     const destination = hit.destination.split('?')[0];
     assert.equal(fs.existsSync(destination.replace(/^\//, '')), true, `${extless} -> ${destination}`);
+  }
+});
+
+// Host aliases must retain deep links and acquisition attribution across migration.
+test('both retired mortgage hosts preserve specialty paths and query strings', async () => {
+  const { buildConfig, publicConfig, matchRequest } = await import('../scripts/vercel-config.mjs');
+  const { published } = publicConfig(buildConfig());
+  for (const host of ['styermortgage.com', 'www.styermortgage.com']) {
+    for (const path of ['/', '/bank-statement-loans.html', '/dscr-loans-texas.html', '/asset-depletion-mortgage-texas.html', '/blog/2026-06-30-bank-statement-loans-texas.html']) {
+      const query = '?utm_source=migration-test&utm_campaign=income%20review';
+      const result = matchRequest(published, { host, path: path + query });
+      assert.equal(result.status, 301);
+      assert.equal(result.destination, 'https://styerteam.com' + path + query);
+    }
   }
 });

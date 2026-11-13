@@ -1,6 +1,6 @@
 ---
 name: add-scenario
-description: Build a new mortgage scenario page on styermortgage.com from a borrower file Adam describes in plain language. Use whenever Adam says "add scenario", "new scenario", "got a scenario", "got a file to add", "run the add scenario skill", "let me tell you about a borrower", "build this into a scenario", or otherwise describes a closed or representative borrower file and clearly wants it written up as a /scenarios/ page. End-to-end workflow that writes the HTML from the existing template, enforces the site's audit-derived compliance rules (no hard FICO/LTV/divisor/rate numbers, no performance-metric claims, no identifying borrower details), updates the hub + sitemap + session docs, then commits and pushes to trigger the Netlify deploy. Use this skill even if Adam mentions it casually mid-conversation or starts narrating a file without explicitly naming the skill — narrating a closed file is the trigger.
+description: Build a new mortgage scenario page on styerteam.com from a borrower file Adam describes in plain language. Use whenever Adam says "add scenario", "new scenario", "got a scenario", "got a file to add", "run the add scenario skill", "let me tell you about a borrower", "build this into a scenario", or otherwise describes a closed or representative borrower file and clearly wants it written up as a /scenarios/ page. End-to-end workflow that writes the HTML from the existing template, enforces the site's audit-derived compliance rules (no hard FICO/LTV/divisor/rate numbers, no performance-metric claims, no identifying borrower details), updates the hub + sitemap + session docs, then commits and pushes to trigger the Vercel deploy. Use this skill even if Adam mentions it casually mid-conversation or starts narrating a file without explicitly naming the skill — narrating a closed file is the trigger.
 ---
 
 # Add Scenario
@@ -9,7 +9,7 @@ Adam describes a borrower file in plain language. You ship the published scenari
 
 ## What this skill produces
 
-One new published page at `/scenarios/<slug>.html` on styermortgage.com, plus the supporting updates to the hub, sitemap, and session docs. The page tells the story of one solved or representative file (Situation → Obstacle → Strategy → Outcome), anchored by a scannable At-A-Glance block for AEO extraction, and structurally enforces the site's audit-derived compliance rules so a published scenario can't accidentally publish a borrower's name, a universal-program-rule number, or a performance-metric claim.
+One new published page at `/scenarios/<slug>.html` on styerteam.com, plus the supporting updates to the hub, sitemap, and session docs. The page tells the story of one solved or representative file (Situation → Obstacle → Strategy → Outcome), anchored by a scannable At-A-Glance block for AEO extraction, and structurally enforces the site's audit-derived compliance rules so a published scenario can't accidentally publish a borrower's name, a universal-program-rule number, or a performance-metric claim.
 
 ## Read these files first — every invocation, no exceptions
 
@@ -67,7 +67,7 @@ Read `_TEMPLATE.html` fresh. Save the new file at `/scenarios/<slug>.html`. Fill
 
 **Meta description / OG / Twitter** — 1 sentence, ~150 chars, hook + strategy + NMLS attribution.
 
-**Canonical URL** — `https://styermortgage.com/scenarios/<slug>.html`.
+**Canonical URL** — `https://styerteam.com/scenarios/<slug>.html`.
 
 **Breadcrumb** — `Home › Scenarios › [Scenario Title]`.
 
@@ -131,7 +131,7 @@ If you cannot ship the page live (compliance violation Adam needs to resolve, mi
 Add one new URL entry below the existing `/scenarios.html` line. Format:
 
 ```xml
-<url><loc>https://styermortgage.com/scenarios/<slug>.html</loc><lastmod>YYYY-MM-DD</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://styerteam.com/scenarios/<slug>.html</loc><lastmod>YYYY-MM-DD</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 ```
 
 Use today's date for `lastmod`.
@@ -166,14 +166,14 @@ See FLAG_FOR_ADAM.md for review notes.
 Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>
 ```
 
-Then `git push origin main`. Netlify auto-deploys from the push.
+Inspect the current Vercel production ref and repository release workflow before pushing. Deploy only the reviewed commit and verify its production identity; do not assume `main` is live.
 
 ### 10. Verify live
 
 Poll until the new URL returns 200:
 
 ```bash
-until curl -sL https://styermortgage.com/scenarios/<slug>.html | grep -q "<H1 hook phrase>"; do sleep 5; done
+until curl -sL https://styerteam.com/scenarios/<slug>.html | grep -q "<H1 hook phrase>"; do sleep 5; done
 ```
 
 Then verify:

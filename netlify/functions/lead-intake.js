@@ -50,7 +50,7 @@ function firstText(...values) {
 }
 
 const CORS_HEADERS = {
-  "Access-Control-Allow-Origin":  "*",
+  "Access-Control-Allow-Origin":  "https://styerteam.com",
   "Access-Control-Allow-Headers": "Content-Type",
   "Content-Type": "application/json",
 };

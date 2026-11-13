@@ -8,6 +8,17 @@
     } catch (_) { return ''; }
   }
 
+  // Hardcoded cta_source_page values are the current page, kept for no-JS posts.
+  function pageUrlFallback(value) {
+    try {
+      var preset = new URL(value);
+      var here = new URL(root.location.href);
+      if (!/^https:$/.test(preset.protocol)) return false;
+      if (!/^(www\.)?(the)?styerteam\.com$/i.test(preset.hostname)) return false;
+      return preset.pathname === here.pathname || (preset.pathname === '/' && (here.pathname === '/' || here.pathname === '/index.html'));
+    } catch (_) { return false; }
+  }
+
   // Keep the established intake contract: all situation-specific answers also
   // travel in its supported situation field, so no backend rollout is needed.
   function makePayload(data, questions, intent, pageUrl) {
@@ -158,6 +169,9 @@
       if (new URLSearchParams(root.location.search).get('source') === 'homepage_situations') {
         form.elements.cta_source_page.value = root.location.origin + '/';
         form.elements.cta_label.value = 'Start with your situation';
+      } else if (pageUrlFallback(form.elements.cta_source_page && form.elements.cta_source_page.value)) {
+        // Static value is only the no-JS fallback. A real visit records this page.
+        form.elements.cta_source_page.value = cleanUrl(root.location.href);
       } else if (root.document.referrer) {
         form.elements.cta_source_page.value = cleanUrl(root.document.referrer);
       }

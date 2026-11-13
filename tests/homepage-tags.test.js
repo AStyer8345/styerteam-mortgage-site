@@ -15,34 +15,68 @@ const code = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)]
   .map((match) => match[1])
   .find((source) => source.includes('StyerAfterGoogleTag'));
 
-function run(hostname) {
+function run(hostname, { pathname = '/', readyState = 'loading' } = {}) {
   const scripts = [];
   const dataLayer = [];
+  const listeners = {};
+  const timers = [];
   const sandbox = {
-    location: { hostname },
+    location: { hostname, pathname },
     window: {},
     document: {
+      readyState,
       getElementsByTagName: () => [{ parentNode: { insertBefore: (node) => scripts.push(node) } }],
       createElement: () => ({}),
     },
+    addEventListener: (type, fn) => { (listeners[type] = listeners[type] || []).push(fn); },
+    removeEventListener: (type, fn) => { listeners[type] = (listeners[type] || []).filter((item) => item !== fn); },
+    setTimeout: (fn, ms) => { timers.push({ fn, ms }); },
     setInterval,
     clearInterval,
   };
   sandbox.window = sandbox;
   sandbox.window.dataLayer = dataLayer;
   vm.runInNewContext(code, sandbox);
-  return { scripts, dataLayer, window: sandbox.window };
+  const fire = (type) => (listeners[type] || []).slice().forEach((fn) => fn());
+  return { scripts, dataLayer, listeners, timers, fire, window: sandbox.window };
 }
 
-test('production pages load GTM immediately and only once', () => {
+test('production pages queue events at once and load GTM late, only once', () => {
   const first = run('styerteam.com');
+  assert.equal(first.scripts.length, 0, 'GTM must not load before first paint');
+  assert.ok(Array.isArray(first.window.dataLayer));
+  assert.equal(typeof first.window.StyerAfterGoogleTag, 'function');
+  first.fire('load');
+  assert.deepEqual(first.timers.map((timer) => timer.ms), [2500]);
+  first.timers[0].fn();
   assert.equal(first.scripts.length, 1);
   assert.equal(first.scripts[0].src, 'https://www.googletagmanager.com/gtm.js?id=GTM-PQQ6PGLR');
   assert.equal(first.scripts[0].async, true);
   assert.equal(first.dataLayer[0].event, 'gtm.js');
-  assert.equal(typeof first.window.StyerAfterGoogleTag, 'function');
+  first.timers[0].fn();
   vm.runInNewContext(code, first.window);
   assert.equal(first.scripts.length, 1);
+});
+
+test('the first interaction loads GTM without waiting for the timer', () => {
+  for (const type of ['pointerdown', 'keydown', 'touchstart', 'scroll']) {
+    const page = run('styerteam.com');
+    page.fire(type);
+    assert.equal(page.scripts.length, 1, type);
+    assert.equal(page.listeners[type].length, 0, `${type} listener is removed`);
+  }
+});
+
+test('events pushed before GTM loads stay queued ahead of the container', () => {
+  const page = run('styerteam.com');
+  page.dataLayer.push({ event: 'call_click' });
+  page.fire('pointerdown');
+  assert.deepEqual(page.dataLayer.map((entry) => entry.event), ['call_click', 'gtm.js']);
+});
+
+test('thank-you pages load GTM immediately', () => {
+  const page = run('styerteam.com', { pathname: '/contact-thank-you.html' });
+  assert.equal(page.scripts.length, 1);
 });
 
 test('preview hosts do not load GTM or queue a bare Google tag', () => {

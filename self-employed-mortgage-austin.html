@@ -31,7 +31,7 @@
 <link href="/style.css?v=20260830-selfemp1" rel="stylesheet"/>
 <script>window.dataLayer = window.dataLayer || [];</script>
 <!-- Google Tag Manager -->
-<script>(function(){var host=location.hostname;if(host!=="styerteam.com"&&host!=="www.styerteam.com")return;if(window.__styerTags)return;window.__styerTags=1;window.dataLayer=window.dataLayer||[];window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});var j=document.createElement("script");j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id=GTM-PQQ6PGLR";var f=document.getElementsByTagName("script")[0];f.parentNode.insertBefore(j,f);window.StyerAfterGoogleTag=function(fn){var q=window.__styerTagQueue||(window.__styerTagQueue=[]);q.push(fn);if(window.__styerTagWait)return;window.__styerTagWait=setInterval(function(){var ready=(window.dataLayer||[]).some(function(entry){return entry&&entry.event==="gtm.load";});if(!ready)return;clearInterval(window.__styerTagWait);window.__styerTagWait=0;q.splice(0).forEach(function(item){item();});},50);};})();</script>
+<script>(function(){var host=location.hostname;if(host!=="styerteam.com"&&host!=="www.styerteam.com")return;if(window.__styerTags)return;window.__styerTags=1;window.dataLayer=window.dataLayer||[];var wake=["pointerdown","keydown","touchstart","scroll"];function start(){if(window.__styerTagsStarted)return;window.__styerTagsStarted=1;wake.forEach(function(type){window.removeEventListener(type,start,true);});window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});var j=document.createElement("script");j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id=GTM-PQQ6PGLR";var f=document.getElementsByTagName("script")[0];f.parentNode.insertBefore(j,f);}function later(){setTimeout(start,2500);}if(/thank-you/.test(location.pathname)){start();}else{wake.forEach(function(type){window.addEventListener(type,start,{capture:true,passive:true});});if(document.readyState==="complete"){later();}else{window.addEventListener("load",later);}}window.StyerAfterGoogleTag=function(fn){var q=window.__styerTagQueue||(window.__styerTagQueue=[]);q.push(fn);if(window.__styerTagWait)return;window.__styerTagWait=setInterval(function(){var ready=(window.dataLayer||[]).some(function(entry){return entry&&entry.event==="gtm.load";});if(!ready)return;clearInterval(window.__styerTagWait);window.__styerTagWait=0;q.splice(0).forEach(function(item){item();});},50);};})();</script>
 <!-- LocalBusiness Schema -->
 
 <link href="/experience.css" rel="stylesheet"/>
@@ -52,6 +52,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <script src="/advisory-contact.js?v=20260918" defer></script>
 <link href="/assets/fonts/site-fonts.css" rel="stylesheet"/>
 <link href="/a11y.css" rel="stylesheet"/>
+<link href="/simple.css?v=20261113" rel="stylesheet"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,16 +73,13 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
       },
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "185 Wythe Ave, Suite A2",
-        "addressLocality": "Brooklyn",
-        "addressRegion": "NY",
-        "postalCode": "11249",
+        "streetAddress": "7600 N Capital of Texas Hwy, Suite 230, #105",
+        "addressLocality": "Austin",
+        "addressRegion": "TX",
+        "postalCode": "78731",
         "addressCountry": "US"
       },
-      "areaServed": {
-        "@type": "State",
-        "name": "Texas"
-      },
+      "areaServed": [{"@type": "City", "name": "Austin"}, {"@type": "State", "name": "Texas"}],
       "telephone": "+15129566010",
       "email": "adamstyer@gorascal.com",
       "logo": {
@@ -94,7 +92,8 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
         "https://www.facebook.com/StyerTeam/",
         "https://www.instagram.com/styerteam/",
         "https://www.youtube.com/channel/UCj7QNDf7kxLu1Kv67uf_avw",
-        "https://www.liinks.co/styerteam"
+        "https://www.liinks.co/styerteam",
+        "https://www.youtube.com/@thestyerteamtx"
       ]
     },
     {
@@ -113,7 +112,9 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
       },
       "sameAs": [
         "https://www.linkedin.com/in/thestyerteam",
-        "https://www.zillow.com/lender-profile/adamstyer/"
+        "https://www.zillow.com/lender-profile/adamstyer/",
+        "https://www.youtube.com/channel/UCj7QNDf7kxLu1Kv67uf_avw",
+        "https://www.youtube.com/@thestyerteamtx"
       ]
     },
     {
@@ -135,7 +136,12 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
       },
       "publisher": {
         "@id": "https://styerteam.com/#organization"
-      }
+      },
+      "reviewedBy": {
+        "@id": "https://styerteam.com/#adam"
+      },
+      "lastReviewed": "2026-11-13",
+      "dateModified": "2026-11-13"
     },
     {
       "@type": "BreadcrumbList",
@@ -273,20 +279,40 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
           }
         }
       ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://styerteam.com/self-employed-mortgage-austin.html#article",
+      "headline": "Self-Employed Mortgages in Austin, TX",
+      "description": "Self-employed mortgages in Austin and Texas: compare tax returns, bank statements, 1099s, a P&L, and assets. NMLS #513013.",
+      "author": {
+        "@id": "https://styerteam.com/#adam"
+      },
+      "publisher": {
+        "@id": "https://styerteam.com/#organization"
+      },
+      "url": "https://styerteam.com/self-employed-mortgage-austin.html",
+      "datePublished": "2026-03-27",
+      "dateModified": "2026-11-13",
+      "image": "https://styerteam.com/assets/og-image.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://styerteam.com/self-employed-mortgage-austin.html"
+      }
     }
   ]
 }
 </script>
 </head>
-<body class="u-program-page public-header-page advisory-site">
+<body class="u-program-page public-header-page advisory-site simple">
 <!-- Google Tag Manager (noscript) -->
 <noscript></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <a class="skip-link" href="#main">Skip to main content</a>
 <header>
 <div class="container">
-<nav>
-<a class="nav-brand" href="/index.html">
+<nav aria-label="Primary">
+<a class="nav-brand" href="/">
 <span aria-hidden="true" class="nav-wordmark">The Styer Team</span><span aria-hidden="true" class="nav-powered-mark"><span class="nav-powered-label">Powered by</span><span class="gorascal-wordmark-chip"><img src="/assets/brand/gorascal/gorascal-wordmark-display.png" alt="Go Rascal Inc." height="26"></span></span><span class="gorascal-visually-hidden">The Styer Team, Powered by Go Rascal Inc.</span>
 </a>
 <button aria-label="Toggle navigation menu" class="mobile-menu-toggle" aria-expanded="false">
@@ -347,15 +373,15 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div>
 </div>
 </li>
-<li class="nav-has-dropdown"><a href="/resources/">Tools &amp; Guides</a>
+<li class="nav-has-dropdown"><a href="/calculators.html">Calculators</a>
 <ul class="nav-dropdown">
-<li><a href="/resources/">All Tools &amp; Guides</a></li>
+<li><a href="/resources">Guides</a></li>
 <li><a href="/calculators.html">All Calculators</a></li>
 <li><a href="/dscr-calculator.html">DSCR Calculator</a></li>
 <li><a href="/asset-depletion-calculator.html">Asset Depletion Calculator</a></li>
 <li><a href="/wrap-mortgage-calculator.html">WRAP Calculator</a></li>
 <li><a href="/calculator-payment.html">Payment Calculator</a></li>
-<li><a href="/resources/first-time-buyer-guide/">First-Time Buyer Guide</a></li>
+<li><a href="/resources/first-time-buyer-guide">First-Time Buyer Guide</a></li>
 <li><a href="/contact.html?goal=Refinance&loan=second-look">Compare a Mortgage Offer</a></li>
 <li><a href="/austin-area-mortgage-lender.html">Texas Communities Directory</a></li>
 <li><a href="/mortgage-glossary.html">Mortgage Glossary</a></li>
@@ -379,7 +405,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </ul>
 </li>
 <li class="nav-phone-li"><a class="nav-phone" href="tel:+15129566010">(512) 956-6010</a></li>
-<li><a class="nav-cta" href="/contact.html?goal=Purchase">See My Options</a></li>
+<li><a class="nav-cta" href="/contact.html">Contact</a></li>
 <li><a class="nav-cta nav-apply" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank">Apply Now<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
 </ul>
 </nav>
@@ -398,8 +424,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div class="u-hero-inner">
 <p class="u-eyebrow">Self-Employed Mortgages · Austin &amp; Texas</p>
 <h1 id="journey-title">Self-Employed Mortgages in Austin, TX</h1>
-<p class="u-hero-lead" style="font-size: clamp(20px, 2.2vw, 24px); color: var(--pwe-brass-light); font-weight: 500; margin-top: 8px; margin-bottom: 14px;">Compare Tax Returns, Deposits, 1099s, and a P&amp;L.</p>
-<p class="u-hero-lead">Yes. You can get a mortgage in Austin when you work for yourself. We compare tax returns, 12 or 24 months of bank statements, 1099s, a CPA-prepared P&amp;L, and eligible assets, and we use the path that fits. My team and I shop many wholesale lenders.</p>
+<p class="u-hero-lead">Your tax return is one way to show income. It is not the only one. Send me what you have and I will show you which path fits.</p>
 <div class="u-hero-actions">
 <a class="u-btn-primary" href="#quick-options">See My Options</a>
 <a class="u-btn-secondary" href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a 15-Min Call<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
@@ -409,30 +434,100 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
             </a>
 </div>
 <p class="u-hero-byline">By <a href="/about.html">Adam Styer</a>, Senior Loan Officer · NMLS #513013 · Company NMLS #2072896</p>
-<!-- 4 KEY HIGHLIGHT CARDS -->
-<div class="u-metrics-grid">
-<div class="u-metric-card">
-<div class="u-metric-label">Qualifying Paths</div>
-<div class="u-metric-value">Bank Statements &amp; P&amp;L</div>
-<div class="u-metric-sub">Tax returns are still a path</div>
+<p class="u-hero-reviewed" style="margin:6px 0 0;font-size:13px;opacity:.85">Reviewed by Adam Styer, NMLS #513013 · Updated <time datetime="2026-11-13">November 13, 2026</time></p>
 </div>
-<div class="u-metric-card">
-<div class="u-metric-label">Down Payment</div>
-<div class="u-metric-value">Matched to the file</div>
-<div class="u-metric-sub">We use the down payment that path allows</div>
+<section class="u-cta-section" id="quick-options">
+<div class="container" id="scenario-review">
+<div class="u-cta-card">
+<div class="u-cta-header">
+<p class="u-eyebrow" style="color: var(--pwe-brass-light);">Fast Scenario Review</p>
+<h2>Tell me what you have</h2>
+<p>No hard credit pull. No spam. I read every one myself.</p>
 </div>
-<div class="u-metric-card">
-<div class="u-metric-label">Credit Minimum</div>
-<div class="u-metric-value">Read with the file</div>
-<div class="u-metric-sub">Credit rules differ by lender</div>
+<form action="/contact-thank-you.html" class="journey-form" data-journey="general" data-journey-mode="conversation" data-netlify="true" data-quick-form="true" id="form-quick-self-employed-mortgage-austin" method="POST" name="contact" netlify-honeypot="bot-field"><p class="personal-form-note">You don’t need to know which loan to ask for. Tell me what you’re trying to do, and we can start there.</p>
+<input name="form-name" type="hidden" value="contact"/>
+<input name="inquiry_id" type="hidden" value=""/>
+<input name="test_mode" type="hidden" value="false"/>
+<input name="intent" type="hidden" value="general"/>
+<input name="situation" type="hidden" value="Self-employed / business owner"/>
+<input name="utm_source" type="hidden" value=""/>
+<input name="utm_medium" type="hidden" value=""/>
+<input name="utm_campaign" type="hidden" value=""/>
+<input name="utm_term" type="hidden" value=""/>
+<input name="utm_content" type="hidden" value=""/>
+<input name="page_url" type="hidden" value=""/>
+<input name="entry_referrer" type="hidden" value=""/>
+<input name="first_touch_page" type="hidden" value=""/>
+<input name="first_touch_referrer" type="hidden" value=""/>
+<input name="first_touch_at" type="hidden" value=""/>
+<input name="first_touch_source" type="hidden" value=""/>
+<input name="first_touch_utm_source" type="hidden" value=""/>
+<input name="first_touch_utm_medium" type="hidden" value=""/>
+<input name="first_touch_utm_campaign" type="hidden" value=""/>
+<input name="first_touch_utm_term" type="hidden" value=""/>
+<input name="first_touch_utm_content" type="hidden" value=""/>
+<input name="source" type="hidden" value="self_employed_quick"/>
+<input name="cta_source_page" type="hidden" value="https://styerteam.com/self-employed-mortgage-austin.html"/>
+<input name="cta_label" type="hidden" value="See My Options"/>
+<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
+<p class="journey-progress" hidden="">Your message</p>
+<fieldset data-journey-step="2" style="border:none; padding:0; margin:0;">
+<legend class="sr-only" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);">Your financing goal and contact details</legend>
+<div class="u-form-grid">
+<div class="u-form-full">
+<label for="qf-loan-goal">I’m looking to… *</label>
+<select id="qf-loan-goal" name="loan_goal" required="">
+<option value="">Choose a financing goal</option>
+<option value="Purchase">Buy a home</option>
+<option value="Refinance">Refinance an existing mortgage</option>
+<option value="Invest">Finance an investment property</option>
+<option value="Access equity">Access home equity (cash-out)</option>
+<option value="Explore options">Explore my borrowing options</option>
+</select>
 </div>
-<div class="u-metric-card">
-<div class="u-metric-label">Wholesale Power</div>
-<div class="u-metric-value">Many Wholesale Lenders</div>
-<div class="u-metric-sub">Personal guidance on the program that fits</div>
+<div>
+<label for="qf-name">Your Name *</label>
+<span class="name-split"><input id="qf-name" aria-label="First name" autocomplete="given-name" maxlength="80" name="first_name" placeholder="First" required="" type="text"/><input aria-label="Last name" autocomplete="family-name" maxlength="80" name="last_name" placeholder="Last" required="" type="text"/><input data-full-name="" name="name" type="hidden" value=""/></span>
+</div>
+<div>
+<label for="qf-email">Email Address *</label>
+<input autocomplete="email" id="qf-email" maxlength="160" name="email" placeholder="jane@example.com" required="" type="email"/>
+</div>
+<div class="u-form-full">
+<label for="qf-phone">Phone (optional)</label>
+<input autocomplete="tel" id="qf-phone" maxlength="30" name="phone" placeholder="(512) 555-0123" type="tel"/>
+</div>
+<div class="u-form-full">
+<label for="qf-message">Tell me a little about your situation (optional)</label>
+<textarea id="qf-message" maxlength="2000" name="message" placeholder="Business structure (LLC, 1099, S-Corp), rough monthly deposits, questions..." rows="3"></textarea>
+</div>
+<details class="personal-support"><summary>One optional question: how did you find me?</summary><div class="u-form-full form-group self-reported-source-field">
+<label for="contact-heard-about">How did you first hear about Adam? (optional)</label>
+<select id="contact-heard-about" name="self_reported_source">
+<option value="">Choose if you remember</option>
+<option value="ChatGPT">ChatGPT</option>
+<option value="Gemini">Gemini</option>
+<option value="Other AI assistant">Other AI assistant</option>
+<option value="Google Search">Google Search</option>
+<option value="Referral">Referral / CPA / Realtor</option>
+<option value="Other / not sure">Other / not sure</option>
+</select>
+</div></details>
+<label class="u-form-consent">
+<input name="tcpa_consent" required="" type="checkbox" aria-required="true">
+<span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span>
+</label>
+<button class="u-form-submit" type="submit">Ask Adam About My Options</button>
+</div>
+</fieldset>
+<div aria-atomic="true" aria-live="polite" class="journey-status" hidden="" role="status" tabindex="-1"></div>
+</form>
+<p class="u-form-footer-note">
+            Prefer to talk right now? Call <a href="tel:+15129566010">(512) 956-6010</a> or <a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">book a 15-minute call on Calendly<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>. <a href="/privacy.html">Privacy Policy</a>
+</p>
 </div>
 </div>
-</div>
+</section>
 </div>
 <!-- SECTION 1B: DIRECT SEARCH & AEO ANSWER -->
 <section class="u-section bg-white" id="can-i-qualify" style="padding: 48px 0; border-bottom: 1px solid var(--pwe-rule);">
@@ -451,38 +546,13 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div class="container" id="borrower-situations">
 <div class="u-section-header">
 <p class="u-eyebrow">Common Situations</p>
-<h2>Who Self-Employed Financing Is Built For</h2>
-<p>A few situations. We compare the records you have before assuming you need a different loan.</p>
+<h2>Who this is for</h2>
 </div>
-<div class="u-grid-4">
-<div class="u-card">
-<div class="u-card-icon">
-<svg fill="none" height="22" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-</div>
-<h3>Tax Write-Offs Lower Your Net</h3>
-<p>Revenue is strong, and deductions leave less on the tax return. We can look at 12 or 24 months of business deposits. The lender still applies its own expense treatment. Deposits are not qualifying income.</p>
-</div>
-<div class="u-card">
-<div class="u-card-icon">
-<svg fill="none" height="22" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
-</div>
-<h3>1099 Contractors &amp; Consultants</h3>
-<p>Consultants and contractors with 1099s. Gross 1099 income is the starting point. The program then applies its own expense factor before that income is used to qualify.</p>
-</div>
-<div class="u-card">
-<div class="u-card-icon">
-<svg fill="none" height="22" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="22"><rect height="14" rx="2" ry="2" width="20" x="2" y="7"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-</div>
-<h3>K-1 &amp; Multi-Entity Business Owners</h3>
-<p>You own partnerships or S-Corps with retained earnings. We review the flow of funds across entities and credit usable distributions towards your purchase without the rigid restrictions of retail banks.</p>
-</div>
-<div class="u-card">
-<div class="u-card-icon">
-<svg fill="none" height="22" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="22"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-</div>
-<h3>New or Rapidly Growing Businesses</h3>
-<p>In business less than two years, or last year jumped? Some programs will look at a shorter history. Others want a longer one. We compare what the documents support.</p>
-</div>
+<div class="u-grid-4 simple-flip-grid">
+<div class="u-card simple-flip" tabindex="0"><div class="simple-flip-inner"><div class="simple-flip-front"><h3>Tax Write-Offs Lower Your Net</h3><span aria-hidden="true" class="simple-flip-hint">Tap to flip</span></div><div class="simple-flip-back"><p>Revenue is strong, and deductions leave less on the tax return. We can look at 12 or 24 months of business deposits. The lender still applies its own expense treatment. Deposits are not qualifying income.</p><a class="simple-flip-link" href="/bank-statement-loans.html">See bank statement loans →</a></div></div></div>
+<div class="u-card simple-flip" tabindex="0"><div class="simple-flip-inner"><div class="simple-flip-front"><h3>1099 Contractors &amp; Consultants</h3><span aria-hidden="true" class="simple-flip-hint">Tap to flip</span></div><div class="simple-flip-back"><p>Consultants and contractors with 1099s. Gross 1099 income is the starting point. The program then applies its own expense factor before that income is used to qualify.</p><a class="simple-flip-link" href="/1099-only-mortgage-texas.html">See 1099 income loans →</a></div></div></div>
+<div class="u-card simple-flip" tabindex="0"><div class="simple-flip-inner"><div class="simple-flip-front"><h3>K-1 &amp; Multi-Entity Business Owners</h3><span aria-hidden="true" class="simple-flip-hint">Tap to flip</span></div><div class="simple-flip-back"><p>You own partnerships or S-Corps with retained earnings. We review the flow of funds across entities and which distributions a program can count.</p><a class="simple-flip-link" href="/k1-income-mortgage-austin.html">See K-1 income loans →</a></div></div></div>
+<div class="u-card simple-flip" tabindex="0"><div class="simple-flip-inner"><div class="simple-flip-front"><h3>New or Rapidly Growing Businesses</h3><span aria-hidden="true" class="simple-flip-hint">Tap to flip</span></div><div class="simple-flip-back"><p>In business less than two years, or last year jumped? Some programs will look at a shorter history. Others want a longer one. We compare what the documents support.</p><a class="simple-flip-link" href="/mortgage-for-business-owners-austin.html">See business owner loans →</a></div></div></div>
 </div>
 </div>
 </section>
@@ -491,26 +561,26 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div class="container">
 <div class="u-section-header">
 <p class="u-eyebrow">The Process</p>
-<h2>How It Works: 3 Simple Steps</h2>
-<p>What we look at first, and what has to happen before a closing date.</p>
+<h2>How it works</h2>
 </div>
 <div class="u-steps-grid">
 <div class="u-step-card">
 <div class="u-step-num">01</div>
-<h3>Quick Cash-Flow Review</h3>
-<p>Send 2–3 recent bank statements or a simple summary of monthly deposits. No hard credit pull and no tax returns needed upfront. Adam reviews your numbers personally.</p>
+<h3>Send what you have</h3>
+<p>Two or three recent bank statements, or a short summary of monthly deposits. No hard credit pull. No tax returns needed to start.</p>
 </div>
 <div class="u-step-card">
 <div class="u-step-num">02</div>
-<h3>Wholesale Lender Match</h3>
-<p>We shop your scenario across many wholesale lenders and compare price, fees, and the expense treatment each program actually uses.</p>
+<h3>I compare the paths</h3>
+<p>I run your numbers the tax-return way and the alternative ways, across many capital partners, and compare price, fees, and how each program counts expenses.</p>
 </div>
 <div class="u-step-card">
 <div class="u-step-num">03</div>
-<h3>A clear path to closing</h3>
-<p>Timing depends on the selected program, the documents needed, appraisal and title work. Confirm the milestones for your file before relying on a closing date.</p>
+<h3>You pick</h3>
+<p>You see the options side by side and choose. Timing depends on the program, the documents, the appraisal, and title work.</p>
 </div>
 </div>
+<p class="simple-steps-links"><a href="#quick-options">Send me a quick note</a><a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book 15 minutes<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a><a href="/mortgage-pre-approval-austin.html">How pre-approval works</a></p>
 </div>
 </section>
 <!-- SECTION 3B: RECONCILED CASH FLOW ILLUSTRATION -->
@@ -538,7 +608,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div style="font-size: 13.5px; font-weight: 600; color: #a12c25;">Monthly income on the return.</div>
 </div>
 <div style="background: #FFFFFF; border: 2px solid var(--pwe-brass); border-radius: 4px; padding: 20px; box-shadow: 0 4px 16px rgba(154, 120, 68, 0.08);">
-<span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--pwe-brass); display: block; margin-bottom: 6px;">Wholesale Bank Statement Path</span>
+<span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--pwe-brass); display: block; margin-bottom: 6px;">Bank Statement Path</span>
 <div style="font-size: 22px; font-weight: 700; color: var(--pwe-obsidian); margin-bottom: 6px;">$20,000/mo <span style="font-size: 13px; font-weight: 400; color: var(--pwe-slate);">($240,000/yr)</span></div>
 <p style="font-size: 13.5px; line-height: 1.5; color: var(--pwe-slate); margin: 0 0 10px;">If this sample uses a 50% expense factor on $40,000 of eligible deposits, half is $20,000.</p>
 <div style="font-size: 13.5px; font-weight: 600; color: #2d6a4f;">Monthly income in this sample.</div>
@@ -572,10 +642,16 @@ This sample uses 50% so the steps are easy to see. A CPA letter explains the bus
 <div class="u-container" style="max-width: 880px;">
 <div class="u-section-header" style="text-align: center; margin-bottom: 24px;">
 <span class="u-kicker">Supporting Research &amp; Worksheets</span>
-<h2 style="font-family: var(--pwe-serif); font-size: clamp(22px, 2.4vw, 28px); color: var(--pwe-obsidian); margin: 0 0 8px;">Explore the Details</h2>
-<p style="font-size: 15px; color: var(--pwe-slate); max-width: 640px; margin: 0 auto; line-height: 1.5;">In-depth underwriting guidelines, tax-return add-back worksheets, and entity documentation rules in our specialist guides.</p>
+<h2 style="font-family: var(--pwe-serif); font-size: clamp(22px, 2.4vw, 28px); color: var(--pwe-obsidian); margin: 0 0 8px;">Go deeper</h2>
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px;">
+<div id="low-taxable-income" style="background: #FFFFFF; border: 1px solid var(--pwe-rule); border-radius: 4px; padding: 16px 20px;">
+<a href="/blog/2026-11-09-mortgage-low-taxable-income-self-employed-texas.html" style="font-size: 15.5px; font-weight: 600; color: var(--pwe-obsidian); text-decoration: none; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+<span>Low Taxable Income on Your Tax Returns</span>
+<span style="font-size: 13px; color: var(--pwe-brass); font-weight: 600;">Read Article →</span>
+</a>
+<p style="font-size: 13.5px; line-height: 1.5; color: var(--pwe-slate); margin: 6px 0 0;">Write-offs can shrink the income a conventional lender counts. This walks through the tax-return calculation and the bank statement, P&amp;L, 1099, and asset-based alternatives.</p>
+</div>
 <div id="business-history-rules" style="background: #FFFFFF; border: 1px solid var(--pwe-rule); border-radius: 4px; padding: 16px 20px;">
 <a href="/blog/2026-07-16-self-employed-income-calculation-underwriting-texas.html#guide-declining-income-the-rule-nobody-reads-until-it-bites" style="font-size: 15.5px; font-weight: 600; color: var(--pwe-obsidian); text-decoration: none; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
 <span>12–24 Month Operating History &amp; Declining Income Rules</span>
@@ -605,11 +681,10 @@ This sample uses 50% so the steps are easy to see. A CPA letter explains the bus
 <div class="container">
 <div class="u-section-header" style="text-align: center; margin-bottom: 32px;">
 <p class="u-eyebrow">Clear Answers</p>
-<h2 style="font-family: var(--pwe-serif); font-size: clamp(24px, 2.6vw, 32px); color: var(--pwe-obsidian); margin: 0 0 10px;">Frequently Asked Questions</h2>
-<p style="font-size: 15.5px; color: var(--pwe-slate); margin: 0;">Practical, straightforward answers to the questions self-employed borrowers ask most in Austin.</p>
+<h2 style="font-family: var(--pwe-serif); font-size: clamp(24px, 2.6vw, 32px); color: var(--pwe-obsidian); margin: 0 0 10px;">Common questions</h2>
 </div>
 <div class="u-faq-wrap">
-<details class="u-faq-item" open="">
+<details class="u-faq-item">
 <summary>Do I need a special mortgage because I am self-employed?</summary>
 <div class="u-faq-answer">
 <p>No. Conventional, FHA, VA, and jumbo loans above the conforming limit may be available when your income, credit, funds, and property meet that program. An alternative-documentation mortgage is worth comparing when a different income calculation solves a specific problem.</p>
@@ -681,190 +756,32 @@ This sample uses 50% so the steps are easy to see. A CPA letter explains the bus
       </p>
 </div>
 </section>
-<!-- CONDENSED TRUST STRIP (WHY ADAM) DIRECTLY PRECEDING NEXT STEP -->
-<section class="u-section bg-light" id="why-adam" style="padding: 28px 0; border-top: 1px solid var(--pwe-rule); border-bottom: 1px solid var(--pwe-rule);">
-<div class="container">
-<div style="display: flex; justify-content: center; align-items: center; gap: 32px; flex-wrap: wrap; text-align: center;">
-<span style="font-size: 13.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pwe-brass);">The Wholesale Advantage</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• Many wholesale lenders</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• Common-Sense Non-QM Underwriting</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• A clear path to closing</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• Direct 1-on-1 Broker Guidance</span>
-</div>
-</div>
-</section>
 <!-- SECTION 6: INTAKE / SCENARIO FORM -->
-<section class="u-cta-section" id="quick-options">
-<div class="container" id="scenario-review">
-<div class="u-cta-card">
-<div class="u-cta-header">
-<p class="u-eyebrow" style="color: var(--pwe-brass-light);">Fast Scenario Review</p>
-<h2>Tell us about the documents you have</h2>
-<p>Tell me about your business scenario. No hard credit pull, no application fees, and no spam. I review the numbers personally.</p>
-</div>
-<form action="/contact-thank-you.html" class="journey-form" data-journey="general" data-journey-mode="conversation" data-netlify="true" data-quick-form="true" id="form-quick-self-employed-mortgage-austin" method="POST" name="contact" netlify-honeypot="bot-field"><p class="personal-form-note">You don’t need to know which loan to ask for. Tell me what you’re trying to do, and we can start there.</p>
-<input name="form-name" type="hidden" value="contact"/>
-<input name="inquiry_id" type="hidden" value=""/>
-<input name="test_mode" type="hidden" value="false"/>
-<input name="intent" type="hidden" value="general"/>
-<input name="situation" type="hidden" value="Self-employed / business owner"/>
-<input name="utm_source" type="hidden" value=""/>
-<input name="utm_medium" type="hidden" value=""/>
-<input name="utm_campaign" type="hidden" value=""/>
-<input name="utm_term" type="hidden" value=""/>
-<input name="utm_content" type="hidden" value=""/>
-<input name="page_url" type="hidden" value=""/>
-<input name="entry_referrer" type="hidden" value=""/>
-<input name="first_touch_page" type="hidden" value=""/>
-<input name="first_touch_referrer" type="hidden" value=""/>
-<input name="first_touch_at" type="hidden" value=""/>
-<input name="first_touch_source" type="hidden" value=""/>
-<input name="first_touch_utm_source" type="hidden" value=""/>
-<input name="first_touch_utm_medium" type="hidden" value=""/>
-<input name="first_touch_utm_campaign" type="hidden" value=""/>
-<input name="first_touch_utm_term" type="hidden" value=""/>
-<input name="first_touch_utm_content" type="hidden" value=""/>
-<input name="source" type="hidden" value="self_employed_quick"/>
-<input name="cta_source_page" type="hidden" value="https://thestyerteam.com/self-employed-mortgage-austin.html"/>
-<input name="cta_label" type="hidden" value="See My Options"/>
-<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
-<p class="journey-progress" hidden="">Your message</p>
-<fieldset data-journey-step="2" style="border:none; padding:0; margin:0;">
-<legend class="sr-only" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);">Your financing goal and contact details</legend>
-<div class="u-form-grid">
-<div class="u-form-full">
-<label for="qf-loan-goal">I’m looking to… *</label>
-<select id="qf-loan-goal" name="loan_goal" required="">
-<option value="">Choose a financing goal</option>
-<option value="Purchase">Buy a home</option>
-<option value="Refinance">Refinance an existing mortgage</option>
-<option value="Invest">Finance an investment property</option>
-<option value="Access equity">Access home equity (cash-out)</option>
-<option value="Explore options">Explore my borrowing options</option>
-</select>
-</div>
-<div>
-<label for="qf-name">Your Name *</label>
-<input autocomplete="name" id="qf-name" maxlength="160" name="name" placeholder="Jane Doe" required="" type="text"/>
-</div>
-<div>
-<label for="qf-email">Email Address *</label>
-<input autocomplete="email" id="qf-email" maxlength="160" name="email" placeholder="jane@example.com" required="" type="email"/>
-</div>
-<div class="u-form-full">
-<label for="qf-phone">Phone (optional)</label>
-<input autocomplete="tel" id="qf-phone" maxlength="30" name="phone" placeholder="(512) 555-0123" type="tel"/>
-</div>
-<div class="u-form-full">
-<label for="qf-message">Tell me a little about your situation (optional)</label>
-<textarea id="qf-message" maxlength="2000" name="message" placeholder="Business structure (LLC, 1099, S-Corp), rough monthly deposits, questions..." rows="3"></textarea>
-</div>
-<details class="personal-support"><summary>One optional question: how did you find me?</summary><div class="u-form-full form-group self-reported-source-field">
-<label for="contact-heard-about">How did you first hear about Adam? (optional)</label>
-<select id="contact-heard-about" name="self_reported_source">
-<option value="">Choose if you remember</option>
-<option value="ChatGPT">ChatGPT</option>
-<option value="Gemini">Gemini</option>
-<option value="Other AI assistant">Other AI assistant</option>
-<option value="Google Search">Google Search</option>
-<option value="Referral">Referral / CPA / Realtor</option>
-<option value="Other / not sure">Other / not sure</option>
-</select>
-</div></details>
-<label class="u-form-consent">
-<input name="tcpa_consent" required="" type="checkbox" aria-required="true">
-<span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span>
-</label>
-<button class="u-form-submit" type="submit">Ask Adam About My Options</button>
-</div>
-</fieldset>
-<div aria-atomic="true" aria-live="polite" class="journey-status" hidden="" role="status" tabindex="-1"></div>
-</form>
-<p class="u-form-footer-note">
-            Prefer to talk right now? Call <a href="tel:+15129566010">(512) 956-6010</a> or <a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">book a 15-minute call on Calendly<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>. <a href="/privacy.html">Privacy Policy</a>
-</p>
-</div>
+<section class="u-section simple-close" id="next-step">
+<div class="container">
+<h2>Not sure which path fits? That is my job.</h2>
+<p>Send me what you have. I will tell you what I see.</p>
+<p><a class="u-btn-primary" href="#quick-options">See My Options</a></p>
 </div>
 </section>
 </main>
 <!-- Detailed Scenario Review Form Section (Blueprint Contract) -->
-<section class="u-section bg-light" id="detailed-review" style="padding: 64px 0; border-top: 1px solid var(--pwe-rule);">
-<div class="u-container" style="max-width: 880px;">
-<details class="u-disclose" id="detailed-scenario-drawer" style="background: #FFFFFF; border: 1px solid var(--pwe-rule); border-top: 3px solid var(--pwe-brass); border-radius: 4px;">
-<summary style="padding: 22px 28px; cursor: pointer; font-size: 18px; font-weight: 600; color: var(--pwe-obsidian); display: flex; justify-content: space-between; align-items: center;">
-<span>Prefer a Comprehensive File Review? Submit Your Full Scenario →</span>
-</summary>
-<div class="u-disclose-body" style="padding: 28px; border-top: 1px solid var(--pwe-rule);">
-<p style="font-size: 15px; color: var(--pwe-slate); margin-bottom: 24px;">For complex files, multiple business entities, or borrowers with tax documents ready for evaluation. Complete the detailed scenario review below for a comprehensive underwriting analysis.</p>
-<form action="/thank-you" class="journey-form" data-journey="business_owner" data-netlify="true" id="form-scenario-review" method="POST" name="scenario-review" netlify-honeypot="bot-field">
-<input name="utm_source" type="hidden" value=""/>
-<input name="utm_medium" type="hidden" value=""/>
-<input name="utm_campaign" type="hidden" value=""/>
-<input name="utm_term" type="hidden" value=""/>
-<input name="utm_content" type="hidden" value=""/>
-<input name="page_url" type="hidden" value=""/>
-<input name="entry_referrer" type="hidden" value=""/>
-<input name="first_touch_page" type="hidden" value=""/>
-<input name="first_touch_referrer" type="hidden" value=""/>
-<input name="first_touch_at" type="hidden" value=""/>
-<input name="first_touch_source" type="hidden" value=""/>
-<input name="first_touch_utm_source" type="hidden" value=""/>
-<input name="first_touch_utm_medium" type="hidden" value=""/>
-<input name="first_touch_utm_campaign" type="hidden" value=""/>
-<input name="first_touch_utm_term" type="hidden" value=""/>
-<input name="first_touch_utm_content" type="hidden" value=""/>
-<input name="source" type="hidden" value=""/>
-<input name="cta_source_page" type="hidden" value=""/>
-<input name="cta_label" type="hidden" value=""/>
-<input name="inquiry_id" type="hidden" value=""/><input name="intent" type="hidden" value="business_owner"/><input name="form-name" type="hidden" value="scenario-review"/>
-<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
-<p aria-live="polite" class="journey-progress">Your scenario</p>
-<fieldset data-journey-step="1"><legend>Your plans</legend><div class="journey-fields"><div class="journey-field"><label for="program-loan_goal">What would you like to do?</label><select id="program-loan_goal" name="loan_goal"><option selected="" value="Not Sure Yet">Not Sure Yet</option><option value="Purchase">Purchase</option><option value="Refinance">Refinance</option><option value="Access equity">Access equity</option><option value="Invest">Invest</option><option value="Build">Build</option><option value="Buy before selling">Buy before selling</option></select></div>
-<div class="journey-field"><label for="program-income_type">What should I know about your situation?</label><select id="program-income_type" name="income_type"><option value="No special circumstance">No special circumstance</option><option selected="" value="Self-employed / business owner">Self-employed / business owner</option><option value="Rental income">Rental income</option><option value="Substantial assets">Substantial assets</option><option value="Difficulty with another lender">Difficulty with another lender</option><option value="Another circumstance">Another circumstance</option><option value="Not sure yet">Not sure yet</option></select></div>
-<div class="journey-field"><label for="program-readiness">Where are you in the process?</label><select id="program-readiness" name="readiness"><option value="">Choose or leave unknown</option><option value="Exploring">Exploring</option><option value="Comparing options">Comparing options</option><option value="Property identified">Property identified</option><option value="Under contract">Under contract</option></select></div>
-<div class="journey-field"><label for="program-property_value">Approximate price or property value</label><input id="program-property_value" maxlength="160" name="property_value" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field"><label for="program-target_city">City or area</label><input id="program-target_city" maxlength="160" name="target_city" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Purchase|Invest|Build|Buy before selling"><label for="program-down_payment">Estimated down payment</label><input id="program-down_payment" maxlength="160" name="down_payment" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Refinance|Access equity|Buy before selling"><label for="program-current_balance">Current mortgage balance</label><input id="program-current_balance" maxlength="160" name="current_balance" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Refinance|Access equity"><label for="program-current_rate">Current interest rate (%)</label><input id="program-current_rate" maxlength="160" name="current_rate" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Refinance|Access equity"><label for="program-refinance_goal">What would you like to change?</label><select id="program-refinance_goal" name="refinance_goal"><option value="">Choose or leave unknown</option><option value="Lower payment">Lower payment</option><option value="Compare rate and costs">Compare rate and costs</option><option value="Change loan term">Change loan term</option><option value="Use equity">Use equity</option><option value="Still deciding">Still deciding</option></select></div>
-<div class="journey-field" data-goals="Invest"><label for="program-investment_action">What is the investment plan?</label><select id="program-investment_action" name="investment_action"><option value="">Choose or leave unknown</option><option value="Purchase">Purchase</option><option value="Refinance">Refinance</option><option value="Access equity">Access equity</option><option value="Still deciding">Still deciding</option></select></div>
-<div class="journey-field" data-goals="Invest"><label for="program-property_type">Property type</label><select id="program-property_type" name="property_type"><option value="">Choose or leave unknown</option><option value="Single-family rental">Single-family rental</option><option value="Condo or townhome">Condo or townhome</option><option value="2–4 units">2–4 units</option><option value="5+ units / commercial">5+ units / commercial</option><option value="Not sure yet">Not sure yet</option></select></div>
-<div class="journey-field" data-goals="Invest"><label for="program-monthly_rent">Expected or current monthly rent</label><input id="program-monthly_rent" maxlength="160" name="monthly_rent" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Invest"><label for="program-investment_strategy">Investment strategy</label><select id="program-investment_strategy" name="investment_strategy"><option value="">Choose or leave unknown</option><option value="Long-term rental">Long-term rental</option><option value="Short-term rental">Short-term rental</option><option value="Fix and flip">Fix and flip</option><option value="BRRRR / renovate and rent">BRRRR / renovate and rent</option><option value="Portfolio growth">Portfolio growth</option><option value="Still deciding">Still deciding</option></select></div>
-<div class="journey-field" data-situations="Self-employed / business owner"><label for="program-time_in_business">Time in business</label><select id="program-time_in_business" name="time_in_business"><option value="">Choose or leave unknown</option><option value="Less than 1 year">Less than 1 year</option><option value="1–2 years">1–2 years</option><option value="2 or more years">2 or more years</option><option value="Not sure">Not sure</option></select></div>
-<div class="journey-field" data-situations="Self-employed / business owner|Substantial assets"><label for="program-documentation_issue">Income or documentation question</label><input id="program-documentation_issue" maxlength="160" name="documentation_issue" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-situations="Difficulty with another lender"><label for="program-lender_status">Current loan stage</label><select id="program-lender_status" name="lender_status"><option value="">Choose or leave unknown</option><option value="Just started">Just started</option><option value="Application submitted">Application submitted</option><option value="Processing">Processing</option><option value="Underwriting">Underwriting</option><option value="Approved with conditions">Approved with conditions</option><option value="Clear to close">Clear to close</option><option value="Not sure">Not sure</option></select></div>
-<div class="journey-field" data-situations="Difficulty with another lender"><label for="program-closing_date">Closing date or deadline</label><input id="program-closing_date" maxlength="160" name="closing_date" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-situations="Difficulty with another lender"><label for="program-switch_reason">Reason for considering a different lender</label><input id="program-switch_reason" maxlength="160" name="switch_reason" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Build"><label for="program-lot_status">Where are you with the lot?</label><select id="program-lot_status" name="lot_status"><option value="">Choose or leave unknown</option><option value="Still looking">Still looking</option><option value="Lot identified">Lot identified</option><option value="Under contract">Under contract</option><option value="Already own the lot">Already own the lot</option><option value="Not sure">Not sure</option></select></div>
-<div class="journey-field" data-goals="Build"><label for="program-builder_status">Builder status</label><select id="program-builder_status" name="builder_status"><option value="">Choose or leave unknown</option><option value="Still comparing">Still comparing</option><option value="Builder selected">Builder selected</option><option value="Plans / bid in progress">Plans / bid in progress</option><option value="Contract signed">Contract signed</option><option value="Not sure">Not sure</option></select></div>
-<div class="journey-field" data-goals="Build"><label for="program-project_budget">Estimated total project budget</label><input id="program-project_budget" maxlength="160" name="project_budget" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Build"><label for="program-build_timing">When would you like to start building?</label><input id="program-build_timing" maxlength="160" name="build_timing" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Buy before selling"><label for="program-current_home_value">Approximate current-home value</label><input id="program-current_home_value" maxlength="160" name="current_home_value" placeholder="Estimate or leave unknown" type="text"/></div>
-<div class="journey-field" data-goals="Buy before selling"><label for="program-listing_status">Current-home status</label><select id="program-listing_status" name="listing_status"><option value="">Choose or leave unknown</option><option value="Not listed">Not listed</option><option value="Preparing to list">Preparing to list</option><option value="Listed for sale">Listed for sale</option><option value="Under contract">Under contract</option><option value="Sold">Sold</option></select></div>
-<div class="journey-field" data-goals="Buy before selling"><label for="program-primary_constraint">What is the main constraint?</label><select id="program-primary_constraint" name="primary_constraint"><option value="">Choose or leave unknown</option><option value="Down payment tied up in equity">Down payment tied up in equity</option><option value="Qualifying with both payments">Qualifying with both payments</option><option value="Avoiding two moves">Avoiding two moves</option><option value="Avoiding a sale contingency">Avoiding a sale contingency</option><option value="Uncertain timing">Uncertain timing</option><option value="Something else">Something else</option></select></div>
-<div class="journey-field"><label for="program-timeline">Your timing or next milestone</label><input id="program-timeline" maxlength="160" name="timeline" placeholder="Estimate or leave unknown" type="text"/></div></div><button class="journey-button journey-submit" data-journey-next="" hidden="" type="button">Continue</button></fieldset>
-<fieldset data-journey-step="2"><legend>How can Adam reach you?</legend>
-<div class="journey-fields">
-<div class="journey-field"><label for="business_owner-first">First name *</label><input autocomplete="given-name" id="business_owner-first" maxlength="80" name="first_name" required=""/></div>
-<div class="journey-field"><label for="business_owner-last">Last name *</label><input autocomplete="family-name" id="business_owner-last" maxlength="80" name="last_name" required=""/></div>
-<div class="journey-field"><label for="business_owner-email">Email *</label><input autocomplete="email" id="business_owner-email" maxlength="160" name="email" required="" type="email"/></div>
-<div class="journey-field"><label for="business_owner-phone">Phone (optional)</label><input autocomplete="tel" id="business_owner-phone" maxlength="30" name="phone" type="tel"/></div>
-<div class="journey-field journey-full"><label for="business_owner-context">Anything else Adam should know? (optional)</label><textarea id="business_owner-context" maxlength="2000" name="situation" placeholder="Share your goals, questions, or anything that affects your plans." rows="3"></textarea><p class="journey-hint">Please leave out Social Security numbers, account numbers, and sensitive documents.</p></div>
-</div>
-<div class="journey-field journey-full form-group self-reported-source-field"><label for="scenario-review-heard-about">How did you first hear about Adam? (optional)</label><select id="scenario-review-heard-about" name="self_reported_source"><option value="">Choose if you remember</option><option value="ChatGPT">ChatGPT</option><option value="Gemini">Gemini</option><option value="Other AI assistant">Other AI assistant</option><option value="Google Search">Google Search</option><option value="Referral">Referral</option><option value="Other / not sure">Other / not sure</option></select></div>
-<label class="journey-consent"><input name="tcpa_consent" required="" type="checkbox" aria-required="true"><span>I agree to be contacted by Adam Styer via phone, email, or text about mortgage options. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>
-<div class="journey-field"><label for="business_owner-follow-up">How would you prefer to hear from me?</label><select id="business_owner-follow-up" name="preferred_follow_up"><option value="Email">Email</option><option value="Phone">Phone</option></select><p class="journey-hint">For a time-sensitive question, you can also <a href="sms:+15129566010">text Adam</a>.</p></div><div class="journey-form-actions"><button class="journey-back" data-journey-back="" hidden="" type="button">Back</button><button class="journey-button journey-submit" type="submit">See My Options</button></div>
-</fieldset>
-<p class="journey-status" hidden="" role="status" tabindex="-1"></p>
-</form>
-</div>
-</details>
+<section class="u-section simple-apply" id="detailed-review">
+<div class="container">
+<h2>Ready to go further?</h2>
+<p>Start the secure application. I review it myself and call you.</p>
+<p><a class="u-btn-primary" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank">Start the application<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+<p class="simple-apply-alt">Not there yet? <a href="#quick-options">Send me a quick note instead</a>, or call <a href="tel:+15129566010">(512) 956-6010</a>.</p>
 </div>
 </section>
 <footer class="site-footer" id="site-footer">
   <div class="container">
+    <address class="site-footer-office">
+<strong>The Styer Team</strong>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=7600+N+Capital+of+Texas+Hwy+Suite+230+Austin+TX+78731" rel="noopener" target="_blank">7600 N Capital of Texas Hwy, Suite 230, #105<br/>Austin, TX 78731<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
+<a href="tel:+15129566010">(512) 956-6010</a>
+<a href="mailto:adamstyer@gorascal.com">adamstyer@gorascal.com</a>
+</address>
     <div class="site-footer-grid">
 <div class="site-footer-col"><h2>Loans</h2><ul>
 <li><a href="/loans/conventional.html">Conventional</a></li>
@@ -876,6 +793,7 @@ This sample uses 50% so the steps are easy to see. A CPA letter explains the bus
 </ul></div>
 <div class="site-footer-col"><h2>Guides</h2><ul>
 <li><a href="/guides.html">All guides</a></li>
+<li><a href="/resources">Free resources</a></li>
 <li><a href="/calculators.html">Calculators</a></li>
 <li><a href="/blog.html">Blog</a></li>
 <li><a href="/resources/detailed-guides/how-to-buy-a-house-in-austin-tx.html">Buying in Austin</a></li>
@@ -887,6 +805,7 @@ This sample uses 50% so the steps are easy to see. A CPA letter explains the bus
 <li><a href="/contact.html">Contact</a></li>
 <li><a href="tel:+15129566010">(512) 956-6010</a></li>
 <li><a href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a call<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
+<li><a href="https://www.youtube.com/@thestyerteamtx" rel="noopener" target="_blank">YouTube<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></li>
 </ul></div>
 <div class="site-footer-col"><h2>Legal</h2><ul>
 <li><a href="/privacy.html">Privacy</a></li>
@@ -897,14 +816,14 @@ This sample uses 50% so the steps are easy to see. A CPA letter explains the bus
 </ul></div>
 </div>
     <p class="site-footer-proof"><a href="https://www.google.com/maps/search/?api=1&amp;query=Adam%20Styer&amp;query_place_id=ChIJYy5uEFPKRIYRmF-k_5gPk74" target="_blank" rel="noopener">5.0 on Google<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a> · <a href="https://www.zillow.com/lender-profile/adamstyer/" target="_blank" rel="noopener">4.98 on Zillow<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a> · <a href="/testimonials.html">144 published reviews</a> · Licensed in Texas · NMLS #513013</p>
-    <p class="site-footer-areas"><strong>Serving Central Texas:</strong> <a href="/austin-area-mortgage-lender.html">Austin</a> · <a href="/round-rock-mortgage-lender.html">Round Rock</a> · <a href="/cedar-park-mortgage-lender.html">Cedar Park</a> · <a href="/leander-mortgage-lender.html">Leander</a> · <a href="/georgetown-mortgage-lender.html">Georgetown</a> · <a href="/pflugerville-mortgage-lender.html">Pflugerville</a> · <a href="/kyle-mortgage-lender.html">Kyle</a> · <a href="/buda-mortgage-lender.html">Buda</a> · <a href="/san-marcos-mortgage-lender.html">San Marcos</a> · <a href="/westlake-mortgage-lender.html">Westlake</a> · <a href="/lakeway-mortgage-lender.html">Lakeway</a> · <a href="/bee-cave-mortgage-lender.html">Bee Cave</a> · <a href="/dripping-springs-mortgage-lender.html">Dripping Springs</a> · <a href="/spicewood-mortgage-lender.html">Spicewood</a> · <a href="/marble-falls-mortgage-lender.html">Marble Falls</a> · <a href="/hutto-mortgage-lender.html">Hutto</a> · <a href="/taylor-mortgage-lender.html">Taylor</a> · <a href="/manor-mortgage-lender.html">Manor</a> · <a href="/elgin-mortgage-lender.html">Elgin</a> · <a href="/bastrop-mortgage-lender.html">Bastrop</a> · <a href="/smithville-mortgage-lender.html">Smithville</a> · <a href="/liberty-hill-mortgage-lender.html">Liberty Hill</a> · <a href="/jarrell-mortgage-lender.html">Jarrell</a> · <a href="/florence-mortgage-lender.html">Florence</a> · <a href="/new-braunfels-mortgage-lender.html">New Braunfels</a></p>
+    <p class="site-footer-areas"><strong>Serving Central Texas:</strong> <a href="/austin-area-mortgage-lender.html">Austin</a> · <a href="/austin-area-mortgage-lender.html#round-rock">Round Rock</a> · <a href="/cedar-park-mortgage-lender.html">Cedar Park</a> · <a href="/austin-area-mortgage-lender.html#leander">Leander</a> · <a href="/georgetown-mortgage-lender.html">Georgetown</a> · <a href="/pflugerville-mortgage-lender.html">Pflugerville</a> · <a href="/kyle-mortgage-lender.html">Kyle</a> · <a href="/buda-mortgage-lender.html">Buda</a> · <a href="/austin-area-mortgage-lender.html#san-marcos">San Marcos</a> · <a href="/westlake-mortgage-lender.html">Westlake</a> · <a href="/lakeway-mortgage-lender.html">Lakeway</a> · <a href="/austin-area-mortgage-lender.html#bee-cave">Bee Cave</a> · <a href="/austin-area-mortgage-lender.html#dripping-springs">Dripping Springs</a> · <a href="/austin-area-mortgage-lender.html#spicewood">Spicewood</a> · <a href="/austin-area-mortgage-lender.html#marble-falls">Marble Falls</a> · <a href="/austin-area-mortgage-lender.html#hutto">Hutto</a> · <a href="/austin-area-mortgage-lender.html#taylor">Taylor</a> · <a href="/austin-area-mortgage-lender.html#manor">Manor</a> · <a href="/austin-area-mortgage-lender.html#elgin">Elgin</a> · <a href="/austin-area-mortgage-lender.html#bastrop">Bastrop</a> · <a href="/austin-area-mortgage-lender.html#smithville">Smithville</a> · <a href="/austin-area-mortgage-lender.html#liberty-hill">Liberty Hill</a> · <a href="/austin-area-mortgage-lender.html#jarrell">Jarrell</a> · <a href="/austin-area-mortgage-lender.html#florence">Florence</a> · <a href="/new-braunfels-mortgage-lender.html">New Braunfels</a></p>
     <div class="site-footer-legal">
       <img class="gorascal-seal" src="/assets/brand/gorascal/gorascal-seal-navy-display.png" alt="Go Rascal Inc." height="64">
       <div class="site-footer-legal-copy">
       <p class="site-footer-compliance">Adam Styer | Mortgage Loan Originator</p>
       <p class="site-footer-compliance"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/513013" rel="noopener" target="_blank">NMLS ID #513013<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
       <p class="site-footer-compliance"><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2072896" rel="noopener" target="_blank">The Styer Team, Powered by Go Rascal Inc. (NMLS ID #2072896)<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
-      <p class="site-footer-compliance">Licensed location: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
+      <p class="site-footer-compliance">Go Rascal Inc. corporate office: 185 Wythe Ave, Suite A2, Brooklyn, NY 11249</p>
       <p class="site-footer-compliance"><svg class="eho-mark" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M12 3 3 11h2v9h5v-6h4v6h5v-9h2L12 3z"/></svg> Equal Housing Opportunity</p>
       <!-- Licensed states placeholder pending Adam's NMLS confirmation -->
       <p class="site-footer-compliance">Licensed in: TX</p>
