@@ -100,7 +100,9 @@ function styleTags(html, bundleRel) {
 
 // Late stylesheets change link and border colors after first paint. Without
 // this guard every such element runs its hover transition once on load.
-const TRANSITION_GUARD = '<style data-load-guard>html:not(.styer-ready) *,html:not(.styer-ready) *::before,html:not(.styer-ready) *::after{transition:none!important}</style><script>addEventListener("load",function(){requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.add("styer-ready");});});});</script>';
+// The guard lifts once every stylesheet, including ones a page loads after
+// window load, has applied (or after ten seconds).
+const TRANSITION_GUARD = '<style data-load-guard>html:not(.styer-ready) *,html:not(.styer-ready) *::before,html:not(.styer-ready) *::after{transition:none!important}</style><script>addEventListener("load",function(){var tries=0;(function check(){var pending=document.querySelector("[data-deferred-href]:not([data-loaded])")||[].some.call(document.querySelectorAll("link[rel=stylesheet]"),function(link){return !link.sheet;});if(pending&&++tries<40){setTimeout(check,250);return;}setTimeout(function(){document.documentElement.classList.add("styer-ready");},100);})();});</script>';
 
 // A tiny stylesheet in <head> costs a blocking request for a few hundred bytes.
 function inlineSmallHeadStyles(html) {

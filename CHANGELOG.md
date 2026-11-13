@@ -1,3 +1,17 @@
+## 2026-11-13 — Preview: Phase 2 performance (`perf/mobile-lcp`)
+
+- GTM `GTM-PQQ6PGLR` now loads 2.5 seconds after window load or on the first pointer, key, touch or scroll, whichever is first. `dataLayer` is created at once, so events pushed earlier still reach GTM in order. Thank-you pages load GTM immediately. Same container ID. Applied to 220 pages and the 4 page builders from `scripts/gtm-snippet.cjs`.
+- Interior pages (193) paint from an inline copy of their first-screen CSS. The full bundle loads without blocking and cascades the same way. New helper: `scripts/critical-css.mjs`, used by `scripts/optimize-published-assets.mjs`.
+- All published CSS is minified in the build. Source CSS is unchanged.
+- Interior pages preload the two hero fonts (Source Serif 4, Inter) at every width.
+- Homepage: `a11y.css` is inlined, so nothing in `<head>` blocks rendering. Font preloads stay desktop-only there: preloading them on mobile raised simulated LCP from 3.0 s to 3.9 s in testing.
+- A load guard stops hover transitions from firing when late stylesheets arrive. Homepage animated elements in Lighthouse: 137 before, 0 after.
+- Scroll reveals were already switched off in CSS, so no scroll animation was delaying paint.
+- Local mobile Lighthouse, simulated throttling, median of 3: home 93 → 93, self-employed 89 → 95, bank statement 90 → 95, blog post 92 → 95, Round Rock 88 → 92. First paint on interior pages 2.4 s → 1.0 s.
+- Looks the same: interior pages are pixel-identical before and after at 390 and 1440 px. The homepage matches element by element (946 elements: position, size, color, font) at both widths.
+- `npm test`: 210 tests, 178 pass, 32 fail, the same 32 as production. No new failures.
+- Not deployed to production.
+
 ## 2026-11-13 — Preview: Phase 0 and Phase 1 of the November audit (`fix/quick-wins`)
 
 - Phase 0: created `release/2026-11-audit` from production commit `01a8acf`. Moved 11 outdated planning docs to `_archive/`. New root `CONTEXT.md`. Dropped the GOALS.md and Daily Operating System reads from `CLAUDE.md`.
