@@ -5,7 +5,8 @@
 
 body.simple,
 body.simple-home,
-body.simple-calc {
+body.simple-calc,
+body.simple-nav {
   --simple-accent: #F5C443;
   --simple-accent-hover: #E3B22F;
   --simple-ink: #0B151D;
@@ -18,54 +19,54 @@ body.simple-calc {
    Mortgage Options, Tools & Guides, About Adam, a Contact-style button
    (See My Options), Apply Now, and a round phone button. Blog, Borrower
    Stories, For Partners and every dropdown stay in the HTML but are hidden. */
-html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(3),
-html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(4),
-html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(5),
-html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-dropdown { display: none !important; }
-html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-has-dropdown > a::after { display: none !important; }
-html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply {
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(3),
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(4),
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(5),
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-dropdown { display: none !important; }
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-has-dropdown > a::after { display: none !important; }
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply {
   background: var(--simple-accent) !important;
   border: 0 !important;
   color: var(--simple-ink) !important;
   font-weight: 700 !important;
   border-radius: 999px !important;
 }
-html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply:hover { background: var(--simple-accent-hover) !important; }
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply:hover { background: var(--simple-accent-hover) !important; }
 @media (min-width: 1000px) {
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header { background: var(--pwe-navy, #11212E) !important; border: 0 !important; box-shadow: none !important; padding: 14px 0 !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header > .container { max-width: 1180px !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .mobile-menu-toggle { display: none !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav {
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header { background: var(--pwe-navy, #11212E) !important; border: 0 !important; box-shadow: none !important; padding: 14px 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header > .container { max-width: 1180px !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .mobile-menu-toggle { display: none !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav {
     display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 18px !important;
     background: #fff !important; border-radius: 999px !important; padding: 8px 10px 8px 22px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28) !important; min-height: 0 !important;
   }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-wordmark { color: var(--simple-ink) !important; font-weight: 700 !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-powered-label { color: #62707A !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .gorascal-wordmark-chip { border: 1px solid #E4DED2 !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links {
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-wordmark { color: var(--simple-ink) !important; font-weight: 700 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-powered-label { color: #62707A !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .gorascal-wordmark-chip { border: 1px solid #E4DED2 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links {
     display: flex !important; position: static !important; flex-direction: row !important; align-items: center !important;
     gap: 6px !important; width: auto !important; flex: 0 0 auto !important; justify-content: flex-end !important;
     margin: 0 0 0 auto !important; padding: 0 !important; background: none !important; transform: none !important;
     visibility: visible !important; opacity: 1 !important; box-shadow: none !important;
   }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1),
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(2),
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(6),
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li.nav-phone-li,
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:has(> .nav-cta) { display: block !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li > a:not(.nav-cta):not(.nav-phone) {
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(1),
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(2),
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(6),
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-phone-li,
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:has(> .nav-cta) { display: block !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li > a:not(.nav-cta):not(.nav-phone) {
     font-size: 15px !important; font-weight: 500 !important; color: #4A5761 !important;
     padding: 10px 14px !important; border-radius: 999px !important; text-transform: none !important; letter-spacing: 0 !important;
   }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li > a:not(.nav-cta):not(.nav-phone):hover { color: var(--simple-ink) !important; background: #F1EEE7 !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-cta.nav-cta.nav-cta {
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li > a:not(.nav-cta):not(.nav-phone):hover { color: var(--simple-ink) !important; background: #F1EEE7 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-cta.nav-cta {
     font-size: 15px !important; padding: 11px 20px !important; border-radius: 999px !important;
     text-transform: none !important; letter-spacing: 0 !important; min-height: 0 !important; line-height: 1.2 !important;
   }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-cta.nav-cta.nav-cta:not(.nav-apply) { background: #EEF0F3 !important; border: 0 !important; color: var(--simple-ink) !important; font-weight: 700 !important; box-shadow: none !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li.nav-phone-li { order: 9 !important; margin-left: 6px !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-phone {
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-cta.nav-cta:not(.nav-apply) { background: #EEF0F3 !important; border: 0 !important; color: var(--simple-ink) !important; font-weight: 700 !important; box-shadow: none !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-phone-li { order: 9 !important; margin-left: 6px !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-phone {
     display: block !important; width: 44px !important; height: 44px !important; border-radius: 50% !important; padding: 0 !important;
     background: var(--pwe-navy, #11212E) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E") center / 20px no-repeat !important;
     font-size: 0 !important; color: transparent !important; overflow: hidden !important; border: 0 !important;
@@ -391,25 +392,25 @@ html body.simple-calc.simple-calc.simple-calc .calc-panel[hidden] { display: non
 
 /* ---------- Menu v2: compact dark pill, "Loan Programs" label ---------- */
 @media (min-width: 1000px) {
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header { padding: 10px 0 !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav {
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header { padding: 10px 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav {
     width: fit-content !important; max-width: 100% !important; margin: 0 auto !important; gap: 22px !important;
     background: rgba(255, 255, 255, 0.07) !important; border: 1px solid rgba(255, 255, 255, 0.16) !important;
     box-shadow: none !important; padding: 6px 8px 6px 18px !important;
   }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-wordmark { color: #fff !important; font-size: 14px !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-powered-label { color: #9FB0BC !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .gorascal-wordmark-chip { border: 0 !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links { gap: 2px !important; margin: 0 !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li > a:not(.nav-cta):not(.nav-phone) { font-size: 14px !important; color: #D6DDE2 !important; padding: 8px 11px !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li > a:not(.nav-cta):not(.nav-phone):hover { color: #fff !important; background: rgba(255, 255, 255, 0.1) !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-cta.nav-cta.nav-cta { font-size: 14px !important; padding: 9px 16px !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-cta.nav-cta.nav-cta:not(.nav-apply) { background: rgba(255, 255, 255, 0.12) !important; color: #fff !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li.nav-phone-li { margin-left: 4px !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links a.nav-phone { width: 38px !important; height: 38px !important; background-color: rgba(255, 255, 255, 0.14) !important; background-size: 17px !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-wordmark { color: #fff !important; font-size: 14px !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-powered-label { color: #9FB0BC !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .gorascal-wordmark-chip { border: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links { gap: 2px !important; margin: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li > a:not(.nav-cta):not(.nav-phone) { font-size: 14px !important; color: #D6DDE2 !important; padding: 8px 11px !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li > a:not(.nav-cta):not(.nav-phone):hover { color: #fff !important; background: rgba(255, 255, 255, 0.1) !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-cta.nav-cta { font-size: 14px !important; padding: 9px 16px !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-cta.nav-cta:not(.nav-apply) { background: rgba(255, 255, 255, 0.12) !important; color: #fff !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-phone-li { margin-left: 4px !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-phone { width: 38px !important; height: 38px !important; background-color: rgba(255, 255, 255, 0.14) !important; background-size: 17px !important; }
   /* Shown as "Loan Programs" on these pages. The shared menu markup still says Mortgage Options. */
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone) { font-size: 0 !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone)::before { content: "Loan Programs"; font-size: 14px; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone) { font-size: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone)::before { content: "Loan Programs"; font-size: 14px; }
 }
 
 /* ---------- Apply block (replaces the long scenario forms) ---------- */
@@ -423,6 +424,87 @@ body.simple .simple-apply .simple-apply-alt { font-size: 15px !important; margin
 body.simple .simple-apply .simple-apply-alt a { color: #fff !important; text-decoration: underline !important; }
 
 @media (max-width: 999px) {
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone) { font-size: 0 !important; }
-  html body:is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc):is(.simple,.simple-home,.simple-calc) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone)::before { content: "Loan Programs"; font-size: 15px; letter-spacing: 0.04em; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone) { font-size: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li:nth-child(1) > a:not(.nav-cta):not(.nav-phone)::before { content: "Loan Programs"; font-size: 15px; letter-spacing: 0.04em; }
 }
+
+/* ---------- Rollout: heroes with and without a short form ---------- */
+/* No form in the hero: one centred column and a visible main button. */
+body.simple .u-hero > .container:not(:has(> .u-cta-section)) { display: block !important; max-width: 900px !important; }
+body.simple .u-hero > .container:not(:has(> .u-cta-section)) .u-hero-inner { text-align: center !important; margin: 0 auto !important; }
+body.simple .u-hero > .container:not(:has(> .u-cta-section)) .u-hero-lead { margin-left: auto !important; margin-right: auto !important; max-width: 640px !important; }
+body.simple .u-hero > .container:not(:has(> .u-cta-section)) .u-hero-actions { justify-content: center !important; }
+body.simple .u-hero:not(:has(.u-cta-section)) .u-btn-primary { display: inline-flex !important; }
+body.simple .u-hero .u-hero-lead[style] { color: #C6A46C !important; font-size: 18px !important; margin-bottom: 10px !important; }
+body.simple .u-hero .u-h1 { color: #fff !important; font-size: clamp(36px, 4.6vw, 60px) !important; line-height: 1.06 !important; letter-spacing: -0.02em !important; margin: 0 0 18px !important; }
+body.simple .u-hero .u-subheading { color: #C6A46C !important; font-size: 18px !important; margin: 0 0 10px !important; }
+body.simple .u-hero .u-lead { color: #D6DDE2 !important; font-size: 18px !important; line-height: 1.55 !important; margin: 0 0 24px !important; }
+body.simple .u-hero .u-eyebrow { display: none !important; }
+body.simple .u-hero-grid > div:first-child > div:last-child { display: flex !important; flex-wrap: wrap !important; gap: 14px 22px !important; align-items: center !important; }
+
+/* Stat cards in a dark hero: small, quiet, no boxes */
+body.simple .u-hero .u-metrics-grid,
+body.simple .u-hero .u-metrics-stack {
+  display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 14px 24px !important;
+  margin: 28px 0 0 !important; padding: 20px 0 0 !important; border-top: 1px solid rgba(255, 255, 255, 0.16) !important; background: none !important;
+}
+body.simple .u-hero > .container:not(:has(> .u-cta-section)) .u-metrics-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; text-align: left !important; }
+body.simple .u-hero .u-metric-card { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; text-align: left !important; }
+body.simple .u-hero .u-metric-label { color: #9FB0BC !important; font-size: 11px !important; letter-spacing: 0.08em !important; }
+body.simple .u-hero .u-metric-value { color: #fff !important; font-size: 18px !important; line-height: 1.25 !important; margin: 2px 0 !important; }
+body.simple .u-hero .u-metric-sub { color: #9FB0BC !important; font-size: 13px !important; line-height: 1.4 !important; }
+/* Grid heroes that also carry a form: text left, form right, stats under the text */
+body.simple .u-hero-grid:has(> .u-cta-section) > div:first-child { grid-column: 1 !important; grid-row: 1 !important; }
+body.simple .u-hero-grid:has(> .u-cta-section) > .u-cta-section { grid-column: 2 !important; grid-row: 1 / span 2 !important; }
+body.simple .u-hero-grid:has(> .u-cta-section) > .u-metrics-stack { grid-column: 1 !important; grid-row: 2 !important; margin-top: 0 !important; }
+body.simple .u-hero .u-cta-card .u-cta-header[style] { text-align: left !important; margin: 0 0 14px !important; }
+body.simple .u-hero .u-cta-card .u-eyebrow { display: none !important; }
+
+/* The long-form drawer, now on its own */
+body.simple .simple-drawer { padding: 40px 0 !important; background: var(--pwe-paper, #FAF9F6) !important; }
+body.simple .simple-drawer > .container { max-width: 880px !important; }
+
+@media (max-width: 900px) {
+  body.simple .u-hero .u-metrics-grid,
+  body.simple .u-hero .u-metrics-stack,
+  body.simple .u-hero > .container:not(:has(> .u-cta-section)) .u-metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; text-align: left !important; }
+  body.simple .u-hero-grid:has(> .u-cta-section) > div:first-child,
+  body.simple .u-hero-grid:has(> .u-cta-section) > .u-cta-section,
+  body.simple .u-hero-grid:has(> .u-cta-section) > .u-metrics-stack { grid-column: 1 !important; grid-row: auto !important; }
+  body.simple .u-hero > .container:has(> .u-cta-section) .u-hero-byline,
+  body.simple .u-hero > .container:has(> .u-cta-section) .u-hero-reviewed { display: block !important; }
+}
+
+/* ---------- Lite layer for pages on the older layouts (body.simple-nav) ----------
+   Suburb pages, blog posts, guides, about, contact. Same menu, gold main
+   button, bigger headline, calmer FAQ rows. Their heroes stay light because
+   they carry chips, images and forms written for a light background. */
+html body.simple-nav.simple-nav main .btn.btn-primary,
+html body.simple-nav.simple-nav main a.hero-cta-primary,
+html body.simple-nav.simple-nav main .journey-submit,
+html body.simple-nav.simple-nav main .dscr-btn-primary {
+  background: var(--simple-accent) !important;
+  border-color: var(--simple-accent) !important;
+  color: var(--simple-ink) !important;
+  font-weight: 700 !important;
+  border-radius: 999px !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  box-shadow: 0 6px 18px rgba(245, 196, 67, 0.3) !important;
+}
+html body.simple-nav.simple-nav main .btn.btn-primary:hover,
+html body.simple-nav.simple-nav main a.hero-cta-primary:hover { background: var(--simple-accent-hover) !important; }
+html body.simple-nav.simple-nav main .btn:not(.btn-primary),
+html body.simple-nav.simple-nav main a.btn-hero-ghost { border-radius: 999px !important; text-transform: none !important; letter-spacing: 0 !important; }
+html body.simple-nav.simple-nav main :is(.hero, .city-hero, .pro-hero, .guide-hero, .resources-hero) h1 {
+  font-size: clamp(36px, 4.8vw, 60px) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.02em !important;
+}
+html body.simple-nav.simple-nav main .accordion-item { border: 0 !important; border-top: 1px solid var(--simple-line) !important; border-radius: 0 !important; box-shadow: none !important; background: none !important; margin: 0 !important; }
+html body.simple-nav.simple-nav main .accordion-button { font-size: 18px !important; font-weight: 600 !important; padding: 18px 28px 18px 0 !important; background: none !important; }
+body.simple .u-hero .u-cta-card .journey-consent { display: flex !important; gap: 10px !important; align-items: flex-start !important; text-align: left !important; font-size: 11.5px !important; font-weight: 400 !important; line-height: 1.45 !important; color: #62707A !important; text-transform: none !important; letter-spacing: 0 !important; margin: 12px 0 0 !important; }
+body.simple .u-hero .u-cta-card input[type="checkbox"] { flex: 0 0 auto !important; width: 16px !important; height: 16px !important; min-width: 0 !important; margin: 2px 0 0 !important; padding: 0 !important; }
+body.simple .u-hero .u-cta-card .journey-field { margin: 0 0 10px !important; }
+body.simple .u-hero .u-cta-card textarea { min-height: 70px !important; }
+body.simple main { overflow-x: clip; }

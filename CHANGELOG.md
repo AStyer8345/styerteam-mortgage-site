@@ -1,3 +1,11 @@
+## 2026-11-13 — New look rolled out to the rest of the site (`design/rollout`, preview only)
+
+- Every public page (171 with a menu) now loads `simple.css` and shows the dark pill menu.
+- 29 more program-layout pages use the full simple style (`<body class="simple">`). On 11 of them the existing short form moved into the hero; the long-form drawer on 8 stays in its own section lower down.
+- The other 138 pages (suburb pages, blog posts, guides, about, contact) get a lite layer (`<body class="simple-nav">`): same menu, gold main button, larger headline, plain FAQ rows. Their heroes stay light.
+- No copy was rewritten in this pass. The four page builders in `netlify/functions/lib/` are unchanged, so newly generated posts will not have the new menu until they are updated.
+- Not live.
+
 ## 2026-11-13 — Simpler page style pilot (`design/simplify`, preview only)
 
 - New `simple.css`, active only on `<body class="simple">`. Pilot page: `self-employed-mortgage-austin.html`.
