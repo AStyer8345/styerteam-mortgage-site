@@ -232,3 +232,75 @@ body.simple main .u-cta-section button[type="submit"] {
   body.simple main .u-section p,
   body.simple main .u-section li { font-size: 17px !important; }
 }
+
+/* ---------- v2: dark hero with the short form beside the headline ---------- */
+body.simple .u-hero { background: var(--pwe-navy, #11212E) !important; }
+body.simple .u-hero > .container {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) !important;
+  gap: clamp(32px, 5vw, 72px) !important;
+  align-items: center !important;
+  max-width: 1180px !important;
+  padding-top: clamp(40px, 6vw, 80px) !important;
+  padding-bottom: clamp(40px, 6vw, 80px) !important;
+}
+body.simple .u-hero-inner { text-align: left !important; margin: 0 !important; max-width: none !important; }
+body.simple .u-hero h1 { color: #fff !important; font-size: clamp(40px, 5.2vw, 68px) !important; }
+body.simple .u-hero .u-hero-lead { color: #D6DDE2 !important; margin: 0 0 30px !important; max-width: 520px !important; }
+body.simple .u-hero-actions { justify-content: flex-start !important; }
+body.simple .u-hero .u-btn-primary { display: none !important; } /* the form is right there */
+body.simple .u-hero .u-btn-secondary,
+body.simple .u-hero .u-hero-phone { color: #fff !important; }
+body.simple .u-hero-byline,
+body.simple .u-hero-reviewed,
+body.simple .u-hero-byline a { color: #9FB0BC !important; }
+
+/* The form card: white, on the dark hero */
+body.simple .u-hero .u-cta-section { background: none !important; padding: 0 !important; margin: 0 !important; scroll-margin-top: 100px; }
+body.simple .u-hero .u-cta-section > .container { padding: 0 !important; max-width: none !important; width: auto !important; }
+body.simple .u-hero .u-cta-card {
+  background: #fff !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  padding: clamp(22px, 3vw, 32px) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35) !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+body.simple .u-hero .u-cta-header { text-align: left !important; margin: 0 0 14px !important; }
+body.simple .u-hero .u-cta-card h2 { color: var(--simple-ink) !important; font-size: 28px !important; margin: 0 0 6px !important; }
+body.simple .u-hero .u-cta-header p { color: var(--simple-text) !important; font-size: 15px !important; margin: 0 !important; }
+body.simple .u-hero .personal-form-note,
+body.simple .u-hero .journey-field:has(textarea),
+body.simple .u-hero .u-form-group:has(textarea),
+body.simple .u-hero details.personal-support,
+body.simple .u-hero .u-cta-card form ~ * { display: none !important; }
+body.simple .u-hero .u-cta-card label { color: var(--simple-ink) !important; font-size: 13px !important; text-transform: none !important; letter-spacing: 0 !important; font-weight: 600 !important; }
+body.simple .u-hero .u-cta-card input:not([type="checkbox"]),
+body.simple .u-hero .u-cta-card select {
+  background: #fff !important;
+  color: var(--simple-ink) !important;
+  border: 1px solid #C9CFD4 !important;
+  border-radius: 10px !important;
+  font-size: 16px !important;
+  padding: 12px 14px !important;
+}
+body.simple .u-hero .u-form-consent { display: flex !important; gap: 10px !important; align-items: flex-start !important; text-align: left !important; font-size: 11.5px !important; font-weight: 400 !important; line-height: 1.45 !important; color: #62707A !important; text-transform: none !important; letter-spacing: 0 !important; }
+body.simple .u-hero .u-form-consent input { flex: 0 0 auto !important; margin: 2px 0 0 !important; width: 16px !important; height: 16px !important; }
+body.simple .u-hero .u-cta-card button[type="submit"] { width: 100% !important; padding: 16px !important; margin-top: 6px !important; box-shadow: 0 6px 18px rgba(245, 196, 67, 0.35) !important; }
+
+/* Closing nudge */
+body.simple .simple-close { text-align: center !important; background: var(--pwe-navy, #11212E) !important; }
+body.simple .simple-close h2 { color: #fff !important; }
+body.simple .simple-close p { color: #D6DDE2 !important; }
+body.simple .simple-close .u-btn-primary { display: inline-block !important; margin-top: 14px !important; }
+
+@media (max-width: 900px) {
+  body.simple .u-hero > .container { grid-template-columns: 1fr !important; }
+  body.simple .u-hero-inner { text-align: center !important; }
+  body.simple .u-hero .u-hero-lead { margin-left: auto !important; margin-right: auto !important; }
+  body.simple .u-hero-actions { justify-content: center !important; flex-direction: row !important; flex-wrap: wrap !important; }
+  body.simple .u-hero-byline, body.simple .u-hero-reviewed { display: none !important; }
+}
+body.simple main .u-hero .u-cta-section .u-cta-header p { color: var(--simple-text) !important; font-size: 15px !important; }
+body.simple .u-hero .u-cta-card div:has(> textarea) { display: none !important; }

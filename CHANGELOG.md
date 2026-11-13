@@ -5,6 +5,8 @@
 - Menu on the pilot shows Mortgage Options, About Adam, Apply Now. Markup unchanged; the rest is hidden by CSS for the pilot only.
 - "How it works" rewritten in plain words. Filler trust strip removed. "Wholesale" and a "retail banks" comparison removed.
 - Kept for search and AI answers: H1, title, the question-and-answer block, all 11 FAQs and their schema, every link in the body.
+- Pilot v2: dark hero with the page's existing short form moved beside the headline (goal, name, email, phone, consent). A closing section links back to it.
+- Jumbo wording corrected on public pages: jumbo is decided by loan amount, not purchase price.
 - Not live. Not merged into `release/2026-11-audit`.
 
 ## 2026-11-13 — Phase 6 wrap-up of the November audit
