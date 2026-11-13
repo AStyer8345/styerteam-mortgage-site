@@ -4,13 +4,13 @@
 - Hero: H1 unchanged. New lead paragraph (Adam's pick, option A2) plus a second line for regular loans (conventional, FHA, VA). Credentials line with the Google rating. One button, "Send your scenario", scrolls to the form. Call link beside it.
 - Who I help: the same 6 cards, one sentence each. Move-Up now links to `/buy-before-you-sell-austin.html`. On phones the cards drop their photos and sit two across.
 - How it works: three steps, with the "a bank can only sell you its own loan" line in step 2.
-- Proof: three existing Google reviews (self-employed, non-QM, Realtor), each linked to its source. One line with licensed-since date, 1,000+ loans closed, and Google and Zillow links. Links to all reviews and to `/scenarios.html`.
+- Proof: nine existing Google reviews in a strip that scrolls on its own, each linked to its source. It pauses on hover, touch or focus, has a Pause button, can be swiped by hand, and stays still for visitors who ask for reduced motion. One line with licensed-since date, 1,000+ loans closed, and Google and Zillow links. Links to all reviews and to `/scenarios.html`.
 - Programs: an HTML table of six rows (who it fits, what you document, link). No rates or down-payment percentages. Rows stack on phones.
-- Meet Adam: family photo, one paragraph, the Romans 1:16-17 verse, link to About.
+- Meet Adam: family photo, three paragraphs, the two team roles, the reference "Romans 1:16-17" (not the verse text), link to About.
 - Questions: the same 5 FAQs. FAQPage schema is regenerated from the visible text and now matches it exactly. One "Latest from the blog" link replaces the blog cards.
 - Final action: the existing short form, unchanged, with call/text and Calendly beside it.
 - Removed from the homepage: the four-stat band, the three case-study cards, the calculator block, the blog card row, the "If you want to read more" list, the K-1 / one-time-close chips, and extra "See My Options" buttons.
-- Page height at 390 px: 19,659 px before, 9,860 px after. Main content is 9.2 phone screens; the shared footer adds 2.3 more and was not changed.
+- Page height at 390 px: 19,659 px before, about 10,060 px after (11.9 phone screens). The shared footer is 2.3 of those and was not changed.
 - Two tests that described the old homepage were updated to describe the new one (`tests/editorial-rollout.test.js`, `tests/premium-homepage.test.js`).
 - `npm test`: 210 tests, 178 pass, 32 fail, the same 32 as before the audit. No new failures.
 - Not deployed to production.

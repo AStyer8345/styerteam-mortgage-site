@@ -578,14 +578,19 @@ p.pwe-hero-credentials a{color:#e6c67b;text-decoration:underline;text-underline-
 .v2-step-list h3{font:600 19px/1.3 'Source Serif 4',Georgia,serif;margin:0 0 8px;color:#182e3e}
 .v2-step-list p{margin:0;font-size:16px;line-height:1.6;color:#44525f}
 .v2-proof{padding:72px 0}
-.v2-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0 24px}
-.v2-review{margin:0;padding:24px;background:#fff;border:1px solid #e3ddd0;border-radius:6px;display:flex;flex-direction:column;gap:12px}
+.v2-proof .container{min-width:0}
+.v2-scroller{margin:28px 0 20px;width:100%;max-width:100%;min-width:0;overflow:hidden}
+.v2-review-track{width:100%;max-width:100%;min-width:0;box-sizing:border-box;scroll-behavior:auto!important}
+.v2-review-track{list-style:none;margin:0;padding:4px 0 12px;display:flex;gap:20px;overflow-x:auto;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.v2-review-track:focus-visible{outline:3px solid #90703a;outline-offset:4px}
+.v2-review{position:relative;flex:0 0 340px;margin:0;padding:24px;background:#fff;border:1px solid #e3ddd0;border-radius:6px;display:flex;flex-direction:column;gap:12px}
 .v2-review .stars{display:flex;gap:2px}
 .v2-review blockquote{margin:0;flex:1}
 .v2-review blockquote p{margin:0;font-size:16px;line-height:1.6;font-style:italic;color:#263645}
-.v2-review figcaption{display:flex;flex-direction:column;gap:2px;font-size:14px;color:#526174}
-.v2-review figcaption strong{color:#182e3e;font-size:15px}
-.v2-review figcaption a{margin-top:6px;color:#70531f;text-decoration:underline}
+.v2-review-by{margin:0;display:flex;flex-direction:column;gap:2px;font-size:14px;color:#526174}
+.v2-review-by strong{color:#182e3e;font-size:15px}
+.v2-review-by a{margin-top:6px;color:#70531f;text-decoration:underline}
+.v2-scroller-toggle{margin-top:6px;padding:6px 0;background:none;border:0;font:500 14px/1.4 Inter,system-ui,sans-serif;color:#70531f;text-decoration:underline;cursor:pointer}
 .v2-proof-line{margin:0 0 14px;font-size:15.5px;color:#44525f}
 .v2-proof-line a{color:#70531f;text-decoration:underline}
 .v2-proof-links{margin:0;display:flex;flex-wrap:wrap;gap:12px 28px}
@@ -599,7 +604,7 @@ p.pwe-hero-credentials a{color:#e6c67b;text-decoration:underline;text-underline-
 #programs table.v2-program-table a{color:#70531f!important;text-decoration:underline;white-space:nowrap}
 .v2-table-note{margin:16px 0 0;font-size:14.5px;color:#526174}
 .v2-table-note a{color:#70531f;text-decoration:underline}
-.v2-verse{font-size:14.5px;line-height:1.6;font-style:italic;color:#526174}
+.v2-verse{font-size:14.5px;line-height:1.6;font-style:italic;color:#526174;margin-top:18px}
 .v2-blog-link{max-width:920px;margin:28px auto 0}
 .v2-partners{background:#182e3e;padding:22px 0;text-align:center}
 .v2-partners p{margin:0;color:#fff;font-size:16px}
@@ -629,11 +634,11 @@ body main .v2-step-list li{padding-top:10px;display:grid;grid-template-columns:3
 body main .v2-step-num{font-size:26px;grid-row:span 2;margin:0}
 body main .v2-step-list h3{font-size:17px!important;margin:0 0 4px!important}
 body main .v2-step-list p{font-size:15px!important;line-height:1.5!important;margin:0!important}
-body main .v2-review-grid{grid-template-columns:1fr;margin:16px 0;gap:10px}
-body main .v2-review{padding:14px 16px;gap:6px}
+body main .v2-scroller{margin:16px 0 12px}
+body main .v2-review-track{gap:12px}
+body main .v2-review{flex-basis:280px;padding:16px;gap:8px}
 body main .v2-review blockquote p{font-size:14.5px!important;line-height:1.5!important;margin:0!important}
-body main .v2-review figcaption{flex-direction:row;flex-wrap:wrap;gap:2px 10px;align-items:baseline;font-size:13.5px}
-body main .v2-review figcaption a{margin-top:0}
+body main .v2-review-by{font-size:13.5px!important;margin:0!important}
 body main .v2-proof-line{font-size:14px!important;margin-bottom:10px!important}
 #programs table.v2-program-table{display:block!important;min-width:0!important;margin-top:14px!important}
 #programs table.v2-program-table thead{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important}
@@ -1056,22 +1061,55 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <div class="container">
 <p class="pwe-kicker">Reviews</p>
 <h2 class="pwe-section-title" id="pwe-reviews-title">What clients and Realtors wrote.</h2>
-<div class="v2-review-grid">
-<figure class="v2-review">
+<div class="v2-scroller" data-review-scroller>
+<ul aria-label="Client and Realtor reviews" class="v2-review-track" tabindex="0">
+<li class="v2-review">
 <div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
 <blockquote><p>“I am self-employed and my loan was not straight forward. Adam worked with me weekly and sometimes daily to get all of the documents I needed.”</p></blockquote>
-<figcaption><strong>Sherita Steffe</strong><span>Self-employed borrower</span><a href="https://maps.app.goo.gl/ughgbRiuP1adsbiz7" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></figcaption>
-</figure>
-<figure class="v2-review">
+<p class="v2-review-by"><strong>Sherita Steffe</strong><span>Self-employed borrower</span><a href="https://maps.app.goo.gl/ughgbRiuP1adsbiz7" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+</li>
+<li class="v2-review">
 <div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
 <blockquote><p>“I’m self-employed and when other lenders declined to underwrite a mortgage, Adam saved the day!”</p></blockquote>
-<figcaption><strong>Ellery Wren</strong><span>Non-QM borrower</span><a href="https://maps.app.goo.gl/RLT2Z1jAJEo4oevL6" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></figcaption>
-</figure>
-<figure class="v2-review">
+<p class="v2-review-by"><strong>Ellery Wren</strong><span>Non-QM borrower</span><a href="https://maps.app.goo.gl/RLT2Z1jAJEo4oevL6" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+</li>
+<li class="v2-review">
 <div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
 <blockquote><p>“I've known Adam Styer for the past four years, and he has consistently proven to be one of the most knowledgeable, reliable, and supportive mortgage professionals I've worked with.”</p></blockquote>
-<figcaption><strong>Jeanne Miller</strong><span>Realtor partner</span><a href="https://maps.app.goo.gl/QTPpwdVw1tFv855F8" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></figcaption>
-</figure>
+<p class="v2-review-by"><strong>Jeanne Miller</strong><span>Realtor partner</span><a href="https://maps.app.goo.gl/QTPpwdVw1tFv855F8" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+</li>
+<li class="v2-review">
+<div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
+<blockquote><p>“He walked us through multiple paths, explained the tradeoffs honestly, and let us make the decision from a place of clarity instead of pressure.”</p></blockquote>
+<p class="v2-review-by"><strong>Chelsea Wise</strong><span>Options without pressure</span><a href="https://maps.app.goo.gl/ZDgkwnRHi1jukHmx9" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+</li>
+<li class="v2-review">
+<div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
+<blockquote><p>“He took the time to walk me through multiple loan scenarios, explaining the differences and helping me understand which options made the most sense for my situation.”</p></blockquote>
+<p class="v2-review-by"><strong>Kim Bennett</strong><span>Comparing mortgage scenarios</span><a href="https://maps.app.goo.gl/sHkrm6hgESnFgKtx5" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+</li>
+<li class="v2-review">
+<div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
+<blockquote><p>“Adam is awesome - he works to understand your needs, presents multiple and often creative financing options to meet them, and supports you throughout the whole home purchase.”</p></blockquote>
+<p class="v2-review-by"><strong>Matthew Latimer</strong><span>Purchase</span><a href="https://maps.app.goo.gl/u1aybDHYPwdj4aPe7" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+</li>
+<li class="v2-review">
+<div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
+<blockquote><p>“Adam came highly recommended and he was exceptional to work with! He was incredibly responsive and helpful throughout the entire mortgage process.”</p></blockquote>
+<p class="v2-review-by"><strong>Mary Cairnie</strong><span>Purchase</span><a href="https://maps.app.goo.gl/ZUVT7hiD675cbZCZ9" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+</li>
+<li class="v2-review">
+<div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
+<blockquote><p>“Worked with Adam for the mortgage on our first home, he was incredibly responsive and knowledgeable, helping answer any questions we had through the entire home buying process.”</p></blockquote>
+<p class="v2-review-by"><strong>Sergio Soto Aguilar</strong><span>First home</span><a href="https://maps.app.goo.gl/zgJU4XtCn56DdBV77" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+</li>
+<li class="v2-review">
+<div aria-label="5 out of 5 stars" class="stars" role="img"><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg><svg aria-hidden="true" class="star-svg" fill="#9A7844" height="14" viewbox="0 0 24 24" width="14"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon></svg></div>
+<blockquote><p>“Adam was extremely helpful during the entire home purchasing process.”</p></blockquote>
+<p class="v2-review-by"><strong>Josh Barron</strong><span>Home purchase</span><a href="https://maps.app.goo.gl/dtyNUruhThaFyic66" rel="noopener" target="_blank">Google review ↗<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
+</li>
+</ul>
+<button aria-pressed="false" class="v2-scroller-toggle" hidden type="button">Pause reviews</button>
 </div>
 <p class="v2-proof-line">Licensed since September 2015 · 1,000+ loans closed · <a href="https://www.google.com/maps?cid=13732336838581182360" rel="noopener" target="_blank">Google reviews<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a> · <a href="https://www.zillow.com/lender-profile/adamstyer/" rel="noopener" target="_blank">Zillow reviews<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
 <p class="v2-proof-links"><a class="pwe-inline-link" href="/testimonials.html">Read all 144 published reviews <span aria-hidden="true">→</span></a><a class="pwe-inline-link" href="/scenarios.html">See real borrower scenarios <span aria-hidden="true">→</span></a></p>
@@ -1111,7 +1149,21 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <p class="readability-brass pwe-kicker">Meet Adam</p>
 <h2 class="pwe-section-title" id="pwe-people-title">Hi, I'm Adam. I live here in Austin.</h2>
 <p>I'm married to Britney Jo, and we're raising three kids. Austin has been home for more than 16 years. I also own rental property, so I've been the borrower, not only the loan officer.</p>
-<p class="v2-verse">For I am not ashamed of the gospel, for it is the power of God for salvation to everyone who believes, to the Jew first and also to the Greek. For in it the righteousness of God is revealed from faith for faith, as it is written, "The righteous shall live by faith." Romans 1:16-17 (ESV)</p>
+<p>You don't have to name the program before you call. Tell us how you earn and what's been confusing. We'll tell you what the options are, and what we'd do next.</p>
+<p>I've been licensed since September 2015. Most people don't need another sales pitch. They need a team that will explain the file and stay with it until it funds.</p>
+<div class="pwe-role-ledger">
+<div class="pwe-role-item">
+<strong>Adam Styer</strong>
+<span>Senior Loan Officer · NMLS #513013</span>
+<p>I put the loan together, go through the income and the assets, pick the capital partner, and talk with you and your CPA.</p>
+</div>
+<div class="pwe-role-item">
+<strong>My closing team</strong>
+<span>Processing support</span>
+<p>They track the appraisal, title, and the conditions the lender asks for, from contract to closing.</p>
+</div>
+</div>
+<p class="v2-verse">Romans 1:16-17</p>
 <p><a class="pwe-inline-link" href="/about.html">More about me <span aria-hidden="true" class="pwe-arrow">↗</span></a></p>
 </div>
 </div>
@@ -1365,6 +1417,40 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
     });
     window.addEventListener('load', function () { setTimeout(load, 5000); }, { once: true });
   })();
+</script>
+<script>
+(function () {
+  var box = document.querySelector('[data-review-scroller]');
+  if (!box) return;
+  var track = box.querySelector('.v2-review-track');
+  var button = box.querySelector('.v2-scroller-toggle');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var paused = false, held = false, visible = false, last = 0, position = 0;
+  button.hidden = false;
+  button.addEventListener('click', function () {
+    paused = !paused;
+    button.setAttribute('aria-pressed', String(paused));
+    button.textContent = paused ? 'Play reviews' : 'Pause reviews';
+  });
+  ['pointerenter', 'focusin', 'touchstart'].forEach(function (type) {
+    track.addEventListener(type, function () { held = true; }, { passive: true });
+  });
+  ['pointerleave', 'focusout', 'touchend'].forEach(function (type) {
+    track.addEventListener(type, function () { held = false; position = track.scrollLeft; }, { passive: true });
+  });
+  function step(now) {
+    if (visible && !paused && !held) {
+      var limit = track.scrollWidth - track.clientWidth;
+      position += Math.min(64, now - last) * 0.03;
+      if (position >= limit) position = 0;
+      track.scrollLeft = position;
+    }
+    last = now;
+    requestAnimationFrame(step);
+  }
+  new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; }).observe(box);
+  window.addEventListener('load', function () { last = performance.now(); requestAnimationFrame(step); });
+})();
 </script>
 <script defer src="/script.js?v=20261101-ga4-lead"></script>
 <script>

@@ -94,7 +94,7 @@ test('homepage planning examples preserve paths to specialist financing', () => 
   assert.match(homepage, /Composite scenarios based on files Adam has closed/);
 });
 
-test('homepage keeps its eight sections in order with three attributed reviews', () => {
+test('homepage keeps its eight sections in order with nine attributed reviews', () => {
   const homepage = fs.readFileSync('index.html', 'utf8');
   const order = ['class="hero pwe-hero', 'id="who-i-help"', 'id="how-it-works"', 'id="client-reviews"', 'id="programs"', 'id="about-adam"', 'id="faq"', '<section class="premium-contact">']
     .map((marker) => homepage.indexOf(marker));
@@ -102,7 +102,7 @@ test('homepage keeps its eight sections in order with three attributed reviews',
   // The November 2026 rebuild retired the case-study cards and the calculator block.
   assert.doesNotMatch(homepage, /id="bank-said-no"|id="homepage-tools"|testimonial-marquee/);
   assert.match(homepage, /href="\/scenarios\.html"/);
-  const reviews = homepage.match(/<figure class="v2-review">[\s\S]*?<\/figure>/g) || [];
-  assert.equal(reviews.length, 3);
+  const reviews = homepage.match(/<li class="v2-review">[\s\S]*?<\/li>/g) || [];
+  assert.equal(reviews.length, 9);
   for (const review of reviews) assert.match(review, /href="https:\/\/maps\.app\.goo\.gl\/[^"]+"/);
 });
