@@ -1,4 +1,4 @@
-## 2026-11-13 — Preview: Phase 3 homepage rebuild (`feat/homepage-v2`)
+## 2026-11-13 — Live: Phase 3 homepage rebuild (`feat/homepage-v2`)
 
 - `index.html` now has 8 sections in this order: hero, who I help, how it works, proof, programs, meet Adam, questions, final action. A one-line service-area note and a referral-partner strip sit above the footer.
 - Hero: H1 unchanged. New lead paragraph (Adam's pick, option A2) plus a second line for regular loans (conventional, FHA, VA). Credentials line with the Google rating. One button, "Send your scenario", scrolls to the form. Call link beside it.
@@ -13,7 +13,7 @@
 - Page height at 390 px: 19,659 px before, about 10,060 px after (11.9 phone screens). The shared footer is 2.3 of those and was not changed.
 - Two tests that described the old homepage were updated to describe the new one (`tests/editorial-rollout.test.js`, `tests/premium-homepage.test.js`).
 - `npm test`: 210 tests, 178 pass, 32 fail, the same 32 as before the audit. No new failures.
-- Not deployed to production.
+- Adam asked for this to be pushed and deployed on Nov 13. Released as an explicit production deployment after fast-forwarding the production branch. Rollback target for the homepage alone: `dpl_CcWMj6BMwQm7UddzF4uaz7vQejYv` (Phases 1 and 2).
 
 ## 2026-11-13 — Live: Phases 1 and 2 of the November audit
 
