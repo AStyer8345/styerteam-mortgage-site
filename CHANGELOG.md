@@ -1,3 +1,12 @@
+## 2026-11-13 — Simpler page style pilot (`design/simplify`, preview only)
+
+- New `simple.css`, active only on `<body class="simple">`. Pilot page: `self-employed-mortgage-austin.html`.
+- Hero cut to headline, one sentence, one gold button. Stat cards and the repeated subhead removed.
+- Menu on the pilot shows Mortgage Options, About Adam, Apply Now. Markup unchanged; the rest is hidden by CSS for the pilot only.
+- "How it works" rewritten in plain words. Filler trust strip removed. "Wholesale" and a "retail banks" comparison removed.
+- Kept for search and AI answers: H1, title, the question-and-answer block, all 11 FAQs and their schema, every link in the body.
+- Not live. Not merged into `release/2026-11-audit`.
+
 ## 2026-11-13 — Phase 6 wrap-up of the November audit
 
 - `release/2026-11-audit` holds all five phases. Phases 0 to 3 are live. Phases 4 and 5 are on previews and wait for Adam's review.
