@@ -15,7 +15,8 @@
 - Homepage: scrolling row of nine pill links in Adam's words; fifth "Why work with me" point about keeping the Realtor and title company in the loop.
 - Long scenario forms removed from the self-employed page (`form-scenario-review`) and DSCR page (`form-dscr-quote`) at Adam's request; each is now an Apply block linking to the secure application. The short forms stay.
 - Homepage form now has the TCPA consent checkbox. Menu reads "Loan Programs" on the simplified pages (CSS label). Pill row restyled dark and narrower.
-- Not live. Not merged into `release/2026-11-audit`.
+- The 16 suburb pages retired in Phase 4 are restored as landing pages (Adam's call): back in the build and sitemap, linked from their sections on the Austin-area page, jumbo wording corrected. 45 pages remain retired.
+- Went live Nov 13 with Phases 4 and 5 at Adam's direction.
 
 ## 2026-11-13 — Phase 6 wrap-up of the November audit
 

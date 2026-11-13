@@ -183,8 +183,18 @@
       "statusCode": 301
     },
     {
+      "source": "/round-rock-mortgage-lender",
+      "destination": "/round-rock-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
       "source": "/cedar-park-mortgage-lender",
       "destination": "/cedar-park-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/leander-mortgage-lender",
+      "destination": "/leander-mortgage-lender.html",
       "statusCode": 301
     },
     {
@@ -203,6 +213,11 @@
       "statusCode": 301
     },
     {
+      "source": "/san-marcos-mortgage-lender",
+      "destination": "/san-marcos-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
       "source": "/westlake-mortgage-lender",
       "destination": "/westlake-mortgage-lender.html",
       "statusCode": 301
@@ -213,13 +228,78 @@
       "statusCode": 301
     },
     {
+      "source": "/bastrop-mortgage-lender",
+      "destination": "/bastrop-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/bee-cave-mortgage-lender",
+      "destination": "/bee-cave-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dripping-springs-mortgage-lender",
+      "destination": "/dripping-springs-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/elgin-mortgage-lender",
+      "destination": "/elgin-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/florence-mortgage-lender",
+      "destination": "/florence-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/hutto-mortgage-lender",
+      "destination": "/hutto-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/jarrell-mortgage-lender",
+      "destination": "/jarrell-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
       "source": "/lakeway-mortgage-lender",
       "destination": "/lakeway-mortgage-lender.html",
       "statusCode": 301
     },
     {
+      "source": "/liberty-hill-mortgage-lender",
+      "destination": "/liberty-hill-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/manor-mortgage-lender",
+      "destination": "/manor-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/marble-falls-mortgage-lender",
+      "destination": "/marble-falls-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
       "source": "/new-braunfels-mortgage-lender",
       "destination": "/new-braunfels-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/smithville-mortgage-lender",
+      "destination": "/smithville-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/spicewood-mortgage-lender",
+      "destination": "/spicewood-mortgage-lender.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/taylor-mortgage-lender",
+      "destination": "/taylor-mortgage-lender.html",
       "statusCode": 301
     },
     {
@@ -2360,166 +2440,6 @@
     {
       "source": "/dscr-loans-fredericksburg-tx",
       "destination": "/dscr-loan-austin-tx.html#fredericksburg",
-      "statusCode": 301
-    },
-    {
-      "source": "/bastrop-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#bastrop",
-      "statusCode": 301
-    },
-    {
-      "source": "/bastrop-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#bastrop",
-      "statusCode": 301
-    },
-    {
-      "source": "/hutto-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#hutto",
-      "statusCode": 301
-    },
-    {
-      "source": "/hutto-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#hutto",
-      "statusCode": 301
-    },
-    {
-      "source": "/bee-cave-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#bee-cave",
-      "statusCode": 301
-    },
-    {
-      "source": "/bee-cave-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#bee-cave",
-      "statusCode": 301
-    },
-    {
-      "source": "/spicewood-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#spicewood",
-      "statusCode": 301
-    },
-    {
-      "source": "/spicewood-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#spicewood",
-      "statusCode": 301
-    },
-    {
-      "source": "/liberty-hill-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#liberty-hill",
-      "statusCode": 301
-    },
-    {
-      "source": "/liberty-hill-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#liberty-hill",
-      "statusCode": 301
-    },
-    {
-      "source": "/manor-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#manor",
-      "statusCode": 301
-    },
-    {
-      "source": "/manor-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#manor",
-      "statusCode": 301
-    },
-    {
-      "source": "/dripping-springs-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#dripping-springs",
-      "statusCode": 301
-    },
-    {
-      "source": "/dripping-springs-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#dripping-springs",
-      "statusCode": 301
-    },
-    {
-      "source": "/marble-falls-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#marble-falls",
-      "statusCode": 301
-    },
-    {
-      "source": "/marble-falls-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#marble-falls",
-      "statusCode": 301
-    },
-    {
-      "source": "/san-marcos-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#san-marcos",
-      "statusCode": 301
-    },
-    {
-      "source": "/san-marcos-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#san-marcos",
-      "statusCode": 301
-    },
-    {
-      "source": "/taylor-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#taylor",
-      "statusCode": 301
-    },
-    {
-      "source": "/taylor-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#taylor",
-      "statusCode": 301
-    },
-    {
-      "source": "/leander-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#leander",
-      "statusCode": 301
-    },
-    {
-      "source": "/leander-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#leander",
-      "statusCode": 301
-    },
-    {
-      "source": "/jarrell-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#jarrell",
-      "statusCode": 301
-    },
-    {
-      "source": "/jarrell-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#jarrell",
-      "statusCode": 301
-    },
-    {
-      "source": "/smithville-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#smithville",
-      "statusCode": 301
-    },
-    {
-      "source": "/smithville-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#smithville",
-      "statusCode": 301
-    },
-    {
-      "source": "/florence-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#florence",
-      "statusCode": 301
-    },
-    {
-      "source": "/florence-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#florence",
-      "statusCode": 301
-    },
-    {
-      "source": "/elgin-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#elgin",
-      "statusCode": 301
-    },
-    {
-      "source": "/elgin-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#elgin",
-      "statusCode": 301
-    },
-    {
-      "source": "/round-rock-mortgage-lender.html",
-      "destination": "/austin-area-mortgage-lender.html#round-rock",
-      "statusCode": 301
-    },
-    {
-      "source": "/round-rock-mortgage-lender",
-      "destination": "/austin-area-mortgage-lender.html#round-rock",
       "statusCode": 301
     }
   ],
