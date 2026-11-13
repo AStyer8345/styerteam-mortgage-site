@@ -15,11 +15,17 @@ const fileFor = (url) => {
 };
 
 // One pass over history, newest first: the first date seen for a file wins.
+// Sitewide rollouts (a tracking snippet, a footer link, a wording swap) touch
+// dozens of pages without changing what a page says, so a commit that touches
+// more than 40 HTML files does not count as a page update.
+const BULK_HTML_FILES = 40;
 const lastCommit = new Map();
-let date = '';
-for (const line of execFileSync('git', ['log', '--format=@%cs', '--name-only'], { encoding: 'utf8', maxBuffer: 1 << 28 }).split('\n')) {
-  if (line.startsWith('@')) date = line.slice(1);
-  else if (line && !lastCommit.has(line)) lastCommit.set(line, date);
+const commits = execFileSync('git', ['log', '--format=@%cs', '--name-only'], { encoding: 'utf8', maxBuffer: 1 << 28 }).split('\n@');
+for (const commit of commits) {
+  const [first, ...files] = commit.split('\n').filter(Boolean);
+  const date = first.replace(/^@/, '');
+  if (files.filter((file) => file.endsWith('.html')).length > BULK_HTML_FILES) continue;
+  for (const file of files) if (!lastCommit.has(file)) lastCommit.set(file, date);
 }
 
 let stale = 0;
