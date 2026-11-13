@@ -717,6 +717,20 @@ body.simple-home .site-footer-areas{display:none!important}
 @media(max-width:960px){#who-i-help .v3-flip-grid{grid-template-columns:repeat(2,1fr);gap:12px}#who-i-help .v3-flip{height:270px}#who-i-help .v3-flip-img{height:110px}#who-i-help .v3-flip-front h3{font-size:19px!important;margin:12px 14px 2px!important}#who-i-help .v3-flip-sub{margin:0 14px!important;font-size:12.5px!important}#who-i-help .v3-flip-hint{margin:auto 14px 12px}#who-i-help .v3-flip-back{padding:16px}#who-i-help .v3-flip-back p{font-size:14.5px!important;margin-bottom:12px!important}#who-i-help .v3-flip-link{font-size:13.5px;padding:9px 14px}#how-it-works .v3-steps-4,.v3-why-grid{grid-template-columns:1fr 1fr!important}}
 @media(max-width:560px){#how-it-works .v3-steps-4,.v3-why-grid{grid-template-columns:1fr!important}}
 @media(prefers-reduced-motion:reduce){#who-i-help .v3-flip-inner{transition:none}}
+
+/* v3: scrolling pill row */
+.v3-pills{background:#fff;border-bottom:1px solid #E4DED2;padding:18px 0;overflow:hidden}
+.v3-pill-track{display:flex;width:max-content;animation:v3-pill-scroll 48s linear infinite}
+.v3-pills:hover .v3-pill-track,.v3-pills:focus-within .v3-pill-track{animation-play-state:paused}
+.v3-pill-set{display:flex;gap:14px;padding-right:14px;flex:0 0 auto}
+.v3-pill{display:inline-block;white-space:nowrap;border:2px solid #11212E;border-radius:999px;padding:11px 22px;font-size:17px;font-weight:600;color:#11212E!important;text-decoration:none!important;background:#fff;transition:background .15s,color .15s}
+.v3-pill:hover,.v3-pill:focus-visible{background:#11212E;color:#fff!important}
+@keyframes v3-pill-scroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.v3-pill-track{animation:none;width:auto;flex-wrap:wrap;justify-content:center}.v3-pill-set{flex-wrap:wrap;justify-content:center;padding:0 16px;row-gap:10px}.v3-pill-set[aria-hidden]{display:none}}
+.v3-why-grid{grid-template-columns:repeat(5,1fr)!important;gap:16px!important}
+.v3-why-grid li{padding:18px!important}
+@media(max-width:1100px){.v3-why-grid{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:560px){.v3-why-grid{grid-template-columns:1fr!important}.v3-pill{font-size:15px;padding:9px 16px}}
 </style>
 <!-- Schema.org LocalBusiness -->
 
@@ -1097,6 +1111,33 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 </div>
 </div>
 </section>
+<!-- SECTION 1B: PILL ROW -->
+<section aria-label="Quick ways to start" class="v3-pills">
+<div class="v3-pill-track">
+<div class="v3-pill-set">
+<a class="v3-pill" href="tel:+15129566010" data-track="call_click">Talk to a human. 👋</a>
+<a class="v3-pill" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank">I'm ready. 🏡 <span class="gorascal-visually-hidden">(opens in a new tab)</span></a>
+<a class="v3-pill" href="/self-employed-mortgage-austin.html">I work for myself. 💼</a>
+<a class="v3-pill" href="#contact-form">A bank said no. 🤔</a>
+<a class="v3-pill" href="/investor-loans.html">I own rentals. 🏘️</a>
+<a class="v3-pill" href="/calculators.html">What will my payment be? 🧮</a>
+<a class="v3-pill" href="/loans/va.html">I'm a veteran. 🇺🇸</a>
+<a class="v3-pill" href="https://calendly.com/adamstyer/15minutes" data-track="calendly_click" rel="noopener" target="_blank">Book 15 minutes. 📅 <span class="gorascal-visually-hidden">(opens in a new tab)</span></a>
+<a class="v3-pill" href="#contact-form">Show me my options. ✅</a>
+</div>
+<div aria-hidden="true" class="v3-pill-set">
+<a class="v3-pill" href="tel:+15129566010" data-track="call_click" tabindex="-1">Talk to a human. 👋</a>
+<a class="v3-pill" href="https://gorascal.my1003app.com/513013/register" rel="noopener" target="_blank" tabindex="-1">I'm ready. 🏡</a>
+<a class="v3-pill" href="/self-employed-mortgage-austin.html" tabindex="-1">I work for myself. 💼</a>
+<a class="v3-pill" href="#contact-form" tabindex="-1">A bank said no. 🤔</a>
+<a class="v3-pill" href="/investor-loans.html" tabindex="-1">I own rentals. 🏘️</a>
+<a class="v3-pill" href="/calculators.html" tabindex="-1">What will my payment be? 🧮</a>
+<a class="v3-pill" href="/loans/va.html" tabindex="-1">I'm a veteran. 🇺🇸</a>
+<a class="v3-pill" href="https://calendly.com/adamstyer/15minutes" data-track="calendly_click" rel="noopener" target="_blank" tabindex="-1">Book 15 minutes. 📅</a>
+<a class="v3-pill" href="#contact-form" tabindex="-1">Show me my options. ✅</a>
+</div>
+</div>
+</section>
 <!-- SECTION 2: WHO I HELP -->
 <section aria-labelledby="modern-goals-title" class="modern-goals home-index pwe-serve" id="who-i-help">
 <div class="container" id="mortgage-programs">
@@ -1168,6 +1209,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <li><h3>One person, start to finish</h3><p>You work with me and my team from the first call to closing. You get my cell number.</p></li>
 <li><h3>A plan built around your file</h3><p>A bank can only sell you its own loan. I compare many capital partners and fit the loan to how you actually get paid.</p></li>
 <li><h3>The numbers, in writing</h3><p>You see your options and the tradeoffs side by side, so you can decide on your own time.</p></li>
+<li><h3>Everyone stays in the loop</h3><p>I keep you, your Realtor and the title company updated the whole way. We work as a team.</p></li>
 <li><h3>I stay after closing</h3><p>I keep an eye on rates and your equity, and I call you when a change would actually help.</p></li>
 </ul>
 </div>

@@ -11,6 +11,8 @@
 - Homepage: hero copy now names situations instead of loan programs; the contact form moved into the hero (name, phone, email); short menu; gold main button.
 - Homepage: six flip cards titled by situation, four-step process, new "Why work with me" section, suburb list hidden in the homepage footer.
 - Calculators page: seven question cards that open each calculator in a panel below (`js/calc-hub.js`). The calculator pages still exist on their own URLs.
+- Menu on the simplified pages is now a floating white pill: Mortgage Options, Tools & Guides, About Adam, See My Options, Apply Now, round phone button (CSS only, 1000px and wider).
+- Homepage: scrolling row of nine pill links in Adam's words; fifth "Why work with me" point about keeping the Realtor and title company in the loop.
 - Not live. Not merged into `release/2026-11-audit`.
 
 ## 2026-11-13 — Phase 6 wrap-up of the November audit
