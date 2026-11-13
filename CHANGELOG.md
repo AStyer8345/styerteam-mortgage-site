@@ -1,3 +1,11 @@
+## 2026-11-13 — Phase 6 wrap-up of the November audit
+
+- `release/2026-11-audit` holds all five phases. Phases 0 to 3 are live. Phases 4 and 5 are on previews and wait for Adam's review.
+- Final local mobile Lighthouse, simulated throttling, median of 3, before → after: home 93 → 98, self-employed 89 → 95, bank statement 90 → 95, blog post 92 → 95, Cedar Park 88 → 92. Local numbers run well above live PageSpeed because GTM never loads off styerteam.com.
+- 61 retired URLs, each with one 301: 10 `rates/`, 10 `updates/`, 23 preserved guides, 2 Hill Country DSCR pages, 16 city pages. The list is `scripts/retired-pages.json`.
+- Checks on the release branch: `npm test` 214 tests, 183 pass, 31 fail (all 31 predate the audit); `npm run typecheck` pass; `npm run seo:audit` 0 issues; preview-mode build pass.
+- Still open for Adam: review Phase 4's city and guide merges before they go live; add GTM triggers for the six new events; Google Business Profile address; Go Rascal compliance answers; the 31 old failing tests; the footer's length on phones.
+
 ## 2026-11-13 — Preview: Phase 5 schema, tracking and video (`feat/schema-tracking`)
 
 - About page Person schema: added `hasCredential` (NMLS mortgage loan originator license #513013, valid in Texas) and `knowsAbout` (self-employed mortgages, bank statement loans, DSCR, non-QM, jumbo, HELOAN). Organization stays Organization + FinancialService. No local address was added; a TODO comment marks where the Google Business Profile address goes.
