@@ -183,18 +183,8 @@
       "statusCode": 301
     },
     {
-      "source": "/round-rock-mortgage-lender",
-      "destination": "/round-rock-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
       "source": "/cedar-park-mortgage-lender",
       "destination": "/cedar-park-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/leander-mortgage-lender",
-      "destination": "/leander-mortgage-lender.html",
       "statusCode": 301
     },
     {
@@ -213,11 +203,6 @@
       "statusCode": 301
     },
     {
-      "source": "/san-marcos-mortgage-lender",
-      "destination": "/san-marcos-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
       "source": "/westlake-mortgage-lender",
       "destination": "/westlake-mortgage-lender.html",
       "statusCode": 301
@@ -228,78 +213,13 @@
       "statusCode": 301
     },
     {
-      "source": "/bastrop-mortgage-lender",
-      "destination": "/bastrop-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/bee-cave-mortgage-lender",
-      "destination": "/bee-cave-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/dripping-springs-mortgage-lender",
-      "destination": "/dripping-springs-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/elgin-mortgage-lender",
-      "destination": "/elgin-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/florence-mortgage-lender",
-      "destination": "/florence-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/hutto-mortgage-lender",
-      "destination": "/hutto-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/jarrell-mortgage-lender",
-      "destination": "/jarrell-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
       "source": "/lakeway-mortgage-lender",
       "destination": "/lakeway-mortgage-lender.html",
       "statusCode": 301
     },
     {
-      "source": "/liberty-hill-mortgage-lender",
-      "destination": "/liberty-hill-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/manor-mortgage-lender",
-      "destination": "/manor-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/marble-falls-mortgage-lender",
-      "destination": "/marble-falls-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
       "source": "/new-braunfels-mortgage-lender",
       "destination": "/new-braunfels-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/smithville-mortgage-lender",
-      "destination": "/smithville-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/spicewood-mortgage-lender",
-      "destination": "/spicewood-mortgage-lender.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/taylor-mortgage-lender",
-      "destination": "/taylor-mortgage-lender.html",
       "statusCode": 301
     },
     {
@@ -320,16 +240,6 @@
     {
       "source": "/dscr-loans-texas",
       "destination": "/dscr-loans-texas.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/dscr-loans-dripping-springs",
-      "destination": "/dscr-loans-dripping-springs.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/dscr-loans-fredericksburg-tx",
-      "destination": "/dscr-loans-fredericksburg-tx.html",
       "statusCode": 301
     },
     {
@@ -1583,28 +1493,8 @@
       "statusCode": 301
     },
     {
-      "source": "/resources/detailed-guides/1099-only-mortgage-texas",
-      "destination": "/resources/detailed-guides/1099-only-mortgage-texas.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/asset-depletion-mortgage-texas",
-      "destination": "/resources/detailed-guides/asset-depletion-mortgage-texas.html",
-      "statusCode": 301
-    },
-    {
       "source": "/resources/detailed-guides/austin-down-payment-assistance",
       "destination": "/resources/detailed-guides/austin-down-payment-assistance.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/bank-statement-loans",
-      "destination": "/resources/detailed-guides/bank-statement-loans.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/buy-before-you-sell-austin",
-      "destination": "/resources/detailed-guides/buy-before-you-sell-austin.html",
       "statusCode": 301
     },
     {
@@ -1613,58 +1503,8 @@
       "statusCode": 301
     },
     {
-      "source": "/resources/detailed-guides/construction-loan-scenario-review",
-      "destination": "/resources/detailed-guides/construction-loan-scenario-review.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/dscr-cash-out-refinance-texas",
-      "destination": "/resources/detailed-guides/dscr-cash-out-refinance-texas.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/dscr-loan-austin-tx",
-      "destination": "/resources/detailed-guides/dscr-loan-austin-tx.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/dscr-loans-dripping-springs",
-      "destination": "/resources/detailed-guides/dscr-loans-dripping-springs.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/dscr-loans-fredericksburg-tx",
-      "destination": "/resources/detailed-guides/dscr-loans-fredericksburg-tx.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/dscr-loans-texas",
-      "destination": "/resources/detailed-guides/dscr-loans-texas.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/first-time-home-buyer",
-      "destination": "/resources/detailed-guides/first-time-home-buyer.html",
-      "statusCode": 301
-    },
-    {
       "source": "/resources/detailed-guides/fixed-vs-adjustable",
       "destination": "/resources/detailed-guides/fixed-vs-adjustable.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/high-net-worth-mortgage",
-      "destination": "/resources/detailed-guides/high-net-worth-mortgage.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/home-equity-loans-texas",
-      "destination": "/resources/detailed-guides/home-equity-loans-texas.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/how-much-house-can-i-afford-austin",
-      "destination": "/resources/detailed-guides/how-much-house-can-i-afford-austin.html",
       "statusCode": 301
     },
     {
@@ -1675,16 +1515,6 @@
     {
       "source": "/resources/detailed-guides/improve-credit-score",
       "destination": "/resources/detailed-guides/improve-credit-score.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/investor-loans",
-      "destination": "/resources/detailed-guides/investor-loans.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/k1-income-mortgage-austin",
-      "destination": "/resources/detailed-guides/k1-income-mortgage-austin.html",
       "statusCode": 301
     },
     {
@@ -1715,41 +1545,6 @@
     {
       "source": "/resources/detailed-guides/loans-va",
       "destination": "/resources/detailed-guides/loans-va.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/mortgage-for-business-owners-austin",
-      "destination": "/resources/detailed-guides/mortgage-for-business-owners-austin.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/mortgage-pre-approval-austin",
-      "destination": "/resources/detailed-guides/mortgage-pre-approval-austin.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/non-qm-loans",
-      "destination": "/resources/detailed-guides/non-qm-loans.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/one-time-close-construction-loan-texas",
-      "destination": "/resources/detailed-guides/one-time-close-construction-loan-texas.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/p-and-l-mortgage-texas",
-      "destination": "/resources/detailed-guides/p-and-l-mortgage-texas.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/products",
-      "destination": "/resources/detailed-guides/products.html",
-      "statusCode": 301
-    },
-    {
-      "source": "/resources/detailed-guides/reverse-mortgage-texas",
-      "destination": "/resources/detailed-guides/reverse-mortgage-texas.html",
       "statusCode": 301
     },
     {
@@ -2315,6 +2110,416 @@
     {
       "source": "/updates/2026-08-10-austin-housing-market-report-august-2026",
       "destination": "/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/1099-only-mortgage-texas.html",
+      "destination": "/1099-only-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/1099-only-mortgage-texas",
+      "destination": "/1099-only-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/asset-depletion-mortgage-texas.html",
+      "destination": "/asset-depletion-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/asset-depletion-mortgage-texas",
+      "destination": "/asset-depletion-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/bank-statement-loans.html",
+      "destination": "/bank-statement-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/bank-statement-loans",
+      "destination": "/bank-statement-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/buy-before-you-sell-austin.html",
+      "destination": "/buy-before-you-sell-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/buy-before-you-sell-austin",
+      "destination": "/buy-before-you-sell-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/construction-loan-scenario-review.html",
+      "destination": "/construction-loan-scenario-review.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/construction-loan-scenario-review",
+      "destination": "/construction-loan-scenario-review.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-cash-out-refinance-texas.html",
+      "destination": "/dscr-cash-out-refinance-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-cash-out-refinance-texas",
+      "destination": "/dscr-cash-out-refinance-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loan-austin-tx.html",
+      "destination": "/dscr-loan-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loan-austin-tx",
+      "destination": "/dscr-loan-austin-tx.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loans-dripping-springs.html",
+      "destination": "/dscr-loan-austin-tx.html#dripping-springs",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loans-dripping-springs",
+      "destination": "/dscr-loan-austin-tx.html#dripping-springs",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loans-fredericksburg-tx.html",
+      "destination": "/dscr-loan-austin-tx.html#fredericksburg",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loans-fredericksburg-tx",
+      "destination": "/dscr-loan-austin-tx.html#fredericksburg",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loans-texas.html",
+      "destination": "/dscr-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/dscr-loans-texas",
+      "destination": "/dscr-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/first-time-home-buyer.html",
+      "destination": "/first-time-home-buyer.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/first-time-home-buyer",
+      "destination": "/first-time-home-buyer.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/high-net-worth-mortgage.html",
+      "destination": "/high-net-worth-mortgage.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/high-net-worth-mortgage",
+      "destination": "/high-net-worth-mortgage.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/home-equity-loans-texas.html",
+      "destination": "/home-equity-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/home-equity-loans-texas",
+      "destination": "/home-equity-loans-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/how-much-house-can-i-afford-austin.html",
+      "destination": "/how-much-house-can-i-afford-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/how-much-house-can-i-afford-austin",
+      "destination": "/how-much-house-can-i-afford-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/investor-loans.html",
+      "destination": "/investor-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/investor-loans",
+      "destination": "/investor-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/k1-income-mortgage-austin.html",
+      "destination": "/k1-income-mortgage-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/k1-income-mortgage-austin",
+      "destination": "/k1-income-mortgage-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/mortgage-for-business-owners-austin.html",
+      "destination": "/mortgage-for-business-owners-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/mortgage-for-business-owners-austin",
+      "destination": "/mortgage-for-business-owners-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/mortgage-pre-approval-austin.html",
+      "destination": "/mortgage-pre-approval-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/mortgage-pre-approval-austin",
+      "destination": "/mortgage-pre-approval-austin.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/non-qm-loans.html",
+      "destination": "/non-qm-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/non-qm-loans",
+      "destination": "/non-qm-loans.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/one-time-close-construction-loan-texas.html",
+      "destination": "/one-time-close-construction-loan-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/one-time-close-construction-loan-texas",
+      "destination": "/one-time-close-construction-loan-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/p-and-l-mortgage-texas.html",
+      "destination": "/p-and-l-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/p-and-l-mortgage-texas",
+      "destination": "/p-and-l-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/products.html",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/products",
+      "destination": "/products.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/reverse-mortgage-texas.html",
+      "destination": "/reverse-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources/detailed-guides/reverse-mortgage-texas",
+      "destination": "/reverse-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-loans-dripping-springs.html",
+      "destination": "/dscr-loan-austin-tx.html#dripping-springs",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-loans-dripping-springs",
+      "destination": "/dscr-loan-austin-tx.html#dripping-springs",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-loans-fredericksburg-tx.html",
+      "destination": "/dscr-loan-austin-tx.html#fredericksburg",
+      "statusCode": 301
+    },
+    {
+      "source": "/dscr-loans-fredericksburg-tx",
+      "destination": "/dscr-loan-austin-tx.html#fredericksburg",
+      "statusCode": 301
+    },
+    {
+      "source": "/bastrop-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#bastrop",
+      "statusCode": 301
+    },
+    {
+      "source": "/bastrop-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#bastrop",
+      "statusCode": 301
+    },
+    {
+      "source": "/hutto-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#hutto",
+      "statusCode": 301
+    },
+    {
+      "source": "/hutto-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#hutto",
+      "statusCode": 301
+    },
+    {
+      "source": "/bee-cave-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#bee-cave",
+      "statusCode": 301
+    },
+    {
+      "source": "/bee-cave-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#bee-cave",
+      "statusCode": 301
+    },
+    {
+      "source": "/spicewood-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#spicewood",
+      "statusCode": 301
+    },
+    {
+      "source": "/spicewood-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#spicewood",
+      "statusCode": 301
+    },
+    {
+      "source": "/liberty-hill-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#liberty-hill",
+      "statusCode": 301
+    },
+    {
+      "source": "/liberty-hill-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#liberty-hill",
+      "statusCode": 301
+    },
+    {
+      "source": "/manor-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#manor",
+      "statusCode": 301
+    },
+    {
+      "source": "/manor-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#manor",
+      "statusCode": 301
+    },
+    {
+      "source": "/dripping-springs-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#dripping-springs",
+      "statusCode": 301
+    },
+    {
+      "source": "/dripping-springs-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#dripping-springs",
+      "statusCode": 301
+    },
+    {
+      "source": "/marble-falls-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#marble-falls",
+      "statusCode": 301
+    },
+    {
+      "source": "/marble-falls-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#marble-falls",
+      "statusCode": 301
+    },
+    {
+      "source": "/san-marcos-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#san-marcos",
+      "statusCode": 301
+    },
+    {
+      "source": "/san-marcos-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#san-marcos",
+      "statusCode": 301
+    },
+    {
+      "source": "/taylor-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#taylor",
+      "statusCode": 301
+    },
+    {
+      "source": "/taylor-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#taylor",
+      "statusCode": 301
+    },
+    {
+      "source": "/leander-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#leander",
+      "statusCode": 301
+    },
+    {
+      "source": "/leander-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#leander",
+      "statusCode": 301
+    },
+    {
+      "source": "/jarrell-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#jarrell",
+      "statusCode": 301
+    },
+    {
+      "source": "/jarrell-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#jarrell",
+      "statusCode": 301
+    },
+    {
+      "source": "/smithville-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#smithville",
+      "statusCode": 301
+    },
+    {
+      "source": "/smithville-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#smithville",
+      "statusCode": 301
+    },
+    {
+      "source": "/florence-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#florence",
+      "statusCode": 301
+    },
+    {
+      "source": "/florence-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#florence",
+      "statusCode": 301
+    },
+    {
+      "source": "/elgin-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#elgin",
+      "statusCode": 301
+    },
+    {
+      "source": "/elgin-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#elgin",
+      "statusCode": 301
+    },
+    {
+      "source": "/round-rock-mortgage-lender.html",
+      "destination": "/austin-area-mortgage-lender.html#round-rock",
+      "statusCode": 301
+    },
+    {
+      "source": "/round-rock-mortgage-lender",
+      "destination": "/austin-area-mortgage-lender.html#round-rock",
       "statusCode": 301
     }
   ],
