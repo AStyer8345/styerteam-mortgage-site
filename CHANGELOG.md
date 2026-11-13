@@ -4,7 +4,7 @@
 - Bank statement page: plain-language hero, short version as a checklist, situation-based flip cards with links, options and steps rewritten. FAQ and schema untouched.
 - "The Wholesale Advantage" strip reworded on 15 pages. 45 pages still contain "wholesale" elsewhere.
 - Found: the chatbot is off on Vercel (`api/mortgage-assistant.js` returns `enabled: false` since the 2026-10-30 port).
-- Found: `/resources` is only linked from the hidden menu dropdown in the new look.
+- `/resources` was only linked from the hidden menu dropdown. Added "Free resources" to every footer (218 pages and the shared footer template) and a "Looking for guides instead?" link on the calculators page.
 - Checks: 32 failing tests, none new; SEO audit 0 issues; build passes.
 
 ## 2026-11-13 — First/last name boxes, Contact page, cleaner menu, linked flip cards (`design/rollout`, preview only)
