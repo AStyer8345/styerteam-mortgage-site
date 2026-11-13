@@ -7,6 +7,8 @@
 - Kept for search and AI answers: H1, title, the question-and-answer block, all 11 FAQs and their schema, every link in the body.
 - Pilot v2: dark hero with the page's existing short form moved beside the headline (goal, name, email, phone, consent). A closing section links back to it.
 - Jumbo wording corrected on public pages: jumbo is decided by loan amount, not purchase price.
+- Rolled out to `dscr-loan-austin-tx.html`: plain-language hero, new short form (`dscr_quick`), stray answer paragraph above the hero folded into a "What is a DSCR loan?" section, closing-speed and "seamless approval" wording removed.
+- Homepage: hero copy now names situations instead of loan programs; the contact form moved into the hero (name, phone, email); short menu; gold main button.
 - Not live. Not merged into `release/2026-11-audit`.
 
 ## 2026-11-13 — Phase 6 wrap-up of the November audit

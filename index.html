@@ -663,6 +663,28 @@ body main .pwe-service-band p{font-size:14px!important;margin:0 0 4px!important}
 body main .v2-partners{padding:16px 0!important}
 body main .v2-partners p{font-size:14.5px}
 }
+
+/* v3: short form in the hero, gold main button */
+.pwe-hero .v3-hero-form{align-self:center!important;display:block!important;width:100%!important;max-width:440px!important;margin-left:auto!important}
+#contact-form.home-conversation{background:#fff!important;color:#0B151D!important;border:0!important;border-radius:18px!important;padding:26px!important;box-shadow:0 24px 60px rgba(0,0,0,.4)!important;max-width:none!important;margin:0!important;scroll-margin-top:100px}
+#contact-form .v3-form-head{display:flex;gap:14px;align-items:center;margin:0 0 14px}
+#contact-form .v3-form-head img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:top;background:#EDE8DF;flex:0 0 auto}
+#contact-form h2{font-size:26px!important;line-height:1.15!important;color:#0B151D!important;margin:0 0 2px!important}
+#contact-form .journey-form-intro{font-size:14px!important;color:#4A5761!important;margin:0!important}
+#contact-form .personal-form-note,#contact-form .conversation-legend,#contact-form .self-reported-source-field,#contact-form .journey-field:has(textarea),#contact-form>.journey-hint{display:none!important}
+#contact-form fieldset{border:0!important;padding:0!important;margin:0!important}
+#contact-form .journey-fields{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important}
+#contact-form .journey-field{margin:0!important}
+#contact-form .journey-full{grid-column:1/-1!important}
+#contact-form label{font-size:13px!important;font-weight:600!important;color:#0B151D!important;text-transform:none!important;letter-spacing:0!important;display:block!important;margin:0 0 5px!important}
+#contact-form input{background:#fff!important;color:#0B151D!important;border:1px solid #C9CFD4!important;border-radius:10px!important;font-size:16px!important;padding:12px 14px!important;width:100%!important;box-sizing:border-box!important}
+#contact-form .journey-submit,.premium-homepage .pwe-btn-primary,body.simple-home .pwe-hero .pwe-btn-primary{background:#F5C443!important;border:0!important;color:#0B151D!important;font-weight:700!important;border-radius:999px!important;text-transform:none!important;letter-spacing:0!important;box-shadow:0 6px 18px rgba(245,196,67,.3)!important}
+#contact-form .journey-submit{width:100%!important;font-size:17px!important;padding:15px!important;margin-top:16px!important}
+.v3-contact-cta{margin:22px 0!important}
+.premium-contact .pwe-consultation-grid{grid-template-columns:1fr!important;max-width:760px!important}
+html body.simple-home.simple-home .pwe-hero .pwe-hero-actions .pwe-btn-primary{display:none!important}
+html body.simple-home.simple-home.simple-home .premium-contact .v3-contact-cta a.pwe-btn-primary{background:#F5C443!important;color:#0B151D!important;border:0!important;border-radius:999px!important;font-weight:700!important}
+@media(max-width:960px){.pwe-hero .v3-hero-form{max-width:none!important;margin:24px 0 0!important}}
 </style>
 <!-- Schema.org LocalBusiness -->
 
@@ -706,7 +728,7 @@ body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-ty
 body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-type(2)>article:nth-of-type(3)>div:nth-of-type(1)>div:nth-of-type(1)>span:nth-of-type(1){color:#70531f !important;}
 body>main:nth-of-type(1)>section:nth-of-type(8)>div:nth-of-type(1)>div:nth-of-type(2)>article:nth-of-type(3)>a:nth-of-type(1){color:#70531f !important;}
 main p{overflow-wrap:break-word}
-details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style><link href="/a11y.css" rel="stylesheet"/>
+details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</style><link href="/a11y.css" rel="stylesheet"/><link href="/simple.css?v=20261113" rel="stylesheet"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -856,7 +878,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 }
 </script>
 </head>
-<body class="editorial-page home-pilot advisory-site premium-homepage private-wealth-editorial">
+<body class="editorial-page home-pilot advisory-site premium-homepage private-wealth-editorial simple-home">
 <!-- Google Tag Manager (noscript) -->
 <noscript></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -975,7 +997,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <div class="pwe-hero-grid">
 <div class="pwe-hero-editorial">
 <div class="pwe-hero-meta">
-<span class="pwe-kicker">Austin non-QM and self-employed lending</span>
+<span class="pwe-kicker">Austin home loans for the self-employed</span>
 </div>
 <picture class="pwe-hero-mobile-portrait">
 <source media="(max-width: 768px)" srcset="/assets/adam-hero-mobile.avif" type="image/avif"/>
@@ -983,26 +1005,62 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <img alt="Adam Styer, Senior Loan Officer and Mortgage Advisor in Austin, Texas" decoding="async" fetchpriority="high" height="119" src="/assets/hero-mobile-solid.webp" width="112"/>
 </picture>
 <h1><span class="pwe-hero-line">Complex income.</span> <span class="modern-hero-accent">Clear path forward.</span></h1>
-<p class="pwe-hero-lead">I help self-employed borrowers, 1099 earners and investors qualify on what they actually earn. Depending on the program, that can be bank statements, assets or rental income.</p>
-<p class="pwe-hero-also">Buying or refinancing with a regular loan? I do those every day too: conventional, FHA and VA for veterans, with competitive pricing compared across many capital partners.</p>
+<p class="pwe-hero-lead">Own a business, get paid on 1099s, or own rentals? Your tax return may not show what you really make. I look at what you actually bring in.</p>
+<p class="pwe-hero-also">Have a W-2 job, a first home in mind, or a VA benefit? I do those every day too, and I compare pricing across many capital partners.</p>
 <p class="pwe-hero-credentials"><span>Adam Styer, Senior Loan Officer</span><span>NMLS #513013</span><span>Licensed in Texas</span><a href="https://www.google.com/maps?cid=13732336838581182360" rel="noopener" target="_blank">5.0 on Google (99 reviews)<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a></p>
 <div class="pwe-hero-actions">
 <a class="pwe-btn-primary" data-source="homepage_hero" data-track="scenario_review_click" href="#contact-form">Send your scenario</a>
 <a class="pwe-hero-call" data-track="call_click" href="tel:+15129566010">or call (512) 956-6010</a>
 </div>
 </div>
-<div class="pwe-hero-visual">
-<div class="pwe-hero-frame">
-<picture>
-<source sizes="(max-width: 700px) 72vw, 400px" srcset="/assets/adam-cutout-480.avif 480w, /assets/adam-cutout-900.avif 900w" type="image/avif"/>
-<source sizes="(max-width: 700px) 72vw, 400px" srcset="/assets/adam-cutout-480.webp 480w, /assets/adam-cutout-900.webp 900w" type="image/webp"/>
-<img alt="Adam Styer, Senior Loan Officer and Mortgage Advisor in Austin, Texas" decoding="async" fetchpriority="low" height="320" sizes="(max-width: 700px) 72vw, 320px" src="/assets/adam-cutout-900.webp" srcset="/assets/adam-cutout-480.webp 480w, /assets/adam-cutout-900.webp 900w" width="320"/>
-</picture>
-<div class="pwe-hero-caption">
-<strong>Adam Styer</strong>
-<span>Senior Loan Officer · NMLS #513013</span>
+<div class="pwe-hero-visual v3-hero-form">
+<aside aria-labelledby="home-conversation-title" class="home-conversation journey-card homepage-quick-inquiry" id="contact-form" tabindex="-1">
+<div class="v3-form-head"><img alt="" decoding="async" height="56" loading="lazy" src="/assets/adam-cutout-480.webp" width="56"/><div><h2 id="home-conversation-title">Tell me your situation</h2>
+<p class="journey-form-intro">No credit pull. I read every one myself.</p></div></div>
+<form action="/contact-thank-you.html" class="journey-form" data-journey="general" data-journey-mode="conversation" data-netlify="true" data-simple-inquiry="true" id="form-homepage-contact" method="POST" name="contact" netlify-honeypot="bot-field"><p class="personal-form-note">How you earn, and what a bank already said. We'll start from there.</p>
+<input name="form-name" type="hidden" value="contact"/>
+<input name="inquiry_id" type="hidden" value=""/>
+<input name="test_mode" type="hidden" value="false"/>
+<input name="intent" type="hidden" value="general"/>
+<input name="situation" type="hidden" value=""/>
+<input name="utm_source" type="hidden" value=""/>
+<input name="utm_medium" type="hidden" value=""/>
+<input name="utm_campaign" type="hidden" value=""/>
+<input name="utm_term" type="hidden" value=""/>
+<input name="utm_content" type="hidden" value=""/>
+<input name="page_url" type="hidden" value=""/>
+<input name="entry_referrer" type="hidden" value=""/>
+<input name="first_touch_page" type="hidden" value=""/>
+<input name="first_touch_referrer" type="hidden" value=""/>
+<input name="first_touch_at" type="hidden" value=""/>
+<input name="first_touch_source" type="hidden" value=""/>
+<input name="first_touch_utm_source" type="hidden" value=""/>
+<input name="first_touch_utm_medium" type="hidden" value=""/>
+<input name="first_touch_utm_campaign" type="hidden" value=""/>
+<input name="first_touch_utm_term" type="hidden" value=""/>
+<input name="first_touch_utm_content" type="hidden" value=""/>
+<input name="source" type="hidden" value="homepage_options"/>
+<input name="cta_source_page" type="hidden" value="https://styerteam.com/"/>
+<input name="cta_label" type="hidden" value="Send us a note"/>
+<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
+<p class="journey-progress" hidden="">Your message</p>
+<fieldset data-journey-step="2"><legend class="conversation-legend">Your contact details</legend>
+<div class="journey-fields">
+<input name="loan_goal" type="hidden" value=""/>
+<div class="journey-field journey-full"><label for="name">Name *</label><input autocomplete="name" id="name" maxlength="160" name="name" required="" type="text"/></div>
+<div class="journey-field"><label for="phone">Phone (optional)</label><input autocomplete="tel" id="phone" maxlength="30" name="phone" type="tel"/></div>
+<div class="journey-field"><label for="email">Email *</label><input autocomplete="email" id="email" maxlength="160" name="email" required="" type="email"/></div>
+<div class="journey-field journey-full"><label for="message">Tell us a little about your situation (optional)</label><textarea aria-describedby="homepage-form-hint" id="message" maxlength="2000" name="message" placeholder="Purchase price, property type, income structure, or question…" rows="4"></textarea></div>
+<input name="preferred_follow_up" type="hidden" value="Email"/>
 </div>
-</div>
+<div class="journey-field journey-full form-group self-reported-source-field"><label for="home-heard-about">How did you first hear about Adam? (optional)</label><select id="home-heard-about" name="self_reported_source"><option value="">Choose if you remember</option><option value="ChatGPT">ChatGPT</option><option value="Gemini">Gemini</option><option value="Other AI assistant">Other AI assistant</option><option value="Google Search">Google Search</option><option value="Referral">Referral</option><option value="Other / not sure">Other / not sure</option></select></div>
+<input name="tcpa_consent" type="hidden" value="false"/>
+<button class="journey-button journey-submit" type="submit">Send it to Adam</button>
+</fieldset>
+<div aria-atomic="true" aria-live="polite" class="journey-status" hidden="" role="status" tabindex="-1"></div>
+</form>
+<p class="journey-hint" id="homepage-form-hint">* Required fields. Please leave out sensitive financial information.</p>
+</aside>
 </div>
 </div>
 </div>
@@ -1208,6 +1266,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <p class="pwe-kicker">Send your scenario</p>
 <h2 class="pwe-section-title" id="home-consultation-title">Tell me how you get paid.</h2>
 <p>A business, a 1099, a rental, or a bank that already said no. Send what you know. I'll tell you which records I need. I don't pull credit unless you decide to apply.</p>
+<p class="v3-contact-cta"><a class="pwe-btn-primary" data-source="homepage_bottom" data-track="scenario_review_click" href="#contact-form">Send your scenario</a></p>
 <div class="pwe-direct-channels">
 <div>
 <span>Call or text</span>
@@ -1219,53 +1278,7 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 </div>
 </div>
 </div>
-<aside aria-labelledby="home-conversation-title" class="home-conversation journey-card homepage-quick-inquiry" id="contact-form" tabindex="-1">
-<h2 id="home-conversation-title">Send a message</h2>
-<p class="journey-form-intro">We read these. Start with how you get paid.</p>
-<form action="/contact-thank-you.html" class="journey-form" data-journey="general" data-journey-mode="conversation" data-netlify="true" data-simple-inquiry="true" id="form-homepage-contact" method="POST" name="contact" netlify-honeypot="bot-field"><p class="personal-form-note">How you earn, and what a bank already said. We'll start from there.</p>
-<input name="form-name" type="hidden" value="contact"/>
-<input name="inquiry_id" type="hidden" value=""/>
-<input name="test_mode" type="hidden" value="false"/>
-<input name="intent" type="hidden" value="general"/>
-<input name="situation" type="hidden" value=""/>
-<input name="utm_source" type="hidden" value=""/>
-<input name="utm_medium" type="hidden" value=""/>
-<input name="utm_campaign" type="hidden" value=""/>
-<input name="utm_term" type="hidden" value=""/>
-<input name="utm_content" type="hidden" value=""/>
-<input name="page_url" type="hidden" value=""/>
-<input name="entry_referrer" type="hidden" value=""/>
-<input name="first_touch_page" type="hidden" value=""/>
-<input name="first_touch_referrer" type="hidden" value=""/>
-<input name="first_touch_at" type="hidden" value=""/>
-<input name="first_touch_source" type="hidden" value=""/>
-<input name="first_touch_utm_source" type="hidden" value=""/>
-<input name="first_touch_utm_medium" type="hidden" value=""/>
-<input name="first_touch_utm_campaign" type="hidden" value=""/>
-<input name="first_touch_utm_term" type="hidden" value=""/>
-<input name="first_touch_utm_content" type="hidden" value=""/>
-<input name="source" type="hidden" value="homepage_options"/>
-<input name="cta_source_page" type="hidden" value="https://styerteam.com/"/>
-<input name="cta_label" type="hidden" value="Send us a note"/>
-<p aria-hidden="true" hidden=""><label>Leave this blank<input autocomplete="off" name="bot-field" tabindex="-1"/></label></p>
-<p class="journey-progress" hidden="">Your message</p>
-<fieldset data-journey-step="2"><legend class="conversation-legend">Your contact details</legend>
-<div class="journey-fields">
-<input name="loan_goal" type="hidden" value=""/>
-<div class="journey-field journey-full"><label for="name">Name *</label><input autocomplete="name" id="name" maxlength="160" name="name" required="" type="text"/></div>
-<div class="journey-field"><label for="phone">Phone (optional)</label><input autocomplete="tel" id="phone" maxlength="30" name="phone" type="tel"/></div>
-<div class="journey-field"><label for="email">Email *</label><input autocomplete="email" id="email" maxlength="160" name="email" required="" type="email"/></div>
-<div class="journey-field journey-full"><label for="message">Tell us a little about your situation (optional)</label><textarea aria-describedby="homepage-form-hint" id="message" maxlength="2000" name="message" placeholder="Purchase price, property type, income structure, or question…" rows="4"></textarea></div>
-<input name="preferred_follow_up" type="hidden" value="Email"/>
-</div>
-<div class="journey-field journey-full form-group self-reported-source-field"><label for="home-heard-about">How did you first hear about Adam? (optional)</label><select id="home-heard-about" name="self_reported_source"><option value="">Choose if you remember</option><option value="ChatGPT">ChatGPT</option><option value="Gemini">Gemini</option><option value="Other AI assistant">Other AI assistant</option><option value="Google Search">Google Search</option><option value="Referral">Referral</option><option value="Other / not sure">Other / not sure</option></select></div>
-<input name="tcpa_consent" type="hidden" value="false"/>
-<button class="journey-button journey-submit" type="submit">Send us a note</button>
-</fieldset>
-<div aria-atomic="true" aria-live="polite" class="journey-status" hidden="" role="status" tabindex="-1"></div>
-</form>
-<p class="journey-hint" id="homepage-form-hint">* Required fields. Please leave out sensitive financial information.</p>
-</aside>
+
 </div>
 </div>
 </section>
