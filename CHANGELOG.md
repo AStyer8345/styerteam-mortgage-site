@@ -3615,3 +3615,12 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Licensing page now lists the Austin branch NMLS #2889346 under the office address. Not added to the footer.
 - Build passes, SEO audit 0 issues, no new test failures. One test failed until an iCloud-offloaded library file in `node_modules` was re-downloaded; unrelated to this change.
 - Live: production deployment `dpl_8fGDsVPm7MzZMRBPMqTWzHT5BK8P`, commit `8cdc591e`; styerteam.com alias confirmed. Live pages not loaded (Vercel checkpoint).
+
+## 2026-11-13 — Bullets pass, batch 1 (not live)
+
+- Adam's direction: more bullet points, fewer paragraphs, where it reads cleaner. Blog posts stay prose.
+- `dscr-loans-texas.html`: "How DSCR Loans Work", the break-even card and five FAQ answers turned into lists. FAQ schema text regenerated to match.
+- `high-net-worth-mortgage.html`: the "how they qualify" box and three FAQ answers turned into lists. "Wholesale vs. Private Bank Match" card renamed "Capital Partners vs. Private Bank".
+- Facts and numbers unchanged. Numbered lists lose their numbers inside FAQ answers, so the one numbered list uses bullets.
+- Build passes, SEO audit 0 issues, no new test failures. Committed to `copy/program-pages` only.
+- Scan of 82 indexable top-level pages: 52 have three or more long paragraphs. Densest are the twelve long suburb pages, the glossary and About.
