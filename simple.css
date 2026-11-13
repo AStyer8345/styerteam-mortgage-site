@@ -271,12 +271,11 @@ body.simple .u-hero .u-cta-header { text-align: left !important; margin: 0 0 14p
 body.simple .u-hero .u-cta-card h2 { color: var(--simple-ink) !important; font-size: 28px !important; margin: 0 0 6px !important; }
 body.simple .u-hero .u-cta-header p { color: var(--simple-text) !important; font-size: 15px !important; margin: 0 !important; }
 body.simple .u-hero .personal-form-note,
-body.simple .u-hero .journey-field:has(textarea),
-body.simple .u-hero .u-form-group:has(textarea),
 body.simple .u-hero details.personal-support,
 body.simple .u-hero .u-cta-card form ~ * { display: none !important; }
 body.simple .u-hero .u-cta-card label { color: var(--simple-ink) !important; font-size: 13px !important; text-transform: none !important; letter-spacing: 0 !important; font-weight: 600 !important; }
 body.simple .u-hero .u-cta-card input:not([type="checkbox"]),
+body.simple .u-hero .u-cta-card textarea,
 body.simple .u-hero .u-cta-card select {
   background: #fff !important;
   color: var(--simple-ink) !important;
@@ -303,7 +302,6 @@ body.simple .simple-close .u-btn-primary { display: inline-block !important; mar
   body.simple .u-hero-byline, body.simple .u-hero-reviewed { display: none !important; }
 }
 body.simple main .u-hero .u-cta-section .u-cta-header p { color: var(--simple-text) !important; font-size: 15px !important; }
-body.simple .u-hero .u-cta-card div:has(> textarea) { display: none !important; }
 
 /* ---------- Pages built on the DSCR layout (u-container / u-hero-grid) ---------- */
 body.simple .u-breadcrumb { display: none !important; }
@@ -348,3 +346,4 @@ body.simple main > .u-cta-section > .u-container { max-width: 820px !important; 
 @media (max-width: 900px) {
   body.simple .u-hero-grid { grid-template-columns: 1fr !important; }
 }
+body.simple .u-hero .u-cta-card textarea { min-height: 84px !important; width: 100% !important; box-sizing: border-box !important; }
