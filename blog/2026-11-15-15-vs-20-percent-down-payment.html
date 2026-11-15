@@ -239,26 +239,27 @@
   }
 </style>
 <style id="down-payment-comparison-styles">
-  .mortgage-comparison { margin: 1.15rem 0 .8rem; overflow-x: auto; border: 1px solid #d9d3c7; border-radius: 12px; background: #fff; }
-  .mortgage-comparison:focus-visible { outline: 3px solid #90703a; outline-offset: 3px; }
-  .mortgage-comparison table { width: 100%; min-width: 690px; border-collapse: separate; border-spacing: 0; margin: 0 !important; table-layout: fixed; font-variant-numeric: tabular-nums; }
-  .mortgage-comparison caption { padding: .85rem 1rem; background: #172d3d; color: #fff; text-align: left; caption-side: top; font-size: .86rem; line-height: 1.4; }
-  .mortgage-comparison caption span { display: block; margin-top: .2rem; color: #e5edf1; }
-  .mortgage-comparison th, .mortgage-comparison td { padding: .62rem .35rem !important; font-size: .84rem !important; line-height: 1.35; border: 0 !important; border-bottom: 1px solid #eee9e0 !important; text-align: center !important; color: #203545 !important; background: #fff; white-space: nowrap; }
-  .mortgage-comparison tr > :first-child { position: sticky; left: 0; z-index: 1; width: 23%; padding-left: .73rem !important; text-align: left !important; white-space: normal; box-shadow: 1px 0 #eee9e0; }
-  .mortgage-comparison thead th { background: #efe9df !important; font-weight: 750; font-size: .94rem !important; }
-  .mortgage-comparison tbody th { background: #fbf8f3 !important; font-weight: 650; text-transform: none !important; letter-spacing: normal !important; }
-  .mortgage-comparison .pmi-cutoff { background: #e9f2ee !important; }
-  .mortgage-comparison thead .pmi-cutoff { background: #1c5248 !important; color: #fff !important; }
-  .mortgage-comparison .pmi-row > * { font-weight: 650; }
-  .mortgage-comparison .total-row > * { background: #eff2f3 !important; font-weight: 750; }
-  .mortgage-comparison .total-row .pmi-cutoff { background: #d9eae3 !important; }
+  body.advisory-article .article-body .mortgage-comparison { margin: 1.15rem 0 .8rem; overflow-x: auto; border: 1px solid #d9d3c7; border-radius: 12px; background: #fff; }
+  body.advisory-article .article-body .mortgage-comparison:focus-visible { outline: 3px solid #90703a; outline-offset: 3px; }
+  body.advisory-article .article-body .mortgage-comparison table { width: 100%; min-width: 690px; border-collapse: separate; border-spacing: 0; margin: 0 !important; table-layout: fixed; font-variant-numeric: tabular-nums; }
+  body.advisory-article .article-body .mortgage-comparison caption { padding: .85rem 1rem; background: #172d3d; color: #fff; text-align: left; caption-side: top; font-size: .86rem; line-height: 1.4; }
+  body.advisory-article .article-body .mortgage-comparison caption span { display: block; margin-top: .2rem; color: #e5edf1; }
+  body.advisory-article .article-body .mortgage-comparison th, .mortgage-comparison td { padding: .62rem .35rem !important; font-size: .84rem !important; line-height: 1.35; border: 0 !important; border-bottom: 1px solid #eee9e0 !important; text-align: center !important; color: #203545 !important; background: #fff; white-space: nowrap; }
+  body.advisory-article .article-body .mortgage-comparison tr > :first-child { position: sticky; left: 0; z-index: 1; width: 23%; padding-left: .73rem !important; text-align: left !important; white-space: normal; box-shadow: 1px 0 #eee9e0; }
+  body.advisory-article .article-body .mortgage-comparison thead th { background: #efe9df !important; font-weight: 750; font-size: .94rem !important; }
+  body.advisory-article .article-body .mortgage-comparison tbody th { background: #fbf8f3 !important; font-weight: 650; text-transform: none !important; letter-spacing: normal !important; }
+  body.advisory-article .article-body .mortgage-comparison .pmi-cutoff { background: #e9f2ee !important; }
+  body.advisory-article .article-body .mortgage-comparison thead .pmi-cutoff { background: #1c5248 !important; color: #fff !important; }
+  body.advisory-article .article-body .mortgage-comparison .pmi-row > * { font-weight: 650; }
+  body.advisory-article .article-body .mortgage-comparison .total-row > * { background: #eff2f3 !important; font-weight: 750; }
+  body.advisory-article .article-body .mortgage-comparison .total-row .pmi-cutoff { background: #d9eae3 !important; }
   .comparison-note { line-height: 1.55; }
   .comparison-takeaway { margin: 1.1rem 0 1.75rem; padding: 1rem 1.15rem; border-left: 4px solid #90703a; background: #f5f2eb; border-radius: 0 8px 8px 0; }
   .comparison-scroll-hint { display: none; }
   @media (max-width: 760px) {
     .comparison-scroll-hint { display: block; margin-bottom: .4rem !important; font-size: .82rem !important; }
-    .mortgage-comparison { margin-top: .4rem; }
+    body.advisory-article .article-body .mortgage-comparison { margin-top: .4rem; }
+    body.advisory-article .article-body .mortgage-comparison caption span { max-width: 15rem; }
   }
 </style>
 </head>
