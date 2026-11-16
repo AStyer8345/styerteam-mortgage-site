@@ -46,7 +46,19 @@ fs.mkdirSync(destination, { recursive: true });
 for (const file of files) {
   const output = path.join(destination, file);
   fs.mkdirSync(path.dirname(output), { recursive: true });
-  fs.copyFileSync(path.join(root, file), output);
+  const source = path.join(root, file);
+  if (file.endsWith('.html')) {
+    const html = fs.readFileSync(source, 'utf8');
+    if (/\bhref=["'](?:[^"']*\/)?simple\.css(?:\?[^"']*)?["']/i.test(html)) {
+      const withNavLinks = html.replace(
+        /<li>\s*<a class="nav-prominent-link" href="\/blog\.html">Blog &amp; Market Updates<\/a>\s*<\/li>/,
+        '<li><a href="/blog.html">Blog</a></li>\n<li><a href="/resources">Resources</a></li>',
+      );
+      fs.writeFileSync(output, withNavLinks);
+      continue;
+    }
+  }
+  fs.copyFileSync(source, output);
 }
 console.log(`Packaged ${files.length} public website files. Functions, source, reports and metadata excluded.`);
 await import('./optimize-homepage.mjs');
