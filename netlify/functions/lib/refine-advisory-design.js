@@ -2,7 +2,7 @@
 // One footer for every public page. Edit site-footer.html, then run
 // `node scripts/sync-advisory-design.mjs` to propagate it.
 // Bump when advisory-design.css, advisory-contact.js or calculator-sticky-result.js change.
-const ASSET_VERSION = '20260918';
+const ASSET_VERSION = '20261117';
 const SITE_FOOTER = require('./site-footer-content');
 const BUSINESS_LICENSE_NOTE = `<div class="site-footer-contact page-license-note">
 <p class="site-footer-name"><strong>Adam Styer</strong> | Senior Loan Officer</p>
