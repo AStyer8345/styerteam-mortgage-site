@@ -217,11 +217,13 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 .scenario-content h3{font-size:20px;margin:26px 0 12px}
 .scenario-content p,.scenario-content li{font-size:16px;line-height:1.65}
 .scenario-content .scenario-table-wrap{overflow-x:auto;margin:20px 0;border:1px solid #dad4c8;border-radius:4px}
-.scenario-content table{width:100%;border-collapse:collapse;min-width:460px;background:#fff}
+.scenario-content table{width:100%;border-collapse:collapse;min-width:0;background:#fff}
 .scenario-content caption{text-align:left;font-weight:700;padding:14px;color:#10212c}
 .scenario-content th,.scenario-content td{text-align:left;vertical-align:top;padding:13px 14px;border-bottom:1px solid #e6e0d6;line-height:1.5;font-size:15px}
 .scenario-content thead th{background:#eee9de;color:#10212c}
-.scenario-content tbody th{font-weight:600;width:32%}
+.scenario-content tbody th{font-weight:600;width:50%}
+.scenario-content table.scenario-table-wide{min-width:560px}
+.scenario-content .scenario-table-wide tbody th{width:28%}
 .scenario-content a{color:#70531f;text-decoration:underline;text-underline-offset:3px}
 .scenario-content .scenario-note{font-size:14px;color:#47565e}
 .scenario-content .scenario-actions{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;font-weight:700}
@@ -353,7 +355,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <a class="u-btn-secondary" href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a 15-Min Call<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
 <a class="u-hero-phone" href="tel:+15129566010">(512) 956-6010</a>
 </div>
-<p class="u-hero-reviewed" style="margin:6px 0 0;font-size:13px;opacity:.85">Reviewed by Adam Styer, NMLS #513013 · Updated <time datetime="2026-11-13">November 13, 2026</time></p>
+<p class="u-hero-reviewed" style="margin:6px 0 0;font-size:13px;opacity:.85">Reviewed by Adam Styer, NMLS #513013 · Updated <time datetime="2026-11-17">November 17, 2026</time></p>
 </div>
 <section class="u-cta-section" id="quick-start">
 <div class="container" id="quick-start-card">
@@ -483,7 +485,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div>
 </section>
 <!-- Options / Program Breakdown -->
-<section class="u-section scenario-section" id="options"><div class="scenario-content"><h2>Which DSCR path fits the property?</h2><p>Rental type changes the documents and income calculation. An Airbnb forecast, a signed lease, and collected rent are not interchangeable.</p><div class="scenario-table-wrap" role="region" aria-label="DSCR options to compare" tabindex="0"><table><caption>DSCR options to compare</caption><thead><tr><th scope="col">Path</th><th scope="col">Rent review</th><th scope="col">What matters</th></tr></thead><tbody><tr><th scope="row">Long-term rental</th><td>Lease and/or an appraisal rent analysis accepted by the lender.</td><td>Which rent figure counts, occupancy requirements, taxes, insurance and reserves.</td></tr><tr><th scope="row">Short-term rental</th><td>Operating history or an accepted rental analysis, depending on the program.</td><td>Seasonality, income adjustments, local rental rules and property eligibility.</td></tr><tr><th scope="row">Low-ratio / no-ratio</th><td>Some programs allow rent below the qualifying payment or no minimum DSCR.</td><td>Available equity, credit, reserves, pricing and prepayment terms.</td></tr></tbody></table></div><p class="scenario-note">Examples of lender-specific approaches: <a href="https://angeloakms.com/programs/investor-cash-flow-mortgage-program/">Angel Oak investor cash flow</a> and <a href="https://deephavenmortgage.com/dscr-short-term-rental/">Deephaven short-term rentals</a>. These are reference examples, not confirmation of terms for your property.</p></div></section>
+<section class="u-section scenario-section" id="options"><div class="scenario-content"><h2>Which DSCR path fits the property?</h2><p>Rental type changes the documents and income calculation. An Airbnb forecast, a signed lease, and collected rent are not interchangeable.</p><div class="scenario-table-wrap" role="region" aria-label="DSCR options to compare" tabindex="0"><table class="scenario-table-wide"><caption>DSCR options to compare</caption><thead><tr><th scope="col">Path</th><th scope="col">Rent review</th><th scope="col">What matters</th></tr></thead><tbody><tr><th scope="row">Long-term rental</th><td>Lease and/or an appraisal rent analysis accepted by the lender.</td><td>Which rent figure counts, occupancy requirements, taxes, insurance and reserves.</td></tr><tr><th scope="row">Short-term rental</th><td>Operating history or an accepted rental analysis, depending on the program.</td><td>Seasonality, income adjustments, local rental rules and property eligibility.</td></tr><tr><th scope="row">Low-ratio / no-ratio</th><td>Some programs allow rent below the qualifying payment or no minimum DSCR.</td><td>Available equity, credit, reserves, pricing and prepayment terms.</td></tr></tbody></table></div><p class="scenario-note">Examples of lender-specific approaches: <a href="https://angeloakms.com/programs/investor-cash-flow-mortgage-program/">Angel Oak investor cash flow</a> and <a href="https://deephavenmortgage.com/dscr-short-term-rental/">Deephaven short-term rentals</a>. These are reference examples, not confirmation of terms for your property.</p></div></section>
 <!-- Process -->
 <section class="u-section" style="background: var(--pwe-bg-warm);">
 <div class="u-container">
