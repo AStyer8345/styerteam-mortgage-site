@@ -4,6 +4,8 @@
 - Shared asset version bumped 20260918 → 20261117 (`advisory-contact.js`, `advisory-design.css`, `calculator-sticky-result.js`) on 217 pages and in `refine-advisory-design.js`, so returning visitors get the fixed script past the one-year cache.
 - Mortgage Options mega menu regrouped by borrower on 217 pages (homepage included): I'm Self-Employed / Assets & Investing + Building / I Own a Home + Traditional Loans. Same 25 links and URLs. "Texas Home Equity (A6)" label is now "Home Equity Loans (HELOAN)".
 - "On this page" jump links added to six program pages: self-employed, bank statement, 1099, P&L, DSCR, home equity. DSCR first answer now uses the same "The short version" box as the other five; three DSCR sections got ids. No copy, headings or FAQs changed.
+- Loan Programs dropdown shown again on desktop (hover or keyboard focus) for pages using `simple.css`; other dropdowns stay hidden, phone menu unchanged. `simple.css` version bumped 20261113 → 20261117 on 172 pages.
+- "On this page" row sits on its own light band so it reads on phones, where it follows the dark form block.
 - Homepage design and footer email (adamstyer@gorascal.com) unchanged at Adam's request.
 - Checks: 29 failing tests, same as the live branch, none new; audit:navigation, design, schema, forms, attribution pass.
 
