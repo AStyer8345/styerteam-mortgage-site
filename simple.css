@@ -512,8 +512,8 @@ body.simple main { overflow-x: clip; }
 
 /* ---------- Cards, second pass: flip cards, real cards, step cards ---------- */
 /* Sections that hold cards get a wider column than the reading text. */
-body.simple main .u-section:has(.simple-flip-grid, .u-grid-3, .u-steps-grid) > .container,
-body.simple main .u-section:has(.simple-flip-grid, .u-grid-3, .u-steps-grid) > .u-container { max-width: 1120px !important; }
+body.simple main .u-section:has(.simple-flip-grid, .who-checklist, .u-grid-3, .u-steps-grid) > .container,
+body.simple main .u-section:has(.simple-flip-grid, .who-checklist, .u-grid-3, .u-steps-grid) > .u-container { max-width: 1120px !important; }
 
 /* Flip cards: title on the front, detail on the back. Both faces share one
    grid cell, so the card is always as tall as its longer face. */
