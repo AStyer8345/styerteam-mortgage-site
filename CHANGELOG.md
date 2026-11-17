@@ -1,4 +1,4 @@
-## 2026-11-17 — Menu regroup, mobile bar link fix, program page jump links (`design/audit-fixes-20261117`, preview only)
+## 2026-11-17 — Menu regroup, mobile bar link fix, program page jump links (live, `dpl_4zm2HmPxwRwdQtdoTq29Ydx19KPY`; previous live `dpl_2GzrvW23K9Reyx2mRVYGqQCnxj7e`)
 
 - Mobile contact bar (`advisory-contact.js`): "See my options" linked to `/contact.html?goal=Purchase?intent=scenario`, so the goal arrived as "Purchase?intent=scenario". Now `&intent=scenario`. The slide-over panel stays off as before (its path check never matched); turning it on is a separate decision.
 - Shared asset version bumped 20260918 → 20261117 (`advisory-contact.js`, `advisory-design.css`, `calculator-sticky-result.js`) on 217 pages and in `refine-advisory-design.js`, so returning visitors get the fixed script past the one-year cache.
