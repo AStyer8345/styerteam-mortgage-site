@@ -708,11 +708,13 @@ html body.simple-home .hero-ratings .hero-rating-count::before { content: "·"; 
    2026-11-17: built on the shared .simple-flip card. Front: who it's for and
    the program family. Back: the short description and every program link. */
 body.simple .situation-flip-grid { margin-top: 8px !important; }
-body.simple .situation-flip .simple-flip-front { align-items: flex-start; }
+body.simple .situation-flip .simple-flip-front { align-items: flex-start; justify-content: flex-start !important; }
+body.simple .situation-flip .simple-flip-front .simple-flip-hint { margin-top: auto !important; padding-top: 18px; }
+body.simple .situation-flip .simple-flip-front h3 { margin: 0 0 6px !important; }
 body.simple .situation-flip .situation-flip-label {
   display: block; margin: 0 0 10px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pwe-brass, #806234);
 }
-body.simple .situation-flip .simple-flip-front h3 { font-size: 22px !important; }
+body.simple .situation-flip .simple-flip-front h3 { font-size: 24px !important; line-height: 1.2 !important; }
 body.simple .situation-flip .simple-flip-back { justify-content: flex-start; }
 body.simple .situation-flip .simple-flip-back p { font-size: 14.5px !important; line-height: 1.5 !important; }
 body.simple .situation-flip .situation-flip-links { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
@@ -749,3 +751,4 @@ html body .site-footer .site-footer-col a:hover, html body .site-footer .site-fo
 @media (max-width: 600px) {
   html body .site-footer .site-footer-areas ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+body.simple .situation-flip .situation-flip-teaser { margin: 4px 0 0 !important; font-size: 15px !important; line-height: 1.5 !important; color: var(--pwe-slate, #4A5761) !important; }
