@@ -1,8 +1,9 @@
-## 2026-11-17 (batch 4) — Flow: menu button, Calendly, shared form heading, shorter phone homepage (`design/flow-20261117`, preview only)
+## 2026-11-17 (batch 4, live `dpl_Gpb11NyBWJ8SAGjxAZMa2MyVqd45`; previous live `dpl_AXkSJvNTLMSarVcb4i4fv9PXksZu`) — Flow: menu button, Calendly, shared form heading, shorter phone homepage
 
 - Menu on 217 pages: "Contact" → "See My Options" (opens the slide-over form) as the gold button; Apply Now is now a plain text link.
 - Homepage hero: "Book a 15-min call" button (Calendly) and "Prefer to talk? Call 512-956-6010." replaces the orphaned "or call" line.
 - Homepage bottom block: "Send your scenario" is the main button (to the top form); Apply now is secondary.
+- Rebased onto Codex commit 2417103; contact page keeps its `contact-form-title` id and timeline hint (its script still swaps the heading for closing-timeline visitors).
 - One shared heading on 21 form cards: "Tell me a little bit about your situation". Section headings were not changed.
 - Phones: footer columns two-up and areas three-up (footer 2,678px → ~1,760px); four long homepage sections (Four steps, Why work with me, Which loan fits, Meet Adam) open partly with a Show more button. Homepage on a phone: 12,470px → ~9,700px. All text stays in the page.
 
