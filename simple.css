@@ -856,3 +856,8 @@ body .who-checklist .who-body p { margin: 0 !important; font-size: 15px !importa
 body .who-checklist .who-link { display: inline-block; margin-top: 8px; font-size: 14.5px; font-weight: 700; color: var(--pwe-brass, #806234) !important; text-decoration: none !important; }
 body .who-checklist .who-link:hover, body .who-checklist .who-link:focus-visible { text-decoration: underline !important; text-underline-offset: 3px; }
 @media (max-width: 767px) { body .who-checklist { grid-template-columns: 1fr; gap: 10px; } body .who-checklist .who-item { padding: 14px 16px; } }
+
+/* Texas DSCR page: older hero grid now holds the shared form on the right (2026-11-17). */
+body .u-hero .u-hero-grid:has(> #quick-options) { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 460px) !important; gap: 48px !important; align-items: start !important; }
+body .u-hero .u-hero-grid > #quick-options { padding: 0 !important; background: none !important; margin: 0 !important; }
+@media (max-width: 999px) { body .u-hero .u-hero-grid:has(> #quick-options) { grid-template-columns: 1fr !important; gap: 28px !important; } }
