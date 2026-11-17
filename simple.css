@@ -771,3 +771,62 @@ body .life-strip-grid { display: grid; grid-template-columns: repeat(4, minmax(0
 body .life-strip-item { margin: 0; }
 body .life-strip-item img { display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; border-radius: 12px; }
 @media (max-width: 900px) { body .life-strip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- Menu: See My Options is the main button (2026-11-17) ----------
+   "See My Options" (opens the scenario form) is now the gold button.
+   Apply Now becomes a plain text link for people Adam has already talked to. */
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-options.nav-options.nav-options.nav-options.nav-options {
+  background: var(--simple-accent, #F5C443) !important; color: var(--simple-ink, #0B151D) !important; font-weight: 700 !important; border: 0 !important; border-radius: 999px !important; box-shadow: none !important;
+}
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-options.nav-options.nav-options.nav-options.nav-options:hover {
+  background: var(--simple-accent-hover, #E5B533) !important;
+}
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply.nav-apply.nav-apply {
+  background: transparent !important; color: var(--simple-text, #4A5761) !important; font-weight: 500 !important; border: 0 !important; box-shadow: none !important;
+}
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply.nav-apply.nav-apply:hover {
+  background: #EBE2D2 !important; color: var(--simple-ink, #0B151D) !important;
+}
+@media (max-width: 999px) {
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply.nav-apply.nav-apply {
+    color: rgba(246, 244, 239, 0.85) !important; text-decoration: underline !important; text-underline-offset: 3px;
+  }
+}
+
+/* ---------- Homepage hero: Calendly button + call line (2026-11-17) ---------- */
+html body.simple-home .pwe-hero .pwe-hero-actions { display: flex !important; flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+html body.simple-home .pwe-hero .hero-book-call {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 12px 22px; box-sizing: border-box;
+  background: var(--simple-accent, #F5C443); color: #0B151D !important; font-weight: 700; font-size: 16px; border-radius: 999px; text-decoration: none !important;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+html body.simple-home .pwe-hero .hero-book-call:hover, html body.simple-home .pwe-hero .hero-book-call:focus-visible { background: var(--simple-accent-hover, #E5B533); transform: translateY(-1px); }
+html body.simple-home .pwe-hero .hero-prefer-call { margin: 0 !important; font-size: 15px; color: rgba(246, 244, 239, 0.8); }
+html body.simple-home .pwe-hero .hero-prefer-call .pwe-hero-call { display: inline !important; padding: 0 !important; font-size: 15px !important; color: #fff !important; }
+@media (max-width: 767px) {
+  html body.simple-home .pwe-hero .pwe-hero-actions { align-items: stretch !important; }
+  html body.simple-home .pwe-hero .hero-book-call { justify-content: center; width: 100%; }
+  html body.simple-home .pwe-hero .hero-prefer-call { text-align: center; }
+}
+
+/* ---------- Phones: shorter homepage + compact footer (2026-11-17) ----------
+   Nothing is removed from the page (search and answer engines still read it);
+   the same content just takes less room on a phone. */
+@media (max-width: 767px) {
+  /* Footer, every page: link columns two-up, areas three-up, tighter legal block */
+  html body .site-footer .site-footer-grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 22px 18px !important; margin-bottom: 0 !important; }
+  html body .site-footer .site-footer-col h2 { margin-bottom: 8px !important; }
+  html body .site-footer .site-footer-col li { margin: 0 !important; }
+  html body .site-footer .site-footer-col a { display: inline-block; padding: 5px 0 !important; font-size: 14px !important; }
+  html body .site-footer nav.site-footer-areas ul { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 0 10px !important; }
+  html body .site-footer nav.site-footer-areas a { font-size: 12.5px !important; padding: 3px 0 !important; }
+  html body .site-footer .site-footer-proof { margin-top: 24px !important; gap: 8px !important; }
+  html body .site-footer .site-footer-legal p { margin: 0 0 4px !important; }
+
+  /* Homepage only */
+  html body.simple-home main > section { padding-top: 44px !important; padding-bottom: 44px !important; }
+  html body.simple-home #programs .v2-program-table th, html body.simple-home #programs .v2-program-table td { padding: 8px 10px !important; font-size: 14px !important; line-height: 1.4 !important; }
+  html body.simple-home #about-adam img { max-height: 260px; width: 100%; object-fit: cover; }
+  html body.simple-home #why-adam li, html body.simple-home #why-adam article { padding-top: 10px !important; padding-bottom: 10px !important; }
+  html body.simple-home #how-it-works li, html body.simple-home #how-it-works article { padding-top: 8px !important; padding-bottom: 8px !important; }
+}
