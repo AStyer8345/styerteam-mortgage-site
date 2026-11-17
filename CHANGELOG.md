@@ -1,3 +1,10 @@
+## 2026-11-17 (batch 3) — Real photos (`design/audit-fixes-20261117`, preview only)
+
+- About: main photo is now the family under the ATX marquee at the Moody Center (was `assets/family.jpg`). New "Life outside the office" strip: Rancho Moonrise with Britney Jo, zoo with daughter, family picnic, mountain summit. Adobe Creek Ranch Adirondack-chair photo in "Operating a Hill Country short-term rental".
+- Adobe Creek Ranch photos (from the `adobe-creek-ranch` repo, Adam's own property shots): aerial on the DSCR page's Fredericksburg section, main house and barn on `investor-loans.html`, house-and-pool aerial on `dscr-cash-out-refinance-texas.html`. Caption: "Adobe Creek Ranch, my family's short-term rental outside Fredericksburg." (approved by Adam).
+- Meeting selfie on `realtors.html` under Co-Marketing Opportunities. Adam confirmed the people in it and in the summit photo are OK to show.
+- Images in `assets/photos/` as WebP 800/1600, EXIF and GPS removed.
+
 ## 2026-11-17 (batch 2) — Menu taps, slide-over form, hero ratings, products flip cards, footer (`design/audit-fixes-20261117`, preview only)
 
 - Menu: clicking Loan Programs opens the dropdown at every width (it used to jump to /products on wide screens). On phones, Loan Programs, Calculators and About Adam taps did nothing before (the tap opened a dropdown the design hid); they now open inside the menu. Desktop clicks on Calculators and About Adam navigate. `script.js` + `simple.css`.
