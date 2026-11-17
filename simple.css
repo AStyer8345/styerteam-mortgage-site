@@ -752,3 +752,22 @@ html body .site-footer .site-footer-col a:hover, html body .site-footer .site-fo
   html body .site-footer .site-footer-areas ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 body.simple .situation-flip .situation-flip-teaser { margin: 4px 0 0 !important; font-size: 15px !important; line-height: 1.5 !important; color: var(--pwe-slate, #4A5761) !important; }
+
+/* ---------- Real photos (2026-11-17) ----------
+   Adam's own photos and Adobe Creek Ranch: one figure style with a quiet
+   caption, a slim band between program sections, and the About page strip. */
+body .site-photo, body .owner-photo { margin: 0 0 28px; }
+body .site-photo img, body .owner-photo img { display: block; width: 100%; height: auto; border-radius: 14px; box-shadow: 0 12px 30px rgba(11, 21, 29, 0.10); }
+body .site-photo figcaption, body .owner-photo figcaption, body .life-strip-item figcaption {
+  margin-top: 10px; font-size: 13.5px; line-height: 1.45; color: var(--pwe-slate, #4A5761); font-style: italic;
+}
+body .site-photo-portrait { max-width: 420px; margin: 32px auto 0; }
+body .site-photo-portrait img { aspect-ratio: 4 / 5; object-fit: cover; object-position: center 40%; }
+body .owner-photo { margin: 8px 0 22px; }
+body .photo-band { padding: 40px 0 8px !important; background: #fff; }
+body .life-strip { padding: 56px 0 !important; background: var(--pwe-paper, #FAF9F6); }
+body .life-strip .life-strip-title { margin: 0 0 22px; font-family: var(--pwe-serif, Georgia, serif); font-size: clamp(24px, 2.6vw, 32px); text-align: left; }
+body .life-strip-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+body .life-strip-item { margin: 0; }
+body .life-strip-item img { display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; border-radius: 12px; }
+@media (max-width: 900px) { body .life-strip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
