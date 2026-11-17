@@ -1,3 +1,12 @@
+## 2026-11-17 — Menu regroup, mobile bar link fix, program page jump links (`design/audit-fixes-20261117`, preview only)
+
+- Mobile contact bar (`advisory-contact.js`): "See my options" linked to `/contact.html?goal=Purchase?intent=scenario`, so the goal arrived as "Purchase?intent=scenario". Now `&intent=scenario`. The slide-over panel stays off as before (its path check never matched); turning it on is a separate decision.
+- Shared asset version bumped 20260918 → 20261117 (`advisory-contact.js`, `advisory-design.css`, `calculator-sticky-result.js`) on 217 pages and in `refine-advisory-design.js`, so returning visitors get the fixed script past the one-year cache.
+- Mortgage Options mega menu regrouped by borrower on 217 pages (homepage included): I'm Self-Employed / Assets & Investing + Building / I Own a Home + Traditional Loans. Same 25 links and URLs. "Texas Home Equity (A6)" label is now "Home Equity Loans (HELOAN)".
+- "On this page" jump links added to six program pages: self-employed, bank statement, 1099, P&L, DSCR, home equity. DSCR first answer now uses the same "The short version" box as the other five; three DSCR sections got ids. No copy, headings or FAQs changed.
+- Homepage design and footer email (adamstyer@gorascal.com) unchanged at Adam's request.
+- Checks: 29 failing tests, same as the live branch, none new; audit:navigation, design, schema, forms, attribution pass.
+
 ## 2026-11-13 — Austin office address (live, `dpl_53R3R2iAxBY4aSgLCs5ZY9vzuhcb`)
 
 - Footer on 218 pages and the shared footer template: new contact block with the Austin office (7600 N Capital of Texas Hwy, Suite 230 (Private Office #105), Austin, TX 78731), phone and email. The Brooklyn line now reads "Go Rascal Inc. corporate office".
