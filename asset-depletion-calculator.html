@@ -1732,11 +1732,11 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
       return fetch(url, options);
     }
 
-    function receiptConfirmed(response) {
-      if (!response || !response.ok) return Promise.resolve(false);
-      return response.json().then(function (data) {
-        return !!(data && data.captured === true);
-      }).catch(function () { return false; });
+    async function confirmedReceipt(response) {
+      if (!response.ok || response.redirected) throw new Error('Lead receipt unavailable');
+      var data = await response.json();
+      if (data && (data.captured === true || data.preview === true)) return data;
+      throw new Error('Lead receipt unavailable');
     }
 
     function showLeadError() {
@@ -1784,22 +1784,25 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
         els.emailMsg.textContent = 'Sending…';
 
         try {
-          var results = await Promise.allSettled([
+          var receipt = await Promise.any([
             requestLead('/', {
               method: 'POST',
               headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-              body: encoded.toString()
-            }),
+              body: encoded.toString(),
+              keepalive: true
+            }).then(confirmedReceipt),
             requestLead(LEAD_INTAKE_URL, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-            })
+              body: JSON.stringify(payload),
+              keepalive: true
+            }).then(confirmedReceipt)
           ]);
-          var confirmed = await Promise.all(results.map(function (result) {
-            return result.status === 'fulfilled' ? receiptConfirmed(result.value) : Promise.resolve(false);
-          }));
-          if (!confirmed.some(Boolean)) throw new Error('lead not confirmed');
+          if (receipt.preview) {
+            els.emailMsg.textContent = 'Preview check passed. Use styerteam.com to email your analysis.';
+            els.emailMsg.classList.add('adc-email-msg--ok');
+            return;
+          }
           els.emailMsg.textContent = 'Thanks — Adam will follow up shortly.';
           els.emailMsg.classList.add('adc-email-msg--ok');
           var preserved = {};
