@@ -775,20 +775,20 @@ body .life-strip-item img { display: block; width: 100%; aspect-ratio: 4 / 5; he
 /* ---------- Menu: See My Options is the main button (2026-11-17) ----------
    "See My Options" (opens the scenario form) is now the gold button.
    Apply Now becomes a plain text link for people Adam has already talked to. */
-html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-options.nav-options.nav-options.nav-options.nav-options {
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-options.nav-options.nav-options.nav-options.nav-options {
   background: var(--simple-accent, #F5C443) !important; color: var(--simple-ink, #0B151D) !important; font-weight: 700 !important; border: 0 !important; border-radius: 999px !important; box-shadow: none !important;
 }
-html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-options.nav-options.nav-options.nav-options.nav-options:hover {
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-options.nav-options.nav-options.nav-options.nav-options:hover {
   background: var(--simple-accent-hover, #E5B533) !important;
 }
-html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply.nav-apply.nav-apply {
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply.nav-apply.nav-apply {
   background: transparent !important; color: var(--simple-text, #4A5761) !important; font-weight: 500 !important; border: 0 !important; box-shadow: none !important;
 }
-html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply.nav-apply.nav-apply:hover {
+html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply.nav-apply.nav-apply:hover {
   background: #EBE2D2 !important; color: var(--simple-ink, #0B151D) !important;
 }
 @media (max-width: 999px) {
-  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply.nav-apply.nav-apply {
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links a.nav-cta.nav-apply.nav-apply.nav-apply.nav-apply.nav-apply {
     color: rgba(246, 244, 239, 0.85) !important; text-decoration: underline !important; text-underline-offset: 3px;
   }
 }
