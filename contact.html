@@ -282,7 +282,8 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div></section>
 <section><div class="container" style="max-width:720px;">
 <aside class="home-conversation journey-card" id="contact-form">
-<h2>Send your info</h2>
+<h2 id="contact-form-title">Send your info</h2>
+<p class="journey-hint" id="contact-timeline-hint" hidden>Include your contract closing date, loan type, and whether your appraisal is ordered or complete.</p>
 <form action="/contact-thank-you.html" class="journey-form" data-journey="general" data-journey-mode="conversation" data-netlify="true" data-simple-inquiry="true" id="form-contact" method="POST" name="contact" netlify-honeypot="bot-field">
 <input name="form-name" type="hidden" value="contact"/>
 <input name="inquiry_id" type="hidden" value=""/>
@@ -340,6 +341,11 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
   };
   var select = document.getElementById('loan_type');
   if (select && map[loan]) select.value = map[loan];
+  if (params.get('intent') === 'closing-timeline') {
+    document.getElementById('contact-form-title').textContent = 'Check your closing timeline';
+    document.getElementById('contact-timeline-hint').hidden = false;
+    document.getElementById('contact-message').setAttribute('aria-describedby', 'contact-timeline-hint');
+  }
 })();
 </script>
 </main>
