@@ -1540,3 +1540,36 @@ document.addEventListener('click', (e) => {
     if (button && button.form) syncAll(button.form);
   }, true);
 })();
+
+
+// 2026-11-17: on phones, long homepage sections open partly with a
+// "Show more" button. Content stays in the page for readers and crawlers.
+(function () {
+  if (!document.body || !document.body.classList.contains('simple-home')) return;
+  if (!window.matchMedia || !window.matchMedia('(max-width: 767px)').matches) return;
+  function setup() {
+    ['how-it-works', 'why-adam', 'programs', 'about-adam'].forEach(function (id) {
+      var section = document.getElementById(id);
+      if (!section) return;
+      var body = section.querySelector(':scope > .container, :scope > div') || section.firstElementChild;
+      if (!body || body.classList.contains('m-collapsible') || body.scrollHeight < 560) return;
+      body.classList.add('m-collapsible');
+      if (!body.id) body.id = id + '-more';
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'm-more-btn';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', body.id);
+      btn.textContent = 'Show more';
+      btn.addEventListener('click', function () {
+        var open = body.classList.toggle('is-expanded');
+        btn.setAttribute('aria-expanded', String(open));
+        btn.textContent = open ? 'Show less' : 'Show more';
+        if (!open) section.scrollIntoView({ block: 'start' });
+      });
+      body.insertAdjacentElement('afterend', btn);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setup);
+  else setup();
+})();

@@ -825,8 +825,22 @@ html body.simple-home .pwe-hero .hero-prefer-call .pwe-hero-call { display: inli
 
   /* Homepage only */
   html body.simple-home main > section { padding-top: 44px !important; padding-bottom: 44px !important; }
-  html body.simple-home #programs .v2-program-table th, html body.simple-home #programs .v2-program-table td { padding: 8px 10px !important; font-size: 14px !important; line-height: 1.4 !important; }
   html body.simple-home #about-adam img { max-height: 260px; width: 100%; object-fit: cover; }
   html body.simple-home #why-adam li, html body.simple-home #why-adam article { padding-top: 10px !important; padding-bottom: 10px !important; }
   html body.simple-home #how-it-works li, html body.simple-home #how-it-works article { padding-top: 8px !important; padding-bottom: 8px !important; }
+}
+
+/* ---------- Phones: "Show more" on long homepage sections (2026-11-17) ----------
+   script.js marks these sections on phones only. Content stays in the page;
+   it opens partly with a fade and a Show more button. */
+@media (max-width: 767px) {
+  html body.simple-home .m-collapsible:not(.is-expanded) {
+    max-height: 420px; overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
+    mask-image: linear-gradient(to bottom, #000 72%, transparent);
+  }
+  html body.simple-home .m-more-btn {
+    display: flex; align-items: center; justify-content: center; gap: 6px; margin: 12px auto 0; min-height: 44px; padding: 10px 22px;
+    border: 1.5px solid currentColor; border-radius: 999px; background: transparent; color: inherit; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+  }
 }
