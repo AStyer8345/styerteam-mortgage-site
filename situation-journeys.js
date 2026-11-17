@@ -53,26 +53,31 @@
     // Confirm immediately on the first durable acceptance. The other transport
     // continues with the same ID, including during navigation after confirmation.
     // LoanOS deduplicates that ID.
-    return new Promise(function (resolve, reject) {
-      var accepted = false;
-      function accept(result) { accepted = true; resolve(result); }
-      var netlify = Promise.resolve().then(function () {
+    function confirm(response, primary) {
+      if (!response.ok || response.redirected) throw new Error('No capture accepted');
+      return Promise.resolve().then(function () { return response.json(); }).then(function (receipt) {
+        if (receipt && (receipt.captured === true || receipt.preview === true)) {
+          return { captured: receipt.captured === true, primary: primary, receipt: receipt };
+        }
+        throw new Error('No capture accepted');
+      }, function (error) {
+        // Legacy Netlify Forms responds with HTML. The Vercel backup always
+        // returns a JSON receipt and a malformed JSON response must fail.
+        var contentType = response.headers && response.headers.get('Content-Type');
+        if (!primary && (!contentType || contentType.startsWith('text/html'))) {
+          return { captured: true, primary: false, receipt: null };
+        }
+        throw error;
+      });
+    }
+    return Promise.any([
+      Promise.resolve().then(function () {
         return request('/', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() }, 20000);
-      }).then(function (response) {
-        var netlifyAccepted = response.ok && !response.redirected;
-        if (netlifyAccepted) accept({ captured: true, primary: false, receipt: null });
-      });
-      var primary = Promise.resolve().then(function () {
+      }).then(function (response) { return confirm(response, false); }),
+      Promise.resolve().then(function () {
         return request('/.netlify/functions/lead-intake', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }, 20000);
-      }).then(async function (response) {
-        var receipt = response.ok ? await response.json() : null;
-        var leadAccepted = receipt && receipt.captured === true;
-        if (leadAccepted) accept({ captured: true, primary: true, receipt: receipt });
-      });
-      Promise.allSettled([netlify, primary]).then(function () {
-        if (!accepted) reject(new Error('No capture accepted'));
-      });
-    });
+      }).then(function (response) { return confirm(response, true); })
+    ]).catch(function () { throw new Error('No capture accepted'); });
   }
 
   if (typeof module !== 'undefined' && module.exports) module.exports = { makePayload: makePayload, capture: capture };
@@ -334,7 +339,7 @@
         }
         status.textContent = result.primary ? 'Your message has been received. Adam typically replies within one business day.' : 'Your message has been saved. You can also reach Adam directly below.';
       }
-      if (result.receipt && result.receipt.preview) status.textContent='Preview only: your scenario was accepted by the test service. No lead, email, or marketing subscription was created.';
+      if (result.receipt && result.receipt.preview) status.textContent = 'Preview check passed. Use styerteam.com to send your request.';
       status.classList.add('journey-confirmation');
       var helper=root.document.createElement('p');helper.className='journey-confirmation-intro';helper.textContent='Want to connect sooner?';if (result.primary) status.appendChild(helper);
       var actions=root.document.createElement('div');actions.className='journey-next-actions';
@@ -396,6 +401,10 @@
         data.set('intent', intent);
         data.set('situation', payload.situation);
         var result=await capture(payload, data, root.StyerFetchWithTimeout);
+        if (result.receipt && result.receipt.preview) {
+          showConfirmation(result);
+          return;
+        }
         // Persist only a receipt, never contact details. Back/reload must not
         // submit an already accepted inquiry or fire another conversion.
         try {
