@@ -3672,3 +3672,10 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - FAQ schema text matches the visible answers on all five pages touched in batches 1 and 2.
 - Build passes, SEO audit 0 issues, no new test failures. Committed to `copy/program-pages` only.
 - Left for the copy pass, needs Adam: `mortgage-broker-vs-bank.html` (claims a broker "beats a bank on rate, loan options, and closing speed", says "wholesale rates"), and the jargon-heavy hero paragraphs on the P&L and asset depletion pages.
+
+## 2026-11-17 — Program pages: form in the hero + checklist cards (preview)
+- Shared "Tell me a little bit about your situation" form now sits beside the headline on 12 program pages (buy-before-you-sell, Texas DSCR, first-time buyer, investor, construction, conventional, FHA, investment, refinance, VA, one-time-close, reverse). Page-specific `situation`, `source` (`<slug>_quick`), `cta_source_page` and form ids; field names unchanged.
+- Old specialized forms kept lower on those pages as `#detailed-review`.
+- Texas DSCR hero rebuilt: metrics under the headline, form in the right column.
+- "Who it's built for" flip cards replaced with an icon checklist on 26 pages (104 cards); checklist sections use the 1120px container. products.html and homepage cards unchanged.
+- Preview: dpl_3meUkoCUU1UNWgFYpN2CE7n1ZCB2 (branch design/programs-20261117). Not live yet.
