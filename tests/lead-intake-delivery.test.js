@@ -133,3 +133,28 @@ for (const body of [null, [], { email: 42 }, { email: 'invalid' }, { email: 'a@e
     assert.equal(r.calls.length, 0);
   });
 }
+
+
+test('preview validates both affected forms without forwarding ordinary email addresses', async () => {
+  for (const formName of ['contact', 'asset-depletion-calculator']) {
+    const r = await submit({
+      env: { ...configured, VERCEL_ENV: 'preview', N8N_SEND_TEST_LEADS: 'true' },
+      body: { inquiry_id: 'fixture-inquiry-123', email: 'fixture@example.com', 'form-name': formName },
+    });
+    assert.equal(r.statusCode, 200);
+    assert.equal(r.result.preview, true);
+    assert.equal(r.result.captured, false);
+    assert.equal(r.calls.length, 0);
+  }
+});
+
+test('verified internal preview tests still exercise LoanOS capture without email dispatch', async () => {
+  const r = await submit({
+    env: { ...configured, VERCEL_ENV: 'preview', N8N_SEND_TEST_LEADS: 'true' },
+    body: { inquiry_id: 'fixture-inquiry-123', email: 'adamstyer@gorascal.com', 'form-name': 'contact' },
+  });
+  assert.equal(r.result.preview, true);
+  assert.equal(r.result.captured, true);
+  assert.equal(r.calls.length, 1);
+  assert.equal(r.calls[0].body.test_mode, true);
+});
