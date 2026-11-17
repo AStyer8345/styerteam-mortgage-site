@@ -655,3 +655,97 @@ body.advisory-contact .contact-office a { color: var(--simple-ink, #11212E); }
     padding: 24px 28px 20px !important; border-radius: 14px !important; box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35) !important; z-index: 1200 !important;
   }
 }
+
+/* ---------- Dropdowns inside the phone menu ----------
+   2026-11-17: tapping Loan Programs, Calculators or About Adam on a phone
+   used to do nothing (the tap opened a dropdown this design hid). Now the
+   open dropdown shows inside the menu as an indented list. */
+@media (max-width: 999px) {
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-has-dropdown.open > .nav-dropdown {
+    display: block !important; position: static !important; transform: none !important; width: auto !important; min-width: 0 !important; max-width: none !important;
+    margin: 4px 0 12px !important; padding: 4px 0 8px 14px !important; background: transparent !important; border: 0 !important;
+    border-left: 1px solid rgba(246, 244, 239, 0.18) !important; box-shadow: none !important; border-radius: 0 !important;
+  }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-has-dropdown.open .nav-mega-grid { display: block !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-has-dropdown.open .nav-mega-col { margin: 0 0 6px !important; padding: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-has-dropdown.open .nav-mega-title {
+    display: block !important; margin: 12px 0 4px !important; font-size: 11px !important; letter-spacing: 0.12em !important; text-transform: uppercase !important; color: #C6A46C !important;
+  }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-has-dropdown.open .nav-dropdown li { border: 0 !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-has-dropdown.open .nav-dropdown a {
+    display: block !important; padding: 9px 0 !important; font-size: 15px !important; color: rgba(246, 244, 239, 0.9) !important; border: 0 !important; background: none !important;
+  }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-has-dropdown.open .nav-mega-footer { display: block !important; margin-top: 10px !important; padding-top: 10px !important; }
+  html body:is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav):is(.simple,.simple-home,.simple-calc,.simple-nav) > header nav .nav-links > li.nav-has-dropdown.open .nav-mega-note { display: none !important; }
+}
+
+/* ---------- "See my options" slide-over panel ----------
+   2026-11-17: the panel embeds /contact.html?embed=1. The contact page no
+   longer has a .journey-hero, so the older embed rules hid everything. Show
+   just the form section inside the panel. */
+html body.advisory-embed main > section:has(.journey-form) { display: block !important; padding: 20px 0 !important; margin: 0 !important; }
+html body.advisory-embed main > section:has(.journey-form) > .container { padding-inline: 20px !important; }
+
+/* ---------- Homepage hero ratings ----------
+   2026-11-17: Google and Zillow ratings as two badges with five stars,
+   under the credentials line. */
+html body.simple-home .hero-ratings { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 0; }
+html body.simple-home .hero-ratings .hero-rating {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; min-height: 44px; box-sizing: border-box;
+  border: 1px solid rgba(246, 244, 239, 0.22); border-radius: 999px; background: rgba(246, 244, 239, 0.06);
+  color: #F6F4EF !important; text-decoration: none !important; font-size: 13.5px; line-height: 1; letter-spacing: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+html body.simple-home .hero-ratings .hero-rating:hover,
+html body.simple-home .hero-ratings .hero-rating:focus-visible { background: rgba(246, 244, 239, 0.12); border-color: rgba(246, 244, 239, 0.4); }
+html body.simple-home .hero-ratings .hero-rating-stars { display: inline-flex; gap: 1px; color: #F5C443; }
+html body.simple-home .hero-ratings .hero-rating-score { font-weight: 700; }
+html body.simple-home .hero-ratings .hero-rating-source { font-weight: 600; }
+html body.simple-home .hero-ratings .hero-rating-count { color: rgba(246, 244, 239, 0.72); }
+html body.simple-home .hero-ratings .hero-rating-count::before { content: "·"; margin-right: 8px; color: rgba(246, 244, 239, 0.45); }
+
+/* ---------- /products "Which situation sounds like yours?" flip cards ----------
+   2026-11-17: built on the shared .simple-flip card. Front: who it's for and
+   the program family. Back: the short description and every program link. */
+body.simple .situation-flip-grid { margin-top: 8px !important; }
+body.simple .situation-flip .simple-flip-front { align-items: flex-start; }
+body.simple .situation-flip .situation-flip-label {
+  display: block; margin: 0 0 10px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pwe-brass, #806234);
+}
+body.simple .situation-flip .simple-flip-front h3 { font-size: 22px !important; }
+body.simple .situation-flip .simple-flip-back { justify-content: flex-start; }
+body.simple .situation-flip .simple-flip-back p { font-size: 14.5px !important; line-height: 1.5 !important; }
+body.simple .situation-flip .situation-flip-links { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+body.simple .situation-flip .situation-flip-links a {
+  display: inline-block; padding: 5px 0; font-size: 14.5px; font-weight: 600; color: var(--simple-accent, #F5C443) !important; text-decoration: none !important;
+}
+body.simple .situation-flip .situation-flip-links a:hover,
+body.simple .situation-flip .situation-flip-links a:focus-visible { text-decoration: underline !important; text-underline-offset: 3px; }
+body.simple .situation-flip .situation-flip-links li:first-child a { font-size: 15.5px; }
+
+/* ---------- Footer ----------
+   2026-11-17: star ratings for Google and Zillow, "Areas I serve" as a
+   tidy grid instead of a dotted wall, and one link style for the legal block
+   (underline on hover only, like the columns above it). */
+html body .site-footer .site-footer-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 40px 0 0; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, 0.15); color: #fff; font-size: 14px; }
+html body .site-footer .site-footer-rating {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid rgba(246, 244, 239, 0.2); border-radius: 999px;
+  color: #F6F4EF !important; text-decoration: none !important; line-height: 1;
+}
+html body .site-footer .site-footer-rating:hover, html body .site-footer .site-footer-rating:focus-visible { background: rgba(246, 244, 239, 0.08); border-color: rgba(246, 244, 239, 0.4); }
+html body .site-footer .site-footer-stars { display: inline-flex; gap: 1px; color: #F5C443; }
+html body .site-footer .site-footer-rating strong { font-weight: 700; }
+html body .site-footer .site-footer-rating-all { color: #F6F4EF !important; text-decoration: underline !important; text-underline-offset: 3px; }
+html body .site-footer .site-footer-proof-meta { color: rgba(246, 244, 239, 0.65); font-size: 13px; }
+html body .site-footer .site-footer-areas { margin: 28px 0 0; color: rgba(255, 255, 255, 0.7); }
+html body .site-footer .site-footer-areas h2 { margin: 0 0 12px; font-family: var(--pwe-sans, Inter, sans-serif); font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #C6A46C; }
+html body .site-footer .site-footer-areas ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 4px 20px; }
+html body .site-footer .site-footer-areas a { display: inline-block; padding: 4px 0; font-size: 13.5px; color: rgba(246, 244, 239, 0.78) !important; text-decoration: none !important; }
+html body .site-footer .site-footer-areas a:hover, html body .site-footer .site-footer-areas a:focus-visible { color: #fff !important; text-decoration: underline !important; text-underline-offset: 3px; }
+html body .site-footer .site-footer-legal a { text-decoration: none !important; color: rgba(255, 255, 255, 0.78) !important; }
+html body .site-footer .site-footer-legal a:hover, html body .site-footer .site-footer-legal a:focus-visible { text-decoration: underline !important; text-underline-offset: 2px; color: #fff !important; }
+html body .site-footer .site-footer-col a { text-decoration: none !important; }
+html body .site-footer .site-footer-col a:hover, html body .site-footer .site-footer-col a:focus-visible { text-decoration: underline !important; text-underline-offset: 3px; }
+@media (max-width: 600px) {
+  html body .site-footer .site-footer-areas ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

@@ -255,7 +255,12 @@ function initNavigation() {
   if (navLinks) {
     navLinks.addEventListener('click', (e) => {
       const dropdownParent = e.target.closest('.nav-has-dropdown');
-      if (dropdownParent && window.innerWidth <= 1280) {
+      // 2026-11-17: Loan Programs (the mega menu) opens on click at every
+      // width; on phones (< 1000px) every dropdown opens inside the menu.
+      // On desktop the other parents (Calculators, About Adam) have no
+      // visible dropdown, so they navigate like normal links.
+      const opensHere = dropdownParent && (dropdownParent.classList.contains('nav-mega-item') || window.innerWidth < 1000);
+      if (opensHere) {
         // Only intercept the parent <a> click, not the child dropdown links
         if (e.target.closest('.nav-dropdown')) return;
         e.preventDefault();
@@ -268,6 +273,14 @@ function initNavigation() {
       }
     });
   }
+
+  // Close an open Loan Programs menu on desktop when clicking elsewhere.
+  document.addEventListener('click', (e) => {
+    if (!navLinks || window.innerWidth < 1000 || e.target.closest('.nav-has-dropdown')) return;
+    let changed = false;
+    navLinks.querySelectorAll('.nav-has-dropdown.open').forEach(el => { el.classList.remove('open'); changed = true; });
+    if (changed) syncDropdownStates();
+  });
 
   // Close mobile menu when clicking outside
   document.addEventListener('click', (e) => {

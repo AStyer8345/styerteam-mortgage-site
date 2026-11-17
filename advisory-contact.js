@@ -116,7 +116,7 @@
     if (!a || a.target === '_blank') return;
     var url;
     try { url = new URL(a.getAttribute('href'), location.origin); } catch (_) { return; }
-    if (url.origin !== location.origin || url.pathname !== FORM_PATH) return;
+    if (url.origin !== location.origin || url.pathname !== '/contact.html') return;
     if (url.searchParams.get('intent') !== 'scenario' && !a.hasAttribute('data-scenario-panel')) return;
     e.preventDefault();
     openPanel(url.href);
