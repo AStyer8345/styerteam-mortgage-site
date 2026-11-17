@@ -1,3 +1,14 @@
+## 2026-11-17 (batch 2) — Menu taps, slide-over form, hero ratings, products flip cards, footer (`design/audit-fixes-20261117`, preview only)
+
+- Menu: clicking Loan Programs opens the dropdown at every width (it used to jump to /products on wide screens). On phones, Loan Programs, Calculators and About Adam taps did nothing before (the tap opened a dropdown the design hid); they now open inside the menu. Desktop clicks on Calculators and About Adam navigate. `script.js` + `simple.css`.
+- "See my options" on the phone bar opens the slide-over form in place. The panel's path check now matches `/contact.html`, and `simple.css` shows the contact form section in the embed (the old embed rules expected a `.journey-hero` the page no longer has).
+- Homepage hero: Google and Zillow ratings as two badges with five stars (5.0 · 99 reviews, 4.98 · 45 reviews). Text names only; no logo files exist in the repo.
+- /products "Which Situation Sounds Like Yours?": 7 static cards → 8 flip cards on the shared `.simple-flip` component. Home equity split out as its own card, second in line; construction last. Every program link kept.
+- Footer on 219 pages + `site-footer.html`: Loans column adds Home equity (HELOAN) and DSCR & investors; ratings as star badges; "Areas I serve" as a grid; one link style for columns and legal block.
+- Checked: the 45 pages without `simple.css` all redirect to current pages on production; no restyle needed.
+- Chat assistant: still off. The Vercel endpoint is a stub; the real assistant is `netlify/functions/mortgage-assistant.mts` (OpenAI, LoanOS handoff, Netlify Blobs).
+- Checks: same 29 pre-existing test failures, none new; all audits pass.
+
 ## 2026-11-17 — Menu regroup, mobile bar link fix, program page jump links (live, `dpl_4zm2HmPxwRwdQtdoTq29Ydx19KPY`; previous live `dpl_2GzrvW23K9Reyx2mRVYGqQCnxj7e`)
 
 - Mobile contact bar (`advisory-contact.js`): "See my options" linked to `/contact.html?goal=Purchase?intent=scenario`, so the goal arrived as "Purchase?intent=scenario". Now `&intent=scenario`. The slide-over panel stays off as before (its path check never matched); turning it on is a separate decision.
