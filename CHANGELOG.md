@@ -1,3 +1,11 @@
+## 2026-11-17 (batch 4) — Flow: menu button, Calendly, shared form heading, shorter phone homepage (`design/flow-20261117`, preview only)
+
+- Menu on 217 pages: "Contact" → "See My Options" (opens the slide-over form) as the gold button; Apply Now is now a plain text link.
+- Homepage hero: "Book a 15-min call" button (Calendly) and "Prefer to talk? Call 512-956-6010." replaces the orphaned "or call" line.
+- Homepage bottom block: "Send your scenario" is the main button (to the top form); Apply now is secondary.
+- One shared heading on 21 form cards: "Tell me a little bit about your situation". Section headings were not changed.
+- Phones: footer columns two-up and areas three-up (footer 2,678px → ~1,760px); four long homepage sections (Four steps, Why work with me, Which loan fits, Meet Adam) open partly with a Show more button. Homepage on a phone: 12,470px → ~9,700px. All text stays in the page.
+
 ## 2026-11-17 (batches 2 + 3, live `dpl_GHjwkCTZ11M97BV1Knve63P4Ept5`; previous live `dpl_4DkNpURvqw7H3QAvxyvGNLz6Kfuw`) — Real photos
 
 - About: main photo is now the family under the ATX marquee at the Moody Center (was `assets/family.jpg`). New "Life outside the office" strip: Rancho Moonrise with Britney Jo, zoo with daughter, family picnic, mountain summit. Adobe Creek Ranch Adirondack-chair photo in "Operating a Hill Country short-term rental".
