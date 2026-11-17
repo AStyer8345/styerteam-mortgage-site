@@ -841,6 +841,6 @@ html body.simple-home .pwe-hero .hero-prefer-call .pwe-hero-call { display: inli
   }
   html body.simple-home .m-more-btn {
     display: flex; align-items: center; justify-content: center; gap: 6px; margin: 12px auto 0; min-height: 44px; padding: 10px 22px;
-    border: 1.5px solid currentColor; border-radius: 999px; background: transparent; color: inherit; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+    border: 1.5px solid #DAD4C8; border-radius: 999px; background: #FFFFFF; color: #0B151D; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 14px rgba(11, 21, 29, 0.12);
   }
 }
