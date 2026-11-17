@@ -1,4 +1,4 @@
-## 2026-11-17 (batch 3) — Real photos (`design/audit-fixes-20261117`, preview only)
+## 2026-11-17 (batches 2 + 3, live `dpl_GHjwkCTZ11M97BV1Knve63P4Ept5`; previous live `dpl_4DkNpURvqw7H3QAvxyvGNLz6Kfuw`) — Real photos
 
 - About: main photo is now the family under the ATX marquee at the Moody Center (was `assets/family.jpg`). New "Life outside the office" strip: Rancho Moonrise with Britney Jo, zoo with daughter, family picnic, mountain summit. Adobe Creek Ranch Adirondack-chair photo in "Operating a Hill Country short-term rental".
 - Adobe Creek Ranch photos (from the `adobe-creek-ranch` repo, Adam's own property shots): aerial on the DSCR page's Fredericksburg section, main house and barn on `investor-loans.html`, house-and-pool aerial on `dscr-cash-out-refinance-texas.html`. Caption: "Adobe Creek Ranch, my family's short-term rental outside Fredericksburg." (approved by Adam).
