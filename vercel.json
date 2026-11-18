@@ -1668,6 +1668,11 @@
       "statusCode": 301
     },
     {
+      "source": "/blog/mortgage-denied-second-opinion",
+      "destination": "/blog/mortgage-denied-second-opinion.html",
+      "statusCode": 301
+    },
+    {
       "source": "/about-me/",
       "destination": "/about.html",
       "statusCode": 301
