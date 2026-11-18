@@ -1082,7 +1082,7 @@
           var moSav = basePmt - y.pmt;
           var pmtShow = showPITI ? y.pmt + escrowMo : y.pmt;
           if (y.isBuydown) {
-            html += '<tr><td>Year ' + yr + '</td><td>' + fmtPct(y.rate) + '</td><td>' + fmtDollarInt(pmtShow) + '</td><td class="savings-cell">-' + fmtDollarInt(moSav) + '/mo</td><td>' + fmtDollarInt(y.subsidy) + '</td></tr>';
+            html += '<tr><td>Year ' + yr + '</td><td>' + fmtPct(y.rate) + '</td><td>' + fmtDollarInt(pmtShow) + '</td><td class="savings-cell">-' + fmtDollarInt(moSav) + ' per month</td><td>' + fmtDollarInt(y.subsidy) + '</td></tr>';
           } else {
             html += '<tr class="note-row"><td>Year ' + yr + '+</td><td>' + fmtPct(noteRate) + '</td><td>' + fmtDollarInt(showPITI ? basePmt + escrowMo : basePmt) + '</td><td>—</td><td>—</td></tr>';
             break;
@@ -1206,9 +1206,9 @@
         document.getElementById('bd-print-date').textContent = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
         div.innerHTML = '<p><strong>Buydown Type:</strong> ' + bdLabel + '</p>'
           + '<p><strong>Loan Amount:</strong> ' + fmtDollar(loan) + '</p>'
-          + '<p><strong>Note Rate:</strong> ' + fmtPct(s.noteRate) + ' &nbsp;|&nbsp; <strong>Base P&amp;I:</strong> ' + fmtDollarInt(s.basePmt) + '/mo</p>'
-          + '<p><strong>Year 1 Rate:</strong> ' + fmtPct(s.yr1Rate) + ' &nbsp;|&nbsp; <strong>Year 1 Payment:</strong> ' + fmtDollarInt(s.yr1Pmt) + '/mo</p>'
-          + '<p><strong>Monthly Savings (Yr 1):</strong> ' + fmtDollarInt(s.moSavings) + '/mo</p>'
+          + '<p><strong>Note Rate:</strong> ' + fmtPct(s.noteRate) + ' &nbsp;|&nbsp; <strong>Base P&amp;I:</strong> ' + fmtDollarInt(s.basePmt) + ' per month</p>'
+          + '<p><strong>Year 1 Rate:</strong> ' + fmtPct(s.yr1Rate) + ' &nbsp;|&nbsp; <strong>Year 1 Payment:</strong> ' + fmtDollarInt(s.yr1Pmt) + ' per month</p>'
+          + '<p><strong>Monthly Savings (Yr 1):</strong> ' + fmtDollarInt(s.moSavings) + ' per month</p>'
           + '<p><strong>Total Buydown Deposit:</strong> ' + fmtDollarInt(s.totalSubsidy) + '</p>'
           + (s.creditLeft !== null ? '<p><strong>Seller Credit Balance After Buydown:</strong> ' + fmtDollarInt(s.creditLeft) + '</p>' : '')
           + '<hr style="margin:1rem 0">'
