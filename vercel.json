@@ -989,7 +989,7 @@
     },
     {
       "source": "/licensing",
-      "destination": "/texas-complaint-notice.html",
+      "destination": "/licensing.html",
       "statusCode": 301
     },
     {
@@ -1095,6 +1095,16 @@
     {
       "source": "/blog/2026-05-30-physician-mortgage-texas",
       "destination": "/blog/2026-05-30-physician-mortgage-texas.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-11-15-15-vs-20-percent-down-payment",
+      "destination": "/blog/2026-11-15-15-vs-20-percent-down-payment.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2026-11-05-austin-housing-market-after-midterms",
+      "destination": "/blog/2026-11-05-austin-housing-market-after-midterms.html",
       "statusCode": 301
     },
     {
