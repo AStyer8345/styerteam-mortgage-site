@@ -866,4 +866,4 @@ body .u-hero .u-hero-grid > #quick-options { padding: 0 !important; background: 
 body .owner-photo.ranch-lead { margin: 8px 0 10px; }
 body .ranch-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 8px; }
 body .ranch-strip img { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; border-radius: 10px; }
-body .ranch-caption { margin: 0 0 22px; font-size: 13px; color: var(--pwe-slate, #5B6670); }
+body main p.ranch-caption { margin: 0 0 22px !important; font-size: 13px !important; line-height: 1.4 !important; color: var(--pwe-slate, #5B6670) !important; }

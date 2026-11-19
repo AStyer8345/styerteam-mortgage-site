@@ -3679,3 +3679,8 @@ Fix for the GSC desktop-vs-mobile ranking gap (desktop avg 9.25 vs mobile 36.47)
 - Texas DSCR hero rebuilt: metrics under the headline, form in the right column.
 - "Who it's built for" flip cards replaced with an icon checklist on 26 pages (104 cards); checklist sections use the 1120px container. products.html and homepage cards unchanged.
 - Preview: dpl_3meUkoCUU1UNWgFYpN2CE7n1ZCB2 (branch design/programs-20261117). Not live yet.
+
+## 2026-11-19 — Better Adobe Creek Ranch photos (preview)
+- About: replaced the Adirondack-chairs photo with the aerial of the main house and pool, plus a three-up strip (trail, garden path, pool and windmill). Caption unchanged.
+- Investor loans: ground-level house/barn shot swapped for the aerial of the whole compound.
+- Photos copied from the adobe-creek-ranch repo (site/images). Old chair and compound files left in place, unused.
