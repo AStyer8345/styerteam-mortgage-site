@@ -861,3 +861,9 @@ body .who-checklist .who-link:hover, body .who-checklist .who-link:focus-visible
 body .u-hero .u-hero-grid:has(> #quick-options) { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 460px) !important; gap: 48px !important; align-items: start !important; }
 body .u-hero .u-hero-grid > #quick-options { padding: 0 !important; background: none !important; margin: 0 !important; }
 @media (max-width: 999px) { body .u-hero .u-hero-grid:has(> #quick-options) { grid-template-columns: 1fr !important; gap: 28px !important; } }
+
+/* Adobe Creek Ranch photo set on About: one aerial, three-up strip, one caption. */
+body .owner-photo.ranch-lead { margin: 8px 0 10px; }
+body .ranch-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 8px; }
+body .ranch-strip img { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; border-radius: 10px; }
+body .ranch-caption { margin: 0 0 22px; font-size: 13px; color: var(--pwe-slate, #5B6670); }
