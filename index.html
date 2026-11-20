@@ -595,13 +595,88 @@ p.pwe-hero-credentials a{color:#e6c67b;text-decoration:underline;text-underline-
 .v2-proof-line a{color:#70531f;text-decoration:underline}
 .v2-proof-links{margin:0;display:flex;flex-wrap:wrap;gap:12px 28px}
 .v2-programs{background:#fff}
-#programs table.v2-program-table{width:100%!important;border-collapse:collapse!important;margin-top:28px;font-size:16px;line-height:1.5;border:0!important;background:transparent!important;box-shadow:none!important;border-radius:0!important}
-#programs table.v2-program-table th,#programs table.v2-program-table td{text-align:left!important;vertical-align:top;padding:14px 16px!important;border:0!important;border-bottom:1px solid #e3ddd0!important;background:transparent!important}
-#programs table.v2-program-table tr{background:transparent!important}
-#programs table.v2-program-table thead th{font:600 13px/1.3 Inter,system-ui,sans-serif!important;letter-spacing:.06em!important;text-transform:uppercase!important;color:#526174!important;border-bottom:2px solid #182e3e!important}
-#programs table.v2-program-table tbody th{font:600 17px/1.4 'Source Serif 4',Georgia,serif!important;color:#182e3e!important;white-space:nowrap;text-transform:none!important;letter-spacing:0!important}
-#programs table.v2-program-table td{color:#33424f!important}
-#programs table.v2-program-table a{color:#70531f!important;text-decoration:underline;white-space:nowrap}
+#programs .v2-program-table-wrap {
+  margin-top: 24px;
+  overflow: hidden;
+  border: 1px solid #ddd9ce;
+  border-radius: 12px;
+  background: #fff;
+}
+#programs table.v2-program-table {
+  width: 100%;
+  margin: 0;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  border: 0;
+  box-shadow: none;
+}
+#programs .v2-program-table th,
+#programs .v2-program-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 16px 14px;
+  border: 0;
+}
+#programs .v2-program-table thead th {
+  background: #182e3e;
+  color: #fff;
+  font: 600 16px/1.3 Inter, system-ui, sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
+#programs .v2-program-table thead th:first-child,
+#programs .v2-program-table thead th:last-child { width: 19%; }
+#programs .v2-program-table tbody :is(th, td) {
+  background: #fff;
+  color: #33424f;
+  border-bottom: 1px solid #e5e0d6;
+}
+#programs .v2-program-table tbody tr:nth-child(odd) :is(th, td) {
+  background: #f9f7f2;
+}
+#programs .v2-program-table tbody tr:last-child :is(th, td) { border-bottom: 0; }
+#programs .v2-program-table tbody th {
+  color: #182e3e;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-transform: none;
+  letter-spacing: normal;
+}
+#programs .v2-program-table a { color: #70531f; text-decoration: underline; }
+#programs .v2-program-table a + a { display: inline-block; margin-inline-start: 6px; }
+@media (max-width: 640px) {
+  #programs .v2-program-table-wrap { margin-top: 16px; }
+  #programs table.v2-program-table,
+  #programs .v2-program-table :is(tbody, tr, th, td) { display: block; }
+  #programs .v2-program-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  #programs .v2-program-table tbody :is(th, td) {
+    padding: 8px 16px;
+    border-bottom: 0;
+  }
+  #programs .v2-program-table tbody tr + tr { border-top: 1px solid #e5e0d6; }
+  #programs .v2-program-table tbody tr > th {
+    padding-top: 14px;
+    color: #182e3e;
+    font-size: 17px;
+  }
+  #programs .v2-program-table tbody td:last-child { padding-bottom: 14px; }
+  #programs .v2-program-table td::before {
+    content: attr(data-label) " · ";
+    color: #46586a;
+    font-weight: 650;
+  }
+}
 .v2-table-note{margin:16px 0 0;font-size:14.5px;color:#526174}
 .v2-table-note a{color:#70531f;text-decoration:underline}
 .v2-verse{font-size:14.5px;line-height:1.6;font-style:italic;color:#526174;margin-top:18px}
@@ -640,15 +715,6 @@ body main .v2-review{flex-basis:280px;padding:16px;gap:8px}
 body main .v2-review blockquote p{font-size:14.5px!important;line-height:1.5!important;margin:0!important}
 body main .v2-review-by{font-size:13.5px!important;margin:0!important}
 body main .v2-proof-line{font-size:14px!important;margin-bottom:10px!important}
-#programs table.v2-program-table{display:block!important;min-width:0!important;margin-top:14px!important}
-#programs table.v2-program-table thead{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important}
-#programs table.v2-program-table tbody,#programs table.v2-program-table tr,#programs table.v2-program-table tbody th,#programs table.v2-program-table td{display:block!important;width:auto!important;min-width:0!important}
-#programs table.v2-program-table tr{padding:10px 0!important;border-bottom:1px solid #e3ddd0!important}
-#programs table.v2-program-table tbody th,#programs table.v2-program-table td{border:0!important;padding:1px 0!important}
-#programs table.v2-program-table tbody th{font-size:16.5px!important;white-space:normal!important}
-#programs table.v2-program-table td{font-size:14px!important;line-height:1.45!important}
-#programs table.v2-program-table td::before{content:attr(data-label) ": ";font-weight:600;color:#526174}
-#programs table.v2-program-table a{white-space:normal}
 body main .v2-table-note{font-size:13.5px!important;margin-top:10px!important}
 body main .pwe-people .pwe-people-portrait img{max-height:210px!important;width:100%!important;object-fit:cover!important;object-position:50% 22%!important}
 body main .pwe-people .pwe-people-copy p{font-size:15.5px!important;line-height:1.55!important;margin-bottom:10px!important}
@@ -1300,18 +1366,69 @@ details>summary:focus-visible{outline:3px solid #90703a;outline-offset:4px}</sty
 <div class="container">
 <p class="pwe-kicker">Programs</p>
 <h2 class="pwe-section-title" id="programs-title">Which loan fits which situation.</h2>
-<table class="v2-program-table">
-<caption class="gorascal-visually-hidden">Mortgage programs, who each one fits and what you document</caption>
-<thead><tr><th scope="col">Program</th><th scope="col">Who it fits</th><th scope="col">What you document</th><th scope="col">Learn more</th></tr></thead>
-<tbody>
-<tr><th scope="row">Bank statement</th><td data-label="Who it fits">Self-employed borrowers with steady deposits</td><td data-label="What you document">12 or 24 months of personal or business bank statements</td><td data-label="Learn more"><a href="/bank-statement-loans.html">Bank statement loans</a></td></tr>
-<tr><th scope="row">P&amp;L / 1099</th><td data-label="Who it fits">Business owners with a CPA, and 1099 contractors</td><td data-label="What you document">A CPA-prepared profit and loss statement, or your 1099s</td><td data-label="Learn more"><a href="/p-and-l-mortgage-texas.html">P&amp;L loans</a> · <a href="/1099-only-mortgage-texas.html">1099 loans</a></td></tr>
-<tr><th scope="row">Asset depletion</th><td data-label="Who it fits">Retirees, business sellers and savers with more in assets than wages</td><td data-label="What you document">Statements for the accounts the program allows</td><td data-label="Learn more"><a href="/asset-depletion-mortgage-texas.html">Asset depletion</a></td></tr>
-<tr><th scope="row">DSCR</th><td data-label="Who it fits">Investors buying or refinancing a rental</td><td data-label="What you document">The rent and the full housing payment on the property</td><td data-label="Learn more"><a href="/dscr-loan-austin-tx.html">DSCR loans</a></td></tr>
-<tr><th scope="row">Jumbo</th><td data-label="Who it fits">Loan amounts above the conforming limit</td><td data-label="What you document">Income, assets and reserves, on tax returns or alternative documents</td><td data-label="Learn more"><a href="/loans/jumbo.html">Jumbo loans</a></td></tr>
-<tr><th scope="row">Conventional / FHA / VA</th><td data-label="Who it fits">W-2 buyers, first-time buyers and eligible veterans</td><td data-label="What you document">Pay stubs, W-2s and tax returns</td><td data-label="Learn more"><a href="/loans/conventional.html">Conventional</a> · <a href="/loans/fha.html">FHA</a> · <a href="/loans/va.html">VA</a></td></tr>
-</tbody>
+<div class="v2-program-table-wrap">
+<table class="v2-program-table" role="table">
+  <caption class="gorascal-visually-hidden">Mortgage programs and what we review</caption>
+  <thead role="rowgroup">
+    <tr role="row">
+      <th scope="col" role="columnheader">Loan program</th>
+      <th scope="col" role="columnheader">Best for</th>
+      <th scope="col" role="columnheader">What we review</th>
+      <th scope="col" role="columnheader">Learn more</th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <th scope="row" role="rowheader">Bank Statement</th>
+      <td role="cell" data-label="Best for">Self-employed borrowers with steady deposits</td>
+      <td role="cell" data-label="What we review">Personal or business bank statements</td>
+      <td role="cell"><a href="/bank-statement-loans.html">Bank statement loans</a></td>
+    </tr>
+    <tr role="row">
+      <th scope="row" role="rowheader">P&amp;L / 1099</th>
+      <td role="cell" data-label="Best for">Business owners and 1099 contractors</td>
+      <td role="cell" data-label="What we review">A CPA-prepared profit and loss statement or 1099s</td>
+      <td role="cell"><a href="/p-and-l-mortgage-texas.html">P&amp;L loans</a> <a href="/1099-only-mortgage-texas.html">1099 loans</a></td>
+    </tr>
+    <tr role="row">
+      <th scope="row" role="rowheader">Asset Depletion</th>
+      <td role="cell" data-label="Best for">Borrowers with more in savings or investments than in wages</td>
+      <td role="cell" data-label="What we review">Statements for eligible accounts</td>
+      <td role="cell"><a href="/asset-depletion-mortgage-texas.html">Asset depletion</a></td>
+    </tr>
+    <tr role="row">
+      <th scope="row" role="rowheader">DSCR</th>
+      <td role="cell" data-label="Best for">Investors buying or refinancing a rental</td>
+      <td role="cell" data-label="What we review">Rent and the full housing payment</td>
+      <td role="cell"><a href="/dscr-loan-austin-tx.html">DSCR loans</a></td>
+    </tr>
+    <tr role="row">
+      <th scope="row" role="rowheader">Jumbo</th>
+      <td role="cell" data-label="Best for">Borrowers who need a loan above the conforming limit</td>
+      <td role="cell" data-label="What we review">Income, assets and reserves</td>
+      <td role="cell"><a href="/loans/jumbo.html">Jumbo loans</a></td>
+    </tr>
+    <tr role="row">
+      <th scope="row" role="rowheader">Conventional</th>
+      <td role="cell" data-label="Best for">First-time and repeat homebuyers</td>
+      <td role="cell" data-label="What we review">Income, credit and down payment</td>
+      <td role="cell"><a href="/loans/conventional.html">Conventional loans</a></td>
+    </tr>
+    <tr role="row">
+      <th scope="row" role="rowheader">FHA</th>
+      <td role="cell" data-label="Best for">Homebuyers who want to compare FHA and conventional options</td>
+      <td role="cell" data-label="What we review">Income, credit, down payment and property details</td>
+      <td role="cell"><a href="/loans/fha.html">FHA loans</a></td>
+    </tr>
+    <tr role="row">
+      <th scope="row" role="rowheader">VA</th>
+      <td role="cell" data-label="Best for">Eligible veterans, service members and surviving spouses</td>
+      <td role="cell" data-label="What we review">VA eligibility, income and property details</td>
+      <td role="cell"><a href="/loans/va.html">VA loans</a></td>
+    </tr>
+  </tbody>
 </table>
+</div>
 <p class="v2-table-note">Which program you qualify for depends on the file and is subject to underwriting. <a href="/products.html">See all loan options</a>.</p>
 </div>
 </section>
