@@ -87,7 +87,7 @@ test('homepage prioritizes the short conversation and routes application questio
   const introActionLabels = Array.from(introActions.matchAll(/class="[^"]*\bbtn\b[^"]*"[^>]*>([^<]+)<\/a>/g)).map((match) => match[1]);
 
   assert.match(homepage, /href="#contact-form"[^>]*data-source="homepage_hero"[^>]*>See My Options<\/a>/);
-  assert.match(homepage, /href="https:\/\/styermortgage\.com\/contact\.html" class="nav-cta nav-apply"[^>]*>Contact Adam<\/a>/);
+  assert.match(homepage, /href="https:\/\/styerteam\.com\/contact\.html" class="nav-cta nav-apply"[^>]*>Contact Adam<\/a>/);
   assert.deepEqual(heroButtonLabels, ['See My Options']);
   assert.deepEqual(introActionLabels, ['See My Options', 'Contact Adam']);
   assert.match(homepage, /id="quick-scenario-form"/);
@@ -110,7 +110,7 @@ test('homepage prioritizes the short conversation and routes application questio
 test('pre-approval guide routes pre-approval and application CTAs by intent', () => {
   assert.match(preapprovalGuide, /href="\/contact.html?goal=Purchase\.html\?source=preapproval_guide_hero"[^>]*>Get Pre-Approved Now<\/a>/);
   assert.doesNotMatch(preapprovalGuide, /href="\/scenario\.html"[^>]*>(?:Get|Start)[^<]*(?:Pre-Approved|Application)/i);
-  assert.match(preapprovalGuide, /href="https:\/\/styermortgage\.com\/contact\.html"[^>]*data-source="preapproval_guide_documents"[^>]*>Contact Adam<\/a>/);
+  assert.match(preapprovalGuide, /href="https:\/\/styerteam\.com\/contact\.html"[^>]*data-source="preapproval_guide_documents"[^>]*>Contact Adam<\/a>/);
   assert.doesNotMatch(preapprovalGuide, /register\?time=[^"']*\?time=/);
 });
 
@@ -142,7 +142,7 @@ test('scenario page puts the short conversion form first and keeps direct contac
   assert.match(scenarioPage, /class="nav-has-dropdown"/);
   assert.match(scenarioPage, /class="mobile-menu-toggle"/);
   assert.match(scenarioPage, /Contact Adam/);
-  assert.match(scenarioPage, /https:\/\/styermortgage\.com\/contact\.html/);
+  assert.match(scenarioPage, /https:\/\/styerteam\.com\/contact\.html/);
   assert.match(scenarioPage, /name="scenario-review"/);
   assert.doesNotMatch(scenarioPage, /lp-header \.nav-links/);
   assert.doesNotMatch(scenarioPage, /Answer the basics/);
@@ -154,7 +154,7 @@ test('thank-you page offers direct contact as the next step for a formal applica
   assert.match(thankYou, /Ask Adam about the next step for a formal loan review/);
   assert.match(thankYou, /formal loan review/);
   assert.match(thankYou, /leave sensitive financial information out of the contact form/);
-  assert.match(thankYou, /https:\/\/styermortgage\.com\/contact\.html/);
+  assert.match(thankYou, /https:\/\/styerteam\.com\/contact\.html/);
   assert.match(thankYou, /type === 'quick-contact'[\s\S]*ty-alt-paths/);
   assert.doesNotMatch(thankYou, /Start the full application/);
   assert.doesNotMatch(thankYou, /full 1003/);
@@ -199,7 +199,7 @@ test('custom notification routes have a registered Netlify email fallback', () =
   for (const [file, html] of rateCheckPages) {
     assert.match(html, /StyerCaptureRateCheckNotificationBackup\(form,\s*''\)/, file);
     assert.match(html, /StyerFetchWithTimeout\(WEBHOOK_URL,[\s\S]*30000\)/, file);
-    assert.match(html, /adam@thestyerteam\.com/, file);
+    assert.match(html, /adamstyer@gorascal.com/, file);
   }
   assert.match(dpaGuide, /sourceForm: 'ftb-dpa-guide-form'/);
   assert.match(rateAlert, /sourceForm: 'rate-alert-form'/);
@@ -220,8 +220,8 @@ test('custom owner-notification requests have bounded network waits', () => {
 });
 
 test('owner notification routes default to the forwarding-safe Styer Team inbox', () => {
-  assert.match(leadIntake, /ADAM_NOTIFICATION_EMAIL[\s\S]*adam@thestyerteam\.com/);
-  assert.match(subscribeLo, /ADAM_NOTIFICATION_EMAIL[\s\S]*adam@thestyerteam\.com/);
+  assert.match(leadIntake, /ADAM_NOTIFICATION_EMAIL[\s\S]*adamstyer@gorascal.com/);
+  assert.match(subscribeLo, /ADAM_NOTIFICATION_EMAIL[\s\S]*adamstyer@gorascal.com/);
 });
 
 test('inline lead handlers reject non-2xx responses before redirecting', () => {
@@ -256,7 +256,7 @@ test('required complex-mortgage routes and metadata exist', () => {
   const businessOwner = fs.readFileSync('resources/mortgage-options-for-business-owners.html', 'utf8');
   const realtor = fs.readFileSync('realtors.html', 'utf8');
   const notFound = fs.readFileSync('404.html', 'utf8');
-  assert.match(buyBeforeSell, /<link rel="canonical" href="https:\/\/styermortgage\.com\/buy-before-you-sell-austin\.html">/);
+  assert.match(buyBeforeSell, /<link rel="canonical" href="https:\/\/styerteam\.com\/buy-before-you-sell-austin\.html">/);
   assert.match(buyBeforeSell, /Bridge financing/);
   assert.match(businessOwner, /"@type"\s*:\s*"Article"/);
   assert.match(businessOwner, /href="\/bank-statement-loans\.html"/);

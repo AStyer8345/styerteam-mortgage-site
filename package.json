@@ -9,6 +9,7 @@
     "audit:attribution": "node scripts/sync-inquiry-attribution.mjs --check",
     "audit:forms": "node scripts/audit-form-notifications.mjs",
     "seo:audit": "node scripts/seo-audit.mjs",
+    "seo:lastmod": "node scripts/sync-sitemap-lastmod.mjs",
     "seo:registry": "node scripts/generate-seo-registry.mjs",
     "seo:gsc": "node scripts/gsc-snapshot.mjs",
     "typecheck": "tsc --noEmit",

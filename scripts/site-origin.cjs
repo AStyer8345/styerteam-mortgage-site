@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const DEFAULT_ORIGIN = 'https://thestyerteam.com';
+const DEFAULT_ORIGIN = 'https://styerteam.com';
 
 function readConfiguredOrigin() {
   const candidates = [

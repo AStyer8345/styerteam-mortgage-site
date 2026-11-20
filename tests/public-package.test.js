@@ -10,20 +10,26 @@ function fixture(fn) {
   const put = (name, value) => { const file = path.join(root, name); fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, value); };
   try {
     put('scripts/package-public-site.mjs', packager);
+    for (const name of ['optimize-homepage.mjs', 'optimize-published-assets.mjs', 'critical-css.mjs']) {
+      put('scripts/' + name, fs.readFileSync(path.join(__dirname, '../scripts', name)));
+    }
+    put('assets/homepage.css', 'body{margin:0}');
     put('scripts/admin-paths.json', '["dashboard.html"]');
+    put('scripts/retired-pages.json', '{}');
     put('scripts/public-release-files.json', '["editorial-polish.css"]');
-    put('index.html', '<link href="/editorial-polish.css" rel="stylesheet">');
+    put('index.html', '<link href="/assets/homepage.css" rel="stylesheet"><link href="/editorial-polish.css" rel="stylesheet">');
     put('editorial-polish.css', 'body{color:black}');
     put('dashboard.html', 'PRIVATE');
     put('.env', 'PRIVATE');
     put('local-draft.html', 'UNREVIEWED');
     execFileSync('git', ['init', '-q'], { cwd: root });
-    execFileSync('git', ['add', 'index.html', 'dashboard.html', '.env'], { cwd: root });
+    execFileSync('git', ['add', 'index.html', 'dashboard.html', '.env', 'assets/homepage.css'], { cwd: root });
     fn({ root, put, run: () => spawnSync(process.execPath, ['scripts/package-public-site.mjs'], { cwd: root, encoding: 'utf8' }) });
   } finally { fs.rmSync(root, { recursive: true, force: true }); }
 }
 test('packages explicitly reviewed files while excluding private and unreviewed files', () => fixture(({root, run}) => {
-  assert.equal(run().status, 0);
+  const result = run();
+  assert.equal(result.status, 0, result.stderr);
   assert(fs.existsSync(path.join(root, '.site-dist/editorial-polish.css')));
   for (const name of ['dashboard.html', '.env', 'local-draft.html', 'scripts']) assert(!fs.existsSync(path.join(root, '.site-dist', name)));
 }));

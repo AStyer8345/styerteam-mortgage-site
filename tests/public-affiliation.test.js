@@ -16,14 +16,16 @@ test('public pages, assets and publishing responses do not restore the former af
     if (parts.length === 1 && !/\.(?:html|js|css|svg|xml|txt|toml)$/.test(file) && file !== '_redirects') continue;
     const content = fs.readFileSync(file,'utf8');
     const formerEmployer = new RegExp(['hyper', 'smart'].join('.?') + '|' + ['ky', 'ber'].join('') + '|2653540', 'i');
-    const retiredHost = new RegExp('https?:\\/\\/[^"\'<>\\r\\n]*' + ['my1003', 'app'].join('') + '\\.com', 'i');
+    const applicationUrls = content.match(/https?:\/\/[^\s"'<>]*my1003app\.com[^\s"'<>)]*/gi) || [];
+    const unverifiedApplication = applicationUrls.some(url => url !== 'https://gorascal.my1003app.com/513013/register' && !(file === 'netlify.toml' && url === 'https://gorascal.my1003app.com'));
     if (formerEmployer.test(content)) issues.push(file + ': former employer identity');
-    if (retiredHost.test(content)) issues.push(file + ': retired application host');
+    if (unverifiedApplication) issues.push(file + ': unverified application destination');
+    if (/877\D{0,4}876\D{0,4}3956/.test(content)) issues.push(file + ': retired contact phone');
   }
   assert.deepEqual(issues, []);
-  for (const file of ['index.html','contact.html','scenario.html','thank-you.html']) {
+  for (const file of ['index.html','contact.html','about.html','thank-you.html']) {
     const html=fs.readFileSync(file,'utf8');
-    assert.ok(html.includes('https://thestyerteam.com/contact.html'),file);
+    assert.ok(html.includes('https://styerteam.com/'),file);
     assert.ok(html.includes('513013'),file);
   }
 });

@@ -1888,8 +1888,12 @@ body.private-wealth-editorial .advisory-contact-bar a.advisory-contact-bar-prima
 
 @media (prefers-reduced-motion: no-preference) {
   /* Hero copy rises. Opacity stays at 1 so the first paint is readable. */
-  body.private-wealth-editorial .pwe-hero-editorial {
+  body.private-wealth-editorial .pwe-hero-editorial > :not(.pwe-hero-lead) {
     animation: pwe-hero-enter 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  body.private-wealth-editorial .pwe-hero-lead {
+    animation: none;
+    transform: none;
   }
 }
 

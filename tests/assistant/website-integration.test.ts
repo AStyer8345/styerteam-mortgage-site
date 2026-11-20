@@ -125,17 +125,35 @@ test('conversations persist across page navigation in the same tab', () => {
   assert.match(browser, /if \(!state\.conversationStarted\) addSuggestedReplies\(starterSuggestedReplies\(professionalMode\)\)/);
 });
 
-test('assistant links remain on thestyerteam.com and public direct-contact email uses Adam portable inbox', () => {
+test('assistant link allowlists include styerteam.com and keep the older hosts', () => {
+  const widget = fs.readFileSync('assistant-widget.js', 'utf8');
+  const trusted = widget.slice(widget.indexOf('function addTrustedLink'), widget.indexOf('function addContextActions'));
+  const actions = widget.slice(widget.indexOf('function addContextActions'), widget.indexOf('function trackResponse'));
+  const allow = /\(www\\\.\)\?\(styerteam\\\.com\|styermortgage\\\.com\)/;
+  assert.doesNotMatch(widget, /thestyerteam\\\.com/);
+  for (const block of [trusted, actions]) {
+    assert.match(block, allow);
+    assert.match(block, /calendly\.com/);
+  }
+});
+
+test('assistant links remain on styerteam.com', () => {
   const browser = fs.readFileSync('assistant-widget.js', 'utf8');
   const gateway = fs.readFileSync('netlify/functions/mortgage-assistant.mts', 'utf8');
   const resources = fs.readFileSync('netlify/functions/_shared/assistant-resources.ts', 'utf8');
   const contact = fs.readFileSync('contact.html', 'utf8');
-  const scenario = fs.readFileSync('scenario.html', 'utf8');
   assert.doesNotMatch(`${browser}\n${resources}`, /https:\/\/(?:www\.)?adamstyer\.com/);
-  assert.doesNotMatch(`${gateway}\n${contact}\n${scenario}`, new RegExp('adam\\.styer@' + ['hyper', 'smart'].join('') + '\\.loan'));
-  assert.match(gateway, /adam@thestyerteam\.com/);
-  assert.match(contact, /mailto:adam@thestyerteam\.com/);
-  assert.match(scenario, /"email": "adam@thestyerteam\.com"/);
+  assert.doesNotMatch(`${gateway}\n${contact}`, new RegExp('adam\\.styer@' + ['hyper', 'smart'].join('') + '\\.loan'));
+  assert.match(resources, /https:\/\/styerteam\.com\//);
+  assert.doesNotMatch(resources, /https:\/\/(?:www\.)?thestyerteam\.com\//);
+  assert.match(contact, /https:\/\/styerteam\.com\/contact\.html/);
+  const company = fs.readFileSync('ai-knowledge/company-information.md', 'utf8');
+  const faqs = fs.readFileSync('ai-knowledge/faqs.md', 'utf8');
+  const bundle = fs.readFileSync('netlify/functions/_shared/knowledge-bundle.ts', 'utf8');
+  for (const source of [gateway, contact, company, faqs, bundle]) {
+    assert.match(source, /adamstyer@gorascal\.com/);
+    assert.doesNotMatch(source, /adam@thestyerteam\.com/);
+  }
 });
 
 test('the widget loader and stylesheet share one cache-busting version', () => {

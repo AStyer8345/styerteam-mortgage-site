@@ -58,7 +58,7 @@ Reference `dscr-loan-austin-tx.html` lines 1–200 for `<head>`. Reference any d
 
 - NMLS #513013
 - Phone: (512) 956-6010 / `+15129566010`
-- Email: Adam@thestyerteam.com
+- Email: adamstyer@gorascal.com
 - Business name: Adam Styer | Mortgage Solutions LP
 - Apply: https://styermortgage.com/contact.html
 - Calendly: https://calendly.com/adamstyer/15minutes

@@ -66,5 +66,5 @@ test('borrowers get relevant clickable guides rather than CPA pages', () => {
   const links = recommendApprovedResources('I am self-employed and my tax returns show low income. Help me find a guide');
   assert.ok(links.some(link => link.url.endsWith('/self-employed-mortgage-austin.html')));
   assert.ok(links.every(link => !link.url.includes('cpas')));
-  assert.equal(recommendApprovedResources('What are current mortgage rates?')[0].url, 'https://thestyerteam.com/rate-check.html');
+  assert.equal(recommendApprovedResources('What are current mortgage rates?')[0].url, 'https://styerteam.com/rate-check.html');
 });

@@ -28,7 +28,8 @@ test('both transports use the same inquiry and never accept false primary receip
   const data = new URLSearchParams({ inquiry_id: 'mock-inquiry-1234', situation: 'test locally' });
   const payload = { inquiry_id: 'mock-inquiry-1234', situation: 'test locally' };
   for (const [netlifyOk, primaryOk, captured, accepted] of [
-    [true, false, false, true], [false, true, true, true],
+    [true, false, true, true], [false, true, true, true],
+    [true, false, false, false],
     [false, true, false, false], [false, false, false, false]
   ]) {
     const calls = [];
@@ -106,4 +107,14 @@ test('self-reported discovery stays separate from automatic attribution and ente
     assert.equal(payload.situation.includes('How I first heard about Adam (self-reported):'), Boolean(answer));
     if (answer) assert.ok(payload.situation.includes('How I first heard about Adam (self-reported): ' + answer));
   }
+});
+
+
+test('a preview receipt stays distinct from a saved inquiry', async () => {
+  const result = await capture({}, new URLSearchParams(), async () => ({
+    ok: true,
+    json: async () => ({ preview: true, captured: false }),
+  }));
+  assert.equal(result.captured, false);
+  assert.equal(result.receipt.preview, true);
 });

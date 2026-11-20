@@ -186,7 +186,7 @@ http://www.styermortgage.com/*    https://styerteam.com/:splat  301!
 # Product and intent routes from the prior site are mapped to the closest current canonical page.
 /reverse-refinance  /products.html  301
 /calendar  /contact.html  301
-/purchase  /get-preapproved.html  301
+/purchase  /contact.html?goal=Purchase  301
 /home-equity  /products.html  301
 /legal  /terms.html  301
 /construction  /loans/construction.html  301
@@ -216,7 +216,7 @@ http://www.styermortgage.com/*    https://styerteam.com/:splat  301!
 /thank-you-refinance-request  /thank-you.html  301
 /about-us  /about.html  301
 /thank-you-purchase-request  /thank-you.html  301
-/licensing  /texas-complaint-notice.html  301
+/licensing  /licensing.html  301!
 /homestyle-refinance  /loans/construction.html  301
 /itin-purchase  /blog/2026-07-21-itin-mortgage-loans-texas.html  301
 /itin-refinance  /blog/2026-07-21-itin-mortgage-loans-texas.html  301
@@ -242,6 +242,8 @@ http://www.styermortgage.com/*    https://styerteam.com/:splat  301!
 /blog/2026-03-29-va-loan-eligibility-texas  /blog/2026-03-29-va-loan-eligibility-texas.html  301!
 /blog/2026-04-17-should-i-refinance-austin-tx-2026  /blog/2026-04-17-should-i-refinance-austin-tx-2026.html  301!
 /blog/2026-05-30-physician-mortgage-texas  /blog/2026-05-30-physician-mortgage-texas.html  301!
+/blog/2026-11-15-15-vs-20-percent-down-payment  /blog/2026-11-15-15-vs-20-percent-down-payment.html  301!
+/blog/2026-11-05-austin-housing-market-after-midterms  /blog/2026-11-05-austin-housing-market-after-midterms.html  301!
 /blog/2026-04-27-why-home-prices-arent-crashing  /blog/2026-04-27-why-home-prices-arent-crashing.html  301!
 /blog/2026-04-10-fha-loan-requirements-texas-2026  /blog/2026-04-10-fha-loan-requirements-texas-2026.html  301!
 /blog/2026-04-06-mortgage-document-checklist-austin-tx  /blog/2026-04-06-mortgage-document-checklist-austin-tx.html  301!
@@ -327,6 +329,8 @@ http://www.styermortgage.com/*    https://styerteam.com/:splat  301!
 /blog/2026-09-09-buy-house-you-rent-from-landlord-texas  /blog/2026-09-09-buy-house-you-rent-from-landlord-texas.html  301!
 /blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate  /blog/2026-09-10-the-conversation-behind-a-lower-mortgage-rate.html  301!
 /blog/2026-10-01-why-mortgage-rates-are-rising  /blog/2026-10-01-why-mortgage-rates-are-rising.html  301!
+/blog/2026-11-02-refinance-out-of-non-qm-loan-texas  /blog/2026-11-02-refinance-out-of-non-qm-loan-texas.html  301!
+/blog/2026-11-09-mortgage-low-taxable-income-self-employed-texas  /blog/2026-11-09-mortgage-low-taxable-income-self-employed-texas.html  301!
 /buy-before-you-sell-austin  /buy-before-you-sell-austin.html  301!
 /construction-loan-scenario-review  /construction-loan-scenario-review.html  301!
 /dallas-mortgage-lender  /dallas-mortgage-lender.html  301!
@@ -380,3 +384,5 @@ http://www.styermortgage.com/*    https://styerteam.com/:splat  301!
 /scenarios/buying-current-rental-gift-funds  /scenarios/buying-current-rental-gift-funds.html  301!
 /scenarios/self-employed-refinance-deposit-review  /scenarios/self-employed-refinance-deposit-review.html  301!
 /scenarios/two-rental-properties-cash-out-review  /scenarios/two-rental-properties-cash-out-review.html  301!
+
+/blog/mortgage-denied-second-opinion /blog/mortgage-denied-second-opinion.html 301

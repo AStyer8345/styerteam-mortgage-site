@@ -26,6 +26,7 @@ Disallow: /marketing-command-center.html
 Disallow: /marketing-content.html
 Disallow: /task-dashboard.html
 Disallow: /loan-dashboard.html
+# /refinance-calculator.html is also noindex in netlify.toml / vercel.json. The disallow matches that.
 Disallow: /refinance-calculator.html
 Disallow: /netlify/
 Disallow: /blog/manifest.json

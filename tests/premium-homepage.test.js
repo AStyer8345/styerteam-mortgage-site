@@ -33,7 +33,8 @@ test('teaser reuses established calculator math and explains excluded costs', ()
   assert.match(script,/window\.CalcSuite\.monthlyPayment\(amount,interest,years\)/);
   assert.match(script,/rate\.value\.trim\(\) !== ''/);
   assert.match(script,/interest >= 0 && interest <= 30/);
-  assert.match(html,/Taxes, insurance, HOA dues, mortgage insurance, and fees are excluded/);
-  assert.match(html,/Example rate is not a quote or an offer to lend/);
+  // The homepage payment teaser was retired in the November 2026 rebuild; one nav link to the calculators remains.
+  assert.doesNotMatch(html,/id="homepage-tools"/);
+  assert.match(html,/href="\/calculators\.html"/);
   assert.doesNotMatch(script,/fetch\(|sendBeacon|sessionStorage/);
 });

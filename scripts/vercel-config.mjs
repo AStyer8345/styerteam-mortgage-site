@@ -66,6 +66,15 @@ function pathDestination(to) {
 
 function hostRules() {
   const rules = [];
+  // styermortgage.com/about otherwise hops to styerteam.com/about and then /about.html.
+  for (const host of ['styermortgage.com', 'www.styermortgage.com']) {
+    rules.push({
+      source: '/about',
+      has: [{ type: 'host', value: host }],
+      destination: 'https://styerteam.com/about.html',
+      statusCode: 301,
+    });
+  }
   for (const host of HOSTS) {
     for (const source of ['/', '/:path*']) {
       const destination = source === '/' ? 'https://styerteam.com/' : 'https://styerteam.com/:path*';
@@ -114,6 +123,22 @@ export function buildConfig({ redirectsText, tomlText } = {}) {
     if (![301, 302, 303, 307, 308].includes(rule.status)) throw new Error(`Unsupported status ${rule.status} for ${rule.from}`);
     redirects.push({ source, destination, statusCode: rule.status });
   }
+
+  // Retired pages: one 301 each, added here so the Netlify-era files stay untouched.
+  // An older rule for the same source gives way, and an older rule that pointed
+  // at a retired page now points at that page's final destination.
+  const retired = JSON.parse(fs.readFileSync(path.join(root, 'scripts/retired-pages.json'), 'utf8'));
+  const retiredSources = new Map();
+  for (const [page, destination] of Object.entries(retired)) {
+    for (const source of [page, page.replace(/\.html$/, '')]) retiredSources.set(source, destination);
+  }
+  for (let index = redirects.length - 1; index >= 0; index -= 1) {
+    const rule = redirects[index];
+    if (rule.has) continue;
+    if (retiredSources.has(rule.source)) redirects.splice(index, 1);
+    else if (retiredSources.has(rule.destination)) rule.destination = retiredSources.get(rule.destination);
+  }
+  for (const [source, destination] of retiredSources) redirects.push({ source, destination, statusCode: 301 });
 
   const headers = parseTomlHeaders(toml).map((block) => ({
     source: headerSource(block.source),

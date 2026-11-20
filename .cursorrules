@@ -1,7 +1,9 @@
+> Current migration contract (verified November 3, 2026): canonical origin `https://styerteam.com`; public brand **The Styer Team, Powered by Go Rascal Inc.**; legal entity **Go Rascal Inc.**, company NMLS **2072896**; Adam Styer, individual NMLS **513013**, **512-956-6010**, **adamstyer@gorascal.com**. Secure application: `https://gorascal.my1003app.com/513013/register`, verified to display Adam’s name, NMLS and phone. This contract supersedes older local/global branding and hosting notes. Do not restore retired affiliation, license, phone, email or application destinations.
+
 # Cursor AI Rules & Project Context — The Styer Team · Powered by GoRascal
 
 ## 1. Project Overview & Business Context
-You are working on the production website codebase for **The Styer Team · Powered by GoRascal** (`styermortgage.com`).
+You are working on the production website codebase for **The Styer Team · Powered by GoRascal** (`styerteam.com`).
 - **Loan Officer**: Adam Styer, Individual NMLS #513013
 - **Company / Corporate Entity**: Go Rascal Inc., Company NMLS #2072896, 185 Wythe Ave, Suite A2, Brooklyn, NY 11249
 - **Austin Office**: 7600 N Capital of Texas Hwy, Suite 230, Office 105, Austin, TX 78731
@@ -11,22 +13,22 @@ You are working on the production website codebase for **The Styer Team · Power
 ---
 
 ## 2. Technical Stack & Architecture
-- **Framework**: Static HTML5, modern vanilla CSS, and vanilla ES modules. Hosted on Netlify with continuous deployment from GitHub `main`.
+- **Framework**: Static HTML5, modern vanilla CSS, and vanilla ES modules. Hosted on Vercel project `styerteam-site`; inspect the active production commit and branch before release.
 - **Backend / Intake**: Netlify Functions (`netlify/functions/lead-intake.js`, `netlify/functions/admin.mts`, etc.) with LoanOS durable outbox capture.
 - **Distribution Build**:
   - Source files are packaged into `.site-dist/` using: `node scripts/package-public-site.mjs`
   - Tests verify packaging integrity: `node tests/public-package.test.js`
   - Browser tests verify responsive forms and menus: `node tests/technical-repairs-browser.cjs`
-- **Active Git Branch**: `design/private-wealth-editorial`
+- **Release source**: inspect Vercel; do not assume a fixed active branch.
   - Main GitHub repository: `AStyer8345/styerteam-mortgage-site`
 
 ---
 
 ## 3. Key Recent Milestones (October 2026)
 1. **Company & Brand Migration Complete**:
-   - Replaced all obsolete corporate entities (the former company Mortgage, the former employer) and old NMLS #2653540 with **Go Rascal Inc.** and **Company NMLS #2072896**.
+   - Retired former company branding and license identifiers with **Go Rascal Inc.** and **Company NMLS #2072896**.
    - Updated Austin branch office address across all HTML files, footer bundles, and assistant knowledge bases.
-   - Rerouted stale application links to `/get-preapproved.html?intent=scenario`.
+   - Secure application: `https://gorascal.my1003app.com/513013/register` (verified November 3, 2026). Preserve existing contact-intent redirects.
 2. **Homepage Visual Hierarchy & Card Refinements**:
    - Removed awkward `<details>` accordion containers from the Hero, 6-card audience grid, and Case Studies sections.
    - Redesigned 6 audience cards with authentic **Texas Hill Country architectural photography** (no generic stock people), making the entire card clickable.

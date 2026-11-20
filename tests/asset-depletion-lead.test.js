@@ -288,3 +288,12 @@ test('calculator success waits for captured:true and a failed or empty receipt d
   assert.equal(honeypot.sandbox.dataLayer.length, 0);
   assert.equal(honeypot.document.getElementById('adc-email-msg').textContent, '');
 });
+
+
+test('calculator preview validates without firing a conversion or clearing entered details', async () => {
+  const preview = loadCalculator(async () => jsonResponse({ captured: false, preview: true }));
+  await submit(preview.document, { name: 'Ada Borrower', email: 'ada@example.com' });
+  assert.match(preview.document.getElementById('adc-email-msg').textContent, /Preview check passed/);
+  assert.equal(preview.document.getElementById('adc-email-name').value, 'Ada Borrower');
+  assert.equal(preview.sandbox.dataLayer.some(entry => entry.event === 'generate_lead'), false);
+});
