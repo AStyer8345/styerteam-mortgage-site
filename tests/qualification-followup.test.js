@@ -5,9 +5,9 @@ const test = require('node:test');
 const thankYou = fs.readFileSync('thank-you.html', 'utf8');
 
 test('pre-approval enrichment happens only after the primary lead is captured', () => {
-  assert.match(thankYou, /id="ty-qualification-details" hidden/);
+  assert.match(thankYou, /<section\b(?=[^>]*\bid="ty-qualification-details")(?=[^>]*\bhidden(?:="")?)[^>]*>/);
   assert.match(thankYou, /name="qualification-followup"/);
-  assert.match(thankYou, /name="form-name" value="qualification-followup"/);
+  assert.match(thankYou, /<input\b(?=[^>]*\bname="form-name")(?=[^>]*\bvalue="qualification-followup")[^>]*>/);
   assert.match(thankYou, /type === 'qualification'[\s\S]*qualificationDetails\.hidden = false/);
   assert.match(thankYou, /styer:qualification-contact/);
   assert.match(thankYou, /fetch\('\/'[\s\S]*qualification-followup/);

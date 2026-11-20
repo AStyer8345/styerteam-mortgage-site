@@ -18,6 +18,16 @@ function header(headers, name) {
 
 // Match situation-journeys.js: a single name field becomes first and last
 // before LoanOS sees the backup, so it agrees with the JSON copy.
+function normalizeContactFields(fields) {
+  const next = { ...fields };
+  if (['quick-quote-followup', 'qualification-followup'].includes(next['form-name'])) {
+    next.email ||= next.original_email || '';
+    next.name ||= next.original_name || '';
+    next.phone ||= next.original_phone || '';
+  }
+  return applyNameSplit(next);
+}
+
 function applyNameSplit(fields) {
   const next = { ...fields };
   const existingFirst = next.first_name || next["first-name"] || next.fname || "";
@@ -62,7 +72,7 @@ async function handleFormPost(input, deps = {}) {
   const type = header(headers, "content-type").toLowerCase();
   if (!type.includes("application/x-www-form-urlencoded")) return json(415, { error: "Form body required" });
 
-  const fields = applyNameSplit(Object.fromEntries(new URLSearchParams(bodyText)));
+  const fields = normalizeContactFields(Object.fromEntries(new URLSearchParams(bodyText)));
   if (fields["bot-field"] || fields.honeypot) return json(200, { ok: true });
 
   const vercelEnv = process.env.VERCEL_ENV || "";
@@ -122,7 +132,10 @@ async function handleFormPost(input, deps = {}) {
   const accepted = intakeResult.statusCode === 200 || webhookOk;
   if (navigate) {
     if (!accepted) {
-      return new Response(intakeResult.body || "", { status: intakeResult.statusCode || 502, headers: { "Content-Type": "application/json" } });
+      return new Response('We could not confirm that your request was saved. Go back and try again, or call (512) 956-6010.', {
+        status: intakeResult.statusCode || 502,
+        headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' },
+      });
     }
     const location = safePath(url.searchParams.get("return")) || safePath(url.pathname) || "/thank-you";
     return new Response(null, { status: 303, headers: { Location: location } });

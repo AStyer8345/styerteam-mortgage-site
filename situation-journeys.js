@@ -149,13 +149,29 @@
       if(heading){heading.id=(form.id||formName)+'-calculator-numbers';heading.textContent='Your calculator numbers';panel.setAttribute('aria-labelledby',heading.id);}
       var actions=root.document.createElement('div');actions.className='journey-summary-actions';
       var edit=root.document.createElement('a');edit.className='journey-summary-edit';edit.href=analysis.kind==='dscr'?'/dscr-calculator.html?restore=review#dscr-calculator':'/calculator-refinance-breakeven.html?restore=review';edit.textContent='Edit these numbers';actions.appendChild(edit);
-      var remove=root.document.createElement('button');remove.type='button';remove.className='journey-back';remove.textContent='Remove analysis';remove.addEventListener('click',function(){analysis=null;panel.remove();try{root.sessionStorage.removeItem('styer:calculator-review');}catch(_){}});actions.appendChild(remove);
+      var remove=root.document.createElement('button');remove.type='button';remove.className='journey-back';remove.textContent='Remove analysis';actions.appendChild(remove);
       panel.appendChild(actions);
       first.before(panel);
       var mapped=analysis.kind==='dscr'?{property_value:analysis.inputs.price,down_payment:analysis.inputs.down+(analysis.inputs.downMode==='pct'?'%':' dollars'),monthly_rent:analysis.inputs.rent}:{current_balance:analysis.inputs.balance};
       Object.keys(mapped).forEach(function(name){if(form.elements[name]) form.elements[name].value=String(mapped[name]);});
       // These answers are already in the editable calculator summary.
       Object.keys(mapped).forEach(function(name){if(form.elements[name]) form.elements[name].closest('.journey-field').hidden=true;});
+      root.document.addEventListener('styer:remove-calculator-review', function () {
+        analysis = null;
+        panel.remove();
+        Object.keys(mapped).forEach(function (name) {
+          var field = form.elements[name];
+          if (!field) return;
+          if (field.value === String(mapped[name])) field.value = '';
+          field.closest('.journey-field').hidden = false;
+        });
+        if (goal) conditions();
+        remember();
+      }, { once: true });
+      remove.addEventListener('click', function () {
+        try { root.sessionStorage.removeItem('styer:calculator-review'); } catch (_) {}
+        root.document.dispatchEvent(new Event('styer:remove-calculator-review'));
+      });
     } else if (params.get('context') === 'calculator') {
       var missing=root.document.createElement('p');missing.className='journey-hint';missing.setAttribute('role','status');missing.textContent='Your calculator numbers could not be restored. Go back to the calculator and choose review again, or share the estimates you know below.';first.before(missing);
     }
@@ -339,7 +355,6 @@
         }
         status.textContent = result.primary ? 'Your message has been received. Adam typically replies within one business day.' : 'Your message has been saved. You can also reach Adam directly below.';
       }
-      if (result.receipt && result.receipt.preview) status.textContent = 'Preview check passed. Use styerteam.com to send your request.';
       status.classList.add('journey-confirmation');
       var helper=root.document.createElement('p');helper.className='journey-confirmation-intro';helper.textContent='Want to connect sooner?';if (result.primary) status.appendChild(helper);
       var actions=root.document.createElement('div');actions.className='journey-next-actions';
@@ -402,7 +417,16 @@
         data.set('situation', payload.situation);
         var result=await capture(payload, data, root.StyerFetchWithTimeout);
         if (result.receipt && result.receipt.preview) {
-          showConfirmation(result);
+          status.dataset.tone = 'preview';
+          status.textContent = result.captured
+            ? 'Preview only. The test inquiry was saved without email delivery.'
+            : 'Preview only. No inquiry was saved and no email was sent. Use styerteam.com to send a request.';
+          status.focus({ preventScroll: true });
+          status.scrollIntoView({ block: 'nearest' });
+          submit.disabled = false;
+          if (back) back.disabled = false;
+          submit.textContent = submitLabel;
+          busy = false;
           return;
         }
         // Persist only a receipt, never contact details. Back/reload must not

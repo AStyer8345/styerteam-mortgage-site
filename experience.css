@@ -99,6 +99,10 @@ body .journey-hero .journey-eyebrow,body .journey-card .journey-progress{font-si
 .journey-summary p{font-size:.9375rem;line-height:1.6;margin:.8rem 0 0}
 .journey-summary p.journey-summary-disclaimer{margin:.45rem 0 0;color:#3e4c59;font-size:12px;font-weight:400;line-height:1.35;letter-spacing:0}
 .journey-summary a{display:inline-block;margin-top:.7rem;text-decoration:underline}
+/* Calculator handoffs use a light surface inside both light and dark forms. */
+body main .journey-form .journey-summary :is(dd,p){color:#263b4a!important}
+.journey-form .journey-summary-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem 1.25rem;margin-top:.85rem}
+.journey-form .journey-summary-actions :is(a,button){display:inline-flex;align-items:center;min-height:44px;margin:0;padding:.35rem 0;color:#16324a!important}
 .journey-next-actions{margin-top:1rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
 .journey-next-actions a{text-decoration:underline}
 .journey-status[data-tone="error"]{border-color:#a32b24;background:#fff4f2;color:#69251f}

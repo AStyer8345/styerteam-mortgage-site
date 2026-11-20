@@ -97,6 +97,32 @@ test('a single name field is split the same way for the raw-form copy', async ()
   assert.equal(sent.get('name'), 'Pat Lee');
 });
 
+test('follow-up posts retain the original contact and parent inquiry', async () => {
+  for (const formName of ['quick-quote-followup', 'qualification-followup']) {
+    const spy = intakeSpy();
+    const body = new URLSearchParams({
+      'form-name': formName,
+      original_email: 'person@example.com',
+      original_name: 'Pat Lee',
+      original_phone: '2025550143',
+      parent_inquiry_id: 'parent-inquiry-123',
+    });
+    const response = await handleFormPost({
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+      url: 'https://styerteam.com/',
+    }, { intake: spy.intake, webhook: '' });
+    assert.equal(response.status, 200);
+    const sent = new URLSearchParams(spy.events[0].body);
+    assert.equal(sent.get('email'), 'person@example.com');
+    assert.equal(sent.get('first_name'), 'Pat');
+    assert.equal(sent.get('last_name'), 'Lee');
+    assert.equal(sent.get('phone'), '2025550143');
+    assert.equal(sent.get('parent_inquiry_id'), 'parent-inquiry-123');
+  }
+});
+
 test('lead-intake backup copy still dispatches the web-lead webhook', async () => {
   const filename = path.resolve('netlify/functions/lead-intake.js');
   const calls = [];

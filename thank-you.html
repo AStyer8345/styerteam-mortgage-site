@@ -1010,8 +1010,6 @@
         var qualificationDetails = document.getElementById('ty-qualification-details');
         var qualificationForm = document.getElementById('ty-qualification-form');
         var qualificationSuccess = document.getElementById('ty-qualification-success');
-        if (qualificationDetails) qualificationDetails.hidden = false;
-
         var qualificationContact = {};
         try {
           qualificationContact = JSON.parse(sessionStorage.getItem('styer:qualification-contact') || '{}');
@@ -1019,6 +1017,7 @@
         } catch (err) {
           qualificationContact = {};
         }
+        if (qualificationDetails && qualificationContact.email) qualificationDetails.hidden = false;
         var qfEmail = document.getElementById('ty-qf-email');
         var qfName = document.getElementById('ty-qf-name');
         var qfPhone = document.getElementById('ty-qf-phone');
@@ -1066,8 +1065,13 @@
       } else
 
       if (type === 'ftb-dpa-guide') {
-        if (h1) h1.textContent = 'Your Austin DPA Guide Is On Its Way';
-        if (paras.length > 0) paras[0].textContent = 'Check your inbox \u2014 it\u2019ll arrive in the next few minutes. If you don\u2019t see it, check your spam folder and mark us as \u201cnot spam.\u201d';
+        if (h1) h1.textContent = 'Your Austin Down Payment Assistance Guide Is Ready';
+        if (paras.length > 0) {
+          var guideDownload = document.createElement('a');
+          guideDownload.href = '/Austin-FTB-DPA-Guide-2026.pdf';
+          guideDownload.textContent = 'Download the Austin down payment assistance guide (PDF)';
+          paras[0].replaceChildren(guideDownload);
+        }
         if (phoneCta) phoneCta.innerHTML = 'Ready to find out which programs you qualify for? Book a free 15-minute call with Adam \u2014 no credit pull, no obligation. <br><a href="https://gorascal.my1003app.com/513013/register" style="font-size:0.9em;opacity:0.8;" aria-label="Apply Now (opens in a new tab)" target="_blank" rel="noopener">Apply Now</a>';
       } else if (type === 'rate-alert') {
         if (h1) h1.textContent = "You're on the Austin Rate Watch List";
@@ -1104,7 +1108,6 @@
         // Reveal the new above-fold form hero + below-fold alt paths
         var formHero = document.getElementById('ty-form-hero');
         var altPaths = document.getElementById('ty-alt-paths');
-        if (formHero) formHero.hidden = false;
         if (altPaths) altPaths.hidden = false;
         var quickQuoteContact = {};
         try {
@@ -1113,6 +1116,7 @@
         } catch (err) {
           quickQuoteContact = {};
         }
+        if (formHero && quickQuoteContact.email) formHero.hidden = false;
         var fuEmail = document.getElementById('ty-fu-email');
         var fuName = document.getElementById('ty-fu-name');
         var fuPhone = document.getElementById('ty-fu-phone');

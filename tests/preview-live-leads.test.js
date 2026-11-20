@@ -62,15 +62,14 @@ test('production Vercel still sends live leads, Mailchimp, and the n8n webhook',
   assert.equal(r.calls.some((call) => call.url.includes('mailchimp.com')), true);
 });
 
-test('a non-production Vercel deploy forces test mode and skips Mailchimp and n8n', async () => {
-  const r = await runLeadIntake({ ...liveEnv, VERCEL_ENV: 'preview' }, borrower);
-  assert.equal(r.statusCode, 200);
-  assert.equal(r.result.mailchimp, 'skipped-test');
-  assert.equal(r.result.webLeadAutomation, 'skipped-test');
-  const loanos = r.calls.find((call) => call.url.includes('/api/intake/inquiries'));
-  assert.equal(loanos.body.test_mode, true);
-  assert.equal(r.calls.some((call) => call.url === 'https://automation.example'), false);
-  assert.equal(r.calls.some((call) => call.url.includes('mailchimp.com')), false);
+test('preview contact and DSCR review report a preview receipt without saving or sending', async () => {
+  for (const formName of ['contact', 'investment-property-scenario']) {
+    const r = await runLeadIntake({ ...liveEnv, VERCEL_ENV: 'preview' }, { ...borrower, 'form-name': formName });
+    assert.equal(r.statusCode, 200);
+    assert.equal(r.result.preview, true);
+    assert.equal(r.result.captured, false);
+    assert.deepEqual(r.calls, []);
+  }
 });
 
 test('ALLOW_PREVIEW_LIVE_LEADS restores live delivery on a preview deploy', async () => {

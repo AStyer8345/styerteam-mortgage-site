@@ -1,12 +1,12 @@
 /* Light review intake for the calculator handoff on investor loans.
    Scoped to this section so other dark program CTAs stay as they are. */
 
-#quick-options.calculator-review {
+#detailed-review.calculator-review {
   background: #f4f1ea !important;
   color: #1c2836 !important;
 }
 
-#quick-options.calculator-review .u-cta-card {
+#detailed-review.calculator-review .u-cta-card {
   background: #ffffff !important;
   color: #1c2836 !important;
   border: 1px solid #d7d0c4 !important;
@@ -15,19 +15,19 @@
   box-shadow: 0 10px 28px rgba(14, 27, 36, 0.06) !important;
 }
 
-#quick-options.calculator-review .u-cta-header h2 {
+#detailed-review.calculator-review .u-cta-header h2 {
   color: #1c2836 !important;
 }
 
-#quick-options.calculator-review .u-cta-header p,
-#quick-options.calculator-review .journey-form-intro,
-#quick-options.calculator-review .journey-hint,
-#quick-options.calculator-review .journey-consent,
-#quick-options.calculator-review .journey-consent span {
+#detailed-review.calculator-review .u-cta-header p,
+#detailed-review.calculator-review .journey-form-intro,
+#detailed-review.calculator-review .journey-hint,
+#detailed-review.calculator-review .journey-consent,
+#detailed-review.calculator-review .journey-consent span {
   color: #3e4d5c !important;
 }
 
-#quick-options.calculator-review .u-eyebrow {
+#detailed-review.calculator-review .u-eyebrow {
   color: #6b5018 !important;
   text-transform: none;
   letter-spacing: 0.01em;
@@ -35,7 +35,7 @@
   font-weight: 700;
 }
 
-#quick-options.calculator-review .journey-progress {
+#detailed-review.calculator-review .journey-progress {
   display: inline-block;
   margin: 0 0 0.85rem !important;
   padding: 0.4rem 0.85rem !important;
@@ -49,20 +49,20 @@
   text-transform: none !important;
 }
 
-#quick-options.calculator-review .journey-form-intro {
+#detailed-review.calculator-review .journey-form-intro {
   margin: 0 0 1rem;
   font-size: 1rem !important;
   line-height: 1.5;
 }
 
-#quick-options.calculator-review .journey-form fieldset {
+#detailed-review.calculator-review .journey-form fieldset {
   border: 0 !important;
   margin: 0 0 0.25rem !important;
   padding: 0 !important;
   min-width: 0;
 }
 
-#quick-options.calculator-review .journey-form legend {
+#detailed-review.calculator-review .journey-form legend {
   display: block;
   float: none;
   width: 100%;
@@ -76,18 +76,18 @@
   text-transform: none !important;
 }
 
-#quick-options.calculator-review .journey-fields {
+#detailed-review.calculator-review .journey-fields {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.95rem;
 }
 
-#quick-options.calculator-review .journey-field {
+#detailed-review.calculator-review .journey-field {
   min-width: 0;
 }
 
-#quick-options.calculator-review .journey-form label,
-#quick-options.calculator-review .u-cta-card label {
+#detailed-review.calculator-review .journey-form label,
+#detailed-review.calculator-review .u-cta-card label {
   display: block;
   margin: 0 0 0.35rem;
   color: #1c2836 !important;
@@ -98,7 +98,7 @@
   text-transform: none !important;
 }
 
-#quick-options.calculator-review .u-cta-card :is(input, select, textarea) {
+#detailed-review.calculator-review .u-cta-card :is(input, select, textarea) {
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
@@ -112,27 +112,27 @@
   min-height: 48px;
 }
 
-#quick-options.calculator-review .u-cta-card select option {
+#detailed-review.calculator-review .u-cta-card select option {
   background: #ffffff;
   color: #1c2836;
 }
 
-#quick-options.calculator-review .u-cta-card :is(input, textarea)::placeholder {
+#detailed-review.calculator-review .u-cta-card :is(input, textarea)::placeholder {
   color: #4d5c6b !important;
   opacity: 1;
 }
 
-#quick-options.calculator-review .u-cta-card :is(input, select, textarea)[aria-invalid="true"] {
+#detailed-review.calculator-review .u-cta-card :is(input, select, textarea)[aria-invalid="true"] {
   border: 2px solid #7f1d1d !important;
 }
 
-#quick-options.calculator-review :is(.field-error, .error-message, .form-error-summary) {
+#detailed-review.calculator-review :is(.field-error, .error-message, .form-error-summary) {
   color: #7f1d1d !important;
   background: #fff1f2 !important;
   border-color: #fecdd3;
 }
 
-#quick-options.calculator-review .journey-estimates {
+#detailed-review.calculator-review .journey-estimates {
   margin: 0.35rem 0 0.25rem;
   padding: 0.75rem 0.9rem;
   border: 1px solid #d7d0c4;
@@ -140,8 +140,8 @@
   background: #faf8f4;
 }
 
-#quick-options.calculator-review .journey-estimates summary,
-body > main:nth-of-type(1) > section#quick-options.calculator-review details > summary {
+#detailed-review.calculator-review .journey-estimates summary,
+body > main:nth-of-type(1) > section#detailed-review.calculator-review details > summary {
   color: #16324a !important;
   font-weight: 700;
   cursor: pointer;
@@ -150,7 +150,7 @@ body > main:nth-of-type(1) > section#quick-options.calculator-review details > s
   align-items: center;
 }
 
-#quick-options.calculator-review .journey-summary {
+#detailed-review.calculator-review .journey-summary {
   margin: 0 0 1.15rem;
   padding: 1rem 1rem 0.85rem;
   border: 1px solid #d7d0c4;
@@ -159,40 +159,40 @@ body > main:nth-of-type(1) > section#quick-options.calculator-review details > s
   color: #1c2836;
 }
 
-#quick-options.calculator-review .journey-summary h3 {
+#detailed-review.calculator-review .journey-summary h3 {
   margin: 0 0 0.7rem;
   color: #1c2836;
   font-size: 1.15rem;
   line-height: 1.3;
 }
 
-#quick-options.calculator-review .journey-summary dl {
+#detailed-review.calculator-review .journey-summary dl {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 0.4rem 1rem;
   margin: 0;
 }
 
-#quick-options.calculator-review .journey-summary dt {
+#detailed-review.calculator-review .journey-summary dt {
   color: #3e4d5c;
   font-weight: 600;
 }
 
-#quick-options.calculator-review .journey-summary dd {
+#detailed-review.calculator-review .journey-summary dd {
   margin: 0;
   color: #1c2836;
   font-weight: 700;
   overflow-wrap: anywhere;
 }
 
-#quick-options.calculator-review .journey-summary p {
+#detailed-review.calculator-review .journey-summary p {
   margin: 0.85rem 0 0;
   color: #3e4d5c;
   font-size: 0.9375rem;
   line-height: 1.55;
 }
 
-#quick-options.calculator-review .journey-summary p.journey-summary-disclaimer {
+#detailed-review.calculator-review .journey-summary p.journey-summary-disclaimer {
   margin: 0.45rem 0 0;
   color: #3e4c59;
   font-size: 12px;
@@ -201,7 +201,7 @@ body > main:nth-of-type(1) > section#quick-options.calculator-review details > s
   letter-spacing: 0;
 }
 
-#quick-options.calculator-review .journey-summary-actions {
+#detailed-review.calculator-review .journey-summary-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem 1.25rem;
@@ -209,8 +209,8 @@ body > main:nth-of-type(1) > section#quick-options.calculator-review details > s
   margin-top: 0.85rem;
 }
 
-#quick-options.calculator-review .journey-summary-edit,
-#quick-options.calculator-review .journey-summary .journey-back {
+#detailed-review.calculator-review .journey-summary-edit,
+#detailed-review.calculator-review .journey-summary .journey-back {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -223,7 +223,7 @@ body > main:nth-of-type(1) > section#quick-options.calculator-review details > s
   text-underline-offset: 0.15em;
 }
 
-#quick-options.calculator-review .journey-form .journey-submit {
+#detailed-review.calculator-review .journey-form .journey-submit {
   width: 100%;
   min-height: 52px;
   margin-top: 1rem;
@@ -239,24 +239,24 @@ body > main:nth-of-type(1) > section#quick-options.calculator-review details > s
   cursor: pointer;
 }
 
-#quick-options.calculator-review .journey-form .journey-submit:hover {
+#detailed-review.calculator-review .journey-form .journey-submit:hover {
   background: #0f2436 !important;
   border-color: #0f2436 !important;
   color: #ffffff !important;
 }
 
-#quick-options.calculator-review .journey-form-actions {
+#detailed-review.calculator-review .journey-form-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   align-items: center;
 }
 
-#quick-options.calculator-review .journey-form-actions .journey-submit {
+#detailed-review.calculator-review .journey-form-actions .journey-submit {
   flex: 1 1 12rem;
 }
 
-#quick-options.calculator-review .journey-consent {
+#detailed-review.calculator-review .journey-consent {
   display: flex;
   align-items: flex-start;
   gap: 0.65rem;
@@ -265,7 +265,7 @@ body > main:nth-of-type(1) > section#quick-options.calculator-review details > s
   line-height: 1.5;
 }
 
-#quick-options.calculator-review .journey-consent input {
+#detailed-review.calculator-review .journey-consent input {
   width: 1.15rem;
   height: 1.15rem;
   margin-top: 0.2rem;
@@ -273,17 +273,17 @@ body > main:nth-of-type(1) > section#quick-options.calculator-review details > s
   flex: 0 0 auto;
 }
 
-#quick-options.calculator-review :is(a, button, input, select, textarea, summary):focus-visible {
+#detailed-review.calculator-review :is(a, button, input, select, textarea, summary):focus-visible {
   outline: 3px solid #16324a !important;
   outline-offset: 2px !important;
 }
 
 @media (min-width: 720px) {
-  #quick-options.calculator-review [data-journey-step="2"] > .journey-fields {
+  #detailed-review.calculator-review [data-journey-step="2"] > .journey-fields {
     grid-template-columns: 1fr 1fr;
   }
 
-  #quick-options.calculator-review .journey-full {
+  #detailed-review.calculator-review .journey-full {
     grid-column: 1 / -1;
   }
 }
@@ -297,15 +297,15 @@ body > main:nth-of-type(1) > section#quick-options.calculator-review details > s
 }
 
 @media (max-width: 640px) {
-  #quick-options.calculator-review .u-cta-card {
+  #detailed-review.calculator-review .u-cta-card {
     padding: 1.35rem 1rem !important;
   }
 
-  #quick-options.calculator-review .u-cta-header h2 {
+  #detailed-review.calculator-review .u-cta-header h2 {
     font-size: 1.6rem !important;
   }
 
-  #quick-options.calculator-review .journey-submit {
+  #detailed-review.calculator-review .journey-submit {
     scroll-margin-bottom: 6rem;
   }
 }

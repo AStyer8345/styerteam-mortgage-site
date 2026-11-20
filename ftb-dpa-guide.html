@@ -860,17 +860,14 @@
           if (!res.ok) throw new Error('lead-intake returned ' + res.status);
           return res.json();
         }).then(function (data) {
-          if (!data.success) throw new Error(data.error || 'Lead intake did not confirm success');
+          if (!data.captured) throw new Error(data.error || 'Lead intake did not confirm capture');
           var tracked = window.StyerTrackGenerateLead ? window.StyerTrackGenerateLead({
             lead_type: 'ftb_dpa_guide',
             form_name: form.getAttribute('name') || 'ftb-dpa-guide-form',
             form_id: form.id || 'form-ftb-dpa-guide',
             inquiry_id: data.inquiry_id || ''
           }, { waitForTags: true, scenarioSubmit: false }) : Promise.resolve();
-          return tracked.then(function () {
-            if (data.mailchimp !== 'ok') throw new Error('Guide delivery subscription was not confirmed');
-            return data;
-          });
+          return tracked.then(function () { return data; });
         });
 
         var ownerEmailNotification = primaryNotification.then(function () { return false; }, function () {

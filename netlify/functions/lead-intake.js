@@ -37,7 +37,7 @@ const LOANOS_URL    = process.env.LOANOS_URL || process.env.LOANOS_API_URL || ""
 const LOANOS_SECRET = process.env.LOANOS_AGENT_SECRET || "";
 const N8N_WEB_LEAD_URL = process.env.N8N_WEB_LEAD_URL || "https://styer.app.n8n.cloud/webhook/web-lead";
 const INTERNAL_TEST_MAILBOXES = new Set(["adamstyer@gorascal.com", "adam.styerassistant@gmail.com"]);
-const PREVIEW_RECEIPT_FORMS = new Set(["contact", "asset-depletion-calculator"]);
+const PREVIEW_RECEIPT_FORMS = new Set(["contact", "asset-depletion-calculator", "investment-property-scenario"]);
 const ADAM_NOTIFICATION_EMAIL = process.env.ADAM_NOTIFICATION_EMAIL || "adamstyer@gorascal.com";
 
 function firstText(...values) {
