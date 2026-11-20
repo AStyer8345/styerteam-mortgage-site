@@ -101,6 +101,9 @@ main .scenario-content .scenario-table-wrap.borrower-comparison-scroll tr > :fir
   }
 
   main .scenario-content .scenario-table-wrap.borrower-comparison-scroll tr > :first-child {
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
     position: sticky;
     width: var(--comparison-label-width);
     inset-inline-start: 0;

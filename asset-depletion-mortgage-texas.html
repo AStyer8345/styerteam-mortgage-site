@@ -200,50 +200,34 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Do I have to sell my stocks or liquidate assets to qualify?",
+          "name": "Will I need to sell or move my assets?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Usually, no. Most programs I use count eligible account balances without requiring you to sell investments or take monthly withdrawals. You still need cash available for your down payment and closing costs."
+            "text": "Usually, you can keep your investments in place. You’ll still need cash for closing, and some lenders have account requirements."
           }
         },
         {
           "@type": "Question",
-          "name": "Do I have to move my assets to the lender's bank?",
+          "name": "Can I use an IRA or 401(k)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The calculation generally lets you keep your accounts where they are. I’ll check whether a specific lender has account or closing requirements before we compare offers."
+            "text": "Possibly. I’ll check who owns the account, which funds you can access and how the lender treats withdrawal penalties."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I use retirement accounts like an IRA or 401(k)?",
+          "name": "Can I use stock awards or private shares?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Possibly. I check who owns the account, when you can access the funds and whether a withdrawal would trigger a penalty. Age 59½ generally matters for early-distribution taxes. Each program has its own rules for how it treats access and penalties."
+            "text": "It depends on vesting, marketability and the lender. I’ll check what the program counts."
           }
         },
         {
           "@type": "Question",
-          "name": "Can restricted stock units (RSUs) or private company stock be used?",
+          "name": "What credit score and down payment do I need?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Do not assume they count. Vested public shares, unvested awards, options, and private-company shares receive different treatment. I check the asset type and access rules for the selected program."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are the minimum credit score and down payment requirements?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "They depend on the program, loan amount, occupancy, property, and borrower profile. I confirm the current requirements alongside the asset calculation."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do conventional asset-based options compare?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Fannie Mae divides eligible assets left after deductions by the loan term in months. Freddie Mac divides by 240 months, or 180 under its updated rules. The table above shows the accounts and loans each option accepts."
+            "text": "It depends on the loan, the property and the lender."
           }
         }
       ]
@@ -254,7 +238,10 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <style id="scenario-content-styles">
 .scenario-content{max-width:960px;margin:auto;padding:40px 24px;color:#243740}
 .scenario-content h2{font-family:var(--pwe-serif,Georgia,serif);font-size:clamp(24px,3vw,32px);line-height:1.2;margin:0 0 18px}
-.scenario-content h3{font-size:20px;margin:26px 0 12px}
+.asset-option-links{display:flex;flex-wrap:wrap;gap:6px 22px;margin:12px 0 18px}
+.asset-option-links a{padding-block:5px;color:var(--pwe-brass-light,#f4dfb6);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+#private-lenders,#program-options,#direct-answer{scroll-margin-top:115px}
+@media(max-width:900px){.asset-option-links{justify-content:center}}
 .scenario-content p,.scenario-content li{font-size:16px;line-height:1.65}
 .scenario-content .scenario-table-wrap{overflow-x:auto;margin:20px 0;border:1px solid #dad4c8;border-radius:4px}
 .scenario-content table{width:100%;border-collapse:collapse;min-width:0!important;background:#fff}
@@ -262,16 +249,13 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 .scenario-content th,.scenario-content td{text-align:left;vertical-align:top;padding:13px 14px;border-bottom:1px solid #e6e0d6;line-height:1.5;font-size:15px}
 .scenario-content thead th{background:#eee9de;color:#10212c}
 .scenario-content tbody th{font-weight:600;width:50%}
-.scenario-content .scenario-table-programs tbody th{width:24%}
-.scenario-content .scenario-table-programs td p{font-size:inherit;line-height:inherit;margin:0 0 8px}
-.scenario-content .scenario-table-programs td p:last-child{margin-bottom:0}
 .scenario-content a{color:#70531f;text-decoration:underline;text-underline-offset:3px}
 .scenario-content .scenario-note{font-size:14px;color:#47565e}
 .scenario-content .scenario-actions{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;font-weight:700}
 .scenario-content .scenario-table-wrap:focus-visible{outline:3px solid #90703a;outline-offset:3px}
 @media(max-width:480px){.scenario-content{padding:32px 20px}.scenario-content th,.scenario-content td{padding:11px}}
 </style>
-<link rel="stylesheet" href="/borrower-comparisons.css?v=20261120"/>
+<link rel="stylesheet" href="/borrower-comparisons.css?v=20261120-asset"/>
 </head>
 <body class="premium-interior advisory-site private-wealth-editorial simple">
 <!-- Google Tag Manager (noscript) -->
@@ -389,9 +373,12 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div class="u-hero-inner">
 <p class="u-eyebrow">Asset-Based Mortgage Advisory • Austin &amp; Texas</p>
 <h1 id="hero-heading">Asset Utilization Mortgages in Texas</h1>
-<p class="u-hero-lead" style="font-size: clamp(20px, 2.2vw, 24px); color: var(--pwe-brass-light); font-weight: 500; margin-top: 8px; margin-bottom: 14px;">Qualify with savings and investments.</p>
-<p class="u-hero-lead">Asset utilization, sometimes called asset depletion, lets some lenders use eligible savings, investments or retirement assets to calculate monthly qualifying income for a mortgage. The calculation generally requires no investment sales or regular withdrawals. Lender rules and the funds you need at closing still matter.</p>
-<p class="u-hero-lead">Tell me what you want to do and where you hold your money. I’ll check which lenders can use your accounts, then compare their payments, fees and terms so you can see what each option would cost and how much cash you’d need at closing.</p>
+<p class="u-hero-lead" id="direct-answer">Asset utilization, sometimes called asset depletion, uses eligible savings, investments or retirement accounts to calculate qualifying income for a mortgage. You can usually keep your investments in place.</p>
+<div class="asset-option-links" role="group" aria-label="Compare lender options">
+  <a href="#private-lenders">Private lender options <span aria-hidden="true">→</span></a>
+  <a href="#program-options">Fannie Mae and Freddie Mac <span aria-hidden="true">→</span></a>
+</div>
+<p class="u-hero-lead">I’ll check which lenders can use your accounts and compare the payment, fees and cash you’d need to close.</p>
 <div class="u-hero-actions">
 <a class="u-btn-primary" href="#scenario-review">See My Options</a>
 <a class="u-btn-secondary" href="https://calendly.com/adamstyer/15minutes" rel="noopener" target="_blank">Book a 15-Min Call<span class="gorascal-visually-hidden"> (opens in a new tab)</span></a>
@@ -402,28 +389,6 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </div>
 <p class="u-hero-byline">By <a href="/about.html">Adam Styer</a>, Senior Loan Officer • NMLS #513013 • Company NMLS #2072896</p>
 <p class="u-hero-reviewed" style="margin:6px 0 0;font-size:13px;opacity:.85">Reviewed by Adam Styer, NMLS #513013 · Updated <time datetime="2026-11-17">November 17, 2026</time></p>
-<div class="u-metrics-grid">
-<div class="u-metric-card">
-<div class="u-metric-label">Income Formula</div>
-<div class="u-metric-value">Program-specific</div>
-<div class="u-metric-sub">The asset rules and calculation period both matter</div>
-</div>
-<div class="u-metric-card">
-<div class="u-metric-label">Account Review</div>
-<div class="u-metric-value">Access &amp; ownership</div>
-<div class="u-metric-sub">Each account is checked against the selected program</div>
-</div>
-<div class="u-metric-card">
-<div class="u-metric-label">Loan Options</div>
-<div class="u-metric-value">Agency &amp; private</div>
-<div class="u-metric-sub">Compare eligibility, payment and costs</div>
-</div>
-<div class="u-metric-card">
-<div class="u-metric-label">Account Control</div>
-<div class="u-metric-value">Keep your accounts</div>
-<div class="u-metric-sub">Your assets can stay with your bank or brokerage</div>
-</div>
-</div>
 </div>
 <section class="u-cta-section" id="quick-options" style="padding: 64px 0; background: var(--pwe-obsidian); color: #FFFFFF;">
 <div class="u-container" id="scenario-review" style="max-width: 820px;"><div id="intake-form"></div>
@@ -431,7 +396,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div class="u-cta-header" style="text-align: center; margin-bottom: 28px;">
 <p class="u-eyebrow" style="color: var(--pwe-brass-light);">Fast Scenario Review</p>
 <h2 style="font-family: var(--pwe-serif); font-size: 28px; color: #FFFFFF; margin: 0 0 10px;">Tell me a little bit about your situation</h2>
-<p style="color: rgba(246, 244, 239, 0.8); font-size: 15px; margin: 0 auto; max-width: 600px;">Tell me your account types, property goal, and timeline. No hard credit pull to start.</p>
+<p style="color: rgba(246, 244, 239, 0.8); font-size: 15px; margin: 0 auto; max-width: 600px;">Tell me what you want to do and which accounts you’d like to use.</p>
 </div>
 <form action="/contact-thank-you.html" class="journey-form" data-journey="general" data-journey-mode="conversation" data-netlify="true" data-quick-form="true" id="form-quick-asset-depletion-mortgage-texas" method="POST" name="contact" netlify-honeypot="bot-field"><p class="personal-form-note">You don’t need to know which loan to ask for. Tell me what you’re trying to do, and we can start there.</p>
 <input name="form-name" type="hidden" value="contact"/>
@@ -481,201 +446,103 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </section>
 </div>
 </section>
-<!-- SECTION 2: DIRECT ANSWER -->
-<section class="u-section scenario-section" id="direct-answer">
+<section class="u-section scenario-section" id="private-lenders" aria-labelledby="private-lenders-title">
 <div class="scenario-content">
-<h2>How does asset utilization work?</h2>
-<p>The lender starts with the accounts its program allows, makes any required deductions and divides the remaining eligible balance by a set number of months. The result is a monthly income figure for underwriting. Which accounts count depends on who owns them, who can access the money and whether you need it for closing or reserves.</p>
-</div>
-</section>
-<!-- SECTION 3: WHO THIS HELPS -->
-<section class="u-section bg-light" id="who-this-helps" style="padding: 64px 0; border-bottom: 1px solid var(--pwe-rule);">
-<div class="container">
-<div class="u-section-header" style="text-align: center; margin-bottom: 40px;">
-<p class="u-eyebrow">Common Situations</p>
-<h2 style="font-family: var(--pwe-serif); font-size: clamp(26px, 3vw, 36px); color: var(--pwe-obsidian); margin: 0 0 12px;">Who This Program Is Built For</h2>
-<p style="font-size: 16.5px; color: var(--pwe-slate); max-width: 720px; margin: 0 auto; line-height: 1.6;">This can help if you have substantial savings or investments and your regular income is lower or harder to document.</p>
-</div>
-<div class="who-checklist">
-<div class="who-item"><span class="who-check" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="who-body"><h3>Early Retirees &amp; High-Net-Worth Individuals</h3><p>Borrowers living comfortably off investments who have not yet reached Social Security or mandatory distribution age.</p></div></div>
-<div class="who-item"><span class="who-check" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="who-body"><h3>Founders Following an Equity Event</h3><p>Entrepreneurs who sold a business and hold substantial cash/marketable securities but report minimal taxable W-2 salary.</p></div></div>
-<div class="who-item"><span class="who-check" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="who-body"><h3>Tech Employees with Vested Equities</h3><p>Executives with substantial liquid brokerage accounts who want to qualify without selling shares and triggering capital gains taxes.</p></div></div>
-<div class="who-item"><span class="who-check" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="who-body"><h3>Trust Beneficiaries</h3><p>Borrowers holding significant assets in Revocable Living Trusts looking to purchase high-value Texas residential properties.</p></div></div>
+<h2 id="private-lenders-title">Private lender options</h2>
+<p id="who-this-helps">Private lenders may accept bank or brokerage assets that agency programs often exclude. That can help if you’ve retired, sold a business or hold much of your money in investments.</p>
+<p class="comparison-scroll-note" id="private-scroll-note">Swipe or scroll to compare.</p>
+<div class="scenario-table-wrap borrower-comparison borrower-comparison-scroll" role="region" aria-label="Private lender methods" aria-describedby="private-scroll-note" tabindex="0">
+<table>
+<caption>Private lender methods</caption>
+<thead><tr><th scope="col">Criteria</th><th scope="col">Income method</th><th scope="col">Coverage test</th></tr></thead>
+<tbody>
+<tr><th scope="row">Assets</th><td>Eligible cash, investments or retirement accounts.</td><td>Liquid or accessible assets the lender accepts.</td></tr>
+<tr><th scope="row">Formula</th><td>Divide the eligible balance by the lender’s number of months.</td><td>Check if eligible assets cover the loan, costs and any other required obligations.</td></tr>
+<tr><th scope="row">Rules</th><td>The amount counted, required reserves and whether other income can be added vary.</td><td>Eligible assets, property types and loan purposes vary.</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
-<!-- SECTION 4: SIMPLE OPTIONS & PROCESS -->
-<section class="u-section scenario-section" id="program-options">
+
+<section class="u-section scenario-section" id="program-options" aria-labelledby="agency-options-title">
 <div class="scenario-content">
-<h2>Compare Fannie Mae and Freddie Mac</h2>
-<p>Each agency sets its own rules for the loan, the accounts and how much income those accounts can support.</p>
+<h2 id="agency-options-title">Fannie Mae and Freddie Mac</h2>
 <p class="comparison-scroll-note" id="agency-scroll-note">Swipe or scroll to compare.</p>
 <div class="scenario-table-wrap borrower-comparison borrower-comparison-scroll" role="region" aria-label="Fannie Mae and Freddie Mac comparison" aria-describedby="agency-scroll-note" tabindex="0">
 <table>
 <caption>Current agency requirements</caption>
-<thead><tr><th scope="col">What to compare</th><th scope="col">Fannie Mae</th><th scope="col">Freddie Mac</th></tr></thead>
+<thead><tr><th scope="col">Criteria</th><th scope="col">Fannie Mae</th><th scope="col">Freddie Mac</th></tr></thead>
 <tbody>
 <tr>
-<th scope="row">Loan and property</th>
-<td>Purchase or limited cash-out refinance of a primary residence or second home. Unit limits depend on occupancy.</td>
-<td>Purchase or no-cash-out refinance of a one- or two-unit primary residence or a second home. Enhanced Relief Refinance has separate rules.</td>
+<th scope="row">Loan type</th>
+<td>Purchase or limited cash-out refinance of a primary or second home.</td>
+<td>Purchase or no-cash-out refinance of a 1–2 unit primary home or second home. Enhanced Relief Refinance has separate rules.</td>
 </tr>
 <tr>
-<th scope="row">Loan-to-value</th>
-<td>Up to 70% LTV, CLTV and HCLTV. Up to 80% if the asset owner is at least 62 at closing. For a joint account, every owner must be a borrower and the borrower using the income must be at least 62.</td>
-<td>Generally up to 80% LTV, TLTV and HTLTV. The age rule for bank and brokerage assets is separate from the loan-to-value limit.</td>
+<th scope="row">LTV limits</th>
+<td>70% LTV, CLTV and HCLTV. Up to 80% when the asset owner is at least 62 at closing. For joint accounts, all owners must be borrowers and the borrower using the income must be at least 62.</td>
+<td>Generally up to 80% LTV, TLTV and HTLTV.</td>
 </tr>
 <tr>
-<th scope="row">Retirement accounts</th>
-<td>Eligible IRA, 401(k), SEP or Keogh accounts. The borrower must have the right to request a full distribution. An applicable full-distribution penalty reduces the balance used. An account already paying distributions can be considered under this method if that income is insufficient to qualify.</td>
-<td>The borrower must be the sole owner of a fully vested eligible retirement account and must be able to withdraw the unencumbered balance at the note date without a penalty or additional early-distribution tax. The account cannot already be used as a source of income.</td>
+<th scope="row">Retirement</th>
+<td>Eligible IRA, 401(k), SEP or Keogh. The borrower must be able to request a full withdrawal. If the account already pays distributions, the balance can count only if those payments are too low to qualify.</td>
+<td>The borrower must solely own a fully vested eligible account and have penalty- and early-tax-free access to the unencumbered balance at the note date. The account can’t already count as income.</td>
 </tr>
 <tr>
-<th scope="row">Other eligible assets</th>
-<td>Eligible severance or lump-sum retirement distributions from non-self-employment. Ordinary savings or brokerage assets generally do not count. A bank balance sourced from eligible employment-related funds can qualify.</td>
-<td>Eligible bank and brokerage accounts, certain lump-sum retirement distributions and qualifying business-sale proceeds. For the bank and brokerage category, at least one borrower who owns the account must be 62 or older. Joint owners must be borrowers or on title to the property. The borrower must have penalty-free access to the unencumbered balance by the note date.</td>
+<th scope="row">Other assets</th>
+<td>Eligible employee severance or lump-sum retirement payouts, including bank balances from those sources.</td>
+<td>Bank and brokerage accounts, certain retirement payouts or business-sale proceeds. For bank and brokerage assets, at least one borrower who owns the account must be 62 or older. Joint owners must be borrowers or on title. The borrower needs penalty-free access to the unencumbered balance by the note date.</td>
 </tr>
 <tr>
-<th scope="row">Monthly income</th>
-<td>Deduct any applicable full-distribution penalty and the funds used for down payment, closing costs and required reserves. Divide the remainder by the loan’s amortization term in months.</td>
-<td>Deduct funds needed to complete the transaction, gifted or borrowed funds, and pledged or otherwise encumbered assets. Divide by 240.</td>
+<th scope="row">Income</th>
+<td>Deduct any full-withdrawal penalty, down payment, closing costs and required reserves. Divide by the amortization term in months.</td>
+<td>Deduct transaction funds, gifts, borrowed funds and encumbered assets. Divide by 240.</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p class="scenario-note">Age 59½ generally matters for the account holder’s early-distribution tax, subject to account rules and IRS exceptions. Fannie Mae checks access and deducts applicable penalties. Freddie Mac checks for penalty- and additional early-tax-free access on eligible retirement assets.</p>
-<p class="scenario-note">Freddie Mac Bulletin 2026-10 sets February 3, 2027 as the mandatory settlement date for revised rules. Those rules remove the 62-year minimum for bank and brokerage assets and change the formula and loan eligibility. I’ll confirm which rules your lender applies.</p>
-<p class="scenario-note"><a href="https://selling-guide.fanniemae.com/sel/b3-3.4-06/employment-related-assets-qualifying-income">Fannie Mae B3-3.4-06, Employment Related Assets as Qualifying Income</a> · <a href="https://guide.freddiemac.com/app/guide/section/5307.1">Freddie Mac Guide 5307.1(a), (b) and (c)</a> · <a href="https://guide.freddiemac.com/app/guide/bulletin/2026-10">Freddie Mac Bulletin 2026-10</a> · <a href="https://www.irs.gov/publications/p590b">IRS Publication 590-B</a></p>
+<p class="scenario-note">Age 59½ generally affects early-distribution taxes. Each agency checks account access under its own rules.</p>
+<p class="scenario-note">Freddie Mac’s revised rules become mandatory for settlements on or after February 3, 2027. They remove the bank and brokerage age minimum, change loan eligibility and use a 180-month divisor.</p>
+<p class="scenario-note"><a href="https://selling-guide.fanniemae.com/sel/b3-3.4-06/employment-related-assets-qualifying-income">Fannie Mae B3-3.4-06</a> · <a href="https://guide.freddiemac.com/app/guide/section/5307.1">Freddie Mac §5307.1(a)–(c)</a> · <a href="https://guide.freddiemac.com/app/guide/bulletin/2026-10">Freddie Mac Bulletin 2026-10</a> · <a href="https://www.irs.gov/publications/p590b">IRS Publication 590-B</a></p>
+</div>
+</section>
 
-<h3>Compare private-lender options</h3>
-<p>These are two ways private lenders may evaluate assets. I check which one each lender uses before comparing offers.</p>
-<p class="comparison-scroll-note" id="private-scroll-note">Swipe or scroll to compare.</p>
-<div class="scenario-table-wrap borrower-comparison borrower-comparison-scroll" role="region" aria-label="Private-lender asset qualification methods" aria-describedby="private-scroll-note" tabindex="0">
-<table>
-<caption>Private-lender methods</caption>
-<thead><tr><th scope="col">What to compare</th><th scope="col">Monthly income calculation</th><th scope="col">Asset coverage test</th></tr></thead>
-<tbody>
-<tr><th scope="row">Accounts</th><td>May include cash, marketable investments and eligible retirement accounts.</td><td>May use liquid or otherwise accessible assets that the lender accepts.</td></tr>
-<tr><th scope="row">Calculation</th><td>Applies the lender’s adjustments and divides eligible assets by its chosen number of months to calculate income.</td><td>Compares eligible assets with the loan balance, costs and any other obligations the lender requires the assets to cover.</td></tr>
-<tr><th scope="row">Lender rules</th><td>How much of each balance counts, whether you can combine the result with other income, and funds required for closing and reserves all vary.</td><td>The assets required, obligations counted, and eligible loan purpose and property type depend on the lender.</td></tr>
-</tbody>
-</table>
-</div>
-<p>I’ll compare which accounts count, how much cash you would need to close, and what you can keep on hand afterward, alongside the payment and total costs.</p>
+<section class="u-section scenario-section" id="illustrative-scenario">
+<div class="scenario-content">
+<h2>A quick example</h2>
+<p>Start with $2 million in brokerage assets. Set aside $200,000 for closing and reserves. If a lender counts 90% of the remaining $1.8 million and divides it by 60 months, that’s <strong>$27,000 per month in qualifying income</strong>. The percentages and months are illustrative.</p>
+<p id="technical-guidelines"><a href="/asset-depletion-calculator.html">Try the calculator</a> · <a href="/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html#guide-asset-income-calculation">Read a borrower example</a> · <a href="/high-net-worth-mortgage.html">High-net-worth mortgages</a></p>
 </div>
 </section>
-<!-- SECTION 5: ONE SHORT EXAMPLE -->
-<section class="u-section scenario-section" id="illustrative-scenario"><div class="scenario-content"><h2>From account balance to monthly income</h2><div class="scenario-table-wrap borrower-comparison" role="region" aria-label="Illustrative asset-income calculation" tabindex="0"><table><caption>Illustrative asset-income calculation</caption><thead><tr><th scope="col">Step</th><th scope="col">Amount</th></tr></thead><tbody><tr><th scope="row">Starting brokerage balance</th><td>$2,000,000</td></tr><tr><th scope="row">Cash set aside for down payment, closing costs and reserves</th><td>− $200,000</td></tr><tr><th scope="row">Balance left to model</th><td>$1,800,000</td></tr><tr><th scope="row">Assumed amount counted: 90%</th><td>$1,620,000</td></tr><tr><th scope="row">Illustrative calculation period</th><td>60 months</td></tr><tr><th scope="row">Illustrative monthly asset income</th><td>$27,000</td></tr></tbody></table></div><p>This example assumes a private program accepts the account and applies the 90% factor after the cash set-aside. It does not represent a lender offer or a completed loan. Another program may count the account differently or exclude it.</p>
-<p>That $27,000 is an underwriting calculation, not a withdrawal plan or investment return. Debts, the mortgage payment, credit, and property still need review.</p>
-<p class="scenario-actions"><a href="/asset-depletion-calculator.html">Try your own assumptions</a><a href="#scenario-review">Review my asset-income options</a></p>
-<p><a href="/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html">Read the former-CFO asset-income example</a>.</p></div></section>
-<!-- SECTION 6: EXPLORE THE DETAILS -->
-<section class="u-section bg-white" id="technical-guidelines" style="padding: 44px 0; border-bottom: 1px solid var(--pwe-rule);">
-<div class="u-container" style="max-width: 880px;">
-<div class="u-section-header" style="text-align: center; margin-bottom: 24px;">
-<span class="u-kicker">Supporting Research &amp; Worksheets</span>
-<h2 style="font-family: var(--pwe-serif); font-size: clamp(22px, 2.4vw, 28px); color: var(--pwe-obsidian); margin: 0 0 8px;">Explore the Details</h2>
-<p style="font-size: 15px; color: var(--pwe-slate); max-width: 640px; margin: 0 auto; line-height: 1.5;">In-depth underwriting guidelines, loan matrices, and interactive tools in our specialist resources.</p>
-</div>
-<div style="display: flex; flex-direction: column; gap: 12px;">
-<div style="background: var(--pwe-bg-warm); border: 1px solid var(--pwe-rule); border-radius: 4px; padding: 16px 20px;">
-<a href="/asset-depletion-calculator.html" style="font-size: 15.5px; font-weight: 600; color: var(--pwe-obsidian); text-decoration: none; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-<span>Interactive Asset Utilization Calculator</span>
-<span style="font-size: 13px; color: var(--pwe-brass); font-weight: 600;">Calculate Income →</span>
-</a>
-<p style="font-size: 13.5px; line-height: 1.5; color: var(--pwe-slate); margin: 6px 0 0;">Enter your liquid cash, stocks, and retirement balances to see your qualifying monthly income.</p>
-</div>
-<div style="background: var(--pwe-bg-warm); border: 1px solid var(--pwe-rule); border-radius: 4px; padding: 16px 20px;">
-<a href="/high-net-worth-mortgage.html" style="font-size: 15.5px; font-weight: 600; color: var(--pwe-obsidian); text-decoration: none; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-<span>High-Net-Worth Mortgage Hub</span>
-<span style="font-size: 13px; color: var(--pwe-brass); font-weight: 600;">Explore Hub →</span>
-</a>
-<p style="font-size: 13.5px; line-height: 1.5; color: var(--pwe-slate); margin: 6px 0 0;">Compare asset utilization against private bank relationship pricing and complex executive income.</p>
-</div>
-<div style="background: var(--pwe-bg-warm); border: 1px solid var(--pwe-rule); border-radius: 4px; padding: 16px 20px;">
-<a href="/loans/jumbo.html" style="font-size: 15.5px; font-weight: 600; color: var(--pwe-obsidian); text-decoration: none; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-<span>Austin Jumbo Loans Overview</span>
-<span style="font-size: 13px; color: var(--pwe-brass); font-weight: 600;">Explore Jumbo →</span>
-</a>
-<p style="font-size: 13.5px; line-height: 1.5; color: var(--pwe-slate); margin: 6px 0 0;">Review jumbo underwriting guidelines, reserve requirements, and loan limits to $3M–$5M+.</p>
-</div>
-<div style="background: var(--pwe-bg-warm); border: 1px solid var(--pwe-rule); border-radius: 4px; padding: 16px 20px;">
-<a href="/calculator-payment.html" style="font-size: 15.5px; font-weight: 600; color: var(--pwe-obsidian); text-decoration: none; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-<span>Mortgage Payment Calculator</span>
-<span style="font-size: 13px; color: var(--pwe-brass); font-weight: 600;">Calculate Payment →</span>
-</a>
-<p style="font-size: 13.5px; line-height: 1.5; color: var(--pwe-slate); margin: 6px 0 0;">Model monthly payments across conforming, jumbo, and asset-based options.</p>
-</div>
-</div>
-</div>
-<div class="preserved-reference-links"><p><a href="/blog/2026-08-06-asset-depletion-loan-case-study-former-cfo.html#guide-asset-income-calculation">How does the calculation work →</a></p></div>
-</section>
-<!-- SECTION 7: FAQ -->
-<section class="u-section bg-light" id="faq" style="padding: 56px 0;">
-<div class="container">
-<div class="u-section-header" style="text-align: center; margin-bottom: 32px;">
-<p class="u-eyebrow">Clear Answers</p>
-<h2 style="font-family: var(--pwe-serif); font-size: clamp(24px, 2.6vw, 32px); color: var(--pwe-obsidian); margin: 0 0 10px;">Frequently Asked Questions</h2>
-<p style="font-size: 15.5px; color: var(--pwe-slate); margin: 0;">Straightforward answers to the questions Central Texas borrowers ask most.</p>
-</div>
+
+<section class="u-section bg-light" id="faq">
+<div class="scenario-content">
+<h2>Common questions</h2>
 <div class="u-faq-wrap">
-<details class="u-faq-item" open="">
-<summary>Do I have to sell my stocks or liquidate assets to qualify?</summary>
-<div class="u-faq-answer">
-<p>Usually, no. Most programs I use count eligible account balances without requiring you to sell investments or take monthly withdrawals. You still need cash available for your down payment and closing costs.</p>
-</div>
+<details class="u-faq-item">
+<summary>Will I need to sell or move my assets?</summary>
+<div class="u-faq-answer"><p>Usually, you can keep your investments in place. You’ll still need cash for closing, and some lenders have account requirements.</p></div>
 </details>
 <details class="u-faq-item">
-<summary>Do I have to move my assets to the lender's bank?</summary>
-<div class="u-faq-answer">
-<p>The calculation generally lets you keep your accounts where they are. I’ll check whether a specific lender has account or closing requirements before we compare offers.</p>
-</div>
+<summary>Can I use an IRA or 401(k)?</summary>
+<div class="u-faq-answer"><p>Possibly. I’ll check who owns the account, which funds you can access and how the lender treats withdrawal penalties.</p></div>
 </details>
 <details class="u-faq-item">
-<summary>Can I use retirement accounts like an IRA or 401(k)?</summary>
-<div class="u-faq-answer">
-<p>Possibly. I check who owns the account, when you can access the funds and whether a withdrawal would trigger a penalty. Age 59½ generally matters for early-distribution taxes. Each program has its own rules for how it treats access and penalties.</p>
-</div>
+<summary>Can I use stock awards or private shares?</summary>
+<div class="u-faq-answer"><p>It depends on vesting, marketability and the lender. I’ll check what the program counts.</p></div>
 </details>
 <details class="u-faq-item">
-<summary>Can restricted stock units (RSUs) or private company stock be used?</summary>
-<div class="u-faq-answer">
-<p>Do not assume they count. Vested public shares, unvested awards, options, and private-company shares receive different treatment. I check the asset type and access rules for the selected program.</p>
-</div>
+<summary>What credit score and down payment do I need?</summary>
+<div class="u-faq-answer"><p>It depends on the loan, the property and the lender.</p></div>
 </details>
-<details class="u-faq-item">
-<summary>What are the minimum credit score and down payment requirements?</summary>
-<div class="u-faq-answer">
-<p>They depend on the program, loan amount, occupancy, property, and borrower profile. I confirm the current requirements alongside the asset calculation.</p>
 </div>
-</details>
+</div>
+</section>
 
-<details class="u-faq-item">
-<summary>How do conventional asset-based options compare?</summary>
-<div class="u-faq-answer">
-<p>Fannie Mae divides eligible assets left after deductions by the loan term in months. Freddie Mac divides by 240 months, or 180 under its updated rules. The <a href="#program-options">table above</a> shows the accounts and loans each option accepts.</p>
-</div>
-</details>
-</div>
-</div>
-</section>
-<!-- SECTION 8: WHY ADAM CONDENSED TRUST STRIP -->
-<section class="u-section bg-white" id="why-adam" style="padding: 28px 0; border-top: 1px solid var(--pwe-rule); border-bottom: 1px solid var(--pwe-rule);">
-<div class="container">
-<div style="display: flex; justify-content: center; align-items: center; gap: 32px; flex-wrap: wrap; text-align: center;">
-<span style="font-size: 13.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pwe-brass);">Why work with me</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• Many capital partners</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• You deal with me directly</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• Clear communication and the conditions list up front</span>
-<span style="font-size: 14.5px; color: var(--pwe-slate);">• Straight answers, no runaround</span>
-</div>
-</div>
-</section>
-<!-- SECTION 9: INTAKE FORM -->
 <section class="u-section simple-close" id="next-step">
-<div class="container">
-<h2>Not sure which path fits? That is my job.</h2>
-<p>Send me what you have. I will tell you what I see.</p>
+<div class="container" id="why-adam">
+<h2>Let’s talk through your options.</h2>
 <p><a class="u-btn-primary" href="#quick-options">See My Options</a></p>
 </div>
 </section>
@@ -683,10 +550,10 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 <div class="container">
 <details class="u-disclose-card" style="margin-top: 32px; background: #FFFFFF; border: 1px solid var(--pwe-rule); border-radius: 4px;">
 <summary style="padding: 20px 24px; font-weight: 600; color: var(--pwe-obsidian); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-<span>Prefer a Comprehensive File Review? Submit Your Full Scenario →</span>
+<span>Send a detailed scenario →</span>
 </summary>
 <div class="u-disclose-body" style="padding: 28px; border-top: 1px solid var(--pwe-rule);">
-<p style="font-size: 15px; color: var(--pwe-slate); margin-bottom: 24px;">For complex files, multiple business entities, or borrowers with tax documents ready for evaluation. Complete the detailed scenario review below for a comprehensive underwriting analysis.</p>
+<p style="font-size: 15px; color: var(--pwe-slate); margin-bottom: 24px;">Share the loan, property and income details you know.</p>
 <form action="/thank-you" class="journey-form" data-journey="assets" data-netlify="true" id="form-scenario-review" method="POST" name="scenario-review" netlify-honeypot="bot-field">
 <input name="utm_source" type="hidden" value=""/>
 <input name="utm_medium" type="hidden" value=""/>
@@ -754,7 +621,7 @@ main p{overflow-wrap:break-word} details>summary:focus-visible{outline:3px solid
 </details>
 </div>
 </section>
-<aside class="preserved-guide-link" style="max-width:1040px;width:calc(100% - 40px);margin:24px auto;padding:20px;border-top:1px solid #dad4c8"><span id="asset-access" style="display:block;scroll-margin-top:110px"></span><span id="asset-calculation" style="display:block;scroll-margin-top:110px"></span><span id="asset-depletion" style="display:block;scroll-margin-top:110px"></span><span id="asset-fit" style="display:block;scroll-margin-top:110px"></span><span id="asset-review" style="display:block;scroll-margin-top:110px"></span><span id="blueprint-answer-title" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-10" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-2" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-3" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-4" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-5" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-6" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-7" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-8" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-9" style="display:block;scroll-margin-top:110px"></span><span id="journey-title" style="display:block;scroll-margin-top:110px"></span><span id="next-step" style="display:block;scroll-margin-top:110px"></span><span id="quick-options-title" style="display:block;scroll-margin-top:110px"></span></aside></main>
+<aside class="preserved-guide-link" style="max-width:1040px;width:calc(100% - 40px);margin:24px auto;padding:20px;border-top:1px solid #dad4c8"><span id="asset-access" style="display:block;scroll-margin-top:110px"></span><span id="asset-calculation" style="display:block;scroll-margin-top:110px"></span><span id="asset-depletion" style="display:block;scroll-margin-top:110px"></span><span id="asset-fit" style="display:block;scroll-margin-top:110px"></span><span id="asset-review" style="display:block;scroll-margin-top:110px"></span><span id="blueprint-answer-title" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-10" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-2" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-3" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-4" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-5" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-6" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-7" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-8" style="display:block;scroll-margin-top:110px"></span><span id="guide-section-9" style="display:block;scroll-margin-top:110px"></span><span id="journey-title" style="display:block;scroll-margin-top:110px"></span><span id="quick-options-title" style="display:block;scroll-margin-top:110px"></span></aside></main>
 <footer class="site-footer" id="site-footer">
   <div class="container">
     <address class="site-footer-office">
