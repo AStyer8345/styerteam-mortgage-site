@@ -1,0 +1,84 @@
+main .scenario-content .scenario-table-wrap.borrower-comparison {
+  width: 100%;
+  max-width: 880px;
+  margin: 1.25rem auto;
+  overflow: auto;
+  border: 1px solid #dad4c8;
+  border-radius: 6px;
+}
+
+main .scenario-content .scenario-table-wrap.borrower-comparison table {
+  display: table !important;
+  overflow: visible !important;
+  width: 100%;
+  margin: 0;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+}
+
+main .scenario-content .scenario-table-wrap.borrower-comparison caption {
+  padding: 14px 18px;
+  text-align: left;
+  background: #fff;
+}
+
+main .scenario-content .scenario-table-wrap.borrower-comparison :is(th, td) {
+  padding: 14px 18px;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+main .scenario-content .scenario-table-wrap.borrower-comparison thead th {
+  background: #ebe5d9;
+}
+
+main .scenario-content .scenario-table-wrap.borrower-comparison tbody tr:nth-child(even) > * {
+  background: #f7f4ed;
+}
+
+main .scenario-content .scenario-table-wrap.borrower-comparison tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+main .scenario-content .scenario-table-wrap.borrower-comparison-scroll table {
+  min-width: 610px !important;
+}
+
+main .scenario-content .scenario-table-wrap.borrower-comparison-scroll table.rental-comparison {
+  min-width: 720px !important;
+}
+
+main .scenario-content .scenario-table-wrap.borrower-comparison-scroll tr > :first-child {
+  width: 116px;
+}
+
+.scenario-content .comparison-scroll-note {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  main .scenario-content .scenario-table-wrap.borrower-comparison :is(th, td) {
+    padding: 12px;
+  }
+
+  main .scenario-content .scenario-table-wrap.borrower-comparison-scroll tr > :first-child {
+    position: sticky;
+    inset-inline-start: 0;
+    z-index: 1;
+    border-inline-end: 1px solid #dad4c8;
+  }
+
+  main .scenario-content .scenario-table-wrap.borrower-comparison-scroll tbody tr:nth-child(odd) > th {
+    background: #fff;
+  }
+
+  .scenario-content .comparison-scroll-note {
+    display: block;
+    margin-bottom: -8px;
+    color: #47565e;
+    font-size: 14px;
+  }
+}

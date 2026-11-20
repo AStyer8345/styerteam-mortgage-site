@@ -45,10 +45,11 @@ test('cash-out FAQ markup matches visible answers and retains established form c
  const graph=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
  const faq=graph.find(n=>n['@type']==='FAQPage');
  const decode=s=>s.replace(/&amp;/g,'&').replace(/&#x27;/g,"'").replace(/&quot;/g,'"').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
- assert.deepEqual([...html.matchAll(/<details><summary>([^<]*)<\/summary><p>([^<]*)<\/p><\/details>/g)].map(m=>[decode(m[1]),decode(m[2])]),faq.mainEntity.map(q=>[q.name,q.acceptedAnswer.text]));
+ const visibleAnswers = [...html.matchAll(/<details class="u-faq-item"[^>]*>\s*<summary>([^<]*)<\/summary>\s*<div class="u-faq-answer">\s*<p>([^<]*)<\/p>/g)];
+ assert.deepEqual(visibleAnswers.map(m=>[decode(m[1]),decode(m[2])]),faq.mainEntity.map(q=>[q.name,q.acceptedAnswer.text]));
  for(const token of ['name="contact"','name="inquiry_id"','name="email" required','name="tcpa_consent" required','name="utm_source"','name="first_touch_page"','name="self_reported_source"','/situation-journeys.js','/assets/utm.js','GTM-PQQ6PGLR'])assert.ok(html.includes(token),token);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);
- assert.ok(html.includes('href="https://thestyerteam.com/dscr-cash-out-refinance-texas.html"'));
+ assert.ok(html.includes('href="https://styerteam.com/dscr-cash-out-refinance-texas.html" rel="canonical"'));
  assert.doesNotMatch(html,/<meta[^>]*name="robots"[^>]*noindex/);
 });
 test('cash-out and ad destinations resolve to local public pages and valid anchors',()=>{
@@ -63,7 +64,7 @@ test('cash-out and ad destinations resolve to local public pages and valid ancho
 });
 test('internal campaign dashboard cannot enter the public package or sitemap',()=>{
  const sitemap=fs.readFileSync('sitemap.xml','utf8');assert.doesNotMatch(sitemap,/__review|campaign-index|Campaign-Ad-Assets/);
- assert.ok(sitemap.includes('<loc>https://thestyerteam.com/dscr-cash-out-refinance-texas.html</loc>'));
+ assert.ok(sitemap.includes('<loc>https://styerteam.com/dscr-cash-out-refinance-texas.html</loc>'));
  const internal=fs.readFileSync('design-review/campaign-index.html','utf8');assert.match(internal,/noindex,nofollow/);assert.doesNotMatch(internal,/googletagmanager|analytics\.js|<form/);
  if(fs.existsSync('.site-dist')){assert.equal(fs.existsSync('.site-dist/design-review'),false);assert.equal(fs.existsSync('.site-dist/campaign-index.html'),false);}
 });

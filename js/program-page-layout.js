@@ -30,7 +30,7 @@
 
   function enhanceTables(section) {
     section.querySelectorAll('table').forEach(function (table) {
-      if (table.closest('.program-table-scroll, .experience-table-scroll, .ci-table-wrap')) return;
+      if (table.closest('.program-table-scroll, .experience-table-scroll, .ci-table-wrap, .borrower-comparison')) return;
       // Wrap only the table, not its surrounding answers and headings.
       var wrapper = document.createElement('div');
       wrapper.className = 'program-table-scroll';

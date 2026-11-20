@@ -24,7 +24,7 @@
  }
  // Navigation state and Escape handling are owned by script.js.
  document.querySelectorAll('main table').forEach(function(table){
-  if(table.closest('.experience-table-scroll, .program-table-scroll, .ci-table-wrap'))return;
+  if(table.closest('.experience-table-scroll, .program-table-scroll, .ci-table-wrap, .borrower-comparison'))return;
   var wrapper=document.createElement('div');wrapper.className='experience-table-scroll';wrapper.tabIndex=0;wrapper.setAttribute('role','region');wrapper.setAttribute('aria-label',(table.caption&&table.caption.textContent)||'Comparison table — scroll horizontally if needed');table.before(wrapper);wrapper.appendChild(table);
  });
  document.querySelectorAll('.journey-actions').forEach(function(actions){if(!actions.querySelector('a.nav-apply')||actions.parentElement.querySelector('.journey-path-note'))return;var p=document.createElement('p');p.className='experience-portal-note';p.textContent='Apply Now opens the secure application.';actions.after(p);});
