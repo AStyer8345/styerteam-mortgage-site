@@ -10,14 +10,17 @@ const builders = [
   'realtor-page-builder.js',
 ];
 
-test('generated page footers use the About page review count', () => {
+test('generated page footers use the total on the reviews page', () => {
+  const reviews = fs.readFileSync(path.join(__dirname, '..', 'testimonials.html'), 'utf8');
+  const total = reviews.match(/(\d+) total published reviews/)?.[1];
+  assert.ok(total, 'the reviews page should report the combined review count');
   for (const builder of builders) {
     const source = fs.readFileSync(
       path.join(__dirname, '..', 'netlify', 'functions', 'lib', builder),
       'utf8',
     );
 
-    assert.match(source, />144 Reviews</, `${builder} should use 144 Reviews`);
-    assert.doesNotMatch(source, />137\+ Reviews</, `${builder} should not regress to 137+ Reviews`);
+    const count = source.match(/>(\d+) Reviews</)?.[1];
+    assert.equal(count, total, `${builder} should use the current published review total`);
   }
 });
