@@ -33,7 +33,31 @@ for (const file of releaseFiles) {
 const published = new Set(files);
 const vercelBuild = Boolean(process.env.VERCEL_ENV);
 const analyticsAsset = 'site-analytics.js';
-const analyticsTags = `<meta name="referrer" content="strict-origin"><script defer src="/${analyticsAsset}"></script>`;
+const googleTag = 'GTM-PQQ6PGLR';
+
+// Run before the Google container reads the browser URL. The website can still
+// use its navigation and campaign parameters, and the form POST is unaffected.
+function redactAnalyticsLocation() {
+  if (location.hostname !== 'styerteam.com') return;
+  const url = new URL(location.href);
+  const sensitiveKeys = new Set([
+    'email', 'name', 'phone', 'first_name', 'last_name', 'firstname', 'lastname',
+    'first-name', 'last-name', 'full_name', 'address', 'street', 'dob', 'ssn',
+    'inquiry_id', 'contact_id', 'token', 'access_token', 'original_email',
+    'original_name', 'original_phone', 'message', 'notes', 'details', 'income', 'credit_score',
+  ]);
+  let changed = false;
+  for (const [key, value] of [...url.searchParams]) {
+    if (sensitiveKeys.has(key.toLowerCase()) || /[^\s/@]+@[^\s/@]+\.[^\s/@]+/.test(value)) {
+      url.searchParams.delete(key, value);
+      changed = true;
+    }
+  }
+  if (changed) history.replaceState(history.state, '', url.pathname + url.search + url.hash);
+}
+
+const analyticsPrivacyTags = `<meta name="referrer" content="strict-origin"><script>(${redactAnalyticsLocation.toString()})();</script>`;
+const analyticsTags = `${analyticsPrivacyTags}<script defer src="/${analyticsAsset}"></script>`;
 for (const file of files.filter(file => file.endsWith('.html'))) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
   const assets = html.matchAll(/<(?:script|link|img|source)\b[^>]*?\b(?:src|href)=["']([^"']+)["']/gi);
@@ -60,8 +84,13 @@ for (const file of files) {
     }
     // Instrument public pages with a canonical URL and the shared Google tag.
     // Private pages, exports, and the 404 must not send visitor URLs to analytics.
-    if (vercelBuild && html.includes('GTM-PQQ6PGLR') && /<link\b[^>]*\brel=["']canonical["']/i.test(html) && !['404.html', 'saved-analysis.html'].includes(file)) {
-      html = html.replace(/<head\b[^>]*>/i, head => `${head}\n${analyticsTags}`);
+    if (vercelBuild && html.includes(googleTag)) {
+      if (file === '404.html') {
+        // An arbitrary missing URL may contain private data in its path.
+        html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, tag => tag.includes(googleTag) ? '' : tag);
+      } else if (file !== 'saved-analysis.html' && /<link\b[^>]*\brel=["']canonical["']/i.test(html)) {
+        html = html.replace(/<head\b[^>]*>/i, head => `${head}\n${analyticsTags}`);
+      }
     }
     fs.writeFileSync(output, html);
     continue;
