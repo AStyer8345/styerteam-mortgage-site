@@ -258,7 +258,7 @@ test('a confirmed calculator submission sends the intake payload and one generat
   assert.equal(leadEvents[0].lead_type, 'asset_depletion_calculator');
   assert.equal(leadEvents[0].form_id, 'adc-email-form');
   assert.equal(leadEvents[0].form_name, 'asset-depletion-calculator');
-  assert.equal(leadEvents[0].inquiry_id, payload.inquiry_id);
+  assert.equal(leadEvents[0].inquiry_id, undefined);
   assert.equal(leadEvents[0].page_path, '/asset-depletion-calculator.html');
   assert.equal(leadEvents[0].page_location, 'https://styerteam.com/asset-depletion-calculator.html');
   assert.equal(JSON.stringify(leadEvents[0]).includes('ada@'), false);

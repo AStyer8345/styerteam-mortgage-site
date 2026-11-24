@@ -237,8 +237,7 @@
         form_name: formName,
         intent: intent,
         page_path: root.location.pathname,
-        page_location: (root.location.origin || '') + root.location.pathname,
-        ...(inquiryId ? { inquiry_id: inquiryId } : {})
+        page_location: (root.location.origin || '') + root.location.pathname
       });
     }
     function showStep(value, focus) {
@@ -442,7 +441,7 @@
             root.sessionStorage.setItem(receiptKey, 'true');
           } catch (_) {}
           try {
-            attributionEvent('accepted_submit', payload.inquiry_id);
+            attributionEvent('accepted_submit');
             attributionEvent('generate_lead', payload.inquiry_id);
           } catch (_) { /* Analytics must not hide a saved request. */ }
         }

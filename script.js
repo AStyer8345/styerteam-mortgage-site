@@ -65,7 +65,8 @@ function copyToClipboard(text) {
   });
 }
 
-const LEAD_PARAM_KEYS = ['lead_type', 'form_name', 'form_id', 'inquiry_id'];
+const LEAD_PARAM_KEYS = ['lead_type', 'form_name', 'form_id'];
+const trackedInquiries = new Set();
 
 function sanitizeLeadParams(detail) {
   const source = detail && typeof detail === 'object' ? detail : {};
@@ -85,8 +86,13 @@ function sanitizeLeadParams(detail) {
 
 function dispatchLeadSubmitted(detail, options) {
   const params = sanitizeLeadParams(detail);
-  const inquiryKey = params.inquiry_id ? 'styer:generate-lead:' + params.inquiry_id : '';
+  // Use the receipt ID only for local deduplication. Analytics cannot join it
+  // back to a LoanOS record.
+  const inquiryId = detail?.inquiry_id;
+  const inquiryKey = typeof inquiryId === 'string' && inquiryId ? 'styer:generate-lead:' + inquiryId : '';
   if (inquiryKey) {
+    if (trackedInquiries.has(inquiryKey)) return Promise.resolve();
+    trackedInquiries.add(inquiryKey);
     try {
       if (sessionStorage.getItem(inquiryKey) === '1') return Promise.resolve();
       sessionStorage.setItem(inquiryKey, '1');

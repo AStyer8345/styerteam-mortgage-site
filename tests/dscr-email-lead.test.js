@@ -271,7 +271,7 @@ test('a confirmed DSCR submission sends the rate and payment rows, the disclaime
   assert.equal(leadEvents[0].lead_type, 'dscr_calculator');
   assert.equal(leadEvents[0].form_id, 'dscr-lead-form');
   assert.equal(leadEvents[0].form_name, 'dscr-calculator');
-  assert.equal(leadEvents[0].inquiry_id, payload.inquiry_id);
+  assert.equal(leadEvents[0].inquiry_id, undefined);
   assert.equal(leadEvents[0].page_path, '/dscr-calculator.html');
   assert.equal(leadEvents[0].page_location, 'https://styerteam.com/dscr-calculator.html');
   assert.equal(JSON.stringify(leadEvents[0]).includes('ada@'), false);

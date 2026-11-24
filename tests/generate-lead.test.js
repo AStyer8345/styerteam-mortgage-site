@@ -48,13 +48,14 @@ test('generate_lead carries form and page identifiers and drops contact fields',
   assert.equal(event.lead_type, 'quick_contact');
   assert.equal(event.form_name, 'contact');
   assert.equal(event.form_id, 'form-contact');
-  assert.equal(event.inquiry_id, 'inq-123');
+  assert.equal(event.inquiry_id, undefined);
   assert.equal(event.page_path, '/contact.html');
   assert.equal(event.page_location, 'https://styerteam.com/contact.html');
   assert.equal(JSON.stringify(event).includes('secret@'), false);
   assert.equal(JSON.stringify(event).includes('512555'), false);
   assert.equal(JSON.stringify(event).includes('Ada'), false);
   assert.equal(events[0].detail.email, undefined);
+  assert.equal(events[0].detail.inquiry_id, undefined);
   assert.equal(dataLayer.some((entry) => entry.event === 'scenario_submit'), true);
 });
 
@@ -105,7 +106,7 @@ test('guide, waitlist, buyer guide, journeys, referrals, and the assistant fire 
   assert.match(journeys, /page_location: \(root\.location\.origin \|\| ''\) \+ root\.location\.pathname/);
 
   const referrals = fs.readFileSync('js/professional-referrals.js', 'utf8');
-  assert.match(referrals, /await window\.StyerTrackGenerateLead\(leadParams,\{waitForTags:true,scenarioSubmit:false\}\)/);
+  assert.match(referrals, /await window\.StyerTrackGenerateLead\(\{\.\.\.leadParams,inquiry_id:[^\n]+\},\{waitForTags:true,scenarioSubmit:false\}\)/);
   assert.ok(referrals.indexOf('StyerTrackGenerateLead') < referrals.indexOf("window.location.href='/thank-you.html?type=professional-referral'"));
 
   const assistant = fs.readFileSync('assistant-widget.js', 'utf8');

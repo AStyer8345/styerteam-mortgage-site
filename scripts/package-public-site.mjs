@@ -31,6 +31,9 @@ for (const file of releaseFiles) {
   }
 }
 const published = new Set(files);
+const vercelBuild = Boolean(process.env.VERCEL_ENV);
+const analyticsAsset = 'site-analytics.js';
+const analyticsTags = `<meta name="referrer" content="strict-origin"><script defer src="/${analyticsAsset}"></script>`;
 for (const file of files.filter(file => file.endsWith('.html'))) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
   const assets = html.matchAll(/<(?:script|link|img|source)\b[^>]*?\b(?:src|href)=["']([^"']+)["']/gi);
@@ -48,17 +51,34 @@ for (const file of files) {
   fs.mkdirSync(path.dirname(output), { recursive: true });
   const source = path.join(root, file);
   if (file.endsWith('.html')) {
-    const html = fs.readFileSync(source, 'utf8');
+    let html = fs.readFileSync(source, 'utf8');
     if (/\bhref=["'](?:[^"']*\/)?simple\.css(?:\?[^"']*)?["']/i.test(html)) {
-      const withNavLinks = html.replace(
+      html = html.replace(
         /<li>\s*<a class="nav-prominent-link" href="\/blog\.html">Blog &amp; Market Updates<\/a>\s*<\/li>/,
         '<li><a href="/blog.html">Blog</a></li>\n<li><a href="/resources">Resources</a></li>',
       );
-      fs.writeFileSync(output, withNavLinks);
-      continue;
     }
+    // Instrument public pages with a canonical URL and the shared Google tag.
+    // Private pages, exports, and the 404 must not send visitor URLs to analytics.
+    if (vercelBuild && html.includes('GTM-PQQ6PGLR') && /<link\b[^>]*\brel=["']canonical["']/i.test(html) && !['404.html', 'saved-analysis.html'].includes(file)) {
+      html = html.replace(/<head\b[^>]*>/i, head => `${head}\n${analyticsTags}`);
+    }
+    fs.writeFileSync(output, html);
+    continue;
   }
   fs.copyFileSync(source, output);
+}
+if (vercelBuild) {
+  const { build } = await import('esbuild');
+  await build({
+    entryPoints: [path.join(root, 'scripts/site-analytics-client.mjs')],
+    outfile: path.join(destination, analyticsAsset),
+    bundle: true,
+    minify: true,
+    define: {
+      'process.env.VERCEL_OBSERVABILITY_CLIENT_CONFIG': JSON.stringify(process.env.VERCEL_OBSERVABILITY_CLIENT_CONFIG || ''),
+    },
+  });
 }
 console.log(`Packaged ${files.length} public website files. Functions, source, reports and metadata excluded.`);
 await import('./optimize-homepage.mjs');
