@@ -39,6 +39,14 @@ const googleTag = 'GTM-PQQ6PGLR';
 // use its navigation and campaign parameters, and the form POST is unaffected.
 function redactAnalyticsLocation() {
   if (location.hostname !== 'styerteam.com') return;
+  // The existing Ads tag can detect and hash form values automatically. This
+  // site uses ordinary conversion events without sending those identifiers.
+  window.dataLayer = window.dataLayer || [];
+  function enqueueGoogleCommand() {
+    window.dataLayer.push(arguments);
+  }
+  enqueueGoogleCommand('consent', 'default', { ad_user_data: 'denied' });
+
   const url = new URL(location.href);
   const sensitiveKeys = new Set([
     'email', 'name', 'phone', 'first_name', 'last_name', 'firstname', 'lastname',
